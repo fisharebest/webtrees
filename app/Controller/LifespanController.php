@@ -85,20 +85,24 @@ class LifespanController extends PageController {
 	/** @var string[] A list of colors to use. */
 	private $colors = array();
 
+	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var Place|null A place to serarh. */
-	private $place_obj = null;
+	public $place_obj = null;
 
+	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var Date|null Start of the date range. */
-	private $startDate = null;
+	public $startDate = null;
 
+	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var Date|null End of the date range. */
-	private $endDate = null;
+	public $endDate = null;
 
 	/** @var bool Only match dates in the chosen calendar. */
 	private $strictDate;
 
+	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var string[] List of facts/events to include. */
-	private $facts;
+	public $facts;
 
 	/** @var string[] Facts and events to exclude from the chart */
 	private $nonfacts = array(
@@ -467,11 +471,13 @@ class LifespanController extends PageController {
 	 *
 	 * Does this fact meet the search criteria?
 	 *
+	 * @todo This function is public to support the PHP5.3 closure workaround.
+	 *
 	 * @param  Fact $fact
 	 *
 	 * @return bool
 	 */
-	private function checkFact(Fact $fact) {
+	public function checkFact(Fact $fact) {
 		$valid = !in_array($fact->getTag(), $this->nonfacts);
 		if ($valid && $this->place_obj) {
 			$valid = stripos($fact->getPlace()->getGedcomName(), $this->place_obj->getGedcomName()) !== false;
@@ -492,11 +498,13 @@ class LifespanController extends PageController {
 	/**
 	 * Function getCalendarDate
 	 *
+	 * @todo This function is public to support the PHP5.3 closure workaround.
+	 *
 	 * @param int $date
 	 *
 	 * @return object
 	 */
-	private function getCalendarDate($date) {
+	public function getCalendarDate($date) {
 		switch ($this->calendar) {
 			case 'julian':
 				$caldate = new JulianDate($date);

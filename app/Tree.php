@@ -461,9 +461,6 @@ class Tree {
 			'tree_id' => $tree_id,
 		));
 
-
-
-
 		// Gedcom and privacy settings
 		$tree->setPreference('CONTACT_USER_ID', Auth::id());
 		$tree->setPreference('WEBMASTER_USER_ID', Auth::id());
@@ -607,6 +604,7 @@ class Tree {
 			}
 		}
 		fwrite($stream, $buffer . '0 TRLR' . WT_EOL);
+		$stmt->closeCursor();
 	}
 
 	/**

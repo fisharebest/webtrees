@@ -17,4 +17,9 @@ class ScriptDupl extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '755';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Duployan';
+	}
 }

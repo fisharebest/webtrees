@@ -17,4 +17,9 @@ class ScriptMroo extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '199';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Mro';
+	}
 }

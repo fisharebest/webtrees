@@ -17,4 +17,9 @@ class ScriptPhlp extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '132';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Psalter_Pahlavi';
+	}
 }

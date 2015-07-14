@@ -17,4 +17,9 @@ class ScriptPerm extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '227';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Old_Permic';
+	}
 }

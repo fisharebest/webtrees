@@ -183,7 +183,7 @@ class Menu {
 
 	/**
 	 * Get the link.
- *
+	 *
 	 * @return string
 	 */
 	public function getLink() {

@@ -495,4 +495,3 @@ try {
 		'<pre>', $ex->getMessage(), '</pre>',
 		'<p class="info">', I18N::translate('The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
 }
-

@@ -35,7 +35,7 @@ class LocaleEo extends AbstractLocale implements LocaleInterface {
 		return array(
 			self::GROUP    => self::NBSP,
 			self::DECIMAL  => self::COMMA,
-			self::NEGATIVE => self::MINUS_SIGN,
+			self::NEGATIVE => self::HYPHEN,
 		);
 	}
 }

@@ -17,4 +17,9 @@ class ScriptTirh extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '326';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Tirhuta';
+	}
 }

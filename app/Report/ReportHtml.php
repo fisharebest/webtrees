@@ -418,7 +418,7 @@ class ReportHtml extends ReportBase {
 
 	/**
 	 * Create an HTML element.
- *
+	 *
 	 * @param $tag
 	 * @param $attrs
 	 *

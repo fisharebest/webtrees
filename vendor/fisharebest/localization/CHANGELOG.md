@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.5.0
+ - Updated versions of ISO-15924, iana-subtag-registry and CLDR
+
 ## 1.4.1 (2015-04-06)
  - PHP<=5.3.8 cannot extend abstract classes with abstract functions
 

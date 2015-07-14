@@ -13,28 +13,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Fisharebest\Webtrees;
+
+use Fisharebest\Webtrees\Filter;
+
+// If set to 1, these cause a warning to be displayed whenever
+// there exists both $_SESSION['foo'] and global $foo.
+// The warning prevents session cookies from being sent.
+ini_set('session.bug_compat_warn', 0);
+ini_set('session.bug_compat_42', 0);
 
 /**
  * This function was introduced in PHP 5.4
  */
 function session_register_shutdown() {
 	register_shutdown_function('session_write_close');
-}
-
-/**
- * https://php.net/date_default_timezone_get
- * Prior to PHP 5.4, this function would attempt to guess the timezone,
- * and emit a warning when it did this.  Suppresss the warning.
- *
- * @return string
- */
-function date_default_timezone_get() {
-	$level    = error_reporting(0);
-	$timezone = \date_default_timezone_get();
-	error_reporting($level);
-
-	return $timezone;
 }
 
 // http://php.net/manual/en/security.magicquotes.disabling.php

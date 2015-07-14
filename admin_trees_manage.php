@@ -36,8 +36,17 @@ $controller
 // Show a reduced page when there are more than a certain number of trees
 $multiple_tree_threshold = Site::getPreference('MULTIPLE_TREE_THRESHOLD') ?: 500;
 
-$gedcom_files = glob(WT_DATA_DIR . '*.{ged,Ged,GED}', GLOB_NOSORT | GLOB_BRACE);
-
+// Note that glob() returns false instead of an empty array when open_basedir_restriction
+// is in force and no files are found.  See PHP bug #47358.
+if (defined('GLOB_BRACE')) {
+	$gedcom_files = glob(WT_DATA_DIR . '*.{ged,Ged,GED}', GLOB_NOSORT | GLOB_BRACE) ?: array();
+} else {
+	$gedcom_files = array_merge(
+		glob(WT_DATA_DIR . '*.ged', GLOB_NOSORT) ?: array(),
+		glob(WT_DATA_DIR . '*.Ged', GLOB_NOSORT) ?: array(),
+		glob(WT_DATA_DIR . '*.GED', GLOB_NOSORT) ?: array()
+	);
+}
 // Process POST actions
 switch (Filter::post('action')) {
 case 'delete':

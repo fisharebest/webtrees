@@ -1006,7 +1006,7 @@ abstract class AbstractTheme {
 			// Month view
 			new Menu(I18N::translate('Month'), 'calendar.php?' . $this->tree_url . '&amp;view=month', 'menu-calendar-month', array('rel' => 'nofollow')),
 			//Year view
-			new Menu(I18N::translate('Year'), 'calendar.php?' . $this->tree_url . '&amp;view=year', 'menu-calendar-year', array('rel' => 'nofollow'))
+			new Menu(I18N::translate('Year'), 'calendar.php?' . $this->tree_url . '&amp;view=year', 'menu-calendar-year', array('rel' => 'nofollow')),
 		));
 	}
 
@@ -1966,20 +1966,6 @@ abstract class AbstractTheme {
 
 		return $stylesheets;
 	}
-
-	/**
-	 * A fixed string to identify this theme, in settings, etc.
-	 *
-	 * @return string
-	 */
-	abstract public function themeId();
-
-	/**
-	 * What is this theme called?
-	 *
-	 * @return string
-	 */
-	abstract public function themeName();
 
 	/**
 	 * Create the <title> tag.

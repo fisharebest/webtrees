@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-04-18 12:29+0100\n"
-"Last-Translator: resist <bvank@outlook.com>\n"
-"Language-Team: Hungarian <http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
+"PO-Revision-Date: 2015-07-12 08:44+0100\n"
+"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
+"Language-Team: Hungarian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -7317,6 +7318,8 @@ msgstr "Ha több inaktív helye van. lassú lehet a lista betöltése."
 #: addmedia.php:534 admin_media_upload.php:254
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
 msgstr ""
+"Ha több médiafájlal rendelkezik, lehetősége van ezeket mappába és almappába "
+"rendezni."
 
 #: admin_trees_manage.php:266
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
@@ -12665,7 +12668,7 @@ msgstr "Mutasd a «gyökér» párokat vagy személyeket. Ezek az emberek «pát
 #: app/I18N.php:228 app/I18N.php:229
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
-msgstr "Mutat %1$s-től %2$s-ig %3$s-bó"
+msgstr "Mutat %1$s-től %2$s-ig %3$s-ból"
 
 #: app/Controller/FanchartController.php:391
 #: app/Controller/HourglassController.php:367
@@ -15809,7 +15812,7 @@ msgstr "A kiválasztott GEDCOMnak más neve van. Ez helyes?"
 
 #: addmedia.php:462
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "Be kell írjon egy URL-t, ami „http://”-vel kezdődik."
+msgstr "Lehetősége van egy URL-t megadni, ami „http://”-vel kezdődik."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:431
 msgid "You may use HTML to format the answer and to add links to other websites."

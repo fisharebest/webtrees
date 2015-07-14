@@ -75,7 +75,7 @@ $locale->weekendStart();        // 0=Sunday, 1=Monday, etc.
 $locale->weekendEnd();          // 0=Sunday, 1=Monday, etc.
 
 // Measurement systems and paper sizes.
-$locale->measurementSystem();   // "metric" or "US"
+$locale->measurementSystem();   // "metric", "UK" or "US"
 $locale->paperSize();           // "A4" or "US-Letter"
 
 // Formatting numbers

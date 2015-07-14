@@ -76,7 +76,7 @@ class SpanishSurnameTradition extends DefaultSurnameTradition implements Surname
 		}
 
 		return array(
-			'NAME' => '// //'
+			'NAME' => '// //',
 		);
 	}
 

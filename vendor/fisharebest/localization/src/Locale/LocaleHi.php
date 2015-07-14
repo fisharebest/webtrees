@@ -17,7 +17,7 @@ class LocaleHi extends AbstractLocale implements LocaleInterface {
 
 	/** {@inheritdoc} */
 	public function endonym() {
-		return 'हिंदी';
+		return 'हिन्दी';
 	}
 
 	/** {@inheritdoc} */

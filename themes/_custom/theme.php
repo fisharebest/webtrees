@@ -61,14 +61,9 @@ class MyTheme extends WebtreesTheme {
 	 * {@inheritdoc}
 	 */
 	public function stylesheets() {
-		try {
-			$css_files   = parent::stylesheets();
-			// Put a version number in the URL, to prevent browsers from caching old versions.
-			$css_files[] = WT_BASE_URL . 'themes/custom/custom.css';
-		} catch (\Exception $ex) {
-			// Something went wrong with our script?  Use the default behaviour instead.
-			return parent::stylesheets();
-		}
+		$css_files   = parent::stylesheets();
+		// Put a version number in the URL, to prevent browsers from caching old versions.
+		$css_files[] = WT_BASE_URL . 'themes/_custom/custom-v1.0.css';
 
 		return $css_files;
 	}
@@ -81,20 +76,14 @@ class MyTheme extends WebtreesTheme {
 	 * {@inheritdoc}
 	 */
 	public function menuLists($surname) {
-		try {
-			// Start with the default "Lists" menu.
-			$menu = parent::menuLists($surname);
-			// Remove the "notes" sub-menu.
-			$submenus = array_filter($menu->getSubmenus(), function (Menu $menu) {
-				return $menu->getClass() !== 'menu-list-note';
-			});
-			// Replace the sub-menus
-			$menu->setSubmenus($submenus);
-		} catch (\Exception $ex) {
-			// Something went wrong with our script?  Maybe the core code was updated?
-			// Use the default behaviour instead, so that our theme continues to work.
-			return parent::menuLists($surname);
-		}
+		// Start with the default "Lists" menu.
+		$menu = parent::menuLists($surname);
+		// Remove the "notes" sub-menu.
+		$submenus = array_filter($menu->getSubmenus(), function (Menu $menu) {
+			return $menu->getClass() !== 'menu-list-note';
+		});
+		// Replace the sub-menus
+		$menu->setSubmenus($submenus);
 
 		return $menu;
 	}

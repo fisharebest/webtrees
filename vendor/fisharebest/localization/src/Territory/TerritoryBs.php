@@ -17,4 +17,9 @@ class TerritoryBs extends AbstractTerritory implements TerritoryInterface {
 	public function firstDay() {
 		return 0;
 	}
+
+	/** {@inheritdoc} */
+	public function measurementSystem() {
+		return 'US';
+	}
 }

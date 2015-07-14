@@ -1,4 +1,5 @@
-<?php // vi: set fenc=utf-8 ts=4 sw=4 et:
+<?php
+
 /*
  * Copyright (C) 2013 Nicolas Grekas - p@tchwork.com
  *
@@ -8,7 +9,10 @@
  * GNU General Public License v2.0 (http://gnu.org/licenses/gpl-2.0.txt).
  */
 
-use Patchwork\PHP\Shim as s;
-
-function utf8_encode($s) {return s\Xml::utf8_encode($s);};
-function utf8_decode($s) {return s\Xml::utf8_decode($s);};
+/**
+ * Normalizer plugs Patchwork\PHP\Shim\Normalizer as a PHP implementation
+ * of intl's Normalizer when the intl extension in not enabled.
+ */
+class Normalizer extends Patchwork\PHP\Shim\Normalizer
+{
+}
