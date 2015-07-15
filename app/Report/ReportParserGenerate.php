@@ -109,8 +109,9 @@ class ReportParserGenerate extends ReportParserBase {
 	/** @var ReportBase Nested report elements */
 	private $wt_report;
 
+	/** @todo This attribute is public to support the PHP5.3 closure workaround. */
 	/** @var string[][] Variables defined in the report at run-time */
-	private $vars;
+	public $vars;
 
 	/**
 	 * Create a parser for a report
