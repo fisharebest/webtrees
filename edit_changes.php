@@ -237,7 +237,7 @@ if ($changed_gedcoms) {
 		$output2, $output, $output2,
 		'<br><br><br><br>',
 		'<p id="save-cancel">',
-		'<input type="button" class="cancel" value="', I18N::translate('close'), '" onclick="window.close();">',
+		'<input type="button" class="cancel" value="', I18N::translate('close'), '" onclick="closePopupAndReloadParent();">',
 		'</p>';
 } else {
 	// No pending changes - refresh the parent window and close this one
