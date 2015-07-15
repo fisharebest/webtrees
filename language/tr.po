@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-07-12 09:00+0100\n"
+"PO-Revision-Date: 2015-07-15 11:01+0100\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
@@ -3010,7 +3010,7 @@ msgstr "Kızının mezarı"
 
 #: app/GedcomTag.php:1164
 msgid "Burial of a father"
-msgstr "Babanın mezarı"
+msgstr "Babanın defni"
 
 #: app/GedcomTag.php:1105 app/GedcomTag.php:1114 app/GedcomTag.php:1123
 msgid "Burial of a grandchild"
@@ -3070,7 +3070,7 @@ msgstr "Üvey-kız kardeşin mezarı"
 
 #: app/GedcomTag.php:1182
 msgid "Burial of a husband"
-msgstr "Kocanın mezarı"
+msgstr "Kocasının defni"
 
 #: app/GedcomTag.php:1146
 msgid "Burial of a maternal grandfather"
@@ -3086,11 +3086,11 @@ msgstr "Anne tarafı büyük ebeveynin mezarı"
 
 #: app/GedcomTag.php:1166
 msgid "Burial of a mother"
-msgstr "Annenin mezarı"
+msgstr "Annenin defni"
 
 #: app/GedcomTag.php:1168
 msgid "Burial of a parent"
-msgstr "Ebeveynin mezarı"
+msgstr "Ebeveynin defni"
 
 #: app/GedcomTag.php:1137
 msgid "Burial of a paternal grandfather"
@@ -3106,23 +3106,23 @@ msgstr "Baba tarafı büyük ebeveynin mezarı"
 
 #: app/GedcomTag.php:1177
 msgid "Burial of a sibling"
-msgstr "Kardeşin mezarı"
+msgstr "Kardeşin defni"
 
 #: app/GedcomTag.php:1175
 msgid "Burial of a sister"
-msgstr "Kız kardeşin mezarı"
+msgstr "Kız kardeşin defni"
 
 #: app/GedcomTag.php:1092
 msgid "Burial of a son"
-msgstr "Oğlunun mezarı"
+msgstr "Oğlunun defni"
 
 #: app/GedcomTag.php:1186
 msgid "Burial of a spouse"
-msgstr "Eşin mezarı"
+msgstr "Eşinin defni"
 
 #: app/GedcomTag.php:1184
 msgid "Burial of a wife"
-msgstr "Hanımın mezarı"
+msgstr "Karısının defni"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
@@ -4655,7 +4655,7 @@ msgstr "Kız torunu ölümü"
 
 #: app/GedcomTag.php:1388
 msgid "Death of a grandfather"
-msgstr "Büyükbabanın ölümü"
+msgstr "Dedenin ölümü"
 
 #: app/GedcomTag.php:1390
 msgid "Death of a grandmother"
@@ -4709,7 +4709,7 @@ msgstr "Ebeveynin ölümü"
 
 #: app/GedcomTag.php:1397
 msgid "Death of a paternal grandfather"
-msgstr "Büyükbabanın ölümü"
+msgstr "Dedenin ölümü"
 
 #: app/GedcomTag.php:1399
 msgid "Death of a paternal grandmother"
@@ -11835,7 +11835,7 @@ msgstr "Gönderen adı"
 #. I18N: Menu entry
 #: admin_site_config.php:136 app/Theme/AdministrationTheme.php:88
 msgid "Sending email"
-msgstr "Posta gönderiliyor"
+msgstr "e-posta gönderme"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:408
