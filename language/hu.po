@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-07-16 18:24+0100\n"
-"Last-Translator: resist <bvank@outlook.com>\n"
+"PO-Revision-Date: 2015-07-16 18:28+0100\n"
+"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -9408,11 +9408,11 @@ msgstr "Felhasználói adataim"
 #. I18N: Default name for a new tree
 #: admin_trees_manage.php:153
 msgid "My family tree"
-msgstr ""
+msgstr "A családfám"
 
 #: app/Module/UserWelcomeModule.php:57 app/Theme/AbstractTheme.php:1539
 msgid "My individual record"
-msgstr "Saját Személyes Adataim"
+msgstr "Személyes Adataim"
 
 #. I18N: Name of a module
 #: admin_modules.php:183 app/Module/UserWelcomeModule.php:28
@@ -11817,7 +11817,7 @@ msgstr "Keresett szöveg"
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:69
 msgid "Search for individuals to add to add Links list."
-msgstr "Személy keresése a hivatkozás hozzáadása listába"
+msgstr "Személy keresése a hivatkozás hozzáadása listához."
 
 #: app/Module/GoogleMapsModule.php:3986
 msgid "Search globally"
