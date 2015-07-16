@@ -140,7 +140,7 @@ case 'synchronize':
 				$tree = Tree::create($basename, $basename);
 			}
 			if ($tree->getPreference('filemtime') != $filemtime) {
-				$tree->importGedcomFile($gedcom_file, $basename, false);
+				$tree->importGedcomFile($gedcom_file, $basename);
 				$tree->setPreference('filemtime', $filemtime);
 				FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', Filter::escapeHtml($basename)), 'success');
 			}
