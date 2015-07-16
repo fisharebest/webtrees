@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-07-16 18:28+0100\n"
-"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
+"PO-Revision-Date: 2015-07-16 18:33+0100\n"
+"Last-Translator: resist <bvank@outlook.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -12448,7 +12448,7 @@ msgstr "Mutasd azokat a személyeket akik több mint 100 éve születtek."
 
 #: app/Functions/FunctionsPrintLists.php:236
 msgid "Show individuals born within the last 100 years."
-msgstr "Mutasd az elmúlt 100 évben született személyeket"
+msgstr "Az elmúlt 100 évben született személyek mutatása."
 
 #: app/Functions/FunctionsPrintLists.php:189
 #: app/Functions/FunctionsPrintLists.php:626
@@ -13429,9 +13429,17 @@ msgid "The changes to “%s” have been rejected."
 msgstr "A „%s”-t illető módosítások elutasításra kerültek."
 
 #: app/Module/ClippingsCartModule.php:299
-#, fuzzy
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
-msgstr "A Hulladékkosár lehetővé teszi kivonatok létrehozását bejegyzésekből, amelyek később letölthetőek lesznek és beimportálhatóak más családfa programokba. A letölthető fájl GEDCOM formátumú lesz."
+msgstr ""
+"A Vágókosár lehetővé teszi kivonatok létrehozását ebből a családfából, "
+"amelyek később letölthetőek lesznek és beimportálhatóak más családfa "
+"programokba.  A letölthető fájl GEDCOM formátumú lesz.<br><ul><li>Hogyan "
+"végezze a vágást?<br>Egyszerűen:  Bármely kattintható neven (személy, "
+"család, forrás) keresztül eljuthat a Részletek oldalára az adott névnek.  "
+"Ott talán egy <b>Vágókosárhoz adás</b> linket, melyet használva több opciót "
+"is kap a letöltéshez.</li><li>Hogyan töltse le?<br>Amint bekerül egy elem a "
+"kosárba, letöltheti a \"Letöltés\" linken keresztül. Kövesse az "
+"utasításokat!</li></ul>"
 
 #: site-unavailable.php:65
 msgid "The database reported the following error message:"
@@ -14321,6 +14329,7 @@ msgstr "A megjegyzés nem létezik, vagy nem rendelkezik megfelelő jogosultság
 #: note.php:45
 msgid "This note has been deleted.  The deletion will need to be reviewed by a moderator."
 msgstr ""
+"A megjegyzés törlésre került.  A törlés adminisztrátori jóváhagyást igényel."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: note.php:36
