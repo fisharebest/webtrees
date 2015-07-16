@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-07-15 11:01+0100\n"
+"PO-Revision-Date: 2015-07-16 17:14+0100\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
@@ -1634,7 +1634,10 @@ msgstr "Aile ağacını oluşturduktan sonra, GEDCOM dosya verilerini yükleyebi
 
 #: login.php:239
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
-msgstr "Giriş yaptıktan sonra «Benim sayfam» menüsü altında «Benim profilim» bağlantısını tıklayın ve şifrenizi değiştirmek için her iki alana yeni şifrenizi girerek kaydedin."
+msgstr ""
+"Giriş yaptıktan sonra «Benim sayfam» menüsü altında «Hesabım» bağlantısını "
+"tıklayın ve şifrenizi değiştirmek için her iki alana yeni şifrenizi girerek "
+"kaydedin."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:248
@@ -7178,7 +7181,11 @@ msgstr "Eğer soyadı bilinmiyor ise boş kesme işareti kullanın: <%s>Mary //<
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:422
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
-msgstr "Eğer birey için ölüm, defin, yada ölü yakma dışında burada belirtilen sayıda yıldan daha yakın bir zamanda bir olu veya hadise mevcut ise, bu bireyler \"yaşıyor\" olarak kabul edilir. Bu doğrultuda, çocuk doğum tarihleri bu tür olaylardandandır."
+msgstr ""
+"Eğer birey için ölüm, defin, yada ölü yakma dışında burada belirtilen sayıda "
+"yıldan daha yakın bir zamanda bir olu veya hadise mevcut ise, bu bireyler \""
+"yaşıyor\" olarak kabul edilir. Bu doğrultuda, çocuk doğum tarihleri bu tür "
+"olaylardandır."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1026
@@ -7939,7 +7946,7 @@ msgstr "Son değişiklik"
 
 #: app/Module/ReviewChangesModule.php:114
 msgid "Last email reminder was sent "
-msgstr "Son hatırlatıcı email gönderilme zamanı "
+msgstr "En son hatırlatıcı e-posta gönderilme zamanı "
 
 #: statistics.php:368
 msgid "Last event"
@@ -9289,7 +9296,7 @@ msgstr "Birden fazla evlilikler"
 #: app/Module/UserWelcomeModule.php:52 app/Theme/AbstractTheme.php:1524
 #: edituser.php:106
 msgid "My account"
-msgstr "Benim profilim"
+msgstr "Hesabım"
 
 #. I18N: Default name for a new tree
 #: admin_trees_manage.php:153
@@ -9304,11 +9311,11 @@ msgstr "Benim Kayıtlarım"
 #: admin_modules.php:183 app/Module/UserWelcomeModule.php:28
 #: app/Theme/AbstractTheme.php:1551 index.php:87 index.php:95
 msgid "My page"
-msgstr "Benim Sayfam"
+msgstr "Benim sayfam"
 
 #: app/Theme/AbstractTheme.php:1561
 msgid "My pages"
-msgstr "Benim safam"
+msgstr "Benim sayfam"
 
 #: app/Module/UserWelcomeModule.php:56 app/Theme/AbstractTheme.php:1587
 msgid "My pedigree"
@@ -9517,7 +9524,7 @@ msgstr "Gazete"
 
 #: app/Module/ReviewChangesModule.php:115
 msgid "Next email reminder will be sent after "
-msgstr "Sonraki hatırlatıcı email gönderileceği zaman "
+msgstr "Sonraki hatırlatıcı e-posta gönderileceği zaman "
 
 #: app/Module/SlideShowModule.php:140
 msgid "Next image"
@@ -10361,7 +10368,7 @@ msgstr "Soyağacı Çizelgesi"
 #: app/Controller/FanchartController.php:355
 #: app/Module/GoogleMapsModule.php:1383 app/Theme/AbstractTheme.php:1184
 msgid "Pedigree map"
-msgstr "Soyağacı haritası"
+msgstr "Soyağacı Haritası"
 
 #. I18N: %s is an individual’s name
 #: app/Module/GoogleMapsModule.php:751
@@ -13494,7 +13501,9 @@ msgstr "Yüklediğiniz medya dosyası, sunucuda bilgisayarınızdaki isminden fa
 
 #: setup.php:167
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr "Aile ağacınızın bireylerin sayısı sunucunuzun hafiza ve ve CPU zamanı gereksinimlere bağlıdır."
+msgstr ""
+"Aile ağacınızın bireylerin sayısı sunucunuzun hafıza ve ve CPU zamanı "
+"gereksinimlere bağlıdır."
 
 #: admin_modules.php:49
 #, php-format
@@ -13799,7 +13808,8 @@ msgstr "Bu GEDCOM %1$s kullanılarak kodlandı. %2$s anlamına gelmek için bunu
 
 #: login.php:90
 msgid "This account has not been approved.  Please wait for an administrator to approve it."
-msgstr "Bu hesap henüz Yönetici tarafından onaylanmadı.<br><br>Eğer uzun zaman geçmesine rağmen onaylanmadı ise lütfen sayfa dibindeki bağlantıdan Yönetici ile irtibata geçiniz."
+msgstr ""
+"Bu hesap henüz  onaylanmadı. Lütfen yöneticinin onaylamasını bekleyiniz."
 
 #: login.php:85
 msgid "This account has not been verified.  Please check your email for a verification message."
@@ -14383,7 +14393,7 @@ msgstr "Saat"
 #: app/Controller/TimelineController.php:77 app/Theme/AbstractTheme.php:1224
 #: timeline.php:243
 msgid "Timeline"
-msgstr "Zaman çizelgesi"
+msgstr "Zaman Çizelgesi"
 
 #: admin_site_change.php:359 admin_site_logs.php:327
 msgid "Timestamp"
