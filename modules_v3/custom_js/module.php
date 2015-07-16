@@ -101,15 +101,16 @@ class CustomJavaScriptModule extends AbstractModule implements ModuleConfigInter
 		// We don't actually have a menu - this is just a convenient "hook" to execute
 		// code at the right time during page execution
 		global $controller, $WT_TREE;
-
-		$cjs_footer = $this->getSetting('CJS_FOOTER');
-		if (strpos($cjs_footer, '#') !== false) {
-			# parse for embedded keywords
-			$stats = new Stats($WT_TREE);
-			$cjs_footer = $stats->embedTags($cjs_footer);
+		
+		if (Theme::theme()->themeId() !== '_administration') {
+			$cjs_footer = $this->getSetting('CJS_FOOTER');
+			if (strpos($cjs_footer, '#') !== false) {
+				# parse for embedded keywords
+				$stats = new Stats($WT_TREE);
+				$cjs_footer = $stats->embedTags($cjs_footer);
+			}
+			$controller->addInlineJavaScript($cjs_footer, BaseController::JS_PRIORITY_LOW);
 		}
-		$controller->addInlineJavaScript($cjs_footer, BaseController::JS_PRIORITY_LOW);
-
 		return null;
 	}
 
