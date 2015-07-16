@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-07-16 18:33+0100\n"
-"Last-Translator: resist <bvank@outlook.com>\n"
+"PO-Revision-Date: 2015-07-16 18:35+0100\n"
+"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -14329,7 +14329,7 @@ msgstr "A megjegyzés nem létezik, vagy nem rendelkezik megfelelő jogosultság
 #: note.php:45
 msgid "This note has been deleted.  The deletion will need to be reviewed by a moderator."
 msgstr ""
-"A megjegyzés törlésre került.  A törlés adminisztrátori jóváhagyást igényel."
+"A megjegyzés törlésre került.  A törlés oldalszerkesztői jóváhagyást igényel."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: note.php:36
@@ -16600,7 +16600,7 @@ msgstr "tizenegyed unokatestvér"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:103
 msgid "estate name"
-msgstr ""
+msgstr "Tulajdonnév"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:100
@@ -16622,12 +16622,12 @@ msgstr "becsült %s"
 
 #: app/Functions/Functions.php:719
 msgid "ex-husband"
-msgstr ""
+msgstr "volt férj"
 
 #: app/Functions/Functions.php:732
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "volt társ"
 
 #: app/Functions/Functions.php:714
 msgctxt "MALE"
@@ -16645,7 +16645,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:737
 msgid "ex-wife"
-msgstr ""
+msgstr "volt feleség"
 
 #: admin_trees_config.php:69 modules_v3/fact_sources/report.xml:6
 msgid "facts"
