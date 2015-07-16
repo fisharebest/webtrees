@@ -39,6 +39,31 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 	}
 
 	/**
+	 * This is a general purpose hook, allowing modules to respond to routes
+	 * of the form module.php?mod=FOO&mod_action=BAR
+	 *
+	 * @param string $mod_action
+	 */
+	public function modAction($mod_action) {
+		switch ($mod_action) {
+		case 'delete':
+			$stmt = Database::prepare("DELETE FROM `##message` WHERE user_id = :user_id AND message_id = :message_id");
+
+			foreach (Filter::postArray('message_id') as $id) {
+				$stmt->execute(array(
+					'message_id' => $id,
+					'user_id'    => Auth::id(),
+				));
+			}
+		}
+
+		$ged   = Filter::post('ged');
+		$ctype = Filter::post('ctype', 'user|gedcom', 'user');
+
+		header('Location: ' . WT_BASE_URL . 'index.php?ged=' . Filter::escapeUrl($ged) . '&ctype=' . $ctype);
+	}
+
+	/**
 	 * Generate the HTML content of this block.
 	 *
 	 * @param int      $block_id
@@ -48,14 +73,8 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 	 * @return string
 	 */
 	public function getBlock($block_id, $template = true, $cfg = array()) {
-		// Block actions
-		$action      = Filter::post('action');
-		$message_ids = Filter::postArray('message_id');
-		if ($action === 'deletemessage') {
-			foreach ($message_ids as $message_id) {
-				Database::prepare("DELETE FROM `##message` WHERE message_id=?")->execute(array($message_id));
-			}
-		}
+		global $ctype, $WT_TREE;
+
 		$block = $this->getBlockSetting($block_id, 'block', '1');
 		foreach (array('block') as $name) {
 			if (array_key_exists($name, $cfg)) {
@@ -74,7 +93,9 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			return $user->getUserId() !== Auth::id() && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') !== 'none';
 		});
 
-		$content = '<form name="messageform" method="post" onsubmit="return confirm(\'' . I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.') . '\');">';
+		$content = '<form id="messageform" name="messageform" method="post" action="module.php?mod=user_messages&mod_action=delete" onsubmit="return confirm(\'' . I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.') . '\');">';
+		$content .= '<input type="hidden" name="ged" value="' . $ctype . '">';
+		$content .= '<input type="hidden" name="ctype" value="' . $WT_TREE->getNameHtml() . '">';
 		if ($users) {
 			$content .= '<label for="touser">' . I18N::translate('Send a message') . '</label>';
 			$content .= '<select id="touser" name="touser">';
@@ -83,10 +104,9 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 				$content .= sprintf('<option value="%1$s">%2$s - %1$s</option>', Filter::escapeHtml($user->getUserName()), Filter::escapeHtml($user->getRealName()));
 			}
 			$content .= '</select>';
-			$content .= '<input type="button" value="' . I18N::translate('Send') . '" onclick="message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, \'messaging2\', \'\'); return false;"><br><br>';
+			$content .= '<input type="button" value="' . I18N::translate('Send') . '" onclick="return message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, \'messaging2\', \'\');"><br><br>';
 		}
 		if ($messages) {
-			$content .= '<input type="hidden" name="action" value="deletemessage">';
 			$content .= '<table class="list_table"><tr>';
 			$content .= '<th class="list_label">' . I18N::translate('Delete') . '<br><a href="#" onclick="jQuery(\'#' . $this->getName() . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">' . I18N::translate('All') . '</a></th>';
 			$content .= '<th class="list_label">' . I18N::translate('Subject') . '</th>';
@@ -95,7 +115,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			$content .= '</tr>';
 			foreach ($messages as $message) {
 				$content .= '<tr>';
-				$content .= '<td class="list_value_wrap"><input type="checkbox" id="cb_message' . $message->message_id . '" name="message_id[]" value="' . $message->message_id . '"></td>';
+				$content .= '<td class="list_value_wrap"><input type="checkbox" name="message_id[]" value="' . $message->message_id . '" id="cb_message' . $message->message_id . '"></td>';
 				$content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . Filter::escapeHtml($message->subject) . '</b></a></td>';
 				$content .= '<td class="list_value_wrap">' . FunctionsDate::formatTimestamp($message->created + WT_TIMESTAMP_OFFSET) . '</td>';
 				$content .= '<td class="list_value_wrap">';
@@ -114,12 +134,12 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 					$message->subject = I18N::translate('RE: ') . $message->subject;
 				}
 				if ($user) {
-					$content .= '<a href="#" onclick="reply(\'' . Filter::escapeJs($message->sender) . '\', \'' . Filter::escapeJs($message->subject) . '\'); return false;">' . I18N::translate('Reply') . '</a> | ';
+					$content .= '<button type="button" onclick="reply(\'' . Filter::escapeJs($message->sender) . '\', \'' . Filter::escapeJs($message->subject) . '\'); return false;">' . I18N::translate('Reply') . '</button> ';
 				}
-				$content .= '<a href="index.php?action=deletemessage&amp;message_id%5B%5D=' . $message->message_id . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.') . '\');">' . I18N::translate('Delete') . '</a></div></td></tr>';
+				$content .= '<button type="button" onclick="if (confirm(\'' . I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.') . '\')) {jQuery(\'#messageform :checkbox\').prop(\'checked\', false); jQuery(\'#cb_message' . $message->message_id . '\').prop(\'checked\', true); document.messageform.submit();}">' . I18N::translate('Delete') . '</button></div></td></tr>';
 			}
 			$content .= '</table>';
-			$content .= '<input type="submit" value="' . I18N::translate('Delete selected messages') . '"><br>';
+			$content .= '<p><button type="submit">' . I18N::translate('Delete selected messages') . '</button></p>';
 		}
 		$content .= '</form>';
 
