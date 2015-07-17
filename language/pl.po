@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-06-26 10:08+0100\n"
+"PO-Revision-Date: 2015-07-14 13:55+0100\n"
 "Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
-"Language-Team: Polish <http://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
+"Language-Team: Polish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -4992,7 +4994,9 @@ msgstr "Denver, Colorado"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr "Będzie możliwa automatyczna aktualizacja w zależności od konfiguracji serwera."
+msgstr ""
+"Automatyczna aktualizacja będzie możliwa w zależności od konfiguracji "
+"serwera."
 
 #: familybook.php:89
 msgid "Descendant generations"
@@ -7605,7 +7609,9 @@ msgstr "Izrael"
 
 #: admin_site_upgrade.php:77 admin_site_upgrade.php:81
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
-msgstr "Proszę czekać. Pobieranie i aktualizacja może zająć kilka minut."
+msgstr ""
+"Pobieranie i instalacja aktualizacji może zająć kilka minut. Prosimy o "
+"cierpliwość."
 
 #: app/Stats.php:6835
 msgid "Italy"

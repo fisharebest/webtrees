@@ -48,6 +48,7 @@
 /* http://www.subtlepatterns.com */
 body {
 	background: url(paper_fibers.png);
+	margin-bottom: 1em; /* Firefox's status bar overlaps the body */
 }
 @media (min-device-pixel-ratio: 2) {
 	body {

@@ -167,8 +167,8 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 			" SELECT d_day, d_month, d_mon, d_year, d_julianday1, d_julianday2, d_fact, d_gid, ?, d_type FROM `##dates` AS dates2 WHERE d_file = ?"
 		)->execute(array($tree2_id, $tree1_id));
 		Database::prepare(
-			"INSERT INTO `##default_resn` (gedcom_id, xref, tag_type, resn, comment, updated)" .
-			" SELECT ?, xref, tag_type, resn, comment, updated FROM `##default_resn` AS default_resn2 WHERE gedcom_id = ?"
+			"INSERT INTO `##default_resn` (gedcom_id, xref, tag_type, resn)" .
+			" SELECT ?, xref, tag_type, resn FROM `##default_resn` AS default_resn2 WHERE gedcom_id = ?"
 		)->execute(array($tree2_id, $tree1_id));
 		Database::prepare(
 			"INSERT INTO `##link` (l_file, l_from, l_type, l_to)" .

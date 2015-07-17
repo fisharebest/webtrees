@@ -456,7 +456,7 @@ case 'edit':
 			<div class="col-sm-9">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" id="visible_online" name="visible_online" value="1" <?php echo $user->getPreference('visible_online') ? 'checked' : ''; ?>>
+						<input type="checkbox" id="visible_online" name="visible_online" value="1" <?php echo $user->getPreference('visibleonline') ? 'checked' : ''; ?>>
 						<?php echo /* I18N: A configuration setting */ I18N::translate('Visible to other users when online'); ?>
 					</label>
 					<p class="small text-muted">
