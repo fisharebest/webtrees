@@ -1,6 +1,7 @@
 *.ged
 *.GED
 cache/
+ftv_cache/
 config.ini.php
 histo.*.php
 html_purifier_cache/
