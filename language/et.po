@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-07-12 14:37+0100\n"
-"Last-Translator: Maidu Leever <maidu.leever@gmail.com>\n"
+"PO-Revision-Date: 2015-07-19 20:09+0100\n"
+"Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -95,19 +95,19 @@ msgstr ""
 #: admin_site_upgrade.php:317
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$s KB laeti alla %2$s sekundiga."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:157
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s ei eksisteeri."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:150
 #, php-format
 msgid "%1$s does not exist.  Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s ei eksisteeri.  Kas mõtlesite %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:190
@@ -120,8 +120,8 @@ msgstr ""
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s fail pakiti lahti %2$s ssekundiga."
+msgstr[1] "%1$s failid pakiti lahti %2$s sekundiga."
 
 #: app/Module/GoogleMapsModule.php:887
 #, php-format
@@ -197,43 +197,43 @@ msgstr "%j. %F %Y"
 #: app/Stats.php:6995
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s BCE"
 
 #. I18N: size of file in KB
 #: admin_media.php:484 app/Media.php:276
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:194
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s ja tema esivanemad"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:196
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s ja tema esivanemad"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:280
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s ja isikud, kes viitavad sellele."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s ja nende lapsed"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:124
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s ja nende järeltulijad"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5949
 #, php-format
@@ -268,15 +268,15 @@ msgstr[1] "%s päeva tagasi"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s perekond on uuendatud."
+msgstr[1] "%s perekonda on uuendatud."
 
 #: admin.php:803
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s sugupuu"
+msgstr[1] "%s sugupuud"
 
 #: app/Stats.php:5257 app/Stats.php:5261
 #, php-format
@@ -303,42 +303,44 @@ msgstr[1] "%s isikut"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s isik on uuendatud."
+msgstr[1] "%s isikud on uuendatud."
 
 #: app/Module/GoogleMapsModule.php:897
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s isik on privaatne."
+msgstr[1] "%s isikud on privaatsed."
 
 #: app/Controller/LifespanController.php:249
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s isik sündmustega, mis jäävad %s ja %s vahele"
+msgstr[1] "%s isikud sündmustega, mis jäävad %s ja %s vahele"
 
 #: app/Controller/LifespanController.php:242
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s isik sündmustega: %s"
+msgstr[1] "%s isikud sündmustega: %s"
 
 #: app/Controller/LifespanController.php:235
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s isik sündmustega: %s ning %s ja %s vahel"
+msgstr[1] "%s isikud sündmustega: %s ning %s ja %s vahel"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:117
 #, php-format
 msgid "%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it."
 msgstr ""
+"%s on selles serveris keelatud. Te ei saa paigaldada webtrees-it kuni see on "
+"lubatud. Paluge serveri administraatoril see lubada."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5959
 #, php-format
@@ -381,8 +383,8 @@ msgstr[1] "%s kuud tagasi"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s märkus on uuendatud."
+msgstr[1] "%s märkused on uuendatud."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2124
@@ -407,8 +409,8 @@ msgstr[1] "%s sekundit tagasi"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s allikas on uuendatud."
+msgstr[1] "%s allikad on uuendatud."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2140
@@ -498,49 +500,49 @@ msgstr "%s&nbsp;CE"
 #: app/Module/ClippingsCartModule.php:212
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, tema esivanemad ja nende perekonnad"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:166
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, tema vanemad ja õed-vennad"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:180
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, tema abikaasad ja lapsed"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:230
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, tema abikaasad ja järeltulijad"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:214
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, tema esivanemad ja nende perekonnad"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:168
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, tema vanemad ja õed-vennad"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:182
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, tema abikaasad ja lapsed"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:232
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, tema abikaasad ja järeltulijad"
 
 #: app/Functions/FunctionsPrint.php:622 app/Module/UserMessagesModule.php:81
 msgid "&lt;select&gt;"
@@ -735,6 +737,8 @@ msgstr ""
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr ""
+"<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\""
+">%2$s</span>"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:206
 msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
@@ -743,10 +747,16 @@ msgstr ""
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
 msgstr ""
+"Lapsel võivad olla rohkem kui ühed vanemad. Lapse ja vanemate vaheline "
+"sugulusside saab olla bioloogiline, legaalne või põhineda kohalikul "
+"kultuuril ja traditsioonil. Kui sugulussidet pole täpsustatud, siis "
+"eeldatakse, et see on bioloogiline."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr ""
+"Levinud on viga, et samale kirjele on mitmeid viiteid, näiteks sama laps on "
+"kirjas rohkem kui ühes perekonnakirjes."
 
 #: setup.php:367
 msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
@@ -754,41 +764,43 @@ msgstr "Andmebaasiserver võib jooksutada mitmeid eraldiseisvaid andmebaase. Sa 
 
 #: admin_trees_download.php:115 admin_trees_manage.php:213
 msgid "A file on the server"
-msgstr ""
+msgstr "Fail serveris"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:202
 msgid "A file on your computer"
-msgstr ""
+msgstr "Fail teie arvutis"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:33
 msgid "A greeting message and useful links for a user."
-msgstr ""
+msgstr "Tervitussõnum ja kasulikud viited kasutajale."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:34
 msgid "A greeting message for site visitors."
-msgstr ""
+msgstr "Tervitussõnum lehekülje külastajatele."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need moderator approval, and email notifications."
 msgstr ""
+"Nimekiri muudatustest, mis vajavad moderaatori kinnitust ja e-maili "
+"teavitusi."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
 msgid "A list of frequently asked questions and answers."
-msgstr ""
+msgstr "Nimekiri korduma kippuvatest küsimustest."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:40
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "Kirjete nimekiri, mida on hiljuti uuendatud."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:38
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "NImekiri ülesannetest ja tegevustest, mis on ühendatud sugupuuga."
 
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
@@ -798,32 +810,32 @@ msgstr ""
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "Nimekiri tänastest tähtpäevadest."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Nimekiri lähenevatest tähtpäevadest."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr ""
+msgstr "NImekiri populaarsematest nimedest."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "Nimekiri populaarsematest perekonnanimedest."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "Enim vaadatud lehtede nimekiri"
+msgstr "Enim vaadatud lehtede nimekiri."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "Nimekiri kasutajatest, kes on hetkel võrgus."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -833,6 +845,8 @@ msgstr ""
 #, php-format
 msgid "A new password has been created and emailed to %s.  You can change this password after you login."
 msgstr ""
+"Uus parool on loodud ja saadetud aadressile: %s.  Peale sisse logimist, "
+"saate oma parooli muuta."
 
 #: login.php:236
 msgid "A new password has been requested for your user name."
@@ -846,18 +860,18 @@ msgstr ""
 
 #: admin.php:574 admin_site_upgrade.php:79
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Uus webtree versioon on saadaval."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
 msgid "A private area to record notes or keep a journal."
-msgstr ""
+msgstr "Privaatne koht märkmeteks või päevikuks."
 
 #. I18N: %s is a server name/URL
 #: login.php:301
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "Tulevane kasutaja on registreerinud webtrees: %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
@@ -885,7 +899,7 @@ msgstr "Väljavõte isiku detailidest."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Väljavõte faktidest etteantud andmete põhjal"
+msgstr "Väljavõte faktidest etteantud andmete põhjal."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
@@ -941,7 +955,7 @@ msgstr "Väljavõte isikutest kes on lähedas suguluses teise isikuga."
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "Raport allika poolt antud informatsioonist."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:35
@@ -1012,16 +1026,20 @@ msgstr ""
 #: admin_users.php:396
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 msgstr ""
+"Kasutaja ei saa enne sisse logida, kuni mõlemad punktid: 'e-mail kinnitatud' "
+"ja 'kinnitatud administraatori poolt' on valitud."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1122
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
 msgstr ""
+"Vesimärk on tekst, mis lisatakse pildile, et vältida, et keegi teine seda "
+"pilti ilma loata kopeerida ei saaks."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:105
 msgid "A.M."
-msgstr ""
+msgstr "A.M."
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -1039,7 +1057,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "A3"
-msgstr ""
+msgstr "A3"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -1057,7 +1075,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #: app/I18N.php:422
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
@@ -1074,19 +1092,19 @@ msgstr "Aba, Nigeeria"
 #: app/Date/JalaliDate.php:190
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:94
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:126
@@ -1104,7 +1122,7 @@ msgstr ""
 #: admin_trees_config.php:1630 admin_trees_config.php:1632
 #: admin_trees_config.php:1636
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "Lühenda kohanimed"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
@@ -1113,7 +1131,7 @@ msgstr "Lühend"
 
 #: app/Stats.php:6717
 msgid "Acadia"
-msgstr ""
+msgstr "Acadia"
 
 #: edit_changes.php:176 edit_changes.php:184
 msgid "Accept"
@@ -1127,7 +1145,7 @@ msgstr "Ligipääsu tase"
 
 #: admin_users.php:374
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "Kasutaja kinnitamine ja e-maili kinnitus"
 
 #: app/GedcomCode/GedcomCodeTemp.php:79
 msgid "Accra, Ghana"
@@ -1137,7 +1155,7 @@ msgstr "Accra, Ghana"
 #: app/Date/JewishDate.php:141
 msgctxt "GENITIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:217
@@ -1233,7 +1251,7 @@ msgstr "Lisa laps sellesse perekonda"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr ""
+msgstr "Lisa fakt"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
@@ -1250,7 +1268,7 @@ msgstr "Lisa uus partner"
 
 #: app/Module/RelativesTabModule.php:275
 msgid "Add a new brother or sister"
-msgstr ""
+msgstr "Lisa uus vend või õde"
 
 #: edit_interface.php:516
 msgid "Add a new child"
@@ -1266,7 +1284,7 @@ msgstr "Lisa uus lemmik"
 
 #: app/Module/GoogleMapsModule.php:4612
 msgid "Add a new geographic location"
-msgstr ""
+msgstr "Lisa uus geograafiline asukoht"
 
 #: app/Module/RelativesTabModule.php:387 edit_interface.php:810
 #: edit_interface.php:900
@@ -1299,7 +1317,7 @@ msgstr "Lisa uus märkus"
 
 #: app/Functions/FunctionsEdit.php:1043
 msgid "Add a new restriction"
-msgstr ""
+msgstr "Lisa uus piirang"
 
 #: app/Controller/FamilyController.php:189
 #: app/Functions/FunctionsEdit.php:1022 app/Module/NotesTabModule.php:105
@@ -1308,7 +1326,7 @@ msgstr "Lisa uus jagatud märkus"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a new son or daughter"
-msgstr ""
+msgstr "Lisa uus poeg või tütar"
 
 #: app/Controller/FamilyController.php:206 app/Functions/FunctionsEdit.php:962
 #: app/Module/SourcesTabModule.php:93
@@ -1343,12 +1361,12 @@ msgstr "Lisa uudis"
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:164 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
-msgstr ""
+msgstr "Lisa 'rullik' kui bloki sisu kasvab"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
 msgid "Add a story"
-msgstr ""
+msgstr "Lisa jutustus"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1362,7 +1380,7 @@ msgstr "Lisa naine olemasolevat isikut kasutades"
 #: app/Module/FrequentlyAskedQuestionsModule.php:127
 #: app/Module/FrequentlyAskedQuestionsModule.php:446
 msgid "Add an FAQ item"
-msgstr ""
+msgstr "Lisa KKK punkt"
 
 #: timeline.php:295
 msgid "Add another individual to the chart"
@@ -1370,19 +1388,19 @@ msgstr "Lis mõni muu isik graafikule"
 
 #: app/Functions/FunctionsPrint.php:554
 msgid "Add from clipboard"
-msgstr "Lisa lõikelauast:"
+msgstr "Lisa lõikelaualt"
 
 #: lifespan.php:41 modules_v3/GEDFact_assistant/census/census-edit.php:1178
 msgid "Add individuals"
-msgstr ""
+msgstr "Lisa isikuid"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:158
 msgid "Add links"
-msgstr ""
+msgstr "Lisa viiteid"
 
 #: app/Module/RelativesTabModule.php:228
 msgid "Add marriage details"
-msgstr ""
+msgstr "Lisa abielu detaile"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
@@ -1399,7 +1417,7 @@ msgstr "Lisa veel välju"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr ""
+msgstr "Lisa jutustavaid lugusid sugupuusse kuuluvatele isikutele."
 
 #: admin_trees_manage.php:270
 msgid "Add spaces where long lines were wrapped"
@@ -1436,7 +1454,7 @@ msgstr ""
 
 #: admin_trees_manage.php:518
 msgid "Add unlinked records"
-msgstr ""
+msgstr "Lisa sidumata kirjeid"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1117
@@ -1446,7 +1464,7 @@ msgstr "Lisa vesimärgid pisipiltidele?"
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
 msgid "Add your own text and graphics."
-msgstr ""
+msgstr "Lisa enda tekst ja graafika."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
@@ -1454,7 +1472,7 @@ msgstr "Lisa/Muuda päeviku/uudiste sissekannet"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:2637
 msgid "Add/insert a blank row"
-msgstr ""
+msgstr "Lisa/sisesta tühi rida"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -1475,7 +1493,7 @@ msgstr "Adelaide, Austraalia"
 
 #: admin_users.php:499 admin_users.php:548
 msgid "Administrator"
-msgstr ""
+msgstr "Administraator"
 
 #: setup.php:420 setup.php:422
 msgid "Administrator account"
@@ -1487,7 +1505,7 @@ msgstr "Administraatori kommentaar kasutaja kohta"
 
 #: admin.php:616
 msgid "Administrators"
-msgstr ""
+msgstr "Administraatorid"
 
 #: app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Female pedigree"
@@ -1511,12 +1529,12 @@ msgstr "Lapsendatud mõlema vanema poolt"
 #: app/GedcomCode/GedcomCodeAdop.php:50
 msgctxt "FEMALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Lapsendatud mõlema vanema poolt"
 
 #: app/GedcomCode/GedcomCodeAdop.php:48
 msgctxt "MALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Lapsendatud mõlema vanema poolt"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:61 app/GedcomTag.php:932
@@ -1527,13 +1545,13 @@ msgstr "Lapsendatud isa poolt"
 #: app/GedcomCode/GedcomCodeAdop.php:59 app/GedcomTag.php:928
 msgctxt "FEMALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Lapsendatud isa poolt"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:57 app/GedcomTag.php:924
 msgctxt "MALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Lapsendatud isa poolt"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:70 app/GedcomTag.php:947
@@ -1580,12 +1598,12 @@ msgstr "Lapselapse adopteerimine"
 #: app/GedcomTag.php:888
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Lapselapse adopteerimine"
 
 #: app/GedcomTag.php:897
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Lapselapse adopteerimine"
 
 #: app/GedcomTag.php:877
 msgid "Adoption of a grandson"
@@ -1594,12 +1612,12 @@ msgstr "Lapselapse adopteerimine"
 #: app/GedcomTag.php:886
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Lapselapse adopteerimine"
 
 #: app/GedcomTag.php:895
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Lapselapse adopteerimine"
 
 #: app/GedcomTag.php:904
 msgid "Adoption of a half-brother"
@@ -1607,7 +1625,7 @@ msgstr "Poolvenna lapsendamine"
 
 #: app/GedcomTag.php:908
 msgid "Adoption of a half-sibling"
-msgstr ""
+msgstr "Poolõe lapsendamine"
 
 #: app/GedcomTag.php:906
 msgid "Adoption of a half-sister"
@@ -1615,7 +1633,7 @@ msgstr "Poolõe lapsendamine"
 
 #: app/GedcomTag.php:917
 msgid "Adoption of a sibling"
-msgstr ""
+msgstr "Õe/venna lapsendamine"
 
 #: app/GedcomTag.php:915
 msgid "Adoption of a sister"
@@ -1661,11 +1679,13 @@ msgstr "Aafrika"
 
 #: admin_trees_manage.php:669
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr ""
+msgstr "Peale sugupuu loomist saate importida andmeid GEDCOM failist."
 
 #: login.php:239
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
 msgstr ""
+"Peale sisselogimist valike 'Minu kasutaja' viide 'Minu lehekülg' menüüst ja "
+"täitke parooli väljad, et muuta oma parooli."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:248
@@ -1683,7 +1703,7 @@ msgstr "Vanus lapse sündimisel"
 
 #: admin_trees_config.php:410
 msgid "Age at which to assume an individual is dead"
-msgstr "Vanus mille korral eeldatakse et isik on surnud."
+msgstr "Vanus, mille korral eeldatakse, et isik on surnud"
 
 #: statistics.php:336
 msgid "Age between husband and wife"
@@ -1717,7 +1737,7 @@ msgstr "Uudise vanusega"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1393
 msgid "Age of parents next to child’s birthdate"
-msgstr ""
+msgstr "Vanemate vanus lapse sünnikuupäeva kõrval"
 
 #: statistics.php:518 statisticsplot.php:1116
 msgid "Age related to birth year"
@@ -1794,23 +1814,23 @@ msgstr ""
 
 #: admin_trees_config.php:568
 msgid "All facts and events"
-msgstr ""
+msgstr "Kõik faktid ja sündmused"
 
 #: admin_trees_config.php:1840
 msgid "All family facts"
-msgstr ""
+msgstr "Kõik perekonnafaktid"
 
 #: login.php:394
 msgid "All fields must be completed."
-msgstr ""
+msgstr "Kõik väljad peavad olema täidetud."
 
 #: admin_site_upgrade.php:408
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "Kõikidel failidel on lugemis ja kirjutamis õigused."
 
 #: admin_trees_config.php:1722
 msgid "All individual facts"
-msgstr ""
+msgstr "Kõik individuaalfaktid"
 
 #: calendar.php:209 calendar.php:227 calendar.php:228 calendar.php:231
 #: calendar.php:232 calendar.php:492
@@ -1819,15 +1839,15 @@ msgstr "Kõik inimesed"
 
 #: admin_trees_config.php:559
 msgid "All records"
-msgstr ""
+msgstr "Kõik kirjed"
 
 #: admin_trees_config.php:2047
 msgid "All repository facts"
-msgstr ""
+msgstr "Kõik hoidlate faktid"
 
 #: admin_trees_config.php:1958
 msgid "All source facts"
-msgstr ""
+msgstr "Kõik allikate faktid"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
@@ -1847,7 +1867,7 @@ msgstr "Luba kasutajatel enda teemad valida"
 #. I18N: A site configuration setting
 #: admin_site_config.php:470
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Luba külastajatel uut kasutajat taodelda"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:963
@@ -1858,13 +1878,13 @@ msgstr "Tuntud ka kui"
 #: app/GedcomTag.php:959
 msgctxt "FEMALE"
 msgid "Also known as"
-msgstr ""
+msgstr "Tuntud ka kui"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:955
 msgctxt "MALE"
 msgid "Also known as"
-msgstr ""
+msgstr "Tuntud ka kui"
 
 #: app/Stats.php:6728
 msgid "American Samoa"
@@ -1873,6 +1893,8 @@ msgstr "Samoa Americana"
 #: admin_site_config.php:477
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
 msgstr ""
+"Administraator peab kinnitama uue kasutaja ja valima ligipääsutaseme, enne "
+"seda kasutaja sisse logida ei saa."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
@@ -1882,7 +1904,7 @@ msgstr ""
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
 msgid "An alternative way to display charts."
-msgstr ""
+msgstr "Alternatiivne võimalus jooniste kuvamiseks."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:39
@@ -1892,12 +1914,12 @@ msgstr ""
 #. I18N: Description of the “Login” module
 #: app/Module/LoginBlockModule.php:34
 msgid "An alternative way to login and logout."
-msgstr "Sisse- ja väljalogimise alternatiiv"
+msgstr "Alternatiivne võimalus, kuidas sisse ja välja logida."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
 msgid "An alternative way to select a new theme."
-msgstr ""
+msgstr "Alternatiivne võimalus uue teema valimiseks."
 
 #: app/Functions/FunctionsEdit.php:900
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -1910,17 +1932,17 @@ msgstr ""
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:32
 msgid "An edit menu for individuals, families, sources, etc."
-msgstr ""
+msgstr "Redigeerimismenüü isikutele, perekondadele, allikatele jne."
 
 #: admin_site_upgrade.php:344 admin_site_upgrade.php:366
 #: admin_site_upgrade.php:376 admin_site_upgrade.php:460
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "Faili lahtipakkimisel tekkis viga."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:37
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr ""
+msgstr "Interaktiivne puu, näitab isiku kõiki esivanemaid ja järeltulijaid."
 
 #: setup.php:490
 msgid "An unexpected database error occurred."
@@ -1990,7 +2012,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:169
 msgid "Answer"
-msgstr ""
+msgstr "Vastus"
 
 #: app/Stats.php:6729
 msgid "Antarctica"
@@ -2007,7 +2029,7 @@ msgstr "Apia, Samoa"
 #. I18N: Description of the “Batch update” module
 #: app/Module/BatchUpdateModule.php:86
 msgid "Apply automatic corrections to your genealogy data."
-msgstr "Rakenda oma sugupuu andmetele automaatne parandus"
+msgstr "Rakenda oma sugupuu andmetele automaatne parandus."
 
 #: admin_trees_download.php:172 app/Module/ClippingsCartModule.php:363
 #: app/Module/ClippingsCartModule.php:371
@@ -2019,12 +2041,12 @@ msgstr "Rakenda privaatsusseaded"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2279
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Rakenda need eelistused kõikidele sugupuudele"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2286
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Rakenda need eelistused uutele sugupuudele"
 
 #: admin_users.php:99
 #, php-format
@@ -2033,20 +2055,20 @@ msgstr ""
 
 #: edit_changes.php:209 edit_changes.php:220
 msgid "Approve all changes"
-msgstr ""
+msgstr "Kinnita kõik muudatused"
 
 #: admin_users.php:857
 msgid "Approved"
-msgstr ""
+msgstr "Kinnitatud"
 
 #: admin_users.php:384
 msgid "Approved by administrator"
-msgstr ""
+msgstr "Kinnitatud administraatori poolt"
 
 #: app/Date/CalendarDate.php:314
 msgctxt "Abbreviation for April"
 msgid "Apr"
-msgstr ""
+msgstr "Apr"
 
 #: app/Date/CalendarDate.php:214
 msgctxt "GENITIVE"
@@ -2071,7 +2093,7 @@ msgstr "aprill"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:76
 msgid "Aqua Marine"
-msgstr ""
+msgstr "Aqua Marine"
 
 #: app/Controller/IndividualController.php:176
 #: app/Functions/FunctionsPrintFacts.php:201
@@ -2100,11 +2122,11 @@ msgstr "Kas soovid kindlasti valitud sõnumid kustutada? Kustutatud sõnumit ei 
 #: edituser.php:293
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "Olete kindel, et soovite kustutada “%s”?"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Olete kindel, et soovide eemaldada viited sellele meediaobjektile?"
 
 #: app/Module/FamilyTreeFavoritesModule.php:152
 msgid "Are you sure you want to remove this item from your list of favorites?"
@@ -2113,6 +2135,7 @@ msgstr "Kas soovid kindlasti selle lemmiku nimekirjast eemaldada?"
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
 msgstr ""
+"Olete kindel, et tahate tühistada kõik sellele sugupuule tehtud muudatused?"
 
 #: app/Stats.php:6726
 msgid "Argentina"
@@ -2135,7 +2158,7 @@ msgstr "Argentiina"
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "Arial"
-msgstr ""
+msgstr "Arial"
 
 #: app/Stats.php:6727
 msgid "Armenia"
@@ -2257,16 +2280,16 @@ msgstr "Autor"
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:266
 msgid "Author of last change"
-msgstr ""
+msgstr "Viimase muudatuse autor"
 
 #: admin_users.php:426
 msgid "Automatically approve changes made by this user"
-msgstr ""
+msgstr "Automaatselt kinnita selle kasutaja poolt tehtud muudatused"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:738
 msgid "Automatically create globally unique IDs"
-msgstr "Loo automaatselt globaalselt unikaalsed ID-d."
+msgstr "Loo automaatselt globaalselt unikaalsed ID-d"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1450
@@ -2350,25 +2373,25 @@ msgstr ""
 #: app/Date/JalaliDate.php:95
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:159
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:127
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:63
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #: app/Stats.php:6734
 msgid "Azerbaijan"
@@ -2397,19 +2420,19 @@ msgstr ""
 #: app/Date/JalaliDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:129
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:65
 msgctxt "NOMINATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #: app/Stats.php:6742
 msgid "Bahrain"
@@ -2447,12 +2470,12 @@ msgstr "Baptistlik lapselapse (tütar) ristimine"
 #: app/GedcomTag.php:992
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Lapselapse (tütar) ristimine"
 
 #: app/GedcomTag.php:1001
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Lapselapse (tütar) ristimine"
 
 #: app/GedcomTag.php:981
 msgid "Baptism of a grandson"
@@ -2461,7 +2484,7 @@ msgstr "Baptistlik lapselapse (poeg) ristimine"
 #: app/GedcomTag.php:990
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Lapselapse (poeg) ristimine"
 
 #: app/GedcomTag.php:999
 msgctxt "son’s son"
@@ -2827,7 +2850,7 @@ msgstr "Sünnid sajandi lõikes"
 
 #: app/GedcomCode/GedcomCodeTemp.php:101
 msgid "Bismarck, North Dakota"
-msgstr "Bismarck, North Dakota"
+msgstr "Bismarck, Põhja Dakota"
 
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
@@ -2856,7 +2879,7 @@ msgstr "Sinine meri"
 
 #: message.php:127
 msgid "Body"
-msgstr "Sisu:"
+msgstr "Sisu"
 
 #: app/GedcomCode/GedcomCodeTemp.php:103
 msgid "Bogota, Colombia"
@@ -3183,7 +3206,7 @@ msgstr "Ostja"
 #. I18N: Help text for the "Port number" site configuration setting
 #: admin_site_config.php:348
 msgid "By default, SMTP works on port 25."
-msgstr "Algsätetes töötab SMTP pordis 25"
+msgstr "Algsätetes töötab SMTP pordis 25."
 
 #: app/Module/GoogleMapsModule.php:4554
 msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
@@ -3286,7 +3309,7 @@ msgstr "Cataluña"
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "Kategooriad:"
+msgstr "Kategooriad"
 
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:242
@@ -3410,7 +3433,7 @@ msgstr "Muutused"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:80
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Viimase %s päeva muudatused"
@@ -3815,7 +3838,7 @@ msgstr "Ametlik abielu"
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:38
 msgid "Communicate directly with other users, using private messages."
-msgstr "Võta otse ühendust kasutajatega kasutades privaatsõnumeid"
+msgstr "Võta otse ühendust kasutajatega kasutades privaatsõnumeid."
 
 #: app/Stats.php:6771
 msgid "Comoros"
@@ -3935,7 +3958,7 @@ msgstr ""
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:378
 #: app/Module/ClippingsCartModule.php:714
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr "Konverteeritud UTF-8'st ISO-8859-1 vormingusse."
+msgstr "Konverteeritud UTF-8'st ISO-8859-1 vormingusse"
 
 #: app/Stats.php:6769
 msgid "Cook Islands"
@@ -4290,7 +4313,7 @@ msgstr ""
 
 #: setup.php:366
 msgid "Database and table names"
-msgstr "Andmebaasi ja tabeli nimed."
+msgstr "Andmebaasi ja tabeli nimed"
 
 #: setup.php:273
 msgid "Database connection"
@@ -4471,7 +4494,7 @@ msgstr "Registreerimise kuupäev"
 
 #: app/Module/UserMessagesModule.php:93
 msgid "Date sent"
-msgstr "Saatmise kuupäev:"
+msgstr "Saatmise kuupäev"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:714
@@ -5409,7 +5432,7 @@ msgstr ""
 
 #: app/Tree.php:497
 msgid "Edit this individual and replace their details with your own."
-msgstr "Muuda seda isikut ja asenda detailid enda omadega"
+msgstr "Muuda seda isikut ja asenda detailid enda omadega."
 
 #: admin_users.php:271
 msgid "Edit user"
@@ -5575,7 +5598,7 @@ msgstr "Sisesta Isiku, Perekonna või Allika ID"
 
 #: app/Module/FamilyTreeFavoritesModule.php:221
 msgid "Enter an optional note about this favorite"
-msgstr "Lisa märkus selle lemmiku kohta (pole kohustuslik)."
+msgstr "Lisa märkus selle lemmiku kohta (pole kohustuslik)"
 
 #: addmedia.php:423
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
@@ -6946,7 +6969,7 @@ msgstr "Tere %s …"
 #: login.php:368
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Tere %s …<br>Täname, et registreerisid end kasutajaks"
+msgstr "Tere %s …<br>Täname, et registreerisid end kasutajaks."
 
 #: login.php:299 login.php:538
 msgid "Hello administrator…"
@@ -8116,12 +8139,12 @@ msgstr "Lima, Peruu"
 
 #: app/Module/FamilyTreeNewsModule.php:200
 msgid "Limit"
-msgstr "Piirang:"
+msgstr "Piirang"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:191
 msgid "Limit display by"
-msgstr "Piira uudiseid:"
+msgstr "Piira uudiseid"
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:983
 #: edit_interface.php:1043
@@ -8797,7 +8820,7 @@ msgstr "Meedia ID prefiks"
 #. I18N: Label for search field
 #: find.php:159
 msgid "Media contains"
-msgstr "Meedia sisaldab:"
+msgstr "Meedia sisaldab"
 
 #: admin_media.php:686 admin_media_upload.php:200
 msgid "Media file"
@@ -8970,7 +8993,7 @@ msgstr ""
 #: message.php:191
 #, php-format
 msgid "Message successfully sent to %s"
-msgstr "Sõnumi saatmine kasutajale %s õnnestus."
+msgstr "Sõnumi saatmine kasutajale %s õnnestus"
 
 #: message.php:193
 msgid "Message was not sent"
@@ -9387,7 +9410,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:123 find.php:140
 msgid "Name contains"
-msgstr "Nimi sisaldab:"
+msgstr "Nimi sisaldab"
 
 #: app/GedcomTag.php:606
 msgid "Name in Hebrew"
@@ -9700,8 +9723,8 @@ msgstr "Homme pole pole ühtegi sündmust elava inimese kohta."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Ei leitud sündmusi elavate isikute kohta järgmiseks %s päevaks."
-msgstr[1] ""
+msgstr[0] "Ei leitud sündmusi elava isiku kohta järgmiseks %s päevaks."
+msgstr[1] "Ei leitud sündmusi elavate isikute kohta järgmiseks %s päevaks."
 
 #: app/Controller/FamilyController.php:174
 msgid "No facts for this family."
@@ -9726,7 +9749,7 @@ msgstr "Pole sisseloginud ega anonüümseid kasutajaid"
 
 #: app/Module/GoogleMapsModule.php:193
 msgid "No map data for this individual"
-msgstr "Selle isiku kohta puudub kaardiinfo."
+msgstr "Selle isiku kohta puudub kaardiinfo"
 
 #: admin_site_merge.php:237 admin_site_merge.php:284 admin_site_merge.php:330
 msgid "No matching facts found"
@@ -9901,7 +9924,7 @@ msgstr "Ei leitud midagi puhastamiseks"
 
 #: app/Module/BatchUpdateModule.php:241
 msgid "Nothing found."
-msgstr "Ei leitud midagi"
+msgstr "Ei leitud midagi."
 
 #: app/Date/CalendarDate.php:321
 msgctxt "Abbreviation for November"
@@ -9952,7 +9975,7 @@ msgstr "Lasteta perekondade arv"
 #: app/Module/ClippingsCartModule.php:220
 #: app/Module/ClippingsCartModule.php:238
 msgid "Number of generations"
-msgstr "Põlvkondade arv:"
+msgstr "Põlvkondade arv"
 
 #: app/Module/FamilyTreeNewsModule.php:196
 msgid "Number of items"
@@ -10344,7 +10367,7 @@ msgstr "Paraguai"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:2097
 #: modules_v3/GEDFact_assistant/census/census-edit.php:2099
 msgid "Parents"
-msgstr "Vanemad:"
+msgstr "Vanemad"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -10446,7 +10469,7 @@ msgstr "Filipiinid"
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:678
 msgid "Phone"
-msgstr "Telef."
+msgstr "Telefon"
 
 #. I18N: gedcom tag FONE
 #: app/GedcomTag.php:488
@@ -10532,7 +10555,7 @@ msgstr "Asukohakontroll"
 #. I18N: Label for search field
 #: find.php:179
 msgid "Place contains"
-msgstr "Koht sisaldab:"
+msgstr "Koht sisaldab"
 
 #: app/Module/TopPageViewsModule.php:176
 msgid "Place counts before or after name?"
@@ -10717,7 +10740,7 @@ msgstr "Palun sisesta sobiv e-maili aadress."
 #: app/Module/CensusAssistantModule.php:270 find.php:102 search.php:36
 #: search.php:48
 msgid "Please enter more than one character."
-msgstr "Sisesta rohkem kui üks sümbol"
+msgstr "Sisesta rohkem kui üks sümbol."
 
 #: message.php:96
 msgid "Please enter some message text before sending."
@@ -11092,7 +11115,7 @@ msgstr ""
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:39
 msgid "Random images from the current family tree."
-msgstr "Suvalised pildid sellest perepuust"
+msgstr "Suvalised pildid sellest perepuust."
 
 #: app/Controller/FamilyController.php:102
 #: app/Module/RelativesTabModule.php:281 edit_interface.php:1803
@@ -11386,7 +11409,7 @@ msgstr "Hoidla ID prefiks"
 #. I18N: Label for search field
 #: find.php:198
 msgid "Repository contains"
-msgstr "Hoidla sisaldab:"
+msgstr "Hoidla sisaldab"
 
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
@@ -11600,7 +11623,7 @@ msgstr "Santiago, Tšiili"
 
 #: app/GedcomCode/GedcomCodeTemp.php:289
 msgid "Santo Domingo, Dominican Republic"
-msgstr "Santo Domingo, Dominikaani vb."
+msgstr "Santo Domingo, Dominikaani Vabariik"
 
 #: app/GedcomCode/GedcomCodeTemp.php:305
 msgid "Sao Paulo, Brazil"
@@ -11769,7 +11792,7 @@ msgstr ""
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "Valige diagrammi tüüp:"
+msgstr "Valige diagrammi tüüp"
 
 #: edit_interface.php:1245
 msgid "Select events"
@@ -12055,7 +12078,7 @@ msgstr "Jagatud märkused"
 #. I18N: Label for search field
 #: find.php:218
 msgid "Shared note contains"
-msgstr "Jagatud märge sisaldab:"
+msgstr "Jagatud märge sisaldab"
 
 #: app/Functions/FunctionsPrintLists.php:1088 app/Theme/AbstractTheme.php:1447
 #: notelist.php:33 notelist.php:37 search.php:102
@@ -12209,7 +12232,7 @@ msgstr "Näita kõiki märkusi"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1599
 msgid "Show all notes and source references on notes and sources tabs"
-msgstr "Näita kõiki märkmeid ja allikate viiteid märkmete ja allikate kaartidel."
+msgstr "Näita kõiki märkmeid ja allikate viiteid märkmete ja allikate kaartidel"
 
 #: placelist.php:239
 msgid "Show all places in a list"
@@ -12499,7 +12522,9 @@ msgstr ""
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:85
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr "Näita kohtade ja  sündmuste asupaika kasutades Google Maps™ kaardistamisteenust"
+msgstr ""
+"Näita kohtade ja  sündmuste asupaika kasutades Google Maps™ "
+"kaardistamisteenust."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:180
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
@@ -12803,7 +12828,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:237
 msgid "Source contains"
-msgstr "Allikas sisaldab:"
+msgstr "Allikas sisaldab"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2222 modules_v3/fact_sources/report.xml:6
@@ -13009,7 +13034,7 @@ msgstr ""
 
 #: app/Module/UserMessagesModule.php:92 message.php:119
 msgid "Subject"
-msgstr "Teema:"
+msgstr "Teema"
 
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:810
@@ -13516,7 +13541,7 @@ msgstr ""
 
 #: mediafirewall.php:38
 msgid "The media file was not found in this family tree."
-msgstr "Meediumit ei leitud sellest perepuust"
+msgstr "Meediumit ei leitud sellest perepuust."
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13596,7 +13621,7 @@ msgstr ""
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr "Lõikeluda kopeeritud kirje"
+msgstr "Lõikeluda kopeeritud kirje."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:168
@@ -13752,15 +13777,15 @@ msgstr ""
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:126
 msgid "There are no facts for this individual."
-msgstr "Selle isiku kohta puuduvad faktid"
+msgstr "Selle isiku kohta puuduvad faktid."
 
 #: app/Module/MediaTabModule.php:76
 msgid "There are no media objects for this individual."
-msgstr "Selle isiku kohta pole meedia objekte sisestatud"
+msgstr "Selle isiku kohta pole meedia objekte sisestatud."
 
 #: app/Module/NotesTabModule.php:83
 msgid "There are no notes for this individual."
-msgstr "Selle isiku kohta pole märkusi sisestatud"
+msgstr "Selle isiku kohta pole märkusi sisestatud."
 
 #: admin_site_upgrade.php:105
 msgid "There are no pending changes."
@@ -13772,7 +13797,7 @@ msgstr ""
 
 #: app/Module/SourcesTabModule.php:81
 msgid "There are no source citations for this individual."
-msgstr "Selle isiku kohta pole allikaviiteid sisestatud"
+msgstr "Selle isiku kohta pole allikaviiteid sisestatud."
 
 #: app/Module/ReviewChangesModule.php:87
 #: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1855
@@ -13783,8 +13808,8 @@ msgstr ""
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Viimase %s päeva jooksul pole ühtegi muudatust toimunud."
+msgstr[1] "Viimaste %s päevade jooksul pole ühtegi muudatust toimunud."
 
 #: login.php:245
 #, php-format
@@ -15209,7 +15234,7 @@ msgstr "Veracruz, Mehhiko"
 
 #: login.php:326 login.php:515
 msgid "Verification code"
-msgstr "Kontrollkood:"
+msgstr "Kontrollkood"
 
 #: admin_users.php:856
 msgid "Verified"
@@ -15304,7 +15329,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_users.php:444 edituser.php:279
 msgid "Visible to other users when online"
-msgstr "Veebilehel viibimine teistele kasutajatele nähtav."
+msgstr "Veebilehel viibimine teistele kasutajatele nähtav"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:193 admin_users.php:39 admin_users.php:514
