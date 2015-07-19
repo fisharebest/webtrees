@@ -30,7 +30,7 @@ require './includes/session.php';
 $controller = new PageController;
 $controller
 	->restrictAccess(Auth::isManager($WT_TREE))
-	->setPageTitle(I18N::translate('Check for errors'))
+	->setPageTitle(I18N::translate('Check for errors') . ' — ' . $WT_TREE->getTitleHtml())
 	->pageHeader();
 
 // We need to work with raw GEDCOM data, as we are looking for errors
@@ -119,12 +119,26 @@ $RECORD_LINKS = array(
 
 $errors = false;
 
-echo '<h1>', $controller->getPageTitle(), '</h1>';
-echo '<fieldset><legend>', I18N::translate('Types of error'), '</legend>';
-echo '<p class="ui-state-error">', I18N::translate('This may cause a problem for webtrees.'), '</p>';
-echo '<p class="ui-state-highlight">', I18N::translate('This may cause a problem for other applications.'), '</p>';
-echo '<p class="warning-bad-data">', I18N::translate('This may be a mistake in your data.'), '</p>';
-echo '</fieldset>';
+?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
+<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
+
+<ul class="list-group">
+	<li class="list-group-item"><strong><?php echo I18N::translate('Types of error'); ?></strong></li>
+	<li class="list-group-item list-group-item-danger"><?php echo  I18N::translate('This may cause a problem for webtrees.'); ?></li>
+	<li class="list-group-item list-group-item-warning"><?php echo  I18N::translate('This may cause a problem for other applications.'); ?></li>
+	<li class="list-group-item list-group-item-info"><?php echo  I18N::translate('This may be a mistake in your data.'); ?></li>
+</ul>
+
+<ul class="list-group">
+	<li class="list-group-item"><strong><?php echo I18N::translate('GEDCOM errors'); ?></strong></li>
+
+<?php
 
 // Generate lists of all links
 $all_links   = array();
@@ -193,6 +207,12 @@ foreach ($all_links as $xref1 => $links) {
 	}
 }
 
+if (!$errors) {
+	echo '<li class="list-group-item">', I18N::translate('No errors have been found.'), '</li>';
+}
+
+echo '</ul>';
+
 /**
  * Create a message linking one record to another.
  *
@@ -246,7 +266,7 @@ function error($message) {
 	global $errors;
 	$errors = true;
 
-	return '<p class="ui-state-error">' . $message . '</p>';
+	return '<li class="list-group-item list-group-item-danger">' . $message . '</li>';
 }
 
 /**
@@ -260,9 +280,5 @@ function warning($message) {
 	global $errors;
 	$errors = true;
 
-	return '<p class="ui-state-highlight">' . $message . '</p>';
-}
-
-if (!$errors) {
-	echo '<p>', I18N::translate('No errors have been found.'), '</p>';
+	return '<li class="list-group-item list-group-item-warning">' . $message . '</li>';
 }

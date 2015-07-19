@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-07-16 18:36+0100\n"
-"Last-Translator: resist <bvank@outlook.com>\n"
+"PO-Revision-Date: 2015-07-16 18:39+0100\n"
+"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -8472,7 +8472,7 @@ msgstr "Linkek szerkesztése"
 #. I18N: Menu entry
 #: admin_media.php:583 app/Theme/AdministrationTheme.php:170
 msgid "Manage media"
-msgstr ""
+msgstr "Médiakezelés"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:542
@@ -16627,17 +16627,17 @@ msgstr "volt férj"
 #: app/Functions/Functions.php:732
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr "volt társ"
+msgstr "volt élettárs"
 
 #: app/Functions/Functions.php:714
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "volt élettárs"
 
 #: app/Functions/Functions.php:750
 msgctxt "MALE/FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "volt élettárs"
 
 #: app/Functions/Functions.php:755
 msgid "ex-spouse"
@@ -19515,7 +19515,7 @@ msgstr "név szerinti rendezés"
 #. I18N: An option in a list-box
 #: medialist.php:105
 msgid "sort by title"
-msgstr "sorba rendezés cím alapján"
+msgstr "rendezés cím alapján"
 
 #: app/Module/GoogleMapsModule.php:4038
 msgid "south"

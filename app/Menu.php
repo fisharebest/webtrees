@@ -244,7 +244,7 @@ class Menu {
 				$submenu->parentmenu = $sub_menu_id;
 				$html .= $submenu->getMenu();
 			}
-			$html .= '</div></div>';
+			$html .= '</div>';
 		}
 
 		return '<div id="' . $menu_id . '" class="' . $this->menuclass . '">' . $html . '</div>';
