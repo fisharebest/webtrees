@@ -388,6 +388,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
 		$controller = new PageController;
 		$controller
+			->restrictAccess(Auth::isAdmin())
 			->setPageTitle(I18N::translate('Frequently asked questions'))
 			->pageHeader();
 
