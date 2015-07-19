@@ -2489,7 +2489,7 @@ msgstr "Lapselapse (poeg) ristimine"
 #: app/GedcomTag.php:999
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Lapselapse (poeg) ristimine"
 
 #: app/GedcomTag.php:1008
 msgid "Baptism of a half-brother"
@@ -2602,11 +2602,11 @@ msgstr "Billings, Montana"
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
 msgid "Binary data object"
-msgstr ""
+msgstr "Binaarne andmeobjekt"
 
 #: app/Functions/FunctionsPrint.php:473
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Birmingham, Alabama"
@@ -2780,17 +2780,17 @@ msgstr "Lapselapse sünd"
 
 #: app/GedcomTag.php:1041
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "Lapselapse sünd"
 
 #: app/GedcomTag.php:1050
 msgctxt "daughter’s daughter"
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "Lapselapse sünd"
 
 #: app/GedcomTag.php:1059
 msgctxt "son’s daughter"
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "Lapselapse sünd"
 
 #: app/GedcomTag.php:1039
 msgid "Birth of a grandson"
@@ -2799,7 +2799,7 @@ msgstr "Lapselapse sünd"
 #: app/GedcomTag.php:1048
 msgctxt "daughter’s son"
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Lapselapse sünd"
 
 #: app/GedcomTag.php:1057
 msgctxt "son’s son"
