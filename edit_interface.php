@@ -2412,6 +2412,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		case 'add_spouse_to_individual_action':
 			$name_fields = $surname_tradition->newSpouseNames($indi_name, $gender) + $name_fields;
 			break;
+		case 'add_unlinked_indi_action':
 		case 'update':
 			if ($surname_tradition->hasSurnames()) {
 				$name_fields['NAME'] = '//';

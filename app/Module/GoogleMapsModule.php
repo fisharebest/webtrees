@@ -54,6 +54,11 @@ use PDO;
  * Hence, use "Google Maps™ mapping service" where appropriate.
  */
 class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, ModuleTabInterface {
+	// How to update the database schema for this module
+	const SCHEMA_TARGET_VERSION   = 6;
+	const SCHEMA_SETTING_NAME     = 'GM_SCHEMA_VERSION';
+	const SCHEMA_MIGRATION_PREFIX = '\Fisharebest\Webtrees\Module\GoogleMaps\Schema';
+
 	/** @var Individual[] of ancestors of root person */
 	private $ancestors = array();
 
@@ -62,18 +67,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 	/** @var int Number of nodes in the chart */
 	private $treesize;
-
-	/**
-	 * Create a new module.
-	 *
-	 * @param string $directory Where is this module installed
-	 */
-	public function __construct($directory) {
-		parent::__construct($directory);
-
-		// Create/update the database tables.
-		Database::updateSchema('\Fisharebest\Webtrees\Module\GoogleMaps\Schema', 'GM_SCHEMA_VERSION', 6);
-	}
 
 	/** {@inheritdoc} */
 	public function getTitle() {
@@ -92,6 +85,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @param string $mod_action
 	 */
 	public function modAction($mod_action) {
+		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
+
 		switch ($mod_action) {
 		case 'admin_config':
 			$this->config();
@@ -122,6 +117,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 	/** {@inheritdoc} */
 	public function getConfigLink() {
+		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
+
 		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
 
@@ -152,6 +149,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	/** {@inheritdoc} */
 	public function getTabContent() {
 		global $controller;
+
+		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
 
 		if ($this->checkMapData($controller->record)) {
 			ob_start();
@@ -2608,6 +2607,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 */
 	public function createMap($placelevels) {
 		global $level, $levelm, $plzoom, $controller, $WT_TREE;
+
+		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
 
 		$STREETVIEW = $this->getSetting('GM_USE_STREETVIEW');
 		$parent     = Filter::getArray('parent');

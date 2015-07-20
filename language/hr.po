@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-07-16 16:05+0100\n"
+"PO-Revision-Date: 2015-07-19 14:24+0100\n"
 "Last-Translator: Milivoj Bartoš <mic@mikrotakt.com>\n"
 "Language-Team: Croatian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hr/>\n"
@@ -194,7 +194,7 @@ msgstr "%H:%i:%s"
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/I18N.php:160
 msgid "%j %F %Y"
-msgstr "%j. %F %Y."
+msgstr "%j. %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6995
@@ -727,6 +727,17 @@ msgstr "9."
 #: admin_trees_config.php:743
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
 msgstr ""
+"<b>GUID</b> u ovom kontekstu je kratica za \"Globally Unique ID\".<br><br>"
+"GUID je namijenjen da pomogne identificirati svakog pojedinca u svrhu "
+"ponovljivosti, tako da centralne organizacije kao što su Family History "
+"Center of the LDS crkve u Salt Lake City, ili neki kompatibilni program "
+"pokrenut na vašem serveru, može odrediti da li se radi o istom pojedincu bez "
+"obzira na podatak u GEDCOM datoteci. Cilj Family History Centra je da ima "
+"centralnu bazu genealoških podataka i da ih nudi kroz svoje web servise. To "
+"omogućava bilo kojoj aplikaciji pristup tim podacima i ažuriranje sa "
+"njihovim podacima.<br><br>Ako nemate namjeru dijeliti podatke svoje GEDCOM "
+"datoteke, tada nemate potrebu da webtrees kreira te GUID brojeve; iako, ako "
+"to učinite, neće škoditi osim što će malo povećati vašu GEDCOM datoteku."
 
 #: admin_trees_manage.php:709
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -801,7 +812,8 @@ msgstr "Pozdravna poruka za posjetitelja."
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need moderator approval, and email notifications."
-msgstr "Popis promjena koje trebaju odobrenje moderatora, i e-pošta obavijesti."
+msgstr ""
+"Popis promjena koje trebaju odobrenje upravitelja, i e-pošta obavijesti."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -8427,7 +8439,7 @@ msgstr "Uređivanje medija"
 #: app/Module/ClippingsCartModule.php:366
 #: app/Module/ClippingsCartModule.php:700
 msgid "Manager"
-msgstr "Upravitelj"
+msgstr "Direktor"
 
 #: admin.php:629
 msgid "Managers"
@@ -9102,7 +9114,7 @@ msgstr "Upravitelj"
 
 #: admin.php:642
 msgid "Moderators"
-msgstr ""
+msgstr "Upravitelji"
 
 #: admin_modules.php:152
 msgid "Module"
@@ -9842,7 +9854,10 @@ msgstr ""
 
 #: admin_users.php:429
 msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
-msgstr "Normalno, svaka promjena napravljena na obiteljskom stablu treba biti odobrena od moderatora. Ova opcija omogućava korisniku da napravi promjene bez odobrenja moderatora."
+msgstr ""
+"Normalno, svaka promjena napravljena na obiteljskom stablu treba biti "
+"odobrena od upravitelja. Ova opcija omogućava korisniku da napravi promjene "
+"bez odobrenja upravitelja."
 
 #: app/Stats.php:6905
 msgid "North Korea"
@@ -13874,7 +13889,10 @@ msgstr "Ovaj račun nije provjeren. Molimo provjerite vašu e-poštu da li ste d
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Ovaj blok prikazuje popis uređivanja zapisa sa promjenama na čekanju koje treba odobriti administrator. Također generira dnevnu e-poštu moderatorima kada postoje promjene na čekanju."
+msgstr ""
+"Ovaj blok prikazuje popis uređivanja zapisa sa promjenama na čekanju koje "
+"treba odobriti administrator. Također generira dnevnu e-poštu upraviteljima "
+"kada postoje promjene na čekanju."
 
 #: admin_users.php:447 edituser.php:285
 msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
@@ -13903,7 +13921,7 @@ msgstr "Ova obitelj ne postoji ili vi nemate dozvolu za pregled."
 
 #: family.php:50
 msgid "This family has been deleted.  The deletion will need to be reviewed by a moderator."
-msgstr "Ova obitelj je obrisana. Brisanje treba biti odobreno od moderatora."
+msgstr "Ova obitelj je obrisana. Brisanje treba biti odobreno od upravitelja."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: family.php:41
@@ -13913,7 +13931,7 @@ msgstr "Ova obitelj je obrisana. Trebate pregledati brisanje i %1$s ili %2$s."
 
 #: family.php:68
 msgid "This family has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Ova obitelj je promjenjena. Promjene treba pregledati moderator."
+msgstr "Ova obitelj je promijenjena. Promjene treba pregledati upravitelj."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: family.php:59
@@ -13974,7 +13992,7 @@ msgstr "Ova osoba ne postoji ili vi nemate dozvolu da ju vidite."
 
 #: individual.php:60
 msgid "This individual has been deleted.  The deletion will need to be reviewed by a moderator."
-msgstr "Ova osoba je obrisana. Brisanje zahtjeva pregled od moderatora."
+msgstr "Ova osoba je obrisana. Brisanje zahtjeva pregled upravitelja."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: individual.php:51
@@ -13984,7 +14002,7 @@ msgstr "Ova osoba je obrisana. Vi je trebate pregledati i zatim %1$s ili %2$s."
 
 #: individual.php:78
 msgid "This individual has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Ova osoba je promijenjena. Promjena zahtjeva pregled od moderatora."
+msgstr "Ova osoba je promijenjena. Promjena zahtjeva pregled upravitelja."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: individual.php:69
@@ -14172,7 +14190,9 @@ msgstr "Ovaj medijski objekt je obrisan. Trebate pregledati brisanje i %1$s ili 
 
 #: mediaviewer.php:69
 msgid "This media object has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Ovaj medijski objekt je promijenjen. Promjena treba biti pregledana od moderatora."
+msgstr ""
+"Ovaj medijski objekt je promijenjen. Promjena treba biti pregledana od "
+"upravitelja."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: mediaviewer.php:60
@@ -14208,7 +14228,7 @@ msgstr "Ova bilješka ne postoji ili vi nemate dozvolu da ju vidite."
 
 #: note.php:45
 msgid "This note has been deleted.  The deletion will need to be reviewed by a moderator."
-msgstr "Ova bilješka je obrisana. Brisanje treba pregledati moderator."
+msgstr "Ova bilješka je obrisana. Brisanje treba pregledati upravitelj."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: note.php:36
@@ -14218,7 +14238,7 @@ msgstr "Ova bilješka je obrisana. Trebate pregledati brisanje i %1$s ili %2$s g
 
 #: note.php:63
 msgid "This note has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Ova bilješka je promijenjena. Promjene treba pregledati moderator."
+msgstr "Ova bilješka je promijenjena. Promjene treba pregledati upravitelj."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: note.php:54
@@ -14306,7 +14326,9 @@ msgstr "Ovo mjesto čuvanja ne postoji ili vi nemate dozvolu vidjeti ga."
 
 #: repo.php:44
 msgid "This repository has been deleted.  The deletion will need to be reviewed by a moderator."
-msgstr "Ovo mjesto čuvanja je obrisano. Brisanje treba biti pregledano od moderatora."
+msgstr ""
+"Ovo mjesto čuvanja je obrisano. Brisanje treba biti pregledano od "
+"upravitelja."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: repo.php:35
@@ -14316,7 +14338,9 @@ msgstr "Ovo mjesto čuvanja je obrisano. Trebate pregledati brisanje i %1$s ili 
 
 #: repo.php:62
 msgid "This repository has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Ovo mjesto čuvanja je promijenjeno. Promjena treba biti pregledana od moderatora."
+msgstr ""
+"Ovo mjesto čuvanja je promijenjeno. Promjena treba biti pregledana od "
+"upravitelja."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: repo.php:53
@@ -14330,7 +14354,10 @@ msgstr "Ova prava imaju sve dozvole prava urednika, plus dozvolu za odobriti/odb
 
 #: admin_users.php:551
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr "Ova prava imaju sve dozvole prava upravitelja u svim obiteljskim stablima, plus dozvolu promjena postavki/konfiguracije web stranica, korisnika i modula."
+msgstr ""
+"Ova prava imaju sve dozvole prava direktora u svim obiteljskim stablima, "
+"plus dozvolu promjena postavki/konfiguracije web stranica, korisnika i "
+"modula."
 
 #: admin_users.php:531
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
@@ -14365,7 +14392,7 @@ msgstr "Ovaj izvor ne postoji ili vi nemate dopuštenje vidjeti ga."
 
 #: source.php:51
 msgid "This source has been deleted.  The deletion will need to be reviewed by a moderator."
-msgstr "Ovaj izvor je obrisan. Brisanje treba biti pregledano od moderatora."
+msgstr "Ovaj izvor je obrisan. Brisanje treba biti pregledano od upravitelja."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: source.php:42
@@ -14375,7 +14402,8 @@ msgstr "Ovaj izvor je obrisan. Trebate pregledati što je obrisano i %1$s ili %2
 
 #: source.php:69
 msgid "This source has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Ovaj izvor je promijenjen. Promjene trebaju biti pregledane od moderatora."
+msgstr ""
+"Ovaj izvor je promijenjen. Promjene trebaju biti pregledane od upravitelja."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: source.php:60
@@ -15518,7 +15546,10 @@ msgstr "Po slanju ove poruke, dobiti ćete kopiju poruke na adresu e-pošte koju
 
 #: admin_users.php:592
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see."
-msgstr "Kada je korisnik pojedinac u obiteljskom stablu i ima prava člana, urednika ili moderatora, možete mu onemogućiti pristup detaljima udaljenih živih rođaka. Upišite broj odnosa koliko daleko korisnik može vidjeti."
+msgstr ""
+"Kada je korisnik pojedinac u obiteljskom stablu i ima prava člana, urednika "
+"ili upravitelja, možete mu onemogućiti pristup detaljima udaljenih živih "
+"rođaka. Upišite broj odnosa koliko daleko korisnik može vidjeti."
 
 #: admin_pgv_to_wt.php:162
 msgid "Where is your PhpGedView installation?"
@@ -18537,7 +18568,7 @@ msgstr "djevojačko prezime"
 
 #: admin_trees_config.php:476
 msgid "managers"
-msgstr "upravitelji"
+msgstr "direktori"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
