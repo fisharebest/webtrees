@@ -27,6 +27,11 @@ use Fisharebest\Webtrees\Theme;
  * Class FamilyTreeNewsModule
  */
 class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterface {
+	// How to update the database schema for this module
+	const SCHEMA_TARGET_VERSION   = 3;
+	const SCHEMA_SETTING_NAME     = 'NB_SCHEMA_VERSION';
+	const SCHEMA_MIGRATION_PREFIX = '\Fisharebest\Webtrees\Module\FamilyTreeNews\Schema';
+
 	/**
 	 * Create a new module.
 	 *
@@ -36,7 +41,8 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 		parent::__construct($directory);
 
 		// Create/update the database tables.
-		Database::updateSchema('\Fisharebest\Webtrees\Module\FamilyTreeNews\Schema', 'NB_SCHEMA_VERSION', 3);
+		// NOTE: if we want to set any module-settings, we'll need to move this.
+		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
 	}
 
 	/**

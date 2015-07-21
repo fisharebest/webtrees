@@ -604,6 +604,7 @@ class Tree {
 			}
 		}
 		fwrite($stream, $buffer . '0 TRLR' . WT_EOL);
+		$stmt->closeCursor();
 	}
 
 	/**

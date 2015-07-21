@@ -826,13 +826,11 @@ class FunctionsEdit {
 							break;
 					}
 					if (strpos($bdm, 'B') !== false) {
-						echo '&nbsp;<input type="checkbox" name="SOUR_INDI" ', $level1_checked, ' value="1">';
-						echo I18N::translate('Individual');
+						echo ' <label><input type="checkbox" name="SOUR_INDI" ', $level1_checked, ' value="1">', I18N::translate('Individual'), '</label>';
 						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 							foreach ($matches[1] as $match) {
 								if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
-									echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '" ', $level2_checked, ' value="1">';
-									echo GedcomTag::getLabel($match);
+									echo ' <label><input type="checkbox" name="SOUR_', $match, '" ', $level2_checked, ' value="1">', GedcomTag::getLabel($match), '</label>';
 								}
 							}
 						}
@@ -841,19 +839,16 @@ class FunctionsEdit {
 						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 							foreach ($matches[1] as $match) {
 								if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
-									echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">';
-									echo GedcomTag::getLabel($match);
+									echo ' <label><input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">', GedcomTag::getLabel($match), '</label>';
 								}
 							}
 						}
 					}
 					if (strpos($bdm, 'M') !== false) {
-						echo '&nbsp;<input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="1">';
-						echo I18N::translate('Family');
+						echo ' <label><input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="1">', I18N::translate('Family'), '</label>';
 						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 							foreach ($matches[1] as $match) {
-								echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">';
-								echo GedcomTag::getLabel($match);
+								echo ' <label><input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">', GedcomTag::getLabel($match), '</label>';
 							}
 						}
 					}

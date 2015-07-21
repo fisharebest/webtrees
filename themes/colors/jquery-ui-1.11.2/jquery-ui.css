@@ -919,9 +919,9 @@ body .ui-tooltip {
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
-	border: 1px solid #fcefa1;
-	background: #fbf9ee url("images/ui-bg_glass_55_fbf9ee_1x400.png") 50% 50% repeat-x;
-	color: #363636;
+    background: #fbf5d0 url("images/ui-bg_flat_55_fbf5d0_40x100.png") repeat-x scroll 50% 50%;
+    border: 1px solid #f9dd34;
+    color: #363636;
 }
 .ui-state-highlight a,
 .ui-widget-content .ui-state-highlight a,

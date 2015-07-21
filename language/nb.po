@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-05-14 15:00+0100\n"
-"Last-Translator: H R Nilsen <hrnwebtrees@yahoo.com>\n"
-"Language-Team: Norwegian Bokmål <http://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
+"PO-Revision-Date: 2015-07-12 11:45+0100\n"
+"Last-Translator: Eyolf Østrem <eyolf@oestrem.com>\n"
+"Language-Team: Norwegian Bokmål "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -311,22 +312,22 @@ msgstr[1] "%s personer er private."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s person med begivenheter mellom %s og %s"
+msgstr[1] "%s personer med begivenheter mellom %s og %s"
 
 #: app/Controller/LifespanController.php:242
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s person med begivenheter i %s"
+msgstr[1] "%s personer med begivenheter i %s"
 
 #: app/Controller/LifespanController.php:235
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s person med begivenheter i %s mellom %s og %s"
+msgstr[1] "%s personer med begivenheter i %s mellom %s og %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:117
@@ -2013,12 +2014,12 @@ msgstr "Anvend innstillinger for personvern"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2279
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Bruk disse innstillingene for alle slektstrærne"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2286
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Bruk disse innstillingene for nye slektstrær"
 
 #: admin_users.php:99
 #, php-format
@@ -7790,7 +7791,7 @@ msgstr "Behold medieobjekt"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:59 edit_interface.php:2291
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:550
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Behold tidligere data for \"sist endret\""
 
 #: app/Stats.php:6840
 msgid "Kenya"
@@ -11775,7 +11776,7 @@ msgstr "Velg flagg"
 
 #: lifespan.php:38
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Velg personer etter sted eller dato"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:41
@@ -13558,11 +13559,11 @@ msgstr "Passordene stemmer ikke overens."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Innstillingene er blitt oppdatert for samtlige slektstrærne."
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Innstillingene for nye slektstrær er blitt oppdatert."
 
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
@@ -15427,6 +15428,10 @@ msgstr "Vest-Sahara"
 #: admin_trees_config.php:2261
 msgid "When a record is edited, the user and timestamp are recorded.  Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data.  This option controls whether this feature is selected by default."
 msgstr ""
+"Når en post endres, registreres brukeren og tidspunktet. Noen ganger vil man "
+"foretrekke å beholde \"sist endret\"-informasjonen, for eksempel når man "
+"gjør små endringer i andres data. Dette alternativet avgjør om funksjonen er "
+"valgt som standard."
 
 #: admin_users.php:387
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -15440,6 +15445,9 @@ msgstr "ID-feltet kan ikke stå tomt når det legges til en lenke."
 #: admin_trees_config.php:2227
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death).  This option controls whether records or facts will be selected by default."
 msgstr ""
+"Når nye nære slektninger innføres, kan kildesitater føyes til poster ("
+"personer og familier) eller til fakta og begivenheter (fødsel, vielse og død)"
+". Dette alternativet avgjør om poster eller fakta er forvalgt."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:859
@@ -15607,7 +15615,7 @@ msgstr "Du (eller noen som utgir seg for deg) har bedt om brukerkonto på %1$s v
 
 #: logout.php:24
 msgid "You are logged out."
-msgstr ""
+msgstr "Du er logget ut."
 
 #: login.php:271 message.php:57
 msgid "You are not allowed to send messages that contain external links."

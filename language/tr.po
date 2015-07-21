@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-07-07 15:01+0100\n"
+"PO-Revision-Date: 2015-07-16 17:14+0100\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
-"Language-Team: Turkish <http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
+"Language-Team: Turkish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1633,7 +1634,10 @@ msgstr "Aile ağacını oluşturduktan sonra, GEDCOM dosya verilerini yükleyebi
 
 #: login.php:239
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
-msgstr "Giriş yaptıktan sonra «Benim sayfam» menüsü altında «Benim profilim» bağlantısını tıklayın ve şifrenizi değiştirmek için her iki alana yeni şifrenizi girerek kaydedin."
+msgstr ""
+"Giriş yaptıktan sonra «Benim sayfam» menüsü altında «Hesabım» bağlantısını "
+"tıklayın ve şifrenizi değiştirmek için her iki alana yeni şifrenizi girerek "
+"kaydedin."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:248
@@ -3009,7 +3013,7 @@ msgstr "Kızının mezarı"
 
 #: app/GedcomTag.php:1164
 msgid "Burial of a father"
-msgstr "Babanın mezarı"
+msgstr "Babanın defni"
 
 #: app/GedcomTag.php:1105 app/GedcomTag.php:1114 app/GedcomTag.php:1123
 msgid "Burial of a grandchild"
@@ -3069,7 +3073,7 @@ msgstr "Üvey-kız kardeşin mezarı"
 
 #: app/GedcomTag.php:1182
 msgid "Burial of a husband"
-msgstr "Kocanın mezarı"
+msgstr "Kocasının defni"
 
 #: app/GedcomTag.php:1146
 msgid "Burial of a maternal grandfather"
@@ -3085,11 +3089,11 @@ msgstr "Anne tarafı büyük ebeveynin mezarı"
 
 #: app/GedcomTag.php:1166
 msgid "Burial of a mother"
-msgstr "Annenin mezarı"
+msgstr "Annenin defni"
 
 #: app/GedcomTag.php:1168
 msgid "Burial of a parent"
-msgstr "Ebeveynin mezarı"
+msgstr "Ebeveynin defni"
 
 #: app/GedcomTag.php:1137
 msgid "Burial of a paternal grandfather"
@@ -3105,23 +3109,23 @@ msgstr "Baba tarafı büyük ebeveynin mezarı"
 
 #: app/GedcomTag.php:1177
 msgid "Burial of a sibling"
-msgstr "Kardeşin mezarı"
+msgstr "Kardeşin defni"
 
 #: app/GedcomTag.php:1175
 msgid "Burial of a sister"
-msgstr "Kız kardeşin mezarı"
+msgstr "Kız kardeşin defni"
 
 #: app/GedcomTag.php:1092
 msgid "Burial of a son"
-msgstr "Oğlunun mezarı"
+msgstr "Oğlunun defni"
 
 #: app/GedcomTag.php:1186
 msgid "Burial of a spouse"
-msgstr "Eşin mezarı"
+msgstr "Eşinin defni"
 
 #: app/GedcomTag.php:1184
 msgid "Burial of a wife"
-msgstr "Hanımın mezarı"
+msgstr "Karısının defni"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
@@ -4654,7 +4658,7 @@ msgstr "Kız torunu ölümü"
 
 #: app/GedcomTag.php:1388
 msgid "Death of a grandfather"
-msgstr "Büyükbabanın ölümü"
+msgstr "Dedenin ölümü"
 
 #: app/GedcomTag.php:1390
 msgid "Death of a grandmother"
@@ -4708,7 +4712,7 @@ msgstr "Ebeveynin ölümü"
 
 #: app/GedcomTag.php:1397
 msgid "Death of a paternal grandfather"
-msgstr "Büyükbabanın ölümü"
+msgstr "Dedenin ölümü"
 
 #: app/GedcomTag.php:1399
 msgid "Death of a paternal grandmother"
@@ -7177,7 +7181,11 @@ msgstr "Eğer soyadı bilinmiyor ise boş kesme işareti kullanın: <%s>Mary //<
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:422
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
-msgstr "Eğer birey için ölüm, defin, yada ölü yakma dışında burada belirtilen sayıda yıldan daha yakın bir zamanda bir olu veya hadise mevcut ise, bu bireyler \"yaşıyor\" olarak kabul edilir. Bu doğrultuda, çocuk doğum tarihleri bu tür olaylardandandır."
+msgstr ""
+"Eğer birey için ölüm, defin, yada ölü yakma dışında burada belirtilen sayıda "
+"yıldan daha yakın bir zamanda bir olu veya hadise mevcut ise, bu bireyler \""
+"yaşıyor\" olarak kabul edilir. Bu doğrultuda, çocuk doğum tarihleri bu tür "
+"olaylardandır."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1026
@@ -7938,7 +7946,7 @@ msgstr "Son değişiklik"
 
 #: app/Module/ReviewChangesModule.php:114
 msgid "Last email reminder was sent "
-msgstr "Son hatırlatıcı email gönderilme zamanı "
+msgstr "En son hatırlatıcı e-posta gönderilme zamanı "
 
 #: statistics.php:368
 msgid "Last event"
@@ -9288,7 +9296,7 @@ msgstr "Birden fazla evlilikler"
 #: app/Module/UserWelcomeModule.php:52 app/Theme/AbstractTheme.php:1524
 #: edituser.php:106
 msgid "My account"
-msgstr "Benim profilim"
+msgstr "Hesabım"
 
 #. I18N: Default name for a new tree
 #: admin_trees_manage.php:153
@@ -9303,11 +9311,11 @@ msgstr "Benim Kayıtlarım"
 #: admin_modules.php:183 app/Module/UserWelcomeModule.php:28
 #: app/Theme/AbstractTheme.php:1551 index.php:87 index.php:95
 msgid "My page"
-msgstr "Benim Sayfam"
+msgstr "Benim sayfam"
 
 #: app/Theme/AbstractTheme.php:1561
 msgid "My pages"
-msgstr "Benim safam"
+msgstr "Benim sayfam"
 
 #: app/Module/UserWelcomeModule.php:56 app/Theme/AbstractTheme.php:1587
 msgid "My pedigree"
@@ -9516,7 +9524,7 @@ msgstr "Gazete"
 
 #: app/Module/ReviewChangesModule.php:115
 msgid "Next email reminder will be sent after "
-msgstr "Sonraki hatırlatıcı email gönderileceği zaman "
+msgstr "Sonraki hatırlatıcı e-posta gönderileceği zaman "
 
 #: app/Module/SlideShowModule.php:140
 msgid "Next image"
@@ -10360,7 +10368,7 @@ msgstr "Soyağacı Çizelgesi"
 #: app/Controller/FanchartController.php:355
 #: app/Module/GoogleMapsModule.php:1383 app/Theme/AbstractTheme.php:1184
 msgid "Pedigree map"
-msgstr "Soyağacı haritası"
+msgstr "Soyağacı Haritası"
 
 #. I18N: %s is an individual’s name
 #: app/Module/GoogleMapsModule.php:751
@@ -11834,7 +11842,7 @@ msgstr "Gönderen adı"
 #. I18N: Menu entry
 #: admin_site_config.php:136 app/Theme/AdministrationTheme.php:88
 msgid "Sending email"
-msgstr "Posta gönderiliyor"
+msgstr "e-posta gönderme"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:408
@@ -13493,7 +13501,9 @@ msgstr "Yüklediğiniz medya dosyası, sunucuda bilgisayarınızdaki isminden fa
 
 #: setup.php:167
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr "Aile ağacınızın bireylerin sayısı sunucunuzun hafiza ve ve CPU zamanı gereksinimlere bağlıdır."
+msgstr ""
+"Aile ağacınızın bireylerin sayısı sunucunuzun hafıza ve ve CPU zamanı "
+"gereksinimlere bağlıdır."
 
 #: admin_modules.php:49
 #, php-format
@@ -13798,7 +13808,8 @@ msgstr "Bu GEDCOM %1$s kullanılarak kodlandı. %2$s anlamına gelmek için bunu
 
 #: login.php:90
 msgid "This account has not been approved.  Please wait for an administrator to approve it."
-msgstr "Bu hesap henüz Yönetici tarafından onaylanmadı.<br><br>Eğer uzun zaman geçmesine rağmen onaylanmadı ise lütfen sayfa dibindeki bağlantıdan Yönetici ile irtibata geçiniz."
+msgstr ""
+"Bu hesap henüz  onaylanmadı. Lütfen yöneticinin onaylamasını bekleyiniz."
 
 #: login.php:85
 msgid "This account has not been verified.  Please check your email for a verification message."
@@ -14382,7 +14393,7 @@ msgstr "Saat"
 #: app/Controller/TimelineController.php:77 app/Theme/AbstractTheme.php:1224
 #: timeline.php:243
 msgid "Timeline"
-msgstr "Zaman çizelgesi"
+msgstr "Zaman Çizelgesi"
 
 #: admin_site_change.php:359 admin_site_logs.php:327
 msgid "Timestamp"
@@ -16801,7 +16812,7 @@ msgstr "dördüncü kuzen"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "%1$s daki bütün kayıtları %2$s ya kopyala."
+msgstr[0] "%1$s daki bütün kayıtları %2$s ya kopyala"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:316
@@ -17858,182 +17869,182 @@ msgstr "büyük-büyük-torunun oğlu"
 #: app/Functions/Functions.php:1726
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "kardeşin büyük büyük torunu"
 
 #: app/Functions/Functions.php:1728
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "kardeşin büyük büyük torunu"
 
 #: app/Functions/Functions.php:1730
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "kardeşin büyük büyük torunu"
 
 #: app/Functions/Functions.php:1742
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "kardeşin büyük büyük torunu"
 
 #: app/Functions/Functions.php:1744
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "kardeşin büyük büyük torunu"
 
 #: app/Functions/Functions.php:1746
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "kardeşin büyük büyük torunu"
 
 #: app/Functions/Functions.php:1734
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "kardeşin büyük büyük torunu"
 
 #: app/Functions/Functions.php:1736
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "kardeşin büyük büyük torunu"
 
 #: app/Functions/Functions.php:1738
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "kardeşin büyük büyük torunu"
 
 #: app/Functions/Functions.php:1573
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "büyük büyk babanın kardeşi"
 
 #: app/Functions/Functions.php:1575
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "büyük büyk babanın kardeşi"
 
 #: app/Functions/Functions.php:1577
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "büyük büyk babanın kardeşi"
 
 #: app/Functions/Functions.php:1699
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "kardeşin çocuğunun torunu"
 
 #: app/Functions/Functions.php:1701
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "kardeşin çocuğunun torunu"
 
 #: app/Functions/Functions.php:1703
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "büyük büyük yeğen"
 
 #: app/Functions/Functions.php:1715
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "büyük büyük yeğen"
 
 #: app/Functions/Functions.php:1717
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "kardeşin büyük büyük torunu"
 
 #: app/Functions/Functions.php:1719
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "büyük büyük yeğen"
 
 #: app/Functions/Functions.php:1707
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "kardeşin büyük büyük torunu"
 
 #: app/Functions/Functions.php:1709
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "kardeşin büyük büyük torunu"
 
 #: app/Functions/Functions.php:1711
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr ""
+msgstr "büyük büyük yeğen"
 
 #: app/Functions/Functions.php:1558
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "büyük büyük bababnın amcası"
 
 #: app/Functions/Functions.php:1560
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "büyük büyük annenin kardeşi"
 
 #: app/Functions/Functions.php:1562
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "büyük büyük amca/dayı"
 
 #: app/Functions/Functions.php:1001
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1021
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1039
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1303
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1323
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1347
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1003
 msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1023
 msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1041
 msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1305
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1325
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1349
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1272
 msgctxt "sibling’s child’s son"
@@ -18053,62 +18064,62 @@ msgstr "kardeş torunu"
 #: app/Functions/Functions.php:989
 msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1007
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1027
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1291
 msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1309
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1335
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:991
 msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1009
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1029
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1293
 msgctxt "(a woman’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1311
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1337
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1268
 msgctxt "sibling’s child’s child"
@@ -18128,62 +18139,62 @@ msgstr "kardeş torunu"
 #: app/Functions/Functions.php:995
 msgctxt "(a man’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1013
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1033
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1297
 msgctxt "(a man’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1315
 msgctxt "(a man’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1341
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:997
 msgctxt "(a woman’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1015
 msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1035
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1299
 msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1317
 msgctxt "(a woman’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1343
 msgctxt "(a woman’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "kardeşin torunu"
 
 #: app/Functions/Functions.php:1270
 msgctxt "sibling’s child’s daughter"
@@ -18203,62 +18214,62 @@ msgstr "kardeş torunu"
 #: app/Functions/Functions.php:1110
 msgctxt "father’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "babanın amcası"
 
 #: app/Functions/Functions.php:1392
 msgctxt "father’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "babanın halasının kocası"
 
 #: app/Functions/Functions.php:1122
 msgctxt "father’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "babanın dayısı"
 
 #: app/Functions/Functions.php:1398
 msgctxt "father’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "babanın teyzesinin kocası"
 
 #: app/Functions/Functions.php:1134
 msgctxt "father’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "babanın amca/dayısı"
 
 #: app/Functions/Functions.php:1404
 msgctxt "father’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "babanın hala/teyze kocası"
 
 #: app/Functions/Functions.php:1172
 msgctxt "mother’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "annenin amcası"
 
 #: app/Functions/Functions.php:1410
 msgctxt "mother’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "annenin hala kocası"
 
 #: app/Functions/Functions.php:1190
 msgctxt "mother’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "anenin dayısı"
 
 #: app/Functions/Functions.php:1416
 msgctxt "mother’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "annenin teyze kocası"
 
 #: app/Functions/Functions.php:1202
 msgctxt "mother’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "annenin amca/dayısı"
 
 #: app/Functions/Functions.php:1422
 msgctxt "mother’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "annenin hala/teyze kocası"
 
 #: app/Functions/Functions.php:1224
 msgctxt "parent’s father’s brother"
@@ -18288,7 +18299,7 @@ msgstr "büyük ebeveyn erkek kardeşi"
 #: app/Functions/Functions.php:1440
 msgctxt "parent’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "büyük hala/teyze kocası"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:69
@@ -19760,7 +19771,7 @@ msgstr "“%s” favorilerinize eklendi."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:107
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: app/Family.php:351 app/Family.php:365 app/Individual.php:1224
 #: app/Individual.php:1313 autocomplete.php:164 autocomplete.php:405

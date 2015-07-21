@@ -4283,6 +4283,10 @@ header {
 	color: #000;
 }
 
+.secondary-menu .menu-pending a {
+	font-weight: 900;
+}
+
 /* set active theme to bold */
 .secondary-menu .active {
 	font-weight: 900;

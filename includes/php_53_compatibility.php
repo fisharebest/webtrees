@@ -16,6 +16,12 @@
 
 use Fisharebest\Webtrees\Filter;
 
+// If set to 1, these cause a warning to be displayed whenever
+// there exists both $_SESSION['foo'] and global $foo.
+// The warning prevents session cookies from being sent.
+ini_set('session.bug_compat_warn', 0);
+ini_set('session.bug_compat_42', 0);
+
 /**
  * This function was introduced in PHP 5.4
  */

@@ -18,7 +18,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -27,7 +26,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
 use PDO;
-use PDOException;
 use Rhumsaa\Uuid\Uuid;
 
 /**
@@ -37,6 +35,11 @@ use Rhumsaa\Uuid\Uuid;
  * logic works for both.
  */
 class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInterface {
+	// How to update the database schema for this module
+	const SCHEMA_TARGET_VERSION   = 4;
+	const SCHEMA_SETTING_NAME     = 'FV_SCHEMA_VERSION';
+	const SCHEMA_MIGRATION_PREFIX = '\Fisharebest\Webtrees\Module\FamilyTreeFavorites\Schema';
+
 	/**
 	 * Create a new module.
 	 *
@@ -46,7 +49,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		parent::__construct($directory);
 
 		// Create/update the database tables.
-		Database::updateSchema('\Fisharebest\Webtrees\Module\FamilyTreeFavorites\Schema', 'FV_SCHEMA_VERSION', 4);
+		// NOTE: if we want to set any module-settings, we'll need to move this.
+		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
 	}
 
 	/**
@@ -353,20 +357,5 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 				" FROM `##favorite` WHERE gedcom_id=? AND user_id IS NULL")
 			->execute(array($gedcom_id))
 			->fetchAll(PDO::FETCH_ASSOC);
-	}
-
-	/**
-	 * Make sure the database structure is up-to-date.
-	 */
-	protected static function updateSchema() {
-		// Create tables, if not already present
-		try {
-			Database::updateSchema(WT_ROOT . WT_MODULES_DIR . 'gedcom_favorites/db_schema/', 'FV_SCHEMA_VERSION', 4);
-		} catch (PDOException $ex) {
-			// The schema update scripts should never fail.  If they do, there is no clean recovery.
-			FlashMessages::addMessage($ex->getMessage(), 'danger');
-			header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
-			throw $ex;
-		}
 	}
 }
