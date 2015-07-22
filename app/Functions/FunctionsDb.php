@@ -81,6 +81,7 @@ class FunctionsDb {
 		foreach ($rows as $row) {
 			$list[] = Source::getInstance($row->xref, $tree, $row->gedcom);
 		}
+		$list = array_filter($list, function(Source $x) { return $x->canShowName(); });
 		usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
 		return $list;
@@ -104,6 +105,7 @@ class FunctionsDb {
 		foreach ($rows as $row) {
 			$list[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
 		}
+		$list = array_filter($list, function(Repository $x) { return $x->canShowName(); });
 		usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
 		return $list;
@@ -127,6 +129,7 @@ class FunctionsDb {
 		foreach ($rows as $row) {
 			$list[] = Note::getInstance($row->xref, $tree, $row->gedcom);
 		}
+		$list = array_filter($list, function(Note $x) { return $x->canShowName(); });
 		usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
 		return $list;
@@ -180,6 +183,7 @@ class FunctionsDb {
 			}
 			$list[] = $record;
 		}
+		$list = array_filter($list, function(Individual $x) { return $x->canShowName(); });
 
 		return $list;
 	}
@@ -214,21 +218,19 @@ class FunctionsDb {
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
 			$indi = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
-			// The individual may have private names - and the DB search may have found it.
-			if ($indi->canShowName()) {
-				foreach ($indi->getAllNames() as $num => $name) {
-					if ($name['fullNN'] === $row->n_full) {
-						$indi->setPrimaryName($num);
-						// We need to clone $indi, as we may have multiple references to the
-						// same person in this list, and the "primary name" would otherwise
-						// be shared amongst all of them.
-						$list[] = clone $indi;
-						// Only need to match an individual on one name
-						break;
-					}
+			foreach ($indi->getAllNames() as $num => $name) {
+				if ($name['fullNN'] === $row->n_full) {
+					$indi->setPrimaryName($num);
+					// We need to clone $indi, as we may have multiple references to the
+					// same person in this list, and the "primary name" would otherwise
+					// be shared amongst all of them.
+					$list[] = clone $indi;
+					// Only need to match an individual on one name
+					break;
 				}
 			}
 		}
+		$list = array_filter($list, function(Individual $x) { return $x->canShowName(); });
 
 		return $list;
 	}
@@ -340,11 +342,9 @@ class FunctionsDb {
 		$list = array();
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
-			$indi = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
-			if ($indi->canShowName()) {
-				$list[] = $indi;
-			}
+			$list[] = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 		}
+		$list = array_filter($list, function(Individual $x) { return $x->canShowName(); });
 
 		return $list;
 	}
@@ -421,6 +421,7 @@ class FunctionsDb {
 			}
 			$list[] = $record;
 		}
+		$list = array_filter($list, function(Family $x) { return $x->canShowName(); });
 
 		return $list;
 	}
@@ -466,11 +467,9 @@ class FunctionsDb {
 		$list = array();
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
-			$indi = Family::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
-			if ($indi->canShowName()) {
-				$list[] = $indi;
-			}
+			$list[] = Family::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 		}
+		$list = array_filter($list, function(Family $x) { return $x->canShowName(); });
 
 		return $list;
 	}
@@ -525,6 +524,7 @@ class FunctionsDb {
 			}
 			$list[] = $record;
 		}
+		$list = array_filter($list, function(Source $x) { return $x->canShowName(); });
 
 		return $list;
 	}
@@ -579,6 +579,7 @@ class FunctionsDb {
 			}
 			$list[] = $record;
 		}
+		$list = array_filter($list, function(Note $x) { return $x->canShowName(); });
 
 		return $list;
 	}
@@ -633,6 +634,7 @@ class FunctionsDb {
 			}
 			$list[] = $record;
 		}
+		$list = array_filter($list, function(Repository $x) { return $x->canShowName(); });
 
 		return $list;
 	}
