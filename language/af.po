@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-07-21 18:57+0100\n"
+"PO-Revision-Date: 2015-07-22 20:41+0100\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
@@ -734,23 +734,46 @@ msgstr ""
 #: login.php:151
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 msgstr ""
+"<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang tot "
+"hierdie webwerf is beperk tot  <u>gemagtigde</u> gebruikers.<br><br>As jy ’n "
+"gebruikersrekening het, kan jy op hierdie bladsy aanmeld. As jy nie ’n "
+"gebruikersrekening het nie, kan jy een aanvra deur op die link hieronder te "
+"klik.<br><br>Nadat jou aanvraag nagegaan is, sal die werfbeheerder jou "
+"rekening aktiveer. Jy sal ’n epos ontvang wanneer jou aanvraag goedgekeur is."
 
 #: login.php:154
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 msgstr ""
+"<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang tot "
+"hierdie webwerf is beperk tot  <u>familielede</u> gebruikers.<br><br>As jy ’"
+"n gebruikersrekening het, kan jy op hierdie bladsy aanmeld. As jy nie ’n "
+"gebruikersrekening het nie, kan jy een aanvra deur op die link hieronder te "
+"klik.<br><br>Nadat jou aanvraag nagegaan is, sal die werfbeheerder jou "
+"rekening aktiveer. Jy sal ’n epos ontvang wanneer jou aanvraag goedgekeur is."
 
 #: login.php:148
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved."
 msgstr ""
+"<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang tot "
+"hierdie webwerf is vir alle besokers wat ’n gebruikersrekening het.<br><br>"
+"As jy ’n gebruikersrekening het, kan jy op hierdie bladsy aanmeld. As jy nie "
+"’n gebruikersrekening het nie, kan jy een aanvra deur op die link hieronder "
+"te klik.<br><br>Nadat jou aanvraag nagegaan is, sal die werfbeheerder jou "
+"rekening aktiveer. Jy sal ’n epos ontvang wanneer jou aanvraag goedgekeur is."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:993 admin_users.php:473 edituser.php:253
 msgid "<default theme>"
-msgstr ""
+msgstr "<standaard tema>"
 
 #: login.php:388
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
 msgstr ""
+"<div class=\"largeError\">Belangrik:</div><div class=\"error\">Deur hierdie "
+"vorm te voltooi en in te handig, stem jy in om:<ul><li>die privaatheid van "
+"lewende persone wat hier gelys word te beskerm,</li><li>en in die "
+"onderstaande tekskassie, te verduidelik aan wie jy verwant is, of om ons met "
+"inligting te verskaf oor iemand wat hier gelys moet word.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
 #: app/Fact.php:409 app/Functions/FunctionsPrintFacts.php:540
@@ -758,14 +781,20 @@ msgstr ""
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr ""
+"<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\""
+">%2$s</span>"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:206
 msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
-msgstr ""
+msgstr "’n FAQ item kan vir een stamboom vertoon word, of vir al die stambome."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
 msgstr ""
+"’n kind kan meer as één stel ouers hê. Die verhouding tussen kind en ouers "
+"kan biologies, wettelik of op plaaslike kultuur en tradisie gebaseer wees. "
+"As die verhouding nie gespesifiseer word nie, dan word ’n biologiese "
+"verhouding aanvaar."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -774,44 +803,49 @@ msgstr "'n Algemene fout is om veelvoudige skakels na dieselfde rekord te hê, b
 #: setup.php:367
 msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 msgstr ""
+"'n Databasisbediener kan baie afsonderlike databasisse bewaar. Jy moet ’n "
+"bestaande databasis kies (geskep deur die beheerder van jou bediener) of ’n "
+"nuwe skep (as jou databasis gebruikersrekening voldoende voorregte het)."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:213
 msgid "A file on the server"
-msgstr ""
+msgstr "’n Lêer op die bediener"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:202
 msgid "A file on your computer"
-msgstr ""
+msgstr "’n Lêer op jou rekenaar"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:33
 msgid "A greeting message and useful links for a user."
-msgstr ""
+msgstr "’n Welkomberig en nuttige skakels vir ’n gebruiker."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:34
 msgid "A greeting message for site visitors."
-msgstr ""
+msgstr "’n Welkomsberig vir werfbesoekers."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need moderator approval, and email notifications."
 msgstr ""
+"’n Lys met veranderinge wat die goedkeuring van 'n moderator nodig het, en e-"
+"pos boodskappe."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
 msgid "A list of frequently asked questions and answers."
-msgstr ""
+msgstr "’n Lys met vrae en antwoorde wat gereeld gevra word."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:40
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "’n Lys van rekords wat onlangs gewysig is."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:38
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "’n Lys van take en aktiwiteite wat met die stamboom verband hou."
 
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
@@ -821,45 +855,52 @@ msgstr "'n Lys van die Hebreeuse dodeherdenkings wat plaas sal vind in die nabye
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "’n Lys van gedenkdae wat vandag plaasvind."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "’n Lys van gedenkdae wat in die nabye toekoms sal plaasvind."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr ""
+msgstr "’n Lys van die mees gewilde voorname."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr "'n Lys van die mees voorkomende vanne."
+msgstr "'n Lys van die mees gewilde vanne."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "'n Lys van die bladsye wat die meeste besigtig word."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "'n Lys van gebruikers en besoekers wat tans aanlyn is."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
+"’n Mediavoorwerp is ’n rekord in die stamboom wat informasie bevat oor ’n "
+"medialêer. Hierdie informasie kan ’n titel, kopiereg, ’n protokol, "
+"privaatheid beperkinge ens. bevat. Die medialêer, byv. ’n foto of video, kan "
+"plaaslik (op hierdie webbediener) of elders (op ’n ander webbediener) "
+"gestoor word."
 
 #: login.php:243
 #, php-format
 msgid "A new password has been created and emailed to %s.  You can change this password after you login."
 msgstr ""
+"’n Nuwe wagwoord is geskep en is per epos na %s  gestuur. Jy kan die "
+"wagwoord verander nadat jy aangemeld het."
 
 #: login.php:236
 msgid "A new password has been requested for your user name."
-msgstr ""
+msgstr "'n Nuwe wagwoord is vir jou gebruikersnaam aangevra."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:541
