@@ -215,8 +215,8 @@ case 'setup':
 			foreach ($options as $option) {
 				$opt                   = explode('=>', $option);
 				list($value, $display) = $opt;
-				if (preg_match('/^I18N::number\((.+)\)$/', $display, $match)) {
-					$display = I18N::number($match[1]);
+				if (preg_match('/^I18N::number\((.+?)(,([\d+]))?\)$/', $display, $match)) {
+					$display = I18N::number($match[1], isset($match[3]) ? $match[3] : 0);
 				} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $display, $match)) {
 					$display = I18N::translate($match[1]);
 				} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $display, $match)) {
