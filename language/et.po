@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-07-20 20:16+0100\n"
+"PO-Revision-Date: 2015-07-23 20:15+0100\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
@@ -71,7 +71,7 @@ msgstr "#%s"
 #: admin_trees_check.php:208
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s omab %3$s viidet järgnevale %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2148
@@ -89,7 +89,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:1640
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:317
@@ -113,7 +113,7 @@ msgstr "%1$s ei eksisteeri.  Kas mõtlesite %2$s?"
 #: admin_trees_check.php:190
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s ei oma viidet tagasi järgnevale %2$s."
 
 #. I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:374 admin_site_upgrade.php:458
@@ -142,28 +142,28 @@ msgstr[1] "%1$s isikul on sünnikoht määramata: %2$s."
 #: admin_trees_check.php:178
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s on %2$s, aga %3$s on soovitud."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:649
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:634
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:664
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:492 app/Media.php:386
@@ -175,7 +175,7 @@ msgstr "%1$s × %2$s pikslit"
 #: app/Individual.php:550
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2166
@@ -469,20 +469,20 @@ msgstr "%s aastapäev"
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:534
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × nõbu"
 
 #: app/Functions/Functions.php:604
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × nõbu"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:85
@@ -705,6 +705,10 @@ msgstr ""
 #: admin_trees_manage.php:709
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr ""
+"<b>Tähtis meeldetuletus:</b> Ümbertõstmisabiline ei ole suuteline abistama "
+"meediafailide ümbertõstmisega.  Te peate seadistama ja teisaldama või "
+"kopeerima oma meediafailid ja -objektid eraldi, peale seda kui "
+"ümbertõstmisabiline on oma töö lõpetanud."
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
@@ -730,6 +734,11 @@ msgstr "<vaiketeema>"
 #: login.php:388
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
 msgstr ""
+"<div class=\"largeError\">Märkus:</div><div class=\"error\">Peale selle "
+"välja täitmist ja salvestamist te kinnitate:<ul><li>,et kaitsete sellel "
+"leheküljel olevate elavate isikute privaatsust;</li><li>ja tekstilahtrisse "
+"all, et seletade kellega te olete sugulane või selleks, et anda meile infot "
+"kellegi kohta, kes peaks olema siin veebilehel kirjas.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
 #: app/Fact.php:409 app/Functions/FunctionsPrintFacts.php:540
@@ -742,7 +751,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:206
 msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
-msgstr ""
+msgstr "KKK punkti saab kuvada ainult ühes sugupuus või kõigis sugupuudes."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
@@ -805,7 +814,7 @@ msgstr "NImekiri ülesannetest ja tegevustest, mis on ühendatud sugupuuga."
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Nimekiri Heebrea surmaaastapäevadest, mis saabuvad lähenevas tulevikus."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
@@ -840,6 +849,10 @@ msgstr "Nimekiri kasutajatest, kes on hetkel võrgus."
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
+"Meediaobjekt on kirje sugupuus, mis sialdab informatsiooni meediafaili "
+"kohta. See info võib sisaldada pealkirja, autoriõiguse meelespead, teatist, "
+"privaatsuse piiranguid jne. Meediafail nagu näiteks foto või video saab olla "
+"hoiustatud lokaalselt (selles veebiserveris) või mõnes teises veebiserveris."
 
 #: login.php:243
 #, php-format
@@ -850,13 +863,15 @@ msgstr ""
 
 #: login.php:236
 msgid "A new password has been requested for your user name."
-msgstr ""
+msgstr "Teie kasutaja on soovinud uut parooli."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:541
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
+"Uus kasutaja (%1$s) on soovinud luua kasutajat nimega (%2$s) ja kinnitanud e-"
+"maili aadressi (%3$s)."
 
 #: admin.php:574 admin_site_upgrade.php:79
 msgid "A new version of webtrees is available."
@@ -972,56 +987,63 @@ msgstr "Väljavõte erinevatest kirjetest ette antud ajal või kohas."
 #: admin_users.php:508
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr ""
+"Roll on juurdepääsuõiguste kogum, mis annab võimaluse vaadata andmeid, muuta "
+"konfiguratsiooniseadeid jne. Juurdepääsuõigused on määratud erinevatele "
+"rollidele ja rollid on määratud kasutajatele. Iga sugupuu saab määrata "
+"erineva juurdepääsurolli ja kasutajad saavad omada erinevat rolli igas "
+"sugupuus."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
 msgid "A sidebar showing an alphabetic list of all the families in the family tree."
 msgstr ""
+"Külgriba, mis näitab tähestikulist nimekirja kõigist perekondadest sugupuus."
 
 #. I18N: Description of “Individuals” module
 #: app/Module/IndividualSidebarModule.php:38
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
 msgstr ""
+"Külgriba, mis näitab tähestikulist nimekirja kõigist isikutest sugupuus."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr ""
+msgstr "Külgriba, mis näitab isiku lähiperesid ja -sugulasi."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:34
 msgid "A sidebar showing non-genealogy information about an individual."
-msgstr ""
+msgstr "Külgriba, mis näitab mittegenealoogilist infot isiku kohta."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr ""
+msgstr "Külgriba, mis näitab isiku järeltulijaid."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
 msgid "A tab showing the close relatives of an individual."
-msgstr ""
+msgstr "Vaheleht, mis näitab isiku lähisugulasi."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
 msgid "A tab showing the facts and events of an individual."
-msgstr ""
+msgstr "Vaheleht, mis näitab isiku kohta käivaid fakte ja sündmusi."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
 msgid "A tab showing the media objects linked to an individual."
-msgstr ""
+msgstr "Vaheleht, mis näitab isikuga seotud meediaobjekte."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
 msgid "A tab showing the notes attached to an individual."
-msgstr ""
+msgstr "Vaheleht, mis näitab isikuga seotud märkmeid."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "Vaheleht, mis näitab isikuga seotud allikaid."
 
 #: admin_users.php:396
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
@@ -1110,13 +1132,13 @@ msgstr "Aban"
 #: app/Date/JalaliDate.php:126
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:62
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1630 admin_trees_config.php:1632
@@ -1161,67 +1183,67 @@ msgstr "Adar"
 #: app/Date/JewishDate.php:217
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:179
 msgctxt "LOCATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:103
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:140
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:216
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:178
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:102
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:142
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:218
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:180
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:104
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: button label.  Add a new item.
 #: admin_trees_config.php:542 app/Functions/FunctionsPrint.php:572
@@ -1420,19 +1442,20 @@ msgid "Add narrative stories to individuals in the family tree."
 msgstr "Lisa jutustavaid lugusid sugupuusse kuuluvatele isikutele."
 
 #: admin_trees_manage.php:270
+#, fuzzy
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Lisa tühikud, kus pikad read olid mähitud"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:381
 #: app/Module/ClippingsCartModule.php:718
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Lisa GEDCOM-i meedia asukoht failinimedele"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:936
 msgid "Add to TITLE header tag"
-msgstr ""
+msgstr "Lisa päises asuvasse TITLE tag-i"
 
 #. I18N: Menu option.  Add [the current page] to the list of favorites
 #: app/Controller/FamilyController.php:125
@@ -1450,7 +1473,7 @@ msgstr "Lisa lemmikutesse"
 #: app/Module/ClippingsCartModule.php:403
 #: app/Module/ClippingsCartModule.php:498
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Lisa väljalõigete korvi"
 
 #: admin_trees_manage.php:518
 msgid "Add unlinked records"
@@ -1650,11 +1673,11 @@ msgstr "Täiskasvanu ristimine"
 
 #: app/Module/GoogleMapsModule.php:346
 msgid "Advanced"
-msgstr ""
+msgstr "Täpsemad"
 
 #: admin_trees_config.php:2131
 msgid "Advanced fact settings"
-msgstr ""
+msgstr "Täpsemad faktiseaded"
 
 #: admin_trees_config.php:2136
 msgid "Advanced name facts"
@@ -1768,7 +1791,7 @@ msgstr "Album"
 
 #: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Albuquerque, New Mexico"
-msgstr ""
+msgstr "Albuquerque, Uus Mexico"
 
 #: app/Stats.php:6785
 msgid "Algeria"
@@ -1806,11 +1829,13 @@ msgstr "KÕIK"
 
 #: admin_trees_manage.php:702
 msgid "All changes in PhpGedView must be accepted"
-msgstr ""
+msgstr "Kõik muudatused PhpGedView-is peavad olema kinnitatud"
 
 #: admin_trees_manage.php:705
 msgid "All existing PhpGedView users must have distinct email addresses"
 msgstr ""
+"Kõigil olemasolevatel PhpGedView-i kasutajatel peab olema erinev e-maili "
+"aadress"
 
 #: admin_trees_config.php:568
 msgid "All facts and events"
@@ -1853,6 +1878,8 @@ msgstr "Kõik allikate faktid"
 #: app/Module/CkeditorModule.php:32
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
 msgstr ""
+"Luba teistel moodulitel teksti muuta kasutades ‘WYSIWYG’ redaktorit, mitte "
+"HTML koode."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1679
@@ -1899,7 +1926,7 @@ msgstr ""
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr ""
+msgstr "Alternatiiv 'meedia' vahelehe jaoks, täiustatud pildivaatur."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
@@ -1910,6 +1937,8 @@ msgstr "Alternatiivne võimalus jooniste kuvamiseks."
 #: app/Module/CensusAssistantModule.php:39
 msgid "An alternative way to enter census transcripts and link them to individuals."
 msgstr ""
+"Alternatiivne võimalus rahvaloenduse ärakirjade lisamiseks ja nende "
+"viitamiseks isikutele."
 
 #. I18N: Description of the “Login” module
 #: app/Module/LoginBlockModule.php:34
@@ -1924,10 +1953,14 @@ msgstr "Alternatiivne võimalus uue teema valimiseks."
 #: app/Functions/FunctionsEdit.php:900
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
 msgstr ""
+"Partner on teine isik, kes oli seotud selle fakti või sündmusega, näiteks "
+"tunnistaja või preester."
 
 #: app/Functions/FunctionsEdit.php:898
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
 msgstr ""
+"Partner on teine isik, kes oli seotud selle isikuga, näiteks sõber või "
+"tööandja."
 
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:32
@@ -2008,7 +2041,7 @@ msgstr "Tähtpäevade kalender"
 #. I18N: gedcom tag ANUL
 #: app/GedcomTag.php:162
 msgid "Annulment"
-msgstr ""
+msgstr "Tühistamine"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:169
 msgid "Answer"
@@ -2051,7 +2084,7 @@ msgstr "Rakenda need eelistused uutele sugupuudele"
 #: admin_users.php:99
 #, php-format
 msgid "Approval of account at %s"
-msgstr ""
+msgstr "Kasutaja kinnitamine %s"
 
 #: edit_changes.php:209 edit_changes.php:220
 msgid "Approve all changes"
@@ -2171,6 +2204,13 @@ msgstr "Aruba"
 #: app/Module/HtmlBlockModule.php:316
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr ""
+"Peale selle, et kasutada seda tööriistariba selleks, et rakendada HTML "
+"vormingut, saab ka sisestada andmebaasi välju, mida uuendatakse "
+"automaatselt. Neet eritähistusega väljad on tähistatud  <b>#</b> "
+"sümbolitega. Näiteks <b>#kõikPerekonnad#</b> asendatakse tegeliku "
+"perekondade arvuga andmebaasis. Edasijõudnud kasutajad võivad soovida "
+"rakendada ka CSS-i klasse enda tekstile, nii et vorming vastab hetkel "
+"valitud teemale."
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:77
@@ -2209,17 +2249,17 @@ msgstr "Atlanta, Georgia"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
-msgstr ""
+msgstr "Hoolitseja/Eestkostja"
 
 #: app/GedcomCode/GedcomCodeRela.php:60
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr ""
+msgstr "Hoolitseja/Eestkostja"
 
 #: app/GedcomCode/GedcomCodeRela.php:58
 msgctxt "MALE"
 msgid "Attendant"
-msgstr ""
+msgstr "Hoolitseja/Eestkostja"
 
 #: app/GedcomCode/GedcomCodeRela.php:71
 msgid "Attending"
@@ -2242,7 +2282,7 @@ msgstr "Heli"
 #: app/Date/CalendarDate.php:318
 msgctxt "Abbreviation for August"
 msgid "Aug"
-msgstr ""
+msgstr "Aug"
 
 #: app/Date/CalendarDate.php:218
 msgctxt "GENITIVE"
@@ -2310,25 +2350,25 @@ msgstr "Laienda allikad automaatselt"
 #: app/Date/JewishDate.php:147
 msgctxt "GENITIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:223
 msgctxt "INSTRUMENTAL"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:185
 msgctxt "LOCATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:109
 msgctxt "NOMINATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #: index_edit.php:301
 msgid "Available blocks"
@@ -2362,12 +2402,12 @@ msgstr "Keskmine laste arv perekonnas"
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:632 admin_trees_manage.php:658
 msgid "Avoid spaces and punctuation.  A family name might be a good choice."
-msgstr ""
+msgstr "Väldi tühikuid ja kirjavahemärke. Perekonnanimi võib olla hea valik."
 
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:95
@@ -2404,7 +2444,7 @@ msgstr "Assoorid"
 #: app/Date/JalaliDate.php:193
 msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
-msgstr ""
+msgstr "Bah"
 
 #: app/Stats.php:6743
 msgid "Bahamas"
@@ -2414,7 +2454,7 @@ msgstr "Bahama saared"
 #: app/Date/JalaliDate.php:97
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:161
@@ -2518,7 +2558,7 @@ msgstr "Baptistlik poja ristimine"
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:190 modules_v3/missing_facts_report/report.xml:17
 msgid "Bar mitzvah"
-msgstr ""
+msgstr "Bar mitzvah"
 
 #: app/Stats.php:6750
 msgid "Barbados"
@@ -2531,7 +2571,7 @@ msgstr "Tavaline"
 #. I18N: gedcom tag BASM
 #: app/GedcomTag.php:198 modules_v3/missing_facts_report/report.xml:18
 msgid "Bat mitzvah"
-msgstr ""
+msgstr "Bat mitzvah"
 
 #. I18N: Name of a module
 #: app/Module/BatchUpdateModule.php:77 app/Module/BatchUpdateModule.php:100
@@ -2804,7 +2844,7 @@ msgstr "Lapselapse sünd"
 #: app/GedcomTag.php:1057
 msgctxt "son’s son"
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Lapselapse sünd"
 
 #: app/GedcomTag.php:1066
 msgid "Birth of a half-brother"
@@ -2816,7 +2856,7 @@ msgstr "Poolõe / -venna sünd"
 
 #: app/GedcomTag.php:1068
 msgid "Birth of a half-sister"
-msgstr ""
+msgstr "Poolõe sünd"
 
 #: app/GedcomTag.php:1079
 msgid "Birth of a sibling"
@@ -2824,7 +2864,7 @@ msgstr "Õe  / venna sünd"
 
 #: app/GedcomTag.php:1077
 msgid "Birth of a sister"
-msgstr ""
+msgstr "Õe sünd"
 
 #: app/GedcomTag.php:1030
 msgid "Birth of a son"
@@ -2859,13 +2899,13 @@ msgstr "Õnnistamine"
 
 #: admin_module_blocks.php:73
 msgid "Block"
-msgstr ""
+msgstr "Blokk"
 
 #. I18N: Menu entry
 #: admin_module_blocks.php:35 admin_modules.php:157
 #: app/Theme/AdministrationTheme.php:185
 msgid "Blocks"
-msgstr ""
+msgstr "Blokid"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:79
@@ -2960,33 +3000,33 @@ msgstr "Brisbane, Austraalia"
 #. I18N: gedcom tag _BRTM
 #: app/GedcomTag.php:1084
 msgid "Brit milah"
-msgstr ""
+msgstr "Brit milah"
 
 #: app/GedcomTag.php:1780
 msgid "Brit milah of a brother"
-msgstr ""
+msgstr "Venna brit milah"
 
 #: app/GedcomTag.php:1772
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "Lapselapse brit milah"
 
 #: app/GedcomTag.php:1774
 msgctxt "daughter’s son"
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "Lapselapse brit milah"
 
 #: app/GedcomTag.php:1776
 msgctxt "son’s son"
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "Lapselapse brit milah"
 
 #: app/GedcomTag.php:1778
 msgid "Brit milah of a half-brother"
-msgstr ""
+msgstr "Poolvenna brit milah"
 
 #: app/GedcomTag.php:1770
 msgid "Brit milah of a son"
-msgstr ""
+msgstr "Poja brit milah"
 
 #: app/Stats.php:6829
 msgid "British Indian Ocean Territory"
@@ -3009,25 +3049,25 @@ msgstr "Vend"
 #: app/Date/FrenchDate.php:89
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:122
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:56
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #: app/Stats.php:6751
 msgid "Brunei Darussalam"
@@ -3071,17 +3111,17 @@ msgstr "Lapselapse matus"
 
 #: app/GedcomTag.php:1103
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Lapselapse matmine"
 
 #: app/GedcomTag.php:1112
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Lapselapse matmine"
 
 #: app/GedcomTag.php:1121
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Lapselapse matmine"
 
 #: app/GedcomTag.php:1128
 msgid "Burial of a grandfather"
@@ -3093,7 +3133,7 @@ msgstr "Vanaema matus"
 
 #: app/GedcomTag.php:1132
 msgid "Burial of a grandparent"
-msgstr ""
+msgstr "Vanavanema matmine"
 
 #: app/GedcomTag.php:1101
 msgid "Burial of a grandson"
@@ -3102,12 +3142,12 @@ msgstr "Lapselapse matus"
 #: app/GedcomTag.php:1110
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Lapselapse matmine"
 
 #: app/GedcomTag.php:1119
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Lapselapse matmine"
 
 #: app/GedcomTag.php:1155
 msgid "Burial of a half-brother"
@@ -3127,15 +3167,15 @@ msgstr "Mehe matus"
 
 #: app/GedcomTag.php:1146
 msgid "Burial of a maternal grandfather"
-msgstr ""
+msgstr "Emapoolse vanaema matmine"
 
 #: app/GedcomTag.php:1148
 msgid "Burial of a maternal grandmother"
-msgstr ""
+msgstr "Emapoolse vanaema matmine"
 
 #: app/GedcomTag.php:1150
 msgid "Burial of a maternal grandparent"
-msgstr ""
+msgstr "Emapoolse vanavanema matmine"
 
 #: app/GedcomTag.php:1166
 msgid "Burial of a mother"
@@ -3143,19 +3183,19 @@ msgstr "Ema matmine"
 
 #: app/GedcomTag.php:1168
 msgid "Burial of a parent"
-msgstr ""
+msgstr "Vanema matmine"
 
 #: app/GedcomTag.php:1137
 msgid "Burial of a paternal grandfather"
-msgstr ""
+msgstr "Isapoolse vanaisa matmine"
 
 #: app/GedcomTag.php:1139
 msgid "Burial of a paternal grandmother"
-msgstr ""
+msgstr "Isapoolse vanaema matmine"
 
 #: app/GedcomTag.php:1141
 msgid "Burial of a paternal grandparent"
-msgstr ""
+msgstr "Isapoolse vanavanema matmine"
 
 #: app/GedcomTag.php:1177
 msgid "Burial of a sibling"
@@ -3211,6 +3251,10 @@ msgstr "Algsätetes töötab SMTP pordis 25."
 #: app/Module/GoogleMapsModule.php:4554
 msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
 msgstr ""
+"Vaikimisi näidatakse nimekirjas ainult neid kohti, mida on võimalik leida "
+"teie sugupuudest. Teil võib olla detaile teiste kohtade jaoks, näiteks "
+"imporditud hulk välisest failist. Selle valiku valimine näitab teile kõiki "
+"kohti, ka neid, mis pole hetkel kasutusel."
 
 #: admin_site_config.php:216
 #, php-format
@@ -3376,7 +3420,7 @@ msgstr "Rahvaloenduse ümberkirjutus"
 
 #: app/Module/GoogleMapsModule.php:1427
 msgid "Center map here"
-msgstr ""
+msgstr "Keskenda kaart siia"
 
 #: app/Stats.php:6756
 msgid "Central African Republic"
@@ -3595,6 +3639,10 @@ msgstr "Vali sugulasi"
 #: addmedia.php:449 admin_media_upload.php:213
 msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
 msgstr ""
+"Valige pisipilt, mida soovite üles laadida. Kuigi pisipilte saab genereerida "
+"automaatselt, võib teil olla vajadus neid ise luua, eriti veel teistsuguste "
+"meediatüüpide puhul. Näiteks saate te video puhul esile tuua paigalseisva "
+"pildi või foto isikust, kes tegi audiosalvestuse."
 
 #: admin_site_config.php:123
 msgid "Choose user defined welcome text typed below"
@@ -4011,6 +4059,8 @@ msgstr "Firma"
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:39
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
 msgstr ""
+"Paranda NAME kirjed kujul “John/DOE/” või “John /DOE” nagu loodud vanemate "
+"genealoogiatarkvarade poolt."
 
 #: app/Stats.php:6773
 msgid "Costa Rica"
@@ -4306,7 +4356,7 @@ msgstr "Dallas, Texas"
 #. I18N: A summary of the system status
 #: admin.php:429
 msgid "Dashboard"
-msgstr ""
+msgstr "Töölaud"
 
 #. I18N: gedcom tag DATA
 #: app/GedcomTag.php:342
@@ -4361,15 +4411,15 @@ msgstr "LDS ristimise kuupäev"
 
 #: app/GedcomTag.php:774
 msgid "Date of LDS child sealing"
-msgstr ""
+msgstr "LDS lapse katmise kuupäev"
 
 #: app/GedcomTag.php:414
 msgid "Date of LDS endowment"
-msgstr ""
+msgstr "LDS asutamise kuupäev"
 
 #: app/GedcomTag.php:466
 msgid "Date of LDS spouse sealing"
-msgstr ""
+msgstr "LDS abikaasa katmise kuupäev"
 
 #: app/GedcomTag.php:132
 msgid "Date of adoption"
@@ -4465,7 +4515,7 @@ msgstr "Abielukuupäev"
 
 #: app/GedcomTag.php:558 modules_v3/missing_facts_report/report.xml:419
 msgid "Date of marriage banns"
-msgstr ""
+msgstr "Abielukuulutuse kuupäev"
 
 #: app/GedcomTag.php:616
 msgid "Date of naturalization"
@@ -4486,6 +4536,8 @@ msgstr "Kuupäeva periood"
 #: help_text.php:157
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
 msgstr ""
+"Ajaperioode kasutatakse näitamaks, et fakt nagu näiteks amet, kestis mingi "
+"pikema ajaperioodi."
 
 #: help_text.php:148 statistics.php:615
 msgid "Date range"
@@ -4494,6 +4546,8 @@ msgstr "Kuupäeva vahemik"
 #: help_text.php:146
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr ""
+"Ajavahemikke kasutatakse näitamaks, et sündmus nagu näiteks sünd, toimus "
+"teadmata kuupäeval mingite kuupäevade vahemikus."
 
 #: admin_users.php:853
 msgid "Date registered"
@@ -4508,10 +4562,16 @@ msgstr "Saatmise kuupäev"
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar.  For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
 msgstr ""
+"Kuupäevad muudetakse ainult siis kui nad on sobilikud kalendri jaoks. "
+"Näiteks ainult kuupäevad, mis jäävad %1$s ja %2$s vahele muudetakse ümber "
+"Prantsuse kalendrisse ja ainult kuupäevad pärast %3$s muudetakse Gregooriuse "
+"kalendrisse."
 
 #: help_text.php:134
 msgid "Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords."
 msgstr ""
+"Kuupäevi hoiustatakse kasutades inglise lühendeid ja märksõnu. Otseteed on "
+"olemas kui alternatiivid nendele lühenditele ja märksõnadele."
 
 #: modules_v3/family_group_report/report.xml:809
 #: modules_v3/individual_ext_report/report.xml:556
@@ -4823,7 +4883,7 @@ msgstr "Surmad sajandi lõikes"
 #: app/Date/CalendarDate.php:322
 msgctxt "Abbreviation for December"
 msgid "Dec"
-msgstr ""
+msgstr "Dets"
 
 #: app/Functions/FunctionsPrintLists.php:494
 #: app/Functions/FunctionsPrintLists.php:994
@@ -4861,7 +4921,7 @@ msgstr "detsember"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:206
 msgid "Decidi"
-msgstr ""
+msgstr "Decidi"
 
 #: app/Module/HtmlBlockModule.php:303
 msgid "Default"
@@ -4923,7 +4983,7 @@ msgstr "Teaduskraad"
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "DejaVu"
-msgstr ""
+msgstr "DejaVu"
 
 #: admin_media.php:524 admin_site_access.php:193 admin_site_change.php:349
 #: admin_site_logs.php:314 admin_trees_config.php:577
@@ -5018,7 +5078,7 @@ msgstr "Järeltulijad"
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:366
 msgid "Descendants interest"
-msgstr ""
+msgstr "Järeltulijate huvi"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
@@ -5042,7 +5102,7 @@ msgstr "Kirjeldus"
 #. I18N: A configuration setting
 #: admin_trees_config.php:956
 msgid "Description META tag"
-msgstr ""
+msgstr "Kirjelduse META silt"
 
 #: login.php:429
 msgid "Desired password"
@@ -5065,6 +5125,8 @@ msgstr "Üksikasjad"
 #: admin_site_config.php:476
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr ""
+"Detailid uue kasutaja kohta saadetakse vastava sugupuu genealoogia "
+"kontaktile."
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Detroit, Michigan"
@@ -5073,79 +5135,79 @@ msgstr "Detroit, Michigan"
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:96
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:128
 msgctxt "LOCATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:64
 msgctxt "NOMINATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:101
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:165
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:133
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:69
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:100
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:164
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:132
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:68
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:71
@@ -5165,6 +5227,12 @@ msgstr "Erinevused"
 #: admin_trees_config.php:711
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
 msgstr ""
+"Erinevates maailma osades kasutatakse erinevaid kalendrisüsteeme ja ka "
+"minevikus on kasutatud teistsuguseid kalendrisüsteeme. Kus võimalik peaksite "
+"sisestama kuupäevad kasutades kalendrit, kus see sündmus algselt toimus. "
+"Siis saate määrata ka teisenduse, et näidata neid kuupäevi endale tuttavamas "
+"kalendris. Kui te kasutate regulaarselt kahte kalendrit, siis saate määrata "
+"kaks teisendust ja kuupäevade teisendatakse mõlemasse valitud kalendrisse."
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -5289,7 +5357,7 @@ msgstr "Lae geograafilised andmed alla"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:198
 msgid "Duodi"
-msgstr ""
+msgstr "Duodi"
 
 #: admin_users.php:72 edituser.php:59 login.php:268
 msgid "Duplicate email address.  A user with that email already exists."
@@ -5311,6 +5379,9 @@ msgstr ""
 #: help_text.php:319
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
 msgstr ""
+"Igal kasutajal on valik 'kinnita muudatused automaatselt'. Kui see on "
+"lubatud, siis kõik muudatused, mida see kasutaja teeb salvestatakse "
+"automaatselt. Paljud administraatorid salvestavad selle enda kasutaja jaoks."
 
 #: statistics.php:127
 msgid "Earliest birth"
@@ -5469,7 +5540,7 @@ msgstr "Egipto"
 
 #: app/Stats.php:6788
 msgid "Eire"
-msgstr ""
+msgstr "Eire"
 
 #: app/Stats.php:6929
 msgid "El Salvador"
@@ -5488,25 +5559,25 @@ msgstr "Tõstmine"
 #: app/Date/JewishDate.php:148
 msgctxt "GENITIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:224
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:186
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:110
 msgctxt "NOMINATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: gedcom tag EMAI
 #. I18N: gedcom tag EMAIL
@@ -5525,7 +5596,7 @@ msgstr "E-mail on kinnitatud"
 
 #: app/Stats.php:87
 msgid "Embedded variable"
-msgstr ""
+msgstr "Põimitud/varjatud muutuja"
 
 #. I18N: gedcom tag EMIG
 #: app/GedcomTag.php:404
@@ -5580,7 +5651,7 @@ msgstr ""
 #. I18N [...] of a range of addresses
 #: admin_site_access.php:264 admin_site_access.php:362
 msgid "End IP address"
-msgstr ""
+msgstr "Lõpp IP aadress"
 
 #. I18N: The latest year in a range
 #: lifespan.php:74
@@ -5638,35 +5709,37 @@ msgstr "Eritrea"
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
 msgstr ""
+"Viga: GEDCOM failide teisendamine %s kodeeringust UTF-8-sse ei ole hetkel "
+"toetatud."
 
 #: app/Date/JalaliDate.php:194
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
-msgstr ""
+msgstr "Esf"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:98
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:130
 msgctxt "LOCATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:66
 msgctxt "NOMINATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1266
@@ -5706,7 +5779,7 @@ msgstr "Lähisugulaste sündmused"
 
 #: admin_users.php:517
 msgid "Everybody has this role, including visitors to the website and search engines."
-msgstr ""
+msgstr "See roll on igaühel, ka veebilehe külalistel ja otsingumootoritel."
 
 #: search_advanced.php:154 search_advanced.php:216 search_advanced.php:231
 #: search_advanced.php:253 search_advanced.php:268
@@ -5724,11 +5797,11 @@ msgstr "Täpne tekst"
 #: famlist.php:171 indilist.php:172
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr ""
+msgstr "Välista isikud abielunimega “%s”"
 
 #: admin_media.php:666
 msgid "Exclude subfolders"
-msgstr ""
+msgstr "Välista alamkaustad"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:92
@@ -5804,6 +5877,10 @@ msgstr "KKK nähtavus"
 #: app/Module/FrequentlyAskedQuestionsModule.php:430
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
 msgstr ""
+"KKK-d on nimekirjad küsimustest ja vastustest, mis annavad teile võimaluse "
+"seletada lehekülje reegleid, poliitikat ja protseduure külalistele. "
+"Küsimused on tavaliselt seotud privaatsuse autoriõiguste, kasutajate, "
+"ebasobiliku sisu jpm-ga."
 
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:436
@@ -6099,31 +6176,31 @@ msgstr "Ringdiagramm kasutajale %s"
 #: app/Date/JalaliDate.php:183
 msgctxt "Abbreviation for Persian month: Farvardin"
 msgid "Far"
-msgstr ""
+msgstr "Far"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:87
 msgctxt "GENITIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:151
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:119
 msgctxt "LOCATIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:55
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #: modules_v3/bdm_report/report.xml:118
 #: modules_v3/family_group_report/report.xml:467
@@ -6169,7 +6246,7 @@ msgstr "Faks"
 #: app/Date/CalendarDate.php:312
 msgctxt "Abbreviation for February"
 msgid "Feb"
-msgstr ""
+msgstr "Veebr"
 
 #: app/Date/CalendarDate.php:212
 msgctxt "GENITIVE"
@@ -6217,7 +6294,7 @@ msgstr "Fiyi"
 
 #: app/Module/GoogleMapsModule.php:4287
 msgid "File containing places (CSV)"
-msgstr ""
+msgstr "Fail, mis sisaldab kohtasid (CSV)"
 
 #: admin_media.php:485 app/GedcomTag.php:1783
 msgid "File size"
@@ -6239,21 +6316,25 @@ msgstr "Failinimi serveris"
 #: addmedia.php:160 addmedia.php:294 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr ""
+msgstr "Failinimed ei tohi sisaldada sümbolit \"%s\"."
 
 #: addmedia.php:164 addmedia.php:298 admin_media_upload.php:122
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr ""
+msgstr "Failinimed ei tohi lõppeda laiendiga \"%s\"."
 
 #: admin.php:843
 msgid "Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them."
 msgstr ""
+"On leitud faile webtrees-i eelmistest versioonidest. Vanad failid saavad "
+"mõnikord olla turvariskiks. Te peaksite need kustutama."
 
 #: admin_site_clean.php:88
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
 msgstr ""
+"Failid, mis on märgitud %s -ga on kindlasti vajalikud korralikuks "
+"toimimiseks ja neid ei saa eemaldada."
 
 #: admin_site_change.php:340 admin_site_logs.php:306 app/I18N.php:235
 #: app/Module/SlideShowModule.php:300 find.php:129 find.php:146 find.php:166
@@ -6349,25 +6430,25 @@ msgstr "Flandria"
 #: app/Date/FrenchDate.php:95
 msgctxt "GENITIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:128
 msgctxt "LOCATIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:62
 msgctxt "NOMINATIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #: medialist.php:90
 msgid "Folder"
@@ -6400,6 +6481,8 @@ msgstr "Font"
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
+"Näiteks, kui GEDCOM fail sisaldab %1$s ja webtrees soovib leida  %2$s meedia "
+"kaustast, siis te peate eemaldama %3$s."
 
 #: admin_users.php:593
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -6436,12 +6519,12 @@ msgstr "Vorminda teksti ja märkmeid"
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
 msgid "Foster"
-msgstr ""
+msgstr "Kasu"
 
 #: app/GedcomCode/GedcomCodePedi.php:66
 msgctxt "Male pedigree"
 msgid "Foster"
-msgstr ""
+msgstr "Kasu"
 
 #: app/GedcomCode/GedcomCodePedi.php:70
 msgctxt "Pedigree"
@@ -6503,7 +6586,7 @@ msgstr "Fresno, Kalifornia"
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:667
 msgid "Fri"
-msgstr ""
+msgstr "Reede"
 
 #: app/Date/CalendarDate.php:345
 msgid "Friday"
@@ -6527,54 +6610,54 @@ msgstr "Sõber"
 #: app/Date/FrenchDate.php:90
 msgctxt "GENITIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:123
 msgctxt "LOCATIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:57
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:275 admin_site_logs.php:248
 msgid "From"
-msgstr ""
+msgstr "Alates"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:99
 msgctxt "GENITIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:165
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:132
 msgctxt "LOCATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:66
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #: app/GedcomCode/GedcomCodeTemp.php:153
 msgid "Fukuoka, Japan"
@@ -6646,7 +6729,7 @@ msgstr ""
 #: app/Report/ReportBase.php:108
 #, php-format
 msgid "Generated by %s"
-msgstr ""
+msgstr "Genereeritud %s poolt"
 
 #: app/Controller/BranchesController.php:290
 msgid "Generation"
@@ -6695,25 +6778,25 @@ msgstr "Alemania"
 #: app/Date/FrenchDate.php:94
 msgctxt "GENITIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:127
 msgctxt "LOCATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:61
 msgctxt "NOMINATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #: app/Stats.php:6806
 msgid "Ghana"
@@ -6817,7 +6900,7 @@ msgstr "Grecia"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:83
 msgid "Green Beam"
-msgstr ""
+msgstr "Green Beam"
 
 #: app/Stats.php:6815
 msgid "Greenland"
@@ -6846,17 +6929,17 @@ msgstr "Guam"
 
 #: app/GedcomCode/GedcomCodeRela.php:161
 msgid "Guardian"
-msgstr ""
+msgstr "Eestkostja/hooldaja"
 
 #: app/GedcomCode/GedcomCodeRela.php:159
 msgctxt "FEMALE"
 msgid "Guardian"
-msgstr ""
+msgstr "Eestkostja/hooldaja"
 
 #: app/GedcomCode/GedcomCodeRela.php:157
 msgctxt "MALE"
 msgid "Guardian"
-msgstr ""
+msgstr "Eestkostja/hooldaja"
 
 #: app/Stats.php:6816
 msgid "Guatemala"
@@ -6872,7 +6955,7 @@ msgstr "Guayaquil, Ekuador"
 
 #: app/Stats.php:6805
 msgid "Guernsey"
-msgstr ""
+msgstr "Guernsey"
 
 #: app/Stats.php:6808
 msgid "Guinea"
@@ -6884,7 +6967,7 @@ msgstr "Guinea-Bissau"
 
 #: app/Stats.php:6819
 msgid "Guyana"
-msgstr ""
+msgstr "Guyana"
 
 #. I18N: Name of a module
 #: app/Module/HtmlBlockModule.php:36
@@ -7013,7 +7096,7 @@ msgstr "Helsingi, Soome"
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "Helvetica"
-msgstr ""
+msgstr "Helvetica"
 
 #: modules_v3/ahnentafel_report/report.xml:196
 msgid "Her occupation was"
@@ -7039,25 +7122,25 @@ msgstr "Hermosillo, Mehhiko"
 #: app/Date/JewishDate.php:136
 msgctxt "GENITIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:212
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:174
 msgctxt "LOCATIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:98
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #: admin_trees_config.php:82 admin_trees_config.php:89
 #: admin_trees_config.php:499 admin_trees_config.php:1039
@@ -7113,7 +7196,7 @@ msgstr "Avalehekülg"
 
 #: app/Stats.php:6822
 msgid "Honduras"
-msgstr ""
+msgstr "Honduras"
 
 #: app/GedcomCode/GedcomCodeTemp.php:173 app/Stats.php:6820
 msgid "Hong Kong"
@@ -7217,11 +7300,15 @@ msgstr ""
 #, php-format
 msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
 msgstr ""
+"Kui isikul pole perekonnanime, siis pole vaja kaldjooni;  <%s>Jón "
+"Einarsson<%s>"
 
 #: help_text.php:226
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 msgstr ""
+"Kui inimesel on kaks eraldi perekonnanime, siis need mõlemad peaksid olema "
+"eraldatud kaldjoontega: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 
 #: help_text.php:232
 #, php-format
@@ -15570,16 +15657,16 @@ msgstr ""
 
 #: admin_pgv_to_wt.php:162
 msgid "Where is your PhpGedView installation?"
-msgstr ""
+msgstr "Kus asub teie PhpGedView-i paigalduskaust?"
 
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps?"
-msgstr ""
+msgstr "Milliseid sugupuid peaks sitemap sisaldama?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1036
 msgid "Who can upload new media files?"
-msgstr ""
+msgstr "Kes saab üles laadida uusi meediafaile?"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
@@ -15666,7 +15753,7 @@ msgstr "Tunnistaja"
 #: app/SurnameTradition.php:73 app/SurnameTradition.php:92
 #: app/SurnameTradition.php:97
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "Naised võtavad abikaasa perekonnanime."
 
 #: statistics.php:595
 msgid "World"
@@ -15675,12 +15762,12 @@ msgstr "Maailm"
 #. I18N: gedcom tag _YART
 #: app/GedcomTag.php:1767
 msgid "Yahrzeit"
-msgstr ""
+msgstr "Yahrzeit"
 
 #. I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:37
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "Yahrzeiten"
 
 #: app/Theme/AbstractTheme.php:1009 calendar.php:189
 #: modules_v3/GEDFact_assistant/census/census-edit.php:1118 search.php:253
@@ -15689,7 +15776,7 @@ msgstr "Aasta"
 
 #: help_text.php:279
 msgid "Year input box"
-msgstr ""
+msgstr "Aasta sisestuskast"
 
 #: timeline.php:129 timeline.php:372
 msgid "Year:"
@@ -15704,14 +15791,16 @@ msgstr "Jeemen"
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr ""
+"Teie (või keegi teine, kes püüab olla teie) soovib luua kasutajat %1$s "
+"kasutades e-maili aadressi %2$s."
 
 #: logout.php:24
 msgid "You are logged out."
-msgstr ""
+msgstr "Olete välja logitud."
 
 #: login.php:271 message.php:57
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "Teil ei ole lubatud saata sõnumeid, mis sisaldavad väliseid linke."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -15719,6 +15808,8 @@ msgstr ""
 #: admin_site_config.php:234 admin_trees_config.php:995 edituser.php:262
 msgid "You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc."
 msgstr ""
+"Te saate webtrees-i väljanägemist muuta kasutades “teemasid”. Igal teemal on "
+"erinev stiil, paigutus, värviskeem jne."
 
 #. I18N: %s is a URL
 #: help_text.php:288
@@ -15732,11 +15823,11 @@ msgstr "Seda saab teha lihtsamaks, kui otsida abielunaist tema abielunime kaudu.
 
 #: admin_site_upgrade.php:199
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "Te saate need moodulid peale uuendust uuesti lubada."
 
 #: admin_site_upgrade.php:263
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "Te saate need teemad peale uuendust uuesti lubada."
 
 #: admin_trees_renumber.php:266
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -15744,11 +15835,13 @@ msgstr ""
 
 #: admin_trees_renumber.php:279
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Te saate selle sugupuu ümbernummerdada."
 
 #: admin_site_config.php:201 admin_site_config.php:220
 msgid "You can request a higher or lower limit, although the server may ignore this request."
 msgstr ""
+"Te saate paluda väiksemat või suuremat limiiti, aga server ei pruugi teie "
+"palvet rahuldada."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
@@ -15761,14 +15854,16 @@ msgstr ""
 #: login.php:68
 msgid "You cannot login because your browser does not accept cookies."
 msgstr ""
+"Te ei saa sisse logida, sest teie veebilehitseja ei luba kasutada "
+"'küpsiseid'."
 
 #: includes/session.php:515
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "Teil pole õigusi selle lehe vaatamiseks."
 
 #: admin_site_merge.php:55
 msgid "You entered the same IDs.  You cannot merge the same records."
-msgstr ""
+msgstr "Te sisestasite samad ID-d. Te ei saa samu kirjeid liita."
 
 #: login.php:591
 msgid "You have confirmed your request to become a registered user."
@@ -15780,24 +15875,26 @@ msgstr "Sa ei ole teinud päevikusse ühtegi kannet."
 
 #: admin_trees_manage.php:189
 msgid "You have selected a GEDCOM file with a different name.  Is this correct?"
-msgstr ""
+msgstr "Te valisite teistsuguse nimega GEDCOM faili. Kas see on õige?"
 
 #: addmedia.php:462
 msgid "You may enter a URL, beginning with “http://”."
-msgstr ""
+msgstr "Võite sisestada URL-i, algusega \"http://\"."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:431
 msgid "You may use HTML to format the answer and to add links to other websites."
 msgstr ""
+"Te võite kasutada HTML-i, et vastust kujundada ja lisada viiteid teistele "
+"veebilehekülgedele."
 
 #: setup.php:210
 msgid "You must change this before you can continue."
-msgstr ""
+msgstr "Enne kui saate jätkata, peate seda muutma."
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:78
 #: modules_v3/GEDFact_assistant/census/census-edit.php:1187
 msgid "You must enter a name"
-msgstr ""
+msgstr "Te peate sisestama nime"
 
 #: edituser.php:124
 msgid "You must enter a real name."
@@ -15813,31 +15910,36 @@ msgstr "Te peate sisestama kõik administraatori konto detailid."
 
 #: edit_interface.php:1522
 msgid "You must provide a repository name."
-msgstr ""
+msgstr "Peate andma hoidla nime."
 
 #: edit_interface.php:1203
 msgid "You must provide a source title"
-msgstr ""
+msgstr "Peate andma allika pealkirja"
 
 #: admin_trees_merge.php:96
 msgid "You must renumber the records in one of the trees before you can merge them."
 msgstr ""
+"Selleks, et saaksite need puud liita peate ühes puus kirjed ümbernummerdama."
 
 #: app/Module/ChartsBlockModule.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
-msgstr ""
+msgstr "Te peate valima isiku ja joonise tüübi bloki konfiguratsiooniseadetest."
 
 #: admin_users.php:285
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr ""
+"Enne kui saate piirata kasutaja ligipääsu nende lähisugulastele, peate "
+"täpsustama eraldi kirje."
 
 #: admin_trees_manage.php:308
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Te peate looma sugupuu."
 
 #: admin_pgv_to_wt.php:1164
 msgid "You need to login again, using your PhpGedView username and password."
 msgstr ""
+"Peate uuesti sisse logima, kasutades oma PhpGedView-i kasutajanime ja "
+"parooli."
 
 #: setup.php:421
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
@@ -15846,6 +15948,8 @@ msgstr "Te peate seadistama administraatori konto. Selle konto alt saab kontroll
 #: login.php:546
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr ""
+"Peate kasutaja detailid üle vaatama ja seadistama \"kinnitatud\" oleku \""
+"jah\"-iks."
 
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:437
@@ -15863,24 +15967,32 @@ msgstr "Saatsid järgmise sõnumi webtrees kasutajale:"
 #: admin_site_upgrade.php:99
 msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
+"Enne uuendamist peaksite kõik ootel olevad muudatused kinnitama või tagasi "
+"lükkama."
 
 #: admin_site_upgrade.php:198
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
 msgstr ""
+"Te peaksite konsulteerima mooduli autoriga, et olla kindel kas see on "
+"ühilduv selle webtrees-i versiooniga."
 
 #: admin_site_upgrade.php:262
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
 msgstr ""
+"Te peaksite konsulteerima teema autoriga, et olla kindel, kas see on ühilduv "
+"selle webtrees-i versiooniga."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:272 message.php:58
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr ""
+msgstr "Peaksite kustutama “%1$s” kohast “%2$s” ja proovima uuesti."
 
 #: admin_users.php:393
 msgid "You should not approve an account unless you know that the email address is correct."
 msgstr ""
+"Te ei tohiks kasutajat enne kinnitada, kui olete kindel, et e-maili aadress "
+"on korrektne."
 
 #: login.php:307
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account."
@@ -15933,11 +16045,15 @@ msgstr "Teie kasutajakontol puudub \"automaatselt lubatud muudatused\" luba. Tei
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version."
 msgstr ""
+"Teie veebiserver kasutab PHP versiooni %s, mida enam edasi ei arendata. Te "
+"peaksite uuendama uuemale versioonile."
 
 #: admin.php:515
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible."
 msgstr ""
+"Teie veebiserver kasutab PHP versiooni %s, mis ei saa enam turvauuendusi. Te "
+"peaksite uuendama uuemale versioonile nii kiiresti kui võimalik."
 
 #: app/Stats.php:6977
 msgid "Yugoslavia"
@@ -15970,7 +16086,7 @@ msgstr "Suurenda"
 
 #: app/Module/GoogleMapsModule.php:1425
 msgid "Zoom in here"
-msgstr ""
+msgstr "Suurenda siia sisse"
 
 #: app/Theme/AbstractTheme.php:702 app/Theme/AbstractTheme.php:747
 msgid "Zoom in/out on this box."
@@ -15991,16 +16107,16 @@ msgstr "Vähenda"
 
 #: app/Module/GoogleMapsModule.php:1426
 msgid "Zoom out here"
-msgstr ""
+msgstr "Vähenda siit välja"
 
 #: app/Module/GoogleMapsModule.php:1703
 msgid "Zoom="
-msgstr ""
+msgstr "Suurenda="
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:89
 msgid "a.m."
-msgstr ""
+msgstr "a.m."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:298
@@ -16012,35 +16128,35 @@ msgstr "umbes %s"
 #: source.php:61
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr ""
+msgstr "kinnita"
 
 #: family.php:42 individual.php:52 mediaviewer.php:43 note.php:37 repo.php:36
 #: source.php:43
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr ""
+msgstr "kinnita"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:54
 msgid "accepted"
-msgstr ""
+msgstr "kinnitatud"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
 msgid "adopted name"
-msgstr ""
+msgstr "adopteeritud nimi"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:52
 msgctxt "FEMALE"
 msgid "adopted name"
-msgstr ""
+msgstr "adopteeritud nimi"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:49
 msgctxt "MALE"
 msgid "adopted name"
-msgstr ""
+msgstr "adopteeritud nimi"
 
 #: app/Stats.php:2919
 msgid "adoption"
@@ -16090,7 +16206,7 @@ msgstr "tuntud ka kui"
 #. I18N: option in list box “always use this image”
 #: app/Functions/FunctionsEdit.php:630
 msgid "always"
-msgstr ""
+msgstr "alati"
 
 #: app/Controller/AncestryController.php:92 app/Stats.php:4539
 #: app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4586 app/Stats.php:5956
@@ -16151,7 +16267,7 @@ msgstr "tädi/onu"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:374
 msgid "back to top"
-msgstr ""
+msgstr "tagasi üles"
 
 #: app/Module/TopPageViewsModule.php:178
 msgid "before"
@@ -16176,25 +16292,26 @@ msgstr "sünd"
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:79
 msgid "birth name"
-msgstr ""
+msgstr "sünninimi"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:76
 msgctxt "FEMALE"
 msgid "birth name"
-msgstr ""
+msgstr "sünninimi"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:73
 msgctxt "MALE"
 msgid "birth name"
-msgstr ""
+msgstr "sünninimi"
 
 #. I18N: Extend privacy to dead individuals [who were] ...
 #: admin_trees_config.php:457
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
 msgstr ""
+"sündinud viimase %1$s aasta jooksul või surnud viimase %2$s aasta jooksul"
 
 #: app/Functions/Functions.php:784
 msgid "brother"
@@ -16203,7 +16320,7 @@ msgstr "vend"
 #: app/Functions/Functions.php:1046
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "naisevend"
 
 #: app/Functions/Functions.php:870
 msgctxt "husband’s brother"
@@ -16213,7 +16330,7 @@ msgstr "mehevend"
 #: app/Functions/Functions.php:1162
 msgctxt "husband’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "naisevend"
 
 #: app/Functions/Functions.php:938
 msgctxt "sister’s husband"
@@ -16223,7 +16340,7 @@ msgstr "õemees"
 #: app/Functions/Functions.php:1328
 msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "naisevend"
 
 #: app/Functions/Functions.php:950
 msgctxt "spouse’s brother"
@@ -16238,37 +16355,37 @@ msgstr "naisevend"
 #: app/Functions/Functions.php:1384
 msgctxt "wife’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "naisevend"
 
 #: app/Functions/Functions.php:1048
 msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "naisevend/vennanaine"
 
 #: app/Functions/Functions.php:880
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "naisevend/vennanaine"
 
 #: app/Functions/Functions.php:932
 msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "naisevend/vennanaine"
 
 #: app/Functions/Functions.php:1330
 msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "naisevend/vennanaine"
 
 #: app/Functions/Functions.php:966
 msgctxt "spouse’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "naisevend/vennanaine"
 
 #: app/Functions/Functions.php:978
 msgctxt "wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "naisevend/vennanaine"
 
 #: app/Module/TopSurnamesModule.php:184
 msgid "bullet list"
@@ -16300,19 +16417,19 @@ msgstr "sajand"
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:91
 msgid "change of name"
-msgstr ""
+msgstr "nimemuutus"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:88
 msgctxt "FEMALE"
 msgid "change of name"
-msgstr ""
+msgstr "nimemuutus"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:85
 msgctxt "MALE"
 msgid "change of name"
-msgstr ""
+msgstr "nimemuutus"
 
 #: app/Functions/Functions.php:767 app/Module/GoogleMapsModule.php:2038
 #: app/Module/GoogleMapsModule.php:2072 edit_interface.php:2009
@@ -16322,7 +16439,7 @@ msgstr "laps"
 
 #: statisticsplot.php:1317
 msgid "children"
-msgstr "last"
+msgstr "lapsed"
 
 #. I18N: button label
 #: addmedia.php:231 addmedia.php:384 addmedia.php:705
@@ -16353,7 +16470,7 @@ msgstr "värvid"
 
 #: app/Module/TopSurnamesModule.php:184
 msgid "compact list"
-msgstr ""
+msgstr "kompaktne vaade"
 
 #. I18N: A button label
 #. I18N: Button label
@@ -16373,7 +16490,7 @@ msgstr "jätka"
 #. I18N: Button label
 #: admin_trees_manage.php:666
 msgid "create"
-msgstr ""
+msgstr "loo"
 
 #. I18N: a program feature
 #: setup.php:130
@@ -16397,7 +16514,7 @@ msgstr "tütar"
 #: app/Functions/Functions.php:840
 msgctxt "child’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "minia"
 
 #: app/Functions/Functions.php:948
 msgctxt "son’s wife"
@@ -16407,17 +16524,17 @@ msgstr "minia"
 #: app/Functions/Functions.php:1376
 msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
-msgstr ""
+msgstr "minia isa"
 
 #: app/Functions/Functions.php:1378
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr ""
+msgstr "minia ema"
 
 #: app/Functions/Functions.php:1380
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr ""
+msgstr "minia vanemad"
 
 #: app/Stats.php:2917
 msgid "death"
@@ -16426,12 +16543,12 @@ msgstr "surm"
 #. I18N: Measure of latitude/longitude
 #: app/Module/GoogleMapsModule.php:4035 app/Module/GoogleMapsModule.php:4045
 msgid "degrees"
-msgstr ""
+msgstr "kraadid"
 
 #. I18N: Button label
 #: admin_site_clean.php:115 admin_users.php:777
 msgid "delete"
-msgstr ""
+msgstr "kustuta"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:28 admin_site_access.php:35
@@ -16448,17 +16565,17 @@ msgstr "surnud"
 #: modules_v3/descendancy_report/report.xml:436
 msgctxt "MALE"
 msgid "died"
-msgstr ""
+msgstr "surnud"
 
 #: app/Module/GoogleMapsModule.php:362 app/Module/GoogleMapsModule.php:371
 #: app/Module/GoogleMapsModule.php:380 app/Module/GoogleMapsModule.php:388
 #: app/Module/GoogleMapsModule.php:396 app/Module/GoogleMapsModule.php:404
 msgid "digits"
-msgstr ""
+msgstr "numbrid"
 
 #: app/Module/GoogleMapsModule.php:4047
 msgid "east"
-msgstr ""
+msgstr "ida"
 
 #. I18N: button label
 #: admin_trees_config.php:1435 admin_trees_config.php:1738
@@ -16471,23 +16588,23 @@ msgstr ""
 #: admin_trees_config.php:2121 admin_trees_config.php:2152
 #: admin_trees_config.php:2181
 msgid "edit"
-msgstr ""
+msgstr "muuda"
 
 #: app/Functions/Functions.php:553
 msgctxt "FEMALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "kaheksas nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:510
 msgctxt "MALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "kaheksas nõbu"
 
 #: app/Functions/Functions.php:588
 msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "kaheksas nõbu"
 
 #: app/Functions/Functions.php:779
 msgid "elder brother"
@@ -16504,68 +16621,68 @@ msgstr "vanem õde"
 #: app/Functions/Functions.php:559
 msgctxt "FEMALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "üheteistkümnes nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:519
 msgctxt "MALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "üheteistkümnes nõbu"
 
 #: app/Functions/Functions.php:594
 msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "üheteistkümnes nõbu"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:103
 msgid "estate name"
-msgstr ""
+msgstr "mõisanimi"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:100
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "mõisanimi"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:97
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "mõisanimi"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:304
 #, php-format
 msgid "estimated %s"
-msgstr ""
+msgstr "arvestatavalt %s"
 
 #: app/Functions/Functions.php:719
 msgid "ex-husband"
-msgstr ""
+msgstr "eksabikaasa"
 
 #: app/Functions/Functions.php:732
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "eksparner"
 
 #: app/Functions/Functions.php:714
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ekspartner"
 
 #: app/Functions/Functions.php:750
 msgctxt "MALE/FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "eksparner"
 
 #: app/Functions/Functions.php:755
 msgid "ex-spouse"
-msgstr ""
+msgstr "eksabikaasa"
 
 #: app/Functions/Functions.php:737
 msgid "ex-wife"
-msgstr ""
+msgstr "eksnaine"
 
 #: admin_trees_config.php:69 modules_v3/fact_sources/report.xml:6
 msgid "facts"
@@ -16593,57 +16710,57 @@ msgstr "äi"
 #: app/Functions/Functions.php:567
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "viieteistkümnes nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:531
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "viieteistkümnes nõbu"
 
 #: app/Functions/Functions.php:602
 msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "viieteistkümnes nõbu"
 
 #: app/Functions/Functions.php:647
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "viies %s"
 
 #: app/Functions/Functions.php:632
 #, php-format
 msgctxt "MALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "viies %s"
 
 #: app/Functions/Functions.php:662
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "viies %s"
 
 #: app/Functions/Functions.php:547
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "viies nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:501
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "viies nõbu"
 
 #: app/Functions/Functions.php:582
 msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "viies nõbu"
 
 #. I18N: a program feature
 #: setup.php:141
 msgid "file upload capability"
-msgstr ""
+msgstr "faili üleslaadimis võime"
 
 #. I18N: button label, first page
 #: admin_trees_config.php:1633 app/I18N.php:222
@@ -16653,104 +16770,104 @@ msgstr "esimene"
 #: admin_trees_config.php:1644
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr ""
+msgstr "esimene"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:639
 #, php-format
 msgctxt "FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "esimene %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:624
 #, php-format
 msgctxt "MALE"
 msgid "first %s"
-msgstr ""
+msgstr "esimene %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:654
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "esimene %s"
 
 #: app/Functions/Functions.php:539
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:489
 msgctxt "MALE"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:574
 msgctxt "MALE/FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:1102
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:1104
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:1106
 msgctxt "father’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:1146
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:1148
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:1152
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:1164
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:1166
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:1168
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:1214
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:1216
 msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:1220
 msgctxt "mother’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "esimene nõbu"
 
 #: app/Functions/Functions.php:1446
 msgctxt "father’s father’s brother’s child"
@@ -16875,52 +16992,52 @@ msgstr ""
 #: app/Functions/Functions.php:565
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "neljatestkümnes nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:528
 msgctxt "MALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "neljatestkümnes nõbu"
 
 #: app/Functions/Functions.php:600
 msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "neljatestkümnes nõbu"
 
 #: app/Functions/Functions.php:645
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "neljas %s"
 
 #: app/Functions/Functions.php:630
 #, php-format
 msgctxt "MALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "neljas %s"
 
 #: app/Functions/Functions.php:660
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "neljas %s"
 
 #: app/Functions/Functions.php:545
 msgctxt "FEMALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "neljas nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:498
 msgctxt "MALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "neljas nõbu"
 
 #: app/Functions/Functions.php:580
 msgctxt "MALE/FEMALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "neljas nõbu"
 
 #. I18N: from 1700 interval 50 years
 #: statistics.php:619 statistics.php:621 statistics.php:623 statistics.php:625
@@ -16935,18 +17052,18 @@ msgstr[1] "alates %1$s intervalliga %2$s aastat"
 #: app/Date.php:316
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "järgneva poolt %s"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:325
 #, php-format
 msgid "from %s to %s"
-msgstr ""
+msgstr "%s-lt %s-le"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:71
 msgid "full circle"
-msgstr ""
+msgstr "täisring"
 
 #: statistics.php:611
 msgid "gender"
@@ -16955,7 +17072,7 @@ msgstr "sugu"
 #. I18N: button label
 #: edit_interface.php:2600
 msgid "go to new individual"
-msgstr ""
+msgstr "mine uue isiku juurde"
 
 #: app/Functions/Functions.php:830
 msgctxt "child’s child"
@@ -16990,17 +17107,17 @@ msgstr "pojatütar"
 #: app/Functions/Functions.php:1062
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "lapselapse elukaaslane"
 
 #: app/Functions/Functions.php:1084
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "lapselapse elukaaslane"
 
 #: app/Functions/Functions.php:1364
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "lapselapse elukaaslane"
 
 #: app/Functions/Functions.php:912
 msgctxt "parent’s father"
@@ -17577,7 +17694,7 @@ msgstr "vanatädi/-onu"
 #: app/Functions/Functions.php:1396
 msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "vanatädi/-onu"
 
 #: app/Functions/Functions.php:1142
 msgctxt "father’s parent’s sibling"
@@ -17587,7 +17704,7 @@ msgstr "vanatädi/-onu"
 #: app/Functions/Functions.php:1402
 msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "vanatädi/-onu"
 
 #: app/Functions/Functions.php:1180
 msgctxt "mother’s father’s sibling"
@@ -17597,7 +17714,7 @@ msgstr "vanatädi/-onu"
 #: app/Functions/Functions.php:1408
 msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "vanatädi/-onu"
 
 #: app/Functions/Functions.php:1198
 msgctxt "mother’s mother’s sibling"
@@ -17607,7 +17724,7 @@ msgstr "vanatädi/-onu"
 #: app/Functions/Functions.php:1414
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "vanatädi/-onu"
 
 #: app/Functions/Functions.php:1210
 msgctxt "mother’s parent’s sibling"
@@ -17617,7 +17734,7 @@ msgstr "vanatädi/-onu"
 #: app/Functions/Functions.php:1420
 msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "vanatädi/-onu"
 
 #: app/Functions/Functions.php:1232
 msgctxt "parent’s father’s sibling"
@@ -17627,7 +17744,7 @@ msgstr "vanatädi/-onu"
 #: app/Functions/Functions.php:1426
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "vanatädi/-onu"
 
 #: app/Functions/Functions.php:1244
 msgctxt "parent’s mother’s sibling"
@@ -17637,7 +17754,7 @@ msgstr "vanatädi/-onu"
 #: app/Functions/Functions.php:1432
 msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "vanatädi/-onu"
 
 #: app/Functions/Functions.php:1256
 msgctxt "parent’s parent’s sibling"
@@ -17647,7 +17764,7 @@ msgstr "vanatädi/-onu"
 #: app/Functions/Functions.php:1438
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "vanatädi/-onu"
 
 #: app/Functions/Functions.php:1052
 msgctxt "child’s child’s child"
@@ -17953,11 +18070,11 @@ msgstr "lapselapselapselaps"
 
 #: app/Functions/Functions.php:1580
 msgid "great-great-great-aunt"
-msgstr ""
+msgstr "vana-vana-vanatädi"
 
 #: app/Functions/Functions.php:1582
 msgid "great-great-great-aunt/uncle"
-msgstr ""
+msgstr "vana-vana-vanatädi/-onu"
 
 #: app/Functions/Functions.php:2000
 msgid "great-great-great-grandchild"
@@ -17986,347 +18103,347 @@ msgstr "lapse 3× lapselaps"
 #: app/Functions/Functions.php:1726
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "vana-vana-vana-vennapoeg"
 
 #: app/Functions/Functions.php:1728
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "vana-vana-vana-vennapoeg"
 
 #: app/Functions/Functions.php:1730
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "vana-vana-vana-vennapoeg"
 
 #: app/Functions/Functions.php:1742
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "vana-vana-vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1744
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "vana-vana-vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1746
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "vana-vana-vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1734
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "vana-vana-vana-vennatütar"
 
 #: app/Functions/Functions.php:1736
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "vana-vana-vana-vennatütar"
 
 #: app/Functions/Functions.php:1738
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "vana-vana-vana-vennatütar"
 
 #: app/Functions/Functions.php:1573
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "vana-vana-vana-onu"
 
 #: app/Functions/Functions.php:1575
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "vana-vana-vana-onu"
 
 #: app/Functions/Functions.php:1577
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "vana-vana-vana-onu"
 
 #: app/Functions/Functions.php:1699
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "vana-vana-vennapoeg"
 
 #: app/Functions/Functions.php:1701
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "vana-vana-vennapoeg"
 
 #: app/Functions/Functions.php:1703
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "vana-vana-vennapoeg"
 
 #: app/Functions/Functions.php:1715
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "vana-vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1717
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "vana-vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1719
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "vana-vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1707
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "vana-vana-vennatütar"
 
 #: app/Functions/Functions.php:1709
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "vana-vana-vennatütar"
 
 #: app/Functions/Functions.php:1711
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr ""
+msgstr "vana-vana-vennatütar"
 
 #: app/Functions/Functions.php:1558
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "vana-vana-onu"
 
 #: app/Functions/Functions.php:1560
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "vana-vana-onu"
 
 #: app/Functions/Functions.php:1562
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "vana-vana-onu"
 
 #: app/Functions/Functions.php:1001
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1021
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1039
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1303
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1323
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1347
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1003
 msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1023
 msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1041
 msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1305
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1325
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1349
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1272
 msgctxt "sibling’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1280
 msgctxt "sibling’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:1286
 msgctxt "sibling’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "vana-vennapoeg"
 
 #: app/Functions/Functions.php:989
 msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1007
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1027
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1291
 msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1309
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1335
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:991
 msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1009
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1029
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1293
 msgctxt "(a woman’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1311
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1337
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1268
 msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1274
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1282
 msgctxt "sibling’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "vana-vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:995
 msgctxt "(a man’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1013
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1033
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1297
 msgctxt "(a man’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1315
 msgctxt "(a man’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1341
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:997
 msgctxt "(a woman’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1015
 msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1035
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1299
 msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1317
 msgctxt "(a woman’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1343
 msgctxt "(a woman’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1270
 msgctxt "sibling’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1276
 msgctxt "sibling’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1284
 msgctxt "sibling’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "vana-vennatütar"
 
 #: app/Functions/Functions.php:1110
 msgctxt "father’s father’s brother"
@@ -18336,7 +18453,7 @@ msgstr "vanaonu"
 #: app/Functions/Functions.php:1392
 msgctxt "father’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "vanaonu"
 
 #: app/Functions/Functions.php:1122
 msgctxt "father’s mother’s brother"
@@ -18346,7 +18463,7 @@ msgstr "vanaonu"
 #: app/Functions/Functions.php:1398
 msgctxt "father’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "vanaonu"
 
 #: app/Functions/Functions.php:1134
 msgctxt "father’s parent’s brother"
@@ -18356,7 +18473,7 @@ msgstr "vanaonu"
 #: app/Functions/Functions.php:1404
 msgctxt "father’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "vanaonu"
 
 #: app/Functions/Functions.php:1172
 msgctxt "mother’s father’s brother"
@@ -18366,7 +18483,7 @@ msgstr "vanaonu"
 #: app/Functions/Functions.php:1410
 msgctxt "mother’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "vanaonu"
 
 #: app/Functions/Functions.php:1190
 msgctxt "mother’s mother’s brother"
@@ -18376,7 +18493,7 @@ msgstr "vanaonu"
 #: app/Functions/Functions.php:1416
 msgctxt "mother’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "vanaonu"
 
 #: app/Functions/Functions.php:1202
 msgctxt "mother’s parent’s brother"
@@ -18386,7 +18503,7 @@ msgstr "vanaonu"
 #: app/Functions/Functions.php:1422
 msgctxt "mother’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "vanaonu"
 
 #: app/Functions/Functions.php:1224
 msgctxt "parent’s father’s brother"
@@ -18396,7 +18513,7 @@ msgstr "vanaonu"
 #: app/Functions/Functions.php:1428
 msgctxt "parent’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "vanaonu"
 
 #: app/Functions/Functions.php:1236
 msgctxt "parent’s mother’s brother"
@@ -18406,7 +18523,7 @@ msgstr "vanaonu"
 #: app/Functions/Functions.php:1434
 msgctxt "parent’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "vanaonu"
 
 #: app/Functions/Functions.php:1248
 msgctxt "parent’s parent’s brother"
@@ -18416,12 +18533,12 @@ msgstr "vanaonu"
 #: app/Functions/Functions.php:1440
 msgctxt "parent’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "vanaonu"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:69
 msgid "half circle"
-msgstr ""
+msgstr "poolring"
 
 #: app/Functions/Functions.php:866
 msgctxt "father’s son"
@@ -18475,7 +18592,7 @@ msgstr "poolaastat pärast abielu"
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:737
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "hh:mm või hh:mm:ss"
 
 #: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:314
 msgid "hide"
@@ -18489,25 +18606,25 @@ msgstr "abikaasa"
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:115
 msgid "immigration name"
-msgstr ""
+msgstr "immigratsiooninimi"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:112
 msgctxt "FEMALE"
 msgid "immigration name"
-msgstr ""
+msgstr "immigratsiooninimi"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:109
 msgctxt "MALE"
 msgid "immigration name"
-msgstr ""
+msgstr "immigratsiooninimi"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr ""
+msgstr "tõlgendatud %s (%s)"
 
 #: statistics.php:547 statistics.php:549 statistics.php:551 statistics.php:558
 #: statistics.php:560
@@ -18527,7 +18644,7 @@ msgstr "intervall kaks last"
 
 #: search.php:121 search.php:284
 msgid "invert selection"
-msgstr ""
+msgstr "vastanda valik"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:100
@@ -18579,11 +18696,11 @@ msgstr "loetelu"
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:121
 msgid "maiden name"
-msgstr ""
+msgstr "neiupõlvenimi"
 
 #: admin_trees_config.php:476
 msgid "managers"
-msgstr ""
+msgstr "haldajad"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
@@ -18607,34 +18724,34 @@ msgstr "abiellunud"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:132
 msgid "married name"
-msgstr ""
+msgstr "abielunimi"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:129
 msgctxt "FEMALE"
 msgid "married name"
-msgstr ""
+msgstr "abielunimi"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:126
 msgctxt "MALE"
 msgid "married name"
-msgstr ""
+msgstr "abielunimi"
 
 #: app/Functions/Functions.php:892
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr ""
+msgstr "emapoolne vanaisa"
 
 #: app/Functions/Functions.php:896
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr ""
+msgstr "emapoolne vanaema"
 
 #: app/Functions/Functions.php:898
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr ""
+msgstr "emapoolne vanavanem"
 
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:78
@@ -18643,7 +18760,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:333
 msgid "maximum"
-msgstr ""
+msgstr "maksimaalne"
 
 #: app/Module/RecentChangesModule.php:150
 #: app/Module/UpcomingAnniversariesModule.php:150
@@ -18658,12 +18775,12 @@ msgstr[1] "maksimaalsed %s päevad"
 #: admin_trees_config.php:435 admin_trees_config.php:475
 #: admin_trees_config.php:495
 msgid "members"
-msgstr ""
+msgstr "liikmed"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:86
 msgid "midnight"
-msgstr ""
+msgstr "kesköö"
 
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:171
@@ -18672,7 +18789,7 @@ msgstr "minimaalne"
 
 #: app/Module/GoogleMapsModule.php:328
 msgid "minimum"
-msgstr ""
+msgstr "miinimum"
 
 #: statisticsplot.php:859 statisticsplot.php:909 statisticsplot.php:963
 #: statisticsplot.php:1013 statisticsplot.php:1067
@@ -18709,7 +18826,7 @@ msgstr "ämm"
 #: app/Functions/Functions.php:964
 msgctxt "spouse’s parent"
 msgid "mother/father-in-law"
-msgstr ""
+msgstr "ämm/äi"
 
 #: app/Functions/Functions.php:826
 msgctxt "brother’s son"
@@ -18744,22 +18861,22 @@ msgstr "õetütre abikaasa"
 #: app/Functions/Functions.php:822
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "vennapoeg/vennatütar"
 
 #: app/Functions/Functions.php:926
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "vennapoeg/vennatütar"
 
 #: app/Functions/Functions.php:934
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "vennapoeg/vennatütar"
 
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:636
 msgid "never"
-msgstr ""
+msgstr "mitte kunagi"
 
 #. I18N: button label, next page
 #: app/I18N.php:224 app/Module/BatchUpdateModule.php:232
@@ -18799,18 +18916,18 @@ msgstr "õepoja abikaasa"
 #: app/Functions/Functions.php:555
 msgctxt "FEMALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "üheksas nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:513
 msgctxt "MALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "üheksas nõbu"
 
 #: app/Functions/Functions.php:590
 msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "üheksas nõbu"
 
 #: admin_trees_config.php:74 admin_users.php:240 admin_users.php:241
 #: app/Functions/FunctionsEdit.php:125
@@ -18846,7 +18963,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:4037
 msgid "north"
-msgstr ""
+msgstr "põhi"
 
 #: statistics.php:634 statisticsplot.php:860 statisticsplot.php:910
 #: statisticsplot.php:964 statisticsplot.php:1014 statisticsplot.php:1068
@@ -18892,22 +19009,22 @@ msgstr ""
 
 #: app/Functions/Functions.php:707
 msgid "parent"
-msgstr ""
+msgstr "vanem"
 
 #: app/Functions/Functions.php:734
 msgctxt "FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/Functions/Functions.php:716
 msgctxt "MALE"
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/Functions/Functions.php:752
 msgctxt "MALE/FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
@@ -18917,17 +19034,17 @@ msgstr "isapoolne"
 #: app/Functions/Functions.php:856
 msgctxt "father’s father"
 msgid "paternal grandfather"
-msgstr ""
+msgstr "isapoolne vanaisa"
 
 #: app/Functions/Functions.php:858
 msgctxt "father’s mother"
 msgid "paternal grandmother"
-msgstr ""
+msgstr "isapoolne vanaema"
 
 #: app/Functions/Functions.php:860
 msgctxt "father’s parent"
 msgid "paternal grandparent"
-msgstr ""
+msgstr "isapoolne vanavanem"
 
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:75
@@ -18937,7 +19054,7 @@ msgstr ""
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:56
 msgid "pending"
-msgstr ""
+msgstr "otsuse ootel"
 
 #: statistics.php:636 statisticsplot.php:873 statisticsplot.php:923
 #: statisticsplot.php:977 statisticsplot.php:1027 statisticsplot.php:1081
@@ -18948,7 +19065,7 @@ msgstr "protsent"
 
 #: admin_trees_config.php:1078
 msgid "pixels"
-msgstr ""
+msgstr "pikslit"
 
 #. I18N: button label
 #: admin_trees_places.php:107
@@ -18963,7 +19080,7 @@ msgstr "eelmine"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/GedcomCode/GedcomCodeQuay.php:39
 msgid "primary evidence"
-msgstr ""
+msgstr "esmane tõend"
 
 #: statistics.php:568
 msgid "quarters after marriage"
@@ -18972,7 +19089,7 @@ msgstr "kvartaleid pärast abielu"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/GedcomCode/GedcomCodeQuay.php:47
 msgid "questionable evidence"
-msgstr ""
+msgstr "küsitava usaldusväärsusega tõend"
 
 #: admin_trees_config.php:70 modules_v3/fact_sources/report.xml:6
 msgid "records"
@@ -18982,35 +19099,35 @@ msgstr "kirjed"
 #: source.php:62
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr ""
+msgstr "lükka tagasi"
 
 #: family.php:43 individual.php:53 mediaviewer.php:44 note.php:38 repo.php:37
 #: source.php:44
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr ""
+msgstr "lükka tagasi"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:55
 msgid "rejected"
-msgstr ""
+msgstr "tagasilükatud"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:144
 msgid "religious name"
-msgstr ""
+msgstr "religioosne nimi"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:141
 msgctxt "FEMALE"
 msgid "religious name"
-msgstr ""
+msgstr "religioosne nimi"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:138
 msgctxt "MALE"
 msgid "religious name"
-msgstr ""
+msgstr "religioosne nimi"
 
 #. I18N: a program feature
 #: setup.php:131 setup.php:132
@@ -19053,175 +19170,175 @@ msgstr "salvesta"
 #, php-format
 msgctxt "FEMALE"
 msgid "second %s"
-msgstr ""
+msgstr "sekund %s"
 
 #: app/Functions/Functions.php:626
 #, php-format
 msgctxt "MALE"
 msgid "second %s"
-msgstr ""
+msgstr "sekund %s"
 
 #: app/Functions/Functions.php:656
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "second %s"
-msgstr ""
+msgstr "sekund %s"
 
 #: app/Functions/Functions.php:541
 msgctxt "FEMALE"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:492
 msgctxt "MALE"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:576
 msgctxt "MALE/FEMALE"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1497
 msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1493
 msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1495
 msgctxt "grandfather’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1509
 msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1505
 msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1507
 msgctxt "grandfather’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1503
 msgctxt "grandfather’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1499
 msgctxt "grandfather’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1501
 msgctxt "grandfather’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1515
 msgctxt "grandmother’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1511
 msgctxt "grandmother’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1513
 msgctxt "grandmother’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1527
 msgctxt "grandmother’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1523
 msgctxt "grandmother’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1525
 msgctxt "grandmother’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1521
 msgctxt "grandmother’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1517
 msgctxt "grandmother’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1519
 msgctxt "grandmother’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1533
 msgctxt "grandparent’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1529
 msgctxt "grandparent’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1531
 msgctxt "grandparent’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1545
 msgctxt "grandparent’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1541
 msgctxt "grandparent’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1543
 msgctxt "grandparent’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1539
 msgctxt "grandparent’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1535
 msgctxt "grandparent’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #: app/Functions/Functions.php:1537
 msgctxt "grandparent’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "teine nõbu"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/GedcomCode/GedcomCodeQuay.php:43
 msgid "secondary evidence"
-msgstr ""
+msgstr "teisejärguline tõend"
 
 #. I18N: select all (of the family trees)
 #: search.php:118 search.php:281
@@ -19241,18 +19358,18 @@ msgstr "ise"
 #: app/Functions/Functions.php:551
 msgctxt "FEMALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "seitsmes nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:507
 msgctxt "MALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "seitsmes nõbu"
 
 #: app/Functions/Functions.php:586
 msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "seitsmes nõbu"
 
 #. I18N: Button label
 #: admin_trees_config.php:43 app/Module/FrequentlyAskedQuestionsModule.php:440
@@ -19281,12 +19398,12 @@ msgstr "vennanaine"
 #: app/Functions/Functions.php:1050
 msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "vennanaine"
 
 #: app/Functions/Functions.php:1160
 msgctxt "husband’s brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "vennanaine"
 
 #: app/Functions/Functions.php:882
 msgctxt "husband’s sister"
@@ -19296,7 +19413,7 @@ msgstr "meheõde"
 #: app/Functions/Functions.php:1332
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "vennanaine"
 
 #: app/Functions/Functions.php:960
 msgctxt "spouse’s sister"
@@ -19306,7 +19423,7 @@ msgstr "abikaasa õde"
 #: app/Functions/Functions.php:1382
 msgctxt "wife’s brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "vennanaine"
 
 #: app/Functions/Functions.php:980
 msgctxt "wife’s sister"
@@ -19316,18 +19433,18 @@ msgstr "naiseõde"
 #: app/Functions/Functions.php:549
 msgctxt "FEMALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "kuues nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:504
 msgctxt "MALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "kuues nõbu"
 
 #: app/Functions/Functions.php:584
 msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "kuues nõbu"
 
 #: app/Functions/Functions.php:763 app/Functions/FunctionsCharts.php:311
 #: app/Module/GoogleMapsModule.php:2034 app/Module/GoogleMapsModule.php:2064
@@ -19342,7 +19459,7 @@ msgstr "poeg"
 #: app/Functions/Functions.php:834
 msgctxt "child’s husband"
 msgid "son-in-law"
-msgstr ""
+msgstr "väimees"
 
 #: app/Functions/Functions.php:846
 msgctxt "daughter’s husband"
@@ -19352,22 +19469,22 @@ msgstr "väimees"
 #: app/Functions/Functions.php:1088
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr ""
+msgstr "väimehe isa"
 
 #: app/Functions/Functions.php:1090
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr ""
+msgstr "väimehe ema"
 
 #: app/Functions/Functions.php:1092
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr ""
+msgstr "väimehe vanem"
 
 #: app/Functions/Functions.php:838
 msgctxt "child’s spouse"
 msgid "son/daughter-in-law"
-msgstr ""
+msgstr "minia/väimees"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:157
@@ -19431,7 +19548,7 @@ msgstr "sorteeri pealkirja järgi"
 
 #: app/Module/GoogleMapsModule.php:4038
 msgid "south"
-msgstr ""
+msgstr "lõuna"
 
 #: app/Functions/Functions.php:761 edit_interface.php:1938
 #: edit_interface.php:1948 edit_interface.php:1973 edit_interface.php:1984
@@ -19565,87 +19682,90 @@ msgstr "märksõnapilv"
 #: app/Functions/Functions.php:557
 msgctxt "FEMALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "kümnes nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:516
 msgctxt "MALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "kümnes nõbu"
 
 #: app/Functions/Functions.php:592
 msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "kümnes nõbu"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:98
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
 msgstr ""
+"andmebaasi ühenduse seaded failis '/data/config.ini.php’ on siiani korrektsed"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:101
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
+"kaust '/data' ja fail ‘/data/config.ini.php’ omavad juurdepääsuõigusi, mis "
+"lubavad veebiserveril neid lugeda"
 
 #: app/Functions/Functions.php:643
 #, php-format
 msgctxt "FEMALE"
 msgid "third %s"
-msgstr ""
+msgstr "kolmas %s"
 
 #: app/Functions/Functions.php:628
 #, php-format
 msgctxt "MALE"
 msgid "third %s"
-msgstr ""
+msgstr "kolmas %s"
 
 #: app/Functions/Functions.php:658
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "third %s"
-msgstr ""
+msgstr "kolmas %s"
 
 #: app/Functions/Functions.php:543
 msgctxt "FEMALE"
 msgid "third cousin"
-msgstr ""
+msgstr "kolmas nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:495
 msgctxt "MALE"
 msgid "third cousin"
-msgstr ""
+msgstr "kolmas nõbu"
 
 #: app/Functions/Functions.php:578
 msgctxt "MALE/FEMALE"
 msgid "third cousin"
-msgstr ""
+msgstr "kolmas nõbu"
 
 #: app/Functions/Functions.php:563
 msgctxt "FEMALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "kolmeteistkümnes nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:525
 msgctxt "MALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "kolmeteistkümnes nõbu"
 
 #: app/Functions/Functions.php:598
 msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "kolmeteistkümnes nõbu"
 
 #: admin_trees_config.php:555
 msgid "this record does not exist"
-msgstr ""
+msgstr "seda kirjet pole olemas"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:70
 msgid "three-quarter circle"
-msgstr ""
+msgstr "kolmveerandring"
 
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:112
@@ -19661,18 +19781,18 @@ msgstr "%s'le"
 #: app/Functions/Functions.php:561
 msgctxt "FEMALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "kaheteistkümnes nõbu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:522
 msgctxt "MALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "kaheteistkümnes nõbu"
 
 #: app/Functions/Functions.php:596
 msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "kaheteistkümnes nõbu"
 
 #: app/Functions/Functions.php:775
 msgid "twin brother"
@@ -19747,7 +19867,7 @@ msgstr "teadmata"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
 msgid "unreliable evidence"
-msgstr ""
+msgstr "mitteusaldusväärne tõend"
 
 #. I18N: button label
 #: admin_trees_places.php:108
@@ -19758,29 +19878,29 @@ msgstr "Uuendus"
 #: admin_trees_config.php:434 admin_trees_config.php:474
 #: admin_trees_config.php:494
 msgid "visitors"
-msgstr ""
+msgstr "külalised"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:107
 msgctxt "FEMALE"
 msgid "was born"
-msgstr ""
+msgstr "sündis"
 
 #: modules_v3/ahnentafel_report/report.xml:140
 #: modules_v3/descendancy_report/report.xml:104
 msgctxt "MALE"
 msgid "was born"
-msgstr ""
+msgstr "sündis"
 
 #: app/Theme/WebtreesTheme.php:137
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:110
 #, php-format
 msgid "webtrees cannot connect to the PhpGedView database: %s."
-msgstr ""
+msgstr "webtrees ei saa ühenduda PhpGedView-i andmebaasiga: %s."
 
 #: message.php:40 message.php:261 message.php:324
 msgid "webtrees message"
@@ -19808,18 +19928,22 @@ msgstr "webtrees saadab emaili ilma kohaliku salvestamiseta"
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
+"webtrees kasutab UTF-8 kodeeringut täpitähtede, erisümbolite ja non-latin "
+"tähtede jaoks. Kui te soovite kasutada seda GEDCOM faili sellise genealoogia "
+"tarkvaraga, mis ei toeta UTF-8 kodeeringut, siis te saate selle koostada "
+"kasutades ISO-8859-1 kodeeringut."
 
 #: app/Functions/FunctionsPrint.php:208
 msgid "webtrees wiki"
-msgstr ""
+msgstr "webtrees wiki"
 
 #: admin_trees_manage.php:696
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
-msgstr ""
+msgstr "webtrees-i andmebaas peab olema samas serveris, kus PhpGedViewi oma"
 
 #: app/Module/GoogleMapsModule.php:4048
 msgid "west"
-msgstr ""
+msgstr "lääs"
 
 #: app/Functions/Functions.php:743 edit_interface.php:1937
 #: edit_interface.php:1972
@@ -19856,6 +19980,8 @@ msgstr "jah"
 #: site-unavailable.php:104
 msgid "you can connect to the database using other applications, such as phpmyadmin"
 msgstr ""
+"te saate andmebaasiga ühenduda kasutades teisi rakendusi nagu näiteks "
+"phpmyadmin"
 
 #: app/Functions/Functions.php:777
 msgid "younger brother"
