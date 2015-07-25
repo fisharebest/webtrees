@@ -311,5 +311,3 @@ function checknames(frm) {
 <?php endif; ?>
 
 <?php $controller->printResults(); ?>
-
-</div>
