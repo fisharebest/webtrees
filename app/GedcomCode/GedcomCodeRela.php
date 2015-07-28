@@ -140,8 +140,14 @@ class GedcomCodeRela {
 			// always female
 			return I18N::translate('Godmother');
 		case 'godparent':
-			// no sex implied
-			return I18N::translate('Godparent');
+			switch ($sex) {
+			case 'M':
+				return I18N::translate('Godfather');
+			case 'F':
+				return I18N::translate('Godmother');
+			default:
+				return I18N::translate('Godparent');
+			}
 		case 'godson':
 			// always male
 			return I18N::translate('Godson');
@@ -149,8 +155,14 @@ class GedcomCodeRela {
 			// always female
 			return I18N::translate('Goddaughter');
 		case 'godchild':
-			// no sex implied
-			return I18N::translate('Godchild');
+			switch ($sex) {
+			case 'M':
+				return I18N::translate('Godson');
+			case 'F':
+				return I18N::translate('Goddaughter');
+			default:
+				return I18N::translate('Godchild');
+			}
 		case 'guardian':
 			switch ($sex) {
 			case 'M':

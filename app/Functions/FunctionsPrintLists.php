@@ -1610,8 +1610,6 @@ class FunctionsPrintLists {
 	 * @return string
 	 */
 	public static function surnameTagCloud($surnames, $script, $totals, Tree $tree) {
-		global $WT_TREE;
-
 		$minimum = PHP_INT_MAX;
 		$maximum = 1;
 		foreach ($surnames as $surn => $surns) {
@@ -1630,12 +1628,7 @@ class FunctionsPrintLists {
 				} else {
 					$size = 75.0 + 125.0 * (count($indis) - $minimum) / ($maximum - $minimum);
 				}
-				$html .= '<a style="font-size:' . $size . '%" href="' . $script . '?';
-				if ($surn) {
-					$html .= 'surname=' . urlencode($surn) . '&amp;ged=' . $tree->getNameUrl();
-				} else {
-					$html .= '?alpha=,&amp;ged=' . $WT_TREE->getNameUrl();
-				}
+				$html .= '<a style="font-size:' . $size . '%" href="' . $script . '?surname=' . Filter::escapeUrl($surn) . '&amp;ged=' . $tree->getNameUrl() . '">';
 				if ($totals) {
 					$html .= I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number(count($indis)));
 				} else {
