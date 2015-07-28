@@ -215,9 +215,11 @@ if ($action === 'submit') {
 	$pages = (int) (($count + $max - 1) / $max);
 	$page  = max(min($page, $pages), 1);
 
-	if ($page === $pages) {
-		// Last page has fewer than $max pages
-		$max = $count % $max;
+	if ($page === $pages && $count % $max !== 0) {
+		// Last page may have    fewer than $max pages
+		$number_on_page = $count % $max;
+	} else {
+		$number_on_page = $max;
 	}
 
 	if (I18N::direction() === 'ltr') {
@@ -248,7 +250,7 @@ if ($action === 'submit') {
 		}
 
 		echo '<tbody><tr>';
-		for ($i = 0, $n = 0; $i < $max; ++$i) {
+		for ($i = 0, $n = 0; $i < $number_on_page; ++$i) {
 			$mediaobject = $medialist[($page - 1) * $max + $i];
 
 			if ($columns === 1) {

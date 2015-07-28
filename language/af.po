@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-03-14 21:33+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Afrikaans <http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
+"PO-Revision-Date: 2015-07-22 20:41+0100\n"
+"Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
+"Language-Team: Afrikaans "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr ""
+msgstr " maar die besonderhede is onbekend"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -37,21 +38,21 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:424
 #: modules_v3/descendancy_report/report.xml:455
 msgid " in "
-msgstr ""
+msgstr " in "
 
 #: statisticsplot.php:887 statisticsplot.php:937 statisticsplot.php:991
 #: statisticsplot.php:1041 statisticsplot.php:1095 statisticsplot.php:1145
 #: statisticsplot.php:1195 statisticsplot.php:1245 statisticsplot.php:1295
 #: statisticsplot.php:1345
 msgid " per gender"
-msgstr ""
+msgstr " per geslag"
 
 #: statisticsplot.php:889 statisticsplot.php:939 statisticsplot.php:993
 #: statisticsplot.php:1043 statisticsplot.php:1097 statisticsplot.php:1147
 #: statisticsplot.php:1197 statisticsplot.php:1247 statisticsplot.php:1297
 #: statisticsplot.php:1347
 msgid " per time period"
-msgstr ""
+msgstr " per periode"
 
 #. I18N: Abbreviation for "number %s"
 #: app/Functions/FunctionsPrintFacts.php:213
@@ -59,63 +60,63 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:458
 #, php-format
 msgid "#%s"
-msgstr ""
+msgstr "#%s"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:208
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s het ’n %3$s verbintenis met %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2148
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s (%2$s geslagte hoër)"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2151
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s (%2$s geslagte laer)"
 
 #: app/Controller/IndividualController.php:204 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1640
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:317
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$s KB is in %2$s sekondes afgelaai."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:157
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s bestaan nie."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:150
 #, php-format
 msgid "%1$s does not exist.  Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s bestaan nie. Bedoel jy %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:190
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s verwys nie terug na %2$s nie."
 
 #. I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:374 admin_site_upgrade.php:458
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s lêer is in %2$s sekondes uitgepak."
+msgstr[1] "%1$s lêers is in %2$s sekondes uitgepak."
 
 #: app/Module/GoogleMapsModule.php:887
 #, php-format
@@ -136,169 +137,169 @@ msgstr[1] "%1$s persone ontbreek aan geboorteplek-kaartkoördinate: %2$s."
 #: admin_trees_check.php:178
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s is ’n %2$s, maar ’n %3$s word verwag."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:649
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:634
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:664
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:492 app/Media.php:386
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s pixels"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: app/Individual.php:550
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2166
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s se %2$s"
 
 #. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: app/I18N.php:803
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/I18N.php:160
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6995
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s v.C."
 
 #. I18N: size of file in KB
 #: admin_media.php:484 app/Media.php:276
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:194
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s en haar voorouers"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:196
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s en sy voorouers"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:280
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s en die persone wat daarna verwys."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s en hulle kinders"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:124
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s en hulle nageslag"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5949
 #, php-format
 msgid "%s anonymous logged-in user"
 msgid_plural "%s anonymous logged-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s anonieme aangetekende gebruiker"
+msgstr[1] "%s anonieme aangetekende gebruikers"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4460 app/Stats.php:4464
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s kind"
+msgstr[1] "%s kinders"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:59 app/I18N.php:314
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s dag"
+msgstr[1] "%s dae"
 
 #: app/I18N.php:783
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s dag gelede"
+msgstr[1] "%s dae gelede"
 
 #: app/Controller/SearchController.php:374
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s familie is verwerk."
+msgstr[1] "%s families is verwerk."
 
 #: admin.php:803
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s stamboom"
+msgstr[1] "%s stambome"
 
 #: app/Stats.php:5257 app/Stats.php:5261
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s kleinkind"
+msgstr[1] "%s kleinkinders"
 
 #: app/I18N.php:787
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s uur gelede"
+msgstr[1] "%s ure gelede"
 
 #: app/Controller/LifespanController.php:256
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s persoon"
+msgstr[1] "%s persone"
 
 #: app/Controller/SearchController.php:345
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s persoon is verwerk."
+msgstr[1] "%s persone is verwerk."
 
 #: app/Module/GoogleMapsModule.php:897
 #, php-format
@@ -311,35 +312,38 @@ msgstr[1] "%s persone is privaat."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s persoon met gebeurtenisse tussen %s en %s"
+msgstr[1] "%s persone met gebeurtenisse tussen %s en %s"
 
 #: app/Controller/LifespanController.php:242
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s persoon met gebeurtenisse in %s"
+msgstr[1] "%s persone met gebeurtenisse in %s"
 
 #: app/Controller/LifespanController.php:235
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s persoon met gebeurtenisse in %s tussen %s en %s"
+msgstr[1] "%s persone met gebeurtenisse in %s tussen %s en %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:117
 #, php-format
 msgid "%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it."
 msgstr ""
+"%s is nie op hierdie bediener gemagtig nie. Jy kan nie webtrees installer "
+"nie voordat dit gemagtig word nie. Versoek asseblief die bestuurder van die "
+"bediener om dit te magtig."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5959
 #, php-format
 msgid "%s logged-in user"
 msgid_plural "%s logged-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s aangemelde gebruiker"
+msgstr[1] "%s aangemelde gebruikers"
 
 #: app/Module/UserMessagesModule.php:72
 #, php-format
@@ -352,8 +356,8 @@ msgstr[1] "%s boodskappe"
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s minuut gelede"
+msgstr[1] "%s minute gelede"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:55 app/I18N.php:306
@@ -361,95 +365,95 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s maand"
+msgstr[1] "%s maande"
 
 #: app/I18N.php:779
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s maand gelede"
+msgstr[1] "%s maande gelede"
 
 #: app/Controller/SearchController.php:428
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s nota is opgedateer."
+msgstr[1] "%s notas is opgedateer."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2124
 #, php-format
 msgid "%s once removed ascending"
-msgstr ""
+msgstr "%s (één geslag hoër)"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2127
 #, php-format
 msgid "%s once removed descending"
-msgstr ""
+msgstr "%s (één geslag laer)"
 
 #: app/I18N.php:793
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s sekonde gelede"
+msgstr[1] "%s sekondes gelede"
 
 #: app/Controller/SearchController.php:407
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s bron is opgedateer."
+msgstr[1] "%s bronne is opgedateer."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2140
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s (drie geslagte hoër)"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2143
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "%s (drie geslagte laer)"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s (twee geslagte hoër)"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2135
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "%s (twee geslagte laer)"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:57 app/I18N.php:310
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s week"
+msgstr[1] "%s weke"
 
 #: app/Functions/FunctionsDate.php:50 app/I18N.php:300
 #: app/Module/RelativesTabModule.php:83
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s jaar"
+msgstr[1] "%s jare"
 
 #: app/I18N.php:775
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s jaar gelede"
+msgstr[1] "%s jare gelede"
 
 #: app/Functions/FunctionsPrintLists.php:2121
 #: app/Module/YahrzeitModule.php:129 calendar.php:655
@@ -461,80 +465,80 @@ msgstr "%s jarige herdenking"
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × niggie"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:534
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × nefie"
 
 #: app/Functions/Functions.php:604
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × nefie/niggie"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;v.C."
 
 #. I18N: CE=Common Era, for Julian years > 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;n.C."
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:212
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, haar voorvaders en hulle families"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:166
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, haar ouers en broers/susters"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:180
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, haar gades en kinders"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:230
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, haar gades en afstammelinge"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:214
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, sy voorvaders en hulle families"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:168
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, sy ouers en broers/susters"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:182
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, sy gades en kinders"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:232
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, sy gades en afstammelinge"
 
 #: app/Functions/FunctionsPrint.php:622 app/Module/UserMessagesModule.php:81
 msgid "&lt;select&gt;"
@@ -544,184 +548,232 @@ msgstr "&lt;kies&gt;"
 #: app/I18N.php:329 app/I18N.php:333
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(ouderdom %s)"
 
 #. I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:323
 #, php-format
 msgid "(aged less than %s)"
-msgstr ""
+msgstr "(ouderdom minder as %s)"
 
 #. I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/I18N.php:326
 #, php-format
 msgid "(aged more than %s)"
-msgstr ""
+msgstr "(ouderdom meer as %s)"
 
 #. I18N: %s is a placeholder for a number
 #: app/I18N.php:230
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr ""
+msgstr "(van %s inskrywings uitgefiltreer)"
 
 #. I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in childhood)
 #: app/I18N.php:294
 msgid "(in childhood)"
-msgstr ""
+msgstr "(in die kinderjare)"
 
 #. I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in infancy)
 #: app/I18N.php:291
 msgid "(in infancy)"
-msgstr ""
+msgstr "(in kinderskoene)"
 
 #. I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (stillborn)
 #: app/I18N.php:288
 msgid "(stillborn)"
-msgstr ""
+msgstr "(doodgebore)"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:424
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Stats.php:7022
 msgctxt "CENTURY"
 msgid "10th"
-msgstr ""
+msgstr "10de"
 
 #: app/Stats.php:7020
 msgctxt "CENTURY"
 msgid "11th"
-msgstr ""
+msgstr "11de"
 
 #: app/Stats.php:7018
 msgctxt "CENTURY"
 msgid "12th"
-msgstr ""
+msgstr "12de"
 
 #: app/Stats.php:7016
 msgctxt "CENTURY"
 msgid "13th"
-msgstr ""
+msgstr "13de"
 
 #: app/Stats.php:7014
 msgctxt "CENTURY"
 msgid "14th"
-msgstr ""
+msgstr "14de"
 
 #: app/Stats.php:7012
 msgctxt "CENTURY"
 msgid "15th"
-msgstr ""
+msgstr "15de"
 
 #: app/Stats.php:7010
 msgctxt "CENTURY"
 msgid "16th"
-msgstr ""
+msgstr "16de"
 
 #: app/Stats.php:7008
 msgctxt "CENTURY"
 msgid "17th"
-msgstr ""
+msgstr "17de"
 
 #: app/Stats.php:7006
 msgctxt "CENTURY"
 msgid "18th"
-msgstr ""
+msgstr "18de"
 
 #: app/Stats.php:7004
 msgctxt "CENTURY"
 msgid "19th"
-msgstr ""
+msgstr "19de"
 
 #: app/Stats.php:7040
 msgctxt "CENTURY"
 msgid "1st"
-msgstr ""
+msgstr "1ste"
 
 #: app/Stats.php:7002
 msgctxt "CENTURY"
 msgid "20th"
-msgstr ""
+msgstr "20ste"
 
 #: app/Stats.php:7000
 msgctxt "CENTURY"
 msgid "21st"
-msgstr ""
+msgstr "21ste"
 
 #: app/Stats.php:7038
 msgctxt "CENTURY"
 msgid "2nd"
-msgstr ""
+msgstr "2de"
 
 #: app/Stats.php:7036
 msgctxt "CENTURY"
 msgid "3rd"
-msgstr ""
+msgstr "3de"
 
 #: app/Stats.php:7034
 msgctxt "CENTURY"
 msgid "4th"
-msgstr ""
+msgstr "4de"
 
 #: app/Stats.php:7032
 msgctxt "CENTURY"
 msgid "5th"
-msgstr ""
+msgstr "5de"
 
 #: app/Stats.php:7030
 msgctxt "CENTURY"
 msgid "6th"
-msgstr ""
+msgstr "6de"
 
 #: app/Stats.php:7028
 msgctxt "CENTURY"
 msgid "7th"
-msgstr ""
+msgstr "7de"
 
 #: app/Stats.php:7026
 msgctxt "CENTURY"
 msgid "8th"
-msgstr ""
+msgstr "8ste"
 
 #: app/Stats.php:7024
 msgctxt "CENTURY"
 msgid "9th"
-msgstr ""
+msgstr "9de"
 
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:743
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
 msgstr ""
+"<b>GUID</b> beteken in hierdie konteks ‘Globally Unique ID’.<br><br>GUID's "
+"is bedoel om elke individu te op 'n herhaalbare manier te identifiseer, "
+"sodat sentrale organisasies soos die Family History Center van die LDS kerk "
+"in Salt Lake City of versoenbare programme wat op jou eie bediener loop, kan "
+"bepaal of huller met dieslefde persoon te make het ongeag waar die GEDCOM "
+"vandaan kom. Die doel van die Family History Center is om 'n sentrale "
+"bergplek met genealogiese gegewens te skep en dit via web dienste "
+"besckikbaar te stel. Dit sal enige program in staat stel om toegang tot die "
+"gegewens te verkry en die inligting ook op te dateer. <br><br>As jy nie van "
+"plan is om hierdie GEDCOM lêer met andet te deel nie, dan hoef jy nie te "
+"sorg dat webtrees hierdie GUID's skep nie; as jy dit agter toelaat is daar "
+"geen ander nadeel verbonde as om die grootte van jou GEDCOM lêer te vergroot."
 
 #: admin_trees_manage.php:709
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr ""
+"<b>Belangrike opmerking:</b> Die oordrag module (wizard) kan nie help met "
+"die oordgrag van media items nie. Jy moet na afloop van die oordrag wizard "
+"se werk self jou media opset instel en jou media items oordra of kopieër."
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr ""
+"<b>Let op:</b> Private inligting van lewende persone word alleen aan direkte "
+"familie en goeie vriende gegeee. Jy sal gevra word om jou verbintenis te "
+"verifieër voordat private inligting verskaf word. Soms is informasie van "
+"oorlede persone ook privaat. Dit is die geval as ons te min inligting het om "
+"te bepaal of hierdie persoon lewe of reeds gesterf het en waarskynlik is "
+"daar nie meer inligting beskikbaar oor hierdie persoon nie.</b></b>Voordat "
+"jy ’n vraag stel, maak seker dat jou navraag op die korrekte persoon "
+"betrekking het deur die datums, plekke en naasbestaandes na te gaan. Wanneer "
+"jy veranderinge aanbring aan die genealogiese gegewens, maak asseblief seker "
+"dat jy die bronne waarvan die inligting afgelei is, ook vermeld."
 
 #: login.php:151
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 msgstr ""
+"<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang tot "
+"hierdie webwerf is beperk tot  <u>gemagtigde</u> gebruikers.<br><br>As jy ’n "
+"gebruikersrekening het, kan jy op hierdie bladsy aanmeld. As jy nie ’n "
+"gebruikersrekening het nie, kan jy een aanvra deur op die link hieronder te "
+"klik.<br><br>Nadat jou aanvraag nagegaan is, sal die werfbeheerder jou "
+"rekening aktiveer. Jy sal ’n epos ontvang wanneer jou aanvraag goedgekeur is."
 
 #: login.php:154
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 msgstr ""
+"<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang tot "
+"hierdie webwerf is beperk tot  <u>familielede</u> gebruikers.<br><br>As jy ’"
+"n gebruikersrekening het, kan jy op hierdie bladsy aanmeld. As jy nie ’n "
+"gebruikersrekening het nie, kan jy een aanvra deur op die link hieronder te "
+"klik.<br><br>Nadat jou aanvraag nagegaan is, sal die werfbeheerder jou "
+"rekening aktiveer. Jy sal ’n epos ontvang wanneer jou aanvraag goedgekeur is."
 
 #: login.php:148
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved."
 msgstr ""
+"<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang tot "
+"hierdie webwerf is vir alle besokers wat ’n gebruikersrekening het.<br><br>"
+"As jy ’n gebruikersrekening het, kan jy op hierdie bladsy aanmeld. As jy nie "
+"’n gebruikersrekening het nie, kan jy een aanvra deur op die link hieronder "
+"te klik.<br><br>Nadat jou aanvraag nagegaan is, sal die werfbeheerder jou "
+"rekening aktiveer. Jy sal ’n epos ontvang wanneer jou aanvraag goedgekeur is."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:993 admin_users.php:473 edituser.php:253
 msgid "<default theme>"
-msgstr ""
+msgstr "<standaard tema>"
 
 #: login.php:388
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
 msgstr ""
+"<div class=\"largeError\">Belangrik:</div><div class=\"error\">Deur hierdie "
+"vorm te voltooi en in te handig, stem jy in om:<ul><li>die privaatheid van "
+"lewende persone wat hier gelys word te beskerm,</li><li>en in die "
+"onderstaande tekskassie, te verduidelik aan wie jy verwant is, of om ons met "
+"inligting te verskaf oor iemand wat hier gelys moet word.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
 #: app/Fact.php:409 app/Functions/FunctionsPrintFacts.php:540
@@ -729,14 +781,20 @@ msgstr ""
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr ""
+"<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\""
+">%2$s</span>"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:206
 msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
-msgstr ""
+msgstr "’n FAQ item kan vir een stamboom vertoon word, of vir al die stambome."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
 msgstr ""
+"’n kind kan meer as één stel ouers hê. Die verhouding tussen kind en ouers "
+"kan biologies, wettelik of op plaaslike kultuur en tradisie gebaseer wees. "
+"As die verhouding nie gespesifiseer word nie, dan word ’n biologiese "
+"verhouding aanvaar."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -745,44 +803,49 @@ msgstr "'n Algemene fout is om veelvoudige skakels na dieselfde rekord te hê, b
 #: setup.php:367
 msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 msgstr ""
+"'n Databasisbediener kan baie afsonderlike databasisse bewaar. Jy moet ’n "
+"bestaande databasis kies (geskep deur die beheerder van jou bediener) of ’n "
+"nuwe skep (as jou databasis gebruikersrekening voldoende voorregte het)."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:213
 msgid "A file on the server"
-msgstr ""
+msgstr "’n Lêer op die bediener"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:202
 msgid "A file on your computer"
-msgstr ""
+msgstr "’n Lêer op jou rekenaar"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:33
 msgid "A greeting message and useful links for a user."
-msgstr ""
+msgstr "’n Welkomberig en nuttige skakels vir ’n gebruiker."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:34
 msgid "A greeting message for site visitors."
-msgstr ""
+msgstr "’n Welkomsberig vir werfbesoekers."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need moderator approval, and email notifications."
 msgstr ""
+"’n Lys met veranderinge wat die goedkeuring van 'n moderator nodig het, en e-"
+"pos boodskappe."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
 msgid "A list of frequently asked questions and answers."
-msgstr ""
+msgstr "’n Lys met vrae en antwoorde wat gereeld gevra word."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:40
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "’n Lys van rekords wat onlangs gewysig is."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:38
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "’n Lys van take en aktiwiteite wat met die stamboom verband hou."
 
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
@@ -792,45 +855,52 @@ msgstr "'n Lys van die Hebreeuse dodeherdenkings wat plaas sal vind in die nabye
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "’n Lys van gedenkdae wat vandag plaasvind."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "’n Lys van gedenkdae wat in die nabye toekoms sal plaasvind."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr ""
+msgstr "’n Lys van die mees gewilde voorname."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr "'n Lys van die mees voorkomende vanne."
+msgstr "'n Lys van die mees gewilde vanne."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "'n Lys van die bladsye wat die meeste besigtig word."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "'n Lys van gebruikers en besoekers wat tans aanlyn is."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
+"’n Mediavoorwerp is ’n rekord in die stamboom wat informasie bevat oor ’n "
+"medialêer. Hierdie informasie kan ’n titel, kopiereg, ’n protokol, "
+"privaatheid beperkinge ens. bevat. Die medialêer, byv. ’n foto of video, kan "
+"plaaslik (op hierdie webbediener) of elders (op ’n ander webbediener) "
+"gestoor word."
 
 #: login.php:243
 #, php-format
 msgid "A new password has been created and emailed to %s.  You can change this password after you login."
 msgstr ""
+"’n Nuwe wagwoord is geskep en is per epos na %s  gestuur. Jy kan die "
+"wagwoord verander nadat jy aangemeld het."
 
 #: login.php:236
 msgid "A new password has been requested for your user name."
-msgstr ""
+msgstr "'n Nuwe wagwoord is vir jou gebruikersnaam aangevra."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:541
@@ -15549,7 +15619,7 @@ msgstr ""
 
 #: app/Stats.php:424 app/Stats.php:522
 msgid "With sources"
-msgstr ""
+msgstr "Met bronne"
 
 #: app/Stats.php:423 app/Stats.php:521
 msgid "Without sources"
@@ -19786,7 +19856,7 @@ msgstr ""
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr ""
+msgstr "“%s” is by jou gunstelinge gevoeg."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:107
 msgid "…"

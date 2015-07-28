@@ -95,11 +95,6 @@ case 'login':
 		Session::put('locale', Auth::user()->getPreference('language'));
 		Session::put('theme_id', Auth::user()->getPreference('theme'));
 
-		// If we’ve clicked login from the login page, we don’t want to go back there.
-		if (strpos($url, WT_SCRIPT_NAME) === 0) {
-			$url = '';
-		}
-
 		// We're logging in as an administrator
 		if (Auth::isAdmin()) {
 			// Check for updates
@@ -107,11 +102,13 @@ case 'login':
 			if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 				list($latest_version, $earliest_version, $download_url) = explode('|', $latest_version_txt);
 				if (version_compare(WT_VERSION, $latest_version) < 0) {
-					// An upgrade is available.  Let the admin know, by redirecting to the upgrade wizard
-					$url = 'admin_site_upgrade.php';
+					FlashMessages::addMessage(
+						I18N::translate('A new version of webtrees is available.') .
+						' <a href="admin_site_upgrade.php"><b>' .
+						I18N::translate('Upgrade to webtrees %s.', '<span dir="ltr">' . $latest_version . '</span>') .
+						'</b></a>'
+					);
 				}
-			} else {
-				// Cannot determine the latest version
 			}
 		}
 

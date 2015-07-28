@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-07-16 17:14+0100\n"
+"PO-Revision-Date: 2015-07-22 15:21+0100\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
@@ -10258,7 +10258,7 @@ msgstr "Sayfa"
 #: medialist.php:241
 #, php-format
 msgid "Page %s of %s"
-msgstr "Safa %s toplam %s"
+msgstr "Sayfa %s. Toplam %s sayfa"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
