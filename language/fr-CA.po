@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-08-02 18:14+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2015-08-02 19:42+0100\n"
+"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: French (Canada) "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
 "Language: fr-CA\n"
@@ -6008,7 +6008,7 @@ msgstr "Famille avec les parents adoptifs"
 
 #: app/GedcomCode/GedcomCodePedi.php:131
 msgid "Family with foster parents"
-msgstr "Famille avec les parents nourriciers"
+msgstr "Famille avec des parents nourriciers"
 
 #: modules_v3/individual_ext_report/report.xml:435
 #: modules_v3/individual_report/report.xml:438
