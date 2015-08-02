@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-06-26 21:05+0100\n"
-"Last-Translator: Michel <gustine@laposte.net>\n"
-"Language-Team: French <http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
+"PO-Revision-Date: 2015-08-02 18:08+0100\n"
+"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
+"Language-Team: French "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -6009,7 +6010,7 @@ msgstr "Famille avec les parents adoptifs"
 
 #: app/GedcomCode/GedcomCodePedi.php:131
 msgid "Family with foster parents"
-msgstr "Famille avec les parents nourriciers"
+msgstr "Famille avec parents nourriciers"
 
 #: modules_v3/individual_ext_report/report.xml:435
 #: modules_v3/individual_report/report.xml:438
@@ -6398,7 +6399,7 @@ msgstr "Mise en forme du texte et des notes"
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
 msgid "Foster"
-msgstr "Adoptée"
+msgstr "Parents nourriciers"
 
 #: app/GedcomCode/GedcomCodePedi.php:66
 msgctxt "Male pedigree"
@@ -6412,15 +6413,15 @@ msgstr "Parents nourriciers"
 
 #: app/GedcomCode/GedcomCodeRela.php:120
 msgid "Foster child"
-msgstr "Enfant adoptif"
+msgstr "Enfant nourricier"
 
 #: app/GedcomCode/GedcomCodeRela.php:123
 msgid "Foster father"
-msgstr "Père adoptif"
+msgstr "Père nourricier"
 
 #: app/GedcomCode/GedcomCodeRela.php:126
 msgid "Foster mother"
-msgstr "Mère adoptive"
+msgstr "Mère nourricière"
 
 #: app/Stats.php:6799
 msgid "France"
