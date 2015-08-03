@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-08-02 18:08+0100\n"
+"PO-Revision-Date: 2015-08-03 05:49+0100\n"
 "Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: French "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
@@ -6399,17 +6399,17 @@ msgstr "Mise en forme du texte et des notes"
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
 msgid "Foster"
-msgstr "Parents nourriciers"
+msgstr "En nourrice"
 
 #: app/GedcomCode/GedcomCodePedi.php:66
 msgctxt "Male pedigree"
 msgid "Foster"
-msgstr "Parents nourriciers"
+msgstr "En nourrice"
 
 #: app/GedcomCode/GedcomCodePedi.php:70
 msgctxt "Pedigree"
 msgid "Foster"
-msgstr "Parents nourriciers"
+msgstr "En nourrice"
 
 #: app/GedcomCode/GedcomCodeRela.php:120
 msgid "Foster child"
