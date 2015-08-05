@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-08-05 13:58+0100\n"
+"PO-Revision-Date: 2015-08-05 14:23+0100\n"
 "Last-Translator: Balázs Németh <jobbara.artalmatlan@gmail.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -848,9 +848,8 @@ msgid "A new password has been created and emailed to %s.  You can change this p
 msgstr "Egy új jelszó el lett küldve %s címére. Bejelentkezés után megváltoztathatod."
 
 #: login.php:236
-#, fuzzy
 msgid "A new password has been requested for your user name."
-msgstr "Az Ön felhasználónevéhez új jelszót igényeltek."
+msgstr "Az Ön felhasználónevéhez új jelszó lett igényelve."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:541
@@ -860,7 +859,7 @@ msgstr "Egy új felhasználó (%1$s) egy fiókért (%2$s) folyamodott és igazol
 
 #: admin.php:574 admin_site_upgrade.php:79
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "A webtrees egy új verziója érhető el."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
@@ -889,13 +888,13 @@ msgstr "Lista az adott személy őseiről."
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr ""
+msgstr "Riport az adott személy leszármazottjairól, elbeszélő stílusban."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "Riport egy adott személy részleteiről."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
@@ -945,6 +944,8 @@ msgstr "Jelentés a friss vagy függőben lévő változásokról."
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
 msgstr ""
+"Riport azokról a családokról akik közeli kapcsolatban állnak egy adott "
+"személlyel."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:35
@@ -981,7 +982,7 @@ msgstr "Az oldalsávon megjelenik a családok listája ABC sorrendben."
 #. I18N: Description of “Individuals” module
 #: app/Module/IndividualSidebarModule.php:38
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-msgstr ""
+msgstr "Egy oldalsáv ami megmutatja a családfa összes személyét ABC sorrendben."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
@@ -1027,11 +1028,15 @@ msgstr "A személyhez kötött forrásokat mutató fül."
 #: admin_users.php:396
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 msgstr ""
+"A felhasználó addig nem tud belépni amíg mind az \"E-mail cím ellenőrizve\" "
+"és a \"A rendszergazda jóváhagyta\" kiválasztásra nem kerül."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1122
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
 msgstr ""
+"A vízjel egy olyan szöveg ami a képre kerül azért, hogy elbátortalanítsa a "
+"képet jogszerűtlenül másoló egyéneket."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:105
@@ -1142,7 +1147,7 @@ msgstr "Hozzáférési szint"
 
 #: admin_users.php:374
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "Felhasználó jóváhagyása és email ellenőrzés"
 
 #: app/GedcomCode/GedcomCodeTemp.php:79
 msgid "Accra, Ghana"
@@ -1248,7 +1253,7 @@ msgstr "Gyermek hozzáadása a családhoz"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr ""
+msgstr "Tény hozzáadása"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
@@ -1418,13 +1423,13 @@ msgstr "Leíró történetek személyekről."
 
 #: admin_trees_manage.php:270
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Szóközök hozzáadása hosszú sorok sortörésekor"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:381
 #: app/Module/ClippingsCartModule.php:718
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "GEDCOM média elérési útvonalak fájlnevekez hozzáadása"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:936
@@ -1438,7 +1443,7 @@ msgstr "A fejléc \"TITLE\" elemének hozzáadása"
 #: app/Controller/RepositoryController.php:84
 #: app/Controller/SourceController.php:84 app/Theme/AbstractTheme.php:1286
 msgid "Add to favorites"
-msgstr ""
+msgstr "Hozzáadás a kedvencekhez"
 
 #: app/Module/ClippingsCartModule.php:104
 #: app/Module/ClippingsCartModule.php:147
@@ -1461,7 +1466,7 @@ msgstr "Vízjel hozzáadása a bélyegképekhez"
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
 msgid "Add your own text and graphics."
-msgstr ""
+msgstr "Saját szöveg és grafika hozzáadása."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
@@ -1677,6 +1682,8 @@ msgstr "Afrika"
 #: admin_trees_manage.php:669
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr ""
+"A családfa létrehozását követően lehetőséged van adatok importálására egy "
+"megadott GEDCOM fájlból."
 
 #: login.php:239
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
@@ -1776,7 +1783,7 @@ msgstr "Úgyis mint"
 
 #: app/Functions/FunctionsPrintLists.php:192
 msgid "Alive"
-msgstr ""
+msgstr "Élő"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: app/I18N.php:179 app/Module/FrequentlyAskedQuestionsModule.php:204
@@ -1801,14 +1808,15 @@ msgstr "Mind"
 
 #: admin_trees_manage.php:702
 msgid "All changes in PhpGedView must be accepted"
-msgstr ""
+msgstr "Az összes PhpGedView változtatást el kell fogadni"
 
 #: admin_trees_manage.php:705
 msgid "All existing PhpGedView users must have distinct email addresses"
 msgstr ""
+"Az összes meglévő PhpGedView felhasználónak különböző email címmel kell "
+"rendelkeznie"
 
 #: admin_trees_config.php:568
-#, fuzzy
 msgid "All facts and events"
 msgstr "Minden adat és esemény"
 
@@ -1822,7 +1830,6 @@ msgid "All fields must be completed."
 msgstr "Minden mezőt ki kell tölteni."
 
 #: admin_site_upgrade.php:408
-#, fuzzy
 msgid "All files have read and write permission."
 msgstr "Minden fájl olvasási és írási engedéllyel rendelkezik."
 
@@ -2043,12 +2050,12 @@ msgstr "Milyen bizalmi beállításokat alkalmazzon"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2279
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Beállítások alkalmazása az összes családfára"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2286
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Beállítások alkalmazása az új családfákra"
 
 #: admin_users.php:99
 #, php-format
@@ -2106,7 +2113,6 @@ msgid "Are you sure you want to delete this fact?"
 msgstr "Valóban törli ezt a GEDCOM-adatot?"
 
 #: app/Module/UserMessagesModule.php:77 app/Module/UserMessagesModule.php:119
-#, fuzzy
 msgid "Are you sure you want to delete this message?  It cannot be retrieved later."
 msgstr "Biztosan törli ezt az üzenetet?  A műveletet nem lehet visszavonni."
 
@@ -2129,7 +2135,7 @@ msgstr "Biztos, hogy törölni akarod ezt: „%s”?"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Biztos eltávolítja a média objektumra mutató hivatkozásokat?"
 
 #: app/Module/FamilyTreeFavoritesModule.php:152
 msgid "Are you sure you want to remove this item from your list of favorites?"
@@ -3227,13 +3233,18 @@ msgstr "Alapértelmezetten a listában csak a családfában található helyek s
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
 msgstr[0] ""
+"Alapértelmezetten a Ön szervere a szkriptek futás idejét %s másodpercben "
+"limitálja."
 msgstr[1] ""
+"Alapértelmezetten a szerver a szkriptek futás idejét %s másodpercben "
+"limitálja."
 
 #. I18N: %s is an amount of memory, such as 32MB
 #: admin_site_config.php:200
 #, php-format
 msgid "By default, your server allows scripts to use %s of memory."
 msgstr ""
+"Alapértelmezetten az Ön szerverén a szkriptek %s memóriát használhatnak."
 
 #. I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
