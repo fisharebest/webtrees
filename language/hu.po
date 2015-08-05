@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-08-05 14:23+0100\n"
+"PO-Revision-Date: 2015-08-05 14:43+0100\n"
 "Last-Translator: Balázs Németh <jobbara.artalmatlan@gmail.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -195,7 +195,7 @@ msgstr "%Y. %F %j."
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6995
-#, fuzzy, php-format
+#, php-format
 msgid "%s BCE"
 msgstr "%s i. e."
 
@@ -3330,9 +3330,8 @@ msgid "Catalonia"
 msgstr "קטלוניה"
 
 #: statistics.php:604
-#, fuzzy
 msgid "Categories"
-msgstr "a z-tengely mentén:"
+msgstr "Kategóriák"
 
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:242
@@ -3580,11 +3579,15 @@ msgstr ""
 #: app/SurnameTradition.php:82
 msgid "Children take one surname from the father and one surname from the mother."
 msgstr ""
+"A gyermekeknek egy vezetékneve származik az apától és egy vezetékneve az "
+"anyától."
 
 #. I18N: In the Portuguese surname tradition, ...
 #: app/SurnameTradition.php:85
 msgid "Children take one surname from the mother and one surname from the father."
 msgstr ""
+"A gyermekeknek egy vezetékneve származik az anyától és egy vezetékneve az "
+"apától."
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the patrilineal surname tradition, ...
@@ -3593,12 +3596,12 @@ msgstr ""
 #: app/SurnameTradition.php:72 app/SurnameTradition.php:76
 #: app/SurnameTradition.php:91 app/SurnameTradition.php:96
 msgid "Children take their father’s surname."
-msgstr ""
+msgstr "A gyermekek az apjuk vezetéknevét viselik."
 
 #. I18N: In the matrilineal surname tradition, ...
 #: app/SurnameTradition.php:79
 msgid "Children take their mother’s surname."
-msgstr ""
+msgstr "A gyermekek az anyjuk vezetéknevét viselik."
 
 #: app/Stats.php:6763
 msgid "Chile"
@@ -4335,7 +4338,7 @@ msgstr "Csehszlovákia"
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1459
 msgid "DNA markers"
-msgstr ""
+msgstr "DNS markerek"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:30 branches.php:57 search.php:267
@@ -5048,7 +5051,7 @@ msgstr ""
 
 #: familybook.php:89
 msgid "Descendant generations"
-msgstr ""
+msgstr "Leszármazottak generációi"
 
 #. I18N: gedcom tag DESC
 #. I18N: Name of a module/sidebar
@@ -5229,7 +5232,7 @@ msgstr "Közvetlen ősök és családjaik"
 
 #: admin_site_upgrade.php:199
 msgid "Disable these modules"
-msgstr ""
+msgstr "Tiltsa le ezeket a modulokat"
 
 #: admin_site_upgrade.php:263
 msgid "Disable these themes"
@@ -7760,7 +7763,7 @@ msgstr "Johannesburg, Dél Afrikai Köztársaság"
 #. I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname.
 #: app/Tree.php:496
 msgid "John /DOE/"
-msgstr "John /DOE/"
+msgstr "Jakab /GIPSZ/"
 
 #: app/Stats.php:6837
 msgid "Jordan"
@@ -13560,7 +13563,7 @@ msgstr "A  „%s” fájl sikeresen feltöltődött."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:77
 msgid "The file was only partially uploaded.  Please try again."
-msgstr "Az állomány csak részben töltődött fel, kérem próbálja meg újra"
+msgstr "Az állomány csak részben töltődött fel, kérem próbálja meg újra."
 
 #. I18N: %s is a filename
 #: medialist.php:293 mediaviewer.php:115
@@ -13579,7 +13582,7 @@ msgstr ""
 #: admin_site_config.php:37 admin_trees_config.php:294
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
-msgstr "A %s mappa nem létezik és nem lehetett létrehozni"
+msgstr "A %s mappa nem létezik és nem lehetett létrehozni."
 
 #: addmedia.php:99 addmedia.php:110 addmedia.php:256 addmedia.php:267
 #: admin_media_upload.php:64 admin_media_upload.php:75
@@ -13825,7 +13828,9 @@ msgstr ""
 
 #: login.php:306
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
-msgstr "A felhasználó küldött egy e-mailt a regisztrációhoz szükséges információkkal"
+msgstr ""
+"A felhasználó egy e-mailt küldött a regisztráció jóváhagyásához szükséges "
+"információkkal."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:374
