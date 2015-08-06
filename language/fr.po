@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-08-03 05:49+0100\n"
-"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
+"PO-Revision-Date: 2015-08-06 09:48+0100\n"
+"Last-Translator: Sodan <garudo65-webtrees@yahoo.fr>\n"
 "Language-Team: French "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -7933,7 +7933,7 @@ msgstr "Paysage"
 #: admin_users.php:851 app/GedcomTag.php:536 app/Theme/AbstractTheme.php:1329
 #: edituser.php:227
 msgid "Language"
-msgstr "Langage"
+msgstr "Langue"
 
 #. I18N: Menu entry
 #: admin_site_config.php:145 app/Theme/AdministrationTheme.php:90
