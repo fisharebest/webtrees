@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-08-05 14:43+0100\n"
-"Last-Translator: Balázs Németh <jobbara.artalmatlan@gmail.com>\n"
+"PO-Revision-Date: 2015-08-06 14:58+0100\n"
+"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -3343,7 +3343,6 @@ msgid "Cause of death"
 msgstr "Halál oka"
 
 #: admin_trees_manage.php:745 admin_trees_renumber.php:286
-#, fuzzy
 msgid "Caution!  This may take a long time.  Be patient."
 msgstr "Figyelem!  A művelet időigényes lehet.  Legyen türelemmel."
 
@@ -3793,9 +3792,8 @@ msgid "Click here to add, edit, or delete"
 msgstr "Kattintson ide ha Hozzáadni, Szerkeszteni vagy Törölni szeretne"
 
 #: individual.php:246
-#, fuzzy
 msgid "Click here to open or close the sidebar"
-msgstr "Kattintson ide az oldalsáv elrejtéséhez vagy megnyitásához."
+msgstr "Kattintson ide az oldalsáv elrejtéséhez vagy megjelenítéséhez"
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:97
 msgid "Click name to add individual to add links list."
@@ -3908,9 +3906,8 @@ msgid "Completed; date unknown"
 msgstr "Befejezve; dátum ismeretlen"
 
 #: admin_trees_download.php:141
-#, fuzzy
 msgid "Compress the GEDCOM file"
-msgstr "GEDCOM fájl tömörítése"
+msgstr "A GEDCOM fájl tömörítése"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
@@ -3995,7 +3992,6 @@ msgstr "Fojtatás"
 #: app/Module/GoogleMapsModule.php:4138 app/Module/SiteMapModule.php:296
 #: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
 #: app/Theme/AbstractTheme.php:1234 app/Theme/AdministrationTheme.php:234
-#, fuzzy
 msgid "Control panel"
 msgstr "Vezérlőpult"
 
@@ -4093,7 +4089,6 @@ msgid "County"
 msgstr "Megye"
 
 #: admin_media.php:309
-#, fuzzy
 msgid "Create"
 msgstr "Létrehoz"
 
@@ -4106,7 +4101,6 @@ msgid "Create a new individual"
 msgstr "Új (senkihez rokoni viszonyban nem álló) személy létrehozása"
 
 #: addmedia.php:79 addmedia.php:391 app/Functions/FunctionsEdit.php:407
-#, fuzzy
 msgid "Create a new media object"
 msgstr "Új média elem létrehozása"
 
@@ -4132,7 +4126,6 @@ msgid "Create a new source"
 msgstr "Új forrás létrehozása"
 
 #: admin_site_access.php:218
-#, fuzzy
 msgid "Create a website access rule"
 msgstr "Új jogosultsági szint létrehozása"
 
@@ -4309,7 +4302,6 @@ msgid "Custom tags"
 msgstr "Saját mezők"
 
 #: admin_site_upgrade.php:249 admin_site_upgrade.php:252
-#, fuzzy
 msgid "Custom theme"
 msgstr "Egyedi stílus"
 
@@ -4472,9 +4464,8 @@ msgid "Date of death"
 msgstr "Elhalálozás dátuma"
 
 #: app/GedcomTag.php:458
-#, fuzzy
 msgid "Date of divorce"
-msgstr "Válás ideje"
+msgstr "Válás napja"
 
 #: app/GedcomTag.php:406
 msgid "Date of emigration"
@@ -4502,7 +4493,6 @@ msgstr "Bevándorlás dátuma"
 
 #. I18N: gedcom tag CHAN:DATE
 #: app/GedcomTag.php:262
-#, fuzzy
 msgid "Date of last change"
 msgstr "Utolsó módosítás ideje"
 
@@ -5014,7 +5004,6 @@ msgstr "Kiválasztott üzenetek törlése"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:486
-#, fuzzy
 msgid "Delete temporary files…"
 msgstr "Ideiglenes fájlok törlése…"
 
@@ -5024,12 +5013,10 @@ msgid "Delete the preferences for this module."
 msgstr "Modul beállításainak törlése"
 
 #: app/Controller/IndividualController.php:176
-#, fuzzy
 msgid "Delete this name"
 msgstr "Név törlése"
 
 #: edituser.php:294
-#, fuzzy
 msgid "Delete your account"
 msgstr "Felhasználói fiók törlése"
 
@@ -5446,7 +5433,6 @@ msgid "Edit media"
 msgstr "Média szerkesztése"
 
 #: addmedia.php:236 addmedia.php:395 app/Controller/MediaController.php:55
-#, fuzzy
 msgid "Edit media object"
 msgstr "Média elem szerkesztése"
 
@@ -5486,7 +5472,6 @@ msgstr "Közös jegyzet szerkesztése"
 
 #: app/Controller/SourceController.php:56
 #: app/Controller/SourceController.php:61
-#, fuzzy
 msgid "Edit source"
 msgstr "Forrás szerkesztése"
 
@@ -5499,7 +5484,6 @@ msgid "Edit this individual and replace their details with your own."
 msgstr "Módosítsa ezt a személyt és írja felül a saját adataival."
 
 #: admin_users.php:271
-#, fuzzy
 msgid "Edit user"
 msgstr "Felhasználó szerkesztése"
 
@@ -5799,7 +5783,6 @@ msgid "Export"
 msgstr "Exportálás"
 
 #: admin_trees_download.php:34
-#, fuzzy
 msgid "Export a GEDCOM file"
 msgstr "GEDCOM fájl exportálása"
 
@@ -5809,7 +5792,6 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr ""
 
 #: admin_trees_download.php:134
-#, fuzzy
 msgid "Export options"
 msgstr "Exportálási beállítások"
 
@@ -5820,12 +5802,10 @@ msgstr "Elhunytak adataihoz való hozzáférés beállítása"
 
 #. I18N: “External files” are stored on other computers
 #: admin_media.php:632
-#, fuzzy
 msgid "External files"
 msgstr "Külső fájlok"
 
 #: admin_media.php:671
-#, fuzzy
 msgid "External media files have a URL instead of a filename."
 msgstr "Külső média fájloknak webcímük (URL) van, fájlnév helyett."
 
@@ -6277,7 +6257,6 @@ msgid "File containing places (CSV)"
 msgstr "Az állomány tartalmaz helyszíneket (CSV)"
 
 #: admin_media.php:485 app/GedcomTag.php:1783
-#, fuzzy
 msgid "File size"
 msgstr "Fájl méret"
 
@@ -6355,7 +6334,6 @@ msgid "Find a special character"
 msgstr "Speciális karakter keresése"
 
 #: relationship.php:100
-#, fuzzy
 msgid "Find all possible relationships"
 msgstr "Minden lehetséges kapcsolat keresése"
 
@@ -6371,9 +6349,8 @@ msgid "Find duplicates"
 msgstr ""
 
 #: relationship.php:95
-#, fuzzy
 msgid "Find the closest relationships"
-msgstr "A legközelebbi kapcsolat keresése"
+msgstr "A legközelebbi rokoni kapcsolat keresése"
 
 #: app/Stats.php:6795
 msgid "Finland"
@@ -6390,7 +6367,6 @@ msgstr "Az első esemény"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:353
-#, fuzzy
 msgid "First record"
 msgstr "Első bejegyzés"
 
@@ -7402,7 +7378,6 @@ msgid "If your website can be reached using more than one URL, such as <b>http:/
 msgstr ""
 
 #: admin_media.php:490 app/GedcomTag.php:1785
-#, fuzzy
 msgid "Image dimensions"
 msgstr "Kép méret"
 
@@ -7420,7 +7395,6 @@ msgid "Import"
 msgstr "Importálás"
 
 #: admin_trees_manage.php:166
-#, fuzzy
 msgid "Import a GEDCOM file"
 msgstr "GEDCOM fájl importálása"
 
@@ -7429,7 +7403,6 @@ msgid "Import all places from a family tree"
 msgstr ""
 
 #: admin_trees_manage.php:258
-#, fuzzy
 msgid "Import options"
 msgstr "Importálási beállítások"
 
@@ -8303,7 +8276,7 @@ msgstr "Betöltés folyamatban…"
 #. I18N: “Local files” are stored on this computer
 #: admin_media.php:627
 msgid "Local files"
-msgstr ""
+msgstr "Helyi fájlok"
 
 #. I18N: gedcom tag _LOC
 #: app/GedcomTag.php:1548
@@ -8903,7 +8876,6 @@ msgstr "Média-elem azonosító előtag"
 
 #. I18N: Label for search field
 #: find.php:159
-#, fuzzy
 msgid "Media contains"
 msgstr "Média tartalma"
 
@@ -9056,7 +9028,6 @@ msgstr ""
 
 #. I18N: Menu entry
 #: admin_trees_merge.php:34 app/Theme/AdministrationTheme.php:129
-#, fuzzy
 msgid "Merge family trees"
 msgstr "Családfák egyesítése"
 
@@ -9141,7 +9112,6 @@ msgstr "Közel-Kelet"
 
 #. I18N: time format “%A” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:102
-#, fuzzy
 msgid "Midnight"
 msgstr "Éjfél"
 
@@ -9352,7 +9322,7 @@ msgstr "Anya"
 
 #. I18N: %s is the name of an individual’s mother
 #: app/Individual.php:1069
-#, fuzzy, php-format
+#, php-format
 msgid "Mother: %s"
 msgstr "Anya: %s"
 
@@ -9460,7 +9430,6 @@ msgid "MySQL gave the error: %s"
 msgstr "MySQL hibaüzenet: %s"
 
 #: admin_site_info.php:68
-#, fuzzy
 msgid "MySQL variables"
 msgstr "MySQL változók"
 
@@ -9498,7 +9467,6 @@ msgstr "Név"
 
 #. I18N: Label for search field
 #: find.php:123 find.php:140
-#, fuzzy
 msgid "Name contains"
 msgstr "Név tartalmazza:"
 
@@ -9628,7 +9596,6 @@ msgid "New Zealand"
 msgstr "Új-Zéland"
 
 #: admin_site_change.php:318 admin_site_change.php:363
-#, fuzzy
 msgid "New data"
 msgstr "Új adat"
 
@@ -9743,7 +9710,6 @@ msgid "No GEDCOM file was received."
 msgstr ""
 
 #: admin_trees_manage.php:244
-#, fuzzy
 msgid "No GEDCOM files found."
 msgstr "Nem található GEDCOM fájl."
 
