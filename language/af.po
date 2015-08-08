@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-07-22 20:41+0100\n"
+"PO-Revision-Date: 2015-08-08 17:06+0100\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
@@ -907,49 +907,54 @@ msgstr "'n Nuwe wagwoord is vir jou gebruikersnaam aangevra."
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
+"'n Nuwe gebruiker (%1$s) het 'n rekening  (%2$s) aangevra en die epos-adres "
+"(%3$s) bevestig."
 
 #: admin.php:574 admin_site_upgrade.php:79
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "'n Nuwer weergawe van webtrees is beskikbaar."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
 msgid "A private area to record notes or keep a journal."
-msgstr ""
+msgstr "'n Private area om notas te maak of om 'n joernaal te skryf."
 
 #. I18N: %s is a server name/URL
 #: login.php:301
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
 msgstr ""
+"'n Voornemende gebruiker het by webtrees aangemeld met hierdie adres %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "'n Verslag van 'n persoon se voorouers, weergegee in 'n boomstruktuur."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr ""
+msgstr "'n Verslag van 'n persoon se voorouers opgestel soos 'n verhaal."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr ""
+msgstr "'n Verslag van 'n persoon se nakomelinge, opgestel soos 'n verhaal."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "'n Gedetailleerde verslag van 'n persoon."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
 msgstr ""
+"'n Verslag van feite of gebeurtenisse wat deur 'n bepaalde bron ondersteun "
+"word."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
@@ -960,13 +965,13 @@ msgstr "'n Verslag van die gesinslede en hul besonderhede."
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr ""
+msgstr "'n Verslag van persone wat op 'n bepaalde tyd en plek oorlede is."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr ""
+msgstr "'n Verslag van persone wat 'n bepaalde beroep gevolg het."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
@@ -977,61 +982,73 @@ msgstr "'n Verslag van persone wat gebore is in 'n gegewe tydperk of plek."
 #: app/Module/CemeteryReportModule.php:35
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr ""
+msgstr "'n Verslag van persone wat op 'n bepaalde plek begrawe is."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
 msgstr ""
+"'n Verslag van persone wat tydens 'n gegewe periode en op 'n gegewe plek  "
+"getroud is."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr ""
+msgstr "'n Verslag van onlangse of hangende wysigings."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:35
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr ""
+msgstr "'n Verslag van die gesinne wat nou verwant aan 'n persoon is."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:35
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr ""
+msgstr "'n Verslag van individue wat nou verwant aan 'n persoon is."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "'n Verslag van die inligting wat deur 'n bron gegee word."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:35
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
 msgstr ""
+"'n Verslag van die inligting wat by 'n persoon en hulle familie ontbreek."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr ""
+msgstr "'n Verslag van belangrike rekords vir 'n bepaalde datum of plek."
 
 #: admin_users.php:508
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr ""
+"'n Rol is ’n versameling van toegangsregte, wat toestemming gee om gegevens "
+"te bekyk, instellinge te wysig, ens. Toegangsregte word toegeken aan rolle, "
+"en rolle word aan gebruikers toegestaan. Elke stamboom kan verskillende "
+"regte toeken aan ’n rol, en gebruikers kan moontlik ’n verskillende rol in "
+"elke stamboom hê."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
 msgid "A sidebar showing an alphabetic list of all the families in the family tree."
 msgstr ""
+"'n Sypaneel wat 'n alfabetiese lys van al die families in die stamboom "
+"vertoon."
 
 #. I18N: Description of “Individuals” module
 #: app/Module/IndividualSidebarModule.php:38
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
 msgstr ""
+"'n Sypaneel wat 'n alfabetiese lys van al die persone in die stamboom "
+"vertoon."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
@@ -1046,12 +1063,12 @@ msgstr "'n Sybalk wat nie-genealogiese inligting oor 'n persoon toon."
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr ""
+msgstr "'n Sypaneel wat 'n persoon se afstammelinge vertoon."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
 msgid "A tab showing the close relatives of an individual."
-msgstr ""
+msgstr "'n Bladsy wat die naaste familie van 'n persoon vertoon."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
@@ -1066,26 +1083,30 @@ msgstr "'n Tabblad wat die media-objekte gekoppel aan 'n persoon toon."
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
 msgid "A tab showing the notes attached to an individual."
-msgstr ""
+msgstr "'n Bladsy wat die notas wat aan 'n persoon gekoppel is, vertoon."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "'n Bladsy wat die bronne vertoon wat aan 'n persoon gekoppel is."
 
 #: admin_users.php:396
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 msgstr ""
+"'n Gebruiker kan nie aanmeld voordat beide opsies “epos bevestig” en “deur "
+"'n beheerder goedgekeur\" geselekteer is."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1122
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
 msgstr ""
+"'n Watermerk is teks wat by 'n beeld gevoeg word, om ander te ontmoedig om "
+"dit sonder toestemming te kopieër."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:105
 msgid "A.M."
-msgstr ""
+msgstr "vm"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -1103,7 +1124,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "A3"
-msgstr ""
+msgstr "A3"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -1121,24 +1142,24 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #: app/I18N.php:422
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-msgstr ""
+msgstr "ALFABET_kleinletters=abcdefghijklmnopqrstuvwxyz"
 
 #: app/I18N.php:420
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-msgstr ""
+msgstr "ALFABET_hoofletters=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 #: app/GedcomCode/GedcomCodeTemp.php:77
 msgid "Aba, Nigeria"
-msgstr ""
+msgstr "Aba, Nigerië"
 
 #: app/Date/JalaliDate.php:190
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:94
@@ -1150,7 +1171,7 @@ msgstr ""
 #: app/Date/JalaliDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:126
@@ -1168,12 +1189,12 @@ msgstr ""
 #: admin_trees_config.php:1630 admin_trees_config.php:1632
 #: admin_trees_config.php:1636
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "Gebruik afkortings vir plekname"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
 msgid "Abbreviation"
-msgstr ""
+msgstr "Afkorting"
 
 #: app/Stats.php:6717
 msgid "Acadia"
@@ -1181,7 +1202,7 @@ msgstr ""
 
 #: edit_changes.php:176 edit_changes.php:184
 msgid "Accept"
-msgstr ""
+msgstr "Aanvaar"
 
 #: admin_module_blocks.php:75 admin_module_menus.php:90
 #: admin_module_reports.php:68 admin_module_sidebar.php:90
@@ -1191,7 +1212,7 @@ msgstr "Toegangs vlak"
 
 #: admin_users.php:374
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "Goedkeuring van rekening en epos verifikasie"
 
 #: app/GedcomCode/GedcomCodeTemp.php:79
 msgid "Accra, Ghana"
@@ -1284,7 +1305,7 @@ msgstr "Voeg by"
 #: app/Module/ClippingsCartModule.php:657
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr ""
+msgstr "Voeg %s by die versameling knipsels"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
@@ -1293,15 +1314,15 @@ msgstr "Voeg 'n kind by om 'n eenouergesin te skep"
 #: app/Controller/FamilyController.php:96
 #: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
-msgstr ""
+msgstr "Skep 'n kind vir hierdie gesin"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr ""
+msgstr "Skep ’n feit of gebeurtenis"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
-msgstr ""
+msgstr "Skep 'n eggenoot vir hierdie gesin"
 
 #: app/Module/RelativesTabModule.php:392 edit_interface.php:1084
 #: edit_interface.php:1156
@@ -1310,11 +1331,11 @@ msgstr "Voeg eggenoot met behulp van 'n bestaande persoon by"
 
 #: app/Functions/FunctionsEdit.php:990 app/Functions/FunctionsEdit.php:994
 msgid "Add a new associate"
-msgstr ""
+msgstr "Skep 'n nuwe verwante persoon"
 
 #: app/Module/RelativesTabModule.php:275
 msgid "Add a new brother or sister"
-msgstr ""
+msgstr "Skep 'n nuwe broer of suster"
 
 #: edit_interface.php:516
 msgid "Add a new child"
@@ -1326,7 +1347,7 @@ msgstr "Voeg 'n nuwe vader by"
 
 #: app/Module/FamilyTreeFavoritesModule.php:199
 msgid "Add a new favorite"
-msgstr ""
+msgstr "Skep 'n nuwe gunsteling"
 
 #: app/Module/GoogleMapsModule.php:4612
 msgid "Add a new geographic location"
@@ -1339,7 +1360,7 @@ msgstr "Voeg 'n nuwe eggenoot by"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a new journal entry"
-msgstr ""
+msgstr "Skep 'n nuwe joernaalinskrywing"
 
 #: app/Controller/FamilyController.php:196
 #: app/Functions/FunctionsEdit.php:1033 app/Module/AlbumModule.php:98
@@ -1359,25 +1380,25 @@ msgstr "Voeg nuwe Naam by"
 #: app/Controller/FamilyController.php:183
 #: app/Functions/FunctionsEdit.php:1012 app/Module/NotesTabModule.php:95
 msgid "Add a new note"
-msgstr ""
+msgstr "Skep 'n nuwe nota"
 
 #: app/Functions/FunctionsEdit.php:1043
 msgid "Add a new restriction"
-msgstr ""
+msgstr "Skep 'n nuwe beperking"
 
 #: app/Controller/FamilyController.php:189
 #: app/Functions/FunctionsEdit.php:1022 app/Module/NotesTabModule.php:105
 msgid "Add a new shared note"
-msgstr ""
+msgstr "Skep 'n nuwe gedeelde nota"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a new son or daughter"
-msgstr ""
+msgstr "Skep 'n nuwe seun of dogter"
 
 #: app/Controller/FamilyController.php:206 app/Functions/FunctionsEdit.php:962
 #: app/Module/SourcesTabModule.php:93
 msgid "Add a new source citation"
-msgstr ""
+msgstr "Skep 'n nuwe bronvermelding"
 
 #: edit_interface.php:837
 msgid "Add a new spouse"
@@ -1386,7 +1407,7 @@ msgstr "Voeg 'n nuwe gade by"
 #. I18N: Menu entry
 #: admin_users.php:263 app/Theme/AdministrationTheme.php:156
 msgid "Add a new user"
-msgstr ""
+msgstr "Skep 'n nuwe gebruiker"
 
 #: app/Module/RelativesTabModule.php:375 edit_interface.php:807
 #: edit_interface.php:897
@@ -1395,7 +1416,7 @@ msgstr "Voeg 'n nuwe eggenote by"
 
 #: app/Module/FamilyTreeNewsModule.php:142
 msgid "Add a news article"
-msgstr ""
+msgstr "Skep 'n nuwe nuusberig"
 
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:282
@@ -1412,11 +1433,11 @@ msgstr "Voeg 'n skuifbalk toe wanneer blokinhoud groter word"
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
 msgid "Add a story"
-msgstr ""
+msgstr "Skep 'n nuwe verhaal"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
-msgstr ""
+msgstr "Skep 'n eggenote vir hierdie gesin"
 
 #: app/Module/RelativesTabModule.php:380 edit_interface.php:1087
 #: edit_interface.php:1158
@@ -1426,7 +1447,7 @@ msgstr "Voeg eggenote met behulp van 'n bestaande persoon by"
 #: app/Module/FrequentlyAskedQuestionsModule.php:127
 #: app/Module/FrequentlyAskedQuestionsModule.php:446
 msgid "Add an FAQ item"
-msgstr ""
+msgstr "Skep 'n FAQ item"
 
 #: timeline.php:295
 msgid "Add another individual to the chart"
@@ -1434,19 +1455,19 @@ msgstr "Voeg nog 'n persoon toe aan die diagram"
 
 #: app/Functions/FunctionsPrint.php:554
 msgid "Add from clipboard"
-msgstr ""
+msgstr "Voeg vanaf die klembord by"
 
 #: lifespan.php:41 modules_v3/GEDFact_assistant/census/census-edit.php:1178
 msgid "Add individuals"
-msgstr ""
+msgstr "Voeg persone by"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:158
 msgid "Add links"
-msgstr ""
+msgstr "Voeg skakels by"
 
 #: app/Module/RelativesTabModule.php:228
 msgid "Add marriage details"
-msgstr ""
+msgstr "Voeg huweliks besonderhede by"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
@@ -1458,22 +1479,22 @@ msgstr "Voeg ontbrekende getroude name toe"
 
 #: search_advanced.php:288
 msgid "Add more fields"
-msgstr ""
+msgstr "Voeg meer velde by"
 
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr ""
+msgstr "Voeg verhale by vir persone in die stamboom."
 
 #: admin_trees_manage.php:270
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Voeg spasies by waar lang reëls onderbreek is"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:381
 #: app/Module/ClippingsCartModule.php:718
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Voeg die GEDCOM media pad by lêername"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:936
@@ -1487,7 +1508,7 @@ msgstr ""
 #: app/Controller/RepositoryController.php:84
 #: app/Controller/SourceController.php:84 app/Theme/AbstractTheme.php:1286
 msgid "Add to favorites"
-msgstr ""
+msgstr "By gunsteling toegevoeg"
 
 #: app/Module/ClippingsCartModule.php:104
 #: app/Module/ClippingsCartModule.php:147
@@ -1496,203 +1517,203 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:403
 #: app/Module/ClippingsCartModule.php:498
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Voeg by die knipselversameling"
 
 #: admin_trees_manage.php:518
 msgid "Add unlinked records"
-msgstr ""
+msgstr "Voeg ongekoppelde rekords by"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1117
 msgid "Add watermarks to thumbnails?"
-msgstr ""
+msgstr "Voeg watermerk by die miniature?"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
 msgid "Add your own text and graphics."
-msgstr ""
+msgstr "Voeg jou eie teks en grafika by."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
-msgstr ""
+msgstr "Wysig ’n nuusberig/joernaalinskrywing of skep ’n nuwe"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:2637
 msgid "Add/insert a blank row"
-msgstr ""
+msgstr "Voeg 'n leë reël by"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
 msgid "Address"
-msgstr ""
+msgstr "Adres"
 
 #: app/GedcomTag.php:124
 msgid "Address line 1"
-msgstr ""
+msgstr "Adresreël 1"
 
 #: app/GedcomTag.php:126
 msgid "Address line 2"
-msgstr ""
+msgstr "Adresreël 2"
 
 #: app/GedcomCode/GedcomCodeTemp.php:81
 msgid "Adelaide, Australia"
-msgstr ""
+msgstr "Adelaide, Australië"
 
 #: admin_users.php:499 admin_users.php:548
 msgid "Administrator"
-msgstr ""
+msgstr "Beheerder"
 
 #: setup.php:420 setup.php:422
 msgid "Administrator account"
-msgstr ""
+msgstr "Beheerdersrekening"
 
 #: admin_users.php:480
 msgid "Administrator comments on user"
-msgstr ""
+msgstr "Beheerder se kommentaar ivm gebruiker"
 
 #: admin.php:616
 msgid "Administrators"
-msgstr ""
+msgstr "Beheerders"
 
 #: app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Female pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Angeneem"
 
 #: app/GedcomCode/GedcomCodePedi.php:57
 msgctxt "Male pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Aangeneem"
 
 #: app/GedcomCode/GedcomCodePedi.php:61
 msgctxt "Pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Aangeneem"
 
 #: app/GedcomCode/GedcomCodeAdop.php:52
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Deur beide ouers aangeneem"
 
 #: app/GedcomCode/GedcomCodeAdop.php:50
 msgctxt "FEMALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Deur beide ouers aangeneem"
 
 #: app/GedcomCode/GedcomCodeAdop.php:48
 msgctxt "MALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Deur beide ouers aangeneem"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:61 app/GedcomTag.php:932
 msgid "Adopted by father"
-msgstr ""
+msgstr "Deur vader aangeneem"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:59 app/GedcomTag.php:928
 msgctxt "FEMALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Deur vader aangeneem"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:57 app/GedcomTag.php:924
 msgctxt "MALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Deur vader aangeneem"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:70 app/GedcomTag.php:947
 msgid "Adopted by mother"
-msgstr ""
+msgstr "Deur moeder aangeneem"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:68 app/GedcomTag.php:943
 msgctxt "FEMALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "Deur moeder aangeneem"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:66 app/GedcomTag.php:939
 msgctxt "MALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "Deur moeder aangeneem"
 
 #. I18N: gedcom tag ADOP
 #: app/GedcomTag.php:130
 msgid "Adoption"
-msgstr ""
+msgstr "Aanneming"
 
 #: app/GedcomTag.php:913
 msgid "Adoption of a brother"
-msgstr ""
+msgstr "Aanneming van 'n broer"
 
 #: app/GedcomTag.php:872
 msgid "Adoption of a child"
-msgstr ""
+msgstr "Aanneming van 'n kind"
 
 #: app/GedcomTag.php:870
 msgid "Adoption of a daughter"
-msgstr ""
+msgstr "Aanneming van 'n dogter"
 
 #: app/GedcomTag.php:881 app/GedcomTag.php:890 app/GedcomTag.php:899
 msgid "Adoption of a grandchild"
-msgstr ""
+msgstr "Aanneming van 'n kleinkind"
 
 #: app/GedcomTag.php:879
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Aanneming van 'n kleindogter"
 
 #: app/GedcomTag.php:888
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Aanneming van 'n kleindogter"
 
 #: app/GedcomTag.php:897
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Aanneming van 'n kleindogter"
 
 #: app/GedcomTag.php:877
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Aanneming van 'n kleinseun"
 
 #: app/GedcomTag.php:886
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Aanneming van 'n kleinseun"
 
 #: app/GedcomTag.php:895
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Aanneming van 'n kleinseun"
 
 #: app/GedcomTag.php:904
 msgid "Adoption of a half-brother"
-msgstr ""
+msgstr "Aanneming van 'n halfbroer"
 
 #: app/GedcomTag.php:908
 msgid "Adoption of a half-sibling"
-msgstr ""
+msgstr "Aanneming van 'n halfbroer/suster"
 
 #: app/GedcomTag.php:906
 msgid "Adoption of a half-sister"
-msgstr ""
+msgstr "Aanneming van 'n halfsuster"
 
 #: app/GedcomTag.php:917
 msgid "Adoption of a sibling"
-msgstr ""
+msgstr "Aanneming van 'n broer/suster"
 
 #: app/GedcomTag.php:915
 msgid "Adoption of a sister"
-msgstr ""
+msgstr "Aanneming van 'n suster"
 
 #: app/GedcomTag.php:868
 msgid "Adoption of a son"
-msgstr ""
+msgstr "Aanneming van 'n seun"
 
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
 msgid "Adult christening"
-msgstr ""
+msgstr "Volwasse doop"
 
 #: app/Module/GoogleMapsModule.php:346
 msgid "Advanced"
@@ -1700,20 +1721,20 @@ msgstr "Gevorderd"
 
 #: admin_trees_config.php:2131
 msgid "Advanced fact settings"
-msgstr ""
+msgstr "Gevorderde instellings vir feite/gebeurenisse"
 
 #: admin_trees_config.php:2136
 msgid "Advanced name facts"
-msgstr ""
+msgstr "Gevorderde feite vir name"
 
 #: admin_trees_config.php:2165
 msgid "Advanced place name facts"
-msgstr ""
+msgstr "Gevorderde feite vir plekname"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1643
 msgid "Advanced search"
-msgstr ""
+msgstr "Uitgebreide soektog"
 
 #: app/Stats.php:6718
 msgid "Afghanistan"
@@ -1721,7 +1742,7 @@ msgstr ""
 
 #: statistics.php:600
 msgid "Africa"
-msgstr ""
+msgstr "Afrika"
 
 #: admin_trees_manage.php:669
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
