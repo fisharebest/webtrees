@@ -112,6 +112,11 @@ case 'login':
 			}
 		}
 
+		// If we were on a "home page", redirect to "my page"
+		if (strpos($url, 'index.php?ctype=gedcom') === 0) {
+			$url = str_replace('?ctype=gedcom', '?ctype=user', $url);
+		}
+
 		// Redirect to the target URL
 		header('Location: ' . WT_BASE_URL . $url);
 
