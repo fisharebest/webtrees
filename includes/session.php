@@ -501,7 +501,10 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 		if ($theme->themeId() === $theme_id) {
 			Theme::theme($theme)->init($WT_TREE);
 			// Remember this setting
-			Session::put('theme_id', $theme_id);
+			if (Site::getPreference('ALLOW_USER_THEMES')) {
+				Session::put('theme_id', $theme_id);
+			}
+			break;
 		}
 	}
 }
