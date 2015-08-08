@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-08-06 14:58+0100\n"
+"PO-Revision-Date: 2015-08-08 07:59+0100\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -71,7 +71,7 @@ msgstr "#%s"
 #: admin_trees_check.php:208
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s mint %3$s kapcsolódik ide %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2148
@@ -307,11 +307,11 @@ msgstr[0] "%s személy frissítve lett."
 msgstr[1] "%s személyek frissítve lettek."
 
 #: app/Module/GoogleMapsModule.php:897
-#, fuzzy, php-format
+#, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] "%s személy rejtett."
-msgstr[1] "%s személy rejtett."
+msgstr[0] "%s  személy bizalmas."
+msgstr[1] "%s személy  bizalmas."
 
 #: app/Controller/LifespanController.php:249
 #, php-format
@@ -742,6 +742,8 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:206
 msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
 msgstr ""
+"A GY.I.K. megjeleníthető csak egy bizonyos családfán, vagy az összes "
+"családfán."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
@@ -809,9 +811,8 @@ msgstr "Ma esedékes évfordulók."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
-#, fuzzy
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "Közelgő események listája."
+msgstr "Közelgő évfordulók listája."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
@@ -1041,7 +1042,7 @@ msgstr ""
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:105
 msgid "A.M."
-msgstr ""
+msgstr "d.e."
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -1452,7 +1453,7 @@ msgstr "Hozzáadás a kedvencekhez"
 #: app/Module/ClippingsCartModule.php:403
 #: app/Module/ClippingsCartModule.php:498
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "behelyez a metszéskosárba"
 
 #: admin_trees_manage.php:518
 msgid "Add unlinked records"
@@ -1821,9 +1822,8 @@ msgid "All facts and events"
 msgstr "Minden adat és esemény"
 
 #: admin_trees_config.php:1840
-#, fuzzy
 msgid "All family facts"
-msgstr "Minden családi adat"
+msgstr "Minden családi tény"
 
 #: login.php:394
 msgid "All fields must be completed."
@@ -1834,7 +1834,6 @@ msgid "All files have read and write permission."
 msgstr "Minden fájl olvasási és írási engedéllyel rendelkezik."
 
 #: admin_trees_config.php:1722
-#, fuzzy
 msgid "All individual facts"
 msgstr "Minden személyi adat"
 
@@ -1873,9 +1872,8 @@ msgstr "Engedjük a felhasználóknak hogy témát váltsanak"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:470
-#, fuzzy
 msgid "Allow visitors to request a new user account"
-msgstr "Regisztrációs kérelem engedélyezése látogatóknak"
+msgstr "Regisztrációs kérelem engedélyezése az új látogatóknak"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:963
@@ -1899,9 +1897,10 @@ msgid "American Samoa"
 msgstr "Amerikai Szamoa"
 
 #: admin_site_config.php:477
-#, fuzzy
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
-msgstr "Felhasználó első bejelentkezése előtt adminisztrátori jóváhagyás és jogosultsági szint beállítás szükséges."
+msgstr ""
+"A felhasználó első bejelentkezése előtt adminisztrátori jóváhagyás és "
+"jogosultsági szint beállítás szükséges."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
@@ -1944,7 +1943,6 @@ msgstr ""
 
 #: admin_site_upgrade.php:344 admin_site_upgrade.php:366
 #: admin_site_upgrade.php:376 admin_site_upgrade.php:460
-#, fuzzy
 msgid "An error occurred when unzipping the file."
 msgstr "A tömörített fájl kicsomagolása hibába ütközött."
 
@@ -2142,9 +2140,9 @@ msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Biztosan el kívánja távolítani ezt az elemet a Kedvencek közül?"
 
 #: edit_changes.php:231
-#, fuzzy
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr "Biztos, hogy vissza szeretné állítani az összes változtatást erre a családfára?"
+msgstr ""
+"Biztos, hogy vissza szeretné állítani a családfán belüli összes változtatást?"
 
 #: app/Stats.php:6726
 msgid "Argentina"
@@ -2289,7 +2287,6 @@ msgstr "Szerző"
 
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:266
-#, fuzzy
 msgid "Author of last change"
 msgstr "Utolsó módosító"
 
@@ -3497,13 +3494,11 @@ msgstr "Fájl írási/olvasási engedélyek ellenőrzése…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:114
-#, fuzzy
 msgid "Check for custom modules…"
 msgstr "Egyedi modulok ellenőrzése…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:217
-#, fuzzy
 msgid "Check for custom themes…"
 msgstr "Egyedi stílusok ellenőrzése…"
 
@@ -3513,7 +3508,6 @@ msgstr "Hibakeresés"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:94
-#, fuzzy
 msgid "Check for pending changes…"
 msgstr "Függő változások ellenőrzése…"
 
@@ -3800,9 +3794,10 @@ msgid "Click name to add individual to add links list."
 msgstr "Kattintson a névre, hogy hozzáadja a Hivatkozás hozzáadása listához."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:350
-#, fuzzy
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "Kattintson a címre, hogy a szöveghez jusson, vagy görgessen lefelé az olvasáshoz."
+msgstr ""
+"Kattintson a címre, hogy a szöveghez jusson, vagy görgessen lefelé az "
+"olvasáshoz."
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:1224
 msgid "Click to choose individual as head of family."
@@ -3952,7 +3947,6 @@ msgid "Contact information"
 msgstr "Kapcsolatinformációk"
 
 #: edituser.php:268
-#, fuzzy
 msgid "Contact method"
 msgstr "Kapcsolattartási mód"
 
@@ -3997,9 +3991,8 @@ msgstr "Vezérlőpult"
 
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:378
 #: app/Module/ClippingsCartModule.php:714
-#, fuzzy
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr "Át szeretné konvertálni ezt a GEDCOM-ot UTF-8-ról ISO-8859-1-ra?"
+msgstr "UTF-8 kódolásról ISO-8859-1-ra módosítása"
 
 #: app/Stats.php:6769
 msgid "Cook Islands"
@@ -4025,7 +4018,6 @@ msgstr ""
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:431
-#, fuzzy
 msgid "Copy files…"
 msgstr "Fájlok másolása…"
 
@@ -4311,9 +4303,8 @@ msgid "Custom welcome text"
 msgstr "Egyéni üdvözlő szöveg"
 
 #: app/Theme/AbstractTheme.php:1020 app/Theme/AbstractTheme.php:1022
-#, fuzzy
 msgid "Customize this page"
-msgstr "Oldal módosítása"
+msgstr "Oldal testreszabása"
 
 #: app/Stats.php:6778
 msgid "Cyprus"
@@ -4343,7 +4334,6 @@ msgstr "Dallas, Texas"
 
 #. I18N: A summary of the system status
 #: admin.php:429
-#, fuzzy
 msgid "Dashboard"
 msgstr "Irányítópult"
 
@@ -5008,7 +4998,6 @@ msgid "Delete temporary files…"
 msgstr "Ideiglenes fájlok törlése…"
 
 #: admin_modules.php:98
-#, fuzzy
 msgid "Delete the preferences for this module."
 msgstr "Modul beállításainak törlése"
 
@@ -5763,9 +5752,8 @@ msgid "Exclude individuals with “%s” as a married name"
 msgstr ""
 
 #: admin_media.php:666
-#, fuzzy
 msgid "Exclude subfolders"
-msgstr "Alkönyvtárak kizárása"
+msgstr "Alkönyvtárak kihagyása"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:92
@@ -6329,9 +6317,8 @@ msgid "Find a source"
 msgstr "Forrás keresése"
 
 #: app/Functions/FunctionsPrint.php:723 find.php:72
-#, fuzzy
 msgid "Find a special character"
-msgstr "Speciális karakter keresése"
+msgstr "Egyedi jel / betű keresése"
 
 #: relationship.php:100
 msgid "Find all possible relationships"
