@@ -63,10 +63,11 @@ function checknames(frm) {
 }
 </script>
 
+<div id="search-page">
+<h2><?php echo $controller->getPageTitle(); ?></h2>
+
 <?php if ($controller->action === 'general'): ?>
 
-<div id="search-page">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form name="searchform" onsubmit="return checknames(this);">
 		<input type="hidden" name="action" value="general">
 		<input type="hidden" name="isPostBack" value="true">
@@ -143,13 +144,10 @@ function checknames(frm) {
 			</div>
 		</div>
 	</form>
-</div>
 
 <?php endif; ?>
 <?php if ($controller->action === 'replace'): ?>
-
-<div id="search-page">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
+	
 	<form method="post" name="searchform" onsubmit="return checknames(this);">
 		<input type="hidden" name="action" value="replace">
 		<input type="hidden" name="isPostBack" value="true">
@@ -220,13 +218,10 @@ function checknames(frm) {
 			</div>
 		</div>
 	</form>
-</div>
 
 <?php endif; ?>
 <?php if ($controller->action == "soundex"): ?>
 
-<div id="search-page">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form name="searchform" onsubmit="return checknames(this);">
 		<input type="hidden" name="action" value="soundex">
 		<input type="hidden" name="isPostBack" value="true">
@@ -306,7 +301,6 @@ function checknames(frm) {
 			</div>
 		</div>
 	</form>
-</div>
 
 <?php endif; ?>
 
