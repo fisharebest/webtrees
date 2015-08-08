@@ -666,7 +666,7 @@ class Functions {
 		}
 	}
 
-	// Cache for generic relationships determination
+	/** @var string[] Cache for generic relationships (key stores the path, and value represents the relationship name) */
 	protected static $relationshipsCache = array();
 
 	/**
