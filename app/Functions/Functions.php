@@ -666,6 +666,9 @@ class Functions {
 		}
 	}
 
+	/** @var string[] Cache for generic relationships (key stores the path, and value represents the relationship name) */
+	protected static $relationshipsCache = array();
+
 	/**
 	 * Convert a relationship path into a relationship name.
 	 *
@@ -2156,6 +2159,10 @@ class Functions {
 
 		// Split the relationship into sub-relationships, e.g., third-cousin’s great-uncle.
 		// Try splitting at every point, and choose the path with the shorted translated name.
+		// But before starting to recursively go through all combinations, do a cache look-up
+		if (array_key_exists($path, self::$relationshipsCache)) {
+			return self::$relationshipsCache[$path];
+		}
 
 		$relationship = null;
 		$path1        = substr($path, 0, 3);
@@ -2173,6 +2180,8 @@ class Functions {
 			$path1 .= substr($path2, 0, 3);
 			$path2 = substr($path2, 3);
 		}
+		// and store the result in the cache
+		self::$relationshipsCache[$path] = $relationship;
 
 		return $relationship;
 	}
