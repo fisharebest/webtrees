@@ -2161,7 +2161,7 @@ class Functions {
 		// Try splitting at every point, and choose the path with the shorted translated name.
 		// But before starting to recursively go through all combinations, do a cache look-up
 		if (array_key_exists($path, self::$relationshipsCache)) {
-        	return self::$relationshipsCache[$path];
+			return self::$relationshipsCache[$path];
 		}
 
 		$relationship = null;
