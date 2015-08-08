@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-07-10 16:57+0100\n"
-"PO-Revision-Date: 2015-06-26 09:24+0100\n"
-"Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
-"Language-Team: Lithuanian <http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
+"PO-Revision-Date: 2015-08-08 10:58+0100\n"
+"Last-Translator: Ramūnas Dronga <ieskok@ramuno.lt>\n"
+"Language-Team: Lithuanian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -7245,12 +7247,16 @@ msgstr "Jeigu du šeimos medžia naudoja tą pačią medijos aplanką, tada jie 
 
 #: admin_trees_config.php:381
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
-msgstr "Jei lankytojai negali matyti šeimos medžio, jie negalės prisiregistruoti sąskaitos.  Jūs turėsite sukurti sąskaitas rankiniu būdu."
+msgstr ""
+"Jei lankytojai negali matyti šeimos medžio, jie negalės prisiregistruoti "
+"sąskaitos.  Jūs turėsite sukurti paskyras rankiniu būdu."
 
 #. I18N: Help text for the “Who can upload new media files?” configuration setting
 #: admin_trees_config.php:1041
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr ""
+"Jei baiminatės, kad vartotojai gali įkelti nekorektiškų bylų, tuomet galite "
+"uždrausti bylų įkėlimą visiems išskyrus administratorius."
 
 #: site-unavailable.php:95
 msgid "If you are the website administrator, you should check that:"
@@ -7266,11 +7272,13 @@ msgstr ""
 
 #: login.php:328
 msgid "If you didn’t request an account, you can just delete this message."
-msgstr "Jei Jūs neprašėte prisijungimo vardo, tai galite tik ištrinti šį laišką."
+msgstr "Jei Jūs neprašėte prisijungimo vardo, tai ištrinkite šį laišką."
 
 #: app/Module/GoogleMapsModule.php:4556
 msgid "If you have a large number of inactive places, it can be slow to generate the list."
-msgstr "Jei jūs turite daug nesusietų vietovių įrašų, tai gali stabdyti sąrašo sugenerąvimą."
+msgstr ""
+"Jei Jūs turite daug nesusietų vietovių įrašų, tai gali stabdyti sąrašo "
+"sugeneravimą."
 
 #: addmedia.php:534 admin_media_upload.php:254
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -12757,6 +12765,7 @@ msgstr ""
 #: admin_trees_config.php:1560
 msgid "Some themes can display icons on the “Facts and events” tab."
 msgstr ""
+"Kai kurios išvaizdos temos gali rodyti ikonas \"Faktų ir įvykių\" lentelėje."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:520
@@ -13755,7 +13764,7 @@ msgstr "webtrees kūrėjams būtų labai įdomu sužinoti apie šią klaidą. Je
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr ""
+msgstr "\"%\" simbolis atitinka vieną arba daugiau ženklų."
 
 #: admin_modules.php:186 admin_users.php:470 app/Theme/AbstractTheme.php:1672
 #: edituser.php:247
@@ -13821,7 +13830,7 @@ msgstr[2] "Per paskutines %s dienų nebuvo pakeitimų."
 #: login.php:245
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr ""
+msgstr "Nepavyko rasti paskyros su vartotojo vardu arba el. paštu \"%s\"."
 
 #: addmedia.php:184 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -14118,6 +14127,8 @@ msgstr ""
 #: admin_trees_config.php:2037
 msgid "This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click."
 msgstr ""
+"Tai yra trumpas GEDCOM šaltinio faktų sąrašas, kuris parodomas šalia pilno "
+"sąrašo ir gali būti greitai pridėtas vienu paspaudimu."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1082
@@ -14246,6 +14257,8 @@ msgstr ""
 #: admin_trees_config.php:1398
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
 msgstr ""
+"Ši opcija nustato ar reikia rodyti tėvo arba motinos amžių šalia vaiko "
+"gimimo dienos."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: admin_trees_config.php:1271
@@ -14261,6 +14274,8 @@ msgstr ""
 #: admin_trees_config.php:1298
 msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
 msgstr ""
+"Ši opcija nustato pedigree diagramos atvaizdavimą - landscape arba portrait "
+"režimu."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:501
@@ -14284,9 +14299,9 @@ msgstr ""
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Šis puslapis buvo peržiūrėtas %s kartą."
+msgstr[1] "Šis puslapis buvo peržiūrėtas %s kartų."
+msgstr[2] "Šis puslapus buvo peržiūrėtas %s kartus."
 
 #: app/Module/GoogleMapsModule.php:2845
 msgid "This place has no coordinates"
@@ -14568,6 +14583,8 @@ msgstr "Norint sumažinti atsisiuntimo dydį, jūs galite suslėgti duomenis į 
 #: admin_site_config.php:462
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
 msgstr ""
+"Jei norite nustatyti šį tekstą kitoms kalbos, įsijunkite kitą kalbą ir "
+"atverskite šį puslapį iš naujo."
 
 #: app/Module/SiteMapModule.php:331
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -15105,7 +15122,7 @@ msgstr ""
 
 #: app/Functions/FunctionsEdit.php:638
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "Naudoti šį paveikslą grafikams ir individo puslapyje."
 
 #: app/Module/GoogleMapsModule.php:3914
 msgid "Use this value"
@@ -15488,6 +15505,8 @@ msgstr ""
 #: admin_trees_config.php:859
 msgid "When new records are created, they are given an internal ID number.  You can specify the prefix used for each type of record."
 msgstr ""
+"Visi nauji įrašai gauna savo vidinį ID numerį. Jūs galite nurodyti prefiksą "
+"kiekvienam įrašo tipui."
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1620
@@ -15650,7 +15669,7 @@ msgstr "Jūs (ar kas nors apsimetes jumis) paprašė registracijos %1$s naudojan
 
 #: logout.php:24
 msgid "You are logged out."
-msgstr ""
+msgstr "Jūs atsijungėte."
 
 #: login.php:271 message.php:57
 msgid "You are not allowed to send messages that contain external links."
@@ -19735,12 +19754,17 @@ msgstr "webtrees žinutė"
 #: setup.php:271
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr "webtrees reikalauja duomenų bazės MySQL, versija %s ar vėlesnės."
+msgstr "webtrees reikalauja duomenų bazės MySQL, %s arba naujesnės versijos."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:307
 msgid "webtrees needs to send emails, such as password reminders and website notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-msgstr "webtrees reikia siųsti laiškus, pavyzdžiui, slaptažodžio priminimus ir svetainių pranešimus. Norėdami tai padaryti, jis gali naudotis šio serverio PHP galimybėmis (o tai ne visada įmanoma), arba išorės SMTP (pašto relės) paslaugomis, kuriai Jūs turėsite pateikti susijungimo duomenis, kuriuos galite rasti internetinio pašto tiekėjo WEB puslapyje."
+msgstr ""
+"Webtrees reikia siųsti laiškus, pavyzdžiui, slaptažodžio priminimus ir "
+"svetainių pranešimus. Norėdami tai padaryti, jis gali naudotis šio serverio "
+"PHP galimybėmis (o tai ne visada įmanoma), arba išorės SMTP (pašto relės) "
+"paslaugomis, kuriai Jūs turėsite pateikti susijungimo duomenis, kuriuos "
+"galite rasti internetinio pašto tiekėjo WEB puslapyje."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:869
@@ -19754,6 +19778,9 @@ msgstr "webtrees siunčia el. laiškus be atminties"
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
+"webtrees naudoja UTF-8 koduotę laiškams, specialiems simboliams ir ne "
+"lotyniškiems raidynams. Jei Jūs naudojate programinę įrangą, kuri nepalaiko "
+"UTF-8 koduotės, tuomet pasirinkite ISO-8859-1 koduotę."
 
 #: app/Functions/FunctionsPrint.php:208
 msgid "webtrees wiki"
