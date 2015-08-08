@@ -31,8 +31,20 @@ require './includes/session.php';
 
 $controller = new FamilyController;
 
+if (!$controller->record) {
+    http_response_code(404);
+    $controller->pageHeader();
+    echo '<p class="ui-state-error">', I18N::translate('This family does not exist or you do not have permission to view it.'), '</p>';
+
+	return;      
+}
+
+// elseif ($controller->record && $controller->record->getTree()->getPreference('SHOW_PRIVATE_RELATIONSHIPS'))
+// Continue - to display the children/parents/grandparents.
+// We'll check for showing the details again later
+$controller->pageHeader();
+
 if ($controller->record && $controller->record->canShow()) {
-	$controller->pageHeader();
 	if ($controller->record->isPendingDeletion()) {
 		if (Auth::isModerator($controller->record->getTree())) {
 			echo
@@ -70,16 +82,6 @@ if ($controller->record && $controller->record->canShow()) {
 				'</p>';
 		}
 	}
-} elseif ($controller->record && $controller->record->getTree()->getPreference('SHOW_PRIVATE_RELATIONSHIPS')) {
-	$controller->pageHeader();
-	// Continue - to display the children/parents/grandparents.
-	// We'll check for showing the details again later
-} else {
-	http_response_code(404);
-	$controller->pageHeader();
-	echo '<p class="ui-state-error">', I18N::translate('This family does not exist or you do not have permission to view it.'), '</p>';
-
-	return;
 }
 
 ?>
