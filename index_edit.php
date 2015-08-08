@@ -285,7 +285,7 @@ $controller
 	);
 ?>
 
-<h1><?php echo $controller->getPageTitle(); ?></h1>
+<h2><?php echo $controller->getPageTitle(); ?></h2>
 
 <form name="config_setup" method="post" action="index_edit.php?action=update" onsubmit="select_options();" >
 	<input type="hidden" name="user_id"   value="<?php echo $user_id; ?>">
