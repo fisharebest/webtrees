@@ -111,7 +111,7 @@ define('WT_DEBUG', strpos(WT_VERSION, 'dev') !== false);
 define('WT_DEBUG_SQL', false);
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 31);
+define('WT_SCHEMA_VERSION', 32);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
@@ -501,7 +501,10 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 		if ($theme->themeId() === $theme_id) {
 			Theme::theme($theme)->init($WT_TREE);
 			// Remember this setting
-			Session::put('theme_id', $theme_id);
+			if (Site::getPreference('ALLOW_USER_THEMES')) {
+				Session::put('theme_id', $theme_id);
+			}
+			break;
 		}
 	}
 }

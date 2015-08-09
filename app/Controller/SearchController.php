@@ -536,6 +536,7 @@ class SearchController extends PageController {
 				if (!empty($this->mynotelist)) {
 					echo '<div id="notes-results-tab">', FunctionsPrintLists::noteTable($this->mynotelist), '</div>';
 				}
+				echo '</div>';
 			} else {
 				// One or more search terms were specified, but no results were found.
 				echo '<div class="warning center">' . I18N::translate('No results found.') . '</div>';
