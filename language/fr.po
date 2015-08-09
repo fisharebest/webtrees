@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-06 15:04+0100\n"
-"Last-Translator: Sodan <garudo65-webtrees@yahoo.fr>\n"
-"Language-Team: French <http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
+"PO-Revision-Date: 2015-08-09 11:07+0100\n"
+"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
+"Language-Team: French "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13649,6 +13650,8 @@ msgstr "La durée en secondes durant laquelle la session webtrees reste active a
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:250
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
+"Le fuseau horaire est nécessaire pour le calcul des dates, par exemple pour "
+"connaître la date du jour."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
@@ -14421,7 +14424,7 @@ msgstr "Heure"
 #. I18N: A configuration setting
 #: admin_site_config.php:230 admin_users.php:423 edituser.php:244
 msgid "Time zone"
-msgstr ""
+msgstr "Fuseau horaire"
 
 #: app/Controller/TimelineController.php:77 app/Theme/AbstractTheme.php:1224
 #: timeline.php:243
