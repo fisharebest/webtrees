@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-01 22:19+0100\n"
-"Last-Translator: Stijn Haezebrouck <web@haezebrouck.be>\n"
-"Language-Team: Dutch <http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
+"PO-Revision-Date: 2015-08-09 14:41+0100\n"
+"Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
+"Language-Team: Dutch "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13649,6 +13650,8 @@ msgstr "De tijd in seconden dat een webtrees-sessie actief blijft, voordat er ee
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:250
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
+"De tijdzone is van belang voor het rekenen met datums. Bijvoorbeeld om te "
+"berekenen wat voor dag het vandaag is."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
@@ -14421,7 +14424,7 @@ msgstr "Tijd"
 #. I18N: A configuration setting
 #: admin_site_config.php:230 admin_users.php:423 edituser.php:244
 msgid "Time zone"
-msgstr ""
+msgstr "Tijdzone"
 
 #: app/Controller/TimelineController.php:77 app/Theme/AbstractTheme.php:1224
 #: timeline.php:243
