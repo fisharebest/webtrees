@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-07-20 19:36+0100\n"
+"PO-Revision-Date: 2015-08-09 13:18+0100\n"
 "Last-Translator: H R Nilsen <hrnwebtrees@yahoo.com>\n"
-"Language-Team: Norwegian Nynorsk <http://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
+"Language-Team: Norwegian Nynorsk "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13649,6 +13650,7 @@ msgstr "Tid i sekund som ei webtrees økt er aktiv før det vert krevd ny innlog
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:250
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
+"Tidssone er naudsynleg for berekning av datoar, som til dømes dagens dato."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
@@ -14421,7 +14423,7 @@ msgstr "Tid"
 #. I18N: A configuration setting
 #: admin_site_config.php:230 admin_users.php:423 edituser.php:244
 msgid "Time zone"
-msgstr ""
+msgstr "Tidssone"
 
 #: app/Controller/TimelineController.php:77 app/Theme/AbstractTheme.php:1224
 #: timeline.php:243
@@ -15455,6 +15457,9 @@ msgstr "ID-feltet kan ikkje stå tomt når det vert lagt til lenke."
 #: admin_trees_config.php:2227
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death).  This option controls whether records or facts will be selected by default."
 msgstr ""
+"Når det leggast til nye nære slektningar, kan kjeldetilvisingar leggast til "
+"postar (personar og familier) eller til fakta og hendingar (fødsel, vigsle "
+"og død).  Dette alternativet avgjer om postar eller fakta er førehandsvalt."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:859
