@@ -113,8 +113,16 @@ case 'login':
 		}
 
 		// If we were on a "home page", redirect to "my page"
-		if (strpos($url, 'index.php?ctype=gedcom') === 0) {
-			$url = str_replace('?ctype=gedcom', '?ctype=user', $url);
+		if ($url === '' || strpos($url, 'index.php?ctype=gedcom') === 0) {
+			$url = 'index.php?ctype=user';
+			// Switch to a tree where we have a genealogy record (or keep to the current/default).
+			$tree = Database::prepare(
+				"SELECT gedcom_name FROM `##gedcom` JOIN `##user_gedcom_setting` USING (gedcom_id)" .
+				" WHERE setting_name = 'gedcomid' AND user_id = :user_id"
+			)->execute(array(
+				'user_id' => Auth::user()->getUserId(),
+			))->fetchOne();
+			$url .= '&ged=' . Filter::escapeUrl($tree);
 		}
 
 		// Redirect to the target URL
