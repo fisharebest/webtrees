@@ -42,7 +42,6 @@ class Individual extends GedcomRecord {
 	 * @param string[] $xrefs
 	 */
 	public static function load(Tree $tree, array $xrefs) {
-		$sql  = '';
 		$args = array(
 			'tree_id' => $tree->getTreeId(),
 		);
