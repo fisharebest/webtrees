@@ -12760,7 +12760,7 @@ msgstr ""
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1560
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Kai kurios išvaizdos temos gali rodyti ikonas \"Faktų ir įvykių\" lentelėje."
+msgstr "Kai kurios išvaizdos temos gali rodyti ikonas „Faktų ir įvykių“ lentelėje."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:520
@@ -13765,7 +13765,7 @@ msgstr "webtrees kūrėjams būtų labai įdomu sužinoti apie šią klaidą. Je
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr "\"%\" simbolis atitinka vieną arba daugiau ženklų."
+msgstr "„%“ simbolis atitinka vieną arba daugiau ženklų."
 
 #: admin_modules.php:186 admin_users.php:486 app/Theme/AbstractTheme.php:1672
 #: edituser.php:269
@@ -13831,7 +13831,7 @@ msgstr[2] "Per paskutines %s dienų nebuvo pakeitimų."
 #: login.php:239
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "Nepavyko rasti paskyros su vartotojo vardu arba el. paštu \"%s\"."
+msgstr "Nepavyko rasti paskyros su vartotojo vardu arba el. paštu „%s“."
 
 #: addmedia.php:184 admin_media_upload.php:145
 msgid "There was an error uploading your file."
