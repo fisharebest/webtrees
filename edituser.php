@@ -92,8 +92,11 @@ if ($form_action && Filter::checkCsrf()) {
 	case 'delete':
 		// An administrator can only be deleted by another administrator
 		if (!Auth::user()->getPreference('canadmin')) {
+			// Keep a reference to the currently logged in user because after logging out this user,
+			// a call to Auth::user() will not return this user anymore
+			$currentUser = Auth::user();
 			Auth::logout();
-			Auth::user()->delete();
+			$currentUser->delete();
 		}
 		break;
 	}
