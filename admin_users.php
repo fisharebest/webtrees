@@ -60,7 +60,7 @@ case 'save':
 		$contact_method = Filter::post('contact_method');
 		$comment        = Filter::post('comment');
 		$auto_accept    = Filter::postBool('auto_accept');
-		$admin          = Filter::postBool('canadmin');
+		$canadmin       = Filter::postBool('canadmin');
 		$visible_online = Filter::postBool('visible_online');
 		$verified       = Filter::postBool('verified');
 		$approved       = Filter::postBool('approved');
@@ -115,7 +115,7 @@ case 'save':
 
 			// We cannot change our own admin status.  Another admin will need to do it.
 			if ($user->getUserId() !== Auth::id()) {
-				$user->setPreference('canadmin', $admin ? '1' : '0');
+				$user->setPreference('canadmin', $canadmin ? '1' : '0');
 			}
 
 			foreach (Tree::getAll() as $tree) {
