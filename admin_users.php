@@ -283,9 +283,9 @@ case 'edit':
 				var fieldIDx = jQuery(this).attr("id");
 				var idNum = fieldIDx.replace("RELATIONSHIP_PATH_LENGTH","");
 				var newIDx = "gedcomid"+idNum;
-				if (jQuery("#"+newIDx).val()=="") {
+				if (jQuery("#"+newIDx).val() === "" && jQuery("#".fieldIDx).val() !== "0") {
 					alert("' . I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.') . '");
-					jQuery(this).val("");
+					jQuery(this).val("0");
 				}
 			});
 			function regex_quote(str) {
