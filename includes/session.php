@@ -67,7 +67,7 @@ if (getenv('USE_CDN')) {
 	define('WT_JQUERY_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js');
 	define('WT_JQUERY2_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js');
 	define('WT_MODERNIZR_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js');
-	define('WT_MOMENT_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment-with-locales.min.js'); // 2.10.3 not yet available
+	define('WT_MOMENT_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js'); // 2.10.3 not yet available
 	define('WT_RESPOND_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js');
 } else {
 	define('WT_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.5/css/bootstrap.min.css');
@@ -85,14 +85,14 @@ if (getenv('USE_CDN')) {
 	define('WT_JQUERY_JS_URL', WT_STATIC_URL . 'packages/jquery-1.11.3/jquery.min.js');
 	define('WT_JQUERY2_JS_URL', WT_STATIC_URL . 'packages/jquery-2.1.4/jquery.min.js');
 	define('WT_MODERNIZR_JS_URL', WT_STATIC_URL . 'packages/modernizr-2.8.3/modernizr.min.js');
-	define('WT_MOMENT_JS_URL', WT_STATIC_URL . 'packages/moment-2.10.3/moment-with-locales.min.js');
+	define('WT_MOMENT_JS_URL', WT_STATIC_URL . 'packages/moment-2.10.6/moment-with-locales.min.js');
 	define('WT_RESPOND_JS_URL', WT_STATIC_URL . 'packages/respond-1.4.2/respond.min.js');
 }
 
 // We can't load these from a CDN, as these have been patched.
 define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'assets/js-1.7.0/jquery.colorbox-1.5.14.js');
 define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'assets/js-1.7.0/jquery.wheelzoom-2.0.0.js');
-define('WT_CKEDITOR_BASE_URL', WT_STATIC_URL . 'packages/ckeditor-4.4.7-custom/');
+define('WT_CKEDITOR_BASE_URL', WT_STATIC_URL . 'packages/ckeditor-4.5.2-custom/');
 // See https://github.com/DataTables/Plugins/pull/178
 define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.7/plugins/dataTables.bootstrap-rtl.css');
 

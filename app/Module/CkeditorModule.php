@@ -51,8 +51,10 @@ class CkeditorModule extends AbstractModule {
 			)
 			// Enable for all browsers
 			->addInlineJavascript('CKEDITOR.env.isCompatible = true;')
+			// Disable toolbars
+			->addInlineJavascript('CKEDITOR.config.removePlugins = "forms,newpage,preview,print,save,templates";')
 			// Activate the editor
-			->addInlineJavascript('jQuery(".html-edit").ckeditor(function(){}, {
+			->addInlineJavascript('jQuery(".html-edit").ckeditor(function(){config.removePlugins = "forms";}, {
 				language: "' . strtolower(WT_LOCALE) . '"
 			});');
 	}
