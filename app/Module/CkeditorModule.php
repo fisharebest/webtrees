@@ -51,7 +51,7 @@ class CkeditorModule extends AbstractModule {
 			)
 			// Activate the editor
 			->addInlineJavascript('jQuery(".html-edit").ckeditor(function(){}, {
-				language: "' . str_replace('_', '-', strtolower(WT_LOCALE)) . '"
+				language: "' . strtolower(WT_LOCALE) . '"
 			});');
 	}
 }
