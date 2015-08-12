@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-10 14:41+0100\n"
+"PO-Revision-Date: 2015-08-12 21:18+0100\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
@@ -697,7 +697,11 @@ msgstr "<b>GUID</b> beteken in hierdie konteks ‘Globally Unique ID’.<br><br>
 
 #: admin_trees_manage.php:718
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr "<b>Belangrike opmerking:</b> Die oordrag module (wizard) kan nie help met die oordgrag van media items nie. Jy moet na afloop van die oordrag wizard se werk self jou media opset instel en jou media items oordra of kopieër."
+msgstr ""
+"<b>Belangrike opmerking:</b> Die oordragmodule (transfer wizard) kan nie "
+"help met die oordrag van media items nie. Jy moet na afloop van die "
+"oordragmodule se werk self jou mediakonfigurasie instel en jou media items "
+"afsonderlik oordra of kopieër."
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
@@ -1338,7 +1342,7 @@ msgstr "Skep 'n nuwe nuusberig"
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
-msgstr "Voeg 'n skuifbalk toe wanneer blokinhoud groter word"
+msgstr "Voeg 'n skuifbalk toe wanneer die inhoud van 'n blok toeneem"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
@@ -1409,7 +1413,7 @@ msgstr "Voeg die GEDCOM media pad by lêername"
 #. I18N: A configuration setting
 #: admin_trees_config.php:936
 msgid "Add to TITLE header tag"
-msgstr "Voeg by TITLE header tag"
+msgstr "Voeg by TITLE kop-etiket"
 
 #. I18N: Menu option.  Add [the current page] to the list of favorites
 #: app/Controller/FamilyController.php:125
@@ -3495,7 +3499,7 @@ msgstr "Kontroleer vir uitstaande wysigings…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
-msgstr "Kontroleer die toegangsregte vir hierdie lêer."
+msgstr "Kontroleer die toegangsregte vir hierdie lêergids."
 
 #: setup.php:264 setup.php:336
 msgid "Check the settings and try again."
@@ -3576,33 +3580,37 @@ msgstr "Kinders kry die familienaam van hulle moeder."
 
 #: app/Stats.php:6767
 msgid "Chile"
-msgstr ""
+msgstr "Chili"
 
 #: app/Stats.php:6768
 msgid "China"
-msgstr ""
+msgstr "Sjina"
 
 #: reportengine.php:116 reportengine.php:124
 msgid "Choose a report to run"
-msgstr ""
+msgstr "Kies watter verslag saamgestel moet word"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Choose relatives"
-msgstr ""
+msgstr "Kies familielede"
 
 #: addmedia.php:449 admin_media_upload.php:213
 msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
 msgstr ""
+"Kies die miniatuur wat jy wil oplaai. Hoewel miniature van beelde outomaties "
+"geskep kan word, mag jy miskien self 'n miniatuur wil skep, veral vir ander "
+"media soorte. Byvoorbeeld, jy kan 'n stilbeeld van 'n video, of 'n foto van "
+"die persoon wat 'n klankopname gemaak het, skep."
 
 #: admin_site_config.php:124
 msgid "Choose user defined welcome text typed below"
-msgstr ""
+msgstr "Kies die welkomteks, wat hieronder ingetik word"
 
 #: addmedia.php:511 admin_media_upload.php:240
 msgid "Choose: "
-msgstr ""
+msgstr "Kies "
 
 #. I18N: gedcom tag CHR
 #: app/GedcomTag.php:278 modules_v3/family_group_report/report.xml:206
@@ -3610,83 +3618,83 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:904
 #: modules_v3/missing_facts_report/report.xml:16
 msgid "Christening"
-msgstr ""
+msgstr "Doop"
 
 #: app/GedcomTag.php:1236
 msgid "Christening of a brother"
-msgstr ""
+msgstr "Doop van 'n broer"
 
 #: app/GedcomTag.php:1195
 msgid "Christening of a child"
-msgstr ""
+msgstr "Doop van 'n kind"
 
 #: app/GedcomTag.php:1193
 msgid "Christening of a daughter"
-msgstr ""
+msgstr "Doop van 'n dogter"
 
 #: app/GedcomTag.php:1204 app/GedcomTag.php:1213 app/GedcomTag.php:1222
 msgid "Christening of a grandchild"
-msgstr ""
+msgstr "Doop van 'n kleinkind"
 
 #: app/GedcomTag.php:1202
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Doop van 'n kleindogter"
 
 #: app/GedcomTag.php:1211
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Doop van 'n kleindogter"
 
 #: app/GedcomTag.php:1220
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Doop van 'n kleindogter"
 
 #: app/GedcomTag.php:1200
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Doop van 'n kleinseun"
 
 #: app/GedcomTag.php:1209
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Doop van 'n kleinseun"
 
 #: app/GedcomTag.php:1218
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Doop van 'n kleinseun"
 
 #: app/GedcomTag.php:1227
 msgid "Christening of a half-brother"
-msgstr ""
+msgstr "Doop van 'n halfbroer"
 
 #: app/GedcomTag.php:1231
 msgid "Christening of a half-sibling"
-msgstr ""
+msgstr "Doop van 'n halfbroer/suster"
 
 #: app/GedcomTag.php:1229
 msgid "Christening of a half-sister"
-msgstr ""
+msgstr "Doop van 'n halfsuster"
 
 #: app/GedcomTag.php:1240
 msgid "Christening of a sibling"
-msgstr ""
+msgstr "Doop van 'n broer/suster"
 
 #: app/GedcomTag.php:1238
 msgid "Christening of a sister"
-msgstr ""
+msgstr "Doop van 'n suster"
 
 #: app/GedcomTag.php:1191
 msgid "Christening of a son"
-msgstr ""
+msgstr "Doop van 'n seun"
 
 #: app/Stats.php:6780
 msgid "Christmas Island"
-msgstr ""
+msgstr "Kerseiland"
 
 #: app/GedcomCode/GedcomCodeRela.php:90
 msgid "Circumciser"
-msgstr ""
+msgstr "Besnyer"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:670 modules_v3/fact_sources/report.xml:74
@@ -3694,12 +3702,12 @@ msgstr ""
 #: modules_v3/fact_sources/report.xml:277
 #: modules_v3/fact_sources/report.xml:323
 msgid "Citation details"
-msgstr ""
+msgstr "Besonderhede van aanhaling"
 
 #. I18N: gedcom tag CITN
 #: app/GedcomTag.php:290
 msgid "Citizenship"
-msgstr ""
+msgstr "Burgerskap"
 
 #. I18N: gedcom tag CITY
 #: app/GedcomTag.php:294 app/Module/GoogleMapsModule.php:374
@@ -3709,135 +3717,139 @@ msgstr "Dorp/Stad"
 
 #: app/GedcomCode/GedcomCodeTemp.php:121
 msgid "Ciudad Juarez, Mexico"
-msgstr ""
+msgstr "Ciudad Juárez, Meksiko"
 
 #: app/GedcomTag.php:578 modules_v3/fact_sources/report.xml:202
 msgid "Civil marriage"
-msgstr ""
+msgstr "Burgelike huwelik"
 
 #: app/GedcomCode/GedcomCodeRela.php:98
 msgid "Civil registrar"
-msgstr ""
+msgstr "Burgelike registrateur"
 
 #: app/GedcomCode/GedcomCodeRela.php:96
 msgctxt "FEMALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "Burgelike registrateur"
 
 #: app/GedcomCode/GedcomCodeRela.php:94
 msgctxt "MALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "Burgelike registrateur"
 
 #. I18N: The “Data folder” is a configuration setting
 #. I18N: Menu entry
 #: admin_site_clean.php:51 app/Theme/AdministrationTheme.php:94
 msgid "Clean up data folder"
-msgstr ""
+msgstr "Ruim die data-lêergids op"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:76
 msgid "Cleared but not yet completed"
-msgstr ""
+msgstr "Uitgeklaar, maar nog nie afgehandel nie"
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:95
 #: modules_v3/GEDFact_assistant/census/census-edit.php:1225
 #, php-format
 msgid "Click %s to choose individual as head of family."
-msgstr ""
+msgstr "Klik %s om die persoon as hoof van die familie te kies."
 
 #: edit_interface.php:1718
 msgid "Click a row, then drag-and-drop to re-order media"
 msgstr ""
+"Klik op 'n ry, sleep dan en laat los om die volgorde van die media te "
+"verander"
 
 #: admin_trees_manage.php:722
 msgid "Click here for PhpGedView to webtrees transfer wizard"
 msgstr ""
+"Klik hier vir die PhpGedView na webtrees oordragmodule (transfer wizard)"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:352
 msgid "Click here to add, edit, or delete"
-msgstr ""
+msgstr "Klik hier om by te voeg, te wysig of te verwyder"
 
 #: individual.php:246
 msgid "Click here to open or close the sidebar"
-msgstr ""
+msgstr "Klik hier om die sypaneel oop te maak of te wysig"
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:97
 msgid "Click name to add individual to add links list."
-msgstr ""
+msgstr "Klik op die naam om 'n persoon by die ‘Voeg skakels by'-lys te voeg."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:350
 msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr ""
+"Klik op 'n titel om reguit soontoe te gaan of skuif af om alles te lees."
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:1224
 msgid "Click to choose individual as head of family."
-msgstr ""
+msgstr "Klik om die persoon as hoof van die familie te kies."
 
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:36
 msgid "Clippings cart"
-msgstr ""
+msgstr "Knipselmandjie"
 
 #: app/GedcomTag.php:1863
 msgid "Coat of arms"
-msgstr ""
+msgstr "Familiewapen"
 
 #: app/GedcomCode/GedcomCodeTemp.php:123
 msgid "Cochabamba, Bolivia"
-msgstr ""
+msgstr "Cochabamba, Bolivië"
 
 #: app/Stats.php:6764
 msgid "Cocos (Keeling) Islands"
-msgstr ""
+msgstr "Kokoseilande"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:81
 msgid "Coffee and Cream"
-msgstr ""
+msgstr "Koffie en Room"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:82
 msgid "Cold Day"
-msgstr ""
+msgstr "Koue Dag"
 
 #: app/Stats.php:6774
 msgid "Colombia"
-msgstr ""
+msgstr "Colombia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:125
 msgid "Colonia Juarez, Mexico"
-msgstr ""
+msgstr "Colonia Juarez, Meksiko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:133
 msgid "Columbia River, Washington"
-msgstr ""
+msgstr "Columbiarivier, Washington"
 
 #: app/GedcomCode/GedcomCodeTemp.php:127
 msgid "Columbia, South Carolina"
-msgstr ""
+msgstr "Columbia, Suid-Carolina"
 
 #: app/GedcomCode/GedcomCodeTemp.php:129
 msgid "Columbus, Ohio"
-msgstr ""
+msgstr "Columbus, Ohio"
 
 #: medialist.php:163
 msgid "Columns per page"
-msgstr ""
+msgstr "Kolomme per bladsye"
 
 #. I18N: gedcom tag COMM
 #: admin_site_access.php:297 admin_site_access.php:366 app/GedcomTag.php:298
 msgid "Comment"
-msgstr ""
+msgstr "Kommentaar"
 
 #: login.php:299 login.php:321 login.php:456
 msgid "Comments"
-msgstr ""
+msgstr "Kommentaar"
 
 #. I18N: gedcom tag _COML
 #: app/GedcomTag.php:1245
 msgid "Common law marriage"
-msgstr ""
+msgstr "Gemeenregtelike huwelik"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:38
@@ -3846,38 +3858,38 @@ msgstr "Kommunikeer regstreeks met ander gebruikers, deur gebruik te maak van pr
 
 #: app/Stats.php:6775
 msgid "Comoros"
-msgstr ""
+msgstr "Komore"
 
 #: app/Controller/CompactController.php:46
 #: app/Controller/FanchartController.php:363 app/Theme/AbstractTheme.php:1085
 msgid "Compact tree"
-msgstr ""
+msgstr "Kompakte boom"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:43
 #: app/Controller/CompactController.php:125
 #, php-format
 msgid "Compact tree of %s"
-msgstr ""
+msgstr "Kompakte boom van %s"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
 msgid "Completed before 1970; date not available"
-msgstr ""
+msgstr "Afgehandel voor 1970; datum nie beskikbaar nie"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:80
 msgid "Completed; date unknown"
-msgstr ""
+msgstr "Afgehandel; datum onbekend"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Verdig die GEDCOM lêer"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
 msgid "Concatenation"
-msgstr ""
+msgstr "Aaneenskakeling"
 
 #: app/Module/ChartsBlockModule.php:77 app/Module/FamilyTreeNewsModule.php:110
 #: app/Module/FamilyTreeStatisticsModule.php:84
@@ -3893,50 +3905,50 @@ msgstr "Konfigureer"
 
 #: admin_users.php:352 edituser.php:223 login.php:440
 msgid "Confirm password"
-msgstr ""
+msgstr "Bevestig wagwoord"
 
 #. I18N: gedcom tag CONF
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 msgid "Confirmation"
-msgstr ""
+msgstr "Bevestiging"
 
 #: app/Stats.php:6772
 msgid "Congo (Brazzaville)"
-msgstr ""
+msgstr "Kongo"
 
 #: app/Stats.php:6771
 msgid "Congo (Kinshasa)"
-msgstr ""
+msgstr "Kongo (Kinshasa)"
 
 #: setup.php:270
 msgid "Connection to database server"
-msgstr ""
+msgstr "Verbinding met die databasis bediener"
 
 #: admin_trees_config.php:864
 msgid "Contact information"
-msgstr ""
+msgstr "Kontakinligting"
 
 #: edituser.php:291
 msgid "Contact method"
-msgstr ""
+msgstr "Kontakmetode"
 
 #: search_advanced.php:156 search_advanced.php:218 search_advanced.php:233
 #: search_advanced.php:255 search_advanced.php:270
 msgid "Contains"
-msgstr ""
+msgstr "Bevat"
 
 #: app/Module/HtmlBlockModule.php:314 editnews.php:70
 msgid "Content"
-msgstr ""
+msgstr "Inhoud"
 
 #: app/Module/GoogleMapsModule.php:4324
 msgid "Continue adding"
-msgstr ""
+msgstr "Gaan voort met die toevoegings"
 
 #. I18N: gedcom tag CONT
 #: app/GedcomTag.php:306
 msgid "Continued"
-msgstr ""
+msgstr "Vervolg"
 
 #: admin.php:424 admin_media.php:608 admin_media_upload.php:180
 #: admin_module_blocks.php:60 admin_module_menus.php:74
@@ -3958,20 +3970,20 @@ msgstr ""
 #: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
 #: app/Theme/AbstractTheme.php:1234 app/Theme/AdministrationTheme.php:234
 msgid "Control panel"
-msgstr ""
+msgstr "Beheerpaneel"
 
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:378
 #: app/Module/ClippingsCartModule.php:714
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr ""
+msgstr "Skakel om van UTF-8 na ISO-8859-1"
 
 #: app/Stats.php:6773
 msgid "Cook Islands"
-msgstr ""
+msgstr "Cookeilande"
 
 #: app/GedcomCode/GedcomCodeTemp.php:131
 msgid "Copenhagen, Denmark"
-msgstr ""
+msgstr "Kopenhagen, Denemarke"
 
 #: app/Functions/FunctionsPrintFacts.php:191
 #: app/Functions/FunctionsPrintFacts.php:194
@@ -3979,33 +3991,35 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:1018
 #: app/Functions/FunctionsPrintFacts.php:1166
 msgid "Copy"
-msgstr ""
+msgstr "Kopieer"
 
 #. I18N:  Copy all the records from [family tree 1] into [family tree 2]
 #: admin_trees_merge.php:195
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Kopieer alle records van %1$s naar %2$s."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:431
 msgid "Copy files…"
-msgstr ""
+msgstr "Kopieer lêers…"
 
 #: admin_site_upgrade.php:401
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
 msgstr ""
+"Kopieer hierdie lêers na die lêergids %s, en vervang al die lêers met "
+"dieselfde naam."
 
 #. I18N: gedcom tag COPR
 #: app/GedcomTag.php:322
 msgid "Copyright"
-msgstr ""
+msgstr "Kopiereg"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:326
 msgid "Corporation"
-msgstr ""
+msgstr "Korporasie"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:39
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
@@ -4013,19 +4027,21 @@ msgstr "Korrigeer NAME-rekords met die formaat \"John / DOE /\" of \"John / DOE 
 
 #: app/Stats.php:6777
 msgid "Costa Rica"
-msgstr ""
+msgstr "Costa Rica"
 
 #: app/Stats.php:6769
 msgid "Cote d’Ivoire"
-msgstr ""
+msgstr "Ivoorkus"
 
 #: login.php:589
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr ""
+"Kon nie die inligting wat ingevoer is, bevestig nie. Probeer asb. weer of "
+"kontak die werfbeheerder vir meer inligting."
 
 #: app/Stats.php:5628
 msgid "Count"
-msgstr ""
+msgstr "Aantal"
 
 #: app/Module/GoogleMapsModule.php:651
 msgid "Countries"
@@ -4045,7 +4061,7 @@ msgstr "Land"
 #: statisticsplot.php:1206 statisticsplot.php:1256 statisticsplot.php:1306
 #: statisticsplot.php:1356
 msgid "Counts "
-msgstr ""
+msgstr "Aantal "
 
 #: app/Module/GoogleMapsModule.php:4120
 msgid "County"
@@ -4053,19 +4069,19 @@ msgstr "Distrik"
 
 #: admin_media.php:309
 msgid "Create"
-msgstr ""
+msgstr "Skep"
 
 #: admin_trees_manage.php:621
 msgid "Create a new family tree"
-msgstr ""
+msgstr "Skep 'n nuwe stamboom"
 
 #: edit_interface.php:750
 msgid "Create a new individual"
-msgstr ""
+msgstr "Skep 'n nuwe persoon"
 
 #: addmedia.php:79 addmedia.php:391 app/Functions/FunctionsEdit.php:407
 msgid "Create a new media object"
-msgstr ""
+msgstr "Skep 'n nuwe mediavoorwerp"
 
 #: app/Functions/FunctionsEdit.php:418 edit_interface.php:1512
 #: edit_interface.php:1575
@@ -4090,15 +4106,17 @@ msgstr "Skep 'n nuwe bron"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Skep 'n nuwe werf toegangsreël"
 
 #: statistics.php:430
 msgid "Create your own chart"
-msgstr ""
+msgstr "Skep jou eie diagram"
 
 #: admin_trees_manage.php:744
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
+"Skep, verander of verwyder 'n stamboom vir elke GEDCOM lêer in die data-"
+"lêergids."
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:330 modules_v3/family_group_report/report.xml:315
@@ -4108,189 +4126,189 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:1013
 #: modules_v3/family_group_report/report.xml:1040
 msgid "Cremation"
-msgstr ""
+msgstr "Verassing"
 
 #: app/GedcomTag.php:1330
 msgid "Cremation of a brother"
-msgstr ""
+msgstr "Verassing van 'n broer"
 
 #: app/GedcomTag.php:1253
 msgid "Cremation of a child"
-msgstr ""
+msgstr "Verassing van 'n kind"
 
 #: app/GedcomTag.php:1251
 msgid "Cremation of a daughter"
-msgstr ""
+msgstr "Verassing van 'n dogter"
 
 #: app/GedcomTag.php:1321
 msgid "Cremation of a father"
-msgstr ""
+msgstr "Verassing van 'n vader"
 
 #: app/GedcomTag.php:1289 app/GedcomTag.php:1298 app/GedcomTag.php:1307
 msgid "Cremation of a grand-parent"
-msgstr ""
+msgstr "Verassing van 'n grootouer"
 
 #: app/GedcomTag.php:1262 app/GedcomTag.php:1271 app/GedcomTag.php:1280
 msgid "Cremation of a grandchild"
-msgstr ""
+msgstr "Verassing van 'n kleinkind"
 
 #: app/GedcomTag.php:1260
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "Verassing van 'n kleindogter"
 
 #: app/GedcomTag.php:1269
 msgctxt "daughter’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "Verassing van 'n kleindogter"
 
 #: app/GedcomTag.php:1278
 msgctxt "son’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "Verassing van 'n kleindogter"
 
 #: app/GedcomTag.php:1285
 msgid "Cremation of a grandfather"
-msgstr ""
+msgstr "Verassing van 'n oupa"
 
 #: app/GedcomTag.php:1287
 msgid "Cremation of a grandmother"
-msgstr ""
+msgstr "Verassing van 'n ouma"
 
 #: app/GedcomTag.php:1258
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Verassing van 'n kleinseun"
 
 #: app/GedcomTag.php:1267
 msgctxt "daughter’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Verassing van 'n kleinseun"
 
 #: app/GedcomTag.php:1276
 msgctxt "son’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Verassing van 'n kleinseun"
 
 #: app/GedcomTag.php:1312
 msgid "Cremation of a half-brother"
-msgstr ""
+msgstr "Verassing van 'n halfbroer"
 
 #: app/GedcomTag.php:1316
 msgid "Cremation of a half-sibling"
-msgstr ""
+msgstr "Verassing van 'n halfbroer/suster"
 
 #: app/GedcomTag.php:1314
 msgid "Cremation of a half-sister"
-msgstr ""
+msgstr "Verassing van 'n halfsuster"
 
 #: app/GedcomTag.php:1339
 msgid "Cremation of a husband"
-msgstr ""
+msgstr "Verassing van 'n eggenoot"
 
 #: app/GedcomTag.php:1303
 msgid "Cremation of a maternal grandfather"
-msgstr ""
+msgstr "Verassing van 'n oupa aan moederskant"
 
 #: app/GedcomTag.php:1305
 msgid "Cremation of a maternal grandmother"
-msgstr ""
+msgstr "Verassing van 'n ouma aan moederskant"
 
 #: app/GedcomTag.php:1323
 msgid "Cremation of a mother"
-msgstr ""
+msgstr "Verassing van 'n moeder"
 
 #: app/GedcomTag.php:1325
 msgid "Cremation of a parent"
-msgstr ""
+msgstr "Verassing van 'n ouer"
 
 #: app/GedcomTag.php:1294
 msgid "Cremation of a paternal grandfather"
-msgstr ""
+msgstr "Verassing van 'n oupa aan vaderskant"
 
 #: app/GedcomTag.php:1296
 msgid "Cremation of a paternal grandmother"
-msgstr ""
+msgstr "Verassing van 'n ouma aan vaderskant"
 
 #: app/GedcomTag.php:1334
 msgid "Cremation of a sibling"
-msgstr ""
+msgstr "Verassing van 'n broer/suster"
 
 #: app/GedcomTag.php:1332
 msgid "Cremation of a sister"
-msgstr ""
+msgstr "Verassing van 'n suster"
 
 #: app/GedcomTag.php:1249
 msgid "Cremation of a son"
-msgstr ""
+msgstr "Verassing van 'n seun"
 
 #: app/GedcomTag.php:1343
 msgid "Cremation of a spouse"
-msgstr ""
+msgstr "Verassing van 'n gade"
 
 #: app/GedcomTag.php:1341
 msgid "Cremation of a wife"
-msgstr ""
+msgstr "Verassing van 'n eggenote"
 
 #: app/Stats.php:6827
 msgid "Croatia"
-msgstr ""
+msgstr "Kroasië"
 
 #: app/Stats.php:6779
 msgid "Cuba"
-msgstr ""
+msgstr "Kuba"
 
 #: app/Module/HtmlBlockModule.php:302
 msgid "Current"
-msgstr ""
+msgstr "Huidige"
 
 #: app/Module/HtmlBlockModule.php:285
 msgid "Custom"
-msgstr ""
+msgstr "Aangepas"
 
 #: app/Functions/FunctionsPrint.php:628 calendar.php:323
 msgid "Custom event"
-msgstr ""
+msgstr "Aangepaste gebeurtenis"
 
 #: app/Functions/FunctionsPrint.php:627
 msgid "Custom fact"
-msgstr ""
+msgstr "Aangepaste feit"
 
 #: admin_site_upgrade.php:188 admin_site_upgrade.php:191
 msgid "Custom module"
-msgstr ""
+msgstr "Aangepaste module"
 
 #: find.php:442
 msgid "Custom tags"
-msgstr ""
+msgstr "Aangepaste etikette"
 
 #: admin_site_upgrade.php:249 admin_site_upgrade.php:252
 msgid "Custom theme"
-msgstr ""
+msgstr "Aangepaste tema"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:471
 msgid "Custom welcome text"
-msgstr ""
+msgstr "Aangepaste welkomsteks"
 
 #: app/Theme/AbstractTheme.php:1020 app/Theme/AbstractTheme.php:1022
 msgid "Customize this page"
-msgstr ""
+msgstr "Pas hierdie bladsy aan"
 
 #: app/Stats.php:6782
 msgid "Cyprus"
-msgstr ""
+msgstr "Cyprus"
 
 #: app/Stats.php:6783
 msgid "Czech Republic"
-msgstr ""
+msgstr "Tsjeggiese Republiek"
 
 #: app/Stats.php:6778
 msgid "Czechoslovakia"
-msgstr ""
+msgstr "Tsjeggo-Slowakye"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1459
 msgid "DNA markers"
-msgstr ""
+msgstr "DNS merkers"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:30 branches.php:57 search.php:267
@@ -4299,17 +4317,17 @@ msgstr "Daitch–Mokotoff"
 
 #: app/GedcomCode/GedcomCodeTemp.php:135
 msgid "Dallas, Texas"
-msgstr ""
+msgstr "Dallas, Texas"
 
 #. I18N: A summary of the system status
 #: admin.php:424
 msgid "Dashboard"
-msgstr ""
+msgstr "Paneelbord"
 
 #. I18N: gedcom tag DATA
 #: app/GedcomTag.php:342
 msgid "Data"
-msgstr ""
+msgstr "Gegewens"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:174
@@ -4318,23 +4336,23 @@ msgstr "Data-lêergids"
 
 #: setup.php:366
 msgid "Database and table names"
-msgstr ""
+msgstr "Databasisse en tabelname"
 
 #: setup.php:273
 msgid "Database connection"
-msgstr ""
+msgstr "Databasisverbinding"
 
 #: setup.php:368 setup.php:370
 msgid "Database name"
-msgstr ""
+msgstr "Databasis name"
 
 #: setup.php:287
 msgid "Database password"
-msgstr ""
+msgstr "Databasis wagwoord"
 
 #: setup.php:283
 msgid "Database user account"
-msgstr ""
+msgstr "Databasis gebruikersrekening"
 
 #. I18N: gedcom tag DATE
 #: app/GedcomTag.php:348 edit_changes.php:179 help_text.php:136
@@ -4346,156 +4364,160 @@ msgstr ""
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1614
 msgid "Date differences"
-msgstr ""
+msgstr "Datum verskille"
 
 #: app/GedcomTag.php:176
 msgid "Date of LDS baptism"
-msgstr ""
+msgstr "Datum van LDS doop"
 
 #: app/GedcomTag.php:774
 msgid "Date of LDS child sealing"
-msgstr ""
+msgstr "Datum van LDS kindverseëling"
 
 #: app/GedcomTag.php:414
 msgid "Date of LDS endowment"
-msgstr ""
+msgstr "Datum van LDS skenking"
 
 #: app/GedcomTag.php:466
 msgid "Date of LDS spouse sealing"
-msgstr ""
+msgstr "Datum van die LDS verseëling van 'n gade"
 
 #: app/GedcomTag.php:132
 msgid "Date of adoption"
-msgstr ""
+msgstr "Datum van aanneming"
 
 #: app/GedcomTag.php:184 modules_v3/missing_facts_report/report.xml:128
 msgid "Date of baptism"
-msgstr ""
+msgstr "Datum van doop"
 
 #: app/GedcomTag.php:192 modules_v3/missing_facts_report/report.xml:211
 msgid "Date of bar mitzvah"
-msgstr ""
+msgstr "Datum van bar mitzvah"
 
 #: app/GedcomTag.php:200 modules_v3/missing_facts_report/report.xml:252
 msgid "Date of bat mitzvah"
-msgstr ""
+msgstr "Datum van die bat mitzvah"
 
 #: app/GedcomTag.php:208 modules_v3/fact_sources/report.xml:68
 #: modules_v3/fact_sources/report.xml:272
 #: modules_v3/missing_facts_report/report.xml:80
 #: modules_v3/occupation_report/report.xml:49
 msgid "Date of birth"
-msgstr ""
+msgstr "Geboortedatum"
 
 #: app/GedcomTag.php:216
 msgid "Date of blessing"
-msgstr ""
+msgstr "Datum van seëning"
 
 #: app/GedcomTag.php:1086
 msgid "Date of brit milah"
-msgstr ""
+msgstr "Datum van brit milah"
 
 #: app/GedcomTag.php:228 modules_v3/missing_facts_report/report.xml:545
 msgid "Date of burial"
-msgstr ""
+msgstr "Datum van begrafnis"
 
 #: app/GedcomTag.php:280 modules_v3/missing_facts_report/report.xml:169
 msgid "Date of christening"
-msgstr ""
+msgstr "Datum van doop"
 
 #: app/GedcomTag.php:312 modules_v3/missing_facts_report/report.xml:293
 msgid "Date of confirmation"
-msgstr ""
+msgstr "Datum van bevestiging"
 
 #: app/GedcomTag.php:332
 msgid "Date of cremation"
-msgstr ""
+msgstr "Datum van verassing"
 
 #: app/GedcomTag.php:356 modules_v3/cemetery_report/report.xml:47
 #: modules_v3/fact_sources/report.xml:274
 #: modules_v3/missing_facts_report/report.xml:504
 msgid "Date of death"
-msgstr ""
+msgstr "Datum van afsterwe"
 
 #: app/GedcomTag.php:458
 msgid "Date of divorce"
-msgstr ""
+msgstr "Datum van egskeiding"
 
 #: app/GedcomTag.php:406
 msgid "Date of emigration"
-msgstr ""
+msgstr "Datum van emigrasie"
 
 #: app/GedcomTag.php:422 modules_v3/missing_facts_report/report.xml:335
 msgid "Date of engagement"
-msgstr ""
+msgstr "Datum van verlowing"
 
 #: app/GedcomTag.php:344
 msgid "Date of entry in original source"
-msgstr ""
+msgstr "Inskrywingsdatum in oorspronklike bron"
 
 #: app/GedcomTag.php:430
 msgid "Date of event"
-msgstr ""
+msgstr "Datum van gebeurtenis"
 
 #: app/GedcomTag.php:478 modules_v3/missing_facts_report/report.xml:377
 msgid "Date of first communion"
-msgstr ""
+msgstr "Datum van eerste nagmaal"
 
 #: app/GedcomTag.php:522
 msgid "Date of immigration"
-msgstr ""
+msgstr "Datum van immigrasie"
 
 #. I18N: gedcom tag CHAN:DATE
 #: app/GedcomTag.php:262
 msgid "Date of last change"
-msgstr ""
+msgstr "Datum van laaste verandering"
 
 #: app/GedcomTag.php:460 app/GedcomTag.php:574
 #: modules_v3/fact_sources/report.xml:319
 #: modules_v3/missing_facts_report/report.xml:462
 msgid "Date of marriage"
-msgstr ""
+msgstr "Huweliksdatum"
 
 #: app/GedcomTag.php:558 modules_v3/missing_facts_report/report.xml:419
 msgid "Date of marriage banns"
-msgstr ""
+msgstr "Datum van huweliksafkondiging"
 
 #: app/GedcomTag.php:616
 msgid "Date of naturalization"
-msgstr ""
+msgstr "Datum van naturalisasie"
 
 #: app/GedcomTag.php:664
 msgid "Date of ordination"
-msgstr ""
+msgstr "Datum van ordening"
 
 #: app/GedcomTag.php:730
 msgid "Date of residence"
-msgstr ""
+msgstr "Datum van bewoning"
 
 #: help_text.php:159
 msgid "Date period"
-msgstr ""
+msgstr "Datumperiode"
 
 #: help_text.php:157
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
 msgstr ""
+"Datumperiodes word gebruik om aan te dui dat 'n fett, soos 'n beroep, vir 'n "
+"bepaalde tydperk voortgeduur het."
 
 #: help_text.php:148 statistics.php:615
 msgid "Date range"
-msgstr ""
+msgstr "Datumperk"
 
 #: help_text.php:146
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr ""
+"Datumperke word gebruik om aan te dui dat 'n gebeurtenis, soos 'n geboorte, "
+"op 'n onbekende datum binne 'n moontlike tydsperk plaasgevind het."
 
 #: admin_users.php:869
 msgid "Date registered"
-msgstr ""
+msgstr "Datum geregistreer"
 
 #: app/Module/UserMessagesModule.php:113
 msgid "Date sent"
@@ -4506,30 +4528,36 @@ msgstr "Gestuur op"
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar.  For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
 msgstr ""
+"Datums worde slegs omgeskakel as hulle geldig is vir die kalender. "
+"Byvoorbeeld, slags datums tussen %1$s en %2$s sal omgeskakel word na die "
+"Franse kalender en slags datums na %3$s sal na die Gregoriaanse kalender "
+"omgeskakel word."
 
 #: help_text.php:134
 msgid "Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords."
 msgstr ""
+"Datums word gestoor m.b.v. Engelse afkortings en sleutelwoorde. Kortpaaie is "
+"beskikbaar as alternatiewe vir hierdie afkortings en sleutelwoorde."
 
 #: modules_v3/family_group_report/report.xml:809
 #: modules_v3/individual_ext_report/report.xml:556
 #: modules_v3/individual_report/report.xml:559
 msgid "Daughter"
-msgstr ""
+msgstr "Dogter"
 
 #. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:349
 #, php-format
 msgid "Daughter of %s"
-msgstr ""
+msgstr "Dogter van %s"
 
 #: app/Theme/AbstractTheme.php:1005 calendar.php:150
 msgid "Day"
-msgstr ""
+msgstr "Dag"
 
 #: calendar.php:536
 msgid "Day not set"
-msgstr ""
+msgstr "Dag nie bevestig nie"
 
 #: timeline.php:125 timeline.php:127 timeline.php:129
 msgid "Day:"
@@ -4538,7 +4566,7 @@ msgstr "Dag:"
 #: app/Functions/FunctionsPrintLists.php:201 app/Stats.php:1075
 #: app/Stats.php:1077
 msgid "Dead"
-msgstr ""
+msgstr "Oorlede"
 
 #. I18N: gedcom tag DEAT
 #: app/GedcomTag.php:352 modules_v3/ahnentafel_report/report.xml:456
@@ -4661,83 +4689,83 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:1370
 #: modules_v3/relative_ext_report/report.xml:62
 msgid "Death"
-msgstr ""
+msgstr "Afsterwe"
 
 #: app/Stats.php:1680 statistics.php:542
 msgid "Death by country"
-msgstr ""
+msgstr "Afsterwe per land"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
-msgstr ""
+msgstr "Afsterwe datum eindperk"
 
 #: modules_v3/bdm_report/report.xml:9 modules_v3/death_report/report.xml:7
 msgid "Death date range start"
-msgstr ""
+msgstr "Afsterwe datum beginperk"
 
 #: app/GedcomTag.php:1433
 msgid "Death of a brother"
-msgstr ""
+msgstr "Afsterwe van 'n broer"
 
 #: app/GedcomTag.php:1356
 msgid "Death of a child"
-msgstr ""
+msgstr "Afsterwe van 'n kind"
 
 #: app/GedcomTag.php:1354
 msgid "Death of a daughter"
-msgstr ""
+msgstr "Afsterwe van 'n dogter"
 
 #: app/GedcomTag.php:1424
 msgid "Death of a father"
-msgstr ""
+msgstr "Afsterwe van 'n vader"
 
 #: app/GedcomTag.php:1392 app/GedcomTag.php:1401 app/GedcomTag.php:1410
 msgid "Death of a grand-parent"
-msgstr ""
+msgstr "Afsterwe van 'n grootouer"
 
 #: app/GedcomTag.php:1365 app/GedcomTag.php:1374 app/GedcomTag.php:1383
 msgid "Death of a grandchild"
-msgstr ""
+msgstr "Afsterwe van 'n kleinkind"
 
 #: app/GedcomTag.php:1363
 msgid "Death of a granddaughter"
-msgstr ""
+msgstr "Afsterwe van 'n kleindogter"
 
 #: app/GedcomTag.php:1372
 msgctxt "daughter’s daughter"
 msgid "Death of a granddaughter"
-msgstr ""
+msgstr "Afsterwe van 'n kleindogter"
 
 #: app/GedcomTag.php:1381
 msgctxt "son’s daughter"
 msgid "Death of a granddaughter"
-msgstr ""
+msgstr "Afsterwe van 'n kleindogter"
 
 #: app/GedcomTag.php:1388
 msgid "Death of a grandfather"
-msgstr ""
+msgstr "Afsterwe van 'n oupa"
 
 #: app/GedcomTag.php:1390
 msgid "Death of a grandmother"
-msgstr ""
+msgstr "Asterwe van 'n ouma"
 
 #: app/GedcomTag.php:1361
 msgid "Death of a grandson"
-msgstr ""
+msgstr "Afsterwe van 'n kleinseun"
 
 #: app/GedcomTag.php:1370
 msgctxt "daughter’s son"
 msgid "Death of a grandson"
-msgstr ""
+msgstr "Afsterwe van 'n kleinseun"
 
 #: app/GedcomTag.php:1379
 msgctxt "son’s son"
 msgid "Death of a grandson"
-msgstr ""
+msgstr "Afsterwe van 'n kleinseun"
 
 #: app/GedcomTag.php:1415
 msgid "Death of a half-brother"
-msgstr ""
+msgstr "Afsterwe van 'n halfbroer"
 
 #: app/GedcomTag.php:1419
 msgid "Death of a half-sibling"
