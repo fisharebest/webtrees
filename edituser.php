@@ -91,9 +91,12 @@ if ($form_action && Filter::checkCsrf()) {
 
 	case 'delete':
 		// An administrator can only be deleted by another administrator
-		if (!Auth::user()->getPreference('admin')) {
+		if (!Auth::user()->getPreference('canadmin')) {
+			// Keep a reference to the currently logged in user because after logging out this user,
+			// a call to Auth::user() will not return this user anymore
+			$currentUser = Auth::user();
 			Auth::logout();
-			Auth::user()->delete();
+			$currentUser->delete();
 		}
 		break;
 	}
@@ -313,7 +316,7 @@ function checkform(frm) {
 		<div id="edituser_submit">
 			<input type="submit" value="<?php echo I18N::translate('save'); ?>">
 		</div>
-		<?php if (!Auth::user()->getPreference('admin')): ?>
+		<?php if (!Auth::user()->getPreference('canadmin')): ?>
 		<a href="#" onclick="if (confirm('<?php echo I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Auth::user()->getUserName())); ?>')) {jQuery('#form_action').val('delete'); document.editform.submit(); }">
 			<?php echo I18N::translate('Delete your account'); ?>
 		</a>

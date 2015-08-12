@@ -60,7 +60,7 @@ case 'save':
 		$contact_method = Filter::post('contact_method');
 		$comment        = Filter::post('comment');
 		$auto_accept    = Filter::postBool('auto_accept');
-		$admin          = Filter::postBool('admin');
+		$canadmin       = Filter::postBool('canadmin');
 		$visible_online = Filter::postBool('visible_online');
 		$verified       = Filter::postBool('verified');
 		$approved       = Filter::postBool('approved');
@@ -115,7 +115,7 @@ case 'save':
 
 			// We cannot change our own admin status.  Another admin will need to do it.
 			if ($user->getUserId() !== Auth::id()) {
-				$user->setPreference('admin', $admin ? '1' : '0');
+				$user->setPreference('canadmin', $canadmin ? '1' : '0');
 			}
 
 			foreach (Tree::getAll() as $tree) {
@@ -508,8 +508,8 @@ case 'edit':
 				<div class="checkbox">
 					<label>
 						<input
-							type="checkbox" id="admin" name="admin" value="1"
-							<?php echo $user->getPreference('admin') ? 'checked' : ''; ?>
+							type="checkbox" id="admin" name="canadmin" value="1"
+							<?php echo $user->getPreference('canadmin') ? 'checked' : ''; ?>
 							<?php echo $user->getUserId() === Auth::id() ? 'disabled' : ''; ?>
 						>
 						<?php echo I18N::translate('Administrator'); ?>
