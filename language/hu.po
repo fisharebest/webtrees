@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
 "PO-Revision-Date: 2015-08-13 16:52+0100\n"
-"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
+"Last-Translator: Balázs Németh <jobbara.artalmatlan@gmail.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -4990,6 +4990,8 @@ msgstr "Denver, Kolorádó"
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
 msgstr ""
+"Az Ön szerverének konfigurációjától függően a frissítés automatikusan "
+"megtörténhet."
 
 #: familybook.php:89
 msgid "Descendant generations"
