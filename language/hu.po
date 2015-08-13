@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-13 17:13+0100\n"
-"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
+"PO-Revision-Date: 2015-08-13 17:14+0100\n"
+"Last-Translator: resist <bvank@outlook.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -16558,7 +16558,7 @@ msgstr "tizenegyed unokatestvér"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:103
 msgid "estate name"
-msgstr "Tulajdonnév"
+msgstr "Földbirtok név"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:100
