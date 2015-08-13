@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-13 17:07+0100\n"
-"Last-Translator: Balázs Németh <jobbara.artalmatlan@gmail.com>\n"
+"PO-Revision-Date: 2015-08-13 17:12+0100\n"
+"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -8093,7 +8093,7 @@ msgstr "Libanon"
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Legal"
-msgstr "Legal"
+msgstr "Legal (216 × 356 mm)"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:544
