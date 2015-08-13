@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-12 14:10+0100\n"
+"PO-Revision-Date: 2015-08-13 16:31+0100\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -1878,9 +1878,9 @@ msgstr "A felhasználó első bejelentkezése előtt adminisztrátori jóváhagy
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
-#, fuzzy
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Alternatíva a Média fülre és ugyanakkor egy továbbfejlesztett képmegjelenítő."
+msgstr ""
+"Egy választás a Média fülre és ugyanakkor egy kiterjesztett képmegjelenítő."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
@@ -1913,7 +1913,7 @@ msgstr "Egy kapcsolódó személy egy másik személy akinek valamilyen köze, k
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:32
 msgid "An edit menu for individuals, families, sources, etc."
-msgstr ""
+msgstr "Egy szerkesztő menü személyek, családok, források, stb. részére."
 
 #: admin_site_upgrade.php:344 admin_site_upgrade.php:366
 #: admin_site_upgrade.php:376 admin_site_upgrade.php:460
@@ -2154,7 +2154,6 @@ msgstr ""
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:77
-#, fuzzy
 msgid "Ash"
 msgstr "Hamu"
 
@@ -2855,9 +2854,8 @@ msgstr "Blue Lagoon"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:80
-#, fuzzy
 msgid "Blue Marine"
-msgstr "Tenger"
+msgstr "Tengerkék"
 
 #: message.php:127
 #, fuzzy
@@ -3842,7 +3840,7 @@ msgstr "Kompakt családfa"
 #: app/Controller/CompactController.php:125
 #, php-format
 msgid "Compact tree of %s"
-msgstr ""
+msgstr "%s tömör fája"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
@@ -4235,12 +4233,10 @@ msgid "Custom event"
 msgstr "Egyéni esemény"
 
 #: app/Functions/FunctionsPrint.php:627
-#, fuzzy
 msgid "Custom fact"
-msgstr "Egyedi adat"
+msgstr "Egyéni tény"
 
 #: admin_site_upgrade.php:188 admin_site_upgrade.php:191
-#, fuzzy
 msgid "Custom module"
 msgstr "Egyedi modul"
 
@@ -4461,7 +4457,7 @@ msgstr "Felszentelés dátuma"
 
 #: app/GedcomTag.php:730
 msgid "Date of residence"
-msgstr ""
+msgstr "Tartózkodási dátum"
 
 #: help_text.php:159
 msgid "Date period"
@@ -4470,6 +4466,8 @@ msgstr "Dátum időszak"
 #: help_text.php:157
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
 msgstr ""
+"Az időszakok azon tények mutatására szolgálnak, amelyeknek folyamatos az "
+"időtartamuk, mint a pl. munkahely."
 
 #: help_text.php:148 statistics.php:615
 msgid "Date range"
@@ -4478,6 +4476,8 @@ msgstr "Dátum intervallum"
 #: help_text.php:146
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr ""
+"Dátumtartományt akkor használunk, ha egy esemény, pl. a születés, egy "
+"bizonytalan időpontban történt, de egy ismert időtartományon belül."
 
 #: admin_users.php:869
 msgid "Date registered"
@@ -4492,10 +4492,16 @@ msgstr "Küldés dátuma"
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar.  For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
 msgstr ""
+"A dátumok csak akkor váltódnak át, ha az valós kalendáriumi nap.  Például, "
+"csak a  %1$s és %2$s közti napok lesznek átváltva a Francia-naptár szerint "
+"és csak %3$s utáni napok lesznek átváltva a Gergely-naptár szerint."
 
 #: help_text.php:134
 msgid "Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords."
 msgstr ""
+"A dátumok az Angol rövidítéseket és kulcsszavak segítségével vannak "
+"tárolva.  A rövidítések és kulcsszavak kiválasztására gyorsbillentyűk állnak "
+"rendelkezésre."
 
 #: modules_v3/family_group_report/report.xml:809
 #: modules_v3/individual_ext_report/report.xml:556
@@ -5414,9 +5420,8 @@ msgstr "A nyers GEDCOM-rekord szerkesztése"
 
 #: app/Controller/RepositoryController.php:56
 #: app/Controller/RepositoryController.php:61
-#, fuzzy
 msgid "Edit repository"
-msgstr "Tároló szerkesztése"
+msgstr "Tároló szerkesztés"
 
 #: app/Functions/FunctionsEdit.php:440 edit_interface.php:1444
 #: edit_interface.php:1490
@@ -5713,7 +5718,7 @@ msgstr "Pontos szöveg"
 #: famlist.php:171 indilist.php:172
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr ""
+msgstr "A házasság utáni felvett “%s” családnevű személyek mellőzése"
 
 #: admin_media.php:666
 msgid "Exclude subfolders"
@@ -6267,9 +6272,8 @@ msgid "Find a place"
 msgstr "Hely keresése"
 
 #: app/Functions/FunctionsPrint.php:774 find.php:63
-#, fuzzy
 msgid "Find a repository"
-msgstr "Tároló keresése"
+msgstr "Tároló keresés"
 
 #: app/Functions/FunctionsPrint.php:763 find.php:66
 msgid "Find a shared note"
@@ -6297,7 +6301,7 @@ msgstr "Személy keresése"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:466
 msgid "Find duplicates"
-msgstr ""
+msgstr "Azonosak keresése"
 
 #: relationship.php:95
 msgid "Find the closest relationships"
@@ -7349,7 +7353,7 @@ msgstr "GEDCOM fájl importálása"
 
 #: app/Module/GoogleMapsModule.php:4624
 msgid "Import all places from a family tree"
-msgstr ""
+msgstr "Az összes hely importálása a családfából"
 
 #: admin_trees_manage.php:267
 msgid "Import options"
@@ -7392,7 +7396,7 @@ msgstr "Teljesen egyező helyek is"
 #: famlist.php:173 indilist.php:174
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr ""
+msgstr "A “%s” családnevet a házasság után felvevő személyekkel eggyütt"
 
 #: app/Module/ClippingsCartModule.php:358
 #: app/Module/ClippingsCartModule.php:691
@@ -8973,7 +8977,7 @@ msgstr "Mercury"
 
 #: admin_trees_duplicates.php:174
 msgid "Merge"
-msgstr ""
+msgstr "Összefűz"
 
 #. I18N: Menu entry
 #: admin_trees_merge.php:34 app/Theme/AdministrationTheme.php:129
@@ -9101,7 +9105,7 @@ msgstr "Moderátor"
 
 #: admin.php:637
 msgid "Moderators"
-msgstr ""
+msgstr "Moderátorok"
 
 #: admin_modules.php:152
 #, fuzzy
@@ -9342,7 +9346,7 @@ msgstr "Moharrem"
 
 #: app/Functions/FunctionsPrintLists.php:722
 msgid "Multiple marriages"
-msgstr ""
+msgstr "Többes házasság"
 
 #: app/Module/UserWelcomeModule.php:52 app/Theme/AbstractTheme.php:1524
 #: edituser.php:108
@@ -9417,7 +9421,7 @@ msgstr "Név"
 #. I18N: Label for search field
 #: find.php:123 find.php:140
 msgid "Name contains"
-msgstr "Név tartalmazza:"
+msgstr "Névben előfordul"
 
 #: app/GedcomTag.php:606
 msgid "Name in Hebrew"
@@ -9764,7 +9768,7 @@ msgstr "Nem találtunk egyező eseményeket"
 
 #: addmedia.php:167 addmedia.php:301 admin_media_upload.php:126
 msgid "No media file was provided."
-msgstr ""
+msgstr "Nem volt médiafájl biztosítva."
 
 #: app/Module/FamilyTreeNewsModule.php:118
 msgid "No news articles have been submitted."
@@ -9910,6 +9914,8 @@ msgstr "Azonosító előtag"
 #: help_text.php:261
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
 msgstr ""
+"Ha a felhasználó össze van  kötve egy bejegyzéshez, akkor állandó lehetősége "
+"van a bejegyzést megtekinteni."
 
 #: admin_users.php:610
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
@@ -10081,7 +10087,7 @@ msgstr "Oklahoma City, Oklahoma"
 
 #: admin_site_change.php:311 admin_site_change.php:362
 msgid "Old data"
-msgstr ""
+msgstr "Régi adatok"
 
 #: admin.php:831
 msgid "Old files found"
@@ -10159,7 +10165,7 @@ msgstr "OpenStreetMap™"
 
 #: app/Module/GoogleMapsModule.php:414
 msgid "Optional prefixes and suffixes"
-msgstr ""
+msgstr "Választható előtagok és utótagok"
 
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
@@ -10263,9 +10269,8 @@ msgstr "du."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:89
-#, fuzzy
 msgid "PHP blocked the file because of its extension."
-msgstr "A szerver (PHP) blokkolta a fájlt a kiterjesztése miatt."
+msgstr "A PHP (szerver) zárolta a fájlt a kiterjesztése miatt."
 
 #: setup.php:135
 #, php-format
@@ -10456,6 +10461,11 @@ msgstr "Változások Függőben"
 #: help_text.php:314
 msgid "Pending changes are only shown when your account has permission to edit.  When you log out, you will no longer be able to see them.  Also, pending changes are only shown on certain pages.  For example, they are not shown in lists, reports, or search results."
 msgstr ""
+"A függőben lévő változtatásokat csak akkor jelenítheti meg, ha az fiókjának "
+"van rá jogosultsága.  Ha kijelentkezik, akkor többé már nem lesz lehetősége "
+"megjeleníteni azokat.    Úgyszintén, a függőben lévő változtatások csak "
+"bizonyos oldalakon jelennek meg.  Például, azok nem jelennek meg a "
+"listákban, leírásokban vagy a keresés eredményében."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1715
@@ -10490,7 +10500,7 @@ msgstr "Fonetikus"
 
 #: search.php:258
 msgid "Phonetic algorithm"
-msgstr ""
+msgstr "Fonetikai algoritmus"
 
 #: app/GedcomTag.php:604
 msgid "Phonetic name"
@@ -10889,7 +10899,7 @@ msgstr "Kapcsolattartási mód"
 
 #: app/Module/GoogleMapsModule.php:424
 msgid "Prefixes"
-msgstr ""
+msgstr "Előtagok"
 
 #: app/Module/OnThisDayModule.php:147 app/Module/RecentChangesModule.php:154
 #: app/Module/TopGivenNamesModule.php:159 app/Module/TopSurnamesModule.php:182
@@ -11462,9 +11472,8 @@ msgid "Residence"
 msgstr "Lakhely"
 
 #: index_edit.php:371
-#, fuzzy
 msgid "Restore the default block layout"
-msgstr "Az eredeti blokk elrendezés visszaállítása"
+msgstr "Az egységek alapértelmezett elrendezésének visszaállítása"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
@@ -11489,7 +11498,6 @@ msgid "Resulting value"
 msgstr "Kapott érték"
 
 #: statistics.php:632
-#, fuzzy
 msgid "Results"
 msgstr "Eredmény"
 
@@ -11731,6 +11739,8 @@ msgstr "Keresés és csere"
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:58
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
+"Szöveg keresés és csere egyszerű keresés vagy kiterjesztett mintaillesztés "
+"segítségével."
 
 #: includes/session.php:516
 msgid "Search engine"
@@ -11820,7 +11830,7 @@ msgstr "Zászló választás"
 
 #: lifespan.php:38
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Személyek választása hely vagy dátum szerint"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:41
@@ -11829,11 +11839,11 @@ msgstr "Kijelölhet mezőket a családfájából majd elmentheti őket GEDCOM f�
 
 #: statistics.php:544 statistics.php:555 statistics.php:564
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "Válassza ki a kívánt időszakaszt"
 
 #: statistics.php:573
 msgid "Select the desired count interval"
-msgstr ""
+msgstr "válassza ki a kívánt összesítési szakasznagyságot"
 
 #: admin_site_merge.php:196
 msgid "Select the facts and events to keep from both records."
@@ -11903,7 +11913,6 @@ msgstr "Feladó neve"
 
 #. I18N: Menu entry
 #: admin_site_config.php:137 app/Theme/AdministrationTheme.php:88
-#, fuzzy
 msgid "Sending email"
 msgstr "Email küldése"
 
@@ -11983,7 +11992,6 @@ msgstr "Helyeket tartalmazó fájt a szerveren (CSV)"
 
 #. I18N: Menu entry
 #: admin.php:534 admin_site_info.php:26 app/Theme/AdministrationTheme.php:95
-#, fuzzy
 msgid "Server information"
 msgstr "Szerver információk"
 
@@ -11998,7 +12006,6 @@ msgid "Session timeout"
 msgstr "Munkamenet lejárata"
 
 #: admin_trees_manage.php:438 admin_trees_manage.php:449
-#, fuzzy
 msgid "Set as default"
 msgstr "Beállítás alapértelmezettként"
 
@@ -12097,7 +12104,7 @@ msgstr "Közös jegyzet"
 #. I18N: Label for search field
 #: find.php:218
 msgid "Shared note contains"
-msgstr "Közös jegyzet tartalma:"
+msgstr "Közös jegyzet tartalmazza"
 
 #: app/Functions/FunctionsPrintLists.php:1088 app/Theme/AbstractTheme.php:1447
 #: notelist.php:33 notelist.php:37 search.php:102
@@ -12620,7 +12627,7 @@ msgstr "Oldalpanel"
 #: admin_module_sidebar.php:28 admin_modules.php:156
 #: app/Theme/AdministrationTheme.php:186
 msgid "Sidebars"
-msgstr ""
+msgstr "Oldalsáv"
 
 #: app/Stats.php:6932
 msgid "Sierra Leone"
@@ -12705,7 +12712,7 @@ msgstr "Térkép nagysága (pixel)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/AbstractTheme.php:71
 msgid "Skip to content"
-msgstr ""
+msgstr "Ugrás a tartalomhoz"
 
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgid "Slave"
@@ -13125,11 +13132,13 @@ msgstr "Vezetéknév hagyomány"
 #: app/SurnameTradition.php:98
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
 msgstr ""
+"A családnevek ragozva vannak az egyén családi állapota és neme meghatározása "
+"érdekében."
 
 #. I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition.php:93
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr ""
+msgstr "A családnevek ragozva vannak az egyén neme meghatározása érdekében."
 
 #: app/GedcomCode/GedcomCodeTemp.php:313
 msgid "Suva, Fiji"
@@ -13964,7 +13973,7 @@ msgstr "A családfa utoljára #gedcomUpdated# lett frissítve. Összesen #totalS
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "A családfa utolsó frissítésének ideje: %s."
+msgstr "A családfa utoljára %s volt frissítve."
 
 #: addmedia.php:331
 msgid "This file is linked to another family tree on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
@@ -14021,7 +14030,23 @@ msgstr "A személy adatai bizalmas jellegűek."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits.  For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "Ezen beviteli mezővel változtathatja meg az évet az \"Adott napon\" listában, illetve az \"Adott hónapban\" naptárban.<br><br>Ügyeljen arra, hogy az évszám begépelésével a képernyő tartalma nem frissül követlenül.<br>Mivel a beviteli mező nem hivatkozás, ezért vagy a <b>Adott napon</b> vagy pedig a  <b>Adott hónapban gombra</b> kell kattintania, hogy frissítse a tartalmat."
+msgstr ""
+"Ez a beviteli mező szolgál naptár évének megadására.  ŕja be a mezőbe az "
+"évet és az <b>Enter</b> billentyű segítségével a naptár adott évére "
+"jut.<br><br><b>Bővített lehetőségek</b> <b>Adott évben</b><dl><dt><b>Több "
+"mint egy év</b></dt><dd>Kereshet napokra a megadott éveken belül<br><br>Az "
+"évtartomány peremeivel <u>beleértve</u>.  Ez azt jelenti, hogy az említett "
+"első év január 1.-től az utolsó év december 31.-ig.  Néhány példa az "
+"évszakaszokra:<br><br><b>1992-5</b> minden esemény 1992-től "
+"1995-ig.<br><b>1972-89</b> minden esemény  1972-től "
+"1989-ig.<br><b>1610-759</b> minden esemény 1610-től "
+"1759-ig.<br><b>1880-1905</b> minden esemény 1880-tól "
+"1905-ig.<br><b>880-1105</b> minden esemény 880-tól 1105-ig.<br><br>"
+"Megjeleníteni minden tíz éven belüli eseményt a megadott tizes évszakaszban "
+"vagy században, használhatja a <b>?</b> jelet a kérdéses számjegy helyén.  "
+"Például, <b>197?</b> az eseményekre 1970-től 1979-ig, vagy <b>16??</b> az "
+"eseményekre 1600-tól 1699-ig.<br><br>Évtartonány megadásával a napári nézet  "
+"éves éttekintésre vált.</dd></dl>"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2157
@@ -14207,7 +14232,7 @@ msgstr "Az üzenetet az alábbi linkre kattintva küldheti el "
 #: message.php:113
 #, php-format
 msgid "This message will be sent to %s"
-msgstr "Ezt az üzenetet a(z) %s felhasználónak küldjük."
+msgstr "Ezt az üzenetet a(z) %s felhasználónak küldjük"
 
 #: setup.php:434
 msgid "This must be at least six characters long.  It is case-sensitive."
@@ -15048,11 +15073,11 @@ msgstr ""
 #: admin.php:571 admin_site_upgrade.php:82 login.php:108
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "A webtrees frissítése: %s"
+msgstr "Frissítsen %s webtrees-re."
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Verziófrissítő varázsló"
 
 #: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4645
 msgid "Upload"
@@ -15285,7 +15310,7 @@ msgstr "Veracruz, Mexikó"
 
 #: login.php:320 login.php:509
 msgid "Verification code"
-msgstr "Ellenőrző kód:"
+msgstr "Ellenőrző kód"
 
 #: admin_users.php:872
 msgid "Verified"
@@ -15675,7 +15700,7 @@ msgstr "Év"
 
 #: help_text.php:279
 msgid "Year input box"
-msgstr ""
+msgstr "Év beviteli mező"
 
 #: timeline.php:129 timeline.php:372
 msgid "Year:"
@@ -15690,6 +15715,8 @@ msgstr "Jemen"
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr ""
+"Ön (vagy valaki az Ön nevében) felhasználói fiókot igényelt a %1$s oldalon "
+"a(z) %2$s e-mail cím segítségével."
 
 #: logout.php:24
 msgid "You are logged out."
@@ -15711,6 +15738,7 @@ msgstr "Lehetősége adatik megváltoztatni az oldal kinézetét “téma” vá
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr ""
+"A GEDCOM részletes leírásának egy példánya letölthető ezen az útvonalon %s."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
@@ -15808,6 +15836,8 @@ msgstr "Meg kell adnia egy forrás címet"
 #: admin_trees_merge.php:96
 msgid "You must renumber the records in one of the trees before you can merge them."
 msgstr ""
+"Az összefűzés előtt át kell számoznia legalább az egyik családfa "
+"bejegyzéseit."
 
 #: app/Module/ChartsBlockModule.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
@@ -15819,7 +15849,7 @@ msgstr "Hozzá kell rendeljen egy egyént a felhasználóhoz, mielőtt korlátoz
 
 #: admin_trees_manage.php:317
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Szükségszerű egy családfát létrehozni."
 
 #: admin_pgv_to_wt.php:1164
 msgid "You need to login again, using your PhpGedView username and password."
@@ -15847,18 +15877,22 @@ msgid "You sent the following message to a webtrees user:"
 msgstr "A következő üzenetet küldte el egy webtrees-felhasználónak:"
 
 #: admin_site_upgrade.php:99
-#, fuzzy
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr "Frissítés előtt az összes függő változást el kell utasítanod vagy fogadnod."
+msgstr ""
+"Frissítés előtt az összes függőben levő változtatást el kell utasítania vagy "
+"fogadnia."
 
 #: admin_site_upgrade.php:198
-#, fuzzy
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr "Lépjen kapcsolatba a modul fejlesztőjével a jelenlegi webtrees verzióval való kompatibilitás megerősítéséért."
+msgstr ""
+"Lépjen kapcsolatba a modul fejlesztőjével a jelenlegi webtrees változattal "
+"való összeegyeztethetőség megerősítéséért."
 
 #: admin_site_upgrade.php:262
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
 msgstr ""
+"Lépjen kapcsolatba a téma szerkesztőjével a jelenlegi webtrees változattal "
+"való összeegyeztethetőség megerősítéséért."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:266 message.php:58
@@ -15869,6 +15903,8 @@ msgstr "Próbáld meg a „%2$s” címet beadni „%1$s” nélkül."
 #: admin_users.php:395
 msgid "You should not approve an account unless you know that the email address is correct."
 msgstr ""
+"Nem ajánlatos jóváhagyni a felhasználói fiókot amíg nem bizonyosodott meg "
+"arról, hogy az e-mail cím helyes."
 
 #: login.php:301
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account."
@@ -15921,11 +15957,16 @@ msgstr "Az Ön felhasználói fiókjában nem engedélyezett a változtatások a
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version."
 msgstr ""
+"A szervere %s verziójú PHP-t használ, amely többé már nincs karbantartva.  "
+"Át kellene térnie újabb verzió használatára."
 
 #: admin.php:510
-#, fuzzy, php-format
+#, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible."
-msgstr "A szervere nem támogatott, %s verziójú PHP-t használ, ami már nem kap a jövőben biztonsági frissítéseket.  Mihamarabb térjen át frissebb verzió használatára."
+msgstr ""
+"A szervere nem támogatott, %s verziójú PHP-t használ, amely többé már nem "
+"kap biztonsági frissítéseket.  Mihamarább térjen át újabb verzió "
+"használatára."
 
 #: app/Stats.php:6981
 msgid "Yugoslavia"
@@ -16077,7 +16118,6 @@ msgstr "Ismert mint"
 
 #. I18N: option in list box “always use this image”
 #: app/Functions/FunctionsEdit.php:630
-#, fuzzy
 msgid "always"
 msgstr "mindig"
 
@@ -16327,19 +16367,16 @@ msgstr "gyerek"
 #: edit_interface.php:2217 edit_interface.php:2603 find.php:669
 #: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:559
-#, fuzzy
 msgid "close"
 msgstr "bezár"
 
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:184
-#, fuzzy
 msgid "clouds"
 msgstr "felhők"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:188
-#, fuzzy
 msgid "colors"
 msgstr "színes"
 
@@ -16364,7 +16401,6 @@ msgstr "tovább"
 
 #. I18N: Button label
 #: admin_trees_manage.php:675
-#, fuzzy
 msgid "create"
 msgstr "létrehoz"
 
@@ -16423,7 +16459,6 @@ msgstr "fokok"
 
 #. I18N: Button label
 #: admin_site_clean.php:115 admin_users.php:793
-#, fuzzy
 msgid "delete"
 msgstr "töröl"
 
@@ -16464,7 +16499,6 @@ msgstr "kelet"
 #: admin_trees_config.php:2063 admin_trees_config.php:2092
 #: admin_trees_config.php:2121 admin_trees_config.php:2152
 #: admin_trees_config.php:2181
-#, fuzzy
 msgid "edit"
 msgstr "szerkeszt"
 
@@ -16521,13 +16555,13 @@ msgstr "Tulajdonnév"
 #: app/GedcomCode/GedcomCodeName.php:100
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "birtok név"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:97
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "birtok név"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:304
@@ -16556,7 +16590,7 @@ msgstr "volt élettárs"
 
 #: app/Functions/Functions.php:758
 msgid "ex-spouse"
-msgstr ""
+msgstr "volt házastárs"
 
 #: app/Functions/Functions.php:740
 msgid "ex-wife"
@@ -16940,9 +16974,8 @@ msgstr "%s-tól %s-ig"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:71
-#, fuzzy
 msgid "full circle"
-msgstr "teljes kör"
+msgstr "teljes körös"
 
 #: statistics.php:611
 msgid "gender"
@@ -16951,7 +16984,7 @@ msgstr "nem"
 #. I18N: button label
 #: edit_interface.php:2601
 msgid "go to new individual"
-msgstr "Folytatás az új személlyel."
+msgstr "Folytatás az új személlyel"
 
 #: app/Functions/Functions.php:833
 msgctxt "child’s child"
@@ -18416,9 +18449,8 @@ msgstr "nagy-nagybácsi"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:69
-#, fuzzy
 msgid "half circle"
-msgstr "félkör"
+msgstr "félkörös"
 
 #: app/Functions/Functions.php:869
 msgctxt "father’s son"
@@ -18472,7 +18504,7 @@ msgstr "félév a házasság után"
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:737
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "óó:pp vagy óó:pp:mm"
 
 #: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:313
 msgid "hide"
@@ -18492,13 +18524,13 @@ msgstr "bevándorló név"
 #: app/GedcomCode/GedcomCodeName.php:112
 msgctxt "FEMALE"
 msgid "immigration name"
-msgstr ""
+msgstr "bevándorlási név"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:109
 msgctxt "MALE"
 msgid "immigration name"
-msgstr ""
+msgstr "bevándorlási név"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
@@ -18511,8 +18543,8 @@ msgstr "értelmezhető %s (%s)"
 #, php-format
 msgid "interval %s year"
 msgid_plural "interval %s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s éves időszak"
+msgstr[1] "%s éves időszak"
 
 #: statistics.php:575
 msgid "interval one child"
@@ -18580,7 +18612,7 @@ msgstr "leánykori név"
 
 #: admin_trees_config.php:476
 msgid "managers"
-msgstr ""
+msgstr "oldalkezelők"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
@@ -18656,7 +18688,7 @@ msgstr[1] "maximum %s nap"
 #: admin_trees_config.php:435 admin_trees_config.php:475
 #: admin_trees_config.php:495
 msgid "members"
-msgstr ""
+msgstr "tagok"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:86
@@ -18665,9 +18697,8 @@ msgstr "éjfél"
 
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:171
-#, fuzzy
 msgid "minimal"
-msgstr "minimal"
+msgstr "miniatűr"
 
 #: app/Module/GoogleMapsModule.php:327
 msgid "minimum"
@@ -18757,9 +18788,8 @@ msgstr "ünokaöcs/unokahúg"
 
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:636
-#, fuzzy
 msgid "never"
-msgstr "soha ne"
+msgstr "sosem"
 
 #. I18N: button label, next page
 #: app/I18N.php:224 app/Module/BatchUpdateModule.php:232
@@ -18902,12 +18932,12 @@ msgstr "élettárs"
 #: app/Functions/Functions.php:719
 msgctxt "MALE"
 msgid "partner"
-msgstr ""
+msgstr "élettárs"
 
 #: app/Functions/Functions.php:755
 msgctxt "MALE/FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "élettárs"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
@@ -18936,9 +18966,8 @@ msgstr "patrilineáris (apai ági)"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:56
-#, fuzzy
 msgid "pending"
-msgstr "függő"
+msgstr "függőben levő"
 
 #: statistics.php:636 statisticsplot.php:873 statisticsplot.php:923
 #: statisticsplot.php:977 statisticsplot.php:1027 statisticsplot.php:1081
@@ -18948,9 +18977,8 @@ msgid "percentage"
 msgstr "százalék"
 
 #: admin_trees_config.php:1078
-#, fuzzy
 msgid "pixels"
-msgstr "pixel"
+msgstr "képpont"
 
 #. I18N: button label
 #: admin_trees_places.php:107
@@ -18965,7 +18993,7 @@ msgstr "előző"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/GedcomCode/GedcomCodeQuay.php:39
 msgid "primary evidence"
-msgstr ""
+msgstr "elsődleges bizonyíték"
 
 #: statistics.php:568
 msgid "quarters after marriage"
@@ -18974,7 +19002,7 @@ msgstr "negyedév a házasság után"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/GedcomCode/GedcomCodeQuay.php:47
 msgid "questionable evidence"
-msgstr ""
+msgstr "megkérdőjelezhető bizonyíték"
 
 #: admin_trees_config.php:70 modules_v3/fact_sources/report.xml:6
 msgid "records"
@@ -18995,24 +19023,24 @@ msgstr "visszautasít"
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:55
 msgid "rejected"
-msgstr ""
+msgstr "elutasítva"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:144
 msgid "religious name"
-msgstr ""
+msgstr "vallási név"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:141
 msgctxt "FEMALE"
 msgid "religious name"
-msgstr ""
+msgstr "vallási név"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:138
 msgctxt "MALE"
 msgid "religious name"
-msgstr ""
+msgstr "vallási név"
 
 #. I18N: a program feature
 #: setup.php:131 setup.php:132
@@ -19048,9 +19076,8 @@ msgstr "keresőrobot"
 #: edit_interface.php:2599 editnews.php:74 edituser.php:314 find.php:446
 #: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:558
-#, fuzzy
 msgid "save"
-msgstr "ment"
+msgstr "mentés"
 
 #: app/Functions/Functions.php:641
 #, php-format
@@ -19224,7 +19251,7 @@ msgstr "másod unokatestvér"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/GedcomCode/GedcomCodeQuay.php:43
 msgid "secondary evidence"
-msgstr ""
+msgstr "másodlagos bizonyíték"
 
 #. I18N: select all (of the family trees)
 #: search.php:118 search.php:281
@@ -19647,9 +19674,8 @@ msgstr "ez a bejegyzés nem létezik"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:70
-#, fuzzy
 msgid "three-quarter circle"
-msgstr "háromnegyed kör"
+msgstr "háromnegyed körös"
 
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:113
@@ -19751,7 +19777,7 @@ msgstr "ismeretlen"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
 msgid "unreliable evidence"
-msgstr ""
+msgstr "megbízhatatlan bizonyíték"
 
 #. I18N: button label
 #: admin_trees_places.php:108
@@ -19762,7 +19788,7 @@ msgstr "Frissít"
 #: admin_trees_config.php:434 admin_trees_config.php:474
 #: admin_trees_config.php:494
 msgid "visitors"
-msgstr ""
+msgstr "látogatók"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:107
@@ -19819,7 +19845,7 @@ msgstr "webtrees wiki"
 
 #: admin_trees_manage.php:705
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
-msgstr ""
+msgstr "A webtrees adatbázisának azonos szerveren kell lennie a PhpGedView-ével"
 
 #: app/Module/GoogleMapsModule.php:4049
 msgid "west"
