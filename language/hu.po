@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-13 17:12+0100\n"
-"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
+"PO-Revision-Date: 2015-08-13 17:13+0100\n"
+"Last-Translator: resist <bvank@outlook.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -11442,7 +11442,7 @@ msgstr "Szervezet azonosító előtag"
 #. I18N: Label for search field
 #: find.php:198
 msgid "Repository contains"
-msgstr "A Szervezet tartalma:"
+msgstr "A tároló tartalma:"
 
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
