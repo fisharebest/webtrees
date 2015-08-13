@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-13 16:50+0100\n"
-"Last-Translator: Balázs Németh <jobbara.artalmatlan@gmail.com>\n"
+"PO-Revision-Date: 2015-08-13 16:52+0100\n"
+"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -3973,7 +3973,7 @@ msgstr "Másol"
 #: admin_trees_merge.php:195
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr "Összes rekord másolása %1$s -ból %2$s -ba."
+msgstr "Másolni az összes bejegyzést %1$s-ból/ből %2$s-ba/be."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:431
