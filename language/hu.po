@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-13 17:06+0100\n"
-"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
+"PO-Revision-Date: 2015-08-13 17:07+0100\n"
+"Last-Translator: Balázs Németh <jobbara.artalmatlan@gmail.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -5189,7 +5189,7 @@ msgstr "Tiltsa le ezeket a modulokat"
 
 #: admin_site_upgrade.php:263
 msgid "Disable these themes"
-msgstr "Ezen témák letilttása"
+msgstr "Tiltsa le ezeket a témákat"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: app/I18N.php:183
