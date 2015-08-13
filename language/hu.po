@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
 "PO-Revision-Date: 2015-08-13 16:31+0100\n"
-"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
+"Last-Translator: resist <bvank@outlook.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -71,7 +71,7 @@ msgstr "#%s"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s mint %3$s kapcsolódik ide %4$s."
+msgstr "%1$s %2$s  %3$s hivatkozást tartalmaz %4$s-re"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2151
