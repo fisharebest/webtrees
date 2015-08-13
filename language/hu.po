@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-13 16:37+0100\n"
-"Last-Translator: Balázs Németh <jobbara.artalmatlan@gmail.com>\n"
+"PO-Revision-Date: 2015-08-13 16:49+0100\n"
+"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -704,10 +704,10 @@ msgstr ""
 #: admin_trees_manage.php:718
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr ""
-"<b>Fontos megjegyzés:</b> A mozgató varázsló nem tud a média elemek "
-"áthelyezésében segíteni.  Neked kell a média beállításokat létrehoznod, "
-"másolnod vagy átmozgatnod valamint külön az elemeket miután a varázsló "
-"befejeződött."
+"<b>Fontos megjegyzés:</b> A átviteli varázsló nem tud a média elemek "
+"áthelyezésében segíteni.  Önnek kell a média beállításokat beállítania és "
+"vagy másolnia vagy áthelyeznie külön a beállításokat és külön az állományt "
+"miután a varázsló befejeződött."
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
@@ -743,7 +743,9 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:206
 msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
-msgstr "A GY.I.K. megjeleníthető csak egy bizonyos családfán, vagy az összes családfán."
+msgstr ""
+"A GY.I.K. elem megjeleníthető csak egy bizonyos családfán, vagy az összes "
+"családfán."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
