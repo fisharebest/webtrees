@@ -55,7 +55,7 @@ class TCPDF_STATIC {
 	 * Current TCPDF version.
 	 * @private static
 	 */
-	private static $tcpdf_version = '6.2.9';
+	private static $tcpdf_version = '6.2.11';
 
 	/**
 	 * String alias for total number of pages.
@@ -1024,7 +1024,7 @@ class TCPDF_STATIC {
 			return false;
 		}
 		$rest = ($length - strlen($data));
-		if ($rest > 0) {
+		if (($rest > 0) && !feof($handle)) {
 			$data .= self::rfread($handle, $rest);
 		}
 		return $data;
@@ -1078,7 +1078,7 @@ class TCPDF_STATIC {
 
 	/**
 	 * Returns the input text exrypted using AES algorithm and the specified key.
-	 * This method requires mcrypt.
+	 * This method requires openssl or mcrypt. Text is padded to 16bytes blocks
 	 * @param $key (string) encryption key
 	 * @param $text (String) input text to be encrypted
 	 * @return String encrypted text
@@ -1090,9 +1090,35 @@ class TCPDF_STATIC {
 		// padding (RFC 2898, PKCS #5: Password-Based Cryptography Specification Version 2.0)
 		$padding = 16 - (strlen($text) % 16);
 		$text .= str_repeat(chr($padding), $padding);
+		if (extension_loaded('openssl')) {
+			$iv = openssl_random_pseudo_bytes (openssl_cipher_iv_length('aes-256-cbc'));
+			$text = openssl_encrypt($text, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+			return $iv.substr($text, 0, -16);
+		}
 		$iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC), MCRYPT_RAND);
 		$text = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $text, MCRYPT_MODE_CBC, $iv);
 		$text = $iv.$text;
+		return $text;
+	}
+
+	/**
+	 * Returns the input text exrypted using AES algorithm and the specified key.
+	 * This method requires openssl or mcrypt. Text is not padded
+	 * @param $key (string) encryption key
+	 * @param $text (String) input text to be encrypted
+	 * @return String encrypted text
+	 * @author Nicola Asuni
+	 * @since TODO
+	 * @public static
+	 */
+	public static function _AESnopad($key, $text) {
+		if (extension_loaded('openssl')) {
+			$iv = str_repeat("\x00", openssl_cipher_iv_length('aes-256-cbc'));
+			$text = openssl_encrypt($text, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+			return substr($text, 0, -16);
+		}
+		$iv = str_repeat("\x00", mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC));
+		$text = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $text, MCRYPT_MODE_CBC, $iv);
 		return $text;
 	}
 
@@ -2450,77 +2476,90 @@ class TCPDF_STATIC {
 	 * @public static
 	 */
 	public static function fileGetContents($file) {
-		//$file = html_entity_decode($file);
-		// array of possible alternative paths/URLs
 		$alt = array($file);
-		// replace URL relative path with full real server path
+		//
 		if ((strlen($file) > 1)
-			AND ($file[0] == '/')
-			AND ($file[1] != '/')
-			AND !empty($_SERVER['DOCUMENT_ROOT'])
-			AND ($_SERVER['DOCUMENT_ROOT'] != '/')) {
-			$findroot = strpos($file, $_SERVER['DOCUMENT_ROOT']);
-			if (($findroot === false) OR ($findroot > 1)) {
-				if (substr($_SERVER['DOCUMENT_ROOT'], -1) == '/') {
-					$tmp = substr($_SERVER['DOCUMENT_ROOT'], 0, -1).$file;
-				} else {
-					$tmp = $_SERVER['DOCUMENT_ROOT'].$file;
-				}
-				$alt[] = htmlspecialchars_decode(urldecode($tmp));
-			}
+		    && ($file[0] === '/')
+		    && ($file[1] !== '/')
+		    && !empty($_SERVER['DOCUMENT_ROOT'])
+		    && ($_SERVER['DOCUMENT_ROOT'] !== '/')
+		) {
+		    $findroot = strpos($file, $_SERVER['DOCUMENT_ROOT']);
+		    if (($findroot === false) || ($findroot > 1)) {
+			$alt[] = htmlspecialchars_decode(urldecode($_SERVER['DOCUMENT_ROOT'].$file));
+		    }
 		}
-		// URL mode
+		//
+		$protocol = 'http';
+		if (!empty($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS']) != 'off')) {
+		    $protocol .= 's';
+		}
+		//
 		$url = $file;
-		// check for missing protocol
-		if (preg_match('%^/{2}%', $url)) {
-			if (preg_match('%^([^:]+:)//%i', K_PATH_URL, $match)) {
-				$url = $match[1].str_replace(' ', '%20', $url);
-				$alt[] = $url;
-			}
+		if (preg_match('%^//%', $url) && !empty($_SERVER['HTTP_HOST'])) {
+			$url = $protocol.':'.str_replace(' ', '%20', $url);
 		}
-		$urldata = @parse_url($url);
-		if (!isset($urldata['query']) OR (strlen($urldata['query']) <= 0)) {
-			if (K_PATH_URL AND (strpos($url, K_PATH_URL) === 0)) {
-				// convert URL to full server path
-				$tmp = str_replace(K_PATH_URL, K_PATH_MAIN, $url);
-				$tmp = htmlspecialchars_decode(urldecode($tmp));
-				$alt[] = $tmp;
-			}
-		}
-		if (isset($_SERVER['SCRIPT_URI'])) {
-			$urldata = @parse_url($_SERVER['SCRIPT_URI']);
-			$alt[] = $urldata['scheme'].'://'.$urldata['host'].(($file[0] == '/') ? '' : '/').$file;
-		}
-		foreach ($alt as $f) {
-			$ret = @file_get_contents($f);
-			if (($ret === FALSE)
-				AND !ini_get('allow_url_fopen')
-				AND function_exists('curl_init')
-				AND preg_match('%^(https?|ftp)://%', $f)) {
-				// try to get remote file data using cURL
-				$cs = curl_init(); // curl session
-				curl_setopt($cs, CURLOPT_URL, $f);
-				curl_setopt($cs, CURLOPT_BINARYTRANSFER, true);
-				curl_setopt($cs, CURLOPT_FAILONERROR, true);
-				curl_setopt($cs, CURLOPT_RETURNTRANSFER, true);
-				if ((ini_get('open_basedir') == '') AND (!ini_get('safe_mode'))) {
-					curl_setopt($cs, CURLOPT_FOLLOWLOCATION, true);
+		$url = htmlspecialchars_decode($url);
+		$alt[] = $url;
+		//
+		if (preg_match('%^(https?)://%', $url)
+		    && empty($_SERVER['HTTP_HOST'])
+		    && empty($_SERVER['DOCUMENT_ROOT'])
+		) {
+			$urldata = parse_url($url);
+			if (empty($urldata['query'])) {
+				$host = $protocol.'://'.$_SERVER['HTTP_HOST'];
+				if (strpos($url, $host) === 0) {
+				    // convert URL to full server path
+				    $tmp = str_replace($host, $_SERVER['DOCUMENT_ROOT'], $url);
+				    $alt[] = htmlspecialchars_decode(urldecode($tmp));
 				}
-				curl_setopt($cs, CURLOPT_CONNECTTIMEOUT, 5);
-				curl_setopt($cs, CURLOPT_TIMEOUT, 30);
-				curl_setopt($cs, CURLOPT_SSL_VERIFYPEER, false);
-				curl_setopt($cs, CURLOPT_SSL_VERIFYHOST, false);
-				curl_setopt($cs, CURLOPT_USERAGENT, 'TCPDF');
-				$ret = curl_exec($cs);
-				curl_close($cs);
-			}
-			if ($ret !== FALSE) {
-				break;
 			}
 		}
-		return $ret;
+		//
+		if (isset($_SERVER['SCRIPT_URI'])
+		    && !preg_match('%^(https?|ftp)://%', $file)
+		    && !preg_match('%^//%', $file)
+		) {
+		    $urldata = @parse_url($_SERVER['SCRIPT_URI']);
+		    return $urldata['scheme'].'://'.$urldata['host'].(($file[0] == '/') ? '' : '/').$file;
+		}
+		//
+		$alt = array_unique($alt);
+		//var_dump($alt);exit;//DEBUG
+		foreach ($alt as $path) {
+			$ret = @file_get_contents($path);
+			if ($ret !== false) {
+			    return $ret;
+			}
+			// try to use CURL for URLs
+			if (!ini_get('allow_url_fopen')
+				&& function_exists('curl_init')
+				&& preg_match('%^(https?|ftp)://%', $path)
+			) {
+				// try to get remote file data using cURL
+				$crs = curl_init();
+				curl_setopt($crs, CURLOPT_URL, $path);
+				curl_setopt($crs, CURLOPT_BINARYTRANSFER, true);
+				curl_setopt($crs, CURLOPT_FAILONERROR, true);
+				curl_setopt($crs, CURLOPT_RETURNTRANSFER, true);
+				if ((ini_get('open_basedir') == '') && (!ini_get('safe_mode'))) {
+				    curl_setopt($crs, CURLOPT_FOLLOWLOCATION, true);
+				}
+				curl_setopt($crs, CURLOPT_CONNECTTIMEOUT, 5);
+				curl_setopt($crs, CURLOPT_TIMEOUT, 30);
+				curl_setopt($crs, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($crs, CURLOPT_SSL_VERIFYHOST, false);
+				curl_setopt($crs, CURLOPT_USERAGENT, 'tc-lib-file');
+				$ret = curl_exec($crs);
+				curl_close($crs);
+				if ($ret !== false) {
+					return $ret;
+				}
+			}
+		}
+		return false;
 	}
-
 } // END OF TCPDF_STATIC CLASS
 
 //============================================================+
