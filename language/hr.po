@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-07-19 14:24+0100\n"
+"PO-Revision-Date: 2015-08-14 22:27+0100\n"
 "Last-Translator: Milivoj Bartoš <mic@mikrotakt.com>\n"
-"Language-Team: Croatian <http://translate.webtrees.net/projects/webtrees/webtrees/hr/>\n"
+"Language-Team: Croatian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
@@ -2045,7 +2047,7 @@ msgstr "Postavi postavke privatnosti"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2279
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Primjeni ove postavke na sva obiteljska stabla"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2286
@@ -3550,7 +3552,7 @@ msgstr "Djeca od "
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
 msgid "Children take a patronym instead of a surname."
-msgstr ""
+msgstr "Djeca uzimaju patronim umjesto prezimena."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:82
@@ -6253,7 +6255,7 @@ msgstr "Datoteke označene sa %s su potrebne za ispravan rad i ne mogu biti uklo
 #: app/Module/SlideShowModule.php:300 find.php:129 find.php:146 find.php:166
 #: find.php:185 find.php:204 find.php:224 find.php:243 find.php:441
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: app/Functions/FunctionsPrint.php:797 find.php:76
 msgid "Find a fact or event"
@@ -8737,7 +8739,7 @@ msgstr "Maskiraj se u ovog korisnika"
 
 #: lifespan.php:101
 msgid "Match calendar"
-msgstr ""
+msgstr "Usporedni kalendar"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:138
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -12663,6 +12665,10 @@ msgstr "Karta stranica"
 #: app/Module/SiteMapModule.php:306
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
+"Sitemape su način kako webmasteri daju upute tražilicama o web stranicama "
+"koje su dostupne za pretraživanje. Svaka veća tražilica podržava sitemape. "
+"Za više informacija, pogledajte <a href=\"http://www.sitemaps.org/\""
+">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:145
@@ -13681,6 +13687,7 @@ msgstr "Vrijeme u sekundama u kojem webtrees drži aktivnu prijavu prije nego za
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:250
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
+"Vremenska zona je potrebna za kalkulaciju datuma, kao što je današnji datum."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
@@ -14458,7 +14465,7 @@ msgstr "Vrijeme"
 #. I18N: A configuration setting
 #: admin_site_config.php:230 admin_users.php:423 edituser.php:244
 msgid "Time zone"
-msgstr ""
+msgstr "Vremenska zona"
 
 #: app/Controller/TimelineController.php:77 app/Theme/AbstractTheme.php:1224
 #: timeline.php:243
@@ -18436,7 +18443,7 @@ msgstr "Pola godine nakon braka"
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:737
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "hh:mm ili hh:mm:ss"
 
 #: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:313
 msgid "hide"
@@ -18601,7 +18608,7 @@ msgstr "djed/baka (po majci)"
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:78
 msgid "matrilineal"
-msgstr ""
+msgstr "po majčinoj liniji"
 
 #: app/Module/GoogleMapsModule.php:332
 msgid "maximum"
@@ -18875,7 +18882,7 @@ msgstr ""
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr ""
+msgstr "po ocu"
 
 #: app/Functions/Functions.php:859
 msgctxt "father’s father"
@@ -18895,7 +18902,7 @@ msgstr "roditelji (po ocu)"
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:75
 msgid "patrilineal"
-msgstr ""
+msgstr "po očevoj liniji"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:56
