@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-01 23:57+0100\n"
-"Last-Translator: Jaroslav Hudeček <jarhud@centrum.cz>\n"
-"Language-Team: Czech <http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
+"PO-Revision-Date: 2015-08-14 09:55+0100\n"
+"Last-Translator: Jindřich Michal <jimi2000@seznam.cz>\n"
+"Language-Team: Czech "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -9369,7 +9370,7 @@ msgstr "Moje stránka"
 
 #: app/Theme/AbstractTheme.php:1561
 msgid "My pages"
-msgstr ""
+msgstr "Moje stránky"
 
 #: app/Module/UserWelcomeModule.php:56 app/Theme/AbstractTheme.php:1587
 msgid "My pedigree"
