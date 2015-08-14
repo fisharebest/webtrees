@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
@@ -589,6 +590,20 @@ class FunctionsEdit {
 				$noterec = $note1->getGedcom();
 				preg_match('/' . $value . '/i', $noterec, $notematch);
 				$value = $notematch[0];
+			}
+		}
+
+		// Show names for spouses in MARR/HUSB/AGE and MARR/WIFE/AGE
+		if ($fact === 'HUSB' || $fact === 'WIFE') {
+			$family = Family::getInstance($xref, $WT_TREE);
+			if ($family) {
+				$spouse_link = $family->getFirstFact($fact);
+				if ($spouse_link) {
+					$spouse = $spouse_link->getTarget();
+					if ($spouse) {
+						echo $spouse->getFullName();
+					}
+				}
 			}
 		}
 
