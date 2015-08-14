@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-14 11:17+0100\n"
-"Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
+"PO-Revision-Date: 2015-08-14 11:49+0100\n"
+"Last-Translator: Jindřich Michal <jimi2000@seznam.cz>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -277,9 +277,9 @@ msgstr[2] "před %s dny"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s rodina byla aktulizována."
+msgstr[1] "%s rodiny byly aktualizovány."
+msgstr[2] "%s rodin bylo aktualizováno."
 
 #: admin.php:798
 #, php-format
@@ -317,9 +317,9 @@ msgstr[2] "%s osob"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s osoba byla aktualizována."
+msgstr[1] "%s osoby byly aktualizovány."
+msgstr[2] "%s osob bylo aktualizováno."
 
 #: app/Module/GoogleMapsModule.php:896
 #, php-format
@@ -405,9 +405,9 @@ msgstr[2] "před %s měsíci"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s poznámka byla aktualizována."
+msgstr[1] "%s poznámky byly aktualizovány."
+msgstr[2] "%s poznámek bylo aktualizováno."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2127
@@ -433,9 +433,9 @@ msgstr[2] "před %s vteřinami"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s zdroj byl aktualizován."
+msgstr[1] "%s zdroje byly aktualizovány."
+msgstr[2] "%s zdrojů bylo aktualizováno."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2143
@@ -784,11 +784,11 @@ msgstr "Databázový server umožňuje uložit více oddělených databází. Vy
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
-msgstr ""
+msgstr "Soubor na serveru"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:211
 msgid "A file on your computer"
-msgstr ""
+msgstr "Soubor v počítači"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:33
@@ -4279,7 +4279,7 @@ msgstr "Uživatelem upravený uvítací text"
 
 #: app/Theme/AbstractTheme.php:1020 app/Theme/AbstractTheme.php:1022
 msgid "Customize this page"
-msgstr ""
+msgstr "Přizpůsobit tuto stránku"
 
 #: app/Stats.php:6782
 msgid "Cyprus"
