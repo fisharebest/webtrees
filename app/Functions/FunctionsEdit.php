@@ -706,10 +706,8 @@ class FunctionsEdit {
 				switch ($fact) {
 					case 'ALIA':
 					case 'ASSO':
-						echo ' data-autocomplete-type="INDI"';
-						break;
 					case '_ASSO':
-						echo ' data-autocomplete-type="ASSO"';
+						echo ' data-autocomplete-type="ASSO" data-autocomplete-extra="input.DATE"';
 						break;
 					case 'DATE':
 						echo ' onblur="valid_date(this);" onmouseout="valid_date(this);"';
@@ -731,7 +729,7 @@ class FunctionsEdit {
 						echo ' data-autocomplete-type="OBJE"';
 						break;
 					case 'PAGE':
-						echo ' data-autocomplete-type="PAGE" data-autocomplete-extra="' . $source_element_id . '"';
+						echo ' data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $source_element_id . '"';
 						break;
 					case 'PLAC':
 						echo ' data-autocomplete-type="PLAC"';
@@ -1007,7 +1005,7 @@ class FunctionsEdit {
 				}
 				echo '<table class="facts_table">';
 				// 2 ASSO
-				self::addSimpleTag($level . ' ASSO @');
+				self::addSimpleTag($level . ' _ASSO @');
 				// 3 RELA
 				self::addSimpleTag(($level + 1) . ' RELA');
 				// 3 NOTE
