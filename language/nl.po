@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-09 14:41+0100\n"
+"PO-Revision-Date: 2015-08-09 14:43+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
@@ -13625,7 +13625,7 @@ msgstr "De grootte van de stamboom, vroegste en laatste gebeurtenissen, gemeensc
 #: help_text.php:222
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr "De achternaam wordt ingesloten door schuine strepen:<%s>Jan Pieter /Smid/<%s>"
+msgstr "De achternaam staat tussen schuine strepen:<%s>Jan Pieter /Smid/<%s>"
 
 #: addmedia.php:355
 #, php-format

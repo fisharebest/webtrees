@@ -591,7 +591,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		<script>
 			function selectCountry() {
 				if (document.flags.COUNTRYSELECT.value == 'Countries') {
-					window.location="module.php";
+					window.location="module.php?mod=googlemap&mod_action=flags&countrySelected=Countries";
 				} else if (document.flags.STATESELECT.value != 'States') {
 					window.location="module.php?mod=googlemap&mod_action=flags&countrySelected=" + document.flags.COUNTRYSELECT.value + "&stateSelected=" + document.flags.STATESELECT.value;
 				} else {

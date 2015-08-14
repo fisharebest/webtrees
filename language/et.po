@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-07-25 13:57+0100\n"
+"PO-Revision-Date: 2015-08-12 19:51+0100\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
-"Language-Team: Estonian <http://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
+"Language-Team: Estonian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -9091,7 +9092,7 @@ msgstr "Moodul"
 #: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
 #: app/Theme/AdministrationTheme.php:182
 msgid "Module administration"
-msgstr "Mooduli administreerimine"
+msgstr "Moodulite administreerimine"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:181
@@ -15000,7 +15001,7 @@ msgstr "Lae geograafilised andmed üles"
 #. I18N: Menu entry
 #: admin_media_upload.php:37 app/Theme/AdministrationTheme.php:171
 msgid "Upload media files"
-msgstr ""
+msgstr "Lae üles meediafaile"
 
 #: admin_media_upload.php:187
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
@@ -15380,7 +15381,7 @@ msgstr "Saadame kinnituseks e-maili aadressil ( %s ). Pead oma soovi kinnitama j
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:86
 msgid "Website"
-msgstr ""
+msgstr "Veebileht"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:299
@@ -15400,12 +15401,12 @@ msgstr "Veebisaidi ja META siltide Seaded"
 #. I18N: Menu entry
 #: admin_site_logs.php:35 app/Theme/AdministrationTheme.php:92
 msgid "Website logs"
-msgstr ""
+msgstr "Veebilehe logid"
 
 #. I18N: Menu entry
 #: admin_site_config.php:134 app/Theme/AdministrationTheme.php:87
 msgid "Website preferences"
-msgstr ""
+msgstr "Veebilehe eelistused"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:368 app/Functions/FunctionsPrint.php:665

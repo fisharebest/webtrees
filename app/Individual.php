@@ -42,23 +42,23 @@ class Individual extends GedcomRecord {
 	 * @param string[] $xrefs
 	 */
 	public static function load(Tree $tree, array $xrefs) {
-		$sql  = '';
 		$args = array(
 			'tree_id' => $tree->getTreeId(),
 		);
+		$placeholders = array();
 
 		foreach (array_unique($xrefs) as $n => $xref) {
 			if (!isset(self::$gedcom_record_cache[$tree->getTreeId()][$xref])) {
-				$sql .= ($n ? ',:x' : ':x') . $n;
+				$placeholders[] = ':x' . $n;
 				$args['x' . $n] = $xref;
 			}
 		}
 
-		if (count($args) > 1) {
+		if (!empty($placeholders)) {
 			$rows = Database::prepare(
 				"SELECT i_id AS xref, i_gedcom AS gedcom" .
 				" FROM `##individuals`" .
-				" WHERE i_file = :tree_id AND i_id IN (" . $sql . ")"
+				" WHERE i_file = :tree_id AND i_id IN (" . implode(',', $placeholders) . ")"
 			)->execute(
 				$args
 			)->fetchAll();
