@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-14 20:13+0100\n"
+"PO-Revision-Date: 2015-08-14 20:30+0100\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
@@ -8577,23 +8577,23 @@ msgstr "Posnaam"
 
 #: app/Functions/FunctionsEdit.php:241
 msgid "Mailto link"
-msgstr ""
+msgstr "E-pos skakel"
 
 #: index_edit.php:298
 msgid "Main section blocks"
-msgstr ""
+msgstr "Blokke van die hoofafdeling"
 
 #: app/Stats.php:6882
 msgid "Malawi"
-msgstr ""
+msgstr "Malawi"
 
 #: app/Stats.php:6883
 msgid "Malaysia"
-msgstr ""
+msgstr "Maleisië"
 
 #: app/Stats.php:6867
 msgid "Maldives"
-msgstr ""
+msgstr "Maledive"
 
 #: app/Controller/IndividualController.php:247
 #: app/Controller/IndividualController.php:250
@@ -8614,15 +8614,15 @@ msgstr "Manlik"
 #: calendar.php:489 calendar.php:490 statistics.php:148 statistics.php:164
 #: statistics.php:177
 msgid "Males"
-msgstr ""
+msgstr "Manne"
 
 #: app/Stats.php:6871
 msgid "Mali"
-msgstr ""
+msgstr "Mali"
 
 #: app/Stats.php:6872
 msgid "Malta"
-msgstr ""
+msgstr "Malta"
 
 #. I18N: Menu entry
 #: admin_pgv_to_wt.php:130 admin_site_change.php:263 admin_site_merge.php:183
@@ -8632,50 +8632,56 @@ msgstr ""
 #: admin_trees_manage.php:335 admin_trees_merge.php:40
 #: admin_trees_places.php:90 app/Theme/AdministrationTheme.php:119
 msgid "Manage family trees"
-msgstr ""
+msgstr "Bestuur stambome"
 
 #: admin_media.php:530 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:154 app/Module/AlbumModule.php:166
 msgid "Manage links"
-msgstr ""
+msgstr "Bestuur skakels"
 
 #. I18N: Menu entry
 #: admin_media.php:583 app/Theme/AdministrationTheme.php:170
 msgid "Manage media"
-msgstr ""
+msgstr "Bestuur media"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:558
 #: app/Module/ClippingsCartModule.php:366
 #: app/Module/ClippingsCartModule.php:700
 msgid "Manager"
-msgstr ""
+msgstr "Bestuurder"
 
 #: admin.php:624
 msgid "Managers"
-msgstr ""
+msgstr "Bestuurders"
 
 #: app/GedcomCode/GedcomCodeTemp.php:203
 msgid "Manila, Philippines"
-msgstr ""
+msgstr "Manila, Filippyne"
 
 #: app/GedcomCode/GedcomCodeTemp.php:205
 msgid "Manti, Utah"
-msgstr ""
+msgstr "Manti, Utah"
 
 #: app/GedcomTag.php:1875
 msgid "Manuscript"
-msgstr ""
+msgstr "Manuskrip"
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: admin_trees_config.php:1697
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
 msgstr ""
+"Baie genealogie programme skep GEDCOM-lêers met spesiale etikette en "
+"webtrees verstaan die meeste daarvan. As daar egter onherkenbare etikette "
+"gevind word sal hierdie opsie jou in staat stel om hierdie etikette te "
+"ignoreer of om 'n waarskuwing te vertoon."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: admin_site_config.php:427
 msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
 msgstr ""
+"Baie e-posbedieners vereis dat die bediener wat die e-pos versend korrek "
+"geidentifiseer word deur 'n geldige domeinnaam te gebruik."
 
 #. I18N: gedcom tag MAP
 #: app/GedcomTag.php:552 app/GedcomTag.php:1877
@@ -8686,32 +8692,36 @@ msgstr "Kaart"
 #: app/Date/CalendarDate.php:313
 msgctxt "Abbreviation for March"
 msgid "Mar"
-msgstr ""
+msgstr "Mrt"
 
 #: app/Date/CalendarDate.php:213
 msgctxt "GENITIVE"
 msgid "March"
-msgstr ""
+msgstr "Maart"
 
 #: app/Date/CalendarDate.php:281
 msgctxt "INSTRUMENTAL"
 msgid "March"
-msgstr ""
+msgstr "Maart"
 
 #: app/Date/CalendarDate.php:247
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr ""
+msgstr "Maart"
 
 #: app/Date/CalendarDate.php:179 app/Functions/FunctionsPrint.php:650
 msgctxt "NOMINATIVE"
 msgid "March"
-msgstr ""
+msgstr "Maart"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1669
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 msgstr ""
+"Markdown is 'n eenvoudige formattering sisteem wat op webwerwe soos "
+"Wikipedia gebruik word. Die sisteem maak gebruik van eenvoudige karakters om "
+"opskrifte, sub-opskrifte, vetgedrukte- en skuinsteks, lyste, tabelle ens. te "
+"skep."
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:572 modules_v3/ahnentafel_report/report.xml:448
@@ -8764,7 +8774,7 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:1316
 #: modules_v3/pedigree_report/report.xml:1354
 msgid "Marriage"
-msgstr ""
+msgstr "Huwelik"
 
 #: modules_v3/marriage_report/report.xml:8
 msgid "Marriage Date range end"
