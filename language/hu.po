@@ -107,7 +107,7 @@ msgstr "%1$s nem létezik."
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist.  Did you mean %2$s?"
-msgstr "%1$s nem létezik. %2$s-ra/re gondoltál?"
+msgstr "%1$s nem létezik. %2$s-ra/re gondolt?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
@@ -169,7 +169,7 @@ msgstr "%1$s × %2$s"
 #: admin_media.php:492 app/Media.php:386
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr "%1$s × %2$s pixel"
+msgstr "%1$s × %2$s képpont"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: app/Individual.php:550
@@ -197,7 +197,7 @@ msgstr "%Y. %F %j."
 #: app/Stats.php:6999
 #, php-format
 msgid "%s BCE"
-msgstr "%s i. e."
+msgstr "%s i.e."
 
 #. I18N: size of file in KB
 #: admin_media.php:484 app/Media.php:276
@@ -227,7 +227,7 @@ msgstr "%s és a személyek akik hivatkoznak rá."
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr "%s és a gyerekeik"
+msgstr "%s és gyerekeik"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:124
@@ -269,14 +269,14 @@ msgstr[1] "%s nappal ezelőtt"
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s család frissítve lett."
-msgstr[1] "%s családok frissítve lettek."
+msgstr[1] "%s család frissítve lett."
 
 #: admin.php:798
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
 msgstr[0] "%s családfa"
-msgstr[1] "%s családfák"
+msgstr[1] "%s családfa"
 
 #: app/Stats.php:5261 app/Stats.php:5265
 #, php-format
@@ -304,14 +304,14 @@ msgstr[1] "%s személy"
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
 msgstr[0] "%s személy frissítve lett."
-msgstr[1] "%s személyek frissítve lettek."
+msgstr[1] "%s személy frissítve lett."
 
 #: app/Module/GoogleMapsModule.php:896
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
 msgstr[0] "%s személy bizalmas."
-msgstr[1] "%s személy  bizalmas."
+msgstr[1] "%s személy bizalmas."
 
 #: app/Controller/LifespanController.php:253
 #, php-format
@@ -331,8 +331,8 @@ msgstr[1] "%s személy eseménnyel, helyszín: %s"
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] "%s személy eseménnyelm, helyszín: %s, %s és %s között"
-msgstr[1] "%s személy eseménnyelm, helyszín: %s, %s és %s között"
+msgstr[0] "%s személy eseménnyel, helyszín: %s, %s és %s között"
+msgstr[1] "%s személy eseménnyel, helyszín: %s, %s és %s között"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:117
@@ -486,13 +486,13 @@ msgstr "%s × unokatestvér"
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;i. e.&nbsp;"
+msgstr "%s&nbsp;i.e.&nbsp;"
 
 #. I18N: CE=Common Era, for Julian years > 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;i. sz.&nbsp;"
+msgstr "%s&nbsp;i.sz.&nbsp;"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:212
@@ -710,40 +710,49 @@ msgstr ""
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr "<b>Figyelem:</b> A személyes információkat csak az érintettek illetve a közeli családtagok láthatják. Kérheti a rokonsági fokának felülvizsgálatát, hogy hozzáférjen ezekhez az információkhoz. Néha az elhunytak adatai is titkosak. Ez azért lehet mert nincs elég információ az illető személy halálának körülményeiről vagy általában a személyről.<br><br>Mielőtt feltenne egy kérdést, kérem ellenőrizze, hogy a megfelelő személyről van-e szó, átnézve a személyes adatait. Amennyiben változásokat javasol a családfa adatait illetően kérem jelölje meg a forrásait is."
+msgstr ""
+"<b>Figyelem:</b> A személyes információkat csak az érintettek illetve a "
+"közeli családtagok láthatják.  Kérheti a rokonsági fokának felülvizsgálatát, "
+"hogy hozzáférjen ezekhez az információkhoz.  Néha az elhunytak adatai is "
+"titkosak.  Ez azért lehet mert nincs elég információ az illető személy "
+"halálának körülményeiről vagy általában a személyről.<br><br>Mielőtt "
+"feltenne egy kérdést, kérem ellenőrizze, hogy a megfelelő személyről van-e "
+"szó, ellenőrizve a dátumokat, helyeket és közeli hozzátartozókat.  "
+"Amennyiben változásokat javasol a családfa adatait illetően kérem jelölje "
+"meg a forrásait is."
 
 #: login.php:146
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 msgstr ""
 "<center><b>Üdvözöljük ezen a Családfakutató-Honlapon</b><center><br>A "
 "honlaphoz kizárólag a <u>bejelentkezett</u> felhasználók férhetnek "
-"hozzá.<br><br>Amennyiben Ön már rendelkezik felhasználói jogosultsággal, "
+"hozzá.<br><br>Amennyiben Ön már rendelkezik felhasználói fiókkal, "
 "bejelentkezhet az oldalra. Ha még nem, a megfelelő hivatkozásra kattintva "
-"kezdeményezheti annak megszerzését.<br><br>Miután megerősítette "
-"jelentkezését, a honlap adminisztrátora fogadja el, vagy utasítja el az Ön "
-"igényét. A pozitív döntésről email-ben kap értesítést."
+"kezdeményezheti annak megszerzését.<br><br>Az adatok ellenőrzése után a "
+"honlap szerkesztője fogadja vagy utasítja vissza az Ön igényét.  Az "
+"jóváhagyásról email-ben kap értesítést."
 
 #: login.php:149
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 msgstr ""
 "<center><b>Üdvözöljük ezen a Családfakutató-Honlapon</b></center><br>A "
 "honlaphoz <u>kizárólag családtagok</u> férhetnek hozzá.<br><br>Amennyiben Ön "
-"már rendelkezik felhasználói jogosultsággal, bejelentkezhet az oldlara. Ha "
-"még nem, a megfelelő hivatkozásra kattintva kezdeményezheti annak "
-"megszerzését.<br><br>Miután megerősítette jelentkezését, a honlap "
-"adminisztrátora fogadja el, vagy utasítja el az Ön igényét. A pozitív "
-"döntésről email-ben kap értesítést."
+"már rendelkezik felhasználói fióokkal, bejelentkezhet az oldlara.  Ha még "
+"nem, a megfelelő hivatkozásra kattintva kezdeményezheti annak "
+"megszerzését.<br><br>Az adatok ellenőrzése után a honlap szerkesztője "
+"fogadja vagy utasítja vissza az Ön igényét.  Az jóváhagyásról email-ben kap "
+"értesítést."
 
 #: login.php:143
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved."
 msgstr ""
 "<center><b>Üdvözöljük ezen a Családfakutató-Honlapon!</b></center><br>A "
-"honlapot minden olyan felhasználó látogathatja, akinek van hozzáférési "
-"jogosultsága.<br><br>Amennyiben Ön már rendelkezik felhasználói "
-"jogosultsággal, bejelentkezhet az oldalra. Ha még nem, a megfelelő "
-"hivatkozásra kattintva kezdeményezheti annak megszerzését.<br><br>Miután "
-"megerősítette jelentkezését, a honlap adminisztrátora fogadja el, vagy "
-"utasítja el az Ön igényét.A pozitív döntésről email-ben kap értesítést."
+"honlapot minden olyan felhasználó látogathatja, akinek van felhasználói "
+"fiókja.<br><br>Amennyiben Ön már rendelkezik felhasználói fiókkall, "
+"bejelentkezhet az oldalra.  Ha még nem, a megfelelő hivatkozásra kattintva "
+"kezdeményezheti annak megszerzését.<br><br>z adatok ellenőrzése után a "
+"honlap szerkesztője fogadja vagy utasítja vissza az Ön igényét.  Az "
+"jóváhagyásról email-ben kap értesítést."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:993 admin_users.php:489 edituser.php:275
@@ -752,7 +761,12 @@ msgstr "<alapértelmezett téma>"
 
 #: login.php:382
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">Megjegyzés:</div><div class=\"error\">Jelen nyomtatvány kitöltésével és beküldésével, Ön elfogadja: <ul><li>a jelen oldalon található személyek adatait megőrzi;</li><li>és a lentebbi mezőben leírja, hogy ki Ön, illetve kivel áll rokonságban ebből a családfából.</li></ul></div>"
+msgstr ""
+"<div class=\"largeError\">Megjegyzés:</div><div class=\"error\">Ennek a "
+"nyomtatványnak kitöltésével és beküldésével elfogadja:<ul><li>az oldalon "
+"található személyek adatait megőrzi;</li><li>és az alábbi mezőben írja le, "
+"hogy kivel áll Ön rokonságban ebből a családfából, vagy adjon információt "
+"egy személyről, akinek ezen a honlapon kellene lennie.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
 #: app/Fact.php:409 app/Functions/FunctionsPrintFacts.php:540
@@ -771,15 +785,24 @@ msgstr ""
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Egy gyermeknek több szülő-párja is lehet. A kapcsolat a gyermek és szülei között lehet biológiai, jogi vagy akár alapulhat a helyi kultúrán és tradíciókon is.  Ha nincs származás megadva akkor alapértelmezetten biológia kapcsolatot feltételezünk."
+msgstr ""
+"Egy gyermeknek több szülő-párja is lehet.  A kapcsolat a gyermek és szülei "
+"között lehet biológiai, jogi vagy akár alapulhat a helyi kultúrán és "
+"tradíciókon is.  Ha nincs származás megadva akkor alapértelmezetten biológia "
+"kapcsolatot feltételezünk."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr "Egy általános hiba, hogy több hivatkozás létezik egy bejegyzésre. Pl. egy gyermek többszöri hozzáadása egy család bejegyzéshez."
+msgstr ""
+"Egy általános hiba, hogy több hivatkozás létezik egy bejegyzésre. Pl. egy "
+"gyermek többszöri hozzáadása egy család bejegyzéshez."
 
 #: setup.php:367
 msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-msgstr "Az adatbázis szerver több különböző adatbázis tárol. Válasszon ki egy már létezőt (a rendszergazda által létrehozottat) vagy hozzon létre egy újat (ha az adatbázis felhasználói jogosultsága ezt megengedi)."
+msgstr ""
+"Az adatbázis szerver több különálló adatbázist tárolhat.  Válasszon ki egy "
+"már létezőt (a rendszergazda által létrehozottat) vagy hozzon létre egy újat "
+"(ha az adatbázis felhasználói jogosultsága ezt megengedi)."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
@@ -802,32 +825,33 @@ msgstr "Köszöntő szöveg a látogatóknak."
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need moderator approval, and email notifications."
-msgstr "A moderálandó változások listája."
+msgstr ""
+"Moderátor által jóváhagyásra váró változtatások és email értesítések listája."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
 msgid "A list of frequently asked questions and answers."
-msgstr "Egy lista a Gyakran Ismételt Kérdésekről és a válaszokról."
+msgstr "lista a Gyakran Ismételt Kérdésekről és a válaszokról."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:40
 msgid "A list of records that have been updated recently."
-msgstr "Nemrég módosított bejegyzések listázása."
+msgstr "Lista a nemrég módosított bejegyzésekről."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:38
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr "A családhoz köthető feladatok vagy aktivitások."
+msgstr "Lista a családfához köthető feladatok vagy aktivitások."
 
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "A héber elhalálozások közeli évfordulója."
+msgstr "Lista a héber elhalálozások közeli évfordulója."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
 msgid "A list of the anniversaries that occur today."
-msgstr "Ma esedékes évfordulók."
+msgstr "Ma esedékes évfordulók listája."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
@@ -837,12 +861,12 @@ msgstr "Közelgő évfordulók listája."
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr "Lista a leggyakoribb keresztnevekről."
+msgstr "A leggyakoribb keresztnevek listája."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr "A leggyakoribb keresztnevek listája."
+msgstr "A leggyakoribb vezetéknevek listája."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
@@ -852,16 +876,23 @@ msgstr "Lista a leglátogatottabb oldalakról."
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr "Az éppen online levő felhasználók és látogatók listája."
+msgstr "Éppen az oldalon levő felhasználók és látogatók listája."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "A média objektum egy olyan bejegyzés a családfában ami információkat tárol egy média fájlról. Ez az információ tartalmazhat címet, szerzői jogi megjegyzést, másolatot, biztonsági korlátozásokat, stb. A média fájl, mint például fotó vagy videó tárolható helyileg (ezen a webszerveren) vagy egy távoli webszerveren."
+msgstr ""
+"A média objektum egy olyan bejegyzés a családfában, ami információkat tárol "
+"egy média fájlról.  Ez az információ tartalmazhat címet, szerzői jogi "
+"megjegyzést, másolatot, biztonsági korlátozásokat, stb.  A média fájl, mint "
+"például fotó vagy videó tárolható helyileg (ezen a webszerveren) vagy egy "
+"távoli webszerveren."
 
 #: login.php:237
 #, php-format
 msgid "A new password has been created and emailed to %s.  You can change this password after you login."
-msgstr "Egy új jelszó el lett küldve %s címére. Bejelentkezés után megváltoztathatod."
+msgstr ""
+"Egy új jelszó el lett küldve %s címére.  A jelszavát bejelentkezés után "
+"megváltoztathatja."
 
 #: login.php:230
 msgid "A new password has been requested for your user name."
@@ -871,7 +902,9 @@ msgstr "Az Ön felhasználónevéhez új jelszó lett igényelve."
 #: login.php:535
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Egy új felhasználó (%1$s) egy fiókért (%2$s) folyamodott és igazolta az e-mail-címét (%3$s)."
+msgstr ""
+"Egy új felhasználó (%1$s) fiókért (%2$s) folyamodott és igazolta az e-mail-"
+"címét (%3$s)."
 
 #: admin.php:569 admin_site_upgrade.php:79 login.php:106
 msgid "A new version of webtrees is available."
@@ -880,37 +913,37 @@ msgstr "A webtrees egy új verziója érhető el."
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
 msgid "A private area to record notes or keep a journal."
-msgstr "Privát rész saját feljegyzésekhez vagy naplóíráshoz."
+msgstr "Bizalmas rész saját feljegyzésekhez vagy naplóíráshoz."
 
 #. I18N: %s is a server name/URL
 #: login.php:295
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "Egy leendő felhasználó regisztrál a webtreesbe: %s."
+msgstr "Egy leendő felhasználó regisztrált a webtrees-be: %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "Lista a személyek ősfájáról fa formátumban."
+msgstr "Jelentés a személyek ősfájáról fa alakzatban."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "Lista az adott személy őseiről."
+msgstr "Jelentés az adott személy őseiről, elbeszélő stílusban."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "Riport az adott személy leszármazottjairól, elbeszélő stílusban."
+msgstr "Jelentés az adott személy leszármazottairól, elbeszélő stílusban."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr "Riport egy adott személy részleteiről."
+msgstr "Részletes jelentés egy adott személyről."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
@@ -925,24 +958,25 @@ msgstr "Részletes jelentés a család tagjairól."
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr "Adott időhatárok között elhalálozott személyekről készüt jelentés."
+msgstr ""
+"Adott időhatárok között vagy helyen elhunyt személyekről készüt jelentés."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "Lista azokról a személyekről akiknek meg van adva a foglalkozása."
+msgstr "Jelentés azokról a személyekről akiknek meg van adva a foglalkozása."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "Kimutatás az adott időben és helyen születő személyekről."
+msgstr "Jelentés az adott időben vagy helyen született személyekről."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr "Jelentés azon személyekről akikegy egy adott helyen temettek el."
+msgstr "Jelentés azon személyekről akiket egy adott helyen temettek el."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:35
@@ -953,19 +987,21 @@ msgstr "Adott időben vagy helyen esküdött személyekről készüt jelentés."
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "Jelentés a friss vagy függőben lévő változásokról."
+msgstr "Jelentés a friss vagy függőben lévő változtatásokról."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:35
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr "Riport azokról a családokról akik közeli kapcsolatban állnak egy adott személlyel."
+msgstr ""
+"Jelentés azokról a családokról akik közeli kapcsolatban állnak egy adott "
+"személlyhez."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:35
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr "Kimutatás az illetőhöz közeli többi személyről."
+msgstr "Jelentés az illetőhöz közeli rokonkapcsolatban álló személyekről."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
@@ -976,13 +1012,15 @@ msgstr "Jelentés a forrásinformációkról."
 #: app/Module/MissingFactsReportModule.php:35
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr "Az adott személy és leszármazottainak adatai hiányosak."
+msgstr "Jelentés az adott személy és leszármazottainak hiányzó adatairól."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "Jelentés egy adott hellyel vagy idővel kapcsolatos létfontosságú bejegyzésekről."
+msgstr ""
+"Jelentés egy adott hellyel vagy idővel kapcsolatos létfontosságú "
+"bejegyzésekről."
 
 #: admin_users.php:524
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -991,27 +1029,28 @@ msgstr ""
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
 msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-msgstr "Az oldalsávon megjelenik a családok listája ABC sorrendben."
+msgstr "Oldalsávon a családok ABC sorrendben való listázására."
 
 #. I18N: Description of “Individuals” module
 #: app/Module/IndividualSidebarModule.php:38
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-msgstr "Egy oldalsáv ami megmutatja a családfa összes személyét ABC sorrendben."
+msgstr ""
+"Oldalsáv a családfa összes személyének ABC sorrendben való megjelenítésére."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr "Oldalsáv amiben megjelenik a személy családja és a közeli rokonok."
+msgstr "Oldalsáv a személy családja és a közeli rokonok megjelenítésére."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:34
 msgid "A sidebar showing non-genealogy information about an individual."
-msgstr "Az oldalsávon a személy családitól eltérő adatai jelennek meg."
+msgstr "Oldalsáv a személy családitól eltérő adatai megjelenítésére."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr "A személy leszármazottainak megjelenítése."
+msgstr "Oldalsáv a személy leszármazottainak megjelenítésére."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
@@ -1021,12 +1060,12 @@ msgstr "A személy közvetlen hozzátartazóit megjelenítő fül."
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
 msgid "A tab showing the facts and events of an individual."
-msgstr "A fül megmutatja a személyhez kötődő eseményeket."
+msgstr "A személyhez kötődő eseményeket megjelenítő fül."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Egy személyhez rendelt médiaobjektumot megjelenítő fül."
+msgstr "A személyhez rendelt médiaobjektumot megjelenítő fül."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
@@ -1036,16 +1075,20 @@ msgstr "A személyhez fűződő jegyzeteket megjelenítő fül."
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr "A személyhez kötött forrásokat mutató fül."
+msgstr "A személyhez kötött forrásokat megjelenítő fül."
 
 #: admin_users.php:398
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
-msgstr "A felhasználó addig nem tud belépni amíg mind az \"E-mail cím ellenőrizve\" és a \"A rendszergazda jóváhagyta\" kiválasztásra nem kerül."
+msgstr ""
+"A felhasználó addig nem tud belépni amíg mind az \"E-mail cím ellenőrizve\" "
+"és a \"A rendszergazda jóváhagyta\" kiválasztásra nem kerül."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1122
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr "A vízjel egy olyan szöveg ami a képre kerül azért, hogy elbátortalanítsa a képet jogszerűtlenül másoló egyéneket."
+msgstr ""
+"A vízjel egy olyan szöveg ami a képre kerül azért, hogy elbátortalanítsa a "
+"képet jogszerűtlenül másoló egyéneket."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:105
@@ -1156,7 +1199,7 @@ msgstr "Hozzáférési szint"
 
 #: admin_users.php:376
 msgid "Account approval and email verification"
-msgstr "Felhasználó jóváhagyása és email ellenőrzés"
+msgstr "Felhasználó jóváhagyás és email ellenőrzés"
 
 #: app/GedcomCode/GedcomCodeTemp.php:79
 msgid "Accra, Ghana"
@@ -1244,16 +1287,16 @@ msgstr "Ádár séni"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:170
 #: modules_v3/GEDFact_assistant/census/census-edit.php:2640 timeline.php:301
 msgid "Add"
-msgstr "Hozzáadás"
+msgstr "Hozzáad"
 
 #: app/Module/ClippingsCartModule.php:657
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "%s hozzáadása a diagramhoz"
+msgstr "%s hozzáadása a ábrához"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
-msgstr "Gyerek hozzáadása mint egygyerekes család"
+msgstr "Gyermek hozzáadása mint eggyerekes család"
 
 #: app/Controller/FamilyController.php:96
 #: app/Functions/FunctionsCharts.php:310
@@ -1271,11 +1314,11 @@ msgstr "Férj hozzáadása a családhoz"
 #: app/Module/RelativesTabModule.php:392 edit_interface.php:1084
 #: edit_interface.php:1156
 msgid "Add a husband using an existing individual"
-msgstr "Hozzáadni egy férjet egy bejegyzett személyből választva"
+msgstr "Férj hozzáadása egy bejegyzett személyből választva"
 
 #: app/Functions/FunctionsEdit.php:985 app/Functions/FunctionsEdit.php:989
 msgid "Add a new associate"
-msgstr "Új kapcsolat hozzáadás"
+msgstr "Új kapcsolat hozzáadása"
 
 #: app/Module/RelativesTabModule.php:275
 msgid "Add a new brother or sister"
@@ -1333,7 +1376,7 @@ msgstr "Új korlátozás hozzáadása"
 #: app/Controller/FamilyController.php:189
 #: app/Functions/FunctionsEdit.php:1017 app/Module/NotesTabModule.php:105
 msgid "Add a new shared note"
-msgstr "Új megosztott jegyzet"
+msgstr "Új megosztott jegyzet hozzáadása"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a new son or daughter"
@@ -1342,16 +1385,16 @@ msgstr "Gyermek hozzáadása"
 #: app/Controller/FamilyController.php:206 app/Functions/FunctionsEdit.php:957
 #: app/Module/SourcesTabModule.php:93
 msgid "Add a new source citation"
-msgstr "Új forrás idézés hozzáadása"
+msgstr "Új forrás idézet hozzáadása"
 
 #: edit_interface.php:837
 msgid "Add a new spouse"
-msgstr "Új férj/feleség hozzáadása"
+msgstr "Új élettárs hozzáadása"
 
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:156
 msgid "Add a new user"
-msgstr "Új felhasználó"
+msgstr "Új felhasználó hozzáadása"
 
 #: app/Module/RelativesTabModule.php:375 edit_interface.php:807
 #: edit_interface.php:897
@@ -1386,12 +1429,12 @@ msgstr "Feleség hozzáadása a családhoz"
 #: app/Module/RelativesTabModule.php:380 edit_interface.php:1087
 #: edit_interface.php:1158
 msgid "Add a wife using an existing individual"
-msgstr "Hozzáadni egy feleséget egy bejegyzett személyből választva"
+msgstr "Feleség hozzáadása egy bejegyzett személyből választva"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:127
 #: app/Module/FrequentlyAskedQuestionsModule.php:447
 msgid "Add an FAQ item"
-msgstr "GYIK elem hozzáadása"
+msgstr "GY.I.K. elem hozzáadása"
 
 #: timeline.php:295
 msgid "Add another individual to the chart"
@@ -1411,7 +1454,7 @@ msgstr "Hivatkozás hozzáadása"
 
 #: app/Module/RelativesTabModule.php:228
 msgid "Add marriage details"
-msgstr "Házasság részleteinek hozzáadása"
+msgstr "Házasság részleteinek megadása"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
@@ -1428,7 +1471,7 @@ msgstr "További mezők hozzáadása"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "Leíró történetek személyekről."
+msgstr "Leíró történetek hozzáadása a családfában levő személyekről."
 
 #: admin_trees_manage.php:279
 msgid "Add spaces where long lines were wrapped"
@@ -1438,7 +1481,7 @@ msgstr "Szóközök hozzáadása hosszú sorok sortörésekor"
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:381
 #: app/Module/ClippingsCartModule.php:718
 msgid "Add the GEDCOM media path to filenames"
-msgstr "GEDCOM média elérési útvonalak fájlnevekez hozzáadása"
+msgstr "GEDCOM média elérési útvonalak hozzáadása a fájlnevekez"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:936
@@ -1465,7 +1508,7 @@ msgstr "behelyez a metszéskosárba"
 
 #: admin_trees_manage.php:527
 msgid "Add unlinked records"
-msgstr "Hivatkozás nélküli elem hozzáadása"
+msgstr "Hivatkozás nélküli bejegyzés hozzáadása"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1117
@@ -1479,11 +1522,11 @@ msgstr "Saját szöveg és grafika hozzáadása."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
-msgstr "Hírlap vagy hír hozzáadás/szerkesztése"
+msgstr "Hírlap vagy hír hozzáadása/szerkesztése"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:2637
 msgid "Add/insert a blank row"
-msgstr "Hozzáad/Beszúr üres sort"
+msgstr "Üres sor hozzáadása/beszúrása"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -1512,7 +1555,7 @@ msgstr "Rendszergazda fiók"
 
 #: admin_users.php:496
 msgid "Administrator comments on user"
-msgstr "Adminisztrátor megjegyzése a felhasználóról"
+msgstr "Rendszergazda megjegyzése a felhasználóról"
 
 #: admin.php:611
 msgid "Administrators"
@@ -1535,51 +1578,51 @@ msgstr "Örökbefogadott"
 
 #: app/GedcomCode/GedcomCodeAdop.php:52
 msgid "Adopted by both parents"
-msgstr "Mindkét szülő által örökbe fogadva"
+msgstr "Mindkét szülő által örökbefogadott"
 
 #: app/GedcomCode/GedcomCodeAdop.php:50
 msgctxt "FEMALE"
 msgid "Adopted by both parents"
-msgstr "Apa által örökbe fogadva"
+msgstr "Mindkét szülő által örökbefogadott"
 
 #: app/GedcomCode/GedcomCodeAdop.php:48
 msgctxt "MALE"
 msgid "Adopted by both parents"
-msgstr "Apa által örökbe fogadva"
+msgstr "Mindkét szülő által örökbefogadott"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:61 app/GedcomTag.php:932
 msgid "Adopted by father"
-msgstr "Az apa örökbefogadta"
+msgstr "Apa által örökbefogadott"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:59 app/GedcomTag.php:928
 msgctxt "FEMALE"
 msgid "Adopted by father"
-msgstr "Anya által örökbe fogadva"
+msgstr "Apa által örökbefogadott"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:57 app/GedcomTag.php:924
 msgctxt "MALE"
 msgid "Adopted by father"
-msgstr "Apa által örökbe fogadva"
+msgstr "Apa által örökbefogadott"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:70 app/GedcomTag.php:947
 msgid "Adopted by mother"
-msgstr "Az anya örökbefogadta"
+msgstr "Anya által örökbefogadott"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:68 app/GedcomTag.php:943
 msgctxt "FEMALE"
 msgid "Adopted by mother"
-msgstr "Anya által örökbe fogadva"
+msgstr "Anya által örökbefogadott"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:66 app/GedcomTag.php:939
 msgctxt "MALE"
 msgid "Adopted by mother"
-msgstr "Anya által örökbe fogadva"
+msgstr "Anya által örökbefogadott"
 
 #. I18N: gedcom tag ADOP
 #: app/GedcomTag.php:130
@@ -1665,15 +1708,15 @@ msgstr "Haladó"
 
 #: admin_trees_config.php:2131
 msgid "Advanced fact settings"
-msgstr "Haladó változáskövetési beállítások"
+msgstr "Részletes tény beállítások"
 
 #: admin_trees_config.php:2136
 msgid "Advanced name facts"
-msgstr "Haladó név tények"
+msgstr "Részletes név tények"
 
 #: admin_trees_config.php:2165
 msgid "Advanced place name facts"
-msgstr "Haladó helynév tények"
+msgstr "Részletes helynév tények"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1643
@@ -1690,11 +1733,16 @@ msgstr "Afrika"
 
 #: admin_trees_manage.php:678
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr "A családfa létrehozását követően lehetőséged van adatok importálására egy megadott GEDCOM fájlból."
+msgstr ""
+"A családfa létrehozását követően lehetősége van adatok importálására egy "
+"megadott GEDCOM fájlból."
 
 #: login.php:233
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
-msgstr "Miután be jelentkezett, válassza a 'Felhasználói adataim' linket a 'Saját oldalam' menü alatt és töltse ki a jelszó mezőket hogy megváltoztassa a jelszavát."
+msgstr ""
+"Miután bejelentkezett, válassza a 'Felhasználói adataim' linket a 'Saját "
+"oldalam' menü alatt és töltse ki a jelszó mezőket, hogy megváltoztassa a "
+"jelszavát."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:248
@@ -1724,7 +1772,7 @@ msgstr "Évkor különbség testvérek között"
 
 #: statistics.php:337
 msgid "Age between wife and husband"
-msgstr "Évkor különbség feleség és féj között között"
+msgstr "Évkor különbség feleség és féj között"
 
 #: statistics.php:325
 msgid "Age difference"
@@ -1732,30 +1780,30 @@ msgstr "Évkor különbség"
 
 #: statistics.php:527 statisticsplot.php:1266
 msgid "Age in year of first marriage"
-msgstr "Első házasságban töltött évek"
+msgstr "Első házasságkötéskori életkor"
 
 #: app/Functions/FunctionsPrintLists.php:1002 statistics.php:258
 #: statistics.php:524 statisticsplot.php:1216
 msgid "Age in year of marriage"
-msgstr "Házasságban töltött évek"
+msgstr "Házasságkötéskori életkor"
 
 #: app/Module/FamilyTreeNewsModule.php:201
 msgid "Age of item"
-msgstr "Egység ideje"
+msgstr "Egység kora"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1393
 msgid "Age of parents next to child’s birthdate"
-msgstr "Szülők kora kövesse a gyerek születési dátumát"
+msgstr "Szülők kora a gyerek születése mellett"
 
 #: statistics.php:518 statisticsplot.php:1116
 msgid "Age related to birth year"
-msgstr "Születéshez viszonyított évek száma"
+msgstr "Életkor a születéshez vonatkoztatva"
 
 #: app/Functions/FunctionsPrintLists.php:502 statistics.php:521
 #: statisticsplot.php:1166
 msgid "Age related to death year"
-msgstr "Elhalálozáshoz viszonyított évek száma"
+msgstr "Eletkor az elhalálozáshoz vonatkoztatva"
 
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:146
@@ -1819,7 +1867,9 @@ msgstr "Az összes PhpGedView változtatást el kell fogadni"
 
 #: admin_trees_manage.php:714
 msgid "All existing PhpGedView users must have distinct email addresses"
-msgstr "Az összes meglévő PhpGedView felhasználónak különböző email címmel kell rendelkeznie"
+msgstr ""
+"Az összes meglévő PhpGedView felhasználónak különböző email címmel kell "
+"rendelkeznie"
 
 #: admin_trees_config.php:568
 msgid "All facts and events"
@@ -1844,7 +1894,7 @@ msgstr "Minden személyi adat"
 #: calendar.php:209 calendar.php:227 calendar.php:228 calendar.php:231
 #: calendar.php:232 calendar.php:492
 msgid "All individuals"
-msgstr "Az összes személy"
+msgstr "Minden személy"
 
 #: admin_trees_config.php:559
 msgid "All records"
