@@ -739,7 +739,7 @@ msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to th
 msgstr ""
 "<center><b>Üdvözöljük ezen a Családfakutató-Honlapon</b></center><br>A "
 "honlaphoz <u>kizárólag családtagok</u> férhetnek hozzá.<br><br>Amennyiben Ön "
-"már rendelkezik felhasználói fióokkal, bejelentkezhet az oldlara.  Ha még "
+"már rendelkezik felhasználói fiókkal, bejelentkezhet az oldalra.  Ha még "
 "nem, a megfelelő hivatkozásra kattintva kezdeményezheti annak "
 "megszerzését.<br><br>Az adatok ellenőrzése után a honlap szerkesztője "
 "fogadja vagy utasítja vissza az Ön igényét.  Az jóváhagyásról email-ben kap "
@@ -750,7 +750,7 @@ msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to th
 msgstr ""
 "<center><b>Üdvözöljük ezen a Családfakutató-Honlapon!</b></center><br>A "
 "honlapot minden olyan felhasználó látogathatja, akinek van felhasználói "
-"fiókja.<br><br>Amennyiben Ön már rendelkezik felhasználói fiókkall, "
+"fiókja.<br><br>Amennyiben Ön már rendelkezik felhasználói fiókkal, "
 "bejelentkezhet az oldalra.  Ha még nem, a megfelelő hivatkozásra kattintva "
 "kezdeményezheti annak megszerzését.<br><br>z adatok ellenőrzése után a "
 "honlap szerkesztője fogadja vagy utasítja vissza az Ön igényét.  Az "
@@ -961,7 +961,7 @@ msgstr "Részletes jelentés a család tagjairól."
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
 msgstr ""
-"Adott időhatárok között vagy helyen elhunyt személyekről készüt jelentés."
+"Adott időhatárok között vagy helyen elhunyt személyekről készült jelentés."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
@@ -984,7 +984,7 @@ msgstr "Jelentés azon személyekről akiket egy adott helyen temettek el."
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "Adott időben vagy helyen esküdött személyekről készüt jelentés."
+msgstr "Adott időben vagy helyen esküdött személyekről készült jelentés."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
@@ -997,7 +997,7 @@ msgstr "Jelentés a friss vagy függőben lévő változtatásokról."
 msgid "A report of the families that are closely related to an individual."
 msgstr ""
 "Jelentés azokról a családokról akik közeli kapcsolatban állnak egy adott "
-"személlyhez."
+"személyhez."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:35
@@ -1057,7 +1057,7 @@ msgstr "Oldalsáv a személy leszármazottainak megjelenítésére."
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
 msgid "A tab showing the close relatives of an individual."
-msgstr "A személy közvetlen hozzátartazóit megjelenítő fül."
+msgstr "A személy közvetlen hozzátartozóit megjelenítő fül."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
@@ -1483,7 +1483,7 @@ msgstr "Szóközök hozzáadása hosszú sorok sortörésekor"
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:381
 #: app/Module/ClippingsCartModule.php:718
 msgid "Add the GEDCOM media path to filenames"
-msgstr "GEDCOM média elérési útvonalak hozzáadása a fájlnevekez"
+msgstr "GEDCOM média elérési útvonalak hozzáadása a fájlnevekhez"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:936
@@ -1677,7 +1677,7 @@ msgstr "Fiúunoka örökbefogadása"
 
 #: app/GedcomTag.php:904
 msgid "Adoption of a half-brother"
-msgstr "Fiú féltestvéf örökbefogadása"
+msgstr "Fiú féltestvér örökbefogadása"
 
 #: app/GedcomTag.php:908
 msgid "Adoption of a half-sibling"
@@ -1774,7 +1774,7 @@ msgstr "Évkor különbség testvérek között"
 
 #: statistics.php:337
 msgid "Age between wife and husband"
-msgstr "Évkor különbség feleség és féj között"
+msgstr "Évkor különbség feleség és férj között"
 
 #: statistics.php:325
 msgid "Age difference"
@@ -1805,7 +1805,7 @@ msgstr "Életkor a születéshez vonatkoztatva"
 #: app/Functions/FunctionsPrintLists.php:502 statistics.php:521
 #: statisticsplot.php:1166
 msgid "Age related to death year"
-msgstr "Eletkor az elhalálozáshoz vonatkoztatva"
+msgstr "Életkor az elhalálozáshoz vonatkoztatva"
 
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:146
@@ -1957,7 +1957,7 @@ msgstr "Amerikai Szamoa"
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
 msgstr ""
 "A felhasználó első bejelentkezése előtt rendszergazdának kell jóvá hagynia "
-"az új fiókot és be kell allítania a jogosultsági szintet."
+"az új fiókot és be kell állítania a jogosultsági szintet."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
@@ -2013,7 +2013,7 @@ msgstr "A tömörített fájl kicsomagolása hibába ütközött."
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr ""
 "Folyamatosan rajzolódó fa, az adott személy őseinek és leszármazottainak "
-"ábrázálására."
+"ábrázolására."
 
 #: setup.php:494
 msgid "An unexpected database error occurred."
@@ -2245,9 +2245,9 @@ msgid "As well as using the toolbar to apply HTML formatting, you can insert dat
 msgstr ""
 "Úgy ahogy az eszköztárat alkalmazva a HTML formázásra, beszúrhat adatmezőket "
 "az adatbázisból, melyek önműködően frissülnek.  Ezek a egyedi mezők <b>#</b>-"
-"el vannak jekölve.  Például a <b>#totalFamilies#</b> az adatbázisban levő "
-"családok jelenlegi számara cserélődik.  Haladó felhasználók alaklmazhatják a "
-"CSS osztályokat a saját szövegben, tehát a formázás hozzáillik az éppen "
+"el vannak jelölve.  Például a <b>#totalFamilies#</b> az adatbázisban levő "
+"családok jelenlegi számara cserélődik.  Haladó felhasználók alakalmazhatják "
+"a CSS osztályokat a saját szövegben, tehát a formázás hozzáillik az éppen "
 "kiválasztott témához."
 
 #. I18N: The name of a colour-scheme
@@ -2382,7 +2382,7 @@ msgstr "Jegyzetek önműködő megjelenítése"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1584
 msgid "Automatically expand sources"
-msgstr "Források önmműködő megjelenítése"
+msgstr "Források önműködő megjelenítése"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:147
@@ -3033,7 +3033,7 @@ msgstr "Nyoszolyólány"
 
 #: app/GedcomCode/GedcomCodeTemp.php:111
 msgid "Brisbane, Australia"
-msgstr "Brisbane, Austrália"
+msgstr "Brisbane, Ausztrália"
 
 #. I18N: gedcom tag _BRTM
 #: app/GedcomTag.php:1084
@@ -3371,7 +3371,7 @@ msgstr "Zöld-foki-szigetek"
 
 #: app/GedcomCode/GedcomCodeTemp.php:117
 msgid "Caracas, Venezuela"
-msgstr "Caracas, Venezuella"
+msgstr "Caracas, Venezuela"
 
 #: app/GedcomTag.php:1859
 msgid "Card"
@@ -3499,15 +3499,15 @@ msgstr "Nyelv változtatása"
 
 #: admin_users.php:217
 msgid "Change the blocks on this user’s “My page”"
-msgstr "A felhasználó “Saját oldalam” blokkajinak módosítása"
+msgstr "A felhasználó “Saját oldalam” blokkjainak módosítása"
 
 #: admin_trees_manage.php:405 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr "A honlap blokkajinak módsítása"
+msgstr "A honlap blokkjainak módosítása"
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr "A “Saját oldalam” blokkajinak módsítása"
+msgstr "A “Saját oldalam” blokkjainak módosítása"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Functions/FunctionsPrintLists.php:1770
@@ -3655,7 +3655,7 @@ msgstr "A gyerekeknek egy vezetékneve az anyától és egy az apától származ
 #: app/SurnameTradition.php:72 app/SurnameTradition.php:76
 #: app/SurnameTradition.php:91 app/SurnameTradition.php:96
 msgid "Children take their father’s surname."
-msgstr "A gyermkek az apjuk vezetéknevét viselik."
+msgstr "A gyerekek az apjuk vezetéknevét viselik."
 
 #. I18N: In the matrilineal surname tradition, ...
 #: app/SurnameTradition.php:79
@@ -3686,7 +3686,7 @@ msgstr ""
 "Válassza ki a bélyegképet a feltöltésre.  A képek bélyegképét nem szükséges "
 "megadni, a rendszer önállóan is létrehozhatja.  Saját bélyegképre egyéb "
 "típusú médiánál lehet szükség, mint például a mozgóképnél megadhat egy álló "
-"képet a felvételből, vagy a hangfevételnél egy fényképet a rögzített "
+"képet a felvételből, vagy a hangfelvételnél egy fényképet a rögzített "
 "személyről."
 
 #: admin_site_config.php:124
@@ -3857,17 +3857,18 @@ msgstr "Kattintson ide az oldalsáv elrejtéséhez vagy megjelenítéséhez"
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:97
 msgid "Click name to add individual to add links list."
-msgstr "Kattintson a névre, hogy az egyént a Hivatkozáshozzáadás listához adja."
+msgstr ""
+"Kattintson a névre, hogy az egyént a Hivatkozás hozzáadás listához adja."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:350
 msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr ""
-"Ugorva a címrekattintással vagy lefelégörgetéssel jut szöveghez és "
+"Ugorva a címre-kattintással vagy lefelé-görgetéssel jut szöveghez és "
 "olvashatja."
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:1224
 msgid "Click to choose individual as head of family."
-msgstr "Kattintéssal válasszon egy személyt családfőnek."
+msgstr "Kattintással válasszon egy személyt családfőnek."
 
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:36
@@ -4092,7 +4093,7 @@ msgstr "Fájlok másolása…"
 #: admin_site_upgrade.php:401
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr "A fájlok másolása a %s mappába az azonosnevűek felülírásával."
+msgstr "A fájlok másolása a %s mappába az azonos nevűek felülírásával."
 
 #. I18N: gedcom tag COPR
 #: app/GedcomTag.php:322
@@ -4200,8 +4201,8 @@ msgstr "Saját ábra létrehozása"
 #: admin_trees_manage.php:744
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
-"Családfa létrhozása, frissítése és törlése az adatmappában lévő összes "
-"GEDCOM fájlokbál."
+"Családfa létrehozása, frissítése és törlése az adatmappában lévő összes "
+"GEDCOM fájlokból."
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:330 modules_v3/family_group_report/report.xml:315
@@ -4323,7 +4324,7 @@ msgstr "Lánytestvér hamvasztása"
 
 #: app/GedcomTag.php:1249
 msgid "Cremation of a son"
-msgstr "Fiú hanvasztása"
+msgstr "Fiú hamvasztása"
 
 #: app/GedcomTag.php:1343
 msgid "Cremation of a spouse"
@@ -4651,7 +4652,7 @@ msgstr "Nap:"
 #: app/Functions/FunctionsPrintLists.php:201 app/Stats.php:1075
 #: app/Stats.php:1077
 msgid "Dead"
-msgstr "Elhúnytak"
+msgstr "Elhunytak"
 
 #. I18N: gedcom tag DEAT
 #: app/GedcomTag.php:352 modules_v3/ahnentafel_report/report.xml:456
@@ -4999,7 +5000,7 @@ msgstr "Alapértelmezett térkép típus"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1293
 msgid "Default pedigree chart layout"
-msgstr "Alapértelmezett ősfa elrendezás"
+msgstr "Alapértelmezett ősfa elrendezés"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1306
@@ -5502,7 +5503,7 @@ msgstr "GY.I.K. elem szerkesztése"
 
 #: admin_site_access.php:216
 msgid "Edit a website access rule"
-msgstr "Az oldal hozzáférési jogainak módosása"
+msgstr "Az oldal hozzáférési jogainak módosítása"
 
 #: app/Controller/MediaController.php:149
 msgid "Edit details"
@@ -5752,7 +5753,7 @@ msgstr "Összes bejegyzés"
 
 #: app/Stats.php:6816
 msgid "Equatorial Guinea"
-msgstr "Egyenlítõi Guinea"
+msgstr "Egyenlítői Guinea"
 
 #: app/Stats.php:6794
 msgid "Eritrea"
@@ -5859,7 +5860,7 @@ msgstr "Alkönyvtárak kihagyása"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:92
 msgid "Excluded from this submission"
-msgstr "A kiválastásból kihagyva"
+msgstr "A kiválasztásból kihagyva"
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:460
@@ -6182,7 +6183,7 @@ msgstr "Család nevelőszülőkkel"
 #: modules_v3/individual_ext_report/report.xml:435
 #: modules_v3/individual_report/report.xml:438
 msgid "Family with husband"
-msgstr "Család a férjel"
+msgstr "Család férjjel"
 
 #: app/GedcomCode/GedcomCodePedi.php:127 app/GedcomCode/GedcomCodePedi.php:141
 #: app/Individual.php:1026 modules_v3/individual_ext_report/report.xml:231
@@ -6224,7 +6225,7 @@ msgstr "Legyezős ábrázolás"
 #: app/Controller/FanchartController.php:55
 #, php-format
 msgid "Fan chart of %s"
-msgstr "%s legyezősábrája"
+msgstr "%s legyezős ábrája"
 
 #: app/Date/JalaliDate.php:183
 msgctxt "Abbreviation for Persian month: Farvardin"
@@ -6555,8 +6556,8 @@ msgstr "Műszaki vagy nemzedékrend jellegű segítségért forduljon"
 #: admin_site_config.php:277
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 msgstr ""
-"Azon oldalak melyek több családfával is rendelkeznek. ez a vélasztés "
-"megljeleníti a családfák listáját a főmenüben, akeresőoldalon, stb."
+"Azon oldalak melyek több családfával is rendelkeznek. ez a választás "
+"megjeleníti a családfák listáját a főmenüben, a keresőoldalon, stb."
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:492 help_text.php:136 help_text.php:148 help_text.php:159
@@ -6776,7 +6777,7 @@ msgstr "Általános keresés"
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:44
 msgid "Generate sitemap files for search engines."
-msgstr "Oldaltérkép fájlok létrehozása a keresőmotroknak."
+msgstr "Oldaltérkép fájlok létrehozása a keresőmotoroknak."
 
 #. I18N: This is a report footer. %s is the name of the application.
 #: app/Report/ReportBase.php:108
@@ -7321,7 +7322,7 @@ msgstr "Férj életkora"
 
 #: app/Module/GoogleMapsModule.php:306
 msgid "Hybrid"
-msgstr "Ősszevetve"
+msgstr "Összevetve"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:751
@@ -7366,8 +7367,8 @@ msgstr ""
 #: admin_users.php:392
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
 msgstr ""
-"Ha egy renszergazda létrhoz egy félhasználói fiókot és az ellenőrző email "
-"nem lentt visszaigazolva, akkor az email címet le kell igazolni"
+"Ha egy rendszergazda létrehoz egy félhasználói fiókot és az ellenőrző email "
+"nem lett visszaigazolva, akkor az email címet le kell igazolni"
 
 #: help_text.php:228
 #, php-format
@@ -7423,15 +7424,15 @@ msgstr ""
 #: admin_trees_config.php:1026
 msgid "If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate."
 msgstr ""
-"Ha két családfa ugyanazt a média mappát használja, akkor megoszhatják "
+"Ha két családfa ugyanazt a média mappát használja, akkor megoszthatják "
 "tartalmukat egymás közt. Ha külön média mappákat használnak, akkor a média "
 "fájlok külön lesznek tárolva."
 
 #: admin_trees_config.php:381
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
 msgstr ""
-"Ha a látogatók nem jeleníthetik meg a csládfát, akkor nem tudnak "
-"felhasználói fiókot igényelni.  Az ő fiokjaikat kézileg létre kell hozni."
+"Ha a látogatók nem jeleníthetik meg a családfát, akkor nem tudnak "
+"felhasználói fiókot igényelni.  Az ő fiókjaikat kézileg létre kell hozni."
 
 #. I18N: Help text for the “Who can upload new media files?” configuration setting
 #: admin_trees_config.php:1041
@@ -7470,16 +7471,16 @@ msgstr ""
 #: admin_trees_manage.php:275
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr ""
-"Ha létrehozott médiaobjektumokat a webtrees-ben és a GEDCOM adatokat tészben "
+"Ha létrehozott médiaobjektumokat a webtrees-ben és a GEDCOM adatokat részben "
 "egy külső programmal szerkesztette, amely felülírta ezeket a "
-"médiabejegyzéseket, jelölje meg ezt a vélasztást, hogy összevonja a "
+"médiabejegyzéseket, jelölje meg ezt a választást, hogy összevonja a "
 "jelenlegi médiaobjektumokat az új GEDCOM fájlal."
 
 #: app/Module/RecentChangesModule.php:181
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
 msgstr ""
 "Amikor elrejt egy üres blokkot, akkor nem lehet megváltoztatni a beállítását "
-"amig újra láthatóvá nem válik az üresség megszütetésével."
+"amíg újra láthatóvá nem válik az üresség megszüntetésével."
 
 #: admin_site_config.php:203 admin_site_config.php:222
 #: admin_site_config.php:291 admin_site_config.php:305
@@ -7606,12 +7607,12 @@ msgstr "Beleértve a teljesen egyező helyek"
 #, php-format
 msgid "Include individuals with “%s” as a married name"
 msgstr ""
-"Beleértve a “%s” családnevet a házasság után felvevő személyekkel eggyütt"
+"Beleértve a “%s” családnevet a házasság után felvevő személyekkel együtt"
 
 #: app/Module/ClippingsCartModule.php:358
 #: app/Module/ClippingsCartModule.php:691
 msgid "Include media (automatically zips files)"
-msgstr "Beleértve a Médiát (fájlok önmműködő tömörítése)"
+msgstr "Beleértve a Médiát (fájlok önműködő tömörítése)"
 
 #. I18N: Label for check-box
 #: admin_media.php:661 medialist.php:120
@@ -7787,7 +7788,7 @@ msgstr "Eltemetett"
 
 #: import.php:114
 msgid "Invalid GEDCOM file - no header record found."
-msgstr "Érvénytelen GEDCOM fájl - a fejléc nemtalálható."
+msgstr "Érvénytelen GEDCOM fájl - a fejléc nem található."
 
 #: app/Functions/FunctionsImport.php:619
 msgid "Invalid GEDCOM format"
@@ -7820,7 +7821,7 @@ msgstr "Izrael"
 #: admin_site_upgrade.php:77 admin_site_upgrade.php:81
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
 msgstr ""
-"Zöbb percig is eltarthat letölteni és telepíteni a frissítést, legyen "
+"Több percig is eltarthat letölteni és telepíteni a frissítést, legyen "
 "türelemmel."
 
 #: app/Stats.php:6839
@@ -8218,7 +8219,7 @@ msgstr "Az utolsó emlékeztető email el lett küldve "
 
 #: statistics.php:368
 msgid "Last event"
-msgstr "Az utólsó esemény"
+msgstr "Az utolsó esemény"
 
 #: admin_users.php:871
 msgid "Last logged in"
@@ -8450,7 +8451,7 @@ msgstr "Hely"
 
 #: app/Module/GoogleMapsModule.php:4500
 msgid "Location not removed: this location contains sub-locations"
-msgstr "Helyszín nem lett törőlve: ez a helyszín al-helyszíneket tartalmaz"
+msgstr "Helyszín nem lett törölve: ez a helyszín al-helyszíneket tartalmaz"
 
 #: app/GedcomCode/GedcomCodeRela.php:191
 msgid "Lodger"
@@ -8511,7 +8512,7 @@ msgstr ""
 
 #: statistics.php:249
 msgid "Longest marriage"
-msgstr "Leghosszab házasság"
+msgstr "Leghosszabb házasság"
 
 #. I18N: gedcom tag LONG
 #: app/GedcomTag.php:548 app/Module/GoogleMapsModule.php:1650
@@ -8979,7 +8980,7 @@ msgstr "Max."
 #. I18N: A configuration setting
 #: admin_trees_config.php:1347
 msgid "Maximum descendancy generations"
-msgstr "Leszármazott nemzedékk maximális száma"
+msgstr "Leszármazott nemzedékek maximális száma"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1245
@@ -8989,7 +8990,7 @@ msgstr "Vezetéknevek max. száma az egyének listájában"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1327
 msgid "Maximum pedigree generations"
-msgstr "Az ősfa nemzedékeinekk maximális száma"
+msgstr "Az ősfa nemzedékeinek maximális száma"
 
 #: admin_media_upload.php:188
 msgid "Maximum upload size: "
@@ -9058,7 +9059,7 @@ msgstr "Média állomány"
 #: admin_trees_download.php:163
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr "A médie fájlnevek %s előtagot kapnak."
+msgstr "A média fájlnevek %s előtagot kapnak."
 
 #: admin_media.php:618 admin_trees_config.php:1031
 msgid "Media files"
@@ -9092,7 +9093,7 @@ msgstr "Média elemek"
 
 #: medialist.php:231
 msgid "Media objects found"
-msgstr "Média elem tallhatók"
+msgstr "Média elemek találhatók"
 
 #: medialist.php:128
 msgid "Media objects per page"
@@ -9221,7 +9222,7 @@ msgstr "Üzenet sikeresen elküldve %s-nak/nek"
 
 #: message.php:193
 msgid "Message was not sent"
-msgstr "Az üzenett nem lett elküldve"
+msgstr "Az üzenet nem lett elküldve"
 
 #. I18N: A site configuration setting
 #. I18N: Name of a module
@@ -9933,7 +9934,7 @@ msgstr "A mai napra nincs esemény."
 #: app/Functions/FunctionsPrintLists.php:2023
 #: app/Functions/FunctionsPrintLists.php:2138
 msgid "No events exist for tomorrow."
-msgstr "Holnapra noncs esemény."
+msgstr "Holnapra nincs esemény."
 
 #: app/Functions/FunctionsPrintLists.php:2015
 #: app/Functions/FunctionsPrintLists.php:2130
@@ -9961,7 +9962,7 @@ msgstr "Nincs tény jegyezve ennek a családnak."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:80
 msgid "No file was received.  Please try again."
-msgstr "A fájl nem érkezett meg.  Kérfük, töltse fel újból."
+msgstr "A fájl nem érkezett meg.  Kérjük, töltse fel újból."
 
 #: app/Module/FamilyTreeNewsModule.php:200
 msgid "No limit"
@@ -9985,7 +9986,7 @@ msgstr "Egyező események nem lettek találva"
 
 #: addmedia.php:167 addmedia.php:301 admin_media_upload.php:126
 msgid "No media file was provided."
-msgstr "Nem volt médiafájl szogáltatva."
+msgstr "Nem volt médiafájl szolgáltatva."
 
 #: app/Module/FamilyTreeNewsModule.php:118
 msgid "No news articles have been submitted."
@@ -10062,8 +10063,8 @@ msgstr "Norfolk-sziget"
 #: admin_users.php:445
 msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
 msgstr ""
-"Rendhagyóan bárminemű módosítást a csaladfában moderátornak kell igazolnia.  "
-"Ez a választás engedéjezi a felhasználónak változtatásokat végrehajtani "
+"Rendhagyóan bárminemű módosítást a családfában moderátornak kell igazolnia.  "
+"Ez a választás engedélyezi a felhasználónak változtatásokat végrehajtani "
 "moderátori hozzájárulás nélkül."
 
 #: app/Stats.php:6909
@@ -10227,7 +10228,7 @@ msgstr "Házasságkötések száma"
 #: admin_users.php:701
 msgid "Number of months since the last login for a user’s account to be considered inactive: "
 msgstr ""
-"Ha ennyi hónapig nem jelentkezik be egy felhasználó, közönbösnek tekintjük: "
+"Ha ennyi hónapig nem jelentkezik be egy felhasználó, közömbösnek tekintjük: "
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
@@ -10316,7 +10317,7 @@ msgstr "Régi fájlokat találtam"
 
 #: pedigree.php:183
 msgid "Oldest at bottom"
-msgstr "Legidősebb alúl"
+msgstr "Legidősebb alul"
 
 #: pedigree.php:183
 msgid "Oldest at top"
@@ -10506,7 +10507,7 @@ msgstr ""
 msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
 msgstr ""
 "A(z) \"%s\" PHP bővítmény (extension) nincs bekapcsolva.  Nem tudja addig "
-"telepíteni a webtreest amig ez nem elérhető.  Kérje meg a szerver "
+"telepíteni a webtreest amíg ez nem elérhető.  Kérje meg a szerver "
 "rendszergazdáját, hogy engedélyezze a használatát és/vagy kapcsolja be azt."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -10889,7 +10890,7 @@ msgstr "Keresztelő helye"
 
 #: app/GedcomTag.php:314 modules_v3/missing_facts_report/report.xml:304
 msgid "Place of confirmation"
-msgstr "Konfirmásió helye"
+msgstr "Konfirmáció helye"
 
 #: app/GedcomTag.php:334
 msgid "Place of cremation"
@@ -11531,7 +11532,7 @@ msgstr "Rokoni Kapcsolat az Anyához"
 #. I18N: gedcom tag PEDI
 #: app/GedcomTag.php:674
 msgid "Relationship to parents"
-msgstr "Rokoni kapcsolat a zülőkhöz"
+msgstr "Rokoni kapcsolat a szülőkhöz"
 
 #: relationship.php:130
 #, php-format
@@ -11591,7 +11592,7 @@ msgstr "Dupla hivatkozások törlése"
 #: app/Module/GoogleMapsModule.php:576 app/Module/GoogleMapsModule.php:579
 #: app/Module/GoogleMapsModule.php:582 app/Module/GoogleMapsModule.php:4073
 msgid "Remove flag"
-msgstr "Zászló tőrlés"
+msgstr "Zászló törlés"
 
 #: timeline.php:274 timeline.php:289
 msgid "Remove individual"
@@ -11715,7 +11716,7 @@ msgstr ""
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
 msgstr ""
 "Kutatási teendők a „_TODO” GEDCOM-címke segítségével lesznek eltárolva. Más "
-"családkutatási programok eseteg nem ismerik ezt a címkét."
+"családkutatási programok esetleg nem ismerik ezt a címkét."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:728
@@ -12278,12 +12279,12 @@ msgstr "Kapcsolat beállítása"
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:142 index_edit.php:47
 msgid "Set the default blocks for new family trees"
-msgstr "Új családfák alapértelmezett blokkokjainak beállítása"
+msgstr "Új családfák alapértelmezett blokkjainak beállítása"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:159 index_edit.php:39
 msgid "Set the default blocks for new users"
-msgstr "Új felhasználók alapértelmezett blokkokjainak beállítása"
+msgstr "Új felhasználók alapértelmezett blokkjainak beállítása"
 
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1319
@@ -12531,7 +12532,8 @@ msgstr "Minden jegyzet megjelenítése"
 #: admin_trees_config.php:1599
 msgid "Show all notes and source references on notes and sources tabs"
 msgstr ""
-"A jegyzet és forrás fülön levő összes jegyzet és forráshivatkozás megjenítése"
+"A jegyzet és forrás fülön levő összes jegyzet és forráshivatkozás "
+"megjelenítése"
 
 #: placelist.php:239
 msgid "Show all places in a list"
@@ -12543,7 +12545,7 @@ msgstr "Mutasd az összes forrást"
 
 #: app/Module/InteractiveTree/TreeView.php:62
 msgid "Show all spouses and ancestors"
-msgstr "Mutassd az össes elődöt és utódot"
+msgstr "Mutasd az összes elődöt és utódot"
 
 #: find.php:437
 msgid "Show all tags"
@@ -12557,7 +12559,7 @@ msgstr "Mutasd az életkorkurzort?"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1367
 msgid "Show chart details by default"
-msgstr "Diagramm részleteinek mutatása alapértelmezetten"
+msgstr "Diagram részleteinek mutatása alapértelmezetten"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -12621,7 +12623,7 @@ msgstr "Elvált párok mutatása."
 #. I18N: A configuration setting
 #: admin_trees_config.php:1049
 msgid "Show download link in media viewer"
-msgstr "Mutasd a letöltési hivatkozást médiabnézegetőben"
+msgstr "Mutasd a letöltési hivatkozást médianézegetőben"
 
 #: admin_trees_config.php:1463
 msgid "Show events of close relatives on individual page"
@@ -12756,7 +12758,7 @@ msgstr "Helyszínek rangsorolt mutatása"
 #. I18N: A configuration setting
 #: admin_trees_config.php:491
 msgid "Show private relationships"
-msgstr "Bizalmas rokoni kapcsolatok mejelenításe"
+msgstr "Bizalmas rokoni kapcsolatok megjelenításe"
 
 #: search.php:111 search.php:275
 msgid "Show related individuals/families"
@@ -12900,7 +12902,7 @@ msgstr "Testvérek"
 
 #: app/Stats.php:6929
 msgid "Sicily"
-msgstr "Sicilia"
+msgstr "Szicília"
 
 #: admin_module_sidebar.php:87 admin_modules.php:182
 msgid "Sidebar"
@@ -12919,7 +12921,7 @@ msgstr "Sierra Leone"
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar.  To specify a date in another calendar, add a keyword before the date.  This keyword is optional if the month or year format make the date unambiguous."
 msgstr ""
-"Egyszerű dátumok alapértelmezetten Gergely-naptárhoz leszenek rendelve.  Más "
+"Egyszerű dátumok alapértelmezetten Gergely-naptárhoz lesznek rendelve.  Más "
 "naptár dátumait a dátumot megelőző egyedi kulcsszavakkal lehet megadni. (Ez "
 "a kulcsszó elhagyható, ha a hónap vagy év formátuma egyértelműen csak egy "
 "bizonyos naptárral értelmezhető)."
@@ -12969,7 +12971,7 @@ msgstr "Oldaltérképek"
 #: app/Module/SiteMapModule.php:306
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
-"Oldaltérképeket arra használnak a honlapfejlsztők, hogy információt "
+"Oldaltérképeket arra használnak a honlapfejlesztők, hogy információt "
 "szolgáltassanak keresőmotoroknak az oldal feltérképezéséhez. Minden jelentős "
 "keresőmotor támogatja az oldaltérképeket. Több információért lásd: <a href=\""
 "http://www.sitemaps.org/\">www.sitemaps.org</a> (angolul)."
@@ -13105,7 +13107,7 @@ msgstr "Sosa"
 #: search_advanced.php:157 search_advanced.php:219 search_advanced.php:234
 #: search_advanced.php:256 search_advanced.php:271
 msgid "Sounds like"
-msgstr "Úgy hanzik mint"
+msgstr "Úgy hangzik mint"
 
 #. I18N: gedcom tag SOUR
 #. I18N: Name of a module/report
@@ -13143,7 +13145,7 @@ msgid "Source citations can include fields to record the quality of the data (pr
 msgstr ""
 "A forrás idézetek tartalmazhatnak mezőket a az adatok minősítésének ("
 "elsődleges, másodlagos, stb.) bejegyzésére és esemény dátumának a forrásból "
-"kinyereve.  Ha Ön nem használja ezeket a mezőket, akkor lehetősége van "
+"kinyerve.  Ha Ön nem használja ezeket a mezőket, akkor lehetősége van "
 "letiltani ezeket az új forrásidézet létrehozásakor."
 
 #. I18N: Label for search field
@@ -13327,7 +13329,7 @@ msgstr "Megállít"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1130
 msgid "Store watermarked full size images on server?"
-msgstr "Tárolja a teljes méretű vízjelezet képeket a szerveren?"
+msgstr "Tárolja a teljes méretű vízjelezett képeket a szerveren?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1143
@@ -13601,8 +13603,8 @@ msgid "The <b>name</b> field contains the individual’s full name, as they woul
 msgstr ""
 "A <b>név</b> mező a személy teljes nevét tartalmazza, úgy ahogy betűzve volt "
 "vagy ahogy fel van jegyezve.  Így fog megjelenni a képernyőn.  A nevek "
-"részeinek különválasztására a származástan szabvány szerinti jelzéssei "
-"vannak használva."
+"részeinek különválasztására a származástan szabvány szerinti jelzései vannak "
+"használva."
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
@@ -13820,7 +13822,7 @@ msgstr ""
 
 #: admin_site_merge.php:201
 msgid "The following facts and events were found in both records."
-msgstr "A következő tények és eseményet lettek találva mindkét bejegyzésben."
+msgstr "A következő tények és események lettek találva mindkét bejegyzésben."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:248 admin_site_merge.php:294
@@ -13853,14 +13855,14 @@ msgstr ""
 
 #: help_text.php:326
 msgid "The help text has not been written for this item."
-msgstr "Egyenlőre erre a részre nem áll redelkezésre súgószöveg."
+msgstr "Egyenlőre erre a részre nem áll rendelkezésre súgószöveg."
 
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: admin_trees_config.php:926
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
 msgstr ""
-"Az az e-mail cím, amire a látogatók a szakmaai jellegű kérdésekkel "
-"fordulhatnak, esetleg hibákat jelezheznek."
+"Az az e-mail cím, amire a látogatók a szakmai jellegű kérdésekkel "
+"fordulhatnak, esetleg hibákat jelezhetnek."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:904
@@ -13935,7 +13937,7 @@ msgstr ""
 #: help_text.php:303
 msgid "The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used."
 msgstr ""
-"A tőrkőpen a megadott nevezetű esemény száma lesz feltüntetve.  Ha ezt a "
+"A térképen a megadott nevezetű esemény száma lesz feltüntetve.  Ha ezt a "
 "mezőt üresen hagyja a megszokott vezetéknév lesz használva."
 
 #: setup.php:412
@@ -14038,8 +14040,8 @@ msgstr "A(z) %s bélyegképfájl nem létezik."
 #: admin_site_config.php:290
 msgid "The time in seconds that a webtrees session remains active before requiring a login.  The default is 7200, which is 2 hours."
 msgstr ""
-"Idő másodpercben, amíg a webtrees fiókja tévékenynek marad mielőtt igényelné "
-"a bejelentkezést.  Az alapértelmezett érték 7200 ami 2 őrát jelent."
+"Idő másodpercben, amíg a webtrees fiókja tevékeny marad, mielőtt igényelné a "
+"bejelentkezést.  Az alapértelmezett érték 7200 ami 2 órát jelent."
 
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:250
 msgid "The time zone is required for date calculations, such as knowing today’s date."
@@ -14050,8 +14052,8 @@ msgstr "Az időzóna nélkülözhetetlen a dátumok meghatározásához, mai nap
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "A két családfa %1$s bejegyzésnés használ megegyező “XREF” értéket."
-msgstr[1] "A két családfa %1$s bejegyzésnés használ megegyező “XREF” értéket."
+msgstr[0] "A két családfa %1$s bejegyzésnél használ megegyező “XREF” értéket."
+msgstr[1] "A két családfa %1$s bejegyzésnél használ megegyező “XREF” értéket."
 
 #: admin_site_upgrade.php:504
 msgid "The upgrade is complete."
@@ -14076,7 +14078,7 @@ msgstr ""
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:388
 msgid "The user name required for authentication with the SMTP server."
-msgstr "Az SMPT szolgáltató a hitelesítéséhez felhasználóonevet igényel."
+msgstr "Az SMPT szolgáltató a hitelesítéséhez felhasználónevet igényel."
 
 #: login.php:74 login.php:79
 msgid "The username or password is incorrect."
@@ -14170,7 +14172,7 @@ msgstr "Ennek a személynek nincsenek Megjegyzései."
 
 #: admin_site_upgrade.php:105
 msgid "There are no pending changes."
-msgstr "Nincsenek függőben levő változatások."
+msgstr "Nincsenek függőben levő változtatások."
 
 #: app/Module/ResearchTaskModule.php:137
 msgid "There are no research tasks in this family tree."
@@ -14189,13 +14191,13 @@ msgstr "Moderálandó változások történtek."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] "Az utolsó %s nap nem volt semilyen változtatás."
-msgstr[1] "Az utolsó %s nap nem volt semilyen változtatás."
+msgstr[0] "Az utolsó %s nap nem volt semmilyen változtatás."
+msgstr[1] "Az utolsó %s nap nem volt semmilyen változtatás."
 
 #: login.php:239
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "“%s” névvel vagy email címmel redelkező felhasználói fiók nem létezik."
+msgstr "“%s” névvel vagy email címmel rendelkező felhasználói fiók nem létezik."
 
 #: addmedia.php:184 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -14333,15 +14335,15 @@ msgstr "Gyermektelen család"
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
 msgstr[0] ""
-"A családfa  %s megegyző “XREF” bejegyzést tartalmaz, amit egy másik családfa "
-"is használ."
+"A családfa  %s megegyező “XREF” bejegyzést tartalmaz, amit egy másik "
+"családfa is használ."
 msgstr[1] ""
-"A családfa  %s megegyző “XREF” bejegyzést tartalmaz, amit egy másik családfa "
-"is használ."
+"A családfa  %s megegyező “XREF” bejegyzést tartalmaz, amit egy másik "
+"családfa is használ."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
-msgstr "Ennek a családfának nincsenek megjelenithető képei."
+msgstr "Ennek a családfának nincsenek megjeleníthető képei."
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
@@ -14467,7 +14469,7 @@ msgstr ""
 msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
 msgstr ""
 "Ez az ön elhelyezkedése a családfán belül. Téves beírás esetén, lépjen "
-"kapcsolatba az oldal egyik renszergazdájával."
+"kapcsolatba az oldal egyik rendszergazdájával."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1411
@@ -14501,7 +14503,7 @@ msgstr ""
 "Ez a GEDCOM tények listája amit a felhasználók hozzáadhatnak egy családhoz.  "
 "A Listát meg lehet változtatni úgy, hogy elvesz vagy hozzáad egy ténynevet, "
 "még egyéni tényeket is, ha szükséges. Azok a ténynevek melyek ebben a "
-"listában tallhatók, nem szerepelhetnek a <i>Család egyedülálló tényei</i> "
+"listában találhatók, nem szerepelhetnek a <i>Család egyedülálló tényei</i> "
 "listában."
 
 #. I18N: Help text for the “All individual facts” configuration setting
@@ -14511,7 +14513,7 @@ msgstr ""
 "Ez a GEDCOM tények listája amit a felhasználók hozzáadhatnak a "
 "személyekhez.  A Listát meg lehet változtatni úgy, hogy elvesz vagy hozzáad "
 "egy ténynevet, még egyéni tényeket is, ha szükséges. Azok a ténynevek melyek "
-"ebben a listában tallhatók, nem szerepelhetnek a <i>Személy egyedülálló "
+"ebben a listában találhatók, nem szerepelhetnek a <i>Személy egyedülálló "
 "tényei</i> listában."
 
 #. I18N: Help text for the “All repository facts” configuration setting
@@ -14521,7 +14523,7 @@ msgstr ""
 "Ez a GEDCOM tények listája amit a felhasználók hozzáadhatnak az "
 "adatgyűjteményekhez.  A Listát meg lehet változtatni úgy, hogy elvesz vagy "
 "hozzáad egy ténynevet, még egyéni tényeket is, ha szükséges. Azok a "
-"ténynevek melyek ebben a listában tallhatók, nem szerepelhetnek a <i>"
+"ténynevek melyek ebben a listában találhatók, nem szerepelhetnek a <i>"
 "Adatgyűjtemény egyedülálló tényei</i> listában."
 
 #. I18N: Help text for the “All source facts” configuration setting
@@ -14531,7 +14533,7 @@ msgstr ""
 "Ez a GEDCOM tények listája amit a felhasználók hozzáadhatnak a forrásokhoz.  "
 "A Listát meg lehet változtatni úgy, hogy elvesz vagy hozzáad egy ténynevet, "
 "még egyéni tényeket is, ha szükséges. Azok a ténynevek melyek ebben a "
-"listában tallhatók, nem szerepelhetnek a <i>Forrás egyedülálló tényei</i> "
+"listában találhatók, nem szerepelhetnek a <i>Forrás egyedülálló tényei</i> "
 "listában."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
@@ -14839,7 +14841,7 @@ msgstr ""
 msgid "This repository has been edited.  The changes need to be reviewed by a moderator."
 msgstr ""
 "Az adatgyűjtemény módosítva lett.  A változtatásokat meg kell erősítenie egy "
-"moderázotnak."
+"moderátornak."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: repo.php:53
@@ -14974,7 +14976,7 @@ msgstr "Csüt"
 
 #: addmedia.php:138 admin_media_upload.php:103
 msgid "Thumbnail files must contain images."
-msgstr "A bélyegképféjlnak képet kell tartalmaznia."
+msgstr "A bélyegképfájlnak képet kell tartalmaznia."
 
 #: admin_trees_config.php:1059
 msgid "Thumbnail images"
@@ -15133,14 +15135,14 @@ msgstr ""
 #: app/Module/SiteMapModule.php:331
 msgid "To tell search engines that sitemaps are available, you can use the following links."
 msgstr ""
-"Annak érdekében, hogy közölje a keresőmotrokkal, hogy létezik oldaltérkép "
+"Annak érdekében, hogy közölje a keresőmotorokkal, hogy létezik oldaltérkép "
 "kövesse a következő linkeket."
 
 #: app/Module/SiteMapModule.php:328
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
 msgstr ""
-"Hogy értesíts a keresőmotorokat arról, hogy melyik oldaltérképek állnak "
-"rendelkezésre, illesztd a következő sort a „robots.txt” fájlba."
+"Hogy értesítse a keresőmotorokat arról, hogy melyik oldaltérképek állnak "
+"rendelkezésre, illesztje a következő sort a „robots.txt” fájlba."
 
 #: admin_site_config.php:435
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
@@ -15175,7 +15177,7 @@ msgstr "Tonga"
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
 msgstr[0] "leggyakoribb utónév"
-msgstr[1] "Leggyakoribb %s utónev"
+msgstr[1] "Leggyakoribb %s utónév"
 
 #. I18N: Title for a list of the most common surnames, %s is a number.  Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:109
@@ -15426,7 +15428,7 @@ msgstr ""
 
 #: app/Stats.php:6965
 msgid "US Minor Outlying Islands"
-msgstr "Egyesült Államok külsõ szigetei"
+msgstr "Egyesült Államok külső szigetei"
 
 #: app/Stats.php:6973
 msgid "US Virgin Islands"
@@ -18496,11 +18498,11 @@ msgstr "fiúükunoka"
 
 #: app/Functions/Functions.php:1568
 msgid "great-great-aunt"
-msgstr "dészülő lánytestvére"
+msgstr "dédszülő lánytestvére"
 
 #: app/Functions/Functions.php:1570
 msgid "great-great-aunt/uncle"
-msgstr "dészülő testvére"
+msgstr "dédszülő testvére"
 
 #: app/Functions/Functions.php:1993
 msgid "great-great-grandchild"
@@ -18520,7 +18522,7 @@ msgstr "ükanya"
 
 #: app/Functions/Functions.php:1875
 msgid "great-great-grandparent"
-msgstr "ükszükők"
+msgstr "ükszülők"
 
 #: app/Functions/Functions.php:1989
 msgid "great-great-grandson"
@@ -18552,7 +18554,7 @@ msgstr "szépanya"
 
 #: app/Functions/Functions.php:1884
 msgid "great-great-great-grandparent"
-msgstr "szépszükők"
+msgstr "szépszülők"
 
 #: app/Functions/Functions.php:1999
 msgid "great-great-great-grandson"
@@ -18676,7 +18678,7 @@ msgstr "dédanya fiútestvére"
 #: app/Functions/Functions.php:1565
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr "dészülő fiútestvére"
+msgstr "dédszülő fiútestvére"
 
 #: app/Functions/Functions.php:1004
 msgctxt "(a man’s) brother’s child’s son"
@@ -19289,17 +19291,17 @@ msgstr "anyós/após"
 #: app/Functions/Functions.php:829
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr "ünokaöcs"
+msgstr "unokaöcs"
 
 #: app/Functions/Functions.php:933
 msgctxt "sibling’s son"
 msgid "nephew"
-msgstr "ünokaöcs"
+msgstr "unokaöcs"
 
 #: app/Functions/Functions.php:943
 msgctxt "sister’s son"
 msgid "nephew"
-msgstr "ünokaöcs"
+msgstr "unokaöcs"
 
 #: app/Functions/Functions.php:1021
 msgctxt "brother’s daughter’s husband"
@@ -19319,17 +19321,17 @@ msgstr "unokahúg férje"
 #: app/Functions/Functions.php:825
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr "ünokaöcs/unokahúg"
+msgstr "unokaöcs/unokahúg"
 
 #: app/Functions/Functions.php:929
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr "ünokaöcs/unokahúg"
+msgstr "unokaöcs/unokahúg"
 
 #: app/Functions/Functions.php:937
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr "ünokaöcs/unokahúg"
+msgstr "unokaöcs/unokahúg"
 
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:636
@@ -19450,7 +19452,7 @@ msgstr "/"
 
 #: app/Functions/FunctionsPrint.php:370
 msgid "on the date of death"
-msgstr "a haláleset dámunán"
+msgstr "a haláleset napján"
 
 #: statisticsplot.php:788
 msgid "over"
@@ -20051,17 +20053,17 @@ msgstr "mostohagyerek"
 #: app/Functions/Functions.php:877
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr "mostahalány"
+msgstr "mostohalány"
 
 #: app/Functions/Functions.php:957
 msgctxt "spouse’s daughter"
 msgid "step-daughter"
-msgstr "mostahalány"
+msgstr "mostohalány"
 
 #: app/Functions/Functions.php:975
 msgctxt "wife’s daughter"
 msgid "step-daughter"
-msgstr "mostahalány"
+msgstr "mostohalány"
 
 #: app/Functions/Functions.php:897 app/Module/FamilyNavigatorModule.php:216
 msgctxt "mother’s husband"
