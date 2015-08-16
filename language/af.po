@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-14 20:30+0100\n"
+"PO-Revision-Date: 2015-08-16 20:27+0100\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
@@ -937,7 +937,7 @@ msgstr "'n Verslag van persone wat tydens 'n gegewe periode en op 'n gegewe plek
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "'n Verslag van onlangse of hangende wysigings."
+msgstr "'n Verslag van onlangse- en wysigings wat hangend is."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:35
@@ -3509,7 +3509,7 @@ msgstr "Kontroleer vir foute"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:94
 msgid "Check for pending changes…"
-msgstr "Kontroleer vir uitstaande wysigings…"
+msgstr "Kontroleer vir wysigings wat hangend is…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
@@ -8482,7 +8482,7 @@ msgstr "Ingeteken as "
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1486
 #: login.php:126 login.php:175
 msgid "Login"
-msgstr "Inteken"
+msgstr "Meld aan"
 
 #: setup.php:428
 msgid "Login ID"
@@ -8778,198 +8778,198 @@ msgstr "Huwelik"
 
 #: modules_v3/marriage_report/report.xml:8
 msgid "Marriage Date range end"
-msgstr ""
+msgstr "Huweliksdatum eindbereik"
 
 #: modules_v3/marriage_report/report.xml:7
 msgid "Marriage Date range start"
-msgstr ""
+msgstr "Huweliksdatum beginbereik"
 
 #: modules_v3/marriage_report/report.xml:6
 msgid "Marriage Place contains"
-msgstr ""
+msgstr "Huwelik pleknaam bevat"
 
 #. I18N: gedcom tag MARB
 #: app/GedcomTag.php:556 modules_v3/missing_facts_report/report.xml:22
 msgid "Marriage banns"
-msgstr ""
+msgstr "Huweliksafkondiging"
 
 #. I18N: gedcom tag _MSTAT
 #: app/GedcomTag.php:1667
 msgid "Marriage beginning status"
-msgstr ""
+msgstr "Status by huweliksaanvang"
 
 #. I18N: gedcom tag _MBON
 #: app/GedcomTag.php:1639
 msgid "Marriage bond"
-msgstr ""
+msgstr "Huweliksband"
 
 #: app/Stats.php:1696 statistics.php:539
 msgid "Marriage by country"
-msgstr ""
+msgstr "Huwelikke per land"
 
 #. I18N: gedcom tag MARC
 #: app/GedcomTag.php:564
 msgid "Marriage contract"
-msgstr ""
+msgstr "Huwelikskontrak"
 
 #. I18N: gedcom tag _MEND
 #: app/GedcomTag.php:1651
 msgid "Marriage ending status"
-msgstr ""
+msgstr "Status huwelikseinde"
 
 #. I18N: gedcom tag _MARI
 #: app/GedcomTag.php:1552
 msgid "Marriage intention"
-msgstr ""
+msgstr "Huweliksvoorneme"
 
 #. I18N: gedcom tag MARL
 #: app/GedcomTag.php:568
 msgid "Marriage license"
-msgstr ""
+msgstr "Trouvergunning"
 
 #: app/GedcomTag.php:1630
 msgid "Marriage of a brother"
-msgstr ""
+msgstr "Huwelik van 'n broer"
 
 #: app/GedcomTag.php:1570
 msgid "Marriage of a child"
-msgstr ""
+msgstr "Huwelik van 'n kind"
 
 #: app/GedcomTag.php:1568
 msgid "Marriage of a daughter"
-msgstr ""
+msgstr "Huwelik van 'n dogter"
 
 #. I18N: ...to another spouse
 #: app/GedcomTag.php:1617
 msgid "Marriage of a father"
-msgstr ""
+msgstr "Huwelik van 'n vader"
 
 #: app/GedcomTag.php:1583 app/GedcomTag.php:1592 app/GedcomTag.php:1601
 msgid "Marriage of a grandchild"
-msgstr ""
+msgstr "Huwelik van 'n kleinkind"
 
 #: app/GedcomTag.php:1581
 msgid "Marriage of a granddaughter"
-msgstr ""
+msgstr "Huwelik van 'n kleindogter"
 
 #: app/GedcomTag.php:1590
 msgctxt "daughter’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr ""
+msgstr "Huwelik van 'n kleindogter"
 
 #: app/GedcomTag.php:1599
 msgctxt "son’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr ""
+msgstr "Huwelik van 'n kleindogter"
 
 #: app/GedcomTag.php:1579
 msgid "Marriage of a grandson"
-msgstr ""
+msgstr "Huwelik van 'n kleinseun"
 
 #: app/GedcomTag.php:1588
 msgctxt "daughter’s son"
 msgid "Marriage of a grandson"
-msgstr ""
+msgstr "Huwelik van 'n kleinseun"
 
 #: app/GedcomTag.php:1597
 msgctxt "son’s son"
 msgid "Marriage of a grandson"
-msgstr ""
+msgstr "Huwelik van 'n kleinseun"
 
 #: app/GedcomTag.php:1606
 msgid "Marriage of a half-brother"
-msgstr ""
+msgstr "Huwelik van 'n halfbroer"
 
 #: app/GedcomTag.php:1610
 msgid "Marriage of a half-sibling"
-msgstr ""
+msgstr "Huwelik van 'n halbroer/suster"
 
 #: app/GedcomTag.php:1608
 msgid "Marriage of a half-sister"
-msgstr ""
+msgstr "Huwelik van 'n halfsuster"
 
 #. I18N: ...to another spouse
 #: app/GedcomTag.php:1621
 msgid "Marriage of a mother"
-msgstr ""
+msgstr "Huwelik van 'n moeder"
 
 #. I18N: ...to another spouse
 #: app/GedcomTag.php:1625
 msgid "Marriage of a parent"
-msgstr ""
+msgstr "Huwelik van 'n ouer"
 
 #: app/GedcomTag.php:1634
 msgid "Marriage of a sibling"
-msgstr ""
+msgstr "Huwelik van 'n broer/suster"
 
 #: app/GedcomTag.php:1632
 msgid "Marriage of a sister"
-msgstr ""
+msgstr "Huwelik van 'n suster"
 
 #: app/GedcomTag.php:1566
 msgid "Marriage of a son"
-msgstr ""
+msgstr "Huwelik van 'n seun"
 
 #. I18N: ...to each other
 #: app/GedcomTag.php:1575
 msgid "Marriage of parents"
-msgstr ""
+msgstr "Huwelik van ouers"
 
 #: statistics.php:416
 msgid "Marriage places"
-msgstr ""
+msgstr "Huweliksplekke"
 
 #. I18N: gedcom tag MARS
 #: app/GedcomTag.php:588
 msgid "Marriage settlement"
-msgstr ""
+msgstr "Huweliksvoorwaardes"
 
 #. I18N: gedcom tag _STAT
 #: app/GedcomTag.php:1731
 msgid "Marriage status"
-msgstr ""
+msgstr "Huwelikstatus"
 
 #: app/GedcomTag.php:584
 msgid "Marriage type unknown"
-msgstr ""
+msgstr "Onbekende huwelik"
 
 #. I18N: Name of a module/report
 #: app/Module/MarriageReportModule.php:29
 #: modules_v3/marriage_report/report.xml:3
 #: modules_v3/marriage_report/report.xml:30
 msgid "Marriages"
-msgstr ""
+msgstr "Huwelikke"
 
 #: app/Stats.php:3546 statistics.php:221
 msgid "Marriages by century"
-msgstr ""
+msgstr "Huwelikke per eeu"
 
 #. I18N: gedcom tag _MARNM
 #: app/GedcomTag.php:1556 modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10
 msgid "Married name"
-msgstr ""
+msgstr "Getroude naam"
 
 #: app/GedcomTag.php:1562
 msgid "Married surname"
-msgstr ""
+msgstr "Getroude van"
 
 #: app/Stats.php:6869
 msgid "Marshall Islands"
-msgstr ""
+msgstr "Marshalleilande"
 
 #: app/Stats.php:6880
 msgid "Martinique"
-msgstr ""
+msgstr "Martinique"
 
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:211
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Doen jouself voor as hierdie gebruiker"
 
 #: lifespan.php:101
 msgid "Match calendar"
-msgstr ""
+msgstr "Pas kalender aan"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:138
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -8981,11 +8981,11 @@ msgstr "Pas die presiese teks, tensy dit in die middel van 'n woord voorkom."
 
 #: app/Stats.php:6878
 msgid "Mauritania"
-msgstr ""
+msgstr "Mauritanië"
 
 #: app/Stats.php:6881
 msgid "Mauritius"
-msgstr ""
+msgstr "Mauritius"
 
 #: app/Module/GoogleMapsModule.php:398 app/Module/GoogleMapsModule.php:4027
 msgid "Max"
@@ -8994,54 +8994,54 @@ msgstr "Maks"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1347
 msgid "Maximum descendancy generations"
-msgstr ""
+msgstr "Maksimum aantal geslagte in diagram van voorouers"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1245
 msgid "Maximum number of surnames on individual list"
-msgstr ""
+msgstr "Maksimum aantal vanne op lys van persone"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1327
 msgid "Maximum pedigree generations"
-msgstr ""
+msgstr "Maksimum aantal geslagte vir stamboom diagram"
 
 #: admin_media_upload.php:188
 msgid "Maximum upload size: "
-msgstr ""
+msgstr "Maksimum oplaaigrootte: "
 
 #: app/Date/CalendarDate.php:315
 msgctxt "Abbreviation for May"
 msgid "May"
-msgstr ""
+msgstr "Mei"
 
 #: app/Date/CalendarDate.php:215
 msgctxt "GENITIVE"
 msgid "May"
-msgstr ""
+msgstr "Mei"
 
 #: app/Date/CalendarDate.php:283
 msgctxt "INSTRUMENTAL"
 msgid "May"
-msgstr ""
+msgstr "Mei"
 
 #: app/Date/CalendarDate.php:249
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr ""
+msgstr "Mei"
 
 #: app/Date/CalendarDate.php:181 app/Functions/FunctionsPrint.php:652
 msgctxt "NOMINATIVE"
 msgid "May"
-msgstr ""
+msgstr "Mei"
 
 #: app/Stats.php:6884
 msgid "Mayotte"
-msgstr ""
+msgstr "Mayotte"
 
 #: app/GedcomCode/GedcomCodeTemp.php:207
 msgid "Medford, Oregon"
-msgstr ""
+msgstr "Medford, Oregon"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
@@ -9054,45 +9054,45 @@ msgstr "Media"
 
 #: admin_trees_config.php:827
 msgid "Media ID prefix"
-msgstr ""
+msgstr "Voorvoegsel vir media-ID"
 
 #. I18N: Label for search field
 #: find.php:159
 msgid "Media contains"
-msgstr ""
+msgstr "Media bevat"
 
 #: admin_media.php:686 admin_media_upload.php:200
 msgid "Media file"
-msgstr ""
+msgstr "Media-lêer"
 
 #: addmedia.php:444 admin_media_upload.php:202
 msgid "Media file to upload"
-msgstr ""
+msgstr "Media-lêer om op te laai"
 
 #. I18N: %s is the name of a folder.
 #: admin_trees_download.php:163
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "%s word by die begin van media-lêername gevoeg."
 
 #: admin_media.php:618 admin_trees_config.php:1031
 msgid "Media files"
-msgstr ""
+msgstr "Media-lêers"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1006
 msgid "Media folder"
-msgstr ""
+msgstr "Media-lêergids"
 
 #: admin_media.php:619 admin_trees_config.php:1001
 msgid "Media folders"
-msgstr ""
+msgstr "Media-lêergidse"
 
 #. I18N: gedcom tag OBJE
 #: admin_media.php:688 admin_trees_manage.php:564
 #: app/Controller/FamilyController.php:194 app/GedcomTag.php:646
 msgid "Media object"
-msgstr ""
+msgstr "Mediavoorwerp"
 
 #: admin.php:784 admin_trees_duplicates.php:144
 #: app/Functions/FunctionsPrintLists.php:1086
@@ -9103,73 +9103,73 @@ msgstr ""
 #: medialist.php:37 note.php:131 source.php:108 statistics.php:350
 #: statistics.php:377 statistics.php:380
 msgid "Media objects"
-msgstr ""
+msgstr "Mediavoorwerpe"
 
 #: medialist.php:231
 msgid "Media objects found"
-msgstr ""
+msgstr "Mediavoorwerpe gevind"
 
 #: medialist.php:128
 msgid "Media objects per page"
-msgstr ""
+msgstr "Mediavoorwerpe per bladsy"
 
 #. I18N: gedcom tag MEDI
 #. I18N: gedcom tag _TYPE
 #: app/GedcomTag.php:592 app/GedcomTag.php:1743
 msgid "Media type"
-msgstr ""
+msgstr "Soort media"
 
 #. I18N: gedcom tag _MDCL
 #: app/GedcomTag.php:1643
 msgid "Medical"
-msgstr ""
+msgstr "Medies"
 
 #. I18N: gedcom tag _MEDC
 #: app/GedcomTag.php:1647
 msgid "Medical condition"
-msgstr ""
+msgstr "Mediese toestand"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:84
 msgid "Mediterranio"
-msgstr ""
+msgstr "Mediterranio"
 
 #: setup.php:173
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
-msgstr ""
+msgstr "Gemiddelde stelses (5,000 persone): 32–64 MB, 20–40 seconds"
 
 #: app/Date/JalaliDate.php:189
 msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:93
 msgctxt "GENITIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:125
 msgctxt "LOCATIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:61
 msgctxt "NOMINATIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #: app/GedcomCode/GedcomCodeTemp.php:209
 msgid "Melbourne, Australia"
-msgstr ""
+msgstr "Melbourne, Australië"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:188 admin_users.php:40 admin_users.php:536
@@ -9178,7 +9178,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:701
 #: app/Module/ClippingsCartModule.php:708
 msgid "Member"
-msgstr ""
+msgstr "Lid"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:196
@@ -9187,31 +9187,31 @@ msgstr "Geheue limiet"
 
 #: app/GedcomCode/GedcomCodeTemp.php:211
 msgid "Memphis, Tennessee"
-msgstr ""
+msgstr "Memphis, Tennessee"
 
 #: admin_module_menus.php:87 admin_modules.php:180
 msgid "Menu"
-msgstr ""
+msgstr "Kieslys"
 
 #. I18N: Menu entry
 #: admin_module_menus.php:28 admin_modules.php:154
 #: app/Theme/AdministrationTheme.php:183
 msgid "Menus"
-msgstr ""
+msgstr "Kieslyste"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:85
 msgid "Mercury"
-msgstr ""
+msgstr "Kwiksilwer"
 
 #: admin_trees_duplicates.php:174
 msgid "Merge"
-msgstr ""
+msgstr "Saamvoeg"
 
 #. I18N: Menu entry
 #: admin_trees_merge.php:34 app/Theme/AdministrationTheme.php:129
 msgid "Merge family trees"
-msgstr ""
+msgstr "Voeg stambome saam"
 
 #: admin_site_merge.php:35 admin_trees_manage.php:476
 msgid "Merge records"
@@ -9219,24 +9219,24 @@ msgstr "Kombineer rekords"
 
 #: app/GedcomCode/GedcomCodeTemp.php:213
 msgid "Merida, Mexico"
-msgstr ""
+msgstr "Merida, Meksiko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Mesa, Arizona"
-msgstr ""
+msgstr "Mesa, Arizona"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
 msgid "Message"
-msgstr ""
+msgstr "Boodskap"
 
 #: message.php:191
 #, php-format
 msgid "Message successfully sent to %s"
-msgstr ""
+msgstr "Boodskap is suksesvol na %s gestuur"
 
 #: message.php:193
 msgid "Message was not sent"
-msgstr ""
+msgstr "Boodskap is nie gestuur nie"
 
 #. I18N: A site configuration setting
 #. I18N: Name of a module
@@ -9248,64 +9248,64 @@ msgstr "Boodskappe"
 #: app/Date/FrenchDate.php:97
 msgctxt "GENITIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:163
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:130
 msgctxt "LOCATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:64
 msgctxt "NOMINATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #: app/Stats.php:6868
 msgid "Mexico"
-msgstr ""
+msgstr "Meksiko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:215
 msgid "Mexico City, Mexico"
-msgstr ""
+msgstr "Meksikostad, Meksiko"
 
 #: app/GedcomTag.php:1869
 msgid "Microfiche"
-msgstr ""
+msgstr "Mikrofiche"
 
 #: app/GedcomTag.php:1871
 msgid "Microfilm"
-msgstr ""
+msgstr "Mikrofilm"
 
 #: app/Stats.php:6805
 msgid "Micronesia"
-msgstr ""
+msgstr "Mikronesië"
 
 #: statistics.php:599
 msgid "Middle East"
-msgstr ""
+msgstr "Midde-Ooste"
 
 #. I18N: time format “%A” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:102
 msgid "Midnight"
-msgstr ""
+msgstr "Middernag"
 
 #. I18N: gedcom tag _MILI
 #: app/GedcomTag.php:1655
 msgid "Military"
-msgstr ""
+msgstr "Militêr"
 
 #. I18N: gedcom tag _MILT
 #: app/GedcomTag.php:1659
 msgid "Military service"
-msgstr ""
+msgstr "Militêrediens"
 
 #: app/Module/GoogleMapsModule.php:338
 msgid "Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
@@ -9314,31 +9314,31 @@ msgstr "Minimum en maksimum zoem-faktor vir die Google-kaart. 1 is die volledige
 #. I18N: A configuration setting
 #: admin_trees_config.php:1170
 msgid "Minimum number of occurrences to be a “common surname”"
-msgstr ""
+msgstr "Minimum aantal voorkomste om 'n “algemene van” te wees"
 
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:29
 #: modules_v3/missing_facts_report/report.xml:3
 #: modules_v3/missing_facts_report/report.xml:52
 msgid "Missing data"
-msgstr ""
+msgstr "Ontbrekende gegewens"
 
 #: edit_changes.php:196
 msgid "Moderate pending changes"
-msgstr ""
+msgstr "Beoordeel wysigings wat hangend is"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:42 admin_users.php:550
 msgid "Moderator"
-msgstr ""
+msgstr "Beoordeelaar"
 
 #: admin.php:637
 msgid "Moderators"
-msgstr ""
+msgstr "Beoordeelaars"
 
 #: admin_modules.php:152
 msgid "Module"
-msgstr ""
+msgstr "Module"
 
 #. I18N: Menu entry
 #: admin_module_blocks.php:61 admin_module_menus.php:75
@@ -9351,69 +9351,69 @@ msgstr ""
 #: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
 #: app/Theme/AdministrationTheme.php:182
 msgid "Module administration"
-msgstr ""
+msgstr "Module beheer"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:181
 msgid "Modules"
-msgstr ""
+msgstr "Modules"
 
 #: app/Stats.php:6865
 msgid "Moldova"
-msgstr ""
+msgstr "Moldowa"
 
 #. I18N: abbreviation for Monday
 #: app/Date/CalendarDate.php:366 app/Functions/FunctionsPrint.php:663
 msgid "Mon"
-msgstr ""
+msgstr "Ma."
 
 #: app/Stats.php:6864
 msgid "Monaco"
-msgstr ""
+msgstr "Monaco"
 
 #: app/Date/CalendarDate.php:341
 msgid "Monday"
-msgstr ""
+msgstr "Maandag"
 
 #: app/Stats.php:6874
 msgid "Mongolia"
-msgstr ""
+msgstr "Mongolië"
 
 #: app/Stats.php:6876
 msgid "Montenegro"
-msgstr ""
+msgstr "Montenegro"
 
 #: app/GedcomCode/GedcomCodeTemp.php:219
 msgid "Monterrey, Mexico"
-msgstr ""
+msgstr "Monterrey, Meksiko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:217
 msgid "Montevideo, Uruguay"
-msgstr ""
+msgstr "Montevideo, Uruguay"
 
 #: app/Theme/AbstractTheme.php:1007 calendar.php:167
 msgid "Month"
-msgstr ""
+msgstr "Maand"
 
 #: statistics.php:503 statisticsplot.php:858
 msgid "Month of birth"
-msgstr ""
+msgstr "Geboortemaand"
 
 #: app/Stats.php:4742 statistics.php:515 statisticsplot.php:1012
 msgid "Month of birth of first child in a relation"
-msgstr ""
+msgstr "Geboortemaand van eerste kind in 'n verwantskap"
 
 #: statistics.php:506 statisticsplot.php:908
 msgid "Month of death"
-msgstr ""
+msgstr "Sterftemaand"
 
 #: statistics.php:512 statisticsplot.php:1066
 msgid "Month of first marriage"
-msgstr ""
+msgstr "Maand van eerste huwelik"
 
 #: statistics.php:509 statisticsplot.php:962
 msgid "Month of marriage"
-msgstr ""
+msgstr "Huweliksmaand"
 
 #: timeline.php:125 timeline.php:127 timeline.php:129
 msgid "Month:"
@@ -9421,76 +9421,78 @@ msgstr "Maand:"
 
 #: app/GedcomCode/GedcomCodeTemp.php:221
 msgid "Monticello, Utah"
-msgstr ""
+msgstr "Monticello, Utah"
 
 #: app/GedcomCode/GedcomCodeTemp.php:223
 msgid "Montreal, Quebec, Canada"
-msgstr ""
+msgstr "Montreal, Quebec, Kanada"
 
 #: app/Stats.php:6879
 msgid "Montserrat"
-msgstr ""
+msgstr "Montserrat"
 
 #: app/Date/JalaliDate.php:187
 msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
-msgstr ""
+msgstr "Mor"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:91
 msgctxt "GENITIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:123
 msgctxt "LOCATIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:59
 msgctxt "NOMINATIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #: app/Stats.php:6863
 msgid "Morocco"
-msgstr ""
+msgstr "Marokko"
 
 #. I18N: Help text for the “Use password” site configuration setting
 #: admin_site_config.php:375
 msgid "Most SMTP servers require a password."
-msgstr ""
+msgstr "Die meeste SMTP bedieners vereis 'n wagwoord."
 
 #: app/Module/FamilyTreeStatisticsModule.php:200
 #: app/Module/HtmlBlockModule.php:259
 msgid "Most common surnames"
-msgstr ""
+msgstr "Mees algemene vanne"
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: admin_site_config.php:414
 msgid "Most servers do not use secure connections."
-msgstr ""
+msgstr "Die meeste bedieners maak nie van beveiligde verbindings gebruik nie."
 
 #: setup.php:277
 msgid "Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server."
 msgstr ""
+"Die meeste werwe is opgestel om localhost te gebruik. Dit beteken dat die "
+"databasis op dieselfde rekenaar as jou web-bediener loop."
 
 #: setup.php:281
 msgid "Most sites are configured to use the default value of 3306."
-msgstr ""
+msgstr "Die meeste werwe is opgestel om die verstekwaarde 3306 te gebruik."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:36
 msgid "Most viewed pages"
-msgstr ""
+msgstr "Mees bekykte bladsye"
 
 #: modules_v3/bdm_report/report.xml:120
 #: modules_v3/family_group_report/report.xml:474
@@ -9499,124 +9501,124 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:276
 #: modules_v3/relative_ext_report/report.xml:65 search_advanced.php:243
 msgid "Mother"
-msgstr ""
+msgstr "Moeder"
 
 #. I18N: %s is the name of an individual’s mother
 #: app/Individual.php:1069
 #, php-format
 msgid "Mother: %s"
-msgstr ""
+msgstr "Moeder: %s"
 
 #: app/Functions/FunctionsPrint.php:265
 msgid "Mother’s age"
-msgstr ""
+msgstr "Moeder se ouderdom"
 
 #. I18N: A step-family.  %s is an individual’s name
 #: app/Individual.php:1012
 #, php-format
 msgid "Mother’s family with %s"
-msgstr ""
+msgstr "Moeder se gesin met %s"
 
 #. I18N: A step-family.
 #: app/Individual.php:1016
 msgid "Mother’s family with an unknown individual"
-msgstr ""
+msgstr "Moeder se gesin met 'n onbekende persoon"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Mount Timpanogos, Utah"
-msgstr ""
+msgstr "Mount Timpanogos, Utah"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:477 index_edit.php:312
 #: index_edit.php:361
 msgid "Move down"
-msgstr ""
+msgstr "Skuif af"
 
 #: index_edit.php:342
 msgid "Move left"
-msgstr ""
+msgstr "Skuif na links"
 
 #: index_edit.php:325
 msgid "Move right"
-msgstr ""
+msgstr "Skuif na regs"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:471 index_edit.php:310
 #: index_edit.php:359
 msgid "Move up"
-msgstr ""
+msgstr "Skuif boontoe"
 
 #: app/Stats.php:6877
 msgid "Mozambique"
-msgstr ""
+msgstr "Mosambiek"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:90
 msgctxt "GENITIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:154
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:122
 msgctxt "LOCATIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:58
 msgctxt "NOMINATIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #: app/Functions/FunctionsPrintLists.php:722
 msgid "Multiple marriages"
-msgstr ""
+msgstr "Verskeie huwelike"
 
 #: app/Module/UserWelcomeModule.php:52 app/Theme/AbstractTheme.php:1524
 #: edituser.php:108
 msgid "My account"
-msgstr ""
+msgstr "My rekening"
 
 #. I18N: Default name for a new tree
 #: admin_trees_manage.php:162
 msgid "My family tree"
-msgstr ""
+msgstr "My stamboom"
 
 #: app/Module/UserWelcomeModule.php:57 app/Theme/AbstractTheme.php:1539
 msgid "My individual record"
-msgstr ""
+msgstr "My persoonlike rekord"
 
 #. I18N: Name of a module
 #: admin_modules.php:183 app/Module/UserWelcomeModule.php:28
 #: app/Theme/AbstractTheme.php:1551 index.php:88 index.php:96
 msgid "My page"
-msgstr ""
+msgstr "My bladsy"
 
 #: app/Theme/AbstractTheme.php:1561
 msgid "My pages"
-msgstr ""
+msgstr "My bladsye"
 
 #: app/Module/UserWelcomeModule.php:56 app/Theme/AbstractTheme.php:1587
 msgid "My pedigree"
-msgstr ""
+msgstr "My stamboom"
 
 #. I18N: %s is an error message
 #: admin_pgv_to_wt.php:113
 #, php-format
 msgid "MySQL gave the error: %s"
-msgstr ""
+msgstr "MySQL berig die fout: %s"
 
 #: admin_site_info.php:68
 msgid "MySQL variables"
-msgstr ""
+msgstr "MySQL veranderlikes"
 
 #: app/Stats.php:6873
 msgid "Myanmar"
-msgstr ""
+msgstr "Mianmar"
 
 #. I18N: gedcom tag NAME
 #: app/Controller/IndividualController.php:164 app/GedcomTag.php:601
@@ -9638,90 +9640,90 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:43
 #: modules_v3/relative_ext_report/report.xml:50
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #. I18N: gedcom tag REPO:NAME
 #: app/GedcomTag.php:597
 msgctxt "Repository"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #. I18N: Label for search field
 #: find.php:123 find.php:140
 msgid "Name contains"
-msgstr ""
+msgstr "Naam bevat"
 
 #: app/GedcomTag.php:606
 msgid "Name in Hebrew"
-msgstr ""
+msgstr "Naam in Hebreeus"
 
 #. I18N: gedcom tag NPFX
 #: app/GedcomTag.php:638
 msgid "Name prefix"
-msgstr ""
+msgstr "Voorvoegsel vir naam"
 
 #. I18N: gedcom tag NSFX
 #: app/GedcomTag.php:642
 msgid "Name suffix"
-msgstr ""
+msgstr "Agtervoegsel vir naam"
 
 #: admin_trees_config.php:1165 modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10 search.php:200 statistics.php:187
 msgid "Names"
-msgstr ""
+msgstr "Name"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1191
 msgid "Names to add to common surnames (comma separated)"
-msgstr ""
+msgstr "Name wat by “algemene vanne” gevoeg moet word (deur kommas geskei)"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1211
 msgid "Names to remove from common surnames (comma separated)"
-msgstr ""
+msgstr "Name wat van “algemen vanne” verwyder moet word (deur kommas geskei)"
 
 #. I18N: gedcom tag _NAMS
 #: app/GedcomTag.php:1675
 msgid "Namesake"
-msgstr ""
+msgstr "Naamgenoot"
 
 #: app/Stats.php:6885
 msgid "Namibia"
-msgstr ""
+msgstr "Namibië"
 
 #: app/GedcomCode/GedcomCodeRela.php:195
 msgid "Nanny"
-msgstr ""
+msgstr "Kinderjuffrou"
 
 #: app/Module/HtmlBlockModule.php:159
 msgid "Narrative description"
-msgstr ""
+msgstr "Verhalende beskrywing"
 
 #: app/GedcomCode/GedcomCodeTemp.php:227
 msgid "Nashville, Tennessee"
-msgstr ""
+msgstr "Nashville, Tennessee"
 
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:610
 msgid "Nationality"
-msgstr ""
+msgstr "Nasionaliteit"
 
 #. I18N: gedcom tag NATU
 #: app/GedcomTag.php:614
 msgid "Naturalization"
-msgstr ""
+msgstr "Naturalisasie"
 
 #: app/Stats.php:6896
 msgid "Nauru"
-msgstr ""
+msgstr "Nauru"
 
 #: app/GedcomCode/GedcomCodeTemp.php:229
 msgid "Nauvoo, Illinois (new)"
-msgstr ""
+msgstr "Nauvoo, Illinois (nuut)"
 
 #: app/GedcomCode/GedcomCodeTemp.php:231
 msgid "Nauvoo, Illinois (original)"
-msgstr ""
+msgstr "Nauvoo, Illinois (oorspronklik)"
 
 #: app/Module/GoogleMapsModule.php:382 app/Module/GoogleMapsModule.php:4023
 msgid "Neighborhood"
@@ -9729,85 +9731,85 @@ msgstr "Woonbuurt"
 
 #: app/Stats.php:6895
 msgid "Nepal"
-msgstr ""
+msgstr "Nepal"
 
 #: app/Stats.php:6893
 msgid "Netherlands"
-msgstr ""
+msgstr "Nederland"
 
 #: app/Stats.php:6728
 msgid "Netherlands Antilles"
-msgstr ""
+msgstr "Nederlandse Antille"
 
 #: app/Stats.php:6897
 msgid "Neutral Zone"
-msgstr ""
+msgstr "Neutrale Sone"
 
 #: admin_users.php:240
 msgid "Never"
-msgstr ""
+msgstr "Nooit"
 
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1693
 msgid "Never married"
-msgstr ""
+msgstr "Nooit getroud nie"
 
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1689
 msgctxt "FEMALE"
 msgid "Never married"
-msgstr ""
+msgstr "Nooit getroud nie"
 
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1685
 msgctxt "MALE"
 msgid "Never married"
-msgstr ""
+msgstr "Nooit getroud nie"
 
 #: app/Stats.php:6886
 msgid "New Caledonia"
-msgstr ""
+msgstr "Nieu-Kaledonië"
 
 #: app/GedcomCode/GedcomCodeTemp.php:237
 msgid "New York, New York"
-msgstr ""
+msgstr "New York, New York"
 
 #: app/Stats.php:6898
 msgid "New Zealand"
-msgstr ""
+msgstr "Nieu-Seeland"
 
 #: admin_site_change.php:318 admin_site_change.php:363
 msgid "New data"
-msgstr ""
+msgstr "Nuwe inligting"
 
 #. I18N: %s is a server name/URL
 #: login.php:304
 #, php-format
 msgid "New registration at %s"
-msgstr ""
+msgstr "Nuwe registrasie vanaf %s"
 
 #. I18N: %s is a server name/URL
 #: login.php:547
 #, php-format
 msgid "New user at %s"
-msgstr ""
+msgstr "Nuwe gebruiker by %s"
 
 #: app/GedcomCode/GedcomCodeTemp.php:233
 msgid "Newport Beach, California"
-msgstr ""
+msgstr "Newport Beach, Kalifornië"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:54
 msgid "News"
-msgstr ""
+msgstr "Nuus"
 
 #: app/GedcomTag.php:1879
 msgid "Newspaper"
-msgstr ""
+msgstr "Koerant"
 
 #: app/Module/ReviewChangesModule.php:115
 msgid "Next email reminder will be sent after "
-msgstr ""
+msgstr "Die volgende e-posherinnering sal gestuur word na "
 
 #: app/Module/SlideShowModule.php:140
 msgid "Next image"
@@ -9815,84 +9817,84 @@ msgstr "Volgende beeld"
 
 #: app/Stats.php:6890
 msgid "Nicaragua"
-msgstr ""
+msgstr "Nicaragua"
 
 #. I18N: gedcom tag NICK
 #: app/GedcomTag.php:626
 msgid "Nickname"
-msgstr ""
+msgstr "Bynaam"
 
 #: app/Stats.php:6887
 msgid "Niger"
-msgstr ""
+msgstr "Niger"
 
 #: app/Stats.php:6889
 msgid "Nigeria"
-msgstr ""
+msgstr "Nigerië"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:143
 msgctxt "GENITIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:219
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:181
 msgctxt "LOCATIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:105
 msgctxt "NOMINATIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #: app/Stats.php:6892
 msgid "Niue"
-msgstr ""
+msgstr "Niue"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:91
 msgctxt "GENITIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:124
 msgctxt "LOCATIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:58
 msgctxt "NOMINATIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #: admin_users.php:660 app/Functions/FunctionsPrintFacts.php:308
 msgid "No"
-msgstr ""
+msgstr "Nee"
 
 #: admin_trees_manage.php:101 admin_trees_manage.php:122
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "Geen GEDCOM-lêer is ontvang nie."
 
 #: admin_trees_manage.php:253
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "Geen GEDCOM-lêers is gevind nie."
 
 #: app/Module/GoogleMapsModule.php:900
 msgid "No ancestors in the database."
@@ -9900,32 +9902,32 @@ msgstr "Geen voorouers in die databasis."
 
 #: admin_trees_config.php:35
 msgid "No calendar conversion"
-msgstr ""
+msgstr "Geen kalenderomskakeling nie"
 
 #: app/Controller/DescendancyController.php:213
 #: app/Functions/FunctionsCharts.php:302 app/Module/DescendancyModule.php:273
 msgid "No children"
-msgstr ""
+msgstr "Geen kinders nie"
 
 #: app/Functions/FunctionsEdit.php:242
 msgid "No contact"
-msgstr ""
+msgstr "Geen kontak nie"
 
 #: admin_site_upgrade.php:206
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "Geen aangepaste modules is onstper nie."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "Geen aangepaste temas is ontsper nie."
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "Geen duplikate is gevind nie."
 
 #: admin_trees_check.php:211
 msgid "No errors have been found."
-msgstr ""
+msgstr "Geen foute is gevind nie."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: app/Functions/FunctionsPrintLists.php:2026
@@ -9933,28 +9935,28 @@ msgstr ""
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Daar is geen gebeurtenisse vir die volgende %s dag nie."
+msgstr[1] "Daar is geen gebeurtenisse vir die volgende %s dae nie."
 
 #: app/Functions/FunctionsPrintLists.php:2013
 #: app/Functions/FunctionsPrintLists.php:2128
 msgid "No events exist for today."
-msgstr ""
+msgstr "Daar is geen gebeurtenisse vir vandag nie."
 
 #: app/Functions/FunctionsPrintLists.php:2023
 #: app/Functions/FunctionsPrintLists.php:2138
 msgid "No events exist for tomorrow."
-msgstr ""
+msgstr "Geen gebeurtenisse bestaan vir môre nie."
 
 #: app/Functions/FunctionsPrintLists.php:2015
 #: app/Functions/FunctionsPrintLists.php:2130
 msgid "No events for living individuals exist for today."
-msgstr ""
+msgstr "Geen gebeurtenisse rakende lewende persone bestaan vir vandag nie."
 
 #: app/Functions/FunctionsPrintLists.php:2030
 #: app/Functions/FunctionsPrintLists.php:2145
 msgid "No events for living individuals exist for tomorrow."
-msgstr ""
+msgstr "Geen gebeurtenisse rakende lewende persone bestaan vir môre nie."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: app/Functions/FunctionsPrintLists.php:2033
@@ -9963,28 +9965,32 @@ msgstr ""
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
+"Geen gebeurtenisse rakende lewende persone bestaan vir die volgende %s dag "
+"nie."
 msgstr[1] ""
+"Geen gebeurtenisse rakende lewende persone bestaan vir die volgende %s dae "
+"nie."
 
 #: app/Controller/FamilyController.php:174
 msgid "No facts for this family."
-msgstr ""
+msgstr "Daar is geen feite vir die gesin nie."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:80
 msgid "No file was received.  Please try again."
-msgstr ""
+msgstr "Geen lêer is ontvang nie. Probeer asseblief weer."
 
 #: app/Module/FamilyTreeNewsModule.php:200
 msgid "No limit"
-msgstr ""
+msgstr "Geen beperking nie"
 
 #: relationship.php:206
 msgid "No link between the two individuals could be found."
-msgstr ""
+msgstr "Geen verwantskap kon tussen die twee persone gevind word nie."
 
 #: app/Stats.php:5950
 msgid "No logged-in and no anonymous users"
-msgstr ""
+msgstr "Niemand is aangemeld nie en daar is geen anonieme gebruikers"
 
 #: app/Module/GoogleMapsModule.php:192
 msgid "No map data for this individual"
@@ -9996,11 +10002,11 @@ msgstr "Geen ooreenstemende feite gevind nie"
 
 #: addmedia.php:167 addmedia.php:301 admin_media_upload.php:126
 msgid "No media file was provided."
-msgstr ""
+msgstr "Geen media-lêer is verskaf nie."
 
 #: app/Module/FamilyTreeNewsModule.php:118
 msgid "No news articles have been submitted."
-msgstr ""
+msgstr "Geen nuusartikels is voorgelê nie."
 
 #: app/Module/GoogleMapsModule.php:3909 app/Module/GoogleMapsModule.php:4572
 msgid "No places found"
@@ -10008,15 +10014,15 @@ msgstr "Geen plekke gevind"
 
 #: admin_trees_places.php:127
 msgid "No places have been found."
-msgstr ""
+msgstr "Geen plekke is gevind nie."
 
 #: admin_site_config.php:120
 msgid "No predefined text"
-msgstr ""
+msgstr "Geen vooraf gedefineerde teks nie"
 
 #: app/I18N.php:227 app/I18N.php:237
 msgid "No records to display"
-msgstr ""
+msgstr "Geen rekords om te vertoon nie"
 
 #: app/Controller/AdvancedSearchController.php:658
 #: app/Controller/SearchController.php:541
@@ -10025,24 +10031,24 @@ msgstr ""
 #: find.php:549 find.php:576 find.php:598 find.php:620 find.php:644
 #: placelist.php:60
 msgid "No results found."
-msgstr ""
+msgstr "Geen resultate is gevind nie."
 
 #: app/Functions/FunctionsEdit.php:607
 msgid "No temple - living ordinance"
-msgstr ""
+msgstr "Geen tempel - lewende ordinansie"
 
 #: admin.php:567 admin_site_upgrade.php:61
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Daar is geen opgraderingsinligting beskikbaar nie."
 
 #: app/Stats.php:1745
 msgid "Nobody at all"
-msgstr ""
+msgstr "Beslis niemand nie"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:86
 msgid "Nocturnal"
-msgstr ""
+msgstr "Nagtelike"
 
 #: admin_trees_download.php:178 app/Module/ClippingsCartModule.php:365
 #: app/Module/ClippingsCartModule.php:699
@@ -10054,75 +10060,78 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:205
 msgid "Nonidi"
-msgstr ""
+msgstr "Nonidi"
 
 #. I18N: time format “%A” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:108
 msgid "Noon"
-msgstr ""
+msgstr "Om middag"
 
 #: app/Stats.php:6888
 msgid "Norfolk Island"
-msgstr ""
+msgstr "Norfolk-eiland"
 
 #: admin_users.php:445
 msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
 msgstr ""
+"Normaalweg moet enige veranderinge aan die stamboom deur 'n moderator "
+"goedgekeur word. Hierdie opsie laat toe dat 'n gebruiker veranderinge kan "
+"aanbring sonder 'n moderator se goedkeuring."
 
 #: app/Stats.php:6909
 msgid "North Korea"
-msgstr ""
+msgstr "Noord-Korea"
 
 #: app/Stats.php:6891
 msgid "Northern Ireland"
-msgstr ""
+msgstr "Noord-Ierland"
 
 #: app/Stats.php:6875
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "Noordelike Mariana-eilande"
 
 #: app/Stats.php:6894
 msgid "Norway"
-msgstr ""
+msgstr "Noorweë"
 
 #: app/Module/CensusAssistantModule.php:364
 msgid "Not a valid individual, family, or source ID"
-msgstr ""
+msgstr "Nie 'n geldige persoons-, gesins- of bron-ID nie"
 
 #: admin.php:663
 msgid "Not approved by an administrator"
-msgstr ""
+msgstr "Nie deur 'n beheerder goedgekeur nie"
 
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1679
 msgid "Not living"
-msgstr ""
+msgstr "Oorlede"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1708
 msgid "Not married"
-msgstr ""
+msgstr "Ongetroud"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1704
 msgctxt "FEMALE"
 msgid "Not married"
-msgstr ""
+msgstr "Ongetroud"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1700
 msgctxt "MALE"
 msgid "Not married"
-msgstr ""
+msgstr "Ongetroud"
 
 #: admin.php:650
 msgid "Not verified by the user"
-msgstr ""
+msgstr "Nie deur die gebruiker geverifieer nie"
 
 #. I18N: gedcom tag NOTE
 #: app/Controller/FamilyController.php:181
@@ -10133,19 +10142,23 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:1101
 #: modules_v3/occupation_report/report.xml:64
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 #: admin_trees_config.php:844
 msgid "Note ID prefix"
-msgstr ""
+msgstr "Voorvoegsel vir Nota-ID"
 
 #: help_text.php:261
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
 msgstr ""
+"Let daarop dat indien 'n gebruikersrekening aan 'n rekord gekoppel is, "
+"daardie gebruiker altyd in staat sal wees om die rekord te sien."
 
 #: admin_users.php:610
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
 msgstr ""
+"Opmerking: Langer padlengtes vereis baie berekeninge, wat jou webwerf "
+"stadiger kan maak vir hierdie gebruikers."
 
 #. I18N: Name of a module
 #: app/Controller/SearchController.php:524 app/Module/NotesTabModule.php:34
@@ -10155,11 +10168,11 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:226 source.php:111
 #: statistics.php:352
 msgid "Notes"
-msgstr ""
+msgstr "Notas"
 
 #: admin_users.php:795
 msgid "Nothing found to cleanup"
-msgstr ""
+msgstr "Niks gevind om op te ruim nie"
 
 #: app/Module/BatchUpdateModule.php:241
 msgid "Nothing found."
@@ -10168,37 +10181,37 @@ msgstr "Niks gevind nie."
 #: app/Date/CalendarDate.php:321
 msgctxt "Abbreviation for November"
 msgid "Nov"
-msgstr ""
+msgstr "Nov."
 
 #: app/Date/CalendarDate.php:221
 msgctxt "GENITIVE"
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: app/Date/CalendarDate.php:289
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: app/Date/CalendarDate.php:255
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:658
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: app/GedcomCode/GedcomCodeTemp.php:235
 msgid "Nuku’Alofa, Tonga"
-msgstr ""
+msgstr "Nukuʻalofa, Tonga"
 
 #. I18N: gedcom tag NCHI
 #: app/GedcomTag.php:622 app/Stats.php:4947 app/Stats.php:4949
 #: app/Stats.php:4951 statistics.php:530 statisticsplot.php:1316
 msgid "Number of children"
-msgstr ""
+msgstr "Aantal kinders"
 
 #: app/Module/RecentChangesModule.php:147
 #: app/Module/UpcomingAnniversariesModule.php:147
@@ -10208,17 +10221,17 @@ msgstr "Aantal dae om te toon"
 
 #: app/Stats.php:5216 statistics.php:305
 msgid "Number of families without children"
-msgstr ""
+msgstr "Aantal gesinne sonder kinders"
 
 #: app/Module/ClippingsCartModule.php:202
 #: app/Module/ClippingsCartModule.php:220
 #: app/Module/ClippingsCartModule.php:238
 msgid "Number of generations"
-msgstr ""
+msgstr "Aantal geslagte"
 
 #: app/Module/FamilyTreeNewsModule.php:202
 msgid "Number of items"
-msgstr ""
+msgstr "Aantal items"
 
 #: app/Module/TopGivenNamesModule.php:153
 #: app/Module/TopPageViewsModule.php:170 app/Module/TopSurnamesModule.php:176
@@ -10228,142 +10241,144 @@ msgstr "Aantal items om te toon"
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:630
 msgid "Number of marriages"
-msgstr ""
+msgstr "Aantal huwelike"
 
 #: admin_users.php:701
 msgid "Number of months since the last login for a user’s account to be considered inactive: "
 msgstr ""
+"Aantal maande vanaf die laaste aanmelding, waarna 'n gebruiker as onaktief "
+"beskou word: "
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
-msgstr ""
+msgstr "Verpleegster"
 
 #: app/GedcomCode/GedcomCodeRela.php:201
 msgctxt "FEMALE"
 msgid "Nurse"
-msgstr ""
+msgstr "Verpleegster"
 
 #: app/GedcomCode/GedcomCodeRela.php:199
 msgctxt "MALE"
 msgid "Nurse"
-msgstr ""
+msgstr "Verpleër"
 
 #: app/GedcomCode/GedcomCodeTemp.php:241
 msgid "Oakland, California"
-msgstr ""
+msgstr "Oakland, Kalifornië"
 
 #: app/GedcomCode/GedcomCodeTemp.php:243
 msgid "Oaxaca, Mexico"
-msgstr ""
+msgstr "Oaxaca, Mexico"
 
 #. I18N: gedcom tag OCCU
 #: app/GedcomTag.php:650 modules_v3/occupation_report/report.xml:5
 #: modules_v3/occupation_report/report.xml:54
 msgid "Occupation"
-msgstr ""
+msgstr "Beroep"
 
 #. I18N: Name of a report
 #: app/Module/OccupationReportModule.php:29
 #: modules_v3/occupation_report/report.xml:3
 #: modules_v3/occupation_report/report.xml:37
 msgid "Occupations"
-msgstr ""
+msgstr "Beroepe"
 
 #: app/Stats.php:6912
 msgid "Occupied Palestinian Territory"
-msgstr ""
+msgstr "Besette Palestynse Gebied"
 
 #: app/Date/CalendarDate.php:320
 msgctxt "Abbreviation for October"
 msgid "Oct"
-msgstr ""
+msgstr "Okt."
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:204
 msgid "Octidi"
-msgstr ""
+msgstr "Octidi"
 
 #: app/Date/CalendarDate.php:220
 msgctxt "GENITIVE"
 msgid "October"
-msgstr ""
+msgstr "Oktober"
 
 #: app/Date/CalendarDate.php:288
 msgctxt "INSTRUMENTAL"
 msgid "October"
-msgstr ""
+msgstr "Oktober"
 
 #: app/Date/CalendarDate.php:254
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr ""
+msgstr "Oktober"
 
 #: app/Date/CalendarDate.php:186 app/Functions/FunctionsPrint.php:657
 msgctxt "NOMINATIVE"
 msgid "October"
-msgstr ""
+msgstr "Oktober"
 
 #: app/GedcomCode/GedcomCodeTemp.php:245
 msgid "Ogden, Utah"
-msgstr ""
+msgstr "Ogden, Utah"
 
 #: app/GedcomCode/GedcomCodeTemp.php:247
 msgid "Oklahoma City, Oklahoma"
-msgstr ""
+msgstr "Oklahoma City, Oklahoma"
 
 #: admin_site_change.php:311 admin_site_change.php:362
 msgid "Old data"
-msgstr ""
+msgstr "Ou gegewens"
 
 #: admin.php:831
 msgid "Old files found"
-msgstr ""
+msgstr "Ou lêers is gevind"
 
 #: pedigree.php:183
 msgid "Oldest at bottom"
-msgstr ""
+msgstr "Oudste onderaan"
 
 #: pedigree.php:183
 msgid "Oldest at top"
-msgstr ""
+msgstr "Oudste aan die bokant"
 
 #: statistics.php:292
 msgid "Oldest father"
-msgstr ""
+msgstr "Oudste vader"
 
 #: statistics.php:270
 msgid "Oldest female"
-msgstr ""
+msgstr "Oudste vrou"
 
 #: statistics.php:174
 msgid "Oldest living individuals"
-msgstr ""
+msgstr "Oudste lewende persone"
 
 #: statistics.php:269
 msgid "Oldest male"
-msgstr ""
+msgstr "Oudste man"
 
 #: statistics.php:293
 msgid "Oldest mother"
-msgstr ""
+msgstr "Oudste moeder"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:87
 msgid "Olivia"
-msgstr ""
+msgstr "Olivia"
 
 #: app/Stats.php:6899
 msgid "Oman"
-msgstr ""
+msgstr "Oman"
 
 #. I18N: Name of a module
 #: app/Module/OnThisDayModule.php:31
 msgid "On this day"
-msgstr ""
+msgstr "Op hierdie dag"
 
 #: calendar.php:137
 msgid "On this day…"
-msgstr ""
+msgstr "Op hierdie dag…"
 
 #: app/Functions/FunctionsEdit.php:220
 #: app/Functions/FunctionsPrintFacts.php:274
@@ -10371,19 +10386,23 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:832
 #: app/Functions/FunctionsPrintFacts.php:1098
 msgid "Only managers can edit"
-msgstr ""
+msgstr "Slegs bestuurders kan wysig"
 
 #: site-unavailable.php:92
 msgid "Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
 msgstr ""
+"Oeps! Die webbediener is nie in staat om met die databasis-bediener te "
+"verbind nie. Dit sou besig kon wees, instandhouding ondergaan, of eenvoudig "
+"stukkend wees. Jy kan oor 'n paar minute <a href=\"index.php\">weer "
+"probeer</a>, of jy kan met die beheerder van die webwerf in verbinding tree."
 
 #: setup.php:208
 msgid "Oops!  webtrees was unable to create files in this folder."
-msgstr ""
+msgstr "Oeps! webtrees kon nie lêers in hierdie lêergids skep nie."
 
 #: app/Functions/FunctionsPrint.php:474
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: app/Module/GoogleMapsModule.php:414
 msgid "Optional prefixes and suffixes"
@@ -10392,7 +10411,7 @@ msgstr "Opsionele voor- en agtervoegsels"
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
-msgstr ""
+msgstr "Ord"
 
 #: admin_module_menus.php:89 admin_module_sidebar.php:89
 #: admin_module_tabs.php:89
@@ -10403,64 +10422,64 @@ msgstr "Volgorde"
 #: app/Date/JalaliDate.php:88
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:152
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:120
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:56
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: gedcom tag ORDI
 #: app/GedcomTag.php:656
 msgid "Ordinance"
-msgstr ""
+msgstr "Ordonnansie"
 
 #. I18N: gedcom tag ORDN
 #: app/GedcomTag.php:660
 msgid "Ordination"
-msgstr ""
+msgstr "Inwyding"
 
 #: modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6
 msgid "Orientation"
-msgstr ""
+msgstr "Orientasie"
 
 #: app/GedcomCode/GedcomCodeTemp.php:249
 msgid "Orlando, Florida"
-msgstr ""
+msgstr "Orlando, Florida"
 
 #: app/GedcomTag.php:1889 app/Stats.php:5502 app/Stats.php:5921
 msgid "Other"
-msgstr ""
+msgstr "Ander"
 
 #: admin_trees_config.php:1419
 msgid "Other facts to show in charts"
-msgstr ""
+msgstr "Ander feite om in die diagramme te toon"
 
 #: addmedia.php:513 admin_media_upload.php:242
 msgid "Other folder… please type in"
-msgstr ""
+msgstr "Ander lêergids…vier in asseblief"
 
 #: admin_trees_config.php:2191
 msgid "Other settings"
-msgstr ""
+msgstr "Ander instellings"
 
 #: statistics.php:71
 msgid "Others"
-msgstr ""
+msgstr "Ander"
 
 #: app/Module/GoogleMapsModule.php:4320
 msgid "Overwrite existing coordinates."
@@ -10468,55 +10487,64 @@ msgstr "Oorskryf bestaande koördinate."
 
 #: statistics.php:73
 msgid "Own charts"
-msgstr ""
+msgstr "Eie diagramme"
 
 #: app/GedcomCode/GedcomCodeRela.php:212
 msgid "Owner"
-msgstr ""
+msgstr "Eienaar"
 
 #: app/GedcomCode/GedcomCodeRela.php:210
 msgctxt "FEMALE"
 msgid "Owner"
-msgstr ""
+msgstr "Eienares"
 
 #: app/GedcomCode/GedcomCodeRela.php:208
 msgctxt "MALE"
 msgid "Owner"
-msgstr ""
+msgstr "Eienaar"
 
 #. I18N: time format “%A” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:111
 msgid "P.M."
-msgstr ""
+msgstr "nm."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:89
 msgid "PHP blocked the file because of its extension."
-msgstr ""
+msgstr "PHP het die lêer geblok vanweë die suffiks."
 
 #: setup.php:135
 #, php-format
 msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
 msgstr ""
+"Die PHP uitbreiding “%1$s” is gesper. Daarsonder sal die volgende kenmerke "
+"nie werk nie: %2$s. Vra asseblief die beheerder van jou bediener om dit te "
+"ontsper."
 
 #: setup.php:124
 #, php-format
 msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
 msgstr ""
+"Die PHP uitbreiding “%s” is gesper. Jy kan nie webtrees installeer nie "
+"totdat dit ontsper is nie. Vra asseblief die beheerder van jou bediener om "
+"dit te ontsper."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:86
 msgid "PHP failed to write to disk."
-msgstr ""
+msgstr "PHP kon nie na die skyf skryf nie."
 
 #: admin_site_info.php:51
 msgid "PHP information"
-msgstr ""
+msgstr "PHP inligting"
 
 #: setup.php:144
 #, php-format
 msgid "PHP setting “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
 msgstr ""
+"Die PHP uitbreiding “%1$s” is gesper. Daarsonder sal die volgende kenmerke "
+"nie werk nie: %2$s. Vra asseblief die beheerder van jou bediener om dit te "
+"ontsper."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:211
@@ -10538,12 +10566,12 @@ msgstr "PHP tydslimiet"
 #: modules_v3/occupation_report/report.xml:38
 #: modules_v3/relative_ext_report/report.xml:44
 msgid "Page"
-msgstr ""
+msgstr "Bladsy"
 
 #: medialist.php:243
 #, php-format
 msgid "Page %s of %s"
-msgstr ""
+msgstr "Bladsy %s van %s"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -10560,44 +10588,44 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:8
 msgid "Page size"
-msgstr ""
+msgstr "Bladsygrootte"
 
 #: app/GedcomTag.php:1887
 msgid "Painting"
-msgstr ""
+msgstr "Skidery"
 
 #: app/Stats.php:6900
 msgid "Pakistan"
-msgstr ""
+msgstr "Pakistan"
 
 #: app/Stats.php:6905
 msgid "Palau"
-msgstr ""
+msgstr "Palau"
 
 #. I18N: A colour scheme
 #: app/Theme/ColorsTheme.php:147
 msgid "Palette"
-msgstr ""
+msgstr "Palet"
 
 #: app/GedcomCode/GedcomCodeTemp.php:253
 msgid "Palmyra, New York"
-msgstr ""
+msgstr "Palmyra, New York"
 
 #: app/Stats.php:6901
 msgid "Panama"
-msgstr ""
+msgstr "Panama"
 
 #: app/GedcomCode/GedcomCodeTemp.php:255
 msgid "Papeete, Tahiti"
-msgstr ""
+msgstr "Papeete, Tahiti"
 
 #: app/Stats.php:6906
 msgid "Papua New Guinea"
-msgstr ""
+msgstr "Papoea-Nieu-Guinee"
 
 #: app/Stats.php:6911
 msgid "Paraguay"
-msgstr ""
+msgstr "Paraguay"
 
 #: app/Controller/HourglassController.php:349
 #: app/Module/FamilyNavigatorModule.php:196 family.php:97
@@ -10612,11 +10640,11 @@ msgstr "Ouers"
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Parents and siblings"
-msgstr ""
+msgstr "Ouers en hulle kinders"
 
 #: app/Functions/FunctionsPrint.php:277
 msgid "Parent’s age"
-msgstr ""
+msgstr "Ouer se ouderdom"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:396 admin_users.php:339
@@ -10627,15 +10655,17 @@ msgstr "Wagwoord"
 
 #: admin_users.php:75 edituser.php:131
 msgid "Passwords do not match."
-msgstr ""
+msgstr "Wagwoorde stem nie ooreen nie."
 
 #: admin_users.php:344 edituser.php:216 login.php:434
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
 msgstr ""
+"Wagwoorde moet ten minste 6 karakters lank wees en is gevoelig vir "
+"hoofletters, sodat 'geheim’ van ‘GEHEIM’ verskil."
 
 #: edituser.php:136
 msgid "Passwords must contain at least 6 characters."
-msgstr ""
+msgstr "Wagwoorde moet ten minste 6 karakters bevat."
 
 #. I18N: Name of a report
 #: app/Controller/FanchartController.php:353
@@ -10648,7 +10678,7 @@ msgstr "Stamboom"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree Chart"
-msgstr ""
+msgstr "Stamboomdiagram"
 
 #: app/Controller/FanchartController.php:355
 #: app/Module/GoogleMapsModule.php:1382 app/Theme/AbstractTheme.php:1184
@@ -10670,7 +10700,7 @@ msgstr "Stamboom van %s"
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr ""
+msgstr "Stamboom van %s"
 
 #. I18N: Name of a module
 #: admin.php:712 admin.php:734 admin_site_upgrade.php:100
@@ -10678,16 +10708,21 @@ msgstr ""
 #: app/Theme/AbstractTheme.php:1603 edit_changes.php:34 edit_changes.php:48
 #: help_text.php:307 modules_v3/change_report/report.xml:52
 msgid "Pending changes"
-msgstr ""
+msgstr "Wysigings wat nog hangend is"
 
 #: help_text.php:314
 msgid "Pending changes are only shown when your account has permission to edit.  When you log out, you will no longer be able to see them.  Also, pending changes are only shown on certain pages.  For example, they are not shown in lists, reports, or search results."
 msgstr ""
+"Wysigings wat nog hangend is word slegs vertoon as jou rekening gemagtig is "
+"om wysigings aan te bring. Wanneer jy afmeld, sal jy hulle nie meer kan sien "
+"nie. Voorts, word wysigings wat nog hangend is net op sekere bladsye "
+"vertoon. Byvoorbeeld, hulle word nie vertoon in lyste, verslae of "
+"soekresultate nie."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1715
 msgid "Permanent number"
-msgstr ""
+msgstr "Permanente nommer"
 
 #: admin_site_change.php:348 admin_site_logs.php:313
 msgid "Permanently delete these records?"
@@ -10695,47 +10730,47 @@ msgstr "Hierdie rekords permanent verwyder?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:257
 msgid "Perth, Australia"
-msgstr ""
+msgstr "Perth, Australië"
 
 #: app/Stats.php:6903
 msgid "Peru"
-msgstr ""
+msgstr "Peru"
 
 #: app/Stats.php:6904
 msgid "Philippines"
-msgstr ""
+msgstr "Filippyne"
 
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:678
 msgid "Phone"
-msgstr ""
+msgstr "Telefoon"
 
 #. I18N: gedcom tag FONE
 #: app/GedcomTag.php:488
 msgid "Phonetic"
-msgstr ""
+msgstr "Foneties"
 
 #: search.php:258
 msgid "Phonetic algorithm"
-msgstr ""
+msgstr "Fonetiese algoritme"
 
 #: app/GedcomTag.php:604
 msgid "Phonetic name"
-msgstr ""
+msgstr "Fonetiese naam"
 
 #: app/GedcomTag.php:684
 msgid "Phonetic place"
-msgstr ""
+msgstr "Fonetiese pleknaam"
 
 #. I18N: search using “sounds like”, rather than exact spelling
 #: app/Controller/SearchController.php:198 app/Theme/AbstractTheme.php:1641
 #: branches.php:51
 msgid "Phonetic search"
-msgstr ""
+msgstr "Fonetiese soektog"
 
 #: app/GedcomTag.php:832
 msgid "Phonetic title"
-msgstr ""
+msgstr "Fonetiese titel"
 
 #: app/GedcomTag.php:1881
 msgid "Photo"
@@ -10743,30 +10778,30 @@ msgstr "Foto"
 
 #: admin_pgv_to_wt.php:150
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "Moontlik is PhpGedView in een van hierdie lêergidse geïnstalleer:"
 
 #. I18N: %s is a number
 #: admin_trees_manage.php:708
 #, php-format
 msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-msgstr ""
+msgstr "PhpGedView moet ten minste weergawe 4.2.3 wees, of enige SVN tot by #%s"
 
 #: admin_pgv_to_wt.php:91
 msgid "PhpGedView must use the same database as webtrees."
-msgstr ""
+msgstr "PhpGedView moet dieselfde databasis as webtrees gebruik."
 
 #: admin_pgv_to_wt.php:42 admin_trees_manage.php:694
 msgid "PhpGedView to webtrees transfer wizard"
-msgstr ""
+msgstr "PhpGedView na webtrees oordragsghoeroe"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:88
 msgid "Pink Plastic"
-msgstr ""
+msgstr "Plastiek Pienk"
 
 #: app/Stats.php:6902
 msgid "Pitcairn"
-msgstr ""
+msgstr "Pitcairneilande"
 
 #. I18N: gedcom tag PLAC
 #: app/GedcomTag.php:682 app/Module/GoogleMapsModule.php:1636
@@ -10794,7 +10829,7 @@ msgstr "Plekkontrole"
 #. I18N: Label for search field
 #: find.php:179
 msgid "Place contains"
-msgstr ""
+msgstr "Pleknaam bevat"
 
 #: app/Module/TopPageViewsModule.php:176
 msgid "Place counts before or after name?"
@@ -10807,152 +10842,170 @@ msgstr "Plekhiërargie"
 
 #: app/GedcomTag.php:688
 msgid "Place in Hebrew"
-msgstr ""
+msgstr "Pleknaam in Hebreeus"
 
 #: placelist.php:46 placelist.php:65
 msgid "Place list"
-msgstr ""
+msgstr "Lys van plekname"
 
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: admin_trees_config.php:1651
 msgid "Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 msgstr ""
+"Plekname is baie keer te lank om op diagramme, lyste, ens, te pas. Hulle kan "
+"afgekort word deur slegs die eerste dele van die naam te wys, soos  <i>plek, "
+"streek</i>, of die laatste gedeeltes daarvan soos <i>provinsie, land</i>."
 
 #: app/GedcomTag.php:178
 msgid "Place of LDS baptism"
-msgstr ""
+msgstr "Plek van LDS-doop"
 
 #: app/GedcomTag.php:776
 msgid "Place of LDS child sealing"
-msgstr ""
+msgstr "Plek van LDS-kinderverseëling"
 
 #: app/GedcomTag.php:416
 msgid "Place of LDS endowment"
-msgstr ""
+msgstr "Plek van LDS-skenking"
 
 #: app/GedcomTag.php:468
 msgid "Place of LDS spouse sealing"
-msgstr ""
+msgstr "Plek van LDS-verseëling van gade"
 
 #: app/GedcomTag.php:134
 msgid "Place of adoption"
-msgstr ""
+msgstr "Plek van aanneming"
 
 #: app/GedcomTag.php:186 modules_v3/missing_facts_report/report.xml:139
 msgid "Place of baptism"
-msgstr ""
+msgstr "Plek van doop"
 
 #: app/GedcomTag.php:194 modules_v3/missing_facts_report/report.xml:222
 msgid "Place of bar mitzvah"
-msgstr ""
+msgstr "Plek van die bar mitswa"
 
 #: app/GedcomTag.php:202 modules_v3/missing_facts_report/report.xml:263
 msgid "Place of bat mitzvah"
-msgstr ""
+msgstr "Plek van die bat mitswa"
 
 #: app/GedcomTag.php:210 modules_v3/fact_sources/report.xml:273
 #: modules_v3/missing_facts_report/report.xml:92
 msgid "Place of birth"
-msgstr ""
+msgstr "Geboorteplek"
 
 #: app/GedcomTag.php:218
 msgid "Place of blessing"
-msgstr ""
+msgstr "Plek van seëning"
 
 #: app/GedcomTag.php:1088
 msgid "Place of brit milah"
-msgstr ""
+msgstr "Plek van Brit milah"
 
 #: app/GedcomTag.php:230 modules_v3/missing_facts_report/report.xml:556
 msgid "Place of burial"
-msgstr ""
+msgstr "Plek van begrafnis"
 
 #: app/GedcomTag.php:282 modules_v3/missing_facts_report/report.xml:180
 msgid "Place of christening"
-msgstr ""
+msgstr "Doopplek"
 
 #: app/GedcomTag.php:314 modules_v3/missing_facts_report/report.xml:304
 msgid "Place of confirmation"
-msgstr ""
+msgstr "Plek van bevestiging"
 
 #: app/GedcomTag.php:334
 msgid "Place of cremation"
-msgstr ""
+msgstr "Plek van verassing"
 
 #: app/GedcomTag.php:358 modules_v3/fact_sources/report.xml:275
 #: modules_v3/missing_facts_report/report.xml:515
 msgid "Place of death"
-msgstr ""
+msgstr "Sterfplek"
 
 #: app/GedcomTag.php:408
 msgid "Place of emigration"
-msgstr ""
+msgstr "Plek van emigrasie"
 
 #: app/GedcomTag.php:424 modules_v3/missing_facts_report/report.xml:346
 msgid "Place of engagement"
-msgstr ""
+msgstr "Plek van verlowing"
 
 #: app/GedcomTag.php:432
 msgid "Place of event"
-msgstr ""
+msgstr "Plek van gebeurtenis"
 
 #: app/GedcomTag.php:480 modules_v3/missing_facts_report/report.xml:388
 msgid "Place of first communion"
-msgstr ""
+msgstr "Plek van eerse nagmaal"
 
 #: app/GedcomTag.php:524
 msgid "Place of immigration"
-msgstr ""
+msgstr "Plek van immigrasie"
 
 #: app/GedcomTag.php:462 app/GedcomTag.php:576
 #: modules_v3/fact_sources/report.xml:321
 #: modules_v3/missing_facts_report/report.xml:473
 msgid "Place of marriage"
-msgstr ""
+msgstr "Huweliksplek"
 
 #: app/GedcomTag.php:560 modules_v3/missing_facts_report/report.xml:430
 msgid "Place of marriage banns"
-msgstr ""
+msgstr "Plek van huweliksgebooie"
 
 #: app/GedcomTag.php:618
 msgid "Place of naturalization"
-msgstr ""
+msgstr "Plek van naturalisasie"
 
 #: app/GedcomTag.php:666
 msgid "Place of ordination"
-msgstr ""
+msgstr "Plek van inwyding"
 
 #: app/GedcomTag.php:732
 msgid "Place of residence"
-msgstr ""
+msgstr "Woonplek"
 
 #: admin_site_upgrade.php:416
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Plaas die webwerf van lyn af deur die volgende lêer te skep: %s…"
 
 #: admin_site_upgrade.php:472
 #, php-format
 msgid "Place the website online, by deleting the file %s…"
-msgstr ""
+msgstr "Plaas die webwerf aanlyn deur die volgende lêer te verwyder: %s…"
 
 #: admin_trees_config.php:1625 search.php:206 statistics.php:405
 msgid "Places"
-msgstr ""
+msgstr "Plekke"
 
 #: find.php:574
 msgid "Places found"
-msgstr ""
+msgstr "Plekke gevind"
 
 #. I18N: %s is a country or region
 #: placelist.php:142
 #, php-format
 msgid "Places in %s"
-msgstr ""
+msgstr "Plekke in %s"
 
 #: help_text.php:253
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
 msgstr ""
+"Plekname moet ingevoer word volgens die standaarde vir genealogie. In "
+"genealogie word die plekke aangeteken met die mees spesifieke gegewens van "
+"die plek eerste, gevolg deur minder spesifieke gegewens van die plek, geskei "
+"deur kommas. Die vlak waarby jy die plek informasie opteken, moet die vlak "
+"van die regering of kerk aandui waar die essensieele informasie opgeteken "
+"word.<br><br>Byvoorbeeld, 'n plek soos Amsterdam moet opgeteken word as "
+"Amsterdam, gemeente Amsterdam, Noord-Holland, Nederland. Dit sou kon gebeur "
+"dat jy nog 'n distrik binne 'n stad of 'n straatnaam wil aanteken. Dit moet "
+"vóór die stadsnaam kom. Dit is belangrik om elke plek aan te teken, want "
+"genealogiese rekords word deur elke vlak van regering bewaar.<br><br>As 'n "
+"vlak onbekend is, moet jy 'n spasie tussen die kommas invul. Gestel dat jy "
+"nie geweet het dat Amsterdam in die gemeente Amsterdam lê nie, dan word dit "
+"as volg aangeteken: Amsterdam, , Noord Holland, Nederland.<br><br>Jy kan van "
+"die <b>Vind Plek</b>skakel gebruik maak om plekke te vind wat alreeds in die "
+"databasis aangeteken is.."
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:102
 #: app/Theme/FabTheme.php:118 app/Theme/MinimalTheme.php:115
@@ -10963,121 +11016,128 @@ msgstr "Speel af"
 #: login.php:315
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
 msgstr ""
+"Klik op die volgende skakel en vul die gegewens in om jou gebruikersnaam en "
+"e-posadres te bevestig."
 
 #: search.php:55
 msgid "Please enter a given name, surname, or place in addition to the year"
-msgstr ""
+msgstr "Behalwe vir die jaartal, voer asseblief ook 'n voornaam, van of plek in"
 
 #: message.php:91
 msgid "Please enter a message subject."
-msgstr ""
+msgstr "Voer asseblief 'n onderwerp vir die boodskap in."
 
 #: message.php:50
 msgid "Please enter a valid email address."
-msgstr ""
+msgstr "Voer asseblief 'n geldige e-posadres in."
 
 #: app/Module/CensusAssistantModule.php:270 find.php:102 search.php:36
 #: search.php:48
 msgid "Please enter more than one character."
-msgstr ""
+msgstr "Voer asseblief meer as een karakter in."
 
 #: message.php:96
 msgid "Please enter some message text before sending."
 msgstr ""
+"Skryf asseblief iets in die teks van die boodskap voordat dit gestuur word."
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry."
 msgstr ""
+"Verskaf asseblief you e-posadres sodat ons met jou in verbinding kan tree in "
+"antwoord op hierdie boodskap. As jy nie 'n e-posadres verskaf nie, sal ons "
+"nie in staat wees om op jou navraag te reageer nie. Jou e-posadres sal op "
+"geen ander manier benut word as om op hierdie navraag te antwoord nie."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:92
 msgctxt "GENITIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:125
 msgctxt "LOCATIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:59
 msgctxt "NOMINATIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #: app/Stats.php:6907
 msgid "Poland"
-msgstr ""
+msgstr "Pole"
 
 #: app/SurnameTradition.php:90
 msgctxt "Surname tradition"
 msgid "Polish"
-msgstr ""
+msgstr "Pools"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:357 setup.php:279
 msgid "Port number"
-msgstr ""
+msgstr "Poortnommer"
 
 #: app/GedcomCode/GedcomCodeTemp.php:263
 msgid "Portland, Oregon"
-msgstr ""
+msgstr "Portland, Oregon"
 
 #: app/GedcomCode/GedcomCodeTemp.php:251
 msgid "Porto Alegre, Brazil"
-msgstr ""
+msgstr "Porto Alegre, Brasilië"
 
 #. I18N: page orientation
 #: admin_trees_config.php:53 modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6 pedigree.php:183
 msgid "Portrait"
-msgstr ""
+msgstr "Kortkant bo"
 
 #: app/Stats.php:6910
 msgid "Portugal"
-msgstr ""
+msgstr "Portugal"
 
 #: app/SurnameTradition.php:84
 msgctxt "Surname tradition"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugees"
 
 #. I18N: gedcom tag POST
 #: app/GedcomTag.php:692
 msgid "Postal code"
-msgstr ""
+msgstr "Poskode"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:96
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:129
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:63
 msgctxt "NOMINATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #: app/Module/GoogleMapsModule.php:3994
 msgid "Precision"
@@ -11090,28 +11150,36 @@ msgstr "Noukeurigheid van die breedte- en lengtegraad"
 #: admin_site_config.php:122
 msgid "Predefined text that states admin will decide on each request for a user account"
 msgstr ""
+"Vooraf gedefinieerde teks wat verklaar dat die beheerder oor elke aanvraag "
+"vir 'n gebruikersrekening sal beslis"
 
 #: admin_site_config.php:121
 msgid "Predefined text that states all users can request a user account"
 msgstr ""
+"Vooraf gedefinieerde teks wat verklaar dat alle besoekers 'n "
+"rebruikersrekening kan aanvra"
 
 #: admin_site_config.php:123
 msgid "Predefined text that states only family members can request a user account"
 msgstr ""
+"Vooraf gedefinieerde teks wat verklaar dat slegs familielede 'n "
+"gebruikersrekening kan aanvra"
 
 #: admin_trees_config.php:332 admin_trees_manage.php:385
 msgid "Preferences"
-msgstr ""
+msgstr "Voorkeure"
 
 #: admin_modules.php:93
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
 msgstr ""
+"Voorkeure bestaan vir die module “%s”, maar hierdie module bestaan nie meer "
+"nie."
 
 #. I18N: A configuration setting
 #: admin_users.php:472
 msgid "Preferred contact method"
-msgstr ""
+msgstr "Verkieslike kontakmetode"
 
 #: app/Module/GoogleMapsModule.php:424
 msgid "Prefixes"
@@ -11122,41 +11190,43 @@ msgstr "Voorvoegsels"
 #: app/Module/UpcomingAnniversariesModule.php:166
 #: app/Module/YahrzeitModule.php:274
 msgid "Presentation style"
-msgstr ""
+msgstr "Aanbiedingstyl"
 
 #. I18N: http://en.wikipedia.org/wiki/President_of_the_Church
 #: app/GedcomCode/GedcomCodeTemp.php:261
 msgid "President’s Office"
-msgstr ""
+msgstr "Kantoor van die President"
 
 #: app/GedcomCode/GedcomCodeTemp.php:265
 msgid "Preston, England"
-msgstr ""
+msgstr "Preston, Engeland"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:1157
 msgid "Preview"
-msgstr ""
+msgstr "Voorskou"
 
 #: app/GedcomCode/GedcomCodeRela.php:216
 msgid "Priest"
-msgstr ""
+msgstr "Priester"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:197
 msgid "Primidi"
-msgstr ""
+msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank?"
-msgstr ""
+msgstr "Druk basiese gebeurtenisse al is hulle leeg?"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
 msgid "Privacy"
-msgstr ""
+msgstr "Privaatheid"
 
 #: admin_trees_config.php:505 admin_trees_config.php:526
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr ""
+"Privaatheidsbeperkinge - hierdie is van toepassing op rekords en feite "
+"sonder 'n GEDCOM RESN etiket"
 
 #: app/Controller/GedcomRecordController.php:85 app/GedcomRecord.php:532
 #: app/GedcomRecord.php:610 app/GedcomRecord.php:735 app/Individual.php:1319
@@ -11169,68 +11239,68 @@ msgstr "Privaat"
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:696
 msgid "Probate"
-msgstr ""
+msgstr "Verifikasie van 'n testament"
 
 #. I18N: gedcom tag PROP
 #: app/GedcomTag.php:700
 msgid "Property"
-msgstr ""
+msgstr "Eiendom"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:1158
 msgid "Proposed census text&nbsp;&nbsp;"
-msgstr ""
+msgstr "Voorgestelde teks vir die sensus&nbsp;&nbsp;"
 
 #: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "Provo, Utah"
-msgstr ""
+msgstr "Provo, Utah"
 
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:704
 msgid "Publication"
-msgstr ""
+msgstr "Publikasie"
 
 #: app/Stats.php:6908
 msgid "Puerto Rico"
-msgstr ""
+msgstr "Puerto Rico"
 
 #: app/Stats.php:6914
 msgid "Qatar"
-msgstr ""
+msgstr "Katar"
 
 #. I18N: gedcom tag QUAY
 #: app/GedcomTag.php:708
 msgid "Quality of data"
-msgstr ""
+msgstr "Kwaliteit van gegewens"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:200
 msgid "Quartidi"
-msgstr ""
+msgstr "Quartidi"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:158
 msgid "Question"
-msgstr ""
+msgstr "Vraag"
 
 #: admin_trees_config.php:1927
 msgid "Quick family facts"
-msgstr ""
+msgstr "Spoed feite vir gesinne"
 
 #: admin_trees_config.php:1809
 msgid "Quick individual facts"
-msgstr ""
+msgstr "Spoed feite vir persone"
 
 #: admin_trees_config.php:2105
 msgid "Quick repository facts"
-msgstr ""
+msgstr "Spoed feite vir bergplekke"
 
 #: admin_trees_config.php:2016
 msgid "Quick source facts"
-msgstr ""
+msgstr "Spoed feite vir bronne"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:201
 msgid "Quintidi"
-msgstr ""
+msgstr "Quintidi"
 
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:133 app/Module/UserMessagesModule.php:134
@@ -11240,116 +11310,116 @@ msgstr "RE: "
 #. I18N: Menu entry
 #: admin_site_readme.php:28 app/Theme/AdministrationTheme.php:96
 msgid "README documentation"
-msgstr ""
+msgstr "LEES MY dokumentasie"
 
 #: app/GedcomCode/GedcomCodeRela.php:219
 msgid "Rabbi"
-msgstr ""
+msgstr "Rabbyn"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:92
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:124
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:93
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:125
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:61
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi’ al-thani"
 
 #. I18N: This is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:93
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:96
 msgctxt "GENITIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:128
 msgctxt "LOCATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:64
 msgctxt "NOMINATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #: app/GedcomCode/GedcomCodeTemp.php:269
 msgid "Raleigh, North Carolina"
-msgstr ""
+msgstr "Raleigh, Noord-Carolina"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:98
 msgctxt "GENITIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:130
 msgctxt "LOCATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:66
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:39
@@ -11378,21 +11448,21 @@ msgstr "Herrangskik media"
 #: admin_users.php:313 admin_users.php:865 edituser.php:167 login.php:297
 #: login.php:393
 msgid "Real name"
-msgstr ""
+msgstr "Werklike naam"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:35
 #: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
-msgstr ""
+msgstr "Onlangse veranderings"
 
 #: calendar.php:221
 msgid "Recent years (&lt; 100 yrs)"
-msgstr ""
+msgstr "Onlangse jare (&lt; 100 jaar)"
 
 #: app/GedcomCode/GedcomCodeTemp.php:271
 msgid "Recife, Brazil"
-msgstr ""
+msgstr "Recife, Brasilië"
 
 #: admin_site_change.php:302 admin_site_change.php:361
 #: admin_trees_config.php:531 app/Functions/FunctionsPrintLists.php:1831
@@ -11407,16 +11477,16 @@ msgstr "Rekord"
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:750
 msgid "Record ID number"
-msgstr ""
+msgstr "Rekord ID-nommer"
 
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:746
 msgid "Record file number"
-msgstr ""
+msgstr "Rekord lêernommer"
 
 #: search.php:82 statistics.php:347
 msgid "Records"
-msgstr ""
+msgstr "Rekords"
 
 #: admin_site_merge.php:59
 msgid "Records are not the same type.  Cannot merge records that are not the same type."
@@ -11424,7 +11494,7 @@ msgstr "Rekords is nie van dieselfde tipe nie. Kan nie rekords wat nie dieselfde
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
 msgid "Redlands, California"
-msgstr ""
+msgstr "Redlands, Kalifornië"
 
 #: app/Module/GoogleMapsModule.php:955 app/Module/GoogleMapsModule.php:2297
 #: app/Module/GoogleMapsModule.php:3695
@@ -11434,29 +11504,29 @@ msgstr "Herteken kaart"
 #. I18N: gedcom tag REFN
 #: app/GedcomTag.php:712
 msgid "Reference number"
-msgstr ""
+msgstr "Verwysingsnommer"
 
 #: app/GedcomCode/GedcomCodeTemp.php:275
 msgid "Regina, Saskatchewan, Canada"
-msgstr ""
+msgstr "Regina, Saskatchewan, Kanada"
 
 #: app/GedcomTag.php:580 modules_v3/fact_sources/report.xml:205
 msgid "Registered partnership"
-msgstr ""
+msgstr "Geregistreerde vennootskap"
 
 #: app/GedcomCode/GedcomCodeRela.php:227
 msgid "Registry officer"
-msgstr ""
+msgstr "Bevolkingsregister amptenaar"
 
 #: app/GedcomCode/GedcomCodeRela.php:225
 msgctxt "FEMALE"
 msgid "Registry officer"
-msgstr ""
+msgstr "Bevolkingsregister amptenaar"
 
 #: app/GedcomCode/GedcomCodeRela.php:223
 msgctxt "MALE"
 msgid "Registry officer"
-msgstr ""
+msgstr "Bevolkingsregister amptenaar"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:158
 msgid "Regular expression"
@@ -11465,84 +11535,84 @@ msgstr "Gewone uitdrukking"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Reëlmatige uitdrukkings is 'n gevorderde patroonherkenningstegniek."
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
 #: modules_v3/individual_ext_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:91
 msgid "Related families"
-msgstr ""
+msgstr "Verwante gesinne"
 
 #. I18N: Name of a report
 #: app/Module/RelatedIndividualsReportModule.php:29
 #: modules_v3/relative_ext_report/report.xml:3
 #: modules_v3/relative_ext_report/report.xml:43
 msgid "Related individuals"
-msgstr ""
+msgstr "Verwante persone"
 
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:716
 msgid "Relationship"
-msgstr ""
+msgstr "Verhouding"
 
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1501
 msgid "Relationship to father"
-msgstr ""
+msgstr "Verwantskap tot vader"
 
 #: app/Controller/FanchartController.php:359 app/Theme/AbstractTheme.php:1201
 msgid "Relationship to me"
-msgstr ""
+msgstr "Verwantskap tot my"
 
 #. I18N: gedcom tag _MREL
 #: app/GedcomTag.php:1663
 msgid "Relationship to mother"
-msgstr ""
+msgstr "Verwantskap tot moeder"
 
 #. I18N: gedcom tag PEDI
 #: app/GedcomTag.php:674
 msgid "Relationship to parents"
-msgstr ""
+msgstr "Verwantskap tot ouers"
 
 #: relationship.php:130
 #, php-format
 msgid "Relationship: %s"
-msgstr ""
+msgstr "Verwantskap: %s"
 
 #: app/Functions/FunctionsPrintLists.php:356 app/Theme/AbstractTheme.php:1203
 #: relationship.php:53
 msgid "Relationships"
-msgstr ""
+msgstr "Verwantskappe"
 
 #. I18N: %s are individual’s names
 #: relationship.php:48
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr ""
+msgstr "Verwantskappe tussen %1$s en %2$s"
 
 #. I18N: gedcom tag RELI
 #: app/GedcomTag.php:720 modules_v3/missing_facts_report/report.xml:26
 #: modules_v3/missing_facts_report/report.xml:586
 msgid "Religion"
-msgstr ""
+msgstr "Godsdiens"
 
 #: app/GedcomTag.php:662
 msgid "Religious institution"
-msgstr ""
+msgstr "Godsdienstige instituut"
 
 #: app/GedcomTag.php:582 modules_v3/fact_sources/report.xml:199
 msgid "Religious marriage"
-msgstr ""
+msgstr "Godsdienstige huwelik"
 
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
-msgstr ""
+msgstr "Tydperk vir e-posherinneringe (dae)"
 
 #. I18N: gedcom tag SERV
 #: app/GedcomTag.php:762
 msgid "Remote server"
-msgstr ""
+msgstr "Afstandsbediener"
 
 #: app/Module/ClippingsCartModule.php:435
 #: app/Module/ClippingsCartModule.php:457
@@ -11571,12 +11641,12 @@ msgstr "Verwyder persoon"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:127
 msgid "Remove link from list"
-msgstr ""
+msgstr "Verwyder die skakel uit die lys"
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:285
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Verwyder die GEDCOM mediapad uit lêername"
 
 #: app/Module/GoogleMapsModule.php:4521
 msgid "Remove this location?"
@@ -11584,26 +11654,26 @@ msgstr "Verwyder hierdie plek?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Reno, Nevada"
-msgstr ""
+msgstr "Reno, Nevada"
 
 #: admin_trees_manage.php:506
 msgid "Renumber"
-msgstr ""
+msgstr "Hernommer"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:100 admin_trees_merge.php:105
 #: admin_trees_renumber.php:33
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Hernommer die stamboom"
 
 #. I18N: button label
 #: search.php:219
 msgid "Replace"
-msgstr ""
+msgstr "Vervang"
 
 #: admin_trees_places.php:104 search.php:164
 msgid "Replace with"
-msgstr ""
+msgstr "Vervang met"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:149
 msgid "Replacement text"
@@ -11616,13 +11686,13 @@ msgstr "Beantwoord"
 #: admin_module_reports.php:66 admin_modules.php:185 reportengine.php:125
 #: reportengine.php:153
 msgid "Report"
-msgstr ""
+msgstr "Verslag"
 
 #. I18N: Menu entry
 #: admin_module_reports.php:28 admin_modules.php:159
 #: app/Theme/AbstractTheme.php:1623 app/Theme/AdministrationTheme.php:187
 msgid "Reports"
-msgstr ""
+msgstr "Verslae"
 
 #: admin.php:716 admin.php:774 admin_trees_duplicates.php:140
 #: app/Module/FamilyTreeStatisticsModule.php:118
@@ -11634,21 +11704,21 @@ msgstr "Bewaarplekke"
 
 #: find.php:596
 msgid "Repositories found"
-msgstr ""
+msgstr "Bergplekke gevind"
 
 #. I18N: gedcom tag REPO
 #: admin_trees_manage.php:554 app/GedcomTag.php:724 inverselink.php:130
 msgid "Repository"
-msgstr ""
+msgstr "Bergplek"
 
 #: admin_trees_config.php:810
 msgid "Repository ID prefix"
-msgstr ""
+msgstr "Voorvoegsel vir bergplek-ID"
 
 #. I18N: Label for search field
 #: find.php:198
 msgid "Repository contains"
-msgstr ""
+msgstr "Bergplek bevat"
 
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
@@ -11666,101 +11736,111 @@ msgstr "Vra nuwe gebruikerrekening aan"
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1739
 msgid "Research task"
-msgstr ""
+msgstr "Navorsingtaak"
 
 #. I18N: Name of a module.  Tasks that need further research.
 #: app/Module/ResearchTaskModule.php:33
 msgid "Research tasks"
-msgstr ""
+msgstr "Navorsingtake"
 
 #: app/Module/ResearchTaskModule.php:187
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research.  You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
 msgstr ""
+"Navorsingtake is spesiale gebeurtenisse, wat by persone in jou stamboom "
+"gevoeg word om aan te dui waar daar nog navorsing nodig is. Jy kan dit "
+"gebruik as 'n herinnering om feite na te gaan in meer betroubare bronne, of "
+"om dokumente of fotos op te soek, of om weersprekende inligting te "
+"ondersoek, ens."
 
 #: app/Module/ResearchTaskModule.php:189
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
 msgstr ""
+"Navorsingtake word aangeteken met die spesiale GEDCOM etiket ‘_TODO’. Dit "
+"mag wees dat ander genealogie programme nie hierdie etiket herken nie."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:728
 msgid "Residence"
-msgstr ""
+msgstr "Woonplek"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Herstel die verstekuitleg vir blokke"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
 msgstr ""
+"Beperk toegang tot die webwerf d.m.v. IP-adresse en gebruiker-agent stringe."
 
 #: admin_users.php:588
 msgid "Restrict to immediate family"
-msgstr ""
+msgstr "Beperk tot onmiddelike familie"
 
 #. I18N: gedcom tag RESN
 #: app/GedcomTag.php:736
 msgid "Restriction"
-msgstr ""
+msgstr "Beperking"
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts.  They restrict who can view the data and who can edit it."
 msgstr ""
+"Beperkinge kan by rekords en/of feite gevoeg word. Dit beperk wie die "
+"inligting kan sien en wie dit kan wysig."
 
 #: app/Stats.php:90
 msgid "Resulting value"
-msgstr ""
+msgstr "Resulterende waarde"
 
 #: statistics.php:632
 msgid "Results"
-msgstr ""
+msgstr "Resultate"
 
 #. I18N: gedcom tag RETI
 #: app/GedcomTag.php:740
 msgid "Retirement"
-msgstr ""
+msgstr "Aftrede"
 
 #: app/Stats.php:6915
 msgid "Reunion"
-msgstr ""
+msgstr "Reünie"
 
 #: index_edit.php:304
 msgid "Right section blocks"
-msgstr ""
+msgstr "Blokke aan regterkant"
 
 #. I18N: gedcom tag ROLE
 #: admin_users.php:579 app/GedcomTag.php:754
 msgid "Role"
-msgstr ""
+msgstr "Rol"
 
 #: app/Stats.php:6916
 msgid "Romania"
-msgstr ""
+msgstr "Roemenië"
 
 #. I18N: gedcom tag ROMN
 #: app/GedcomTag.php:758
 msgid "Romanized"
-msgstr ""
+msgstr "Geromaniseer"
 
 #: app/GedcomTag.php:686
 msgid "Romanized place"
-msgstr ""
+msgstr "Pleknaam geromaniseer"
 
 #: app/GedcomTag.php:834
 msgid "Romanized title"
-msgstr ""
+msgstr "Title geromaniseer"
 
 #: app/Functions/FunctionsPrintLists.php:250
 #: app/Functions/FunctionsPrintLists.php:666
 msgid "Roots"
-msgstr ""
+msgstr "Wortels"
 
 #. I18N: A configuration setting
 #. I18N: noun
 #: admin_site_access.php:287 admin_site_access.php:365
 msgid "Rule"
-msgstr ""
+msgstr "Reël"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:29 branches.php:55 search.php:263
@@ -11769,113 +11849,113 @@ msgstr "Russell"
 
 #: app/Stats.php:6917
 msgid "Russia"
-msgstr ""
+msgstr "Rusland"
 
 #: app/Stats.php:6918
 msgid "Rwanda"
-msgstr ""
+msgstr "Rwanda"
 
 #: admin_site_config.php:339
 msgid "SMTP mail server"
-msgstr ""
+msgstr "SMTP e-posbediener"
 
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Sacramento, California"
-msgstr ""
+msgstr "Sacramento, Kalifornië"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:91
 msgctxt "GENITIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:123
 msgctxt "LOCATIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:59
 msgctxt "NOMINATIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:89
 msgid "Sage"
-msgstr ""
+msgstr "Salie"
 
 #: app/Stats.php:6928
 msgid "Saint Helena"
-msgstr ""
+msgstr "Sint Helena"
 
 #: app/Stats.php:6848
 msgid "Saint Kitts and Nevis"
-msgstr ""
+msgstr "St. Kitts en Nevis"
 
 #: app/Stats.php:6855
 msgid "Saint Lucia"
-msgstr ""
+msgstr "St. Lucia"
 
 #: app/Stats.php:6936
 msgid "Saint Pierre and Miquelon"
-msgstr ""
+msgstr "Saint-Pierre en Miquelon"
 
 #: app/Stats.php:6970
 msgid "Saint Vincent and the Grenadines"
-msgstr ""
+msgstr "St. Vincent en die Grenadines"
 
 #: app/GedcomCode/GedcomCodeTemp.php:299
 msgid "Salt Lake City, Utah"
-msgstr ""
+msgstr "Salt Lake City, Utah"
 
 #: app/Stats.php:6979
 msgid "Samoa"
-msgstr ""
+msgstr "Samoa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:285
 msgid "San Antonio, Texas"
-msgstr ""
+msgstr "San Antonio, Texas"
 
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "San Diego, California"
-msgstr ""
+msgstr "San Diego, Kalifornië"
 
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "San Jose, Costa Rica"
-msgstr ""
+msgstr "San José, Costa Rica"
 
 #: app/Stats.php:6934
 msgid "San Marino"
-msgstr ""
+msgstr "San Marino"
 
 #: app/GedcomCode/GedcomCodeTemp.php:283
 msgid "Santiago, Chile"
-msgstr ""
+msgstr "Santiago de Chile, Chili"
 
 #: app/GedcomCode/GedcomCodeTemp.php:289
 msgid "Santo Domingo, Dominican Republic"
-msgstr ""
+msgstr "Santo Domingo, Dominikaanse Republiek"
 
 #: app/GedcomCode/GedcomCodeTemp.php:305
 msgid "Sao Paulo, Brazil"
-msgstr ""
+msgstr "São Paulo, Brasilië"
 
 #: app/Stats.php:6938
 msgid "Sao Tome and Principe"
-msgstr ""
+msgstr "São Tomé en Príncipe"
 
 #. I18N: abbreviation for Saturday
 #: app/Date/CalendarDate.php:371 app/Functions/FunctionsPrint.php:668
 msgid "Sat"
-msgstr ""
+msgstr "Sa."
 
 #: app/Module/GoogleMapsModule.php:305
 msgid "Satellite"
@@ -11883,51 +11963,51 @@ msgstr "Satelliet"
 
 #: app/Date/CalendarDate.php:346
 msgid "Saturday"
-msgstr ""
+msgstr "Saterdag"
 
 #: app/Stats.php:6919
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "Saoedi-Arabië"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:1159
 msgid "Save"
-msgstr ""
+msgstr "Bewaar"
 
 #: app/GedcomTag.php:388
 msgid "School or college"
-msgstr ""
+msgstr "Skool of kollege"
 
 #: app/Stats.php:6921
 msgid "Scotland"
-msgstr ""
+msgstr "Skotland"
 
 #. I18N: gedcom tag _SCBK
 #: app/GedcomTag.php:1719
 msgid "Scrapbook"
-msgstr ""
+msgstr "Plakboek"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:81
 msgctxt "Female pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Verseëling"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:77
 msgctxt "Male pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Verseëling"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:85
 msgctxt "Pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Verseëling"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
 msgid "Sealing cancelled (divorce)"
-msgstr ""
+msgstr "Verseëling herroep (egskeiding)"
 
 #. I18N: button label
 #: app/Module/DescendancyModule.php:101 app/Module/DescendancyModule.php:134
@@ -11942,7 +12022,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/census/census-edit.php:1200 search.php:142
 #: search.php:187 search.php:305 search_advanced.php:289
 msgid "Search"
-msgstr ""
+msgstr "Soek"
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:49
@@ -11954,22 +12034,24 @@ msgstr "Soek en vervang"
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:58
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
+"Soek en vervang teks deur eenvoudige soektogte of gevorderde "
+"patroonherkenning."
 
 #: includes/session.php:516
 msgid "Search engine"
-msgstr ""
+msgstr "Soekenjin"
 
 #: medialist.php:183
 msgid "Search filters"
-msgstr ""
+msgstr "Soekfilters"
 
 #: admin_trees_places.php:102 search.php:75 search.php:158
 msgid "Search for"
-msgstr ""
+msgstr "Soek vir"
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:69
 msgid "Search for individuals to add to add Links list."
-msgstr ""
+msgstr "Soek persone om by die “Voeg skakels by”-lys te voeg."
 
 #: app/Module/GoogleMapsModule.php:3987
 msgid "Search globally"
@@ -11989,12 +12071,12 @@ msgstr "Deursoek teks/patroon"
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Seattle, Washington"
-msgstr ""
+msgstr "Seattle, Washington"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:370
 msgid "Second record"
-msgstr ""
+msgstr "Tweede rekord"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:409
@@ -12004,26 +12086,26 @@ msgstr "Veilige verbinding"
 #. I18N: A site configuration setting
 #: admin_site_config.php:613
 msgid "Security code"
-msgstr ""
+msgstr "Sekuriteitskode"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Sien %s vir meer inligting."
 
 #: admin_site_merge.php:210 admin_site_merge.php:257 admin_site_merge.php:303
 msgid "Select"
-msgstr ""
+msgstr "Kies"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:205
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Kies 'n GECOM-lêer om in te voer"
 
 #: app/Functions/FunctionsEdit.php:395 reportengine.php:244
 msgid "Select a date"
-msgstr ""
+msgstr "Kies 'n datum"
 
 #: app/Module/GoogleMapsModule.php:4306
 msgid "Select a file from the list of files already on the server which contains the place locations in CSV format."
@@ -12031,7 +12113,7 @@ msgstr "Kies 'n lêer van die lys van lêers alreeds op die lêerbediener wat di
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr ""
+msgstr "Kies 'n diagramtipe"
 
 #: edit_interface.php:1245
 msgid "Select events"
@@ -12043,51 +12125,51 @@ msgstr "Kies vlag"
 
 #: lifespan.php:38
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Kies persone op grond van plek of datum"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:41
 msgid "Select records from your family tree and save them as a GEDCOM file."
-msgstr ""
+msgstr "Kies rekords uit jou stamboom en bewaar hulle as 'n GEDCOM-lêer."
 
 #: statistics.php:544 statistics.php:555 statistics.php:564
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "Kies die verlangde ouderdom interval"
 
 #: statistics.php:573
 msgid "Select the desired count interval"
-msgstr ""
+msgstr "Kies die gewenste interval wat getel moet word"
 
 #: admin_site_merge.php:196
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Kies die feite en gebeurtenisse van beide rekords om te behou."
 
 #: admin_site_config.php:627
 msgid "Select the languages that will be shown in menus."
-msgstr ""
+msgstr "Kies die tale wat in die kieslyste vertoon gaan word."
 
 #: app/Module/FamilyTreeStatisticsModule.php:298
 msgid "Select the stats to show in this block"
-msgstr ""
+msgstr "Kies die statistieke om in hierdie blok te wys"
 
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:348
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Kies twee rekords om saam te voeg."
 
 #: app/GedcomCode/GedcomCodeRela.php:236
 msgid "Seller"
-msgstr ""
+msgstr "Verkoper"
 
 #: app/GedcomCode/GedcomCodeRela.php:234
 msgctxt "FEMALE"
 msgid "Seller"
-msgstr ""
+msgstr "Verkoopster"
 
 #: app/GedcomCode/GedcomCodeRela.php:232
 msgctxt "MALE"
 msgid "Seller"
-msgstr ""
+msgstr "Verkoper"
 
 #: app/Module/UserMessagesModule.php:107 login.php:513 message.php:128
 msgid "Send"
@@ -12100,104 +12182,106 @@ msgstr "Stuur Boodskap"
 
 #: admin_users_bulk.php:41
 msgid "Send a message to all users"
-msgstr ""
+msgstr "Stuur 'n boodksap aan alle gebruikers"
 
 #: admin_users_bulk.php:46
 msgid "Send a message to users who have never logged in"
-msgstr ""
+msgstr "Stuur 'n boodksap aan gebruikers wat nog nooit aangemeld het nie"
 
 #: admin_users_bulk.php:51
 msgid "Send a message to users who have not logged in for 6 months"
 msgstr ""
+"Stuur 'n boodskap aan gebruikers wat in die laaste 6 maande nog nie "
+"aangemeld het nie"
 
 #. I18N: Menu entry
 #: admin_users_bulk.php:26 app/Theme/AdministrationTheme.php:157
 msgid "Send broadcast messages"
-msgstr ""
+msgstr "Stuur uitsaai boodskappe"
 
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails?"
-msgstr ""
+msgstr "Stuur e-posherinneringe?"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329
 msgid "Sender name"
-msgstr ""
+msgstr "Naam van afsender"
 
 #. I18N: Menu entry
 #: admin_site_config.php:137 app/Theme/AdministrationTheme.php:88
 msgid "Sending email"
-msgstr ""
+msgstr "E-pos word gestuur"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:422
 msgid "Sending server name"
-msgstr ""
+msgstr "Naam van die uitgaande bediener"
 
 #: app/Stats.php:6924
 msgid "Senegal"
-msgstr ""
+msgstr "Senegal"
 
 #: app/GedcomCode/GedcomCodeTemp.php:293
 msgid "Seoul, Korea"
-msgstr ""
+msgstr "Seoel, Suid-Korea"
 
 #: app/Date/CalendarDate.php:319
 msgctxt "Abbreviation for September"
 msgid "Sep"
-msgstr ""
+msgstr "Sep."
 
 #. I18N: gedcom tag _SEPR
 #: app/GedcomTag.php:1723
 msgid "Separated"
-msgstr ""
+msgstr "Uitmekaar"
 
 #: app/Date/CalendarDate.php:219
 msgctxt "GENITIVE"
 msgid "September"
-msgstr ""
+msgstr "September"
 
 #: app/Date/CalendarDate.php:287
 msgctxt "INSTRUMENTAL"
 msgid "September"
-msgstr ""
+msgstr "September"
 
 #: app/Date/CalendarDate.php:253
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr ""
+msgstr "September"
 
 #: app/Date/CalendarDate.php:185 app/Functions/FunctionsPrint.php:656
 msgctxt "NOMINATIVE"
 msgid "September"
-msgstr ""
+msgstr "September"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:203
 msgid "Septidi"
-msgstr ""
+msgstr "Septidi"
 
 #: app/Stats.php:6925
 msgid "Serbia"
-msgstr ""
+msgstr "Serwië"
 
 #: app/Stats.php:6920
 msgid "Serbia and Montenegro"
-msgstr ""
+msgstr "Serwië en Montenegro"
 
 #: app/GedcomCode/GedcomCodeRela.php:245
 msgid "Servant"
-msgstr ""
+msgstr "Bediende"
 
 #: app/GedcomCode/GedcomCodeRela.php:243
 msgctxt "FEMALE"
 msgid "Servant"
-msgstr ""
+msgstr "Bediende"
 
 #: app/GedcomCode/GedcomCodeRela.php:241
 msgctxt "MALE"
 msgid "Servant"
-msgstr ""
+msgstr "Bediende"
 
 #: app/Module/GoogleMapsModule.php:4294
 msgid "Server file containing places (CSV)"
@@ -12206,107 +12290,118 @@ msgstr "Lêer op die lêerbediener wat plekke bevat (in CSV-formaat)"
 #. I18N: Menu entry
 #: admin.php:534 admin_site_info.php:26 app/Theme/AdministrationTheme.php:95
 msgid "Server information"
-msgstr ""
+msgstr "Bediener inligting"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:344 setup.php:275
 msgid "Server name"
-msgstr ""
+msgstr "Bedienernaam"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:285
 msgid "Session timeout"
-msgstr ""
+msgstr "Sessie tydopskorting"
 
 #: admin_trees_manage.php:438 admin_trees_manage.php:449
 msgid "Set as default"
-msgstr ""
+msgstr "Maak dit die verstekwaarde"
 
 #: inverselink.php:152
 msgid "Set link"
-msgstr ""
+msgstr "Maak koppeling"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:142 index_edit.php:47
 msgid "Set the default blocks for new family trees"
-msgstr ""
+msgstr "Verstel die verstekblokke vir nuwe stambome"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:159 index_edit.php:39
 msgid "Set the default blocks for new users"
-msgstr ""
+msgstr "Verstel die verstekblokke vir nuwe gebruikers"
 
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1319
 msgid "Set the default number of generations to display on descendancy and pedigree charts."
 msgstr ""
+"Verstel die verstekgetal geslagte om te vertoon in afstammeling- en "
+"stamboomdiagramme."
 
 #. I18N: Help text for the “Maximum descendancy generations” configuration setting
 #: admin_trees_config.php:1359
 msgid "Set the maximum number of generations to display on descendancy charts."
 msgstr ""
+"Verstel die maksimum aantal geslagte om in afstammelingdiagramme te wys."
 
 #. I18N: Help text for the “Maximum pedigree generations” configuration setting
 #: admin_trees_config.php:1339
 msgid "Set the maximum number of generations to display on pedigree charts."
-msgstr ""
+msgstr "Verstel die maksimum aantal geslagte om in stamboomdiagramme te wys."
 
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: admin_trees_config.php:401
 msgid "Set the privacy access level for all dead individuals."
-msgstr ""
+msgstr "Verstel die privaatheid-toegangsvlakke vir alle persone wat oorlede is."
 
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:730
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
 msgstr ""
+"Kies <b>Ja</b> om die RIN-nommer te gebruik in plaas van die GEDCOM-ID "
+"wanneer daar gevra word vir persoon-ID's in konfigurasielêers, "
+"gebruikersinstellinge en diagramme. Dit is nuttig vir genealogie programme "
+"wat nie konsekwent dieselfde persoon-ID aan 'n persoon toeken nie wanneer "
+"GEDCOM's uitgevoer word, maar wel altyd dieselfde RIN-nommer gebruik."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1684
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
 msgstr ""
+"As hierdie opsie na <b>Ja</b> verstel word, sal skakels geplaas word op "
+"persone, bronne en gesinne om gebruikers in staat te stel om 'n nuwe venster "
+"op te roep met gegewens wat direk uit die GEDCOM lêer kom."
 
 #: setup.php:88
 msgid "Setup wizard for webtrees"
-msgstr ""
+msgstr "Installeeringsghoeroe vir webtrees"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:202
 msgid "Sextidi"
-msgstr ""
+msgstr "Sextidi"
 
 #: app/Stats.php:6945
 msgid "Seychelles"
-msgstr ""
+msgstr "Seychelle"
 
 #: app/Date/JalaliDate.php:188
 msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
-msgstr ""
+msgstr "Shah"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:92
 msgctxt "GENITIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:124
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #: admin_trees_manage.php:577 app/Controller/FamilyController.php:187
 #: app/GedcomTag.php:768 edit_interface.php:1364 edit_interface.php:1457
@@ -12317,7 +12412,7 @@ msgstr "Gedeelde nota"
 #. I18N: Label for search field
 #: find.php:218
 msgid "Shared note contains"
-msgstr ""
+msgstr "Gedeelde nota bevat"
 
 #: app/Functions/FunctionsPrintLists.php:1088 app/Theme/AbstractTheme.php:1447
 #: notelist.php:33 notelist.php:37 search.php:102
@@ -12326,228 +12421,230 @@ msgstr "Gedeelde notas"
 
 #: find.php:618
 msgid "Shared notes found"
-msgstr ""
+msgstr "Gedeelde notas gevind"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:99
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:163
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:131
 msgctxt "LOCATIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:67
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:97
 msgctxt "GENITIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:129
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:65
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #: modules_v3/descendancy_report/report.xml:359
 msgid "She "
-msgstr ""
+msgstr "Sy "
 
 #: modules_v3/ahnentafel_report/report.xml:290
 msgid "She died"
-msgstr ""
+msgstr "Sy sterf"
 
 #: modules_v3/ahnentafel_report/report.xml:260
 #: modules_v3/descendancy_report/report.xml:243
 msgid "She married"
-msgstr ""
+msgstr "Sy trou met"
 
 #: modules_v3/ahnentafel_report/report.xml:223
 msgid "She resided at"
-msgstr ""
+msgstr "Sy het gewoon in"
 
 #: modules_v3/descendancy_report/report.xml:332
 msgid "She was born"
-msgstr ""
+msgstr "Sy is gebore"
 
 #: modules_v3/ahnentafel_report/report.xml:340
 msgid "She was buried"
-msgstr ""
+msgstr "Sy is begrawe"
 
 #: modules_v3/ahnentafel_report/report.xml:167
 msgid "She was christened"
-msgstr ""
+msgstr "Sy is gedoop"
 
 #: modules_v3/ahnentafel_report/report.xml:315
 msgid "She was cremated"
-msgstr ""
+msgstr "Sy is veras"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:139
 msgctxt "GENITIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:215
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:177
 msgctxt "LOCATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:101
 msgctxt "NOMINATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:90
 msgid "Shiny Tomato"
-msgstr ""
+msgstr "Blink Tamatie"
 
 #. I18N: gedcom tag _SUBQ
 #: app/GedcomTag.php:1735
 msgid "Short version"
-msgstr ""
+msgstr "Verkorte weergawe"
 
 #: help_text.php:136 help_text.php:148 help_text.php:159
 msgid "Shortcut"
-msgstr ""
+msgstr "Kortpad"
 
 #: statistics.php:250
 msgid "Shortest marriage"
-msgstr ""
+msgstr "Kortste huwelik"
 
 #: app/Module/RecentChangesModule.php:176
 msgid "Should this block be hidden when it is empty?"
-msgstr ""
+msgstr "Moet hierdie blok verberg word as dit leeg is?"
 
 #: calendar.php:201
 msgid "Show"
-msgstr ""
+msgstr "Vertoon"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:499
 msgid "Show acceptable use agreement on “Request new user account” page"
 msgstr ""
+"Vertoon die redelike gebruik ooreenkoms op die bladsy “Versoek 'n nuwe "
+"gebruikersrekening”"
 
 #: app/Module/NotesTabModule.php:69
 msgid "Show all notes"
-msgstr ""
+msgstr "Vertoon al die notas"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1599
 msgid "Show all notes and source references on notes and sources tabs"
-msgstr ""
+msgstr "Vertoon al die notas en bronverwysings op die nota- en bronoortjies"
 
 #: placelist.php:239
 msgid "Show all places in a list"
-msgstr ""
+msgstr "Vertoon alle plekke in 'n lys"
 
 #: app/Module/SourcesTabModule.php:69
 msgid "Show all sources"
-msgstr ""
+msgstr "Vertoon alle bronne"
 
 #: app/Module/InteractiveTree/TreeView.php:62
 msgid "Show all spouses and ancestors"
-msgstr ""
+msgstr "Vertoon alle gades en voorouers"
 
 #: find.php:437
 msgid "Show all tags"
-msgstr ""
+msgstr "Vertoon alle etikette"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:277
 msgid "Show an age cursor?"
-msgstr ""
+msgstr "Vertoon 'n leeftyd-pyltjie?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1367
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Vertoon diagram detail by verstek"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
-msgstr ""
+msgstr "Vertoon die kinders van voorouers?"
 
 #: app/Module/FamilyTreeStatisticsModule.php:291
 msgid "Show common surnames?"
-msgstr ""
+msgstr "Vertoon die algement vanne?"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
-msgstr ""
+msgstr "Vertoon paartjies waar iemand meer as een keer getroud is."
 
 #: app/Functions/FunctionsPrintLists.php:635
 msgid "Show couples where only the female partner is deceased."
-msgstr ""
+msgstr "Vertoon paartjies waar die vrou oorlede is."
 
 #: app/Functions/FunctionsPrintLists.php:644
 msgid "Show couples where only the male partner is deceased."
-msgstr ""
+msgstr "Vertoon paartjies waar die man oorlede is."
 
 #: app/Functions/FunctionsPrintLists.php:693
 msgid "Show couples who married more than 100 years ago."
-msgstr ""
+msgstr "Vertoon paartjies wat meer as 100 jaar gelede getroud is."
 
 #: app/Functions/FunctionsPrintLists.php:702
 msgid "Show couples who married within the last 100 years."
-msgstr ""
+msgstr "Vertoon paartjies wat in die laaste 100 jaar getroud is."
 
 #: app/Functions/FunctionsPrintLists.php:684
 msgid "Show couples with an unknown marriage date."
-msgstr ""
+msgstr "Vertoon paartjies met onbekende huweliksdatums."
 
 #: ancestry.php:74
 msgid "Show cousins"
-msgstr ""
+msgstr "Vertoon niggies en nefies"
 
 #: app/Module/RelativesTabModule.php:314
 msgid "Show date differences"
-msgstr ""
+msgstr "Vertoon verskille in datums"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:285
 msgid "Show date of last update?"
-msgstr ""
+msgstr "Vertoon die datum van die laaste wysiging?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:391
 msgid "Show dead individuals"
-msgstr ""
+msgstr "Vertoon persone wat oorlede is"
 
 #: ancestry.php:114 app/Module/ChartsBlockModule.php:203 descendancy.php:83
 #: familybook.php:54 hourglass.php:55 pedigree.php:167 relationship.php:75
@@ -12556,29 +12653,29 @@ msgstr "Toon Besonderhede"
 
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show divorced couples."
-msgstr ""
+msgstr "Vertoon geskeide paartjies."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1049
 msgid "Show download link in media viewer"
-msgstr ""
+msgstr "Vertoon 'n aflaai-skakel in die mediakyker"
 
 #: admin_trees_config.php:1463
 msgid "Show events of close relatives on individual page"
-msgstr ""
+msgstr "Vertoon gebeurtenisse van naverwante familie op die persoon se bladsy"
 
 #: admin_trees_config.php:1103
 msgid "Show highlight images in individual boxes"
-msgstr ""
+msgstr "Vertoon kenmerk-beelde in raampies vir persone"
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1710
 msgid "Show hit counters on Portal and Individual pages."
-msgstr ""
+msgstr "Vertoon treftellers op Portaal en 'n persoon se bladsye."
 
 #: compact.php:59
 msgid "Show images"
-msgstr ""
+msgstr "Vertoon beelde"
 
 #: app/Module/GoogleMapsModule.php:4549
 msgid "Show inactive places"
@@ -12586,77 +12683,79 @@ msgstr "Toon onaktiewe plekke"
 
 #: app/Functions/FunctionsPrintLists.php:227
 msgid "Show individuals born more than 100 years ago."
-msgstr ""
+msgstr "Vertoon persone wat meer as 100 jaar gelede gebore is."
 
 #: app/Functions/FunctionsPrintLists.php:236
 msgid "Show individuals born within the last 100 years."
-msgstr ""
+msgstr "Vertoon persone wat in die laaste 100 jaar gebore is."
 
 #: app/Functions/FunctionsPrintLists.php:189
 #: app/Functions/FunctionsPrintLists.php:626
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr ""
+"Vertoon persone wat lewend is, of paartjies waarvan beide persone nog leef."
 
 #: app/Functions/FunctionsPrintLists.php:198
 #: app/Functions/FunctionsPrintLists.php:653
 msgid "Show individuals who are dead or couples where both partners are deceased."
 msgstr ""
+"Vertoon persone wat oorlede is of paartjies waar beide persone oorlede is."
 
 #: app/Functions/FunctionsPrintLists.php:207
 msgid "Show individuals who died more than 100 years ago."
-msgstr ""
+msgstr "Vertoon persone wat meet as 100 jaar gelede gesterf het."
 
 #: app/Functions/FunctionsPrintLists.php:216
 msgid "Show individuals who died within the last 100 years."
-msgstr ""
+msgstr "Vertoon persone wat in die laaste 100 jaar oorlede is."
 
 #: timeline.php:315
 msgid "Show lifespans"
-msgstr ""
+msgstr "Vertoon lewensdure"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:272
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Vertoon lys van stambome"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:431
 msgid "Show living individuals"
-msgstr ""
+msgstr "Vertoon lewende persone"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:471
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Vertoon name van privaat persone"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes?"
-msgstr ""
+msgstr "Vertoon notas?"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations?"
-msgstr ""
+msgstr "Vertoon beroepe?"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages?"
-msgstr ""
+msgstr "Vertoon slegs geboortes, sterftes en huwelike?"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals?"
-msgstr ""
+msgstr "Vertoon slegs gebeurtenisse van lewende persone?"
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
-msgstr ""
+msgstr "Vertoon net vroue."
 
 #: app/Functions/FunctionsPrintLists.php:178
 msgid "Show only individuals for whom the gender is not known."
-msgstr ""
+msgstr "Vertoon slegs persone waarvan die geslag onbekend is."
 
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all?"
@@ -12664,59 +12763,59 @@ msgstr "Toon slegs persone, gebeure, of alles?"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
-msgstr ""
+msgstr "Vertoon slegs mans."
 
 #: find.php:436
 msgid "Show only the selected tags"
-msgstr ""
+msgstr "Vertoon slegs etikkete wat geselekteer is"
 
 #: app/Functions/FunctionsPrintLists.php:299
 #: app/Functions/FunctionsPrintLists.php:760
 msgid "Show parents"
-msgstr ""
+msgstr "Vertoon ouers"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
-msgstr ""
+msgstr "Vertoon die wysigings wat hangend is"
 
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos?"
-msgstr ""
+msgstr "Vertoon fotos?"
 
 #: placelist.php:83
 msgid "Show places in hierarchy"
-msgstr ""
+msgstr "Vertoon plekke in die hiërargie"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:491
 msgid "Show private relationships"
-msgstr ""
+msgstr "Vertoon private verwantskappe"
 
 #: search.php:111 search.php:275
 msgid "Show related individuals/families"
-msgstr ""
+msgstr "Vertoon verwante persone/gesinne"
 
 #: app/Module/ResearchTaskModule.php:195
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "Vertoon navorsingtake wat aan ander gebruikers toegeken is"
 
 #: app/Module/ResearchTaskModule.php:201
 msgid "Show research tasks that are not assigned to any user"
-msgstr ""
+msgstr "Vertoon navorsingtake wat aan geen gebruiker toegeken is"
 
 #: app/Module/ResearchTaskModule.php:207
 msgid "Show research tasks that have a date in the future"
-msgstr ""
+msgstr "Vertoon navorsingtake wat 'n toekomstige datum het"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences?"
-msgstr ""
+msgstr "Vertoon woonplekke?"
 
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls?"
-msgstr ""
+msgstr "Vertoon skyfievertoning beheerknoppe?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12724,7 +12823,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources?"
-msgstr ""
+msgstr "Vertoon bronne?"
 
 #: familybook.php:81 hourglass.php:72
 msgid "Show spouses"
@@ -12733,30 +12832,30 @@ msgstr "Toon gades"
 #: app/Functions/FunctionsPrintLists.php:302
 #: app/Functions/FunctionsPrintLists.php:763
 msgid "Show statistics charts"
-msgstr ""
+msgstr "Vertoon statistiekdiagramme"
 
 #. I18N: The placeholders are edit controls.  Show the [first/last] [1/2/3/4/5] parts of a place name
 #: admin_trees_config.php:1641
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr ""
+msgstr "Vertoon die %1$s %2$s dele van 'n pleknaam."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
-msgstr ""
+msgstr "Vertoon die datum en tyd van die laaste wysiging"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:367
 msgid "Show the family tree"
-msgstr ""
+msgstr "Vertoon die stamboom"
 
 #: famlist.php:178 indilist.php:179
 msgid "Show the list of individuals"
-msgstr ""
+msgstr "Vertoon die lys van persone"
 
 #: famlist.php:180 indilist.php:181
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "Vertoon die lys van vanne"
 
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:78
@@ -12766,7 +12865,7 @@ msgstr "Toon die ligging van die plekke en gebeurtenisse wat gebruik maak van di
 #: app/Module/FrequentlyAskedQuestionsModule.php:180
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages?"
-msgstr ""
+msgstr "Vir watter tale moet hierdie blok vertoon word?"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1039 app/Functions/FunctionsEdit.php:198
@@ -12776,7 +12875,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:829
 #: app/Functions/FunctionsPrintFacts.php:1095
 msgid "Show to managers"
-msgstr ""
+msgstr "Vertoon aan bestuurders"
 
 #: admin_trees_config.php:80 admin_trees_config.php:87
 #: admin_trees_config.php:375 admin_trees_config.php:439
@@ -12787,7 +12886,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:826
 #: app/Functions/FunctionsPrintFacts.php:1092
 msgid "Show to members"
-msgstr ""
+msgstr "Vertoon aan lede"
 
 #: admin_trees_config.php:79 admin_trees_config.php:86
 #: admin_trees_config.php:375 admin_trees_config.php:439
@@ -12798,125 +12897,144 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:823
 #: app/Functions/FunctionsPrintFacts.php:1089
 msgid "Show to visitors"
-msgstr ""
+msgstr "Vertoon aan besoekers"
 
 #: app/Functions/FunctionsPrintLists.php:256
 #: app/Functions/FunctionsPrintLists.php:673
 msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
 msgstr ""
+"Vertoon “blaar” paartjies of persone. Dit is persone wat lewend is, maar "
+"waarvoor geen kinders in die databasis aangeteken is nie."
 
 #: app/Functions/FunctionsPrintLists.php:247
 #: app/Functions/FunctionsPrintLists.php:664
 msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
 msgstr ""
+"Vertoon “wortel” paartjies of persone. Dit is persone wat ook “patriarge” of "
+"“matriarge” genoem word. Hierdie persone het geen ouers wat in die databasis "
+"aangeteken is nie."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:228 app/I18N.php:229
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
-msgstr ""
+msgstr "Vertoon %1$s tot %2$s van %3$s"
 
 #: app/Controller/FanchartController.php:391
 #: app/Controller/HourglassController.php:367
 #: app/Controller/PedigreeController.php:285
 msgid "Sibling"
-msgstr ""
+msgstr "Broer of suster"
 
 #: app/Controller/FanchartController.php:391
 #: app/Controller/HourglassController.php:367
 #: app/Controller/PedigreeController.php:285
 msgid "Siblings"
-msgstr ""
+msgstr "Broers of susters"
 
 #: app/Stats.php:6929
 msgid "Sicily"
-msgstr ""
+msgstr "Sisilië"
 
 #: admin_module_sidebar.php:87 admin_modules.php:182
 msgid "Sidebar"
-msgstr ""
+msgstr "Sypaneel"
 
 #. I18N: Menu entry
 #: admin_module_sidebar.php:28 admin_modules.php:156
 #: app/Theme/AdministrationTheme.php:186
 msgid "Sidebars"
-msgstr ""
+msgstr "Sypanele"
 
 #: app/Stats.php:6932
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Sierra Leone"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar.  To specify a date in another calendar, add a keyword before the date.  This keyword is optional if the month or year format make the date unambiguous."
 msgstr ""
+"Dit word aanvaar dat eenvoudige datums in die Gergoriaanse kalender voorkom. "
+"Om 'n datum in 'n ander kalender te spesifiseer, moet 'n sleutelwoord voor "
+"die datum gevoeg word. Hierdie sleutelwoord is opsioneel as die maand- of "
+"jaarformaat dit ondubbelsinnig maak."
 
 #: find.php:165
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
 msgstr ""
+"Eenvoudige soekfilter gebasseer op die karakters wat ingevoer is. “*” en “?” "
+"mag nie gebruik word nie."
 
 #: app/Stats.php:6926
 msgid "Singapore"
-msgstr ""
+msgstr "Singapoer"
 
 #: modules_v3/individual_ext_report/report.xml:349
 #: modules_v3/individual_report/report.xml:352
 msgid "Sister"
-msgstr ""
+msgstr "Suster"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:562 admin_site_config.php:578
 #: admin_site_config.php:603
 msgid "Site identification code"
-msgstr ""
+msgstr "Werf-identifikasiekode"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:478 edituser.php:297
 msgid "Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr ""
+"Lede kan boodskappe aan mekaar stuur. Jy kan kies hoe hierdie boodskappe aan "
+"jou gestuur sal word, of jy kan kies om hulle glad nie te ontvang nie."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:520 admin_site_config.php:541
 msgid "Site verification code"
-msgstr ""
+msgstr "Werf-verifikasiekode"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:531 admin_site_config.php:552
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
+"Werf-verifikasiekodes werk nie as webtrees in 'n sub-lêergids geïnstalleer "
+"is."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
 msgid "Sitemaps"
-msgstr ""
+msgstr "Werfkaarte"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:306
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
+"Werfkaarte is 'n manier vir webmeesters om soekenjins in te lig oor die "
+"bladsye wat op 'n webwerf beskikbaar is om te deursoek. All die groot "
+"soekenjins ondersteun webkaarte. Vir meer inligting sien <a href=\""
+"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:145
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:221
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:183
 msgctxt "LOCATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:107
 msgctxt "NOMINATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #: app/Module/GoogleMapsModule.php:316 app/Module/GoogleMapsModule.php:457
 msgid "Size of map (in pixels)"
@@ -12925,21 +13043,21 @@ msgstr "Grootte van die kaart (in pixels)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/AbstractTheme.php:71
 msgid "Skip to content"
-msgstr ""
+msgstr "Spring na die inhoud"
 
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgid "Slave"
-msgstr ""
+msgstr "Slaaf"
 
 #: app/GedcomCode/GedcomCodeRela.php:252
 msgctxt "FEMALE"
 msgid "Slave"
-msgstr ""
+msgstr "Slavin"
 
 #: app/GedcomCode/GedcomCodeRela.php:250
 msgctxt "MALE"
 msgid "Slave"
-msgstr ""
+msgstr "Slaaf"
 
 #. I18N: gedcom tag _SSHOW
 #. I18N: Name of a module
@@ -12949,37 +13067,41 @@ msgstr "Skyfievertoning"
 
 #: app/Stats.php:6941
 msgid "Slovakia"
-msgstr ""
+msgstr "Slowakye"
 
 #: app/Stats.php:6942
 msgid "Slovenia"
-msgstr ""
+msgstr "Slowenië"
 
 #: setup.php:171
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
-msgstr ""
+msgstr "Klein stelsels (500 persone): 16-32 MB, 10-20 sekondes"
 
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Snowflake, Arizona"
-msgstr ""
+msgstr "Snowflake, Arizona"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:792
 msgid "Social security number"
-msgstr ""
+msgstr "Sosiale sekuriteitsnommer (VSA)"
 
 #: app/Stats.php:6931
 msgid "Solomon Islands"
-msgstr ""
+msgstr "Solomoneilande"
 
 #: app/Stats.php:6935
 msgid "Somalia"
-msgstr ""
+msgstr "Somalië"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:297
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
+"Sommige genealogie programme skep GEDCOM-lêers wat media-lêername met "
+"volledige padname bevat. Hieride paaie sal nie op die webbediener bestaan "
+"nie. Om dit vir webtrees moontlik te maak om die lêer te vind, moet die "
+"eerste deel van die pad verwyder word."
 
 #: app/Module/GoogleMapsModule.php:418
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
@@ -12989,18 +13111,19 @@ msgstr "Sommige plekname kan geskryf word met opsionele voorvoegsels en agtervoe
 #: admin_trees_config.php:1560
 msgid "Some themes can display icons on the “Facts and events” tab."
 msgstr ""
+"Sommige temas kan ikone op die \"Feite en gebeurtenisse\"-oortjie vertoon."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:520
 #: modules_v3/individual_report/report.xml:523
 msgid "Son"
-msgstr ""
+msgstr "Seun"
 
 #. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:346
 #, php-format
 msgid "Son of %s"
-msgstr ""
+msgstr "Seun van %s"
 
 #: app/Module/OnThisDayModule.php:153 app/Module/RecentChangesModule.php:160
 #: app/Module/UpcomingAnniversariesModule.php:172 medialist.php:99
@@ -13013,19 +13136,19 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "Sort order"
-msgstr ""
+msgstr "Sorteervolgorde"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: app/Controller/BranchesController.php:214
 #: app/Controller/BranchesController.php:250
 #: app/Functions/FunctionsPrintLists.php:271
 msgid "Sosa"
-msgstr ""
+msgstr "Sosa"
 
 #: search_advanced.php:157 search_advanced.php:219 search_advanced.php:234
 #: search_advanced.php:256 search_advanced.php:271
 msgid "Sounds like"
-msgstr ""
+msgstr "Klink soos"
 
 #. I18N: gedcom tag SOUR
 #. I18N: Name of a module/report
@@ -13051,26 +13174,30 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:528
 #: modules_v3/missing_facts_report/report.xml:569
 msgid "Source"
-msgstr ""
+msgstr "Bron"
 
 #: admin_trees_config.php:793
 msgid "Source ID prefix"
-msgstr ""
+msgstr "Voorvoegsel vir bron-ID"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: admin_trees_config.php:2214
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
 msgstr ""
+"Bronverwysings kan velde insluit wat die kwaliteit (primêr, sekondêr, ens) "
+"van die data beskryf en die datum waarop die gebeurtenis in die bron "
+"aangeteken is. As jy nie hierdie velde gebruik nie, kan hulle gesper word "
+"wanneer nuwe bronverwysings geskep word."
 
 #. I18N: Label for search field
 #: find.php:237
 msgid "Source contains"
-msgstr ""
+msgstr "Bron bevat"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2222 modules_v3/fact_sources/report.xml:6
 msgid "Source type"
-msgstr ""
+msgstr "Bronsoort"
 
 #. I18N: Name of a module
 #: admin.php:715 admin.php:764 admin_trees_duplicates.php:141
@@ -13090,82 +13217,82 @@ msgstr ""
 #: search.php:97 sourcelist.php:33 sourcelist.php:37 statistics.php:351
 #: statistics.php:388
 msgid "Sources"
-msgstr ""
+msgstr "Bronne"
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
-msgstr ""
+msgstr "Bronne vir die gebeurtenisse"
 
 #: app/Stats.php:6982
 msgid "South Africa"
-msgstr ""
+msgstr "Suid-Afrika"
 
 #: statistics.php:597
 msgid "South America"
-msgstr ""
+msgstr "Suid-Amerika"
 
 #: app/Stats.php:6927
 msgid "South Georgia and the South Sandwich Islands"
-msgstr ""
+msgstr "Suid-Georgië en die Suidelike Sandwicheilande"
 
 #: app/Stats.php:6937
 msgid "South Sudan"
-msgstr ""
+msgstr "Suid-Soedan"
 
 #: app/Stats.php:6796
 msgid "Spain"
-msgstr ""
+msgstr "Spanje"
 
 #: app/SurnameTradition.php:81
 msgctxt "Surname tradition"
 msgid "Spanish"
-msgstr ""
+msgstr "Spaans"
 
 #: app/GedcomCode/GedcomCodeTemp.php:309
 msgid "Spokane, Washington"
-msgstr ""
+msgstr "Spokane, Washington"
 
 #: modules_v3/bdm_report/report.xml:169
 msgid "Spouse"
-msgstr ""
+msgstr "Gade"
 
 #: app/GedcomTag.php:454
 msgid "Spouse census date"
-msgstr ""
+msgstr "Gade ten tye van sensus"
 
 #: app/GedcomTag.php:456
 msgid "Spouse census place"
-msgstr ""
+msgstr "Gade op plek van sensus"
 
 #: app/GedcomTag.php:464
 msgid "Spouse note"
-msgstr ""
+msgstr "Nota oor gade"
 
 #: app/Functions/FunctionsPrintLists.php:1545
 msgid "Spouses"
-msgstr ""
+msgstr "Gades"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Spouses and children"
-msgstr ""
+msgstr "Gades en hulle kinders"
 
 #: app/Stats.php:6857
 msgid "Sri Lanka"
-msgstr ""
+msgstr "Sri Lanka"
 
 #: app/GedcomCode/GedcomCodeTemp.php:295
 msgid "St. George, Utah"
-msgstr ""
+msgstr "St. George, Utah"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
 msgid "St. Louis, Missouri"
-msgstr ""
+msgstr "St. Louis, Missouri"
 
 #: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "St. Paul, Minnesota"
-msgstr ""
+msgstr "St. Paul, Minnesota"
 
 #: app/Module/GoogleMapsModule.php:469
 msgid "Standard"
@@ -13174,12 +13301,12 @@ msgstr "Standaard"
 #. I18N [...] of a range of addresses
 #: admin_site_access.php:254 admin_site_access.php:360
 msgid "Start IP address"
-msgstr ""
+msgstr "Begin IP-adres"
 
 #: app/Controller/DescendancyController.php:114
 #: app/Controller/DescendancyController.php:191
 msgid "Start at parents"
-msgstr ""
+msgstr "Begin by ouers"
 
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load?"
@@ -13188,11 +13315,11 @@ msgstr "Begin skyfievertoning as blad inlaai?"
 #. I18N: The earliest year in a range
 #: lifespan.php:66
 msgid "Start year"
-msgstr ""
+msgstr "Begin Jaar"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
-msgstr ""
+msgstr "Begin perk vir datum van wysigings"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:796 app/Module/GoogleMapsModule.php:365
@@ -13205,34 +13332,34 @@ msgstr "Provinsie/Staat"
 #: app/Module/HtmlBlockModule.php:162 app/Theme/AbstractTheme.php:1213
 #: statistics.php:38 statistics.php:63
 msgid "Statistics"
-msgstr ""
+msgstr "Statistieke"
 
 #: statisticsplot.php:836
 msgid "Statistics plot"
-msgstr ""
+msgstr "Statistiekdiagram"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:295 admin_site_change.php:360
 #: app/Functions/FunctionsPrint.php:486 app/GedcomTag.php:800
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: app/GedcomTag.php:802
 msgid "Status change date"
-msgstr ""
+msgstr "Status van wysigingsdatum"
 
 #: app/Functions/FunctionsDate.php:40
 msgid "Stillborn"
-msgstr ""
+msgstr "Doodgebore"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:104
 msgid "Stillborn: exempt"
-msgstr ""
+msgstr "Doodgebore: vrygestel"
 
 #: app/GedcomCode/GedcomCodeTemp.php:311
 msgid "Stockholm, Sweden"
-msgstr ""
+msgstr "Stockholm, Swede"
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:103
 #: app/Theme/FabTheme.php:119 app/Theme/MinimalTheme.php:116
@@ -13243,26 +13370,26 @@ msgstr "Stop"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1130
 msgid "Store watermarked full size images on server?"
-msgstr ""
+msgstr "Bewaar beelde wat gewatermerk is teen oorsponklike grootte op bediener?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1143
 msgid "Store watermarked thumbnails on server?"
-msgstr ""
+msgstr "Bewaar miniature wat gewatermerk is op die bediener?"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
 msgid "Stories"
-msgstr ""
+msgstr "Verhale"
 
 #: app/Module/StoriesModule.php:237
 msgid "Story"
-msgstr ""
+msgstr "Verhaal"
 
 #: app/Module/StoriesModule.php:228 app/Module/StoriesModule.php:374
 #: app/Module/StoriesModule.php:458
 msgid "Story title"
-msgstr ""
+msgstr "Titel van die verhaal"
 
 #. I18N: Part of a country, state/region/county
 #: app/Module/GoogleMapsModule.php:695 app/Module/GoogleMapsModule.php:1553
@@ -13276,21 +13403,21 @@ msgstr "Onderwerp"
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:810
 msgid "Submission"
-msgstr ""
+msgstr "Voorlegging"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:108
 msgid "Submitted but not yet cleared"
-msgstr ""
+msgstr "Voorgelê, maar nog nie uitgeklaar nie"
 
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:806
 msgid "Submitter"
-msgstr ""
+msgstr "Voorlegger"
 
 #: app/Stats.php:6922
 msgid "Sudan"
-msgstr ""
+msgstr "Soedan"
 
 #: app/Module/GoogleMapsModule.php:425
 msgid "Suffixes"
@@ -13299,34 +13426,34 @@ msgstr "Agtervoegsels"
 #. I18N: abbreviation for Sunday
 #: app/Date/CalendarDate.php:372 app/Functions/FunctionsPrint.php:662
 msgid "Sun"
-msgstr ""
+msgstr "Son."
 
 #: app/Date/CalendarDate.php:347
 msgid "Sunday"
-msgstr ""
+msgstr "Sondag"
 
 #. I18N: %s is a URL/link to the project website
 #: admin.php:562
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr ""
+msgstr "Ondersteuning en dokumentasie kan bt %s gevind word."
 
 #: app/Stats.php:6940
 msgid "Suriname"
-msgstr ""
+msgstr "Suriname"
 
 #. I18N: gedcom tag SURN
 #: app/GedcomTag.php:814 help_text.php:302 search.php:241
 msgid "Surname"
-msgstr ""
+msgstr "Van"
 
 #: app/Stats.php:1644 statistics.php:585
 msgid "Surname distribution chart"
-msgstr ""
+msgstr "Van-verdelingsdiagram"
 
 #: admin_trees_config.php:1233
 msgid "Surname list style"
-msgstr ""
+msgstr "Styl vir lys van vanne"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:153
 msgid "Surname option"
@@ -13335,143 +13462,143 @@ msgstr "Van Opsie"
 #. I18N: gedcom tag SPFX
 #: app/GedcomTag.php:788
 msgid "Surname prefix"
-msgstr ""
+msgstr "Voorvoegsel vir van"
 
 #: admin_trees_config.php:2196
 msgid "Surname tradition"
-msgstr ""
+msgstr "Van-tradisie"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr ""
+msgstr "Vanne word verbuig om 'n persoon se geslag en huwelikstatus aan te dui."
 
 #. I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition.php:93
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr ""
+msgstr "Vanne word verbuig om 'n persoon se geslag aan te dui."
 
 #: app/GedcomCode/GedcomCodeTemp.php:313
 msgid "Suva, Fiji"
-msgstr ""
+msgstr "Suva, Fidji"
 
 #: app/Stats.php:6930
 msgid "Svalbard and Jan Mayen Islands"
-msgstr ""
+msgstr "Svalbard en Jan Mayen-eilande"
 
 #. I18N: Reverse the order of two individuals
 #: relationship.php:90
 msgid "Swap individuals"
-msgstr ""
+msgstr "Ruil persone om"
 
 #: app/Stats.php:6944
 msgid "Swaziland"
-msgstr ""
+msgstr "Swaziland"
 
 #: app/Stats.php:6943
 msgid "Sweden"
-msgstr ""
+msgstr "Swede"
 
 #: app/Stats.php:6765
 msgid "Switzerland"
-msgstr ""
+msgstr "Switserland"
 
 #: app/GedcomCode/GedcomCodeTemp.php:317
 msgid "Sydney, Australia"
-msgstr ""
+msgstr "Sydney, Australië"
 
 #: admin_trees_manage.php:737
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "Sinkroniseer stambome met GEDCOM-lêers"
 
 #: app/Stats.php:6946
 msgid "Syrian Arab Republic"
-msgstr ""
+msgstr "Sirië"
 
 #: setup.php:419
 msgid "System settings"
-msgstr ""
+msgstr "Stelselinstellinge"
 
 #: admin_module_tabs.php:87 admin_modules.php:181
 msgid "Tab"
-msgstr ""
+msgstr "Oortjie"
 
 #: setup.php:374
 msgid "Table prefix"
-msgstr ""
+msgstr "Tabel voorvoegsel"
 
 #. I18N: Menu entry
 #: admin_module_tabs.php:28 admin_modules.php:155
 #: app/Theme/AdministrationTheme.php:184
 msgid "Tabs"
-msgstr ""
+msgstr "Oortjies"
 
 #: find.php:428
 msgid "Tag"
-msgstr ""
+msgstr "Etiket"
 
 #: app/GedcomCode/GedcomCodeTemp.php:319
 msgid "Taipei, Taiwan"
-msgstr ""
+msgstr "Taipei, Taiwan"
 
 #: app/Stats.php:6961
 msgid "Taiwan"
-msgstr ""
+msgstr "Taiwan"
 
 #: app/Stats.php:6951
 msgid "Tajikistan"
-msgstr ""
+msgstr "Tadjikistan"
 
 #: app/GedcomCode/GedcomCodeTemp.php:321
 msgid "Tampico, Mexico"
-msgstr ""
+msgstr "Tampico, Meksiko"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:146
 msgctxt "GENITIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:222
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:184
 msgctxt "LOCATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:108
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #: app/Stats.php:6962
 msgid "Tanzania"
-msgstr ""
+msgstr "Tanzanië"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:91
 msgid "Teal Top"
-msgstr ""
+msgstr "Teal Top"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:912
 msgid "Technical help contact"
-msgstr ""
+msgstr "Kontakpersoon vir tegniese hulp"
 
 #: app/Module/HtmlBlockModule.php:276
 msgid "Templates"
-msgstr ""
+msgstr "Sjablone"
 
 #. I18N: gedcom tag TEMP
 #: app/GedcomTag.php:818 modules_v3/individual_report/report.xml:208
 msgid "Temple"
-msgstr ""
+msgstr "Tempel"
 
 #: app/Module/GoogleMapsModule.php:307
 msgid "Terrain"
@@ -13481,193 +13608,228 @@ msgstr "Terrein"
 #: app/Date/JewishDate.php:138
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:214
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:176
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:100
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: gedcom tag TEXT
 #: app/GedcomTag.php:822
 msgid "Text"
-msgstr ""
+msgstr "Teks"
 
 #: app/Stats.php:6950
 msgid "Thailand"
-msgstr ""
+msgstr "Thailand"
 
 #: help_text.php:219
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogy annotations to identify different parts of the name."
 msgstr ""
+"Die <b>naam</b> veld bevat die volledige naam van die persoon, soos hy/sy "
+"dit sou gespel het of soos dit aangeteken is. Dit is hoe dit op die skerm "
+"sal verskyn. Standaard genealogiese annotasies word gebruik om die "
+"verskillende dele van die naam te identifiseer."
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr ""
+"Die  <b>van</b> veld bevat 'n naam wat gebruik word vir sortering en "
+"groepering. Dit kan verskil van die regte van wat altyd uit die <b>naam</b> "
+"veld verkry word. Hierdie veld kan gebruik word om vanne te sorteer met of "
+"sonder voorvoegsels (Gogh / van Gogh) en om variasies in spelling of "
+"verbuigings te groepeer (Kowalski  / Kowalska). As dit nodig is dat 'n "
+"persoon onder meer as een van gelys moet word, moet elke naam deur 'n komma "
+"geskei word."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:454
 msgid "The FAQ list is empty."
-msgstr ""
+msgstr "Die FAQ-lys is leeg."
 
 #: admin_trees_manage.php:145
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "Die GEDCOM-lêer “%s” is ingevoer."
 
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "The Hague, Netherlands"
-msgstr ""
+msgstr "Den Haag, Nederland"
 
 #. I18N: Help text for the “Show download link in media viewer” configuration setting
 #: admin_trees_config.php:1054
 msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
 msgstr ""
+"Die Media Kyker kan 'n skakel vertoon, wat as daarop geklik word, die "
+"medialêerna die plaaslike PC sal aflaai.<br><br>Jy kan hierdie skakel "
+"verberg vir sekuriteitsredes."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:83
 msgid "The PHP temporary folder is missing."
-msgstr ""
+msgstr "Die PHP tydelike lêergids is weg."
 
 #: admin_trees_manage.php:701
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr ""
+"Die PhpGedView-na-webtrees ghoeroe is 'n geoutomatiseerde proses om "
+"beheerders te help met die oordrag van 'n PhpGedView-installasie na 'n nuwe "
+"webtrees-installasie. Dit dra alle PhpGedView- GEDCOM- en ander databasis "
+"inligting oor na jou nuwe webtrees databasis. Die volgende voorvereistes is "
+"noodsakelik:"
 
 #: admin_users.php:101
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr ""
+"Die beheerder van die webtrees-werf %s het jou versoek vir 'n rekening "
+"goedgekeur. Jy kan nou aanmeld deur op die volgende skakel te klik: %s"
 
 #: login.php:586
 msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr ""
+"Die beheerder is in kennis gestel. Sodra hulle vir jou toestemming gee om "
+"aan te meld, kan jy met jou gebruikersnaam en wagwoord aanmeld."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:45
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr ""
+msgstr "Die wysigings aan “%s” is aanvaar."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:232
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr ""
+msgstr "Die wysigings aan “%s” is nie aanvaar nie."
 
 #: app/Module/ClippingsCartModule.php:299
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr ""
+"Die knipselmandjie stel jou in staat om uittreksels (“knipsels”) van hierdie "
+"stamboom in 'n enkele lêer te versamel wat jy kan aflaai en daarna in jou "
+"eie genealogie program kan invoer. Die lêer (wat afgelaai kan word) word in "
+"die GEDCOM-formaat geskep.<br><ul><li>Hoe maak jy 'n stamboomknipsel?<br>"
+"Heel eenvoudig. Wanneer jy ookal 'n aanklikbare naam (persoon, gesin of bron)"
+" sien kan jy na die Detailbladsy van daardie naam gaan. Daar vind jy die "
+"opsie <b>Voeg by  knipselmandjie</b>. Wanneer jy daarop klik sal 'n aantal "
+"aflaai-opsies aan jou voorgehou word.</li><li>Hoe laai jy jou knipselmandjie "
+"af?<br>Sodra jy een of meer stamboomknipsels versamel het, klik jy op die ‘"
+"Laai af’ skakel. Volg dan die instruksies en die skakels.</li></ul>"
 
 #: site-unavailable.php:65
 msgid "The database reported the following error message:"
-msgstr ""
+msgstr "Die databasis rapporteer die volgende foutboodskap:"
 
 #: admin_trees_config.php:1279
 msgid "The date and time of the last update"
-msgstr ""
+msgstr "Die datum en tyd van die laaste wysiging"
 
 #: family.php:126
 msgid "The details of this family are private."
-msgstr ""
+msgstr "Die besonderhede van hierdie gesin is privaat."
 
 #: individual.php:87
 msgid "The details of this individual are private."
-msgstr ""
+msgstr "Die besonderhede van hierdie persoon is privaat."
 
 #. I18N: %s is a filename
 #: admin_site_upgrade.php:293 admin_trees_export.php:41
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr ""
+msgstr "Die stamboom is na %s uitgevoer."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:76
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "Die stamboom “%s” bestaan reeds."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:79
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "Die stamboom “%s” is geskep."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:56 admin_trees_manage.php:151
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "Die stamboom “%s” is geskrap."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:65
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr ""
+"Die stamboom “%s” sal aan besoekers getoon word wanneer hulle vir die eerste "
+"keer op hierdie webwerf beland."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "Die stambome is suksevol saamgevoeg."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:143
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr ""
+msgstr "Die gesin “%s” is geskrap, want dit het net een lid gehad."
 
 #: addmedia.php:177 admin_media_upload.php:136
 #, php-format
 msgid "The file %s already exists.  Use another filename."
-msgstr ""
+msgstr "Die lêer %s bestaan reeds. Gebruik 'n ander lêernaam."
 
 #: admin_site_upgrade.php:295 admin_site_upgrade.php:422
 #: admin_site_upgrade.php:455 admin_trees_export.php:44
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Die lêer %s kon nie geskep word nie."
 
 #: admin_media.php:63 admin_media.php:72 admin_site_clean.php:38
 #: admin_site_upgrade.php:477 admin_site_upgrade.php:498
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "Die lêer %s kon nie geskrap word nie."
 
 #: admin_site_upgrade.php:397
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "Die lêer %s kon nie opgedateer word nie."
 
 #: admin_site_upgrade.php:420
 #, php-format
 msgid "The file %s has been created."
-msgstr ""
+msgstr "Die lêer %s is geskep."
 
 #: admin_media.php:61 admin_media.php:70 admin_site_clean.php:32
 #: admin_site_upgrade.php:475 admin_site_upgrade.php:496
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "Die lêer %s is geskrap."
 
 #: admin_media_upload.php:141 admin_media_upload.php:159
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr ""
+msgstr "Die lêer %s is opgelaai."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:77
 msgid "The file was only partially uploaded.  Please try again."
-msgstr ""
+msgstr "Die lêer is slegs gedeeltelik opgelaai. Probeer asseblief weer."
 
 #. I18N: %s is a filename
 #: medialist.php:295 mediaviewer.php:115
@@ -13678,7 +13840,7 @@ msgstr "Die lêer “%s” bestaan nie."
 #: admin_site_clean.php:36 admin_site_upgrade.php:492
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Die lêergids %s kon nie geskrap word nie."
 
 #: addmedia.php:101 addmedia.php:112 addmedia.php:124 addmedia.php:258
 #: addmedia.php:269 addmedia.php:281 admin_media_upload.php:66
@@ -13686,185 +13848,217 @@ msgstr ""
 #: admin_site_config.php:37 admin_trees_config.php:294
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
-msgstr ""
+msgstr "Die lêergids %s bestaan nie, en dit kon ook nie geskep word nie."
 
 #: addmedia.php:99 addmedia.php:110 addmedia.php:256 addmedia.php:267
 #: admin_media_upload.php:64 admin_media_upload.php:75
 #: admin_trees_config.php:292
 #, php-format
 msgid "The folder %s has been created."
-msgstr ""
+msgstr "Die lêergids %s is geskep."
 
 #: admin_site_clean.php:30 admin_site_upgrade.php:490
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "Die lêergids %s is geskrap."
 
 #: admin_site_config.php:188
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
+"Die lêergids kan volledig gespesifeer word (byv. "
+"/home/user_name/webtrees_data) of relatief tot die installasie-lêergids ("
+"byv. ../../webtrees_data/)."
 
 #: admin_site_merge.php:201
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Die volgende feite en gebeurtenisse is in beide rekords gevind."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:248 admin_site_merge.php:294
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Die volgende feite en gebeurtenisse is net in die rekord van %s gevind."
 
 #: setup.php:169
 msgid "The following list shows typical requirements."
-msgstr ""
+msgstr "Die volgende lys vertoon die tipiese vereistes."
 
 #: message.php:302 message.php:305
 msgid "The following message has been sent to your webtrees user account from "
 msgstr ""
+"Die volgende boodskap is na jou webtrees gebruikersrekening gestuur deur "
 
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
-msgstr ""
+msgstr "Die volgende plekke is gewysig:"
 
 #: admin_trees_places.php:114
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "Die volgende plekke sou verander word:"
 
 #: admin_site_access.php:355
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
 msgstr ""
+"Die volgende reëls word gebruik om te besluit of 'n besoeker 'n mens is (met "
+"volledige toegang), 'n soekenjin (met beperkte toegang) of 'n ongewenste "
+"webkruiper is (geen toegang nie)."
 
 #: help_text.php:326
 msgid "The help text has not been written for this item."
-msgstr ""
+msgstr "Daar is geen help-teks beskikbaar vir hierdie item nie."
 
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: admin_trees_config.php:926
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
 msgstr ""
+"Die persoon om mee in verbinding te tree vir tegniese vrae of foute wat op "
+"jou webwerf teëgekom word."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:904
 msgid "The individual to contact about the genealogy data on this website."
 msgstr ""
+"Die persoon om mee in verbinding te tree oor genealogiese inligting op "
+"hierdie webwerf."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:151 action.php:155 app/Controller/GedcomRecordController.php:50
 #: app/Controller/GedcomRecordController.php:58
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr ""
+msgstr "Die skakel tussen “%1$s” en “%2$s” is geskrap."
 
 #. I18N: The placeholders are the names of individuals, sources, etc.
 #: admin_site_merge.php:109
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Die skakel tussen “%1$s” en “%2$s” is opgedateer."
 
 #: addmedia.php:312 addmedia.php:340
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr ""
+msgstr "Die medialêer %1$s kon nie tot %2$s hernoem word nie."
 
 #: addmedia.php:338
 #, php-format
 msgid "The media file %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "Die medialêer %1$s is tot %2$s hernoem."
 
 #: addmedia.php:345
 #, php-format
 msgid "The media file %s does not exist."
-msgstr ""
+msgstr "Die medialêer %s bestaan nie."
 
 #: mediafirewall.php:38
 msgid "The media file was not found in this family tree."
-msgstr ""
+msgstr "Die medialêer is nie in hierdie stamboom gevind nie."
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
 msgstr ""
+"Die medialêer wat jy oplaai kan, en moet eintlik 'n ander naam kry op die "
+"bediener as wat dit op jou plaaslike rekenaar het. Op jou plaaslike rekenaar "
+"het die naam betekenis vir jou, maar dit beteken nie dat dit ook vir "
+"besoekers aan jou werf geld nie. Bedink ook die moontlikheid dat verskeie "
+"gebruikers gaan probeer om lêers met die naam “ouma.jpg” op te laai.<br><br>"
+"In hierdie veld kan jy die nuwe naam gee vir die lêer wat jy wil oplaai. Die "
+"naam wat jy hier invul, word ook gebruik vir die miniatuur, wat jy "
+"afsonderlik kan oplaai of outomaties laat skep. Die suffiks (jpg, gif, pdf, "
+"doc, ens.) hoef nie ingevul te word nie.<br><br>Laat hierdie veld leeg om "
+"die oorspronklike naam van die lêer te behou."
 
 #: setup.php:167
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
 msgstr ""
+"Die vereistes vir geheue en SVU-tyd hang van die aantal persone in jou "
+"stamboom af."
 
 #: admin_modules.php:49
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Die module “%s” is gesper."
 
 #: admin_modules.php:51
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Die module “%s” is ontsper."
 
 #: admin_site_upgrade.php:400
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "Die nuwe lêers is op die oomblik in die lêergids %s geplaas."
 
 #: admin_site_config.php:489
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
+"Die nuwe gebruiker sal gevra word om sy/haar e-posadres te bevestig voordat "
+"die rekening geskep word."
 
 #: help_text.php:303
 msgid "The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used."
 msgstr ""
+"Die aantal keer dat die spesifieke naam voorkom sal op die kaart vertoon "
+"word. As jy hierdie veld ooplaat, sal die mees algemene van gebruik word."
 
 #: setup.php:412
 msgid "The password needs to be at least six characters long."
-msgstr ""
+msgstr "Die wagwoord moet ten minste ses karakters lang wees."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:401
 msgid "The password required for authentication with the SMTP server."
 msgstr ""
+"Die wagwoord wat vereis word vir identiteitstawing by die SMTP-bediener."
 
 #: setup.php:414
 msgid "The passwords do not match."
-msgstr ""
+msgstr "Die wagwoorde stem nie ooreen nie."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Die voorkeure vir al die stambome is bygewerk."
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Die voorkeure vir nuwe stambome is bygewerk."
 
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "Die voorkeure vir die stamboom “%s” is bygewerk."
 
 #: admin_modules.php:81
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Die voorkeure vir die module “%s” is geskrap."
 
 #: app/Module/GoogleMapsModule.php:261
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "Die voorkeure vir die module “%s” is bygewerk."
 
 #: setup.php:376
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
 msgstr ""
+"Die voorvoegsel is opsioneel, maar word aanbeveel. Deur tabelname 'n unieke "
+"voorvoegsel te gee, kan jy verskillende toepassings gebruik wat van "
+"dieselfde databasis gebruik maak. “wt_” word voorgestel, maar dit kan "
+"enigiets wees wat jy wil."
 
 #: admin_trees_renumber.php:242
 #, php-format
 msgid "The record %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "Die rekord %1$s is hernoem na %2$s."
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr ""
+msgstr "Die rekord is na die knipbord gekopieer."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:168
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Die rekords “%1$s” en “%2$s” is saamgevoeg."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:125
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13872,148 +14066,172 @@ msgstr "Die 'regex' blyk 'n fout te bevat. Dit kan nie gebruik word nie."
 
 #: setup.php:149
 msgid "The server configuration is OK."
-msgstr ""
+msgstr "Die bediener konfigurasie is OK."
 
 #: admin_trees_renumber.php:257
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "Die bediener se tydlimiet is bereik."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:37
 msgid "The size of the family tree, earliest and latest events, common names, etc."
 msgstr ""
+"Die grootte van die stamboom, vroegste en mees onlangste gebeurtenisse, "
+"algemene name, ens."
 
 #: help_text.php:222
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "Die van word deur skuinsstrepe omsluit: <%s> Jan Pieter /Smit/<%s>"
 
 #: addmedia.php:355
 #, php-format
 msgid "The thumbnail file %1$s could not be renamed to %2$s."
-msgstr ""
+msgstr "Die minatuurlêer %1$s kon nie na %2$s hernoem word nie."
 
 #: addmedia.php:353
 #, php-format
 msgid "The thumbnail file %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "Die minatuurlêer %1$s is na %2$s hernoem."
 
 #: addmedia.php:360
 #, php-format
 msgid "The thumbnail file %s does not exist."
-msgstr ""
+msgstr "Die minatuurlêer %s bestaan nie."
 
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:290
 msgid "The time in seconds that a webtrees session remains active before requiring a login.  The default is 7200, which is 2 hours."
 msgstr ""
+"Die tyd in sekondes wat 'n webtrees sessie aktief bly, voordat 'n aanmelding "
+"nodig is. Die verstekwaarde is 7200, wat gelyk is aan 2 uur."
 
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:250
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
+"Die tydsone wat benodig word om berekenings met datums te doen, soos om "
+"vandag se datum te bereken."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Die twee stambome het %1$s rekord met dieselfde “XREF”."
+msgstr[1] "Die twee stambome het %1$s rekords met dieselfde “XREF”."
 
 #: admin_site_upgrade.php:504
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Die opgradering is voltooi."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:74
 msgid "The uploaded file exceeds the allowed size."
-msgstr ""
+msgstr "Die lêer is te groot om op te laai."
 
 #: admin_users.php:807
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Die gebruiker %s is geskrap."
 
 #: login.php:300
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
 msgstr ""
+"'n E-pos is na die gebruiker gestuur met die inligting wat benodig word om "
+"die versoek vir toegang te bevestig."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:388
 msgid "The user name required for authentication with the SMTP server."
 msgstr ""
+"Die gebruikersnaam wat benodig word vir identiteitstawing met die SMTP-"
+"bediener."
 
 #: login.php:74 login.php:79
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "Die gebruikersnaam of wagwoord is nie reg nie."
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:968
 msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
 msgstr ""
+"Die waarde wat in die “meta-beskrywing” etiket in die HTML kopstuk geplaas "
+"word. Laat hierdie veld leeg om die naam van die stamboom te gebruik."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too new."
-msgstr ""
+msgstr "Die %s weergawe is te laag."
 
 #: admin_pgv_to_wt.php:101
 #, php-format
 msgid "The version of %s is too old."
-msgstr ""
+msgstr "Die weergawe van %s is te oud."
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
-msgstr ""
+msgstr "Die webwerf toegangsreël is geskep."
 
 #: admin_site_access.php:105
 msgid "The website access rule has been deleted."
-msgstr ""
+msgstr "Die webwerf toegangsreël is geskrap."
 
 #: admin_site_access.php:89
 msgid "The website access rule has been updated."
-msgstr ""
+msgstr "Die webwerf toegangsreël is bygewerk."
 
 #: admin_site_config.php:47 admin_site_config.php:66 admin_site_config.php:78
 #: admin_site_config.php:93 admin_site_config.php:102
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Die webwerf voorkeure is bygewerk."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2248
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
 msgstr ""
+"Die webwerf www.geonames.org verskaf 'n groot databasis van plekname. Dit "
+"kan deursoek word wanneer nuwe plekname ingevoer word. Om hiervan gebruik te "
+"maak, moet jy vir 'n gratisrekening by www.geonames.org registreer en die "
+"ooreenstemende gebruikersnaam hier invoer."
 
 #: setup.php:496
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
 msgstr ""
+"Die webtrees ontwikkelaars stel baie belang om van hierdie fout te wete te "
+"kom. As jy met hulle in verbing sal tree, sal hulle jou help om die fout op "
+"te spoor."
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr ""
+msgstr "Die “%”-teken is 'n oorheersteken en sal met nul of meer karakters pas."
 
 #: admin_modules.php:186 admin_users.php:486 app/Theme/AbstractTheme.php:1672
 #: edituser.php:269
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:27
 msgid "Theme change"
-msgstr ""
+msgstr "Verander tema"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:977
 msgid "Theme dropdown selector for theme changes"
-msgstr ""
+msgstr "Kieslys om die tema te verander"
 
 #: admin_modules.php:160
 msgid "Themes"
-msgstr ""
+msgstr "Temas"
 
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website.  User settings take priority over family tree settings, which in turn take priority over the website setting.  Selecting “default theme” at one level will use the theme at the next level."
 msgstr ""
+"Temas kan op drie verskillende vlakke gekies word: gebruiker, stamboom en "
+"webwerf. Gebruikersinstellinge geniet voorrang oor stamboominstellinge, wat "
+"op hulle beurt voorrang oor die webwerf-instelling geniet. As “Verstektema” "
+"gekies word, sal die instelling van die vlak wat voorrang geniet, gebruik "
+"word."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:126
@@ -14026,36 +14244,36 @@ msgstr "Daar is geen media-objekte vir hierdie persoon nie."
 
 #: app/Module/NotesTabModule.php:83
 msgid "There are no notes for this individual."
-msgstr ""
+msgstr "Daar is geen notas vir hierdie persoon nie."
 
 #: admin_site_upgrade.php:105
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Daar is geen wysigings wat hangend is nie."
 
 #: app/Module/ResearchTaskModule.php:137
 msgid "There are no research tasks in this family tree."
-msgstr ""
+msgstr "Daar is geen navorsingtake vir hierdie stamboom nie."
 
 #: app/Module/SourcesTabModule.php:81
 msgid "There are no source citations for this individual."
-msgstr ""
+msgstr "Daar is geen bronverwysings vir hierdie persoon nie."
 
 #: app/Module/ReviewChangesModule.php:87
 #: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1855
 msgid "There are pending changes for you to moderate."
-msgstr ""
+msgstr "Daar is hangende wysingings wat beoordeel moet word."
 
 #: app/Module/RecentChangesModule.php:85
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Daar was geen wysigings in die laaste %s dag nie."
+msgstr[1] "Daar was geen wysigings in die laaste %s dae nie."
 
 #: login.php:239
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr ""
+msgstr "Daar is geen rekening met die gebruikersnaam of e-posadres “%s” nie."
 
 #: addmedia.php:184 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -14065,51 +14283,70 @@ msgstr "Daar was 'n fout tydens die oplaai van u lêer."
 #: app/Date/FrenchDate.php:98
 msgctxt "GENITIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:164
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:131
 msgctxt "LOCATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:65
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #: admin.php:523
 msgid "These pages provide access to all the configuration settings and management tools for this webtrees site."
 msgstr ""
+"Hierdie bladsye gee toegang tot al die konfigurasie-instellinge en "
+"gereedskap vir die bestuur van hierdie webtrees werf."
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:150
 #, php-format
 msgid "This GEDCOM file is encoded using %1$s.  Assume this to mean %2$s."
 msgstr ""
+"Hierdie GEDCOM-lêer is met %1$s enkodeer. Dit word aangeneem om %2$s te "
+"beteken."
 
 #: login.php:89
 msgid "This account has not been approved.  Please wait for an administrator to approve it."
 msgstr ""
+"Hierdie rekening is nie goedgekeur nie. Wag asseblief vir 'n beheerder om "
+"dit goed te keur."
 
 #: login.php:84
 msgid "This account has not been verified.  Please check your email for a verification message."
 msgstr ""
+"Hierdie rekening is nog nie geverifieer nie. Gaan asseblief jou e-pos na ver "
+"'n verifikasieboodskap."
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
+"Hierdie blok sal 'n lys rekords aan redakteure wys, met wysigings wat nog "
+"hanged is en nog deur 'n moderator beoordeel moet word. Dit skep ook "
+"daagliks e-posse wat aan moderators gestuur word as daar wysigings bestaan "
+"wat nog hangend is."
 
 #: admin_users.php:463 edituser.php:309
 msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
 msgstr ""
+"Hierdie keuseblokkie beheer jou sigbaarheid aan ander gebruikers terwyl jy "
+"aanlyn is. Dit beheer ook jou vermoë om ander aanlyngebruikers, wat sigbaar "
+"is, te sien.<br.<br>As hierdie boksie nie gemerk is nie, sal jy heeltemal "
+"onsigbaar wees vir ander, en jy sal ook nie in staat wees om ander "
+"aanlyngebruikers te sien nie. As hierdie boksie gemerk is, is presies die "
+"teenoorstaande waar. Jy sal sigbaar vir ander wees, en jy sal ook gebruikers "
+"wat sigbaar is, kan sien."
 
 #: setup.php:346 setup.php:357
 msgid "This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later."
@@ -14851,8 +15088,8 @@ msgstr[1] ""
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "%s mees voorkomende van"
-msgstr[1] "%s mees voorkomende vanne"
+msgstr[0] "Top %s van"
+msgstr[1] "Top %s vanne"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:72
@@ -14872,12 +15109,12 @@ msgstr "Hoogste vlak"
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:106
 msgid "Top surname"
-msgstr "Mees voorkomende van"
+msgstr "Mees gewilde van"
 
 #. I18N: Name of a module.  Top=Most common
 #: app/Module/TopSurnamesModule.php:37 statistics.php:198
 msgid "Top surnames"
-msgstr "Mees voorkomende vanne"
+msgstr "Mees algemene vanne"
 
 #: app/GedcomCode/GedcomCodeTemp.php:327
 msgid "Toronto, Ontario, Canada"
@@ -16351,7 +16588,7 @@ msgstr ""
 
 #: app/Stats.php:2916
 msgid "birth"
-msgstr ""
+msgstr "geboorte"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:79
