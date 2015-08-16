@@ -3021,7 +3021,7 @@ msgstr "Ágak"
 #: app/Controller/BranchesController.php:61
 #, php-format
 msgid "Branches of the %s family"
-msgstr "A %s család ágai"
+msgstr "A(z) %s család ágai"
 
 #: app/Stats.php:6753
 msgid "Brazil"
@@ -4093,7 +4093,7 @@ msgstr "Fájlok másolása…"
 #: admin_site_upgrade.php:401
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr "A fájlok másolása a %s mappába az azonos nevűek felülírásával."
+msgstr "A fájlok másolása a(z) %s mappába az azonos nevűek felülírásával."
 
 #. I18N: gedcom tag COPR
 #: app/GedcomTag.php:322
@@ -5426,14 +5426,42 @@ msgstr "A megadott felhasználónév már foglalt.  Kérem, válasszon másikat.
 #: admin_trees_config.php:882
 msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 msgstr ""
+"E-mail cím, a “Feladó:” mezőben lesz haszálva a webtrees által önvezérelten "
+"létrehozott e-maaileknél.<br><br>A webtrees önállóan is létrehozhat e-"
+"maileket a rendszergazdák értesítésére az ellenőrizendő változtasásoktól.  "
+"Továbbá a webtrees értesítésítő e-mailt küld a fiókot igénylő "
+"felhasználóknak is.<br><br>Általában, a “Feladó:” mezeje ezeknek az önállóan "
+"létrehozott e-maileknek valami hasonló: <i>Feladó: webtrees-"
+"noreply@yoursite</i> azt hansúlyozni, hogy erre az e-mailre nem kell "
+"válaszolni.  A rosszindulatú e-mail kiszűrése érdekében egyes e-mail "
+"rendszerek megkívánjál, hohy minden üzenet “Feladó:” mezeje valós e-mail "
+"fióknak tűnjön és nem fogják elfogadni a más kinézetű fiókok <i>webtrees-"
+"noreply</i> üzeneteit."
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
+"Minden forrás bizonyos eseményeket tárolnak, általában egy adott időszak és "
+"igazgatási körzeten belül.  Például egy népszámlálás a lakosság "
+"összeírásáról tárol adatokat és az egyházi nyilvántartás pedig születési/"
+"keresztelési, házassági és elhalálozási feljegyzéseket tárol.<br><br>"
+"Válassza ki azokat az eseményeket a megadott listából, amelyek ebben a "
+"forrásban találhatók. A dátumnak az adott időszakot kellene magába "
+"foglalnia, pl. <i>FROM 1900 TO 1910</i>.  A hely megnevezés az a Legkisebb "
+"igazgatási körzet, amely magába foglalja a forrásban említett összes "
+"alacsonyabb szintű helyet is.  Például, “Oneida, Idaho, USA” lenne használva "
+"forráshelynek azon események részére, amelyek Onedia megye egyes városaiban "
+"történtek.  “Idaho, USA” lenne használva forráshelynek, ha a bejegyzett "
+"események Oneida megyén kívüli más megyében történtek, de Idaho államon "
+"belül."
 
 #: help_text.php:319
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
 msgstr ""
+"Minden felhasználói fiók tartalmazza a változtatások azonnali elfogadásának "
+"lehetőségét.  Ha ez engedélyezve van, akkor a felhasználó által végrehajtott "
+"változtatások rögtön érvénybe lépnek.  A legtöbb rendszergazda engedélyezi "
+"ezt a beállítást a saját fiókjára."
 
 #: statistics.php:127
 msgid "Earliest birth"
@@ -6539,6 +6567,10 @@ msgstr ""
 #: admin_users.php:609
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
 msgstr ""
+"Például, ha Ön 2 nagyságú útvonalat határoz meg, akkor az egyének láthatják "
+"az unokájukat (gyerek -> gyerek), nénikéjüket (szülő -> testvér), "
+"mostohalányukat (házastárs -> gyerek), viszont az első unokatestvérüket nem ("
+"szülő -> testvér -> gyerek)."
 
 #: app/Theme/AbstractTheme.php:272
 msgid "For help with genealogy questions contact"
@@ -12554,7 +12586,7 @@ msgstr "Mutasd az összes címkét"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:277
 msgid "Show an age cursor?"
-msgstr "Mutasd az életkorkurzort?"
+msgstr "Mutassa az életkorkurzort?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1367
@@ -12700,11 +12732,11 @@ msgstr "Bizalmas személyek nevének mutatása"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes?"
-msgstr "Mutasd a jegyzeteket?"
+msgstr "Mutassa a jegyzeteket?"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations?"
-msgstr "Mutasd a foglalkozást?"
+msgstr "Mutassa a foglalkozást?"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
@@ -12749,7 +12781,7 @@ msgstr "Függőben levő változtatások megjelenítése"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos?"
-msgstr "Mutasd a képeket?"
+msgstr "Mutassa a képeket?"
 
 #: placelist.php:83
 msgid "Show places in hierarchy"
@@ -12951,6 +12983,9 @@ msgstr ""
 #: admin_users.php:478 edituser.php:297
 msgid "Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr ""
+"Az oldal tagjai üzenetet küldhetnek egymásnak.  Megválaszthatja, hogy Önnek "
+"ezek az üzenetek hogyan legyenek elküldve, esetleg egyáltalán nem fogadja "
+"ezeket."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:520 admin_site_config.php:541
@@ -13800,19 +13835,19 @@ msgstr "A  %s mappát nem lehetett törölni."
 #: admin_site_config.php:37 admin_trees_config.php:294
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
-msgstr "A %s mappa nem létezik és létrehozni sem lehetett."
+msgstr "A(z) %s mappa nem létezik és létrehozni sem lehetett."
 
 #: addmedia.php:99 addmedia.php:110 addmedia.php:256 addmedia.php:267
 #: admin_media_upload.php:64 admin_media_upload.php:75
 #: admin_trees_config.php:292
 #, php-format
 msgid "The folder %s has been created."
-msgstr "A %s mappa létre lett hozva."
+msgstr "A(z) %s mappa létre lett hozva."
 
 #: admin_site_clean.php:30 admin_site_upgrade.php:490
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr "A  %s mappa törölve lett."
+msgstr "A(z) %s mappa törölve lett."
 
 #: admin_site_config.php:188
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -13828,7 +13863,8 @@ msgstr "A következő tények és események lettek találva mindkét bejegyzés
 #: admin_site_merge.php:248 admin_site_merge.php:294
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr "A következő tények és események csak a %s bejegyzésben fordulnak elő."
+msgstr ""
+"A következő tények és események csak a(z) %s bejegyzésben fordulnak elő."
 
 #: setup.php:169
 msgid "The following list shows typical requirements."
@@ -13897,7 +13933,7 @@ msgstr "A(z) %1$s médiafájl sikeresen át lett nevezve a következőre: %2$s."
 #: addmedia.php:345
 #, php-format
 msgid "The media file %s does not exist."
-msgstr "A %s média fájl nem létezik."
+msgstr "A(z) %s média fájl nem létezik."
 
 #: mediafirewall.php:38
 msgid "The media file was not found in this family tree."
@@ -13926,7 +13962,7 @@ msgstr "A “%s” modul engedélyezve lett."
 #: admin_site_upgrade.php:400
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr "Az új fájlok jelenleg a %s mappában helyezkednek el."
+msgstr "Az új fájlok jelenleg a(z) %s mappában helyezkednek el."
 
 #: admin_site_config.php:489
 msgid "The new user will be asked to confirm their email address before the account is created."
@@ -14429,11 +14465,11 @@ msgstr "A személy adatai bizalmas jellegűek."
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits.  For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
 msgstr ""
 "Ez a beviteli mező szolgál naptár évének megadására.  írja be a mezőbe az "
-"évet és az <b>Enter</b> billentyű segítségével a naptár az adott évére "
+"évet és az <b>Enter</b> billentyű segítségével a naptár adott évére "
 "jut.<br><br><b>Bővített lehetőségek</b> <b>Adott évben</b><dl><dt><b>Több "
 "mint egy év</b></dt><dd>Kereshet napokra a megadott éveken belül<br><br>Az "
 "évtartomány peremeivel <u>beleértve</u>.  Ez azt jelenti, hogy az említett "
-"első év január 1.-től és az utolsó év december 31.-ig.  Néhány példa az "
+"első év január 1.-től az utolsó év december 31.-ig.  Néhány példa az "
 "évszakaszokra:<br><br><b>1992-5</b> minden esemény 1992-től "
 "1995-ig.<br><b>1972-89</b> minden esemény  1972-től "
 "1989-ig.<br><b>1610-759</b> minden esemény 1610-től "
@@ -16236,8 +16272,8 @@ msgstr "Jemen"
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr ""
-"Ön (vagy valaki az Ön nevében) felhasználói fiókot igényelt a %1$s oldalon "
-"a(z) %2$s e-mail cím segítségével."
+"Ön (vagy valaki az Ön nevében) felhasználói fiókot igényelt a(z) %1$s "
+"oldalon a(z) %2$s e-mail cím segítségével."
 
 #: logout.php:24
 msgid "You are logged out."
