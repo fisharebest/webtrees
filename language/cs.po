@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-15 19:46+0100\n"
-"Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
+"PO-Revision-Date: 2015-08-16 06:10+0100\n"
+"Last-Translator: Jindřich Michal <jimi2000@seznam.cz>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -788,7 +788,7 @@ msgstr "Soubor na serveru"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:211
 msgid "A file on your computer"
-msgstr "Soubor v počítači"
+msgstr "Soubor ve vašem počítači"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:33
@@ -3964,7 +3964,7 @@ msgstr "Pokračování"
 #: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
 #: app/Theme/AbstractTheme.php:1234 app/Theme/AdministrationTheme.php:234
 msgid "Control panel"
-msgstr ""
+msgstr "Panel správy"
 
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:378
 #: app/Module/ClippingsCartModule.php:714
@@ -8414,7 +8414,7 @@ msgstr "Malta"
 #: admin_trees_manage.php:335 admin_trees_merge.php:40
 #: admin_trees_places.php:90 app/Theme/AdministrationTheme.php:119
 msgid "Manage family trees"
-msgstr ""
+msgstr "Správa rodinných stromů"
 
 #: admin_media.php:530 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:154 app/Module/AlbumModule.php:166
@@ -10875,7 +10875,7 @@ msgstr "Přednastavený text, jenž říká, že o zřízení uživatelského ú
 
 #: admin_trees_config.php:332 admin_trees_manage.php:385
 msgid "Preferences"
-msgstr ""
+msgstr "Předvolby"
 
 #: admin_modules.php:93
 #, php-format
