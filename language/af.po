@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-16 20:27+0100\n"
+"PO-Revision-Date: 2015-08-17 07:44+0100\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
@@ -840,7 +840,12 @@ msgstr "'n Lys van gebruikers en besoekers wat tans aanlyn is."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "’n Mediavoorwerp is ’n rekord in die stamboom wat informasie bevat oor ’n medialêer. Hierdie informasie kan ’n titel, kopiereg, ’n protokol, privaatheid beperkinge ens. bevat. Die medialêer, byv. ’n foto of video, kan plaaslik (op hierdie webbediener) of elders (op ’n ander webbediener) gestoor word."
+msgstr ""
+"’n Mediavoorwerp is ’n rekord in die stamboom wat informasie bevat oor ’n "
+"medialêer. Hierdie informasie kan ’n titel, kopiereg, ’n protokol, "
+"privaatheid beperkinge ens. bevat. Die medialêer, byv. ’n foto of video, kan "
+"plaaslik (op hierdie webbediener) of elders (op ’n ander webbediener) bewaar "
+"word."
 
 #: login.php:237
 #, php-format
@@ -4550,7 +4555,7 @@ msgstr ""
 #: help_text.php:134
 msgid "Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords."
 msgstr ""
-"Datums word gestoor m.b.v. Engelse afkortings en sleutelwoorde. Kortpaaie is "
+"Datums word bewaar m.b.v. Engelse afkortings en sleutelwoorde. Kortpaaie is "
 "beskikbaar as alternatiewe vir hierdie afkortings en sleutelwoorde."
 
 #: modules_v3/family_group_report/report.xml:809
@@ -9325,16 +9330,16 @@ msgstr "Ontbrekende gegewens"
 
 #: edit_changes.php:196
 msgid "Moderate pending changes"
-msgstr "Beoordeel wysigings wat hangend is"
+msgstr "Sien wysigings na wat hangend is"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:42 admin_users.php:550
 msgid "Moderator"
-msgstr "Beoordeelaar"
+msgstr "Moderator"
 
 #: admin.php:637
 msgid "Moderators"
-msgstr "Beoordeelaars"
+msgstr "Moderators"
 
 #: admin_modules.php:152
 msgid "Module"
@@ -14261,7 +14266,7 @@ msgstr "Daar is geen bronverwysings vir hierdie persoon nie."
 #: app/Module/ReviewChangesModule.php:87
 #: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1855
 msgid "There are pending changes for you to moderate."
-msgstr "Daar is hangende wysingings wat beoordeel moet word."
+msgstr "Daar is hangende wysingings wat nagesien moet word."
 
 #: app/Module/RecentChangesModule.php:85
 #, php-format
@@ -14332,10 +14337,10 @@ msgstr ""
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
-"Hierdie blok sal 'n lys rekords aan redakteure wys, met wysigings wat nog "
-"hanged is en nog deur 'n moderator beoordeel moet word. Dit skep ook "
-"daagliks e-posse wat aan moderators gestuur word as daar wysigings bestaan "
-"wat nog hangend is."
+"Hierdie blok sal 'n lys rekords aan moderators wys, met wysigings wat nog "
+"hanged is en nog deur 'n moderator nagesien moet word. Dit skep ook daagliks "
+"e-posse wat aan moderators gestuur word as daar wysigings bestaan wat nog "
+"hangend is."
 
 #: admin_users.php:463 edituser.php:309
 msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
@@ -14351,37 +14356,50 @@ msgstr ""
 #: setup.php:346 setup.php:357
 msgid "This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later."
 msgstr ""
+"Hierdie databasis en tabelvoorvoegsel word waarskynlik deur 'n ander "
+"toepassing gebruik. As jy 'n bestaande PhpGedView stelsel het, moet jy 'n "
+"nuwe webtrees stelsel skep. Jy kan jou PhpGedView data en instellinge later "
+"invoer."
 
 #: setup.php:253
 #, php-format
 msgid "This database is only running MySQL version %s.  You cannot install webtrees here."
 msgstr ""
+"Hierdie databasis loop MySQL weergawe %s. Jy kan nie webtrees hier "
+"installeer nie."
 
 #: admin_users.php:367 edituser.php:262 login.php:407 setup.php:442
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr ""
+"Hierdie e-posadres sal gebruik word om wagwoord herinneringsboodskappe te "
+"stuur, as ook webwerf kennisgewings en boodskappe van ander familielede wat "
+"op die webwerf geregistreer is."
 
 #: addmedia.php:529
 msgid "This entry is ignored if you have entered a URL into the filename field."
 msgstr ""
+"Hierdie inskrywing word geïgnoreer as jy 'n URL in die lêernaam-veld "
+"ingevoer het."
 
 #: family.php:80
 msgid "This family does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Hierdie gesin bestaan nie, of jy het nie die regte om dit te sien nie."
 
 #: family.php:50
 msgid "This family has been deleted.  The deletion will need to be reviewed by a moderator."
 msgstr ""
+"Hierdie gesin is geskrap. Dit sal eers deur 'n moderator nagesien moet word."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: family.php:41
 #, php-format
 msgid "This family has been deleted.  You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Hierdie gesin is geskrap. Evalueer die skrapping en %1$s of %2$s dit dan."
 
 #: family.php:68
 msgid "This family has been edited.  The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Hierdie gesin is gewysig. Dit sal eers deur 'n moderator nagesien word."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: family.php:59
@@ -19464,7 +19482,7 @@ msgstr ""
 #: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:558
 msgid "save"
-msgstr "stoor"
+msgstr "bewaar"
 
 #: app/Functions/Functions.php:641
 #, php-format
