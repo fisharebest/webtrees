@@ -426,22 +426,25 @@
 				<!-- print family with spouse and children -->
 				<RepeatTag tag="FAMS">
 					<Gedcom id="@FAMS">
-						<!-- print wife if person is husband -->
-						<if condition="$sex=='M'">
-							<TextBox height="$sheight" newline="1" padding="0" width="15"/>
-							<Cell bgcolor="$stbgcolor" border="1" newline="1" style="title" tcolor="$tcolor" width="$width"><var var="I18N::translate('Family with wife')"/></Cell>
+						<!-- find spouse -->
+						<if condition="@WIFE == $pid">
+							<SetVar name="spid" value="@HUSB"/>
+						</if>
+						<if condition="@HUSB == $pid">
 							<SetVar name="spid" value="@WIFE"/>
 						</if>
-						<!-- print husband if person is wife -->
-						<if condition="$sex=='F'">
-							<TextBox height="$sheight" newline="1" padding="0" width="15"/>
-							<Cell bgcolor="$stbgcolor" border="1" newline="1" style="title" tcolor="$tcolor" width="$width"><var var="I18N::translate('Family with husband')"/></Cell>
-							<SetVar name="spid" value="@HUSB"/>
+						<if condition="$spid == ''">
+							<!-- one parent family -->
+							<SerVar name="spid" value="$pid"/>
 						</if>
 						<!-- print information for spouse -->
 						<Gedcom id="$spid">
 							<!-- husband -->
 							<if condition="@SEX=='M'">
+								<TextBox height="$sheight" newline="1" padding="0" width="15"/>
+								<Cell bgcolor="$stbgcolor" border="1" newline="1" style="title" tcolor="$tcolor" width="$width">
+									<var var="I18N::translate('Family with husband')"/>
+								</Cell>
 								<TextBox bgcolor="$mbgcolor" border="1" newline="1" width="$width">
 									<Text color="$tcolor" style="text"><var var="I18N::translate('Husband')"/>  </Text>
 									<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
@@ -478,6 +481,10 @@
 							</if>
 							<!-- wife -->
 							<if condition="@SEX=='F'">
+								<TextBox height="$sheight" newline="1" padding="0" width="15"/>
+								<Cell bgcolor="$stbgcolor" border="1" newline="1" style="title" tcolor="$tcolor" width="$width">
+									<var var="I18N::translate('Family with wife')"/>
+								</Cell>
 								<TextBox bgcolor="$fbgcolor" border="1" newline="1" width="$width">
 									<Text color="$tcolor" style="text"><var var="I18N::translate('Wife')"/>  </Text>
 									<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>

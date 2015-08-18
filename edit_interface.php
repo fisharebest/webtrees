@@ -2390,27 +2390,27 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 
 		switch ($nextaction) {
 		case 'add_child_to_family_action':
-			$name_fields = $surname_tradition->newChildNames($father_name, $mother_name, $gender) + $name_fields;
+			$name_fields = array_merge($name_fields, $surname_tradition->newChildNames($father_name, $mother_name, $gender));
 			break;
 		case 'add_child_to_individual_action':
 			if ($person->getSex() === 'F') {
-				$name_fields = $surname_tradition->newChildNames('', $indi_name, $gender) + $name_fields;
+				$name_fields = array_merge($name_fields, $surname_tradition->newChildNames('', $indi_name, $gender));
 			} else {
-				$name_fields = $surname_tradition->newChildNames($indi_name, '', $gender) + $name_fields;
+				$name_fields = array_merge($name_fields, $surname_tradition->newChildNames($indi_name, '', $gender));
 			}
 			break;
 		case 'add_parent_to_individual_action':
-			$name_fields = $surname_tradition->newParentNames($indi_name, $gender) + $name_fields;
+			$name_fields = array_merge($name_fields, $surname_tradition->newParentNames($indi_name, $gender));
 			break;
 		case 'add_spouse_to_family_action':
 			if ($father) {
-				$name_fields = $surname_tradition->newSpouseNames($father_name, $gender) + $name_fields;
+				$name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($father_name, $gender));
 			} else {
-				$name_fields = $surname_tradition->newSpouseNames($mother_name, $gender) + $name_fields;
+				$name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($mother_name, $gender));
 			}
 			break;
 		case 'add_spouse_to_individual_action':
-			$name_fields = $surname_tradition->newSpouseNames($indi_name, $gender) + $name_fields;
+			$name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($indi_name, $gender));
 			break;
 		case 'add_unlinked_indi_action':
 		case 'update':

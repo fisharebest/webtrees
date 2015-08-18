@@ -1950,6 +1950,7 @@ class ReportParserGenerate extends ReportParserBase {
 						$value = $this->substituteVars($value, false);
 						// Convert the various filters into SQL
 						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
+							$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=f_file AND {$attr}.d_gid=f_id)";
 							$sql_where .= " AND {$attr}.d_fact = :{$attr}fact";
 							$sql_params[$attr . 'fact'] = $match[1];
 							$date                       = new Date($match[3]);

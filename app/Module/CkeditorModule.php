@@ -49,9 +49,13 @@ class CkeditorModule extends AbstractModule {
 				'var CKEDITOR_BASEPATH="' . WT_CKEDITOR_BASE_URL . '";',
 				BaseController::JS_PRIORITY_HIGH
 			)
+			// Enable for all browsers
+			->addInlineJavascript('CKEDITOR.env.isCompatible = true;')
+			// Disable toolbars
+			->addInlineJavascript('CKEDITOR.config.removePlugins = "forms,newpage,preview,print,save,templates";')
 			// Activate the editor
-			->addInlineJavascript('jQuery(".html-edit").ckeditor(function(){}, {
-				language: "' . str_replace('_', '-', strtolower(WT_LOCALE)) . '"
+			->addInlineJavascript('jQuery(".html-edit").ckeditor(function(){config.removePlugins = "forms";}, {
+				language: "' . strtolower(WT_LOCALE) . '"
 			});');
 	}
 }

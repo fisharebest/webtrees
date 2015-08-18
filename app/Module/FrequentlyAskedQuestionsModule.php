@@ -170,7 +170,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 				</label>
 
 				<div class="col-sm-9">
-					<textarea name="faqbody" id="faqbody" class="form-control"
+					<textarea name="faqbody" id="faqbody" class="form-control html-edit"
 					          rows="10"><?php echo Filter::escapeHtml($faqbody); ?></textarea>
 				</div>
 			</div>

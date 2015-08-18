@@ -80,6 +80,7 @@ $medialist = QueryMedia::mediaList(
 <h2><?php echo $controller->getPageTitle(); ?></h2>
 
 <form action="medialist.php" method="get">
+	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml() ?>">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="search" value="yes">
 	<table class="list_table">
@@ -203,6 +204,7 @@ $medialist = QueryMedia::mediaList(
 <?php
 if ($action === 'submit') {
 	$url = 'medialist.php?action=submit' .
+		'&amp;ged=' . $WT_TREE->getNameHtml() .
 		'&amp;folder=' . Filter::escapeUrl($folder) .
 		'&amp;sortby=' . Filter::escapeUrl($sortby) .
 		'&amp;subdirs=' . Filter::escapeUrl($subdirs) .

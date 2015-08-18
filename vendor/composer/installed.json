@@ -40,27 +40,30 @@
     },
     {
         "name": "bombayworks/zendframework1",
-        "version": "v1.12.13",
-        "version_normalized": "1.12.13.0",
+        "version": "v1.12.15",
+        "version_normalized": "1.12.15.0",
         "source": {
             "type": "git",
             "url": "https://github.com/bombayworks/zendframework1.git",
-            "reference": "9d7220bba71e86518ce93abbe47d978f275f03dc"
+            "reference": "a9cf9083eda9c2df8ae88b51f83d48347fef9d30"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/9d7220bba71e86518ce93abbe47d978f275f03dc",
-            "reference": "9d7220bba71e86518ce93abbe47d978f275f03dc",
+            "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/a9cf9083eda9c2df8ae88b51f83d48347fef9d30",
+            "reference": "a9cf9083eda9c2df8ae88b51f83d48347fef9d30",
             "shasum": ""
         },
         "require": {
             "php": ">=5.2.11"
         },
+        "replace": {
+            "zendframework/zendframework1": "self.version"
+        },
         "require-dev": {
             "phpunit/dbunit": "1.3.*",
             "phpunit/phpunit": "3.7.*"
         },
-        "time": "2015-05-20 16:00:33",
+        "time": "2015-08-11 16:00:07",
         "bin": [
             "bin/zf.sh",
             "bin/zf.php"
@@ -93,23 +96,23 @@
     },
     {
         "name": "ezyang/htmlpurifier",
-        "version": "v4.6.0",
-        "version_normalized": "4.6.0.0",
+        "version": "v4.7.0",
+        "version_normalized": "4.7.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/ezyang/htmlpurifier.git",
-            "reference": "6f389f0f25b90d0b495308efcfa073981177f0fd"
+            "reference": "ae1828d955112356f7677c465f94f7deb7d27a40"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/6f389f0f25b90d0b495308efcfa073981177f0fd",
-            "reference": "6f389f0f25b90d0b495308efcfa073981177f0fd",
+            "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/ae1828d955112356f7677c465f94f7deb7d27a40",
+            "reference": "ae1828d955112356f7677c465f94f7deb7d27a40",
             "shasum": ""
         },
         "require": {
             "php": ">=5.2"
         },
-        "time": "2013-11-30 08:25:19",
+        "time": "2015-08-05 01:03:42",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -246,6 +249,62 @@
         ]
     },
     {
+        "name": "fisharebest/localization",
+        "version": "1.5.0",
+        "version_normalized": "1.5.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fisharebest/localization.git",
+            "reference": "9d91eff07b935f0a40ed3458ccf4150a2680a1fd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fisharebest/localization/zipball/9d91eff07b935f0a40ed3458ccf4150a2680a1fd",
+            "reference": "9d91eff07b935f0a40ed3458ccf4150a2680a1fd",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*",
+            "satooshi/php-coveralls": "*"
+        },
+        "time": "2015-06-29 22:06:40",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Fisharebest\\Localization\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Greg Roach",
+                "email": "fisharebest@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "A lightweight localization database and translation tools, with data from the CLDR, IANA, ISO, etc.",
+        "homepage": "https://github.com/fisharebest/localization",
+        "keywords": [
+            "cldr",
+            "gettext",
+            "i18n",
+            "l10n",
+            "language",
+            "locale",
+            "localization",
+            "script",
+            "translate",
+            "translation"
+        ]
+    },
+    {
         "name": "ircmaxell/password-compat",
         "version": "v1.0.4",
         "version_normalized": "1.0.4.0",
@@ -343,62 +402,6 @@
         ]
     },
     {
-        "name": "fisharebest/localization",
-        "version": "1.5.0",
-        "version_normalized": "1.5.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fisharebest/localization.git",
-            "reference": "9d91eff07b935f0a40ed3458ccf4150a2680a1fd"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/localization/zipball/9d91eff07b935f0a40ed3458ccf4150a2680a1fd",
-            "reference": "9d91eff07b935f0a40ed3458ccf4150a2680a1fd",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "*",
-            "satooshi/php-coveralls": "*"
-        },
-        "time": "2015-06-29 22:06:40",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Fisharebest\\Localization\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0+"
-        ],
-        "authors": [
-            {
-                "name": "Greg Roach",
-                "email": "fisharebest@gmail.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "A lightweight localization database and translation tools, with data from the CLDR, IANA, ISO, etc.",
-        "homepage": "https://github.com/fisharebest/localization",
-        "keywords": [
-            "cldr",
-            "gettext",
-            "i18n",
-            "l10n",
-            "language",
-            "locale",
-            "localization",
-            "script",
-            "translate",
-            "translation"
-        ]
-    },
-    {
         "name": "patchwork/utf8",
         "version": "v1.2.3",
         "version_normalized": "1.2.3.0",
@@ -461,17 +464,17 @@
     },
     {
         "name": "ramsey/uuid",
-        "version": "2.8.1",
-        "version_normalized": "2.8.1.0",
+        "version": "2.8.2",
+        "version_normalized": "2.8.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/ramsey/uuid.git",
-            "reference": "c1d7d8f0ac860fceaadadbda7154e8b5d2f9789e"
+            "reference": "9c1e2d34bdefd42608c612e08d6e1da1e13a3530"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ramsey/uuid/zipball/c1d7d8f0ac860fceaadadbda7154e8b5d2f9789e",
-            "reference": "c1d7d8f0ac860fceaadadbda7154e8b5d2f9789e",
+            "url": "https://api.github.com/repos/ramsey/uuid/zipball/9c1e2d34bdefd42608c612e08d6e1da1e13a3530",
+            "reference": "9c1e2d34bdefd42608c612e08d6e1da1e13a3530",
             "shasum": ""
         },
         "require": {
@@ -482,9 +485,11 @@
         },
         "require-dev": {
             "doctrine/dbal": ">=2.3",
+            "jakub-onderka/php-parallel-lint": "^0.9.0",
             "moontoast/math": "~1.1",
             "phpunit/phpunit": "~4.1",
             "satooshi/php-coveralls": "~0.6",
+            "squizlabs/php_codesniffer": "^2.3",
             "symfony/console": "~2.3"
         },
         "suggest": {
@@ -492,7 +497,7 @@
             "moontoast/math": "Support for converting UUID to 128-bit integer (in string form).",
             "symfony/console": "Support for use of the bin/uuid command line tool."
         },
-        "time": "2015-06-16 15:12:41",
+        "time": "2015-07-23 19:00:41",
         "bin": [
             "bin/uuid"
         ],
@@ -517,8 +522,8 @@
                 "homepage": "http://benramsey.com"
             }
         ],
-        "description": "A PHP 5.3+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
-        "homepage": "https://github.com/ramsey/uuid",
+        "description": "NO LONGER MAINTAINED. Use ramsey/uuid instead. A PHP 5.3+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
+        "homepage": "https://github.com/ramsey/rhumsaa-uuid",
         "keywords": [
             "guid",
             "identifier",
@@ -527,23 +532,23 @@
     },
     {
         "name": "tecnick.com/tcpdf",
-        "version": "6.2.9",
-        "version_normalized": "6.2.9.0",
+        "version": "6.2.11",
+        "version_normalized": "6.2.11.0",
         "source": {
             "type": "git",
             "url": "https://github.com/tecnickcom/TCPDF.git",
-            "reference": "fa6ab8a1e1fbabb9e6cfd2f807514fa1497240e4"
+            "reference": "354433a33946ae7497c3eab291eaaf814bccbfab"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/fa6ab8a1e1fbabb9e6cfd2f807514fa1497240e4",
-            "reference": "fa6ab8a1e1fbabb9e6cfd2f807514fa1497240e4",
+            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/354433a33946ae7497c3eab291eaaf814bccbfab",
+            "reference": "354433a33946ae7497c3eab291eaaf814bccbfab",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2015-06-18 09:12:38",
+        "time": "2015-08-02 12:30:27",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

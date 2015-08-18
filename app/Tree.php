@@ -326,7 +326,7 @@ class Tree {
 				"  g.gedcom_id>0 AND (" . // exclude the "template" tree
 				"    EXISTS (SELECT 1 FROM `##user_setting` WHERE user_id=? AND setting_name='canadmin' AND setting_value=1)" . // Admin sees all
 				"   ) OR (" .
-				"    gs2.setting_value = 1 AND (" . // Allow imported trees, with either:
+				"    (gs2.setting_value = 1 OR ugs.setting_value = 'admin') AND (" . // Allow imported trees, with either:
 				"     gs3.setting_value <> 1 OR" . // visitor access
 				"     IFNULL(ugs.setting_value, 'none')<>'none'" . // explicit access
 				"   )" .

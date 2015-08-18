@@ -408,6 +408,15 @@ $old_files = array(
 	WT_ROOT . 'themes/xenea/templates',
 	WT_ROOT . 'themes/xenea/header.php',
 	WT_ROOT . 'themes/xenea/footer.php',
+	// Removed in 1.7.2
+	WT_ROOT . 'assets/js-1.7.0',
+	WT_ROOT . 'packages/bootstrap-3.3.4',
+	WT_ROOT . 'packages/bootstrap-datetimepicker-4.0.0',
+	WT_ROOT . 'packages/ckeditor-4.4.7-custom',
+	WT_ROOT . 'packages/font-awesome-4.3.0',
+	WT_ROOT . 'packages/jquery-1.11.2',
+	WT_ROOT . 'packages/jquery-2.1.3',
+	WT_ROOT . 'packages/moment-2.10.3',
 );
 
 // Delete old files (if we can).

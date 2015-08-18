@@ -125,7 +125,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 * @return Menu|null
 	 */
 	protected function menuAdminTreesMerge() {
-		if (count(Tree::getAll()) > 1) {
+		if (Auth::isAdmin() && count(Tree::getAll()) > 1) {
 			return new Menu(/* I18N: Menu entry */ I18N::translate('Merge family trees'), 'admin_trees_merge.php');
 		} else {
 			return null;
@@ -138,7 +138,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 * @return Menu|null
 	 */
 	protected function menuAdminTreesSetDefault() {
-		if (count(Tree::getAll()) > 1) {
+		if (Auth::isAdmin() && count(Tree::getAll()) > 1) {
 			return new Menu(/* I18N: Menu entry */ I18N::translate('Set the default blocks for new family trees'), 'index_edit.php?gedcom_id=-1');
 		} else {
 			return null;
