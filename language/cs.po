@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-18 16:29+0100\n"
+"PO-Revision-Date: 2015-08-18 17:48+0100\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
@@ -1396,7 +1396,7 @@ msgstr "Přidat otázku do FAQ"
 
 #: timeline.php:295
 msgid "Add another individual to the chart"
-msgstr "Přidat do grafu další osobu"
+msgstr "Přidat do diagramu další osobu"
 
 #: app/Functions/FunctionsPrint.php:554
 msgid "Add from clipboard"
@@ -1914,7 +1914,7 @@ msgstr "Alternativa k panelu „Média“ a rozšířený prohlížeč obrázků
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
 msgid "An alternative way to display charts."
-msgstr "Alternativní způsob, jak zobrazit grafy."
+msgstr "Alternativní způsob, jak zobrazit diagramy."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:39
@@ -2298,7 +2298,7 @@ msgstr "Automaticky schválit změny provedené tímto uživatelem"
 #. I18N: A configuration setting
 #: admin_trees_config.php:738
 msgid "Automatically create globally unique IDs"
-msgstr "Automaticky vytvářej globálně unikátní ID"
+msgstr "Automaticky vytvářet globálně unikátní ID"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1450
@@ -3471,17 +3471,17 @@ msgstr "Znaková sada"
 
 #: admin_modules.php:184
 msgid "Chart"
-msgstr "Schéma"
+msgstr "Diagram"
 
 #: app/Module/ChartsBlockModule.php:190 statistics.php:582
 msgid "Chart type"
-msgstr "Typ schématu"
+msgstr "Typ diagramu"
 
 #. I18N: Name of a module/block
 #: admin_modules.php:158 admin_trees_config.php:1288
 #: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1038
 msgid "Charts"
-msgstr "Schémata"
+msgstr "Diagramy"
 
 #: admin_site_upgrade.php:389
 msgid "Check file permissions…"
@@ -4107,7 +4107,7 @@ msgstr "Vytvořit pravidla přístupu k webové stránce"
 
 #: statistics.php:430
 msgid "Create your own chart"
-msgstr "Vytvoř vlastní graf"
+msgstr "Vytvořit vlastní diagram"
 
 #: admin_trees_manage.php:744
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
@@ -4882,7 +4882,7 @@ msgstr "Výchozí"
 
 #: app/Module/WelcomeBlockModule.php:54
 msgid "Default chart"
-msgstr "Výchozí graf"
+msgstr "Výchozí diagram"
 
 #: admin_trees_manage.php:435
 msgid "Default family tree"
@@ -4901,7 +4901,7 @@ msgstr "Výchozí typ mapy"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1293
 msgid "Default pedigree chart layout"
-msgstr "Výchozí rozložení schématu Vývod"
+msgstr "Výchozí rozložení diagramu Vývod"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1306
@@ -5659,7 +5659,8 @@ msgstr "Eritrea"
 #: import.php:193
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
-msgstr "Chyba: převod GEDCOM soubor z kódování %s na UTF-8 není současně podporováno."
+msgstr ""
+"Chyba: převod GEDCOM souboru z kódování %s na UTF-8 není zatím podporován."
 
 #: app/Date/JalaliDate.php:194
 msgctxt "Abbreviation for Persian month: Esfand"
@@ -6110,13 +6111,13 @@ msgstr "Rodina s manželkou"
 #: app/Controller/FanchartController.php:58
 #: app/Controller/FanchartController.php:364 app/Theme/AbstractTheme.php:1121
 msgid "Fan chart"
-msgstr "Kruhový diagram"
+msgstr "Vějířový diagram"
 
 #. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Controller/FanchartController.php:55
 #, php-format
 msgid "Fan chart of %s"
-msgstr "Kruhový diagram pro %s"
+msgstr "Vějířový diagram pro %s"
 
 #: app/Date/JalaliDate.php:183
 msgctxt "Abbreviation for Persian month: Farvardin"
@@ -6640,7 +6641,7 @@ msgstr "Pohlaví"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1380
 msgid "Gender icon on charts"
-msgstr "Ikony pohlaví na schématech"
+msgstr "Ikony pohlaví v diagramech"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:890
@@ -7146,14 +7147,14 @@ msgstr "Hongkong"
 #: app/Controller/FanchartController.php:365
 #: app/Module/ChartsBlockModule.php:196 app/Theme/AbstractTheme.php:1150
 msgid "Hourglass chart"
-msgstr "Schéma přesýpacích hodin"
+msgstr "Diagram přesýpacích hodin"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/HourglassController.php:87
 #: app/Module/ChartsBlockModule.php:111
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "Schéma přesýpacích hodin pro %s"
+msgstr "Diagram přesýpacích hodin pro %s"
 
 #: app/Module/GoogleMapsModule.php:390 app/Module/GoogleMapsModule.php:4025
 msgid "House"
@@ -7358,7 +7359,12 @@ msgstr ""
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1223
 msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-msgstr "Chcete-li nějaké příjmení odstranit ze seznamu nejčastějších příjmení, aniž byste měnili limit, můžete tak učinit tady. Zadáte-li více než jedno, musí být oddělena čárkou. <b>V příjmeních se rozlišují malá a velká písmena.</b>  Příjmení budou také odstraněna ze seznamu 10 nejčastějších na domovské stránce."
+msgstr ""
+"Chcete-li nějaké příjmení odstranit ze seznamu nejčastějších příjmení, aniž "
+"byste měnili limit, můžete tak učinit tady. Zadáte-li více než jedno, musíte "
+"je oddělit čárkou. <b>V příjmeních se rozlišují malá a velká písmena.</b>  "
+"Příjmení budou také odstraněna ze seznamu 10 nejčastějších na domovské "
+"stránce."
 
 #: setup.php:182
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page.  Otherwise, you will need to contact your server’s administrator."
@@ -7406,11 +7412,26 @@ msgstr ""
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "V mnoha kulturách je obvyklé zapisovat tradiční jména v tradičních znacích a také v latinské verzi jména, tak jak by se vyslovilo v jazycích založených na latince, třeba angličtina.<br><br>Pokud dáváte přednost použití nelatinské abecedy, jako je hebrejská, řecká (alfabeta), ruská (azbuka), čínská nebo arabská, a zadáváte tak jména do standardních polí, potom můžete použít toto pole pro vložení stejných jmen použitím latinky. Obě verze jména se objeví v seznamech a schématech.<br><br>Ačkoliv je toto pole označené jako „latinské“, není omezeno na použití pouze latinské abecedy. Je to možné použít u japonských jmen, kde se mohou objevit až tři různé abecedy."
+msgstr ""
+"V mnoha kulturách je obvyklé zapisovat tradiční jména v tradičních znacích a "
+"také v latinské verzi jména, tak jak by se vyslovilo v jazycích založených "
+"na latince, třeba angličtina.<br><br>Pokud dáváte přednost použití "
+"nelatinské abecedy, jako je hebrejská, řecká (alfabeta), ruská (azbuka), "
+"čínská nebo arabská, a zadáváte tak jména do standardních polí, potom můžete "
+"použít toto pole pro vložení stejných jmen použitím latinky. Obě verze jména "
+"se objeví v seznamech a diagramech.<br><br>Ačkoliv je toto pole označené "
+"jako „latinské“, není omezeno na použití pouze latinské abecedy. Je to možné "
+"použít u japonských jmen, kde se mohou objevit až tři různé abecedy."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "V mnoha kulturách je běžné, že mají jména zapsána tradičními znaky a také latinkou.<br><br>Pokud dáváte přednost latinské abecedě ve standardních políčkách pro jména, pak můžete toto pole použít pro nelatinskou abecedu jako alfabetu, hebrejštinu, azbuku, arabštinu nebo čínštinu. Obě verze jmen se objeví v seznamech a schématech.<br><br>Ačkoliv je toto pole označené „hebrejština“, není omezené na použití pouze hebrejských znaků."
+msgstr ""
+"V mnoha kulturách je běžné, že mají jména zapsána tradičními znaky a také "
+"latinkou.<br><br>Pokud dáváte přednost latinské abecedě ve standardních "
+"políčkách pro jména, pak můžete toto pole použít pro nelatinskou abecedu "
+"jako alfabetu, hebrejštinu, azbuku, arabštinu nebo čínštinu. Obě verze jmen "
+"se objeví v seznamech a diagramech.<br><br>Ačkoliv je toto pole označené "
+"„hebrejština“, není omezené na použití pouze hebrejských znaků."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:717
@@ -7496,7 +7517,7 @@ msgstr "Rozmístění osob"
 
 #: app/Stats.php:1714 statistics.php:584
 msgid "Individual distribution chart"
-msgstr "Graf rozmístění osob"
+msgstr "Diagram rozmístění osob"
 
 #. I18N: Name of a module
 #: app/Module/IndividualSidebarModule.php:33
@@ -7980,7 +8001,7 @@ msgstr "Věno LDS"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1406
 msgid "LDS ordinance codes in chart boxes"
-msgstr "Kódy náboženských obřadů v políčkách schémat"
+msgstr "Kódy mormonských obřadů v políčkách diagramů"
 
 #. I18N: gedcom tag SLGS
 #: app/GedcomTag.php:780
@@ -8475,7 +8496,7 @@ msgstr "Správce"
 
 #: admin.php:624
 msgid "Managers"
-msgstr "Manažeři"
+msgstr "Správci"
 
 #: app/GedcomCode/GedcomCodeTemp.php:203
 msgid "Manila, Philippines"
@@ -9126,7 +9147,7 @@ msgstr "Minimální a maximální násobek přiblížení pro Google mapy. 1 je 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1170
 msgid "Minimum number of occurrences to be a “common surname”"
-msgstr "Min. počet výskytů pro „běžné příjmení“"
+msgstr "Min. počet výskytů pro „nejčastější příjmení“"
 
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:29
@@ -9284,7 +9305,7 @@ msgstr "Většina SMTP serverů vyžaduje heslo."
 #: app/Module/FamilyTreeStatisticsModule.php:200
 #: app/Module/HtmlBlockModule.php:259
 msgid "Most common surnames"
-msgstr "Nejběžnější příjmení"
+msgstr "Nejčastější příjmení"
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: admin_site_config.php:414
@@ -9485,12 +9506,12 @@ msgstr "Jména"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1191
 msgid "Names to add to common surnames (comma separated)"
-msgstr "Přidat další běžná příjmení (oddělená čárkami)"
+msgstr "Jména, která přidat k nejčastějším příjmením (oddělená čárkami)"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1211
 msgid "Names to remove from common surnames (comma separated)"
-msgstr "Odebrat jména z běžných příjmení (oddělená čárkami)"
+msgstr "Jména, která odebrat z nejčastějších příjmení (oddělená čárkami)"
 
 #. I18N: gedcom tag _NAMS
 #: app/GedcomTag.php:1675
@@ -10185,7 +10206,7 @@ msgstr "Tohoto dne v naší historii…"
 #: app/Functions/FunctionsPrintFacts.php:832
 #: app/Functions/FunctionsPrintFacts.php:1098
 msgid "Only managers can edit"
-msgstr "Upravitelné pouze manažery"
+msgstr "Upravovat mohou jen správci"
 
 #: site-unavailable.php:92
 msgid "Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -10262,7 +10283,7 @@ msgstr "Ostatní"
 
 #: admin_trees_config.php:1419
 msgid "Other facts to show in charts"
-msgstr "Další fakta k zobrazení ve schématech"
+msgstr "Další fakta k zobrazení v diagramech"
 
 #: addmedia.php:513 admin_media_upload.php:242
 msgid "Other folder… please type in"
@@ -10282,7 +10303,7 @@ msgstr "Přepsat existující souřadnice."
 
 #: statistics.php:73
 msgid "Own charts"
-msgstr "Vlastní grafy"
+msgstr "Vlastní diagramy"
 
 #: app/GedcomCode/GedcomCodeRela.php:212
 msgid "Owner"
@@ -10630,7 +10651,10 @@ msgstr "Seznam míst"
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: admin_trees_config.php:1651
 msgid "Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr "Jména míst jsou často příliš dlouhá, aby se vlezla do grafů, seznamů atd. Je možné je zkrátit zobrazením jen prvních částí jména, jako je <i>vesnice, okres</i> nebo posledních částí jako jsou <i>kraj, země</i>."
+msgstr ""
+"Jména míst jsou často příliš dlouhá, aby se vlezla do diagramů, seznamů atd. "
+"Je možné je zkrátit zobrazením jen prvních částí jména, jako je <i>vesnice, "
+"okres</i> nebo posledních částí jako jsou <i>kraj, země</i>."
 
 #: app/GedcomTag.php:178
 msgid "Place of LDS baptism"
@@ -11853,7 +11877,7 @@ msgstr ""
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "Vybrat typ grafu"
+msgstr "Vybrat typ diagramu"
 
 #: edit_interface.php:1245
 msgid "Select events"
@@ -12067,7 +12091,8 @@ msgstr "Nastavte implicitní počet generací, jež se mají zobrazit ve vývode
 #: admin_trees_config.php:1359
 msgid "Set the maximum number of generations to display on descendancy charts."
 msgstr ""
-"Nastavte maximální počet generací, který se může zobrazit v grafech potomků."
+"Nastavte maximální počet generací, který se může zobrazit v diagramech "
+"potomků."
 
 #. I18N: Help text for the “Maximum pedigree generations” configuration setting
 #: admin_trees_config.php:1339
@@ -12084,7 +12109,7 @@ msgstr "Nastavit přístupovou úroveň soukromí pro všechny zesnulé osoby."
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
 msgstr ""
 "Nastavit na <b>Ano</b>, aby se v konfiguračních souborech, v nastavení "
-"uživatelů a v grafech pro identifikátor (ID) osoby používalo číslo RIN "
+"uživatelů a v diagramech pro identifikátor (ID) osoby používalo číslo RIN "
 "namísto identifikátoru GEDCOM ID.  To je užitečné pro ty genealogické "
 "programy, které při exportu souborů GEDCOM nepřiřazují těm samým osobám "
 "důsledně stejné identifikátory, ale vždy používají stejné číslo RIN."
@@ -12326,7 +12351,7 @@ msgstr "Zobrazit ukazatel věku?"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1367
 msgid "Show chart details by default"
-msgstr "Standardně zobrazit podrobnosti grafu"
+msgstr "Podrobnosti diagramu normálně zobrazit"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -12334,7 +12359,7 @@ msgstr "Zobrazit děti předků?"
 
 #: app/Module/FamilyTreeStatisticsModule.php:291
 msgid "Show common surnames?"
-msgstr "Zobrazit běžná příjmení?"
+msgstr "Zobrazit nejčastější příjmení?"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12563,7 +12588,7 @@ msgstr "Zobrazit partnery"
 #: app/Functions/FunctionsPrintLists.php:302
 #: app/Functions/FunctionsPrintLists.php:763
 msgid "Show statistics charts"
-msgstr "Ukázat grafy statistik"
+msgstr "Ukázat statistické diagramy"
 
 #. I18N: The placeholders are edit controls.  Show the [first/last] [1/2/3/4/5] parts of a place name
 #: admin_trees_config.php:1641
@@ -13162,7 +13187,7 @@ msgstr "Příjmení"
 
 #: app/Stats.php:1644 statistics.php:585
 msgid "Surname distribution chart"
-msgstr "Graf rozmístění podle příjmení"
+msgstr "Diagram rozložení podle příjmení"
 
 #: admin_trees_config.php:1233
 msgid "Surname list style"
@@ -14086,7 +14111,7 @@ msgstr "Tato osoba byla upravena. Měli byste to zrevidovat, a pak to %1$s nebo 
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:685 admin_users.php:598 edituser.php:204
 msgid "This individual will be selected by default when viewing charts and reports."
-msgstr "Tato osoba bude implicitně vybrána při prohížení grafů a zpráv."
+msgstr "Tato osoba bude implicitně vybrána při prohlížení diagramů a zpráv."
 
 #: app/Stats.php:1458 app/Stats.php:2273 app/Stats.php:2381 app/Stats.php:2956
 #: app/Stats.php:3130 app/Stats.php:3428 app/Stats.php:4411 app/Stats.php:4543
@@ -14143,7 +14168,8 @@ msgstr "Rozlišujte malá a velká písmena. Pokud databáze s tímto jménem je
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1372
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr "Toto je výchozí nastavení pro volbu \"zobrazit podrobnosti\" v grafech."
+msgstr ""
+"Toto je výchozí nastavení pro volbu \"zobrazit podrobnosti\" v diagramech."
 
 #: admin.php:574 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees.  No upgrade is available."
@@ -14376,27 +14402,39 @@ msgstr "Tato volba kontroluje, zda se má automaticky roztahovat seznam <i>Udál
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: admin_trees_config.php:1398
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
-msgstr "Tato volba kontroluje, zda se má zobrazit věk otce a patky vedle data narození dítěte na schématech."
+msgstr ""
+"Tato volba kontroluje, zda se má zobrazit věk otce a matky vedle data "
+"narození dítěte na diagramech."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: admin_trees_config.php:1271
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Tato volba kontroluje, zda se mají zobrazovat odhadovaná data narození a úmrtí místo zanechávání prázdných polí na seznamech a schématech pro osoby, jejichž data nejsou známa."
+msgstr ""
+"Tato volba kontroluje, zda se mají zobrazovat odhadovaná data narození a "
+"úmrtí místo zanechávání prázdných polí na seznamech a diagramech pro osoby, "
+"jejichž data nejsou známa."
 
 #. I18N: Help text for the “Gender icon on charts” configuration setting
 #: admin_trees_config.php:1385
 msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender.  The option simply removes some duplicate information from the box."
-msgstr "Tato volba vám umožní, zda zobrazovat ikonu pohlaví osob ve schématech.<br><br>Tato volba úplně neschová informaci o pohlaví, protože jsou také rozlišeny barvou rámečků. Volba jen odstraňuje duplicitní informaci v rámečku."
+msgstr ""
+"Tato volba vám umožní, zda zobrazovat ikonu pohlaví osob v "
+"diagramech.<br><br>Tato volba úplně neschová informaci o pohlaví, protože "
+"jsou také rozlišeny barvou rámečků. Volba jen odstraňuje duplicitní "
+"informaci v rámečku."
 
 #. I18N: Help text for the “Default pedigree chart layout” tree configuration setting
 #: admin_trees_config.php:1298
 msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-msgstr "Toto nastavení určuje, jestli budou Vývody orientovány na šířku nebo na výšku."
+msgstr ""
+"Toto nastavení určuje, jestli bude Vývod orientován na šířku nebo na výšku."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:501
 msgid "This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Tato volba nechá rodinné spojení v soukromých záznamech. To znamená, že uvidíte prázdné „soukromé“ rámečky ve Vývodu a dalších schématech."
+msgstr ""
+"Tato volba nechá rodinné spojení v soukromých záznamech. To znamená, že "
+"uvidíte prázdné „soukromé“ rámečky ve Vývodu a dalších diagramech."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:482
@@ -14459,7 +14497,9 @@ msgstr "Tato role má práva role Editor plus práva schvalovat/odmítat změny 
 
 #: admin_users.php:567
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr "Tato role má všechny práva role Manažer ve všech rodinných stromech, a navíc práva měnit nastavení webu, uživatelů a modulů."
+msgstr ""
+"Tato role má všechna práva role správce ve všech rodokmenech, a navíc práva "
+"měnit nastavení webu, uživatelů a modulů."
 
 #: admin_users.php:547
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
@@ -14486,7 +14526,12 @@ msgstr "Limit paměti pro tento server je %s MB a limit pro procesorový čas je
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1440
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Toto by měl být seznam čárkami nebo mezerami oddělených údajů, navíc k narození nebo úmrtí, které chcete, aby se objevily ve schématech jako je Vývod. Tento seznam vyžaduje použití popisků údajů definovaných ve standardu GEDCOM 5.5.1. Například pokud chcete, aby se povolání ukázalo v rámečku, přidejte „OCCU“ do tohoto pole."
+msgstr ""
+"Toto by měl být seznam čárkami nebo mezerami oddělených údajů, navíc k "
+"narození nebo úmrtí, které chcete, aby se objevily v diagramech jako je "
+"Vývod. Tento seznam vyžaduje použití popisků údajů definovaných ve standardu "
+"GEDCOM 5.5.1. Například pokud chcete, aby se povolání ukázalo v rámečku, "
+"přidejte „OCCU“ do tohoto pole."
 
 #: source.php:77
 msgid "This source does not exist or you do not have permission to view it."
@@ -15259,7 +15304,7 @@ msgstr "Použijte toto pole, abyste řekli správci webu, proč požadujete úč
 
 #: app/Functions/FunctionsEdit.php:638
 msgid "Use this image for charts and on the individual’s page."
-msgstr "Použít tento obrázek pro grafy a na osobní stránce."
+msgstr "Použít tento obrázek pro diagramy a na osobní stránce."
 
 #: app/Module/GoogleMapsModule.php:3915
 msgid "Use this value"
@@ -15941,7 +15986,7 @@ msgstr ""
 
 #: app/Module/ChartsBlockModule.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
-msgstr "Musíte vybrat osobu a typ schématu v nastavení bloku."
+msgstr "Musíte vybrat osobu a typ diagramu v nastavení bloku."
 
 #: admin_users.php:287
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
@@ -18705,7 +18750,7 @@ msgstr "jméno za svobodna"
 
 #: admin_trees_config.php:476
 msgid "managers"
-msgstr "manažeři"
+msgstr "správci"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
@@ -19030,7 +19075,7 @@ msgstr "partner"
 #: app/Functions/Functions.php:755
 msgctxt "MALE/FEMALE"
 msgid "partner"
-msgstr "partner"
+msgstr "partner/ka"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
