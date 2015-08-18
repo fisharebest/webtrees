@@ -525,7 +525,7 @@ class Zend_Http_Response
             }
 
             // Locate headers like 'Location: ...' and 'Location:...' (note the missing space)
-            if (preg_match("|^([\w-]+):\s*(.+)|s", $line, $m)) {
+            if (preg_match("|^([a-zA-Z0-9\'`#$%&*+.^_\|\~!-]+):\s*(.*)|s", $line, $m)) {
                 unset($last_header);
                 $h_name  = strtolower($m[1]);
                 $h_value = $m[2];
@@ -536,12 +536,12 @@ class Zend_Http_Response
                         $headers[$h_name] = array($headers[$h_name]);
                     }
 
-                    $headers[$h_name][] = $h_value;
+                    $headers[$h_name][] = ltrim($h_value);
                     $last_header = $h_name;
                     continue;
                 }
 
-                $headers[$h_name] = $h_value;
+                $headers[$h_name] = ltrim($h_value);
                 $last_header = $h_name;
                 continue;
             }

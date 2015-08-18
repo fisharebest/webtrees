@@ -409,6 +409,7 @@ $old_files = array(
 	WT_ROOT . 'themes/xenea/header.php',
 	WT_ROOT . 'themes/xenea/footer.php',
 	// Removed in 1.7.2
+	WT_ROOT . 'assets/js-1.7.0',
 	WT_ROOT . 'packages/bootstrap-3.3.4',
 	WT_ROOT . 'packages/bootstrap-datetimepicker-4.0.0',
 	WT_ROOT . 'packages/ckeditor-4.4.7-custom',

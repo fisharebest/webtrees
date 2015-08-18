@@ -22,6 +22,9 @@
     "config": {
         "bin-dir": "bin"
     },
+    "replace": {
+    	"zendframework/zendframework1": "self.version"
+    },
     "bin": ["bin/zf.sh","bin/zf.php"],
     "extra": {
         "branch-alias": {

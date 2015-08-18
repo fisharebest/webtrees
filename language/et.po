@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-12 19:51+0100\n"
+"PO-Revision-Date: 2015-08-17 17:17+0100\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
@@ -10318,7 +10318,7 @@ msgstr "Belau"
 #. I18N: A colour scheme
 #: app/Theme/ColorsTheme.php:147
 msgid "Palette"
-msgstr "Palette"
+msgstr "Värviskaala"
 
 #: app/GedcomCode/GedcomCodeTemp.php:253
 msgid "Palmyra, New York"

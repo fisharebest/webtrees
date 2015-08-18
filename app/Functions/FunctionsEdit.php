@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
@@ -592,6 +593,20 @@ class FunctionsEdit {
 			}
 		}
 
+		// Show names for spouses in MARR/HUSB/AGE and MARR/WIFE/AGE
+		if ($fact === 'HUSB' || $fact === 'WIFE') {
+			$family = Family::getInstance($xref, $WT_TREE);
+			if ($family) {
+				$spouse_link = $family->getFirstFact($fact);
+				if ($spouse_link) {
+					$spouse = $spouse_link->getTarget();
+					if ($spouse) {
+						echo $spouse->getFullName();
+					}
+				}
+			}
+		}
+
 		if (in_array($fact, Config::emptyFacts()) && ($value === '' || $value === 'Y' || $value === 'y')) {
 			echo '<input type="hidden" id="', $element_id, '" name="', $element_name, '" value="', $value, '">';
 			if ($level <= 1) {
@@ -691,10 +706,8 @@ class FunctionsEdit {
 				switch ($fact) {
 					case 'ALIA':
 					case 'ASSO':
-						echo ' data-autocomplete-type="INDI"';
-						break;
 					case '_ASSO':
-						echo ' data-autocomplete-type="ASSO"';
+						echo ' data-autocomplete-type="ASSO" data-autocomplete-extra="input.DATE"';
 						break;
 					case 'DATE':
 						echo ' onblur="valid_date(this);" onmouseout="valid_date(this);"';
@@ -716,7 +729,7 @@ class FunctionsEdit {
 						echo ' data-autocomplete-type="OBJE"';
 						break;
 					case 'PAGE':
-						echo ' data-autocomplete-type="PAGE" data-autocomplete-extra="' . $source_element_id . '"';
+						echo ' data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $source_element_id . '"';
 						break;
 					case 'PLAC':
 						echo ' data-autocomplete-type="PLAC"';
@@ -992,7 +1005,7 @@ class FunctionsEdit {
 				}
 				echo '<table class="facts_table">';
 				// 2 ASSO
-				self::addSimpleTag($level . ' ASSO @');
+				self::addSimpleTag($level . ' _ASSO @');
 				// 3 RELA
 				self::addSimpleTag(($level + 1) . ' RELA');
 				// 3 NOTE
