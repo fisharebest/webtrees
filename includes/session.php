@@ -472,8 +472,8 @@ if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_t
 	}
 }
 
-// Update the login time every 5 minutes
-if (WT_TIMESTAMP - Session::get('activity_time') > 300) {
+// Update the last-login time no more than once a minute
+if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {
 	Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
 	Session::put('activity_time', WT_TIMESTAMP);
 }
