@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-20 17:49+0100\n"
+"PO-Revision-Date: 2015-08-20 19:34+0100\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
@@ -19602,12 +19602,12 @@ msgstr ""
 #: app/Functions/Functions.php:929
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "broers- of susterskind"
 
 #: app/Functions/Functions.php:937
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "susterskind"
 
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:636
@@ -19627,12 +19627,12 @@ msgstr "niggie"
 #: app/Functions/Functions.php:931
 msgctxt "sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "broers- of susterskind"
 
 #: app/Functions/Functions.php:939
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "susterskind"
 
 #: app/Functions/Functions.php:1047
 msgctxt "brother’s son’s wife"
@@ -19690,23 +19690,23 @@ msgstr "geen"
 #: app/SurnameTradition.php:100
 msgctxt "Surname tradition"
 msgid "none"
-msgstr ""
+msgstr "geen"
 
 #. I18N: time format “%a” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:92
 msgid "noon"
-msgstr ""
+msgstr "middag"
 
 #: app/Module/GoogleMapsModule.php:4038
 msgid "north"
-msgstr ""
+msgstr "noord"
 
 #: statistics.php:634 statisticsplot.php:860 statisticsplot.php:910
 #: statisticsplot.php:964 statisticsplot.php:1014 statisticsplot.php:1068
 #: statisticsplot.php:1118 statisticsplot.php:1168 statisticsplot.php:1218
 #: statisticsplot.php:1268 statisticsplot.php:1318
 msgid "numbers"
-msgstr ""
+msgstr "getalle"
 
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
@@ -19724,89 +19724,89 @@ msgstr ""
 #: statisticsplot.php:1106 statisticsplot.php:1156 statisticsplot.php:1206
 #: statisticsplot.php:1256 statisticsplot.php:1306 statisticsplot.php:1356
 msgid "of"
-msgstr ""
+msgstr "van"
 
 #: app/Functions/FunctionsPrint.php:370
 msgid "on the date of death"
-msgstr ""
+msgstr "op die datum van dood"
 
 #: statisticsplot.php:788
 msgid "over"
-msgstr ""
+msgstr "oor"
 
 #: statistics.php:608
 msgid "overall"
-msgstr ""
+msgstr "algehele"
 
 #. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:95
 msgid "p.m."
-msgstr ""
+msgstr "n.m."
 
 #: app/Functions/Functions.php:710
 msgid "parent"
-msgstr ""
+msgstr "ouer"
 
 #: app/Functions/Functions.php:737
 msgctxt "FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "maat"
 
 #: app/Functions/Functions.php:719
 msgctxt "MALE"
 msgid "partner"
-msgstr ""
+msgstr "maat"
 
 #: app/Functions/Functions.php:755
 msgctxt "MALE/FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "maat"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr ""
+msgstr "vaderlike"
 
 #: app/Functions/Functions.php:859
 msgctxt "father’s father"
 msgid "paternal grandfather"
-msgstr ""
+msgstr "oupa aan vaderskant"
 
 #: app/Functions/Functions.php:861
 msgctxt "father’s mother"
 msgid "paternal grandmother"
-msgstr ""
+msgstr "ouma aan vaderskant"
 
 #: app/Functions/Functions.php:863
 msgctxt "father’s parent"
 msgid "paternal grandparent"
-msgstr ""
+msgstr "grootouer aan vaderskant"
 
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:75
 msgid "patrilineal"
-msgstr ""
+msgstr "patrilineêre"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:56
 msgid "pending"
-msgstr ""
+msgstr "hangende"
 
 #: statistics.php:636 statisticsplot.php:873 statisticsplot.php:923
 #: statisticsplot.php:977 statisticsplot.php:1027 statisticsplot.php:1081
 #: statisticsplot.php:1131 statisticsplot.php:1181 statisticsplot.php:1231
 #: statisticsplot.php:1281 statisticsplot.php:1331
 msgid "percentage"
-msgstr ""
+msgstr "persentasie"
 
 #: admin_trees_config.php:1078
 msgid "pixels"
-msgstr ""
+msgstr "pixels"
 
 #. I18N: button label
 #: admin_trees_places.php:107
 msgid "preview"
-msgstr ""
+msgstr "voorskou"
 
 #. I18N: button label, previous page
 #: app/I18N.php:225 app/Module/BatchUpdateModule.php:231
@@ -19816,70 +19816,70 @@ msgstr "vorige"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/GedcomCode/GedcomCodeQuay.php:39
 msgid "primary evidence"
-msgstr ""
+msgstr "primêre getuienis"
 
 #: statistics.php:568
 msgid "quarters after marriage"
-msgstr ""
+msgstr "kwartale na huwelik"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/GedcomCode/GedcomCodeQuay.php:47
 msgid "questionable evidence"
-msgstr ""
+msgstr "twyfelagtige getuienis"
 
 #: admin_trees_config.php:70 modules_v3/fact_sources/report.xml:6
 msgid "records"
-msgstr ""
+msgstr "rekords"
 
 #: family.php:61 individual.php:71 mediaviewer.php:62 note.php:56 repo.php:55
 #: source.php:62
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr ""
+msgstr "van die hand wys"
 
 #: family.php:43 individual.php:53 mediaviewer.php:44 note.php:38 repo.php:37
 #: source.php:44
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr ""
+msgstr "van die hand wys"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:55
 msgid "rejected"
-msgstr ""
+msgstr "van die hand gewys"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:144
 msgid "religious name"
-msgstr ""
+msgstr "godsdienstige naam"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:141
 msgctxt "FEMALE"
 msgid "religious name"
-msgstr ""
+msgstr "godsdienstige naam"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:138
 msgctxt "MALE"
 msgid "religious name"
-msgstr ""
+msgstr "godsdienstige naam"
 
 #. I18N: a program feature
 #: setup.php:131 setup.php:132
 msgid "reporting"
-msgstr ""
+msgstr "verslaggewing"
 
 #. I18N: Button label
 #: app/Module/GoogleMapsModule.php:4958 lifespan.php:106 medialist.php:195
 #: statistics.php:644 timeline.php:310
 msgid "reset"
-msgstr ""
+msgstr "herstel"
 
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: admin_site_access.php:29 admin_site_access.php:36
 msgid "robot"
-msgstr ""
+msgstr "robot"
 
 #. I18N: button label
 #: addmedia.php:704 admin_module_blocks.php:111 admin_module_menus.php:129
@@ -19906,19 +19906,19 @@ msgstr "bewaar"
 #, php-format
 msgctxt "FEMALE"
 msgid "second %s"
-msgstr ""
+msgstr "tweede %s"
 
 #: app/Functions/Functions.php:626
 #, php-format
 msgctxt "MALE"
 msgid "second %s"
-msgstr ""
+msgstr "tweede %s"
 
 #: app/Functions/Functions.php:656
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "second %s"
-msgstr ""
+msgstr "tweede %s"
 
 #: app/Functions/Functions.php:541
 msgctxt "FEMALE"
@@ -20074,17 +20074,17 @@ msgstr ""
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/GedcomCode/GedcomCodeQuay.php:43
 msgid "secondary evidence"
-msgstr ""
+msgstr "sekondêre getuienis"
 
 #. I18N: select all (of the family trees)
 #: search.php:118 search.php:281
 msgid "select all"
-msgstr ""
+msgstr "selekteer alles"
 
 #. I18N: select none (of the family trees)
 #: search.php:119 search.php:282
 msgid "select none"
-msgstr ""
+msgstr "selekteer niks"
 
 #: app/Functions/Functions.php:278 app/Functions/Functions.php:296
 #: app/Functions/Functions.php:703
@@ -20116,55 +20116,55 @@ msgstr "vertoon"
 
 #: statistics.php:643
 msgid "show the plot"
-msgstr ""
+msgstr "vertoon die diagram"
 
 #: app/Functions/Functions.php:821
 msgid "sibling"
-msgstr ""
+msgstr "broer of suster"
 
 #: app/Functions/Functions.php:804
 msgid "sister"
-msgstr ""
+msgstr "suster"
 
 #: app/Functions/Functions.php:831
 msgctxt "brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "skoonsuster"
 
 #: app/Functions/Functions.php:1053
 msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "skoonsuster"
 
 #: app/Functions/Functions.php:1163
 msgctxt "husband’s brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "skoonsuster"
 
 #: app/Functions/Functions.php:885
 msgctxt "husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "skoonsuster"
 
 #: app/Functions/Functions.php:1335
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "skoonsuster"
 
 #: app/Functions/Functions.php:963
 msgctxt "spouse’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "skoonsuster"
 
 #: app/Functions/Functions.php:1385
 msgctxt "wife’s brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "skoonsuster"
 
 #: app/Functions/Functions.php:983
 msgctxt "wife’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "skoonsuster"
 
 #: app/Functions/Functions.php:549
 msgctxt "FEMALE"
@@ -20195,39 +20195,39 @@ msgstr ""
 #: app/Functions/Functions.php:837
 msgctxt "child’s husband"
 msgid "son-in-law"
-msgstr ""
+msgstr "skoonseun"
 
 #: app/Functions/Functions.php:849
 msgctxt "daughter’s husband"
 msgid "son-in-law"
-msgstr ""
+msgstr "skoonseun"
 
 #: app/Functions/Functions.php:1091
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr ""
+msgstr "skoonseun se pa"
 
 #: app/Functions/Functions.php:1093
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr ""
+msgstr "skoonseun se ma"
 
 #: app/Functions/Functions.php:1095
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr ""
+msgstr "skoonseun se ouer"
 
 #: app/Functions/Functions.php:841
 msgctxt "child’s spouse"
 msgid "son/daughter-in-law"
-msgstr ""
+msgstr "skoonseun/skoondogter"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:157
 #: app/Module/UpcomingAnniversariesModule.php:176
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr ""
+msgstr "sorteer volgens datum"
 
 #: edit_interface.php:1854 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9 modules_v3/change_report/report.xml:7
@@ -20242,7 +20242,7 @@ msgstr "sorteer volgens geboortedatum"
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of death"
-msgstr ""
+msgstr "sorteer volgens sterfdatum"
 
 #: edit_interface.php:2216 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
@@ -20251,17 +20251,17 @@ msgstr "Sorteer volgens datum van die huwelik"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:165
 msgid "sort by date, newest first"
-msgstr ""
+msgstr "sorteer volgens datum, mees onlangste eerste"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:164
 msgid "sort by date, oldest first"
-msgstr ""
+msgstr "sorteer volgens datum, oudste eerste"
 
 #. I18N: An option in a list-box
 #: medialist.php:108
 msgid "sort by filename"
-msgstr ""
+msgstr "sorteer volgens lêername"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:156 app/Module/RecentChangesModule.php:163
@@ -20275,16 +20275,16 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by name"
-msgstr ""
+msgstr "sorteer volgens naam"
 
 #. I18N: An option in a list-box
 #: medialist.php:105
 msgid "sort by title"
-msgstr ""
+msgstr "sorteer volgens titel"
 
 #: app/Module/GoogleMapsModule.php:4039
 msgid "south"
-msgstr ""
+msgstr "suid"
 
 #: app/Functions/Functions.php:764 edit_interface.php:1938
 #: edit_interface.php:1948 edit_interface.php:1973 edit_interface.php:1984
@@ -20299,47 +20299,47 @@ msgstr "ssl"
 #: app/Functions/Functions.php:1161
 msgctxt "father’s wife’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "stiefbroer"
 
 #: app/Functions/Functions.php:1191
 msgctxt "mother’s husband’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "stiefbroer"
 
 #: app/Functions/Functions.php:1269
 msgctxt "parent’s spouse’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "stiefbroer"
 
 #: app/Functions/Functions.php:875
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr ""
+msgstr "stiefkind"
 
 #: app/Functions/Functions.php:955
 msgctxt "spouse’s child"
 msgid "step-child"
-msgstr ""
+msgstr "stiefkind"
 
 #: app/Functions/Functions.php:973
 msgctxt "wife’s child"
 msgid "step-child"
-msgstr ""
+msgstr "stiefkind"
 
 #: app/Functions/Functions.php:877
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "stiefdogter"
 
 #: app/Functions/Functions.php:957
 msgctxt "spouse’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "stiefdogter"
 
 #: app/Functions/Functions.php:975
 msgctxt "wife’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "stiefdogter"
 
 #: app/Functions/Functions.php:897 app/Module/FamilyNavigatorModule.php:216
 msgctxt "mother’s husband"
@@ -20354,52 +20354,52 @@ msgstr "stiefmoeder"
 #: app/Functions/Functions.php:927
 msgctxt "parent’s spouse"
 msgid "step-parent"
-msgstr ""
+msgstr "stiefouer"
 
 #: app/Functions/Functions.php:1157
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "stiefbroer/stiefsuster"
 
 #: app/Functions/Functions.php:1187
 msgctxt "mother’s husband’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "stiefbroer/stiefsuster"
 
 #: app/Functions/Functions.php:1265
 msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "stiefbroer/stiefsuster"
 
 #: app/Functions/Functions.php:1159
 msgctxt "father’s wife’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "stiefsuster"
 
 #: app/Functions/Functions.php:1189
 msgctxt "mother’s husband’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "stiefsuster"
 
 #: app/Functions/Functions.php:1267
 msgctxt "parent’s spouse’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "stiefsuster"
 
 #: app/Functions/Functions.php:887
 msgctxt "husband’s son"
 msgid "step-son"
-msgstr ""
+msgstr "stiefseun"
 
 #: app/Functions/Functions.php:965
 msgctxt "spouse’s son"
 msgid "step-son"
-msgstr ""
+msgstr "stiefseun"
 
 #: app/Functions/Functions.php:985
 msgctxt "wife’s son"
 msgid "step-son"
-msgstr ""
+msgstr "stiefseun"
 
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:48 app/Module/OnThisDayModule.php:149
@@ -20413,7 +20413,7 @@ msgstr "tabel"
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:49 app/Module/TopSurnamesModule.php:184
 msgid "tag cloud"
-msgstr ""
+msgstr "etiket-wolk"
 
 #: app/Functions/Functions.php:557
 msgctxt "FEMALE"
@@ -20435,29 +20435,33 @@ msgstr ""
 #: site-unavailable.php:98
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
 msgstr ""
+"die instellinge vir die databasis in die lêer “/data/config.ini.php” is "
+"steeds nie korrek nie"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:101
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
+"die lêergids “/data” en die lêer “/data/config.ini.php” het toegangsregte "
+"wat die webbediener toestemming gee om hulle te lees"
 
 #: app/Functions/Functions.php:643
 #, php-format
 msgctxt "FEMALE"
 msgid "third %s"
-msgstr ""
+msgstr "derde %s"
 
 #: app/Functions/Functions.php:628
 #, php-format
 msgctxt "MALE"
 msgid "third %s"
-msgstr ""
+msgstr "derde %s"
 
 #: app/Functions/Functions.php:658
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "third %s"
-msgstr ""
+msgstr "derde %s"
 
 #: app/Functions/Functions.php:543
 msgctxt "FEMALE"
@@ -20493,23 +20497,23 @@ msgstr ""
 
 #: admin_trees_config.php:555
 msgid "this record does not exist"
-msgstr ""
+msgstr "hierdie rekord bestaan nie"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:70
 msgid "three-quarter circle"
-msgstr ""
+msgstr "driekwart-sirkel"
 
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:113
 msgid "tls"
-msgstr ""
+msgstr "tls"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:319
 #, php-format
 msgid "to %s"
-msgstr ""
+msgstr "tot %s"
 
 #: app/Functions/Functions.php:561
 msgctxt "FEMALE"
@@ -20650,31 +20654,40 @@ msgstr "webtrees benodig 'n MySQL-databasis, weergawe %s of hoër."
 #: admin_site_config.php:321
 msgid "webtrees needs to send emails, such as password reminders and website notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
 msgstr ""
+"webtrees moet by tye e-posse uitstuur, soos wagwoord-herinneringe en webwerf-"
+"kennisgewings. Om dit te doen, kan dit gebruik maak van die ingeboude PHP e-"
+"pos fasiliteit (wat nie altyd beskikbaar is nie) of 'n eksterne SMTP (e-pos "
+"aflos), waarvoor jy die verbinding besonderhere nodig sal hê."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:869
 msgid "webtrees reply address"
-msgstr ""
+msgstr "webtrees antwoordadres"
 
 #: app/Functions/FunctionsEdit.php:240
 msgid "webtrees sends emails with no storage"
-msgstr ""
+msgstr "webtrees stuur e-posse sonder om dit te bewaar"
 
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
+"webtrees gebruik UTF-8 enkodering vir letters met aksente, spesiale "
+"karakters en nie-latynse skrif. As jy hierdie GEDCOM-lêer wil gebruik met "
+"genealogie sagteware sonder UTF-8 ondersteuning, dan kan jy dit skep met "
+"ISO-8859-1 enkodering."
 
 #: app/Functions/FunctionsPrint.php:208
 msgid "webtrees wiki"
-msgstr ""
+msgstr "webtrees wiki"
 
 #: admin_trees_manage.php:705
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
 msgstr ""
+"webtrees se databasisse moet op dieselfde bediener as die van PhpGedView wees"
 
 #: app/Module/GoogleMapsModule.php:4049
 msgid "west"
-msgstr ""
+msgstr "wes"
 
 #: app/Functions/Functions.php:746 edit_interface.php:1937
 #: edit_interface.php:1972
@@ -20684,7 +20697,7 @@ msgstr "eggenote"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:153
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:127
 msgid "years"
@@ -20711,31 +20724,33 @@ msgstr "ja"
 #: site-unavailable.php:104
 msgid "you can connect to the database using other applications, such as phpmyadmin"
 msgstr ""
+"jy kan 'n verbinding met die databasis maak deur van ander toepassings, soos "
+"phypmyadmin, gebruik te maak"
 
 #: app/Functions/Functions.php:780
 msgid "younger brother"
-msgstr ""
+msgstr "jonger broer"
 
 #: app/Functions/Functions.php:814
 msgid "younger sibling"
-msgstr ""
+msgstr "jonger broer of suster"
 
 #: app/Functions/Functions.php:797
 msgid "younger sister"
-msgstr ""
+msgstr "jonger suster"
 
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:166 search_advanced.php:167 search_advanced.php:168
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "±%s jaar"
+msgstr[1] "±%s jaar"
 
 #: app/Individual.php:1226
 #, php-format
 msgid "“%s”"
-msgstr ""
+msgstr "“%s”"
 
 #. I18N: %s is the name of an individual, source or other record
 #: app/Module/UserFavoritesModule.php:96
@@ -20753,7 +20768,7 @@ msgstr "…"
 #: indilist.php:226
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Family.php:351 app/Family.php:365 app/Individual.php:1223
 #: app/Individual.php:1313 app/Module/FamiliesSidebarModule.php:151
