@@ -2637,10 +2637,10 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		// For example, to differentiate the two Spanish surnames from an English
 		// double-barred name.
 		// Commas *may* be used in other fields, and will form part of the NAME.
-		if (WT_LOCALE=="vi" || WT_LOCALE=="hu") {
+		if (WT_LOCALE === "vi" || WT_LOCALE === "hu") {
 			// Default format: /SURN/ GIVN
 			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/ "+givn.replace(/ *, */g, " ")+" "+nsfx);
-		} else if (WT_LOCALE=="zh") {
+		} else if (WT_LOCALE === "zh-Hans" || WT_LOCALE === "zh-Hant") {
 			// Default format: /SURN/GIVN
 			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/"+givn.replace(/ *, */g, " ")+" "+nsfx);
 		} else {

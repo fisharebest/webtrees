@@ -141,7 +141,7 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
 
 		foreach ($menus as $menu) {
 			// Create an inert menu - to use as a label
-			$tmp = new Menu(strip_tags($menu->getLabel()), '');
+			$tmp = new Menu($menu->getLabel(), '');
 
 			// Insert the label into the submenu
 			$submenus = $menu->getSubmenus();
