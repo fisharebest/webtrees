@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-16 13:03+0100\n"
+"PO-Revision-Date: 2015-08-20 18:54+0100\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -71,7 +71,7 @@ msgstr "#%s"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s  %3$s hivatkozik %4$s-re"
+msgstr "%1$s %2$s  %3$s hivatkozik %4$s-re."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2151
@@ -1045,7 +1045,10 @@ msgid "A role is a set of access rights, which give permission to view data, cha
 msgstr ""
 "A szerep olyan jogosultságok gyűjteménye, amely megszabja az adatok "
 "megjelenítésének engedélyét, a beállítások változtatását, stb.  A "
-"hozzáférési jogok a szerepekhez vannak rendelve "
+"hozzáférési jogok a szerepekhez vannak rendelve és a szerepek pedig a "
+"felhasználókhoz.  Minden egyes családfa eltérő hozzáférési szereppel "
+"rendelkezhet és a felhasználóknak is eltérő szerepkiosztásuk lehet minden "
+"egyes családfához."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -4482,7 +4485,7 @@ msgstr "UNSZ keresztség dátuma"
 
 #: app/GedcomTag.php:774
 msgid "Date of LDS child sealing"
-msgstr " UNSZ gyerek pecsételés dátuma"
+msgstr "UNSZ gyerek pecsételés dátuma"
 
 #: app/GedcomTag.php:414
 msgid "Date of LDS endowment"
@@ -7421,7 +7424,7 @@ msgstr ""
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
 msgstr ""
 "Ha egy rendszergazda létrehoz egy félhasználói fiókot és az ellenőrző email "
-"nem lett visszaigazolva, akkor az email címet le kell igazolni"
+"nem lett visszaigazolva, akkor az email címet le kell igazolni."
 
 #: help_text.php:228
 #, php-format
@@ -9980,11 +9983,11 @@ msgstr "Nincs kapcsolat"
 
 #: admin_site_upgrade.php:206
 msgid "No custom modules are enabled."
-msgstr "A sajátos modulok nincsenek engedélyezve"
+msgstr "A sajátos modulok nincsenek engedélyezve."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr "A sajátos témák nincsenek engedélyezve"
+msgstr "A sajátos témák nincsenek engedélyezve."
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
@@ -12213,7 +12216,7 @@ msgstr "Válassza ki a kívánt összesítési szakasznagyságot"
 
 #: admin_site_merge.php:196
 msgid "Select the facts and events to keep from both records."
-msgstr "Válassza a tényeket és eseményeket minkét bejegyzés megtartása miatt. "
+msgstr "Válassza a tényeket és eseményeket minkét bejegyzés megtartása miatt."
 
 #: admin_site_config.php:627
 msgid "Select the languages that will be shown in menus."
@@ -13811,7 +13814,7 @@ msgstr "A személy részleteire adatvédelmi korlátozások vannak érvényben."
 #: admin_site_upgrade.php:293 admin_trees_export.php:41
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr "A családfa exportálva lett: %s"
+msgstr "A családfa exportálva lett: %s."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:76
@@ -14015,6 +14018,16 @@ msgstr "A médiafájl nem található a családfában."
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
 msgstr ""
+"A média fájl amelyet feltölt át lehet, és elvárhatóan szükséges is, nevezni "
+"eltérően a kiszolgálón mint az ön számítógépén.  Ez azért gyakori, mert a "
+"fájl helyi megnevezése az Ön számára egyértelmű, de az oldal többi látogató "
+"részére már kevésbé.  Tekintettel arra lehetőségre is, hogy Ön és valaki más "
+"is megpróbál feltölteni eltérő tartalmú, de azonosan megnevezett fájt "
+"“nagyi.jpg“.<br><br>A mezőbe beírhatja a feltöltendő fájl új megnevezését.  "
+"A megadott név lesz használva a bélyegkép megnevezésénél is. ami külön is "
+"feltölthető vagy a rendszer által létrehozható.  A fájl végződését (jpg, "
+"gif, pdf, doc, stb.) nem szükséges megadni.<br><br>Hagyja ezt a mezőt üresen "
+"a fájl eredeti nevének megtartásához."
 
 #: setup.php:167
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -14242,6 +14255,8 @@ msgstr ""
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
 msgstr ""
+"A “%” egy helyettesítő jel, amely nulla vagy több különböző karakternek "
+"felel meg."
 
 #: admin_modules.php:186 admin_users.php:486 app/Theme/AbstractTheme.php:1672
 #: edituser.php:269
@@ -15009,7 +15024,7 @@ msgid "This role has all the permissions of the moderator role, plus any additio
 msgstr ""
 "A szerep magába foglalja az oldalkezelő jogait és még további hozzáférést a "
 "családfa beállításaitól függően, és ezen felül a családfa beállítások "
-"módosításának jogait. "
+"módosításának jogait is."
 
 #: admin_users.php:539
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
@@ -15078,7 +15093,7 @@ msgstr ""
 
 #: admin_trees_check.php:180 admin_trees_check.php:185
 msgid "This type of link is not allowed here."
-msgstr ""
+msgstr "Ez a típusú hivatkozás nem helyénvaló."
 
 #: setup.php:209
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -15089,6 +15104,7 @@ msgstr ""
 #: admin_site_upgrade.php:41
 msgid "This website is being upgraded.  Try again in a few minutes."
 msgstr ""
+"Az oldal frissítés alatt áll.  Néhány perc elteltével próbálkozzon újra."
 
 #: site-offline.php:73
 msgid "This website is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -15237,7 +15253,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:399
 msgid "To complete the upgrade, you should install the files manually."
-msgstr ""
+msgstr "A frissítés befejezéséhez, a fájlokat saját kezűleg kell telepíteni."
 
 #: app/Module/ResearchTaskModule.php:188
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15746,6 +15762,8 @@ msgstr "Média állomány feltöltése"
 #: admin_media_upload.php:187
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
 msgstr ""
+"Töltsön fel egy vagy több média fájlt a saját számítógépéről.  A média fájl "
+"lehet kép, videó, hanganyag vagy egyéb formátum."
 
 #: app/Stats.php:6966
 msgid "Uruguay"
@@ -16433,11 +16451,11 @@ msgstr ""
 
 #: admin_site_upgrade.php:199
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "Ezeket a modulokat a frissítés után újraengedélyezheti."
 
 #: admin_site_upgrade.php:263
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "Ezeket a témákat a frissítés után újraengedélyezheti."
 
 #: admin_trees_renumber.php:266
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -16445,7 +16463,7 @@ msgstr ""
 
 #: admin_trees_renumber.php:279
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Ezt a családfát átszámozhatja."
 
 #: admin_site_config.php:202 admin_site_config.php:221
 msgid "You can request a higher or lower limit, although the server may ignore this request."
