@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-19 19:50+0100\n"
+"PO-Revision-Date: 2015-08-20 17:49+0100\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
@@ -18505,182 +18505,182 @@ msgstr ""
 #: app/Functions/Functions.php:1055
 msgctxt "child’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "agterkleinkind"
 
 #: app/Functions/Functions.php:1061
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "agterkleinkind"
 
 #: app/Functions/Functions.php:1069
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "agterkleinkind"
 
 #: app/Functions/Functions.php:1077
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "agterkleinkind"
 
 #: app/Functions/Functions.php:1083
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "agterkleinkind"
 
 #: app/Functions/Functions.php:1097
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "agterkleinkind"
 
 #: app/Functions/Functions.php:1357
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "agterkleinkind"
 
 #: app/Functions/Functions.php:1363
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "agterkleinkind"
 
 #: app/Functions/Functions.php:1371
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "agterkleinkind"
 
 #: app/Functions/Functions.php:1057
 msgctxt "child’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "agterkleindogter"
 
 #: app/Functions/Functions.php:1063
 msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "agterkleindogter"
 
 #: app/Functions/Functions.php:1071
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "agterkleindogter"
 
 #: app/Functions/Functions.php:1079
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "agterkleindogter"
 
 #: app/Functions/Functions.php:1085
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "agterkleindogter"
 
 #: app/Functions/Functions.php:1099
 msgctxt "daughter’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "agterkleindogter"
 
 #: app/Functions/Functions.php:1359
 msgctxt "son’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "agterkleindogter"
 
 #: app/Functions/Functions.php:1365
 msgctxt "son’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "agterkleindogter"
 
 #: app/Functions/Functions.php:1373
 msgctxt "son’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "agterkleindogter"
 
 #: app/Functions/Functions.php:1115
 msgctxt "father’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "oupagrootjie"
 
 #: app/Functions/Functions.php:1127
 msgctxt "father’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "oupagrootjie"
 
 #: app/Functions/Functions.php:1139
 msgctxt "father’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "oupagrootjie"
 
 #: app/Functions/Functions.php:1177
 msgctxt "mother’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "oupagrootjie"
 
 #: app/Functions/Functions.php:1195
 msgctxt "mother’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "oupagrootjie"
 
 #: app/Functions/Functions.php:1207
 msgctxt "mother’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "oupagrootjie"
 
 #: app/Functions/Functions.php:1229
 msgctxt "parent’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "oupagrootjie"
 
 #: app/Functions/Functions.php:1241
 msgctxt "parent’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "oupagrootjie"
 
 #: app/Functions/Functions.php:1253
 msgctxt "parent’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "oupagrootjie"
 
 #: app/Functions/Functions.php:1117
 msgctxt "father’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "oumagrootjie"
 
 #: app/Functions/Functions.php:1129
 msgctxt "father’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "oumagrootjie"
 
 #: app/Functions/Functions.php:1141
 msgctxt "father’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "oumagrootjie"
 
 #: app/Functions/Functions.php:1179
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "oumagrootjie"
 
 #: app/Functions/Functions.php:1197
 msgctxt "mother’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "oumagrootjie"
 
 #: app/Functions/Functions.php:1209
 msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "oumagrootjie"
 
 #: app/Functions/Functions.php:1231
 msgctxt "parent’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "oumagrootjie"
 
 #: app/Functions/Functions.php:1243
 msgctxt "parent’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "oumagrootjie"
 
 #: app/Functions/Functions.php:1255
 msgctxt "parent’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "oumagrootjie"
 
 #: app/Functions/Functions.php:1119
 msgctxt "father’s father’s parent"
@@ -18730,47 +18730,47 @@ msgstr ""
 #: app/Functions/Functions.php:1059
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "agterkleinseun"
 
 #: app/Functions/Functions.php:1067
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "agterkleinseun"
 
 #: app/Functions/Functions.php:1073
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "agterkleinseun"
 
 #: app/Functions/Functions.php:1081
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "agterkleinseun"
 
 #: app/Functions/Functions.php:1089
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "agterkleinseun"
 
 #: app/Functions/Functions.php:1101
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "agterkleinseun"
 
 #: app/Functions/Functions.php:1361
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "agterkleinseun"
 
 #: app/Functions/Functions.php:1369
 msgctxt "son’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "agterkleinseun"
 
 #: app/Functions/Functions.php:1375
 msgctxt "son’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "agterkleinseun"
 
 #: app/Functions/Functions.php:1568
 msgid "great-great-aunt"
@@ -19274,61 +19274,61 @@ msgstr ""
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:69
 msgid "half circle"
-msgstr ""
+msgstr "half-sirkel"
 
 #: app/Functions/Functions.php:869
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "halfbroer"
 
 #: app/Functions/Functions.php:907
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "halfbroer"
 
 #: app/Functions/Functions.php:925
 msgctxt "parent’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "halfbroer"
 
 #: app/Functions/Functions.php:855
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "halfbroer/halfsuster"
 
 #: app/Functions/Functions.php:891
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "halfbroer/halfsuster"
 
 #: app/Functions/Functions.php:911
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "halfbroer/halfsuster"
 
 #: app/Functions/Functions.php:857
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "halfsuster"
 
 #: app/Functions/Functions.php:893
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "halfsuster"
 
 #: app/Functions/Functions.php:913
 msgctxt "parent’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "halfsuster"
 
 #: statistics.php:569
 msgid "half-year after marriage"
-msgstr ""
+msgstr "halwe jaar na huwelik"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:737
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "hh:mm of hh:mm:ss"
 
 #: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:313
 msgid "hide"
@@ -19342,83 +19342,83 @@ msgstr "eggenoot"
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:115
 msgid "immigration name"
-msgstr ""
+msgstr "immigrasienaam"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:112
 msgctxt "FEMALE"
 msgid "immigration name"
-msgstr ""
+msgstr "immigrasienaam"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:109
 msgctxt "MALE"
 msgid "immigration name"
-msgstr ""
+msgstr "immigrasienaam"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr ""
+msgstr "geïnterpreteer %s (%s)"
 
 #: statistics.php:547 statistics.php:549 statistics.php:551 statistics.php:558
 #: statistics.php:560
 #, php-format
 msgid "interval %s year"
 msgid_plural "interval %s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "interval %s jaar"
+msgstr[1] "interval %s jaar"
 
 #: statistics.php:575
 msgid "interval one child"
-msgstr ""
+msgstr "een kind interval"
 
 #: statistics.php:576
 msgid "interval two children"
-msgstr ""
+msgstr "twee kind interval"
 
 #: search.php:121 search.php:284
 msgid "invert selection"
-msgstr ""
+msgstr "keer seleksie om"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:100
 msgctxt "GENITIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:166
 msgctxt "INSTRUMENTAL"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:133
 msgctxt "LOCATIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:67
 msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: button label, last page
 #: admin_trees_config.php:1633 app/I18N.php:223
 msgid "last"
-msgstr ""
+msgstr "einde"
 
 #: admin_trees_config.php:1645
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr ""
+msgstr "laaste"
 
 #: statisticsplot.php:764
 msgid "less than"
-msgstr ""
+msgstr "minder as"
 
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
@@ -19432,67 +19432,67 @@ msgstr "lys"
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:121
 msgid "maiden name"
-msgstr ""
+msgstr "nooiensnaam"
 
 #: admin_trees_config.php:476
 msgid "managers"
-msgstr ""
+msgstr "bestuurders"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: app/Stats.php:2918
 msgid "marriage"
-msgstr ""
+msgstr "huwelik"
 
 #: modules_v3/descendancy_report/report.xml:246
 msgctxt "FEMALE"
 msgid "married"
-msgstr ""
+msgstr "getroud"
 
 #: modules_v3/descendancy_report/report.xml:177
 msgctxt "MALE"
 msgid "married"
-msgstr ""
+msgstr "getroud"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:132
 msgid "married name"
-msgstr ""
+msgstr "getroude naam"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:129
 msgctxt "FEMALE"
 msgid "married name"
-msgstr ""
+msgstr "getroude naam"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:126
 msgctxt "MALE"
 msgid "married name"
-msgstr ""
+msgstr "getroude naam"
 
 #: app/Functions/Functions.php:895
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr ""
+msgstr "oupa"
 
 #: app/Functions/Functions.php:899
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr ""
+msgstr "ouma"
 
 #: app/Functions/Functions.php:901
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr ""
+msgstr "grootouer"
 
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:78
 msgid "matrilineal"
-msgstr ""
+msgstr "matrilineêre"
 
 #: app/Module/GoogleMapsModule.php:332
 msgid "maximum"
@@ -19511,17 +19511,17 @@ msgstr[1] "hoogstens %s dae"
 #: admin_trees_config.php:435 admin_trees_config.php:475
 #: admin_trees_config.php:495
 msgid "members"
-msgstr ""
+msgstr "lede"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:86
 msgid "midnight"
-msgstr ""
+msgstr "middernag"
 
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:171
 msgid "minimal"
-msgstr ""
+msgstr "minimale"
 
 #: app/Module/GoogleMapsModule.php:327
 msgid "minimum"
@@ -19530,15 +19530,15 @@ msgstr "minimum"
 #: statisticsplot.php:859 statisticsplot.php:909 statisticsplot.php:963
 #: statisticsplot.php:1013 statisticsplot.php:1067
 msgid "month"
-msgstr ""
+msgstr "maand"
 
 #: statistics.php:566
 msgid "months after marriage"
-msgstr ""
+msgstr "maande na troue"
 
 #: statistics.php:567
 msgid "months before and after marriage"
-msgstr ""
+msgstr "maande voor en na troue"
 
 #: app/Functions/Functions.php:706
 msgid "mother"
@@ -19547,37 +19547,37 @@ msgstr "moeder"
 #: app/Functions/Functions.php:881
 msgctxt "husband’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "skoonma"
 
 #: app/Functions/Functions.php:961
 msgctxt "spouse’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "skoonma"
 
 #: app/Functions/Functions.php:979
 msgctxt "wife’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "skoonma"
 
 #: app/Functions/Functions.php:967
 msgctxt "spouse’s parent"
 msgid "mother/father-in-law"
-msgstr ""
+msgstr "skoonouer"
 
 #: app/Functions/Functions.php:829
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "broerskind"
 
 #: app/Functions/Functions.php:933
 msgctxt "sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "broerskind/susterskind"
 
 #: app/Functions/Functions.php:943
 msgctxt "sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "susterskind"
 
 #: app/Functions/Functions.php:1021
 msgctxt "brother’s daughter’s husband"
@@ -19612,7 +19612,7 @@ msgstr ""
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:636
 msgid "never"
-msgstr ""
+msgstr "nooit"
 
 #. I18N: button label, next page
 #: app/I18N.php:224 app/Module/BatchUpdateModule.php:232
@@ -19622,7 +19622,7 @@ msgstr "volgende"
 #: app/Functions/Functions.php:827
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niggie"
 
 #: app/Functions/Functions.php:931
 msgctxt "sibling’s daughter"
@@ -20529,45 +20529,45 @@ msgstr ""
 
 #: app/Functions/Functions.php:778
 msgid "twin brother"
-msgstr ""
+msgstr "tweelingbroer"
 
 #: app/Functions/Functions.php:812
 msgid "twin sibling"
-msgstr ""
+msgstr "tweeling"
 
 #: app/Functions/Functions.php:795
 msgid "twin sister"
-msgstr ""
+msgstr "tweelingsuster"
 
 #: app/Functions/Functions.php:853
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "oom"
 
 #: app/Functions/Functions.php:1153
 msgctxt "father’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "oom"
 
 #: app/Functions/Functions.php:889
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "oom"
 
 #: app/Functions/Functions.php:1221
 msgctxt "mother’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "oom"
 
 #: app/Functions/Functions.php:909
 msgctxt "parent’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "oom"
 
 #: app/Functions/Functions.php:1263
 msgctxt "parent’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "oom"
 
 #: admin_site_access.php:26 admin_site_access.php:33
 #: app/Module/CensusAssistantModule.php:130
@@ -20587,7 +20587,7 @@ msgstr ""
 #: app/Place.php:141 modules_v3/GEDFact_assistant/census/census-edit.php:99
 #: modules_v3/GEDFact_assistant/census/census-edit.php:100 placelist.php:120
 msgid "unknown"
-msgstr ""
+msgstr "onbekend"
 
 #: app/Module/FamilyNavigatorModule.php:222
 #: app/Module/InteractiveTree/TreeView.php:342
@@ -20600,7 +20600,7 @@ msgstr "onbekende"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
 msgid "unreliable evidence"
-msgstr ""
+msgstr "onbetroubare getuienis"
 
 #. I18N: button label
 #: admin_trees_places.php:108
@@ -20611,38 +20611,40 @@ msgstr "Werk by"
 #: admin_trees_config.php:434 admin_trees_config.php:474
 #: admin_trees_config.php:494
 msgid "visitors"
-msgstr ""
+msgstr "besoekers"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:107
 msgctxt "FEMALE"
 msgid "was born"
-msgstr ""
+msgstr "is gebore"
 
 #: modules_v3/ahnentafel_report/report.xml:140
 #: modules_v3/descendancy_report/report.xml:104
 msgctxt "MALE"
 msgid "was born"
-msgstr ""
+msgstr "is gebore"
 
 #: app/Theme/WebtreesTheme.php:137
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:110
 #, php-format
 msgid "webtrees cannot connect to the PhpGedView database: %s."
 msgstr ""
+"webtrees kan nie 'n verbinding bewerkstellig nie met die PhpGedView "
+"databasis: %s."
 
 #: message.php:40 message.php:261 message.php:324
 msgid "webtrees message"
-msgstr ""
+msgstr "webtrees boodskap"
 
 #: setup.php:271
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr ""
+msgstr "webtrees benodig 'n MySQL-databasis, weergawe %s of hoër."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:321
@@ -20760,7 +20762,7 @@ msgstr ""
 #: famlist.php:135 indilist.php:84 indilist.php:104 indilist.php:136
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #~ msgid "Allow visitors to request account registration"
 #~ msgstr "Besoekers toelaat om rekeningregistrasie aan te vra"
