@@ -1930,7 +1930,7 @@ msgstr "Minden adatgyűjtemény tény"
 
 #: admin_trees_config.php:1958
 msgid "All source facts"
-msgstr "Minden forrás adat"
+msgstr "Minden forrás tény"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
@@ -5027,7 +5027,7 @@ msgstr "Alapértelmezett ősfa elrendezés"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1306
 msgid "Default pedigree generations"
-msgstr "Alapértelmezett származási generációk"
+msgstr "Alapértelmezett származási nemzedék száma"
 
 #. I18N: A site configuration setting
 #. I18N: A configuration setting
@@ -11353,7 +11353,7 @@ msgstr "Kérdés"
 
 #: admin_trees_config.php:1927
 msgid "Quick family facts"
-msgstr "Kézenfekvő családi tényes"
+msgstr "Kézenfekvő családi tények"
 
 #: admin_trees_config.php:1809
 msgid "Quick individual facts"
@@ -12430,7 +12430,7 @@ msgstr "Elhunyt személyek hozzáférési szintjének beállítása."
 #: admin_trees_config.php:730
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
 msgstr ""
-"Az <b>Igen</b> a RIN szám hasznélata a GEDCOM ID helyett az egyéni ID "
+"Az <b>Igen</b> a RIN szám használata a GEDCOM ID helyett az egyéni ID "
 "kérésekor a beállítások fájlban, felhasználói beállításokban és ábrákon.  Ez "
 "az olyan származástani alkalmazások esetén hasznos, melyek nem mentik "
 "következetesen a GEDCOM bejegyzéseket és egyazon egyénhez eltérő ID-t "
@@ -13077,13 +13077,13 @@ msgstr ""
 #. I18N: A site configuration setting
 #: admin_site_config.php:520 admin_site_config.php:541
 msgid "Site verification code"
-msgstr "Oldal ellenőrzési kód"
+msgstr "Oldal ellenőrző kód"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:531 admin_site_config.php:552
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
-"Az oldal ellenőrzési kód nem működik, ha a webtrees almappába van telepítve."
+"Az oldal ellenőrző kód nem működik, ha a webtrees almappába van telepítve."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
@@ -14956,8 +14956,8 @@ msgstr ""
 #: admin_trees_config.php:1298
 msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
 msgstr ""
-"Ebben a mezőben adható meg, hogy az ősfa álló vagy fekvő nézetben jöjjön "
-"létre."
+"Ez a lehetőség jelzi, hogy az ősfa álló vagy fekvő nézetben legyen "
+"létrehozva."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:501
@@ -15078,8 +15078,8 @@ msgid "This should be a comma or space separated list of facts, in addition to b
 msgstr ""
 "Itt lehet a vesszővel vagy szóközzel elválasztott tények listája, a születés "
 "és a halálozáson felül, amelyeket szeretne az ábrák kereteiben feltüntetni.  "
-"A listában szereplő tények címkei a GEDCOM 5.5.1 szabvány szerint "
-"használatos.  Például, ha szeretné a foglalkozást feltüntetni a keretben, "
+"A listában szereplő tények címkéi a GEDCOM 5.5.1 szabvány szerint "
+"használatosak.  Például, ha szeretné a foglalkozást feltüntetni a keretben, "
 "akkor az “OCCU” címkét kell a mezőbe tenni."
 
 #: source.php:77
@@ -15287,9 +15287,8 @@ msgstr "Eddig"
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
 msgstr ""
 "Hogy segítsünk ennek a blokknak az elindításában, létrehoztunk néhány "
-"alapvető mintát.  Ha a minták közül egyet kiválaszt és betölti a saját "
-"szövegrészt amelyet a későbbiek folyamán az oldal szükségletei szerint "
-"alakíthat."
+"egyszerű mintát.  Amikor a minták közül egyet kiválaszt léterejön a "
+"szövegrész, melyet a saját és az oldal szükségletei szerint alakíthat."
 
 #: admin_site_upgrade.php:399
 msgid "To complete the upgrade, you should install the files manually."
@@ -15306,9 +15305,9 @@ msgstr ""
 #: admin_trees_config.php:1666
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
 msgstr ""
-"Megbizonyosodni más származástani alkalmazások összeilleszthetőségéről a "
-"megjegyzések, szövegek és átiratokat egyszerű formázatlan szövegként "
-"rögzítsük.  Még ha a formázás gyakran kívánatos segítség is a "
+"Más származástani alkalmazások összeilleszthetőségének bizonyossága "
+"érdekében a megjegyzéseket, szövegeket és átiratokat egyszerű formázatlan "
+"szövegként rögzítsük.  Még ha a formázás gyakran kívánatos segítség is a "
 "szemléltetéshez, megértéshez, stb."
 
 #: admin_site_upgrade.php:402
@@ -15331,7 +15330,10 @@ msgstr ""
 
 #: help_text.php:298
 msgid "To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link."
-msgstr "Mérsékelni az új blokkok magasságát, a rendszergazda "
+msgstr ""
+"Az Újságok blokk magasságának mérséklése érdekében a rendszergazda néhány "
+"cikket elrejtett.  Kattintással a <b>Levéltár megtekintése</b> lehetőségre a "
+"rejtett cikkek kitárulnak."
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:349
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file.  You will need to uncompress the .ZIP file before you can use it."
@@ -15876,8 +15878,8 @@ msgstr "Jelszó használata"
 #: admin_trees_config.php:1095
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question."
 msgstr ""
-"Árnyképek használata ha kiemelt kép az adott személyhez nem volt "
-"meghatározva.  A használt árnyképek jellemzik a kérdéses egyének nemét."
+"Árnyképek használata, ha kiemelt kép az adott személyhez nem volt "
+"hozzárendelve.  A használt árnyképek jellemzik a kérdéses egyének nemét."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1090
@@ -16080,7 +16082,7 @@ msgstr "Ehhez a helyhez kötődő bejegyzések"
 
 #: app/Module/FamilyTreeNewsModule.php:155 help_text.php:297
 msgid "View archive"
-msgstr "Archívum megtekintése"
+msgstr "Levéltár megtekintése"
 
 #: calendar.php:333 calendar.php:335
 msgid "View day"
