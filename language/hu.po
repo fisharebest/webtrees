@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-20 18:54+0100\n"
+"PO-Revision-Date: 2015-08-23 18:08+0100\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.3\n"
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -7657,10 +7657,27 @@ msgstr ""
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
 msgstr ""
+"Több kultúrában szokás a hagyományos betűkkel írt névváltozat mellett a "
+"latin betűs névforma használata is, amely a név kiejtés szerinti átirata "
+"latin betűkre a latin betűhasználatos nyelveken, mint az angol.<br><br>Ha ön "
+"a nem-latin ábécét résesíti előnyben mint a Héber, Görög, Cirill, Kínai vagy "
+"Arab a nevek bevitelére a név mezőkben, akkor lehetősége van ugyanebbe a "
+"mezőbe megadni a latin betűs névváltozatot is.  Mindkét névváltozat "
+"megjelenik a listákban és ábrákon is.<br><br>Úgyszintén a latin-betűsnek "
+"címkézett mező nem csak a latin ábécére van korlátozva.  Tartalmazhat japán "
+"neveket is, ahol három különböző ábécé is előfordulhat."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
 msgstr ""
+"Több kultúrában szokás a hagyományos betűkkel írt névváltozat mellett a "
+"latin betűs névforma használata is, amely a név kiejtés szerinti átirata "
+"latin betűkre a latin betűhasználatos nyelveken, mint az angol.<br><br>Ha ön "
+"a latin ábécét résesíti előnyben a nevek bevitelére a név mezőkben, akkor "
+"lehetősége van ugyanebbe a mezőbe megadni a nem-latin Héber, Görög, Cirill, "
+"Kínai vagy Arab betűs névváltozatot is.  Mindkét névváltozat megjelenik a "
+"listákban és ábrákon is.<br><br>Úgyszintén a Héber-betűsnek címkézett mező "
+"nem csak a Héber ábécére van korlátozva."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:717
@@ -8763,7 +8780,7 @@ msgstr ""
 "Több származástani alkalmazás a GEDCOM fájlt saját címkék használatával "
 "hozza létre, és a webtrees nagy részüket kezelni tudja.  Nem szabványos "
 "címkék észlelésénél ez a lehetőség engedélyezi a  választást az elvetés vagy "
-"a figyelmeztető üzenettel ellátás között"
+"a figyelmeztető üzenettel ellátás között."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: admin_site_config.php:427
@@ -13796,6 +13813,11 @@ msgstr "Hiányzó PHP ideiglenes mappa."
 #: admin_trees_manage.php:701
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr ""
+"A PhpGedView - webtrees varázsló egy önállósított folyamat, hogy vezesse a "
+"rendszergazdát az áttérést a PhpGedView telepítésről az új webtrees-re.  Ez "
+"átalakítja a teljes PhpGedView GEDCOM és egyéb adatbázis információt "
+"egyenesen az ön webtrees adatbázisára.  Ehhez a következő kellékek "
+"nélkülözhetetlenek:"
 
 #: admin_users.php:101
 #, php-format
@@ -14290,7 +14312,7 @@ msgstr ""
 "A www.geonames.org egy hatalmas helynév gyűjteményt kínál fel.  A helynév "
 "megadásakor ebben az állományt is lehet keresni.  Ennek a lehetőségnek a "
 "használatához egy ingyenes fiókot kell létrehozni a www.geonames.org oldalon "
-"és megadni a felhasználónevet"
+"és megadni a felhasználónevet."
 
 #: setup.php:496
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
@@ -15031,6 +15053,10 @@ msgstr ""
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly.  It is an advanced option, and you should not use it unless you understand the GEDCOM format.  If you make a mistake here, it can be difficult to fix."
 msgstr ""
+"Ez az oldal megengedi a általános űrlap átugrását és egyenesen az nyers "
+"adatok módosítását.  Ez egy haladó lehetőség és nem ajánlatos a GEDCOM "
+"szabvány értése nélkül használni.  Ha itt megtéved, akkor bonyodalmakba "
+"ütközhet a helyreállítás."
 
 #: app/Theme/AbstractTheme.php:433
 #, php-format
@@ -15046,6 +15072,9 @@ msgstr "Ennek a helynek nincsenek koordinátái"
 #: help_text.php:312
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
 msgstr ""
+"Ez a folyamat tesz lehetővé az oldal tulajdonosnak megbizonyosodni arról, "
+"hogy az új információ megfelel-e az oldal követelményeinek és "
+"illemszabályainak, helyesek a forráscsatolások, stb."
 
 #: repo.php:70
 msgid "This repository does not exist or you do not have permission to view it."
@@ -16187,7 +16216,7 @@ msgstr "Villa Hermosa, Mexikó"
 #. I18N: A configuration setting
 #: admin_users.php:454
 msgid "Visible online"
-msgstr ""
+msgstr "Látható a jelenlét"
 
 #. I18N: A configuration setting
 #: admin_users.php:460 edituser.php:303
@@ -16355,7 +16384,7 @@ msgstr ""
 "Új közeli rokon hozzáadásánál forrásidézéseket is lehet adni vagy a "
 "bejegyzésekhez (személynél és családnál), vagy a tényekhez és eseményekhez ("
 "születés, házasság és halálozás).  Ez a lehetőség ellenőrzi, hogy "
-"bejegyzésekhez vagy a tényekhez csatolás lesz az alapértelmezett"
+"bejegyzésekhez vagy a tényekhez csatolás lesz az alapértelmezett."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:859
@@ -16592,6 +16621,8 @@ msgstr "Ezt a családfát átszámozhatja."
 #: admin_site_config.php:202 admin_site_config.php:221
 msgid "You can request a higher or lower limit, although the server may ignore this request."
 msgstr ""
+"Meghatározhat magasabb vagy alacsonyabb határértéket, de a kiszolgálónak "
+"figyelmen kívül hagyhatja ezt."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
