@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-22 17:03+0100\n"
+"PO-Revision-Date: 2015-08-25 22:48+0100\n"
 "Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
 "Language-Team: French (Canada) "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
@@ -15341,17 +15341,17 @@ msgstr "Îles Wallis et Futuna"
 
 #: app/GedcomCode/GedcomCodeRela.php:263
 msgid "Ward"
-msgstr "Tutelle"
+msgstr "Pupille"
 
 #: app/GedcomCode/GedcomCodeRela.php:261
 msgctxt "FEMALE"
 msgid "Ward"
-msgstr "Curatrice"
+msgstr "Pupille"
 
 #: app/GedcomCode/GedcomCodeRela.php:259
 msgctxt "MALE"
 msgid "Ward"
-msgstr "Curateur"
+msgstr "Pupille"
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
 msgid "Washington, DC"
