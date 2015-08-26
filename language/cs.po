@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-20 06:34+0100\n"
+"PO-Revision-Date: 2015-08-20 18:25+0100\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
@@ -7995,7 +7995,7 @@ msgstr "Kyrgyzstán"
 #. I18N: gedcom tag BAPL
 #: app/GedcomTag.php:174
 msgid "LDS baptism"
-msgstr "LDS křest ("
+msgstr "LDS křest"
 
 #. I18N: gedcom tag SLGC
 #: app/GedcomTag.php:772
@@ -9198,7 +9198,7 @@ msgstr "Modul"
 #: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
 #: app/Theme/AdministrationTheme.php:182
 msgid "Module administration"
-msgstr "Modul správy"
+msgstr "Správa modulů"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:181
