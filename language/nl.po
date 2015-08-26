@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-09 14:43+0100\n"
+"PO-Revision-Date: 2015-08-26 22:27+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.3\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -3994,7 +3994,9 @@ msgstr "Ivoorkust"
 
 #: login.php:589
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
-msgstr "Kon de ingevoerde informatie niet verifiëren. Probeer a.u.b. opnieuw of neem contact op met de sitebeheerder voor meer informatie."
+msgstr ""
+"Het is niet gelukt om de ingevoerde informatie te verifiëren. Probeert u het "
+"nogmaals of neem contact op met de sitebeheerder voor meer informatie."
 
 #: app/Stats.php:5628
 msgid "Count"
@@ -5410,7 +5412,7 @@ msgstr "Bewerk verhaal"
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
-msgstr "Wijzig deze persoon en vervang de details door uw eigen."
+msgstr "Wijzig deze persoon en vervang de details door uw eigen gegevens."
 
 #: admin_users.php:273
 msgid "Edit user"
@@ -6942,16 +6944,16 @@ msgstr "Lengte"
 #: login.php:229 login.php:311
 #, php-format
 msgid "Hello %s…"
-msgstr "Hallo %s …"
+msgstr "Hallo %s,"
 
 #: login.php:362
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Hallo %s …<br>Bedankt voor uw registratie."
+msgstr "Hallo %s,<br><br>Bedankt voor uw registratie."
 
 #: login.php:293 login.php:532
 msgid "Hello administrator…"
-msgstr "Hallo Beheerder …"
+msgstr "Hallo beheerder,"
 
 #: help_text.php:325
 msgid "Help"
@@ -13603,7 +13605,7 @@ msgstr "Het record is naar het klembord gekopieerd."
 #: admin_site_merge.php:168
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "De records “%1$s” and “%2$s” zijn samengevoegd."
+msgstr "De records “%1$s” en “%2$s” zijn samengevoegd."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:125
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13677,7 +13679,9 @@ msgstr "De gebruiker %s is verwijderd."
 
 #: login.php:300
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
-msgstr "De gebruiker werd een  e-mail gestuurd met de nodige informatie om zijn verzoek te bevestigen."
+msgstr ""
+"De gebruiker heeft een  e-mail ontvangen met de benodigde informatie om zijn "
+"verzoek te bevestigen."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:388
