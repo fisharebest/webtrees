@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-03-14 22:04+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
+"PO-Revision-Date: 2015-09-01 16:28+0100\n"
+"Last-Translator: waylon wang <waylon.act@gmail.com>\n"
+"Language-Team: Chinese (Simplified) "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
 "Language: zh-Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.3\n"
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -94,7 +95,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:317
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$s KB 将在%2$s秒后下载完。"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
@@ -187,7 +188,7 @@ msgstr "%H:%i:%s"
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/I18N.php:160
 msgid "%j %F %Y"
-msgstr "%Y年 %m月 %s日"
+msgstr "%Y年 %n月 %j日"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6999
@@ -205,13 +206,13 @@ msgstr "%s KB"
 #: app/Module/ClippingsCartModule.php:194
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s 和她的祖先"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:196
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s和他的祖先"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:280
@@ -223,13 +224,13 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s和她的孩子们"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:124
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s和他们的后代"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5953
 #, php-format
@@ -260,13 +261,13 @@ msgstr[0] "%s 天前"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
+msgstr[0] "%的家庭已经更新完毕"
 
 #: admin.php:798
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
+msgstr[0] "%s的家谱"
 
 #: app/Stats.php:5261 app/Stats.php:5265
 #, php-format
@@ -290,7 +291,7 @@ msgstr[0] "%s 个人"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
+msgstr[0] "%s的个人信息已经更新完毕"
 
 #: app/Module/GoogleMapsModule.php:896
 #, php-format
@@ -320,7 +321,7 @@ msgstr[0] ""
 #: setup.php:117
 #, php-format
 msgid "%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "%s在此服务器上已被禁用。除非它被启用，否则无法安装webtrees。请问您的服务器管理员请求启用它。"
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5963
 #, php-format
@@ -725,11 +726,11 @@ msgstr "数据库服务器可以存储许多不同的数据库。你需要选择
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
-msgstr ""
+msgstr "文件位于服务器"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:211
 msgid "A file on your computer"
-msgstr ""
+msgstr "文件位于您的计算机"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:33
@@ -817,7 +818,7 @@ msgstr "新用户在 (%1$s) 申请了一个帐户 (%2$s) ，验证电子邮件�
 
 #: admin.php:569 admin_site_upgrade.php:79 login.php:106
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "webtrees已有新版本。"
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
@@ -987,7 +988,7 @@ msgstr "用户将无法登录除非“邮件验证”和“经管理员批准”
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1122
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "水印是往图片上增加文字信息，以阻止那些未经授权而复制图片的行为。"
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:105
@@ -1374,13 +1375,13 @@ msgstr "添加家谱中人的故事。"
 
 #: admin_trees_manage.php:279
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "长段落拼接时增加空格"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:381
 #: app/Module/ClippingsCartModule.php:718
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "添加GEDCOM媒体路径到文件名中"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:936
@@ -1403,7 +1404,7 @@ msgstr "添加到收藏"
 #: app/Module/ClippingsCartModule.php:403
 #: app/Module/ClippingsCartModule.php:498
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "添加到收集箱"
 
 #: admin_trees_manage.php:527
 msgid "Add unlinked records"
@@ -1632,7 +1633,7 @@ msgstr "非洲"
 
 #: admin_trees_manage.php:678
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr ""
+msgstr "创建家谱后，您可以通过GEDCOM文件导入数据。"
 
 #: login.php:233
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
@@ -1765,11 +1766,11 @@ msgstr "所有现有的PhpGedView用户必须有不同的电子邮件地址"
 
 #: admin_trees_config.php:568
 msgid "All facts and events"
-msgstr ""
+msgstr "所有的事实和事件"
 
 #: admin_trees_config.php:1840
 msgid "All family facts"
-msgstr ""
+msgstr "所有的家庭事件"
 
 #: login.php:388
 msgid "All fields must be completed."
@@ -1777,11 +1778,11 @@ msgstr "所有项必须完成"
 
 #: admin_site_upgrade.php:408
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "所有文件都有读和写的权限。"
 
 #: admin_trees_config.php:1722
 msgid "All individual facts"
-msgstr ""
+msgstr "所有的个人事件"
 
 #: calendar.php:209 calendar.php:227 calendar.php:228 calendar.php:231
 #: calendar.php:232 calendar.php:492
@@ -1790,15 +1791,15 @@ msgstr "所有人"
 
 #: admin_trees_config.php:559
 msgid "All records"
-msgstr ""
+msgstr "所有记录"
 
 #: admin_trees_config.php:2047
 msgid "All repository facts"
-msgstr ""
+msgstr "所有的库事件"
 
 #: admin_trees_config.php:1958
 msgid "All source facts"
-msgstr ""
+msgstr "所有的资源事件"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
@@ -1818,7 +1819,7 @@ msgstr "允许用户选择他们自己的主题"
 #. I18N: A site configuration setting
 #: admin_site_config.php:484
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "允许游客申请新的用户账号"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:963
@@ -1843,7 +1844,7 @@ msgstr "美属萨摩亚"
 
 #: admin_site_config.php:491
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
-msgstr ""
+msgstr "管理员必须审批新用户账号，并在用户能够登录前选择一个进入级别。"
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
@@ -1886,7 +1887,7 @@ msgstr "编辑菜单中的个人，家庭，资源等。"
 #: admin_site_upgrade.php:344 admin_site_upgrade.php:366
 #: admin_site_upgrade.php:376 admin_site_upgrade.php:460
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "解压文件时出错。"
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:37
@@ -1990,12 +1991,12 @@ msgstr "设置隐私"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2279
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "应用偏好设置到所有的家谱"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2286
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "应用偏好设置到新的家谱"
 
 #: admin_users.php:100
 #, php-format
@@ -2075,7 +2076,7 @@ msgstr "确定要删除“%s”吗？"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "您确信要移除这个媒体对象的链接？"
 
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
@@ -2083,7 +2084,7 @@ msgstr "你确定你想从你的名单的收藏删除该项目吗？"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "你确定要撤销这个家族所有的更改？"
 
 #: app/Stats.php:6730
 msgid "Argentina"
@@ -2310,7 +2311,7 @@ msgstr "家庭平均孩子数"
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:632 admin_trees_manage.php:667
 msgid "Avoid spaces and punctuation.  A family name might be a good choice."
-msgstr ""
+msgstr "避免使用空格和标点符号。使用家族的姓也许是一个不错的选择。"
 
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2554,7 +2555,7 @@ msgstr "数码资料"
 
 #: app/Functions/FunctionsPrint.php:473
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Birmingham, Alabama"
@@ -3179,7 +3180,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:364
 msgid "Calculating…"
-msgstr ""
+msgstr "计算中…"
 
 #: app/Module/YahrzeitModule.php:280 app/Theme/AbstractTheme.php:1003
 #: lifespan.php:90
@@ -3269,7 +3270,7 @@ msgstr "死因"
 
 #: admin_trees_manage.php:754 admin_trees_renumber.php:286
 msgid "Caution!  This may take a long time.  Be patient."
-msgstr ""
+msgstr "警告！这可能需要很长的时间，请耐心等候."
 
 #: admin_site_upgrade.php:200
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -18822,7 +18823,7 @@ msgstr "百分比"
 
 #: admin_trees_config.php:1078
 msgid "pixels"
-msgstr ""
+msgstr "像素"
 
 #. I18N: button label
 #: admin_trees_places.php:107
@@ -19632,7 +19633,7 @@ msgstr "更新"
 #: admin_trees_config.php:434 admin_trees_config.php:474
 #: admin_trees_config.php:494
 msgid "visitors"
-msgstr ""
+msgstr "游客"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:107
@@ -19703,7 +19704,7 @@ msgstr "妻子"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:153
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:127
 msgid "years"
