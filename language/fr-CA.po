@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-09 10:19+0100\n"
+"PO-Revision-Date: 2015-08-25 22:48+0100\n"
 "Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
 "Language-Team: French (Canada) "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.3\n"
 "X-Poedit-Country: CANADA\n"
 "X-Poedit-Language: French\n"
 
@@ -15341,17 +15341,17 @@ msgstr "Îles Wallis et Futuna"
 
 #: app/GedcomCode/GedcomCodeRela.php:263
 msgid "Ward"
-msgstr "Tutelle"
+msgstr "Pupille"
 
 #: app/GedcomCode/GedcomCodeRela.php:261
 msgctxt "FEMALE"
 msgid "Ward"
-msgstr "Curatrice"
+msgstr "Pupille"
 
 #: app/GedcomCode/GedcomCodeRela.php:259
 msgctxt "MALE"
 msgid "Ward"
-msgstr "Curateur"
+msgstr "Pupille"
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
 msgid "Washington, DC"
@@ -18495,7 +18495,7 @@ msgstr "liste"
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:121
 msgid "maiden name"
-msgstr "nom à la naissance"
+msgstr "nom de jeune fille"
 
 #: admin_trees_config.php:476
 msgid "managers"

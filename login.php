@@ -91,6 +91,7 @@ case 'login':
 
 		Auth::login($user);
 		Log::addAuthenticationLog('Login: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
+		Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
 
 		Session::put('locale', Auth::user()->getPreference('language'));
 		Session::put('theme_id', Auth::user()->getPreference('theme'));

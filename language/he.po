@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-06-24 13:20+0100\n"
+"PO-Revision-Date: 2015-08-21 09:04+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Hebrew <http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
+"Language-Team: Hebrew "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.3\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -13648,7 +13649,7 @@ msgstr "הזמן בשניות שמושב webtrees נשאר פעיל לפני ש�
 
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:250
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr ""
+msgstr "אזור הזמן נדרש לביצוע חישובי תאריך, כגון לדעת את התאריך של היום."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
@@ -14421,7 +14422,7 @@ msgstr "שעה"
 #. I18N: A configuration setting
 #: admin_site_config.php:230 admin_users.php:423 edituser.php:244
 msgid "Time zone"
-msgstr ""
+msgstr "אזור זמן"
 
 #: app/Controller/TimelineController.php:77 app/Theme/AbstractTheme.php:1224
 #: timeline.php:243

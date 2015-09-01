@@ -85,10 +85,10 @@ $controller
 					</td>
 				</tr>
 				<tr>
-					<th>
+					<td class="descriptionbox">
 						<?php echo I18N::translate('Descendant generations'); ?>
-					</th>
-					<td>
+					</td>
+					<td class="optionbox">
 						<select name="descent">
 							<?php
 							for ($i = 0; $i <= 9; $i++) {
