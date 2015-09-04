@@ -164,6 +164,8 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function analyticsPiwikTracker($url, $site_id) {
+		$url = preg_replace(array('/^https?:\/\//', '/\/$/'), '', $url);
+
 		if ($url && $site_id) {
 			return
 				'<script>' .
