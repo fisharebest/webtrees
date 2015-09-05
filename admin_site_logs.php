@@ -202,7 +202,9 @@ $controller
 			/* log_id      */ { visible: false },
 			/* Timestamp   */ { sort: 0 },
 			/* Type        */ { },
-			/* message     */ { },
+			/* message     */ { render: function(data, type, full, meta) {
+			    return "<div class=\"log pre-wrapped\">" + data + "</div>";
+			} },
 			/* IP address  */ { },
 			/* User        */ { },
 			/* Family tree */ { }
