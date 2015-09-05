@@ -224,7 +224,23 @@ $controller
 				clear: "fa fa-trash-o"
 			}
 		});
-	');
+	')
+	->addInlineJavascript('
+var renderAsHtml = function (data, type, full, meta) {
+	return decHTMLifEnc(data);
+};
+var isEncHTML = function(str) {
+	if(str.search(/&amp;/g) != -1 || str.search(/&lt;/g) != -1 || str.search(/&gt;/g) != -1)
+		return true;
+	else
+		return false;
+};
+
+var decHTMLifEnc = function(str){
+	if(isEncHTML(str))
+		return str.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+	return str;
+}');
 
 $users_array = array();
 foreach (User::all() as $tmp_user) {

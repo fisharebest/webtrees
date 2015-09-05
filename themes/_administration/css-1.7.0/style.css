@@ -56,6 +56,12 @@ body {
 	}
 }
 
+/* Used in logging */
+pre {
+	width: 600px;
+	overflow: auto;
+}
+
 /* Do not let the focused accessibility links change the layout */
 .accessibility-links {
 	position: fixed;
