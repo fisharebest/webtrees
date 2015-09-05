@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-20 18:25+0100\n"
+"PO-Revision-Date: 2015-08-26 21:40+0100\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.3\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -776,7 +776,8 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:206
 msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Položka často kladených dotazů může být zobrazena pro jeden nebo i více rodokmenů."
+msgstr ""
+"Položka častých dotazů může být zobrazena pro jeden nebo i více rodokmenů."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
@@ -995,7 +996,11 @@ msgstr "Výpis zásadních záznamů pro dané datum nebo místo."
 
 #: admin_users.php:524
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Role je sada přístupových práv, která dává povolení prohlížet data, měnit konfigurační nastavení atd. Přístupová práva jsou přidělena rolím a role uživatelům. Každý rodinný strom může přiřadit jiný přístup každé roli a uživatelé mohou mít různé role v každém stromu."
+msgstr ""
+"Role je sada přístupových práv, která dává povolení prohlížet data, měnit "
+"konfigurační nastavení atd. Přístupová práva jsou přidělena rolím a role "
+"uživatelům. Každý rodokmen může přiřadit jiný přístup každé roli a uživatelé "
+"mohou mít různé role v každém rodokmenu."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1005,7 +1010,8 @@ msgstr "Postraní panel ukazuje abecední seznam všech rodin v rodokmenu."
 #. I18N: Description of “Individuals” module
 #: app/Module/IndividualSidebarModule.php:38
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-msgstr "Postranní panel zobrazující abecední seznam všech osob v daném rodinném stromu."
+msgstr ""
+"Postranní panel zobrazující abecední seznam všech osob v daném rodokmenu."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
@@ -2152,7 +2158,7 @@ msgstr "Jste si jisti, že chcete odstranit tuto položku z vašich oblíbených
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr "Opravdu chcete zrušit všechny změny provedené v tomto rodinném stromě?"
+msgstr "Opravdu chcete zrušit všechny změny provedené v tomto rodokmenu?"
 
 #: app/Stats.php:6730
 msgid "Argentina"
@@ -3228,7 +3234,11 @@ msgstr "Výchozí port pro SMTP je 25."
 
 #: app/Module/GoogleMapsModule.php:4555
 msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
-msgstr "Výchozí je, že v seznamu se zobrazí jen ta místa, která se nachází v rodinném stromě. Možná máte podrobnosti k dalším místům, která jste najednou importovali z externího souboru. Vybráním této volby zobrazíte všechna místa včetně těch, která se nepoužívají."
+msgstr ""
+"Výchozí je, že v seznamu se zobrazí jen ta místa, která se nachází v "
+"rodokmenu. Možná máte podrobnosti k dalším místům, která jste hromadně "
+"importovali z externího souboru. Vybráním této volby zobrazíte všechna místa "
+"včetně těch, která se nepoužívají."
 
 #: admin_site_config.php:217
 #, php-format
@@ -6048,16 +6058,16 @@ msgstr "Rodina od %s"
 #: app/Module/GoogleMapsModule.php:1538 app/Module/HtmlBlockModule.php:299
 #: app/Module/StoriesModule.php:356 edit_changes.php:180
 msgid "Family tree"
-msgstr "Rodinný strom"
+msgstr "Rodokmen"
 
 #: admin_users.php:521
 msgid "Family tree access and settings"
-msgstr "Přístup a nastavení rodinného stromu"
+msgstr "Přístup k rodokmenu a jeho nastavení"
 
 #: app/Module/ClippingsCartModule.php:88
 #: app/Module/ClippingsCartModule.php:429
 msgid "Family tree clippings cart"
-msgstr "Schránka výstřižků pro Rodinný strom"
+msgstr "Schránka výstřižků pro rodokmen"
 
 #: admin_trees_config.php:595 admin_trees_manage.php:632
 msgid "Family tree title"
@@ -6068,7 +6078,7 @@ msgstr "Název rodokmenu"
 #: app/Theme/AbstractTheme.php:1317 app/Theme/AdministrationTheme.php:106
 #: search.php:126 search.php:289
 msgid "Family trees"
-msgstr "Rodinné stromy"
+msgstr "Rodokmeny"
 
 #. I18N: %s is the spouse name
 #: app/Controller/IndividualController.php:451
@@ -7286,7 +7296,10 @@ msgstr "Pokud osoba má události jiné než úmrtí, pohřbení nebo kremace v 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1026
 msgid "If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate."
-msgstr "Pokud dva rodinné stromy sdílejí stejnou složku médií, pak jsou schopny také sdílet soubory zde uložené. Pokud používají rozdílné složky, pak jejich soubory zůstávají odděleny."
+msgstr ""
+"Pokud dva rodokmeny sdílejí stejnou složku médií, pak jsou schopny také "
+"sdílet soubory zde uložené. Pokud používají rozdílné složky, pak jejich "
+"soubory zůstávají odděleny."
 
 #: admin_trees_config.php:381
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
@@ -7412,7 +7425,7 @@ msgstr "Importovat soubor GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:4624
 msgid "Import all places from a family tree"
-msgstr "Importovat všechna místa z rodiného stromu"
+msgstr "Importovat všechna místa z rodokmenu"
 
 #: admin_trees_manage.php:267
 msgid "Import options"
@@ -8489,7 +8502,7 @@ msgstr "Malta"
 #: admin_trees_manage.php:335 admin_trees_merge.php:40
 #: admin_trees_places.php:90 app/Theme/AdministrationTheme.php:119
 msgid "Manage family trees"
-msgstr "Správa rodinných stromů"
+msgstr "Správa rodokmenů"
 
 #: admin_media.php:530 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:154 app/Module/AlbumModule.php:166
@@ -9921,7 +9934,9 @@ msgstr "Ostrov Norfolk"
 
 #: admin_users.php:445
 msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
-msgstr "Normálně musí být všechny změny v rodinném stromu schváleny moderátorem. Tato volba umožní uživateli dělat změny bez tohoto schválení."
+msgstr ""
+"Normálně musí být všechny změny v rodokmenu schváleny moderátorem. Tato "
+"volba umožní uživateli dělat změny bez tohoto schválení."
 
 #: app/Stats.php:6909
 msgid "North Korea"
@@ -11214,7 +11229,7 @@ msgstr "ramadán"
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:39
 msgid "Random images from the current family tree."
-msgstr "Náhodné obrázky ze současného rodinného stromu."
+msgstr "Náhodné obrázky ze současného rodokmenu."
 
 #: app/Controller/FamilyController.php:102
 #: app/Module/RelativesTabModule.php:281 edit_interface.php:1803
@@ -12099,7 +12114,7 @@ msgstr "Nastavit odkaz"
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:142 index_edit.php:47
 msgid "Set the default blocks for new family trees"
-msgstr "Nastavit výchozí bloky pro nové rodinné stromy"
+msgstr "Nastavit výchozí bloky pro nové rodokmeny"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:159 index_edit.php:39
@@ -12496,7 +12511,7 @@ msgstr "Zobrazit délku života"
 #. I18N: A site configuration setting
 #: admin_site_config.php:272
 msgid "Show list of family trees"
-msgstr "Zobrazit seznam rodinných stromů"
+msgstr "Zobrazit seznam rodokmenů"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:431
@@ -13459,7 +13474,17 @@ msgstr "Změny pro „%s“ byly odmítnuty."
 
 #: app/Module/ClippingsCartModule.php:299
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
-msgstr "Schránka výstřižků vám umožňuje zkopírovat části („výstřižky“) rodinného stromu a dát je dohromady do jednoho souboru, který můžete stáhnout a případně importovat do svého rodokmenového programu. Stáhnutelný soubor je ve formátu GEDCOM.<br><ul><li>Jak tvořit výstřižky?<br>Je to opravdu jednoduché. Kdykoliv uvidíte klikatelné jméno (osoba, rodina nebo zdroj), můžete jít na stránku Podrobnosti k tomuto jménu. Tam uvidíte volbu <b>Přidat do Schránky výstřižků</b>. Když kliknete na ten odkaz, v nabídce dostanete několik možnosti na stáhnutí.</li><li>Jak je stáhnout?<br>Poté, co máte všechny položky ve schránce, stáhnete je kliknutím na odkaz <b>Stáhnout nyní</b>. Následujte instrukce a další odkazy.</li></ul>"
+msgstr ""
+"Schránka výstřižků vám umožňuje zkopírovat části („výstřižky“) rodokmenu a "
+"dát je dohromady do jednoho souboru, který můžete stáhnout a případně "
+"importovat do svého rodokmenového programu. Stáhnutelný soubor je ve formátu "
+"GEDCOM.<br><ul><li>Jak tvořit výstřižky?<br>Je to opravdu jednoduché. "
+"Kdykoliv uvidíte klikatelné jméno (osoba, rodina nebo zdroj), můžete jít na "
+"stránku Podrobnosti k tomuto jménu. Tam uvidíte volbu <b>Přidat do Schránky "
+"výstřižků</b>. Když kliknete na ten odkaz, v nabídce dostanete několik "
+"možnosti na stáhnutí.</li><li>Jak je stáhnout?<br>Poté, co máte všechny "
+"položky ve schránce, stáhnete je kliknutím na odkaz <b>Stáhnout nyní</b>. "
+"Následujte instrukce a další odkazy.</li></ul>"
 
 #: site-unavailable.php:65
 msgid "The database reported the following error message:"
@@ -13671,7 +13696,7 @@ msgstr "Soubor médií %s neexistuje."
 
 #: mediafirewall.php:38
 msgid "The media file was not found in this family tree."
-msgstr "Soubor médií nebyl nalezen v tomto rodinném stromě."
+msgstr "Soubor médií nebyl v tomto rodokmenu nalezen."
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13847,7 +13872,9 @@ msgstr "Nesprávné uživatelské jméno nebo heslo."
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:968
 msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
-msgstr "Hodnota, která se má v hlavičce HTML stránky zapsat do meta tagu s popisem. Ponechte políčko prázdné, chcete-li, aby byl použit název současné aktivní databáze."
+msgstr ""
+"Hodnota, která se má v hlavičce HTML stránky zapsat do meta tagu s popisem. "
+"Ponechte políčko prázdné, chcete-li, aby byl použit název rodokmenu."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
@@ -14083,14 +14110,20 @@ msgstr "Tento rodokmen neobsahuje žádné fotografie."
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
 msgid "This family tree was last updated on #gedcomUpdated#.  There are #totalSurnames# surnames in this family tree.  The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#.  The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Tento rodinný strom byl naposledy aktualizován dne #gedcomUpdated#. V tomto rodinném stromě je celkem #totalSurnames# příjmení. Nejdřívější zaznamenaná událost je #firstEventType# #firstEventName# v roce #firstEventYear#. Poslední událost je #lastEventType# #lastEventName# v roce #lastEventYear#.<br><br>Pokud máte nějaký komentář, prosím kontaktujte #contactWebmaster#."
+msgstr ""
+"Tento rodokmen byl naposledy aktualizován dne #gedcomUpdated#. V tomto "
+"rodokmenu je celkem #totalSurnames# příjmení. Nejdřívější zaznamenaná "
+"událost je #firstEventType# #firstEventName# v roce #firstEventYear#. "
+"Poslední událost je #lastEventType# #lastEventName# v roce "
+"#lastEventYear#.<br><br>Pokud máte nějaký komentář, prosím kontaktujte "
+"#contactWebmaster#."
 
 #. I18N: %s is a date
 #: app/Module/FamilyTreeStatisticsModule.php:95
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "Tento rodinný strom byl naposledy aktualizován %s."
+msgstr "Tento rodokmen byl naposledy aktualizován %s."
 
 #: addmedia.php:331
 msgid "This file is linked to another family tree on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
@@ -14104,7 +14137,8 @@ msgstr "Tato složka se použije na ukládání souborů médií, souborů GEDCO
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1024
 msgid "This folder will be used to store the media files for this family tree."
-msgstr "Tato složka bude použita k ukládání multimediálních souborů pro tento rodokmen."
+msgstr ""
+"Tato složka bude použita k ukládání mediálních souborů pro tento rodokmen."
 
 #: app/Filter.php:480
 msgid "This form has expired.  Try again."
@@ -14177,7 +14211,9 @@ msgstr "Toto je seznam čárkami oddělených popisků GEDCOMu, které se zobraz
 
 #: edituser.php:187
 msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
-msgstr "Toto je odkaz k vašemu vlastnímu záznamu v rodinném stromu. Pokud je to chybná osoba, kontaktujte správce."
+msgstr ""
+"Toto je odkaz k vašemu vlastnímu záznamu v rodokmenu. Pokud je to nesprávná "
+"osoba, kontaktujte správce."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1411
@@ -14563,11 +14599,15 @@ msgstr "Tato role má práva role Člen plus práva přidávat/měnit/mazat data
 
 #: admin_users.php:561
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
-msgstr "Tato role má práva role Moderátor plus další přístup udělený konfigurací rodinného stromu, a navíc má práva měnit nastavení rodinného stromu."
+msgstr ""
+"Tato role má práva role Moderátor plus další přístup udělený konfigurací "
+"rodokmenu, a navíc má práva měnit nastavení rodokmenuu."
 
 #: admin_users.php:539
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
-msgstr "Tato role má práva návštěvnické role plus další přístup udělený v konfiguraci rodinného stromu."
+msgstr ""
+"Tato role má práva role návštěvníka plus další přístup udělený v konfiguraci "
+"rodokmenu."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:324
@@ -15249,7 +15289,7 @@ msgstr "Aktualizovat všechno"
 
 #: admin_trees_places.php:84
 msgid "Update all the place names in a family tree"
-msgstr "Aktualizovat všechna místa v rodinném stromě"
+msgstr "Aktualizovat všechna místa v rodokmenu"
 
 #: admin_trees_manage.php:486
 msgid "Update place names"
@@ -15791,7 +15831,7 @@ msgstr "Kde je vaše instalace PhpGedView ?"
 
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps?"
-msgstr "Které rodinné stromy by se měly zobrazit v mapách stránek?"
+msgstr "Které rodokmeny by se měly zobrazit v mapách stránek?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1036

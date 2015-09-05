@@ -1226,7 +1226,7 @@ class GedcomRecord {
 			}
 		}
 		if ($update_chan) {
-			$new_gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
+			$new_gedcom .= "\n1 CHAN\n2 DATE " . strtoupper(date('d M Y')) . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
 		}
 
 		// Adding a new fact

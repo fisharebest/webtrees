@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-21 19:39+0100\n"
+"PO-Revision-Date: 2015-09-01 06:07+0100\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
@@ -448,14 +448,14 @@ msgstr[1] "%s weke"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s jaar"
-msgstr[1] "%s jare"
+msgstr[1] "%s jaar"
 
 #: app/I18N.php:787
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
 msgstr[0] "%s jaar gelede"
-msgstr[1] "%s jare gelede"
+msgstr[1] "%s jaar gelede"
 
 #: app/Functions/FunctionsPrintLists.php:2114
 #: app/Module/YahrzeitModule.php:129 calendar.php:655
@@ -715,9 +715,9 @@ msgstr ""
 #: admin_trees_manage.php:718
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr ""
-"<b>Belangrike opmerking:</b> Die oordrag-ghoeroe (transfer wizard) kan nie "
-"help met die oordra van media items nie. Jy moet na afloop van die oordrag-"
-"ghoeroe se werk self jou mediakonfigurasie instel en jou media items "
+"<b>Belangrike opmerking:</b> Die oordragsghoeroe (transfer wizard) kan nie "
+"help met die oordra van media items nie. Jy moet na afloop van die "
+"oordragsghoeroe se werk self jou mediakonfigurasie instel en jou media items "
 "afsonderlik oordra of kopieër."
 
 #: message.php:107
@@ -3863,8 +3863,7 @@ msgstr ""
 
 #: admin_trees_manage.php:722
 msgid "Click here for PhpGedView to webtrees transfer wizard"
-msgstr ""
-"Klik hier vir die PhpGedView na webtrees oordrag-ghoeroe (transfer wizard)"
+msgstr "Klik hier vir die PhpGedView na webtrees oordragsghoeroe"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:352
 msgid "Click here to add, edit, or delete"
@@ -7689,10 +7688,10 @@ msgstr ""
 #: admin_trees_config.php:462
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
 msgstr ""
-"In sommige lande geld privaaatheid-reëls nie alleen vir lewende persone nie, "
+"In sommige lande geld privaaatheidreëls nie alleen vir lewende persone nie, "
 "maar ook vir persone wat onlangs gesterf het. Hierdie opsie gee jou die "
-"mooontlikheid om die privaatheid-reëls vir lewende persone uit te brei na "
-"persone wat gebore of oorlede is binne 'n gespesifiseerde aantal jare. Los "
+"mooontlikheid om die privaatheidreëls vir lewende persone uit te brei na "
+"persone wat gebore of oorlede is in 'n gespesifiseerde getal jare. Los "
 "hierdie waardes oningevul om hierdie moontlikheid uit te skakel."
 
 #: calendar.php:140
@@ -11072,7 +11071,7 @@ msgstr "Woonplek"
 #: admin_site_upgrade.php:416
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr "Plaas die webwerf van lyn af deur die volgende lêer te skep: %s…"
+msgstr "Plaas die webwerf vanlyn deur die volgende lêer te skep: %s…"
 
 #: admin_site_upgrade.php:472
 #, php-format
@@ -11829,7 +11828,7 @@ msgstr "Bergplek bevat"
 
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
-msgstr "Beergpleknaam"
+msgstr "Bergpleknaam"
 
 #: app/Module/LoginBlockModule.php:86 login.php:183
 msgid "Request new password"
@@ -13800,10 +13799,10 @@ msgstr "Die PHP tydelike lêergids is weg."
 #: admin_trees_manage.php:701
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr ""
-"Die PhpGedView-na-webtrees ghoeroe is 'n geoutomatiseerde proses om "
+"Die PhpGedView-na-webtrees-ghoeroe is 'n geoutomatiseerde proses om "
 "beheerders te help met die oordrag van 'n PhpGedView-installasie na 'n nuwe "
 "webtrees-installasie. Dit dra alle PhpGedView- GEDCOM- en ander databasis "
-"inligting oor na jou nuwe webtrees databasis. Die volgende voorvereistes is "
+"inligting oor na jou nuwe webtrees databasis. Die volgende vereistes is "
 "noodsakelik:"
 
 #: admin_users.php:101
@@ -15239,7 +15238,7 @@ msgstr ""
 #: site-offline.php:73
 msgid "This website is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
 msgstr ""
-"Hierdie webwerf is aflyn vir onderhoud. <a href=\"index.php\">Probeer "
+"Hierdie webwerf is vanlyn vir onderhoud. <a href=\"index.php\">Probeer "
 "weer</a> oor 'n paar minute."
 
 #: site-offline.php:67 site-unavailable.php:89
@@ -16639,8 +16638,8 @@ msgstr "Jy kan hierdie stamboom hernommer."
 #: admin_site_config.php:202 admin_site_config.php:221
 msgid "You can request a higher or lower limit, although the server may ignore this request."
 msgstr ""
-"Jy kan 'n hoër of laer limiet aanvra, alhoewel die bediener hierdie versoek "
-"mag ingnoreer."
+"Jy kan 'n hoër of laer perk aanvra, alhoewel die bediener hierdie versoek "
+"sou kon ignoreer."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
@@ -17277,7 +17276,7 @@ msgstr "kinders"
 #: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:559
 msgid "close"
-msgstr "sluit"
+msgstr "maak toe"
 
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:184

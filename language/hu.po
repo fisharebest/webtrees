@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-23 18:08+0100\n"
+"PO-Revision-Date: 2015-08-25 17:10+0100\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -7660,9 +7660,9 @@ msgstr ""
 "Több kultúrában szokás a hagyományos betűkkel írt névváltozat mellett a "
 "latin betűs névforma használata is, amely a név kiejtés szerinti átirata "
 "latin betűkre a latin betűhasználatos nyelveken, mint az angol.<br><br>Ha ön "
-"a nem-latin ábécét résesíti előnyben mint a Héber, Görög, Cirill, Kínai vagy "
-"Arab a nevek bevitelére a név mezőkben, akkor lehetősége van ugyanebbe a "
-"mezőbe megadni a latin betűs névváltozatot is.  Mindkét névváltozat "
+"a nem-latin ábécét részesíti előnyben mint a Héber, Görög, Cirill, Kínai "
+"vagy Arab a nevek bevitelére a név mezőkben, akkor lehetősége van ugyanebbe "
+"a mezőbe megadni a latin betűs névváltozatot is.  Mindkét névváltozat "
 "megjelenik a listákban és ábrákon is.<br><br>Úgyszintén a latin-betűsnek "
 "címkézett mező nem csak a latin ábécére van korlátozva.  Tartalmazhat japán "
 "neveket is, ahol három különböző ábécé is előfordulhat."
@@ -7672,12 +7672,12 @@ msgid "In many cultures it is customary to have a traditional name spelled in th
 msgstr ""
 "Több kultúrában szokás a hagyományos betűkkel írt névváltozat mellett a "
 "latin betűs névforma használata is, amely a név kiejtés szerinti átirata "
-"latin betűkre a latin betűhasználatos nyelveken, mint az angol.<br><br>Ha ön "
-"a latin ábécét résesíti előnyben a nevek bevitelére a név mezőkben, akkor "
-"lehetősége van ugyanebbe a mezőbe megadni a nem-latin Héber, Görög, Cirill, "
-"Kínai vagy Arab betűs névváltozatot is.  Mindkét névváltozat megjelenik a "
-"listákban és ábrákon is.<br><br>Úgyszintén a Héber-betűsnek címkézett mező "
-"nem csak a Héber ábécére van korlátozva."
+"latin betűkre, a latin betűhasználatos nyelveken, mint az angol.<br><br>Ha "
+"ön a latin ábécét részesíti előnyben a nevek bevitelére a név mezőkben, "
+"akkor lehetősége van ugyanebbe a mezőbe megadni a nem-latin Héber, Görög, "
+"Cirill, Kínai vagy Arab betűs névváltozatot is.  Mindkét névváltozat "
+"megjelenik a listákban és ábrákon is.<br><br>Úgyszintén a Héber-betűsnek "
+"címkézett mező nem csak a Héber ábécére van korlátozva."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:717
@@ -7693,7 +7693,7 @@ msgstr ""
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
 msgstr ""
 "Némely országban az adatvédelmi törvény érvényben lehet nem csak az élő "
-"személyekre, de az közelmúltban elhunytakra is.  Ez a lehetőség teszi "
+"személyekre, hanem a közelmúltban elhunytakra is.  Ez a lehetőség teszi "
 "lehetővé az élő személyekre vonatkozó biztonsági szabályok kiterjesztését "
 "azokra akik a megadott időszakon belül születtek, vagy hunytak el.  A "
 "védelem kikapcsolásához ne adjon meg semmilyen értéket."
@@ -8461,7 +8461,7 @@ msgstr "Élettartam"
 #: app/Controller/LifespanController.php:120 app/Theme/AbstractTheme.php:1161
 #: lifespan.php:31
 msgid "Lifespans"
-msgstr "Élettartamok"
+msgstr "Élettartam"
 
 #: app/GedcomCode/GedcomCodeTemp.php:189
 msgid "Lima, Peru"
@@ -8824,8 +8824,8 @@ msgstr "március"
 #: admin_trees_config.php:1669
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 msgstr ""
-"A Markdown egy a honlapokon használt, mint a Wikipedia egyszerű "
-"szövegformáló rendszer.   Egyszerű írásjelek használatával hoz fejléceket és "
+"A Markdown egy egyszerű szövegformáló rendszer a honlapok, mint a Wikipedia, "
+"formálására.   Egyszerű írásjelek használatával hoz létre fejléceket és "
 "alfejezeteket, sötét és dőlt betűket, felsorolásokat, táblázatokat, stb."
 
 #. I18N: gedcom tag MARR
@@ -13227,8 +13227,8 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:418
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
 msgstr ""
-"Egyes helynevek választható elő vagy utótaggal írhatóak.  Például “Orange” "
-"és “Orange County”.  Ha a családfa a teljes helynevet tartalmazza, viszont a "
+"Egyes helynevek elhagyható elő vagy utótaggal írhatók.  Például “Orange” és “"
+"Orange County”.  Ha a családfa a teljes helynevet tartalmazza, viszont a "
 "földrajzi adatállomány a rövidebb változatot, akkor megadható a figyelmen "
 "kívül hagyandó előtagok és utótagok listája.  Többféle lehetőség esetén "
 "pontosvesszővel választjuk el azokat.  Például “County;County of” vagy "
@@ -13814,10 +13814,10 @@ msgstr "Hiányzó PHP ideiglenes mappa."
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr ""
 "A PhpGedView - webtrees varázsló egy önállósított folyamat, hogy vezesse a "
-"rendszergazdát az áttérést a PhpGedView telepítésről az új webtrees-re.  Ez "
-"átalakítja a teljes PhpGedView GEDCOM és egyéb adatbázis információt "
-"egyenesen az ön webtrees adatbázisára.  Ehhez a következő kellékek "
-"nélkülözhetetlenek:"
+"rendszergazdát a PhpGedView rendszerről az új webtrees változatára való "
+"áttérésben.  Ez átalakítja a teljes PhpGedView GEDCOM és egyéb adatbázis "
+"információt egyenesen az ön webtrees adatbázisára.  Ehhez a következő "
+"kellékek nélkülözhetetlenek:"
 
 #: admin_users.php:101
 #, php-format
@@ -15072,9 +15072,9 @@ msgstr "Ennek a helynek nincsenek koordinátái"
 #: help_text.php:312
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
 msgstr ""
-"Ez a folyamat tesz lehetővé az oldal tulajdonosnak megbizonyosodni arról, "
+"Ez a folyamat lehetővé teszi az oldal tulajdonosnak megbizonyosodni arról, "
 "hogy az új információ megfelel-e az oldal követelményeinek és "
-"illemszabályainak, helyesek a forráscsatolások, stb."
+"illemszabályainak, helyesek-e a forráscsatolások, stb."
 
 #: repo.php:70
 msgid "This repository does not exist or you do not have permission to view it."
@@ -16156,7 +16156,7 @@ msgstr "Vietnám"
 #: descendancy.php:70 familybook.php:60 fanchart.php:93 hourglass.php:61
 #: pedigree.php:170 relationship.php:79
 msgid "View"
-msgstr "Mutat"
+msgstr "Megnéz"
 
 #: placelist.php:176
 msgid "View all records found in this place"
@@ -16621,8 +16621,8 @@ msgstr "Ezt a családfát átszámozhatja."
 #: admin_site_config.php:202 admin_site_config.php:221
 msgid "You can request a higher or lower limit, although the server may ignore this request."
 msgstr ""
-"Meghatározhat magasabb vagy alacsonyabb határértéket, de a kiszolgálónak "
-"figyelmen kívül hagyhatja ezt."
+"Meghatározhat magasabb vagy alacsonyabb határértéket, de a kiszolgáló ezt "
+"figyelmen kívül hagyhatja."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
