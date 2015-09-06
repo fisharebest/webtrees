@@ -3553,9 +3553,9 @@ table.table-census-assistant th {
 }
 
 .icon-cfamily {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/family.png);
+	width: 25px;
+	height: 25px;
+	background-image: url(images/cfamily.png);
 }
 
 .icon-childless {
@@ -3613,9 +3613,9 @@ a.icon-ddarrow:hover {
 }
 
 .icon-fam-list {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/family.png);
+	width: 25px;
+	height: 25px;
+	background-image: url(images/cfamily.png);
 }
 
 .icon-googlemaps {
