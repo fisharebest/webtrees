@@ -340,7 +340,6 @@ div.fact_SHARED_NOTE {
 }
 
 .name1, .name2 {
-	color: #555;
 	font-weight: bold;
 	font-size: 12px;
 }
@@ -2156,6 +2155,10 @@ dd .deletelink {
 	position: relative;
 	padding: 0 5px;
 	overflow: visible;
+}
+
+.ui-widget-content a {
+    color: #00f;
 }
 
 #sidebarAccordion .ui-accordion-header {
@@ -4319,6 +4322,7 @@ header nav {
 	line-height: 23px;
 	text-align: left;
 	text-indent: 26px;
+	margin-top:  2px;
 	width: 100%;
 }
 
