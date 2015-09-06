@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-09-06 15:18+0100\n"
+"PO-Revision-Date: 2015-09-06 16:20+0100\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
@@ -197,7 +197,7 @@ msgstr "%j. %F %Y"
 #: app/Stats.php:6999
 #, php-format
 msgid "%s BCE"
-msgstr "%s BCE"
+msgstr "%s eKr"
 
 #. I18N: size of file in KB
 #: admin_media.php:484 app/Media.php:276
@@ -486,7 +486,7 @@ msgstr "%s × nõbu"
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;BCE"
+msgstr "%s&nbsp;eKr"
 
 #. I18N: CE=Common Era, for Julian years > 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
@@ -2082,7 +2082,7 @@ msgstr "aprill"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:76
 msgid "Aqua Marine"
-msgstr "Aqua Marine"
+msgstr "Akvamariin"
 
 #: app/Controller/IndividualController.php:176
 #: app/Functions/FunctionsPrintFacts.php:201
@@ -2158,12 +2158,19 @@ msgstr "Aruba"
 
 #: app/Module/HtmlBlockModule.php:316
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr "Peale selle, et kasutada seda tööriistariba selleks, et rakendada HTML vormingut, saab ka sisestada andmebaasi välju, mida uuendatakse automaatselt. Neet eritähistusega väljad on tähistatud  <b>#</b> sümbolitega. Näiteks <b>#kõikPerekonnad#</b> asendatakse tegeliku perekondade arvuga andmebaasis. Edasijõudnud kasutajad võivad soovida rakendada ka CSS-i klasse enda tekstile, nii et vorming vastab hetkel valitud teemale."
+msgstr ""
+"Peale selle, et kasutada seda tööriistariba selleks, et rakendada HTML "
+"vormingut, saab ka sisestada andmebaasi välju, mida uuendatakse "
+"automaatselt. Need eritähistusega väljad on tähistatud  <b>#</b> "
+"sümbolitega. Näiteks <b>#kõikPerekonnad#</b> asendatakse tegeliku "
+"perekondade arvuga andmebaasis. Edasijõudnud kasutajad võivad soovida "
+"rakendada ka CSS-i klasse enda tekstile, nii et vorming vastab hetkel "
+"valitud teemale."
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:77
 msgid "Ash"
-msgstr "Ash"
+msgstr "Tuhk"
 
 #: statistics.php:598
 msgid "Asia"
@@ -2594,7 +2601,7 @@ msgstr "Binaarne andmeobjekt"
 
 #: app/Functions/FunctionsPrint.php:473
 msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgstr "Bing Kaardid™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Birmingham, Alabama"
@@ -3779,7 +3786,7 @@ msgstr "Islas Cocos"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:81
 msgid "Coffee and Cream"
-msgstr "Coffee and Cream"
+msgstr "Kohv ja kreem"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:82
@@ -3800,7 +3807,7 @@ msgstr "Columbia River, Washington"
 
 #: app/GedcomCode/GedcomCodeTemp.php:127
 msgid "Columbia, South Carolina"
-msgstr "Columbia, South Carolina"
+msgstr "Columbia, Lõuna Carolina"
 
 #: app/GedcomCode/GedcomCodeTemp.php:129
 msgid "Columbus, Ohio"
@@ -6823,7 +6830,7 @@ msgstr "Grecia"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:83
 msgid "Green Beam"
-msgstr "Green Beam"
+msgstr "Roheline Valguskiir"
 
 #: app/Stats.php:6819
 msgid "Greenland"
@@ -7241,7 +7248,10 @@ msgstr "Kui inimesel on kaks eraldi perekonnanime, siis need mõlemad peaksid ol
 #: help_text.php:232
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+msgstr ""
+"Kui isik oli tuntud hüüdnimega, mis ei ole osa tema pärisnimest, siis see "
+"nimi peaks olema jutumärkides. Näiteks, <%s>John &quot;Nobby&quot; "
+"/Clark/<%s>."
 
 #: help_text.php:230
 #, php-format
@@ -7330,7 +7340,10 @@ msgstr "Kui te jätate selle seade muutmata, kasutatakse vaikimisi olevat valiku
 
 #: admin_site_config.php:185
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
-msgstr "Kui te valite teise kasuta, siis peate liigutama ka kõik failid (välja arvatud onfig.ini.php, index.php ja .htaccess) olemasolevast kaustast uude kausta."
+msgstr ""
+"Kui te valite teise kasuta, siis peate liigutama ka kõik failid (välja "
+"arvatud config.ini.php, index.php ja .htaccess) olemasolevast kaustast uude "
+"kausta."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1025
@@ -7634,19 +7647,19 @@ msgstr "Sisemine teadete süsteem emailide saatmisega"
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1543
 msgid "Interred"
-msgstr "Interred"
+msgstr "Maetud"
 
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1539
 msgctxt "FEMALE"
 msgid "Interred"
-msgstr "Interred"
+msgstr "Maetud"
 
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1535
 msgctxt "MALE"
 msgid "Interred"
-msgstr "Interred"
+msgstr "Maetud"
 
 #: import.php:114
 msgid "Invalid GEDCOM file - no header record found."
@@ -8985,7 +8998,7 @@ msgstr "Tervislik seisund"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:84
 msgid "Mediterranio"
-msgstr "Mediterranio"
+msgstr "Vahemeri"
 
 #: setup.php:173
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
@@ -9895,7 +9908,7 @@ msgstr "Mitte kedagi"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:86
 msgid "Nocturnal"
-msgstr "Nocturnal"
+msgstr "Öine"
 
 #: admin_trees_download.php:178 app/Module/ClippingsCartModule.php:365
 #: app/Module/ClippingsCartModule.php:699
@@ -10205,7 +10218,7 @@ msgstr "Vanim ema"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:87
 msgid "Olivia"
-msgstr "Olivia"
+msgstr "Oliiviroheline"
 
 #: app/Stats.php:6899
 msgid "Oman"
@@ -10617,7 +10630,7 @@ msgstr "PhpGedView-ist webtrees-i ülekandmisabiline"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:88
 msgid "Pink Plastic"
-msgstr "Pink Plastic"
+msgstr "Roosa Plastik"
 
 #: app/Stats.php:6902
 msgid "Pitcairn"
@@ -11196,7 +11209,7 @@ msgstr "Rajab"
 
 #: app/GedcomCode/GedcomCodeTemp.php:269
 msgid "Raleigh, North Carolina"
-msgstr "Raleigh, North Carolina"
+msgstr "Raleigh, Põhja-Carolina"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:98
@@ -11616,11 +11629,11 @@ msgstr "Romanizado"
 
 #: app/GedcomTag.php:686
 msgid "Romanized place"
-msgstr "Romanized place"
+msgstr "Kohanimi ladina tähtedega"
 
 #: app/GedcomTag.php:834
 msgid "Romanized title"
-msgstr "Romanized title"
+msgstr "Pealkiri ladina tähtedega"
 
 #: app/Functions/FunctionsPrintLists.php:250
 #: app/Functions/FunctionsPrintLists.php:666
@@ -11681,7 +11694,7 @@ msgstr "Safar"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:89
 msgid "Sage"
-msgstr "Sage"
+msgstr "Salvei"
 
 #: app/Stats.php:6928
 msgid "Saint Helena"
@@ -12313,7 +12326,7 @@ msgstr "Shevat"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:90
 msgid "Shiny Tomato"
-msgstr "Shiny Tomato"
+msgstr "Läikiv Tomat"
 
 #. I18N: gedcom tag _SUBQ
 #: app/GedcomTag.php:1735
@@ -13354,7 +13367,7 @@ msgstr "Tansaania"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:91
 msgid "Teal Top"
-msgstr "Teal Top"
+msgstr "Meresinine"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:912
@@ -15175,7 +15188,7 @@ msgstr "Jälgimine ja analüüs ei ole lisatud kontrollpaneeli."
 #. I18N: gedcom tag TRLR
 #: app/GedcomTag.php:840
 msgid "Trailer"
-msgstr "Trailer"
+msgstr "Teema lõputähis"
 
 #: app/Stats.php:6956
 msgid "Transylvania"
@@ -19033,7 +19046,7 @@ msgstr "emapoolne vanavanem"
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:78
 msgid "matrilineal"
-msgstr "matrilineal"
+msgstr "matrilineaarne"
 
 #: app/Module/GoogleMapsModule.php:332
 msgid "maximum"
@@ -19326,7 +19339,7 @@ msgstr "isapoolne vanavanem"
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:75
 msgid "patrilineal"
-msgstr "patrilineal"
+msgstr "patrilineaarne"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:56
