@@ -220,15 +220,16 @@ foreach ($controller->tabs as $tab) {
 		$greyed_out = '';
 	}
 	if ($tab->hasTabContent()) {
-		echo '<li class="' . $greyed_out . '"><a href="';
+		echo '<li class="' . $greyed_out . '"><a';
 		if ($tab->canLoadAjax()) {
 			// AJAX tabs load only when selected
-			echo $controller->record->getHtmlUrl(), '&amp;action=ajax&amp;module=', $tab->getName();
+			echo ' href="' . $controller->record->getHtmlUrl(), '&amp;action=ajax&amp;module=', $tab->getName() . '"';
+			echo ' rel="nofollow"';
 		} else {
 			// Non-AJAX tabs load immediately
-			echo '#', $tab->getName();
+			echo ' href="#', $tab->getName() . '"';
 		}
-		echo '" title="', $tab->getDescription(), '">', $tab->getTitle(), '</a></li>';
+		echo ' title="', $tab->getDescription(), '">', $tab->getTitle(), '</a></li>';
 	}
 }
 echo '</ul>';
