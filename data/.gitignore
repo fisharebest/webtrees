@@ -1,10 +1,8 @@
 *.ged
 *.GED
-cache/
-ftv_cache/
+*cache/
 config.ini.php
 histo.*.php
-html_purifier_cache/
 language/
 media/
 language/
