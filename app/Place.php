@@ -115,7 +115,7 @@ class Place {
 				$url .= $n ? '&amp;' : '?';
 				$url .= 'parent%5B%5D=' . rawurlencode($place);
 			}
-			$url .= '&amp;ged=' . $this->tree->getNameHtml();
+			$url .= '&amp;ged=' . $this->tree->getNameUrl();
 
 			return $url;
 		}
