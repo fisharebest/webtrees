@@ -205,7 +205,7 @@ class FunctionsPrint {
 	 * @return string
 	 */
 	public static function wikiHelpLink($topic) {
-		return '<a class="help icon-wiki" href="' . WT_WEBTREES_WIKI . $topic . '" title="' . I18N::translate('webtrees wiki') . '" target="_blank">&nbsp;</a>';
+		return '<a class="help icon-wiki" href="' . WT_WEBTREES_WIKI . $topic . '" title="' . I18N::translate('webtrees wiki') . '"></a>';
 	}
 
 	/**

@@ -138,7 +138,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 			'exact'     => I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
 			'words'     => I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
 			'wildcards' => I18N::translate('Use a “?” to match a single character, use “*” to match zero or more characters.'),
-			'regex'     => /* I18N: http://en.wikipedia.org/wiki/Regular_expression */ I18N::translate('Regular expressions are an advanced pattern matching technique.') . '<br>' . /* I18N: %s is a URL */ I18N::translate('See %s for more information.', '<a href="http://php.net/manual/regexp.reference.php" target="_blank">php.net/manual/regexp.reference.php</a>'),
+			'regex'     => /* I18N: http://en.wikipedia.org/wiki/Regular_expression */ I18N::translate('Regular expressions are an advanced pattern matching technique.') . '<br>' . /* I18N: %s is a URL */ I18N::translate('See %s for more information.', '<a href="http://php.net/manual/regexp.reference.php">php.net/manual/regexp.reference.php</a>'),
 		);
 
 		return

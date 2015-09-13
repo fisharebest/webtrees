@@ -241,7 +241,7 @@ class FunctionsPrintFacts {
 				echo $fact->getValue();
 				break;
 			case 'AFN':
-				echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getValue()), '" target="new">', Filter::escapeHtml($fact->getValue()), '</a></div>';
+				echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', Filter::escapeUrl($fact->getValue()), '">', Filter::escapeHtml($fact->getValue()), '</a></div>';
 				break;
 			case 'ASSO':
 				// we handle this later, in format_asso_rela_record()
