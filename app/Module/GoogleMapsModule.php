@@ -238,7 +238,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$this->setSetting('GM_PH_XSIZE', Filter::post('GM_PH_XSIZE'));
 			$this->setSetting('GM_PH_YSIZE', Filter::post('GM_PH_YSIZE'));
 			$this->setSetting('GM_PH_MARKER', Filter::post('GM_PH_MARKER'));
-			$this->setSetting('GM_DISP_SHORT_PLACE', Filter::post('GM_DISP_SHORT_PLACE'));
 			$this->setSetting('GM_PREFIX_1', Filter::post('GM_PREFIX_1'));
 			$this->setSetting('GM_PREFIX_2', Filter::post('GM_PREFIX_2'));
 			$this->setSetting('GM_PREFIX_3', Filter::post('GM_PREFIX_3'));
@@ -469,17 +468,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									<option value="G_DEFAULT_ICON" <?php if ($this->getSetting('GM_PH_MARKER') == "G_DEFAULT_ICON") echo "selected"; ?>><?php echo I18N::translate('Standard'); ?></option>
 									<option value="G_FLAG" <?php if ($this->getSetting('GM_PH_MARKER') == "G_FLAG") echo "selected"; ?>><?php echo I18N::translate('Flag'); ?></option>
 								</select>
-							</td>
-						</tr>
-						<tr>
-							<th>
-								<?php echo I18N::translate('Display short placenames'); ?>
-							</th>
-							<td>
-								<?php echo FunctionsEdit::editFieldYesNo('GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE'), 'class="radio-inline"'); ?>
-								<p class="small text-muted">
-									<?php echo I18N::translate('Hide the flags that are configured in the googlemap module.  Usually these are for countries and states.  This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot.'); ?>
-								</p>
 							</td>
 						</tr>
 						<tr>
@@ -2807,34 +2795,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			if (($place2['icon'] !== null) && ($place2['icon'] !== '')) {
 				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 			}
-			if ($lastlevel) {
-				if ($place2['place'] == 'Unknown') {
-					if (!$this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo addslashes(substr($placelevels, 2));
-					} else {
-						echo I18N::translate('unknown');
-					}
-				} else {
-					if (!$this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo addslashes(substr($placelevels, 2));
-					} else {
-						echo addslashes($place2['place']);
-					}
-				}
+			if ($place2['place'] == 'Unknown') {
+					echo I18N::translate('unknown');
 			} else {
-				if ($place2['place'] == 'Unknown') {
-					if (!$this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo addslashes(I18N::translate('unknown') . $placelevels);
-					} else {
-						echo I18N::translate('unknown');
-					}
-				} else {
-					if (!$this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo addslashes($place2['place'] . $placelevels);
-					} else {
-						echo addslashes($place2['place']);
-					}
-				}
+				echo addslashes($place2['place']);
 			}
 			echo '</a>';
 			if ($lastlevel) {
@@ -2881,35 +2845,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			if ($place2['icon'] !== null && $place2['icon'] !== '') {
 				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 			}
-			if ($lastlevel) {
 				if ($place2['place'] === 'Unknown') {
-					if ($this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo I18N::translate('unknown');
-					} else {
-						echo Filter::escapeJs(substr($placelevels, 2));
-					}
+					echo I18N::translate('unknown');
 				} else {
-					if ($this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo Filter::escapeJs($place2['place']);
-					} else {
-						echo Filter::escapeJs(substr($placelevels, 2));
-					}
+					echo Filter::escapeJs($place2['place']);
 				}
-			} else {
-				if ($place2['place'] === 'Unknown') {
-					if ($this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo I18N::translate('unknown');
-					} else {
-						echo Filter::escapeJs(I18N::translate('unknown') . $placelevels);
-					}
-				} else {
-					if ($this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo Filter::escapeJs($place2['place']);
-					} else {
-						echo Filter::escapeJs($place2['place'] . $placelevels);
-					}
-				}
-			}
 			echo '</a>';
 			if ($lastlevel) {
 				$this->printHowManyPeople($level, $parent);
