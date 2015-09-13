@@ -2774,10 +2774,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @param string[] $parent
 	 * @param int      $levelm
 	 * @param string   $linklevels
-	 * @param string   $placelevels
-	 * @param bool     $lastlevel
 	 */
-	private function printGoogleMapMarkers($place2, $level, $parent, $levelm, $linklevels, $placelevels, $lastlevel = false) {
+	private function printGoogleMapMarkers($place2, $level, $parent, $levelm, $linklevels) {
 		if (!$place2['lati'] || !$place2['long']) {
 			echo 'var icon_type = new google.maps.MarkerImage();';
 			echo 'icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
@@ -2785,13 +2783,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo 'icon_type.iconSize = google.maps.Size(20, 34);';
 			echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
 			echo 'var point = new google.maps.LatLng(0, 0);';
-			if ($lastlevel)
-				echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "'><br>";
-			else {
-				echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "&amp;parent[{$level}]=";
-				if ($place2['place'] == "Unknown") echo "'><br>";
-				else echo addslashes($place2['place']), "'><br>";
-			}
+			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "&amp;parent[{$level}]=";
+			if ($place2['place'] == "Unknown") echo "'><br>";
+			else echo addslashes($place2['place']), "'><br>";
 			if (($place2['icon'] !== null) && ($place2['icon'] !== '')) {
 				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 			}
@@ -2801,12 +2795,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				echo addslashes($place2['place']);
 			}
 			echo '</a>';
-			if ($lastlevel) {
-				$this->printHowManyPeople($level, $parent);
-			} else {
-				$parent[$level] = $place2['place'];
-				$this->printHowManyPeople($level + 1, $parent);
-			}
+			$parent[$level] = $place2['place'];
+			$this->printHowManyPeople($level + 1, $parent);
 			echo '<br>', I18N::translate('This place has no coordinates');
 			if (Auth::isAdmin())
 				echo "<br><a href='module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=", $levelm, "&amp;display=inactive'>", I18N::translate('Geographic data'), "</a>";
@@ -2835,11 +2825,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 			echo 'var point = new google.maps.LatLng(', $lati, ', ', $long, ');';
 			echo 'var marker = createMarker(point, "<div class=\"iwstyle\" style=\"width: 250px;\"><a href=\"?action=find', $linklevels;
-			if (!$lastlevel) {
-				echo '&amp;parent[', $level, ']=';
-				if ($place2['place'] !== 'Unknown') {
-					echo Filter::escapeJs($place2['place']);
-				}
+			echo '&amp;parent[', $level, ']=';
+			if ($place2['place'] !== 'Unknown') {
+				echo Filter::escapeJs($place2['place']);
 			}
 			echo '\"><br>';
 			if ($place2['icon'] !== null && $place2['icon'] !== '') {
@@ -2851,12 +2839,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					echo Filter::escapeJs($place2['place']);
 				}
 			echo '</a>';
-			if ($lastlevel) {
-				$this->printHowManyPeople($level, $parent);
-			} else {
-				$parent[$level] = $place2['place'];
-				$this->printHowManyPeople($level + 1, $parent);
-			}
+			$parent[$level] = $place2['place'];
+			$this->printHowManyPeople($level + 1, $parent);
 			echo '<br><br>';
 			if ($this->getSetting('GM_COORD')) {
 				echo '', $place2['lati'], ', ', $place2['long'];
@@ -2872,10 +2856,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @param int      $level
 	 * @param string[] $parent
 	 * @param string   $linklevels
-	 * @param string   $placelevels
 	 * @param string[] $place_names
 	 */
-	public function mapScripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names) {
+	public function mapScripts($numfound, $level, $parent, $linklevels, $place_names) {
 		global $plzoom, $controller;
 
 		$controller->addInlineJavascript('
@@ -3028,14 +3011,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					array_pop($thisloc);
 					$thislevel      = $level - 1;
 					$thislinklevels = substr($linklevels, 0, strrpos($linklevels, '&amp;'));
-					if (strpos($placelevels, ',', 1)) {
-						$thisplacelevels = substr($placelevels, strpos($placelevels, ',', 1));
-					} else {
-						// this is the top level, remove everything
-						$thisplacelevels = '';
-					}
 
-					$this->printGoogleMapMarkers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels, $thisplacelevels);
+					$this->printGoogleMapMarkers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels);
 				}
 			}
 		}
@@ -3067,7 +3044,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				->fetchAll(PDO::FETCH_ASSOC);
 
 			foreach ($placelist as $place) {
-				$this->printGoogleMapMarkers($place, $level, $parent, $place['place_id'], $linklevels, $placelevels);
+				$this->printGoogleMapMarkers($place, $level, $parent, $place['place_id'], $linklevels);
 			}
 		}
 		$controller->addInlineJavascript(ob_get_clean());
