@@ -15,18 +15,7 @@ class ScriptShrd extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '𑇐',
-			'1' => '𑇑',
-			'2' => '𑇒',
-			'3' => '𑇓',
-			'4' => '𑇔',
-			'5' => '𑇕',
-			'6' => '𑇖',
-			'7' => '𑇗',
-			'8' => '𑇘',
-			'9' => '𑇙',
-		);
+		return array('𑇐', '𑇑', '𑇒', '𑇓', '𑇔', '𑇕', '𑇖', '𑇗', '𑇘', '𑇙');
 	}
 
 	/** {@inheritdoc} */

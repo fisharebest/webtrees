@@ -89,15 +89,15 @@ class Translation {
 		$magic = $this->readMoWords($fp, 0, 1, self::PACK_LITTLE_ENDIAN);
 
 		switch (dechex($magic[1])) {
-			case self::MO_MAGIC_LITTLE_ENDIAN:
-				$pack = self::PACK_LITTLE_ENDIAN;
-				break;
-			case self::MO_MAGIC_BIG_ENDIAN:
-				$pack = self::PACK_BIG_ENDIAN;
-				break;
-			default:
-				// Not a valid .MO file.
-				return;
+		case self::MO_MAGIC_LITTLE_ENDIAN:
+			$pack = self::PACK_LITTLE_ENDIAN;
+			break;
+		case self::MO_MAGIC_BIG_ENDIAN:
+			$pack = self::PACK_BIG_ENDIAN;
+			break;
+		default:
+			// Not a valid .MO file.
+			throw new \InvalidArgumentException('Invalid .MO file');
 		}
 
 		// Read the lookup tables

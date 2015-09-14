@@ -15,18 +15,7 @@ class ScriptBrah extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '𑁦',
-			'1' => '𑁧',
-			'2' => '𑁨',
-			'3' => '𑁩',
-			'4' => '𑁪',
-			'5' => '𑁫',
-			'6' => '𑁬',
-			'7' => '𑁭',
-			'8' => '𑁮',
-			'9' => '𑁯',
-		);
+		return array('𑁦', '𑁧', '𑁨', '𑁩', '𑁪', '𑁫', '𑁬', '𑁭', '𑁮', '𑁯');
 	}
 
 	/** {@inheritdoc} */

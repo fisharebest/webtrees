@@ -11,6 +11,11 @@ use Fisharebest\Localization\Language\LanguageNn;
  */
 class LocaleNn extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
+	public function collation() {
+		return 'danish_ci';
+	}
+
+	/** {@inheritdoc} */
 	public function endonym() {
 		return 'nynorsk';
 	}

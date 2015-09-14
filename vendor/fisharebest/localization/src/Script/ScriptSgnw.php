@@ -17,4 +17,9 @@ class ScriptSgnw extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '095';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'SignWriting';
+	}
 }

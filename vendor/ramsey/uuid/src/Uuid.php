@@ -93,7 +93,7 @@ final class Uuid
     /**
      * Version of the Rhumsaa\Uuid package
      */
-    const VERSION = '2.8.2';
+    const VERSION = '2.8.3';
 
     /**
      * For testing, 64-bit system override; if true, treat the system as 32-bit
@@ -1112,8 +1112,7 @@ final class Uuid
 
         throw new Exception\UnsatisfiedDependencyException(
             'When calling ' . __METHOD__ . ' on a 32-bit system, '
-            . 'Moontoast\Math\BigNumber must be present in order '
-            . 'to generate version 1 UUIDs'
+            . 'Moontoast\Math\BigNumber must be present'
         );
     }
 

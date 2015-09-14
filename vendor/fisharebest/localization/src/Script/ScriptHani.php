@@ -15,18 +15,7 @@ class ScriptHani extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '〇',
-			'1' => '一',
-			'2' => '二',
-			'3' => '三',
-			'4' => '四',
-			'5' => '五',
-			'6' => '六',
-			'7' => '七',
-			'8' => '八',
-			'9' => '九',
-		);
+		return array('〇', '一', '二', '三', '四', '五', '六', '七', '八', '九');
 	}
 
 	/** {@inheritdoc} */

@@ -15,18 +15,7 @@ class ScriptKali extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '꤀',
-			'1' => '꤁',
-			'2' => '꤂',
-			'3' => '꤃',
-			'4' => '꤄',
-			'5' => '꤅',
-			'6' => '꤆',
-			'7' => '꤇',
-			'8' => '꤈',
-			'9' => '꤉',
-		);
+		return array('꤀', '꤁', '꤂', '꤃', '꤄', '꤅', '꤆', '꤇', '꤈', '꤉');
 	}
 
 	/** {@inheritdoc} */

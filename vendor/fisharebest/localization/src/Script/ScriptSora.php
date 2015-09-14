@@ -15,18 +15,7 @@ class ScriptSora extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '𑃰',
-			'1' => '𑃱',
-			'2' => '𑃲',
-			'3' => '𑃳',
-			'4' => '𑃴',
-			'5' => '𑃵',
-			'6' => '𑃶',
-			'7' => '𑃷',
-			'8' => '𑃸',
-			'9' => '𑃹',
-		);
+		return array('𑃰', '𑃱', '𑃲', '𑃳', '𑃴', '𑃵', '𑃶', '𑃷', '𑃸', '𑃹');
 	}
 
 	/** {@inheritdoc} */
