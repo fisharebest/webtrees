@@ -1299,27 +1299,21 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuHomePage() {
-		$submenus            = array();
-		$ALLOW_CHANGE_GEDCOM = Site::getPreference('ALLOW_CHANGE_GEDCOM') && count(Tree::getAll()) > 1;
-
-		foreach (Tree::getAll() as $tree) {
-			if ($tree == $this->tree || $ALLOW_CHANGE_GEDCOM) {
-				$submenu = new Menu(
-					$tree->getTitleHtml(),
-					'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl(),
-					'menu-tree-' . $tree->getTreeId()
-				);
-				$submenus[] = $submenu;
-			}
-		}
-
-		if (count($submenus) > 1) {
-			$label = I18N::translate('Family trees');
+		if (count(Tree::getAll()) === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') === '0') {
+			return new Menu(I18N::translate('Family tree'), 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree');
 		} else {
-			$label = I18N::translate('Family trees');
-		}
+			$submenus = array();
+			foreach (Tree::getAll() as $tree) {
+				if ($tree == $this->tree) {
+					$active = 'active ';
+				} else {
+					$active = '';
+				}
+				$submenus[] = new Menu($tree->getTitleHtml(), 'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl(), $active . 'menu-tree-' . $tree->getTreeId());
+			}
 
-		return new Menu($label, 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree', array(), $submenus);
+			return new Menu(I18N::translate('Family trees'), 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree', array(), $submenus);
+		}
 	}
 
 	/**
