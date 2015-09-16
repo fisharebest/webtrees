@@ -263,8 +263,8 @@ class User {
 		// Don't delete the logs.
 		Database::prepare("UPDATE `##log` SET user_id=NULL WHERE user_id =?")->execute(array($this->user_id));
 		// Take over the user’s pending changes. (What else could we do with them?)
-		Database::prepare("DELETE FROM `##change` WHERE user_id=? AND status='accepted'")->execute(array($this->user_id));
-		Database::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute(array($this->user_id, $this->user_id));
+		Database::prepare("DELETE FROM `##change` WHERE user_id=? AND status='rejected'")->execute(array($this->user_id));
+		Database::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute(array(Auth::id(), $this->user_id));
 		Database::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute(array($this->user_id));
 		Database::prepare("DELETE FROM `##block` WHERE user_id=?")->execute(array($this->user_id));
 		Database::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute(array($this->user_id));
