@@ -61,6 +61,13 @@ body {
 	position: fixed;
 }
 
+div.log.pre-wrapped {
+	overflow: auto;
+    white-space: pre-wrap;
+    font-size: 0.8em;
+    font-family: monospace;
+}
+
 /* Make <fieldset class="form-group"> look like <div class="form-group"> so we can use semantic/accessible markup */
 fieldset {
 	margin-bottom: inherit;
