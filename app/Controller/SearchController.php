@@ -491,7 +491,7 @@ class SearchController extends PageController {
 
 		//-- if only 1 item is returned, automatically forward to that item
 		if (count($this->myindilist) == 1 && $this->action != "replace") {
-			$indi = $this->myindilist[0];
+			$indi = reset($this->myindilist);
 			header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
 			exit;
 		}
