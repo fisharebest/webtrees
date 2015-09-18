@@ -135,6 +135,8 @@ abstract class AbstractTheme {
 	/**
 	 * Create the tracking code for Google Analytics.
 	 *
+	 * See https://developers.google.com/analytics/devguides/collection/analyticsjs/advanced
+	 *
 	 * @param string $analytics_id
 	 *
 	 * @return string
@@ -142,12 +144,10 @@ abstract class AbstractTheme {
 	protected function analyticsGoogleTracker($analytics_id) {
 		if ($analytics_id) {
 			return
+				'<script async src="https://www.google-analytics.com/analytics.js"></script>' .
 				'<script>' .
-				'(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){' .
-				'(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),' .
-				'm=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)' .
-				'})(window,document,"script","//www.google-analytics.com/analytics.js","ga");' .
-				'ga("create", "' . $analytics_id . '", "auto");' .
+				'window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;' .
+				'ga("create","' . $analytics_id . '","auto");' .
 				'ga("send", "pageview");' .
 				'</script>';
 		} else {
@@ -1299,27 +1299,21 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuHomePage() {
-		$submenus            = array();
-		$ALLOW_CHANGE_GEDCOM = Site::getPreference('ALLOW_CHANGE_GEDCOM') && count(Tree::getAll()) > 1;
-
-		foreach (Tree::getAll() as $tree) {
-			if ($tree == $this->tree || $ALLOW_CHANGE_GEDCOM) {
-				$submenu = new Menu(
-					$tree->getTitleHtml(),
-					'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl(),
-					'menu-tree-' . $tree->getTreeId()
-				);
-				$submenus[] = $submenu;
-			}
-		}
-
-		if (count($submenus) > 1) {
-			$label = I18N::translate('Family trees');
+		if (count(Tree::getAll()) === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') === '0') {
+			return new Menu(I18N::translate('Family tree'), 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree');
 		} else {
-			$label = I18N::translate('Family trees');
-		}
+			$submenus = array();
+			foreach (Tree::getAll() as $tree) {
+				if ($tree == $this->tree) {
+					$active = 'active ';
+				} else {
+					$active = '';
+				}
+				$submenus[] = new Menu($tree->getTitleHtml(), 'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl(), $active . 'menu-tree-' . $tree->getTreeId());
+			}
 
-		return new Menu($label, 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree', array(), $submenus);
+			return new Menu(I18N::translate('Family trees'), 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree', array(), $submenus);
+		}
 	}
 
 	/**

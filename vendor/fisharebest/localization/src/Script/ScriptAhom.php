@@ -17,4 +17,9 @@ class ScriptAhom extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '338';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Ahom';
+	}
 }

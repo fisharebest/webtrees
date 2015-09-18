@@ -135,7 +135,7 @@ class Filter {
 		return preg_replace_callback(
 			'/' . addcslashes('(?!>)' . self::URL_REGEX . '(?!</a>)', '/') . '/i',
 			function ($m) {
-				return '<a href="' . $m[0] . '" target="_blank">' . $m[0] . '</a>';
+				return '<a href="' . $m[0] . '">' . $m[0] . '</a>';
 			},
 			self::escapeHtml($text)
 		);

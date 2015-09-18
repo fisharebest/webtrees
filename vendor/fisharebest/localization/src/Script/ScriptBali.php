@@ -15,18 +15,7 @@ class ScriptBali extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '᭐',
-			'1' => '᭑',
-			'2' => '᭒',
-			'3' => '᭓',
-			'4' => '᭔',
-			'5' => '᭕',
-			'6' => '᭖',
-			'7' => '᭗',
-			'8' => '᭘',
-			'9' => '᭙',
-		);
+		return array('᭐', '᭑', '᭒', '᭓', '᭔', '᭕', '᭖', '᭗', '᭘', '᭙');
 	}
 
 	/** {@inheritdoc} */

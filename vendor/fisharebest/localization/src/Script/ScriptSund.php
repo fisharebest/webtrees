@@ -15,18 +15,7 @@ class ScriptSund extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '᮰',
-			'1' => '᮱',
-			'2' => '᮲',
-			'3' => '᮳',
-			'4' => '᮴',
-			'5' => '᮵',
-			'6' => '᮶',
-			'7' => '᮷',
-			'8' => '᮸',
-			'9' => '᮹',
-		);
+		return array('᮰', '᮱', '᮲', '᮳', '᮴', '᮵', '᮶', '᮷', '᮸', '᮹');
 	}
 
 	/** {@inheritdoc} */

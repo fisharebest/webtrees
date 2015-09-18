@@ -39,15 +39,17 @@ $controller
 	->pageHeader();
 
 echo '<div id="edit_interface-page">';
-echo '<h3>', $controller->getPageTitle(), '&nbsp;&nbsp;';
+echo '<h3>', $controller->getPageTitle(), ' ';
 	// When more languages are added to the wiki, we can expand or redesign this
 	switch (WT_LOCALE) {
-	case 'fr':
-		echo FunctionsPrint::wikiHelpLink('/fr/Module_Assistant_Recensement');
+	case 'de':
+		echo FunctionsPrint::wikiHelpLink('de/Volksz%C3%A4hlungs-Modul');
 		break;
-	case 'en':
+	case 'fr':
+		echo FunctionsPrint::wikiHelpLink('fr/Module_Assistant_Recensement');
+		break;
 	default:
-		echo FunctionsPrint::wikiHelpLink('/en/Census_Assistant_module');
+		echo FunctionsPrint::wikiHelpLink('en/Census_Assistant_module');
 		break;
 	}
 echo '</h3>';

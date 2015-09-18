@@ -340,7 +340,7 @@ $rule = Database::prepare(
 	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end" .
 	" AND ? LIKE user_agent_pattern" .
 	" ORDER BY ip_address_end LIMIT 1"
-)->execute(array(WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT')))->fetchOne();
+)->execute(array(WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT', null, '')))->fetchOne();
 
 switch ($rule) {
 case 'allow':

@@ -61,6 +61,10 @@ body {
 	position: fixed;
 }
 
+.table-site-logs td:nth-child(3) {
+	white-space: pre-wrap;
+}
+
 /* Make <fieldset class="form-group"> look like <div class="form-group"> so we can use semantic/accessible markup */
 fieldset {
 	margin-bottom: inherit;

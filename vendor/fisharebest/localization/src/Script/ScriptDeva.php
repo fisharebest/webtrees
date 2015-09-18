@@ -15,18 +15,7 @@ class ScriptDeva extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '०',
-			'1' => '१',
-			'2' => '२',
-			'3' => '३',
-			'4' => '४',
-			'5' => '५',
-			'6' => '६',
-			'7' => '७',
-			'8' => '८',
-			'9' => '९',
-		);
+		return array('०', '१', '२', '३', '४', '५', '६', '७', '८', '९');
 	}
 
 	/** {@inheritdoc} */

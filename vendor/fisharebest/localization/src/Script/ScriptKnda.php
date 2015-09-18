@@ -15,18 +15,7 @@ class ScriptKnda extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '೦',
-			'1' => '೧',
-			'2' => '೨',
-			'3' => '೩',
-			'4' => '೪',
-			'5' => '೫',
-			'6' => '೬',
-			'7' => '೭',
-			'8' => '೮',
-			'9' => '೯',
-		);
+		return array('೦', '೧', '೨', '೩', '೪', '೫', '೬', '೭', '೮', '೯');
 	}
 
 	/** {@inheritdoc} */

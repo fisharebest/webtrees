@@ -15,18 +15,7 @@ class ScriptTelu extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '౦',
-			'1' => '౧',
-			'2' => '౨',
-			'3' => '౩',
-			'4' => '౪',
-			'5' => '౫',
-			'6' => '౬',
-			'7' => '౭',
-			'8' => '౮',
-			'9' => '౯',
-		);
+		return array('౦', '౧', '౨', '౩', '౪', '౫', '౬', '౭', '౮', '౯');
 	}
 
 	/** {@inheritdoc} */

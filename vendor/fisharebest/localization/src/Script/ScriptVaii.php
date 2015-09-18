@@ -15,18 +15,7 @@ class ScriptVaii extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '꘠',
-			'1' => '꘡',
-			'2' => '꘢',
-			'3' => '꘣',
-			'4' => '꘤',
-			'5' => '꘥',
-			'6' => '꘦',
-			'7' => '꘧',
-			'8' => '꘨',
-			'9' => '꘩',
-		);
+		return array('꘠', '꘡', '꘢', '꘣', '꘤', '꘥', '꘦', '꘧', '꘨', '꘩');
 	}
 
 	/** {@inheritdoc} */

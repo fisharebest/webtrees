@@ -15,18 +15,7 @@ class ScriptCham extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '꩐',
-			'1' => '꩑',
-			'2' => '꩒',
-			'3' => '꩓',
-			'4' => '꩔',
-			'5' => '꩕',
-			'6' => '꩖',
-			'7' => '꩗',
-			'8' => '꩘',
-			'9' => '꩙',
-		);
+		return array('꩐', '꩑', '꩒', '꩓', '꩔', '꩕', '꩖', '꩗', '꩘', '꩙');
 	}
 
 	/** {@inheritdoc} */

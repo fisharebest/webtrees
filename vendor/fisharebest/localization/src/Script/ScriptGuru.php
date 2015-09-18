@@ -15,18 +15,7 @@ class ScriptGuru extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '੦',
-			'1' => '੧',
-			'2' => '੨',
-			'3' => '੩',
-			'4' => '੪',
-			'5' => '੫',
-			'6' => '੬',
-			'7' => '੭',
-			'8' => '੮',
-			'9' => '੯',
-		);
+		return array('੦', '੧', '੨', '੩', '੪', '੫', '੬', '੭', '੮', '੯');
 	}
 
 	/** {@inheritdoc} */

@@ -15,18 +15,7 @@ class ScriptLana extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '᪀',
-			'1' => '᪁',
-			'2' => '᪂',
-			'3' => '᪃',
-			'4' => '᪄',
-			'5' => '᪅',
-			'6' => '᪆',
-			'7' => '᪇',
-			'8' => '᪈',
-			'9' => '᪉',
-		);
+		return array('᪀', '᪁', '᪂', '᪃', '᪄', '᪅', '᪆', '᪇', '᪈', '᪉');
 	}
 
 	/** {@inheritdoc} */

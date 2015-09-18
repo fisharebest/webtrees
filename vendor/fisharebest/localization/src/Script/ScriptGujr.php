@@ -15,18 +15,7 @@ class ScriptGujr extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '૦',
-			'1' => '૧',
-			'2' => '૨',
-			'3' => '૩',
-			'4' => '૪',
-			'5' => '૫',
-			'6' => '૬',
-			'7' => '૭',
-			'8' => '૮',
-			'9' => '૯',
-		);
+		return array('૦', '૧', '૨', '૩', '૪', '૫', '૬', '૭', '૮', '૯');
 	}
 
 	/** {@inheritdoc} */

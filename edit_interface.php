@@ -1795,7 +1795,7 @@ case 'reorder_children':
 	$option = Filter::post('option');
 
 	$family = Family::getInstance($xref, $WT_TREE);
-	check_record_access($family, $WT_TREE);
+	check_record_access($family);
 
 	$controller
 		->addInlineJavascript('jQuery("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});')
@@ -2505,7 +2505,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		$fields   = explode(' ', $gedlines[0]);
 		$glevel   = $fields[0];
 		$level    = $glevel;
-		$type     = trim($fields[1]);
+		$type     = $fields[1];
 		$tags     = array();
 		$i        = 0;
 		do {
@@ -2518,7 +2518,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 					$text .= $fields[$j];
 				}
 				while (($i + 1 < count($gedlines)) && (preg_match('/' . ($level + 1) . ' CONT ?(.*)/', $gedlines[$i + 1], $cmatch) > 0)) {
-					$text .= "\n" . $cmatch[2];
+					$text .= "\n" . $cmatch[1];
 					$i++;
 				}
 				FunctionsEdit::addSimpleTag($level . ' ' . $type . ' ' . $text);

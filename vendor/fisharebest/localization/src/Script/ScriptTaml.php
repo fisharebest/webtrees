@@ -15,18 +15,7 @@ class ScriptTaml extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '௦',
-			'1' => '௧',
-			'2' => '௨',
-			'3' => '௩',
-			'4' => '௪',
-			'5' => '௫',
-			'6' => '௬',
-			'7' => '௭',
-			'8' => '௮',
-			'9' => '௯',
-		);
+		return array('௦', '௧', '௨', '௩', '௪', '௫', '௬', '௭', '௮', '௯');
 	}
 
 	/** {@inheritdoc} */
