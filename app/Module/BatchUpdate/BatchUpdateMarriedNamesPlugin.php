@@ -149,12 +149,17 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 	 */
 	public function getOptionsForm() {
 		return
-			parent::getOptionsForm() .
-			'<tr valign="top"><th>' . I18N::translate('Surname option') . '</th>' .
-			'<td class="optionbox"><select name="surname" onchange="reset_reload();"><option value="replace" ' .
+			'<div class="form-group">' .
+			'<label class="control-label col-sm-3">' . I18N::translate('Surname option') . '</label>' .
+			'<div class="col-sm-9">' .
+			'<select class="form-control" name="surname" onchange="reset_reload();">' .
+			'<option value="replace" ' .
 			($this->surname == 'replace' ? 'selected' : '') .
 			'">' . I18N::translate('Wife’s surname replaced by husband’s surname') . '</option><option value="add" ' .
 			($this->surname == 'add' ? 'selected' : '') .
-			'">' . I18N::translate('Wife’s maiden surname becomes new given name') . '</option></select></td></tr>';
+			'">' . I18N::translate('Wife’s maiden surname becomes new given name') . '</option>' .
+			'</select>' .
+			'</div></div>' .
+			parent::getOptionsForm();
 	}
 }
