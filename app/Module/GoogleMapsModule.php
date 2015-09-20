@@ -289,204 +289,228 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</a>
 			</li>
 		</ul>
+		
+		<h2><?php echo I18N::translate('Google Maps™ preferences'); ?></h2>
 
-		<form method="post" name="configform" action="module.php?mod=googlemap&mod_action=admin_config">
+		<form class="form-horizontal" method="post" name="configform" action="module.php?mod=googlemap&mod_action=admin_config">
 			<input type="hidden" name="action" value="update">
-			<h2><?php echo I18N::translate('Basic'); ?></h2>
-			<div id="tabs">
-				<div id="gm_basic">
-					<table class="gm_edit_config">
-						<tr>
-							<th><?php echo I18N::translate('Default map type'); ?></th>
-							<td>
-								<select name="GM_MAP_TYPE">
-									<option value="ROADMAP" <?php if ($this->getSetting('GM_MAP_TYPE') === 'ROADMAP') echo "selected"; ?>><?php echo I18N::translate('Map'); ?></option>
-									<option value="SATELLITE" <?php if ($this->getSetting('GM_MAP_TYPE') === 'SATELLITE') echo "selected"; ?>><?php echo I18N::translate('Satellite'); ?></option>
-									<option value="HYBRID" <?php if ($this->getSetting('GM_MAP_TYPE') === 'HYBRID') echo "selected"; ?>><?php echo I18N::translate('Hybrid'); ?></option>
-									<option value="TERRAIN" <?php if ($this->getSetting('GM_MAP_TYPE') === 'TERRAIN') echo "selected"; ?>><?php echo I18N::translate('Terrain'); ?></option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<th><?php echo /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ I18N::translate('Google Street View™'); ?></th>
-							<td><?php echo FunctionsEdit::radioButtons('GM_USE_STREETVIEW', array(false => I18N::translate('hide'), true => I18N::translate('show')), $this->getSetting('GM_USE_STREETVIEW'), 'class="radio-inline"'); ?></td>
-						</tr>
-						<tr>
-							<th><?php echo I18N::translate('Size of map (in pixels)'); ?></th>
-							<td>
-								<?php echo I18N::translate('Width'); ?>
-								<input type="text" name="GM_XSIZE" value="<?php echo $this->getSetting('GM_XSIZE'); ?>" size="10">
-								<?php echo I18N::translate('Height'); ?>
-								<input type="text" name="GM_YSIZE" value="<?php echo $this->getSetting('GM_YSIZE'); ?>" size="10">
-							</td>
-						</tr>
-						<tr>
-							<th><?php echo I18N::translate('Zoom level of map'); ?></th>
-							<td>
-								<?php echo I18N::translate('minimum'); ?>: <select name="GM_MIN_ZOOM">
-								<?php for ($j = 1; $j < 15; $j++) { ?>
-								<option value="<?php echo $j, "\" "; if ($this->getSetting('GM_MIN_ZOOM') == $j) echo "selected"; echo ">", $j; ?></option>
-								<?php } ?>
-								</select>
-								<?php echo I18N::translate('maximum'); ?>: <select name="GM_MAX_ZOOM">
-								<?php for ($j = 1; $j < 21; $j++) { ?>
-								<option value="<?php echo $j, "\" "; if ($this->getSetting('GM_MAX_ZOOM') == $j) echo "selected"; echo ">", $j; ?></option>
-								<?php } ?>
-								</select>
-								<p>
-									<?php echo I18N::translate('Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas.'); ?>
-								</p>
-							</td>
-						</tr>
-					</table>
-				</div>
+			<h3><?php echo I18N::translate('Basic'); ?></h3>
 
-				<h2><?php echo I18N::translate('Advanced'); ?></h2>
-
-				<div id="gm_advanced">
-					<table class="gm_edit_config">
-						<tr>
-							<th colspan="2">
-								<?php echo I18N::translate('Precision of the latitude and longitude'); ?>
-							</th>
-							<td>
-								<table>
-									<tr>
-										<td><?php echo I18N::translate('Country'); ?>&nbsp;&nbsp;</td>
-										<td><select name="GM_PRECISION_0">
-											<?php for ($j = 0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>" <?php if ($this->getSetting('GM_PRECISION_0') == $j) echo "selected"; echo ">", $j; ?></option>
-											<?php } ?>
-											</select>&nbsp;&nbsp;<?php echo I18N::translate('digits'); ?>
-										</td>
-									</tr>
-									<tr>
-										<td><?php echo I18N::translate('State'); ?>&nbsp;&nbsp;</td>
-										<td><select name="GM_PRECISION_1">
-											<?php for ($j = 0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>" <?php if ($this->getSetting('GM_PRECISION_1') == $j) echo "selected"; echo ">", $j; ?></option>
-											<?php } ?>
-											</select>&nbsp;&nbsp;<?php echo I18N::translate('digits'); ?>
-										</td>
-									</tr>
-									<tr>
-										<td><?php echo I18N::translate('City'); ?>&nbsp;&nbsp;</td>
-										<td><select name="GM_PRECISION_2">
-											<?php for ($j = 0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>" <?php if ($this->getSetting('GM_PRECISION_2') == $j) echo "selected"; echo ">", $j; ?></option>
-											<?php } ?>
-											</select>&nbsp;&nbsp;<?php echo I18N::translate('digits'); ?>
-										</td>
-									</tr>
-									<tr><td><?php echo I18N::translate('Neighborhood'); ?>&nbsp;&nbsp;</td>
-										<td><select name="GM_PRECISION_3">
-											<?php for ($j = 0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>" <?php if ($this->getSetting('GM_PRECISION_3') == $j) echo "selected"; echo ">", $j; ?></option>
-											<?php } ?>
-											</select>&nbsp;&nbsp;<?php echo I18N::translate('digits'); ?>
-										</td>
-									</tr>
-									<tr><td><?php echo I18N::translate('House'); ?>&nbsp;&nbsp;</td>
-										<td><select name="GM_PRECISION_4">
-											<?php for ($j = 0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>" <?php if ($this->getSetting('GM_PRECISION_4') == $j) echo "selected"; echo ">", $j; ?></option>
-											<?php } ?>
-											</select>&nbsp;&nbsp;<?php echo I18N::translate('digits'); ?>
-										</td>
-									</tr>
-									<tr><td><?php echo I18N::translate('Max'); ?>&nbsp;&nbsp;</td>
-										<td><select name="GM_PRECISION_5">
-											<?php for ($j = 0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>" <?php if ($this->getSetting('GM_PRECISION_5') == $j) echo "selected"; echo ">", $j; ?></option>
-											<?php } ?>
-											</select>&nbsp;&nbsp;<?php echo I18N::translate('digits'); ?>
-										</td>
-									</tr>
-								</table>
-								<p class="small text-muted">
-									<?php echo I18N::translate('This specifies the precision of the different levels when entering new geographic locations.  For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits.'); ?>
-								</p>
-							</td>
-							<td></td>
-						</tr>
-							<th class="gm_prefix">
-								<?php echo I18N::translate('Optional prefixes and suffixes'); ?>
-							</th>
-							<td colspan="2">
-								<p class="small text-muted">
-									<?php echo I18N::translate('Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”.'); ?>
-								</p>
-							</td>
-						</tr>
-						<tr id="gm_level_titles">
-							<th></th>
-							<th><?php echo I18N::translate('Prefixes'); ?></th>
-							<th><?php echo I18N::translate('Suffixes'); ?></th>
-						<?php for ($level = 1; $level < 10; $level++) { ?>
-						<tr  class="gm_levels">
-							<th>
-								<?php
-								if ($level == 1) {
-									echo I18N::translate('Country');
-								} else {
-									echo I18N::translate('Level'), " ", $level;
-								}
-								?>
-							</th>
-							<td>
-								<input type="text" size="30" name="GM_PREFIX_<?php echo $level; ?>" value="<?php echo $this->getSetting('GM_PREFIX_' . $level); ?>">
-							</td>
-							<td>
-								<input type="text" size="30" name="GM_POSTFIX_<?php echo $level; ?>" value="<?php echo $this->getSetting('GM_POSTFIX_' . $level); ?>">
-							</td>
-						</tr>
-						<?php } ?>
-					</table>
-				</div>
-
-				<h2><?php echo I18N::translate('Place hierarchy'); ?></h2>
-
-				<div id="gm_ph">
-					<table class="gm_edit_config">
-						<tr>
-							<th><?php echo I18N::translate('Use Google Maps™ for the place hierarchy'); ?></th>
-							<td><?php echo FunctionsEdit::editFieldYesNo('GM_PLACE_HIERARCHY', $this->getSetting('GM_PLACE_HIERARCHY'), 'class="radio-inline"'); ?></td>
-						</tr>
-						<tr>
-							<th><?php echo I18N::translate('Size of map (in pixels)'); ?></th>
-							<td>
-								<?php echo I18N::translate('Width'); ?>
-								<input type="text" name="GM_PH_XSIZE" value="<?php echo $this->getSetting('GM_PH_XSIZE'); ?>" size="10">
-								<?php echo I18N::translate('Height'); ?>
-								<input type="text" name="GM_PH_YSIZE" value="<?php echo $this->getSetting('GM_PH_YSIZE'); ?>" size="10">
-							</td>
-						</tr>
-						<tr>
-							<th><?php echo I18N::translate('Type of place markers in Place Hierarchy'); ?></th>
-							<td>
-								<select name="GM_PH_MARKER">
-									<option value="G_DEFAULT_ICON" <?php if ($this->getSetting('GM_PH_MARKER') == "G_DEFAULT_ICON") echo "selected"; ?>><?php echo I18N::translate('Standard'); ?></option>
-									<option value="G_FLAG" <?php if ($this->getSetting('GM_PH_MARKER') == "G_FLAG") echo "selected"; ?>><?php echo I18N::translate('Flag'); ?></option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<th>
-								<?php echo I18N::translate('Display map coordinates'); ?>
-							</th>
-							<td>
-								<?php echo FunctionsEdit::editFieldYesNo('GM_COORD', $this->getSetting('GM_COORD'), 'class="radio-inline"'); ?>
-								<p class="small text-muted">
-									<?php echo I18N::translate('This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers.'); ?>
-								</p>
-							</td>
-						</tr>
-					</table>
+			<!-- GM_MAP_TYPE -->
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="GM_MAP_TYPE">
+					<?php echo I18N::translate('Default map type'); ?>
+				</label>
+				<div class="col-sm-9">
+					<?php
+					$options = array(
+						'ROADMAP'	=> I18N::translate('Map'),
+						'SATELLITE'	=> I18N::translate('Satellite'),
+						'HYBRID'	=> I18N::translate('Hybrid'),
+						'TERRAIN'	=> I18N::translate('Terrain')
+					);
+					echo FunctionsEdit::selectEditControl('GM_MAP_TYPE', $options, null, $this->getSetting('GM_MAP_TYPE'), 'class="form-control"');
+					?>
 				</div>
 			</div>
-			<p>
-				<input type="submit" value="<?php echo I18N::translate('save'); ?>">
-			</p>
+
+			<!-- GM_USE_STREETVIEW -->
+			<fieldset class="form-group">
+				<legend class="control-label col-sm-3">
+					<?php echo /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ I18N::translate('Google Street View™'); ?>
+				</legend>
+				<div class="col-sm-9">
+					<?php echo FunctionsEdit::radioButtons('GM_USE_STREETVIEW', array(false => I18N::translate('hide'), true => I18N::translate('show')), $this->getSetting('GM_USE_STREETVIEW'), 'class="radio-inline"'); ?>
+				</div>
+			</fieldset>
+
+			<!-- GM_XSIZE / GM_YSIZE -->
+			<fieldset class="form-group">
+				<legend class="control-label col-sm-3">
+					<?php echo I18N::translate('Size of map (in pixels)'); ?>
+				</legend>
+				<div class="col-sm-9">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="input-group">
+								<label class="input-group-addon" for="GM_XSIZE"><?php echo I18N::translate('Width'); ?></label>
+								<input id="GM_XSIZE" class="form-control" type="text" name="GM_XSIZE" value="<?php echo $this->getSetting('GM_XSIZE'); ?>">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="input-group">
+								<label class="input-group-addon" for="GM_YSIZE"><?php echo I18N::translate('Height'); ?></label>
+								<input id="GM_YSIZE" class="form-control" type="text" name="GM_YSIZE" value="<?php echo $this->getSetting('GM_YSIZE'); ?>">
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<!-- GM_MIN_ZOOM / GM_MAX_ZOOM -->
+			<fieldset class="form-group">
+				<legend class="control-label col-sm-3">
+					<?php echo I18N::translate('Zoom level of map'); ?>
+				</legend>
+				<div class="col-sm-9">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="input-group">
+								<label class="input-group-addon" for="GM_MIN_ZOOM"><?php echo I18N::translate('minimum'); ?></label>
+								<?php echo FunctionsEdit::selectEditControl('GM_MIN_ZOOM', array_combine(range(1, 14), range(1, 14)), null, $this->getSetting('GM_MIN_ZOOM'), 'class="form-control"'); ?>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="input-group">
+								<label class="input-group-addon" for="GM_MAX_ZOOM"><?php echo I18N::translate('maximum'); ?></label>
+								<?php echo FunctionsEdit::selectEditControl('GM_MAX_ZOOM', array_combine(range(1, 20), range(1, 20)), null, $this->getSetting('GM_MAX_ZOOM'), 'class="form-control"'); ?>
+							</div>
+						</div>
+					</div>
+					<p class="small text-muted"><?php echo I18N::translate('Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas.'); ?></p>
+				</div>
+			</fieldset>
+
+			<h3><?php echo I18N::translate('Advanced'); ?></h3>
+
+			<!-- GM_PRECISION -->
+			<fieldset class="form-group">
+				<legend class="control-label col-sm-3">
+					<?php echo I18N::translate('Precision of the latitude and longitude'); ?>
+				</legend>
+				<div class="col-sm-9">
+					<div class="row">
+						<?php $label = array('Country', 'State', 'City', 'Neighborhood', 'House', 'Max'); ?>
+						<?php for ($level = 0; $level < 6; $level++): ?>
+						<div class="col-sm-4">
+							<div class="input-group">
+								<label class="input-group-addon" for="GM_PRECISION_<?php echo $level ?>"><?php echo I18N::translate($label[$level]); ?></label>
+								<?php echo FunctionsEdit::selectEditControl('GM_PRECISION_' . $level, range(0, 9), null, $this->getSetting('GM_PRECISION_' . $level), 'class="form-control"'); ?>
+							</div>
+						</div>
+						<?php endfor; ?>
+					</div>
+					<p class="small text-muted"><?php echo I18N::translate('This specifies the precision of the different levels when entering new geographic locations.  For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits.'); ?></p>
+				</div>
+			</fieldset>
+
+			<!-- GM_PREFIX / GM_POSTFIX -->
+			<fieldset class="form-group">
+				<legend class="control-label col-sm-3">
+					<?php echo I18N::translate('Optional prefixes and suffixes'); ?>
+				</legend>
+				<div class="col-sm-9">
+					<div class="row">
+						<div class ="col-sm-6">
+							<p class="form-control-static"><strong><?php echo I18N::translate('Prefixes'); ?></strong></p>
+							<?php for ($level = 1; $level < 10; $level++): ?>
+							<?php
+							if ($level == 1) {
+								$label = I18N::translate('Country');
+							} else {
+								$label = I18N::translate('Level') .  ' ' . $level;
+							}
+							?>
+							<div class="input-group">
+								<label class="input-group-addon" for="GM_PREFIX_<?php echo $level; ?>"><?php echo $label ?></label>
+								<input class="form-control" type="text" name="GM_PREFIX_<?php echo $level; ?>" value="<?php echo $this->getSetting('GM_PREFIX_' . $level); ?>">
+							</div>
+							<?php endfor; ?>
+						</div>
+						<div class="col-sm-6">
+							<p class="form-control-static"><strong><?php echo I18N::translate('Suffixes'); ?></strong></p>
+							<?php for ($level = 1; $level < 10; $level++): ?>
+							<?php
+							if ($level == 1) {
+								$label = I18N::translate('Country');
+							} else {
+								$label = I18N::translate('Level') .  ' ' . $level;
+							}
+							?>
+							<div class="input-group">
+								<label class="input-group-addon" for="GM_POSTFIX_<?php echo $level; ?>"><?php echo $label ?></label>
+								<input class="form-control" type="text" name="GM_POSTFIX_<?php echo $level; ?>" value="<?php echo $this->getSetting('GM_POSTFIX_' . $level); ?>">
+							</div>
+							<?php endfor; ?>
+						</div>
+					</div>
+					<p class="small text-muted"><?php echo I18N::translate('Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”.'); ?></p>
+				</div>
+			</fieldset>
+
+			<h3><?php echo I18N::translate('Place hierarchy'); ?></h3>
+
+			<!-- GM_PLACE_HIERARCHY -->
+			<fieldset class="form-group">
+				<legend class="control-label col-sm-3">
+					<?php echo I18N::translate('Use Google Maps™ for the place hierarchy'); ?>
+				</legend>
+				<div class="col-sm-9">
+					<?php echo FunctionsEdit::editFieldYesNo('GM_PLACE_HIERARCHY', $this->getSetting('GM_PLACE_HIERARCHY'), 'class="radio-inline"'); ?>
+				</div>
+			</fieldset>
+
+			<!-- GM_PH_XSIZE / GM_PH_YSIZE -->
+			<fieldset class="form-group">
+				<legend class="control-label col-sm-3">
+					<?php echo I18N::translate('Size of map (in pixels)'); ?>
+				</legend>
+				<div class="col-sm-9">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="input-group">
+								<label class="input-group-addon" for="GM_PH_XSIZE"><?php echo I18N::translate('Width'); ?></label>
+								<input id="GM_XSIZE" class="form-control" type="text" name="GM_PH_XSIZE" value="<?php echo $this->getSetting('GM_PH_XSIZE'); ?>">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="input-group">
+								<label class="input-group-addon" for="GM_PH_YSIZE"><?php echo I18N::translate('Height'); ?></label>
+								<input id="GM_YSIZE" class="form-control" type="text" name="GM_PH_YSIZE" value="<?php echo $this->getSetting('GM_PH_YSIZE'); ?>">
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<!-- GM_PH_MARKER -->
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="GM_PH_MARKER">
+					<?php echo I18N::translate('Type of place markers in Place Hierarchy'); ?>
+				</label>
+				<div class="col-sm-9">
+					<?php
+					$ph_options = array(
+						'G_DEFAULT_ICON'	=> I18N::translate('Standard'),
+						'G_FLAG'			=> I18N::translate('Flag')
+					);
+					echo FunctionsEdit::selectEditControl('GM_PH_MARKER', $ph_options, null, $this->getSetting('GM_PH_MARKER'), 'class="form-control"');
+					?>
+				</div>
+			</div>
+
+			<!-- GM_COORD -->
+			<fieldset class="form-group">
+				<legend class="control-label col-sm-3">
+					<?php echo I18N::translate('Display map coordinates'); ?>
+				</legend>
+				<div class="col-sm-9">
+					<?php echo FunctionsEdit::editFieldYesNo('GM_COORD', $this->getSetting('GM_COORD'), 'class="radio-inline"'); ?>
+					<p class="small text-muted">
+						<?php echo I18N::translate('This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers.'); ?>
+					</p>
+				</div>
+			</fieldset>
+			
+			<!-- SAVE BUTTON -->
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-9">
+					<button type="submit" class="btn btn-primary">
+						<i class="fa fa-check"></i>
+						<?php echo I18N::translate('save'); ?>
+					</button>
+				</div>
+			</div>
 		</form>
 		<?php
 	}
