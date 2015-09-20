@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\BatchUpdateModule;
@@ -56,11 +57,11 @@ class BatchUpdateBasePlugin {
 	 */
 	public function getOptionsForm() {
 		return
-			'<tr><th>' . I18N::translate('Keep the existing “last change” information') . '</th>' .
-			'<td><select name="chan" onchange="this.form.submit();">' .
-			'<option value="0" ' . ($this->chan ? '' : 'selected') . '>' . I18N::translate('yes') . '</option>' .
-			'<option value="1" ' . ($this->chan ? 'selected' : '') . '>' . I18N::translate('no') . '</option>' .
-			'</select></td></tr>';
+			'<div class="form-group">' . 
+			'<label class="control-label col-sm-3">' . I18N::translate('Keep the existing “last change” information') . '</label>' .
+			'<div class="col-sm-9">' .
+			FunctionsEdit::radioButtons('chan', array(0 => I18N::translate('no'), 1 => I18N::translate('yes')), ($this->chan ? 1 : 0), 'class="radio-inline" onchange="this.form.submit();"') .
+			'</div></div>';
 	}
 
 	/**
