@@ -15,18 +15,7 @@ class ScriptLimb extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '᥆',
-			'1' => '᥇',
-			'2' => '᥈',
-			'3' => '᥉',
-			'4' => '᥊',
-			'5' => '᥋',
-			'6' => '᥌',
-			'7' => '᥍',
-			'8' => '᥎',
-			'9' => '᥏',
-		);
+		return array('᥆', '᥇', '᥈', '᥉', '᥊', '᥋', '᥌', '᥍', '᥎', '᥏');
 	}
 
 	/** {@inheritdoc} */

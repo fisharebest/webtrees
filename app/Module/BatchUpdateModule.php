@@ -185,66 +185,75 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 		}
 
 		// HTML common to all pages
-		$html =
-			$this->getJavascript() .
-			'<form id="batch_update_form" action="module.php" method="get">' .
-			'<input type="hidden" name="mod" value="batch_update">' .
-			'<input type="hidden" name="mod_action" value="admin_batch_update">' .
-			'<input type="hidden" name="xref"   value="' . $this->xref . '">' .
-			'<input type="hidden" name="action" value="">' . // will be set by javascript for next update
-			'<input type="hidden" name="data"   value="">' . // will be set by javascript for next update
-			'<table id="batch_update"><tr>' .
-			'<th>' . I18N::translate('Family tree') . '</th>' .
-			'<td>' . FunctionsEdit::selectEditControl('ged', Tree::getNameList(), '', $WT_TREE->getName(), 'onchange="reset_reload();"') .
-			'</td></tr><tr><th>' . I18N::translate('Batch update') . '</th><td><select name="plugin" onchange="reset_reload();">';
-		if (!$this->plugin) {
-			$html .= '<option value="" selected></option>';
-		}
+		echo $this->getJavascript();
+		?>
+		<form id="batch_update_form" class="form-horizontal" action="module.php" method="get">
+			<input type="hidden" name="mod" value="batch_update">
+			<input type="hidden" name="mod_action" value="admin_batch_update">
+			<input type="hidden" name="xref"   value="' . $this->xref . '">
+			<input type="hidden" name="action" value=""><?php // will be set by javascript for next update  ?>
+			<input type="hidden" name="data"   value=""><?php // will be set by javascript for next update  ?>
+			<div class="form-group">
+				<label class="control-label col-sm-3"><?php echo I18N::translate('Family tree') ?></label>
+				<div class="col-sm-9">
+		<?php echo FunctionsEdit::selectEditControl('ged', Tree::getNameList(), '', $WT_TREE->getName(), 'class="form-control" onchange="reset_reload();"') ?>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-3"><?php echo I18N::translate('Batch update') ?></label>
+				<div class="col-sm-9">
+					<select class="form-control" name="plugin" onchange="reset_reload();">
+						<?php if (!$this->plugin): ?>
+							<option value="" selected></option>
+						<?php endif; ?>
+						<?php foreach ($this->plugins as $class => $plugin): ?>
+							<option value="<?php echo $class ?>" <?php echo $this->plugin == $class ? 'selected' : ''; ?>><?php echo $plugin->getName(); ?></option>
+					<?php endforeach; ?>
+					</select>
+					<?php if ($this->PLUGIN): ?>
+						<p class="small text-muted"><?php echo $this->PLUGIN->getDescription() ?></p>
+		<?php endif; ?>
+				</div>
+			</div>
 
-		foreach ($this->plugins as $class => $plugin) {
-			$html .= '<option value="' . $class . '" ' . ($this->plugin == $class ? 'selected' : '') . '>' . $plugin->getName() . '</option>';
-		}
-		$html .= '</select>';
-		if ($this->PLUGIN) {
-			$html .= '<br><em>' . $this->PLUGIN->getDescription() . '</em>';
-		}
-		$html .= '</td></tr>';
+				<?php if (!Auth::user()->getPreference('auto_accept')): ?>
+				<div class="alert alert-danger">
+				<?php echo I18N::translate('Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time.'); ?>
+				</div>
+			<?php endif; ?>
 
-		if (!Auth::user()->getPreference('auto_accept')) {
-			$html .= '<tr><td colspan="2" class="warning">' . I18N::translate('Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time.') . '</td></tr>';
-		}
-
-		// If a plugin is selected, display the details
-		if ($this->PLUGIN) {
-			$html .= $this->PLUGIN->getOptionsForm();
-			if (substr($this->action, -4) == '_all') {
-				// Reset - otherwise we might "undo all changes", which refreshes the
-				// page, which makes them all again!
-				$html .= '<script>reset_reload();</script>';
-			} else {
-				if ($this->curr_xref) {
-					// Create an object, so we can get the latest version of the name.
-					$this->record = GedcomRecord::getInstance($this->curr_xref, $WT_TREE);
-
-					$html .=
-						'</table><table id="batch_update2"><tr><td>' .
-						self::createSubmitButton(I18N::translate('previous'), $this->prev_xref) .
-						self::createSubmitButton(I18N::translate('next'), $this->next_xref) .
-						'</td><th><a href="' . $this->record->getHtmlUrl() . '">' . $this->record->getFullName() . '</a>' .
-						'</th>' .
-						'</tr><tr><td valign="top">' .
-						'<br>' . implode('<br>', $this->PLUGIN->getActionButtons($this->curr_xref, $this->record)) . '<br>' .
-						'</td><td dir="ltr" align="left">' .
-						$this->PLUGIN->getActionPreview($this->record) .
-						'</td></tr>';
-				} else {
-					$html .= '<tr><td class="accepted" colspan=2>' . I18N::translate('Nothing found.') . '</td></tr>';
-				}
-			}
-		}
-		$html .= '</table></form>';
-
-		return $html;
+			<?php // If a plugin is selected, display the details ?>
+			<?php if ($this->PLUGIN): ?>
+				<?php echo $this->PLUGIN->getOptionsForm(); ?>
+				<?php if (substr($this->action, -4) == '_all'): ?>
+					<?php // Reset - otherwise we might "undo all changes", which refreshes the ?>
+					<?php // page, which makes them all again!  ?>
+					<script>reset_reload();</script>
+			<?php else: ?>
+					<hr>
+					<div id="batch_update2" class="col-sm-12">
+						<?php if ($this->curr_xref): ?>
+							<?php // Create an object, so we can get the latest version of the name. ?>
+								<?php $this->record = GedcomRecord::getInstance($this->curr_xref, $WT_TREE); ?>			
+							<div class="form-group">
+								<?php echo self::createSubmitButton(I18N::translate('previous'), $this->prev_xref) ?>
+					<?php echo self::createSubmitButton(I18N::translate('next'), $this->next_xref) ?>
+							</div>
+							<div class="form-group">
+								<a class="lead" href="<?php echo $this->record->getHtmlUrl(); ?>"><?php echo $this->record->getFullName(); ?></a>
+					<?php echo $this->PLUGIN->getActionPreview($this->record); ?>
+							</div>
+							<div class="form-group">
+							<?php echo implode(' ', $this->PLUGIN->getActionButtons($this->curr_xref, $this->record)); ?>
+							</div>
+						<?php else: ?>
+							<div class="alert alert-info"><?php echo I18N::translate('Nothing found.'); ?></div>
+					<?php endif; ?>
+					</div>
+				<?php endif; ?>
+		<?php endif; ?>
+		</form>
+		<?php
 	}
 
 	/**
@@ -375,7 +384,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	 */
 	public static function createSubmitButton($text, $xref, $action = '', $data = '') {
 		return
-			'<input type="submit" value="' . $text . '" onclick="' .
+			'<input class="btn btn-primary" type="submit" value="' . $text . '" onclick="' .
 			'this.form.xref.value=\'' . Filter::escapeHtml($xref) . '\';' .
 			'this.form.action.value=\'' . Filter::escapeHtml($action) . '\';' .
 			'this.form.data.value=\'' . Filter::escapeHtml($data) . '\';' .

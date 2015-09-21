@@ -15,18 +15,7 @@ class ScriptCakm extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '𑄶',
-			'1' => '𑄷',
-			'2' => '𑄸',
-			'3' => '𑄹',
-			'4' => '𑄺',
-			'5' => '𑄻',
-			'6' => '𑄼',
-			'7' => '𑄽',
-			'8' => '𑄾',
-			'9' => '𑄿',
-		);
+		return array('𑄶', '𑄷', '𑄸', '𑄹', '𑄺', '𑄻', '𑄼', '𑄽', '𑄾', '𑄿');
 	}
 
 	/** {@inheritdoc} */

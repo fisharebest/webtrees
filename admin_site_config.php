@@ -588,7 +588,7 @@ $controller->pageHeader();
 				<?php echo /* I18N: A site configuration setting */ I18N::translate('URL'); ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="PIWIK_URL" name="PIWIK_URL" value="<?php echo Filter::escapeHtml(Site::getPreference('PIWIK_URL')); ?>" placeholder="http://example.com/piwik/" maxlength="255">
+				<input type="text" class="form-control" id="PIWIK_URL" name="PIWIK_URL" value="<?php echo Filter::escapeHtml(Site::getPreference('PIWIK_URL')); ?>" placeholder="example.com/piwik" maxlength="255">
 				<p class="small text-muted">
 					<?php echo I18N::translate('Tracking and analytics are not added to the control panel.'); ?>
 				</p>

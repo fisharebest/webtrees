@@ -15,18 +15,7 @@ class ScriptNkoo extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '߀',
-			'1' => '߁',
-			'2' => '߂',
-			'3' => '߃',
-			'4' => '߄',
-			'5' => '߅',
-			'6' => '߆',
-			'7' => '߇',
-			'8' => '߈',
-			'9' => '߉',
-		);
+		return array('߀', '߁', '߂', '߃', '߄', '߅', '߆', '߇', '߈', '߉');
 	}
 
 	/** {@inheritdoc} */

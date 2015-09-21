@@ -145,7 +145,7 @@ case 'setup':
 	FunctionsPrint::initializeCalendarPopup();
 
 	echo '<div id="reportengine-page">
-		<form name="setupreport" method="get" action="reportengine.php" onsubmit="if (this.output[1].checked) {this.target=\'_blank\';}">
+		<form name="setupreport" method="get" action="reportengine.php">
 		<input type="hidden" name="action" value="run">
 		<input type="hidden" name="report" value="', Filter::escapeHtml($report), '">
 		<table class="facts_table width50">

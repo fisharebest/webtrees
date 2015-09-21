@@ -15,18 +15,7 @@ class ScriptLepc extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '᱀',
-			'1' => '᱁',
-			'2' => '᱂',
-			'3' => '᱃',
-			'4' => '᱄',
-			'5' => '᱅',
-			'6' => '᱆',
-			'7' => '᱇',
-			'8' => '᱈',
-			'9' => '᱉',
-		);
+		return array('᱀', '᱁', '᱂', '᱃', '᱄', '᱅', '᱆', '᱇', '᱈', '᱉');
 	}
 
 	/** {@inheritdoc} */

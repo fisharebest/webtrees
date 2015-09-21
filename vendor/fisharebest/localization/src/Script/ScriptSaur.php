@@ -15,18 +15,7 @@ class ScriptSaur extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '꣐',
-			'1' => '꣑',
-			'2' => '꣒',
-			'3' => '꣓',
-			'4' => '꣔',
-			'5' => '꣕',
-			'6' => '꣖',
-			'7' => '꣗',
-			'8' => '꣘',
-			'9' => '꣙',
-		);
+		return array('꣐', '꣑', '꣒', '꣓', '꣔', '꣕', '꣖', '꣗', '꣘', '꣙');
 	}
 
 	/** {@inheritdoc} */

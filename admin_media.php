@@ -288,7 +288,12 @@ case 'load_json':
 				$imgsize = getimagesize($thumb_path);
 				// We can’t create a URL (not in public_html) or use the media firewall (no such object)
 				// so just the base64-encoded image inline.
-				$img = '<img src="data:' . $imgsize['mime'] . ';base64,' . base64_encode(file_get_contents($thumb_path)) . '" class="thumbnail" ' . $imgsize[3] . '" style="max-width:100px;height:auto;">';
+				if ($imgsize === false) {
+					// not an image
+					$img = '-';
+				} else {
+					$img = '<img src="data:' . $imgsize['mime'] . ';base64,' . base64_encode(file_get_contents($thumb_path)) . '" class="thumbnail" ' . $imgsize[3] . '" style="max-width:100px;height:auto;">';
+				}
 			} catch (\ErrorException $ex) {
 				// Not an image, or not a valid image?
 				$img = '-';

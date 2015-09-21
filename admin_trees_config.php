@@ -753,7 +753,7 @@ $controller
 		<div class="col-sm-9">
 			<div class="row">
 				<!-- GEDCOM_ID_PREFIX -->
-				<div class="col-sm-4">
+				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="GEDCOM_ID_PREFIX">
 							<?php echo I18N::translate('Individual ID prefix'); ?>
@@ -770,7 +770,7 @@ $controller
 					</div>
 				</div>
 				<!-- FAM_ID_PREFIX -->
-				<div class="col-sm-4">
+				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="FAM_ID_PREFIX">
 							<?php echo I18N::translate('Family ID prefix'); ?>
@@ -787,7 +787,7 @@ $controller
 					</div>
 				</div>
 				<!-- SOURCE_ID_PREFIX -->
-				<div class="col-sm-4">
+				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="SOURCE_ID_PREFIX">
 							<?php echo I18N::translate('Source ID prefix'); ?>
@@ -804,7 +804,7 @@ $controller
 					</div>
 				</div>
 				<!-- REPO_ID_PREFIX -->
-				<div class="col-sm-4">
+				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="REPO_ID_PREFIX">
 							<?php echo I18N::translate('Repository ID prefix'); ?>
@@ -821,7 +821,7 @@ $controller
 					</div>
 				</div>
 				<!-- MEDIA_ID_PREFIX -->
-				<div class="col-sm-4">
+				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="MEDIA_ID_PREFIX">
 							<?php echo I18N::translate('Media ID prefix'); ?>
@@ -838,7 +838,7 @@ $controller
 					</div>
 				</div>
 				<!-- NOTE_ID_PREFIX -->
-				<div class="col-sm-4">
+				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="NOTE_ID_PREFIX">
 							<?php echo I18N::translate('Note ID prefix'); ?>

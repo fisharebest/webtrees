@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -138,29 +139,39 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 			'exact'     => I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
 			'words'     => I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
 			'wildcards' => I18N::translate('Use a “?” to match a single character, use “*” to match zero or more characters.'),
-			'regex'     => /* I18N: http://en.wikipedia.org/wiki/Regular_expression */ I18N::translate('Regular expressions are an advanced pattern matching technique.') . '<br>' . /* I18N: %s is a URL */ I18N::translate('See %s for more information.', '<a href="http://php.net/manual/regexp.reference.php" target="_blank">php.net/manual/regexp.reference.php</a>'),
+			'regex'     => /* I18N: http://en.wikipedia.org/wiki/Regular_expression */ I18N::translate('Regular expressions are an advanced pattern matching technique.') . '<br>' . /* I18N: %s is a URL */ I18N::translate('See %s for more information.', '<a href="http://php.net/manual/regexp.reference.php">php.net/manual/regexp.reference.php</a>'),
 		);
 
 		return
-			'<tr><th>' . I18N::translate('Search text/pattern') . '</th>' .
-			'<td>' .
-			'<input name="search" size="40" value="' . Filter::escapeHtml($this->search) .
+			'<div class="form-group">' .
+			'<label class="control-label col-sm-3">' . I18N::translate('Search text/pattern') . '</label>' .
+			'<div class="col-sm-9">' .
+			'<input class="form-control" name="search" size="40" value="' . Filter::escapeHtml($this->search) .
+			'" onchange="this.form.submit();">' .
+			'</div></div>' .
+			'<div class="form-group">' .
+			'<label class="control-label col-sm-3">' . I18N::translate('Replacement text') . '</label>' .
+			'<div class="col-sm-9">' .
+			'<input class="form-control" name="replace" size="40" value="' . Filter::escapeHtml($this->replace) .
 			'" onchange="this.form.submit();"></td></tr>' .
-			'<tr><th>' . I18N::translate('Replacement text') . '</th>' .
-			'<td>' .
-			'<input name="replace" size="40" value="' . Filter::escapeHtml($this->replace) .
-			'" onchange="this.form.submit();"></td></tr>' .
-			'<tr><th>' . I18N::translate('Search method') . '</th>' .
-			'<td><select name="method" onchange="this.form.submit();">' .
+			'</div></div>' .
+			'<div class="form-group">' .
+			'<label class="control-label col-sm-3">' . I18N::translate('Search method') . '</label>' .
+			'<div class="col-sm-9">' .
+			'<select class="form-control" name="method" onchange="this.form.submit();">' .
 			'<option value="exact" ' . ($this->method == 'exact' ? 'selected' : '') . '>' . I18N::translate('Exact text') . '</option>' .
 			'<option value="words" ' . ($this->method == 'words' ? 'selected' : '') . '>' . I18N::translate('Whole words only') . '</option>' .
 			'<option value="wildcards" ' . ($this->method == 'wildcards' ? 'selected' : '') . '>' . I18N::translate('Wildcards') . '</option>' .
 			'<option value="regex" ' . ($this->method == 'regex' ? 'selected' : '') . '>' . I18N::translate('Regular expression') . '</option>' .
-			'</select><br><em>' . $descriptions[$this->method] . '</em>' . $this->error . '</td></tr>' .
-			'<tr><th>' . I18N::translate('Case insensitive') . '</th>' .
-			'<td>' .
-			'<input type="checkbox" name="case" value="i" ' . ($this->case == 'i' ? 'checked' : '') . '" onchange="this.form.submit();">' .
-			'<br><em>' . I18N::translate('Tick this box to match both upper and lower case letters.') . '</em></td></tr>' .
+			'</select>' .
+			'<p class="small text-muted">' . $descriptions[$this->method] . '</p>' . $this->error .
+			'</div></div>' .
+			'<div class="form-group">' .
+			'<label class="control-label col-sm-3">' . I18N::translate('Case insensitive') . '</label>' .
+			'<div class="col-sm-9">' .
+			FunctionsEdit::radioButtons('case', array('I' => I18N::translate('no'), 'i' => I18N::translate('yes')), ($this->case ? 'i' : 'I'), 'class="radio-inline" onchange="this.form.submit();"') .
+			'<p class="small text-muted">' . I18N::translate('Tick this box to match both upper and lower case letters.') . '</p>' .
+			'</div></div>' .
 			parent::getOptionsForm();
 	}
 }

@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -951,6 +952,9 @@ class ReportParserGenerate extends ReportParserBase {
 					if (substr($value, 0, 6) == '<br>') {
 						$value = substr($value, 6);
 					}
+				}
+				if ($tag === 'NOTE' || $tag === 'TEXT') {
+					$value = Filter::formatText($value, $WT_TREE); // We'll strip HTML in addText()
 				}
 				$this->current_element->addText($value);
 			}

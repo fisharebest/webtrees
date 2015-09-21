@@ -176,7 +176,7 @@ case 'load_json':
 	$data = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($data as &$datum) {
 		$datum[2] = I18N::translate($datum[2]);
-		$datum[3] = '<a href="gedrecord.php?pid=' . $datum[3] . '&ged=' . $datum[7] . '" target="_blank">' . $datum[3] . '</a>';
+		$datum[3] = '<a href="gedrecord.php?pid=' . $datum[3] . '&ged=' . $datum[7] . '">' . $datum[3] . '</a>';
 		$datum[4] = '<div class="gedcom-data" dir="ltr">' . Filter::escapeHtml($datum[4]) . '</div>';
 		$datum[5] = '<div class="gedcom-data" dir="ltr">' . Filter::escapeHtml($datum[5]) . '</div>';
 		$datum[6] = Filter::escapeHtml($datum[6]);

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-25 17:10+0100\n"
+"PO-Revision-Date: 2015-09-08 17:25+0100\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -4797,7 +4797,7 @@ msgstr "Elhunytak"
 #: modules_v3/pedigree_report/report.xml:1370
 #: modules_v3/relative_ext_report/report.xml:62
 msgid "Death"
-msgstr "Elhalálozás"
+msgstr "Elhunyt"
 
 #: app/Stats.php:1680 statistics.php:542
 msgid "Death by country"
@@ -5923,7 +5923,7 @@ msgstr "Írja le, hogy miért folyamodik felhasználói fiókhoz."
 #: admin_site_change.php:344 admin_site_logs.php:310
 #: admin_trees_manage.php:591
 msgid "Export"
-msgstr "Kiment"
+msgstr "Adatmentés"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"

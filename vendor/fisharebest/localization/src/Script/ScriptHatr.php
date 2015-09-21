@@ -17,4 +17,9 @@ class ScriptHatr extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '127';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Hatran';
+	}
 }

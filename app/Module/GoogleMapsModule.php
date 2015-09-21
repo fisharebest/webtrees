@@ -238,7 +238,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$this->setSetting('GM_PH_XSIZE', Filter::post('GM_PH_XSIZE'));
 			$this->setSetting('GM_PH_YSIZE', Filter::post('GM_PH_YSIZE'));
 			$this->setSetting('GM_PH_MARKER', Filter::post('GM_PH_MARKER'));
-			$this->setSetting('GM_DISP_SHORT_PLACE', Filter::post('GM_DISP_SHORT_PLACE'));
 			$this->setSetting('GM_PREFIX_1', Filter::post('GM_PREFIX_1'));
 			$this->setSetting('GM_PREFIX_2', Filter::post('GM_PREFIX_2'));
 			$this->setSetting('GM_PREFIX_3', Filter::post('GM_PREFIX_3'));
@@ -469,17 +468,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									<option value="G_DEFAULT_ICON" <?php if ($this->getSetting('GM_PH_MARKER') == "G_DEFAULT_ICON") echo "selected"; ?>><?php echo I18N::translate('Standard'); ?></option>
 									<option value="G_FLAG" <?php if ($this->getSetting('GM_PH_MARKER') == "G_FLAG") echo "selected"; ?>><?php echo I18N::translate('Flag'); ?></option>
 								</select>
-							</td>
-						</tr>
-						<tr>
-							<th>
-								<?php echo I18N::translate('Display short placenames'); ?>
-							</th>
-							<td>
-								<?php echo FunctionsEdit::editFieldYesNo('GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE'), 'class="radio-inline"'); ?>
-								<p class="small text-muted">
-									<?php echo I18N::translate('Hide the flags that are configured in the googlemap module.  Usually these are for countries and states.  This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot.'); ?>
-								</p>
 							</td>
 						</tr>
 						<tr>
@@ -1612,7 +1600,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		while ($x < $i) {
 			$levels                 = explode(",", $place_list[$x]);
 			$parts                  = count($levels);
-			if ($parts > $max) $max = $parts;
+			if ($parts > $max) {
+				$max = $parts;
+			}
 			$x++; }
 		$x = 0;
 
@@ -2786,10 +2776,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @param string[] $parent
 	 * @param int      $levelm
 	 * @param string   $linklevels
-	 * @param string   $placelevels
-	 * @param bool     $lastlevel
 	 */
-	private function printGoogleMapMarkers($place2, $level, $parent, $levelm, $linklevels, $placelevels, $lastlevel = false) {
+	private function printGoogleMapMarkers($place2, $level, $parent, $levelm, $linklevels) {
 		if (!$place2['lati'] || !$place2['long']) {
 			echo 'var icon_type = new google.maps.MarkerImage();';
 			echo 'icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
@@ -2797,52 +2785,23 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo 'icon_type.iconSize = google.maps.Size(20, 34);';
 			echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
 			echo 'var point = new google.maps.LatLng(0, 0);';
-			if ($lastlevel)
-				echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "'><br>";
-			else {
-				echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "&amp;parent[{$level}]=";
-				if ($place2['place'] == "Unknown") echo "'><br>";
-				else echo addslashes($place2['place']), "'><br>";
+			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "&amp;parent[{$level}]=";
+			if ($place2['place'] == "Unknown") {
+				echo "'><br>";
+			} else {
+				echo addslashes($place2['place']), "'><br>";
 			}
 			if (($place2['icon'] !== null) && ($place2['icon'] !== '')) {
 				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 			}
-			if ($lastlevel) {
-				if ($place2['place'] == 'Unknown') {
-					if (!$this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo addslashes(substr($placelevels, 2));
-					} else {
-						echo I18N::translate('unknown');
-					}
-				} else {
-					if (!$this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo addslashes(substr($placelevels, 2));
-					} else {
-						echo addslashes($place2['place']);
-					}
-				}
+			if ($place2['place'] == 'Unknown') {
+					echo I18N::translate('unknown');
 			} else {
-				if ($place2['place'] == 'Unknown') {
-					if (!$this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo addslashes(I18N::translate('unknown') . $placelevels);
-					} else {
-						echo I18N::translate('unknown');
-					}
-				} else {
-					if (!$this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo addslashes($place2['place'] . $placelevels);
-					} else {
-						echo addslashes($place2['place']);
-					}
-				}
+				echo addslashes($place2['place']);
 			}
 			echo '</a>';
-			if ($lastlevel) {
-				$this->printHowManyPeople($level, $parent);
-			} else {
-				$parent[$level] = $place2['place'];
-				$this->printHowManyPeople($level + 1, $parent);
-			}
+			$parent[$level] = $place2['place'];
+			$this->printHowManyPeople($level + 1, $parent);
 			echo '<br>', I18N::translate('This place has no coordinates');
 			if (Auth::isAdmin())
 				echo "<br><a href='module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=", $levelm, "&amp;display=inactive'>", I18N::translate('Geographic data'), "</a>";
@@ -2871,52 +2830,22 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 			echo 'var point = new google.maps.LatLng(', $lati, ', ', $long, ');';
 			echo 'var marker = createMarker(point, "<div class=\"iwstyle\" style=\"width: 250px;\"><a href=\"?action=find', $linklevels;
-			if (!$lastlevel) {
-				echo '&amp;parent[', $level, ']=';
-				if ($place2['place'] !== 'Unknown') {
-					echo Filter::escapeJs($place2['place']);
-				}
+			echo '&amp;parent[', $level, ']=';
+			if ($place2['place'] !== 'Unknown') {
+				echo Filter::escapeJs($place2['place']);
 			}
 			echo '\"><br>';
 			if ($place2['icon'] !== null && $place2['icon'] !== '') {
 				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 			}
-			if ($lastlevel) {
 				if ($place2['place'] === 'Unknown') {
-					if ($this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo I18N::translate('unknown');
-					} else {
-						echo Filter::escapeJs(substr($placelevels, 2));
-					}
+					echo I18N::translate('unknown');
 				} else {
-					if ($this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo Filter::escapeJs($place2['place']);
-					} else {
-						echo Filter::escapeJs(substr($placelevels, 2));
-					}
+					echo Filter::escapeJs($place2['place']);
 				}
-			} else {
-				if ($place2['place'] === 'Unknown') {
-					if ($this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo I18N::translate('unknown');
-					} else {
-						echo Filter::escapeJs(I18N::translate('unknown') . $placelevels);
-					}
-				} else {
-					if ($this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo Filter::escapeJs($place2['place']);
-					} else {
-						echo Filter::escapeJs($place2['place'] . $placelevels);
-					}
-				}
-			}
 			echo '</a>';
-			if ($lastlevel) {
-				$this->printHowManyPeople($level, $parent);
-			} else {
-				$parent[$level] = $place2['place'];
-				$this->printHowManyPeople($level + 1, $parent);
-			}
+			$parent[$level] = $place2['place'];
+			$this->printHowManyPeople($level + 1, $parent);
 			echo '<br><br>';
 			if ($this->getSetting('GM_COORD')) {
 				echo '', $place2['lati'], ', ', $place2['long'];
@@ -2932,10 +2861,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @param int      $level
 	 * @param string[] $parent
 	 * @param string   $linklevels
-	 * @param string   $placelevels
 	 * @param string[] $place_names
 	 */
-	public function mapScripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names) {
+	public function mapScripts($numfound, $level, $parent, $linklevels, $place_names) {
 		global $plzoom, $controller;
 
 		$controller->addInlineJavascript('
@@ -3061,7 +2989,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		');
 
 		$levelm                           = $this->setLevelMap($level, $parent);
-		if (isset($levelo[0])) $levelo[0] = 0;
+		if (isset($levelo[0])) {
+			$levelo[0] = 0;
+		}
 		$numls                            = count($parent) - 1;
 		$levelo                           = $this->checkWhereAmI($numls, $levelm);
 		if ($numfound < 2 && ($level == 1 || !isset($levelo[$level - 1]))) {
@@ -3088,14 +3018,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					array_pop($thisloc);
 					$thislevel      = $level - 1;
 					$thislinklevels = substr($linklevels, 0, strrpos($linklevels, '&amp;'));
-					if (strpos($placelevels, ',', 1)) {
-						$thisplacelevels = substr($placelevels, strpos($placelevels, ',', 1));
-					} else {
-						// this is the top level, remove everything
-						$thisplacelevels = '';
-					}
 
-					$this->printGoogleMapMarkers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels, $thisplacelevels);
+					$this->printGoogleMapMarkers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels);
 				}
 			}
 		}
@@ -3106,7 +3030,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$thisloc                         = $parent;
 			$thisloc[]                       = $placename;
 			$this_levelm                     = $this->setLevelMap($level + 1, $thisloc);
-			if ($this_levelm) $placeidlist[] = $this_levelm;
+			if ($this_levelm) {
+				$placeidlist[] = $this_levelm;
+			}
 		}
 
 		if ($placeidlist) {
@@ -3127,7 +3053,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				->fetchAll(PDO::FETCH_ASSOC);
 
 			foreach ($placelist as $place) {
-				$this->printGoogleMapMarkers($place, $level, $parent, $place['place_id'], $linklevels, $placelevels);
+				$this->printGoogleMapMarkers($place, $level, $parent, $place['place_id'], $linklevels);
 			}
 		}
 		$controller->addInlineJavascript(ob_get_clean());
@@ -4110,20 +4036,38 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		if ($action == 'ExportFile' && Auth::isAdmin()) {
 			$tmp                         = $this->placeIdToHierarchy($parent);
 			$maxLevel                    = $this->getHighestLevel();
-			if ($maxLevel > 8) $maxLevel = 8;
+			if ($maxLevel > 8) {
+				$maxLevel = 8;
+			}
 			$tmp[0]                      = 'places';
 			$outputFileName              = preg_replace('/[:;\/\\\(\)\{\}\[\] $]/', '_', implode('-', $tmp)) . '.csv';
 			header('Content-Type: application/octet-stream');
 			header('Content-Disposition: attachment; filename="' . $outputFileName . '"');
 			echo '"', I18N::translate('Level'), '";"', I18N::translate('Country'), '";';
-			if ($maxLevel > 0) echo '"', I18N::translate('State'), '";';
-			if ($maxLevel > 1) echo '"', I18N::translate('County'), '";';
-			if ($maxLevel > 2) echo '"', I18N::translate('City'), '";';
-			if ($maxLevel > 3) echo '"', I18N::translate('Place'), '";';
-			if ($maxLevel > 4) echo '"', I18N::translate('Place'), '";';
-			if ($maxLevel > 5) echo '"', I18N::translate('Place'), '";';
-			if ($maxLevel > 6) echo '"', I18N::translate('Place'), '";';
-			if ($maxLevel > 7) echo '"', I18N::translate('Place'), '";';
+			if ($maxLevel > 0) {
+				echo '"', I18N::translate('State'), '";';
+			}
+			if ($maxLevel > 1) {
+				echo '"', I18N::translate('County'), '";';
+			}
+			if ($maxLevel > 2) {
+				echo '"', I18N::translate('City'), '";';
+			}
+			if ($maxLevel > 3) {
+				echo '"', I18N::translate('Place'), '";';
+			}
+			if ($maxLevel > 4) {
+				echo '"', I18N::translate('Place'), '";';
+			}
+			if ($maxLevel > 5) {
+				echo '"', I18N::translate('Place'), '";';
+			}
+			if ($maxLevel > 6) {
+				echo '"', I18N::translate('Place'), '";';
+			}
+			if ($maxLevel > 7) {
+				echo '"', I18N::translate('Place'), '";';
+			}
 			echo '"', I18N::translate('Longitude'), '";"', I18N::translate('Latitude'), '";';
 			echo '"', I18N::translate('Zoom level'), '";"', I18N::translate('Icon'), '";', WT_EOL;
 			$this->outputLevel($parent);
@@ -4183,8 +4127,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									$placelist[$j]['lati'] = 'N' . $placelist[$j]['lati'];
 								}
 							}
+						} else {
+							$placelist[$j]['lati'] = null;
 						}
-						else $placelist[$j]['lati'] = null;
 						if (preg_match("/4 LONG (.*)/", $placerec, $match)) {
 							$placelist[$j]['long'] = trim($match[1]);
 							if (($placelist[$j]['long'][0] != 'E') && ($placelist[$j]['long'][0] != 'W')) {
@@ -4194,8 +4139,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									$placelist[$j]['long'] = 'E' . $placelist[$j]['long'];
 								}
 							}
+						} else {
+							$placelist[$j]['long'] = null;
 						}
-						else $placelist[$j]['long'] = null;
 						$j                          = $j + 1;
 					}
 					$i        = $i + 1;
@@ -4352,7 +4298,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$maxLevel     = 0;
 			foreach ($lines as $p => $placerec) {
 				$fieldrec                               = explode(';', $placerec);
-				if ($fieldrec[0] > $maxLevel) $maxLevel = $fieldrec[0];
+				if ($fieldrec[0] > $maxLevel) {
+					$maxLevel = $fieldrec[0];
+				}
 			}
 			$fields   = count($fieldrec);
 			$set_icon = true;
@@ -4365,7 +4313,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$placelist[$j]          = array();
 					$placelist[$j]['place'] = '';
 					for ($ii = $fields - 4; $ii > 1; $ii--) {
-						if ($fieldrec[0] > $ii - 2) $placelist[$j]['place'] .= $fieldrec[$ii] . ',';
+						if ($fieldrec[0] > $ii - 2) {
+							$placelist[$j]['place'] .= $fieldrec[$ii] . ',';
+						}
 					}
 					foreach ($country_names as $countrycode => $countryname) {
 						if ($countrycode == strtoupper($fieldrec[1])) {

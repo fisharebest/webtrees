@@ -15,18 +15,7 @@ class ScriptLaoo extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '໐',
-			'1' => '໑',
-			'2' => '໒',
-			'3' => '໓',
-			'4' => '໔',
-			'5' => '໕',
-			'6' => '໖',
-			'7' => '໗',
-			'8' => '໘',
-			'9' => '໙',
-		);
+		return array('໐', '໑', '໒', '໓', '໔', '໕', '໖', '໗', '໘', '໙');
 	}
 
 	/** {@inheritdoc} */

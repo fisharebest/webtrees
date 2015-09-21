@@ -15,18 +15,7 @@ class ScriptTalu extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '᧐',
-			'1' => '᧑',
-			'2' => '᧒',
-			'3' => '᧓',
-			'4' => '᧔',
-			'5' => '᧕',
-			'6' => '᧖',
-			'7' => '᧗',
-			'8' => '᧘',
-			'9' => '᧙',
-		);
+		return array('᧐', '᧑', '᧒', '᧓', '᧔', '᧕', '᧖', '᧗', '᧘', '᧙');
 	}
 
 	/** {@inheritdoc} */

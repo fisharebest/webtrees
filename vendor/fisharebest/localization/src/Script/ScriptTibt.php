@@ -15,18 +15,7 @@ class ScriptTibt extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function numerals() {
-		return array(
-			'0' => '༠',
-			'1' => '༡',
-			'2' => '༢',
-			'3' => '༣',
-			'4' => '༤',
-			'5' => '༥',
-			'6' => '༦',
-			'7' => '༧',
-			'8' => '༨',
-			'9' => '༩',
-		);
+		return array('༠', '༡', '༢', '༣', '༤', '༥', '༦', '༧', '༨', '༩');
 	}
 
 	/** {@inheritdoc} */
