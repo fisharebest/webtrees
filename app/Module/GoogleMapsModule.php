@@ -4126,6 +4126,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</a>
 			</li>
 		</ul>
+		
+		<h2><?php echo I18N::translate('Geographic data'); ?></h2>
 		<?php
 
 		if ($action == 'ImportGedcom') {
@@ -4252,46 +4254,87 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$placefiles = $this->findFiles(WT_MODULES_DIR . 'googlemap/extra');
 			sort($placefiles);
 		?>
-		<form method="post" enctype="multipart/form-data" id="importfile" name="importfile" action="module.php?mod=googlemap&amp;mod_action=admin_places&amp;action=ImportFile2">
-			<table class="gm_plac_edit">
-				<tr>
-					<th><?php echo I18N::translate('File containing places (CSV)'); ?></th>
-					<td><input type="file" name="placesfile" size="50"></td>
-				</tr>
-				<?php if (count($placefiles) > 0) { ?>
-				<tr>
-					<th>
-						<?php echo I18N::translate('Server file containing places (CSV)'); ?>
-					</th>
-					<td>
-						<select name="localfile">
-							<option></option>
-							<?php foreach ($placefiles as $p => $placefile) { ?>
-							<option value="<?php echo Filter::escapeHtml($placefile); ?>"><?php
-								if (substr($placefile, 0, 1) == "/") echo substr($placefile, 1);
-								else echo $placefile; ?></option>
-							<?php } ?>
-						</select>
-						<p class="small text-muted">
-							<?php echo I18N::translate('Select a file from the list of files already on the server which contains the place locations in CSV format.'); ?>
-						</p>
-					</td>
-				</tr>
-				<?php } ?>
-				<tr>
-					<th><?php echo I18N::translate('Delete all existing geographic data before importing the file.'); ?></th>
-					<td><input type="checkbox" name="cleardatabase"></td>
-				</tr>
-				<tr>
-					<th><?php echo I18N::translate('Do not create new locations, just import coordinates for existing locations.'); ?></th>
-					<td><input type="checkbox" name="updateonly"></td>
-				</tr>
-				<tr>
-					<th><?php echo I18N::translate('Overwrite existing coordinates.'); ?></th>
-					<td><input type="checkbox" name="overwritedata"></td>
-				</tr>
-			</table>
-			<input id="savebutton" type="submit" value="<?php echo I18N::translate('Continue adding'); ?>"><br>
+		<form class="form-horizontal" method="post" enctype="multipart/form-data" id="importfile" name="importfile" action="module.php?mod=googlemap&amp;mod_action=admin_places&amp;action=ImportFile2">
+			
+			<!-- PLACES FILE -->
+			<div class="form-group">
+				<label class="control-label col-sm-4" for="placesfile">
+					<?php echo I18N::translate('File containing places (CSV)'); ?>
+				</label>
+				<div class="col-sm-8">
+					<div class="btn btn-default">
+					<input id="placesfile" type="file" name="placesfile">
+					</div>
+				</div>
+			</div>
+			
+			<!-- LOCAL FILE -->
+			<?php if (count($placefiles) > 0): ?>
+			<div class="form-group">
+				<label class="control-label col-sm-4" for="localfile">
+					<?php echo I18N::translate('Server file containing places (CSV)'); ?>
+				</label>
+				<div class="col-sm-8">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<?php echo WT_MODULES_DIR . 'googlemap/extra/'; ?>
+						</span>
+						<?php
+						foreach ($placefiles as $p => $placefile) {
+							unset($placefiles[$p]);
+							$p = Filter::escapeHtml($placefile);
+							if (substr($placefile, 0, 1) == "/") {
+								$placefiles[$p] = substr($placefile, 1);
+							} else {
+								$placefiles[$p] = $placefile;
+							}
+						}
+						echo FunctionsEdit::selectEditControl('localfile', $placefiles, '', '', 'class="form-control"');
+						?>
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
+			
+			<!-- CLEAR DATABASE -->
+			<fieldset class="form-group">
+				<legend class="control-label col-sm-4">
+					<?php echo I18N::translate('Delete all existing geographic data before importing the file.'); ?>
+				</legend>
+				<div class="col-sm-8">
+					<?php echo FunctionsEdit::editFieldYesNo('cleardatabase', 0, 'class="radio-inline"'); ?>
+				</div>
+			</fieldset>
+			
+			<!-- UPDATE ONLY -->
+			<fieldset class="form-group">
+				<legend class="control-label col-sm-4">
+					<?php echo I18N::translate('Do not create new locations, just import coordinates for existing locations.'); ?>
+				</legend>
+				<div class="col-sm-8">
+					<?php echo FunctionsEdit::editFieldYesNo('updateonly', 0, 'class="radio-inline"'); ?>
+				</div>
+			</fieldset>
+			
+			<!-- OVERWRITE DATA -->
+			<fieldset class="form-group">
+				<legend class="control-label col-sm-4">
+					<?php echo I18N::translate('Overwrite existing coordinates.'); ?>
+				</legend>
+				<div class="col-sm-8">
+					<?php echo FunctionsEdit::editFieldYesNo('overwritedata', 0, 'class="radio-inline"'); ?>
+				</div>
+			</fieldset>
+			
+			<!-- SAVE BUTTON -->
+			<div class="form-group">
+				<div class="col-sm-offset-4 col-sm-8">
+					<button type="submit" class="btn btn-primary">
+						<i class="fa fa-check"></i>
+						<?php echo I18N::translate('Continue adding'); ?>
+					</button>
+				</div>
+			</div>
 		</form>
 		<?php
 			exit;
