@@ -17,4 +17,12 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Theme\ColorsTheme;
 
-return new ColorsTheme;
+class ColorsLinks extends ColorsTheme {
+    public function hookHeaderExtraContent() {
+        return
+        '<link rel="shortcut icon" href="' . $this->assetUrl() .'favicon.png" type="image/png" />' .
+        '<link rel="icon" type="image/png" href="' . $this->assetUrl() .'favicon192.png" sizes="192x192">' .
+        '<link rel="apple-touch-icon" sizes="180x180" href="' . $this->assetUrl() .'favicon180.png">';
+    }
+}
+return new ColorsLinks;
