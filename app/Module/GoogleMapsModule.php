@@ -4346,7 +4346,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			foreach ($stats->iso3166() as $key => $value) {
 				$country_names[$key] = I18N::translate($key);
 			}
-			if (isset($_POST['cleardatabase'])) {
+			if (Filter::postBool('cleardatabase')) {
 				Database::exec("DELETE FROM `##placelocation` WHERE 1=1");
 			}
 			if (!empty($_FILES['placesfile']['tmp_name'])) {
@@ -4451,7 +4451,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						->execute(array($i, $parent_id, $escparent))
 						->fetchOneRow();
 					if (empty($row)) {       // this name does not yet exist: create entry
-						if (!isset($_POST['updateonly'])) {
+						if (!Filter::postBool('updateonly')) {
 							$highestIndex = $highestIndex + 1;
 							if (($i + 1) == count($parent)) {
 								$zoomlevel = $place['zoom'];
@@ -4484,7 +4484,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						}
 					} else {
 						$parent_id = $row->pl_id;
-						if (Filter::post('overwritedata') && ($i + 1 == count($parent))) {
+						if (Filter::postBool('overwritedata') && ($i + 1 == count($parent))) {
 							Database::prepare("UPDATE `##placelocation` SET pl_lati = ?, pl_long = ?, pl_zoom = ?, pl_icon = ? WHERE pl_id = ?")
 								->execute(array($place['lati'], $place['long'], $place['zoom'], $place['icon'], $parent_id));
 						} else {
