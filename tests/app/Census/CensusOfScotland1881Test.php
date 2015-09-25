@@ -23,11 +23,34 @@ namespace Fisharebest\Webtrees\Census;
 class CensusOfScotland1881Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfScotland1881
 	 */
 	public function testPlaceAndDate() {
 		$census = new CensusOfScotland1881;
 
 		$this->assertSame('Scotland', $census->censusPlace());
 		$this->assertSame('03 MAR 1881', $census->censusDate());
+	}
+
+	/**
+	 * Test the census columns
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfScotland1881
+	 */
+	public function testColumns() {
+		$census  = new CensusOfScotland1881;
+		$columns = $census->columns();
+
+		$this->assertCount(9, $columns);
+		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[1]);
+		$this->assertInstanceOf(CensusColumnCondition::class, $columns[2]);
+		$this->assertInstanceOf(CensusColumnAgeMale::class, $columns[3]);
+		$this->assertInstanceOf(CensusColumnAgeFemale::class, $columns[4]);
+		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[5]);
+		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[6]);
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[7]); // Infirm, etc.
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[8]); // Rooms with windows.
 	}
 }

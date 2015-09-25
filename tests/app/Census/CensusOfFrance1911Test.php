@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees\Census;
 class CensusOfFrance1911Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfFrance1911
 	 */
 	public function testPlaceAndDate() {
 		$census = new CensusOfFrance1911;

@@ -23,11 +23,31 @@ namespace Fisharebest\Webtrees\Census;
 class CensusOfDenmark1787Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfDenmark1787
 	 */
 	public function testPlaceAndDate() {
 		$census = new CensusOfDenmark1787;
 
 		$this->assertSame('Danmark', $census->censusPlace());
 		$this->assertSame('01 JUL 1787', $census->censusDate());
+	}
+
+	/**
+	 * Test the census columns
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfDenmark1787
+	 */
+	public function testColumns() {
+		$census  = new CensusOfDenmark1787;
+		$columns = $census->columns();
+
+		$this->assertCount(6, $columns);
+		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+		$this->assertInstanceOf(CensusColumnAge::class, $columns[1]);
+		$this->assertInstanceOf(CensusColumnCondition::class, $columns[2]);
+		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[3]);
+		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[4]);
+		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[5]);
 	}
 }

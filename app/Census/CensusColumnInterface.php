@@ -15,12 +15,27 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
 /**
  * Definitions for a census column
  */
 interface CensusColumnInterface {
+	/**
+	 * A short version of the column's name.
+	 *
+	 * @return string
+	 */
+	public function abbreviation();
+
+	/**
+	 * When did this census occur
+	 *
+	 * @return Date
+	 */
+	public function date();
+
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
@@ -29,4 +44,18 @@ interface CensusColumnInterface {
 	 * @return string
 	 */
 	public function generate(Individual $individual);
+
+	/**
+	 * Where did this census occur
+	 *
+	 * @return string
+	 */
+	public function place();
+
+	/**
+	 * The full version of the column's name.
+	 *
+	 * @return string
+	 */
+	public function title();
 }

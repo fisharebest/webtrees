@@ -31,7 +31,7 @@ class CensusColumnBornForeignParts extends AbstractCensusColumn implements Censu
 	public function generate(Individual $individual) {
 		$birth_place = explode(', ', $individual->getBirthPlace());
 		$birth_place = end($birth_place);
-		$census_place = $this->census->censusPlace();
+		$census_place = $this->place();
 
 		if ($birth_place === 'Wales') {
 			$birth_place = 'England';

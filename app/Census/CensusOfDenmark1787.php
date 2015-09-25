@@ -37,10 +37,12 @@ class CensusOfDenmark1787 extends CensusOfDenmark implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this),
-			new CensusColumnAgeMale5Years($this),
-			new CensusColumnAgeFemale5Years($this),
-			new CensusColumnOccupation($this),
+			new CensusColumnFullName($this, '', ''),
+			new CensusColumnAge($this, '', ''),
+			new CensusColumnCondition($this, '', ''),
+			new CensusColumnRelationToHead($this, '', ''),
+			new CensusColumnOccupation($this, '', ''),
+			new CensusColumnBirthPlace($this, '', ''),
 		);
 	}
 }

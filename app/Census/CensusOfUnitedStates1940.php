@@ -37,7 +37,7 @@ class CensusOfUnitedStates1940 extends CensusOfUnitedStates implements CensusInt
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this),
+			new CensusColumnFullName($this, '', ''),
 		);
 	}
 }

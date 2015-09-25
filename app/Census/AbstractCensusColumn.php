@@ -21,16 +21,35 @@ use Fisharebest\Webtrees\Date;
  * Definitions for a census column
  */
 class AbstractCensusColumn {
-	/** @var CensusInterface - the place where the census took place */
-	protected $census;
+	/** @var CensusInterface */
+	private $census;
+
+	/** @var string */
+	private $abbr;
+
+	/** @var string */
+	private $title;
 
 	/**
 	 * Create a column for a census
 	 *
-	 * @param CensusInterface $census
+	 * @param CensusInterface $census - The census to which this column forms part.
+	 * @param string          $abbr   - The abbrievated on-screen name "BiC"
+	 * @param string          $title  - The full column heading "Born in the county"
 	 */
-	public function __construct(CensusInterface $census) {
+	public function __construct(CensusInterface $census, $abbr, $title) {
 		$this->census = $census;
+		$this->abbr   = $abbr;
+		$this->title  = $title;
+	}
+
+	/**
+	 * A short version of the column's name.
+	 *
+	 * @return string
+	 */
+	public function abbreviation() {
+		return $this->abbr;
 	}
 
 	/**
@@ -45,9 +64,18 @@ class AbstractCensusColumn {
 	/**
 	 * Where did this census occur
 	 *
-	 * @return Date
+	 * @return string
 	 */
 	public function place() {
 		return $this->census->censusPlace();
+	}
+
+	/**
+	 * The full version of the column's name.
+	 *
+	 * @return string
+	 */
+	public function title() {
+		return $this->title;
 	}
 }

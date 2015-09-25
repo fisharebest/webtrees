@@ -23,11 +23,37 @@ namespace Fisharebest\Webtrees\Census;
 class CensusOfUnitedStates1860Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfUnitedStates1860
 	 */
 	public function testPlaceAndDate() {
 		$census = new CensusOfUnitedStates1860;
 
 		$this->assertSame('United States', $census->censusPlace());
 		$this->assertSame('BET JUN 1860 AND OCT 1860', $census->censusDate());
+	}
+
+	/**
+	 * Test the census columns
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfUnitedStates1860
+	 */
+	public function testColumns() {
+		$census  = new CensusOfUnitedStates1860;
+		$columns = $census->columns();
+
+		$this->assertCount(12, $columns);
+		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+		$this->assertInstanceOf(CensusColumnAge::class, $columns[1]);
+		$this->assertInstanceOf(CensusColumnSexMF::class, $columns[2]);
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[3]);
+		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[4]);
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[5]);
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[6]);
+		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[7]);
+		$this->assertInstanceOf(CensusColumnMarriedWithinOneYear::class, $columns[8]);
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[9]);
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[10]);
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[11]);
 	}
 }

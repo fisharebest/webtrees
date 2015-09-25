@@ -37,7 +37,17 @@ class CensusOfUnitedStates1850 extends CensusOfUnitedStates implements CensusInt
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this),
+			new CensusColumnFullName($this, '', ''),
+			new CensusColumnAge($this, '', ''),
+			new CensusColumnSexMF($this, '', ''),
+			new CensusColumnNull($this, '', ''), // Race
+			new CensusColumnOccupation($this, '', ''),
+			new CensusColumnNull($this, '', ''), // Value of real estate owned
+			new CensusColumnBirthPlace($this, '', ''),
+			new CensusColumnMarriedWithinOneYear($this, '', ''),
+			new CensusColumnNull($this, '', ''), // Attended school within year
+			new CensusColumnNull($this, '', ''), // Illiterate
+			new CensusColumnNull($this, '', ''), // Infirm
 		);
 	}
 }

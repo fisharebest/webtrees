@@ -1,5 +1,4 @@
 <?php
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -14,20 +13,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
-/**
- * Test harness for the class CensusOfUnitedStates1800
- */
-class CensusOfUnitedStates1800Test extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Test the census place and date
-	 */
-	public function testPlaceAndDate() {
-		$census = new CensusOfUnitedStates1800;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Individual;
 
-		$this->assertSame('United States', $census->censusPlace());
-		$this->assertSame('04 AUG 1800', $census->censusDate());
+/**
+ * Did the individual marry within the last year.
+ */
+class CensusColumnMarriedWithinOneYear extends AbstractCensusColumn implements CensusColumnInterface {
+	/**
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return string
+	 */
+	public function generate(Individual $individual) {
+		return '';
 	}
 }

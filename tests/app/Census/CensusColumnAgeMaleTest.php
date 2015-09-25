@@ -44,7 +44,7 @@ class CensusColumnAgeMaleTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
 
-		$column = new CensusColumnAgeMale($census);
+		$column = new CensusColumnAgeMale($census, '', '');
 
 		$this->assertSame('32', $column->generate($individual));
 	}
@@ -59,7 +59,7 @@ class CensusColumnAgeMaleTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock(CensusInterface::class);
 
-		$column = new CensusColumnAgeMale($census);
+		$column = new CensusColumnAgeMale($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}
@@ -76,7 +76,7 @@ class CensusColumnAgeMaleTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
 
-		$column = new CensusColumnAgeMale($census);
+		$column = new CensusColumnAgeMale($census, '', '');
 
 		$this->assertSame('32', $column->generate($individual));
 	}
@@ -93,7 +93,7 @@ class CensusColumnAgeMaleTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1800');
 
-		$column = new CensusColumnAgeMale($census);
+		$column = new CensusColumnAgeMale($census, '', '');
 
 		$this->assertSame('0', $column->generate($individual));
 	}

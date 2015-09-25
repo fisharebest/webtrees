@@ -37,7 +37,14 @@ class CensusOfWales1871 extends CensusOfWales implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this),
+			new CensusColumnFullName($this, '', ''),
+			new CensusColumnRelationToHead($this, '', ''),
+			new CensusColumnCondition($this, '', ''),
+			new CensusColumnAgeMale($this, '', ''),
+			new CensusColumnAgeFemale($this, '', ''),
+			new CensusColumnOccupation($this, '', ''),
+			new CensusColumnBirthPlace($this, '', ''),
+			new CensusColumnNull($this, '', ''), // Infirm, etc.
 		);
 	}
 }

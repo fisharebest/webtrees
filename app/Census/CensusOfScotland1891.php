@@ -37,7 +37,19 @@ class CensusOfScotland1891 extends CensusOfScotland implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this),
+			new CensusColumnFullName($this, '', ''),
+			new CensusColumnRelationToHead($this, '', ''),
+			new CensusColumnCondition($this, '', ''),
+			new CensusColumnAgeMale($this, '', ''),
+			new CensusColumnAgeFemale($this, '', ''),
+			new CensusColumnOccupation($this, '', ''),
+			new CensusColumnNull($this, '', ''), // Employer.
+			new CensusColumnNull($this, '', ''), // Employed.
+			new CensusColumnNull($this, '', ''), // Own account.
+			new CensusColumnBirthPlace($this, '', ''),
+			new CensusColumnNull($this, '', ''), // Language spoken.
+			new CensusColumnNull($this, '', ''), // Infirm, etc.
+			new CensusColumnNull($this, '', ''), // Rooms with windows.
 		);
 	}
 }

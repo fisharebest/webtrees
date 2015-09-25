@@ -42,7 +42,7 @@ class CensusColumnFullNameTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock(CensusInterface::class);
 
-		$column = new CensusColumnFullName($census);
+		$column = new CensusColumnFullName($census, '', '');
 
 		$this->assertSame('Joe Bloggs', $column->generate($individual));
 	}

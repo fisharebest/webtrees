@@ -37,7 +37,22 @@ class CensusOfEngland1911 extends CensusOfEngland implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this),
+			new CensusColumnFullName($this, '', ''),
+			new CensusColumnRelationToHead($this, '', ''),
+			new CensusColumnAgeMale($this, '', ''),
+			new CensusColumnAgeFemale($this, '', ''),
+			new CensusColumnCondition($this, '', ''),
+			new CensusColumnYearsMarried($this, '', ''),
+			new CensusColumnChildrenBornAlive($this, '', ''),
+			new CensusColumnChildrenLiving($this, '', ''),
+			new CensusColumnChildrenDied($this, '', ''),
+			new CensusColumnOccupation($this, '', ''),
+			new CensusColumnNull($this, '', ''), // Industry.
+			new CensusColumnNull($this, '', ''), // Employer/Employed.
+			new CensusColumnNull($this, '', ''), // Own account.
+			new CensusColumnBirthPlace($this, '', ''),
+			new CensusColumnNationality($this, '', ''),
+			new CensusColumnNull($this, '', ''), // Infirm, etc.
 		);
 	}
 }

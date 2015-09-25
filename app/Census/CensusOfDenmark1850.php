@@ -37,7 +37,12 @@ class CensusOfDenmark1850 extends CensusOfDenmark implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this),
+			new CensusColumnFullName($this, '', ''),
+			new CensusColumnAge($this, '', ''),
+			new CensusColumnCondition($this, '', ''),
+			new CensusColumnRelationToHead($this, '', ''),
+			new CensusColumnOccupation($this, '', ''),
+			new CensusColumnBirthPlace($this, '', ''),
 		);
 	}
 }

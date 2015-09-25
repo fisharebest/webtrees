@@ -18,7 +18,6 @@
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Mockery;
 
@@ -44,7 +43,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('England');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}
@@ -60,7 +59,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('England');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}
@@ -76,7 +75,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('England');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('S', $column->generate($individual));
 	}
@@ -92,7 +91,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('England');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('I', $column->generate($individual));
 	}
@@ -108,7 +107,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('England');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('F', $column->generate($individual));
 	}
@@ -124,7 +123,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Ireland');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('E', $column->generate($individual));
 	}
@@ -140,7 +139,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Ireland');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('E', $column->generate($individual));
 	}
@@ -156,7 +155,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Ireland');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('S', $column->generate($individual));
 	}
@@ -172,7 +171,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Ireland');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}
@@ -188,7 +187,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Ireland');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('F', $column->generate($individual));
 	}
@@ -204,7 +203,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Scotland');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('E', $column->generate($individual));
 	}
@@ -220,7 +219,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Scotland');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('E', $column->generate($individual));
 	}
@@ -236,7 +235,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Scotland');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}
@@ -252,7 +251,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Scotland');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('I', $column->generate($individual));
 	}
@@ -268,7 +267,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Scotland');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('F', $column->generate($individual));
 	}
@@ -284,7 +283,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Wales');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}
@@ -300,7 +299,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Wales');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}
@@ -316,7 +315,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Wales');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('S', $column->generate($individual));
 	}
@@ -332,7 +331,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Wales');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('I', $column->generate($individual));
 	}
@@ -348,7 +347,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('Wales');
 
-		$column = new CensusColumnBornForeignParts($census);
+		$column = new CensusColumnBornForeignParts($census, '', '');
 
 		$this->assertSame('F', $column->generate($individual));
 	}

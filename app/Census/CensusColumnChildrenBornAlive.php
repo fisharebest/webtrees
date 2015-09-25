@@ -16,28 +16,20 @@
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Individual;
 
 /**
- * Definitions for a census
+ * The number of children born alive.
  */
-class CensusOfUnitedStates1820 extends CensusOfUnitedStates implements CensusInterface {
+class CensusColumnChildrenBornAlive extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
-	 * When did this census occur.
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param Individual $individual
 	 *
 	 * @return string
 	 */
-	public function censusDate() {
-		return '07 AUG 1820';
-	}
-
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnFullName($this),
-		);
+	public function generate(Individual $individual) {
+		return '';
 	}
 }

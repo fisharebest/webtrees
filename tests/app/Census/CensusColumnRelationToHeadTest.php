@@ -17,17 +17,32 @@
 
 namespace Fisharebest\Webtrees\Census;
 
-/**
- * Test harness for the class CensusOfUnitedStates1830
- */
-class CensusOfUnitedStates1830Test extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Test the census place and date
-	 */
-	public function testPlaceAndDate() {
-		$census = new CensusOfUnitedStates1830;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Individual;
+use Mockery;
 
-		$this->assertSame('United States', $census->censusPlace());
-		$this->assertSame('01 JUN 1830', $census->censusDate());
+/**
+ * Test harness for the class CensusColumnRelationToHead
+ */
+class CensusColumnRelationToHeadTest extends \PHPUnit_Framework_TestCase {
+	/**
+	 * Delete mock objects
+	 */
+	public function tearDown() {
+		Mockery::close();
+	}
+
+	/**
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnRelationToHead
+	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 */
+	public function testNull() {
+		$individual = Mockery::mock(Individual::class);
+
+		$census = Mockery::mock(CensusInterface::class);
+
+		$column = new CensusColumnRelationToHead($census, '', '');
+
+		$this->assertSame('', $column->generate($individual));
 	}
 }

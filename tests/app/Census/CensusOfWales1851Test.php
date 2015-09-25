@@ -23,11 +23,51 @@ namespace Fisharebest\Webtrees\Census;
 class CensusOfWales1851Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfWales1851
 	 */
 	public function testPlaceAndDate() {
 		$census = new CensusOfWales1851;
 
 		$this->assertSame('Wales', $census->censusPlace());
 		$this->assertSame('30 MAR 1851', $census->censusDate());
+	}
+
+	/**
+	 * Test the census columns
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfWales1851
+	 */
+	public function testColumns() {
+		$census  = new CensusOfWales1851;
+		$columns = $census->columns();
+
+		$this->assertCount(8, $columns);
+		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
+		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[1]);
+		$this->assertInstanceOf(CensusColumnCondition::class, $columns[2]);
+		$this->assertInstanceOf(CensusColumnAgeMale::class, $columns[3]);
+		$this->assertInstanceOf(CensusColumnAgeFemale::class, $columns[4]);
+		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[5]);
+		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[6]);
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
+
+		$this->assertSame('Name', $columns[0]->abbreviation());
+		$this->assertSame('Relation', $columns[1]->abbreviation());
+		$this->assertSame('Condition', $columns[2]->abbreviation());
+		$this->assertSame('AgeM', $columns[3]->abbreviation());
+		$this->assertSame('AgeF', $columns[4]->abbreviation());
+		$this->assertSame('Occupation', $columns[5]->abbreviation());
+		$this->assertSame('Birthplace', $columns[6]->abbreviation());
+		$this->assertSame('Infirm', $columns[7]->abbreviation());
+
+		$this->assertSame('Name and surname', $columns[0]->title());
+		$this->assertSame('Relation to head of household', $columns[1]->title());
+		$this->assertSame('Condition', $columns[2]->title());
+		$this->assertSame('Age (males)', $columns[3]->title());
+		$this->assertSame('Age (females)', $columns[4]->title());
+		$this->assertSame('Rank, profession or occupation', $columns[5]->title());
+		$this->assertSame('Where born', $columns[6]->title());
+		$this->assertSame('Whether blind or deaf-and-dumb', $columns[7]->title());
 	}
 }

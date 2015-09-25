@@ -43,7 +43,7 @@ class CensusColumnOccupationTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock(CensusInterface::class);
 
-		$column = new CensusColumnOccupation($census);
+		$column = new CensusColumnOccupation($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}
@@ -61,7 +61,7 @@ class CensusColumnOccupationTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock(CensusInterface::class);
 
-		$column = new CensusColumnOccupation($census);
+		$column = new CensusColumnOccupation($census, '', '');
 
 		$this->assertSame('Farmer', $column->generate($individual));
 	}

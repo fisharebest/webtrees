@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees\Census;
 class CensusOfEngland1841Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfEngland1841
 	 */
 	public function testPlaceAndDate() {
 		$census = new CensusOfEngland1841;
@@ -32,7 +34,9 @@ class CensusOfEngland1841Test extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test the census place and date
+	 * Test the census columns
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfEngland1841
 	 */
 	public function testColumns() {
 		$census  = new CensusOfEngland1841;
@@ -45,5 +49,19 @@ class CensusOfEngland1841Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[3]);
 		$this->assertInstanceOf(CensusColumnBornSameCounty::class, $columns[4]);
 		$this->assertInstanceOf(CensusColumnBornForeignParts::class, $columns[5]);
+
+		$this->assertSame('Name', $columns[0]->abbreviation());
+		$this->assertSame('AgeM', $columns[1]->abbreviation());
+		$this->assertSame('AgeF', $columns[2]->abbreviation());
+		$this->assertSame('Occupation', $columns[3]->abbreviation());
+		$this->assertSame('BiC', $columns[4]->abbreviation());
+		$this->assertSame('SIF', $columns[5]->abbreviation());
+
+		$this->assertSame('Name', $columns[0]->title());
+		$this->assertSame('Age (males)', $columns[1]->title());
+		$this->assertSame('Age (females)', $columns[2]->title());
+		$this->assertSame('Profession, trade, employment or of independent means', $columns[3]->title());
+		$this->assertSame('Born in same county', $columns[4]->title());
+		$this->assertSame('Born in Scotland, Ireland or foreign parts', $columns[5]->title());
 	}
 }

@@ -26,14 +26,14 @@ class CensusOfWales extends AbstractCensus implements CensusPlaceInterface {
 	 */
 	public function allCensusDates() {
 		return array(
-			new CensusOfEngland1841(),
-			new CensusOfEngland1851(),
-			new CensusOfEngland1861(),
-			new CensusOfEngland1871(),
-			new CensusOfEngland1881(),
-			new CensusOfEngland1891(),
-			new CensusOfEngland1901(),
-			new CensusOfEngland1911(),
+			new CensusOfWales1841(),
+			new CensusOfWales1851(),
+			new CensusOfWales1861(),
+			new CensusOfWales1871(),
+			new CensusOfWales1881(),
+			new CensusOfWales1891(),
+			new CensusOfWales1901(),
+			new CensusOfWales1911(),
 		);
 	}
 

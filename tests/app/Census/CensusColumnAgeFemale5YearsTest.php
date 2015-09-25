@@ -42,7 +42,7 @@ class CensusColumnAgeFemale5YearsTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock(CensusInterface::class);
 
-		$column = new CensusColumnAgeFemale5Years($census);
+		$column = new CensusColumnAgeFemale5Years($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}
@@ -59,7 +59,7 @@ class CensusColumnAgeFemale5YearsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$column = new CensusColumnAgeFemale5Years($census);
+		$column = new CensusColumnAgeFemale5Years($census, '', '');
 
 		$this->assertSame('30', $column->generate($individual));
 	}
@@ -76,7 +76,7 @@ class CensusColumnAgeFemale5YearsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$column = new CensusColumnAgeFemale5Years($census);
+		$column = new CensusColumnAgeFemale5Years($census, '', '');
 
 		$this->assertSame('30', $column->generate($individual));
 	}
@@ -93,7 +93,7 @@ class CensusColumnAgeFemale5YearsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1800');
 
-		$column = new CensusColumnAgeFemale5Years($census);
+		$column = new CensusColumnAgeFemale5Years($census, '', '');
 
 		$this->assertSame('0', $column->generate($individual));
 	}
@@ -110,7 +110,7 @@ class CensusColumnAgeFemale5YearsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1814');
 
-		$column = new CensusColumnAgeFemale5Years($census);
+		$column = new CensusColumnAgeFemale5Years($census, '', '');
 
 		$this->assertSame('14', $column->generate($individual));
 	}
@@ -127,7 +127,7 @@ class CensusColumnAgeFemale5YearsTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1844');
 
-		$column = new CensusColumnAgeFemale5Years($census);
+		$column = new CensusColumnAgeFemale5Years($census, '', '');
 
 		$this->assertSame('40', $column->generate($individual));
 	}

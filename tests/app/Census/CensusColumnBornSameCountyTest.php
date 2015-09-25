@@ -18,7 +18,6 @@
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Mockery;
 
@@ -42,7 +41,7 @@ class CensusColumnBornSameCountyTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock(CensusInterface::class);
 
-		$column = new CensusColumnBornSameCounty($census);
+		$column = new CensusColumnBornSameCounty($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}

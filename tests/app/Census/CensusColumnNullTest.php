@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -13,31 +14,35 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Individual;
+use Mockery;
 
 /**
- * Definitions for a census
+ * Test harness for the class CensusColumnNull
  */
-class CensusOfUnitedStates1790 extends CensusOfUnitedStates implements CensusInterface {
+class CensusColumnNullTest extends \PHPUnit_Framework_TestCase {
 	/**
-	 * When did this census occur.
-	 *
-	 * @return string
+	 * Delete mock objects
 	 */
-	public function censusDate() {
-		return '02 AUG 1790';
+	public function tearDown() {
+		Mockery::close();
 	}
 
 	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnNull
+	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
-	public function columns() {
-		return array(
-			new CensusColumnFullName($this),
-		);
+	public function testNull() {
+		$individual = Mockery::mock(Individual::class);
+
+		$census = Mockery::mock(CensusInterface::class);
+
+		$column = new CensusColumnNull($census, '', '');
+
+		$this->assertSame('', $column->generate($individual));
 	}
 }
