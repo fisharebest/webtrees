@@ -4541,40 +4541,44 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 		}
 		</script>
-		<?php
-		echo '<div id="gm_breadcrumb">';
-		$where_am_i = $this->placeIdToHierarchy($parent);
-		foreach (array_reverse($where_am_i, true) as $id => $place) {
-			if ($id == $parent) {
-				if ($place != 'Unknown') {
-					echo Filter::escapeHtml($place);
+		<p id="gm_breadcrumb">
+			<?php
+			$where_am_i = $this->placeIdToHierarchy($parent);
+			foreach (array_reverse($where_am_i, true) as $id => $place) {
+				if ($id == $parent) {
+					if ($place != 'Unknown') {
+						echo Filter::escapeHtml($place);
+					} else {
+						echo I18N::translate('unknown');
+					}
 				} else {
-					echo I18N::translate('unknown');
+					echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $id, '&inactive=', $inactive, '">';
+					if ($place != 'Unknown') {
+						echo Filter::escapeHtml($place), '</a>';
+					} else {
+						echo I18N::translate('unknown'), '</a>';
+					}
 				}
-			} else {
-				echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $id, '&inactive=', $inactive, '">';
-				if ($place != 'Unknown') {
-					echo Filter::escapeHtml($place), '</a>';
-				} else {
-					echo I18N::translate('unknown'), '</a>';
-				}
+				echo ' - ';
 			}
-			echo ' - ';
-		}
-		echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '">', I18N::translate('Top level'), '</a></div>';
-		echo '<form name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&inactive=', $inactive, '"><div id="gm_active">';
-		echo '<label for="inactive">', I18N::translate('Show inactive places'), '</label>';
-		echo '<input type="checkbox" name="inactive" id="inactive" ';
-		echo $inactive ? 'checked' : '';
-		echo ' onclick="updateList(this.checked)"';
-		echo '></div>';
-		echo '<p class="small text-muted">';
-		echo I18N::translate('By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used.');
-		echo ' ';
-		echo I18N::translate('If you have a large number of inactive places, it can be slow to generate the list.');
-		echo '</p>';
-		echo '</form>';
-
+			?>
+			<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '"><?php echo I18N::translate('Top level'); ?></a>
+		</p>
+		
+		<form class="form-inline" name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&inactive=', $inactive, '">
+			<div class="checkbox">
+				<label for="inactive">
+				   <?php echo FunctionsEdit::checkbox('inactive', $inactive, 'onclick="updateList(this.checked)"'); ?>
+				   <?php echo I18N::translate('Show inactive places'); ?>
+				</label>
+			</div>
+			<p class="small text-muted">
+				<?php echo I18N::translate('By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used.'); ?>&nbsp;
+				<?php I18N::translate('If you have a large number of inactive places, it can be slow to generate the list.'); ?>
+			</p>
+		</form>
+		
+		<?php
 		$placelist = $this->getPlaceListLocation($parent, $inactive);
 		echo '<div class="gm_plac_edit">';
 		echo '<table class="table table-bordered table-condensed table-hover"><tr>';
