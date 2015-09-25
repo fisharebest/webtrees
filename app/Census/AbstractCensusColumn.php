@@ -16,32 +16,38 @@
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Place;
 
 /**
  * Definitions for a census column
  */
 class AbstractCensusColumn {
-	/** @var Individual - the individual recorded on the census */
-	protected $individul;
-
-	/** @var Place - the place where the census took place */
-	protected $place;
-
-	/** @var Date - the date when the census took place */
-	protected $date;
+	/** @var CensusInterface - the place where the census took place */
+	protected $census;
 
 	/**
-	 * Create a census column
+	 * Create a column for a census
 	 *
-	 * @param Individual $individual
-	 * @param Place      $place
-	 * @param Date       $date
+	 * @param CensusInterface $census
 	 */
-	public function __construct(Individual $individual, Place $place, Date $date) {
-		$this->individual = $individual;
-		$this->place      = $place;
-		$this->date       = $date;
+	public function __construct(CensusInterface $census) {
+		$this->census = $census;
+	}
+
+	/**
+	 * When did this census occur
+	 *
+	 * @return Date
+	 */
+	public function date() {
+		return new Date($this->census->censusDate());
+	}
+
+	/**
+	 * Where did this census occur
+	 *
+	 * @return Date
+	 */
+	public function place() {
+		return $this->census->censusPlace();
 	}
 }

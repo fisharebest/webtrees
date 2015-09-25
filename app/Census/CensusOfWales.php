@@ -18,7 +18,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfWales extends CensusPlace implements CensusPlaceInterface {
+class CensusOfWales extends AbstractCensus implements CensusPlaceInterface {
 	/**
 	 * All available censuses for this census place.
 	 *

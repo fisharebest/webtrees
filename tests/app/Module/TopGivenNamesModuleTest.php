@@ -18,7 +18,7 @@
 /**
  * Test harness for the class TopGivenNamesModuleModule
  */
-class TopGivenNamesModuleTest extends PHPUnit_Framework_TestCase {
+class TopGivenNamesModuleTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

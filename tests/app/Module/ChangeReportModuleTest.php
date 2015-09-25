@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ChangeReportModule
  */
-class ChangeReportModuleTest extends PHPUnit_Framework_TestCase {
+class ChangeReportModuleTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

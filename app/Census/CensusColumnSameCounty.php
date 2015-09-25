@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * Does the individual live in the county in which they were born.
@@ -24,9 +25,11 @@ class CensusColumnSameCounty extends AbstractCensusColumn implements CensusColum
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return string
 	 */
-	public function generate() {
+	public function generate(Individual $individual) {
 		return '';
 	}
 }

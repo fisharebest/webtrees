@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -13,25 +14,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
-
 /**
- * Definitions for a census
+ * Test harness for the class CensusOfFrance1841
  */
-class CensusPlace {
+class CensusOfFrance1841Test extends \PHPUnit_Framework_TestCase {
 	/**
-	 * @return CensusPlaceInterface[]
+	 * Test the census place and date
 	 */
-	public static function allCensusPlaces() {
-		return array(
-			new CensusOfDenmark,
-			new CensusOfEngland,
-			new CensusOfFrance,
-			new CensusOfScotland,
-			new CensusOfUnitedStates,
-			new CensusOfWales,
-		);
+	public function testPlaceAndDate() {
+		$census = new CensusOfFrance1841;
+
+		$this->assertSame('France', $census->censusPlace());
+		$this->assertSame('1841', $census->censusDate());
 	}
 }

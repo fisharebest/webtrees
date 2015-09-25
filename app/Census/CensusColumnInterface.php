@@ -15,6 +15,8 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Individual;
+
 /**
  * Definitions for a census column
  */
@@ -22,7 +24,9 @@ interface CensusColumnInterface {
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return string
 	 */
-	public function generate();
+	public function generate(Individual $individual);
 }

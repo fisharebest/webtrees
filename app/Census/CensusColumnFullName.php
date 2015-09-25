@@ -13,9 +13,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * The individual's full name.
@@ -24,9 +25,11 @@ class CensusColumnFullName extends AbstractCensusColumn implements CensusColumnI
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return string
 	 */
-	public function generate() {
-		return strip_tags($this->individual->getFullName());
+	public function generate(Individual $individual) {
+		return $individual->getFullName();
 	}
 }

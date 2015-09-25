@@ -18,7 +18,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfDenmark extends CensusPlace implements CensusPlaceInterface {
+class CensusOfDenmark extends AbstractCensus implements CensusPlaceInterface {
 	/**
 	 * All available censuses for this census place.
 	 *

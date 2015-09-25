@@ -16,7 +16,7 @@
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * The individual's age.
@@ -25,9 +25,11 @@ class CensusColumnAge extends AbstractCensusColumn implements CensusColumnInterf
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return string
 	 */
-	public function generate() {
-		return Date::getAge($this->individual->getEstimatedBirthDate(), $this->date, 0);
+	public function generate(Individual $individual) {
+		return (string) Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 0);
 	}
 }

@@ -16,8 +16,6 @@
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Place;
 
 /**
  * Definitions for a census
@@ -29,22 +27,17 @@ class CensusOfScotland1901 extends CensusOfScotland implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '31 FEB 1901';
+		return '31 MAR 1901';
 	}
 
 	/**
 	 * The columns of the census.
 	 *
-	 * @param Individual $individual
-	 *
 	 * @return CensusColumnInterface[]
 	 */
-	public function columns(Individual $individual) {
-		$place = new Place($this->censusPlace(), $individual->getTree());
-		$date  = new Date($this->censusDate());
-
+	public function columns() {
 		return array(
-			new CensusColumnFullName($individual, $place, $date),
+			new CensusColumnFullName($this),
 		);
 	}
 }

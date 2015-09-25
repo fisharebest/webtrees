@@ -15,8 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Individual;
-
 /**
  * Definitions for a census
  */
@@ -45,9 +43,7 @@ interface CensusInterface {
 	/**
 	 * The columns of the census.
 	 *
-	 * @param Individual $individual
-	 *
 	 * @return CensusColumnInterface[]
 	 */
-	public function columns(Individual $individual);
+	public function columns();
 }

@@ -18,7 +18,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfUnitedStates extends CensusPlace implements CensusPlaceInterface {
+class CensusOfUnitedStates extends AbstractCensus implements CensusPlaceInterface {
 	/**
 	 * All available censuses for this census place.
 	 *
@@ -51,6 +51,6 @@ class CensusOfUnitedStates extends CensusPlace implements CensusPlaceInterface {
 	 * @return string
 	 */
 	public function censusPlace() {
-		return 'Wales';
+		return 'United States';
 	}
 }

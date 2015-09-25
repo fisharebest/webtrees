@@ -15,7 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * The individual's occupation.
@@ -24,10 +24,12 @@ class CensusColumnOccupation extends AbstractCensusColumn implements CensusColum
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
+	 * @param Individual $individual
+	 *
 	 * @return string
 	 */
-	public function generate() {
-		foreach ($this->individual->getFacts('OCCU') as $fact) {
+	public function generate(Individual $individual) {
+		foreach ($individual->getFacts('OCCU') as $fact) {
 			return $fact->getValue();
 		}
 

@@ -16,8 +16,6 @@
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Place;
 
 /**
  * Definitions for a census
@@ -35,16 +33,11 @@ class CensusOfWales1911 extends CensusOfWales implements CensusInterface {
 	/**
 	 * The columns of the census.
 	 *
-	 * @param Individual $individual
-	 *
 	 * @return CensusColumnInterface[]
 	 */
-	public function columns(Individual $individual) {
-		$place = new Place($this->censusPlace(), $individual->getTree());
-		$date  = new Date($this->censusDate());
-
+	public function columns() {
 		return array(
-			new CensusColumnFullName($individual, $place, $date),
+			new CensusColumnFullName($this),
 		);
 	}
 }
