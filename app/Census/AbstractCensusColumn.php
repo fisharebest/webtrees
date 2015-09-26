@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * Definitions for a census column
@@ -53,12 +54,55 @@ class AbstractCensusColumn {
 	}
 
 	/**
+	 * Extract the country (last part) of a place name.
+	 *
+	 * @param string $place - e.g. "London, England"
+	 *
+	 * @return string - e.g. "England"
+	 */
+	protected function country($place) {
+		$place = explode(', ', $place);
+
+		return end($place);
+	}
+
+	/**
 	 * When did this census occur
 	 *
 	 * @return Date
 	 */
 	public function date() {
 		return new Date($this->census->censusDate());
+	}
+
+	/**
+	 * Find the father of an individual
+	 *
+	 * @return Individual|null $individual
+	 */
+	public function father(Individual $individual) {
+		$family = $individual->getPrimaryChildFamily();
+
+		if ($family) {
+			return $family->getHusband();
+		} else {
+			return null;
+		}
+	}
+
+	/**
+	 * Find the mother of an individual
+	 *
+	 * @return Individual|null $individual
+	 */
+	public function mother(Individual $individual) {
+		$family = $individual->getPrimaryChildFamily();
+
+		if ($family) {
+			return $family->getWife();
+		} else {
+			return null;
+		}
 	}
 
 	/**

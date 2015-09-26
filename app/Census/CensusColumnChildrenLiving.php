@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -29,6 +30,19 @@ class CensusColumnChildrenLiving extends AbstractCensusColumn implements CensusC
 	 * @return string
 	 */
 	public function generate(Individual $individual) {
-		return '';
+		if ($individual->getSex() !== 'F') {
+			return '';
+		}
+
+		$count = 0;
+		foreach ($individual->getSpouseFamilies() as $family) {
+			foreach ($family->getChildren() as $child) {
+				if (Date::compare($child->getBirthDate(), $this->date()) < 0 && $child->getBirthDate() != $child->getDeathDate() && Date::compare($child->getDeathDate(), $this->date()) >= 0) {
+					$count++;
+				}
+			}
+		}
+
+		return (string) $count;
 	}
 }

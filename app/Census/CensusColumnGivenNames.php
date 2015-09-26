@@ -15,21 +15,24 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Individual;
+
 /**
- * Definitions for a census
+ * The individual's full name.
  */
-abstract class AbstractCensus {
+class CensusColumnGivenNames extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
-	 * @return CensusPlaceInterface[]
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return string
 	 */
-	public static function allCensusPlaces() {
-		return array(
-			new CensusOfDenmark,
-			new CensusOfEngland,
-			new CensusOfFrance,
-			new CensusOfScotland,
-			new CensusOfUnitedStates,
-			new CensusOfWales,
-		);
+	public function generate(Individual $individual) {
+		foreach ($individual->getAllNames() as $name) {
+			return $name['givn'];
+		}
+
+		return '';
 	}
 }

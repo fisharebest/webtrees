@@ -32,4 +32,21 @@ class CensusOfFrance1896Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('France', $census->censusPlace());
 		$this->assertSame('1896', $census->censusDate());
 	}
+
+	/**
+	 * Test the census columns
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfFrance1896
+	 */
+	public function testColumns() {
+		$census  = new CensusOfFrance1896;
+		$columns = $census->columns();
+
+		$this->assertCount(1, $columns);
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[0]);
+
+		$this->assertSame('XXXX', $columns[0]->abbreviation());
+
+		$this->assertSame('XXXX', $columns[0]->title());
+	}
 }

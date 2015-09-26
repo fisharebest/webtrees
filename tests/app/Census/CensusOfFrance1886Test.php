@@ -32,4 +32,36 @@ class CensusOfFrance1886Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('France', $census->censusPlace());
 		$this->assertSame('1886', $census->censusDate());
 	}
+
+	/**
+	 * Test the census columns
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfFrance1886
+	 */
+	public function testColumns() {
+		$census  = new CensusOfFrance1886;
+		$columns = $census->columns();
+
+		$this->assertCount(6, $columns);
+		$this->assertInstanceOf(CensusColumnSurname::class, $columns[0]);
+		$this->assertInstanceOf(CensusColumnGivenNames::class, $columns[1]);
+		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[2]);
+		$this->assertInstanceOf(CensusColumnAge::class, $columns[3]);
+		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[4]);
+		$this->assertInstanceOf(CensusColumnNationality::class, $columns[5]);
+
+		$this->assertSame('XXXX', $columns[0]->abbreviation());
+		$this->assertSame('XXXX', $columns[1]->abbreviation());
+		$this->assertSame('XXXX', $columns[2]->abbreviation());
+		$this->assertSame('XXXX', $columns[3]->abbreviation());
+		$this->assertSame('XXXX', $columns[4]->abbreviation());
+		$this->assertSame('XXXX', $columns[5]->abbreviation());
+
+		$this->assertSame('XXXX', $columns[0]->title());
+		$this->assertSame('XXXX', $columns[1]->title());
+		$this->assertSame('XXXX', $columns[2]->title());
+		$this->assertSame('XXXX', $columns[3]->title());
+		$this->assertSame('XXXX', $columns[4]->title());
+		$this->assertSame('XXXX', $columns[5]->title());
+	}
 }

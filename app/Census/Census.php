@@ -1,5 +1,4 @@
 <?php
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -14,35 +13,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Individual;
-use Mockery;
-
 /**
- * Test harness for the class CensusColumnBornSameCounty
+ * Definitions for a census
  */
-class CensusColumnBornSameCountyTest extends \PHPUnit_Framework_TestCase {
+class Census {
 	/**
-	 * Delete mock objects
+	 * @return CensusPlaceInterface[]
 	 */
-	public function tearDown() {
-		Mockery::close();
-	}
-
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnBornSameCounty
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testDefault() {
-		$individual = Mockery::mock(Individual::class);
-
-		$census = Mockery::mock(CensusInterface::class);
-
-		$column = new CensusColumnBornSameCounty($census, '', '');
-
-		$this->assertSame('', $column->generate($individual));
+	public static function allCensusPlaces() {
+		return array(
+			new CensusOfDenmark,
+			new CensusOfEngland,
+			new CensusOfFrance,
+			new CensusOfScotland,
+			new CensusOfUnitedStates,
+			new CensusOfWales,
+		);
 	}
 }

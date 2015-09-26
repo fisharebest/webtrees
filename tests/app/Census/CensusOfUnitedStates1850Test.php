@@ -54,5 +54,29 @@ class CensusOfUnitedStates1850Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[8]);
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[9]);
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[10]);
+
+		$this->assertSame('', $columns[0]->abbreviation());
+		$this->assertSame('', $columns[1]->abbreviation());
+		$this->assertSame('', $columns[2]->abbreviation());
+		$this->assertSame('', $columns[3]->abbreviation());
+		$this->assertSame('', $columns[4]->abbreviation());
+		$this->assertSame('', $columns[5]->abbreviation());
+		$this->assertSame('', $columns[6]->abbreviation());
+		$this->assertSame('', $columns[7]->abbreviation());
+		$this->assertSame('', $columns[8]->abbreviation());
+		$this->assertSame('', $columns[9]->abbreviation());
+		$this->assertSame('', $columns[10]->abbreviation());
+
+		$this->assertSame('', $columns[0]->title());
+		$this->assertSame('', $columns[1]->title());
+		$this->assertSame('', $columns[2]->title());
+		$this->assertSame('', $columns[3]->title());
+		$this->assertSame('', $columns[4]->title());
+		$this->assertSame('', $columns[5]->title());
+		$this->assertSame('', $columns[6]->title());
+		$this->assertSame('', $columns[7]->title());
+		$this->assertSame('', $columns[8]->title());
+		$this->assertSame('', $columns[9]->title());
+		$this->assertSame('', $columns[10]->title());
 	}
 }

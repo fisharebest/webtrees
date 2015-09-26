@@ -29,6 +29,12 @@ class CensusColumnMotherBirthPlace extends AbstractCensusColumn implements Censu
 	 * @return string
 	 */
 	public function generate(Individual $individual) {
-		return '';
+		$mother = $this->mother($individual);
+
+		if ($mother) {
+			return $mother->getBirthPlace();
+		} else {
+			return '';
+		}
 	}
 }

@@ -41,7 +41,7 @@ class CensusOfScotland1841 extends CensusOfScotland implements CensusInterface {
 			new CensusColumnAgeMale5Years($this, 'AgeM', 'Age (males)'),
 			new CensusColumnAgeFemale5Years($this, 'AgeF', 'Age (females)'),
 			new CensusColumnOccupation($this, 'Occupation', 'Profession, trade, employment or of independent means'),
-			new CensusColumnBornSameCounty($this, 'BiC', 'Born in same county'),
+			new CensusColumnNull($this, 'BiC', 'Born in same county'),
 			new CensusColumnBornForeignParts($this, 'EIF', 'Born in England, Ireland or foreign parts'),
 		);
 	}

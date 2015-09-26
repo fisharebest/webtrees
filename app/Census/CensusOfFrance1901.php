@@ -37,7 +37,7 @@ class CensusOfFrance1901 extends CensusOfFrance implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this, '', ''),
+			new CensusColumnNull($this, 'XXXX', 'XXXX'),
 		);
 	}
 }

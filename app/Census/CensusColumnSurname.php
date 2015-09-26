@@ -18,9 +18,9 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * Does the individual live in the county in which they were born.
+ * The individual's full name.
  */
-class CensusColumnBornSameCounty extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnSurname extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
@@ -29,6 +29,10 @@ class CensusColumnBornSameCounty extends AbstractCensusColumn implements CensusC
 	 * @return string
 	 */
 	public function generate(Individual $individual) {
+		foreach ($individual->getAllNames() as $name) {
+			return $name['surname'];
+		}
+
 		return '';
 	}
 }

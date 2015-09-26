@@ -37,7 +37,11 @@ class CensusOfFrance1836 extends CensusOfFrance implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this, '', ''),
+			new CensusColumnSurname($this, 'XXXX', 'XXXX'),
+			new CensusColumnGivenNames($this, 'XXXX', 'XXXX'),
+			new CensusColumnOccupation($this, 'XXXX', 'XXXX'),
+			new CensusColumnAge($this, 'XXXX', 'XXXX'),
+			new CensusColumnCondition($this, 'XXXX', 'XXXX'),
 		);
 	}
 }

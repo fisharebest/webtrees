@@ -18,7 +18,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfUnitedStates extends AbstractCensus implements CensusPlaceInterface {
+class CensusOfUnitedStates extends Census implements CensusPlaceInterface {
 	/**
 	 * All available censuses for this census place.
 	 *

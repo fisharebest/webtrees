@@ -47,7 +47,7 @@ class CensusOfWales1841Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf(CensusColumnAgeMale5Years::class, $columns[1]);
 		$this->assertInstanceOf(CensusColumnAgeFemale5Years::class, $columns[2]);
 		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[3]);
-		$this->assertInstanceOf(CensusColumnBornSameCounty::class, $columns[4]);
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[4]);
 		$this->assertInstanceOf(CensusColumnBornForeignParts::class, $columns[5]);
 
 		$this->assertSame('Name', $columns[0]->abbreviation());

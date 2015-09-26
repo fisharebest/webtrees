@@ -32,4 +32,21 @@ class CensusOfUnitedStates1910Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('United States', $census->censusPlace());
 		$this->assertSame('15 APR 1910', $census->censusDate());
 	}
+
+	/**
+	 * Test the census columns
+	 *
+	 * @covers Fisharebest\Webtrees\Census\CensusOfUnitedStates1910
+	 */
+	public function testColumns() {
+		$census  = new CensusOfUnitedStates1910;
+		$columns = $census->columns();
+
+		$this->assertCount(1, $columns);
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[0]);
+
+		$this->assertSame('XXXX', $columns[0]->abbreviation());
+
+		$this->assertSame('XXXX', $columns[0]->title());
+	}
 }

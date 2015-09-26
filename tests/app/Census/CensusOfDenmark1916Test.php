@@ -49,5 +49,19 @@ class CensusOfDenmark1916Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[3]);
 		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[4]);
 		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[5]);
+
+		$this->assertSame('', $columns[0]->abbreviation());
+		$this->assertSame('', $columns[1]->abbreviation());
+		$this->assertSame('', $columns[2]->abbreviation());
+		$this->assertSame('', $columns[3]->abbreviation());
+		$this->assertSame('', $columns[4]->abbreviation());
+		$this->assertSame('', $columns[5]->abbreviation());
+
+		$this->assertSame('', $columns[0]->title());
+		$this->assertSame('', $columns[1]->title());
+		$this->assertSame('', $columns[2]->title());
+		$this->assertSame('', $columns[3]->title());
+		$this->assertSame('', $columns[4]->title());
+		$this->assertSame('', $columns[5]->title());
 	}
 }
