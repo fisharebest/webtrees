@@ -37,22 +37,23 @@ class CensusOfScotland1911 extends CensusOfScotland implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this, '', ''),
-			new CensusColumnRelationToHead($this, '', ''),
-			new CensusColumnAgeMale($this, '', ''),
-			new CensusColumnAgeFemale($this, '', ''),
-			new CensusColumnCondition($this, '', ''),
-			new CensusColumnYearsMarried($this, '', ''),
-			new CensusColumnChildrenBornAlive($this, '', ''),
-			new CensusColumnChildrenLiving($this, '', ''),
-			new CensusColumnChildrenDied($this, '', ''),
-			new CensusColumnOccupation($this, '', ''),
-			new CensusColumnNull($this, '', ''), // Industry.
-			new CensusColumnNull($this, '', ''), // Employer/Employed.
-			new CensusColumnNull($this, '', ''), // Own account.
-			new CensusColumnBirthPlace($this, '', ''),
-			new CensusColumnNationality($this, '', ''),
-			new CensusColumnNull($this, '', ''), // Infirm, etc.
+			new CensusColumnFullName($this, 'Name', 'Name and surname'),
+			new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
+			new CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
+			new CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
+			new CensusColumnNull($this, 'Lang', 'Language spoken'),
+			new CensusColumnCondition($this, 'Condition', 'Condition'),
+			new CensusColumnYearsMarried($this, 'YrM', 'Years married'),
+			new CensusColumnChildrenBornAlive($this, 'ChA', 'Children born alive'),
+			new CensusColumnChildrenLiving($this, 'ChL', 'Children who are still alive'),
+			new CensusColumnChildrenDied($this, 'ChD', 'Children who have died'),
+			new CensusColumnOccupation($this, 'Occupation', 'Rank, profession or occupation'),
+			new CensusColumnNull($this, 'Ind', 'Industry'),
+			new CensusColumnNull($this, 'Emp', 'Employer, worker or own account'),
+			new CensusColumnNull($this, 'Home', 'Working at home'),
+			new CensusColumnBirthPlace($this, 'Birthplace', 'Where born'),
+			new CensusColumnNationality($this, 'Nat', 'Nationality'),
+			new CensusColumnNull($this, 'Infirm', 'Infirmity'),
 		);
 	}
 }

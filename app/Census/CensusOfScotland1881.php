@@ -37,15 +37,14 @@ class CensusOfScotland1881 extends CensusOfScotland implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this, '', ''),
-			new CensusColumnRelationToHead($this, '', ''),
-			new CensusColumnCondition($this, '', ''),
-			new CensusColumnAgeMale($this, '', ''),
-			new CensusColumnAgeFemale($this, '', ''),
-			new CensusColumnOccupation($this, '', ''),
-			new CensusColumnBirthPlace($this, '', ''),
-			new CensusColumnNull($this, '', ''), // Infirm, etc.
-			new CensusColumnNull($this, '', ''), // Rooms with windows.
+			new CensusColumnFullName($this, 'Name', 'Name and surname'),
+			new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
+			new CensusColumnCondition($this, 'Condition', 'Condition'),
+			new CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
+			new CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
+			new CensusColumnOccupation($this, 'Occupation', 'Rank, profession or occupation'),
+			new CensusColumnBirthPlace($this, 'Birthplace', 'Where born'),
+			new CensusColumnNull($this, 'Infirm', 'Whether deaf-and-dumb, blind, imbecile, idiot or lunatic'),
 		);
 	}
 }

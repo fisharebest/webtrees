@@ -42,7 +42,7 @@ class CensusOfScotland1861Test extends \PHPUnit_Framework_TestCase {
 		$census  = new CensusOfScotland1861;
 		$columns = $census->columns();
 
-		$this->assertCount(10, $columns);
+		$this->assertCount(9, $columns);
 		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
 		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[1]);
 		$this->assertInstanceOf(CensusColumnCondition::class, $columns[2]);
@@ -52,7 +52,6 @@ class CensusOfScotland1861Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[6]);
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[8]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[9]);
 
 		$this->assertSame('Name', $columns[0]->abbreviation());
 		$this->assertSame('Relation', $columns[1]->abbreviation());
@@ -63,7 +62,6 @@ class CensusOfScotland1861Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('Birthplace', $columns[6]->abbreviation());
 		$this->assertSame('Infirm', $columns[7]->abbreviation());
 		$this->assertSame('Sch', $columns[8]->abbreviation());
-		$this->assertSame('Win', $columns[9]->abbreviation());
 
 		$this->assertSame('Name and surname', $columns[0]->title());
 		$this->assertSame('Relation to head of household', $columns[1]->title());
@@ -73,7 +71,6 @@ class CensusOfScotland1861Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('Rank, profession or occupation', $columns[5]->title());
 		$this->assertSame('Where born', $columns[6]->title());
 		$this->assertSame('Whether blind or deaf-and-dumb', $columns[7]->title());
-		$this->assertSame('Number of children between 5 and 15 attending school', $columns[8]->title());
-		$this->assertSame('Number of rooms with one or more windows', $columns[9]->title());
+		$this->assertSame('Number of children between 5 and 13 attending school', $columns[8]->title());
 	}
 }

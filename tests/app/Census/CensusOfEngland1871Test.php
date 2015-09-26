@@ -51,5 +51,23 @@ class CensusOfEngland1871Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[5]);
 		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[6]);
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
+
+		$this->assertSame('Name', $columns[0]->abbreviation());
+		$this->assertSame('Relation', $columns[1]->abbreviation());
+		$this->assertSame('Condition', $columns[2]->abbreviation());
+		$this->assertSame('AgeM', $columns[3]->abbreviation());
+		$this->assertSame('AgeF', $columns[4]->abbreviation());
+		$this->assertSame('Occupation', $columns[5]->abbreviation());
+		$this->assertSame('Birthplace', $columns[6]->abbreviation());
+		$this->assertSame('Infirm', $columns[7]->abbreviation());
+
+		$this->assertSame('Name and surname', $columns[0]->title());
+		$this->assertSame('Relation to head of household', $columns[1]->title());
+		$this->assertSame('Condition', $columns[2]->title());
+		$this->assertSame('Age (males)', $columns[3]->title());
+		$this->assertSame('Age (females)', $columns[4]->title());
+		$this->assertSame('Rank, profession or occupation', $columns[5]->title());
+		$this->assertSame('Where born', $columns[6]->title());
+		$this->assertSame('Whether deaf-and-dumb, blind, imbecile, idiot or lunatic', $columns[7]->title());
 	}
 }

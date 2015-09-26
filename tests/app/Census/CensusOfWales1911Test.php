@@ -60,5 +60,41 @@ class CensusOfWales1911Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf(CensusColumnNationality::class, $columns[14]);
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[15]);
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[16]);
+
+		$this->assertSame('Name', $columns[0]->abbreviation());
+		$this->assertSame('Relation', $columns[1]->abbreviation());
+		$this->assertSame('AgeM', $columns[2]->abbreviation());
+		$this->assertSame('AgeF', $columns[3]->abbreviation());
+		$this->assertSame('Condition', $columns[4]->abbreviation());
+		$this->assertSame('YrM', $columns[5]->abbreviation());
+		$this->assertSame('ChA', $columns[6]->abbreviation());
+		$this->assertSame('ChL', $columns[7]->abbreviation());
+		$this->assertSame('ChD', $columns[8]->abbreviation());
+		$this->assertSame('Occupation', $columns[9]->abbreviation());
+		$this->assertSame('Ind', $columns[10]->abbreviation());
+		$this->assertSame('Emp', $columns[11]->abbreviation());
+		$this->assertSame('Home', $columns[12]->abbreviation());
+		$this->assertSame('Birthplace', $columns[13]->abbreviation());
+		$this->assertSame('Nat', $columns[14]->abbreviation());
+		$this->assertSame('Infirm', $columns[15]->abbreviation());
+		$this->assertSame('Lang', $columns[16]->abbreviation());
+
+		$this->assertSame('Name and surname', $columns[0]->title());
+		$this->assertSame('Relation to head of household', $columns[1]->title());
+		$this->assertSame('Age (males)', $columns[2]->title());
+		$this->assertSame('Age (females)', $columns[3]->title());
+		$this->assertSame('Condition', $columns[4]->title());
+		$this->assertSame('Years married', $columns[5]->title());
+		$this->assertSame('Children born alive', $columns[6]->title());
+		$this->assertSame('Children who are still alive', $columns[7]->title());
+		$this->assertSame('Children who have died', $columns[8]->title());
+		$this->assertSame('Rank, profession or occupation', $columns[9]->title());
+		$this->assertSame('Industry', $columns[10]->title());
+		$this->assertSame('Employer, worker or own account', $columns[11]->title());
+		$this->assertSame('Working at home', $columns[12]->title());
+		$this->assertSame('Where born', $columns[13]->title());
+		$this->assertSame('Nationality', $columns[14]->title());
+		$this->assertSame('Infirmity', $columns[15]->title());
+		$this->assertSame('Language spoken', $columns[16]->title());
 	}
 }
