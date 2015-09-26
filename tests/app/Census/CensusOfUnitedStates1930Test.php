@@ -37,6 +37,7 @@ class CensusOfUnitedStates1930Test extends \PHPUnit_Framework_TestCase {
 	 * Test the census columns
 	 *
 	 * @covers Fisharebest\Webtrees\Census\CensusOfUnitedStates1930
+	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testColumns() {
 		$census  = new CensusOfUnitedStates1930;

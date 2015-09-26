@@ -37,6 +37,7 @@ class CensusOfFrance1872Test extends \PHPUnit_Framework_TestCase {
 	 * Test the census columns
 	 *
 	 * @covers Fisharebest\Webtrees\Census\CensusOfFrance1872
+	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testColumns() {
 		$census  = new CensusOfFrance1872;

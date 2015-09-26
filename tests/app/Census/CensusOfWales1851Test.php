@@ -37,6 +37,7 @@ class CensusOfWales1851Test extends \PHPUnit_Framework_TestCase {
 	 * Test the census columns
 	 *
 	 * @covers Fisharebest\Webtrees\Census\CensusOfWales1851
+	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testColumns() {
 		$census  = new CensusOfWales1851;

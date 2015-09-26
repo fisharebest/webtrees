@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -13,28 +14,29 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
+use Mockery;
 
 /**
- * Birth place of the individual's mother.
+ * Test harness for the class CensusColumnAgeFemale5Years
  */
-class CensusColumnMotherBirthPlace extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusTest extends \PHPUnit_Framework_TestCase {
 	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return string
+	 * @covers Fisharebest\Webtrees\Census\Census
 	 */
-	public function generate(Individual $individual) {
-		$mother = $this->mother($individual);
+	public function testAllCensus() {
+		$censuses = Census::allCensusPlaces();
 
-		if ($mother) {
-			return $this->notCountry($mother->getBirthPlace());
-		} else {
-			return '';
-		}
+		$this->assertCount(6, $censuses);
+		$this->assertInstanceOf(CensusOfDenmark::class, $censuses[0]);
+		$this->assertInstanceOf(CensusOfEngland::class, $censuses[1]);
+		$this->assertInstanceOf(CensusOfFrance::class, $censuses[2]);
+		$this->assertInstanceOf(CensusOfScotland::class, $censuses[3]);
+		$this->assertInstanceOf(CensusOfUnitedStates::class, $censuses[4]);
+		$this->assertInstanceOf(CensusOfWales::class, $censuses[5]);
 	}
 }

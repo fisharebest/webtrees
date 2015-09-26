@@ -106,6 +106,23 @@ class AbstractCensusColumn {
 	}
 
 	/**
+	 * Remove the country of a place name, where it is the same as the census place
+	 *
+	 * @param string $place - e.g. "London, England"
+	 *
+	 * @return string - e.g. "London" (for census of England) and "London, England" elsewhere
+	 */
+	protected function notCountry($place) {
+		$parts = explode(', ', $place);
+
+		if (end($parts) === $this->place()) {
+			return implode(', ', array_slice($parts, 0, -1));
+		} else {
+			return $place;
+		}
+	}
+
+	/**
 	 * Where did this census occur
 	 *
 	 * @return string

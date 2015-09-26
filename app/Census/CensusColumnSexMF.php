@@ -29,6 +29,12 @@ class CensusColumnSexMF extends AbstractCensusColumn implements CensusColumnInte
 	 * @return string
 	 */
 	public function generate(Individual $individual) {
-		Return $individual->getSex();
+		$sex = $individual->getSex();
+
+		if ($sex === 'M' || $sex === 'F') {
+			return $sex;
+		} else {
+			return '';
+		}
 	}
 }
