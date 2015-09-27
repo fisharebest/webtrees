@@ -44,7 +44,7 @@ class CensusOfUnitedStates1850 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnOccupation($this, '', ''),
 			new CensusColumnNull($this, '', ''), // Value of real estate owned
 			new CensusColumnBirthPlace($this, '', ''),
-			new CensusColumnMarriedWithinOneYear($this, '', ''),
+			new CensusColumnMarriedWithinYear($this, '', ''),
 			new CensusColumnNull($this, '', ''), // Attended school within year
 			new CensusColumnNull($this, '', ''), // Illiterate
 			new CensusColumnNull($this, '', ''), // Infirm

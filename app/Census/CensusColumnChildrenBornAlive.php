@@ -37,7 +37,11 @@ class CensusColumnChildrenBornAlive extends AbstractCensusColumn implements Cens
 		$count = 0;
 		foreach ($individual->getSpouseFamilies() as $family) {
 			foreach ($family->getChildren() as $child) {
-				if (Date::compare($child->getBirthDate(), $this->date()) < 0 && $child->getBirthDate() != $child->getDeathDate()) {
+				if (
+					$child->getBirthDate()->isOK() &&
+					Date::compare($child->getBirthDate(), $this->date()) < 0 &&
+					$child->getBirthDate() != $child->getDeathDate()
+				) {
 					$count++;
 				}
 			}

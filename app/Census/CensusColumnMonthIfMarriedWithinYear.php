@@ -29,6 +29,15 @@ class CensusColumnMonthIfMarriedWithinYear extends AbstractCensusColumn implemen
 	 * @return string
 	 */
 	public function generate(Individual $individual) {
+		foreach ($individual->getSpouseFamilies() as $family) {
+			foreach ($family->getFacts('MARR') as $fact) {
+				if ($fact->getDate()->julianDay() + 365 >= $this->date()->julianDay()) {
+					// Use the GEDCOM month, as we need this in English - for the US census
+					return ucfirst(strtolower($fact->getDate()->minimumDate()->format('%O')));
+				}
+			}
+		}
+
 		return '';
 	}
 }

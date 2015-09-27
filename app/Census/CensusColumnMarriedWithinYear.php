@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Did the individual marry within the last year.
  */
-class CensusColumnMarriedWithinOneYear extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnMarriedWithinYear extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
@@ -29,6 +29,14 @@ class CensusColumnMarriedWithinOneYear extends AbstractCensusColumn implements C
 	 * @return string
 	 */
 	public function generate(Individual $individual) {
+		foreach ($individual->getSpouseFamilies() as $family) {
+			foreach ($family->getFacts('MARR') as $fact) {
+				if ($fact->getDate()->julianDay() + 365 >= $this->date()->julianDay()) {
+					return 'Y';
+				}
+			}
+		}
+
 		return '';
 	}
 }
