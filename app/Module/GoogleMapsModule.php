@@ -1546,7 +1546,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '<form name="placecheck" class="form form-inline">';
 		echo '<input type="hidden" name="mod" value="', $this->getName(), '">';
 		echo '<input type="hidden" name="mod_action" value="admin_placecheck">';
-
+		echo '<div class="form-group">';
 		echo '<label for="gedcom_id">', I18N::translate('Family tree'), '</label> ';
 		echo FunctionsEdit::selectEditControl('gedcom_id', Tree::getIdList(), null, $gedcom_id, ' onchange="this.form.submit();" class="form-control"'), ' ';
 		echo '<label for="country">', I18N::translate('Country'), '</label> ';
@@ -1562,7 +1562,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 		echo '</select> ';
 		if ($country != 'XYZ') {
-			echo '<label>', /* I18N: Part of a country, state/region/county */ I18N::translate('Subdivision'), '</label> ';
+			echo '<label for="state">', /* I18N: Part of a country, state/region/county */ I18N::translate('Subdivision'), '</label> ';
 			echo '<select name="state" onchange="this.form.submit();" class="form-control">';
 			echo '<option value="XYZ">', I18N::translate('All'), '</option>';
 			$places = Database::prepare("SELECT pl_place FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
@@ -1573,10 +1573,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 			echo '</select> ';
 		}
-		echo '<label>';
+		echo '<div class="checkbox-inline">';
+		echo '<label for="matching">';
 		echo '<input type="checkbox" name="matching" value="1" onchange="this.form.submit();" ', ($matching ? 'checked' : ''), '>';
 		echo I18N::translate('Include fully matched places');
 		echo '</label>';
+		echo '</div></div>';		
 		echo '</form>';
 		echo '<hr>';
 
