@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -29,6 +30,20 @@ class CensusColumnYearsMarried extends AbstractCensusColumn implements CensusCol
 	 * @return string
 	 */
 	public function generate(Individual $individual) {
-		return '';
+		$marriage_date = null;
+
+		foreach ($individual->getSpouseFamilies() as $family) {
+			foreach ($family->getFacts('MARR', true) as $fact) {
+				if ($fact->getDate()->isOK() && Date::compare($fact->getDate(), $this->date()) <= 0) {
+					$marriage_date = $fact->getDate();
+				}
+			}
+		}
+
+		if ($marriage_date === null) {
+			return '';
+		} else {
+			return (string) Date::getAge($marriage_date, $this->date(), 0);
+		}
 	}
 }
