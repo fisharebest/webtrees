@@ -4627,61 +4627,83 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		?>
 		</table>
 		</div>
-
-		<table id="gm_manage">
-			<tr>
-				<td>
-					<?php echo I18N::translate('Add a new geographic location'); ?>
-				</td>
-				<td>
-					<form action="?" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
-						<?php echo FunctionsEdit::selectEditControl('parent_id', $where_am_i, I18N::translate('Top level'), $parent); ?>
-						<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
-					</form>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo I18N::translate('Import all places from a family tree'); ?>
-				</td>
-				<td>
-					<form action="module.php" method="get">
-						<input type="hidden" name="mod" value="googlemap">
-						<input type="hidden" name="mod_action" value="admin_places">
-						<input type="hidden" name="action" value="ImportGedcom">
-						<?php echo FunctionsEdit::selectEditControl('ged', Tree::getNameList(), null, $WT_TREE->getName()); ?>
-						<input type="submit" value="<?php echo I18N::translate('Import'); ?>">
-					</form>
-				</td>
-			</tr>
-			<tr>
-				<td>
+		
+		<hr>
+		<form class="form-horizontal" action="?" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
+			<div class="form-group">
+				<label class="form-control-static col-sm-4" for="parent_id">				
+					<?php echo I18N::translate('Add a new geographic location'); ?>							
+				</label>
+				<div class="col-sm-8">
+					<div class="col-sm-6">
+						<?php echo FunctionsEdit::selectEditControl('parent_id', $where_am_i, I18N::translate('Top level'), $parent, 'class="form-control"'); ?>
+					</div>
+					<button type="submit" class="btn btn-default">
+						<i class="fa fa-plus"></i>
+						<?php echo I18N::translate('Add'); ?>
+					</button>
+				</div>
+			</div>
+		</form>
+		
+		<form class="form-horizontal" action="module.php" method="get">
+			<input type="hidden" name="mod" value="googlemap">
+			<input type="hidden" name="mod_action" value="admin_places">
+			<input type="hidden" name="action" value="ImportGedcom">
+			<div class="form-group">
+				<label class="form-control-static col-sm-4" for="ged">				
+					<?php echo I18N::translate('Import all places from a family tree'); ?>					
+				</label>
+				<div class="col-sm-8">
+					<div class="col-sm-6">
+						<?php echo FunctionsEdit::selectEditControl('ged', Tree::getNameList(), null, $WT_TREE->getName(), 'class="form-control"'); ?>
+					</div>
+					<button type="submit" class="btn btn-default">
+						<i class="fa fa-upload"></i>
+						<?php echo I18N::translate('Import'); ?>
+					</button>	
+				</div>
+			</div>
+		</form>
+		
+		<form class="form-horizontal" action="module.php" method="get">
+			<input type="hidden" name="mod" value="googlemap">
+			<input type="hidden" name="mod_action" value="admin_places">
+			<input type="hidden" name="action" value="ImportFile">
+			<div class="form-group">
+				<label class="form-control-static col-sm-4">
 					<?php echo I18N::translate('Upload geographic data'); ?>
-				</td>
-				<td>
-					<form action="module.php" method="get">
-						<input type="hidden" name="mod" value="googlemap">
-						<input type="hidden" name="mod_action" value="admin_places">
-						<input type="hidden" name="action" value="ImportFile">
-						<input type="submit" value="<?php echo I18N::translate('Upload'); ?>">
-					</form>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</label>
+				<div class="col-sm-8">
+					<div class="col-sm-6">
+						<button type="submit" class="btn btn-default">
+							<i class="fa fa-upload"></i>
+							<?php echo I18N::translate('Upload'); ?>
+						</button>
+					</div>
+				</div>
+			</div>
+		</form>
+		
+		<form class="form-horizontal" action="module.php" method="get">
+			<input type="hidden" name="mod" value="googlemap">
+			<input type="hidden" name="mod_action" value="admin_places">
+			<input type="hidden" name="action" value="ExportFile">
+			<div class="form-group">
+				<label class="form-control-static col-sm-4">
 					<?php echo I18N::translate('Download geographic data'); ?>
-				</td>
-				<td>
-					<form action="module.php" method="get">
-						<input type="hidden" name="mod" value="googlemap">
-						<input type="hidden" name="mod_action" value="admin_places">
-						<input type="hidden" name="action" value="ExportFile">
-						<?php echo FunctionsEdit::selectEditControl('parent', $where_am_i, I18N::translate('All'), $WT_TREE->getTreeId()); ?>
-						<input type="submit" value="<?php echo I18N::translate('Download'); ?>">
-					</form>
-				</td>
-			</tr>
-		</table>
+				</label>
+				<div class="col-sm-8">
+					<div class="col-sm-6">
+						<?php echo FunctionsEdit::selectEditControl('parent', $where_am_i, I18N::translate('All'), $WT_TREE->getTreeId(), 'class="form-control"'); ?>
+					</div>
+					<button type="submit" class="btn btn-default">
+						<i class="fa fa-download"></i>
+						<?php echo I18N::translate('Download'); ?>
+					</button>
+				</div>
+			</div>
+		</form>
 		<?php
 	}
 
