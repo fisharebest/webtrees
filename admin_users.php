@@ -216,14 +216,14 @@ case 'load_json':
 
 		$datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></li><li class="divider"><li><a href="index_edit.php?user_id=' . $user_id . '"><i class="fa fa-fw fa-th-large"></i> ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></li>' . $admin_options . '</ul></div>';
 		// $datum[1] is the user ID
-		// $datum[2] is the user name
-		$datum[2] = '<span dir="auto">' . Filter::escapeHtml($datum[2]) . '</span>';
 		// $datum[3] is the real name
 		$datum[3] = '<span dir="auto">' . Filter::escapeHtml($datum[3]) . '</span>';
 		// $datum[4] is the email address
 		if ($user_id != Auth::id()) {
 			$datum[4] = '<a href="#" onclick="return message(\'' . Filter::escapeHtml($datum[2]) . '\', \'\', \'\');">' . Filter::escapeHtml($datum[4]) . '</i></a>';
 		}
+		// $datum[2] is the user name
+		$datum[2] = '<span dir="auto">' . Filter::escapeHtml($datum[2]) . '</span>';
 		// $datum[5] is the langauge
 		if (array_key_exists($datum[5], $installed_languages)) {
 			$datum[5] = $installed_languages[$datum[5]];
