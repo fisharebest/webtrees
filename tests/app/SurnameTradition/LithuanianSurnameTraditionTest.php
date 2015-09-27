@@ -33,6 +33,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test whether married surnames are used
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testMarriedSurnames() {
 		$this->assertSame(true, $this->surname_tradition->hasMarriedNames());
@@ -40,6 +42,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test whether surnames are used
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testSurnames() {
 		$this->assertSame(true, $this->surname_tradition->hasSurnames());
@@ -47,6 +51,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new son names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testNewSonNames() {
 		$this->assertSame(
@@ -57,6 +63,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new daughter names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testNewDaughterNames() {
 		$this->assertSame(
@@ -67,6 +75,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new daughter names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testNewDaughterNamesInflected() {
 		$this->assertSame(
@@ -97,6 +107,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new child names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testNewChildNames() {
 		$this->assertSame(
@@ -107,6 +119,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new child names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testNewChildNamesWithNoParentsNames() {
 		$this->assertSame(
@@ -117,6 +131,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new father names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testNewFatherNames() {
 		$this->assertSame(
@@ -127,6 +143,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new father names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testNewFatherNamesInflected() {
 		$this->assertSame(
@@ -149,6 +167,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new mother names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testNewMotherNames() {
 		$this->assertSame(
@@ -159,6 +179,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new parent names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testNewParentNames() {
 		$this->assertSame(
@@ -169,6 +191,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new husband names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testNewHusbandNames() {
 		$this->assertSame(
@@ -179,6 +203,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new wife names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testNewWifeNames() {
 		$this->assertSame(
@@ -189,6 +215,8 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new spouse names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
 	 */
 	public function testNewSpouseNames() {
 		$this->assertSame(
