@@ -289,7 +289,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</a>
 			</li>
 		</ul>
-		
+
 		<h2><?php echo I18N::translate('Google Maps™ preferences'); ?></h2>
 
 		<form class="form-horizontal" method="post" name="configform" action="module.php?mod=googlemap&mod_action=admin_config">
@@ -501,7 +501,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</p>
 				</div>
 			</fieldset>
-			
+
 			<!-- SAVE BUTTON -->
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-9">
@@ -1578,7 +1578,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '<input type="checkbox" name="matching" value="1" onchange="this.form.submit();" ', ($matching ? 'checked' : ''), '>';
 		echo I18N::translate('Include fully matched places');
 		echo '</label>';
-		echo '</div></div>';		
+		echo '</div></div>';
 		echo '</form>';
 		echo '<hr>';
 
@@ -4128,7 +4128,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</a>
 			</li>
 		</ul>
-		
+
 		<h2><?php echo I18N::translate('Geographic data'); ?></h2>
 		<?php
 
@@ -4257,7 +4257,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			sort($placefiles);
 		?>
 		<form class="form-horizontal" method="post" enctype="multipart/form-data" id="importfile" name="importfile" action="module.php?mod=googlemap&amp;mod_action=admin_places&amp;action=ImportFile2">
-			
+
 			<!-- PLACES FILE -->
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="placesfile">
@@ -4269,7 +4269,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- LOCAL FILE -->
 			<?php if (count($placefiles) > 0): ?>
 			<div class="form-group">
@@ -4297,7 +4297,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</div>
 			</div>
 			<?php endif; ?>
-			
+
 			<!-- CLEAR DATABASE -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-4">
@@ -4307,7 +4307,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<?php echo FunctionsEdit::editFieldYesNo('cleardatabase', 0, 'class="radio-inline"'); ?>
 				</div>
 			</fieldset>
-			
+
 			<!-- UPDATE ONLY -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-4">
@@ -4317,7 +4317,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<?php echo FunctionsEdit::editFieldYesNo('updateonly', 0, 'class="radio-inline"'); ?>
 				</div>
 			</fieldset>
-			
+
 			<!-- OVERWRITE DATA -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-4">
@@ -4327,7 +4327,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<?php echo FunctionsEdit::editFieldYesNo('overwritedata', 0, 'class="radio-inline"'); ?>
 				</div>
 			</fieldset>
-			
+
 			<!-- SAVE BUTTON -->
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-8">
@@ -4566,7 +4566,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			?>
 			<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '"><?php echo I18N::translate('Top level'); ?></a>
 		</p>
-		
+
 		<form class="form-inline" name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&inactive=', $inactive, '">
 			<div class="checkbox">
 				<label for="inactive">
@@ -4579,7 +4579,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<?php I18N::translate('If you have a large number of inactive places, it can be slow to generate the list.'); ?>
 			</p>
 		</form>
-		
+
 		<?php
 		$placelist = $this->getPlaceListLocation($parent, $inactive);
 		echo '<div class="gm_plac_edit">';
@@ -4629,12 +4629,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		?>
 		</table>
 		</div>
-		
+
 		<hr>
 		<form class="form-horizontal" action="?" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
 			<div class="form-group">
-				<label class="form-control-static col-sm-4" for="parent_id">				
-					<?php echo I18N::translate('Add a new geographic location'); ?>							
+				<label class="form-control-static col-sm-4" for="parent_id">
+					<?php echo I18N::translate('Add a new geographic location'); ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="col-sm-6">
@@ -4647,14 +4647,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</div>
 			</div>
 		</form>
-		
+
 		<form class="form-horizontal" action="module.php" method="get">
 			<input type="hidden" name="mod" value="googlemap">
 			<input type="hidden" name="mod_action" value="admin_places">
 			<input type="hidden" name="action" value="ImportGedcom">
 			<div class="form-group">
-				<label class="form-control-static col-sm-4" for="ged">				
-					<?php echo I18N::translate('Import all places from a family tree'); ?>					
+				<label class="form-control-static col-sm-4" for="ged">
+					<?php echo I18N::translate('Import all places from a family tree'); ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="col-sm-6">
@@ -4663,11 +4663,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<button type="submit" class="btn btn-default">
 						<i class="fa fa-upload"></i>
 						<?php echo I18N::translate('Import'); ?>
-					</button>	
+					</button>
 				</div>
 			</div>
 		</form>
-		
+
 		<form class="form-horizontal" action="module.php" method="get">
 			<input type="hidden" name="mod" value="googlemap">
 			<input type="hidden" name="mod_action" value="admin_places">
@@ -4686,7 +4686,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</div>
 			</div>
 		</form>
-		
+
 		<form class="form-horizontal" action="module.php" method="get">
 			<input type="hidden" name="mod" value="googlemap">
 			<input type="hidden" name="mod_action" value="admin_places">
