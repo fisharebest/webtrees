@@ -78,6 +78,16 @@ class PortugueseSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test new child names
 	 */
+	public function testNewChildNamesWithNoParentsNames() {
+		$this->assertSame(
+			array('NAME' => '// //', 'SURN'=>''),
+			$this->surname_tradition->newChildNames('', '', 'U')
+		);
+	}
+
+	/**
+	 * Test new child names
+	 */
 	public function testNewChildNamesCompunds() {
 		$this->assertSame(
 			array('NAME' => '/Iglesias/ /Lorca/', 'SURN' => 'Iglesias,Lorca'),

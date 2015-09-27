@@ -98,6 +98,16 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Test new child names
+	 */
+	public function testNewChildNamesWithNoParentsNames() {
+		$this->assertSame(
+			array('NAME' => '//'),
+			$this->surname_tradition->newChildNames('', '', 'U')
+		);
+	}
+
+	/**
 	 * Test new father names
 	 */
 	public function testNewFatherNames() {
