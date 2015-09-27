@@ -26,9 +26,9 @@ use Fisharebest\Webtrees\Individual;
 use Mockery;
 
 /**
- * Test harness for the class CensusColumnMonthIfMarriedWIthinYear
+ * Test harness for the class CensusColumnMonthIfMarriedWithinYear
  */
-class CensusColumnMonthIfMarriedWIthinYearTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnMonthIfMarriedWithinYearTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Delete mock objects
 	 */
@@ -37,7 +37,7 @@ class CensusColumnMonthIfMarriedWIthinYearTest extends \PHPUnit_Framework_TestCa
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWIthinYear
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testMarriedWithinYear() {
@@ -53,13 +53,13 @@ class CensusColumnMonthIfMarriedWIthinYearTest extends \PHPUnit_Framework_TestCa
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
 
-		$column = new CensusColumnMonthIfMarriedWIthinYear($census, '', '');
+		$column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');
 
 		$this->assertSame('Dec', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWIthinYear
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNotMarriedWithinYear() {
@@ -75,13 +75,13 @@ class CensusColumnMonthIfMarriedWIthinYearTest extends \PHPUnit_Framework_TestCa
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
 
-		$column = new CensusColumnMonthIfMarriedWIthinYear($census, '', '');
+		$column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWIthinYear
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoMarriage() {
@@ -94,13 +94,13 @@ class CensusColumnMonthIfMarriedWIthinYearTest extends \PHPUnit_Framework_TestCa
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
 
-		$column = new CensusColumnMonthIfMarriedWIthinYear($census, '', '');
+		$column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWIthinYear
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoSpouseFamily() {
@@ -110,7 +110,7 @@ class CensusColumnMonthIfMarriedWIthinYearTest extends \PHPUnit_Framework_TestCa
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
 
-		$column = new CensusColumnMonthIfMarriedWIthinYear($census, '', '');
+		$column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}
