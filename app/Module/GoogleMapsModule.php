@@ -4865,7 +4865,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					zoom: svzoom
 				}
 			};
-			var panorama = new google.maps.StreetViewPanorama(document.getElementById('mapCanvas'), panoramaOptions);
+			panorama = new google.maps.StreetViewPanorama(document.getElementById('mapCanvas'), panoramaOptions);
 			panorama.setPosition(latLng);
 			setTimeout(function() { panorama.setVisible(true); }, 1000);
 			setTimeout(function() { panorama.setVisible(true); }, 2000);

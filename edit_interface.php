@@ -116,7 +116,7 @@ case 'updateraw':
 
 	// Retain any private facts
 	foreach ($record->getFacts(null, false, Auth::PRIV_HIDE) as $fact) {
-		if (!in_array($fact->getFactId(), $fact_ids)) {
+		if (!in_array($fact->getFactId(), $fact_ids) && !$fact->isPendingDeletion()) {
 			$gedcom .= "\n" . $fact->getGedcom();
 		}
 	}
@@ -2642,7 +2642,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/ "+givn.replace(/ *, */g, " ")+" "+nsfx);
 		} else if (WT_LOCALE === "zh-Hans" || WT_LOCALE === "zh-Hant") {
 			// Default format: /SURN/GIVN
-			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/"+givn.replace(/ *, */g, " ")+" "+nsfx);
+			return npfx+"/"+spfx+surn+"/"+givn+nsfx;
 		} else {
 			// Default format: GIVN /SURN/
 			return trim(npfx+" "+givn.replace(/ *, */g, " ")+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/ "+nsfx);
