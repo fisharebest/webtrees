@@ -116,7 +116,7 @@ case 'updateraw':
 
 	// Retain any private facts
 	foreach ($record->getFacts(null, false, Auth::PRIV_HIDE) as $fact) {
-		if (!in_array($fact->getFactId(), $fact_ids)) {
+		if (!in_array($fact->getFactId(), $fact_ids) && !$fact->isPendingDeletion()) {
 			$gedcom .= "\n" . $fact->getGedcom();
 		}
 	}
