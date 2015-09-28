@@ -18,7 +18,7 @@
 /**
  * Test harness for the class WT_User
  */
-class UserTest extends PHPUnit_Framework_TestCase {
+class UserTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

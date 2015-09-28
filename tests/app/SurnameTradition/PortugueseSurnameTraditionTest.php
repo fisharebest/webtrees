@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 /**
  * Test harness for the class SpanishSurnameTradition
  */
-class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
+class PortugueseSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	/** @var SurnameTraditionInterface */
 	private $surname_tradition;
 
@@ -33,6 +33,8 @@ class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test whether married surnames are used
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
 	 */
 	public function testMarriedSurnames() {
 		$this->assertSame(false, $this->surname_tradition->hasMarriedNames());
@@ -40,6 +42,8 @@ class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test whether surnames are used
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
 	 */
 	public function testSurnames() {
 		$this->assertSame(true, $this->surname_tradition->hasSurnames());
@@ -47,6 +51,8 @@ class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new son names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
 	 */
 	public function testNewSonNames() {
 		$this->assertSame(
@@ -57,6 +63,8 @@ class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new daughter names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
 	 */
 	public function testNewDaughterNames() {
 		$this->assertSame(
@@ -67,6 +75,8 @@ class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new child names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
 	 */
 	public function testNewChildNames() {
 		$this->assertSame(
@@ -77,6 +87,20 @@ class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new child names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+	 */
+	public function testNewChildNamesWithNoParentsNames() {
+		$this->assertSame(
+			array('NAME' => '// //', 'SURN'=>''),
+			$this->surname_tradition->newChildNames('', '', 'U')
+		);
+	}
+
+	/**
+	 * Test new child names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
 	 */
 	public function testNewChildNamesCompunds() {
 		$this->assertSame(
@@ -91,6 +115,8 @@ class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new father names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
 	 */
 	public function testNewFatherNames() {
 		$this->assertSame(
@@ -101,6 +127,8 @@ class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new mother names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
 	 */
 	public function testNewMotherNames() {
 		$this->assertSame(
@@ -111,6 +139,8 @@ class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new parent names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
 	 */
 	public function testNewParentNames() {
 		$this->assertSame(
@@ -121,6 +151,8 @@ class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new husband names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
 	 */
 	public function testNewHusbandNames() {
 		$this->assertSame(
@@ -131,6 +163,8 @@ class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new wife names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
 	 */
 	public function testNewWifeNames() {
 		$this->assertSame(
@@ -141,6 +175,8 @@ class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test new spouse names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
 	 */
 	public function testNewSpouseNames() {
 		$this->assertSame(

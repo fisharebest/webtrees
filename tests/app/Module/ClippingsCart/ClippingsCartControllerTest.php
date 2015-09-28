@@ -18,7 +18,7 @@
 /**
  * Test harness for the class ClippingsCartController
  */
-class ClippingsCartControllerTest extends PHPUnit_Framework_TestCase {
+class ClippingsCartControllerTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

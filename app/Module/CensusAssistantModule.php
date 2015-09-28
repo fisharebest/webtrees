@@ -15,7 +15,15 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Census\Census;
+use Fisharebest\Webtrees\Census\CensusOfDenmark;
+use Fisharebest\Webtrees\Census\CensusOfEngland;
+use Fisharebest\Webtrees\Census\CensusOfFrance;
+use Fisharebest\Webtrees\Census\CensusOfScotland;
+use Fisharebest\Webtrees\Census\CensusOfUnitedStates;
+use Fisharebest\Webtrees\Census\CensusOfWales;
 use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
@@ -524,75 +532,57 @@ class CensusAssistantModule extends AbstractModule {
 		global $controller;
 
 		if ($action == 'add' && $tag == 'CENS') {
-			$controller->addInlineJavascript('
-				function addDate(theCensDate) {
-					var ddate = theCensDate.split(", ");
-					document.getElementById("setctry").value = ddate[3];
-					document.getElementById("setyear").value = ddate[0];
-					cal_setDateField("' . $element_id . '", parseInt(ddate[0]), parseInt(ddate[1]), parseInt(ddate[2]));
-					return false;
+			// Show more likely census details at the top of the list.
+			switch (WT_LOCALE) {
+			case 'en-AU':
+			case 'en-GB':
+				$census_places = array(new CensusOfEngland, new CensusOfWales, new CensusOfScotland);
+				break;
+			case 'en-US':
+				$census_places = array(new CensusOfUnitedStates);
+				break;
+			case 'fr':
+			case 'fr-CA':
+				$census_places = array(new CensusOfFrance);
+				break;
+			case 'da':
+				$census_places = array(new CensusOfDenmark);
+				break;
+			default:
+				$census_places = array();
+				break;
+			}
+			foreach (Census::allCensusPlaces() as $census_place) {
+				if (!in_array($census_place, $census_places)) {
+					$census_places[] = $census_place;
 				}
-				function pasteAsstDate(setcy, setyr) {
-					document.getElementById(setcy+setyr).selected = true;
-					addDate(document.getElementById("selcensdate").options[document.getElementById(\'selcensdate\').selectedIndex].value);
-					return false;
+			}
+
+			$controller->addInlineJavascript('
+				function selectCensus(el) {
+					var option = jQuery(":selected", el);
+					jQuery("input.DATE", jQuery(el).closest("table")).val(option.val());
+					jQuery("input.PLAC", jQuery(el).closest("table")).val(option.data("place"));
+					jQuery("#setctry").val(option.data("place"));
+					jQuery("#setyear").val(option.data("year"));
 				}
 			');
 
-			return '
-				<select id="selcensdate" name="selcensdate" onchange = "if (this.options[this.selectedIndex].value!=\'\') {
-										addDate(this.options[this.selectedIndex].value);
-									}">
-					<option id="defdate" value="" selected>' . I18N::translate('Census date') . '</option>
-					<option value=""></option>
-					<option id="UK1911" class="UK"  value="1911, 3, 02, UK">UK 1911</option>
-					<option id="UK1901" class="UK"  value="1901, 2, 31, UK">UK 1901</option>
-					<option id="UK1891" class="UK"  value="1891, 3, 05, UK">UK 1891</option>
-					<option id="UK1881" class="UK"  value="1881, 3, 03, UK">UK 1881</option>
-					<option id="UK1871" class="UK"  value="1871, 3, 02, UK">UK 1871</option>
-					<option id="UK1861" class="UK"  value="1861, 3, 07, UK">UK 1861</option>
-					<option id="UK1851" class="UK"  value="1851, 2, 30, UK">UK 1851</option>
-					<option id="UK1841" class="UK"  value="1841, 5, 06, UK">UK 1841</option>
-					<option value=""></option>
-					<option id="USA1940" class="USA" value="1940, 3, 01, USA">US 1940</option>
-					<option id="USA1930" class="USA" value="1930, 3, 01, USA">US 1930</option>
-					<option id="USA1920" class="USA" value="1920, 0, 01, USA">US 1920</option>
-					<option id="USA1910" class="USA" value="1910, 3, 15, USA">US 1910</option>
-					<option id="USA1900" class="USA" value="1900, 5, 01, USA">US 1900</option>
-					<option id="USA1890" class="USA" value="1890, 5, 01, USA">US 1890</option>
-					<option id="USA1880" class="USA" value="1880, 5, 01, USA">US 1880</option>
-					<option id="USA1870" class="USA" value="1870, 5, 01, USA">US 1870</option>
-					<option id="USA1860" class="USA" value="1860, 5, 01, USA">US 1860</option>
-					<option id="USA1850" class="USA" value="1850, 5, 01, USA">US 1850</option>
-					<option id="USA1840" class="USA" value="1840, 5, 01, USA">US 1840</option>
-					<option id="USA1830" class="USA" value="1830, 5, 01, USA">US 1830</option>
-					<option id="USA1820" class="USA" value="1820, 7, 07, USA">US 1820</option>
-					<option id="USA1810" class="USA" value="1810, 7, 06, USA">US 1810</option>
-					<option id="USA1800" class="USA" value="1800, 7, 04, USA">US 1800</option>
-					<option id="USA1790" class="USA" value="1790, 7, 02, USA">US 1790</option>
-					<option value=""></option>
-					<option id="FR1951" class="FR" value="1951, 0, 01, FR">FR 1951</option>
-					<option id="FR1946" class="FR" value="1946, 0, 01, FR">FR 1946</option>
-					<option id="FR1941" class="FR" value="1941, 0, 01, FR">FR 1941</option>
-					<option id="FR1936" class="FR" value="1936, 0, 01, FR">FR 1936</option>
-					<option id="FR1931" class="FR" value="1931, 0, 01, FR">FR 1931</option>
-					<option id="FR1926" class="FR" value="1926, 0, 01, FR">FR 1926</option>
-					<option id="FR1921" class="FR" value="1921, 0, 01, FR">FR 1921</option>
-					<option id="FR1916" class="FR" value="1916, 0, 01, FR">FR 1916</option>
-					<option id="FR1911" class="FR" value="1911, 0, 01, FR">FR 1911</option>
-					<option id="FR1906" class="FR" value="1906, 0, 01, FR">FR 1906</option>
-					<option id="FR1901" class="FR" value="1901, 0, 01, FR">FR 1901</option>
-					<option id="FR1896" class="FR" value="1896, 0, 01, FR">FR 1896</option>
-					<option id="FR1891" class="FR" value="1891, 0, 01, FR">FR 1891</option>
-					<option id="FR1886" class="FR" value="1886, 0, 01, FR">FR 1886</option>
-					<option id="FR1881" class="FR" value="1881, 0, 01, FR">FR 1881</option>
-					<option id="FR1876" class="FR" value="1876, 0, 01, FR">FR 1876</option>
-					<option value=""></option>
-				</select>
+			$options = '<option value="">' . I18N::translate('Census date') . '</option>';
 
-				<input type="hidden" id="setctry" name="setctry" value="">
-				<input type="hidden" id="setyear" name="setyear" value="">
-			';
+			foreach ($census_places as $census_place) {
+				$options .= '<option value=""></option>';
+				foreach ($census_place->allCensusDates() as $census) {
+					$date = new Date($census->censusDate());
+					$year = $date->minimumDate()->format('%Y');
+					$options .= '<option value="' . $census->censusDate() . '" data-year="' . $year . '" data-place="' . $census->censusPlace() . '">' . $census->censusPlace() . ' ' . $year . '</option>';
+				}
+			}
+
+			return
+				'<input type="hidden" id="setctry" name="setctry" value="">' .
+				'<input type="hidden" id="setyear" name="setyear" value="">' .
+				'<select onchange="selectCensus(this);">' . $options . '</select>';
 		} else {
 			return '';
 		}

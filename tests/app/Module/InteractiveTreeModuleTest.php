@@ -18,7 +18,7 @@
 /**
  * Test harness for the class InteractiveTreeModule
  */
-class InteractiveTreeModuleTest extends PHPUnit_Framework_TestCase {
+class InteractiveTreeModuleTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

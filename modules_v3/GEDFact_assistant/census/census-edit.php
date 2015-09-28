@@ -214,7 +214,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 				preview();
 
 				// Toggle Countries when the preset UK Cens Date has been been used -------------
-				if (TheCenCtry=="UK") {
+				if (TheCenCtry=="England" || TheCenCtry=="Wales" || TheCenCtry=="Scotland") {
 					if (cenyear!=TheCenYear && cenctry!=TheCenCtry) {
 						censyear = new DynamicOptionList();
 						censyear.addDependentFields("censCtry","censYear");
@@ -253,7 +253,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 					}
 				}
 				// Toggle Countries when the preset US Cens Date has been been used -------------
-				if (TheCenCtry=="USA") {
+				if (TheCenCtry=="United States") {
 					if (cenyear!=TheCenYear && cenctry!=TheCenCtry) {
 						censyear = new DynamicOptionList();
 						censyear.addDependentFields("censCtry","censYear");
@@ -1070,8 +1070,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 						censyear.forValue("UK").setDefaultOptions("");
 						censyear.forValue("UK").setDefaultOptions("");
 						censyear.forValue("USA").setDefaultOptions("");
-					}
-					else if (TheCenYear!='' && TheCenCtry=='UK') {
+					} else if (TheCenYear!='' && (TheCenCtry=='England' || TheCenCtry=='Wales' || TheCenCtry=='Scotland')) {
 						var censyear = new DynamicOptionList();
 						censyear.addDependentFields("censCtry","censYear");
 						censyear.forValue("UK").addOptions( "", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931", TheCenYear);
@@ -1083,8 +1082,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 						document.getElementById("UKOPT").selected = true;
 						document.getElementById("USOPT").selected = false;
 						document.getElementById("FROPT").selected = false;
-					}
-					else if (TheCenYear!='' && TheCenCtry=='USA') {
+					} else if (TheCenYear!='' && TheCenCtry=='United States') {
 						var censyear = new DynamicOptionList();
 						censyear.addDependentFields("censCtry","censYear");
 						censyear.forValue("UK").addOptions( "", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
@@ -1096,8 +1094,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 						document.getElementById("UKOPT").selected = false;
 						document.getElementById("USOPT").selected = true;
 						document.getElementById("FROPT").selected = false;
-					}
-					else if (TheCenYear!='' && TheCenCtry=='FR') {
+					} else if (TheCenYear!='' && TheCenCtry=='France') {
 						var censyear = new DynamicOptionList();
 						censyear.addDependentFields("censCtry","censYear");
 						censyear.forValue("UK").addOptions( "", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
