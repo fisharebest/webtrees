@@ -15,13 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Census\Census;
-use Fisharebest\Webtrees\Census\CensusOfDenmark;
-use Fisharebest\Webtrees\Census\CensusOfEngland;
-use Fisharebest\Webtrees\Census\CensusOfFrance;
-use Fisharebest\Webtrees\Census\CensusOfScotland;
-use Fisharebest\Webtrees\Census\CensusOfUnitedStates;
-use Fisharebest\Webtrees\Census\CensusOfWales;
 use Fisharebest\Webtrees\Controller\SimpleController;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
@@ -30,7 +23,6 @@ use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Note;
 
 /**
@@ -478,113 +470,6 @@ class CensusAssistantModule extends AbstractModule {
 		} else {
 			// Not a census-assistant shared note - apply default formatting
 			return Filter::formatText($note->getNote(), $WT_TREE);
-		}
-	}
-
-	/**
-	 * Modify the “add shared note” field, to create a note using the assistant
-	 *
-	 * @param string $element_id
-	 * @param string $xref
-	 * @param string $action
-	 *
-	 * @return string
-	 */
-	public static function addNoteWithAssistantLink($element_id, $xref, $action) {
-		global $controller, $WT_TREE;
-
-		// We do not yet support family records
-		if (!GedcomRecord::getInstance($xref, $WT_TREE) instanceof Individual) {
-			return '';
-		}
-
-		// Only modify “add shared note” links on the add/edit actions.
-		// TODO: does the “edit” action work?
-		if ($action != 'add' && $action != 'edit') {
-			return '';
-		}
-
-		$controller->addInlineJavascript('
-			var pid_array=jQuery("#pid_array");
-			function set_pid_array(pa) {
-				pid_array.val(pa);
-			}
-		');
-
-		return
-			'<br>' .
-			'<input type="hidden" name="pid_array" id="pid_array" value="">' .
-			'<a href="#" onclick="return addnewnote_assisted(document.getElementById(\'' . $element_id . '\'), \'' . $xref . '\');">' .
-			I18N::translate('Create a new shared note using assistant') .
-			'</a>';
-	}
-
-	/**
-	 * Add a selector containing UK/US/FR census dates
-	 *
-	 * @param string $action
-	 * @param string $tag
-	 * @param string $element_id
-	 *
-	 * @return string
-	 */
-	public static function censusDateSelector($action, $tag, $element_id) {
-		global $controller;
-
-		if ($action == 'add' && $tag == 'CENS') {
-			// Show more likely census details at the top of the list.
-			switch (WT_LOCALE) {
-			case 'en-AU':
-			case 'en-GB':
-				$census_places = array(new CensusOfEngland, new CensusOfWales, new CensusOfScotland);
-				break;
-			case 'en-US':
-				$census_places = array(new CensusOfUnitedStates);
-				break;
-			case 'fr':
-			case 'fr-CA':
-				$census_places = array(new CensusOfFrance);
-				break;
-			case 'da':
-				$census_places = array(new CensusOfDenmark);
-				break;
-			default:
-				$census_places = array();
-				break;
-			}
-			foreach (Census::allCensusPlaces() as $census_place) {
-				if (!in_array($census_place, $census_places)) {
-					$census_places[] = $census_place;
-				}
-			}
-
-			$controller->addInlineJavascript('
-				function selectCensus(el) {
-					var option = jQuery(":selected", el);
-					jQuery("input.DATE", jQuery(el).closest("table")).val(option.val());
-					jQuery("input.PLAC", jQuery(el).closest("table")).val(option.data("place"));
-					jQuery("#setctry").val(option.data("place"));
-					jQuery("#setyear").val(option.data("year"));
-				}
-			');
-
-			$options = '<option value="">' . I18N::translate('Census date') . '</option>';
-
-			foreach ($census_places as $census_place) {
-				$options .= '<option value=""></option>';
-				foreach ($census_place->allCensusDates() as $census) {
-					$date = new Date($census->censusDate());
-					$year = $date->minimumDate()->format('%Y');
-					$options .= '<option value="' . $census->censusDate() . '" data-year="' . $year . '" data-place="' . $census->censusPlace() . '">' . $census->censusPlace() . ' ' . $year . '</option>';
-				}
-			}
-
-			return
-				'<input type="hidden" id="setctry" name="setctry" value="">' .
-				'<input type="hidden" id="setyear" name="setyear" value="">' .
-				'<select onchange="selectCensus(this);">' . $options . '</select>';
-		} else {
-			return '';
 		}
 	}
 }

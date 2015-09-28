@@ -16,6 +16,13 @@
 namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Census\Census;
+use Fisharebest\Webtrees\Census\CensusOfDenmark;
+use Fisharebest\Webtrees\Census\CensusOfEngland;
+use Fisharebest\Webtrees\Census\CensusOfFrance;
+use Fisharebest\Webtrees\Census\CensusOfScotland;
+use Fisharebest\Webtrees\Census\CensusOfUnitedStates;
+use Fisharebest\Webtrees\Census\CensusOfWales;
 use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
@@ -618,6 +625,16 @@ class FunctionsEdit {
 				echo I18N::translate('yes');
 			}
 
+			if ($fact === 'CENS' && $value === 'Y') {
+				echo self::censusDateSelector(WT_LOCALE, $xref);
+				if (Module::getModuleByName('GEDFact_assistant') && GedcomRecord::getInstance($xref, $WT_TREE) instanceof Individual) {
+					echo
+						'<a href="#" style="display: none;" id="assistant-link" onclick="return activateCensusAssistant();">' .
+						I18N::translate('Create a new shared note using assistant') .
+						'</a>';
+				}
+			}
+
 		} elseif ($fact === 'TEMP') {
 			echo self::selectEditControl($element_name, GedcomCodeTemp::templeNames(), I18N::translate('No temple - living ordinance'), $value);
 		} elseif ($fact === 'ADOP') {
@@ -800,11 +817,6 @@ class FunctionsEdit {
 		switch ($fact) {
 			case 'DATE':
 				echo self::printCalendarPopup($element_id);
-
-				// Allow the GEDFact_assistant module to show a census-date selector
-				if (Module::getModuleByName('GEDFact_assistant')) {
-					echo CensusAssistantModule::censusDateSelector($action, $upperlevel, $element_id);
-				}
 				break;
 			case 'FAMC':
 			case 'FAMS':
@@ -878,11 +890,6 @@ class FunctionsEdit {
 					if ($value) {
 						echo ' ', self::printEditNoteLink($value);
 					}
-
-					// Allow the GEDFact_assistant module to create a formatted shared note.
-					if ($upperlevel === 'CENS' && Module::getModuleByName('GEDFact_assistant')) {
-						echo CensusAssistantModule::addNoteWithAssistantLink($element_id, $xref, $action);
-					}
 				}
 				break;
 			case 'OBJE':
@@ -953,6 +960,86 @@ class FunctionsEdit {
 		echo '</div>', $extra, '</td></tr>';
 
 		return $element_id;
+	}
+
+	/**
+	 * Genearate a <select> element, with the dates/places of all known censuses
+	 *
+	 *
+	 * @param string $locale - Sort the censuses for this locale
+	 * @param string $xref   - The individual for whom we are adding a census
+	 */
+	public static function censusDateSelector($locale, $xref) {
+		global $controller;
+
+		// Show more likely census details at the top of the list.
+		switch (WT_LOCALE) {
+		case 'en-AU':
+		case 'en-GB':
+			$census_places = array(new CensusOfEngland, new CensusOfWales, new CensusOfScotland);
+			break;
+		case 'en-US':
+			$census_places = array(new CensusOfUnitedStates);
+			break;
+		case 'fr':
+		case 'fr-CA':
+			$census_places = array(new CensusOfFrance);
+			break;
+		case 'da':
+			$census_places = array(new CensusOfDenmark);
+			break;
+		default:
+			$census_places = array();
+			break;
+		}
+		foreach (Census::allCensusPlaces() as $census_place) {
+			if (!in_array($census_place, $census_places)) {
+				$census_places[] = $census_place;
+			}
+		}
+
+		$controller->addInlineJavascript('
+				function selectCensus(el) {
+					var option = jQuery(":selected", el);
+					jQuery("input.DATE", jQuery(el).closest("table")).val(option.val());
+					jQuery("input.PLAC", jQuery(el).closest("table")).val(option.data("place"));
+					jQuery("#setctry").val(option.data("place"));
+					jQuery("#setyear").val(option.data("year"));
+					if (option.val()) {
+						jQuery("#assistant-link").show();
+					} else {
+						jQuery("#assistant-link").hide();
+					}
+				}
+				function set_pid_array(pa) {
+					jQuery("#pid_array").val(pa);
+				}
+				function activateCensusAssistant() {
+					if (jQuery("#newshared_note_img").hasClass("icon-plus")) {
+						expand_layer("newshared_note");
+					}
+					var field = jQuery("#newshared_note input.NOTE")[0];
+					var xref  = jQuery("input[name=xref]").val();
+					return addnewnote_assisted(field, xref);
+				}
+			');
+
+		$options = '<option value="">' . I18N::translate('Census date') . '</option>';
+
+		foreach ($census_places as $census_place) {
+			$options .= '<option value=""></option>';
+			foreach ($census_place->allCensusDates() as $census) {
+				$date = new Date($census->censusDate());
+				$year = $date->minimumDate()->format('%Y');
+				$options .= '<option value="' . $census->censusDate() . '" data-year="' . $year . '" data-place="' . $census->censusPlace() . '">' . $census->censusPlace() . ' ' . $year . '</option>';
+			}
+		}
+
+		return
+			'<input type="hidden" id="setctry" name="setctry" value="">' .
+			'<input type="hidden" id="setyear" name="setyear" value="">' .
+			'<input type="hidden" id="pid_array" name="pid_array" value="">' .
+			'<select onchange="selectCensus(this);">' . $options . '</select>';
 	}
 
 	/**
