@@ -48,6 +48,14 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	}
 
 	/**
+	 * HTML link to a "favorites icon".
+	 *
+	 * @return string
+	 */
+	protected function favicon() {
+		return '<link rel="icon" href="favicon.ico" type="image/x-icon">';
+	}
+	/**
 	 * Create the contents of the <footer> tag.
 	 *
 	 * @return string

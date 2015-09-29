@@ -17,11 +17,4 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Theme\XeneaTheme;
 
-class XeneaLinks extends XeneaTheme {
-    public function hookHeaderExtraContent() {
-        return
-        '<link rel="icon" type="image/png" href="' . $this->assetUrl() .'favicon192.png" sizes="192x192">' .
-        '<link rel="apple-touch-icon" sizes="180x180" href="' . $this->assetUrl() .'favicon180.png">';
-    }
-}
-return new XeneaLinks;
+return new XeneaTheme;

@@ -17,11 +17,4 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Theme\MinimalTheme;
 
-class MinimalLinks extends MinimalTheme {
-    public function hookHeaderExtraContent() {
-        return
-        '<link rel="icon" type="image/png" href="' . $this->assetUrl() .'favicon192.png" sizes="192x192">' .
-        '<link rel="apple-touch-icon" sizes="180x180" href="' . $this->assetUrl() .'favicon180.png">';
-    }
-}
-return new MinimalLinks;
+return new MinimalTheme;
