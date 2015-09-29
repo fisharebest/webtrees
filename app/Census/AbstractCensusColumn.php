@@ -78,7 +78,7 @@ class AbstractCensusColumn {
 	/**
 	 * Find the father of an individual
 	 *
-	 * @return Individual|null $individual
+	 * @return Individual $individual
 	 */
 	public function father(Individual $individual) {
 		$family = $individual->getPrimaryChildFamily();
@@ -93,7 +93,7 @@ class AbstractCensusColumn {
 	/**
 	 * Find the mother of an individual
 	 *
-	 * @return Individual|null $individual
+	 * @return Individual $individual
 	 */
 	public function mother(Individual $individual) {
 		$family = $individual->getPrimaryChildFamily();
