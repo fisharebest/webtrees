@@ -95,12 +95,6 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 		case 'admin_batch_update':
-			$controller = new PageController;
-			$controller
-				->setPageTitle(I18N::translate('Batch update'))
-				->restrictAccess(Auth::isAdmin())
-				->pageHeader();
-
 			echo $this->main();
 			break;
 
@@ -185,8 +179,21 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 		}
 
 		// HTML common to all pages
+		$controller = new PageController;
+			$controller
+				->setPageTitle(I18N::translate('Batch update'))
+				->restrictAccess(Auth::isAdmin())
+				->pageHeader();
+		
 		echo $this->getJavascript();
 		?>
+		<ol class="breadcrumb small">
+			<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
+			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+		</ol>
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		
 		<form id="batch_update_form" class="form-horizontal" action="module.php" method="get">
 			<input type="hidden" name="mod" value="batch_update">
 			<input type="hidden" name="mod_action" value="admin_batch_update">
