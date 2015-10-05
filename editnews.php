@@ -79,7 +79,7 @@ case 'save':
 	if ($news_id) {
 		Database::prepare("UPDATE `##news` SET subject=?, body=?, updated=FROM_UNIXTIME(?) WHERE news_id=?")->execute(array($title, $text, $date, $news_id));
 	} else {
-		Database::prepare("INSERT INTO `##news` (user_id, gedcom_id, subject, body) VALUES (NULLIF(?, ''), NULLIF(?, '') ,? ,?)")->execute(array($user_id, $gedcom_id, $title, $text));
+		Database::prepare("INSERT INTO `##news` (user_id, gedcom_id, subject, body, updated) VALUES (NULLIF(?, ''), NULLIF(?, '') ,? ,?, CURRENT_TIMESTAMP)")->execute(array($user_id, $gedcom_id, $title, $text));
 	}
 
 	$controller->addInlineJavascript('window.opener.location.reload();window.close();');
