@@ -184,15 +184,7 @@ class PageController extends BaseController {
 			echo Theme::theme()->bodyHeader();
 			// We've displayed the header - display the footer automatically
 			register_shutdown_function(array($this, 'pageFooter'), $this->popup);
-
 		}
-
-		// Flush the output, so the browser can render the header and load javascript
-		// while we are preparing data for the page
-		if (ini_get('output_buffering')) {
-			ob_flush();
-		}
-		flush();
 
 		return $this;
 	}
