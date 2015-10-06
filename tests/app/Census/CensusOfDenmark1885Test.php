@@ -18,32 +18,32 @@
 namespace Fisharebest\Webtrees\Census;
 
 /**
- * Test harness for the class CensusOfDenmark1906
+ * Test harness for the class CensusOfDenmark1885
  */
-class CensusOfDenmark1906Test extends \PHPUnit_Framework_TestCase {
+class CensusOfDenmark1885Test extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Test the census place and date
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfDenmark1906
+	 * @covers Fisharebest\Webtrees\Census\CensusOfDenmark1885
 	 */
 	public function testPlaceAndDate() {
-		$census = new CensusOfDenmark1906;
+		$census = new CensusOfDenmark1885;
 
-		$this->assertSame('Danmark', $census->censusPlace());
-		$this->assertSame('01 FEB 1906', $census->censusDate());
+		$this->assertSame('København, Danmark', $census->censusPlace());
+		$this->assertSame('01 FEB 1885', $census->censusDate());
 	}
 
 	/**
 	 * Test the census columns
 	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfDenmark1906
+	 * @covers Fisharebest\Webtrees\Census\CensusOfDenmark1885
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testColumns() {
-		$census  = new CensusOfDenmark1906;
+		$census  = new CensusOfDenmark1885;
 		$columns = $census->columns();
 
-		$this->assertCount(11, $columns);
+		$this->assertCount(9, $columns);
 		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
 		$this->assertInstanceOf(CensusColumnAge::class, $columns[1]);
 		$this->assertInstanceOf(CensusColumnSexMF::class, $columns[2]);
@@ -53,8 +53,6 @@ class CensusOfDenmark1906Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[6]);
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[8]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[9]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[10]);
 
 		$this->assertSame('TBC', $columns[0]->abbreviation());
 		$this->assertSame('TBC', $columns[1]->abbreviation());
@@ -65,8 +63,6 @@ class CensusOfDenmark1906Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('TBC', $columns[6]->abbreviation());
 		$this->assertSame('TBC', $columns[7]->abbreviation());
 		$this->assertSame('TBC', $columns[8]->abbreviation());
-		$this->assertSame('TBC', $columns[9]->abbreviation());
-		$this->assertSame('TBC', $columns[10]->abbreviation());
 
 		$this->assertSame('To be confirmed', $columns[0]->title());
 		$this->assertSame('To be confirmed', $columns[1]->title());
@@ -77,7 +73,5 @@ class CensusOfDenmark1906Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('To be confirmed', $columns[6]->title());
 		$this->assertSame('To be confirmed', $columns[7]->title());
 		$this->assertSame('To be confirmed', $columns[8]->title());
-		$this->assertSame('To be confirmed', $columns[9]->title());
-		$this->assertSame('To be confirmed', $columns[10]->title());
 	}
 }

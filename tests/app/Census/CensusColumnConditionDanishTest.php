@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -13,37 +14,35 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Individual;
+use Mockery;
 
 /**
- * Definitions for a census
+ * Test harness for the class CensusColumnCondition
  */
-class CensusOfDenmark1850 extends CensusOfDenmark implements CensusInterface {
+class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 	/**
-	 * When did this census occur.
-	 *
-	 * @return string
+	 * Delete mock objects
 	 */
-	public function censusDate() {
-		return '01 FEB 1850';
+	public function tearDown() {
+		Mockery::close();
 	}
 
 	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnCondition
+	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
-	public function columns() {
-		return array(
-			new CensusColumnFullName($this, 'TBC', 'To be confirmed'),
-			new CensusColumnAge($this, 'TBC', 'To be confirmed'),
-			new CensusColumnCondition($this, 'TBC', 'To be confirmed'),
-			new CensusColumnRelationToHead($this, 'TBC', 'To be confirmed'),
-			new CensusColumnOccupation($this, 'TBC', 'To be confirmed'),
-			new CensusColumnBirthPlace($this, 'TBC', 'To be confirmed'),
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // Handicaps
-		);
+	public function testNull() {
+		$individual = Mockery::mock(Individual::class);
+
+		$census = Mockery::mock(CensusInterface::class);
+
+		$column = new CensusColumnCondition($census, '', '');
+
+		$this->assertSame('', $column->generate($individual));
 	}
 }

@@ -20,14 +20,23 @@ use Fisharebest\Webtrees\Date;
 /**
  * Definitions for a census
  */
-class CensusOfDenmark1916 extends CensusOfDenmark implements CensusInterface {
+class CensusOfDenmark1835 extends CensusOfDenmark implements CensusInterface {
 	/**
 	 * When did this census occur.
 	 *
 	 * @return string
 	 */
 	public function censusDate() {
-		return '01 FEB 1916';
+		return '18 FEB 1834';
+	}
+
+	/**
+	 * Where did this census occur, in GEDCOM format.
+	 *
+	 * @return string
+	 */
+	public function censusPlace() {
+		return 'Schleswig-Holstein, Deutschland';
 	}
 
 	/**
@@ -39,15 +48,9 @@ class CensusOfDenmark1916 extends CensusOfDenmark implements CensusInterface {
 		return array(
 			new CensusColumnFullName($this, 'TBC', 'To be confirmed'),
 			new CensusColumnAge($this, 'TBC', 'To be confirmed'),
-			new CensusColumnSexMF($this, 'TBC', 'To be confirmed'),
 			new CensusColumnCondition($this, 'TBC', 'To be confirmed'),
 			new CensusColumnRelationToHead($this, 'TBC', 'To be confirmed'),
 			new CensusColumnOccupation($this, 'TBC', 'To be confirmed'),
-			new CensusColumnBirthPlace($this, 'TBC', 'To be confirmed'),
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // religion
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // employment
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // handicaps
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // savings
 		);
 	}
 }

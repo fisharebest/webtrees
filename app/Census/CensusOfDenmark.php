@@ -28,7 +28,9 @@ class CensusOfDenmark extends Census implements CensusPlaceInterface {
 		return array(
 			new CensusOfDenmark1787(),
 			new CensusOfDenmark1801(),
+			new CensusOfDenmark1803(),
 			new CensusOfDenmark1834(),
+			new CensusOfDenmark1835(),
 			new CensusOfDenmark1840(),
 			new CensusOfDenmark1845(),
 			new CensusOfDenmark1850(),
@@ -36,7 +38,9 @@ class CensusOfDenmark extends Census implements CensusPlaceInterface {
 			new CensusOfDenmark1860(),
 			new CensusOfDenmark1870(),
 			new CensusOfDenmark1880(),
+			new CensusOfDenmark1885(),
 			new CensusOfDenmark1890(),
+			new CensusOfDenmark1895(),
 			new CensusOfDenmark1901(),
 			new CensusOfDenmark1906(),
 			new CensusOfDenmark1911(),
@@ -44,6 +48,8 @@ class CensusOfDenmark extends Census implements CensusPlaceInterface {
 			new CensusOfDenmark1921(),
 			new CensusOfDenmark1925(),
 			new CensusOfDenmark1930(),
+			new CensusOfDenmark1940(),
+			new CensusOfDenmark1950(),
 		);
 	}
 

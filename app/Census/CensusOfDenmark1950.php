@@ -20,14 +20,14 @@ use Fisharebest\Webtrees\Date;
 /**
  * Definitions for a census
  */
-class CensusOfDenmark1916 extends CensusOfDenmark implements CensusInterface {
+class CensusOfDenmark1950 extends CensusOfDenmark implements CensusInterface {
 	/**
 	 * When did this census occur.
 	 *
 	 * @return string
 	 */
 	public function censusDate() {
-		return '01 FEB 1916';
+		return '01 NOV 1950';
 	}
 
 	/**
@@ -47,7 +47,7 @@ class CensusOfDenmark1916 extends CensusOfDenmark implements CensusInterface {
 			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // religion
 			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // employment
 			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // handicaps
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // savings
+			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // citizenship
 		);
 	}
 }

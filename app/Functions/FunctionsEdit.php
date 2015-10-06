@@ -1004,7 +1004,8 @@ class FunctionsEdit {
 					jQuery("input.PLAC", jQuery(el).closest("table")).val(option.data("place"));
 					jQuery("#setctry").val(option.data("place"));
 					jQuery("#setyear").val(option.data("year"));
-					if (option.val()) {
+					var re = /(United States|England|Wales|Scotland|France)$/;
+					if (re.test(option.data("place"))) {
 						jQuery("#assistant-link").show();
 					} else {
 						jQuery("#assistant-link").hide();
@@ -1030,7 +1031,8 @@ class FunctionsEdit {
 			foreach ($census_place->allCensusDates() as $census) {
 				$date = new Date($census->censusDate());
 				$year = $date->minimumDate()->format('%Y');
-				$options .= '<option value="' . $census->censusDate() . '" data-year="' . $year . '" data-place="' . $census->censusPlace() . '">' . $census->censusPlace() . ' ' . $year . '</option>';
+				$place_hierarchy = explode(', ', $census->censusPlace());
+				$options .= '<option value="' . $census->censusDate() . '" data-year="' . $year . '" data-place="' . $census->censusPlace() . '">' . $place_hierarchy[0] . ' ' . $year . '</option>';
 			}
 		}
 

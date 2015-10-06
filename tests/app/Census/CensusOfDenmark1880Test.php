@@ -43,26 +43,35 @@ class CensusOfDenmark1880Test extends \PHPUnit_Framework_TestCase {
 		$census  = new CensusOfDenmark1880;
 		$columns = $census->columns();
 
-		$this->assertCount(6, $columns);
+		$this->assertCount(9, $columns);
 		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
 		$this->assertInstanceOf(CensusColumnAge::class, $columns[1]);
-		$this->assertInstanceOf(CensusColumnCondition::class, $columns[2]);
-		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[3]);
-		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[4]);
-		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[5]);
+		$this->assertInstanceOf(CensusColumnSexMF::class, $columns[2]);
+		$this->assertInstanceOf(CensusColumnCondition::class, $columns[3]);
+		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[4]);
+		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[5]);
+		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[6]);
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
+		$this->assertInstanceOf(CensusColumnNull::class, $columns[8]);
 
-		$this->assertSame('', $columns[0]->abbreviation());
-		$this->assertSame('', $columns[1]->abbreviation());
-		$this->assertSame('', $columns[2]->abbreviation());
-		$this->assertSame('', $columns[3]->abbreviation());
-		$this->assertSame('', $columns[4]->abbreviation());
-		$this->assertSame('', $columns[5]->abbreviation());
+		$this->assertSame('TBC', $columns[0]->abbreviation());
+		$this->assertSame('TBC', $columns[1]->abbreviation());
+		$this->assertSame('TBC', $columns[2]->abbreviation());
+		$this->assertSame('TBC', $columns[3]->abbreviation());
+		$this->assertSame('TBC', $columns[4]->abbreviation());
+		$this->assertSame('TBC', $columns[5]->abbreviation());
+		$this->assertSame('TBC', $columns[6]->abbreviation());
+		$this->assertSame('TBC', $columns[7]->abbreviation());
+		$this->assertSame('TBC', $columns[8]->abbreviation());
 
-		$this->assertSame('', $columns[0]->title());
-		$this->assertSame('', $columns[1]->title());
-		$this->assertSame('', $columns[2]->title());
-		$this->assertSame('', $columns[3]->title());
-		$this->assertSame('', $columns[4]->title());
-		$this->assertSame('', $columns[5]->title());
+		$this->assertSame('To be confirmed', $columns[0]->title());
+		$this->assertSame('To be confirmed', $columns[1]->title());
+		$this->assertSame('To be confirmed', $columns[2]->title());
+		$this->assertSame('To be confirmed', $columns[3]->title());
+		$this->assertSame('To be confirmed', $columns[4]->title());
+		$this->assertSame('To be confirmed', $columns[5]->title());
+		$this->assertSame('To be confirmed', $columns[6]->title());
+		$this->assertSame('To be confirmed', $columns[7]->title());
+		$this->assertSame('To be confirmed', $columns[8]->title());
 	}
 }

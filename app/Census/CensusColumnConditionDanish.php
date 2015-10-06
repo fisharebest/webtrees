@@ -15,33 +15,23 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Individual;
 
 /**
- * Definitions for a census
+ * Marital status.
  */
-class CensusOfDenmark1787 extends CensusOfDenmark implements CensusInterface {
+class CensusColumnConditionDanish extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
-	 * When did this census occur.
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param Individual $individual
 	 *
 	 * @return string
 	 */
-	public function censusDate() {
-		return '01 JUL 1787';
-	}
-
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnFullName($this, 'TBC', 'To be confirmed'),
-			new CensusColumnAge($this, 'TBC', 'To be confirmed'),
-			new CensusColumnConditionDanish($this, 'TBC', 'To be confirmed'),
-			new CensusColumnRelationToHead($this, 'TBC', 'To be confirmed'),
-			new CensusColumnOccupation($this, 'TBC', 'To be confirmed'),
-		);
+	public function generate(Individual $individual) {
+		// G = married
+		// U = unmarried
+		// S = separated or divorced
+		return '';
 	}
 }
