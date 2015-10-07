@@ -27,7 +27,7 @@ class CensusOfDenmark1835 extends CensusOfDenmark implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '18 FEB 1834';
+		return '18 FEB 1835';
 	}
 
 	/**
