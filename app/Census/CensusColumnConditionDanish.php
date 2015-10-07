@@ -29,9 +29,18 @@ class CensusColumnConditionDanish extends AbstractCensusColumn implements Census
 	 * @return string
 	 */
 	public function generate(Individual $individual) {
-		// G = married
-		// U = unmarried
-		// S = separated or divorced
-		return '';
+		$family = $this->spouseFamily($individual);
+
+		if ($family === null) {
+			return 'Ugift'; // unmarried
+		} else {
+			if (empty($family->getFacts('_NMR'))) {
+				return 'Ugift'; // unmarried
+			} elseif (empty($family->getFacts('DIV'))) {
+				return 'Ugift'; // unmarried
+			} else {
+				return 'Gift'; // married
+			}
+		}
 	}
 }

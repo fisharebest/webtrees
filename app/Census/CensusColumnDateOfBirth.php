@@ -15,12 +15,13 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * Marital status.
+ * The individual's date of birth.
  */
-class CensusColumnCondition extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnDateOfBirth extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
@@ -29,18 +30,6 @@ class CensusColumnCondition extends AbstractCensusColumn implements CensusColumn
 	 * @return string
 	 */
 	public function generate(Individual $individual) {
-		$family = $this->spouseFamily($individual);
-
-		if ($family === null) {
-			return 'Unm'; // unmarried
-		} else {
-			if (empty($family->getFacts('_NMR'))) {
-				return 'Unm'; // unmarried
-			} elseif (empty($family->getFacts('DIV'))) {
-				return 'Div'; // divorced
-			} else {
-				return 'Mar'; // married
-			}
-		}
+		return $individual->getEstimatedBirthDate()->display(false, null, false);
 	}
 }

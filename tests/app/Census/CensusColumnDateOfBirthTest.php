@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -13,34 +14,37 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
+use Mockery;
 
 /**
- * Marital status.
+ * Test harness for the class CensusColumnAge
  */
-class CensusColumnCondition extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnDateOfBirthTest extends \PHPUnit_Framework_TestCase {
 	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return string
+	 * Delete mock objects
 	 */
-	public function generate(Individual $individual) {
-		$family = $this->spouseFamily($individual);
+	public function tearDown() {
+		Mockery::close();
+	}
 
-		if ($family === null) {
-			return 'Unm'; // unmarried
-		} else {
-			if (empty($family->getFacts('_NMR'))) {
-				return 'Unm'; // unmarried
-			} elseif (empty($family->getFacts('DIV'))) {
-				return 'Div'; // divorced
-			} else {
-				return 'Mar'; // married
-			}
-		}
+	/**
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnAge
+	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 */
+	public function testGenerateColumn() {
+		$individual = Mockery::mock(Individual::class);
+		$individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
+
+		$census = Mockery::mock(CensusInterface::class);
+		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
+
+		$column = new CensusColumnDateOfBirth($census, '', '');
+
+		$this->assertSame('32', $column->generate($individual));
 	}
 }

@@ -41,7 +41,7 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock(CensusInterface::class);
 
-		$column = new CensusColumnCondition($census, '', '');
+		$column = new CensusColumnConditionDnish($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}

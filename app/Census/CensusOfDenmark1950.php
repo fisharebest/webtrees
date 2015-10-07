@@ -38,7 +38,7 @@ class CensusOfDenmark1950 extends CensusOfDenmark implements CensusInterface {
 	public function columns() {
 		return array(
 			new CensusColumnFullName($this, 'TBC', 'To be confirmed'),
-			new CensusColumnAge($this, 'TBC', 'To be confirmed'),
+			new CensusColumnDateOfBirth($this, 'TBC', 'To be confirmed'),
 			new CensusColumnSexMF($this, 'TBC', 'To be confirmed'),
 			new CensusColumnCondition($this, 'TBC', 'To be confirmed'),
 			new CensusColumnRelationToHead($this, 'TBC', 'To be confirmed'),
