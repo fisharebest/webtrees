@@ -33,18 +33,21 @@ class CensusColumnDateOfBirthTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnAge
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnDateOfBirth
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testGenerateColumn() {
+		$date = Mockery::mock(Date::class);
+		$date->shouldReceive('display')->andReturn('1 January 1800');
+
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
+		$individual->shouldReceive('getEstimatedBirthDate')->andReturn($date);
 
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
 
 		$column = new CensusColumnDateOfBirth($census, '', '');
 
-		$this->assertSame('32', $column->generate($individual));
+		$this->assertSame('1 January 1800', $column->generate($individual));
 	}
 }

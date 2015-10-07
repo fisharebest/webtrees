@@ -46,7 +46,7 @@ class CensusOfDenmark1855Test extends \PHPUnit_Framework_TestCase {
 		$this->assertCount(8, $columns);
 		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
 		$this->assertInstanceOf(CensusColumnAge::class, $columns[1]);
-		$this->assertInstanceOf(CensusColumnCondition::class, $columns[2]);
+		$this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[2]);
 		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[3]);
 		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[4]);
 		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[5]);

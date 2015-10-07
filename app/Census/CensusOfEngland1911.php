@@ -39,7 +39,7 @@ class CensusOfEngland1911 extends CensusOfEngland implements CensusInterface {
 			new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
 			new CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
 			new CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
-			new CensusColumnCondition($this, 'Condition', 'Condition'),
+			new CensusColumnConditionEnglish($this, 'Condition', 'Condition'),
 			new CensusColumnYearsMarried($this, 'YrM', 'Years married'),
 			new CensusColumnChildrenBornAlive($this, 'ChA', 'Children born alive'),
 			new CensusColumnChildrenLiving($this, 'ChL', 'Children who are still alive'),

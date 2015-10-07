@@ -24,9 +24,9 @@ use Fisharebest\Webtrees\Individual;
 use Mockery;
 
 /**
- * Test harness for the class CensusColumnConditionDanish
+ * Test harness for the class CensusColumnConditionEnglish
  */
-class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnConditionEnglishTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Delete mock objects
 	 */
@@ -35,7 +35,7 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionEnglish
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoSpouseFamilies() {
@@ -44,13 +44,13 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock(CensusInterface::class);
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionEnglish($census, '', '');
 
-		$this->assertSame('Ugift', $column->generate($individual));
+		$this->assertSame('Unm', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionEnglish
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoFamilyNoFacts() {
@@ -63,14 +63,14 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock(CensusInterface::class);
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionEnglish($census, '', '');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$this->assertSame('Gift', $column->generate($individual));
+		$this->assertSame('Mar', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionEnglish
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoFamilyUnmarried() {
@@ -85,14 +85,14 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock(CensusInterface::class);
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionEnglish($census, '', '');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$this->assertSame('Ugift', $column->generate($individual));
+		$this->assertSame('Unm', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionEnglish
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoFamilyDivorced() {
@@ -108,9 +108,9 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock(CensusInterface::class);
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionEnglish($census, '', '');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$this->assertSame('Skilt', $column->generate($individual));
+		$this->assertSame('Div', $column->generate($individual));
 	}
 }

@@ -31,16 +31,12 @@ class CensusColumnConditionDanish extends AbstractCensusColumn implements Census
 	public function generate(Individual $individual) {
 		$family = $this->spouseFamily($individual);
 
-		if ($family === null) {
+		if ($family === null || !empty($family->getFacts('_NMR'))) {
 			return 'Ugift'; // unmarried
+		} elseif (!empty($family->getFacts('DIV'))) {
+			return 'Skilt'; // divorced
 		} else {
-			if (empty($family->getFacts('_NMR'))) {
-				return 'Ugift'; // unmarried
-			} elseif (empty($family->getFacts('DIV'))) {
-				return 'Ugift'; // unmarried
-			} else {
-				return 'Gift'; // married
-			}
+			return 'Gift'; // married
 		}
 	}
 }

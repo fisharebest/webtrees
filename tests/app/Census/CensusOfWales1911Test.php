@@ -48,7 +48,7 @@ class CensusOfWales1911Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[1]);
 		$this->assertInstanceOf(CensusColumnAgeMale::class, $columns[2]);
 		$this->assertInstanceOf(CensusColumnAgeFemale::class, $columns[3]);
-		$this->assertInstanceOf(CensusColumnCondition::class, $columns[4]);
+		$this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[4]);
 		$this->assertInstanceOf(CensusColumnYearsMarried::class, $columns[5]);
 		$this->assertInstanceOf(CensusColumnChildrenBornAlive::class, $columns[6]);
 		$this->assertInstanceOf(CensusColumnChildrenLiving::class, $columns[7]);

@@ -39,7 +39,7 @@ class CensusOfEngland1901 extends CensusOfEngland implements CensusInterface {
 		return array(
 			new CensusColumnFullName($this, 'Name', 'Name and surname'),
 			new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
-			new CensusColumnCondition($this, 'Condition', 'Condition'),
+			new CensusColumnConditionEnglish($this, 'Condition', 'Condition'),
 			new CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
 			new CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
 			new CensusColumnOccupation($this, 'Occupation', 'Rank, profession or occupation'),

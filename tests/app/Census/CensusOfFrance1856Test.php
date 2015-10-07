@@ -48,7 +48,7 @@ class CensusOfFrance1856Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf(CensusColumnGivenNames::class, $columns[1]);
 		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[2]);
 		$this->assertInstanceOf(CensusColumnAge::class, $columns[3]);
-		$this->assertInstanceOf(CensusColumnCondition::class, $columns[4]);
+		$this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[4]);
 
 		$this->assertSame('XXXX', $columns[0]->abbreviation());
 		$this->assertSame('XXXX', $columns[1]->abbreviation());
