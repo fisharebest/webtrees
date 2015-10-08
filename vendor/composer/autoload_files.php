@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
     $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     $vendorDir . '/ircmaxell/password-compat/lib/password.php',
 );
