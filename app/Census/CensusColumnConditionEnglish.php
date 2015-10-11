@@ -18,9 +18,9 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * Does the individual live in the county in which they were born.
+ * Marital status.
  */
-class CensusColumnSameCounty extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnConditionEnglish extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
@@ -29,6 +29,14 @@ class CensusColumnSameCounty extends AbstractCensusColumn implements CensusColum
 	 * @return string
 	 */
 	public function generate(Individual $individual) {
-		return '';
+		$family = $this->spouseFamily($individual);
+
+		if ($family === null || !empty($family->getFacts('_NMR'))) {
+			return 'Unm'; // unmarried
+		} elseif (!empty($family->getFacts('DIV'))) {
+			return 'Div'; // divorced
+		} else {
+			return 'Mar'; // married
+		}
 	}
 }

@@ -49,7 +49,7 @@ class CensusOfScotland1911Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf(CensusColumnAgeMale::class, $columns[2]);
 		$this->assertInstanceOf(CensusColumnAgeFemale::class, $columns[3]);
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[4]);
-		$this->assertInstanceOf(CensusColumnCondition::class, $columns[5]);
+		$this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[5]);
 		$this->assertInstanceOf(CensusColumnYearsMarried::class, $columns[6]);
 		$this->assertInstanceOf(CensusColumnChildrenBornAlive::class, $columns[7]);
 		$this->assertInstanceOf(CensusColumnChildrenLiving::class, $columns[8]);

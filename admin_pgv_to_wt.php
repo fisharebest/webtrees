@@ -554,13 +554,11 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 		try {
 			$array = unserialize($setting->u_gedcomid);
 			foreach ($array as $gedcom => $value) {
-				try {
-					$tree_id = Tree::findByName($gedcom)->getTreeId();
+				$tree = Tree::findByName($gedcom);
+				if ($tree !== null) {
 					Database::prepare(
 						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
-					)->execute(array($setting->user_id, $tree_id, 'gedcomid', $value));
-				} catch (PDOException $ex) {
-					// Invalid data?  Reference to non-existing tree?
+					)->execute(array($setting->user_id, $tree->getTreeId(), 'gedcomid', $value));
 				}
 			}
 		} catch (\ErrorException $ex) {
@@ -570,13 +568,11 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 		try {
 			$array = unserialize($setting->u_rootid);
 			foreach ($array as $gedcom => $value) {
-				try {
-					$tree_id = Tree::findByName($gedcom)->getTreeId();
+				$tree = Tree::findByName($gedcom);
+				if ($tree !== null) {
 					Database::prepare(
 						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
-					)->execute(array($setting->user_id, $tree_id, 'rootid', $value));
-				} catch (PDOException $ex) {
-					// Invalid data?  Reference to non-existing tree?
+					)->execute(array($setting->user_id, $tree->getTreeId(), 'rootid', $value));
 				}
 			}
 		} catch (\ErrorException $ex) {
@@ -586,13 +582,11 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 		try {
 			$array = unserialize($setting->u_canedit);
 			foreach ($array as $gedcom => $value) {
-				try {
-					$tree_id = Tree::findByName($gedcom)->getTreeId();
+				$tree = Tree::findByName($gedcom);
+				if ($tree !== null) {
 					Database::prepare(
 						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
-					)->execute(array($setting->user_id, $tree_id, 'canedit', $value));
-				} catch (PDOException $ex) {
-					// Invalid data?  Reference to non-existing tree?
+					)->execute(array($setting->user_id, $tree->getTreeId(), 'canedit', $value));
 				}
 			}
 		} catch (\ErrorException $ex) {
@@ -637,7 +631,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$COMMON_NAMES_ADD             = '';
 	$COMMON_NAMES_REMOVE          = '';
 	$COMMON_NAMES_THRESHOLD       = '';
-	$CONTACT_USER_ID              = '';
+	$CONTACT_EMAIL                = '';
 	$DEFAULT_PEDIGREE_GENERATIONS = '';
 	$EXPAND_NOTES                 = '';
 	$EXPAND_RELATIVES_EVENTS      = '';
@@ -659,15 +653,13 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$MAX_DESCENDANCY_GENERATIONS  = '';
 	$MAX_PEDIGREE_GENERATIONS     = '';
 	$MAX_RELATION_PATH_LENGTH     = '';
-	$MEDIA_DIRECTORY              = '';
 	$MEDIA_ID_PREFIX              = '';
 	$META_DESCRIPTION             = '';
 	$META_TITLE                   = '';
-	$MEDIA_UPLOAD                 = '';
+	$MULTI_MEDIA                  = '';
 	$NOTE_FACTS_ADD               = '';
 	$NOTE_FACTS_QUICK             = '';
 	$NOTE_FACTS_UNIQUE            = '';
-	$NOTE_ID_PREFIX               = '';
 	$NO_UPDATE_CHAN               = '';
 	$PEDIGREE_FULL_DETAILS        = '';
 	$PEDIGREE_LAYOUT              = '';
@@ -711,7 +703,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$USE_RELATIONSHIP_PRIVACY     = '';
 	$USE_RIN                      = '';
 	$WATERMARK_THUMB              = '';
-	$WEBMASTER_USER_ID            = '';
+	$WEBMASTER_EMAIL              = '';
 	$WORD_WRAPPED_NOTES           = '';
 
 	$config = str_replace(array('$INDEX_DIRECTORY', '${INDEX_DIRECTORY}'), $INDEX_DIRECTORY, $GED_DATA['config']);

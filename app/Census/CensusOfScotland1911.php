@@ -42,7 +42,7 @@ class CensusOfScotland1911 extends CensusOfScotland implements CensusInterface {
 			new CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
 			new CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
 			new CensusColumnNull($this, 'Lang', 'Language spoken'),
-			new CensusColumnCondition($this, 'Condition', 'Condition'),
+			new CensusColumnConditionEnglish($this, 'Condition', 'Condition'),
 			new CensusColumnYearsMarried($this, 'YrM', 'Years married'),
 			new CensusColumnChildrenBornAlive($this, 'ChA', 'Children born alive'),
 			new CensusColumnChildrenLiving($this, 'ChL', 'Children who are still alive'),

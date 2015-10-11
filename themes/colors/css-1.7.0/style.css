@@ -2244,12 +2244,6 @@ dd .deletelink {
 	padding: 3px;
 }
 
-.ui-state-hover a,
-.ui-state-hover a:hover,
-.ui-state-default a:link {
-	color: #000;
-}
-
 .ui-menu .ui-menu-item a {
 	font-size: 12px;
 }

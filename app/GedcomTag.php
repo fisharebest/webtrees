@@ -1799,10 +1799,10 @@ class GedcomTag {
 	/**
 	 * Translate a label/value pair, such as “Occupation: Farmer”
 	 *
-	 * @param string               $tag
-	 * @param string               $value
+	 * @param string            $tag
+	 * @param string            $value
 	 * @param GedcomRecord|null $record
-	 * @param string|null          $element
+	 * @param string|null       $element
 	 *
 	 * @return string
 	 */

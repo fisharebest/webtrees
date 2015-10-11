@@ -22,9 +22,9 @@ use Fisharebest\Webtrees\Individual;
 use Mockery;
 
 /**
- * Test harness for the class CensusColumnCondition
+ * Test harness for the class CensusColumnAge
  */
-class CensusColumnConditionTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnDateOfBirthTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Delete mock objects
 	 */
@@ -33,16 +33,21 @@ class CensusColumnConditionTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnCondition
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnDateOfBirth
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
-	public function testNull() {
+	public function testGenerateColumn() {
+		$date = Mockery::mock(Date::class);
+		$date->shouldReceive('display')->andReturn('1 January 1800');
+
 		$individual = Mockery::mock(Individual::class);
+		$individual->shouldReceive('getEstimatedBirthDate')->andReturn($date);
 
 		$census = Mockery::mock(CensusInterface::class);
+		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
 
-		$column = new CensusColumnCondition($census, '', '');
+		$column = new CensusColumnDateOfBirth($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
+		$this->assertSame('1 January 1800', $column->generate($individual));
 	}
 }

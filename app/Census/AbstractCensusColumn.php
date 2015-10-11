@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -78,7 +79,9 @@ class AbstractCensusColumn {
 	/**
 	 * Find the father of an individual
 	 *
-	 * @return Individual|null $individual
+	 * @param Individual $individual
+	 *
+	 * @return Individual|null
 	 */
 	public function father(Individual $individual) {
 		$family = $individual->getPrimaryChildFamily();
@@ -93,7 +96,9 @@ class AbstractCensusColumn {
 	/**
 	 * Find the mother of an individual
 	 *
-	 * @return Individual|null $individual
+	 * @param Individual $individual
+	 *
+	 * @return Individual|null
 	 */
 	public function mother(Individual $individual) {
 		$family = $individual->getPrimaryChildFamily();
@@ -129,6 +134,31 @@ class AbstractCensusColumn {
 	 */
 	public function place() {
 		return $this->census->censusPlace();
+	}
+
+	/**
+	 * Find the current spouse family of an individual
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Family|null
+	 */
+	public function spouseFamily(Individual $individual) {
+		// Exclude families that were created after this census date
+		$families = array();
+		foreach ($individual->getSpouseFamilies() as $family) {
+			if (Date::compare($family->getMarriageDate(), $this->date()) <= 0) {
+				$families[] = $family;
+			}
+		}
+
+		if (empty($families)) {
+			return null;
+		} else {
+			usort($families, function(Family $x, Family $y) { return Date::compare($x->getMarriageDate(), $y->getMarriageDate()); });
+
+			return end($families);
+		}
 	}
 
 	/**

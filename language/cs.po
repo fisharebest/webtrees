@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-26 21:40+0100\n"
+"PO-Revision-Date: 2015-10-08 10:52+0100\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.3\n"
+"X-Generator: Weblate 2.4\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -9970,19 +9970,19 @@ msgstr "Nežijící"
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1708
 msgid "Not married"
-msgstr "Svobodná/ý"
+msgstr "Nesezdaní"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1704
 msgctxt "FEMALE"
 msgid "Not married"
-msgstr "Svobodná"
+msgstr "Nesezdaní"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1700
 msgctxt "MALE"
 msgid "Not married"
-msgstr "Svobodný"
+msgstr "Nesezdaní"
 
 #: admin.php:650
 msgid "Not verified by the user"

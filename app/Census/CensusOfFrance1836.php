@@ -41,7 +41,7 @@ class CensusOfFrance1836 extends CensusOfFrance implements CensusInterface {
 			new CensusColumnGivenNames($this, 'XXXX', 'XXXX'),
 			new CensusColumnOccupation($this, 'XXXX', 'XXXX'),
 			new CensusColumnAge($this, 'XXXX', 'XXXX'),
-			new CensusColumnCondition($this, 'XXXX', 'XXXX'),
+			new CensusColumnConditionEnglish($this, 'XXXX', 'XXXX'),
 		);
 	}
 }
