@@ -24,11 +24,12 @@ class CensusColumnMotherForeign extends AbstractCensusColumn implements CensusCo
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
-	 * @param Individual $individual
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function generate(Individual $individual) {
+	public function generate(Individual $individual, Individual $head = null) {
 		$mother = $this->mother($individual);
 
 		if ($mother && $this->country($mother->getBirthPlace()) !== $this->place()) {

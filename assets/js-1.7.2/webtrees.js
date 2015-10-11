@@ -494,11 +494,12 @@ function addnewnote(field) {
 	}, null, field);
 }
 
-function addnewnote_assisted(field, xref) {
+function addnewnote_assisted(field, xref, census) {
 	return edit_interface({
 		"action": "addnewnote_assisted",
 		"noteid": "newnote",
-		"xref":   xref
+		"xref":   xref,
+		"census": census
 	}, assist_window_specs, field);
 }
 
