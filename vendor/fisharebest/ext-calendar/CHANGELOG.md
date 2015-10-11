@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 2.1.1 (2015-09-21)
+ - Test against PHP 7.0
+
 ## 2.1.0 (2015-04-02)
  - Add JewishCalendar::numberToHebrewNumerals() to format Jewish dates
 

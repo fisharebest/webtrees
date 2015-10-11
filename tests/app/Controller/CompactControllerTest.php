@@ -18,7 +18,7 @@
 /**
  * Test harness for the class CompactController
  */
-class CompactControllerTest extends PHPUnit_Framework_TestCase {
+class CompactControllerTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */

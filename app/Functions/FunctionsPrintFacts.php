@@ -607,7 +607,6 @@ class FunctionsPrintFacts {
 					$srec = substr($factrec, $spos1, $spos2 - $spos1);
 					$lt   = preg_match_all("/$nlevel \w+/", $srec, $matches);
 					$data .= '<div class="fact_SOUR">';
-					$data .= '<span class="label">';
 					$elementID = Uuid::uuid4();
 					if ($WT_TREE->getPreference('EXPAND_SOURCES')) {
 						$plusminus = 'icon-minus';
@@ -617,9 +616,8 @@ class FunctionsPrintFacts {
 					if ($lt > 0) {
 						$data .= '<a href="#" onclick="return expand_layer(\'' . $elementID . '\');"><i id="' . $elementID . '_img" class="' . $plusminus . '"></i></a> ';
 					}
-					$data .= I18N::translate('Source') . ':</span> <span class="field">';
-					$data .= '<a href="' . $source->getHtmlUrl() . '">' . $source->getFullName() . '</a>';
-					$data .= '</span></div>';
+					$data .= GedcomTag::getLabelValue('SOUR', '<a href="' . $source->getHtmlUrl() . '">' . $source->getFullName() . '</a>', null, 'span');
+					$data .= '</div>';
 
 					$data .= "<div id=\"$elementID\"";
 					if ($WT_TREE->getPreference('EXPAND_SOURCES')) {

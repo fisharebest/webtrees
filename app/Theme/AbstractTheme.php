@@ -322,8 +322,10 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function favicon() {
-		// Use the default webtrees favicon
-		return '<link rel="icon" href="favicon.ico" type="image/x-icon">';
+		return
+			'<link rel="icon" href="' . $this->assetUrl() . 'favicon.png" type="image/png">' .
+			'<link rel="icon" type="image/png" href="' . $this->assetUrl() .'favicon192.png" sizes="192x192">' .
+			'<link rel="apple-touch-icon" sizes="180x180" href="' . $this->assetUrl() .'favicon180.png">';
 	}
 
 	/**

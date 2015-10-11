@@ -19,7 +19,12 @@
 		"patchwork/utf8": "1.*",
 		"pclzip/pclzip": "2.*",
 		"ramsey/uuid": "2.*",
-		"tecnick.com/tcpdf": "6.*"
+		"tecnickcom/tcpdf": "6.*"
+	},
+	"require-dev": {
+		"mockery/mockery": "*",
+		"phpunit/phpunit": "*",
+		"satooshi/php-coveralls": "dev-master"
 	},
 	"extra": {
 		"branch-alias": {

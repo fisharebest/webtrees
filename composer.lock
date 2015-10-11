@@ -4,20 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "04b82f415dff853254bb91505ad80ae1",
+    "hash": "3d0090288dce03aa53c3daa153dc5584",
+    "content-hash": "e1c36ecdd4ad1182d985e8324de27004",
     "packages": [
         {
             "name": "bombayworks/zendframework1",
-            "version": "v1.12.15",
+            "version": "v1.12.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bombayworks/zendframework1.git",
-                "reference": "a9cf9083eda9c2df8ae88b51f83d48347fef9d30"
+                "reference": "0b71c0311a1f5734e14751755aa7f7c4736b2892"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/a9cf9083eda9c2df8ae88b51f83d48347fef9d30",
-                "reference": "a9cf9083eda9c2df8ae88b51f83d48347fef9d30",
+                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/0b71c0311a1f5734e14751755aa7f7c4736b2892",
+                "reference": "0b71c0311a1f5734e14751755aa7f7c4736b2892",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +59,7 @@
                 "ZF1",
                 "framework"
             ],
-            "time": "2015-08-11 16:00:07"
+            "time": "2015-09-15 16:00:12"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -152,16 +153,16 @@
         },
         {
             "name": "fisharebest/ext-calendar",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/ext-calendar.git",
-                "reference": "e34274eb932db010369ebe8c76c6b6a6a2ad14c5"
+                "reference": "4ad4547f91073c4266274c5375bcca981e1e98ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/e34274eb932db010369ebe8c76c6b6a6a2ad14c5",
-                "reference": "e34274eb932db010369ebe8c76c6b6a6a2ad14c5",
+                "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/4ad4547f91073c4266274c5375bcca981e1e98ec",
+                "reference": "4ad4547f91073c4266274c5375bcca981e1e98ec",
                 "shasum": ""
             },
             "require": {
@@ -206,7 +207,7 @@
                 "persian",
                 "shamsi"
             ],
-            "time": "2015-04-02 20:40:10"
+            "time": "2015-09-21 15:12:48"
         },
         {
             "name": "fisharebest/localization",
@@ -518,17 +519,17 @@
             "time": "2015-08-31 13:34:50"
         },
         {
-            "name": "tecnick.com/tcpdf",
-            "version": "6.2.11",
+            "name": "tecnickcom/tcpdf",
+            "version": "6.2.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "354433a33946ae7497c3eab291eaaf814bccbfab"
+                "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/354433a33946ae7497c3eab291eaaf814bccbfab",
-                "reference": "354433a33946ae7497c3eab291eaaf814bccbfab",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/2f732eaa91b5665274689b1d40b285a7bacdc37f",
+                "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f",
                 "shasum": ""
             },
             "require": {
@@ -578,13 +579,15 @@
                 "pdf417",
                 "qrcode"
             ],
-            "time": "2015-08-02 12:30:27"
+            "time": "2015-09-12 10:08:34"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": null,
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "satooshi/php-coveralls": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

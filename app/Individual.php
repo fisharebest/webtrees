@@ -1190,16 +1190,6 @@ class Individual extends GedcomRecord {
 			$full = substr($full, 0, $pos) . '@P.N. ' . substr($full, $pos);
 		}
 
-		// The NPFX field might be present, but not appear in the NAME
-		if ($NPFX && strpos($full, "$NPFX ") !== 0) {
-			$full = "$NPFX $full";
-		}
-
-		// The NSFX field might be present, but not appear in the NAME
-		if ($NSFX && strrpos($full, " $NSFX") !== strlen($full) - strlen(" $NSFX")) {
-			$full = "$full $NSFX";
-		}
-
 		// GEDCOM nicknames should be specificied in a NICK field, or in the
 		// NAME filed, surrounded by ASCII quotes (or both).
 		if ($NICK && strpos($full, '"' . $NICK . '"') === false) {

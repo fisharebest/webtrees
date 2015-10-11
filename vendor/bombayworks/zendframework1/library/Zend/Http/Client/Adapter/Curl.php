@@ -222,7 +222,7 @@ class Zend_Http_Client_Adapter_Curl implements Zend_Http_Client_Adapter_Interfac
         }
 
         // Set connection timeout
-        $connectTimeout  = $this->config['timeout'];
+        $connectTimeout  = $this->_config['timeout'];
         $constant        = CURLOPT_CONNECTTIMEOUT;
         if (defined('CURLOPT_CONNECTTIMEOUT_MS')) {
             $connectTimeout *= 1000;
@@ -232,7 +232,7 @@ class Zend_Http_Client_Adapter_Curl implements Zend_Http_Client_Adapter_Interfac
 
         // Set request timeout (once connection is established)
         if (array_key_exists('request_timeout', $this->_config)) {
-            $requestTimeout  = $this->config['request_timeout'];
+            $requestTimeout  = $this->_config['request_timeout'];
             $constant        = CURLOPT_TIMEOUT;
             if (defined('CURLOPT_TIMEOUT_MS')) {
                 $requestTimeout *= 1000;

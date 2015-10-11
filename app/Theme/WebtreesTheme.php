@@ -32,15 +32,6 @@ class WebtreesTheme extends AbstractTheme implements ThemeInterface {
 	}
 
 	/**
-	 * HTML link to a "favorites icon".
-	 *
-	 * @return string
-	 */
-	protected function favicon() {
-		return '<link rel="icon" href="' . $this->assetUrl() . 'favicon.png" type="image/png">';
-	}
-
-	/**
 	 * Add markup to a flash message.
 	 *
 	 * @param \stdClass $message

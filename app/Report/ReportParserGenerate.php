@@ -953,7 +953,8 @@ class ReportParserGenerate extends ReportParserBase {
 						$value = substr($value, 6);
 					}
 				}
-				if ($tag === 'NOTE' || $tag === 'TEXT') {
+				$tmp = explode(':', $tag);
+				if (in_array(end($tmp),  array('NOTE', 'TEXT'))) {
 					$value = Filter::formatText($value, $WT_TREE); // We'll strip HTML in addText()
 				}
 				$this->current_element->addText($value);
