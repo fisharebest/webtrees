@@ -1178,7 +1178,6 @@ a:hover .nameZoom {
 #new_passwd_form label,
 #verify-form label {
 	display: block;
-	text-align: right;
 }
 
 #login-form label input,
@@ -3440,6 +3439,11 @@ table.table-census-assistant th {
 	left: 0;
 }
 
+#field_table, #parent_table {
+	width: 40%;
+	min-width: 600px;
+}
+
 /* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {
@@ -4486,8 +4490,16 @@ footer {
 	[dir=rtl] #search-page-table .value {
 		margin: 0 30% 0 0;
 	}
+	/* Search */
 	#search-page-table > input {
 		width: 20px;
+	}
+	#field_table, #parent_table {
+		width: 80%;
+		min-width: 380px;
+	}
+	.list_label, .list_value {
+		white-space: normal;
 	}
 }
 
@@ -4555,5 +4567,16 @@ footer {
 	/* Reports */
 	#reportengine-page table {
 		width: 100%;
+	}
+	/* Login */
+	#register-form div, #verify-form div {
+		text-align: left;
+	}
+	#register-form, #verify-form {
+		width: auto;
+	}
+	/* Advanced Search *//
+	#field_table, #parent_table {
+		min-width: 100%;
 	}
 }

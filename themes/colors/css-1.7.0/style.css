@@ -1226,7 +1226,6 @@ a:hover .nameZoom {
 #new_passwd_form label,
 #verify-form label {
 	display: block;
-	text-align: right;
 }
 
 #login-form label input,
@@ -3536,6 +3535,11 @@ table.table-census-assistant th {
 	left: 0;
 }
 
+#field_table, #parent_table {
+	width: 30%;
+	min-width: 500px;
+}
+
 /* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {
@@ -5290,6 +5294,13 @@ footer {
 	#search-page-table > input {
 		width: 20px;
 	}
+	#field_table, #parent_table {
+		width: 80%;
+		min-width: 380px;
+	}
+	.list_label, .list_value {
+		white-space: normal;
+	}
 	/* Lists */
 	#place_hierarchy td {
 		white-space: normal;
@@ -5298,10 +5309,17 @@ footer {
 	#reportengine-page table {
 		width: 100%;
 	}
+	/* Login */
+	#register-form div, #verify-form div {
+		text-align: left;
+	}
+	#register-form, #verify-form {
+		width: auto;
+	}
 }
 
-@media (max-width: 400px) {
-/* Header */
+@media (max-width: 450px) {
+	/* Header */
 	.secondary-menu {
 		float: left;
 		margin: 0px 5px 4px;
@@ -5324,8 +5342,7 @@ footer {
 	.primary-menu > li > ul {
 		top: 32px;
 	}
-
-/* Front Page */
+	/* Front Page */
 	#index_main_blocks {
 		float: left;
 		width: 100%;
@@ -5337,7 +5354,7 @@ footer {
 	.stat-table1, .stat-table2{
 		width: 100%;
 	}
-/* Indi Page */
+	/* Indi Page */
 	#indi_left {
 		float: left;
 		width: 100%;
@@ -5357,12 +5374,16 @@ footer {
 		width: 100%;
 		display: inline;
 	}
-/* Content */
+	/* Content */
 	#content {
 		margin-top: 45px;
     }
 	.header-search {
 		display: block;
 		margin-top: 5px;
+	}
+	/* Advanced Search */
+	#field_table, #parent_table {
+		min-width: 100%;
 	}
 }
