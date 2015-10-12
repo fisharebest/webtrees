@@ -297,17 +297,6 @@ if ($action === 'submit') {
 					if ($imgsize['WxH']) {
 						echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
 					}
-					
-					
-
-					
-					//$mediatype = $mediaobject->getMediaType();
-					//if ($mediatype) {
-					//	echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
-					//}
-					
-					
-					
 				} else {
 					echo '<p class="ui-state-error">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $mediaobject->getFilename()), '</p>';
 				}
