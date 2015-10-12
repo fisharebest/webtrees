@@ -286,6 +286,10 @@ if ($action === 'submit') {
 				if ($mediaobject->fileExists()) {
 					if (Auth::isEditor($WT_TREE)) {
 						echo GedcomTag::getLabelValue('FILE', $mediaobject->getFilename());
+						$mediatype = $mediaobject->getMediaType();
+						if ($mediatype) {
+						echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
+						}
 					}
 					echo GedcomTag::getLabelValue('FORM', $mediaobject->mimeType());
 					echo GedcomTag::getLabelValue('__FILE_SIZE__', $mediaobject->getFilesize());
@@ -293,7 +297,17 @@ if ($action === 'submit') {
 					if ($imgsize['WxH']) {
 						echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
 					}
-					echo GedcomTag::getLabelValue('MEDI', $mediaobject->getMediatype());
+					
+					
+
+					
+					//$mediatype = $mediaobject->getMediaType();
+					//if ($mediatype) {
+					//	echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
+					//}
+					
+					
+					
 				} else {
 					echo '<p class="ui-state-error">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $mediaobject->getFilename()), '</p>';
 				}
