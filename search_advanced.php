@@ -129,7 +129,6 @@ echo '</script>';
 <input type="hidden" name="isPostBack" value="true">
 
 
-<div class="table-holder">
 <table id="field_table" class="list_table" border="0">
 	<!-- // search terms -->
 	<?php
@@ -206,9 +205,6 @@ echo '</script>';
 	</tr>
 
 	<?php } ?>
-	</table>
-					
-				<table id="parent_table" class="list_table"  border="0">
 					<!--  father -->
 					<tr>
 						<td colspan="2" class="facts_label03" style="text-align:center;">
@@ -287,7 +283,6 @@ echo '</script>';
 					<?php $j++; ?>
 					<!--/tr-->
 				</table>
-			</div>
 		<div class="center" style="margin-top:10px;">
 			<a href="#" onclick="addFields();"><?php echo I18N::translate('Add more fields'); ?></a>
 			<p><input type="submit" value="<?php echo I18N::translate('Search'); ?>"></p>
