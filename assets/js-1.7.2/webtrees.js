@@ -1271,7 +1271,7 @@ jQuery(".menu-language").on("click", "li a", function() {
 		action: "language",
 		language: $(this).data("language"),
 		csrf: WT_CSRF_TOKEN
-	}, function() { window.location.href = window.location.href; /*location.reload();*/ });
+	}, function() { location.reload(); });
 });
 
 // Activate the theme selection menu.
