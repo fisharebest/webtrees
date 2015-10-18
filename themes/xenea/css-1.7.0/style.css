@@ -315,8 +315,8 @@ div.fact_SHARED_NOTE {
 }
 
 .facts_label03 {
-	color: #f00;
-	background-color: #84beff;
+	color: #fff;
+	background-color: #81a9cb;
 	font-size: 12px;
 	padding: 4px;
 	text-align: center;
@@ -1191,7 +1191,6 @@ a:hover .nameZoom {
 #new_passwd_form label,
 #verify-form label {
 	display: block;
-	text-align: right;
 }
 
 #login-form label input,
@@ -3418,6 +3417,11 @@ table.table-census-assistant th {
 	left: 0;
 }
 
+#field_table, #parent_table {
+	width: 30%;
+	min-width: 500px;
+}
+
 /* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {
@@ -5144,15 +5148,15 @@ footer {
 	}
 }
 
-/* Mobile low resolution viewport */
+/* Mobile low and high resolution viewports */
 @media (max-width: 600px) {
 	.primary-menu {
-		padding: 0;
-		margin: 0;
-		font-size: 10px;
+		display: block;
+		margin: 0 5px
 	}
 	.primary-menu > li {
 		width: 50px;
+		min-width: 40px;
 	}
 	/* Search */
 	#search-page-table {
@@ -5174,10 +5178,23 @@ footer {
 	#search-page-table > input {
 		width: 20px;
 	}
+	#field_table, #parent_table {
+		width: 80%;
+		min-width: 380px;
+	}
+	.list_label, .list_value {
+		white-space: normal;
+	}
+	/* Login */
+	#register-form div, #verify-form div {
+		text-align: left;
+	}
+	#register-form, #verify-form {
+		width: 95%;
+	}
 }
-
 @media (max-width: 400px) {
-/* Header */
+	/* Header */
 	nav ul {
 		margin: 0;
 		padding: 0;
@@ -5187,10 +5204,6 @@ footer {
 	}
 	.header-upper {
 		height: 70px;
-	}
-	.primary-menu > li {
-		width: 45px;
-		margin: 0 0 20px 0;
 	}
 	header nav {
 		height: 40px;
@@ -5226,5 +5239,9 @@ footer {
 		float: left;
 		width: 100%;
 		display: inline;
+	}
+	/* Advanced Search */
+	#field_table, #parent_table {
+		min-width: 100%;
 	}
 }
