@@ -107,16 +107,16 @@
         },
         {
             "name": "fisharebest/algorithm",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/algorithm.git",
-                "reference": "39c51e71151410c72047467d63231aa377cf934a"
+                "reference": "01ed4471cb5ec2e6f5bf6756221f658d67c1c8d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/algorithm/zipball/39c51e71151410c72047467d63231aa377cf934a",
-                "reference": "39c51e71151410c72047467d63231aa377cf934a",
+                "url": "https://api.github.com/repos/fisharebest/algorithm/zipball/01ed4471cb5ec2e6f5bf6756221f658d67c1c8d8",
+                "reference": "01ed4471cb5ec2e6f5bf6756221f658d67c1c8d8",
                 "shasum": ""
             },
             "require": {
@@ -147,9 +147,11 @@
             "homepage": "https://github.com/fisharebest/algorithm",
             "keywords": [
                 "Algorithm",
-                "dijkstra"
+                "diff",
+                "dijkstra",
+                "myers"
             ],
-            "time": "2015-05-15 17:06:43"
+            "time": "2015-10-20 12:39:25"
         },
         {
             "name": "fisharebest/ext-calendar",
@@ -358,16 +360,16 @@
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.2.3",
+            "version": "v1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchwork/utf8.git",
-                "reference": "a7a9a987d01d052ff9c99510ecbd07ebc6c270f2"
+                "reference": "25a55c6c668de61cc3b97aab4237ebf6dadabe17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchwork/utf8/zipball/a7a9a987d01d052ff9c99510ecbd07ebc6c270f2",
-                "reference": "a7a9a987d01d052ff9c99510ecbd07ebc6c270f2",
+                "url": "https://api.github.com/repos/tchwork/utf8/zipball/25a55c6c668de61cc3b97aab4237ebf6dadabe17",
+                "reference": "25a55c6c668de61cc3b97aab4237ebf6dadabe17",
                 "shasum": ""
             },
             "require": {
@@ -413,7 +415,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2015-06-25 08:17:49"
+            "time": "2015-10-14 08:58:12"
         },
         {
             "name": "pclzip/pclzip",

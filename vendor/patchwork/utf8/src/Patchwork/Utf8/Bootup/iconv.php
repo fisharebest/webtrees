@@ -16,6 +16,8 @@ const ICONV_VERSION = '1.0';
 const ICONV_MIME_DECODE_STRICT = 1;
 const ICONV_MIME_DECODE_CONTINUE_ON_ERROR = 2;
 
+@trigger_error('You are using a fallback implementation of the iconv extension. Installing the native one is highly recommended instead.', E_USER_DEPRECATED);
+
 function iconv($from, $to, $s) {return s\Iconv::iconv($from, $to, $s);};
 function iconv_get_encoding($type = 'all') {return s\Iconv::iconv_get_encoding($type);};
 function iconv_set_encoding($type, $charset) {return s\Iconv::iconv_set_encoding($type, $charset);};
@@ -27,7 +29,7 @@ if (extension_loaded('mbstring'))
 {
     function iconv_strlen($s, $enc = INF)                               {INF === $enc and $enc = s\Iconv::$internal_encoding; return mb_strlen($s, $enc);};
     function iconv_strpos($s, $needle, $offset = 0, $enc = INF)         {INF === $enc and $enc = s\Iconv::$internal_encoding; return mb_strpos($s, $needle, $offset, $enc);};
-    function iconv_strrpos($s, $needle, $enc = INF)                     {INF === $enc and $enc = s\Iconv::$internal_encoding; return mb_strrpos($s, $needle, $enc);};
+    function iconv_strrpos($s, $needle, $enc = INF)                     {INF === $enc and $enc = s\Iconv::$internal_encoding; return mb_strrpos($s, $needle, 0, $enc);};
     function iconv_substr($s, $start, $length = 2147483647, $enc = INF) {INF === $enc and $enc = s\Iconv::$internal_encoding; return mb_substr($s, $start, $length, $enc);};
     function iconv_mime_decode($encoded_headers, $mode = 0, $enc = INF) {INF === $enc and $enc = s\Iconv::$internal_encoding; return mb_decode_mimeheader($encoded_headers, $mode, $enc);};
 }

@@ -15,6 +15,8 @@ const GRAPHEME_EXTR_COUNT = 0;
 const GRAPHEME_EXTR_MAXBYTES = 1;
 const GRAPHEME_EXTR_MAXCHARS = 2;
 
+@trigger_error('You are using a fallback implementation of the intl extension. Installing the native one is highly recommended instead.', E_USER_DEPRECATED);
+
 function normalizer_is_normalized($s, $form = s\Normalizer::NFC) {return s\Normalizer::isNormalized($s, $form);};
 function normalizer_normalize($s, $form = s\Normalizer::NFC) {return s\Normalizer::normalize($s, $form);};
 
