@@ -1030,7 +1030,7 @@ class FunctionsEdit {
 			$options .= '<option value=""></option>';
 			foreach ($census_place->allCensusDates() as $census) {
 				$date = new Date($census->censusDate());
-				$year = $date->minimumDate()->format('%Y');
+				$year = $date->display(false, '%Y', false);
 				$place_hierarchy = explode(', ', $census->censusPlace());
 				$options .= '<option value="' . $census->censusDate() . '" data-place="' . $census->censusPlace() . '" data-census="' . get_class($census) . '">' . $place_hierarchy[0] . ' ' . $year . '</option>';
 			}
