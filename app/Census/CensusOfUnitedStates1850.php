@@ -37,17 +37,17 @@ class CensusOfUnitedStates1850 extends CensusOfUnitedStates implements CensusInt
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this, '', ''),
-			new CensusColumnAge($this, '', ''),
-			new CensusColumnSexMF($this, '', ''),
-			new CensusColumnNull($this, '', ''), // Race
-			new CensusColumnOccupation($this, '', ''),
-			new CensusColumnNull($this, '', ''), // Value of real estate owned
-			new CensusColumnBirthPlace($this, '', ''),
-			new CensusColumnMarriedWithinYear($this, '', ''),
-			new CensusColumnNull($this, '', ''), // Attended school within year
-			new CensusColumnNull($this, '', ''), // Illiterate
-			new CensusColumnNull($this, '', ''), // Infirm
+			new CensusColumnFullName($this, 'Name', 'Name'),
+			new CensusColumnAge($this, 'Age', 'Age'),
+			new CensusColumnSexMF($this, 'Sex', 'Sex'),
+			new CensusColumnNull($this, 'Color', 'White, black, or mulatto'),
+			new CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
+			new CensusColumnNull($this, 'RE', 'Value of real estate owned'),
+			new CensusColumnBirthPlaceUnitedStates($this, 'Birthplace', 'Place of birth, naming the state, territory, or country'),
+			new CensusColumnMarriedWithinYear($this, 'Mar', 'Married within the year'),
+			new CensusColumnNull($this, 'Sch', 'Attended school within the year'),
+			new CensusColumnNull($this, 'R+W', 'Persons over 20 years of age who cannot read and write'),
+			new CensusColumnNull($this, 'Infirm', 'Whether deaf and dumb, blind, insane, idiotic, pauper or convict'),
 		);
 	}
 }
