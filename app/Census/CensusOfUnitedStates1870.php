@@ -44,7 +44,7 @@ class CensusOfUnitedStates1870 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
 			new CensusColumnNull($this, 'RE', 'Value of real estate owned'),
 			new CensusColumnNull($this, 'PE', 'Value of personal estate owned'),
-			new CensusColumnBirthPlaceUnitedStates($this, 'Birthplace', 'Place of birth, naming the state, territory, or country'),
+			new CensusColumnBirthPlaceSimple($this, 'Birthplace', 'Place of birth, naming the state, territory, or country'),
 			new CensusColumnFatherForeign($this, 'FFB', 'Father of foreign birth'),
 			new CensusColumnMotherForeign($this, 'MFB', 'Mother of foreign birth'),
 			new CensusColumnMonthIfBornWithinYear($this, 'Born', 'If born within the year, state month'),

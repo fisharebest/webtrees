@@ -51,7 +51,7 @@ class CensusOfUnitedStates1870Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[4]);
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[5]);
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[6]);
-		$this->assertInstanceOf(CensusColumnBirthPlaceUnitedStates::class, $columns[7]);
+		$this->assertInstanceOf(CensusColumnBirthPlaceSimple::class, $columns[7]);
 		$this->assertInstanceOf(CensusColumnFatherForeign::class, $columns[8]);
 		$this->assertInstanceOf(CensusColumnMotherForeign::class, $columns[9]);
 		$this->assertInstanceOf(CensusColumnMonthIfBornWithinYear::class, $columns[10]);

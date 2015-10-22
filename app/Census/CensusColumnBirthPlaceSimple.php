@@ -13,15 +13,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * The individual's date of birth.
+ * The individual's birth place.
  */
-class CensusColumnDateOfBirth extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnBirthPlaceSimple extends CensusColumnBirthPlace implements CensusColumnInterface {
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
@@ -31,6 +31,9 @@ class CensusColumnDateOfBirth extends AbstractCensusColumn implements CensusColu
 	 * @return string
 	 */
 	public function generate(Individual $individual, Individual $head = null) {
-		return $individual->getEstimatedBirthDate()->display(false, null, false);
+		$birth_place = parent::generate($individual, $head);
+		$tmp         = explode(', ', $birth_place);
+
+		return end($tmp);
 	}
 }

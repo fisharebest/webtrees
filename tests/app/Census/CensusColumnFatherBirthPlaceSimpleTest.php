@@ -22,9 +22,9 @@ use Fisharebest\Webtrees\Individual;
 use Mockery;
 
 /**
- * Test harness for the class CensusColumnAge
+ * Test harness for the class CensusColumnFatherBirthPlaceSimple
  */
-class CensusColumnDateOfBirthTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnFatherBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Delete mock objects
 	 */
@@ -33,21 +33,24 @@ class CensusColumnDateOfBirthTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnDateOfBirth
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnFatherBirthPlaceSimple
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
-	public function testGenerateColumn() {
-		$date = Mockery::mock(Date::class);
-		$date->shouldReceive('display')->andReturn('1 January 1800');
+	public function testKnownStateAndTown() {
+		$father = Mockery::mock(Individual::class);
+		$father->shouldReceive('getBirthPlace')->andReturn('Miami, Florida, United States');
+
+		$family = Mockery::mock(Family::class);
+		$family->shouldReceive('getHusband')->andReturn($father);
 
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getEstimatedBirthDate')->andReturn($date);
+		$individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
 
 		$census = Mockery::mock(CensusInterface::class);
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
+		$census->shouldReceive('censusPlace')->andReturn('United States');
 
-		$column = new CensusColumnBirthDate($census, '', '');
+		$column = new CensusColumnFatherBirthPlaceSimple($census, '', '');
 
-		$this->assertSame('1 January 1800', $column->generate($individual));
+		$this->assertSame('Florida', $column->generate($individual));
 	}
 }
