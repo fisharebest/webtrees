@@ -1141,9 +1141,10 @@ td.descriptionbox a {
 #login-text,
 #register-text,
 #user-verify {
-	margin: 20px auto;
-	width: 610px;
+	margin: 0 auto;
+	width: 40%;
 	text-align: justify;
+	min-width: 450px;
 }
 
 #login-box,
@@ -3399,7 +3400,7 @@ table.table-census-assistant th {
 	left: 0;
 }
 
-#field_table, #parent_table {
+#field_table {
 	width: 30%;
 	min-width: 500px;
 }
@@ -5176,7 +5177,7 @@ footer {
 	#search-page-table > input {
 		width: 20px;
 	}
-	#field_table, #parent_table {
+	#field_table {
 		width: 80%;
 		min-width: 380px;
 	}
@@ -5192,12 +5193,28 @@ footer {
 	}
 }
 @media (max-width: 550px) {
+	/* Secondary Menu */
+	.header-logo {
+		height: 70px;
+	}
+	.header-search {
+		display: none;
+	}
+	.secondary-menu {
+		position: absolute;
+		top: 30px;
+		right: 0;
+	}
+	[dir=rtl] .secondary-menu {
+		left: 0px;
+		right: auto;
+	}
 	/* Primary Menu */
 	.primary-menu > li {
 		min-width: 40px;
 		padding: 0;
 	}
-	nav {
+	header nav {
 		font-size: 10px;
 		padding: 0;
 	}
@@ -5211,7 +5228,12 @@ footer {
 	#register-form, #verify-form {
 		width: auto;
 	}
+	#login-text, #user-verify, #register-text, #user-verify {
+		min-width: auto;
+		width: 100%;
+	}
 }
+
 @media (max-width: 400px) {
 	/* Front Page */
 	#index_main_blocks {
@@ -5254,7 +5276,7 @@ footer {
 		width: 100%;
 	}
 	/* Advanced Search */
-	#field_table, #parent_table {
+	#field_table {
 		min-width: 100%;
 	}
 }

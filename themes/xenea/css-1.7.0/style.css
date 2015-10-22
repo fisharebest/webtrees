@@ -1151,9 +1151,10 @@ a:hover .nameZoom {
 #login-text,
 #register-text,
 #user-verify {
-	margin: 20px auto;
-	width: 610px;
+	margin: 0 auto;
+	width: 40%;
 	text-align: justify;
+	min-width: 450px;
 }
 
 #login-box,
@@ -3417,7 +3418,7 @@ table.table-census-assistant th {
 	left: 0;
 }
 
-#field_table, #parent_table {
+#field_table {
 	width: 30%;
 	min-width: 500px;
 }
@@ -5178,7 +5179,7 @@ footer {
 	#search-page-table > input {
 		width: 20px;
 	}
-	#field_table, #parent_table {
+	#field_table {
 		width: 80%;
 		min-width: 380px;
 	}
@@ -5192,18 +5193,22 @@ footer {
 	#register-form, #verify-form {
 		width: 95%;
 	}
+	#login-text, #user-verify, #register-text, #user-verify {
+		min-width: auto;
+		width: 100%;
+	}
 }
 @media (max-width: 400px) {
 	/* Header */
+	.header-search {
+		display: none;
+	}
 	nav ul {
 		margin: 0;
 		padding: 0;
 	}
 	header h1 {
 		margin: 10px 12px 0 10px;
-	}
-	.header-upper {
-		height: 70px;
 	}
 	header nav {
 		height: 40px;
@@ -5241,7 +5246,7 @@ footer {
 		display: inline;
 	}
 	/* Advanced Search */
-	#field_table, #parent_table {
+	#field_table {
 		min-width: 100%;
 	}
 }

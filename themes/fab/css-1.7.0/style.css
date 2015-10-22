@@ -1137,9 +1137,10 @@ a:hover .nameZoom {
 #login-text,
 #register-text,
 #user-verify {
-	margin: 20px auto;
-	width: 610px;
+	margin: 0 auto;
+	width: 40%;
 	text-align: justify;
+	min-width: 450px;
 }
 
 #login-box,
@@ -3436,10 +3437,10 @@ table.table-census-assistant th {
 #timeline_chart {
 	position: relative;
 	top: 0;
-	left: 0;
+	left: 0; 
 }
 
-#field_table, #parent_table {
+#field_table {
 	width: 40%;
 	min-width: 600px;
 }
@@ -4180,9 +4181,14 @@ header h1 {
 	content: "";
 }
 
+[dir=rtl] .secondary-menu {
+	float: left;
+	margin-left: 10px;
+}
+
 [dir=rtl] .secondary-menu li ul {
-	left: auto;
-	right: 0;
+	left: -15px;
+	right: auto;
 }
 
 .secondary-menu ul ul {
@@ -4345,7 +4351,6 @@ header nav {
 footer {
 	clear: both;
 	text-align: center;
-	width: 99%;
 }
 
 .powered-by-webtrees {
@@ -4494,7 +4499,7 @@ footer {
 	#search-page-table > input {
 		width: 20px;
 	}
-	#field_table, #parent_table {
+	#field_table {
 		width: 80%;
 		min-width: 380px;
 	}
@@ -4507,7 +4512,10 @@ footer {
 	/* Header */
 	header {
 		text-align: left;
-		height: 150px;
+		height: 109px;
+	}
+	header h1 {
+		width: 100%;
 	}
 	[dir=rtl] header {
 		text-align: right;
@@ -4516,11 +4524,7 @@ footer {
 		float: right;
 	}
 	.header-search {
-		display: block;
-		float: left;
-	}
-	[dir=rtl] .header-search {
-		float: right;
+		display: none;
 	}
 	.primary-menu li, .secondary-menu li {
 		float:left;
@@ -4575,8 +4579,12 @@ footer {
 	#register-form, #verify-form {
 		width: auto;
 	}
+	#login-text, #user-verify, #register-text, #user-verify {
+		min-width: auto;
+		width: 100%;
+	}
 	/* Advanced Search *//
-	#field_table, #parent_table {
+	#field_table {
 		min-width: 100%;
 	}
 }

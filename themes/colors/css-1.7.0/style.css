@@ -34,7 +34,8 @@ p {
 #content {
 	display: block;
 	clear: both;
-	margin: 10px 8px 0 8px;
+	margin: 0;
+	padding: 8px;
 }
 
 /* ====== Round Corners ======== */
@@ -1187,9 +1188,10 @@ a:hover .nameZoom {
 #login-text,
 #register-text,
 #user-verify {
-	margin: 20px auto;
-	width: 610px;
+	margin: 0 auto;
+	width: 40%;
 	text-align: justify;
+	min-width: 450px;
 }
 
 #login-box,
@@ -3535,7 +3537,7 @@ table.table-census-assistant th {
 	left: 0;
 }
 
-#field_table, #parent_table {
+#field_table {
 	width: 30%;
 	min-width: 500px;
 }
@@ -4209,7 +4211,6 @@ header h1 {
 
 [dir=rtl] header h1 {
 	float: right;
-	margin: 16px 12px 3px;
 }
 
 /* Set stack level for top two header menu rows */
@@ -4304,6 +4305,12 @@ header {
 	text-align: right;
 }
 
+/*
+[dir=rtl] .secondary-menu li:first-child,
+[dir=rtl] .secondary-menu li ul li {
+	border: 0;
+}
+*/
 .header-search {
 	display: inline;
 }
@@ -4422,7 +4429,7 @@ header nav {
 
 /* Reverse left and right on RTL pages */
 [dir=rtl] .primary-menu > li {
-	margin: 4px 7px 0 0;
+	margin: 4px 7px 4px 9px;
 }
 
 [dir=rtl] .primary-menu li {
@@ -5268,13 +5275,20 @@ footer {
 
 /* Mobile low and high resolution viewports */
 @media (max-width: 600px) {
-	#content {
-		margin-top: 50px;
-	}
+	.header-search {
+		display: none;
+		}
+	.secondary-menu {
+		min-height: 26px;
+		min-width: 458px;
+		text-align: right;
+		margin: 12px 10px;
+		}
 	[dir="rtl"] .secondary-menu {
 		clear:both;
 		float: left;
-		margin: 12px 10px 12px 10px;
+		text-align: left;
+		margin: 5px 10px;
 	}
 	/* Search */
 	#search-page-table div #query {
@@ -5288,13 +5302,6 @@ footer {
     }
 	#search-page-table > input {
 		width: 20px;
-	}
-	#field_table, #parent_table {
-		width: 80%;
-		min-width: 380px;
-	}
-	.list_label, .list_value {
-		white-space: normal;
 	}
 	/* Lists */
 	#place_hierarchy td {
@@ -5311,21 +5318,17 @@ footer {
 	#register-form, #verify-form {
 		width: auto;
 	}
+	#login-text, #user-verify, #register-text, #user-verify {
+		min-width: auto;
+		width: 100%;
+	}
 }
 
-@media (max-width: 450px) {
-	/* Header */
-	.secondary-menu {
-		float: right;
-		font-size: 14px;
-		margin: 5px 5px 4px;
-	}
-	.secondary-menu ul li a {
-    padding: 5px 5px 2px 2px;
-}
+@media (max-width: 400px) {
+/* Header */
 	[dir=rtl] .secondary-menu {
-		float: left;
-		margin: 0px 5px 4px;
+		text-align: left;
+		margin: 5px 10px;
 	}
 	.primary-menu {
 		height: 40px;
@@ -5341,13 +5344,7 @@ footer {
 	.primary-menu > li > ul {
 		top: 32px;
 	}
-	.header-search {
-		float: right;
-	}
-	[dir=rtl] .header-search {
-		float: left;
-	}
-	/* Front Page */
+/* Front Page */
 	#index_main_blocks {
 		float: left;
 		width: 100%;
@@ -5359,7 +5356,7 @@ footer {
 	.stat-table1, .stat-table2{
 		width: 100%;
 	}
-	/* Indi Page */
+/* Indi Page */
 	#indi_left {
 		float: left;
 		width: 100%;
@@ -5378,16 +5375,5 @@ footer {
 		float: left;
 		width: 100%;
 		display: inline;
-	}
-	/* Content */
-	#content {
-		margin-top: 45px;
-    }
-	.header-search {
-		display: none;
-	}
-	/* Advanced Search */
-	#field_table, #parent_table {
-		min-width: 100%;
 	}
 }
