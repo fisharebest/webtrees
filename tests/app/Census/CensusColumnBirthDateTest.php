@@ -24,7 +24,7 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnAge
  */
-class CensusColumnDateOfBirthTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnBirthDateTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Delete mock objects
 	 */
@@ -33,7 +33,7 @@ class CensusColumnDateOfBirthTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnDateOfBirth
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnBirthDate
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testGenerateColumn() {
