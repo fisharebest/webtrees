@@ -72,13 +72,10 @@ class CensusAssistantModule extends AbstractModule {
 		global $WT_TREE;
 
 		$controller = new SimpleController;
-
-		$filter   = Filter::get('filter');
-		$action   = Filter::get('action');
-		$callback = Filter::get('callback');
-		$multiple = Filter::getBool('multiple');
-		$census   = Filter::get('census');
-		$census   = new $census;
+		$filter     = Filter::get('filter');
+		$action     = Filter::get('action');
+		$census     = Filter::get('census');
+		$census     = new $census;
 
 		$controller
 			->restrictAccess($census instanceof CensusInterface)
