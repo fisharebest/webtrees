@@ -4293,24 +4293,24 @@ header {
 
 [dir=rtl] .secondary-menu {
 	float: left;
-	margin: 21px 0 4px 10px;
+	margin: 20px 0 12px 10px;
 }
 
-[dir=rtl] .secondary-menu ul {
-	left: auto;
-	right: 0;
+[dir=rtl] .secondary-menu li ul {
+	left: -15px;
+	right: auto;
 }
 
-[dir=rtl] .secondary-menu ul li {
+[dir=rtl] .secondary-menu li ul li {
 	text-align: right;
 }
 
-/*
 [dir=rtl] .secondary-menu li:first-child,
 [dir=rtl] .secondary-menu li ul li {
 	border: 0;
 }
-*/
+
+
 .header-search {
 	display: inline;
 }
