@@ -4217,6 +4217,8 @@ header h1 {
 .secondary-menu li li a {
 	color: #000;
 	font-weight: normal;
+	display: block;
+	padding: 3px;
 }
 
 .secondary-menu li li a:hover {

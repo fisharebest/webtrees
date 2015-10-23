@@ -4111,7 +4111,10 @@ header h1 {
 	left: auto;
 	right: 0;
 }
-
+.secondary-menu ul li a {
+	display: block;
+	padding: 3px;
+}
 .secondary-menu a {
 	background: none;
 	display: inline;

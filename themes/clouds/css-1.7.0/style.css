@@ -4275,7 +4275,7 @@ header {
 .secondary-menu ul li a {
 	background-color: #fff;
 	display: block;
-	padding: 2px 5px 2px 2px;
+	padding: 5px;
 }
 
 .secondary-menu li:hover ul {
