@@ -61,7 +61,7 @@ class AbstractCensusColumn {
 	 *
 	 * @return string - e.g. "England"
 	 */
-	protected function country($place) {
+	protected function lastPartOfPlace($place) {
 		$place = explode(', ', $place);
 
 		return end($place);

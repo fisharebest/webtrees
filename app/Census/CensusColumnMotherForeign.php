@@ -32,7 +32,7 @@ class CensusColumnMotherForeign extends AbstractCensusColumn implements CensusCo
 	public function generate(Individual $individual, Individual $head = null) {
 		$mother = $this->mother($individual);
 
-		if ($mother && $this->country($mother->getBirthPlace()) !== $this->place()) {
+		if ($mother && $this->lastPartOfPlace($mother->getBirthPlace()) !== $this->place()) {
 			return 'Y';
 		} else {
 			return '';

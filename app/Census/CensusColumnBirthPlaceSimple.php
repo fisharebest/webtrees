@@ -31,9 +31,6 @@ class CensusColumnBirthPlaceSimple extends CensusColumnBirthPlace implements Cen
 	 * @return string
 	 */
 	public function generate(Individual $individual, Individual $head = null) {
-		$birth_place = parent::generate($individual, $head);
-		$tmp         = explode(', ', $birth_place);
-
-		return end($tmp);
+		return $this->lastPartOfPlace(parent::generate($individual, $head));
 	}
 }
