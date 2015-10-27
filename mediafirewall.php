@@ -30,6 +30,7 @@ require './includes/session.php';
 $mid   = Filter::get('mid', WT_REGEX_XREF);
 $thumb = Filter::getBool('thumb');
 $media = Media::getInstance($mid, $WT_TREE);
+$face = Filter::get('face');
 
 /**
  * Send a “Not found” error as an image
@@ -276,7 +277,8 @@ if ($media->isExternal()) {
 }
 
 $which          = $thumb ? 'thumb' : 'main';
-$serverFilename = $media->getServerFilename($which);
+$individual_names = $face ? unserialize($face) : false;
+$serverFilename = $media->getServerFilename($which, $individual_names);
 
 if (!file_exists($serverFilename)) {
 	send404AsImage();

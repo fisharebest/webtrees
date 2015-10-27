@@ -449,7 +449,7 @@ class Individual extends GedcomRecord {
 		$media = $this->findHighlightedMedia();
 		if ($media) {
 			// Thumbnail exists - use it.
-			return $media->displayImage();
+			return $media->displayImage($this->getAllNames());
 		} elseif ($this->tree->getPreference('USE_SILHOUETTE')) {
 			// No thumbnail exists - use an icon
 			return '<i class="icon-silhouette-' . $this->getSex() . '"></i>';
