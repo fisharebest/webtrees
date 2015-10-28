@@ -4293,7 +4293,7 @@ header {
 
 [dir=rtl] .secondary-menu {
 	float: left;
-	margin: 20px 0 12px 10px;
+	margin: 12px 0 12px 10px;
 }
 
 [dir=rtl] .secondary-menu li ul {
