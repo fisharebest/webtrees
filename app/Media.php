@@ -191,6 +191,7 @@ class Media extends GedcomRecord {
 					if (!$found && $found3) {
 						// 3 - Name contains one first name
 						$name = $found3;
+						$face = $faces[$name];
 						$found = true;
 					}
 					// Found name in image?
@@ -199,7 +200,7 @@ class Media extends GedcomRecord {
 						$pathinfo=pathinfo($file);
 						$file=$pathinfo['dirname'].'/'.$pathinfo['filename']." ".strtr($name,array('/'=>'_')).'.'.$pathinfo['extension'];
 						if (!file_exists($file)) {
-							$this->createFaceThumbnail($main_file,$face,$file,100);
+							$this->createFaceThumbnail($main_file,$face,$file,$THUMBNAIL_WIDTH);
 						}
 					}
 				}
