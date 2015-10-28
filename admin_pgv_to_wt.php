@@ -140,8 +140,10 @@ if (!$PGV_PATH) {
 	$pgv_dirs = array();
 	$dir      = opendir(realpath('..'));
 	while (($subdir = readdir($dir)) !== false) {
-		if (is_dir('../' . $subdir) && file_exists('../' . $subdir . '/config.php')) {
-			$pgv_dirs[] = '../' . $subdir;
+		if ($subdir!='..') {
+			if (is_dir('../' . $subdir) && file_exists('../' . $subdir . '/config.php')) {
+				$pgv_dirs[] = '../' . $subdir;
+			}
 		}
 	}
 	closedir($dir);
