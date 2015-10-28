@@ -140,10 +140,9 @@ if (!$PGV_PATH) {
 	$pgv_dirs = array();
 	$dir      = opendir(realpath('..'));
 	while (($subdir = readdir($dir)) !== false) {
-		if ($subdir!='..') {
-			if (is_dir('../' . $subdir) && file_exists('../' . $subdir . '/config.php')) {
-				$pgv_dirs[] = '../' . $subdir;
-			}
+		// Exclude '..' as ascending too many levels can trigger open_basedir_restriction errors.
+		if ($subdir !== '..' && is_dir('../' . $subdir) && file_exists('../' . $subdir . '/config.php')) {
+			$pgv_dirs[] = '../' . $subdir;
 		}
 	}
 	closedir($dir);
