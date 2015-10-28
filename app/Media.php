@@ -155,68 +155,51 @@ class Media extends GedcomRecord {
 			$file = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $this->file;
 			// Is this a thumbnail of an individual?
 			if ($individual_names) {
-				// Does the image have a XMP tag?
-				$xmp = $this->getXMPTagFromFile($main_file);
-				if ($xmp) {
-					// Get face data from XMP tag
-					$faces = $this->getFaceDataFromXMPTag($xmp);
-					// Found faces?
-					if ($faces) {
-						// Search name in image with priority:
-						$found = false;
-						// 1 - Name identical
+				// Get face data from file
+				$faces = $this->getFaceDataFromFile($main_file);
+				// Found faces?
+				if ($faces) {
+					// Search name in image with priority:
+					$found = false;
+					$found3 = false;
+					// 1 - Name identical
+					foreach ($individual_names as $individual_name) {
+						foreach ($faces as $name=>$face){
+							if ($individual_name['fullNN'] == $name) {
+								$found = true;
+								break 2;
+							}
+						}
+					}
+					if (!$found) {
+						// 2 - Name contains one first name and surename
 						foreach ($individual_names as $individual_name) {
-							foreach ($faces as $name=>$face){
-								if ($individual_name['fullNN']==$name) {
-									$found = true;
-									break 2;
-								}
-							}
-						}
-						if (!$found) {
-							// 2 - Name contains first name and surename
-							foreach ($individual_names as $individual_name) {
+							$givns=explode(' ',$individual_name['givn']);
+							foreach ($givns as $givn) {
 								foreach ($faces as $name=>$face){
-									if (strpos($name,$individual_name['givn'])!==false && strpos($name,$individual_name['surn'])!==false) {
-										$found = true;
-										break 2;
+									if (strpos($name,$givn) !== false) {
+										if (!$found3) $found3=$name;
+										if (strpos($name, $individual_name['surn']) !== false) {
+											$found = true;
+											break 3;
+										}
 									}
 								}
 							}
 						}
-						if (!$found) {
-							// 3 - Name contains first name
-							foreach ($individual_names as $individual_name) {
-								foreach ($faces as $name=>$face){
-									if (strpos($name,$individual_name['givn'])!==false) {
-										$found = true;
-										break 2;
-									}
-								}
-							}
-						}
-						// Found name in image?
-						if ($found) {
-							// Does thumbnail for this name exists?
-							$pathinfo=pathinfo($file);
-							$file=$pathinfo['dirname'].'/'.$pathinfo['filename']." ".strtr($name,array('/'=>'_')).'.'.$pathinfo['extension'];
-							if (!file_exists($file)) {
-								// Get position of face
-								$image=imagecreatefromjpeg($main_file);
-								$info=array(
-									'x'=>imagesx($image),
-									'y'=>imagesy($image),
-								);
-								$exif=exif_read_data($main_file);
-								$rect=$this->getFaceCoordinates($face,$info);
-								// Create thumbnail
-								if($rect) {
-									$crop=imagecrop($image,$rect);
-									$crop=$this->rotateImageByExif($crop,$exif);
-									$thumb=imagescale($crop,100);
-									imagejpeg($thumb,$file);
-								}
-							}
+					}
+					if (!$found && $found3) {
+						// 3 - Name contains one first name
+						$name = $found3;
+						$found = true;
+					}
+					// Found name in image?
+					if ($found) {
+						// Does thumbnail for this name exists?
+						$pathinfo=pathinfo($file);
+						$file=$pathinfo['dirname'].'/'.$pathinfo['filename']." ".strtr($name,array('/'=>'_')).'.'.$pathinfo['extension'];
+						if (!file_exists($file)) {
+							$this->createFaceThumbnail($main_file,$face,$file,100);
 						}
 					}
 				}
@@ -686,12 +669,67 @@ class Media extends GedcomRecord {
 	}
 	
 	/**
+	 * This function creates a single face thumbnail
+	 */
+	public function createFaceThumbnail($filename,$face,$thumbname,$width=false) {
+		$this->readFileInformation($filename,$image,$info,$exif);
+		$this->createThumbnail($face,$image,$info,$exif,$thumbname,$width);
+	}
+	
+	/**
+	 * This function reads file information for thumbnail generation
+	 */
+	public function readFileInformation($filename,&$image,&$info,&$exif) {
+		$image=imagecreatefromjpeg($filename);
+		$info=array(
+			'x'=>imagesx($image),
+			'y'=>imagesy($image),
+		);
+		$exif=exif_read_data($filename);
+	}
+	
+	/**
+	 * This function creates the thumbnail
+	 *
+	 * @return array
+	 */
+	public function createThumbnail($face,$image,$info,$exif,$thumbname,$width=false) {
+		$rect=$this->getFaceCoordinates($face,$info);
+		// Create thumbnail
+		if($rect) {
+			$crop=imagecrop($image,$rect);
+			$crop=$this->rotateImageByExif($crop,$exif);
+			if($width) {
+				$thumb=imagescale($crop,$width);
+				imagejpeg($thumb,$thumbname);
+			} else {
+				imagejpeg($crop,$thumbname);
+			}
+		}
+		return $rect;
+	}
+	
+	/**
+	 * This function returns face information from a file
+	 *
+	 * @return array
+	 */
+	public function getFaceDataFromFile($filename) {
+		// Does the image have a XMP tag?
+		$xmp=$this->getXMPTagFromFile($filename);
+		if($xmp) {
+			// Get face data from XMP tag
+			return $this->getFaceDataFromXMPTag($xmp);
+		}
+	}
+
+	/**
 	 * This function extracts the XMP tag from a file
 	 *
 	 * @return string
 	 */
-	public function getXMPTagFromFile($file) {
-		$content=file_get_contents($file);
+	public function getXMPTagFromFile($filename) {
+		$content=file_get_contents($filename);
 		$xmp_start=strpos($content, '<x:xmpmeta');
 		$xmp_end=strpos($content, '</x:xmpmeta>');
 		$xmp_length=$xmp_end - $xmp_start;
