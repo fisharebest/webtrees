@@ -15,21 +15,21 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * The individual's date of birth.
+ * The individual's father's birth place.
  */
-class CensusColumnDateOfBirth extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnFatherBirthPlaceSimple extends CensusColumnFatherBirthPlace implements CensusColumnInterface {
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
-	 * @param Individual $individual
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function generate(Individual $individual) {
-		return $individual->getEstimatedBirthDate()->display(false, null, false);
+	public function generate(Individual $individual, Individual $head = null) {
+		return $this->lastPartOfPlace(parent::generate($individual, $head));
 	}
 }

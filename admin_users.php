@@ -818,6 +818,8 @@ default:
 		->addInlineJavascript('
 			jQuery(".table-user-list").dataTable({
 				' . I18N::datatablesI18N() . ',
+				stateSave: true,
+				stateDuration: 300,
 				processing: true,
 				serverSide: true,
 				ajax: {

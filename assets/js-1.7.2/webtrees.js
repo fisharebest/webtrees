@@ -494,11 +494,12 @@ function addnewnote(field) {
 	}, null, field);
 }
 
-function addnewnote_assisted(field, xref) {
+function addnewnote_assisted(field, xref, census) {
 	return edit_interface({
 		"action": "addnewnote_assisted",
 		"noteid": "newnote",
-		"xref":   xref
+		"xref":   xref,
+		"census": census
 	}, assist_window_specs, field);
 }
 
@@ -1271,7 +1272,7 @@ jQuery(".menu-language").on("click", "li a", function() {
 		action: "language",
 		language: $(this).data("language"),
 		csrf: WT_CSRF_TOKEN
-	}, function() { window.location.href = window.location.href; /*location.reload();*/ });
+	}, function() { location.reload(); });
 });
 
 // Activate the theme selection menu.

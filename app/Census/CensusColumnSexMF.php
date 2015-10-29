@@ -24,11 +24,12 @@ class CensusColumnSexMF extends AbstractCensusColumn implements CensusColumnInte
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
-	 * @param Individual $individual
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function generate(Individual $individual) {
+	public function generate(Individual $individual, Individual $head = null) {
 		$sex = $individual->getSex();
 
 		if ($sex === 'M' || $sex === 'F') {

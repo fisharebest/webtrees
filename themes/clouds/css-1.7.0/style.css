@@ -1183,9 +1183,10 @@ a:hover .nameZoom {
 #login-text,
 #register-text,
 #user-verify {
-	margin: 20px auto;
-	width: 610px;
+	margin: 0 auto;
+	width: 40%;
 	text-align: justify;
+	min-width: 450px;
 }
 
 #login-box,
@@ -3499,7 +3500,7 @@ table.table-census-assistant th {
 	left: 0;
 }
 
-#field_table, #parent_table {
+#field_table {
 	width: 30%;
 	min-width: 500px;
 }
@@ -4274,7 +4275,7 @@ header {
 .secondary-menu ul li a {
 	background-color: #fff;
 	display: block;
-	padding: 2px 5px 2px 2px;
+	padding: 5px;
 }
 
 .secondary-menu li:hover ul {
@@ -4297,12 +4298,12 @@ header {
     right: auto;
 }
 
-[dir=rtl] .secondary-menu ul {
-	left: auto;
-	right: -40px;
+[dir=rtl] .secondary-menu li ul {
+	left: -15;
+	right: auto;
 }
 
-[dir=rtl] .secondary-menu ul li {
+[dir=rtl] .secondary-menu li ul li {
 	text-align: right;
 }
 
@@ -5313,8 +5314,12 @@ footer .error {
 	#register-form, #verify-form {
 		width: auto;
 	}
+	#login-text, #user-verify, #register-text, #user-verify {
+		min-width: auto;
+		width: 100%;
+	}
 	/* Search */
-	#field_table, #parent_table {
+	#field_table {
 		width: 80%;
 		min-width: 380px;
 	}
@@ -5328,9 +5333,15 @@ footer .error {
 	header {
 		height: 83px;
 	}
+	.header-search {
+		display: none;
+	}
 	.secondary-menu {
-		top: 50px;
+		top: 25px;
 		margin-top: 10px;
+	}
+	.primary-menu {
+    top: 45px;
 	}
 	.primary-menu > li > a {
 		height: 20px;
@@ -5376,7 +5387,7 @@ footer .error {
 		width: 100%;
 	}
 	/* Advanced Search */
-	#field_table, #parent_table {
+	#field_table {
 		min-width: 100%;
 	}
 }

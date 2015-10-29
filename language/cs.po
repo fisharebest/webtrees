@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-10-08 10:52+0100\n"
+"PO-Revision-Date: 2015-10-21 12:11+0100\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
@@ -5765,7 +5765,7 @@ msgstr "Přesný text"
 #: famlist.php:171 indilist.php:172
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Kromě osob s manželským jménem „%s“"
+msgstr "Skrýt osoby s manželským příjmením „%s“"
 
 #: admin_media.php:666
 msgid "Exclude subfolders"
@@ -7485,7 +7485,7 @@ msgstr "Zahrnout místa, která plně vyhovují požadavkům"
 #: famlist.php:173 indilist.php:174
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Včetně osob s manželským jménem „%s“"
+msgstr "Odkrýt osoby s manželským příjmením „%s“"
 
 #: app/Module/ClippingsCartModule.php:358
 #: app/Module/ClippingsCartModule.php:691

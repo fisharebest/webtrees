@@ -61,7 +61,7 @@ class AbstractCensusColumn {
 	 *
 	 * @return string - e.g. "England"
 	 */
-	protected function country($place) {
+	protected function lastPartOfPlace($place) {
 		$place = explode(', ', $place);
 
 		return end($place);
@@ -155,7 +155,7 @@ class AbstractCensusColumn {
 		if (empty($families)) {
 			return null;
 		} else {
-			usort($families, function(Family $x, Family $y) { return Date::compare($x->getMarriageDate(), $y->getMarriageDate()); });
+			usort($families, function (Family $x, Family $y) { return Date::compare($x->getMarriageDate(), $y->getMarriageDate()); });
 
 			return end($families);
 		}

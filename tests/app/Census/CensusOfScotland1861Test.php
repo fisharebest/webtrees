@@ -62,7 +62,7 @@ class CensusOfScotland1861Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('Occupation', $columns[5]->abbreviation());
 		$this->assertSame('Birthplace', $columns[6]->abbreviation());
 		$this->assertSame('Infirm', $columns[7]->abbreviation());
-		$this->assertSame('Sch', $columns[8]->abbreviation());
+		$this->assertSame('School', $columns[8]->abbreviation());
 
 		$this->assertSame('Name and surname', $columns[0]->title());
 		$this->assertSame('Relation to head of household', $columns[1]->title());

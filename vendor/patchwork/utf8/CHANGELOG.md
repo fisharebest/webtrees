@@ -1,3 +1,14 @@
+## v1.2.5 (2015-10-14)
+
+- handle the third argument of mb_convert_encoding() being an array
+- add license files
+
+## v1.2.4 (2015-06-29)
+
+- trigger silenced deprecation notices when shims are in use
+- fix mb_strrpos() shim registration
+- fix .gitattributes
+
 ## v1.2.3 (2015-06-25)
 
 - fix mb_strrpos shim with negative offset

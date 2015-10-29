@@ -15,8 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
-
 /**
  * Definitions for a census
  */
@@ -37,7 +35,29 @@ class CensusOfUnitedStates1880 extends CensusOfUnitedStates implements CensusInt
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnNull($this, 'XXXX', 'XXXX'),
+			new CensusColumnFullName($this, 'Name', 'Name'),
+			new CensusColumnAge($this, 'Age', 'Age'),
+			new CensusColumnSexMF($this, 'Sex', 'Sex'),
+			new CensusColumnMonthIfBornWithinYear($this, 'Mon', 'If born within the year, state month'),
+			new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
+			new CensusColumnNull($this, 'Single', 'Single'),
+			new CensusColumnNull($this, 'Married', 'Married'),
+			new CensusColumnNull($this, 'Write', 'Widowed, Divorced'),
+			new CensusColumnNull($this, 'MY', 'Married during census year'),
+			new CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
+			new CensusColumnNull($this, 'Un', 'Number of months the person has been unemployed during the census year'),
+			new CensusColumnNull($this, 'Sick', 'Sickness or disability'),
+			new CensusColumnNull($this, 'Blind', 'Blind'),
+			new CensusColumnNull($this, 'DD', 'Deaf and dumb'),
+			new CensusColumnNull($this, 'Idiotic', 'Idiotic'),
+			new CensusColumnNull($this, 'Insane', 'Insane'),
+			new CensusColumnNull($this, 'Disabled', 'Maimed, crippled, bedridden or otherwise disabled'),
+			new CensusColumnNull($this, 'School', 'Attended school within the census year'),
+			new CensusColumnNull($this, 'Read', 'Cannot read'),
+			new CensusColumnNull($this, 'Write', 'Cannot write'),
+			new CensusColumnBirthPlaceSimple($this, 'Birthplace', 'Place of birth, naming the state, territory, or country'),
+			new CensusColumnFatherBirthPlaceSimple($this, 'Father’s birthplace', 'Place of birth of father, naming the state, territory, or country'),
+			new CensusColumnMotherBirthPlaceSimple($this, 'Mother’s birthplace', 'Place of birth of mother, naming the state, territory, or country'),
 		);
 	}
 }

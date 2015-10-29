@@ -1002,8 +1002,7 @@ class FunctionsEdit {
 					var option = jQuery(":selected", el);
 					jQuery("input.DATE", jQuery(el).closest("table")).val(option.val());
 					jQuery("input.PLAC", jQuery(el).closest("table")).val(option.data("place"));
-					jQuery("#setctry").val(option.data("place"));
-					jQuery("#setyear").val(option.data("year"));
+					jQuery("input.census-class", jQuery(el).closest("table")).val(option.data("census"));
 					var re = /(United States|England|Wales|Scotland|France)$/;
 					if (re.test(option.data("place"))) {
 						jQuery("#assistant-link").show();
@@ -1018,9 +1017,10 @@ class FunctionsEdit {
 					if (jQuery("#newshared_note_img").hasClass("icon-plus")) {
 						expand_layer("newshared_note");
 					}
-					var field = jQuery("#newshared_note input.NOTE")[0];
-					var xref  = jQuery("input[name=xref]").val();
-					return addnewnote_assisted(field, xref);
+					var field  = jQuery("#newshared_note input.NOTE")[0];
+					var xref   = jQuery("input[name=xref]").val();
+					var census = jQuery(".census-assistant-selector :selected").data("census");
+					return addnewnote_assisted(field, xref, census);
 				}
 			');
 
@@ -1029,18 +1029,16 @@ class FunctionsEdit {
 		foreach ($census_places as $census_place) {
 			$options .= '<option value=""></option>';
 			foreach ($census_place->allCensusDates() as $census) {
-				$date = new Date($census->censusDate());
-				$year = $date->minimumDate()->format('%Y');
+				$date            = new Date($census->censusDate());
+				$year            = $date->display(false, '%Y', false);
 				$place_hierarchy = explode(', ', $census->censusPlace());
-				$options .= '<option value="' . $census->censusDate() . '" data-year="' . $year . '" data-place="' . $census->censusPlace() . '">' . $place_hierarchy[0] . ' ' . $year . '</option>';
+				$options .= '<option value="' . $census->censusDate() . '" data-place="' . $census->censusPlace() . '" data-census="' . get_class($census) . '">' . $place_hierarchy[0] . ' ' . $year . '</option>';
 			}
 		}
 
 		return
-			'<input type="hidden" id="setctry" name="setctry" value="">' .
-			'<input type="hidden" id="setyear" name="setyear" value="">' .
 			'<input type="hidden" id="pid_array" name="pid_array" value="">' .
-			'<select onchange="selectCensus(this);">' . $options . '</select>';
+			'<select class="census-assistant-selector" onchange="selectCensus(this);">' . $options . '</select>';
 	}
 
 	/**

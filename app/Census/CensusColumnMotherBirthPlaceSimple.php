@@ -15,29 +15,21 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Individual;
 
 /**
- * Definitions for a census
+ * The individual's mother's birth place.
  */
-class CensusOfUnitedStates1940 extends CensusOfUnitedStates implements CensusInterface {
+class CensusColumnMotherBirthPlaceSimple extends CensusColumnMotherBirthPlace implements CensusColumnInterface {
 	/**
-	 * When did this census occur.
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function censusDate() {
-		return '01 APR 1940';
-	}
-
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnNull($this, 'XXXX', 'XXXX'),
-		);
+	public function generate(Individual $individual, Individual $head = null) {
+		return $this->lastPartOfPlace(parent::generate($individual, $head));
 	}
 }

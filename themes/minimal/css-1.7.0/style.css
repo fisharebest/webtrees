@@ -1131,9 +1131,10 @@ a:hover .nameZoom {
 #login-text,
 #register-text,
 #user-verify {
-	margin: 20px auto;
-	width: 610px;
+	margin: 0 auto;
+	width: 40%;
 	text-align: justify;
+	min-width: 450px;
 }
 
 #login-box,
@@ -3460,7 +3461,7 @@ table.table-census-assistant th {
 	left: 0;
 }
 
-#field_table, #parent_table {
+#field_table {
 	width: 30%;
 	min-width: 500px;
 }
@@ -4410,7 +4411,7 @@ footer {
 	.list_label, .list_value {
 		white-space: normal;
 	}
-	#field_table, #parent_table {
+	#field_table {
 		width: 80%;
 		min-width: 380px;
 	}
@@ -4427,6 +4428,16 @@ footer {
 	}
 	.stat-table1, .stat-table2{
 		width: 100%;
+	}
+	header h1 {
+		width: 100%;
+		text-align: left;
+	}
+	[dir=rtl] header h1 {
+		text-align: right;
+	}
+	.header-search {
+		display: none;
 	}
 	/* Indi Page */
 	#indi_left {
@@ -4484,5 +4495,9 @@ footer {
 	}
 	#register-form, #verify-form {
 		width: auto;
+	}
+	#login-text, #user-verify, #register-text, #user-verify {
+		min-width: auto;
+		width: 100%;
 	}
 }

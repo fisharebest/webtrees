@@ -56,28 +56,28 @@ class CensusOfUnitedStates1850Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[9]);
 		$this->assertInstanceOf(CensusColumnNull::class, $columns[10]);
 
-		$this->assertSame('', $columns[0]->abbreviation());
-		$this->assertSame('', $columns[1]->abbreviation());
-		$this->assertSame('', $columns[2]->abbreviation());
-		$this->assertSame('', $columns[3]->abbreviation());
-		$this->assertSame('', $columns[4]->abbreviation());
-		$this->assertSame('', $columns[5]->abbreviation());
-		$this->assertSame('', $columns[6]->abbreviation());
-		$this->assertSame('', $columns[7]->abbreviation());
-		$this->assertSame('', $columns[8]->abbreviation());
-		$this->assertSame('', $columns[9]->abbreviation());
-		$this->assertSame('', $columns[10]->abbreviation());
+		$this->assertSame('Name', $columns[0]->abbreviation());
+		$this->assertSame('Age', $columns[1]->abbreviation());
+		$this->assertSame('Sex', $columns[2]->abbreviation());
+		$this->assertSame('Color', $columns[3]->abbreviation());
+		$this->assertSame('Occupation', $columns[4]->abbreviation());
+		$this->assertSame('RE', $columns[5]->abbreviation());
+		$this->assertSame('Birthplace', $columns[6]->abbreviation());
+		$this->assertSame('Mar', $columns[7]->abbreviation());
+		$this->assertSame('School', $columns[8]->abbreviation());
+		$this->assertSame('R+W', $columns[9]->abbreviation());
+		$this->assertSame('Infirm', $columns[10]->abbreviation());
 
-		$this->assertSame('', $columns[0]->title());
-		$this->assertSame('', $columns[1]->title());
-		$this->assertSame('', $columns[2]->title());
-		$this->assertSame('', $columns[3]->title());
-		$this->assertSame('', $columns[4]->title());
-		$this->assertSame('', $columns[5]->title());
-		$this->assertSame('', $columns[6]->title());
-		$this->assertSame('', $columns[7]->title());
-		$this->assertSame('', $columns[8]->title());
-		$this->assertSame('', $columns[9]->title());
-		$this->assertSame('', $columns[10]->title());
+		$this->assertSame('Name', $columns[0]->title());
+		$this->assertSame('Age', $columns[1]->title());
+		$this->assertSame('Sex', $columns[2]->title());
+		$this->assertSame('White, black, or mulatto', $columns[3]->title());
+		$this->assertSame('Profession, occupation, or trade', $columns[4]->title());
+		$this->assertSame('Value of real estate owned', $columns[5]->title());
+		$this->assertSame('Place of birth, naming the state, territory, or country', $columns[6]->title());
+		$this->assertSame('Married within the year', $columns[7]->title());
+		$this->assertSame('Attended school within the year', $columns[8]->title());
+		$this->assertSame('Persons over 20 years of age who cannot read and write', $columns[9]->title());
+		$this->assertSame('Whether deaf and dumb, blind, insane, idiotic, pauper or convict', $columns[10]->title());
 	}
 }

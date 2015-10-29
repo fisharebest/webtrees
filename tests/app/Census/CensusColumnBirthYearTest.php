@@ -24,7 +24,7 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnAge
  */
-class CensusColumnDateOfBirthTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnBirthYearTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Delete mock objects
 	 */
@@ -33,12 +33,15 @@ class CensusColumnDateOfBirthTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnDateOfBirth
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnBirthYear
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testGenerateColumn() {
+		$cal_date = Mockery::mock(Date\CalendarDate::class);
+		$cal_date->shouldReceive('format')->andReturn('1800');
+
 		$date = Mockery::mock(Date::class);
-		$date->shouldReceive('display')->andReturn('1 January 1800');
+		$date->shouldReceive('minimumDate')->andReturn($cal_date);
 
 		$individual = Mockery::mock(Individual::class);
 		$individual->shouldReceive('getEstimatedBirthDate')->andReturn($date);
@@ -46,8 +49,8 @@ class CensusColumnDateOfBirthTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
 
-		$column = new CensusColumnDateOfBirth($census, '', '');
+		$column = new CensusColumnBirthYear($census, '', '');
 
-		$this->assertSame('1 January 1800', $column->generate($individual));
+		$this->assertSame('1800', $column->generate($individual));
 	}
 }
