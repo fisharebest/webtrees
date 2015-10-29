@@ -1029,8 +1029,8 @@ class FunctionsEdit {
 		foreach ($census_places as $census_place) {
 			$options .= '<option value=""></option>';
 			foreach ($census_place->allCensusDates() as $census) {
-				$date = new Date($census->censusDate());
-				$year = $date->display(false, '%Y', false);
+				$date            = new Date($census->censusDate());
+				$year            = $date->display(false, '%Y', false);
 				$place_hierarchy = explode(', ', $census->censusPlace());
 				$options .= '<option value="' . $census->censusDate() . '" data-place="' . $census->censusPlace() . '" data-census="' . get_class($census) . '">' . $place_hierarchy[0] . ' ' . $year . '</option>';
 			}

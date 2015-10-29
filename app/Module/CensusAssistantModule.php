@@ -101,7 +101,7 @@ class CensusAssistantModule extends AbstractModule {
 				usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 				foreach ($myindilist as $indi) {
 					echo '<li>';
-					echo '<a href="#" onclick="window.opener.appendCensusRow(\'' . Filter::escapeJs(CensusAssistantModule::censusTableRow($census, $indi, null)) . '\'); window.close();">';
+					echo '<a href="#" onclick="window.opener.appendCensusRow(\'' . Filter::escapeJs(self::censusTableRow($census, $indi, null)) . '\'); window.close();">';
 					echo '<b>' . $indi->getFullName() . '</b>';
 					echo '</a>';
 					echo $indi->formatFirstMajorFact(WT_EVENTS_BIRT, 1);
@@ -398,7 +398,7 @@ class CensusAssistantModule extends AbstractModule {
 		return '<tr><td></td>' . str_repeat('<td><input type="text"></td>', count($census->columns())) . '</tr>';
 	}
 
-/**
+	/**
 	 * Generate an HTML row of data for the census
 	 *
 	 * @param CensusInterface $census
@@ -436,7 +436,7 @@ class CensusAssistantModule extends AbstractModule {
 						Functions::getCloseRelationshipName($head, $grandparent) . ' - ' . $grandparent->getFullName(),
 						'#',
 						'',
-						array('onclick' => 'return appendCensusRow("' . Filter::escapeJs(CensusAssistantModule::censusTableRow($census, $grandparent, $head)) . '");')
+						array('onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $grandparent, $head)) . '");')
 					);
 					$submenu->addClass('submenuitem', '');
 					$menu->addSubmenu($submenu);
@@ -450,7 +450,7 @@ class CensusAssistantModule extends AbstractModule {
 					<?php echo $menu->getMenu(); ?>
 				</td>
 				<td class="facts_value nowrap">
-					<a href="#" onclick="return appendCensusRow('<?php echo Filter::escapeJs(CensusAssistantModule::censusTableRow($census, $spouse, $head)); ?>');">
+					<a href="#" onclick="return appendCensusRow('<?php echo Filter::escapeJs(self::censusTableRow($census, $spouse, $head)); ?>');">
 						<?php echo $spouse->getFullName(); ?>
 					</a>
 				</td>
@@ -472,7 +472,7 @@ class CensusAssistantModule extends AbstractModule {
 							Functions::getCloseRelationshipName($head, $spouse_family_spouse) . ' - ' . $spouse_family_spouse->getFullName(),
 							'#',
 							'',
-							array('onclick' => 'return appendCensusRow("' . Filter::escapeJs(CensusAssistantModule::censusTableRow($census, $spouse_family_spouse, $head)) . '");')
+							array('onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $spouse_family_spouse, $head)) . '");')
 						);
 						$submenu->addClass('submenuitem', '');
 						$menu->addSubmenu($submenu);
@@ -484,7 +484,7 @@ class CensusAssistantModule extends AbstractModule {
 						Functions::getCloseRelationshipName($head, $spouse_family_child) . ' - ' . $spouse_family_child->getFullName(),
 						'#',
 						'',
-						array('onclick' => 'return appendCensusRow("' . Filter::escapeJs(CensusAssistantModule::censusTableRow($census, $spouse_family_child, $head)) . '");')
+						array('onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $spouse_family_child, $head)) . '");')
 					);
 					$submenu->addClass('submenuitem', '');
 					$menu->addSubmenu($submenu);
@@ -498,7 +498,7 @@ class CensusAssistantModule extends AbstractModule {
 					<?php echo $menu->getMenu(); ?>
 				</td>
 				<td class="facts_value">
-					<a href="#" onclick="return appendCensusRow('<?php echo Filter::escapeJs(CensusAssistantModule::censusTableRow($census, $child, $head)); ?>');">
+					<a href="#" onclick="return appendCensusRow('<?php echo Filter::escapeJs(self::censusTableRow($census, $child, $head)); ?>');">
 						<?php echo $child->getFullName(); ?>
 					</a>
 				</td>

@@ -22,6 +22,7 @@
 		"tecnickcom/tcpdf": "6.*"
 	},
 	"require-dev": {
+		"fabpot/php-cs-fixer": "*",
 		"mockery/mockery": "*",
 		"phpunit/phpunit": "*",
 		"satooshi/php-coveralls": "dev-master"

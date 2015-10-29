@@ -184,7 +184,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 				->setPageTitle(I18N::translate('Batch update'))
 				->restrictAccess(Auth::isAdmin())
 				->pageHeader();
-		
+
 		echo $this->getJavascript();
 		?>
 		<ol class="breadcrumb small">

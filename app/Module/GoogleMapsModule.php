@@ -304,10 +304,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<div class="col-sm-9">
 					<?php
 					$options = array(
-						'ROADMAP'	=> I18N::translate('Map'),
-						'SATELLITE'	=> I18N::translate('Satellite'),
-						'HYBRID'	=> I18N::translate('Hybrid'),
-						'TERRAIN'	=> I18N::translate('Terrain')
+						'ROADMAP'   => I18N::translate('Map'),
+						'SATELLITE' => I18N::translate('Satellite'),
+						'HYBRID'    => I18N::translate('Hybrid'),
+						'TERRAIN'   => I18N::translate('Terrain'),
 					);
 					echo FunctionsEdit::selectEditControl('GM_MAP_TYPE', $options, null, $this->getSetting('GM_MAP_TYPE'), 'class="form-control"');
 					?>
@@ -482,7 +482,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<?php
 					$ph_options = array(
 						'G_DEFAULT_ICON'	=> I18N::translate('Standard'),
-						'G_FLAG'			=> I18N::translate('Flag')
+						'G_FLAG'			      => I18N::translate('Flag'),
 					);
 					echo FunctionsEdit::selectEditControl('GM_PH_MARKER', $ph_options, null, $this->getSetting('GM_PH_MARKER'), 'class="form-control"');
 					?>

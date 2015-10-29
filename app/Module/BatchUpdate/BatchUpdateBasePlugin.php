@@ -58,7 +58,7 @@ class BatchUpdateBasePlugin {
 	 */
 	public function getOptionsForm() {
 		return
-			'<div class="form-group">' . 
+			'<div class="form-group">' .
 			'<label class="control-label col-sm-3">' . I18N::translate('Keep the existing “last change” information') . '</label>' .
 			'<div class="col-sm-9">' .
 			FunctionsEdit::radioButtons('chan', array(0 => I18N::translate('no'), 1 => I18N::translate('yes')), ($this->chan ? 1 : 0), 'class="radio-inline" onchange="this.form.submit();"') .
