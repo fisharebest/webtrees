@@ -15,15 +15,18 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Controller\PageController;
-
 /**
  * Defined in edit_interface.php
  *
- * @global PageController $controller
- * @global Individual     $person
+ * @global Individual $person
  */
-global $person, $controller;
+global $person;
+/**
+ * Defined in edit_interface.php
+ *
+ * @global Controller\PageController $controller
+ */
+global $controller;
 
 ?>
 <style>

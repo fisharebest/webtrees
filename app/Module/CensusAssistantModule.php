@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Census\CensusInterface;
 use Fisharebest\Webtrees\Controller\SimpleController;
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\Functions;
