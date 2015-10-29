@@ -15,13 +15,12 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * The individual's date of birth.
+ * The individual's full name.
  */
-class CensusColumnBirthDate extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnGivenNameInitial extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
@@ -31,6 +30,15 @@ class CensusColumnBirthDate extends AbstractCensusColumn implements CensusColumn
 	 * @return string
 	 */
 	public function generate(Individual $individual, Individual $head = null) {
-		return $individual->getEstimatedBirthDate()->minimumDate()->format('%j %n %Y');
+		foreach ($individual->getAllNames() as $name) {
+			$given = $name['givn'];
+			if (strpos($given, ' ') === false) {
+				return $given;
+			} else {
+				return substr($given, 0, strpos($given, ' ') + 2);
+			}
+		}
+
+		return '';
 	}
 }

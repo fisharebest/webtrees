@@ -35,7 +35,6 @@ class CensusOfUnitedStates extends Census implements CensusPlaceInterface {
 			new CensusOfUnitedStates1910(),
 			new CensusOfUnitedStates1920(),
 			new CensusOfUnitedStates1930(),
-			new CensusOfUnitedStates1940(),
 		);
 	}
 

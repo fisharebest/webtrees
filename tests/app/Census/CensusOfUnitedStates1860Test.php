@@ -66,7 +66,7 @@ class CensusOfUnitedStates1860Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('PE', $columns[6]->abbreviation());
 		$this->assertSame('Birthplace', $columns[7]->abbreviation());
 		$this->assertSame('Mar', $columns[8]->abbreviation());
-		$this->assertSame('Sch', $columns[9]->abbreviation());
+		$this->assertSame('School', $columns[9]->abbreviation());
 		$this->assertSame('R+W', $columns[10]->abbreviation());
 		$this->assertSame('Infirm', $columns[11]->abbreviation());
 

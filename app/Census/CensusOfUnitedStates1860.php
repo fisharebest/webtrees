@@ -44,7 +44,7 @@ class CensusOfUnitedStates1860 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnNull($this, 'PE', 'Value of personal estate owned'),
 			new CensusColumnBirthPlaceSimple($this, 'Birthplace', 'Place of birth, naming the state, territory, or country'),
 			new CensusColumnMarriedWithinYear($this, 'Mar', 'Married within the year'),
-			new CensusColumnNull($this, 'Sch', 'Attended school within the year'),
+			new CensusColumnNull($this, 'School', 'Attended school within the year'),
 			new CensusColumnNull($this, 'R+W', 'Persons over 20 years of age who cannot read and write'),
 			new CensusColumnNull($this, 'Infirm', 'Whether deaf and dumb, blind, insane, idiotic, pauper or convict'),
 		);

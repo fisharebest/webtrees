@@ -35,7 +35,30 @@ class CensusOfUnitedStates1890 extends CensusOfUnitedStates implements CensusInt
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnNull($this, 'XXXX', 'XXXX'),
+			new CensusColumnGivenNameInitial($this, 'Name', 'Christian name in full, and initial of middle name'),
+			new CensusColumnSurname($this, 'Surname', 'Surname'),
+			new CensusColumnNull($this, 'CW', 'Whether a soldier, sailor or marine during the civil war (U.S. or Conf.), or widow of such person'),
+			new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of family'),
+			new CensusColumnNull($this, 'Race', 'Whether white, black, mulatto, quadroon, octoroon, Chinese, Japanese, or Indian'),
+			new CensusColumnSexMF($this, 'Sex', 'Sex'),
+			new CensusColumnAge($this, 'Age', 'Age at nearest birthday.  If under one year, give age in months'),
+			new CensusColumnNull($this, 'Condition', 'Whether single, married, widowed, or divorced'),
+			new CensusColumnMonthIfMarriedWithinYear($this, 'Mar', 'Whether married duirng the census year (June 1, 1889, to May 31, 1890)'),
+			new CensusColumnNull($this, 'Children', 'Mother of how many children, and number of these children living'),
+			new CensusColumnBirthPlaceSimple($this, 'Birthplace', 'Place of birth'),
+			new CensusColumnFatherBirthPlaceSimple($this, 'Father’s birthplace', 'Place of birth of father'),
+			new CensusColumnFatherBirthPlaceSimple($this, 'Mother’s birthplace', 'Place of birth of mother'),
+			new CensusColumnNull($this, 'US', 'Number of years in the United States'),
+			new CensusColumnNull($this, 'Nat', 'Whether naturalized'),
+			new CensusColumnNull($this, 'Papers', 'Whether naturalization papers have been taken out'),
+			new CensusColumnOccupation($this, 'Occupation', 'Profession, trade, occupation'),
+			new CensusColumnNull($this, 'Unemployed', 'Months unemployed during the census year (June 1, 1889, to May 31, 1890)'),
+			new CensusColumnNull($this, 'Read', 'Able to read'),
+			new CensusColumnNull($this, 'Write', 'Able to write'),
+			new CensusColumnNull($this, 'English', 'Able to speak English.  If not the language or dialect spoken'),
+			new CensusColumnNull($this, 'Disease', 'Whether suffering from acute or chronic disease, with name of disease and length of time afflicted'),
+			new CensusColumnNull($this, 'Infirm', 'Whether defective in mind, sight, hearing, or speech, or whether crippled, maimed, or deformed, with name of defect'),
+			new CensusColumnNull($this, 'Prisoner', 'Whether a prisoner, convict, homeless child, or pauper'),
 		);
 	}
 }

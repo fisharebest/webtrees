@@ -43,7 +43,7 @@ class CensusOfScotland1861 extends CensusOfScotland implements CensusInterface {
 			new CensusColumnOccupation($this, 'Occupation', 'Rank, profession or occupation'),
 			new CensusColumnBirthPlace($this, 'Birthplace', 'Where born'),
 			new CensusColumnNull($this, 'Infirm', 'Whether blind or deaf-and-dumb'),
-			new CensusColumnNull($this, 'Sch', 'Number of children between 5 and 13 attending school'),
+			new CensusColumnNull($this, 'School', 'Number of children between 5 and 13 attending school'),
 		);
 	}
 }
