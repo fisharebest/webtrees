@@ -5303,6 +5303,13 @@ footer {
 	#search-page-table > input {
 		width: 20px;
 	}
+	#field_table {
+		width: 80%;
+		min-width: 380px;
+	}
+	.list_label, .list_value {
+		white-space: normal;
+	}
 	/* Lists */
 	#place_hierarchy td {
 		white-space: normal;
@@ -5376,4 +5383,9 @@ footer {
 		width: 100%;
 		display: inline;
 	}
+	/* Advanced Search */
+	#field_table {
+		min-width: 100%;
+	}
+	
 }
