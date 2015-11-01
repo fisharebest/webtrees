@@ -5310,6 +5310,10 @@ footer {
 	.list_label, .list_value {
 		white-space: normal;
 	}
+	/* Phonetic Search */
+	#search-page-table .label {
+		width: 25%;
+	}
 	/* Lists */
 	#place_hierarchy td {
 		white-space: normal;
@@ -5387,5 +5391,4 @@ footer {
 	#field_table {
 		min-width: 100%;
 	}
-	
 }

@@ -2694,19 +2694,23 @@ dd .deletelink {
 	background-color: #fff;
 	border: 1px solid #000;
 	margin: 20px auto 0;
-	width: 610px;
+	width: 590px;
 }
 
 #search-page-table .label {
 	float: left;
 	font-weight: bold;
 	padding: 5px;
-	width: 180px;
+	width: 150px;
+}
+
+#search-page-table div #query {
+	width: 300px;
 }
 
 #search-page-table .value {
 	background-color: #fff;
-	margin: 0 0 0 185px;
+	margin: 0 0 0 170px;
 	padding: 5px;
 	white-space: nowrap;
 }
@@ -4415,6 +4419,16 @@ footer {
 		width: 80%;
 		min-width: 380px;
 	}
+	#search-page-table {
+		width: auto;
+	}
+	#search-page-table div #query {
+		width: 200px;
+	}
+	/* Phonetic Search */
+	#search-page-table .label {
+		width: 25%;
+	}
 }
 @media (max-width: 480px) {
 	/* Front Page */
@@ -4460,13 +4474,8 @@ footer {
 		display: inline;
 	}
 	/* Search */
-	#search-page-table {
-		width: auto;
-	}
 	#search-page-table .value {
 		margin: 0 0 0 30%;
-		clear: both;
-		float: left;
 	}
 	[dir=rtl] #search-page-table .value {
 		margin: 0 30% 0 0;
