@@ -730,11 +730,14 @@ class Media extends GedcomRecord {
 	 * @return string
 	 */
 	public function getXMPTagFromFile($filename) {
-		$content=file_get_contents($filename);
-		$xmp_start=strpos($content, '<x:xmpmeta');
-		$xmp_end=strpos($content, '</x:xmpmeta>');
-		$xmp_length=$xmp_end - $xmp_start;
-		$xmp=substr($content, $xmp_start, $xmp_length + 12);
+		$xmp=false;
+		require_once('JPEG.php');
+		$headers=get_jpeg_header_data($filename);
+		foreach($headers as $header){
+			if($header['SegName']=='APP1' && substr($header['SegData'],0,28)=='http://ns.adobe.com/xap/1.0/'){
+				$xmp=substr($header['SegData'],29);
+			}
+		}
 		
 		return $xmp;
 	}
