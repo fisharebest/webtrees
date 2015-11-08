@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-10-21 12:11+0100\n"
+"PO-Revision-Date: 2015-11-08 18:30+0100\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
@@ -2060,7 +2060,7 @@ msgstr "Použít automatické opravy na vaše rodokmenová data."
 #: app/Module/ClippingsCartModule.php:697
 #: app/Module/ClippingsCartModule.php:706
 msgid "Apply privacy settings"
-msgstr "Použít nastavení soukromí"
+msgstr "Uplatnit nastavení soukromí"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2279
@@ -7490,7 +7490,7 @@ msgstr "Odkrýt osoby s manželským příjmením „%s“"
 #: app/Module/ClippingsCartModule.php:358
 #: app/Module/ClippingsCartModule.php:691
 msgid "Include media (automatically zips files)"
-msgstr "Zahrnout média (automaticky soubory zip)"
+msgstr "Zahrnout média (automaticky se soubory zkomprimují do .zip)"
 
 #. I18N: Label for check-box
 #: admin_media.php:661 medialist.php:120
