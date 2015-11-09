@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-10-03 18:30+0200\n"
-"Last-Translator: Toni Planas <toniplanas@calvermell.cat>\n"
+"PO-Revision-Date: 2015-11-09 21:25+0100\n"
+"Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
@@ -49,7 +49,7 @@ msgstr " a "
 #: statisticsplot.php:1195 statisticsplot.php:1245 statisticsplot.php:1295
 #: statisticsplot.php:1345
 msgid " per gender"
-msgstr " per sexe"
+msgstr " per sexes"
 
 #: statisticsplot.php:889 statisticsplot.php:939 statisticsplot.php:993
 #: statisticsplot.php:1043 statisticsplot.php:1097 statisticsplot.php:1147
@@ -70,7 +70,7 @@ msgstr "#%s"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s te enllaços %3$s amb %4$s."
+msgstr "%1$s %2$s té enllaços %3$s amb %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2151
@@ -112,7 +112,7 @@ msgstr "%1$s no existeix. Potser volíeu dir %2$s?"
 #: admin_trees_check.php:204
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr "Però %1$s no te cap enllaç amb %2$s."
+msgstr "%1$s no te cap enllaç amb %2$s."
 
 #. I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:374 admin_site_upgrade.php:458
@@ -220,7 +220,7 @@ msgstr "%s i els seus avantpassats"
 #: app/Module/ClippingsCartModule.php:280
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s i les persones que en fan referència."
+msgstr "%s i les persones que hi fan referència."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:118
@@ -302,7 +302,7 @@ msgstr[1] "%s persones"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "S'ha actualitzat %s persona"
+msgstr[0] "S'ha actualitzat %s persona."
 msgstr[1] "S'han actualitzat %s persones."
 
 #: app/Module/GoogleMapsModule.php:896
@@ -3329,7 +3329,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:364
 msgid "Calculating…"
-msgstr "Calculant..."
+msgstr "Calculant…"
 
 #: app/Module/YahrzeitModule.php:280 app/Theme/AbstractTheme.php:1003
 #: lifespan.php:90
@@ -7830,12 +7830,12 @@ msgstr "Informant"
 #: app/GedcomCode/GedcomCodeRela.php:180
 msgctxt "FEMALE"
 msgid "Informant"
-msgstr "Informant"
+msgstr "Declarant"
 
 #: app/GedcomCode/GedcomCodeRela.php:178
 msgctxt "MALE"
 msgid "Informant"
-msgstr "Informant"
+msgstr "Declarant"
 
 #: login.php:314
 msgid "Information about the request is shown under the link below."
@@ -8490,7 +8490,7 @@ msgstr "Vincula aquest objecte multimèdia a una persona"
 
 #: admin_users.php:603
 msgid "Link this user to an individual in the family tree."
-msgstr "Vincula aquest usuari a una persona de l'arbre genealògic"
+msgstr "Vincula aquest usuari a una persona de l'arbre genealògic."
 
 #: app/Controller/FamilyController.php:199 app/Module/AlbumModule.php:103
 #: app/Module/AlbumModule.php:104 app/Module/CensusAssistantModule.php:335
@@ -9720,7 +9720,7 @@ msgstr "Variables MySQL"
 
 #: app/Stats.php:6873
 msgid "Myanmar"
-msgstr "Myanmar"
+msgstr "Birmània"
 
 #. I18N: gedcom tag NAME
 #: app/Controller/IndividualController.php:164 app/GedcomTag.php:601
@@ -9992,11 +9992,11 @@ msgstr "No"
 
 #: admin_trees_manage.php:101 admin_trees_manage.php:122
 msgid "No GEDCOM file was received."
-msgstr "No s'ha rebut el fitxer GEDCOM"
+msgstr "No s'ha rebut el fitxer GEDCOM."
 
 #: admin_trees_manage.php:253
 msgid "No GEDCOM files found."
-msgstr "No s'han trobat fitxers GEDCOM"
+msgstr "No s'han trobat fitxers GEDCOM."
 
 #: app/Module/GoogleMapsModule.php:900
 msgid "No ancestors in the database."
@@ -10025,7 +10025,7 @@ msgstr "No hi ha presentacions personalitzades actives."
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
-msgstr "No s'han trobat duplicats"
+msgstr "No s'han trobat duplicats."
 
 #: admin_trees_check.php:211
 msgid "No errors have been found."
@@ -12253,7 +12253,7 @@ msgstr "Seleccioneu els fets i esdeveniments a conservar d'ambdós registres."
 
 #: admin_site_config.php:627
 msgid "Select the languages that will be shown in menus."
-msgstr "Seleccioneu l'idioma que es mostrarà als menús. "
+msgstr "Seleccioneu l'idioma que es mostrarà als menús."
 
 #: app/Module/FamilyTreeStatisticsModule.php:298
 msgid "Select the stats to show in this block"
@@ -14383,12 +14383,12 @@ msgstr "Hi ha canvis pendents de supervisió."
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
 msgstr[0] "Sense canvis en el darrer %s dia."
-msgstr[1] "Sense canvis en els darrers %s dies. "
+msgstr[1] "Sense canvis en els darrers %s dies."
 
 #: login.php:239
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "No hi ha cap compte amb el nom d'usuari o adreça electrònica \"%s\". "
+msgstr "No hi ha cap compte amb el nom d'usuari o adreça electrònica \"%s\"."
 
 #: addmedia.php:184 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -16353,7 +16353,7 @@ msgstr "Pes"
 #: app/Module/UserWelcomeModule.php:50
 #, php-format
 msgid "Welcome %s"
-msgstr "Benvingut/da %s!"
+msgstr "Benvingut/da %s"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:459
@@ -17267,7 +17267,7 @@ msgstr "tanca"
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:184
 msgid "clouds"
-msgstr "clouds"
+msgstr "núvols"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:188
@@ -19591,7 +19591,7 @@ msgstr "mitjanit"
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:171
 msgid "minimal"
-msgstr "minimal"
+msgstr "mínim"
 
 #: app/Module/GoogleMapsModule.php:327
 msgid "minimum"
@@ -19871,7 +19871,7 @@ msgstr "percentatge"
 
 #: admin_trees_config.php:1078
 msgid "pixels"
-msgstr "píxels "
+msgstr "píxels"
 
 #. I18N: button label
 #: admin_trees_places.php:107
@@ -20364,7 +20364,7 @@ msgstr "cònjuge"
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: admin_site_config.php:112
 msgid "ssl"
-msgstr "ssl"
+msgstr "SSL"
 
 #: app/Functions/Functions.php:1161
 msgctxt "father’s wife’s son"
@@ -20577,7 +20577,7 @@ msgstr "tres quarts de cercle"
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:113
 msgid "tls"
-msgstr "tls"
+msgstr "TLS"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:319
@@ -20747,7 +20747,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrint.php:208
 msgid "webtrees wiki"
-msgstr "webtrees wiki"
+msgstr "wiki webtrees"
 
 #: admin_trees_manage.php:705
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
