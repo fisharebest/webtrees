@@ -29,11 +29,10 @@ class Migration32 implements MigrationInterface {
 	public function upgrade() {
 		try {
 			Database::prepare(
-				"ALTER TABLE `##site_setting` CHANGE `setting_value` ".
-				"`setting_value` TEXT NOT NULL"
+				"ALTER TABLE `##site_setting` CHANGE setting_value setting_value VARCHAR(2000) NOT NULL"
 			)->execute();
 		} catch (PDOException $ex) {
-			// Duplicate key?  Already done?
+			// Already done?
 		}
 	}
 }
