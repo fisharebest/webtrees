@@ -320,8 +320,7 @@ case 'register':
 				I18N::translate('Email address') . ' ' . Filter::escapeHtml($user->getEmail()) . Mail::EOL .
 				I18N::translate('Comments') . ' ' . Filter::escapeHtml($user_comments) . Mail::EOL . Mail::EOL .
 				I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request.') . Mail::EOL . Mail::EOL .
-				I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.') .
-				Mail::auditFooter();
+				I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.');
 
 			$mail1_subject = /* I18N: %s is a server name/URL */ I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $WT_TREE->getTitle());
 			I18N::init(WT_LOCALE);
@@ -480,9 +479,7 @@ case 'register':
 							cols="50" rows="5"
 							id="user_comments" name="user_comments"
 							placeholder="<?php /* I18N: placeholder text for registration-comments field */ I18N::translate('Explain why you are requesting an account.'); ?>"
-						>
-							<?php echo Filter::escapeHtml($user_comments); ?>
-						</textarea>
+						><?php echo Filter::escapeHtml($user_comments); ?></textarea>
 					</label>
 					<p class="small text-muted">
 						<?php echo I18N::translate('Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator.'); ?>
@@ -549,8 +546,9 @@ case 'verify_hash':
 	$webmaster = User::find($WT_TREE->getPreference('WEBMASTER_USER_ID'));
 	I18N::init($webmaster->getPreference('language'));
 
-	$user       = User::findByIdentifier($user_name);
-	$mail1_body =
+	$user          = User::findByIdentifier($user_name);
+	$edit_user_url = WT_BASE_URL . "admin_users.php?action=edit&amp;user_id=" . $user->getUserId();
+	$mail1_body    =
 		I18N::translate('Hello administrator…') .
 		Mail::EOL . Mail::EOL .
 		/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */ I18N::translate(
@@ -558,13 +556,17 @@ case 'verify_hash':
 			$user->getRealNameHtml(),
 			Filter::escapeHtml($user->getUserName()),
 			Filter::escapeHtml($user->getEmail())
-		) . Mail::EOL . Mail::EOL .
-		I18N::translate('You now need to review the account details, and set the “approved” status to “yes”.') .
+		) .
+		Mail::EOL . Mail::EOL .
+		I18N::translate('You need to review the account details.') .
+		Mail::EOL . Mail::EOL .
+		'<a href="' . $edit_user_url . '">' . $edit_user_url . '</a>' .
+		Mail::EOL . Mail::EOL .
+		/* I18N: You need to: */ I18N::translate('Set the status to “approved”.') .
 		Mail::EOL .
-		'<a href="' . WT_BASE_URL . "admin_users.php?filter=" . Filter::escapeUrl($user->getUserName()) . '">' .
-		WT_BASE_URL . "admin_users.php?filter=" . Filter::escapeUrl($user->getUserName()) .
-		'</a>' .
-		Mail::auditFooter();
+		/* I18N: You need to: */ I18N::translate('Set the access level for each tree.') .
+		Mail::EOL .
+		/* I18N: You need to: */ I18N::translate('Link the user account to an individual.');
 
 	$mail1_subject = /* I18N: %s is a server name/URL */ I18N::translate('New user at %s', WT_BASE_URL . ' ' . $WT_TREE->getTitle());
 
