@@ -68,7 +68,7 @@ class Site {
 			} else {
 				Database::prepare(
 					"REPLACE INTO `##site_setting` (setting_name, setting_value)" .
-					" VALUES (:setting_name, LEFT(:setting_value, 255))"
+					" VALUES (:setting_name, LEFT(:setting_value, 2000))"
 				)->execute(array(
 					'setting_name'  => $setting_name,
 					'setting_value' => $setting_value,
