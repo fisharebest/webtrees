@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-09-29 08:04+0100\n"
+"PO-Revision-Date: 2015-11-15 06:44+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
@@ -9847,19 +9847,19 @@ msgstr "Overleden"
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1708
 msgid "Not married"
-msgstr "Ongehuwd"
+msgstr "Relatie"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1704
 msgctxt "FEMALE"
 msgid "Not married"
-msgstr "Ongehuwd"
+msgstr "Relatie"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1700
 msgctxt "MALE"
 msgid "Not married"
-msgstr "Ongehuwd"
+msgstr "Relatie"
 
 #: admin.php:650
 msgid "Not verified by the user"
