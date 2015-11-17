@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-11-16 15:19+0100\n"
+"PO-Revision-Date: 2015-11-17 17:00+0100\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
@@ -5051,7 +5051,7 @@ msgstr "Zájem potomků"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
-msgstr "Potomek od "
+msgstr "Potomci od "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/DescendancyController.php:62
