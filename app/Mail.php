@@ -27,19 +27,6 @@ class Mail {
 	const EOL = "<br>\r\n"; // End-of-line that works for both TEXT and HTML messages
 
 	/**
-	 * Audit information to add to email footer
-	 *
-	 * @return string
-	 */
-	public static function auditFooter() {
-		return
-			self::EOL .
-			'---------------------------------------' . self::EOL .
-			'IP ADDRESS: ' . WT_CLIENT_IP . self::EOL .
-			'LANGUAGE: ' . WT_LOCALE . self::EOL;
-	}
-
-	/**
 	 * Send an external email message
 	 * Caution! gmail may rewrite the "From" header unless you have added the address to your account.
 	 *

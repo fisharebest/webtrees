@@ -5188,6 +5188,10 @@ footer {
 	.list_label, .list_value {
 		white-space: normal;
 	}
+	/* Phonetic Search */
+	#search-page-table .label {
+		width: 25%;
+	}
 	/* Login */
 	#register-form div, #verify-form div {
 		text-align: left;
