@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use PDO;
@@ -50,7 +51,6 @@ $search = Filter::get('search');
 $search = isset($search['value']) ? $search['value'] : null;
 
 $statuses = array(
-	''         => '',
 	'accepted' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('accepted'),
 	'rejected' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('rejected'),
 	'pending'  => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('pending'),
@@ -111,6 +111,31 @@ if ($gedc) {
 }
 
 switch ($action) {
+case 'update':
+	if (Filter::checkCsrf()) {
+		$change_id = Filter::post('change_id', WT_REGEX_INTEGER);
+		$row       = Database::prepare(
+			"SELECT xref, new_gedcom, old_gedcom" .
+			" FROM `##change`" .
+			" WHERE change_id = :change_id"
+		)->execute(array('change_id' => $change_id))->fetchOneRow();
+		if ($row) {
+			$record = GedcomRecord::getInstance($row->xref, $WT_TREE);
+			switch (Filter::post('activity')) {
+				case 'reject';
+				case 'undo':
+					$record->updateRecord($row->old_gedcom, false);
+					break;
+				case 'accept':
+				case 'redo';
+					$record->updateRecord($row->new_gedcom, false);
+					break;
+			}
+			return;
+		}
+	}
+	break;
+
 case 'delete':
 	$sql_delete =
 		"DELETE `##change` FROM `##change`" .
@@ -173,19 +198,67 @@ case 'load_json':
 	}
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$data = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_NUM);
-	foreach ($data as &$datum) {
-		$datum[2] = I18N::translate($datum[2]);
-		$datum[3] = '<a href="gedrecord.php?pid=' . $datum[3] . '&ged=' . $datum[7] . '">' . $datum[3] . '</a>';
-		$datum[4] = '<div class="gedcom-data" dir="ltr">' . Filter::escapeHtml($datum[4]) . '</div>';
-		$datum[5] = '<div class="gedcom-data" dir="ltr">' . Filter::escapeHtml($datum[5]) . '</div>';
-		$datum[6] = Filter::escapeHtml($datum[6]);
-		$datum[7] = Filter::escapeHtml($datum[7]);
-	}
-
+	$rows = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_OBJ);
 	// Total filtered/unfiltered rows
 	$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
 	$recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##change`")->fetchOne();
+
+	$data = array();
+	$algorithm   = new MyersDiff;
+
+	foreach ($rows as $row) {
+		$old_lines   = preg_split('/[\n]+/', $row->old_gedcom);
+		$new_lines   = preg_split('/[\n]+/', $row->new_gedcom);
+		$differences = $algorithm->calculate($old_lines, $new_lines);
+		$diff_lines  = array();
+
+		foreach ($differences as $difference) {
+			switch ($difference[1]) {
+				case MyersDiff::DELETE:
+					$diff_lines[] = '<del>' . $difference[0] . '</del>';
+					break;
+				case MyersDiff::INSERT:
+					$diff_lines[] = '<ins>' . $difference[0] . '</ins>';
+					break;
+				default:
+					$diff_lines[] = $difference[0];
+			}
+		}
+
+		$indi        = GedcomRecord::getInstance($row->xref, $WT_TREE);
+		$curr_gedcom = $indi->getGedcom();
+		$wasAccepted = strcmp($curr_gedcom, $row->new_gedcom) === 0;
+		$wasRejected = strcmp($curr_gedcom, $row->old_gedcom) === 0;
+
+		if (($wasAccepted || $wasRejected) && $row->status === 'pending') {
+			// Change is pending
+			$btn = "<button class='btn-chg-action btn btn-primary' data-parms='accept-{$row->change_id}'>" . I18N::translate('Accept') . "</button>" .
+				   "<button class='btn-chg-action btn btn-primary' data-parms='reject-{$row->change_id}'>" . I18N::translate('Reject') . "</button>";
+		} elseif ($wasAccepted) {
+			// Change was accepted
+			$btn = "<button class='btn-chg-action btn btn-primary' data-parms='undo-{$row->change_id}'>" . I18N::translate('Undo') . "</button>";
+		} elseif ($wasRejected) {
+			// Change was rejected
+			$btn = "<button class='btn-chg-action btn btn-primary' data-parms='redo-{$row->change_id}'>" . I18N::translate('Redo') . "</button>";
+		} else {
+			// This change was not the last to be made to this Gedcom so can't safely be undone / redone
+			$btn = "<button class='btn-chg-action btn btn-primary' disabled>" . I18N::translate('Unavailable') . "</button>";
+		}
+
+		$data[] = array(
+			$row->change_id,
+			$row->change_time,
+			I18N::translate($row->status) . $btn,
+			"<a href='gedrecord.php?pid={$row->xref}&ged={$row->gedcom_name}'>{$row->xref}</a>",
+			'<div class="gedcom-data" dir="ltr">' . preg_replace(
+				"/@([^#@\n]+)@/m",
+				'<a href="#" onclick="return edit_raw(\'\\1\');">@\\1@</a>',
+				implode("\n", $diff_lines)
+			) . '</div>',
+			$row->user_name,
+			$row->gedcom_name,
+		);
+	}
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
@@ -218,8 +291,7 @@ $controller
 			/* Timestamp   */ { sort: 0 },
 			/* Status      */ { },
 			/* Record      */ { },
-			/* Old data    */ { sortable: false },
-			/* New data    */ { sortable: false },
+			/* Data        */ {sortable: false},
 			/* User        */ { },
 			/* Family tree */ { }
 			]
@@ -240,17 +312,27 @@ $controller
 				clear: "fa fa-trash-o"
 			}
 		});
+		jQuery("body").on("click", ".btn-chg-action", function () {
+		    var msgs = {
+		            accept: "' . I18N::translate('Accept this change')  . '",
+		            reject: "' . I18N::translate('Reject this change')  . '",
+		            undo:   "' . I18N::translate('Undo this change')    . '",
+		            redo:   "' . I18N::translate('Reapply this change') . '"
+		        },
+		        params = jQuery(this).data("parms").split("-");
+		    if (confirm(msgs[params[0]] + " ?")) {
+		        jQuery.post(WT_SCRIPT_NAME + "?action=update", {
+		            activity:   params[0],
+		            change_id:  params[1],
+		            csrf:       WT_CSRF_TOKEN
+		        }, function () {
+		            window.location.href = WT_SCRIPT_NAME + "?action=show" +
+		                "&user=" + jQuery("#user").val() +
+		                "&gedc=" + jQuery("#gedc").val();
+		        });
+		    }
+		});
 	');
-
-$url =
-	WT_SCRIPT_NAME . '?from=' . rawurlencode($from) .
-	'&amp;to=' . rawurlencode($to) .
-	'&amp;type=' . rawurlencode($type) .
-	'&amp;oldged=' . rawurlencode($oldged) .
-	'&amp;newged=' . rawurlencode($newged) .
-	'&amp;xref=' . rawurlencode($xref) .
-	'&amp;user=' . rawurlencode($user) .
-	'&amp;gedc=' . rawurlencode($gedc);
 
 $users_array = array();
 foreach (User::all() as $tmp_user) {
@@ -294,11 +376,11 @@ foreach (User::all() as $tmp_user) {
 			<label for="type">
 				<?php echo I18N::translate('Status'); ?>
 			</label>
-			<?php echo FunctionsEdit::selectEditControl('type', $statuses, null, $type, 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('type', $statuses, '', $type, 'class="form-control"'); ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
-			<label for="text">
+			<label for="xref">
 				<?php echo I18N::translate('Record'); ?>
 			</label>
 			<input class="form-control" type="text" id="xref" name="xref" value="<?php echo Filter::escapeHtml($xref); ?>">
@@ -307,14 +389,14 @@ foreach (User::all() as $tmp_user) {
 
 	<div class="row">
 		<div class="form-group col-xs-6 col-md-3">
-			<label for="text">
+			<label for="oldged">
 				<?php echo I18N::translate('Old data'); ?>
 			</label>
 			<input class="form-control" type="text" id="oldged" name="oldged" value="<?php echo Filter::escapeHtml($oldged); ?>">
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
-			<label for="text">
+			<label for="newged">
 				<?php echo I18N::translate('New data'); ?>
 			</label>
 			<input class="form-control" type="text" id="newged" name="newged" value="<?php echo Filter::escapeHtml($newged); ?>">
@@ -344,7 +426,6 @@ foreach (User::all() as $tmp_user) {
 			<?php echo I18N::translate('Export'); ?>
 		</button>
 
-
 		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo I18N::translate('Permanently delete these records?'); ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
 			<?php echo I18N::translate('Delete'); ?>
 		</button>
@@ -359,8 +440,7 @@ foreach (User::all() as $tmp_user) {
 			<th><?php echo I18N::translate('Timestamp'); ?></th>
 			<th><?php echo I18N::translate('Status'); ?></th>
 			<th><?php echo I18N::translate('Record'); ?></th>
-			<th><?php echo I18N::translate('Old data'); ?></th>
-			<th><?php echo I18N::translate('New data'); ?></th>
+			<th><?php echo I18N::translate('Data'); ?></th>
 			<th><?php echo I18N::translate('User'); ?></th>
 			<th><?php echo I18N::translate('Family tree'); ?></th>
 		</tr>

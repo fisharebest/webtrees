@@ -715,3 +715,10 @@ a.icon-uarrow:hover {
 	position: absolute;
 	width: 1px;
 }
+
+.btn-chg-action {
+	display: block;
+	width: 100px;
+	margin: 2px 0;
+	white-space: normal;
+}
