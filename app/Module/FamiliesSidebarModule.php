@@ -124,7 +124,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=families&alpha=" + encodeURIComponent(alpha) + "&surname=" + encodeURIComponent(surname),
 					  cache: false,
 					  success: function(html) {
-					    jQuery("div.details", element.closest("li"))
+					    jQuery("div.name_tree_div", element.closest("li"))
 					    .html(html)
 					    .show("fast")
 					    .css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
@@ -133,12 +133,12 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 					});
 				} else if (famloadedNames[surname]==1) {
 					famloadedNames[surname]=2;
-					jQuery("div.details", jQuery(this).closest("li"))
+					jQuery("div.name_tree_div", jQuery(this).closest("li"))
 					.show()
 					.css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
 				} else {
 					famloadedNames[surname]=1;
-					jQuery("div.details", jQuery(this).closest("li"))
+					jQuery("div.name_tree_div", jQuery(this).closest("li"))
 					.hide("fast")
 					.css("list-style-image", "url(' . Theme::theme()->parameter('image-plus') . ')");
 				}
@@ -186,7 +186,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		$out      = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
 			$out .= '<li class="sb_fam_surname_li"><a href="#" data-surname="' . Filter::escapeHtml($surname) . '" data-alpha="' . Filter::escapeHtml($alpha) . '" class="sb_fam_surname">' . Filter::escapeHtml($surname) . '</a>';
-			$out .= '<div class="details"></div>';
+			$out .= '<div class="name_tree_div"></div>';
 			$out .= '</li>';
 		}
 		$out .= '</ul>';
