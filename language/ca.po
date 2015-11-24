@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-11-09 21:25+0100\n"
+"PO-Revision-Date: 2015-11-24 22:14+0100\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
@@ -11528,7 +11528,7 @@ msgstr "Imatges aleatòries de l’arbre genealògic actual."
 #: app/Module/RelativesTabModule.php:281 edit_interface.php:1803
 #: edit_interface.php:1877
 msgid "Re-order children"
-msgstr "Reordeneu els fills"
+msgstr "Reordena els fills"
 
 #: app/Controller/IndividualController.php:320
 #: app/Module/RelativesTabModule.php:363 edit_interface.php:2188
