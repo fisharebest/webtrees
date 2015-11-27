@@ -1,11 +1,11 @@
 <?php namespace Fisharebest\Localization\Locale;
 
 /**
- * Class LocaleKkCyrlKz
+ * Class LocaleBmLatnMl
  *
  * @author        Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleKkCyrlKz extends LocaleKkCyrl {
+class LocaleBmMl extends LocaleBm {
 }

@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageEbu;
  * @license       GPLv3+
  */
 class LocaleEbu extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Kĩembu';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KIEMBU';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageEbu;
 	}

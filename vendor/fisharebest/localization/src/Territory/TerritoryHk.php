@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class TerritoryHk extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'HK';
 	}
 
-	/** {@inheritdoc} */
 	public function firstDay() {
 		return 0;
 	}

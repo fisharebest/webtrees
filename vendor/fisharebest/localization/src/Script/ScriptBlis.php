@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptBlis extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Blis';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '550';
 	}

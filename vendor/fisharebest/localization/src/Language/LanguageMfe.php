@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryMu;
  * @license   GPLv3+
  */
 class LanguageMfe extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'mfe';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryMu;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule2;
 	}

@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryCm;
  * @license   GPLv3+
  */
 class LanguageYav extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'yav';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryCm;
 	}

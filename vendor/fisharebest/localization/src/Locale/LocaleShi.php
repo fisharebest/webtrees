@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageShi;
  * @license       GPLv3+
  */
 class LocaleShi extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function direction() {
 		return 'ltr';
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
-		return 'ⵜⴰⵎⴰⵣⵉⵖⵜ';
+		return 'ⵜⴰⵛⵍⵃⵉⵜ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageShi;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

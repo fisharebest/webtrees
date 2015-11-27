@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryGb;
  * @license   GPLv3+
  */
 class LanguageKw extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'kw';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryGb;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRuleCornish;
 	}

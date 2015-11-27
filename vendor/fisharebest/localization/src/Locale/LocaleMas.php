@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageMas;
  * @license       GPLv3+
  */
 class LocaleMas extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Maa';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'MAA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageMas;
 	}

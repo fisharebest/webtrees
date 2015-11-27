@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptSylo extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Sylo';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '316';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Syloti_Nagri';
 	}

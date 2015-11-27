@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryIr;
  * @license   GPLv3+
  */
 class LanguageFa extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'fa';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptArab;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryIr;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule0;
 	}

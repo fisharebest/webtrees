@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryBo;
  * @license       GPLv3+
  */
 class LocaleQuBo extends LocaleQu {
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,
@@ -18,7 +17,6 @@ class LocaleQuBo extends LocaleQu {
 		);
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryBo;
 	}

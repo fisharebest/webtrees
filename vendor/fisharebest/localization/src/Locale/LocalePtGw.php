@@ -10,15 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryGw;
  * @license       GPLv3+
  */
 class LocalePtGw extends LocalePt {
-	/** {@inheritdoc} */
-	public function numberSymbols() {
-		return array(
-			self::GROUP   => self::NBSP,
-			self::DECIMAL => self::COMMA,
-		);
-	}
-
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryGw;
 	}

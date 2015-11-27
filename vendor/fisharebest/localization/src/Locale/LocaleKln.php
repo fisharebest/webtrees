@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageKln;
  * @license       GPLv3+
  */
 class LocaleKln extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Kalenjin';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KALENJIN';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKln;
 	}

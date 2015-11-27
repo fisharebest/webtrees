@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryDe;
  * @license   GPLv3+
  */
 class LanguageDe extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'de';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryDe;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

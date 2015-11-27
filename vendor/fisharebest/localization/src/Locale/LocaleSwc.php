@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageSwc;
  * @license       GPLv3+
  */
 class LocaleSwc extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Kiswahili ya Kongo';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KISWAHILI YA KONGO';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSwc;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

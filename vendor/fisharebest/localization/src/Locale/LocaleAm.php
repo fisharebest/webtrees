@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageAm;
  * @license       GPLv3+
  */
 class LocaleAm extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'አማርኛ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageAm;
 	}

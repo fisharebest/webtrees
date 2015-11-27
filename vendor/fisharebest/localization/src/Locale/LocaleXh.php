@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageXh;
  * @license       GPLv3+
  */
 class LocaleXh extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Xhosa';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'XHOSA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageXh;
 	}

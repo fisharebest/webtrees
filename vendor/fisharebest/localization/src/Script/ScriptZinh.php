@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptZinh extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Zinh';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '994';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Inherited';
 	}

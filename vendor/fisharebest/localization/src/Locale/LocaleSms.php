@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageSms;
  * @license       GPLv3+
  */
 class LocaleSms extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'sääʹmǩiõll';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SAA MKIOLL';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSms;
 	}

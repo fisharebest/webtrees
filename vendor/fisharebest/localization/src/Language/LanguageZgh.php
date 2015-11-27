@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryMa;
  * @license   GPLv3+
  */
 class LanguageZgh extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'zgh';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryMa;
 	}

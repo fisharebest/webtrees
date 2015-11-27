@@ -17,12 +17,10 @@
  * @license   GPLv3+
  */
 class PluralRule0 implements PluralRuleInterface {
-	/** {@inheritdoc} */
 	public function plurals() {
 		return 1;
 	}
 
-	/** {@inheritdoc} */
 	public function plural($number) {
 		return 0;
 	}

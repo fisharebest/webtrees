@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageMi;
  * @license       GPLv3+
  */
 class LocaleMi extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Māori';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageMi;
 	}

@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryIn;
  * @license   GPLv3+
  */
 class LanguageKn extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'kn';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptKnda;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryIn;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule2;
 	}

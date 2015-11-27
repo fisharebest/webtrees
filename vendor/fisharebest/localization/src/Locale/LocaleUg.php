@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageUg;
  * @license       GPLv3+
  */
 class LocaleUg extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ئۇيغۇرچە';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageUg;
 	}

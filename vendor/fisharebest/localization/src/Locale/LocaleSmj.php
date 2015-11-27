@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageSmj;
  * @license       GPLv3+
  */
 class LocaleSmj extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'julevsámegiella';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'JULEVSAMEGIELLA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSmj;
 	}

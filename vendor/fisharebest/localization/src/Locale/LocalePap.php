@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguagePap;
  * @license       GPLv3+
  */
 class LocalePap extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Papiamentu';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'PAPIAMENTU';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguagePap;
 	}

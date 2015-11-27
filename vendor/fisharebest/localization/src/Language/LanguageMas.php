@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryKe;
  * @license   GPLv3+
  */
 class LanguageMas extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'mas';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryKe;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptWole extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Wole';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '480';
 	}

@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class TerritoryPy extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'PY';
 	}
 
-	/** {@inheritdoc} */
 	public function firstDay() {
 		return 0;
 	}

@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptInds extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Inds';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '610';
 	}

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptMand extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Mand';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '140';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Mandaic';
 	}

@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageIg;
  * @license       GPLv3+
  */
 class LocaleIg extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Igbo';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'IGBO';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageIg;
 	}

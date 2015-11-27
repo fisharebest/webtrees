@@ -8,22 +8,18 @@
  * @license   GPLv3+
  */
 class ScriptShrd extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Shrd';
 	}
 
-	/** {@inheritdoc} */
 	public function numerals() {
 		return array('𑇐', '𑇑', '𑇒', '𑇓', '𑇔', '𑇕', '𑇖', '𑇗', '𑇘', '𑇙');
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '319';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Sharada';
 	}

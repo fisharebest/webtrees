@@ -8,7 +8,6 @@
  * @license   GPLv3+
  */
 class TerritoryEu extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'EU';
 	}

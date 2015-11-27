@@ -8,22 +8,18 @@
  * @license   GPLv3+
  */
 class ScriptDeva extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Deva';
 	}
 
-	/** {@inheritdoc} */
 	public function numerals() {
 		return array('०', '१', '२', '३', '४', '५', '६', '७', '८', '९');
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '315';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Devanagari';
 	}

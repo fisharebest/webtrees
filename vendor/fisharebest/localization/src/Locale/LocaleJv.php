@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageJv;
  * @license       GPLv3+
  */
 class LocaleJv extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ꦧꦱꦗꦮ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageJv;
 	}

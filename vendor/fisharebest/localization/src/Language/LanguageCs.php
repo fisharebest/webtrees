@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryCz;
  * @license   GPLv3+
  */
 class LanguageCs extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'cs';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryCz;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule8;
 	}

@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageTeo;
  * @license       GPLv3+
  */
 class LocaleTeo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Kiteso';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KITESO';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageTeo;
 	}

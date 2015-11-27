@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryDm;
  * @license       GPLv3+
  */
 class LocaleEnDm extends LocaleEn {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryDm;
 	}

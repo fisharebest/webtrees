@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptEgyp extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Egyp';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '050';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Egyptian_Hieroglyphs';
 	}

@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptAfak extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Afak';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '439';
 	}

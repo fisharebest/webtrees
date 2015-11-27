@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryTz;
  * @license   GPLv3+
  */
 class LanguageVun extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'vun';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryTz;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

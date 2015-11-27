@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryCm;
  * @license   GPLv3+
  */
 class LanguageNmg extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'nmg';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryCm;
 	}

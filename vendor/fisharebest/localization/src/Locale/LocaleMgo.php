@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageMgo;
  * @license       GPLv3+
  */
 class LocaleMgo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'metaʼ';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'META';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageMgo;
 	}

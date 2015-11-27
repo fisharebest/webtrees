@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryMl;
  * @license   GPLv3+
  */
 class LanguageKhq extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'khq';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryMl;
 	}

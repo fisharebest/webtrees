@@ -8,22 +8,18 @@
  * @license   GPLv3+
  */
 class ScriptArab extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Arab';
 	}
 
-	/** {@inheritdoc} */
 	public function numerals() {
 		return array('٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩');
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '160';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Arabic';
 	}

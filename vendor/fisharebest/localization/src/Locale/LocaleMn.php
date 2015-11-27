@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageMn;
  * @license       GPLv3+
  */
 class LocaleMn extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'монгол';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'МОНГОЛ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageMn;
 	}
