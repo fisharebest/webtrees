@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptThaa extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Thaa';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '170';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Thaana';
 	}

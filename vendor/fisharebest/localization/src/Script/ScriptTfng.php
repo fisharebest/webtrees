@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptTfng extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Tfng';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '120';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Tifinagh';
 	}

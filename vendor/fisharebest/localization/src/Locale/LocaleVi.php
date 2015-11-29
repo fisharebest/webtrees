@@ -10,27 +10,22 @@ use Fisharebest\Localization\Language\LanguageVi;
  * @license       GPLv3+
  */
 class LocaleVi extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function collation() {
 		return 'vietnamese_ci';
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Tiếng Việt';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'TIENG VIET';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageVi;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

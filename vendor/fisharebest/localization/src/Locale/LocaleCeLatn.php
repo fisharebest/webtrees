@@ -10,17 +10,14 @@ use Fisharebest\Localization\Script\ScriptLatn;
  * @license       GPLv3+
  */
 class LocaleCeLatn extends LocaleCe {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Chechen';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'CHECHEN';
 	}
 
-	/** {@inheritdoc} */
 	public function script() {
 		return new ScriptLatn;
 	}

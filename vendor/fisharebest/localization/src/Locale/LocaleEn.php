@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageEn;
  * @license       GPLv3+
  */
 class LocaleEn extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'English';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ENGLISH';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageEn;
 	}

@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageVai;
  * @license       GPLv3+
  */
 class LocaleVai extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ꕙꔤ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageVai;
 	}

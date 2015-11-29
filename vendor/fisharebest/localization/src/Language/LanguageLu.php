@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryCd;
  * @license   GPLv3+
  */
 class LanguageLu extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'lu';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryCd;
 	}

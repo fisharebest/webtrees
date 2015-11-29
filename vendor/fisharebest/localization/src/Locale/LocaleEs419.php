@@ -10,17 +10,14 @@ use Fisharebest\Localization\Territory\Territory419;
  * @license       GPLv3+
  */
 class LocaleEs419 extends LocaleEs {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'español latinoamericano';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ESPANOL LATINOAMERICANO';
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::COMMA,
@@ -28,7 +25,6 @@ class LocaleEs419 extends LocaleEs {
 		);
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new Territory419;
 	}

@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageSr;
  * @license       GPLv3+
  */
 class LocaleSr extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'српски';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'СРПСКИ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSr;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

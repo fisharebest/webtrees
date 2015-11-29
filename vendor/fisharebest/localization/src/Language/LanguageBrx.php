@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryIn;
  * @license   GPLv3+
  */
 class LanguageBrx extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'brx';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryIn;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

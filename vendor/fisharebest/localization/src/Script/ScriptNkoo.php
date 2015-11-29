@@ -8,22 +8,18 @@
  * @license   GPLv3+
  */
 class ScriptNkoo extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Nkoo';
 	}
 
-	/** {@inheritdoc} */
 	public function numerals() {
 		return array('߀', '߁', '߂', '߃', '߄', '߅', '߆', '߇', '߈', '߉');
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '165';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Nko';
 	}

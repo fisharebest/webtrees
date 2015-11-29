@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptWara extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Wara';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '262';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Warang_Citi';
 	}

@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageTs;
  * @license       GPLv3+
  */
 class LocaleTs extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Xitsonga';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'XITSONGA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageTs;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

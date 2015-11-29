@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageBr;
  * @license       GPLv3+
  */
 class LocaleBr extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'brezhoneg';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'BREZHONEG';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageBr;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,
@@ -33,7 +29,6 @@ class LocaleBr extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryKe;
  * @license   GPLv3+
  */
 class LanguageKi extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ki';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryKe;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

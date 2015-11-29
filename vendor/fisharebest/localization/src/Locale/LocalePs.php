@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguagePs;
  * @license       GPLv3+
  */
 class LocalePs extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'پښتو';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguagePs;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::ARAB_GROUP,
@@ -29,7 +26,6 @@ class LocalePs extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::ARAB_PERCENT;
 	}

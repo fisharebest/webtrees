@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3d0090288dce03aa53c3daa153dc5584",
-    "content-hash": "e1c36ecdd4ad1182d985e8324de27004",
+    "hash": "9d41fad4f5d67e19f3e3c99715409b66",
+    "content-hash": "10b2b75e6e6658354466c9b07b46d4e7",
     "packages": [
         {
             "name": "bombayworks/zendframework1",
@@ -213,16 +213,16 @@
         },
         {
             "name": "fisharebest/localization",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/localization.git",
-                "reference": "448dc859d7e1d491a80634871a9503b3d53edfd8"
+                "reference": "e2ffab931e480a14ce17798f608a52996bae1021"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/localization/zipball/448dc859d7e1d491a80634871a9503b3d53edfd8",
-                "reference": "448dc859d7e1d491a80634871a9503b3d53edfd8",
+                "url": "https://api.github.com/repos/fisharebest/localization/zipball/e2ffab931e480a14ce17798f608a52996bae1021",
+                "reference": "e2ffab931e480a14ce17798f608a52996bae1021",
                 "shasum": ""
             },
             "require": {
@@ -263,7 +263,7 @@
                 "translate",
                 "translation"
             ],
-            "time": "2015-09-14 21:53:11"
+            "time": "2015-11-27 14:25:16"
         },
         {
             "name": "ircmaxell/password-compat",

@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageKy;
  * @license       GPLv3+
  */
 class LocaleKy extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'кыргызча';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'КЫРГЫЗЧА';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKy;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

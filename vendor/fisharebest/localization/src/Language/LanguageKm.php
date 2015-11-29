@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryKh;
  * @license   GPLv3+
  */
 class LanguageKm extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'km';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptKhmr;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryKh;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule0;
 	}

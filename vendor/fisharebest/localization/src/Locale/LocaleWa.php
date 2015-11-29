@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageWa;
  * @license       GPLv3+
  */
 class LocaleWa extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Walon';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'WALON';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageWa;
 	}

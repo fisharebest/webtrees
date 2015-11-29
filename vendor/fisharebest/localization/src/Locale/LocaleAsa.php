@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageAsa;
  * @license       GPLv3+
  */
 class LocaleAsa extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Kipare';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KIPARE';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageAsa;
 	}

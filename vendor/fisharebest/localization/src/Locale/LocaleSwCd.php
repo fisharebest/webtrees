@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryCd;
  * @license       GPLv3+
  */
 class LocaleSwCd extends LocaleSw {
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,
@@ -18,7 +17,6 @@ class LocaleSwCd extends LocaleSw {
 		);
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryCd;
 	}

@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritorySk;
  * @license   GPLv3+
  */
 class LanguageSk extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'sk';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritorySk;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule8;
 	}

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptNbat extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Nbat';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '159';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Nabataean';
 	}

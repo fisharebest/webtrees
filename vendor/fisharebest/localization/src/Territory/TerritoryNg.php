@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class TerritoryNg extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'NG';
 	}
 
-	/** {@inheritdoc} */
 	public function firstDay() {
 		return 0;
 	}

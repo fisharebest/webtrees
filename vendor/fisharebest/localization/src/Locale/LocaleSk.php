@@ -10,27 +10,22 @@ use Fisharebest\Localization\Language\LanguageSk;
  * @license       GPLv3+
  */
 class LocaleSk extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function collation() {
 		return 'slovak_ci';
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'slovenčina';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SLOVENCINA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSk;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,
@@ -38,7 +33,6 @@ class LocaleSk extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

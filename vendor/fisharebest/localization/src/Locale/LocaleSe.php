@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageSe;
  * @license       GPLv3+
  */
 class LocaleSe extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'davvisámegiella';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'DAVVISAMEGIELLA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSe;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::NBSP,
@@ -34,7 +30,6 @@ class LocaleSe extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

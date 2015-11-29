@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptPlrd extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Plrd';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '282';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Miao';
 	}

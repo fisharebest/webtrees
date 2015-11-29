@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptKhoj extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Khoj';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '322';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Khojki';
 	}

@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/fisharebest/localization.svg?branch=master)](https://travis-ci.org/fisharebest/localization)
-[![Coverage Status](https://img.shields.io/coveralls/fisharebest/localization.svg)](https://coveralls.io/r/fisharebest/localization?branch=master)
+[![Coverage Status](https://coveralls.io/repos/fisharebest/localization/badge.svg?branch=master&service=github)](https://coveralls.io/github/fisharebest/localization?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/a252b4b3-62c1-40bd-be44-43a7dc6e4a9b/mini.png)](https://insight.sensiolabs.com/projects/a252b4b3-62c1-40bd-be44-43a7dc6e4a9b)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/localization/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fisharebest/localization/?branch=master)
 [![Code Climate](https://codeclimate.com/github/fisharebest/localization/badges/gpa.svg)](https://codeclimate.com/github/fisharebest/localization)
@@ -16,14 +16,16 @@ the [Unicode CLDR](http://cldr.unicode.org),
 etc., to help you produce applications that behave nicely for visitors from
 around the world.
 
+Includes definitions for over 750 locales.
+
 Locales, languages, scripts and territories
 ===========================================
 
 A locale consists of three things: a language, a script and a territory.
 Scripts and territories are often implicit from the language.
 
-Normally you would just need to work with locales, and can ignore these
-entities.
+Normally you would just need to work with locales, and can ignore
+languages and scripts.
 
 ``` php
 $locale = new LocaleJa;         // Create a locale for Japanese.
@@ -60,7 +62,7 @@ Create a locale and use it to localize data in your application.
 ``` php
 // Many ways to create locales
 $locale = new LocaleEnGb;
-$locale = Locale::create('en-GB'); // Upper/lower case, hyphen/underscore
+$locale = Locale::create('en-GB'); // Use upper/lower case, hyphens/underscores/@
 $locale = Locale::httpAcceptLanguage($_SERVER, $available_locales, $default_locale);
 
 // Markup for HTML elements containing this locale
@@ -93,30 +95,54 @@ $locale->collation();           // "unicode_ci", "swedish_ci", etc.
 Translation
 ===========
 
-When working with gettext and .PO files, you need to know the plural rules.
+Plural rules are defined for each locale.  This example shows that although
+English and French both have two plural forms, English considers zero as plural,
+while french considers it to be singular.
 
 ``` php
 $locale = new LocaleEn;
 $locale->pluralRule()->plurals(); // 2 (English has two plural forms)
-$locale->pluralRule()->plural(0); // 1 (zero is plural in English)
+$locale->pluralRule()->plural(0); // 1 (zero is plural in English "zero apples")
 $locale = new LocaleFr;
 $locale->pluralRule()->plurals(); // 2 (French also has two plural forms)
-$locale->pluralRule()->plural(0); // 0 (zero is singular in French)
+$locale->pluralRule()->plural(0); // 0 (zero is singular in French "zero apple")
 ```
 
-Some of the plural definitions in CLDR differ to those traditionally used by `gettext`.
-We use the gettext versions for br, fa, fil, he, lv, mk, pt, tr and se.
+Note that some of the plural definitions in CLDR differ to those traditionally used by
+`gettext`.  We use the gettext versions for br, fa, fil, he, lv, mk, pt, tr and se.
 
 Translation functions work the same as `gettext`.
 
 ``` php
+// We need to translate into French
 $locale = new LocaleFr;
+// Create the translation
 $translation = new Translation('/path/to/fr.mo');  // Can use .CSV, .PHP and .MO files
+// Create the translator
 $translator = new Translator($translation->asArray(), $locale->pluralRule());
+// Use the translator
 $translator->translate('the fish');                // "le poisson" 
 $translator->translateContext('noun', 'fish');     // "poisson" 
 $translator->translateContext('verb', 'fish');     // "pêcher" 
 $translator->plural('%d fish', '%d fishes', 4);    // "%d poissons" 
+```
+
+TIP: If your translations are stored in more than one file, you can merge them easily.
+
+```php
+// Create the translation
+$translation1 = new Translation('/path/to/core/fr.mo');
+$translation2 = new Translation('/path/to/extra/fr.mo');
+// Create the translator
+$translator = new Translator(array_merge($translation1->asArray(), $translation2->asArray()), $locale->pluralRule());
+```
+
+TIP: Loading translations from .PHP files is a little faster than loading them from .MO files.
+You can convert and/or cache them using this approach.
+
+```
+$translation = new Translation('/path/to/fr.mo');
+file_put_contents('/path/to/fr.php', '<?php return ' . var_export($translations->asArray(), true) . ';');
 ```
 
 

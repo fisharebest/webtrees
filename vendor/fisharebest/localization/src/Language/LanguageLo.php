@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryLa;
  * @license   GPLv3+
  */
 class LanguageLo extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'lo';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptLaoo;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryLa;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule0;
 	}

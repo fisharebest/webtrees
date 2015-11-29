@@ -8,12 +8,10 @@
  * @license       GPLv3+
  */
 class LocaleTkCyrl extends LocaleTk {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'түркменче';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'түркменче';
 	}

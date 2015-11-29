@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryDk;
  * @license   GPLv3+
  */
 class LanguageDa extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'da';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryDk;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

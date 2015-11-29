@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryKe;
  * @license       GPLv3+
  */
 class LocaleTeoKe extends LocaleTeo {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryKe;
 	}

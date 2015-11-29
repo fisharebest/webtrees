@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptRoro extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Roro';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '620';
 	}

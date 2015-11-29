@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryEt;
  * @license   GPLv3+
  */
 class LanguageOm extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'om';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryEt;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

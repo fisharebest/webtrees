@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptGran extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Gran';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '343';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Grantha';
 	}

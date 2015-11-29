@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryIm;
  * @license   GPLv3+
  */
 class LanguageGv extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'gv';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryIm;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRuleManx;
 	}

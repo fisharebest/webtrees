@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryEt;
  * @license   GPLv3+
  */
 class LanguageAm extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'am';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptEthi;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryEt;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule2;
 	}

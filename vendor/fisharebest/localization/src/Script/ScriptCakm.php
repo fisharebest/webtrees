@@ -8,22 +8,18 @@
  * @license   GPLv3+
  */
 class ScriptCakm extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Cakm';
 	}
 
-	/** {@inheritdoc} */
 	public function numerals() {
 		return array('𑄶', '𑄷', '𑄸', '𑄹', '𑄺', '𑄻', '𑄼', '𑄽', '𑄾', '𑄿');
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '349';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Chakma';
 	}

@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageMo;
  * @license       GPLv3+
  */
 class LocaleMo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'limba moldovenească';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'LIMBA MOLDOVENEASCĂ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageMo;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,
@@ -33,7 +29,6 @@ class LocaleMo extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

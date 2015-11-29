@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptPhlv extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Phlv';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '133';
 	}

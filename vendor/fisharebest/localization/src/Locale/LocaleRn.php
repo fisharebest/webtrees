@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageRn;
  * @license       GPLv3+
  */
 class LocaleRn extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Ikirundi';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'IKIRUNDI';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageRn;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,
@@ -33,7 +29,6 @@ class LocaleRn extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

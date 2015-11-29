@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageTh;
  * @license       GPLv3+
  */
 class LocaleTh extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ไทย';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageTh;
 	}

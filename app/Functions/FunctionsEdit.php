@@ -628,9 +628,9 @@ class FunctionsEdit {
 				echo self::censusDateSelector(WT_LOCALE, $xref);
 				if (Module::getModuleByName('GEDFact_assistant') && GedcomRecord::getInstance($xref, $WT_TREE) instanceof Individual) {
 					echo
-						'<a href="#" style="display: none;" id="assistant-link" onclick="return activateCensusAssistant();">' .
+						'<div></div><a href="#" style="display: none;" id="assistant-link" onclick="return activateCensusAssistant();">' .
 						I18N::translate('Create a new shared note using assistant') .
-						'</a>';
+						'</a></div>';
 				}
 			}
 

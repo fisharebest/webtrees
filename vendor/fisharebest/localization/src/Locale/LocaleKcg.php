@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageKcg;
  * @license       GPLv3+
  */
 class LocaleKcg extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Tyap';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'TYAP';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKcg;
 	}

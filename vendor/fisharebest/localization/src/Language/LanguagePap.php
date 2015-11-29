@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\Territory029;
  * @license   GPLv3+
  */
 class LanguagePap extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'pap';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new Territory029;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

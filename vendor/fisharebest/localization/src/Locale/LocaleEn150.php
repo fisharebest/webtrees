@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\Territory150;
  * @license       GPLv3+
  */
 class LocaleEn150 extends LocaleEn {
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,
@@ -18,7 +17,6 @@ class LocaleEn150 extends LocaleEn {
 		);
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new Territory150;
 	}

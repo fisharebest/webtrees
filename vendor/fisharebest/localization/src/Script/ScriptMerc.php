@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptMerc extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Merc';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '101';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Meroitic_Cursive';
 	}

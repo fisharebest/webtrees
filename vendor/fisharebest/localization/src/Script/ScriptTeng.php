@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptTeng extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Teng';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '290';
 	}

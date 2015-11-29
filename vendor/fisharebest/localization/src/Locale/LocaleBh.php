@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageBh;
  * @license       GPLv3+
  */
 class LocaleBh extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Bihari';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'BIHARI';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageBh;
 	}

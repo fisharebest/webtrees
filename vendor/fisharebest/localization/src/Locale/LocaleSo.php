@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageSo;
  * @license       GPLv3+
  */
 class LocaleSo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Soomaali';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SOOMAALI';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSo;
 	}

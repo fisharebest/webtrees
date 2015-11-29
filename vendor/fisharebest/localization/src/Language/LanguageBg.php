@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryBg;
  * @license   GPLv3+
  */
 class LanguageBg extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'bg';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptCyrl;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryBg;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageAgq;
  * @license       GPLv3+
  */
 class LocaleAgq extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Aghem';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'AGHEM';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageAgq;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

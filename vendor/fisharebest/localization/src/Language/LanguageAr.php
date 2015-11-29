@@ -11,17 +11,14 @@ use Fisharebest\Localization\Script\ScriptArab;
  * @license   GPLv3+
  */
 class LanguageAr extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ar';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptArab;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule12;
 	}

@@ -238,7 +238,6 @@ function addMessage($message) {
 				Mail::EOL . Mail::EOL . '--------------------------------------' . Mail::EOL .
 				I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . Mail::EOL;
 		}
-		$copy_email .= Mail::auditFooter();
 
 		if ($sender) {
 			// Message from a logged-in user
@@ -280,7 +279,6 @@ function addMessage($message) {
 				'--------------------------------------' . Mail::EOL .
 				I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . Mail::EOL;
 		}
-		$message['body'] .= Mail::auditFooter();
 	}
 
 	if (empty($message['created'])) {

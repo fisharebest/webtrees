@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryEh;
  * @license       GPLv3+
  */
 class LocaleArEh extends LocaleAr {
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::COMMA,
@@ -19,12 +18,6 @@ class LocaleArEh extends LocaleAr {
 		);
 	}
 
-	/** {@inheritdoc} */
-	protected function percentFormat() {
-		return '%s%%';
-	}
-
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryEh;
 	}

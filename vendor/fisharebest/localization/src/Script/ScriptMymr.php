@@ -8,22 +8,18 @@
  * @license   GPLv3+
  */
 class ScriptMymr extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Mymr';
 	}
 
-	/** {@inheritdoc} */
 	public function numerals() {
 		return array('၀', '၁', '၂', '၃', '၄', '၅', '၆', '၇', '၈', '၉');
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '350';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Myanmar';
 	}

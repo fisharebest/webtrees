@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryEe;
  * @license   GPLv3+
  */
 class LanguageEt extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'et';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryEe;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

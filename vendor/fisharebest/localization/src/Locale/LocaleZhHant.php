@@ -10,17 +10,14 @@ use Fisharebest\Localization\Script\ScriptHant;
  * @license       GPLv3+
  */
 class LocaleZhHant extends LocaleZh {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return '繁體中文';
 	}
 
-	/** {@inheritdoc} */
 	protected function minimumGroupingDigits() {
 		return 3;
 	}
 
-	/** {@inheritdoc} */
 	public function script() {
 		return new ScriptHant;
 	}

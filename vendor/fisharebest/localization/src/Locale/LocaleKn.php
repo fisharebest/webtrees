@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageKn;
  * @license       GPLv3+
  */
 class LocaleKn extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ಕನ್ನಡ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKn;
 	}

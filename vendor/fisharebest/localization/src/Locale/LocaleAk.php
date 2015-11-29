@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageAk;
  * @license       GPLv3+
  */
 class LocaleAk extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Akan';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'AKAN';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageAk;
 	}

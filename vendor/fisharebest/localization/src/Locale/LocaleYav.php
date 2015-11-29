@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageYav;
  * @license       GPLv3+
  */
 class LocaleYav extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'nuasue';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'NUASUE';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageYav;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageSsy;
  * @license       GPLv3+
  */
 class LocaleSsy extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Saho';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SAHO';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSsy;
 	}

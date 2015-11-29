@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageBem;
  * @license       GPLv3+
  */
 class LocaleBem extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Ichibemba';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ICHIBEMBA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageBem;
 	}

@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguagePt;
  * @license       GPLv3+
  */
 class LocalePt extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'português';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'PORTUGUES';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguagePt;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptEgyh extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Egyh';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '060';
 	}

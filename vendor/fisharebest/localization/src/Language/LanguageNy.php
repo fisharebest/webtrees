@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryMw;
  * @license   GPLv3+
  */
 class LanguageNy extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ny';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryMw;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

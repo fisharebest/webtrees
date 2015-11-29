@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryNg;
  * @license   GPLv3+
  */
 class LanguageKaj extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'kaj';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryNg;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

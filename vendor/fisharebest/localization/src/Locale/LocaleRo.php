@@ -10,27 +10,22 @@ use Fisharebest\Localization\Language\LanguageRo;
  * @license       GPLv3+
  */
 class LocaleRo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function collation() {
 		return 'romanian_ci';
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'română';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ROMANA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageRo;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,
@@ -38,7 +33,6 @@ class LocaleRo extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

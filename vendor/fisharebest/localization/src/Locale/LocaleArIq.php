@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryIq;
  * @license       GPLv3+
  */
 class LocaleArIq extends LocaleAr {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryIq;
 	}

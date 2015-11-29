@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptTang extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Tang';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '520';
 	}

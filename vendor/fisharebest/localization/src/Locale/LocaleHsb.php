@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageHsb;
  * @license       GPLv3+
  */
 class LocaleHsb extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'hornjoserbšćina';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'HORNJOSERBSCINA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageHsb;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,
@@ -33,7 +29,6 @@ class LocaleHsb extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

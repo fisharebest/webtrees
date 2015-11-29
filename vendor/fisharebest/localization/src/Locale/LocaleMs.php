@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageMs;
  * @license       GPLv3+
  */
 class LocaleMs extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Bahasa Melayu';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'BAHASA MELAYU';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageMs;
 	}

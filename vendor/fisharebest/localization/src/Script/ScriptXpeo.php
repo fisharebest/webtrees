@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptXpeo extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Xpeo';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '030';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Old_Persian';
 	}

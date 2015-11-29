@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptKits extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Kits';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '288';
 	}

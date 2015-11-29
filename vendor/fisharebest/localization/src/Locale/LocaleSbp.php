@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageSbp;
  * @license       GPLv3+
  */
 class LocaleSbp extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Ishisangu';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ISHISANGU';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSbp;
 	}

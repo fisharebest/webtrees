@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryKg;
  * @license       GPLv3+
  */
 class LocaleRuKg extends LocaleRu {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryKg;
 	}

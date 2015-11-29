@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageZu;
  * @license       GPLv3+
  */
 class LocaleZu extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'isiZulu';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ISIZULU';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageZu;
 	}

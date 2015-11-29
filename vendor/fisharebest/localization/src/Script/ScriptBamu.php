@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptBamu extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Bamu';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '435';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Bamum';
 	}
