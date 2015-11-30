@@ -7,6 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'fd8a8d96137652b1c2829f2141bcdf77' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
-    '05669301f06448944ce5eb260126f84e' => $vendorDir . '/ircmaxell/password-compat/lib/password.php',
     'e23f4cc203305211f73ba674292b6745' => $vendorDir . '/fisharebest/ext-calendar/src/shims.php',
+    '05669301f06448944ce5eb260126f84e' => $vendorDir . '/ircmaxell/password-compat/lib/password.php',
 );
