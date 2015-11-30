@@ -141,66 +141,6 @@
         ]
     },
     {
-        "name": "fisharebest/ext-calendar",
-        "version": "2.1.1",
-        "version_normalized": "2.1.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fisharebest/ext-calendar.git",
-            "reference": "4ad4547f91073c4266274c5375bcca981e1e98ec"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/4ad4547f91073c4266274c5375bcca981e1e98ec",
-            "reference": "4ad4547f91073c4266274c5375bcca981e1e98ec",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "*",
-            "satooshi/php-coveralls": "*"
-        },
-        "time": "2015-09-21 15:12:48",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Fisharebest\\ExtCalendar\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0+"
-        ],
-        "authors": [
-            {
-                "name": "Greg Roach",
-                "email": "fisharebest@gmail.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "Implementation of the Arabic (Hijri), French, Gregorian, Jewish, Julian and Persian (Jalali) calendars.  Optional PHP shims for servers without the ext/calendar extension.",
-        "homepage": "https://github.com/fisharebest/ext-calendar",
-        "keywords": [
-            "Jalali",
-            "arabic",
-            "calendar",
-            "ext-calendar",
-            "french",
-            "gregorian",
-            "hebrew",
-            "hijri",
-            "jewish",
-            "julian",
-            "julian day",
-            "julian day number",
-            "persian",
-            "shamsi"
-        ]
-    },
-    {
         "name": "ircmaxell/password-compat",
         "version": "v1.0.4",
         "version_normalized": "1.0.4.0",
@@ -595,6 +535,69 @@
             "script",
             "translate",
             "translation"
+        ]
+    },
+    {
+        "name": "fisharebest/ext-calendar",
+        "version": "2.2.0",
+        "version_normalized": "2.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fisharebest/ext-calendar.git",
+            "reference": "cbf6b8ce21469e2e3899a3a1f17e47d86f625fe7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/cbf6b8ce21469e2e3899a3a1f17e47d86f625fe7",
+            "reference": "cbf6b8ce21469e2e3899a3a1f17e47d86f625fe7",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*",
+            "satooshi/php-coveralls": "*"
+        },
+        "time": "2015-11-30 16:03:22",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/shims.php"
+            ],
+            "psr-4": {
+                "Fisharebest\\ExtCalendar\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Greg Roach",
+                "email": "fisharebest@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Implementation of the Arabic (Hijri), French, Gregorian, Jewish, Julian and Persian (Jalali) calendars.  Also provides a replacement for the PHP ext/calendar extension.",
+        "homepage": "https://github.com/fisharebest/ext-calendar",
+        "keywords": [
+            "Jalali",
+            "arabic",
+            "calendar",
+            "ext-calendar",
+            "french",
+            "gregorian",
+            "hebrew",
+            "hijri",
+            "jewish",
+            "julian",
+            "julian day",
+            "julian day number",
+            "persian",
+            "shamsi"
         ]
     }
 ]

@@ -6,23 +6,22 @@ use InvalidArgumentException;
 /**
  * Class JulianCalendar - calculations for the Julian calendar.
  *
- * @author        Greg Roach <fisharebest@gmail.com>
+ * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2014-2015 Greg Roach
- * @license       This program is free software: you can redistribute it and/or modify
- *                it under the terms of the GNU General Public License as published by
- *                the Free Software Foundation, either version 3 of the License, or
- *                (at your option) any later version.
+ * @license   This program is free software: you can redistribute it and/or modify
+ *            it under the terms of the GNU General Public License as published by
+ *            the Free Software Foundation, either version 3 of the License, or
+ *            (at your option) any later version.
  *
- *                This program is distributed in the hope that it will be useful,
- *                but WITHOUT ANY WARRANTY; without even the implied warranty of
- *                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *                GNU General Public License for more details.
+ *            This program is distributed in the hope that it will be useful,
+ *            but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *            GNU General Public License for more details.
  *
- *                You should have received a copy of the GNU General Public License
- *                along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *            You should have received a copy of the GNU General Public License
+ *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 class JulianCalendar implements CalendarInterface {
-	/** {@inheritdoc} */
 	public function daysInMonth($year, $month) {
 		if ($year === 0) {
 			throw new InvalidArgumentException('Year ' . $year . ' is invalid for this calendar');
@@ -39,17 +38,14 @@ class JulianCalendar implements CalendarInterface {
 		}
 	}
 
-	/** {@inheritdoc} */
 	public function daysInWeek() {
 		return 7;
 	}
 
-	/** {@inheritdoc} */
 	public function gedcomCalendarEscape() {
 		return '@#DJULIAN@';
 	}
 
-	/** {@inheritdoc} */
 	public function isLeapYear($year) {
 		if ($year < 0) {
 			$year++;
@@ -58,17 +54,14 @@ class JulianCalendar implements CalendarInterface {
 		return $year % 4 == 0;
 	}
 
-	/** {@inheritdoc} */
 	public function jdEnd() {
 		return PHP_INT_MAX;
 	}
 
-	/** {@inheritdoc} */
 	public function jdStart() {
 		return 1;
 	}
 
-	/** {@inheritdoc} */
 	public function jdToYmd($julian_day) {
 		$c = $julian_day + 32082;
 		$d = (int) ((4 * $c + 3) / 1461);
@@ -86,12 +79,10 @@ class JulianCalendar implements CalendarInterface {
 		return array($year, $month, $day);
 	}
 
-	/** {@inheritdoc} */
 	public function monthsInYear() {
 		return 12;
 	}
 
-	/** {@inheritdoc} */
 	public function ymdToJd($year, $month, $day) {
 		if ($year < 0) {
 			// 1 BCE is 0, 2 BCE is -1, etc.

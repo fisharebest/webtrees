@@ -176,13 +176,7 @@ date_default_timezone_set('UTC');
 \Patchwork\Utf8\Bootup::filterRequestUri(); // Redirects to an UTF-8 encoded URL if it's not already the case
 \Patchwork\Utf8\Bootup::filterRequestInputs(); // Normalizes HTTP inputs to UTF-8 NFC
 
-// Use the fisharebest/ext-calendar library to
-// 1) provide shims for the PHP ext/calendar extension, such as JewishToJD()
-// 2) provide calendar conversions for the Arabic and Persian calendars
-\Fisharebest\ExtCalendar\Shim::create();
-
 // Calculate the base URL, so we can generate absolute URLs.
-
 $protocol = Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', Filter::server('HTTPS', null, 'off') === 'off' ? 'http' : 'https');
 
 // For CLI scripts, use localhost.

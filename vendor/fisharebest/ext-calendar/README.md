@@ -13,11 +13,10 @@ This package provides an implementation of the
 [Gregorian](https://en.wikipedia.org/wiki/Gregorian_calendar),
 [Julian](https://en.wikipedia.org/wiki/Julian_calendar),
 [Jewish](https://en.wikipedia.org/wiki/Hebrew_calendar) and
-[Persian(Jalali)](https://en.wikipedia.org/wiki/Iranian_calendars) calendars, plus
-[shims](https://en.wikipedia.org/wiki/Shim_%28computing%29) for the
-[functions](https://php.net/ref.calendar) and [constants](https://php.net/calendar.constants)
-in PHP‘s [ext/calendar](https://php.net/calendar) extension.
-It allows you to use these functions on servers that do not have the extension installed (such as HHVM).
+[Persian (Jalali)](https://en.wikipedia.org/wiki/Iranian_calendars) calendars, plus
+a replacement for PHP‘s [ext/calendar](https://php.net/calendar) extension.
+It allows you to use the following PHP functions on servers that do not have the
+ext/calendar extension installed (such as HHVM).
 
 * [cal_days_in_month()](https://php.net/cal_days_in_month)
 * [cal_from_jd()](https://php.net/cal_from_jd)
@@ -49,17 +48,12 @@ require {
 }
 ```
 
-If you want to create the “shim” functions, you must tell the package to create them.
-
-```php
-// Put this in your bootstrap.php or similar.
-\Fisharebest\ExtCalendar\Shim::create();
-```
-
-Now you can use the PHP functions, whether `ext/calendar` is installed or not:
+Now you can use the PHP functions, whether `ext/calendar` is installed or not.
+Since version 2.2, it is no longer necessary to initialise these using `Shim::create()`.
 
 ``` php
-print_r(cal_info(CAL_GREGORIAN)); // Works in HHVM!
+require 'vendor/autoload.php';
+print_r(cal_info(CAL_GREGORIAN)); // Works in HHVM, or if ext-calendar is not installed
 ```
 
 Alternatively, just use the calendar classes directly.
@@ -79,11 +73,11 @@ $calendar = new PersianCalendar;
 $julian_day = $calendar->ymdToJd($year, $month, $day);
 list($year, $month, $day) = $calendar->jdToYmd($julian_day);
 
-// Days, weeks and months
-$is_leap_year  = $calendar->isLeapYear($year);
-$month_length  = $calendar->daysInMonth($year, $month);
-$number_months = $calendar->monthsInYear();  // Including leap-months
-$week_length   = $calendar->daysInWeek();    // Not all calendars have 7!
+// Information about days, weeks and months
+$is_leap_year   = $calendar->isLeapYear($year);
+$days_in_month  = $calendar->daysInMonth($year, $month);
+$months_in_year = $calendar->monthsInYear();  // Includes leap-months
+$days_in_week   = $calendar->daysInWeek();    // Not all calendars have 7!
 
 // Which dates are valid for this calendar?
 $jd = $calendar->jdStart();
@@ -108,11 +102,11 @@ Compatibility with different versions of PHP
 The following PHP bugs are emulated, according to the version of PHP being used.
 Thus the package always provides the same behaviour as the native `ext/calendar` extension.
 
-* [#54254](https://bugs.php.net/bug.php?id=54254) Jewish month "Adar" - fixed in PHP 5.5
+* [#54254](https://bugs.php.net/bug.php?id=54254) Jewish month "Adar" - fixed in PHP 5.5.
 
-* [#67960](https://bugs.php.net/bug.php?id=67960) Constants `CAL_DOW_SHORT` and `CAL_DOW_LONG` - found/fixed by this project - fixed in PHP 5.5.21 and 5.6.5
+* [#67960](https://bugs.php.net/bug.php?id=67960) Constants `CAL_DOW_SHORT` and `CAL_DOW_LONG` - found and fixed by this project - fixed in PHP 5.5.21 and 5.6.5.
 
-* [#67976](https://bugs.php.net/bug.php?id=67976) Wrong value in `cal_days_in_month()` for French calendar - found by this project!
+* [#67976](https://bugs.php.net/bug.php?id=67976) Wrong value in `cal_days_in_month()` for French calendar - found by this project.
 
 Development and contributions
 =============================

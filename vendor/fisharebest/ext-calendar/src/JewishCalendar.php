@@ -9,20 +9,20 @@ use InvalidArgumentException;
  * Hebrew characters in the code have either ISO-8859-8 or UTF_8 encoding.
  * Hebrew characters in the comments have UTF-8 encoding.
  *
- * @author        Greg Roach <fisharebest@gmail.com>
+ * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2014-2015 Greg Roach
- * @license       This program is free software: you can redistribute it and/or modify
- *                it under the terms of the GNU General Public License as published by
- *                the Free Software Foundation, either version 3 of the License, or
- *                (at your option) any later version.
+ * @license   This program is free software: you can redistribute it and/or modify
+ *            it under the terms of the GNU General Public License as published by
+ *            the Free Software Foundation, either version 3 of the License, or
+ *            (at your option) any later version.
  *
- *                This program is distributed in the hope that it will be useful,
- *                but WITHOUT ANY WARRANTY; without even the implied warranty of
- *                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *                GNU General Public License for more details.
+ *            This program is distributed in the hope that it will be useful,
+ *            but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *            GNU General Public License for more details.
  *
- *                You should have received a copy of the GNU General Public License
- *                along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *            You should have received a copy of the GNU General Public License
+ *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 class JewishCalendar implements CalendarInterface {
 	/** Optional behaviour for this calendar. */
@@ -171,7 +171,6 @@ class JewishCalendar implements CalendarInterface {
 		$this->options = array_merge($this->options, $options);
 	}
 
-	/** {@inheritdoc} */
 	public function daysInMonth($year, $month) {
 		if ($year < 1) {
 			throw new InvalidArgumentException('Year ' . $year . ' is invalid for this calendar');
@@ -189,27 +188,22 @@ class JewishCalendar implements CalendarInterface {
 	}
 
 
-	/** {@inheritdoc} */
 	public function daysInWeek() {
 		return 7;
 	}
 
-	/** {@inheritdoc} */
 	public function gedcomCalendarEscape() {
 		return '@#DHEBREW@';
 	}
 
-	/** {@inheritdoc} */
 	public function isLeapYear($year) {
 		return (7 * $year + 1) % 19 < 7;
 	}
 
-	/** {@inheritdoc} */
 	public function jdEnd() {
 		return PHP_INT_MAX;
 	}
 
-	/** {@inheritdoc} */
 	public function jdStart() {
 		return 347998; // 1 Tishri 0001 AM
 	}
@@ -233,7 +227,6 @@ class JewishCalendar implements CalendarInterface {
 		return $year;
 	}
 
-	/** {@inheritdoc} */
 	public function jdToYmd($julian_day) {
 		// Find the year, by adding one month at a time to use up the remaining days.
 		$year  = $this->jdToY($julian_day);
@@ -251,7 +244,6 @@ class JewishCalendar implements CalendarInterface {
 		return array($year, $month, $day);
 	}
 
-	/** {@inheritdoc} */
 	public function monthsInYear() {
 		return 13;
 	}
@@ -285,7 +277,6 @@ class JewishCalendar implements CalendarInterface {
 		return $julian_day + self::$ROSH_HASHANAH[$julian_day % 7];
 	}
 
-	/** {@inheritdoc} */
 	public function ymdToJd($year, $month, $day) {
 		return
 			$this->yToJd($year) +
