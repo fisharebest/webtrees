@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-11-30 17:05+0100\n"
+"PO-Revision-Date: 2015-12-01 20:47+0100\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -941,19 +941,19 @@ msgstr "Egy leendő felhasználó regisztrált a webtrees-be: %s."
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "Jelentés a személyek ősfájáról fa alakzatban."
+msgstr "Jelentés egy személy őseiről – fa alakzatban."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "Jelentés az adott személy őseiről, elbeszélő stílusban."
+msgstr "Jelentés egy személy őseiről – elbeszélő stílusban."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "Jelentés az adott személy leszármazottairól, elbeszélő stílusban."
+msgstr "Jelentés egy személy leszármazottjairól – elbeszélő stílusban."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
@@ -1198,7 +1198,7 @@ msgstr "Aban"
 #: admin_trees_config.php:1630 admin_trees_config.php:1632
 #: admin_trees_config.php:1636
 msgid "Abbreviate place names"
-msgstr "Helynevek rövidítése"
+msgstr "Helységnevek rövidítése"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
@@ -1738,7 +1738,7 @@ msgstr "Részletes név tények"
 
 #: admin_trees_config.php:2165
 msgid "Advanced place name facts"
-msgstr "Részletes helynév tények"
+msgstr "Részletes helynévtények"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1643
@@ -1922,7 +1922,7 @@ msgstr "Minden bejegyzés"
 
 #: admin_trees_config.php:2047
 msgid "All repository facts"
-msgstr "Minden adatgyűjtemény tény"
+msgstr "Minden adattártény"
 
 #: admin_trees_config.php:1958
 msgid "All source facts"
@@ -2029,9 +2029,7 @@ msgstr "A tömörített fájl kibontása hibába ütközött."
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:37
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr ""
-"Folyamatosan rajzolódó fa, az adott személy őseinek és leszármazottainak "
-"ábrázolására."
+msgstr "Családfaág – egy személy összes ősével és leszármazottjával."
 
 #: setup.php:494
 msgid "An unexpected database error occurred."
@@ -2048,11 +2046,11 @@ msgstr "Ősök"
 #. I18N: gedcom tag ANCI
 #: app/GedcomTag.php:158
 msgid "Ancestors interest"
-msgstr "Ősök hagyatéka"
+msgstr "Ősök érdeke"
 
 #: modules_v3/ahnentafel_report/report.xml:55
 msgid "Ancestors of "
-msgstr "A következő személy ősei: "
+msgstr "E személy ősei: "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/AncestryController.php:54
@@ -4188,7 +4186,7 @@ msgstr "Új média elem létrehozása"
 #: app/Functions/FunctionsEdit.php:418 edit_interface.php:1512
 #: edit_interface.php:1575
 msgid "Create a new repository"
-msgstr "Új adatgyűjtemény létrehozása"
+msgstr "Új adattár létrehozása"
 
 #: app/Functions/FunctionsEdit.php:429 edit_interface.php:1348
 #: edit_interface.php:1384
@@ -5149,11 +5147,11 @@ msgstr "Leszármazottak"
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:366
 msgid "Descendants interest"
-msgstr "Információk leszármazottakról"
+msgstr "Utódok érdeke"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
-msgstr "Leszármazottak: "
+msgstr "Az ő utódjai: "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/DescendancyController.php:62
@@ -5310,13 +5308,13 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors"
-msgstr "Közvetlen leszármazottak"
+msgstr "Egyenes ági ősök"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors and their families"
-msgstr "Közvetlen ősök és családjaik"
+msgstr "Egyenes ági ősök és családjaik"
 
 #: admin_site_upgrade.php:199
 msgid "Disable these modules"
@@ -5352,7 +5350,7 @@ msgstr "A térkép koordinátáinak megjelenítése"
 
 #: app/Module/GoogleMapsModule.php:476
 msgid "Display short placenames"
-msgstr "Rövid helynevek használata"
+msgstr "Rövid helységnevek használata"
 
 #. I18N: gedcom tag DIV
 #: app/GedcomTag.php:374
@@ -5591,7 +5589,7 @@ msgstr "A nyers GEDCOM-adat szerkesztése"
 #: app/Controller/RepositoryController.php:56
 #: app/Controller/RepositoryController.php:61
 msgid "Edit repository"
-msgstr "Adatgyűjtemény szerkesztése"
+msgstr "Adattár szerkesztése"
 
 #: app/Functions/FunctionsEdit.php:440 edit_interface.php:1444
 #: edit_interface.php:1490
@@ -6073,7 +6071,7 @@ msgstr "Új személyek tényei"
 
 #: admin_trees_config.php:2042
 msgid "Facts for repository records"
-msgstr "Adatgyűjtemény bejegyzések tényei"
+msgstr "Adattárbejegyzések tényei"
 
 #: admin_trees_config.php:1953
 msgid "Facts for source records"
@@ -6459,7 +6457,7 @@ msgstr "Hely keresése"
 
 #: app/Functions/FunctionsPrint.php:774 find.php:63
 msgid "Find a repository"
-msgstr "Adatgyűjtemény keresése"
+msgstr "Adattár keresése"
 
 #: app/Functions/FunctionsPrint.php:763 find.php:66
 msgid "Find a shared note"
@@ -10951,9 +10949,9 @@ msgstr "Helyszín-lista"
 #: admin_trees_config.php:1651
 msgid "Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 msgstr ""
-"A helynevek gyakran túl hosszúak, és nem férnek el az ábrákon, listákon stb. "
-"Lerövidíthetők csak a név első, pl.: <i>település, megye</i> vagy csak az "
-"utolsó néhány szavának mutatásával, pl.: <i>régió, ország</i>."
+"A helységnevek gyakran túl hosszúak, és nem férnek el az ábrákon, listákon "
+"stb. Lerövidíthetők csak a név első, pl.: <i>település, megye</i> vagy csak "
+"az utolsó néhány szavának mutatásával, pl.: <i>régió, ország</i>."
 
 #: app/GedcomTag.php:178
 msgid "Place of LDS baptism"
@@ -11093,15 +11091,15 @@ msgstr ""
 "A helyszíneket a származástan szabványaival összhangban kell megadni. A "
 "származástanban a helyszínek tárolása a legapróbb területi egységtől "
 "fokozatosan haladva a legnagyobbig történik, az egyes szinteket vesszővel "
-"elválasztva.  A tárolt helynevek egyes szintjei tükrözzék az állam vagy az "
-"egyház által használt területi szinteket.<br><br>Például, egy olyan hely, "
+"elválasztva.  A tárolt helységnevek egyes szintjei tükrözzék az állam vagy "
+"az egyház által használt területi szinteket.<br><br>Például, egy olyan hely, "
 "mint Salt Lake City a következőképpen adható meg „Salt Lake City, Salt Lake, "
 "Utah, USA”.<br><br>Vizsgáljuk meg e hely egyes részeit: Az első rész „Salt "
 "Lake City”, a város vagy település, ahol az adott esemény lezajlott (egyes "
 "országokban lehetnek körzetek vagy kerületek a városokon belül, amit fontos "
 "feljegyezni. Ebben az esetben ezeket a város előtt kell feltüntetni). A "
 "következő rész „Salt Lake”, a megye. „Utah” az állam és „USA” az ország. "
-"Fontos minden helynevet feljegyezni, mivel a származástani bejegyzések "
+"Fontos minden helységnevet feljegyezni, mivel a származástani bejegyzések "
 "tartalmazzák a közigazgatás minden szintjét.<br><br>Ha egy helyszín részének "
 "valamely szintje ismeretlen, a vesszők között szóközt kell hagyni. "
 "Tételezzük fel a fenti példában a következőt: nem tudjuk, hogy Salt Lake "
@@ -11387,7 +11385,7 @@ msgstr "Kézenfekvő személyi tények"
 
 #: admin_trees_config.php:2105
 msgid "Quick repository facts"
-msgstr "Kézenfekvő adatgyűjtemény tények"
+msgstr "Kézenfekvő adattártények"
 
 #: admin_trees_config.php:2016
 msgid "Quick source facts"
@@ -11799,29 +11797,29 @@ msgstr "Jelentések"
 #: app/Module/HtmlBlockModule.php:199 app/Theme/AbstractTheme.php:1465
 #: mediaviewer.php:147 repolist.php:33 repolist.php:37 statistics.php:353
 msgid "Repositories"
-msgstr "Adatgyűjtemények"
+msgstr "Adattárak"
 
 #: find.php:596
 msgid "Repositories found"
-msgstr "Talált adatgyűjtemények"
+msgstr "Talált adattárak"
 
 #. I18N: gedcom tag REPO
 #: admin_trees_manage.php:554 app/GedcomTag.php:724 inverselink.php:130
 msgid "Repository"
-msgstr "Adatgyűjtemény"
+msgstr "Adattár"
 
 #: admin_trees_config.php:810
 msgid "Repository ID prefix"
-msgstr "Adatgyűjtemény-azonosító előtag"
+msgstr "Adattárazonosító-előtag"
 
 #. I18N: Label for search field
 #: find.php:198
 msgid "Repository contains"
-msgstr "Az adatgyűjtemény tartalmazza"
+msgstr "Az adattár tartalmazza"
 
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
-msgstr "Adatgyűjtemény neve"
+msgstr "Adattár neve"
 
 #: app/Module/LoginBlockModule.php:86 login.php:183
 msgid "Request new password"
@@ -12684,7 +12682,7 @@ msgstr "Mutasd az összes forrást"
 
 #: app/Module/InteractiveTree/TreeView.php:62
 msgid "Show all spouses and ancestors"
-msgstr "Mutasd az összes elődöt és utódot"
+msgstr "Mutasd az összes házastársat és őst"
 
 #: find.php:437
 msgid "Show all tags"
@@ -12941,7 +12939,7 @@ msgstr "Statisztikai diagramok"
 #: admin_trees_config.php:1641
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "A helynevek %1$s %2$s részének megjelenítése."
+msgstr "A helységnevek %1$s %2$s részének megjelenítése."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
@@ -13208,12 +13206,12 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:418
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
 msgstr ""
-"Egyes helynevek elhagyható elő- vagy utótaggal írhatók, például az „Orange” "
-"így: „Orange County”. Ha a családfa a teljes helynevet tartalmazza, viszont "
-"a földrajzi adatállomány csak a rövidebb változatot, akkor meg kell adni az "
-"elhagyható előtagok és utótagok listáját. Ha több változat van, "
-"pontosvesszővel választandók el, például: „County;County of” vagy "
-"„Township;Twp;Twp.”."
+"Egyes helységnevek elhagyható elő- vagy utótaggal írhatók, például az "
+"„Orange” így: „Orange County”. Ha a családfa a teljes helységnevet "
+"tartalmazza, viszont a földrajzi adatállomány csak a rövidebb változatot, "
+"akkor meg kell adni az elhagyható előtagok és utótagok listáját. Ha több "
+"változat van, pontosvesszővel választandók el, például: „County;County of” "
+"vagy „Township;Twp;Twp.”."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1560
@@ -14288,10 +14286,10 @@ msgstr "A honlap beállításai meg lettek változtatva."
 #: admin_trees_config.php:2248
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
 msgstr ""
-"A www.geonames.org egy hatalmas helynév gyűjteményt kínál fel.  A helynév "
-"megadásakor ebben az állományt is lehet keresni.  Ennek a lehetőségnek a "
-"használatához egy ingyenes fiókot kell létrehozni a www.geonames.org oldalon "
-"és megadni a felhasználónevet."
+"A www.geonames.org egy hatalmas helységnév-gyűjteményt szolgáltat. A "
+"helységnév megadásakor ebben az állományban is lehet keresni. E lehetőség "
+"használatához regisztrálni kell a www.geonames.org webhelyen és "
+"felhasználónév megadásával egy ingyenes fiókot kell létrehozni."
 
 #: setup.php:496
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
@@ -14657,10 +14655,10 @@ msgstr ""
 #: admin_trees_config.php:2186
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr ""
-"Ez a helynevek hozzáad/módosít űrlapon megjelenő, vesszővel elválasztott "
+"Ez a helységnevek hozzáad/módosít űrlapon megjelenő, vesszővel elválasztott "
 "GEDCOM-ténycímkék listája. Ha nem latin ábécét használ, mint amilyen a "
 "héber, görög, cirill vagy arab, célszerű _HEB, ROMN, FONE stb. címkéket is "
-"használni, hogy a helyneveket néhány különböző ábécében tárolhassa."
+"használni, hogy a helységneveket néhány különböző ábécében tárolhassa."
 
 #: edituser.php:187
 msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
@@ -14721,11 +14719,10 @@ msgstr ""
 #: admin_trees_config.php:2068
 msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr ""
-"Ez a GEDCOM-tények listája, amit a felhasználók hozzáadhatnak "
-"adatgyűjteményekhez. Ez a lista megváltoztatható ténynevek elvételével vagy "
-"hozzáadásával – amik lehetnek akár egyediek is, ha szükséges. Az ebben a "
-"listában található ténynevek nem szerepelhetnek a <i>Adatgyűjtemény "
-"egyedülálló tényei</i> listában."
+"Ez a GEDCOM-tények listája, amit a felhasználók adattárakhoz adhatnak. Ez a "
+"lista megváltoztatható ténynevek elvételével vagy hozzáadásával – amik "
+"lehetnek akár egyediek is, ha szükséges. Az ebben a listában található "
+"ténynevek nem szerepelhetnek a <i>Egyedi adattártények</i> listában."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1979
@@ -14760,11 +14757,11 @@ msgstr ""
 #: admin_trees_config.php:2097
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr ""
-"Ez a GEDCOM-tények listája, amit a felhasználók <u>csak egyszer</u> adhatnak "
-"hozzá adatgyűjteményekhez. Például, ha a NAME (név) szerepel a listában, a "
-"felhasználók nem tudnak további NAME bejegyzést adni az adatgyűjteményhez. "
-"Az ebben a listában található ténynevek nem szerepelhetnek a <i>"
-"Adatgyűjtemény bejegyzéseinek tényei</i> listában."
+"Ez a GEDCOM-tények listája, amit a felhasználók <u>csak egyszer</u> hozzá "
+"adattárakhoz adhatnak. Például, ha a NAME (név) szerepel a listában, a "
+"felhasználók nem tudnak további NAME bejegyzést adni az adattárhoz. Az ebben "
+"a listában található ténynevek nem szerepelhetnek a <i>Minden adattártény</i>"
+" listában."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:2008
@@ -14808,8 +14805,8 @@ msgstr ""
 #: admin_trees_config.php:2126
 msgid "This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click."
 msgstr ""
-"Ez a GEDCOM-adatgyűjtemény tényeinek rövid listája, ami a teljes lista "
-"mellett jelenik meg, és a tényhozzáadás egyetlen kattintással történhet."
+"Ez a GEDCOM-adattártények rövid listája, ami a teljes lista mellett jelenik "
+"meg, és a tényhozzáadás egyetlen kattintással történhet."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:2037
@@ -15058,36 +15055,33 @@ msgstr ""
 
 #: repo.php:70
 msgid "This repository does not exist or you do not have permission to view it."
-msgstr ""
-"Az adatgyűjtemény nem létezik vagy nincs jogosultsága megjeleníteni azt."
+msgstr "Az adattár nem létezik vagy nincs jogosultsága megtekinteni."
 
 #: repo.php:44
 msgid "This repository has been deleted.  The deletion will need to be reviewed by a moderator."
 msgstr ""
-"Az adatgyűjtemény törölve lett.  Az eltávolítást meg kell erősíteni egy "
-"moderátornak."
+"Az adattárat töröltük. Az eltávolítást egy oldalkezelő még felülvizsgálja."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: repo.php:35
 #, php-format
 msgid "This repository has been deleted.  You should review the deletion and then %1$s or %2$s it."
 msgstr ""
-"Az adatgyűjtemény törölve lett.  Ellenőrizheti  a eltávolítást és vagy %1$s "
-"vagy pedig %2$s azt."
+"Az adattárat törölték.  Vizsgálja felül az eltávolítást, majd %1$s vagy "
+"pedig %2$s azt."
 
 #: repo.php:62
 msgid "This repository has been edited.  The changes need to be reviewed by a moderator."
 msgstr ""
-"Az adatgyűjtemény módosítva lett.  A változtatás oldalkezelői jóváhagyást "
-"igényel."
+"Az adattár módosult. A változtatás oldalkezelői felülvizsgálatot igényel."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: repo.php:53
 #, php-format
 msgid "This repository has been edited.  You should review the changes and then %1$s or %2$s them."
 msgstr ""
-"Az adatgyűjtemény módosítva lett.  Ellenőrizheti  a változtatásokat és vagy "
-"%1$s vagy pedig %2$s azokat."
+"Az adattárat módosították. Vizsgálja felül a változtatásokat, majd %1$s vagy "
+"pedig %2$s azokat."
 
 #: admin_users.php:553
 msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
@@ -15765,7 +15759,7 @@ msgstr "Személy páratlan tényei"
 
 #: admin_trees_config.php:2076
 msgid "Unique repository facts"
-msgstr "Adatgyűjtemény egyedülálló tényei"
+msgstr "Egyedi adattártények"
 
 #: admin_trees_config.php:1987
 msgid "Unique source facts"
@@ -15949,7 +15943,8 @@ msgstr "Árnyképek használata"
 
 #: admin_trees_config.php:2235
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr "GeoNames adatbázis használata a helynevek önálló kiegészítéséhez"
+msgstr ""
+"Használja a GeoNames adatbázist a helységnevek automatikus kiegészítéséhez"
 
 #: login.php:466
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
@@ -16673,7 +16668,7 @@ msgstr "A rendszergazda fiók összes mezőjét ki kell töltse."
 
 #: edit_interface.php:1522
 msgid "You must provide a repository name."
-msgstr "Meg kell adja a adatgyűjtemény nevét."
+msgstr "Meg kell adja az adattár nevét."
 
 #: edit_interface.php:1203
 msgid "You must provide a source title"
