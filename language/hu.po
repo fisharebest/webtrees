@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-12-01 20:47+0100\n"
+"PO-Revision-Date: 2015-12-03 21:32+0100\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -1198,7 +1198,7 @@ msgstr "Aban"
 #: admin_trees_config.php:1630 admin_trees_config.php:1632
 #: admin_trees_config.php:1636
 msgid "Abbreviate place names"
-msgstr "Helységnevek rövidítése"
+msgstr "Helynevek rövidítése"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
@@ -10949,9 +10949,9 @@ msgstr "Helyszín-lista"
 #: admin_trees_config.php:1651
 msgid "Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 msgstr ""
-"A helységnevek gyakran túl hosszúak, és nem férnek el az ábrákon, listákon "
-"stb. Lerövidíthetők csak a név első, pl.: <i>település, megye</i> vagy csak "
-"az utolsó néhány szavának mutatásával, pl.: <i>régió, ország</i>."
+"A helynevek gyakran túl hosszúak, és nem férnek el az ábrákon, listákon stb. "
+"Lerövidíthetők csak a név első, pl.: <i>település, megye</i> vagy csak az "
+"utolsó néhány szavának mutatásával, pl.: <i>régió, ország</i>."
 
 #: app/GedcomTag.php:178
 msgid "Place of LDS baptism"
@@ -12939,7 +12939,7 @@ msgstr "Statisztikai diagramok"
 #: admin_trees_config.php:1641
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "A helységnevek %1$s %2$s részének megjelenítése."
+msgstr "A helynevek %1$s %2$s részének megjelenítése."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
@@ -13206,12 +13206,12 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:418
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
 msgstr ""
-"Egyes helységnevek elhagyható elő- vagy utótaggal írhatók, például az "
-"„Orange” így: „Orange County”. Ha a családfa a teljes helységnevet "
-"tartalmazza, viszont a földrajzi adatállomány csak a rövidebb változatot, "
-"akkor meg kell adni az elhagyható előtagok és utótagok listáját. Ha több "
-"változat van, pontosvesszővel választandók el, például: „County;County of” "
-"vagy „Township;Twp;Twp.”."
+"Egyes helynevek elhagyható elő- vagy utótaggal írhatók, például az „Orange” "
+"így: „Orange County”. Ha a családfa a teljes helynevet tartalmazza, viszont "
+"a földrajzi adatállomány csak a rövidebb változatot, akkor meg kell adni az "
+"elhagyható előtagok és utótagok listáját. Ha több változat van, "
+"pontosvesszővel választandók el, például: „County;County of” vagy "
+"„Township;Twp;Twp.”."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1560
@@ -14286,10 +14286,10 @@ msgstr "A honlap beállításai meg lettek változtatva."
 #: admin_trees_config.php:2248
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
 msgstr ""
-"A www.geonames.org egy hatalmas helységnév-gyűjteményt szolgáltat. A "
-"helységnév megadásakor ebben az állományban is lehet keresni. E lehetőség "
-"használatához regisztrálni kell a www.geonames.org webhelyen és "
-"felhasználónév megadásával egy ingyenes fiókot kell létrehozni."
+"A www.geonames.org egy hatalmas helynévgyűjteményt szolgáltat. A helynév "
+"megadásakor ebben az állományban is lehet keresni. E lehetőség használatához "
+"regisztrálni kell a www.geonames.org webhelyen és felhasználónév megadásával "
+"egy ingyenes fiókot kell létrehozni."
 
 #: setup.php:496
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
@@ -14655,10 +14655,10 @@ msgstr ""
 #: admin_trees_config.php:2186
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr ""
-"Ez a helységnevek hozzáad/módosít űrlapon megjelenő, vesszővel elválasztott "
+"Ez a helynevek hozzáad/módosít űrlapon megjelenő, vesszővel elválasztott "
 "GEDCOM-ténycímkék listája. Ha nem latin ábécét használ, mint amilyen a "
 "héber, görög, cirill vagy arab, célszerű _HEB, ROMN, FONE stb. címkéket is "
-"használni, hogy a helységneveket néhány különböző ábécében tárolhassa."
+"használni, hogy a helyneveket néhány különböző ábécében tárolhassa."
 
 #: edituser.php:187
 msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
@@ -15219,7 +15219,7 @@ msgstr ""
 #: admin_trees_places.php:97
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
 msgstr ""
-"Frissíteni fogja a helység nevének legmagasabb szintű részét vagy részeit. "
+"Frissíteni fogja a hely nevének legmagasabb szintű részét vagy részeit. "
 "Például, „Mexico” illeszkedik „Quintana Roo, Mexico”-ra, de nem illeszkedik „"
 "Santa Fe, New Mexico”-ra."
 
@@ -15833,11 +15833,11 @@ msgstr "Mind frissítése"
 
 #: admin_trees_places.php:84
 msgid "Update all the place names in a family tree"
-msgstr "Itt frissítheted egy családfa összes helységnevét"
+msgstr "Itt frissítheted egy családfa összes helynevét"
 
 #: admin_trees_manage.php:486
 msgid "Update place names"
-msgstr "Helységnevek frissítése"
+msgstr "Helynevek frissítése"
 
 #. I18N: Ignore the warnings, and [...]
 #: admin_site_upgrade.php:200 admin_site_upgrade.php:264
