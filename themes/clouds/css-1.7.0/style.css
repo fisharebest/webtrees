@@ -1608,12 +1608,14 @@ background-color: #fff;
 	clear: none;
 	width: 66%;
 	float: left;
+	display: table;
 }
 
 #index_small_blocks {
 	clear: none;
 	width: 33%;
 	float: right;
+	display: table;
 }
 
 #index_full_blocks {
@@ -1630,7 +1632,7 @@ background-color: #fff;
 }
 
 .small_inner_block {
-	max-height: 200px;
+	max-height: 250px;
 	overflow: auto;
 }
 

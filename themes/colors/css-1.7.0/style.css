@@ -1611,6 +1611,7 @@ a:hover .nameZoom {
 #index_main_blocks {
 	clear: none;
 	width: 66%;
+	display: table;
 	float: left;
 }
 
@@ -1618,6 +1619,7 @@ a:hover .nameZoom {
 	clear: none;
 	width: 33%;
 	float: right;
+	display: table;
 }
 
 #index_full_blocks {
@@ -1634,7 +1636,7 @@ a:hover .nameZoom {
 }
 
 .small_inner_block {
-	max-height: 200px;
+	max-height: 250px;
 	overflow: auto;
 }
 
