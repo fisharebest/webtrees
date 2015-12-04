@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-11-15 06:44+0100\n"
+"PO-Revision-Date: 2015-12-04 22:39+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
@@ -15072,7 +15072,7 @@ msgstr "Gebruik silhouette afbeeldingen wanneer er geen gemarkeerde afbeelding v
 #. I18N: A configuration setting
 #: admin_trees_config.php:1090
 msgid "Use silhouettes"
-msgstr "Gebruik sihouetten"
+msgstr "Gebruik silhouetten"
 
 #: admin_trees_config.php:2235
 msgid "Use the GeoNames database for autocomplete on places"
