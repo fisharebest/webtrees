@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-12-03 21:32+0100\n"
+"PO-Revision-Date: 2015-12-06 10:42+0100\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -13754,8 +13754,8 @@ msgstr ""
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr ""
-"A <b>Vezetéknév</b> mező egy rendezéshez és csoportosításhoz használható "
-"nevet tartalmaz. Különbözhet a személy valós vezetéknevétől, amely mindig a "
+"A <b>Vezetéknév</b> mező rendezéshez és csoportosításhoz használható nevet "
+"tartalmaz. Különbözhet a személy valós vezetéknevétől, amely mindig a "
 "<b>Név</b> mezőből származik. Ez a mező használható a nevek előtagos vagy "
 "előtag nélküli rendezésére (Gogh / van Gogh) és betűzött vagy ragozott "
 "változatok csoportosítására (Széchenyi / Széchényi). Ha egy személyt egynél "
@@ -14537,7 +14537,7 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "A családfa utolsó frissítésének időpontja: %s."
+msgstr "A családfa utolsó frissítésének időpontja: %s"
 
 #: addmedia.php:331
 msgid "This file is linked to another family tree on this server.  It cannot be deleted, moved, or renamed until these links have been removed."
@@ -17169,7 +17169,7 @@ msgstr "temetés"
 
 #: app/GedcomTag.php:1711
 msgid "by"
-msgstr "Utoljára módosította"
+msgstr "Módosította"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:301
