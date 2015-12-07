@@ -34,5 +34,9 @@ class Migration32 implements MigrationInterface {
 		} catch (PDOException $ex) {
 			// Already done?
 		}
+
+		Database::prepare(
+			"DELETE FROM `##change` WHERE old_gedcom = '' AND new_gedcom = ''"
+		)->execute();
 	}
 }
