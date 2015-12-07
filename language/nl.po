@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-12-04 22:39+0100\n"
+"PO-Revision-Date: 2015-12-07 06:30+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
@@ -14379,7 +14379,9 @@ msgstr "Deze website wordt geupdate. Probeer het over een paar minuten opnieuw."
 
 #: site-offline.php:73
 msgid "This website is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
-msgstr "De site is gesloten voor onderhoud. Over een paar minuten kunt u het<a href=\"index.php\">opnieuw proberen</a>."
+msgstr ""
+"De site is gesloten voor onderhoud. Over een paar minuten kunt u het <a href="
+"\"index.php\">opnieuw proberen</a>."
 
 #: site-offline.php:67 site-unavailable.php:89
 msgid "This website is temporarily unavailable"
