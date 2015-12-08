@@ -368,7 +368,7 @@ session_set_save_handler(
 	},
 	// read
 	function ($id) {
-		return Database::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();
+		return (string) Database::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();
 	},
 	// write
 	function ($id, $data) {
