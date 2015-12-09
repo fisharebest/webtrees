@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-11-17 17:00+0100\n"
+"PO-Revision-Date: 2015-12-09 09:06+0100\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
@@ -11067,7 +11067,7 @@ msgstr "Provo, Utah, USA"
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:704
 msgid "Publication"
-msgstr "Vydal"
+msgstr "Publikace"
 
 #: app/Stats.php:6908
 msgid "Puerto Rico"
