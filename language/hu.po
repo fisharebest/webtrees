@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-12-06 10:42+0100\n"
+"PO-Revision-Date: 2015-12-10 16:11+0100\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -95,7 +95,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:317
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$s KB letöltve, %2$s másodperc alatt."
+msgstr "%1$s kilobájt letöltve, %2$s másodperc alatt."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
@@ -203,7 +203,7 @@ msgstr "i. e. %s"
 #: admin_media.php:484 app/Media.php:276
 #, php-format
 msgid "%s KB"
-msgstr "%s KB"
+msgstr "%s kilobájt"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:194
@@ -221,7 +221,7 @@ msgstr "%s és felmenői"
 #: app/Module/ClippingsCartModule.php:280
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s és a személyek akik hivatkoznak rá."
+msgstr "%s és a személyek, akik hivatkoznak rá."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:118
@@ -233,7 +233,7 @@ msgstr "%s és gyerekeik"
 #: app/Module/ClippingsCartModule.php:124
 #, php-format
 msgid "%s and their descendants"
-msgstr "%s és leszármazottaik"
+msgstr "%s és leszármazottjaik"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5953
 #, php-format
@@ -268,8 +268,8 @@ msgstr[1] "%s nappal ezelőtt"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] "%s család frissítve lett."
-msgstr[1] "%s család frissítve lett."
+msgstr[0] "%s család frissítése megtörtént."
+msgstr[1] "%s család frissítése megtörtént."
 
 #: admin.php:798
 #, php-format
@@ -303,15 +303,15 @@ msgstr[1] "%s személy"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "%s személy frissítve lett."
-msgstr[1] "%s személy frissítve lett."
+msgstr[0] "%s személy frissítése megtörtént."
+msgstr[1] "%s személy frissítése megtörtént."
 
 #: app/Module/GoogleMapsModule.php:896
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] "%s személy bizalmas."
-msgstr[1] "%s személy bizalmas."
+msgstr[0] "%s személy privát."
+msgstr[1] "%s személy privát."
 
 #: app/Controller/LifespanController.php:253
 #, php-format
@@ -339,9 +339,8 @@ msgstr[1] "%s személy eseménnyel, helyszín: %s, %s és %s között"
 #, php-format
 msgid "%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it."
 msgstr ""
-"%s nem engedélyezett ezen a kiszolgálón.  Amíg engedélyezésre nem kerül a "
-"webtrees nem telepíthető.  Kérjük, kérje meg erre a kiszolgáló "
-"rendszergazdáját."
+"%s nem aktív ezen a szerveren.  Amíg inaktív, a webtrees nem telepíthető.  "
+"Legyen szíves, kérje meg a szerver rendszergazdáját az aktiválására."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5963
 #, php-format
@@ -384,8 +383,8 @@ msgstr[1] "%s hónappal ezelőtt"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "%s megjegyzés frissült."
-msgstr[1] "%s megjegyzés frissült."
+msgstr[0] "%s megjegyzés frissítése megtörtént."
+msgstr[1] "%s megjegyzés frissítése megtörtént."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2127
@@ -410,8 +409,8 @@ msgstr[1] "%s másodperccel ezelőtt"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] "%s forrás frissült."
-msgstr[1] "%s forrás frissült."
+msgstr[0] "%s forrás frissítése megtörtént."
+msgstr[1] "%s forrás frissítése megtörtént."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2143
@@ -519,7 +518,7 @@ msgstr "%s, házastársai és gyermekei"
 #: app/Module/ClippingsCartModule.php:230
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr "%s, házastársai és leszármazottai"
+msgstr "%s, házastársai és leszármazottjai"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:214
@@ -543,7 +542,7 @@ msgstr "%s, házastársai és gyermekei"
 #: app/Module/ClippingsCartModule.php:232
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr "%s, házastársai és leszármazottai"
+msgstr "%s, házastársai és leszármazottjai"
 
 #: app/Functions/FunctionsPrint.php:622 app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
@@ -720,56 +719,55 @@ msgstr ""
 #: admin_trees_manage.php:718
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr ""
-"<b>Fontos megjegyzés:</b> A átviteli varázsló nem tud a média elemek "
-"áthelyezésében segíteni.  Önnek kell a média beállításokat beállítania és "
-"vagy másolnia vagy áthelyeznie külön a beállításokat és külön az állományt "
-"miután a varázsló befejeződött."
+"<b>Fontos megjegyzés:</b> Az átviteli varázsló nem tud a médiaelemek "
+"áthelyezésében segíteni. Önnek külön-külön be kell állítania és el kell "
+"mozgatnia vagy le kell másolnia a médiakonfigurációt és elemeket, miután a "
+"varázsló végzett."
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr ""
-"<b>Figyelem:</b> A bizalmas információkat csak az érintettek illetve a "
-"közeli családtagok láthatják.  Kérheti a rokonsági fokának felülvizsgálatát, "
-"hogy hozzáférjen ezekhez az információkhoz.  Néha az elhunytak adatai is "
-"titkosak.  Ez azért lehet mert nincs elég információ az illető személy "
-"halálának körülményeiről vagy általában a személyről.<br><br>Mielőtt "
-"feltenne egy kérdést, kérem ellenőrizze, hogy a megfelelő személyről van-e "
-"szó, ellenőrizve a dátumokat, helyeket és közeli hozzátartozókat.  "
-"Amennyiben változtatásokat javasol a családfa adatait illetően kérem jelölje "
-"meg a forrásait is."
+"<b>Figyelem:</b> Élő személyek bizalmas információit csak a családtagok, "
+"illetve közeli barátok láthatják. Az Ön rokonsági fokát ellenőrizzük, "
+"mielőtt bármilyen privát adatot kaphatna. Néha az elhunytak adatai is "
+"titkosak. Ez azért lehetséges, mert nincs elég információ a személyről annak "
+"megállapítására, hogy az illető él-e vagy nem, és valószínűleg nincs róla "
+"több információ.<br><br>Mielőtt kérdést tenne fel, kérem ellenőrizze, hogy a "
+"megfelelő személyt kutatja-e dátumok, helyek és közeli hozzátartozók "
+"ellenőrzésekor. Amennyiben származástani adatváltoztatást küld, kérem "
+"jelölje meg a forrásokat, ahonnan az adatokat vette."
 
 #: login.php:146
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 msgstr ""
-"<center><b>Üdvözöljük ezen a Családfakutató-Honlapon</b><center><br>A "
-"honlaphoz kizárólag a <u>bejelentkezett</u> felhasználók férhetnek "
-"hozzá.<br><br>Amennyiben Ön már rendelkezik felhasználói fiókkal, "
-"bejelentkezhet az oldalra. Ha még nem, a megfelelő hivatkozásra kattintva "
-"kezdeményezheti annak megszerzését.<br><br>Az adatok ellenőrzése után a "
-"honlap szerkesztője fogadja vagy utasítja vissza az Ön igényét.  Az "
-"jóváhagyásról email-ben kap értesítést."
+"<center><b>Üdvözöljük ezen a származástani webhelyen!</b><center><br>A "
+"webhelyet kizárólag a <u>engedéllyel ellátott</u> felhasználók érhetik "
+"el.<br><br>Amennyiben Ön rendelkezik felhasználói fiókkal, bejelentkezhet az "
+"oldalra. Ha még nem, a megfelelő alábbi hivatkozásra kattintva kérhet "
+"egyet.<br><br>Az adatok ellenőrzése után a rendszergazda fogadja vagy "
+"visszautasítja az Ön fiókkérelmét. A kérése jóváhagyásáról e-mailben kap "
+"értesítést."
 
 #: login.php:149
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 msgstr ""
-"<center><b>Üdvözöljük ezen a Családfakutató-Honlapon</b></center><br>A "
-"honlaphoz <u>kizárólag családtagok</u> férhetnek hozzá.<br><br>Amennyiben Ön "
-"már rendelkezik felhasználói fiókkal, bejelentkezhet az oldalra.  Ha még "
-"nem, a megfelelő hivatkozásra kattintva kezdeményezheti annak "
-"megszerzését.<br><br>Az adatok ellenőrzése után a honlap szerkesztője "
-"fogadja vagy utasítja vissza az Ön igényét.  Az jóváhagyásról email-ben kap "
-"értesítést."
+"<center><b>Üdvözöljük ezen a származástani webhelyen!</b></center><br>A "
+"webhelyet <u>kizárólag családtagok</u> érhetik el.<br><br>Amennyiben Ön már "
+"rendelkezik felhasználói fiókkal, bejelentkezhet az oldalra. Ha még nem, a "
+"megfelelő alábbi hivatkozásra kattintva kérhet egyet.<br><br>A megadott "
+"adatok ellenőrzése után a rendszergazda fogadja vagy visszautasítja az Ön "
+"fiókkérelmét. A kérése jóváhagyásáról e-mailben kap értesítést."
 
 #: login.php:143
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved."
 msgstr ""
-"<center><b>Üdvözöljük ezen a Családfakutató-Honlapon!</b></center><br>A "
-"honlapot minden olyan felhasználó látogathatja, akinek van felhasználói "
-"fiókja.<br><br>Amennyiben Ön már rendelkezik felhasználói fiókkal, "
-"bejelentkezhet az oldalra.  Ha még nem, a megfelelő hivatkozásra kattintva "
-"kezdeményezheti annak megszerzését.<br><br>z adatok ellenőrzése után a "
-"honlap szerkesztője fogadja vagy utasítja vissza az Ön igényét.  Az "
-"jóváhagyásról email-ben kap értesítést."
+"<center><b>Üdvözöljük ezen a származástani webhelyen!</b></center><br>A "
+"webhely elérése minden olyan látogató számára engedélyezett, akinek van "
+"felhasználói fiókja.<br><br>Amennyiben Ön rendelkezik felhasználói fiókkal, "
+"bejelentkezhet az oldalra. Ha még nem, a megfelelő alábbi hivatkozásra "
+"kattintva kérhet egyet.<br><br>A jelentkezése ellenőrzése után a "
+"rendszergazda aktiválja a fiókját. A kérése jóváhagyásáról e-mailben kap "
+"értesítést."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:993 admin_users.php:489 edituser.php:275
@@ -1041,11 +1039,11 @@ msgstr ""
 #: admin_users.php:524
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr ""
-"A szerep olyan jogosultságok gyűjteménye, amely megszabja az adatok "
-"megjelenítésének engedélyét, a beállítások változtatását stb.  A hozzáférési "
-"jogok a szerepekhez igazodnak, a szerepek pedig a felhasználókhoz.  Minden "
-"egyes családfa eltérő hozzáférési szereppel rendelkezhet, és a "
-"felhasználóknak is eltérő szerepkiosztásuk lehet minden egyes családfához."
+"A szerepkör olyan jogosultságok gyűjteménye, amely megszabja az adatok "
+"megjelenítésének engedélyét, a beállítások változtatását stb. A hozzáférési "
+"jogok a szerepkörökhöz igazodnak, a szerepkörök pedig a felhasználókhoz. "
+"Minden egyes családfa eltérő hozzáférési szerepkörrel rendelkezhet, és a "
+"felhasználóknak is eltérő szerepkörük lehet az egyes családfák esetén."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1858,7 +1856,7 @@ msgstr "Úgyis mint"
 
 #: app/Functions/FunctionsPrintLists.php:192
 msgid "Alive"
-msgstr "Élő"
+msgstr "Élők"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: app/I18N.php:179 app/Module/FrequentlyAskedQuestionsModule.php:204
@@ -1879,7 +1877,7 @@ msgstr "Élő"
 #: modules_v3/missing_facts_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "All"
-msgstr "Mind"
+msgstr "Összes"
 
 #: admin_trees_manage.php:711
 msgid "All changes in PhpGedView must be accepted"
@@ -2046,7 +2044,7 @@ msgstr "Ősök"
 #. I18N: gedcom tag ANCI
 #: app/GedcomTag.php:158
 msgid "Ancestors interest"
-msgstr "Ősök érdeke"
+msgstr "Ősök, akik érdekesek"
 
 #: modules_v3/ahnentafel_report/report.xml:55
 msgid "Ancestors of "
@@ -2383,22 +2381,22 @@ msgstr "A felhasználó változtatásainak automatikus elfogadása"
 #. I18N: A configuration setting
 #: admin_trees_config.php:738
 msgid "Automatically create globally unique IDs"
-msgstr "Egyedi azonosító önvezérelt létrehozása"
+msgstr "Globális egyedi azonosító automatikus létrehozása"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1450
 msgid "Automatically expand list of events of close relatives"
-msgstr "Önállóan táruljon a közeli hozzátartozók eseménylistája"
+msgstr "A közeli rokonok eseménylistájának automatikus kitárása"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1569
 msgid "Automatically expand notes"
-msgstr "Megjegyzések önálló kitárása"
+msgstr "Megjegyzések automatikus kitárása"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1584
 msgid "Automatically expand sources"
-msgstr "Források önálló kitárása"
+msgstr "Források automatikus kitárása"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:147
@@ -3699,11 +3697,10 @@ msgstr "Rokonok kiválasztása"
 #: addmedia.php:449 admin_media_upload.php:213
 msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
 msgstr ""
-"Válassza ki a bélyegképet a feltöltésre.  A képek bélyegképét nem szükséges "
-"megadni, a rendszer önállóan is létrehozhatja.  Saját bélyegképre egyéb "
-"típusú médiánál lehet szükség, mint például a mozgóképnél megadhat egy álló "
-"képet a felvételből, vagy a hangfelvételnél egy fényképet a rögzített "
-"személyről."
+"Válassza ki a feltöltendő bélyegképet. Habár a képek bélyegképe "
+"automatikusan létrehozható, főleg egyéb típusú médiatípusok esetén saját "
+"bélyegképet hozhat létre. Például a mozgóképnél megadhat egy állóképet egy "
+"videóból, vagy a személy fényképét, aki hangfelvételt készített."
 
 #: admin_site_config.php:124
 msgid "Choose user defined welcome text typed below"
@@ -5123,7 +5120,7 @@ msgstr "Denver, Kolorádó"
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
 msgstr ""
-"Az Ön Kiszolgálójának beállításaitól függően a frissítés önműködően "
+"Az Ön szerverkonfigurációjától függően a frissítés automatikusan "
 "megtörténhet."
 
 #: familybook.php:89
@@ -5147,7 +5144,7 @@ msgstr "Leszármazottak"
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:366
 msgid "Descendants interest"
-msgstr "Utódok érdeke"
+msgstr "Utódok, akik érdekesek"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
@@ -5328,7 +5325,7 @@ msgstr "Tiltsa le ezeket a témákat"
 #: app/I18N.php:183
 #, php-format
 msgid "Display %s"
-msgstr "%s tétel / oldal"
+msgstr "%s sor / oldal"
 
 #: find.php:167 find.php:186 find.php:205 find.php:225 find.php:244
 msgid "Display all"
@@ -5442,15 +5439,15 @@ msgstr "A megadott felhasználónév már foglalt.  Kérem, válasszon másikat.
 msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 msgstr ""
 "Ez az e-mail cím kerül a webtrees által automatikusan létrehozott e-mailek "
-"„Feladó:” rovatába.<br><br>A webtrees önállóan is létrehozhat e-maileket a "
-"rendszergazdák értesítésére az ellenőrizendő változtatásokról, továbbá "
-"értesítő e-mailt küld fiókot igénylő felhasználóknak is.<br><br>Általában, "
-"ezeknek az automatikusan létrehozott e-mailek „Feladó:” rovata valami ilyen: "
-"<i>Feladó: webtrees-nem-var-valaszt@az-on-oldala</i>, jelezve, hogy erre az "
-"e-mailre nem kell válaszolni. A rosszindulatú e-mailek elleni védelem "
-"érdekében egyes e-mail rendszerek megkívánják, hogy minden üzenet „Feladó:” "
-"rovata valós e-mail fióknak tűnjön, és nem fogadják el a <i>webtrees-nem-var-"
-"valaszt</i> alakútól eltérő fiókok üzeneteit."
+"„Feladó:” rovatába.<br><br>A webtrees automatikusan is létrehozhat e-"
+"maileket a rendszergazdák értesítésére az ellenőrizendő változtatásokról, "
+"továbbá értesítő e-mailt küld fiókot igénylő felhasználóknak is.<br><br>"
+"Általában, ezeknek az automatikusan létrehozott e-mailek „Feladó:” rovata "
+"valami ilyen: <i>Feladó: webtrees-nem-var-valaszt@az-on-webhelye</i>, "
+"jelezve, hogy erre az e-mailre nem kell válaszolni. A rosszindulatú e-mailek "
+"elleni védelem érdekében egyes e-mail rendszerek megkívánják, hogy minden "
+"üzenet „Feladó:” rovata valós e-mail fióknak tűnjön, és nem fogadják el a <i"
+">webtrees-nem-var-valaszt</i> alakútól eltérő fiókok üzeneteit."
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -5471,10 +5468,9 @@ msgstr ""
 #: help_text.php:319
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
 msgstr ""
-"Minden felhasználói fiók tartalmazza a változtatások azonnali elfogadásának "
-"lehetőségét.  Ha ez engedélyezve van, akkor a felhasználó által végrehajtott "
-"változtatások rögtön érvénybe lépnek.  A legtöbb rendszergazda engedélyezi "
-"ezt a beállítást a saját fiókjára."
+"Minden felhasználói fiókhoz tartozik egy „változtatások automatikus "
+"elfogadása” opció. Ha ez aktív, a felhasználó változtatásait rögtön tárolja "
+"a rendszer. Sok rendszergazda engedélyezi ezt a saját fiókjára."
 
 #: statistics.php:127
 msgid "Earliest birth"
@@ -7580,9 +7576,8 @@ msgstr ""
 #: admin_site_config.php:512
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
-"Ha a látogatók részére megjeleníti az élő személyeket, minden egyéb "
-"adatvédelmi korlátozás érvényét veszíti.  Ezt csak akkor tegye, ha a "
-"családfa teljes terjedelmében nyilvános."
+"Ha a következő követő- és elemzőszolgáltatások egyikét használja, a webtrees "
+"automatikusan felveheti a követőkódot."
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1223
@@ -7701,7 +7696,7 @@ msgstr "Ebben az évben…"
 
 #: app/Module/GoogleMapsModule.php:1566
 msgid "Include fully matched places"
-msgstr "Beleértve a teljesen egyező helyek"
+msgstr "Tartalmazza a teljesen egyező helyeket"
 
 #: famlist.php:173 indilist.php:174
 #, php-format
@@ -7711,16 +7706,16 @@ msgstr "„%s” házassági nevű személyekkel"
 #: app/Module/ClippingsCartModule.php:358
 #: app/Module/ClippingsCartModule.php:691
 msgid "Include media (automatically zips files)"
-msgstr "Beleértve a Médiát (fájlok önműködő tömörítése)"
+msgstr "Tartalmazza a médiafájlokat (a fájlokat automatikusan tömöríti)"
 
 #. I18N: Label for check-box
 #: admin_media.php:661 medialist.php:120
 msgid "Include subfolders"
-msgstr "Beleértve az almappákat"
+msgstr "Tartalmazza az almappákat"
 
 #: lifespan.php:83
 msgid "Include the individual’s immediate family?"
-msgstr "Beleértve a közvetlen rokonságot?"
+msgstr "Tartalmazza a személy közvetlen családját?"
 
 #: app/Stats.php:6831
 msgid "India"
@@ -11911,7 +11906,7 @@ msgstr "Jobb oldali blokkok"
 #. I18N: gedcom tag ROLE
 #: admin_users.php:579 app/GedcomTag.php:754
 msgid "Role"
-msgstr "Szerep"
+msgstr "Szerepkör"
 
 #: app/Stats.php:6916
 msgid "Romania"
@@ -12785,11 +12780,11 @@ msgstr "Interaktív helyek mutatása"
 
 #: app/Functions/FunctionsPrintLists.php:227
 msgid "Show individuals born more than 100 years ago."
-msgstr "Mutasd azokat a személyeket akik több mint 100 éve születtek."
+msgstr "Mutasd azokat a személyeket, akik több mint 100 éve születtek."
 
 #: app/Functions/FunctionsPrintLists.php:236
 msgid "Show individuals born within the last 100 years."
-msgstr "Az elmúlt 100 évben született személyek mutatása."
+msgstr "Mutasd azokat a személyeket, akik az elmúlt 100 évben születtek."
 
 #: app/Functions/FunctionsPrintLists.php:189
 #: app/Functions/FunctionsPrintLists.php:626
@@ -12808,7 +12803,7 @@ msgstr "Mutasd azokat a személyeket, akik több mint 100 éve hunytak el."
 
 #: app/Functions/FunctionsPrintLists.php:216
 msgid "Show individuals who died within the last 100 years."
-msgstr "Mutasd azokat a személyeket, akik az utolsó 100 évben hunytak el."
+msgstr "Mutasd azokat a személyeket, akik az elmúlt 100 évben hunytak el."
 
 #: timeline.php:315
 msgid "Show lifespans"
@@ -12852,7 +12847,7 @@ msgstr "Csak az élők eseményeit mutassuk?"
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
-msgstr "Csak a nők mutatása."
+msgstr "Csak a nőket mutasd."
 
 #: app/Functions/FunctionsPrintLists.php:178
 msgid "Show only individuals for whom the gender is not known."
@@ -12864,7 +12859,7 @@ msgstr "Csak a személyek, események mutatása vagy mindent?"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
-msgstr "Csak a férfiak mutatása."
+msgstr "Csak a férfiakat mutasd."
 
 #: find.php:436
 msgid "Show only the selected tags"
@@ -13006,15 +13001,15 @@ msgstr "Látható a látogatók által"
 #: app/Functions/FunctionsPrintLists.php:673
 msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
 msgstr ""
-"Mutasd a «levél» párokat vagy személyeket. Ők azok, akik élnek, de nincs "
-"gyermekük az adatbázisban."
+"Mutasd a „levél” párokat vagy személyeket. Ők azok, akik élnek, de nincs "
+"bejegyzett gyermekük az adatbázisban."
 
 #: app/Functions/FunctionsPrintLists.php:247
 #: app/Functions/FunctionsPrintLists.php:664
 msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
 msgstr ""
-"Mutasd a «gyökér» párokat vagy személyeket. Ezek az emberek «pátriárkák». Ők "
-"azok, akiknek nincs szülő bejegyezve az adatbázisban."
+"Mutasd a „gyökér” párokat vagy személyeket. Ezek a személyek másképpen a "
+"„pátriárkák”. Ők azok, akiknek nincs  bejegyzett szülője az adatbázisban."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:228 app/I18N.php:229
@@ -14591,8 +14586,8 @@ msgstr ""
 #, php-format
 msgid "This individual has been edited.  You should review the changes and then %1$s or %2$s them."
 msgstr ""
-"E személy adatai változtak. Ellenőrizze a változtatásokat, majd <b>%1$s</b> "
-"vagy <b>%2$s</b>."
+"E személy adatai változtak. Ellenőrizze a változtatásokat, amelyeket "
+"<b>%1$s</b>hat vagy <b>%2$s</b>hat."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:685 admin_users.php:598 edituser.php:204
@@ -14819,8 +14814,8 @@ msgstr ""
 #: admin_trees_config.php:1082
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100."
 msgstr ""
-"Képszélesség pontokban amit az alkalmazás a bélyegképek önálló "
-"létrehozásánál használ. Az alapértelmezett érték 100 képpont."
+"Bélyegképek automatikus létrehozásakor ezt a szélességet (képpontban) "
+"használja az alkalmazás. Az alapértelmezett érték 100."
 
 #: admin_users.php:318 edituser.php:173 login.php:397 setup.php:426
 msgid "This is your real name, as you would like it displayed on screen."
@@ -15086,36 +15081,37 @@ msgstr ""
 #: admin_users.php:553
 msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
 msgstr ""
-"A szerep magában foglalja a szerkesztő teljes jogkörét, valamint a "
-"felhasználó által végrehajtott változtatás elfogadó/elutasító jogokat."
+"Ez a szerepkör magában foglalja a szerkesztő teljes jogkörét, valamint más "
+"felhasználók által végrehajtott változtatások helybenhagyásának/elvetésének "
+"jogát."
 
 #: admin_users.php:567
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
 msgstr ""
-"A szerep magában foglalja az oldalfelügyelő teljes jogkörét az összes "
-"családfán, valamint az oldal, felhasználók és egységek szabályozásaik és "
-"beállításaik változtatásának jogait."
+"Ez a szerepkör magában foglalja az oldalfelügyelő teljes jogkörét az összes "
+"családfában, valamint a webhely, a felhasználók és a modulok beállítása/"
+"konfigurációja megváltoztatását."
 
 #: admin_users.php:547
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr ""
-"E szerep magában foglalja a tag összes jogát, valamint adat "
-"hozzáadás/módosítás/törlés jogot. Bármilyen változtatást egy oldalkezelőnek "
-"el kell fogadnia, kivéve, ha „A felhasználó változtatásainak automatikus "
-"elfogadása” lehetőség engedélyezett."
+"Ez a szerepkör magában foglalja a tag összes jogát, valamint adat "
+"hozzáadás/módosítás/törlés jogát. Bármilyen változtatást egy oldalkezelőnek "
+"jóvá kell hagynia, kivéve, ha a felhasználó „változtatások automatikus "
+"elfogadása” opciója aktív."
 
 #: admin_users.php:561
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
 msgstr ""
-"A szerep magában foglalja az oldalkezelő jogait, valamint további "
-"hozzáférést a családfa beállításaitól függően, és ezen felül a családfa "
-"beállítások módosításának jogait is."
+"Ez a szerepkör magában foglalja az oldalkezelő összes jogát, plusz a "
+"családfa konfigurációjának megfelelő bármilyen további hozzáférést, valamint "
+"a családfa beállítása/konfigurációja módosításának jogát."
 
 #: admin_users.php:539
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
 msgstr ""
-"A szerep magában foglalja a látogató összes jogait, valamint további "
-"hozzáférést a családfa beállításaitól függően."
+"Ez a szerepkör magában foglalja a látogató összes jogát, valamint a családfa "
+"konfigurációjának megfelelő, bármilyen további hozzáférést."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:324
@@ -15917,7 +15913,7 @@ msgstr "Színek használata"
 
 #: app/Module/InteractiveTree/TreeView.php:59
 msgid "Use compact layout"
-msgstr "Szorosabb / lazább elrendezés"
+msgstr "Tömörebb / lazább elrendezés"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2209
@@ -15943,8 +15939,7 @@ msgstr "Árnyképek használata"
 
 #: admin_trees_config.php:2235
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr ""
-"Használja a GeoNames adatbázist a helységnevek automatikus kiegészítéséhez"
+msgstr "Használja a GeoNames adatbázist a helynevek automatikus kiegészítéséhez"
 
 #: login.php:466
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
@@ -16259,11 +16254,13 @@ msgstr ""
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>.  You must verify your account request by following instructions in the confirmation email.  If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this website, you will need to know your user name and password."
 msgstr ""
-"Kapni fog egy ellenőrző emailt erre a címre ( %s ). Ezt a levelet használja "
-"az azonosítója aktiválásához; ha hét napon belül nem sikerül az aktiválás, "
-"áthelyezésre kerül az azonosítója (akkor újra megkísérelheti a "
-"regisztrációt).<br><br>Ahhoz hogy bejelentkezzen az oldalra, tudnia kell az "
-"azonosítóját, és a jelszavát."
+"Most küldünk egy megerősítő e-mailt a <b>%s</b> címre. Ellenőriznie kell a "
+"fiókkérelmét a megerősítő e-mailben lévő utasítások követésével. Ha hét "
+"napon belül nem erősíti meg a fiókkérelmét, a kérelme automatikusan "
+"érvénytelenné válik. Újra kell kérnie.<br><br>Miután követte a megerősítő e-"
+"mail utasításait, a fiók használata előtt a rendszergazdának még helyben "
+"kell hagynia az Ön kérését.<br><br>E webhelyre történő bejelentkezéshez "
+"tudnia kell a felhasználónevét és jelszavát."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:86
@@ -16396,11 +16393,10 @@ msgstr ""
 #: admin_users.php:608
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see."
 msgstr ""
-"Ahol a felhasználó hozzá van rendelve egy bejegyzéshez a családfában és ha "
-"része a tag, szerkesztő vagy oldalkezelő szerep valamelyikének, akkor "
-"letilthatja a távolabbi élő családtagok bizalmas adatainak elérését.  Csak a "
-"rokoni kapcsolatok lépésszámát kell megadni, amelyen belül a felhasználó "
-"megtekintheti az adatokat."
+"Ahol egy felhasználó egy családfában egy bejegyzéshez tartozik, és tag, "
+"szerkesztő vagy oldalkezelő szerepkörrel rendelkezik, megakadályozhatja a "
+"távolabbi, élő családtagok részleteinek elérését. Csak a rokoni kapcsolatok "
+"fokát kell megadni, amit a felhasználó megtekinthet."
 
 #: admin_pgv_to_wt.php:162
 msgid "Where is your PhpGedView installation?"
@@ -16408,7 +16404,7 @@ msgstr "Hol található a PhpGedView telepítése?"
 
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps?"
-msgstr "Melyik családfát vegyük bele ebbe az oldaltérképbe?"
+msgstr "Mely családfákat kell a webhelytérképnek tartalmaznia?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1036
@@ -16716,11 +16712,11 @@ msgstr ""
 #: admin_site_config.php:451
 msgid "You only need to enter a Login URL if you want to redirect to a different website or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
 msgstr ""
-"Csak akkor szükséges a bejeletkezési URL-t megadni, ha a felhasználó "
-"bejelentkezésekor átszeretne váltani egy másik oldalra vagy helyre.  Ez "
-"akkor hasznos, ha felhasználók bejelentkezésekor át szeretne váltani http-"
-"ről https-re.  A teljes URL-t <i>login.php</i>-t is beszámítva.  Például "
-"https://www.az-on-oldala.com/webtrees/login.php ."
+"Csak akkor kell bejelentkezési URL-t megadnia, ha a felhasználó "
+"bejelentkezésekor át szeretné irányítani egy másik webhelyre vagy helyre. Ez "
+"akkor nagyon hasznos, ha bejelentkezéskor át kell kapcsolni http-ről https-"
+"re.  Vegye fel a teljes URL-t a <i>login.php</i>-ba, például: https://www.az-"
+"on-szervere.com/webtrees/login.php."
 
 #: message.php:248
 msgid "You sent the following message to a webtrees administrator:"
