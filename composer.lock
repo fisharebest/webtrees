@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "bombayworks/zendframework1",
-            "version": "v1.12.16",
+            "version": "v1.12.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bombayworks/zendframework1.git",
-                "reference": "0b71c0311a1f5734e14751755aa7f7c4736b2892"
+                "reference": "864398ae144a5e11e59a1f17c3126ecbcdd56c91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/0b71c0311a1f5734e14751755aa7f7c4736b2892",
-                "reference": "0b71c0311a1f5734e14751755aa7f7c4736b2892",
+                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/864398ae144a5e11e59a1f17c3126ecbcdd56c91",
+                "reference": "864398ae144a5e11e59a1f17c3126ecbcdd56c91",
                 "shasum": ""
             },
             "require": {
@@ -59,7 +59,7 @@
                 "ZF1",
                 "framework"
             ],
-            "time": "2015-09-15 16:00:12"
+            "time": "2015-12-09 17:00:08"
         },
         {
             "name": "ezyang/htmlpurifier",
