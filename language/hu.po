@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-12-10 16:11+0100\n"
+"PO-Revision-Date: 2015-12-11 16:24+0100\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -6233,7 +6233,7 @@ msgstr "Szülői család"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:139
 msgid "Family with rada parents"
-msgstr ""
+msgstr "Rada-szülői család"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/GedcomCode/GedcomCodePedi.php:135
@@ -11456,7 +11456,7 @@ msgstr "Rébi el accher"
 #. I18N: This is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:93
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:96
@@ -15691,7 +15691,7 @@ msgstr "Hibák típusai"
 #: admin_trees_manage.php:648 app/GedcomTag.php:848 app/GedcomTag.php:864
 #: app/GedcomTag.php:1751
 msgid "URL"
-msgstr ""
+msgstr "URL (internetcím)"
 
 #: app/Stats.php:6965
 msgid "US Minor Outlying Islands"
@@ -15712,7 +15712,7 @@ msgstr "U.S.S.R. (Soviet Union)"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:41
 msgid "UTC"
-msgstr ""
+msgstr "UTC (koordinált világidő)"
 
 #: app/Stats.php:6963
 msgid "Uganda"
@@ -20726,7 +20726,6 @@ msgstr "Feleség"
 
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:153
-#, fuzzy
 msgid "xenea"
 msgstr "xenea"
 
