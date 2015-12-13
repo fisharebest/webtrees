@@ -5,4 +5,5 @@ config.ini.php
 histo.*.php
 language/
 media/
-language/
+/backup-media-lokaal/
+_offline.txt
