@@ -4,20 +4,20 @@ namespace Fisharebest\ExtCalendar;
 /**
  * Class PersianCalendar - calculations for the Persian (Jalali) calendar.
  *
- * @author        Greg Roach <fisharebest@gmail.com>
+ * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2014-2015 Greg Roach
- * @license       This program is free software: you can redistribute it and/or modify
- *                it under the terms of the GNU General Public License as published by
- *                the Free Software Foundation, either version 3 of the License, or
- *                (at your option) any later version.
+ * @license   This program is free software: you can redistribute it and/or modify
+ *            it under the terms of the GNU General Public License as published by
+ *            the Free Software Foundation, either version 3 of the License, or
+ *            (at your option) any later version.
  *
- *                This program is distributed in the hope that it will be useful,
- *                but WITHOUT ANY WARRANTY; without even the implied warranty of
- *                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *                GNU General Public License for more details.
+ *            This program is distributed in the hope that it will be useful,
+ *            but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *            GNU General Public License for more details.
  *
- *                You should have received a copy of the GNU General Public License
- *                along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *            You should have received a copy of the GNU General Public License
+ *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 class PersianCalendar implements CalendarInterface {
 	/**
@@ -29,7 +29,6 @@ class PersianCalendar implements CalendarInterface {
 		0, 5, 9, 13, 17, 21, 25, 29, 34, 38, 42, 46, 50, 54, 58, 62, 67, 71, 75, 79, 83, 87, 91, 95, 100, 104, 108, 112, 116, 120, 124
 	);
 
-	/** {@inheritdoc} */
 	public function daysInMonth($year, $month) {
 		if ($month <= 6) {
 			return 31;
@@ -40,32 +39,26 @@ class PersianCalendar implements CalendarInterface {
 		}
 	}
 
-	/** {@inheritdoc} */
 	public function daysInWeek() {
 		return 7;
 	}
 
-	/** {@inheritdoc} */
 	public function gedcomCalendarEscape() {
 		return '@#DJALALI@';
 	}
 
-	/** {@inheritdoc} */
 	public function isLeapYear($year) {
 		return in_array((($year + 2346) % 2820) % 128, self::$LEAP_YEAR_CYCLE);
 	}
 
-	/** {@inheritdoc} */
 	public function jdEnd() {
 		return PHP_INT_MAX;
 	}
 
-	/** {@inheritdoc} */
 	public function jdStart() {
 		return 1948320; // 1 Farvardīn 0001 AP, 19 MAR 0622 AD
 	}
 
-	/** {@inheritdoc} */
 	public function jdToYmd($julian_day) {
 		$depoch = $julian_day - 2121447;
 		$cycle  = (int) ($depoch / 1029983);
@@ -87,12 +80,10 @@ class PersianCalendar implements CalendarInterface {
 		return array($year, (int) $month, (int) $day);
 	}
 
-	/** {@inheritdoc} */
 	public function monthsInYear() {
 		return 12;
 	}
 
-	/** {@inheritdoc} */
 	public function ymdToJd($year, $month, $day) {
 		$epbase = $year - (($year >= 0) ? 474 : 473);
 		$epyear = 474 + $epbase % 2820;

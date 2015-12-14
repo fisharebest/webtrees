@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageKsh;
  * @license       GPLv3+
  */
 class LocaleKsh extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Kölsch';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KOLSCH';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKsh;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::NBSP,
@@ -34,7 +30,6 @@ class LocaleKsh extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

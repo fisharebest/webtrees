@@ -1,17 +1,16 @@
 <?php namespace Fisharebest\Localization\Locale;
 
-use Fisharebest\Localization\Territory\TerritorySg;
+use Fisharebest\Localization\Territory\TerritoryIq;
 
 /**
- * Class LocaleMsLatnSg
+ * Class LocaleLrc - Luri
  *
  * @author        Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleMsLatnSg extends LocaleMsLatn {
-	/** {@inheritdoc} */
+class LocaleLrcIq extends LocaleLrc {
 	public function territory() {
-		return new TerritorySg;
+		return new TerritoryIq;
 	}
 }

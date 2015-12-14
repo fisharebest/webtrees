@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageKok;
  * @license       GPLv3+
  */
 class LocaleKok extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'कोंकणी';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKok;
 	}

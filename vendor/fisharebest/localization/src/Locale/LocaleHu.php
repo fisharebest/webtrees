@@ -10,27 +10,22 @@ use Fisharebest\Localization\Language\LanguageHu;
  * @license       GPLv3+
  */
 class LocaleHu extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function collation() {
 		return 'hungarian_ci';
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'magyar';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'MAGYAR';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageHu;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

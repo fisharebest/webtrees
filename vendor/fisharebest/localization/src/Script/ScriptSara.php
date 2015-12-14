@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptSara extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Sara';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '292';
 	}

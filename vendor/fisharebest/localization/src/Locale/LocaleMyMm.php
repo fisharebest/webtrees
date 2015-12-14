@@ -8,7 +8,6 @@
  * @license       GPLv3+
  */
 class LocaleMyMm extends LocaleMy {
-	/** {@inheritdoc} */
 	protected function minimumGroupingDigits() {
 		return 3;
 	}

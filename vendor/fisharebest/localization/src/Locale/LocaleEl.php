@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageEl;
  * @license       GPLv3+
  */
 class LocaleEl extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Ελληνικά';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ΕΛΛΗΝΙΚΆ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageEl;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

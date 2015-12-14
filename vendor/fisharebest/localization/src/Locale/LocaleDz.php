@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageDz;
  * @license       GPLv3+
  */
 class LocaleDz extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'རྫོང་ཁ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageDz;
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

@@ -81,8 +81,6 @@ class Translation {
 	 * @link https://www.gnu.org/software/gettext/manual/html_node/MO-Files.html
 	 *
 	 * @param resource $fp
-	 *
-	 * @return void
 	 */
 	private function readMoFile($fp) {
 		// How is the numeric data packed in the .MO file?

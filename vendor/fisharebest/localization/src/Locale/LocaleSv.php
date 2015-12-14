@@ -10,27 +10,22 @@ use Fisharebest\Localization\Language\LanguageSv;
  * @license       GPLv3+
  */
 class LocaleSv extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function collation() {
 		return 'swedish_ci';
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'svenska';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SVENSKA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSv;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::NBSP,
@@ -39,7 +34,6 @@ class LocaleSv extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

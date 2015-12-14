@@ -10,17 +10,14 @@ use Fisharebest\Localization\Territory\TerritoryMd;
  * @license       GPLv3+
  */
 class LocaleRoMd extends LocaleRo {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'moldovenească';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'MOLDOVENEASCA';
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryMd;
 	}

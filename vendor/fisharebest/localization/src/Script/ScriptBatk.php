@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptBatk extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Batk';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '365';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Batak';
 	}

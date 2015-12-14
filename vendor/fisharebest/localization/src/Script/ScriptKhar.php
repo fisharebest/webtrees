@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptKhar extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Khar';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '305';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Kharoshthi';
 	}

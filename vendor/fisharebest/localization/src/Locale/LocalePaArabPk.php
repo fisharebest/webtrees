@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryPk;
  * @license       GPLv3+
  */
 class LocalePaArabPk extends LocalePaArab {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryPk;
 	}

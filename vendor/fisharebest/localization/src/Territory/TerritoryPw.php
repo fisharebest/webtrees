@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class TerritoryPw extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'PW';
 	}
 
-	/** {@inheritdoc} */
 	public function measurementSystem() {
 		return 'US';
 	}

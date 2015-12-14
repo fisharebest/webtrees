@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptZzzz extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Zzzz';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '999';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Unknown';
 	}

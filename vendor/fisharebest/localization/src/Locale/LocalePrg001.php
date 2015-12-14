@@ -1,11 +1,11 @@
 <?php namespace Fisharebest\Localization\Locale;
 
 /**
- * Class LocaleKyCyrlKg
+ * Class LocalePrg - Old Prussian
  *
  * @author        Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleKyCyrlKg extends LocaleKyCyrl {
+class LocalePrg001 extends LocalePrg {
 }

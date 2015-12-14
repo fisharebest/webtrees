@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageAr;
  * @license       GPLv3+
  */
 class LocaleAr extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'العربية';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageAr;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::ARAB_GROUP,
@@ -29,7 +26,6 @@ class LocaleAr extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::ARAB_PERCENT;
 	}

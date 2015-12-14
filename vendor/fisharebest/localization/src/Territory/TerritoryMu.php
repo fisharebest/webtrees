@@ -8,7 +8,6 @@
  * @license   GPLv3+
  */
 class TerritoryMu extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'MU';
 	}

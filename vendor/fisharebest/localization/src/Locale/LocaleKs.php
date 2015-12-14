@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageKs;
  * @license       GPLv3+
  */
 class LocaleKs extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'کٲشُر';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKs;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::ARAB_GROUP,
@@ -34,7 +30,6 @@ class LocaleKs extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::ARAB_PERCENT;
 	}

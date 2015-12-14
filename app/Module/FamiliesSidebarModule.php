@@ -115,30 +115,32 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 				return false;
 			});
 			jQuery("#sb_content_families").on("click", ".sb_fam_surname", function() {
-				var surname = jQuery(this).attr("title");
-				var alpha = jQuery(this).attr("alt");
+				var element = jQuery(this);
+				var surname = element.data("surname");
+				var alpha   = element.data("alpha");
 
 				if (!famloadedNames[surname]) {
 					jQuery.ajax({
-					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=families&alpha="+alpha+"&surname="+surname,
+					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=families&alpha=" + encodeURIComponent(alpha) + "&surname=" + encodeURIComponent(surname),
 					  cache: false,
 					  success: function(html) {
-					    jQuery("#sb_fam_"+surname+" div").html(html);
-					    jQuery("#sb_fam_"+surname+" div").show("fast");
-					    jQuery("#sb_fam_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
+					    jQuery("div.name_tree_div", element.closest("li"))
+					    .html(html)
+					    .show("fast")
+					    .css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
 					    famloadedNames[surname]=2;
 					  }
 					});
-				}
-				else if (famloadedNames[surname]==1) {
+				} else if (famloadedNames[surname]==1) {
 					famloadedNames[surname]=2;
-					jQuery("#sb_fam_"+surname+" div").show();
-					jQuery("#sb_fam_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
-				}
-				else {
+					jQuery("div.name_tree_div", jQuery(this).closest("li"))
+					.show()
+					.css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
+				} else {
 					famloadedNames[surname]=1;
-					jQuery("#sb_fam_"+surname+" div").hide("fast");
-					jQuery("#sb_fam_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-plus') . ')");
+					jQuery("div.name_tree_div", jQuery(this).closest("li"))
+					.hide("fast")
+					.css("list-style-image", "url(' . Theme::theme()->parameter('image-plus') . ')");
 				}
 				return false;
 			});
@@ -183,7 +185,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		$surnames = QueryName::surnames($tree, '', $alpha, true, true);
 		$out      = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
-			$out .= '<li id="sb_fam_' . $surname . '" class="sb_fam_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_fam_surname">' . $surname . '</a>';
+			$out .= '<li class="sb_fam_surname_li"><a href="#" data-surname="' . Filter::escapeHtml($surname) . '" data-alpha="' . Filter::escapeHtml($alpha) . '" class="sb_fam_surname">' . Filter::escapeHtml($surname) . '</a>';
 			$out .= '<div class="name_tree_div"></div>';
 			$out .= '</li>';
 		}

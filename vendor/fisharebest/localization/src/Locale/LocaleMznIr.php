@@ -1,11 +1,11 @@
 <?php namespace Fisharebest\Localization\Locale;
 
 /**
- * Class LocaleTzmLatnMa
+ * Class LocaleLrc - Mazanderani
  *
  * @author        Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleTzmLatnMa extends LocaleTzmLatn {
+class LocaleMznIr extends LocaleMzn {
 }

@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryVn;
  * @license   GPLv3+
  */
 class LanguageVi extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'vi';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryVn;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule0;
 	}

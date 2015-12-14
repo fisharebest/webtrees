@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptPhag extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Phag';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '331';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Phags_Pa';
 	}

@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryIq;
  * @license   GPLv3+
  */
 class LanguageSyr extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'syr';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptSyrc;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryIq;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

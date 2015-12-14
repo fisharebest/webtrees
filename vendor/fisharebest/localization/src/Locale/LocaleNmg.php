@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageNmg;
  * @license       GPLv3+
  */
 class LocaleNmg extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Kwasio';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KWASIO';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageNmg;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

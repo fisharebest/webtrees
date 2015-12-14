@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryNa;
  * @license   GPLv3+
  */
 class LanguageNaq extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'naq';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryNa;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRuleOneTwoOther;
 	}

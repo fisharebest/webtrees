@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageKsf;
  * @license       GPLv3+
  */
 class LocaleKsf extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'rikpa';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'RIKPA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKsf;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

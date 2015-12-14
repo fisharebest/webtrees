@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageDav;
  * @license       GPLv3+
  */
 class LocaleDav extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Kitaita';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KITAITA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageDav;
 	}

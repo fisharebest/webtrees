@@ -10,27 +10,22 @@ use Fisharebest\Localization\Language\LanguageSl;
  * @license       GPLv3+
  */
 class LocaleSl extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function collation() {
 		return 'slovenian_ci';
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'slovenščina';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SLOVENSCINA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSl;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryMz;
  * @license   GPLv3+
  */
 class LanguageMgh extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'mgh';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryMz;
 	}

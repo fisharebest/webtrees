@@ -10,17 +10,14 @@ use Fisharebest\Localization\Territory\TerritoryCa;
  * @license       GPLv3+
  */
 class LocaleFrCa extends LocaleFr {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'français canadien';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'FRANCAIS CANADIEN';
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryCa;
 	}

@@ -8,7 +8,6 @@
  * @license   GPLv3+
  */
 class TerritoryNl extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'NL';
 	}

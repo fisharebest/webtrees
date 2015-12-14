@@ -10,17 +10,14 @@ use Fisharebest\Localization\Script\ScriptLatn;
  * @license       GPLv3+
  */
 class LocaleShiLatn extends LocaleShi {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'tamazight';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'TAMAZIGHT';
 	}
 
-	/** {@inheritdoc} */
 	public function script() {
 		return new ScriptLatn;
 	}

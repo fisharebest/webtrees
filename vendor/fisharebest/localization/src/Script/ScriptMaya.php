@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptMaya extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Maya';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '090';
 	}

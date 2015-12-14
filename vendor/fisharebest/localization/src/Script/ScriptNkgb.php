@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptNkgb extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Nkgb';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '420';
 	}

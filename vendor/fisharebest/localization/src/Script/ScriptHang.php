@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptHang extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Hang';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '286';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Hangul';
 	}

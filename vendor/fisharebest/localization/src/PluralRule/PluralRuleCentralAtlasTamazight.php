@@ -10,12 +10,10 @@
  * @license   GPLv3+
  */
 class PluralRuleCentralAtlasTamazight implements PluralRuleInterface {
-	/** {@inheritdoc} */
 	public function plurals() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function plural($number) {
 		$number = abs($number);
 

@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryCm;
  * @license   GPLv3+
  */
 class LanguageKsf extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ksf';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryCm;
 	}

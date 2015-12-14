@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageMt;
  * @license       GPLv3+
  */
 class LocaleMt extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Malti';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'MALTI';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageMt;
 	}

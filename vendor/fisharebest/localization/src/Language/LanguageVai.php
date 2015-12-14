@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryLr;
  * @license   GPLv3+
  */
 class LanguageVai extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'vai';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptVaii;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryLr;
 	}

@@ -11,27 +11,22 @@ use Fisharebest\Localization\Territory\TerritoryRu;
  * @license       GPLv3+
  */
 class LocaleOs extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ирон';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ИРОН';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageOs;
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryRu;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

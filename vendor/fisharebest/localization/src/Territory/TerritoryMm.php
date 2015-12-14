@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class TerritoryMm extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'MM';
 	}
 
-	/** {@inheritdoc} */
 	public function firstDay() {
 		return 0;
 	}
 
-	/** {@inheritdoc} */
 	public function measurementSystem() {
 		return 'US';
 	}

@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageOm;
  * @license       GPLv3+
  */
 class LocaleOm extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Oromoo';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'OROMOO';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageOm;
 	}

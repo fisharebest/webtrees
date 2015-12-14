@@ -1611,6 +1611,7 @@ a:hover .nameZoom {
 #index_main_blocks {
 	clear: none;
 	width: 66%;
+	display: table;
 	float: left;
 }
 
@@ -1618,6 +1619,7 @@ a:hover .nameZoom {
 	clear: none;
 	width: 33%;
 	float: right;
+	display: table;
 }
 
 #index_full_blocks {
@@ -1634,7 +1636,7 @@ a:hover .nameZoom {
 }
 
 .small_inner_block {
-	max-height: 200px;
+	max-height: 250px;
 	overflow: auto;
 }
 
@@ -2585,18 +2587,12 @@ dd .deletelink {
 	list-style-image: url(images/plus.png);
 }
 
-.name_tree_div {
-	display: none;
-}
-
-.name_tree_div ul,
-.name_tree_div_visible ul {
+.name_tree_div ul {
 	padding: 0;
 	margin: 0;
 }
 
-.name_tree_div li,
-.name_tree_div_visible li {
+.name_tree_div li {
 	list-style: none;
 	margin: 0;
 	padding: 0;

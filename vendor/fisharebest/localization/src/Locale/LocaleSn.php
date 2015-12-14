@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageSn;
  * @license       GPLv3+
  */
 class LocaleSn extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'chiShona';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'CHISHONA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSn;
 	}

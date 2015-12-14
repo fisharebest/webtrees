@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-11-10 14:21+0100\n"
+"PO-Revision-Date: 2015-12-09 09:06+0100\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
@@ -5051,7 +5051,7 @@ msgstr "Zájem potomků"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
-msgstr "Potomek od "
+msgstr "Potomci od "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/DescendancyController.php:62
@@ -10008,7 +10008,9 @@ msgstr "ID prefix pro poznámky"
 
 #: help_text.php:261
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr "Pokud je uživatelský účet spojen se záznamem, pak uživatel bude vždy schopen prohlížet tento záznam."
+msgstr ""
+"Pokud je se záznamem spojen nějaký uživatelský účet, pak tento uživatel bude "
+"vždy moci tento záznam prohlížet."
 
 #: admin_users.php:610
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
@@ -11065,7 +11067,7 @@ msgstr "Provo, Utah, USA"
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:704
 msgid "Publication"
-msgstr "Vydal"
+msgstr "Publikace"
 
 #: app/Stats.php:6908
 msgid "Puerto Rico"

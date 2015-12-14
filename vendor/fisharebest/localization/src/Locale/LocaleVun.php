@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageVun;
  * @license       GPLv3+
  */
 class LocaleVun extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Kyivunjo';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KYIVUNJO';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageVun;
 	}

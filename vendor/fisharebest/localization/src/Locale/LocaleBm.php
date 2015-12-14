@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageBm;
  * @license       GPLv3+
  */
 class LocaleBm extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'bamanakan';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'BAMANAKAN';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageBm;
 	}

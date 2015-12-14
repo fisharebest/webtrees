@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageFr;
  * @license       GPLv3+
  */
 class LocaleFr extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'français';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'FRANCAIS';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageFr;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,
@@ -33,7 +29,6 @@ class LocaleFr extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

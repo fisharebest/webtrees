@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryKm;
  * @license       GPLv3+
  */
 class LocaleArKm extends LocaleAr {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryKm;
 	}

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptArmi extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Armi';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '124';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Imperial_Aramaic';
 	}

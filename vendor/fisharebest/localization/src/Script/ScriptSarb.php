@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptSarb extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Sarb';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '105';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Old_South_Arabian';
 	}

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptCprt extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Cprt';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '403';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Cypriot';
 	}

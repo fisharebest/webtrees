@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryGh;
  * @license   GPLv3+
  */
 class LanguageAk extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ak';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryGh;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule2;
 	}

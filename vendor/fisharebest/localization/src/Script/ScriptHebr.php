@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptHebr extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Hebr';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '125';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Hebrew';
 	}

@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageNr;
  * @license       GPLv3+
  */
 class LocaleNr extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'isiNdebele';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ISINDEBELE';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageNr;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

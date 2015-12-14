@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryNe;
  * @license   GPLv3+
  */
 class LanguageDje extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'dje';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryNe;
 	}

@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageFi;
  * @license       GPLv3+
  */
 class LocaleFi extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'suomi';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SUOMI';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageFi;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::NBSP,
@@ -34,7 +30,6 @@ class LocaleFi extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

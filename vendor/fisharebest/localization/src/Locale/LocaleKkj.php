@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageKkj;
  * @license       GPLv3+
  */
 class LocaleKkj extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'kakɔ';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KAKO';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKkj;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

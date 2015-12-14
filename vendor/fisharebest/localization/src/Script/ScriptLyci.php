@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptLyci extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Lyci';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '202';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Lycian';
 	}

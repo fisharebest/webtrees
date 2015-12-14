@@ -10,15 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryAo;
  * @license       GPLv3+
  */
 class LocalePtAo extends LocalePt {
-	/** {@inheritdoc} */
-	public function numberSymbols() {
-		return array(
-			self::GROUP   => self::NBSP,
-			self::DECIMAL => self::COMMA,
-		);
-	}
-
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryAo;
 	}

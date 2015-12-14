@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageJbo;
  * @license       GPLv3+
  */
 class LocaleJbo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Lojban';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'LOJBAN';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageJbo;
 	}

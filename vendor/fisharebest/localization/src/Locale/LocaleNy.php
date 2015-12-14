@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageNy;
  * @license       GPLv3+
  */
 class LocaleNy extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Chichewa';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'CHICHEWA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageNy;
 	}

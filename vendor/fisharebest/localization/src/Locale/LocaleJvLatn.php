@@ -10,12 +10,10 @@ use Fisharebest\Localization\Script\ScriptLatn;
  * @license       GPLv3+
  */
 class LocaleJvLatn extends LocaleJv {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Basa Jawa';
 	}
 
-	/** {@inheritdoc} */
 	public function script() {
 		return new ScriptLatn;
 	}

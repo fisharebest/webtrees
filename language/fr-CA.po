@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-08-25 22:48+0100\n"
+"PO-Revision-Date: 2015-11-27 01:49+0100\n"
 "Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
 "Language-Team: French (Canada) "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.3\n"
+"X-Generator: Weblate 2.4\n"
 "X-Poedit-Country: CANADA\n"
 "X-Poedit-Language: French\n"
 
@@ -6334,7 +6334,7 @@ msgstr "floréal"
 
 #: medialist.php:90
 msgid "Folder"
-msgstr "Répertoire"
+msgstr "Dossier"
 
 #: addmedia.php:502 admin_media_upload.php:234
 msgid "Folder name on server"
@@ -7499,7 +7499,7 @@ msgstr "Les informations suivantes ont été utilisées."
 
 #: admin_pgv_to_wt.php:172
 msgid "Installation folder"
-msgstr "Répertoire d’installation"
+msgstr "Dossier d’installation"
 
 #. I18N: Name of a module
 #: app/Controller/FanchartController.php:367
@@ -10189,7 +10189,7 @@ msgstr "Autres évènements à afficher dans les tableaux"
 
 #: addmedia.php:513 admin_media_upload.php:242
 msgid "Other folder… please type in"
-msgstr "Autre répertoire… renseignez ici le nom de ce nouveau répertoire"
+msgstr "Autre dossier… renseignez ici le nom de ce nouveau dossier"
 
 #: admin_trees_config.php:2191
 msgid "Other settings"

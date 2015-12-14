@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryBy;
  * @license   GPLv3+
  */
 class LanguageBe extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'be';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptCyrl;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryBy;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule7;
 	}

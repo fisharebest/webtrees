@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryCm;
  * @license   GPLv3+
  */
 class LanguageDua extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'dua';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryCm;
 	}

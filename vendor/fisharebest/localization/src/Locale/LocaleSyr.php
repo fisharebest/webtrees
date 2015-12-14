@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageSyr;
  * @license       GPLv3+
  */
 class LocaleSyr extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Syriac';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSyr;
 	}

@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageEe;
  * @license       GPLv3+
  */
 class LocaleEe extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
-		return 'eʋegbe';
+		return 'Eʋegbe';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'EWEGBE';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageEe;
 	}

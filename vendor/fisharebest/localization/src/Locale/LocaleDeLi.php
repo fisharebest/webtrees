@@ -10,16 +10,18 @@ use Fisharebest\Localization\Territory\TerritoryLi;
  * @license       GPLv3+
  */
 class LocaleDeLi extends LocaleDe {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryLi;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::PRIME,
 			self::DECIMAL => self::DOT,
 		);
+	}
+
+	protected function percentFormat() {
+		return '%s%%';
 	}
 }

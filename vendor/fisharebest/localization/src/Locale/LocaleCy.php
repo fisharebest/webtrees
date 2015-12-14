@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageCy;
  * @license       GPLv3+
  */
 class LocaleCy extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Cymraeg';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'CYMRAEG';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageCy;
 	}

@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3d0090288dce03aa53c3daa153dc5584",
-    "content-hash": "e1c36ecdd4ad1182d985e8324de27004",
+    "hash": "9d41fad4f5d67e19f3e3c99715409b66",
+    "content-hash": "10b2b75e6e6658354466c9b07b46d4e7",
     "packages": [
         {
             "name": "bombayworks/zendframework1",
-            "version": "v1.12.16",
+            "version": "v1.12.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bombayworks/zendframework1.git",
-                "reference": "0b71c0311a1f5734e14751755aa7f7c4736b2892"
+                "reference": "864398ae144a5e11e59a1f17c3126ecbcdd56c91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/0b71c0311a1f5734e14751755aa7f7c4736b2892",
-                "reference": "0b71c0311a1f5734e14751755aa7f7c4736b2892",
+                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/864398ae144a5e11e59a1f17c3126ecbcdd56c91",
+                "reference": "864398ae144a5e11e59a1f17c3126ecbcdd56c91",
                 "shasum": ""
             },
             "require": {
@@ -59,7 +59,7 @@
                 "ZF1",
                 "framework"
             ],
-            "time": "2015-09-15 16:00:12"
+            "time": "2015-12-09 17:00:08"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -155,16 +155,16 @@
         },
         {
             "name": "fisharebest/ext-calendar",
-            "version": "2.1.1",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/ext-calendar.git",
-                "reference": "4ad4547f91073c4266274c5375bcca981e1e98ec"
+                "reference": "cbf6b8ce21469e2e3899a3a1f17e47d86f625fe7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/4ad4547f91073c4266274c5375bcca981e1e98ec",
-                "reference": "4ad4547f91073c4266274c5375bcca981e1e98ec",
+                "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/cbf6b8ce21469e2e3899a3a1f17e47d86f625fe7",
+                "reference": "cbf6b8ce21469e2e3899a3a1f17e47d86f625fe7",
                 "shasum": ""
             },
             "require": {
@@ -176,6 +176,9 @@
             },
             "type": "library",
             "autoload": {
+                "files": [
+                    "src/shims.php"
+                ],
                 "psr-4": {
                     "Fisharebest\\ExtCalendar\\": "src/"
                 }
@@ -191,7 +194,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Implementation of the Arabic (Hijri), French, Gregorian, Jewish, Julian and Persian (Jalali) calendars.  Optional PHP shims for servers without the ext/calendar extension.",
+            "description": "Implementation of the Arabic (Hijri), French, Gregorian, Jewish, Julian and Persian (Jalali) calendars.  Also provides a replacement for the PHP ext/calendar extension.",
             "homepage": "https://github.com/fisharebest/ext-calendar",
             "keywords": [
                 "Jalali",
@@ -209,20 +212,20 @@
                 "persian",
                 "shamsi"
             ],
-            "time": "2015-09-21 15:12:48"
+            "time": "2015-11-30 16:03:22"
         },
         {
             "name": "fisharebest/localization",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/localization.git",
-                "reference": "448dc859d7e1d491a80634871a9503b3d53edfd8"
+                "reference": "e2ffab931e480a14ce17798f608a52996bae1021"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/localization/zipball/448dc859d7e1d491a80634871a9503b3d53edfd8",
-                "reference": "448dc859d7e1d491a80634871a9503b3d53edfd8",
+                "url": "https://api.github.com/repos/fisharebest/localization/zipball/e2ffab931e480a14ce17798f608a52996bae1021",
+                "reference": "e2ffab931e480a14ce17798f608a52996bae1021",
                 "shasum": ""
             },
             "require": {
@@ -263,7 +266,7 @@
                 "translate",
                 "translation"
             ],
-            "time": "2015-09-14 21:53:11"
+            "time": "2015-11-27 14:25:16"
         },
         {
             "name": "ircmaxell/password-compat",

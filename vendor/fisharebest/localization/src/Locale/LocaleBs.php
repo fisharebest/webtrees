@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageBs;
  * @license       GPLv3+
  */
 class LocaleBs extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'bosanski';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'BOSANSKI';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageBs;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

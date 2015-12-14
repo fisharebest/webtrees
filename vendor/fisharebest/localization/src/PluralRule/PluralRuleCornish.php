@@ -10,12 +10,10 @@
  * @license   GPLv3+
  */
 class PluralRuleCornish implements PluralRuleInterface {
-	/** {@inheritdoc} */
 	public function plurals() {
 		return 4;
 	}
 
-	/** {@inheritdoc} */
 	public function plural($number) {
 		$number = abs($number);
 

@@ -10,7 +10,6 @@ use Fisharebest\Localization\Script\ScriptLatn;
  * @license       GPLv3+
  */
 class LocaleVaiLatn extends LocaleVai {
-	/** {@inheritdoc} */
 	public function script() {
 		return new ScriptLatn;
 	}

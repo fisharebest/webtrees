@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryKg;
  * @license   GPLv3+
  */
 class LanguageKy extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ky';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryKg;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

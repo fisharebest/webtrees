@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageLkt;
  * @license       GPLv3+
  */
 class LocaleLkt extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Lakȟólʼiyapi';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'LAKHOLIYAPI';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageLkt;
 	}

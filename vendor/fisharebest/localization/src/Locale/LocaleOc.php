@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageOc;
  * @license       GPLv3+
  */
 class LocaleOc extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'lenga d’òc';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageOc;
 	}

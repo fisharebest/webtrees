@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageIa;
  * @license       GPLv3+
  */
 class LocaleIa extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'interlingua';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'INTERLINGUA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageIa;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

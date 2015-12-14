@@ -10,12 +10,10 @@ use Fisharebest\Localization\PluralRule\PluralRule0;
  * @license   GPLv3+
  */
 class LanguageJbo extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'jbo';
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule0;
 	}

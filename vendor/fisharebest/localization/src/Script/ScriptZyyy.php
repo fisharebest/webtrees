@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptZyyy extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Zyyy';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '998';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Common';
 	}

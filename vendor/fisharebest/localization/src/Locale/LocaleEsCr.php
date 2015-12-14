@@ -10,7 +10,13 @@ use Fisharebest\Localization\Territory\TerritoryCr;
  * @license       GPLv3+
  */
 class LocaleEsCr extends LocaleEs {
-	/** {@inheritdoc} */
+	public function numberSymbols() {
+		return array(
+				self::GROUP   => self::NBSP,
+				self::DECIMAL => self::COMMA,
+		);
+	}
+
 	public function territory() {
 		return new TerritoryCr;
 	}

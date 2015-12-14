@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryCv;
  * @license   GPLv3+
  */
 class LanguageKea extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'kea';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryCv;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule0;
 	}

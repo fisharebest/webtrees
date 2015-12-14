@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageWae;
  * @license       GPLv3+
  */
 class LocaleWae extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Walser';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'WALSER';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageWae;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::APOSTROPHE,

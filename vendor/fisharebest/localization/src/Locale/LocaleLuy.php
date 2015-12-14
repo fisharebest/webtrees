@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageLuy;
  * @license       GPLv3+
  */
 class LocaleLuy extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Luluhia';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'LULUHIA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageLuy;
 	}
