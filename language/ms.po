@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-11-29 08:00+0100\n"
+"PO-Revision-Date: 2015-12-16 09:23+0100\n"
 "Last-Translator: Kg Kaingaran <kgkingaran774@gmail.com>\n"
 "Language-Team: Malay "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/ms/>\n"
@@ -313,34 +313,33 @@ msgstr[0] "%s individu dengan peristiwa-peristiwa dalam %s"
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
+msgstr[0] "%s individu dengan peristiwa-peristiwa dalam %s antara %s dan %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:117
 #, php-format
 msgid "%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it."
 msgstr ""
+"%s dilumpuhkan pada pelayan ini. Anda tidak boleh memasang webtrees sehingga "
+"ia diaktifkan. Sila tanya pentadbir pelayan anda untuk membolehkannya."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5963
 #, php-format
 msgid "%s logged-in user"
 msgid_plural "%s logged-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s pengguna telah log masuk"
 
 #: app/Module/UserMessagesModule.php:91
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s mesej"
 
 #: app/I18N.php:803
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s minit yang lalu"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:55 app/I18N.php:306
@@ -348,60 +347,55 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s bulan"
 
 #: app/I18N.php:791
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s bulan yang lalu"
 
 #: app/Controller/SearchController.php:428
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s nota telah dikemaskini."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2127
 #, php-format
 msgid "%s once removed ascending"
-msgstr ""
+msgstr "%s dipisahkan sekali urutan naik"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2130
 #, php-format
 msgid "%s once removed descending"
-msgstr ""
+msgstr "%s dipisahkan sekali urutan turun"
 
 #: app/I18N.php:805
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s sesaat yang lalu"
 
 #: app/Controller/SearchController.php:407
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s sumber telah dikemaskini."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2143
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s dipisahkan tiga kali urutan naik"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2146
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "%s tiga kali dipisahkan urutan turun"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2135
@@ -3246,7 +3240,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1859
 msgid "Card"
-msgstr ""
+msgstr "Kad"
 
 #: app/GedcomCode/GedcomCodeTemp.php:83
 msgid "Cardston, Alberta, Canada"
@@ -8412,7 +8406,7 @@ msgstr ""
 #: app/GedcomTag.php:552 app/GedcomTag.php:1877
 #: app/Module/GoogleMapsModule.php:304
 msgid "Map"
-msgstr ""
+msgstr "Peta"
 
 #: app/Date/CalendarDate.php:313
 msgctxt "Abbreviation for March"
