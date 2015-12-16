@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-12-09 09:06+0100\n"
+"PO-Revision-Date: 2015-12-16 20:18+0100\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
@@ -11413,7 +11413,7 @@ msgstr "Náboženská instituce"
 
 #: app/GedcomTag.php:582 modules_v3/fact_sources/report.xml:199
 msgid "Religious marriage"
-msgstr "Náboženský sňatek"
+msgstr "Církevní sňatek"
 
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
