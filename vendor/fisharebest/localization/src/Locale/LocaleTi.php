@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageTi;
  * @license       GPLv3+
  */
 class LocaleTi extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ትግርኛ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageTi;
 	}

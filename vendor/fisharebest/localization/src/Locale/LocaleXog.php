@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageXog;
  * @license       GPLv3+
  */
 class LocaleXog extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Olusoga';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'OLUSOGA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageXog;
 	}

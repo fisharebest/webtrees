@@ -1131,9 +1131,10 @@ a:hover .nameZoom {
 #login-text,
 #register-text,
 #user-verify {
-	margin: 20px auto;
-	width: 610px;
+	margin: 0 auto;
+	width: 40%;
 	text-align: justify;
+	min-width: 450px;
 }
 
 #login-box,
@@ -1170,7 +1171,6 @@ a:hover .nameZoom {
 #new_passwd_form label,
 #verify-form label {
 	display: block;
-	text-align: right;
 }
 
 #login-form label input,
@@ -2510,18 +2510,12 @@ dd .deletelink {
 	list-style-image: url(images/plus.png);
 }
 
-.name_tree_div {
-	display: none;
-}
-
-.name_tree_div ul,
-.name_tree_div_visible ul {
+.name_tree_div ul {
 	padding: 0;
 	margin: 0;
 }
 
-.name_tree_div li,
-.name_tree_div_visible li {
+.name_tree_div li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -2694,19 +2688,23 @@ dd .deletelink {
 	background-color: #fff;
 	border: 1px solid #000;
 	margin: 20px auto 0;
-	width: 610px;
+	width: 590px;
 }
 
 #search-page-table .label {
 	float: left;
 	font-weight: bold;
 	padding: 5px;
-	width: 180px;
+	width: 150px;
+}
+
+#search-page-table div #query {
+	width: 300px;
 }
 
 #search-page-table .value {
 	background-color: #fff;
-	margin: 0 0 0 185px;
+	margin: 0 0 0 170px;
 	padding: 5px;
 	white-space: nowrap;
 }
@@ -3459,6 +3457,11 @@ table.table-census-assistant th {
 	position: relative;
 	top: 0;
 	left: 0;
+}
+
+#field_table {
+	width: 30%;
+	min-width: 500px;
 }
 
 /* ====== Common Icons ========= */
@@ -4401,6 +4404,26 @@ footer {
 }
 
 /* Mobile low resolution viewport */
+@media (max-width: 600px) {
+	/* Advanced Search */
+	.list_label, .list_value {
+		white-space: normal;
+	}
+	#field_table {
+		width: 80%;
+		min-width: 380px;
+	}
+	#search-page-table {
+		width: auto;
+	}
+	#search-page-table div #query {
+		width: 200px;
+	}
+	/* Phonetic Search */
+	#search-page-table .label {
+		width: 25%;
+	}
+}
 @media (max-width: 480px) {
 	/* Front Page */
 	#index_main_blocks {
@@ -4413,6 +4436,16 @@ footer {
 	}
 	.stat-table1, .stat-table2{
 		width: 100%;
+	}
+	header h1 {
+		width: 100%;
+		text-align: left;
+	}
+	[dir=rtl] header h1 {
+		text-align: right;
+	}
+	.header-search {
+		display: none;
 	}
 	/* Indi Page */
 	#indi_left {
@@ -4434,15 +4467,9 @@ footer {
 		width: 100%;
 		display: inline;
 	}
-
 	/* Search */
-	#search-page-table {
-		width: auto;
-	}
 	#search-page-table .value {
 		margin: 0 0 0 30%;
-		clear: both;
-		float: left;
 	}
 	[dir=rtl] #search-page-table .value {
 		margin: 0 30% 0 0;
@@ -4463,6 +4490,17 @@ footer {
 	}
 	/* Reports */
 	#reportengine-page table {
+		width: 100%;
+	}
+	/* Login */
+	#register-form div, #verify-form div {
+		text-align: left;
+	}
+	#register-form, #verify-form {
+		width: auto;
+	}
+	#login-text, #user-verify, #register-text, #user-verify {
+		min-width: auto;
 		width: 100%;
 	}
 }

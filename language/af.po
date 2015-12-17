@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-09-01 06:07+0100\n"
+"PO-Revision-Date: 2015-10-23 12:17+0100\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3\n"
+"X-Generator: Weblate 2.4\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -1517,7 +1517,7 @@ msgstr "Voeg by TITLE voorstuk-etiket"
 #: app/Controller/RepositoryController.php:84
 #: app/Controller/SourceController.php:84 app/Theme/AbstractTheme.php:1286
 msgid "Add to favorites"
-msgstr "By gunsteling toegevoeg"
+msgstr "Voeg by gunstelinge"
 
 #: app/Module/ClippingsCartModule.php:104
 #: app/Module/ClippingsCartModule.php:147
@@ -2223,7 +2223,7 @@ msgstr "Is jy seker dat jy die skakels na hierdie media objek wil verwyder?"
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr ""
-"Is jy seker dat jy hierdie item uit jou lys van gunstelinge wil verwyder?"
+"Is jy seker dat jy hierdie item van jou lys van gunstelinge wil verwyder?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
@@ -5340,7 +5340,7 @@ msgstr "Vertoon alles"
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:71
 msgid "Display and manage a family tree’s favorite pages."
-msgstr "Veroon en bestuur die bladsye met gunstelinge van die stamboom."
+msgstr "Vertoon en bestuur 'n stamboom se gunstelingbladsye."
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:34
@@ -5779,7 +5779,7 @@ msgstr "Voer 'n persoons-, gesins-, of bron-ID in"
 
 #: app/Module/FamilyTreeFavoritesModule.php:225
 msgid "Enter an optional note about this favorite"
-msgstr "Voer 'n opsionele nota in oor hierdie gunsteling"
+msgstr "Skep 'n opsionele nota oor hierdie gunsteling"
 
 #: addmedia.php:423
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175

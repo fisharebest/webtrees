@@ -1305,16 +1305,18 @@ class GedcomRecord {
 	 */
 	public function deleteRecord() {
 		// Create a pending change
-		Database::prepare(
-			"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, '', ?)"
-		)->execute(array(
-			$this->tree->getTreeId(),
-			$this->xref,
-			$this->getGedcom(),
-			Auth::id(),
-		));
+		if (!$this->isPendingDeletion()) {
+			Database::prepare(
+				"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, '', ?)"
+			)->execute(array(
+				$this->tree->getTreeId(),
+				$this->xref,
+				$this->getGedcom(),
+				Auth::id(),
+			));
+		}
 
-		// Accept this pending change
+		// Auto-accept this pending change
 		if (Auth::user()->getPreference('auto_accept')) {
 			FunctionsImport::acceptAllChanges($this->xref, $this->tree->getTreeId());
 		}

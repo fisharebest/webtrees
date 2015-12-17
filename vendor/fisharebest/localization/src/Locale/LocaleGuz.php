@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageGuz;
  * @license       GPLv3+
  */
 class LocaleGuz extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Ekegusii';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'EKEGUSII';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageGuz;
 	}

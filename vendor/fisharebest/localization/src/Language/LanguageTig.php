@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryEr;
  * @license   GPLv3+
  */
 class LanguageTig extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'tig';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptEthi;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryEr;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1; //
 	}

@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageIi;
  * @license       GPLv3+
  */
 class LocaleIi extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ꆈꌠꉙ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageIi;
 	}

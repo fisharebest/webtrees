@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryBe;
  * @license   GPLv3+
  */
 class LanguageWa extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'wa';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryBe;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule2;
 	}

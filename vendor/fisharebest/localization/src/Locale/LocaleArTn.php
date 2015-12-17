@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryTn;
  * @license       GPLv3+
  */
 class LocaleArTn extends LocaleAr {
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::DOT,
@@ -19,12 +18,6 @@ class LocaleArTn extends LocaleAr {
 		);
 	}
 
-	/** {@inheritdoc} */
-	protected function percentFormat() {
-		return '%s%%';
-	}
-
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryTn;
 	}

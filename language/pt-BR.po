@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-04-13 15:12+0100\n"
+"PO-Revision-Date: 2015-10-12 20:44+0100\n"
 "Last-Translator: Alan Benazzi <alan.benazzi@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <http://translate.webtrees.net/projects/webtrees/webtrees/pt-BR/>\n"
+"Language-Team: Portuguese (Brazil) "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/pt-BR/>\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.4\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -219,19 +220,19 @@ msgstr "%s e antepassados dele"
 #: app/Module/ClippingsCartModule.php:280
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s e as pessoas que referenciam-no."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s e seus filhos"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:124
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s e seus descendentes"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5953
 #, php-format
@@ -266,8 +267,8 @@ msgstr[1] "%s dias atrás"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s família foi atualizada."
+msgstr[1] "%s famílias foram atualizadas."
 
 #: admin.php:798
 #, php-format

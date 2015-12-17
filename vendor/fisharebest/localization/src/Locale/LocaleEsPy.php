@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryPy;
  * @license       GPLv3+
  */
 class LocaleEsPy extends LocaleEs {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryPy;
 	}

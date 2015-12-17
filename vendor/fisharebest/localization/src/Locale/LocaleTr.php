@@ -10,27 +10,22 @@ use Fisharebest\Localization\Language\LanguageTr;
  * @license       GPLv3+
  */
 class LocaleTr extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function collation() {
 		return 'turkish_ci';
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Türkçe';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'TURKCE';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageTr;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,
@@ -38,7 +33,6 @@ class LocaleTr extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return self::PERCENT . '%s';
 	}

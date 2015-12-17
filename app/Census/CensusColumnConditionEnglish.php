@@ -24,16 +24,17 @@ class CensusColumnConditionEnglish extends AbstractCensusColumn implements Censu
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
-	 * @param Individual $individual
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function generate(Individual $individual) {
+	public function generate(Individual $individual, Individual $head = null) {
 		$family = $this->spouseFamily($individual);
 
-		if ($family === null || !empty($family->getFacts('_NMR'))) {
+		if ($family === null || count($family->getFacts('_NMR')) > 0) {
 			return 'Unm'; // unmarried
-		} elseif (!empty($family->getFacts('DIV'))) {
+		} elseif (count($family->getFacts('DIV')) > 0) {
 			return 'Div'; // divorced
 		} else {
 			return 'Mar'; // married

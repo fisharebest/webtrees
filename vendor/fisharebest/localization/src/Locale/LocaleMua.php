@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageMua;
  * @license       GPLv3+
  */
 class LocaleMua extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'MUNDAŊ';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'MUNDAN';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageMua;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

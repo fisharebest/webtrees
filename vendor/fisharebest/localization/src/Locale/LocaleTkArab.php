@@ -8,12 +8,10 @@
  * @license       GPLv3+
  */
 class LocaleTkArab extends LocaleTk {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'تورکمنچه';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'تورکمنچه';
 	}

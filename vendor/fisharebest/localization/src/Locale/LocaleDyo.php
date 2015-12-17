@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageDyo;
  * @license       GPLv3+
  */
 class LocaleDyo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'joola';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'JOOLA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageDyo;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

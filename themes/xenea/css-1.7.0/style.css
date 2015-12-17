@@ -315,8 +315,8 @@ div.fact_SHARED_NOTE {
 }
 
 .facts_label03 {
-	color: #f00;
-	background-color: #84beff;
+	color: #fff;
+	background-color: #81a9cb;
 	font-size: 12px;
 	padding: 4px;
 	text-align: center;
@@ -1151,9 +1151,10 @@ a:hover .nameZoom {
 #login-text,
 #register-text,
 #user-verify {
-	margin: 20px auto;
-	width: 610px;
+	margin: 0 auto;
+	width: 40%;
 	text-align: justify;
+	min-width: 450px;
 }
 
 #login-box,
@@ -1191,7 +1192,6 @@ a:hover .nameZoom {
 #new_passwd_form label,
 #verify-form label {
 	display: block;
-	text-align: right;
 }
 
 #login-form label input,
@@ -2498,18 +2498,12 @@ dd .deletelink {
 	list-style-image: url(images/plus.png);
 }
 
-.name_tree_div {
-	display: none;
-}
-
-.name_tree_div ul,
-.name_tree_div_visible ul {
+.name_tree_div ul {
 	padding: 0;
 	margin: 0;
 }
 
-.name_tree_div li,
-.name_tree_div_visible li {
+.name_tree_div li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -3418,6 +3412,11 @@ table.table-census-assistant th {
 	left: 0;
 }
 
+#field_table {
+	width: 30%;
+	min-width: 500px;
+}
+
 /* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {
@@ -4212,6 +4211,8 @@ header h1 {
 .secondary-menu li li a {
 	color: #000;
 	font-weight: normal;
+	display: block;
+	padding: 3px;
 }
 
 .secondary-menu li li a:hover {
@@ -5144,15 +5145,15 @@ footer {
 	}
 }
 
-/* Mobile low resolution viewport */
+/* Mobile low and high resolution viewports */
 @media (max-width: 600px) {
 	.primary-menu {
-		padding: 0;
-		margin: 0;
-		font-size: 10px;
+		display: block;
+		margin: 0 5px
 	}
 	.primary-menu > li {
 		width: 50px;
+		min-width: 40px;
 	}
 	/* Search */
 	#search-page-table {
@@ -5174,23 +5175,40 @@ footer {
 	#search-page-table > input {
 		width: 20px;
 	}
+	#field_table {
+		width: 80%;
+		min-width: 380px;
+	}
+	.list_label, .list_value {
+		white-space: normal;
+	}
+	/* Phonetic Search */
+	#search-page-table .label {
+		width: 25%;
+	}
+	/* Login */
+	#register-form div, #verify-form div {
+		text-align: left;
+	}
+	#register-form, #verify-form {
+		width: 95%;
+	}
+	#login-text, #user-verify, #register-text, #user-verify {
+		min-width: auto;
+		width: 100%;
+	}
 }
-
 @media (max-width: 400px) {
-/* Header */
+	/* Header */
+	.header-search {
+		display: none;
+	}
 	nav ul {
 		margin: 0;
 		padding: 0;
 	}
 	header h1 {
 		margin: 10px 12px 0 10px;
-	}
-	.header-upper {
-		height: 70px;
-	}
-	.primary-menu > li {
-		width: 45px;
-		margin: 0 0 20px 0;
 	}
 	header nav {
 		height: 40px;
@@ -5226,5 +5244,9 @@ footer {
 		float: left;
 		width: 100%;
 		display: inline;
+	}
+	/* Advanced Search */
+	#field_table {
+		min-width: 100%;
 	}
 }

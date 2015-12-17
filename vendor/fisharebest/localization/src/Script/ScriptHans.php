@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptHans extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Hans';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '501';
 	}

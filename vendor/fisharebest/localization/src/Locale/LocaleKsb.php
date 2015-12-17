@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageKsb;
  * @license       GPLv3+
  */
 class LocaleKsb extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Kishambaa';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KISHAMBAA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKsb;
 	}

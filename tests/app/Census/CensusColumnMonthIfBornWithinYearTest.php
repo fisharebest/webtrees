@@ -17,9 +17,7 @@
 
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Localization\Translator;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Mockery;
 

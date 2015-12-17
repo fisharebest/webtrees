@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageNyn;
  * @license       GPLv3+
  */
 class LocaleNyn extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Runyankore';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'RUNYANKORE';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageNyn;
 	}

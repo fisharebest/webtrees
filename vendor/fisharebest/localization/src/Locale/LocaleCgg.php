@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageCgg;
  * @license       GPLv3+
  */
 class LocaleCgg extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Rukiga';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'RUKIGA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageCgg;
 	}

@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageVo;
  * @license       GPLv3+
  */
 class LocaleVo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Volapük';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'VOLAPUK';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageVo;
 	}

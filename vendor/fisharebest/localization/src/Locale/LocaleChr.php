@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageChr;
  * @license       GPLv3+
  */
 class LocaleChr extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ᏣᎳᎩ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageChr;
 	}

@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\Territory001;
  * @license   GPLv3+
  */
 abstract class AbstractLanguage {
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new Territory001;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptLatn;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		throw new \DomainException('No plural rule defined for language ' . __CLASS__);
 	}

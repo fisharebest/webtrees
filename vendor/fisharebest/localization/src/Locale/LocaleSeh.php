@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageSeh;
  * @license       GPLv3+
  */
 class LocaleSeh extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'sena';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SENA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSeh;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

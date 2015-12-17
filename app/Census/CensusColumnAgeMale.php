@@ -25,11 +25,12 @@ class CensusColumnAgeMale extends AbstractCensusColumn implements CensusColumnIn
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
-	 * @param Individual $individual
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function generate(Individual $individual) {
+	public function generate(Individual $individual, Individual $head = null) {
 		if ($individual->getSex() === 'F') {
 			return '';
 		} else {

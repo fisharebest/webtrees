@@ -10,7 +10,6 @@ use Fisharebest\Localization\Variant\VariantValencia;
  * @license       GPLv3+
  */
 class LocaleCaEsValencia extends LocaleCaEs {
-	/** {@inheritdoc} */
 	public function variant() {
 		return new VariantValencia();
 	}

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptHmng extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Hmng';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '450';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Pahawh_Hmong';
 	}

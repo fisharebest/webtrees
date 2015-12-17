@@ -8,22 +8,18 @@
  * @license   GPLv3+
  */
 class ScriptOlck extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Olck';
 	}
 
-	/** {@inheritdoc} */
 	public function numerals() {
 		return array('᱐', '᱑', '᱒', '᱓', '᱔', '᱕', '᱖', '᱗', '᱘', '᱙');
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '261';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Ol_Chiki';
 	}

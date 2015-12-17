@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptHrkt extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Hrkt';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '412';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Katakana_Or_Hiragana';
 	}

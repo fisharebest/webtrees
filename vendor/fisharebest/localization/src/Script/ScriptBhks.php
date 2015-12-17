@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptBhks extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Bhks';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '334';
 	}

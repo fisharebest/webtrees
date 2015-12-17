@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptPhli extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Phli';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '131';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Inscriptional_Pahlavi';
 	}

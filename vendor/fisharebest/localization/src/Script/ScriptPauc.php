@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptPauc extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Pauc';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '263';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Pau_Cin_Hau';
 	}

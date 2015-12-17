@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryAz;
  * @license       GPLv3+
  */
 class LocaleAzCyrlAz extends LocaleAzCyrl {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryAz;
 	}

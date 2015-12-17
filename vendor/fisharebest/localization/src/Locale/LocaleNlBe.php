@@ -10,17 +10,14 @@ use Fisharebest\Localization\Territory\TerritoryBe;
  * @license       GPLv3+
  */
 class LocaleNlBe extends LocaleNl {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Vlaams';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'VLAAMS';
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryBe;
 	}

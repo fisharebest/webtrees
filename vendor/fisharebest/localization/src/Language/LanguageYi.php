@@ -11,17 +11,14 @@ use Fisharebest\Localization\Script\ScriptHebr;
  * @license   GPLv3+
  */
 class LanguageYi extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'yi';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptHebr;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

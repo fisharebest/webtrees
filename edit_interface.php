@@ -37,7 +37,7 @@ $controller
 	->restrictAccess(Auth::isEditor($WT_TREE))
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')
-	->addInlineJavascript('var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), I18N::dateFormat())) . '";');
+	->addInlineJavascript('var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('j', 'F'), array('D', 'M'), I18N::dateFormat())) . '";');
 
 switch ($action) {
 ////////////////////////////////////////////////////////////////////////////////
@@ -489,7 +489,7 @@ case 'update':
 	// For the GEDFact_assistant module
 	$pid_array = Filter::post('pid_array');
 	if ($pid_array) {
-		foreach (explode(', ', $pid_array) as $pid) {
+		foreach (explode(',', $pid_array) as $pid) {
 			if ($pid !== $xref) {
 				$indi = Individual::getInstance($pid, $WT_TREE);
 				if ($indi && $indi->canEdit()) {

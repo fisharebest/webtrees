@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageKa;
  * @license       GPLv3+
  */
 class LocaleKa extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ქართული';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKa;
 	}
 
-	/** {@inheritdoc} */
 	protected function minimumGroupingDigits() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,
@@ -33,7 +29,6 @@ class LocaleKa extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

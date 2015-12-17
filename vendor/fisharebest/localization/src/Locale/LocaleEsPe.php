@@ -10,15 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryPe;
  * @license       GPLv3+
  */
 class LocaleEsPe extends LocaleEs {
-	/** {@inheritdoc} */
-	public function numberSymbols() {
-		return array(
-			self::GROUP   => self::COMMA,
-			self::DECIMAL => self::DOT,
-		);
-	}
-
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryPe;
 	}

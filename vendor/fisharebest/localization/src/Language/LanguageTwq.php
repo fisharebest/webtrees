@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryNe;
  * @license   GPLv3+
  */
 class LanguageTwq extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'twq';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryNe;
 	}

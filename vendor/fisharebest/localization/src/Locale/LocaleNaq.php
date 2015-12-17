@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageNaq;
  * @license       GPLv3+
  */
 class LocaleNaq extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Khoekhoegowab';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KHOEKHOEGOWAB';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageNaq;
 	}

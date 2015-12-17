@@ -15,15 +15,18 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Controller\PageController;
-
 /**
  * Defined in edit_interface.php
  *
- * @global PageController $controller
- * @global Individual     $person
+ * @global Individual $person
  */
-global $person, $controller;
+global $person;
+/**
+ * Defined in edit_interface.php
+ *
+ * @global Controller\PageController $controller
+ */
+global $controller;
 
 ?>
 <style>
@@ -139,7 +142,7 @@ function print_navigator_family(Family $family, Individual $individual) {
 				</a>
 			</td>
 			<td class="facts_value" >
-				<a href="#" onclick="opener.insertRowToTable('<?php echo $spouse->getXref(); ?>', '<?php echo Filter::escapeJs($spouse->getFullName()); ?>', '', '', '', '', '', '', '', '');">
+				<a href="#" onclick="opener.insertRowToTable('<?php echo $spouse->getXref(); ?>', '<?php echo Filter::escapeJs($spouse->getFullName()); ?>', '', '', '', '', '', '', '', ''); return false;">
 					<?php echo $spouse === $individual ? '<b>' : ''; ?>
 					<?php echo $spouse->getFullName(); ?> <?php echo $spouse->getLifeSpan(); ?>
 					<?php echo $spouse === $individual ? '</b>' : ''; ?>
@@ -158,7 +161,7 @@ function print_navigator_family(Family $family, Individual $individual) {
 				</a>
 			</td>
 			<td class="facts_value">
-				<a href="#" onclick="opener.insertRowToTable('<?php echo $child->getXref(); ?>', '<?php echo Filter::escapeJs($child->getFullName()); ?>', '', '', '', '', '', '', '', '');">
+				<a href="#" onclick="opener.insertRowToTable('<?php echo $child->getXref(); ?>', '<?php echo Filter::escapeJs($child->getFullName()); ?>', '', '', '', '', '', '', '', ''); return false;">
 					<?php echo $child === $individual ? '<b>' : ''; ?>
 					<?php echo $child->getFullName(); ?> <?php echo $child->getLifeSpan(); ?>
 				<?php echo $child === $individual ? '</b>' : ''; ?>

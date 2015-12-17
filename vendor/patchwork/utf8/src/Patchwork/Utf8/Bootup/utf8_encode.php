@@ -11,5 +11,7 @@
 
 use Patchwork\PHP\Shim as s;
 
+@trigger_error('You are using a fallback implementation of the xml extension. Installing the native one is highly recommended instead.', E_USER_DEPRECATED);
+
 function utf8_encode($s) {return s\Xml::utf8_encode($s);};
 function utf8_decode($s) {return s\Xml::utf8_decode($s);};

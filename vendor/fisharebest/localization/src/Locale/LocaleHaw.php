@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageHaw;
  * @license       GPLv3+
  */
 class LocaleHaw extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ʻŌlelo Hawaiʻi';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'OLELO HAWAII';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageHaw;
 	}

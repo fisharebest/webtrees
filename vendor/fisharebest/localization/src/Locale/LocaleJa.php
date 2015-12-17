@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageJa;
  * @license       GPLv3+
  */
 class LocaleJa extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return '日本語';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageJa;
 	}

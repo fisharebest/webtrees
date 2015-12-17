@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class TerritoryGb extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'GB';
 	}
 
-	/** {@inheritdoc} */
 	public function measurementSystem() {
 		return 'UK';
 	}

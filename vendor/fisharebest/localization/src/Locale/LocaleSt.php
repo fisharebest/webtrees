@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageSt;
  * @license       GPLv3+
  */
 class LocaleSt extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Sesotho';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SESOTHO';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSt;
 	}

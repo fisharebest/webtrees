@@ -13,12 +13,10 @@
  * @license   GPLv3+
  */
 class PluralRule11 implements PluralRuleInterface {
-	/** {@inheritdoc} */
 	public function plurals() {
 		return 5;
 	}
 
-	/** {@inheritdoc} */
 	public function plural($number) {
 		$number = abs($number);
 

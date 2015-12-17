@@ -34,7 +34,8 @@ p {
 #content {
 	display: block;
 	clear: both;
-	margin: 10px 8px 0 8px;
+	margin: 0;
+	padding: 8px;
 }
 
 /* ====== Round Corners ======== */
@@ -1187,9 +1188,10 @@ a:hover .nameZoom {
 #login-text,
 #register-text,
 #user-verify {
-	margin: 20px auto;
-	width: 610px;
+	margin: 0 auto;
+	width: 40%;
 	text-align: justify;
+	min-width: 450px;
 }
 
 #login-box,
@@ -1226,7 +1228,6 @@ a:hover .nameZoom {
 #new_passwd_form label,
 #verify-form label {
 	display: block;
-	text-align: right;
 }
 
 #login-form label input,
@@ -1610,6 +1611,7 @@ a:hover .nameZoom {
 #index_main_blocks {
 	clear: none;
 	width: 66%;
+	display: table;
 	float: left;
 }
 
@@ -1617,6 +1619,7 @@ a:hover .nameZoom {
 	clear: none;
 	width: 33%;
 	float: right;
+	display: table;
 }
 
 #index_full_blocks {
@@ -1633,7 +1636,7 @@ a:hover .nameZoom {
 }
 
 .small_inner_block {
-	max-height: 200px;
+	max-height: 250px;
 	overflow: auto;
 }
 
@@ -2584,18 +2587,12 @@ dd .deletelink {
 	list-style-image: url(images/plus.png);
 }
 
-.name_tree_div {
-	display: none;
-}
-
-.name_tree_div ul,
-.name_tree_div_visible ul {
+.name_tree_div ul {
 	padding: 0;
 	margin: 0;
 }
 
-.name_tree_div li,
-.name_tree_div_visible li {
+.name_tree_div li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -3536,6 +3533,11 @@ table.table-census-assistant th {
 	left: 0;
 }
 
+#field_table {
+	width: 30%;
+	min-width: 500px;
+}
+
 /* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {
@@ -4205,7 +4207,6 @@ header h1 {
 
 [dir=rtl] header h1 {
 	float: right;
-	margin: 16px 12px 3px;
 }
 
 /* Set stack level for top two header menu rows */
@@ -4266,7 +4267,7 @@ header {
 	background-color: #fff;
 	color: #333;
 	display: block;
-	padding: 2px 5px 2px 2px;
+	padding: 5px;
 }
 
 .secondary-menu li:hover ul {
@@ -4288,17 +4289,23 @@ header {
 
 [dir=rtl] .secondary-menu {
 	float: left;
-	margin: 21px 0 4px 10px;
+	margin: 12px 0 12px 10px;
 }
 
-[dir=rtl] .secondary-menu ul {
-	left: auto;
-	right: 0;
+[dir=rtl] .secondary-menu li ul {
+	left: -15px;
+	right: auto;
 }
 
-[dir=rtl] .secondary-menu ul li {
+[dir=rtl] .secondary-menu li ul li {
 	text-align: right;
 }
+
+[dir=rtl] .secondary-menu li:first-child,
+[dir=rtl] .secondary-menu li ul li {
+	border: 0;
+}
+
 
 .header-search {
 	display: inline;
@@ -4311,14 +4318,11 @@ header {
 /* ====== Primary menu ========= */
 
 header nav {
-    clear: both;
-    margin: 8px auto;
-    position: relative;
-
+	clear: both;
+	position: relative;
 }
 
 .primary-menu {
-	display: inline-block;
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -4356,8 +4360,6 @@ header nav {
 }
 
 .primary-menu > li > a {
-	height: 37px;
-	width: 27px;
 	color: transparent; /* Use class="sr-only" from bootstrap? */
 }
 
@@ -4405,7 +4407,7 @@ header nav {
 	background-repeat: no-repeat;
 	height: 40px;
 	line-height: 40px;
-	margin: 4px 9px 0 7px;
+	margin: 4px 9px 4px 7px;
 	text-indent: 32px;
 	width: 40px;
 }
@@ -4423,7 +4425,7 @@ header nav {
 
 /* Reverse left and right on RTL pages */
 [dir=rtl] .primary-menu > li {
-	margin: 4px 7px 0 0;
+	margin: 4px 7px 4px 9px;
 }
 
 [dir=rtl] .primary-menu li {
@@ -5269,13 +5271,20 @@ footer {
 
 /* Mobile low and high resolution viewports */
 @media (max-width: 600px) {
-	#content {
-		margin-top: 50px;
-	}
+	.header-search {
+		display: none;
+		}
+	.secondary-menu {
+		min-height: 26px;
+		min-width: 458px;
+		text-align: right;
+		margin: 12px 10px;
+		}
 	[dir="rtl"] .secondary-menu {
 		clear:both;
 		float: left;
-		margin: 12px 10px 12px 10px;
+		text-align: left;
+		margin: 5px 10px;
 	}
 	/* Search */
 	#search-page-table div #query {
@@ -5290,6 +5299,17 @@ footer {
 	#search-page-table > input {
 		width: 20px;
 	}
+	#field_table {
+		width: 80%;
+		min-width: 380px;
+	}
+	.list_label, .list_value {
+		white-space: normal;
+	}
+	/* Phonetic Search */
+	#search-page-table .label {
+		width: 25%;
+	}
 	/* Lists */
 	#place_hierarchy td {
 		white-space: normal;
@@ -5298,17 +5318,24 @@ footer {
 	#reportengine-page table {
 		width: 100%;
 	}
+	/* Login */
+	#register-form div, #verify-form div {
+		text-align: left;
+	}
+	#register-form, #verify-form {
+		width: auto;
+	}
+	#login-text, #user-verify, #register-text, #user-verify {
+		min-width: auto;
+		width: 100%;
+	}
 }
 
 @media (max-width: 400px) {
 /* Header */
-	.secondary-menu {
-		float: left;
-		margin: 0px 5px 4px;
-	}
 	[dir=rtl] .secondary-menu {
-		float: right;
-		margin: 0px 5px 4px;
+		text-align: left;
+		margin: 5px 10px;
 	}
 	.primary-menu {
 		height: 40px;
@@ -5324,7 +5351,6 @@ footer {
 	.primary-menu > li > ul {
 		top: 32px;
 	}
-
 /* Front Page */
 	#index_main_blocks {
 		float: left;
@@ -5357,12 +5383,8 @@ footer {
 		width: 100%;
 		display: inline;
 	}
-/* Content */
-	#content {
-		margin-top: 45px;
-    }
-	.header-search {
-		display: block;
-		margin-top: 5px;
+	/* Advanced Search */
+	#field_table {
+		min-width: 100%;
 	}
 }

@@ -6,23 +6,22 @@ use InvalidArgumentException;
 /**
  * Class FrenchCalendar - calculations for the French Republican calendar.
  *
- * @author        Greg Roach <fisharebest@gmail.com>
+ * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2014-2015 Greg Roach
- * @license       This program is free software: you can redistribute it and/or modify
- *                it under the terms of the GNU General Public License as published by
- *                the Free Software Foundation, either version 3 of the License, or
- *                (at your option) any later version.
+ * @license   This program is free software: you can redistribute it and/or modify
+ *            it under the terms of the GNU General Public License as published by
+ *            the Free Software Foundation, either version 3 of the License, or
+ *            (at your option) any later version.
  *
- *                This program is distributed in the hope that it will be useful,
- *                but WITHOUT ANY WARRANTY; without even the implied warranty of
- *                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *                GNU General Public License for more details.
+ *            This program is distributed in the hope that it will be useful,
+ *            but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *            GNU General Public License for more details.
  *
- *                You should have received a copy of the GNU General Public License
- *                along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *            You should have received a copy of the GNU General Public License
+ *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 class FrenchCalendar implements CalendarInterface {
-	/** {@inheritdoc} */
 	public function daysInMonth($year, $month) {
 		if ($year <= 0) {
 			throw new InvalidArgumentException('Year ' . $year . ' is invalid for this calendar');
@@ -37,12 +36,10 @@ class FrenchCalendar implements CalendarInterface {
 		}
 	}
 
-	/** {@inheritdoc} */
 	public function daysInWeek() {
 		return 10;
 	}
 
-	/** {@inheritdoc} */
 	public function gedcomCalendarEscape() {
 		return '@#DFRENCH R@';
 	}
@@ -52,23 +49,19 @@ class FrenchCalendar implements CalendarInterface {
 	 * were ever observed.  Moves to a gregorian-like (fixed) system were proposed
 	 * but never implemented.
 	 *
-	 * {@inheritdoc}
 	 */
 	public function isLeapYear($year) {
 		return $year % 4 == 3;
 	}
 
-	/** {@inheritdoc} */
 	public function jdEnd() {
 		return 2380687; // 31 DEC 1805 = 10 NIVO 0014
 	}
 
-	/** {@inheritdoc} */
 	public function jdStart() {
 		return 2375840; // 22 SEP 1792 = 01 VEND 0001
 	}
 
-	/** {@inheritdoc} */
 	public function jdToYmd($julian_day) {
 		$year  = (int) (($julian_day - 2375109) * 4 / 1461) - 1;
 		$month = (int) (($julian_day - 2375475 - $year * 365 - (int) ($year / 4)) / 30) + 1;
@@ -77,12 +70,10 @@ class FrenchCalendar implements CalendarInterface {
 		return array($year, $month, $day);
 	}
 
-	/** {@inheritdoc} */
 	public function monthsInYear() {
 		return 13;
 	}
 
-	/** {@inheritdoc} */
 	public function ymdToJd($year, $month, $day) {
 		return 2375444 + $day + $month * 30 + $year * 365 + (int) ($year / 4);
 	}

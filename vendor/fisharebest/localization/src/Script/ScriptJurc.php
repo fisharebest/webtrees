@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptJurc extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Jurc';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '510';
 	}

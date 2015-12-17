@@ -10,17 +10,14 @@ use Fisharebest\Localization\Script\ScriptCyrl;
  * @license       GPLv3+
  */
 class LocaleMoCyrl extends LocaleMo {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'лимба молдовеняскэ';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ЛИМБА МОЛДОВЕНЯСКЭ';
 	}
 
-	/** {@inheritdoc} */
 	public function script() {
 		return new ScriptCyrl;
 	}

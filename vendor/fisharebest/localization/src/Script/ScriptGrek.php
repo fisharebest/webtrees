@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptGrek extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Grek';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '200';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Greek';
 	}

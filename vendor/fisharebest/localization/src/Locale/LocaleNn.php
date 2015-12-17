@@ -10,27 +10,22 @@ use Fisharebest\Localization\Language\LanguageNn;
  * @license       GPLv3+
  */
 class LocaleNn extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function collation() {
 		return 'danish_ci';
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'nynorsk';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'NYNORSK';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageNn;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::NBSP,
@@ -39,7 +34,6 @@ class LocaleNn extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

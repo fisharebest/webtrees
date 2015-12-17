@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageHa;
  * @license       GPLv3+
  */
 class LocaleHa extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Hausa';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'HAUSA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageHa;
 	}

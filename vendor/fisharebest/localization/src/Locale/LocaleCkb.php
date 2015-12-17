@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageCkb;
  * @license       GPLv3+
  */
 class LocaleCkb extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
-		return 'سۆرانی';
+		return 'کوردیی ناوەندی';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageCkb;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::ARAB_GROUP,
@@ -29,7 +26,6 @@ class LocaleCkb extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::ARAB_PERCENT;
 	}

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptLinb extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Linb';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '401';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Linear_B';
 	}

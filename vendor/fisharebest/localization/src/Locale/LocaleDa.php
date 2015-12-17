@@ -10,27 +10,22 @@ use Fisharebest\Localization\Language\LanguageDa;
  * @license       GPLv3+
  */
 class LocaleDa extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function collation() {
 		return 'danish_ci';
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'dansk';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'DANSK';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageDa;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,
@@ -38,7 +33,6 @@ class LocaleDa extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

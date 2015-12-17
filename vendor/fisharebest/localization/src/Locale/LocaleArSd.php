@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritorySd;
  * @license       GPLv3+
  */
 class LocaleArSd extends LocaleAr {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritorySd;
 	}

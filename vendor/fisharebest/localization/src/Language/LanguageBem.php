@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryZm;
  * @license   GPLv3+
  */
 class LanguageBem extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'bem';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryZm;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

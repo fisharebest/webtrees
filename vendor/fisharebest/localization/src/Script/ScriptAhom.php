@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptAhom extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Ahom';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '338';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Ahom';
 	}

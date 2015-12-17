@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageKhq;
  * @license       GPLv3+
  */
 class LocaleKhq extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Koyra ciini';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KOYRA CIINI';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKhq;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP => self::NBSP,

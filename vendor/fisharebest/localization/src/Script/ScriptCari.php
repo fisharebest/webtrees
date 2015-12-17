@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptCari extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Cari';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '201';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Carian';
 	}

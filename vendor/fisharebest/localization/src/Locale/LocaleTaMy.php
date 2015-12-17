@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryMy;
  * @license       GPLv3+
  */
 class LocaleTaMy extends LocaleTa {
-	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 3;
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryMy;
 	}

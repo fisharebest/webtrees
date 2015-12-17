@@ -16,18 +16,16 @@
 // "use strict";
 
 // Specifications for various types of popup edit window.
-// Choose positions to center in the smallest (1000x800) target screen
-var edit_window_specs='width=650,height=600,left=175,top=100,resizable=1,scrollbars=1'; // edit_interface.php, add_media.php, gedrecord.php
-var indx_window_specs='width=600,height=500,left=200,top=150,resizable=1,scrollbars=1'; // module configuration
-var news_window_specs='width=740,height=650,left=200,top=150,resizable=1,scrollbars=1'; // edit_news.php
-var help_window_specs='width=500,height=400,left=250,top=200,resizable=1,scrollbars=1'; // help.php
-var find_window_specs='width=550,height=600,left=250,top=150,resizable=1,scrollbars=1'; // find.php, inverse_link.php
-var mesg_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // message.php
-var chan_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
-var mord_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
-var assist_window_specs='width=900,height=800,left=70,top=70,resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
-var gmap_window_specs='width=650,height=600,left=200,top=150,resizable=1,scrollbars=1'; // googlemap module place editing
-var fam_nav_specs='width=300,height=600,left=817,top=150,resizable=1,scrollbars=1'; // media_0_inverselink.php
+var edit_window_specs = 'width=620,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_interface.php, add_media.php, gedrecord.php
+var indx_window_specs = 'width=600,height=600,left=75,top=50,resizable=1,scrollbars=1'; // module configuration
+var news_window_specs = 'width=620,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_news.php
+var find_window_specs = 'width=550,height=600,left=75,top=50,resizable=1,scrollbars=1'; // find.php, inverse_link.php
+var mesg_window_specs = 'width=620,height=600,left=75,top=50,resizable=1,scrollbars=1'; // message.php
+var chan_window_specs = 'width=500,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_changes.php
+var mord_window_specs = 'width=500,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
+var assist_window_specs = 'width=800,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
+var gmap_window_specs = 'width=650,height=600,left=75,top=50,resizable=1,scrollbars=1'; // googlemap module place editing
+var fam_nav_specs = 'width=350,height=550,left=25,top=75,resizable=1,scrollbars=1'; // media_0_inverselink.php
 
 var pastefield, nameElement, remElement; // Elements to paste to
 
@@ -48,7 +46,7 @@ function modalNotes(content, title) {
 		.dialog({
 			modal: true,
 			width: 500,
-			open: function() {
+			open:  function () {
 				// Close the window when we click outside it.
 				var self = this;
 				jQuery('.ui-widget-overlay').on('click', function () {
@@ -89,9 +87,9 @@ function edit_interface(params, windowspecs, pastefield) {
 
 function edit_record(xref, fact_id) {
 	return edit_interface({
-		"action":    "edit",
-		"xref":      xref,
-		"fact_id":   fact_id
+		"action":  "edit",
+		"xref":    xref,
+		"fact_id": fact_id
 	});
 }
 
@@ -198,23 +196,23 @@ function add_spouse_to_individual(xref, famtag) {
 function linkspouse(xref, famtag) {
 	return edit_interface({
 		"action": "linkspouse",
-		"xref": xref,
+		"xref":   xref,
 		"famtag": famtag,
-		"famid": "new"
+		"famid":  "new"
 	});
 }
 
 function add_famc(xref) {
 	return edit_interface({
 		"action": "addfamlink",
-		"xref": xref
+		"xref":   xref
 	});
 }
 
 function edit_name(xref, fact_id) {
 	return edit_interface({
-		"action": "editname",
-		"xref": xref,
+		"action":  "editname",
+		"xref":    xref,
 		"fact_id": fact_id
 	});
 }
@@ -222,35 +220,35 @@ function edit_name(xref, fact_id) {
 function add_name(xref) {
 	return edit_interface({
 		"action": "addname",
-		"xref": xref
+		"xref":   xref
 	});
 }
 
 // Accept the changes to a record - and reload the page
 function accept_changes(xref) {
 	jQuery.post('action.php', {
-		action: 'accept-changes',
-		xref:   xref,
-		ged:    WT_GEDCOM,
-		csrf:   WT_CSRF_TOKEN
-	},
-	function(){
-		location.reload();
-	});
+			action: 'accept-changes',
+			xref:   xref,
+			ged:    WT_GEDCOM,
+			csrf:   WT_CSRF_TOKEN
+		},
+		function () {
+			location.reload();
+		});
 	return false;
 }
 
 // Reject the changes to a record - and reload the page
 function reject_changes(xref) {
 	jQuery.post('action.php', {
-		action: 'reject-changes',
-		xref:   xref,
-		ged:    WT_GEDCOM,
-		csrf:   WT_CSRF_TOKEN
-	},
-	function(){
-		location.reload();
-	});
+			action: 'reject-changes',
+			xref:   xref,
+			ged:    WT_GEDCOM,
+			csrf:   WT_CSRF_TOKEN
+		},
+		function () {
+			location.reload();
+		});
 	return false;
 }
 
@@ -258,14 +256,14 @@ function reject_changes(xref) {
 function delete_family(message, xref, gedcom) {
 	if (confirm(message)) {
 		jQuery.post('action.php', {
-			action:   'delete-family',
-			xref:      xref,
-			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
-			csrf:      WT_CSRF_TOKEN
-		},
-		function(){
-			location.reload();
-		});
+				action: 'delete-family',
+				xref:   xref,
+				ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
+				csrf:   WT_CSRF_TOKEN
+			},
+			function () {
+				location.reload();
+			});
 	}
 	return false;
 }
@@ -274,14 +272,14 @@ function delete_family(message, xref, gedcom) {
 function delete_individual(message, xref, gedcom) {
 	if (confirm(message)) {
 		jQuery.post('action.php', {
-			action:   'delete-individual',
-			xref:      xref,
-			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
-			csrf:      WT_CSRF_TOKEN
-		},
-		function(){
-			location.reload();
-		});
+				action: 'delete-individual',
+				xref:   xref,
+				ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
+				csrf:   WT_CSRF_TOKEN
+			},
+			function () {
+				location.reload();
+			});
 	}
 	return false;
 }
@@ -290,14 +288,14 @@ function delete_individual(message, xref, gedcom) {
 function delete_media(message, xref, gedcom) {
 	if (confirm(message)) {
 		jQuery.post('action.php', {
-			action:   'delete-media',
-			xref:      xref,
-			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
-			csrf:      WT_CSRF_TOKEN
-		},
-		function(){
-			location.reload();
-		});
+				action: 'delete-media',
+				xref:   xref,
+				ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
+				csrf:   WT_CSRF_TOKEN
+			},
+			function () {
+				location.reload();
+			});
 	}
 	return false;
 }
@@ -306,14 +304,14 @@ function delete_media(message, xref, gedcom) {
 function delete_note(message, xref, gedcom) {
 	if (confirm(message)) {
 		jQuery.post('action.php', {
-			action:   'delete-note',
-			xref:      xref,
-			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
-			csrf:      WT_CSRF_TOKEN
-		},
-		function(){
-			location.reload();
-		});
+				action: 'delete-note',
+				xref:   xref,
+				ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
+				csrf:   WT_CSRF_TOKEN
+			},
+			function () {
+				location.reload();
+			});
 	}
 	return false;
 }
@@ -322,14 +320,14 @@ function delete_note(message, xref, gedcom) {
 function delete_repository(message, xref, gedcom) {
 	if (confirm(message)) {
 		jQuery.post('action.php', {
-			action:   'delete-repository',
-			xref:      xref,
-			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
-			csrf:      WT_CSRF_TOKEN
-		},
-		function(){
-			location.reload();
-		});
+				action: 'delete-repository',
+				xref:   xref,
+				ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
+				csrf:   WT_CSRF_TOKEN
+			},
+			function () {
+				location.reload();
+			});
 	}
 	return false;
 }
@@ -338,14 +336,14 @@ function delete_repository(message, xref, gedcom) {
 function delete_source(message, xref, gedcom) {
 	if (confirm(message)) {
 		jQuery.post('action.php', {
-			action:   'delete-source',
-			xref:      xref,
-			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
-			csrf:      WT_CSRF_TOKEN
-		},
-		function(){
-			location.reload();
-		});
+				action: 'delete-source',
+				xref:   xref,
+				ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
+				csrf:   WT_CSRF_TOKEN
+			},
+			function () {
+				location.reload();
+			});
 	}
 	return false;
 }
@@ -354,15 +352,15 @@ function delete_source(message, xref, gedcom) {
 function delete_fact(message, xref, fact_id) {
 	if (confirm(message)) {
 		jQuery.post('action.php', {
-			action:   'delete-fact',
-			xref:      xref,
-			fact_id:   fact_id,
-			ged:       WT_GEDCOM,
-			csrf:      WT_CSRF_TOKEN
-		},
-		function(){
-			location.reload();
-		});
+				action:  'delete-fact',
+				xref:    xref,
+				fact_id: fact_id,
+				ged:     WT_GEDCOM,
+				csrf:    WT_CSRF_TOKEN
+			},
+			function () {
+				location.reload();
+			});
 	}
 	return false;
 }
@@ -371,15 +369,15 @@ function delete_fact(message, xref, fact_id) {
 function unlink_media(message, source, target) {
 	if (confirm(message)) {
 		jQuery.post('action.php', {
-			action: 'unlink-media',
-			source: source,
-			target: target,
-			ged:    WT_GEDCOM,
-			csrf:   WT_CSRF_TOKEN
-		},
-		function(){
-			location.reload();
-		});
+				action: 'unlink-media',
+				source: source,
+				target: target,
+				ged:    WT_GEDCOM,
+				csrf:   WT_CSRF_TOKEN
+			},
+			function () {
+				location.reload();
+			});
 	}
 	return false;
 }
@@ -387,30 +385,30 @@ function unlink_media(message, source, target) {
 // Copy a fact to the clipboard
 function copy_fact(xref, fact_id) {
 	jQuery.post('action.php', {
-		action:   'copy-fact',
-		xref:      xref,
-		fact_id:   fact_id,
-		ged:       WT_GEDCOM,
-		csrf:      WT_CSRF_TOKEN
-	},
-	function(){
-		location.reload();
-	});
+			action:  'copy-fact',
+			xref:    xref,
+			fact_id: fact_id,
+			ged:     WT_GEDCOM,
+			csrf:    WT_CSRF_TOKEN
+		},
+		function () {
+			location.reload();
+		});
 	return false;
 }
 
 // Paste a fact from the clipboard
 function paste_fact(xref, element) {
 	jQuery.post('action.php', {
-		action:   'paste-fact',
-		xref:      xref,
-		fact_id:   jQuery(element).val(), // element is the <select> containing the option
-		ged:       WT_GEDCOM,
-		csrf:      WT_CSRF_TOKEN
-	},
-	function(){
-		location.reload();
-	});
+			action:  'paste-fact',
+			xref:    xref,
+			fact_id: jQuery(element).val(), // element is the <select> containing the option
+			ged:     WT_GEDCOM,
+			csrf:    WT_CSRF_TOKEN
+		},
+		function () {
+			location.reload();
+		});
 	return false;
 }
 
@@ -418,13 +416,13 @@ function paste_fact(xref, element) {
 function delete_user(message, user_id) {
 	if (confirm(message)) {
 		jQuery.post('action.php', {
-			action:   'delete-user',
-			user_id:   user_id,
-			csrf:      WT_CSRF_TOKEN
-		},
-		function(){
-			location.reload();
-		});
+				action:  'delete-user',
+				user_id: user_id,
+				csrf:    WT_CSRF_TOKEN
+			},
+			function () {
+				location.reload();
+			});
 	}
 	return false;
 }
@@ -432,13 +430,13 @@ function delete_user(message, user_id) {
 // Masquerade as another user - and reload the page.
 function masquerade(user_id) {
 	jQuery.post('action.php', {
-		action:   'masquerade',
-		user_id:   user_id,
-		csrf:      WT_CSRF_TOKEN
-	},
-	function(){
-		location.reload();
-	});
+			action:  'masquerade',
+			user_id: user_id,
+			csrf:    WT_CSRF_TOKEN
+		},
+		function () {
+			location.reload();
+		});
 	return false;
 }
 
@@ -452,7 +450,7 @@ function reorder_children(xref) {
 function reorder_families(xref) {
 	return edit_interface({
 		"action": "reorder_fams",
-		"xref":    xref
+		"xref":   xref
 	});
 }
 
@@ -494,11 +492,12 @@ function addnewnote(field) {
 	}, null, field);
 }
 
-function addnewnote_assisted(field, xref) {
+function addnewnote_assisted(field, xref, census) {
 	return edit_interface({
 		"action": "addnewnote_assisted",
 		"noteid": "newnote",
-		"xref":   xref
+		"xref":   xref,
+		"census": census
 	}, assist_window_specs, field);
 }
 
@@ -509,47 +508,47 @@ function addmedia_links(field, iid, iname) {
 }
 
 function valid_date(datefield) {
-	var months        = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
-	var hijri_months  = ["MUHAR","SAFAR","RABIA","RABIT","JUMAA","JUMAT","RAJAB","SHAAB","RAMAD","SHAWW","DHUAQ","DHUAH"];
-	var hebrew_months = ["TSH","CSH","KSL","TVT","SHV","ADR","ADS","NSN","IYR","SVN","TMZ","AAV","ELL"];
-	var french_months = ["VEND","BRUM","FRIM","NIVO","PLUV","VENT","GERM","FLOR","PRAI","MESS","THER","FRUC","COMP"];
-	var jalali_months = ["FARVA","ORDIB","KHORD","TIR","MORDA","SHAHR","MEHR","ABAN","AZAR","DEY","BAHMA","ESFAN"];
+	var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+	var hijri_months = ["MUHAR", "SAFAR", "RABIA", "RABIT", "JUMAA", "JUMAT", "RAJAB", "SHAAB", "RAMAD", "SHAWW", "DHUAQ", "DHUAH"];
+	var hebrew_months = ["TSH", "CSH", "KSL", "TVT", "SHV", "ADR", "ADS", "NSN", "IYR", "SVN", "TMZ", "AAV", "ELL"];
+	var french_months = ["VEND", "BRUM", "FRIM", "NIVO", "PLUV", "VENT", "GERM", "FLOR", "PRAI", "MESS", "THER", "FRUC", "COMP"];
+	var jalali_months = ["FARVA", "ORDIB", "KHORD", "TIR", "MORDA", "SHAHR", "MEHR", "ABAN", "AZAR", "DEY", "BAHMA", "ESFAN"];
 
-	var datestr=datefield.value;
+	var datestr = datefield.value;
 	// if a date has a date phrase marked by () this has to be excluded from altering
-	var datearr=datestr.split("(");
-	var datephrase="";
+	var datearr = datestr.split("(");
+	var datephrase = "";
 	if (datearr.length > 1) {
-		datestr=datearr[0];
-		datephrase=datearr[1];
+		datestr = datearr[0];
+		datephrase = datearr[1];
 	}
 
 	// Gedcom dates are upper case
-	datestr=datestr.toUpperCase();
+	datestr = datestr.toUpperCase();
 	// Gedcom dates have no leading/trailing/repeated whitespace
-	datestr=datestr.replace(/\s+/, " ");
-	datestr=datestr.replace(/(^\s)|(\s$)/, "");
+	datestr = datestr.replace(/\s+/, " ");
+	datestr = datestr.replace(/(^\s)|(\s$)/, "");
 	// Gedcom dates have spaces between letters and digits, e.g. "01JAN2000" => "01 JAN 2000"
-	datestr=datestr.replace(/(\d)([A-Z])/, "$1 $2");
-	datestr=datestr.replace(/([A-Z])(\d)/, "$1 $2");
+	datestr = datestr.replace(/(\d)([A-Z])/, "$1 $2");
+	datestr = datestr.replace(/([A-Z])(\d)/, "$1 $2");
 
 	// Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900".  See [ 1509083 ]
 	if (datestr.match(/^Q ([1-4]) (\d\d\d\d)$/)) {
-		datestr = "BET "+months[RegExp.$1*3-3]+" "+RegExp.$2+" AND "+months[RegExp.$1*3-1]+" "+RegExp.$2;
+		datestr = "BET " + months[RegExp.$1 * 3 - 3] + " " + RegExp.$2 + " AND " + months[RegExp.$1 * 3 - 1] + " " + RegExp.$2;
 	}
 
 	// Shortcut for @#Dxxxxx@ 01 01 1400, etc.
 	if (datestr.match(/^(@#DHIJRI@|HIJRI)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-		datestr = "@#DHIJRI@" + RegExp.$2 + hijri_months[parseInt(RegExp.$3, 10)-1] + RegExp.$4;
+		datestr = "@#DHIJRI@" + RegExp.$2 + hijri_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
 	}
 	if (datestr.match(/^(@#DJALALI@|JALALI)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-		datestr = "@#DJALALI@" + RegExp.$2 + jalali_months[parseInt(RegExp.$3, 10)-1] + RegExp.$4;
+		datestr = "@#DJALALI@" + RegExp.$2 + jalali_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
 	}
 	if (datestr.match(/^(@#DHEBREW@|HEBREW)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-		datestr = "@#DHEBREW@" + RegExp.$2 + hebrew_months[parseInt(RegExp.$3, 10)-1] + RegExp.$4;
+		datestr = "@#DHEBREW@" + RegExp.$2 + hebrew_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
 	}
 	if (datestr.match(/^(@#DFRENCH R@|FRENCH)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-		datestr = "@#DFRENCH R@" + RegExp.$2 + french_months[parseInt(RegExp.$3, 10)-1] + RegExp.$4;
+		datestr = "@#DFRENCH R@" + RegExp.$2 + french_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
 	}
 
 	// e.g. 17.11.1860, 03/04/2005 or 1999-12-31.  Use locale settings where DMY order is ambiguous.
@@ -568,8 +567,8 @@ function valid_date(datefield) {
 		var yyyy = new Date().getFullYear();
 		var yy = yyyy % 100;
 		var cc = yyyy - yy;
-		if (dmy === 'DMY' && f1<=31 && f2<=12 || f1>13 && f1<=31 && f2<=12 && f3>31) {
-				datestr = f0 + f1 + " " + months[f2 - 1] + " " + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
+		if (dmy === 'DMY' && f1 <= 31 && f2 <= 12 || f1 > 13 && f1 <= 31 && f2 <= 12 && f3 > 31) {
+			datestr = f0 + f1 + " " + months[f2 - 1] + " " + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
 		} else {
 			if (dmy === 'MDY' && f1 <= 12 && f2 <= 31 || f2 > 13 && f2 <= 31 && f1 <= 12 && f3 > 31) {
 				datestr = f0 + f2 + " " + months[f1 - 1] + " " + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
@@ -582,82 +581,82 @@ function valid_date(datefield) {
 	}
 
 	// Shortcuts for date ranges
-	datestr=datestr.replace(/^[>]([\w ]+)$/, "AFT $1");
-	datestr=datestr.replace(/^[<]([\w ]+)$/, "BEF $1");
-	datestr=datestr.replace(/^([\w ]+)[-]$/, "FROM $1");
-	datestr=datestr.replace(/^[-]([\w ]+)$/, "TO $1");
-	datestr=datestr.replace(/^[~]([\w ]+)$/, "ABT $1");
-	datestr=datestr.replace(/^[*]([\w ]+)$/, "EST $1");
-	datestr=datestr.replace(/^[#]([\w ]+)$/, "CAL $1");
-	datestr=datestr.replace(/^([\w ]+) ?- ?([\w ]+)$/, "BET $1 AND $2");
-	datestr=datestr.replace(/^([\w ]+) ?~ ?([\w ]+)$/, "FROM $1 TO $2");
+	datestr = datestr.replace(/^[>]([\w ]+)$/, "AFT $1");
+	datestr = datestr.replace(/^[<]([\w ]+)$/, "BEF $1");
+	datestr = datestr.replace(/^([\w ]+)[-]$/, "FROM $1");
+	datestr = datestr.replace(/^[-]([\w ]+)$/, "TO $1");
+	datestr = datestr.replace(/^[~]([\w ]+)$/, "ABT $1");
+	datestr = datestr.replace(/^[*]([\w ]+)$/, "EST $1");
+	datestr = datestr.replace(/^[#]([\w ]+)$/, "CAL $1");
+	datestr = datestr.replace(/^([\w ]+) ?- ?([\w ]+)$/, "BET $1 AND $2");
+	datestr = datestr.replace(/^([\w ]+) ?~ ?([\w ]+)$/, "FROM $1 TO $2");
 
 	// Convert full months to short months
-	datestr=datestr.replace(/(JANUARY)/,   "JAN");
-	datestr=datestr.replace(/(FEBRUARY)/,  "FEB");
-	datestr=datestr.replace(/(MARCH)/,     "MAR");
-	datestr=datestr.replace(/(APRIL)/,     "APR");
-	datestr=datestr.replace(/(MAY)/,       "MAY");
-	datestr=datestr.replace(/(JUNE)/,      "JUN");
-	datestr=datestr.replace(/(JULY)/,      "JUL");
-	datestr=datestr.replace(/(AUGUST)/,    "AUG");
-	datestr=datestr.replace(/(SEPTEMBER)/, "SEP");
-	datestr=datestr.replace(/(OCTOBER)/,   "OCT");
-	datestr=datestr.replace(/(NOVEMBER)/,  "NOV");
-	datestr=datestr.replace(/(DECEMBER)/,  "DEC");
+	datestr = datestr.replace(/(JANUARY)/, "JAN");
+	datestr = datestr.replace(/(FEBRUARY)/, "FEB");
+	datestr = datestr.replace(/(MARCH)/, "MAR");
+	datestr = datestr.replace(/(APRIL)/, "APR");
+	datestr = datestr.replace(/(MAY)/, "MAY");
+	datestr = datestr.replace(/(JUNE)/, "JUN");
+	datestr = datestr.replace(/(JULY)/, "JUL");
+	datestr = datestr.replace(/(AUGUST)/, "AUG");
+	datestr = datestr.replace(/(SEPTEMBER)/, "SEP");
+	datestr = datestr.replace(/(OCTOBER)/, "OCT");
+	datestr = datestr.replace(/(NOVEMBER)/, "NOV");
+	datestr = datestr.replace(/(DECEMBER)/, "DEC");
 
 	// Americans frequently enter dates as SEP 20, 1999
 	// No need to internationalise this, as this is an english-language issue
-	datestr=datestr.replace(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
+	datestr = datestr.replace(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
 
 	// Apply leading zero to day numbers
-	datestr=datestr.replace(/(^| )(\d [A-Z]{3,5} \d{4})/, "$10$2");
+	datestr = datestr.replace(/(^| )(\d [A-Z]{3,5} \d{4})/, "$10$2");
 
 	if (datephrase) {
-		datestr=datestr+" ("+datephrase;
+		datestr = datestr + " (" + datephrase;
 	}
 	// Only update it if is has been corrected - otherwise input focus
 	// moves to the end of the field unnecessarily
 	if (datefield.value !== datestr) {
-		datefield.value=datestr;
+		datefield.value = datestr;
 	}
 }
 
 var menutimeouts = [];
 
 function show_submenu(elementid, parentid) {
-	var pagewidth = document.body.scrollWidth+document.documentElement.scrollLeft;
+	var pagewidth = document.body.scrollWidth + document.documentElement.scrollLeft;
 	var element = document.getElementById(elementid);
 
 	if (element && element.style) {
 		if (document.all) {
 			pagewidth = document.body.offsetWidth;
 		} else {
-			pagewidth = document.body.scrollWidth+document.documentElement.scrollLeft-55;
+			pagewidth = document.body.scrollWidth + document.documentElement.scrollLeft - 55;
 			if (textDirection === "rtl") {
-				boxright = element.offsetLeft+element.offsetWidth+10;
+				boxright = element.offsetLeft + element.offsetWidth + 10;
 			}
 		}
 
 		//-- make sure the submenu is the size of the largest child
 		var maxwidth = 0;
 		var count = element.childNodes.length;
-		for (var i=0; i<count; i++) {
+		for (var i = 0; i < count; i++) {
 			var child = element.childNodes[i];
-			if (child.offsetWidth > maxwidth+5) {
+			if (child.offsetWidth > maxwidth + 5) {
 				maxwidth = child.offsetWidth;
 			}
 		}
-		if (element.offsetWidth <  maxwidth) {
-			element.style.width = maxwidth+"px";
+		if (element.offsetWidth < maxwidth) {
+			element.style.width = maxwidth + "px";
 		}
 		var pelement, boxright;
 		pelement = document.getElementById(parentid);
 		if (pelement) {
-			element.style.left=pelement.style.left;
-			boxright = element.offsetLeft+element.offsetWidth+10;
+			element.style.left = pelement.style.left;
+			boxright = element.offsetLeft + element.offsetWidth + 10;
 			if (boxright > pagewidth) {
-				var menuleft = pagewidth-element.offsetWidth;
+				var menuleft = pagewidth - element.offsetWidth;
 				element.style.left = menuleft + "px";
 			}
 		}
@@ -672,7 +671,7 @@ function show_submenu(elementid, parentid) {
 			element.style.overflow = 'auto';
 		}
 
-		element.style.visibility='visible';
+		element.style.visibility = 'visible';
 	}
 	clearTimeout(menutimeouts[elementid]);
 	menutimeouts[elementid] = null;
@@ -684,7 +683,7 @@ function hide_submenu(elementid) {
 	}
 	var element = document.getElementById(elementid);
 	if (element && element.style) {
-		element.style.visibility='hidden';
+		element.style.visibility = 'hidden';
 	}
 	clearTimeout(menutimeouts[elementid]);
 	menutimeouts[elementid] = null;
@@ -692,7 +691,7 @@ function hide_submenu(elementid) {
 
 function timeout_submenu(elementid) {
 	if (typeof menutimeouts[elementid] !== "number") {
-		menutimeouts[elementid] = setTimeout("hide_submenu('"+elementid+"')", 100);
+		menutimeouts[elementid] = setTimeout("hide_submenu('" + elementid + "')", 100);
 	}
 }
 
@@ -777,7 +776,7 @@ function cal_setDayHeaders(sun, mon, tue, wed, thu, fri, sat) {
 }
 
 function cal_setWeekStart(day) {
-	if (day >=0 && day < 7) {
+	if (day >= 0 && day < 7) {
 		weekStart = day;
 	}
 }
@@ -841,7 +840,7 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 		if (date.getMonth() + 1 === i) {
 			content += ' selected="selected"';
 		}
-		content += '>'+monthLabels[i]+'</option>';
+		content += '>' + monthLabels[i] + '</option>';
 	}
 	content += '</select></td>';
 	content += '<td><input type="text" name="' + dateFieldId + '_yearInput" id="' + dateFieldId + '_yearInput" size="5" value="' + date.getFullYear() + '" onchange="return cal_updateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');" /></td></tr>';
@@ -910,28 +909,28 @@ function cal_setDateField(dateFieldId, year, month, day) {
 }
 
 function cal_updateCalendar(dateFieldId, dateDivId) {
-	var dateSel = document.getElementById(dateFieldId+'_daySelect');
+	var dateSel = document.getElementById(dateFieldId + '_daySelect');
 	if (!dateSel) {
 		return false;
 	}
-	var monthSel = document.getElementById(dateFieldId+'_monSelect');
+	var monthSel = document.getElementById(dateFieldId + '_monSelect');
 	if (!monthSel) {
 		return false;
 	}
-	var yearInput = document.getElementById(dateFieldId+'_yearInput');
+	var yearInput = document.getElementById(dateFieldId + '_yearInput');
 	if (!yearInput) {
 		return false;
 	}
 
 	var month = parseInt(monthSel.options[monthSel.selectedIndex].value, 10);
-	month = month-1;
+	month = month - 1;
 
 	var date = new Date(yearInput.value, month, dateSel.options[dateSel.selectedIndex].value);
 	cal_setDateField(dateFieldId, date.getFullYear(), date.getMonth(), date.getDate());
 
 	var dateDiv = document.getElementById(dateDivId);
 	if (!dateDiv) {
-		alert('no dateDiv '+dateDivId);
+		alert('no dateDiv ' + dateDivId);
 		return false;
 	}
 	dateDiv.innerHTML = cal_generateSelectorContent(dateFieldId, dateDivId, date);
@@ -1054,24 +1053,35 @@ function valid_lati_long(field, pos, neg) {
 	// valid LATI or LONG according to Gedcom standard
 	// pos (+) : N or E
 	// neg (-) : S or W
-	var txt=field.value.toUpperCase();
-	txt=txt.replace(/(^\s*)|(\s*$)/g, ''); // trim
-	txt=txt.replace(/ /g, ':'); // N12 34 ==> N12.34
-	txt=txt.replace(/\+/g, ''); // +17.1234 ==> 17.1234
-	txt=txt.replace(/-/g, neg); // -0.5698 ==> W0.5698
-	txt=txt.replace(/,/g, '.'); // 0,5698 ==> 0.5698
+	var txt = field.value.toUpperCase();
+	txt = txt.replace(/(^\s*)|(\s*$)/g, ''); // trim
+	txt = txt.replace(/ /g, ':'); // N12 34 ==> N12.34
+	txt = txt.replace(/\+/g, ''); // +17.1234 ==> 17.1234
+	txt = txt.replace(/-/g, neg); // -0.5698 ==> W0.5698
+	txt = txt.replace(/,/g, '.'); // 0,5698 ==> 0.5698
 	// 0°34'11 ==> 0:34:11
-	txt=txt.replace(/\u00b0/g, ':'); // °
-	txt=txt.replace(/\u0027/g, ':'); // '
+	txt = txt.replace(/\u00b0/g, ':'); // °
+	txt = txt.replace(/\u0027/g, ':'); // '
 	// 0:34:11.2W ==> W0.5698
-	txt=txt.replace(/^([0-9]+):([0-9]+):([0-9.]+)(.*)/g, function($0, $1, $2, $3, $4) { var n=parseFloat($1); n+=($2/60); n+=($3/3600); n=Math.round(n*1E4)/1E4; return $4+n; });
+	txt = txt.replace(/^([0-9]+):([0-9]+):([0-9.]+)(.*)/g, function ($0, $1, $2, $3, $4) {
+		var n = parseFloat($1);
+		n += ($2 / 60);
+		n += ($3 / 3600);
+		n = Math.round(n * 1E4) / 1E4;
+		return $4 + n;
+	});
 	// 0:34W ==> W0.5667
-	txt=txt.replace(/^([0-9]+):([0-9]+)(.*)/g, function($0, $1, $2, $3) { var n=parseFloat($1); n+=($2/60); n=Math.round(n*1E4)/1E4; return $3+n; });
+	txt = txt.replace(/^([0-9]+):([0-9]+)(.*)/g, function ($0, $1, $2, $3) {
+		var n = parseFloat($1);
+		n += ($2 / 60);
+		n = Math.round(n * 1E4) / 1E4;
+		return $3 + n;
+	});
 	// 0.5698W ==> W0.5698
-	txt=txt.replace(/(.*)([N|S|E|W]+)$/g, '$2$1');
+	txt = txt.replace(/(.*)([N|S|E|W]+)$/g, '$2$1');
 	// 17.1234 ==> N17.1234
 	if (txt && txt.charAt(0) !== neg && txt.charAt(0) !== pos) {
-			txt = pos + txt;
+		txt = pos + txt;
 	}
 	field.value = txt;
 }
@@ -1081,7 +1091,7 @@ function valid_lati_long(field, pos, neg) {
 function activate_colorbox(config) {
 	jQuery.extend(jQuery.colorbox.settings, {
 		// Don't scroll window with document
-		fixed:         true,
+		fixed:          true,
 		// Simple I18N - the text will need to come from PHP
 		current:        '',
 		previous:       textDirection === 'rtl' ? '\u25b6' : '\u25c0', // ▶ ◀
@@ -1095,7 +1105,7 @@ function activate_colorbox(config) {
 	}
 
 	// Trigger an event when we click on an (any) image
-	jQuery('body').on('click', 'a.gallery', function() {
+	jQuery('body').on('click', 'a.gallery', function () {
 		// Remove colorbox from hidden media (e.g. on other tabs)
 		// (not needed unless we add :visible to our selectors - which may not
 		// work on all browsers?)
@@ -1110,7 +1120,7 @@ function activate_colorbox(config) {
 			slideshow:     true,
 			slideshowAuto: false,
 			// Add wheelzoom to the displayed image
-			onComplete:    function() {
+			onComplete:    function () {
 				jQuery('.cboxPhoto').wheelzoom();
 			}
 		});
@@ -1135,9 +1145,9 @@ function autocomplete(selector) {
 		selector = "input[data-autocomplete-type]";
 	}
 
-	jQuery(selector).each(function() {
+	jQuery(selector).each(function () {
 		var type = jQuery(this).data("autocomplete-type"); // What type of field
-		var ged  = jQuery(this).data("autocomplete-ged"); // Which family tree
+		var ged = jQuery(this).data("autocomplete-ged"); // Which family tree
 		if (typeof(type) === "undefined") {
 			alert("Missing data-autocomplete-type attribute");
 		}
@@ -1147,12 +1157,12 @@ function autocomplete(selector) {
 			jQuery(this).data("autocomplete-ged", WT_GEDCOM);
 		}
 
-		var self=jQuery(this);
+		var self = jQuery(this);
 		self.autocomplete({
 			// Cannot use a simple URL, as the data-autocomplete-xxxx parameters may change.
-			source: function(request, response) {
+			source: function (request, response) {
 				// Some autocomplete fields require the current value of an earlier field
-				var extra  = null;
+				var extra = null;
 				if (self.data("autocomplete-extra")) {
 					extra = jQuery(self.data("autocomplete-extra")).val();
 				}
@@ -1164,7 +1174,7 @@ function autocomplete(selector) {
 					term:  request.term
 				}, response);
 			},
-			html: true
+			html:   true
 		});
 	});
 }
@@ -1172,34 +1182,34 @@ function autocomplete(selector) {
 // Add LTR/RTL support for jQueryUI Accordions
 jQuery.extend($.ui.accordion.prototype.options, {
 	icons: {
-		header: textDirection === "rtl" ? "ui-icon-triangle-1-w" : "ui-icon-triangle-1-e",
+		header:       textDirection === "rtl" ? "ui-icon-triangle-1-w" : "ui-icon-triangle-1-e",
 		activeHeader: "ui-icon-triangle-1-s"
 	}
 });
 
-jQuery.widget( "ui.dialog", jQuery.ui.dialog, {
+jQuery.widget("ui.dialog", jQuery.ui.dialog, {
 	/*! jQuery UI - v1.10.2 - 2013-12-12
 	 *  http://bugs.jqueryui.com/ticket/9087#comment:27 - bugfix
 	 *  http://bugs.jqueryui.com/ticket/4727#comment:23 - bugfix
 	 *  allowInteraction fix to accommodate windowed editors
 	 */
-	_allowInteraction: function( event ) {
-		if ( this._super( event ) ) {
+	_allowInteraction: function (event) {
+		if (this._super(event)) {
 			return true;
 		}
 
 		// address interaction issues with general iframes with the dialog
-		if ( event.target.ownerDocument !== this.document[ 0 ] ) {
+		if (event.target.ownerDocument !== this.document[0]) {
 			return true;
 		}
 
 		// address interaction issues with dialog window
-		if ( jQuery( event.target ).closest( ".cke_dialog" ).length ) {
+		if (jQuery(event.target).closest(".cke_dialog").length) {
 			return true;
 		}
 
 		// address interaction issues with iframe based drop downs in IE
-		if ( jQuery( event.target ).closest( ".cke" ).length ) {
+		if (jQuery(event.target).closest(".cke").length) {
 			return true;
 		}
 	},
@@ -1207,19 +1217,19 @@ jQuery.widget( "ui.dialog", jQuery.ui.dialog, {
 	 *  http://dev.ckeditor.com/ticket/10269 - bugfix
 	 *  moveToTop fix to accommodate windowed editors
 	 */
-	_moveToTop: function ( event, silent ) {
-		if ( !event || !this.options.modal ) {
-			this._super( event, silent );
+	_moveToTop:        function (event, silent) {
+		if (!event || !this.options.modal) {
+			this._super(event, silent);
 		}
 	}
 });
 
 /* Show / Hide event data for boxes used on charts and elsewhere */
-jQuery ('body').on ('click', '.iconz', function (e) {
+jQuery('body').on ('click', '.iconz', function (e) {
 	"use strict";
 	e.stopPropagation ();
 
-	var wrapper = jQuery (this).closest (".person_box_template"),
+	var wrapper = jQuery(this).closest (".person_box_template"),
 		inout = wrapper.find (".inout"),
 		inout2 = wrapper.find (".inout2"),
 		namedef = wrapper.find (".namedef"),
@@ -1244,7 +1254,7 @@ jQuery ('body').on ('click', '.iconz', function (e) {
 	}
 
 	function toggleExpanded() {
-		wrapper.toggleClass(function(){
+		wrapper.toggleClass(function () {
 			return basestyle + " " + basestyle + "-expanded";
 		});
 	}
@@ -1253,33 +1263,37 @@ jQuery ('body').on ('click', '.iconz', function (e) {
 		wrapper.css("cursor", "progress");
 		inout.load ("expand_view.php?pid=" + wrapper.data("pid"), function () {
 			wrapper.css("cursor", "");
-			showDetails ();
+			showDetails();
 		});
 	} else {
-		if(wrapper.hasClass(basestyle)) {
-			showDetails ();
+		if (wrapper.hasClass(basestyle)) {
+			showDetails();
 		} else {
-			hideDetails ();
+			hideDetails();
 		}
 	}
 	wrapper.find ('.iconz').toggleClass ("icon-zoomin icon-zoomout");
 });
 
 // Activate the langauge selection menu.
-jQuery(".menu-language").on("click", "li a", function() {
+jQuery(".menu-language").on("click", "li a", function () {
 	jQuery.post("action.php", {
-		action: "language",
+		action:   "language",
 		language: $(this).data("language"),
-		csrf: WT_CSRF_TOKEN
-	}, function() { window.location.href = window.location.href; /*location.reload();*/ });
+		csrf:     WT_CSRF_TOKEN
+	}, function () {
+		location.reload();
+	});
 });
 
 // Activate the theme selection menu.
-jQuery(".menu-theme").on("click", "li a", function() {
+jQuery(".menu-theme").on("click", "li a", function () {
 	jQuery.post("action.php", {
 		action: "theme",
-		theme: $(this).data("theme"),
-		csrf: WT_CSRF_TOKEN
-	}, function() { location.reload(); });
+		theme:  $(this).data("theme"),
+		csrf:   WT_CSRF_TOKEN
+	}, function () {
+		location.reload();
+	});
 });
 

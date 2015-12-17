@@ -15,9 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Controller\SimpleController;
-
-/** @global SimpleController $controller */
+/** @global Controller\SimpleController $controller */
 global $controller;
 
 /** @global Tree $WT_TREE */

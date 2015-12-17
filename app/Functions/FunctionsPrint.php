@@ -198,7 +198,9 @@ class FunctionsPrint {
 	}
 
 	/**
-	 * Print an external help link to the wiki site, in a new window
+	 * Print an external help link to the wiki site.
+	 *
+	 * @deprecated - nothing should be so complicated that it needs lengthy instructions!
 	 *
 	 * @param string $topic
 	 *

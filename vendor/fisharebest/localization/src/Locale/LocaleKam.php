@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageKam;
  * @license       GPLv3+
  */
 class LocaleKam extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Kikamba';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KIKAMBA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKam;
 	}

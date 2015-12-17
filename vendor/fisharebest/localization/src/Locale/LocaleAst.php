@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageAst;
  * @license       GPLv3+
  */
 class LocaleAst extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'asturianu';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ASTURIANU';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageAst;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptBugi extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Bugi';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '367';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Buginese';
 	}

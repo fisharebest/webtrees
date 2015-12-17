@@ -471,7 +471,7 @@ $controller->pageHeader();
 			<?php echo /* I18N: A site configuration setting */ I18N::translate('Custom welcome text'); ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="WELCOME_TEXT_AUTH_MODE_4" name="WELCOME_TEXT_AUTH_MODE_4" value="<?php echo Filter::escapeHtml(Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE)); ?>" maxlength="255">
+			<textarea class="form-control" maxlength="2000" id="WELCOME_TEXT_AUTH_MODE_4" name="WELCOME_TEXT_AUTH_MODE_4" rows="4"><?php echo Filter::escapeHtml(Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE)); ?></textarea>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the "Custom welcome text" site configuration setting */ I18N::translate('To set this text for other languages, you must switch to that language, and visit this page again.'); ?>
 			</p>

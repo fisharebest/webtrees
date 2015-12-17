@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageUz;
  * @license       GPLv3+
  */
 class LocaleUz extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
-		return 'oʻzbekcha';
+		return 'o‘zbek';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
-		return 'OZBEKCHA';
+		return 'OZBEK';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageUz;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

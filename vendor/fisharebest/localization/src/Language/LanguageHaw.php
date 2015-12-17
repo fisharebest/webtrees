@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryUs;
  * @license   GPLv3+
  */
 class LanguageHaw extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'haw';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryUs;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

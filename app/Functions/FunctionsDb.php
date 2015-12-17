@@ -946,8 +946,8 @@ class FunctionsDb {
 		$where .= " AND d_file=" . $tree->getTreeId();
 
 		// Now fetch these events
-		$ind_sql = "SELECT d_gid AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
-		$fam_sql = "SELECT d_gid AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid=f_id AND d_file=f_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
+		$ind_sql = "SELECT d_gid AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file ORDER BY d_julianday1";
+		$fam_sql = "SELECT d_gid AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid=f_id AND d_file=f_file ORDER BY d_julianday1";
 		foreach (array('INDI' => $ind_sql, 'FAM' => $fam_sql) as $type => $sql) {
 			$rows = Database::prepare($sql)->fetchAll();
 			foreach ($rows as $row) {

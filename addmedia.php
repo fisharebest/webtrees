@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Controller\SimpleController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Query\QueryMedia;
 
@@ -313,7 +314,9 @@ case 'update': // Save the information from the “editmedia” action
 		break;
 	}
 
-	$messages = false;
+	$messages  = false;
+	$move_file = false;
+
 	// Move files on disk (if we can) to reflect the change to the GEDCOM data
 	if (!$media->isExternal()) {
 		$oldServerFile  = $media->getServerFilename('main');
@@ -332,6 +335,7 @@ case 'update': // Save the information from the “editmedia” action
 				break;
 			}
 
+			$move_file = true;
 			if (!file_exists($newServerFile) || md5_file($oldServerFile) === md5_file($newServerFile)) {
 				try {
 					rename($oldServerFile, $newServerFile);
@@ -347,6 +351,7 @@ case 'update': // Save the information from the “editmedia” action
 			}
 		}
 		if ($oldServerThumb != $newServerThumb) {
+			$move_file = true;
 			if (!file_exists($newServerThumb) || md5_file($oldServerFile) == md5_file($newServerThumb)) {
 				try {
 					rename($oldServerThumb, $newServerThumb);
@@ -373,6 +378,12 @@ case 'update': // Save the information from the “editmedia” action
 	$newrec = "0 @$pid@ OBJE\n";
 	$newrec = FunctionsEdit::handleUpdates($newrec);
 	$record->updateRecord($newrec, $update_CHAN);
+
+	if ($move_file) {
+		// We've moved a file.  Therefore we must approve the change, as rejecting
+		// the change will create broken references.
+		FunctionsImport::acceptAllChanges($record->getXref(), $record->getTree()->getTreeId());
+	}
 
 	if ($pid && $linktoid) {
 		$record = GedcomRecord::getInstance($linktoid, $WT_TREE);

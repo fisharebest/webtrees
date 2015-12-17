@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class TerritoryIe extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'IE';
 	}
 
-	/** {@inheritdoc} */
 	public function firstDay() {
 		return 0;
 	}

@@ -1141,9 +1141,10 @@ td.descriptionbox a {
 #login-text,
 #register-text,
 #user-verify {
-	margin: 20px auto;
-	width: 610px;
+	margin: 0 auto;
+	width: 40%;
 	text-align: justify;
+	min-width: 450px;
 }
 
 #login-box,
@@ -1181,7 +1182,6 @@ td.descriptionbox a {
 #new_passwd_form label,
 #verify-form label {
 	display: block;
-	text-align: right;
 }
 
 #login-form label input,
@@ -2479,18 +2479,12 @@ dd .deletelink {
 	list-style-image: url(images/plus.png);
 }
 
-.name_tree_div {
-	display: none;
-}
-
-.name_tree_div ul,
-.name_tree_div_visible ul {
+.name_tree_div ul {
 	padding: 0;
 	margin: 0;
 }
 
-.name_tree_div li,
-.name_tree_div_visible li {
+.name_tree_div li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -3400,6 +3394,11 @@ table.table-census-assistant th {
 	left: 0;
 }
 
+#field_table {
+	width: 30%;
+	min-width: 500px;
+}
+
 /* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {
@@ -4106,7 +4105,10 @@ header h1 {
 	left: auto;
 	right: 0;
 }
-
+.secondary-menu ul li a {
+	display: block;
+	padding: 3px;
+}
 .secondary-menu a {
 	background: none;
 	display: inline;
@@ -5146,8 +5148,9 @@ footer {
     }
 }
 
-/* Mobile low resolution viewport */
-@media (max-width: 600px) {
+/* Mobile low and high resolution viewports */
+@media (max-width: 650px) {
+	/* Primary Menu */
 	.primary-menu > li {
 		min-width: 60px;
 	}
@@ -5171,20 +5174,67 @@ footer {
 	#search-page-table > input {
 		width: 20px;
 	}
+	#field_table {
+		width: 80%;
+		min-width: 380px;
+	}
+	.list_label, .list_value {
+		white-space: normal;
+	}
+	/* Phonetic Search */
+	#search-page-table .label {
+		width: 25%;
+	}
+	/* Login */
+	#register-form div, #verify-form div {
+		text-align: left;
+	}
+	#register-form, #verify-form {
+		width: 95%;
+	}
 }
-@media (max-width: 500px) {
+@media (max-width: 550px) {
+	/* Secondary Menu */
+	.header-logo {
+		height: 70px;
+	}
+	.header-search {
+		display: none;
+	}
+	.secondary-menu {
+		position: absolute;
+		top: 30px;
+		right: 0;
+	}
+	[dir=rtl] .secondary-menu {
+		left: 0px;
+		right: auto;
+	}
+	/* Primary Menu */
 	.primary-menu > li {
 		min-width: 40px;
 		padding: 0;
 	}
-	nav {
+	header nav {
 		font-size: 10px;
 		padding: 0;
 	}
 	.primary-menu > li:hover > ul {
 		top: 65px;
 	}
+	/* Login */
+	#register-form div, #verify-form div {
+		text-align: left;
+	}
+	#register-form, #verify-form {
+		width: auto;
+	}
+	#login-text, #user-verify, #register-text, #user-verify {
+		min-width: auto;
+		width: 100%;
+	}
 }
+
 @media (max-width: 400px) {
 	/* Front Page */
 	#index_main_blocks {
@@ -5225,5 +5275,9 @@ footer {
 	/* Reports */
 	#reportengine-page table {
 		width: 100%;
+	}
+	/* Advanced Search */
+	#field_table {
+		min-width: 100%;
 	}
 }

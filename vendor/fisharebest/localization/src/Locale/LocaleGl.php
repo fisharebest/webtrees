@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageGl;
  * @license       GPLv3+
  */
 class LocaleGl extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'galego';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'GALEGO';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageGl;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

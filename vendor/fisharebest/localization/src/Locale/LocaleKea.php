@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageKea;
  * @license       GPLv3+
  */
 class LocaleKea extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'kabuverdianu';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KABUVERDIANU';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKea;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

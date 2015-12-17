@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptKore extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Kore';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '287';
 	}

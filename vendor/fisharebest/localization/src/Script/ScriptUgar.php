@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptUgar extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Ugar';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '040';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Ugaritic';
 	}

@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageRu;
  * @license       GPLv3+
  */
 class LocaleRu extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'русский';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'РУССКИЙ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageRu;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,
@@ -33,7 +29,6 @@ class LocaleRu extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

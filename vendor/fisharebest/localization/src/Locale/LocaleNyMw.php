@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryMw;
  * @license       GPLv3+
  */
 class LocaleNyMw extends LocaleNy {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryMw;
 	}

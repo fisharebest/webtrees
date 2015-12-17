@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageAz;
  * @license       GPLv3+
  */
 class LocaleAz extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
-		return 'azərbaycan';
+		return 'azərbaycan dili';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
-		return 'AZERBAYCAN';
+		return 'AZERBAYCAN DILI';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageAz;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

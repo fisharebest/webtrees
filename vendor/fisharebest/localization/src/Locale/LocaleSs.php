@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageSs;
  * @license       GPLv3+
  */
 class LocaleSs extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Siswati';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SISWATI';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSs;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

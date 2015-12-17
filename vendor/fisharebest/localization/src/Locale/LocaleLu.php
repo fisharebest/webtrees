@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageLu;
  * @license       GPLv3+
  */
 class LocaleLu extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Tshiluba';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'TSHILUBA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageLu;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

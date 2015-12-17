@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryCn;
  * @license   GPLv3+
  */
 class LanguageUg extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ug';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptArab;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryCn;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}
