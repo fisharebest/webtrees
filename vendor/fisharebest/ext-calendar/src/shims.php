@@ -20,7 +20,7 @@
 
 use Fisharebest\ExtCalendar\Shim;
 
-if (!extension_loaded('calendar')) {
+if (!defined('CAL_GREGORIAN')) {
 	Shim::create();
 
 	define('CAL_GREGORIAN', 0);
