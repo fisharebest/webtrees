@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8aed0b03da9faf40b2ff61517e11bdc0",
-    "content-hash": "0f00ebb424ec681d507fb574cffe9247",
+    "hash": "8b201c8d0b76b5bb1bf0181a015456ad",
+    "content-hash": "b6adcc163b5722648ffbb28673ed9b83",
     "packages": [
         {
             "name": "bombayworks/zendframework1",
@@ -269,6 +269,58 @@
             "time": "2015-11-27 14:25:16"
         },
         {
+            "name": "fisharebest/php-polyfill",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fisharebest/php-polyfill.git",
+                "reference": "5b3e0dfab0d9086d98373bca34daeb52f6c6de47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fisharebest/php-polyfill/zipball/5b3e0dfab0d9086d98373bca34daeb52f6c6de47",
+                "reference": "5b3e0dfab0d9086d98373bca34daeb52f6c6de47",
+                "shasum": ""
+            },
+            "require": {
+                "fisharebest/ext-calendar": "~2.2",
+                "symfony/polyfill": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fisharebest\\PhpPolyfill\\": "src/"
+                },
+                "files": [
+                    "src/bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT and GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Roach",
+                    "email": "fisharebest@gmail.com"
+                }
+            ],
+            "description": "Polyfills for PHP 5.3 onwards",
+            "homepage": "https://github.com/fisharebest/php-polyfill",
+            "keywords": [
+                "compat",
+                "compatibility",
+                "php",
+                "polyfill",
+                "shim"
+            ],
+            "time": "2015-12-18 09:19:37"
+        },
+        {
             "name": "ircmaxell/password-compat",
             "version": "v1.0.4",
             "source": {
@@ -362,63 +414,52 @@
             "time": "2015-03-01 12:03:08"
         },
         {
-            "name": "patchwork/utf8",
-            "version": "v1.3.0",
+            "name": "paragonie/random_compat",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/tchwork/utf8.git",
-                "reference": "3bd61bc162ed5c5f4a11e40a0106acc255b451d9"
+                "url": "https://github.com/paragonie/random_compat.git",
+                "reference": "d762ee5b099a29044603cd4649851e81aa66cb47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchwork/utf8/zipball/3bd61bc162ed5c5f4a11e40a0106acc255b451d9",
-                "reference": "3bd61bc162ed5c5f4a11e40a0106acc255b451d9",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/d762ee5b099a29044603cd4649851e81aa66cb47",
+                "reference": "d762ee5b099a29044603cd4649851e81aa66cb47",
                 "shasum": ""
             },
             "require": {
-                "lib-pcre": ">=7.3",
-                "php": ">=5.3.0"
+                "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*|5.*"
             },
             "suggest": {
-                "ext-iconv": "Use iconv for best performance",
-                "ext-intl": "Use Intl for best performance",
-                "ext-mbstring": "Use Mbstring for best performance",
-                "ext-wfio": "Use WFIO for UTF-8 filesystem access on Windows"
+                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3-dev"
-                }
-            },
             "autoload": {
-                "psr-4": {
-                    "Patchwork\\": "src/Patchwork/"
-                },
-                "classmap": [
-                    "src/Normalizer.php"
+                "files": [
+                    "lib/random.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "(Apache-2.0 or GPL-2.0)"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com"
                 }
             ],
-            "description": "Portable and performant UTF-8, Unicode and Grapheme Clusters for PHP",
-            "homepage": "https://github.com/tchwork/utf8",
+            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
             "keywords": [
-                "grapheme",
-                "i18n",
-                "unicode",
-                "utf-8",
-                "utf8"
+                "csprng",
+                "pseudorandom",
+                "random"
             ],
-            "time": "2015-12-15 15:34:15"
+            "time": "2015-12-10 14:48:13"
         },
         {
             "name": "pclzip/pclzip",
@@ -523,6 +564,167 @@
             ],
             "abandoned": "ramsey/uuid",
             "time": "2015-07-23 19:00:41"
+        },
+        {
+            "name": "symfony/intl",
+            "version": "v2.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/intl.git",
+                "reference": "3317b9125e4da6b5dd3427538a4abe511601f379"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/intl/zipball/3317b9125e4da6b5dd3427538a4abe511601f379",
+                "reference": "3317b9125e4da6b5dd3427538a4abe511601f379",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9",
+                "symfony/polyfill-intl-icu": "~1.0",
+                "symfony/polyfill-php54": "~1.0"
+            },
+            "require-dev": {
+                "symfony/filesystem": "~2.1|~3.0.0"
+            },
+            "suggest": {
+                "ext-intl": "to use the component with locales other than \"en\""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Intl\\": ""
+                },
+                "classmap": [
+                    "Resources/stubs"
+                ],
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                },
+                {
+                    "name": "Eriksen Costa",
+                    "email": "eriksen.costa@infranology.com.br"
+                },
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "A PHP replacement layer for the C intl extension that includes additional data from the ICU library.",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "i18n",
+                "icu",
+                "internationalization",
+                "intl",
+                "l10n",
+                "localization"
+            ],
+            "time": "2015-11-18 13:45:00"
+        },
+        {
+            "name": "symfony/polyfill",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill.git",
+                "reference": "fef21adc706d3bb8f31d37c503ded2160c76c64a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill/zipball/fef21adc706d3bb8f31d37c503ded2160c76c64a",
+                "reference": "fef21adc706d3bb8f31d37c503ded2160c76c64a",
+                "shasum": ""
+            },
+            "require": {
+                "ircmaxell/password-compat": "~1.0",
+                "paragonie/random_compat": "~1.0",
+                "php": ">=5.3.3",
+                "symfony/intl": "~2.3|~3.0"
+            },
+            "replace": {
+                "symfony/polyfill-iconv": "self.version",
+                "symfony/polyfill-intl-grapheme": "self.version",
+                "symfony/polyfill-intl-icu": "self.version",
+                "symfony/polyfill-intl-normalizer": "self.version",
+                "symfony/polyfill-mbstring": "self.version",
+                "symfony/polyfill-php54": "self.version",
+                "symfony/polyfill-php55": "self.version",
+                "symfony/polyfill-php56": "self.version",
+                "symfony/polyfill-php70": "self.version",
+                "symfony/polyfill-util": "self.version",
+                "symfony/polyfill-xml": "self.version"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\": "src/"
+                },
+                "files": [
+                    "src/Php54/bootstrap.php",
+                    "src/Php55/bootstrap.php",
+                    "src/Php56/bootstrap.php",
+                    "src/Php70/bootstrap.php",
+                    "src/Iconv/bootstrap.php",
+                    "src/Intl/Grapheme/bootstrap.php",
+                    "src/Intl/Icu/bootstrap.php",
+                    "src/Intl/Normalizer/bootstrap.php",
+                    "src/Mbstring/bootstrap.php",
+                    "src/Xml/bootstrap.php"
+                ],
+                "classmap": [
+                    "src/Intl/Normalizer/Resources/stubs",
+                    "src/Php70/Resources/stubs",
+                    "src/Php54/Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfills backporting features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compat",
+                "compatibility",
+                "polyfill",
+                "shim"
+            ],
+            "time": "2015-11-04 20:29:00"
         },
         {
             "name": "tecnickcom/tcpdf",
