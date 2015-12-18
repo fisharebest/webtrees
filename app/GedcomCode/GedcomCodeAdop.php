@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * Class GedcomCodeAdop - Functions and logic for GEDCOM "PEDI" codes
+ * Class GedcomCodeAdop - Functions and logic for GEDCOM "ADOP" codes
  */
 class GedcomCodeAdop {
 	/** @var string[] A list of possible adoption codes */
