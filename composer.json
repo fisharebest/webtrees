@@ -18,7 +18,7 @@
 		"michelf/php-markdown": "1.*",
 		"patchwork/utf8": "1.*",
 		"pclzip/pclzip": "2.*",
-		"ramsey/uuid": "2.*",
+		"rhumsaa/uuid": "2.*",
 		"tecnickcom/tcpdf": "6.*"
 	},
 	"require-dev": {
