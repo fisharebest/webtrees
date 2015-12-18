@@ -16501,7 +16501,7 @@ msgstr "Forrásokkal"
 
 #: app/Stats.php:423 app/Stats.php:521
 msgid "Without sources"
-msgstr "Forrás nélkül"
+msgstr "Források nélkül"
 
 #. I18N: gedcom tag _WITN
 #: app/GedcomCode/GedcomCodeRela.php:267 app/GedcomTag.php:1759
