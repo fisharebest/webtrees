@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use PDO;
@@ -50,7 +51,6 @@ $search = Filter::get('search');
 $search = isset($search['value']) ? $search['value'] : null;
 
 $statuses = array(
-	''         => '',
 	'accepted' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('accepted'),
 	'rejected' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('rejected'),
 	'pending'  => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('pending'),
@@ -173,19 +173,56 @@ case 'load_json':
 	}
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$data = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_NUM);
-	foreach ($data as &$datum) {
-		$datum[2] = I18N::translate($datum[2]);
-		$datum[3] = '<a href="gedrecord.php?pid=' . $datum[3] . '&ged=' . $datum[7] . '">' . $datum[3] . '</a>';
-		$datum[4] = '<div class="gedcom-data" dir="ltr">' . Filter::escapeHtml($datum[4]) . '</div>';
-		$datum[5] = '<div class="gedcom-data" dir="ltr">' . Filter::escapeHtml($datum[5]) . '</div>';
-		$datum[6] = Filter::escapeHtml($datum[6]);
-		$datum[7] = Filter::escapeHtml($datum[7]);
-	}
-
+	$rows = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_OBJ);
 	// Total filtered/unfiltered rows
 	$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
 	$recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##change`")->fetchOne();
+
+	$data = array();
+	$algorithm   = new MyersDiff;
+
+	foreach ($rows as $row) {
+		$old_lines = preg_split('/[\n]+/', $row->old_gedcom, -1, PREG_SPLIT_NO_EMPTY);
+		$new_lines = preg_split('/[\n]+/', $row->new_gedcom, -1, PREG_SPLIT_NO_EMPTY);
+
+		$differences = $algorithm->calculate($old_lines, $new_lines);
+		$diff_lines  = array();
+
+		foreach ($differences as $difference) {
+			switch ($difference[1]) {
+				case MyersDiff::DELETE:
+					$diff_lines[] = '<del>' . $difference[0] . '</del>';
+					break;
+				case MyersDiff::INSERT:
+					$diff_lines[] = '<ins>' . $difference[0] . '</ins>';
+					break;
+				default:
+					$diff_lines[] = $difference[0];
+			}
+		}
+
+		// Only convert valid xrefs to links
+		$data[] = array(
+			$row->change_id,
+			$row->change_time,
+			I18N::translate($row->status),
+			GedcomRecord::getInstance($row->xref, Tree::findByName($gedc)) ?
+				"<a href='gedrecord.php?pid={$row->xref}&ged={$row->gedcom_name}'>{$row->xref}</a>" :
+				$row->xref,
+			'<div class="gedcom-data" dir="ltr">' .
+				preg_replace_callback('/@(' . WT_REGEX_XREF . ')@/',
+					function ($match) use ($gedc) {
+						return GedcomRecord::getInstance($match[1], Tree::findByName($gedc)) ?
+							"<a href='#' onclick='return edit_raw(\"{$match[1]}\");'>{$match[0]}</a>" :
+							$match[0];
+					},
+					implode("\n", $diff_lines)
+				) .
+			'</div>',
+			$row->user_name,
+			$row->gedcom_name,
+		);
+	}
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
@@ -218,17 +255,17 @@ $controller
 			/* Timestamp   */ { sort: 0 },
 			/* Status      */ { },
 			/* Record      */ { },
-			/* Old data    */ { sortable: false },
-			/* New data    */ { sortable: false },
+			/* Data        */ {sortable: false},
 			/* User        */ { },
 			/* Family tree */ { }
 			]
 		});
-		jQuery("#from,#to").parent("div").datetimepicker({
+		jQuery("#from, #to").parent("div").datetimepicker({
 			format: "YYYY-MM-DD",
 			minDate: "' . $earliest . '",
 			maxDate: "' . $latest . '",
 			locale: "' . WT_LOCALE . '",
+			useCurrent: false,
 			icons: {
 				time: "fa fa-clock-o",
 				date: "fa fa-calendar",
@@ -241,16 +278,6 @@ $controller
 			}
 		});
 	');
-
-$url =
-	WT_SCRIPT_NAME . '?from=' . rawurlencode($from) .
-	'&amp;to=' . rawurlencode($to) .
-	'&amp;type=' . rawurlencode($type) .
-	'&amp;oldged=' . rawurlencode($oldged) .
-	'&amp;newged=' . rawurlencode($newged) .
-	'&amp;xref=' . rawurlencode($xref) .
-	'&amp;user=' . rawurlencode($user) .
-	'&amp;gedc=' . rawurlencode($gedc);
 
 $users_array = array();
 foreach (User::all() as $tmp_user) {
@@ -294,11 +321,11 @@ foreach (User::all() as $tmp_user) {
 			<label for="type">
 				<?php echo I18N::translate('Status'); ?>
 			</label>
-			<?php echo FunctionsEdit::selectEditControl('type', $statuses, null, $type, 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('type', $statuses, '', $type, 'class="form-control"'); ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
-			<label for="text">
+			<label for="xref">
 				<?php echo I18N::translate('Record'); ?>
 			</label>
 			<input class="form-control" type="text" id="xref" name="xref" value="<?php echo Filter::escapeHtml($xref); ?>">
@@ -307,14 +334,14 @@ foreach (User::all() as $tmp_user) {
 
 	<div class="row">
 		<div class="form-group col-xs-6 col-md-3">
-			<label for="text">
+			<label for="oldged">
 				<?php echo I18N::translate('Old data'); ?>
 			</label>
 			<input class="form-control" type="text" id="oldged" name="oldged" value="<?php echo Filter::escapeHtml($oldged); ?>">
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
-			<label for="text">
+			<label for="newged">
 				<?php echo I18N::translate('New data'); ?>
 			</label>
 			<input class="form-control" type="text" id="newged" name="newged" value="<?php echo Filter::escapeHtml($newged); ?>">
@@ -344,7 +371,6 @@ foreach (User::all() as $tmp_user) {
 			<?php echo I18N::translate('Export'); ?>
 		</button>
 
-
 		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo I18N::translate('Permanently delete these records?'); ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
 			<?php echo I18N::translate('Delete'); ?>
 		</button>
@@ -353,19 +379,19 @@ foreach (User::all() as $tmp_user) {
 
 <?php if ($action): ?>
 <table class="table table-bordered table-condensed table-hover table-site-changes">
+	<caption class="sr-only">
+		<?php echo $controller->getPageTitle(); ?>
+	</caption>
 	<thead>
 		<tr>
 			<th></th>
 			<th><?php echo I18N::translate('Timestamp'); ?></th>
 			<th><?php echo I18N::translate('Status'); ?></th>
 			<th><?php echo I18N::translate('Record'); ?></th>
-			<th><?php echo I18N::translate('Old data'); ?></th>
-			<th><?php echo I18N::translate('New data'); ?></th>
+			<th><?php echo I18N::translate('Data'); ?></th>
 			<th><?php echo I18N::translate('User'); ?></th>
 			<th><?php echo I18N::translate('Family tree'); ?></th>
 		</tr>
 	</thead>
-	<tbody>
-	</tbody>
 </table>
 <?php endif; ?>
