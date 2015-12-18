@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2013 Nicolas Grekas - p@tchwork.com
+ * Copyright (C) 2016 Nicolas Grekas - p@tchwork.com
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the (at your option):
@@ -24,6 +24,8 @@ namespace Patchwork\PHP\Shim;
  * - grapheme_strrpos  - Find position (in grapheme units) of last occurrence of a string
  * - grapheme_strstr   - Returns part of haystack string from the first occurrence of needle to the end of haystack
  * - grapheme_substr   - Return part of a string
+ *
+ * @internal
  */
 class Intl
 {
@@ -47,8 +49,8 @@ class Intl
         } else {
             $s = substr($s, $start);
         }
-        $size  = (int) $size;
-        $type  = (int) $type;
+        $size = (int) $size;
+        $type = (int) $type;
         $start = (int) $start;
 
         if (!isset($s[0]) || 0 > $size || 0 > $start || 0 > $type || 2 < $type) {
@@ -174,28 +176,33 @@ class Intl
     {
         return self::grapheme_position($s, $needle, $offset, 0);
     }
+
     public static function grapheme_stripos($s, $needle, $offset = 0)
     {
         return self::grapheme_position($s, $needle, $offset, 1);
     }
+
     public static function grapheme_strrpos($s, $needle, $offset = 0)
     {
         return self::grapheme_position($s, $needle, $offset, 2);
     }
+
     public static function grapheme_strripos($s, $needle, $offset = 0)
     {
         return self::grapheme_position($s, $needle, $offset, 3);
     }
-    public static function grapheme_stristr($s, $needle, $before_needle = false)
+
+    public static function grapheme_stristr($s, $needle, $beforeNeedle = false)
     {
-        return mb_stristr($s, $needle, $before_needle, 'UTF-8');
-    }
-    public static function grapheme_strstr($s, $needle, $before_needle = false)
-    {
-        return mb_strstr($s, $needle, $before_needle, 'UTF-8');
+        return mb_stristr($s, $needle, $beforeNeedle, 'UTF-8');
     }
 
-    protected static function grapheme_position($s, $needle, $offset, $mode)
+    public static function grapheme_strstr($s, $needle, $beforeNeedle = false)
+    {
+        return mb_strstr($s, $needle, $beforeNeedle, 'UTF-8');
+    }
+
+    private static function grapheme_position($s, $needle, $offset, $mode)
     {
         if (!preg_match('/./us', $needle .= '')) {
             return false;

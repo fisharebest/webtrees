@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2013 Nicolas Grekas - p@tchwork.com
+ * Copyright (C) 2016 Nicolas Grekas - p@tchwork.com
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the (at your option):
@@ -17,15 +17,15 @@ const GRAPHEME_EXTR_MAXCHARS = 2;
 
 @trigger_error('You are using a fallback implementation of the intl extension. Installing the native one is highly recommended instead.', E_USER_DEPRECATED);
 
-function normalizer_is_normalized($s, $form = s\Normalizer::NFC) {return s\Normalizer::isNormalized($s, $form);};
-function normalizer_normalize($s, $form = s\Normalizer::NFC) {return s\Normalizer::normalize($s, $form);};
+function normalizer_is_normalized($s, $form = s\Normalizer::NFC) {return s\Normalizer::isNormalized($s, $form);}
+function normalizer_normalize($s, $form = s\Normalizer::NFC) {return s\Normalizer::normalize($s, $form);}
 
-function grapheme_extract($s, $size, $type = 0, $start = 0, &$next = 0) {return s\Intl::grapheme_extract($s, $size, $type, $start, $next);};
-function grapheme_stripos($s, $needle, $offset = 0) {return s\Intl::grapheme_stripos($s, $needle, $offset);};
-function grapheme_stristr($s, $needle, $before_needle = false) {return s\Intl::grapheme_stristr($s, $needle, $before_needle);};
-function grapheme_strlen($s) {return s\Intl::grapheme_strlen($s);};
-function grapheme_strpos($s, $needle, $offset = 0) {return s\Intl::grapheme_strpos($s, $needle, $offset);};
-function grapheme_strripos($s, $needle, $offset = 0) {return s\Intl::grapheme_strripos($s, $needle, $offset);};
-function grapheme_strrpos($s, $needle, $offset = 0) {return s\Intl::grapheme_strrpos($s, $needle, $offset);};
-function grapheme_strstr($s, $needle, $before_needle = false) {return s\Intl::grapheme_strstr($s, $needle, $before_needle);};
-function grapheme_substr($s, $start, $len = 2147483647) {return s\Intl::grapheme_substr($s, $start, $len);};
+function grapheme_extract($s, $size, $type = 0, $start = 0, &$next = 0) {return s\Intl::grapheme_extract($s, $size, $type, $start, $next);}
+function grapheme_stripos($s, $needle, $offset = 0) {return s\Intl::grapheme_stripos($s, $needle, $offset);}
+function grapheme_stristr($s, $needle, $before_needle = false) {return s\Intl::grapheme_stristr($s, $needle, $before_needle);}
+function grapheme_strlen($s) {return s\Intl::grapheme_strlen($s);}
+function grapheme_strpos($s, $needle, $offset = 0) {return s\Intl::grapheme_strpos($s, $needle, $offset);}
+function grapheme_strripos($s, $needle, $offset = 0) {return s\Intl::grapheme_strripos($s, $needle, $offset);}
+function grapheme_strrpos($s, $needle, $offset = 0) {return s\Intl::grapheme_strrpos($s, $needle, $offset);}
+function grapheme_strstr($s, $needle, $before_needle = false) {return s\Intl::grapheme_strstr($s, $needle, $before_needle);}
+function grapheme_substr($s, $start, $len = 2147483647) {return s\Intl::grapheme_substr($s, $start, $len);}

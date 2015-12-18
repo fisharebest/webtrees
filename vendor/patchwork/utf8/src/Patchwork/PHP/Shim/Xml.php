@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2013 Nicolas Grekas - p@tchwork.com
+ * Copyright (C) 2016 Nicolas Grekas - p@tchwork.com
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the (at your option):
@@ -12,7 +12,7 @@
 namespace Patchwork\PHP\Shim;
 
 /**
- * utf8_encode/decode.
+ * @internal
  */
 class Xml
 {
@@ -25,7 +25,7 @@ class Xml
             switch (true) {
                 case $s[$i] < "\x80": $s[$j] = $s[$i]; break;
                 case $s[$i] < "\xC0": $s[$j] = "\xC2"; $s[++$j] = $s[$i]; break;
-                default:              $s[$j] = "\xC3"; $s[++$j] = chr(ord($s[$i]) - 64); break;
+                default: $s[$j] = "\xC3"; $s[++$j] = chr(ord($s[$i]) - 64); break;
             }
         }
 
