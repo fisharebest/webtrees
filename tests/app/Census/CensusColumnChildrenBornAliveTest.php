@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
@@ -74,11 +73,11 @@ class CensusColumnChildrenBornAliveTest extends \PHPUnit_Framework_TestCase {
 		$child4->shouldReceive('getDeathDate')->andReturn(new Date(''));
 
 		$family = Mockery::mock(Family::class);
-		$family->shouldReceive('getChildren')->andReturn([$child1, $child2, $child3, $child4]);
+		$family->shouldReceive('getChildren')->andReturn(array($child1, $child2, $child3, $child4));
 
 		$individual = Mockery::mock(Individual::class);
 		$individual->shouldReceive('getSex')->andReturn('F');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('30 MAR 1911');

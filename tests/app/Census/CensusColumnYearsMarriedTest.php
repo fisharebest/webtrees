@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
@@ -40,7 +39,7 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNoSpouseFamily() {
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getSpouseFamilies')->andReturn([]);
+		$individual->shouldReceive('getSpouseFamilies')->andReturn(array());
 
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
@@ -56,10 +55,10 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNoMarriage() {
 		$family = Mockery::mock(Family::class);
-		$family->shouldReceive('getFacts')->with('MARR', true)->andReturn([]);
+		$family->shouldReceive('getFacts')->with('MARR', true)->andReturn(array());
 
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
@@ -78,10 +77,10 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
 		$fact->shouldReceive('getDate')->andReturn(new Date(''));
 
 		$family = Mockery::mock(Family::class);
-		$family->shouldReceive('getFacts')->with('MARR', true)->andReturn([$fact]);
+		$family->shouldReceive('getFacts')->with('MARR', true)->andReturn(array($fact));
 
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
@@ -100,10 +99,10 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
 		$fact->shouldReceive('getDate')->andReturn(new Date('1861'));
 
 		$family = Mockery::mock(Family::class);
-		$family->shouldReceive('getFacts')->with('MARR', true)->andReturn([$fact]);
+		$family->shouldReceive('getFacts')->with('MARR', true)->andReturn(array($fact));
 
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
@@ -122,10 +121,10 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
 		$fact->shouldReceive('getDate')->andReturn(new Date('OCT 1851'));
 
 		$family = Mockery::mock(Family::class);
-		$family->shouldReceive('getFacts')->with('MARR', true)->andReturn([$fact]);
+		$family->shouldReceive('getFacts')->with('MARR', true)->andReturn(array($fact));
 
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');

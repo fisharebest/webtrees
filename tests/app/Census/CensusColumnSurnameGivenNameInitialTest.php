@@ -14,10 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 use Mockery;
 
@@ -38,7 +36,7 @@ class CensusColumnSurnameGivenNameInitialTest extends \PHPUnit_Framework_TestCas
 	 */
 	public function testOneGivenName() {
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe', 'surn' => 'Sixpack']]);
+		$individual->shouldReceive('getAllNames')->andReturn(array(array('givn' => 'Joe', 'surn' => 'Sixpack')));
 
 		$census = Mockery::mock(CensusInterface::class);
 
@@ -53,7 +51,7 @@ class CensusColumnSurnameGivenNameInitialTest extends \PHPUnit_Framework_TestCas
 	 */
 	public function testMultipleGivenNames() {
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe Fred', 'surn' => 'Sixpack']]);
+		$individual->shouldReceive('getAllNames')->andReturn(array(array('givn' => 'Joe Fred', 'surn' => 'Sixpack')));
 
 		$census = Mockery::mock(CensusInterface::class);
 
@@ -68,7 +66,7 @@ class CensusColumnSurnameGivenNameInitialTest extends \PHPUnit_Framework_TestCas
 	 */
 	public function testNoName() {
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getAllNames')->andReturn([]);
+		$individual->shouldReceive('getAllNames')->andReturn(array());
 
 		$census = Mockery::mock(CensusInterface::class);
 

@@ -2162,7 +2162,7 @@ class FunctionsPrintLists {
 	/**
 	 * Print a chart by age using Google chart API
 	 *
-	 * @param integer[] $data
+	 * @param int[] $data
 	 * @param string $title
 	 *
 	 * @return string
@@ -2233,7 +2233,7 @@ class FunctionsPrintLists {
 	/**
 	 * Print a chart by decade using Google chart API
 	 *
-	 * @param integer[] $data
+	 * @param int[] $data
 	 * @param string $title
 	 *
 	 * @return string

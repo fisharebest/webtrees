@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
@@ -40,7 +39,7 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNoSpouseFamilies() {
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getSpouseFamilies')->andReturn([]);
+		$individual->shouldReceive('getSpouseFamilies')->andReturn(array());
 
 		$census = Mockery::mock(CensusInterface::class);
 
@@ -56,10 +55,10 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 	public function testNoFamilyNoFacts() {
 		$family = Mockery::mock(Family::class);
 		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->andReturn([]);
+		$family->shouldReceive('getFacts')->andReturn(array());
 
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
 		$census = Mockery::mock(CensusInterface::class);
 
@@ -78,10 +77,10 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 
 		$family = Mockery::mock(Family::class);
 		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->with('_NMR')->andReturn([$fact]);
+		$family->shouldReceive('getFacts')->with('_NMR')->andReturn(array($fact));
 
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
 		$census = Mockery::mock(CensusInterface::class);
 
@@ -100,11 +99,11 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 
 		$family = Mockery::mock(Family::class);
 		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->with('_NMR')->andReturn([]);
-		$family->shouldReceive('getFacts')->with('DIV')->andReturn([$fact]);
+		$family->shouldReceive('getFacts')->with('_NMR')->andReturn(array());
+		$family->shouldReceive('getFacts')->with('DIV')->andReturn(array($fact));
 
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
+		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
 		$census = Mockery::mock(CensusInterface::class);
 

@@ -32,10 +32,10 @@ class Tree {
 	/** @var string The tree's title */
 	private $title;
 
-	/** @var integer[] Default access rules for facts in this tree */
+	/** @var int[] Default access rules for facts in this tree */
 	private $fact_privacy;
 
-	/** @var integer[] Default access rules for individuals in this tree */
+	/** @var int[] Default access rules for individuals in this tree */
 	private $individual_privacy;
 
 	/** @var integer[][] Default access rules for individual facts in this tree */
@@ -149,7 +149,7 @@ class Tree {
 	/**
 	 * The fact-level privacy for this tree.
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public function getFactPrivacy() {
 		return $this->fact_privacy;
@@ -158,7 +158,7 @@ class Tree {
 	/**
 	 * The individual-level privacy for this tree.
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public function getIndividualPrivacy() {
 		return $this->individual_privacy;

@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\I18N;
  * Definitions for the Jewish calendar
  */
 class JewishDate extends CalendarDate {
-	/** @var integer[] Convert GEDCOM month names to month numbers  */
+	/** @var int[] Convert GEDCOM month names to month numbers  */
 	public static $MONTH_ABBREV = array('' => 0, 'TSH' => 1, 'CSH' => 2, 'KSL' => 3, 'TVT' => 4, 'SHV' => 5, 'ADR' => 6, 'ADS' => 7, 'NSN' => 8, 'IYR' => 9, 'SVN' => 10, 'TMZ' => 11, 'AAV' => 12, 'ELL' => 13);
 
 	/**
@@ -247,7 +247,7 @@ class JewishDate extends CalendarDate {
 	/**
 	 * Which months follows this one?  Calendars with leap-months should provide their own implementation.
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	protected function nextMonth() {
 		if ($this->m == 6 && !$this->isLeapYear()) {

@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
@@ -41,7 +40,7 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 	public function testPlaceCountry() {
 		$individual = Mockery::mock(Individual::class);
 		$individual->shouldReceive('getBirthPlace')->andReturn('Australia');
-		$individual->shouldReceive('getFacts')->andReturn([]);
+		$individual->shouldReceive('getFacts')->andReturn(array());
 
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('England');
@@ -58,7 +57,7 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 	public function testBritish() {
 		$individual = Mockery::mock(Individual::class);
 		$individual->shouldReceive('getBirthPlace')->andReturn('London, England');
-		$individual->shouldReceive('getFacts')->andReturn([]);
+		$individual->shouldReceive('getFacts')->andReturn(array());
 
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('England');
@@ -89,7 +88,7 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 
 		$individual = Mockery::mock(Individual::class);
 		$individual->shouldReceive('getBirthPlace')->andReturn('London, England');
-		$individual->shouldReceive('getFacts')->andReturn([$fact1, $fact2]);
+		$individual->shouldReceive('getFacts')->andReturn(array($fact1, $fact2));
 
 		$census = Mockery::mock(CensusInterface::class);
 		$census->shouldReceive('censusPlace')->andReturn('England');

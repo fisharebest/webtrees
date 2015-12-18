@@ -14,10 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Mockery;
@@ -39,7 +37,7 @@ class CensusColumnOccupationTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNoOccupation() {
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getFacts')->withArgs(['OCCU'])->andReturn([]);
+		$individual->shouldReceive('getFacts')->withArgs(array('OCCU'))->andReturn(array());
 
 		$census = Mockery::mock(CensusInterface::class);
 
@@ -57,7 +55,7 @@ class CensusColumnOccupationTest extends \PHPUnit_Framework_TestCase {
 		$fact->shouldReceive('getValue')->andReturn('Farmer');
 
 		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getFacts')->withArgs(['OCCU'])->andReturn([$fact]);
+		$individual->shouldReceive('getFacts')->withArgs(array('OCCU'))->andReturn(array($fact));
 
 		$census = Mockery::mock(CensusInterface::class);
 
