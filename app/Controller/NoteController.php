@@ -27,18 +27,6 @@ use Fisharebest\Webtrees\Note;
  */
 class NoteController extends GedcomRecordController {
 	/**
-	 * Startup activity
-	 */
-	public function __construct() {
-		global $WT_TREE;
-
-		$xref         = Filter::get('nid', WT_REGEX_XREF);
-		$this->record = Note::getInstance($xref, $WT_TREE);
-
-		parent::__construct();
-	}
-
-	/**
 	 * get edit menu
 	 */
 	public function getEditMenu() {

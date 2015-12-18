@@ -27,18 +27,6 @@ use Fisharebest\Webtrees\Repository;
  */
 class RepositoryController extends GedcomRecordController {
 	/**
-	 * Startup activity
-	 */
-	public function __construct() {
-		global $WT_TREE;
-
-		$xref         = Filter::get('rid', WT_REGEX_XREF);
-		$this->record = Repository::getInstance($xref, $WT_TREE);
-
-		parent::__construct();
-	}
-
-	/**
 	 * get edit menu
 	 */
 	public function getEditMenu() {

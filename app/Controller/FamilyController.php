@@ -31,18 +31,6 @@ use Fisharebest\Webtrees\Module;
  */
 class FamilyController extends GedcomRecordController {
 	/**
-	 * Startup activity
-	 */
-	public function __construct() {
-		global $WT_TREE;
-
-		$xref         = Filter::get('famid', WT_REGEX_XREF);
-		$this->record = Family::getInstance($xref, $WT_TREE);
-
-		parent::__construct();
-	}
-
-	/**
 	 * Get significant information from this page, to allow other pages such as
 	 * charts and reports to initialise with the same records
 	 *

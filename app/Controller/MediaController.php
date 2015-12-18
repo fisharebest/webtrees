@@ -29,18 +29,6 @@ use Fisharebest\Webtrees\Module;
  */
 class MediaController extends GedcomRecordController {
 	/**
-	 * Startup activity
-	 */
-	public function __construct() {
-		global $WT_TREE;
-
-		$xref         = Filter::get('mid', WT_REGEX_XREF);
-		$this->record = Media::getInstance($xref, $WT_TREE);
-
-		parent::__construct();
-	}
-
-	/**
 	 * get edit menu
 	 */
 	public function getEditMenu() {

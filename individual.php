@@ -18,17 +18,24 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
- * @global Tree   $WT_TREE
+ * @global Tree $WT_TREE
  */
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\IndividualController;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
-$controller = new IndividualController;
+
+$pid = Filter::get('pid', WT_REGEX_XREF);
+$record = Individual::getInstance($pid, $WT_TREE);
+if (!$record && $WT_TREE->getPreference('USE_RIN')) {
+	$record = Individual::getInstance(FunctionsDb::findRin($pid), $WT_TREE);
+}
+$controller = new IndividualController($record);
 
 if ($controller->record && $controller->record->canShow()) {
 	if (Filter::get('action') == 'ajax') {

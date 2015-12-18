@@ -4404,7 +4404,8 @@ footer {
 	background-position:center -560px;
 }
 
-.menu-indi {
+.menu-indi,
+.menu-record {
 	background-position:center -630px;
 }
 
@@ -4705,11 +4706,13 @@ footer {
 	background-position: right -690px;
 }
 
-.menu-indi-addfav {
+.menu-indi-addfav,
+.menu-record-addfav {
 	background-position: left -870px;
 }
 
-[dir=rtl] .menu-indi-addfav {
+[dir=rtl] .menu-indi-addfav,
+[dir=rtl] .menu-record-addfav {
 	background-position: right -870px;
 }
 
@@ -4721,15 +4724,18 @@ footer {
 	background-position: right -780px;
 }
 
-.menu-indi-del {
+.menu-indi-del,
+.menu-record-del {
 	background-position: left -840px;
 }
 
-[dir=rtl] .menu-indi-del {
+[dir=rtl] .menu-indi-del,
+[dir=rtl] .menu-record-del {
 	background-position: right -840px;
 }
 
-.menu-indi-editraw {
+.menu-indi-editraw,
+.menu-record-editraw {
 	background-position: left -750px;
 }
 
