@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 define('WT_SCRIPT_NAME', 'family.php');
 require './includes/session.php';
 
-$record = Family::getInstance(Filter::get('fid', WT_REGEX_XREF), $WT_TREE);
+$record = Family::getInstance(Filter::get('famid', WT_REGEX_XREF), $WT_TREE);
 $controller = new FamilyController($record);
 
 if ($controller->record && $controller->record->canShow()) {
