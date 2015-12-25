@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-10-24 06:53+0100\n"
-"Last-Translator: Andi Muhammad Sabry <sabry_g90@yahoo.com>\n"
+"PO-Revision-Date: 2015-12-25 04:20+0100\n"
+"Last-Translator: Dzulfikri Al Mutawadli <akhi_dzulfi@yahoo.com>\n"
 "Language-Team: Indonesian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
 "Language: id\n"
@@ -77,19 +77,19 @@ msgstr "%1$s %2$s mempunyai  %3$s tautan ke %4$s."
 #: app/Functions/Functions.php:2151
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s %2$s kali turunan terhapus"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s %2$s kali turunan terhapus"
 
 #: app/Controller/IndividualController.php:204 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1633
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:317
@@ -149,21 +149,21 @@ msgstr "%1$s adalah %2$s tetapi %3$s diharapkan."
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:634
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:664
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:492 app/Media.php:386
@@ -181,7 +181,7 @@ msgstr "%1$s–%2$s"
 #: app/Functions/Functions.php:2173
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s’s %2$s"
 
 #. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: app/I18N.php:815
@@ -209,13 +209,13 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:194
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s dan nenek moyangnya"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:196
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s dan nenek moyangnya"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:280
