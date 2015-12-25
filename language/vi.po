@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-03-16 09:03+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Vietnamese <http://translate.webtrees.net/projects/webtrees/webtrees/vi/>\n"
+"PO-Revision-Date: 2015-12-25 14:40+0800\n"
+"Last-Translator: detran <trande@gmail.com>\n"
+"Language-Team: Vietnamese "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -204,31 +205,31 @@ msgstr "%s KB"
 #: app/Module/ClippingsCartModule.php:194
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s và tổ tiên của bà"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:196
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s và tổ tiên của ông"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:280
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s và các cá nhân tham chiếu đến."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s và con cái của họ"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:124
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s các hậu duệ của họ"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5953
 #, php-format
@@ -259,13 +260,13 @@ msgstr[0] "%s ngày qua"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
+msgstr[0] "%s gia đình đã được cập nhật"
 
 #: admin.php:798
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
+msgstr[0] "%s cây gia đình"
 
 #: app/Stats.php:5261 app/Stats.php:5265
 #, php-format
@@ -289,7 +290,7 @@ msgstr[0] "%s người"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
+msgstr[0] "%s cá nhân đã được cập nhật."
 
 #: app/Module/GoogleMapsModule.php:896
 #, php-format
@@ -301,19 +302,19 @@ msgstr[0] "%s người riêng tư"
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
+msgstr[0] "%s cá nhân với sự kiện giữa %s và %s"
 
 #: app/Controller/LifespanController.php:246
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
+msgstr[0] "%s cá nhân với các sự kiện vào %s"
 
 #: app/Controller/LifespanController.php:239
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
+msgstr[0] "%s cá nhân với các sự kiện vào %s giữa %s và %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:117
@@ -357,7 +358,7 @@ msgstr[0] "%s tháng qua"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
+msgstr[0] "%s ghi chú đã được cập nhật."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2127
@@ -381,7 +382,7 @@ msgstr[0] "%s giây qua"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
+msgstr[0] "%s nguồn đã được cập nhật."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2143
@@ -468,49 +469,49 @@ msgstr "%s&nbsp;CE"
 #: app/Module/ClippingsCartModule.php:212
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, các tổ tiên và gia đình của bà"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:166
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, cha mẹ và anh em của cha mẹ của bà"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:180
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, chồng và con của bà"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:230
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, các chồng, con của bà"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:214
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, tổ tiên và gia đình tổ tiên của ông"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:168
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, cha mẹ và anh em của cha mẹ của ông"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:182
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, các hôn thê và con cái của các hôn thê của ông"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:232
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, các hôn thê và con cháu của hôn thể của ông"
 
 #: app/Functions/FunctionsPrint.php:622 app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
@@ -724,11 +725,11 @@ msgstr "Máy chủ CSDL có thể lưu trữ nhiề CSDL riêng biệt. Bạn c�
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
-msgstr ""
+msgstr "Một tập tin ở máy phục vụ"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:211
 msgid "A file on your computer"
-msgstr ""
+msgstr "Một tập tin ở máy bàn của bạn "
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:33
@@ -1373,7 +1374,7 @@ msgstr "Thêm các câu chuyện kể về các cá nhân trong cây gia đình.
 
 #: admin_trees_manage.php:279
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Thêm khoảng cách nơi câu dài bị cuốn"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:381
@@ -1402,7 +1403,7 @@ msgstr "Thêm vào mục ưa thích"
 #: app/Module/ClippingsCartModule.php:403
 #: app/Module/ClippingsCartModule.php:498
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Thêm các đoạn nhớ vào xe"
 
 #: admin_trees_manage.php:527
 msgid "Add unlinked records"
@@ -1632,6 +1633,7 @@ msgstr "Châu Phi"
 #: admin_trees_manage.php:678
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr ""
+"Sau khi tạo cây gia đình, bạn có thể nhập dữ liệu từ tập tin GEDCOM vào. "
 
 #: login.php:233
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
@@ -1764,7 +1766,7 @@ msgstr "Mọi nguời dùng PhpGedView đang có phải có địa chỉ email k
 
 #: admin_trees_config.php:568
 msgid "All facts and events"
-msgstr ""
+msgstr "Mọi dữ liệu và sự kiện "
 
 #: admin_trees_config.php:1840
 msgid "All family facts"
@@ -1789,7 +1791,7 @@ msgstr "Mọi Người"
 
 #: admin_trees_config.php:559
 msgid "All records"
-msgstr ""
+msgstr "Tất cả bản ghi "
 
 #: admin_trees_config.php:2047
 msgid "All repository facts"
@@ -1817,7 +1819,7 @@ msgstr "Cho phép người dùng chọn chủ để theo ý mình"
 #. I18N: A site configuration setting
 #: admin_site_config.php:484
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Cho phép khách thăm yêu cầu một tài khoản người dùng "
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:963
@@ -1843,6 +1845,8 @@ msgstr "Amerikan Samoa"
 #: admin_site_config.php:491
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
 msgstr ""
+"Một quản trị viên của site phải chấp thuận tài khoản người dùng mới và chọn "
+"cấp độ truy cập khi người dùng này đăng nhập. "
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
@@ -1989,12 +1993,12 @@ msgstr "Có áp dụng thiết đặt riêng tư không"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2279
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Áp dụng các tùy chọn này cho mọi cây gia đình "
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2286
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Áp dụng các tùy chọn này cho các cây gia đình mới "
 
 #: admin_users.php:100
 #, php-format
@@ -2310,6 +2314,7 @@ msgstr "Số con trung bình trong mỗi gia đình"
 #: admin_trees_config.php:632 admin_trees_manage.php:667
 msgid "Avoid spaces and punctuation.  A family name might be a good choice."
 msgstr ""
+"Tránh khoảng cách và dấu văn phạm. Một tên gia đình có thể là cách chọn tốt. "
 
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
@@ -3178,7 +3183,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:364
 msgid "Calculating…"
-msgstr ""
+msgstr "Đang tính toán... "
 
 #: app/Module/YahrzeitModule.php:280 app/Theme/AbstractTheme.php:1003
 #: lifespan.php:90
@@ -3268,7 +3273,7 @@ msgstr "Lý do chết"
 
 #: admin_trees_manage.php:754 admin_trees_renumber.php:286
 msgid "Caution!  This may take a long time.  Be patient."
-msgstr ""
+msgstr "Cẩn trọng! Việc này có thể lâu lắc. Hãy kiên nhẫn."
 
 #: admin_site_upgrade.php:200
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3354,15 +3359,15 @@ msgstr "Ðổi ngôn ngữ"
 
 #: admin_users.php:217
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Đổi các khối ở người dùng này sang \"Trang của tôi\""
 
 #: admin_trees_manage.php:405 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Đổi các khối \"Trang nhà\" "
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Đổi các khối \"Trang của tôi\""
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Functions/FunctionsPrintLists.php:1770
@@ -3380,10 +3385,10 @@ msgstr "Các thay đổi"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:80
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Thay đổi %s ngày gần đây nhât"
+msgstr[0] "Thay đổi %s ngày gần đây nhất"
 
 #: admin_trees_manage.php:516
 msgid "Changes log"
@@ -3814,7 +3819,7 @@ msgstr "Completed; date unknown"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Nén tập tin GEDCOM "
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
@@ -3860,7 +3865,7 @@ msgstr "Thông tin liên hệ"
 
 #: edituser.php:291
 msgid "Contact method"
-msgstr ""
+msgstr "Phương pháp liên hệ"
 
 #: search_advanced.php:156 search_advanced.php:218 search_advanced.php:233
 #: search_advanced.php:255 search_advanced.php:270
@@ -3900,7 +3905,7 @@ msgstr "Tiếp tục"
 #: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
 #: app/Theme/AbstractTheme.php:1234 app/Theme/AdministrationTheme.php:234
 msgid "Control panel"
-msgstr ""
+msgstr "Bảng điều khiển"
 
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:378
 #: app/Module/ClippingsCartModule.php:714
@@ -3927,7 +3932,7 @@ msgstr "Chép"
 #: admin_trees_merge.php:195
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Sao chép tất cả bản ghi từ %1$s vào %2$s."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:431
@@ -4032,7 +4037,7 @@ msgstr "Tạo nguồn mới"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Tạo một qui luât truy cập website "
 
 #: statistics.php:430
 msgid "Create your own chart"
@@ -4041,6 +4046,8 @@ msgstr "Tạo biểu đồ của bạn"
 #: admin_trees_manage.php:744
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
+"Tạo, cập nhật và xóa bỏ cây gia đình cho từng tập tin GEDCOM ở thư mục số "
+"liệu. "
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:330 modules_v3/family_group_report/report.xml:315
@@ -4215,7 +4222,7 @@ msgstr "Văn bản chào riêng"
 
 #: app/Theme/AbstractTheme.php:1020 app/Theme/AbstractTheme.php:1022
 msgid "Customize this page"
-msgstr ""
+msgstr "Tùy biến trang này "
 
 #: app/Stats.php:6782
 msgid "Cyprus"
@@ -4246,7 +4253,7 @@ msgstr "Dallas, Texas"
 #. I18N: A summary of the system status
 #: admin.php:424
 msgid "Dashboard"
-msgstr ""
+msgstr "Bảng thao tác "
 
 #. I18N: gedcom tag DATA
 #: app/GedcomTag.php:342
@@ -4909,7 +4916,7 @@ msgstr "Xóa bỏ tập tin tạm…"
 
 #: admin_modules.php:98
 msgid "Delete the preferences for this module."
-msgstr ""
+msgstr "Xóa tham chiếu cho mô đun này "
 
 #: app/Controller/IndividualController.php:176
 msgid "Delete this name"
@@ -4917,7 +4924,7 @@ msgstr "Xóa tên"
 
 #: edituser.php:318
 msgid "Delete your account"
-msgstr ""
+msgstr "Xóa tài khoản của bạn "
 
 #: app/Controller/FamilyController.php:111
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -5003,6 +5010,8 @@ msgstr "Chi tiết"
 #: admin_site_config.php:490
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr ""
+"Chi tiết của người dùng mới này sẽ được gửi cho người liên hệ về gia phải để "
+"trao đổi về cây gia đình "
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Detroit, Michigan"
@@ -5316,7 +5325,7 @@ msgstr "Sửa mục FAQ"
 
 #: admin_site_access.php:216
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Chỉnh sửa một qui luật truy cập website "
 
 #: app/Controller/MediaController.php:149
 msgid "Edit details"
@@ -5383,7 +5392,7 @@ msgstr "Sửa người này và thay thế chi tiết của họ bằng chi ti�
 
 #: admin_users.php:273
 msgid "Edit user"
-msgstr ""
+msgstr "Chỉnh sửa người dùng "
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:544
@@ -5681,7 +5690,7 @@ msgstr "Xuất"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Xuất ra tập tin GEDCOM "
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:281
@@ -5690,7 +5699,7 @@ msgstr "Xuất tất cả cây gia đình sang tập tin GEDCOM…"
 
 #: admin_trees_download.php:134
 msgid "Export options"
-msgstr ""
+msgstr "Các tùy chọn xuất "
 
 #. I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years
 #: admin_trees_config.php:450
@@ -6230,7 +6239,7 @@ msgstr "Tìm ký tự đặc biệt"
 
 #: relationship.php:100
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "Tìm tất cả các quan hệ có thể có "
 
 #: app/Functions/FunctionsPrint.php:690
 #: app/Module/CensusAssistantModule.php:78
@@ -6241,11 +6250,11 @@ msgstr "Tìm một người"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:466
 msgid "Find duplicates"
-msgstr ""
+msgstr "Tìm bản trùng lắp "
 
 #: relationship.php:95
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "Tìm quan hệ gần nhất "
 
 #: app/Stats.php:6799
 msgid "Finland"
@@ -6263,7 +6272,7 @@ msgstr "Sự kiện đầu tiên"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:353
 msgid "First record"
-msgstr ""
+msgstr "Bản ghi đầu tiên "
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:30
 msgid "Fix name slashes and spaces"
@@ -6334,6 +6343,8 @@ msgstr "Phông"
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
+"Thí dụ, nếu tập tin GEDCOM chứa %1$s và webtrees định tìm %2$s ở thư mục đa "
+"phương tiện, thì bạn cần phải bỏ %3$s. "
 
 #: admin_users.php:609
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -6484,7 +6495,7 @@ msgstr "Frimaire"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:275 admin_site_logs.php:248
 msgid "From"
-msgstr ""
+msgstr "Từ "
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:99
@@ -6560,7 +6571,7 @@ msgstr "Liên hệ gia phả"
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:459
 msgid "Genealogy data"
-msgstr ""
+msgstr "Dữ liệu gia phả"
 
 #: admin_trees_config.php:590 admin_trees_config.php:1674
 msgid "General"
@@ -7188,6 +7199,8 @@ msgstr "Nếu hai cây gia đình dùng chung thư mục đa phương tiện, th
 #: admin_trees_config.php:381
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
 msgstr ""
+"Nếu khách thăm không cây gia phả của bạn, họ sẽ không thể đăng ký một tài "
+"khoản. Bạn cần phải thêm bằng thủ công một tài khoản cho họ . "
 
 #. I18N: Help text for the “Who can upload new media files?” configuration setting
 #: admin_trees_config.php:1041
@@ -7205,6 +7218,9 @@ msgstr "Nếu bạn không thể giải quyết vấn đề, bạn có thể yê
 #: admin_trees_manage.php:282
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
 msgstr ""
+"Nếu bạn tạo ra tập tin GEDCOM này bằng phần mềm gia phả đã loại bỏ khoảng "
+"cách khi tách dòng dài, thì chọn tùy chọn này để tạo lại dấu cách bị bỏ mất "
+"này. "
 
 #: login.php:322
 msgid "If you didn’t request an account, you can just delete this message."
@@ -7244,6 +7260,9 @@ msgstr "Nếu bạn chọn một thư mục khác, bạn cũng phải chuyển t
 #: admin_trees_config.php:441
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored.  Do this only if all the data in your tree is public."
 msgstr ""
+"Nếu bạn hiển thị các các nhân còn sống cho khách viếng, tất cả các hạn chế "
+"riêng tư đều được bỏ qua. Chỉ đặt như thế nếu tất cả dữ liệu ở website của "
+"bạn đều cho công chúng xem. "
 
 #: setup.php:180
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -7252,6 +7271,8 @@ msgstr "Nếu bạn cố làm quá giới hạn này, bạn có thể làm máy 
 #: admin_site_config.php:512
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
+"Nếu bạn dùng các dịch vụ theo dõi và phân tích sau đây, webtrees có thể thêm "
+"mã theo dõi tự động. "
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1223
@@ -7286,7 +7307,7 @@ msgstr "Nhập"
 
 #: admin_trees_manage.php:175
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "Nhập một tập tin GEDCOM "
 
 #: app/Module/GoogleMapsModule.php:4624
 msgid "Import all places from a family tree"
@@ -7294,11 +7315,13 @@ msgstr "Nhập tất cả các nơi từ một cây gia đình"
 
 #: admin_trees_manage.php:267
 msgid "Import options"
-msgstr ""
+msgstr "Các tùy chọn khi nhập "
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
 msgstr ""
+"Trong một cây gia đình, mỗi bản ghi có một số tham chiếu riêng (gọi là \""
+"XREF\") như \"F123\", hay \"R13\". "
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
@@ -7759,14 +7782,14 @@ msgstr "Giữ liên kết trong danh sách"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:272
 msgid "Keep media objects"
-msgstr ""
+msgstr "Giữ các đối tượng đa phương tiện "
 
 #. I18N: A configuration setting
 #: addmedia.php:694 admin_trees_config.php:2256
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:59 edit_interface.php:2291
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:550
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Giữ thông tin \"thay đổi lần cuối\" hiện có "
 
 #: app/Stats.php:6844
 msgid "Kenya"
@@ -7909,7 +7932,7 @@ msgstr "Ngôn ngữ"
 #. I18N: Menu entry
 #: admin_site_config.php:146 app/Theme/AdministrationTheme.php:90
 msgid "Languages"
-msgstr ""
+msgstr "Các ngôn ngữ "
 
 #: app/Stats.php:6851
 msgid "Laos"
@@ -8101,21 +8124,21 @@ msgstr "Kèm người này vào một gia đình hiện tại như là con"
 #: admin_media.php:526 app/Controller/MediaController.php:69
 #: app/Controller/MediaController.php:160 app/Module/AlbumModule.php:178
 msgid "Link this media object to a family"
-msgstr ""
+msgstr "Liên kết tập tin đa phương tiện này với một gia đình "
 
 #: admin_media.php:527 app/Controller/MediaController.php:73
 #: app/Controller/MediaController.php:163 app/Module/AlbumModule.php:184
 msgid "Link this media object to a source"
-msgstr ""
+msgstr "Liên kết tập tin đa phương tiện đến một nguồn"
 
 #: admin_media.php:525 app/Controller/MediaController.php:65
 #: app/Controller/MediaController.php:157 app/Module/AlbumModule.php:172
 msgid "Link this media object to an individual"
-msgstr ""
+msgstr "Liên kết đối tượng đa phương tiện này đến một cá nhân "
 
 #: admin_users.php:603
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Liên kết người dùng này đến một cá nhân trong cây gia đình. "
 
 #: app/Controller/FamilyController.php:199 app/Module/AlbumModule.php:103
 #: app/Module/AlbumModule.php:104 app/Module/CensusAssistantModule.php:335
@@ -8218,7 +8241,7 @@ msgstr "URL đăng nhập"
 #. I18N: Menu entry
 #: admin_site_config.php:140 app/Theme/AdministrationTheme.php:89
 msgid "Login and registration"
-msgstr ""
+msgstr "Đăng nhập và đăng ký "
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1497
@@ -8350,7 +8373,7 @@ msgstr "Malta"
 #: admin_trees_manage.php:335 admin_trees_merge.php:40
 #: admin_trees_places.php:90 app/Theme/AdministrationTheme.php:119
 msgid "Manage family trees"
-msgstr ""
+msgstr "Quản lý các cây gia đình "
 
 #: admin_media.php:530 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:154 app/Module/AlbumModule.php:166
@@ -8360,7 +8383,7 @@ msgstr "Quản lý liên kết"
 #. I18N: Menu entry
 #: admin_media.php:583 app/Theme/AdministrationTheme.php:170
 msgid "Manage media"
-msgstr ""
+msgstr "Quản lý các tập tin đa phương tiện "
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:558
@@ -8677,7 +8700,7 @@ msgstr "Giả vai người dùng này"
 
 #: lifespan.php:101
 msgid "Match calendar"
-msgstr ""
+msgstr "So sánh các loại lịch "
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:138
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -8781,7 +8804,7 @@ msgstr "Tập tin đa phương tiện"
 #: admin_trees_download.php:163
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "Tên các tập tin đa phương tiển sẽ được gán tiền tố là %s. "
 
 #: admin_media.php:618 admin_trees_config.php:1031
 msgid "Media files"
@@ -8914,12 +8937,12 @@ msgstr "Màu thủy ngân"
 
 #: admin_trees_duplicates.php:174
 msgid "Merge"
-msgstr ""
+msgstr "Hợp nhất "
 
 #. I18N: Menu entry
 #: admin_trees_merge.php:34 app/Theme/AdministrationTheme.php:129
 msgid "Merge family trees"
-msgstr ""
+msgstr "Hợp nhất các cây gia đình"
 
 #: admin_site_merge.php:35 admin_trees_manage.php:476
 msgid "Merge records"
@@ -9042,7 +9065,7 @@ msgstr "Hiệu đính viên"
 
 #: admin.php:637
 msgid "Moderators"
-msgstr ""
+msgstr "Người biên tập"
 
 #: admin_modules.php:152
 msgid "Module"
@@ -9306,7 +9329,7 @@ msgstr "Trang của tôi"
 
 #: app/Theme/AbstractTheme.php:1561
 msgid "My pages"
-msgstr ""
+msgstr "Các trang của tôi "
 
 #: app/Module/UserWelcomeModule.php:56 app/Theme/AbstractTheme.php:1587
 msgid "My pedigree"
@@ -9320,7 +9343,7 @@ msgstr "MySQL thông bao lỗi: %s"
 
 #: admin_site_info.php:68
 msgid "MySQL variables"
-msgstr ""
+msgstr "Các thông số MySQL "
 
 #: app/Stats.php:6873
 msgid "Myanmar"
@@ -9596,11 +9619,11 @@ msgstr "Không"
 
 #: admin_trees_manage.php:101 admin_trees_manage.php:122
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "Không có tập tin GEDCOM nào được nhận. "
 
 #: admin_trees_manage.php:253
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "Không tìm thấy tập tin GEDCOM nào. "
 
 #: app/Module/GoogleMapsModule.php:900
 msgid "No ancestors in the database."
@@ -9629,7 +9652,7 @@ msgstr "Không có chủ đề riêng nào được kích hoạt."
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "Không tìm thấy trùng lắp nào. "
 
 #: admin_trees_check.php:211
 msgid "No errors have been found."
@@ -10449,7 +10472,7 @@ msgstr "Hình"
 
 #: admin_pgv_to_wt.php:150
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "PhpGedView có thể được cài trong một trong các thư mục:"
 
 #. I18N: %s is a number
 #: admin_trees_manage.php:708
@@ -10807,12 +10830,12 @@ msgstr "Văn bản định trước nói rằng chỉ thành viên gia đình c�
 
 #: admin_trees_config.php:332 admin_trees_manage.php:385
 msgid "Preferences"
-msgstr ""
+msgstr "Các tham chiếu"
 
 #: admin_modules.php:93
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr ""
+msgstr "Có các tham chiếu cho mô đun “%s”, nhưng mô đun này không còn nữa."
 
 #. I18N: A configuration setting
 #: admin_users.php:472
@@ -11283,6 +11306,7 @@ msgstr "Bỏ liên kết khỏi danh sách"
 #: admin_trees_manage.php:285
 msgid "Remove the GEDCOM media path from filenames"
 msgstr ""
+"Loại bỏ đường dẫn đến tập tin đa phương tiện của GEDCOM khỏi tên tập tin "
 
 #: app/Module/GoogleMapsModule.php:4521
 msgid "Remove this location?"
@@ -11294,18 +11318,18 @@ msgstr "Reno, Nevada"
 
 #: admin_trees_manage.php:506
 msgid "Renumber"
-msgstr ""
+msgstr "Đánh số lại"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:100 admin_trees_merge.php:105
 #: admin_trees_renumber.php:33
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Đánh số lại cây gia đình "
 
 #. I18N: button label
 #: search.php:219
 msgid "Replace"
-msgstr ""
+msgstr "Thay thế "
 
 #: admin_trees_places.php:104 search.php:164
 msgid "Replace with"
@@ -11394,7 +11418,7 @@ msgstr "Nơi cư trú"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Khôi phục lại trình bày khối mặc định "
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
@@ -11420,7 +11444,7 @@ msgstr "Giá trị kết quả"
 
 #: statistics.php:632
 msgid "Results"
-msgstr ""
+msgstr "Kết quả "
 
 #. I18N: gedcom tag RETI
 #: app/GedcomTag.php:740
@@ -11700,7 +11724,7 @@ msgstr "Seattle, Washington"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:370
 msgid "Second record"
-msgstr ""
+msgstr "Bản ghi thứ hai "
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:409
@@ -11710,7 +11734,7 @@ msgstr "Kết nối bảo mật"
 #. I18N: A site configuration setting
 #: admin_site_config.php:613
 msgid "Security code"
-msgstr ""
+msgstr "Mã bảo mật "
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
@@ -11720,12 +11744,12 @@ msgstr "Xem %s để có thêm thông tin."
 
 #: admin_site_merge.php:210 admin_site_merge.php:257 admin_site_merge.php:303
 msgid "Select"
-msgstr ""
+msgstr "Chọn "
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:205
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Chọn một tập tin GEDCOM để nhập "
 
 #: app/Functions/FunctionsEdit.php:395 reportengine.php:244
 msgid "Select a date"
@@ -11749,7 +11773,7 @@ msgstr "Chọn cờ"
 
 #: lifespan.php:38
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Chọn các cá nhân bằng tiêu chí địa điểm hay ngày tháng "
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:41
@@ -11766,11 +11790,11 @@ msgstr "Chọn khoảng cách bộ đếm bạn muốn"
 
 #: admin_site_merge.php:196
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Chọn các dữ liệu và sự kiện để giữ tử cả các bản ghi "
 
 #: admin_site_config.php:627
 msgid "Select the languages that will be shown in menus."
-msgstr ""
+msgstr "Chọn ngôn ngữ hiện ở menu. "
 
 #: app/Module/FamilyTreeStatisticsModule.php:298
 msgid "Select the stats to show in this block"
@@ -11779,7 +11803,7 @@ msgstr "Chọn thống kê để xem trong khối này"
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:348
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Chọn hai bản ghi để hợp nhất. "
 
 #: app/GedcomCode/GedcomCodeRela.php:236
 msgid "Seller"
@@ -11833,7 +11857,7 @@ msgstr "Tên người gửi"
 #. I18N: Menu entry
 #: admin_site_config.php:137 app/Theme/AdministrationTheme.php:88
 msgid "Sending email"
-msgstr ""
+msgstr "Gửi mail "
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:422
@@ -11912,7 +11936,7 @@ msgstr "Tập tin máy phục vụ chứa địa điểm (CSV)"
 #. I18N: Menu entry
 #: admin.php:534 admin_site_info.php:26 app/Theme/AdministrationTheme.php:95
 msgid "Server information"
-msgstr ""
+msgstr "Thông tin máy chủ "
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:344 setup.php:275
@@ -11926,7 +11950,7 @@ msgstr "Hết thời gian phiên làm việc"
 
 #: admin_trees_manage.php:438 admin_trees_manage.php:449
 msgid "Set as default"
-msgstr ""
+msgstr "Đặt mặc định "
 
 #: inverselink.php:152
 msgid "Set link"
@@ -11966,6 +11990,10 @@ msgstr "Đặt mức truy cập riêng tư ở biểu đồ gia phả."
 #: admin_trees_config.php:730
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
 msgstr ""
+"Đặt <b>Có</b> để dùng số RIN thay vì GEDCOM ID khi được hỏi cho các ID nhân "
+"vật ở tập tin cấu hình, thiết đặt người dùng, biểu đồ. Điều này hữu ích cho "
+"chương trình gia phả không xuất ra tập tin GEDCOM thống nhất với cùng số ID "
+"được gán cho từng cá nhân, nhưng luôn dùng một số RIN."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1684
@@ -12284,7 +12312,7 @@ msgstr "Hiện số truy cập ở site và trang cá nhân."
 
 #: compact.php:59
 msgid "Show images"
-msgstr ""
+msgstr "Hiển thị hình "
 
 #: app/Module/GoogleMapsModule.php:4549
 msgid "Show inactive places"
@@ -12328,12 +12356,12 @@ msgstr "Hiện danh sách cây gia đình"
 #. I18N: A configuration setting
 #: admin_trees_config.php:431
 msgid "Show living individuals"
-msgstr ""
+msgstr "Hiển thị người đang sống "
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:471
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Hiển thị tên của người riêng tư"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12454,7 +12482,7 @@ msgstr "Hiện ngày tháng và thời gian cập nhật"
 #. I18N: A configuration setting
 #: admin_trees_config.php:367
 msgid "Show the family tree"
-msgstr ""
+msgstr "Hiện cây gia đình "
 
 #: famlist.php:178 indilist.php:179
 msgid "Show the list of individuals"
@@ -12546,7 +12574,7 @@ msgstr "Thanh bên"
 #: admin_module_sidebar.php:28 admin_modules.php:156
 #: app/Theme/AdministrationTheme.php:186
 msgid "Sidebars"
-msgstr ""
+msgstr "Các thanh biên "
 
 #: app/Stats.php:6932
 msgid "Sierra Leone"
@@ -12573,22 +12601,25 @@ msgstr "Anh (Em) Gái"
 #: admin_site_config.php:562 admin_site_config.php:578
 #: admin_site_config.php:603
 msgid "Site identification code"
-msgstr ""
+msgstr "Mã nhận biết site "
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:478 edituser.php:297
 msgid "Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr ""
+"Các thành viên site có thể gửi tin tức cho nhau. Bạn có thể chọn cách các "
+"tin này được gửi cho bạn, hay chọn không nhận các tin này. "
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:520 admin_site_config.php:541
 msgid "Site verification code"
-msgstr ""
+msgstr "Mã xác minh site"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:531 admin_site_config.php:552
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
+"Các mã xác minh site không làm việc khi webtrees được cài đặt ở thư mục con "
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
@@ -12631,7 +12662,7 @@ msgstr "Kích thước bản đồ (pixels)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/AbstractTheme.php:71
 msgid "Skip to content"
-msgstr ""
+msgstr "Đi thẳng đến nội dung "
 
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgid "Slave"
@@ -12686,6 +12717,9 @@ msgstr "Somali"
 #: admin_trees_manage.php:297
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
+"Một vài phần mềm gia phả tạo tập tin GEDCOM có chưa tên tập tin đa phương "
+"tiện về đường dẫn đầy đủ. Các đường dẫn này sẽ khôn tồn tại ở máy chủ. Để "
+"cho phép webtrees tìm tập tin này, phần đầu của đường dẫn phải được loại bỏ. "
 
 #: app/Module/GoogleMapsModule.php:418
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
@@ -12695,6 +12729,7 @@ msgstr "Vài địa danh có thể viết ra cùng tiền hoặc hậu tố tùy
 #: admin_trees_config.php:1560
 msgid "Some themes can display icons on the “Facts and events” tab."
 msgstr ""
+"Vài kiểu trình bay có thể hiện biểu tượng ở tab \"Sự kiện và số liệu\". "
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:520
@@ -13068,7 +13103,7 @@ msgstr "Svalbard ve Jan Mayen Adaları"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:90
 msgid "Swap individuals"
-msgstr ""
+msgstr "Đổi cá nhân "
 
 #: app/Stats.php:6944
 msgid "Swaziland"
@@ -13088,7 +13123,7 @@ msgstr "Sydney, Australia"
 
 #: admin_trees_manage.php:737
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "Hợp nhất hóa cây gia đình với tập tin GEDCOM "
 
 #: app/Stats.php:6946
 msgid "Syrian Arab Republic"
@@ -13231,7 +13266,7 @@ msgstr "Danh sách FAQ trống."
 #: admin_trees_manage.php:145
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "Tập tin GEDCOM \"%s\" đã được nhập. "
 
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "The Hague, Netherlands"
@@ -13302,29 +13337,30 @@ msgstr "Cây gia đình được xuất cho %s"
 #: admin_trees_manage.php:76
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "Cây gia đình \"%s\" đã có. "
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:79
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "Cây gia đình \"%s\" đã được tạo. "
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:56 admin_trees_manage.php:151
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "Cây gia đình \"%s\" đã được xóa bỏ. "
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:65
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr ""
+"Cây gia đình \"%s\" sẽ hiện cho khách thăm khi lần đầu họ ghé trang web. "
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "Cây gia đình đã được hợp nhất thành công. "
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:143
@@ -13412,13 +13448,13 @@ msgstr "Thư mục có thể ghi cụ thể đầy đủ (thí dụ,  /home/user
 
 #: admin_site_merge.php:201
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Các số liệu và sự kiện sau đây tìm thấy ở  cả hai bản ghi. "
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:248 admin_site_merge.php:294
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Các số liệu và sự kiện sau chỉ tìm thấy ở bản ghi %s. "
 
 #: setup.php:169
 msgid "The following list shows typical requirements."
@@ -13465,7 +13501,7 @@ msgstr "Liên kết từ “%1$s” đến “%2$s” đã bị xóa."
 #: admin_site_merge.php:109
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Liên kết từ “%1$s” đến “%2$s” đã được cập nhật."
 
 #: addmedia.php:312 addmedia.php:340
 #, php-format
@@ -13497,12 +13533,12 @@ msgstr "Yêu cầu bộ nhớ và đồng hồ CPU tùy vào số thành viên t
 #: admin_modules.php:49
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Mô đun \"%s\" đã được vô hiệu. "
 
 #: admin_modules.php:51
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Mô đun \"%s\" đã được kích hoạt. "
 
 #: admin_site_upgrade.php:400
 #, php-format
@@ -13512,6 +13548,8 @@ msgstr "Các tập tin mới hiện nằm ở thư mục %s."
 #: admin_site_config.php:489
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
+"Người dùng mới sẽ được yêu cầu xác nhận bằng địa chỉ email trước khi tài "
+"khoản được tạo ra. "
 
 #: help_text.php:303
 msgid "The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used."
@@ -13532,26 +13570,26 @@ msgstr "Mật khẩu không khớp nhau."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Các tùy chọn cho mọi cây gia đình đã được cập nhật. "
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Các tùy chọn cho các cây gia đình mới đã được cập nhật. "
 
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "Các tùy chọn cho cây gia đình \"%s\" đã được cập nhật. "
 
 #: admin_modules.php:81
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Các tùy chọn cho mô đun \"%s\" đã được xóa. "
 
 #: app/Module/GoogleMapsModule.php:261
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "Các tùy chọn cho mô đun \"%s\" đã được cập nhật. "
 
 #: setup.php:376
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13560,7 +13598,7 @@ msgstr "Tiếp đầu tố là lựa chọn tùy thích, nhưng chúng tôi khuy
 #: admin_trees_renumber.php:242
 #, php-format
 msgid "The record %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "Bản ghi %1$s đã được đổi tên thành %2$s."
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
@@ -13570,7 +13608,7 @@ msgstr "Bản ghi đã được sao chéo vào bộ nhớ tạm"
 #: admin_site_merge.php:168
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Các bản ghi “%1$s” và “%2$s” đã được nhập một."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:125
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13582,7 +13620,7 @@ msgstr "Cấu hình máy phục vụ OK"
 
 #: admin_trees_renumber.php:257
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "Đã đến giới hạn thời gian ở máy chủ. "
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:37
@@ -13616,14 +13654,14 @@ msgstr "Thời gian bằng giây mà phiên làm việc webtrees vẫn hoạt đ
 
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:250
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr ""
+msgstr "Múi giờ cần thiết cho các tính toán, như để biết ngày hôm nay. "
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
+msgstr[0] "Hai cây gia đình có %1$s bản ghi dùng cùng “XREF”."
 
 #: admin_site_upgrade.php:504
 msgid "The upgrade is complete."
@@ -13637,7 +13675,7 @@ msgstr "Tập tin đã gửi lên quá hạn chế lượng"
 #: admin_users.php:807
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Người dùng \"%s\" đã được xóa bỏ. "
 
 #: login.php:300
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
@@ -13656,6 +13694,8 @@ msgstr "Tên người dùng hay mật khẩu không đúng."
 #: admin_trees_config.php:968
 msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
 msgstr ""
+"Giá trị cho địa điểm trong thẻ \"mô tả meta\" ở đầu trang HTML. Để trường "
+"này trống để dùng tên của cây gia đình. "
 
 #: admin_pgv_to_wt.php:104
 #, php-format
@@ -13669,20 +13709,20 @@ msgstr "Phiên bản của %s quá cũ"
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
-msgstr ""
+msgstr "Qui luât truy cập trang web đã được tạo ra. "
 
 #: admin_site_access.php:105
 msgid "The website access rule has been deleted."
-msgstr ""
+msgstr "Qui luật truy cập trang web đã được xóa bỏ. "
 
 #: admin_site_access.php:89
 msgid "The website access rule has been updated."
-msgstr ""
+msgstr "Qui luật truy cập trang web đã được cập nhật. "
 
 #: admin_site_config.php:47 admin_site_config.php:66 admin_site_config.php:78
 #: admin_site_config.php:93 admin_site_config.php:102
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Tham chiếu website đã được cập nhật. "
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2248
@@ -13695,7 +13735,7 @@ msgstr "Những người phát triển webtrees rất quan tâm biết lỗi nà
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr ""
+msgstr "Ký tự “%” là từ đại diện, và sẽ khớp với không hay nhiều ký tự khác."
 
 #: admin_modules.php:186 admin_users.php:486 app/Theme/AbstractTheme.php:1672
 #: edituser.php:269
@@ -13714,11 +13754,15 @@ msgstr "Bộ chọn sổ xuống để chọn thay đổi kiểu trình bày"
 
 #: admin_modules.php:160
 msgid "Themes"
-msgstr ""
+msgstr "Kiểu trình bày "
 
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website.  User settings take priority over family tree settings, which in turn take priority over the website setting.  Selecting “default theme” at one level will use the theme at the next level."
 msgstr ""
+"Kiểu trình bày có thể được chọn ở 3 cấp độ: người dùng, cây gia đình và "
+"website. Thiết đặt của người dùng ưu tiên hơn thiết đặt của cây gia đình, "
+"của cây gia đình ưu tiên hơn của website. Chọn \"trình bày mặc định\" một "
+"cấp sẽ dùng kiểu trình bày ở cấp độ kế tiếp."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:126
@@ -13754,12 +13798,12 @@ msgstr "Đang có các thay đổi để bạn xem chỉnh"
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
+msgstr[0] "Không có thay đổi nay trong vòng %s ngày qua."
 
 #: login.php:239
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr ""
+msgstr "Không có tài khoản nào với tên người dùng hay email là “%s”."
 
 #: addmedia.php:184 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -13865,6 +13909,7 @@ msgstr "Gia đình này không có con"
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
 msgstr[0] ""
+"Cây gia đình này có %s bản ghi dùng cùng “XREF” như trong cây gia đình khác."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -13958,6 +14003,10 @@ msgstr "Dấu phẩy phân cách danh sách thẻ sự kiện GEDCOM để hiệ
 #: admin_trees_config.php:2186
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr ""
+"Đây là dấu phẩy tách danh sách các thẻ số liệu GEDCOM sẽ hiện khi bạn thêm "
+"hay sửa một tên địa điểm. Nếu bạn dùng ký tự phi La tinh, như ký tự Do Thái, "
+"Hi Lạp, Cyrillic, hay Ả Rập, bạn có thể muốn thêm thẻ như _HEB, ROMN, FONE, "
+"v.v.. để cho phép bạn chứa các địa danh bằng vài thứ tiếng khác nhau."
 
 #: edituser.php:187
 msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
@@ -13967,6 +14016,10 @@ msgstr "Đây là liên kết với bản ghi của bạn ở cây gia đình. N
 #: admin_trees_config.php:1411
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual.  “B” indicates an LDS baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse sealing.  “P” indicates an LDS child-to-parent sealing."
 msgstr ""
+"Đây là tóm tắt của <abbr title=\"The Church of Jesus Christ of Latter-day "
+"Saints\">LDS</abbr> ordinances for the individual.  “B” indicates an LDS "
+"baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse "
+"sealing.  “P” indicates an LDS child-to-parent sealing."
 
 #: setup.php:285 setup.php:289
 msgid "This is case sensitive."
@@ -14220,7 +14273,7 @@ msgstr "Trang này cho phép bạn bỏ qua các hình thức thông thường, 
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
+msgstr[0] "Trang này đã được xem %s lần."
 
 #: app/Module/GoogleMapsModule.php:2846
 msgid "This place has no coordinates"
@@ -14385,7 +14438,7 @@ msgstr "Giờ"
 #. I18N: A configuration setting
 #: admin_site_config.php:230 admin_users.php:423 edituser.php:244
 msgid "Time zone"
-msgstr ""
+msgstr "Múi giờ "
 
 #: app/Controller/TimelineController.php:77 app/Theme/AbstractTheme.php:1224
 #: timeline.php:243
@@ -14466,7 +14519,7 @@ msgstr "Tiêu đề tiếng Do Thái"
 #. I18N: label for the end of a date range (from x to y)
 #: admin_site_change.php:285 admin_site_logs.php:258
 msgid "To"
-msgstr ""
+msgstr "Đến "
 
 #: app/Module/HtmlBlockModule.php:291
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14502,11 +14555,15 @@ msgstr "Để giảm chiều cao của khối Tin tức, quản trị viên ph�
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:349
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file.  You will need to uncompress the .ZIP file before you can use it."
 msgstr ""
+"Để giảm dung lượng tải về, bạn có thể nén số liệu vào tập tin .ZIP. Bạn cần "
+"phải giải nén tập tin .ZIP này trước khi có thể dùng nó. "
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:476
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
 msgstr ""
+"Để định văn bản này cho các ngôn ngữ khác, phải phải chuyển sang ngôn ngữ "
+"đó, và mở lại trang này. "
 
 #: app/Module/SiteMapModule.php:331
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -14585,7 +14642,7 @@ msgstr "Toronto, Ontario, Canada"
 
 #: admin.php:796
 msgid "Total"
-msgstr ""
+msgstr "Tổng "
 
 #: modules_v3/change_report/report.xml:127
 msgid "Total accepted changes: "
@@ -14701,12 +14758,12 @@ msgstr "Tổng số thành viên"
 #. I18N: Menu entry
 #: admin_site_config.php:143 app/Theme/AdministrationTheme.php:91
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Theo dõi và phân tích "
 
 #: admin_site_config.php:568 admin_site_config.php:593
 #: admin_site_config.php:618
 msgid "Tracking and analytics are not added to the control panel."
-msgstr ""
+msgstr "Theo dõi và phân tích không được thêm vào bảng điều khiển "
 
 #. I18N: gedcom tag TRLR
 #: app/GedcomTag.php:840
@@ -15022,6 +15079,8 @@ msgstr "Dùng mật khẩu"
 #: admin_trees_config.php:1095
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question."
 msgstr ""
+"Dùng hình bóng này khi không có hình được chọn cho một cá nhân được nêu ra. "
+"Các hình được dùng này là cụ thể cho giới tính của người đang viện dẫn. "
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1090
@@ -15038,7 +15097,7 @@ msgstr "Sử dụng trường này để cho quản trị trang web biết tại
 
 #: app/Functions/FunctionsEdit.php:638
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "Dùng hình này cho biểu đồ và ở trang cá nhân"
 
 #: app/Module/GoogleMapsModule.php:3915
 msgid "Use this value"
@@ -15339,7 +15398,7 @@ msgstr "Chúng tôi sẽ gửi cho bạn một email xác nhận đến địa c
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:86
 msgid "Website"
-msgstr ""
+msgstr "Website "
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:299
@@ -15359,12 +15418,12 @@ msgstr "Website và đặt thẻ META"
 #. I18N: Menu entry
 #: admin_site_logs.php:35 app/Theme/AdministrationTheme.php:92
 msgid "Website logs"
-msgstr ""
+msgstr "Ghi chép của website"
 
 #. I18N: Menu entry
 #: admin_site_config.php:134 app/Theme/AdministrationTheme.php:87
 msgid "Website preferences"
-msgstr ""
+msgstr "Tùy chọn cho website"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:368 app/Functions/FunctionsPrint.php:665
@@ -15403,6 +15462,10 @@ msgstr "Western Sahara"
 #: admin_trees_config.php:2261
 msgid "When a record is edited, the user and timestamp are recorded.  Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data.  This option controls whether this feature is selected by default."
 msgstr ""
+"Khi một bản ghi được sửa đổi, người dùng và thời gian được ghi lại. Đôi  khi "
+"việc giữ thông tin \"sửa chữa lần cuối\" được chuộng, thí dụ khi có thay đổi "
+"nhỏ ở dữ liệu của ai đó. Tùy chọn này kiểm soát tính năng này và được mặc "
+"định chọn."
 
 #: admin_users.php:389
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -15416,11 +15479,16 @@ msgstr "Khi thêm vào liên kết, trường ID không thể bỏ trống"
 #: admin_trees_config.php:2227
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death).  This option controls whether records or facts will be selected by default."
 msgstr ""
+"Khi thêm một người bà con gần mới, bạn có thể thêm nguồn trích dẫn cho các "
+"bản ghi (cá nhân và gia đình), hay sự kiện, số liệu (ngày sinh, kết hôn hay "
+"ngày mất). Tùy chọn này kiểm soát các bản ghi sẽ được mặc định chọn lựa. "
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:859
 msgid "When new records are created, they are given an internal ID number.  You can specify the prefix used for each type of record."
 msgstr ""
+"Khi có bản ghi mới được tạo, chúng được đặt cho một số nhận diện nội bộ. Bạn "
+"có thể đặt một tiền tố dùng cho mỗi kiểu bản ghi. "
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1620
@@ -15583,7 +15651,7 @@ msgstr "Bạn (hay người nào đó xưng là bạn)  đã yêu cầu mở tà
 
 #: logout.php:24
 msgid "You are logged out."
-msgstr ""
+msgstr "Bạn đã thoát ra."
 
 #: login.php:265 message.php:57
 msgid "You are not allowed to send messages that contain external links."
@@ -15617,10 +15685,12 @@ msgstr "Bạn có thể tái kích hoạt các chủ đề trình bày (themes) 
 #: admin_trees_renumber.php:266
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr ""
+"Bạn có thể đánh số lại bản ghi trong một cây gia đình, để các số tham chiếu "
+"bên trong không trùng lặp với bất kỳ cây gia đình nào khác. "
 
 #: admin_trees_renumber.php:279
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Bạn có thể đánh số lại cây gia đình này."
 
 #: admin_site_config.php:202 admin_site_config.php:221
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15633,6 +15703,7 @@ msgstr "Bạn có thể tính toán tính riêng tư nhanh bằng cách thêm b�
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
 msgstr ""
+"Bạn không thể tạo một qui luật với mục tiêu ngăn chính bạn truy cập website. "
 
 #: login.php:67
 msgid "You cannot login because your browser does not accept cookies."
@@ -15698,6 +15769,8 @@ msgstr "Bạn phải cung cấp tiêu đề nguồn"
 #: admin_trees_merge.php:96
 msgid "You must renumber the records in one of the trees before you can merge them."
 msgstr ""
+"Bạn phải đánh số các bản ghi lại ở một trong các cây gia đình trước khi hợp "
+"nhất chúng."
 
 #: app/Module/ChartsBlockModule.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
@@ -15709,7 +15782,7 @@ msgstr "Bạn phải nêu rõ bản ghi cá nhân nào trước khi có thể gi
 
 #: admin_trees_manage.php:317
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Bạn cần tạo một cây gia đình. "
 
 #: admin_pgv_to_wt.php:1164
 msgid "You need to login again, using your PhpGedView username and password."
@@ -15809,11 +15882,15 @@ msgstr "Tài khoản của bạn không kích hoạt mục “thay đổi tự �
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version."
 msgstr ""
+"Máy phục vụ web của bạn dùng PHP phiên bản %s, là phiên bản không còn được "
+"duy trì. Bạn phải nâng cấp lên phiên bản mới hơn. "
 
 #: admin.php:510
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible."
 msgstr ""
+"Máy phục vụ của bạn dùng PHP phiên bản %s, là phiên bản không còn được cập "
+"nhật về bảo mật. Bạn phải cập nhật lên phiên bản mới hơn càng sớm càng tốt."
 
 #: app/Stats.php:6981
 msgid "Yugoslavia"
@@ -15966,7 +16043,7 @@ msgstr "còn được gọi là"
 #. I18N: option in list box “always use this image”
 #: app/Functions/FunctionsEdit.php:630
 msgid "always"
-msgstr ""
+msgstr "luôn luôn"
 
 #: app/Controller/AncestryController.php:92 app/Stats.php:4539
 #: app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4586 app/Stats.php:5960
@@ -16249,7 +16326,7 @@ msgstr "tiếp tục"
 #. I18N: Button label
 #: admin_trees_manage.php:675
 msgid "create"
-msgstr ""
+msgstr "tạo"
 
 #. I18N: a program feature
 #: setup.php:130
@@ -16307,7 +16384,7 @@ msgstr "độ"
 #. I18N: Button label
 #: admin_site_clean.php:115 admin_users.php:793
 msgid "delete"
-msgstr ""
+msgstr "xóa"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:28 admin_site_access.php:35
@@ -16347,7 +16424,7 @@ msgstr "đông"
 #: admin_trees_config.php:2121 admin_trees_config.php:2152
 #: admin_trees_config.php:2181
 msgid "edit"
-msgstr ""
+msgstr "sửa"
 
 #: app/Functions/Functions.php:553
 msgctxt "FEMALE"
@@ -16423,17 +16500,17 @@ msgstr "hôn phu cũ"
 #: app/Functions/Functions.php:735
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "bạn đời khác [FEMALE]"
 
 #: app/Functions/Functions.php:717
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "bạn đời khác [MALE]"
 
 #: app/Functions/Functions.php:753
 msgctxt "MALE/FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "bạn đời khác [MALE/FEMALE]"
 
 #: app/Functions/Functions.php:758
 msgid "ex-spouse"
@@ -18350,7 +18427,7 @@ msgstr "nửa năm sau kết hôn"
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:737
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "gg:pp hoặc gg:pp:ss"
 
 #: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:313
 msgid "hide"
@@ -18457,7 +18534,7 @@ msgstr "nhủ danh"
 
 #: admin_trees_config.php:476
 msgid "managers"
-msgstr ""
+msgstr "quản trị viên"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
@@ -18531,7 +18608,7 @@ msgstr[0] "tối đa %s ngày."
 #: admin_trees_config.php:435 admin_trees_config.php:475
 #: admin_trees_config.php:495
 msgid "members"
-msgstr ""
+msgstr "thành viên"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:86
@@ -18632,7 +18709,7 @@ msgstr "cháu trai/ cháu gái"
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:636
 msgid "never"
-msgstr ""
+msgstr "không bao giờ"
 
 #. I18N: button label, next page
 #: app/I18N.php:224 app/Module/BatchUpdateModule.php:232
@@ -18821,7 +18898,7 @@ msgstr "tỷ lệ phần trăm"
 
 #: admin_trees_config.php:1078
 msgid "pixels"
-msgstr ""
+msgstr "điểm ảnh"
 
 #. I18N: button label
 #: admin_trees_places.php:107
@@ -19631,7 +19708,7 @@ msgstr "Cập nhật"
 #: admin_trees_config.php:434 admin_trees_config.php:474
 #: admin_trees_config.php:494
 msgid "visitors"
-msgstr ""
+msgstr "khách thăm"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:107
@@ -19647,7 +19724,7 @@ msgstr "sinh"
 
 #: app/Theme/WebtreesTheme.php:137
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:110
@@ -19681,6 +19758,9 @@ msgstr "webtrees gửi email không lưu trữ"
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
+"webtrees dùng mã UTF-8 cho các chữ có dấu, các ký tự đặc biệt và các chữ "
+"không dùng ký tự la tinh. Nếu bạn dùng tập tin GEDCOM này cho chương trình "
+"gia phả không hỗ trợ mã utf-8, thì bạn có thể dùng bộ ký tự mã ISO-8859-1."
 
 #: app/Functions/FunctionsPrint.php:208
 msgid "webtrees wiki"
