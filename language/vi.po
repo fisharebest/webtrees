@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-12-25 14:40+0800\n"
-"Last-Translator: detran <trande@gmail.com>\n"
+"PO-Revision-Date: 2015-12-25 08:55+0100\n"
+"Last-Translator: de tran quang <trande@gmail.com>\n"
 "Language-Team: Vietnamese "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/vi/>\n"
 "Language: vi\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -260,7 +260,7 @@ msgstr[0] "%s ngày qua"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] "%s gia đình đã được cập nhật"
+msgstr[0] "%s gia đình đã được cập nhật."
 
 #: admin.php:798
 #, php-format
@@ -296,7 +296,7 @@ msgstr[0] "%s cá nhân đã được cập nhật."
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] "%s người riêng tư"
+msgstr[0] "%s cá nhân này muốn giữ thông tin riêng tư."
 
 #: app/Controller/LifespanController.php:253
 #, php-format
@@ -729,7 +729,7 @@ msgstr "Một tập tin ở máy phục vụ"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:211
 msgid "A file on your computer"
-msgstr "Một tập tin ở máy bàn của bạn "
+msgstr "Một tập tin ở máy bàn của bạn"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:33
@@ -1633,7 +1633,7 @@ msgstr "Châu Phi"
 #: admin_trees_manage.php:678
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr ""
-"Sau khi tạo cây gia đình, bạn có thể nhập dữ liệu từ tập tin GEDCOM vào. "
+"Sau khi tạo cây gia đình, bạn có thể nhập dữ liệu từ tập tin GEDCOM vào."
 
 #: login.php:233
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
@@ -1766,7 +1766,7 @@ msgstr "Mọi nguời dùng PhpGedView đang có phải có địa chỉ email k
 
 #: admin_trees_config.php:568
 msgid "All facts and events"
-msgstr "Mọi dữ liệu và sự kiện "
+msgstr "Mọi dữ liệu và sự kiện"
 
 #: admin_trees_config.php:1840
 msgid "All family facts"
@@ -1791,7 +1791,7 @@ msgstr "Mọi Người"
 
 #: admin_trees_config.php:559
 msgid "All records"
-msgstr "Tất cả bản ghi "
+msgstr "Tất cả bản ghi"
 
 #: admin_trees_config.php:2047
 msgid "All repository facts"
@@ -1819,7 +1819,7 @@ msgstr "Cho phép người dùng chọn chủ để theo ý mình"
 #. I18N: A site configuration setting
 #: admin_site_config.php:484
 msgid "Allow visitors to request a new user account"
-msgstr "Cho phép khách thăm yêu cầu một tài khoản người dùng "
+msgstr "Cho phép khách thăm yêu cầu một tài khoản người dùng"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:963
@@ -1846,7 +1846,7 @@ msgstr "Amerikan Samoa"
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
 msgstr ""
 "Một quản trị viên của site phải chấp thuận tài khoản người dùng mới và chọn "
-"cấp độ truy cập khi người dùng này đăng nhập. "
+"cấp độ truy cập troức khi người dùng này có thể đăng nhập."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
@@ -1972,7 +1972,7 @@ msgstr "Antartica"
 
 #: app/Stats.php:6735
 msgid "Antigua and Barbuda"
-msgstr "Antigua and Barbuda"
+msgstr "Antigua và Barbuda"
 
 #: app/GedcomCode/GedcomCodeTemp.php:281
 msgid "Apia, Samoa"
@@ -1993,12 +1993,12 @@ msgstr "Có áp dụng thiết đặt riêng tư không"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2279
 msgid "Apply these preferences to all family trees"
-msgstr "Áp dụng các tùy chọn này cho mọi cây gia đình "
+msgstr "Áp dụng các tùy chọn này cho mọi cây gia đình"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2286
 msgid "Apply these preferences to new family trees"
-msgstr "Áp dụng các tùy chọn này cho các cây gia đình mới "
+msgstr "Áp dụng các tùy chọn này cho các cây gia đình mới"
 
 #: admin_users.php:100
 #, php-format
@@ -2217,11 +2217,11 @@ msgstr "Tháng Tám"
 
 #: app/Stats.php:6736
 msgid "Australia"
-msgstr "Australia"
+msgstr "Úc"
 
 #: app/Stats.php:6737
 msgid "Austria"
-msgstr "Austria"
+msgstr "Áo"
 
 #. I18N: gedcom tag AUTH
 #: app/GedcomTag.php:170
@@ -2314,7 +2314,7 @@ msgstr "Số con trung bình trong mỗi gia đình"
 #: admin_trees_config.php:632 admin_trees_manage.php:667
 msgid "Avoid spaces and punctuation.  A family name might be a good choice."
 msgstr ""
-"Tránh khoảng cách và dấu văn phạm. Một tên gia đình có thể là cách chọn tốt. "
+"Tránh dùng dấu cách và dấu chấm câu. Một tên gia đình có thể là lựa chọn tốt."
 
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2831,7 +2831,7 @@ msgstr "Màu xanh Marine"
 
 #: message.php:127
 msgid "Body"
-msgstr "Thân dung:"
+msgstr "Nội dung:"
 
 #: app/GedcomCode/GedcomCodeTemp.php:103
 msgid "Bogota, Colombia"
@@ -2860,7 +2860,7 @@ msgstr "Born in the covenant"
 
 #: app/Stats.php:6748
 msgid "Bosnia and Herzegovina"
-msgstr "Bosnia and Herzegovina"
+msgstr "Bosnia và Herzegovina"
 
 #: app/GedcomCode/GedcomCodeTemp.php:107
 msgid "Boston, Massachusetts"
@@ -3260,7 +3260,7 @@ msgstr "Catalonia"
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "theo trục-z:"
+msgstr "Các nhóm"
 
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:242
@@ -3450,7 +3450,7 @@ msgstr "Kiểm tra thiết đặt và thử lại."
 
 #: setup.php:151
 msgid "Checking server capacity"
-msgstr "Kiểm tra khả năng máy dịch vụ."
+msgstr "Kiểm tra khả năng máy phục vụ"
 
 #: setup.php:109
 msgid "Checking server configuration"
@@ -3815,11 +3815,11 @@ msgstr "Hoàn tất trước 1970; ngày tháng không có"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:80
 msgid "Completed; date unknown"
-msgstr "Completed; date unknown"
+msgstr "Hoàn thành, không rõ ngày tháng"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
-msgstr "Nén tập tin GEDCOM "
+msgstr "Nén tập tin GEDCOM"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
@@ -3910,7 +3910,7 @@ msgstr "Bảng điều khiển"
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:378
 #: app/Module/ClippingsCartModule.php:714
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr "Có muốn mã hóa từ UTF-8 sang ISO-8859-1??"
+msgstr "Đổi từ UTF-8 sang ISO-8859-1"
 
 #: app/Stats.php:6773
 msgid "Cook Islands"
@@ -4783,7 +4783,7 @@ msgstr "Thập niên chết"
 
 #: app/Functions/FunctionsPrintLists.php:997
 msgid "Decade of marriage"
-msgstr "Thẩp kỷ kết hôn."
+msgstr "Một thập kỷ kết hôn"
 
 #: app/Date/CalendarDate.php:222
 msgctxt "GENITIVE"
@@ -4916,7 +4916,7 @@ msgstr "Xóa bỏ tập tin tạm…"
 
 #: admin_modules.php:98
 msgid "Delete the preferences for this module."
-msgstr "Xóa tham chiếu cho mô đun này "
+msgstr "Xóa tham chiếu cho mô đun này."
 
 #: app/Controller/IndividualController.php:176
 msgid "Delete this name"
@@ -5010,8 +5010,8 @@ msgstr "Chi tiết"
 #: admin_site_config.php:490
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr ""
-"Chi tiết của người dùng mới này sẽ được gửi cho người liên hệ về gia phải để "
-"trao đổi về cây gia đình "
+"Chi tiết của người dùng mới này sẽ được gửi cho người liên hệ về gia phả để "
+"trao đổi về cây gia đình."
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Detroit, Michigan"
@@ -5097,7 +5097,7 @@ msgstr "Dhu al-Qi'dah"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:71
 msgid "Died as a child: exempt"
-msgstr "Died as a child: exempt"
+msgstr "Mất lúc bé: loại trừ"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:96
@@ -5247,7 +5247,16 @@ msgstr "Trùng lắp tên người dùng. Đã có một thành viên với tên
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:882
 msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "Địa chỉ E-mail dùng ở trường &laquo;Từ:&raquo; mà webtrees tạo ra tự động.<br><br>webtreescó thể tự động tạo email để báo cho quản trị viên về các thay đổi cần xem xét. webtreescũng gửi email thông báo cho người dùng đang yêu cầu mở tài khoản<br><br>Thông thường, trường &laquo;From:&raquo; của các thư này được tự động tạo ra email na ná như <i>Từ: webtrees-noreply@yoursite</i> để hiện là không cần trả lời cho email này. Để bảo vệ chống lại thư rác, vài chương trình mail yêu cầu từng trang trường &laquo;Từ:&raquo; phản ánh địa chỉ email thật và sẽ không chấp nhận thư từ tài khoản <i>webtrees-noreply</i>"
+msgstr ""
+"Địa chỉ E-mail dùng ở trường \"Từ: \" của email mà webtrees tạo ra tự "
+"động.<br><br>webtrees có thể tự động tạo email để báo cho quản trị viên về "
+"các thay đổi cần xem xét. webtrees cũng gửi email thông báo cho người dùng "
+"đang yêu cầu mở tài khoản<br><br>Thông thường, trường \"Từ: \" của các thư "
+"này được tự động tạo ra email đại loại như <i>Từ: webtrees-"
+"noreply@sitecủabạn</i> để cho biết là không cần trả lời cho email này. Để "
+"bảo vệ chống lại thư rác, vài chương trình mail yêu cầu trường \"Từ: \" để "
+"chỉ địa chỉ email thật và sẽ không chấp nhận thư từ tài khoản <i>webtrees-"
+"noreply</i>"
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -5388,7 +5397,7 @@ msgstr "Sửa chuyện"
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
-msgstr "Sửa người này và thay thế chi tiết của họ bằng chi tiết của bạn"
+msgstr "Sửa người này và thay thế chi tiết của họ bằng chi tiết của bạn."
 
 #: admin_users.php:273
 msgid "Edit user"
@@ -15703,7 +15712,7 @@ msgstr "Bạn có thể tính toán tính riêng tư nhanh bằng cách thêm b�
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
 msgstr ""
-"Bạn không thể tạo một qui luật với mục tiêu ngăn chính bạn truy cập website. "
+"Bạn không thể tạo một qui luật với mục tiêu ngăn chính bạn truy cập website."
 
 #: login.php:67
 msgid "You cannot login because your browser does not accept cookies."
@@ -15752,15 +15761,15 @@ msgstr "Bạn cần phải nhập tên thật."
 
 #: edituser.php:121
 msgid "You must enter a user name."
-msgstr "Bạn phải nhập tên vào"
+msgstr "Bạn phải nhập tên người dùng vào."
 
 #: setup.php:416
 msgid "You must enter all the administrator account fields."
-msgstr "Bạn phải nhập tất cả các trường của tài khoản quản trị"
+msgstr "Bạn phải nhập tất cả các trường của tài khoản quản trị."
 
 #: edit_interface.php:1522
 msgid "You must provide a repository name."
-msgstr "Bạn phải cung cấp tên kho dữ liệu"
+msgstr "Bạn phải cung cấp một tên kho dữ liệu."
 
 #: edit_interface.php:1203
 msgid "You must provide a source title"
@@ -15782,7 +15791,7 @@ msgstr "Bạn phải nêu rõ bản ghi cá nhân nào trước khi có thể gi
 
 #: admin_trees_manage.php:317
 msgid "You need to create a family tree."
-msgstr "Bạn cần tạo một cây gia đình. "
+msgstr "Bạn cần tạo một cây gia đình."
 
 #: admin_pgv_to_wt.php:1164
 msgid "You need to login again, using your PhpGedView username and password."
@@ -15883,7 +15892,7 @@ msgstr "Tài khoản của bạn không kích hoạt mục “thay đổi tự �
 msgid "Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version."
 msgstr ""
 "Máy phục vụ web của bạn dùng PHP phiên bản %s, là phiên bản không còn được "
-"duy trì. Bạn phải nâng cấp lên phiên bản mới hơn. "
+"duy trì. Bạn phải nâng cấp lên phiên bản mới hơn."
 
 #: admin.php:510
 #, php-format
@@ -16147,7 +16156,7 @@ msgstr "tên khi sinh"
 #: admin_trees_config.php:457
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr "sinh trong %1$s năm cuối hay chết trong %2$s năm cuối."
+msgstr "sinh trong %1$s hay chết trong %2$s năm rồi."
 
 #: app/Functions/Functions.php:787
 msgid "brother"
@@ -18602,7 +18611,7 @@ msgstr "tối đa"
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] "tối đa %s ngày."
+msgstr[0] "tối đa %s ngày"
 
 #: admin_trees_config.php:371 admin_trees_config.php:395
 #: admin_trees_config.php:435 admin_trees_config.php:475
@@ -19730,7 +19739,7 @@ msgstr "webtrees"
 #: admin_pgv_to_wt.php:110
 #, php-format
 msgid "webtrees cannot connect to the PhpGedView database: %s."
-msgstr "webtrees không thể kết nối CSDL của PhpGedView là %s được"
+msgstr "webtrees không thể kết nối CSDL:  %s của PhpGedView."
 
 #: message.php:40 message.php:261 message.php:324
 msgid "webtrees message"
