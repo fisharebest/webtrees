@@ -25,7 +25,6 @@ use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Localization\Translator;
-use Patchwork\TurkishUtf8;
 
 /**
  * Internationalization (i18n) and localization (l10n).
@@ -679,10 +678,10 @@ class I18N {
 	 */
 	public static function strtolower($string) {
 		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
-			return TurkishUtf8::strtolower($string);
-		} else {
-			return mb_strtolower($string);
+			$string = strtr($string, ['I' => 'ı', 'İ' => 'i']);
 		}
+
+		return mb_strtolower($string);
 	}
 
 	/**
@@ -696,10 +695,10 @@ class I18N {
 	 */
 	public static function strtoupper($string) {
 		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
-			return TurkishUtf8::strtoupper($string);
-		} else {
-			return mb_strtoupper($string);
+			$string = strtr($string, ['ı' => 'I', 'i' => 'İ']);
 		}
+
+		return mb_strtoupper($string);
 	}
 
 	/**
