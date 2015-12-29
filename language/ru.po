@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-08-08 21:19+0100\n"
-"PO-Revision-Date: 2015-12-29 16:17+0100\n"
+"PO-Revision-Date: 2015-12-29 18:09+0100\n"
 "Last-Translator: Vitalii <mar2008m@gmail.com>\n"
 "Language-Team: Russian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
@@ -353,7 +353,7 @@ msgstr[2] "%s отдельных событий в in %s"
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
 msgstr[0] "%s отдельное событие в  %s между %s и %s"
-msgstr[1] "%s отдельные события в %s между %s и %s"
+msgstr[1] "%s отдельных событий в %s между %s и %s"
 msgstr[2] "%s отдельные события в %s между %s и %s"
 
 #. I18N: %s is a PHP function/module/setting
@@ -13745,8 +13745,7 @@ msgstr "Время в секундах, при котором сеанс ост�
 
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:250
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr ""
-"Часовой пояс необходим для вычисления даты, таких как, сегодняшнюю дату."
+msgstr "Часовой пояс необходим для вычисления даты, таких как сегодняшняя дата."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
@@ -13959,7 +13958,13 @@ msgstr "Этот блок будет показывать редакторам �
 
 #: admin_users.php:463 edituser.php:309
 msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
-msgstr "Этот флажок контролирует видимость для других пользователей, пока вы находитесь в сети. Он также контролирует вашу способность видеть других интернет-пользователей, которые настроены, чтобы быть видимыми. Каталог <br> Если этот флажок снят, вы будете полностью невидимым для других, и вы также не сможете увидеть другие онлайн-пользователей. Если этот флажок установлен, точно наоборот. Вы будете видеть других, и вы также будете иметь возможность видеть других, которые настроены, чтобы быть видимыми."
+msgstr ""
+"Этот флажок контролирует видимость для других пользователей, пока вы "
+"находитесь в сети. Он также контролирует вашу способность видеть других "
+"интернет-пользователей, которые настроены, чтобы быть видимыми. <br> Если "
+"этот флажок снят, Вы будете полностью невидимым для других, и Вы также не "
+"сможете увидеть других онлайн-пользователей. Если этот флажок установлен, Вы "
+"будете видеть других, которые настроены, чтобы быть видимыми."
 
 #: setup.php:346 setup.php:357
 msgid "This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later."
@@ -15388,7 +15393,7 @@ msgstr "Вьетнам"
 #: descendancy.php:70 familybook.php:60 fanchart.php:93 hourglass.php:61
 #: pedigree.php:170 relationship.php:79
 msgid "View"
-msgstr "Вид"
+msgstr "Просмотр"
 
 #: placelist.php:176
 msgid "View all records found in this place"
@@ -19332,7 +19337,7 @@ msgstr "8-миюродный брат/сестра"
 #: app/Module/GoogleMapsModule.php:313 app/Module/StoriesModule.php:361
 #: lifespan.php:107
 msgid "show"
-msgstr "Показать"
+msgstr "показать"
 
 #: statistics.php:643
 msgid "show the plot"
