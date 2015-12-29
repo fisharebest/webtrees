@@ -25,9 +25,6 @@ class I18NTest extends \PHPUnit_Framework_TestCase {
 	 * Prepare the environment for these tests
 	 */
 	public function setUp() {
-		\Patchwork\Utf8\Bootup::initAll();
-		\Patchwork\Utf8\Bootup::filterRequestUri();
-		\Patchwork\Utf8\Bootup::filterRequestInputs();
 		defined('WT_BASE_URL') || define('WT_BASE_URL', 'http://localhost/');
 		defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
 		defined('WT_MODULES_DIR') || define('WT_MODULES_DIR', 'modules_v3/');
