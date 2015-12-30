@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2015-08-09 09:47+0100\n"
+"PO-Revision-Date: 2015-12-30 17:21+0100\n"
 "Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
-"Language-Team: Polish <http://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
+"Language-Team: Polish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.4\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -8153,7 +8155,7 @@ msgstr "Ogranicz wyświetlanie"
 #. I18N: You need to:
 #: login.php:569
 msgid "Link the user account to an individual."
-msgstr ""
+msgstr "Połączyć konto użytkownika z osobą."
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:983
 #: edit_interface.php:1043
@@ -11983,7 +11985,7 @@ msgstr "Ustaw powiązanie"
 #. I18N: You need to:
 #: login.php:567
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Ustawić poziom dostępu dla każdego drzewa."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -12018,7 +12020,7 @@ msgstr "Ustawia poziom dostępu prywatności do danych wszystkich osób zmarłyc
 #. I18N: You need to:
 #: login.php:565
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Ustawić status na „zatwierdzony”."
 
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:730
@@ -14297,27 +14299,34 @@ msgstr "Dzięki temu procesowi właściciel witryny może upewnić się, że now
 
 #: gedrecord.php:90
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Dany wpis nie istnieje lub nie masz uprawnień, aby go zobaczyć."
 
 #: gedrecord.php:64
 msgid "This record has been deleted.  The deletion will need to be reviewed by a moderator."
 msgstr ""
+"Dany wpis został usunięty. Usunięcie wpisu będzie musiało zostać sprawdzone "
+"przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: gedrecord.php:55
 #, php-format
 msgid "This record has been deleted.  You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Dany wpis został usunięty. Należy sprawdzić dane zmiany i %1$s lub %2$s je."
 
 #: gedrecord.php:82
 msgid "This record has been edited.  The changes need to be reviewed by a moderator."
 msgstr ""
+"Dany wpis został zmodyfikowany. Modyfikacja wpisu będzie musiała zostać "
+"sprawdzona przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: gedrecord.php:73
 #, php-format
 msgid "This record has been edited.  You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Dany wpis został zmodyfikowany. Należy sprawdzić dane zmiany i %1$s lub %2$s "
+"je."
 
 #: repo.php:78
 msgid "This repository does not exist or you do not have permission to view it."
@@ -14417,7 +14426,7 @@ msgstr "Ten typ powiązania nie jest tutaj dozwolony."
 
 #: login.php:119
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "Dane konto użytkownika nie ma dostępu do żadnego drzewa."
 
 #: setup.php:204
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -15815,7 +15824,7 @@ msgstr "Należy zalogować się ponownie używając nazwy użytkownika i hasła 
 
 #: login.php:561
 msgid "You need to review the account details."
-msgstr ""
+msgstr "Należy sprawdzić ustawienia konta użytkownika."
 
 #: setup.php:416
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
