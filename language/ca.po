@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2015-11-24 22:14+0100\n"
+"PO-Revision-Date: 2015-12-30 13:14+0100\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
-"Language-Team: Catalan <http://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
+"Language-Team: Catalan "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -8122,7 +8123,7 @@ msgstr "Límit de visualització per"
 #. I18N: You need to:
 #: login.php:569
 msgid "Link the user account to an individual."
-msgstr ""
+msgstr "Enllaça el compte d'usuari a una persona"
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:983
 #: edit_interface.php:1043
@@ -11950,7 +11951,7 @@ msgstr "Enllaça’l"
 #. I18N: You need to:
 #: login.php:567
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Fixa el nivell d'accés per a cada arbre."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -11985,7 +11986,7 @@ msgstr "Configura el nivell de privadesa d’accés a dades de persones difuntes
 #. I18N: You need to:
 #: login.php:565
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Ajusta l'estat a \"aprovat\"."
 
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:730
@@ -14260,27 +14261,35 @@ msgstr "Aquest procés permet al titular del lloc d’assegurar-se que la nova i
 
 #: gedrecord.php:90
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Aquest registre no existeix o no teniu permís per veure'l."
 
 #: gedrecord.php:64
 msgid "This record has been deleted.  The deletion will need to be reviewed by a moderator."
 msgstr ""
+"S'ha suprimit aquest registre. Però la supressió l'haurà de revisar un "
+"moderador."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: gedrecord.php:55
 #, php-format
 msgid "This record has been deleted.  You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Aquest registre ha estat suprimit. Haureu de revisar-ne l'eliminació i "
+"després %1$s o %2$s."
 
 #: gedrecord.php:82
 msgid "This record has been edited.  The changes need to be reviewed by a moderator."
 msgstr ""
+"Aquesta registre s'ha editat. Els canvis han de ser revisats per un "
+"moderador."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: gedrecord.php:73
 #, php-format
 msgid "This record has been edited.  You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Aquest registre s'ha editat. Heu de revisar els canvis i tot seguit %1$s o "
+"%2$s."
 
 #: repo.php:78
 msgid "This repository does not exist or you do not have permission to view it."
@@ -14380,7 +14389,7 @@ msgstr "Aquí aquest tipus d’enllaç no és permès."
 
 #: login.php:119
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "Aquest compte d'usuari no té accés a cap arbre."
 
 #: setup.php:204
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -15775,7 +15784,7 @@ msgstr "Us cal accedir de nou, amb el vostre nom d’usuari i contrasenya PhpGed
 
 #: login.php:561
 msgid "You need to review the account details."
-msgstr ""
+msgstr "Cal revisar els detalls del compte."
 
 #: setup.php:416
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
