@@ -15,36 +15,27 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Individual;
+
 /**
- * Definitions for a census
+ * The individual's date of birth.
  */
-class CensusOfDenmark1911 extends CensusOfDenmark implements CensusInterface {
+class CensusColumnBirthDaySlashMonthYear extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
-	 * When did this census occur.
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function censusDate() {
-		return '01 FEB 1911';
-	}
+	public function generate(Individual $individual, Individual $head = null) {
+		$birth_date = $individual->getBirthDate();
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnFullName($this, '', ''),
-			new CensusColumnBirthDate($this, '', ''),
-			new CensusColumnSexMF($this, '', ''),
-			new CensusColumnConditionEnglish($this, '', ''),
-			new CensusColumnRelationToHead($this, '', ''),
-			new CensusColumnOccupation($this, '', ''),
-			new CensusColumnBirthPlace($this, '', ''),
-			new CensusColumnNull($this, '', ''), // religion
-			new CensusColumnNull($this, '', ''), // employment
-			new CensusColumnNull($this, '', ''), // handicaps
-		);
+		if ($birth_date->minimumJulianDay() === $birth_date->maximumJulianDay()) {
+			return $birth_date->minimumDate()->format('%j/%n %Y');
+		} else {
+			return '';
+		}
 	}
 }

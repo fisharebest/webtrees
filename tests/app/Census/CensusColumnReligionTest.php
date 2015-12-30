@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,28 +16,35 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
+use Mockery;
 
 /**
- * The individual's sex.
+ * Test harness for the class CensusColumnReligion
  */
-class CensusColumnSexMF extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnReligionTest extends \PHPUnit_Framework_TestCase {
 	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
+	 * Delete mock objects
 	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		switch ($individual->getSex()) {
-		case 'M':
-			return 'M';
-		case 'F':
-			return 'F';
-		default:
-			return '';
-		}
+	public function tearDown() {
+		Mockery::close();
+	}
+
+	/**
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnReligion
+	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 */
+	public function testReligion() {
+		$individual = Mockery::mock(Individual::class);
+
+		$census = Mockery::mock(CensusInterface::class);
+		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
+
+		$column = new CensusColumnReligion($census, '', '');
+
+		$this->assertSame('', $column->generate($individual));
 	}
 }

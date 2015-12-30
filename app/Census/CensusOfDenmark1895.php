@@ -44,15 +44,21 @@ class CensusOfDenmark1895 extends CensusOfDenmark implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this, 'TBC', 'To be confirmed'),
-			new CensusColumnAge($this, 'TBC', 'To be confirmed'),
-			new CensusColumnSexMF($this, 'TBC', 'To be confirmed'),
-			new CensusColumnConditionEnglish($this, 'TBC', 'To be confirmed'),
-			new CensusColumnRelationToHead($this, 'TBC', 'To be confirmed'),
-			new CensusColumnOccupation($this, 'TBC', 'To be confirmed'),
-			new CensusColumnBirthPlace($this, 'TBC', 'To be confirmed'),
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // religion
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // handicaps
+			new CensusColumnFullName($this, 'Navn', 'Samtlige Personers fulde Navn.'),
+			new CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M.) eller Kvindekøn (Kv.).'),
+			new CensusColumnAge($this, 'Alder', 'Alder.  Alderen anføres med det fyldte Aar, men for Børn, der ikke have fyldt 1 Aar, anføres „Under 1 Aar“ of Fødselsdagen.'),
+			new CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U.), Gift (G.), Enkemand eller Enke (E.), Separeret (S.), Fraskilt (F.).'),
+			new CensusColumnReligion($this, 'Trossamfund', 'Trossamfund („Folkekirken“ eller andetSamfund, saasom „det frilutheranske“, „det romersk katholske“, det „mosaiske“ o.s.v.).'),
+			new CensusColumnBirthPlace($this, 'Fødested', 'Fødested, nemlig Sognets og Amtets eller Kjøbstadens (eller Handelpladsens) Navn, og for de i Bilandene Fødte samt for Udlændinge Landet, hvori de ere fødte.'),
+			new CensusColumnRelationToHead($this, 'Stilling i familien', 'Stilling i Familien (Husfader, Husmoder, Barn, Tjenestetyende, Logerende o.s.v.).'),
+			new CensusColumnOccupation($this, 'Erhverv', 'Erhverv (Embede, Forretning, Næringsvej og Titel, samt Vedkommendes Stilling som Hovedperson eller Medhjælper, Forvalter, Svend eller Dreng o.s.v.). - Arten af Erhvervet (Gaardejer, Husmand, Grovsmed, Vognfabrikant, Høker o.s.v.). - Under Fattigforsørgelse.'),
+			new CensusColumnNull($this, 'Erhvervsstedet', 'Erhvervsstedet (Beboelseskommunen eller hvilken anden Kommune).'),
+			new CensusColumnNull($this, 'Døvstumme', 'Døvstumme.'),
+			new CensusColumnNull($this, 'Døve', 'Døve (Hørelson aldeles berøvet).'),
+			new CensusColumnNull($this, 'Blinde', 'Blinde (Synet aldeles borsvet).'),
+			new CensusColumnNull($this, 'Idioter', 'Uden Forstandsovner (Idioter).'),
+			new CensusColumnNull($this, 'Sindssyge', 'Sindssyge.'),
+			new CensusColumnNull($this, 'Anmærkninger', 'Anmærkninger.'),
 		);
 	}
 }
