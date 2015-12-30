@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2015-12-30 13:25+0100\n"
+"PO-Revision-Date: 2015-12-30 13:41+0100\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -8124,7 +8124,7 @@ msgstr "Megjelenési korlát ennyivel"
 #. I18N: You need to:
 #: login.php:569
 msgid "Link the user account to an individual."
-msgstr "A felhasználói fiók egy személyhez rendelése."
+msgstr "Rendelje a felhasználói fiókot egy személyhez."
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:983
 #: edit_interface.php:1043
@@ -11952,7 +11952,7 @@ msgstr "Hivatkozás beállítása"
 #. I18N: You need to:
 #: login.php:567
 msgid "Set the access level for each tree."
-msgstr "Jogosultsági szint beállítása minden egyes fához."
+msgstr "Állítsa be a jogosultsági szintet az egyes fákhoz."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -13833,7 +13833,9 @@ msgstr "A fiók jóváhagyása még nem történt meg. Kis türelmet kérünk, a
 
 #: login.php:84
 msgid "This account has not been verified.  Please check your email for a verification message."
-msgstr "E fióknak ellenőrzése még nem történt meg. Kérjük, keresse az e-mail fiókjában az ellenőrző üzenetet."
+msgstr ""
+"E fiók ellenőrzése még nem történt meg. Kérjük, keresse az e-mail fiókjában "
+"az ellenőrző üzenetet."
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
@@ -14281,8 +14283,8 @@ msgstr ""
 #: gedrecord.php:82
 msgid "This record has been edited.  The changes need to be reviewed by a moderator."
 msgstr ""
-"E bejegyzést szerkesztették. A változtatást egy webhelykezelőnek felül kell "
-"vizsgálnia."
+"Ezt a bejegyzést szerkesztették. A változtatást egy webhelykezelőnek felül "
+"kell vizsgálnia."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: gedrecord.php:73
@@ -14390,7 +14392,7 @@ msgstr "Ilyen típusú hivatkozás itt nem megengedett."
 
 #: login.php:119
 msgid "This user account does not have access to any tree."
-msgstr "E felhasználó nem férhet hozzá egyik fához sem."
+msgstr "Ez a felhasználó nem férhet hozzá egyik fához sem."
 
 #: setup.php:204
 msgid "This usually means that you need to change the folder permissions to 777."
