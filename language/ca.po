@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2015-12-30 13:14+0100\n"
+"PO-Revision-Date: 2015-12-30 13:15+0100\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
@@ -8123,7 +8123,7 @@ msgstr "Límit de visualització per"
 #. I18N: You need to:
 #: login.php:569
 msgid "Link the user account to an individual."
-msgstr "Enllaça el compte d'usuari a una persona"
+msgstr "Enllaça el compte d'usuari a una persona."
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:983
 #: edit_interface.php:1043
