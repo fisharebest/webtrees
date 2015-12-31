@@ -93,8 +93,8 @@ echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 
 if (!isset($_POST['lang'])) {
 	$installed_languages = array();
-	foreach (I18N::installedLocales() as $locale) {
-		$installed_languages[$locale->languageTag()] = $locale->endonym();
+	foreach (I18N::installedLocales() as $installed_locale) {
+		$installed_languages[$installed_locale->languageTag()] = $installed_locale->endonym();
 	}
 
 	echo
