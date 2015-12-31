@@ -116,7 +116,24 @@ if ($cal_date->d > $days_in_month && $view === 'day') {
 }
 echo '<div id="calendar-page">';
 
-// Calendar form
+
+// All further uses of $cal are to generate URLs
+$cal = rawurlencode($cal);
+
+echo '<table class="facts_table width100"><tr><td class="facts_label">';
+switch ($view) {
+case 'day':
+	echo '<h2>', I18N::translate('On this day…'), ' ', $ged_date->display(), '</h2>';
+	break;
+case 'month':
+	echo '<h2>', I18N::translate('In this month…'), ' ', $ged_date->display(false, '%F %Y'), '</h2>';
+	break;
+case 'year':
+	echo '<h2>', I18N::translate('In this year…'), ' ', $ged_date->display(false, '%Y'), '</h2>';
+	break;
+}
+echo '</td></tr></table>';
+
 echo '<form name="dateform">';
 echo '<input type="hidden" name="cal" value="', $cal, '">';
 echo '<input type="hidden" name="day" value="', $cal_date->d, '">';
@@ -127,23 +144,6 @@ echo '<input type="hidden" name="filterev" value="', $filterev, '">';
 echo '<input type="hidden" name="filtersx" value="', $filtersx, '">';
 echo '<input type="hidden" name="filterof" value="', $filterof, '">';
 echo '<table class="facts_table width100">';
-echo '<tr><td class="facts_label" colspan="4"><h2>';
-
-// All further uses of $cal are to generate URLs
-$cal = rawurlencode($cal);
-
-switch ($view) {
-case 'day':
-	echo I18N::translate('On this day…') . '<br>' . $ged_date->display();
-	break;
-case 'month':
-	echo I18N::translate('In this month…') . '<br>' . $ged_date->display(false, '%F %Y');
-	break;
-case 'year':
-	echo I18N::translate('In this year…') . '<br>' . $ged_date->display(false, '%Y');
-	break;
-}
-echo '</h2></td></tr>';
 
 // Day selector
 echo '<tr><td class="descriptionbox vmiddle">';
@@ -324,7 +324,7 @@ echo '>', I18N::translate('Custom event'), '</option>';
 echo '</select>';
 
 echo '</td></tr>';
-echo '</table></form>';
+echo '</table>';
 echo '<table class="width100">';
 
 // Day/Month/Year and calendar selector
@@ -362,7 +362,7 @@ foreach (Date::calendarNames() as $newcal => $cal_name) {
 	}
 }
 echo '</td></tr>';
-echo '</table>';
+echo '</table></form>';
 
 // Convert event filter option to a list of gedcom event codes
 if ($filterev === 'all') {
@@ -507,16 +507,18 @@ case 'month':
 		$weekend_start = -1;
 		$weekend_end   = -1;
 	}
-	echo '<table class="list_table width100"><tr>';
+	echo '<table class="width100"><thead><tr>';
 	for ($week_day = 0; $week_day < $days_in_week; ++$week_day) {
 		$day_name = $cal_date->dayNames(($week_day + $week_start) % $days_in_week);
 		if ($week_day == $weekend_start || $week_day == $weekend_end) {
-			echo '<td class="descriptionbox weekend" width="' . (100 / $days_in_week) . '%">', $day_name, '</td>';
+			echo '<th class="descriptionbox weekend" width="' . (100 / $days_in_week) . '%">', $day_name, '</th>';
 		} else {
-			echo '<td class="descriptionbox" width="' . (100 / $days_in_week) . '%">', $day_name, '</td>';
+			echo '<th class="descriptionbox" width="' . (100 / $days_in_week) . '%">', $day_name, '</th>';
 		}
 	}
 	echo '</tr>';
+	echo '</thead>';
+	echo '<tbody>';
 	// Print days 1-n of the month...
 	// ...but extend to cover "empty" days before/after the month to make whole weeks.
 	// e.g. instead of 1 -> 30 (=30 days), we might have -1 -> 33 (=35 days)
@@ -589,6 +591,7 @@ case 'month':
 			echo '</tr>';
 		}
 	}
+	echo '</tbody>';
 	echo '</table>';
 	break;
 }
