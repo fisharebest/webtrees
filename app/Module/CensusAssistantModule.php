@@ -373,32 +373,41 @@ class CensusAssistantModule extends AbstractModule {
 	/**
 	 * Generate an HTML row of data for the census header
 	 *
+	 * Add prefix cell (store XREF and drag/drop)
+	 * Add suffix cell (delete button)
+	 *
 	 * @param CensusInterface $census
 	 *
 	 * @return string
 	 */
 	public static function censusTableHeader(CensusInterface $census) {
-		$html = '<th></th>'; // hidden column - used to save data
+		$html = '';
 		foreach ($census->columns() as $column) {
 			$html .= '<th title="' . $column->title() . '">' . $column->abbreviation() . '</th>';
 		}
 
-		return '<tr>' . $html . '</tr>';
+		return '<tr><th hidden></th>' . $html . '<th></th></th></tr>';
 	}
 
 	/**
 	 * Generate an HTML row of data for the census
+	 *
+	 * Add prefix cell (store XREF and drag/drop)
+	 * Add suffix cell (delete button)
 	 *
 	 * @param CensusInterface $census
 	 *
 	 * @return string
 	 */
 	public static function censusTableEmptyRow(CensusInterface $census) {
-		return '<tr><td></td>' . str_repeat('<td><input type="text"></td>', count($census->columns())) . '</tr>';
+		return '<tr><td hidden></td>' . str_repeat('<td><input type="text"></td>', count($census->columns())) . '<td><a class="icon-remove" href="#" title="' . I18N::translate('Remove') . '"></a></td></tr>';
 	}
 
 	/**
 	 * Generate an HTML row of data for the census
+	 *
+	 * Add prefix cell (store XREF and drag/drop)
+	 * Add suffix cell (delete button)
 	 *
 	 * @param CensusInterface $census
 	 * @param Individual      $individual
@@ -407,12 +416,12 @@ class CensusAssistantModule extends AbstractModule {
 	 * @return string
 	 */
 	public static function censusTableRow(CensusInterface $census, Individual $individual, Individual $head = null) {
-		$html = '<td>' . $individual->getXref() . '</td>';
+		$html = '';
 		foreach ($census->columns() as $column) {
 			$html .= '<td><input type="text" value="' . $column->generate($individual, $head) . '"></td>';
 		}
 
-		return '<tr>' . $html . '</tr>';
+		return '<tr><td hidden>' . $individual->getXref() . '</td>' . $html . '<td><a class="icon-remove" href="#" title="' . I18N::translate('Remove') . '"></a></td></tr>';
 	}
 
 	/**
