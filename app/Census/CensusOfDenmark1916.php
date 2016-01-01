@@ -35,17 +35,18 @@ class CensusOfDenmark1916 extends CensusOfDenmark implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this, '', ''),
-			new CensusColumnBirthDate($this, '', ''),
-			new CensusColumnSexMF($this, '', ''),
-			new CensusColumnConditionEnglish($this, '', ''),
-			new CensusColumnRelationToHead($this, '', ''),
-			new CensusColumnOccupation($this, '', ''),
-			new CensusColumnBirthPlace($this, '', ''),
-			new CensusColumnNull($this, '', ''), // religion
-			new CensusColumnNull($this, '', ''), // employment
-			new CensusColumnNull($this, '', ''), // handicaps
-			new CensusColumnNull($this, '', ''), // savings
+			new CensusColumnFullName($this, 'Navn', 'Samtlige Personers Navn (ogsaa Fornavn). Ved Børn, endnu uden Navn, sættes „Dreng“ eller „Pige“. Midlertidig fraværerade Personer anføres ikke her, men paa Skemaeta Bagside)'),
+			new CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M) eller Kvindekøn (K).'),
+			new CensusColumnBirthDaySlashMonthYear($this, 'Fødselsdag', 'Føderlsaar og Føderladag.'),
+			new CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
+			new CensusColumnReligion($this, 'Trossamfund', 'Trossamfund (Folkekirken eller Navnet paa det Trossamfund, man tilhører, eller „udenfor Trossamfund“).'),
+			new CensusColumnBirthPlace($this, 'Fødested', ''),
+			new CensusColumnNull($this, '', ''),
+			new CensusColumnNull($this, '', ''),
+			new CensusColumnRelationToHead($this, 'Stilling i familien', 'Stilling i Familien: Husfader, Husmoder, Barn, Slangtning o.l., Tjenestetyende, Logerende, Pensioner'),
+			new CensusColumnOccupation($this, 'Erhverv', ''),
+			new CensusColumnNull($this, '', ''),
+			new CensusColumnNull($this, 'Anmærkninger', 'Anmærkninger.'),
 		);
 	}
 }
