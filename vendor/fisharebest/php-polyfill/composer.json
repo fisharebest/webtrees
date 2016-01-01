@@ -19,7 +19,8 @@
 	],
 	"require": {
 		"fisharebest/ext-calendar": "~2.2",
-		"symfony/polyfill": "~1.0"
+		"jakeasmith/http_build_url": "~0.1",
+		"symfony/polyfill": "1.0.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "*",

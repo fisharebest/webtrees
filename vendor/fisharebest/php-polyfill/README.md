@@ -4,8 +4,12 @@
 PHP Polyfill
 ============
 
-This project is a complement to [symfony/polyfill](https://github.com/symfony/polyfill)
-and provides some additional functions and workarounds.
+This project combines a number of other PHP polyfill libraries as well as
+providing many polyfills of its own.
+
+Where possible, our polyfills are passed upstream to other packages.
+Ideally, there would be no code in this package - just a list of
+dependencies that work together.
 
 The symfony project will only accept contributions that are 100% compatible
 with the native PHP implementation.  In many cases, this isn't actually
@@ -14,9 +18,6 @@ possible - it’s often why the functions were added to PHP in the first place!
 So, this project provides implementations that are often “good enough” to get
 your application working on old servers.  Restrictions and limitations are
 described below.
-
-Any functions that are subsequently added to symfony/polyfill will be removed
-from here.
 
 Usage
 =====
@@ -38,6 +39,9 @@ The following polyfill libraries will be loaded automatically:
    - `ircmaxell/password_compat` - polyfills for password functions
    - `paragonie/random_compat` - polfills for random number functions
  - `fisharebest/ext-calendar` - polyfills for the calendar library functions
+ - `jakeasmith/http_build_url` - polyfill for the function `http_build_url()`
+ 
+The following polyfills are provided by this package:
 
 PHP 5.3
 =======

@@ -19,6 +19,7 @@ return array(
     '299b3c040b39cb03c6eceb9bb272ad1d' => $vendorDir . '/symfony/polyfill/src/Intl/Normalizer/bootstrap.php',
     'e59f725579f9974327c76777296d6dcc' => $vendorDir . '/symfony/polyfill/src/Mbstring/bootstrap.php',
     '17dde14e168d8aa5de531eefe5689d6b' => $vendorDir . '/symfony/polyfill/src/Xml/bootstrap.php',
+    'b45b351e6b6f7487d819961fef2fda77' => $vendorDir . '/jakeasmith/http_build_url/src/http_build_url.php',
     '2cffec82183ee1cea088009cef9a6fc3' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     'd242c324488a3873d00844a6f8dec437' => $vendorDir . '/fisharebest/php-polyfill/src/bootstrap.php',
 );

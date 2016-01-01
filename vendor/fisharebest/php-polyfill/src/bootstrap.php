@@ -28,11 +28,11 @@ if (PHP_VERSION_ID < 50600) {
 	}
 
 	if (PHP_VERSION_ID < 50400) {
-		// Magic quotes were deprecated in PHP5.3 and removed in PHP5.4
+		// Magic quotes were removed in PHP 5.4
 		if (get_magic_quotes_gpc()) {
 			Php54::removeMagicQuotes();
 		}
-		// The global session variable bug/feature was removed in PHP5.4
+		// The global session variable bug/feature was removed in PHP 5.4
 		if (ini_get('session.bug_compat_42')) {
 			ini_set('session.bug_compat_42', '0');
 		}

@@ -354,59 +354,6 @@
         ]
     },
     {
-        "name": "michelf/php-markdown",
-        "version": "1.5.0",
-        "version_normalized": "1.5.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/michelf/php-markdown.git",
-            "reference": "e1aabe18173231ebcefc90e615565742fc1c7fd9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/michelf/php-markdown/zipball/e1aabe18173231ebcefc90e615565742fc1c7fd9",
-            "reference": "e1aabe18173231ebcefc90e615565742fc1c7fd9",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2015-03-01 12:03:08",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-lib": "1.4.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Michelf": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "John Gruber",
-                "homepage": "http://daringfireball.net/"
-            },
-            {
-                "name": "Michel Fortin",
-                "email": "michel.fortin@michelf.ca",
-                "homepage": "https://michelf.ca/",
-                "role": "Developer"
-            }
-        ],
-        "description": "PHP Markdown",
-        "homepage": "https://michelf.ca/projects/php-markdown/",
-        "keywords": [
-            "markdown"
-        ]
-    },
-    {
         "name": "rhumsaa/uuid",
         "version": "2.8.2",
         "version_normalized": "2.8.2.0",
@@ -628,18 +575,68 @@
         ]
     },
     {
-        "name": "symfony/intl",
-        "version": "v2.8.0",
-        "version_normalized": "2.8.0.0",
+        "name": "paragonie/random_compat",
+        "version": "1.1.4",
+        "version_normalized": "1.1.4.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/intl.git",
-            "reference": "3317b9125e4da6b5dd3427538a4abe511601f379"
+            "url": "https://github.com/paragonie/random_compat.git",
+            "reference": "d762ee5b099a29044603cd4649851e81aa66cb47"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/intl/zipball/3317b9125e4da6b5dd3427538a4abe511601f379",
-            "reference": "3317b9125e4da6b5dd3427538a4abe511601f379",
+            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/d762ee5b099a29044603cd4649851e81aa66cb47",
+            "reference": "d762ee5b099a29044603cd4649851e81aa66cb47",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*|5.*"
+        },
+        "suggest": {
+            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+        },
+        "time": "2015-12-10 14:48:13",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/random.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Paragon Initiative Enterprises",
+                "email": "security@paragonie.com",
+                "homepage": "https://paragonie.com"
+            }
+        ],
+        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+        "keywords": [
+            "csprng",
+            "pseudorandom",
+            "random"
+        ]
+    },
+    {
+        "name": "symfony/intl",
+        "version": "v2.8.1",
+        "version_normalized": "2.8.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/intl.git",
+            "reference": "3bac8c613f94f8e497d4da6a8c439839e0ebd7b4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/intl/zipball/3bac8c613f94f8e497d4da6a8c439839e0ebd7b4",
+            "reference": "3bac8c613f94f8e497d4da6a8c439839e0ebd7b4",
             "shasum": ""
         },
         "require": {
@@ -653,7 +650,7 @@
         "suggest": {
             "ext-intl": "to use the component with locales other than \"en\""
         },
-        "time": "2015-11-18 13:45:00",
+        "time": "2015-12-05 11:09:21",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -706,35 +703,29 @@
         ]
     },
     {
-        "name": "paragonie/random_compat",
-        "version": "1.1.4",
-        "version_normalized": "1.1.4.0",
+        "name": "jakeasmith/http_build_url",
+        "version": "0.1.5",
+        "version_normalized": "0.1.5.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/paragonie/random_compat.git",
-            "reference": "d762ee5b099a29044603cd4649851e81aa66cb47"
+            "url": "https://github.com/jakeasmith/http_build_url.git",
+            "reference": "9d84710feab0f3d7c04c1e11dccef30ee350aad6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/d762ee5b099a29044603cd4649851e81aa66cb47",
-            "reference": "d762ee5b099a29044603cd4649851e81aa66cb47",
+            "url": "https://api.github.com/repos/jakeasmith/http_build_url/zipball/9d84710feab0f3d7c04c1e11dccef30ee350aad6",
+            "reference": "9d84710feab0f3d7c04c1e11dccef30ee350aad6",
             "shasum": ""
         },
-        "require": {
-            "php": ">=5.2.0"
-        },
         "require-dev": {
-            "phpunit/phpunit": "4.*|5.*"
+            "phpunit/phpunit": "~3.7"
         },
-        "suggest": {
-            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
-        },
-        "time": "2015-12-10 14:48:13",
+        "time": "2014-11-17 16:24:50",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "files": [
-                "lib/random.php"
+                "src/http_build_url.php"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -743,42 +734,37 @@
         ],
         "authors": [
             {
-                "name": "Paragon Initiative Enterprises",
-                "email": "security@paragonie.com",
-                "homepage": "https://paragonie.com"
+                "name": "Jake A. Smith",
+                "email": "theman@jakeasmith.com"
             }
         ],
-        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
-        "keywords": [
-            "csprng",
-            "pseudorandom",
-            "random"
-        ]
+        "description": "Provides functionality for http_build_url() to environments without pecl_http."
     },
     {
         "name": "fisharebest/php-polyfill",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/fisharebest/php-polyfill.git",
-            "reference": "5b3e0dfab0d9086d98373bca34daeb52f6c6de47"
+            "reference": "96d9a33f2394aaf50e32f8e9c8a163f13e733e90"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/php-polyfill/zipball/5b3e0dfab0d9086d98373bca34daeb52f6c6de47",
-            "reference": "5b3e0dfab0d9086d98373bca34daeb52f6c6de47",
+            "url": "https://api.github.com/repos/fisharebest/php-polyfill/zipball/96d9a33f2394aaf50e32f8e9c8a163f13e733e90",
+            "reference": "96d9a33f2394aaf50e32f8e9c8a163f13e733e90",
             "shasum": ""
         },
         "require": {
             "fisharebest/ext-calendar": "~2.2",
-            "symfony/polyfill": "~1.0"
+            "jakeasmith/http_build_url": "~0.1",
+            "symfony/polyfill": "1.0.0"
         },
         "require-dev": {
             "phpunit/phpunit": "*",
             "satooshi/php-coveralls": "dev-master"
         },
-        "time": "2015-12-18 09:19:37",
+        "time": "2015-12-21 11:33:12",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -807,6 +793,59 @@
             "php",
             "polyfill",
             "shim"
+        ]
+    },
+    {
+        "name": "michelf/php-markdown",
+        "version": "1.6.0",
+        "version_normalized": "1.6.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/michelf/php-markdown.git",
+            "reference": "156e56ee036505ec637d761ee62dc425d807183c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/michelf/php-markdown/zipball/156e56ee036505ec637d761ee62dc425d807183c",
+            "reference": "156e56ee036505ec637d761ee62dc425d807183c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2015-12-24 01:37:31",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-lib": "1.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Michelf": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Michel Fortin",
+                "email": "michel.fortin@michelf.ca",
+                "homepage": "https://michelf.ca/",
+                "role": "Developer"
+            },
+            {
+                "name": "John Gruber",
+                "homepage": "https://daringfireball.net/"
+            }
+        ],
+        "description": "PHP Markdown",
+        "homepage": "https://michelf.ca/projects/php-markdown/",
+        "keywords": [
+            "markdown"
         ]
     }
 ]
