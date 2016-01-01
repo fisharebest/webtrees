@@ -36,18 +36,18 @@ class CensusColumnBirthDaySlashMonthYearTest extends \PHPUnit_Framework_TestCase
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testGenerateColumn() {
-		$cal_date = Mockery::mock(Date\CalendarDate::class);
+		$cal_date = Mockery::mock('Fisharebest\Webtrees\Date\CalendarDate');
 		$cal_date->shouldReceive('format')->andReturn('30/6 1832');
 
-		$date = Mockery::mock(Date::class);
+		$date = Mockery::mock('Fisharebest\Webtrees\Date');
 		$date->shouldReceive('minimumJulianDay')->andReturn($cal_date);
 		$date->shouldReceive('maximumJulianDay')->andReturn($cal_date);
 		$date->shouldReceive('minimumDate')->andReturn($cal_date);
 
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthDate')->andReturn($date);
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
 
 		$column = new CensusColumnBirthDaySlashMonthYear($census, '', '');

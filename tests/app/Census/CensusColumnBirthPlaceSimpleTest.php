@@ -35,10 +35,10 @@ class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testForeignCountry() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('Westminster, London, England');
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('United States');
 
 		$column = new CensusColumnBirthPlaceSimple($census, '', '');
@@ -51,10 +51,10 @@ class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testJustCountry() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('United States');
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('United States');
 
 		$column = new CensusColumnBirthPlaceSimple($census, '', '');
@@ -67,10 +67,10 @@ class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testKnownState() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('Maryland, United States');
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('United States');
 
 		$column = new CensusColumnBirthPlaceSimple($census, '', '');
@@ -83,10 +83,10 @@ class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testKnownStateAndTown() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('Miami, Florida, United States');
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('United States');
 
 		$column = new CensusColumnBirthPlaceSimple($census, '', '');

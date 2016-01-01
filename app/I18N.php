@@ -352,6 +352,8 @@ class I18N {
 	public static function init($code = null) {
 		global $WT_TREE;
 
+		mb_internal_encoding('UTF-8');
+
 		if ($code !== null) {
 			// Create the specified locale
 			self::$locale = Locale::create($code);
@@ -678,7 +680,7 @@ class I18N {
 	 */
 	public static function strtolower($string) {
 		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
-			$string = strtr($string, ['I' => 'ı', 'İ' => 'i']);
+			$string = strtr($string, array('I' => 'ı', 'İ' => 'i'));
 		}
 
 		return mb_strtolower($string);
@@ -695,7 +697,7 @@ class I18N {
 	 */
 	public static function strtoupper($string) {
 		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
-			$string = strtr($string, ['ı' => 'I', 'i' => 'İ']);
+			$string = strtr($string, array('ı' => 'I', 'i' => 'İ'));
 		}
 
 		return mb_strtoupper($string);

@@ -43,12 +43,12 @@ class CensusOfEngland1841Test extends \PHPUnit_Framework_TestCase {
 		$columns = $census->columns();
 
 		$this->assertCount(6, $columns);
-		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-		$this->assertInstanceOf(CensusColumnAgeMale5Years::class, $columns[1]);
-		$this->assertInstanceOf(CensusColumnAgeFemale5Years::class, $columns[2]);
-		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[3]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[4]);
-		$this->assertInstanceOf(CensusColumnBornForeignParts::class, $columns[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAgeMale5Years', $columns[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAgeFemale5Years', $columns[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBornForeignParts', $columns[5]);
 
 		$this->assertSame('Name', $columns[0]->abbreviation());
 		$this->assertSame('AgeM', $columns[1]->abbreviation());

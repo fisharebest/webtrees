@@ -24,7 +24,7 @@
 		"fabpot/php-cs-fixer": "*",
 		"mockery/mockery": "*",
 		"phpunit/phpunit": "*",
-		"satooshi/php-coveralls": "dev-master"
+		"satooshi/php-coveralls": "~1.0"
 	},
 	"extra": {
 		"branch-alias": {

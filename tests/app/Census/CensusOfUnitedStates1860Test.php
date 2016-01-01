@@ -43,18 +43,18 @@ class CensusOfUnitedStates1860Test extends \PHPUnit_Framework_TestCase {
 		$columns = $census->columns();
 
 		$this->assertCount(12, $columns);
-		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-		$this->assertInstanceOf(CensusColumnAge::class, $columns[1]);
-		$this->assertInstanceOf(CensusColumnSexMF::class, $columns[2]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[3]);
-		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[4]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[5]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[6]);
-		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[7]);
-		$this->assertInstanceOf(CensusColumnMarriedWithinYear::class, $columns[8]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[9]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[10]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[11]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAge', $columns[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSexMF', $columns[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[6]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlace', $columns[7]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnMarriedWithinYear', $columns[8]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[9]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[10]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[11]);
 
 		$this->assertSame('Name', $columns[0]->abbreviation());
 		$this->assertSame('Age', $columns[1]->abbreviation());

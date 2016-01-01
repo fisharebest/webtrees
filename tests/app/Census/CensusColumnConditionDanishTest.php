@@ -38,10 +38,10 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoSpouseFamilies() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getSpouseFamilies')->andReturn(array());
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
 		$column = new CensusColumnConditionDanish($census, '', '');
 
@@ -53,14 +53,14 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoFamilyNoFacts() {
-		$family = Mockery::mock(Family::class);
+		$family = Mockery::mock('Fisharebest\Webtrees\Family');
 		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
 		$family->shouldReceive('getFacts')->andReturn(array());
 
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
 		$column = new CensusColumnConditionDanish($census, '', '');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
@@ -73,16 +73,16 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoFamilyUnmarried() {
-		$fact = Mockery::mock(Fact::class);
+		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
 
-		$family = Mockery::mock(Family::class);
+		$family = Mockery::mock('Fisharebest\Webtrees\Family');
 		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
 		$family->shouldReceive('getFacts')->with('_NMR')->andReturn(array($fact));
 
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
 		$column = new CensusColumnConditionDanish($census, '', '');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
@@ -95,17 +95,17 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoFamilyDivorced() {
-		$fact = Mockery::mock(Fact::class);
+		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
 
-		$family = Mockery::mock(Family::class);
+		$family = Mockery::mock('Fisharebest\Webtrees\Family');
 		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
 		$family->shouldReceive('getFacts')->with('_NMR')->andReturn(array());
 		$family->shouldReceive('getFacts')->with('DIV')->andReturn(array($fact));
 
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
 		$column = new CensusColumnConditionDanish($census, '', '');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');

@@ -43,7 +43,7 @@ class CensusOfFrance1911Test extends \PHPUnit_Framework_TestCase {
 		$columns = $census->columns();
 
 		$this->assertCount(1, $columns);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[0]);
 
 		$this->assertSame('XXXX', $columns[0]->abbreviation());
 

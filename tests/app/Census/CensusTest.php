@@ -27,11 +27,11 @@ class CensusTest extends \PHPUnit_Framework_TestCase {
 		$censuses = Census::allCensusPlaces();
 
 		$this->assertCount(6, $censuses);
-		$this->assertInstanceOf(CensusOfDenmark::class, $censuses[0]);
-		$this->assertInstanceOf(CensusOfEngland::class, $censuses[1]);
-		$this->assertInstanceOf(CensusOfFrance::class, $censuses[2]);
-		$this->assertInstanceOf(CensusOfScotland::class, $censuses[3]);
-		$this->assertInstanceOf(CensusOfUnitedStates::class, $censuses[4]);
-		$this->assertInstanceOf(CensusOfWales::class, $censuses[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark', $censuses[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland', $censuses[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfFrance', $censuses[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland', $censuses[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates', $censuses[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales', $censuses[5]);
 	}
 }

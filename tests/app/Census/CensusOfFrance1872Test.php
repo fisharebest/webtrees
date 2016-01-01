@@ -43,13 +43,13 @@ class CensusOfFrance1872Test extends \PHPUnit_Framework_TestCase {
 		$columns = $census->columns();
 
 		$this->assertCount(7, $columns);
-		$this->assertInstanceOf(CensusColumnSurname::class, $columns[0]);
-		$this->assertInstanceOf(CensusColumnGivenNames::class, $columns[1]);
-		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[2]);
-		$this->assertInstanceOf(CensusColumnAge::class, $columns[3]);
-		$this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[4]);
-		$this->assertInstanceOf(CensusColumnNationality::class, $columns[5]);
-		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[6]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSurname', $columns[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnGivenNames', $columns[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAge', $columns[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionEnglish', $columns[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNationality', $columns[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlace', $columns[6]);
 
 		$this->assertSame('XXXX', $columns[0]->abbreviation());
 		$this->assertSame('XXXX', $columns[1]->abbreviation());

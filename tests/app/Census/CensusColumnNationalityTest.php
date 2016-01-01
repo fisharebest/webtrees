@@ -38,11 +38,11 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testPlaceCountry() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('Australia');
 		$individual->shouldReceive('getFacts')->andReturn(array());
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('England');
 
 		$column = new CensusColumnNationality($census, '', '');
@@ -55,11 +55,11 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testBritish() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('London, England');
 		$individual->shouldReceive('getFacts')->andReturn(array());
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('England');
 
 		$column = new CensusColumnNationality($census, '', '');
@@ -72,25 +72,25 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testEmigrated() {
-		$place1 = Mockery::mock(Place::class);
+		$place1 = Mockery::mock('Fisharebest\Webtrees\Place');
 		$place1->shouldReceive('getGedcomName')->andReturn('United States');
 
-		$fact1 = Mockery::mock(Fact::class);
+		$fact1 = Mockery::mock('Fisharebest\Webtrees\Fact');
 		$fact1->shouldReceive('getPlace')->andReturn($place1);
 		$fact1->shouldReceive('getDate')->andReturn(new Date('1855'));
 
-		$place2 = Mockery::mock(Place::class);
+		$place2 = Mockery::mock('Fisharebest\Webtrees\Place');
 		$place2->shouldReceive('getGedcomName')->andReturn('Australia');
 
-		$fact2 = Mockery::mock(Fact::class);
+		$fact2 = Mockery::mock('Fisharebest\Webtrees\Fact');
 		$fact2->shouldReceive('getPlace')->andReturn($place2);
 		$fact2->shouldReceive('getDate')->andReturn(new Date('1865'));
 
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('London, England');
 		$individual->shouldReceive('getFacts')->andReturn(array($fact1, $fact2));
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('England');
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
 

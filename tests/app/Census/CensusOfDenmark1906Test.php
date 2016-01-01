@@ -43,20 +43,20 @@ class CensusOfDenmark1906Test extends \PHPUnit_Framework_TestCase {
 		$columns = $census->columns();
 
 		$this->assertCount(14, $columns);
-		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-		$this->assertInstanceOf(CensusColumnSexMK::class, $columns[1]);
-		$this->assertInstanceOf(CensusColumnBirthDaySlashMonthYear::class, $columns[2]);
-		$this->assertInstanceOf(CensusColumnConditionDanish::class, $columns[3]);
-		$this->assertInstanceOf(CensusColumnReligion::class, $columns[4]);
-		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[5]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[6]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
-		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[8]);
-		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[9]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[10]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[11]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[12]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[13]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSexMK', $columns[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthDaySlashMonthYear', $columns[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionDanish', $columns[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnReligion', $columns[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlace', $columns[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[6]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[7]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[8]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[9]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[10]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[11]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[12]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[13]);
 
 		$this->assertSame('Navn', $columns[0]->abbreviation());
 		$this->assertSame('Køn', $columns[1]->abbreviation());

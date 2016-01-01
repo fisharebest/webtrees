@@ -36,16 +36,16 @@ class CensusColumnMotherBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testKnownStateAndTown() {
-		$father = Mockery::mock(Individual::class);
+		$father = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$father->shouldReceive('getBirthPlace')->andReturn('Miami, Florida, United States');
 
-		$family = Mockery::mock(Family::class);
+		$family = Mockery::mock('Fisharebest\Webtrees\Family');
 		$family->shouldReceive('getWife')->andReturn($father);
 
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('United States');
 
 		$column = new CensusColumnMotherBirthPlaceSimple($census, '', '');

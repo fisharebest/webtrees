@@ -43,17 +43,17 @@ class CensusOfDenmark1950Test extends \PHPUnit_Framework_TestCase {
 		$columns = $census->columns();
 
 		$this->assertCount(11, $columns);
-		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-		$this->assertInstanceOf(CensusColumnBirthDate::class, $columns[1]);
-		$this->assertInstanceOf(CensusColumnSexMF::class, $columns[2]);
-		$this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[3]);
-		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[4]);
-		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[5]);
-		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[6]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[8]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[9]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[10]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthDate', $columns[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSexMF', $columns[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionEnglish', $columns[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlace', $columns[6]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[7]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[8]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[9]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[10]);
 
 		$this->assertSame('', $columns[0]->abbreviation());
 		$this->assertSame('', $columns[1]->abbreviation());
