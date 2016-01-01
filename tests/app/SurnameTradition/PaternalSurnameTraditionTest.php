@@ -170,6 +170,18 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Test new wife names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 */
+	public function testNewWifeNamesWithSpfx() {
+		$this->assertSame(
+			array('NAME' => '//', '_MARNM' => '/van der White/'),
+			$this->surname_tradition->newSpouseNames('John /van der White/', 'F')
+		);
+	}
+
+	/**
 	 * Test new spouse names
 	 *
 	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
