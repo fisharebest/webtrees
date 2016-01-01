@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
@@ -37,16 +36,16 @@ class CensusColumnBirthYearTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testGenerateColumn() {
-		$cal_date = Mockery::mock(Date\CalendarDate::class);
+		$cal_date = Mockery::mock('Fisharebest\Webtrees\Date\CalendarDate');
 		$cal_date->shouldReceive('format')->andReturn('1800');
 
-		$date = Mockery::mock(Date::class);
+		$date = Mockery::mock('Fisharebest\Webtrees\Date');
 		$date->shouldReceive('minimumDate')->andReturn($cal_date);
 
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getEstimatedBirthDate')->andReturn($date);
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
 
 		$column = new CensusColumnBirthYear($census, '', '');

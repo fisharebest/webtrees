@@ -237,7 +237,7 @@ class QueryName {
 	 * @param bool $fams   if set, only consider individuals with FAMS records
 	 * @param bool $totals if set, count the number of names beginning with each letter
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public static function surnameAlpha(Tree $tree, $marnm, $fams, $totals = true) {
 		$alphas = array();
@@ -313,7 +313,7 @@ class QueryName {
 	 * @param bool   $marnm  if set, include married names
 	 * @param bool   $fams   if set, only consider individuals with FAMS records
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public static function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams) {
 		$alphas = array();

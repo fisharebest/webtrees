@@ -92,7 +92,7 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewChildNamesWithNoParentsNames() {
 		$this->assertSame(
-			array('NAME' => '// //', 'SURN'=>''),
+			array('NAME' => '// //', 'SURN' => ''),
 			$this->surname_tradition->newChildNames('', '', 'U')
 		);
 	}

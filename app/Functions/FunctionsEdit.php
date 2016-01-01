@@ -557,7 +557,7 @@ class FunctionsEdit {
 			// Not all facts have help text.
 			switch ($fact) {
 			case 'NAME':
-				if ($upperlevel !== 'REPO') {
+				if ($upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') {
 					echo FunctionsPrint::helpLink($fact);
 				}
 				break;
@@ -696,7 +696,7 @@ class FunctionsEdit {
 				echo '>', $typeValue, '</option>';
 			}
 			echo '</select>';
-		} elseif (($fact === 'NAME' && $upperlevel !== 'REPO') || $fact === '_MARNM') {
+		} elseif (($fact === 'NAME' && $upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') || $fact === '_MARNM') {
 			// Populated in javascript from sub-tags
 			echo '<input type="hidden" id="', $element_id, '" name="', $element_name, '" onchange="updateTextName(\'', $element_id, '\');" value="', Filter::escapeHtml($value), '" class="', $fact, '">';
 			echo '<span id="', $element_id, '_display" dir="auto">', Filter::escapeHtml($value), '</span>';

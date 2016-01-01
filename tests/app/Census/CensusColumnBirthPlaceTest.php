@@ -14,10 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 use Mockery;
 
@@ -37,10 +35,10 @@ class CensusColumnBirthPlaceTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testPlaceCountry() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('Westminster, London, England');
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('England');
 
 		$column = new CensusColumnBirthPlace($census, '', '');
@@ -53,10 +51,10 @@ class CensusColumnBirthPlaceTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testPlaceAndCountry() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('England');
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('England');
 
 		$column = new CensusColumnBirthPlace($census, '', '');
@@ -69,10 +67,10 @@ class CensusColumnBirthPlaceTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testDifferentCountry() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('Paris, France');
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('England');
 
 		$column = new CensusColumnBirthPlace($census, '', '');

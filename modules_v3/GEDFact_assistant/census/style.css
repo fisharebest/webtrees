@@ -33,11 +33,6 @@
 	font-style: italic;
 }
 
-.table-census-inputs td:first-child,
-.table-census-inputs th:first-child {
-	display: none;
-}
-
 .table-census-inputs input {
 	width: 100%;
 	margin: 0;

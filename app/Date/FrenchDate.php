@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\I18N;
  * Definitions for the French Republican calendar
  */
 class FrenchDate extends CalendarDate {
-	/** @var integer[] Convert GEDCOM month names to month numbers  */
+	/** @var int[] Convert GEDCOM month names to month numbers  */
 	public static $MONTH_ABBREV = array('' => 0, 'VEND' => 1, 'BRUM' => 2, 'FRIM' => 3, 'NIVO' => 4, 'PLUV' => 5, 'VENT' => 6, 'GERM' => 7, 'FLOR' => 8, 'PRAI' => 9, 'MESS' => 10, 'THER' => 11, 'FRUC' => 12, 'COMP' => 13);
 
 	/**

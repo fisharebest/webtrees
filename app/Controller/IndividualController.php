@@ -47,18 +47,8 @@ class IndividualController extends GedcomRecordController {
 	/**
 	 * Startup activity
 	 */
-	public function __construct() {
-		global $WT_TREE;
-
-		$xref         = Filter::get('pid', WT_REGEX_XREF);
-		$this->record = Individual::getInstance($xref, $WT_TREE);
-
-		if (!$this->record && $WT_TREE->getPreference('USE_RIN')) {
-			$rin          = FunctionsDb::findRin($xref);
-			$this->record = Individual::getInstance($rin, $WT_TREE);
-		}
-
-		parent::__construct();
+	public function __construct($record) {
+		parent::__construct($record);
 
 		// If we can display the details, add them to the page header
 		if ($this->record && $this->record->canShow()) {

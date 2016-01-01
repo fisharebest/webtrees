@@ -1,5 +1,100 @@
 [
     {
+        "name": "pclzip/pclzip",
+        "version": "2.8.2",
+        "version_normalized": "2.8.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ivanlanin/pclzip.git",
+            "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ivanlanin/pclzip/zipball/19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
+            "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
+            "shasum": ""
+        },
+        "time": "2014-06-05 11:42:24",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "pclzip.lib.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.1"
+        ],
+        "authors": [
+            {
+                "name": "Vincent Blavet"
+            }
+        ],
+        "description": "A PHP library that offers compression and extraction functions for Zip formatted archives",
+        "homepage": "http://www.phpconcept.net/pclzip",
+        "keywords": [
+            "php",
+            "zip"
+        ]
+    },
+    {
+        "name": "bombayworks/zendframework1",
+        "version": "v1.12.17",
+        "version_normalized": "1.12.17.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bombayworks/zendframework1.git",
+            "reference": "864398ae144a5e11e59a1f17c3126ecbcdd56c91"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/864398ae144a5e11e59a1f17c3126ecbcdd56c91",
+            "reference": "864398ae144a5e11e59a1f17c3126ecbcdd56c91",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.11"
+        },
+        "replace": {
+            "zendframework/zendframework1": "self.version"
+        },
+        "require-dev": {
+            "phpunit/dbunit": "1.3.*",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2015-12-09 17:00:08",
+        "bin": [
+            "bin/zf.sh",
+            "bin/zf.php"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.12.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Zend_": "library/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "library/"
+        ],
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "Zend Framework 1",
+        "homepage": "http://framework.zend.com/",
+        "keywords": [
+            "ZF1",
+            "framework"
+        ]
+    },
+    {
         "name": "ezyang/htmlpurifier",
         "version": "v4.7.0",
         "version_normalized": "4.7.0.0",
@@ -97,17 +192,17 @@
     },
     {
         "name": "fisharebest/ext-calendar",
-        "version": "2.2.0",
-        "version_normalized": "2.2.0.0",
+        "version": "2.2.1",
+        "version_normalized": "2.2.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/fisharebest/ext-calendar.git",
-            "reference": "cbf6b8ce21469e2e3899a3a1f17e47d86f625fe7"
+            "reference": "2751c860b3ed7f9c1fca47944645337e8fa2b38a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/cbf6b8ce21469e2e3899a3a1f17e47d86f625fe7",
-            "reference": "cbf6b8ce21469e2e3899a3a1f17e47d86f625fe7",
+            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/2751c860b3ed7f9c1fca47944645337e8fa2b38a",
+            "reference": "2751c860b3ed7f9c1fca47944645337e8fa2b38a",
             "shasum": ""
         },
         "require": {
@@ -117,7 +212,7 @@
             "phpunit/phpunit": "*",
             "satooshi/php-coveralls": "*"
         },
-        "time": "2015-11-30 16:03:22",
+        "time": "2015-12-11 22:50:01",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -259,171 +354,18 @@
         ]
     },
     {
-        "name": "michelf/php-markdown",
-        "version": "1.5.0",
-        "version_normalized": "1.5.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/michelf/php-markdown.git",
-            "reference": "e1aabe18173231ebcefc90e615565742fc1c7fd9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/michelf/php-markdown/zipball/e1aabe18173231ebcefc90e615565742fc1c7fd9",
-            "reference": "e1aabe18173231ebcefc90e615565742fc1c7fd9",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2015-03-01 12:03:08",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-lib": "1.4.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Michelf": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "John Gruber",
-                "homepage": "http://daringfireball.net/"
-            },
-            {
-                "name": "Michel Fortin",
-                "email": "michel.fortin@michelf.ca",
-                "homepage": "https://michelf.ca/",
-                "role": "Developer"
-            }
-        ],
-        "description": "PHP Markdown",
-        "homepage": "https://michelf.ca/projects/php-markdown/",
-        "keywords": [
-            "markdown"
-        ]
-    },
-    {
-        "name": "patchwork/utf8",
-        "version": "v1.2.5",
-        "version_normalized": "1.2.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/tchwork/utf8.git",
-            "reference": "25a55c6c668de61cc3b97aab4237ebf6dadabe17"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/tchwork/utf8/zipball/25a55c6c668de61cc3b97aab4237ebf6dadabe17",
-            "reference": "25a55c6c668de61cc3b97aab4237ebf6dadabe17",
-            "shasum": ""
-        },
-        "require": {
-            "lib-pcre": ">=7.3",
-            "php": ">=5.3.0"
-        },
-        "suggest": {
-            "ext-iconv": "Use iconv for best performance",
-            "ext-intl": "Use Intl for best performance",
-            "ext-mbstring": "Use Mbstring for best performance",
-            "ext-wfio": "Use WFIO for UTF-8 filesystem access on Windows"
-        },
-        "time": "2015-10-14 08:58:12",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Patchwork\\": "src/Patchwork/"
-            },
-            "classmap": [
-                "src/Normalizer.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "(Apache-2.0 or GPL-2.0)"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            }
-        ],
-        "description": "Portable and performant UTF-8, Unicode and Grapheme Clusters for PHP",
-        "homepage": "https://github.com/tchwork/utf8",
-        "keywords": [
-            "grapheme",
-            "i18n",
-            "unicode",
-            "utf-8",
-            "utf8"
-        ]
-    },
-    {
-        "name": "pclzip/pclzip",
+        "name": "rhumsaa/uuid",
         "version": "2.8.2",
         "version_normalized": "2.8.2.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/ivanlanin/pclzip.git",
-            "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd"
+            "url": "https://github.com/ramsey/rhumsaa-uuid.git",
+            "reference": "9c1e2d34bdefd42608c612e08d6e1da1e13a3530"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ivanlanin/pclzip/zipball/19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
-            "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
-            "shasum": ""
-        },
-        "time": "2014-06-05 11:42:24",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "pclzip.lib.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-2.1"
-        ],
-        "authors": [
-            {
-                "name": "Vincent Blavet"
-            }
-        ],
-        "description": "A PHP library that offers compression and extraction functions for Zip formatted archives",
-        "homepage": "http://www.phpconcept.net/pclzip",
-        "keywords": [
-            "php",
-            "zip"
-        ]
-    },
-    {
-        "name": "ramsey/uuid",
-        "version": "2.8.3",
-        "version_normalized": "2.8.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ramsey/uuid.git",
-            "reference": "767a5b5f70cd990c04ef21d8374794d1a02fa9e8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ramsey/uuid/zipball/767a5b5f70cd990c04ef21d8374794d1a02fa9e8",
-            "reference": "767a5b5f70cd990c04ef21d8374794d1a02fa9e8",
+            "url": "https://api.github.com/repos/ramsey/rhumsaa-uuid/zipball/9c1e2d34bdefd42608c612e08d6e1da1e13a3530",
+            "reference": "9c1e2d34bdefd42608c612e08d6e1da1e13a3530",
             "shasum": ""
         },
         "require": {
@@ -446,7 +388,7 @@
             "moontoast/math": "Support for converting UUID to 128-bit integer (in string form).",
             "symfony/console": "Support for use of the bin/uuid command line tool."
         },
-        "time": "2015-08-31 13:34:50",
+        "time": "2015-07-23 19:00:41",
         "bin": [
             "bin/uuid"
         ],
@@ -471,13 +413,14 @@
                 "homepage": "http://benramsey.com"
             }
         ],
-        "description": "A PHP 5.3+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
-        "homepage": "https://github.com/ramsey/uuid",
+        "description": "NO LONGER MAINTAINED. Use ramsey/uuid instead. A PHP 5.3+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
+        "homepage": "https://github.com/ramsey/rhumsaa-uuid",
         "keywords": [
             "guid",
             "identifier",
             "uuid"
-        ]
+        ],
+        "abandoned": "ramsey/uuid"
     },
     {
         "name": "tecnickcom/tcpdf",
@@ -545,59 +488,364 @@
         ]
     },
     {
-        "name": "bombayworks/zendframework1",
-        "version": "v1.12.17",
-        "version_normalized": "1.12.17.0",
+        "name": "symfony/polyfill",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/bombayworks/zendframework1.git",
-            "reference": "864398ae144a5e11e59a1f17c3126ecbcdd56c91"
+            "url": "https://github.com/symfony/polyfill.git",
+            "reference": "fef21adc706d3bb8f31d37c503ded2160c76c64a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/864398ae144a5e11e59a1f17c3126ecbcdd56c91",
-            "reference": "864398ae144a5e11e59a1f17c3126ecbcdd56c91",
+            "url": "https://api.github.com/repos/symfony/polyfill/zipball/fef21adc706d3bb8f31d37c503ded2160c76c64a",
+            "reference": "fef21adc706d3bb8f31d37c503ded2160c76c64a",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.2.11"
+            "ircmaxell/password-compat": "~1.0",
+            "paragonie/random_compat": "~1.0",
+            "php": ">=5.3.3",
+            "symfony/intl": "~2.3|~3.0"
         },
         "replace": {
-            "zendframework/zendframework1": "self.version"
+            "symfony/polyfill-iconv": "self.version",
+            "symfony/polyfill-intl-grapheme": "self.version",
+            "symfony/polyfill-intl-icu": "self.version",
+            "symfony/polyfill-intl-normalizer": "self.version",
+            "symfony/polyfill-mbstring": "self.version",
+            "symfony/polyfill-php54": "self.version",
+            "symfony/polyfill-php55": "self.version",
+            "symfony/polyfill-php56": "self.version",
+            "symfony/polyfill-php70": "self.version",
+            "symfony/polyfill-util": "self.version",
+            "symfony/polyfill-xml": "self.version"
         },
-        "require-dev": {
-            "phpunit/dbunit": "1.3.*",
-            "phpunit/phpunit": "3.7.*"
-        },
-        "time": "2015-12-09 17:00:08",
-        "bin": [
-            "bin/zf.sh",
-            "bin/zf.php"
-        ],
+        "time": "2015-11-04 20:29:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.12.x-dev"
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Polyfill\\": "src/"
+            },
+            "files": [
+                "src/Php54/bootstrap.php",
+                "src/Php55/bootstrap.php",
+                "src/Php56/bootstrap.php",
+                "src/Php70/bootstrap.php",
+                "src/Iconv/bootstrap.php",
+                "src/Intl/Grapheme/bootstrap.php",
+                "src/Intl/Icu/bootstrap.php",
+                "src/Intl/Normalizer/bootstrap.php",
+                "src/Mbstring/bootstrap.php",
+                "src/Xml/bootstrap.php"
+            ],
+            "classmap": [
+                "src/Intl/Normalizer/Resources/stubs",
+                "src/Php70/Resources/stubs",
+                "src/Php54/Resources/stubs"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony polyfills backporting features to lower PHP versions",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "compat",
+            "compatibility",
+            "polyfill",
+            "shim"
+        ]
+    },
+    {
+        "name": "paragonie/random_compat",
+        "version": "1.1.4",
+        "version_normalized": "1.1.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/paragonie/random_compat.git",
+            "reference": "d762ee5b099a29044603cd4649851e81aa66cb47"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/d762ee5b099a29044603cd4649851e81aa66cb47",
+            "reference": "d762ee5b099a29044603cd4649851e81aa66cb47",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*|5.*"
+        },
+        "suggest": {
+            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+        },
+        "time": "2015-12-10 14:48:13",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/random.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Paragon Initiative Enterprises",
+                "email": "security@paragonie.com",
+                "homepage": "https://paragonie.com"
+            }
+        ],
+        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+        "keywords": [
+            "csprng",
+            "pseudorandom",
+            "random"
+        ]
+    },
+    {
+        "name": "symfony/intl",
+        "version": "v2.8.1",
+        "version_normalized": "2.8.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/intl.git",
+            "reference": "3bac8c613f94f8e497d4da6a8c439839e0ebd7b4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/intl/zipball/3bac8c613f94f8e497d4da6a8c439839e0ebd7b4",
+            "reference": "3bac8c613f94f8e497d4da6a8c439839e0ebd7b4",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.9",
+            "symfony/polyfill-intl-icu": "~1.0",
+            "symfony/polyfill-php54": "~1.0"
+        },
+        "require-dev": {
+            "symfony/filesystem": "~2.1|~3.0.0"
+        },
+        "suggest": {
+            "ext-intl": "to use the component with locales other than \"en\""
+        },
+        "time": "2015-12-05 11:09:21",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.8-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Intl\\": ""
+            },
+            "classmap": [
+                "Resources/stubs"
+            ],
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Bernhard Schussek",
+                "email": "bschussek@gmail.com"
+            },
+            {
+                "name": "Eriksen Costa",
+                "email": "eriksen.costa@infranology.com.br"
+            },
+            {
+                "name": "Igor Wiedler",
+                "email": "igor@wiedler.ch"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "A PHP replacement layer for the C intl extension that includes additional data from the ICU library.",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "i18n",
+            "icu",
+            "internationalization",
+            "intl",
+            "l10n",
+            "localization"
+        ]
+    },
+    {
+        "name": "jakeasmith/http_build_url",
+        "version": "0.1.5",
+        "version_normalized": "0.1.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jakeasmith/http_build_url.git",
+            "reference": "9d84710feab0f3d7c04c1e11dccef30ee350aad6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jakeasmith/http_build_url/zipball/9d84710feab0f3d7c04c1e11dccef30ee350aad6",
+            "reference": "9d84710feab0f3d7c04c1e11dccef30ee350aad6",
+            "shasum": ""
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~3.7"
+        },
+        "time": "2014-11-17 16:24:50",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/http_build_url.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jake A. Smith",
+                "email": "theman@jakeasmith.com"
+            }
+        ],
+        "description": "Provides functionality for http_build_url() to environments without pecl_http."
+    },
+    {
+        "name": "fisharebest/php-polyfill",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fisharebest/php-polyfill.git",
+            "reference": "96d9a33f2394aaf50e32f8e9c8a163f13e733e90"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fisharebest/php-polyfill/zipball/96d9a33f2394aaf50e32f8e9c8a163f13e733e90",
+            "reference": "96d9a33f2394aaf50e32f8e9c8a163f13e733e90",
+            "shasum": ""
+        },
+        "require": {
+            "fisharebest/ext-calendar": "~2.2",
+            "jakeasmith/http_build_url": "~0.1",
+            "symfony/polyfill": "1.0.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*",
+            "satooshi/php-coveralls": "dev-master"
+        },
+        "time": "2015-12-21 11:33:12",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Fisharebest\\PhpPolyfill\\": "src/"
+            },
+            "files": [
+                "src/bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT and GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Greg Roach",
+                "email": "fisharebest@gmail.com"
+            }
+        ],
+        "description": "Polyfills for PHP 5.3 onwards",
+        "homepage": "https://github.com/fisharebest/php-polyfill",
+        "keywords": [
+            "compat",
+            "compatibility",
+            "php",
+            "polyfill",
+            "shim"
+        ]
+    },
+    {
+        "name": "michelf/php-markdown",
+        "version": "1.6.0",
+        "version_normalized": "1.6.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/michelf/php-markdown.git",
+            "reference": "156e56ee036505ec637d761ee62dc425d807183c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/michelf/php-markdown/zipball/156e56ee036505ec637d761ee62dc425d807183c",
+            "reference": "156e56ee036505ec637d761ee62dc425d807183c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2015-12-24 01:37:31",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-lib": "1.4.x-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-0": {
-                "Zend_": "library/"
+                "Michelf": ""
             }
         },
         "notification-url": "https://packagist.org/downloads/",
-        "include-path": [
-            "library/"
-        ],
         "license": [
             "BSD-3-Clause"
         ],
-        "description": "Zend Framework 1",
-        "homepage": "http://framework.zend.com/",
+        "authors": [
+            {
+                "name": "Michel Fortin",
+                "email": "michel.fortin@michelf.ca",
+                "homepage": "https://michelf.ca/",
+                "role": "Developer"
+            },
+            {
+                "name": "John Gruber",
+                "homepage": "https://daringfireball.net/"
+            }
+        ],
+        "description": "PHP Markdown",
+        "homepage": "https://michelf.ca/projects/php-markdown/",
         "keywords": [
-            "ZF1",
-            "framework"
+            "markdown"
         ]
     }
 ]

@@ -18,7 +18,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
- * @global Tree   $WT_TREE
+ * @global Tree $WT_TREE
  */
 global $WT_TREE;
 
@@ -29,7 +29,8 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 define('WT_SCRIPT_NAME', 'family.php');
 require './includes/session.php';
 
-$controller = new FamilyController;
+$record = Family::getInstance(Filter::get('famid', WT_REGEX_XREF), $WT_TREE);
+$controller = new FamilyController($record);
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();

@@ -1486,7 +1486,7 @@ class Stats {
 	 * @param int    $parent
 	 * @param bool   $country
 	 *
-	 * @return integer[]|string[][]
+	 * @return int[]|string[][]
 	 */
 	public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false) {
 		if ($fact) {
@@ -6442,7 +6442,7 @@ class Stats {
 	 *
 	 * @link http://bendodson.com/news/google-extended-encoding-made-easy
 	 *
-	 * @param integer[] $a
+	 * @param int[] $a
 	 *
 	 * @return string
 	 */

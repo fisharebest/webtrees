@@ -197,8 +197,8 @@ case 'load_json':
 	$data = Database::prepare($sql_select)->execute($args)->fetchAll(PDO::FETCH_NUM);
 
 	$installed_languages = array();
-	foreach (I18N::installedLocales() as $locale) {
-		$installed_languages[$locale->languageTag()] = $locale->endonym();
+	foreach (I18N::installedLocales() as $installed_locale) {
+		$installed_languages[$installed_locale->languageTag()] = $installed_locale->endonym();
 	}
 
 	// Reformat various columns for display
@@ -408,9 +408,9 @@ case 'edit':
 			</label>
 			<div class="col-sm-9">
 				<select id="language" name="language" class="form-control">
-					<?php foreach (I18N::installedLocales() as $locale): ?>
-						<option value="<?php echo $locale->languageTag(); ?>" <?php echo $user->getPreference('language', WT_LOCALE) === $locale->languageTag() ? 'selected' : ''; ?>>
-							<?php echo $locale->endonym(); ?>
+					<?php foreach (I18N::installedLocales() as $installed_locale): ?>
+						<option value="<?php echo $installed_locale->languageTag(); ?>" <?php echo $user->getPreference('language', WT_LOCALE) === $installed_locale->languageTag() ? 'selected' : ''; ?>>
+							<?php echo $installed_locale->endonym(); ?>
 						</option>
 					<?php endforeach; ?>
 				</select>

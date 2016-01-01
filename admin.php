@@ -417,6 +417,8 @@ $old_files = array(
 	WT_ROOT . 'packages/jquery-1.11.2',
 	WT_ROOT . 'packages/jquery-2.1.3',
 	WT_ROOT . 'packages/moment-2.10.3',
+	// Removed in 1.7.3
+	WT_ROOT . 'includes/php_53_compatibility.php',
 );
 
 // Delete old files (if we can).

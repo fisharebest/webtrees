@@ -32,10 +32,10 @@ class Tree {
 	/** @var string The tree's title */
 	private $title;
 
-	/** @var integer[] Default access rules for facts in this tree */
+	/** @var int[] Default access rules for facts in this tree */
 	private $fact_privacy;
 
-	/** @var integer[] Default access rules for individuals in this tree */
+	/** @var int[] Default access rules for individuals in this tree */
 	private $individual_privacy;
 
 	/** @var integer[][] Default access rules for individual facts in this tree */
@@ -149,7 +149,7 @@ class Tree {
 	/**
 	 * The fact-level privacy for this tree.
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public function getFactPrivacy() {
 		return $this->fact_privacy;
@@ -158,7 +158,7 @@ class Tree {
 	/**
 	 * The individual-level privacy for this tree.
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public function getIndividualPrivacy() {
 		return $this->individual_privacy;
@@ -578,15 +578,16 @@ class Tree {
 	 */
 	public function exportGedcom($stream) {
 		$stmt = Database::prepare(
-			"SELECT i_gedcom AS gedcom FROM `##individuals` WHERE i_file = :tree_id_1" .
+			"SELECT i_gedcom AS gedcom, i_id AS xref, 1 AS n FROM `##individuals` WHERE i_file = :tree_id_1" .
 			" UNION ALL " .
-			"SELECT f_gedcom AS gedcom FROM `##families`    WHERE f_file = :tree_id_2" .
+			"SELECT f_gedcom AS gedcom, f_id AS xref, 2 AS n FROM `##families`    WHERE f_file = :tree_id_2" .
 			" UNION ALL " .
-			"SELECT s_gedcom AS gedcom FROM `##sources`     WHERE s_file = :tree_id_3" .
+			"SELECT s_gedcom AS gedcom, s_id AS xref, 3 AS n FROM `##sources`     WHERE s_file = :tree_id_3" .
 			" UNION ALL " .
-			"SELECT o_gedcom AS gedcom FROM `##other`       WHERE o_file = :tree_id_4 AND o_type NOT IN ('HEAD', 'TRLR')" .
+			"SELECT o_gedcom AS gedcom, o_id AS xref, 4 AS n FROM `##other`       WHERE o_file = :tree_id_4 AND o_type NOT IN ('HEAD', 'TRLR')" .
 			" UNION ALL " .
-			"SELECT m_gedcom AS gedcom FROM `##media`       WHERE m_file = :tree_id_5"
+			"SELECT m_gedcom AS gedcom, m_id AS xref, 5 AS n FROM `##media`       WHERE m_file = :tree_id_5" .
+			" ORDER BY n, LENGTH(xref), xref"
 		)->execute(array(
 			'tree_id_1' => $this->tree_id,
 			'tree_id_2' => $this->tree_id,

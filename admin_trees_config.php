@@ -641,9 +641,9 @@ $controller
 		</label>
 		<div class="col-sm-9">
 			<select id="LANGUAGE" name="LANGUAGE" class="form-control">
-				<?php foreach (I18N::activeLocales() as $locale): ?>
-					<option value="<?php echo $locale->languageTag(); ?>" <?php echo $WT_TREE->getPreference('LANGUAGE') === $locale->languageTag() ? 'selected' : ''; ?>>
-						<?php echo $locale->endonym(); ?>
+				<?php foreach (I18N::activeLocales() as $active_locale): ?>
+					<option value="<?php echo $active_locale->languageTag(); ?>" <?php echo $WT_TREE->getPreference('LANGUAGE') === $active_locale->languageTag() ? 'selected' : ''; ?>>
+						<?php echo $active_locale->endonym(); ?>
 					</option>
 				<?php endforeach; ?>
 			</select>

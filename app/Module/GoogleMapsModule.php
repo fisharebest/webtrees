@@ -2752,7 +2752,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @param int $numls
 	 * @param int $levelm
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	private function checkWhereAmI($numls, $levelm) {
 		$where_am_i = $this->placeIdToHierarchy($levelm);

@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
@@ -37,10 +36,10 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase 
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testBornWithinYear() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthDate')->andReturn(new Date('01 JAN 1860'));
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
 
 		$column = new CensusColumnMonthIfBornWithinYear($census, '', '');
@@ -53,10 +52,10 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase 
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNotBornWithinYear() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthDate')->andReturn(new Date('01 JAN 1859'));
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
 
 		$column = new CensusColumnMonthIfBornWithinYear($census, '', '');
@@ -69,10 +68,10 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase 
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoBirth() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthDate')->andReturn(new Date(''));
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
 
 		$column = new CensusColumnMonthIfBornWithinYear($census, '', '');

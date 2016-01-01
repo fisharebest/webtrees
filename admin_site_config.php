@@ -125,8 +125,8 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 );
 
 $language_tags = array();
-foreach (I18N::activeLocales() as $locale) {
-	$language_tags[] = $locale->languageTag();
+foreach (I18N::activeLocales() as $active_locale) {
+	$language_tags[] = $active_locale->languageTag();
 }
 
 switch (Filter::get('action')) {
@@ -632,11 +632,11 @@ $controller->pageHeader();
 				<?php echo /* I18N: A site configuration setting */ I18N::translate('Language'); ?>
 			</legend>
 			<div class="col-sm-9" style="columns: 4 150px;-moz-columns: 4 150px;">
-				<?php foreach (I18N::installedLocales() as $locale): ?>
+				<?php foreach (I18N::installedLocales() as $installed_locale): ?>
 					<div class="checkbox">
-						<label title="<?php echo $locale->languageTag(); ?>">
-							<input type="checkbox" name="LANGUAGES[]" value="<?php echo $locale->languageTag(); ?>" <?php echo in_array($locale->languageTag(), $language_tags) ? 'checked' : ''; ?>>
-							<?php echo $locale->endonym(); ?>
+						<label title="<?php echo $installed_locale->languageTag(); ?>">
+							<input type="checkbox" name="LANGUAGES[]" value="<?php echo $installed_locale->languageTag(); ?>" <?php echo in_array($installed_locale->languageTag(), $language_tags) ? 'checked' : ''; ?>>
+							<?php echo $installed_locale->endonym(); ?>
 						</label>
 					</div>
 				<?php endforeach; ?>

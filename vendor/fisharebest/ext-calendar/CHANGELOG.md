@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 2.2.1 (2015-12-11)
+ - HHVM tests failing
+
 ## 2.2.0 (2015-12-01)
  - Autoload shim functions
 

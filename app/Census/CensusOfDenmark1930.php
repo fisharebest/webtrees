@@ -35,17 +35,17 @@ class CensusOfDenmark1930 extends CensusOfDenmark implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this, 'TBC', 'To be confirmed'),
-			new CensusColumnBirthDate($this, 'TBC', 'To be confirmed'),
-			new CensusColumnSexMF($this, 'TBC', 'To be confirmed'),
-			new CensusColumnConditionEnglish($this, 'TBC', 'To be confirmed'),
-			new CensusColumnRelationToHead($this, 'TBC', 'To be confirmed'),
-			new CensusColumnOccupation($this, 'TBC', 'To be confirmed'),
-			new CensusColumnBirthPlace($this, 'TBC', 'To be confirmed'),
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // religion
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // employment
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // handicaps
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // citizenship
+			new CensusColumnFullName($this, '', ''),
+			new CensusColumnBirthDate($this, '', ''),
+			new CensusColumnSexMF($this, '', ''),
+			new CensusColumnConditionEnglish($this, '', ''),
+			new CensusColumnRelationToHead($this, '', ''),
+			new CensusColumnOccupation($this, '', ''),
+			new CensusColumnBirthPlace($this, '', ''),
+			new CensusColumnNull($this, '', ''), // religion
+			new CensusColumnNull($this, '', ''), // employment
+			new CensusColumnNull($this, '', ''), // handicaps
+			new CensusColumnNull($this, '', ''), // citizenship
 		);
 	}
 }

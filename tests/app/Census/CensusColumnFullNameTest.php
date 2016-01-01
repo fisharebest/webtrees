@@ -14,10 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 use Mockery;
 
@@ -37,10 +35,10 @@ class CensusColumnFullNameTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testFullName() {
-		$individual = Mockery::mock(Individual::class);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getFullName')->andReturn('Joe Bloggs');
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
 		$column = new CensusColumnFullName($census, '', '');
 

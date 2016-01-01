@@ -23,11 +23,6 @@ error_reporting(E_ALL);
 define('WT_SCRIPT_NAME', 'setup.php');
 define('WT_CONFIG_FILE', 'config.ini.php');
 
-// We use some PHP5.5 features, but need to run on older servers
-if (version_compare(PHP_VERSION, '5.4', '<')) {
-	require 'includes/php_53_compatibility.php';
-}
-
 require 'vendor/autoload.php';
 
 // This script (uniquely) does not load session.php.
@@ -98,8 +93,8 @@ echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 
 if (!isset($_POST['lang'])) {
 	$installed_languages = array();
-	foreach (I18N::installedLocales() as $locale) {
-		$installed_languages[$locale->languageTag()] = $locale->endonym();
+	foreach (I18N::installedLocales() as $installed_locale) {
+		$installed_languages[$installed_locale->languageTag()] = $installed_locale->endonym();
 	}
 
 	echo
