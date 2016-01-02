@@ -42,35 +42,41 @@ class CensusOfDenmark1925Test extends \PHPUnit_Framework_TestCase {
 		$census  = new CensusOfDenmark1925;
 		$columns = $census->columns();
 
-		$this->assertCount(9, $columns);
+		$this->assertCount(11, $columns);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthDate', $columns[1]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSexMF', $columns[2]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionEnglish', $columns[3]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[4]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[5]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlace', $columns[6]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[7]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[8]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSexMK', $columns[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthDaySlashMonth', $columns[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthYear', $columns[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlace', $columns[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionDanish', $columns[6]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[7]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[8]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[9]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[10]);
 
-		$this->assertSame('', $columns[0]->abbreviation());
-		$this->assertSame('', $columns[1]->abbreviation());
-		$this->assertSame('', $columns[2]->abbreviation());
-		$this->assertSame('', $columns[3]->abbreviation());
-		$this->assertSame('', $columns[4]->abbreviation());
-		$this->assertSame('', $columns[5]->abbreviation());
-		$this->assertSame('', $columns[6]->abbreviation());
-		$this->assertSame('', $columns[7]->abbreviation());
-		$this->assertSame('', $columns[8]->abbreviation());
+		$this->assertSame('Navn', $columns[0]->abbreviation());
+		$this->assertSame('Køn', $columns[1]->abbreviation());
+		$this->assertSame('Fødselsdag', $columns[2]->abbreviation());
+		$this->assertSame('Fødselsaar', $columns[3]->abbreviation());
+		$this->assertSame('Fødested', $columns[4]->abbreviation());
+		$this->assertSame('Statsbergerferhold', $columns[5]->abbreviation());
+		$this->assertSame('Civilstand', $columns[6]->abbreviation());
+		$this->assertSame('Stilling i familien', $columns[7]->abbreviation());
+		$this->assertSame('Erhverv', $columns[8]->abbreviation());
+		$this->assertSame('Bopæl', $columns[9]->abbreviation());
+		$this->assertSame('Anmærkninger', $columns[10]->abbreviation());
 
-		$this->assertSame('', $columns[0]->title());
-		$this->assertSame('', $columns[1]->title());
+		$this->assertSame('Samtlige Personers Navn (ogsaa Fornavn). Ved Børn, endnu uden Navn, sættes „Dreng“ eller „Pige“. Midlertidig fraværerade Personer anføres ikke her, men paa Skemaeta Bagside)', $columns[0]->title());
+		$this->assertSame('Kjønnet. Mandkøn (M) eller Kvindekøn (K).', $columns[1]->title());
 		$this->assertSame('', $columns[2]->title());
 		$this->assertSame('', $columns[3]->title());
 		$this->assertSame('', $columns[4]->title());
 		$this->assertSame('', $columns[5]->title());
-		$this->assertSame('', $columns[6]->title());
-		$this->assertSame('', $columns[7]->title());
-		$this->assertSame('', $columns[8]->title());
+		$this->assertSame('Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).', $columns[6]->title());
+		$this->assertSame('Stilling i Familien: Husfader, Husmoder, Barn, Slangtning o.l., Tjenestetyende, Logerende, Pensioner', $columns[7]->title());
+		$this->assertSame('Erhverv eller Livsstilling', $columns[8]->title());
+		$this->assertSame('Bopæl den 5. Novbr. 1924', $columns[9]->title());
+		$this->assertSame('Anmærkninger', $columns[10]->title());
 	}
 }

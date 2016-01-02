@@ -41,7 +41,7 @@ class CensusOfDenmarkTest extends \PHPUnit_Framework_TestCase {
 
 		$census_dates = $census->allCensusDates();
 
-		$this->assertCount(24, $census_dates);
+		$this->assertCount(23, $census_dates);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1787', $census_dates[0]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1801', $census_dates[1]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1803', $census_dates[2]);
@@ -65,6 +65,5 @@ class CensusOfDenmarkTest extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1925', $census_dates[20]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1930', $census_dates[21]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1940', $census_dates[22]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1950', $census_dates[23]);
 	}
 }

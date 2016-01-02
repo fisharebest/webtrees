@@ -111,14 +111,6 @@ case 'login':
 					);
 				}
 			}
-		} else {
-			// We're not an administrator, so we can only log in if there is a tree.
-			if (count(Tree::getAll()) === 0) { // Cannot use empty() with PHP 5.3
-				Auth::logout();
-				FlashMessages::addMessage(
-					I18N::translate('This user account does not have access to any tree.')
-				);
-			}
 		}
 
 		// If we were on a "home page", redirect to "my page"

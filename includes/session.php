@@ -444,6 +444,13 @@ if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_t
 		if (Auth::isAdmin()) {
 			header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
 		} else {
+			// We're not an administrator, so we can only log in if there is a tree.
+			if (Auth::id()) {
+				Auth::logout();
+				FlashMessages::addMessage(
+					I18N::translate('This user account does not have access to any tree.')
+				);
+			}
 			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '')), true, 301);
 
 		}

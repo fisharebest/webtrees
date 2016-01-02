@@ -49,7 +49,6 @@ class CensusOfDenmark extends Census implements CensusPlaceInterface {
 			new CensusOfDenmark1925(),
 			new CensusOfDenmark1930(),
 			new CensusOfDenmark1940(),
-			new CensusOfDenmark1950(),
 		);
 	}
 
