@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2016-01-02 18:26+0100\n"
+"PO-Revision-Date: 2016-01-02 18:31+0100\n"
 "Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: German "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
@@ -7649,7 +7649,7 @@ msgstr "Johannesburg, Südafrika"
 #. I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname.
 #: app/Tree.php:493
 msgid "John /DOE/"
-msgstr "John /DOE/"
+msgstr "Karl /MUSTERMANN/"
 
 #: app/Stats.php:6841
 msgid "Jordan"
