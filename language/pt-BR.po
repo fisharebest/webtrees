@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2016-01-02 15:59+0100\n"
+"PO-Revision-Date: 2016-01-02 20:38+0100\n"
 "Last-Translator: Alan Benazzi <alan.benazzi@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/pt-BR/>\n"
@@ -1436,7 +1436,7 @@ msgstr "Adicionar para o carrinho de recortes"
 
 #: admin_trees_manage.php:527
 msgid "Add unlinked records"
-msgstr "Adicionar registros sem ligação"
+msgstr "Adicionar registros sem vínculo"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1117
@@ -3393,11 +3393,11 @@ msgstr "Altere este bloco na \"Minha página\" deste usuário"
 
 #: admin_trees_manage.php:405 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr "Altere os blocos \"Página inicial\""
+msgstr "Alterar os blocos da \"Página inicial\""
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr "Altere os blocos \"Minha página\""
+msgstr "Alterar os blocos da \"Minha página\""
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Functions/FunctionsPrintLists.php:1772
@@ -12628,7 +12628,7 @@ msgstr "Irmã"
 #: admin_site_config.php:562 admin_site_config.php:578
 #: admin_site_config.php:603
 msgid "Site identification code"
-msgstr "Código de identificação de local"
+msgstr "Código de identificação do site"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:478 edituser.php:300
