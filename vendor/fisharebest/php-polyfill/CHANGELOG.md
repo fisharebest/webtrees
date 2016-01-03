@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.2.0 (2016-01-03)
+ - gzopen(), etc. are now part of symfony/polyfill
+
 ## 1.1.0 (2015-12-21)
  - add jakeasmith/http_build_url
 

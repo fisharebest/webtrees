@@ -270,26 +270,26 @@
         },
         {
             "name": "fisharebest/php-polyfill",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/php-polyfill.git",
-                "reference": "96d9a33f2394aaf50e32f8e9c8a163f13e733e90"
+                "reference": "4d28746dd81901426af1ed11e0966ea736070081"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/php-polyfill/zipball/96d9a33f2394aaf50e32f8e9c8a163f13e733e90",
-                "reference": "96d9a33f2394aaf50e32f8e9c8a163f13e733e90",
+                "url": "https://api.github.com/repos/fisharebest/php-polyfill/zipball/4d28746dd81901426af1ed11e0966ea736070081",
+                "reference": "4d28746dd81901426af1ed11e0966ea736070081",
                 "shasum": ""
             },
             "require": {
                 "fisharebest/ext-calendar": "~2.2",
                 "jakeasmith/http_build_url": "~0.1",
-                "symfony/polyfill": "1.0.0"
+                "symfony/polyfill": "1.0.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "*",
-                "satooshi/php-coveralls": "dev-master"
+                "satooshi/php-coveralls": "~1.0"
             },
             "type": "library",
             "autoload": {
@@ -319,7 +319,7 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2015-12-21 11:33:12"
+            "time": "2016-01-03 20:11:41"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -680,16 +680,16 @@
         },
         {
             "name": "symfony/polyfill",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill.git",
-                "reference": "fef21adc706d3bb8f31d37c503ded2160c76c64a"
+                "reference": "dd9db1dc4013821a63f7afbd8340dd57939fe674"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill/zipball/fef21adc706d3bb8f31d37c503ded2160c76c64a",
-                "reference": "fef21adc706d3bb8f31d37c503ded2160c76c64a",
+                "url": "https://api.github.com/repos/symfony/polyfill/zipball/dd9db1dc4013821a63f7afbd8340dd57939fe674",
+                "reference": "dd9db1dc4013821a63f7afbd8340dd57939fe674",
                 "shasum": ""
             },
             "require": {
@@ -761,7 +761,7 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2015-11-04 20:29:00"
+            "time": "2015-12-18 15:10:25"
         },
         {
             "name": "tecnickcom/tcpdf",

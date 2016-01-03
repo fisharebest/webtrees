@@ -4,7 +4,7 @@
  * PHP Polyfill
  *
  * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2016 Greg Roach
  * @license       MIT or GPLv3+
  */
 

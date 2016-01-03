@@ -20,11 +20,11 @@
 	"require": {
 		"fisharebest/ext-calendar": "~2.2",
 		"jakeasmith/http_build_url": "~0.1",
-		"symfony/polyfill": "1.0.0"
+		"symfony/polyfill": "1.0.1"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "*",
-		"satooshi/php-coveralls": "dev-master"
+		"satooshi/php-coveralls": "~1.0"
 	},
 	"autoload": {
 		"psr-4": {
