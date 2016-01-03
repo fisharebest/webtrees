@@ -25,7 +25,7 @@ class CensusOfDenmark1930 extends CensusOfDenmark implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '01 NOV 1930';
+		return '05 NOV 1930';
 	}
 
 	/**
@@ -37,8 +37,8 @@ class CensusOfDenmark1930 extends CensusOfDenmark implements CensusInterface {
 		return array(
 			new CensusColumnSurnameGivenNames($this, 'Navn', ''),
 			new CensusColumnNull($this, 'Bopæl', ''),
-			new CensusColumnNull($this, '', ''),
-			new CensusColumnNull($this, '', ''),
+			new CensusColumnNull($this, 'Andetsteds', 'Hvis den i Rubrik 3 opførte Person har fast Bopæl andetsteds, anføres her den faste Bopæl'),
+			new CensusColumnNull($this, 'Stede', 'Hvis den i Rubrik 3 opførte Person paa Tællingsdagen til Stede paa Tællingsstedet? Ja eller Nej.'),
 			new CensusColumnNull($this, 'Bopæl', 'Bopæl den 5. Novbr. 1929'),
 			new CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M) eller Kvindekøn (K).'),
 			new CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', ''),
