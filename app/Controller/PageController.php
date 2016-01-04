@@ -163,13 +163,6 @@ class PageController extends BaseController {
 			var WT_CSRF_TOKEN  = "' . Filter::escapeJs(Filter::getCsrfToken()) . '";
 		', self::JS_PRIORITY_HIGH);
 
-		// Temporary fix for access to main menu hover elements on android/blackberry touch devices
-		$this->addInlineJavascript('
-			if(navigator.userAgent.match(/Android|PlayBook/i)) {
-				jQuery(".primary-menu > li > a").attr("href", "#");
-			}
-		');
-
 		Theme::theme()->sendHeaders();
 		echo Theme::theme()->doctype();
 		echo Theme::theme()->html();
