@@ -54,11 +54,12 @@ class FunctionsDb {
 				"SELECT l_from FROM `##link` WHERE l_file = ? AND l_to = ?" .
 				" UNION " .
 				"SELECT xref FROM `##change` WHERE status = 'pending' AND gedcom_id = ? AND new_gedcom LIKE" .
-				" CONCAT('%@', ?, '@%')"
+				" CONCAT('%@', ?, '@%') AND new_gedcom NOT LIKE CONCAT('0 @', ?, '@%')"
 			)->execute(array(
 				$gedcom_id,
 				$xref,
 				$gedcom_id,
+				$xref,
 				$xref,
 			))->fetchOneColumn();
 	}
