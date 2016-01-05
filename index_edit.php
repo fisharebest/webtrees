@@ -147,9 +147,9 @@ if ($action === 'update') {
 		}
 	}
 	if ($user_id) {
-		header('Location: ' . WT_BASE_URL . 'index.php?ctype=user&ged=' . $WT_TREE->getName());
+		header('Location: ' . WT_BASE_URL . 'index.php?ctype=user&ged=' . $WT_TREE->getNameUrl());
 	} else {
-		header('Location: ' . WT_BASE_URL . 'index.php?ctype=gedcom&ged=' . $WT_TREE->getName());
+		header('Location: ' . WT_BASE_URL . 'index.php?ctype=gedcom&ged=' . $WT_TREE->getNameUrl());
 	}
 
 	return;
