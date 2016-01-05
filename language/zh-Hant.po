@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2016-01-01 19:54+0100\n"
-"Last-Translator: Foxfly <marthe59@yahoo.fr>\n"
+"PO-Revision-Date: 2016-01-05 10:50+0100\n"
+"Last-Translator: Martin Wetterwald <martin@wetterwald.eu>\n"
 "Language-Team: Chinese (Traditional) "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hant/>\n"
 "Language: zh-Hant\n"
@@ -84,25 +84,25 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:1635
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:317
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$s KB 將在%2$s秒後下載完。"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
 #, php-format
 msgid "%1$s does not exist."
-msgstr "%1$s不存在."
+msgstr "%1$s不存在。"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist.  Did you mean %2$s?"
-msgstr "%1$s不存在, 你是指%2$s?"
+msgstr "%1$s不存在, 你是指%2$s？"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
@@ -121,14 +121,14 @@ msgstr[0] ""
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] ""
+msgstr[0] "%1$s 個人顯示，總的 %2$s, 在 %3$s 代中。"
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:915
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] ""
+msgstr[0] "%1$s 個人沒有出生地的地圖座標: %2$s。"
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:192
@@ -161,53 +161,53 @@ msgstr ""
 #: admin_media.php:497 app/Media.php:386
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s 像素"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: app/Individual.php:550
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2173
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s的%2$s"
 
 #. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: app/I18N.php:814
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/I18N.php:159
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%Y年 %n月 %j日"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6999
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "公元前%s年"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:276
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:194
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s 和她的祖先"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:196
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s和他的祖先"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:280
@@ -219,80 +219,80 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s和她的孩子們"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:124
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s和他們的後代"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5953
 #, php-format
 msgid "%s anonymous logged-in user"
 msgid_plural "%s anonymous logged-in users"
-msgstr[0] ""
+msgstr[0] "%s 匿名登錄的用戶"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4460 app/Stats.php:4464
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
+msgstr[0] "%s 孩子"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:59 app/I18N.php:313
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
+msgstr[0] "%s 天"
 
 #: app/I18N.php:794
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
-msgstr[0] ""
+msgstr[0] "%s 天前"
 
 #: app/Controller/SearchController.php:374
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
+msgstr[0] "%s的家庭已經更新完畢。"
 
 #: admin.php:809
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
+msgstr[0] "%s的家譜"
 
 #: app/Stats.php:5261 app/Stats.php:5265
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
+msgstr[0] "%s 孫子"
 
 #: app/I18N.php:798
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
-msgstr[0] ""
+msgstr[0] "%s 小時前"
 
 #: app/Controller/LifespanController.php:260
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] ""
+msgstr[0] "%s 個人"
 
 #: app/Controller/SearchController.php:345
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
+msgstr[0] "%s的個人信息已經更新完畢。"
 
 #: app/Module/GoogleMapsModule.php:908
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] ""
+msgstr[0] "%s 個人私密的。"
 
 #: app/Controller/LifespanController.php:253
 #, php-format
@@ -316,25 +316,25 @@ msgstr[0] ""
 #: setup.php:112
 #, php-format
 msgid "%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "%s在此服務器上已被禁用。除非它被啟用，否則無法安裝webtrees。請問您的服務器管理員請求啟用它。"
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5963
 #, php-format
 msgid "%s logged-in user"
 msgid_plural "%s logged-in users"
-msgstr[0] ""
+msgstr[0] "%s 登錄的用戶"
 
 #: app/Module/UserMessagesModule.php:91
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
+msgstr[0] "%s 信息"
 
 #: app/I18N.php:802
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
+msgstr[0] "%s 分鐘前"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:55 app/I18N.php:305
@@ -342,13 +342,13 @@ msgstr[0] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
+msgstr[0] "%s 個月"
 
 #: app/I18N.php:790
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
+msgstr[0] "%s 個月前"
 
 #: app/Controller/SearchController.php:428
 #, php-format
@@ -372,7 +372,7 @@ msgstr ""
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
+msgstr[0] "%s 秒前"
 
 #: app/Controller/SearchController.php:407
 #, php-format
@@ -409,26 +409,26 @@ msgstr ""
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
+msgstr[0] "%s 週"
 
 #: app/Functions/FunctionsDate.php:50 app/I18N.php:299
 #: app/Module/RelativesTabModule.php:83
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
+msgstr[0] "%s 年"
 
 #: app/I18N.php:786
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
+msgstr[0] "%s 年前"
 
 #: app/Functions/FunctionsPrintLists.php:2116
 #: app/Module/YahrzeitModule.php:129 calendar.php:655
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s 週年紀念"
 
 #: app/Functions/Functions.php:569
 #, php-format
@@ -453,31 +453,31 @@ msgstr ""
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "公元前%s年"
 
 #. I18N: CE=Common Era, for Julian years > 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "公元後%s年"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:212
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s，她的祖先以及家人"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:166
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s，她的父母以及兄弟姐妹"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:180
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s，她的配偶們以及孩子們"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:230
