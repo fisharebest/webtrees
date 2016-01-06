@@ -1,5 +1,6 @@
 # Exclude the following files when we build webtrees
 
+.coveralls.yml export-ignore
 .gitattributes export-ignore
 .gitignore     export-ignore
 .php_cs        export-ignore
