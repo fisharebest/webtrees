@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2016-01-06 15:19+0800\n"
-"Last-Translator: norman yang <sfqas@163.com>\n"
+"PO-Revision-Date: 2016-01-06 09:30+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Chinese (Simplified) "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
 "Language: zh-Hans\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.3\n"
+"X-Generator: Weblate 2.4\n"
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -261,7 +261,7 @@ msgstr[0] "%s 天前"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] "%s 的家庭已经更新完毕"
+msgstr[0] "%s 的家庭已经更新完毕。"
 
 #: admin.php:809
 #, php-format
@@ -291,7 +291,7 @@ msgstr[0] "%s 个人"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "%s的个人信息已经更新完毕"
+msgstr[0] "%s的个人信息已经更新完毕。"
 
 #: app/Module/GoogleMapsModule.php:908
 #, php-format
@@ -730,7 +730,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:206
 msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
-msgstr "FAQ条目可以只显示在一个家谱上，也可以显示到所有家谱"
+msgstr "FAQ条目可以只显示在一个家谱上，也可以显示到所有家谱。"
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
@@ -785,12 +785,12 @@ msgstr "有联系的家谱的任务和活动的清单。"
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "将到来的来纪念日列表"
+msgstr "将到来的来纪念日列表。"
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
 msgid "A list of the anniversaries that occur today."
-msgstr "每年的今天发生事情的清单"
+msgstr "每年的今天发生事情的清单。"
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
@@ -810,7 +810,7 @@ msgstr "最普遍的姓氏列表。"
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "浏览次数最多的页面的列表"
+msgstr "浏览次数最多的页面的列表。"
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
@@ -851,35 +851,35 @@ msgstr "私人记事或是日记的一个秘密区域。"
 #: login.php:317
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "一个可能的webtrees用户在 %s 注册"
+msgstr "一个可能的webtrees用户在 %s 注册。"
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "树形风格的祖先报告"
+msgstr "树形风格的祖先报告。"
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "叙事风格的祖先报告"
+msgstr "叙事风格的祖先报告。"
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "叙事风格的后代报告"
+msgstr "叙事风格的后代报告。"
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr "个人的详细报告"
+msgstr "个人的详细报告。"
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "由一个给定的资源的事实报告"
+msgstr "由一个给定的资源的事实报告。"
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
@@ -901,19 +901,19 @@ msgstr "职业的报告。"
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "出生时间和地点的报告"
+msgstr "出生时间和地点的报告。"
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr "埋葬地报告"
+msgstr "埋葬地报告。"
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "结婚的时间和地点的报告"
+msgstr "结婚的时间和地点的报告。"
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
@@ -968,7 +968,7 @@ msgstr "侧边栏显示家谱中的所有个体的字母表。"
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr "侧边栏显示一个人的家人和亲戚"
+msgstr "侧边栏显示一个人的家人和亲戚。"
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:34
@@ -1798,7 +1798,7 @@ msgstr "所有的家庭事件"
 
 #: login.php:409
 msgid "All fields must be completed."
-msgstr "所有项必须完成"
+msgstr "所有项必须完成。"
 
 #: admin_site_upgrade.php:408
 msgid "All files have read and write permission."
@@ -1888,7 +1888,7 @@ msgstr "输入普查的笔录和链接到个人的另一种方式。"
 #. I18N: Description of the “Login” module
 #: app/Module/LoginBlockModule.php:34
 msgid "An alternative way to login and logout."
-msgstr "登录和注销的另一种方式"
+msgstr "登录和注销的另一种方式。"
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
@@ -1897,11 +1897,11 @@ msgstr "选择一个新的主题的另一种方式。"
 
 #: app/Functions/FunctionsEdit.php:914
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr "相关人员是一个和这个个体有关系（如证人或密探）事实或是事件"
+msgstr "相关人员是一个和这个个体有关系（如证人或密探）事实或是事件。"
 
 #: app/Functions/FunctionsEdit.php:912
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr "相关人员是一个和这个个体有关系（如朋友或雇主）个体"
+msgstr "相关人员是一个和这个个体有关系（如朋友或雇主）个体。"
 
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:32
@@ -2855,7 +2855,7 @@ msgstr "蓝色海洋"
 
 #: message.php:127
 msgid "Body"
-msgstr "消息:"
+msgstr "消息"
 
 #: app/GedcomCode/GedcomCodeTemp.php:103
 msgid "Bogota, Colombia"
@@ -3285,7 +3285,7 @@ msgstr "加泰罗尼亚"
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "类别："
+msgstr "类别"
 
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:242
@@ -3444,17 +3444,17 @@ msgstr "图表"
 
 #: admin_site_upgrade.php:389
 msgid "Check file permissions…"
-msgstr "检查文件的权限..."
+msgstr "检查文件的权限…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:114
 msgid "Check for custom modules…"
-msgstr "检查自定义模块..."
+msgstr "检查自定义模块…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:217
 msgid "Check for custom themes…"
-msgstr "检查自定义主题..."
+msgstr "检查自定义主题…"
 
 #: admin_trees_check.php:33 admin_trees_manage.php:496
 msgid "Check for errors"
@@ -3463,7 +3463,7 @@ msgstr "检查错误"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:94
 msgid "Check for pending changes…"
-msgstr "检查挂起的更改..."
+msgstr "检查挂起的更改…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
@@ -3475,7 +3475,7 @@ msgstr "检查设置并再次尝试。"
 
 #: setup.php:146
 msgid "Checking server capacity"
-msgstr "服务器配置正确。"
+msgstr "服务器配置正确"
 
 #: setup.php:104
 msgid "Checking server configuration"
@@ -3717,7 +3717,7 @@ msgstr "清除，但尚未完成的"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:67
 #, php-format
 msgid "Click %s to choose individual as head of family."
-msgstr "单击 %s 择的人担任家主"
+msgstr "单击 %s 择的人担任家主。"
 
 #: edit_interface.php:1718
 msgid "Click a row, then drag-and-drop to re-order media"
@@ -3741,7 +3741,7 @@ msgstr "点击名称添加人添加链接列表。"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:350
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "点击一个标题,直接下拉或向下滚动阅读所有"
+msgstr "点击一个标题,直接下拉或向下滚动阅读所有。"
 
 #: app/Module/CensusAssistantModule.php:428
 msgid "Click to choose individual as head of family."
@@ -3964,7 +3964,7 @@ msgstr "%1$s的所有记录复制到%2$s。"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:431
 msgid "Copy files…"
-msgstr "复制文件..."
+msgstr "复制文件…"
 
 #: admin_site_upgrade.php:401
 #, php-format
@@ -4472,7 +4472,7 @@ msgstr "注册日期"
 
 #: app/Module/UserMessagesModule.php:113
 msgid "Date sent"
-msgstr "发送日期:"
+msgstr "发送日期"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:714
@@ -4937,7 +4937,7 @@ msgstr "删除选定的消息"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:486
 msgid "Delete temporary files…"
-msgstr "删除临时文件..."
+msgstr "删除临时文件…"
 
 #: admin_modules.php:98
 msgid "Delete the preferences for this module."
@@ -5243,7 +5243,7 @@ msgstr "下载"
 #: admin_site_upgrade.php:305
 #, php-format
 msgid "Download %s…"
-msgstr "下载 %s..."
+msgstr "下载 %s…"
 
 #: mediaviewer.php:159
 msgid "Download file"
@@ -5260,7 +5260,7 @@ msgstr "Duodi"
 
 #: admin_users.php:73 edituser.php:60 login.php:284
 msgid "Duplicate email address.  A user with that email already exists."
-msgstr "重复的电子邮件地址。该电子邮件已经被一个用户使用"
+msgstr "重复的电子邮件地址。该电子邮件已经被一个用户使用。"
 
 #: admin_users.php:71 edituser.php:58 login.php:282
 msgid "Duplicate user name.  A user with that user name already exists.  Please choose another user name."
@@ -5421,7 +5421,7 @@ msgstr "编辑故事"
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
-msgstr "编辑这个个体和用你自己的细节替换他们的"
+msgstr "编辑这个个体和用你自己的细节替换他们的。"
 
 #: admin_users.php:273
 msgid "Edit user"
@@ -5728,7 +5728,7 @@ msgstr "导出GEDCOM文件"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:281
 msgid "Export all the family trees to GEDCOM files…"
-msgstr "导出所有的家族树到GEDCOM文件..."
+msgstr "导出所有的家族树到GEDCOM文件…"
 
 #: admin_trees_download.php:134
 msgid "Export options"
@@ -6706,7 +6706,7 @@ msgstr "教名"
 #. I18N: gedcom tag GIVN
 #: app/GedcomTag.php:500
 msgid "Given names"
-msgstr "名："
+msgstr "名"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:982
@@ -6925,7 +6925,7 @@ msgstr "他被火化"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:72
 msgid "Head of household"
-msgstr "户主:"
+msgstr "户主"
 
 #. I18N: gedcom tag HEAD
 #: app/GedcomTag.php:508
@@ -7241,7 +7241,7 @@ msgstr "如果你是网站管理员,你应该检查:"
 
 #: site-unavailable.php:104
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
-msgstr "如果你不能自己解决问题,你可以在<a href=\"http://webtrees.net\">webtrees.net</a>论坛寻求帮助"
+msgstr "如果你不能自己解决问题,你可以在<a href=\"http://webtrees.net\">webtrees.net</a>论坛寻求帮助。"
 
 #: admin_trees_manage.php:282
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7570,7 +7570,7 @@ msgstr "埋葬"
 
 #: import.php:114
 msgid "Invalid GEDCOM file - no header record found."
-msgstr "无效的GEDCOM文件—没有标题记录"
+msgstr "无效的GEDCOM文件—没有标题记录。"
 
 #: app/Functions/FunctionsImport.php:619
 msgid "Invalid GEDCOM format"
@@ -8142,12 +8142,12 @@ msgstr "利马,秘鲁"
 
 #: app/Module/FamilyTreeNewsModule.php:206
 msgid "Limit"
-msgstr "限制值:"
+msgstr "限制值"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:197
 msgid "Limit display by"
-msgstr "显示的限制:"
+msgstr "显示的限制"
 
 #. I18N: You need to:
 #: login.php:569
@@ -8831,7 +8831,7 @@ msgstr "媒体ID前缀"
 #. I18N: Label for search field
 #: find.php:159
 msgid "Media contains"
-msgstr "媒体包含:"
+msgstr "媒体包含"
 
 #: admin_media.php:691 admin_media_upload.php:200
 msgid "Media file"
@@ -9423,7 +9423,7 @@ msgstr "名称"
 #. I18N: Label for search field
 #: find.php:123 find.php:140
 msgid "Name contains"
-msgstr "名字包含:"
+msgstr "名字包含"
 
 #: app/GedcomTag.php:606
 msgid "Name in Hebrew"
@@ -9717,7 +9717,7 @@ msgstr "今天没有事件。"
 #: app/Functions/FunctionsPrintLists.php:2025
 #: app/Functions/FunctionsPrintLists.php:2140
 msgid "No events exist for tomorrow."
-msgstr "明天没有事件"
+msgstr "明天没有事件。"
 
 #: app/Functions/FunctionsPrintLists.php:2017
 #: app/Functions/FunctionsPrintLists.php:2132
@@ -9935,7 +9935,7 @@ msgstr "没有清理任何"
 
 #: app/Module/BatchUpdateModule.php:257
 msgid "Nothing found."
-msgstr "什么都没有"
+msgstr "什么都没有。"
 
 #: app/Date/CalendarDate.php:321
 msgctxt "Abbreviation for November"
@@ -9986,7 +9986,7 @@ msgstr "没有孩子的家庭数量"
 #: app/Module/ClippingsCartModule.php:220
 #: app/Module/ClippingsCartModule.php:238
 msgid "Number of generations"
-msgstr "代数:"
+msgstr "代数"
 
 #: app/Module/FamilyTreeNewsModule.php:202
 msgid "Number of items"
@@ -10266,7 +10266,7 @@ msgstr "下午."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:89
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP阻止的文件扩展"
+msgstr "PHP阻止的文件扩展。"
 
 #: setup.php:130
 #, php-format
@@ -10281,7 +10281,7 @@ msgstr "PHP扩展 \"%s\"是禁用的。如果不启用不能安装webtrees。请
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:86
 msgid "PHP failed to write to disk."
-msgstr "PHP未能写入磁盘"
+msgstr "PHP未能写入磁盘。"
 
 #: admin_site_info.php:51
 msgid "PHP information"
@@ -10524,7 +10524,7 @@ msgstr "PhpGedView必须是4.2.3版本，或更高的 #%s"
 
 #: admin_pgv_to_wt.php:91
 msgid "PhpGedView must use the same database as webtrees."
-msgstr "phpgedview必须使用与webtrees相同的数据库"
+msgstr "PhpGedView必须使用与webtrees相同的数据库。"
 
 #: admin_pgv_to_wt.php:42 admin_trees_manage.php:694
 msgid "PhpGedView to webtrees transfer wizard"
@@ -10565,7 +10565,7 @@ msgstr "地方检查"
 #. I18N: Label for search field
 #: find.php:179
 msgid "Place contains"
-msgstr "地方包含:"
+msgstr "地方包含"
 
 #: app/Module/TopPageViewsModule.php:176
 msgid "Place counts before or after name?"
@@ -10702,12 +10702,12 @@ msgstr "居住地点"
 #: admin_site_upgrade.php:416
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr "通过创建文件 %s 使网站脱机..."
+msgstr "通过创建文件 %s 使网站脱机…"
 
 #: admin_site_upgrade.php:472
 #, php-format
 msgid "Place the website online, by deleting the file %s…"
-msgstr "通过删除文件 %s 使网站上线..."
+msgstr "通过删除文件 %s 使网站上线…"
 
 #: admin_trees_config.php:1625 search.php:204 statistics.php:405
 msgid "Places"
@@ -10758,7 +10758,7 @@ msgstr "请输入一个有效的电子邮件地址。"
 #: app/Module/CensusAssistantModule.php:167 find.php:102 search.php:36
 #: search.php:48
 msgid "Please enter more than one character."
-msgstr "请输入多于一个字符"
+msgstr "请输入多于一个字符。"
 
 #: message.php:96
 msgid "Please enter some message text before sending."
@@ -11421,7 +11421,7 @@ msgstr "库ID前缀"
 #. I18N: Label for search field
 #: find.php:198
 msgid "Repository contains"
-msgstr "库包含:"
+msgstr "库包含"
 
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
@@ -11467,7 +11467,7 @@ msgstr "恢复默认块布局"
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "使用IP地址和用户代理字符串限制访问网站"
+msgstr "使用IP地址和用户代理字符串限制访问网站。"
 
 #: admin_users.php:588
 msgid "Restrict to immediate family"
@@ -11797,7 +11797,7 @@ msgstr "选择日期"
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "选择图表类型:"
+msgstr "选择图表类型"
 
 #: edit_interface.php:1245
 msgid "Select events"
@@ -12010,7 +12010,7 @@ msgstr "为新用户设置默认块"
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1319
 msgid "Set the default number of generations to display on descendancy and pedigree charts."
-msgstr "设置显示后代图和系谱图默认的代数"
+msgstr "设置显示后代图和系谱图默认的代数。"
 
 #. I18N: Help text for the “Maximum descendancy generations” configuration setting
 #: admin_trees_config.php:1359
@@ -12095,7 +12095,7 @@ msgstr "共享记事"
 #. I18N: Label for search field
 #: find.php:218
 msgid "Shared note contains"
-msgstr "共享记事包含："
+msgstr "共享记事包含"
 
 #: app/Functions/FunctionsPrintLists.php:1088 app/Theme/AbstractTheme.php:1445
 #: notelist.php:33 notelist.php:37 search.php:103
@@ -12660,7 +12660,7 @@ msgstr "网站验证码"
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:531 admin_site_config.php:552
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr " webtrees 安装在子文件夹中时网站验证代码不能工作。"
+msgstr "webtrees 安装在子文件夹中时网站验证代码不能工作。"
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
@@ -12849,7 +12849,7 @@ msgstr "被引用资源可能包括记录数据的不同数据(主、次等)字�
 #. I18N: Label for search field
 #: find.php:237
 msgid "Source contains"
-msgstr "资源包含:"
+msgstr "资源包含"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2222 modules_v3/fact_sources/report.xml:6
@@ -13055,7 +13055,7 @@ msgstr "行政分支"
 
 #: app/Module/UserMessagesModule.php:112 message.php:119
 msgid "Subject"
-msgstr "主题:"
+msgstr "主题"
 
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:810
@@ -13325,7 +13325,7 @@ msgstr "媒体查看器可以显示一个链接，点击后，将下载的媒体
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:83
 msgid "The PHP temporary folder is missing."
-msgstr "丢失PHP临时目录"
+msgstr "丢失PHP临时目录。"
 
 #: admin_trees_manage.php:701
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
@@ -13421,7 +13421,7 @@ msgstr "因为它只有一个成员，家庭“%s”已被删除。"
 #: addmedia.php:178 admin_media_upload.php:136
 #, php-format
 msgid "The file %s already exists.  Use another filename."
-msgstr "文件 %s 已经存在，请用其它文件名"
+msgstr "文件 %s 已经存在，请用其它文件名。"
 
 #: admin_site_upgrade.php:295 admin_site_upgrade.php:422
 #: admin_site_upgrade.php:455 admin_trees_export.php:44
@@ -13433,7 +13433,7 @@ msgstr "无法创建文件 %s。"
 #: admin_site_upgrade.php:477 admin_site_upgrade.php:498
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr "文件 %s 不能被删除"
+msgstr "文件 %s 不能被删除。"
 
 #: admin_site_upgrade.php:397
 #, php-format
@@ -13459,7 +13459,7 @@ msgstr "文件 %s 已经上传。"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:77
 msgid "The file was only partially uploaded.  Please try again."
-msgstr "文件只是部分上传,请再试一次"
+msgstr "文件只是部分上传,请再试一次。"
 
 #. I18N: %s is a filename
 #: medialist.php:301 mediaviewer.php:162
@@ -13478,14 +13478,14 @@ msgstr "无法删除文件夹 %s。"
 #: admin_site_config.php:37 admin_trees_config.php:294
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
-msgstr "文件夹 %s 不存在，不能被创建"
+msgstr "文件夹 %s 不存在，不能被创建。"
 
 #: addmedia.php:100 addmedia.php:111 addmedia.php:257 addmedia.php:268
 #: admin_media_upload.php:64 admin_media_upload.php:75
 #: admin_trees_config.php:292
 #, php-format
 msgid "The folder %s has been created."
-msgstr "文件夹 %s 已经被创建"
+msgstr "文件夹 %s 已经被创建。"
 
 #: admin_site_clean.php:30 admin_site_upgrade.php:490
 #, php-format
@@ -13539,7 +13539,7 @@ msgstr "在您的网站上遇到的有问题或错误联系人有关技术。"
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:904
 msgid "The individual to contact about the genealogy data on this website."
-msgstr "这个网站家谱资料联系人"
+msgstr "这个网站家谱资料联系人。"
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:151 action.php:155 app/Controller/GedcomRecordController.php:61
@@ -13571,7 +13571,7 @@ msgstr "媒体文件 %s 并不存在。"
 
 #: mediafirewall.php:38
 msgid "The media file was not found in this family tree."
-msgstr "这个家谱中没有媒体文件"
+msgstr "这个家谱中没有媒体文件。"
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13614,7 +13614,7 @@ msgstr "密码必须至少六个字符长。"
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:401
 msgid "The password required for authentication with the SMTP server."
-msgstr "SMTP服务器需要身份验证的密码"
+msgstr "SMTP服务器需要身份验证的密码。"
 
 #: setup.php:409
 msgid "The passwords do not match."
@@ -13654,7 +13654,7 @@ msgstr "记录 %1$s 已更名为 %2$s。"
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr "记录复制到剪贴板"
+msgstr "记录复制到剪贴板。"
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:168
@@ -13664,7 +13664,7 @@ msgstr "已经合并的记录\"%1$s\"和\"%2$s\"。"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "The regex appears to contain an error.  It can’t be used."
-msgstr "正则表达式似乎包含错误。不能用"
+msgstr "正则表达式似乎包含错误。不能用。"
 
 #: setup.php:144
 msgid "The server configuration is OK."
@@ -13722,7 +13722,7 @@ msgstr "升级完成。"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:74
 msgid "The uploaded file exceeds the allowed size."
-msgstr "上传的文件超过允许的大小"
+msgstr "上传的文件超过允许的大小。"
 
 #: admin_users.php:807
 #, php-format
@@ -13731,7 +13731,7 @@ msgstr "用户 %s 已被删除。"
 
 #: login.php:322
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
-msgstr "已经将包含需要确认访问请求信息发送邮件给用户"
+msgstr "已经将包含需要确认访问请求信息发送邮件给用户。"
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:388
@@ -13750,12 +13750,12 @@ msgstr "要放置在 HTML 页面页眉中\"meta 描述\"标记的值。 将此�
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too new."
-msgstr "%s 的版本太新"
+msgstr "%s 的版本太新。"
 
 #: admin_pgv_to_wt.php:101
 #, php-format
 msgid "The version of %s is too old."
-msgstr "%s 的版本太旧了"
+msgstr "%s 的版本太旧了。"
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
@@ -13832,7 +13832,7 @@ msgstr "没有挂起的更改。"
 
 #: app/Module/ResearchTaskModule.php:137
 msgid "There are no research tasks in this family tree."
-msgstr "这个家庭里没有考证任务"
+msgstr "这个家庭里没有考证任务。"
 
 #: app/Module/SourcesTabModule.php:81
 msgid "There are no source citations for this individual."
@@ -13841,7 +13841,7 @@ msgstr "这个人没有资源引用。"
 #: app/Module/ReviewChangesModule.php:87
 #: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1853
 msgid "There are pending changes for you to moderate."
-msgstr "有待定的更改需你确认"
+msgstr "有待定的更改需你确认。"
 
 #: app/Module/RecentChangesModule.php:85
 #, php-format
@@ -13935,7 +13935,7 @@ msgstr "这个家庭不存在，或者您没有权限查看它。"
 
 #: family.php:51
 msgid "This family has been deleted.  The deletion will need to be reviewed by a moderator."
-msgstr "这个家庭已被删除。删除需要主持人的审批"
+msgstr "这个家庭已被删除。删除需要主持人的审批。"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: family.php:42
@@ -13965,7 +13965,7 @@ msgstr[0] "这份家谱有 %s 记录使用相同的\"XREF\"作为另一种家庭
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
-msgstr "这个家谱没有图片"
+msgstr "这个家谱没有图片。"
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
@@ -14172,7 +14172,7 @@ msgstr "在主页上显示常见姓氏列表之前姓氏的个数。"
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1948
 msgid "This is the short list of GEDCOM family facts that appears next to the full list and can be added with a single click."
-msgstr "简短GEDCOM家庭的事件表，完善旁边的列表，可以单击添加一个"
+msgstr "简短GEDCOM家庭的事件表，完善旁边的列表，可以单击添加一个。"
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1830
@@ -14182,12 +14182,12 @@ msgstr "GEDCOM个体的事件出现在简短列表，完善可以单击添加一
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2126
 msgid "This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click."
-msgstr "这是GEDCOM库事件列表，旁显示完整的列表，单击可以添加一个"
+msgstr "这是GEDCOM库事件列表，旁显示完整的列表，单击可以添加一个。"
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:2037
 msgid "This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click."
-msgstr "这是简短GEDCOM资源事件列表，完善旁边的列表，单击可以添加一个"
+msgstr "这是简短GEDCOM资源事件列表，完善旁边的列表，单击可以添加一个。"
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1082
@@ -14220,7 +14220,7 @@ msgstr "此媒体文件存在，但不能访问。"
 
 #: mediafirewall.php:402
 msgid "This media file is broken and cannot be watermarked."
-msgstr "此媒体文件坏了，不能被水印"
+msgstr "此媒体文件坏了，不能被水印。"
 
 #: mediaviewer.php:78
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14248,7 +14248,7 @@ msgstr "这个媒体对象已被删除。你应该检查删除然后 %1$s 或 %2
 
 #: admin_media.php:570 find.php:543
 msgid "This media object is not linked to any other record."
-msgstr "媒体对像没有被链接到任何其它记录"
+msgstr "媒体对像没有被链接到任何其它记录。"
 
 #: message.php:239 message.php:280
 msgid "This message was sent while viewing the following URL: "
@@ -14350,7 +14350,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:500
 msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
-msgstr "这个选项设置是否弹出窗口显示经纬度与地图标记"
+msgstr "这个选项设置是否弹出窗口显示经纬度与地图标记。"
 
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly.  It is an advanced option, and you should not use it unless you understand the GEDCOM format.  If you make a mistake here, it can be difficult to fix."
@@ -14506,7 +14506,7 @@ msgstr "本网站正在升级。 几分钟后再试。"
 
 #: site-offline.php:71
 msgid "This website is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
-msgstr "网站正在维护。你可以过几分钟 <a href=\"index.php\">再试</a>"
+msgstr "网站正在维护。你可以过几分钟 <a href=\"index.php\">再试</a>。"
 
 #: site-offline.php:65 site-unavailable.php:85
 msgid "This website is temporarily unavailable"
@@ -14529,7 +14529,7 @@ msgstr "星期四"
 
 #: addmedia.php:139 admin_media_upload.php:103
 msgid "Thumbnail files must contain images."
-msgstr "缩略图一定要是图像"
+msgstr "缩略图一定要是图像。"
 
 #: admin_trees_config.php:1059
 msgid "Thumbnail images"
@@ -14648,7 +14648,7 @@ msgstr "要完成升级，您需要手动安装这些文件。"
 
 #: app/Module/ResearchTaskModule.php:188
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "创建新的考证任务,您必须先添加的“考证任务”列表的事实和事件在家谱的偏好"
+msgstr "创建新的考证任务,您必须先添加的“考证任务”列表的事实和事件在家谱的偏好。"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1666
@@ -14947,7 +14947,7 @@ msgstr "地方标列表类型"
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:355 login.php:466
 msgid "Type the password again."
-msgstr "再次输入密码"
+msgstr "再次输入密码。"
 
 #: edituser.php:232 login.php:471 setup.php:433
 msgid "Type your password again, to make sure you have typed it correctly."
@@ -15083,7 +15083,7 @@ msgstr "未使用的文件"
 #: admin_site_upgrade.php:335
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr "解压缩 %s 到一个临时文件夹..."
+msgstr "解压缩 %s 到一个临时文件夹…"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:35
@@ -15117,7 +15117,7 @@ msgstr "坚持升级"
 #: admin.php:582 admin_site_upgrade.php:82 login.php:109
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "升级到webtrees %s"
+msgstr "升级到webtrees %s。"
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
@@ -15170,7 +15170,7 @@ msgstr "使用'？'匹配一个字符，使用“*”匹配零个或多个字符
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] "至少个 %s 字符"
+msgstr[0] "至少个 %s 字符。"
 
 #: modules_v3/family_group_report/report.xml:12
 #: modules_v3/individual_ext_report/report.xml:13
@@ -15231,11 +15231,11 @@ msgstr "用户管理"
 
 #: admin_users.php:756
 msgid "User didn’t verify within 7 days."
-msgstr "在七天内没有确认的用户"
+msgstr "在七天内没有确认的用户。"
 
 #: admin_users.php:780
 msgid "User not verified by administrator."
-msgstr "没有被管理员确认的用户"
+msgstr "没有被管理员确认的用户。"
 
 #: admin_trees_config.php:973
 msgid "User options"
@@ -15353,7 +15353,7 @@ msgstr "韦拉克鲁斯州，墨西哥"
 
 #: login.php:341 login.php:528
 msgid "Verification code"
-msgstr "验证码："
+msgstr "验证码"
 
 #: admin_users.php:874
 msgid "Verified"
@@ -15815,7 +15815,7 @@ msgstr "您不能创建一个使自己无法访问该网站的规则。"
 
 #: login.php:67
 msgid "You cannot login because your browser does not accept cookies."
-msgstr "你不能登陆，你的浏览器不支持COOKIES"
+msgstr "你不能登陆，你的浏览器不支持COOKIES。"
 
 #: includes/session.php:500
 msgid "You do not have permission to view this page."
@@ -15831,7 +15831,7 @@ msgstr "您的申请通过。"
 
 #: app/Module/UserJournalModule.php:95
 msgid "You have not created any journal items."
-msgstr "您还没有创建任何日记项目"
+msgstr "您还没有创建任何日记项目。"
 
 #: admin_trees_manage.php:198
 msgid "You have selected a GEDCOM file with a different name.  Is this correct?"
@@ -15868,7 +15868,7 @@ msgstr "您必须输入管理员帐户字段。"
 
 #: edit_interface.php:1522
 msgid "You must provide a repository name."
-msgstr "您必须提供一个存储库名称"
+msgstr "您必须提供一个存储库名称。"
 
 #: edit_interface.php:1203
 msgid "You must provide a source title"
@@ -15880,7 +15880,7 @@ msgstr "在您可以将它们合并前，必须重新编号家谱的记录。"
 
 #: app/Module/ChartsBlockModule.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
-msgstr "块中的配置设置时您必须选择一个个体和图表类型"
+msgstr "块中的配置设置时您必须选择一个个体和图表类型。"
 
 #: admin_users.php:287
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
@@ -19827,7 +19827,7 @@ msgstr "webtrees信息"
 #: setup.php:266
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr "webtrees需要一个MySQL数据库，版本%s或更高版本"
+msgstr "webtrees需要一个MySQL数据库，版本%s或更高版本。"
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:321
@@ -19875,7 +19875,7 @@ msgstr "xenea"
 
 #: timeline.php:127
 msgid "years"
-msgstr "年:"
+msgstr "年"
 
 #: admin_trees_config.php:75 admin_users.php:242 admin_users.php:243
 #: app/Functions/FunctionsEdit.php:132 app/Functions/FunctionsEdit.php:624
