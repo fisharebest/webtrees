@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
 /**
@@ -43,14 +42,14 @@ class CensusOfUnitedStatesTest extends \PHPUnit_Framework_TestCase {
 		$census_dates = $census->allCensusDates();
 
 		$this->assertCount(9, $census_dates);
-		$this->assertInstanceOf(CensusOfUnitedStates1850::class, $census_dates[0]);
-		$this->assertInstanceOf(CensusOfUnitedStates1860::class, $census_dates[1]);
-		$this->assertInstanceOf(CensusOfUnitedStates1870::class, $census_dates[2]);
-		$this->assertInstanceOf(CensusOfUnitedStates1880::class, $census_dates[3]);
-		$this->assertInstanceOf(CensusOfUnitedStates1890::class, $census_dates[4]);
-		$this->assertInstanceOf(CensusOfUnitedStates1900::class, $census_dates[5]);
-		$this->assertInstanceOf(CensusOfUnitedStates1910::class, $census_dates[6]);
-		$this->assertInstanceOf(CensusOfUnitedStates1920::class, $census_dates[7]);
-		$this->assertInstanceOf(CensusOfUnitedStates1930::class, $census_dates[8]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1850', $census_dates[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1860', $census_dates[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1870', $census_dates[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1880', $census_dates[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1890', $census_dates[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1900', $census_dates[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1910', $census_dates[6]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1920', $census_dates[7]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1930', $census_dates[8]);
 	}
 }

@@ -14,10 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 use Mockery;
 
@@ -37,10 +35,10 @@ class CensusColumnGivenNamesTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testGivenNames() {
-		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe']]);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+		$individual->shouldReceive('getAllNames')->andReturn(array(array('givn' => 'Joe')));
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
 		$column = new CensusColumnGivenNames($census, '', '');
 
@@ -52,10 +50,10 @@ class CensusColumnGivenNamesTest extends \PHPUnit_Framework_TestCase {
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
 	 */
 	public function testNoName() {
-		$individual = Mockery::mock(Individual::class);
-		$individual->shouldReceive('getAllNames')->andReturn([]);
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+		$individual->shouldReceive('getAllNames')->andReturn(array());
 
-		$census = Mockery::mock(CensusInterface::class);
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
 		$column = new CensusColumnGivenNames($census, '', '');
 

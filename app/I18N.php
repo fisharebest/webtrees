@@ -25,7 +25,6 @@ use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Localization\Translator;
-use Patchwork\TurkishUtf8;
 
 /**
  * Internationalization (i18n) and localization (l10n).
@@ -353,6 +352,8 @@ class I18N {
 	public static function init($code = null) {
 		global $WT_TREE;
 
+		mb_internal_encoding('UTF-8');
+
 		if ($code !== null) {
 			// Create the specified locale
 			self::$locale = Locale::create($code);
@@ -375,7 +376,7 @@ class I18N {
 			}
 		}
 
-		File::mkdir(WT_DATA_DIR . 'cache');
+		$cache_dir_exists = File::mkdir(WT_DATA_DIR . 'cache');
 		$cache_file = WT_DATA_DIR . 'cache/language-' . self::$locale->languageTag() . '-cache.php';
 		if (file_exists($cache_file)) {
 			$filemtime = filemtime($cache_file);
@@ -420,7 +421,9 @@ class I18N {
 				$translation  = new Translation($translation_file);
 				$translations = array_merge($translations, $translation->asArray());
 			}
-			file_put_contents($cache_file, '<' . '?php return ' . var_export($translations, true) . ';');
+			if ($cache_dir_exists) { // During setup, we may not have been able to create it.
+				file_put_contents($cache_file, '<' . '?php return ' . var_export($translations, true) . ';');
+			}
 		} else {
 			$translations = include $cache_file;
 		}
@@ -679,10 +682,10 @@ class I18N {
 	 */
 	public static function strtolower($string) {
 		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
-			return TurkishUtf8::strtolower($string);
-		} else {
-			return mb_strtolower($string);
+			$string = strtr($string, array('I' => 'ı', 'İ' => 'i'));
 		}
+
+		return mb_strtolower($string);
 	}
 
 	/**
@@ -696,10 +699,10 @@ class I18N {
 	 */
 	public static function strtoupper($string) {
 		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
-			return TurkishUtf8::strtoupper($string);
-		} else {
-			return mb_strtoupper($string);
+			$string = strtr($string, array('ı' => 'I', 'i' => 'İ'));
 		}
+
+		return mb_strtoupper($string);
 	}
 
 	/**

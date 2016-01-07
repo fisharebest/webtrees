@@ -45,7 +45,8 @@ $controller
 	->addInlineJavascript(
 		'jQuery("head").append(\'<link rel="stylesheet" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/census/style.css" type="text/css">\');' .
 		'jQuery("input").on("change", updateCensusText);' .
-		'updateCensusText();'
+		'updateCensusText();' .
+		'jQuery("#tblSample").on("click", ".icon-remove", function() { jQuery(this).closest("tr").remove(); });'
 	)
 	->pageHeader();
 

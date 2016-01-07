@@ -1,0 +1,37 @@
+{
+	"name": "fisharebest/php-polyfill",
+	"type": "library",
+	"description": "Polyfills for PHP 5.3 onwards",
+	"keywords": [
+		"php",
+		"polyfill",
+		"shim",
+		"compat",
+		"compatibility"
+	],
+	"homepage": "https://github.com/fisharebest/php-polyfill",
+	"license": "MIT and GPL-3.0+",
+	"authors": [
+		{
+			"name": "Greg Roach",
+			"email": "fisharebest@gmail.com"
+		}
+	],
+	"require": {
+		"fisharebest/ext-calendar": "~2.2",
+		"jakeasmith/http_build_url": "~0.1",
+		"symfony/polyfill": "1.0.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "*",
+		"satooshi/php-coveralls": "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"Fisharebest\\PhpPolyfill\\": "src/"
+		},
+		"files": [
+			"src/bootstrap.php"
+		]
+	}
+}

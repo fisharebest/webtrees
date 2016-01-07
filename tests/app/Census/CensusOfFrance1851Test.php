@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
 /**
@@ -44,14 +43,14 @@ class CensusOfFrance1851Test extends \PHPUnit_Framework_TestCase {
 		$columns = $census->columns();
 
 		$this->assertCount(8, $columns);
-		$this->assertInstanceOf(CensusColumnSurname::class, $columns[0]);
-		$this->assertInstanceOf(CensusColumnGivenNames::class, $columns[1]);
-		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[2]);
-		$this->assertInstanceOf(CensusColumnAge::class, $columns[3]);
-		$this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[4]);
-		$this->assertInstanceOf(CensusColumnNationality::class, $columns[5]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[6]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[7]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSurname', $columns[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnGivenNames', $columns[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAge', $columns[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionEnglish', $columns[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNationality', $columns[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[6]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[7]);
 
 		$this->assertSame('XXXX', $columns[0]->abbreviation());
 		$this->assertSame('XXXX', $columns[1]->abbreviation());

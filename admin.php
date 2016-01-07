@@ -417,6 +417,11 @@ $old_files = array(
 	WT_ROOT . 'packages/jquery-1.11.2',
 	WT_ROOT . 'packages/jquery-2.1.3',
 	WT_ROOT . 'packages/moment-2.10.3',
+	// Removed in 1.7.3
+	WT_ROOT . 'includes/php_53_compatibility.php',
+	WT_ROOT . 'modules_v3/GEDFact_assistant/census/date.js',
+	WT_ROOT . 'modules_v3/GEDFact_assistant/census/dynamicoptionlist.js',
+	WT_ROOT . 'packages/jquery-cookie-1.4.1/jquery.cookie.js',
 );
 
 // Delete old files (if we can).

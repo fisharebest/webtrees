@@ -15,16 +15,21 @@
  */
 namespace Fisharebest\Webtrees\Controller;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Base controller for all GedcomRecord controllers
@@ -39,8 +44,12 @@ class GedcomRecordController extends PageController {
 
 	/**
 	 * Startup activity
+	 *
+	 * @param GedcomRecord|null $record
 	 */
-	public function __construct() {
+	public function __construct(GedcomRecord $record = null) {
+		$this->record = $record;
+
 		// Automatically fix broken links
 		if ($this->record && $this->record->canEdit()) {
 			$broken_links = 0;
@@ -84,5 +93,51 @@ class GedcomRecordController extends PageController {
 			// No such record
 			$this->setPageTitle(I18N::translate('Private'));
 		}
+	}
+
+	/**
+	 * get edit menu
+	 */
+	public function getEditMenu() {
+		if (!$this->record || $this->record->isPendingDeletion()) {
+			return null;
+		}
+
+		// edit menu
+		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-record');
+
+		// edit raw
+		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
+			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-record-editraw', array(
+				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
+			)));
+		}
+
+		// delete
+		if (Auth::isEditor($this->record->getTree())) {
+			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-record-del', array(
+				'onclick' => 'return record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+			)));
+		}
+
+		// add to favorites
+		if (Module::getModuleByName('user_favorites')) {
+			$menu->addSubmenu(new Menu(
+			/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
+				'#',
+				'menu-record-addfav',
+				array(
+					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite" ,{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
+				)));
+		}
+
+		// Get the link for the first submenu and set it as the link for the main menu
+		if ($menu->getSubmenus()) {
+			$submenus = $menu->getSubmenus();
+			$menu->setLink($submenus[0]->getLink());
+			$menu->setAttrs($submenus[0]->getAttrs());
+		}
+
+		return $menu;
 	}
 }

@@ -15,6 +15,13 @@
  */
 namespace Fisharebest\Webtrees;
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 use Fisharebest\Webtrees\Controller\NoteController;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
@@ -24,7 +31,8 @@ use Fisharebest\Webtrees\Module\CensusAssistantModule;
 define('WT_SCRIPT_NAME', 'note.php');
 require './includes/session.php';
 
-$controller = new NoteController;
+$record = Note::getInstance(Filter::get('nid', WT_REGEX_XREF), $WT_TREE);
+$controller = new NoteController($record);
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
@@ -82,8 +90,9 @@ $controller->addInlineJavascript('
 		});
 ');
 
-$linked_indi = $controller->record->linkedIndividuals('NOTE');
 $linked_fam  = $controller->record->linkedFamilies('NOTE');
+$linked_indi = $controller->record->linkedIndividuals('NOTE');
+$linked_note = array();
 $linked_obje = $controller->record->linkedMedia('NOTE');
 $linked_sour = $controller->record->linkedSources('NOTE');
 
@@ -103,43 +112,49 @@ if (Module::getModuleByName('GEDFact_assistant')) {
 
 ?>
 <div id="note-details">
-	<h2><?php echo $controller->record->getFullName(); ?></h2>
+	<h2>
+		<?php echo $controller->record->getFullName() ?>
+	</h2>
 	<div id="note-tabs">
 		<ul>
 			<li>
 				<a href="#note-edit">
-					<span><?php echo I18N::translate('Details'); ?></span>
+					<?php echo I18N::translate('Details') ?>
 				</a>
 			</li>
-			<?php if ($linked_indi) { ?>
+			<?php if ($linked_indi): ?>
 			<li>
-				<a href="#indi-note">
-					<span id="indisource"><?php echo I18N::translate('Individuals'); ?></span>
+				<a href="#linked-individuals">
+					<?php echo I18N::translate('Individuals') ?>
 				</a>
 			</li>
-			<?php } ?>
-			<?php if ($linked_fam) { ?>
+			<?php endif; ?>
+			<?php if ($linked_fam): ?>
 			<li>
-				<a href="#fam-note">
-					<span id="famsource"><?php echo I18N::translate('Families'); ?></span>
+				<a href="#linked-families">
+					<?php echo I18N::translate('Families') ?>
 				</a>
 			</li>
-			<?php } ?>
-			<?php if ($linked_obje) { ?>
+			<?php endif; ?>
+			<?php if ($linked_obje): ?>
 			<li>
-				<a href="#media-note">
-					<span id="mediasource"><?php echo I18N::translate('Media objects'); ?></span>
+				<a href="#linked-media">
+					<?php echo I18N::translate('Media objects') ?>
 				</a>
 			</li>
-			<?php } ?>
-			<?php if ($linked_sour) { ?>
+			<?php endif; ?>
+			<?php if ($linked_sour): ?>
 			<li>
-				<a href="#source-note">
-					<span id="notesource"><?php echo I18N::translate('Sources'); ?></span>
-				</a>
+				<a href="#linked-sources"><?php echo I18N::translate('Sources') ?></a>
 			</li>
-			<?php } ?>
+			<?php endif; ?>
+			<?php if ($linked_note): ?>
+			<li>
+				<a href="#linked-notes"><?php echo I18N::translate('Notes') ?></a>
+			</li>
+			<?php endif; ?>
 		</ul>
+
 		<div id="note-edit">
 			<table class="facts_table">
 				<tr>
@@ -162,28 +177,45 @@ if (Module::getModuleByName('GEDFact_assistant')) {
 					<td class="optionbox wrap width80"><?php echo $text; ?></td>
 				</tr>
 				<?php
-					foreach ($facts as $fact) {
-						FunctionsPrintFacts::printFact($fact, $controller->record);
-					}
-					if ($controller->record->canEdit()) {
-						FunctionsPrint::printAddNewFact($controller->record->getXref(), $facts, 'NOTE');
-					}
+				foreach ($facts as $fact) {
+					FunctionsPrintFacts::printFact($fact, $controller->record);
+				}
+
+				if ($controller->record->canEdit()) {
+				FunctionsPrint::printAddNewFact($controller->record->getXref(), $facts, 'NOTE');
+				}
 				?>
 			</table>
 		</div>
-		<?php
-		if ($linked_indi) {
-			echo '<div id="indi-note">', FunctionsPrintLists::individualTable($linked_indi), '</div>';
-		}
-		if ($linked_fam) {
-			echo '<div id="fam-note">', FunctionsPrintLists::familyTable($linked_fam), '</div>';
-		}
-		if ($linked_obje) {
-			echo '<div id="media-note">', FunctionsPrintLists::mediaTable($linked_obje), '</div>';
-		}
-		if ($linked_sour) {
-			echo '<div id="source-note">', FunctionsPrintLists::sourceTable($linked_sour), '</div>';
-		}
-		?>
+
+		<?php if ($linked_indi): ?>
+			<div id="linked-individuals">
+				<?php echo FunctionsPrintLists::individualTable($linked_indi) ?>
+			</div>
+		<?php endif; ?>
+
+		<?php if ($linked_fam): ?>
+			<div id="linked-families">
+				<?php echo FunctionsPrintLists::familyTable($linked_fam) ?>
+			</div>
+		<?php endif; ?>
+
+		<?php if ($linked_obje): ?>
+			<div id="linked-media">
+				<?php echo FunctionsPrintLists::mediaTable($linked_obje) ?>
+			</div>
+		<?php endif; ?>
+
+		<?php if ($linked_sour): ?>
+			<div id="linked-sources">
+				<?php echo FunctionsPrintLists::sourceTable($linked_sour) ?>
+			</div>
+		<?php endif; ?>
+
+		<?php if ($linked_note): ?>
+			<div id="linked-notes">
+				<?php echo FunctionsPrintLists::noteTable($linked_note) ?>
+			</div>
+		<?php endif; ?>
 	</div>
 </div>

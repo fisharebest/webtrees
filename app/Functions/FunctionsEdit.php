@@ -557,7 +557,7 @@ class FunctionsEdit {
 			// Not all facts have help text.
 			switch ($fact) {
 			case 'NAME':
-				if ($upperlevel !== 'REPO') {
+				if ($upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') {
 					echo FunctionsPrint::helpLink($fact);
 				}
 				break;
@@ -696,7 +696,7 @@ class FunctionsEdit {
 				echo '>', $typeValue, '</option>';
 			}
 			echo '</select>';
-		} elseif (($fact === 'NAME' && $upperlevel !== 'REPO') || $fact === '_MARNM') {
+		} elseif (($fact === 'NAME' && $upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') || $fact === '_MARNM') {
 			// Populated in javascript from sub-tags
 			echo '<input type="hidden" id="', $element_id, '" name="', $element_name, '" onchange="updateTextName(\'', $element_id, '\');" value="', Filter::escapeHtml($value), '" class="', $fact, '">';
 			echo '<span id="', $element_id, '_display" dir="auto">', Filter::escapeHtml($value), '</span>';
@@ -1003,8 +1003,7 @@ class FunctionsEdit {
 					jQuery("input.DATE", jQuery(el).closest("table")).val(option.val());
 					jQuery("input.PLAC", jQuery(el).closest("table")).val(option.data("place"));
 					jQuery("input.census-class", jQuery(el).closest("table")).val(option.data("census"));
-					var re = /(United States|England|Wales|Scotland|France)$/;
-					if (re.test(option.data("place"))) {
+					if (option.data("place")) {
 						jQuery("#assistant-link").show();
 					} else {
 						jQuery("#assistant-link").hide();

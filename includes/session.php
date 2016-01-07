@@ -40,7 +40,7 @@ global $WT_TREE, $SEARCH_SPIDER;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION', '1.7.3-dev');
+define('WT_VERSION', '1.7.4-dev');
 
 // External URLs
 define('WT_WEBTREES_URL', 'http://www.webtrees.net/');
@@ -109,7 +109,7 @@ define('WT_DEBUG', strpos(WT_VERSION, 'dev') !== false);
 define('WT_DEBUG_SQL', false);
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 33);
+define('WT_SCHEMA_VERSION', 34);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
@@ -158,23 +158,10 @@ if (WT_DEBUG) {
 	error_reporting(E_ALL);
 }
 
-// We use some PHP5.5 features, but need to run on older servers
-if (version_compare(PHP_VERSION, '5.4', '<')) {
-	require WT_ROOT . 'includes/php_53_compatibility.php';
-}
-
 require WT_ROOT . 'vendor/autoload.php';
 
 // PHP requires a time zone to be set.  We'll set a better one later on.
 date_default_timezone_set('UTC');
-
-// Use the patchwork/utf8 library to:
-// 1) set all PHP defaults to UTF-8
-// 2) create shims for missing mb_string functions such as mb_strlen()
-// 3) check that requests are valid UTF-8
-\Patchwork\Utf8\Bootup::initAll(); // Enables the portablity layer and configures PHP for UTF-8
-\Patchwork\Utf8\Bootup::filterRequestUri(); // Redirects to an UTF-8 encoded URL if it's not already the case
-\Patchwork\Utf8\Bootup::filterRequestInputs(); // Normalizes HTTP inputs to UTF-8 NFC
 
 // Calculate the base URL, so we can generate absolute URLs.
 $protocol = Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', Filter::server('HTTPS', null, 'off') === 'off' ? 'http' : 'https');
@@ -457,6 +444,13 @@ if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_t
 		if (Auth::isAdmin()) {
 			header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
 		} else {
+			// We're not an administrator, so we can only log in if there is a tree.
+			if (Auth::id()) {
+				Auth::logout();
+				FlashMessages::addMessage(
+					I18N::translate('This user account does not have access to any tree.')
+				);
+			}
 			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '')), true, 301);
 
 		}

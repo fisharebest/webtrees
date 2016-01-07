@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
 /**
@@ -44,23 +43,23 @@ class CensusOfWales1911Test extends \PHPUnit_Framework_TestCase {
 		$columns = $census->columns();
 
 		$this->assertCount(17, $columns);
-		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[1]);
-		$this->assertInstanceOf(CensusColumnAgeMale::class, $columns[2]);
-		$this->assertInstanceOf(CensusColumnAgeFemale::class, $columns[3]);
-		$this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[4]);
-		$this->assertInstanceOf(CensusColumnYearsMarried::class, $columns[5]);
-		$this->assertInstanceOf(CensusColumnChildrenBornAlive::class, $columns[6]);
-		$this->assertInstanceOf(CensusColumnChildrenLiving::class, $columns[7]);
-		$this->assertInstanceOf(CensusColumnChildrenDied::class, $columns[8]);
-		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[9]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[10]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[11]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[12]);
-		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[13]);
-		$this->assertInstanceOf(CensusColumnNationality::class, $columns[14]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[15]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[16]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAgeMale', $columns[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAgeFemale', $columns[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionEnglish', $columns[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnYearsMarried', $columns[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnChildrenBornAlive', $columns[6]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnChildrenLiving', $columns[7]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnChildrenDied', $columns[8]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[9]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[10]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[11]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[12]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlace', $columns[13]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNationality', $columns[14]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[15]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[16]);
 
 		$this->assertSame('Name', $columns[0]->abbreviation());
 		$this->assertSame('Relation', $columns[1]->abbreviation());

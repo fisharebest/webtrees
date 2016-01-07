@@ -26,10 +26,6 @@ define('WT_ROOT', '');
 define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
 define('WT_MODULES_DIR', 'modules_v3/');
 
-// We use some PHP5.5 features, but need to run on older servers
-if (version_compare(PHP_VERSION, '5.4', '<')) {
-	require WT_ROOT . 'includes/php_53_compatibility.php';
-}
 require 'vendor/autoload.php';
 
 Session::start();

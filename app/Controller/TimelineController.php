@@ -36,13 +36,13 @@ class TimelineController extends PageController {
 	/** @var Fact[] The facts to display on the chart */
 	public $indifacts = array(); // array to store the fact records in for sorting and displaying
 
-	/** @var integer[] Numeric birth years of each individual */
+	/** @var int[] Numeric birth years of each individual */
 	public $birthyears = array();
 
-	/** @var integer[] Numeric birth months of each individual */
+	/** @var int[] Numeric birth months of each individual */
 	public $birthmonths = array();
 
-	/** @var integer[] Numeric birth days of each individual */
+	/** @var int[] Numeric birth days of each individual */
 	public $birthdays = array();
 
 	/** @var int Lowest year to display */

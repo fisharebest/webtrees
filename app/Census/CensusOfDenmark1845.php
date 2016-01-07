@@ -35,13 +35,13 @@ class CensusOfDenmark1845 extends CensusOfDenmark implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this, 'TBC', 'To be confirmed'),
-			new CensusColumnAge($this, 'TBC', 'To be confirmed'),
-			new CensusColumnConditionEnglish($this, 'TBC', 'To be confirmed'),
-			new CensusColumnRelationToHead($this, 'TBC', 'To be confirmed'),
-			new CensusColumnOccupation($this, 'TBC', 'To be confirmed'),
-			new CensusColumnBirthPlace($this, 'TBC', 'To be confirmed'),
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // Handicaps
+			new CensusColumnFullName($this, 'Navn', ''),
+			new CensusColumnAge($this, 'Alder', ''),
+			new CensusColumnConditionDanish($this, 'Civilstand', ''),
+			new CensusColumnOccupation($this, 'Erhverv', ''),
+			new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
+			new CensusColumnNull($this, '', ''),
+			new CensusColumnNull($this, '', ''),
 		);
 	}
 }

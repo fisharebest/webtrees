@@ -1524,6 +1524,8 @@ class FunctionsPrintLists {
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
+				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
+				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 				jQuery.fn.dataTableExt.oSort["num-asc" ]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a<b) ? -1 : (a>b ? 1 : 0);};
 				jQuery.fn.dataTableExt.oSort["num-desc"]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a>b) ? -1 : (a<b ? 1 : 0);};
 				jQuery(".surname-list").dataTable( {
@@ -1531,10 +1533,10 @@ class FunctionsPrintLists {
 					jQueryUI: true,
 					autoWidth: false,
 					paging: false,
-					sorting: [],
+					sorting: [[1, "asc"]],
 					columns: [
 						/*  0 name  */ { dataSort: 1 },
-						/*  1 NAME  */ { visible: false },
+						/*  1 NAME  */ { type: "unicode", visible: false },
 						/*  2 count */ { dataSort: 3, class: "center" },
 						/*  3 COUNT */ { visible: false }
 					],
@@ -2160,7 +2162,7 @@ class FunctionsPrintLists {
 	/**
 	 * Print a chart by age using Google chart API
 	 *
-	 * @param integer[] $data
+	 * @param int[] $data
 	 * @param string $title
 	 *
 	 * @return string
@@ -2231,7 +2233,7 @@ class FunctionsPrintLists {
 	/**
 	 * Print a chart by decade using Google chart API
 	 *
-	 * @param integer[] $data
+	 * @param int[] $data
 	 * @param string $title
 	 *
 	 * @return string

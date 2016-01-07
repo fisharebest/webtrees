@@ -25,7 +25,7 @@ class CensusOfDenmark1930 extends CensusOfDenmark implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '01 NOV 1930';
+		return '05 NOV 1930';
 	}
 
 	/**
@@ -35,17 +35,24 @@ class CensusOfDenmark1930 extends CensusOfDenmark implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this, 'TBC', 'To be confirmed'),
-			new CensusColumnBirthDate($this, 'TBC', 'To be confirmed'),
-			new CensusColumnSexMF($this, 'TBC', 'To be confirmed'),
-			new CensusColumnConditionEnglish($this, 'TBC', 'To be confirmed'),
-			new CensusColumnRelationToHead($this, 'TBC', 'To be confirmed'),
-			new CensusColumnOccupation($this, 'TBC', 'To be confirmed'),
-			new CensusColumnBirthPlace($this, 'TBC', 'To be confirmed'),
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // religion
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // employment
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // handicaps
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // citizenship
+			new CensusColumnSurnameGivenNames($this, 'Navn', ''),
+			new CensusColumnNull($this, 'Bopæl', ''),
+			new CensusColumnNull($this, 'Andetsteds', 'Hvis den i Rubrik 3 opførte Person har fast Bopæl andetsteds, anføres her den faste Bopæl'),
+			new CensusColumnNull($this, 'Stede', 'Hvis den i Rubrik 3 opførte Person paa Tællingsdagen til Stede paa Tællingsstedet? Ja eller Nej.'),
+			new CensusColumnNull($this, 'Bopæl', 'Bopæl den 5. Novbr. 1929'),
+			new CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M) eller Kvindekøn (K).'),
+			new CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', ''),
+			new CensusColumnBirthYear($this, 'Fødselsaar', ''),
+			new CensusColumnBirthPlace($this, 'Fødested', ''),
+			new CensusColumnNull($this, 'Statsbergerferhold', ''),
+			new CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
+			new CensusColumnRelationToHead($this, 'Stilling i familien', 'Stilling i Familien: Husfader, Husmoder, Barn, Slangtning o.l., Tjenestetyende, Logerende, Pensioner'),
+			new CensusColumnOccupation($this, 'Erhverv', ''),
+			new CensusColumnNull($this, '', ''),
+			new CensusColumnNull($this, '', ''),
+			new CensusColumnNull($this, '', ''),
+			new CensusColumnNull($this, '', ''),
+			new CensusColumnNull($this, '', ''),
 		);
 	}
 }

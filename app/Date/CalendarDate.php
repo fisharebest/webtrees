@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\I18N;
  * midday.
  */
 class CalendarDate {
-	/** @var integer[] Convert GEDCOM month names to month numbers  */
+	/** @var int[] Convert GEDCOM month names to month numbers  */
 	public static $MONTH_ABBREV = array('' => 0, 'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4, 'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8, 'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12);
 
 	/** @var string[] Convert numbers to/from roman numerals */
@@ -842,7 +842,7 @@ class CalendarDate {
 	/**
 	 * Which months follows this one?  Calendars with leap-months should provide their own implementation.
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	protected function nextMonth() {
 		return array($this->m === $this->calendar->monthsInYear() ? $this->nextYear($this->y) : $this->y, ($this->m % $this->calendar->monthsInYear()) + 1);
@@ -893,7 +893,7 @@ class CalendarDate {
 	/**
 	 * Get today’s date in the current calendar.
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public function todayYmd() {
 		return $this->calendar->jdToYmd(unixtojd());

@@ -35,15 +35,17 @@ class CensusOfDenmark1925 extends CensusOfDenmark implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this, 'TBC', 'To be confirmed'),
-			new CensusColumnBirthDate($this, 'TBC', 'To be confirmed'),
-			new CensusColumnSexMF($this, 'TBC', 'To be confirmed'),
-			new CensusColumnConditionEnglish($this, 'TBC', 'To be confirmed'),
-			new CensusColumnRelationToHead($this, 'TBC', 'To be confirmed'),
-			new CensusColumnOccupation($this, 'TBC', 'To be confirmed'),
-			new CensusColumnBirthPlace($this, 'TBC', 'To be confirmed'),
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // religion
-			new CensusColumnNull($this, 'TBC', 'To be confirmed'), // citizenship
+			new CensusColumnFullName($this, 'Navn', 'Samtlige Personers Navn (ogsaa Fornavn). Ved Børn, endnu uden Navn, sættes „Dreng“ eller „Pige“. Midlertidig fraværerade Personer anføres ikke her, men paa Skemaeta Bagside)'),
+			new CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M) eller Kvindekøn (K).'),
+			new CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', ''),
+			new CensusColumnBirthYear($this, 'Fødselsaar', ''),
+			new CensusColumnBirthPlace($this, 'Fødested', ''),
+			new CensusColumnNull($this, 'Statsbergerferhold', ''),
+			new CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
+			new CensusColumnRelationToHead($this, 'Stilling i familien', 'Stilling i Familien: Husfader, Husmoder, Barn, Slangtning o.l., Tjenestetyende, Logerende, Pensioner'),
+			new CensusColumnOccupation($this, 'Erhverv', 'Erhverv eller Livsstilling'),
+			new CensusColumnNull($this, 'Bopæl', 'Bopæl den 5. Novbr. 1924'),
+			new CensusColumnNull($this, 'Anmærkninger', 'Anmærkninger'),
 		);
 	}
 }

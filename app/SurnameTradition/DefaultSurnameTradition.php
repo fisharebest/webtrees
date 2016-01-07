@@ -23,10 +23,10 @@ class DefaultSurnameTradition implements SurnameTraditionInterface {
 	const REGEX_GIVN = '~^(?<GIVN>[^/ ]+)~';
 
 	/** Extract a SPFX and SURN from a NAME */
-	const REGEX_SPFX_SURN = '~(?<NAME>/(?<SPFX>[a-z]{0,4}) ?(?<SURN>[^/]*)/)~';
+	const REGEX_SPFX_SURN = '~(?<NAME>/(?<SPFX>[a-z]{0,4}(?: [a-z]{1,4})*) ?(?<SURN>[^/]*)/)~';
 
 	/** Extract a simple SURN from a NAME */
-	const REGEX_SURN = '~(?<NAME>/(?<SURN>[^ /]+)/)~';
+	const REGEX_SURN = '~(?<NAME>/(?<SURN>[^/]+)/)~';
 
 	/** Extract two Spanish/Portuguese SURNs from a NAME */
 	const REGEX_SURNS = '~/(?<SURN1>[^ /]+)(?: | y |/ /|/ y /)(?<SURN2>[^ /]+)/~';
