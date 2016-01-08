@@ -2350,6 +2350,7 @@ dd .deletelink {
 .DataTables_sort_wrapper {
 	position: relative;
 	margin: 0 20px;
+	white-space: normal;
 }
 
 .DataTables_sort_wrapper span {
