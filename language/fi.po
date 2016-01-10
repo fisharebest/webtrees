@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3\n"
+"X-Generator: Weblate 2.4\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -697,7 +697,7 @@ msgstr "9."
 #: admin_trees_config.php:743
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
 msgstr ""
-"<b>GUID</b> on lyhenne termistä «Globally Unique ID».<br><br>GUID pyrkii "
+"<b>GUID</b> on lyhenne termistä ”Globally Unique ID”.<br><br>GUID pyrkii "
 "henkilön tunnistamiseen sellaisella tavalla, että keskeiset järjestöt, kuten "
 "Salt Lake Cityn MAP-kirkon sukututkimuskeskus (Family History Center of the "
 "LDS church in Salt Lake City), tai yhteensopivat sukututkimusohjelmistot "
