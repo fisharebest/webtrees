@@ -4271,6 +4271,11 @@ header {
 	padding: 5px;
 }
 
+.secondary-menu li ul {
+	left: auto;
+	right: 0px;
+}
+
 .secondary-menu li:hover ul {
 	display: block;
 }
@@ -4294,8 +4299,8 @@ header {
 }
 
 [dir=rtl] .secondary-menu li ul {
-	left: -15px;
-	right: auto;
+    left: 0;
+    right: auto;
 }
 
 [dir=rtl] .secondary-menu li ul li {
