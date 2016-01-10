@@ -1608,14 +1608,12 @@ background-color: #fff;
 	clear: none;
 	width: 66%;
 	float: left;
-	display: table;
 }
 
 #index_small_blocks {
 	clear: none;
 	width: 33%;
 	float: right;
-	display: table;
 }
 
 #index_full_blocks {
