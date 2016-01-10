@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2016-01-01 22:20+0100\n"
+"PO-Revision-Date: 2016-01-01 22:42+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Danish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
@@ -1010,7 +1010,9 @@ msgstr "En fane der viser de kilder der er knyttet til en person."
 
 #: admin_users.php:398
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
-msgstr "En bruger kan ikke logge ind før felterne “E-mail verificeret” og “Godkendt af administrator” er afkrydset."
+msgstr ""
+"En bruger kan ikke logge ind før felterne „E-mail verificeret“ og „Godkendt "
+"af administrator“ er afkrydset."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1122
@@ -1665,7 +1667,9 @@ msgstr "Efter oprettelse af familietræet, vil du kunne importere data fra en GE
 
 #: login.php:255
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
-msgstr "Efter at du har logget ind, så vælg linket 'Min konto' under menuen 'Mine sider' og udfyld feltet med adgangskoden for at ændre din adgangskode."
+msgstr ""
+"Efter at du har logget ind, så vælg linket „Min konto“ under menuen „Mine "
+"sider“ og udfyld feltet med adgangskoden for at ændre din adgangskode."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:248
@@ -1831,7 +1835,9 @@ msgstr "Alle kilde fakta"
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Tillad andre moduler til at redigere tekst ved hjælp af en “WYSIWYG” editor, i stedet for at bruge HTML-koder."
+msgstr ""
+"Tillad andre moduler til at redigere tekst ved hjælp af en „WYSIWYG“ editor, "
+"i stedet for at bruge HTML-koder."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1679
@@ -1876,7 +1882,7 @@ msgstr "En administrator skal godkende den nye brugerkonto, og vælg et adgangsn
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Et alternativ til “medie” fanen og en forbedret billedfremviser."
+msgstr "Et alternativ til „medie“ fanen og en forbedret billedfremviser."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
@@ -3985,7 +3991,9 @@ msgstr "Virksomhed"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:39
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "Ret NAME poster hvor 'Anonym/ANONYM/' eller 'Anonym /ANONYM' er brugt af ældre slægtsforskningprogrammer."
+msgstr ""
+"Ret NAME poster hvor „Anonym/ANONYM/“ eller „Anonym /ANONYM“ er brugt af "
+"ældre slægtsforskningprogrammer."
 
 #: app/Stats.php:6777
 msgid "Costa Rica"
@@ -5273,7 +5281,16 @@ msgstr "E- mail adresse der skal bruges i &laquo;Fra:&raquo;-feltet for de e-mai
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Hver kilde registrerer særlige begivenheder, normalt indenfor en dato og et sted/område. For eksempel optegnelser i en folketælling eller kirkebøgernes oplysninger om begivenheder som fødsel, vielse og død.<br><br>Vælg den ønskede begivenhed fra den liste over begivenheder som webtrees indeholder. Datoen skal angives med det korrekte format fx <i>FROM 1900 TO 1910</i>. Stedet benævnes med den mest præcise placering for kilden. For eksempel vil “Oneida, Idaho, USA” angive at begivenheden skete indenfor det begræsede område Oneida County. “Idaho, USA” vil angive at begivenheden fandt sted indenfor hele staten Idaho."
+msgstr ""
+"Hver kilde registrerer særlige begivenheder, normalt indenfor en dato og et "
+"sted/område. For eksempel optegnelser i en folketælling eller kirkebøgernes "
+"oplysninger om begivenheder som fødsel, vielse og død.<br><br>Vælg den "
+"ønskede begivenhed fra den liste over begivenheder som webtrees indeholder. "
+"Datoen skal angives med det korrekte format fx <i>FROM 1900 TO 1910</i>. "
+"Stedet benævnes med den mest præcise placering for kilden. For eksempel vil „"
+"Oneida, Idaho, USA“ angive at begivenheden skete indenfor det begræsede "
+"område Oneida County. „Idaho, USA“ vil angive at begivenheden fandt sted "
+"indenfor hele staten Idaho."
 
 #: help_text.php:319
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
@@ -5692,7 +5709,7 @@ msgstr "Eksakte tekst"
 #: famlist.php:171 indilist.php:172
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Udeluk personer med “%s” som giftenavn"
+msgstr "Udeluk personer med „%s“ som giftenavn"
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
@@ -6701,7 +6718,10 @@ msgstr "Fornavne"
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:982
 msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
-msgstr "Giver brugere mulighed for at vælge deres eget layout (tema) fra en “drop down” liste (hvis den er tilgængelig som tema)<br>Det er også nødvendigt at feltet: “Tillad brugere at vælge deres eget tema” er sat til <b>Ja</b>."
+msgstr ""
+"Giver brugere mulighed for at vælge deres eget layout (tema) fra en „drop "
+"down“ liste (hvis den er tilgængelig som tema)<br><br>Det er også nødvendigt "
+"at feltet: „Tillad brugere at vælge deres eget tema“ er sat til <b>Ja</b>."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -7335,7 +7355,9 @@ msgstr "Indstillinger"
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "I et familietræ har hver post et intern nummersystem (kaldet en \"XREF\") som feks “F123” eller “R14”."
+msgstr ""
+"I et familietræ har hver post et intern nummersystem (kaldet en „XREF“) som "
+"feks „F123“ eller „R14“."
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
@@ -7370,7 +7392,7 @@ msgstr "Inkludér korrekt sammenkørte steder"
 #: famlist.php:173 indilist.php:174
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Inkludér personer med “%s” som giftenavn"
+msgstr "Inkludér personer med „%s“ som giftenavn"
 
 #: app/Module/ClippingsCartModule.php:358
 #: app/Module/ClippingsCartModule.php:691
@@ -7803,7 +7825,7 @@ msgstr "Behold medie objekter"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2291
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:550
 msgid "Keep the existing “last change” information"
-msgstr "Behold den eksisterende “sidste ændring” information"
+msgstr "Behold den eksisterende „sidste ændring“ information"
 
 #: app/Stats.php:6844
 msgid "Kenya"
@@ -13270,7 +13292,7 @@ msgstr "FAQ-listen er tom."
 #: admin_trees_manage.php:145
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "GEDCOM filen %s” er blevet importeret."
+msgstr "GEDCOM filen „%s“ er blevet importeret."
 
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "The Hague, Netherlands"
@@ -13309,7 +13331,7 @@ msgstr "Ændringerne til \"%s\" er accepteret."
 #: action.php:232
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "Ændringerne for “%s” er blevet afvist."
+msgstr "Ændringerne for „%s“ er blevet afvist."
 
 #: app/Module/ClippingsCartModule.php:299
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
@@ -13347,19 +13369,21 @@ msgstr "Familietræet „%s“ eksisterer allerede."
 #: admin_trees_manage.php:79
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "Famlietræet “%s” blev oprettet."
+msgstr "Famlietræet „%s“ blev oprettet."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:56 admin_trees_manage.php:151
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "Famlietræet “%s” blev slettet."
+msgstr "Famlietræet „%s“ blev slettet."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:65
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "Vælg det familietræ “%s” du ønsker at besøgende skal se, når de besøger siden for første gang."
+msgstr ""
+"Vælg det familietræ „%s“ du ønsker at besøgende skal se, når de besøger "
+"siden for første gang."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13418,7 +13442,7 @@ msgstr "Filen blev kun uploadet delvist, forsøg igen."
 #: medialist.php:301 mediaviewer.php:162
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "Filen “%s” findes ikke."
+msgstr "Filen „%s“ findes ikke."
 
 #: admin_site_clean.php:36 admin_site_upgrade.php:492
 #, php-format
@@ -13611,7 +13635,7 @@ msgstr "Posten er kopieret til udklipsholder."
 #: admin_site_merge.php:168
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "Posterne “%1$s” og “%2$s” er blevet flettet."
+msgstr "Posterne „%1$s“ og „%2$s“ er blevet flettet."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13737,7 +13761,7 @@ msgstr "Udviklerne af webtrees vil meget gerne høre om denne fejl. Hvis du kont
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr "Brug et “%” for at matche et enkelt tegn. Brug “*” for at matche nul eller flere tegn."
+msgstr "Brug „%“ for at matche nul eller flere tegn."
 
 #: admin_modules.php:186 admin_users.php:486 app/Theme/AbstractTheme.php:1670
 #: edituser.php:272
@@ -13911,8 +13935,9 @@ msgstr "Denne familie forblev barnløs"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Familietræet har posten %s som bruger den samme “XREF” i det andet træ."
-msgstr[1] "Familietræet har posterne %s som bruger de samme “XREF” i det andet træ."
+msgstr[0] "Familietræet har posten %s som bruger den samme „XREF“ i det andet træ."
+msgstr[1] ""
+"Familietræet har posterne %s som bruger de samme „XREF“ i det andet træ."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -14032,7 +14057,7 @@ msgstr "Denne er versalfølsom. Hvis en database med navnet ikke allerede eksist
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1372
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr "Dette er den oprindelige opsætning for “vis detaljer” på diagrammerne."
+msgstr "Dette er den oprindelige opsætning for „vis detaljer“ på diagrammerne."
 
 #: admin.php:585 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees.  No upgrade is available."
@@ -14081,7 +14106,9 @@ msgstr "Dette er en liste over de fakta, som brugerne kun kan føje til kildeopl
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:349
 msgid "This is the name of the SMTP server.  “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Dette er navnet på SMTP-serveren. 'localhost' betyder, at mailserveren kører på den samme computer som din webserver."
+msgstr ""
+"Dette er navnet på SMTP-serveren. „localhost“ betyder, at mailserveren kører "
+"på den samme computer som din webserver."
 
 #. I18N: Help text for the “Minimum number of occurrences to be a ‘common surname’” configuration setting
 #: admin_trees_config.php:1183
@@ -14428,11 +14455,16 @@ msgstr "Dette websted er ikke tilgængeligt i øjeblikket"
 #: admin_trees_manage.php:196
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Dette sletter al slægtsdata fra “%s” og erstatter den med data fra en anden GEDCOM."
+msgstr ""
+"Dette sletter al slægtsdata fra „%s“ og erstatter den med data fra en anden "
+"GEDCOM."
 
 #: admin_trees_places.php:97
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Denne funktion vil opdatere det højeste level eller dele af sted(navne). Eksempel, “Mexico” vil matche “Quintana Roo, Mexico”, men ikke “Santa Fe, New Mexico”."
+msgstr ""
+"Denne funktion vil opdatere det højeste level eller dele af sted(navne). "
+"Eksempel, „Mexico“ vil matche „Quintana Roo, Mexico“, men ikke „Santa Fe, "
+"New Mexico“."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:668
@@ -15076,7 +15108,9 @@ msgstr "Brug SMTP til at sende beskeder"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Brug et “?” for at matche et enkelt tegn. Brug “*” for at matche nul eller flere tegn."
+msgstr ""
+"Brug et „?“ for at matche et enkelt tegn. Brug „*“ for at matche nul eller "
+"flere tegn."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:342 login.php:449
@@ -15179,7 +15213,9 @@ msgstr "Brugernavn eller e-mail adresse"
 
 #: admin_users.php:331 edituser.php:164 login.php:438
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Brugernavne kender ikke forskel på store og små bogstaver og accenter ignoreres. Derfor er brugernavnene “chloe”, “chloë”, og “Chloe” ens."
+msgstr ""
+"Brugernavne kender ikke forskel på store og små bogstaver og accenter "
+"ignoreres. Derfor er brugernavnene „chloe“, „chloë“, og „Chloe“ ens."
 
 #. I18N: Menu entry
 #: admin.php:599 admin.php:607 app/Theme/AdministrationTheme.php:162
@@ -15846,7 +15882,7 @@ msgstr "Du bør kontakte udvikleren til dette tema, for at få bekræftet om det
 #: login.php:288 message.php:58
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "Du bør slette “%1$s” fra “%2$s” og prøve igen."
+msgstr "Du bør slette „%1$s“ fra „%2$s“ og prøve igen."
 
 #: admin_users.php:395
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -19548,12 +19584,16 @@ msgstr "fætter/kusine af 10. led"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:94
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr "indstillingerne til forbindelsen med databasen i filen “/data/config.ini.php” er stadig korrekte"
+msgstr ""
+"indstillingerne til forbindelsen med databasen i filen „/data/config.ini.php“"
+" er stadig korrekte"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:97
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr "mappen “/data” og filen “/data/config.ini.php” har adgangsrettigheder, der tillader at serveren kunne læse dem"
+msgstr ""
+"mappen „/data“ og filen „/data/config.ini.php“ har adgangsrettigheder, der "
+"tillader at serveren kunne læse dem"
 
 #: app/Functions/Functions.php:643
 #, php-format
@@ -19843,7 +19883,7 @@ msgstr "\"%s\""
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "“%s” er blevet tilføjet til dine favoritter."
+msgstr "„%s“ er blevet tilføjet til dine favoritter."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:107
 msgid "…"

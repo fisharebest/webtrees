@@ -38,6 +38,15 @@ define('WT_MODULES_DIR', 'modules_v3/');
 define('WT_ROOT', '');
 define('WT_CLIENT_IP', $_SERVER['REMOTE_ADDR']);
 
+// Convert PHP errors into exceptions
+set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+	if (error_reporting() & $errno) {
+		throw new \ErrorException($errstr, 0, $errno, $errfile, $errline);
+	} else {
+		return false;
+	}
+});
+
 if (file_exists(WT_DATA_DIR . WT_CONFIG_FILE)) {
 	header('Location: index.php');
 

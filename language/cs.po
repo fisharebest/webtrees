@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2015-12-30 14:29+0100\n"
+"PO-Revision-Date: 2016-01-08 22:15+0100\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
@@ -3379,7 +3379,7 @@ msgstr "Místo sčítání"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:139
 msgid "Census transcript"
-msgstr "Sčítací přepis"
+msgstr "Přepis sčítacího archu"
 
 #: app/Module/GoogleMapsModule.php:1438
 msgid "Center map here"

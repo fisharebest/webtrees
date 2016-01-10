@@ -1018,7 +1018,7 @@ class FunctionsImport {
 		if (preg_match('/\n\d TITL (.+)/', $gedrec, $file_match)) {
 			$titl = $file_match[1];
 		} else {
-			$titl = $file;
+			$titl = '';
 		}
 
 		// Have we already created a media object with the same title/filename?

@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2015-12-18 22:01+0100\n"
-"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
-"Language-Team: German <http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
+"PO-Revision-Date: 2016-01-02 18:31+0100\n"
+"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
+"Language-Team: German "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -7648,7 +7649,7 @@ msgstr "Johannesburg, Südafrika"
 #. I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname.
 #: app/Tree.php:493
 msgid "John /DOE/"
-msgstr "John /DOE/"
+msgstr "Karl /MUSTERMANN/"
 
 #: app/Stats.php:6841
 msgid "Jordan"
@@ -8118,7 +8119,7 @@ msgstr "Anzeige begrenzen auf"
 #. I18N: You need to:
 #: login.php:569
 msgid "Link the user account to an individual."
-msgstr ""
+msgstr "Verlinke das Benutzerprofil mit einem Individuum."
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:983
 #: edit_interface.php:1043
@@ -11946,7 +11947,7 @@ msgstr "Verbindung setzen"
 #. I18N: You need to:
 #: login.php:567
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Setzen der Berechtigungsstufe für jeden Stammbaum."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -11981,7 +11982,7 @@ msgstr "Setzt die Datenschutzeinstellungen für alle verstorbenen Personen."
 #. I18N: You need to:
 #: login.php:565
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Setzt den Status auf \"bestätigt\"."
 
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:730
@@ -14257,26 +14258,36 @@ msgstr "Dieser Prozess ermöglicht dem Webseitenbesitzer die Sicherstellung, das
 #: gedrecord.php:90
 msgid "This record does not exist or you do not have permission to view it."
 msgstr ""
+"Dieser Datensatz existiert nicht oder Ihnen fehlt die Berechtigung ihn zu "
+"sehen."
 
 #: gedrecord.php:64
 msgid "This record has been deleted.  The deletion will need to be reviewed by a moderator."
 msgstr ""
+"Dieser Datensatz wurde gelöscht.  Die Löschung benötigt die Begutachtung "
+"eines Moderators."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: gedrecord.php:55
 #, php-format
 msgid "This record has been deleted.  You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Dieser Datensatz wurde gelöscht.  Sie sollten die Löschung begutachten und "
+"sie dann %1$s oder %2$s."
 
 #: gedrecord.php:82
 msgid "This record has been edited.  The changes need to be reviewed by a moderator."
 msgstr ""
+"Dieser Datensatz wurde bearbeitet.  Die Änderungen benötigen die "
+"Begutachtung eines Moderators."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: gedrecord.php:73
 #, php-format
 msgid "This record has been edited.  You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Dieser Datensatz wurde bearbeitet.  Sie sollten die Änderungen begutachten "
+"und sie dann %1$s oder %2$s."
 
 #: repo.php:78
 msgid "This repository does not exist or you do not have permission to view it."
@@ -14376,7 +14387,7 @@ msgstr "Dieser Verweistype ist hier nicht zugelassen."
 
 #: login.php:119
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "Dieses Benutzerkonto verfügt über keinen Zugang zu jedwedem Stammbaum."
 
 #: setup.php:204
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -15771,7 +15782,7 @@ msgstr "Bitte erneut anmelden, und zwar mit dem PhpGedView Benutzernamen und Pas
 
 #: login.php:561
 msgid "You need to review the account details."
-msgstr ""
+msgstr "Sie sollten die Einzelheiten des Benutzerkontos überprüfen."
 
 #: setup.php:416
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."

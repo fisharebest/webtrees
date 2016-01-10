@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2015-11-27 01:49+0100\n"
+"PO-Revision-Date: 2016-01-08 01:27+0100\n"
 "Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
-"Language-Team: French (Canada) <http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
+"Language-Team: French (Canada) "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
 "Language: fr-CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -8120,7 +8121,7 @@ msgstr "Limite d’affichage"
 #. I18N: You need to:
 #: login.php:569
 msgid "Link the user account to an individual."
-msgstr ""
+msgstr "Relier ce compte utilisateur à la fiche d’un individu."
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:983
 #: edit_interface.php:1043
@@ -11948,7 +11949,7 @@ msgstr "Mettre un lien"
 #. I18N: You need to:
 #: login.php:567
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Définir le niveau d’accès de chaque arbre."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -11983,7 +11984,7 @@ msgstr "Niveau de confidentialité pour toutes les personnes décédées."
 #. I18N: You need to:
 #: login.php:565
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Définir le statut à «&nbsp;approuver&nbsp;»."
 
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:730
@@ -14259,26 +14260,35 @@ msgstr "Ce processus permet au propriétaire du site de s’assurer que les nouv
 #: gedrecord.php:90
 msgid "This record does not exist or you do not have permission to view it."
 msgstr ""
+"Cet enregistrement n’existe pas ou vous n’avez pas la permission de le voir."
 
 #: gedrecord.php:64
 msgid "This record has been deleted.  The deletion will need to be reviewed by a moderator."
 msgstr ""
+"Cet enregistrement a été supprimé. La suppression doit être vérifiée par un "
+"modérateur."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: gedrecord.php:55
 #, php-format
 msgid "This record has been deleted.  You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Cet enregistrement a été supprimé. Vous devez vérifier la suppression et "
+"ensuite l’ %1$s ou la %2$s."
 
 #: gedrecord.php:82
 msgid "This record has been edited.  The changes need to be reviewed by a moderator."
 msgstr ""
+"Cet enregistrement a été modifié. Le changement doit être révisé par un "
+"modérateur."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: gedrecord.php:73
 #, php-format
 msgid "This record has been edited.  You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Cet enregistrement a été modifié. You devez réviser les changements et "
+"ensuite les %1$s ou les %2$s."
 
 #: repo.php:78
 msgid "This repository does not exist or you do not have permission to view it."
@@ -14378,7 +14388,7 @@ msgstr "Ce type de lien n’est pas permis ici."
 
 #: login.php:119
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "Ce compte utilisateur n’a accès à aucun arbre."
 
 #: setup.php:204
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -15773,7 +15783,7 @@ msgstr "Vous devez vous connecter à nouveau en utilisant les mêmes identifiant
 
 #: login.php:561
 msgid "You need to review the account details."
-msgstr ""
+msgstr "Vous devez réviser les détails du compte."
 
 #: setup.php:416
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."

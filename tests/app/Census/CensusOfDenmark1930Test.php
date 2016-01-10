@@ -29,7 +29,7 @@ class CensusOfDenmark1930Test extends \PHPUnit_Framework_TestCase {
 		$census = new CensusOfDenmark1930;
 
 		$this->assertSame('Danmark', $census->censusPlace());
-		$this->assertSame('01 NOV 1930', $census->censusDate());
+		$this->assertSame('05 NOV 1930', $census->censusDate());
 	}
 
 	/**
@@ -64,8 +64,8 @@ class CensusOfDenmark1930Test extends \PHPUnit_Framework_TestCase {
 
 		$this->assertSame('Navn', $columns[0]->abbreviation());
 		$this->assertSame('Bopæl', $columns[1]->abbreviation());
-		$this->assertSame('', $columns[2]->abbreviation());
-		$this->assertSame('', $columns[3]->abbreviation());
+		$this->assertSame('Andetsteds', $columns[2]->abbreviation());
+		$this->assertSame('Stede', $columns[3]->abbreviation());
 		$this->assertSame('Bopæl', $columns[4]->abbreviation());
 		$this->assertSame('Køn', $columns[5]->abbreviation());
 		$this->assertSame('Fødselsdag', $columns[6]->abbreviation());
@@ -83,8 +83,8 @@ class CensusOfDenmark1930Test extends \PHPUnit_Framework_TestCase {
 
 		$this->assertSame('', $columns[0]->title());
 		$this->assertSame('', $columns[1]->title());
-		$this->assertSame('', $columns[2]->title());
-		$this->assertSame('', $columns[3]->title());
+		$this->assertSame('Hvis den i Rubrik 3 opførte Person har fast Bopæl andetsteds, anføres her den faste Bopæl', $columns[2]->title());
+		$this->assertSame('Hvis den i Rubrik 3 opførte Person paa Tællingsdagen til Stede paa Tællingsstedet? Ja eller Nej.', $columns[3]->title());
 		$this->assertSame('Bopæl den 5. Novbr. 1929', $columns[4]->title());
 		$this->assertSame('Kjønnet. Mandkøn (M) eller Kvindekøn (K).', $columns[5]->title());
 		$this->assertSame('', $columns[6]->title());

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2015-12-30 13:15+0100\n"
+"PO-Revision-Date: 2016-01-07 09:02+0100\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
@@ -3465,7 +3465,7 @@ msgstr "Recerca d’errors"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:94
 msgid "Check for pending changes…"
-msgstr "S’estan comprovant els canvis pendents…"
+msgstr "S’està comprovant els canvis pendents…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
@@ -3965,7 +3965,7 @@ msgstr "Copia tots els registres de %1$s a %2$s."
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:431
 msgid "Copy files…"
-msgstr "S’està copiant fitxers…"
+msgstr "S’està copiant els fitxers…"
 
 #: admin_site_upgrade.php:401
 #, php-format
@@ -10667,7 +10667,7 @@ msgstr "Indret de residència"
 #: admin_site_upgrade.php:416
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr "Poseu el lloc fora de línia, creant el fitxer %s…"
+msgstr "S'està posant el lloc fora de línia, creant el fitxer %s…"
 
 #: admin_site_upgrade.php:472
 #, php-format

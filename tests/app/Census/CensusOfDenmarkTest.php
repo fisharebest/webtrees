@@ -41,7 +41,7 @@ class CensusOfDenmarkTest extends \PHPUnit_Framework_TestCase {
 
 		$census_dates = $census->allCensusDates();
 
-		$this->assertCount(23, $census_dates);
+		$this->assertCount(22, $census_dates);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1787', $census_dates[0]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1801', $census_dates[1]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1803', $census_dates[2]);
@@ -56,14 +56,13 @@ class CensusOfDenmarkTest extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1880', $census_dates[11]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1885', $census_dates[12]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1890', $census_dates[13]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1895', $census_dates[14]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1901', $census_dates[15]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1906', $census_dates[16]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1911', $census_dates[17]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1916', $census_dates[18]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1921', $census_dates[19]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1925', $census_dates[20]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1930', $census_dates[21]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1940', $census_dates[22]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1901', $census_dates[14]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1906', $census_dates[15]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1911', $census_dates[16]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1916', $census_dates[17]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1921', $census_dates[18]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1925', $census_dates[19]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1930', $census_dates[20]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark1940', $census_dates[21]);
 	}
 }

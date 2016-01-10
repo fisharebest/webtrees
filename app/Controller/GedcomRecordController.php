@@ -45,11 +45,9 @@ class GedcomRecordController extends PageController {
 	/**
 	 * Startup activity
 	 *
-	 * @param GedcomRecord $record
-	 *
-	 * @throws \Exception
+	 * @param GedcomRecord|null $record
 	 */
-	public function __construct(GedcomRecord $record) {
+	public function __construct(GedcomRecord $record = null) {
 		$this->record = $record;
 
 		// Automatically fix broken links

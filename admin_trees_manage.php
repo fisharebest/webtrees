@@ -79,7 +79,7 @@ case 'new_tree':
 			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been created.', Filter::escapeHtml($basename)), 'success');
 		}
 	}
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?ged=' . $basename);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?ged=' . Filter::escapeUrl($basename));
 
 	return;
 case 'replace_upload':

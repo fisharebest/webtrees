@@ -13,23 +13,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Fisharebest\Webtrees\Census;
+namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Database;
 
 /**
- * The individual's date of birth.
+ * Upgrade the database schema from version 33 to version 34.
  */
-class CensusColumnBirthYear extends AbstractCensusColumn implements CensusColumnInterface {
+class Migration33 implements MigrationInterface {
 	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
+	 * Upgrade to to the next version
 	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		return $individual->getEstimatedBirthDate()->minimumDate()->format('%Y');
+	public function upgrade() {
+		Database::exec(
+			"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES" .
+			" ('Mozilla/5.0 (Mobile; Windows Phone 8.1; % Microsoft; %', 'allow', 'Windows Phone 8.1')"
+		);
 	}
 }

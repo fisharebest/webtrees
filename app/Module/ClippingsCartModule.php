@@ -488,18 +488,19 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	public function getMenu() {
 		global $controller, $WT_TREE;
 
-		//-- main clippings menu item
-		$menu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippings', array('rel' => 'nofollow'));
+		$submenus = array();
 		if (isset($controller->record)) {
-			$submenu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippingscart', array('rel' => 'nofollow'));
-			$menu->addSubmenu($submenu);
+			$submenus[] = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippingscart', array('rel' => 'nofollow'));
 		}
 		if (!empty($controller->record) && $controller->record->canShow()) {
-			$submenu = new Menu(I18N::translate('Add to the clippings cart'), 'module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id=' . $controller->record->getXref(), 'menu-clippingsadd', array('rel' => 'nofollow'));
-			$menu->addSubmenu($submenu);
+			$submenus[] = new Menu(I18N::translate('Add to the clippings cart'), 'module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id=' . $controller->record->getXref(), 'menu-clippingsadd', array('rel' => 'nofollow'));
 		}
 
-		return $menu;
+		if ($submenus) {
+			return new Menu($this->getTitle(), '#', 'menu-clippings', array('rel' => 'nofollow'), $submenus);
+		} else {
+			return new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippings', array('rel' => 'nofollow'));
+		}
 	}
 
 	/** {@inheritdoc} */

@@ -1003,8 +1003,7 @@ class FunctionsEdit {
 					jQuery("input.DATE", jQuery(el).closest("table")).val(option.val());
 					jQuery("input.PLAC", jQuery(el).closest("table")).val(option.data("place"));
 					jQuery("input.census-class", jQuery(el).closest("table")).val(option.data("census"));
-					var re = /(United States|England|Wales|Scotland|France)$/;
-					if (re.test(option.data("place"))) {
+					if (option.data("place")) {
 						jQuery("#assistant-link").show();
 					} else {
 						jQuery("#assistant-link").hide();
