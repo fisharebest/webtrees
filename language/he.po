@@ -20234,7 +20234,7 @@ msgstr "אח תאום"
 
 #: app/Functions/Functions.php:812
 msgid "twin sibling"
-msgstr "אח/ות תאום/תאומה"
+msgstr "אח תאום/אחות תאומה"
 
 #: app/Functions/Functions.php:795
 msgid "twin sister"
