@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2016-01-09 14:09+0100\n"
-"Last-Translator: Martin Wetterwald <martin@wetterwald.eu>\n"
+"PO-Revision-Date: 2016-01-11 23:42+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Chinese (Simplified) "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
 "Language: zh-Hans\n"
@@ -12036,8 +12036,8 @@ msgstr "将状态设置为\"批准\"。"
 #: admin_trees_config.php:730
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
 msgstr ""
-"设置为<b>是</ b>以使用GEDCOM ID的RIN号码，而不是当被问及在配置文件中，用户设置和图表各自的ID。这是为族谱程序：导出不一致的GEDCO"
-"Ms并分配给不同个人相同ID，但始终使用相同的RIN有用。"
+"设置为<b>是</b>以使用GEDCOM ID的RIN号码，而不是当被问及在配置文件中，用户设置和图表各自的ID。这是为族谱程序：导出不一致的GEDCOM"
+"s并分配给不同个人相同ID，但始终使用相同的RIN有用。"
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1684
