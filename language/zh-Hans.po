@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2016-01-12 00:00+0100\n"
+"PO-Revision-Date: 2016-01-12 00:24+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Chinese (Simplified) "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
@@ -5256,7 +5256,7 @@ msgstr "下载地理数据"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:198
 msgid "Duodi"
-msgstr "Duodi"
+msgstr "周二"
 
 #: admin_users.php:73 edituser.php:60 login.php:284
 msgid "Duplicate email address.  A user with that email already exists."
@@ -9831,7 +9831,7 @@ msgstr "没有"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:205
 msgid "Nonidi"
-msgstr "Nonidi"
+msgstr "周九"
 
 #. I18N: time format “%A” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:108
@@ -10053,7 +10053,7 @@ msgstr "十月"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:204
 msgid "Octidi"
-msgstr "Octidi"
+msgstr "周八"
 
 #: app/Date/CalendarDate.php:220
 msgctxt "GENITIVE"
@@ -10921,7 +10921,7 @@ msgstr "牧师"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:197
 msgid "Primidi"
-msgstr "Primidi"
+msgstr "周一"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank?"
@@ -10978,7 +10978,7 @@ msgstr "资料品质"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:200
 msgid "Quartidi"
-msgstr "Quartidi"
+msgstr "周四"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:158
 msgid "Question"
@@ -11003,7 +11003,7 @@ msgstr "快速资源事件"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:201
 msgid "Quintidi"
-msgstr "Quintidi"
+msgstr "周五"
 
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:133 app/Module/UserMessagesModule.php:134
@@ -11941,7 +11941,7 @@ msgstr "九月"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:203
 msgid "Septidi"
-msgstr "Septidi"
+msgstr "周七"
 
 #: app/Stats.php:6925
 msgid "Serbia"
@@ -12051,7 +12051,7 @@ msgstr "webtrees 安装向导"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:202
 msgid "Sextidi"
-msgstr "Sextidi"
+msgstr "周六"
 
 #: app/Stats.php:6945
 msgid "Seychelles"
@@ -14894,7 +14894,7 @@ msgstr "特兰西瓦尼亚"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:199
 msgid "Tridi"
-msgstr "Tridi"
+msgstr "周三"
 
 #: app/Stats.php:6957
 msgid "Trinidad and Tobago"
