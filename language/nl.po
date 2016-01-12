@@ -3,10 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2016-01-09 22:15+0100\n"
-"Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
-"Language-Team: Dutch "
-"<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
+"PO-Revision-Date: 2016-01-12 00:41+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Dutch <http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -7793,7 +7792,7 @@ msgstr "Media objects behouden"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2291
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:550
 msgid "Keep the existing “last change” information"
-msgstr "Behoud de bestaande \"laatste wijziging\" informatie"
+msgstr "Behoud de bestaande “laatste wijziging” informatie"
 
 #: app/Stats.php:6844
 msgid "Kenya"
@@ -14271,21 +14270,17 @@ msgstr "Dit record is verwijderd. Dit zal worden beoordeeld door een moderator."
 #: gedrecord.php:55
 #, php-format
 msgid "This record has been deleted.  You should review the deletion and then %1$s or %2$s it."
-msgstr ""
-"Dit record is verwijderd. Beoordeel de verwijdering en %1$s or %2$s deze dan."
+msgstr "Dit record is verwijderd. Beoordeel de verwijdering en %1$s or %2$s deze dan."
 
 #: gedrecord.php:82
 msgid "This record has been edited.  The changes need to be reviewed by a moderator."
-msgstr ""
-"Dit record is gewijzigd. De wijzigingen zullen worden beoordeeld door een "
-"moderator."
+msgstr "Dit record is gewijzigd. De wijzigingen zullen worden beoordeeld door een moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: gedrecord.php:73
 #, php-format
 msgid "This record has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr ""
-"Dit record is gewijzigd. Beoordeel de wijzigingen en  %1$s of %2$s deze dan."
+msgstr "Dit record is gewijzigd. Beoordeel de wijzigingen en  %1$s of %2$s deze dan."
 
 #: repo.php:78
 msgid "This repository does not exist or you do not have permission to view it."
@@ -15466,7 +15461,7 @@ msgstr "Westelijke Sahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:2261
 msgid "When a record is edited, the user and timestamp are recorded.  Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data.  This option controls whether this feature is selected by default."
-msgstr "Wanneer een record wordt bijgewerkt, worden de gebruiker en de datum/tijd opgeslagen. Soms is het wenselijk om de bestaande \"laatste wijziging\" informatie te behouden, bijvoorbeeld wanneer u kleine correcties maakt in de data van iemand anders. Met deze optie kunt u deze toepassing instellen als standaard optie."
+msgstr "Wanneer een record wordt bijgewerkt, worden de gebruiker en de datum/tijd opgeslagen. Soms is het wenselijk om de bestaande “laatste wijziging” informatie te behouden, bijvoorbeeld wanneer u kleine correcties maakt in de data van iemand anders. Met deze optie kunt u deze toepassing instellen als standaard optie."
 
 #: admin_users.php:389
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
