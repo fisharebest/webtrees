@@ -3,10 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2016-01-12 00:24+0100\n"
+"PO-Revision-Date: 2016-01-12 00:36+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Chinese (Simplified) "
-"<http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
+"Language-Team: Chinese (Simplified) <http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
 "Language: zh-Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -194,7 +193,7 @@ msgstr "%Y年 %n月 %j日"
 #: app/Stats.php:6999
 #, php-format
 msgid "%s BCE"
-msgstr "%s BCE"
+msgstr ""
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:276
@@ -670,11 +669,7 @@ msgstr "九世纪"
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:743
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr ""
-"<b>GUID</b>«在全球范围内唯一的ID»的缩写。<br><br>GUID用于定义每个可能是重复的个体，使中央机构，如家族历史中心，或是自己的服务器"
-"上运行的兼容的GEDCOM处理程序，确定它们是否是同一人无论身在何处的。家庭历史中心的目标是有家谱数据的中央存储库，并通过Web服务公开。这将使任何程序访"
-"问数据，并更新他们的数据在它<br><br>如果你不打算与其他人分享这个GEDCOM，你不需要让webtrees创建这些GUID，但是，这样做不用担心GE"
-"DCOM的规模越来越大。"
+msgstr "<b>GUID</b>«在全球范围内唯一的ID»的缩写。<br><br>GUID用于定义每个可能是重复的个体，使中央机构，如家族历史中心，或是自己的服务器上运行的兼容的GEDCOM处理程序，确定它们是否是同一人无论身在何处的。家庭历史中心的目标是有家谱数据的中央存储库，并通过Web服务公开。这将使任何程序访问数据，并更新他们的数据在它<br><br>如果你不打算与其他人分享这个GEDCOM，你不需要让webtrees创建这些GUID，但是，这样做不用担心GEDCOM的规模越来越大。"
 
 #: admin_trees_manage.php:718
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -682,30 +677,19 @@ msgstr "<b>重要提示：</b>迁移向导不能帮助移动媒体项目。你�
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr ""
-"<b>请注意：</b>在世的个体的私人信息只会显示给家人和亲密的朋友。您将收到数据验证你的私人关系。有时死亡人的信息也可能是私人的。如果是这样的话，那是因"
-"为没有人确定他们是否是死的还是活的，我们可能不会知道关于这个人足够多的信息。<br><br>在问问题之前，请确认您通过检查日期，地方，和亲人查询的人是正确"
-"。如果你对家谱资料提交更改，请包括你在哪里得到数据资源信息。"
+msgstr "<b>请注意：</b>在世的个体的私人信息只会显示给家人和亲密的朋友。您将收到数据验证你的私人关系。有时死亡人的信息也可能是私人的。如果是这样的话，那是因为没有人确定他们是否是死的还是活的，我们可能不会知道关于这个人足够多的信息。<br><br>在问问题之前，请确认您通过检查日期，地方，和亲人查询的人是正确。如果你对家谱资料提交更改，请包括你在哪里得到数据资源信息。"
 
 #: login.php:168
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
-msgstr ""
-"<center><b>欢迎访问这个家谱网站</b></center><br>这个站点只被允许 <u>授权</u> 用户的访问。<br><br>如果你有帐户"
-"，你可以登录该页面。如果你没有一个用户帐户，你可以点击下面的链接申请。<br><br>管理员验证您提供的信息决定批准或拒绝你的请求的帐户。当你的请求被批准"
-"你将收到一封电子邮件。"
+msgstr "<center><b>欢迎访问这个家谱网站</b></center><br>这个站点只被允许 <u>授权</u> 用户的访问。<br><br>如果你有帐户，你可以登录该页面。如果你没有一个用户帐户，你可以点击下面的链接申请。<br><br>管理员验证您提供的信息决定批准或拒绝你的请求的帐户。当你的请求被批准你将收到一封电子邮件。"
 
 #: login.php:171
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
-msgstr ""
-"<center><b>欢迎到这个家谱网站</b></center><br>只有<u>家庭成员</u>才可以看。<br><br>你可以登陆或申请一个账号<b"
-"r><br>注册后要通过网站管理的批准才可以看。"
+msgstr "<center><b>欢迎到这个家谱网站</b></center><br>只有<u>家庭成员</u>才可以看。<br><br>你可以登陆或申请一个账号<br><br>注册后要通过网站管理的批准才可以看。"
 
 #: login.php:165
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved."
-msgstr ""
-"<center><b>欢迎访问这个家谱网站</b></center><br>允许每个有帐户的游客访问此网站。<br><br>如果你有帐户，你可以登录该页面"
-"。如果你没有一个用户帐户，你可以点击下面的链接申请。<br><br>管理员验证您提供的信息决定批准或拒绝你的请求的帐户。当你的请求被批准你将收到一封电子邮"
-"件。"
+msgstr "<center><b>欢迎访问这个家谱网站</b></center><br>允许每个有帐户的游客访问此网站。<br><br>如果你有帐户，你可以登录该页面。如果你没有一个用户帐户，你可以点击下面的链接申请。<br><br>管理员验证您提供的信息决定批准或拒绝你的请求的帐户。当你的请求被批准你将收到一封电子邮件。"
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:993 admin_users.php:489 edituser.php:278
@@ -714,19 +698,14 @@ msgstr "<默认主题>"
 
 #: login.php:403
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr ""
-"<div class=\"largeError\">Notice:</div><div class=\"error\">完成和递交此表格，您同意：<ul>"
-"<li>保护在我们的网站上列出的活人的隐私;</li><li>在下面的文本框，解释你是谁，或向我们提供谁会在我们的网站上列出的信息。</li></ul><"
-"/div>"
+msgstr "<div class=\"largeError\">Notice:</div><div class=\"error\">完成和递交此表格，您同意：<ul><li>保护在我们的网站上列出的活人的隐私;</li><li>在下面的文本框，解释你是谁，或向我们提供谁会在我们的网站上列出的信息。</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
 #: app/Fact.php:409 app/Functions/FunctionsPrintFacts.php:540
 #: app/GedcomTag.php:1813
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-msgstr ""
-"<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\""
-">%2$s</span>"
+msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:206
 msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
@@ -819,9 +798,7 @@ msgstr "当前在线用户和访客名单。"
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr ""
-"媒体对象中包含一个媒体文件信息的家谱记录。该信息可以包括一个标题，版权声明，副本，隐私权的限制，等媒体文件，如照片或视频，可以在本地存储（在这个服务器）或"
-"远程（在不同的服务器）。"
+msgstr "媒体对象中包含一个媒体文件信息的家谱记录。该信息可以包括一个标题，版权声明，副本，隐私权的限制，等媒体文件，如照片或视频，可以在本地存储（在这个服务器）或远程（在不同的服务器）。"
 
 #: login.php:259
 #, php-format
@@ -951,9 +928,7 @@ msgstr "对于一个给定的日期或地点的重要记录报告。"
 
 #: admin_users.php:524
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr ""
-"角色是一组访问权限，它允许查看数据，更改配置设置等。访问权限分配给角色，角色授予用户。每个家谱可以分配不同的访问给每一个角色，用户可以在每个家谱的不同作用"
-"。"
+msgstr "角色是一组访问权限，它允许查看数据，更改配置设置等。访问权限分配给角色，角色授予用户。每个家谱可以分配不同的访问给每一个角色，用户可以在每个家谱的不同作用。"
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -2144,9 +2119,7 @@ msgstr "阿鲁巴岛"
 
 #: app/Module/HtmlBlockModule.php:316
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr ""
-"使用工具栏使用HTML格式，您可以插入自动更新数据库列。这些列用特殊的字符 <b>#</b> 标记.  例如 <b>#totalFamilies#</b>"
-" 将与数据库中的家庭的实际数目替换。高级用户可能希望使用CSS类文本，使格式匹配当前选定的主题。"
+msgstr "使用工具栏使用HTML格式，您可以插入自动更新数据库列。这些列用特殊的字符 <b>#</b> 标记.  例如 <b>#totalFamilies#</b> 将与数据库中的家庭的实际数目替换。高级用户可能希望使用CSS类文本，使格式匹配当前选定的主题。"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:77
@@ -3186,8 +3159,7 @@ msgstr "默认情况下，SMTP在端口25上工作。"
 
 #: app/Module/GoogleMapsModule.php:4578
 msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
-msgstr ""
-"默认情况下，该列表中仅显示那些可以在你的家谱找到的地方。你可能对其他地方进行完善，如从外部文件导入。选择此选项将显示所有的地方，包括那些目前没有使用。"
+msgstr "默认情况下，该列表中仅显示那些可以在你的家谱找到的地方。你可能对其他地方进行完善，如从外部文件导入。选择此选项将显示所有的地方，包括那些目前没有使用。"
 
 #: admin_site_config.php:217
 #, php-format
@@ -3566,8 +3538,7 @@ msgstr "选择亲戚"
 
 #: addmedia.php:460 admin_media_upload.php:213
 msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-msgstr ""
-"选择你想上传的缩略图。虽然可以自动生成缩略图的图片,您可能希望生成自己的缩略图,尤其是对其他媒体类型。例如,您可以提供一个静态图像从一个视频或音乐照片。"
+msgstr "选择你想上传的缩略图。虽然可以自动生成缩略图的图片,您可能希望生成自己的缩略图,尤其是对其他媒体类型。例如,您可以提供一个静态图像从一个视频或音乐照片。"
 
 #: admin_site_config.php:124
 msgid "Choose user defined welcome text typed below"
@@ -5135,9 +5106,7 @@ msgstr "日期差异"
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:711
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
-msgstr ""
-"在世界上不同的地区使用不同的日历系统，许多其他的日历系统已过时。在可能的情况下，你应该使用日历中的事件的最初记录输入日期。你可以指定转换为一个更熟悉的日历"
-"来显示这些日期。如果你经常使用两个日历，你可以指定两个转换和日期将被转换为两个选定的日历。"
+msgstr "在世界上不同的地区使用不同的日历系统，许多其他的日历系统已过时。在可能的情况下，你应该使用日历中的事件的最初记录输入日期。你可以指定转换为一个更熟悉的日历来显示这些日期。如果你经常使用两个日历，你可以指定两个转换和日期将被转换为两个选定的日历。"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -5269,19 +5238,11 @@ msgstr "重复的用户名。该用户名已经被一个用户使用。请选择
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:882
 msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr ""
-"E-mail地址用于webtrees自动创建电子邮件时候的邮件来自于项。<br><br>webtrees可以自动创建电子邮件通知系统管理员的需要进行审批变"
-"化。webtrees发送通知电子邮件给注册一个帐户的用户。<br><br>通常情况下，这些自动创建的电子邮件发件人是<i>webtrees-"
-"noreply@ yoursite</i>，并且暗示不用回复。为了防止垃圾邮件或其他电子邮件滥用的一些电子邮件系统需要每封邮件的有个邮件来自于项"
-"，以此确认一个有效的e-mail帐号，否则将不接受邮件，这将显然从帐户 <i>webtrees noreply</i>来了邮件。"
+msgstr "E-mail地址用于webtrees自动创建电子邮件时候的邮件来自于项。<br><br>webtrees可以自动创建电子邮件通知系统管理员的需要进行审批变化。webtrees发送通知电子邮件给注册一个帐户的用户。<br><br>通常情况下，这些自动创建的电子邮件发件人是<i>webtrees-noreply@ yoursite</i>，并且暗示不用回复。为了防止垃圾邮件或其他电子邮件滥用的一些电子邮件系统需要每封邮件的有个邮件来自于项，以此确认一个有效的e-mail帐号，否则将不接受邮件，这将显然从帐户 <i>webtrees noreply</i>来了邮件。"
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr ""
-"每个资源记录特定的事件,一般对于一个给定的日期范围和管辖的地方。例如一个人口普查记录事件和教堂记录记录出生、结婚和死亡事件。<br><br>选择事件,记录"
-"采用这种资源的事件列表中提供的。指定的日期应该在一系列格式如<i>从1900年到1910年</i>。这个地方管辖的名称是最低的管辖权,包含所有较低级别的地"
-"方命名在这个源。例如,“奥奈达市,爱达荷州,美国“将被用作资源地税收管辖权的地方发生在各个城镇的事件在奥奈达市县。“爱达荷州,美国“将源管辖权的地方如果所"
-"记录的事件不仅发生在奥奈达市县也在其他县在爱达荷州。"
+msgstr "每个资源记录特定的事件,一般对于一个给定的日期范围和管辖的地方。例如一个人口普查记录事件和教堂记录记录出生、结婚和死亡事件。<br><br>选择事件,记录采用这种资源的事件列表中提供的。指定的日期应该在一系列格式如<i>从1900年到1910年</i>。这个地方管辖的名称是最低的管辖权,包含所有较低级别的地方命名在这个源。例如,“奥奈达市,爱达荷州,美国“将被用作资源地税收管辖权的地方发生在各个城镇的事件在奥奈达市县。“爱达荷州,美国“将源管辖权的地方如果所记录的事件不仅发生在奥奈达市县也在其他县在爱达荷州。"
 
 #: help_text.php:319
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
@@ -6377,9 +6338,7 @@ msgstr "例如，如果 GEDCOM 文件包含 %1$s，webtrees 希望在媒体文�
 
 #: admin_users.php:609
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr ""
-"例如,如果您指定一个路径长度的2,人将能够看到自己的孙子(儿子、儿子),他们的姑姑(父母,兄弟姐妹),他们的女儿(配偶、孩子),但不能看到他们的堂兄弟姊妹"
-"(父母,兄弟姐妹,孩子)。"
+msgstr "例如,如果您指定一个路径长度的2,人将能够看到自己的孙子(儿子、儿子),他们的姑姑(父母,兄弟姐妹),他们的女儿(配偶、孩子),但不能看到他们的堂兄弟姊妹(父母,兄弟姐妹,孩子)。"
 
 #: app/Theme/AbstractTheme.php:274
 msgid "For help with genealogy questions contact"
@@ -6711,9 +6670,7 @@ msgstr "名"
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:982
 msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
-msgstr ""
-"提供给用户选择,选择自己的主题从菜单。<br><br>即使设置这个选项,主题目前实际上可能是无效的,这个选项需要<b>允许用户选择他们自己的主题</b>选"
-"项也设置。"
+msgstr "提供给用户选择,选择自己的主题从菜单。<br><br>即使设置这个选项,主题目前实际上可能是无效的,这个选项需要<b>允许用户选择他们自己的主题</b>选项也设置。"
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -7198,8 +7155,7 @@ msgstr "如果一个人有两个独立的姓氏，都应该用斜线分隔： <%
 #: help_text.php:232
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr ""
-"如果一个人被称为的昵称不属于他们的正式名称，应该用引号引起来。例如，, <%s>John &quot;Nobby&quot; /Clark/<%s>。"
+msgstr "如果一个人被称为的昵称不属于他们的正式名称，应该用引号引起来。例如，, <%s>John &quot;Nobby&quot; /Clark/<%s>。"
 
 #: help_text.php:230
 #, php-format
@@ -7261,8 +7217,7 @@ msgstr "如果你有大量的媒体文件，你可以将它们放置到文件夹
 
 #: admin_trees_manage.php:275
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
-msgstr ""
-"如果您已经在webtrees创建了媒体对象,并脱机使用一个程序与新gedcom编辑你的gedcom,删除媒体对象,合并当前媒体对象就要勾这个选项。"
+msgstr "如果您已经在webtrees创建了媒体对象,并脱机使用一个程序与新gedcom编辑你的gedcom,删除媒体对象,合并当前媒体对象就要勾这个选项。"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
@@ -7275,9 +7230,7 @@ msgstr "如果这里留空,将使用缺省值。"
 
 #: admin_site_config.php:185
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
-msgstr ""
-"如果你选择一个不同的文件夹，你还必须将所有文件（除了config.ini.php，index.php和。htaccess文件），从现有的文件夹到新的文件夹"
-"。"
+msgstr "如果你选择一个不同的文件夹，你还必须将所有文件（除了config.ini.php，index.php和。htaccess文件），从现有的文件夹到新的文件夹。"
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1025
@@ -7300,9 +7253,7 @@ msgstr "如果您使用下面的跟踪和分析服务之一，webtrees可以自�
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1223
 msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-msgstr ""
-"如果你想从常见的姓氏列表删除一个姓但不增加阈值,你可以通过这里进入姓。如果多姓列入,他们必须由一个逗号分开。<b>姓氏是区分大小写的。</b>姓氏列入这里"
-"也将从主页上十大名单被删除。"
+msgstr "如果你想从常见的姓氏列表删除一个姓但不增加阈值,你可以通过这里进入姓。如果多姓列入,他们必须由一个逗号分开。<b>姓氏是区分大小写的。</b>姓氏列入这里也将从主页上十大名单被删除。"
 
 #: setup.php:177
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page.  Otherwise, you will need to contact your server’s administrator."
@@ -7311,9 +7262,7 @@ msgstr "如果您的服务器安全政策允许,您可以使用webtrees管理页
 #. I18N: Help text for the "Website URL" site configuration setting
 #: admin_site_config.php:304
 msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
-msgstr ""
-"如果你的网站使用不止一个URL,如 <b>http://www.example.com/webtrees/</b>和<b> "
-"http://webtrees.example.com/</b>,您可以指定URL的首选。其他url的请求将被重定向到首选之一。"
+msgstr "如果你的网站使用不止一个URL,如 <b>http://www.example.com/webtrees/</b>和<b> http://webtrees.example.com/</b>,您可以指定URL的首选。其他url的请求将被重定向到首选之一。"
 
 #: admin_media.php:495 app/GedcomTag.php:1785
 msgid "Image dimensions"
@@ -7350,29 +7299,21 @@ msgstr "在家谱，每条记录都有一个内部参考号（称为“外部参
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
-msgstr ""
-"在许多文化中,人们习惯于有一个传统的名字拼写在传统的角色,也是罗马版本的名称,因为它会拼写或明显语言基于拉丁字母,例如英语。<br><br>如果您更喜欢使"
-"用非拉丁字母如希伯来语,希腊语,俄语、汉语或阿拉伯语输入姓名的标准名称字段,那么可以使用这个字段输入相同的名称使用的是拉丁字母。两个版本的名字将出现在列表"
-"和图表。<br><br>虽然这个字段的标签是“因”,它并不限于只包含字符基于拉丁字母。这可能是用日本名字,三个不同的字母可能发生。"
+msgstr "在许多文化中,人们习惯于有一个传统的名字拼写在传统的角色,也是罗马版本的名称,因为它会拼写或明显语言基于拉丁字母,例如英语。<br><br>如果您更喜欢使用非拉丁字母如希伯来语,希腊语,俄语、汉语或阿拉伯语输入姓名的标准名称字段,那么可以使用这个字段输入相同的名称使用的是拉丁字母。两个版本的名字将出现在列表和图表。<br><br>虽然这个字段的标签是“因”,它并不限于只包含字符基于拉丁字母。这可能是用日本名字,三个不同的字母可能发生。"
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr ""
-"在许多文化中通常有一个传统的名字在传统汉字拼写也是罗马化的版本的名称将拼写或基于拉丁字母的语言发音的，如英国。<br><br>如果你更喜欢用拉丁字母输入名"
-"称标准名称的域，然后你可以使用此字段中的非拉丁字母，如希腊语，希伯来语，阿拉伯语，俄语，输入相同的名称，或中国。名字的两个版本将出现在列表和图表。<br>"
-"<br>虽然这场为“希伯来”，它不局限于只包含希伯来文字母。"
+msgstr "在许多文化中通常有一个传统的名字在传统汉字拼写也是罗马化的版本的名称将拼写或基于拉丁字母的语言发音的，如英国。<br><br>如果你更喜欢用拉丁字母输入名称标准名称的域，然后你可以使用此字段中的非拉丁字母，如希腊语，希伯来语，阿拉伯语，俄语，输入相同的名称，或中国。名字的两个版本将出现在列表和图表。<br><br>虽然这场为“希伯来”，它不局限于只包含希伯来文字母。"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:717
 msgid "In some calendars, days start at midnight.  In other calendars, days start at sunset.  The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
-msgstr ""
-"一些日历,一天开始在午夜。其他的日历,一天开始在日落时分。转换过程不考虑时间,所以对于任何事件,发生在日落和午夜之间的转换,这些类型的日历将算一天。"
+msgstr "一些日历,一天开始在午夜。其他的日历,一天开始在日落时分。转换过程不考虑时间,所以对于任何事件,发生在日落和午夜之间的转换,这些类型的日历将算一天。"
 
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: admin_trees_config.php:462
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
-msgstr ""
-"在一些国家,隐私法不仅适用于活着的人,而且用于那些最近死去的人。这个选项将允许你扩展活人隐私规则到那些在指定年数出生或死亡的人。这个值空表示禁用这个特性。"
+msgstr "在一些国家,隐私法不仅适用于活着的人,而且用于那些最近死去的人。这个选项将允许你扩展活人隐私规则到那些在指定年数出生或死亡的人。这个值空表示禁用这个特性。"
 
 #: calendar.php:140
 msgid "In this month…"
@@ -8293,9 +8234,7 @@ msgstr "伦敦,英国"
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: admin_trees_config.php:1258
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero."
-msgstr ""
-"长列表拥有相同的姓氏的人可以根据个人的第一个字母的名字分解为更小的子列表。<br><br>这个选项决定姓氏当子列表什么时候生成。设置这个选项为零完全禁用子"
-"列表。"
+msgstr "长列表拥有相同的姓氏的人可以根据个人的第一个字母的名字分解为更小的子列表。<br><br>这个选项决定姓氏当子列表什么时候生成。设置这个选项为零完全禁用子列表。"
 
 #: statistics.php:249
 msgid "Longest marriage"
@@ -8451,8 +8390,7 @@ msgstr "原文"
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: admin_trees_config.php:1697
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr ""
-"许多家谱程序创建自定义标签的GEDCOM文件，webtrees最了解他们。当未确认的标签被发现，这个选项可以让您选择是否忽略或显示一个警告信息。"
+msgstr "许多家谱程序创建自定义标签的GEDCOM文件，webtrees最了解他们。当未确认的标签被发现，这个选项可以让您选择是否忽略或显示一个警告信息。"
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: admin_site_config.php:427
@@ -10147,9 +10085,7 @@ msgstr "只有管理员可以编辑"
 
 #: site-unavailable.php:88
 msgid "Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr ""
-"哎呀！服务器无法连接到数据库服务器。它可能是忙碌的，正在进行维护或异常。几分钟后<a href =\"index.php\""
-">再试</a>或与网站管理员联系。"
+msgstr "哎呀！服务器无法连接到数据库服务器。它可能是忙碌的，正在进行维护或异常。几分钟后<a href =\"index.php\">再试</a>或与网站管理员联系。"
 
 #: setup.php:203
 msgid "Oops!  webtrees was unable to create files in this folder."
@@ -10452,8 +10388,7 @@ msgstr "待定的更改"
 
 #: help_text.php:314
 msgid "Pending changes are only shown when your account has permission to edit.  When you log out, you will no longer be able to see them.  Also, pending changes are only shown on certain pages.  For example, they are not shown in lists, reports, or search results."
-msgstr ""
-"待定的更改当您的帐户有权限编辑才显示。当你退出，你将不再能够看到他们。同时，待定的更改只有在特定的页面。例如，他们不出现在名单，报告，或搜索结果。"
+msgstr "待定的更改当您的帐户有权限编辑才显示。当你退出，你将不再能够看到他们。同时，待定的更改只有在特定的页面。例如，他们不出现在名单，报告，或搜索结果。"
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1715
@@ -10587,9 +10522,7 @@ msgstr "地方列表"
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: admin_trees_config.php:1651
 msgid "Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr ""
-"地名往往太长,为适应图、列表等，它们可能被缩写展示只是第一几部分的名称,如<i>village, county</i>,或最后几部分,如<i>"
-"region, country</i>。"
+msgstr "地名往往太长,为适应图、列表等，它们可能被缩写展示只是第一几部分的名称,如<i>village, county</i>,或最后几部分,如<i>region, country</i>。"
 
 #: app/GedcomTag.php:178
 msgid "Place of LDS baptism"
@@ -10725,13 +10658,7 @@ msgstr "在 %s 里"
 
 #: help_text.php:253
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr ""
-"应根据家谱的标准输入的地方。地方记录地方最具体的信息，然后再工作到最后最不明确的地方，使用逗号分隔不同的地方。你的位置信息记录在哪一级政府或教会代表水平的"
-"重要记录，该位置将被保留。<br><br>例如，将进入“盐湖城盐湖城这样的地方市，盐湖城，犹他，美国。<br><br>让我们来看看这个地方的每个部分。第一"
-"部分，“盐湖城”，是在事件发生的城市或乡镇。在一些国家，也有可能是城市或地区内的城市，重要的是要注意。在这种情况下，他们应该来城前。接下来的部分，“盐湖城"
-"”，是该县。 “犹他”是国家的，'USA'的国家。重要的是要注意每一个地方，因为家谱保存每个级别的政府。<br><br>如果未知的地方是，你应该留出空间之"
-"间的逗号。假设，在上面的例子中，你根本不知道县盐湖城。然后，您应该记录是这样的：“盐湖城，犹他，美国的。假设你只知道一个人出生在美国犹他州。您输入的信息是"
-"这样的：'，犹他，美国。<br><br>您可以使用<b>，找到的地方</b>链接，以帮助您找到的地方，已经存在于数据库中。"
+msgstr "应根据家谱的标准输入的地方。地方记录地方最具体的信息，然后再工作到最后最不明确的地方，使用逗号分隔不同的地方。你的位置信息记录在哪一级政府或教会代表水平的重要记录，该位置将被保留。<br><br>例如，将进入“盐湖城盐湖城这样的地方市，盐湖城，犹他，美国。<br><br>让我们来看看这个地方的每个部分。第一部分，“盐湖城”，是在事件发生的城市或乡镇。在一些国家，也有可能是城市或地区内的城市，重要的是要注意。在这种情况下，他们应该来城前。接下来的部分，“盐湖城”，是该县。 “犹他”是国家的，'USA'的国家。重要的是要注意每一个地方，因为家谱保存每个级别的政府。<br><br>如果未知的地方是，你应该留出空间之间的逗号。假设，在上面的例子中，你根本不知道县盐湖城。然后，您应该记录是这样的：“盐湖城，犹他，美国的。假设你只知道一个人出生在美国犹他州。您输入的信息是这样的：'，犹他，美国。<br><br>您可以使用<b>，找到的地方</b>链接，以帮助您找到的地方，已经存在于数据库中。"
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:93
 #: app/Theme/FabTheme.php:109 app/Theme/MinimalTheme.php:106
@@ -10766,9 +10693,7 @@ msgstr "在发送之前请输入一些信息文本。"
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry."
-msgstr ""
-"请提供你的电子邮件地址,以便我们可以联系你回应这个消息。如果你不提供您的电子邮件地址,我们将无法回应你的询问。你的电子邮件地址将不会被用于除了回应这个询问"
-"的任何其他地方。"
+msgstr "请提供你的电子邮件地址,以便我们可以联系你回应这个消息。如果你不提供您的电子邮件地址,我们将无法回应你的询问。你的电子邮件地址将不会被用于除了回应这个询问的任何其他地方。"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:92
@@ -11448,8 +11373,7 @@ msgstr "考证任务"
 
 #: app/Module/ResearchTaskModule.php:187
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research.  You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr ""
-"考证任务是特殊事件,添加到个人在你的家谱,确定需要进一步的考证。您可以使用它们作为一个提醒检查事实和更可靠的资源,获取文件或照片、解决矛盾的信息等等。"
+msgstr "考证任务是特殊事件,添加到个人在你的家谱,确定需要进一步的考证。您可以使用它们作为一个提醒检查事实和更可靠的资源,获取文件或照片、解决矛盾的信息等等。"
 
 #: app/Module/ResearchTaskModule.php:189
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
@@ -12035,9 +11959,7 @@ msgstr "将状态设置为\"批准\"。"
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:730
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr ""
-"设置为<b>是</b>以使用GEDCOM ID的RIN号码，而不是当被问及在配置文件中，用户设置和图表各自的ID。这是为族谱程序：导出不一致的GEDCOM"
-"s并分配给不同个人相同ID，但始终使用相同的RIN有用。"
+msgstr "设置为<b>是</b>以使用GEDCOM ID的RIN号码，而不是当被问及在配置文件中，用户设置和图表各自的ID。这是为族谱程序：导出不一致的GEDCOMs并分配给不同个人相同ID，但始终使用相同的RIN有用。"
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1684
@@ -12670,9 +12592,7 @@ msgstr "网站地图"
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:306
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr ""
-"网站地图是站长告诉搜索引擎对这个网站可以抓取网页的方式。所有主要搜索引擎支持网站地图。更多信息，见 <a href=\""
-"http://www.sitemaps.org/en_GB/\">www.sitemaps.org</a>."
+msgstr "网站地图是站长告诉搜索引擎对这个网站可以抓取网页的方式。所有主要搜索引擎支持网站地图。更多信息，见 <a href=\"http://www.sitemaps.org/en_GB/\">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:145
@@ -12759,16 +12679,11 @@ msgstr "索马里"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:297
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
-msgstr ""
-"一些家谱软件创建 GEDCOM 文件，其中包含媒体文件名的完整路径。 这些路径将在 web 服务器上不存在。 若要允许 "
-"webtrees，找到该文件，必须删除路径的第一部分。"
+msgstr "一些家谱软件创建 GEDCOM 文件，其中包含媒体文件名的完整路径。 这些路径将在 web 服务器上不存在。 若要允许 webtrees，找到该文件，必须删除路径的第一部分。"
 
 #: app/Module/GoogleMapsModule.php:437
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
-msgstr ""
-"一些地名可以用可选的前缀和后缀。例如 ‘Durham‘ 与 ‘County "
-"Durham‘。如果家谱包含完整的地名，但地理数据库包含短的地名，那么你应该指定一个列的前缀和后缀应不予考虑。应该用分号分隔多个选项。比如县 "
-"‘County;County of‘ 或者 ‘Parish;Par;Par.‘."
+msgstr "一些地名可以用可选的前缀和后缀。例如 ‘Durham‘ 与 ‘County Durham‘。如果家谱包含完整的地名，但地理数据库包含短的地名，那么你应该指定一个列的前缀和后缀应不予考虑。应该用分号分隔多个选项。比如县 ‘County;County of‘ 或者 ‘Parish;Par;Par.‘."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1560
@@ -13300,9 +13215,7 @@ msgstr "<b>名称</b>栏包含个人的全名，可能是拼写或是记录。�
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr ""
-"<b>姓</b>栏包含用于排序和分组的名称。它可以是不同的，以个人的实际姓氏，总是从<b>名称</b>栏。可以使用此字段进行排序的姓氏带或不带前缀的（梵高"
-"/梵高）和组拼写变体或的语调（科瓦尔斯基/ Kowalska）。如果一个人需要被列在姓氏超过一个，每个名字应以逗号分隔。"
+msgstr "<b>姓</b>栏包含用于排序和分组的名称。它可以是不同的，以个人的实际姓氏，总是从<b>名称</b>栏。可以使用此字段进行排序的姓氏带或不带前缀的（梵高/梵高）和组拼写变体或的语调（科瓦尔斯基/ Kowalska）。如果一个人需要被列在姓氏超过一个，每个名字应以逗号分隔。"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:454
 msgid "The FAQ list is empty."
@@ -13329,9 +13242,7 @@ msgstr "丢失PHP临时目录。"
 
 #: admin_trees_manage.php:701
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
-msgstr ""
-"PhpGedView到webtrees向导是一个协助管理员从PhpGedView安装到一个新的webtrees自动化的过程。"
-"它将所有的PhpGedView GEDCOM和其他数据库信息直接输入到你的新webtrees数据库。下列要求："
+msgstr "PhpGedView到webtrees向导是一个协助管理员从PhpGedView安装到一个新的webtrees自动化的过程。它将所有的PhpGedView GEDCOM和其他数据库信息直接输入到你的新webtrees数据库。下列要求："
 
 #: admin_users.php:101
 #, php-format
@@ -13356,11 +13267,7 @@ msgstr "更改“%s”被拒绝。"
 
 #: app/Module/ClippingsCartModule.php:299
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
-msgstr ""
-"收集箱，您可以从这个家谱的提取物（“收集箱”），并将其捆绑成一个文件，下载并随后导入到自己的家谱程序。可下载的文件记录在GEDCOM格式。的<br><ul"
-"><li>如何使用收集箱？<br>这是很简单的。每当你看到一个可点击的名称（个人，家庭，或源），你可以去该名称的详细信息“页面”。在那里，你会的看到<b>"
-"添加到收集箱</b>选项。当您单击该链接，你将有几个选项进行下载。</li><li>如何下载？<br>一旦您有您的购物车中的项目，你可以将它们下载只要通过"
-"点击<b>立即下载</b>链接。按照说明和链接操作就可以。</li></ul>"
+msgstr "收集箱，您可以从这个家谱的提取物（“收集箱”），并将其捆绑成一个文件，下载并随后导入到自己的家谱程序。可下载的文件记录在GEDCOM格式。的<br><ul><li>如何使用收集箱？<br>这是很简单的。每当你看到一个可点击的名称（个人，家庭，或源），你可以去该名称的详细信息“页面”。在那里，你会的看到<b>添加到收集箱</b>选项。当您单击该链接，你将有几个选项进行下载。</li><li>如何下载？<br>一旦您有您的购物车中的项目，你可以将它们下载只要通过点击<b>立即下载</b>链接。按照说明和链接操作就可以。</li></ul>"
 
 #: site-unavailable.php:61
 msgid "The database reported the following error message:"
@@ -13494,8 +13401,7 @@ msgstr "文件夹 %s 已被删除。"
 
 #: admin_site_config.php:188
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
-msgstr ""
-"文件夹可以全路径（例如/home/user_name/webtrees_data/）或相对的安装文件夹（例如./../ webtrees_data/）。"
+msgstr "文件夹可以全路径（例如/home/user_name/webtrees_data/）或相对的安装文件夹（例如./../ webtrees_data/）。"
 
 #: admin_site_merge.php:201
 msgid "The following facts and events were found in both records."
@@ -13575,10 +13481,7 @@ msgstr "这个家谱中没有媒体文件。"
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr ""
-"你上传的媒体文件可以，也许应该，在服务器上和在您的本地计算机不同的命字。这是因为通常的本地文件名对你有意义但对访问这个网站的人却少有意义。"
-"考虑到你和别人都试图将不同的文件称为\"granny.jpg\"。<br><br>在这个框中你指定你上传文件的新名称。你输入的名字也被用来命名的缩略图，可"
-"以上传分开或自动生成。你不需要输入的文件扩展名（JPG，GIF，PDF，DOC，等）<br><br>留空白保持原来从您的本地计算机您所上传的文件的名字。"
+msgstr "你上传的媒体文件可以，也许应该，在服务器上和在您的本地计算机不同的命字。这是因为通常的本地文件名对你有意义但对访问这个网站的人却少有意义。考虑到你和别人都试图将不同的文件称为\"granny.jpg\"。<br><br>在这个框中你指定你上传文件的新名称。你输入的名字也被用来命名的缩略图，可以上传分开或自动生成。你不需要输入的文件扩展名（JPG，GIF，PDF，DOC，等）<br><br>留空白保持原来从您的本地计算机您所上传的文件的名字。"
 
 #: setup.php:162
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13777,9 +13680,7 @@ msgstr "已更新的网站首选项。"
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2248
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr ""
-"网站 www.geonames.org 提供大型数据库的地名。 可以输入新的地名进行搜索。 若要使用此功能，必须注册一个免费帐户，在 "
-"www.geonames.org 和提供的用户名。"
+msgstr "网站 www.geonames.org 提供大型数据库的地名。 可以输入新的地名进行搜索。 若要使用此功能，必须注册一个免费帐户，在 www.geonames.org 和提供的用户名。"
 
 #: setup.php:491
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
@@ -13810,8 +13711,7 @@ msgstr "主题"
 
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website.  User settings take priority over family tree settings, which in turn take priority over the website setting.  Selecting “default theme” at one level will use the theme at the next level."
-msgstr ""
-"主题可以选择三个等级: 用户、 家谱和网站。 用户设置优先于家谱设置，反过来接管网站设置的优先级。 选择\"默认主题\"一个级别，则将在下一级使用的主题。"
+msgstr "主题可以选择三个等级: 用户、 家谱和网站。 用户设置优先于家谱设置，反过来接管网站设置的优先级。 选择\"默认主题\"一个级别，则将在下一级使用的主题。"
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:126
@@ -13906,15 +13806,11 @@ msgstr "这一块会显示需要通过管理员审核的编辑或更改记录表
 
 #: admin_users.php:463 edituser.php:312
 msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
-msgstr ""
-"这选框控制你在线是其它用户的可见与否。它也控制你可看到其他在线并配置为可见的用户。<br><br>当这个选框没有选中，你会完全看不见别人，你也无法看到其他"
-"在线用户。当这个盒子打勾，你会被其他人看到，你还可以看到其他配置是可见的人。"
+msgstr "这选框控制你在线是其它用户的可见与否。它也控制你可看到其他在线并配置为可见的用户。<br><br>当这个选框没有选中，你会完全看不见别人，你也无法看到其他在线用户。当这个盒子打勾，你会被其他人看到，你还可以看到其他配置是可见的人。"
 
 #: setup.php:341 setup.php:352
 msgid "This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later."
-msgstr ""
-"这个数据库表前缀似乎被另一应用程序使用。如果您现在有一个的phpgedview系统，你可以创建一个新的webtrees系统。导入您的phpgedview数"
-"据后配置。"
+msgstr "这个数据库表前缀似乎被另一应用程序使用。如果您现在有一个的phpgedview系统，你可以创建一个新的webtrees系统。导入您的phpgedview数据后配置。"
 
 #: setup.php:248
 #, php-format
@@ -13970,11 +13866,7 @@ msgstr "这个家谱没有图片。"
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
 msgid "This family tree was last updated on #gedcomUpdated#.  There are #totalSurnames# surnames in this family tree.  The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#.  The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr ""
-"这份家谱最后更新 #gedcomUpdated # 。 在这本家谱有 #totalSurnames # 姓氏。 最早记录的事件是 #"
-"firstEventType # #firstEventName # #firstEventYear # 中。 最新事件是 #lastEventType "
-"# #lastEventName # #lastEventYear # 中。<br><br>如果您有任何意见或反馈请联系 #"
-"contactWebmaster #。"
+msgstr "这份家谱最后更新 #gedcomUpdated # 。 在这本家谱有 #totalSurnames # 姓氏。 最早记录的事件是 #firstEventType # #firstEventName # #firstEventYear # 中。 最新事件是 #lastEventType # #lastEventName # #lastEventYear # 中。<br><br>如果您有任何意见或反馈请联系 #contactWebmaster #。"
 
 #. I18N: %s is a date
 #: app/Module/FamilyTreeStatisticsModule.php:95
@@ -14038,27 +13930,17 @@ msgstr "这是私人信息,不能显示。"
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits.  For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr ""
-"该输入框让你改变日历的年份。在框里输入年份，按下<b>输入</b>更改日历年份。<br><br><b>高级功能</b>按年显示<b></b><dl><dt"
-"><b>一年以上</b></dt><dd>你可以查询日期范围为一年内。<br><br>年范围<u>包含</u>。表示日期范围包含去年年一月至去年十二月三十"
-"一号。下面是一年范围的几个例子：<br><br><b>1992-5</b>所有事件从1992到1995。<br><b>1972-89</b>所有事件从19"
-"72到1989。<br><b>1610-759</b>所有事件从1610到1759。<br><b>1880-1905</b>所有事件从1880到1905。"
-"<br><b>880-1105</b>所有事件从880到1105。<br><br>看到所有的事件在十年或一个世纪了，你可以使用<b>？</b>在最后一位的"
-"地方。例如，<b> 197？</b>所有事件从1970到1979或<b> "
-"16？？</b>所有事件从1600到1699。<br><br>选择范围的年会改变日历年份。</dd></dl>"
+msgstr "该输入框让你改变日历的年份。在框里输入年份，按下<b>输入</b>更改日历年份。<br><br><b>高级功能</b>按年显示<b></b><dl><dt><b>一年以上</b></dt><dd>你可以查询日期范围为一年内。<br><br>年范围<u>包含</u>。表示日期范围包含去年年一月至去年十二月三十一号。下面是一年范围的几个例子：<br><br><b>1992-5</b>所有事件从1992到1995。<br><b>1972-89</b>所有事件从1972到1989。<br><b>1610-759</b>所有事件从1610到1759。<br><b>1880-1905</b>所有事件从1880到1905。<br><b>880-1105</b>所有事件从880到1105。<br><br>看到所有的事件在十年或一个世纪了，你可以使用<b>？</b>在最后一位的地方。例如，<b> 197？</b>所有事件从1970到1979或<b> 16？？</b>所有事件从1600到1699。<br><br>选择范围的年会改变日历年份。</dd></dl>"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2157
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr ""
-"这是一个逗号分隔的显示GEDCOM添加/编辑名称内容的标签.如果你使用非拉丁字母如希伯来语，希腊语，斯拉夫语或阿拉伯语，你可能要添加标签，如_heb，"
-"ROMN, FONE，等。允许你用几个不同名名字风格存放事件。"
+msgstr "这是一个逗号分隔的显示GEDCOM添加/编辑名称内容的标签.如果你使用非拉丁字母如希伯来语，希腊语，斯拉夫语或阿拉伯语，你可能要添加标签，如_heb，ROMN, FONE，等。允许你用几个不同名名字风格存放事件。"
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1919
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family.  For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr ""
-"这是一个逗号分隔的GEDCOM事件标签，将添加一个新的家庭的时候显示。例如，如果 MARR 是列表中的，然后结婚日期和结婚的地方将在窗体上显示。"
+msgstr "这是一个逗号分隔的GEDCOM事件标签，将添加一个新的家庭的时候显示。例如，如果 MARR 是列表中的，然后结婚日期和结婚的地方将在窗体上显示。"
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1801
@@ -14068,9 +13950,7 @@ msgstr "这是一个逗号分隔的GEDCOM事件标签，将添加一个新的人
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2186
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr ""
-"当您添加或编辑地名时将显示以逗号分隔的 GEDCOM 事实标签列表。 如果您使用非拉丁字母表用希伯来语、 希腊语、 西里尔文或阿拉伯语，"
-"你可能想要添加标记如 _HEB，ROMN， FONE等，让您用几个不同的字母代表地点的名称。"
+msgstr "当您添加或编辑地名时将显示以逗号分隔的 GEDCOM 事实标签列表。 如果您使用非拉丁字母表用希伯来语、 希腊语、 西里尔文或阿拉伯语，你可能想要添加标记如 _HEB，ROMN， FONE等，让您用几个不同的字母代表地点的名称。"
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
@@ -14079,10 +13959,7 @@ msgstr "这个链接到你自己在家谱的记录。如果这是连接到错的
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1411
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual.  “B” indicates an LDS baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse sealing.  “P” indicates an LDS child-to-parent sealing."
-msgstr ""
-"这是个人的<abbr title=\"The Church of Jesus Christ of Latter-day Saints\""
-">LDS</abbr>条例摘要。 \"B\"指示 LDS 洗礼。 \"E\"指示 LDS 养老。 \"S\"表示密封 LDS 配偶。 \"P\"表示 "
-"LDS 子-父密封。"
+msgstr "这是个人的<abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr>条例摘要。 \"B\"指示 LDS 洗礼。 \"E\"指示 LDS 养老。 \"S\"表示密封 LDS 配偶。 \"P\"表示 LDS 子-父密封。"
 
 #: setup.php:280 setup.php:284
 msgid "This is case sensitive."
@@ -14090,9 +13967,7 @@ msgstr "这是区分大小写的。"
 
 #: setup.php:367
 msgid "This is case sensitive.  If a database with this name does not already exist webtrees will attempt to create one for you.  Success will depend on permissions set for your web server, but you will be notified if this fails."
-msgstr ""
-"这是区分大小写的。如果这个名字的数据库已经不存在，webtrees将尝试为你创建新的。成功与否将取决于您的web服务器的权限设置,但是如果失败你会得到通知"
-"。"
+msgstr "这是区分大小写的。如果这个名字的数据库已经不存在，webtrees将尝试为你创建新的。成功与否将取决于您的web服务器的权限设置,但是如果失败你会得到通知。"
 
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1372
@@ -14106,58 +13981,42 @@ msgstr "这是 webtrees 的最新版本。 没有可用的升级。"
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1861
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr ""
-"用户可以添加到家庭GEDCOM事件的名单。你可以通过删除或添加修改此列表上的名字，甚至是定制的。事件的名字在这个列表，就不能同时出现在家庭事件<i>独特事"
-"件</i> 列表。"
+msgstr "用户可以添加到家庭GEDCOM事件的名单。你可以通过删除或添加修改此列表上的名字，甚至是定制的。事件的名字在这个列表，就不能同时出现在家庭事件<i>独特事件</i> 列表。"
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1743
 msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr ""
-"这是你用户可以添加到个人GEDCOM事件列表。你可以通过删除或添加修改此列表上的事件名字，甚至必要的定制。在这个列表事件名字，就不能同时出现在个人事件<i"
-">独特事件</i> 列表。"
+msgstr "这是你用户可以添加到个人GEDCOM事件列表。你可以通过删除或添加修改此列表上的事件名字，甚至必要的定制。在这个列表事件名字，就不能同时出现在个人事件<i>独特事件</i> 列表。"
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:2068
 msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr ""
-"用户可以添加到库的GEDCOM事件列表。你可以通过删除或添加修改此列表上的名字，甚至是必要的定制。在这个列表事实的名字，就不能同时出现在库事件<i>独特事"
-"件</i> 列表。"
+msgstr "用户可以添加到库的GEDCOM事件列表。你可以通过删除或添加修改此列表上的名字，甚至是必要的定制。在这个列表事实的名字，就不能同时出现在库事件<i>独特事件</i> 列表。"
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1979
 msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr ""
-"用户可以添加到资源的GEDCOM事件列表。你可以通过删除或添加修改此列表上的名字，甚至是必要的定制。在这个列表事实的名字，不能同时出现在资源事件<i>独特"
-"事件</i> 列表。"
+msgstr "用户可以添加到资源的GEDCOM事件列表。你可以通过删除或添加修改此列表上的名字，甚至是必要的定制。在这个列表事实的名字，不能同时出现在资源事件<i>独特事件</i> 列表。"
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1890
 msgid "This is the list of GEDCOM facts that your users can only add once to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr ""
-"用户只能在家庭添加<u>一次</u>的GEDCOM事件清单。例如，如果MARR是在此列表中，用户将不能够添加一个以上的的MARR记录到一个家庭。事件的名字"
-"出现在这个列表就不能出现在家庭事件<i>添加事件</i> 列表。"
+msgstr "用户只能在家庭添加<u>一次</u>的GEDCOM事件清单。例如，如果MARR是在此列表中，用户将不能够添加一个以上的的MARR记录到一个家庭。事件的名字出现在这个列表就不能出现在家庭事件<i>添加事件</i> 列表。"
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1772
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr ""
-"这是用户只能为个人添加<u>一次</u>的GEDCOM事件列表。例如，如果数据是在这个列表中，用户将无法为一个人添加多个报表记录。事件的名字在这个列表，就"
-"不能同时出现在个人事件<i>添加事件</i> 列表。"
+msgstr "这是用户只能为个人添加<u>一次</u>的GEDCOM事件列表。例如，如果数据是在这个列表中，用户将无法为一个人添加多个报表记录。事件的名字在这个列表，就不能同时出现在个人事件<i>添加事件</i> 列表。"
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:2097
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr ""
-"用户只能为库添加<u>一次</u>的GEDCOM事件列表。例如，如果是在这个列表中，用户将无法添加多个名称记录到一个库。事件的名字在这个列表，就不能同时出"
-"现在库事件<i>添加事件</i> 列表。"
+msgstr "用户只能为库添加<u>一次</u>的GEDCOM事件列表。例如，如果是在这个列表中，用户将无法添加多个名称记录到一个库。事件的名字在这个列表，就不能同时出现在库事件<i>添加事件</i> 列表。"
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:2008
 msgid "This is the list of GEDCOM facts that your users can only add once to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr ""
-"用户只能为资源添加<u>一次</u>的GEDCOM事件列表。例如，如果TITL在这个列表中，用户将无法添加多个TITL记录到一个资源。在这个列表事实的名字"
-"，就不能同时出现在资源事件<i>添加事件</i> 列表。"
+msgstr "用户只能为资源添加<u>一次</u>的GEDCOM事件列表。例如，如果TITL在这个列表中，用户将无法添加多个TITL记录到一个资源。在这个列表事实的名字，就不能同时出现在资源事件<i>添加事件</i> 列表。"
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:349
@@ -14295,10 +14154,7 @@ msgstr "这记事被编辑。你应该评估变更,然后 %1$s 或 %2$s 他们�
 #. I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting
 #: admin_trees_config.php:1605
 msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-msgstr ""
-"此选项控制是否将附源引用的事实在记事和源标签在个人页面显示。<br><br>通常，记事和源标签仅显示直接连接到个人的数据库记录的源引用的记事。这些是<i>"
-" 1级</i>记事和资源引用。<br><br><b>是</b>选项导致这些标签也显示个人数据库记录的各种事实包含的记事和资源引用。这些是<i> "
-"2级</i>记事和源引用，因为各种事实是在1级。"
+msgstr "此选项控制是否将附源引用的事实在记事和源标签在个人页面显示。<br><br>通常，记事和源标签仅显示直接连接到个人的数据库记录的源引用的记事。这些是<i> 1级</i>记事和资源引用。<br><br><b>是</b>选项导致这些标签也显示个人数据库记录的各种事实包含的记事和资源引用。这些是<i> 2级</i>记事和源引用，因为各种事实是在1级。"
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1575
@@ -14328,8 +14184,7 @@ msgstr "这个选项控制在个人列表和个人图表中日期都不知道的
 #. I18N: Help text for the “Gender icon on charts” configuration setting
 #: admin_trees_config.php:1385
 msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender.  The option simply removes some duplicate information from the box."
-msgstr ""
-"这个选项控制是否在图表显示个人的性别图标。<br><br>因为性别也由框的颜色显示,这个选项并不隐瞒性别。而是从盒子里选择简单的删除一些重复的信息。"
+msgstr "这个选项控制是否在图表显示个人的性别图标。<br><br>因为性别也由框的颜色显示,这个选项并不隐瞒性别。而是从盒子里选择简单的删除一些重复的信息。"
 
 #. I18N: Help text for the “Default pedigree chart layout” tree configuration setting
 #: admin_trees_config.php:1298
@@ -14344,9 +14199,7 @@ msgstr "此选项将保留在私人家庭的联系记录。这意味着你将看
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:482
 msgid "This option will show the names (but no other details) of private individuals.  Individuals are private if they are still alive or if a privacy restriction has been added to their individual record.  To hide a specific name, add a privacy restriction to that name record."
-msgstr ""
-"此选项将显示名称（但没有其他私人细节）。如果他们还活着，或者如果一个隐私的限制已被添加到他们的个人私有记录。隐藏一个特定的名称，添加一个隐私限制到这个记录"
-"名称。"
+msgstr "此选项将显示名称（但没有其他私人细节）。如果他们还活着，或者如果一个隐私的限制已被添加到他们的个人私有记录。隐藏一个特定的名称，添加一个隐私限制到这个记录名称。"
 
 #: app/Module/GoogleMapsModule.php:500
 msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
@@ -14451,9 +14304,7 @@ msgstr "这个服务器的内存限制是 %s MB和它的CPU时间限制是 %s �
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1440
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr ""
-"这应该是一个逗号或空格分隔的事实列表,你想要生和死出现在系谱图。这个列表需要你用事实标签中定义的GEDCOM "
-"5.5.1标准。例如,如果你想要显示职业，需要添加“职业”这个字段。"
+msgstr "这应该是一个逗号或空格分隔的事实列表,你想要生和死出现在系谱图。这个列表需要你用事实标签中定义的GEDCOM 5.5.1标准。例如,如果你想要显示职业，需要添加“职业”这个字段。"
 
 #: source.php:78
 msgid "This source does not exist or you do not have permission to view it."
@@ -14663,9 +14514,7 @@ msgstr "当您正在复制的文件，可以暂时在服务器上创建文件 %s
 #. I18N: “Apache” is a software program.
 #: admin_site_config.php:182
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr ""
-"为了保护私人数据，webtrees使用Apache的配置文件（.htaccess文件），阻止访问此文件夹。如果你的web服务器不支持.htaccess文件"
-"，你不能限制访问此文件夹，那么你可以从Web文档选择另一个文件夹。"
+msgstr "为了保护私人数据，webtrees使用Apache的配置文件（.htaccess文件），阻止访问此文件夹。如果你的web服务器不支持.htaccess文件，你不能限制访问此文件夹，那么你可以从Web文档选择另一个文件夹。"
 
 #: help_text.php:298
 msgid "To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link."
@@ -14690,9 +14539,7 @@ msgstr "告诉搜索引擎网站地图是可用的，你应该添加以下行到
 
 #: admin_site_config.php:435
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
-msgstr ""
-"使用谷歌邮件账户，请使用以下设置： server=smtp.gmail.com, port=587, security=tls, "
-"username=xxxxx@gmail.com, password=[your gmail password]"
+msgstr "使用谷歌邮件账户，请使用以下设置： server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
 
 #: app/Stats.php:6949
 msgid "Togo"
@@ -15508,10 +15355,7 @@ msgstr "产生的高画质图像水印可能会很慢。繁忙的网站可能更
 #: login.php:384
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>.  You must verify your account request by following instructions in the confirmation email.  If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this website, you will need to know your user name and password."
-msgstr ""
-"现在我们将发送一封确认邮件到地址<b>%s</b>。你必须遵循的确认电子邮件中说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝"
-"。你将不得不重新申请。<br><br>在你按照指示的确认电子邮件中，还必须管理员批准您的帐户请求才可以使用。<br><br>登录到这个网站，你需要知道你的"
-"用户名密码。"
+msgstr "现在我们将发送一封确认邮件到地址<b>%s</b>。你必须遵循的确认电子邮件中说明验证您的帐户的申请。如果七天内你不确定你的帐户申请，您的申请将被自动拒绝。你将不得不重新申请。<br><br>在你按照指示的确认电子邮件中，还必须管理员批准您的帐户请求才可以使用。<br><br>登录到这个网站，你需要知道你的用户名密码。"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:94
@@ -15579,13 +15423,11 @@ msgstr "西撒哈拉"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:2261
 msgid "When a record is edited, the user and timestamp are recorded.  Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data.  This option controls whether this feature is selected by default."
-msgstr ""
-"当一个记录被编辑时，用户和时间戳被记录。有时候我们需要做少量修改别人的数据时，保留现有的“最后一变”的信息，例如。该选项控制该功能是否被默认选择。"
+msgstr "当一个记录被编辑时，用户和时间戳被记录。有时候我们需要做少量修改别人的数据时，保留现有的“最后一变”的信息，例如。该选项控制该功能是否被默认选择。"
 
 #: admin_users.php:389
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr ""
-"当一个用户注册一个帐号，发送他们的电子邮件包含地址验证连接。当他们点击这个链接，我们知道的电子邮件地址是正确的，“电子邮件验证”选项是自动选择。"
+msgstr "当一个用户注册一个帐号，发送他们的电子邮件包含地址验证连接。当他们点击这个链接，我们知道的电子邮件地址是正确的，“电子邮件验证”选项是自动选择。"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -15594,8 +15436,7 @@ msgstr "添加一个链接的时候，ID字段不能为空。"
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2227
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death).  This option controls whether records or facts will be selected by default."
-msgstr ""
-"当添加新的近亲属，你可以添加来源引用到记录 (个人和家庭) 或事实和事件 (出生、 婚姻和死亡)。 此选项控制是否在默认情况下，将选定记录或事实。"
+msgstr "当添加新的近亲属，你可以添加来源引用到记录 (个人和家庭) 或事实和事件 (出生、 婚姻和死亡)。 此选项控制是否在默认情况下，将选定记录或事实。"
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:859
@@ -15731,7 +15572,7 @@ msgstr "世界"
 #. I18N: gedcom tag _YART
 #: app/GedcomTag.php:1767
 msgid "Yahrzeit"
-msgstr "Yahrzeit"
+msgstr ""
 
 #. I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:37
@@ -15905,9 +15746,7 @@ msgstr "您需要设置一个管理员帐户。此帐户可以控制这个webtre
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:451
 msgid "You only need to enter a Login URL if you want to redirect to a different website or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr ""
-"当用户登录时如果你想重定向到不同的站点或位置，您需要输入登录URL。当用户登录时，如果你需要从HTTP到HTTPS切换，这是非常有用的。包含完整的网址为<"
-"i>的login.php</i>。例如，https://www.yourserver.com/webtrees/login.php。"
+msgstr "当用户登录时如果你想重定向到不同的站点或位置，您需要输入登录URL。当用户登录时，如果你需要从HTTP到HTTPS切换，这是非常有用的。包含完整的网址为<i>的login.php</i>。例如，https://www.yourserver.com/webtrees/login.php。"
 
 #: message.php:247
 msgid "You sent the following message to a webtrees administrator:"
@@ -19832,9 +19671,7 @@ msgstr "webtrees需要一个MySQL数据库，版本%s或更高版本。"
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:321
 msgid "webtrees needs to send emails, such as password reminders and website notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-msgstr ""
-"webtrees需要发送电子邮件，如密码提醒和网站通知。要做到这一点，它可以使用此服务器的内置的PHP邮件功能（这并不总是可用的）或外部SMTP（邮件）服"
-"务，您将需要为其提供连接的详细信息。"
+msgstr "webtrees需要发送电子邮件，如密码提醒和网站通知。要做到这一点，它可以使用此服务器的内置的PHP邮件功能（这并不总是可用的）或外部SMTP（邮件）服务，您将需要为其提供连接的详细信息。"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:869
@@ -19847,9 +19684,7 @@ msgstr "webtrees发送电子邮件且没有内部消息"
 
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr ""
-"webtrees使用UTF-8编码的重音字母，特殊字符和非拉丁文字。如果你希望使用的族谱软件，这个GEDCOM文件不支持UTF-8，那么你可以使用ISO-"
-"8859-1编码创建它。"
+msgstr "webtrees使用UTF-8编码的重音字母，特殊字符和非拉丁文字。如果你希望使用的族谱软件，这个GEDCOM文件不支持UTF-8，那么你可以使用ISO-8859-1编码创建它。"
 
 #: app/Functions/FunctionsPrint.php:210
 msgid "webtrees wiki"
@@ -19871,7 +19706,7 @@ msgstr "妻子"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:144
 msgid "xenea"
-msgstr "xenea"
+msgstr ""
 
 #: timeline.php:127
 msgid "years"
