@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2015-03-12 22:21+0100\n"
+"PO-Revision-Date: 2016-01-12 00:35+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Bulgarian <http://translate.webtrees.net/projects/webtrees/webtrees/bg/>\n"
 "Language: bg\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.4\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -2851,7 +2851,7 @@ msgstr ""
 
 #: message.php:127
 msgid "Body"
-msgstr "Текст:"
+msgstr "Текст"
 
 #: app/GedcomCode/GedcomCodeTemp.php:103
 msgid "Bogota, Colombia"
@@ -3281,7 +3281,7 @@ msgstr ""
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "Категории:"
+msgstr "Категории"
 
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:242
@@ -4468,7 +4468,7 @@ msgstr ""
 
 #: app/Module/UserMessagesModule.php:113
 msgid "Date sent"
-msgstr "Изпратено на:"
+msgstr "Изпратено на"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:714
@@ -6937,7 +6937,7 @@ msgstr "Височина"
 #: login.php:251 login.php:332
 #, php-format
 msgid "Hello %s…"
-msgstr "Здравейте, %s,"
+msgstr "Здравейте, %s…"
 
 #: login.php:383
 #, php-format
@@ -8108,12 +8108,12 @@ msgstr ""
 
 #: app/Module/FamilyTreeNewsModule.php:206
 msgid "Limit"
-msgstr "Ограничение:"
+msgstr "Ограничение"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:197
 msgid "Limit display by"
-msgstr "Ограничение на показатата информация до:"
+msgstr "Ограничение на показатата информация до"
 
 #. I18N: You need to:
 #: login.php:569
@@ -8794,7 +8794,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:159
 msgid "Media contains"
-msgstr "Мултимедия:"
+msgstr "Мултимедия"
 
 #: admin_media.php:691 admin_media_upload.php:200
 msgid "Media file"
@@ -8843,7 +8843,7 @@ msgstr "Мултимедийни обекти"
 
 #: medialist.php:233
 msgid "Media objects found"
-msgstr "Намерени мултимедийни обекти:"
+msgstr "Намерени мултимедийни обекти"
 
 #: medialist.php:129
 msgid "Media objects per page"
@@ -9386,7 +9386,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:123 find.php:140
 msgid "Name contains"
-msgstr "Име:"
+msgstr "Име"
 
 #: app/GedcomTag.php:606
 msgid "Name in Hebrew"
@@ -9951,7 +9951,7 @@ msgstr "Семейства без деца"
 #: app/Module/ClippingsCartModule.php:220
 #: app/Module/ClippingsCartModule.php:238
 msgid "Number of generations"
-msgstr "Поколения:"
+msgstr "Поколения"
 
 #: app/Module/FamilyTreeNewsModule.php:202
 msgid "Number of items"
@@ -10527,7 +10527,7 @@ msgstr "Проверка на локациите"
 #. I18N: Label for search field
 #: find.php:179
 msgid "Place contains"
-msgstr "Локация:"
+msgstr "Локация"
 
 #: app/Module/TopPageViewsModule.php:176
 msgid "Place counts before or after name?"
@@ -11373,7 +11373,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:198
 msgid "Repository contains"
-msgstr "Хранилище:"
+msgstr "Хранилище"
 
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
@@ -11748,7 +11748,7 @@ msgstr ""
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "Избери вид диаграма:"
+msgstr "Избери вид диаграма"
 
 #: edit_interface.php:1245
 msgid "Select events"
@@ -12044,7 +12044,7 @@ msgstr "Споделена бележка"
 #. I18N: Label for search field
 #: find.php:218
 msgid "Shared note contains"
-msgstr "Споделена бележка:"
+msgstr "Споделена бележка"
 
 #: app/Functions/FunctionsPrintLists.php:1088 app/Theme/AbstractTheme.php:1445
 #: notelist.php:33 notelist.php:37 search.php:103
@@ -12791,7 +12791,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:237
 msgid "Source contains"
-msgstr "Източник:"
+msgstr "Източник"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2222 modules_v3/fact_sources/report.xml:6
@@ -12997,7 +12997,7 @@ msgstr "Подрегион"
 
 #: app/Module/UserMessagesModule.php:112 message.php:119
 msgid "Subject"
-msgstr "Относно:"
+msgstr "Относно"
 
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:810
@@ -15234,7 +15234,7 @@ msgstr ""
 
 #: login.php:341 login.php:528
 msgid "Verification code"
-msgstr "Код за верификация:"
+msgstr "Код за верификация"
 
 #: admin_users.php:874
 msgid "Verified"
