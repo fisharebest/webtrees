@@ -43,8 +43,8 @@ define('WT_WEBTREES', 'webtrees');
 define('WT_VERSION', '1.7.4-dev');
 
 // External URLs
-define('WT_WEBTREES_URL', 'http://www.webtrees.net/');
-define('WT_WEBTREES_WIKI', 'http://wiki.webtrees.net/');
+define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
+define('WT_WEBTREES_WIKI', 'https://wiki.webtrees.net/');
 
 // Resources have version numbers in the URL, so that they can be cached indefinitely.
 define('WT_STATIC_URL', getenv('STATIC_URL')); // We could set this to load our own static resources from a cookie-free domain.
