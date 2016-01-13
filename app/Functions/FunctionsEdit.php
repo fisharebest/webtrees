@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Census\Census;
+use Fisharebest\Webtrees\Census\CensusOfCzechRepublic;
 use Fisharebest\Webtrees\Census\CensusOfDenmark;
 use Fisharebest\Webtrees\Census\CensusOfEngland;
 use Fisharebest\Webtrees\Census\CensusOfFrance;
@@ -973,6 +974,9 @@ class FunctionsEdit {
 
 		// Show more likely census details at the top of the list.
 		switch (WT_LOCALE) {
+		case 'cs':
+			$census_places = array(new CensusOfCzechRepublic);
+			break;
 		case 'en-AU':
 		case 'en-GB':
 			$census_places = array(new CensusOfEngland, new CensusOfWales, new CensusOfScotland);

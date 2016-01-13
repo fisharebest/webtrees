@@ -18,19 +18,25 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class Census {
+class CensusOfCzechRepublic extends Census implements CensusPlaceInterface {
 	/**
-	 * @return CensusPlaceInterface[]
+	 * All available censuses for this census place.
+	 *
+	 * @return CensusInterface[]
 	 */
-	public static function allCensusPlaces() {
+	public function allCensusDates() {
 		return array(
-			new CensusOfCzechRepublic,
-			new CensusOfDenmark,
-			new CensusOfEngland,
-			new CensusOfFrance,
-			new CensusOfScotland,
-			new CensusOfUnitedStates,
-			new CensusOfWales,
+			new CensusOfCzechRepublic1880(),
+			new CensusOfCzechRepublic1921(),
 		);
+	}
+
+	/**
+	 * Where did this census occur, in GEDCOM format.
+	 *
+	 * @return string
+	 */
+	public function censusPlace() {
+		return 'Česko';
 	}
 }
