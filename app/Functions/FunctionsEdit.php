@@ -315,10 +315,10 @@ class FunctionsEdit {
 	/**
 	 * Print an edit control for a ADOP field.
 	 *
-	 * @param string $name
-	 * @param string $selected
-	 * @param string $extra
-	 * @param Individual $individual
+	 * @param string          $name
+	 * @param string          $selected
+	 * @param string          $extra
+	 * @param Individual|null $individual
 	 *
 	 * @return string
 	 */
@@ -329,10 +329,10 @@ class FunctionsEdit {
 	/**
 	 * Print an edit control for a PEDI field.
 	 *
-	 * @param string $name
-	 * @param string $selected
-	 * @param string $extra
-	 * @param Individual $individual
+	 * @param string          $name
+	 * @param string          $selected
+	 * @param string          $extra
+	 * @param Individual|null $individual
 	 *
 	 * @return string
 	 */
@@ -343,10 +343,10 @@ class FunctionsEdit {
 	/**
 	 * Print an edit control for a NAME TYPE field.
 	 *
-	 * @param string $name
-	 * @param string $selected
-	 * @param string $extra
-	 * @param Individual $individual
+	 * @param string          $name
+	 * @param string          $selected
+	 * @param string          $extra
+	 * @param Individual|null $individual
 	 *
 	 * @return string
 	 */
