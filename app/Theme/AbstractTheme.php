@@ -700,21 +700,28 @@ abstract class AbstractTheme {
 			$thumbnail = '';
 		}
 
+		$content = '<span class="namedef name1">' . $individual->getFullName() . '</span>';
+		$icons    = '';
+		if ($individual->canShowName()) {
+			$content =
+				'<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
+				'<div class="namedef name1">' . $individual->getAddName() . '</div>';
+			$icons =
+				'<div class="noprint icons">' .
+				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
+				'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
+				'<ul class="' . $personBoxClass . '">' . implode('', $this->individualBoxMenu($individual)) . '</ul>' .
+				'</div>' .
+				'</div>' .
+				'</div>';
+		}
+
 		return
 			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; min-height: ' . $this->parameter('chart-box-y') . 'px">' .
-			'<div class="noprint icons">' .
-			'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
-			'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
-			'<ul class="' . $personBoxClass . '">' . implode('', $this->individualBoxMenu($individual)) . '</ul>' .
-			'</div>' .
-			'</div>' .
-			'</div>' .
+			$icons .
 			'<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
 			$thumbnail .
-			'<a href="' . $individual->getHtmlUrl() . '">' .
-			'<span class="namedef name1">' . $individual->getFullName() . '</span>' .
-			'</a>' .
-			'<div class="namedef name1">' . $individual->getAddName() . '</div>' .
+			$content .
 			'<div class="inout2 details1">' . $this->individualBoxFacts($individual) . '</div>' .
 			'</div>' .
 			'<div class="inout"></div>' .
@@ -745,21 +752,28 @@ abstract class AbstractTheme {
 			$thumbnail = '';
 		}
 
+		$content = '<span class="namedef name1">' . $individual->getFullName() . '</span>';
+		$icons   = '';
+		if ($individual->canShowName()) {
+			$content =
+				'<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
+				'<div class="namedef name2">' . $individual->getAddName() . '</div>';
+			$icons =
+				'<div class="noprint icons">' .
+				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
+				'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
+				'<ul class="' . $personBoxClass . '">' . implode('', $this->individualBoxMenu($individual)) . '</ul>' .
+				'</div>' .
+				'</div>' .
+				'</div>';
+		}
+
 		return
 			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' box-style2">' .
-			'<div class="noprint icons">' .
-			'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
-			'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
-			'<ul class="' . $personBoxClass . '">' . implode('', $this->individualBoxMenu($individual)) . '</ul>' .
-			'</div>' .
-			'</div>' .
-			'</div>' .
+			$icons .
 			'<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
 			$thumbnail .
-			'<a href="' . $individual->getHtmlUrl() . '">' .
-			'<span class="namedef name2">' . $individual->getFullName() . '</span>' .
-			'</a>' .
-			'<div class="namedef name2">' . $individual->getAddName() . '</div>' .
+			$content .
 			'<div class="inout2 details2">' . $this->individualBoxFacts($individual) . '</div>' .
 			'</div>' .
 			'<div class="inout"></div>' .

@@ -15,22 +15,28 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Individual;
+
 /**
- * Definitions for a census
+ * The individual's sex.
  */
-class Census {
+class CensusColumnSexMZ extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
-	 * @return CensusPlaceInterface[]
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param Individual      $individual
+	 * @param Individual|null $head
+	 *
+	 * @return string
 	 */
-	public static function allCensusPlaces() {
-		return array(
-			new CensusOfCzechRepublic,
-			new CensusOfDenmark,
-			new CensusOfEngland,
-			new CensusOfFrance,
-			new CensusOfScotland,
-			new CensusOfUnitedStates,
-			new CensusOfWales,
-		);
+	public function generate(Individual $individual, Individual $head = null) {
+		switch ($individual->getSex()) {
+		case 'M':
+			return 'M';
+		case 'F':
+			return 'Ž';
+		default:
+			return '';
+		}
 	}
 }

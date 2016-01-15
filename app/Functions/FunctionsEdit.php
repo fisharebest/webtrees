@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Census\Census;
+use Fisharebest\Webtrees\Census\CensusOfCzechRepublic;
 use Fisharebest\Webtrees\Census\CensusOfDenmark;
 use Fisharebest\Webtrees\Census\CensusOfEngland;
 use Fisharebest\Webtrees\Census\CensusOfFrance;
@@ -314,10 +315,10 @@ class FunctionsEdit {
 	/**
 	 * Print an edit control for a ADOP field.
 	 *
-	 * @param string $name
-	 * @param string $selected
-	 * @param string $extra
-	 * @param Individual $individual
+	 * @param string          $name
+	 * @param string          $selected
+	 * @param string          $extra
+	 * @param Individual|null $individual
 	 *
 	 * @return string
 	 */
@@ -328,10 +329,10 @@ class FunctionsEdit {
 	/**
 	 * Print an edit control for a PEDI field.
 	 *
-	 * @param string $name
-	 * @param string $selected
-	 * @param string $extra
-	 * @param Individual $individual
+	 * @param string          $name
+	 * @param string          $selected
+	 * @param string          $extra
+	 * @param Individual|null $individual
 	 *
 	 * @return string
 	 */
@@ -342,10 +343,10 @@ class FunctionsEdit {
 	/**
 	 * Print an edit control for a NAME TYPE field.
 	 *
-	 * @param string $name
-	 * @param string $selected
-	 * @param string $extra
-	 * @param Individual $individual
+	 * @param string          $name
+	 * @param string          $selected
+	 * @param string          $extra
+	 * @param Individual|null $individual
 	 *
 	 * @return string
 	 */
@@ -762,7 +763,7 @@ class FunctionsEdit {
 					echo ' data-autocomplete-type="SURN"';
 					break;
 				case 'TIME':
-					echo ' pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5]0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */
+					echo ' pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */
 						I18N::translate('hh:mm or hh:mm:ss') . '"';
 					break;
 				}
@@ -973,6 +974,9 @@ class FunctionsEdit {
 
 		// Show more likely census details at the top of the list.
 		switch (WT_LOCALE) {
+		case 'cs':
+			$census_places = array(new CensusOfCzechRepublic);
+			break;
 		case 'en-AU':
 		case 'en-GB':
 			$census_places = array(new CensusOfEngland, new CensusOfWales, new CensusOfScotland);

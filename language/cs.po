@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2016-01-08 22:15+0100\n"
+"PO-Revision-Date: 2016-01-10 18:34+0100\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
@@ -3753,7 +3753,7 @@ msgstr "Vyjasněno, ale ještě nedokončeno"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:67
 #, php-format
 msgid "Click %s to choose individual as head of family."
-msgstr "%s zvolit osobu jako hlavu rodiny."
+msgstr "Kliknutím na %s zvolit osobu jako hlavu rodiny."
 
 #: edit_interface.php:1718
 msgid "Click a row, then drag-and-drop to re-order media"

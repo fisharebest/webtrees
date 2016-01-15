@@ -261,34 +261,36 @@ class SearchController extends PageController {
 				$this->mynotelist = FunctionsDb::searchNotes($query_terms, $this->search_trees);
 			}
 
-			// If only 1 item is returned, automatically forward to that item
-			// If ID cannot be displayed, continue to the search page.
-			if (count($this->myindilist) == 1 && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist) {
-				$indi = reset($this->myindilist);
-				if ($indi->canShowName()) {
-					header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
-					exit;
+			if ($this->action === 'general') {
+				// If only 1 item is returned, automatically forward to that item
+				// If ID cannot be displayed, continue to the search page.
+				if (count($this->myindilist) == 1 && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist) {
+					$indi = reset($this->myindilist);
+					if ($indi->canShowName()) {
+						header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
+						exit;
+					}
 				}
-			}
-			if (!$this->myindilist && count($this->myfamlist) == 1 && !$this->mysourcelist && !$this->mynotelist) {
-				$fam = reset($this->myfamlist);
-				if ($fam->canShowName()) {
-					header('Location: ' . WT_BASE_URL . $fam->getRawUrl());
-					exit;
+				if (!$this->myindilist && count($this->myfamlist) == 1 && !$this->mysourcelist && !$this->mynotelist) {
+					$fam = reset($this->myfamlist);
+					if ($fam->canShowName()) {
+						header('Location: ' . WT_BASE_URL . $fam->getRawUrl());
+						exit;
+					}
 				}
-			}
-			if (!$this->myindilist && !$this->myfamlist && count($this->mysourcelist) == 1 && !$this->mynotelist) {
-				$sour = reset($this->mysourcelist);
-				if ($sour->canShowName()) {
-					header('Location: ' . WT_BASE_URL . $sour->getRawUrl());
-					exit;
+				if (!$this->myindilist && !$this->myfamlist && count($this->mysourcelist) == 1 && !$this->mynotelist) {
+					$sour = reset($this->mysourcelist);
+					if ($sour->canShowName()) {
+						header('Location: ' . WT_BASE_URL . $sour->getRawUrl());
+						exit;
+					}
 				}
-			}
-			if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && count($this->mynotelist) == 1) {
-				$note = reset($this->mynotelist);
-				if ($note->canShowName()) {
-					header('Location: ' . WT_BASE_URL . $note->getRawUrl());
-					exit;
+				if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && count($this->mynotelist) == 1) {
+					$note = reset($this->mynotelist);
+					if ($note->canShowName()) {
+						header('Location: ' . WT_BASE_URL . $note->getRawUrl());
+						exit;
+					}
 				}
 			}
 		}

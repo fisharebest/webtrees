@@ -16,8 +16,8 @@ with the native PHP implementation.  In many cases, this isn't actually
 possible - it’s often why the functions were added to PHP in the first place!
 
 So, this project provides implementations that are often “good enough” to get
-your application working on old servers.  Restrictions and limitations are
-described below.
+your application working on both new/old versions of PHP at the same time.
+Restrictions and limitations are described below.
 
 Usage
 =====
@@ -27,7 +27,7 @@ Add the dependency to your `composer.json` and allow autoloading magic to do the
 ```json
 {
     "require": {
-        "fisharebest/php-polyfill": "~1.0",
+        "fisharebest/php-polyfill": "~1.2",
     },
 }
 ```
@@ -41,7 +41,7 @@ The following polyfill libraries will be loaded automatically:
  - `fisharebest/ext-calendar` - polyfills for the calendar library functions
  - `jakeasmith/http_build_url` - polyfill for the function `http_build_url()`
  
-The following polyfills are provided by this package:
+The following additional polyfills are provided by this package:
 
 PHP 5.3
 =======
@@ -57,13 +57,6 @@ PHP 5.4
 status code, even if it was set using another function, such as `header()`.
 This implementation can only get the current status code if it was also set by
 `http_response_code()`.
-
-PHP 5.5.9 (Ubuntu 14.04 32 bit)
-===============================
-
-- `gzopen()` - Wrongly implemented as `gzopen64()`.
-- `gzseek()` - Wrongly implemented as `gzseek64()`.
-- `gztell()` - Wrongly implemented as `gztell64()`.
 
 Contributions
 =============

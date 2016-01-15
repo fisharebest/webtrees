@@ -488,93 +488,6 @@
         ]
     },
     {
-        "name": "symfony/polyfill",
-        "version": "v1.0.0",
-        "version_normalized": "1.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/polyfill.git",
-            "reference": "fef21adc706d3bb8f31d37c503ded2160c76c64a"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill/zipball/fef21adc706d3bb8f31d37c503ded2160c76c64a",
-            "reference": "fef21adc706d3bb8f31d37c503ded2160c76c64a",
-            "shasum": ""
-        },
-        "require": {
-            "ircmaxell/password-compat": "~1.0",
-            "paragonie/random_compat": "~1.0",
-            "php": ">=5.3.3",
-            "symfony/intl": "~2.3|~3.0"
-        },
-        "replace": {
-            "symfony/polyfill-iconv": "self.version",
-            "symfony/polyfill-intl-grapheme": "self.version",
-            "symfony/polyfill-intl-icu": "self.version",
-            "symfony/polyfill-intl-normalizer": "self.version",
-            "symfony/polyfill-mbstring": "self.version",
-            "symfony/polyfill-php54": "self.version",
-            "symfony/polyfill-php55": "self.version",
-            "symfony/polyfill-php56": "self.version",
-            "symfony/polyfill-php70": "self.version",
-            "symfony/polyfill-util": "self.version",
-            "symfony/polyfill-xml": "self.version"
-        },
-        "time": "2015-11-04 20:29:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Polyfill\\": "src/"
-            },
-            "files": [
-                "src/Php54/bootstrap.php",
-                "src/Php55/bootstrap.php",
-                "src/Php56/bootstrap.php",
-                "src/Php70/bootstrap.php",
-                "src/Iconv/bootstrap.php",
-                "src/Intl/Grapheme/bootstrap.php",
-                "src/Intl/Icu/bootstrap.php",
-                "src/Intl/Normalizer/bootstrap.php",
-                "src/Mbstring/bootstrap.php",
-                "src/Xml/bootstrap.php"
-            ],
-            "classmap": [
-                "src/Intl/Normalizer/Resources/stubs",
-                "src/Php70/Resources/stubs",
-                "src/Php54/Resources/stubs"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony polyfills backporting features to lower PHP versions",
-        "homepage": "https://symfony.com",
-        "keywords": [
-            "compat",
-            "compatibility",
-            "polyfill",
-            "shim"
-        ]
-    },
-    {
         "name": "paragonie/random_compat",
         "version": "1.1.4",
         "version_normalized": "1.1.4.0",
@@ -741,61 +654,6 @@
         "description": "Provides functionality for http_build_url() to environments without pecl_http."
     },
     {
-        "name": "fisharebest/php-polyfill",
-        "version": "1.1.0",
-        "version_normalized": "1.1.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fisharebest/php-polyfill.git",
-            "reference": "96d9a33f2394aaf50e32f8e9c8a163f13e733e90"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/php-polyfill/zipball/96d9a33f2394aaf50e32f8e9c8a163f13e733e90",
-            "reference": "96d9a33f2394aaf50e32f8e9c8a163f13e733e90",
-            "shasum": ""
-        },
-        "require": {
-            "fisharebest/ext-calendar": "~2.2",
-            "jakeasmith/http_build_url": "~0.1",
-            "symfony/polyfill": "1.0.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "*",
-            "satooshi/php-coveralls": "dev-master"
-        },
-        "time": "2015-12-21 11:33:12",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Fisharebest\\PhpPolyfill\\": "src/"
-            },
-            "files": [
-                "src/bootstrap.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT and GPL-3.0+"
-        ],
-        "authors": [
-            {
-                "name": "Greg Roach",
-                "email": "fisharebest@gmail.com"
-            }
-        ],
-        "description": "Polyfills for PHP 5.3 onwards",
-        "homepage": "https://github.com/fisharebest/php-polyfill",
-        "keywords": [
-            "compat",
-            "compatibility",
-            "php",
-            "polyfill",
-            "shim"
-        ]
-    },
-    {
         "name": "michelf/php-markdown",
         "version": "1.6.0",
         "version_normalized": "1.6.0.0",
@@ -846,6 +704,148 @@
         "homepage": "https://michelf.ca/projects/php-markdown/",
         "keywords": [
             "markdown"
+        ]
+    },
+    {
+        "name": "symfony/polyfill",
+        "version": "v1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/polyfill.git",
+            "reference": "dd9db1dc4013821a63f7afbd8340dd57939fe674"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/polyfill/zipball/dd9db1dc4013821a63f7afbd8340dd57939fe674",
+            "reference": "dd9db1dc4013821a63f7afbd8340dd57939fe674",
+            "shasum": ""
+        },
+        "require": {
+            "ircmaxell/password-compat": "~1.0",
+            "paragonie/random_compat": "~1.0",
+            "php": ">=5.3.3",
+            "symfony/intl": "~2.3|~3.0"
+        },
+        "replace": {
+            "symfony/polyfill-iconv": "self.version",
+            "symfony/polyfill-intl-grapheme": "self.version",
+            "symfony/polyfill-intl-icu": "self.version",
+            "symfony/polyfill-intl-normalizer": "self.version",
+            "symfony/polyfill-mbstring": "self.version",
+            "symfony/polyfill-php54": "self.version",
+            "symfony/polyfill-php55": "self.version",
+            "symfony/polyfill-php56": "self.version",
+            "symfony/polyfill-php70": "self.version",
+            "symfony/polyfill-util": "self.version",
+            "symfony/polyfill-xml": "self.version"
+        },
+        "time": "2015-12-18 15:10:25",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Polyfill\\": "src/"
+            },
+            "files": [
+                "src/Php54/bootstrap.php",
+                "src/Php55/bootstrap.php",
+                "src/Php56/bootstrap.php",
+                "src/Php70/bootstrap.php",
+                "src/Iconv/bootstrap.php",
+                "src/Intl/Grapheme/bootstrap.php",
+                "src/Intl/Icu/bootstrap.php",
+                "src/Intl/Normalizer/bootstrap.php",
+                "src/Mbstring/bootstrap.php",
+                "src/Xml/bootstrap.php"
+            ],
+            "classmap": [
+                "src/Intl/Normalizer/Resources/stubs",
+                "src/Php70/Resources/stubs",
+                "src/Php54/Resources/stubs"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony polyfills backporting features to lower PHP versions",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "compat",
+            "compatibility",
+            "polyfill",
+            "shim"
+        ]
+    },
+    {
+        "name": "fisharebest/php-polyfill",
+        "version": "1.2.0",
+        "version_normalized": "1.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fisharebest/php-polyfill.git",
+            "reference": "4d28746dd81901426af1ed11e0966ea736070081"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fisharebest/php-polyfill/zipball/4d28746dd81901426af1ed11e0966ea736070081",
+            "reference": "4d28746dd81901426af1ed11e0966ea736070081",
+            "shasum": ""
+        },
+        "require": {
+            "fisharebest/ext-calendar": "~2.2",
+            "jakeasmith/http_build_url": "~0.1",
+            "symfony/polyfill": "1.0.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*",
+            "satooshi/php-coveralls": "~1.0"
+        },
+        "time": "2016-01-03 20:11:41",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Fisharebest\\PhpPolyfill\\": "src/"
+            },
+            "files": [
+                "src/bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT and GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Greg Roach",
+                "email": "fisharebest@gmail.com"
+            }
+        ],
+        "description": "Polyfills for PHP 5.3 onwards",
+        "homepage": "https://github.com/fisharebest/php-polyfill",
+        "keywords": [
+            "compat",
+            "compatibility",
+            "php",
+            "polyfill",
+            "shim"
         ]
     }
 ]
