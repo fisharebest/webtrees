@@ -334,7 +334,7 @@ class FunctionsPrint {
 				if ($fact === 'BIRT' && $record->getTree()->getPreference('SHOW_PARENTS_AGE')) {
 					// age of parents at child birth
 					$html .= self::formatParentsAges($record, $date);
-				} elseif ($fact !== 'CHAN' && $fact !== '_TODO') {
+				} elseif ($fact !== 'BIRT' && $fact !== 'CHAN' && $fact !== '_TODO') {
 					// age at event
 					$birth_date = $record->getBirthDate();
 					// Can't use getDeathDate(), as this also gives BURI/CREM events, which
