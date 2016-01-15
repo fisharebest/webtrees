@@ -144,17 +144,22 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 * @return Menu
 	 */
 	protected function menuPalette() {
-		$menu = new Menu(/* I18N: A colour scheme */ I18N::translate('Palette'), '#', 'menu-color');
+		if ($this->tree && Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
+			$menu = new Menu(/* I18N: A colour scheme */
+				I18N::translate('Palette'), '#', 'menu-color');
 
-		foreach ($this->palettes as $palette_id => $palette_name) {
-			$menu->addSubmenu(new Menu(
-				$palette_name,
-				Functions::getQueryUrl(array('themecolor' => $palette_id), '&amp;'),
-				'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : '')
-			));
+			foreach ($this->palettes as $palette_id => $palette_name) {
+				$menu->addSubmenu(new Menu(
+					$palette_name,
+					Functions::getQueryUrl(array('themecolor' => $palette_id), '&amp;'),
+					'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : '')
+				));
+			}
+
+			return $menu;
+		} else {
+			return null;
 		}
-
-		return $menu;
 	}
 
 	/**
