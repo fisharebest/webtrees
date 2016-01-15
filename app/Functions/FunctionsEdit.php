@@ -763,7 +763,7 @@ class FunctionsEdit {
 					echo ' data-autocomplete-type="SURN"';
 					break;
 				case 'TIME':
-					echo ' pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5]0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */
+					echo ' pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */
 						I18N::translate('hh:mm or hh:mm:ss') . '"';
 					break;
 				}
