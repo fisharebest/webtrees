@@ -10,7 +10,6 @@ return array(
     '5255c38a0faeba867671b61dfda6d864' => $vendorDir . '/paragonie/random_compat/lib/random.php',
     'b3134b0e457069f7362d2c9cf91628c7' => $vendorDir . '/fisharebest/ext-calendar/src/shims.php',
     'b45b351e6b6f7487d819961fef2fda77' => $vendorDir . '/jakeasmith/http_build_url/src/http_build_url.php',
-    '1d1b89d124cc9cb8219922c9d5569199' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
     'd075ca29fdd460a76e9d730a9724dc20' => $vendorDir . '/symfony/polyfill/src/Php54/bootstrap.php',
     '7d1c739f734e1193d0c090179eeb95aa' => $vendorDir . '/symfony/polyfill/src/Php55/bootstrap.php',
     '974c792dde7e26133ce76c5ff3d097b1' => $vendorDir . '/symfony/polyfill/src/Php56/bootstrap.php',

@@ -7,22 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Symfony\\Polyfill\\' => array($vendorDir . '/symfony/polyfill/src'),
-    'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
-    'Symfony\\Component\\Stopwatch\\' => array($vendorDir . '/symfony/stopwatch'),
-    'Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
     'Symfony\\Component\\Intl\\' => array($vendorDir . '/symfony/intl'),
-    'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
-    'Symfony\\Component\\Filesystem\\' => array($vendorDir . '/symfony/filesystem'),
-    'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
-    'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
-    'Symfony\\Component\\Config\\' => array($vendorDir . '/symfony/config'),
-    'Symfony\\CS\\' => array($vendorDir . '/fabpot/php-cs-fixer/Symfony/CS'),
-    'Satooshi\\' => array($vendorDir . '/satooshi/php-coveralls/src/Satooshi'),
     'Rhumsaa\\Uuid\\' => array($vendorDir . '/rhumsaa/uuid/src'),
     'Fisharebest\\Webtrees\\' => array($baseDir . '/app'),
     'Fisharebest\\PhpPolyfill\\' => array($vendorDir . '/fisharebest/php-polyfill/src'),
     'Fisharebest\\Localization\\' => array($vendorDir . '/fisharebest/localization/src'),
     'Fisharebest\\ExtCalendar\\' => array($vendorDir . '/fisharebest/ext-calendar/src'),
     'Fisharebest\\Algorithm\\' => array($vendorDir . '/fisharebest/algorithm/src'),
-    'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
 );
