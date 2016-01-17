@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-12-30 09:24+0000\n"
-"PO-Revision-Date: 2016-01-12 00:41+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2016-01-17 16:10+0100\n"
+"Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -1121,7 +1121,7 @@ msgstr "Accepteer"
 #: admin_module_reports.php:68 admin_module_sidebar.php:90
 #: admin_module_tabs.php:90 admin_trees_config.php:537
 msgid "Access level"
-msgstr "Toegangs niveau"
+msgstr "Toegangsniveau"
 
 #: admin_users.php:376
 msgid "Account approval and email verification"
