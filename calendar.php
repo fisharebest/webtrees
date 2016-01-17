@@ -493,8 +493,6 @@ case 'month':
 				echo calendar_list_text($cal_facts[0], '', '', false);
 				echo '</div>';
 				$cal_facts[0] = array();
-			} else {
-				echo '&nbsp;';
 			}
 		} else {
 			// Format the day number using the calendar

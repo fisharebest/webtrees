@@ -1137,7 +1137,7 @@ class GedcomRecord {
 			if ($sorting) {
 				return '0';
 			} else {
-				return '&nbsp;';
+				return '';
 			}
 		}
 	}

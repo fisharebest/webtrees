@@ -197,7 +197,7 @@ echo '<input type="hidden" name="action" value="upload">';
 // Print 5 forms for uploading images
 for ($i = 1; $i < 6; $i++) {
 	echo '<table class="upload_media">';
-	echo '<tr><th>', I18N::translate('Media file'), ':&nbsp;&nbsp;', $i, '</th></tr>';
+	echo '<tr><th>', I18N::translate('Media file'), ' ', $i, '</th></tr>';
 	echo '<tr><td>';
 	echo I18N::translate('Media file to upload');
 	echo '</td>';

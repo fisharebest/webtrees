@@ -468,7 +468,7 @@ class Date {
 					return I18N::number($d1->minimumDate()->getAge(false, $jd));
 				}
 			} else {
-				return '&nbsp;';
+				return '';
 			}
 		default:
 			throw new \InvalidArgumentException('format: ' . $format);

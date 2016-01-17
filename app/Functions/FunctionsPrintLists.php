@@ -145,7 +145,7 @@ class FunctionsPrintLists {
 		}
 
 		$html = '
-			<div class="loading-image">&nbsp;</div>
+			<div class="loading-image"></div>
 			<div class="indi-list">
 				<table id="' . $table_id . '">
 					<thead>
@@ -610,7 +610,7 @@ class FunctionsPrintLists {
 		}
 
 		$html = '
-			<div class="loading-image">&nbsp;</div>
+			<div class="loading-image"></div>
 			<div class="fam-list">
 				<table id="' . $table_id . '">
 					<thead>
@@ -1072,7 +1072,7 @@ class FunctionsPrintLists {
 			');
 
 		//--table wrapper
-		$html .= '<div class="loading-image">&nbsp;</div>';
+		$html .= '<div class="loading-image"></div>';
 		$html .= '<div class="source-list">';
 		//-- table header
 		$html .= '<table id="' . $table_id . '"><thead><tr>';
@@ -1212,7 +1212,7 @@ class FunctionsPrintLists {
 			');
 
 		//--table wrapper
-		$html .= '<div class="loading-image">&nbsp;</div>';
+		$html .= '<div class="loading-image"></div>';
 		$html .= '<div class="note-list">';
 		//-- table header
 		$html .= '<table id="' . $table_id . '"><thead><tr>';
@@ -1328,7 +1328,7 @@ class FunctionsPrintLists {
 			');
 
 		//--table wrapper
-		$html .= '<div class="loading-image">&nbsp;</div>';
+		$html .= '<div class="loading-image"></div>';
 		$html .= '<div class="repo-list">';
 		//-- table header
 		$html .= '<table id="' . $table_id . '"><thead><tr>';
@@ -1439,7 +1439,7 @@ class FunctionsPrintLists {
 			');
 
 		//--table wrapper
-		$html .= '<div class="loading-image">&nbsp;</div>';
+		$html .= '<div class="loading-image"></div>';
 		$html .= '<div class="media-list">';
 		//-- table header
 		$html .= '<table id="' . $table_id . '"><thead><tr>';

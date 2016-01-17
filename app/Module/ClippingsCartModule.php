@@ -198,7 +198,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 									?>
 									</label>
 									<br>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<?php echo I18N::translate('Number of generations'); ?>
 									<input type="text" size="5" name="level1" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestors');">
 								</td>
@@ -216,7 +215,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										?>
 									</label>
 									<br >
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<?php echo I18N::translate('Number of generations'); ?>
 									<input type="text" size="5" name="level2" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestorsfamilies');">
 								</td>
@@ -234,7 +232,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										?>
 									</label>
 									<br >
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<?php echo I18N::translate('Number of generations'); ?>
 									<input type="text" size="5" name="level3" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('descendants');">
 								</td>

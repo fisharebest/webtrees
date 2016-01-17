@@ -516,7 +516,6 @@ $controller
 				<?php echo FunctionsEdit::selectEditControl('resn[]', $PRIVACY_CONSTANTS, null, 'privacy', null); ?>
 			</td>
 			<td>
-				&nbsp;
 			</td>
 		</tr>
 	</script>

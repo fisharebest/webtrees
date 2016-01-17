@@ -120,7 +120,7 @@ if ($type == "indi") {
 	<input type="hidden" name="callback" value="' . $callback . '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="indi">
-	<span>', /* I18N: Label for search field */ I18N::translate('Name contains'), '&nbsp;</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Name contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -137,7 +137,7 @@ if ($type == "fam") {
 	<input type="hidden" name="callback" value="' . $callback . '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="fam">
-	<span>', I18N::translate('Name contains'), '&nbsp;</span>
+	<span>', I18N::translate('Name contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -163,7 +163,7 @@ if ($type == 'media') {
 	}
 	echo '" autofocus>',
 	'<p class="small text-muted">', I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.'), '</p>',
-	'<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	'<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
 	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
@@ -182,7 +182,7 @@ if ($type == "place") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
 	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
@@ -201,7 +201,7 @@ if ($type == "repo") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
 	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</td></tr></table>
 	</p></form></div>';
@@ -221,7 +221,7 @@ if ($type == "note") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
 	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
@@ -240,7 +240,7 @@ if ($type == "source") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
 	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
@@ -571,7 +571,7 @@ if ($action == "filter") {
 				echo '</a></li>';
 			}
 			echo '</ul>
-			<p>', I18N::translate('Places found'), '&nbsp;', count($places), '</p>';
+			<p>', I18N::translate('Places found'), ' ', count($places), '</p>';
 		} else {
 			echo '<p>', I18N::translate('No results found.'), '</p>';
 		}

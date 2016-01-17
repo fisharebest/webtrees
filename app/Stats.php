@@ -1740,9 +1740,9 @@ class Stats {
 		$chart .= '<b>' . $chart_title . '</b><br><br>';
 		$chart .= '<div align="center"><img src="' . $chart_url . '" alt="' . $chart_title . '" title="' . $chart_title . '" class="gchart" /><br>';
 		$chart .= '<table class="center"><tr>';
-		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR2 . '" width="12"></td><td>' . I18N::translate('Highest population') . '&nbsp;&nbsp;</td>';
-		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR3 . '" width="12"></td><td>' . I18N::translate('Lowest population') . '&nbsp;&nbsp;</td>';
-		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR1 . '" width="12"></td><td>' . I18N::translate('Nobody at all') . '&nbsp;&nbsp;</td>';
+		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR2 . '" width="12"></td><td>' . I18N::translate('Highest population') . '</td>';
+		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR3 . '" width="12"></td><td>' . I18N::translate('Lowest population') . '</td>';
+		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR1 . '" width="12"></td><td>' . I18N::translate('Nobody at all') . '</td>';
 		$chart .= '</tr></table></div></div>';
 
 		return $chart;
@@ -2432,7 +2432,7 @@ class Stats {
 		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		} else {
-			$top10 = implode(';&nbsp; ', $top10);
+			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
@@ -3276,7 +3276,7 @@ class Stats {
 		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		} else {
-			$top10 = implode(';&nbsp; ', $top10);
+			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
@@ -4468,7 +4468,7 @@ class Stats {
 		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		} else {
-			$top10 = implode(';&nbsp; ', $top10);
+			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
@@ -5106,7 +5106,7 @@ class Stats {
 		if ($type == 'list') {
 			$top10 = implode('', $top10);
 		} else {
-			$top10 = implode(';&nbsp; ', $top10);
+			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
@@ -5269,7 +5269,7 @@ class Stats {
 		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		} else {
-			$top10 = implode(';&nbsp; ', $top10);
+			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
@@ -5582,7 +5582,7 @@ class Stats {
 				break;
 			}
 			if ($show_tot) {
-				$tot = '&nbsp;(' . I18N::number($total) . ')';
+				$tot = ' (' . I18N::number($total) . ')';
 			} else {
 				$tot = '';
 			}

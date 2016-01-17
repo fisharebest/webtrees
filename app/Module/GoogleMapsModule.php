@@ -3935,9 +3935,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo Filter::escapeHtml($place_name) ?>" size="25" class="address_input">
 					<div id="INDI_PLAC_pop" style="display: inline;">
 					<?php echo FunctionsPrint::printSpecialCharacterLink('new_pl_name') ?></div></td><td class="optionbox">
-					<label for="new_pl_name"><a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo I18N::translate('Search globally') ?></a></label>
-					&nbsp;&nbsp;|&nbsp;&nbsp;
-					<label for="new_pl_name"><a href="#" onclick="showLocation_level(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo I18N::translate('Search locally') ?></a></label>
+					<label for="new_pl_name"><a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false"><?php echo I18N::translate('Search globally') ?></a></label>
+					|
+					<label for="new_pl_name"><a href="#" onclick="showLocation_level(document.getElementById('new_pl_name').value); return false"><?php echo I18N::translate('Search locally') ?></a></label>
 				</td>
 			</tr>
 			<tr>
@@ -4019,11 +4019,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<td class="optionbox" colspan="2">
 					<div id="flagsDiv">
 						<?php if ($place_icon) { ?>
-			<img alt="<?php echo /* I18N: The emblem of a country or region */ I18N::translate('Flag') ?>" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon ?>">&nbsp;&nbsp;
-			<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;
-			<a href="#" onclick="remove_icon();return false;"><?php echo I18N::translate('Remove flag') ?></a>
+						<img alt="<?php echo /* I18N: The emblem of a country or region */ I18N::translate('Flag') ?>" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon ?>">
+						<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag') ?></a>
+						<a href="#" onclick="remove_icon();return false;"><?php echo I18N::translate('Remove flag') ?></a>
 						<?php } else { ?>
-			<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag') ?></a>
+						<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag') ?></a>
 						<?php } ?>
 					</div>
 					<p class="small text-muted">
