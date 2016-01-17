@@ -311,6 +311,8 @@ class SearchController extends PageController {
 
 		Log::addEditLog("Search And Replace old:" . $this->query . " new:" . $this->replace);
 
+		$query = preg_quote($this->query, '/');
+
 		$adv_name_tags   = preg_split("/[\s,;: ]+/", $tree->getPreference('ADVANCED_NAME_FACTS'));
 		$name_tags       = array_unique(array_merge(Config::standardNameFacts(), $adv_name_tags));
 		$name_tags[]     = '_MARNM';
@@ -319,18 +321,18 @@ class SearchController extends PageController {
 			$old_record = $record->getGedcom();
 			$new_record = $old_record;
 			if ($this->replaceAll) {
-				$new_record = preg_replace("~" . $this->query . "~i", $this->replace, $new_record);
+				$new_record = preg_replace("/" . $query . "/i", $this->replace, $new_record);
 			} else {
 				if ($this->replaceNames) {
 					foreach ($name_tags as $tag) {
-						$new_record = preg_replace("~(\d) " . $tag . " (.*)" . $this->query . "(.*)~i", "$1 " . $tag . " $2" . $this->replace . "$3", $new_record);
+						$new_record = preg_replace("/(\d) " . $tag . " (.*)" . $query . "(.*)/i", "$1 " . $tag . " $2" . $this->replace . "$3", $new_record);
 					}
 				}
 				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) {
-						$new_record = preg_replace('~(\d) PLAC (.*)([,\W\s])' . $this->query . '([,\W\s])~i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
+						$new_record = preg_replace('/(\d) PLAC (.*)([,\W\s])' . $query . '([,\W\s])/i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
 					} else {
-						$new_record = preg_replace("~(\d) PLAC (.*)" . $this->query . "(.*)~i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
+						$new_record = preg_replace("/(\d) PLAC (.*)" . $query . "(.*)/i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
 					}
 				}
 			}
@@ -353,13 +355,13 @@ class SearchController extends PageController {
 			$new_record = $old_record;
 
 			if ($this->replaceAll) {
-				$new_record = preg_replace("~" . $this->query . "~i", $this->replace, $new_record);
+				$new_record = preg_replace("/" . $query . "/i", $this->replace, $new_record);
 			} else {
 				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) {
-						$new_record = preg_replace('~(\d) PLAC (.*)([,\W\s])' . $this->query . '([,\W\s])~i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
+						$new_record = preg_replace('/(\d) PLAC (.*)([,\W\s])' . $query . '([,\W\s])/i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
 					} else {
-						$new_record = preg_replace("~(\d) PLAC (.*)" . $this->query . "(.*)~i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
+						$new_record = preg_replace("/(\d) PLAC (.*)" . $query . "(.*)/i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
 					}
 				}
 			}
@@ -382,17 +384,17 @@ class SearchController extends PageController {
 			$new_record = $old_record;
 
 			if ($this->replaceAll) {
-				$new_record = preg_replace("~" . $this->query . "~i", $this->replace, $new_record);
+				$new_record = preg_replace("/" . $query . "/i", $this->replace, $new_record);
 			} else {
 				if ($this->replaceNames) {
-					$new_record = preg_replace("~(\d) TITL (.*)" . $this->query . "(.*)~i", "$1 TITL $2" . $this->replace . "$3", $new_record);
-					$new_record = preg_replace("~(\d) ABBR (.*)" . $this->query . "(.*)~i", "$1 ABBR $2" . $this->replace . "$3", $new_record);
+					$new_record = preg_replace("/(\d) TITL (.*)" . $query . "(.*)/i", "$1 TITL $2" . $this->replace . "$3", $new_record);
+					$new_record = preg_replace("/(\d) ABBR (.*)" . $query . "(.*)/i", "$1 ABBR $2" . $this->replace . "$3", $new_record);
 				}
 				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) {
-						$new_record = preg_replace('~(\d) PLAC (.*)([,\W\s])' . $this->query . '([,\W\s])~i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
+						$new_record = preg_replace('/(\d) PLAC (.*)([,\W\s])' . $query . '([,\W\s])/i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
 					} else {
-						$new_record = preg_replace("~(\d) PLAC (.*)" . $this->query . "(.*)~i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
+						$new_record = preg_replace("/(\d) PLAC (.*)" . $query . "(.*)/i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
 					}
 				}
 			}
@@ -415,7 +417,7 @@ class SearchController extends PageController {
 			$new_record = $old_record;
 
 			if ($this->replaceAll) {
-				$new_record = preg_replace("~" . $this->query . "~i", $this->replace, $new_record);
+				$new_record = preg_replace("/" . $query . "/i", $this->replace, $new_record);
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if ($new_record != $old_record) {
