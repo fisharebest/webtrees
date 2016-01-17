@@ -96,7 +96,7 @@ class FunctionsRtl {
 		$workingText = str_replace(array('<span class="starredname"><br>', '<span<br>class="starredname">'), '<br><span class="starredname">', $workingText); // Reposition some incorrectly placed line breaks
 		$workingText = self::stripLrmRlm($workingText); // Get rid of any existing UTF8 control codes
 
-		//	$nothing  = '&zwnj;'; // Zero Width Non-Joiner  (not sure whether this is still needed to work around a TCPDF bug)
+		// $nothing  = '&zwnj;'; // Zero Width Non-Joiner  (not sure whether this is still needed to work around a TCPDF bug)
 		$nothing = '';
 
 		self::$startLTR = '<LTR>'; // This will become '<span dir="ltr">' at the end

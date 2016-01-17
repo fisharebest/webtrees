@@ -80,10 +80,10 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 				document.createStyleSheet("' . $this->css() . '"); // For Internet Explorer
 			} else {
 				var newSheet=document.createElement("link");
-    		newSheet.setAttribute("rel","stylesheet");
-    		newSheet.setAttribute("type","text/css");
-   			newSheet.setAttribute("href","' . $this->css() . '");
-		    document.getElementsByTagName("head")[0].appendChild(newSheet);
+				newSheet.setAttribute("rel","stylesheet");
+				newSheet.setAttribute("type","text/css");
+				newSheet.setAttribute("href","' . $this->css() . '");
+				document.getElementsByTagName("head")[0].appendChild(newSheet);
 			}
 			</script>';
 	}

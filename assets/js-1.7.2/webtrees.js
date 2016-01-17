@@ -1127,12 +1127,12 @@ function activate_colorbox(config) {
 
 		// Enable colorbox for audio using <audio></audio>, where supported
 		//jQuery('html.video a[type^=video].gallery').colorbox({
-		//	rel:         'nofollow' // Slideshows are just for images
+		//  rel:         'nofollow' // Slideshows are just for images
 		//});
 
 		// Enable colorbox for video using <video></video>, where supported
 		//jQuery('html.audio a[type^=audio].gallery').colorbox({
-		//	rel:         'nofollow', // Slideshows are just for images
+		//  rel:         'nofollow', // Slideshows are just for images
 		//});
 
 		// Allow all other media types remain as download links

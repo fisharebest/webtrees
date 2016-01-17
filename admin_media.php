@@ -371,7 +371,7 @@ function media_paths($media_folder) {
 		" FROM  `##media`" .
 		" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 		" WHERE setting_value = :media_folder" .
-		"	AND   m_filename NOT LIKE 'http://%'" .
+		" AND   m_filename NOT LIKE 'http://%'" .
 		" AND   m_filename NOT LIKE 'https://%'" .
 		" GROUP BY 1" .
 		" ORDER BY 1"
@@ -456,7 +456,7 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 		" AND   m_filename LIKE CONCAT(:media_path_2, '%')" .
 		" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', :filter_1, '%')" .
 		"  OR   m_titl LIKE CONCAT('%', :filter_2, '%'))" .
-		"	AND   m_filename NOT LIKE 'http://%'" .
+		" AND   m_filename NOT LIKE 'http://%'" .
 		" AND   m_filename NOT LIKE 'https://%'"
 	)->execute(array(
 		'media_path_1' => $media_path,

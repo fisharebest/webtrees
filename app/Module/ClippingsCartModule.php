@@ -356,7 +356,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 						</td>
 					<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes"></td></tr>
 
-					<?php if (Auth::isManager($WT_TREE)) {	?>
+					<?php if (Auth::isManager($WT_TREE)) { ?>
 						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'); ?></td>
 						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="none" checked> <?php echo I18N::translate('None'); ?><br>
@@ -694,17 +694,17 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 			$out .=
 				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . '</td>' .
 				'<td class="optionbox">' .
-				'	<input type="radio" name="privatize_export" value="none" checked> ' . I18N::translate('None') . '<br>' .
-				'	<input type="radio" name="privatize_export" value="gedadmin"> ' . I18N::translate('Manager') . '<br>' .
-				'	<input type="radio" name="privatize_export" value="user"> ' . I18N::translate('Member') . '<br>' .
-				'	<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
+				'<input type="radio" name="privatize_export" value="none" checked> ' . I18N::translate('None') . '<br>' .
+				'<input type="radio" name="privatize_export" value="gedadmin"> ' . I18N::translate('Manager') . '<br>' .
+				'<input type="radio" name="privatize_export" value="user"> ' . I18N::translate('Member') . '<br>' .
+				'<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
 				'</td></tr>';
 		} elseif (Auth::isMember($WT_TREE)) {
 			$out .=
 				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . '</td>' .
 				'<td class="list_value">' .
-				'	<input type="radio" name="privatize_export" value="user" checked> ' . I18N::translate('Member') . '<br>' .
-				'	<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
+				'<input type="radio" name="privatize_export" value="user" checked> ' . I18N::translate('Member') . '<br>' .
+				'<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
 				'</td></tr>';
 		}
 
