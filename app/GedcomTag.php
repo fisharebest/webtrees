@@ -1635,31 +1635,31 @@ class GedcomTag {
 			}
 		case '_MBON':
 			return
-				/* I18N: gedcom tag _MBON  */
+				/* I18N: gedcom tag _MBON */
 				I18N::translate('Marriage bond');
 		case '_MDCL':
 			return
-				/* I18N: gedcom tag _MDCL  */
+				/* I18N: gedcom tag _MDCL */
 				I18N::translate('Medical');
 		case '_MEDC':
 			return
-				/* I18N: gedcom tag _MEDC  */
+				/* I18N: gedcom tag _MEDC */
 				I18N::translate('Medical condition');
 		case '_MEND':
 			return
-				/* I18N: gedcom tag _MEND  */
+				/* I18N: gedcom tag _MEND */
 				I18N::translate('Marriage ending status');
 		case '_MILI':
 			return
-				/* I18N: gedcom tag _MILI  */
+				/* I18N: gedcom tag _MILI */
 				I18N::translate('Military');
 		case '_MILT':
 			return
-				/* I18N: gedcom tag _MILT  */
+				/* I18N: gedcom tag _MILT */
 				I18N::translate('Military service');
 		case '_MREL':
 			return
-				/* I18N: gedcom tag _MREL  */
+				/* I18N: gedcom tag _MREL */
 				I18N::translate('Relationship to mother');
 		case '_MSTAT':
 			return
@@ -1667,15 +1667,15 @@ class GedcomTag {
 				I18N::translate('Marriage beginning status');
 		case '_NAME':
 			return
-				/* I18N: gedcom tag _NAME  */
+				/* I18N: gedcom tag _NAME */
 				I18N::translate('Mailing name');
 		case '_NAMS':
 			return
-				/* I18N: gedcom tag _NAMS  */
+				/* I18N: gedcom tag _NAMS */
 				I18N::translate('Namesake');
 		case '_NLIV':
 			return
-				/* I18N: gedcom tag _NLIV  */
+				/* I18N: gedcom tag _NLIV */
 				I18N::translate('Not living');
 		case '_NMAR':
 			switch ($sex) {
@@ -1711,15 +1711,15 @@ class GedcomTag {
 			return I18N::translate('by');
 		case '_PRMN':
 			return
-				/* I18N: gedcom tag _PRMN  */
+				/* I18N: gedcom tag _PRMN */
 				I18N::translate('Permanent number');
 		case '_SCBK':
 			return
-				/* I18N: gedcom tag _SCBK  */
+				/* I18N: gedcom tag _SCBK */
 				I18N::translate('Scrapbook');
 		case '_SEPR':
 			return
-				/* I18N: gedcom tag _SEPR  */
+				/* I18N: gedcom tag _SEPR */
 				I18N::translate('Separated');
 		case '_SSHOW':
 			return
@@ -1727,43 +1727,43 @@ class GedcomTag {
 				I18N::translate('Slide show');
 		case '_STAT':
 			return
-				/* I18N: gedcom tag _STAT  */
+				/* I18N: gedcom tag _STAT */
 				I18N::translate('Marriage status');
 		case '_SUBQ':
 			return
-				/* I18N: gedcom tag _SUBQ  */
+				/* I18N: gedcom tag _SUBQ */
 				I18N::translate('Short version');
 		case '_TODO':
 			return
-				/* I18N: gedcom tag _TODO  */
+				/* I18N: gedcom tag _TODO */
 				I18N::translate('Research task');
 		case '_TYPE':
 			return
-				/* I18N: gedcom tag _TYPE  */
+				/* I18N: gedcom tag _TYPE */
 				I18N::translate('Media type');
 		case '_UID':
 			return
-				/* I18N: gedcom tag _UID   */
+				/* I18N: gedcom tag _UID */
 				I18N::translate('Globally unique identifier');
 		case '_URL':
 			return
-				/* I18N: gedcom tag _URL   */
+				/* I18N: gedcom tag _URL */
 				I18N::translate('URL');
 		case '_WEIG':
 			return
-				/* I18N: gedcom tag _WEIG  */
+				/* I18N: gedcom tag _WEIG */
 				I18N::translate('Weight');
 		case '_WITN':
 			return
-				/* I18N: gedcom tag _WITN  */
+				/* I18N: gedcom tag _WITN */
 				I18N::translate('Witness');
 		case '_WT_OBJE_SORT':
 			return
-				/* I18N: gedcom tag _WT_OBJE_SORT  */
+				/* I18N: gedcom tag _WT_OBJE_SORT */
 				I18N::translate('Re-order media');
 		case '_YART':
 			return
-				/* I18N: gedcom tag _YART  */
+				/* I18N: gedcom tag _YART */
 				I18N::translate('Yahrzeit');
 			// Brit milah applies only to males, no need for male/female translations
 		case '__BRTM_CHIL':
@@ -1809,7 +1809,7 @@ class GedcomTag {
 	public static function getLabelValue($tag, $value, GedcomRecord $record = null, $element = 'div') {
 		return
 			'<' . $element . ' class="fact_' . $tag . '">' .
-			/* I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation. */
+			/* I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation. */
 			I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', self::getLabel($tag, $record), $value) .
 			'</' . $element . '>';
 	}

@@ -77,7 +77,7 @@ class CensusOfDenmark1890Test extends \PHPUnit_Framework_TestCase {
 
 		$this->assertSame('Samtlige Personers fulde Navn.', $columns[0]->title());
 		$this->assertSame('Kjønnet. Mandkøn (M.) eller Kvindekøn (Kv.).', $columns[1]->title());
-		$this->assertSame('Alder.  Alderen anføres med det fyldte Aar, men for Børn, der ikke have fyldt 1 Aar, anføres „Under 1 Aar“ of Fødselsdagen.', $columns[2]->title());
+		$this->assertSame('Alder. Alderen anføres med det fyldte Aar, men for Børn, der ikke have fyldt 1 Aar, anføres „Under 1 Aar“ of Fødselsdagen.', $columns[2]->title());
 		$this->assertSame('Ægteskabelig Stillinge. Ugift (U.), Gift (G.), Enkemand eller Enke (E.), Separeret (S.), Fraskilt (F.).', $columns[3]->title());
 		$this->assertSame('Trossamfund („Folkekirken“ eller andetSamfund, saasom „det frilutheranske“, „det romersk katholske“, det „mosaiske“ o.s.v.).', $columns[4]->title());
 		$this->assertSame('Fødested, nemlig Sognets og Amtets eller Kjøbstadens (eller Handelpladsens) Navn, og for de i Bilandene Fødte samt for Udlændinge Landet, hvori de ere fødte.', $columns[5]->title());

@@ -427,7 +427,7 @@ class User {
 					"SELECT SQL_CACHE setting_name, setting_value FROM `##user_setting` WHERE user_id = ?"
 				)->execute(array($this->user_id))->fetchAssoc();
 			} else {
-				// Not logged in?  We have no preferences.
+				// Not logged in? We have no preferences.
 				$this->preferences = array();
 			}
 		}

@@ -341,7 +341,7 @@ abstract class AbstractTheme {
 
 	/**
 	 * Create a container for messages that are "flashed" to the session
-	 * on one request, and displayed on another.  If there are many messages,
+	 * on one request, and displayed on another. If there are many messages,
 	 * the container may need a max-height and scroll-bar.
 	 *
 	 * @param \stdClass[] $messages
@@ -528,7 +528,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	public function head(PageController $controller) {
-		// Record this now.  By the time we render the footer, $controller no longer exists.
+		// Record this now. By the time we render the footer, $controller no longer exists.
 		$this->page_views = $this->pageViews($controller);
 
 		return
@@ -982,7 +982,7 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * Initialise the theme.  We cannot pass these in a constructor, as the construction
+	 * Initialise the theme. We cannot pass these in a constructor, as the construction
 	 * happens in a theme file, and we need to be able to change it.
 	 *
 	 * @param Tree|null $tree The current tree (if there is one).
@@ -1360,10 +1360,10 @@ abstract class AbstractTheme {
 		// Do not show empty lists
 		$row = Database::prepare(
 			"SELECT SQL_CACHE" .
-			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file = ?                  ) AS sour," .
-			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file = ? AND o_type='REPO') AS repo," .
-			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file = ? AND o_type='NOTE') AS note," .
-			" EXISTS(SELECT 1 FROM `##media`   WHERE m_file = ?                  ) AS obje"
+			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file = ?) AS sour," .
+			" EXISTS(SELECT 1 FROM `##other` WHERE o_file = ? AND o_type='REPO') AS repo," .
+			" EXISTS(SELECT 1 FROM `##other` WHERE o_file = ? AND o_type='NOTE') AS note," .
+			" EXISTS(SELECT 1 FROM `##media` WHERE m_file = ?) AS obje"
 		)->execute(array(
 			$this->tree->getTreeId(),
 			$this->tree->getTreeId(),
@@ -1836,7 +1836,7 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * Create a pending changes link.  Some themes prefer an alert/banner to a menu.
+	 * Create a pending changes link. Some themes prefer an alert/banner to a menu.
 	 *
 	 * @return string
 	 */
@@ -1876,7 +1876,7 @@ abstract class AbstractTheme {
 				$this->menuSearch(),
 			), $this->menuModules()));
 		} else {
-			// No public trees?  No genealogy menu!
+			// No public trees? No genealogy menu!
 			return array();
 		}
 	}

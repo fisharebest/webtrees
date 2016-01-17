@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Date;
  * Definitions for the Roman calendar
  *
  * The 5.5.1 gedcom spec mentions this calendar, but gives no details of
- * how it is to be represented....  This class is just a place holder so that
+ * how it is to be represented.... This class is just a place holder so that
  * webtrees won’t compain if it receives one.
  */
 class RomanDate extends JulianDate {

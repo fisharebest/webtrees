@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Tree;
 class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMenuInterface, ModuleConfigInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module.  Abbreviation for “Frequently Asked Questions” */ I18N::translate('FAQ');
+		return /* I18N: Name of a module. Abbreviation for “Frequently Asked Questions” */ I18N::translate('FAQ');
 	}
 
 	/** {@inheritdoc} */
@@ -444,7 +444,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 		</ol>
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<p>
-			<?php echo I18N::translate('FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc.'); ?>
+			<?php echo I18N::translate('FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc.'); ?>
 			<?php echo I18N::translate('You may use HTML to format the answer and to add links to other websites.'); ?>
 		</p>
 		<form class="form form-inline">
@@ -509,7 +509,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 	}
 
 	/**
-	 * The user can re-order menus.  Until they do, they are shown in this order.
+	 * The user can re-order menus. Until they do, they are shown in this order.
 	 *
 	 * @return int
 	 */

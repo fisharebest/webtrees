@@ -75,7 +75,7 @@ class FunctionsDate {
 	 */
 	public static function formatTimestamp($time) {
 		$time_fmt = I18N::timeFormat();
-		// PHP::date() doesn't do I18N.  Do it ourselves....
+		// PHP::date() doesn't do I18N. Do it ourselves....
 		preg_match_all('/%[^%]/', $time_fmt, $matches);
 		foreach ($matches[0] as $match) {
 			switch ($match) {

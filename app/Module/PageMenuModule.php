@@ -34,7 +34,7 @@ class PageMenuModule extends AbstractModule implements ModuleMenuInterface {
 	}
 
 	/**
-	 * The user can re-order menus.  Until they do, they are shown in this order.
+	 * The user can re-order menus. Until they do, they are shown in this order.
 	 *
 	 * @return int
 	 */

@@ -110,7 +110,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 		if (!$this->palette) {
 			$this->palette = Session::get('subColor');
 		}
-		// We haven't selected one this session?  Use the site default
+		// We haven't selected one this session? Use the site default
 		if (!$this->palette) {
 			$this->palette = Site::getPreference('DEFAULT_COLOR_PALETTE');
 		}

@@ -244,7 +244,7 @@ class FunctionsPrintLists {
 											class="ui-state-default"
 											data-filter-column="23"
 											data-filter-value="R"
-											title="' . I18N::translate('Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database.') . '"
+											title="' . I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') . '"
 											type="button"
 										>
 											' . I18N::translate('Roots') . '
@@ -253,7 +253,7 @@ class FunctionsPrintLists {
 											class="ui-state-default"
 											data-filter-column="23"
 											data-filter-value="L"
-											title="' . I18N::translate('Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database.') . '"
+											title="' . I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') . '"
 											type="button"
 										>
 											' . I18N::translate('Leaves') . '
@@ -267,7 +267,7 @@ class FunctionsPrintLists {
 							<th>' . GedcomTag::getLabel('SURN') . '</th>
 							<th>GIVN</th>
 							<th>SURN</th>
-							<th>' . /* I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets. */
+							<th>' . /* I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets. */
 			I18N::translate('Sosa') . '</th>
 							<th>SOSA</th>
 							<th>' . GedcomTag::getLabel('BIRT') . '</th>
@@ -460,7 +460,7 @@ class FunctionsPrintLists {
 			$html .= '</td>';
 			//-- Filtering by death date
 			$html .= '<td>';
-			// Died in last 100 years?  Died?  Not dead?
+			// Died in last 100 years? Died? Not dead?
 			if (Date::compare($death_dates[0], $d100y) > 0) {
 				$html .= 'Y100';
 			} elseif ($death_dates[0]->minimumJulianDay() || $person->isDead()) {
@@ -661,7 +661,7 @@ class FunctionsPrintLists {
 											data-filter-column="22"
 											data-filter-value="R"
 											class="ui-state-default"
-											title="' . I18N::translate('Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database.') . '"
+											title="' . I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') . '"
 										>
 											' . I18N::translate('Roots') . '
 										</button>
@@ -670,7 +670,7 @@ class FunctionsPrintLists {
 											data-filter-column="22"
 											data-filter-value="L"
 											class="ui-state-default"
-											title="' . I18N::translate('Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database.') . '"
+											title="' . I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') . '"
 										>
 											' . I18N::translate('Leaves') . '
 										</button>
@@ -1019,7 +1019,7 @@ class FunctionsPrintLists {
 	public static function sourceTable($datalist) {
 		global $WT_TREE, $controller;
 
-		// Count the number of linked records.  These numbers include private records.
+		// Count the number of linked records. These numbers include private records.
 		// It is not good to bypass privacy, but many servers do not have the resources
 		// to process privacy for every record in the tree
 		$count_individuals = Database::prepare(
@@ -1292,7 +1292,7 @@ class FunctionsPrintLists {
 	public static function repositoryTable($repositories) {
 		global $WT_TREE, $controller;
 
-		// Count the number of linked records.  These numbers include private records.
+		// Count the number of linked records. These numbers include private records.
 		// It is not good to bypass privacy, but many servers do not have the resources
 		// to process privacy for every record in the tree
 		$count_sources = Database::prepare(
@@ -1574,7 +1574,7 @@ class FunctionsPrintLists {
 				if ($spfxsurn) {
 					$html .= '<a href="' . $url . '" dir="auto">' . Filter::escapeHtml($spfxsurn) . '</a><br>';
 				} else {
-					// No surname, but a value from "2 SURN"?  A common workaround for toponyms, etc.
+					// No surname, but a value from "2 SURN"? A common workaround for toponyms, etc.
 					$html .= '<a href="' . $url . '" dir="auto">' . Filter::escapeHtml($surn) . '</a><br>';
 				}
 			}
@@ -1937,7 +1937,7 @@ class FunctionsPrintLists {
 				});
 			');
 
-		// Did we have any output?  Did we skip anything?
+		// Did we have any output? Did we skip anything?
 		$output          = 0;
 		$filter          = 0;
 		$filtered_events = array();
@@ -2060,7 +2060,7 @@ class FunctionsPrintLists {
 	public static function eventsList($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_living = false, $sort_by = 'anniv') {
 		global $WT_TREE;
 
-		// Did we have any output?  Did we skip anything?
+		// Did we have any output? Did we skip anything?
 		$output          = 0;
 		$filter          = 0;
 		$filtered_events = array();

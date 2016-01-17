@@ -54,7 +54,7 @@ class JewishDate extends CalendarDate {
 	/**
 	 * Generate the %y format for a date.
 	 *
-	 * NOTE Short year is NOT a 2-digit year.  It is for calendars such as hebrew
+	 * NOTE Short year is NOT a 2-digit year. It is for calendars such as hebrew
 	 * which have a 3-digit form of 4-digit years.
 	 *
 	 * @return string
@@ -245,7 +245,7 @@ class JewishDate extends CalendarDate {
 	}
 
 	/**
-	 * Which months follows this one?  Calendars with leap-months should provide their own implementation.
+	 * Which months follows this one? Calendars with leap-months should provide their own implementation.
 	 *
 	 * @return int[]
 	 */

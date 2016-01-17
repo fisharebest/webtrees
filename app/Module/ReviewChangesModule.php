@@ -176,7 +176,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 	?>
 	<tr>
 		<td colspan="2">
-			<?php echo I18N::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist.'); ?>
+			<?php echo I18N::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist.'); ?>
 		</td>
 	</tr>
 

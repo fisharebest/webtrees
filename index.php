@@ -49,7 +49,7 @@ if ($ctype === 'user') {
 
 $active_blocks = Module::getActiveBlocks($WT_TREE);
 
-// The latest version is shown on the administration page.  This updates it every day.
+// The latest version is shown on the administration page. This updates it every day.
 Functions::fetchLatestVersion();
 
 // We generate individual blocks using AJAX

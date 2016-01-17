@@ -99,7 +99,7 @@ class CensusOfUnitedStates1890Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('Relation to head of family', $columns[3]->title());
 		$this->assertSame('Whether white, black, mulatto, quadroon, octoroon, Chinese, Japanese, or Indian', $columns[4]->title());
 		$this->assertSame('Sex', $columns[5]->title());
-		$this->assertSame('Age at nearest birthday.  If under one year, give age in months', $columns[6]->title());
+		$this->assertSame('Age at nearest birthday. If under one year, give age in months', $columns[6]->title());
 		$this->assertSame('Whether single, married, widowed, or divorced', $columns[7]->title());
 		$this->assertSame('Whether married duirng the census year (June 1, 1889, to May 31, 1890)', $columns[8]->title());
 		$this->assertSame('Mother of how many children, and number of these children living', $columns[9]->title());
@@ -113,7 +113,7 @@ class CensusOfUnitedStates1890Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('Months unemployed during the census year (June 1, 1889, to May 31, 1890)', $columns[17]->title());
 		$this->assertSame('Able to read', $columns[18]->title());
 		$this->assertSame('Able to write', $columns[19]->title());
-		$this->assertSame('Able to speak English.  If not the language or dialect spoken', $columns[20]->title());
+		$this->assertSame('Able to speak English. If not the language or dialect spoken', $columns[20]->title());
 		$this->assertSame('Whether suffering from acute or chronic disease, with name of disease and length of time afflicted', $columns[21]->title());
 		$this->assertSame('Whether defective in mind, sight, hearing, or speech, or whether crippled, maimed, or deformed, with name of defect', $columns[22]->title());
 		$this->assertSame('Whether a prisoner, convict, homeless child, or pauper', $columns[23]->title());

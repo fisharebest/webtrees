@@ -283,5 +283,5 @@ if ($xrefs) {
 	echo '<input type="hidden" name="action" value="renumber">';
 	echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
 	echo '</form>';
-	echo '<p>', I18N::translate('Caution!  This may take a long time.  Be patient.'), '</p>';
+	echo '<p>', I18N::translate('Caution! This may take a long time. Be patient.'), '</p>';
 }

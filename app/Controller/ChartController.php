@@ -48,7 +48,7 @@ class ChartController extends PageController {
 		$rootid     = Filter::get('rootid', WT_REGEX_XREF);
 		$this->root = Individual::getInstance($rootid, $WT_TREE);
 		if (!$this->root) {
-			// Missing root individual?  Show the chart for someone.
+			// Missing root individual? Show the chart for someone.
 			$this->root = $this->getSignificantIndividual();
 		}
 
@@ -89,7 +89,7 @@ class ChartController extends PageController {
 	}
 
 	/**
-	 * Find the direct-line ancestors of an individual.  Array indexes are SOSA numbers.
+	 * Find the direct-line ancestors of an individual. Array indexes are SOSA numbers.
 	 *
 	 * @param int $generations
 	 *

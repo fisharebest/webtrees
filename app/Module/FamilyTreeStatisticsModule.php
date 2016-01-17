@@ -177,14 +177,14 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		}
 
 		if ($stat_most_chil && !$block) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Family with the most children') . '</div><div class="facts_value stats_value  stat-cell">' . $stats->largestFamilySize() . '</div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Family with the most children') . '</div><div class="facts_value stats_value stat-cell">' . $stats->largestFamilySize() . '</div>';
 			if (!$block) {
 				$content .= '<div class="facts_value stat-cell left">' . $stats->largestFamily() . '</div>';
 			}
 			$content .= '</div>';
 		}
 		if ($stat_avg_chil) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Average number of children per family') . '</div><div class="facts_value stats_value  stat-cell">' . $stats->averageChildren() . '</div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Average number of children per family') . '</div><div class="facts_value stats_value stat-cell">' . $stats->averageChildren() . '</div>';
 			if (!$block) {
 				$content .= '<div class="facts_value stat-cell left"></div>';
 			}

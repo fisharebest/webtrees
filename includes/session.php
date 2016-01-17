@@ -100,7 +100,7 @@ define('WT_AUTOCOMPLETE_JS_URL', WT_STATIC_URL . 'assets/js-1.7.2/autocomplete.j
 define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'assets/js-1.7.2/webtrees.js');
 define('WT_FONT_AWESOME_RTL_CSS_URL', WT_STATIC_URL . 'assets/js-1.7.2/font-awesome-rtl.css');
 
-// Location of our modules and themes.  These are used as URLs and folder paths.
+// Location of our modules and themes. These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
 define('WT_THEMES_DIR', 'themes/');
 
@@ -160,7 +160,7 @@ if (WT_DEBUG) {
 
 require WT_ROOT . 'vendor/autoload.php';
 
-// PHP requires a time zone to be set.  We'll set a better one later on.
+// PHP requires a time zone to be set. We'll set a better one later on.
 date_default_timezone_set('UTC');
 
 // Calculate the base URL, so we can generate absolute URLs.
@@ -407,7 +407,7 @@ foreach (array(Filter::post('ged'), Filter::get('ged'), Session::get('GEDCOM'), 
 		break;
 	}
 }
-// No chosen tree?  Use any one.
+// No chosen tree? Use any one.
 if (!$WT_TREE) {
 	foreach (Tree::getAll() as $WT_TREE) {
 		break;
@@ -421,7 +421,7 @@ Session::put('locale', WT_LOCALE);
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
 define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
 
-// Users get their own time-zone.  Visitors get the site time-zone.
+// Users get their own time-zone. Visitors get the site time-zone.
 if (Auth::check()) {
 	date_default_timezone_set(Auth::user()->getPreference('TIMEZONE', 'UTC'));
 } else {

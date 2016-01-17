@@ -50,7 +50,7 @@ class Migration21 implements MigrationInterface {
 		);
 
 		// Previous versions of webtrees included the MEDIA_DIRECTORY setting in the
-		// FILE tag of the OBJE records.  Remove it…
+		// FILE tag of the OBJE records. Remove it…
 		Database::exec(
 			"UPDATE `##media` m" .
 			" JOIN `##gedcom_setting` gs ON (m.m_file = gs.gedcom_id AND gs.setting_name = 'MEDIA_DIRECTORY')" .

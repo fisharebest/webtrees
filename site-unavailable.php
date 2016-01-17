@@ -78,7 +78,7 @@ if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && 
 		<h1><?php echo I18N::translate('This website is temporarily unavailable'); ?></h1>
 		<div class="content">
 			<p>
-				<?php echo I18N::translate('Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href="index.php">try again</a> in a few minutes or contact the website administrator.'); ?>
+				<?php echo I18N::translate('Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href="index.php">try again</a> in a few minutes or contact the website administrator.'); ?>
 			</p>
 			<?php echo $messages; ?>
 			<?php echo I18N::translate('If you are the website administrator, you should check that:'); ?>

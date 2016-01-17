@@ -29,7 +29,7 @@ class Migration30 implements MigrationInterface {
 	public function upgrade() {
 		$WEBTREES_EMAIL = 'webtrees-noreply@' . preg_replace('/^www\./i', '', Filter::server('SERVER_NAME'));
 
-		// Default settings for new trees.  No defaults for:
+		// Default settings for new trees. No defaults for:
 		// imported, title, CONTACT_USER_ID, WEBMASTER_USER_ID
 		// The following settings have defaults, but may need overwriting:
 		// LANGUAGE, SURNAME_TRADITION

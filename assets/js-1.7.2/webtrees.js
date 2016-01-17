@@ -532,7 +532,7 @@ function valid_date(datefield) {
 	datestr = datestr.replace(/(\d)([A-Z])/, "$1 $2");
 	datestr = datestr.replace(/([A-Z])(\d)/, "$1 $2");
 
-	// Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900".  See [ 1509083 ]
+	// Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900". See [ 1509083 ]
 	if (datestr.match(/^Q ([1-4]) (\d\d\d\d)$/)) {
 		datestr = "BET " + months[RegExp.$1 * 3 - 3] + " " + RegExp.$2 + " AND " + months[RegExp.$1 * 3 - 1] + " " + RegExp.$2;
 	}
@@ -551,7 +551,7 @@ function valid_date(datefield) {
 		datestr = "@#DFRENCH R@" + RegExp.$2 + french_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
 	}
 
-	// e.g. 17.11.1860, 03/04/2005 or 1999-12-31.  Use locale settings where DMY order is ambiguous.
+	// e.g. 17.11.1860, 03/04/2005 or 1999-12-31. Use locale settings where DMY order is ambiguous.
 	var qsearch = /^([^\d]*)(\d+)[^\d](\d+)[^\d](\d+)$/i;
 	if (qsearch.exec(datestr)) {
 		var f0 = RegExp.$1;

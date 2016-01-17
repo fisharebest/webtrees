@@ -94,7 +94,7 @@ $controller
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <p>
-	<?php echo I18N::translate('This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”.'); ?>
+	<?php echo I18N::translate('This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”.'); ?>
 </p>
 
 <form method="post">

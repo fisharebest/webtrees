@@ -52,7 +52,7 @@ class File {
 			// The first part of the response include the HTTP headers
 			$response = fread($fp, 65536);
 
-			// The file has moved?  Follow it.
+			// The file has moved? Follow it.
 			if (preg_match('/^HTTP\/1.[01] 30[123].+\nLocation: ([^\r\n]+)/s', $response, $match)) {
 				fclose($fp);
 

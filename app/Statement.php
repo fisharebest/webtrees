@@ -52,7 +52,7 @@ class Statement {
 		}
 
 		// Parameters may be either named (e.g. :foo) or positional (e.g. ?).
-		// Named parameters may take any type.  Positional parameters are always strings.
+		// Named parameters may take any type. Positional parameters are always strings.
 		// Queries should use one format or the other.
 		foreach ($bind_variables as $key => $bind_variable) {
 			if (is_numeric($key)) {
@@ -101,7 +101,7 @@ class Statement {
 	/**
 	 * Fetch the next row from the cursor.
 	 *
-	 * Execute the query, if necessary.  Typically when there are no parameters.
+	 * Execute the query, if necessary. Typically when there are no parameters.
 	 *
 	 * @param int $fetch_style
 	 *
@@ -118,7 +118,7 @@ class Statement {
 	/**
 	 * Fetch all rows from the cursor, and close it.
 	 *
-	 * Execute the query, if necessary.  Typically when there are no parameters.
+	 * Execute the query, if necessary. Typically when there are no parameters.
 	 *
 	 * @param int $fetch_style
 	 *
@@ -136,9 +136,9 @@ class Statement {
 	}
 
 	/**
-	 * Fetch one row, and close the cursor.  e.g. SELECT * FROM foo WHERE pk=bar
+	 * Fetch one row, and close the cursor. e.g. SELECT * FROM foo WHERE pk=bar
 	 *
-	 * Execute the query, if necessary.  Typically when there are no parameters.
+	 * Execute the query, if necessary. Typically when there are no parameters.
 	 *
 	 * @param int $fetch_style
 	 *
@@ -156,9 +156,9 @@ class Statement {
 	}
 
 	/**
-	 * Fetch one value and close the cursor.  e.g. SELECT MAX(foo) FROM bar
+	 * Fetch one value and close the cursor. e.g. SELECT MAX(foo) FROM bar
 	 *
-	 * Execute the query, if necessary.  Typically when there are no parameters.
+	 * Execute the query, if necessary. Typically when there are no parameters.
 	 *
 	 * @return string|null
 	 */
@@ -176,7 +176,7 @@ class Statement {
 	/**
 	 * Fetch two columns, and return an associative array of col1=>col2
 	 *
-	 * Execute the query, if necessary.  Typically when there are no parameters.
+	 * Execute the query, if necessary. Typically when there are no parameters.
 	 *
 	 * @return string[]
 	 */
@@ -197,7 +197,7 @@ class Statement {
 	/**
 	 * Fetch all the first column, as an array.
 	 *
-	 * Execute the query, if necessary.  Typically when there are no parameters.
+	 * Execute the query, if necessary. Typically when there are no parameters.
 	 *
 	 * @return string[]
 	 */

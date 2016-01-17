@@ -35,7 +35,7 @@ class GedcomCodeTemp {
 	/**
 	 * A list of all temple codes, from the GEDCOM 5.5.1 specification
 	 *
-	 * Note that this list is out-of-date.  We could add recently built
+	 * Note that this list is out-of-date. We could add recently built
 	 * temples, but what codes would we use?
 	 *
 	 * @link http://en.wikipedia.org/wiki/List_of_temples_of_The_Church_of_Jesus_Christ_of_Latter-day_Saints

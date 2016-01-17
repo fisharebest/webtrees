@@ -136,7 +136,7 @@ class Auth {
 	}
 
 	/**
-	 * Is the current visitor a search engine?  The global is set in session.php
+	 * Is the current visitor a search engine? The global is set in session.php
 	 *
 	 * @return bool
 	 */

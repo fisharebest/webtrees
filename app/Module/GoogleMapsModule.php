@@ -70,7 +70,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps */ I18N::translate('Google Maps™');
+		return /* I18N: The name of a module. Google Maps™ is a trademark. Do not translate it? http://en.wikipedia.org/wiki/Google_maps */ I18N::translate('Google Maps™');
 	}
 
 	/** {@inheritdoc} */
@@ -367,7 +367,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							</div>
 						</div>
 					</div>
-					<p class="small text-muted"><?php echo I18N::translate('Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas.') ?></p>
+					<p class="small text-muted"><?php echo I18N::translate('Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas.') ?></p>
 				</div>
 			</fieldset>
 
@@ -389,7 +389,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						</div>
 						<?php endforeach ?>
 					</div>
-					<p class="small text-muted"><?php echo I18N::translate('This specifies the precision of the different levels when entering new geographic locations.  For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits.') ?></p>
+					<p class="small text-muted"><?php echo I18N::translate('This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits.') ?></p>
 				</div>
 			</fieldset>
 
@@ -433,7 +433,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							<?php endfor ?>
 						</div>
 					</div>
-					<p class="small text-muted"><?php echo I18N::translate('Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”.') ?></p>
+					<p class="small text-muted"><?php echo I18N::translate('Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”.') ?></p>
 				</div>
 			</fieldset>
 
@@ -648,7 +648,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		<h4><?php echo I18N::translate('Change flag') ?></h4>
 
 		<p class="small text-muted">
-			<?php echo I18N::translate('Using the pull down menu it is possible to select a country, of which a flag can be selected.  If no flags are shown, then there are no flags defined for this country.') ?>
+			<?php echo I18N::translate('Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country.') ?>
 		</p>
 
 		<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&amp;mod_action=flags&amp;countrySelected=<?php echo $countrySelected ?>&amp;stateSelected=<?php echo $stateSelected ?>">
@@ -3977,7 +3977,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<input type="radio" id="new_prec_5" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision >= $this->getSetting('GM_PRECISION_5')) echo 'checked' ?> value="<?php echo $this->getSetting('GM_PRECISION_5') ?>">
 					<label for="new_prec_5"><?php echo I18N::translate('Max') ?></label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('Here you can enter the precision.  Based on this setting the number of digits that will be used in the latitude and longitude is determined.') ?>
+						<?php echo I18N::translate('Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined.') ?>
 					</p>
 				</td>
 			</tr>
@@ -4008,7 +4008,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor ?>" size="20" onchange="updateMap();">
 					<p class="small text-muted">
-						<?php echo I18N::translate('Here the zoom level can be entered.  This value will be used as the minimal value when displaying this geographic location on a map.') ?>
+						<?php echo I18N::translate('Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map.') ?>
 					</p>
 				</td>
 			</tr>
@@ -4027,7 +4027,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<?php } ?>
 					</div>
 					<p class="small text-muted">
-						<?php echo I18N::translate('Here an icon can be set or removed.  Using this link a flag can be selected.  When this geographic location is shown, this flag will be displayed.') ?>
+						<?php echo I18N::translate('Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed.') ?>
 					</p>
 				</td>
 			</tr>
@@ -4574,7 +4574,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</label>
 			</div>
 			<p class="small text-muted">
-				<?php echo I18N::translate('By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used.') ?>
+				<?php echo I18N::translate('By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used.') ?>
 				<?php echo I18N::translate('If you have a large number of inactive places, it can be slow to generate the list.') ?>
 			</p>
 		</form>

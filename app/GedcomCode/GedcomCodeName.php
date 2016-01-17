@@ -57,13 +57,13 @@ class GedcomCodeName {
 		case 'aka':
 			switch ($sex) {
 			case 'M':
-				/* I18N: The name by which an individual is also known.  e.g. a professional name or a stage name */
+				/* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
 				return I18N::translateContext('MALE', 'also known as');
 			case 'F':
-				/* I18N: The name by which an individual is also known.  e.g. a professional name or a stage name */
+				/* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
 				return I18N::translateContext('FEMALE', 'also known as');
 			default:
-				/* I18N: The name by which an individual is also known.  e.g. a professional name or a stage name */
+				/* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
 				return I18N::translate('also known as');
 			}
 		case 'birth':

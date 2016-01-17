@@ -739,7 +739,7 @@ class FunctionsEdit {
 					echo ' onblur="valid_lati_long(this, \'E\', \'W\');" onmouseout="valid_lati_long(this, \'E\', \'W\');"';
 					break;
 				case 'NOTE':
-					// Shared notes.  Inline notes are handled elsewhere.
+					// Shared notes. Inline notes are handled elsewhere.
 					echo ' data-autocomplete-type="NOTE"';
 					break;
 				case 'OBJE':
@@ -1448,10 +1448,10 @@ class FunctionsEdit {
 	 * fact that is being edited.
 	 * If the $text[] array is empty for the given line, then it means that the
 	 * user removed that line during editing or that the line is supposed to be
-	 * empty (1 DEAT, 1 BIRT) for example.  To know if the line should be removed
+	 * empty (1 DEAT, 1 BIRT) for example. To know if the line should be removed
 	 * there is a section of code that looks ahead to the next lines to see if there
-	 * are sub lines.  For example we don't want to remove the 1 DEAT line if it has
-	 * a 2 PLAC or 2 DATE line following it.  If there are no sub lines, then the line
+	 * are sub lines. For example we don't want to remove the 1 DEAT line if it has
+	 * a 2 PLAC or 2 DATE line following it. If there are no sub lines, then the line
 	 * can be safely removed.
 	 *
 	 * @param string $newged the new gedcom record to add the lines to
@@ -1606,7 +1606,7 @@ class FunctionsEdit {
 		$add_date    = true;
 		// List of tags we would expect at the next level
 		// NB add_missing_subtags() already takes care of the simple cases
-		// where a level 1 tag is missing a level 2 tag.  Here we only need to
+		// where a level 1 tag is missing a level 2 tag. Here we only need to
 		// handle the more complicated cases.
 		$expected_subtags = array(
 			'SOUR' => array('PAGE', 'DATA'),

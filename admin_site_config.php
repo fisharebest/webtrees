@@ -176,10 +176,10 @@ $controller->pageHeader();
 		<div class="col-sm-9">
 			<input type="text" class="form-control" dir="ltr" id="INDEX_DIRECTORY" name="INDEX_DIRECTORY" value="<?php echo Filter::escapeHtml(Site::getPreference('INDEX_DIRECTORY')) ?>" maxlength="255" placeholder="data/" required>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Data folder" site configuration setting */ I18N::translate('This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet.') ?>
+				<?php echo /* I18N: Help text for the "Data folder" site configuration setting */ I18N::translate('This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet.') ?>
 			</p>
 			<p class="small text-muted">
-				<?php echo /* I18N: “Apache” is a software program. */ I18N::translate('To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents.') ?>
+				<?php echo /* I18N: “Apache” is a software program. */ I18N::translate('To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents.') ?>
 			</p>
 			<p class="small text-muted">
 				<?php echo I18N::translate('If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder.') ?>
@@ -245,10 +245,10 @@ $controller->pageHeader();
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::selectEditControl('THEME_DIR', Theme::themeNames(), null, Site::getPreference('THEME_DIR'), 'class="form-control"') ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Default theme" site configuration setting */ I18N::translate('You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc.') ?>
+				<?php echo /* I18N: Help text for the "Default theme" site configuration setting */ I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
 			</p>
 			<p class="small text-muted">
-				<?php echo I18N::translate('Themes can be selected at three levels: user, family tree, and website.  User settings take priority over family tree settings, which in turn take priority over the website setting.  Selecting “default theme” at one level will use the theme at the next level.') ?>
+				<?php echo I18N::translate('Themes can be selected at three levels: user, family tree, and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting “default theme” at one level will use the theme at the next level.') ?>
 			</p>
 		</div>
 	</div>
@@ -287,7 +287,7 @@ $controller->pageHeader();
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="SESSION_TIME" name="SESSION_TIME" value="<?php echo Filter::escapeHtml(Site::getPreference('SESSION_TIME')) ?>" pattern="[0-9]*" placeholder="7200" maxlength="255">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Session timeout” site configuration setting */ I18N::translate('The time in seconds that a webtrees session remains active before requiring a login.  The default is 7200, which is 2 hours.') ?>
+				<?php echo /* I18N: Help text for the “Session timeout” site configuration setting */ I18N::translate('The time in seconds that a webtrees session remains active before requiring a login. The default is 7200, which is 2 hours.') ?>
 				<?php echo I18N::translate('If you leave this setting empty, the default value will be used.') ?>
 			</p>
 		</div>
@@ -301,7 +301,7 @@ $controller->pageHeader();
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::selectEditControl('SERVER_URL', array(WT_BASE_URL => WT_BASE_URL), '', Site::getPreference('SERVER_URL'), 'class="form-control"') ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Website URL" site configuration setting */ I18N::translate('If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.') ?>
+				<?php echo /* I18N: Help text for the "Website URL" site configuration setting */ I18N::translate('If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one.') ?>
 				<?php echo I18N::translate('If you leave this setting empty, the default value will be used.') ?>
 			</p>
 		</div>
@@ -318,7 +318,7 @@ $controller->pageHeader();
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::selectEditControl('SMTP_ACTIVE', $SMTP_ACTIVE_OPTIONS, null, Site::getPreference('SMTP_ACTIVE'), 'class="form-control"') ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Messages” site configuration setting */ I18N::translate('webtrees needs to send emails, such as password reminders and website notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.') ?>
+				<?php echo /* I18N: Help text for the “Messages” site configuration setting */ I18N::translate('webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.') ?>
 			</p>
 		</div>
 	</div>
@@ -346,7 +346,7 @@ $controller->pageHeader();
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="SMTP_HOST" name="SMTP_HOST" value="<?php echo Filter::escapeHtml(Site::getPreference('SMTP_HOST')) ?>" placeholder="smtp.example.com" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Server name” site configuration setting */ I18N::translate('This is the name of the SMTP server.  “localhost” means that the mail service is running on the same computer as your web server.') ?>
+				<?php echo /* I18N: Help text for the “Server name” site configuration setting */ I18N::translate('This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server.') ?>
 			</p>
 		</div>
 	</div>
@@ -448,7 +448,7 @@ $controller->pageHeader();
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="LOGIN_URL" name="LOGIN_URL" value="<?php echo Filter::escapeHtml(Site::getPreference('LOGIN_URL')) ?>" maxlength="255">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Login URL" site configuration setting */ I18N::translate('You only need to enter a Login URL if you want to redirect to a different website or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php .') ?>
+				<?php echo /* I18N: Help text for the "Login URL" site configuration setting */ I18N::translate('You only need to enter a Login URL if you want to redirect to a different website or location when your users login. This is very useful if you need to switch from http to https when your users login. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php .') ?>
 			</p>
 		</div>
 	</div>

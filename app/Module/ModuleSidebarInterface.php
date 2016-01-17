@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Module;
  */
 interface ModuleSidebarInterface {
 	/**
-	 * The user can change the order of sidebars.  Until they do this, they are shown in this order.
+	 * The user can change the order of sidebars. Until they do this, they are shown in this order.
 	 *
 	 * @return int
 	 */

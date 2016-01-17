@@ -268,7 +268,7 @@ if ($action === 'submit') {
 			if (Auth::isEditor($WT_TREE)) {
 				echo MediaController::getMediaListMenu($mediaobject);
 			}
-			// If sorting by title, highlight the title.  If sorting by filename, highlight the filename
+			// If sorting by title, highlight the title. If sorting by filename, highlight the filename
 			if ($sortby === 'title') {
 				echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
 				echo $mediaobject->getFullName();

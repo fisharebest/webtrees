@@ -478,7 +478,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 	}
 
 	/**
-	 * The user can re-order menus.  Until they do, they are shown in this order.
+	 * The user can re-order menus. Until they do, they are shown in this order.
 	 *
 	 * @return int
 	 */

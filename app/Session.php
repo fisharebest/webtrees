@@ -108,7 +108,7 @@ class Session {
 	}
 
 	/**
-	 * Set an explicit session ID.  Typically used for search robots.
+	 * Set an explicit session ID. Typically used for search robots.
 	 *
 	 * @param string $id
 	 */

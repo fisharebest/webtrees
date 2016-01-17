@@ -521,13 +521,13 @@ if (
 	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2016-07-10' ||
 	version_compare(PHP_VERSION, '7.0', '<') && date('Y-m-d') >= '2017-08-28'
 ) {
-	$server_warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible.', PHP_VERSION);
+	$server_warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION);
 } elseif (
 	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2014-09-14' ||
 	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2015-07-10' ||
 	version_compare(PHP_VERSION, '7.0', '<') && date('Y-m-d') >= '2016-08-28'
 ) {
-	$server_warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version.', PHP_VERSION);
+	$server_warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version.', PHP_VERSION);
 } else
 
 ?>
@@ -585,7 +585,7 @@ if (
 						<?php echo /* I18N: %s is a version number */ I18N::translate('Upgrade to webtrees %s.', Filter::escapeHtml($latest_version)); ?>
 					</a>
 					<?php else: ?>
-						<?php echo I18N::translate('This is the latest version of webtrees.  No upgrade is available.'); ?>
+						<?php echo I18N::translate('This is the latest version of webtrees. No upgrade is available.'); ?>
 					<?php endif; ?>
 				</p>
 				<?php endif; ?>
@@ -849,7 +849,7 @@ if (
 		<div id="old-files-panel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="old-files-heading">
 			<div class="panel-body">
 				<p>
-					<?php echo I18N::translate('Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them.'); ?>
+					<?php echo I18N::translate('Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them.'); ?>
 				</p>
 				<ul class="list-unstyled">
 					<?php foreach ($files_to_delete as $file_to_delete): ?>

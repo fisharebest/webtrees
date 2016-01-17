@@ -250,7 +250,7 @@ class QueryName {
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
 		// Fetch all the letters in our alphabet, whether or not there
-		// are any names beginning with that letter.  It looks better to
+		// are any names beginning with that letter. It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
 			$count = 1;
@@ -339,7 +339,7 @@ class QueryName {
 		}
 
 		// Fetch all the letters in our alphabet, whether or not there
-		// are any names beginning with that letter.  It looks better to
+		// are any names beginning with that letter. It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
 			$count           = Database::prepare($sql . " AND " . self::getInitialSql('n_givn', $letter))->fetchOne();

@@ -189,7 +189,7 @@ interface ThemeInterface {
 	public function individualBoxSmallEmpty();
 
 	/**
-	 * Initialise the theme.  We cannot pass these in a constructor, as the construction
+	 * Initialise the theme. We cannot pass these in a constructor, as the construction
 	 * happens in a theme file, and we need to be able to change it.
 	 *
 	 * @param Tree|null $tree The current tree (if there is one).

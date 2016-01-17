@@ -89,7 +89,7 @@ class GedcomCodePedi {
 			// This is an arabic word which does not exist in other languages.
 			// So, it will not have any inflected forms.
 			return
-				/* I18N: This is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing. */
+				/* I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
 				I18N::translate('Rada');
 		default:
 			return $type;
@@ -135,7 +135,7 @@ class GedcomCodePedi {
 				I18N::translate('Family with sealing parents');
 		case 'rada':
 			return
-				/* I18N: “rada” is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing. */
+				/* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
 				I18N::translate('Family with rada parents');
 		default:
 			return I18N::translate('Family with parents') . ' - ' . $pedi;

@@ -151,8 +151,8 @@ class Soundex {
 	/**
 	 * The DM sound coding table is organized this way:
 	 * key: a variable-length string that corresponds to the UTF-8 character sequence
-	 * represented by the table entry.  Currently, that string can be up to 7
-	 * bytes long.  This maximum length is defined by the value of global variable
+	 * represented by the table entry. Currently, that string can be up to 7
+	 * bytes long. This maximum length is defined by the value of global variable
 	 * $maxchar.
 	 *
 	 * value: an array as follows:

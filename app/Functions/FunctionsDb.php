@@ -263,7 +263,7 @@ class FunctionsDb {
 				throw new \DomainException('soundex: ' . $soundex);
 		}
 
-		// Nothing to search for?  Return nothing.
+		// Nothing to search for? Return nothing.
 		if (!$givn_sdx && !$surn_sdx && !$plac_sdx) {
 			return array();
 		}

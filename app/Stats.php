@@ -969,7 +969,7 @@ class Stats {
 	 * Count the number of living individuals.
 	 *
 	 * The totalLiving/totalDeceased queries assume that every dead person will
-	 * have a DEAT record.  It will not include individuals who were born more
+	 * have a DEAT record. It will not include individuals who were born more
 	 * than MAX_ALIVE_AGE years ago, and who have no DEAT record.
 	 * A good reason to run the “Add missing DEAT records” batch-update!
 	 *
@@ -6657,8 +6657,8 @@ class Stats {
 
 	/**
 	 * ISO3166 3 letter codes, with their 2 letter equivalent.
-	 * NOTE: this is not 1:1.  ENG/SCO/WAL/NIR => GB
-	 * NOTE: this also includes champman codes and others.  Should it?
+	 * NOTE: this is not 1:1. ENG/SCO/WAL/NIR => GB
+	 * NOTE: this also includes champman codes and others. Should it?
 	 *
 	 * @return string[]
 	 */
@@ -6995,7 +6995,7 @@ class Stats {
 	 */
 	private function centuryName($century) {
 		if ($century < 0) {
-			return str_replace(-$century, self::centuryName(-$century), /* I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */
+			return str_replace(-$century, self::centuryName(-$century), /* I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era */
 				I18N::translate('%s BCE', I18N::number(-$century)));
 		}
 		// The current chart engine (Google charts) can't handle <sup></sup> markup

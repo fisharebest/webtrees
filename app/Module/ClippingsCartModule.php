@@ -296,7 +296,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 
 			if (!$cart[$WT_TREE->getTreeId()]) {
 				if ($clip_ctrl->action != 'add') {
-					echo I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>');
+					echo I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>');
 					?>
 					<form method="get" name="addin" action="module.php">
 					<input type="hidden" name="mod" value="clippings">
@@ -346,7 +346,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 					<tr><td colspan="2" class="topbottombar"><h2><?php echo I18N::translate('Download'); ?></h2></td></tr>
 					<tr>
 						<td class="descriptionbox width50 wrap">
-							<?php echo I18N::translate('To reduce the size of the download, you can compress the data into a .ZIP file.  You will need to uncompress the .ZIP file before you can use it.'); ?>
+							<?php echo I18N::translate('To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it.'); ?>
 						</td>
 						<td class="optionbox wrap">
 							<input type="checkbox" name="Zip" value="yes">
@@ -472,7 +472,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	}
 
 	/**
-	 * The user can re-order menus.  Until they do, they are shown in this order.
+	 * The user can re-order menus. Until they do, they are shown in this order.
 	 *
 	 * @return int
 	 */
