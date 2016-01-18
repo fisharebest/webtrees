@@ -5691,7 +5691,7 @@ msgstr "Texto exato"
 #: famlist.php:171 indilist.php:172
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Exceto pessoas com \"%s\" como nome de casadas"
+msgstr "Exceto pessoas com “%s” como nome de casadas"
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
@@ -7360,7 +7360,7 @@ msgstr "Incluir locais totalmente correspondentes"
 #: famlist.php:173 indilist.php:174
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Inclusive pessoas com \"%s\" como nome de casadas"
+msgstr "Inclusive pessoas com “%s” como nome de casadas"
 
 #: app/Module/ClippingsCartModule.php:358
 #: app/Module/ClippingsCartModule.php:692
@@ -10238,12 +10238,12 @@ msgstr "PHP bloqueou o arquivo pela extensão"
 #: setup.php:139
 #, php-format
 msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr "A extensão PHP \"%1$s\" está desabilitada. Sem ela, as seguintes características não funcionarão: %2$s. Por favor solicite para o administrador do seu servidor para habilitá-la."
+msgstr "A extensão PHP “%1$s” está desabilitada. Sem ela, as seguintes características não funcionarão: %2$s. Por favor solicite para o administrador do seu servidor para habilitá-la."
 
 #: setup.php:128
 #, php-format
 msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-msgstr "A extensão PHP \"%s\" está desabilitada. Você não pode instalar webtrees até que ela esteja habilitada. Por favor solicite ao administrador do seu servidor para habilitá-lo,"
+msgstr "A extensão PHP “%s” está desabilitada. Você não pode instalar webtrees até que ela esteja habilitada. Por favor solicite ao administrador do seu servidor para habilitá-lo,"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:86
@@ -10257,7 +10257,7 @@ msgstr "Informações do PHP"
 #: setup.php:148
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr "Configuração PHP \"%1$s\" está desabilitada. Sem ela, as seguintes características não funcionarão: %2$s. Por favor solicite para o administrador de seu servidor habilitá-la."
+msgstr "Configuração PHP “%1$s” está desabilitada. Sem ela, as seguintes características não funcionarão: %2$s. Por favor solicite para o administrador de seu servidor habilitá-la."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:211
@@ -19807,7 +19807,7 @@ msgstr "«%s»"
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "\"%s\" foi adicionado aos seus favoritos."
+msgstr "“%s” foi adicionado aos seus favoritos."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:107
 msgid "…"

@@ -10843,7 +10843,7 @@ msgstr "Preferencias"
 #: admin_modules.php:93
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "Existen preferencias para el módulo \"%s\", pero este módulo ya no existe."
+msgstr "Existen preferencias para el módulo “%s”, pero este módulo ya no existe."
 
 #. I18N: A configuration setting
 #: admin_users.php:472
@@ -13257,7 +13257,7 @@ msgstr "La lista de Preguntas Frecuentes está vacía."
 #: admin_trees_manage.php:145
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "El archivo GEDCOM \"%s\" se ha importado."
+msgstr "El archivo GEDCOM “%s” se ha importado."
 
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "The Hague, Netherlands"
@@ -13328,25 +13328,25 @@ msgstr "Árbol genealógico exportado a %s."
 #: admin_trees_manage.php:76
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "El árbol genealógico \"%s\" ya existe."
+msgstr "El árbol genealógico “%s” ya existe."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:79
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "El árbol genealógico \"%s\" se ha creado."
+msgstr "El árbol genealógico “%s” se ha creado."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:56 admin_trees_manage.php:151
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "El árbol genealógico \"%s\" ha sido eliminado."
+msgstr "El árbol genealógico “%s” ha sido eliminado."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:65
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "El árbol genealógico \"%s\" se mostrará a los visitantes cuando llegan por primera vez a este sitio web."
+msgstr "El árbol genealógico “%s” se mostrará a los visitantes cuando llegan por primera vez a este sitio web."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13491,7 +13491,7 @@ msgstr "El enlace desde «%1$s» a «%2$s» ha sido borrado."
 #: admin_site_merge.php:109
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "El enlace desde \"%1$s\" hasta \"%2$s\" se ha actualizado."
+msgstr "El enlace desde “%1$s” hasta “%2$s” se ha actualizado."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -13523,12 +13523,12 @@ msgstr "Los requisitos de tiempo de la memoria y de la CPU dependerán del núme
 #: admin_modules.php:49
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "El modulo \"%s\" se ha deshabilitado."
+msgstr "El modulo “%s” se ha deshabilitado."
 
 #: admin_modules.php:51
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "El modulo \"%s\" se ha habilitado."
+msgstr "El modulo “%s” se ha habilitado."
 
 #: admin_site_upgrade.php:400
 #, php-format
@@ -13567,17 +13567,17 @@ msgstr "Las preferencias para los nuevos árboles genealógicos han sido actuali
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Las preferencias para el árbol genealógico \"%s\" han sido actualizadas."
+msgstr "Las preferencias para el árbol genealógico “%s” han sido actualizadas."
 
 #: admin_modules.php:81
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "Las preferencias para el modulo \"%s\" han sido eliminadas."
+msgstr "Las preferencias para el modulo “%s” han sido eliminadas."
 
 #: app/Module/GoogleMapsModule.php:260
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Las preferencias para el modulo \"%s\" han sido actualizadas."
+msgstr "Las preferencias para el modulo “%s” han sido actualizadas."
 
 #: setup.php:380
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -13787,7 +13787,7 @@ msgstr[1] "No se han producido cambios en los últimos %s días."
 #: login.php:253
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "No hay ninguna cuenta con el nombre de usuario o correo electrónico \"%s\"."
+msgstr "No hay ninguna cuenta con el nombre de usuario o correo electrónico “%s”."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."

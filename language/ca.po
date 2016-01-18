@@ -10842,7 +10842,7 @@ msgstr "Preferències"
 #: admin_modules.php:93
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "Hi ha preferències per al mòdul \"%s\", però aquest mòdul ja no existeix."
+msgstr "Hi ha preferències per al mòdul “%s”, però aquest mòdul ja no existeix."
 
 #. I18N: A configuration setting
 #: admin_users.php:472
@@ -13345,7 +13345,7 @@ msgstr "S'ha eliminat l'arbre genealògic “%s”."
 #: admin_trees_manage.php:65
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "Als visitants que arribin per primer cop a aquest lloc web se'ls hi mostrarà l'arbre genealògic \"%s\"."
+msgstr "Als visitants que arribin per primer cop a aquest lloc web se'ls hi mostrarà l'arbre genealògic “%s”."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13522,12 +13522,12 @@ msgstr "Els requisits de temps de la memòria i la CPU depèn del nombre de pers
 #: admin_modules.php:49
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "S'ha desactivat el mòdul \"%s\"."
+msgstr "S'ha desactivat el mòdul “%s”."
 
 #: admin_modules.php:51
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "S'ha activat el mòdul \"%s\"."
+msgstr "S'ha activat el mòdul “%s”."
 
 #: admin_site_upgrade.php:400
 #, php-format
@@ -13566,17 +13566,17 @@ msgstr "S'han actualitzat les preferències per als nous arbres genealògics."
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "S'han actualitzat les preferències per a l'arbre genealògic \"%s\"."
+msgstr "S'han actualitzat les preferències per a l'arbre genealògic “%s”."
 
 #: admin_modules.php:81
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "S'han eliminat les preferències per al mòdul \"%s\"."
+msgstr "S'han eliminat les preferències per al mòdul “%s”."
 
 #: app/Module/GoogleMapsModule.php:260
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "S'han actualitzat les preferències per al mòdul \"%s\"."
+msgstr "S'han actualitzat les preferències per al mòdul “%s”."
 
 #: setup.php:380
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -13786,7 +13786,7 @@ msgstr[1] "Sense canvis en els darrers %s dies."
 #: login.php:253
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "No hi ha cap compte amb el nom d'usuari o adreça electrònica \"%s\"."
+msgstr "No hi ha cap compte amb el nom d'usuari o adreça electrònica “%s”."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."

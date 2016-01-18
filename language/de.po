@@ -13782,7 +13782,7 @@ msgstr[1] "Es gab keine Veränderungen in den letzen %s Tagen."
 #: login.php:253
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "Es gibt kein Konto mit \"%s\" als Benutzernamen oder E-Mail-Adresse."
+msgstr "Es gibt kein Konto mit “%s” als Benutzernamen oder E-Mail-Adresse."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."

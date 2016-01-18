@@ -6204,12 +6204,12 @@ msgstr "Failinimi serveris"
 #: addmedia.php:161 addmedia.php:295 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "Failinimed ei tohi sisaldada sümbolit \"%s\"."
+msgstr "Failinimed ei tohi sisaldada sümbolit “%s”."
 
 #: addmedia.php:165 addmedia.php:299 admin_media_upload.php:122
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "Failinimed ei tohi lõppeda laiendiga \"%s\"."
+msgstr "Failinimed ei tohi lõppeda laiendiga “%s”."
 
 #: admin.php:852
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
@@ -10238,12 +10238,12 @@ msgstr "PHP blokeeris selle faili selle laienduse tõttu."
 #: setup.php:139
 #, php-format
 msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr "PHP laiendus \"%1$s\" on keelatud. Ilma selleta ei tööta järgmised funktsioonid: %2$s. Palun lase oma serveri administraatoril see lubada."
+msgstr "PHP laiendus “%1$s” on keelatud. Ilma selleta ei tööta järgmised funktsioonid: %2$s. Palun lase oma serveri administraatoril see lubada."
 
 #: setup.php:128
 #, php-format
 msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-msgstr "PHP laiendus \"%s\" on keelatud. Sa ei saa webtrees installida kuni see on lubatud. Palun lase oma serveri administraatoril see lubada."
+msgstr "PHP laiendus “%s” on keelatud. Sa ei saa webtrees installida kuni see on lubatud. Palun lase oma serveri administraatoril see lubada."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:86
@@ -10257,7 +10257,7 @@ msgstr "PHP informatsioon"
 #: setup.php:148
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr "PHP säte \"%1$s\" on keelatud. Ilma selleta ei tööta järgmised funktsioonid: %2$s. Palun lase oma serveri administraatoril see lubada."
+msgstr "PHP säte “%1$s” on keelatud. Ilma selleta ei tööta järgmised funktsioonid: %2$s. Palun lase oma serveri administraatoril see lubada."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:211
@@ -10843,7 +10843,7 @@ msgstr "Eelistused"
 #: admin_modules.php:93
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "Mooduli \"%s\" kohta on olemas eelistusi, kuid seda moodulit pole enam olemas."
+msgstr "Mooduli “%s” kohta on olemas eelistusi, kuid seda moodulit pole enam olemas."
 
 #. I18N: A configuration setting
 #: admin_users.php:472
@@ -13328,7 +13328,7 @@ msgstr "Sugupuu on eksporditud järgnevasse kohta: %s."
 #: admin_trees_manage.php:76
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "Sugupuu \"%s\" on juba olemas."
+msgstr "Sugupuu “%s” on juba olemas."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:79
@@ -13346,7 +13346,7 @@ msgstr "Sugupuu “%s” on kustutatud."
 #: admin_trees_manage.php:65
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "Kui külastajad saabuvad veebilehele, siis neile näidatakse sugupuud \"%s\"."
+msgstr "Kui külastajad saabuvad veebilehele, siis neile näidatakse sugupuud “%s”."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13356,12 +13356,12 @@ msgstr "Sugupuude liitmine õnnestus."
 #: action.php:143
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr "Perekond \"%s\" on kustutatud, sest see koosnes ainult ühest isikust."
+msgstr "Perekond “%s” on kustutatud, sest see koosnes ainult ühest isikust."
 
 #: addmedia.php:178 admin_media_upload.php:136
 #, php-format
 msgid "The file %s already exists. Use another filename."
-msgstr "Fail \"%s\" on juba olemas. Kasutage teistsugust failinime."
+msgstr "Fail “%s” on juba olemas. Kasutage teistsugust failinime."
 
 #: admin_site_upgrade.php:295 admin_site_upgrade.php:422
 #: admin_site_upgrade.php:455 admin_trees_export.php:44
@@ -13523,12 +13523,12 @@ msgstr "Mälu ja protsessori aja nõudmised sõltuvad sinu sugupuus olevate inim
 #: admin_modules.php:49
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "Moodul \"%s\" on keelatud."
+msgstr "Moodul “%s” on keelatud."
 
 #: admin_modules.php:51
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "Moodul \"%s\" on lubatud."
+msgstr "Moodul “%s” on lubatud."
 
 #: admin_site_upgrade.php:400
 #, php-format
@@ -13567,17 +13567,17 @@ msgstr "Eelistused uute sugupuude kohta on uuendatud."
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Eelistused sugupuu \"%s\" kohta on uuendatud."
+msgstr "Eelistused sugupuu “%s” kohta on uuendatud."
 
 #: admin_modules.php:81
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "Eelistused mooduli \"%s\" kohta on kustutatud."
+msgstr "Eelistused mooduli “%s” kohta on kustutatud."
 
 #: app/Module/GoogleMapsModule.php:260
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Eelistused mooduli \"%s\" kohta on uuendatud."
+msgstr "Eelistused mooduli “%s” kohta on uuendatud."
 
 #: setup.php:380
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -13787,7 +13787,7 @@ msgstr[1] "Viimaste %s päevade jooksul pole ühtegi muudatust toimunud."
 #: login.php:253
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "Pole kasutajat kasutajanime või emailiga \"%s\"."
+msgstr "Pole kasutajat kasutajanime või emailiga “%s”."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -14404,7 +14404,7 @@ msgstr "Veebileht on ajutiselt kättesaamatu"
 #: admin_trees_manage.php:196
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "See kustutab kõik genealoogilised andmed järgnevast \"%s\" ja asendab selle andmetega GEDCOM failist."
+msgstr "See kustutab kõik genealoogilised andmed järgnevast “%s” ja asendab selle andmetega GEDCOM failist."
 
 #: admin_trees_places.php:97
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."

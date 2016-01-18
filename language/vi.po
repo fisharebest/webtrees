@@ -13224,7 +13224,7 @@ msgstr "Danh sách FAQ trống."
 #: admin_trees_manage.php:145
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "Tập tin GEDCOM \"%s\" đã được nhập. "
+msgstr "Tập tin GEDCOM “%s” đã được nhập. "
 
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "The Hague, Netherlands"
@@ -13295,25 +13295,25 @@ msgstr "Cây gia đình được xuất cho %s"
 #: admin_trees_manage.php:76
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "Cây gia đình \"%s\" đã có. "
+msgstr "Cây gia đình “%s” đã có. "
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:79
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "Cây gia đình \"%s\" đã được tạo. "
+msgstr "Cây gia đình “%s” đã được tạo. "
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:56 admin_trees_manage.php:151
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "Cây gia đình \"%s\" đã được xóa bỏ. "
+msgstr "Cây gia đình “%s” đã được xóa bỏ. "
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:65
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "Cây gia đình \"%s\" sẽ hiện cho khách thăm khi lần đầu họ ghé trang web. "
+msgstr "Cây gia đình “%s” sẽ hiện cho khách thăm khi lần đầu họ ghé trang web. "
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13490,12 +13490,12 @@ msgstr "Yêu cầu bộ nhớ và đồng hồ CPU tùy vào số thành viên t
 #: admin_modules.php:49
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "Mô đun \"%s\" đã được vô hiệu. "
+msgstr "Mô đun “%s” đã được vô hiệu. "
 
 #: admin_modules.php:51
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "Mô đun \"%s\" đã được kích hoạt. "
+msgstr "Mô đun “%s” đã được kích hoạt. "
 
 #: admin_site_upgrade.php:400
 #, php-format
@@ -13534,17 +13534,17 @@ msgstr "Các tùy chọn cho các cây gia đình mới đã được cập nh�
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Các tùy chọn cho cây gia đình \"%s\" đã được cập nhật. "
+msgstr "Các tùy chọn cho cây gia đình “%s” đã được cập nhật. "
 
 #: admin_modules.php:81
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "Các tùy chọn cho mô đun \"%s\" đã được xóa. "
+msgstr "Các tùy chọn cho mô đun “%s” đã được xóa. "
 
 #: app/Module/GoogleMapsModule.php:260
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Các tùy chọn cho mô đun \"%s\" đã được cập nhật. "
+msgstr "Các tùy chọn cho mô đun “%s” đã được cập nhật. "
 
 #: setup.php:380
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -13630,7 +13630,7 @@ msgstr "Tập tin đã gửi lên quá hạn chế lượng"
 #: admin_users.php:807
 #, php-format
 msgid "The user %s has been deleted."
-msgstr "Người dùng \"%s\" đã được xóa bỏ. "
+msgstr "Người dùng %s đã được xóa bỏ. "
 
 #: login.php:314
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."

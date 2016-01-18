@@ -2099,7 +2099,7 @@ msgstr "Σίγουρα θέλετε να διαγράψετε αυτό το μή
 #: edituser.php:320
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "Να διαγραφεί το \"%s\";"
+msgstr "Να διαγραφεί το “%s”;"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
@@ -7359,7 +7359,7 @@ msgstr ""
 #: famlist.php:173 indilist.php:174
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Περιλαμβάνει άτομα απο \"%s\" ως όνομα γάμου"
+msgstr "Περιλαμβάνει άτομα απο “%s” ως όνομα γάμου"
 
 #: app/Module/ClippingsCartModule.php:358
 #: app/Module/ClippingsCartModule.php:692

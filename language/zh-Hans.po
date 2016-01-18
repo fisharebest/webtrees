@@ -10211,7 +10211,7 @@ msgstr "PHP设置 \"%1$s \" 是禁用的。以下功能将不工作： %2$s. 请
 #: setup.php:128
 #, php-format
 msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-msgstr "PHP扩展 \"%s\"是禁用的。如果不启用不能安装webtrees。请联系服务器的管理员启用它。"
+msgstr "PHP扩展 “%s”是禁用的。如果不启用不能安装webtrees。请联系服务器的管理员启用它。"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:86
@@ -10811,7 +10811,7 @@ msgstr "偏爱"
 #: admin_modules.php:93
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "存在模块\"%s\"的偏好，但此模块不再存在。"
+msgstr "存在模块“%s”的偏好，但此模块不再存在。"
 
 #. I18N: A configuration setting
 #: admin_users.php:472
@@ -13225,7 +13225,7 @@ msgstr "常见问题列表是空的。"
 #: admin_trees_manage.php:145
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "GEDCOM 文件\"%s\"已被导入。"
+msgstr "GEDCOM 文件“%s”已被导入。"
 
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "The Hague, Netherlands"
@@ -13296,7 +13296,7 @@ msgstr "家谱导出到 %s。"
 #: admin_trees_manage.php:76
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "家谱\"%s\"已经存在。"
+msgstr "家谱“%s”已经存在。"
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:79
@@ -13314,7 +13314,7 @@ msgstr "该家谱“%s”时已被删除。"
 #: admin_trees_manage.php:65
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "家谱\"%s\"将游客第一次来到这个网站时显示给他们。"
+msgstr "家谱“%s”将游客第一次来到这个网站时显示给他们。"
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13459,7 +13459,7 @@ msgstr "已删除从“%1$s”到 “%2$s” 链接。"
 #: admin_site_merge.php:109
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "已更新\"%1$s\"到\"%2$s\"的链接。"
+msgstr "已更新“%1$s”到“%2$s”的链接。"
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -13491,12 +13491,12 @@ msgstr "内存和CPU的要求取决于你的家谱的个体数目。"
 #: admin_modules.php:49
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "模块\"%s\"已被禁用。"
+msgstr "模块“%s”已被禁用。"
 
 #: admin_modules.php:51
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "模块\"%s\"已被启用。"
+msgstr "模块“%s”已被启用。"
 
 #: admin_site_upgrade.php:400
 #, php-format
@@ -13535,17 +13535,17 @@ msgstr "新家谱的首选项已更新。"
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "已更新家谱\"%s\"的首选项。"
+msgstr "已更新家谱“%s”的首选项。"
 
 #: admin_modules.php:81
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "模块\"%s\"的首选项已被删除。"
+msgstr "模块“%s”的首选项已被删除。"
 
 #: app/Module/GoogleMapsModule.php:260
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "已更新模块\"%s\"的首选项。"
+msgstr "已更新模块“%s”的首选项。"
 
 #: setup.php:380
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -13564,7 +13564,7 @@ msgstr "记录复制到剪贴板。"
 #: admin_site_merge.php:168
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "已经合并的记录\"%1$s\"和\"%2$s\"。"
+msgstr "已经合并的记录“%1$s”和“%2$s”。"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "The regex appears to contain an error. It can’t be used."
@@ -13753,7 +13753,7 @@ msgstr[0] "在最后的 %s 一天内一直没有变化。"
 #: login.php:253
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "那里是没有用的用户名或电子邮件为\"%s\"的帐户。"
+msgstr "那里是没有用的用户名或电子邮件为“%s”的帐户。"
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."

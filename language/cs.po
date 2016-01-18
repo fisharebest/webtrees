@@ -3416,7 +3416,7 @@ msgstr "Změnit jazyk"
 
 #: admin_users.php:217
 msgid "Change the blocks on this user’s “My page”"
-msgstr "Změnit bloky na uživatelově stránce \"Moje stránka\""
+msgstr "Změnit bloky na uživatelově stránce „Moje stránka“"
 
 #: admin_trees_manage.php:405 index_edit.php:50
 msgid "Change the “Home page” blocks"
@@ -3424,7 +3424,7 @@ msgstr "Změnit bloky na domovské stránce"
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr "Změnit bloky na stránce \"Moje stránka\""
+msgstr "Změnit bloky na stránce „Moje stránka“"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Functions/FunctionsPrintLists.php:1772
@@ -6241,7 +6241,7 @@ msgstr "Jména souborů nesmí obsahovat znak „%s“."
 #: addmedia.php:165 addmedia.php:299 admin_media_upload.php:122
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "Jména souborů nesměji mít příponu \"%s\"."
+msgstr "Jména souborů nesměji mít příponu “%s”."
 
 #: admin.php:852
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
@@ -7357,7 +7357,7 @@ msgstr "Možnosti importu"
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "V rodokmenu má každý záznam interní referenční číslo (zvané \"XREF\") jako např. \"F123\" nebo \"R14\"."
+msgstr "V rodokmenu má každý záznam interní referenční číslo (zvané „XREF“) jako např. „F123“ nebo „R14“."
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
@@ -7825,7 +7825,7 @@ msgstr "Zachovat objekty médií"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2291
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:550
 msgid "Keep the existing “last change” information"
-msgstr "Zachovat existující informaci \"poslední změna\""
+msgstr "Zachovat existující informaci „poslední změna“"
 
 #: app/Stats.php:6844
 msgid "Kenya"
@@ -10877,7 +10877,7 @@ msgstr "Předvolby"
 #: admin_modules.php:93
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "Pro modul \"%s\" existují předvolby, ale modul už neexistuje."
+msgstr "Pro modul “%s” existují předvolby, ale modul už neexistuje."
 
 #. I18N: A configuration setting
 #: admin_users.php:472
@@ -12021,7 +12021,7 @@ msgstr "Nastavit přístupovou úroveň soukromí pro všechny zesnulé osoby."
 #. I18N: You need to:
 #: login.php:557
 msgid "Set the status to “approved”."
-msgstr "Nastavte status na \"schváleno\"."
+msgstr "Nastavte status na „schváleno“."
 
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:730
@@ -12755,7 +12755,7 @@ msgstr "Některá jména míst mohou být zapsána volitelně s předponamí neb
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1560
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Některá témata dokáží na panelu \"Fakta a události\" zobrazovat ikony."
+msgstr "Některá témata dokáží na panelu „Fakta a události“ zobrazovat ikony."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:520
@@ -13291,7 +13291,7 @@ msgstr "Seznam častých dotazů je prázdný."
 #: admin_trees_manage.php:145
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "Soubor GEDCOM \"%s\" je importován."
+msgstr "Soubor GEDCOM “%s” je importován."
 
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "The Hague, Netherlands"
@@ -13362,25 +13362,25 @@ msgstr "Rodokmen byl vyexportován do %s."
 #: admin_trees_manage.php:76
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "Rodokmen \"%s\" už existuje."
+msgstr "Rodokmen “%s” už existuje."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:79
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "Rodokmen \"%s\" je vytvořen."
+msgstr "Rodokmen “%s” je vytvořen."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:56 admin_trees_manage.php:151
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "Rodokmen \"%s\" je vymazán."
+msgstr "Rodokmen “%s” je vymazán."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:65
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "Rodokmen \"%s\" se zobrazí návštěvníkům při jejich první návštěvě tohoto webu."
+msgstr "Rodokmen “%s” se zobrazí návštěvníkům při jejich první návštěvě tohoto webu."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13478,7 +13478,7 @@ msgstr "Následující fakta a události byly nalezeny v obou záznamech."
 #: admin_site_merge.php:248 admin_site_merge.php:294
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr "Následující fakta a události byly nalezeny pouze v záznamu \"%s\"."
+msgstr "Následující fakta a události byly nalezeny pouze v záznamu “%s”."
 
 #: setup.php:173
 msgid "The following list shows typical requirements."
@@ -13525,7 +13525,7 @@ msgstr "Odkaz z „%1$s“ na „%2$s“ byl vymazán."
 #: admin_site_merge.php:109
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "Odkaz z \"%1$s\" na \"%2$s\" je aktualizován."
+msgstr "Odkaz z „%1$s“ na „%2$s“ je aktualizován."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -13557,12 +13557,12 @@ msgstr "Požadavky na paměť a procesorový čas závisí na počtu osob ve va�
 #: admin_modules.php:49
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "Modul \"%s\" je deaktivován."
+msgstr "Modul “%s” je deaktivován."
 
 #: admin_modules.php:51
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "Module \"%s\" je aktivován."
+msgstr "Module “%s” je aktivován."
 
 #: admin_site_upgrade.php:400
 #, php-format
@@ -13601,17 +13601,17 @@ msgstr "Předvolby pro nové rodokmeny jsou aktualizovány."
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Předvolby pro rodokmen \"%s\" jsou aktualizovány."
+msgstr "Předvolby pro rodokmen “%s” jsou aktualizovány."
 
 #: admin_modules.php:81
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "Předvolby pro modul \"%s\" jsou vymazány."
+msgstr "Předvolby pro modul “%s” jsou vymazány."
 
 #: app/Module/GoogleMapsModule.php:260
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Předvolby pro modul \"%s\" jsou aktualizovány."
+msgstr "Předvolby pro modul “%s” jsou aktualizovány."
 
 #: setup.php:380
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -13683,9 +13683,9 @@ msgstr "Pro výpočet data je vyžadováno časové pásmo, například znalost 
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "Tyto dva rodokmeny obsahují %1$s záznam se stejným \"XREF\"."
-msgstr[1] "Tyto dva rodokmeny obsahují %1$s záznamy se stejným \"XREF\"."
-msgstr[2] "Tyto dva rodokmeny obsahují %1$s záznamů se stejným \"XREF\"."
+msgstr[0] "Tyto dva rodokmeny obsahují %1$s záznam se stejným „XREF“."
+msgstr[1] "Tyto dva rodokmeny obsahují %1$s záznamy se stejným „XREF“."
+msgstr[2] "Tyto dva rodokmeny obsahují %1$s záznamů se stejným „XREF“."
 
 #: admin_site_upgrade.php:504
 msgid "The upgrade is complete."
@@ -13757,7 +13757,7 @@ msgstr "Vývojáří aplikace webtrees by se rádi dozvěděli o této chybě. P
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr "Znak \"%s\" je zástupný (wildcard) a zastupuje prázdný nebo víceznakový řetězec jiných znaků."
+msgstr "Znak “%s” je zástupný (wildcard) a zastupuje prázdný nebo víceznakový řetězec jiných znaků."
 
 #: admin_modules.php:186 admin_users.php:486 app/Theme/AbstractTheme.php:1673
 #: edituser.php:272
@@ -13780,7 +13780,7 @@ msgstr "Motivy"
 
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting “default theme” at one level will use the theme at the next level."
-msgstr "Motivy je možné volit na třech úrovních: uživatel, rodokmen a webová stránka. Uživatelem zvolený má přednost před předvolbou rodokmenu a ta má přednost před předvolbou webu. Volba \"výchozí motiv\" na jedné úrovni použije motiv z vyšší úrovně."
+msgstr "Motivy je možné volit na třech úrovních: uživatel, rodokmen a webová stránka. Uživatelem zvolený má přednost před předvolbou rodokmenu a ta má přednost před předvolbou webu. Volba „výchozí motiv“ na jedné úrovni použije motiv z vyšší úrovně."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:126
@@ -13823,7 +13823,7 @@ msgstr[2] "V posledních %s dnech nebyly žádné změny."
 #: login.php:253
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "Žádný účet se jménem uživatele nebo emailem \"%s\" neexistuje."
+msgstr "Žádný účet se jménem uživatele nebo emailem “%s” neexistuje."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -13928,9 +13928,9 @@ msgstr "Tato rodina je bezdětná"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "V tomto rodokmenu je %s záznam, který užívá stejné \"XREF\" jako jiný rodokmen."
-msgstr[1] "V tomto rodokmenu jsou %s záznamy, které užívají stejné \"XREF\" jako jiný rodokmen."
-msgstr[2] "V tomto rodokmenu je %s záznamů, které užívají stejné \"XREF\" jako jiný rodokmen."
+msgstr[0] "V tomto rodokmenu je %s záznam, který užívá stejné „XREF“ jako jiný rodokmen."
+msgstr[1] "V tomto rodokmenu jsou %s záznamy, které užívají stejné „XREF“ jako jiný rodokmen."
+msgstr[2] "V tomto rodokmenu je %s záznamů, které užívají stejné „XREF“ jako jiný rodokmen."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -14032,7 +14032,7 @@ msgstr "Toto je odkaz k vašemu vlastnímu záznamu v rodokmenu. Pokud je to nes
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1411
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-msgstr "Toto je souhrn <abbr title=\"Církev Ježíše Krista Svatých posledních dnů\">mormonských</abbr> ceremonií (obřadů) pro danou osobu. \"B\" označuje mormonský křest, \"E\" označuje mormonské pomazání, \"S\" označuje mormonské zpečetění manželství, \"P\" označuje mormonské zpečetění dítěte k rodičům."
+msgstr "Toto je souhrn <abbr title=\"Církev Ježíše Krista Svatých posledních dnů\">mormonských</abbr> ceremonií (obřadů) pro danou osobu. „B“ označuje mormonský křest, „E“ označuje mormonské pomazání, „S“ označuje mormonské zpečetění manželství, „P“ označuje mormonské zpečetění dítěte k rodičům."
 
 #: setup.php:289 setup.php:293
 msgid "This is case sensitive."
@@ -14045,7 +14045,7 @@ msgstr "Rozlišujte malá a velká písmena. Pokud databáze s tímto jménem je
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1372
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr "Toto je výchozí nastavení pro volbu \"zobrazit podrobnosti\" v diagramech."
+msgstr "Toto je výchozí nastavení pro volbu „zobrazit podrobnosti“ v diagramech."
 
 #: admin.php:588 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
@@ -14446,7 +14446,7 @@ msgstr "Vymaže všechna rodokmenová data z „%s“ a nahradí je daty z jiné
 
 #: admin_trees_places.php:97
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Toto aktualizuje nejvyšší úroveň části jména místa. Například \"Mexico\" bude odpovídat \"Quintana Roo, Mexico\", ale ne \"Santa Fe, New Mexico\"."
+msgstr "Toto aktualizuje nejvyšší úroveň části jména místa. Například „Mexico“ bude odpovídat „Quintana Roo, Mexico“, ale ne „Santa Fe, New Mexico“."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:668
@@ -15504,7 +15504,7 @@ msgstr "Západní Sahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:2261
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Při úpravě záznamu se zaznamená uživatel a časové razítko. Někdy je užitečné zachovat existující informaci \"poslední změna\", např. při malých opravách změn učiněných někým jiným. Tato volba určuje, zda se bude tato vlastnost pokládat za výchozí."
+msgstr "Při úpravě záznamu se zaznamená uživatel a časové razítko. Někdy je užitečné zachovat existující informaci „poslední změna“, např. při malých opravách změn učiněných někým jiným. Tato volba určuje, zda se bude tato vlastnost pokládat za výchozí."
 
 #: admin_users.php:389
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."

@@ -13372,7 +13372,7 @@ msgstr ""
 #: medialist.php:301 mediaviewer.php:162
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "\"%s\" исемле файлны табып булмады."
+msgstr "“%s” исемле файлны табып булмады."
 
 #: admin_site_clean.php:36 admin_site_upgrade.php:492
 #, php-format
