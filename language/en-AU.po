@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-01-17 17:40+0000\n"
-"PO-Revision-Date: 2015-03-13 09:42+0100\n"
+"PO-Revision-Date: 2016-01-20 19:41+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (Australia) <http://translate.webtrees.net/projects/webtrees/webtrees/en-AU/>\n"
 "Language: en-AU\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.4\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -7160,7 +7160,7 @@ msgstr ""
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:651
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used. Typically, this setting applies to search engines."
-msgstr "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used. Typically, this setting applies to search engines."
+msgstr ""
 
 #: admin_users.php:392
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -19823,101 +19823,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
