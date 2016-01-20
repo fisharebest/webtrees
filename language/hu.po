@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-01-17 17:40+0000\n"
-"PO-Revision-Date: 2016-01-18 20:48+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2016-01-20 17:47+0100\n"
+"Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -6981,7 +6981,7 @@ msgstr "Helvetica"
 
 #: modules_v3/ahnentafel_report/report.xml:196
 msgid "Her occupation was"
-msgstr "Ez volt a foglalkozása"
+msgstr "Ez volt a foglalkozása:"
 
 #: app/Module/GoogleMapsModule.php:4030
 msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
@@ -7050,7 +7050,7 @@ msgstr "Hidzsri"
 
 #: modules_v3/ahnentafel_report/report.xml:195
 msgid "His occupation was"
-msgstr "Ez volt a foglalkozása"
+msgstr "Ez volt a foglalkozása:"
 
 #: app/Module/IndividualFactsTabModule.php:135
 msgid "Historical facts"
@@ -13908,7 +13908,7 @@ msgstr "A családfa utolsó frissítése: #gedcomUpdated#. Összesen #totalSurna
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "A családfa utolsó frissítésének időpontja: %s."
+msgstr "A családfa utolsó frissítésének időpontja: %s"
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
@@ -15444,7 +15444,7 @@ msgstr "Súly"
 #: app/Module/UserWelcomeModule.php:50
 #, php-format
 msgid "Welcome %s"
-msgstr "Üdvözlet, %s"
+msgstr "Üdvözlet, %s!"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:459
@@ -16327,7 +16327,7 @@ msgstr "lánygyermek"
 
 #: modules_v3/descendancy_report/report.xml:227
 msgid "daughter of"
-msgstr "az ő lánya"
+msgstr "az ő lánya:"
 
 #: app/Functions/Functions.php:843
 msgctxt "child’s wife"
@@ -19267,7 +19267,7 @@ msgstr "fiúgyermek"
 
 #: modules_v3/descendancy_report/report.xml:296
 msgid "son of"
-msgstr "a következő fia"
+msgstr "az ő fia:"
 
 #: app/Functions/Functions.php:837
 msgctxt "child’s husband"
