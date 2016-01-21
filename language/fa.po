@@ -10209,12 +10209,12 @@ msgstr ""
 #: setup.php:139
 #, php-format
 msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr "افزونه \"%1$s\" غیرفعال است، بدون این افزونه، افزونه \"%2$s\" نیز غیرفعال خواهد بود. از مدیر سرور خود برای فعالسازی این افزونه درخواست کنید."
+msgstr "افزونه “%1$s” غیرفعال است، بدون این افزونه، افزونه “%2$s” نیز غیرفعال خواهد بود. از مدیر سرور خود برای فعالسازی این افزونه درخواست کنید."
 
 #: setup.php:128
 #, php-format
 msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-msgstr "افزونه \"%s\" غیرفعال شده است. شما نمی توانید بدون فعال سازی آن سیستم را نصب کنید. از مدیر سرور خود برای فعالسازی این افزونه درخواست کنید."
+msgstr "افزونه “%s” غیرفعال شده است. شما نمی توانید بدون فعال سازی آن سیستم را نصب کنید. از مدیر سرور خود برای فعالسازی این افزونه درخواست کنید."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:86
@@ -10228,7 +10228,7 @@ msgstr "اطلاعات پی اچ پی"
 #: setup.php:148
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr "افزونه \"%1$s\" غیرفعال است، بدون این افزونه، افزونه \"%2$s\" نیز غیرفعال خواهد بود. از مدیر سرور خود برای فعالسازی این افزونه درخواست کنید."
+msgstr "افزونه “%1$s” غیرفعال است، بدون این افزونه، افزونه “%2$s” نیز غیرفعال خواهد بود. از مدیر سرور خود برای فعالسازی این افزونه درخواست کنید."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:211

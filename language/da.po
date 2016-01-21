@@ -10238,12 +10238,12 @@ msgstr "PHP blokerede filen på grund af filtypen."
 #: setup.php:139
 #, php-format
 msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr "PHP-udvidelsen \"%1$s\" er slået fra. Uden denne vil følgende egenskaber ikke fungere: %2$s. Spørg venligst din serveradministrator om at slå den til."
+msgstr "PHP-udvidelsen “%1$s” er slået fra. Uden denne vil følgende egenskaber ikke fungere: %2$s. Spørg venligst din serveradministrator om at slå den til."
 
 #: setup.php:128
 #, php-format
 msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-msgstr "PHP-udvidelsen \"%s\" er slået fra, og du kan derfor ikke installere webtrees. Kontakt serverens administrator for at få den slået til."
+msgstr "PHP-udvidelsen “%s” er slået fra, og du kan derfor ikke installere webtrees. Kontakt serverens administrator for at få den slået til."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:86
@@ -10257,7 +10257,7 @@ msgstr "PHPInfo"
 #: setup.php:148
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr "PHP-indstillingen \"%1$s\" er slået fra. Uden denne vil følgende egenskaber ikke fungere: %2$s. Kontakt venligst din serveradministrator for at slå den til."
+msgstr "PHP-indstillingen “%1$s” er slået fra. Uden denne vil følgende egenskaber ikke fungere: %2$s. Kontakt venligst din serveradministrator for at slå den til."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:211
@@ -13290,7 +13290,7 @@ msgstr "Administratoren af hjemmesiden har fået besked om din anmodning om en b
 #: action.php:45
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "Ændringerne til \"%s\" er accepteret."
+msgstr "Ændringerne til “%s” er accepteret."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:232
@@ -13356,7 +13356,7 @@ msgstr "Familietræerne flettet uden fejl."
 #: action.php:143
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr "Familien \"%s\" er slette da den kun har et medlem."
+msgstr "Familien “%s” er slette da den kun har et medlem."
 
 #: addmedia.php:178 admin_media_upload.php:136
 #, php-format
@@ -13485,13 +13485,13 @@ msgstr "Den bruger som kan kontaktes vedrørende slægtsmateriale på din hjemme
 #: app/Controller/GedcomRecordController.php:67
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "Linket mellem \"%1$s\" og \"%2$s\" er blevet slettet."
+msgstr "Linket mellem “%1$s” og “%2$s” er blevet slettet."
 
 #. I18N: The placeholders are the names of individuals, sources, etc.
 #: admin_site_merge.php:109
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "Linket mellem \\\"%1$s\\\" og \\\"%2$s\\\" er blevet opdateret."
+msgstr "Linket mellem “%1$s” og “%2$s” er blevet opdateret."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -19801,7 +19801,7 @@ msgstr[1] "±%s år"
 #: app/Individual.php:1216
 #, php-format
 msgid "“%s”"
-msgstr "\"%s\""
+msgstr "“%s”"
 
 #. I18N: %s is the name of an individual, source or other record
 #: app/Module/UserFavoritesModule.php:96

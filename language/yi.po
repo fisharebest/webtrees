@@ -6199,12 +6199,12 @@ msgstr "טעקע נאָמען אויף סערווער"
 #: addmedia.php:161 addmedia.php:295 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "טעקע נעמען זענען נישט ערלויבט צו אַנטהאַלטן די כאַראַקטער \"%s\"."
+msgstr "טעקע נעמען זענען נישט ערלויבט צו אַנטהאַלטן די כאַראַקטער “%s”."
 
 #: addmedia.php:165 addmedia.php:299 admin_media_upload.php:122
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "פילענאַמעס זענען נישט ערלויבט צו האָבן די פאַרלענגערונג \"%s\"."
+msgstr "פילענאַמעס זענען נישט ערלויבט צו האָבן די פאַרלענגערונג “%s”."
 
 #: admin.php:852
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."

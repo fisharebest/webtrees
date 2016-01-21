@@ -13359,25 +13359,25 @@ msgstr "Obiteljsko stablo izvezeno u %s."
 #: admin_trees_manage.php:76
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "Obiteljsko stablo \"%s\" već postoji."
+msgstr "Obiteljsko stablo “%s” već postoji."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:79
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "Obiteljsko stablo \"%s\" je kreirano."
+msgstr "Obiteljsko stablo “%s” je kreirano."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:56 admin_trees_manage.php:151
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "Obiteljsko stablo \"%s\" je obrisano."
+msgstr "Obiteljsko stablo “%s” je obrisano."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:65
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "Obiteljsko stablo \"%s\" će biti vidljivo posjetiteljima kada prvi pristupi ovoj web stranici."
+msgstr "Obiteljsko stablo “%s” će biti vidljivo posjetiteljima kada prvi pristupi ovoj web stranici."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."

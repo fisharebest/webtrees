@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-01-17 17:40+0000\n"
-"PO-Revision-Date: 2016-01-12 00:35+0100\n"
+"PO-Revision-Date: 2016-01-18 20:51+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Bulgarian <http://translate.webtrees.net/projects/webtrees/webtrees/bg/>\n"
 "Language: bg\n"
@@ -762,7 +762,7 @@ msgstr "Поздрав и полезни препратки за потреби�
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:34
 msgid "A greeting message for site visitors."
-msgstr "Приветстващ текст за посетители на сайта"
+msgstr "Приветстващ текст за посетители на сайта."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
@@ -802,7 +802,7 @@ msgstr "Списък на годишнини, които ще настъпят �
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr "Списък на най-често срещаните собствени имена"
+msgstr "Списък на най-често срещаните собствени имена."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
@@ -812,7 +812,7 @@ msgstr "Списък на най-често срещаните фамилни и
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "Списък на най-често разглежданите страници"
+msgstr "Списък на най-често разглежданите страници."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
@@ -845,7 +845,7 @@ msgstr ""
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
 msgid "A private area to record notes or keep a journal."
-msgstr "Лично пространство за водене на бележки или дневник"
+msgstr "Лично пространство за водене на бележки или дневник."
 
 #. I18N: %s is a server name/URL
 #: login.php:309
@@ -1360,7 +1360,7 @@ msgstr "Добави в Често Задавани Въпроси"
 
 #: timeline.php:295
 msgid "Add another individual to the chart"
-msgstr "Добави друг индивид към графиката."
+msgstr "Добави друг индивид към графиката"
 
 #: app/Functions/FunctionsPrint.php:556
 msgid "Add from clipboard"
@@ -1885,12 +1885,12 @@ msgstr "Алтернативен способ за въвеждане на пр�
 #. I18N: Description of the “Login” module
 #: app/Module/LoginBlockModule.php:34
 msgid "An alternative way to login and logout."
-msgstr "Алтернативен модул за вход/изход"
+msgstr "Алтернативен модул за вход/изход."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
 msgid "An alternative way to select a new theme."
-msgstr "Алтернативен модул за избор на шаблон"
+msgstr "Алтернативен модул за избор на шаблон."
 
 #: app/Functions/FunctionsEdit.php:915
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -2078,7 +2078,6 @@ msgstr ""
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
 msgstr "Изтриването е необратимо. Моля, потвърдете."
 
-
 #: admin_media.php:318 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_manage.php:414 admin_trees_manage.php:425 admin_users.php:211
 #: app/Controller/GedcomRecordController.php:119
@@ -2103,7 +2102,7 @@ msgstr ""
 
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr "Потвърдете изтриването на този файл от списъка с отметки."
+msgstr "Потвърдете изтриването на този файл от списъка с отметки?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
@@ -5171,7 +5170,7 @@ msgstr "Модул за показване и редактиране на пот
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:34
 msgid "Display and manage a user’s favorite pages."
-msgstr "Модул за добавяне и редактиране на потребителски отметки (favorite pages)"
+msgstr "Модул за добавяне и редактиране на потребителски отметки (favorite pages)."
 
 #: app/Module/GoogleMapsModule.php:494
 msgid "Display map coordinates"
@@ -5582,7 +5581,7 @@ msgstr "Въведете или търсете ID на индивида, сем�
 
 #: reportengine.php:152
 msgid "Enter report values"
-msgstr "Въведете опции за съставяне на справката."
+msgstr "Въведете опции за съставяне на справката"
 
 #: search.php:191
 msgid "Entire record"
@@ -5958,7 +5957,7 @@ msgstr "Фамилен навигатор"
 #. I18N: Description of the “GEDCOM News” module
 #: app/Module/FamilyTreeNewsModule.php:63
 msgid "Family news and site announcements."
-msgstr "Новости"
+msgstr "Новости."
 
 #. I18N: A title/heading. %s is an individual’s name
 #: app/Controller/FamilyBookController.php:371
@@ -6942,7 +6941,7 @@ msgstr "Здравейте, %s…"
 #: login.php:375
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Здравейте, %s,"
+msgstr "Здравейте, %s."
 
 #: login.php:307 login.php:544
 msgid "Hello administrator…"
@@ -7369,7 +7368,7 @@ msgstr ""
 
 #: lifespan.php:83
 msgid "Include the individual’s immediate family?"
-msgstr "Добави и неговото семейство."
+msgstr "Добави и неговото семейство?"
 
 #: app/Stats.php:6831
 msgid "India"
@@ -8967,7 +8966,7 @@ msgstr ""
 #: message.php:191
 #, php-format
 msgid "Message successfully sent to %s"
-msgstr "Съобщението до %s е изпратено успешно."
+msgstr "Съобщението до %s е изпратено успешно"
 
 #: message.php:193
 msgid "Message was not sent"
@@ -9632,7 +9631,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
-msgstr "Няма предци в базата данни"
+msgstr "Няма предци в базата данни."
 
 #: admin_trees_config.php:35
 msgid "No calendar conversion"
@@ -9720,7 +9719,7 @@ msgstr "Няма връзка между двамата индивиди."
 
 #: app/Stats.php:5950
 msgid "No logged-in and no anonymous users"
-msgstr "Няма регистрирани потребители и анонимни посетители."
+msgstr "Няма регистрирани потребители и анонимни посетители"
 
 #: app/Module/GoogleMapsModule.php:192
 msgid "No map data for this individual"
@@ -9736,7 +9735,7 @@ msgstr ""
 
 #: app/Module/FamilyTreeNewsModule.php:118
 msgid "No news articles have been submitted."
-msgstr "Няма новости и обяви в базата данни"
+msgstr "Няма новости и обяви в базата данни."
 
 #: app/Module/GoogleMapsModule.php:3860 app/Module/GoogleMapsModule.php:4594
 msgid "No places found"
@@ -9828,7 +9827,7 @@ msgstr ""
 
 #: app/Module/CensusAssistantModule.php:260
 msgid "Not a valid individual, family, or source ID"
-msgstr "Невалидно ID на Индивид, Семейство или Източник."
+msgstr "Невалидно ID на Индивид, Семейство или Източник"
 
 #: admin.php:677
 msgid "Not approved by an administrator"
@@ -10228,7 +10227,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:89
 msgid "PHP blocked the file because of its extension."
-msgstr "Файлът е с недопустимо разширение"
+msgstr "Файлът е с недопустимо разширение."
 
 #: setup.php:139
 #, php-format
@@ -10423,7 +10422,7 @@ msgstr ""
 
 #: admin_site_change.php:374 admin_site_logs.php:313
 msgid "Permanently delete these records?"
-msgstr "Потвърдете окончателното изтриване на тези записи."
+msgstr "Потвърдете окончателното изтриване на тези записи?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:257
 msgid "Perth, Australia"
@@ -10711,7 +10710,7 @@ msgstr "Моля, въведете валиден адрес на е-поща."
 #: app/Module/CensusAssistantModule.php:167 find.php:102 search.php:36
 #: search.php:48
 msgid "Please enter more than one character."
-msgstr "Моля, въведете повече от един символ"
+msgstr "Моля, въведете повече от един символ."
 
 #: message.php:96
 msgid "Please enter some message text before sending."
@@ -11078,7 +11077,7 @@ msgstr ""
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:39
 msgid "Random images from the current family tree."
-msgstr "Случайни изображения от текущото фамилно дърво"
+msgstr "Случайни изображения от текущото фамилно дърво."
 
 #: app/Controller/FamilyController.php:90
 #: app/Module/RelativesTabModule.php:281 edit_interface.php:1803
@@ -12220,7 +12219,7 @@ msgstr "Покажи всички етикети (tags)"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:277
 msgid "Show an age cursor?"
-msgstr "Покажи курсор на възрастовата скала"
+msgstr "Покажи курсор на възрастовата скала?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1367
@@ -12233,7 +12232,7 @@ msgstr "Покажи деца на предци?"
 
 #: app/Module/FamilyTreeStatisticsModule.php:291
 msgid "Show common surnames?"
-msgstr "Покажи най-често срещаните фамилни имена."
+msgstr "Покажи най-често срещаните фамилни имена?"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12366,7 +12365,7 @@ msgstr "Покажи бележки?"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations?"
-msgstr "Покажи професии."
+msgstr "Покажи професии?"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
@@ -12388,7 +12387,7 @@ msgstr "Покажи само индивиди, чийто пол е неизв�
 
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all?"
-msgstr "Покажи само лица, само събития или всички."
+msgstr "Покажи само лица, само събития или всички?"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -12440,11 +12439,11 @@ msgstr "Покажи изследователски задачи, които и�
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences?"
-msgstr "Покажи местожителство."
+msgstr "Покажи местожителство?"
 
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls?"
-msgstr "Покажи бутони за контрол на Слайд-шоу."
+msgstr "Покажи бутони за контрол на Слайд-шоу?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12910,7 +12909,7 @@ msgstr ""
 
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load?"
-msgstr "Стартирай Слайд-шоу при зареждане на страница."
+msgstr "Стартирай Слайд-шоу при зареждане на страница?"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:66
@@ -13394,7 +13393,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:77
 msgid "The file was only partially uploaded. Please try again."
-msgstr "Файлът е качен частично, опитайте отново"
+msgstr "Файлът е качен частично, опитайте отново."
 
 #. I18N: %s is a filename
 #: medialist.php:301 mediaviewer.php:162
@@ -13505,7 +13504,7 @@ msgstr "Мултимедийният файл %s не съществува."
 
 #: mediafirewall.php:38
 msgid "The media file was not found in this family tree."
-msgstr "Мултимедийният файл не е намерен във фамилното дърво"
+msgstr "Мултимедийният файл не е намерен във фамилното дърво."
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13654,7 +13653,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:74
 msgid "The uploaded file exceeds the allowed size."
-msgstr "Файлът превишава допустимия размер"
+msgstr "Файлът превишава допустимия размер."
 
 #: admin_users.php:807
 #, php-format
@@ -13745,7 +13744,7 @@ msgstr ""
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:126
 msgid "There are no facts for this individual."
-msgstr "Няма факти за това лице"
+msgstr "Няма факти за това лице."
 
 #: app/Module/MediaTabModule.php:76
 msgid "There are no media objects for this individual."
@@ -13786,7 +13785,7 @@ msgstr ""
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
-msgstr "Грешка при камване на файл-"
+msgstr "Грешка при камване на файл."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:98
@@ -13904,7 +13903,7 @@ msgstr "Този фамилно дърво е последно актуализ�
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "Последна актуализация: %s"
+msgstr "Последна актуализация: %s."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
@@ -14110,7 +14109,7 @@ msgstr ""
 
 #: mediafirewall.php:402
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Мултимедийният файл е повреден и не може да бъде обозначен с воден знак"
+msgstr "Мултимедийният файл е повреден и не може да бъде обозначен с воден знак."
 
 #: mediaviewer.php:78
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14428,7 +14427,7 @@ msgstr "Четвъртък"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
 msgid "Tick this box to match both upper and lower case letters."
-msgstr "Поставете отметка, за да търсите по заглавни/малки символи"
+msgstr "Поставете отметка, за да търсите по заглавни/малки символи."
 
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:826
@@ -15506,7 +15505,7 @@ msgstr ""
 
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps?"
-msgstr "Фамилни дървета, които ще бъдат включени в картата на сайта."
+msgstr "Фамилни дървета, които ще бъдат включени в картата на сайта?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1036
@@ -15564,7 +15563,7 @@ msgstr "Девича фамилия на съпругата се превръщ�
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr "Фамилия на съпругата се заменя с фамилията на съпруга."
+msgstr "Фамилия на съпругата се заменя с фамилията на съпруга"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 msgid "Wildcards"
@@ -15707,7 +15706,7 @@ msgstr "Заявката за регистрация е потвърдена и 
 
 #: app/Module/UserJournalModule.php:95
 msgid "You have not created any journal items."
-msgstr "Нямате записи в Дневника"
+msgstr "Нямате записи в Дневника."
 
 #: admin_trees_manage.php:198
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
@@ -15744,7 +15743,7 @@ msgstr ""
 
 #: edit_interface.php:1522
 msgid "You must provide a repository name."
-msgstr "Трябва да въведете име на хранилище"
+msgstr "Трябва да въведете име на хранилище."
 
 #: edit_interface.php:1203
 msgid "You must provide a source title"
@@ -19824,345 +19823,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

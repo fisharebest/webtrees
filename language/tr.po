@@ -10208,12 +10208,12 @@ msgstr "PHP uzanti ile dosyayı engelledi."
 #: setup.php:139
 #, php-format
 msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr "PHP uzantısı \"%1$s\" devredişidir. Bunsuz aşağıdaki özellikler çalışmaz: %2$s. Etkinleştirmek için sunucunuzun yöneticisine başvurun."
+msgstr "PHP uzantısı “%1$s” devredişidir. Bunsuz aşağıdaki özellikler çalışmaz: %2$s. Etkinleştirmek için sunucunuzun yöneticisine başvurun."
 
 #: setup.php:128
 #, php-format
 msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-msgstr "PHP uzantısı \"%s\" devredişidir. Bu etkinleştirilene kadar webtrees yükleyemezsiniz. Etkinleştirmek için sunucunuzun yöneticisine başvurun."
+msgstr "PHP uzantısı “%s” devredişidir. Bu etkinleştirilene kadar webtrees yükleyemezsiniz. Etkinleştirmek için sunucunuzun yöneticisine başvurun."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:86
@@ -10227,7 +10227,7 @@ msgstr "PHP bilgisi"
 #: setup.php:148
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr "PHP ayarı \"%1$s\" devredişidir. Bunsuz aşağıdaki özellikler çalışmaz: %2$s. Etkinleştirmek için sunucunuzun yöneticisine başvurun."
+msgstr "PHP ayarı “%1$s” devredişidir. Bunsuz aşağıdaki özellikler çalışmaz: %2$s. Etkinleştirmek için sunucunuzun yöneticisine başvurun."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:211
@@ -13326,7 +13326,7 @@ msgstr "Soyağaçları başarıyla birleştirildi."
 #: action.php:143
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr "Sadece bir üye sahip olan aile \"%s\" silindi."
+msgstr "Sadece bir üye sahip olan aile “%s” silindi."
 
 #: addmedia.php:178 admin_media_upload.php:136
 #, php-format

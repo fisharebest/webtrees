@@ -5690,7 +5690,7 @@ msgstr "Texto exato"
 #: famlist.php:171 indilist.php:172
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Exceto pessoas com \"%s\" como nome de casadas"
+msgstr "Exceto pessoas com “%s” como nome de casadas"
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
@@ -6203,12 +6203,12 @@ msgstr "Nome do arquivo no servidor"
 #: addmedia.php:161 addmedia.php:295 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "Não são permitidos nomes de aquivos contendo o caracter \"%s\"."
+msgstr "Não são permitidos nomes de aquivos contendo o caracter “%s”."
 
 #: addmedia.php:165 addmedia.php:299 admin_media_upload.php:122
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "Não são permitidos nomes de arquivos com a extensão \"%s\"."
+msgstr "Não são permitidos nomes de arquivos com a extensão “%s”."
 
 #: admin.php:852
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
@@ -7359,7 +7359,7 @@ msgstr "Incluir locais totalmente correspondentes"
 #: famlist.php:173 indilist.php:174
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Inclusive pessoas com \"%s\" como nome de casadas"
+msgstr "Inclusive pessoas com “%s” como nome de casadas"
 
 #: app/Module/ClippingsCartModule.php:358
 #: app/Module/ClippingsCartModule.php:692
@@ -10237,12 +10237,12 @@ msgstr "PHP bloqueou o arquivo pela extensão."
 #: setup.php:139
 #, php-format
 msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr "A extensão PHP \"%1$s\" está desabilitada. Sem ela, as seguintes características não funcionarão: %2$s. Por favor solicite para o administrador do seu servidor para habilitá-la."
+msgstr "A extensão PHP “%1$s” está desabilitada. Sem ela, as seguintes características não funcionarão: %2$s. Por favor solicite para o administrador do seu servidor para habilitá-la."
 
 #: setup.php:128
 #, php-format
 msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-msgstr "A extensão PHP \"%s\" está desabilitada. Você não pode instalar webtrees até que ela esteja habilitada. Por favor solicite ao administrador do seu servidor para habilitá-lo."
+msgstr "A extensão PHP “%s” está desabilitada. Você não pode instalar webtrees até que ela esteja habilitada. Por favor solicite ao administrador do seu servidor para habilitá-lo."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:86
@@ -10256,7 +10256,7 @@ msgstr "Informações do PHP"
 #: setup.php:148
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr "Configuração PHP \"%1$s\" está desabilitada. Sem ela, as seguintes características não funcionarão: %2$s. Por favor solicite para o administrador de seu servidor habilitá-la."
+msgstr "Configuração PHP “%1$s” está desabilitada. Sem ela, as seguintes características não funcionarão: %2$s. Por favor solicite para o administrador de seu servidor habilitá-la."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:211
@@ -10842,7 +10842,7 @@ msgstr "Preferências"
 #: admin_modules.php:93
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "Existem preferências para o módulo \"%s\", mas este módulo não existe mais."
+msgstr "Existem preferências para o módulo “%s”, mas este módulo não existe mais."
 
 #. I18N: A configuration setting
 #: admin_users.php:472
@@ -13256,7 +13256,7 @@ msgstr "A lista de Perguntas Mais Freqüentes está vazia."
 #: admin_trees_manage.php:145
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "O arquivo GEDCOM \"%s\" foi importado."
+msgstr "O arquivo GEDCOM “%s” foi importado."
 
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "The Hague, Netherlands"
@@ -13289,13 +13289,13 @@ msgstr "O Administrador será informado e tão logo ele dê permissão, você po
 #: action.php:45
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "As alterações para \"%s\" foram aceitas."
+msgstr "As alterações para “%s” foram aceitas."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:232
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "As alterações para \"%s\" foram rejeitadas."
+msgstr "As alterações para “%s” foram rejeitadas."
 
 #: app/Module/ClippingsCartModule.php:299
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>"
@@ -13327,25 +13327,25 @@ msgstr "Árvore genealógica exportada para %s."
 #: admin_trees_manage.php:76
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "A árvore genealógica \"%s\" já existe."
+msgstr "A árvore genealógica “%s” já existe."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:79
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "A árvore genealógica \"%s\" foi criada."
+msgstr "A árvore genealógica “%s” foi criada."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:56 admin_trees_manage.php:151
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "A árvore genealógica \"%s\" foi excluída."
+msgstr "A árvore genealógica “%s” foi excluída."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:65
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "A árvore genealógica \"%s\" será exibida para visitantes quando eles chegarem neste website."
+msgstr "A árvore genealógica “%s” será exibida para visitantes quando eles chegarem neste website."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13355,7 +13355,7 @@ msgstr "As árvores genealógicas foram mescladas com sucesso."
 #: action.php:143
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr "A família \"%s\" foi excluída, uma vez que só tem um membro."
+msgstr "A família “%s” foi excluída, uma vez que só tem um membro."
 
 #: addmedia.php:178 admin_media_upload.php:136
 #, php-format
@@ -13490,7 +13490,7 @@ msgstr "O link de “%1$s” até “%2$s” foi excluído."
 #: admin_site_merge.php:109
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "O vínculo de \"%1$s\" para \"%2$s\" foi atualizado."
+msgstr "O vínculo de “%1$s” para “%2$s” foi atualizado."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -13522,12 +13522,12 @@ msgstr "Os requisitos de memória e tempo de processamento dependem do número d
 #: admin_modules.php:49
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "O módulo \"%s\" foi desabilitado."
+msgstr "O módulo “%s” foi desabilitado."
 
 #: admin_modules.php:51
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "O módulo \"%s\" foi habilitado."
+msgstr "O módulo “%s” foi habilitado."
 
 #: admin_site_upgrade.php:400
 #, php-format
@@ -13566,17 +13566,17 @@ msgstr "As preferências para a nova árvore genealógica foram atualizadas."
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "As preferências para a árvore genealógica \"%s\" foram atualizadas."
+msgstr "As preferências para a árvore genealógica “%s” foram atualizadas."
 
 #: admin_modules.php:81
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "As preferências para o módulo \"%s\" foram excluídas."
+msgstr "As preferências para o módulo “%s” foram excluídas."
 
 #: app/Module/GoogleMapsModule.php:260
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "As preferências para o módulo \"%s\" foram atualizadas."
+msgstr "As preferências para o módulo “%s” foram atualizadas."
 
 #: setup.php:380
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -13786,7 +13786,7 @@ msgstr[1] "Não existem alterações nos últimos %s dias."
 #: login.php:253
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "Não existe conta com o usuário ou e-mail \"%s\"."
+msgstr "Não existe conta com o usuário ou e-mail “%s”."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -19806,7 +19806,7 @@ msgstr "“%s”"
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "\"%s\" foi adicionado aos seus favoritos."
+msgstr "“%s” foi adicionado aos seus favoritos."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:107
 msgid "…"

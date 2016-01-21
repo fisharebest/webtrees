@@ -2069,7 +2069,7 @@ msgstr ""
 #: edituser.php:320
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "Adakah anda pasti mahu padam \"%s\"?"
+msgstr "Adakah anda pasti mahu padam “%s”?"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
