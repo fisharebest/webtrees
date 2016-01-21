@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-01-17 17:40+0000\n"
-"PO-Revision-Date: 2016-01-18 20:51+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2016-01-21 15:43+0100\n"
+"Last-Translator: Nenko Antonov <office@thedomainkiosk.com>\n"
 "Language-Team: Bulgarian <http://translate.webtrees.net/projects/webtrees/webtrees/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -44,14 +44,14 @@ msgstr " в "
 #: statisticsplot.php:1195 statisticsplot.php:1245 statisticsplot.php:1295
 #: statisticsplot.php:1345
 msgid " per gender"
-msgstr ""
+msgstr " по пол"
 
 #: statisticsplot.php:889 statisticsplot.php:939 statisticsplot.php:993
 #: statisticsplot.php:1043 statisticsplot.php:1097 statisticsplot.php:1147
 #: statisticsplot.php:1197 statisticsplot.php:1247 statisticsplot.php:1297
 #: statisticsplot.php:1347
 msgid " per time period"
-msgstr ""
+msgstr " по времеви период"
 
 #. I18N: Abbreviation for "number %s"
 #: app/Functions/FunctionsPrintFacts.php:213
@@ -700,7 +700,7 @@ msgstr ""
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr "<b>Важно:</b> Информацията с конфиденциален характер, съдържаща се в базата данни, е достъпна само за роднини и близки приятели. От Вас ще се изиска да представите доказателство за роднинска връзка или близко приятелство, преди да получите достъп до информацията с конфиденциален характер. В определени случаи информацията за починали хора може също да бъде с конфиденциален характер. Ако случаят е такъв, вероятно няма достоверна информация за това, дали индивидът е починал или изобщо отсъства допълнителна информация за индивида.<br><br>Преди да зададете Вашия въпрос, моля да проверите данните за този индивид (имена, дати, локации), и да се убедите, че Вашето запитване касае именно него. Ако желаете да промените информацията в базата данни, моля да включите източниците, откъдето е почерпана Вашата информация.<br>"
+msgstr "<b>Важно:</b> Информацията с конфиденциален характер, съдържаща се в базата данни, е достъпна само за роднини и близки приятели. От Вас ще се изиска да представите доказателство за роднинска връзка или близко приятелство, преди да получите достъп до информацията с конфиденциален характер. В определени случаи информацията за починали хора може също да бъде с конфиденциален характер. Ако случаят е такъв, вероятно няма достоверна информация за това, дали индивидът е починал или изобщо отсъства допълнителна информация за индивида.<br><br>Преди да зададете Вашия въпрос, моля да проверите данните за този индивид (имена, дати, локации), и да се убедите, че Вашето запитване касае именно него. Ако желаете да промените информацията в базата данни, моля да включите източниците, откъдето е почерпана Вашата информация."
 
 #: login.php:160
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
@@ -787,7 +787,7 @@ msgstr "Списък на задачи и дейности, свързани с 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "A list of the Hebrew death anniversaries that will occur in the near future."
+msgstr "Списък на предстоящи годишнини на смърт по календар Hebrew ."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
@@ -3199,7 +3199,7 @@ msgstr ""
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
 msgid "CKEditor™"
-msgstr "CKEditor™"
+msgstr ""
 
 #: admin_trees_manage.php:364
 msgid "Calculating…"
@@ -3405,7 +3405,7 @@ msgstr "Промени"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:80
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Промени през последния ден"
@@ -3762,7 +3762,7 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:81
 msgid "Coffee and Cream"
-msgstr "Coffee and Cream"
+msgstr ""
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:82
@@ -3927,7 +3927,7 @@ msgstr ""
 #: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
 #: app/Theme/AbstractTheme.php:1245 app/Theme/AdministrationTheme.php:242
 msgid "Control panel"
-msgstr ""
+msgstr "Административен панел"
 
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:378
 #: app/Module/ClippingsCartModule.php:715
@@ -4241,7 +4241,7 @@ msgstr ""
 
 #: app/Theme/AbstractTheme.php:1038 app/Theme/AbstractTheme.php:1040
 msgid "Customize this page"
-msgstr ""
+msgstr "Настройте тази страница"
 
 #: app/Stats.php:6782
 msgid "Cyprus"
@@ -6737,7 +6737,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:4103 app/Module/GoogleMapsModule.php:4964
 #: app/Module/GoogleMapsModule.php:5001
 msgid "Google Maps™"
-msgstr "Google Maps™"
+msgstr ""
 
 #: app/Module/GoogleMapsModule.php:165 app/Module/GoogleMapsModule.php:196
 #: app/Module/GoogleMapsModule.php:278 app/Module/GoogleMapsModule.php:293
@@ -9333,7 +9333,7 @@ msgstr "Моята страница"
 
 #: app/Theme/AbstractTheme.php:1562
 msgid "My pages"
-msgstr ""
+msgstr "Страници"
 
 #: app/Module/UserWelcomeModule.php:56 app/Theme/AbstractTheme.php:1588
 msgid "My pedigree"
@@ -10493,7 +10493,7 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:88
 msgid "Pink Plastic"
-msgstr "Pink Plastic"
+msgstr ""
 
 #: app/Stats.php:6902
 msgid "Pitcairn"
@@ -13891,7 +13891,7 @@ msgstr[1] ""
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
-msgstr ""
+msgstr "Към това фамилно дърво няма качени снимки."
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
@@ -14243,8 +14243,8 @@ msgstr ""
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Тази страница е посетена %s път."
+msgstr[1] "Тази страница е посетена %s пъти."
 
 #: app/Module/GoogleMapsModule.php:2830
 msgid "This place has no coordinates"
@@ -15611,7 +15611,7 @@ msgstr ""
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:37
 msgid "Yahrzeiten"
-msgstr "Yahrzeiten"
+msgstr "Годишнини"
 
 #: app/Theme/AbstractTheme.php:1027 calendar.php:211 search.php:248
 msgid "Year"
@@ -15984,7 +15984,7 @@ msgstr "след"
 #: app/Date.php:313
 #, php-format
 msgid "after %s"
-msgstr ""
+msgstr "след %s"
 
 #: app/Functions/FunctionsPrint.php:374
 msgid "after death"
@@ -16091,7 +16091,7 @@ msgstr "преди"
 #: app/Date.php:310
 #, php-format
 msgid "before %s"
-msgstr ""
+msgstr "преди %s"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:322
