@@ -991,7 +991,25 @@ function findSpecialChar(field) {
 }
 
 function findFact(field, ged) {
-	return findWindow(ged, "facts", field, {
+	var factType = field.id.substring(0,4);
+	switch (factType) {
+		case "INDI":
+			var factTypeStr = "factINDI";
+			break;
+		case "FAM_":
+			var factTypeStr = "factFAM";
+			break;
+		case "SOUR":
+			var factTypeStr = "factSOUR";
+			break;
+		case "REPO":
+			var factTypeStr = "factREPO";
+			break;
+		default:
+		// else use the default "facts" for advanced place names (or in future search through those in default:)
+		  var factTypeStr = "facts";
+	}
+	return findWindow(ged, factTypeStr, field, {
 		"tags": field.value
 	});
 }
@@ -1296,4 +1314,3 @@ jQuery(".menu-theme").on("click", "li a", function () {
 		location.reload();
 	});
 });
-
