@@ -991,7 +991,34 @@ function findSpecialChar(field) {
 }
 
 function findFact(field, ged) {
-	return findWindow(ged, "facts", field, {
+	switch (field.id.substring(0,10)) {
+		case "INDI_FACTS":
+			var factTypeStr = "factINDI";
+			break;
+		case "FAM_FACTS_":
+			var factTypeStr = "factFAM";
+			break;
+		case "SOUR_FACTS":
+			var factTypeStr = "factSOUR";
+			break;
+		case "REPO_FACTS":
+			var factTypeStr = "factREPO";
+			break;
+		case "ADVANCED_N":
+		  var factTypeStr = "factNAME";
+			break;
+		case "ADVANCED_P":
+			var factTypeStr = "factPLACE";
+			break;
+		default:
+		  if (field.id == "QUICK_REQUIRED_FAMFACTS") {
+				var factTypeStr = "factFAM";
+			}
+			if (field.id == "QUICK_REQUIRED_FACTS") {
+				var factTypeStr = "factINDI";
+			}
+	}
+	return findWindow(ged, factTypeStr, field, {
 		"tags": field.value
 	});
 }
@@ -1296,4 +1323,3 @@ jQuery(".menu-theme").on("click", "li a", function () {
 		location.reload();
 	});
 });
-
