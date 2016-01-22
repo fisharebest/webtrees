@@ -991,23 +991,32 @@ function findSpecialChar(field) {
 }
 
 function findFact(field, ged) {
-	var factType = field.id.substring(0,4);
-	switch (factType) {
-		case "INDI":
+	switch (field.id.substring(0,10)) {
+		case "INDI_FACTS":
 			var factTypeStr = "factINDI";
 			break;
-		case "FAM_":
+		case "FAM_FACTS_":
 			var factTypeStr = "factFAM";
 			break;
-		case "SOUR":
+		case "SOUR_FACTS":
 			var factTypeStr = "factSOUR";
 			break;
-		case "REPO":
+		case "REPO_FACTS":
 			var factTypeStr = "factREPO";
 			break;
+		case "ADVANCED_N":
+		  var factTypeStr = "factNAME";
+			break;
+		case "ADVANCED_P":
+			var factTypeStr = "factPLACE";
+			break;
 		default:
-		// else use the default "facts" for advanced place names (or in future search through those in default:)
-		  var factTypeStr = "facts";
+		  if (field.id == "QUICK_REQUIRED_FAMFACTS") {
+				var factTypeStr = "factFAM";
+			}
+			if (field.id == "QUICK_REQUIRED_FACTS") {
+				var factTypeStr = "factINDI";
+			}
 	}
 	return findWindow(ged, factTypeStr, field, {
 		"tags": field.value

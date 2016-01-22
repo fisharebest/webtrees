@@ -71,11 +71,6 @@ case 'source':
 case 'specialchar':
 	$controller->setPageTitle(I18N::translate('Find a special character'));
 	break;
-case 'facts':
-	$controller
-		->setPageTitle(I18N::translate('Find a fact or event'))
-		->addInlineJavascript('initPickFact("all");');
-	break;
 case 'factINDI':
 	$controller
 		->setPageTitle(I18N::translate('Find a fact or event'))
@@ -95,6 +90,16 @@ case 'factREPO':
 	$controller
 		->setPageTitle(I18N::translate('Find a fact or event'))
 		->addInlineJavascript('initPickFact("repo");');
+	break;
+case 'factNAME':
+	$controller
+		->setPageTitle(I18N::translate('Find a fact or event'))
+		->addInlineJavascript('initPickFact("name");');
+	break;
+	case 'factPLACE':
+		$controller
+			->setPageTitle(I18N::translate('Find a fact or event'))
+			->addInlineJavascript('initPickFact("place");');
 }
 $controller->pageHeader();
 
@@ -291,7 +296,7 @@ if ($type == 'specialchar') {
 }
 
 // Show facts
-if ($type == "facts" || $type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type == "factREPO") {
+if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type == "factREPO" || $type == "factNAME" || $type == "factPLACE") {
 	echo '<div id="find-facts-header">
 	<form name="filterfacts" method="get" action="find.php"
 	input type="hidden" name="type" value="facts">
@@ -452,10 +457,23 @@ if ($type == "facts" || $type == "factINDI" || $type == "factFAM" || $type == "f
 				}
 				?>];
 				break;
-			default:
+			case "place":
 				DefaultTags=[<?php
 				$firstFact = true;
-				foreach (GedcomTag::getPicklistFacts("all") as $factId => $factName) {
+				foreach (GedcomTag::getPicklistFacts("place") as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
+			case "name":
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts("name") as $factId => $factName) {
 					if ($firstFact) {
 						$firstFact = false;
 					} else {
