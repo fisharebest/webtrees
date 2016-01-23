@@ -67,9 +67,9 @@ case 'save':
 
 		if ($user_id === 0) {
 			// Create a new user
-			if (User::findByIdentifier($username)) {
+			if (User::findByUserName($username)) {
 				FlashMessages::addMessage(I18N::translate('Duplicate user name. A user with that user name already exists. Please choose another user name.'));
-			} elseif (User::findByIdentifier($email)) {
+			} elseif (User::findByEmail($email)) {
 				FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
 			} elseif ($pass1 !== $pass2) {
 				FlashMessages::addMessage(I18N::translate('Passwords do not match.'));

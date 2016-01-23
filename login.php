@@ -270,9 +270,9 @@ case 'register':
 	if (Session::get('good_to_send') && $user_name && $user_password01 && $user_password01 == $user_password02 && $user_realname && $user_email && $user_comments) {
 
 		// These validation errors cannot be shown in the client.
-		if (User::findByIdentifier($user_name)) {
+		if (User::findByUserName($user_name)) {
 			FlashMessages::addMessage(I18N::translate('Duplicate user name. A user with that user name already exists. Please choose another user name.'));
-		} elseif (User::findByIdentifier($user_email)) {
+		} elseif (User::findByEmail($user_email)) {
 			FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
 		} elseif (preg_match('/(?!' . preg_quote(WT_BASE_URL, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $user_comments, $match)) {
 			FlashMessages::addMessage(
@@ -497,7 +497,7 @@ case 'userverify':
 	}
 
 	// Change to the new user’s language
-	$user = User::findByIdentifier($user_name);
+	$user = User::findByUserName($user_name);
 
 	I18N::init($user->getPreference('language'));
 
@@ -538,7 +538,7 @@ case 'verify_hash':
 	$webmaster = User::find($WT_TREE->getPreference('WEBMASTER_USER_ID'));
 	I18N::init($webmaster->getPreference('language'));
 
-	$user          = User::findByIdentifier($user_name);
+	$user          = User::findByUserName($user_name);
 	$edit_user_url = WT_BASE_URL . "admin_users.php?action=edit&amp;user_id=" . $user->getUserId();
 	$mail1_body    =
 		I18N::translate('Hello administrator…') .

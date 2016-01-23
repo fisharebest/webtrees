@@ -32,7 +32,7 @@ $to         = Filter::post('to', null, Filter::get('to'));
 $method     = Filter::post('method', 'messaging|messaging2|messaging3|mailto|none', Filter::get('method', 'messaging|messaging2|messaging3|mailto|none', 'messaging2'));
 $url        = Filter::postUrl('url', Filter::getUrl('url'));
 
-$to_user = User::findByIdentifier($to);
+$to_user = User::findByUserName($to);
 
 $controller = new SimpleController;
 $controller
