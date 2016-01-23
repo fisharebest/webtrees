@@ -421,7 +421,7 @@ class I18N {
 				$translation  = new Translation($translation_file);
 				$translations = array_merge($translations, $translation->asArray());
 			}
-			if ($cache_dir_exists) { // During setup, we may not have been able to create it.
+			if ($cache_dir_exists && is_writeable($cache_file)) { // During setup, we may not have been able to create it.
 				file_put_contents($cache_file, '<' . '?php return ' . var_export($translations, true) . ';');
 			}
 		} else {
