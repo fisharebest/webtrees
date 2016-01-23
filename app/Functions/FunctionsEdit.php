@@ -621,7 +621,7 @@ class FunctionsEdit {
 				if ($value) {
 					echo 'checked';
 				}
-				echo ' onclick="if (this.checked) ', $element_id, '.value=\'Y\'; else ', $element_id, '.value=\'\';">';
+				echo ' onclick="document.getElementById(\'' . $element_id . '\').value = (this.checked) ? \'Y\' : \'\';">';
 				echo I18N::translate('yes');
 			}
 
