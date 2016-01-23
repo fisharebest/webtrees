@@ -71,10 +71,40 @@ case 'source':
 case 'specialchar':
 	$controller->setPageTitle(I18N::translate('Find a special character'));
 	break;
-case 'facts':
+case 'factINDI':
 	$controller
 		->setPageTitle(I18N::translate('Find a fact or event'))
-		->addInlineJavascript('initPickFact();');
+		->addInlineJavascript('initPickFact("indi");');
+	break;
+case 'factFAM':
+	$controller
+		->setPageTitle(I18N::translate('Find a fact or event'))
+		->addInlineJavascript('initPickFact("fam");');
+	break;
+case 'factSOUR':
+	$controller
+		->setPageTitle(I18N::translate('Find a fact or event'))
+		->addInlineJavascript('initPickFact("sour");');
+	break;
+case 'factREPO':
+	$controller
+		->setPageTitle(I18N::translate('Find a fact or event'))
+		->addInlineJavascript('initPickFact("repo");');
+	break;
+case 'factNAME':
+	$controller
+		->setPageTitle(I18N::translate('Find a fact or event'))
+		->addInlineJavascript('initPickFact("name");');
+	break;
+case 'factPLACE':
+	$controller
+		->setPageTitle(I18N::translate('Find a fact or event'))
+		->addInlineJavascript('initPickFact("place");');
+	break;
+case 'factERR':
+	$controller
+		->setPageTitle(I18N::translate('Find a fact or event'))
+		->addInlineJavascript('initPickFact("error");');
 	break;
 }
 $controller->pageHeader();
@@ -272,7 +302,7 @@ if ($type == 'specialchar') {
 }
 
 // Show facts
-if ($type == "facts") {
+if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type == "factREPO" || $type == "factNAME" || $type == "factPLACE" || $type == "factERR") {
 	echo '<div id="find-facts-header">
 	<form name="filterfacts" method="get" action="find.php"
 	input type="hidden" name="type" value="facts">
@@ -377,20 +407,102 @@ if ($type == "facts") {
 		}
 	};
 
-	function initPickFact() {
+	function initPickFact(factType) {
 		var n,i,j,tmp,preselectedDefaultTags="\x01<?php foreach ($preselDefault as $p) { echo addslashes($p), '\\x01'; } ?>";
 
-		DefaultTags=[<?php
-		$firstFact = true;
-		foreach (GedcomTag::getPicklistFacts() as $factId => $factName) {
-			if ($firstFact) {
-				$firstFact = false;
-			} else {
-				echo ',';
-			}
-			echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+		switch (factType) {
+			case "indi":
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts("indi") as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
+			case "fam":
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts("fam") as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
+			case "sour":
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts("sour") as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
+			case "repo":
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts("repo") as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
+			case "place":
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts("place") as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
+			case "name":
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts("name") as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
+			default:
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts("unknown") as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
 		}
-		?>];
 		TheList=document.getElementById("tbDefinedTags");
 		i=document.getElementById("tbxFilter");
 		i.onkeypress=i.onchange=i.onkeyup=function() {
