@@ -422,6 +422,8 @@ $old_files = array(
 	WT_ROOT . 'modules_v3/GEDFact_assistant/census/date.js',
 	WT_ROOT . 'modules_v3/GEDFact_assistant/census/dynamicoptionlist.js',
 	WT_ROOT . 'packages/jquery-cookie-1.4.1/jquery.cookie.js',
+	// Removed in 1.7.4
+	WT_ROOT . 'assets/js-1.7.2',
 );
 
 // Delete old files (if we can).
