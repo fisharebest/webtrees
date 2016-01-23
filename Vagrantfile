@@ -51,6 +51,10 @@ Vagrant.configure(2) do |config|
   #
   # View the documentation for the provider you are using for more
   # information on available options.
+  config.vm.provider "virtualbox" do |vb|
+    # Customize the amount of memory on the VM:
+    vb.memory = "1536"
+  end
 
   # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
   # such as FTP and Heroku are also available. See the documentation at
@@ -70,7 +74,7 @@ Vagrant.configure(2) do |config|
     sudo apt-get update
     sudo apt-get -y upgrade
     # LAMP server
-    sudo apt-get -y install git lamp-server^ php5-gd
+    sudo apt-get -y install git lamp-server^ php5-gd php5-curl
     [ -L /var/www ] || sudo rm -Rf /var/www && sudo ln -s /vagrant /var/www
 		sudo service apache2 restart
     # Composer
