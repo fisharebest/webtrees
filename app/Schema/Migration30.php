@@ -48,7 +48,7 @@ class Migration30 implements MigrationInterface {
 			"(-1, 'EXPAND_SOURCES', '0')," .
 			"(-1, 'FAM_FACTS_ADD', 'CENS,MARR,RESI,SLGS,MARR_CIVIL,MARR_RELIGIOUS,MARR_PARTNERS,RESN')," .
 			"(-1, 'FAM_FACTS_QUICK', 'MARR,DIV,_NMR')," .
-			"(-1, 'FAM_FACTS_UNIQUE', 'NCHI,MARL,DIV,ANUL,DIVF,ENGA,MARB,MARC,MARS')," .
+			"(-1, 'FAM_FACTS_UNIQUE', 'NCHI,MARL,DIV,ANUL,DIVF,ENGA,MARB,MARC,MARS,_NMR')," .
 			"(-1, 'FAM_ID_PREFIX', 'F')," .
 			"(-1, 'FORMAT_TEXT', 'markdown')," .
 			"(-1, 'FULL_SOURCES', '0')," .
