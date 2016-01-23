@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-01-17 17:40+0000\n"
-"PO-Revision-Date: 2016-01-21 15:43+0100\n"
+"PO-Revision-Date: 2016-01-23 18:32+0100\n"
 "Last-Translator: Nenko Antonov <office@thedomainkiosk.com>\n"
 "Language-Team: Bulgarian <http://translate.webtrees.net/projects/webtrees/webtrees/bg/>\n"
 "Language: bg\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr " но подробностите са неизведстни"
+msgstr " но подробностите са неизвестни"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
