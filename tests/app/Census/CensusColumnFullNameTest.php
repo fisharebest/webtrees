@@ -16,6 +16,7 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 use Mockery;
 
@@ -36,9 +37,11 @@ class CensusColumnFullNameTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testFullName() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getFullName')->andReturn('Joe Bloggs');
+		$individual->shouldReceive('getAllNames')->andReturn(array(array('full' =>'Joe Bloggs')));
+		$individual->shouldReceive('getSpouseFamilies')->andReturn(array());
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+		$census->shouldReceive('censusDate')->andReturn('');
 
 		$column = new CensusColumnFullName($census, '', '');
 
