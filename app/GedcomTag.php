@@ -1819,77 +1819,73 @@ class GedcomTag {
 	 *
 	 * @return string[]
 	 */
-	public static function getPicklistFacts($factType) {
-		switch ($factType) {
-			case "sour":
-				$tags = array(
-					// Facts for sources
-					'DATA', 'AUTH', 'TITL', 'ABBR', 'PUBL', 'TEXT', 'REPO', 'REFN', 'RIN',
-					'CHAN', 'NOTE', 'SHARED_NOTE', 'OBJE',
-					// non standard tags
-					'RESN',
-				);
-				break;
-			case "fam":
-				$tags = array(
-					// Facts for families, left out HUSB, WIFE & CHIL links
-					'RESN', 'ANUL', 'CENS', 'DIV', 'DIVF', 'ENGA', 'MARB', 'MARC',
-					'MARR', 'MARL', 'MARS', 'RESI', 'EVEN', 'NCHI', 'SUBM', 'SLGS',
-					'REFN', 'RIN', 'CHAN', 'NOTE', 'SHARED_NOTE', 'SOUR', 'OBJE',
-					// non standard tags
-					'_NMR', 'MARR_CIVIL', 'MARR_RELIGIOUS', 'MARR_PARTNERS', 'MARR_UNKNOWN',
-					'_COML', '_MBON', '_MARI', '_SEPR', '_TODO',
-				);
+	public static function getPicklistFacts($fact_type) {
+		switch ($fact_type) {
+		case 'INDI':
+			$tags = array(
+				// Facts, attributes for individuals (no links to FAMs)
+				'RESN', 'NAME', 'SEX', 'BIRT', 'CHR', 'DEAT', 'BURI', 'CREM',
+				'ADOP', 'BAPM', 'BARM', 'BASM', 'BLES', 'CHRA', 'CONF', 'FCOM', 'ORDN',
+				'NATU', 'EMIG', 'IMMI', 'CENS', 'PROB', 'WILL', 'GRAD', 'RETI', 'EVEN',
+				'CAST', 'DSCR', 'EDUC', 'IDNO', 'NATI', 'NCHI', 'NMR',
+				'OCCU', 'PROP', 'RELI', 'RESI', 'SSN', 'TITL', 'FACT',
+				'BAPL', 'CONL', 'ENDL',	'SLGC',
+				'SUBM', 'ASSO', 'ALIA', 'ANCI', 'DESI', 'RFN', 'AFN',
+				'REFN', 'RIN', 'CHAN', 'NOTE', 'SHARED_NOTE', 'SOUR', 'OBJE',
+				// non standard tags
+				'_BRTM', '_DEG', '_EYEC', '_FNRL', '_HAIR', '_HEIG', '_HNM', '_HOL',
+				'_INTE', '_MDCL', '_MEDC', '_MILI', '_MILT', '_NAME', '_NAMS',
+				'_NLIV', '_NMAR', '_PRMN',  '_TODO', '_UID', '_WEIG', '_YART',
+			);
 			break;
-			case "repo":
-				$tags = array(
-					// Facts for repositories
-					'NAME', 'ADDR', 'PHON', 'EMAIL', 'FAX', 'WWW',
-					'NOTE', 'SHARED_NOTE', 'REFN', 'RIN', 'CHAN',
-					// non standard tags
-					'RESN',
-				);
-				break;
-			case "place":
-				$tags = array(
-					// Facts for places
-					'PLAC', 'FONE', 'ROMN', 'MAP', 'NOTE', 'SHARED_NOTE',
-					// non standard tags
-					'_HEB',
-				);
-				break;
-			case "name":
-				$tags = array(
-					// Facts subordinate to NAME
-					'TYPE', 'NPFX', 'GIVN', 'NICK', 'SPFX', 'SURN', 'NSFX',
-					'NOTE', 'SHARED_NOTE', 'SOUR', 'FONE', 'ROMN',
-					// non standard tbDefinedTags
-					'_HEB', '_AKA',
-				);
-				break;
-			case "indi":
-				$tags = array(
-					// Facts, attributes for individuals (no links to FAMs)
-					'RESN', 'NAME', 'SEX', 'BIRT', 'CHR', 'DEAT', 'BURI', 'CREM',
-					'ADOP', 'BAPM', 'BARM', 'BASM', 'BLES', 'CHRA', 'CONF', 'FCOM', 'ORDN',
-					'NATU', 'EMIG', 'IMMI', 'CENS', 'PROB', 'WILL', 'GRAD', 'RETI', 'EVEN',
-					'CAST', 'DSCR', 'EDUC', 'IDNO', 'NATI', 'NCHI', 'NMR',
-					'OCCU', 'PROP', 'RELI', 'RESI', 'SSN', 'TITL', 'FACT',
-					'BAPL', 'CONL', 'ENDL',	'SLGC',
-					'SUBM', 'ASSO', 'ALIA', 'ANCI', 'DESI', 'RFN', 'AFN',
-					'REFN', 'RIN', 'CHAN', 'NOTE', 'SHARED_NOTE', 'SOUR', 'OBJE',
-					// non standard tags
-					'_BRTM', '_DEG', '_EYEC', '_FNRL', '_HAIR', '_HEIG', '_HNM', '_HOL',
-					'_INTE', '_MDCL', '_MEDC', '_MILI', '_MILT', '_NAME', '_NAMS',
-					'_NLIV', '_NMAR', '_PRMN',  '_TODO', '_UID', '_WEIG', '_YART',
-				);
-				break;
-			default:
-			// This should only appear if an unknown field was used
-				$tags = array(
-					'_TODO',
-				);
+		case 'FAM':
+			$tags = array(
+				// Facts for families, left out HUSB, WIFE & CHIL links
+				'RESN', 'ANUL', 'CENS', 'DIV', 'DIVF', 'ENGA', 'MARB', 'MARC',
+				'MARR', 'MARL', 'MARS', 'RESI', 'EVEN', 'NCHI', 'SUBM', 'SLGS',
+				'REFN', 'RIN', 'CHAN', 'NOTE', 'SHARED_NOTE', 'SOUR', 'OBJE',
+				// non standard tags
+				'_NMR', 'MARR_CIVIL', 'MARR_RELIGIOUS', 'MARR_PARTNERS', 'MARR_UNKNOWN',
+				'_COML', '_MBON', '_MARI', '_SEPR', '_TODO',
+			);
+		break;
+		case 'SOUR':
+			$tags = array(
+				// Facts for sources
+				'DATA', 'AUTH', 'TITL', 'ABBR', 'PUBL', 'TEXT', 'REPO', 'REFN', 'RIN',
+				'CHAN', 'NOTE', 'SHARED_NOTE', 'OBJE',
+				'RESN',
+			);
+			break;
+		case 'REPO':
+			$tags = array(
+				// Facts for repositories
+				'NAME', 'ADDR', 'PHON', 'EMAIL', 'FAX', 'WWW',
+				'NOTE', 'SHARED_NOTE', 'REFN', 'RIN', 'CHAN',
+				'RESN',
+			);
+			break;
+		case 'PLAC':
+			$tags = array(
+				// Facts for places
+				'FONE', 'ROMN',
+				// non standard tags
+				'_HEB',
+			);
+			break;
+		case 'NAME':
+			$tags = array(
+				// Facts subordinate to NAME
+				'NICK', 'FONE', 'ROMN',
+				// non standard tags
+				'_HEB', '_AKA',
+			);
+			break;
+		default:
+			$tags = array();
+			break;
 		}
+
 		$facts = array();
 		foreach ($tags as $tag) {
 			$facts[$tag] = self::getLabel($tag, null);

@@ -74,37 +74,32 @@ case 'specialchar':
 case 'factINDI':
 	$controller
 		->setPageTitle(I18N::translate('Find a fact or event'))
-		->addInlineJavascript('initPickFact("indi");');
+		->addInlineJavascript('initPickFact("INDI");');
 	break;
 case 'factFAM':
 	$controller
 		->setPageTitle(I18N::translate('Find a fact or event'))
-		->addInlineJavascript('initPickFact("fam");');
+		->addInlineJavascript('initPickFact("FAM");');
 	break;
 case 'factSOUR':
 	$controller
 		->setPageTitle(I18N::translate('Find a fact or event'))
-		->addInlineJavascript('initPickFact("sour");');
+		->addInlineJavascript('initPickFact("SOUR");');
 	break;
 case 'factREPO':
 	$controller
 		->setPageTitle(I18N::translate('Find a fact or event'))
-		->addInlineJavascript('initPickFact("repo");');
+		->addInlineJavascript('initPickFact("REPO");');
 	break;
 case 'factNAME':
 	$controller
 		->setPageTitle(I18N::translate('Find a fact or event'))
-		->addInlineJavascript('initPickFact("name");');
+		->addInlineJavascript('initPickFact("NAME");');
 	break;
-case 'factPLACE':
+case 'factPLAC':
 	$controller
 		->setPageTitle(I18N::translate('Find a fact or event'))
-		->addInlineJavascript('initPickFact("place");');
-	break;
-case 'factERR':
-	$controller
-		->setPageTitle(I18N::translate('Find a fact or event'))
-		->addInlineJavascript('initPickFact("error");');
+		->addInlineJavascript('initPickFact("PLAC");');
 	break;
 }
 $controller->pageHeader();
@@ -302,7 +297,7 @@ if ($type == 'specialchar') {
 }
 
 // Show facts
-if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type == "factREPO" || $type == "factNAME" || $type == "factPLACE" || $type == "factERR") {
+if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type == "factREPO" || $type == "factNAME" || $type == "factPLAC") {
 	echo '<div id="find-facts-header">
 	<form name="filterfacts" method="get" action="find.php"
 	input type="hidden" name="type" value="facts">
@@ -411,10 +406,10 @@ if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type ==
 		var n,i,j,tmp,preselectedDefaultTags="\x01<?php foreach ($preselDefault as $p) { echo addslashes($p), '\\x01'; } ?>";
 
 		switch (factType) {
-			case "indi":
+			case "INDI":
 				DefaultTags=[<?php
 				$firstFact = true;
-				foreach (GedcomTag::getPicklistFacts("indi") as $factId => $factName) {
+				foreach (GedcomTag::getPicklistFacts('INDI') as $factId => $factName) {
 					if ($firstFact) {
 						$firstFact = false;
 					} else {
@@ -424,10 +419,10 @@ if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type ==
 				}
 				?>];
 				break;
-			case "fam":
+			case "FAM":
 				DefaultTags=[<?php
 				$firstFact = true;
-				foreach (GedcomTag::getPicklistFacts("fam") as $factId => $factName) {
+				foreach (GedcomTag::getPicklistFacts('FAM') as $factId => $factName) {
 					if ($firstFact) {
 						$firstFact = false;
 					} else {
@@ -437,10 +432,10 @@ if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type ==
 				}
 				?>];
 				break;
-			case "sour":
+			case "SOUR":
 				DefaultTags=[<?php
 				$firstFact = true;
-				foreach (GedcomTag::getPicklistFacts("sour") as $factId => $factName) {
+				foreach (GedcomTag::getPicklistFacts('SOUR') as $factId => $factName) {
 					if ($firstFact) {
 						$firstFact = false;
 					} else {
@@ -450,10 +445,10 @@ if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type ==
 				}
 				?>];
 				break;
-			case "repo":
+			case "REPO":
 				DefaultTags=[<?php
 				$firstFact = true;
-				foreach (GedcomTag::getPicklistFacts("repo") as $factId => $factName) {
+				foreach (GedcomTag::getPicklistFacts('REPO') as $factId => $factName) {
 					if ($firstFact) {
 						$firstFact = false;
 					} else {
@@ -463,10 +458,10 @@ if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type ==
 				}
 				?>];
 				break;
-			case "place":
+			case "PLAC":
 				DefaultTags=[<?php
 				$firstFact = true;
-				foreach (GedcomTag::getPicklistFacts("place") as $factId => $factName) {
+				foreach (GedcomTag::getPicklistFacts('PLAC') as $factId => $factName) {
 					if ($firstFact) {
 						$firstFact = false;
 					} else {
@@ -476,10 +471,10 @@ if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type ==
 				}
 				?>];
 				break;
-			case "name":
+			case "NAME":
 				DefaultTags=[<?php
 				$firstFact = true;
-				foreach (GedcomTag::getPicklistFacts("name") as $factId => $factName) {
+				foreach (GedcomTag::getPicklistFacts('NAME') as $factId => $factName) {
 					if ($firstFact) {
 						$firstFact = false;
 					} else {
@@ -490,17 +485,7 @@ if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type ==
 				?>];
 				break;
 			default:
-				DefaultTags=[<?php
-				$firstFact = true;
-				foreach (GedcomTag::getPicklistFacts("unknown") as $factId => $factName) {
-					if ($firstFact) {
-						$firstFact = false;
-					} else {
-						echo ',';
-					}
-					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
-				}
-				?>];
+				DefaultTags=[];
 				break;
 		}
 		TheList=document.getElementById("tbDefinedTags");
@@ -561,12 +546,12 @@ if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type ==
 	</form></div>';
 }
 
-if ($action == "filter") {
+if ($action === 'filter') {
 	$filter       = trim($filter);
 	$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 
 	// Output Individual
-	if ($type == "indi") {
+	if ($type === 'indi') {
 		echo '<div id="find-output">';
 		$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
 		if ($myindilist) {
