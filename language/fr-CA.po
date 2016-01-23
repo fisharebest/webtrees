@@ -3385,11 +3385,11 @@ msgstr "Changer les blocs de la page «&nbsp;Ma page&nbsp;» de cet utilisateur"
 
 #: admin_trees_manage.php:405 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr "Changer les blocs de la page « Accueil »"
+msgstr "Changer les blocs de la page «&nbsp;Accueil&nbsp;»"
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr "Changer les blocs de la page « Ma page »"
+msgstr "Changer les blocs de la page «&nbsp;Ma page&nbsp;»"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Functions/FunctionsPrintLists.php:1772
@@ -7321,7 +7321,7 @@ msgstr "Options d’importation"
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "Dans un arbre généalogique, chaque enregistrement a un identifiant (un «“nbsp;XREF”nbsp;») du genre «“nbsp;F123”nbsp;» ou «“nbsp;R14”nbsp;»."
+msgstr "Dans un arbre généalogique, chaque enregistrement a un identifiant (un «&nbsp;XREF&nbsp;») du genre «&nbsp;F123&nbsp;» ou «&nbsp;R14&nbsp;»."
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
@@ -7789,7 +7789,7 @@ msgstr "Conserver les objets médias"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2291
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:550
 msgid "Keep the existing “last change” information"
-msgstr "Conserver l’information existante relative à la « dernière modification »"
+msgstr "Conserver l’information existante relative à la «&nbsp;dernière modification&nbsp;»"
 
 #: app/Stats.php:6844
 msgid "Kenya"
@@ -10839,7 +10839,7 @@ msgstr "Préférences"
 #: admin_modules.php:93
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "Des préférences sont définies pour le module «“nbsp;%s”nbsp;», mais celui-ci n’existe plus."
+msgstr "Des préférences sont définies pour le module «&nbsp;%s&nbsp;», mais celui-ci n’existe plus."
 
 #. I18N: A configuration setting
 #: admin_users.php:472
@@ -12717,7 +12717,7 @@ msgstr "Certains noms de lieux peuvent contenir des préfixes ou des suffixes op
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1560
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Certains thèmes peuvent afficher des icônes dans l’onglet « Faits et événements »."
+msgstr "Certains thèmes peuvent afficher des icônes dans l’onglet «&nbsp;Faits et événements&nbsp;»."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:520
@@ -13487,7 +13487,7 @@ msgstr "Le lien de «&nbsp;%1$s&nbsp;» à «&nbsp;%2$s&nbsp;» a été supprim�
 #: admin_site_merge.php:109
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "Le lien de «“nbsp;%1$s”nbsp;» à «“nbsp;%2$s”nbsp;» a été mis à jour."
+msgstr "Le lien de «&nbsp;%1$s&nbsp;» à «&nbsp;%2$s&nbsp;» a été mis à jour."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -13563,7 +13563,7 @@ msgstr "Les préférences pour les nouveaux arbres généalogiques ont été mis
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Les préférences de l’arbre généalogique «nbsp;%snbsp;» ont été mises à jour."
+msgstr "Les préférences de l’arbre généalogique &nbsp;%&nbsp;» ont été mises à jour."
 
 #: admin_modules.php:81
 #, php-format
@@ -13573,7 +13573,7 @@ msgstr "Les préférences du module «&nbsp;%s&nbsp;» ont été effacées."
 #: app/Module/GoogleMapsModule.php:260
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Les préférences du module «“nbsp;%s”nbsp;» ont été mises à jour."
+msgstr "Les préférences du module «&nbsp;%s&nbsp;» ont été mises à jour."
 
 #: setup.php:380
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -13592,7 +13592,7 @@ msgstr "Enregistrement copié dans le presse-papiers."
 #: admin_site_merge.php:168
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "Les enregistrements «“nbsp;%1$s”nbsp;» et «“nbsp;%2$s”nbsp;» ont été fusionnés."
+msgstr "Les enregistrements «&nbsp;%1$s&nbsp;» et «&nbsp;%2$s&nbsp;» ont été fusionnés."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "The regex appears to contain an error. It can’t be used."
@@ -13645,8 +13645,8 @@ msgstr "Le fuseau horaire est requis pour les calculs de la date, comme connaît
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "Les deux arbres généalogiques ont %1$s enregistrement qui utilise le même code («“nbsp;XREF”nbsp;»)."
-msgstr[1] "Les deux arbres généalogiques ont %1$s enregistrements qui utilisent le même identifiant («“nbsp;XREF”nbsp;»)."
+msgstr[0] "Les deux arbres généalogiques ont %1$s enregistrement qui utilise le même code («&nbsp;XREF&nbsp;»)."
+msgstr[1] "Les deux arbres généalogiques ont %1$s enregistrements qui utilisent le même identifiant («&nbsp;XREF&nbsp;»)."
 
 #: admin_site_upgrade.php:504
 msgid "The upgrade is complete."
@@ -13741,7 +13741,7 @@ msgstr "Thèmes"
 
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting “default theme” at one level will use the theme at the next level."
-msgstr "Les thèmes peuvent être sélectionnés à trois niveaux&nbsp;: utilisateur, arbre généalogique et site web. Les préférences de l’utilisateur ont priorité sur celles de l’arbre généalogique, et ces dernières ont priorité sur celles du site. La sélection d’un « thème par défaut » à un niveau, sera répercutée au niveau suivant."
+msgstr "Les thèmes peuvent être sélectionnés à trois niveaux&nbsp;: utilisateur, arbre généalogique et site web. Les préférences de l’utilisateur ont priorité sur celles de l’arbre généalogique, et ces dernières ont priorité sur celles du site. La sélection d’un «&nbsp;thème par défaut&nbsp;» à un niveau, sera répercutée au niveau suivant."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:126
@@ -13783,7 +13783,7 @@ msgstr[1] "Aucune modification depuis %s jours."
 #: login.php:253
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "Il n’y a pas de compte avec le nom d’utilisateur ou le courriel «“nbsp;%s”nbsp;»."
+msgstr "Il n’y a pas de compte avec le nom d’utilisateur ou le courriel «&nbsp;%s&nbsp;»."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -13888,8 +13888,8 @@ msgstr "Famille sans enfant"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Cet arbre généalogique a %s enregistrement qui utilise le même identifiant («“nbsp;XREF”nbsp;») qu’un autre arbre."
-msgstr[1] "Cet arbre généalogique a %s enregistrements qui utilisent le même identifiant («“nbsp;XREF”nbsp;») qu’un autre arbre."
+msgstr[0] "Cet arbre généalogique a %s enregistrement qui utilise le même identifiant («&nbsp;XREF&nbsp;») qu’un autre arbre."
+msgstr[1] "Cet arbre généalogique a %s enregistrements qui utilisent le même identifiant («&nbsp;XREF&nbsp;») qu’un autre arbre."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -13991,7 +13991,7 @@ msgstr "Il s’agit d’un lien vers vos propre information dans l’arbre gén�
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1411
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-msgstr "Ceci est un résumé des ordonnances <abbr title=\"Église de Jésus-Christ des saints des derniers jours\">SDJ</abbr> pour un individu. «“nbsp;B”nbsp;» indique un baptême SDJ. «“nbsp;E”nbsp;» une dotation SDJ. «“nbsp;S”nbsp;» un scellement SDJ au conjoint. «“nbsp;P”nbsp;» un scellement SDJ de l’enfant aux parents."
+msgstr "Ceci est un résumé des ordonnances <abbr title=\"Église de Jésus-Christ des saints des derniers jours\">SDJ</abbr> pour un individu. «&nbsp;B&nbsp;» indique un baptême SDJ. «&nbsp;E&nbsp;» une dotation SDJ. «&nbsp;S&nbsp;» un scellement SDJ au conjoint. «&nbsp;P&nbsp;» un scellement SDJ de l’enfant aux parents."
 
 #: setup.php:289 setup.php:293
 msgid "This is case sensitive."
@@ -14004,7 +14004,7 @@ msgstr "Le nom est sensible à la casse. Si une base de données portant ce nom 
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1372
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr "Ceci est le réglage initial pour l’option « Afficher les détails » sur les graphiques."
+msgstr "Ceci est le réglage initial pour l’option «&nbsp;Afficher les détails&nbsp;» sur les graphiques."
 
 #: admin.php:588 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
@@ -14400,11 +14400,11 @@ msgstr "Ce site est momentanément indisponible"
 #: admin_trees_manage.php:196
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Toutes les données généalogiques de «“nbsp;%s”nbsp;» seront effacées, elles seront remplacées par les données provenant d’un autre GEDCOM."
+msgstr "Toutes les données généalogiques de «&nbsp;%s&nbsp;» seront effacées, elles seront remplacées par les données provenant d’un autre GEDCOM."
 
 #: admin_trees_places.php:97
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Cela mettra à jour la partie de plus haut niveau ou des parties du nom de lieu. Par exemple, « Mexique » correspondra à « Quintana Roo, Mexique », mais pas à « Santa Fe, Nouveau-Mexique »."
+msgstr "Cela mettra à jour la partie de plus haut niveau ou des parties du nom de lieu. Par exemple, «&nbsp;Mexique&nbsp;» correspondra à «&nbsp;Quintana Roo, Mexique&nbsp;», mais pas à «&nbsp;Santa Fe, Nouveau-Mexique&nbsp;»."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:668
@@ -15045,7 +15045,7 @@ msgstr "Utiliser un serveur SMTP pour envoyer les messages"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Utiliser un «“nbsp;?”nbsp;» correspond à un seul caractère, utiliser «“nbsp;*”nbsp;» correspond à zéro ou plusieurs caractères."
+msgstr "Utiliser un «&nbsp;?&nbsp;» correspond à un seul caractère, utiliser «&nbsp;*&nbsp;» correspond à zéro ou plusieurs caractères."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:342 login.php:441
@@ -15459,7 +15459,7 @@ msgstr "Sahara occidental"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:2261
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Quand un enregistrement est modifié, l’utilisateur et l’estampille temporelle (horodatage) sont enregistrés. Parfois on souhaite conserver l’information existante de la « dernière modification », par exemple si on apporte des corrections mineures à des données d’un autre utilisateur. Cette option détermine si la fonction est active par défaut."
+msgstr "Quand un enregistrement est modifié, l’utilisateur et l’estampille temporelle (horodatage) sont enregistrés. Parfois on souhaite conserver l’information existante de la «&nbsp;dernière modification&nbsp;», par exemple si on apporte des corrections mineures à des données d’un autre utilisateur. Cette option détermine si la fonction est active par défaut."
 
 #: admin_users.php:389
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -19508,12 +19508,12 @@ msgstr "10<sup>e</sup> arrière-petit(e)-cousin(e)"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:87
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr "les paramètres de connexion de base de données dans le fichier «“nbsp;/data/config.ini.php”nbsp;» sont encore corrects"
+msgstr "les paramètres de connexion de base de données dans le fichier «&nbsp;/data/config.ini.php&nbsp;» sont encore corrects"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:90
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr "Le dossier «“nbsp;/data”nbsp;» et le fichier «“nbsp;/data/config.ini.php”nbsp;» ont les autorisations d’accès qui permettent au serveur web de les lire"
+msgstr "Le dossier «&nbsp;/data&nbsp;» et le fichier «&nbsp;/data/config.ini.php&nbsp;» ont les autorisations d’accès qui permettent au serveur web de les lire"
 
 #: app/Functions/Functions.php:643
 #, php-format
@@ -19797,7 +19797,7 @@ msgstr[1] "±%s années"
 #: app/Individual.php:1216
 #, php-format
 msgid "“%s”"
-msgstr "«“nbsp;%s”nbsp;»"
+msgstr "«&nbsp;%s&nbsp;»"
 
 #. I18N: %s is the name of an individual, source or other record
 #: app/Module/UserFavoritesModule.php:96

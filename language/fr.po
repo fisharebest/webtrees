@@ -7791,7 +7791,7 @@ msgstr "Conserver les objets médias"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2291
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:550
 msgid "Keep the existing “last change” information"
-msgstr "Conserver l’information existante relative à la « dernière modification »"
+msgstr "Conserver l’information existante relative à la «&nbsp;dernière modification&nbsp;»"
 
 #: app/Stats.php:6844
 msgid "Kenya"
@@ -11985,7 +11985,7 @@ msgstr "Niveau de confidentialité pour toutes les personnes décédées."
 #. I18N: You need to:
 #: login.php:557
 msgid "Set the status to “approved”."
-msgstr "Définir le statut à « approuvé »."
+msgstr "Définir le statut à «&nbsp;approuvé&nbsp;»."
 
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:730
@@ -12719,7 +12719,7 @@ msgstr "Certains noms de lieux peuvent contenir des préfixes ou des suffixes op
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1560
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Certains thèmes peuvent afficher des icônes dans l’onglet « Faits et événements »."
+msgstr "Certains thèmes peuvent afficher des icônes dans l’onglet «&nbsp;Faits et événements&nbsp;»."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:520
@@ -13489,7 +13489,7 @@ msgstr "Le lien de «&nbsp;%1$s&nbsp;» à «&nbsp;%2$s&nbsp;» a été supprim�
 #: admin_site_merge.php:109
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "Le lien entre « %1$s » et « %2$s » a été mis à jour."
+msgstr "Le lien entre «&nbsp;%1$s&nbsp;» et «&nbsp;%2$s&nbsp;» a été mis à jour."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -13565,7 +13565,7 @@ msgstr "Les préférences pour les nouveaux arbres généalogiques ont été mis
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Les préférences pour l’arbre généalogique « %s » ont été mises à jour."
+msgstr "Les préférences pour l’arbre généalogique «&nbsp;%s&nbsp;» ont été mises à jour."
 
 #: admin_modules.php:81
 #, php-format
@@ -13575,7 +13575,7 @@ msgstr "Les préférences du module «&nbsp;%s&nbsp;» ont été effacées."
 #: app/Module/GoogleMapsModule.php:260
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Les préférences pour le module « %s » ont été mises à jour."
+msgstr "Les préférences pour le module «&nbsp;%s&nbsp;» ont été mises à jour."
 
 #: setup.php:380
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -13594,7 +13594,7 @@ msgstr "Enregistrement copié dans le presse-papiers."
 #: admin_site_merge.php:168
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "Les enregistrements « %1$s » et « %2$s » ont été fusionnés."
+msgstr "Les enregistrements «&nbsp;%1$s&nbsp;» et «&nbsp;%2$s&nbsp;» ont été fusionnés."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "The regex appears to contain an error. It can’t be used."
@@ -13743,7 +13743,7 @@ msgstr "Thèmes"
 
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting “default theme” at one level will use the theme at the next level."
-msgstr "On peut choisir les thèmes à trois niveaux : utilisateur, arbre généalogique, site web. Les préférences de l’utilisateur l’emportent sur celles de l’arbre généalogiques qui elles-mêmes l’emportent sur celles du site généalogique. En choisissant « thème par défaut » à un niveau, on utilisera le thème du niveau inférieur."
+msgstr "On peut choisir les thèmes à trois niveaux : utilisateur, arbre généalogique, site web. Les préférences de l’utilisateur l’emportent sur celles de l’arbre généalogiques qui elles-mêmes l’emportent sur celles du site généalogique. En choisissant «&nbsp;thème par défaut&nbsp;» à un niveau, on utilisera le thème du niveau inférieur."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:126
@@ -13785,7 +13785,7 @@ msgstr[1] "Aucune modification depuis %s jours."
 #: login.php:253
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr "Il n’y a pas de compte avec le nom d’utilisateur ou le courriel « %s »."
+msgstr "Il n’y a pas de compte avec le nom d’utilisateur ou le courriel «&nbsp;%s&nbsp;»."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -14006,7 +14006,7 @@ msgstr "Le nom est sensible à la casse. Si une base de données portant ce nom 
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1372
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr "Ceci est le réglage initial pour l’option « Afficher les détails » sur les graphiques."
+msgstr "Ceci est le réglage initial pour l’option «&nbsp;Afficher les détails&nbsp;» sur les graphiques."
 
 #: admin.php:588 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
@@ -14406,7 +14406,7 @@ msgstr "Toutes les données généalogiques de «&nbsp;%s&nbsp;» seront effacé
 
 #: admin_trees_places.php:97
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Cela mettra à jour la partie de plus haut niveau ou des parties du nom de lieu. Par exemple, « Mexique » correspondra à « Quintana Roo, Mexique », mais pas à « Santa Fe, Nouveau-Mexique »."
+msgstr "Cela mettra à jour la partie de plus haut niveau ou des parties du nom de lieu. Par exemple, «&nbsp;Mexique&nbsp;» correspondra à «&nbsp;Quintana Roo, Mexique&nbsp;», mais pas à «&nbsp;Santa Fe, Nouveau-Mexique&nbsp;»."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:668
@@ -15461,7 +15461,7 @@ msgstr "Sahara occidental"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:2261
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Quand un enregistrement est modifié, l’utilisateur et l’horodatage sont enregistrés. Parfois on souhaite conserver l’information existante relative à la « dernière modification », par exemple si on apporte des corrections mineures à des données d’un autre utilisateur. Cette option détermine si la fonction est active par défaut."
+msgstr "Quand un enregistrement est modifié, l’utilisateur et l’horodatage sont enregistrés. Parfois on souhaite conserver l’information existante relative à la «&nbsp;dernière modification&nbsp;», par exemple si on apporte des corrections mineures à des données d’un autre utilisateur. Cette option détermine si la fonction est active par défaut."
 
 #: admin_users.php:389
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
