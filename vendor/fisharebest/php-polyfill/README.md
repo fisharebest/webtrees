@@ -27,7 +27,7 @@ Add the dependency to your `composer.json` and allow autoloading magic to do the
 ```json
 {
     "require": {
-        "fisharebest/php-polyfill": "~1.2",
+        "fisharebest/php-polyfill": "~1.3",
     },
 }
 ```
@@ -57,6 +57,11 @@ PHP 5.4
 status code, even if it was set using another function, such as `header()`.
 This implementation can only get the current status code if it was also set by
 `http_response_code()`.
+
+PHP (general)
+=============
+
+ - Some builds of PHP (such as the one used by strato.de) do not define INF.
 
 Contributions
 =============

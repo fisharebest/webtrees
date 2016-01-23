@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.3.0 (2016-01-23)
+ - INF
+
 ## 1.2.0 (2016-01-03)
  - gzopen(), etc. are now part of symfony/polyfill
 
