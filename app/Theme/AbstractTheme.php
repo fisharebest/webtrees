@@ -316,7 +316,19 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	public function cookieWarning() {
-		return '<div class="cookie-warning">COOKIES!</div>';
+		if (
+			empty($_SERVER['HTTP_DNT']) &&
+			empty($_COOKIE['cookie']) &&
+			(Site::getPreference('GOOGLE_ANALYTICS_ID') || Site::getPreference('PIWIK_SITE_ID') || Site::getPreference('STATCOUNTER_PROJECT_ID'))) {
+			return
+				'<div class="cookie-warning">' .
+				I18N::translate('Cookies') . ' - ' .
+				I18N::translate('This website uses cookies to learn about visitor behaviour.') . ' ' .
+				'<button onclick="document.cookie=\'cookie=1\'; this.parentNode.classList.add(\'hidden\');">' . I18N::translate('continue') . '</button>' .
+				'</div>';
+		} else {
+			return '';
+		}
 	}
 
 	/**

@@ -423,7 +423,14 @@ $old_files = array(
 	WT_ROOT . 'modules_v3/GEDFact_assistant/census/dynamicoptionlist.js',
 	WT_ROOT . 'packages/jquery-cookie-1.4.1/jquery.cookie.js',
 	// Removed in 1.7.4
-	WT_ROOT . 'assets/js-1.7.2',
+	WT_ROOT . 'assets/js-1.7.0',
+	WT_ROOT . 'themes/_administration/css-1.7.0',
+	WT_ROOT . 'themes/clouds/css-1.7.0',
+	WT_ROOT . 'themes/colors/css-1.7.0',
+	WT_ROOT . 'themes/fab/css-1.7.0',
+	WT_ROOT . 'themes/minimal/css-1.7.0',
+	WT_ROOT . 'themes/webtrees/css-1.7.0',
+	WT_ROOT . 'themes/xenea/css-1.7.0',
 );
 
 // Delete old files (if we can).

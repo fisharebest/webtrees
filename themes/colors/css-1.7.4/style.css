@@ -331,7 +331,7 @@ table.center {
 
 .facts_table .optionbox {
 	white-space: normal;
-} 
+}
 
 div.fact_SHARED_NOTE {
 	clear: both;
@@ -1038,7 +1038,7 @@ a:hover .nameZoom {
 	width: 100%;
 }
 
-#medialist-page .optionbox, 
+#medialist-page .optionbox,
 #medialist-page .descriptionbox {
 	width: 25%;
 }
@@ -1292,7 +1292,7 @@ a:hover .nameZoom {
 	text-align: left;
 }
 
-[dir=rtl] #register-form p, 
+[dir=rtl] #register-form p,
 [dir=rtl] #verify-form p {
 	text-align: right;
 }
@@ -5245,6 +5245,18 @@ footer {
 	background-image: url(images/webtrees.png);
 }
 
+.cookie-warning {
+	background: #aaa;
+	color: #fff;
+	height: 3em;
+	line-height: 2.5em;
+	transition: height 0.5s;
+}
+.cookie-warning.hidden {
+	height: 0;
+	overflow: hidden;
+}
+
 @media print {
 	header,
 	footer,
@@ -5254,7 +5266,7 @@ footer {
 	.noprint {
 		display: none;
 	}
-	
+
 	#header_accordion1 {
 		width: 510px;
 	}
