@@ -79,10 +79,13 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function analytics() {
-		if ($this->themeId() === '_administration') {
+		if ($this->themeId() === '_administration' || !empty($_SERVER['HTTP_DNT'])) {
 			return '';
 		} else {
 			return
+				$this->analyticsBingWebmaster(
+					Site::getPreference('BING_WEBMASTER_ID')
+				) .
 				$this->analyticsGoogleWebmaster(
 					Site::getPreference('GOOGLE_WEBMASTER_ID')
 				) .
@@ -308,6 +311,15 @@ abstract class AbstractTheme {
 	}
 
 	/**
+	 * Create a cookie warning.
+	 *
+	 * @return string
+	 */
+	public function cookieWarning() {
+		return '<div class="cookie-warning">COOKIES!</div>';
+	}
+
+	/**
 	 * Create the <DOCTYPE> tag.
 	 *
 	 * @return string
@@ -389,7 +401,8 @@ abstract class AbstractTheme {
 		return
 			$this->formatContactLinks() .
 			$this->logoPoweredBy() .
-			$this->formatPageViews($this->page_views);
+			$this->formatPageViews($this->page_views) .
+			$this->cookieWarning();
 	}
 
 	/**
