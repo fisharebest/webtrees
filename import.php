@@ -117,8 +117,8 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			return;
 		}
 		// What character set is this? Need to convert it to UTF8
-		if (preg_match('/\n[ \t]*1 CHAR(?:ACTER)? (.+)/', $data->chunk_data, $match)) {
-			$charset = strtoupper($match[1]);
+		if (preg_match('/[\r\n][ \t]*1 CHAR(?:ACTER)? (.+)/', $data->chunk_data, $match)) {
+			$charset = trim(strtoupper($match[1]));
 		} else {
 			$charset = 'ASCII';
 		}
