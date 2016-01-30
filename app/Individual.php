@@ -1212,10 +1212,10 @@ class Individual extends GedcomRecord {
 		// Insert placeholders for any missing/unknown names
 		$full = str_replace('@N.N.', I18N::translateContext('Unknown surname', '…'), $full);
 		$full = str_replace('@P.N.', I18N::translateContext('Unknown given name', '…'), $full);
-		// Localise quotation marks around the nickname
-		$full = preg_replace_callback('/"([^"]*)"/', function ($matches) { return I18N::translate('“%s”', $matches[1]); }, $full);
 		// Format for display
 		$full = '<span class="NAME" dir="auto" translate="no">' . preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', Filter::escapeHtml($full)) . '</span>';
+		// Localise quotation marks around the nickname
+		$full = preg_replace_callback('/&quot;([^&]*)&quot;/', function ($matches) { return I18N::translate('“%s”', $matches[1]); }, $full);
 
 		// A suffix of “*” indicates a preferred name
 		$full = preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);
