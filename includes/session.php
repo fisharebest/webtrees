@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Theme\AdministrationTheme;
 use PDOException;
+use Throwable;
 
 /**
  * This is the bootstrap script, that is run on every request.
@@ -187,16 +188,13 @@ define('WT_BASE_URL', $protocol . '://' . $host . $port . $path);
 
 // Convert PHP errors into exceptions
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-	if (error_reporting() & $errno) {
-		throw new \ErrorException($errstr, 0, $errno, $errfile, $errline);
-	} else {
-		return false;
-	}
+	throw new \ErrorException($errfile . ':' . $errline . ' ' . $errstr, $errno);
 });
 
-set_exception_handler(function (\Exception $ex) {
-	$long_message = '';
-	$short_message = '';
+set_exception_handler(function ($ex) {
+	$message = '';
+
+	$message = $ex->getFile() . ':' . $ex->getLine() . ' ' . $ex->getMessage() . PHP_EOL;
 
 	foreach ($ex->getTrace() as $level => $frame) {
 		$frame += array('args' => array(), 'file' => 'unknown', 'line' => 'unknown');
@@ -228,24 +226,19 @@ set_exception_handler(function (\Exception $ex) {
 			}
 		});
 		$frame['file'] = str_replace(dirname(__DIR__), '', $frame['file']);
-		$long_message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
-		$short_message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
+		$message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
 		if ($level) {
-			$long_message .= $frame['function'] . '(' . implode(', ', $frame['args']) . ')' . PHP_EOL;
-			$short_message .= $frame['function'] . "()<br>";
+			$message .= $frame['function'] . '(' . implode(', ', $frame['args']) . ')' . PHP_EOL;
 		} else {
-			$long_message .= get_class($ex) . '("' . $ex->getMessage() . '")' . PHP_EOL;
-			$short_message .= get_class($ex) . '("' . $ex->getMessage() . '")<br>';
+			$message .= get_class($ex) . '("' . $ex->getMessage() . '")' . PHP_EOL;
 		}
 	}
 
-	if (WT_DEBUG) {
-		echo $long_message;
-	} else {
-		echo $short_message;
+	if (true || error_reporting() & $ex->getCode()) {
+		echo $message;
 	}
 
-	Log::addErrorLog($long_message);
+	Log::addErrorLog($message);
 });
 
 // Load our configuration file, so we can connect to the database
