@@ -31,3 +31,6 @@
 [submodule "modules_v3/fancy_gendex"]
 	path = modules_v3/fancy_gendex
 	url = https://github.com/JustCarmen/fancy_gendex.git
+[submodule "modules_v3/fancy_treeview_pdf"]
+	path = modules_v3/fancy_treeview_pdf
+	url = C:\\xampp\\htdocs\\webtrees_build\\modules_v3\\fancy_treeview_pdf
