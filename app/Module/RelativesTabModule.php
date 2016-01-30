@@ -205,7 +205,6 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 			?>
 			<tr>
 				<td class="facts_label">
-					&nbsp;
 				</td>
 				<td class="facts_value<?php echo $class; ?>">
 					<?php echo GedcomTag::getLabelValue($fact->getTag(), $fact->getDate()->display() . ' — ' . $fact->getPlace()->getFullName()); ?>
@@ -221,7 +220,6 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 			?>
 			<tr>
 				<td class="facts_label">
-					&nbsp;
 				</td>
 				<td class="facts_value">
 					<a href="#" onclick="return add_new_record('<?php echo $family->getXref(); ?>', 'MARR');">

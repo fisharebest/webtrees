@@ -28,7 +28,7 @@ $files = Filter::get('files', 'local|external|unused', 'local');
 // family tree setting MEDIA_DIRECTORY
 $media_folders = all_media_folders();
 $media_folder  = Filter::get('media_folder', null, ''); // MySQL needs an empty string, not NULL
-// User folders may contain special characters.  Restrict to actual folders.
+// User folders may contain special characters. Restrict to actual folders.
 if (!array_key_exists($media_folder, $media_folders)) {
 	$media_folder = reset($media_folders);
 }
@@ -36,7 +36,7 @@ if (!array_key_exists($media_folder, $media_folders)) {
 // prefix to filename
 $media_paths = media_paths($media_folder);
 $media_path  = Filter::get('media_path', null, ''); // MySQL needs an empty string, not NULL
-// User paths may contain special characters.  Restrict to actual paths.
+// User paths may contain special characters. Restrict to actual paths.
 if (!array_key_exists($media_path, $media_paths)) {
 	$media_path = reset($media_paths);
 }
@@ -73,7 +73,7 @@ if ($delete_file) {
 			}
 		}
 	} else {
-		// File no longer exists?  Maybe it was already deleted or renamed.
+		// File no longer exists? Maybe it was already deleted or renamed.
 	}
 	$controller->pageHeader();
 
@@ -140,8 +140,8 @@ case 'load_json':
 				if ($key > 0) {
 					$SELECT1 .= ',';
 				}
-				// Datatables numbers columns 0, 1, 2, ...
-				// MySQL numbers columns 1, 2, 3, ...
+				// Datatables numbers columns 0, 1, 2
+				// MySQL numbers columns 1, 2, 3
 				switch ($value['dir']) {
 				case 'asc':
 					$SELECT1 .= ":col_" . $key . " ASC";
@@ -203,8 +203,8 @@ case 'load_json':
 				if ($key > 0) {
 					$SELECT1 .= ',';
 				}
-				// Datatables numbers columns 0, 1, 2, ...
-				// MySQL numbers columns 1, 2, 3, ...
+				// Datatables numbers columns 0, 1, 2
+				// MySQL numbers columns 1, 2, 3
 				switch ($value['dir']) {
 				case 'asc':
 					$SELECT1 .= ":col_" . $key . " ASC";
@@ -371,7 +371,7 @@ function media_paths($media_folder) {
 		" FROM  `##media`" .
 		" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 		" WHERE setting_value = :media_folder" .
-		"	AND   m_filename NOT LIKE 'http://%'" .
+		" AND   m_filename NOT LIKE 'http://%'" .
 		" AND   m_filename NOT LIKE 'https://%'" .
 		" GROUP BY 1" .
 		" ORDER BY 1"
@@ -399,7 +399,7 @@ function media_paths($media_folder) {
 function scan_dirs($dir, $recursive, $filter) {
 	$files = array();
 
-	// $dir comes from the database.  The actual folder may not exist.
+	// $dir comes from the database. The actual folder may not exist.
 	if (is_dir($dir)) {
 		foreach (scandir($dir) as $path) {
 			if (is_dir($dir . $path)) {
@@ -435,7 +435,7 @@ function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
 /**
  * Fetch a list of all files on in the database.
  *
- * The subfolders parameter is not implemented.  However, as we
+ * The subfolders parameter is not implemented. However, as we
  * currently use this function as an exclusion list, it is harmless
  * to always include sub-folders.
  *
@@ -456,7 +456,7 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 		" AND   m_filename LIKE CONCAT(:media_path_2, '%')" .
 		" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', :filter_1, '%')" .
 		"  OR   m_titl LIKE CONCAT('%', :filter_2, '%'))" .
-		"	AND   m_filename NOT LIKE 'http://%'" .
+		" AND   m_filename NOT LIKE 'http://%'" .
 		" AND   m_filename NOT LIKE 'https://%'"
 	)->execute(array(
 		'media_path_1' => $media_path,
@@ -578,7 +578,7 @@ function mediaObjectInfo(Media $media) {
 ////////////////////////////////////////////////////////////////////////////////
 
 // Preserve the pagination/filtering/sorting between requests, so that the
-// browser’s back button works.  Pagination is dependent on the currently
+// browser’s back button works. Pagination is dependent on the currently
 // selected folder.
 $table_id = md5($files . $media_folder . $media_path . $subfolders);
 

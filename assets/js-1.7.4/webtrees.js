@@ -532,7 +532,7 @@ function valid_date(datefield) {
 	datestr = datestr.replace(/(\d)([A-Z])/, "$1 $2");
 	datestr = datestr.replace(/([A-Z])(\d)/, "$1 $2");
 
-	// Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900".  See [ 1509083 ]
+	// Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900". See [ 1509083 ]
 	if (datestr.match(/^Q ([1-4]) (\d\d\d\d)$/)) {
 		datestr = "BET " + months[RegExp.$1 * 3 - 3] + " " + RegExp.$2 + " AND " + months[RegExp.$1 * 3 - 1] + " " + RegExp.$2;
 	}
@@ -551,7 +551,7 @@ function valid_date(datefield) {
 		datestr = "@#DFRENCH R@" + RegExp.$2 + french_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
 	}
 
-	// e.g. 17.11.1860, 03/04/2005 or 1999-12-31.  Use locale settings where DMY order is ambiguous.
+	// e.g. 17.11.1860, 03/04/2005 or 1999-12-31. Use locale settings where DMY order is ambiguous.
 	var qsearch = /^([^\d]*)(\d+)[^\d](\d+)[^\d](\d+)$/i;
 	if (qsearch.exec(datestr)) {
 		var f0 = RegExp.$1;
@@ -990,9 +990,9 @@ function findSpecialChar(field) {
 	return findWindow(undefined, "specialchar", field);
 }
 
-function findFact(field, ged) {
-	return findWindow(ged, "facts", field, {
-		"tags": field.value
+function findFact(field_id, field_type) {
+	return findWindow(undefined, "fact" + field_type, document.getElementById(field_id), {
+		"tags": document.getElementById(field_id).value
 	});
 }
 
@@ -1127,12 +1127,12 @@ function activate_colorbox(config) {
 
 		// Enable colorbox for audio using <audio></audio>, where supported
 		//jQuery('html.video a[type^=video].gallery').colorbox({
-		//	rel:         'nofollow' // Slideshows are just for images
+		//  rel:         'nofollow' // Slideshows are just for images
 		//});
 
 		// Enable colorbox for video using <video></video>, where supported
 		//jQuery('html.audio a[type^=audio].gallery').colorbox({
-		//	rel:         'nofollow', // Slideshows are just for images
+		//  rel:         'nofollow', // Slideshows are just for images
 		//});
 
 		// Allow all other media types remain as download links
@@ -1296,4 +1296,3 @@ jQuery(".menu-theme").on("click", "li a", function () {
 		location.reload();
 	});
 });
-

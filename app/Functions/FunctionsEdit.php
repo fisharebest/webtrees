@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Census\Census;
+use Fisharebest\Webtrees\Census\CensusOfCzechRepublic;
 use Fisharebest\Webtrees\Census\CensusOfDenmark;
 use Fisharebest\Webtrees\Census\CensusOfEngland;
 use Fisharebest\Webtrees\Census\CensusOfFrance;
@@ -314,10 +315,10 @@ class FunctionsEdit {
 	/**
 	 * Print an edit control for a ADOP field.
 	 *
-	 * @param string $name
-	 * @param string $selected
-	 * @param string $extra
-	 * @param Individual $individual
+	 * @param string          $name
+	 * @param string          $selected
+	 * @param string          $extra
+	 * @param Individual|null $individual
 	 *
 	 * @return string
 	 */
@@ -328,10 +329,10 @@ class FunctionsEdit {
 	/**
 	 * Print an edit control for a PEDI field.
 	 *
-	 * @param string $name
-	 * @param string $selected
-	 * @param string $extra
-	 * @param Individual $individual
+	 * @param string          $name
+	 * @param string          $selected
+	 * @param string          $extra
+	 * @param Individual|null $individual
 	 *
 	 * @return string
 	 */
@@ -342,10 +343,10 @@ class FunctionsEdit {
 	/**
 	 * Print an edit control for a NAME TYPE field.
 	 *
-	 * @param string $name
-	 * @param string $selected
-	 * @param string $extra
-	 * @param Individual $individual
+	 * @param string          $name
+	 * @param string          $selected
+	 * @param string          $extra
+	 * @param Individual|null $individual
 	 *
 	 * @return string
 	 */
@@ -620,7 +621,7 @@ class FunctionsEdit {
 				if ($value) {
 					echo 'checked';
 				}
-				echo ' onclick="if (this.checked) ', $element_id, '.value=\'Y\'; else ', $element_id, '.value=\'\';">';
+				echo ' onclick="document.getElementById(\'' . $element_id . '\').value = (this.checked) ? \'Y\' : \'\';">';
 				echo I18N::translate('yes');
 			}
 
@@ -738,7 +739,7 @@ class FunctionsEdit {
 					echo ' onblur="valid_lati_long(this, \'E\', \'W\');" onmouseout="valid_lati_long(this, \'E\', \'W\');"';
 					break;
 				case 'NOTE':
-					// Shared notes.  Inline notes are handled elsewhere.
+					// Shared notes. Inline notes are handled elsewhere.
 					echo ' data-autocomplete-type="NOTE"';
 					break;
 				case 'OBJE':
@@ -762,7 +763,7 @@ class FunctionsEdit {
 					echo ' data-autocomplete-type="SURN"';
 					break;
 				case 'TIME':
-					echo ' pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5]0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */
+					echo ' pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */
 						I18N::translate('hh:mm or hh:mm:ss') . '"';
 					break;
 				}
@@ -973,6 +974,9 @@ class FunctionsEdit {
 
 		// Show more likely census details at the top of the list.
 		switch (WT_LOCALE) {
+		case 'cs':
+			$census_places = array(new CensusOfCzechRepublic);
+			break;
 		case 'en-AU':
 		case 'en-GB':
 			$census_places = array(new CensusOfEngland, new CensusOfWales, new CensusOfScotland);
@@ -1444,10 +1448,10 @@ class FunctionsEdit {
 	 * fact that is being edited.
 	 * If the $text[] array is empty for the given line, then it means that the
 	 * user removed that line during editing or that the line is supposed to be
-	 * empty (1 DEAT, 1 BIRT) for example.  To know if the line should be removed
+	 * empty (1 DEAT, 1 BIRT) for example. To know if the line should be removed
 	 * there is a section of code that looks ahead to the next lines to see if there
-	 * are sub lines.  For example we don't want to remove the 1 DEAT line if it has
-	 * a 2 PLAC or 2 DATE line following it.  If there are no sub lines, then the line
+	 * are sub lines. For example we don't want to remove the 1 DEAT line if it has
+	 * a 2 PLAC or 2 DATE line following it. If there are no sub lines, then the line
 	 * can be safely removed.
 	 *
 	 * @param string $newged the new gedcom record to add the lines to
@@ -1602,7 +1606,7 @@ class FunctionsEdit {
 		$add_date    = true;
 		// List of tags we would expect at the next level
 		// NB add_missing_subtags() already takes care of the simple cases
-		// where a level 1 tag is missing a level 2 tag.  Here we only need to
+		// where a level 1 tag is missing a level 2 tag. Here we only need to
 		// handle the more complicated cases.
 		$expected_subtags = array(
 			'SOUR' => array('PAGE', 'DATA'),

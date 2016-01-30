@@ -273,7 +273,7 @@ class IndividualController extends GedcomRecordController {
 			'onclick' => 'return false;',
 		));
 
-		// What behaviour shall we give the main menu?  If we leave it blank, the framework
+		// What behaviour shall we give the main menu? If we leave it blank, the framework
 		// will copy the first submenu - which may be edit-raw or delete.
 		// As a temporary solution, make it edit the name
 		if (Auth::isEditor($this->record->getTree())) {
@@ -330,7 +330,7 @@ class IndividualController extends GedcomRecordController {
 		// add to favorites
 		if (Module::getModuleByName('user_favorites')) {
 			$menu->addSubmenu(new Menu(
-			/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
+			/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',
 				'menu-indi-addfav', array(
 					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',

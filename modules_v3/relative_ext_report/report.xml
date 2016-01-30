@@ -97,14 +97,6 @@
 				<if condition="@FAMC==''">
 					<TextBox height="2" newline="1"/>
 				</if>
-				<!-- 2. Block -->
-<!--				<TextBox height="$height2" left="$leftbdp" width="$width3">
-					<Text style="mini"><GedcomValue tag="BIRT:PLAC" /></Text>
-				</TextBox>
-				<TextBox height="$height2" newline="1" width="$width4">
-					<Text style="mini"><GedcomValue tag="DEAT:PLAC" /></Text>
-				</TextBox>
--->				<!-- 3. Block -->
 				<RepeatTag tag="FAMS">
 					<Gedcom id="@FAMS">
 						<TextBox height="$height2" left="$width1" width="$widthB2">

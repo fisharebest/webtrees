@@ -61,7 +61,7 @@ class GedcomRecordController extends PageController {
 				}
 			}
 			foreach ($this->record->getFacts('NOTE|SOUR|OBJE') as $fact) {
-				// These can be links or inline.  Only delete links.
+				// These can be links or inline. Only delete links.
 				if (!$fact->isPendingDeletion() && $fact->getTarget() === null && preg_match('/^@.*@$/', $fact->getValue())) {
 					$this->record->deleteFact($fact->getFactId(), false);
 					FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $this->record->getFullName(), $fact->getValue()));
@@ -123,7 +123,7 @@ class GedcomRecordController extends PageController {
 		// add to favorites
 		if (Module::getModuleByName('user_favorites')) {
 			$menu->addSubmenu(new Menu(
-			/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
+			/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',
 				'menu-record-addfav',
 				array(

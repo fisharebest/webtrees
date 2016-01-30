@@ -33,7 +33,7 @@ $block    = Database::prepare(
 	"SELECT SQL_CACHE * FROM `##block` WHERE block_id=?"
 )->execute(array($block_id))->fetchOneRow();
 
-// Check access.  (1) the block must exist and be enabled, (2) gedcom blocks require
+// Check access. (1) the block must exist and be enabled, (2) gedcom blocks require
 // managers, (3) user blocks require the user or an admin
 $blocks = Module::getActiveBlocks($WT_TREE);
 if (

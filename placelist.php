@@ -216,7 +216,7 @@ case 'hierarchy':
 			->addInlineJavascript('jQuery("#places-tabs").css("visibility", "visible");')
 			->addInlineJavascript('jQuery(".loading-image").css("display", "none");');
 
-		echo '<div class="loading-image">&nbsp;</div>';
+		echo '<div class="loading-image"></div>';
 		echo '<div id="places-tabs"><ul>';
 		if ($myindilist) {
 			echo '<li><a href="#places-indi"><span id="indisource">', I18N::translate('Individuals'), '</span></a></li>';

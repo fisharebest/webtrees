@@ -20,25 +20,22 @@ use Fisharebest\Webtrees\Individual;
 /**
  * The individual's full name.
  */
-class CensusColumnSurnameGivenNameInitial extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnSurnameGivenNameInitial extends CensusColumnFullName {
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
-	 * @param Individual      $individual
+	 * @param Individual $individual
 	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
 	public function generate(Individual $individual, Individual $head = null) {
-		foreach ($individual->getAllNames() as $name) {
-			$given = $name['givn'];
-			if (strpos($given, ' ') === false) {
-				return $name['surn'] . ', ' . $given;
-			} else {
-				return $name['surn'] . ', ' . substr($given, 0, strpos($given, ' ') + 2);
-			}
+		$name  = $this->nameAtCensusDate($individual, $this->date());
+		$given = $name['givn'];
+		if (strpos($given, ' ') === false) {
+			return $name['surn'] . ', ' . $given;
+		} else {
+			return $name['surn'] . ', ' . substr($given, 0, strpos($given, ' ') + 2);
 		}
-
-		return '';
 	}
 }

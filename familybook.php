@@ -55,7 +55,7 @@ $controller
 					</td>
 					<td class="optionbox">
 						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
-		  			</td>
+					</td>
 					<td rowspan="3" class="topbottombar vmiddle">
 						<input type="submit" value="<?php echo /* I18N: Submit button, on a form */ I18N::translate('View'); ?>">
 					</td>

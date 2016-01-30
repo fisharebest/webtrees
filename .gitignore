@@ -1,9 +1,7 @@
-*.swp
-.idea/
-apidocs/
-*dwsync.xml
-mysqldumper/
+/mysqldumper/
 /gendex.txt
 /nbproject/
 /robots.txt
-/google2d5af97a24315619.html
+google*.html
+/.vagrant
+/apidocs/

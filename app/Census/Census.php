@@ -24,6 +24,7 @@ class Census {
 	 */
 	public static function allCensusPlaces() {
 		return array(
+			new CensusOfCzechRepublic,
 			new CensusOfDenmark,
 			new CensusOfEngland,
 			new CensusOfFrance,

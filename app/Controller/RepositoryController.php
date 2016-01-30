@@ -69,7 +69,7 @@ class RepositoryController extends GedcomRecordController {
 		// add to favorites
 		if (Module::getModuleByName('user_favorites')) {
 			$menu->addSubmenu(new Menu(
-			/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
+			/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',
 				'menu-repo-addfav',
 				array(

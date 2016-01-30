@@ -32,7 +32,7 @@ class Migration15 implements MigrationInterface {
 		// There is no way to add a RESN tag to NOTE objects
 		Database::exec("UPDATE `##gedcom_setting` SET setting_value='SOUR,RESN' WHERE setting_name='NOTE_FACTS_ADD' AND setting_value='SOUR'");
 
-		// This needs to be an absolute URL.  If not set, it defaults to the full path to login.php
+		// This needs to be an absolute URL. If not set, it defaults to the full path to login.php
 		Database::exec("DELETE FROM `##site_setting` WHERE setting_name='LOGIN_URL' AND setting_value='login.php'");
 		// No need for an empty value
 		Database::exec("DELETE FROM `##site_setting` WHERE setting_name='SERVER_URL' AND setting_value=''");

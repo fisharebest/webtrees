@@ -238,7 +238,7 @@ header form {
 	margin: 1px 0;
 }
 
-.person_box_template .details0, 
+.person_box_template .details0,
 .person_box_template .details1 {
     font-size: 11px;
 }
@@ -611,7 +611,6 @@ a:hover .nameZoom {
 }
 
 #childbox a.name1 {
-	/*	font-weight: normal;*/
 	display: block;
 	margin-left: 5px;
 }
@@ -996,7 +995,7 @@ a:hover .nameZoom {
 	width: 100%;
 }
 
-#medialist-page .optionbox, 
+#medialist-page .optionbox,
 #medialist-page .descriptionbox {
 	width: 25%;
 }
@@ -1006,7 +1005,7 @@ a:hover .nameZoom {
 }
 
 #medialist-page .media-col {
-	padding-left: 5px; 
+	padding-left: 5px;
 	border: none;
 }
 
@@ -1016,7 +1015,7 @@ a:hover .nameZoom {
 }
 
 #medialist-page .media-image {
-	vertical-align:top; 
+	vertical-align:top;
 	white-space:normal;
 }
 
@@ -1243,7 +1242,7 @@ a:hover .nameZoom {
 	text-align: left;
 }
 
-[dir=rtl] #register-form p, 
+[dir=rtl] #register-form p,
 [dir=rtl] #verify-form p {
 	text-align: right;
 }
@@ -1727,7 +1726,7 @@ float: right;
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
-	white-space: pre-wrap;  
+	white-space: pre-wrap;
 }
 .left {text-align: left;}
 [dir=rtl] .left {text-align: right;}
@@ -3431,7 +3430,7 @@ table.table-census-assistant th {
 #timeline_chart {
 	position: relative;
 	top: 0;
-	left: 0; 
+	left: 0;
 }
 
 #field_table {
@@ -4427,6 +4426,18 @@ footer {
 	background-image: url(images/user_add.png);
 }
 
+.cookie-warning {
+	background: #aaa;
+	color: #fff;
+	height: 3em;
+	line-height: 2.5em;
+	transition: height 0.5s;
+}
+.cookie-warning.hidden {
+	height: 0;
+	overflow: hidden;
+}
+
 @media print {
 	header,
 	footer,
@@ -4436,11 +4447,11 @@ footer {
 	.noprint {
 		display: none;
 	}
-	
+
 	.descriptionbox, .optionbox {
 		border: solid #888 1px;
 		}
-	
+
 	.person_box, .person_boxF, .person_boxNN {
 		border: solid #888 1px;
 		background: #fff;
@@ -4539,7 +4550,7 @@ footer {
 		float: left;
 		width: 100%;
 	}
-	.stat-table1, .stat-table2{
+	.stat-table1, .stat-table2 {
 		width: 100%;
 	}
 	/* Indi Page */
@@ -4581,7 +4592,7 @@ footer {
 		min-width: auto;
 		width: 100%;
 	}
-	/* Advanced Search *//
+	/* Advanced Search */
 	#field_table {
 		min-width: 100%;
 	}

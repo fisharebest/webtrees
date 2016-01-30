@@ -49,7 +49,7 @@ class Migration31 implements MigrationInterface {
 					'new' => $new,
 				));
 			} catch (PDOException $ex) {
-				// Duplicate key?  Already done?
+				// Duplicate key? Already done?
 			}
 
 			Database::prepare(

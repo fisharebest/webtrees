@@ -160,7 +160,7 @@ class Individual extends GedcomRecord {
 				}
 			}
 		} else {
-			// No individual linked to this account?  Cannot use relationship privacy.
+			// No individual linked to this account? Cannot use relationship privacy.
 			return true;
 		}
 
@@ -305,7 +305,7 @@ class Individual extends GedcomRecord {
 					return true;
 				}
 			}
-			// The individual has one or more dated events.  All are less than $MAX_ALIVE_AGE years ago.
+			// The individual has one or more dated events. All are less than $MAX_ALIVE_AGE years ago.
 			// If one of these is a birth, the individual must be alive.
 			if (preg_match('/\n1 BIRT(?:\n[2-9].+)*\n2 DATE /', $this->gedcom)) {
 				return false;
@@ -537,7 +537,7 @@ class Individual extends GedcomRecord {
 	}
 
 	/**
-	 * Get the range of years in which a individual lived.  e.g. “1870–”, “1870–1920”, “–1920”.
+	 * Get the range of years in which a individual lived. e.g. “1870–”, “1870–1920”, “–1920”.
 	 * Provide the full date using a tooltip.
 	 * For consistent layout in charts, etc., show just a “–” when no dates are known.
 	 * Note that this is a (non-breaking) en-dash, and not a hyphen.
@@ -729,7 +729,7 @@ class Individual extends GedcomRecord {
 
 	/**
 	 * Get the sex - M F or U
-	 * Use the un-privatised gedcom record.  We call this function during
+	 * Use the un-privatised gedcom record. We call this function during
 	 * the privatize-gedcom function, and we are allowed to know this.
 	 *
 	 * @return string
@@ -997,7 +997,7 @@ class Individual extends GedcomRecord {
 								// Father’s family with someone else
 								if ($step_family->getSpouse($step_parent)) {
 									return
-										/* I18N: A step-family.  %s is an individual’s name */
+										/* I18N: A step-family. %s is an individual’s name */
 										I18N::translate('Father’s family with %s', $step_family->getSpouse($step_parent)->getFullName());
 								} else {
 									return
@@ -1008,7 +1008,7 @@ class Individual extends GedcomRecord {
 								// Mother’s family with someone else
 								if ($step_family->getSpouse($step_parent)) {
 									return
-										/* I18N: A step-family.  %s is an individual’s name */
+										/* I18N: A step-family. %s is an individual’s name */
 										I18N::translate('Mother’s family with %s', $step_family->getSpouse($step_parent)->getFullName());
 								} else {
 									return
@@ -1083,7 +1083,7 @@ class Individual extends GedcomRecord {
 	 * Convert a name record into ‘full’ and ‘sort’ versions.
 	 * Use the NAME field to generate the ‘full’ version, as the
 	 * gedcom spec says that this is the individual’s name, as they would write it.
-	 * Use the SURN field to generate the sortable names.  Note that this field
+	 * Use the SURN field to generate the sortable names. Note that this field
 	 * may also be used for the ‘true’ surname, perhaps spelt differently to that
 	 * recorded in the NAME field. e.g.
 	 *
@@ -1133,7 +1133,7 @@ class Individual extends GedcomRecord {
 		// Extract the components from NAME - use for the "full" names
 		////////////////////////////////////////////////////////////////////////////
 
-		// Fix bad slashes.  e.g. 'John/Smith' => 'John/Smith/'
+		// Fix bad slashes. e.g. 'John/Smith' => 'John/Smith/'
 		if (substr_count($full, '/') % 2 == 1) {
 			$full = $full . '/';
 		}

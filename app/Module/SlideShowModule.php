@@ -56,7 +56,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		$start    = $this->getBlockSetting($block_id, 'start', '0') || Filter::getBool('start');
 
 		// We can apply the filters using SQL
-		// Do not use "ORDER BY RAND()" - it is very slow on large tables.  Use PHP::array_rand() instead.
+		// Do not use "ORDER BY RAND()" - it is very slow on large tables. Use PHP::array_rand() instead.
 		$all_media = Database::prepare(
 			"SELECT m_id FROM `##media`" .
 			" WHERE m_file = ?" .

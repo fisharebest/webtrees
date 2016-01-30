@@ -65,7 +65,7 @@ class ReportBaseCell extends ReportBaseElement {
 	 */
 	public $left;
 	/**
-	 * Indicates where the current position should go after the call.  Possible values are:<ul><li>0: to the right [DEFAULT]</li><li>1: to the beginning of the next line</li><li>2: below</li></ul>
+	 * Indicates where the current position should go after the call. Possible values are:<ul><li>0: to the right [DEFAULT]</li><li>1: to the beginning of the next line</li><li>2: below</li></ul>
 	 *
 	 * @var int
 	 */

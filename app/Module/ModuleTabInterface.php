@@ -35,7 +35,7 @@ interface ModuleTabInterface {
 	public function getTabContent();
 
 	/**
-	 * Is this tab empty?  If so, we don't always need to display it.
+	 * Is this tab empty? If so, we don't always need to display it.
 	 *
 	 * @return bool
 	 */

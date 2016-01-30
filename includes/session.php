@@ -43,8 +43,8 @@ define('WT_WEBTREES', 'webtrees');
 define('WT_VERSION', '1.7.4-dev');
 
 // External URLs
-define('WT_WEBTREES_URL', 'http://www.webtrees.net/');
-define('WT_WEBTREES_WIKI', 'http://wiki.webtrees.net/');
+define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
+define('WT_WEBTREES_WIKI', 'https://wiki.webtrees.net/');
 
 // Resources have version numbers in the URL, so that they can be cached indefinitely.
 define('WT_STATIC_URL', getenv('STATIC_URL')); // We could set this to load our own static resources from a cookie-free domain.
@@ -88,19 +88,19 @@ if (getenv('USE_CDN')) {
 }
 
 // We can't load these from a CDN, as these have been patched.
-define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'assets/js-1.7.2/jquery.colorbox-1.5.14.js');
-define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'assets/js-1.7.2/jquery.wheelzoom-2.0.0.js');
+define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'assets/js-1.7.4/jquery.colorbox-1.5.14.js');
+define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'assets/js-1.7.4/jquery.wheelzoom-2.0.0.js');
 define('WT_CKEDITOR_BASE_URL', WT_STATIC_URL . 'packages/ckeditor-4.5.2-custom/');
 // See https://github.com/DataTables/Plugins/pull/178
 define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.7/plugins/dataTables.bootstrap-rtl.css');
 
 // Location of our own scripts
-define('WT_ADMIN_JS_URL', WT_STATIC_URL . 'assets/js-1.7.2/admin.js');
-define('WT_AUTOCOMPLETE_JS_URL', WT_STATIC_URL . 'assets/js-1.7.2/autocomplete.js');
-define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'assets/js-1.7.2/webtrees.js');
-define('WT_FONT_AWESOME_RTL_CSS_URL', WT_STATIC_URL . 'assets/js-1.7.2/font-awesome-rtl.css');
+define('WT_ADMIN_JS_URL', WT_STATIC_URL . 'assets/js-1.7.4/admin.js');
+define('WT_AUTOCOMPLETE_JS_URL', WT_STATIC_URL . 'assets/js-1.7.4/autocomplete.js');
+define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'assets/js-1.7.4/webtrees.js');
+define('WT_FONT_AWESOME_RTL_CSS_URL', WT_STATIC_URL . 'assets/js-1.7.4/font-awesome-rtl.css');
 
-// Location of our modules and themes.  These are used as URLs and folder paths.
+// Location of our modules and themes. These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
 define('WT_THEMES_DIR', 'themes/');
 
@@ -160,7 +160,7 @@ if (WT_DEBUG) {
 
 require WT_ROOT . 'vendor/autoload.php';
 
-// PHP requires a time zone to be set.  We'll set a better one later on.
+// PHP requires a time zone to be set. We'll set a better one later on.
 date_default_timezone_set('UTC');
 
 // Calculate the base URL, so we can generate absolute URLs.
@@ -407,7 +407,7 @@ foreach (array(Filter::post('ged'), Filter::get('ged'), Session::get('GEDCOM'), 
 		break;
 	}
 }
-// No chosen tree?  Use any one.
+// No chosen tree? Use any one.
 if (!$WT_TREE) {
 	foreach (Tree::getAll() as $WT_TREE) {
 		break;
@@ -421,7 +421,7 @@ Session::put('locale', WT_LOCALE);
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
 define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
 
-// Users get their own time-zone.  Visitors get the site time-zone.
+// Users get their own time-zone. Visitors get the site time-zone.
 if (Auth::check()) {
 	date_default_timezone_set(Auth::user()->getPreference('TIMEZONE', 'UTC'));
 } else {

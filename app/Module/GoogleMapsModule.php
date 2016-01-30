@@ -70,7 +70,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps */ I18N::translate('Google Maps™');
+		return /* I18N: The name of a module. Google Maps™ is a trademark. Do not translate it? http://en.wikipedia.org/wiki/Google_maps */ I18N::translate('Google Maps™');
 	}
 
 	/** {@inheritdoc} */
@@ -131,10 +131,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	public function getPreLoadContent() {
 		ob_start();
 		?>
-		<script src="<?php echo $this->googleMapsScript(); ?>"></script>
+		<script src="<?php echo $this->googleMapsScript() ?>"></script>
 		<script>
-			var minZoomLevel   = <?php echo $this->getSetting('GM_MIN_ZOOM'); ?>;
-			var maxZoomLevel   = <?php echo $this->getSetting('GM_MAX_ZOOM'); ?>;
+			var minZoomLevel   = <?php echo $this->getSetting('GM_MIN_ZOOM') ?>;
+			var maxZoomLevel   = <?php echo $this->getSetting('GM_MAX_ZOOM') ?>;
 			var startZoomLevel = maxZoomLevel;
 		</script>
 		<?php
@@ -267,39 +267,39 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		?>
 		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+			<li><a href="admin.php"><?php echo I18N::translate('Control panel') ?></a></li>
+			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration') ?></a></li>
+			<li class="active"><?php echo $controller->getPageTitle() ?></li>
 		</ol>
 
 		<ul class="nav nav-tabs nav-justified" role="tablist">
 			<li role="presentation" class="active">
 				<a href="#" role="tab">
-					<?php echo I18N::translate('Google Maps™ preferences'); ?>
+					<?php echo I18N::translate('Google Maps™ preferences') ?>
 				</a>
 			</li>
 			<li role="presentation">
 				<a href="?mod=googlemap&amp;mod_action=admin_places">
-					<?php echo I18N::translate('Geographic data'); ?>
+					<?php echo I18N::translate('Geographic data') ?>
 				</a>
 			</li>
 			<li role="presentation">
 				<a href="?mod=googlemap&amp;mod_action=admin_placecheck">
-					<?php echo I18N::translate('Place check'); ?>
+					<?php echo I18N::translate('Place check') ?>
 				</a>
 			</li>
 		</ul>
 
-		<h2><?php echo I18N::translate('Google Maps™ preferences'); ?></h2>
+		<h2><?php echo I18N::translate('Google Maps™ preferences') ?></h2>
 
 		<form class="form-horizontal" method="post" name="configform" action="module.php?mod=googlemap&mod_action=admin_config">
 			<input type="hidden" name="action" value="update">
-			<h3><?php echo I18N::translate('Basic'); ?></h3>
+			<h3><?php echo I18N::translate('Basic') ?></h3>
 
 			<!-- GM_MAP_TYPE -->
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="GM_MAP_TYPE">
-					<?php echo I18N::translate('Default map type'); ?>
+					<?php echo I18N::translate('Default map type') ?>
 				</label>
 				<div class="col-sm-9">
 					<?php
@@ -317,30 +317,30 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- GM_USE_STREETVIEW -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-3">
-					<?php echo /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ I18N::translate('Google Street View™'); ?>
+					<?php echo /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ I18N::translate('Google Street View™') ?>
 				</legend>
 				<div class="col-sm-9">
-					<?php echo FunctionsEdit::radioButtons('GM_USE_STREETVIEW', array(false => I18N::translate('hide'), true => I18N::translate('show')), $this->getSetting('GM_USE_STREETVIEW'), 'class="radio-inline"'); ?>
+					<?php echo FunctionsEdit::radioButtons('GM_USE_STREETVIEW', array(false => I18N::translate('hide'), true => I18N::translate('show')), $this->getSetting('GM_USE_STREETVIEW'), 'class="radio-inline"') ?>
 				</div>
 			</fieldset>
 
 			<!-- GM_XSIZE / GM_YSIZE -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-3">
-					<?php echo I18N::translate('Size of map (in pixels)'); ?>
+					<?php echo I18N::translate('Size of map (in pixels)') ?>
 				</legend>
 				<div class="col-sm-9">
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="input-group">
-								<label class="input-group-addon" for="GM_XSIZE"><?php echo I18N::translate('Width'); ?></label>
-								<input id="GM_XSIZE" class="form-control" type="text" name="GM_XSIZE" value="<?php echo $this->getSetting('GM_XSIZE'); ?>">
+								<label class="input-group-addon" for="GM_XSIZE"><?php echo I18N::translate('Width') ?></label>
+								<input id="GM_XSIZE" class="form-control" type="text" name="GM_XSIZE" value="<?php echo $this->getSetting('GM_XSIZE') ?>">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="input-group">
-								<label class="input-group-addon" for="GM_YSIZE"><?php echo I18N::translate('Height'); ?></label>
-								<input id="GM_YSIZE" class="form-control" type="text" name="GM_YSIZE" value="<?php echo $this->getSetting('GM_YSIZE'); ?>">
+								<label class="input-group-addon" for="GM_YSIZE"><?php echo I18N::translate('Height') ?></label>
+								<input id="GM_YSIZE" class="form-control" type="text" name="GM_YSIZE" value="<?php echo $this->getSetting('GM_YSIZE') ?>">
 							</div>
 						</div>
 					</div>
@@ -350,59 +350,58 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- GM_MIN_ZOOM / GM_MAX_ZOOM -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-3">
-					<?php echo I18N::translate('Zoom level of map'); ?>
+					<?php echo I18N::translate('Zoom level of map') ?>
 				</legend>
 				<div class="col-sm-9">
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="input-group">
-								<label class="input-group-addon" for="GM_MIN_ZOOM"><?php echo I18N::translate('minimum'); ?></label>
-								<?php echo FunctionsEdit::selectEditControl('GM_MIN_ZOOM', array_combine(range(1, 14), range(1, 14)), null, $this->getSetting('GM_MIN_ZOOM'), 'class="form-control"'); ?>
+								<label class="input-group-addon" for="GM_MIN_ZOOM"><?php echo I18N::translate('minimum') ?></label>
+								<?php echo FunctionsEdit::selectEditControl('GM_MIN_ZOOM', array_combine(range(1, 14), range(1, 14)), null, $this->getSetting('GM_MIN_ZOOM'), 'class="form-control"') ?>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="input-group">
-								<label class="input-group-addon" for="GM_MAX_ZOOM"><?php echo I18N::translate('maximum'); ?></label>
-								<?php echo FunctionsEdit::selectEditControl('GM_MAX_ZOOM', array_combine(range(1, 20), range(1, 20)), null, $this->getSetting('GM_MAX_ZOOM'), 'class="form-control"'); ?>
+								<label class="input-group-addon" for="GM_MAX_ZOOM"><?php echo I18N::translate('maximum') ?></label>
+								<?php echo FunctionsEdit::selectEditControl('GM_MAX_ZOOM', array_combine(range(1, 20), range(1, 20)), null, $this->getSetting('GM_MAX_ZOOM'), 'class="form-control"') ?>
 							</div>
 						</div>
 					</div>
-					<p class="small text-muted"><?php echo I18N::translate('Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas.'); ?></p>
+					<p class="small text-muted"><?php echo I18N::translate('Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas.') ?></p>
 				</div>
 			</fieldset>
 
-			<h3><?php echo I18N::translate('Advanced'); ?></h3>
+			<h3><?php echo I18N::translate('Advanced') ?></h3>
 
 			<!-- GM_PRECISION -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-3">
-					<?php echo I18N::translate('Precision of the latitude and longitude'); ?>
+					<?php echo I18N::translate('Precision of the latitude and longitude') ?>
 				</legend>
 				<div class="col-sm-9">
 					<div class="row">
-						<?php $label = array('Country', 'State', 'City', 'Neighborhood', 'House', 'Max'); ?>
-						<?php for ($level = 0; $level < 6; $level++): ?>
+						<?php foreach (array(I18N::translate('Country'), I18N::translate('State'), I18N::translate('City'), I18N::translate('Neighborhood'), I18N::translate('House'), I18N::translate('Max')) as $level => $label): ?>
 						<div class="col-sm-4">
 							<div class="input-group">
-								<label class="input-group-addon" for="GM_PRECISION_<?php echo $level ?>"><?php echo I18N::translate($label[$level]); ?></label>
-								<?php echo FunctionsEdit::selectEditControl('GM_PRECISION_' . $level, range(0, 9), null, $this->getSetting('GM_PRECISION_' . $level), 'class="form-control"'); ?>
+								<label class="input-group-addon" for="GM_PRECISION_<?php echo $level ?>"><?php echo $label ?></label>
+								<?php echo FunctionsEdit::selectEditControl('GM_PRECISION_' . $level, range(0, 9), null, $this->getSetting('GM_PRECISION_' . $level), 'class="form-control"') ?>
 							</div>
 						</div>
-						<?php endfor; ?>
+						<?php endforeach ?>
 					</div>
-					<p class="small text-muted"><?php echo I18N::translate('This specifies the precision of the different levels when entering new geographic locations.  For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits.'); ?></p>
+					<p class="small text-muted"><?php echo I18N::translate('This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits.') ?></p>
 				</div>
 			</fieldset>
 
 			<!-- GM_PREFIX / GM_POSTFIX -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-3">
-					<?php echo I18N::translate('Optional prefixes and suffixes'); ?>
+					<?php echo I18N::translate('Optional prefixes and suffixes') ?>
 				</legend>
 				<div class="col-sm-9">
 					<div class="row">
 						<div class ="col-sm-6">
-							<p class="form-control-static"><strong><?php echo I18N::translate('Prefixes'); ?></strong></p>
+							<p class="form-control-static"><strong><?php echo I18N::translate('Prefixes') ?></strong></p>
 							<?php for ($level = 1; $level < 10; $level++): ?>
 							<?php
 							if ($level == 1) {
@@ -412,13 +411,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							}
 							?>
 							<div class="input-group">
-								<label class="input-group-addon" for="GM_PREFIX_<?php echo $level; ?>"><?php echo $label ?></label>
-								<input class="form-control" type="text" name="GM_PREFIX_<?php echo $level; ?>" value="<?php echo $this->getSetting('GM_PREFIX_' . $level); ?>">
+								<label class="input-group-addon" for="GM_PREFIX_<?php echo $level ?>"><?php echo $label ?></label>
+								<input class="form-control" type="text" name="GM_PREFIX_<?php echo $level ?>" value="<?php echo $this->getSetting('GM_PREFIX_' . $level) ?>">
 							</div>
-							<?php endfor; ?>
+							<?php endfor ?>
 						</div>
 						<div class="col-sm-6">
-							<p class="form-control-static"><strong><?php echo I18N::translate('Suffixes'); ?></strong></p>
+							<p class="form-control-static"><strong><?php echo I18N::translate('Suffixes') ?></strong></p>
 							<?php for ($level = 1; $level < 10; $level++): ?>
 							<?php
 							if ($level == 1) {
@@ -428,45 +427,45 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							}
 							?>
 							<div class="input-group">
-								<label class="input-group-addon" for="GM_POSTFIX_<?php echo $level; ?>"><?php echo $label ?></label>
-								<input class="form-control" type="text" name="GM_POSTFIX_<?php echo $level; ?>" value="<?php echo $this->getSetting('GM_POSTFIX_' . $level); ?>">
+								<label class="input-group-addon" for="GM_POSTFIX_<?php echo $level ?>"><?php echo $label ?></label>
+								<input class="form-control" type="text" name="GM_POSTFIX_<?php echo $level ?>" value="<?php echo $this->getSetting('GM_POSTFIX_' . $level) ?>">
 							</div>
-							<?php endfor; ?>
+							<?php endfor ?>
 						</div>
 					</div>
-					<p class="small text-muted"><?php echo I18N::translate('Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”.'); ?></p>
+					<p class="small text-muted"><?php echo I18N::translate('Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”.') ?></p>
 				</div>
 			</fieldset>
 
-			<h3><?php echo I18N::translate('Place hierarchy'); ?></h3>
+			<h3><?php echo I18N::translate('Place hierarchy') ?></h3>
 
 			<!-- GM_PLACE_HIERARCHY -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-3">
-					<?php echo I18N::translate('Use Google Maps™ for the place hierarchy'); ?>
+					<?php echo I18N::translate('Use Google Maps™ for the place hierarchy') ?>
 				</legend>
 				<div class="col-sm-9">
-					<?php echo FunctionsEdit::editFieldYesNo('GM_PLACE_HIERARCHY', $this->getSetting('GM_PLACE_HIERARCHY'), 'class="radio-inline"'); ?>
+					<?php echo FunctionsEdit::editFieldYesNo('GM_PLACE_HIERARCHY', $this->getSetting('GM_PLACE_HIERARCHY'), 'class="radio-inline"') ?>
 				</div>
 			</fieldset>
 
 			<!-- GM_PH_XSIZE / GM_PH_YSIZE -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-3">
-					<?php echo I18N::translate('Size of map (in pixels)'); ?>
+					<?php echo I18N::translate('Size of map (in pixels)') ?>
 				</legend>
 				<div class="col-sm-9">
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="input-group">
-								<label class="input-group-addon" for="GM_PH_XSIZE"><?php echo I18N::translate('Width'); ?></label>
-								<input id="GM_XSIZE" class="form-control" type="text" name="GM_PH_XSIZE" value="<?php echo $this->getSetting('GM_PH_XSIZE'); ?>">
+								<label class="input-group-addon" for="GM_PH_XSIZE"><?php echo I18N::translate('Width') ?></label>
+								<input id="GM_XSIZE" class="form-control" type="text" name="GM_PH_XSIZE" value="<?php echo $this->getSetting('GM_PH_XSIZE') ?>">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="input-group">
-								<label class="input-group-addon" for="GM_PH_YSIZE"><?php echo I18N::translate('Height'); ?></label>
-								<input id="GM_YSIZE" class="form-control" type="text" name="GM_PH_YSIZE" value="<?php echo $this->getSetting('GM_PH_YSIZE'); ?>">
+								<label class="input-group-addon" for="GM_PH_YSIZE"><?php echo I18N::translate('Height') ?></label>
+								<input id="GM_YSIZE" class="form-control" type="text" name="GM_PH_YSIZE" value="<?php echo $this->getSetting('GM_PH_YSIZE') ?>">
 							</div>
 						</div>
 					</div>
@@ -476,13 +475,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- GM_PH_MARKER -->
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="GM_PH_MARKER">
-					<?php echo I18N::translate('Type of place markers in Place Hierarchy'); ?>
+					<?php echo I18N::translate('Type of place markers in Place Hierarchy') ?>
 				</label>
 				<div class="col-sm-9">
 					<?php
 					$ph_options = array(
-						'G_DEFAULT_ICON'	=> I18N::translate('Standard'),
-						'G_FLAG'			      => I18N::translate('Flag'),
+						'G_DEFAULT_ICON' => I18N::translate('Standard'),
+						'G_FLAG'         => I18N::translate('Flag'),
 					);
 					echo FunctionsEdit::selectEditControl('GM_PH_MARKER', $ph_options, null, $this->getSetting('GM_PH_MARKER'), 'class="form-control"');
 					?>
@@ -492,12 +491,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- GM_COORD -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-3">
-					<?php echo I18N::translate('Display map coordinates'); ?>
+					<?php echo I18N::translate('Display map coordinates') ?>
 				</legend>
 				<div class="col-sm-9">
-					<?php echo FunctionsEdit::editFieldYesNo('GM_COORD', $this->getSetting('GM_COORD'), 'class="radio-inline"'); ?>
+					<?php echo FunctionsEdit::editFieldYesNo('GM_COORD', $this->getSetting('GM_COORD'), 'class="radio-inline"') ?>
 					<p class="small text-muted">
-						<?php echo I18N::translate('This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers.'); ?>
+						<?php echo I18N::translate('This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers.') ?>
 					</p>
 				</div>
 			</fieldset>
@@ -507,7 +506,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<div class="col-sm-offset-3 col-sm-9">
 					<button type="submit" class="btn btn-primary">
 						<i class="fa fa-check"></i>
-						<?php echo I18N::translate('save'); ?>
+						<?php echo I18N::translate('save') ?>
 					</button>
 				</div>
 			</div>
@@ -584,14 +583,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		?>
 			<script>
 		<?php if ($_POST['selcountry'] == 'Countries') { ?>
-					window.opener.document.editplaces.icon.value = 'places/flags/<?php echo $flags[$_POST['FLAGS']]; ?>.png';
-					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/places/flags/<?php echo $country[$_POST['FLAGS']]; ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag'); ?></a>";
+					window.opener.document.editplaces.icon.value = 'places/flags/<?php echo $flags[$_POST['FLAGS']] ?>.png';
+					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/places/flags/<?php echo $country[$_POST['FLAGS']] ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag') ?></a>";
 		<?php } elseif ($_POST['selstate'] != "States") { ?>
-					window.opener.document.editplaces.icon.value = 'places/<?php echo $countrySelected, '/flags/', $_POST['selstate'], '/', $flags_s[$_POST['FLAGS']]; ?>.png';
-					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/places/<?php echo $countrySelected, "/flags/", $_POST['selstate'], "/", $flags_s[$_POST['FLAGS']]; ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag'); ?></a>";
+					window.opener.document.editplaces.icon.value = 'places/<?php echo $countrySelected . '/flags/' . $_POST['selstate'] . '/' . $flags_s[$_POST['FLAGS']] ?>.png';
+					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/places/<?php echo $countrySelected . "/flags/" . $_POST['selstate'] . '/' . $flags_s[$_POST['FLAGS']] ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag') ?></a>";
 		<?php } else { ?>
-					window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected, "/flags/", $flags[$_POST['FLAGS']]; ?>.png";
-					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/places/<?php echo $countrySelected, "/flags/", $flags[$_POST['FLAGS']]; ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag'); ?></a>";
+					window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected . '/flags/' . $flags[$_POST['FLAGS']] ?>.png";
+					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/places/<?php echo $countrySelected . '/flags/' . $flags[$_POST['FLAGS']] ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag') ?></a>";
 		<?php } ?>
 					window.opener.updateMap();
 					window.close();
@@ -646,21 +645,21 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			asort($stateList);
 		}
 		?>
-		<h4><?php echo I18N::translate('Change flag'); ?></h4>
+		<h4><?php echo I18N::translate('Change flag') ?></h4>
 
 		<p class="small text-muted">
-			<?php echo I18N::translate('Using the pull down menu it is possible to select a country, of which a flag can be selected.  If no flags are shown, then there are no flags defined for this country.'); ?>
+			<?php echo I18N::translate('Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country.') ?>
 		</p>
 
-		<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&amp;mod_action=flags&amp;countrySelected=<?php echo $countrySelected; ?>&amp;stateSelected=<?php echo $stateSelected; ?>">
+		<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&amp;mod_action=flags&amp;countrySelected=<?php echo $countrySelected ?>&amp;stateSelected=<?php echo $stateSelected ?>">
 			<input type="hidden" name="action" value="ChangeFlag">
-			<input type="hidden" name="selcountry" value="<?php echo $countrySelected; ?>">
-			<input type="hidden" name="selstate" value="<?php echo $stateSelected; ?>">
+			<input type="hidden" name="selcountry" value="<?php echo $countrySelected ?>">
+			<input type="hidden" name="selstate" value="<?php echo $stateSelected ?>">
 			<table class="facts_table">
 				<tr>
 					<td class="optionbox" colspan="4">
 						<select name="COUNTRYSELECT" dir="ltr" onchange="selectCountry()">
-							<option value="Countries"><?php echo I18N::translate('Countries'); ?></option>
+							<option value="Countries"><?php echo I18N::translate('Countries') ?></option>
 							<?php foreach ($countryList as $country_key => $country_name) {
 								echo '<option value="', $country_key, '" ';
 								if ($countrySelected == $country_key) {
@@ -704,7 +703,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		?>
 					<td class="optionbox" colspan="4">
 						<select name="STATESELECT" dir="ltr" onchange="selectCountry()">
-							<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ I18N::translate('Subdivision'); ?></option>
+							<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ I18N::translate('Subdivision') ?></option>
 							<?php foreach ($stateList as $state_key => $state_name) {
 								echo '<option value="', $state_key, '" ';
 								if ($stateSelected == $state_key) {
@@ -732,8 +731,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</tr>
 			</table>
 			<p id="save-cancel">
-				<input type="submit" class="save" value="<?php echo I18N::translate('save'); ?>">
-				<input type="button" class="cancel" value="<?php echo I18N::translate('close'); ?>" onclick="window.close();">
+				<input type="submit" class="save" value="<?php echo I18N::translate('save') ?>">
+				<input type="button" class="cancel" value="<?php echo I18N::translate('close') ?>" onclick="window.close();">
 			</p>
 		</form>
 		<?php
@@ -771,25 +770,25 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		// -- print the form to change the number of displayed generations
 		?>
 		<form name="people" method="get" action="?">
-			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
+			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml() ?>">
 			<input type="hidden" name="mod" value="googlemap">
 			<input type="hidden" name="mod_action" value="pedigree_map">
 			<table class="list_table" width="555">
 				<tr>
 					<td class="descriptionbox wrap">
-						<?php echo I18N::translate('Individual'); ?>
+						<?php echo I18N::translate('Individual') ?>
 					</td>
 					<td class="optionbox">
-						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
+						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref() ?>">
+						<?php echo FunctionsPrint::printFindIndividualLink('rootid') ?>
 					</td>
 					<td class="topbottombar" rowspan="2">
-						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+						<input type="submit" value="<?php echo I18N::translate('View') ?>">
 					</td>
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap">
-						<?php echo I18N::translate('Generations'); ?>
+						<?php echo I18N::translate('Generations') ?>
 					</td>
 					<td class="optionbox">
 						<select name="PEDIGREE_GENERATIONS">
@@ -1514,25 +1513,25 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		?>
 		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+			<li><a href="admin.php"><?php echo I18N::translate('Control panel') ?></a></li>
+			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration') ?></a></li>
+			<li class="active"><?php echo $controller->getPageTitle() ?></li>
 		</ol>
 
 		<ul class="nav nav-tabs nav-justified" role="tablist">
 			<li role="presentation">
 				<a href="?mod=googlemap&amp;mod_action=admin_config" role="tab">
-					<?php echo I18N::translate('Google Maps™ preferences'); ?>
+					<?php echo I18N::translate('Google Maps™ preferences') ?>
 				</a>
 			</li>
 			<li role="presentation">
 				<a href="?mod=googlemap&amp;mod_action=admin_places">
-					<?php echo I18N::translate('Geographic data'); ?>
+					<?php echo I18N::translate('Geographic data') ?>
 				</a>
 			</li>
 			<li role="presentation" class="active">
 				<a href="#">
-					<?php echo I18N::translate('Place check'); ?>
+					<?php echo I18N::translate('Place check') ?>
 				</a>
 			</li>
 		</ul>
@@ -2310,7 +2309,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				controlText.style.fontSize = '12px';
 				controlText.style.paddingLeft = '15px';
 				controlText.style.paddingRight = '15px';
-				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map'); ?></b>';
+				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map') ?></b>';
 				controlUI.appendChild(controlText);
 
 				// Setup the click event listeners: simply set the map to original LatLng
@@ -2324,7 +2323,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				var mapOptions = {
 					zoom: 7,
 					center: map_center,
-					mapTypeId: google.maps.MapTypeId.<?php echo $this->getSetting('GM_MAP_TYPE'); ?>,
+					mapTypeId: google.maps.MapTypeId.<?php echo $this->getSetting('GM_MAP_TYPE') ?>,
 					mapTypeControlOptions: {
 						style: google.maps.MapTypeControlStyle.DROPDOWN_MENU  // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
 					},
@@ -2352,23 +2351,23 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				// Add the markers to the map from the $gmarks array
 				var locations = [
 					<?php foreach ($gmarks as $n => $gmark) { ?>
-					<?php echo $n ? ',' : ''; ?>
+					<?php echo $n ? ',' : '' ?>
 					{
-						"event":        "<?php echo Filter::escapeJs($gmark['fact_label']); ?>",
-						"lat":          "<?php echo Filter::escapeJs($gmark['lat']); ?>",
-						"lng":          "<?php echo Filter::escapeJs($gmark['lng']); ?>",
-						"date":         "<?php echo Filter::escapeJs($gmark['date']); ?>",
-						"info":         "<?php echo Filter::escapeJs($gmark['info']); ?>",
-						"name":         "<?php echo Filter::escapeJs($gmark['name']); ?>",
-						"place":        "<?php echo Filter::escapeJs($gmark['place']); ?>",
-						"tooltip":      "<?php echo Filter::escapeJs($gmark['tooltip']); ?>",
-						"image":        "<?php echo Filter::escapeJs($gmark['image']); ?>",
-						"pl_icon":      "<?php echo Filter::escapeJs($gmark['pl_icon']); ?>",
-						"sv_lati":      "<?php echo Filter::escapeJs($gmark['sv_lati']); ?>",
-						"sv_long":      "<?php echo Filter::escapeJs($gmark['sv_long']); ?>",
-						"sv_bearing":   "<?php echo Filter::escapeJs($gmark['sv_bearing']); ?>",
-						"sv_elevation": "<?php echo Filter::escapeJs($gmark['sv_elevation']); ?>",
-						"sv_zoom":      "<?php echo Filter::escapeJs($gmark['sv_zoom']); ?>"
+						"event":        "<?php echo Filter::escapeJs($gmark['fact_label']) ?>",
+						"lat":          "<?php echo Filter::escapeJs($gmark['lat']) ?>",
+						"lng":          "<?php echo Filter::escapeJs($gmark['lng']) ?>",
+						"date":         "<?php echo Filter::escapeJs($gmark['date']) ?>",
+						"info":         "<?php echo Filter::escapeJs($gmark['info']) ?>",
+						"name":         "<?php echo Filter::escapeJs($gmark['name']) ?>",
+						"place":        "<?php echo Filter::escapeJs($gmark['place']) ?>",
+						"tooltip":      "<?php echo Filter::escapeJs($gmark['tooltip']) ?>",
+						"image":        "<?php echo Filter::escapeJs($gmark['image']) ?>",
+						"pl_icon":      "<?php echo Filter::escapeJs($gmark['pl_icon']) ?>",
+						"sv_lati":      "<?php echo Filter::escapeJs($gmark['sv_lati']) ?>",
+						"sv_long":      "<?php echo Filter::escapeJs($gmark['sv_long']) ?>",
+						"sv_bearing":   "<?php echo Filter::escapeJs($gmark['sv_bearing']) ?>",
+						"sv_elevation": "<?php echo Filter::escapeJs($gmark['sv_elevation']) ?>",
+						"sv_zoom":      "<?php echo Filter::escapeJs($gmark['sv_zoom']) ?>"
 					}
 					<?php } ?>
 				];
@@ -2409,9 +2408,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					'<div class="infowindow">' +
 						'<div id="gmtabs">' +
 							'<ul class="tabs" >' +
-								'<li><a href="#event" id="EV"><?php echo I18N::translate('Events'); ?></a></li>' +
+								'<li><a href="#event" id="EV"><?php echo I18N::translate('Events') ?></a></li>' +
 								<?php if ($STREETVIEW) { ?>
-								'<li><a href="#sview" id="SV"><?php echo I18N::translate('Google Street View™'); ?></a></li>' +
+								'<li><a href="#sview" id="SV"><?php echo I18N::translate('Google Street View™') ?></a></li>' +
 								<?php } ?>
 							'</ul>' +
 							'<div class="panes">' +
@@ -2433,7 +2432,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					var point        = new google.maps.LatLng(location.lat,     location.lng);     // Place Latitude, Longitude
 					var sv_point     = new google.maps.LatLng(location.sv_lati, location.sv_long); // StreetView Latitude and Longitide
 
-					var zoomLevel = <?php echo $GM_MAX_ZOOM; ?>;
+					var zoomLevel = <?php echo $GM_MAX_ZOOM ?>;
 					var marker    = createMarker(point, html, location.tooltip, location.sv_lati, location.sv_long, location.sv_bearing, location.sv_elevation, location.sv_zoom, sv_point, location.pl_icon);
 
 					// if streetview coordinates are available, use them for marker,
@@ -2717,7 +2716,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				?>
 				<div>
-				<iframe style="background: transparent; margin-top: -3px; margin-left: 2px; width: 530px; height: 405px; padding: 0; border: 0;" src="module.php?mod=googlemap&amp;mod_action=wt_street_view&amp;x=<?php echo $sv_lng; ?>&amp;y=<?php echo $sv_lat; ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir; ?>&amp;p=<?php echo $sv_pitch; ?>&amp;m=<?php echo $sv_zoom; ?>&amp;j=1&amp;k=1&amp;v=1" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
+				<iframe style="background: transparent; margin-top: -3px; margin-left: 2px; width: 530px; height: 405px; padding: 0; border: 0;" src="module.php?mod=googlemap&amp;mod_action=wt_street_view&amp;x=<?php echo $sv_lng ?>&amp;y=<?php echo $sv_lat ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir ?>&amp;p=<?php echo $sv_pitch ?>&amp;m=<?php echo $sv_zoom ?>&amp;j=1&amp;k=1&amp;v=1" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
 				</div>
 
 				<?php
@@ -2741,9 +2740,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				echo "</td></tr>";
 				echo "</table>";
 			}
-			// Next line puts Place hierarchy on new row -----
 			echo '</td></tr><tr>';
-		}	// End Streetview window ===================================================================
+		}
 	}
 
 	/**
@@ -2962,11 +2960,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						new google.maps.Point(0,0),
 						new google.maps.Point(9, 34));
 					}
-					//	*** Clickable area of icon - To be refined later *** ===================================
-					//	var iconShape = {
-					//	coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],
-					//	type: "poly"
-					//	};
 				} else {
 					var iconImage = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
 					new google.maps.Size(20, 34),
@@ -2976,11 +2969,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					new google.maps.Size(37, 34),
 					new google.maps.Point(0,0),
 					new google.maps.Point(9, 34));
-					//	*** Clickable area of icon - To be refined later *** ===================================
-					//	var iconShape = {
-					//	coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],
-					//	type: "poly"
-					//	};
 				}
 				var posn = new google.maps.LatLng(0,0);
 				var marker = new google.maps.Marker({
@@ -3395,18 +3383,18 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		?>
 
-			<script src="<?php echo $this->googleMapsScript(); ?>"></script>
+			<script src="<?php echo $this->googleMapsScript() ?>"></script>
 			<script>
 			var map;
 			var marker;
 			var zoom;
-			var pl_name = '<?php echo Filter::escapeJs($place_name); ?>';
-			if (<?php echo $place_lati; ?> !== 0.0 && <?php echo $place_long; ?> !== 0.0) {
-				var latlng = new google.maps.LatLng(<?php echo $place_lati; ?>, <?php echo $place_long; ?>);
+			var pl_name = '<?php echo Filter::escapeJs($place_name) ?>';
+			if (<?php echo $place_lati ?> !== 0.0 && <?php echo $place_long ?> !== 0.0) {
+				var latlng = new google.maps.LatLng(<?php echo $place_lati ?>, <?php echo $place_long ?>);
 			} else {
-				var latlng = new google.maps.LatLng(<?php echo $parent_lati; ?>, <?php echo $parent_long; ?>);
+				var latlng = new google.maps.LatLng(<?php echo $parent_lati ?>, <?php echo $parent_long ?>);
 			}
-			var pl_zoom = <?php echo $zoomfactor; ?>;
+			var pl_zoom = <?php echo $zoomfactor ?>;
 			var polygon1;
 			var polygon2;
 			var geocoder;
@@ -3514,8 +3502,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				} else if (pl_name == 'England') {
 					// England
 					var returnGeom1 = '-4.74361,50.66750|-4.78361,50.59361|-4.91584,50.57722|-5.01750,50.54264|-5.02569,50.47271|-5.04729,50.42750|-5.15208,50.34374|-5.26805,50.27389|-5.43194,50.19326|-5.49584,50.21695|-5.54639,50.20527|-5.71000,50.12916|-5.71681,50.06083|-5.66174,50.03631|-5.58278,50.04777|-5.54166,50.07055|-5.53416,50.11569|-5.47055,50.12499|-5.33361,50.09138|-5.27666,50.05972|-5.25674,50.00514|-5.19306,49.95527|-5.16070,50.00319|-5.06555,50.03750|-5.07090,50.08166|-5.04806,50.17111|-4.95278,50.19333|-4.85750,50.23166|-4.76250,50.31138|-4.67861,50.32583|-4.54334,50.32222|-4.48278,50.32583|-4.42972,50.35139|-4.38000,50.36388|-4.16555,50.37028|-4.11139,50.33027|-4.05708,50.29791|-3.94389,50.31346|-3.87764,50.28139|-3.83653,50.22972|-3.78944,50.21222|-3.70666,50.20972|-3.65195,50.23111|-3.55139,50.43833|-3.49416,50.54639|-3.46181,50.58792|-3.41139,50.61610|-3.24416,50.67444|-3.17347,50.68833|-3.09445,50.69222|-2.97806,50.70638|-2.92750,50.73125|-2.88278,50.73111|-2.82305,50.72027|-2.77139,50.70861|-2.66195,50.67334|-2.56305,50.63222|-2.45861,50.57500|-2.44666,50.62639|-2.39097,50.64166|-2.19722,50.62611|-2.12195,50.60722|-2.05445,50.58569|-1.96437,50.59674|-1.95441,50.66536|-2.06681,50.71430|-1.93416,50.71277|-1.81639,50.72306|-1.68445,50.73888|-1.59278,50.72416|-1.33139,50.79138|-1.11695,50.80694|-1.15889,50.84083|-1.09445,50.84584|-0.92842,50.83966|-0.86584,50.79965|-0.90826,50.77396|-0.78187,50.72722|-0.74611,50.76583|-0.67528,50.78111|-0.57722,50.79527|-0.25500,50.82638|-0.19084,50.82583|-0.13805,50.81833|0.05695,50.78083|0.12334,50.75944|0.22778,50.73944|0.28695,50.76500|0.37195,50.81638|0.43084,50.83111|0.56722,50.84777|0.67889,50.87681|0.71639,50.90500|0.79334,50.93610|0.85666,50.92556|0.97125,50.98111|0.99778,51.01903|1.04555,51.04944|1.10028,51.07361|1.26250,51.10166|1.36889,51.13583|1.41111,51.20111|1.42750,51.33111|1.38556,51.38777|1.19195,51.37861|1.05278,51.36722|0.99916,51.34777|0.90806,51.34069|0.70416,51.37749|0.61972,51.38304|0.55945,51.40596|0.64236,51.44042|0.69750,51.47084|0.59195,51.48777|0.53611,51.48806|0.48916,51.48445|0.45215,51.45562|0.38894,51.44822|0.46500,51.50306|0.65195,51.53680|0.76695,51.52138|0.82084,51.53556|0.87528,51.56110|0.95250,51.60923|0.94695,51.72556|0.90257,51.73465|0.86306,51.71166|0.76140,51.69164|0.70111,51.71847|0.86211,51.77361|0.93236,51.80583|0.98278,51.82527|1.03569,51.77416|1.08834,51.77056|1.13222,51.77694|1.18139,51.78972|1.22361,51.80888|1.26611,51.83916|1.28097,51.88096|1.20834,51.95083|1.16347,52.02361|1.27750,51.98555|1.33125,51.92875|1.39028,51.96999|1.58736,52.08388|1.63000,52.19527|1.68576,52.32630|1.73028,52.41138|1.74945,52.45583|1.74590,52.62021|1.70250,52.71583|1.64528,52.77111|1.50361,52.83749|1.43222,52.87472|1.35250,52.90972|1.28222,52.92750|1.18389,52.93889|0.99472,52.95111|0.94222,52.95083|0.88472,52.96638|0.66722,52.97611|0.54778,52.96618|0.49139,52.93430|0.44431,52.86569|0.42903,52.82403|0.36334,52.78027|0.21778,52.80694|0.16125,52.86250|0.05778,52.88916|0.00211,52.87985|0.03222,52.91722|0.20389,53.02805|0.27666,53.06694|0.33916,53.09236|0.35389,53.18722|0.33958,53.23472|0.23555,53.39944|0.14347,53.47527|0.08528,53.48638|0.02694,53.50972|-0.10084,53.57306|-0.20722,53.63083|-0.26445,53.69083|-0.30166,53.71319|-0.39022,53.70794|-0.51972,53.68527|-0.71653,53.69638|-0.65445,53.72527|-0.60584,53.72972|-0.54916,53.70611|-0.42261,53.71755|-0.35728,53.73056|-0.29389,53.73666|-0.23139,53.72166|-0.10584,53.63166|-0.03472,53.62555|0.04416,53.63916|0.08916,53.62666|0.14945,53.58847|0.12639,53.64527|0.06264,53.70389|-0.12750,53.86388|-0.16916,53.91847|-0.21222,54.00833|-0.20569,54.05153|-0.16111,54.08806|-0.11694,54.13222|-0.20053,54.15171|-0.26250,54.17444|-0.39334,54.27277|-0.42166,54.33222|-0.45750,54.37694|-0.51847,54.44749|-0.56472,54.48000|-0.87584,54.57027|-1.06139,54.61722|-1.16528,54.64972|-1.30445,54.77138|-1.34556,54.87138|-1.41278,54.99944|-1.48292,55.08625|-1.51500,55.14972|-1.56584,55.28722|-1.58097,55.48361|-1.63597,55.58194|-1.69000,55.60556|-1.74695,55.62499|-1.81764,55.63306|-1.97681,55.75416|-2.02166,55.80611|-2.08361,55.78054|-2.22000,55.66499|-2.27916,55.64472|-2.27416,55.57527|-2.21528,55.50583|-2.18278,55.45985|-2.21236,55.42777|-2.46305,55.36111|-2.63055,55.25500|-2.69945,55.17722|-2.96278,55.03889|-3.01500,55.05222|-3.05103,54.97986|-3.13292,54.93139|-3.20861,54.94944|-3.28931,54.93792|-3.39166,54.87639|-3.42916,54.81555|-3.56916,54.64249|-3.61306,54.48861|-3.49305,54.40333|-3.43389,54.34806|-3.41056,54.28014|-3.38055,54.24444|-3.21472,54.09555|-3.15222,54.08194|-2.93097,54.15333|-2.81361,54.22277|-2.81750,54.14277|-2.83361,54.08500|-2.93250,53.95055|-3.05264,53.90764|-3.03708,53.74944|-2.99278,53.73277|-2.89979,53.72499|-2.97729,53.69382|-3.07306,53.59805|-3.10563,53.55993|-3.00678,53.41738|-2.95389,53.36027|-2.85736,53.32083|-2.70493,53.35062|-2.77639,53.29250|-2.89972,53.28916|-2.94250,53.31056|-3.02889,53.38191|-3.07248,53.40936|-3.16695,53.35708|-3.12611,53.32500|-3.08860,53.26001|-3.02000,53.24722|-2.95528,53.21555|-2.91069,53.17014|-2.89389,53.10416|-2.85695,53.03249|-2.77792,52.98514|-2.73109,52.96873|-2.71945,52.91902|-2.79278,52.90207|-2.85069,52.93875|-2.99389,52.95361|-3.08639,52.91611|-3.13014,52.88486|-3.13708,52.79312|-3.06806,52.77027|-3.01111,52.71166|-3.06666,52.63527|-3.11750,52.58666|-3.07089,52.55702|-3.00792,52.56902|-2.98028,52.53083|-3.02736,52.49792|-3.11916,52.49194|-3.19514,52.46722|-3.19611,52.41027|-3.02195,52.34027|-2.95486,52.33117|-2.99750,52.28139|-3.05125,52.23347|-3.07555,52.14804|-3.12222,52.11805|-3.11250,52.06945|-3.08500,52.01930|-3.04528,51.97639|-2.98889,51.92555|-2.91757,51.91569|-2.86639,51.92889|-2.77861,51.88583|-2.65944,51.81806|-2.68334,51.76957|-2.68666,51.71889|-2.66500,51.61500|-2.62916,51.64416|-2.57889,51.67777|-2.46056,51.74666|-2.40389,51.74041|-2.47166,51.72445|-2.55305,51.65722|-2.65334,51.56389|-2.77055,51.48916|-2.85278,51.44472|-2.96000,51.37499|-3.00695,51.30722|-3.01278,51.25632|-3.02834,51.20611|-3.30139,51.18111|-3.39361,51.18138|-3.43729,51.20638|-3.50722,51.22333|-3.57014,51.23027|-3.63222,51.21805|-3.70028,51.23000|-3.79250,51.23916|-3.88389,51.22416|-3.98472,51.21695|-4.11666,51.21222|-4.22805,51.18777|-4.22028,51.11054|-4.23702,51.04659|-4.30361,51.00416|-4.37639,50.99110|-4.42736,51.00958|-4.47445,51.01416|-4.52132,51.01424|-4.54334,50.92694|-4.56139,50.77625|-4.65139,50.71527|-4.74361,50.66750'; //|-3.08860,53.26001|-3.33639,53.34722|-3.38806,53.34361|-3.60986,53.27944|-3.73014,53.28944|-3.85445,53.28444|-4.01861,53.23750|-4.06639,53.22639|-4.15334,53.22556|-4.19639,53.20611|-4.33028,53.11222|-4.36097,53.02888|-4.55278,52.92889|-4.61889,52.90916|-4.72195,52.83611|-4.72778,52.78139|-4.53945,52.79306|-4.47722,52.85500|-4.41416,52.88472|-4.31292,52.90499|-4.23334,52.91499|-4.13569,52.87888|-4.13056,52.77777|-4.05334,52.71666|-4.10639,52.65084|-4.12597,52.60375|-4.08056,52.55333|-4.05972,52.48584|-4.09666,52.38583|-4.14305,52.32027|-4.19361,52.27638|-4.23166,52.24888|-4.52722,52.13083|-4.66945,52.13027|-4.73695,52.10361|-4.76778,52.06444|-4.84445,52.01388|-5.09945,51.96056|-5.23916,51.91638|-5.25889,51.87056|-5.18500,51.86958|-5.11528,51.83333|-5.10257,51.77895|-5.16111,51.76222|-5.24694,51.73027|-5.19111,51.70888|-5.00739,51.70349|-4.90875,51.71249|-4.86111,51.71334|-4.97061,51.67577|-5.02128,51.66861|-5.05139,51.62028|-5.00528,51.60638|-4.94139,51.59416|-4.89028,51.62694|-4.83569,51.64534|-4.79063,51.63340|-4.69028,51.66666|-4.64584,51.72666|-4.57445,51.73416|-4.43611,51.73722|-4.26222,51.67694|-4.19750,51.67916|-4.06614,51.66804|-4.11639,51.63416|-4.17750,51.62235|-4.25055,51.62861|-4.29208,51.60743|-4.27778,51.55666|-4.20486,51.53527|-3.94972,51.61278|-3.83792,51.61999|-3.78166,51.56750|-3.75160,51.52931|-3.67194,51.47388|-3.54250,51.39777|-3.40334,51.37972|-3.27097,51.38014|-3.16458,51.40909|-3.15166,51.45305|-3.11875,51.48750|-3.02111,51.52527|-2.95472,51.53972|-2.89278,51.53861|-2.84778,51.54500|-2.71472,51.58083|-2.66500,51.61500|-2.68666,51.71889|-2.68334,51.76957|-2.65944,51.81806|-2.77861,51.88583|-2.86639,51.92889|-2.91757,51.91569|-2.98889,51.92555|-3.04528,51.97639|-3.08500,52.01930|-3.11250,52.06945|-3.12222,52.11805|-3.07555,52.14804|-3.05125,52.23347|-2.99750,52.28139|-2.95486,52.33117|-3.02195,52.34027|-3.19611,52.41027|-3.19514,52.46722|-3.11916,52.49194|-3.02736,52.49792|-2.98028,52.53083|-3.00792,52.56902|-3.07089,52.55702|-3.11750,52.58666|-3.06666,52.63527|-3.01111,52.71166|-3.06806,52.77027|-3.13708,52.79312|-3.13014,52.88486|-3.08639,52.91611|-2.99389,52.95361|-2.85069,52.93875|-2.79278,52.90207|-2.71945,52.91902|-2.73109,52.96873|-2.77792,52.98514|-2.85695,53.03249|-2.89389,53.10416|-2.91069,53.17014|-2.95528,53.21555|-3.02000,53.24722|-3.08860,53.26001';
-					// Wales Test
-			//		var returnGeom2 = '-3.08860,53.26001|-3.33639,53.34722|-3.38806,53.34361|-3.60986,53.27944|-3.73014,53.28944|-3.85445,53.28444|-4.01861,53.23750|-4.06639,53.22639|-4.15334,53.22556|-4.19639,53.20611|-4.33028,53.11222|-4.36097,53.02888|-4.55278,52.92889|-4.61889,52.90916|-4.72195,52.83611|-4.72778,52.78139|-4.53945,52.79306|-4.47722,52.85500|-4.41416,52.88472|-4.31292,52.90499|-4.23334,52.91499|-4.13569,52.87888|-4.13056,52.77777|-4.05334,52.71666|-4.10639,52.65084|-4.12597,52.60375|-4.08056,52.55333|-4.05972,52.48584|-4.09666,52.38583|-4.14305,52.32027|-4.19361,52.27638|-4.23166,52.24888|-4.52722,52.13083|-4.66945,52.13027|-4.73695,52.10361|-4.76778,52.06444|-4.84445,52.01388|-5.09945,51.96056|-5.23916,51.91638|-5.25889,51.87056|-5.18500,51.86958|-5.11528,51.83333|-5.10257,51.77895|-5.16111,51.76222|-5.24694,51.73027|-5.19111,51.70888|-5.00739,51.70349|-4.90875,51.71249|-4.86111,51.71334|-4.97061,51.67577|-5.02128,51.66861|-5.05139,51.62028|-5.00528,51.60638|-4.94139,51.59416|-4.89028,51.62694|-4.83569,51.64534|-4.79063,51.63340|-4.69028,51.66666|-4.64584,51.72666|-4.57445,51.73416|-4.43611,51.73722|-4.26222,51.67694|-4.19750,51.67916|-4.06614,51.66804|-4.11639,51.63416|-4.17750,51.62235|-4.25055,51.62861|-4.29208,51.60743|-4.27778,51.55666|-4.20486,51.53527|-3.94972,51.61278|-3.83792,51.61999|-3.78166,51.56750|-3.75160,51.52931|-3.67194,51.47388|-3.54250,51.39777|-3.40334,51.37972|-3.27097,51.38014|-3.16458,51.40909|-3.15166,51.45305|-3.11875,51.48750|-3.02111,51.52527|-2.95472,51.53972|-2.89278,51.53861|-2.84778,51.54500|-2.71472,51.58083|-2.66500,51.61500|-2.68666,51.71889|-2.68334,51.76957|-2.65944,51.81806|-2.77861,51.88583|-2.86639,51.92889|-2.91757,51.91569|-2.98889,51.92555|-3.04528,51.97639|-3.08500,52.01930|-3.11250,52.06945|-3.12222,52.11805|-3.07555,52.14804|-3.05125,52.23347|-2.99750,52.28139|-2.95486,52.33117|-3.02195,52.34027|-3.19611,52.41027|-3.19514,52.46722|-3.11916,52.49194|-3.02736,52.49792|-2.98028,52.53083|-3.00792,52.56902|-3.07089,52.55702|-3.11750,52.58666|-3.06666,52.63527|-3.01111,52.71166|-3.06806,52.77027|-3.13708,52.79312|-3.13014,52.88486|-3.08639,52.91611|-2.99389,52.95361|-2.85069,52.93875|-2.79278,52.90207|-2.71945,52.91902|-2.73109,52.96873|-2.77792,52.98514|-2.85695,53.03249|-2.89389,53.10416|-2.91069,53.17014|-2.95528,53.21555|-3.02000,53.24722|-3.08860,53.26001';
+			// Wales Test
+			// var returnGeom2 = '-3.08860,53.26001|-3.33639,53.34722|-3.38806,53.34361|-3.60986,53.27944|-3.73014,53.28944|-3.85445,53.28444|-4.01861,53.23750|-4.06639,53.22639|-4.15334,53.22556|-4.19639,53.20611|-4.33028,53.11222|-4.36097,53.02888|-4.55278,52.92889|-4.61889,52.90916|-4.72195,52.83611|-4.72778,52.78139|-4.53945,52.79306|-4.47722,52.85500|-4.41416,52.88472|-4.31292,52.90499|-4.23334,52.91499|-4.13569,52.87888|-4.13056,52.77777|-4.05334,52.71666|-4.10639,52.65084|-4.12597,52.60375|-4.08056,52.55333|-4.05972,52.48584|-4.09666,52.38583|-4.14305,52.32027|-4.19361,52.27638|-4.23166,52.24888|-4.52722,52.13083|-4.66945,52.13027|-4.73695,52.10361|-4.76778,52.06444|-4.84445,52.01388|-5.09945,51.96056|-5.23916,51.91638|-5.25889,51.87056|-5.18500,51.86958|-5.11528,51.83333|-5.10257,51.77895|-5.16111,51.76222|-5.24694,51.73027|-5.19111,51.70888|-5.00739,51.70349|-4.90875,51.71249|-4.86111,51.71334|-4.97061,51.67577|-5.02128,51.66861|-5.05139,51.62028|-5.00528,51.60638|-4.94139,51.59416|-4.89028,51.62694|-4.83569,51.64534|-4.79063,51.63340|-4.69028,51.66666|-4.64584,51.72666|-4.57445,51.73416|-4.43611,51.73722|-4.26222,51.67694|-4.19750,51.67916|-4.06614,51.66804|-4.11639,51.63416|-4.17750,51.62235|-4.25055,51.62861|-4.29208,51.60743|-4.27778,51.55666|-4.20486,51.53527|-3.94972,51.61278|-3.83792,51.61999|-3.78166,51.56750|-3.75160,51.52931|-3.67194,51.47388|-3.54250,51.39777|-3.40334,51.37972|-3.27097,51.38014|-3.16458,51.40909|-3.15166,51.45305|-3.11875,51.48750|-3.02111,51.52527|-2.95472,51.53972|-2.89278,51.53861|-2.84778,51.54500|-2.71472,51.58083|-2.66500,51.61500|-2.68666,51.71889|-2.68334,51.76957|-2.65944,51.81806|-2.77861,51.88583|-2.86639,51.92889|-2.91757,51.91569|-2.98889,51.92555|-3.04528,51.97639|-3.08500,52.01930|-3.11250,52.06945|-3.12222,52.11805|-3.07555,52.14804|-3.05125,52.23347|-2.99750,52.28139|-2.95486,52.33117|-3.02195,52.34027|-3.19611,52.41027|-3.19514,52.46722|-3.11916,52.49194|-3.02736,52.49792|-2.98028,52.53083|-3.00792,52.56902|-3.07089,52.55702|-3.11750,52.58666|-3.06666,52.63527|-3.01111,52.71166|-3.06806,52.77027|-3.13708,52.79312|-3.13014,52.88486|-3.08639,52.91611|-2.99389,52.95361|-2.85069,52.93875|-2.79278,52.90207|-2.71945,52.91902|-2.73109,52.96873|-2.77792,52.98514|-2.85695,53.03249|-2.89389,53.10416|-2.91069,53.17014|-2.95528,53.21555|-3.02000,53.24722|-3.08860,53.26001';
 					num_arrays = 2;
 				} else if (pl_name == 'Wales') {
 					var returnGeom1 = '-3.08860,53.26001|-3.33639,53.34722|-3.38806,53.34361|-3.60986,53.27944|-3.73014,53.28944|-3.85445,53.28444|-4.01861,53.23750|-4.06639,53.22639|-4.15334,53.22556|-4.19639,53.20611|-4.33028,53.11222|-4.36097,53.02888|-4.55278,52.92889|-4.61889,52.90916|-4.72195,52.83611|-4.72778,52.78139|-4.53945,52.79306|-4.47722,52.85500|-4.41416,52.88472|-4.31292,52.90499|-4.23334,52.91499|-4.13569,52.87888|-4.13056,52.77777|-4.05334,52.71666|-4.10639,52.65084|-4.12597,52.60375|-4.08056,52.55333|-4.05972,52.48584|-4.09666,52.38583|-4.14305,52.32027|-4.19361,52.27638|-4.23166,52.24888|-4.52722,52.13083|-4.66945,52.13027|-4.73695,52.10361|-4.76778,52.06444|-4.84445,52.01388|-5.09945,51.96056|-5.23916,51.91638|-5.25889,51.87056|-5.18500,51.86958|-5.11528,51.83333|-5.10257,51.77895|-5.16111,51.76222|-5.24694,51.73027|-5.19111,51.70888|-5.00739,51.70349|-4.90875,51.71249|-4.86111,51.71334|-4.97061,51.67577|-5.02128,51.66861|-5.05139,51.62028|-5.00528,51.60638|-4.94139,51.59416|-4.89028,51.62694|-4.83569,51.64534|-4.79063,51.63340|-4.69028,51.66666|-4.64584,51.72666|-4.57445,51.73416|-4.43611,51.73722|-4.26222,51.67694|-4.19750,51.67916|-4.06614,51.66804|-4.11639,51.63416|-4.17750,51.62235|-4.25055,51.62861|-4.29208,51.60743|-4.27778,51.55666|-4.20486,51.53527|-3.94972,51.61278|-3.83792,51.61999|-3.78166,51.56750|-3.75160,51.52931|-3.67194,51.47388|-3.54250,51.39777|-3.40334,51.37972|-3.27097,51.38014|-3.16458,51.40909|-3.15166,51.45305|-3.11875,51.48750|-3.02111,51.52527|-2.95472,51.53972|-2.89278,51.53861|-2.84778,51.54500|-2.71472,51.58083|-2.66500,51.61500|-2.68666,51.71889|-2.68334,51.76957|-2.65944,51.81806|-2.77861,51.88583|-2.86639,51.92889|-2.91757,51.91569|-2.98889,51.92555|-3.04528,51.97639|-3.08500,52.01930|-3.11250,52.06945|-3.12222,52.11805|-3.07555,52.14804|-3.05125,52.23347|-2.99750,52.28139|-2.95486,52.33117|-3.02195,52.34027|-3.19611,52.41027|-3.19514,52.46722|-3.11916,52.49194|-3.02736,52.49792|-2.98028,52.53083|-3.00792,52.56902|-3.07089,52.55702|-3.11750,52.58666|-3.06666,52.63527|-3.01111,52.71166|-3.06806,52.77027|-3.13708,52.79312|-3.13014,52.88486|-3.08639,52.91611|-2.99389,52.95361|-2.85069,52.93875|-2.79278,52.90207|-2.71945,52.91902|-2.73109,52.96873|-2.77792,52.98514|-2.85695,53.03249|-2.89389,53.10416|-2.91069,53.17014|-2.95528,53.21555|-3.02000,53.24722|-3.08860,53.26001';
@@ -3530,29 +3518,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					// show nothing
 				}
 
-			/*
-				// Set borders and fill parameters ------- Not finished yet. ---------------
-				if (map.mapTypeId == 'roadmap') {
-					var colorStroke 	= "#444444";
-					var weightStroke	= 1.2;
-					var opacityFill		= 0.1;
-				} else if (map.mapTypeId == 'satellite') {
-					var colorStroke 	= "#000000";
-					var weightStroke	= 0.1;
-					var opacityFill		= 0;
-				} else if (map.mapTypeId == 'hybrid') {
-					var colorStroke 	= "#ffffff";
-					var weightStroke	= 1.2;
-					var opacityFill		= 0;
-				} else if (map.mapTypeId == 'terrain') {
-					var colorStroke 	= "#ffffff";
-					var weightStroke	= 1.2;
-					var opacityFill		= 0;
-				}
-				// -------------------------------------------------------------------------
-			*/
-
-				// If showing one country only (num_arrays == 1) ---------------------------
+				// If showing one country only (num_arrays == 1)
 				// Calculate polygon
 				if (num_arrays == 1 ) {
 					var geomAry1 = returnGeom1.split('|');
@@ -3574,7 +3540,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					polygon1.setMap(map);
 				}
 
-				// If showing two countries at the same time (num_arrays == 2) --------------
+				// If showing two countries at the same time (num_arrays == 2)
 				if (num_arrays == 2) {
 					// Calculate polygon1
 					var geomAry1 = returnGeom1.split('|');
@@ -3644,7 +3610,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				controlText.style.fontSize = '12px';
 				controlText.style.paddingLeft = '15px';
 				controlText.style.paddingRight = '15px';
-				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map'); ?><\/b>';
+				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map') ?><\/b>';
 				controlUI.appendChild(controlText);
 
 				// Setup the click event listeners: simply set the map to original LatLng
@@ -3846,25 +3812,25 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 
 			function change_icon() {
-				window.open('module.php?mod=googlemap&mod_action=flags&countrySelected=<?php echo $selected_country; ?>', '_blank', indx_window_specs);
+				window.open('module.php?mod=googlemap&mod_action=flags&countrySelected=<?php echo $selected_country ?>', '_blank', indx_window_specs);
 				return false;
 			}
 
 			function remove_icon() {
 				document.editplaces.icon.value = '';
-				document.getElementById('flagsDiv').innerHTML = '<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag'); ?></a>';
+				document.getElementById('flagsDiv').innerHTML = '<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag') ?></a>';
 			}
 
 			function addAddressToMap(response) {
 				var bounds = new google.maps.LatLngBounds();
 				if (!response ) {
-					alert('<?php echo I18N::translate('No places found'); ?>');
+					alert('<?php echo I18N::translate('No places found') ?>');
 				} else {
 					if (response.length > 0) {
 						for (var i=0; i<response.length; i++) {
 							// 5 decimal places is approx 1 metre accuracy.
 							var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br>('+response[i].geometry.location.lng().toFixed(5)+','+response[i].geometry.location.lat().toFixed(5)+'';
-								name +=	'<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo I18N::translate('Use this value'); ?></div></a>';
+								name += '<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo I18N::translate('Use this value') ?></div></a>';
 								name += '</div>';
 							var point = response[i].geometry.location;
 							var marker = createMarker(i, point, name);
@@ -3876,19 +3842,19 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<?php } ?>
 						var zoomlevel = map.getZoom();
 
-						if (zoomlevel < <?php echo $this->getSetting('GM_MIN_ZOOM'); ?>) {
-							zoomlevel = <?php echo $this->getSetting('GM_MIN_ZOOM'); ?>;
+						if (zoomlevel < <?php echo $this->getSetting('GM_MIN_ZOOM') ?>) {
+							zoomlevel = <?php echo $this->getSetting('GM_MIN_ZOOM') ?>;
 						}
-						if (zoomlevel > <?php echo $this->getSetting('GM_MAX_ZOOM'); ?>) {
-							zoomlevel = <?php echo $this->getSetting('GM_MAX_ZOOM'); ?>;
+						if (zoomlevel > <?php echo $this->getSetting('GM_MAX_ZOOM') ?>) {
+							zoomlevel = <?php echo $this->getSetting('GM_MAX_ZOOM') ?>;
 						}
 						if (document.editplaces.NEW_ZOOM_FACTOR.value < zoomlevel) {
 							zoomlevel = document.editplaces.NEW_ZOOM_FACTOR.value;
-							if (zoomlevel < <?php echo $this->getSetting('GM_MIN_ZOOM'); ?>) {
-								zoomlevel = <?php echo $this->getSetting('GM_MIN_ZOOM'); ?>;
+							if (zoomlevel < <?php echo $this->getSetting('GM_MIN_ZOOM') ?>) {
+								zoomlevel = <?php echo $this->getSetting('GM_MIN_ZOOM') ?>;
 							}
-							if (zoomlevel > <?php echo $this->getSetting('GM_MAX_ZOOM'); ?>) {
-								zoomlevel = <?php echo $this->getSetting('GM_MAX_ZOOM'); ?>;
+							if (zoomlevel > <?php echo $this->getSetting('GM_MAX_ZOOM') ?>) {
+								zoomlevel = <?php echo $this->getSetting('GM_MAX_ZOOM') ?>;
 							}
 						}
 						map.setCenter(bounds.getCenter());
@@ -3898,7 +3864,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 
 			function showLocation_level(address) {
-				address += '<?php if ($level > 0) echo ', ', addslashes(implode(', ', array_reverse($where_am_i, true))); ?>';
+				address += '<?php if ($level > 0) echo ', ', addslashes(implode(', ', array_reverse($where_am_i, true))) ?>';
 				geocoder.geocode({'address': address}, addAddressToMap);
 			}
 
@@ -3915,15 +3881,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		</td></tr></table>
 		</body>
 		<form method="post" id="editplaces" name="editplaces" action="module.php?mod=googlemap&amp;mod_action=places_edit">
-			<input type="hidden" name="action" value="<?php echo $action; ?>record">
-			<input type="hidden" name="placeid" value="<?php echo $placeid; ?>">
-			<input type="hidden" name="level" value="<?php echo $level; ?>">
-			<input type="hidden" name="icon" value="<?php echo $place_icon; ?>">
-			<input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>">
-			<input type="hidden" name="place_long" value="<?php echo $place_long; ?>">
-			<input type="hidden" name="place_lati" value="<?php echo $place_lati; ?>">
-			<input type="hidden" name="parent_long" value="<?php echo $parent_long; ?>">
-			<input type="hidden" name="parent_lati" value="<?php echo $parent_lati; ?>">
+			<input type="hidden" name="action" value="<?php echo $action ?>record">
+			<input type="hidden" name="placeid" value="<?php echo $placeid ?>">
+			<input type="hidden" name="level" value="<?php echo $level ?>">
+			<input type="hidden" name="icon" value="<?php echo $place_icon ?>">
+			<input type="hidden" name="parent_id" value="<?php echo $parent_id ?>">
+			<input type="hidden" name="place_long" value="<?php echo $place_long ?>">
+			<input type="hidden" name="place_lati" value="<?php echo $place_lati ?>">
+			<input type="hidden" name="parent_long" value="<?php echo $parent_long ?>">
+			<input type="hidden" name="parent_lati" value="<?php echo $parent_lati ?>">
 
 			<table class="facts_table">
 			<tr>
@@ -3932,18 +3898,18 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox"><?php echo GedcomTag::getLabel('PLAC'); ?></td>
-				<td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo Filter::escapeHtml($place_name); ?>" size="25" class="address_input">
+				<td class="descriptionbox"><?php echo GedcomTag::getLabel('PLAC') ?></td>
+				<td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo Filter::escapeHtml($place_name) ?>" size="25" class="address_input">
 					<div id="INDI_PLAC_pop" style="display: inline;">
-					<?php echo FunctionsPrint::printSpecialCharacterLink('new_pl_name'); ?></div></td><td class="optionbox">
-					<label for="new_pl_name"><a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo I18N::translate('Search globally'); ?></a></label>
-					&nbsp;&nbsp;|&nbsp;&nbsp;
-					<label for="new_pl_name"><a href="#" onclick="showLocation_level(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo I18N::translate('Search locally'); ?></a></label>
+					<?php echo FunctionsPrint::printSpecialCharacterLink('new_pl_name') ?></div></td><td class="optionbox">
+					<label for="new_pl_name"><a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false"><?php echo I18N::translate('Search globally') ?></a></label>
+					|
+					<label for="new_pl_name"><a href="#" onclick="showLocation_level(document.getElementById('new_pl_name').value); return false"><?php echo I18N::translate('Search locally') ?></a></label>
 				</td>
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo I18N::translate('Precision'); ?>
+					<?php echo I18N::translate('Precision') ?>
 				</td>
 				<?php
 					$exp = explode(".", $place_lati);
@@ -3965,77 +3931,77 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					}
 				?>
 				<td class="optionbox" colspan="2">
-					<input type="radio" id="new_prec_0" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_0')) echo 'checked'; ?> value="<?php echo $this->getSetting('GM_PRECISION_0'); ?>">
-					<label for="new_prec_0"><?php echo I18N::translate('Country'); ?></label>
-					<input type="radio" id="new_prec_1" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_1')) echo 'checked'; ?> value="<?php echo $this->getSetting('GM_PRECISION_1'); ?>">
-					<label for="new_prec_1"><?php echo I18N::translate('State'); ?></label>
-					<input type="radio" id="new_prec_2" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_2')) echo 'checked'; ?> value="<?php echo $this->getSetting('GM_PRECISION_2'); ?>">
-					<label for="new_prec_2"><?php echo I18N::translate('City'); ?></label>
-					<input type="radio" id="new_prec_3" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_3')) echo 'checked'; ?> value="<?php echo $this->getSetting('GM_PRECISION_3'); ?>">
-					<label for="new_prec_3"><?php echo I18N::translate('Neighborhood'); ?></label>
-					<input type="radio" id="new_prec_4" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_4')) echo 'checked'; ?> value="<?php echo $this->getSetting('GM_PRECISION_4'); ?>">
-					<label for="new_prec_4"><?php echo I18N::translate('House'); ?></label>
-					<input type="radio" id="new_prec_5" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision >= $this->getSetting('GM_PRECISION_5')) echo 'checked'; ?> value="<?php echo $this->getSetting('GM_PRECISION_5'); ?>">
-					<label for="new_prec_5"><?php echo I18N::translate('Max'); ?></label>
+					<input type="radio" id="new_prec_0" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_0')) echo 'checked' ?> value="<?php echo $this->getSetting('GM_PRECISION_0') ?>">
+					<label for="new_prec_0"><?php echo I18N::translate('Country') ?></label>
+					<input type="radio" id="new_prec_1" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_1')) echo 'checked' ?> value="<?php echo $this->getSetting('GM_PRECISION_1') ?>">
+					<label for="new_prec_1"><?php echo I18N::translate('State') ?></label>
+					<input type="radio" id="new_prec_2" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_2')) echo 'checked' ?> value="<?php echo $this->getSetting('GM_PRECISION_2') ?>">
+					<label for="new_prec_2"><?php echo I18N::translate('City') ?></label>
+					<input type="radio" id="new_prec_3" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_3')) echo 'checked' ?> value="<?php echo $this->getSetting('GM_PRECISION_3') ?>">
+					<label for="new_prec_3"><?php echo I18N::translate('Neighborhood') ?></label>
+					<input type="radio" id="new_prec_4" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_4')) echo 'checked' ?> value="<?php echo $this->getSetting('GM_PRECISION_4') ?>">
+					<label for="new_prec_4"><?php echo I18N::translate('House') ?></label>
+					<input type="radio" id="new_prec_5" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision >= $this->getSetting('GM_PRECISION_5')) echo 'checked' ?> value="<?php echo $this->getSetting('GM_PRECISION_5') ?>">
+					<label for="new_prec_5"><?php echo I18N::translate('Max') ?></label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('Here you can enter the precision.  Based on this setting the number of digits that will be used in the latitude and longitude is determined.'); ?>
+						<?php echo I18N::translate('Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined.') ?>
 					</p>
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox"><?php echo GedcomTag::getLabel('LATI'); ?></td>
+				<td class="descriptionbox"><?php echo GedcomTag::getLabel('LATI') ?></td>
 				<td class="optionbox" colspan="2">
-					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees'); ?>" value="<?php echo abs($place_lati); ?>" size="20" onchange="updateMap();">
+					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees') ?>" value="<?php echo abs($place_lati) ?>" size="20" onchange="updateMap();">
 					<select name="LATI_CONTROL" onchange="updateMap();">
-						<option value="PL_N" <?php if ($place_lati >= 0) echo "selected"; echo ">", I18N::translate('north'); ?></option>
-						<option value="PL_S" <?php if ($place_lati < 0) echo "selected"; echo ">", I18N::translate('south'); ?></option>
+						<option value="PL_N" <?php if ($place_lati >= 0) echo "selected"; echo ">", I18N::translate('north') ?></option>
+						<option value="PL_S" <?php if ($place_lati < 0) echo "selected"; echo ">", I18N::translate('south') ?></option>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox"><?php echo GedcomTag::getLabel('LONG'); ?></td>
+				<td class="descriptionbox"><?php echo GedcomTag::getLabel('LONG') ?></td>
 				<td class="optionbox" colspan="2">
-					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees'); ?>" value="<?php echo abs($place_long); ?>" size="20" onchange="updateMap();">
+					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees') ?>" value="<?php echo abs($place_long) ?>" size="20" onchange="updateMap();">
 					<select name="LONG_CONTROL" onchange="updateMap();">
-						<option value="PL_E" <?php if ($place_long >= 0) echo "selected"; echo ">", I18N::translate('east'); ?></option>
-						<option value="PL_W" <?php if ($place_long < 0) echo "selected"; echo ">", I18N::translate('west'); ?></option>
+						<option value="PL_E" <?php if ($place_long >= 0) echo "selected"; echo ">", I18N::translate('east') ?></option>
+						<option value="PL_W" <?php if ($place_long < 0) echo "selected"; echo ">", I18N::translate('west') ?></option>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo I18N::translate('Zoom level'); ?>
+					<?php echo I18N::translate('Zoom level') ?>
 				</td>
 				<td class="optionbox" colspan="2">
-					<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor; ?>" size="20" onchange="updateMap();">
+					<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor ?>" size="20" onchange="updateMap();">
 					<p class="small text-muted">
-						<?php echo I18N::translate('Here the zoom level can be entered.  This value will be used as the minimal value when displaying this geographic location on a map.'); ?>
+						<?php echo I18N::translate('Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map.') ?>
 					</p>
 				</td>
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo I18N::translate('Flag'); ?>
+					<?php echo I18N::translate('Flag') ?>
 				</td>
 				<td class="optionbox" colspan="2">
 					<div id="flagsDiv">
 						<?php if ($place_icon) { ?>
-			<img alt="<?php echo /* I18N: The emblem of a country or region */ I18N::translate('Flag'); ?>" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon; ?>">&nbsp;&nbsp;
-			<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;
-			<a href="#" onclick="remove_icon();return false;"><?php echo I18N::translate('Remove flag'); ?></a>
+						<img alt="<?php echo /* I18N: The emblem of a country or region */ I18N::translate('Flag') ?>" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon ?>">
+						<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag') ?></a>
+						<a href="#" onclick="remove_icon();return false;"><?php echo I18N::translate('Remove flag') ?></a>
 						<?php } else { ?>
-			<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag'); ?></a>
+						<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag') ?></a>
 						<?php } ?>
 					</div>
 					<p class="small text-muted">
-						<?php echo I18N::translate('Here an icon can be set or removed.  Using this link a flag can be selected.  When this geographic location is shown, this flag will be displayed.'); ?>
+						<?php echo I18N::translate('Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed.') ?>
 					</p>
 				</td>
 			</tr>
 			</table>
 			<p id="save-cancel">
-				<input type="submit" class="save" value="<?php echo I18N::translate('save'); ?>">
-				<input type="button" class="cancel" value="<?php echo I18N::translate('close'); ?>" onclick="window.close();">
+				<input type="submit" class="save" value="<?php echo I18N::translate('save') ?>">
+				<input type="button" class="cancel" value="<?php echo I18N::translate('close') ?>" onclick="window.close();">
 			</p>
 		</form>
 		<?php
@@ -4106,30 +4072,30 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		?>
 		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+			<li><a href="admin.php"><?php echo I18N::translate('Control panel') ?></a></li>
+			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration') ?></a></li>
+			<li class="active"><?php echo $controller->getPageTitle() ?></li>
 		</ol>
 
 		<ul class="nav nav-tabs nav-justified" role="tablist">
 			<li role="presentation">
 				<a href="?mod=googlemap&amp;mod_action=admin_config" role="tab">
-					<?php echo I18N::translate('Google Maps™ preferences'); ?>
+					<?php echo I18N::translate('Google Maps™ preferences') ?>
 				</a>
 			</li>
 			<li role="presentation" class="active">
 				<a href="#">
-					<?php echo I18N::translate('Geographic data'); ?>
+					<?php echo I18N::translate('Geographic data') ?>
 				</a>
 			</li>
 			<li role="presentation">
 				<a href="?mod=googlemap&amp;mod_action=admin_placecheck">
-					<?php echo I18N::translate('Place check'); ?>
+					<?php echo I18N::translate('Place check') ?>
 				</a>
 			</li>
 		</ul>
 
-		<h2><?php echo I18N::translate('Geographic data'); ?></h2>
+		<h2><?php echo I18N::translate('Geographic data') ?></h2>
 		<?php
 
 		if ($action == 'ImportGedcom') {
@@ -4261,7 +4227,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- PLACES FILE -->
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="placesfile">
-					<?php echo I18N::translate('File containing places (CSV)'); ?>
+					<?php echo I18N::translate('File containing places (CSV)') ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="btn btn-default">
@@ -4274,12 +4240,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<?php if (count($placefiles) > 0): ?>
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="localfile">
-					<?php echo I18N::translate('Server file containing places (CSV)'); ?>
+					<?php echo I18N::translate('Server file containing places (CSV)') ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="input-group">
 						<span class="input-group-addon">
-							<?php echo WT_MODULES_DIR . 'googlemap/extra/'; ?>
+							<?php echo WT_MODULES_DIR . 'googlemap/extra/' ?>
 						</span>
 						<?php
 						foreach ($placefiles as $p => $placefile) {
@@ -4296,35 +4262,35 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</div>
 				</div>
 			</div>
-			<?php endif; ?>
+			<?php endif ?>
 
 			<!-- CLEAR DATABASE -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-4">
-					<?php echo I18N::translate('Delete all existing geographic data before importing the file.'); ?>
+					<?php echo I18N::translate('Delete all existing geographic data before importing the file.') ?>
 				</legend>
 				<div class="col-sm-8">
-					<?php echo FunctionsEdit::editFieldYesNo('cleardatabase', 0, 'class="radio-inline"'); ?>
+					<?php echo FunctionsEdit::editFieldYesNo('cleardatabase', 0, 'class="radio-inline"') ?>
 				</div>
 			</fieldset>
 
 			<!-- UPDATE ONLY -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-4">
-					<?php echo I18N::translate('Do not create new locations, just import coordinates for existing locations.'); ?>
+					<?php echo I18N::translate('Do not create new locations, just import coordinates for existing locations.') ?>
 				</legend>
 				<div class="col-sm-8">
-					<?php echo FunctionsEdit::editFieldYesNo('updateonly', 0, 'class="radio-inline"'); ?>
+					<?php echo FunctionsEdit::editFieldYesNo('updateonly', 0, 'class="radio-inline"') ?>
 				</div>
 			</fieldset>
 
 			<!-- OVERWRITE DATA -->
 			<fieldset class="form-group">
 				<legend class="control-label col-sm-4">
-					<?php echo I18N::translate('Overwrite existing coordinates.'); ?>
+					<?php echo I18N::translate('Overwrite existing coordinates.') ?>
 				</legend>
 				<div class="col-sm-8">
-					<?php echo FunctionsEdit::editFieldYesNo('overwritedata', 0, 'class="radio-inline"'); ?>
+					<?php echo FunctionsEdit::editFieldYesNo('overwritedata', 0, 'class="radio-inline"') ?>
 				</div>
 			</fieldset>
 
@@ -4333,7 +4299,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<div class="col-sm-offset-4 col-sm-8">
 					<button type="submit" class="btn btn-primary">
 						<i class="fa fa-check"></i>
-						<?php echo I18N::translate('Continue adding'); ?>
+						<?php echo I18N::translate('Continue adding') ?>
 					</button>
 				</div>
 			</div>
@@ -4523,7 +4489,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		?>
 		<script>
 		function updateList(inactive) {
-			window.location.href='<?php if (strstr($_SERVER['REQUEST_URI'], '&inactive', true)) { $uri = strstr($_SERVER['REQUEST_URI'], '&inactive', true); } else { $uri = $_SERVER['REQUEST_URI']; } echo $uri, '&inactive='; ?>'+inactive;
+			window.location.href='<?php if (strstr($_SERVER['REQUEST_URI'], '&inactive', true)) { $uri = strstr($_SERVER['REQUEST_URI'], '&inactive', true); } else { $uri = $_SERVER['REQUEST_URI']; } echo $uri, '&inactive=' ?>'+inactive;
 		}
 
 		function edit_place_location(placeid) {
@@ -4537,9 +4503,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 
 		function delete_place(placeid) {
-			var answer=confirm('<?php echo I18N::translate('Remove this location?'); ?>');
+			var answer=confirm('<?php echo I18N::translate('Remove this location?') ?>');
 			if (answer == true) {
-				window.location = '<?php echo Functions::getQueryUrl(array('action' => 'DeleteRecord')); ?>&action=DeleteRecord&deleteRecord=' + placeid;
+				window.location = '<?php echo Functions::getQueryUrl(array('action' => 'DeleteRecord')) ?>&action=DeleteRecord&deleteRecord=' + placeid;
 			}
 		}
 		</script>
@@ -4564,19 +4530,19 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				echo ' - ';
 			}
 			?>
-			<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '"><?php echo I18N::translate('Top level'); ?></a>
+			<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '"><?php echo I18N::translate('Top level') ?></a>
 		</p>
 
 		<form class="form-inline" name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&inactive=', $inactive, '">
 			<div class="checkbox">
 				<label for="inactive">
-				   <?php echo FunctionsEdit::checkbox('inactive', $inactive, 'onclick="updateList(this.checked)"'); ?>
-				   <?php echo I18N::translate('Show inactive places'); ?>
+				   <?php echo FunctionsEdit::checkbox('inactive', $inactive, 'onclick="updateList(this.checked)"') ?>
+				   <?php echo I18N::translate('Show inactive places') ?>
 				</label>
 			</div>
 			<p class="small text-muted">
-				<?php echo I18N::translate('By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used.'); ?>&nbsp;
-				<?php I18N::translate('If you have a large number of inactive places, it can be slow to generate the list.'); ?>
+				<?php echo I18N::translate('By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used.') ?>
+				<?php echo I18N::translate('If you have a large number of inactive places, it can be slow to generate the list.') ?>
 			</p>
 		</form>
 
@@ -4619,7 +4585,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				->execute(array($place['place_id']))
 				->fetchOne();
 			if ($noRows == 0) { ?>
-				<td><a href="#" onclick="delete_place(<?php echo $place['place_id']; ?>);return false;" class="icon-delete" title="<?php echo I18N::translate('Remove'); ?>"></a></td>
+				<td><a href="#" onclick="delete_place(<?php echo $place['place_id'] ?>);return false;" class="icon-delete" title="<?php echo I18N::translate('Remove') ?>"></a></td>
 		<?php       } else { ?>
 				<td><i class="icon-delete-grey"></i></td>
 		<?php       } ?>
@@ -4634,15 +4600,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		<form class="form-horizontal" action="?" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
 			<div class="form-group">
 				<label class="form-control-static col-sm-4" for="parent_id">
-					<?php echo I18N::translate('Add a new geographic location'); ?>
+					<?php echo I18N::translate('Add a new geographic location') ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="col-sm-6">
-						<?php echo FunctionsEdit::selectEditControl('parent_id', $where_am_i, I18N::translate('Top level'), $parent, 'class="form-control"'); ?>
+						<?php echo FunctionsEdit::selectEditControl('parent_id', $where_am_i, I18N::translate('Top level'), $parent, 'class="form-control"') ?>
 					</div>
 					<button type="submit" class="btn btn-default">
 						<i class="fa fa-plus"></i>
-						<?php echo I18N::translate('Add'); ?>
+						<?php echo I18N::translate('Add') ?>
 					</button>
 				</div>
 			</div>
@@ -4654,15 +4620,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<input type="hidden" name="action" value="ImportGedcom">
 			<div class="form-group">
 				<label class="form-control-static col-sm-4" for="ged">
-					<?php echo I18N::translate('Import all places from a family tree'); ?>
+					<?php echo I18N::translate('Import all places from a family tree') ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="col-sm-6">
-						<?php echo FunctionsEdit::selectEditControl('ged', Tree::getNameList(), null, $WT_TREE->getName(), 'class="form-control"'); ?>
+						<?php echo FunctionsEdit::selectEditControl('ged', Tree::getNameList(), null, $WT_TREE->getName(), 'class="form-control"') ?>
 					</div>
 					<button type="submit" class="btn btn-default">
 						<i class="fa fa-upload"></i>
-						<?php echo I18N::translate('Import'); ?>
+						<?php echo I18N::translate('Import') ?>
 					</button>
 				</div>
 			</div>
@@ -4674,13 +4640,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<input type="hidden" name="action" value="ImportFile">
 			<div class="form-group">
 				<label class="form-control-static col-sm-4">
-					<?php echo I18N::translate('Upload geographic data'); ?>
+					<?php echo I18N::translate('Upload geographic data') ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="col-sm-6">
 						<button type="submit" class="btn btn-default">
 							<i class="fa fa-upload"></i>
-							<?php echo I18N::translate('Upload'); ?>
+							<?php echo I18N::translate('Upload') ?>
 						</button>
 					</div>
 				</div>
@@ -4693,15 +4659,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<input type="hidden" name="action" value="ExportFile">
 			<div class="form-group">
 				<label class="form-control-static col-sm-4">
-					<?php echo I18N::translate('Download geographic data'); ?>
+					<?php echo I18N::translate('Download geographic data') ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="col-sm-6">
-						<?php echo FunctionsEdit::selectEditControl('parent', $where_am_i, I18N::translate('All'), $WT_TREE->getTreeId(), 'class="form-control"'); ?>
+						<?php echo FunctionsEdit::selectEditControl('parent', $where_am_i, I18N::translate('All'), $WT_TREE->getTreeId(), 'class="form-control"') ?>
 					</div>
 					<button type="submit" class="btn btn-default">
 						<i class="fa fa-download"></i>
-						<?php echo I18N::translate('Download'); ?>
+						<?php echo I18N::translate('Download') ?>
 					</button>
 				</div>
 			</div>
@@ -4809,7 +4775,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			var imageNum = Math.round(bearing/22.5) % 16;
 
-			var image = new google.maps.MarkerImage('<?php echo WT_BASE_URL . WT_MODULES_DIR; ?>googlemap/images/panda-icons/panda-' + imageNum + '.png',
+			var image = new google.maps.MarkerImage('<?php echo WT_BASE_URL . WT_MODULES_DIR ?>googlemap/images/panda-icons/panda-' + imageNum + '.png',
 				// This marker is 50 pixels wide by 50 pixels tall.
 				new google.maps.Size(50, 50),
 				// The origin for this image is 0,0.
@@ -4962,10 +4928,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			var toggle = panorama.getVisible();
 			if (toggle == false) {
 				panorama.setVisible(true);
-				document.myForm.butt1.value = "<?php echo I18N::translate('Google Maps™'); ?>";
+				document.myForm.butt1.value = "<?php echo I18N::translate('Google Maps™') ?>";
 			} else {
 				panorama.setVisible(false);
-				document.myForm.butt1.value = "<?php echo I18N::translate('Google Street View™'); ?>";
+				document.myForm.butt1.value = "<?php echo I18N::translate('Google Street View™') ?>";
 			}
 		}
 

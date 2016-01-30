@@ -16,7 +16,7 @@
 namespace Fisharebest\Webtrees;
 
 /**
- * Application configuration data.  Data here has no GUI to edit it,
+ * Application configuration data. Data here has no GUI to edit it,
  * although most of it can be altered to customise local installations.
  */
 class Config {

@@ -354,7 +354,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH'])) {
 	$if_none_match = str_replace('"', '', $_SERVER['HTTP_IF_NONE_MATCH']);
 }
 
-// add caching headers.  allow browser to cache file, but not proxy
+// add caching headers. allow browser to cache file, but not proxy
 header('Last-Modified: ' . $filetimeHeader);
 header('ETag: "' . $etag . '"');
 header('Expires: ' . $expireHeader);
@@ -398,7 +398,7 @@ if ($generatewatermark) {
 
 		return;
 	} else {
-		// this image is defective.  log it
+		// this image is defective. log it
 		Log::addMediaLog('Media Firewall error: >' . I18N::translate('This media file is broken and cannot be watermarked.') . '< in file >' . $serverFilename . '< memory used: ' . memory_get_usage());
 
 		// set usewatermark to false so image will simply be passed through below

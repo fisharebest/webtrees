@@ -44,7 +44,7 @@ $controller
 			<tbody>
 				<tr>
 					<td class="descriptionbox">
-						<?php	echo I18N::translate('Individual'); ?>
+						<?php echo I18N::translate('Individual'); ?>
 					</td>
 					<td class="optionbox">
 						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">

@@ -225,7 +225,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 
 				<?php if (!Auth::user()->getPreference('auto_accept')): ?>
 				<div class="alert alert-danger">
-				<?php echo I18N::translate('Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time.'); ?>
+				<?php echo I18N::translate('Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time.'); ?>
 				</div>
 			<?php endif; ?>
 
@@ -241,7 +241,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 					<div id="batch_update2" class="col-sm-12">
 						<?php if ($this->curr_xref): ?>
 							<?php // Create an object, so we can get the latest version of the name. ?>
-								<?php $this->record = GedcomRecord::getInstance($this->curr_xref, $WT_TREE); ?>			
+								<?php $this->record = GedcomRecord::getInstance($this->curr_xref, $WT_TREE); ?>
 							<div class="form-group">
 								<?php echo self::createSubmitButton(I18N::translate('previous'), $this->prev_xref) ?>
 					<?php echo self::createSubmitButton(I18N::translate('next'), $this->next_xref) ?>

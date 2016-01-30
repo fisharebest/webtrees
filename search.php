@@ -78,7 +78,7 @@ function checknames(frm) {
 			<div class="value">
 				<input id="query" type="text" name="query" value="<?php echo Filter::escapeHtml($controller->query); ?>" size="40" autofocus>
 				<?php echo FunctionsPrint::printSpecialCharacterLink('query'); ?>
- 			</div>
+			</div>
 			<div class="label">
 				<?php echo I18N::translate('Records'); ?>
 			</div>
@@ -259,8 +259,8 @@ function checknames(frm) {
 				</p>
 				<p>
 					<input type="radio" name="soundex" value="DaitchM" <?php echo $controller->soundex === 'DaitchM' || $controller->soundex === '' ? 'checked' : ''; ?>>
- 					<?php echo I18N::translate('Daitch-Mokotoff'); ?>
- 				</p>
+					<?php echo I18N::translate('Daitch-Mokotoff'); ?>
+				</p>
 			</div>
 			<div class="label">
 				<?php echo I18N::translate('Associates'); ?>

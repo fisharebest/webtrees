@@ -149,4 +149,4 @@ if ($record) {
 	');
 }
 
-echo 	'</div>';
+echo '</div>';

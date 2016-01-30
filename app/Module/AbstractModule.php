@@ -142,7 +142,7 @@ abstract class AbstractModule {
 	}
 
 	/**
-	 * Get a module setting.  Return a default if the setting is not set.
+	 * Get a module setting. Return a default if the setting is not set.
 	 *
 	 * @param string $setting_name
 	 * @param string $default

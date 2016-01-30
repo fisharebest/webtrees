@@ -60,7 +60,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 	}
 
 	/**
-	 * Is this tab empty?  If so, we don't always need to display it.
+	 * Is this tab empty? If so, we don't always need to display it.
 	 *
 	 * @return bool
 	 */

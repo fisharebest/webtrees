@@ -87,7 +87,7 @@ class GedcomCodeAdop {
 			$values[$type] = self::getValue($type, $record);
 		}
 
-		// Don't sort these.  We want the order: both parents, father, mother
+		// Don't sort these. We want the order: both parents, father, mother
 		return $values;
 	}
 }

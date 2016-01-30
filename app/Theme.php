@@ -51,7 +51,7 @@ class Theme {
 						self::$installed_themes[] = $theme;
 					}
 				} catch (\Exception $ex) {
-					// Broken theme?  Ignore it.
+					// Broken theme? Ignore it.
 				}
 			}
 		}

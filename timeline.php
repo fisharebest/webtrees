@@ -266,7 +266,7 @@ document.onmouseup = function () {
 					if ($indi && $indi->canShow()) {
 						echo $indi->getSexImage('large');
 						?>
-						<a href="<?php echo $indi->getHtmlUrl(); ?>">&nbsp;<?php echo $indi->getFullName(); ?><br>
+						<a href="<?php echo $indi->getHtmlUrl(); ?>"> <?php echo $indi->getFullName(); ?><br>
 							<?php echo $indi->getAddName(); ?><br>
 						</a>
 						<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo Filter::escapeHtml($pid); ?>">

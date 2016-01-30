@@ -603,7 +603,6 @@ a:hover .nameZoom {
 }
 
 #childbox a.name1 {
-	/*	font-weight: normal;*/
 	display: block;
 	margin-left: 5px;
 }
@@ -1730,7 +1729,7 @@ float: right;
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
-	white-space: pre-wrap;  
+	white-space: pre-wrap;
 }
 .left {text-align: left;}
 [dir=rtl] .left {text-align: right;}
@@ -5119,6 +5118,18 @@ footer {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/user_add.png);
+}
+
+.cookie-warning {
+	background: #aaa;
+	color: #fff;
+	height: 3em;
+	line-height: 2.5em;
+	transition: height 0.5s;
+}
+.cookie-warning.hidden {
+	height: 0;
+	overflow: hidden;
 }
 
 @media print {

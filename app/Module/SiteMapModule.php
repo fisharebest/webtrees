@@ -303,7 +303,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 		echo
 		'<p>',
 			/* I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL. */
-			I18N::translate('Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href="http://www.sitemaps.org/">www.sitemaps.org</a>.') .
+			I18N::translate('Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href="http://www.sitemaps.org/">www.sitemaps.org</a>.') .
 			'</p>',
 		'<p>', I18N::translate('Which family trees should be included in the sitemaps?'), '</p>',
 			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=admin">',

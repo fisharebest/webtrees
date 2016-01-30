@@ -49,7 +49,7 @@ if ($ctype === 'user') {
 
 $active_blocks = Module::getActiveBlocks($WT_TREE);
 
-// The latest version is shown on the administration page.  This updates it every day.
+// The latest version is shown on the administration page. This updates it every day.
 Functions::fetchLatestVersion();
 
 // We generate individual blocks using AJAX
@@ -110,7 +110,7 @@ if ($blocks['main']) {
 				echo $active_blocks[$module_name]->getBlock($block_id);
 			} else {
 				// Load the block asynchronously
-				echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
+				echo '<div id="block_', $block_id, '"><div class="loading-image"></div></div>';
 				$controller->addInlineJavascript(
 					'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
 				);
@@ -132,7 +132,7 @@ if ($blocks['side']) {
 				echo $active_blocks[$module_name]->getBlock($block_id);
 			} else {
 				// Load the block asynchronously
-				echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
+				echo '<div id="block_', $block_id, '"><div class="loading-image"></div></div>';
 				$controller->addInlineJavascript(
 					'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
 				);

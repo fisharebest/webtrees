@@ -618,7 +618,6 @@ a:hover .nameZoom {
 }
 
 #childbox a.name1 {
-	/*	font-weight: normal;*/
 	display: block;
 	margin-left: 5px;
 }
@@ -1003,7 +1002,7 @@ a:hover .nameZoom {
 	width: 100%;
 }
 
-#medialist-page .optionbox, 
+#medialist-page .optionbox,
 #medialist-page .descriptionbox {
 	width: 25%;
 }
@@ -1013,7 +1012,7 @@ a:hover .nameZoom {
 }
 
 #medialist-page .media-col {
-	padding-left: 5px; 
+	padding-left: 5px;
 	border: none;
 }
 
@@ -1023,7 +1022,7 @@ a:hover .nameZoom {
 }
 
 #medialist-page .media-image {
-	vertical-align:top; 
+	vertical-align:top;
 	white-space:normal;
 }
 
@@ -1256,7 +1255,7 @@ a:hover .nameZoom {
 	text-align: left;
 }
 
-[dir=rtl] #register-form p, 
+[dir=rtl] #register-form p,
 [dir=rtl] #verify-form p {
 	text-align: right;
 }
@@ -1740,7 +1739,7 @@ float: right;
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
-	white-space: pre-wrap;  
+	white-space: pre-wrap;
 }
 .left {text-align: left;}
 [dir=rtl] .left {text-align: right;}
@@ -5118,6 +5117,18 @@ footer {
 	background-image: url(images/user_add.png);
 }
 
+.cookie-warning {
+	background: #aaa;
+	color: #fff;
+	height: 3em;
+	line-height: 2.5em;
+	transition: height 0.5s;
+}
+.cookie-warning.hidden {
+	height: 0;
+	overflow: hidden;
+}
+
 @media print {
 	header,
 	footer,
@@ -5139,7 +5150,7 @@ footer {
 	#pedigree_chart {
 		margin: 0 auto;
 	}
-	
+
 	#familybook_chart h3 {
 		margin-bottom: 10px;
 	}

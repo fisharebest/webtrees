@@ -79,10 +79,13 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function analytics() {
-		if ($this->themeId() === '_administration') {
+		if ($this->themeId() === '_administration' || !empty($_SERVER['HTTP_DNT'])) {
 			return '';
 		} else {
 			return
+				$this->analyticsBingWebmaster(
+					Site::getPreference('BING_WEBMASTER_ID')
+				) .
 				$this->analyticsGoogleWebmaster(
 					Site::getPreference('GOOGLE_WEBMASTER_ID')
 				) .
@@ -308,6 +311,27 @@ abstract class AbstractTheme {
 	}
 
 	/**
+	 * Create a cookie warning.
+	 *
+	 * @return string
+	 */
+	public function cookieWarning() {
+		if (
+			empty($_SERVER['HTTP_DNT']) &&
+			empty($_COOKIE['cookie']) &&
+			(Site::getPreference('GOOGLE_ANALYTICS_ID') || Site::getPreference('PIWIK_SITE_ID') || Site::getPreference('STATCOUNTER_PROJECT_ID'))) {
+			return
+				'<div class="cookie-warning">' .
+				I18N::translate('Cookies') . ' - ' .
+				I18N::translate('This website uses cookies to learn about visitor behaviour.') . ' ' .
+				'<button onclick="document.cookie=\'cookie=1\'; this.parentNode.classList.add(\'hidden\');">' . I18N::translate('continue') . '</button>' .
+				'</div>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
 	 * Create the <DOCTYPE> tag.
 	 *
 	 * @return string
@@ -341,7 +365,7 @@ abstract class AbstractTheme {
 
 	/**
 	 * Create a container for messages that are "flashed" to the session
-	 * on one request, and displayed on another.  If there are many messages,
+	 * on one request, and displayed on another. If there are many messages,
 	 * the container may need a max-height and scroll-bar.
 	 *
 	 * @param \stdClass[] $messages
@@ -389,7 +413,8 @@ abstract class AbstractTheme {
 		return
 			$this->formatContactLinks() .
 			$this->logoPoweredBy() .
-			$this->formatPageViews($this->page_views);
+			$this->formatPageViews($this->page_views) .
+			$this->cookieWarning();
 	}
 
 	/**
@@ -528,7 +553,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	public function head(PageController $controller) {
-		// Record this now.  By the time we render the footer, $controller no longer exists.
+		// Record this now. By the time we render the footer, $controller no longer exists.
 		$this->page_views = $this->pageViews($controller);
 
 		return
@@ -700,21 +725,28 @@ abstract class AbstractTheme {
 			$thumbnail = '';
 		}
 
+		$content = '<span class="namedef name1">' . $individual->getFullName() . '</span>';
+		$icons    = '';
+		if ($individual->canShowName()) {
+			$content =
+				'<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
+				'<div class="namedef name1">' . $individual->getAddName() . '</div>';
+			$icons =
+				'<div class="noprint icons">' .
+				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
+				'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
+				'<ul class="' . $personBoxClass . '">' . implode('', $this->individualBoxMenu($individual)) . '</ul>' .
+				'</div>' .
+				'</div>' .
+				'</div>';
+		}
+
 		return
 			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; min-height: ' . $this->parameter('chart-box-y') . 'px">' .
-			'<div class="noprint icons">' .
-			'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
-			'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
-			'<ul class="' . $personBoxClass . '">' . implode('', $this->individualBoxMenu($individual)) . '</ul>' .
-			'</div>' .
-			'</div>' .
-			'</div>' .
+			$icons .
 			'<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
 			$thumbnail .
-			'<a href="' . $individual->getHtmlUrl() . '">' .
-			'<span class="namedef name1">' . $individual->getFullName() . '</span>' .
-			'</a>' .
-			'<div class="namedef name1">' . $individual->getAddName() . '</div>' .
+			$content .
 			'<div class="inout2 details1">' . $this->individualBoxFacts($individual) . '</div>' .
 			'</div>' .
 			'<div class="inout"></div>' .
@@ -745,21 +777,28 @@ abstract class AbstractTheme {
 			$thumbnail = '';
 		}
 
+		$content = '<span class="namedef name1">' . $individual->getFullName() . '</span>';
+		$icons   = '';
+		if ($individual->canShowName()) {
+			$content =
+				'<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
+				'<div class="namedef name2">' . $individual->getAddName() . '</div>';
+			$icons =
+				'<div class="noprint icons">' .
+				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
+				'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
+				'<ul class="' . $personBoxClass . '">' . implode('', $this->individualBoxMenu($individual)) . '</ul>' .
+				'</div>' .
+				'</div>' .
+				'</div>';
+		}
+
 		return
 			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' box-style2">' .
-			'<div class="noprint icons">' .
-			'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
-			'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
-			'<ul class="' . $personBoxClass . '">' . implode('', $this->individualBoxMenu($individual)) . '</ul>' .
-			'</div>' .
-			'</div>' .
-			'</div>' .
+			$icons .
 			'<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
 			$thumbnail .
-			'<a href="' . $individual->getHtmlUrl() . '">' .
-			'<span class="namedef name2">' . $individual->getFullName() . '</span>' .
-			'</a>' .
-			'<div class="namedef name2">' . $individual->getAddName() . '</div>' .
+			$content .
 			'<div class="inout2 details2">' . $this->individualBoxFacts($individual) . '</div>' .
 			'</div>' .
 			'<div class="inout"></div>' .
@@ -968,7 +1007,7 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * Initialise the theme.  We cannot pass these in a constructor, as the construction
+	 * Initialise the theme. We cannot pass these in a constructor, as the construction
 	 * happens in a theme file, and we need to be able to change it.
 	 *
 	 * @param Tree|null $tree The current tree (if there is one).
@@ -1346,10 +1385,10 @@ abstract class AbstractTheme {
 		// Do not show empty lists
 		$row = Database::prepare(
 			"SELECT SQL_CACHE" .
-			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file = ?                  ) AS sour," .
-			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file = ? AND o_type='REPO') AS repo," .
-			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file = ? AND o_type='NOTE') AS note," .
-			" EXISTS(SELECT 1 FROM `##media`   WHERE m_file = ?                  ) AS obje"
+			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file = ?) AS sour," .
+			" EXISTS(SELECT 1 FROM `##other` WHERE o_file = ? AND o_type='REPO') AS repo," .
+			" EXISTS(SELECT 1 FROM `##other` WHERE o_file = ? AND o_type='NOTE') AS note," .
+			" EXISTS(SELECT 1 FROM `##media` WHERE m_file = ?) AS obje"
 		)->execute(array(
 			$this->tree->getTreeId(),
 			$this->tree->getTreeId(),
@@ -1822,7 +1861,7 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * Create a pending changes link.  Some themes prefer an alert/banner to a menu.
+	 * Create a pending changes link. Some themes prefer an alert/banner to a menu.
 	 *
 	 * @return string
 	 */
@@ -1862,7 +1901,7 @@ abstract class AbstractTheme {
 				$this->menuSearch(),
 			), $this->menuModules()));
 		} else {
-			// No public trees?  No genealogy menu!
+			// No public trees? No genealogy menu!
 			return array();
 		}
 	}
