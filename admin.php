@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -523,20 +523,25 @@ $changes = Database::prepare(
 )->fetchAssoc();
 
 // Server warnings
+// Note that security support for 5.6 ends after security support for 7.0
 $server_warnings = array();
 if (
-	version_compare(PHP_VERSION, '5.4', '<') ||
-	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2015-09-14' ||
-	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2016-07-10' ||
-	version_compare(PHP_VERSION, '7.0', '<') && date('Y-m-d') >= '2017-08-28'
+	PHP_VERSION_ID < 50500 ||
+	PHP_VERSION_ID < 50600 && date('Y-m-d') >= '2016-07-10' ||
+	PHP_VERSION_ID < 70000 && date('Y-m-d') >= '2018-12-31' ||
+	PHP_VERSION_ID >= 70000 && PHP_VERSION_ID < 70100 && date('Y-m-d') >= '2018-12-03'
 ) {
-	$server_warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION);
+	$server_warnings[] =
+		I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) .
+		'<br><a href="https://php.net/supported-versions.php">https://php.net/supported-versions.php</a>';
 } elseif (
-	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2014-09-14' ||
-	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2015-07-10' ||
-	version_compare(PHP_VERSION, '7.0', '<') && date('Y-m-d') >= '2016-08-28'
+	PHP_VERSION_ID < 50600 && date('Y-m-d') >= '2015-07-10' ||
+	PHP_VERSION_ID < 70000 && date('Y-m-d') >= '2016-12-31' ||
+	PHP_VERSION_ID < 70100 && date('Y-m-d') >= '2017-12-03'
 ) {
-	$server_warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version.', PHP_VERSION);
+	$server_warnings[] =
+		I18N::translate('Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version.', PHP_VERSION) .
+		 '<br><a href="https://php.net/supported-versions.php">https://php.net/supported-versions.php</a>';
 } else
 
 ?>

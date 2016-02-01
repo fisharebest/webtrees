@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -193,7 +193,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 		</ol>
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
-		
+
 		<form id="batch_update_form" class="form-horizontal" action="module.php" method="get">
 			<input type="hidden" name="mod" value="batch_update">
 			<input type="hidden" name="mod_action" value="admin_batch_update">
