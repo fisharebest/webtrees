@@ -42,7 +42,7 @@ class CensusColumnBornForeignParts extends AbstractCensusColumn implements Censu
 			$census_place = 'England';
 		}
 
-		if ($birth_place === $census_place) {
+		if ($birth_place === $census_place || $birth_place === '') {
 			return '';
 		} elseif ($birth_place === 'England' || $birth_place === 'Scotland' || $birth_place === 'Ireland') {
 			return substr($birth_place, 0, 1);
