@@ -76,6 +76,8 @@ Vagrant.configure(2) do |config|
     # LAMP server
     sudo apt-get -y install git lamp-server^ php5-gd php5-curl
     [ -L /var/www ] || sudo rm -Rf /var/www && sudo ln -s /vagrant /var/www
+		# PHP configuration
+		sed -i -e 's/^display_errors = Off/display_errors = On/' /etc/php5/apache2/php.ini
 		sudo service apache2 restart
     # Composer
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
