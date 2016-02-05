@@ -15,36 +15,32 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-/**
- * Definitions for a census
- */
-class CensusOfUnitedStates extends Census implements CensusPlaceInterface {
-	/**
-	 * All available censuses for this census place.
-	 *
-	 * @return CensusInterface[]
-	 */
-	public function allCensusDates() {
-		return array(
-			new CensusOfUnitedStates1850(),
-			new CensusOfUnitedStates1860(),
-			new CensusOfUnitedStates1870(),
-			new CensusOfUnitedStates1880(),
-			new CensusOfUnitedStates1890(),
-			new CensusOfUnitedStates1900(),
-			new CensusOfUnitedStates1910(),
-			new CensusOfUnitedStates1920(),
-			new CensusOfUnitedStates1930(),
-			new CensusOfUnitedStates1940(),
-		);
-	}
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Individual;
 
+/**
+ * At what age did the individual marry.
+ */
+class CensusColumnAgeMarried extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
-	 * Where did this census occur, in GEDCOM format.
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function censusPlace() {
-		return 'United States';
+	public function generate(Individual $individual, Individual $head = null) {
+		if ($individual->getBirthDate()->isOK()) {
+			foreach ($individual->getSpouseFamilies() as $family) {
+				foreach ($family->getFacts('MARR', true) as $fact) {
+					if ($fact->getDate()->isOK()) {
+						return Date::getAge($individual->getBirthDate(), $fact->getDate(), 0);
+					}
+				}
+			}
+		}
+
+		return '';
 	}
 }

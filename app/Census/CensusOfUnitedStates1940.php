@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2016 webtrees development team
+ * Copyright (C) 2015 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -18,14 +18,14 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfUnitedStates1930 extends CensusOfUnitedStates implements CensusInterface {
+class CensusOfUnitedStates1940 extends CensusOfUnitedStates implements CensusInterface {
 	/**
 	 * When did this census occur.
 	 *
 	 * @return string
 	 */
 	public function censusDate() {
-		return 'APR 1930';
+		return 'APR 1940';
 	}
 
 	/**
@@ -39,7 +39,6 @@ class CensusOfUnitedStates1930 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnRelationToHead($this, 'Relation', 'Relationship of each person to the head of the family'),
 			new CensusColumnNull($this, 'Home', 'Home owned or rented'),
 			new CensusColumnNull($this, 'V/R', 'Value of house, if owned, or monthly rental if rented'),
-			new CensusColumnNull($this, 'Radio', 'Radio set'),
 			new CensusColumnNull($this, 'Farm', 'Does this family live on a farm'),
 			new CensusColumnSexMF($this, 'Sex', 'Sex'),
 			new CensusColumnNull($this, 'Race', 'Color or race'),

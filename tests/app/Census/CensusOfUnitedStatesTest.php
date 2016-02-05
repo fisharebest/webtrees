@@ -41,7 +41,7 @@ class CensusOfUnitedStatesTest extends \PHPUnit_Framework_TestCase {
 
 		$census_dates = $census->allCensusDates();
 
-		$this->assertCount(9, $census_dates);
+		$this->assertCount(10, $census_dates);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1850', $census_dates[0]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1860', $census_dates[1]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1870', $census_dates[2]);
@@ -51,5 +51,6 @@ class CensusOfUnitedStatesTest extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1910', $census_dates[6]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1920', $census_dates[7]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1930', $census_dates[8]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates1940', $census_dates[9]);
 	}
 }

@@ -15,36 +15,29 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-/**
- * Definitions for a census
- */
-class CensusOfUnitedStates extends Census implements CensusPlaceInterface {
-	/**
-	 * All available censuses for this census place.
-	 *
-	 * @return CensusInterface[]
-	 */
-	public function allCensusDates() {
-		return array(
-			new CensusOfUnitedStates1850(),
-			new CensusOfUnitedStates1860(),
-			new CensusOfUnitedStates1870(),
-			new CensusOfUnitedStates1880(),
-			new CensusOfUnitedStates1890(),
-			new CensusOfUnitedStates1900(),
-			new CensusOfUnitedStates1910(),
-			new CensusOfUnitedStates1920(),
-			new CensusOfUnitedStates1930(),
-			new CensusOfUnitedStates1940(),
-		);
-	}
+use Fisharebest\Webtrees\Individual;
 
+/**
+ * Marital status.
+ */
+class CensusColumnConditionUs extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
-	 * Where did this census occur, in GEDCOM format.
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function censusPlace() {
-		return 'United States';
+	public function generate(Individual $individual, Individual $head = null) {
+		$family = $this->spouseFamily($individual);
+
+		if ($family === null || count($family->getFacts('_NMR')) > 0) {
+			return 'S'; // unmarried
+		} elseif (count($family->getFacts('DIV')) > 0) {
+			return 'D'; // divorced
+		} else {
+			return 'M'; // married
+		}
 	}
 }
