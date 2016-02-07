@@ -34,8 +34,8 @@ $controller
 	->restrictAccess(Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Website logs'));
 
-$earliest = Database::prepare("SELECT DATE(MIN(log_time)) FROM `##log`")->execute(array())->fetchOne();
-$latest   = Database::prepare("SELECT DATE(MAX(log_time)) FROM `##log`")->execute(array())->fetchOne();
+$earliest = Database::prepare("SELECT IFNULL(DATE(MIN(log_time)), CURDATE()) FROM `##log`")->execute(array())->fetchOne();
+$latest   = Database::prepare("SELECT IFNULL(DATE(MAX(log_time)), CURDATE()) FROM `##log`")->execute(array())->fetchOne();
 
 // Filtering
 $action = Filter::get('action');
