@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-01-17 17:40+0000\n"
-"PO-Revision-Date: 2016-01-30 13:08+0100\n"
+"PO-Revision-Date: 2016-02-07 10:09+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -5735,7 +5735,7 @@ msgstr "Externe bestanden"
 
 #: admin_media.php:676
 msgid "External media files have a URL instead of a filename."
-msgstr "Externe media betanden hebben een URL i.p.v. een bestandsnaam."
+msgstr "Externe media bestanden hebben een URL i.p.v. een bestandsnaam."
 
 #. I18N: Name of a module/sidebar
 #: app/Module/ExtraInformationModule.php:29
@@ -13911,7 +13911,7 @@ msgstr "Deze stamboom werd het laatst gewijzigd op %s."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-msgstr "Dit bestand is gekoppeld aan een andere genealogische database op deze server. Het kan niet worden verwijderd, verplaatsts of hernoemd totdat deze koppelingen zijn verwijderd."
+msgstr "Dit bestand is gekoppeld aan een andere genealogische database op deze server. Het kan niet worden verwijderd, verplaatst of hernoemd totdat deze koppelingen zijn verwijderd."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:179
