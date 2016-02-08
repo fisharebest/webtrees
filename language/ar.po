@@ -3,13 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-01-17 17:40+0000\n"
-"PO-Revision-Date: 2013-05-05 01:04+0000\n"
-"Last-Translator: Muadh Hamidaddin <Unknown>\n"
-"Language: \n"
+"PO-Revision-Date: 2016-02-08 07:02+0100\n"
+"Last-Translator: Samar Kadhi <samark@protonmail.com>\n"
+"Language-Team: Arabic <http://translate.webtrees.net/projects/webtrees/webtrees/ar/>\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 2.4\n"
 "X-Poedit-Language: Arabic\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -117,12 +119,12 @@ msgstr "%1$s لا يوجد لديه رابط إلى %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "لم يتم استخراج أي ملفات في  %2$s ثانية."
+msgstr[1] "تم استخراج ملف واحد %1$s في %2$s ثانية."
+msgstr[2] "تم استخراج ملفين %1$s في %2$s ثانية."
+msgstr[3] "تم استخراج %1$s ملفات في %2$s ثانية."
+msgstr[4] "تم استخراج %1$s ملفات في %2$s ثانية."
+msgstr[5] "تم استخراج %1$s ملفات في %2$s ثانية."
 
 #: app/Module/GoogleMapsModule.php:897
 #, php-format
@@ -140,9 +142,9 @@ msgstr[5] "المعروض %1$s فرداً من أصل %2$s من المعتاد �
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "لايوجد أحداً ليس له إحداثيات مكان الميلاد: %2$s."
-msgstr[1] "فرداً واحد ليس له إحداثيات مكان الميلاد: %2$s."
-msgstr[2] "فردان ليس لهما إحداثيات مكان الميلاد: %2$s."
+msgstr[0] "لايوجد أحداً %1$s ليس له إحداثيات مكان الميلاد: %2$s."
+msgstr[1] "يوجد فرداً واحد %1$s ليس له إحداثيات مكان الميلاد: %2$s."
+msgstr[2] "يوجد فردان %1$s ليس لهما إحداثيات مكان الميلاد: %2$s."
 msgstr[3] "%1$s أفراد ليس لهم إحداثيات مكان الميلاد: %2$s."
 msgstr[4] "%1$s فرداً ليس لهم إحداثيات مكان الميلاد: %2$s."
 msgstr[5] "%1$s فرداً ليس لهم إحداثيات مكان الميلاد: %2$s."
@@ -212,19 +214,19 @@ msgstr ""
 #: admin_media.php:489 app/Media.php:276
 #, php-format
 msgid "%s KB"
-msgstr "%s ك.ب."
+msgstr "%s كيلوبت."
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:194
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s وأسلافها"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:196
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s وأسلافه"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:280
@@ -236,13 +238,13 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s وأولادهم"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:124
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s ونسلهم"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5953
 #, php-format
@@ -260,8 +262,8 @@ msgstr[5] "%s مستخدماُ مسجلاً مجهولاً"
 msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] "%s ولد"
-msgstr[1] "ولداً واحداً"
-msgstr[2] "ولدان"
+msgstr[1] "ولداً واحداً %s"
+msgstr[2] "ولدان %s"
 msgstr[3] "%s أولاد"
 msgstr[4] "%s ولداً"
 msgstr[5] "%s ولداً"
@@ -272,8 +274,8 @@ msgstr[5] "%s ولداً"
 msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s أيام"
-msgstr[1] "يوماً واحداً"
-msgstr[2] "يومان"
+msgstr[1] "يوماً واحداً %s"
+msgstr[2] "يومان %s"
 msgstr[3] "%s أيام"
 msgstr[4] "%s يوماً"
 msgstr[5] "%s يوماً"
@@ -283,8 +285,8 @@ msgstr[5] "%s يوماً"
 msgid "%s day ago"
 msgid_plural "%s days ago"
 msgstr[0] "قبل أقل من يوم"
-msgstr[1] "قبل يوماً واحداً"
-msgstr[2] "قبل يومين"
+msgstr[1] "قبل يوماً واحداً %s"
+msgstr[2] "قبل يومين %s"
 msgstr[3] "قبل %s أيام"
 msgstr[4] "قبل %s يوماً"
 msgstr[5] "قبل %s يوماً"
@@ -294,8 +296,8 @@ msgstr[5] "قبل %s يوماً"
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[1] "تم تحديث بيانات أسرة واحدة"
+msgstr[2] "تم تحديث بيانات أسرتين"
 msgstr[3] ""
 msgstr[4] ""
 msgstr[5] ""
@@ -305,10 +307,10 @@ msgstr[5] ""
 msgid "%s family tree"
 msgid_plural "%s family trees"
 msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[1] "شجرة العائلة"
+msgstr[2] "شجرتي العائلة"
 msgstr[3] ""
-msgstr[4] ""
+msgstr[4] "شجرات العوائل"
 msgstr[5] ""
 
 #: app/Stats.php:5261 app/Stats.php:5265
@@ -359,9 +361,9 @@ msgstr[5] ""
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] "لا يوجد من له خصوصية."
-msgstr[1] "فرد واحد له خصوصية."
-msgstr[2] "فردان لهما خصوصية."
+msgstr[0] "%s لا يوجد من له خصوصية."
+msgstr[1] "%s فرد واحد له خصوصية."
+msgstr[2] "%s فردان لهما خصوصية."
 msgstr[3] "%s أفراد لهم خصوصية."
 msgstr[4] "%s فرداً لهم خصوصية."
 msgstr[5] "%s فرداً لهم خصوصية."
@@ -381,11 +383,11 @@ msgstr[5] ""
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
+msgstr[0] "%s لا يوجد أفراد لديهم مناسبات"
+msgstr[1] "%s يوجد فرد واحد لديه مناسبة"
+msgstr[2] "%s يوجد فردان لديهم مناسبات"
+msgstr[3] "يوجد %s فردا لديهم مناسبات"
+msgstr[4] "يوجد %s أفراد لديهم مناسبات"
 msgstr[5] ""
 
 #: app/Controller/LifespanController.php:239
@@ -409,9 +411,9 @@ msgstr ""
 #, php-format
 msgid "%s logged-in user"
 msgid_plural "%s logged-in users"
-msgstr[0] "لا يوجد أي مستخدماً مسجلاً"
-msgstr[1] "مستخدماً مسجلاً واحداً"
-msgstr[2] "إثنين مستخدمين مسجلين"
+msgstr[0] "%s لا يوجد أي مستخدماً مسجلاً"
+msgstr[1] "مستخدماً مسجلاً واحداً %s"
+msgstr[2] "مستخدمين %s مسجلين"
 msgstr[3] "%s مستخدمين مسجلين"
 msgstr[4] "%s مستخدماً مسجلاً"
 msgstr[5] "%s مستخدماً مسجلاً"
@@ -420,9 +422,9 @@ msgstr[5] "%s مستخدماً مسجلاً"
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] "لا يوجد رسائل"
-msgstr[1] "رسالة واحدة"
-msgstr[2] "رسالتان"
+msgstr[0] "%s لا يوجد رسائل"
+msgstr[1] "رسالة واحدة %s"
+msgstr[2] "رسالتان %s"
 msgstr[3] "%s رسائل"
 msgstr[4] "%s رسالة"
 msgstr[5] "%s رسالة"
@@ -859,15 +861,15 @@ msgstr "من الأخطاء الشائعة أن يوجد عدة روابط لن�
 
 #: setup.php:371
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-msgstr "يمكن لخادم قاعدة البيانات خزن عدة قواعد منفصلة. يجب إختيار قاعدة موجودة (غالباً منشأة مسبقاً من قبل مدير الخادم) أو إنشاء قاعدة جديدة (إذا كانت صلاحية الحساب في خادم قاعدة البيانات تتيح ذلك)"
+msgstr "يمكن لخادم قاعدة البيانات خزن عدة قواعد منفصلة. يجب إختيار قاعدة موجودة (غالباً منشأة مسبقاً من قبل مدير الخادم) أو إنشاء قاعدة جديدة (إذا كانت صلاحية الحساب في خادم قاعدة البيانات تتيح ذلك)."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
-msgstr ""
+msgstr "ملف على الخادم"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:211
 msgid "A file on your computer"
-msgstr ""
+msgstr "ملف على جهازك"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:33
@@ -887,7 +889,7 @@ msgstr "قائمة بالتعديلات التي تتطلب موافقة الم�
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
 msgid "A list of frequently asked questions and answers."
-msgstr "قائمة بالأسئلة الأكثر شيوعاً"
+msgstr "قائمة بالأسئلة الأكثر شيوعاً والإجابات."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:40
@@ -945,7 +947,7 @@ msgstr "لقد تم إنشاء كلمة مرور جديدة وأرسلت إلى 
 
 #: login.php:244
 msgid "A new password has been requested for your user name."
-msgstr "لقد تم طلب كلمة دخول جديدة لإسم المستخدم خاصتك"
+msgstr "لقد تم طلب كلمة دخول جديدة لإسم المستخدم خاصتك."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:547
@@ -1792,7 +1794,7 @@ msgstr "العمر عند إنجاب مولود"
 
 #: admin_trees_config.php:410
 msgid "Age at which to assume an individual is dead"
-msgstr "العمر الذي يعتبر فيه الفرد متوفي."
+msgstr "العمر الذي يعتبر فيه الفرد متوفي"
 
 #: statistics.php:336
 msgid "Age between husband and wife"
@@ -2191,8 +2193,7 @@ msgstr "هل أنت متأكد من رغبتك في حذف هذه المعلوم
 
 #: app/Module/UserMessagesModule.php:96 app/Module/UserMessagesModule.php:139
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr "هل أنت متأكد من رغبتك في حذف هذه الرسالة نهائياً؟"
-
+msgstr "هل أنت متأكد من رغبتك في حذف هذه الرسالة نهائياً؟ لن تستطيع القيام باسترجاعها لاحقاً."
 
 #: admin_media.php:318 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_manage.php:414 admin_trees_manage.php:425 admin_users.php:211
@@ -2923,7 +2924,7 @@ msgstr "مواقع الولادة"
 
 #: modules_v3/birth_report/report.xml:6
 msgid "Birthplace contains"
-msgstr "مكان الميلاد فيه:"
+msgstr "مكان الميلاد فيه"
 
 #. I18N: Name of a module/report
 #: app/Module/BirthReportModule.php:29 modules_v3/birth_report/report.xml:3
@@ -2966,7 +2967,7 @@ msgstr "أزرق بحري"
 
 #: message.php:127
 msgid "Body"
-msgstr "النص:"
+msgstr "النص"
 
 #: app/GedcomCode/GedcomCodeTemp.php:103
 msgid "Bogota, Colombia"
@@ -3266,7 +3267,7 @@ msgstr "دفن زوجة"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
-msgstr "مكان الدفن فيه:"
+msgstr "مكان الدفن يحتوي على"
 
 #: app/Stats.php:6743
 msgid "Burkina Faso"
@@ -3840,7 +3841,7 @@ msgstr "نقر %s لإختيار الفرد كرب أسرة."
 
 #: edit_interface.php:1718
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "نقر على صف لسحبه ومن ثم إفلاته في الموضع المختار "
+msgstr "نقر على صف لسحبه ومن ثم إفلاته في الموضع المختار"
 
 #: admin_trees_manage.php:722
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -3860,7 +3861,7 @@ msgstr "نقر على الإسم لإضافة فرد إلى قائمة إضاف�
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:366
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "نقر على العنوان للذهاب إليه مباشرة، أو إنتقال إلى الأسفل لقراءة الجميع"
+msgstr "نقر على العنوان للذهاب إليه مباشرة، أو إنتقال إلى الأسفل لقراءة الجميع."
 
 #: app/Module/CensusAssistantModule.php:437
 msgid "Click to choose individual as head of family."
@@ -4591,7 +4592,7 @@ msgstr "تأريخ التسجيل"
 
 #: app/Module/UserMessagesModule.php:113
 msgid "Date sent"
-msgstr "تأريخ الإرسال:"
+msgstr "تأريخ الإرسال"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:714
@@ -4894,7 +4895,7 @@ msgstr "وفاة أحد الزوجين"
 
 #: modules_v3/death_report/report.xml:6
 msgid "Death place contains"
-msgstr "مكان الوفاة فيه:"
+msgstr "مكان الوفاة يحتوي على"
 
 #: statistics.php:409
 msgid "Death places"
@@ -5530,7 +5531,7 @@ msgstr "تعديل الرواية"
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
-msgstr "تعديل معلومات هذا الفرد وإستبدالها بتفاصيل أخرى"
+msgstr "تعديل معلومات هذا الفرد وإستبدالها بتفاصيل أخرى."
 
 #: admin_users.php:273
 msgid "Edit user"
@@ -7030,7 +7031,7 @@ msgstr "أُحرق"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:71
 msgid "Head of household"
-msgstr "رب البيت:"
+msgstr "رب البيت"
 
 #. I18N: gedcom tag HEAD
 #: app/GedcomTag.php:508
@@ -7303,7 +7304,7 @@ msgstr "عند الحاجة لإستخدام إسمي عائلة للفرد في
 #: help_text.php:232
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "إذا كان الغرد معروفاً بكنية وليست جزءاً من إسمه فيلزم إحاطتها بمزدوجين:<%s>عنترة &quot;أبي الفوارس&quot; بن شداد/العبسي/<%s>"
+msgstr "إذا كان الفرد معروفاً بكنية وليست جزءاً من إسمه فيلزم إحاطتها بمزدوجين:<%s>عنترة &quot;أبي الفوارس&quot; بن شداد/العبسي/<%s>."
 
 #: help_text.php:230
 #, php-format
@@ -7313,7 +7314,7 @@ msgstr "إذا كان الفرد غير معروف بإسمه أو أن له إ�
 #. I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1203
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
-msgstr "إذا كان عدد تكرار بعض أسماء العائلة أقل من المحدد لإحتسابه مكرراً، فلن تظهر في القائمة. ويمكن إضافتها هنا لفرض عرضها بغض النظر عن تكرارها وتدخل مفرقة بفاصلة."
+msgstr "إذا كان عدد تكرار بعض أسماء العائلة أقل من المحدد لإحتسابه مكرراً، فلن تظهر العائلة في القائمة. ويمكن إضافتها هنا لفرض عرضها بغض النظر عن تكرارها وتدخل مفرقة بفاصلة. <b>يجب مراعاة عدم اختلاف اسم العائلة</b>"
 
 #: help_text.php:224
 #, php-format
@@ -7332,7 +7333,7 @@ msgstr "يمكن لمشجرين عائلة مختلفين إستخدام مجل�
 
 #: admin_trees_config.php:381
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-msgstr ""
+msgstr "في حال عدم تمكن الزوار من رؤية شجرة العائلة لن يتمكنوا من تقديم طلب لتسجيل حساب في الموقع. وفي تلك الحالة سيستوجب عليك إضافة حساباً لهم."
 
 #. I18N: Help text for the “Who can upload new media files?” configuration setting
 #: admin_trees_config.php:1041
@@ -7345,11 +7346,11 @@ msgstr "إن كنت مدير الموقع فعليك تفحص التالي:"
 
 #: site-unavailable.php:97
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
-msgstr "في حالة عدم التمكن من تجاوز هذه المشكلة، يمكن التواصل في منتدى <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgstr "في حالة عدم التمكن من تجاوز هذه المشكلة، يمكن التواصل في منتدى <a href=\"http://webtrees.net\">webtrees.net</a>."
 
 #: admin_trees_manage.php:282
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
-msgstr ""
+msgstr "في حال تم إنشاء ملف الجيدكوم باستخدام برنامج يقوم بحذف الفراغات فيستوجب اختيار هذا الخيار لإعادة الفراغات المطلوبة."
 
 #: login.php:335
 msgid "If you didn’t request an account, you can just delete this message."
@@ -8643,7 +8644,7 @@ msgstr "بداية نطاق تأريخ الزواج"
 
 #: modules_v3/marriage_report/report.xml:6
 msgid "Marriage Place contains"
-msgstr "مكان الزواج فيه:"
+msgstr "مكان الزواج فيه"
 
 #. I18N: gedcom tag MARB
 #: app/GedcomTag.php:556 modules_v3/missing_facts_report/report.xml:22
@@ -8916,7 +8917,7 @@ msgstr "بادئة المعرف الخاص بالوسائط"
 #. I18N: Label for search field
 #: find.php:159
 msgid "Media contains"
-msgstr "الوسائط فيها:"
+msgstr "الوسائط تحتوي على"
 
 #: admin_media.php:691 admin_media_upload.php:200
 msgid "Media file"
@@ -9326,7 +9327,7 @@ msgstr "المغرب"
 #. I18N: Help text for the “Use password” site configuration setting
 #: admin_site_config.php:375
 msgid "Most SMTP servers require a password."
-msgstr "غالب خوادم SMTP تتطلب كلمة مرور"
+msgstr "غالب خوادم SMTP تتطلب كلمة مرور."
 
 #: app/Module/FamilyTreeStatisticsModule.php:200
 #: app/Module/HtmlBlockModule.php:259
@@ -9508,7 +9509,7 @@ msgstr "الإسم"
 #. I18N: Label for search field
 #: find.php:123 find.php:140
 msgid "Name contains"
-msgstr "الإسم فيه:"
+msgstr "الإسم يحتوي على"
 
 #: app/GedcomTag.php:606
 msgid "Name in Hebrew"
@@ -9755,7 +9756,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
-msgstr "لا يوجد أسلاف في قاعدة البيانات"
+msgstr "لا يوجد أسلاف في قاعدة البيانات."
 
 #: admin_trees_config.php:35
 msgid "No calendar conversion"
@@ -9834,7 +9835,7 @@ msgstr[5] ""
 
 #: app/Controller/FamilyController.php:162
 msgid "No facts for this family."
-msgstr "لا يوجد معلومات لهذه الأسرة"
+msgstr "لا توجد معلومات لهذه الأسرة."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:80
@@ -10081,7 +10082,7 @@ msgstr "عدد الأسر التي لم تنجب"
 #: app/Module/ClippingsCartModule.php:220
 #: app/Module/ClippingsCartModule.php:238
 msgid "Number of generations"
-msgstr "عدد الأجيال:"
+msgstr "عدد الأجيال"
 
 #: app/Module/FamilyTreeNewsModule.php:202
 msgid "Number of items"
@@ -10331,7 +10332,7 @@ msgstr "أخرى"
 
 #: app/Module/GoogleMapsModule.php:4323
 msgid "Overwrite existing coordinates."
-msgstr "إستبدال كتابة الإحداثيات القائمة"
+msgstr "إستبدال كتابة الإحداثيات القائمة."
 
 #: statistics.php:73
 msgid "Own charts"
@@ -10359,7 +10360,7 @@ msgstr "م."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:89
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP منعت الملف بالتمديد"
+msgstr "PHP منعت الملف بالتمديد."
 
 #: setup.php:139
 #, php-format
@@ -10374,7 +10375,7 @@ msgstr "إمتداد PHP “%s” غير مفعل. ولا يمكن تنصيب we
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:86
 msgid "PHP failed to write to disk."
-msgstr "لم تتمكن PHP من الكتابة على القرص"
+msgstr "لم تتمكن PHP من الكتابة على القرص."
 
 #: admin_site_info.php:51
 msgid "PHP information"
@@ -10616,7 +10617,7 @@ msgstr "يجب أن تكون نسخة PhpGedView 4.2.3 أو نسخة تطوير 
 
 #: admin_pgv_to_wt.php:91
 msgid "PhpGedView must use the same database as webtrees."
-msgstr "يجب على PhpGedView إستخدام نفس قاعدة البيانات مثل webtrees"
+msgstr "يجب على PhpGedView إستخدام نفس قاعدة البيانات مثل webtrees."
 
 #: admin_pgv_to_wt.php:42 admin_trees_manage.php:694
 msgid "PhpGedView to webtrees transfer wizard"
@@ -10657,7 +10658,7 @@ msgstr "تحقق من المكان"
 #. I18N: Label for search field
 #: find.php:179
 msgid "Place contains"
-msgstr "المكان فيه:"
+msgstr "المكان يحتوي على"
 
 #: app/Module/TopPageViewsModule.php:176
 msgid "Place counts before or after name?"
@@ -10842,7 +10843,7 @@ msgstr "لطفاً إدخال عنوان بريد إلكتروني صحيح."
 #: app/Module/CensusAssistantModule.php:167 find.php:102 search.php:36
 #: search.php:48
 msgid "Please enter more than one character."
-msgstr "لطفاً إدخال أكثر من حرف واحد"
+msgstr "لطفاً إدخال أكثر من حرف واحد."
 
 #: message.php:96
 msgid "Please enter some message text before sending."
@@ -11505,7 +11506,7 @@ msgstr "بادئة المعرف الخاص بمستودع"
 #. I18N: Label for search field
 #: find.php:198
 msgid "Repository contains"
-msgstr "المستودع يحتوي:"
+msgstr "مستودع البيانات يحتوي على"
 
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
@@ -11571,7 +11572,7 @@ msgstr "قيمته الناتجة"
 
 #: statistics.php:632
 msgid "Results"
-msgstr "النتائج:"
+msgstr "النتائج"
 
 #. I18N: gedcom tag RETI
 #: app/GedcomTag.php:740
@@ -12176,7 +12177,7 @@ msgstr "ملاحظة مشتركة"
 #. I18N: Label for search field
 #: find.php:218
 msgid "Shared note contains"
-msgstr "المحلاظة المشتركة فيها:"
+msgstr "المحلاظة المشتركة تحتوي على"
 
 #: app/Functions/FunctionsPrintLists.php:1088 app/Theme/AbstractTheme.php:1448
 #: notelist.php:33 notelist.php:37 search.php:103
@@ -12360,7 +12361,7 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
-msgstr "إظهار أولاد الأسلاف"
+msgstr "إظهار أولاد الأسلاف؟"
 
 #: app/Module/FamilyTreeStatisticsModule.php:291
 msgid "Show common surnames?"
@@ -12575,7 +12576,7 @@ msgstr "إظهار المساكن؟"
 
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls?"
-msgstr "إظهار معايير التحكم للعرض التلقائي"
+msgstr "إظهار معايير التحكم للعرض التلقائي؟"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12602,7 +12603,7 @@ msgstr "إظهار القسم %1$s %2$s من إسم المكان."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
-msgstr "إظهار تأريخ وزمن التغيير؟"
+msgstr "إظهار تأريخ وزمن التغيير"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:367
@@ -12842,7 +12843,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:436
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "بعض أسماء الأماكن يمكن أن تكتب ببواديء ولواحق إختيارية مثل، الروضة مقابل حي الروضة. إذا كان المشجر يحتوي على الإسم الكامل للمكان ولكن قاعدة البيانات الجغرافية تحتوي على الإسم المختصر يجب عندئذ إنشائ قائمة تحتوى على البواديء واللواحق المهملة مفرقة بفواصل منقوطة مثل: \"حي; مقاطعة; محافظة\""
+msgstr "بعض أسماء الأماكن يمكن أن تكتب ببواديء ولواحق إختيارية مثل، الروضة مقابل حي الروضة. إذا كان المشجر يحتوي على الإسم الكامل للمكان ولكن قاعدة البيانات الجغرافية تحتوي على الإسم المختصر يجب عندئذ إنشائ قائمة تحتوى على البواديء واللواحق المهملة مفرقة بفواصل منقوطة مثل: \"حي; مقاطعة; محافظة\"."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1560
@@ -12923,7 +12924,7 @@ msgstr "إقتباسات المصادر يمكن أن تحتوي على مدى �
 #. I18N: Label for search field
 #: find.php:237
 msgid "Source contains"
-msgstr "المصدر فيه:"
+msgstr "المصدر يحتوي على"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2222 modules_v3/fact_sources/report.xml:6
@@ -13129,7 +13130,7 @@ msgstr "الولاية/المحافظة"
 
 #: app/Module/UserMessagesModule.php:112 message.php:119
 msgid "Subject"
-msgstr "الموضوع:"
+msgstr "الموضوع"
 
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:810
@@ -13397,7 +13398,7 @@ msgstr "يمكن لمتصفح الوسائط إظهار رابط لإتاحة ت
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:83
 msgid "The PHP temporary folder is missing."
-msgstr "مجلد PHP المؤقت مفقود"
+msgstr "مجلد PHP المؤقت مفقود."
 
 #: admin_trees_manage.php:701
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
@@ -13442,13 +13443,13 @@ msgstr "تفاصيل هذه الأسرة لها خصوصية."
 
 #: individual.php:92
 msgid "The details of this individual are private."
-msgstr "تفاصيل هذا الفرد لها خصوصية"
+msgstr "تفاصيل هذا الفرد لها خصوصية."
 
 #. I18N: %s is a filename
 #: admin_site_upgrade.php:293 admin_trees_export.php:41
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr "تم تصدير المشجر إلى %s"
+msgstr "تم تصدير المشجر إلى %s."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:76
@@ -13525,7 +13526,7 @@ msgstr "تم تحميل الملف %s."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:77
 msgid "The file was only partially uploaded. Please try again."
-msgstr "لقد تم تحميل الملف جزئياً، لطفاً أعادة المحاولة مرة أخرى"
+msgstr "لقد تم تحميل الملف جزئياً، لطفاً أعادة المحاولة مرة أخرى."
 
 #. I18N: %s is a filename
 #: medialist.php:301 mediaviewer.php:162
@@ -13636,7 +13637,7 @@ msgstr "ملف الوسائط %s غير موجود."
 
 #: mediafirewall.php:38
 msgid "The media file was not found in this family tree."
-msgstr "لم يتم العثور على ملف الوسائط في هذا المشجر"
+msgstr "لم يتم العثور على ملف الوسائط في هذه الشجرة."
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13716,7 +13717,7 @@ msgstr ""
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr "لقد تم نسخ السجل إلى الحافظة"
+msgstr "لقد تم نسخ السجل إلى الحافظة."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:168
@@ -13789,7 +13790,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:74
 msgid "The uploaded file exceeds the allowed size."
-msgstr "تجاوز الملف المحمل الحجم المتاح للتحميل"
+msgstr "تجاوز الملف المحمل الحجم المتاح للتحميل."
 
 #: admin_users.php:807
 #, php-format
@@ -13817,12 +13818,12 @@ msgstr "المحتوى المراد وضعه في العلامة الوصفية 
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too new."
-msgstr "النسخة %s حديثة جداً"
+msgstr "النسخة %s حديثة جداً."
 
 #: admin_pgv_to_wt.php:101
 #, php-format
 msgid "The version of %s is too old."
-msgstr "النسخة %s قديمة جداً"
+msgstr "النسخة %s قديمة جداً."
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
@@ -14175,22 +14176,22 @@ msgstr "هذه قائمة بمعلومات المشجر الممكن إضافت�
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1890
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "هذه قائمة بالمعلومات الأسرية الفريدة والتي لا تتكرر. مثلاً إذا وضع MARR فيها فيعني ذلك أنه لا يمكن إدخال أكثر من معلومة زواج واحد فقط للأسرة. أي من المعلومات التي تكون في هذه القائمة يجب أن لا تتكرر في قائمة <b>إضافة معلومات أسرة</b>"
+msgstr "هذه قائمة بالمعلومات الأسرية الفريدة والتي لا تتكرر. مثلاً إذا وضع MARR فيها فيعني ذلك أنه لا يمكن إدخال أكثر من معلومة زواج واحد فقط للأسرة. أي من المعلومات التي تكون في هذه القائمة يجب أن لا تتكرر في قائمة <b>إضافة معلومات أسرة</b>."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1772
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "هذه قائمة بالمعلومات الفردية الفريدة والتي لا تتكرر. مثلاً إذا وضع BIRT فيها فيعني ذلك أنه لا يمكن إدخال أكثر من معلومة ولادة واحدة فقط للفرد. أي من المعلومات التي تكون في هذه القائمة يجب أن لا تتكرر في قائمة <b>إضافة معلومات للفرد</b>"
+msgstr "هذه قائمة بالمعلومات الفردية الفريدة والتي لا تتكرر. مثلاً إذا وضع BIRT فيها فيعني ذلك أنه لا يمكن إدخال أكثر من معلومة ولادة واحدة فقط للفرد. أي من المعلومات التي تكون في هذه القائمة يجب أن لا تتكرر في قائمة <b>إضافة معلومات للفرد</b>."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:2097
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "هذه قائمة بمعلومات المستودعات الفريدة والتي لا تتكرر. مثلاً إذا وضع NAME فيها فيعني ذلك أنه لا يمكن إدخال أكثر من معلومة إسم واحدة فقط للمستودع. أي من المعلومات التي تكون في هذه القائمة يجب أن لا تتكرر في قائمة <b>إضافة معلومات المستودعات</b>"
+msgstr "هذه قائمة بمعلومات المستودعات الفريدة والتي لا تتكرر. مثلاً إذا وضع NAME فيها فيعني ذلك أنه لا يمكن إدخال أكثر من معلومة إسم واحدة فقط للمستودع. أي من المعلومات التي تكون في هذه القائمة يجب أن لا تتكرر في قائمة <b>إضافة معلومات المستودعات</b>."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:2008
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "هذه قائمة بمعلومات المصدر الفريدة والتي لا تتكرر. مثلاً إذا وضع TITL فيها فيعني ذلك أنه لا يمكن إدخال أكثر من معلومة عنوان واحدة فقط للمصدر. أي من المعلومات التي تكون في هذه القائمة يجب أن لا تتكرر في قائمة <b>إضافة معلومات المصادر</b>"
+msgstr "هذه قائمة بمعلومات المصدر الفريدة والتي لا تتكرر. مثلاً إذا وضع TITL فيها فيعني ذلك أنه لا يمكن إدخال أكثر من معلومة عنوان واحدة فقط للمصدر. أي من المعلومات التي تكون في هذه القائمة يجب أن لا تتكرر في قائمة <b>إضافة معلومات المصادر</b>."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:349
@@ -14233,15 +14234,15 @@ msgstr "هذا هو إسمك الفعلي كما تود إظهاره على ال
 
 #: admin_trees_check.php:135
 msgid "This may be a mistake in your data."
-msgstr "يمكن أن يكون هذا خطاء في بياناتك"
+msgstr "يمكن أن يكون هذا خطاء في بياناتك."
 
 #: admin_trees_check.php:134
 msgid "This may cause a problem for other applications."
-msgstr "يمكن أن يعطل هذا عمل التطبيقات الأخرى"
+msgstr "يمكن أن يعطل هذا عمل التطبيقات الأخرى."
 
 #: admin_trees_check.php:133
 msgid "This may cause a problem for webtrees."
-msgstr "يمكن أن يعطل هذا عمل webtrees"
+msgstr "يمكن أن يعطل هذا عمل .webtrees"
 
 #: admin_media.php:509
 msgid "This media file does not exist."
@@ -14253,7 +14254,7 @@ msgstr "ملف الوسائط موجود ولكن لا يمكن الوصول ا�
 
 #: mediafirewall.php:402
 msgid "This media file is broken and cannot be watermarked."
-msgstr "ملف الوسائط منقطع ولا يمكن دمج علامة مائية معه"
+msgstr "ملف الوسائط منقطع ولا يمكن دمج علامة مائية معه."
 
 #: mediaviewer.php:78
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14528,7 +14529,7 @@ msgstr ""
 
 #: setup.php:213
 msgid "This usually means that you need to change the folder permissions to 777."
-msgstr "في الغالب عليك تغيير صلاحيات الملف إلى 777"
+msgstr "في الغالب عليك تغيير صلاحيات الملف إلى 777."
 
 #: admin_site_upgrade.php:41
 msgid "This website is being upgraded. Try again in a few minutes."
@@ -14697,7 +14698,7 @@ msgstr "لحماية البيانات ذات الخصوصية، webtrees تست�
 
 #: help_text.php:298
 msgid "To reduce the height of the News block, the administrator has hidden some articles. You can reveal these hidden articles by clicking the <b>View archive</b> link."
-msgstr "للحد من حجم كتلة الأخبار، لن تظهر بعضها. ويمكن مشاهدتها بالنقر على رابط <b>إظهار الإرشبف</b>"
+msgstr ".للحد من حجم كتلة الأخبار، لن تظهر بعضها. ويمكن مشاهدتها بالنقر على رابط <b>إظهار الإرشبف</b>"
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:349
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
@@ -15153,7 +15154,7 @@ msgstr ""
 #: admin.php:585 admin_site_upgrade.php:82 login.php:109
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "تحديث إلى نسخة رقم %s"
+msgstr "تحديث إلى نسخة رقم %s."
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
@@ -15199,7 +15200,7 @@ msgstr "إستخدام SMTP لإرسال الرسائل"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "إستخدام “?” لمطابقة حرف واحد، وإستخدام “*” لمطابقة أي حرف أو لا شيء"
+msgstr "إستخدام “?” لمطابقة حرف واحد، وإستخدام “*” لمطابقة أي حرف أو لا شيء."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:342 login.php:441
@@ -15394,7 +15395,7 @@ msgstr "فيراكروز، المكسيك"
 
 #: login.php:333 login.php:520
 msgid "Verification code"
-msgstr "رمز المصادقة:"
+msgstr "رمز المصادقة"
 
 #: admin_users.php:874
 msgid "Verified"
@@ -15670,7 +15671,7 @@ msgstr "أي مشجر يتم تضمينه في خرائط الموقع؟"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1036
 msgid "Who can upload new media files?"
-msgstr "صلاحية تحميل ملفات وسائط جديدة"
+msgstr "من لديه صلاحية تحميل ملفات وسائط جديدة؟"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
@@ -15719,7 +15720,7 @@ msgstr "عمر الزوجة"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
-msgstr "إسم عائلة الزوجة قبل الزواج يصبح هو إسمها الأول."
+msgstr "إسم عائلة الزوجة قبل الزواج يصبح هو إسمها الأول"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
@@ -15903,7 +15904,7 @@ msgstr "يجب إدخال جميع حقول إعدادات المدير."
 
 #: edit_interface.php:1522
 msgid "You must provide a repository name."
-msgstr "يجب إدخال إسم للمستودع"
+msgstr "يجب إدخال إسم للمستودع."
 
 #: edit_interface.php:1203
 msgid "You must provide a source title"
@@ -15999,7 +16000,7 @@ msgstr "الأم الأصغر عمراً عند الإنجاب"
 #: app/Module/ClippingsCartModule.php:332
 #: app/Module/ClippingsCartModule.php:612
 msgid "Your clippings cart is empty."
-msgstr "سلتك للمقتطفات فارغة"
+msgstr "سلتك للمقتطفات فارغة."
 
 #: message.php:116 message.php:269 setup.php:428
 msgid "Your name"
@@ -16064,7 +16065,7 @@ msgstr "تكبير هنا"
 
 #: app/Theme/AbstractTheme.php:711 app/Theme/AbstractTheme.php:763
 msgid "Zoom in/out on this box."
-msgstr "إظهار/إخفاء التفاصيل في هذه الخانة"
+msgstr "إظهار/إخفاء التفاصيل في هذه الخانة."
 
 #: app/Module/GoogleMapsModule.php:4006 app/Module/GoogleMapsModule.php:4097
 #: app/Module/GoogleMapsModule.php:4589
@@ -16085,7 +16086,7 @@ msgstr "تصغير هنا"
 
 #: app/Module/GoogleMapsModule.php:1717
 msgid "Zoom="
-msgstr "التكبير:"
+msgstr "تكبير"
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:89
@@ -18603,8 +18604,8 @@ msgstr "أعتبر %s (%s)"
 msgid "interval %s year"
 msgid_plural "interval %s years"
 msgstr[0] "فارق %s أعوام"
-msgstr[1] "فارق عاماً واحداً"
-msgstr[2] "فارق عامان"
+msgstr[1] "فارق عاماً واحداً %s"
+msgstr[2] "فارق عامان %s"
 msgstr[3] "فارق %s أعوام"
 msgstr[4] "فارق %s عاماً"
 msgstr[5] "فارق %s عام"
@@ -18743,9 +18744,9 @@ msgstr "الأقصى"
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] "لا يوجد"
-msgstr[1] "يوماً واحد بحد أقصى"
-msgstr[2] "يومان بحد أقصى"
+msgstr[0] "لا يوجد %s"
+msgstr[1] "يوماً واحد %s بحد أقصى"
+msgstr[2] "يومان %s بحد أقصى"
 msgstr[3] "%s أيام بحد أقصى"
 msgstr[4] "%s يوماً بحد أقصى"
 msgstr[5] "%s يوماً بحد أقصى"
@@ -18754,7 +18755,7 @@ msgstr[5] "%s يوماً بحد أقصى"
 #: admin_trees_config.php:435 admin_trees_config.php:475
 #: admin_trees_config.php:495
 msgid "members"
-msgstr ""
+msgstr "أعضاء"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:86
@@ -18855,7 +18856,7 @@ msgstr "ولد أخت"
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:668
 msgid "never"
-msgstr ""
+msgstr "لم"
 
 #. I18N: button label, next page
 #: app/I18N.php:223 app/Module/BatchUpdateModule.php:247
@@ -19678,12 +19679,12 @@ msgstr "حفيد عاشر لسلف مشترك"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:87
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr "لا تزال إعدادات الإتصال بقاعدة البيانات في ملف “/data/config.ini.php” سليمة."
+msgstr "لا تزال إعدادات الإتصال بقاعدة البيانات في ملف “/data/config.ini.php” سليمة"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:90
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr "المجلد “/data” وملف “/data/config.ini.php” لهما صلاحيات نفاذ تتيح للخادم قرائتهما."
+msgstr "المجلد “/data” وملف “/data/config.ini.php” لهما صلاحيات نفاذ تتيح للخادم قرائتهما"
 
 #: app/Functions/Functions.php:643
 #, php-format
@@ -19844,7 +19845,7 @@ msgstr "تحديث"
 #: admin_trees_config.php:434 admin_trees_config.php:474
 #: admin_trees_config.php:494
 msgid "visitors"
-msgstr ""
+msgstr "الزوار"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:107
@@ -19942,7 +19943,7 @@ msgstr "نعم"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:93
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr "يمكنك الإتصال بقاعدة البيانات بإستخدام تطبيقات أخرى."
+msgstr "يمكنك الإتصال بقاعدة البيانات بإستخدام تطبيقات أخرى"
 
 #: app/Functions/Functions.php:780
 msgid "younger brother"
@@ -19977,7 +19978,7 @@ msgstr "“%s”"
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "تمت إضافة “%s” إلى مفضلاتك"
+msgstr "تمت إضافة “%s” إلى مفضلاتك."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:107
 msgid "…"
@@ -19999,777 +20000,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
