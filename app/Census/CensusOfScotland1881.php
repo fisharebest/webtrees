@@ -25,7 +25,7 @@ class CensusOfScotland1881 extends CensusOfScotland implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '03 MAR 1881';
+		return '03 APR 1881';
 	}
 
 	/**

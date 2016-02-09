@@ -25,7 +25,7 @@ class CensusOfWales1891 extends CensusOfWales implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '05 MAR 1891';
+		return '05 APR 1891';
 	}
 
 	/**

@@ -29,7 +29,7 @@ class CensusOfWales1891Test extends \PHPUnit_Framework_TestCase {
 		$census = new CensusOfWales1891;
 
 		$this->assertSame('Wales', $census->censusPlace());
-		$this->assertSame('05 MAR 1891', $census->censusDate());
+		$this->assertSame('05 APR 1891', $census->censusDate());
 	}
 
 	/**
