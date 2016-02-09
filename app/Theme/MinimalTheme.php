@@ -104,7 +104,7 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
 			' height: "85%",' .
 			' transition: "none",' .
 			' slideshowStart: "' . I18N::translate('Play') . '",' .
-			' slideshowStop: "' . I18N::translate('Stop') . '"' .
+			' slideshowStop: "' . I18N::translate('Stop') . '",' .
 			' title: function() { return jQuery(this).data("title"); }' .
 			'});' .
 			'</script>';
