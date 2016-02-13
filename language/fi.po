@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-01-17 17:40+0000\n"
-"PO-Revision-Date: 2016-01-09 13:51+0200\n"
+"PO-Revision-Date: 2016-02-09 14:26+0200\n"
 "Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language-Team: Finnish <http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
@@ -708,11 +708,11 @@ msgstr "<center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun.</b></cent
 
 #: login.php:163
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
-msgstr "<center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Pääsy tänne on sallittu ainoastaan <u>sukulaisille</u>.<br><br>Jos sinulla on käyttäjätili voit kirjautua sivustolle. Jos sinulla ei vielä ole käyttäjätiliä, voit pyytää sellaista klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Tarkistettuaan tietosi sivun ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Saat sähköpostiviestin kun pyyntösi on hyväksytty."
+msgstr "<center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Pääsy tänne on sallittu ainoastaan <u>sukulaisille</u>.<br><br>Jos sinulla on käyttäjätili voit kirjautua sivustolle. Jos sinulla ei vielä ole käyttäjätiliä, voit pyytää sellaisen klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Tarkistettuaan tietosi sivun ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Saat sähköpostiviestin kun pyyntösi on hyväksytty."
 
 #: login.php:157
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
-msgstr "<center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Jokaisella käyttäjällä, jolla on käyttäjätili, on pääsy tänne.<br><br>Jos sinulla on käyttäjätili, voit kirjautua tältä sivulta. Jos sinulla ei ole käyttäjätiliä, voit pyytää sellaisen klikkaamalla alla olevaa linkkiä.<br><br>Todennettuaan pyyntösi ylläpitäjä aktivoi käyttäjätilisi. Saat sähköpostiviestin kun pyyntösi on hyväksytty."
+msgstr "<center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Jokaisella käyttäjällä, jolla on käyttäjätili, on pääsy tänne.<br><br>Jos sinulla on käyttäjätili, voit kirjautua tältä sivulta. Jos sinulla ei ole käyttäjätiliä, voit pyytää sellaisen klikkaamalla alla olevaa linkkiä.<br><br>Tarkistettuaan pyyntösi ylläpitäjä aktivoi käyttäjätilisi. Saat sähköpostiviestin kun pyyntösi on hyväksytty."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:993 admin_users.php:489 edituser.php:278
@@ -879,7 +879,7 @@ msgstr "Raportti henkilön tiedoista."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Raportti tiedoista, jotka ovat lähtöisin tietystä lähteestä."
+msgstr "Raportti faktoista, joita tietty lähde tukee."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
@@ -986,7 +986,7 @@ msgstr "Välilehti joka näyttää henkilön lähisukulaiset."
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
 msgid "A tab showing the facts and events of an individual."
-msgstr "Välilehti näyttää henkilöön liittyvät tiedot ja tapahtumat."
+msgstr "Välilehti näyttää henkilöön liittyvät faktat ja tapahtumat."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
@@ -1227,7 +1227,7 @@ msgstr "Lisää lapsi perheeseen"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr "Lisää tietoja"
+msgstr "Lisää fakta"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
@@ -1554,15 +1554,15 @@ msgstr "Adoptio"
 
 #: app/GedcomTag.php:913
 msgid "Adoption of a brother"
-msgstr "Veljen adoptointi"
+msgstr "Veljen adoptio"
 
 #: app/GedcomTag.php:872
 msgid "Adoption of a child"
-msgstr "Lapsen adoptointi"
+msgstr "Lapsen adoptio"
 
 #: app/GedcomTag.php:870
 msgid "Adoption of a daughter"
-msgstr "Tyttären adoptointi"
+msgstr "Tyttären adoptio"
 
 #: app/GedcomTag.php:881 app/GedcomTag.php:890 app/GedcomTag.php:899
 msgid "Adoption of a grandchild"
@@ -1570,7 +1570,7 @@ msgstr "Lapsenlapsen adoptio"
 
 #: app/GedcomTag.php:879
 msgid "Adoption of a granddaughter"
-msgstr "Lapsenlapsen adoptointi"
+msgstr "Lapsenlapsen adoptio"
 
 #: app/GedcomTag.php:888
 msgctxt "daughter’s daughter"
@@ -1584,7 +1584,7 @@ msgstr "Pojantyttären adoptio"
 
 #: app/GedcomTag.php:877
 msgid "Adoption of a grandson"
-msgstr "Lapsenlapsen adoptointi"
+msgstr "Lapsenlapsen adoptio"
 
 #: app/GedcomTag.php:886
 msgctxt "daughter’s son"
@@ -1598,7 +1598,7 @@ msgstr "Pojanpojan adoptio"
 
 #: app/GedcomTag.php:904
 msgid "Adoption of a half-brother"
-msgstr "Veli-puolen adoptointi"
+msgstr "Veli-puolen adoptio"
 
 #: app/GedcomTag.php:908
 msgid "Adoption of a half-sibling"
@@ -1606,7 +1606,7 @@ msgstr "Sisaruspuolen adoptio"
 
 #: app/GedcomTag.php:906
 msgid "Adoption of a half-sister"
-msgstr "Siskopuolen adoptointi"
+msgstr "Siskopuolen adoptio"
 
 #: app/GedcomTag.php:917
 msgid "Adoption of a sibling"
@@ -1614,11 +1614,11 @@ msgstr "Sisaruksen adoptio"
 
 #: app/GedcomTag.php:915
 msgid "Adoption of a sister"
-msgstr "Siskon adoptointi"
+msgstr "Siskon adoptio"
 
 #: app/GedcomTag.php:868
 msgid "Adoption of a son"
-msgstr "Pojan adoptointi"
+msgstr "Pojan adoptio"
 
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
@@ -1631,15 +1631,15 @@ msgstr "Lisäasetukset"
 
 #: admin_trees_config.php:2131
 msgid "Advanced fact settings"
-msgstr "Erityistietojen asetukset"
+msgstr "Erityisfaktojen asetukset"
 
 #: admin_trees_config.php:2136
 msgid "Advanced name facts"
-msgstr "Erityiset nimitiedot"
+msgstr "Erityiset nimifaktat"
 
 #: admin_trees_config.php:2165
 msgid "Advanced place name facts"
-msgstr "Erityiset paikannimitiedot"
+msgstr "Erityiset paikannimifaktat"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1644
@@ -1788,11 +1788,11 @@ msgstr "Kaikilla PhpGedView käyttäjillä pitää olla yksilölliset sähköpos
 
 #: admin_trees_config.php:568
 msgid "All facts and events"
-msgstr "Kaikki tiedot ja tapahtumat"
+msgstr "Kaikki faktat ja tapahtumat"
 
 #: admin_trees_config.php:1840
 msgid "All family facts"
-msgstr "Kaikki perhetiedot"
+msgstr "Kaikki perhefaktat"
 
 #: login.php:401
 msgid "All fields must be completed."
@@ -1800,11 +1800,11 @@ msgstr "Kaikki kentät on täytettävä."
 
 #: admin_site_upgrade.php:408
 msgid "All files have read and write permission."
-msgstr "Kaikkilla tiedostoilla on luku- ja kirjoitusoikeudet."
+msgstr "Kaikilla tiedostoilla on luku- ja kirjoitusoikeudet."
 
 #: admin_trees_config.php:1722
 msgid "All individual facts"
-msgstr "Kaikki henkilötiedot"
+msgstr "Kaikki henkilöfaktat"
 
 #: calendar.php:236 calendar.php:247 calendar.php:446
 msgid "All individuals"
@@ -1816,11 +1816,11 @@ msgstr "Kaikki tietueet"
 
 #: admin_trees_config.php:2047
 msgid "All repository facts"
-msgstr "Kaikki tietovarastotiedot"
+msgstr "Kaikki tietovarastofaktat"
 
 #: admin_trees_config.php:1958
 msgid "All source facts"
-msgstr "Kaikki lähdetiedot"
+msgstr "Kaikki lähdefaktat"
 
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
@@ -1894,7 +1894,7 @@ msgstr "Vaihtoehtoinen tapa valita uusi teema."
 
 #: app/Functions/FunctionsEdit.php:915
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr "Läheinen on toinen henkilö, joka osallistui tähän tietoon tai tapahtumaan, kuten esimerkiksi todistaja tai pappi."
+msgstr "Läheinen on toinen henkilö, joka osallistui tähän faktaan tai tapahtumaan; esimerkiksi todistaja tai pappi."
 
 #: app/Functions/FunctionsEdit.php:913
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
@@ -2072,12 +2072,11 @@ msgstr "akvamariini"
 #: app/Functions/FunctionsPrintFacts.php:1017
 #: app/Functions/FunctionsPrintFacts.php:1165
 msgid "Are you sure you want to delete this fact?"
-msgstr "Haluatko varmasti poistaa tämän GEDCOM-tiedon?"
+msgstr "Haluatko varmasti poistaa tämän GEDCOM-faktan?"
 
 #: app/Module/UserMessagesModule.php:96 app/Module/UserMessagesModule.php:139
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
 msgstr "Haluatko varmasti poistaa tämän viestin? Sitä ei voi palauttaa myöhemmin."
-
 
 #: admin_media.php:318 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_manage.php:414 admin_trees_manage.php:425 admin_users.php:211
@@ -4221,7 +4220,7 @@ msgstr "Erikoistapahtuma"
 
 #: app/Functions/FunctionsPrint.php:629
 msgid "Custom fact"
-msgstr "Erikoistieto"
+msgstr "Erikoisfakta"
 
 #: admin_site_upgrade.php:188 admin_site_upgrade.php:191
 msgid "Custom module"
@@ -5770,7 +5769,7 @@ msgstr "UKK (Usein kysytyt kysymykset) ovat lista kysymyksiä vastauksineen, jos
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:436
 msgid "Fact"
-msgstr "Tieto"
+msgstr "Fakta"
 
 #: app/GedcomTag.php:1469
 msgid "Fact 1"
@@ -5827,11 +5826,11 @@ msgstr "Fakta 9"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1554
 msgid "Fact icons"
-msgstr "Tietokuvakkeet"
+msgstr "Faktakuvakkeet"
 
 #: admin_trees_config.php:534 app/Functions/FunctionsPrint.php:619
 msgid "Fact or event"
-msgstr "Tieto tai tapahtuma"
+msgstr "Fakta tai tapahtuma"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:36
@@ -5839,31 +5838,31 @@ msgstr "Tieto tai tapahtuma"
 #: modules_v3/individual_ext_report/report.xml:153
 #: modules_v3/individual_report/report.xml:149
 msgid "Facts and events"
-msgstr "Tiedot ja tapahtumat"
+msgstr "Faktat ja tapahtumat"
 
 #: admin_trees_config.php:1835
 msgid "Facts for family records"
-msgstr "Perhetietueen tiedot"
+msgstr "Perhetietueen faktat"
 
 #: admin_trees_config.php:1717
 msgid "Facts for individual records"
-msgstr "Henkilötietueen tiedot"
+msgstr "Henkilötietueen faktat"
 
 #: admin_trees_config.php:1898
 msgid "Facts for new families"
-msgstr "Uuden perheen tiedot"
+msgstr "Uuden perheen faktat"
 
 #: admin_trees_config.php:1780
 msgid "Facts for new individuals"
-msgstr "Uuden henkilön tiedot"
+msgstr "Uuden henkilön faktat"
 
 #: admin_trees_config.php:2042
 msgid "Facts for repository records"
-msgstr "Tietovaraston tiedot"
+msgstr "Tietovaraston faktat"
 
 #: admin_trees_config.php:1953
 msgid "Facts for source records"
-msgstr "Tietolähteen tiedot"
+msgstr "Tietolähteen faktat"
 
 #: app/Stats.php:6804
 msgid "Faeroe Islands"
@@ -6223,7 +6222,7 @@ msgstr "Suodatus"
 
 #: app/Functions/FunctionsPrint.php:799 find.php:76
 msgid "Find a fact or event"
-msgstr "Etsi tieto tai tapahtuma"
+msgstr "Etsi fakta tai tapahtuma"
 
 #: app/Functions/FunctionsPrint.php:714 find.php:54
 msgid "Find a family"
@@ -7050,7 +7049,7 @@ msgstr "Hänen ammattinsa oli"
 
 #: app/Module/IndividualFactsTabModule.php:135
 msgid "Historical facts"
-msgstr "Historialliset tiedot"
+msgstr "Historialliset faktat"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1705
@@ -9703,7 +9702,7 @@ msgstr[1] "Ei elävien henkilöiden tapahtumia tulevien %s päivän aikana."
 
 #: app/Controller/FamilyController.php:162
 msgid "No facts for this family."
-msgstr "Ei tietoja tästä perheestä."
+msgstr "Ei faktoja tästä perheestä."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:80
@@ -9728,7 +9727,7 @@ msgstr "Ei kartta tietoa tällä henkilöllä"
 
 #: admin_site_merge.php:237 admin_site_merge.php:284 admin_site_merge.php:330
 msgid "No matching facts found"
-msgstr "Yhtäpitäviä tietoja ei löytynyt"
+msgstr "Yhtäpitäviä faktoja ei löytynyt"
 
 #: addmedia.php:168 addmedia.php:302 admin_media_upload.php:126
 msgid "No media file was provided."
@@ -10184,7 +10183,7 @@ msgstr "Muu"
 
 #: admin_trees_config.php:1419
 msgid "Other facts to show in charts"
-msgstr "Muut tiedot kaavioissa"
+msgstr "Muut faktat kaavioissa"
 
 #: addmedia.php:524 admin_media_upload.php:242
 msgid "Other folder… please type in"
@@ -10884,7 +10883,7 @@ msgstr "Yksityisyys"
 
 #: admin_trees_config.php:505 admin_trees_config.php:526
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Yksityisyysrajoitukset - nämä sovelletaan GEDCOM tietueisiin ja tietoihin, joilla ei ole RESN tietotunnistetta"
+msgstr "Yksityisyysrajoitukset - nämä sovelletaan GEDCOM tietueisiin ja faktoihin, joilla ei ole RESN tietotunnistetta"
 
 #: app/Controller/GedcomRecordController.php:94 app/GedcomRecord.php:532
 #: app/GedcomRecord.php:610 app/GedcomRecord.php:735 app/Individual.php:1309
@@ -10937,19 +10936,19 @@ msgstr "Kysymys"
 
 #: admin_trees_config.php:1927
 msgid "Quick family facts"
-msgstr "Perhetietojen pikalista"
+msgstr "Perhefaktojen pikalista"
 
 #: admin_trees_config.php:1809
 msgid "Quick individual facts"
-msgstr "Henkilötietojen pikalista"
+msgstr "Henkilöfaktojen pikalista"
 
 #: admin_trees_config.php:2105
 msgid "Quick repository facts"
-msgstr "Tietovarastotietojen pikalista"
+msgstr "Tietovarastofaktojen pikalista"
 
 #: admin_trees_config.php:2016
 msgid "Quick source facts"
-msgstr "Lähdetietoaiheiden pikalista"
+msgstr "Lähdefaktojen pikalista"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:201
@@ -11401,7 +11400,7 @@ msgstr "Tutkimustehtävät"
 
 #: app/Module/ResearchTaskModule.php:187
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr "Tutkimus tehtävät ovat erityisiä tapahtumia, jotka lisätään sukupuusi henkilöille ja jotka tunnistavat tarpeen lisätutkimuksiin. Voit käyttää niitä muistutuksena tarkistaa tietoja luotettavammista lähteistä, saada asiakirjoja tai valokuvia, ratkaista ristiriitaisia tietoja jne."
+msgstr "Tutkimus tehtävät ovat erityisiä tapahtumia, jotka lisätään sukupuusi henkilöille ja jotka tunnistavat tarpeen lisätutkimuksiin. Voit käyttää niitä muistutuksena tarkistaa faktat luotettavammista lähteistä, saada asiakirjoja tai valokuvia, ratkaista ristiriitaisia tietoja jne."
 
 #: app/Module/ResearchTaskModule.php:189
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
@@ -11432,7 +11431,7 @@ msgstr "Käyttörajoitus"
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr "Tiedoille ja tapahtumille voi antaa rajoituksia, joilla rajoitetaan kuka saa nähdä tai muuttaa niitä."
+msgstr "Faktoille ja tapahtumille voi antaa rajoituksia, joilla rajoitetaan kuka saa nähdä tai muuttaa niitä."
 
 #: app/Stats.php:90
 msgid "Resulting value"
@@ -11778,7 +11777,7 @@ msgstr "Valitse haluamasi laskentajaksotus"
 
 #: admin_site_merge.php:196
 msgid "Select the facts and events to keep from both records."
-msgstr "Valitse tiedot ja tapahtumat jotka säilytetään molemmista tietueista."
+msgstr "Valitse faktat ja tapahtumat jotka säilytetään molemmista tietueista."
 
 #: admin_site_config.php:627
 msgid "Select the languages that will be shown in menus."
@@ -12716,7 +12715,7 @@ msgstr "Jotkut paikannimet voidaan kirjoittaa valinnaisten etuliitteiden ja pä�
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1560
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Jotkut teemat voivat näyttää kuvakkeita ”Tiedot ja tapahtumat”-välilehdellä."
+msgstr "Jotkut teemat voivat näyttää kuvakkeita ”Faktat ja tapahtumat”-välilehdellä."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:520
@@ -13433,13 +13432,13 @@ msgstr "Kansion voi määrittää kokonaisuudessaan (esim. /home/user_name/webtr
 
 #: admin_site_merge.php:201
 msgid "The following facts and events were found in both records."
-msgstr "Seuraavat tiedot ja tapahtumat löytyivät molemmissa tietueissa."
+msgstr "Seuraavat faktat ja tapahtumat löytyivät molemmissa tietueissa."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:248 admin_site_merge.php:294
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr "Seuraavat tiedot ja tapahtumat löytyivät ainoastaan tietueessa %s."
+msgstr "Seuraavat faktat ja tapahtumat löytyivät ainoastaan tietueessa %s."
 
 #: setup.php:173
 msgid "The following list shows typical requirements."
@@ -13745,7 +13744,7 @@ msgstr "Teemat voi valita kolmella tasolla: käyttäjä-, sukupuu- tai sivustota
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:126
 msgid "There are no facts for this individual."
-msgstr "Tällä henkilöllä ei ole tietoja."
+msgstr "Tällä henkilöllä ei ole faktoja."
 
 #: app/Module/MediaTabModule.php:76
 msgid "There are no media objects for this individual."
@@ -13966,22 +13965,22 @@ msgstr "Tässä kentässä voit muuttaa kalenterivuoden.<br><br><b>Erityisominai
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2157
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Pilkuilla \",\" eroteltu luettelo GEDCOM tietoaihetunnisteista, joita esitettään nimen lisäämis-/muokkausikkunassa. Jos käytät muita kuin länsimaalaisia aakkosia kuten heprealaisia, kreikkalaisia, kyrillisiä tai arabialaisia aakkosia, voit lisätä tunnistemerkintöjä (tag) kuten _HEB, ROMN, FONE jne., jotta voit tallentaa nimiä useissa eri aakkosissa."
+msgstr "Pilkuilla \",\" eroteltu luettelo GEDCOM faktatunnisteista, joita esitettään nimen lisäämis-/muokkausikkunassa. Jos käytät muita kuin länsimaalaisia aakkosia kuten heprealaisia, kreikkalaisia, kyrillisiä tai arabialaisia aakkosia, voit lisätä tunnistemerkintöjä (tag) kuten _HEB, ROMN, FONE jne., jotta voit tallentaa nimiä useissa eri aakkosissa."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1919
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Tämä on pilkkumerkein (,) eroteltu luettelo GEDCOM tietotunnisteista, joita näytetään lisättäessä uuden perheen tiedot. Esimerkiksi, jos MARR (avioliitto) on luettelossa, esitetään avioliittoaika ja -paikka lomakkeessa."
+msgstr "Tämä on pilkkumerkein (,) eroteltu luettelo GEDCOM faktatunnisteista, joita näytetään lisättäessä uuden perheen tiedot. Esimerkiksi, jos MARR (avioliitto) on luettelossa, esitetään avioliittoaika ja -paikka lomakkeessa."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1801
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Tämä on pilkkumerkein \",\" eroteltu lista GEDCOM tietotunnisteita (tag) joita esitetään kun uusi henkilö lisätään. Esimerkiksi, jos BIRT (syntymä) on listassa, esitetään syntymäaika ja -paikka lomakkeessa."
+msgstr "Tämä on pilkkumerkein \",\" eroteltu lista GEDCOM faktatunnisteita (tag) joita esitetään kun uusi henkilö lisätään. Esimerkiksi, jos BIRT (syntymä) on listassa, esitetään syntymäaika ja -paikka lomakkeessa."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2186
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Pilkulla \",\" eroteltu luettelo GEDCOM tietoaihetunnisteista, joita haluat myös esitettäväksi paikkojen lisäämis- tai muokkausikkunassa. Jos käytät muita kuin länsimaalaisia aakkosia kuten heprealaisia, kreikkalaisia, kyrillisiä tai arabialaisia aakkosia, voit lisätä tunnistemerkinnöt (tag) kuten _HEB, ROMN, FONE jne., jotta voit tallentaa paikkojen nimiä useissa eri aakkosissa."
+msgstr "Pilkulla \",\" eroteltu luettelo GEDCOM faktatunnisteista, joita haluat myös esitettäväksi paikkojen lisäämis- tai muokkausikkunassa. Jos käytät muita kuin länsimaalaisia aakkosia kuten heprealaisia, kreikkalaisia, kyrillisiä tai arabialaisia aakkosia, voit lisätä tunnistemerkinnöt (tag) kuten _HEB, ROMN, FONE jne., jotta voit tallentaa paikkojen nimiä useissa eri aakkosissa."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -14012,42 +14011,42 @@ msgstr "Tämä on uusin webtrees versio. Päivitystä ei ole saatavana."
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1861
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "Luettelo GEDCOM tietoaihetunnisteista, joita käyttäjäsi voivat käyttää perhetietojen kirjaamiseen. Luetteloon voi lisätä tai siitä voi poistaa tietoaiheita, jopa erikoistietoja. Tietoaiheet tässä luettelossa eivät saa toistua ”Yksilölliset perhetiedot” luettelossa."
+msgstr "Luettelo GEDCOM faktoista, joita käyttäjäsi voivat lisätä perhetietoihin. Luetteloon voi lisätä tai siitä voi poistaa faktaaiheita, jopa erikoisfaktoja. Faktaaiheet tässä luettelossa eivät saa toistua ”Yksilölliset perhefaktat” luettelossa."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1743
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Tämä on luettelo GEDCOM tietoaihetunnisteista, joita käyttäjäsi voi lisätä henkilötiedoiksi. Luetteloon voi lisätä tai siitä voi poistaa tietoaihetunnisteita, jopa erikoistietoja. Tietoaihetunnisteet tässä luettelossa eivät saa toistua ”Yksilölliset henkilötiedot” luettelossa."
+msgstr "Tämä on luettelo GEDCOM faktoista, joita käyttäjäsi voi lisätä henkilötiedoiksi. Luetteloon voi lisätä tai siitä voi poistaa faktaaiheita, jopa erikoisfaktoja. Faktaaiheet tässä luettelossa eivät saa toistua ”Yksilölliset henkilöfaktat” luettelossa."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:2068
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "Tämä on pilkkumerkein (,) erotettu luettelo GEDCOM tietotunnisteita, joita käyttäjäsi voivat lisätä tietovarastoon. Voit muokata luetteloa tarvittaessa lisäämällä tai poistamalla tiedon nimen, jopa erikoistietoja. Tietotunnisteet tässä listassa eivät saa toistua ”Yksilölliset tietovaraston tietotunnisteet” luettelossa."
+msgstr "Tämä on luettelo GEDCOM faktoista, joita käyttäjäsi voivat lisätä tietovarastoon. Voit muokata luetteloa lisäämällä tai poistamalla faktaaiheita, jopa erikoisfaktoja. Faktaaiheet tässä listassa eivät saa toistua ”Yksilölliset tietovaraston faktat” luettelossa."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1979
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "Tämä on luettelo GEDCOM tietoaiheista, joita käyttäjät voivat lisätä lähdetiedoiksi. Voit muokata luetteloa tarvittaessa lisäämällä tai poistamalla tietojen nimet, jopa erikoistiedot. Luettelon tietoaiheet eivät saa toistua ”Yksilöllisissä tiedoissa”."
+msgstr "Tämä on luettelo GEDCOM faktoista, joita käyttäjät voivat lisätä lähdetiedoiksi. Voit muokata luetteloa tarvittaessa lisäämällä tai poistamalla faktaaiheita, jopa erikoisfaktoja. Luettelon faktaaiheet eivät saa toistua ”Yksilölliset lähdefaktat” luettelossa."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1890
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "Luettelo GEDCOM tietoaihetunnisteista, joita käyttäjä voi lisätä perhetiedoiksi ainoastaan kerran. Esimerkiksi, jos MARR on tässä luettelossa, niin käyttäjät voivat lisätä ainoastaan yhden MARR (avioliitto) tiedon perheelle. Tietoaihetunnisteet tässä luettelossa eivät saa toistua ”Kaikki perhetiedot” listassa."
+msgstr "Luettelo GEDCOM faktoista, joita käyttäjä voi lisätä perhetiedoiksi ainoastaan kerran. Esimerkiksi, jos MARR on tässä luettelossa, niin käyttäjät voivat lisätä ainoastaan yhden MARR (avioliitto) tiedon perheelle. Faktaaihetunnisteet tässä luettelossa eivät saa toistua ”Kaikki perhefaktat” listassa."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1772
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "Luettelo GEDCOM tietoaiheista, joita käyttäjä voi lisätä ainoastaan kerran. Esimerkiksi, jos BIRT (syntymä) on tässä luettelossa, niin käyttäjät voivat lisätä ainoastaan yhden BIRT tiedon henkilölle. Tietoaihetunnisteet tässä luettelossa eivät saa toistua ”Kaikki henkilötiedot”-luettelossa."
+msgstr "Luettelo GEDCOM faktoista, joita käyttäjä voi lisätä ainoastaan kerran. Esimerkiksi, jos BIRT (syntymä) on tässä luettelossa, niin käyttäjät voivat lisätä ainoastaan yhden BIRT tiedon henkilölle. Faktatunnisteet tässä luettelossa eivät saa toistua ”Kaikki henkilöfaktat”-luettelossa."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:2097
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Tämä on luettelo GEDCOM tietoaihetunnisteita, joita käyttäjäsi voi käyttää vain kerran tietovarastossa. Esimerkiksi, jos NAME (nimi) on tässä luettelossa, niin vain yksi NAME tietue voidaan lisätä tietovarastoon. Tietotunnisteet tässä luettelossa eivät saa toistua ”Kaikki tietovarastotiedot” luettelossa."
+msgstr "Tämä on luettelo GEDCOM faktoista, joita käyttäjäsi voi käyttää vain kerran tietovarastossa. Esimerkiksi, jos NAME (nimi) on tässä luettelossa, niin vain yksi NAME tietue voidaan lisätä tietovarastoon. Faktatunnisteet tässä luettelossa eivät saa toistua ”Kaikki tietovarastofaktat” luettelossa."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:2008
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "Tämä on luettelo GEDCOM tietoja, joita käyttäjäsi voi lisätä vain <u>kerran</u> lähdetiedoksi. Esimerkiksi, jos TITL (otsikko) on luettelossa, niin se voi esiintyä vain kerran TITL tietueena lähdetiedoissa. Tieto tässä luettelossa ei saa toistua ”Kaikki lähdetiedot” luettelossa."
+msgstr "Tämä on luettelo GEDCOM faktoista, joita käyttäjäsi voi lisätä vain <u>kerran</u> lähdetiedoksi. Esimerkiksi, jos TITL (otsikko) on luettelossa, niin se voi esiintyä vain kerran TITL tietueena lähdetiedoissa. Faktatunnukset tässä luettelossa eivät saa toistua ”Kaikki lähdefaktat” luettelossa."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:349
@@ -14062,22 +14061,22 @@ msgstr "Sukunimen täytyy esiintyä henkilöillä näin monta kertaa (esiintymis
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1948
 msgid "This is the short list of GEDCOM family facts that appears next to the full list and can be added with a single click."
-msgstr "Tämä perhetietojen pikalista näkyy täyden listan vieressä ja siitä voi lisätä tiedon yhdellä klikkauksella."
+msgstr "Tämä perhefaktojen pikalista näkyy täyden listan vieressä ja siitä voi lisätä tiedon yhdellä klikkauksella."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1830
 msgid "This is the short list of GEDCOM individual facts that appears next to the full list and can be added with a single click."
-msgstr "Tämä on lyhennetty luettelo GEDCOM henkilön tietoja, joka näytetään täyslistan ohessa. Siitä voi lisätä tiedon yhdellä klikkauksella."
+msgstr "Tämä on lyhennetty luettelo GEDCOM henkilöfaktoista, joka näytetään täyslistan ohessa. Siitä voi lisätä faktan yhdellä klikkauksella."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2126
 msgid "This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click."
-msgstr "Tämä on tiivistetty luettelo GEDCOM tietovaraston tietotunnisteista, joka näytetään koko luettelon ohessa. Klikattaessa voidaan pikavalintatapaisesti lisätä."
+msgstr "Tämä on tiivistetty luettelo GEDCOM tietovaraston faktoista, joka näytetään koko luettelon ohessa. Klikattaessa voidaan pikavalintatapaisesti lisätä."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:2037
 msgid "This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click."
-msgstr "Tämä on lyhennetty luettelo GEDCOM lähdetiedoista, joka näkyy täysluettelon ohessa ja voidaan lisätä mukaan klikkauksella."
+msgstr "Tämä on lyhennetty luettelo GEDCOM lähdefaktoista, joka näkyy täysluettelon ohessa ja voidaan lisätä mukaan klikkauksella."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1082
@@ -14185,7 +14184,7 @@ msgstr "Tämä huomautus on muokattu. Tarkista muutokset ja %1$s tai %2$s ne."
 #. I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting
 #: admin_trees_config.php:1605
 msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-msgstr "Tällä ohjataan milloin tietojen Lisätieto- ja Lähdetietoreferenssit näytetään henkilösivun Lisätieto- ja Lähdetietovälilehdellä.<br><br>Tavallisesti Lisätieto- ja Lähdetietovälilehdellä näytetään vain taso 1 referenssit henkilötietueesta.<br><br><b>Kyllä</b>, näytetään myös erilaisten tietojen taso 2 referenssit henkilön tietokannan tietueesta."
+msgstr "Tällä ohjataan milloin faktojen Lisätieto- ja Lähdetietoreferenssit näytetään henkilösivun Lisätieto- ja Lähdetietovälilehdellä.<br><br>Tavallisesti Lisätieto- ja Lähdetietovälilehdellä näytetään vain taso 1 referenssit henkilötietueesta.<br><br><b>Kyllä</b>, näytetään myös erilaisten faktojen taso 2 referenssit henkilön tietokannan tietueesta."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1575
@@ -14336,7 +14335,7 @@ msgstr "Palvelimen muistirajoitus on %sMB ja CPU suoritusaikarajoitus on %s seku
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1440
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Tietoluettelo tiedoista, jotka halutaan näkyviin kaaviolaatikoissa Syntymän ja Kuoleman lisäksi. Halutut tiedot erotetaan pilkulla tai välilyönnillä. Luettelossa saa olla GEDCOM 5.5.1 standardin mukaiset tietotunnisteet esim. ammattia varten ”OCCU”."
+msgstr "Faktaluettelo faktoista, jotka halutaan näkyviin kaaviolaatikoissa syntymän ja kuoleman lisäksi. Halutut faktat erotetaan pilkulla tai välilyönnillä. Luettelossa saa olla GEDCOM 5.5.1 standardin mukaiset faktatunnisteet esim. ammattia varten ”OCCU”."
 
 #: source.php:78
 msgid "This source does not exist or you do not have permission to view it."
@@ -14531,7 +14530,7 @@ msgstr "Viimeistele päivitys asentamalla tiedostot käsin."
 
 #: app/Module/ResearchTaskModule.php:188
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Voidaksesi luoda uusia tutkimustehtäviä, sinun täytyy ensin lisätä ”Tutkimustehtävä” tietojen luetteloon sukupuun asennuksissa."
+msgstr "Voidaksesi luoda uusia tutkimustehtäviä, sinun täytyy ensin lisätä ”Tutkimustehtävä” faktojen luetteloon sukupuun asennuksissa."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1666
@@ -14900,19 +14899,19 @@ msgstr "Peruuta kaikki muutokset"
 
 #: admin_trees_config.php:1869
 msgid "Unique family facts"
-msgstr "Yksilölliset perheen tietoaiheet"
+msgstr "Yksilölliset perhefaktat"
 
 #: admin_trees_config.php:1751
 msgid "Unique individual facts"
-msgstr "Yksilölliset henkilötiedot"
+msgstr "Yksilölliset henkilöfaktat"
 
 #: admin_trees_config.php:2076
 msgid "Unique repository facts"
-msgstr "Yksilölliset tietovaraston tietoaiheet"
+msgstr "Yksilölliset tietovaraston faktat"
 
 #: admin_trees_config.php:1987
 msgid "Unique source facts"
-msgstr "Yksilölliset lähdetiedot"
+msgstr "Yksilölliset lähdefaktat"
 
 #: app/Stats.php:6729
 msgid "United Arab Emirates"
@@ -15471,7 +15470,7 @@ msgstr "Yhteyttä luotaessa, tunnus-kenttä ei voi olla tyhjä."
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2227
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "Kun lisäät uusia lähisukulaisia, voit lisätä lähteitä tietueisiin (henkilö ja perhe) tai tietoihin ja tapahtumiin (syntymä , avioliitto ja kuolema). Tämä vaihtoehto valvoo, valitaanko tietueet vai tiedot oletusarvoisesti."
+msgstr "Kun lisäät uusia lähisukulaisia, voit lisätä lähteitä tietueisiin (henkilö ja perhe) tai faktoihin ja tapahtumiin (syntymä, avioliitto ja kuolema). Tämä vaihtoehto valvoo, valitaanko tietueet tai faktat oletusarvoisesti."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:859
@@ -16494,7 +16493,7 @@ msgstr "entinen vaimo"
 
 #: admin_trees_config.php:69 modules_v3/fact_sources/report.xml:6
 msgid "facts"
-msgstr "tiedot"
+msgstr "faktat"
 
 #: app/Functions/Functions.php:708
 msgid "father"
@@ -19824,821 +19823,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
