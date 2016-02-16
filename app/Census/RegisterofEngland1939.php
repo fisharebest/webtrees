@@ -18,32 +18,31 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfEngland extends Census implements CensusPlaceInterface {
+class RegisterofEngland1939 extends CensusOfEngland implements CensusInterface {
 	/**
-	 * All available censuses for this census place.
-	 *
-	 * @return CensusInterface[]
-	 */
-	public function allCensusDates() {
-		return array(
-			new CensusOfEngland1841(),
-			new CensusOfEngland1851(),
-			new CensusOfEngland1861(),
-			new CensusOfEngland1871(),
-			new CensusOfEngland1881(),
-			new CensusOfEngland1891(),
-			new CensusOfEngland1901(),
-			new CensusOfEngland1911(),
-			new RegisterofEngland1939
-		);
-	}
-
-	/**
-	 * Where did this census occur, in GEDCOM format.
+	 * When did this census occur.
 	 *
 	 * @return string
 	 */
-	public function censusPlace() {
-		return 'England';
+	public function censusDate() {
+		return '29 SEP 1939';
+	}
+
+	/**
+	 * The columns of the census.
+	 *
+	 * @return CensusColumnInterface[]
+	 */
+	public function columns() {
+		return array(
+			new CensusColumnGivenNames($this, 'First Name(s)', 'First Name(s)'),
+			new CensusColumnSurname($this, 'Last Names(s)', 'Last Names(s)'),
+			new CensusColumnBirthDateFull($this, 'DoB', 'Date of birth'),
+			new CensusColumnSexMFFull($this, 'Sex', 'Sex'),
+			new CensusColumnOccupation($this, 'Occupation', 'Occupation'),
+			new CensusColumnConditionEnglishFull($this, 'Marital Status', 'Marital Status'),
+			new CensusColumnNull($this, 'Schedule', 'Schedule'),
+			new CensusColumnNull($this, 'Sched SubNum', 'Schedule Sub Number')
+		);
 	}
 }

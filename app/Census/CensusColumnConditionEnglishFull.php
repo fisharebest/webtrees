@@ -15,35 +15,29 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-/**
- * Definitions for a census
- */
-class CensusOfEngland extends Census implements CensusPlaceInterface {
-	/**
-	 * All available censuses for this census place.
-	 *
-	 * @return CensusInterface[]
-	 */
-	public function allCensusDates() {
-		return array(
-			new CensusOfEngland1841(),
-			new CensusOfEngland1851(),
-			new CensusOfEngland1861(),
-			new CensusOfEngland1871(),
-			new CensusOfEngland1881(),
-			new CensusOfEngland1891(),
-			new CensusOfEngland1901(),
-			new CensusOfEngland1911(),
-			new RegisterofEngland1939
-		);
-	}
+use Fisharebest\Webtrees\Individual;
 
+/**
+ * Marital status.
+ */
+class CensusColumnConditionEnglishFull extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
-	 * Where did this census occur, in GEDCOM format.
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function censusPlace() {
-		return 'England';
+	public function generate(Individual $individual, Individual $head = null) {
+		$family = $this->spouseFamily($individual);
+
+		if ($family === null || count($family->getFacts('_NMR')) > 0) {
+			return 'Single'; // unmarried
+		} elseif (count($family->getFacts('DIV')) > 0) {
+			return 'Divorced'; // divorced
+		} else {
+			return 'Married'; // married
+		}
 	}
 }
