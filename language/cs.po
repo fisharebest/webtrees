@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-16 11:24+0100\n"
-"Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
-"Language-Team: Czech <http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
+"PO-Revision-Date: 2016-02-17 11:55+0100\n"
+"Last-Translator: Josef Pavlik <josef@pavlik.it>\n"
+"Language-Team: Czech "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -96,7 +97,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:317
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "Bylo staženo %1$sKB za %2$s vteřin."
+msgstr "Bylo staženo %1$sKB za %2$s sekund."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
@@ -121,9 +122,9 @@ msgstr "%1$s nemá odkaz zpět na %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "Soubor byl rozbalen za %2$s vteřin."
-msgstr[1] "%1$s soubory byly rozbaleny za %2$s vteřin."
-msgstr[2] "%1$s souborů bylo rozbaleno za %2$s vteřin."
+msgstr[0] "Soubor byl rozbalen za %2$s sekund."
+msgstr[1] "%1$s soubory byly rozbaleny za %2$s sekund."
+msgstr[2] "%1$s souborů bylo rozbaleno za %2$s sekund."
 
 #: app/Module/GoogleMapsModule.php:897
 #, php-format
@@ -3222,9 +3223,9 @@ msgstr "Výchozí je, že v seznamu se zobrazí jen ta místa, která se nacház
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
-msgstr[0] "Standardně váš server povoluje skriptům běžet %s vteřinu."
-msgstr[1] "Standardně váš server povoluje skriptům běžet %s vteřiny."
-msgstr[2] "Standardně váš server povoluje skriptům běžet %s vteřin."
+msgstr[0] "Standardně váš server povoluje skriptům běžet %s sekundu."
+msgstr[1] "Standardně váš server povoluje skriptům běžet %s sekundy."
+msgstr[2] "Standardně váš server povoluje skriptům běžet %s sekund."
 
 #. I18N: %s is an amount of memory, such as 32MB
 #: admin_site_config.php:201
@@ -7980,7 +7981,7 @@ msgstr "Laos"
 
 #: setup.php:179
 msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
-msgstr "Velké systémy (50 000 osob): 64–128 MB, 40–80 vteřin"
+msgstr "Velké systémy (50 000 osob): 64–128 MB, 40–80 sekund"
 
 #: app/Stats.php:4862 statistics.php:316
 msgid "Largest families"
@@ -8912,7 +8913,7 @@ msgstr "Mediterranio"
 
 #: setup.php:177
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
-msgstr "Středně velké systémy (5000 osob): 32–64 MB, 20–40 vteřin"
+msgstr "Středně velké systémy (5000 osob): 32–64 MB, 20–40 sekund"
 
 #: app/Date/JalaliDate.php:189
 msgctxt "Abbreviation for Persian month: Mehr"
@@ -10419,7 +10420,7 @@ msgstr "Heslo musí obsahovat alespoň 6 znaků."
 #: app/Theme/AbstractTheme.php:1208 modules_v3/pedigree_report/report.xml:3
 #: modules_v3/pedigree_report/report.xml:43
 msgid "Pedigree"
-msgstr "Rodokmen"
+msgstr "Vývod"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree Chart"
@@ -10439,7 +10440,7 @@ msgstr "Mapa rodokmenu: %s"
 #: app/Module/ChartsBlockModule.php:86
 #, php-format
 msgid "Pedigree of %s"
-msgstr "Rodokmen: %s"
+msgstr "Vývod: %s"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/PedigreeController.php:85
@@ -12728,7 +12729,7 @@ msgstr "Slovinsko"
 
 #: setup.php:175
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
-msgstr "Malé systémy (500 osob): 16–32 MB, 10–20 vteřin"
+msgstr "Malé systémy (500 osob): 16–32 MB, 10–20 sekund"
 
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Snowflake, Arizona"
@@ -14378,7 +14379,9 @@ msgstr "Tento server nepodporuje bezpečné stahování použitím HTTPS protoko
 #: setup.php:182
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
-msgstr "Limit paměti pro tento server je %s MB a limit pro procesorový čas je %s vteřin."
+msgstr ""
+"Limit paměti pro tento server je %s MB a limit pro procesorový čas je %s "
+"sekund."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1439
