@@ -164,8 +164,13 @@ require WT_ROOT . 'vendor/autoload.php';
 // PHP requires a time zone to be set. We'll set a better one later on.
 date_default_timezone_set('UTC');
 
+$https = Filter::server('HTTPS', null, 'off');
+if (empty($https)) {
+	$https = 'off';
+}
+
 // Calculate the base URL, so we can generate absolute URLs.
-$protocol = Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', Filter::server('HTTPS', null, 'off') === 'off' ? 'http' : 'https');
+$protocol = Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', $https === 'off' ? 'http' : 'https');
 
 // For CLI scripts, use localhost.
 $host = Filter::server('SERVER_NAME', null, 'localhost');
