@@ -169,13 +169,11 @@ $https    = strtolower(Filter::server('HTTPS'));
 $protocol = ($https === '' || $https === 'off') ? 'http' : 'https';
 $protocol = Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', $protocol);
 
-// For CLI scripts, use localhost.
-$host = Filter::server('SERVER_NAME', null, 'localhost');
-if (empty($host)) {
-	$host = Filter::server('SERVER_ADDR', null, '127.0.0.1');
-}
+$host = Filter::server('SERVER_ADDR', null, '127.0.0.1');
+$host = Filter::server('SERVER_NAME', null, $host);
 
-$port = Filter::server('HTTP_X_FORWARDED_PORT', '80|443', Filter::server('SERVER_PORT', null, '80'));
+$port = Filter::server('SERVER_PORT', null, '80');
+$port = Filter::server('HTTP_X_FORWARDED_PORT', '80|443', $port);
 
 // Ignore the default port.
 if ($protocol === 'http' && $port === '80' || $protocol === 'https' && $port === '443') {
