@@ -41,7 +41,7 @@ class CensusOfEnglandTest extends \PHPUnit_Framework_TestCase {
 
 		$census_dates = $census->allCensusDates();
 
-		$this->assertCount(8, $census_dates);
+		$this->assertCount(9, $census_dates);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1841', $census_dates[0]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1851', $census_dates[1]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1861', $census_dates[2]);
@@ -50,5 +50,6 @@ class CensusOfEnglandTest extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1891', $census_dates[5]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1901', $census_dates[6]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1911', $census_dates[7]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\RegisterOfEngland1939', $census_dates[8]);
 	}
 }

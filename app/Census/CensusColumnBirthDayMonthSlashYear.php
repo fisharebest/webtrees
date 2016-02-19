@@ -15,35 +15,27 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-/**
- * Definitions for a census
- */
-class CensusOfWales extends Census implements CensusPlaceInterface {
-	/**
-	 * All available censuses for this census place.
-	 *
-	 * @return CensusInterface[]
-	 */
-	public function allCensusDates() {
-		return array(
-			new CensusOfWales1841(),
-			new CensusOfWales1851(),
-			new CensusOfWales1861(),
-			new CensusOfWales1871(),
-			new CensusOfWales1881(),
-			new CensusOfWales1891(),
-			new CensusOfWales1901(),
-			new CensusOfWales1911(),
-			new RegisterOfWales1939()
-		);
-	}
+use Fisharebest\Webtrees\Individual;
 
+/**
+ * The individual's date of birth.
+ */
+class CensusColumnBirthDayMonthSlashYear extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
-	 * Where did this census occur, in GEDCOM format.
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function censusPlace() {
-		return 'Wales';
+	public function generate(Individual $individual, Individual $head = null) {
+		$birth_date = $individual->getBirthDate();
+
+		if ($birth_date->minimumJulianDay() === $birth_date->maximumJulianDay()) {
+			return $birth_date->minimumDate()->format('%j %M/%Y');
+		} else {
+			return '';
+		}
 	}
 }
