@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-17 07:16+0100\n"
+"PO-Revision-Date: 2016-02-19 06:51+0100\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Swahili <http://translate.webtrees.net/projects/webtrees/webtrees/sw/>\n"
 "Language: sw\n"
@@ -3562,7 +3562,7 @@ msgstr ""
 
 #: addmedia.php:460 admin_media_upload.php:213
 msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-msgstr ""
+msgstr "Kuchagua thumbnail picha kwamba unataka kupakia. Ingawa thumbnails inaweza kuzalisha moja kwa moja kwa picha, unaweza unataka kuzalisha thumbnail yako mwenyewe, hasa kwa aina nyingine ya vyombo vya habari. Kwa mfano, unaweza kutoa picha bado kutoka video, au picha ya mtu ambaye alifanya kurekodi sauti."
 
 #: admin_site_config.php:124
 msgid "Choose user defined welcome text typed below"
