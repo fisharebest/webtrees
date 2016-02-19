@@ -293,7 +293,7 @@ document.onmouseup = function () {
 			<?php } ?>
 			<td class="list_value" style="padding: 5px;" valign="top">
 				<?php echo I18N::translate('Add another individual to the chart'), '<br>'; ?>
-				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="newpid">
+				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="pids[]">
 				<?php echo FunctionsPrint::printFindIndividualLink('newpid'); ?>
 				<br>
 				<br>
