@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-19 06:51+0100\n"
+"PO-Revision-Date: 2016-02-20 16:47+0100\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Swahili <http://translate.webtrees.net/projects/webtrees/webtrees/sw/>\n"
 "Language: sw\n"
@@ -15632,7 +15632,7 @@ msgstr ""
 
 #: timeline.php:129 timeline.php:372
 msgid "Year:"
-msgstr ""
+msgstr "Mwaka:"
 
 #: app/Stats.php:6980
 msgid "Yemen"
