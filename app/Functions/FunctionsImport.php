@@ -741,29 +741,16 @@ class FunctionsImport {
 				self::updateLinks($xref, $tree_id, $gedrec);
 				self::updateNames($xref, $tree_id, $record);
 				break;
-			case 'HEAD':
+			default: // HEAD, TRLR, SUBM, SUBN, and custom record types.
 				// Force HEAD records to have a creation date.
-				if (!strpos($gedrec, "\n1 DATE ")) {
+				if ($type === 'head' && strpos($gedrec, "\n1 DATE ") === false) {
 					$gedrec .= "\n1 DATE " . date('j M Y');
 				}
-			// No break;
-			case 'TRLR':
-			case 'SUBM':
-			case 'SUBN':
-				Database::prepare(
-					"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, ?, ?)"
-				)->execute(array($xref, $tree_id, $type, $gedrec));
-				// Update the cross-reference/index tables.
-			self::updateLinks($xref, $tree_id, $gedrec);
-				break;
-			default:
-				$record = new GedcomRecord($xref, $gedrec, null, $tree);
 				Database::prepare(
 					"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, LEFT(?, 15), ?)"
 				)->execute(array($xref, $tree_id, $type, $gedrec));
 				// Update the cross-reference/index tables.
 				self::updateLinks($xref, $tree_id, $gedrec);
-				self::updateNames($xref, $tree_id, $record);
 				break;
 		}
 	}
