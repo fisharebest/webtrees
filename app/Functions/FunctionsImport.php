@@ -759,7 +759,7 @@ class FunctionsImport {
 			default:
 				$record = new GedcomRecord($xref, $gedrec, null, $tree);
 				Database::prepare(
-					"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, ?, ?)"
+					"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, LEFT(?, 15), ?)"
 				)->execute(array($xref, $tree_id, $type, $gedrec));
 				// Update the cross-reference/index tables.
 				self::updateLinks($xref, $tree_id, $gedrec);
