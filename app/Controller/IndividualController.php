@@ -51,7 +51,7 @@ class IndividualController extends GedcomRecordController {
 
 		// If we can display the details, add them to the page header
 		if ($this->record && $this->record->canShow()) {
-			$this->setPageTitle($this->record->getFullName() . ' ' . $this->record->getLifespan());
+			$this->setPageTitle($this->record->getFullName() . ' ' . $this->record->getLifeSpan());
 			$this->tabs = Module::getActiveTabs($this->record->getTree());
 		}
 	}
