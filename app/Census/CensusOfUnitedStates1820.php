@@ -33,14 +33,14 @@ class CensusOfUnitedStates1820 extends CensusOfUnitedStates implements CensusInt
 	 *
 	 * @return CensusColumnInterface[]
 	 */
-	 
+
 	public function columns() {
 		return array(
 			new CensusColumnFullName($this, 'Name', 'Name'),
 			new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
 			new CensusColumnAgeMaleUnder10Years($this, 'FWM-10', 'Free white males under 10'),
-			new CensusColumnAgeMale10To16Years($this, 'FWM10-16', 'Free white males 10<16'),	
-            new CensusColumnAgeMale16To18Years($this, 'FWM16-18', 'Free white males 10<16'),
+			new CensusColumnAgeMale10To16Years($this, 'FWM10-16', 'Free white males 10<16'),
+			new CensusColumnAgeMale16To18Years($this, 'FWM16-18', 'Free white males 10<16'),
 			new CensusColumnAgeMale16To26Years($this, 'FWM16-26', 'Free white males 16<26, inc. head of family'),
 			new CensusColumnAgeMale26To45Years($this, 'FWM26-45', 'Free white males 26<45, inc. head of family'),
 			new CensusColumnAgeMale45UpYears($this, 'FWM45+', 'Free white males 45 up, inc. head of family'),
@@ -48,15 +48,15 @@ class CensusOfUnitedStates1820 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnAgeFemale10To16Years($this, 'FWF10-16', 'Free white females 10<16'),
 			new CensusColumnAgeFemale16To26Years($this, 'FWF16-26', 'Free white females 16<26, inc. head of family'),
 			new CensusColumnAgeFemale26To45Years($this, 'FWF26-45', 'Free white females 26<45, inc. head of family'),
-			new CensusColumnAgeFemale45UpYears($this, 'FWF45+', 'Free white females 45 up'),			
+			new CensusColumnAgeFemale45UpYears($this, 'FWF45+', 'Free white females 45 up'),
 			new CensusColumnNull($this, 'FNR', 'Foreigners not naturalized'),
 			new CensusColumnNull($this, 'AG', 'No. engaged in agriculture'),
 			new CensusColumnNull($this, 'COM', 'No. engaged in commerce'),
-            new CensusColumnNull($this, 'MNF', 'No. engaged in manufactures'),
+			new CensusColumnNull($this, 'MNF', 'No. engaged in manufactures'),
 			new CensusColumnNull($this, 'Slaves', 'Slaves'),
 			new CensusColumnNull($this, 'FC', 'Free colored persons'),
 			new CensusColumnNull($this, 'Other', 'All other persons except indians non taxed'),
-						
+
 		);
 	}
 }

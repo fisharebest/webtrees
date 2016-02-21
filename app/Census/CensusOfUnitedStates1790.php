@@ -43,7 +43,7 @@ class CensusOfUnitedStates1790 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnAllFemales($this, 'White Female', 'All White Females'),
 			new CensusColumnNull($this, 'Other Free', 'All other free persons'),
 			new CensusColumnNull($this, 'Slaves', 'Number of slaves'),
-			
+
 		);
 	}
 }

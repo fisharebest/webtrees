@@ -45,7 +45,7 @@ class CensusOfUnitedStates1840 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnNull($this, 'Infirm', 'Whether deaf and dumb or blind'),
 			new CensusColumnNull($this, 'FNR', 'Foreigners not naturalized'),
 			new CensusColumnNull($this, 'Other Infirm', 'Slaves & colored deaf and dumb or blind'),
-						
+
 		);
 	}
 }

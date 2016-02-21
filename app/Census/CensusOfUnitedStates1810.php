@@ -43,15 +43,15 @@ class CensusOfUnitedStates1810 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnAgeMale16To26Years($this, 'Male 16-26', 'Free white males 16 < 26, inc. head of family'),
 			new CensusColumnAgeMale26To45Years($this, 'Male 26-45', 'Free white males 26 < 45, inc. head of family'),
 			new CensusColumnAgeMale45UpYears($this, 'Male 45+', 'Free white males 45 up, inc. head of family'),
-    		new CensusColumnAgeFemaleUnder10Years($this, 'Female-10', 'Free white females under 10'),
+			new CensusColumnAgeFemaleUnder10Years($this, 'Female-10', 'Free white females under 10'),
 			new CensusColumnAgeFemale10To16Years($this, 'Female 10-16', 'Free white females 10 < 16'),
 			new CensusColumnAgeFemale16To26Years($this, 'Female 16-26', 'Free white females 16 < 26, inc. head of family'),
 			new CensusColumnAgeFemale26To45Years($this, 'Female 26-45', 'Free white females 26 < 45, inc. head of family'),
-			new CensusColumnAgeFemale45UpYears($this, 'Female 45+', 'Free white females 45 up'),			
+			new CensusColumnAgeFemale45UpYears($this, 'Female 45+', 'Free white females 45 up'),
 			new CensusColumnNull($this, 'Other Free', 'All other free persons, except Indians not taxed'),
 			new CensusColumnNull($this, 'Slaves', 'Number of slaves'),
 			new CensusColumnNull($this, 'Total', 'Total number of individuals'),
-			
+
 		);
 	}
 }
