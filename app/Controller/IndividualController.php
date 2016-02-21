@@ -20,7 +20,6 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
@@ -140,7 +139,7 @@ class IndividualController extends GedcomRecordController {
 		$primary_name = $all_names[0];
 
 		$this->name_count++;
-		if ($this->name_count > 1) { echo '<h3 class="name_two">', $dummy->getFullName(), '</h3>'; } //Other names accordion element
+		if ($this->name_count > 1) { echo '<h3 class="name_two">', $dummy->getFullName(), '</h3>'; } // Other names accordion element
 		echo '<div class="indi_name_details';
 		if ($event->isPendingDeletion()) {
 			echo ' old';

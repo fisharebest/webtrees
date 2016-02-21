@@ -18,7 +18,6 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Theme\AdministrationTheme;
 use PDOException;
-use Throwable;
 
 /**
  * This is the bootstrap script, that is run on every request.

@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
@@ -110,12 +109,13 @@ class FamilyController extends GedcomRecordController {
 		// add to favorites
 		if (Module::getModuleByName('user_favorites')) {
 			$menu->addSubmenu(new Menu(
-			/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
+				/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',
 				'menu-fam-addfav',
 				array(
 					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
-				)));
+				)
+			));
 		}
 
 		// Get the link for the first submenu and set it as the link for the main menu

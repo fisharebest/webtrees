@@ -20,7 +20,6 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Note;
 
 /**
  * Controller for the shared note page
@@ -53,12 +52,13 @@ class NoteController extends GedcomRecordController {
 		// add to favorites
 		if (Module::getModuleByName('user_favorites')) {
 			$menu->addSubmenu(new Menu(
-			/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
+				/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',
 				'menu-note-addfav',
 				array(
 					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
-				)));
+				)
+			));
 		}
 
 		// Get the link for the first submenu and set it as the link for the main menu
