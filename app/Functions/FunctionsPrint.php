@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -334,7 +334,7 @@ class FunctionsPrint {
 				if ($fact === 'BIRT' && $record->getTree()->getPreference('SHOW_PARENTS_AGE')) {
 					// age of parents at child birth
 					$html .= self::formatParentsAges($record, $date);
-				} elseif ($fact !== 'CHAN' && $fact !== '_TODO') {
+				} elseif ($fact !== 'BIRT' && $fact !== 'CHAN' && $fact !== '_TODO') {
 					// age at event
 					$birth_date = $record->getBirthDate();
 					// Can't use getDeathDate(), as this also gives BURI/CREM events, which

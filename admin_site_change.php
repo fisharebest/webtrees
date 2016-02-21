@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,8 +35,8 @@ $controller
 	->restrictAccess(Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Changes'));
 
-$earliest = Database::prepare("SELECT DATE(MIN(change_time)) FROM `##change`")->execute(array())->fetchOne();
-$latest   = Database::prepare("SELECT DATE(MAX(change_time)) FROM `##change`")->execute(array())->fetchOne();
+$earliest = Database::prepare("SELECT IFNULL(DATE(MIN(change_time)), CURDATE()) FROM `##change`")->execute(array())->fetchOne();
+$latest   = Database::prepare("SELECT IFNULL(DATE(MAX(change_time)), CURDATE()) FROM `##change`")->execute(array())->fetchOne();
 
 // Filtering
 $action = Filter::get('action');
@@ -148,8 +148,8 @@ case 'load_json':
 			if ($key > 0) {
 				$order_by .= ',';
 			}
-			// Datatables numbers columns 0, 1, 2, ...
-			// MySQL numbers columns 1, 2, 3, ...
+			// Datatables numbers columns 0, 1, 2
+			// MySQL numbers columns 1, 2, 3
 			switch ($value['dir']) {
 			case 'asc':
 				$order_by .= (1 + $value['column']) . " ASC ";
@@ -286,12 +286,12 @@ foreach (User::all() as $tmp_user) {
 
 ?>
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+	<li><a href="admin.php"><?php echo I18N::translate('Control panel') ?></a></li>
+	<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees') ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle() ?></li>
 </ol>
 
-<h1><?php echo $controller->getPageTitle(); ?></h1>
+<h1><?php echo $controller->getPageTitle() ?></h1>
 
 <form class="form" name="logs">
 	<input type="hidden" name="action" value="show">
@@ -299,80 +299,80 @@ foreach (User::all() as $tmp_user) {
 	<div class="row">
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="from">
-				<?php echo /* I18N: label for the start of a date range (from x to y) */ I18N::translate('From'); ?>
+				<?php echo /* I18N: label for the start of a date range (from x to y) */ I18N::translate('From') ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?php echo Filter::escapeHtml($from); ?>">
+				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?php echo Filter::escapeHtml($from) ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="to">
-				<?php /* I18N: label for the end of a date range (from x to y) */ echo I18N::translate('To'); ?>
+				<?php echo /* I18N: label for the end of a date range (from x to y) */ I18N::translate('To') ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?php echo Filter::escapeHtml($to); ?>">
+				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?php echo Filter::escapeHtml($to) ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="type">
-				<?php echo I18N::translate('Status'); ?>
+				<?php echo I18N::translate('Status') ?>
 			</label>
-			<?php echo FunctionsEdit::selectEditControl('type', $statuses, '', $type, 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('type', $statuses, '', $type, 'class="form-control"') ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="xref">
-				<?php echo I18N::translate('Record'); ?>
+				<?php echo I18N::translate('Record') ?>
 			</label>
-			<input class="form-control" type="text" id="xref" name="xref" value="<?php echo Filter::escapeHtml($xref); ?>">
+			<input class="form-control" type="text" id="xref" name="xref" value="<?php echo Filter::escapeHtml($xref) ?>">
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="oldged">
-				<?php echo I18N::translate('Old data'); ?>
+				<?php echo I18N::translate('Old data') ?>
 			</label>
-			<input class="form-control" type="text" id="oldged" name="oldged" value="<?php echo Filter::escapeHtml($oldged); ?>">
+			<input class="form-control" type="text" id="oldged" name="oldged" value="<?php echo Filter::escapeHtml($oldged) ?>">
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="newged">
-				<?php echo I18N::translate('New data'); ?>
+				<?php echo I18N::translate('New data') ?>
 			</label>
-			<input class="form-control" type="text" id="newged" name="newged" value="<?php echo Filter::escapeHtml($newged); ?>">
+			<input class="form-control" type="text" id="newged" name="newged" value="<?php echo Filter::escapeHtml($newged) ?>">
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="user">
-				<?php echo I18N::translate('User'); ?>
+				<?php echo I18N::translate('User') ?>
 			</label>
-			<?php echo FunctionsEdit::selectEditControl('user', $users_array, '', $user, 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('user', $users_array, '', $user, 'class="form-control"') ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="gedc">
-				<?php echo I18N::translate('Family tree'); ?>
+				<?php echo I18N::translate('Family tree') ?>
 			</label>
-			<?php echo FunctionsEdit::selectEditControl('gedc', Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('gedc', Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"') ?>
 		</div>
 	</div>
 
 	<div class="row text-center">
 		<button type="submit" class="btn btn-primary">
-			<?php echo I18N::translate('Filter'); ?>
+			<?php echo I18N::translate('Filter') ?>
 		</button>
 
-		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
-			<?php echo I18N::translate('Export'); ?>
+		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled' ?>>
+			<?php echo I18N::translate('Export') ?>
 		</button>
 
-		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo I18N::translate('Permanently delete these records?'); ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
-			<?php echo I18N::translate('Delete'); ?>
+		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo I18N::translate('Permanently delete these records?') ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled' ?>>
+			<?php echo I18N::translate('Delete') ?>
 		</button>
 	</div>
 </form>
@@ -380,18 +380,18 @@ foreach (User::all() as $tmp_user) {
 <?php if ($action): ?>
 <table class="table table-bordered table-condensed table-hover table-site-changes">
 	<caption class="sr-only">
-		<?php echo $controller->getPageTitle(); ?>
+		<?php echo $controller->getPageTitle() ?>
 	</caption>
 	<thead>
 		<tr>
 			<th></th>
-			<th><?php echo I18N::translate('Timestamp'); ?></th>
-			<th><?php echo I18N::translate('Status'); ?></th>
-			<th><?php echo I18N::translate('Record'); ?></th>
-			<th><?php echo I18N::translate('Data'); ?></th>
-			<th><?php echo I18N::translate('User'); ?></th>
-			<th><?php echo I18N::translate('Family tree'); ?></th>
+			<th><?php echo I18N::translate('Timestamp') ?></th>
+			<th><?php echo I18N::translate('Status') ?></th>
+			<th><?php echo I18N::translate('Record') ?></th>
+			<th><?php echo I18N::translate('Data') ?></th>
+			<th><?php echo I18N::translate('User') ?></th>
+			<th><?php echo I18N::translate('Family tree') ?></th>
 		</tr>
 	</thead>
 </table>
-<?php endif; ?>
+<?php endif ?>

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,12 +24,12 @@ use Fisharebest\Webtrees\I18N;
 class CkeditorModule extends AbstractModule {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com */ I18N::translate('CKEditor™');
+		return /* I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com */ I18N::translate('CKEditor™');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get” */ I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
+		return /* I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get” */ I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
 	}
 
 	/**

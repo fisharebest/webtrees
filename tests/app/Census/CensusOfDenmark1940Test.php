@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -77,14 +77,14 @@ class CensusOfDenmark1940Test extends \PHPUnit_Framework_TestCase {
 
 		$this->assertSame('', $columns[0]->title());
 		$this->assertSame('Hvis den i Rubrik 1 opførte Person er midleritidg nærværende d.v.s. har fast Bopæl ????? (er optaget under en anden Address i Folkeregistret), anføres her den faste Bopæls Adresse (Kommunens Navn og den fuldstændige Adresse i denne; for Udlændinge dog kun Landets Navn).', $columns[1]->title());
-		$this->assertSame('Hvis den i Rubrik 1 opførte Person er midleritidg fraværende d.v.s. har fast Bopæl paa Tællingsstedet (er optaget underdenne Address i Folkeregistret), men den 5. Novemer ikke er til Stede paa Tællingsstedet, anføres her  „fraværende“ og Adressen paa det midlertidige Opholdssted (ved Ophold i Udlandet anføres jun Landets Navn).', $columns[2]->title());
+		$this->assertSame('Hvis den i Rubrik 1 opførte Person er midleritidg fraværende d.v.s. har fast Bopæl paa Tællingsstedet (er optaget underdenne Address i Folkeregistret), men den 5. Novemer ikke er til Stede paa Tællingsstedet, anføres her „fraværende“ og Adressen paa det midlertidige Opholdssted (ved Ophold i Udlandet anføres jun Landets Navn).', $columns[2]->title());
 		$this->assertSame('Køn Mand (M) Kvinde (K)', $columns[3]->title());
 		$this->assertSame('', $columns[4]->title());
 		$this->assertSame('', $columns[5]->title());
 		$this->assertSame('', $columns[6]->title());
 		$this->assertSame('', $columns[7]->title());
 		$this->assertSame('Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).', $columns[8]->title());
-		$this->assertSame('Date for det nuværende Ægteskabs Indgaaelse.  NB." RUbrikken udfyldes ikke al Enkemaend, Enker, Separerede eller Fraskilte.', $columns[9]->title());
+		$this->assertSame('Date for det nuværende Ægteskabs Indgaaelse. NB." RUbrikken udfyldes ikke al Enkemaend, Enker, Separerede eller Fraskilte.', $columns[9]->title());
 		$this->assertSame('', $columns[10]->title());
 		$this->assertSame('', $columns[11]->title());
 		$this->assertSame('Virksomhedens (Branchens) Art', $columns[12]->title());

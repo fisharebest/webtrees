@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -211,14 +211,12 @@ function fillInRows() {
 // CONFIG
 // myRowObject is an object for storing information about the table rows
 //function myRowObject(zero, one, two, three, four, five, six, seven, eight, nine, ten, cb, ra)
-function myRowObject(zero, one, two, cb, ra)
-{
-	this.zero	 = zero;	 // text object
-	this.one	 = one;		 // input text object
-	this.two	 = two;		 // input text object
-
-	this.cb		 = cb;		 // input checkbox object
-	this.ra		 = ra;		 // input radio object
+function myRowObject(zero, one, two, cb, ra) {
+	this.zero = zero; // text object
+	this.one  = one;   // input text object
+	this.two  = two;  // input text object
+	this.cb   = cb;   // input checkbox object
+	this.ra   = ra;   // input radio object
 }
 
 /*
@@ -234,7 +232,7 @@ function insertRowToTable(pid, nam, head)
 		var rowToInsertAt = "";
 
 		// Get links list ====================================
-		var links 	= document.getElementById('existLinkTbl');
+		var links = document.getElementById('existLinkTbl');
 		var numrows = links.rows.length;
 		var strRow = '';
 		for (var i=1; i<numrows; i++) {
@@ -430,21 +428,18 @@ function deleteCurrentRow(obj)
 	}
 }
 
-function reorderRows(tbl, startingIndex)
-{
+function reorderRows(tbl, startingIndex) {
 	if (hasLoaded) {
 		if (tbl.tBodies[0].rows[startingIndex]) {
 			var count = startingIndex + ROW_BASE;
 			for (var i=startingIndex; i<tbl.tBodies[0].rows.length; i++) {
 
 				// CONFIG: next line is affected by myRowObject settings
-				tbl.tBodies[0].rows[i].myRow.zero.data	 = count; // text
-
-				tbl.tBodies[0].rows[i].myRow.one.id		 = INPUT_NAME_PREFIX + count + '_1'; // input text
-				tbl.tBodies[0].rows[i].myRow.two.id 	 = INPUT_NAME_PREFIX + count + '_2'; // input text
-
-				tbl.tBodies[0].rows[i].myRow.one.name	 = INPUT_NAME_PREFIX + count + '_1'; // input text
-				tbl.tBodies[0].rows[i].myRow.two.name 	 = INPUT_NAME_PREFIX + count + '_2'; // input text
+				tbl.tBodies[0].rows[i].myRow.zero.data = count; // text
+				tbl.tBodies[0].rows[i].myRow.one.id = INPUT_NAME_PREFIX + count + '_1'; // input text
+				tbl.tBodies[0].rows[i].myRow.two.id = INPUT_NAME_PREFIX + count + '_2'; // input text
+				tbl.tBodies[0].rows[i].myRow.one.name = INPUT_NAME_PREFIX + count + '_1'; // input text
+				tbl.tBodies[0].rows[i].myRow.two.name = INPUT_NAME_PREFIX + count + '_2'; // input text
 
 				// tbl.tBodies[0].rows[i].myRow.cb.value = count; // input checkbox
 				tbl.tBodies[0].rows[i].myRow.ra.value = count; // input radio

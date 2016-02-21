@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,8 +43,8 @@ define('WT_WEBTREES', 'webtrees');
 define('WT_VERSION', '1.7.4-dev');
 
 // External URLs
-define('WT_WEBTREES_URL', 'http://www.webtrees.net/');
-define('WT_WEBTREES_WIKI', 'http://wiki.webtrees.net/');
+define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
+define('WT_WEBTREES_WIKI', 'https://wiki.webtrees.net/');
 
 // Resources have version numbers in the URL, so that they can be cached indefinitely.
 define('WT_STATIC_URL', getenv('STATIC_URL')); // We could set this to load our own static resources from a cookie-free domain.
@@ -88,19 +88,19 @@ if (getenv('USE_CDN')) {
 }
 
 // We can't load these from a CDN, as these have been patched.
-define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'assets/js-1.7.2/jquery.colorbox-1.5.14.js');
-define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'assets/js-1.7.2/jquery.wheelzoom-2.0.0.js');
+define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'assets/js-1.7.4/jquery.colorbox-1.5.14.js');
+define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'assets/js-1.7.4/jquery.wheelzoom-2.0.0.js');
 define('WT_CKEDITOR_BASE_URL', WT_STATIC_URL . 'packages/ckeditor-4.5.2-custom/');
 // See https://github.com/DataTables/Plugins/pull/178
 define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.7/plugins/dataTables.bootstrap-rtl.css');
 
 // Location of our own scripts
-define('WT_ADMIN_JS_URL', WT_STATIC_URL . 'assets/js-1.7.2/admin.js');
-define('WT_AUTOCOMPLETE_JS_URL', WT_STATIC_URL . 'assets/js-1.7.2/autocomplete.js');
-define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'assets/js-1.7.2/webtrees.js');
-define('WT_FONT_AWESOME_RTL_CSS_URL', WT_STATIC_URL . 'assets/js-1.7.2/font-awesome-rtl.css');
+define('WT_ADMIN_JS_URL', WT_STATIC_URL . 'assets/js-1.7.4/admin.js');
+define('WT_AUTOCOMPLETE_JS_URL', WT_STATIC_URL . 'assets/js-1.7.4/autocomplete.js');
+define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'assets/js-1.7.4/webtrees.js');
+define('WT_FONT_AWESOME_RTL_CSS_URL', WT_STATIC_URL . 'assets/js-1.7.4/font-awesome-rtl.css');
 
-// Location of our modules and themes.  These are used as URLs and folder paths.
+// Location of our modules and themes. These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
 define('WT_THEMES_DIR', 'themes/');
 
@@ -160,16 +160,19 @@ if (WT_DEBUG) {
 
 require WT_ROOT . 'vendor/autoload.php';
 
-// PHP requires a time zone to be set.  We'll set a better one later on.
+// PHP requires a time zone to be set. We'll set a better one later on.
 date_default_timezone_set('UTC');
 
 // Calculate the base URL, so we can generate absolute URLs.
-$protocol = Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', Filter::server('HTTPS', null, 'off') === 'off' ? 'http' : 'https');
+$https    = strtolower(Filter::server('HTTPS'));
+$protocol = ($https === '' || $https === 'off') ? 'http' : 'https';
+$protocol = Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', $protocol);
 
-// For CLI scripts, use localhost.
-$host = Filter::server('SERVER_NAME', null, 'localhost');
+$host = Filter::server('SERVER_ADDR', null, '127.0.0.1');
+$host = Filter::server('SERVER_NAME', null, $host);
 
-$port = Filter::server('HTTP_X_FORWARDED_PORT', '80|443', Filter::server('SERVER_PORT', null, '80'));
+$port = Filter::server('SERVER_PORT', null, '80');
+$port = Filter::server('HTTP_X_FORWARDED_PORT', '80|443', $port);
 
 // Ignore the default port.
 if ($protocol === 'http' && $port === '80' || $protocol === 'https' && $port === '443') {
@@ -187,16 +190,13 @@ define('WT_BASE_URL', $protocol . '://' . $host . $port . $path);
 
 // Convert PHP errors into exceptions
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-	if (error_reporting() & $errno) {
-		throw new \ErrorException($errstr, 0, $errno, $errfile, $errline);
-	} else {
-		return false;
-	}
+	throw new \ErrorException($errfile . ':' . $errline . ' ' . $errstr, $errno);
 });
 
-set_exception_handler(function (\Exception $ex) {
-	$long_message = '';
-	$short_message = '';
+set_exception_handler(function ($ex) {
+	$message = '';
+
+	$message = $ex->getFile() . ':' . $ex->getLine() . ' ' . $ex->getMessage() . PHP_EOL;
 
 	foreach ($ex->getTrace() as $level => $frame) {
 		$frame += array('args' => array(), 'file' => 'unknown', 'line' => 'unknown');
@@ -228,24 +228,19 @@ set_exception_handler(function (\Exception $ex) {
 			}
 		});
 		$frame['file'] = str_replace(dirname(__DIR__), '', $frame['file']);
-		$long_message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
-		$short_message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
+		$message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
 		if ($level) {
-			$long_message .= $frame['function'] . '(' . implode(', ', $frame['args']) . ')' . PHP_EOL;
-			$short_message .= $frame['function'] . "()<br>";
+			$message .= $frame['function'] . '(' . implode(', ', $frame['args']) . ')' . PHP_EOL;
 		} else {
-			$long_message .= get_class($ex) . '("' . $ex->getMessage() . '")' . PHP_EOL;
-			$short_message .= get_class($ex) . '("' . $ex->getMessage() . '")<br>';
+			$message .= get_class($ex) . '("' . $ex->getMessage() . '")' . PHP_EOL;
 		}
 	}
 
-	if (WT_DEBUG) {
-		echo $long_message;
-	} else {
-		echo $short_message;
+	if (true || error_reporting() & $ex->getCode()) {
+		echo $message;
 	}
 
-	Log::addErrorLog($long_message);
+	Log::addErrorLog($message);
 });
 
 // Load our configuration file, so we can connect to the database
@@ -407,7 +402,7 @@ foreach (array(Filter::post('ged'), Filter::get('ged'), Session::get('GEDCOM'), 
 		break;
 	}
 }
-// No chosen tree?  Use any one.
+// No chosen tree? Use any one.
 if (!$WT_TREE) {
 	foreach (Tree::getAll() as $WT_TREE) {
 		break;
@@ -421,7 +416,7 @@ Session::put('locale', WT_LOCALE);
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
 define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
 
-// Users get their own time-zone.  Visitors get the site time-zone.
+// Users get their own time-zone. Visitors get the site time-zone.
 if (Auth::check()) {
 	date_default_timezone_set(Auth::user()->getPreference('TIMEZONE', 'UTC'));
 } else {

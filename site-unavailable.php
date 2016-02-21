@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,13 +29,6 @@ define('WT_ROOT', '');
 define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
 define('WT_MODULES_DIR', 'modules_v3/');
 
-// No configuration file?  Start the setup wizard
-if (!file_exists(WT_DATA_DIR . 'config.ini.php')) {
-	header('Location: setup.php');
-
-	return;
-}
-
 require 'vendor/autoload.php';
 
 Session::start();
@@ -53,7 +46,7 @@ foreach (FlashMessages::getMessages() as $message) {
 }
 
 // If we can't connect to the database at all, give the reason why
-$config_ini_php = parse_ini_file('data/config.ini.php');
+$config_ini_php = file_exists('data/config.ini.php') && parse_ini_file('data/config.ini.php');
 if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && array_key_exists('dbport', $config_ini_php) && array_key_exists('dbuser', $config_ini_php) && array_key_exists('dbpass', $config_ini_php) && array_key_exists('dbname', $config_ini_php)) {
 	try {
 		new PDO('mysql:host=' . $config_ini_php['dbhost'] . ';port=' . $config_ini_php['dbport'] . ';dbname=' . $config_ini_php['dbname'], $config_ini_php['dbuser'], $config_ini_php['dbpass'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_CASE => PDO::CASE_LOWER, PDO::ATTR_AUTOCOMMIT => true));
@@ -85,7 +78,7 @@ if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && 
 		<h1><?php echo I18N::translate('This website is temporarily unavailable'); ?></h1>
 		<div class="content">
 			<p>
-				<?php echo I18N::translate('Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href="index.php">try again</a> in a few minutes or contact the website administrator.'); ?>
+				<?php echo I18N::translate('Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href="index.php">try again</a> in a few minutes or contact the website administrator.'); ?>
 			</p>
 			<?php echo $messages; ?>
 			<?php echo I18N::translate('If you are the website administrator, you should check that:'); ?>

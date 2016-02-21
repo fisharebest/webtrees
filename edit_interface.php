@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -287,7 +287,7 @@ case 'edit':
 		break;
 	case 'FAM':
 	case 'INDI':
-		// FAM and INDI records have real facts.  They can take NOTE/SOUR/OBJE/etc.
+		// FAM and INDI records have real facts. They can take NOTE/SOUR/OBJE/etc.
 		if ($level1type !== 'SEX' && $level1type !== 'NOTE' && $level1type !== 'ALIA') {
 			if ($level1type !== 'SOUR') {
 				FunctionsEdit::printAddLayer('SOUR');
@@ -1008,7 +1008,7 @@ case 'addfamlink':
 					<td class="facts_value">
 						<?php echo FunctionsEdit::editFieldPedigree('PEDI', '', '', $person); ?>
 						<p class="small text-muted">
-							<?php echo I18N::translate('A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed.'); ?>
+							<?php echo I18N::translate('A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed.'); ?>
 						</p>
 					</td>
 				</tr>
@@ -2705,7 +2705,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	var oldName = "";
 
 	// Calls to generate_name() trigger an update - hence need to
-	// set the manual change to true first.  We are probably
+	// set the manual change to true first. We are probably
 	// listening to the wrong events on the input fields...
 	var manualChange = true;
 	manualChange = generate_name() !== jQuery("#NAME").val();

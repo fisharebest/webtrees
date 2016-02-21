@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,12 +42,12 @@ $day      = Filter::get('day', '\d\d?');
 $month    = Filter::get('month', '[A-Z]{3,5}');
 $year     = Filter::get('year', '\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d|\d+(-\d+|[?]+)?');
 $view     = Filter::get('view', 'day|month|year', 'day');
-$filterev = Filter::get('filterev', '[_A-Z-]+', '');
+$filterev = Filter::get('filterev', '[_A-Z-]+', 'BIRT-MARR-DEAT');
 $filterof = Filter::get('filterof', 'all|living|recent', 'all');
 $filtersx = Filter::get('filtersx', '[MF]', '');
 
 if ($cal . $day . $month . $year === '') {
-	// No date specified?  Use the most likely calendar
+	// No date specified? Use the most likely calendar
 	$cal = I18N::defaultCalendar()->gedcomCalendarEscape();
 }
 
@@ -106,7 +106,7 @@ $days_in_week  = $cal_date->daysInWeek();
 $cal_month     = $cal_date->format('%O');
 $today_month   = $today->format('%O');
 
-// Invalid dates?  Go to monthly view, where they'll be found.
+// Invalid dates? Go to monthly view, where they'll be found.
 if ($cal_date->d > $days_in_month && $view === 'day') {
 	$view = 'month';
 }
@@ -343,7 +343,7 @@ case 'day':
 case 'month':
 	$cal_date->d = 0;
 	$cal_date->setJdFromYmd();
-	// Make a separate list for each day.  Unspecified/invalid days go in day 0.
+	// Make a separate list for each day. Unspecified/invalid days go in day 0.
 	for ($d = 0; $d <= $days_in_month; ++$d) {
 		$found_facts[$d] = array();
 	}
@@ -451,7 +451,7 @@ case 'day':
 
 	break;
 case 'month':
-// We use JD%7 = 0/Mon...6/Sun.  Standard definitions use 0/Sun...6/Sat.
+// We use JD%7 = 0/Mon…6/Sun. Standard definitions use 0/Sun…6/Sat.
 	$week_start    = (I18N::firstDay() + 6) % 7;
 	$weekend_start = (I18N::weekendStart() + 6) % 7;
 	$weekend_end   = (I18N::weekendEnd() + 6) % 7;
@@ -473,8 +473,7 @@ case 'month':
 	echo '</tr>';
 	echo '</thead>';
 	echo '<tbody>';
-	// Print days 1-n of the month...
-	// ...but extend to cover "empty" days before/after the month to make whole weeks.
+	// Print days 1 to n of the month, but extend to cover "empty" days before/after the month to make whole weeks.
 	// e.g. instead of 1 -> 30 (=30 days), we might have -1 -> 33 (=35 days)
 	$start_d = 1 - ($cal_date->minJD - $week_start) % $days_in_week;
 	$end_d   = $days_in_month + ($days_in_week - ($cal_date->maxJD - $week_start + 1) % $days_in_week) % $days_in_week;
@@ -494,8 +493,6 @@ case 'month':
 				echo calendar_list_text($cal_facts[0], '', '', false);
 				echo '</div>';
 				$cal_facts[0] = array();
-			} else {
-				echo '&nbsp;';
 			}
 		} else {
 			// Format the day number using the calendar

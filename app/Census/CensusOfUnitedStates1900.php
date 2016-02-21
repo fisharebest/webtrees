@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,22 +42,22 @@ class CensusOfUnitedStates1900 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnBirthMonth($this, 'Month', 'Month of birth'),
 			new CensusColumnBirthYear($this, 'Year', 'Year of birth'),
 			new CensusColumnAge($this, 'Age', 'Age at last birthday'),
-			new CensusColumnNull($this, 'Condition', 'Whether single, married, widowed, or divorced'),
+			new CensusColumnConditionUs($this, 'Cond', 'Whether single, married, widowed, or divorced'),
 			new CensusColumnYearsMarried($this, 'Marr', 'Number of years married'),
 			new CensusColumnChildrenBornAlive($this, 'Chil', 'Mother of how many children'),
 			new CensusColumnChildrenLiving($this, 'Chil', 'Number of these children living'),
-			new CensusColumnBirthPlaceSimple($this, 'Birthplace', 'Place of birth of this person'),
-			new CensusColumnFatherBirthPlaceSimple($this, 'Father’s birthplace', 'Place of birth of father of this person'),
-			new CensusColumnFatherBirthPlaceSimple($this, 'Mother’s birthplace', 'Place of birth of mother of this person'),
+			new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth of this person'),
+			new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father of this person'),
+			new CensusColumnFatherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother of this person'),
 			new CensusColumnNull($this, 'Imm', 'Year of immigration to the United States'),
 			new CensusColumnNull($this, 'US', 'Number of years in the United States'),
 			new CensusColumnNull($this, 'Nat', 'Naturalization'),
 			new CensusColumnOccupation($this, 'Occupation', 'Occupation, trade of profession'),
-			new CensusColumnNull($this, 'Unemployed', 'Months not unemployed'),
+			new CensusColumnNull($this, 'Unemp', 'Months not unemployed'),
 			new CensusColumnNull($this, 'School', 'Attended school (in months)'),
 			new CensusColumnNull($this, 'Read', 'Can read'),
 			new CensusColumnNull($this, 'Write', 'Can write'),
-			new CensusColumnNull($this, 'English', 'Can speak English'),
+			new CensusColumnNull($this, 'Eng', 'Can speak English'),
 			new CensusColumnNull($this, 'Home', 'Owned or rented'),
 			new CensusColumnNull($this, 'Mort', 'Owned free or mortgaged'),
 			new CensusColumnNull($this, 'Farm', 'Farm or house'),

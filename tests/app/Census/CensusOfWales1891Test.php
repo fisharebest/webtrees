@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,7 +29,7 @@ class CensusOfWales1891Test extends \PHPUnit_Framework_TestCase {
 		$census = new CensusOfWales1891;
 
 		$this->assertSame('Wales', $census->censusPlace());
-		$this->assertSame('05 MAR 1891', $census->censusDate());
+		$this->assertSame('05 APR 1891', $census->censusDate());
 	}
 
 	/**

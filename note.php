@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,8 +40,8 @@ if ($controller->record && $controller->record->canShow()) {
 		if (Auth::isModerator($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
-					'This note has been deleted.  You should review the deletion and then %1$s or %2$s it.',
+				/* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate(
+					'This note has been deleted. You should review the deletion and then %1$s or %2$s it.',
 					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
 					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
@@ -50,7 +50,7 @@ if ($controller->record && $controller->record->canShow()) {
 		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
-				I18N::translate('This note has been deleted.  The deletion will need to be reviewed by a moderator.'),
+				I18N::translate('This note has been deleted. The deletion will need to be reviewed by a moderator.'),
 				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		}
@@ -58,8 +58,8 @@ if ($controller->record && $controller->record->canShow()) {
 		if (Auth::isModerator($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
-					'This note has been edited.  You should review the changes and then %1$s or %2$s them.',
+				/* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate(
+					'This note has been edited. You should review the changes and then %1$s or %2$s them.',
 					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>',
 					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
@@ -68,7 +68,7 @@ if ($controller->record && $controller->record->canShow()) {
 		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
-				I18N::translate('This note has been edited.  The changes need to be reviewed by a moderator.'),
+				I18N::translate('This note has been edited. The changes need to be reviewed by a moderator.'),
 				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		}

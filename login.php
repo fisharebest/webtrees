@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -81,12 +81,12 @@ case 'login':
 
 		if (!$user->getPreference('verified')) {
 			Log::addAuthenticationLog('Login failed (not verified by user): ' . $username);
-			throw new \Exception(I18N::translate('This account has not been verified.  Please check your email for a verification message.'));
+			throw new \Exception(I18N::translate('This account has not been verified. Please check your email for a verification message.'));
 		}
 
 		if (!$user->getPreference('verified_by_admin')) {
 			Log::addAuthenticationLog('Login failed (not approved by admin): ' . $username);
-			throw new \Exception(I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.'));
+			throw new \Exception(I18N::translate('This account has not been approved. Please wait for an administrator to approve it.'));
 		}
 
 		Auth::login($user);
@@ -154,13 +154,13 @@ default:
 
 	switch (Site::getPreference('WELCOME_TEXT_AUTH_MODE')) {
 	case 1:
-		echo I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.');
+		echo I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved.');
 		break;
 	case 2:
-		echo I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.');
+		echo I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved.');
 		break;
 	case 3:
-		echo I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
+		echo I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved.');
 		break;
 	case 4:
 		echo '<p style="white-space: pre-wrap;">', Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE), '</p>';
@@ -189,7 +189,7 @@ default:
 			<input type="submit" value="', I18N::translate('Login'), '">
 		</div>
 		';
-		// Emails are sent from a TREE, not from a SITE.  Therefore if there is no
+		// Emails are sent from a TREE, not from a SITE. Therefore if there is no
 		// tree available (initial setup or all trees private), then we can't send email.
 		if ($WT_TREE) {
 			echo '
@@ -248,7 +248,7 @@ case 'requestpw':
 			'<a href="' . WT_BASE_URL . 'login.php?ged=' . $WT_TREE->getNameUrl() . '">' . WT_BASE_URL . 'login.php?ged=' . $WT_TREE->getNameUrl() . '</a>'
 		);
 
-		FlashMessages::addMessage(I18N::translate('A new password has been created and emailed to %s.  You can change this password after you login.', Filter::escapeHtml($user_name)), 'success');
+		FlashMessages::addMessage(I18N::translate('A new password has been created and emailed to %s. You can change this password after you login.', Filter::escapeHtml($user_name)), 'success');
 	} else {
 		FlashMessages::addMessage(I18N::translate('There is no account with the username or email “%s”.', Filter::escapeHtml($user_name)), 'danger');
 	}
@@ -270,10 +270,10 @@ case 'register':
 	if (Session::get('good_to_send') && $user_name && $user_password01 && $user_password01 == $user_password02 && $user_realname && $user_email && $user_comments) {
 
 		// These validation errors cannot be shown in the client.
-		if (User::findByIdentifier($user_name)) {
-			FlashMessages::addMessage(I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
-		} elseif (User::findByIdentifier($user_email)) {
-			FlashMessages::addMessage(I18N::translate('Duplicate email address.  A user with that email already exists.'));
+		if (User::findByUserName($user_name)) {
+			FlashMessages::addMessage(I18N::translate('Duplicate user name. A user with that user name already exists. Please choose another user name.'));
+		} elseif (User::findByEmail($user_email)) {
+			FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
 		} elseif (preg_match('/(?!' . preg_quote(WT_BASE_URL, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $user_comments, $match)) {
 			FlashMessages::addMessage(
 				I18N::translate('You are not allowed to send messages that contain external links.') . ' ' .
@@ -312,7 +312,7 @@ case 'register':
 				I18N::translate('Email address') . ' ' . Filter::escapeHtml($user->getEmail()) . Mail::EOL .
 				I18N::translate('Comments') . ' ' . Filter::escapeHtml($user_comments) . Mail::EOL . Mail::EOL .
 				I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request.') . Mail::EOL . Mail::EOL .
-				I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.');
+				I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account.');
 
 			$mail1_subject = /* I18N: %s is a server name/URL */ I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $WT_TREE->getTitle());
 			I18N::init(WT_LOCALE);
@@ -323,7 +323,7 @@ case 'register':
 			$mail2_body =
 				I18N::translate('Hello %s…', $user->getRealNameHtml()) . Mail::EOL . Mail::EOL .
 				/* I18N: %1$s is the site URL and %2$s is an email address */
-				I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_BASE_URL . ' ' . $WT_TREE->getTitleHtml(), $user->getEmail()) . '  ' .
+				I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_BASE_URL . ' ' . $WT_TREE->getTitleHtml(), $user->getEmail()) . ' ' .
 				I18N::translate('Information about the request is shown under the link below.') . Mail::EOL .
 				I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . Mail::EOL . Mail::EOL .
 				'<a href="' . WT_LOGIN_URL . '?user_name=' . Filter::escapeUrl($user->getUserName()) . '&amp;user_hashcode=' . $user->getPreference('reg_hashcode') . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameUrl() . '">' .
@@ -373,7 +373,7 @@ case 'register':
 			}
 
 			echo '<div class="confirm"><p>', I18N::translate('Hello %s…<br>Thank you for your registration.', $user->getRealNameHtml()), '</p>';
-			echo '<p>', I18N::translate('We will now send a confirmation email to the address <b>%s</b>.  You must verify your account request by following instructions in the confirmation email.  If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this website, you will need to know your user name and password.', $user->getEmail()), '</p>';
+			echo '<p>', I18N::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this website, you will need to know your user name and password.', $user->getEmail()), '</p>';
 			echo '</div>';
 			echo '</div>';
 
@@ -474,7 +474,7 @@ case 'register':
 						><?php echo Filter::escapeHtml($user_comments); ?></textarea>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator.'); ?>
+						<?php echo I18N::translate('Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator.'); ?>
 					</p>
 				</div>
 
@@ -497,7 +497,7 @@ case 'userverify':
 	}
 
 	// Change to the new user’s language
-	$user = User::findByIdentifier($user_name);
+	$user = User::findByUserName($user_name);
 
 	I18N::init($user->getPreference('language'));
 
@@ -538,7 +538,7 @@ case 'verify_hash':
 	$webmaster = User::find($WT_TREE->getPreference('WEBMASTER_USER_ID'));
 	I18N::init($webmaster->getPreference('language'));
 
-	$user          = User::findByIdentifier($user_name);
+	$user          = User::findByUserName($user_name);
 	$edit_user_url = WT_BASE_URL . "admin_users.php?action=edit&amp;user_id=" . $user->getUserId();
 	$mail1_body    =
 		I18N::translate('Hello administrator…') .
@@ -599,10 +599,10 @@ case 'verify_hash':
 		Log::addAuthenticationLog('User ' . $user_name . ' verified their email address');
 
 		echo '<p>', I18N::translate('You have confirmed your request to become a registered user.'), '</p>';
-		echo '<p>', I18N::translate('The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password.'), '</p>';
+		echo '<p>', I18N::translate('The administrator has been informed. As soon as they give you permission to login, you can login with your user name and password.'), '</p>';
 	} else {
 		echo '<p class="warning">';
-		echo I18N::translate('Could not verify the information you entered.  Please try again or contact the site administrator for more information.');
+		echo I18N::translate('Could not verify the information you entered. Please try again or contact the site administrator for more information.');
 		echo '</p>';
 	}
 	echo '</div>';

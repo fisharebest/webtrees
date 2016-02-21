@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,12 +26,13 @@ class CensusTest extends \PHPUnit_Framework_TestCase {
 	public function testAllCensus() {
 		$censuses = Census::allCensusPlaces();
 
-		$this->assertCount(6, $censuses);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark', $censuses[0]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland', $censuses[1]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfFrance', $censuses[2]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland', $censuses[3]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates', $censuses[4]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales', $censuses[5]);
+		$this->assertCount(7, $censuses);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic', $censuses[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark', $censuses[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland', $censuses[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfFrance', $censuses[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland', $censuses[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates', $censuses[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales', $censuses[6]);
 	}
 }

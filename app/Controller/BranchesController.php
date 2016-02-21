@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -186,7 +186,7 @@ class BranchesController extends PageController {
 	 * @return string
 	 */
 	private function getDescendantsHtml(Individual $individual, Family $parents = null) {
-		// A person has many names.  Select the one that matches the searched surname
+		// A person has many names. Select the one that matches the searched surname
 		$person_name = '';
 		foreach ($individual->getAllNames() as $name) {
 			list($surn1) = explode(",", $name['sort']);
@@ -202,7 +202,7 @@ class BranchesController extends PageController {
 			}
 		}
 
-		// No matching name?  Typically children with a different surname.  The branch stops here.
+		// No matching name? Typically children with a different surname. The branch stops here.
 		if (!$person_name) {
 			return '<li title="' . strip_tags($individual->getFullName()) . '">' . $individual->getSexImage() . '…</li>';
 		}
@@ -278,7 +278,7 @@ class BranchesController extends PageController {
 	}
 
 	/**
-	 * Convert a SOSA number into a generation number.  e.g. 8 = great-grandfather = 3 generations
+	 * Convert a SOSA number into a generation number. e.g. 8 = great-grandfather = 3 generations
 	 *
 	 * @param int $sosa
 	 *

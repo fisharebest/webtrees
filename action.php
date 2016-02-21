@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -133,7 +133,7 @@ case 'delete-source':
 			$linker     = GedcomRecord::getInstance($xref, $WT_TREE);
 			$old_gedcom = $linker->getGedcom();
 			$new_gedcom = FunctionsEdit::removeLinks($old_gedcom, $record->getXref());
-			// FunctionsDb::fetch_all_links() does not take account of pending changes.  The links (or even the
+			// FunctionsDb::fetch_all_links() does not take account of pending changes. The links (or even the
 			// record itself) may have already been deleted.
 			if ($old_gedcom !== $new_gedcom) {
 				// If we have removed a link from a family to an individual, and it has only one member

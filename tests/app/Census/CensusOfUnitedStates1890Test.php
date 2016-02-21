@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -50,7 +50,7 @@ class CensusOfUnitedStates1890Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[4]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSexMF', $columns[5]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAge', $columns[6]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[7]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionUs', $columns[7]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear', $columns[8]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[9]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple', $columns[10]);
@@ -75,20 +75,20 @@ class CensusOfUnitedStates1890Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('Race', $columns[4]->abbreviation());
 		$this->assertSame('Sex', $columns[5]->abbreviation());
 		$this->assertSame('Age', $columns[6]->abbreviation());
-		$this->assertSame('Condition', $columns[7]->abbreviation());
+		$this->assertSame('Cond', $columns[7]->abbreviation());
 		$this->assertSame('Mar', $columns[8]->abbreviation());
-		$this->assertSame('Children', $columns[9]->abbreviation());
-		$this->assertSame('Birthplace', $columns[10]->abbreviation());
-		$this->assertSame('Father’s birthplace', $columns[11]->abbreviation());
-		$this->assertSame('Mother’s birthplace', $columns[12]->abbreviation());
+		$this->assertSame('Chil', $columns[9]->abbreviation());
+		$this->assertSame('BP', $columns[10]->abbreviation());
+		$this->assertSame('FBP', $columns[11]->abbreviation());
+		$this->assertSame('MBP', $columns[12]->abbreviation());
 		$this->assertSame('US', $columns[13]->abbreviation());
 		$this->assertSame('Nat', $columns[14]->abbreviation());
 		$this->assertSame('Papers', $columns[15]->abbreviation());
 		$this->assertSame('Occupation', $columns[16]->abbreviation());
-		$this->assertSame('Unemployed', $columns[17]->abbreviation());
+		$this->assertSame('Unemp', $columns[17]->abbreviation());
 		$this->assertSame('Read', $columns[18]->abbreviation());
 		$this->assertSame('Write', $columns[19]->abbreviation());
-		$this->assertSame('English', $columns[20]->abbreviation());
+		$this->assertSame('Eng', $columns[20]->abbreviation());
 		$this->assertSame('Disease', $columns[21]->abbreviation());
 		$this->assertSame('Infirm', $columns[22]->abbreviation());
 		$this->assertSame('Prisoner', $columns[23]->abbreviation());
@@ -99,7 +99,7 @@ class CensusOfUnitedStates1890Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('Relation to head of family', $columns[3]->title());
 		$this->assertSame('Whether white, black, mulatto, quadroon, octoroon, Chinese, Japanese, or Indian', $columns[4]->title());
 		$this->assertSame('Sex', $columns[5]->title());
-		$this->assertSame('Age at nearest birthday.  If under one year, give age in months', $columns[6]->title());
+		$this->assertSame('Age at nearest birthday. If under one year, give age in months', $columns[6]->title());
 		$this->assertSame('Whether single, married, widowed, or divorced', $columns[7]->title());
 		$this->assertSame('Whether married duirng the census year (June 1, 1889, to May 31, 1890)', $columns[8]->title());
 		$this->assertSame('Mother of how many children, and number of these children living', $columns[9]->title());
@@ -113,7 +113,7 @@ class CensusOfUnitedStates1890Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('Months unemployed during the census year (June 1, 1889, to May 31, 1890)', $columns[17]->title());
 		$this->assertSame('Able to read', $columns[18]->title());
 		$this->assertSame('Able to write', $columns[19]->title());
-		$this->assertSame('Able to speak English.  If not the language or dialect spoken', $columns[20]->title());
+		$this->assertSame('Able to speak English. If not the language or dialect spoken', $columns[20]->title());
 		$this->assertSame('Whether suffering from acute or chronic disease, with name of disease and length of time afflicted', $columns[21]->title());
 		$this->assertSame('Whether defective in mind, sight, hearing, or speech, or whether crippled, maimed, or deformed, with name of defect', $columns[22]->title());
 		$this->assertSame('Whether a prisoner, convict, homeless child, or pauper', $columns[23]->title());

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -67,10 +67,10 @@ case 'save':
 
 		if ($user_id === 0) {
 			// Create a new user
-			if (User::findByIdentifier($username)) {
-				FlashMessages::addMessage(I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
-			} elseif (User::findByIdentifier($email)) {
-				FlashMessages::addMessage(I18N::translate('Duplicate email address.  A user with that email already exists.'));
+			if (User::findByUserName($username)) {
+				FlashMessages::addMessage(I18N::translate('Duplicate user name. A user with that user name already exists. Please choose another user name.'));
+			} elseif (User::findByEmail($email)) {
+				FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
 			} elseif ($pass1 !== $pass2) {
 				FlashMessages::addMessage(I18N::translate('Passwords do not match.'));
 			} else {
@@ -91,14 +91,14 @@ case 'save':
 		}
 
 		if ($user) {
-			// Approving for the first time?  Send a confirmation email
+			// Approving for the first time? Send a confirmation email
 			if ($approved && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime') == 0) {
 				I18N::init($user->getPreference('language'));
 				Mail::systemMessage(
 					$WT_TREE,
 					$user,
 					I18N::translate('Approval of account at %s', WT_BASE_URL),
-					I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_BASE_URL, WT_BASE_URL)
+					I18N::translate('The administrator at the webtrees site %s has approved your application for an account. You may now login by accessing the following link: %s', WT_BASE_URL, WT_BASE_URL)
 				);
 			}
 
@@ -113,7 +113,7 @@ case 'save':
 				->setPreference('verified', $verified ? '1' : '0')
 				->setPreference('verified_by_admin', $approved ? '1' : '0');
 
-			// We cannot change our own admin status.  Another admin will need to do it.
+			// We cannot change our own admin status. Another admin will need to do it.
 			if ($user->getUserId() !== Auth::id()) {
 				$user->setPreference('canadmin', $canadmin ? '1' : '0');
 			}
@@ -171,8 +171,8 @@ case 'load_json':
 			if ($key > 0) {
 				$sql_select .= ',';
 			}
-			// Datatables numbers columns 0, 1, 2, ...
-			// MySQL numbers columns 1, 2, 3, ...
+			// Datatables numbers columns 0, 1, 2
+			// MySQL numbers columns 1, 2, 3
 			switch ($value['dir']) {
 			case 'asc':
 				$sql_select .= (1 + $value['column']) . " ASC ";
@@ -386,7 +386,7 @@ case 'edit':
 						<?php echo I18N::translate('Approved by administrator'); ?>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically.'); ?>
+						<?php echo I18N::translate('When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically.'); ?>
 					</p>
 					<p class="small text-muted">
 						<?php echo I18N::translate('If an administrator creates a user account, the verification email is not sent, and the email must be verified manually.'); ?>
@@ -442,7 +442,7 @@ case 'edit':
 						<?php echo I18N::translate('Automatically approve changes made by this user'); ?>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval.'); ?>
+						<?php echo I18N::translate('Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval.'); ?>
 					</p>
 				</div>
 			</div>
@@ -460,7 +460,7 @@ case 'edit':
 						<?php echo /* I18N: A configuration setting */ I18N::translate('Visible to other users when online'); ?>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible.'); ?>
+						<?php echo I18N::translate('This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible.'); ?>
 					</p>
 				</div>
 			</div>
@@ -475,7 +475,7 @@ case 'edit':
 				<?php echo FunctionsEdit::editFieldContact('contact_method', $user->getPreference('contactmethod')); ?>
 				<p class="small text-muted">
 					<?php echo /* I18N: Help text for the “Preferred contact method” configuration setting */
-					I18N::translate('Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all.'); ?>
+					I18N::translate('Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all.'); ?>
 				</p>
 			</div>
 		</div>
@@ -521,7 +521,7 @@ case 'edit':
 		<h3><?php echo I18N::translate('Family tree access and settings'); ?></h3>
 
 		<p>
-			<?php echo I18N::translate('A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree.'); ?>
+			<?php echo I18N::translate('A role is a set of access rights, which give permission to view data, change configuration settings, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree.'); ?>
 		</p>
 
 		<div class="row">
@@ -544,7 +544,7 @@ case 'edit':
 					<?php echo I18N::translate('Editor'); ?>
 				</h4>
 				<p class="small text-muted">
-					<?php echo I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled.'); ?>
+					<?php echo I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled.'); ?>
 				</p>
 				<h4>
 					<?php echo I18N::translate('Moderator'); ?>
@@ -605,7 +605,7 @@ case 'edit':
 					</td>
 					<td>
 						<p class="small text-muted">
-								<?php echo I18N::translate('Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see.'); ?>
+								<?php echo I18N::translate('Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see.'); ?>
 							<?php echo I18N::translate('For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).'); ?>
 							<?php echo I18N::translate('Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users.'); ?>
 						</p>

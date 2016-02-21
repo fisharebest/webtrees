@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -52,7 +52,7 @@ class Module {
 						throw new \Exception;
 					}
 				} catch (\Exception $ex) {
-					// The module has been deleted or is broken?  Disable it.
+					// The module has been deleted or is broken? Disable it.
 					Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it");
 					Database::prepare(
 						"UPDATE `##module` SET status = 'disabled' WHERE module_name = :module_name"
@@ -99,7 +99,7 @@ class Module {
 			}
 		}
 
-		// The order of menus/sidebars/tabs is defined in the database.  Others are sorted by name.
+		// The order of menus/sidebars/tabs is defined in the database. Others are sorted by name.
 		if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
 			uasort($array, function (AbstractModule $x, AbstractModule $y) {
 				return I18N::strcasecmp($x->getTitle(), $y->getTitle());
@@ -137,7 +137,7 @@ class Module {
 			}
 		}
 
-		// The order of menus/sidebars/tabs is defined in the database.  Others are sorted by name.
+		// The order of menus/sidebars/tabs is defined in the database. Others are sorted by name.
 		if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
 			uasort($array, function (AbstractModule $x, AbstractModule $y) {
 				return I18N::strcasecmp($x->getTitle(), $y->getTitle());
@@ -265,7 +265,7 @@ class Module {
 						$module instanceof ModuleSidebarInterface ? $module->defaultSidebarOrder() : null,
 						$module instanceof ModuleTabInterface ? $module->defaultTabOrder() : null,
 					));
-					// Set the default privcy for this module.  Note that this also sets it for the
+					// Set the default privcy for this module. Note that this also sets it for the
 					// default family tree, with a gedcom_id of -1
 					if ($module instanceof ModuleMenuInterface) {
 						Database::prepare(

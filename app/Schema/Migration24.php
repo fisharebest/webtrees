@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,7 +28,7 @@ class Migration24 implements MigrationInterface {
 		// Tree settings become site settings
 		Database::exec(
 			"INSERT IGNORE INTO `##site_setting` (setting_name, setting_value)" .
-			" SELECT setting_name, setting_value" .
+			" SELECT setting_name, MIN(setting_value)" . // Can't use ANY_VALUE() until MySQL5.7
 			" FROM `##gedcom_setting`" .
 			" WHERE setting_name IN ('SHOW_REGISTER_CAUTION', 'WELCOME_TEXT_CUST_HEAD') OR setting_name LIKE 'WELCOME_TEXT_AUTH_MODE%'" .
 			" GROUP BY setting_name"

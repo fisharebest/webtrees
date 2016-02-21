@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -52,11 +52,11 @@ if ($gid2 && !$rec2) {
 }
 
 if ($rec1 && $rec2 && $rec1->getXref() === $rec2->getXref()) {
-	FlashMessages::addMessage(I18N::translate('You entered the same IDs.  You cannot merge the same records.'), 'danger');
+	FlashMessages::addMessage(I18N::translate('You entered the same IDs. You cannot merge the same records.'), 'danger');
 }
 
 if ($rec1 && $rec2 && $rec1::RECORD_TYPE !== $rec2::RECORD_TYPE) {
-	FlashMessages::addMessage(I18N::translate('Records are not the same type.  Cannot merge records that are not the same type.'), 'danger');
+	FlashMessages::addMessage(I18N::translate('Records are not the same type. Cannot merge records that are not the same type.'), 'danger');
 }
 
 // Facts found both records

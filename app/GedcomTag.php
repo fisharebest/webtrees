@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -1635,31 +1635,31 @@ class GedcomTag {
 			}
 		case '_MBON':
 			return
-				/* I18N: gedcom tag _MBON  */
+				/* I18N: gedcom tag _MBON */
 				I18N::translate('Marriage bond');
 		case '_MDCL':
 			return
-				/* I18N: gedcom tag _MDCL  */
+				/* I18N: gedcom tag _MDCL */
 				I18N::translate('Medical');
 		case '_MEDC':
 			return
-				/* I18N: gedcom tag _MEDC  */
+				/* I18N: gedcom tag _MEDC */
 				I18N::translate('Medical condition');
 		case '_MEND':
 			return
-				/* I18N: gedcom tag _MEND  */
+				/* I18N: gedcom tag _MEND */
 				I18N::translate('Marriage ending status');
 		case '_MILI':
 			return
-				/* I18N: gedcom tag _MILI  */
+				/* I18N: gedcom tag _MILI */
 				I18N::translate('Military');
 		case '_MILT':
 			return
-				/* I18N: gedcom tag _MILT  */
+				/* I18N: gedcom tag _MILT */
 				I18N::translate('Military service');
 		case '_MREL':
 			return
-				/* I18N: gedcom tag _MREL  */
+				/* I18N: gedcom tag _MREL */
 				I18N::translate('Relationship to mother');
 		case '_MSTAT':
 			return
@@ -1667,15 +1667,15 @@ class GedcomTag {
 				I18N::translate('Marriage beginning status');
 		case '_NAME':
 			return
-				/* I18N: gedcom tag _NAME  */
+				/* I18N: gedcom tag _NAME */
 				I18N::translate('Mailing name');
 		case '_NAMS':
 			return
-				/* I18N: gedcom tag _NAMS  */
+				/* I18N: gedcom tag _NAMS */
 				I18N::translate('Namesake');
 		case '_NLIV':
 			return
-				/* I18N: gedcom tag _NLIV  */
+				/* I18N: gedcom tag _NLIV */
 				I18N::translate('Not living');
 		case '_NMAR':
 			switch ($sex) {
@@ -1711,15 +1711,15 @@ class GedcomTag {
 			return I18N::translate('by');
 		case '_PRMN':
 			return
-				/* I18N: gedcom tag _PRMN  */
+				/* I18N: gedcom tag _PRMN */
 				I18N::translate('Permanent number');
 		case '_SCBK':
 			return
-				/* I18N: gedcom tag _SCBK  */
+				/* I18N: gedcom tag _SCBK */
 				I18N::translate('Scrapbook');
 		case '_SEPR':
 			return
-				/* I18N: gedcom tag _SEPR  */
+				/* I18N: gedcom tag _SEPR */
 				I18N::translate('Separated');
 		case '_SSHOW':
 			return
@@ -1727,43 +1727,43 @@ class GedcomTag {
 				I18N::translate('Slide show');
 		case '_STAT':
 			return
-				/* I18N: gedcom tag _STAT  */
+				/* I18N: gedcom tag _STAT */
 				I18N::translate('Marriage status');
 		case '_SUBQ':
 			return
-				/* I18N: gedcom tag _SUBQ  */
+				/* I18N: gedcom tag _SUBQ */
 				I18N::translate('Short version');
 		case '_TODO':
 			return
-				/* I18N: gedcom tag _TODO  */
+				/* I18N: gedcom tag _TODO */
 				I18N::translate('Research task');
 		case '_TYPE':
 			return
-				/* I18N: gedcom tag _TYPE  */
+				/* I18N: gedcom tag _TYPE */
 				I18N::translate('Media type');
 		case '_UID':
 			return
-				/* I18N: gedcom tag _UID   */
+				/* I18N: gedcom tag _UID */
 				I18N::translate('Globally unique identifier');
 		case '_URL':
 			return
-				/* I18N: gedcom tag _URL   */
+				/* I18N: gedcom tag _URL */
 				I18N::translate('URL');
 		case '_WEIG':
 			return
-				/* I18N: gedcom tag _WEIG  */
+				/* I18N: gedcom tag _WEIG */
 				I18N::translate('Weight');
 		case '_WITN':
 			return
-				/* I18N: gedcom tag _WITN  */
+				/* I18N: gedcom tag _WITN */
 				I18N::translate('Witness');
 		case '_WT_OBJE_SORT':
 			return
-				/* I18N: gedcom tag _WT_OBJE_SORT  */
+				/* I18N: gedcom tag _WT_OBJE_SORT */
 				I18N::translate('Re-order media');
 		case '_YART':
 			return
-				/* I18N: gedcom tag _YART  */
+				/* I18N: gedcom tag _YART */
 				I18N::translate('Yahrzeit');
 			// Brit milah applies only to males, no need for male/female translations
 		case '__BRTM_CHIL':
@@ -1809,7 +1809,7 @@ class GedcomTag {
 	public static function getLabelValue($tag, $value, GedcomRecord $record = null, $element = 'div') {
 		return
 			'<' . $element . ' class="fact_' . $tag . '">' .
-			/* I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation. */
+			/* I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation. */
 			I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', self::getLabel($tag, $record), $value) .
 			'</' . $element . '>';
 	}
@@ -1819,20 +1819,73 @@ class GedcomTag {
 	 *
 	 * @return string[]
 	 */
-	public static function getPicklistFacts() {
-		// Just include facts that can be used at level 1 in a record
-		$tags = array(
-			'ABBR', 'ADOP', 'AFN', 'ALIA', 'ANUL', 'ASSO', 'AUTH', 'BAPL', 'BAPM', 'BARM',
-			'BASM', 'BIRT', 'BLES', 'BURI', 'CAST', 'CENS', 'CHAN', 'CHR', 'CHRA', 'CITN',
-			'CONF', 'CONL', 'CREM', 'DEAT', 'DIV', 'DIVF', 'DSCR', 'EDUC', 'EMIG', 'ENDL',
-			'ENGA', 'EVEN', 'FACT', 'FCOM', 'FORM', 'GRAD', 'IDNO', 'IMMI', 'LEGA', 'MARB',
-			'MARC', 'MARL', 'MARR', 'MARS', 'NAME', 'NATI', 'NATU', 'NCHI', 'NICK', 'NMR',
-			'OCCU', 'ORDI', 'ORDN', 'PROB', 'PROP', 'REFN', 'RELI', 'REPO', 'RESI', 'RESN',
-			'RETI', 'RFN', 'RIN', 'SEX', 'SLGC', 'SLGS', 'SSN', 'SUBM', 'TITL', 'WILL', 'WWW',
-			'_BRTM', '_COML', '_DEG', '_EYEC', '_FNRL', '_HAIR', '_HEIG', '_HNM', '_HOL',
-			'_INTE', '_MARI', '_MBON', '_MDCL', '_MEDC', '_MILI', '_MILT', '_NAME', '_NAMS',
-			'_NLIV', '_NMAR', '_NMR', '_PRMN', '_SEPR', '_TODO', '_UID', '_WEIG', '_YART',
-		);
+	public static function getPicklistFacts($fact_type) {
+		switch ($fact_type) {
+		case 'INDI':
+			$tags = array(
+				// Facts, attributes for individuals (no links to FAMs)
+				'RESN', 'NAME', 'SEX', 'BIRT', 'CHR', 'DEAT', 'BURI', 'CREM',
+				'ADOP', 'BAPM', 'BARM', 'BASM', 'BLES', 'CHRA', 'CONF', 'FCOM', 'ORDN',
+				'NATU', 'EMIG', 'IMMI', 'CENS', 'PROB', 'WILL', 'GRAD', 'RETI', 'EVEN',
+				'CAST', 'DSCR', 'EDUC', 'IDNO', 'NATI', 'NCHI', 'NMR',
+				'OCCU', 'PROP', 'RELI', 'RESI', 'SSN', 'TITL', 'FACT',
+				'BAPL', 'CONL', 'ENDL',	'SLGC',
+				'SUBM', 'ASSO', 'ALIA', 'ANCI', 'DESI', 'RFN', 'AFN',
+				'REFN', 'RIN', 'CHAN', 'NOTE', 'SHARED_NOTE', 'SOUR', 'OBJE',
+				// non standard tags
+				'_BRTM', '_DEG', '_EYEC', '_FNRL', '_HAIR', '_HEIG', '_HNM', '_HOL',
+				'_INTE', '_MDCL', '_MEDC', '_MILI', '_MILT', '_NAME', '_NAMS',
+				'_NLIV', '_NMAR', '_PRMN',  '_TODO', '_UID', '_WEIG', '_YART',
+			);
+			break;
+		case 'FAM':
+			$tags = array(
+				// Facts for families, left out HUSB, WIFE & CHIL links
+				'RESN', 'ANUL', 'CENS', 'DIV', 'DIVF', 'ENGA', 'MARB', 'MARC',
+				'MARR', 'MARL', 'MARS', 'RESI', 'EVEN', 'NCHI', 'SUBM', 'SLGS',
+				'REFN', 'RIN', 'CHAN', 'NOTE', 'SHARED_NOTE', 'SOUR', 'OBJE',
+				// non standard tags
+				'_NMR', 'MARR_CIVIL', 'MARR_RELIGIOUS', 'MARR_PARTNERS', 'MARR_UNKNOWN',
+				'_COML', '_MBON', '_MARI', '_SEPR', '_TODO',
+			);
+		break;
+		case 'SOUR':
+			$tags = array(
+				// Facts for sources
+				'DATA', 'AUTH', 'TITL', 'ABBR', 'PUBL', 'TEXT', 'REPO', 'REFN', 'RIN',
+				'CHAN', 'NOTE', 'SHARED_NOTE', 'OBJE',
+				'RESN',
+			);
+			break;
+		case 'REPO':
+			$tags = array(
+				// Facts for repositories
+				'NAME', 'ADDR', 'PHON', 'EMAIL', 'FAX', 'WWW',
+				'NOTE', 'SHARED_NOTE', 'REFN', 'RIN', 'CHAN',
+				'RESN',
+			);
+			break;
+		case 'PLAC':
+			$tags = array(
+				// Facts for places
+				'FONE', 'ROMN',
+				// non standard tags
+				'_HEB',
+			);
+			break;
+		case 'NAME':
+			$tags = array(
+				// Facts subordinate to NAME
+				'NICK', 'FONE', 'ROMN',
+				// non standard tags
+				'_HEB', '_AKA',
+			);
+			break;
+		default:
+			$tags = array();
+			break;
+		}
+
 		$facts = array();
 		foreach ($tags as $tag) {
 			$facts[$tag] = self::getLabel($tag, null);

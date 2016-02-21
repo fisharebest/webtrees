@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -54,7 +54,7 @@ class JewishDate extends CalendarDate {
 	/**
 	 * Generate the %y format for a date.
 	 *
-	 * NOTE Short year is NOT a 2-digit year.  It is for calendars such as hebrew
+	 * NOTE Short year is NOT a 2-digit year. It is for calendars such as hebrew
 	 * which have a 3-digit form of 4-digit years.
 	 *
 	 * @return string
@@ -245,7 +245,7 @@ class JewishDate extends CalendarDate {
 	}
 
 	/**
-	 * Which months follows this one?  Calendars with leap-months should provide their own implementation.
+	 * Which months follows this one? Calendars with leap-months should provide their own implementation.
 	 *
 	 * @return int[]
 	 */

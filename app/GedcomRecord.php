@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -121,8 +121,8 @@ class GedcomRecord {
 	}
 
 	/**
-	 * Get an instance of a GedcomRecord object.  For single records,
-	 * we just receive the XREF.  For bulk records (such as lists
+	 * Get an instance of a GedcomRecord object. For single records,
+	 * we just receive the XREF. For bulk records (such as lists
 	 * and search results) we can receive the GEDCOM data as well.
 	 *
 	 * @param string      $xref
@@ -236,7 +236,7 @@ class GedcomRecord {
 	 * @return null|string
 	 */
 	protected static function fetchGedcomRecord($xref, $tree_id) {
-		// We don't know what type of object this is.  Try each one in turn.
+		// We don't know what type of object this is. Try each one in turn.
 		$data = Individual::fetchGedcomRecord($xref, $tree_id);
 		if ($data) {
 			return $data;
@@ -457,7 +457,7 @@ class GedcomRecord {
 
 			return $this->disp_none;
 		case Auth::PRIV_HIDE: // hidden from admins
-			// We use this value to bypass privacy checks.  For example,
+			// We use this value to bypass privacy checks. For example,
 			// when downloading data or when calculating privacy itself.
 			return true;
 		default:
@@ -492,7 +492,7 @@ class GedcomRecord {
 
 	/**
 	 * Remove private data from the raw gedcom record.
-	 * Return both the visible and invisible data.  We need the invisible data when editing.
+	 * Return both the visible and invisible data. We need the invisible data when editing.
 	 *
 	 * @param int $access_level
 	 *
@@ -533,8 +533,8 @@ class GedcomRecord {
 	}
 
 	/**
-	 * Convert a name record into sortable and full/display versions.  This default
-	 * should be OK for simple record types.  INDI/FAM records will need to redefine it.
+	 * Convert a name record into sortable and full/display versions. This default
+	 * should be OK for simple record types. INDI/FAM records will need to redefine it.
 	 *
 	 * @param string $type
 	 * @param string $value
@@ -602,7 +602,7 @@ class GedcomRecord {
 			if ($this->canShowName()) {
 				// Ask the record to extract its names
 				$this->extractNames();
-				// No name found?  Use a fallback.
+				// No name found? Use a fallback.
 				if (!$this->_getAllNames) {
 					$this->addName(static::RECORD_TYPE, $this->getFallBackName(), null);
 				}
@@ -737,7 +737,7 @@ class GedcomRecord {
 	}
 
 	/**
-	 * Get a sortable version of the name.  Do not display this!
+	 * Get a sortable version of the name. Do not display this!
 	 *
 	 * @return string
 	 */
@@ -1137,7 +1137,7 @@ class GedcomRecord {
 			if ($sorting) {
 				return '0';
 			} else {
-				return '&nbsp;';
+				return '';
 			}
 		}
 	}

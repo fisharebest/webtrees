@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,23 +28,23 @@ $controller
 
 ?>
 <div id="lifespan-page">
-	<h2><?php echo I18N::translate('Lifespans');?></h2>
+	<h2><?php echo I18N::translate('Lifespans') ?></h2>
 
 	<form>
 		<table class="list_table">
 			<tbody>
 				<tr>
 					<th class="descriptionbox" colspan="4">
-						<?php echo I18N::translate('Select individuals by place or date');?>
+						<?php echo I18N::translate('Select individuals by place or date') ?>
 					</th>
 					<th class="descriptionbox" colspan="2">
-						<?php echo I18N::translate('Add individuals');?>
+						<?php echo I18N::translate('Add individuals') ?>
 					</th>
 				</tr>
 				<tr>
 					<td class="optionbox">
 						<label for="place">
-							<?php echo GedcomTag::getLabel('PLAC'); ?>
+							<?php echo GedcomTag::getLabel('PLAC') ?>
 						</label>
 					</td>
 					<td class="optionbox" colspan="3">
@@ -52,18 +52,18 @@ $controller
 					</td>
 					<td class="optionbox">
 						<label for="newpid">
-							<?php echo I18N::translate('Individual'); ?>
+							<?php echo I18N::translate('Individual') ?>
 						</label>
 					</td>
 					<td class="optionbox">
-						<input id="newpid" class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" name="newpid"><?php echo FunctionsPrint::printFindIndividualLink('newpid'); ?>
+						<input id="newpid" class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" name="newpid"><?php echo FunctionsPrint::printFindIndividualLink('newpid') ?>
 
 					</td>
 				</tr>
 				<tr>
 					<td class="optionbox">
 						<label for="beginYear">
-							<?php echo /* I18N: The earliest year in a range */ I18N::translate('Start year'); ?>
+							<?php echo /* I18N: The earliest year in a range */ I18N::translate('Start year') ?>
 						</label>
 					</td>
 					<td class="optionbox">
@@ -71,7 +71,7 @@ $controller
 					</td>
 					<td class="optionbox">
 						<label for="endYear">
-							<?php echo /* I18N: The latest year in a range */ I18N::translate('End year'); ?>
+							<?php echo /* I18N: The latest year in a range */ I18N::translate('End year') ?>
 						</label>
 					</td>
 					<td class="optionbox">
@@ -80,31 +80,31 @@ $controller
 					<td class="optionbox" colspan="2">
 						<label for="addFamily">
 							<input id="addFamily" type="checkbox" value="yes" name="addFamily">
-							<?php echo I18N::translate('Include the individual’s immediate family?'); ?>
+							<?php echo I18N::translate('Include the individual’s immediate family?') ?>
 						</label>
 					</td>
 				</tr>
 				<tr>
 					<td class="optionbox">
 						<label for="calendar">
-							<?php echo I18N::translate('Calendar'); ?>
+							<?php echo I18N::translate('Calendar') ?>
 						</label>
 					</td>
 					<td class="optionbox">
 						<select id="calendar" name="calendar">
-							<?php echo $controller->getCalendarOptionList();?>
+							<?php echo $controller->getCalendarOptionList() ?>
 						</select>
 					</td>
 					<td class="optionbox" colspan="2">
 						<label for="strictDate">
 							<input id="strictDate" type="checkbox" value="yes" name="strictDate">
-							<?php echo I18N::translate('Match calendar'); ?>
+							<?php echo I18N::translate('Match calendar') ?>
 						</label>
 					</td>
 					<th class="descriptionbox" colspan="2">
 						<input id="clear" type="hidden" name="clear" value=0>
-						<input type="reset" value="<?php echo /* I18N: Button label */ I18N::translate('reset'); ?>">
-						<input type="submit" value="<?php /* I18N: Button label */ echo I18N::translate('show'); ?>">
+						<input type="reset" value="<?php echo /* I18N: Button label */ I18N::translate('reset') ?>">
+						<input type="submit" value="<?php echo /* I18N: Button label */ I18N::translate('show') ?>">
 					</th>
 				</tr>
 			</tbody>
@@ -112,12 +112,12 @@ $controller
 	</form>
 
 	<div id="lifespan-chart">
-		<h4><?php echo $controller->subtitle;?></h4>
+		<h4><?php echo $controller->subtitle ?></h4>
 		<div id="lifespan-scale">
-			<?php $controller->printTimeline(); ?>
+			<?php $controller->printTimeline() ?>
 		</div>
 		<div id="lifespan-people">
-			<?php $maxY = $controller->fillTimeline(); ?>
+			<?php $maxY = $controller->fillTimeline() ?>
 		</div>
 	</div>
 </div>

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -118,14 +118,14 @@ if (!isset($_POST['lang'])) {
 	$disable_functions = preg_split('/ *, */', ini_get('disable_functions'));
 	foreach (array('parse_ini_file') as $function) {
 		if (in_array($function, $disable_functions)) {
-			echo '<p class="bad">', /* I18N: %s is a PHP function/module/setting */ I18N::translate('%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it.', $function . '()'), '</p>';
+			echo '<p class="bad">', /* I18N: %s is a PHP function/module/setting */ I18N::translate('%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it.', $function . '()'), '</p>';
 			$errors = true;
 		}
 	}
 	// Mandatory extensions
 	foreach (array('pcre', 'pdo', 'pdo_mysql', 'session', 'iconv') as $extension) {
 		if (!extension_loaded($extension)) {
-			echo '<p class="bad">', I18N::translate('PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it.', $extension), '</p>';
+			echo '<p class="bad">', I18N::translate('PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it.', $extension), '</p>';
 			$errors = true;
 		}
 	}
@@ -136,7 +136,7 @@ if (!isset($_POST['lang'])) {
 		'simplexml' => /* I18N: a program feature */ I18N::translate('reporting'),
 	) as $extension => $features) {
 		if (!extension_loaded($extension)) {
-			echo '<p class="bad">', I18N::translate('PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it.', $extension, $features), '</p>';
+			echo '<p class="bad">', I18N::translate('PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it.', $extension, $features), '</p>';
 			$warnings = true;
 		}
 	}
@@ -145,7 +145,7 @@ if (!isset($_POST['lang'])) {
 		'file_uploads' => /* I18N: a program feature */ I18N::translate('file upload capability'),
 	) as $setting => $features) {
 		if (!ini_get($setting)) {
-			echo '<p class="bad">', I18N::translate('PHP setting “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it.', $setting, $features), '</p>';
+			echo '<p class="bad">', I18N::translate('PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it.', $setting, $features), '</p>';
 			$warnings = true;
 		}
 	}
@@ -155,7 +155,7 @@ if (!isset($_POST['lang'])) {
 	echo '<h2>', I18N::translate('Checking server capacity'), '</h2>';
 	// Previously, we tried to determine the maximum value that we could set for these values.
 	// However, this is unreliable, especially on servers with custom restrictions.
-	// Now, we just show the default values.  These can (hopefully!) be changed using the
+	// Now, we just show the default values. These can (hopefully!) be changed using the
 	// site settings page.
 	$memory_limit = ini_get('memory_limit');
 	if (substr_compare($memory_limit, 'M', -1) === 0) {
@@ -183,7 +183,7 @@ if (!isset($_POST['lang'])) {
 		'</p><p>',
 		I18N::translate('If you try to exceed these limits, you may experience server time-outs and blank pages.'),
 		'</p><p>',
-		I18N::translate('If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page.  Otherwise, you will need to contact your server’s administrator.'),
+		I18N::translate('If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator.'),
 		'</p>';
 	if (!$errors) {
 		echo '<br><hr><input type="submit" id="btncontinue" value="', /* I18N: button label */ I18N::translate('continue'), '">';
@@ -209,7 +209,7 @@ try {
 
 if ($text1 !== $text2) {
 	echo '<h2>', realpath(WT_DATA_DIR), '</h2>';
-	echo '<p class="bad">', I18N::translate('Oops!  webtrees was unable to create files in this folder.'), '</p>';
+	echo '<p class="bad">', I18N::translate('Oops! webtrees was unable to create files in this folder.'), '</p>';
 	echo '<p>', I18N::translate('This usually means that you need to change the folder permissions to 777.'), '</p>';
 	echo '<p>', I18N::translate('You must change this before you can continue.'), '</p>';
 	echo '<br><hr><input type="submit" id="btncontinue" value="', I18N::translate('continue'), '">';
@@ -254,7 +254,7 @@ try {
 	Database::exec("SET NAMES 'utf8'");
 	$row = Database::prepare("SHOW VARIABLES LIKE 'VERSION'")->fetchOneRow();
 	if (version_compare($row->value, WT_REQUIRED_MYSQL_VERSION, '<')) {
-		echo '<p class="bad">', I18N::translate('This database is only running MySQL version %s.  You cannot install webtrees here.', $row->value), '</p>';
+		echo '<p class="bad">', I18N::translate('This database is only running MySQL version %s. You cannot install webtrees here.', $row->value), '</p>';
 	} else {
 		$db_version_ok = true;
 	}
@@ -263,7 +263,7 @@ try {
 	if ($_POST['dbuser']) {
 		// If we’ve supplied a login, then show the error
 		echo
-			'<p class="bad">', I18N::translate('Unable to connect using these settings.  Your server gave the following error.'), '</p>',
+			'<p class="bad">', I18N::translate('Unable to connect using these settings. Your server gave the following error.'), '</p>',
 			'<pre>', $ex->getMessage(), '</pre>',
 			'<p class="bad">', I18N::translate('Check the settings and try again.'), '</p>';
 	}
@@ -278,7 +278,7 @@ if (empty($_POST['dbuser']) || !Database::isConnected() || !$db_version_ok) {
 		'<table border="0"><tr><td>',
 		I18N::translate('Server name'), '</td><td>',
 		'<input type="text" name="dbhost" value="', Filter::escapeHtml($_POST['dbhost']), '" dir="ltr"></td><td>',
-		I18N::translate('Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server.'),
+		I18N::translate('Most sites are configured to use localhost. This means that your database runs on the same computer as your web server.'),
 		'</td></tr><tr><td>',
 		I18N::translate('Port number'), '</td><td>',
 		'<input type="text" name="dbport" value="', Filter::escapeHtml($_POST['dbport']), '"></td><td>',
@@ -335,7 +335,7 @@ if ($DBNAME && $DBNAME == $_POST['dbname'] && $TBLPREFIX == $_POST['tblpfx']) {
 		$dbname_ok = true;
 	} catch (PDOException $ex) {
 		echo
-			'<p class="bad">', I18N::translate('Unable to connect using these settings.  Your server gave the following error.'), '</p>',
+			'<p class="bad">', I18N::translate('Unable to connect using these settings. Your server gave the following error.'), '</p>',
 			'<pre>', $ex->getMessage(), '</pre>',
 			'<p class="bad">', I18N::translate('Check the settings and try again.'), '</p>';
 	}
@@ -347,10 +347,10 @@ if ($dbname_ok) {
 		// PhpGedView (4.2.3 and earlier) and many other applications have a USERS table.
 		// webtrees has a USER table
 		Database::prepare("SELECT COUNT(*) FROM `##users`")->fetchOne();
-		echo '<p class="bad">', I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
+		echo '<p class="bad">', I18N::translate('This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok = false;
 	} catch (PDOException $ex) {
-		// Table not found?  Good!
+		// Table not found? Good!
 	}
 }
 if ($dbname_ok) {
@@ -358,26 +358,26 @@ if ($dbname_ok) {
 		// PhpGedView (4.2.4 and later) has a site_setting.site_setting_name column.
 		// [We changed the column name in webtrees, so we can tell the difference!]
 		Database::prepare("SELECT site_setting_value FROM `##site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'")->fetchOne();
-		echo '<p class="bad">', I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
+		echo '<p class="bad">', I18N::translate('This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok = false;
 	} catch (PDOException $ex) {
-		// Table/column not found?  Good!
+		// Table/column not found? Good!
 	}
 }
 
 if (!$dbname_ok) {
 	echo
 		'<h2>', I18N::translate('Database and table names'), '</h2>',
-		'<p>', I18N::translate('A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges).'), '</p>',
+		'<p>', I18N::translate('A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges).'), '</p>',
 		'<fieldset><legend>', I18N::translate('Database name'), '</legend>',
 		'<table border="0"><tr><td>',
 		I18N::translate('Database name'), '</td><td>',
 		'<input type="text" name="dbname" value="', Filter::escapeHtml($_POST['dbname']), '" autofocus></td><td>',
-		I18N::translate('This is case sensitive.  If a database with this name does not already exist webtrees will attempt to create one for you.  Success will depend on permissions set for your web server, but you will be notified if this fails.'),
+		I18N::translate('This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'),
 		'</td></tr><tr><td>',
 		I18N::translate('Table prefix'), '</td><td>',
 		'<input type="text" name="tblpfx" value="', Filter::escapeHtml($_POST['tblpfx']), '"></td><td>',
-		I18N::translate('The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want.'),
+		I18N::translate('The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want.'),
 		'</td></tr></table>',
 		'</fieldset>',
 		'<br><hr><input type="submit" id="btncontinue" value="', I18N::translate('continue'), '">',
@@ -422,7 +422,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 	echo
 		'<h2>', I18N::translate('System settings'), '</h2>',
 		'<h3>', I18N::translate('Administrator account'), '</h3>',
-		'<p>', I18N::translate('You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password.'), '</p>',
+		'<p>', I18N::translate('You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password.'), '</p>',
 		'<fieldset><legend>', I18N::translate('Administrator account'), '</legend>',
 		'<table border="0"><tr><td>',
 		I18N::translate('Your name'), '</td><td>',
@@ -435,9 +435,8 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'</td></tr><tr><td>',
 		I18N::translate('Password'), '</td><td>',
 		'<input type="password" name="wtpass" value="', Filter::escapeHtml($_POST['wtpass']), '"></td><td>',
-		I18N::translate('This must be at least six characters long.  It is case-sensitive.'),
-		'</td></tr><tr><td>',
-		'&nbsp;', '</td><td>',
+		I18N::translate('This must be at least six characters long. It is case-sensitive.'),
+		'</td></tr><tr><td></td><td>',
 		'<input type="password" name="wtpass2" value="', Filter::escapeHtml($_POST['wtpass2']), '"></td><td>',
 		I18N::translate('Type your password again, to make sure you have typed it correctly.'),
 		'</td></tr><tr><td>',
@@ -462,7 +461,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Step six  We have a database connection and a writable folder.  Do it!
+// Step six  We have a database connection and a writable folder. Do it!
 ////////////////////////////////////////////////////////////////////////////////
 
 try {
@@ -478,7 +477,7 @@ try {
 	$admin->setPreference('auto_accept', '0');
 	$admin->setPreference('visibleonline', '1');
 
-	// Write the config file.  We already checked that this would work.
+	// Write the config file. We already checked that this would work.
 	$config_ini_php =
 		'; <' . '?php exit; ?' . '> DO NOT DELETE THIS LINE' . PHP_EOL .
 		'dbhost="' . addcslashes($_POST['dbhost'], '"') . '"' . PHP_EOL .
@@ -497,5 +496,5 @@ try {
 	echo
 		'<p class="bad">', I18N::translate('An unexpected database error occurred.'), '</p>',
 		'<pre>', $ex->getMessage(), '</pre>',
-		'<p class="info">', I18N::translate('The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
+		'<p class="info">', I18N::translate('The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem.'), '</p>';
 }

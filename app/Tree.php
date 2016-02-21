@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,7 +51,7 @@ class Tree {
 	private $user_preferences = array();
 
 	/**
-	 * Create a tree object.  This is a private constructor - it can only
+	 * Create a tree object. This is a private constructor - it can only
 	 * be called from Tree::getAll() to ensure proper initialisation.
 	 *
 	 * @param int    $tree_id
@@ -489,7 +489,7 @@ class Tree {
 
 		// Genealogy data
 		// It is simpler to create a temporary/unimported GEDCOM than to populate all the tables...
-		$john_doe = /* I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname. */
+		$john_doe = /* I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname. */
 			I18N::translate('John /DOE/');
 		$note     = I18N::translate('Edit this individual and replace their details with your own.');
 		Database::prepare("INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)")->execute(array(
@@ -518,7 +518,7 @@ class Tree {
 
 	/**
 	 * Delete all the genealogy data from a tree - in preparation for importing
-	 * new data.  Optionally retain the media data, for when the user has been
+	 * new data. Optionally retain the media data, for when the user has been
 	 * editing their data offline using an application which deletes (or does not
 	 * support) media data.
 	 *
@@ -617,15 +617,15 @@ class Tree {
 	 * @throws \Exception
 	 */
 	public function importGedcomFile($path, $filename) {
-		// Read the file in blocks of roughly 64K.  Ensure that each block
-		// contains complete gedcom records.  This will ensure we don’t split
+		// Read the file in blocks of roughly 64K. Ensure that each block
+		// contains complete gedcom records. This will ensure we don’t split
 		// multi-byte characters, as well as simplifying the code to import
 		// each block.
 
 		$file_data = '';
 		$fp        = fopen($path, 'rb');
 
-		// Don’t allow the user to cancel the request.  We do not want to be left with an incomplete transaction.
+		// Don’t allow the user to cancel the request. We do not want to be left with an incomplete transaction.
 		ignore_user_abort(true);
 
 		Database::beginTransaction();
@@ -683,7 +683,7 @@ class Tree {
 		}
 
 		do {
-			// Use LAST_INSERT_ID(expr) to provide a transaction-safe sequence.  See
+			// Use LAST_INSERT_ID(expr) to provide a transaction-safe sequence. See
 			// http://dev.mysql.com/doc/refman/5.6/en/information-functions.html#function_last-insert-id
 			$statement = Database::prepare(
 				"UPDATE `##next_id` SET next_id = LAST_INSERT_ID(next_id + 1) WHERE record_type = :record_type AND gedcom_id = :tree_id"
@@ -753,7 +753,7 @@ class Tree {
 			throw new \Exception('Evil line endings found in GedcomRecord::createRecord(' . $gedcom . ')');
 		}
 
-		// webtrees creates XREFs containing digits.  Anything else (e.g. “new”) is just a placeholder.
+		// webtrees creates XREFs containing digits. Anything else (e.g. “new”) is just a placeholder.
 		if (!preg_match('/\d/', $xref)) {
 			$xref   = $this->getNewXref($type);
 			$gedcom = preg_replace('/^0 @(' . WT_REGEX_XREF . ')@/', '0 @' . $xref . '@', $gedcom);
@@ -780,7 +780,7 @@ class Tree {
 		if (Auth::user()->getPreference('auto_accept')) {
 			FunctionsImport::acceptAllChanges($xref, $this->tree_id);
 		}
-		// Return the newly created record.  Note that since GedcomRecord
+		// Return the newly created record. Note that since GedcomRecord
 		// has a cache of pending changes, we cannot use it to create a
 		// record with a newly created pending change.
 		return GedcomRecord::getInstance($xref, $this, $gedcom);

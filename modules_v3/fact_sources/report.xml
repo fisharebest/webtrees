@@ -297,7 +297,7 @@
 					<if condition="@SOUR:DATA:TEXT!=''">
 						<br /><GedcomValue tag="SOUR:DATA:TEXT"/>
 					</if>
-				</Cell>	
+				</Cell>
 			</List>
 
 			<!-- Print the list counter -->

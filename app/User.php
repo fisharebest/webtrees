@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -60,7 +60,41 @@ class User {
 	}
 
 	/**
-	 * Find the user with a specified user_id.
+	 * Find the user with a specified user_name.
+	 *
+	 * @param string $user_name
+	 *
+	 * @return User|null
+	 */
+	public static function findByUserName($user_name) {
+		$user_id = Database::prepare(
+			"SELECT SQL_CACHE user_id FROM `##user` WHERE user_name = :user_name"
+		)->execute(array(
+			'user_name' => $user_name,
+		))->fetchOne();
+
+		return self::find($user_id);
+	}
+
+	/**
+	 * Find the user with a specified email address.
+	 *
+	 * @param string $email
+	 *
+	 * @return User|null
+	 */
+	public static function findByEmail($email) {
+		$user_id = Database::prepare(
+			"SELECT SQL_CACHE user_id FROM `##user` WHERE email = :email"
+		)->execute(array(
+			'email' => $email,
+		))->fetchOne();
+
+		return self::find($user_id);
+	}
+
+	/**
+	 * Find the user with a specified user_name or email address.
 	 *
 	 * @param string $identifier
 	 *
@@ -268,7 +302,7 @@ class User {
 		Database::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute(array($this->user_id));
 		Database::prepare("DELETE FROM `##block` WHERE user_id=?")->execute(array($this->user_id));
 		Database::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute(array($this->user_id));
-		Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name in ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute(array($this->user_id));
+		Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name IN ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute(array($this->user_id));
 		Database::prepare("DELETE FROM `##user_setting` WHERE user_id=?")->execute(array($this->user_id));
 		Database::prepare("DELETE FROM `##message` WHERE user_id=?")->execute(array($this->user_id));
 		Database::prepare("DELETE FROM `##user` WHERE user_id=?")->execute(array($this->user_id));
@@ -427,7 +461,7 @@ class User {
 					"SELECT SQL_CACHE setting_name, setting_value FROM `##user_setting` WHERE user_id = ?"
 				)->execute(array($this->user_id))->fetchAssoc();
 			} else {
-				// Not logged in?  We have no preferences.
+				// Not logged in? We have no preferences.
 				$this->preferences = array();
 			}
 		}

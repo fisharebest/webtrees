@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -48,7 +48,7 @@ class CensusOfUnitedStates1910Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSexMF', $columns[2]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[3]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAge', $columns[4]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionUs', $columns[5]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnYearsMarried', $columns[6]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnChildrenBornAlive', $columns[7]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnChildrenLiving', $columns[8]);
@@ -78,24 +78,24 @@ class CensusOfUnitedStates1910Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('Sex', $columns[2]->abbreviation());
 		$this->assertSame('Race', $columns[3]->abbreviation());
 		$this->assertSame('Age', $columns[4]->abbreviation());
-		$this->assertSame('Condition', $columns[5]->abbreviation());
+		$this->assertSame('Cond', $columns[5]->abbreviation());
 		$this->assertSame('Marr', $columns[6]->abbreviation());
 		$this->assertSame('Chil', $columns[7]->abbreviation());
 		$this->assertSame('Chil', $columns[8]->abbreviation());
-		$this->assertSame('Birthplace', $columns[9]->abbreviation());
-		$this->assertSame('Father’s birthplace', $columns[10]->abbreviation());
-		$this->assertSame('Mother’s birthplace', $columns[11]->abbreviation());
+		$this->assertSame('BP', $columns[9]->abbreviation());
+		$this->assertSame('FBP', $columns[10]->abbreviation());
+		$this->assertSame('MBP', $columns[11]->abbreviation());
 		$this->assertSame('Imm', $columns[12]->abbreviation());
 		$this->assertSame('Nat', $columns[13]->abbreviation());
-		$this->assertSame('Language', $columns[14]->abbreviation());
+		$this->assertSame('Lang', $columns[14]->abbreviation());
 		$this->assertSame('Occupation', $columns[15]->abbreviation());
 		$this->assertSame('Ind', $columns[16]->abbreviation());
 		$this->assertSame('Emp', $columns[17]->abbreviation());
-		$this->assertSame('Unemployed', $columns[18]->abbreviation());
-		$this->assertSame('Unemployed', $columns[19]->abbreviation());
-		$this->assertSame('Read', $columns[20]->abbreviation());
-		$this->assertSame('Write', $columns[21]->abbreviation());
-		$this->assertSame('School', $columns[22]->abbreviation());
+		$this->assertSame('Unemp', $columns[18]->abbreviation());
+		$this->assertSame('Unemp', $columns[19]->abbreviation());
+		$this->assertSame('R', $columns[20]->abbreviation());
+		$this->assertSame('W', $columns[21]->abbreviation());
+		$this->assertSame('Sch', $columns[22]->abbreviation());
 		$this->assertSame('Home', $columns[23]->abbreviation());
 		$this->assertSame('Mort', $columns[24]->abbreviation());
 		$this->assertSame('Farm', $columns[25]->abbreviation());

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -198,7 +198,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 									?>
 									</label>
 									<br>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<?php echo I18N::translate('Number of generations'); ?>
 									<input type="text" size="5" name="level1" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestors');">
 								</td>
@@ -216,7 +215,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										?>
 									</label>
 									<br >
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<?php echo I18N::translate('Number of generations'); ?>
 									<input type="text" size="5" name="level2" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestorsfamilies');">
 								</td>
@@ -234,7 +232,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										?>
 									</label>
 									<br >
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<?php echo I18N::translate('Number of generations'); ?>
 									<input type="text" size="5" name="level3" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('descendants');">
 								</td>
@@ -296,7 +293,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 
 			if (!$cart[$WT_TREE->getTreeId()]) {
 				if ($clip_ctrl->action != 'add') {
-					echo I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>');
+					echo I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>');
 					?>
 					<form method="get" name="addin" action="module.php">
 					<input type="hidden" name="mod" value="clippings">
@@ -346,7 +343,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 					<tr><td colspan="2" class="topbottombar"><h2><?php echo I18N::translate('Download'); ?></h2></td></tr>
 					<tr>
 						<td class="descriptionbox width50 wrap">
-							<?php echo I18N::translate('To reduce the size of the download, you can compress the data into a .ZIP file.  You will need to uncompress the .ZIP file before you can use it.'); ?>
+							<?php echo I18N::translate('To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it.'); ?>
 						</td>
 						<td class="optionbox wrap">
 							<input type="checkbox" name="Zip" value="yes">
@@ -359,7 +356,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 						</td>
 					<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes"></td></tr>
 
-					<?php if (Auth::isManager($WT_TREE)) {	?>
+					<?php if (Auth::isManager($WT_TREE)) { ?>
 						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'); ?></td>
 						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="none" checked> <?php echo I18N::translate('None'); ?><br>
@@ -472,7 +469,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	}
 
 	/**
-	 * The user can re-order menus.  Until they do, they are shown in this order.
+	 * The user can re-order menus. Until they do, they are shown in this order.
 	 *
 	 * @return int
 	 */
@@ -697,17 +694,17 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 			$out .=
 				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . '</td>' .
 				'<td class="optionbox">' .
-				'	<input type="radio" name="privatize_export" value="none" checked> ' . I18N::translate('None') . '<br>' .
-				'	<input type="radio" name="privatize_export" value="gedadmin"> ' . I18N::translate('Manager') . '<br>' .
-				'	<input type="radio" name="privatize_export" value="user"> ' . I18N::translate('Member') . '<br>' .
-				'	<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
+				'<input type="radio" name="privatize_export" value="none" checked> ' . I18N::translate('None') . '<br>' .
+				'<input type="radio" name="privatize_export" value="gedadmin"> ' . I18N::translate('Manager') . '<br>' .
+				'<input type="radio" name="privatize_export" value="user"> ' . I18N::translate('Member') . '<br>' .
+				'<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
 				'</td></tr>';
 		} elseif (Auth::isMember($WT_TREE)) {
 			$out .=
 				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . '</td>' .
 				'<td class="list_value">' .
-				'	<input type="radio" name="privatize_export" value="user" checked> ' . I18N::translate('Member') . '<br>' .
-				'	<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
+				'<input type="radio" name="privatize_export" value="user" checked> ' . I18N::translate('Member') . '<br>' .
+				'<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
 				'</td></tr>';
 		}
 

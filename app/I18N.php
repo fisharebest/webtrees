@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -156,7 +156,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function dateFormat() {
-		return /* I18N: This is the format string for full dates.  See http://php.net/date for codes */ self::$translator->translate('%j %F %Y');
+		return /* I18N: This is the format string for full dates. See http://php.net/date for codes */ self::$translator->translate('%j %F %Y');
 	}
 
 	/**
@@ -218,9 +218,9 @@ class I18N {
 		return
 			'"language": {' .
 			' "paginate": {' .
-			'  "first":    "' . /* I18N: button label, first page    */ self::translate('first') . '",' .
-			'  "last":     "' . /* I18N: button label, last page     */ self::translate('last') . '",' .
-			'  "next":     "' . /* I18N: button label, next page     */ self::translate('next') . '",' .
+			'  "first":    "' . /* I18N: button label, first page */ self::translate('first') . '",' .
+			'  "last":     "' . /* I18N: button label, last page */ self::translate('last') . '",' .
+			'  "next":     "' . /* I18N: button label, next page */ self::translate('next') . '",' .
 			'  "previous": "' . /* I18N: button label, previous page */ self::translate('previous') . '"' .
 			' },' .
 			' "emptyTable":     "' . self::translate('No records to display') . '",' .
@@ -283,13 +283,13 @@ class I18N {
 	public static function gedcomAge($string) {
 		switch ($string) {
 			case 'STILLBORN':
-				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (stillborn)
+				// I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (stillborn)
 				return self::translate('(stillborn)');
 			case 'INFANT':
-				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in infancy)
+				// I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in infancy)
 				return self::translate('(in infancy)');
 			case 'CHILD':
-				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in childhood)
+				// I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
 				return self::translate('(in childhood)');
 		}
 		$age = array();
@@ -318,13 +318,13 @@ class I18N {
 		}
 		if ($age) {
 			if (!substr_compare($string, '<', 0, 1)) {
-				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged less than 21 years)
+				// I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 				return self::translate('(aged less than %s)', $age);
 			} elseif (!substr_compare($string, '>', 0, 1)) {
-				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged more than 21 years)
+				// I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
 				return self::translate('(aged more than %s)', $age);
 			} else {
-				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged 43 years)
+				// I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 				return self::translate('(aged %s)', $age);
 			}
 		} else {
@@ -386,7 +386,7 @@ class I18N {
 
 		// Load the translation file(s)
 		// Note that glob() returns false instead of an empty array when open_basedir_restriction
-		// is in force and no files are found.  See PHP bug #47358.
+		// is in force and no files are found. See PHP bug #47358.
 		if (defined('GLOB_BRACE')) {
 			$translation_files = array_merge(
 				array(WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'),
@@ -421,7 +421,7 @@ class I18N {
 				$translation  = new Translation($translation_file);
 				$translations = array_merge($translations, $translation->asArray());
 			}
-			if ($cache_dir_exists) { // During setup, we may not have been able to create it.
+			if ($cache_dir_exists && is_writeable($cache_file)) { // During setup, we may not have been able to create it.
 				file_put_contents($cache_file, '<' . '?php return ' . var_export($translations, true) . ';');
 			}
 		} else {
@@ -763,7 +763,7 @@ class I18N {
 					return $range[0];
 				}
 			}
-			// Not a recognised script.  Maybe punctuation, spacing, etc.  Keep looking.
+			// Not a recognised script. Maybe punctuation, spacing, etc. Keep looking.
 			$pos += $chrlen;
 		}
 
@@ -771,7 +771,7 @@ class I18N {
 	}
 
 	/**
-	 * Convert a number of seconds into a relative time.  For example, 630 => "10 hours, 30 minutes ago"
+	 * Convert a number of seconds into a relative time. For example, 630 => "10 hours, 30 minutes ago"
 	 *
 	 * @param int $seconds
 	 *
@@ -815,7 +815,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function timeFormat() {
-		return /* I18N: This is the format string for the time-of-day.  See http://php.net/date for codes */ self::$translator->translate('%H:%i:%s');
+		return /* I18N: This is the format string for the time-of-day. See http://php.net/date for codes */ self::$translator->translate('%H:%i:%s');
 	}
 
 	/**
@@ -837,7 +837,7 @@ class I18N {
 	 * Context sensitive version of translate.
 	 *
 	 * echo I18N::translateContext('NOMINATIVE', 'January');
-	 * echo I18N::translateContext('GENITIVE',   'January');
+	 * echo I18N::translateContext('GENITIVE', 'January');
 	 *
 	 * @return string
 	 */

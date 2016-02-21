@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,10 @@ class CensusColumnSurnameGivenNameInitialTest extends \PHPUnit_Framework_TestCas
 	public function testOneGivenName() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getAllNames')->andReturn(array(array('givn' => 'Joe', 'surn' => 'Sixpack')));
+		$individual->shouldReceive('getSpouseFamilies')->andReturn(array());
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+		$census->shouldReceive('censusDate')->andReturn('');
 
 		$column = new CensusColumnSurnameGivenNameInitial($census, '', '');
 
@@ -52,26 +54,13 @@ class CensusColumnSurnameGivenNameInitialTest extends \PHPUnit_Framework_TestCas
 	public function testMultipleGivenNames() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getAllNames')->andReturn(array(array('givn' => 'Joe Fred', 'surn' => 'Sixpack')));
+		$individual->shouldReceive('getSpouseFamilies')->andReturn(array());
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+		$census->shouldReceive('censusDate')->andReturn('');
 
 		$column = new CensusColumnSurnameGivenNameInitial($census, '', '');
 
 		$this->assertSame('Sixpack, Joe F', $column->generate($individual));
-	}
-
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testNoName() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getAllNames')->andReturn(array());
-
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-
-		$column = new CensusColumnSurnameGivenNameInitial($census, '', '');
-
-		$this->assertSame('', $column->generate($individual));
 	}
 }

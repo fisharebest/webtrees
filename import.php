@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,7 +37,7 @@ $controller = new AjaxController;
 $controller
 	->pageHeader();
 
-// Don't allow the user to cancel the request.  We do not want to be left
+// Don't allow the user to cancel the request. We do not want to be left
 // with an incomplete transaction.
 ignore_user_abort(true);
 
@@ -57,7 +57,7 @@ $row = Database::prepare(
 
 if ($row->import_offset == $row->import_total) {
 	Tree::findById($gedcom_id)->setPreference('imported', '1');
-	// Finished?  Show the maintenance links, similar to admin_trees_manage.php
+	// Finished? Show the maintenance links, similar to admin_trees_manage.php
 	Database::commit();
 	$controller->addInlineJavascript(
 		'jQuery("#import' . $gedcom_id . '").addClass("hidden");' .
@@ -86,7 +86,7 @@ $progress = $row->import_offset / $row->import_total;
 <?php
 
 $first_time = ($row->import_offset == 0);
-// Run for one second.  This keeps the resource requirements low.
+// Run for one second. This keeps the resource requirements low.
 for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 	$data = Database::prepare(
 		"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data" .
@@ -116,13 +116,13 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 
 			return;
 		}
-		// What character set is this?  Need to convert it to UTF8
-		if (preg_match('/\n[ \t]*1 CHAR(?:ACTER)? (.+)/', $data->chunk_data, $match)) {
-			$charset = strtoupper($match[1]);
+		// What character set is this? Need to convert it to UTF8
+		if (preg_match('/[\r\n][ \t]*1 CHAR(?:ACTER)? (.+)/', $data->chunk_data, $match)) {
+			$charset = trim(strtoupper($match[1]));
 		} else {
 			$charset = 'ASCII';
 		}
-		// MySQL supports a wide range of collation conversions.  These are ones that
+		// MySQL supports a wide range of collation conversions. These are ones that
 		// have been encountered "in the wild".
 		switch ($charset) {
 		case 'ASCII':
@@ -132,7 +132,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
 			break;
-		case 'IBMPC':   // IBMPC, IBM WINDOWS and MS-DOS could be anything.  Mostly it means CP850.
+		case 'IBMPC':   // IBMPC, IBM WINDOWS and MS-DOS could be anything. Mostly it means CP850.
 		case 'IBM WINDOWS':
 		case 'MS-DOS':
 		case 'CP437':
@@ -144,10 +144,10 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
 			break;
-		case 'ANSI': // ANSI could be anything.  Most applications seem to treat it as latin1.
+		case 'ANSI': // ANSI could be anything. Most applications seem to treat it as latin1.
 			$controller->addInlineJavascript(
 				'jQuery("#import' . $gedcom_id . '").parent().prepend("<div class=\"bg-info\">' . /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */
-					I18N::translate('This GEDCOM file is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1') . '</div>");'
+					I18N::translate('This GEDCOM file is encoded using %1$s. Assume this to mean %2$s.', $charset, 'ISO-8859-1') . '</div>");'
 				);
 			// no break;
 		case 'WINDOWS':
@@ -224,7 +224,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			// The documentation says that if you get this error, wait and try again.....
 			$controller->addInlineJavascript('jQuery("#import' . $gedcom_id . '").load("import.php?gedcom_id=' . $gedcom_id . '&u=' . uniqid() . '");');
 		} else {
-			// A fatal error.  Nothing we can do?
+			// A fatal error. Nothing we can do?
 			echo '<span class="error">', $ex->getMessage(), '</span>';
 			$controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
 		}

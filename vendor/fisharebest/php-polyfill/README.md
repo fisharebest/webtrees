@@ -16,8 +16,13 @@ with the native PHP implementation.  In many cases, this isn't actually
 possible - it’s often why the functions were added to PHP in the first place!
 
 So, this project provides implementations that are often “good enough” to get
-your application working on old servers.  Restrictions and limitations are
-described below.
+your application working on both new/old versions of PHP at the same time.
+Restrictions and limitations are described below.
+
+Of course, if you know exactly which PHP functions in your project might not
+be available on other servers, then you can just include the polyfills you need.
+But if life is too short, then just include `fisharebest/php-polyfill` and not
+worry about it.
 
 Usage
 =====
@@ -27,27 +32,37 @@ Add the dependency to your `composer.json` and allow autoloading magic to do the
 ```json
 {
     "require": {
-        "fisharebest/php-polyfill": "~1.0",
+        "fisharebest/php-polyfill": "~1.4",
     },
 }
 ```
 
 The following polyfill libraries will be loaded automatically:
 
- - `symfony/polyfill` - the core polyfills
-   - `symfony/intl` - polyfills for intl library functions
-   - `ircmaxell/password_compat` - polyfills for password functions
-   - `paragonie/random_compat` - polfills for random number functions
- - `fisharebest/ext-calendar` - polyfills for the calendar library functions
+ - `fisharebest/ext-calendar` - polyfills for the calendar functions
  - `jakeasmith/http_build_url` - polyfill for the function `http_build_url()`
+ - `symfony/polyfill-apcu` - APCu functions
+ - `symfony/polyfill-iconv` - iconv functions
+ - `symfony/polyfill-intl-grapheme` - grapheme_* functions
+ - `symfony/polyfill-intl-icu` - intl functions and classes
+ - `symfony/polyfill-intl-normalizer` - normalizer functions and classes
+ - `symfony/polyfill-intl-mbstring` - mbstring functions
+ - `symfony/polyfill-intl-util` - core polyfill functions
+ - `symfony/polyfill-intl-xml` - utf8_encode/decode functions
+ - `symfony/polyfill-php54` - PHP 5.4 functions
+ - `symfony/polyfill-php55` - PHP 5.5 functions
+   - `ircmaxell/password_compat` - polyfills for password functions
+ - `symfony/polyfill-php56` - PHP 5.6 functions
+ - `symfony/polyfill-php70` - PHP 7.0 functions
+    - `paragonie/random_compat` - random number functions
  
-The following polyfills are provided by this package:
+The following additional polyfills are provided by this package:
 
 PHP 5.3
 =======
 
- - If the server has enabled “magic quotes”, these are removed.
- - If the server has enabled "bug_compat_42", this is disabled.
+ - If the server has enabled `magic quotes`, these are removed.
+ - If the server has enabled `bug_compat_42`, this is disabled.
 
 
 PHP 5.4
@@ -58,12 +73,10 @@ status code, even if it was set using another function, such as `header()`.
 This implementation can only get the current status code if it was also set by
 `http_response_code()`.
 
-PHP 5.5.9 (Ubuntu 14.04 32 bit)
-===============================
+PHP (general)
+=============
 
-- `gzopen()` - Wrongly implemented as `gzopen64()`.
-- `gzseek()` - Wrongly implemented as `gzseek64()`.
-- `gztell()` - Wrongly implemented as `gztell64()`.
+ - Some builds of PHP (such as the one used by strato.de) do not define the constant `INF`.
 
 Contributions
 =============

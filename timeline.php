@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -266,7 +266,7 @@ document.onmouseup = function () {
 					if ($indi && $indi->canShow()) {
 						echo $indi->getSexImage('large');
 						?>
-						<a href="<?php echo $indi->getHtmlUrl(); ?>">&nbsp;<?php echo $indi->getFullName(); ?><br>
+						<a href="<?php echo $indi->getHtmlUrl(); ?>"> <?php echo $indi->getFullName(); ?><br>
 							<?php echo $indi->getAddName(); ?><br>
 						</a>
 						<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo Filter::escapeHtml($pid); ?>">
@@ -293,7 +293,7 @@ document.onmouseup = function () {
 			<?php } ?>
 			<td class="list_value" style="padding: 5px;" valign="top">
 				<?php echo I18N::translate('Add another individual to the chart'), '<br>'; ?>
-				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="newpid">
+				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="pids[]">
 				<?php echo FunctionsPrint::printFindIndividualLink('newpid'); ?>
 				<br>
 				<br>

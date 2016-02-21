@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,6 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
@@ -52,7 +51,7 @@ class IndividualController extends GedcomRecordController {
 
 		// If we can display the details, add them to the page header
 		if ($this->record && $this->record->canShow()) {
-			$this->setPageTitle($this->record->getFullName() . ' ' . $this->record->getLifespan());
+			$this->setPageTitle($this->record->getFullName() . ' ' . $this->record->getLifeSpan());
 			$this->tabs = Module::getActiveTabs($this->record->getTree());
 		}
 	}
@@ -140,7 +139,7 @@ class IndividualController extends GedcomRecordController {
 		$primary_name = $all_names[0];
 
 		$this->name_count++;
-		if ($this->name_count > 1) { echo '<h3 class="name_two">', $dummy->getFullName(), '</h3>'; } //Other names accordion element
+		if ($this->name_count > 1) { echo '<h3 class="name_two">', $dummy->getFullName(), '</h3>'; } // Other names accordion element
 		echo '<div class="indi_name_details';
 		if ($event->isPendingDeletion()) {
 			echo ' old';
@@ -273,7 +272,7 @@ class IndividualController extends GedcomRecordController {
 			'onclick' => 'return false;',
 		));
 
-		// What behaviour shall we give the main menu?  If we leave it blank, the framework
+		// What behaviour shall we give the main menu? If we leave it blank, the framework
 		// will copy the first submenu - which may be edit-raw or delete.
 		// As a temporary solution, make it edit the name
 		if (Auth::isEditor($this->record->getTree())) {
@@ -316,7 +315,7 @@ class IndividualController extends GedcomRecordController {
 		// delete
 		if (Auth::isEditor($this->record->getTree())) {
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-indi-del', array(
-				'onclick' => 'return delete_individual("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+				'onclick' => 'return delete_individual("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
 			)));
 		}
 
@@ -330,7 +329,7 @@ class IndividualController extends GedcomRecordController {
 		// add to favorites
 		if (Module::getModuleByName('user_favorites')) {
 			$menu->addSubmenu(new Menu(
-			/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
+			/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',
 				'menu-indi-addfav', array(
 					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',

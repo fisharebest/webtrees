@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -157,7 +157,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 			'#getAllTagsTable#',
 
 			I18N::translate('Narrative description') =>
-			/* I18N: do not translate the #keywords# */ I18N::translate('This family tree was last updated on #gedcomUpdated#.  There are #totalSurnames# surnames in this family tree.  The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#.  The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#.'),
+			/* I18N: do not translate the #keywords# */ I18N::translate('This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#.'),
 
 			I18N::translate('Statistics') =>
 			'<div class="gedcom_stats">
@@ -288,7 +288,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		}
 		echo '</select>';
 		if (!$html) {
-			echo '<p>', I18N::translate('To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements.'), '</p>';
+			echo '<p>', I18N::translate('To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements.'), '</p>';
 		}
 		echo '</td></tr>';
 
@@ -313,7 +313,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td colspan="2" class="descriptionbox">',
 			I18N::translate('Content');
 		if (!$html) {
-			echo '<p>', I18N::translate('As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme.'), '</p>';
+			echo '<p>', I18N::translate('As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme.'), '</p>';
 		}
 		echo
 			'</td></tr><tr>',

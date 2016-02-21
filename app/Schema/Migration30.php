@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,7 +29,7 @@ class Migration30 implements MigrationInterface {
 	public function upgrade() {
 		$WEBTREES_EMAIL = 'webtrees-noreply@' . preg_replace('/^www\./i', '', Filter::server('SERVER_NAME'));
 
-		// Default settings for new trees.  No defaults for:
+		// Default settings for new trees. No defaults for:
 		// imported, title, CONTACT_USER_ID, WEBMASTER_USER_ID
 		// The following settings have defaults, but may need overwriting:
 		// LANGUAGE, SURNAME_TRADITION
@@ -48,7 +48,7 @@ class Migration30 implements MigrationInterface {
 			"(-1, 'EXPAND_SOURCES', '0')," .
 			"(-1, 'FAM_FACTS_ADD', 'CENS,MARR,RESI,SLGS,MARR_CIVIL,MARR_RELIGIOUS,MARR_PARTNERS,RESN')," .
 			"(-1, 'FAM_FACTS_QUICK', 'MARR,DIV,_NMR')," .
-			"(-1, 'FAM_FACTS_UNIQUE', 'NCHI,MARL,DIV,ANUL,DIVF,ENGA,MARB,MARC,MARS')," .
+			"(-1, 'FAM_FACTS_UNIQUE', 'NCHI,MARL,DIV,ANUL,DIVF,ENGA,MARB,MARC,MARS,_NMR')," .
 			"(-1, 'FAM_ID_PREFIX', 'F')," .
 			"(-1, 'FORMAT_TEXT', 'markdown')," .
 			"(-1, 'FULL_SOURCES', '0')," .

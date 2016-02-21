@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,7 +32,7 @@ $to         = Filter::post('to', null, Filter::get('to'));
 $method     = Filter::post('method', 'messaging|messaging2|messaging3|mailto|none', Filter::get('method', 'messaging|messaging2|messaging3|mailto|none', 'messaging2'));
 $url        = Filter::postUrl('url', Filter::getUrl('url'));
 
-$to_user = User::findByIdentifier($to);
+$to_user = User::findByUserName($to);
 
 $controller = new SimpleController;
 $controller
@@ -71,7 +71,7 @@ case 'compose':
 case 'send':
 	// Only send messages if we've come straight from the compose page.
 	if (!Session::get('good_to_send')) {
-		Log::addAuthenticationLog('Attempt to send a message without visiting the compose page.  Spam attack?');
+		Log::addAuthenticationLog('Attempt to send a message without visiting the compose page. Spam attack?');
 		$action = 'compose';
 	}
 	if (!Filter::checkCsrf()) {
@@ -104,7 +104,7 @@ case 'compose':
 	echo $errors;
 
 	if (!Auth::check()) {
-		echo '<br><br>', I18N::translate('<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data.');
+		echo '<br><br>', I18N::translate('<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data.');
 	}
 	echo '<br><form name="messageform" method="post" action="message.php" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
 	echo Filter::getCsrf();
@@ -114,7 +114,7 @@ case 'compose':
 	}
 	if (!Auth::check()) {
 		echo '<tr><td valign="top" width="15%" align="right">', I18N::translate('Your name'), '</td>';
-		echo '<td><input type="text" name="from_name" size="40" value="', Filter::escapeHtml($from_name), '"></td></tr><tr><td valign="top" align="right">', I18N::translate('Email address'), '</td><td><input type="email" name="from_email" size="40" value="', Filter::escapeHtml($from_email), '"><br>', I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
+		echo '<td><input type="text" name="from_name" size="40" value="', Filter::escapeHtml($from_name), '"></td></tr><tr><td valign="top" align="right">', I18N::translate('Email address'), '</td><td><input type="email" name="from_email" size="40" value="', Filter::escapeHtml($from_email), '"><br>', I18N::translate('Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
 	}
 	echo '<tr><td align="right">', I18N::translate('Subject'), '</td>';
 	echo '<td>';
@@ -191,7 +191,7 @@ case 'send':
 			FlashMessages::addMessage(I18N::translate('Message successfully sent to %s', Filter::escapeHtml($to)));
 		} else {
 			FlashMessages::addMessage(I18N::translate('Message was not sent'));
-			Log::addErrorLog('Unable to send a message.  FROM:' . $from . ' TO:' . $to . ' (failed to send)');
+			Log::addErrorLog('Unable to send a message. FROM:' . $from . ' TO:' . $to . ' (failed to send)');
 		}
 		$i++;
 	}
@@ -292,7 +292,7 @@ function addMessage($message) {
 				WT_CLIENT_IP,
 				$recipient->getUserId(),
 				$message['subject'],
-				str_replace('<br>', '', $message['body']), // Remove the <br> that we added for the external email.  Perhaps create different messages
+				str_replace('<br>', '', $message['body']), // Remove the <br> that we added for the external email. Perhaps create different messages
 			));
 	}
 	if ($message['method'] !== 'messaging') {

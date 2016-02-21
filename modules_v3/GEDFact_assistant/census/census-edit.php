@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -44,8 +44,6 @@ $controller
 	->setPageTitle(I18N::translate('Create a new shared note using assistant'))
 	->addInlineJavascript(
 		'jQuery("head").append(\'<link rel="stylesheet" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/census/style.css" type="text/css">\');' .
-		'jQuery("input").on("change", updateCensusText);' .
-		'updateCensusText();' .
 		'jQuery("#tblSample").on("click", ".icon-remove", function() { jQuery(this).closest("tr").remove(); });'
 	)
 	->pageHeader();
@@ -56,7 +54,7 @@ $controller
 	<?php echo $controller->getPageTitle(); ?>
 </h2>
 
-<form method="post" action="edit_interface.php">
+<form method="post" action="edit_interface.php" onsubmit="updateCensusText();">
 	<input type="hidden" name="action" value="addnoteaction_assisted">
 	<input type="hidden" name="noteid" value="newnote">
 	<input id="pid_array" type="hidden" name="pid_array" value="none">
@@ -214,7 +212,7 @@ $controller
 	/* Add an HTML row to the table */
 	function appendCensusRow(row) {
 		jQuery("#tblSample tbody").append(row);
-		updateCensusText();
+
 		return false;
 	}
 

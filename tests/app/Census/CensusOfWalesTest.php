@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,7 +41,7 @@ class CensusOfWalesTest extends \PHPUnit_Framework_TestCase {
 
 		$census_dates = $census->allCensusDates();
 
-		$this->assertCount(8, $census_dates);
+		$this->assertCount(9, $census_dates);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1841', $census_dates[0]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1851', $census_dates[1]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1861', $census_dates[2]);
@@ -50,5 +50,6 @@ class CensusOfWalesTest extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1891', $census_dates[5]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1901', $census_dates[6]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1911', $census_dates[7]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\RegisterOfWales1939', $census_dates[8]);
 	}
 }
