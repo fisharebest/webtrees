@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-21 09:39+0100\n"
-"Last-Translator: Rico Sonntag <mail@ricosonntag.de>\n"
+"PO-Revision-Date: 2016-02-21 09:40+0100\n"
+"Last-Translator: Claus-Volker Klenke <cv.klenke@arcor.de>\n"
 "Language-Team: German <http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -7282,7 +7282,7 @@ msgstr "Wenn Sie einen der folgenden Tracking- und Analyse-Dienste verwenden, ka
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1222
 msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-msgstr "Wenn Sie einen Nachnamen aus der Liste der häufigsten Nachnamen entfernen möchten, ohne den Grenzwert für die Anzahl des Vorkommens verändern zu wollen, können Sie den Namen hier eingeben. Wenn Sie mehrere Namen angeben, trennen Sie diese jeweils durch ein Komma. Bitte beachten Sie die Groß- und Kleinschreibung."
+msgstr "Wenn Sie einen Nachnamen aus der Liste der häufigsten Nachnamen entfernen möchten, ohne den Grenzwert für die Anzahl des Vorkommens generell zu verändern, können Sie den Namen hier eingeben. Wenn Sie mehrere Namen angeben, trennen Sie diese jeweils durch ein Komma. <b>Bitte beachten Sie die Groß- und Kleinschreibung.</b> Hier eingegebene Namen werden auch aus der Liste der “Häufigsten Nachnamen” der “Home page” entfernt."
 
 #: setup.php:186
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
