@@ -121,7 +121,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox {
 		}
 		// Current position (top)
 		if ($this->top == ".") {
-			$this->top = $renderer->setY();
+			$this->top = $renderer->getY();
 		} else {
 			$renderer->setY($this->top);
 		}
