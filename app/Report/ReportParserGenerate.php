@@ -1867,7 +1867,7 @@ class ReportParserGenerate extends ReportParserBase {
 				}
 				break;
 			case 'individual':
-				$sql_select   = "SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom FROM `##individuals` ";
+				$sql_select   = "SELECT i_id AS xref, i_gedcom AS gedcom FROM `##individuals` ";
 				$sql_join     = "";
 				$sql_where    = " WHERE i_file = :tree_id";
 				$sql_order_by = "";
@@ -1939,12 +1939,12 @@ class ReportParserGenerate extends ReportParserBase {
 				)->execute($sql_params)->fetchAll();
 
 				foreach ($rows as $row) {
-					$this->list[] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
+					$this->list[$row->xref] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 				}
 				break;
 
 			case 'family':
-				$sql_select   = "SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom FROM `##families`";
+				$sql_select   = "SELECT f_id AS xref, f_gedcom AS gedcom FROM `##families`";
 				$sql_join     = "";
 				$sql_where    = " WHERE f_file = :tree_id";
 				$sql_order_by = "";
@@ -2017,7 +2017,7 @@ class ReportParserGenerate extends ReportParserBase {
 				)->execute($sql_params)->fetchAll();
 
 				foreach ($rows as $row) {
-					$this->list[] = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
+					$this->list[$row->xref] = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
 				}
 				break;
 
