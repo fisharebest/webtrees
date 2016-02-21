@@ -65,9 +65,6 @@ class Stats {
 			$reflection = new \ReflectionMethod($this, $method);
 			if ($reflection->isPublic() && !in_array($method, $this->public_but_not_allowed)) {
 				$examples[$method] = $this->$method();
-				if (stristr($method, 'highlight')) {
-					$examples[$method] = str_replace(array(' align="left"', ' align="right"'), '', $examples[$method]);
-				}
 			}
 		}
 		ksort($examples);
@@ -1738,7 +1735,7 @@ class Stats {
 		}
 		$chart = '<div id="google_charts" class="center">';
 		$chart .= '<b>' . $chart_title . '</b><br><br>';
-		$chart .= '<div align="center"><img src="' . $chart_url . '" alt="' . $chart_title . '" title="' . $chart_title . '" class="gchart" /><br>';
+		$chart .= '<div><img src="' . $chart_url . '" alt="' . $chart_title . '" title="' . $chart_title . '" class="gchart" /><br>';
 		$chart .= '<table class="center"><tr>';
 		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR2 . '" width="12"></td><td>' . I18N::translate('Highest population') . '</td>';
 		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR3 . '" width="12"></td><td>' . I18N::translate('Lowest population') . '</td>';

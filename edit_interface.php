@@ -1726,7 +1726,7 @@ case 'reorder_media':
 				<li class="facts_value" style="list-style:none;cursor:move;margin-bottom:2px;" id="li_<?php echo $obje->getXref(); ?>">
 					<table class="pic">
 						<tr>
-							<td width="80" valign="top" align="center">
+							<td>
 								<?php echo $obje->displayImage(); ?>
 							</td>
 							<td>

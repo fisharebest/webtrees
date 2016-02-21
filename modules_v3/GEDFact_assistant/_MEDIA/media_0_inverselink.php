@@ -123,12 +123,12 @@ if ($action == 'choose' && $paramok) {
 			echo '</td><td>';
 			echo $record->getFullName();
 			echo '</td>';
-			echo '<td align=\'center\'><input alt=\'', I18N::translate('Keep link in list'), '\', title=\'', I18N::translate('Keep link in list'), '\' type=\'radio\' id=\'', $record->getXref(), '_off\' name=\'', $record->getXref(), '\' checked></td>';
-			echo '<td align=\'center\'><input alt=\'', I18N::translate('Remove link from list'), '\', title=\'', I18N::translate('Remove link from list'), '\' type=\'radio\' id=\'', $record->getXref(), '_on\'  name=\'', $record->getXref(), '\'></td>';
+			echo '<td><input alt="', I18N::translate('Keep link in list'), '" title="', I18N::translate('Keep link in list'), '" type="radio" id="', $record->getXref(), '_off" name="', $record->getXref(), '" checked></td>';
+			echo '<td><input alt="', I18N::translate('Remove link from list'), '" title="', I18N::translate('Remove link from list'), '" type="radio" id="', $record->getXref(), '_on"  name="', $record->getXref(), '"></td>';
 
 			if ($record instanceof Individual) {
 				?>
-				<td align="center"><a href="#" class="icon-button_family" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $record->getXref(); ?>'); return false;"></a></td>
+				<td><a href="#" class="icon-button_family" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $record->getXref(); ?>'); return false;"></a></td>
 				<?php
 			} elseif ($record instanceof Family) {
 				if ($record->getHusband()) {
@@ -139,7 +139,7 @@ if ($action == 'choose' && $paramok) {
 					$head = '';
 				}
 				?>
-				<td align="center"><a href="#" class="icon-button_family" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $head; ?>');"></a></td>
+				<td><a href="#" class="icon-button_family" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $head; ?>');"></a></td>
 				<?php
 			} else {
 				echo '<td></td>';
@@ -520,11 +520,11 @@ function shiftlinks() {
 				<table width="430" border="0" cellspacing="1" id="addlinkQueue">
 					<thead>
 						<tr>
-							<th class="topbottombar" width="10"  style="font-weight:100;" align="left">#</th>
-							<th class="topbottombar" width="55"  style="font-weight:100;" align="left"><?php echo I18N::translate('Record'); ?></th>
-							<th class="topbottombar" width="370" style="font-weight:100;" align="left"><?php echo I18N::translate('Name'); ?></th>
-							<th class="topbottombar" width="20"  style="font-weight:100;" align="left"><?php echo I18N::translate('Remove'); ?></th>
-							<th class="topbottombar" width="20"  style="font-weight:100;" align="left"><?php echo I18N::translate('Family navigator'); ?></th>
+							<th class="topbottombar" width="10"  style="font-weight:100;">#</th>
+							<th class="topbottombar" width="55"  style="font-weight:100;"><?php echo I18N::translate('Record'); ?></th>
+							<th class="topbottombar" width="370" style="font-weight:100;"><?php echo I18N::translate('Name'); ?></th>
+							<th class="topbottombar" width="20"  style="font-weight:100;"><?php echo I18N::translate('Remove'); ?></th>
+							<th class="topbottombar" width="20"  style="font-weight:100;"><?php echo I18N::translate('Family navigator'); ?></th>
 						</tr>
 					</thead>
 					<tbody>

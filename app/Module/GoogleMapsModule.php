@@ -157,23 +157,23 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 			echo '<table border="0" width="100%"><tr><td>';
 			echo '<table width="100%" border="0" class="facts_table">';
-			echo '<tr><td valign="top">';
+			echo '<tr><td>';
 			echo '<div id="map_pane" style="border: 1px solid gray; color: black; width: 100%; height: ', $this->getSetting('GM_YSIZE'), 'px"></div>';
 			if (Auth::isAdmin()) {
 				echo '<table width="100%"><tr>';
-				echo '<td width="40%" align="left">';
+				echo '<td>';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
 				echo '</td>';
-				echo '<td width="35%" class="center">';
+				echo '<td "style=text-align:center;">';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_places">', I18N::translate('Geographic data'), '</a>';
 				echo '</td>';
-				echo '<td width="25%" align="right">';
+				echo '<td style="text-align:end;">';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_placecheck">', I18N::translate('Place check'), '</a>';
 				echo '</td>';
 				echo '</tr></table>';
 			}
 			echo '</td>';
-			echo '<td valign="top" width="30%">';
+			echo '<td width="30%">';
 			echo '<div id="map_content">';
 
 			$this->buildIndividualMap($controller->record);
@@ -864,24 +864,24 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '<div id="pedigreemap_chart">';
 		echo '<table class="tabs_table" cellspacing="0" cellpadding="0" border="0" width="100%">';
 		echo '<tr>';
-		echo '<td valign="top">';
+		echo '<td>';
 		echo '<div id="pm_map" style="border: 1px solid gray; height: ', $this->getSetting('GM_YSIZE'), 'px; font-size: 0.9em;';
 		echo '"><i class="icon-loading-large"></i></div>';
 		if (Auth::isAdmin()) {
 			echo '<table width="100%">';
-			echo '<tr><td align="left">';
+			echo '<tr><td>';
 			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
 			echo '</td>';
-			echo '<td align="center">';
+			echo '<td style="text-align:center;">';
 			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_places">', I18N::translate('Geographic data'), '</a>';
 			echo '</td>';
-			echo '<td align="right">';
+			echo '<td style="text-align:end;">';
 			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">', I18N::translate('Place check'), '</a>';
 			echo '</td></tr>';
 			echo '</table>';
 		}
 		echo '</td><td width="15px"></td>';
-		echo '<td width="310px" valign="top">';
+		echo '<td width="310px">';
 		echo '<div id="side_bar" style="width:300px; font-size:0.9em; overflow:auto; overflow-x:hidden; overflow-y:auto; height:', $this->getSetting('GM_YSIZE'), 'px;"></div></td>';
 		echo '</tr>';
 		echo '</table>';
@@ -889,7 +889,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '<hr>';
 		echo '<table cellspacing="0" cellpadding="0" border="0" width="100%">';
 		echo '<tr>';
-		echo '<td valign="top">';
+		echo '<td>';
 		// print summary statistics
 		if (isset($curgen)) {
 			$total = pow(2, $curgen) - 1;
@@ -902,7 +902,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '</td>';
 			echo '</tr>';
 			echo '<tr>';
-			echo '<td valign="top">';
+			echo '<td>';
 			if ($priv) {
 				echo I18N::plural('%s individual is private.', '%s individuals are private.', $priv, $priv), '<br>';
 			}
@@ -2629,9 +2629,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$parent     = Filter::getArray('parent');
 
 		// create the map
-		echo '<table style="margin:20px auto 0 auto;"><tr valign="top"><td>';
+		echo '<table style="margin:20px auto 0 auto;"><tr><td>';
 		//<!-- start of map display -->
-		echo '<table><tr valign="top">';
+		echo '<table><tr>';
 		echo '<td class="center" width="200px">';
 
 		$levelm = $this->setLevelMap($level, $parent);
@@ -2728,9 +2728,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					I18N::translate('Zoom') . "<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px; background:none; border:none;' value='" . $sv_zoom . "'>
 				");
 				if (Auth::isAdmin()) {
-					echo '<table align="center" style="margin-left:6px; border:solid 1px black; width:522px; margin-top:-28px; background:#cccccc;">';
+					echo '<table style="margin-left:6px; border:solid 1px black; width:522px; margin-top:-28px; background:#cccccc;">';
 				} else {
-					echo '<table align="center" style="display:none;">';
+					echo '<table style="display:none;">';
 				}
 				echo '<tr><td>';
 				echo '<form style="text-align:left; margin-left:5px; font:11px verdana; color:blue;" method="post" action="">';
@@ -3877,9 +3877,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 			window.onload = function() { loadMap(); };
 		</script>
-		<table><tr><td align="center">
-		</td></tr></table>
-		</body>
 		<form method="post" id="editplaces" name="editplaces" action="module.php?mod=googlemap&amp;mod_action=places_edit">
 			<input type="hidden" name="action" value="<?php echo $action ?>record">
 			<input type="hidden" name="placeid" value="<?php echo $placeid ?>">
@@ -3894,7 +3891,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<table class="facts_table">
 			<tr>
 				<td class="optionbox" colspan="3">
-				<center><div id="map_pane" style="width: 100%; height: 300px;"></div></center>
+					<div id="map_pane" style="width: 100%; height: 300px;"></div>
 				</td>
 			</tr>
 			<tr>

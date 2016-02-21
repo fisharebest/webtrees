@@ -82,7 +82,7 @@ class CensusAssistantModule extends AbstractModule {
 			->pageHeader();
 
 		echo '<table class="list_table width90" border="0">';
-		echo '<tr><td style="padding: 10px;" valign="top" class="facts_label03 width90">';
+		echo '<tr><td style="padding: 10px;" class="facts_label03 width90">';
 		echo I18N::translate('Find an individual');
 		echo '</td>';
 		echo '</table>';
@@ -176,9 +176,9 @@ class CensusAssistantModule extends AbstractModule {
 		</script>
 
 		<?php
-		echo '<div align="center">';
+		echo '<div>';
 		echo '<table class="list_table width90" border="0">';
-		echo '<tr><td style="padding: 10px;" valign="top" class="facts_label03 width90">'; // start column for find text header
+		echo '<tr><td style="padding: 10px;" class="facts_label03 width90">'; // start column for find text header
 		echo $controller->getPageTitle();
 		echo '</td>';
 		echo '</tr>';
@@ -462,7 +462,7 @@ class CensusAssistantModule extends AbstractModule {
 						<?php echo $spouse->getFullName(); ?>
 					</a>
 				</td>
-				<td align="left" class="facts_value">
+				<td class="facts_value">
 					<a href="edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=<?php echo $spouse->getXref(); ?>&amp;gedcom=<?php echo $spouse->getTree()->getNameUrl(); ?>&amp;census=<?php echo get_class($census); ?>">
 						<?php echo $headImg2; ?>
 					</a>
