@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-21 09:40+0100\n"
-"Last-Translator: Claus-Volker Klenke <cv.klenke@arcor.de>\n"
+"PO-Revision-Date: 2016-02-21 09:42+0100\n"
+"Last-Translator: Rico Sonntag <mail@ricosonntag.de>\n"
 "Language-Team: German <http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -3940,7 +3940,7 @@ msgstr "Cookinseln"
 
 #: app/Theme/AbstractTheme.php:325
 msgid "Cookies"
-msgstr ""
+msgstr "Cookies"
 
 #: app/GedcomCode/GedcomCodeTemp.php:131
 msgid "Copenhagen, Denmark"
@@ -7194,7 +7194,7 @@ msgstr "Falls der erste Vorname nicht auch der Rufname ist, sollte der Vorzugsna
 #. I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1202
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
-msgstr "Wenn die Häufigkeit eines vorkommenden Nachnamens niedriger ist als die festgelegte Mindestanzahl, so erscheint er nicht in der Liste der häufigsten Nachnamen. Hier können einzelne solcher Namen manuell zur Liste hinzugefügt werden. Mehrere Namen müssen durch Kommas von einander getrennt werden. <b>Bitte beachten Sie die Groß- und Kleinschreibung.</b>"
+msgstr "Wenn die Häufigkeit eines vorkommenden Nachnamens niedriger ist als die festgelegte Mindestanzahl, so erscheint er nicht in der Liste der häufigsten Nachnamen. Hier können einzelne solcher Namen manuell zur Liste hinzugefügt werden. Wenn Sie mehrere Namen angeben, trennen Sie diese jeweils durch ein Komma. <b>Bitte beachten Sie die Groß- und Kleinschreibung.</b>"
 
 #: help_text.php:224
 #, php-format
@@ -14401,7 +14401,7 @@ msgstr "Diese Webseite ist vorübergehend nicht verfügbar"
 
 #: app/Theme/AbstractTheme.php:326
 msgid "This website uses cookies to learn about visitor behaviour."
-msgstr ""
+msgstr "Diese Website verwendet Cookies um mehr über das Besucherverhalten zu erfahren."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:196
