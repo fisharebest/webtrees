@@ -2728,17 +2728,17 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					I18N::translate('Zoom') . "<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px; background:none; border:none;' value='" . $sv_zoom . "'>
 				");
 				if (Auth::isAdmin()) {
-					echo "<table align=\"center\" style=\"margin-left:6px; border:solid 1px black; width:522px; margin-top:-28px; background:#cccccc; \">";
+					echo '<table align="center" style="margin-left:6px; border:solid 1px black; width:522px; margin-top:-28px; background:#cccccc;">';
 				} else {
-					echo "<table align=\"center\" style=\"display:none; \">";
+					echo '<table align="center" style="display:none;">';
 				}
-				echo "<tr><td>";
-				echo "<form style=\"text-align:left; margin-left:5px; font:11px verdana; color:blue;\" method=\"post\" action=\"\">";
+				echo '<tr><td>';
+				echo '<form style="text-align:left; margin-left:5px; font:11px verdana; color:blue;" method="post" action="">';
 				echo $list_latlon;
-				echo "<input type=\"submit\" name=\"Submit\" onclick=\"update_sv_params($placeid);\" value=\"", I18N::translate('save'), "\">";
-				echo "</form>";
-				echo "</td></tr>";
-				echo "</table>";
+				echo '<input type="submit" name="Submit" onclick="update_sv_params($placeid);" value="', I18N::translate('save'), '">';
+				echo '</form>';
+				echo '</td></tr>';
+				echo '</table>';
 			}
 			echo '</td></tr><tr>';
 		}

@@ -96,9 +96,9 @@ if ($action == 'choose' && $paramok) {
 		echo '</td></tr>';
 		echo '<tr><td class="descriptionbox width20 wrap">', I18N::translate('Links'), '</td>';
 		echo '<td class="optionbox wrap">';
-		echo "<table><tr><td>";
-		echo "<table id=\"existLinkTbl\" width=\"430\" cellspacing=\"1\" >";
-		echo "<tr>";
+		echo '<table><tr><td>';
+		echo '<table id="existLinkTbl" width="430" cellspacing="1" >';
+		echo '<tr>';
 		echo '<td class="topbottombar" width="15"  style="font-weight:100;" >#</td>';
 		echo '<td class="topbottombar" width="50"  style="font-weight:100;" >', I18N::translate('Record'), '</td>';
 		echo '<td class="topbottombar" width="340" style="font-weight:100;" >', I18N::translate('Name'), '</td>';
@@ -116,15 +116,15 @@ if ($action == 'choose' && $paramok) {
 		);
 		$i = 1;
 		foreach ($links as $record) {
-			echo "<tr ><td>";
+			echo '<tr ><td>';
 			echo $i++;
-			echo "</td><td id=\"existId_", $i, "\" class=\"row2\">";
+			echo '</td><td id="existId_', $i, '" class="row2">';
 			echo $record->getXref();
-			echo "</td><td>";
+			echo '</td><td>';
 			echo $record->getFullName();
-			echo "</td>";
-			echo "<td align='center'><input alt='", I18N::translate('Keep link in list'), "', title='", I18N::translate('Keep link in list'), "' type='radio' id='", $record->getXref(), "_off' name='", $record->getXref(), "' checked></td>";
-			echo "<td align='center'><input alt='", I18N::translate('Remove link from list'), "', title='", I18N::translate('Remove link from list'), "' type='radio' id='", $record->getXref(), "_on'  name='", $record->getXref(), "'></td>";
+			echo '</td>';
+			echo '<td align=\'center\'><input alt=\'', I18N::translate('Keep link in list'), '\', title=\'', I18N::translate('Keep link in list'), '\' type=\'radio\' id=\'', $record->getXref(), '_off\' name=\'', $record->getXref(), '\' checked></td>';
+			echo '<td align=\'center\'><input alt=\'', I18N::translate('Remove link from list'), '\', title=\'', I18N::translate('Remove link from list'), '\' type=\'radio\' id=\'', $record->getXref(), '_on\'  name=\'', $record->getXref(), '\'></td>';
 
 			if ($record instanceof Individual) {
 				?>
@@ -535,15 +535,15 @@ function shiftlinks() {
 		<?php
 		// Admin Option CHAN log update override =======================
 		if (Auth::isAdmin()) {
-			echo "<tr><td class=\"descriptionbox wrap width25\">";
-			echo GedcomTag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
+			echo '<tr><td class="descriptionbox wrap width25">';
+			echo GedcomTag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 			if ($WT_TREE->getPreference('NO_UPDATE_CHAN')) {
-				echo "<input type=\"checkbox\" checked name=\"preserve_last_changed\">";
+				echo '<input type="checkbox" checked name="preserve_last_changed">';
 			} else {
-				echo "<input type=\"checkbox\" name=\"preserve_last_changed\">";
+				echo '<input type="checkbox" name="preserve_last_changed">';
 			}
 			echo I18N::translate('Keep the existing “last change” information');
-			echo "</td></tr>";
+			echo '</td></tr>';
 		}
 		?>
 	</table>

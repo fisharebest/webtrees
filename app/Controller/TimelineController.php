@@ -184,8 +184,8 @@ class TimelineController extends PageController {
 		$placements[$place] = $yoffset;
 
 		echo "<div id=\"fact$factcount\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? 'left: ' . ($xoffset) : 'right: ' . ($xoffset)) . 'px; top:' . ($yoffset) . "px; font-size: 8pt; height: " . ($this->bheight) . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ");\">";
-		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"cursor: hand;\"><tr><td>";
-		echo "<img src=\"" . Theme::theme()->parameter('image-hline') . "\" name=\"boxline$factcount\" id=\"boxline$factcount\" height=\"3\" align=\"left\" width=\"10\" alt=\"\" style=\"padding-";
+		echo '<table cellspacing="0" cellpadding="0" border="0" style="cursor: hand;"><tr><td>';
+		echo '<img src="' . Theme::theme()->parameter('image-hline') . '" name="boxline' . $factcount . '" id="boxline' . $factcount . '" height="3" align="left" width="10" alt="" style="padding-';
 		if (I18N::direction() === 'ltr') {
 			echo 'left: 3px;">';
 		} else {

@@ -176,23 +176,23 @@ class CensusAssistantModule extends AbstractModule {
 		</script>
 
 		<?php
-		echo "<div align=\"center\">";
-		echo "<table class=\"list_table width90\" border=\"0\">";
-		echo "<tr><td style=\"padding: 10px;\" valign=\"top\" class=\"facts_label03 width90\">"; // start column for find text header
+		echo '<div align="center">';
+		echo '<table class="list_table width90" border="0">';
+		echo '<tr><td style="padding: 10px;" valign="top" class="facts_label03 width90">'; // start column for find text header
 		echo $controller->getPageTitle();
-		echo "</td>";
-		echo "</tr>";
-		echo "</table>";
-		echo "<br>";
+		echo '</td>';
+		echo '</tr>';
+		echo '</table>';
+		echo '<br>';
 		echo '<button onclick="window.close();">', I18N::translate('close'), '</button>';
-		echo "<br>";
+		echo '<br>';
 
 		$filter       = trim($filter);
 		$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
-		echo "<table class=\"tabs_table width90\"><tr>";
+		echo '<table class="tabs_table width90"><tr>';
 		$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
 		if ($myindilist) {
-			echo "<td class=\"list_value_wrap\"><ul>";
+			echo '<td class="list_value_wrap"><ul>';
 			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
 				$nam = Filter::escapeHtml($indi->getFullName());

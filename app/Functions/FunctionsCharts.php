@@ -99,7 +99,7 @@ class FunctionsCharts {
 		/**
 		 * husband side
 		 */
-		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tr><td rowspan=\"2\">";
+		echo '<table cellspacing="0" cellpadding="0" border="0"><tr><td rowspan="2">';
 		echo "<table border='0'><tr>";
 
 		if ($parid) {
@@ -136,12 +136,12 @@ class FunctionsCharts {
 				if (!empty($gparid) && $hfam->getHusband()->getXref() == $gparid) {
 					self::printSosaNumber(trim(substr($label, 0, -3), ".") . ".");
 				}
-				echo "<td valign=\"top\">";
+				echo '<td valign="top">';
 				FunctionsPrint::printPedigreePerson($hfam->getHusband(), $show_full);
 				echo "</td></tr></table>";
 			} elseif ($hfam && !$hfam->getHusband()) {
 				// Empty box for grandfather
-				echo "<table border='0'><tr>";
+				echo '<table border="0"><tr>';
 				echo '<td valign="top">';
 				FunctionsPrint::printPedigreePerson($hfam->getHusband(), $show_full);
 				echo '</td></tr></table>';
@@ -191,7 +191,7 @@ class FunctionsCharts {
 		/**
 		 * wife side
 		 */
-		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tr><td rowspan=\"2\">";
+		echo '<table cellspacing="0" cellpadding="0" border="0"><tr><td rowspan="2">';
 		echo "<table><tr>";
 		if ($parid) {
 			if ($wife->getXref() == $parid) {
@@ -227,7 +227,7 @@ class FunctionsCharts {
 				if (!empty($gparid) && $hfam->getHusband()->getXref() == $gparid) {
 					self::printSosaNumber(trim(substr($label, 0, -3), ".") . ".");
 				}
-				echo "<td valign=\"top\">";
+				echo '<td valign="top">';
 				FunctionsPrint::printPedigreePerson($hfam->getHusband(), $show_full);
 				echo "</td></tr></table>";
 			} elseif ($hfam && !$hfam->getHusband()) {
@@ -255,12 +255,12 @@ class FunctionsCharts {
 				if (!empty($gparid) && $hfam->getWife()->getXref() == $gparid) {
 					self::printSosaNumber(trim(substr($label, 0, -3), ".") . ".");
 				}
-				echo "<td valign=\"top\">";
+				echo '<td valign="top">';
 				FunctionsPrint::printPedigreePerson($hfam->getWife(), $show_full);
-				echo "</td></tr></table>";
+				echo '</td></tr></table>';
 			} elseif ($hfam && !$hfam->getWife()) {
 				// Empty box for grandmother
-				echo "<table border='0'><tr>";
+				echo '<table border="0"><tr>';
 				echo '<td valign="top">';
 				FunctionsPrint::printPedigreePerson($hfam->getWife(), $show_full);
 				echo '</td></tr></table>';
@@ -369,14 +369,14 @@ class FunctionsCharts {
 							}
 
 							if ($f == $maxfam) {
-								echo "<img height=\"" . ((($bheight / 2)) + $PBadj) . "px\"";
+								echo '<img height="' . ((($bheight / 2)) + $PBadj) . 'px"';
 							} else {
-								echo "<img height=\"" . $pbheight . "px\"";
+								echo '<img height="' . $pbheight . 'px"';
 							}
-							echo " width=\"3\" src=\"" . Theme::theme()->parameter('image-vline') . "\" alt=\"\">";
-							echo "</td>";
+							echo ' width="3" src="' . Theme::theme()->parameter('image-vline') . '" alt="">';
+							echo '</td>';
 						}
-						echo "<td class=\"details1\" valign=\"middle\" align=\"center\">";
+						echo '<td class="details1" valign="middle" align="center">';
 						$spouse = $famids[$f]->getSpouse($child);
 
 						$marr = $famids[$f]->getFirstFact('MARR');
