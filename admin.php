@@ -535,7 +535,7 @@ if (
 		I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) .
 		'<br><a href="https://php.net/supported-versions.php">https://php.net/supported-versions.php</a>';
 } elseif (
-	PHP_VERSION_ID < 50600 && date('Y-m-d') >= '2015-07-10' ||
+	PHP_VERSION_ID < 50600 ||
 	PHP_VERSION_ID < 70000 && date('Y-m-d') >= '2016-12-31' ||
 	PHP_VERSION_ID < 70100 && date('Y-m-d') >= '2017-12-03'
 ) {
