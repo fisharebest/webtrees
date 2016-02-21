@@ -95,7 +95,7 @@ class FamilyController extends GedcomRecordController {
 		// delete
 		if (Auth::isEditor($this->record->getTree())) {
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-fam-del', array(
-				'onclick' => 'return delete_family("' . I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?') . '", "' . $this->record->getXref() . '");',
+				'onclick' => 'return delete_record("' . I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?') . '", "' . $this->record->getXref() . '");',
 			)));
 		}
 

@@ -139,7 +139,7 @@ if ($changed_gedcoms) {
 	$prev_gedcom_id = null;
 	foreach ($changes as $change) {
 		$tree = Tree::findById($change->gedcom_id);
-		preg_match('/^0 @' . WT_REGEX_XREF . '@ (' . WT_REGEX_TAG . ')/', $change->old_gedcom . $change->new_gedcom, $match);
+		preg_match('/^0 (?:@' . WT_REGEX_XREF . '@ )?(' . WT_REGEX_TAG . ')/', $change->old_gedcom . $change->new_gedcom, $match);
 		switch ($match[1]) {
 		case 'INDI':
 			$record = new Individual($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);

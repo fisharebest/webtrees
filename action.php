@@ -120,12 +120,7 @@ case 'delete-fact':
 	http_response_code(406);
 	break;
 
-case 'delete-family':
-case 'delete-individual':
-case 'delete-media':
-case 'delete-note':
-case 'delete-repository':
-case 'delete-source':
+case 'delete-record':
 	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
 	if ($record && Auth::isEditor($record->getTree()) && $record->canShow() && $record->canEdit()) {
 		// Delete links to this record

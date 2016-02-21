@@ -252,91 +252,11 @@ function reject_changes(xref) {
 	return false;
 }
 
-// Delete a family - and reload the page
-function delete_family(message, xref, gedcom) {
+// Delete a record - and reload the page
+function delete_record(message, xref, gedcom) {
 	if (confirm(message)) {
 		jQuery.post('action.php', {
-				action: 'delete-family',
-				xref:   xref,
-				ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
-				csrf:   WT_CSRF_TOKEN
-			},
-			function () {
-				location.reload();
-			});
-	}
-	return false;
-}
-
-// Delete an individual - and reload the page
-function delete_individual(message, xref, gedcom) {
-	if (confirm(message)) {
-		jQuery.post('action.php', {
-				action: 'delete-individual',
-				xref:   xref,
-				ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
-				csrf:   WT_CSRF_TOKEN
-			},
-			function () {
-				location.reload();
-			});
-	}
-	return false;
-}
-
-// Delete a media object - and reload the page
-function delete_media(message, xref, gedcom) {
-	if (confirm(message)) {
-		jQuery.post('action.php', {
-				action: 'delete-media',
-				xref:   xref,
-				ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
-				csrf:   WT_CSRF_TOKEN
-			},
-			function () {
-				location.reload();
-			});
-	}
-	return false;
-}
-
-// Delete a note object - and reload the page
-function delete_note(message, xref, gedcom) {
-	if (confirm(message)) {
-		jQuery.post('action.php', {
-				action: 'delete-note',
-				xref:   xref,
-				ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
-				csrf:   WT_CSRF_TOKEN
-			},
-			function () {
-				location.reload();
-			});
-	}
-	return false;
-}
-
-// Delete a repository - and reload the page
-function delete_repository(message, xref, gedcom) {
-	if (confirm(message)) {
-		jQuery.post('action.php', {
-				action: 'delete-repository',
-				xref:   xref,
-				ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
-				csrf:   WT_CSRF_TOKEN
-			},
-			function () {
-				location.reload();
-			});
-	}
-	return false;
-}
-
-// Delete a source - and reload the page
-function delete_source(message, xref, gedcom) {
-	if (confirm(message)) {
-		jQuery.post('action.php', {
-				action: 'delete-source',
+				action: 'delete-record',
 				xref:   xref,
 				ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
 				csrf:   WT_CSRF_TOKEN

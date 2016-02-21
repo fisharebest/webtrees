@@ -1094,6 +1094,10 @@ class FunctionsImport {
 	public static function updateRecord($gedrec, $ged_id, $delete) {
 		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match)) {
 			list(, $gid, $type) = $match;
+		} elseif (preg_match('/^0 (HEAD)(?:\n|$)/', $gedrec, $match)) {
+			// The HEAD record has no XREF.  Any others?
+			$gid  = $match[1];
+			$type = $match[1];
 		} else {
 			echo "ERROR: Invalid gedcom record.";
 
