@@ -1394,14 +1394,13 @@ class ReportParserGenerate extends ReportParserBase {
 					$level++;
 					$value = $this->getGedcomValue($id, $level, $this->gedrec);
 				}
-				$value = preg_replace("/^@(" . WT_REGEX_XREF . ")@$/", "$1", $value);
-				$value = "\"" . addslashes($value) . "\"";
+				$value = preg_replace('/^@(' . WT_REGEX_XREF . ')@$/', '$1', $value);
+				$value = '"' . addslashes($value) . '"';
 			}
 			$condition = str_replace("@$id", $value, $condition);
 			$i++;
 		}
-		$condition = "return (bool) ($condition);";
-		$ret       = @eval($condition);
+		$ret = eval("return (bool) ($condition);");
 		if (!$ret) {
 			$this->process_ifs++;
 		}
