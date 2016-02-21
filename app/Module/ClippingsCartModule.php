@@ -76,7 +76,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 			$controller = new PageController;
 			$controller
 				->setPageTitle($this->getTitle())
-				->PageHeader()
+				->pageHeader()
 				->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 				->addInlineJavascript('autocomplete();');
 

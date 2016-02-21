@@ -317,7 +317,7 @@ case 'load_json':
 
 			$conf        = I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($unused_file));
 			$delete_link =
-				'<p><a onclick="if (confirm(\'' . Filter::escapeJs($conf) . '\')) jQuery.post(\'admin_media.php\',{delete:\'' . Filter::escapeJs($media_path . $unused_file) . '\',media_folder:\'' . Filter::escapeJs($media_folder) . '\'},function(){location.reload();})" href="#">' . I18N::Translate('Delete') . '</a></p>';
+				'<p><a onclick="if (confirm(\'' . Filter::escapeJs($conf) . '\')) jQuery.post(\'admin_media.php\',{delete:\'' . Filter::escapeJs($media_path . $unused_file) . '\',media_folder:\'' . Filter::escapeJs($media_folder) . '\'},function(){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
 
 			$data[] = array(
 				mediaFileInfo($media_folder, $media_path, $unused_file) . $delete_link,

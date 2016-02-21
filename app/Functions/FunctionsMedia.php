@@ -76,7 +76,7 @@ class FunctionsMedia {
 		// find out how much memory this image needs for processing, probably only works for jpegs
 		// from comments on http://www.php.net/imagecreatefromjpeg
 		if ($imgsize && isset($imgsize['bits']) && (isset($imgsize['channels']))) {
-			$memoryNeeded = round(($imgsize[0] * $imgsize[1] * $imgsize['bits'] * $imgsize['channels'] / 8 + Pow(2, 16)) * 1.65);
+			$memoryNeeded = round(($imgsize[0] * $imgsize[1] * $imgsize['bits'] * $imgsize['channels'] / 8 + pow(2, 16)) * 1.65);
 			$memorySpare  = $memoryAvailable - $memoryUsed - $memoryNeeded;
 			if ($memorySpare > 0) {
 				// we have enough memory to load this file

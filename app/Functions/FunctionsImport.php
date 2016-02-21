@@ -1142,7 +1142,7 @@ class FunctionsImport {
 		}
 
 		if (!$delete) {
-			self::importRecord($gedrec, Tree::FindById($ged_id), true);
+			self::importRecord($gedrec, Tree::findById($ged_id), true);
 		}
 	}
 }

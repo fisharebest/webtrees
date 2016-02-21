@@ -1106,7 +1106,7 @@ try {
 		"REPLACE INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)" .
 		" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `{$DBNAME}`.`{$TBLPREFIX}placelocation`"
 	)->execute();
-} catch (PDOexception $ex) {
+} catch (PDOException $ex) {
 	// This table will only exist if the gm module is installed in PhpGedView/WT
 }
 

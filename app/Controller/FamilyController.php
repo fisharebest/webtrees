@@ -136,7 +136,7 @@ class FamilyController extends GedcomRecordController {
 	 */
 	public function getSignificantSurname() {
 		if ($this->record && $this->record->getHusband()) {
-			list($surn) = explode(',', $this->record->getHusband()->getSortname());
+			list($surn) = explode(',', $this->record->getHusband()->getSortName());
 
 			return $surn;
 		} else {

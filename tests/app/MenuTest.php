@@ -35,7 +35,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertSame('Test!', $menu->getLabel());
 		$this->assertSame('#', $menu->getLink());
-		$this->assertSame('', $menu->getCLass());
+		$this->assertSame('', $menu->getClass());
 		$this->assertSame(array(), $menu->getAttrs());
 		$this->assertSame(array(), $menu->getSubmenus());
 	}

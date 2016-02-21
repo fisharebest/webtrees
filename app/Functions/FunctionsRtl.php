@@ -828,7 +828,7 @@ class FunctionsRtl {
 					// we don't want to touch it.
 					// This check won’t work if somebody uses ID numbers with an unusual format.
 					$offset    = 1;
-					$charArray = self::getchar($temp, $offset); // Get 1st character of parenthesized text
+					$charArray = self::getChar($temp, $offset); // Get 1st character of parenthesized text
 					if (strpos(self::NUMBERS, $charArray['letter']) !== false) {
 						break;
 					}

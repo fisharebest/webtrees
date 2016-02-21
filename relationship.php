@@ -46,12 +46,12 @@ $controller
 if ($person1 && $person2) {
 	$controller
 		->setPageTitle(I18N::translate(/* I18N: %s are individual’s names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
-		->PageHeader();
+		->pageHeader();
 	$paths = $controller->calculateRelationships($person1, $person2, $find_all);
 } else {
 	$controller
 		->setPageTitle(I18N::translate('Relationships'))
-		->PageHeader();
+		->pageHeader();
 	$paths = array();
 }
 

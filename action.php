@@ -58,7 +58,7 @@ case 'copy-fact':
 
 	if ($record && $record->canEdit()) {
 		foreach ($record->getFacts() as $fact) {
-			if ($fact->getfactId() == $fact_id) {
+			if ($fact->getFactId() == $fact_id) {
 				switch ($fact->getTag()) {
 				case 'NOTE':
 				case 'SOUR':
@@ -109,7 +109,7 @@ case 'delete-fact':
 	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 	if ($record && $record->canShow() && $record->canEdit()) {
 		foreach ($record->getFacts() as $fact) {
-			if ($fact->getfactId() == $fact_id && $fact->canShow() && $fact->canEdit()) {
+			if ($fact->getFactId() == $fact_id && $fact->canShow() && $fact->canEdit()) {
 				$record->deleteFact($fact_id, true);
 				break 2;
 			}

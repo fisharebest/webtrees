@@ -4665,7 +4665,7 @@ class Stats {
 		if ($sex) {
 			$sql .= ', i_sex';
 		}
-		$rows = $this->runSQL($sql);
+		$rows = $this->runSql($sql);
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);

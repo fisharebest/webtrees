@@ -241,8 +241,8 @@ case 'setup':
 			} elseif ($input['lookup'] == 'SOUR') {
 				echo FunctionsPrint::printFindSourceLink($input['name']);
 			} elseif ($input['lookup'] == 'DATE') {
-				echo ' <a href="#" onclick="cal_toggleDate(\'div_', Filter::EscapeJs($input['name']), '\', \'', Filter::EscapeJs($input['name']), '\'); return false;" class="icon-button_calendar" title="', I18N::translate('Select a date'), '"></a>';
-				echo '<div id="div_', Filter::EscapeHtml($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;"></div>';
+				echo ' <a href="#" onclick="cal_toggleDate(\'div_', Filter::escapeJs($input['name']), '\', \'', Filter::escapeJs($input['name']), '\'); return false;" class="icon-button_calendar" title="', I18N::translate('Select a date'), '"></a>';
+				echo '<div id="div_', Filter::escapeHtml($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;"></div>';
 			}
 		}
 		echo '</td></tr>';

@@ -86,7 +86,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		)->execute(array(
 			'tree_id' => $WT_TREE->getTreeId(),
 			'limit'   => (int) $num,
-		))->FetchAssoc();
+		))->fetchAssoc();
 
 		if ($block) {
 			$content .= "<table width=\"90%\">";

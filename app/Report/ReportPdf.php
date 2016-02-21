@@ -67,9 +67,9 @@ class ReportPdf extends ReportBase {
 		), self::UNICODE, "UTF-8", self::DISK_CACHE);
 
 		// Setup the PDF margins
-		$this->pdf->setMargins($this->leftmargin, $this->topmargin, $this->rightmargin);
-		$this->pdf->SetHeaderMargin($this->headermargin);
-		$this->pdf->SetFooterMargin($this->footermargin);
+		$this->pdf->SetMargins($this->leftmargin, $this->topmargin, $this->rightmargin);
+		$this->pdf->setHeaderMargin($this->headermargin);
+		$this->pdf->setFooterMargin($this->footermargin);
 		//Set auto page breaks
 		$this->pdf->SetAutoPageBreak(true, $this->bottommargin);
 		// Set font subsetting

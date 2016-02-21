@@ -3248,7 +3248,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$statement->execute(array($this->getHighestIndex() + 1, $placeid, $level, $_POST['NEW_PLACE_NAME'], $_POST['LONG_CONTROL'][3] . $_POST['NEW_PLACE_LONG'], $_POST['LATI_CONTROL'][3] . $_POST['NEW_PLACE_LATI'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
 			}
 
-			$controller->addInlineJavaScript('closePopupAndReloadParent();');
+			$controller->addInlineJavascript('closePopupAndReloadParent();');
 			echo "<div class=\"center\"><button onclick=\"closePopupAndReloadParent();return false;\">", I18N::translate('close'), "</button></div>";
 			exit;
 		}
@@ -3263,7 +3263,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$statement->execute(array($_POST['NEW_PLACE_NAME'], $_POST['LATI_CONTROL'][3] . $_POST['NEW_PLACE_LATI'], $_POST['LONG_CONTROL'][3] . $_POST['NEW_PLACE_LONG'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon'], $placeid));
 			}
 
-			$controller->addInlineJavaScript('closePopupAndReloadParent();');
+			$controller->addInlineJavascript('closePopupAndReloadParent();');
 			echo "<div class=\"center\"><button onclick=\"closePopupAndReloadParent();return false;\">", I18N::translate('close'), "</button></div>";
 			exit;
 		}
@@ -3281,7 +3281,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				Filter::get('svzoom'),
 				$placeid,
 			));
-			$controller->addInlineJavaScript('window.close();');
+			$controller->addInlineJavascript('window.close();');
 			exit;
 		}
 

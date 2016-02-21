@@ -200,13 +200,13 @@ class CensusAssistantModule extends AbstractModule {
 					'" . $indi->getXref() . "' ,
 					'" . $nam . "' ,
 					'" . $indi->getSex() . "' ,
-					'" . $indi->getbirthyear() . "' ,
-					'" . (1901 - $indi->getbirthyear()) . "' ,
-					'" . $indi->getbirthplace() . "'); return false;\">
+					'" . $indi->getBirthYear() . "' ,
+					'" . (1901 - $indi->getBirthYear()) . "' ,
+					'" . $indi->getBirthPlace() . "'); return false;\">
 					<b>" . $indi->getFullName() . "</b>&nbsp;&nbsp;&nbsp;";
 
 				$born = GedcomTag::getLabel('BIRT');
-				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span></a></li>";
+				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getBirthYear(), "&nbsp;&nbsp;&nbsp;", $indi->getBirthPlace(), "</span></a></li>";
 				echo "<hr>";
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', I18N::translate('Total individuals: %s', count($myindilist)), '</tr></td>';
@@ -247,7 +247,7 @@ class CensusAssistantModule extends AbstractModule {
 				function insertId() {
 					if (window.opener.document.getElementById('addlinkQueue')) {
 						// alert('Please move this alert window and examine the contents of the pop-up window, then click OK')
-						window.opener.insertRowToTable('<?php echo $record->getXref(); ?>', '<?php echo htmlSpecialChars($record->getFullName()); ?>', '<?php echo $headjs; ?>');
+						window.opener.insertRowToTable('<?php echo $record->getXref(); ?>', '<?php echo htmlspecialchars($record->getFullName()); ?>', '<?php echo $headjs; ?>');
 						window.close();
 					}
 				}

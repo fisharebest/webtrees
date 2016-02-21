@@ -375,7 +375,7 @@ class IndividualController extends GedcomRecordController {
 	 */
 	public function getSignificantSurname() {
 		if ($this->record) {
-			list($surn) = explode(',', $this->record->getSortname());
+			list($surn) = explode(',', $this->record->getSortName());
 
 			return $surn;
 		} else {

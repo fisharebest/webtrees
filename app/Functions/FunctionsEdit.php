@@ -923,31 +923,31 @@ class FunctionsEdit {
 			case '_ASSO':
 				$tmp = Individual::getInstance($value, $WT_TREE);
 				if ($tmp) {
-					echo ' ', $tmp->getFullname();
+					echo ' ', $tmp->getFullName();
 				}
 				break;
 			case 'SOUR':
 				$tmp = Source::getInstance($value, $WT_TREE);
 				if ($tmp) {
-					echo ' ', $tmp->getFullname();
+					echo ' ', $tmp->getFullName();
 				}
 				break;
 			case 'NOTE':
 				$tmp = Note::getInstance($value, $WT_TREE);
 				if ($tmp) {
-					echo ' ', $tmp->getFullname();
+					echo ' ', $tmp->getFullName();
 				}
 				break;
 			case 'OBJE':
 				$tmp = Media::getInstance($value, $WT_TREE);
 				if ($tmp) {
-					echo ' ', $tmp->getFullname();
+					echo ' ', $tmp->getFullName();
 				}
 				break;
 			case 'REPO':
 				$tmp = Repository::getInstance($value, $WT_TREE);
 				if ($tmp) {
-					echo ' ', $tmp->getFullname();
+					echo ' ', $tmp->getFullName();
 				}
 				break;
 			}

@@ -161,9 +161,9 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 			$content .= '</div>';
 		}
 		if ($stat_long_life) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Individual who lived the longest') . '</div><div class="facts_value stats_value stat-cell">' . $stats->LongestLifeAge() . '</div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Individual who lived the longest') . '</div><div class="facts_value stats_value stat-cell">' . $stats->longestLifeAge() . '</div>';
 			if (!$block) {
-				$content .= '<div class="facts_value stat-cell left">' . $stats->LongestLife() . '</div>';
+				$content .= '<div class="facts_value stat-cell left">' . $stats->longestLife() . '</div>';
 			}
 			$content .= '</div>';
 		}

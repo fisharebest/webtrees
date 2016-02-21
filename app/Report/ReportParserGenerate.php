@@ -1429,7 +1429,7 @@ class ReportParserGenerate extends ReportParserBase {
 		if (preg_match("/[0-9] (.+) @(.+)@/", $this->gedrec, $match)) {
 			$id = $match[2];
 		}
-		$record = GedcomRecord::GetInstance($id, $WT_TREE);
+		$record = GedcomRecord::getInstance($id, $WT_TREE);
 		if ($record && $record->canShow()) {
 			array_push($this->print_data_stack, $this->print_data);
 			$this->print_data = true;
