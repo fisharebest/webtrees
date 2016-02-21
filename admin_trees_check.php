@@ -155,6 +155,15 @@ foreach ($records as $record) {
 foreach ($all_links as $xref1 => $links) {
 	$type1 = $records[$xref1]->type;
 	foreach ($links as $xref2 => $type2) {
+		if (!isset($records[$xref2])) {
+			echo warning(
+				link_message($type1, $xref1, $type2, $xref2) . ' ' .
+				/* I18N: placeholders are GEDCOM XREFs, such as R123 */
+				I18N::translate('%1$s does not exist. Did you mean %2$s?', format_link($xref2), format_link($upper_links[strtoupper($xref2)]))
+			);
+			continue;
+		}
+		
 		$type3 = @$records[$xref2]->type;
 		if (!array_key_exists($xref2, $all_links)) {
 			if (array_key_exists(strtoupper($xref2), $upper_links)) {
