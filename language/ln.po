@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"PO-Revision-Date: 2016-02-17 17:58+0100\n"
+"PO-Revision-Date: 2016-02-22 20:05+0100\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <http://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -1359,7 +1359,7 @@ msgstr ""
 
 #: timeline.php:295
 msgid "Add another individual to the chart"
-msgstr ""
+msgstr "Bakísá moto mosúsu káti ya liyémi"
 
 #: app/Functions/FunctionsPrint.php:556
 msgid "Add from clipboard"
@@ -4504,7 +4504,7 @@ msgstr ""
 
 #: timeline.php:125 timeline.php:127 timeline.php:129
 msgid "Day:"
-msgstr ""
+msgstr "Mokɔlɔ:"
 
 #: app/Functions/FunctionsPrintLists.php:201 app/Stats.php:1075
 #: app/Stats.php:1077
@@ -11296,7 +11296,7 @@ msgstr ""
 
 #: timeline.php:274 timeline.php:289
 msgid "Remove individual"
-msgstr ""
+msgstr "Kolongola moto"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:127
 msgid "Remove link from list"
@@ -12343,7 +12343,7 @@ msgstr ""
 
 #: timeline.php:315
 msgid "Show lifespans"
-msgstr ""
+msgstr "Lakisá ewúmeli ya bomɔi"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:272
@@ -15631,7 +15631,7 @@ msgstr ""
 
 #: timeline.php:129 timeline.php:372
 msgid "Year:"
-msgstr ""
+msgstr "Mbúla:"
 
 #: app/Stats.php:6980
 msgid "Yemen"
@@ -19756,7 +19756,7 @@ msgstr ""
 
 #: timeline.php:127
 msgid "years"
-msgstr ""
+msgstr "mibú"
 
 #: admin_trees_config.php:75 admin_users.php:242 admin_users.php:243
 #: app/Functions/FunctionsEdit.php:133 app/Functions/FunctionsEdit.php:625
