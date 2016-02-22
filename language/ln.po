@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"PO-Revision-Date: 2016-02-22 20:05+0100\n"
+"PO-Revision-Date: 2016-02-22 20:30+0100\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <http://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -43,14 +43,14 @@ msgstr ""
 #: statisticsplot.php:1195 statisticsplot.php:1245 statisticsplot.php:1295
 #: statisticsplot.php:1345
 msgid " per gender"
-msgstr ""
+msgstr " na emoto"
 
 #: statisticsplot.php:889 statisticsplot.php:939 statisticsplot.php:993
 #: statisticsplot.php:1043 statisticsplot.php:1097 statisticsplot.php:1147
 #: statisticsplot.php:1197 statisticsplot.php:1247 statisticsplot.php:1297
 #: statisticsplot.php:1347
 msgid " per time period"
-msgstr ""
+msgstr " na eténi ya ngonga"
 
 #. I18N: Abbreviation for "number %s"
 #: app/Functions/FunctionsPrintFacts.php:213
@@ -4016,7 +4016,7 @@ msgstr ""
 #: statisticsplot.php:1206 statisticsplot.php:1256 statisticsplot.php:1306
 #: statisticsplot.php:1356
 msgid "Counts "
-msgstr ""
+msgstr "Mitángo "
 
 #: app/Module/GoogleMapsModule.php:4043
 msgid "County"
@@ -9156,7 +9156,7 @@ msgstr ""
 
 #: timeline.php:125 timeline.php:127 timeline.php:129
 msgid "Month:"
-msgstr ""
+msgstr "Sánzá:"
 
 #: app/GedcomCode/GedcomCodeTemp.php:221
 msgid "Monticello, Utah"
@@ -16001,7 +16001,7 @@ msgstr ""
 #: statisticsplot.php:1117 statisticsplot.php:1167 statisticsplot.php:1217
 #: statisticsplot.php:1267
 msgid "age"
-msgstr ""
+msgstr "mbúla"
 
 #. I18N: An access rule - allow access to the site
 #: admin_site_access.php:27 admin_site_access.php:34
@@ -16260,7 +16260,7 @@ msgstr ""
 
 #: statisticsplot.php:1317
 msgid "children"
-msgstr ""
+msgstr "bǎna"
 
 #. I18N: button label
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
@@ -18498,7 +18498,7 @@ msgstr ""
 
 #: statisticsplot.php:764
 msgid "less than"
-msgstr ""
+msgstr "mokɛ́ koleka"
 
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
@@ -18610,7 +18610,7 @@ msgstr ""
 #: statisticsplot.php:859 statisticsplot.php:909 statisticsplot.php:963
 #: statisticsplot.php:1013 statisticsplot.php:1067
 msgid "month"
-msgstr ""
+msgstr "sánzá"
 
 #: statistics.php:566
 msgid "months after marriage"
@@ -18786,7 +18786,7 @@ msgstr ""
 #: statisticsplot.php:1118 statisticsplot.php:1168 statisticsplot.php:1218
 #: statisticsplot.php:1268 statisticsplot.php:1318
 msgid "numbers"
-msgstr ""
+msgstr "mitángo"
 
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
@@ -18812,7 +18812,7 @@ msgstr ""
 
 #: statisticsplot.php:788
 msgid "over"
-msgstr ""
+msgstr "míngi koleka"
 
 #: statistics.php:608
 msgid "overall"
