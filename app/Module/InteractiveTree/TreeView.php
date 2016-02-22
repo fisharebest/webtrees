@@ -207,7 +207,7 @@ class TreeView {
 				$html .= $this->drawPerson($child, $gen - 1, -1, null, $co);
 			}
 			if (!$ajax) {
-				$html = '<td' . ($gen == 0 ? ' abbr="c' . $f2load . '"' : '') . '>' . $html . '</td>' . $this->drawHorizontalLine();
+				$html = '<td align="right"' . ($gen == 0 ? ' abbr="c' . $f2load . '"' : '') . '>' . $html . '</td>' . $this->drawHorizontalLine();
 			}
 		}
 
@@ -296,7 +296,7 @@ class TreeView {
 		/* draw the parents */
 		if ($state >= 0 && (!empty($parent) || count($fop))) {
 			$unique = (empty($parent) || count($fop) == 0);
-			$html .= '<td><table class="tv_tree"><tbody>';
+			$html .= '<td align="left"><table class="tv_tree"><tbody>';
 			if (!empty($parent)) {
 				$u = $unique ? 'c' : 't';
 				$html .= '<tr><td ' . ($gen == 0 ? ' abbr="p' . $primaryChildFamily->getXref() . '@' . $u . '"' : '') . '>';
