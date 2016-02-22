@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Census\Census;
 use Fisharebest\Webtrees\Census\CensusInterface;
 use Fisharebest\Webtrees\Controller\SimpleController;
 use Fisharebest\Webtrees\Family;
@@ -278,59 +279,17 @@ class CensusAssistantModule extends AbstractModule {
 	public static function formatCensusNote(Note $note) {
 		global $WT_TREE;
 
-		$headers = array(
-			'AgM'        => 'Age at first marriage',
-			'Age'        => 'Age at last birthday',
-			'Assets'     => 'Assets = Owned,Rented - Value,Rent - Radio - Farm',
-			'BIC'        => 'Born in County',
-			'BOE'        => 'Born outside England',
-			'BP'         => 'Birthplace - (Chapman format)',
-			'Birthplace' => 'Birthplace (Full format)',
-			'Bmth'       => 'Month of birth - If born within Census year',
-			'ChB'        => 'Children born alive',
-			'ChD'        => 'Children who have died',
-			'ChL'        => 'Children still living',
-			'DOB'        => 'Date of birth',
-			'Edu'        => 'Education - At School, Can Read, Can Write', // or "Cannot Read, Cannot Write" ??
-			'EmD'        => 'Employed?',
-			'EmN'        => 'Unemployed?',
-			'EmR'        => 'Employer?',
-			'Employ'     => 'Employment',
-			'Eng?'       => 'English spoken?',
-			'EngL'       => 'English spoken?, if not, Native Language',
-			'FBP'        => 'Father’s Birthplace - (Chapman format)',
-			'Health'     => 'Health - 1.Blind, 2.Deaf & Dumb, 3.Idiotic, 4.Insane, 5.Disabled etc',
-			'Home'       => 'Home Ownership - Owned/Rented-Free/Mortgaged-Farm/House-Farm Schedule number',
-			'Industry'   => 'Industry',
-			'Infirm'     => 'Infirmities - 1. Deaf & Dumb, 2. Blind, 3. Lunatic, 4. Imbecile/feeble-minded',
-			'Lang'       => 'If Foreign Born - Native Language',
-			'MBP'        => 'Mother’s Birthplace - (Chapman format)',
-			'MC'         => 'Marital Condition - Married, Single, Unmarried, Widowed or Divorced',
-			'Mmth'       => 'Month of marriage - If married during Census Year',
-			'MnsE'       => 'Months employed during Census Year',
-			'MnsU'       => 'Months unemployed during Census Year',
-			'N/A'        => 'If Foreign Born - Naturalized, Alien',
-			'NL'         => 'If Foreign Born - Native Language',
-			'Name'       => 'Full Name or Married name if married',
-			'Occupation' => 'Occupation',
-			'Par'        => 'Parentage - Father if foreign born, Mother if foreign born',
-			'Race'       => 'Race or Color - Black, White, Mulatto, Asian, Indian, Chinese etc',
-			'Relation'   => 'Relationship to Head of Household',
-			'Sex'        => 'Male or Female',
-			'Situ'       => 'Situation - Disease, Infirmity, Convict, Pauper etc',
-			'Ten'        => 'Tenure - Owned/Rented, (if owned)Free/Morgaged',
-			'Vet'        => 'War Veteran?',
-			'WH'         => 'Working at Home?',
-			'War'        => 'War or Expedition',
-			'WksU'       => 'Weeks unemployed during Census Year',
-			'YOI'        => 'If Foreign Born - Year of immigration',
-			'YON'        => 'If Foreign Born - Year of naturalization',
-			'YUS'        => 'If Foreign Born - Years in the USA',
-			'YrsM'       => 'Years Married, or Y if married in Census Year',
-			'Schedule'   => 'Schedule Number',
-			'SubNum'     => 'Schedule sub number',
-			'Role'       => 'for institutions only – for example, Officer, Visitor, Servant, Patient, Inmate'
-		);
+
+		$headers = array();
+		foreach (Census::allCensusPlaces() as $allCensusesOfPlace) {
+			foreach ($allCensusesOfPlace->allCensusDates() as $census) {
+				foreach ($census->columns() as $column) {
+					if ($column->abbreviation()) {
+						$headers[$column->abbreviation()] = $column->title();
+					}
+				}
+			}
+		}
 
 		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.*)((?:\n.*)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
 			// This looks like a census-assistant shared note
