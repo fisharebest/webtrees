@@ -327,6 +327,9 @@ class CensusAssistantModule extends AbstractModule {
 			'YON'        => 'If Foreign Born - Year of naturalization',
 			'YUS'        => 'If Foreign Born - Years in the USA',
 			'YrsM'       => 'Years Married, or Y if married in Census Year',
+			'Schedule'   => 'Schedule Number',
+			'SubNum'     => 'Schedule sub number',
+			'Role'       => 'for institutions only – for example, Officer, Visitor, Servant, Patient, Inmate'
 		);
 
 		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.*)((?:\n.*)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {

@@ -38,10 +38,10 @@ class RegisterOfWales1939 extends CensusOfWales implements CensusInterface {
 			new CensusColumnNull($this, 'Schedule', 'Schedule Number'),
 			new CensusColumnNull($this, 'SubNum', 'Schedule Sub Number'),
 			new CensusColumnSurnameGivenNames($this, 'Name', 'Surname & other names'),
-			new CensusColumnNull($this, 'Role', 'Officer, Visitor, Servant, Patient, Inmate'),
-			new CensusColumnSexMF($this, 'Gender', 'Male or Female'),
-			new CensusColumnBirthDayMonthSlashYear($this, 'DoB', 'Date of birth'),
-			new CensusColumnConditionEnglish($this, 'Marr Status', 'Single, Married, Widowed or Divorced'),
+			new CensusColumnNull($this, 'Role', 'For institutions only – for example, Officer, Visitor, Servant, Patient, Inmate'),
+			new CensusColumnSexMF($this, 'Sex', 'Male or Female'),
+			new CensusColumnBirthDayMonthSlashYear($this, 'DOB', 'Date of birth'),
+			new CensusColumnConditionEnglish($this, 'MC', 'Marital Condition - Married, Single, Unmarried, Widowed or Divorced'),
 			new CensusColumnOccupation($this, 'Occupation', 'Occupation')
 		);
 	}
