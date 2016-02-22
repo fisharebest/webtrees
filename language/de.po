@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-21 09:42+0100\n"
+"PO-Revision-Date: 2016-02-22 08:16+0100\n"
 "Last-Translator: Rico Sonntag <mail@ricosonntag.de>\n"
 "Language-Team: German <http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -7833,7 +7833,7 @@ msgstr "Khordad"
 
 #: app/GedcomCode/GedcomCodeTemp.php:183
 msgid "Kiev, Ukraine"
-msgstr "Kiev, Ukraine"
+msgstr "Kiew, Ukraine"
 
 #: app/Stats.php:6847
 msgid "Kiribati"
@@ -14591,7 +14591,7 @@ msgstr "Tokelau"
 
 #: app/GedcomCode/GedcomCodeTemp.php:325
 msgid "Tokyo, Japan"
-msgstr "Tokyo, Japan"
+msgstr "Tokio, Japan"
 
 #: app/GedcomTag.php:1936
 msgid "Tombstone"
@@ -15576,7 +15576,7 @@ msgstr "Nachname der Frau mit dem des Gatten ersetzen"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 msgid "Wildcards"
-msgstr "Wildcards"
+msgstr "Platzhalter"
 
 #. I18N: gedcom tag WILL
 #: app/GedcomTag.php:860
