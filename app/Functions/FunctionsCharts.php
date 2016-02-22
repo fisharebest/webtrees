@@ -350,7 +350,7 @@ class FunctionsCharts {
 						// multiple marriages
 						if ($f > 0) {
 							echo '</tr><tr><td></td>';
-							echo '<td>';
+							echo '<td style="text-align:end; vertical-align: top;">';
 
 							//find out how many cousins there are to establish vertical line on second families
 							$fchildren = $famids[$f]->getChildren();
