@@ -56,18 +56,18 @@ class RegisterOfWales1939Test extends \PHPUnit_Framework_TestCase {
 		$this->assertSame('SubNum', $columns[1]->abbreviation());
 		$this->assertSame('Name', $columns[2]->abbreviation());
 		$this->assertSame('Role', $columns[3]->abbreviation());
-		$this->assertSame('Gender', $columns[4]->abbreviation());
-		$this->assertSame('DoB', $columns[5]->abbreviation());
-		$this->assertSame('Marr Status', $columns[6]->abbreviation());
+		$this->assertSame('Sex', $columns[4]->abbreviation());
+		$this->assertSame('DOB', $columns[5]->abbreviation());
+		$this->assertSame('MC', $columns[6]->abbreviation());
 		$this->assertSame('Occupation', $columns[7]->abbreviation());
 
 		$this->assertSame('Schedule Number', $columns[0]->title());
 		$this->assertSame('Schedule Sub Number', $columns[1]->title());
 		$this->assertSame('Surname & other names', $columns[2]->title());
-		$this->assertSame('Officer, Visitor, Servant, Patient, Inmate', $columns[3]->title());
+		$this->assertSame('For institutions only – for example, Officer, Visitor, Servant, Patient, Inmate', $columns[3]->title());
 		$this->assertSame('Male or Female', $columns[4]->title());
 		$this->assertSame('Date of birth', $columns[5]->title());
-		$this->assertSame('Single, Married, Widowed or Divorced', $columns[6]->title());
+		$this->assertSame('Marital Condition - Married, Single, Unmarried, Widowed or Divorced', $columns[6]->title());
 		$this->assertSame('Occupation', $columns[7]->title());
 	}
 }
