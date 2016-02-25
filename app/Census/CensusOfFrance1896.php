@@ -35,7 +35,12 @@ class CensusOfFrance1896 extends CensusOfFrance implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnNull($this, 'XXXX', 'XXXX'),
+			new CensusColumnSurname($this, 'Nom', 'Nom de famille'),
+			new CensusColumnGivenNames($this, 'Prénom', 'Prénom'),
+			new CensusColumnOccupation($this, 'Profession', 'Profession'),
+			new CensusColumnAge($this, 'Âge', 'Âge'),
+			new CensusColumnRelationToHead($this, 'Position', 'Position dans le ménage'),
+			new CensusColumnNationality($this, 'Nationalité', 'Nationalité'),	
 		);
 	}
 }
