@@ -304,13 +304,13 @@ class CensusAssistantModule extends AbstractModule {
 				$fmt_headers[$key] = '<span title="' . Filter::escapeHtml($value) . '">' . $key . '</span>';
 			}
 
-			// Substitue header labels and format as HTML
+			// Substitute header labels and format as HTML
 			$thead = '<tr><th>' . strtr(str_replace('|', '</th><th>', $header), $fmt_headers) . '</th></tr>';
 			$thead = str_replace('.b.', '', $thead);
 
 			// Format data as HTML
 			$tbody = '';
-			foreach (explode("\n", $data) as $row) {
+			foreach (explode("\n", ltrim($data)) as $row) {
 				$tbody .= '<tr>';
 				foreach (explode('|', $row) as $column) {
 					$tbody .= '<td>' . $column . '</td>';
@@ -320,12 +320,14 @@ class CensusAssistantModule extends AbstractModule {
 
 			return
 				$title . "\n" . // The newline allows the framework to expand the details and turn the first line into a link
+				'<div class="markdown census-assistant-note">' .
 				'<p>' . $preamble . '</p>' .
-				'<table class="table-census-assistant">' .
+				'<table>' .
 				'<thead>' . $thead . '</thead>' .
 				'<tbody>' . $tbody . '</tbody>' .
 				'</table>' .
-				'<p>' . $postamble . '</p>';
+				'<p>' . $postamble . '</p>' .
+				'</div>';
 		} else {
 			// Not a census-assistant shared note - apply default formatting
 			return Filter::formatText($note->getNote(), $WT_TREE);
@@ -348,7 +350,7 @@ class CensusAssistantModule extends AbstractModule {
 			$html .= '<th title="' . $column->title() . '">' . $column->abbreviation() . '</th>';
 		}
 
-		return '<tr><th hidden></th>' . $html . '<th></th></th></tr>';
+		return '<tr><th hidden></th>' . $html . '<th></th></tr>';
 	}
 
 	/**

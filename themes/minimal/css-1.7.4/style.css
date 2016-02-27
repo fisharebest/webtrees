@@ -1960,6 +1960,8 @@ dd .deletelink {
 	clear: both;
 }
 
+/* ===== markdown formatting ===== */
+
 .markdown p {
 	margin: 0 0 0.5em;
 	white-space: pre-wrap;
@@ -2058,6 +2060,20 @@ dd .deletelink {
 #family-table .fact_SOUR {
 	margin: 5px 3px 5px 0;
 	clear: both;
+}
+
+#notes_content .facts_table,
+#personal_facts_content .facts_table {
+	table-layout: fixed;
+}
+
+#notes_content > div,
+#personal_facts_content > div {
+	margin: 2px 2px 0;
+}
+
+.census-assistant-note {
+	overflow-x: auto;
 }
 
 .facts_table .field em {
@@ -3121,12 +3137,6 @@ dd .deletelink {
 [dir=rtl] #cboxSlideshow {
 	right: 57px;
 	left: auto;
-}
-
-/* ===== Census assistant module ===== */
-table.table-census-assistant th {
-	font-weight: bold;
-	text-align: left;
 }
 
 /* Stories module */
