@@ -35,13 +35,13 @@ class CensusOfFrance1876 extends CensusOfFrance implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnSurname($this, 'XXXX', 'XXXX'),
-			new CensusColumnGivenNames($this, 'XXXX', 'XXXX'),
-			new CensusColumnOccupation($this, 'XXXX', 'XXXX'),
-			new CensusColumnAge($this, 'XXXX', 'XXXX'),
-			new CensusColumnConditionEnglish($this, 'XXXX', 'XXXX'),
-			new CensusColumnNationality($this, 'XXXX', 'XXXX'),
-			new CensusColumnBirthPlace($this, 'XXXX', 'XXXX'),
+			new CensusColumnSurname($this, 'Nom', 'Nom de famille'),
+			new CensusColumnGivenNames($this, 'Prénom', 'Prénom'),
+			new CensusColumnOccupation($this, 'Profession', 'Profession'),
+			new CensusColumnAge($this, 'Âge', 'Âge'),
+			new CensusColumnConditionFrench($this, 'Situtation pers.', 'Situation personnelle (marié, veuf…)'),
+			new CensusColumnNationality($this, 'Nationalité', 'Nationalité'),
+			new CensusColumnBirthPlace($this, 'Lieu', 'Lieu de naissance'),
 		);
 	}
 }

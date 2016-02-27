@@ -18,14 +18,14 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfFrance1866 extends CensusOfFrance implements CensusInterface {
+class CensusOfFrance1931 extends CensusOfFrance implements CensusInterface {
 	/**
 	 * When did this census occur.
 	 *
 	 * @return string
 	 */
 	public function censusDate() {
-		return '1866';
+		return '1931';
 	}
 
 	/**
@@ -38,8 +38,9 @@ class CensusOfFrance1866 extends CensusOfFrance implements CensusInterface {
 			new CensusColumnSurname($this, 'Nom', 'Nom de famille'),
 			new CensusColumnGivenNames($this, 'Prénom', 'Prénom'),
 			new CensusColumnOccupation($this, 'Profession', 'Profession'),
-			new CensusColumnAge($this, 'Âge', 'Âge'),
-			new CensusColumnConditionFrench($this, 'Situtation pers.', 'Situation personnelle (marié, veuf…)'),
+			new CensusColumnBirthYear($this, 'Année', 'Année de naissance'),	
+			new CensusColumnRelationToHead($this, 'Position', 'Position dans le ménage'),
+			new CensusColumnNationality($this, 'Nationalité', 'Nationalité'),	
 		);
 	}
 }

@@ -15,31 +15,29 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Individual;
+
 /**
- * Definitions for a census
+ * Marital status.
  */
-class CensusOfFrance1866 extends CensusOfFrance implements CensusInterface {
+class CensusColumnConditionFrench extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
-	 * When did this census occur.
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function censusDate() {
-		return '1866';
-	}
+	public function generate(Individual $individual, Individual $head = null) {
+		$family = $this->spouseFamily($individual);
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnSurname($this, 'Nom', 'Nom de famille'),
-			new CensusColumnGivenNames($this, 'Prénom', 'Prénom'),
-			new CensusColumnOccupation($this, 'Profession', 'Profession'),
-			new CensusColumnAge($this, 'Âge', 'Âge'),
-			new CensusColumnConditionFrench($this, 'Situtation pers.', 'Situation personnelle (marié, veuf…)'),
-		);
+		if ($family === null || count($family->getFacts('_NMR')) > 0) {
+			return 'Célibataire'; // unmarried
+		} elseif (count($family->getFacts('DIV')) > 0) {
+			return 'Divorcé'; // divorced
+		} else {
+			return 'Marié'; // married
+		}
 	}
 }
