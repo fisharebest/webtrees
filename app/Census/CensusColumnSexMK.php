@@ -20,23 +20,10 @@ use Fisharebest\Webtrees\Individual;
 /**
  * The individual's sex.
  */
-class CensusColumnSexMK extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		switch ($individual->getSex()) {
-		case 'M':
-			return 'M';
-		case 'F':
-			return 'K';
-		default:
-			return '';
-		}
-	}
+class CensusColumnSexMK extends CensusColumnSexMF {
+	/* Text to display for male individuals */
+	protected $male = 'M';
+
+	/* Text to display for female individuals */
+	protected $female = 'K';
 }
