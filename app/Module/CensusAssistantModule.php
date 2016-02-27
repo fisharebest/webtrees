@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Soundex;
 
 /**
  * Class CensusAssistantModule
@@ -279,18 +280,6 @@ class CensusAssistantModule extends AbstractModule {
 	public static function formatCensusNote(Note $note) {
 		global $WT_TREE;
 
-
-		$headers = array();
-		foreach (Census::allCensusPlaces() as $allCensusesOfPlace) {
-			foreach ($allCensusesOfPlace->allCensusDates() as $census) {
-				foreach ($census->columns() as $column) {
-					if ($column->abbreviation()) {
-						$headers[$column->abbreviation()] = $column->title();
-					}
-				}
-			}
-		}
-
 		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.*)((?:\n.*)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
 			// This looks like a census-assistant shared note
 			$title     = Filter::escapeHtml($match[1]);
@@ -299,12 +288,39 @@ class CensusAssistantModule extends AbstractModule {
 			$data      = Filter::escapeHtml($match[4]);
 			$postamble = Filter::escapeHtml($match[5]);
 
-			$fmt_headers = array();
-			foreach ($headers as $key => $value) {
-				$fmt_headers[$key] = '<span title="' . Filter::escapeHtml($value) . '">' . $key . '</span>';
+			// Get the column headers for the census to which this note refers
+			// assumes a soundex match between the fact place name and the specific
+			// census censusDate() function
+			$xref      = $note->getXref();
+			$firstIndi = $note->linkedIndividuals('NOTE')[0];
+			foreach ($firstIndi->getFacts('CENS') as $fact) {
+				if (trim($fact->getAttribute('NOTE'), '@') === $xref) {
+					$date    = strip_tags($fact->getDate()->display(false, '%d %M %Y'));
+					$place   = explode(',', strip_tags($fact->getPlace()->getFullName()));
+					$country = Soundex::daitchMokotoff(array_pop($place));
+					break;
+				}
 			}
 
-			// Substitue header labels and format as HTML
+			$fmt_headers = array();
+			foreach (Census::allCensusPlaces() as $allCensusesOfPlace) {
+				if (Soundex::compare($country, Soundex::daitchMokotoff($allCensusesOfPlace->censusPlace()))) {
+					foreach ($allCensusesOfPlace->allCensusDates() as $census) {
+						if (strcasecmp($census->censusDate(), $date) === 0) {
+							foreach ($census->columns() as $column) {
+								$abbrev = $column->abbreviation();
+								if ($abbrev) {
+									$ctitle               = $column->title() ? $column->title() : I18N::translate('Description unavailable');
+									$fmt_headers[$abbrev] = '<span title="' . $ctitle . '">' . $abbrev . '</span>';
+								}
+							}
+							break 2;
+						}
+					}
+				}
+			}
+
+			// Substitute header labels and format as HTML
 			$thead = '<tr><th>' . strtr(str_replace('|', '</th><th>', $header), $fmt_headers) . '</th></tr>';
 			$thead = str_replace('.b.', '', $thead);
 
