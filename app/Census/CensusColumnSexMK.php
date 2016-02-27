@@ -15,15 +15,10 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Individual;
-
 /**
  * The individual's sex.
  */
 class CensusColumnSexMK extends CensusColumnSexMF {
-	/* Text to display for male individuals */
-	protected $male = 'M';
-
 	/* Text to display for female individuals */
 	protected $female = 'K';
 }
