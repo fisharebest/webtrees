@@ -280,7 +280,7 @@ class CensusAssistantModule extends AbstractModule {
 	public static function formatCensusNote(Note $note) {
 		global $WT_TREE;
 
-		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.*)((?:\n.*)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
+		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.+)\n(.+(?:\n.+)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
 			// This looks like a census-assistant shared note
 			$title     = Filter::escapeHtml($match[1]);
 			$preamble  = Filter::escapeHtml($match[2]);
@@ -329,7 +329,7 @@ class CensusAssistantModule extends AbstractModule {
 
 			// Format data as HTML
 			$tbody = '';
-			foreach (explode("\n", ltrim($data)) as $row) {
+			foreach (explode("\n", $data) as $row) {
 				$tbody .= '<tr>';
 				foreach (explode('|', $row) as $column) {
 					$tbody .= '<td>' . $column . '</td>';
