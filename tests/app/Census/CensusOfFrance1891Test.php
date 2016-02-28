@@ -49,16 +49,16 @@ class CensusOfFrance1891Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[3]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNationality', $columns[4]);
 
-		$this->assertSame('XXXX', $columns[0]->abbreviation());
-		$this->assertSame('XXXX', $columns[1]->abbreviation());
-		$this->assertSame('XXXX', $columns[2]->abbreviation());
-		$this->assertSame('XXXX', $columns[3]->abbreviation());
-		$this->assertSame('XXXX', $columns[4]->abbreviation());
+		$this->assertSame('Nom', $columns[0]->abbreviation());
+		$this->assertSame('Prénom', $columns[1]->abbreviation());
+		$this->assertSame('Profession', $columns[2]->abbreviation());
+		$this->assertSame('Position', $columns[3]->abbreviation());
+		$this->assertSame('Nationalité', $columns[4]->abbreviation());
 
-		$this->assertSame('XXXX', $columns[0]->title());
-		$this->assertSame('XXXX', $columns[1]->title());
-		$this->assertSame('XXXX', $columns[2]->title());
-		$this->assertSame('XXXX', $columns[3]->title());
-		$this->assertSame('XXXX', $columns[4]->title());
+		$this->assertSame('Nom de famille', $columns[0]->title());
+		$this->assertSame('Prénom', $columns[1]->title());
+		$this->assertSame('Profession', $columns[2]->title());
+		$this->assertSame('Position dans le ménage', $columns[3]->title());
+		$this->assertSame('Nationalité', $columns[4]->title());
 	}
 }

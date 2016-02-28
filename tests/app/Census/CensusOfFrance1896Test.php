@@ -42,11 +42,26 @@ class CensusOfFrance1896Test extends \PHPUnit_Framework_TestCase {
 		$census  = new CensusOfFrance1896;
 		$columns = $census->columns();
 
-		$this->assertCount(1, $columns);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[0]);
+		$this->assertCount(6, $columns);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSurname', $columns[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnGivenNames', $columns[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAge', $columns[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNationality', $columns[5]);
 
-		$this->assertSame('XXXX', $columns[0]->abbreviation());
+		$this->assertSame('Nom', $columns[0]->abbreviation());
+		$this->assertSame('Prénom', $columns[1]->abbreviation());
+		$this->assertSame('Profession', $columns[2]->abbreviation());
+		$this->assertSame('Âge', $columns[3]->abbreviation());
+		$this->assertSame('Position', $columns[4]->abbreviation());
+		$this->assertSame('Nationalité', $columns[5]->abbreviation());
 
-		$this->assertSame('XXXX', $columns[0]->title());
+		$this->assertSame('Nom de famille', $columns[0]->title());
+		$this->assertSame('Prénom', $columns[1]->title());
+		$this->assertSame('Profession', $columns[2]->title());
+		$this->assertSame('Âge', $columns[3]->title());
+		$this->assertSame('Position dans le ménage', $columns[4]->title());
+		$this->assertSame('Nationalité', $columns[5]->title());
 	}
 }
