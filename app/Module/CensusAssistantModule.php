@@ -339,7 +339,7 @@ class CensusAssistantModule extends AbstractModule {
 
 			return
 				$title . "\n" . // The newline allows the framework to expand the details and turn the first line into a link
-				'<div class="markdown census-assistant-note">' .
+				'<div class="markdown">' .
 				'<p>' . $preamble . '</p>' .
 				'<table>' .
 				'<thead>' . $thead . '</thead>' .

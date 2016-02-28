@@ -120,7 +120,14 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
 		ob_start();
 
-		echo '<div class="descriptionbox rela"><form action="?"><input id="checkbox_rela_facts" type="checkbox" ';
+		echo '<table class="facts_table">';
+		echo '<colgroup>';
+		echo '<col class="width20">';
+		echo '<col class="width80">';
+		echo '</colgroup>';
+		echo '<tbody>';
+		echo '<tr><td colspan="2" class="descriptionbox rela">';
+		echo '<form action="?"><input id="checkbox_rela_facts" type="checkbox" ';
 		echo $controller->record->getTree()->getPreference('EXPAND_RELATIVES_EVENTS') ? 'checked' : '';
 		echo ' onclick="jQuery(\'tr.rela\').toggle();"><label for="checkbox_rela_facts">', I18N::translate('Events of close relatives'), '</label>';
 		if (file_exists(Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
@@ -128,9 +135,9 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 			echo $EXPAND_HISTO_EVENTS ? 'checked' : '';
 			echo ' onclick="jQuery(\'tr.histo\').toggle();"><label for="checkbox_histo">', I18N::translate('Historical facts'), '</label>';
 		}
-		echo '</form></div>';
-		echo '<table class="facts_table">';
-		echo '<tbody>';
+		echo '</form>';
+		echo '</td></tr>';
+
 		if (!$indifacts) {
 			echo '<tr><td colspan="2" class="facts_value">', I18N::translate('There are no facts for this individual.'), '</td></tr>';
 		}

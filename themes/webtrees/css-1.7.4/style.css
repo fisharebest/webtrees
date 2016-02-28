@@ -1952,6 +1952,11 @@ dd .deletelink {
 
 /* markdown formatting ===== */
 
+.markdown {
+	/* Tables and pre-formatted text can break the layout. */
+	overflow-x: auto;
+}
+
 .markdown p {
 	margin: 0 0 0.5em;
 	white-space: pre-wrap;
@@ -2075,15 +2080,6 @@ dd .deletelink {
 #notes_content .facts_table,
 #personal_facts_content .facts_table {
 	table-layout: fixed;
-}
-
-#notes_content > div,
-#personal_facts_content > div {
-	margin: 2px 2px 0;
-}
-
-.census-assistant-note {
-	overflow-x: auto;
 }
 
 .facts_table .field em {
