@@ -35,15 +35,14 @@ class CensusOfUnitedStates1790 extends CensusOfUnitedStates implements CensusInt
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this, 'Name', 'Name'),
-			new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
-			new CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
-			new CensusColumnAgeMaleOvr16Years($this, 'White Male 16+', 'White male of 16 yrs upward'),
-			new CensusColumnAgeMaleUnder16Years($this, 'White Male 16-', 'White males of under 16 yrs'),
-			new CensusColumnAllFemales($this, 'White Female', 'All White Females'),
-			new CensusColumnNull($this, 'Other Free', 'All other free persons'),
+			new CensusColumnFullName($this, 'Name', 'Name of head of family'),
+			new CensusColumnOccupation($this, 'Occupation', 'Professions and occupation'),
+			new CensusColumnNull($this, 'White male 16+', 'White male of 16 yrs upward'),
+			new CensusColumnNull($this, 'White male 0-16', 'White males of under 16 yrs'),
+			new CensusColumnNull($this, 'White female', 'All White Females'),
+			new CensusColumnNull($this, 'Free', 'All other free persons'),
 			new CensusColumnNull($this, 'Slaves', 'Number of slaves'),
-
+			new CensusColumnNull($this, 'Total', 'Total'),
 		);
 	}
 }

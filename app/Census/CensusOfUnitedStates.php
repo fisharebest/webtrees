@@ -26,6 +26,12 @@ class CensusOfUnitedStates extends Census implements CensusPlaceInterface {
 	 */
 	public function allCensusDates() {
 		return array(
+			new CensusOfUnitedStates1790(),
+			new CensusOfUnitedStates1800(),
+			new CensusOfUnitedStates1810(),
+			new CensusOfUnitedStates1820(),
+			new CensusOfUnitedStates1830(),
+			new CensusOfUnitedStates1840(),
 			new CensusOfUnitedStates1850(),
 			new CensusOfUnitedStates1860(),
 			new CensusOfUnitedStates1870(),
