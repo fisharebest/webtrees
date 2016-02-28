@@ -25,7 +25,7 @@ class CensusOfFrance1906 extends CensusOfFrance implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '1906';
+		return '18 JAN 1906';
 	}
 
 	/**

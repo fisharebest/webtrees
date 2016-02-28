@@ -25,7 +25,7 @@ class CensusOfFrance1946 extends CensusOfFrance implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '1946';
+		return '17 JAN 1946';
 	}
 
 	/**
@@ -38,9 +38,9 @@ class CensusOfFrance1946 extends CensusOfFrance implements CensusInterface {
 			new CensusColumnSurname($this, 'Nom', 'Nom de famille'),
 			new CensusColumnGivenNames($this, 'Prénom', 'Prénom'),
 			new CensusColumnOccupation($this, 'Profession', 'Profession'),
-			new CensusColumnBirthYear($this, 'Année', 'Année de naissance'),	
+			new CensusColumnBirthYear($this, 'Année', 'Année de naissance'),
 			new CensusColumnRelationToHead($this, 'Position', 'Position dans le ménage'),
-			new CensusColumnNationality($this, 'Nationalité', 'Nationalité'),	
+			new CensusColumnNationality($this, 'Nationalité', 'Nationalité'),
 		);
 	}
 }

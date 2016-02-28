@@ -25,7 +25,7 @@ class CensusOfFrance1831 extends CensusOfFrance implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '1831';
+		return '20 JAN 1831';
 	}
 
 	/**
@@ -38,7 +38,7 @@ class CensusOfFrance1831 extends CensusOfFrance implements CensusInterface {
 			new CensusColumnSurname($this, 'Nom', 'Nom de famille'),
 			new CensusColumnGivenNames($this, 'Prénom', 'Prénom'),
 			new CensusColumnOccupation($this, 'Profession', 'Profession'),
-			new CensusColumnBirthYear($this, 'Année', 'Année de naissance'),	
+			new CensusColumnBirthYear($this, 'Année', 'Année de naissance'),
 			new CensusColumnConditionFrench($this, 'Situation pers.', 'Situation personnelle (marié, veuf…)'),
 		);
 	}
