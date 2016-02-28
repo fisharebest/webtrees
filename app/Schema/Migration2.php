@@ -37,7 +37,7 @@ class Migration2 implements MigrationInterface {
 			" imported        BOOLEAN                NOT NULL DEFAULT FALSE," .
 			" PRIMARY KEY     (gedcom_chunk_id)," .
 			"         KEY ix1 (gedcom_id, imported)," .
-			" FOREIGN KEY fk1 (gedcom_id) REFERENCES `##gedcom` (gedcom_id)" .
+			" FOREIGN KEY `##gedcom_chunk_fk1` (gedcom_id) REFERENCES `##gedcom` (gedcom_id)" .
 			") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 		);
 
