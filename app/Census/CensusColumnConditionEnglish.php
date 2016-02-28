@@ -21,6 +21,18 @@ use Fisharebest\Webtrees\Individual;
  * Marital status.
  */
 class CensusColumnConditionEnglish extends AbstractCensusColumn implements CensusColumnInterface {
+	/* Text to display for married individuals */
+	protected $married = 'Mar';
+
+	/* Text to display for unmarried individuals */
+	protected $unmarried = 'Unm';
+
+	/* Text to display for divorced individuals */
+	protected $divorced = 'Div';
+
+	/* Text to display for widowed individuals (not yet implemented) */
+	protected $wid = 'Wid';
+
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
@@ -33,11 +45,11 @@ class CensusColumnConditionEnglish extends AbstractCensusColumn implements Censu
 		$family = $this->spouseFamily($individual);
 
 		if ($family === null || count($family->getFacts('_NMR')) > 0) {
-			return 'Unm'; // unmarried
+			return $this->unmarried;
 		} elseif (count($family->getFacts('DIV')) > 0) {
-			return 'Div'; // divorced
+			return $this->divorced;
 		} else {
-			return 'Mar'; // married
+			return $this->married;
 		}
 	}
 }

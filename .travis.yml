@@ -12,6 +12,7 @@ sudo: false
 
 before_script:
   - composer self-update
+  - composer config github-oauth.github.com ${GITHUB_OAUTH_TOKEN}
   - composer update --no-interaction
 
 script:

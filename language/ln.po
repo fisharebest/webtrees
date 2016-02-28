@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"PO-Revision-Date: 2016-02-22 20:30+0100\n"
+"PO-Revision-Date: 2016-02-25 21:51+0100\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <http://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -2149,7 +2149,7 @@ msgstr ""
 
 #: statistics.php:598
 msgid "Asia"
-msgstr ""
+msgstr "Azia"
 
 #. I18N: gedcom tag ASSO
 #. I18N: gedcom tag _ASSO
@@ -5571,7 +5571,7 @@ msgstr ""
 
 #: addmedia.php:429 app/Module/FamilyTreeFavoritesModule.php:212
 msgid "Enter an individual, family, or source ID"
-msgstr ""
+msgstr "Kotíya moto, libóta, tǒ ID ya ebandela"
 
 #: app/Module/FamilyTreeFavoritesModule.php:225
 msgid "Enter an optional note about this favorite"
@@ -5647,7 +5647,7 @@ msgstr ""
 
 #: statistics.php:596
 msgid "Europe"
-msgstr ""
+msgstr "Mpótó"
 
 #. I18N: gedcom tag EVEN
 #: app/GedcomTag.php:428 modules_v3/fact_sources/report.xml:70
@@ -12343,7 +12343,7 @@ msgstr ""
 
 #: timeline.php:315
 msgid "Show lifespans"
-msgstr "Lakisá ewúmeli ya bomɔi"
+msgstr "Kolakisa ewúmeli ya bomɔi"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:272
@@ -15609,7 +15609,7 @@ msgstr ""
 
 #: statistics.php:595
 msgid "World"
-msgstr ""
+msgstr "Molɔ́ngɔ́"
 
 #. I18N: gedcom tag _YART
 #: app/GedcomTag.php:1767
@@ -16277,7 +16277,7 @@ msgstr "bǎna"
 #: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
-msgstr ""
+msgstr "kangá"
 
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:175
@@ -16321,7 +16321,7 @@ msgstr ""
 
 #: statistics.php:614
 msgid "date periods"
-msgstr ""
+msgstr "dáti ya eleko"
 
 #: app/Functions/Functions.php:768 app/Functions/FunctionsCharts.php:312
 #: app/Module/GoogleMapsModule.php:2044 app/Module/GoogleMapsModule.php:2082
@@ -16861,8 +16861,8 @@ msgstr ""
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "útá %1$s ntáká  mobú %2$s"
+msgstr[1] "útá %1$s ntáká  mibú %2$s"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:316
@@ -16883,7 +16883,7 @@ msgstr ""
 
 #: statistics.php:611
 msgid "gender"
-msgstr ""
+msgstr "emoto"
 
 #. I18N: button label
 #: edit_interface.php:2601
@@ -18452,11 +18452,11 @@ msgstr[1] ""
 
 #: statistics.php:575
 msgid "interval one child"
-msgstr ""
+msgstr "ntáká mwǎna mɔ̌kɔ́"
 
 #: statistics.php:576
 msgid "interval two children"
-msgstr ""
+msgstr "ntáká bǎna bábalé"
 
 #: search.php:122 search.php:279
 msgid "invert selection"

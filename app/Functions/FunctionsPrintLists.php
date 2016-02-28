@@ -353,7 +353,7 @@ class FunctionsPrintLists {
 			$html .= '<td>' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . 'AAAA' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . '</td>';
 			//-- SOSA
 			if ($option == 'sosa') {
-				$html .= '<td><a href="../../relationship.php?pid1=' . $datalist[1] . '&amp;pid2=' . $person->getXref() . '" title="' . I18N::translate('Relationships') . '">' . I18N::number($key) . '</a></td><td>' . $key . '</td>';
+				$html .= '<td><a href="relationship.php?pid1=' . $datalist[1] . '&amp;pid2=' . $person->getXref() . '" title="' . I18N::translate('Relationships') . '">' . I18N::number($key) . '</a></td><td>' . $key . '</td>';
 			} else {
 				$html .= '<td></td><td>0</td>';
 			}

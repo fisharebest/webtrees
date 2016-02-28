@@ -15,29 +15,19 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Individual;
-
 /**
  * Marital status.
  */
-class CensusColumnConditionFrench extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		$family = $this->spouseFamily($individual);
+class CensusColumnConditionFrench extends CensusColumnConditionEnglish {
+	/* Text to display for married individuals */
+	protected $married = 'Marié';
 
-		if ($family === null || count($family->getFacts('_NMR')) > 0) {
-			return 'Célibataire'; // unmarried
-		} elseif (count($family->getFacts('DIV')) > 0) {
-			return 'Divorcé'; // divorced
-		} else {
-			return 'Marié'; // married
-		}
-	}
+	/* Text to display for unmarried individuals */
+	protected $unmarried = 'Célibataire';
+
+	/* Text to display for divorced individuals */
+	protected $divorced = 'Divorcé';
+
+	/* Text to display for widowed individuals (not yet implemented) */
+	protected $wid = 'Wid';
 }
