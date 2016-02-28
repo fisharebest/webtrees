@@ -1,5 +1,2 @@
-src_dir: app
-
 coverage_clover: tests/clover.xml
-
-json_path: tests/coverage-uploade.json
+json_path: coverage-upload.json
