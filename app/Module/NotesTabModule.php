@@ -61,14 +61,13 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 		global $WT_TREE, $controller;
 
 		ob_start();
-		echo '<table class="facts_table">';
 		?>
-		<tr>
-			<td colspan="2" class="descriptionbox rela">
+		<div class="descriptionbox rela options-bar">
 				<input id="checkbox_note2" type="checkbox" <?php echo $WT_TREE->getPreference('SHOW_LEVEL2_NOTES') ? 'checked' : ''; ?> onclick="jQuery('tr.row_note2').toggle();">
-				<label for="checkbox_note2"><?php echo I18N::translate('Show all notes'); ?></label>
-			</td>
-		</tr>
+		<label for="checkbox_note2"><?php echo I18N::translate('Show all notes'); ?></label>
+		</div>
+		<table class="facts_table">
+
 		<?php
 		foreach ($this->getFactsWithNotes() as $fact) {
 			if ($fact->getTag() == 'NOTE') {

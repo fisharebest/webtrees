@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Soundex;
 
 /**
  * Class CensusAssistantModule
@@ -279,18 +280,6 @@ class CensusAssistantModule extends AbstractModule {
 	public static function formatCensusNote(Note $note) {
 		global $WT_TREE;
 
-
-		$headers = array();
-		foreach (Census::allCensusPlaces() as $allCensusesOfPlace) {
-			foreach ($allCensusesOfPlace->allCensusDates() as $census) {
-				foreach ($census->columns() as $column) {
-					if ($column->abbreviation()) {
-						$headers[$column->abbreviation()] = $column->title();
-					}
-				}
-			}
-		}
-
 		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.*)((?:\n.*)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
 			// This looks like a census-assistant shared note
 			$title     = Filter::escapeHtml($match[1]);
@@ -299,18 +288,48 @@ class CensusAssistantModule extends AbstractModule {
 			$data      = Filter::escapeHtml($match[4]);
 			$postamble = Filter::escapeHtml($match[5]);
 
-			$fmt_headers = array();
-			foreach ($headers as $key => $value) {
-				$fmt_headers[$key] = '<span title="' . Filter::escapeHtml($value) . '">' . $key . '</span>';
-			}
+			// Get the column headers for the census to which this note refers
+			// requires the fact place & date to match the specific census
+			// censusPlace() (Soundex match) and censusDate() functions
+			$fmt_headers   = array();
+			$linkedRecords = array_merge($note->linkedIndividuals('NOTE'), $note->linkedFamilies('NOTE'));
+			$firstRecord   = array_shift($linkedRecords);
+			if ($firstRecord) {
+				$countryCode = '';
+				$date        = '';
+				foreach ($firstRecord->getFacts('CENS') as $fact) {
+					if (trim($fact->getAttribute('NOTE'), '@') === $note->getXref()) {
+						$date        = $fact->getAttribute('DATE');
+						$place       = explode(',', strip_tags($fact->getPlace()->getFullName()));
+						$countryCode = Soundex::daitchMokotoff(array_pop($place));
+						break;
+					}
+				}
 
-			// Substitue header labels and format as HTML
+				foreach (Census::allCensusPlaces() as $censusPlace) {
+					if (Soundex::compare($countryCode, Soundex::daitchMokotoff($censusPlace->censusPlace()))) {
+						foreach ($censusPlace->allCensusDates() as $census) {
+							if ($census->censusDate() == $date) {
+								foreach ($census->columns() as $column) {
+									$abbrev = $column->abbreviation();
+									if ($abbrev) {
+										$description          = $column->title() ? $column->title() : I18N::translate('Description unavailable');
+										$fmt_headers[$abbrev] = '<span title="' . $description . '">' . $abbrev . '</span>';
+									}
+								}
+								break 2;
+							}
+						}
+					}
+				}
+			}
+			// Substitute header labels and format as HTML
 			$thead = '<tr><th>' . strtr(str_replace('|', '</th><th>', $header), $fmt_headers) . '</th></tr>';
 			$thead = str_replace('.b.', '', $thead);
 
 			// Format data as HTML
 			$tbody = '';
-			foreach (explode("\n", $data) as $row) {
+			foreach (explode("\n", ltrim($data)) as $row) {
 				$tbody .= '<tr>';
 				foreach (explode('|', $row) as $column) {
 					$tbody .= '<td>' . $column . '</td>';
@@ -320,12 +339,14 @@ class CensusAssistantModule extends AbstractModule {
 
 			return
 				$title . "\n" . // The newline allows the framework to expand the details and turn the first line into a link
+				'<div class="markdown census-assistant-note">' .
 				'<p>' . $preamble . '</p>' .
-				'<table class="table-census-assistant">' .
+				'<table>' .
 				'<thead>' . $thead . '</thead>' .
 				'<tbody>' . $tbody . '</tbody>' .
 				'</table>' .
-				'<p>' . $postamble . '</p>';
+				'<p>' . $postamble . '</p>' .
+				'</div>';
 		} else {
 			// Not a census-assistant shared note - apply default formatting
 			return Filter::formatText($note->getNote(), $WT_TREE);
@@ -348,7 +369,7 @@ class CensusAssistantModule extends AbstractModule {
 			$html .= '<th title="' . $column->title() . '">' . $column->abbreviation() . '</th>';
 		}
 
-		return '<tr><th hidden></th>' . $html . '<th></th></th></tr>';
+		return '<tr><th hidden></th>' . $html . '<th></th></tr>';
 	}
 
 	/**

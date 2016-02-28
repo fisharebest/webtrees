@@ -218,11 +218,14 @@ $controller
 
 	/* Update the census text from the various input fields */
 	function updateCensusText() {
-		var html     = "";
-		var title    = jQuery("#Titl").val();
-		var citation = jQuery("#citation").val();
-		var locality = jQuery("#locality").val();
-		var notes    = jQuery("#notes").val();
+		var html        = "";
+		var title       = jQuery("#Titl").val();
+		var citation    = jQuery("#citation").val();
+		var locality    = jQuery("#locality").val();
+		var notes       = jQuery("#notes").val();
+		var table       = jQuery("#tblSample");
+		var max_col_ndx = table.find("thead th").length - 1;
+		var line        = "";
 
 		if (title !== "") {
 			html += title + "\n";
@@ -236,24 +239,20 @@ $controller
 
 		html += "\n.start_formatted_area.\n";
 
-		jQuery("#tblSample thead th").each(function(n, el) {
-			if (n > 1) {
-				html += "|";
-			}
-			if (n > 0) {
-				html += ".b." + jQuery(el).html();
-			}
+		table.find("thead th").each(function (n, el) {
+			if (n === 0 || n === max_col_ndx) { // Skip prefix & suffix cells
+			 return true;
+			 }
+			line += "|.b." + jQuery(el).html();
 		});
-		html += "\n";
+		html += line.substr(1) + "\n";
 
-		jQuery("#tblSample tbody tr").each(function(n, el) {
+		table.find("tbody tr").each(function(n, el) {
+			line = "";
 			jQuery("input", jQuery(el)).each(function(n, el) {
-				if (n > 0) {
-					html += "|";
-				}
-				html += jQuery(el).val();
+				line += "|" + jQuery(el).val();
 			});
-			html += "\n";
+			html += line.substr(1) + "\n";
 		});
 
 		html += ".end_formatted_area.\n";
@@ -265,7 +264,7 @@ $controller
 		jQuery("#NOTE").val(html);
 
 		var pid_array = '';
-		jQuery("#tblSample tbody td:first-child").each(function(n, el) {
+		table.find("tbody td:first-child").each(function(n, el) {
 			if (n > 0) {
 				pid_array += ',';
 			}
