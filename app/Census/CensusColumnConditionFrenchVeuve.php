@@ -37,5 +37,5 @@ class CensusColumnConditionFrenchVeuve extends AbstractCensusColumnCondition {
 
 	/* Text to display for widowed individuals (not yet implemented) */
 	protected $widower = '';
-	protected $widow   = 'X';
+	protected $widow   = '1';
 }

@@ -66,7 +66,7 @@ class CensusColumnConditionFrenchFilleTest extends \PHPUnit_Framework_TestCase {
 
 		$column = new CensusColumnConditionFrenchFille($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
+		$this->assertSame('1', $column->generate($individual));
 	}
 
 	/**
@@ -156,7 +156,7 @@ class CensusColumnConditionFrenchFilleTest extends \PHPUnit_Framework_TestCase {
 
 		$column = new CensusColumnConditionFrenchFille($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
+		$this->assertSame('1', $column->generate($individual));
 	}
 
 	/**
@@ -204,7 +204,7 @@ class CensusColumnConditionFrenchFilleTest extends \PHPUnit_Framework_TestCase {
 
 		$column = new CensusColumnConditionFrenchFille($census, '', '');
 
-		$this->assertSame('X', $column->generate($individual));
+		$this->assertSame('1', $column->generate($individual));
 	}
 
 	/**

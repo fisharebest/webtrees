@@ -25,11 +25,11 @@ class CensusColumnConditionFrenchFille extends AbstractCensusColumnCondition {
 
 	/* Text to display for unmarried individuals */
 	protected $bachelor = '';
-	protected $spinster = '';
+	protected $spinster = '1';
 
 	/* Text to display for children */
 	protected $boy  = '';
-	protected $girl = 'X';
+	protected $girl = '1';
 
 	/* Text to display for divorced individuals */
 	protected $divorce  = '';

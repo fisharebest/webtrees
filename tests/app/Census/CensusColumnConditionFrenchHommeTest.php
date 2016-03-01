@@ -48,7 +48,7 @@ class CensusColumnConditionFrenchHommeTest extends \PHPUnit_Framework_TestCase {
 
 		$column = new CensusColumnConditionFrenchHomme($census, '', '');
 
-		$this->assertSame('X', $column->generate($individual));
+		$this->assertSame('', $column->generate($individual));
 	}
 
 	/**
@@ -87,7 +87,7 @@ class CensusColumnConditionFrenchHommeTest extends \PHPUnit_Framework_TestCase {
 		$column = new CensusColumnConditionFrenchHomme($census, '', '');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$this->assertSame('X', $column->generate($individual));
+		$this->assertSame('1', $column->generate($individual));
 	}
 
 	/**
@@ -132,7 +132,7 @@ class CensusColumnConditionFrenchHommeTest extends \PHPUnit_Framework_TestCase {
 
 		$column = new CensusColumnConditionFrenchHomme($census, '', '');
 
-		$this->assertSame('X', $column->generate($individual));
+		$this->assertSame('', $column->generate($individual));
 	}
 
 	/**
@@ -228,7 +228,7 @@ class CensusColumnConditionFrenchHommeTest extends \PHPUnit_Framework_TestCase {
 		$column = new CensusColumnConditionFrenchHomme($census, '', '');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$this->assertSame('X', $column->generate($individual));
+		$this->assertSame('1', $column->generate($individual));
 	}
 
 	/**

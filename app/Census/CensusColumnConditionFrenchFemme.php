@@ -21,11 +21,11 @@ namespace Fisharebest\Webtrees\Census;
 class CensusColumnConditionFrenchFemme extends AbstractCensusColumnCondition {
 	/* Text to display for married individuals */
 	protected $husband = '';
-	protected $wife    = 'X';
+	protected $wife    = '1';
 
 	/* Text to display for unmarried individuals */
 	protected $bachelor = '';
-	protected $spinster = 'X';
+	protected $spinster = '';
 
 	/* Text to display for children */
 	protected $boy  = '';
@@ -33,7 +33,7 @@ class CensusColumnConditionFrenchFemme extends AbstractCensusColumnCondition {
 
 	/* Text to display for divorced individuals */
 	protected $divorce  = '';
-	protected $divorcee = 'X';
+	protected $divorcee = '1';
 
 	/* Text to display for widowed individuals (not yet implemented) */
 	protected $widower = '';
