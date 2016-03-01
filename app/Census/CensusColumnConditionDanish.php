@@ -31,7 +31,7 @@ class CensusColumnConditionDanish extends CensusColumnConditionEnglish {
 	protected $divorce  = 'Skilt';
 	protected $divorcee = 'Skilt';
 
-	/* Text to display for widowed individuals (not yet implemented) */
-	protected $widower = '';
-	protected $widow   = '';
+	/* Text to display for widowed individuals */
+	protected $widower = 'Gift';
+	protected $widow   = 'Gift';
 }

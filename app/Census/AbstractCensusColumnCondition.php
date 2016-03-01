@@ -38,7 +38,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
 	protected $divorce  = '';
 	protected $divorcee = '';
 
-	/* Text to display for widowed individuals (not yet implemented) */
+	/* Text to display for widowed individuals */
 	protected $widower = '';
 	protected $widow   = '';
 
@@ -66,7 +66,12 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
 		} elseif (count($family->getFacts('DIV')) > 0) {
 			return $this->conditionDivorced($sex);
 		} else {
-			return $this->conditionMarried($sex);
+			$spouse = $family->getSpouse($individual);
+			if ($spouse instanceof Individual && $this->isDead($spouse)) {
+				return $this->conditionWidowed($sex);
+			} else {
+				return $this->conditionMarried($sex);
+			}
 		}
 	}
 
@@ -131,6 +136,21 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
 	}
 
 	/**
+	 * How is this condition written in a census column.
+	 *
+	 * @param $sex
+	 *
+	 * @return string
+	 */
+	private function conditionWidowed($sex) {
+		if ($sex === 'F') {
+			return $this->widow;
+		} else {
+			return $this->widower;
+		}
+	}
+
+	/**
 	 * Is the individual a child.
 	 *
 	 * @param Individual $individual
@@ -141,5 +161,16 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
 		$age = (int) Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 0);
 
 		return $age < $this->age_adult;
+	}
+
+	/**
+	 * Is the individual dead.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return bool
+	 */
+	private function isDead(Individual $individual) {
+		return Date::compare($individual->getDeathDate(), $this->date()) < 0;
 	}
 }
