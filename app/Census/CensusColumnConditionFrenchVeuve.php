@@ -16,31 +16,26 @@
 namespace Fisharebest\Webtrees\Census;
 
 /**
- * Definitions for a census
+ * Marital status.
  */
-class CensusOfFrance1896 extends CensusOfFrance implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '16 JAN 1896';
-	}
+class CensusColumnConditionFrenchVeuve extends AbstractCensusColumnCondition {
+	/* Text to display for married individuals */
+	protected $husband = '';
+	protected $wife    = '';
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
-			new CensusColumnGivenNames($this, 'Prénoms', ''),
-			new CensusColumnAge($this, 'Âge', ''),
-			new CensusColumnNationality($this, 'Nationalité', ''),
-			new CensusColumnOccupation($this, 'Profession', ''),
-			new CensusColumnRelationToHead($this, 'Position', 'Position dans le ménage'),
-		);
-	}
+	/* Text to display for unmarried individuals */
+	protected $bachelor = '';
+	protected $spinster = '';
+
+	/* Text to display for children */
+	protected $boy  = '';
+	protected $girl = '';
+
+	/* Text to display for divorced individuals */
+	protected $divorce  = '';
+	protected $divorcee = '';
+
+	/* Text to display for widowed individuals (not yet implemented) */
+	protected $widower = '';
+	protected $widow   = 'X';
 }

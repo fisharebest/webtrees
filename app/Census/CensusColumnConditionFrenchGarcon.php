@@ -18,16 +18,24 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Marital status.
  */
-class CensusColumnConditionFrench extends CensusColumnConditionEnglish {
+class CensusColumnConditionFrenchGarcon extends AbstractCensusColumnCondition {
 	/* Text to display for married individuals */
-	protected $married = 'Marié';
+	protected $husband = '';
+	protected $wife    = '';
 
 	/* Text to display for unmarried individuals */
-	protected $unmarried = 'Célibataire';
+	protected $bachelor = '';
+	protected $spinster = '';
+
+	/* Text to display for children */
+	protected $boy  = 'X';
+	protected $girl = '';
 
 	/* Text to display for divorced individuals */
-	protected $divorced = 'Divorcé';
+	protected $divorce  = '';
+	protected $divorcee = '';
 
 	/* Text to display for widowed individuals (not yet implemented) */
-	protected $wid = 'Wid';
+	protected $widower = '';
+	protected $widow   = '';
 }

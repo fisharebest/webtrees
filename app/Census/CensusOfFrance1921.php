@@ -35,12 +35,14 @@ class CensusOfFrance1921 extends CensusOfFrance implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnSurname($this, 'Nom', 'Nom de famille'),
-			new CensusColumnGivenNames($this, 'Prénom', 'Prénom'),
-			new CensusColumnOccupation($this, 'Profession', 'Profession'),
-			new CensusColumnBirthYear($this, 'Année', 'Année de naissance'),	
-			new CensusColumnRelationToHead($this, 'Position', 'Position dans le ménage'),
-			new CensusColumnNationality($this, 'Nationalité', 'Nationalité'),	
+			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
+			new CensusColumnGivenNames($this, 'Prénoms', ''),
+			new CensusColumnBirthYear($this, 'Année', 'Année de naissance'),
+			new CensusColumnBirthPlace($this, 'Lieu', 'Lieu de naissance'),
+			new CensusColumnNationality($this, 'Nationalité', ''),
+			new CensusColumnRelationToHead($this, 'Situation', 'Situation par rapport au chef de ménage'),
+			new CensusColumnOccupation($this, 'Profession', ''),
+			new CensusColumnNull($this, 'Empl', ''),
 		);
 	}
 }

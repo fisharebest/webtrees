@@ -35,13 +35,17 @@ class CensusOfFrance1872 extends CensusOfFrance implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnSurname($this, 'Nom', 'Nom de famille'),
-			new CensusColumnGivenNames($this, 'Prénom', 'Prénom'),
-			new CensusColumnOccupation($this, 'Profession', 'Profession'),
-			new CensusColumnAge($this, 'Âge', 'Âge'),
-			new CensusColumnConditionFrench($this, 'Situtation pers.', 'Situation personnelle (marié, veuf…)'),
-			new CensusColumnNationality($this, 'Nationalité', 'Nationalité'),
-			new CensusColumnBirthPlace($this, 'Lieu', 'Lieu de naissance'),
+			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
+			new CensusColumnGivenNames($this, 'Prénoms', ''),
+			new CensusColumnOccupation($this, 'Titres', 'Titres, qualifications, état ou profession et fonctions'),
+			new CensusColumnConditionFrenchGarcon($this, 'Garçons', ''),
+			new CensusColumnConditionFrenchHomme($this, 'Hommes', 'Hommes mariés'),
+			new CensusColumnConditionFrenchVeuf($this, 'Veufs', ''),
+			new CensusColumnConditionFrenchFille($this, 'Filles', ''),
+			new CensusColumnConditionFrenchFemme($this, 'Femmes', 'Femmes mariées'),
+			new CensusColumnConditionFrenchVeuve($this, 'Veuves', ''),
+			new CensusColumnAge($this, 'Âge', ''),
+			new CensusColumnBirthPlace($this, 'Nationalité', 'Nationalité - Lieu de naissance'),
 		);
 	}
 }

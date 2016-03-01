@@ -23,9 +23,9 @@ use Fisharebest\Webtrees\Individual;
 use Mockery;
 
 /**
- * Test harness for the class CensusColumnConditionDanish
+ * Test harness for the class CensusColumnConditionFrenchGarcon
  */
-class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnConditionFrenchGarconTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Delete mock objects
 	 */
@@ -34,7 +34,7 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testNoSpouseFamiliesMale() {
@@ -46,13 +46,13 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionFrenchGarcon($census, '', '');
 
-		$this->assertSame('Ugift', $column->generate($individual));
+		$this->assertSame('', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testNoSpouseFamiliesFemale() {
@@ -64,13 +64,13 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionFrenchGarcon($census, '', '');
 
-		$this->assertSame('Ugift', $column->generate($individual));
+		$this->assertSame('', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testNoFamilyNoFactsMale() {
@@ -84,14 +84,14 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionFrenchGarcon($census, '', '');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$this->assertSame('Gift', $column->generate($individual));
+		$this->assertSame('', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testNoFamilyNoFactsFemale() {
@@ -105,14 +105,14 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionFrenchGarcon($census, '', '');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$this->assertSame('Gift', $column->generate($individual));
+		$this->assertSame('', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testNoFamilyUnmarriedMale() {
@@ -130,13 +130,13 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionFrenchGarcon($census, '', '');
 
-		$this->assertSame('Ugift', $column->generate($individual));
+		$this->assertSame('', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testNoFamilyUnmarriedFemale() {
@@ -154,13 +154,13 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionFrenchGarcon($census, '', '');
 
-		$this->assertSame('Ugift', $column->generate($individual));
+		$this->assertSame('', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testChildMale() {
@@ -178,13 +178,13 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionFrenchGarcon($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
+		$this->assertSame('X', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testChildFemale() {
@@ -202,13 +202,13 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionFrenchGarcon($census, '', '');
 
 		$this->assertSame('', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testDivorcedMale() {
@@ -225,14 +225,14 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionFrenchGarcon($census, '', '');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$this->assertSame('Skilt', $column->generate($individual));
+		$this->assertSame('', $column->generate($individual));
 	}
 
 	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionDanish
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
 	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
 	 */
 	public function testDivorcedFemale() {
@@ -249,9 +249,9 @@ class CensusColumnConditionDanishTest extends \PHPUnit_Framework_TestCase {
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnConditionDanish($census, '', '');
+		$column = new CensusColumnConditionFrenchGarcon($census, '', '');
 		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$this->assertSame('Skilt', $column->generate($individual));
+		$this->assertSame('', $column->generate($individual));
 	}
 }

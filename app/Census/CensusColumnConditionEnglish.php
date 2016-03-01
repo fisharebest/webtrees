@@ -15,41 +15,26 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
 /**
  * Marital status.
  */
-class CensusColumnConditionEnglish extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnConditionEnglish extends AbstractCensusColumnCondition {
 	/* Text to display for married individuals */
-	protected $married = 'Mar';
+	protected $husband = 'Mar';
+	protected $wife    = 'Mar';
 
 	/* Text to display for unmarried individuals */
-	protected $unmarried = 'Unm';
+	protected $bachelor = 'Unm';
+	protected $spinster = 'Unm';
 
 	/* Text to display for divorced individuals */
-	protected $divorced = 'Div';
+	protected $divorce  = 'Div';
+	protected $divorcee = 'Div';
 
 	/* Text to display for widowed individuals (not yet implemented) */
-	protected $wid = 'Wid';
-
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		$family = $this->spouseFamily($individual);
-
-		if ($family === null || count($family->getFacts('_NMR')) > 0) {
-			return $this->unmarried;
-		} elseif (count($family->getFacts('DIV')) > 0) {
-			return $this->divorced;
-		} else {
-			return $this->married;
-		}
-	}
+	protected $widower = 'Wid';
+	protected $widow   = 'Wid';
 }

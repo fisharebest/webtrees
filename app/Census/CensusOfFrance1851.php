@@ -35,14 +35,19 @@ class CensusOfFrance1851 extends CensusOfFrance implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnSurname($this, 'Nom', 'Nom de famille'),
-			new CensusColumnGivenNames($this, 'Prénom', 'Prénom'),
-			new CensusColumnOccupation($this, 'Profession', 'Profession'),
+			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
+			new CensusColumnGivenNames($this, 'Prénoms', ''),
+			new CensusColumnOccupation($this, 'Professions', ''),
+			new CensusColumnConditionFrenchGarcon($this, 'Garçons', ''),
+			new CensusColumnConditionFrenchHomme($this, 'Hommes', 'Hommes mariés'),
+			new CensusColumnConditionFrenchVeuf($this, 'Veufs', ''),
+			new CensusColumnConditionFrenchFille($this, 'Filles', ''),
+			new CensusColumnConditionFrenchFemme($this, 'Femmes', 'Femmes mariées'),
+			new CensusColumnConditionFrenchVeuve($this, 'Veuves', ''),
 			new CensusColumnAge($this, 'Âge', 'Âge'),
-			new CensusColumnConditionFrench($this, 'Situtation pers.', 'Situation personnelle (marié, veuf…)'),
-			new CensusColumnNationality($this, 'Nationalité', 'Nationalité'),
-			new CensusColumnNull($this, 'Religion', 'Religion'),
-			new CensusColumnNull($this, 'Maladies', 'Infirmités et maladies'),
+			new CensusColumnNull($this, 'Fr', 'Français d’origine'),
+			new CensusColumnNull($this, 'Nat', 'Naturalisés français'),
+			new CensusColumnNull($this, 'Etr', 'Étrangers (indiquer leur pays d’origine)'),
 		);
 	}
 }

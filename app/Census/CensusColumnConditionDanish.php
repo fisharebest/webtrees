@@ -20,14 +20,18 @@ namespace Fisharebest\Webtrees\Census;
  */
 class CensusColumnConditionDanish extends CensusColumnConditionEnglish {
 	/* Text to display for married individuals */
-	protected $married = 'Gift';
+	protected $husband = 'Gift';
+	protected $wife    = 'Gift';
 
 	/* Text to display for unmarried individuals */
-	protected $unmarried = 'Ugift';
+	protected $bachelor = 'Ugift';
+	protected $spinster = 'Ugift';
 
 	/* Text to display for divorced individuals */
-	protected $divorced = 'Skilt';
+	protected $divorce  = 'Skilt';
+	protected $divorcee = 'Skilt';
 
 	/* Text to display for widowed individuals (not yet implemented) */
-	protected $wid = 'Wid';
+	protected $widower = '';
+	protected $widow   = '';
 }
