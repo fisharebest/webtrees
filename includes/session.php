@@ -40,7 +40,7 @@ global $WT_TREE, $SEARCH_SPIDER;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION', '1.7.4-dev');
+define('WT_VERSION', '1.7.4');
 
 // External URLs
 define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
