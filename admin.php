@@ -431,6 +431,11 @@ $old_files = array(
 	WT_ROOT . 'themes/minimal/css-1.7.0',
 	WT_ROOT . 'themes/webtrees/css-1.7.0',
 	WT_ROOT . 'themes/xenea/css-1.7.0',
+	WT_ROOT . 'packages/bootstrap-3.3.5',
+	WT_ROOT . 'packages/bootstrap-datetimepicker-4.15.35',
+	WT_ROOT . 'packages/jquery-1.11.3',
+	WT_ROOT . 'packages/jquery-2.1.4',
+	WT_ROOT . 'packages/moment-2.10.6',
 );
 
 // Delete old files (if we can).
