@@ -191,6 +191,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 			}
 			$content .= '</div>';
 		}
+		$content .= '</div>';
 		if ($stat_link) {
 			$content .= '<div class="clearfloat"><a href="statistics.php?ged=' . $WT_TREE->getNameUrl() . '" rel="nofollow"><b>' . I18N::translate('View statistics as graphs') . '</b></a></div>';
 		}
@@ -198,7 +199,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		if ($show_common_surnames) {
 			$surnames = FunctionsDb::getCommonSurnames($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'), $WT_TREE);
 			if (count($surnames) > 0) {
-				$content .= '<p><b>' . I18N::translate('Most common surnames') . '</b></p>';
+				$content .= '<div class="clearfloat"><p><b>' . I18N::translate('Most common surnames') . '</b></p>';
 				$content .= '<div class="common_surnames">';
 				$i = 0;
 				foreach ($surnames as $indexval => $surname) {
@@ -213,7 +214,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 				$content .= '</div>';
 			}
 		}
-		$content .= '</div>';
+
 		if ($template) {
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
