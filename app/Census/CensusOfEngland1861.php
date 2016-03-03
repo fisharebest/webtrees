@@ -25,7 +25,7 @@ class CensusOfEngland1861 extends CensusOfEngland implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '07 MAR 1861';
+		return '07 APR 1861';
 	}
 
 	/**

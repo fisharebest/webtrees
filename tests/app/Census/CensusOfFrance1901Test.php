@@ -29,7 +29,7 @@ class CensusOfFrance1901Test extends \PHPUnit_Framework_TestCase {
 		$census = new CensusOfFrance1901;
 
 		$this->assertSame('France', $census->censusPlace());
-		$this->assertSame('1901', $census->censusDate());
+		$this->assertSame('17 JAN 1901', $census->censusDate());
 	}
 
 	/**
@@ -42,11 +42,32 @@ class CensusOfFrance1901Test extends \PHPUnit_Framework_TestCase {
 		$census  = new CensusOfFrance1901;
 		$columns = $census->columns();
 
-		$this->assertCount(1, $columns);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[0]);
+		$this->assertCount(8, $columns);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnSurname', $columns[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnGivenNames', $columns[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAge', $columns[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNationality', $columns[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlace', $columns[6]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[7]);
 
-		$this->assertSame('XXXX', $columns[0]->abbreviation());
+		$this->assertSame('Noms', $columns[0]->abbreviation());
+		$this->assertSame('Prénoms', $columns[1]->abbreviation());
+		$this->assertSame('Âge', $columns[2]->abbreviation());
+		$this->assertSame('Nationalité', $columns[3]->abbreviation());
+		$this->assertSame('Situation', $columns[4]->abbreviation());
+		$this->assertSame('Profession', $columns[5]->abbreviation());
+		$this->assertSame('Lieu', $columns[6]->abbreviation());
+		$this->assertSame('Empl', $columns[7]->abbreviation());
 
-		$this->assertSame('XXXX', $columns[0]->title());
+		$this->assertSame('Noms de famille', $columns[0]->title());
+		$this->assertSame('', $columns[1]->title());
+		$this->assertSame('', $columns[2]->title());
+		$this->assertSame('', $columns[3]->title());
+		$this->assertSame('Situation par rapport au chef de ménage', $columns[4]->title());
+		$this->assertSame('', $columns[5]->title());
+		$this->assertSame('Lieu de naissance', $columns[6]->title());
+		$this->assertSame('', $columns[7]->title());
 	}
 }

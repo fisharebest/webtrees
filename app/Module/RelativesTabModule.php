@@ -245,7 +245,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 					$class = 'facts_label';
 				}
 				$next = new Date('');
-				foreach ($person->getFacts(WT_EVENTS_BIRT) as $bfact) {
+				foreach ($person->getFacts(WT_EVENTS_BIRT, true) as $bfact) {
 					if ($bfact->getDate()->isOK()) {
 						$next = $bfact->getDate();
 						break;

@@ -8,11 +8,17 @@ php:
   - 5.3
   - hhvm
 
+## Travis is faster if we do not need sudo
 sudo: false
 
-before_script:
-  - composer self-update
-  - composer install --no-interaction
+## Cache composer bits
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+install:
+  - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
+  - travis_retry composer update --prefer-dist --no-interaction
 
 script:
   - phpunit --coverage-clover tests/clover.xml

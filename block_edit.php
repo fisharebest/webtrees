@@ -57,7 +57,7 @@ if (Filter::post('save')) {
 	return;
 }
 
-$ctype = FIlter::get('ctype', 'user', 'gedcom');
+$ctype = Filter::get('ctype', 'user', 'gedcom');
 
 $controller = new PageController;
 $controller

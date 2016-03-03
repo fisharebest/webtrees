@@ -219,7 +219,7 @@ abstract class AbstractTheme {
 			$this->headerContent() .
 			$this->primaryMenuContainer($this->primaryMenu()) .
 			'</header>' .
-			'<main id="content" role="main">' .
+			'<main id="content">' .
 			$this->flashMessagesContainer(FlashMessages::getMessages());
 	}
 
@@ -231,7 +231,7 @@ abstract class AbstractTheme {
 	public function bodyHeaderPopupWindow() {
 		return
 			'<body class="container container-popup">' .
-			'<main id="content" role="main">' .
+			'<main id="content">' .
 			$this->flashMessagesContainer(FlashMessages::getMessages());
 	}
 
@@ -577,7 +577,7 @@ abstract class AbstractTheme {
 
 		// If an extra (site) title is specified, append it.
 		if ($this->tree && $this->tree->getPreference('META_TITLE')) {
-			$title .= ' - ' . Filter::escapeHtml($this->tree->getPreference('META_TITLE'));
+			$title .= ' – ' . $this->tree->getPreference('META_TITLE');
 		}
 
 		$html =

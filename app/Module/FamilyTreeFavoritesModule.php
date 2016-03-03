@@ -167,7 +167,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 					if ($record && $record->canShow()) {
 						if ($record instanceof Individual) {
 							$content .= '<div id="box' . $favorite["gid"] . '.0" class="person_box action_header';
-							switch ($record->getsex()) {
+							switch ($record->getSex()) {
 							case 'M':
 								break;
 							case 'F':

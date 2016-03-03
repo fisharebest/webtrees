@@ -317,7 +317,7 @@ case 'load_json':
 
 			$conf        = I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($unused_file));
 			$delete_link =
-				'<p><a onclick="if (confirm(\'' . Filter::escapeJs($conf) . '\')) jQuery.post(\'admin_media.php\',{delete:\'' . Filter::escapeJs($media_path . $unused_file) . '\',media_folder:\'' . Filter::escapeJs($media_folder) . '\'},function(){location.reload();})" href="#">' . I18N::Translate('Delete') . '</a></p>';
+				'<p><a onclick="if (confirm(\'' . Filter::escapeJs($conf) . '\')) jQuery.post(\'admin_media.php\',{delete:\'' . Filter::escapeJs($media_path . $unused_file) . '\',media_folder:\'' . Filter::escapeJs($media_folder) . '\'},function(){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
 
 			$data[] = array(
 				mediaFileInfo($media_folder, $media_path, $unused_file) . $delete_link,
@@ -526,7 +526,7 @@ function mediaObjectInfo(Media $media) {
 	$html =
 		'<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu">' .
 		'<li><a href="#" onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . Filter::escapeJs($gedcom) . '\', \'_blank\', edit_window_specs);"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></li>' .
-		'<li><a href="#" onclick="return delete_media(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($media->getFullName()))) . '\', \'' . $media->getXref() . '\', \'' . Filter::escapeJs($gedcom) . '\');"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li>' .
+		'<li><a href="#" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($media->getFullName()))) . '\', \'' . $media->getXref() . '\', \'' . Filter::escapeJs($gedcom) . '\');"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li>' .
 		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'person\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to an individual') . '</a></li>' .
 		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'family\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to a family') . '</a></li>' .
 		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'source\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to a source') . '</a></li>';

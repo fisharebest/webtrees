@@ -164,12 +164,12 @@ case 'DATE':
 		'<p>' . I18N::translate('Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous.') . '</p>' .
 		'<table border="1">' .
 		'<tr><th>' . I18N::translate('Date') . '</th><th>' . I18N::translate('Format') . '</th></tr>' .
-		'<tr><td colspan="2" align="center">' . I18N::translate('Julian') . '</td></tr>' .
+		'<tr><th colspan="2">' . I18N::translate('Julian') . '</th></tr>' .
 		'<tr><td>' . $dates['@#DJULIAN@ 14 JAN 1700'] . '</td><td><kbd dir="ltr" lang="en">@#DJULIAN@ 14 JAN 1700</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DJULIAN@ 44 B.C.'] . '</td><td><kbd dir="ltr" lang="en">@#DJULIAN@ 44 B.C.</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DJULIAN@ 20 FEB 1742/43'] . '</td><td><kbd dir="ltr" lang="en">@#DJULIAN@ 20 FEB 1742/43</kbd></td></tr>' .
 		'<tr><td>' . $dates['BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'] . '</td><td><kbd dir="ltr" lang="en">BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752</kbd></td></tr>' .
-		'<tr><td colspan="2" align="center">' . I18N::translate('Jewish') . '</td></tr>' .
+		'<tr><th colspan="2">' . I18N::translate('Jewish') . '</th></tr>' .
 		'<tr><td>' . $dates['@#DHEBREW@ 5481'] . '</td><td><kbd dir="ltr" lang="en">@#DHEBREW@ 5481</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DHEBREW@ TSH 5481'] . '</td><td><kbd dir="ltr" lang="en">@#DHEBREW@ TSH 5481</kbd></td></tr>' .
 		'<tr><td>' . $dates['ABT @#DHEBREW@ CSH 5481'] . '</td><td><kbd dir="ltr" lang="en">ABT @#DHEBREW@ CSH 5481</kbd></td></tr>' .
@@ -183,7 +183,7 @@ case 'DATE':
 		'<tr><td>' . $dates['TO @#DHEBREW@ TMZ 5481'] . '</td><td><kbd dir="ltr" lang="en">TO @#DHEBREW@ TMZ 5481</kbd></td></tr>' .
 		'<tr><td>' . $dates['EST @#DHEBREW@ AAV 5481'] . '</td><td><kbd dir="ltr" lang="en">EST @#DHEBREW@ AAV 5481</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DHEBREW@ 03 ELL 5481'] . '</td><td><kbd dir="ltr" lang="en">@#DHEBREW@ 03 ELL 5481</kbd></td></tr>' .
-		'<tr><td colspan="2" align="center">' . I18N::translate('Hijri') . '</td></tr>' .
+		'<tr><th colspan="2">' . I18N::translate('Hijri') . '</th></tr>' .
 		'<tr><td>' . $dates['@#DHIJRI@ 1497'] . '</td><td><kbd dir="ltr" lang="en">@#DHIJRI@ 1497</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DHIJRI@ MUHAR 1497'] . '</td><td><kbd dir="ltr" lang="en">@#DHIJRI@ MUHAR 1497</kbd></td></tr>' .
 		'<tr><td>' . $dates['ABT @#DHIJRI@ SAFAR 1497'] . '</td><td><kbd dir="ltr" lang="en">ABT @#DHIJRI@ SAFAR 1497</kbd></td></tr>' .
@@ -195,7 +195,7 @@ case 'DATE':
 		'<tr><td>' . $dates['FROM @#DHIJRI@ SHAWW 1497'] . '</td><td><kbd dir="ltr" lang="en">FROM @#DHIJRI@ SHAWW 1497</kbd></td></tr>' .
 		'<tr><td>' . $dates['TO @#DHIJRI@ DHUAQ 1497'] . '</td><td><kbd dir="ltr" lang="en">TO @#DHIJRI@ DHUAQ 1497</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DHIJRI@ 03 DHUAH 1497'] . '</td><td><kbd dir="ltr" lang="en">@#DHIJRI@ 03 DHUAH 1497</kbd></td></tr>' .
-		'<tr><td colspan="2" align="center">' . I18N::translate('French') . '</td></tr>' .
+		'<tr><th colspan="2">' . I18N::translate('French') . '</th></tr>' .
 		'<tr><td>' . $dates['@#DFRENCH R@ 12'] . '</td><td><kbd dir="ltr" lang="en">@#DFRENCH R@ 12</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DFRENCH R@ VEND 12'] . '</td><td><kbd dir="ltr" lang="en">@#DFRENCH R@ VEND 12</kbd></td></tr>' .
 		'<tr><td>' . $dates['ABT @#DFRENCH R@ BRUM 12'] . '</td><td><kbd dir="ltr" lang="en">ABT @#DFRENCH R@ BRUM 12</kbd></td></tr>' .

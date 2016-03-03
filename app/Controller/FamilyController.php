@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
@@ -96,7 +95,7 @@ class FamilyController extends GedcomRecordController {
 		// delete
 		if (Auth::isEditor($this->record->getTree())) {
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-fam-del', array(
-				'onclick' => 'return delete_family("' . I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?') . '", "' . $this->record->getXref() . '");',
+				'onclick' => 'return delete_record("' . I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?') . '", "' . $this->record->getXref() . '");',
 			)));
 		}
 
@@ -110,12 +109,13 @@ class FamilyController extends GedcomRecordController {
 		// add to favorites
 		if (Module::getModuleByName('user_favorites')) {
 			$menu->addSubmenu(new Menu(
-			/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
+				/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',
 				'menu-fam-addfav',
 				array(
 					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
-				)));
+				)
+			));
 		}
 
 		// Get the link for the first submenu and set it as the link for the main menu
@@ -136,7 +136,7 @@ class FamilyController extends GedcomRecordController {
 	 */
 	public function getSignificantSurname() {
 		if ($this->record && $this->record->getHusband()) {
-			list($surn) = explode(',', $this->record->getHusband()->getSortname());
+			list($surn) = explode(',', $this->record->getHusband()->getSortName());
 
 			return $surn;
 		} else {

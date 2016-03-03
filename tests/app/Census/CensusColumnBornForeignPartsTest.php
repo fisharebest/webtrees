@@ -349,4 +349,52 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertSame('F', $column->generate($individual));
 	}
+
+	/**
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
+	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 */
+	public function testBornNowhereCensusEngland() {
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+		$individual->shouldReceive('getBirthPlace')->andReturn('');
+
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+		$census->shouldReceive('censusPlace')->andReturn('England');
+
+		$column = new CensusColumnBornForeignParts($census, '', '');
+
+		$this->assertSame('', $column->generate($individual));
+	}
+
+	/**
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
+	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 */
+	public function testBornNowhereCensusWales() {
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+		$individual->shouldReceive('getBirthPlace')->andReturn('');
+
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+		$census->shouldReceive('censusPlace')->andReturn('Wales');
+
+		$column = new CensusColumnBornForeignParts($census, '', '');
+
+		$this->assertSame('', $column->generate($individual));
+	}
+
+	/**
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
+	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 */
+	public function testBornNowhereCensusScotland() {
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+		$individual->shouldReceive('getBirthPlace')->andReturn('');
+
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+		$census->shouldReceive('censusPlace')->andReturn('Scotland');
+
+		$column = new CensusColumnBornForeignParts($census, '', '');
+
+		$this->assertSame('', $column->generate($individual));
+	}
 }

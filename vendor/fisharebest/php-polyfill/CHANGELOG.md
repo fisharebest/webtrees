@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.4.0 (2016-02-05)
+ - Upstream changes to symfony/polyfill
+
 ## 1.3.0 (2016-01-23)
  - INF
 

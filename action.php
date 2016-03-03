@@ -58,7 +58,7 @@ case 'copy-fact':
 
 	if ($record && $record->canEdit()) {
 		foreach ($record->getFacts() as $fact) {
-			if ($fact->getfactId() == $fact_id) {
+			if ($fact->getFactId() == $fact_id) {
 				switch ($fact->getTag()) {
 				case 'NOTE':
 				case 'SOUR':
@@ -109,7 +109,7 @@ case 'delete-fact':
 	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 	if ($record && $record->canShow() && $record->canEdit()) {
 		foreach ($record->getFacts() as $fact) {
-			if ($fact->getfactId() == $fact_id && $fact->canShow() && $fact->canEdit()) {
+			if ($fact->getFactId() == $fact_id && $fact->canShow() && $fact->canEdit()) {
 				$record->deleteFact($fact_id, true);
 				break 2;
 			}
@@ -120,12 +120,7 @@ case 'delete-fact':
 	http_response_code(406);
 	break;
 
-case 'delete-family':
-case 'delete-individual':
-case 'delete-media':
-case 'delete-note':
-case 'delete-repository':
-case 'delete-source':
+case 'delete-record':
 	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
 	if ($record && Auth::isEditor($record->getTree()) && $record->canShow() && $record->canEdit()) {
 		// Delete links to this record

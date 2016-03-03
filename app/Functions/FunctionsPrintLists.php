@@ -130,7 +130,7 @@ class FunctionsPrintLists {
 		$stats = new Stats($WT_TREE);
 
 		// Bad data can cause "longest life" to be huge, blowing memory limits
-		$max_age = min($WT_TREE->getPreference('MAX_ALIVE_AGE'), $stats->LongestLifeAge()) + 1;
+		$max_age = min($WT_TREE->getPreference('MAX_ALIVE_AGE'), $stats->longestLifeAge()) + 1;
 
 		// Inititialise chart data
 		$deat_by_age = array();
@@ -353,7 +353,7 @@ class FunctionsPrintLists {
 			$html .= '<td>' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . 'AAAA' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . '</td>';
 			//-- SOSA
 			if ($option == 'sosa') {
-				$html .= '<td><a href="../../relationship.php?pid1=' . $datalist[1] . '&amp;pid2=' . $person->getXref() . '" title="' . I18N::translate('Relationships') . '">' . I18N::number($key) . '</a></td><td>' . $key . '</td>';
+				$html .= '<td><a href="relationship.php?pid1=' . $datalist[1] . '&amp;pid2=' . $person->getXref() . '" title="' . I18N::translate('Relationships') . '">' . I18N::number($key) . '</a></td><td>' . $key . '</td>';
 			} else {
 				$html .= '<td></td><td>0</td>';
 			}
@@ -927,8 +927,8 @@ class FunctionsPrintLists {
 			$nchi = $family->getNumberOfChildren();
 			$html .= '<td>' . I18N::number($nchi) . '</td><td>' . $nchi . '</td>';
 			//-- Last change
-			$html .= '<td>' . $family->LastChangeTimestamp() . '</td>';
-			$html .= '<td>' . $family->LastChangeTimestamp(true) . '</td>';
+			$html .= '<td>' . $family->lastChangeTimestamp() . '</td>';
+			$html .= '<td>' . $family->lastChangeTimestamp(true) . '</td>';
 			//-- Sorting by marriage date
 			$html .= '<td>';
 			if (!$family->canShow() || !$mdate->isOK()) {
@@ -1144,19 +1144,19 @@ class FunctionsPrintLists {
 			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
 			//-- Last change
 			if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-				$html .= '<td>' . $source->LastChangeTimestamp() . '</td>';
+				$html .= '<td>' . $source->lastChangeTimestamp() . '</td>';
 			} else {
 				$html .= '<td></td>';
 			}
 			//-- Last change hidden sort column
 			if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-				$html .= '<td>' . $source->LastChangeTimestamp(true) . '</td>';
+				$html .= '<td>' . $source->lastChangeTimestamp(true) . '</td>';
 			} else {
 				$html .= '<td></td>';
 			}
 			//-- Delete
 			if (Auth::isManager($WT_TREE)) {
-				$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_source(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
+				$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
 			} else {
 				$html .= '<td></td>';
 			}
@@ -1249,7 +1249,7 @@ class FunctionsPrintLists {
 			$num = count($note->linkedIndividuals('NOTE'));
 			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
 			//-- Linked FAMs
-			$num = count($note->linkedfamilies('NOTE'));
+			$num = count($note->linkedFamilies('NOTE'));
 			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
 			//-- Linked OBJEcts
 			$num = count($note->linkedMedia('NOTE'));
@@ -1259,19 +1259,19 @@ class FunctionsPrintLists {
 			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
 			//-- Last change
 			if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-				$html .= '<td>' . $note->LastChangeTimestamp() . '</td>';
+				$html .= '<td>' . $note->lastChangeTimestamp() . '</td>';
 			} else {
 				$html .= '<td></td>';
 			}
 			//-- Last change hidden sort column
 			if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-				$html .= '<td>' . $note->LastChangeTimestamp(true) . '</td>';
+				$html .= '<td>' . $note->lastChangeTimestamp(true) . '</td>';
 			} else {
 				$html .= '<td></td>';
 			}
 			//-- Delete
 			if (Auth::isManager($WT_TREE)) {
-				$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_note(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . "', '" . $note->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
+				$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . "', '" . $note->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
 			} else {
 				$html .= '<td></td>';
 			}
@@ -1373,19 +1373,19 @@ class FunctionsPrintLists {
 			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
 			//-- Last change
 			if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-				$html .= '<td>' . $repository->LastChangeTimestamp() . '</td>';
+				$html .= '<td>' . $repository->lastChangeTimestamp() . '</td>';
 			} else {
 				$html .= '<td></td>';
 			}
 			//-- Last change hidden sort column
 			if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-				$html .= '<td>' . $repository->LastChangeTimestamp(true) . '</td>';
+				$html .= '<td>' . $repository->lastChangeTimestamp(true) . '</td>';
 			} else {
 				$html .= '<td></td>';
 			}
 			//-- Delete
 			if (Auth::isManager($WT_TREE)) {
-				$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_repository(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
+				$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
 			} else {
 				$html .= '<td></td>';
 			}
@@ -1483,20 +1483,20 @@ class FunctionsPrintLists {
 				$num = count($media_object->linkedIndividuals('OBJE'));
 				$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
 				//-- Linked FAMs
-				$num = count($media_object->linkedfamilies('OBJE'));
+				$num = count($media_object->linkedFamilies('OBJE'));
 				$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
 				//-- Linked SOURces
 				$num = count($media_object->linkedSources('OBJE'));
 				$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
 				//-- Last change
 				if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-					$html .= '<td>' . $media_object->LastChangeTimestamp() . '</td>';
+					$html .= '<td>' . $media_object->lastChangeTimestamp() . '</td>';
 				} else {
 					$html .= '<td></td>';
 				}
 				//-- Last change hidden sort column
 				if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-					$html .= '<td>' . $media_object->LastChangeTimestamp(true) . '</td>';
+					$html .= '<td>' . $media_object->lastChangeTimestamp(true) . '</td>';
 				} else {
 					$html .= '<td></td>';
 				}

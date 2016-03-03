@@ -225,7 +225,7 @@ class Functions {
 		foreach ($arr as $event) {
 			$event->sortOrder = $order;
 			$order++;
-			if ($event->getDate()->isOk()) {
+			if ($event->getDate()->isOK()) {
 				$dated[] = $event;
 			} else {
 				$nondated[] = $event;
