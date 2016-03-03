@@ -2081,6 +2081,7 @@ dd .deletelink {
 	clear: both;
 }
 
+#note-edit .facts_table,
 #notes_content .facts_table,
 #personal_facts_content .facts_table {
 	table-layout: fixed;

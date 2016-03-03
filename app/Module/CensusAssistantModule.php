@@ -296,10 +296,10 @@ class CensusAssistantModule extends AbstractModule {
 			$firstRecord   = array_shift($linkedRecords);
 			if ($firstRecord) {
 				$countryCode = '';
-				$date        = '';
+				$year        = '';
 				foreach ($firstRecord->getFacts('CENS') as $fact) {
 					if (trim($fact->getAttribute('NOTE'), '@') === $note->getXref()) {
-						$date        = $fact->getAttribute('DATE');
+						$year        = strip_tags($fact->getDate()->display(false, '%Y'));
 						$place       = explode(',', strip_tags($fact->getPlace()->getFullName()));
 						$countryCode = Soundex::daitchMokotoff(array_pop($place));
 						break;
@@ -309,7 +309,7 @@ class CensusAssistantModule extends AbstractModule {
 				foreach (Census::allCensusPlaces() as $censusPlace) {
 					if (Soundex::compare($countryCode, Soundex::daitchMokotoff($censusPlace->censusPlace()))) {
 						foreach ($censusPlace->allCensusDates() as $census) {
-							if ($census->censusDate() == $date) {
+							if (substr_compare($census->censusDate(), $year, -4) === 0) {
 								foreach ($census->columns() as $column) {
 									$abbrev = $column->abbreviation();
 									if ($abbrev) {
