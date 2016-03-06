@@ -25,7 +25,7 @@ class CensusOfFrance1906 extends CensusOfFrance implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '1906';
+		return '18 JAN 1906';
 	}
 
 	/**
@@ -35,7 +35,14 @@ class CensusOfFrance1906 extends CensusOfFrance implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnNull($this, 'XXXX', 'XXXX'),
+			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
+			new CensusColumnGivenNames($this, 'Prénoms', ''),
+			new CensusColumnBirthYear($this, 'Année', 'Année de naissance'),
+			new CensusColumnBirthPlace($this, 'Lieu', 'Lieu de naissance'),
+			new CensusColumnNationality($this, 'Nationalité', ''),
+			new CensusColumnRelationToHead($this, 'Situation', 'Situation par rapport au chef de ménage'),
+			new CensusColumnOccupation($this, 'Profession', ''),
+			new CensusColumnNull($this, 'Empl', ''),
 		);
 	}
 }

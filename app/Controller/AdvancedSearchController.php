@@ -144,7 +144,7 @@ class AdvancedSearchController extends SearchController {
 		}
 		$fields = array();
 		foreach ($ofields as $field) {
-			$fields[$field] = strip_tags(GedcomTag::GetLabel($field)); // Custom tags have error markup
+			$fields[$field] = strip_tags(GedcomTag::getLabel($field)); // Custom tags have error markup
 		}
 		uksort($fields, '\Fisharebest\Webtrees\Controller\AdvancedSearchController::tagSort');
 

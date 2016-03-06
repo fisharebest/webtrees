@@ -25,7 +25,7 @@ class CensusOfFrance1856 extends CensusOfFrance implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '1856';
+		return '17 JAN 1856';
 	}
 
 	/**
@@ -35,11 +35,16 @@ class CensusOfFrance1856 extends CensusOfFrance implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnSurname($this, 'XXXX', 'XXXX'),
-			new CensusColumnGivenNames($this, 'XXXX', 'XXXX'),
-			new CensusColumnOccupation($this, 'XXXX', 'XXXX'),
-			new CensusColumnAge($this, 'XXXX', 'XXXX'),
-			new CensusColumnConditionEnglish($this, 'XXXX', 'XXXX'),
+			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
+			new CensusColumnGivenNames($this, 'Prénoms', ''),
+			new CensusColumnOccupation($this, 'Titres', 'Titres, qualifications, état ou profession et fonctions'),
+			new CensusColumnConditionFrenchGarcon($this, 'Garçons', ''),
+			new CensusColumnConditionFrenchHomme($this, 'Hommes', 'Hommes mariés'),
+			new CensusColumnConditionFrenchVeuf($this, 'Veufs', ''),
+			new CensusColumnConditionFrenchFille($this, 'Filles', ''),
+			new CensusColumnConditionFrenchFemme($this, 'Femmes', 'Femmes mariées'),
+			new CensusColumnConditionFrenchVeuve($this, 'Veuves', ''),
+			new CensusColumnAge($this, 'Âge', ''),
 		);
 	}
 }

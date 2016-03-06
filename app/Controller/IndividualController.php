@@ -315,7 +315,7 @@ class IndividualController extends GedcomRecordController {
 		// delete
 		if (Auth::isEditor($this->record->getTree())) {
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-indi-del', array(
-				'onclick' => 'return delete_individual("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
 			)));
 		}
 
@@ -375,7 +375,7 @@ class IndividualController extends GedcomRecordController {
 	 */
 	public function getSignificantSurname() {
 		if ($this->record) {
-			list($surn) = explode(',', $this->record->getSortname());
+			list($surn) = explode(',', $this->record->getSortName());
 
 			return $surn;
 		} else {

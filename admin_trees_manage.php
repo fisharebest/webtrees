@@ -685,7 +685,7 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 	</div>
 	<?php endif; ?>
 	<!-- display link to PhpGedView-WT transfer wizard on first visit to this page, before any GEDCOM is loaded -->
-	<?php if (count(Tree::GetAll()) === 0 && count(User::all()) === 1): ?>
+	<?php if (count(Tree::getAll()) === 0 && count(User::all()) === 1): ?>
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h2 class="panel-title">

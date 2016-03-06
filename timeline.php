@@ -291,7 +291,7 @@ document.onmouseup = function () {
 					<?php } ?>
 				</td>
 			<?php } ?>
-			<td class="list_value" style="padding: 5px;" valign="top">
+			<td class="list_value" style="padding: 5px;">
 				<?php echo I18N::translate('Add another individual to the chart'), '<br>'; ?>
 				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="pids[]">
 				<?php echo FunctionsPrint::printFindIndividualLink('newpid'); ?>
@@ -334,12 +334,12 @@ if (count($controller->people) > 0) {
 		}
 		for ($i = $controller->baseyear + 1; $i < $controller->topyear; $i++) {
 			if ($i % $mod === 0) {
-				echo "<div id=\"scale$i\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? "left: $basexoffset" : "right: $basexoffset") . "px; top:" . ($baseyoffset + (($i - $controller->baseyear) * $controller->scale) - $controller->scale / 2) . "px; font-size: 7pt; text-align:" . (I18N::direction() === 'ltr' ? 'left' : 'right') . ";\">";
+				echo '<div id="scale' . $i . '" style="position:absolute; ' . (I18N::direction() === 'ltr' ? 'left: ' . $basexoffset : 'right: ' . $basexoffset) . 'px; top:' . ($baseyoffset + (($i - $controller->baseyear) * $controller->scale) - $controller->scale / 2) . 'px; font-size: 7pt; text-align:' . (I18N::direction() === 'ltr' ? 'left' : 'right') . ';">';
 				echo $i . '—';
 				echo '</div>';
 			}
 		}
-		echo "<div id=\"scale{$controller->topyear}\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? "left: $basexoffset" : "right: $basexoffset") . "px; top:" . ($baseyoffset + (($controller->topyear - $controller->baseyear) * $controller->scale)) . "px; font-size: 7pt; text-align:" . (I18N::direction() === 'ltr' ? 'left' : 'right') . ";\">";
+		echo '<div id="scale' . $controller->topyear . '" style="position:absolute; ' . (I18N::direction() === 'ltr' ? 'left: ' . $basexoffset : 'right: ' . $basexoffset) . 'px; top:' . ($baseyoffset + (($controller->topyear - $controller->baseyear) * $controller->scale)) . 'px; font-size: 7pt; text-align:' . (I18N::direction() === 'ltr' ? 'left' : 'right') . ';">';
 		echo $controller->topyear . '—';
 		echo '</div>';
 		Functions::sortFacts($controller->indifacts);
@@ -359,9 +359,9 @@ if (count($controller->people) > 0) {
 				<table cellspacing="0" cellpadding="0">
 					<tr>
 						<td>
-							<img src="<?php echo Theme::theme()->parameter('image-hline'); ?>" name="ageline<?php echo $p; ?>" id="ageline<?php echo $p; ?>" align="left" width="25" height="3" alt="">
+							<img src="<?php echo Theme::theme()->parameter('image-hline'); ?>" name="ageline<?php echo $p; ?>" id="ageline<?php echo $p; ?>" width="25" height="3" alt="">
 						</td>
-						<td valign="top">
+						<td>
 							<?php
 							$tyear = round(($ageyoffset + ($controller->bheight / 2)) / $controller->scale) + $controller->baseyear;
 							if (!empty($controller->birthyears[$pid])) {
@@ -369,12 +369,12 @@ if (count($controller->people) > 0) {
 								?>
 								<table class="person<?php echo $col; ?>" style="cursor: hand;">
 									<tr>
-										<td valign="top" width="120"><?php echo I18N::translate('Year:'); ?>
+										<td><?php echo I18N::translate('Year:'); ?>
 											<span id="yearform<?php echo $p; ?>" class="field">
 									<?php echo $tyear; ?>
 									</span>
 										</td>
-										<td valign="top" width="130">(<?php echo I18N::translate('Age'); ?>
+										<td>(<?php echo I18N::translate('Age'); ?>
 											<span id="ageform<?php echo $p; ?>" class="field"><?php echo $tage; ?></span>)
 										</td>
 									</tr>

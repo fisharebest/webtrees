@@ -96,7 +96,7 @@ class PedigreeController extends ChartController {
 		}, array_values($this->sosaAncestors($this->generations)));
 
 		//check earliest generation for any ancestors
-		for ($i = (int) ceil($this->treesize / 2); $i < $this->treesize; $i++) {
+		for ($i = (int) ($this->treesize / 2); $i < $this->treesize; $i++) {
 			$this->chartHasAncestors = $this->chartHasAncestors || ($this->nodes[$i]['indi'] && $this->nodes[$i]['indi']->getChildFamilies());
 		}
 

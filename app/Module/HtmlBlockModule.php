@@ -165,91 +165,91 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 				' . I18N::translate('This family tree was last updated on %s.', '#gedcomUpdated#') . '
 				<table id="keywords">
 					<tr>
-						<td valign="top" class="width20">
+						<td class="width20">
 							<table cellspacing="1" cellpadding="0">
 								<tr>
 									<td class="facts_label">' . I18N::translate('Individuals') . '</td>
-									<td class="facts_value" align="right"><a href="indilist.php?surname_sublist=no">#totalIndividuals#</a></td>
+									<td class="facts_value"><a href="indilist.php?surname_sublist=no">#totalIndividuals#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Males') . '</td>
-									<td class="facts_value" align="right">#totalSexMales#<br>#totalSexMalesPercentage#</td>
+									<td class="facts_value">#totalSexMales#<br>#totalSexMalesPercentage#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Females') . '</td>
-									<td class="facts_value" align="right">#totalSexFemales#<br>#totalSexFemalesPercentage#</td>
+									<td class="facts_value">#totalSexFemales#<br>#totalSexFemalesPercentage#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Total surnames') . '</td>
-									<td class="facts_value" align="right"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged=' . $WT_TREE->getNameUrl() . '">#totalSurnames#</a></td>
+									<td class="facts_value"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged=' . $WT_TREE->getNameUrl() . '">#totalSurnames#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Families') . '</td>
-									<td class="facts_value" align="right"><a href="famlist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalFamilies#</a></td>
+									<td class="facts_value"><a href="famlist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalFamilies#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Sources') . '</td>
-									<td class="facts_value" align="right"><a href="sourcelist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalSources#</a></td>
+									<td class="facts_value"><a href="sourcelist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalSources#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Media objects') . '</td>
-									<td class="facts_value" align="right"><a href="medialist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalMedia#</a></td>
+									<td class="facts_value"><a href="medialist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalMedia#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Repositories') . '</td>
-									<td class="facts_value" align="right"><a href="repolist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalRepositories#</a></td>
+									<td class="facts_value"><a href="repolist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalRepositories#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Total events') . '</td>
-									<td class="facts_value" align="right">#totalEvents#</td>
+									<td class="facts_value">#totalEvents#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Total users') . '</td>
-									<td class="facts_value" align="right">#totalUsers#</td>
+									<td class="facts_value">#totalUsers#</td>
 								</tr>
 							</table>
 						</td>
 						<td><br></td>
-						<td valign="top">
+						<td>
 							<table cellspacing="1" cellpadding="0" border="0">
 								<tr>
 									<td class="facts_label">' . I18N::translate('Earliest birth year') . '</td>
-									<td class="facts_value" align="right">#firstBirthYear#</td>
+									<td class="facts_value">#firstBirthYear#</td>
 									<td class="facts_value">#firstBirth#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Latest birth year') . '</td>
-									<td class="facts_value" align="right">#lastBirthYear#</td>
+									<td class="facts_value">#lastBirthYear#</td>
 									<td class="facts_value">#lastBirth#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Earliest death year') . '</td>
-									<td class="facts_value" align="right">#firstDeathYear#</td>
+									<td class="facts_value">#firstDeathYear#</td>
 									<td class="facts_value">#firstDeath#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Latest death year') . '</td>
-									<td class="facts_value" align="right">#lastDeathYear#</td>
+									<td class="facts_value">#lastDeathYear#</td>
 									<td class="facts_value">#lastDeath#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Individual who lived the longest') . '</td>
-									<td class="facts_value" align="right">#longestLifeAge#</td>
+									<td class="facts_value">#longestLifeAge#</td>
 									<td class="facts_value">#longestLife#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Average age at death') . '</td>
-									<td class="facts_value" align="right">#averageLifespan#</td>
+									<td class="facts_value">#averageLifespan#</td>
 									<td class="facts_value"></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Family with the most children') . '</td>
-									<td class="facts_value" align="right">#largestFamilySize#</td>
+									<td class="facts_value">#largestFamilySize#</td>
 									<td class="facts_value">#largestFamily#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Average number of children per family') . '</td>
-									<td class="facts_value" align="right">#averageChildren#</td>
+									<td class="facts_value">#averageChildren#</td>
 									<td class="facts_value"></td>
 								</tr>
 							</table>

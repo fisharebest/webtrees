@@ -54,7 +54,7 @@ class SourceController extends GedcomRecordController {
 		// delete
 		if (Auth::isEditor($this->record->getTree())) {
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-sour-del', array(
-				'onclick' => "return delete_source('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');",
+				'onclick' => "return delete_record('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');",
 			)));
 		}
 

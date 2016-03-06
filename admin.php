@@ -431,6 +431,11 @@ $old_files = array(
 	WT_ROOT . 'themes/minimal/css-1.7.0',
 	WT_ROOT . 'themes/webtrees/css-1.7.0',
 	WT_ROOT . 'themes/xenea/css-1.7.0',
+	WT_ROOT . 'packages/bootstrap-3.3.5',
+	WT_ROOT . 'packages/bootstrap-datetimepicker-4.15.35',
+	WT_ROOT . 'packages/jquery-1.11.3',
+	WT_ROOT . 'packages/jquery-2.1.4',
+	WT_ROOT . 'packages/moment-2.10.6',
 );
 
 // Delete old files (if we can).
@@ -535,7 +540,7 @@ if (
 		I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) .
 		'<br><a href="https://php.net/supported-versions.php">https://php.net/supported-versions.php</a>';
 } elseif (
-	PHP_VERSION_ID < 50600 && date('Y-m-d') >= '2015-07-10' ||
+	PHP_VERSION_ID < 50600 ||
 	PHP_VERSION_ID < 70000 && date('Y-m-d') >= '2016-12-31' ||
 	PHP_VERSION_ID < 70100 && date('Y-m-d') >= '2017-12-03'
 ) {

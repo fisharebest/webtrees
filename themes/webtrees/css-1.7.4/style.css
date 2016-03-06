@@ -1950,6 +1950,13 @@ dd .deletelink {
 	clear: both;
 }
 
+/* markdown formatting ===== */
+
+.markdown {
+	/* Tables and pre-formatted text can break the layout. */
+	overflow-x: auto;
+}
+
 .markdown p {
 	margin: 0 0 0.5em;
 	white-space: pre-wrap;
@@ -2068,6 +2075,11 @@ dd .deletelink {
 #family-table .fact_SOUR {
 	margin: 5px 3px 5px 0;
 	clear: both;
+}
+
+#notes_content .facts_table,
+#personal_facts_content .facts_table {
+	table-layout: fixed;
 }
 
 .facts_table .field em {
@@ -3094,12 +3106,6 @@ dd .deletelink {
 [dir=rtl] #cboxSlideshow {
 	right: 57px;
 	left: auto;
-}
-
-/* ===== Census assistant module ===== */
-table.table-census-assistant th {
-	font-weight: bold;
-	text-align: left;
 }
 
 /* Stories module */
@@ -5224,7 +5230,7 @@ footer {
 		right: 0;
 	}
 	[dir=rtl] .secondary-menu {
-		left: 0px;
+		left: 0;
 		right: auto;
 	}
 	/* Primary Menu */

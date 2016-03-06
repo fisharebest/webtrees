@@ -1041,10 +1041,10 @@ class Individual extends GedcomRecord {
 		}
 		$txt = '<div';
 		if ($classname) {
-			$txt .= " class=\"$classname\"";
+			$txt .= ' class="' . $classname . '"';
 		}
 		if ($display) {
-			$txt .= " style=\"display:$display\"";
+			$txt .= ' style="display:' . $display . '"';
 		}
 		$txt .= '>';
 		$husb = $fam->getHusband();
