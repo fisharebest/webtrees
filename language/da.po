@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-07 06:20+0100\n"
-"Last-Translator: Jamie <jamie@jaconelli.dk>\n"
+"PO-Revision-Date: 2016-03-07 07:41+0100\n"
+"Last-Translator: Jamie Jaconelli <jamie@jaconelli.dk>\n"
 "Language-Team: Danish <http://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -386,7 +386,7 @@ msgstr[1] "%s noter er blevet opdateret."
 #: app/Functions/Functions.php:2127
 #, php-format
 msgid "%s once removed ascending"
-msgstr "%s once removed ascending"
+msgstr "%s fjernet stigende sorteringsorden"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2130
@@ -418,19 +418,19 @@ msgstr "%s stigende sortering i 3 niveauer"
 #: app/Functions/Functions.php:2146
 #, php-format
 msgid "%s three times removed descending"
-msgstr "%s three times removed descending"
+msgstr "%s fjernelse af sorteringsorden"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2135
 #, php-format
 msgid "%s twice removed ascending"
-msgstr "%s twice removed ascending"
+msgstr "%s fjernelse af sorteringsorden"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2138
 #, php-format
 msgid "%s twice removed descending"
-msgstr "%s twice removed descending"
+msgstr "%s fjernelse af sorteringsorden"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:57 app/I18N.php:309
@@ -2383,7 +2383,7 @@ msgstr "Bah"
 
 #: app/Stats.php:6747
 msgid "Bahamas"
-msgstr "Bahamas"
+msgstr "Bahama"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:97
@@ -2493,7 +2493,7 @@ msgstr "Søns dåb"
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:190 modules_v3/missing_facts_report/report.xml:17
 msgid "Bar mitzvah"
-msgstr "Bar mitzvah"
+msgstr "Bar mitzvah (jødisk)"
 
 #: app/Stats.php:6754
 msgid "Barbados"
@@ -2506,7 +2506,7 @@ msgstr "Grundlæggende"
 #. I18N: gedcom tag BASM
 #: app/GedcomTag.php:198 modules_v3/missing_facts_report/report.xml:18
 msgid "Bat mitzvah"
-msgstr "Bat mitzvah"
+msgstr "Bat mitzvah (jødisk)"
 
 #. I18N: Name of a module
 #: app/Module/BatchUpdateModule.php:77 app/Module/BatchUpdateModule.php:184
@@ -2581,7 +2581,7 @@ msgstr "Binært dataobjekt"
 
 #: app/Functions/FunctionsPrint.php:475
 msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgstr "Bing Kort™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Birmingham, Alabama"
@@ -2935,7 +2935,7 @@ msgstr "Brisbane, Australien"
 #. I18N: gedcom tag _BRTM
 #: app/GedcomTag.php:1084
 msgid "Brit milah"
-msgstr "Brit milah"
+msgstr "Omskæring"
 
 #: app/GedcomTag.php:1780
 msgid "Brit milah of a brother"
@@ -2984,25 +2984,25 @@ msgstr "Bror"
 #: app/Date/FrenchDate.php:89
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "Brumaire (fransk kalender)"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "Brumaire (fransk kalender)"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:122
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "Brumaire (fransk kalender)"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:56
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "Brumaire (fransk kalender)"
 
 #: app/Stats.php:6755
 msgid "Brunei Darussalam"
@@ -3158,11 +3158,11 @@ msgstr "Sted for begravelse indeholder"
 
 #: app/Stats.php:6743
 msgid "Burkina Faso"
-msgstr "Burkina Faso"
+msgstr "Burkina Faso (Afrika)"
 
 #: app/Stats.php:6740
 msgid "Burundi"
-msgstr "Burundi"
+msgstr "Burundi (Afrika)"
 
 #: app/GedcomCode/GedcomCodeRela.php:86
 msgid "Buyer"
@@ -3203,7 +3203,7 @@ msgstr "Standardindstillingerne på din server tillader brug af %s hukommelse."
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
 msgid "CKEditor™"
-msgstr "CKEditor™"
+msgstr "CKEditor™ (kode editor)"
 
 #: admin_trees_manage.php:364
 msgid "Calculating…"
@@ -4835,7 +4835,7 @@ msgstr "december"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:206
 msgid "Decidi"
-msgstr "Decidi"
+msgstr "Decidi (fransk kalender)"
 
 #: app/Module/HtmlBlockModule.php:303
 msgid "Default"
@@ -5047,55 +5047,55 @@ msgstr "Detroit, Michigan"
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
-msgstr "Dey"
+msgstr "Dey (Persisk kalender)"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:96
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr "Dey"
+msgstr "Dey (Persisk kalender)"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
-msgstr "Dey"
+msgstr "Dey (Persisk kalender)"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:128
 msgctxt "LOCATIVE"
 msgid "Dey"
-msgstr "Dey"
+msgstr "Dey (Persisk kalender)"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:64
 msgctxt "NOMINATIVE"
 msgid "Dey"
-msgstr "Dey"
+msgstr "Dey (Persisk kalender)"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:101
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhu al-Hijjah (Islamisk kalender)"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:165
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhu al-Hijjah (Islamisk kalender)"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:133
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhu al-Hijjah (Islamisk kalender)"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:69
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhu al-Hijjah (Islamisk kalender)"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:100
@@ -5200,7 +5200,7 @@ msgstr "Skilsmisser efter århundrede"
 
 #: app/Stats.php:6785
 msgid "Djibouti"
-msgstr "Djibouti"
+msgstr "Djibouti (Afrika)"
 
 #: addmedia.php:473 addmedia.php:500 admin_media_upload.php:224
 msgid "Do not change to keep original filename."
@@ -5257,7 +5257,7 @@ msgstr "Download geografisk data"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:198
 msgid "Duodi"
-msgstr "Duodi"
+msgstr "Duodi (Fransk kalender)"
 
 #: admin_users.php:73 edituser.php:60 login.php:276
 msgid "Duplicate email address. A user with that email already exists."
@@ -5459,25 +5459,25 @@ msgstr "Højde"
 #: app/Date/JewishDate.php:148
 msgctxt "GENITIVE"
 msgid "Elul"
-msgstr "Elul"
+msgstr "Elul (12. måned i Hebraisk kalender)"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:224
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr "Elul"
+msgstr "Elul (12. måned i Hebraisk kalender)"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:186
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr "Elul"
+msgstr "Elul (12. måned i Hebraisk kalender)"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:110
 msgctxt "NOMINATIVE"
 msgid "Elul"
-msgstr "Elul"
+msgstr "Elul (12. måned i Hebraisk kalender)"
 
 #. I18N: gedcom tag EMAI
 #. I18N: gedcom tag EMAIL
@@ -5563,7 +5563,7 @@ msgstr "Sidste ændringsdato"
 #. I18N: http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:145
 msgid "Endowment House"
-msgstr "Endowment House"
+msgstr "Endowment House (LDS kirke)"
 
 #. I18N: gedcom tag ENGA
 #: app/GedcomTag.php:420 modules_v3/missing_facts_report/report.xml:20
@@ -5611,31 +5611,31 @@ msgstr "Fejl: konvertering af GEDCOM-filens %s tegnsæt til UTF-8 understøttes 
 #: app/Date/JalaliDate.php:194
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
-msgstr "Esf"
+msgstr "Esfand (Persisk kalender)"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:98
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr "Esfand"
+msgstr "Esfand (Persisk kalender)"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
-msgstr "Esfand"
+msgstr "Esfand (Persisk kalender)"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:130
 msgctxt "LOCATIVE"
 msgid "Esfand"
-msgstr "Esfand"
+msgstr "Esfand (Persisk kalender)"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:66
 msgctxt "NOMINATIVE"
 msgid "Esfand"
-msgstr "Esfand"
+msgstr "Esfand (Persisk kalender)"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1265
@@ -5981,7 +5981,7 @@ msgstr "%s's familie"
 #: app/Module/StoriesModule.php:356 app/Theme/AbstractTheme.php:1337
 #: edit_changes.php:180
 msgid "Family tree"
-msgstr "Anetræ"
+msgstr "Familietræ"
 
 #: admin_users.php:521
 msgid "Family tree access and settings"
@@ -6066,31 +6066,31 @@ msgstr "Viftediagram for %s"
 #: app/Date/JalaliDate.php:183
 msgctxt "Abbreviation for Persian month: Farvardin"
 msgid "Far"
-msgstr "Far"
+msgstr "Farvardin (Persisk kalender)"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:87
 msgctxt "GENITIVE"
 msgid "Farvardin"
-msgstr "Farvardin"
+msgstr "Farvardin (Persisk kalender)"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:151
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
-msgstr "Farvardin"
+msgstr "Farvardin (Persisk kalender)"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:119
 msgctxt "LOCATIVE"
 msgid "Farvardin"
-msgstr "Farvardin"
+msgstr "Farvardin (Persisk kalender)"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:55
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
-msgstr "Farvardin"
+msgstr "Farvardin (Persisk kalender)"
 
 #: modules_v3/bdm_report/report.xml:118
 #: modules_v3/family_group_report/report.xml:467
@@ -6317,25 +6317,25 @@ msgstr "Flandern"
 #: app/Date/FrenchDate.php:95
 msgctxt "GENITIVE"
 msgid "Floréal"
-msgstr "Floréal"
+msgstr "Floréal (Fransk kalender)"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Floréal"
-msgstr "Floréal"
+msgstr "Floréal (Fransk kalender)"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:128
 msgctxt "LOCATIVE"
 msgid "Floréal"
-msgstr "Floréal"
+msgstr "Floréal (Fransk kalender)"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:62
 msgctxt "NOMINATIVE"
 msgid "Floréal"
-msgstr "Floréal"
+msgstr "Floréal (Fransk kalender)"
 
 #: medialist.php:91
 msgid "Folder"
@@ -6495,25 +6495,25 @@ msgstr "Ven"
 #: app/Date/FrenchDate.php:90
 msgctxt "GENITIVE"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "Frimaire (Fransk kalender)"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "Frimaire (Fransk kalender)"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:123
 msgctxt "LOCATIVE"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "Frimaire (Fransk kalender)"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:57
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "Frimaire (Fransk kalender)"
 
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:302 admin_site_logs.php:248
@@ -8126,7 +8126,7 @@ msgstr "Begræns visning efter"
 #. I18N: You need to:
 #: login.php:561
 msgid "Link the user account to an individual."
-msgstr "Link bruger til et individ"
+msgstr "Link bruger til et individ."
 
 #: app/Module/RelativesTabModule.php:367 edit_interface.php:983
 #: edit_interface.php:1043
@@ -10388,7 +10388,7 @@ msgstr "Anetavle"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree Chart"
-msgstr "Anetræ"
+msgstr "Efterkommere"
 
 #: app/Controller/FanchartController.php:355
 #: app/Module/GoogleMapsModule.php:1393 app/Theme/AbstractTheme.php:1220
@@ -10448,7 +10448,7 @@ msgstr "Filippinerne"
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:678
 msgid "Phone"
-msgstr "Tlf. nr."
+msgstr "Telefon"
 
 #. I18N: gedcom tag FONE
 #: app/GedcomTag.php:488
@@ -11955,7 +11955,7 @@ msgstr "Sæt reference"
 #. I18N: You need to:
 #: login.php:559
 msgid "Set the access level for each tree."
-msgstr "Sæt adgangsniveau for hvert anetræ"
+msgstr "Sæt adgangsniveau for hvert anetræ."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -11990,7 +11990,7 @@ msgstr "Sætter niveauet mht. beskyttelse af privatlivet for alle døde personer
 #. I18N: You need to:
 #: login.php:557
 msgid "Set the status to “approved”."
-msgstr "Sæt status til \"Godkendt\""
+msgstr "Sæt status til \"Godkendt\"."
 
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:729
@@ -13969,7 +13969,7 @@ msgstr "Oplysninger om denne person er privat."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "I dette felt kan du ændre årstallet for kalenderen i \"Måned\" eller listen \"År\".<br>For \"Dag\" vil årstallet ikke have nogen betydning.<dl><dt><b>Avancerede tilføjelser</b> for <b>Vis år:<br>Flere år</b></dt><dd>Flere år kan vises ved at skrive følgende i feltet år:<br>- Eks. 1: <b>1992-5</b> for alle begivenheder fra 1992 til 1995.<br>- Eks. 2: <b>1970-89</b> for alle begivenheder fra 1970 til 1989.<br>- Eks. 3: <b>1600-799</b> for alle begivenheder fra 1600 til 1799.<br>- Eks. 4: <b>1880-1905</b> for alle begivenheder fra 1880 til 1905.<br>- Eks. 5: <b>880-1105</b> for alle begivenheder fra 880 til 1105.<br><br>Du kan også bare angive begyndelsen af årstallet og få alle begivenheder, der begynder med disse cifre.<br>- Eks.: <b>197</b> for alle begivenheder fra 1970 til 1979.</dd><dt><br><b>Forkortelser</b></dt><dd>Nogle gange er man ikke sikker på, hvornår en begivenhed egentlig fandt sted. I disse tilfælde kan man anvende betegnelser som \"efter\", \"før\" og \"omkring\" foran datoen. Datoerne bliver gemt i slægtsdatabasen sammen med disse forklaringenr Når du vælger År, kan du også udføre en søgning med disse tilføjelser, med eller uden den tilhørende dato. Her er nogle eksempler på disse udtryk:<br><b>abt</b> 1800 (abt = about = omtrent)<br><b>bet</b> 1950-1959 (bet = between = mellem) skriv: bet 1950 eller bare: 1950-59<br><b>bef</b> 1950 (bef = before = før)<br><b>aft</b> 1900 (aft = after = efter)<br><br><b>NB!</b> PhpGedView vil søge efter registreringer nøjagtig som du opgiver i feltet for år. Når du søger efter \"abt 1850\", og datoen er gemt som i databasen \"abt oct 1850\", så vil denne <b>ikke</b> blive inkluderet i resultatet på skærmen. - Du kan nøjes med at angive forkortelsen uden noget årstal, for at vise alle begivenheder med datoer, der indeholder denne forkortelse.</dd></dl><b>NB!</b> For at se resultatet af at have ændret årstallet, må du derefter enten klikke på en af knapperne \"<b>Vis dag</b>\",\"<b>Vis måned</b>\" eller \"<b>Vis år</b>\", - eller et af de andre valgmuligheder."
+msgstr "I dette felt kan du ændre årstallet for kalenderen i \"Måned\" eller listen \"År\".<br>For \"Dag\" vil årstallet ikke have nogen betydning.<dl><dt><b>Avancerede tilføjelser</b> for <b>Vis år:<br>Flere år</b></dt><dd>Flere år kan vises ved at skrive følgende i feltet år:<br>- Eks. 1: <b>1992-5</b> for alle begivenheder fra 1992 til 1995.<br>- Eks. 2: <b>1970-89</b> for alle begivenheder fra 1970 til 1989.<br>- Eks. 3: <b>1600-799</b> for alle begivenheder fra 1600 til 1799.<br>- Eks. 4: <b>1880-1905</b> for alle begivenheder fra 1880 til 1905.<br>- Eks. 5: <b>880-1105</b> for alle begivenheder fra 880 til 1105.<br><br>Du kan også bare angive begyndelsen af årstallet og få alle begivenheder, der begynder med disse cifre.<br>- Eks.: <b>197</b> for alle begivenheder fra 1970 til 1979.</dd><dt><br><b>Forkortelser</b></dt><dd>Nogle gange er man ikke sikker på, hvornår en begivenhed egentlig fandt sted. I disse tilfælde kan man anvende betegnelser som \"efter\", \"før\" og \"omkring\" foran datoen. Datoerne bliver gemt i slægtsdatabasen sammen med disse forklaringenr Når du vælger År, kan du også udføre en søgning med disse tilføjelser, med eller uden den tilhørende dato. Her er nogle eksempler på disse udtryk:<br><b>abt</b> 1800 (abt = about = omtrent)<br><b>bet</b> 1950-1959 (bet = between = mellem) skriv: bet 1950 eller bare: 1950-59<br><b>bef</b> 1950 (bef = before = før)<br><b>aft</b> 1900 (aft = after = efter)<br><br><b>NB!</b> PhpGedView vil søge efter registreringer nøjagtig som du opgiver i feltet for år. Når du søger efter \"abt 1850\", og datoen er gemt som i databasen \"abt oct 1850\", så vil denne <b>ikke</b> blive inkluderet i resultatet på skærmen. - Du kan nøjes med at angive forkortelsen uden noget årstal, for at vise alle begivenheder med datoer, der indeholder denne forkortelse.</dd></dl><b>NB!</b> For at se resultatet af at have ændret årstallet, må du derefter enten klikke på en af knapperne \"<b>Vis dag</b>\",\"<b>Vis måned</b>\" eller \"<b>Vis år</b>\", - eller et af de andre valgmuligheder"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2156
@@ -14265,21 +14265,21 @@ msgstr "Denne proces giver webstedets ejer mulighed for at sikre at ny informati
 
 #: gedrecord.php:90
 msgid "This record does not exist or you do not have permission to view it."
-msgstr "Posten findes ikke eller du ikke har adgang til at se den"
+msgstr "Posten findes ikke eller du ikke har adgang til at se den."
 
 #: gedrecord.php:64
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Posten er slettet. Ændringen vil blive gennemset af en moderator"
+msgstr "Posten er slettet. Ændringen vil blive gennemset af en moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: gedrecord.php:55
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Denne post er slettet. Du bør kontrollere sletningen og derefter %1$s eller %2$s den."
+msgstr "Posterne er slettet. Gennemse sletningen af %1$s or %2$s før godkendelse."
 
 #: gedrecord.php:82
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
-msgstr "Posten er ændret. Ændringerne vil blive gennemset af en moderator"
+msgstr "Posten er ændret. Ændringerne vil blive gennemset af en moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: gedrecord.php:73
@@ -14385,7 +14385,7 @@ msgstr "Denne type link er ikke tilladt her."
 
 #: includes/session.php:444
 msgid "This user account does not have access to any tree."
-msgstr "Denne brugerkonto har ingen adgang"
+msgstr "Denne brugerkonto har ingen adgang."
 
 #: setup.php:213
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -14405,7 +14405,7 @@ msgstr "Dette websted er ikke tilgængeligt i øjeblikket"
 
 #: app/Theme/AbstractTheme.php:326
 msgid "This website uses cookies to learn about visitor behaviour."
-msgstr "Siden her bruger cookies"
+msgstr "Siden her bruger cookies."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:196
@@ -15784,7 +15784,7 @@ msgstr "Du skal logge ind igen, ved at bruge dit PhpGedView brugernavn og adgang
 
 #: login.php:553
 msgid "You need to review the account details."
-msgstr "Du gør gennemse konto detaljerne"
+msgstr "Du gør gennemse konto detaljerne."
 
 #: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
