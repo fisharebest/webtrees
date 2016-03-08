@@ -146,7 +146,7 @@ $facts = $controller->getFacts();
 		<div id="media-edit">
 			<table class="facts_table">
 			<tr>
-				<td align="center" width="150">
+				<td style="text-align:center; width:150px;">
 				<?php
 					// When we have a pending edit, $controller->record shows the *old* data.
 					// As a temporary kludge, fetch a "normal" version of the record - which includes pending changes
@@ -164,7 +164,7 @@ $facts = $controller->getFacts();
 					}
 				?>
 					</td>
-					<td valign="top">
+					<td>
 						<table class="facts_table">
 							<?php
 							foreach ($facts as $fact) {

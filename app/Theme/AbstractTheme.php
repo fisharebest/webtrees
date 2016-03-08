@@ -577,7 +577,7 @@ abstract class AbstractTheme {
 
 		// If an extra (site) title is specified, append it.
 		if ($this->tree && $this->tree->getPreference('META_TITLE')) {
-			$title .= ' - ' . Filter::escapeHtml($this->tree->getPreference('META_TITLE'));
+			$title .= ' – ' . $this->tree->getPreference('META_TITLE');
 		}
 
 		$html =

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-16 18:11+0100\n"
+"PO-Revision-Date: 2016-02-16 19:21+0100\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <http://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
@@ -14405,7 +14405,7 @@ msgstr "Lloc web indisponible temporalment"
 
 #: app/Theme/AbstractTheme.php:326
 msgid "This website uses cookies to learn about visitor behaviour."
-msgstr "Aquest lloc web fa servir galetes per aprendre sobre el comportament del visitant."
+msgstr "Aquest lloc web fa servir galetes per conèixer com l'utilitzen els visitants."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:196
@@ -15703,7 +15703,7 @@ msgstr "No podeu crear una norma que impedeixi a un mateix l'accés al lloc web.
 
 #: login.php:67
 msgid "You cannot login because your browser does not accept cookies."
-msgstr "No podeu accedir perquè el vostre navegador no accepta cookies."
+msgstr "No podeu accedir perquè el vostre navegador no accepta galetes."
 
 #: includes/session.php:500
 msgid "You do not have permission to view this page."

@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Census\Census;
 use Fisharebest\Webtrees\Census\CensusInterface;
 use Fisharebest\Webtrees\Controller\SimpleController;
 use Fisharebest\Webtrees\Family;
@@ -27,6 +28,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Soundex;
 
 /**
  * Class CensusAssistantModule
@@ -82,7 +84,7 @@ class CensusAssistantModule extends AbstractModule {
 			->pageHeader();
 
 		echo '<table class="list_table width90" border="0">';
-		echo '<tr><td style="padding: 10px;" valign="top" class="facts_label03 width90">';
+		echo '<tr><td style="padding: 10px;" class="facts_label03 width90">';
 		echo I18N::translate('Find an individual');
 		echo '</td>';
 		echo '</table>';
@@ -176,23 +178,23 @@ class CensusAssistantModule extends AbstractModule {
 		</script>
 
 		<?php
-		echo "<div align=\"center\">";
-		echo "<table class=\"list_table width90\" border=\"0\">";
-		echo "<tr><td style=\"padding: 10px;\" valign=\"top\" class=\"facts_label03 width90\">"; // start column for find text header
+		echo '<div>';
+		echo '<table class="list_table width90" border="0">';
+		echo '<tr><td style="padding: 10px;" class="facts_label03 width90">'; // start column for find text header
 		echo $controller->getPageTitle();
-		echo "</td>";
-		echo "</tr>";
-		echo "</table>";
-		echo "<br>";
+		echo '</td>';
+		echo '</tr>';
+		echo '</table>';
+		echo '<br>';
 		echo '<button onclick="window.close();">', I18N::translate('close'), '</button>';
-		echo "<br>";
+		echo '<br>';
 
 		$filter       = trim($filter);
 		$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
-		echo "<table class=\"tabs_table width90\"><tr>";
+		echo '<table class="tabs_table width90"><tr>';
 		$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
 		if ($myindilist) {
-			echo "<td class=\"list_value_wrap\"><ul>";
+			echo '<td class="list_value_wrap"><ul>';
 			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
 				$nam = Filter::escapeHtml($indi->getFullName());
@@ -200,13 +202,13 @@ class CensusAssistantModule extends AbstractModule {
 					'" . $indi->getXref() . "' ,
 					'" . $nam . "' ,
 					'" . $indi->getSex() . "' ,
-					'" . $indi->getbirthyear() . "' ,
-					'" . (1901 - $indi->getbirthyear()) . "' ,
-					'" . $indi->getbirthplace() . "'); return false;\">
+					'" . $indi->getBirthYear() . "' ,
+					'" . (1901 - $indi->getBirthYear()) . "' ,
+					'" . $indi->getBirthPlace() . "'); return false;\">
 					<b>" . $indi->getFullName() . "</b>&nbsp;&nbsp;&nbsp;";
 
 				$born = GedcomTag::getLabel('BIRT');
-				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span></a></li>";
+				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getBirthYear(), "&nbsp;&nbsp;&nbsp;", $indi->getBirthPlace(), "</span></a></li>";
 				echo "<hr>";
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', I18N::translate('Total individuals: %s', count($myindilist)), '</tr></td>';
@@ -247,7 +249,7 @@ class CensusAssistantModule extends AbstractModule {
 				function insertId() {
 					if (window.opener.document.getElementById('addlinkQueue')) {
 						// alert('Please move this alert window and examine the contents of the pop-up window, then click OK')
-						window.opener.insertRowToTable('<?php echo $record->getXref(); ?>', '<?php echo htmlSpecialChars($record->getFullName()); ?>', '<?php echo $headjs; ?>');
+						window.opener.insertRowToTable('<?php echo $record->getXref(); ?>', '<?php echo htmlspecialchars($record->getFullName()); ?>', '<?php echo $headjs; ?>');
 						window.close();
 					}
 				}
@@ -278,58 +280,7 @@ class CensusAssistantModule extends AbstractModule {
 	public static function formatCensusNote(Note $note) {
 		global $WT_TREE;
 
-		$headers = array(
-			'AgM'        => 'Age at first marriage',
-			'Age'        => 'Age at last birthday',
-			'Assets'     => 'Assets = Owned,Rented - Value,Rent - Radio - Farm',
-			'BIC'        => 'Born in County',
-			'BOE'        => 'Born outside England',
-			'BP'         => 'Birthplace - (Chapman format)',
-			'Birthplace' => 'Birthplace (Full format)',
-			'Bmth'       => 'Month of birth - If born within Census year',
-			'ChB'        => 'Children born alive',
-			'ChD'        => 'Children who have died',
-			'ChL'        => 'Children still living',
-			'DOB'        => 'Date of birth',
-			'Edu'        => 'Education - At School, Can Read, Can Write', // or "Cannot Read, Cannot Write" ??
-			'EmD'        => 'Employed?',
-			'EmN'        => 'Unemployed?',
-			'EmR'        => 'Employer?',
-			'Employ'     => 'Employment',
-			'Eng?'       => 'English spoken?',
-			'EngL'       => 'English spoken?, if not, Native Language',
-			'FBP'        => 'Father’s Birthplace - (Chapman format)',
-			'Health'     => 'Health - 1.Blind, 2.Deaf & Dumb, 3.Idiotic, 4.Insane, 5.Disabled etc',
-			'Home'       => 'Home Ownership - Owned/Rented-Free/Mortgaged-Farm/House-Farm Schedule number',
-			'Industry'   => 'Industry',
-			'Infirm'     => 'Infirmities - 1. Deaf & Dumb, 2. Blind, 3. Lunatic, 4. Imbecile/feeble-minded',
-			'Lang'       => 'If Foreign Born - Native Language',
-			'MBP'        => 'Mother’s Birthplace - (Chapman format)',
-			'MC'         => 'Marital Condition - Married, Single, Unmarried, Widowed or Divorced',
-			'Mmth'       => 'Month of marriage - If married during Census Year',
-			'MnsE'       => 'Months employed during Census Year',
-			'MnsU'       => 'Months unemployed during Census Year',
-			'N/A'        => 'If Foreign Born - Naturalized, Alien',
-			'NL'         => 'If Foreign Born - Native Language',
-			'Name'       => 'Full Name or Married name if married',
-			'Occupation' => 'Occupation',
-			'Par'        => 'Parentage - Father if foreign born, Mother if foreign born',
-			'Race'       => 'Race or Color - Black, White, Mulatto, Asian, Indian, Chinese etc',
-			'Relation'   => 'Relationship to Head of Household',
-			'Sex'        => 'Male or Female',
-			'Situ'       => 'Situation - Disease, Infirmity, Convict, Pauper etc',
-			'Ten'        => 'Tenure - Owned/Rented, (if owned)Free/Morgaged',
-			'Vet'        => 'War Veteran?',
-			'WH'         => 'Working at Home?',
-			'War'        => 'War or Expedition',
-			'WksU'       => 'Weeks unemployed during Census Year',
-			'YOI'        => 'If Foreign Born - Year of immigration',
-			'YON'        => 'If Foreign Born - Year of naturalization',
-			'YUS'        => 'If Foreign Born - Years in the USA',
-			'YrsM'       => 'Years Married, or Y if married in Census Year',
-		);
-
-		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.*)((?:\n.*)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
+		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.+)\n(.+(?:\n.+)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
 			// This looks like a census-assistant shared note
 			$title     = Filter::escapeHtml($match[1]);
 			$preamble  = Filter::escapeHtml($match[2]);
@@ -337,12 +288,42 @@ class CensusAssistantModule extends AbstractModule {
 			$data      = Filter::escapeHtml($match[4]);
 			$postamble = Filter::escapeHtml($match[5]);
 
-			$fmt_headers = array();
-			foreach ($headers as $key => $value) {
-				$fmt_headers[$key] = '<span title="' . Filter::escapeHtml($value) . '">' . $key . '</span>';
-			}
+			// Get the column headers for the census to which this note refers
+			// requires the fact place & date to match the specific census
+			// censusPlace() (Soundex match) and censusDate() functions
+			$fmt_headers   = array();
+			$linkedRecords = array_merge($note->linkedIndividuals('NOTE'), $note->linkedFamilies('NOTE'));
+			$firstRecord   = array_shift($linkedRecords);
+			if ($firstRecord) {
+				$countryCode = '';
+				$date        = '';
+				foreach ($firstRecord->getFacts('CENS') as $fact) {
+					if (trim($fact->getAttribute('NOTE'), '@') === $note->getXref()) {
+						$date        = $fact->getAttribute('DATE');
+						$place       = explode(',', strip_tags($fact->getPlace()->getFullName()));
+						$countryCode = Soundex::daitchMokotoff(array_pop($place));
+						break;
+					}
+				}
 
-			// Substitue header labels and format as HTML
+				foreach (Census::allCensusPlaces() as $censusPlace) {
+					if (Soundex::compare($countryCode, Soundex::daitchMokotoff($censusPlace->censusPlace()))) {
+						foreach ($censusPlace->allCensusDates() as $census) {
+							if ($census->censusDate() == $date) {
+								foreach ($census->columns() as $column) {
+									$abbrev = $column->abbreviation();
+									if ($abbrev) {
+										$description          = $column->title() ? $column->title() : I18N::translate('Description unavailable');
+										$fmt_headers[$abbrev] = '<span title="' . $description . '">' . $abbrev . '</span>';
+									}
+								}
+								break 2;
+							}
+						}
+					}
+				}
+			}
+			// Substitute header labels and format as HTML
 			$thead = '<tr><th>' . strtr(str_replace('|', '</th><th>', $header), $fmt_headers) . '</th></tr>';
 			$thead = str_replace('.b.', '', $thead);
 
@@ -358,12 +339,14 @@ class CensusAssistantModule extends AbstractModule {
 
 			return
 				$title . "\n" . // The newline allows the framework to expand the details and turn the first line into a link
+				'<div class="markdown">' .
 				'<p>' . $preamble . '</p>' .
-				'<table class="table-census-assistant">' .
+				'<table>' .
 				'<thead>' . $thead . '</thead>' .
 				'<tbody>' . $tbody . '</tbody>' .
 				'</table>' .
-				'<p>' . $postamble . '</p>';
+				'<p>' . $postamble . '</p>' .
+				'</div>';
 		} else {
 			// Not a census-assistant shared note - apply default formatting
 			return Filter::formatText($note->getNote(), $WT_TREE);
@@ -386,7 +369,7 @@ class CensusAssistantModule extends AbstractModule {
 			$html .= '<th title="' . $column->title() . '">' . $column->abbreviation() . '</th>';
 		}
 
-		return '<tr><th hidden></th>' . $html . '<th></th></th></tr>';
+		return '<tr><th hidden></th>' . $html . '<th></th></tr>';
 	}
 
 	/**
@@ -462,7 +445,7 @@ class CensusAssistantModule extends AbstractModule {
 						<?php echo $spouse->getFullName(); ?>
 					</a>
 				</td>
-				<td align="left" class="facts_value">
+				<td class="facts_value">
 					<a href="edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=<?php echo $spouse->getXref(); ?>&amp;gedcom=<?php echo $spouse->getTree()->getNameUrl(); ?>&amp;census=<?php echo get_class($census); ?>">
 						<?php echo $headImg2; ?>
 					</a>

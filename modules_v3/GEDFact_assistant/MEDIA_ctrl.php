@@ -61,12 +61,12 @@ global $controller;
 <div id="media-links">
 	<table class="facts_table center">
 		<tr>
-			<td class="topbottombar" colspan="1">
+			<td class="topbottombar">
 				<b><?php echo $controller->getPageTitle(); ?></b>
 			</td>
 		</tr>
 		<tr>
-			<td valign="top">
+			<td>
 				<table class="outer_nav">
 					<tr>
 						<th class="descriptionbox"><?php echo I18N::translate('Search for individuals to add to add Links list.'); ?></th>
@@ -91,10 +91,10 @@ global $controller;
 						</td>
 					</tr>
 					<tr>
-						<td align="center">
+						<td>
 							<table width="100%" class="fact_table" cellspacing="0" border="0">
 								<tr>
-									<td align="center" colspan=3 class="descriptionbox wrap">
+									<td colspan=3 class="descriptionbox wrap">
 										<?php echo I18N::translate('Click %s to choose individual as head of family.', '<i class="headimg vmiddle icon-button_head"></i>'); ?>
 										<br><br>
 										<?php echo I18N::translate('Click name to add individual to add links list.'); ?>

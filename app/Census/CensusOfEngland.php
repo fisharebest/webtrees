@@ -34,6 +34,7 @@ class CensusOfEngland extends Census implements CensusPlaceInterface {
 			new CensusOfEngland1891(),
 			new CensusOfEngland1901(),
 			new CensusOfEngland1911(),
+			new RegisterOfEngland1939()
 		);
 	}
 

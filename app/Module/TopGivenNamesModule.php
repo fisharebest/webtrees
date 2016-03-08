@@ -99,7 +99,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 		case "table": // Style 2: Tabular format. Narrow, 2 or 3 column table, good on right side of page
 			$params = array(1, $num, 'rcount');
 			$content .= '<table style="margin:auto;">
-						<tr valign="top">
+						<tr>
 						<td>' . $stats->commonGivenFemaleTable($params) . '</td>
 						<td>' . $stats->commonGivenMaleTable($params) . '</td>';
 			$content .= '</tr></table>';

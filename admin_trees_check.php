@@ -155,7 +155,7 @@ foreach ($records as $record) {
 foreach ($all_links as $xref1 => $links) {
 	$type1 = $records[$xref1]->type;
 	foreach ($links as $xref2 => $type2) {
-		$type3 = @$records[$xref2]->type;
+		$type3 = isset($records[$xref2]) ? $records[$xref2]->type : '';
 		if (!array_key_exists($xref2, $all_links)) {
 			if (array_key_exists(strtoupper($xref2), $upper_links)) {
 				echo warning(

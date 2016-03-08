@@ -235,7 +235,7 @@ class SearchController extends PageController {
 		if ($query_terms && $this->search_trees) {
 			// Write a log entry
 			$logstring = "Type: General\nQuery: " . $this->query;
-			Log::AddSearchlog($logstring, $this->search_trees);
+			Log::addSearchLog($logstring, $this->search_trees);
 
 			// Search the individuals
 			if ($this->srindi && $query_terms) {
