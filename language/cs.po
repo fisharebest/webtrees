@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-17 11:55+0100\n"
+"PO-Revision-Date: 2016-03-09 11:34+0100\n"
 "Last-Translator: Josef Pavlik <josef@pavlik.it>\n"
 "Language-Team: Czech <http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -19358,7 +19358,7 @@ msgstr "zeť/snacha"
 #: app/Module/UpcomingAnniversariesModule.php:176
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr "třídit podle data"
+msgstr "seřadit podle data"
 
 #: edit_interface.php:1854 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9 modules_v3/change_report/report.xml:7
@@ -19367,32 +19367,32 @@ msgstr "třídit podle data"
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of birth"
-msgstr "třídit podle data narození"
+msgstr "seřadit podle data narození"
 
 #: modules_v3/bdm_report/report.xml:11 modules_v3/cemetery_report/report.xml:6
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of death"
-msgstr "třídit podle data úmrtí"
+msgstr "seřadit podle data úmrtí"
 
 #: edit_interface.php:2216 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
-msgstr "třídit podle data svatby"
+msgstr "seřadit podle data svatby"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:165
 msgid "sort by date, newest first"
-msgstr "třídit podle data, nejprve nejnovější"
+msgstr "seřadit podle data, nejprve nejnovější"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:164
 msgid "sort by date, oldest first"
-msgstr "třídit podle data, nejprve nejstarší"
+msgstr "seřadit podle data, nejprve nejstarší"
 
 #. I18N: An option in a list-box
 #: medialist.php:109
 msgid "sort by filename"
-msgstr "třídit podle jména souboru"
+msgstr "seřadit podle jména souboru"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:156 app/Module/RecentChangesModule.php:163
@@ -19406,12 +19406,12 @@ msgstr "třídit podle jména souboru"
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by name"
-msgstr "třídit podle jména"
+msgstr "seřadit podle jména"
 
 #. I18N: An option in a list-box
 #: medialist.php:106
 msgid "sort by title"
-msgstr "třídit podle názvu"
+msgstr "seřadit podle názvu"
 
 #: app/Module/GoogleMapsModule.php:3957
 msgid "south"
