@@ -1857,7 +1857,7 @@ abstract class AbstractTheme {
 	 * @return bool
 	 */
 	protected function pendingChangesExist() {
-		return $this->tree && $this->tree->hasPendingEdit() && ( Auth::isManager($this->tree) || Auth::isModerator($this->tree) );
+		return $this->tree && $this->tree->hasPendingEdit() && Auth::isModerator($this->tree);
 	}
 
 	/**
