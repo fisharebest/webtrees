@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-09 11:48+0100\n"
+"PO-Revision-Date: 2016-03-10 07:40+0100\n"
 "Last-Translator: Josef Pavlik <josef@pavlik.it>\n"
 "Language-Team: Italian <http://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
@@ -331,8 +331,8 @@ msgstr[1] "%s persone con eventi nel %s"
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s persona con eventi nel %s tra %s e %s"
+msgstr[1] "%s persone con eventi nel %s tra %s e %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:121
@@ -381,20 +381,20 @@ msgstr[1] "%s mesi fa"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s nota è stata aggiornata."
+msgstr[1] "%s note sono state aggiornate."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2127
 #, php-format
 msgid "%s once removed ascending"
-msgstr "%s once removed ascending"
+msgstr ""
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2130
 #, php-format
 msgid "%s once removed descending"
-msgstr "%s once removed descending"
+msgstr ""
 
 #: app/I18N.php:808
 #, php-format
@@ -407,32 +407,32 @@ msgstr[1] "%s secondi fa"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s fonte è stata aggiornata."
+msgstr[1] "%s fonti sono state aggiornate."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2143
 #, php-format
 msgid "%s three times removed ascending"
-msgstr "%s three times removed ascending"
+msgstr ""
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2146
 #, php-format
 msgid "%s three times removed descending"
-msgstr "%s three times removed descending"
+msgstr ""
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2135
 #, php-format
 msgid "%s twice removed ascending"
-msgstr "%s twice removed ascending"
+msgstr ""
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2138
 #, php-format
 msgid "%s twice removed descending"
-msgstr "%s twice removed descending"
+msgstr ""
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:57 app/I18N.php:309
@@ -498,49 +498,49 @@ msgstr "%s&nbsp;E.V."
 #: app/Module/ClippingsCartModule.php:211
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, suoi antenati e le loro famiglie"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:166
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, suoi genitori e fratelli"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:180
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, suoi mariti e figli"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:228
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, suoi mariti e discendenti"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:213
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, suoi antenati e le loro famiglie"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:168
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, suoi parenti e fratelli"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:182
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, sue mogli e figli"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:230
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, sue mogli e discendenti"
 
 #: app/Functions/FunctionsPrint.php:624 app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
@@ -754,11 +754,11 @@ msgstr "Un server di database è in grado di memorizzare molti database distinti
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
-msgstr ""
+msgstr "File sul server"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:211
 msgid "A file on your computer"
-msgstr ""
+msgstr "File sul tuo computer"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:33
@@ -1403,7 +1403,7 @@ msgstr "Aggiungi storie ed aneddoti sulle persone presenti nell’albero genealo
 
 #: admin_trees_manage.php:279
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Aggiungere spazio nei punti dove le linee lunghe vengono spezzate"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:378
