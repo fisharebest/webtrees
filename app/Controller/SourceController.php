@@ -49,10 +49,8 @@ class SourceController extends GedcomRecordController {
 					'onclick' => 'return add_fact("' . $this->record->getXref() . '", "TITL");',
 				)));
 			}
-		}
 
-		// delete
-		if (Auth::isEditor($this->record->getTree())) {
+			// delete
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-sour-del', array(
 				'onclick' => "return delete_record('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');",
 			)));
@@ -63,18 +61,6 @@ class SourceController extends GedcomRecordController {
 			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-sour-editraw', array(
 				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
 			)));
-		}
-
-		// add to favorites
-		if (Module::getModuleByName('user_favorites')) {
-			$menu->addSubmenu(new Menu(
-				/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
-				'#',
-				'menu-sour-addfav',
-				array(
-					'onlick' => 'jQuery.post("module.php?mod=user_favorites&amp;mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
-				)
-			));
 		}
 
 		// Get the link for the first submenu and set it as the link for the main menu
