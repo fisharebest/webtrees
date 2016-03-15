@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-07 07:41+0100\n"
-"Last-Translator: Jamie Jaconelli <jamie@jaconelli.dk>\n"
+"PO-Revision-Date: 2016-03-15 12:10+0200\n"
+"Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language-Team: Danish <http://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -696,7 +696,7 @@ msgstr "9."
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:742
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr "<b>GUID</b> er i denne sammenhæng en forkortelse for «Globally Unique ID».<br><br>GUIDs er beregnet til at identificere personer på en entydig måde, så man kan afgøre om det er den samme person man sammenligner uanset hvor materialet stammer fra. <br><br>Hvis du ikke ønsker at dele dine GEDCOM oplysninger med andre er det ikke nødvendigt at webtrees danner disse GUIDs. Imidlertid vil det ikke være til nogen skade at bruge GUIDs. Størrelsen af GEDCOM-filen bliver blot lidt større."
+msgstr "<b>GUID</b> er i denne sammenhæng en forkortelse for “Globally Unique ID”.<br><br>GUIDs er beregnet til at identificere personer på en entydig måde, så man kan afgøre om det er den samme person man sammenligner uanset hvor materialet stammer fra. <br><br>Hvis du ikke ønsker at dele dine GEDCOM oplysninger med andre er det ikke nødvendigt at webtrees danner disse GUIDs. Imidlertid vil det ikke være til nogen skade at bruge GUIDs. Størrelsen af GEDCOM-filen bliver blot lidt større."
 
 #: admin_trees_manage.php:718
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -1009,7 +1009,7 @@ msgstr "En fane der viser de kilder der er knyttet til en person."
 
 #: admin_users.php:398
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
-msgstr "En bruger kan ikke logge ind før felterne „E-mail verificeret“ og „Godkendt af administrator“ er afkrydset."
+msgstr "En bruger kan ikke logge ind før felterne “E-mail verificeret” og “Godkendt af administrator” er afkrydset."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1121
@@ -1664,7 +1664,7 @@ msgstr "Efter oprettelse af familietræet, vil du kunne importere data fra en GE
 
 #: login.php:247
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
-msgstr "Efter at du har logget ind, så vælg linket „Min konto“ under menuen „Mine sider“ og udfyld feltet med adgangskoden for at ændre din adgangskode."
+msgstr "Efter at du har logget ind, så vælg linket “Min konto” under menuen “Mine sider” og udfyld feltet med adgangskoden for at ændre din adgangskode."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:248
@@ -1829,7 +1829,7 @@ msgstr "Alle kilde fakta"
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Tillad andre moduler til at redigere tekst ved hjælp af en „WYSIWYG“ editor, i stedet for at bruge HTML-koder."
+msgstr "Tillad andre moduler til at redigere tekst ved hjælp af en “WYSIWYG” editor, i stedet for at bruge HTML-koder."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1678
@@ -1874,7 +1874,7 @@ msgstr "En administrator skal godkende den nye brugerkonto, og vælg et adgangsn
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Et alternativ til „medie“ fanen og en forbedret billedfremviser."
+msgstr "Et alternativ til “medie” fanen og en forbedret billedfremviser."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
@@ -3383,15 +3383,15 @@ msgstr "Skift sprog"
 
 #: admin_users.php:217
 msgid "Change the blocks on this user’s “My page”"
-msgstr "Omforme blokkene på denne brugers \"Min side\""
+msgstr "Omforme blokkene på denne brugers “Min side”"
 
 #: admin_trees_manage.php:405 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr "Omforme blokkene på \"Startsiden\""
+msgstr "Omforme blokkene på “Startsiden”"
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr "Omforme blokkene på \"Min side\""
+msgstr "Omforme blokkene på “Min side”"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Functions/FunctionsPrintLists.php:1772
@@ -3986,7 +3986,7 @@ msgstr "Virksomhed"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:39
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "Ret NAME poster hvor „Anonym/ANONYM/“ eller „Anonym /ANONYM“ er brugt af ældre slægtsforskningprogrammer."
+msgstr "Ret NAME poster hvor “Anonym/ANONYM/” eller “Anonym /ANONYM” er brugt af ældre slægtsforskningprogrammer."
 
 #: app/Stats.php:6777
 msgid "Costa Rica"
@@ -5270,11 +5270,11 @@ msgstr "Brugernavnet eksisterer allerede. Vælg venligst et andet brugernavn."
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
 msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed. webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required. To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "E- mail adresse der skal bruges i &laquo;Fra:&raquo;-feltet for de e-mails som webtrees automatisk opretter.<br><br>webtrees kan automatisk oprette e-mails til at underrette administratorer om ændringer, som skal kontrolleres. webtrees sender også besked via e-mails til brugere, der har anmodet om en brugerkonto.<br><br>Normalt er &laquo;Fra:&raquo-feltet i disse automatiske e-mail udfyldt med <i>Fra: webtrees-noreply@yoursite</i> for at vise at det ikke er nødvendigt at svare på denne e-mail. For at beskytte mod spam eller anden misbrug af e-mail så kræver nogle e-mail systemer at &laquo;Fra:&raquo;-feltet indeholder en gyldig e-mail adresse, og vil ikke acceptere beskeder der blot kommer fra <i>webtrees-noreply</i>."
+msgstr "E- mail adresse der skal bruges i “Fra:”-feltet for de e-mails som webtrees automatisk opretter.<br><br>webtrees kan automatisk oprette e-mails til at underrette administratorer om ændringer, som skal kontrolleres. webtrees sender også besked via e-mails til brugere, der har anmodet om en brugerkonto.<br><br>Normalt er “Fra:”-feltet i disse automatiske e-mail udfyldt med <i>Fra: webtrees-noreply@yoursite</i> for at vise at det ikke er nødvendigt at svare på denne e-mail. For at beskytte mod spam eller anden misbrug af e-mail så kræver nogle e-mail systemer at “Fra:”-feltet indeholder en gyldig e-mail adresse, og vil ikke acceptere beskeder der blot kommer fra <i>webtrees-noreply</i>."
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Hver kilde registrerer særlige begivenheder, normalt indenfor en dato og et sted/område. For eksempel optegnelser i en folketælling eller kirkebøgernes oplysninger om begivenheder som fødsel, vielse og død.<br><br>Vælg den ønskede begivenhed fra den liste over begivenheder som webtrees indeholder. Datoen skal angives med det korrekte format fx <i>FROM 1900 TO 1910</i>. Stedet benævnes med den mest præcise placering for kilden. For eksempel vil „Oneida, Idaho, USA“ angive at begivenheden skete indenfor det begræsede område Oneida County. „Idaho, USA“ vil angive at begivenheden fandt sted indenfor hele staten Idaho."
+msgstr "Hver kilde registrerer særlige begivenheder, normalt indenfor en dato og et sted/område. For eksempel optegnelser i en folketælling eller kirkebøgernes oplysninger om begivenheder som fødsel, vielse og død.<br><br>Vælg den ønskede begivenhed fra den liste over begivenheder som webtrees indeholder. Datoen skal angives med det korrekte format fx <i>FROM 1900 TO 1910</i>. Stedet benævnes med den mest præcise placering for kilden. For eksempel vil “Oneida, Idaho, USA” angive at begivenheden skete indenfor det begræsede område Oneida County. “Idaho, USA” vil angive at begivenheden fandt sted indenfor hele staten Idaho."
 
 #: help_text.php:319
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -5693,7 +5693,7 @@ msgstr "Eksakte tekst"
 #: famlist.php:171 indilist.php:172
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Udeluk personer med „%s“ som giftenavn"
+msgstr "Udeluk personer med “%s” som giftenavn"
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
@@ -6703,7 +6703,7 @@ msgstr "Fornavne"
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:981
 msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu. To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
-msgstr "Giver brugere mulighed for at vælge deres eget layout (tema) fra en „drop down“ liste (hvis den er tilgængelig som tema)<br><br>Det er også nødvendigt at feltet: „Tillad brugere at vælge deres eget tema“ er sat til <b>Ja</b>."
+msgstr "Giver brugere mulighed for at vælge deres eget layout (tema) fra en “drop down” liste (hvis den er tilgængelig som tema)<br><br>Det er også nødvendigt at feltet: “Tillad brugere at vælge deres eget tema” er sat til <b>Ja</b>."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -7208,7 +7208,7 @@ msgstr "Hvis efternavnet er ukendt, bruges tomme skråstreger: <%s>Mary //<%s>"
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:422
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "Hvis denne person har andre begivenheder end Død, Begravelse eller Kremering som er nyere end dette antal år, anses personen som \"levende\". Børns fødselsdatoer anses for at være sådanne begivenheder."
+msgstr "Hvis denne person har andre begivenheder end Død, Begravelse eller Kremering som er nyere end dette antal år, anses personen som “levende”. Børns fødselsdatoer anses for at være sådanne begivenheder."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1025
@@ -7286,7 +7286,7 @@ msgstr "Hvis du bruger en af de følgende sporing og analytiske servicer, kan we
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1222
 msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-msgstr "Hvis du ønsker at fjerne et bestemt efternavn fra listen med \"Oftest forekommende efternavne\", kan du anføre efternavnet her. Hvis der tilføjes flere navne, skal de adskilles med et komma. <b>Efternavne er versalfølsomme</b>."
+msgstr "Hvis du ønsker at fjerne et bestemt efternavn fra listen med “Oftest forekommende efternavne”, kan du anføre efternavnet her. Hvis der tilføjes flere navne, skal de adskilles med et komma. <b>Efternavne er versalfølsomme</b>."
 
 #: setup.php:186
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
@@ -7328,15 +7328,15 @@ msgstr "Indstillinger"
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "I et familietræ har hver post et intern nummersystem (kaldet en „XREF“) som feks „F123“ eller „R14“."
+msgstr "I et familietræ har hver post et intern nummersystem (kaldet en “XREF”) som feks “F123” eller “R14”."
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "I mange kulturer er det almindeligt at få sit navn skrevet med denne kulturs alfabet, og samtidig have en romaniseret version af navnet hvor det er stavet eller udtalt på et sprog der er baseret på det latinske alfabet, såsom engelsk.<br><br>Hvis du foretrækker at bruge et ikke-latinsk alfabet, såsom hebraisk, græsk, russisk, kinesisk eller arabisk for at indtaste navnet i standard navnefelter, så kan du bruge dette felt til at angive det samme navn ved hjælp af det latinske alfabet. Begge udgaver af navnet vises i lister og slægtstræer.<br><br>Selvom dette felt er markeret \"Romaniseret\" er det ikke begrænset til at indeholde karakterer baseret på det latinske alfabet. Dette kan fx være nyttigt til japanske navne, hvor der findes tre forskellige alfabeter."
+msgstr "I mange kulturer er det almindeligt at få sit navn skrevet med denne kulturs alfabet, og samtidig have en romaniseret version af navnet hvor det er stavet eller udtalt på et sprog der er baseret på det latinske alfabet, såsom engelsk.<br><br>Hvis du foretrækker at bruge et ikke-latinsk alfabet, såsom hebraisk, græsk, russisk, kinesisk eller arabisk for at indtaste navnet i standard navnefelter, så kan du bruge dette felt til at angive det samme navn ved hjælp af det latinske alfabet. Begge udgaver af navnet vises i lister og slægtstræer.<br><br>Selvom dette felt er markeret “Romaniseret” er det ikke begrænset til at indeholde karakterer baseret på det latinske alfabet. Dette kan fx være nyttigt til japanske navne, hvor der findes tre forskellige alfabeter."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "I mange kulturer er det almindeligt at få sit navn skrevet med denne kulturs alfabet, og samtidig have en romaniseret version af navnet hvor det er stavet eller udtalt på et sprog der er baseret på det latinske alfabet, såsom engelsk.<br><br>Hvis du foretrækker at bruge det latinske alfabet til at indtaste navnet i standard navnefelter, så kan du bruge dette felt til at angive det samme navn ved hjælp af et ikke-latinsk alfabet som fx . hebraisk, græsk, russisk, kinesisk eller arabisk. Begge udgaver af navnet vises i lister og slægtstræer.<br><br>Selvom dette felt er markeret \"Hebraisk\" er det ikke begrænset til at indeholde karakterer baseret på dette alfabet."
+msgstr "I mange kulturer er det almindeligt at få sit navn skrevet med denne kulturs alfabet, og samtidig have en romaniseret version af navnet hvor det er stavet eller udtalt på et sprog der er baseret på det latinske alfabet, såsom engelsk.<br><br>Hvis du foretrækker at bruge det latinske alfabet til at indtaste navnet i standard navnefelter, så kan du bruge dette felt til at angive det samme navn ved hjælp af et ikke-latinsk alfabet som fx . hebraisk, græsk, russisk, kinesisk eller arabisk. Begge udgaver af navnet vises i lister og slægtstræer.<br><br>Selvom dette felt er markeret “Hebraisk” er det ikke begrænset til at indeholde karakterer baseret på dette alfabet."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:716
@@ -7363,7 +7363,7 @@ msgstr "Inkludér korrekt sammenkørte steder"
 #: famlist.php:173 indilist.php:174
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Inkludér personer med „%s“ som giftenavn"
+msgstr "Inkludér personer med “%s” som giftenavn"
 
 #: app/Module/ClippingsCartModule.php:355
 #: app/Module/ClippingsCartModule.php:689
@@ -7796,7 +7796,7 @@ msgstr "Behold medie objekter"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2291
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:545
 msgid "Keep the existing “last change” information"
-msgstr "Behold den eksisterende „sidste ændring“ information"
+msgstr "Behold den eksisterende “sidste ændring” information"
 
 #: app/Stats.php:6844
 msgid "Kenya"
@@ -9057,7 +9057,7 @@ msgstr "Minimum og maksimum zoom faktor for Google kortet. 1 er hele kortet, 15 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1169
 msgid "Minimum number of occurrences to be a “common surname”"
-msgstr "Minimum antal for at blive \"almindeligt efternavn\""
+msgstr "Minimum antal for at blive “almindeligt efternavn”"
 
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:29
@@ -10371,7 +10371,7 @@ msgstr "Adgangskoderne er ikke identiske."
 
 #: admin_users.php:344 edituser.php:219 login.php:447
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Adgangskoden skal være mindst 6 tegn lang, og er versal-følsom, så \"hemmeligt\" er forskelligt fra \"HEMMELIGT\"."
+msgstr "Adgangskoden skal være mindst 6 tegn lang, og er versal-følsom, så “hemmeligt” er forskelligt fra “HEMMELIGT”."
 
 #: edituser.php:139
 msgid "Passwords must contain at least 6 characters."
@@ -10692,7 +10692,7 @@ msgstr "Steder i %s"
 
 #: help_text.php:253
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "Stednavne bør indtastes i henhold til de gældende standarder for slægtsforskning. Her registreres stednavne med de mest præcise oplysninger først og derefter mindre og mindre præcise oplysninger. Hver oplysning afsluttes med et komma for at adskille de forskellige sted niveauer.<br><br>Bruger vi opdelingen af de danske kirkebøger som eksempel så skal et sogn som Tolstrup skrives som \"Tolstrup, Børglum, Hjørring, DK\" (\"sogn, herred, amt, land\").<br><br>Kender man kun amtet, skrives det som \", , Hjørring, DK\".<br><br>Ved man at begivenheden fandt sted i selve byen Tolstrup og lige netop på Børglumvej vil man skulle skrive \"Børglumvej, Tolstrup, Tolstrup, Børglum, Hjørring, DK\"."
+msgstr "Stednavne bør indtastes i henhold til de gældende standarder for slægtsforskning. Her registreres stednavne med de mest præcise oplysninger først og derefter mindre og mindre præcise oplysninger. Hver oplysning afsluttes med et komma for at adskille de forskellige sted niveauer.<br><br>Bruger vi opdelingen af de danske kirkebøger som eksempel så skal et sogn som Tolstrup skrives som “Tolstrup, Børglum, Hjørring, DK” (“sogn, herred, amt, land”).<br><br>Kender man kun amtet, skrives det som “, , Hjørring, DK”.<br><br>Ved man at begivenheden fandt sted i selve byen Tolstrup og lige netop på Børglumvej vil man skulle skrive “Børglumvej, Tolstrup, Tolstrup, Børglum, Hjørring, DK”."
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:93
 #: app/Theme/FabTheme.php:109 app/Theme/MinimalTheme.php:106
@@ -11990,7 +11990,7 @@ msgstr "Sætter niveauet mht. beskyttelse af privatlivet for alle døde personer
 #. I18N: You need to:
 #: login.php:557
 msgid "Set the status to “approved”."
-msgstr "Sæt status til \"Godkendt\"."
+msgstr "Sæt status til “Godkendt”."
 
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:729
@@ -12198,7 +12198,7 @@ msgstr "Vis"
 #. I18N: A site configuration setting
 #: admin_site_config.php:499
 msgid "Show acceptable use agreement on “Request new user account” page"
-msgstr "Vis aftalen om acceptabel brug på siden «Ansøg om brugerkonto»"
+msgstr "Vis aftalen om acceptabel brug på siden “Ansøg om brugerkonto”"
 
 #: app/Module/NotesTabModule.php:69
 msgid "Show all notes"
@@ -12539,12 +12539,12 @@ msgstr "Vis til gæster"
 #: app/Functions/FunctionsPrintLists.php:256
 #: app/Functions/FunctionsPrintLists.php:673
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "Vis «blade» par eller personer. Dette er personer der er i live, men som ikke har nogen børn der er registreret i databasen."
+msgstr "Vis “blade” par eller personer. Dette er personer der er i live, men som ikke har nogen børn der er registreret i databasen."
 
 #: app/Functions/FunctionsPrintLists.php:247
 #: app/Functions/FunctionsPrintLists.php:664
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "Vis «Rod» par eller personer. Disse personer kan også kaldes «patriarker». Det er personer der ikke har nogen forældre registreret i databasen."
+msgstr "Vis “Rod” par eller personer. Disse personer kan også kaldes “patriarker”. Det er personer der ikke har nogen forældre registreret i databasen."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:227 app/I18N.php:228
@@ -12719,12 +12719,12 @@ msgstr "Nogle slægtsprogrammer opretter GEDCOM filer som indeholder medie filna
 
 #: app/Module/GoogleMapsModule.php:436
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Nogle stednavne kan skrives med valgfrie præfiks og suffiks. For eksempel \"Orange\" i stedet for \"Orange County\". Hvis familietræet indholder de fulde stednavne, men den geografiske database indeholder de korte stednavne, bør du angive en liste med de præfiks og suffiks der skal ignoreres. Flere angivelser skal adskilles med semikoloner. For eksempel \"County;County of\" eller \"Township;Twp;Twp.\"."
+msgstr "Nogle stednavne kan skrives med valgfrie præfiks og suffiks. For eksempel “Orange” i stedet for “Orange County”. Hvis familietræet indholder de fulde stednavne, men den geografiske database indeholder de korte stednavne, bør du angive en liste med de præfiks og suffiks der skal ignoreres. Flere angivelser skal adskilles med semikoloner. For eksempel “County;County of” eller “Township;Twp;Twp.”."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1559
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Nogle temaer kan vise ikoner på fanebladet for „Fakta og begivenheder“."
+msgstr "Nogle temaer kan vise ikoner på fanebladet for “Fakta og begivenheder”."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:520
@@ -13260,7 +13260,7 @@ msgstr "FAQ-listen er tom."
 #: admin_trees_manage.php:145
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "GEDCOM filen „%s“ er blevet importeret."
+msgstr "GEDCOM filen “%s” er blevet importeret."
 
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "The Hague, Netherlands"
@@ -13299,7 +13299,7 @@ msgstr "Ændringerne til “%s” er accepteret."
 #: action.php:232
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "Ændringerne for „%s“ er blevet afvist."
+msgstr "Ændringerne for “%s” er blevet afvist."
 
 #: app/Module/ClippingsCartModule.php:296
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>"
@@ -13331,25 +13331,25 @@ msgstr "Familietræet er eksporteret til %s."
 #: admin_trees_manage.php:76
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "Familietræet „%s“ eksisterer allerede."
+msgstr "Familietræet “%s” eksisterer allerede."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:79
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "Famlietræet „%s“ blev oprettet."
+msgstr "Famlietræet “%s” blev oprettet."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:56 admin_trees_manage.php:151
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "Famlietræet „%s“ blev slettet."
+msgstr "Famlietræet “%s” blev slettet."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:65
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "Vælg det familietræ „%s“ du ønsker at besøgende skal se, når de besøger siden for første gang."
+msgstr "Vælg det familietræ “%s” du ønsker at besøgende skal se, når de besøger siden for første gang."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13408,7 +13408,7 @@ msgstr "Filen blev kun uploadet delvist, forsøg igen."
 #: medialist.php:301 mediaviewer.php:162
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "Filen „%s“ findes ikke."
+msgstr "Filen “%s” findes ikke."
 
 #: admin_site_clean.php:36 admin_site_upgrade.php:492
 #, php-format
@@ -13467,7 +13467,7 @@ msgstr "Følgende sted(navne) vil blive ændret:"
 
 #: admin_site_access.php:355
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-msgstr "Følgende regler bruges til at afgøre om en besøgende er et menneske (giv fuld adgang), en søgemaskine robot (giv begrænset adgang) eller en uønsket \"crawler\" (afvis al adgang)."
+msgstr "Følgende regler bruges til at afgøre om en besøgende er et menneske (giv fuld adgang), en søgemaskine robot (giv begrænset adgang) eller en uønsket “crawler” (afvis al adgang)."
 
 #: help_text.php:326
 msgid "The help text has not been written for this item."
@@ -13517,7 +13517,7 @@ msgstr "Mediefilen blev ikke fundet i dette stamtræ."
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr "Den mediefil du uploader bør sandsynligvis navngives anderledes på webserveren end på din computer. Dette skyldes ofte den at det lokale filnavnet har betydning for dig, men er meget mindre meningsfuld for andre der besøger dette websted. Overvej også muligheden for, at du og en anden begge forsøger at uploade forskellige filer der begge hedder \"bedstemor.jpg\".<br><br>I dette felt angiver du det nye navn for den fil, du uploader. Det navn, du indtaster her vil også blive brugt til at navngive miniaturen, som kan uploades separat eller genereres automatisk. Du behøver ikke at indtaste filtypenavnet (jpg, gif, pdf, doc, osv.)<br><br>Lad dette felt være tomt for at bevare det oprindelige navn på filen, du uploader fra din computer."
+msgstr "Den mediefil du uploader bør sandsynligvis navngives anderledes på webserveren end på din computer. Dette skyldes ofte den at det lokale filnavnet har betydning for dig, men er meget mindre meningsfuld for andre der besøger dette websted. Overvej også muligheden for, at du og en anden begge forsøger at uploade forskellige filer der begge hedder “bedstemor.jpg“.<br><br>I dette felt angiver du det nye navn for den fil, du uploader. Det navn, du indtaster her vil også blive brugt til at navngive miniaturen, som kan uploades separat eller genereres automatisk. Du behøver ikke at indtaste filtypenavnet (jpg, gif, pdf, doc, osv.)<br><br>Lad dette felt være tomt for at bevare det oprindelige navn på filen, du uploader fra din computer."
 
 #: setup.php:171
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13526,12 +13526,12 @@ msgstr "Hukommelses- og CPU-tidsgrænserne afhænger af antallet af individer i 
 #: admin_modules.php:49
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "Modulet „%s“ er blevet gjort deaktivt."
+msgstr "Modulet “%s” er blevet gjort deaktivt."
 
 #: admin_modules.php:51
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "Modulet „%s“ er blevet gjort aktivt."
+msgstr "Modulet “%s” er blevet gjort aktivt."
 
 #: admin_site_upgrade.php:400
 #, php-format
@@ -13570,21 +13570,21 @@ msgstr "Indstillinger for nye familietræer er blevet opdateret."
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Indstillinger for familietræet „%s“ er blevet opdateret."
+msgstr "Indstillinger for familietræet “%s” er blevet opdateret."
 
 #: admin_modules.php:81
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "Indstillinger for modulet „%s“ er blevet slettet."
+msgstr "Indstillinger for modulet “%s” er blevet slettet."
 
 #: app/Module/GoogleMapsModule.php:260
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Indstillinger for modulet „%s“ er blevet opdateret."
+msgstr "Indstillinger for modulet “%s” er blevet opdateret."
 
 #: setup.php:380
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-msgstr "Det er valgfrit at bruge præfiks, men anbefalet. Ved at give tabellen et unikt præfiks kan du bruge flere applikationer på den samme database. \"wt_\" er foreslået, men du kan bruge hvilken som helst."
+msgstr "Det er valgfrit at bruge præfiks, men anbefalet. Ved at give tabellen et unikt præfiks kan du bruge flere applikationer på den samme database. “wt_” er foreslået, men du kan bruge hvilken som helst."
 
 #: admin_trees_renumber.php:242
 #, php-format
@@ -13599,7 +13599,7 @@ msgstr "Posten er kopieret til udklipsholder."
 #: admin_site_merge.php:168
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "Posterne „%1$s“ og „%2$s“ er blevet flettet."
+msgstr "Posterne “%1$s” og “%2$s” er blevet flettet."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "The regex appears to contain an error. It can’t be used."
@@ -13725,7 +13725,7 @@ msgstr "Udviklerne af webtrees vil meget gerne høre om denne fejl. Hvis du kont
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr "Brug „%“ for at matche nul eller flere tegn."
+msgstr "Brug “%” for at matche nul eller flere tegn."
 
 #: admin_modules.php:186 admin_users.php:486 app/Theme/AbstractTheme.php:1698
 #: edituser.php:272
@@ -13748,7 +13748,7 @@ msgstr "Temaer"
 
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting “default theme” at one level will use the theme at the next level."
-msgstr "Tema kan vælges på tre niveauer; bruger, familietræet og på websiden. Bruger indstillinger har større priotet end indstillingerne for familiet som igen har større priotet end websidens indstillinger. Ved valg af „standard tema“ på et niveau, vil sættet dette som standard på det næste niveau."
+msgstr "Tema kan vælges på tre niveauer; bruger, familietræet og på websiden. Bruger indstillinger har større priotet end indstillingerne for familiet som igen har større priotet end websidens indstillinger. Ved valg af “standard tema” på et niveau, vil sættet dette som standard på det næste niveau."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:126
@@ -13895,8 +13895,8 @@ msgstr "Denne familie forblev barnløs"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Familietræet har posten %s som bruger den samme „XREF“ i det andet træ."
-msgstr[1] "Familietræet har posterne %s som bruger de samme „XREF“ i det andet træ."
+msgstr[0] "Familietræet har posten %s som bruger den samme “XREF” i det andet træ."
+msgstr[1] "Familietræet har posterne %s som bruger de samme “XREF” i det andet træ."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -13969,7 +13969,7 @@ msgstr "Oplysninger om denne person er privat."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "I dette felt kan du ændre årstallet for kalenderen i \"Måned\" eller listen \"År\".<br>For \"Dag\" vil årstallet ikke have nogen betydning.<dl><dt><b>Avancerede tilføjelser</b> for <b>Vis år:<br>Flere år</b></dt><dd>Flere år kan vises ved at skrive følgende i feltet år:<br>- Eks. 1: <b>1992-5</b> for alle begivenheder fra 1992 til 1995.<br>- Eks. 2: <b>1970-89</b> for alle begivenheder fra 1970 til 1989.<br>- Eks. 3: <b>1600-799</b> for alle begivenheder fra 1600 til 1799.<br>- Eks. 4: <b>1880-1905</b> for alle begivenheder fra 1880 til 1905.<br>- Eks. 5: <b>880-1105</b> for alle begivenheder fra 880 til 1105.<br><br>Du kan også bare angive begyndelsen af årstallet og få alle begivenheder, der begynder med disse cifre.<br>- Eks.: <b>197</b> for alle begivenheder fra 1970 til 1979.</dd><dt><br><b>Forkortelser</b></dt><dd>Nogle gange er man ikke sikker på, hvornår en begivenhed egentlig fandt sted. I disse tilfælde kan man anvende betegnelser som \"efter\", \"før\" og \"omkring\" foran datoen. Datoerne bliver gemt i slægtsdatabasen sammen med disse forklaringenr Når du vælger År, kan du også udføre en søgning med disse tilføjelser, med eller uden den tilhørende dato. Her er nogle eksempler på disse udtryk:<br><b>abt</b> 1800 (abt = about = omtrent)<br><b>bet</b> 1950-1959 (bet = between = mellem) skriv: bet 1950 eller bare: 1950-59<br><b>bef</b> 1950 (bef = before = før)<br><b>aft</b> 1900 (aft = after = efter)<br><br><b>NB!</b> PhpGedView vil søge efter registreringer nøjagtig som du opgiver i feltet for år. Når du søger efter \"abt 1850\", og datoen er gemt som i databasen \"abt oct 1850\", så vil denne <b>ikke</b> blive inkluderet i resultatet på skærmen. - Du kan nøjes med at angive forkortelsen uden noget årstal, for at vise alle begivenheder med datoer, der indeholder denne forkortelse.</dd></dl><b>NB!</b> For at se resultatet af at have ændret årstallet, må du derefter enten klikke på en af knapperne \"<b>Vis dag</b>\",\"<b>Vis måned</b>\" eller \"<b>Vis år</b>\", - eller et af de andre valgmuligheder"
+msgstr "I dette felt kan du ændre årstallet for kalenderen i “Måned” eller listen “År”.<br>For “Dag” vil årstallet ikke have nogen betydning.<dl><dt><b>Avancerede tilføjelser</b> for <b>Vis år:<br>Flere år</b></dt><dd>Flere år kan vises ved at skrive følgende i feltet år:<br>- Eks. 1: <b>1992-5</b> for alle begivenheder fra 1992 til 1995.<br>- Eks. 2: <b>1970-89</b> for alle begivenheder fra 1970 til 1989.<br>- Eks. 3: <b>1600-799</b> for alle begivenheder fra 1600 til 1799.<br>- Eks. 4: <b>1880-1905</b> for alle begivenheder fra 1880 til 1905.<br>- Eks. 5: <b>880-1105</b> for alle begivenheder fra 880 til 1105.<br><br>Du kan også bare angive begyndelsen af årstallet og få alle begivenheder, der begynder med disse cifre.<br>- Eks.: <b>197</b> for alle begivenheder fra 1970 til 1979.</dd><dt><br><b>Forkortelser</b></dt><dd>Nogle gange er man ikke sikker på, hvornår en begivenhed egentlig fandt sted. I disse tilfælde kan man anvende betegnelser som \"efter\", \"før\" og \"omkring\" foran datoen. Datoerne bliver gemt i slægtsdatabasen sammen med disse forklaringenr Når du vælger År, kan du også udføre en søgning med disse tilføjelser, med eller uden den tilhørende dato. Her er nogle eksempler på disse udtryk:<br><b>abt</b> 1800 (abt = about = omtrent)<br><b>bet</b> 1950-1959 (bet = between = mellem) skriv: bet 1950 eller bare: 1950-59<br><b>bef</b> 1950 (bef = before = før)<br><b>aft</b> 1900 (aft = after = efter)<br><br><b>NB!</b> PhpGedView vil søge efter registreringer nøjagtig som du opgiver i feltet for år. Når du søger efter \"abt 1850\", og datoen er gemt som i databasen \"abt oct 1850\", så vil denne <b>ikke</b> blive inkluderet i resultatet på skærmen. - Du kan nøjes med at angive forkortelsen uden noget årstal, for at vise alle begivenheder med datoer, der indeholder denne forkortelse.</dd></dl><b>NB!</b> For at se resultatet af at have ændret årstallet, må du derefter enten klikke på en af knapperne \"<b>Vis dag</b>\",\"<b>Vis måned</b>\" eller \"<b>Vis år</b>\", - eller et af de andre valgmuligheder"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2156
@@ -13998,7 +13998,7 @@ msgstr "Dette er et link til din egen post i familietræet. Hvis dette er en for
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1410
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-msgstr "Dette er et sammendrag af <abbr title = \"Sidste Dages Hellige fundamentalistiske kirke (Jesus Kristi Kirke)\">SDH</abbr> ordinancer for den enkelte. \"B\" angiver et SDH dåb. \"E\" angiver en SDH begravelse. \"S\" angiver en SDH ægtefælle samføring. \"P\" angiver ét SDH barn-til-forældre samføring."
+msgstr "Dette er et sammendrag af <abbr title = \"Sidste Dages Hellige fundamentalistiske kirke (Jesus Kristi Kirke)\">SDH</abbr> ordinancer for den enkelte. “B” angiver et SDH dåb. “E” angiver en SDH begravelse. “S” angiver en SDH ægtefælle samføring. “P” angiver ét SDH barn-til-forældre samføring."
 
 #: setup.php:289 setup.php:293
 msgid "This is case sensitive."
@@ -14011,7 +14011,7 @@ msgstr "Denne er versalfølsom. Hvis en database med navnet ikke allerede eksist
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1371
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr "Dette er den oprindelige opsætning for „vis detaljer“ på diagrammerne."
+msgstr "Dette er den oprindelige opsætning for “vis detaljer” på diagrammerne."
 
 #: admin.php:602 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
@@ -14020,52 +14020,52 @@ msgstr "Dette er den seneste version af webtrees. Ingen tilgængelig opgradering
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1860
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "Dette er en liste over de fakta, som brugerne kan føje til familier. Listen viser de felter eller fakta i form af GEDCOM-koder (ADDR,AFN,BIRT,CGR osv). Du kan modificere denne liste ved at fjerne eller tilføje GEDCOM-koder, standard koder såvel som tilpassede. GEDCOM-koder, der findes på denne liste må ikke også findes på listen <i>Entydige familiefakta</i>."
+msgstr "Dette er en liste over de fakta, som brugerne kan føje til familier. Listen viser de felter eller fakta i form af GEDCOM-koder (ADDR,AFN,BIRT,CGR osv). Du kan modificere denne liste ved at fjerne eller tilføje GEDCOM-koder, standard koder såvel som tilpassede. GEDCOM-koder, der findes på denne liste må ikke også findes på listen “Entydige familiefakta”."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1742
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Dette er en liste over de fakta, som brugerne kan føje til personer. Listen viser de felter eller fakta i form af GEDCOM-koder (ADDR,AFN,BIRT,CGR osv), som brugerne kan opdatere. Du kan modificere listen ved at fjerne eller tilføje GEDCOM-koder, standard koder såvel som tilpassede. For eksempel, hvis GEDCOM-koden BIRT findes på listen, betyder det, at brugerne har lov til at opdatere en persons fødselsdato, idet BIRT koden i GEDCOM-standarden er de felter, der indholder fødselsdatoen for en person. <br>For yderligere oplysninger om disse koder, henvises til fx. http://www.brotherskeeper.dk/gedcom_koder/gedcom-standard.htm. GEDCOM-koder, der findes på denne liste må ikke også findes på listen: <i>Entydige personfakta</i>."
+msgstr "Dette er en liste over de fakta, som brugerne kan føje til personer. Listen viser de felter eller fakta i form af GEDCOM-koder (ADDR,AFN,BIRT,CGR osv), som brugerne kan opdatere. Du kan modificere listen ved at fjerne eller tilføje GEDCOM-koder, standard koder såvel som tilpassede. For eksempel, hvis GEDCOM-koden BIRT findes på listen, betyder det, at brugerne har lov til at opdatere en persons fødselsdato, idet BIRT koden i GEDCOM-standarden er de felter, der indholder fødselsdatoen for en person. <br>For yderligere oplysninger om disse koder, henvises til fx. http://www.brotherskeeper.dk/gedcom_koder/gedcom-standard.htm. GEDCOM-koder, der findes på denne liste må ikke også findes på listen: “Entydige personfakta”."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:2067
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "Dette er en liste over fakta, som brugerne kan føje til oplysningerne om opbevaringssteder, dvs. hvor kilderne fysisk befinder sig. Du kan ændre denne liste ved at fjerne eller tilføje GEDCOM-koder efter behov. For eksempel, hvis listen indeholder koderne PHON,EMAIL,FAX vil brugerne kunne tilføje oplsyninger om telefon, e-mail adresse, og fax for opbevaringsstedet, der kan være et landsarkiv eller lignende. GEDCOM-koder, der findes på denne liste må ikke også findes på listen: <i>Entydige fakta for opbevaringsteder</i>."
+msgstr "Dette er en liste over fakta, som brugerne kan føje til oplysningerne om opbevaringssteder, dvs. hvor kilderne fysisk befinder sig. Du kan ændre denne liste ved at fjerne eller tilføje GEDCOM-koder efter behov. For eksempel, hvis listen indeholder koderne PHON,EMAIL,FAX vil brugerne kunne tilføje oplsyninger om telefon, e-mail adresse, og fax for opbevaringsstedet, der kan være et landsarkiv eller lignende. GEDCOM-koder, der findes på denne liste må ikke også findes på listen: “Entydige fakta for opbevaringsteder”."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1978
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "Dette er en liste over de fakta, som brugerne kan føje til kildeoplysningerne. Du kan modificere denne liste ved at fjerne eller tilføje GEDCOM-koder, standard koder såvel som tilpassede. GEDCOM-koder, der findes på denne liste må ikke også findes på listen: <i>Entydige kildefakta</i>."
+msgstr "Dette er en liste over de fakta, som brugerne kan føje til kildeoplysningerne. Du kan modificere denne liste ved at fjerne eller tilføje GEDCOM-koder, standard koder såvel som tilpassede. GEDCOM-koder, der findes på denne liste må ikke også findes på listen: “Entydige kildefakta”."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1889
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "Dette er en liste over de fakta, som brugerne kun kan føje til familier <u>een gang</u>. Listen viser felterne eller fakta i form af GEDCOM-koder (ADDR,AFN,BIRT,CGR osv). For eksempel, hvis MARR findes på denne liste, så vil brugere ikke kunne tilføje mere end een vielsesoplysning for en familie. GEDCOM-koder, der findes på denne liste må ikke også findes på listen: <i>Tilføj familiefakta</i>."
+msgstr "Dette er en liste over de fakta, som brugerne kun kan føje til familier <u>een gang</u>. Listen viser felterne eller fakta i form af GEDCOM-koder (ADDR,AFN,BIRT,CGR osv). For eksempel, hvis MARR findes på denne liste, så vil brugere ikke kunne tilføje mere end een vielsesoplysning for en familie. GEDCOM-koder, der findes på denne liste må ikke også findes på listen: “Tilføj familiefakta”."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1771
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "Dette er en liste over de fakta, som brugerne kun kan føje til personer een gang. Listen viser felterne eller fakta i form af GEDCOM-koder (ADDR,AFN,BIRT,CGR osv). For eksempel, hvis BIRT findes på denne liste, så vil brugere ikke kunne tilføje mere end een fødselsdato til en person. GEDCOM-koder, der findes på denne liste må ikke også findes på listen: <i>Tilføj personfakta</i>."
+msgstr "Dette er en liste over de fakta, som brugerne kun kan føje til personer een gang. Listen viser felterne eller fakta i form af GEDCOM-koder (ADDR,AFN,BIRT,CGR osv). For eksempel, hvis BIRT findes på denne liste, så vil brugere ikke kunne tilføje mere end een fødselsdato til en person. GEDCOM-koder, der findes på denne liste må ikke også findes på listen: “Tilføj personfakta”."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:2096
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Dette er en liste over fakta, som brugerne kun kan føje til opbevaringsstederne <u>en gang</u>. For eksempel, hvis NAME findes på listen, så vil brugere ikke kunne tilføje mere end et navn på opbevaringsstedet. GEDCOM-koder, der findes på denne liste må ikke findes på listen: <i>Tilføj fakta for opbevaringssteder</i>."
+msgstr "Dette er en liste over fakta, som brugerne kun kan føje til opbevaringsstederne <u>en gang</u>. For eksempel, hvis NAME findes på listen, så vil brugere ikke kunne tilføje mere end et navn på opbevaringsstedet. GEDCOM-koder, der findes på denne liste må ikke findes på listen: “Tilføj fakta for opbevaringssteder”."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:2007
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "Dette er en liste over de fakta, som brugerne kun kan føje til kildeoplysningerne <u>een gang</u>. For eksempel, hvis TITL findes på denne liste, så vil brugere ikke kunne tilføje mere end een titel på en kilde. GEDCOM-koder, der findes på denne liste må ikke også findes på listen: <i>Tilføj kildefakta</i>."
+msgstr "Dette er en liste over de fakta, som brugerne kun kan føje til kildeoplysningerne <u>een gang</u>. For eksempel, hvis TITL findes på denne liste, så vil brugere ikke kunne tilføje mere end een titel på en kilde. GEDCOM-koder, der findes på denne liste må ikke også findes på listen: “Tilføj kildefakta”."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:349
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Dette er navnet på SMTP-serveren. „localhost“ betyder, at mailserveren kører på den samme computer som din webserver."
+msgstr "Dette er navnet på SMTP-serveren. “localhost” betyder, at mailserveren kører på den samme computer som din webserver."
 
 #. I18N: Help text for the “Minimum number of occurrences to be a ‘common surname’” configuration setting
 #: admin_trees_config.php:1182
 msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
-msgstr "Her anføres det antal gange personer med samme efternavn må findes førend efternavnet vil blive vist i listen med \"Oftest forekommende efternavne\" på velkomstsiden."
+msgstr "Her anføres det antal gange personer med samme efternavn må findes førend efternavnet vil blive vist i listen med “Oftest forekommende efternavne” på velkomstsiden."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1947
@@ -14164,7 +14164,7 @@ msgstr "Dette skal være mindst seks karakterer, og er versalfølsom."
 #. I18N: Help text for the “Sender name” site configuration setting
 #: admin_site_config.php:334
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Dette navn bruges i “fra“ feltet når der sendes automatisk emails fra denne server."
+msgstr "Dette navn bruges i “fra” feltet når der sendes automatisk emails fra denne server."
 
 #: note.php:79
 msgid "This note does not exist or you do not have permission to view it."
@@ -14233,7 +14233,7 @@ msgstr "Her bestemmes om slægtstræet skal printes ud liggende eller stående."
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:501
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Denne indstilling vil beholde links til privatiserede familier. Dette betyder at du vil se tomme \"private\" kasser på slægtstavler og andre oversigter med privatiserede personer."
+msgstr "Denne indstilling vil beholde links til privatiserede familier. Dette betyder at du vil se tomme “private” kasser på slægtstavler og andre oversigter med privatiserede personer."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:482
@@ -14344,7 +14344,7 @@ msgstr "Serverens hukommelsesgrænse er på %sMB og CPU-tidsgrænsen er på %s s
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1439
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Dette bør være en komma eller mellemrums separeret liste over fakta, ud over fødsel og død, som du ønsker skal optræde i kortbokse så som på anetavle diagrammet. Denne liste kræver at du bruger fakta-tags som defineret i GEDCOM 5.5.1 standarden. Hvis du for eksempel ønsker at beskæftigelsen skal vises i boksen, skal du tilføje \"OCCU\" til dette felt."
+msgstr "Dette bør være en komma eller mellemrums separeret liste over fakta, ud over fødsel og død, som du ønsker skal optræde i kortbokse så som på anetavle diagrammet. Denne liste kræver at du bruger fakta-tags som defineret i GEDCOM 5.5.1 standarden. Hvis du for eksempel ønsker at beskæftigelsen skal vises i boksen, skal du tilføje “OCCU” til dette felt."
 
 #: source.php:78
 msgid "This source does not exist or you do not have permission to view it."
@@ -14411,11 +14411,11 @@ msgstr "Siden her bruger cookies."
 #: admin_trees_manage.php:196
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Dette sletter al slægtsdata fra „%s“ og erstatter den med data fra en anden GEDCOM."
+msgstr "Dette sletter al slægtsdata fra “%s” og erstatter den med data fra en anden GEDCOM."
 
 #: admin_trees_places.php:97
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Denne funktion vil opdatere det højeste level eller dele af sted(navne). Eksempel, „Mexico“ vil matche „Quintana Roo, Mexico“, men ikke „Santa Fe, New Mexico“."
+msgstr "Denne funktion vil opdatere det højeste level eller dele af sted(navne). Eksempel, “Mexico” vil matche “Quintana Roo, Mexico”, men ikke “Santa Fe, New Mexico”."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:668
@@ -14543,7 +14543,7 @@ msgstr "For at færdiggøre opgraderingen, bør du manuelt installere filerne. (
 
 #: app/Module/ResearchTaskModule.php:188
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "For at oprette en ny forskningsopgave skal du først tilføje \"forskningsopgave\" til listen over fakta og begivenheder i familietræets indstillinger."
+msgstr "For at oprette en ny forskningsopgave skal du først tilføje “forskningsopgave” til listen over fakta og begivenheder i familietræets indstillinger."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1665
@@ -14579,7 +14579,7 @@ msgstr "Du kan bruge følgende links for at oplyse søgemaskinerne om at der fin
 
 #: app/Module/SiteMapModule.php:328
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
-msgstr "For at oplyse søgemaskinerne om at der findes sitemaps, bør du tilføje den følgende linje til din \"robots.txt\" fil."
+msgstr "For at oplyse søgemaskinerne om at der findes sitemaps, bør du tilføje den følgende linje til din “robots.txt” fil."
 
 #: admin_site_config.php:435
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
@@ -15056,7 +15056,7 @@ msgstr "Brug SMTP til at sende beskeder"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Brug et „?“ for at matche et enkelt tegn. Brug „*“ for at matche nul eller flere tegn."
+msgstr "Brug et “?” for at matche et enkelt tegn. Brug “*” for at matche nul eller flere tegn."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:342 login.php:441
@@ -15158,7 +15158,7 @@ msgstr "Brugernavn eller e-mail adresse"
 
 #: admin_users.php:331 edituser.php:164 login.php:430
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Brugernavne kender ikke forskel på store og små bogstaver og accenter ignoreres. Derfor er brugernavnene „chloe“, „chloë“, og „Chloe“ ens."
+msgstr "Brugernavne kender ikke forskel på store og små bogstaver og accenter ignoreres. Derfor er brugernavnene “chloe”, “chloë”, og “Chloe” ens."
 
 #. I18N: Menu entry
 #: admin.php:616 admin.php:624 app/Theme/AdministrationTheme.php:162
@@ -15470,11 +15470,11 @@ msgstr "Vestsahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:2260
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Når en post redigeres, vil brugernavn og tidsstempel blive registreret i posten. Nogle gange er det ønskeligt at bibeholde den eksisterende \\\"sidste ændring\\\" information, for eksempel når der foretages mindre rettelser til andres data. Denne indstilling kontrollerer, om denne funktion er valgt som standard."
+msgstr "Når en post redigeres, vil brugernavn og tidsstempel blive registreret i posten. Nogle gange er det ønskeligt at bibeholde den eksisterende “sidste ændring” information, for eksempel når der foretages mindre rettelser til andres data. Denne indstilling kontrollerer, om denne funktion er valgt som standard."
 
 #: admin_users.php:389
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Når en gæst på websiden ønsker at oprette en brugerkonto sendes en e-mail til deres e-mail adresse med en verifikationslink. Når der klikkes på denne link ved webtrees at e-mail adressen er korrekt og dermed afkrydses feltet \"E-mail verificeret\"."
+msgstr "Når en gæst på websiden ønsker at oprette en brugerkonto sendes en e-mail til deres e-mail adresse med en verifikationslink. Når der klikkes på denne link ved webtrees at e-mail adressen er korrekt og dermed afkrydses feltet “E-mail verificeret”."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -15661,7 +15661,7 @@ msgstr "Du har ikke tilladelse til at sende beskeder som indeholder eksterne lin
 #. I18N: Help text for the "Default theme" site configuration setting
 #: admin_site_config.php:248 admin_trees_config.php:994 edituser.php:287
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "Du kan ændre udseendet af webtrees ved at benytte \"Temaer\". Hvert tema har forskellig stil, udseende, farve osv."
+msgstr "Du kan ændre udseendet af webtrees ved at benytte “Temaer”. Hvert tema har forskellig stil, udseende, farve osv."
 
 #. I18N: %s is a URL
 #: help_text.php:288
@@ -15819,7 +15819,7 @@ msgstr "Du bør kontakte udvikleren til dette tema, for at få bekræftet om det
 #: login.php:280 message.php:58
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "Du bør slette „%1$s“ fra „%2$s“ og prøve igen."
+msgstr "Du bør slette “%1$s” fra  “%2$s” og prøve igen."
 
 #: admin_users.php:395
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -19520,12 +19520,12 @@ msgstr "fætter/kusine af 10. led"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:87
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr "indstillingerne til forbindelsen med databasen i filen „/data/config.ini.php“ er stadig korrekte"
+msgstr "indstillingerne til forbindelsen med databasen i filen “/data/config.ini.php” er stadig korrekte"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:90
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr "mappen „/data“ og filen „/data/config.ini.php“ har adgangsrettigheder, der tillader at serveren kunne læse dem"
+msgstr "mappen “/data” og filen “/data/config.ini.php” har adgangsrettigheder, der tillader at serveren kunne læse dem"
 
 #: app/Functions/Functions.php:643
 #, php-format
@@ -19815,7 +19815,7 @@ msgstr "“%s”"
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "„%s“ er blevet tilføjet til dine favoritter."
+msgstr "“%s” er blevet tilføjet til dine favoritter."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:107
 msgid "…"
