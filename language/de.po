@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-13 11:09+0100\n"
-"Last-Translator: Richard Cissee <ric@richard-cissee.de>\n"
+"PO-Revision-Date: 2016-03-17 18:18+0100\n"
+"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -700,7 +700,7 @@ msgstr "<b> Wichtiger Hinweis:</b> Der Migrationsassistent ist nicht in der Lage
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr "<b>Bitte beachten:</b> Private Informationen von lebenden Personen werden nur an Verwandte und nahe Freunde weitergegeben. Bevor Sie irgendwelche privaten Daten erhalten, werdenSie aufgefordert Ihre Bekanntschaft nachzuweisen. Manchmal sind Informationen von toten Personen ebenfalls privat. Dies kann der Fall sein, wenn über die Person nicht genügend Informationen bekannt sind, um zu ermitteln, ob die Person noch lebt oder nicht und wir möglicherweise nicht mehr Informationen über diese Person haben.<br><br>Bevor Sie eine Frage stellen, bestätigen Sie bitte, dass Sie nach der korrekten Person fragen, indem Sie die Daten, Orte und nahe Verwandte überprüfen. Wenn Sie Änderungen zu den genealogischen Daten beitragen möchten, dann geben Sie bitte die Quellen an, aus denen Sie die Daten haben."
+msgstr "<b>Bitte beachten:</b> Private Informationen von lebenden Personen werden nur an Verwandte und nahe Freunde weitergegeben. Bevor Sie irgendwelche privaten Daten erhalten, werden Sie aufgefordert Ihre Beziehung nachzuweisen. Manchmal sind Informationen von toten Personen ebenfalls privat. Dies kann der Fall sein, wenn über die Person nicht genügend Informationen bekannt sind, um zu ermitteln, ob die Person noch lebt oder nicht und wir möglicherweise nicht mehr Informationen über diese Person haben.<br /><br />Bevor Sie eine Frage stellen, prüfen Sie bitte, dass Sie nach der richtigen Person fragen, indem Sie die Daten, Orte und nahen Verwandten überprüfen. Wenn Sie Änderungen zu den genealogischen Daten einreichen, geben Sie bitte die Quellen an, aus denen Sie die Daten haben."
 
 #: login.php:160
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
@@ -4968,7 +4968,7 @@ msgstr "Abhängig von Ihrer Serverkonfiguration können Sie ggf. eine automatisc
 
 #: familybook.php:89
 msgid "Descendant generations"
-msgstr "Nachfahren Generationen"
+msgstr "Nachkommengenerationen"
 
 #. I18N: gedcom tag DESC
 #. I18N: Name of a module/sidebar
@@ -4982,7 +4982,7 @@ msgstr "Nachfahren Generationen"
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Descendants"
-msgstr "Nachfahren"
+msgstr "Nachkommen"
 
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:366
