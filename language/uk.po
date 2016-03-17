@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-01 21:36+0100\n"
-"Last-Translator: Vitalii <mar2008m@gmail.com>\n"
+"PO-Revision-Date: 2016-03-17 21:22+0100\n"
+"Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -325,31 +325,31 @@ msgstr[2] "%s приватних персон."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s особа з подіями між %s та %s"
+msgstr[1] "%s осіб з подіями між %s та %s"
+msgstr[2] "%s осіб з подіями між %s та %s"
 
 #: app/Controller/LifespanController.php:246
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s особа з подіями в %s"
+msgstr[1] "%s особи з подіями в %s"
+msgstr[2] "%s особи з подіями в %s"
 
 #: app/Controller/LifespanController.php:239
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s особа з подіями в %s у проміжку між %s і %s"
+msgstr[1] "%s особи з подіями в %s у проміжку між %s і %s"
+msgstr[2] "%s осіб з подіями в %s у проміжку між %s і %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:121
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "%s відключений(на) на цьому сервері. Ви не можете встановити webtrees зараз. Для включення функції, будь ласка, зверніться до адміністратора серверу."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5963
 #, php-format
@@ -397,9 +397,9 @@ msgstr[2] "%s місяців тому"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s нотатка буда оновлена."
+msgstr[1] "%s нотатки буда оновлена."
+msgstr[2] "%s нотаток буда оновлена."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2127
@@ -425,9 +425,9 @@ msgstr[2] "%s секунди тому"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s джерело було оновлено."
+msgstr[1] "%s джерел було оновлено."
+msgstr[2] "%s джерел було оновлено."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2143
@@ -479,8 +479,8 @@ msgstr[0] "%s рік тому"
 msgstr[1] "%s роки тому"
 msgstr[2] "%s років тому"
 
-#: app/Functions/FunctionsPrintLists.php:2116 app/Module/YahrzeitModule.php:129
-#: calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:2116
+#: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s року/років назад"
@@ -520,49 +520,49 @@ msgstr "%s&nbsp;н.е."
 #: app/Module/ClippingsCartModule.php:211
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, її предки та їхні сім'ї"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:166
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, її батьки, брати та сестри"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:180
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, її чоловіки та діти"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:228
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, її чоловіки та нащадки"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:213
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, його пращури та їхні сім'ї"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:168
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, його батьки, брати та сестри"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:182
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, його жінки і діти"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:230
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, його дружини і нащадки"
 
 #: app/Functions/FunctionsPrint.php:624 app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
@@ -720,7 +720,7 @@ msgstr "9-ий"
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:742
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr ""
+msgstr "<b>GUID</b> в даному контексті є абревіатурою \"Globally Unique ID\".<br><br>GUID'и призначені допомогти ідентифікувати кожну персону у повторюваний спосіб, для того щоб такі організації як Центр сімейної історії церкви LDS в Солт Лейк Сіті, чи навіть сумісні програми на вашому власному сервері, могли визначити, чи вони мають справу з однією і тією ж персоною, внезалежності від походження GEDCOM файлу. Метою Центру сімейної історії є створення центрального репозиторію генеологічних даних і надання доступу до нього через веб-сервіси. Це дозволить будь-якій програмі мати доступ до даних, а також оновлювати власні дані в репозиторії.<br><br>Якщо ви не збираєтесь ділитися цим GEDCOM файлом з кимось іншим, вам не потрібно дозволяти webtrees створювати GUID'и; але, якщо ви це зробите, то не зробите шкоди, окрім збільшення розміру GEDCOM файлу."
 
 #: admin_trees_manage.php:718
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -728,19 +728,19 @@ msgstr "<b>Важлива Примітка:</b> Майстер перенесе�
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr ""
+msgstr "<b>Зверніть увагу:</b> Приватна інформація про живих персон буде надаватися лише родичам і близьким друзям. Вам буде запропоновано перевірити ваші відносини перет тим, як отримати будь-які приватні дані. Інколи інформація про мертвих персон теж може бути приватною. Якщо це так, то це тому, що немає достаньо інформації про персону, щоб визначити, жива вона чи ні, і ми, ймовірно, не маємо більше інформації про цю персону.<br><br>Перед тим, як задавати питання, будь ласка, переконайтеся, що ви робите запит про правильну персону, перевіривши дати, місця і близьких родичів. Якщо ви робите зміни до генеологічних даних, будь ласка, додайте джерела, де ви отримали ці дані."
 
 #: login.php:160
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
-msgstr ""
+msgstr "<center><b>Ласкаво просимо на цей генеологічний сайт</b></center><br>Доступ до цього сайту дозволений тільки <u>авторизованим</u> користувачам.<br><br>Якщо у вас є обліковий запис користувача, ви можете аторизуватися на цій сторінці. Якщо у вас немає облікового запису користувача, то ви можете подати заявку, натиснувши на відповідне посилання нижче.<br><br>Після перевірки вашої інформації адміністратор або схвалить, або відхилить вашу заявку. Ви отримаєте листа по електронній пошті, у вападку, якщо адміністратор схвалить вашу заявку."
 
 #: login.php:163
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
-msgstr ""
+msgstr "<center><b>Ласкаво просимо на цей генеологічний сайт</b></center><br>Доступ до цього сайту дозволений <u>тільки членам сім'ї</u>.<br><br>Якщо у вас є обліковий запис користувача, ви можете аторизуватися на цій сторінці. Якщо у вас немає облікового запису користувача, то ви можете подати заявку, натиснувши на відповідне посилання нижче.<br><br>Після перевірки вашої інформації адміністратор або схвалить, або відхилить вашу заявку. Ви отримаєте листа по електронній пошті, у вападку, якщо адміністратор схвалить вашу заявку."
 
 #: login.php:157
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
-msgstr ""
+msgstr "<center><b>Ласкаво просимо на цей генеологічний сайт</b></center><br>Доступ до цього сайту дозволений кожному відвідувачу, у якого є обліковий запис користувача.<br><br>Якщо у вас є обліковий запис користувача, ви можете аторизуватися на цій сторінці. Якщо у вас немає облікового запису користувача, то ви можете подати заявку, натиснувши на відповідне посилання нижче.<br><br>Після перевірки вашої інформації адміністратор активує ваш обліковий запис. Ви отримаєте листа по електронній пошті, у вападку, якщо адміністратор схвалить вашу заявку."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
@@ -764,7 +764,7 @@ msgstr "Записи ЧаВО можуть бути показані у всіх
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr ""
+msgstr "Дитина може мати більше ніж одну пару батьків. Відносини між дитиною і батьками можуть бути біологічними, правовими чи основаними на місцевій культурі і традиціях. Якщо родовід не вказаний, то родинні зв'язки будуть вважатися біологічними."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -772,15 +772,15 @@ msgstr "Є поширеною помилкою, щоб на одну й ту ж 
 
 #: setup.php:371
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-msgstr ""
+msgstr "Сервер баз даних може мати багато окремих баз. Вам потрібно вибрати існуючу базу даних (створену адміністратором сервера) або створити нову (якщо ваш обліковий запис баз даних має достатньо прав)."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
-msgstr ""
+msgstr "Файл на сервер(і)"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:211
 msgid "A file on your computer"
-msgstr ""
+msgstr "Файл на ваш(ому) компьютер(і)"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:33
@@ -849,12 +849,12 @@ msgstr "Список користувачів і відвідувачів, як�
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr ""
+msgstr "Медіа-об'єкт - це запис в генеологічному дереві, що містить інформацію про медіа файл. Ця інформація може включати назву, інформацію про авторські права, розшифровку, обменення конфіденційності і т. д. Сам медіа файл, наприклад фото чи відео, може зберігатися локально (на цьому сервері) чи віддалено (на іншому сервері)."
 
 #: login.php:251
 #, php-format
 msgid "A new password has been created and emailed to %s. You can change this password after you login."
-msgstr ""
+msgstr "Новий пароль був створений і відправлений елекронною пошту на адресу %s. Ви можете змінити цей пароль після входу в систему."
 
 #: login.php:244
 msgid "A new password has been requested for your user name."
@@ -979,7 +979,7 @@ msgstr "Звіт записів актів громадянського стан
 
 #: admin_users.php:524
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr ""
+msgstr "Роль - це набір прав доступу, які дають дозвіл переглядати дані, змінюівати параметри конфігурації і т. п. Права доступу встановлюються для роей, а ролі призначаютсья користувачам. Кожне генеологічне дерево може мати різний рівень доступу для кожної ролі, а користувачі можуть мати різну роль для кожного генеологічного дерева."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1248,7 +1248,8 @@ msgstr "Додати %s в корзину"
 msgid "Add a child to create a one-parent family"
 msgstr "Додати дитину створивши неповну сім'ю"
 
-#: app/Controller/FamilyController.php:84 app/Functions/FunctionsCharts.php:310
+#: app/Controller/FamilyController.php:84
+#: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
 msgstr "Додати дитини до цієї сім'ї"
 
@@ -1287,7 +1288,7 @@ msgstr "Додати в обране"
 
 #: app/Module/GoogleMapsModule.php:4603
 msgid "Add a new geographic location"
-msgstr ""
+msgstr "Додати нове географічне розташування"
 
 #: app/Module/RelativesTabModule.php:385 edit_interface.php:810
 #: edit_interface.php:900
@@ -1298,9 +1299,10 @@ msgstr "Додати нового чоловіка"
 msgid "Add a new journal entry"
 msgstr "Додати нову замітку в щоденник"
 
-#: app/Controller/FamilyController.php:184 app/Functions/FunctionsEdit.php:1130
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:184
+#: app/Controller/FamilyController.php:184
+#: app/Functions/FunctionsEdit.php:1130 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:184
 msgid "Add a new media object"
 msgstr "Додати новий медіаоб'єкт"
 
@@ -1312,8 +1314,8 @@ msgstr "Додати мати"
 msgid "Add a new name"
 msgstr "Додати нове ім'я"
 
-#: app/Controller/FamilyController.php:171 app/Functions/FunctionsEdit.php:1109
-#: app/Module/NotesTabModule.php:95
+#: app/Controller/FamilyController.php:171
+#: app/Functions/FunctionsEdit.php:1109 app/Module/NotesTabModule.php:95
 msgid "Add a new note"
 msgstr "Додати нову примітку"
 
@@ -1321,8 +1323,8 @@ msgstr "Додати нову примітку"
 msgid "Add a new restriction"
 msgstr "Додати нове обмеження"
 
-#: app/Controller/FamilyController.php:177 app/Functions/FunctionsEdit.php:1119
-#: app/Module/NotesTabModule.php:105
+#: app/Controller/FamilyController.php:177
+#: app/Functions/FunctionsEdit.php:1119 app/Module/NotesTabModule.php:105
 msgid "Add a new shared note"
 msgstr "Додати нову загальну примітку"
 
@@ -1330,8 +1332,8 @@ msgstr "Додати нову загальну примітку"
 msgid "Add a new son or daughter"
 msgstr "Додати нового сина або дочку"
 
-#: app/Controller/FamilyController.php:194 app/Functions/FunctionsEdit.php:1059
-#: app/Module/SourcesTabModule.php:93
+#: app/Controller/FamilyController.php:194
+#: app/Functions/FunctionsEdit.php:1059 app/Module/SourcesTabModule.php:93
 msgid "Add a new source citation"
 msgstr "Додати нову цитату із джерела"
 
@@ -1356,9 +1358,10 @@ msgstr "Додати новину"
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
 #: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:170
-#: app/Module/ResearchTaskModule.php:213 app/Module/ReviewChangesModule.php:193
-#: app/Module/TopGivenNamesModule.php:165 app/Module/TopPageViewsModule.php:182
-#: app/Module/TopSurnamesModule.php:188
+#: app/Module/ResearchTaskModule.php:213
+#: app/Module/ReviewChangesModule.php:193
+#: app/Module/TopGivenNamesModule.php:165
+#: app/Module/TopPageViewsModule.php:182 app/Module/TopSurnamesModule.php:188
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
@@ -1422,7 +1425,7 @@ msgstr "Додати історію про персону з древа."
 
 #: admin_trees_manage.php:279
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Додати пробіли, де довгі рядки були перенесені"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:378
@@ -1452,7 +1455,7 @@ msgstr "Додати до обраного"
 #: app/Module/ClippingsCartModule.php:400
 #: app/Module/ClippingsCartModule.php:493
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Додати у візок вирізок"
 
 #: admin_trees_manage.php:527
 msgid "Add unlinked records"
@@ -1681,7 +1684,7 @@ msgstr "Африка"
 
 #: admin_trees_manage.php:678
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr ""
+msgstr "Після створення генеологічного дерева ви зможете імпорувати дані з GEDCOM файлу."
 
 #: login.php:247
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
@@ -1788,10 +1791,10 @@ msgstr "Живі"
 #: app/Module/GoogleMapsModule.php:1553 app/Module/GoogleMapsModule.php:1566
 #: app/Module/GoogleMapsModule.php:4666 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5626 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:158 famlist.php:160
-#: famlist.php:244 famlist.php:246 indilist.php:64 indilist.php:70
-#: indilist.php:76 indilist.php:159 indilist.php:161 indilist.php:245
-#: indilist.php:247 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:158
+#: famlist.php:160 famlist.php:244 famlist.php:246 indilist.php:64
+#: indilist.php:70 indilist.php:76 indilist.php:159 indilist.php:161
+#: indilist.php:245 indilist.php:247 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -1813,7 +1816,7 @@ msgstr "Всі існуючі користувачі PhpGedView повинні �
 
 #: admin_trees_config.php:567
 msgid "All facts and events"
-msgstr ""
+msgstr "Всі факти і події"
 
 #: admin_trees_config.php:1839
 msgid "All family facts"
@@ -1837,7 +1840,7 @@ msgstr "Всі особи"
 
 #: admin_trees_config.php:558
 msgid "All records"
-msgstr ""
+msgstr "Всі записи"
 
 #: admin_trees_config.php:2046
 msgid "All repository facts"
@@ -1865,7 +1868,7 @@ msgstr "Дозволити користувачам вибирати тему"
 #. I18N: A site configuration setting
 #: admin_site_config.php:484
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Дозволити відвідувачам запросити створення нового облікового запису користувача"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:963
@@ -1890,7 +1893,7 @@ msgstr "Американське Самоа"
 
 #: admin_site_config.php:491
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
-msgstr ""
+msgstr "Перед тим, як корисувач зможе увійти в систему, адміністратор має схвалити створення нового облікового запису користувача і встановити рівень доступу для нього."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
@@ -1992,7 +1995,8 @@ msgstr "Ангілья"
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1978 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1978
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr "Річниця"
 
@@ -2036,12 +2040,12 @@ msgstr "Застосувати права доступу"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2278
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Застосувати ці налаштування до всіх генеологічних дерев"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2285
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Застосувати ці налаштування до нових генеологічних дерев"
 
 #: admin_users.php:100
 #, php-format
@@ -2100,7 +2104,7 @@ msgstr "Ви впевнені, що хочете видалити цей фак�
 
 #: app/Module/UserMessagesModule.php:96 app/Module/UserMessagesModule.php:139
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr ""
+msgstr "Ви впевнені, що хочете видалити це повідомлення? Ви не зможете відновити його пізніше."
 
 #: admin_media.php:318 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_manage.php:414 admin_trees_manage.php:425 admin_users.php:211
@@ -2139,7 +2143,8 @@ msgstr "Аргентина"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -2164,7 +2169,7 @@ msgstr "Аруба"
 
 #: app/Module/HtmlBlockModule.php:316
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr ""
+msgstr "Окрім застосування HTML формутування, за допомогою панелі інструметів можна вставляти поля бази даних, котрі оновлюються автоматично. Ці спеціальні поля помічені символами <b>#</b>. Наприклад, <b>#totalFamilies#</b> буде замінено фактичною кількістю сімей у базі даних. Досвідчені користувачі, можливо, захочуть застосувати CSS-класи до свого тексту, щоб форматування відповідало поточній темі оформлення."
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:77
@@ -2356,7 +2361,7 @@ msgstr "Середнє число дітей на сім'ю"
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:631 admin_trees_manage.php:667
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
-msgstr ""
+msgstr "Виключає пробіли і знаки пунктуації. Хорошим прикладом буде фамілія."
 
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2937,7 +2942,7 @@ msgstr "Гілки дерева"
 #: app/Controller/BranchesController.php:61
 #, php-format
 msgid "Branches of the %s family"
-msgstr "Гілки %s родини"
+msgstr "Гілки родини %s"
 
 #: app/Stats.php:6753
 msgid "Brazil"
@@ -3204,7 +3209,7 @@ msgstr "За замовчуванням, SMTP працює на порту 25."
 
 #: app/Module/GoogleMapsModule.php:4544
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
-msgstr ""
+msgstr "За замовчанням в списку відображаються лиже ті місця, які можуть бути знайдені у вашому генеологічному дереві. Ви можете мати дані і про інші місця, наприклад ті, що були імпортовані із зовнішнього файлу. При виборі цієї опції будуть відображені всі місця, включаючи ті, які не використовуються."
 
 #: admin_site_config.php:217
 #, php-format
@@ -3227,7 +3232,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:364
 msgid "Calculating…"
-msgstr ""
+msgstr "Обчислюється…"
 
 #: app/Module/YahrzeitModule.php:280 app/Theme/AbstractTheme.php:1046
 #: lifespan.php:90
@@ -3317,7 +3322,7 @@ msgstr "Причина смерті"
 
 #: admin_trees_manage.php:754 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
-msgstr ""
+msgstr "Увага! Це може зайняти багато часу. Запасіться терпінням."
 
 #: admin_site_upgrade.php:200
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3403,15 +3408,15 @@ msgstr "Змінити мову"
 
 #: admin_users.php:217
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Змінити блоки на \"Моїй сторінці\" цього користувача"
 
 #: admin_trees_manage.php:405 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Змінити блоки для \"Домашньої сторінки\""
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Змінити блоки на \"Моїй сторінці\""
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Functions/FunctionsPrintLists.php:1772
@@ -3422,17 +3427,18 @@ msgstr "Змінено с %1$s на %2$s"
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:436
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr "Зміни"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:80
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Зміни за останній день"
-msgstr[1] "Зміни за останні %s дня"
+msgstr[1] "Зміни за останні %s дні"
 msgstr[2] "Зміни за останні %s днів"
 
 #: admin_trees_manage.php:516
@@ -3586,7 +3592,7 @@ msgstr "Виберіть родичів"
 
 #: addmedia.php:460 admin_media_upload.php:213
 msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-msgstr ""
+msgstr "Виберіть мініатюру зображення, яку ви хочете завантажити. Хоч мініатюри для зображень можуть бути створені автоматично, ви, можливо, захочете завантажити свою власну мініатюру, особливо для інших типів медіа. Нариклад, ви можете надати кадр з відео, або фотографію персони, яка зробила аудіо запис."
 
 #: admin_site_config.php:124
 msgid "Choose user defined welcome text typed below"
@@ -3864,7 +3870,7 @@ msgstr "Завершено; дата невідома"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Зтиснути GEDCOM файл"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
@@ -3910,7 +3916,7 @@ msgstr "Інформація про контакт"
 
 #: edituser.php:294
 msgid "Contact method"
-msgstr ""
+msgstr "Контактний метод"
 
 #: search_advanced.php:159 search_advanced.php:221 search_advanced.php:236
 #: search_advanced.php:257 search_advanced.php:272
@@ -3951,7 +3957,7 @@ msgstr "Продовження"
 #: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
 #: app/Theme/AbstractTheme.php:1270 app/Theme/AdministrationTheme.php:242
 msgid "Control panel"
-msgstr ""
+msgstr "Панель керування"
 
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:375
 #: app/Module/ClippingsCartModule.php:712
@@ -3964,7 +3970,7 @@ msgstr "Острови Кука"
 
 #: app/Theme/AbstractTheme.php:325
 msgid "Cookies"
-msgstr ""
+msgstr "Куки"
 
 #: app/GedcomCode/GedcomCodeTemp.php:131
 msgid "Copenhagen, Denmark"
@@ -3982,7 +3988,7 @@ msgstr "Копіювати"
 #: admin_trees_merge.php:195
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "PЗкопіювати всі файли з %1$s в %2$s."
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:431
@@ -4018,7 +4024,7 @@ msgstr "Кот д’Івуар"
 
 #: login.php:605
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
-msgstr ""
+msgstr "Не вдалося перевірити введену інформацію. Будь ласка, спробуйте знову або зверніться до адміністратора сайту для отримання додаткової інформації."
 
 #: app/Stats.php:5628
 msgid "Count"
@@ -4086,7 +4092,7 @@ msgstr "Додати нове джерело"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Створити правило доступу до сайту"
 
 #: statistics.php:430
 msgid "Create your own chart"
@@ -4094,7 +4100,7 @@ msgstr "Створити Вашу власну діаграму"
 
 #: admin_trees_manage.php:744
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "Створити, оновити і видалити генеологічне дерево для кожного файлу GEDCOM в папці з даними."
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:330 modules_v3/family_group_report/report.xml:315
@@ -4269,7 +4275,7 @@ msgstr "Свій текст з привітанням"
 
 #: app/Theme/AbstractTheme.php:1063 app/Theme/AbstractTheme.php:1065
 msgid "Customize this page"
-msgstr ""
+msgstr "Налаштувати цю сторінку"
 
 #: app/Stats.php:6782
 msgid "Cyprus"
@@ -4337,7 +4343,8 @@ msgstr "Користувач бази даних"
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -4500,11 +4507,11 @@ msgstr "Дата відправки"
 #: admin_trees_config.php:713
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar. For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
-msgstr ""
+msgstr "Дати конвертуються лише коли вони є дійсними для календаря. Наприклад, дати між %1$s і %2$s будуть конвертуватися у Французькому календарі, але дати лише після %3$s будуть конвертуватися в Григоріанському календарі."
 
 #: help_text.php:134
 msgid "Dates are stored using English abbreviations and keywords. Shortcuts are available as alternatives to these abbreviations and keywords."
-msgstr ""
+msgstr "Дати зберігаються використовуючи англійські скорочення і ключові слова. Також доступні альтернативні скорочення (shortcuts)."
 
 #: modules_v3/family_group_report/report.xml:809
 #: modules_v3/individual_ext_report/report.xml:556
@@ -4902,7 +4909,8 @@ msgstr "Звання, чин"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -4962,7 +4970,7 @@ msgstr "Видалити тимчасові файли…"
 
 #: admin_modules.php:98
 msgid "Delete the preferences for this module."
-msgstr ""
+msgstr "Видалити налаштування даного модуля."
 
 #: app/Controller/IndividualController.php:166
 msgid "Delete this name"
@@ -4970,11 +4978,11 @@ msgstr "Видалити ім'я"
 
 #: edituser.php:321
 msgid "Delete your account"
-msgstr ""
+msgstr "Видалити ваш обліковий запис"
 
 #: app/Controller/FamilyController.php:99
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr ""
+msgstr "Видалення сім'ї від'єднає всіх персон одну від одної, але залишить їх на місці. Ви дійсно хочете видалити цю сім'ю?"
 
 #: app/Stats.php:6787
 msgid "Denmark"
@@ -5056,7 +5064,7 @@ msgstr "Деталі"
 
 #: admin_site_config.php:490
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
-msgstr ""
+msgstr "Дані нового користувача будуть відправлені адміністратору відповідного генеологічного дерева."
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Detroit, Michigan"
@@ -5156,7 +5164,7 @@ msgstr "Відмінності"
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:710
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
-msgstr ""
+msgstr "Різні календарні системи використовуються в різних частинах світу, багато інших календарних систем використовувалось у минулому. Де можливо, сказуйте дату в тому календарі, в якому подія була вперше зареєстрована. Ви потім можете вказати перетворення календаря, щоб відобразити дані в більш звичному вигляді. Якщо ви регулярно використовуєтесь двома календарями, ви можете задати два перетворення календрів, і тоді дати будуть конвертуватися в обидва вибрані календарі."
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -5279,20 +5287,20 @@ msgstr "Дуоди"
 
 #: admin_users.php:73 edituser.php:60 login.php:276
 msgid "Duplicate email address. A user with that email already exists."
-msgstr ""
+msgstr "Дубльована адреса електоннох пошти. Користувач з такою адресою вже існує."
 
 #: admin_users.php:71 edituser.php:58 login.php:274
 msgid "Duplicate user name. A user with that user name already exists. Please choose another user name."
-msgstr ""
+msgstr "Дубльоване ім'я користувача. Користувач з таким іменем іже існує. Будь ласка, виберіть інше ім'я."
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
 msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed. webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required. To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr ""
+msgstr "Адреса електронної пошти, яка буде вказана в полі \"Від:\" (\"From:\") повідомлень, які webtrees створює автоматично. <br><br>webtrees може автоматично відправляти електронні листи, щоб півідомити адміністраторів про зміни, які треба переглянути. webtrees також відправляє повідомлення користувачам, які запросили створення облікового запису.<br><br>Зазвичай, у полі \"Від:\" (\"From:\") цих автоматично створених листів вказують адресу, на зразок <i>From: webtrees-noreply@yoursite</i>, щоб показати, що відповідь на цей лист не очікується. Для захисту від спаму та інших поштових зловживаннь деякі поштові системи вимагають, щоб поле \"Від:\" (\"From:\") кожного листа було існуючою адресою, і не приймуть листи, які прийшли з адреси <i>webtrees-noreply</i>."
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr ""
+msgstr "Кожне джерело реєструє конкретні події, як правило, для певного діапазону дат та для певної адміністативно-територіальної одиниці. Наприклад, Перепис населення реєструє події перепису населення, а церквні записи реєструють події народження, шлюбу і смерті.<br><br>Виберіть події, які зареєстровні цим джерелом із списку подій. Дата повинна буди вказаа у форматі діапазону, наприклад <i>З 1900 ПО 1910</i>. Адміністативно-територіальна одиниця - це назва найнижчої адміністативно-територіальної одиниці, яка включає в себе всі місця, згадані в даному джерелі. Наприклад, \"Область Онейда, штат Айдахо, США\" буде адміністративною одиницею для подій, що сталися у різних містах в області Онейда. \"Айдахо, США\" буде адміністративною одиницею для подій, які сталися не тільки в області Онейда, але й в інших областях штату Айдахо."
 
 #: help_text.php:319
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -5367,7 +5375,7 @@ msgstr "Редагувати ЧаВО запис"
 
 #: admin_site_access.php:216
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Редагувати правило доступу до сайту"
 
 #: app/Controller/MediaController.php:137
 #: modules_v3/GEDFact_assistant/census/census-edit.php:125
@@ -5436,7 +5444,7 @@ msgstr "Редагуйте запис цієї персони і замініт�
 
 #: admin_users.php:273
 msgid "Edit user"
-msgstr ""
+msgstr "Редагувати дані користувача"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:544
@@ -5727,13 +5735,14 @@ msgstr "Виключені з цього подання"
 msgid "Explain why you are requesting an account."
 msgstr "Поясніть, чому ви запитуєте обліковий запис."
 
-#: admin_site_change.php:371 admin_site_logs.php:310 admin_trees_manage.php:591
+#: admin_site_change.php:371 admin_site_logs.php:310
+#: admin_trees_manage.php:591
 msgid "Export"
 msgstr "Експорт"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Експортувати GEDCOM файл"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:281
@@ -5742,7 +5751,7 @@ msgstr "Експорт всіх сімейних дерев у GEDCOM-файли
 
 #: admin_trees_download.php:134
 msgid "Export options"
-msgstr ""
+msgstr "Параметри експорту"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: admin_trees_config.php:450
@@ -5771,7 +5780,7 @@ msgstr "Колір очей"
 #. I18N: Name of a theme.
 #: app/Theme/FabTheme.php:167
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:34
@@ -5908,7 +5917,8 @@ msgstr "Фолклендські острови"
 #: app/Module/GoogleMapsModule.php:2792 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1444
 #: calendar.php:422 descendancy.php:67 famlist.php:125 famlist.php:128
-#: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:134 mediaviewer.php:123
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:225
 #: repo.php:143 search.php:93 source.php:147 statistics.php:69
 #: statisticsplot.php:974 statisticsplot.php:1078 statisticsplot.php:1328
@@ -6003,7 +6013,8 @@ msgstr "Генеалогічне дерево"
 msgid "Family tree access and settings"
 msgstr "Допуск до генеалогічному дереву та налаштування"
 
-#: app/Module/ClippingsCartModule.php:88 app/Module/ClippingsCartModule.php:426
+#: app/Module/ClippingsCartModule.php:88
+#: app/Module/ClippingsCartModule.php:426
 msgid "Family tree clippings cart"
 msgstr "GEDCOM-Корзина генеалогічного древа"
 
@@ -6138,7 +6149,8 @@ msgid "Father’s family with an unknown individual"
 msgstr "Родина батька з невідомою персоною"
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1300
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1300
 msgid "Favorites"
 msgstr "Вибране"
 
@@ -6278,9 +6290,10 @@ msgstr "Знайти спеціальний символ"
 
 #: relationship.php:100
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "Знайти всі можливі відносини"
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:81
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:81
 #: app/Module/CensusAssistantModule.php:86
 #: app/Module/CensusAssistantModule.php:135 find.php:51
 msgid "Find an individual"
@@ -6288,11 +6301,11 @@ msgstr "Знайти запис про людину"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:466
 msgid "Find duplicates"
-msgstr ""
+msgstr "Пошук дублікатів"
 
 #: relationship.php:95
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "Знайти найближчі відносини"
 
 #: app/Stats.php:6799
 msgid "Finland"
@@ -6310,7 +6323,7 @@ msgstr "Найдавніший факт"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:353
 msgid "First record"
-msgstr ""
+msgstr "Перший запис"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:30
 msgid "Fix name slashes and spaces"
@@ -6330,25 +6343,25 @@ msgstr "Фландрія"
 #: app/Date/FrenchDate.php:95
 msgctxt "GENITIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Флореаль"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Floréal"
-msgstr ""
+msgstr "Флореаль"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:128
 msgctxt "LOCATIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Флореаль"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:62
 msgctxt "NOMINATIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Флореаль"
 
 #: medialist.php:91
 msgid "Folder"
@@ -6361,7 +6374,8 @@ msgstr "Ім'я папки на сервері"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6395,7 +6409,7 @@ msgstr "За допомогою і інформацією прохання зв�
 
 #: app/Theme/AbstractTheme.php:266
 msgid "For technical support or genealogy questions, please contact"
-msgstr "З питаннями по базі даних і по сайту звертатися за адресою"
+msgstr "З питаннями по базі даних і по сайту звертатися до"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277
@@ -6979,7 +6993,8 @@ msgstr "Гельсінкі, Фінляндія"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7515,8 +7530,8 @@ msgstr "Папка для установки"
 
 #. I18N: Name of a module
 #: app/Controller/FanchartController.php:367
-#: app/Module/ChartsBlockModule.php:197 app/Module/InteractiveTreeModule.php:32
-#: app/Theme/AbstractTheme.php:1172
+#: app/Module/ChartsBlockModule.php:197
+#: app/Module/InteractiveTreeModule.php:32 app/Theme/AbstractTheme.php:1172
 msgid "Interactive tree"
 msgstr "Інтерактивне древо"
 
@@ -9882,8 +9897,9 @@ msgid "Not verified by the user"
 msgstr "Не пройшли самоперевірку"
 
 #. I18N: gedcom tag NOTE
-#: app/Controller/FamilyController.php:169 app/Functions/FunctionsPrint.php:173
-#: app/GedcomTag.php:634 modules_v3/cemetery_report/report.xml:64
+#: app/Controller/FamilyController.php:169
+#: app/Functions/FunctionsPrint.php:173 app/GedcomTag.php:634
+#: modules_v3/cemetery_report/report.xml:64
 #: modules_v3/family_group_report/report.xml:485
 #: modules_v3/family_group_report/report.xml:749
 #: modules_v3/family_group_report/report.xml:1101
@@ -9976,8 +9992,8 @@ msgstr "Число поколінь"
 msgid "Number of items"
 msgstr "За кількістю статей"
 
-#: app/Module/TopGivenNamesModule.php:153 app/Module/TopPageViewsModule.php:170
-#: app/Module/TopSurnamesModule.php:176
+#: app/Module/TopGivenNamesModule.php:153
+#: app/Module/TopPageViewsModule.php:170 app/Module/TopSurnamesModule.php:176
 msgid "Number of items to show"
 msgstr "Кількість елементів для відображення"
 
@@ -10282,7 +10298,8 @@ msgstr "Обмеження часу виконання PHP"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -11099,8 +11116,9 @@ msgstr "Рамадан"
 msgid "Random images from the current family tree."
 msgstr "Випадкові зображення з поточного древа родини."
 
-#: app/Controller/FamilyController.php:90 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1803 edit_interface.php:1877
+#: app/Controller/FamilyController.php:90
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1803
+#: edit_interface.php:1877
 msgid "Re-order children"
 msgstr "Пересортувати дітей"
 
@@ -11123,7 +11141,8 @@ msgid "Real name"
 msgstr "Справжнє ім’я"
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:35 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:35
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr "Останні зміни"
 
@@ -11138,7 +11157,8 @@ msgstr "Ресіфе, Бразилія"
 #: admin_site_change.php:329 admin_site_change.php:390
 #: admin_trees_config.php:530 app/Functions/FunctionsPrintLists.php:1833
 #: app/Functions/FunctionsPrintLists.php:1974
-#: app/Module/ClippingsCartModule.php:431 app/Module/ResearchTaskModule.php:105
+#: app/Module/ClippingsCartModule.php:431
+#: app/Module/ResearchTaskModule.php:105
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -13282,7 +13302,7 @@ msgstr "Медіа перегляд може відображати посила
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:83
 msgid "The PHP temporary folder is missing."
-msgstr "Відсутній папка для тимчасових файлів PHP."
+msgstr "Відсутня папка для тимчасових файлів PHP."
 
 #: admin_trees_manage.php:701
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
@@ -13425,8 +13445,8 @@ msgstr "Папка %s не може бути видалена."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:294
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:294
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Папка %s не існує, і вона не може бути створена."
@@ -13784,8 +13804,8 @@ msgstr "В цьому генеалогічному дереві немає за�
 msgid "There are no source citations for this individual."
 msgstr "Для цієї персони немає джерел цитування."
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1881
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1881
 msgid "There are pending changes for you to moderate."
 msgstr "Є очікують зміни для модерування."
 
@@ -15545,7 +15565,8 @@ msgstr "Хто може завантажувати нові медіафайли
 msgid "Who is online"
 msgstr "Зараз на сайті"
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr "Тільки слова цілком"
 
@@ -16047,7 +16068,7 @@ msgstr "також відомий як"
 #. I18N: option in list box “always use this image”
 #: app/Functions/FunctionsEdit.php:662
 msgid "always"
-msgstr ""
+msgstr "завжди"
 
 #: app/Controller/AncestryController.php:92 app/Stats.php:4539
 #: app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4586 app/Stats.php:5960
@@ -16284,15 +16305,16 @@ msgstr "дітей"
 #. I18N: button label
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:118
-#: app/Module/CensusAssistantModule.php:187 app/Module/GoogleMapsModule.php:735
-#: app/Module/GoogleMapsModule.php:3252 app/Module/GoogleMapsModule.php:3267
-#: app/Module/GoogleMapsModule.php:4004 app/Theme/AbstractTheme.php:680
-#: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1746
-#: edit_interface.php:1855 edit_interface.php:2048 edit_interface.php:2217
-#: edit_interface.php:2603 find.php:766 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:187
+#: app/Module/GoogleMapsModule.php:735 app/Module/GoogleMapsModule.php:3252
+#: app/Module/GoogleMapsModule.php:3267 app/Module/GoogleMapsModule.php:4004
+#: app/Theme/AbstractTheme.php:680 edit_changes.php:240 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1746 edit_interface.php:1855 edit_interface.php:2048
+#: edit_interface.php:2217 edit_interface.php:2603 find.php:766
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "закрити"
@@ -16300,12 +16322,12 @@ msgstr "закрити"
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:175
 msgid "clouds"
-msgstr ""
+msgstr "хмари"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:193
 msgid "colors"
-msgstr ""
+msgstr "кольори"
 
 #: app/Module/TopSurnamesModule.php:184
 msgid "compact list"
@@ -16330,7 +16352,7 @@ msgstr "продовжити"
 #. I18N: Button label
 #: admin_trees_manage.php:675
 msgid "create"
-msgstr ""
+msgstr "створити"
 
 #. I18N: a program feature
 #: setup.php:134
@@ -16388,7 +16410,7 @@ msgstr "градусів"
 #. I18N: Button label
 #: admin_site_clean.php:115 admin_users.php:793
 msgid "delete"
-msgstr ""
+msgstr "видалити"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:28 admin_site_access.php:35
@@ -16422,7 +16444,7 @@ msgstr "східна"
 #: admin_trees_config.php:2120 admin_trees_config.php:2151
 #: admin_trees_config.php:2180
 msgid "edit"
-msgstr ""
+msgstr "змінити"
 
 #: app/Functions/Functions.php:553
 msgctxt "FEMALE"
@@ -16498,17 +16520,17 @@ msgstr "колишній чоловік"
 #: app/Functions/Functions.php:735
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "екс-партнерка"
 
 #: app/Functions/Functions.php:717
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "екс-партнер"
 
 #: app/Functions/Functions.php:753
 msgctxt "MALE/FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "екс-партнер"
 
 #: app/Functions/Functions.php:758
 msgid "ex-spouse"
@@ -18427,7 +18449,7 @@ msgstr "півріч після вступу в шлюб"
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:767
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "гг:хх or гг:хх:сс"
 
 #: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:323
 msgid "hide"
@@ -18536,7 +18558,7 @@ msgstr "дівоче прізвище"
 
 #: admin_trees_config.php:476
 msgid "managers"
-msgstr ""
+msgstr "менеджери"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
@@ -18612,7 +18634,7 @@ msgstr[2] "максимально %s день"
 #: admin_trees_config.php:435 admin_trees_config.php:475
 #: admin_trees_config.php:495
 msgid "members"
-msgstr ""
+msgstr "члени"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:86
@@ -18622,7 +18644,7 @@ msgstr "опівночі"
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:162
 msgid "minimal"
-msgstr ""
+msgstr "мінімальна"
 
 #: app/Module/GoogleMapsModule.php:359
 msgid "minimum"
@@ -18713,7 +18735,7 @@ msgstr "племінник/племінниця"
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:668
 msgid "never"
-msgstr ""
+msgstr "ніколи"
 
 #. I18N: button label, next page
 #: app/I18N.php:223 app/Module/BatchUpdateModule.php:247
@@ -18812,7 +18834,8 @@ msgstr "числа"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -18901,7 +18924,7 @@ msgstr "відсоток"
 
 #: admin_trees_config.php:1077
 msgid "pixels"
-msgstr ""
+msgstr "пікселів"
 
 #. I18N: button label
 #: admin_trees_places.php:107
@@ -19701,7 +19724,7 @@ msgstr "Оновлення"
 #: admin_trees_config.php:434 admin_trees_config.php:474
 #: admin_trees_config.php:494
 msgid "visitors"
-msgstr ""
+msgstr "відвідувачі"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:107
@@ -19717,7 +19740,7 @@ msgstr "народився"
 
 #: app/Theme/WebtreesTheme.php:128
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:110
@@ -19772,7 +19795,7 @@ msgstr "дружина"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:144
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:127
 msgid "years"
