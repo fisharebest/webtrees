@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-16 09:56+0100\n"
+"PO-Revision-Date: 2016-03-21 19:04+0100\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <http://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -717,7 +717,7 @@ msgstr "<center><b>Tere tulemast sellele Genealoogia veebilehele</b></center><br
 
 #: login.php:157
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
-msgstr "<center><b>Tere tulemast sellele Genealoogia veebilehele</b></center><br>Ligipääs sellele saidile on lubatud igale külastajale kel on kasutajakonto.<br><br>Kui sul on kasutajakonto, võid sisse logida. Kui sul ei ole kasutajakontot, võid seda taotleda vajutades alloleval lingil.<br><br>Pärast sinu taotlusega tutvumist aktiveerib administraator sinu konto. Sulle saabub e-kiri kui taotlus on vastu võetud."
+msgstr "<center><b>Tere tulemast sellele Genealoogia veebilehele</b></center><br>Ligipääs sellele saidile on lubatud igale külastajale, kellel on kasutajakonto.<br><br>Kui sul on kasutajakonto, võid sisse logida. Kui sul ei ole kasutajakontot, võid seda taodelda vajutades alloleval lingil.<br><br>Pärast sinu taotlusega tutvumist aktiveerib administraator sinu konto. Sulle saabub e-kiri kui taotlus on vastu võetud."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
