@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-17 21:22+0100\n"
+"PO-Revision-Date: 2016-03-21 14:07+0100\n"
 "Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
@@ -426,7 +426,7 @@ msgstr[2] "%s секунди тому"
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
 msgstr[0] "%s джерело було оновлено."
-msgstr[1] "%s джерел було оновлено."
+msgstr[1] "%s джерела було оновлено."
 msgstr[2] "%s джерел було оновлено."
 
 #. I18N: %s=“fifth cousin”, etc.
@@ -1259,7 +1259,7 @@ msgstr "Додати факт"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
-msgstr "Додати дружина в цю сім'ю"
+msgstr "Додати чоловіка в цю сім'ю"
 
 #: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
 #: edit_interface.php:1156
@@ -5304,7 +5304,7 @@ msgstr "Кожне джерело реєструє конкретні події
 
 #: help_text.php:319
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr ""
+msgstr "Кожний обліковий запис користувача має параметр \"автоматично приймати зміни\". Коли цей парамет увімкнутий, будь-які зміни, внесені користувачем, зберігаются зразу. Багато адміністраторів включають цей параметр для власного облікового запису."
 
 #: statistics.php:127
 msgid "Earliest birth"
@@ -5798,7 +5798,7 @@ msgstr "Видимість ЧаВО"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:447
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr ""
+msgstr "Часті питання (ЧаПи) - це списки питань і відповідей, які дозволяють пояснити користувачам правила, політики і процедури сайту. Питання часто пов'язані з конфіденційністю, авторськими правами, обліковими записами, неподходящим вмістом, вимогами до джерел і т. п."
 
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:436
@@ -5950,12 +5950,12 @@ msgstr "Префікс ID сім'ї"
 #. I18N: gedcom tag FAMC
 #: app/GedcomTag.php:444
 msgid "Family as a child"
-msgstr "Сім'я будучи дитиною"
+msgstr "Дитина у сім'ї"
 
 #. I18N: gedcom tag FAMS
 #: app/GedcomTag.php:452
 msgid "Family as a spouse"
-msgstr "Супругі як сім'я"
+msgstr "Cім'я як чоловік/дружина"
 
 #: app/Controller/FamilyBookController.php:63 app/Theme/AbstractTheme.php:1143
 msgid "Family book"
@@ -6241,7 +6241,7 @@ msgstr "Імена файлів не можуть мати розширення 
 
 #: admin.php:866
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
-msgstr ""
+msgstr "Були знайдені файли з попередньої версії webtrees. Старі файли іноді можуть складати загрузу безпеки. Вони повинні бути видалені."
 
 #: admin_site_clean.php:88
 #, php-format
