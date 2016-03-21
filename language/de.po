@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-17 18:18+0100\n"
+"PO-Revision-Date: 2016-03-21 21:08+0100\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -375,8 +375,8 @@ msgstr[1] "vor %s Monaten"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "%s Bemerkung wurde aktualisiert."
-msgstr[1] "%s Bemerkungen wurden aktualisiert."
+msgstr[0] "%s Notiz wurde aktualisiert."
+msgstr[1] "%s Notizen wurden aktualisiert."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2127
@@ -845,7 +845,7 @@ msgstr "Eine neue Version von webtrees ist verfügbar."
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
 msgid "A private area to record notes or keep a journal."
-msgstr "Ein persönlicher Bereich, um Notizen zu machen oder ein Journal zu führen."
+msgstr "Ein vertraulicher Bereich, um Notizen zu machen oder ein Journal zu führen."
 
 #. I18N: %s is a server name/URL
 #: login.php:309
@@ -996,7 +996,7 @@ msgstr "Dieser Reiter zeigt die zu dieser Person verknüpften Medienobjekte."
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
 msgid "A tab showing the notes attached to an individual."
-msgstr "Ein Reiter zum Anzeigen von Anmerkungen zu einer Person."
+msgstr "Ein Reiter zum Anzeigen von Notizen zu einer Person."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39
@@ -1289,7 +1289,7 @@ msgstr "Neuen Namen hinzufügen"
 #: app/Controller/FamilyController.php:171
 #: app/Functions/FunctionsEdit.php:1109 app/Module/NotesTabModule.php:95
 msgid "Add a new note"
-msgstr "Neue Bemerkung hinzufügen"
+msgstr "Neue Notiz hinzufügen"
 
 #: app/Functions/FunctionsEdit.php:1140
 msgid "Add a new restriction"
@@ -2270,7 +2270,7 @@ msgstr "Ereignisliste naher Verwandter automatisch erweitern"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1568
 msgid "Automatically expand notes"
-msgstr "Bemerkungen automatisch erweitern"
+msgstr "Notizen automatisch erweitern"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1583
@@ -4047,13 +4047,13 @@ msgstr "Archiv erstellen"
 #: app/Functions/FunctionsEdit.php:437 edit_interface.php:1348
 #: edit_interface.php:1384
 msgid "Create a new shared note"
-msgstr "Neue gemeinsame Bemerkung erstellen"
+msgstr "Neue gemeinsame Notiz erstellen"
 
 #: app/Functions/FunctionsEdit.php:633
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:31
 msgid "Create a new shared note using assistant"
-msgstr "Neue gemeinsame Bemerkung mit Hilfe des Assistenten erstellen"
+msgstr "Neue gemeinsame Notiz mit Hilfe des Assistenten erstellen"
 
 #: app/Functions/FunctionsEdit.php:459 edit_interface.php:1196
 #: edit_interface.php:1279
@@ -5397,7 +5397,7 @@ msgstr "Lagerstätte bearbeiten"
 #: app/Functions/FunctionsEdit.php:448 edit_interface.php:1444
 #: edit_interface.php:1490
 msgid "Edit shared note"
-msgstr "Gemeinsame Bemerkung bearbeiten"
+msgstr "Gemeinsame Notiz bearbeiten"
 
 #: app/Controller/SourceController.php:44
 #: app/Controller/SourceController.php:49
@@ -5576,7 +5576,7 @@ msgstr "Personen-, Familien- oder Quellen-ID eingeben"
 
 #: app/Module/FamilyTreeFavoritesModule.php:225
 msgid "Enter an optional note about this favorite"
-msgstr "Tragen Sie eine zusätzliche Bemerkung zu diesem Favoriten ein"
+msgstr "Tragen Sie eine zusätzliche Notiz zu diesem Favoriten ein"
 
 #: addmedia.php:434
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
@@ -6247,7 +6247,7 @@ msgstr "Finde ein Verzeichnis"
 
 #: app/Functions/FunctionsPrint.php:765 find.php:66
 msgid "Find a shared note"
-msgstr "Finde eine Bemerkung"
+msgstr "Finde eine gemeinsame Notiz"
 
 #: app/Functions/FunctionsPrint.php:753 find.php:69
 #: modules_v3/fact_sources/report.xml:5
@@ -6395,7 +6395,7 @@ msgstr "Format"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1660
 msgid "Format text and notes"
-msgstr "Formatiere Texte und Bemerkungen"
+msgstr "Formatiere Texte und Notizen"
 
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
@@ -9873,11 +9873,11 @@ msgstr "Noch nicht selbstbestätigt"
 #: modules_v3/family_group_report/report.xml:1101
 #: modules_v3/occupation_report/report.xml:64
 msgid "Note"
-msgstr "Bemerkung"
+msgstr "Notiz"
 
 #: admin_trees_config.php:843
 msgid "Note ID prefix"
-msgstr "Bemerkung ID-Nummer Präfix"
+msgstr "Notiz ID-Nummer Präfix"
 
 #: help_text.php:261
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -9895,7 +9895,7 @@ msgstr "Anmerkung: längere Pfade benötigen viel Rechenleistung, was die Antwor
 #: modules_v3/individual_report/report.xml:226 note.php:153 repo.php:161
 #: source.php:165 statistics.php:352
 msgid "Notes"
-msgstr "Anmerkungen"
+msgstr "Notizen"
 
 #: admin_users.php:795
 msgid "Nothing found to cleanup"
@@ -12044,21 +12044,21 @@ msgstr "Shahrivar"
 #: app/GedcomTag.php:768 edit_interface.php:1364 edit_interface.php:1457
 #: inverselink.php:141 note.php:164 note.php:174
 msgid "Shared note"
-msgstr "Gemeinsame Bemerkung"
+msgstr "Gemeinsame Notiz"
 
 #. I18N: Label for search field
 #: find.php:243
 msgid "Shared note contains"
-msgstr "Gemeinsame Bemerkung enthält"
+msgstr "Gemeinsame Notiz enthält"
 
 #: app/Functions/FunctionsPrintLists.php:1088 app/Theme/AbstractTheme.php:1473
 #: notelist.php:33 notelist.php:37 search.php:103
 msgid "Shared notes"
-msgstr "Gemeinsame Bemerkungen"
+msgstr "Gemeinsame Notizen"
 
 #: find.php:715
 msgid "Shared notes found"
-msgstr "Gemeinsame Bemerkungen gefunden"
+msgstr "Gemeinsame Notizen gefunden"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:99
@@ -12198,12 +12198,12 @@ msgstr "Bedingungen auf der „Neues Benutzerkonto anfragen“ Seite zeigen"
 
 #: app/Module/NotesTabModule.php:69
 msgid "Show all notes"
-msgstr "Zeige alle Bemerkungen"
+msgstr "Zeige alle Notizen"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1598
 msgid "Show all notes and source references on notes and sources tabs"
-msgstr "Alle Bemerkungen und Quellenangaben im „Bemerkungen“ oder „Quellen“ Ordner zeigen"
+msgstr "Alle Notizen und Quellenangaben im Notizen- und Quellen-Reiter anzeigen"
 
 #: placelist.php:239
 msgid "Show all places in a list"
@@ -13757,7 +13757,7 @@ msgstr "Zu dieser Person gibt es keine Multimedia Objekte."
 
 #: app/Module/NotesTabModule.php:83
 msgid "There are no notes for this individual."
-msgstr "Zu dieser Person gibt es keine Bemerkungen."
+msgstr "Zu dieser Person gibt es keine Notizen."
 
 #: admin_site_upgrade.php:105
 msgid "There are no pending changes."
@@ -13901,7 +13901,7 @@ msgstr "Dieser Stammbaum besitzt keine darzustellenden Bilder."
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Diese Stammbaum wurde aktualisiert am #gedcomUpdated#. Es gibt insgesamt #totalSurnames# Nachnamen, ältester Eintrag: #firstEventType# von #firstEventName# im Jahre #firstEventYear#. Neuester Eintrag: #lastEventType# von #lastEventName# im Jahre #lastEventYear#.<br><br>Kommentare oder Bemerkungen bitte an #contactWebmaster#."
+msgstr "Diese Stammbaum wurde aktualisiert am #gedcomUpdated#. Es gibt insgesamt #totalSurnames# Nachnamen, ältester Eintrag: #firstEventType# von #firstEventName# im Jahre #firstEventYear#. Neuester Eintrag: #lastEventType# von #lastEventName# im Jahre #lastEventYear#.<br><br>Für Anmerkungen oder Hinweise kontaktieren Sie bitte #contactWebmaster#."
 
 #. I18N: %s is a date
 #: app/Module/FamilyTreeStatisticsModule.php:95
@@ -14164,37 +14164,37 @@ msgstr "Dieser Name wird für die Absenderangabe im „Von“-Feld benutzt, wenn
 
 #: note.php:79
 msgid "This note does not exist or you do not have permission to view it."
-msgstr "Diese Bemerkung existiert nicht oder Ihnen fehlt die Berechtigung, um sie zu betrachten."
+msgstr "Diese Notiz existiert nicht oder Sie haben keine Berechtigung, diese zu anzusehen."
 
 #: note.php:53
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Diese Bemerkung wurde gelöscht. Die Löschung bedarf der Zustimmung eines Moderators."
+msgstr "Diese Notiz wurde gelöscht. Die Löschung bedarf der Überprüfung durch einen Moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: note.php:44
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Diese Bemerkung wurde gelöscht. Sie sollten die Löschung prüfen und sie entweder %1$s oder %2$s."
+msgstr "Diese Notiz wurde gelöscht. Sie sollten die Löschung prüfen und sie entweder %1$s oder %2$s."
 
 #: note.php:71
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr "Diese Bemerkung wurde bearbeitet. Die Änderung bedarf der Zustimmung eines Moderators."
+msgstr "Diese Notiz wurde bearbeitet. Die Änderung bedarf der Überprüfung durch einen Moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: note.php:62
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Diese Bemerkung wurde bearbeitet. Sie sollten die Änderung prüfen und sie entweder %1$s oder %2$s."
+msgstr "Diese Notiz wurde bearbeitet. Sie sollten die Änderung prüfen und sie entweder %1$s oder %2$s."
 
 #. I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting
 #: admin_trees_config.php:1604
 msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-msgstr "Diese Option bestimmt, ob Bemerkungen und Quellenangaben, die mit Fakten verbunden sind, in den «Bemerkungen» und «Quellen» Ordnern der Seite «Persönliche Informationen» gezeigt werden sollen oder nicht.<br><br>Gewöhnlich zeigen diese Ordner nur direkt mit dem Datensatz verbundene Bemerkungen und Quellenangaben. Solche befinden sich auf der <i>Ebene 1</i> des Datensatzes.<br><br>Die Wahl <b>Ja</b> bestimmt, dass auch mit Fakten verbundene Bemerkungen und Quellenangaben gezeigt werden sollen. Solche befinden sich auf der <i>Ebene 2</i> des Datensatzes, da Fakten zur Ebene 1 gehören."
+msgstr "Diese Option bestimmt, ob Notizen und Quellenangaben, die mit Fakten verbunden sind, in den Notizen- und Quellen-Reitern der Personenseite gezeigt werden sollen oder nicht.<br><br>Gewöhnlich zeigen diese Reiter nur direkt mit dem Datensatz verbundene Notizen und Quellenangaben. Solche befinden sich auf der <i>Ebene 1</i> des Datensatzes.<br><br>Die Wahl <b>Ja</b> bestimmt, dass auch mit Fakten verbundene Notizen und Quellenangaben gezeigt werden. Solche befinden sich auf der <i>Ebene 2</i> des Datensatzes, da Fakten zur Ebene 1 gehören."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1574
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
-msgstr "Diese Option bestimmt, ob der Inhalt von Bemerkungen auf der Seite «Persönliche Informationen» automatisch gezeigt werden soll oder nicht."
+msgstr "Diese Option bestimmt, ob der Inhalt von Notizen auf der Personenseite automatisch angezeigt werden soll oder nicht."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: admin_trees_config.php:1589
@@ -14558,7 +14558,7 @@ msgstr "Um diese privaten Daten zu schützen, verwendet webtrees eine Apache Kon
 
 #: help_text.php:298
 msgid "To reduce the height of the News block, the administrator has hidden some articles. You can reveal these hidden articles by clicking the <b>View archive</b> link."
-msgstr "Zum Reduzieren der Höhe des Neuigkeiten Blocks sind mehrere Notizen verborgen. Wenn Sie auf den <b>Archiv zeigen</b> Link klicken, können Sie alle Notizen sehen."
+msgstr "Zum Reduzieren der Höhe des Neuigkeitenblocks wurden mehrere Einträge ausgeblendet. Wenn Sie auf den Link <b>Archiv zeigen</b> klicken, können Sie diese Einträge ansehen."
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:346
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
@@ -15098,7 +15098,7 @@ msgstr "Verwendung der GeoNames Datenbank zur Autovervollständigung von Orten"
 
 #: login.php:477
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
-msgstr "Bitte benutzen Sie dieses Feld, um dem Verwalter mitzuteilen, warum Sie sich registrieren lassen wollen und wie Sie mit diesem Stammbaum verbunden sind. Sie können hier auch andere Bemerkungen machen, die Sie dem Verwalter mitteilen möchten."
+msgstr "Bitte benutzen Sie dieses Feld, um dem Verwalter mitzuteilen, warum Sie sich registrieren wollen und wie Sie mit diesem Stammbaum verbunden sind. Sie können hier auch andere Anmerkungen eingeben, die Sie dem Verwalter mitteilen möchten."
 
 #: app/Functions/FunctionsEdit.php:670
 msgid "Use this image for charts and on the individual’s page."
@@ -15312,7 +15312,7 @@ msgstr "Monat zeigen"
 
 #: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
 msgid "View notes"
-msgstr "Bemerkungen zeigen"
+msgstr "Notizen zeigen"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
 msgid "View source"
