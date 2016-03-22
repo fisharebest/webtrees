@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2015-03-12 21:43+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2016-03-22 21:14+0100\n"
+"Last-Translator: Arnaud Barbié <arnaud.barbie@laposte.net>\n"
 "Language-Team: Occitan <http://translate.webtrees.net/projects/webtrees/webtrees/oc/>\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.4\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -37,21 +37,21 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:424
 #: modules_v3/descendancy_report/report.xml:455
 msgid " in "
-msgstr ""
+msgstr " a "
 
 #: statisticsplot.php:887 statisticsplot.php:937 statisticsplot.php:991
 #: statisticsplot.php:1041 statisticsplot.php:1095 statisticsplot.php:1145
 #: statisticsplot.php:1195 statisticsplot.php:1245 statisticsplot.php:1295
 #: statisticsplot.php:1345
 msgid " per gender"
-msgstr ""
+msgstr " per sèxe"
 
 #: statisticsplot.php:889 statisticsplot.php:939 statisticsplot.php:993
 #: statisticsplot.php:1043 statisticsplot.php:1097 statisticsplot.php:1147
 #: statisticsplot.php:1197 statisticsplot.php:1247 statisticsplot.php:1297
 #: statisticsplot.php:1347
 msgid " per time period"
-msgstr ""
+msgstr " per períòde de temps"
 
 #. I18N: Abbreviation for "number %s"
 #: app/Functions/FunctionsPrintFacts.php:213
@@ -59,70 +59,70 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:475
 #, php-format
 msgid "#%s"
-msgstr ""
+msgstr "#%s"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s es ligat %3$s damb %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2151
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s oncle au %2$s<sup>au</sup> degrà"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s nebot au %2$s<sup>au</sup> degrà"
 
 #: app/Controller/IndividualController.php:194 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1635
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:317
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$sKB cargats en %2$s segonds."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s exista pas."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s exista pas. Voletz disèr %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s a pas de ligam damb %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:374 admin_site_upgrade.php:458
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Lo fichièr a estat extrach en %2$s segondes."
+msgstr[1] "%1$s an estat extrachs en %2$s segondes."
 
 #: app/Module/GoogleMapsModule.php:897
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s persona, sur un totau normal de %2$s, per %3$s generacions."
+msgstr[1] "%1$s personas, sur un totau normal de %2$s, per %3$s generacions."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:914
@@ -143,73 +143,73 @@ msgstr ""
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:634
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:664
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:497 app/Media.php:386
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s pixèls"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: app/Individual.php:550
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2173
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s es %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:818
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:159
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6999
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s BC"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:276
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:194
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s e los siens"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:196
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s e los siens"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:277
@@ -221,7 +221,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s e los son hilhs"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:124
@@ -248,15 +248,15 @@ msgstr[1] ""
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s dia"
+msgstr[1] "%s dias"
 
 #: app/I18N.php:798
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s dia abans"
+msgstr[1] "%s dias abans"
 
 #: app/Controller/SearchController.php:378
 #, php-format
@@ -290,22 +290,22 @@ msgstr[1] ""
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s persona"
+msgstr[1] "%s personas"
 
 #: app/Controller/SearchController.php:349
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Una persona a estat actulisada."
+msgstr[1] "%s personas an estat actulisadas."
 
 #: app/Module/GoogleMapsModule.php:907
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s persona es privada."
+msgstr[1] "%s persona son privadas."
 
 #: app/Controller/LifespanController.php:253
 #, php-format
@@ -345,15 +345,15 @@ msgstr[1] ""
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s messatge"
+msgstr[1] "%s messatges"
 
 #: app/I18N.php:806
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s minuta abans"
+msgstr[1] "%s minutas abans"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:55 app/I18N.php:305
@@ -361,15 +361,15 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s mes"
+msgstr[1] "%s mes"
 
 #: app/I18N.php:794
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s mes abans"
+msgstr[1] "%s mes abans"
 
 #: app/Controller/SearchController.php:432
 #, php-format
@@ -394,8 +394,8 @@ msgstr ""
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s segond abans"
+msgstr[1] "%s segonds abans"
 
 #: app/Controller/SearchController.php:411
 #, php-format
@@ -433,60 +433,60 @@ msgstr ""
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s setmana"
+msgstr[1] "%s setmanas"
 
 #: app/Functions/FunctionsDate.php:50 app/I18N.php:299
 #: app/Module/RelativesTabModule.php:83
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s an"
+msgstr[1] "%s ans"
 
 #: app/I18N.php:790
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s an abans"
+msgstr[1] "%s ans abans"
 
-#: app/Functions/FunctionsPrintLists.php:2116 app/Module/YahrzeitModule.php:129
-#: calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:2116
+#: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s aniversari"
 
 #: app/Functions/Functions.php:569
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "cousine au (%s+1)<sup>aue</sup> degrà"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:534
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "cousin au (%s+1)<sup>au</sup> degrà"
 
 #: app/Functions/Functions.php:604
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "cosin(a) au (%s+1)<sup>au</sup> degrà"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;BC"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;AC"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:211
@@ -1074,19 +1074,19 @@ msgstr ""
 #: app/Date/JalaliDate.php:94
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:126
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:62
@@ -1131,19 +1131,19 @@ msgstr ""
 #: app/Date/JewishDate.php:141
 msgctxt "GENITIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:217
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:179
 msgctxt "LOCATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:103
@@ -1155,19 +1155,19 @@ msgstr ""
 #: app/Date/JewishDate.php:140
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:216
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:178
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:102
@@ -1179,19 +1179,19 @@ msgstr ""
 #: app/Date/JewishDate.php:142
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:218
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:180
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:104
@@ -1220,7 +1220,8 @@ msgstr ""
 msgid "Add a child to create a one-parent family"
 msgstr ""
 
-#: app/Controller/FamilyController.php:84 app/Functions/FunctionsCharts.php:310
+#: app/Controller/FamilyController.php:84
+#: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
 msgstr ""
 
@@ -1270,9 +1271,10 @@ msgstr ""
 msgid "Add a new journal entry"
 msgstr ""
 
-#: app/Controller/FamilyController.php:184 app/Functions/FunctionsEdit.php:1130
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:184
+#: app/Controller/FamilyController.php:184
+#: app/Functions/FunctionsEdit.php:1130 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:184
 msgid "Add a new media object"
 msgstr ""
 
@@ -1284,8 +1286,8 @@ msgstr ""
 msgid "Add a new name"
 msgstr ""
 
-#: app/Controller/FamilyController.php:171 app/Functions/FunctionsEdit.php:1109
-#: app/Module/NotesTabModule.php:95
+#: app/Controller/FamilyController.php:171
+#: app/Functions/FunctionsEdit.php:1109 app/Module/NotesTabModule.php:95
 msgid "Add a new note"
 msgstr ""
 
@@ -1293,8 +1295,8 @@ msgstr ""
 msgid "Add a new restriction"
 msgstr ""
 
-#: app/Controller/FamilyController.php:177 app/Functions/FunctionsEdit.php:1119
-#: app/Module/NotesTabModule.php:105
+#: app/Controller/FamilyController.php:177
+#: app/Functions/FunctionsEdit.php:1119 app/Module/NotesTabModule.php:105
 msgid "Add a new shared note"
 msgstr ""
 
@@ -1302,8 +1304,8 @@ msgstr ""
 msgid "Add a new son or daughter"
 msgstr ""
 
-#: app/Controller/FamilyController.php:194 app/Functions/FunctionsEdit.php:1059
-#: app/Module/SourcesTabModule.php:93
+#: app/Controller/FamilyController.php:194
+#: app/Functions/FunctionsEdit.php:1059 app/Module/SourcesTabModule.php:93
 msgid "Add a new source citation"
 msgstr ""
 
@@ -1328,9 +1330,10 @@ msgstr ""
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
 #: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:170
-#: app/Module/ResearchTaskModule.php:213 app/Module/ReviewChangesModule.php:193
-#: app/Module/TopGivenNamesModule.php:165 app/Module/TopPageViewsModule.php:182
-#: app/Module/TopSurnamesModule.php:188
+#: app/Module/ResearchTaskModule.php:213
+#: app/Module/ReviewChangesModule.php:193
+#: app/Module/TopGivenNamesModule.php:165
+#: app/Module/TopPageViewsModule.php:182 app/Module/TopSurnamesModule.php:188
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
@@ -1760,10 +1763,10 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:1553 app/Module/GoogleMapsModule.php:1566
 #: app/Module/GoogleMapsModule.php:4666 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5626 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:158 famlist.php:160
-#: famlist.php:244 famlist.php:246 indilist.php:64 indilist.php:70
-#: indilist.php:76 indilist.php:159 indilist.php:161 indilist.php:245
-#: indilist.php:247 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:158
+#: famlist.php:160 famlist.php:244 famlist.php:246 indilist.php:64
+#: indilist.php:70 indilist.php:76 indilist.php:159 indilist.php:161
+#: indilist.php:245 indilist.php:247 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -1964,7 +1967,8 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1978 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1978
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr ""
 
@@ -2111,7 +2115,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -2124,7 +2129,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "Arial"
-msgstr ""
+msgstr "Arial"
 
 #: app/Stats.php:6731
 msgid "Armenia"
@@ -2276,19 +2281,19 @@ msgstr ""
 #: app/Date/JewishDate.php:147
 msgctxt "GENITIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:223
 msgctxt "INSTRUMENTAL"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:185
 msgctxt "LOCATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:109
@@ -2339,19 +2344,19 @@ msgstr ""
 #: app/Date/JalaliDate.php:95
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:159
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:127
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:63
@@ -2380,19 +2385,19 @@ msgstr ""
 #: app/Date/JalaliDate.php:97
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:129
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:65
@@ -2975,19 +2980,19 @@ msgstr ""
 #: app/Date/FrenchDate.php:89
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:122
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:56
@@ -3393,7 +3398,8 @@ msgstr ""
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:436
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr ""
 
@@ -3478,7 +3484,7 @@ msgstr ""
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:36 app/GedcomTag.php:274
 msgid "Child"
-msgstr ""
+msgstr "Hilh"
 
 #: modules_v3/ahnentafel_report/report.xml:388
 #: modules_v3/descendancy_report/report.xml:481
@@ -4307,7 +4313,8 @@ msgstr ""
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -4872,7 +4879,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -4885,7 +4893,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "DejaVu"
-msgstr ""
+msgstr "DejaVu"
 
 #: admin_media.php:529 admin_site_access.php:193 admin_site_change.php:375
 #: admin_site_logs.php:314 admin_trees_config.php:576
@@ -5041,19 +5049,19 @@ msgstr ""
 #: app/Date/JalaliDate.php:96
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:128
 msgctxt "LOCATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:64
@@ -5065,19 +5073,19 @@ msgstr ""
 #: app/Date/HijriDate.php:101
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:165
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:133
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:69
@@ -5089,19 +5097,19 @@ msgstr ""
 #: app/Date/HijriDate.php:100
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:164
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:132
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:68
@@ -5447,19 +5455,19 @@ msgstr ""
 #: app/Date/JewishDate.php:148
 msgctxt "GENITIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:224
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:186
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:110
@@ -5489,45 +5497,45 @@ msgstr ""
 #. I18N: gedcom tag EMIG
 #: app/GedcomTag.php:404
 msgid "Emigration"
-msgstr ""
+msgstr "Emigracion"
 
 #: app/GedcomCode/GedcomCodeRela.php:107
 msgid "Employee"
-msgstr ""
+msgstr "Emplegat"
 
 #: app/GedcomCode/GedcomCodeRela.php:105
 msgctxt "FEMALE"
 msgid "Employee"
-msgstr ""
+msgstr "Emplagada"
 
 #: app/GedcomCode/GedcomCodeRela.php:103
 msgctxt "MALE"
 msgid "Employee"
-msgstr ""
+msgstr "Emplegat"
 
 #: app/GedcomCode/GedcomCodeRela.php:116 app/GedcomTag.php:652
 #: app/GedcomTag.php:742
 msgid "Employer"
-msgstr ""
+msgstr "Patron"
 
 #: app/GedcomCode/GedcomCodeRela.php:114
 msgctxt "FEMALE"
 msgid "Employer"
-msgstr ""
+msgstr "Patrona"
 
 #: app/GedcomCode/GedcomCodeRela.php:112
 msgctxt "MALE"
 msgid "Employer"
-msgstr ""
+msgstr "Patron"
 
 #: app/Module/ClippingsCartModule.php:423
 #: app/Module/ClippingsCartModule.php:646
 msgid "Empty the clippings cart"
-msgstr ""
+msgstr "Vuidar lo panièr"
 
 #: admin_modules.php:151
 msgid "Enabled"
-msgstr "Activadas"
+msgstr "Activat"
 
 #. I18N: Help text for the “Family tree” configuration setting
 #: admin_trees_config.php:377
@@ -5537,12 +5545,12 @@ msgstr ""
 #. I18N …of a range of addresses
 #: admin_site_access.php:264 admin_site_access.php:362
 msgid "End IP address"
-msgstr ""
+msgstr "Darrèra adressa IP"
 
 #. I18N: The latest year in a range
 #: lifespan.php:74
 msgid "End year"
-msgstr ""
+msgstr "Anada finala"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
@@ -5560,7 +5568,7 @@ msgstr ""
 
 #: app/Stats.php:6793
 msgid "England"
-msgstr ""
+msgstr "Anglatèra"
 
 #: addmedia.php:429 app/Module/FamilyTreeFavoritesModule.php:212
 msgid "Enter an individual, family, or source ID"
@@ -5605,19 +5613,19 @@ msgstr ""
 #: app/Date/JalaliDate.php:98
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:130
 msgctxt "LOCATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:66
@@ -5697,7 +5705,8 @@ msgstr ""
 msgid "Explain why you are requesting an account."
 msgstr ""
 
-#: admin_site_change.php:371 admin_site_logs.php:310 admin_trees_manage.php:591
+#: admin_site_change.php:371 admin_site_logs.php:310
+#: admin_trees_manage.php:591
 msgid "Export"
 msgstr "Exportar"
 
@@ -5878,7 +5887,8 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:2792 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1444
 #: calendar.php:422 descendancy.php:67 famlist.php:125 famlist.php:128
-#: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:134 mediaviewer.php:123
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:225
 #: repo.php:143 search.php:93 source.php:147 statistics.php:69
 #: statisticsplot.php:974 statisticsplot.php:1078 statisticsplot.php:1328
@@ -5973,7 +5983,8 @@ msgstr ""
 msgid "Family tree access and settings"
 msgstr ""
 
-#: app/Module/ClippingsCartModule.php:88 app/Module/ClippingsCartModule.php:426
+#: app/Module/ClippingsCartModule.php:88
+#: app/Module/ClippingsCartModule.php:426
 msgid "Family tree clippings cart"
 msgstr ""
 
@@ -6057,19 +6068,19 @@ msgstr ""
 #: app/Date/JalaliDate.php:87
 msgctxt "GENITIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:151
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:119
 msgctxt "LOCATIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:55
@@ -6108,7 +6119,8 @@ msgid "Father’s family with an unknown individual"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1300
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1300
 msgid "Favorites"
 msgstr ""
 
@@ -6250,7 +6262,8 @@ msgstr ""
 msgid "Find all possible relationships"
 msgstr ""
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:81
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:81
 #: app/Module/CensusAssistantModule.php:86
 #: app/Module/CensusAssistantModule.php:135 find.php:51
 msgid "Find an individual"
@@ -6300,19 +6313,19 @@ msgstr ""
 #: app/Date/FrenchDate.php:95
 msgctxt "GENITIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:128
 msgctxt "LOCATIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:62
@@ -6331,7 +6344,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6477,19 +6491,19 @@ msgstr ""
 #: app/Date/FrenchDate.php:90
 msgctxt "GENITIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:123
 msgctxt "LOCATIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:57
@@ -6506,19 +6520,19 @@ msgstr ""
 #: app/Date/FrenchDate.php:99
 msgctxt "GENITIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:165
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:132
 msgctxt "LOCATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:66
@@ -6645,19 +6659,19 @@ msgstr ""
 #: app/Date/FrenchDate.php:94
 msgctxt "GENITIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:127
 msgctxt "LOCATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:61
@@ -6949,7 +6963,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6962,7 +6977,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "Helvetica"
-msgstr ""
+msgstr "Helvetica"
 
 #: modules_v3/ahnentafel_report/report.xml:196
 msgid "Her occupation was"
@@ -6988,19 +7003,19 @@ msgstr ""
 #: app/Date/JewishDate.php:136
 msgctxt "GENITIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:212
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:174
 msgctxt "LOCATIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:98
@@ -7485,8 +7500,8 @@ msgstr ""
 
 #. I18N: Name of a module
 #: app/Controller/FanchartController.php:367
-#: app/Module/ChartsBlockModule.php:197 app/Module/InteractiveTreeModule.php:32
-#: app/Theme/AbstractTheme.php:1172
+#: app/Module/ChartsBlockModule.php:197
+#: app/Module/InteractiveTreeModule.php:32 app/Theme/AbstractTheme.php:1172
 msgid "Interactive tree"
 msgstr ""
 
@@ -7567,19 +7582,19 @@ msgstr ""
 #: app/Date/JewishDate.php:144
 msgctxt "GENITIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:220
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:182
 msgctxt "LOCATIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:106
@@ -7686,19 +7701,19 @@ msgstr ""
 #: app/Date/HijriDate.php:94
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "Jumada al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "Jumada al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:126
 msgctxt "LOCATIVE"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "Jumada al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:62
@@ -7710,19 +7725,19 @@ msgstr ""
 #: app/Date/HijriDate.php:95
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "Jumada al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:159
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "Jumada al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:127
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "Jumada al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:63
@@ -7796,19 +7811,19 @@ msgstr ""
 #: app/Date/JalaliDate.php:89
 msgctxt "GENITIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:153
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:121
 msgctxt "LOCATIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:57
@@ -7828,19 +7843,19 @@ msgstr ""
 #: app/Date/JewishDate.php:137
 msgctxt "GENITIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:213
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:175
 msgctxt "LOCATIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:99
@@ -8871,19 +8886,19 @@ msgstr ""
 #: app/Date/JalaliDate.php:93
 msgctxt "GENITIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:125
 msgctxt "LOCATIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:61
@@ -8972,19 +8987,19 @@ msgstr ""
 #: app/Date/FrenchDate.php:97
 msgctxt "GENITIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:163
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:130
 msgctxt "LOCATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:64
@@ -9165,19 +9180,19 @@ msgstr ""
 #: app/Date/JalaliDate.php:91
 msgctxt "GENITIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:123
 msgctxt "LOCATIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:59
@@ -9277,19 +9292,19 @@ msgstr ""
 #: app/Date/HijriDate.php:90
 msgctxt "GENITIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:154
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:122
 msgctxt "LOCATIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:58
@@ -9559,19 +9574,19 @@ msgstr ""
 #: app/Date/JewishDate.php:143
 msgctxt "GENITIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:219
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:181
 msgctxt "LOCATIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:105
@@ -9587,19 +9602,19 @@ msgstr ""
 #: app/Date/FrenchDate.php:91
 msgctxt "GENITIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:124
 msgctxt "LOCATIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:58
@@ -9850,8 +9865,9 @@ msgid "Not verified by the user"
 msgstr ""
 
 #. I18N: gedcom tag NOTE
-#: app/Controller/FamilyController.php:169 app/Functions/FunctionsPrint.php:173
-#: app/GedcomTag.php:634 modules_v3/cemetery_report/report.xml:64
+#: app/Controller/FamilyController.php:169
+#: app/Functions/FunctionsPrint.php:173 app/GedcomTag.php:634
+#: modules_v3/cemetery_report/report.xml:64
 #: modules_v3/family_group_report/report.xml:485
 #: modules_v3/family_group_report/report.xml:749
 #: modules_v3/family_group_report/report.xml:1101
@@ -9944,8 +9960,8 @@ msgstr ""
 msgid "Number of items"
 msgstr ""
 
-#: app/Module/TopGivenNamesModule.php:153 app/Module/TopPageViewsModule.php:170
-#: app/Module/TopSurnamesModule.php:176
+#: app/Module/TopGivenNamesModule.php:153
+#: app/Module/TopPageViewsModule.php:170 app/Module/TopSurnamesModule.php:176
 msgid "Number of items to show"
 msgstr ""
 
@@ -10127,19 +10143,19 @@ msgstr ""
 #: app/Date/JalaliDate.php:88
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:152
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:120
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:56
@@ -10250,7 +10266,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -10712,19 +10729,19 @@ msgstr ""
 #: app/Date/FrenchDate.php:92
 msgctxt "GENITIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:125
 msgctxt "LOCATIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:59
@@ -10778,19 +10795,19 @@ msgstr ""
 #: app/Date/FrenchDate.php:96
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:129
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:63
@@ -10961,19 +10978,19 @@ msgstr ""
 #: app/Date/HijriDate.php:92
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:124
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:60
@@ -10985,19 +11002,19 @@ msgstr ""
 #: app/Date/HijriDate.php:93
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:125
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:61
@@ -11014,19 +11031,19 @@ msgstr ""
 #: app/Date/HijriDate.php:96
 msgctxt "GENITIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:128
 msgctxt "LOCATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:64
@@ -11042,19 +11059,19 @@ msgstr ""
 #: app/Date/HijriDate.php:98
 msgctxt "GENITIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:130
 msgctxt "LOCATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:66
@@ -11067,8 +11084,9 @@ msgstr ""
 msgid "Random images from the current family tree."
 msgstr ""
 
-#: app/Controller/FamilyController.php:90 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1803 edit_interface.php:1877
+#: app/Controller/FamilyController.php:90
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1803
+#: edit_interface.php:1877
 msgid "Re-order children"
 msgstr ""
 
@@ -11091,7 +11109,8 @@ msgid "Real name"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:35 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:35
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr ""
 
@@ -11106,7 +11125,8 @@ msgstr ""
 #: admin_site_change.php:329 admin_site_change.php:390
 #: admin_trees_config.php:530 app/Functions/FunctionsPrintLists.php:1833
 #: app/Functions/FunctionsPrintLists.php:1974
-#: app/Module/ClippingsCartModule.php:431 app/Module/ResearchTaskModule.php:105
+#: app/Module/ClippingsCartModule.php:431
+#: app/Module/ResearchTaskModule.php:105
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -11497,19 +11517,19 @@ msgstr ""
 #: app/Date/HijriDate.php:91
 msgctxt "GENITIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:123
 msgctxt "LOCATIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:59
@@ -12000,19 +12020,19 @@ msgstr ""
 #: app/Date/JalaliDate.php:92
 msgctxt "GENITIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:124
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:60
@@ -12044,19 +12064,19 @@ msgstr ""
 #: app/Date/HijriDate.php:99
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:163
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:131
 msgctxt "LOCATIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:67
@@ -12068,19 +12088,19 @@ msgstr ""
 #: app/Date/HijriDate.php:97
 msgctxt "GENITIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:129
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:65
@@ -12125,19 +12145,19 @@ msgstr ""
 #: app/Date/JewishDate.php:139
 msgctxt "GENITIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:215
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:177
 msgctxt "LOCATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:101
@@ -12610,19 +12630,19 @@ msgstr ""
 #: app/Date/JewishDate.php:145
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:221
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:183
 msgctxt "LOCATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:107
@@ -13141,19 +13161,19 @@ msgstr ""
 #: app/Date/JewishDate.php:146
 msgctxt "GENITIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:222
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:184
 msgctxt "LOCATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:108
@@ -13192,19 +13212,19 @@ msgstr ""
 #: app/Date/JewishDate.php:138
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:214
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:176
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:100
@@ -13393,8 +13413,8 @@ msgstr ""
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:294
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:294
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr ""
@@ -13751,8 +13771,8 @@ msgstr ""
 msgid "There are no source citations for this individual."
 msgstr ""
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1881
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1881
 msgid "There are pending changes for you to moderate."
 msgstr ""
 
@@ -13776,19 +13796,19 @@ msgstr ""
 #: app/Date/FrenchDate.php:98
 msgctxt "GENITIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:164
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:131
 msgctxt "LOCATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:65
@@ -14450,19 +14470,19 @@ msgstr ""
 #: app/Date/JalaliDate.php:90
 msgctxt "GENITIVE"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:154
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:122
 msgctxt "LOCATIVE"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:58
@@ -14474,19 +14494,19 @@ msgstr ""
 #: app/Date/JewishDate.php:135
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:211
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:173
 msgctxt "LOCATIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:97
@@ -14834,7 +14854,7 @@ msgstr ""
 #: admin_trees_manage.php:648 app/GedcomTag.php:848 app/GedcomTag.php:864
 #: app/GedcomTag.php:1751
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: app/Stats.php:6965
 msgid "US Minor Outlying Islands"
@@ -14912,7 +14932,7 @@ msgstr ""
 
 #: app/GedcomRecord.php:1154 app/GedcomRecord.php:1158 app/Stats.php:6719
 msgid "Unknown"
-msgstr ""
+msgstr "Desconegut"
 
 #: app/Stats.php:5197
 msgctxt "unknown century"
@@ -15159,7 +15179,7 @@ msgstr ""
 
 #: app/Stats.php:6975
 msgid "Vanuatu"
-msgstr ""
+msgstr "Vanuatu"
 
 #: app/Stats.php:6969
 msgid "Vatican City"
@@ -15169,19 +15189,19 @@ msgstr ""
 #: app/Date/FrenchDate.php:88
 msgctxt "GENITIVE"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:154
 msgctxt "INSTRUMENTAL"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:121
 msgctxt "LOCATIVE"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:55
@@ -15191,25 +15211,25 @@ msgstr ""
 
 #: app/Stats.php:6971
 msgid "Venezuela"
-msgstr ""
+msgstr "Venezuela"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:93
 msgctxt "GENITIVE"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
 msgctxt "INSTRUMENTAL"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:126
 msgctxt "LOCATIVE"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:60
@@ -15292,7 +15312,7 @@ msgstr ""
 
 #: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
 msgid "View notes"
-msgstr ""
+msgstr "Afichar"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
 msgid "View source"
@@ -15359,7 +15379,7 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
 msgid "Washington, DC"
-msgstr ""
+msgstr "Washington, DC"
 
 #: admin_trees_config.php:1111
 msgid "Watermarks"
@@ -15506,7 +15526,8 @@ msgstr ""
 msgid "Who is online"
 msgstr ""
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr ""
 
@@ -16245,15 +16266,16 @@ msgstr ""
 #. I18N: button label
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:118
-#: app/Module/CensusAssistantModule.php:187 app/Module/GoogleMapsModule.php:735
-#: app/Module/GoogleMapsModule.php:3252 app/Module/GoogleMapsModule.php:3267
-#: app/Module/GoogleMapsModule.php:4004 app/Theme/AbstractTheme.php:680
-#: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1746
-#: edit_interface.php:1855 edit_interface.php:2048 edit_interface.php:2217
-#: edit_interface.php:2603 find.php:766 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:187
+#: app/Module/GoogleMapsModule.php:735 app/Module/GoogleMapsModule.php:3252
+#: app/Module/GoogleMapsModule.php:3267 app/Module/GoogleMapsModule.php:4004
+#: app/Theme/AbstractTheme.php:680 edit_changes.php:240 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1746 edit_interface.php:1855 edit_interface.php:2048
+#: edit_interface.php:2217 edit_interface.php:2603 find.php:766
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr ""
@@ -18589,7 +18611,7 @@ msgstr ""
 #: statisticsplot.php:859 statisticsplot.php:909 statisticsplot.php:963
 #: statisticsplot.php:1013 statisticsplot.php:1067
 msgid "month"
-msgstr ""
+msgstr "mes"
 
 #: statistics.php:566
 msgid "months after marriage"
@@ -18601,7 +18623,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:706
 msgid "mother"
-msgstr ""
+msgstr "mair"
 
 #: app/Functions/Functions.php:881
 msgctxt "husband’s mother"
@@ -18738,7 +18760,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:182
 #: modules_v3/individual_report/report.xml:178
 msgid "no"
-msgstr ""
+msgstr "non"
 
 #. I18N: None of the other options
 #: admin_site_config.php:111 admin_trees_config.php:63
@@ -18754,11 +18776,11 @@ msgstr ""
 #. I18N: time format “%a” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:92
 msgid "noon"
-msgstr ""
+msgstr "miègjorn"
 
 #: app/Module/GoogleMapsModule.php:3956
 msgid "north"
-msgstr ""
+msgstr "nòrd"
 
 #: statistics.php:634 statisticsplot.php:860 statisticsplot.php:910
 #: statisticsplot.php:964 statisticsplot.php:1014 statisticsplot.php:1068
@@ -18770,7 +18792,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -18803,7 +18826,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:710
 msgid "parent"
-msgstr ""
+msgstr "parent"
 
 #: app/Functions/Functions.php:737
 msgctxt "FEMALE"
@@ -19171,7 +19194,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:323 app/Module/StoriesModule.php:361
 #: lifespan.php:107
 msgid "show"
-msgstr ""
+msgstr "afichar"
 
 #: statistics.php:643
 msgid "show the plot"
@@ -19183,7 +19206,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:804
 msgid "sister"
-msgstr ""
+msgstr "sòr"
 
 #: app/Functions/Functions.php:831
 msgctxt "brother’s wife"
@@ -19245,11 +19268,11 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:2048 app/Module/GoogleMapsModule.php:2078
 #: edit_interface.php:2007
 msgid "son"
-msgstr ""
+msgstr "hilh"
 
 #: modules_v3/descendancy_report/report.xml:296
 msgid "son of"
-msgstr ""
+msgstr "hilh de"
 
 #: app/Functions/Functions.php:837
 msgctxt "child’s husband"
@@ -19343,7 +19366,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3957
 msgid "south"
-msgstr ""
+msgstr "sud"
 
 #: app/Functions/Functions.php:764 edit_interface.php:1938
 #: edit_interface.php:1948 edit_interface.php:1973 edit_interface.php:1984
@@ -19562,7 +19585,7 @@ msgstr ""
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:113
 msgid "tls"
-msgstr ""
+msgstr "hilh de "
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:319
@@ -19675,7 +19698,7 @@ msgstr ""
 
 #: app/Theme/WebtreesTheme.php:128
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:110
@@ -19712,7 +19735,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrint.php:210
 msgid "webtrees wiki"
-msgstr ""
+msgstr "wiki webtrees"
 
 #: admin_trees_manage.php:705
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
@@ -19720,17 +19743,17 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:3967
 msgid "west"
-msgstr ""
+msgstr "oèst"
 
 #: app/Functions/Functions.php:746 edit_interface.php:1937
 #: edit_interface.php:1972
 msgid "wife"
-msgstr ""
+msgstr "femna"
 
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:144
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:127
 msgid "years"
@@ -19752,7 +19775,7 @@ msgstr "annadas"
 #: modules_v3/individual_ext_report/report.xml:179
 #: modules_v3/individual_report/report.xml:175
 msgid "yes"
-msgstr ""
+msgstr "oc"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:93
@@ -19769,44 +19792,47 @@ msgstr ""
 
 #: app/Functions/Functions.php:797
 msgid "younger sister"
-msgstr ""
+msgstr "sòr mai joena"
 
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:169 search_advanced.php:170 search_advanced.php:171
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "±%s an"
+msgstr[1] "±%s ans"
 
 #: app/Individual.php:1218
 #, php-format
 msgid "“%s”"
-msgstr ""
+msgstr "«%s»"
 
 #. I18N: %s is the name of an individual, source or other record
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr ""
+msgstr "«&nbsp;%s&nbsp;» a estat botat dens los vòstres favorits."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:107
+#, fuzzy
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Family.php:351 app/Family.php:365 app/Individual.php:1214
 #: app/Individual.php:1303 autocomplete.php:164 autocomplete.php:405
 #: autocomplete.php:470 famlist.php:92 famlist.php:225 indilist.php:93
 #: indilist.php:226
+#, fuzzy
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Family.php:351 app/Family.php:365 app/Individual.php:1213
 #: app/Individual.php:1303 app/Module/FamiliesSidebarModule.php:153
 #: app/Module/IndividualSidebarModule.php:154 autocomplete.php:164
 #: autocomplete.php:405 autocomplete.php:470 famlist.php:83 famlist.php:103
 #: famlist.php:135 indilist.php:84 indilist.php:104 indilist.php:136
+#, fuzzy
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
