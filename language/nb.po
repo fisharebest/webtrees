@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-03 23:22+0100\n"
-"Last-Translator: Iver Neumann-Korsgaard <iver@iverneumann.com>\n"
+"PO-Revision-Date: 2016-03-22 13:54+0100\n"
+"Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Bokmål <http://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
@@ -740,11 +740,11 @@ msgstr "Et barn kan ha flere sett med foreldre. Forholdet mellom foreldre og bar
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr "En vanlig feil er å ha flere lenker till samme registrering, f.eks. samme barn forekommer mer enn en gang i en familieregistrering."
+msgstr "En vanlig feil er å ha flere lenker til samme registrering, f.eks. samme barn forekommer mer enn en gang i en familieregistrering."
 
 #: setup.php:371
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-msgstr "En databaseserver kan inneholde mange separate databaser. Du kan velge en eksisterende database (opprettet av serveradministrator) eller oprette en ny (hvis din databases brukerkonto har rettigheter til dette)."
+msgstr "En databaseserver kan inneholde mange separate databaser. Du kan velge en eksisterende database (opprettet av serveradministrator) eller opprette en ny (hvis din databases brukerkonto har rettigheter til dette)."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
