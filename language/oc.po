@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-23 12:27+0100\n"
+"PO-Revision-Date: 2016-03-23 11:30+0100\n"
 "Last-Translator: Arnaud Barbié <arnaud.barbie@laposte.net>\n"
 "Language-Team: Occitan <http://translate.webtrees.net/projects/webtrees/webtrees/oc/>\n"
 "Language: oc\n"
@@ -8192,7 +8192,7 @@ msgstr ""
 
 #: app/I18N.php:232 app/I18N.php:233
 msgid "Loading…"
-msgstr "Cargament..."
+msgstr "Cargament…"
 
 #. I18N: “Local files” are stored on this computer
 #: admin_media.php:632
