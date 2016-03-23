@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-21 14:07+0100\n"
+"PO-Revision-Date: 2016-03-23 20:33+0100\n"
 "Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
@@ -4306,7 +4306,7 @@ msgstr "Даллас, Техас"
 #. I18N: A summary of the system status
 #: admin.php:447
 msgid "Dashboard"
-msgstr ""
+msgstr "Огляд"
 
 #. I18N: gedcom tag DATA
 #: admin_site_change.php:391 app/GedcomTag.php:342
@@ -6393,7 +6393,7 @@ msgstr "Шрифт"
 #: admin_trees_manage.php:298
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
-msgstr ""
+msgstr "Наприклад, якщо файл GEDCOM містить %1$s, а webtrees очікує знайти %2$s в папці media, то вам доведеться видалити %3$s."
 
 #: admin_users.php:609
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -6544,7 +6544,7 @@ msgstr "Фрімер"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:302 admin_site_logs.php:248
 msgid "From"
-msgstr ""
+msgstr "З"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:99
@@ -6620,7 +6620,7 @@ msgstr "За генеалогічним питань звертатися до"
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:459
 msgid "Genealogy data"
-msgstr ""
+msgstr "Генеалогічні дані"
 
 #: admin_trees_config.php:589 admin_trees_config.php:1673
 msgid "General"
@@ -6729,7 +6729,7 @@ msgstr "Ім'я (імена)"
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:981
 msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu. To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
-msgstr ""
+msgstr "Дає користувачам можливість вибрати із меню їх власну тему.<br><br>Навіть коли цей параметр увімкнутий, поточна схема може не надати такого меню. Щоб ця опція працювала, необхідно, щоб параметр <b>Дозволити користувачам вибирати власну тему</b> теж був увімкнутий."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -7065,7 +7065,7 @@ msgstr "Найбільша частота"
 
 #: index_edit.php:284 index_edit.php:367
 msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
-msgstr ""
+msgstr "Виділіть ім'я блоку, а потім натисніть на одну із іконок зі стрілками, щоб перемістити цей виділений блок у вказаному напрямку."
 
 #. I18N: gedcom tag _PRIM
 #: app/GedcomTag.php:1560 modules_v3/individual_ext_report/report.xml:11
@@ -7195,7 +7195,7 @@ msgstr "Ідентифікаційний номер"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:650
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used. Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Якщо користувач не вказав бажану мову в налаштуваннях браузеру, чи вказав мову, яка не підтримується, тоді ця мова буде використана. Зазвичай цей параметр застосовується для пошукових систем."
 
 #: admin_users.php:392
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -7204,7 +7204,7 @@ msgstr "Якщо адміністратор створює сам обліков
 #: help_text.php:228
 #, php-format
 msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
-msgstr ""
+msgstr "Якщо особа не має фамілії, косі риски не потрібні: <%s>Jón Einarsson<%s>"
 
 #: help_text.php:226
 #, php-format
