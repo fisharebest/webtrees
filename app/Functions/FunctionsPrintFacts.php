@@ -1171,11 +1171,7 @@ class FunctionsPrintFacts {
 				echo '<td class="optionbox ', $styleadd, ' wrap">';
 				if ($media) {
 					echo '<span class="field">';
- 					if (get_class($fact->getParent())=='Fisharebest\Webtrees\Individual') {
-						echo $media->displayImage($fact->getParent()->getAllNames());
- 					} else {
-						echo $media->displayImage();
- 					}
+					echo $media->displayImage();
 					echo '<a href="' . $media->getHtmlUrl() . '">';
 					echo '<em>';
 					foreach ($media->getAllNames() as $name) {
