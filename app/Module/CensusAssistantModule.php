@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Census\Census;
 use Fisharebest\Webtrees\Census\CensusInterface;
 use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\Functions;
@@ -97,7 +98,7 @@ class CensusAssistantModule extends AbstractModule {
 			// Output Individual for GEDFact Assistant ======================
 			echo '<table class="list_table width90">';
 			$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
-			if ($myindilist) {
+			if (!empty($myindilist)) {
 				echo '<tr><td class="list_value_wrap"><ul>';
 				usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 				foreach ($myindilist as $indi) {
@@ -193,7 +194,7 @@ class CensusAssistantModule extends AbstractModule {
 		$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 		echo '<table class="tabs_table width90"><tr>';
 		$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
-		if ($myindilist) {
+		if (!empty($myindilist)) {
 			echo '<td class="list_value_wrap"><ul>';
 			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
@@ -293,31 +294,42 @@ class CensusAssistantModule extends AbstractModule {
 			// censusPlace() (Soundex match) and censusDate() functions
 			$fmt_headers   = array();
 			$linkedRecords = array_merge($note->linkedIndividuals('NOTE'), $note->linkedFamilies('NOTE'));
-			$firstRecord   = array_shift($linkedRecords);
-			if ($firstRecord) {
-				$countryCode = '';
-				$date        = '';
-				foreach ($firstRecord->getFacts('CENS') as $fact) {
-					if (trim($fact->getAttribute('NOTE'), '@') === $note->getXref()) {
-						$date        = $fact->getAttribute('DATE');
-						$place       = explode(',', strip_tags($fact->getPlace()->getFullName()));
-						$countryCode = Soundex::daitchMokotoff(array_pop($place));
-						break;
-					}
-				}
 
-				foreach (Census::allCensusPlaces() as $censusPlace) {
-					if (Soundex::compare($countryCode, Soundex::daitchMokotoff($censusPlace->censusPlace()))) {
-						foreach ($censusPlace->allCensusDates() as $census) {
-							if ($census->censusDate() == $date) {
-								foreach ($census->columns() as $column) {
-									$abbrev = $column->abbreviation();
-									if ($abbrev) {
-										$description          = $column->title() ? $column->title() : I18N::translate('Description unavailable');
-										$fmt_headers[$abbrev] = '<span title="' . $description . '">' . $abbrev . '</span>';
-									}
-								}
-								break 2;
+			$facts = array();
+			// Get all the Census facts from the linked records
+			foreach ($linkedRecords as $record) {
+				$facts = array_merge($facts, $record->getFacts('CENS'));
+			}
+			// Filter so that only those facts that link to this note
+			// and have a valid date and place are included
+			$facts = array_filter($facts, function ($v) use ($note) {
+				return trim($v->getAttribute('NOTE'), '@') === $note->getXref()
+				&& $v->getDate()->isOK()
+				&& !$v->getPlace()->isEmpty();
+			});
+
+			if (!empty($facts)) {
+				$fact        = current($facts); // Any fact will do
+				$placeParts  = explode(',', strip_tags($fact->getPlace()->getFullName()));
+				$countryCode = Soundex::daitchMokotoff(trim(end($placeParts)));
+
+				// Filter the array of countries to get the one matching the fact place
+				$censusPlace = array_filter(Census::allCensusPlaces(), function ($v) use ($countryCode) {
+					return Soundex::compare($countryCode, Soundex::daitchMokotoff($v->censusPlace()));
+				});
+
+				if (!empty($censusPlace)) {
+					// Filter the array of censuses to get the one matching the fact date
+					$census = array_filter(current($censusPlace)->allCensusDates(), function ($v) use ($fact) {
+						return Date::compare($fact->getDate(), new Date($v->censusDate())) === 0;
+					});
+					if (!empty($census)) {
+						// build the header array
+						foreach (current($census)->columns() as $column) {
+							$abbrev = $column->abbreviation();
+							if ($abbrev) {
+								$description          = $column->title() ? $column->title() : I18N::translate('Description unavailable');
+								$fmt_headers[$abbrev] = '<span title="' . $description . '">' . $abbrev . '</span>';
 							}
 						}
 					}
