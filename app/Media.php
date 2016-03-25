@@ -138,19 +138,73 @@ class Media extends GedcomRecord {
 	 *
 	 * @return string
 	 */
-	public function getServerFilename($which = 'main') {
+	public function getServerFilename($which = 'main', $individual_names = false) {
 		$MEDIA_DIRECTORY = $this->tree->getPreference('MEDIA_DIRECTORY');
 		$THUMBNAIL_WIDTH = $this->tree->getPreference('THUMBNAIL_WIDTH');
+
+		$main_file = WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
 
 		if ($this->isExternal() || !$this->file) {
 			// External image, or (in the case of corrupt GEDCOM data) no image at all
 			return $this->file;
 		} elseif ($which == 'main') {
 			// Main image
-			return WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
+			return $main_file;
 		} else {
 			// Thumbnail
 			$file = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $this->file;
+			// Is this a thumbnail of an individual?
+			if ($individual_names) {
+				// Get face data from file
+				$faces = $this->getFaceDataFromFile($main_file);
+				// Found faces?
+				if ($faces) {
+					// Search name in image with priority:
+					$found = false;
+					$found3 = false;
+					// 1 - Name identical
+					foreach ($individual_names as $individual_name) {
+						foreach ($faces as $name=>$face){
+							if ($individual_name['fullNN'] == $name) {
+								$found = true;
+								break 2;
+							}
+						}
+					}
+					if (!$found) {
+						// 2 - Name contains one first name and surename
+						foreach ($individual_names as $individual_name) {
+							$givns=explode(' ',$individual_name['givn']);
+							foreach ($givns as $givn) {
+								foreach ($faces as $name=>$face){
+									if (strpos($name,$givn) !== false) {
+										if (!$found3) $found3=$name;
+										if (strpos($name, $individual_name['surn']) !== false) {
+											$found = true;
+											break 3;
+										}
+									}
+								}
+							}
+						}
+					}
+					if (!$found && $found3) {
+						// 3 - Name contains one first name
+						$name = $found3;
+						$face = $faces[$name];
+						$found = true;
+					}
+					// Found name in image?
+					if ($found) {
+						// Does thumbnail for this name exists?
+						$pathinfo=pathinfo($file);
+						$file=$pathinfo['dirname'].'/'.$pathinfo['filename']." ".strtr($name,array('/'=>'_')).'.'.$pathinfo['extension'];
+						if (!file_exists($file)) {
+							$this->createFaceThumbnail($main_file,$face,$file,$THUMBNAIL_WIDTH);
+						}
+					}
+				}
+			}
 			// Does the thumbnail exist?
 			if (file_exists($file)) {
 				return $file;
@@ -167,14 +221,12 @@ class Media extends GedcomRecord {
 				return $file;
 			}
 			// Is there a corresponding main image?
-			$main_file = WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
 			if (!file_exists($main_file)) {
 				Log::addMediaLog('The file ' . $main_file . ' does not exist for ' . $this->getXref());
 
 				return $file;
 			}
 			// Try to create a thumbnail automatically
-
 			try {
 				$imgsize = getimagesize($main_file);
 				// Image small enough to be its own thumbnail?
@@ -455,14 +507,15 @@ class Media extends GedcomRecord {
 	 *
 	 * @return string
 	 */
-	public function getHtmlUrlDirect($which = 'main', $download = false) {
+	public function getHtmlUrlDirect($which = 'main', $download = false, $individual_names = false) {
 		// “cb” is “cache buster”, so clients will make new request if anything significant about the user or the file changes
 		// The extension is there so that image viewers (e.g. colorbox) can do something sensible
 		$thumbstr    = ($which == 'thumb') ? '&amp;thumb=1' : '';
 		$downloadstr = ($download) ? '&dl=1' : '';
+		$facedata = ($individual_names) ? '&face='.urlencode(serialize($individual_names)) : '';
 
 		return
-			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr .
+			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr . $facedata .
 			'&amp;ged=' . $this->tree->getNameUrl() .
 			'&amp;cb=' . $this->getEtag($which);
 	}
@@ -545,8 +598,9 @@ class Media extends GedcomRecord {
 	 *
 	 * @return string
 	 */
-	public function displayImage() {
-		if ($this->isExternal() || !file_exists($this->getServerFilename('thumb'))) {
+	public function displayImage($individual_names = false) {
+		$server_filename = $this->getServerFilename('thumb', $individual_names);
+		if ($this->isExternal() || !file_exists($server_filename)) {
 			// Use an icon
 			$mime_type = str_replace('/', '-', $this->mimeType());
 			$image     =
@@ -556,12 +610,12 @@ class Media extends GedcomRecord {
 				' title="' . strip_tags($this->getFullName()) . '"' .
 				'></i>';
 		} else {
-			$imgsize = getimagesize($this->getServerFilename('thumb'));
+			$imgsize = getimagesize($server_filename);
 			// Use a thumbnail image
 			$image =
 				'<img' .
 				' dir="' . 'auto' . '"' . // For the tool-tip
-				' src="' . $this->getHtmlUrlDirect('thumb') . '"' .
+				' src="' . $this->getHtmlUrlDirect('thumb', false, $individual_names) . '"' .
 				' alt="' . strip_tags($this->getFullName()) . '"' .
 				' title="' . strip_tags($this->getFullName()) . '"' .
 				' ' . $imgsize[3] . // height="yyy" width="xxx"
@@ -613,5 +667,164 @@ class Media extends GedcomRecord {
 		FunctionsPrintFacts::printMediaLinks('1 OBJE @' . $this->getXref() . '@', 1);
 
 		return ob_get_clean();
+	}
+	
+	/**
+	 * This function creates a single face thumbnail
+	 */
+	public function createFaceThumbnail($filename,$face,$thumbname,$width=false) {
+		$this->readFileInformation($filename,$image,$info,$exif);
+		$this->createThumbnail($face,$image,$info,$exif,$thumbname,$width);
+	}
+	
+	/**
+	 * This function reads file information for thumbnail generation
+	 */
+	public function readFileInformation($filename,&$image,&$info,&$exif) {
+		$image=imagecreatefromjpeg($filename);
+		$info=array(
+			'x'=>imagesx($image),
+			'y'=>imagesy($image),
+		);
+		$exif=exif_read_data($filename);
+	}
+	
+	/**
+	 * This function creates the thumbnail
+	 *
+	 * @return array
+	 */
+	public function createThumbnail($face,$image,$info,$exif,$thumbname,$width=false) {
+		$rect=$this->getFaceCoordinates($face,$info);
+		// Create thumbnail
+		if($rect) {
+			$crop=imagecrop($image,$rect);
+			$crop=$this->rotateImageByExif($crop,$exif);
+			if($width) {
+				$thumb=imagescale($crop,$width);
+				imagejpeg($thumb,$thumbname);
+			} else {
+				imagejpeg($crop,$thumbname);
+			}
+		}
+		return $rect;
+	}
+	
+	/**
+	 * This function returns face information from a file
+	 *
+	 * @return array
+	 */
+	public function getFaceDataFromFile($filename) {
+		// Does the image have a XMP tag?
+		$xmp=$this->getXMPTagFromFile($filename);
+		if($xmp) {
+			// Get face data from XMP tag
+			return $this->getFaceDataFromXMPTag($xmp);
+		}
+	}
+
+	/**
+	 * This function extracts the XMP tag from a file
+	 *
+	 * @return string
+	 */
+	public function getXMPTagFromFile($filename) {
+		$xmp=false;
+		require_once('JPEG.php');
+		$headers=get_jpeg_header_data($filename);
+		foreach($headers as $header){
+			if($header['SegName']=='APP1' && substr($header['SegData'],0,28)=='http://ns.adobe.com/xap/1.0/'){
+				$xmp=substr($header['SegData'],29);
+			}
+		}
+		
+		return $xmp;
+	}
+	
+	/**
+	 * This function returns face information from a XMP tag
+	 *
+	 * @return array
+	 */
+	public function getFaceDataFromXMPTag($xmp) {
+		$faces=array();
+		$name='';
+
+		$xml_parser=xml_parser_create('UTF-8');
+		xml_parser_set_option($xml_parser,XML_OPTION_SKIP_WHITE,0);
+		xml_parser_set_option($xml_parser,XML_OPTION_CASE_FOLDING,0);
+		xml_parse_into_struct($xml_parser, $xmp, $vals, $index);
+		xml_parser_free($xml_parser);
+		
+		foreach($vals as $val) {
+			switch($val['tag']){
+				case 'rdf:Description':
+					if($val['type']=='open' && !empty($val['attributes']['mwg-rs:Name']) && $val['attributes']['mwg-rs:Type']=='Face') {
+						$name=trim($val['attributes']['mwg-rs:Name']);
+					}
+					if($val['type']=='close') {
+						$name='';
+					}
+					break;
+				case 'mwg-rs:Area':
+					if($val['type']='complete' && $name) {
+						$faces[$name]=$val['attributes'];
+					}
+					break;
+			}
+		}
+		
+		return $faces;
+	}
+
+	/**
+	 * This function converts XMP coordinates to pixels
+	 *
+	 * @return array
+	 */
+	public function getFaceCoordinates($face,$info) {
+		if($face['stArea:unit']=='normalized') {
+			$rect=array(
+				'x'=>intval(round($info['x']*($face['stArea:x']-$face['stArea:w']/2))),
+				'y'=>intval(round($info['y']*($face['stArea:y']-$face['stArea:h']/2))),
+				'width'=>intval(round($info['x']*$face['stArea:w'])),
+				'height'=>intval(round($info['y']*$face['stArea:h'])),
+			);
+
+			return $rect;
+		}
+	}
+
+	public function rotateImageByExif($image,$exif) {
+		if(isset($exif['Orientation'])) {
+			switch($exif['Orientation']) {
+				case 2:
+					imageflip($image,IMG_FLIP_VERTICAL);
+					break;
+				case 3:
+					$image=imagerotate($image,180,0);
+					break;
+				case 4:
+					imageflip($image,IMG_FLIP_HORIZONTAL);
+					break;
+				case 5:
+					$image=imagerotate($image,270,0);
+					imageflip($image,IMG_FLIP_VERTICAL);
+					break;
+				case 6:
+					$image=imagerotate($image,270,0);
+					break;
+				case 7:
+					$image=imagerotate($image,90,0);
+					imageflip($image,IMG_FLIP_VERTICAL);
+					break;
+				case 8:
+					$image=imagerotate($image,90,0);
+					break;
+			}
+		}
+		
+		return $image;
 	}
 }
