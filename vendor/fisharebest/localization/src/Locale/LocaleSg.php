@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageSg;
  * @license       GPLv3+
  */
 class LocaleSg extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Sängö';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SANGO';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSg;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

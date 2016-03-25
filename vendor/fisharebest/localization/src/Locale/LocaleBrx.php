@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageBrx;
  * @license       GPLv3+
  */
 class LocaleBrx extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'बड़ो';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageBrx;
 	}

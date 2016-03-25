@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptZmth extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Zmth';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '995';
 	}

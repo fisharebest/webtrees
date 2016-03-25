@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,11 +21,11 @@ require './includes/session.php';
 $help = Filter::get('help');
 switch ($help) {
 	//////////////////////////////////////////////////////////////////////////////
-	// This is a list of all known gedcom tags.  We list them all here so that
+	// This is a list of all known gedcom tags. We list them all here so that
 	// xgettext() may find them.
 	//
 	// Tags such as BIRT:PLAC are only used as labels, and do not require help
-	// text.  These are only used for translating labels.
+	// text. These are only used for translating labels.
 	//
 	// Tags such as _BIRT_CHIL are pseudo-tags, used to create family events.
 	//
@@ -131,7 +131,7 @@ case 'DATE':
 	$example1 .= '<br>' . str_replace('/', '-', $example1) . '<br>' . str_replace('/', '.', $example1);
 	$example2 .= '<br>' . str_replace('/', '-', $example2) . '<br>' . str_replace('/', '.', $example2);
 	$text =
-		'<p>' . I18N::translate('Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords.') . '</p>' .
+		'<p>' . I18N::translate('Dates are stored using English abbreviations and keywords. Shortcuts are available as alternatives to these abbreviations and keywords.') . '</p>' .
 		'<table border="1">' .
 		'<tr><th>' . I18N::translate('Date') . '</th><th>' . I18N::translate('Format') . '</th><th>' . I18N::translate('Shortcut') . '</th></tr>' .
 		'<tr><td>' . $dates['1900'] . '</td><td><kbd dir="ltr" lang="en">1900</kbd></td><td></td></tr>' .
@@ -161,15 +161,15 @@ case 'DATE':
 		'<tr><td>' . $dates['FROM 1900'] . '</td><td><kbd dir="ltr" lang="en">FROM 1900</kbd></td><td><kbd dir="ltr" lang="en">1900-</kbd></td></tr>' .
 		'<tr><td>' . $dates['TO 1910'] . '</td><td><kbd dir="ltr" lang="en">TO 1910</kbd></td><td><kbd dir="ltr" lang="en">-1900</kbd></td></tr>' .
 		'</table>' .
-		'<p>' . I18N::translate('Simple dates are assumed to be in the gregorian calendar.  To specify a date in another calendar, add a keyword before the date.  This keyword is optional if the month or year format make the date unambiguous.') . '</p>' .
+		'<p>' . I18N::translate('Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous.') . '</p>' .
 		'<table border="1">' .
 		'<tr><th>' . I18N::translate('Date') . '</th><th>' . I18N::translate('Format') . '</th></tr>' .
-		'<tr><td colspan="2" align="center">' . I18N::translate('Julian') . '</td></tr>' .
+		'<tr><th colspan="2">' . I18N::translate('Julian') . '</th></tr>' .
 		'<tr><td>' . $dates['@#DJULIAN@ 14 JAN 1700'] . '</td><td><kbd dir="ltr" lang="en">@#DJULIAN@ 14 JAN 1700</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DJULIAN@ 44 B.C.'] . '</td><td><kbd dir="ltr" lang="en">@#DJULIAN@ 44 B.C.</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DJULIAN@ 20 FEB 1742/43'] . '</td><td><kbd dir="ltr" lang="en">@#DJULIAN@ 20 FEB 1742/43</kbd></td></tr>' .
 		'<tr><td>' . $dates['BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'] . '</td><td><kbd dir="ltr" lang="en">BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752</kbd></td></tr>' .
-		'<tr><td colspan="2" align="center">' . I18N::translate('Jewish') . '</td></tr>' .
+		'<tr><th colspan="2">' . I18N::translate('Jewish') . '</th></tr>' .
 		'<tr><td>' . $dates['@#DHEBREW@ 5481'] . '</td><td><kbd dir="ltr" lang="en">@#DHEBREW@ 5481</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DHEBREW@ TSH 5481'] . '</td><td><kbd dir="ltr" lang="en">@#DHEBREW@ TSH 5481</kbd></td></tr>' .
 		'<tr><td>' . $dates['ABT @#DHEBREW@ CSH 5481'] . '</td><td><kbd dir="ltr" lang="en">ABT @#DHEBREW@ CSH 5481</kbd></td></tr>' .
@@ -183,7 +183,7 @@ case 'DATE':
 		'<tr><td>' . $dates['TO @#DHEBREW@ TMZ 5481'] . '</td><td><kbd dir="ltr" lang="en">TO @#DHEBREW@ TMZ 5481</kbd></td></tr>' .
 		'<tr><td>' . $dates['EST @#DHEBREW@ AAV 5481'] . '</td><td><kbd dir="ltr" lang="en">EST @#DHEBREW@ AAV 5481</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DHEBREW@ 03 ELL 5481'] . '</td><td><kbd dir="ltr" lang="en">@#DHEBREW@ 03 ELL 5481</kbd></td></tr>' .
-		'<tr><td colspan="2" align="center">' . I18N::translate('Hijri') . '</td></tr>' .
+		'<tr><th colspan="2">' . I18N::translate('Hijri') . '</th></tr>' .
 		'<tr><td>' . $dates['@#DHIJRI@ 1497'] . '</td><td><kbd dir="ltr" lang="en">@#DHIJRI@ 1497</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DHIJRI@ MUHAR 1497'] . '</td><td><kbd dir="ltr" lang="en">@#DHIJRI@ MUHAR 1497</kbd></td></tr>' .
 		'<tr><td>' . $dates['ABT @#DHIJRI@ SAFAR 1497'] . '</td><td><kbd dir="ltr" lang="en">ABT @#DHIJRI@ SAFAR 1497</kbd></td></tr>' .
@@ -195,7 +195,7 @@ case 'DATE':
 		'<tr><td>' . $dates['FROM @#DHIJRI@ SHAWW 1497'] . '</td><td><kbd dir="ltr" lang="en">FROM @#DHIJRI@ SHAWW 1497</kbd></td></tr>' .
 		'<tr><td>' . $dates['TO @#DHIJRI@ DHUAQ 1497'] . '</td><td><kbd dir="ltr" lang="en">TO @#DHIJRI@ DHUAQ 1497</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DHIJRI@ 03 DHUAH 1497'] . '</td><td><kbd dir="ltr" lang="en">@#DHIJRI@ 03 DHUAH 1497</kbd></td></tr>' .
-		'<tr><td colspan="2" align="center">' . I18N::translate('French') . '</td></tr>' .
+		'<tr><th colspan="2">' . I18N::translate('French') . '</th></tr>' .
 		'<tr><td>' . $dates['@#DFRENCH R@ 12'] . '</td><td><kbd dir="ltr" lang="en">@#DFRENCH R@ 12</kbd></td></tr>' .
 		'<tr><td>' . $dates['@#DFRENCH R@ VEND 12'] . '</td><td><kbd dir="ltr" lang="en">@#DFRENCH R@ VEND 12</kbd></td></tr>' .
 		'<tr><td>' . $dates['ABT @#DFRENCH R@ BRUM 12'] . '</td><td><kbd dir="ltr" lang="en">ABT @#DFRENCH R@ BRUM 12</kbd></td></tr>' .
@@ -216,7 +216,7 @@ case 'NAME':
 	$title = GedcomTag::getLabel('NAME');
 	$text  =
 		'<p>' .
-		I18N::translate('The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogy annotations to identify different parts of the name.') .
+		I18N::translate('The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name.') .
 		'</p>' .
 		'<ul><li>' .
 		I18N::translate('The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>', 'span style="color:#0000ff;"', '/span') .
@@ -229,14 +229,14 @@ case 'NAME':
 		'</li><li>' .
 		I18N::translate('If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>', 'span style="color:#0000ff;"', '/span') .
 		'</li><li>' .
-		I18N::translate('If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>.', 'span style="color:#0000ff;"', '/span') .
+		I18N::translate('If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>.', 'span style="color:#0000ff;"', '/span') .
 		'</li></ul>';
 	break;
 
 case 'SURN':
 	$title = GedcomTag::getLabel('SURN');
 	$text  = '<p>' .
-		I18N::translate('The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma.') .
+		I18N::translate('The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma.') .
 		'</p>';
 	break;
 
@@ -244,31 +244,31 @@ case 'OBJE':
 	$title = GedcomTag::getLabel('OBJE');
 	$text  =
 		'<p>' .
-		I18N::translate('A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver).') .
+		I18N::translate('A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver).') .
 		'</p>';
 	break;
 
 case 'PLAC':
 	$title = GedcomTag::getLabel('PLAC');
-	$text  = I18N::translate('Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database.');
+	$text  = I18N::translate('Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database.');
 	break;
 
 case 'RESN':
 	$title = GedcomTag::getLabel('RESN');
 	$text  =
-		I18N::translate('Restrictions can be added to records and/or facts.  They restrict who can view the data and who can edit it.') .
+		I18N::translate('Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it.') .
 		'<br><br>' .
 		I18N::translate('Note that if a user account is linked to a record, then that user will always be able to view that record.');
 	break;
 
 case 'ROMN':
 	$title = GedcomTag::getLabel('ROMN');
-	$text  = I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur.');
+	$text  = I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur.');
 	break;
 
 case '_HEB':
 	$title = GedcomTag::getLabel('_HEB');
-	$text  = I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters.');
+	$text  = I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters.');
 	break;
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -277,46 +277,46 @@ case '_HEB':
 
 case 'annivers_year_select':
 	$title = I18N::translate('Year input box');
-	$text  = I18N::translate('This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits.  For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>');
+	$text  = I18N::translate('This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>');
 	break;
 
 case 'edit_edit_raw':
 	$title = I18N::translate('Edit raw GEDCOM');
 	$text  =
-		I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly.  It is an advanced option, and you should not use it unless you understand the GEDCOM format.  If you make a mistake here, it can be difficult to fix.') .
+		I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix.') .
 		'<br><br>' .
-		/* I18N: %s is a URL */ I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="http://wiki.webtrees.net/w/images-en/Ged551-5.pdf">http://wiki.webtrees.net/w/images-en/Ged551-5.pdf</a>');
+		/* I18N: %s is a URL */ I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="https://wiki.webtrees.net/w/images-en/Ged551-5.pdf">https://wiki.webtrees.net/w/images-en/Ged551-5.pdf</a>');
 	break;
 
 case 'edit_SOUR_EVEN':
 	$title = I18N::translate('Associate events with this source');
-	$text  = I18N::translate('Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho.');
+	$text  = I18N::translate('Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho.');
 	break;
 
 case 'gedcom_news_archive':
 	$title = I18N::translate('View archive');
-	$text  = I18N::translate('To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link.');
+	$text  = I18N::translate('To reduce the height of the News block, the administrator has hidden some articles. You can reveal these hidden articles by clicking the <b>View archive</b> link.');
 	break;
 
 case 'google_chart_surname':
 	$title = I18N::translate('Surname');
-	$text  = I18N::translate('The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used.');
+	$text  = I18N::translate('The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used.');
 	break;
 
 case 'pending_changes':
 	$title = I18N::translate('Pending changes');
 	$text  =
 		'<p>' .
-		I18N::translate('When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted.') .
+		I18N::translate('When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted.') .
 		'</p><p>' .
 		I18N::translate('This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc.') .
 		'</p><p>' .
-		I18N::translate('Pending changes are only shown when your account has permission to edit.  When you log out, you will no longer be able to see them.  Also, pending changes are only shown on certain pages.  For example, they are not shown in lists, reports, or search results.') .
+		I18N::translate('Pending changes are only shown when your account has permission to edit. When you log out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results.') .
 		'</p>';
 	if (Auth::isAdmin()) {
 		$text .=
 			'<p>' .
-			I18N::translate('Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account.') .
+			I18N::translate('Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account.') .
 			'</p>';
 	}
 	break;

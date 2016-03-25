@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritorySd;
  * @license   GPLv3+
  */
 class LanguageNus extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'nus';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritorySd;
 	}

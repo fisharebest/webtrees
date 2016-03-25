@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -139,7 +139,7 @@ if ($changed_gedcoms) {
 	$prev_gedcom_id = null;
 	foreach ($changes as $change) {
 		$tree = Tree::findById($change->gedcom_id);
-		preg_match('/^0 @' . WT_REGEX_XREF . '@ (' . WT_REGEX_TAG . ')/', $change->old_gedcom . $change->new_gedcom, $match);
+		preg_match('/^0 (?:@' . WT_REGEX_XREF . '@ )?(' . WT_REGEX_TAG . ')/', $change->old_gedcom . $change->new_gedcom, $match);
 		switch ($match[1]) {
 		case 'INDI':
 			$record = new Individual($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
@@ -193,7 +193,7 @@ if ($changed_gedcoms) {
 			}
 		}
 		echo '</td>';
-		$output .= "<td class=\"list_value\"><a href=\"#\" onclick=\"return reply('" . $change->user_name . "', '" . I18N::translate('Moderate pending changes') . "')\" alt=\"" . I18N::translate('Send a message') . "\">";
+		$output .= '<td class="list_value"><a href="#" onclick="return reply(\'' . $change->user_name . '\', \'' . I18N::translate('Moderate pending changes') . '\')" alt="' . I18N::translate('Send a message') . '">';
 		$output .= Filter::escapeHtml($change->real_name);
 		$output .= ' - ' . Filter::escapeHtml($change->user_name) . '</a></td>';
 		$output .= '<td class="list_value">' . $change->change_time . '</td>';
@@ -228,7 +228,7 @@ if ($changed_gedcoms) {
 		if ($count != 0) {
 			$output2 .= '<br>';
 		}
-		$output2 .= '<a href="edit_changes.php?action=undoall&amp;ged=' . rawurlencode($gedcom_name) . "\" onclick=\"return confirm('" . I18N::translate('Are you sure you want to undo all the changes to this family tree?') . "');\">$gedcom_name - " . I18N::translate('Undo all changes') . '</a>';
+		$output2 .= '<a href="edit_changes.php?action=undoall&amp;ged=' . rawurlencode($gedcom_name) . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to undo all the changes to this family tree?') . '\');">' . $gedcom_name . ' - ' . I18N::translate('Undo all changes') . '</a>';
 		$count++;
 	}
 	$output2 .= '</td></tr></table>';

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -78,7 +78,7 @@ function checknames(frm) {
 			<div class="value">
 				<input id="query" type="text" name="query" value="<?php echo Filter::escapeHtml($controller->query); ?>" size="40" autofocus>
 				<?php echo FunctionsPrint::printSpecialCharacterLink('query'); ?>
- 			</div>
+			</div>
 			<div class="label">
 				<?php echo I18N::translate('Records'); ?>
 			</div>
@@ -147,7 +147,7 @@ function checknames(frm) {
 
 <?php endif; ?>
 <?php if ($controller->action === 'replace'): ?>
-	
+
 	<form method="post" name="searchform" onsubmit="return checknames(this);">
 		<input type="hidden" name="action" value="replace">
 		<input type="hidden" name="isPostBack" value="true">
@@ -259,8 +259,8 @@ function checknames(frm) {
 				</p>
 				<p>
 					<input type="radio" name="soundex" value="DaitchM" <?php echo $controller->soundex === 'DaitchM' || $controller->soundex === '' ? 'checked' : ''; ?>>
- 					<?php echo I18N::translate('Daitch-Mokotoff'); ?>
- 				</p>
+					<?php echo I18N::translate('Daitch-Mokotoff'); ?>
+				</p>
 			</div>
 			<div class="label">
 				<?php echo I18N::translate('Associates'); ?>

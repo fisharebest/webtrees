@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageSma;
  * @license       GPLv3+
  */
 class LocaleSma extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Åarjelsaemien gïele';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'AARJELSAMIEN GIELE';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSma;
 	}

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptDsrt extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Dsrt';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '250';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Deseret';
 	}

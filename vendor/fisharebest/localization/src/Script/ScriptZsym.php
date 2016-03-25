@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptZsym extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Zsym';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '996';
 	}

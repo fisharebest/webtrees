@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryXk;
  * @license       GPLv3+
  */
 class LocaleSrCyrlXk extends LocaleSrCyrl {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryXk;
 	}

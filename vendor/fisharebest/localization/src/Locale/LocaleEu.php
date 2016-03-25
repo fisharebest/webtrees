@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageEu;
  * @license       GPLv3+
  */
 class LocaleEu extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'euskara';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'EUSKARA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageEu;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,
@@ -33,7 +29,6 @@ class LocaleEu extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return self::PERCENT . self::NBSP . '%s';
 	}

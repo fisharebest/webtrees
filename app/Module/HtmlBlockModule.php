@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -157,7 +157,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 			'#getAllTagsTable#',
 
 			I18N::translate('Narrative description') =>
-			/* I18N: do not translate the #keywords# */ I18N::translate('This family tree was last updated on #gedcomUpdated#.  There are #totalSurnames# surnames in this family tree.  The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#.  The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#.'),
+			/* I18N: do not translate the #keywords# */ I18N::translate('This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#.'),
 
 			I18N::translate('Statistics') =>
 			'<div class="gedcom_stats">
@@ -165,91 +165,91 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 				' . I18N::translate('This family tree was last updated on %s.', '#gedcomUpdated#') . '
 				<table id="keywords">
 					<tr>
-						<td valign="top" class="width20">
+						<td class="width20">
 							<table cellspacing="1" cellpadding="0">
 								<tr>
 									<td class="facts_label">' . I18N::translate('Individuals') . '</td>
-									<td class="facts_value" align="right"><a href="indilist.php?surname_sublist=no">#totalIndividuals#</a></td>
+									<td class="facts_value"><a href="indilist.php?surname_sublist=no">#totalIndividuals#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Males') . '</td>
-									<td class="facts_value" align="right">#totalSexMales#<br>#totalSexMalesPercentage#</td>
+									<td class="facts_value">#totalSexMales#<br>#totalSexMalesPercentage#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Females') . '</td>
-									<td class="facts_value" align="right">#totalSexFemales#<br>#totalSexFemalesPercentage#</td>
+									<td class="facts_value">#totalSexFemales#<br>#totalSexFemalesPercentage#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Total surnames') . '</td>
-									<td class="facts_value" align="right"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged=' . $WT_TREE->getNameUrl() . '">#totalSurnames#</a></td>
+									<td class="facts_value"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged=' . $WT_TREE->getNameUrl() . '">#totalSurnames#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Families') . '</td>
-									<td class="facts_value" align="right"><a href="famlist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalFamilies#</a></td>
+									<td class="facts_value"><a href="famlist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalFamilies#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Sources') . '</td>
-									<td class="facts_value" align="right"><a href="sourcelist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalSources#</a></td>
+									<td class="facts_value"><a href="sourcelist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalSources#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Media objects') . '</td>
-									<td class="facts_value" align="right"><a href="medialist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalMedia#</a></td>
+									<td class="facts_value"><a href="medialist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalMedia#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Repositories') . '</td>
-									<td class="facts_value" align="right"><a href="repolist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalRepositories#</a></td>
+									<td class="facts_value"><a href="repolist.php?ged=' . $WT_TREE->getNameUrl() . '">#totalRepositories#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Total events') . '</td>
-									<td class="facts_value" align="right">#totalEvents#</td>
+									<td class="facts_value">#totalEvents#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Total users') . '</td>
-									<td class="facts_value" align="right">#totalUsers#</td>
+									<td class="facts_value">#totalUsers#</td>
 								</tr>
 							</table>
 						</td>
 						<td><br></td>
-						<td valign="top">
+						<td>
 							<table cellspacing="1" cellpadding="0" border="0">
 								<tr>
 									<td class="facts_label">' . I18N::translate('Earliest birth year') . '</td>
-									<td class="facts_value" align="right">#firstBirthYear#</td>
+									<td class="facts_value">#firstBirthYear#</td>
 									<td class="facts_value">#firstBirth#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Latest birth year') . '</td>
-									<td class="facts_value" align="right">#lastBirthYear#</td>
+									<td class="facts_value">#lastBirthYear#</td>
 									<td class="facts_value">#lastBirth#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Earliest death year') . '</td>
-									<td class="facts_value" align="right">#firstDeathYear#</td>
+									<td class="facts_value">#firstDeathYear#</td>
 									<td class="facts_value">#firstDeath#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Latest death year') . '</td>
-									<td class="facts_value" align="right">#lastDeathYear#</td>
+									<td class="facts_value">#lastDeathYear#</td>
 									<td class="facts_value">#lastDeath#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Individual who lived the longest') . '</td>
-									<td class="facts_value" align="right">#longestLifeAge#</td>
+									<td class="facts_value">#longestLifeAge#</td>
 									<td class="facts_value">#longestLife#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Average age at death') . '</td>
-									<td class="facts_value" align="right">#averageLifespan#</td>
+									<td class="facts_value">#averageLifespan#</td>
 									<td class="facts_value"></td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Family with the most children') . '</td>
-									<td class="facts_value" align="right">#largestFamilySize#</td>
+									<td class="facts_value">#largestFamilySize#</td>
 									<td class="facts_value">#largestFamily#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">' . I18N::translate('Average number of children per family') . '</td>
-									<td class="facts_value" align="right">#averageChildren#</td>
+									<td class="facts_value">#averageChildren#</td>
 									<td class="facts_value"></td>
 								</tr>
 							</table>
@@ -288,7 +288,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		}
 		echo '</select>';
 		if (!$html) {
-			echo '<p>', I18N::translate('To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements.'), '</p>';
+			echo '<p>', I18N::translate('To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements.'), '</p>';
 		}
 		echo '</td></tr>';
 
@@ -313,7 +313,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td colspan="2" class="descriptionbox">',
 			I18N::translate('Content');
 		if (!$html) {
-			echo '<p>', I18N::translate('As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme.'), '</p>';
+			echo '<p>', I18N::translate('As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme.'), '</p>';
 		}
 		echo
 			'</td></tr><tr>',

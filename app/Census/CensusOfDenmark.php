@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,7 +40,6 @@ class CensusOfDenmark extends Census implements CensusPlaceInterface {
 			new CensusOfDenmark1880(),
 			new CensusOfDenmark1885(),
 			new CensusOfDenmark1890(),
-			new CensusOfDenmark1895(),
 			new CensusOfDenmark1901(),
 			new CensusOfDenmark1906(),
 			new CensusOfDenmark1911(),
@@ -49,7 +48,6 @@ class CensusOfDenmark extends Census implements CensusPlaceInterface {
 			new CensusOfDenmark1925(),
 			new CensusOfDenmark1930(),
 			new CensusOfDenmark1940(),
-			new CensusOfDenmark1950(),
 		);
 	}
 

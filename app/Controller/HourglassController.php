@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -296,15 +296,8 @@ class HourglassController extends ChartController {
 		if ($this->show_spouse) {
 			foreach ($families as $family) {
 				echo "</td></tr><tr><td style='text-align:$otablealign'>";
-				//-- shrink the box for the spouses
-				$tempw = $this->getBoxDimensions()->width;
-				$temph = $this->getBoxDimensions()->height;
-				$this->getBoxDimensions()->width -= 10;
-				$this->getBoxDimensions()->height -= 10;
 				FunctionsPrint::printPedigreePerson($family->getSpouse($person), $this->showFull());
-				$this->getBoxDimensions()->width  = $tempw;
-				$this->getBoxDimensions()->height = $temph;
-				$numkids += 0.95;
+				$numkids++;
 				echo "</td><td></td>";
 			}
 			//-- add offset divs to make things line up better

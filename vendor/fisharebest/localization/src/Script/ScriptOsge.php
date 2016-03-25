@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptOsge extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Osge';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '219';
 	}

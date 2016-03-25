@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptMarc extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Marc';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '332';
 	}

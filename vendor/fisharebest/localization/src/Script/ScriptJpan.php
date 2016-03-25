@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptJpan extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Jpan';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '413';
 	}

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -61,14 +61,19 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 		global $WT_TREE, $controller;
 
 		ob_start();
-		echo '<table class="facts_table">';
 		?>
-		<tr>
-			<td colspan="2" class="descriptionbox rela">
-				<input id="checkbox_note2" type="checkbox" <?php echo $WT_TREE->getPreference('SHOW_LEVEL2_NOTES') ? 'checked' : ''; ?> onclick="jQuery('tr.row_note2').toggle();">
-				<label for="checkbox_note2"><?php echo I18N::translate('Show all notes'); ?></label>
-			</td>
-		</tr>
+		<table class="facts_table">
+			<colgroup>
+				<col class="width20">
+				<col class="width80">
+			</colgroup>
+			<tr>
+				<td colspan="2" class="descriptionbox rela">
+					<input id="checkbox_note2" type="checkbox" <?php echo $WT_TREE->getPreference('SHOW_LEVEL2_NOTES') ? 'checked' : ''; ?> onclick="jQuery('tr.row_note2').toggle();">
+					<label for="checkbox_note2"><?php echo I18N::translate('Show all notes'); ?></label>
+				</td>
+			</tr>
+
 		<?php
 		foreach ($this->getFactsWithNotes() as $fact) {
 			if ($fact->getTag() == 'NOTE') {

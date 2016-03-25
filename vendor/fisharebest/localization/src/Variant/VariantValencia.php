@@ -8,7 +8,6 @@
  * @license   GPLv3+
  */
 class VariantValencia implements VariantInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'valencia';
 	}

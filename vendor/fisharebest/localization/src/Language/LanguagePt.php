@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryPt;
  * @license   GPLv3+
  */
 class LanguagePt extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'pt';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryPt;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

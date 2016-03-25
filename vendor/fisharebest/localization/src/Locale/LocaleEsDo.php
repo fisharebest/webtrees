@@ -10,15 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryDo;
  * @license       GPLv3+
  */
 class LocaleEsDo extends LocaleEs {
-	/** {@inheritdoc} */
-	public function numberSymbols() {
-		return array(
-			self::GROUP   => self::COMMA,
-			self::DECIMAL => self::DOT,
-		);
+	protected function percentFormat() {
+		return '%s' . self::PERCENT;
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryDo;
 	}

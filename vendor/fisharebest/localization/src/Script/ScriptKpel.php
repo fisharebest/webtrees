@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptKpel extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Kpel';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '436';
 	}

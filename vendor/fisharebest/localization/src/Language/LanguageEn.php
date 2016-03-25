@@ -10,12 +10,10 @@ use Fisharebest\Localization\PluralRule\PluralRule1;
  * @license   GPLv3+
  */
 class LanguageEn extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'en';
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

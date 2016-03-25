@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,7 +32,7 @@ class Functions {
 	 * Check with the webtrees.net server for the latest version of webtrees.
 	 * Fetching the remote file can be slow, so check infrequently, and cache the result.
 	 * Pass the current versions of webtrees, PHP and MySQL, as the response
-	 * may be different for each.  The server logs are used to generate
+	 * may be different for each. The server logs are used to generate
 	 * installation statistics which can be found at http://svn.webtrees.net/statistics.html
 	 *
 	 * @return null|string
@@ -42,7 +42,7 @@ class Functions {
 		if ($last_update_timestamp < WT_TIMESTAMP - 24 * 60 * 60) {
 			$row                = Database::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
 			$params             = '?w=' . WT_VERSION . '&p=' . PHP_VERSION . '&m=' . $row->value . '&o=' . (DIRECTORY_SEPARATOR === '/' ? 'u' : 'w');
-			$latest_version_txt = File::fetchUrl('http://dev.webtrees.net/build/latest-version.txt' . $params);
+			$latest_version_txt = File::fetchUrl('https://dev.webtrees.net/build/latest-version.txt' . $params);
 			if ($latest_version_txt) {
 				Site::setPreference('LATEST_WT_VERSION', $latest_version_txt);
 				Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
@@ -74,10 +74,10 @@ class Functions {
 				return I18N::translate('The uploaded file exceeds the allowed size.');
 			case UPLOAD_ERR_PARTIAL:
 				// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-				return I18N::translate('The file was only partially uploaded.  Please try again.');
+				return I18N::translate('The file was only partially uploaded. Please try again.');
 			case UPLOAD_ERR_NO_FILE:
 				// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-				return I18N::translate('No file was received.  Please try again.');
+				return I18N::translate('No file was received. Please try again.');
 			case UPLOAD_ERR_NO_TMP_DIR:
 				// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 				return I18N::translate('The PHP temporary folder is missing.');
@@ -95,7 +95,7 @@ class Functions {
 	/**
 	 * get a gedcom subrecord
 	 *
-	 * searches a gedcom record and returns a subrecord of it.  A subrecord is defined starting at a
+	 * searches a gedcom record and returns a subrecord of it. A subrecord is defined starting at a
 	 * line with level N and all subsequent lines greater than N until the next N level is reached.
 	 * For example, the following is a BIRT subrecord:
 	 * <code>1 BIRT
@@ -107,9 +107,9 @@ class Functions {
 	 * @param int $level the N level of the subrecord to get
 	 * @param string $tag a gedcom tag or string to search for in the record (ie 1 BIRT or 2 DATE)
 	 * @param string $gedrec the parent gedcom record to search in
-	 * @param int $num this allows you to specify which matching <var>$tag</var> to get.  Oftentimes a
-	 *                        gedcom record will have more that 1 of the same type of subrecord.  An individual may have
-	 *                        multiple events for example.  Passing $num=1 would get the first 1.  Passing $num=2 would get the
+	 * @param int $num this allows you to specify which matching <var>$tag</var> to get. Oftentimes a
+	 *                        gedcom record will have more that 1 of the same type of subrecord. An individual may have
+	 *                        multiple events for example. Passing $num=1 would get the first 1. Passing $num=2 would get the
 	 *                        second one, etc.
 	 *
 	 * @return string the subrecord that was found or an empty string "" if not found.
@@ -225,7 +225,7 @@ class Functions {
 		foreach ($arr as $event) {
 			$event->sortOrder = $order;
 			$order++;
-			if ($event->getDate()->isOk()) {
+			if ($event->getDate()->isOK()) {
 				$dated[] = $event;
 			} else {
 				$nondated[] = $event;
@@ -451,7 +451,7 @@ class Functions {
 		$path    = array_slice($nodes['relations'], 1);
 		// Look for paths with *specific* names first.
 		// Note that every combination must be listed separately, as the same English
-		// name can be used for many different relationships.  e.g.
+		// name can be used for many different relationships. e.g.
 		// brother’s wife & husband’s sister = sister-in-law.
 		//
 		// $path is an array of the 12 possible gedcom family relationships:
@@ -485,52 +485,52 @@ class Functions {
 			case 'M':
 				switch ($n) {
 					case  1:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'first cousin');
 					case  2:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'second cousin');
 					case  3:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'third cousin');
 					case  4:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'fourth cousin');
 					case  5:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'fifth cousin');
 					case  6:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'sixth cousin');
 					case  7:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'seventh cousin');
 					case  8:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'eighth cousin');
 					case  9:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'ninth cousin');
 					case 10:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'tenth cousin');
 					case 11:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'eleventh cousin');
 					case 12:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'twelfth cousin');
 					case 13:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'thirteenth cousin');
 					case 14:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'fourteenth cousin');
 					case 15:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', 'fifteenth cousin');
 					default:
-						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+						/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
 						return I18N::translateContext('MALE', '%s × cousin', I18N::number($n));
 				}
 			case 'F':
@@ -683,13 +683,13 @@ class Functions {
 			// TODO: Update all the “3 RELA ” values in class_person
 			return '<span class="error">' . $path . '</span>';
 		}
-		// The path does not include the starting person.  In some languages, the
+		// The path does not include the starting person. In some languages, the
 		// translation for a man’s (relative) is different from a woman’s (relative),
 		// due to inflection.
 		$sex1 = $person1 ? $person1->getSex() : 'U';
 
 		// The sex of the last person in the relationship determines the name in
-		// many cases.  e.g. great-aunt / great-uncle
+		// many cases. e.g. great-aunt / great-uncle
 		if (preg_match('/(fat|hus|son|bro)$/', $path)) {
 			$sex2 = 'M';
 		} elseif (preg_match('/(mot|wif|dau|sis)$/', $path)) {
@@ -2087,7 +2087,7 @@ class Functions {
 			$cousin  = min($up, $down); // Moved out of switch (en/default case) so that
 			$removed = abs($down - $up); // Spanish (and other languages) can use it, too.
 
-			// Different languages have different rules for naming cousins.  For example,
+			// Different languages have different rules for naming cousins. For example,
 			// an English “second cousin once removed” is a Polish “cousin of 7th degree”.
 			//
 			// Need to find out which languages use which rules.
@@ -2095,11 +2095,11 @@ class Functions {
 				case 'pl': // Source: Lukasz Wilenski
 					return self::cousinName($up + $down + 2, $sex2);
 				case 'it':
-					// Source: Michele Locati.  See italian_cousins_names.zip
+					// Source: Michele Locati. See italian_cousins_names.zip
 					// http://webtrees.net/forums/8-translation/1200-great-xn-grandparent?limit=6&start=6
 					return self::cousinName($up + $down - 3, $sex2);
 				case 'es':
-					// Source: Wes Groleau.  See http://UniGen.us/Parentesco.html & http://UniGen.us/Parentesco-D.html
+					// Source: Wes Groleau. See http://UniGen.us/Parentesco.html & http://UniGen.us/Parentesco-D.html
 					if ($down == $up) {
 						return self::cousinName($cousin, $sex2);
 					} elseif ($down < $up) {

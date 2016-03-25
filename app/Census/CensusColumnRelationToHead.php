@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -24,11 +25,18 @@ class CensusColumnRelationToHead extends AbstractCensusColumn implements CensusC
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
-	 * @param Individual $individual
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function generate(Individual $individual) {
-		return '';
+	public function generate(Individual $individual, Individual $head = null) {
+		if ($head === null) {
+			return '';
+		} elseif ($individual == $head) {
+			return 'head';
+		} else {
+			return Functions::getCloseRelationshipName($head, $individual);
+		}
 	}
 }

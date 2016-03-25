@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -54,11 +54,12 @@ class FunctionsDb {
 				"SELECT l_from FROM `##link` WHERE l_file = ? AND l_to = ?" .
 				" UNION " .
 				"SELECT xref FROM `##change` WHERE status = 'pending' AND gedcom_id = ? AND new_gedcom LIKE" .
-				" CONCAT('%@', ?, '@%')"
+				" CONCAT('%@', ?, '@%') AND new_gedcom NOT LIKE CONCAT('0 @', ?, '@%')"
 			)->execute(array(
 				$gedcom_id,
 				$xref,
 				$gedcom_id,
+				$xref,
 				$xref,
 			))->fetchOneColumn();
 	}
@@ -262,7 +263,7 @@ class FunctionsDb {
 				throw new \DomainException('soundex: ' . $soundex);
 		}
 
-		// Nothing to search for?  Return nothing.
+		// Nothing to search for? Return nothing.
 		if (!$givn_sdx && !$surn_sdx && !$plac_sdx) {
 			return array();
 		}
@@ -946,8 +947,8 @@ class FunctionsDb {
 		$where .= " AND d_file=" . $tree->getTreeId();
 
 		// Now fetch these events
-		$ind_sql = "SELECT d_gid AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
-		$fam_sql = "SELECT d_gid AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid=f_id AND d_file=f_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
+		$ind_sql = "SELECT d_gid AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file ORDER BY d_julianday1";
+		$fam_sql = "SELECT d_gid AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid=f_id AND d_file=f_file ORDER BY d_julianday1";
 		foreach (array('INDI' => $ind_sql, 'FAM' => $fam_sql) as $type => $sql) {
 			$rows = Database::prepare($sql)->fetchAll();
 			foreach ($rows as $row) {

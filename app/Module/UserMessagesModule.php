@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -93,7 +93,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			return $user->getUserId() !== Auth::id() && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') !== 'none';
 		});
 
-		$content = '<form id="messageform" name="messageform" method="post" action="module.php?mod=user_messages&mod_action=delete" onsubmit="return confirm(\'' . I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.') . '\');">';
+		$content = '<form id="messageform" name="messageform" method="post" action="module.php?mod=user_messages&mod_action=delete" onsubmit="return confirm(\'' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '\');">';
 		$content .= '<input type="hidden" name="ged" value="' . $ctype . '">';
 		$content .= '<input type="hidden" name="ctype" value="' . $WT_TREE->getNameHtml() . '">';
 		if ($users) {
@@ -136,7 +136,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 				if ($user) {
 					$content .= '<button type="button" onclick="reply(\'' . Filter::escapeJs($message->sender) . '\', \'' . Filter::escapeJs($message->subject) . '\'); return false;">' . I18N::translate('Reply') . '</button> ';
 				}
-				$content .= '<button type="button" onclick="if (confirm(\'' . I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.') . '\')) {jQuery(\'#messageform :checkbox\').prop(\'checked\', false); jQuery(\'#cb_message' . $message->message_id . '\').prop(\'checked\', true); document.messageform.submit();}">' . I18N::translate('Delete') . '</button></div></td></tr>';
+				$content .= '<button type="button" onclick="if (confirm(\'' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '\')) {jQuery(\'#messageform :checkbox\').prop(\'checked\', false); jQuery(\'#cb_message' . $message->message_id . '\').prop(\'checked\', true); document.messageform.submit();}">' . I18N::translate('Delete') . '</button></div></td></tr>';
 			}
 			$content .= '</table>';
 			$content .= '<p><button type="submit">' . I18N::translate('Delete selected messages') . '</button></p>';

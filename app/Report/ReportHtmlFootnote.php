@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -100,7 +100,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 		}
 
 		// Get the line width for the text in points + a little margin
-		$lw = $html->GetStringWidth($this->numText);
+		$lw = $html->getStringWidth($this->numText);
 		// Line Feed counter - Number of lines in the text
 		$lfct = $html->countLines($this->numText);
 		// If there is still remaining wrap width...
@@ -113,7 +113,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 				// Go throught the text line by line
 				foreach ($lines as $line) {
 					// Line width in points + a little margin
-					$lw = $html->GetStringWidth($line);
+					$lw = $html->getStringWidth($line);
 					// If the line has to be wraped
 					if ($lw > $wrapWidthRemaining) {
 						$words    = explode(" ", $line);
@@ -121,14 +121,14 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 						$lw       = 0;
 						foreach ($words as $word) {
 							$addspace--;
-							$lw += $html->GetStringWidth($word . " ");
+							$lw += $html->getStringWidth($word . " ");
 							if ($lw <= $wrapWidthRemaining) {
 								$newtext .= $word;
 								if ($addspace != 0) {
 									$newtext .= " ";
 								}
 							} else {
-								$lw = $html->GetStringWidth($word . " ");
+								$lw = $html->getStringWidth($word . " ");
 								$newtext .= "\n$word";
 								if ($addspace != 0) {
 									$newtext .= " ";

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,12 +33,14 @@ use Fisharebest\Webtrees\Session;
 class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface, ModuleSidebarInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Clippings cart');
+		return /* I18N: Name of a module */
+			I18N::translate('Clippings cart');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Clippings cart” module */ I18N::translate('Select records from your family tree and save them as a GEDCOM file.');
+		return /* I18N: Description of the “Clippings cart” module */
+			I18N::translate('SELECT records FROM your family tree AND save them AS a GEDCOM FILE.');
 	}
 
 	/**
@@ -76,7 +78,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 			$controller = new PageController;
 			$controller
 				->setPageTitle($this->getTitle())
-				->PageHeader()
+				->pageHeader()
 				->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 				->addInlineJavascript('autocomplete();');
 
@@ -91,216 +93,226 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 			if ($clip_ctrl->action == 'add') {
 				$record = GedcomRecord::getInstance($clip_ctrl->id, $WT_TREE);
 				if ($clip_ctrl->type === 'FAM') { ?>
-				<form action="module.php" method="get">
-					<input type="hidden" name="mod" value="clippings">
-					<input type="hidden" name="mod_action" value="index">
-					<input type="hidden" name="id" value="<?php echo $clip_ctrl->id; ?>">
-					<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
-					<input type="hidden" name="action" value="add1">
-					<table>
-						<thead>
-							<tr>
-								<td class="topbottombar">
-									<?php echo I18N::translate('Add to the clippings cart'); ?>
-								</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="optionbox">
-									<input type="radio" name="others" value="parents">
-									<?php echo $record->getFullName(); ?>
-								</td>
-							</tr>
-							<tr>
-								<td class="optionbox">
-									<input type="radio" name="others" value="members" checked>
-									<?php echo /* I18N: %s is a family (husband + wife) */ I18N::translate('%s and their children', $record->getFullName()); ?>
-								</td>
-							</tr>
-							<tr>
-								<td class="optionbox">
-									<input type="radio" name="others" value="descendants">
-									<?php echo /* I18N: %s is a family (husband + wife) */ I18N::translate('%s and their descendants', $record->getFullName()); ?>
-								</td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<td class="topbottombar"><input type="submit" value="<?php echo I18N::translate('continue'); ?>">
-								</td>
-							</tr>
-						</tfoot>
-					</table>
-				</form>
-				<?php } elseif ($clip_ctrl->type === 'INDI') { ?>
-				<form action="module.php" method="get">
-					<input type="hidden" name="mod" value="clippings">
-					<input type="hidden" name="mod_action" value="index">
-					<input type="hidden" name="id" value="<?php echo $clip_ctrl->id; ?>">
-					<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
-					<input type="hidden" name="action" value="add1"></td></tr>
-					<table>
-						<thead>
-							<tr>
-								<td class="topbottombar">
-									<?php echo I18N::translate('Add to the clippings cart'); ?>
-								</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="optionbox">
-									<label>
-										<input type="radio" name="others" checked value="none">
-										<?php echo $record->getFullName(); ?>
-									</label>
-								</td>
-							</tr>
-							<tr>
-								<td class="optionbox">
-									<label>
+					<form action="module.php" method="get">
+						<input type="hidden" name="mod" value="clippings">
+						<input type="hidden" name="mod_action" value="index">
+						<input type="hidden" name="id" value="<?php echo $clip_ctrl->id; ?>">
+						<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
+						<input type="hidden" name="action" value="add1">
+						<table>
+							<thead>
+								<tr>
+									<td class="topbottombar">
+										<?php echo I18N::translate('Add to the clippings cart'); ?>
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="optionbox">
 										<input type="radio" name="others" value="parents">
-										<?php
-										if ($record->getSex() === 'F') {
-											echo /* I18N: %s is a woman's name */ I18N::translate('%s, her parents and siblings', $record->getFullName());
-										} else {
-											echo /* I18N: %s is a man's name */ I18N::translate('%s, his parents and siblings', $record->getFullName());
-										}
-										?>
-									</label>
-								</td>
-							</tr>
-							<tr>
-								<td class="optionbox">
-									<label>
-										<input type="radio" name="others" value="members">
-										<?php
-										if ($record->getSex() === 'F') {
-											echo /* I18N: %s is a woman's name */ I18N::translate('%s, her spouses and children', $record->getFullName());
-										} else {
-											echo /* I18N: %s is a man's name */ I18N::translate('%s, his spouses and children', $record->getFullName());
-										}
-										?>
-									</label>
-								</td>
-							</tr>
-							<tr>
-								<td class="optionbox">
-									<label>
-										<input type="radio" name="others" value="ancestors" id="ancestors">
-										<?php
-										if ($record->getSex() === 'F') {
-										echo /* I18N: %s is a woman's name */ I18N::translate('%s and her ancestors', $record->getFullName());
-										} else {
-										echo /* I18N: %s is a man's name */ I18N::translate('%s and his ancestors', $record->getFullName());
-										}
-									?>
-									</label>
-									<br>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<?php echo I18N::translate('Number of generations'); ?>
-									<input type="text" size="5" name="level1" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestors');">
-								</td>
-							</tr>
-							<tr>
-								<td class="optionbox">
-									<label>
-										<input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies">
-										<?php
-										if ($record->getSex() === 'F') {
-											echo /* I18N: %s is a woman's name */ I18N::translate('%s, her ancestors and their families', $record->getFullName());
-										} else {
-											echo /* I18N: %s is a man's name */ I18N::translate('%s, his ancestors and their families', $record->getFullName());
-										}
-										?>
-									</label>
-									<br >
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<?php echo I18N::translate('Number of generations'); ?>
-									<input type="text" size="5" name="level2" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestorsfamilies');">
-								</td>
-							</tr>
-							<tr>
-								<td class="optionbox">
-									<label>
-										<input type="radio" name="others" value="descendants" id="descendants">
-										<?php
-										if ($record->getSex() === 'F') {
-											echo /* I18N: %s is a woman's name */ I18N::translate('%s, her spouses and descendants', $record->getFullName());
-										} else {
-											echo /* I18N: %s is a man's name */ I18N::translate('%s, his spouses and descendants', $record->getFullName());
-										}
-										?>
-									</label>
-									<br >
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<?php echo I18N::translate('Number of generations'); ?>
-									<input type="text" size="5" name="level3" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('descendants');">
-								</td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<td class="topbottombar">
-									<input type="submit" value="<?php echo I18N::translate('continue'); ?>">
-								</td>
-							</tr>
-						</tfoot>
-					</table>
-				</form>
-				<?php } elseif ($clip_ctrl->type === 'SOUR') { ?>
-				<form action="module.php" method="get">
-					<input type="hidden" name="mod" value="clippings">
-					<input type="hidden" name="mod_action" value="index">
-					<input type="hidden" name="id" value="<?php echo $clip_ctrl->id; ?>">
-					<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
-					<input type="hidden" name="action" value="add1"></td></tr>
-					<table>
-						<thead>
-							<tr>
-								<td class="topbottombar">
-									<?php echo I18N::translate('Add to the clippings cart'); ?>
-								</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="optionbox">
-									<label>
-										<input type="radio" name="others" checked value="none">
 										<?php echo $record->getFullName(); ?>
-									</label>
-								</td>
-							</tr>
-							<tr>
-								<td class="optionbox">
-									<label>
-										<input type="radio" name="others" value="linked">
-										<?php echo /* I18N: %s is the name of a source */ I18N::translate('%s and the individuals that reference it.', $record->getFullName()); ?>
-									</label>
-								</td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<td class="topbottombar">
-									<input type="submit" value="<?php echo I18N::translate('continue'); ?>">
-								</td>
-							</tr>
-						</tfoot>
-					</table>
-				</form>
+									</td>
+								</tr>
+								<tr>
+									<td class="optionbox">
+										<input type="radio" name="others" value="members" checked>
+										<?php echo /* I18N: %s is a family (husband + wife) */
+										I18N::translate('%s and their children', $record->getFullName()); ?>
+									</td>
+								</tr>
+								<tr>
+									<td class="optionbox">
+										<input type="radio" name="others" value="descendants">
+										<?php echo /* I18N: %s is a family (husband + wife) */
+										I18N::translate('%s and their descendants', $record->getFullName()); ?>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td class="topbottombar"><input type="submit" value="<?php echo I18N::translate('continue'); ?>">
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
+				<?php } elseif ($clip_ctrl->type === 'INDI') { ?>
+					<form action="module.php" method="get">
+						<input type="hidden" name="mod" value="clippings">
+						<input type="hidden" name="mod_action" value="index">
+						<input type="hidden" name="id" value="<?php echo $clip_ctrl->id; ?>">
+						<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
+						<input type="hidden" name="action" value="add1">
+						<table>
+							<thead>
+								<tr>
+									<td class="topbottombar">
+										<?php echo I18N::translate('Add to the clippings cart'); ?>
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="optionbox">
+										<label>
+											<input type="radio" name="others" checked value="none">
+											<?php echo $record->getFullName(); ?>
+										</label>
+									</td>
+								</tr>
+								<tr>
+									<td class="optionbox">
+										<label>
+											<input type="radio" name="others" value="parents">
+											<?php
+											if ($record->getSex() === 'F') {
+												echo /* I18N: %s is a woman's name */
+												I18N::translate('%s, her parents and siblings', $record->getFullName());
+											} else {
+												echo /* I18N: %s is a man's name */
+												I18N::translate('%s, his parents and siblings', $record->getFullName());
+											}
+											?>
+										</label>
+									</td>
+								</tr>
+								<tr>
+									<td class="optionbox">
+										<label>
+											<input type="radio" name="others" value="members">
+											<?php
+											if ($record->getSex() === 'F') {
+												echo /* I18N: %s is a woman's name */
+												I18N::translate('%s, her spouses and children', $record->getFullName());
+											} else {
+												echo /* I18N: %s is a man's name */
+												I18N::translate('%s, his spouses and children', $record->getFullName());
+											}
+											?>
+										</label>
+									</td>
+								</tr>
+								<tr>
+									<td class="optionbox">
+										<label>
+											<input type="radio" name="others" value="ancestors" id="ancestors">
+											<?php
+											if ($record->getSex() === 'F') {
+												echo /* I18N: %s is a woman's name */
+												I18N::translate('%s and her ancestors', $record->getFullName());
+											} else {
+												echo /* I18N: %s is a man's name */
+												I18N::translate('%s and his ancestors', $record->getFullName());
+											}
+											?>
+										</label>
+										<br>
+										<?php echo I18N::translate('Number of generations'); ?>
+										<input type="text" size="5" name="level1" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestors');">
+									</td>
+								</tr>
+								<tr>
+									<td class="optionbox">
+										<label>
+											<input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies">
+											<?php
+											if ($record->getSex() === 'F') {
+												echo /* I18N: %s is a woman's name */
+												I18N::translate('%s, her ancestors and their families', $record->getFullName());
+											} else {
+												echo /* I18N: %s is a man's name */
+												I18N::translate('%s, his ancestors and their families', $record->getFullName());
+											}
+											?>
+										</label>
+										<br>
+										<?php echo I18N::translate('Number of generations'); ?>
+										<input type="text" size="5" name="level2" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestorsfamilies');">
+									</td>
+								</tr>
+								<tr>
+									<td class="optionbox">
+										<label>
+											<input type="radio" name="others" value="descendants" id="descendants">
+											<?php
+											if ($record->getSex() === 'F') {
+												echo /* I18N: %s is a woman's name */
+												I18N::translate('%s, her spouses and descendants', $record->getFullName());
+											} else {
+												echo /* I18N: %s is a man's name */
+												I18N::translate('%s, his spouses and descendants', $record->getFullName());
+											}
+											?>
+										</label>
+										<br>
+										<?php echo I18N::translate('Number of generations'); ?>
+										<input type="text" size="5" name="level3" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('descendants');">
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td class="topbottombar">
+										<input type="submit" value="<?php echo I18N::translate('continue'); ?>">
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
+				<?php } elseif ($clip_ctrl->type === 'SOUR') { ?>
+					<form action="module.php" method="get">
+						<input type="hidden" name="mod" value="clippings">
+						<input type="hidden" name="mod_action" value="index">
+						<input type="hidden" name="id" value="<?php echo $clip_ctrl->id; ?>">
+						<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
+						<input type="hidden" name="action" value="add1">
+						<table>
+							<thead>
+								<tr>
+									<td class="topbottombar">
+										<?php echo I18N::translate('Add to the clippings cart'); ?>
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="optionbox">
+										<label>
+											<input type="radio" name="others" checked value="none">
+											<?php echo $record->getFullName(); ?>
+										</label>
+									</td>
+								</tr>
+								<tr>
+									<td class="optionbox">
+										<label>
+											<input type="radio" name="others" value="linked">
+											<?php echo /* I18N: %s is the name of a source */
+											I18N::translate('%s and the individuals that reference it.', $record->getFullName()); ?>
+										</label>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td class="topbottombar">
+										<input type="submit" value="<?php echo I18N::translate('continue'); ?>">
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
 				<?php }
-				}
+			}
 
 			if (!$cart[$WT_TREE->getTreeId()]) {
 				if ($clip_ctrl->action != 'add') {
-					echo I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>');
+					echo I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>');
 					?>
 					<form method="get" name="addin" action="module.php">
-					<input type="hidden" name="mod" value="clippings">
-					<input type="hidden" name="mod_action" value="index">
+						<input type="hidden" name="mod" value="clippings">
+						<input type="hidden" name="mod_action" value="index">
 						<table>
 							<thead>
 								<tr>
@@ -335,62 +347,93 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 				// get lost after ajax updates
 				$pid = Filter::get('pid', WT_REGEX_XREF);
 
-				if ($clip_ctrl->action != 'download' && $clip_ctrl->action != 'add') { ?>
-					<table><tr><td class="width33" valign="top" rowspan="3">
+				if ($clip_ctrl->action !== 'download' && $clip_ctrl->action !== 'add') { ?>
 					<form method="get" action="module.php">
-					<input type="hidden" name="mod" value="clippings">
-					<input type="hidden" name="mod_action" value="index">
-					<input type="hidden" name="action" value="download">
-					<input type="hidden" name="pid" value="<?php echo $pid; ?>">
-					<table>
-					<tr><td colspan="2" class="topbottombar"><h2><?php echo I18N::translate('Download'); ?></h2></td></tr>
-					<tr>
-						<td class="descriptionbox width50 wrap">
-							<?php echo I18N::translate('To reduce the size of the download, you can compress the data into a .ZIP file.  You will need to uncompress the .ZIP file before you can use it.'); ?>
-						</td>
-						<td class="optionbox wrap">
-							<input type="checkbox" name="Zip" value="yes">
-							<?php echo I18N::translate('Zip file(s)'); ?>
-						</td>
-					</tr>
-					<tr>
-						<td class="descriptionbox width50 wrap">
-							<?php echo I18N::translate('Include media (automatically zips files)'); ?>
-						</td>
-					<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes"></td></tr>
+						<input type="hidden" name="mod" value="clippings">
+						<input type="hidden" name="mod_action" value="index">
+						<input type="hidden" name="action" value="download">
+						<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+						<table>
+							<tr>
+								<td colspan="2" class="topbottombar">
+									<h2><?php echo I18N::translate('Download'); ?></h2>
+								</td>
+							</tr>
+							<tr>
+								<td class="descriptionbox width50 wrap">
+									<?php echo I18N::translate('To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it.'); ?>
+								</td>
+								<td class="optionbox wrap">
+									<input type="checkbox" name="Zip" value="yes">
+									<?php echo I18N::translate('Zip file(s)'); ?>
+								</td>
+							</tr>
+							<tr>
+								<td class="descriptionbox width50 wrap">
+									<?php echo I18N::translate('Include media (automatically zips files)'); ?>
+								</td>
+								<td class="optionbox">
+									<input type="checkbox" name="IncludeMedia" value="yes">
+								</td>
+							</tr>
 
-					<?php if (Auth::isManager($WT_TREE)) {	?>
-						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'); ?></td>
-						<td class="optionbox">
-							<input type="radio" name="privatize_export" value="none" checked> <?php echo I18N::translate('None'); ?><br>
-							<input type="radio" name="privatize_export" value="gedadmin"> <?php echo I18N::translate('Manager'); ?><br>
-							<input type="radio" name="privatize_export" value="user"> <?php echo I18N::translate('Member'); ?><br>
-							<input type="radio" name="privatize_export" value="visitor"> <?php echo I18N::translate('Visitor'); ?>
-						</td></tr>
-					<?php } elseif (Auth::isMember($WT_TREE)) { ?>
-						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'); ?></td>
-						<td class="optionbox">
-							<input type="radio" name="privatize_export" value="user" checked> <?php echo I18N::translate('Member'); ?><br>
-							<input type="radio" name="privatize_export" value="visitor"> <?php echo I18N::translate('Visitor'); ?>
-						</td></tr>
-					<?php } ?>
+							<?php if (Auth::isManager($WT_TREE)) { ?>
+								<tr>
+									<td class="descriptionbox width50 wrap">
+										<?php echo I18N::translate('Apply privacy settings'); ?>
+									</td>
+									<td class="optionbox">
+										<input type="radio" name="privatize_export" value="none" checked>
+										<?php echo I18N::translate('None'); ?>
+										<br>
+										<input type="radio" name="privatize_export" value="gedadmin">
+										<?php echo I18N::translate('Manager'); ?>
+										<br>
+										<input type="radio" name="privatize_export" value="user">
+										<?php echo I18N::translate('Member'); ?>
+										<br>
+										<input type="radio" name="privatize_export" value="visitor">
+										<?php echo I18N::translate('Visitor'); ?>
+									</td>
+								</tr>
+							<?php } elseif (Auth::isMember($WT_TREE)) { ?>
+								<tr>
+									<td class="descriptionbox width50 wrap">
+										<?php echo I18N::translate('Apply privacy settings'); ?>
+									</td>
+									<td class="optionbox">
+										<input type="radio" name="privatize_export" value="user" checked> <?php echo I18N::translate('Member'); ?><br>
+										<input type="radio" name="privatize_export" value="visitor"> <?php echo I18N::translate('Visitor'); ?>
+									</td>
+								</tr>
+							<?php } ?>
 
-					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Convert from UTF-8 to ISO-8859-1'); ?></td>
-					<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
+							<tr>
+								<td class="descriptionbox width50 wrap">
+									<?php echo I18N::translate('Convert from UTF-8 to ISO-8859-1'); ?>
+								</td>
+								<td class="optionbox">
+									<input type="checkbox" name="convert" value="yes">
+								</td>
+							</tr>
 
-					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Add the GEDCOM media path to filenames'); ?></td>
-					<td class="optionbox">
-						<input type="checkbox" name="conv_path" value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?>">
-						<span dir="auto"><?php echo Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?></span>
-					</td></tr>
+							<tr>
+								<td class="descriptionbox width50 wrap">
+									<?php echo I18N::translate('Add the GEDCOM media path to filenames'); ?>
+								</td>
+								<td class="optionbox">
+									<input type="checkbox" name="conv_path" value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?>">
+									<span dir="auto"><?php echo Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?></span>
+								</td>
+							</tr>
 
-					<tr><td class="topbottombar" colspan="2">
-					<input type="submit" value="<?php echo I18N::translate('Download'); ?>">
+							<tr>
+								<td class="topbottombar" colspan="2">
+									<input type="submit" value="<?php echo I18N::translate('Download'); ?>">
+								</td>
+							</tr>
+						</table>
 					</form>
-					</td></tr>
-					</table>
-					</td></tr>
-					</table>
 					<br>
 
 					<form method="get" name="addin" action="module.php">
@@ -417,52 +460,75 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
 									</td>
 								</tr>
-								</tbody>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th colspan="2">
+										<a href="module.php?mod=clippings&amp;mod_action=index&amp;action=empty">
+											<?php echo I18N::translate('Empty the clippings cart'); ?>
+										</a>
+									</th>
+								</tr>
+							</tfoot>
 						</table>
 					</form>
 
-
 				<?php } ?>
-				<br><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=empty"><?php echo I18N::translate('Empty the clippings cart'); ?></a>
-				</td></tr>
 
-				<tr><td class="topbottombar"><h2><?php echo I18N::translate('Family tree clippings cart'); ?></h2></td></tr>
-
-				<tr><td valign="top">
+				<h2>
+					<?php echo I18N::translate('Family tree clippings cart'); ?>
+				</h2>
 				<table id="mycart" class="sortable list_table width100">
-					<tr>
-						<th class="list_label"><?php echo I18N::translate('Record'); ?></th>
-						<th class="list_label"><?php echo I18N::translate('Remove'); ?></th>
-					</tr>
-			<?php
-				foreach (array_keys($cart[$WT_TREE->getTreeId()]) as $xref) {
-					$record = GedcomRecord::getInstance($xref, $WT_TREE);
-					if ($record) {
-						switch ($record::RECORD_TYPE) {
-						case 'INDI': $icon = 'icon-indis'; break;
-						case 'FAM':  $icon = 'icon-sfamily'; break;
-						case 'SOUR': $icon = 'icon-source'; break;
-						case 'REPO': $icon = 'icon-repository'; break;
-						case 'NOTE': $icon = 'icon-note'; break;
-						case 'OBJE': $icon = 'icon-media'; break;
-						default:     $icon = 'icon-clippings'; break;
+					<thead>
+						<tr>
+							<th class="list_label"><?php echo I18N::translate('Record'); ?></th>
+							<th class="list_label"><?php echo I18N::translate('Remove'); ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						foreach (array_keys($cart[$WT_TREE->getTreeId()]) as $xref) {
+							$record = GedcomRecord::getInstance($xref, $WT_TREE);
+							if ($record) {
+								switch ($record::RECORD_TYPE) {
+								case 'INDI':
+									$icon = 'icon-indis';
+									break;
+								case 'FAM':
+									$icon = 'icon-sfamily';
+									break;
+								case 'SOUR':
+									$icon = 'icon-source';
+									break;
+								case 'REPO':
+									$icon = 'icon-repository';
+									break;
+								case 'NOTE':
+									$icon = 'icon-note';
+									break;
+								case 'OBJE':
+									$icon = 'icon-media';
+									break;
+								default:
+									$icon = 'icon-clippings';
+									break;
+								}
+								?>
+								<tr>
+									<td class="list_value">
+										<i class="<?php echo $icon; ?>"></i>
+										<?php
+										echo '<a href="', $record->getHtmlUrl(), '">', $record->getFullName(), '</a>';
+										?>
+									</td>
+									<td class="list_value center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;id=<?php echo $xref; ?>" class="icon-remove" title="<?php echo I18N::translate('Remove'); ?>"></a></td>
+								</tr>
+								<?php
+							}
 						}
 						?>
-						<tr><td class="list_value">
-							<i class="<?php echo $icon; ?>"></i>
-						<?php
-						echo '<a href="', $record->getHtmlUrl(), '">', $record->getFullName(), '</a>';
-						?>
-						</td>
-						<td class="list_value center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;id=<?php echo $xref; ?>" class="icon-remove" title="<?php echo I18N::translate('Remove'); ?>"></a></td>
-					</tr>
-					<?php
-					}
-				}
-			?>
 				</table>
-				</td></tr></table>
-			<?php
+				<?php
 			}
 			break;
 		default:
@@ -472,7 +538,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	}
 
 	/**
-	 * The user can re-order menus.  Until they do, they are shown in this order.
+	 * The user can re-order menus. Until they do, they are shown in this order.
 	 *
 	 * @return int
 	 */
@@ -488,18 +554,19 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	public function getMenu() {
 		global $controller, $WT_TREE;
 
-		//-- main clippings menu item
-		$menu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippings', array('rel' => 'nofollow'));
+		$submenus = array();
 		if (isset($controller->record)) {
-			$submenu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippingscart', array('rel' => 'nofollow'));
-			$menu->addSubmenu($submenu);
+			$submenus[] = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippingscart', array('rel' => 'nofollow'));
 		}
 		if (!empty($controller->record) && $controller->record->canShow()) {
-			$submenu = new Menu(I18N::translate('Add to the clippings cart'), 'module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id=' . $controller->record->getXref(), 'menu-clippingsadd', array('rel' => 'nofollow'));
-			$menu->addSubmenu($submenu);
+			$submenus[] = new Menu(I18N::translate('Add to the clippings cart'), 'module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id=' . $controller->record->getXref(), 'menu-clippingsadd', array('rel' => 'nofollow'));
 		}
 
-		return $menu;
+		if ($submenus) {
+			return new Menu($this->getTitle(), '#', 'menu-clippings', array('rel' => 'nofollow'), $submenus);
+		} else {
+			return new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippings', array('rel' => 'nofollow'));
+		}
 	}
 
 	/** {@inheritdoc} */
@@ -696,17 +763,17 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 			$out .=
 				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . '</td>' .
 				'<td class="optionbox">' .
-				'	<input type="radio" name="privatize_export" value="none" checked> ' . I18N::translate('None') . '<br>' .
-				'	<input type="radio" name="privatize_export" value="gedadmin"> ' . I18N::translate('Manager') . '<br>' .
-				'	<input type="radio" name="privatize_export" value="user"> ' . I18N::translate('Member') . '<br>' .
-				'	<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
+				'<input type="radio" name="privatize_export" value="none" checked> ' . I18N::translate('None') . '<br>' .
+				'<input type="radio" name="privatize_export" value="gedadmin"> ' . I18N::translate('Manager') . '<br>' .
+				'<input type="radio" name="privatize_export" value="user"> ' . I18N::translate('Member') . '<br>' .
+				'<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
 				'</td></tr>';
 		} elseif (Auth::isMember($WT_TREE)) {
 			$out .=
 				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . '</td>' .
 				'<td class="list_value">' .
-				'	<input type="radio" name="privatize_export" value="user" checked> ' . I18N::translate('Member') . '<br>' .
-				'	<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
+				'<input type="radio" name="privatize_export" value="user" checked> ' . I18N::translate('Member') . '<br>' .
+				'<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
 				'</td></tr>';
 		}
 

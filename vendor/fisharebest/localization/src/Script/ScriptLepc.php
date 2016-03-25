@@ -8,22 +8,18 @@
  * @license   GPLv3+
  */
 class ScriptLepc extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Lepc';
 	}
 
-	/** {@inheritdoc} */
 	public function numerals() {
 		return array('᱀', '᱁', '᱂', '᱃', '᱄', '᱅', '᱆', '᱇', '᱈', '᱉');
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '335';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Lepcha';
 	}

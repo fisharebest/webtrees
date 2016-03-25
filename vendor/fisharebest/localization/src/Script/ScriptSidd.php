@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptSidd extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Sidd';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '302';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Siddham';
 	}

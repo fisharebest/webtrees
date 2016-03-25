@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,7 @@ use Rhumsaa\Uuid\Uuid;
 class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module.  Tasks that need further research.  */ I18N::translate('Research tasks');
+		return /* I18N: Name of a module. Tasks that need further research. */ I18N::translate('Research tasks');
 	}
 
 	/** {@inheritdoc} */
@@ -184,9 +184,9 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		?>
 		<tr>
 			<td colspan="2">
-				<?php echo I18N::translate('Research tasks are special events, added to individuals in your family tree, which identify the need for further research.  You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc.'); ?>
+				<?php echo I18N::translate('Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc.'); ?>
 				<?php echo I18N::translate('To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences.'); ?>
-				<?php echo I18N::translate('Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag.'); ?>
+				<?php echo I18N::translate('Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag.'); ?>
 			</td>
 		</tr>
 		<?php

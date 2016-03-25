@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -76,7 +76,7 @@ if (Filter::post('action') === 'delete' && Filter::checkCsrf()) {
 	)->execute(array($module_name));
 	Database::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute(array($module_name));
 	Database::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute(array($module_name));
-	Database::prepare("DELETE FROM `##module`         WHERE module_name=?")->execute(array($module_name));
+	Database::prepare("DELETE FROM `##module` WHERE module_name=?")->execute(array($module_name));
 
 	FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
 
@@ -86,7 +86,7 @@ if (Filter::post('action') === 'delete' && Filter::checkCsrf()) {
 }
 
 // The module can’t be found on disk?
-// Don't delete it automatically.  It may be temporarily missing, after a re-installation, etc.
+// Don't delete it automatically. It may be temporarily missing, after a re-installation, etc.
 foreach ($module_status as $module_name => $status) {
 	if (!array_key_exists($module_name, $modules)) {
 		$html =
@@ -106,12 +106,12 @@ $controller
 	->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->addInlineJavascript('
-	  function reindexMods(id) {
+		function reindexMods(id) {
 			jQuery("#" + id + " input").each(
 				function (index, value) {
 					value.value = index+1;
 				});
-	  }
+		}
 		jQuery("#installed_table").dataTable( {
 			paging: false,
 			' . I18N::datatablesI18N() . ',

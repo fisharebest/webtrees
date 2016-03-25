@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryCy;
  * @license       GPLv3+
  */
 class LocaleElCy extends LocaleEl {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryCy;
 	}

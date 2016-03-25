@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,18 +28,6 @@ use Fisharebest\Webtrees\Module;
  * Controller for the media page
  */
 class MediaController extends GedcomRecordController {
-	/**
-	 * Startup activity
-	 */
-	public function __construct() {
-		global $WT_TREE;
-
-		$xref         = Filter::get('mid', WT_REGEX_XREF);
-		$this->record = Media::getInstance($xref, $WT_TREE);
-
-		parent::__construct();
-	}
-
 	/**
 	 * get edit menu
 	 */
@@ -74,12 +62,10 @@ class MediaController extends GedcomRecordController {
 					'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","source");',
 				)));
 			}
-		}
 
-		// delete
-		if (Auth::isEditor($this->record->getTree())) {
+			// delete
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-obje-del', array(
-				'onclick' => 'return delete_media("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
 			)));
 		}
 
@@ -88,25 +74,6 @@ class MediaController extends GedcomRecordController {
 			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-obje-editraw', array(
 				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
 			)));
-		}
-
-		// add to favorites
-		if (Module::getModuleByName('user_favorites')) {
-			$menu->addSubmenu(new Menu(
-			/* I18N: Menu option.  Add [the current page] to the list of favorites */
-				I18N::translate('Add to favorites'),
-				'#',
-				'menu-obje-addfav',
-				array(
-					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
-				)));
-		}
-
-		// Get the link for the first submenu and set it as the link for the main menu
-		if ($menu->getSubmenus()) {
-			$submenus = $menu->getSubmenus();
-			$menu->setLink($submenus[0]->getLink());
-			$menu->setAttrs($submenus[0]->getAttrs());
 		}
 
 		return $menu;

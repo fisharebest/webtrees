@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageUk;
  * @license       GPLv3+
  */
 class LocaleUk extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'українська';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'УКРАЇНСЬКА';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageUk;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

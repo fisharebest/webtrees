@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * Class GedcomCodeAdop - Functions and logic for GEDCOM "PEDI" codes
+ * Class GedcomCodeAdop - Functions and logic for GEDCOM "ADOP" codes
  */
 class GedcomCodeAdop {
 	/** @var string[] A list of possible adoption codes */
@@ -87,7 +87,7 @@ class GedcomCodeAdop {
 			$values[$type] = self::getValue($type, $record);
 		}
 
-		// Don't sort these.  We want the order: both parents, father, mother
+		// Don't sort these. We want the order: both parents, father, mother
 		return $values;
 	}
 }

@@ -10,17 +10,14 @@ use Fisharebest\Localization\Territory\TerritoryUs;
  * @license       GPLv3+
  */
 class LocaleEnUs extends LocaleEn {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'American English';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ENGLISH, AMERICAN';
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryUs;
 	}

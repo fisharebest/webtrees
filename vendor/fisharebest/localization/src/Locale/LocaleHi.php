@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageHi;
  * @license       GPLv3+
  */
 class LocaleHi extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'हिन्दी';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageHi;
 	}

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptMahj extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Mahj';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '314';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Mahajani';
 	}

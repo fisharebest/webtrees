@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class TerritoryGu extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'GU';
 	}
 
-	/** {@inheritdoc} */
 	public function firstDay() {
 		return 0;
 	}

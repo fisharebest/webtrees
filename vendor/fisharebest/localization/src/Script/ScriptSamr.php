@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptSamr extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Samr';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '123';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Samaritan';
 	}

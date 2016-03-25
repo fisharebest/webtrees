@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,7 +38,7 @@ $download_url_html   = '<b dir="auto"><a href="' . Filter::escapeHtml($download_
 
 // Show a friendly message while the site is being upgraded
 $lock_file           = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'offline.txt';
-$lock_file_text      = I18N::translate('This website is being upgraded.  Try again in a few minutes.') . PHP_EOL . FunctionsDate::formatTimestamp(WT_TIMESTAMP) . /* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */ I18N::translate('UTC');
+$lock_file_text      = I18N::translate('This website is being upgraded. Try again in a few minutes.') . PHP_EOL . FunctionsDate::formatTimestamp(WT_TIMESTAMP) . /* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */ I18N::translate('UTC');
 
 // Success/failure indicators
 $icon_success        = '<i class="icon-yes"></i>';
@@ -64,7 +64,7 @@ if ($latest_version == '') {
 }
 
 if (version_compare(WT_VERSION, $latest_version) >= 0) {
-	echo '<p>', I18N::translate('This is the latest version of webtrees.  No upgrade is available.'), '</p>';
+	echo '<p>', I18N::translate('This is the latest version of webtrees. No upgrade is available.'), '</p>';
 
 	return;
 }
@@ -74,11 +74,11 @@ echo Filter::getCsrf();
 
 if ($continue) {
 	echo '<input type="hidden" name="continue" value="1">';
-	echo '<p>', I18N::translate('It can take several minutes to download and install the upgrade.  Be patient.'), '</p>';
+	echo '<p>', I18N::translate('It can take several minutes to download and install the upgrade. Be patient.'), '</p>';
 } else {
 	echo '<p>', I18N::translate('A new version of webtrees is available.'), '</p>';
 	echo '<p>', I18N::translate('Depending on your server configuration, you may be able to upgrade automatically.'), '</p>';
-	echo '<p>', I18N::translate('It can take several minutes to download and install the upgrade.  Be patient.'), '</p>';
+	echo '<p>', I18N::translate('It can take several minutes to download and install the upgrade. Be patient.'), '</p>';
 	echo '<button type="submit" name="continue" value="1">', /* I18N: %s is a version number, such as 1.2.3 */ I18N::translate('Upgrade to webtrees %s.', $latest_version_html), '</button>';
 	echo '</form>';
 
@@ -91,7 +91,7 @@ echo '<ul>';
 // Cannot upgrade until pending changes are accepted/rejected
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Check for pending changes…');
+echo '<li>', /* I18N: The system is about to… */ I18N::translate('Check for pending changes…');
 
 $changes = Database::prepare("SELECT 1 FROM `##change` WHERE status='pending' LIMIT 1")->fetchOne();
 
@@ -197,7 +197,7 @@ foreach (Module::getInstalledModules('disabled') as $module) {
 if ($custom_modules) {
 	echo '<br>', I18N::translate('You should consult the module’s author to confirm compatibility with this version of webtrees.');
 	echo '<br>', '<button type="submit" name="modules" value="disable">', I18N::translate('Disable these modules'), '</button> — ', I18N::translate('You can re-enable these modules after the upgrade.');
-	echo '<br>', '<button type="submit" name="modules" value="ignore">', /* I18N: Ignore the warnings, and [...] */ I18N::translate('Upgrade anyway'), '</button> — ', I18N::translate('Caution: old modules may not work, or they may prevent webtrees from working.');
+	echo '<br>', '<button type="submit" name="modules" value="ignore">', /* I18N: Ignore the warnings, and… */ I18N::translate('Upgrade anyway'), '</button> — ', I18N::translate('Caution: old modules may not work, or they may prevent webtrees from working.');
 	echo '</li></ul></form>';
 
 	return;
@@ -214,7 +214,7 @@ echo '</li>';
 // Custom themes may not work with the new version.
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Check for custom themes…');
+echo '<li>', /* I18N: The system is about to… */ I18N::translate('Check for custom themes…');
 
 $custom_themes = false;
 foreach (Theme::themeNames() as $theme_id => $theme_name) {
@@ -278,7 +278,7 @@ echo '</li>';
 // Make a backup of genealogy data
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Export all the family trees to GEDCOM files…');
+echo '<li>', /* I18N: The system is about to… */ I18N::translate('Export all the family trees to GEDCOM files…');
 
 foreach (Tree::getAll() as $tree) {
 	reset_timeout();
@@ -302,7 +302,7 @@ echo '</li>';
 // Download a .ZIP file containing the new code
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', /* I18N: The system is about to [...]; %s is a URL. */ I18N::translate('Download %s…', Html::filename($download_url_html));
+echo '<li>', /* I18N: The system is about to…; %s is a URL. */ I18N::translate('Download %s…', Html::filename($download_url_html));
 
 $zip_file   = WT_DATA_DIR . basename($download_url);
 $zip_dir    = WT_DATA_DIR . basename($download_url, '.zip');
@@ -332,7 +332,7 @@ echo '</li>';
 // file is valid, etc.
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', /* I18N: The system is about to [...]; %s is a .ZIP file. */ I18N::translate('Unzip %s to a temporary folder…', Html::filename(basename($download_url)));
+echo '<li>', /* I18N: The system is about to…; %s is a .ZIP file. */ I18N::translate('Unzip %s to a temporary folder…', Html::filename(basename($download_url)));
 
 File::delete($zip_dir);
 File::mkdir($zip_dir);
@@ -371,7 +371,7 @@ if (is_array($res)) {
 			return;
 		}
 	}
-	echo '<br>', /* I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds */ I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', count($res), count($res), I18N::number($end_time - $start_time, 2)), $icon_success;
+	echo '<br>', /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */ I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', count($res), count($res), I18N::number($end_time - $start_time, 2)), $icon_success;
 } else {
 	echo '<br>', I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 	echo '<pre>', $archive->errorInfo(true), '</pre>';
@@ -399,7 +399,7 @@ foreach (new \RecursiveIteratorIterator($iterator) as $file) {
 		echo '<p class="error">', I18N::translate('To complete the upgrade, you should install the files manually.'), '</p>';
 		echo '<p>', I18N::translate('The new files are currently located in the folder %s.', Html::filename($zip_dir)), '</p>';
 		echo '<p>', I18N::translate('Copy these files to the folder %s, replacing any that have the same name.', Html::filename(WT_ROOT)), '</p>';
-		echo '<p>', I18N::translate('To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors.', Html::filename($lock_file)), '</p>';
+		echo '<p>', I18N::translate('To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server. If it contains a message, it will be displayed to visitors.', Html::filename($lock_file)), '</p>';
 
 		return;
 	}
@@ -428,7 +428,7 @@ echo '</li>';
 // Copy files
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Copy files…');
+echo '<li>', /* I18N: The system is about to… */ I18N::translate('Copy files…');
 
 // The wiki tells people how to customize webtrees by modifying various files.
 // Create a backup of these, just in case the user forgot!
@@ -455,7 +455,7 @@ if (is_array($res)) {
 			echo '<br>', I18N::translate('The file %s could not be created.', Html::filename($result['filename'])), $icon_failure;
 		}
 	}
-	echo '<br>', /* I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds */ I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', count($res), count($res), I18N::number($end_time - $start_time, 2)), $icon_success;
+	echo '<br>', /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */ I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', count($res), count($res), I18N::number($end_time - $start_time, 2)), $icon_success;
 } else {
 	echo '<br>', I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 	echo '</li></ul></form>';
@@ -483,7 +483,7 @@ echo '</li>';
 // Clean up
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Delete temporary files…');
+echo '<li>', /* I18N: The system is about to… */ I18N::translate('Delete temporary files…');
 
 reset_timeout();
 if (File::delete($zip_dir)) {

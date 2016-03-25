@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -235,7 +235,7 @@ class SearchController extends PageController {
 		if ($query_terms && $this->search_trees) {
 			// Write a log entry
 			$logstring = "Type: General\nQuery: " . $this->query;
-			Log::AddSearchlog($logstring, $this->search_trees);
+			Log::addSearchLog($logstring, $this->search_trees);
 
 			// Search the individuals
 			if ($this->srindi && $query_terms) {
@@ -261,34 +261,36 @@ class SearchController extends PageController {
 				$this->mynotelist = FunctionsDb::searchNotes($query_terms, $this->search_trees);
 			}
 
-			// If only 1 item is returned, automatically forward to that item
-			// If ID cannot be displayed, continue to the search page.
-			if (count($this->myindilist) == 1 && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist) {
-				$indi = reset($this->myindilist);
-				if ($indi->canShowName()) {
-					header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
-					exit;
+			if ($this->action === 'general') {
+				// If only 1 item is returned, automatically forward to that item
+				// If ID cannot be displayed, continue to the search page.
+				if (count($this->myindilist) == 1 && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist) {
+					$indi = reset($this->myindilist);
+					if ($indi->canShowName()) {
+						header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
+						exit;
+					}
 				}
-			}
-			if (!$this->myindilist && count($this->myfamlist) == 1 && !$this->mysourcelist && !$this->mynotelist) {
-				$fam = reset($this->myfamlist);
-				if ($fam->canShowName()) {
-					header('Location: ' . WT_BASE_URL . $fam->getRawUrl());
-					exit;
+				if (!$this->myindilist && count($this->myfamlist) == 1 && !$this->mysourcelist && !$this->mynotelist) {
+					$fam = reset($this->myfamlist);
+					if ($fam->canShowName()) {
+						header('Location: ' . WT_BASE_URL . $fam->getRawUrl());
+						exit;
+					}
 				}
-			}
-			if (!$this->myindilist && !$this->myfamlist && count($this->mysourcelist) == 1 && !$this->mynotelist) {
-				$sour = reset($this->mysourcelist);
-				if ($sour->canShowName()) {
-					header('Location: ' . WT_BASE_URL . $sour->getRawUrl());
-					exit;
+				if (!$this->myindilist && !$this->myfamlist && count($this->mysourcelist) == 1 && !$this->mynotelist) {
+					$sour = reset($this->mysourcelist);
+					if ($sour->canShowName()) {
+						header('Location: ' . WT_BASE_URL . $sour->getRawUrl());
+						exit;
+					}
 				}
-			}
-			if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && count($this->mynotelist) == 1) {
-				$note = reset($this->mynotelist);
-				if ($note->canShowName()) {
-					header('Location: ' . WT_BASE_URL . $note->getRawUrl());
-					exit;
+				if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && count($this->mynotelist) == 1) {
+					$note = reset($this->mynotelist);
+					if ($note->canShowName()) {
+						header('Location: ' . WT_BASE_URL . $note->getRawUrl());
+						exit;
+					}
 				}
 			}
 		}
@@ -309,6 +311,8 @@ class SearchController extends PageController {
 
 		Log::addEditLog("Search And Replace old:" . $this->query . " new:" . $this->replace);
 
+		$query = preg_quote($this->query, '/');
+
 		$adv_name_tags   = preg_split("/[\s,;: ]+/", $tree->getPreference('ADVANCED_NAME_FACTS'));
 		$name_tags       = array_unique(array_merge(Config::standardNameFacts(), $adv_name_tags));
 		$name_tags[]     = '_MARNM';
@@ -317,18 +321,18 @@ class SearchController extends PageController {
 			$old_record = $record->getGedcom();
 			$new_record = $old_record;
 			if ($this->replaceAll) {
-				$new_record = preg_replace("~" . $this->query . "~i", $this->replace, $new_record);
+				$new_record = preg_replace("/" . $query . "/i", $this->replace, $new_record);
 			} else {
 				if ($this->replaceNames) {
 					foreach ($name_tags as $tag) {
-						$new_record = preg_replace("~(\d) " . $tag . " (.*)" . $this->query . "(.*)~i", "$1 " . $tag . " $2" . $this->replace . "$3", $new_record);
+						$new_record = preg_replace("/(\d) " . $tag . " (.*)" . $query . "(.*)/i", "$1 " . $tag . " $2" . $this->replace . "$3", $new_record);
 					}
 				}
 				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) {
-						$new_record = preg_replace('~(\d) PLAC (.*)([,\W\s])' . $this->query . '([,\W\s])~i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
+						$new_record = preg_replace('/(\d) PLAC (.*)([,\W\s])' . $query . '([,\W\s])/i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
 					} else {
-						$new_record = preg_replace("~(\d) PLAC (.*)" . $this->query . "(.*)~i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
+						$new_record = preg_replace("/(\d) PLAC (.*)" . $query . "(.*)/i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
 					}
 				}
 			}
@@ -351,13 +355,13 @@ class SearchController extends PageController {
 			$new_record = $old_record;
 
 			if ($this->replaceAll) {
-				$new_record = preg_replace("~" . $this->query . "~i", $this->replace, $new_record);
+				$new_record = preg_replace("/" . $query . "/i", $this->replace, $new_record);
 			} else {
 				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) {
-						$new_record = preg_replace('~(\d) PLAC (.*)([,\W\s])' . $this->query . '([,\W\s])~i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
+						$new_record = preg_replace('/(\d) PLAC (.*)([,\W\s])' . $query . '([,\W\s])/i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
 					} else {
-						$new_record = preg_replace("~(\d) PLAC (.*)" . $this->query . "(.*)~i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
+						$new_record = preg_replace("/(\d) PLAC (.*)" . $query . "(.*)/i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
 					}
 				}
 			}
@@ -380,17 +384,17 @@ class SearchController extends PageController {
 			$new_record = $old_record;
 
 			if ($this->replaceAll) {
-				$new_record = preg_replace("~" . $this->query . "~i", $this->replace, $new_record);
+				$new_record = preg_replace("/" . $query . "/i", $this->replace, $new_record);
 			} else {
 				if ($this->replaceNames) {
-					$new_record = preg_replace("~(\d) TITL (.*)" . $this->query . "(.*)~i", "$1 TITL $2" . $this->replace . "$3", $new_record);
-					$new_record = preg_replace("~(\d) ABBR (.*)" . $this->query . "(.*)~i", "$1 ABBR $2" . $this->replace . "$3", $new_record);
+					$new_record = preg_replace("/(\d) TITL (.*)" . $query . "(.*)/i", "$1 TITL $2" . $this->replace . "$3", $new_record);
+					$new_record = preg_replace("/(\d) ABBR (.*)" . $query . "(.*)/i", "$1 ABBR $2" . $this->replace . "$3", $new_record);
 				}
 				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) {
-						$new_record = preg_replace('~(\d) PLAC (.*)([,\W\s])' . $this->query . '([,\W\s])~i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
+						$new_record = preg_replace('/(\d) PLAC (.*)([,\W\s])' . $query . '([,\W\s])/i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
 					} else {
-						$new_record = preg_replace("~(\d) PLAC (.*)" . $this->query . "(.*)~i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
+						$new_record = preg_replace("/(\d) PLAC (.*)" . $query . "(.*)/i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
 					}
 				}
 			}
@@ -413,7 +417,7 @@ class SearchController extends PageController {
 			$new_record = $old_record;
 
 			if ($this->replaceAll) {
-				$new_record = preg_replace("~" . $this->query . "~i", $this->replace, $new_record);
+				$new_record = preg_replace("/" . $query . "/i", $this->replace, $new_record);
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if ($new_record != $old_record) {

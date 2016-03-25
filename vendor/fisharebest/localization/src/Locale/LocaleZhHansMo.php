@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryMo;
  * @license       GPLv3+
  */
 class LocaleZhHansMo extends LocaleZhHans {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryMo;
 	}

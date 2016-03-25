@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -116,30 +116,32 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 				return false;
 			});
 			jQuery("#sb_content_individuals").on("click", ".sb_indi_surname", function() {
-				var surname = jQuery(this).attr("title");
-				var alpha = jQuery(this).attr("alt");
+				var element = jQuery(this);
+				var surname = element.data("surname");
+				var alpha   = element.data("alpha");
 
 				if (!loadedNames[surname]) {
 					jQuery.ajax({
-					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=individuals&alpha="+alpha+"&surname="+surname,
+					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=individuals&alpha=" + encodeURIComponent(alpha) + "&surname=" + encodeURIComponent(surname),
 					  cache: false,
 					  success: function(html) {
-					    jQuery("#sb_indi_"+surname+" div").html(html);
-					    jQuery("#sb_indi_"+surname+" div").show("fast");
-					    jQuery("#sb_indi_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
+					    jQuery("div.name_tree_div", element.closest("li"))
+					    .html(html)
+					    .show("fast")
+					    .css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
 					    loadedNames[surname]=2;
 					  }
 					});
-				}
-				else if (loadedNames[surname]==1) {
+				} else if (loadedNames[surname]==1) {
 					loadedNames[surname]=2;
-					jQuery("#sb_indi_"+surname+" div").show("fast");
-					jQuery("#sb_indi_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
-				}
-				else {
+					jQuery("div.name_tree_div", jQuery(this).closest("li"))
+					.show()
+					.css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
+				} else {
 					loadedNames[surname]=1;
-					jQuery("#sb_indi_"+surname+" div").hide("fast");
-					jQuery("#sb_indi_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-plus') . ')");
+					jQuery("div.name_tree_div", jQuery(this).closest("li"))
+					.hide("fast")
+					.css("list-style-image", "url(' . Theme::theme()->parameter('image-plus') . ')");
 				}
 				return false;
 			});
@@ -184,7 +186,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 		$surnames = QueryName::surnames($tree, '', $alpha, true, false);
 		$out      = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
-			$out .= '<li id="sb_indi_' . $surname . '" class="sb_indi_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_indi_surname">' . $surname . '</a>';
+			$out .= '<li class="sb_indi_surname_li"><a href="#" data-surname="' . Filter::escapeHtml($surname) . '" data-alpha="' . Filter::escapeHtml($alpha) . '" class="sb_indi_surname">' . Filter::escapeHtml($surname) . '</a>';
 			$out .= '<div class="name_tree_div"></div>';
 			$out .= '</li>';
 		}

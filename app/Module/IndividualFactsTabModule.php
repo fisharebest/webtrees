@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -121,12 +121,13 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 		ob_start();
 
 		echo '<table class="facts_table">';
+		echo '<colgroup>';
+		echo '<col class="width20">';
+		echo '<col class="width80">';
+		echo '</colgroup>';
 		echo '<tbody>';
-		if (!$indifacts) {
-			echo '<tr><td colspan="2" class="facts_value">', I18N::translate('There are no facts for this individual.'), '</td></tr>';
-		}
-
-		echo '<tr><td colspan="2" class="descriptionbox rela"><form action="?"><input id="checkbox_rela_facts" type="checkbox" ';
+		echo '<tr><td colspan="2" class="descriptionbox rela">';
+		echo '<form action="?"><input id="checkbox_rela_facts" type="checkbox" ';
 		echo $controller->record->getTree()->getPreference('EXPAND_RELATIVES_EVENTS') ? 'checked' : '';
 		echo ' onclick="jQuery(\'tr.rela\').toggle();"><label for="checkbox_rela_facts">', I18N::translate('Events of close relatives'), '</label>';
 		if (file_exists(Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
@@ -134,7 +135,12 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 			echo $EXPAND_HISTO_EVENTS ? 'checked' : '';
 			echo ' onclick="jQuery(\'tr.histo\').toggle();"><label for="checkbox_histo">', I18N::translate('Historical facts'), '</label>';
 		}
-		echo '</form></td></tr>';
+		echo '</form>';
+		echo '</td></tr>';
+
+		if (!$indifacts) {
+			echo '<tr><td colspan="2" class="facts_value">', I18N::translate('There are no facts for this individual.'), '</td></tr>';
+		}
 
 		foreach ($indifacts as $fact) {
 			FunctionsPrintFacts::printFact($fact, $controller->record);

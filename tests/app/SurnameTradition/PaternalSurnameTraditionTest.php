@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -98,6 +98,18 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Test new child names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 */
+	public function testNewChildNamesWithMultipleSpfx() {
+		$this->assertSame(
+			array('NAME' => '/van der White/', 'SPFX' => 'van der', 'SURN' => 'White'),
+			$this->surname_tradition->newChildNames('John /van der White/', 'Mary /van Black/', 'U')
+		);
+	}
+
+	/**
 	 * Test new father names
 	 *
 	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
@@ -154,6 +166,18 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame(
 			array('NAME' => '//', '_MARNM' => '/White/'),
 			$this->surname_tradition->newSpouseNames('John /White/', 'F')
+		);
+	}
+
+	/**
+	 * Test new wife names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 */
+	public function testNewWifeNamesWithSpfx() {
+		$this->assertSame(
+			array('NAME' => '//', '_MARNM' => '/van der White/'),
+			$this->surname_tradition->newSpouseNames('John /van der White/', 'F')
 		);
 	}
 

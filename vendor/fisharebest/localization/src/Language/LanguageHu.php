@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryHu;
  * @license   GPLv3+
  */
 class LanguageHu extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'hu';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryHu;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

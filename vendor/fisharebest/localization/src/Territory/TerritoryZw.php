@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class TerritoryZw extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ZW';
 	}
 
-	/** {@inheritdoc} */
 	public function firstDay() {
 		return 0;
 	}

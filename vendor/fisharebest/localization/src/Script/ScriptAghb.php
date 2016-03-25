@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptAghb extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Aghb';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '239';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Caucasian_Albanian';
 	}

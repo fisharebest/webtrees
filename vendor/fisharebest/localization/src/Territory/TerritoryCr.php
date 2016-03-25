@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class TerritoryCr extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'CR';
 	}
 
-	/** {@inheritdoc} */
 	public function paperSize() {
 		return 'US-Letter';
 	}

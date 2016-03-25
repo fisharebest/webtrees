@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -57,13 +57,13 @@ class GedcomCodeName {
 		case 'aka':
 			switch ($sex) {
 			case 'M':
-				/* I18N: The name by which an individual is also known.  e.g. a professional name or a stage name */
+				/* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
 				return I18N::translateContext('MALE', 'also known as');
 			case 'F':
-				/* I18N: The name by which an individual is also known.  e.g. a professional name or a stage name */
+				/* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
 				return I18N::translateContext('FEMALE', 'also known as');
 			default:
-				/* I18N: The name by which an individual is also known.  e.g. a professional name or a stage name */
+				/* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
 				return I18N::translate('also known as');
 			}
 		case 'birth':

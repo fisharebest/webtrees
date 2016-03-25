@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageJgo;
  * @license       GPLv3+
  */
 class LocaleJgo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Ndaꞌa';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'NDAA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageJgo;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

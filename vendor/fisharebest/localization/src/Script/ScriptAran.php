@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptAran extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Aran';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '161';
 	}

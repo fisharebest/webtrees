@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -15,15 +15,18 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Controller\PageController;
-
 /**
  * Defined in edit_interface.php
  *
- * @global PageController $controller
- * @global Individual     $person
+ * @global Individual $person
  */
-global $person, $controller;
+global $person;
+/**
+ * Defined in edit_interface.php
+ *
+ * @global Controller\PageController $controller
+ */
+global $controller;
 
 ?>
 <style>
@@ -58,12 +61,12 @@ global $person, $controller;
 <div id="media-links">
 	<table class="facts_table center">
 		<tr>
-			<td class="topbottombar" colspan="1">
+			<td class="topbottombar">
 				<b><?php echo $controller->getPageTitle(); ?></b>
 			</td>
 		</tr>
 		<tr>
-			<td valign="top">
+			<td>
 				<table class="outer_nav">
 					<tr>
 						<th class="descriptionbox"><?php echo I18N::translate('Search for individuals to add to add Links list.'); ?></th>
@@ -88,10 +91,10 @@ global $person, $controller;
 						</td>
 					</tr>
 					<tr>
-						<td align="center">
+						<td>
 							<table width="100%" class="fact_table" cellspacing="0" border="0">
 								<tr>
-									<td align="center" colspan=3 class="descriptionbox wrap">
+									<td colspan=3 class="descriptionbox wrap">
 										<?php echo I18N::translate('Click %s to choose individual as head of family.', '<i class="headimg vmiddle icon-button_head"></i>'); ?>
 										<br><br>
 										<?php echo I18N::translate('Click name to add individual to add links list.'); ?>
@@ -139,7 +142,7 @@ function print_navigator_family(Family $family, Individual $individual) {
 				</a>
 			</td>
 			<td class="facts_value" >
-				<a href="#" onclick="opener.insertRowToTable('<?php echo $spouse->getXref(); ?>', '<?php echo Filter::escapeJs($spouse->getFullName()); ?>', '', '', '', '', '', '', '', '');">
+				<a href="#" onclick="opener.insertRowToTable('<?php echo $spouse->getXref(); ?>', '<?php echo Filter::escapeJs($spouse->getFullName()); ?>', '', '', '', '', '', '', '', ''); return false;">
 					<?php echo $spouse === $individual ? '<b>' : ''; ?>
 					<?php echo $spouse->getFullName(); ?> <?php echo $spouse->getLifeSpan(); ?>
 					<?php echo $spouse === $individual ? '</b>' : ''; ?>
@@ -158,7 +161,7 @@ function print_navigator_family(Family $family, Individual $individual) {
 				</a>
 			</td>
 			<td class="facts_value">
-				<a href="#" onclick="opener.insertRowToTable('<?php echo $child->getXref(); ?>', '<?php echo Filter::escapeJs($child->getFullName()); ?>', '', '', '', '', '', '', '', '');">
+				<a href="#" onclick="opener.insertRowToTable('<?php echo $child->getXref(); ?>', '<?php echo Filter::escapeJs($child->getFullName()); ?>', '', '', '', '', '', '', '', ''); return false;">
 					<?php echo $child === $individual ? '<b>' : ''; ?>
 					<?php echo $child->getFullName(); ?> <?php echo $child->getLifeSpan(); ?>
 				<?php echo $child === $individual ? '</b>' : ''; ?>

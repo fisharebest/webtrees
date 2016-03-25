@@ -10,7 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryCo;
  * @license       GPLv3+
  */
 class LocaleEsCo extends LocaleEs {
-	/** {@inheritdoc} */
+	protected function percentFormat() {
+		return '%s' . self::PERCENT;
+	}
+
 	public function territory() {
 		return new TerritoryCo;
 	}

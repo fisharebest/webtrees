@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -237,7 +237,7 @@ class QueryName {
 	 * @param bool $fams   if set, only consider individuals with FAMS records
 	 * @param bool $totals if set, count the number of names beginning with each letter
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public static function surnameAlpha(Tree $tree, $marnm, $fams, $totals = true) {
 		$alphas = array();
@@ -250,7 +250,7 @@ class QueryName {
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
 		// Fetch all the letters in our alphabet, whether or not there
-		// are any names beginning with that letter.  It looks better to
+		// are any names beginning with that letter. It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
 			$count = 1;
@@ -313,7 +313,7 @@ class QueryName {
 	 * @param bool   $marnm  if set, include married names
 	 * @param bool   $fams   if set, only consider individuals with FAMS records
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public static function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams) {
 		$alphas = array();
@@ -339,7 +339,7 @@ class QueryName {
 		}
 
 		// Fetch all the letters in our alphabet, whether or not there
-		// are any names beginning with that letter.  It looks better to
+		// are any names beginning with that letter. It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
 			$count           = Database::prepare($sql . " AND " . self::getInitialSql('n_givn', $letter))->fetchOne();

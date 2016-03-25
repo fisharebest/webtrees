@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -14,12 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
-
-use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Individual;
-use Mockery;
 
 /**
  * Test harness for the class CensusColumnAgeFemale5Years
@@ -31,12 +26,13 @@ class CensusTest extends \PHPUnit_Framework_TestCase {
 	public function testAllCensus() {
 		$censuses = Census::allCensusPlaces();
 
-		$this->assertCount(6, $censuses);
-		$this->assertInstanceOf(CensusOfDenmark::class, $censuses[0]);
-		$this->assertInstanceOf(CensusOfEngland::class, $censuses[1]);
-		$this->assertInstanceOf(CensusOfFrance::class, $censuses[2]);
-		$this->assertInstanceOf(CensusOfScotland::class, $censuses[3]);
-		$this->assertInstanceOf(CensusOfUnitedStates::class, $censuses[4]);
-		$this->assertInstanceOf(CensusOfWales::class, $censuses[5]);
+		$this->assertCount(7, $censuses);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic', $censuses[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark', $censuses[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland', $censuses[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfFrance', $censuses[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland', $censuses[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfUnitedStates', $censuses[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales', $censuses[6]);
 	}
 }

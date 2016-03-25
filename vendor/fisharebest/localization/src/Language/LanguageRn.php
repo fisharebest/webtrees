@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryBi;
  * @license   GPLv3+
  */
 class LanguageRn extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'rn';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryBi;
 	}

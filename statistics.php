@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -94,10 +94,10 @@ if (!$ajax) {
 				<td class="facts_label">', I18N::translate('Total dead'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value" align="center">', $stats->totalSexMales(), '</td>
-				<td class="facts_value" align="center">', $stats->totalSexFemales(), '</td>
-				<td class="facts_value" align="center">', $stats->totalLiving(), '</td>
-				<td class="facts_value" align="center">', $stats->totalDeceased(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalSexMales(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalSexFemales(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalLiving(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalDeceased(), '</td>
 			</tr>
 			<tr>
 				<td class="facts_value statistics-page" colspan="2">', $stats->chartSex(), '</td>
@@ -112,8 +112,8 @@ if (!$ajax) {
 				<td class="facts_label">', I18N::translate('Total deaths'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value" align="center">', $stats->totalBirths(), '</td>
-				<td class="facts_value" align="center">', $stats->totalDeaths(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalBirths(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalDeaths(), '</td>
 			</tr>
 			<tr>
 				<td class="facts_label">', I18N::translate('Births by century'), '</td>
@@ -149,9 +149,9 @@ if (!$ajax) {
 				<td class="facts_label">', I18N::translate('Females'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value" align="center">', $stats->averageLifespan(true), '</td>
-				<td class="facts_value" align="center">', $stats->averageLifespanMale(true), '</td>
-				<td class="facts_value" align="center">', $stats->averageLifespanFemale(true), '</td>
+				<td class="facts_value statistics-page">', $stats->averageLifespan(true), '</td>
+				<td class="facts_value statistics-page">', $stats->averageLifespanMale(true), '</td>
+				<td class="facts_value statistics-page">', $stats->averageLifespanFemale(true), '</td>
 			</tr>
 			<tr>
 				<td class="facts_value statistics-page" colspan="3">', $stats->statsAge(), '</td>
@@ -191,8 +191,8 @@ if (!$ajax) {
 				<td class="facts_label">', I18N::translate('Total given names'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value" align="center">', $stats->totalSurnames(), '</td>
-				<td class="facts_value" align="center">', $stats->totalGivennames(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalSurnames(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalGivennames(), '</td>
 			</tr>
 			<tr>
 				<td class="facts_label">', I18N::translate('Top surnames'), '</td>
@@ -214,8 +214,8 @@ if (!$ajax) {
 				<td class="facts_label">', I18N::translate('Total divorces'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value" align="center">', $stats->totalMarriages(), '</td>
-				<td class="facts_value" align="center">', $stats->totalDivorces(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalMarriages(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalDivorces(), '</td>
 			</tr>
 			<tr>
 				<td class="facts_label">', I18N::translate('Marriages by century'), '</td>
@@ -305,8 +305,8 @@ if (!$ajax) {
 				<td class="facts_label">', I18N::translate('Number of families without children'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value" align="center">', $stats->averageChildren(), '</td>
-				<td class="facts_value" align="center">', $stats->noChildrenFamilies(), '</td>
+				<td class="facts_value statistics-page">', $stats->averageChildren(), '</td>
+				<td class="facts_value statistics-page">', $stats->noChildrenFamilies(), '</td>
 			</tr>
 			<tr>
 				<td class="facts_value statistics-page">', $stats->statsChildren(), '</td>
@@ -353,10 +353,10 @@ if (!$ajax) {
 				<td class="facts_label">', I18N::translate('Repositories'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value" align="center">', $stats->totalMedia(), '</td>
-				<td class="facts_value" align="center">', $stats->totalSources(), '</td>
-				<td class="facts_value" align="center">', $stats->totalNotes(), '</td>
-				<td class="facts_value" align="center">', $stats->totalRepositories(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalMedia(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalSources(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalNotes(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalRepositories(), '</td>
 			</tr>
 			</table>
 		</fieldset>
@@ -392,8 +392,8 @@ if (!$ajax) {
 				<td class="facts_label">', I18N::translate('Families with sources'), '</td>
 			</tr>
 			<tr>
-				<td class="facts_value" align="center">', $stats->totalIndisWithSources(), '</td>
-				<td class="facts_value" align="center">', $stats->totalFamsWithSources(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalIndisWithSources(), '</td>
+				<td class="facts_value statistics-page">', $stats->totalFamsWithSources(), '</td>
 			</tr>
 			<tr>
 				<td class="facts_value statistics-page">', $stats->chartIndisWithSources(), '</td>
@@ -638,7 +638,7 @@ if (!$ajax) {
 			</tr>
 			</table>
 			<table width="100%">
-			<tr align="center"><td>
+			<tr style="text-align:center;"><td>
 				<br>
 				<input type="submit" value="', I18N::translate('show the plot'), ' ">
 				<input type="reset"  value=" ', I18N::translate('reset'), ' " onclick="{statusEnable(\'z_sex\'); statusHide(\'x_years\'); statusHide(\'x_months\'); statusHide(\'x_numbers\'); statusHide(\'map_opt\');}"><br>

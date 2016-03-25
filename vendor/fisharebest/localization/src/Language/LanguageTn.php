@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryBw;
  * @license   GPLv3+
  */
 class LanguageTn extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'tn';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryBw;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageKo;
  * @license       GPLv3+
  */
 class LocaleKo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return '한국어';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKo;
 	}

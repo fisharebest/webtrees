@@ -55,10 +55,11 @@
 			<Cell align="center" border="1" newline="1" style="list_label"><var var="I18N::translate('Event')" /></Cell>
 		</Header>
 
-<!--	Start with BIRT GEDCOM tag.
-			Place any GEDCOM tags in GEDCOM alphabetic order here
-		End it with DEAT and BURI
-		Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as RELI, in alphabetic order
+<!--
+Start with BIRT GEDCOM tag.
+Place any GEDCOM tags in GEDCOM alphabetic order here
+nd it with DEAT and BURI
+Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as RELI, in alphabetic order
 -->
 		<Body>
 

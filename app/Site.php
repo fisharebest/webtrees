@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -68,7 +68,7 @@ class Site {
 			} else {
 				Database::prepare(
 					"REPLACE INTO `##site_setting` (setting_name, setting_value)" .
-					" VALUES (:setting_name, LEFT(:setting_value, 255))"
+					" VALUES (:setting_name, LEFT(:setting_value, 2000))"
 				)->execute(array(
 					'setting_name'  => $setting_name,
 					'setting_value' => $setting_value,

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptOrkh extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Orkh';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '175';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Old_Turkic';
 	}

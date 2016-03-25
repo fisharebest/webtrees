@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -429,8 +429,8 @@ class Filter {
 	 */
 	public static function server($variable, $regexp = null, $default = null) {
 		// On some servers, variables that are present in $_SERVER cannot be
-		// found via filter_input(INPUT_SERVER).  Instead, they are found via
-		// filter_input(INPUT_ENV).  Since we cannot rely on filter_input(),
+		// found via filter_input(INPUT_SERVER). Instead, they are found via
+		// filter_input(INPUT_ENV). Since we cannot rely on filter_input(),
 		// we must use the superglobal directly.
 		if (array_key_exists($variable, $_SERVER) && ($regexp === null || preg_match('/^(' . $regexp . ')$/',
 $_SERVER[$variable]))) {
@@ -475,9 +475,9 @@ $_SERVER[$variable]))) {
 	 */
 	public static function checkCsrf() {
 		if (self::post('csrf') !== self::getCsrfToken()) {
-			// Oops.  Something is not quite right
+			// Oops. Something is not quite right
 			Log::addAuthenticationLog('CSRF mismatch - session expired or malicious attack');
-			FlashMessages::addMessage(I18N::translate('This form has expired.  Try again.'), 'error');
+			FlashMessages::addMessage(I18N::translate('This form has expired. Try again.'), 'error');
 
 			return false;
 		}

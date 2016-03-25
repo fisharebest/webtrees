@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryCg;
  * @license       GPLv3+
  */
 class LocaleLnCg extends LocaleLn {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryCg;
 	}

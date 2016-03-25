@@ -10,27 +10,22 @@ use Fisharebest\Localization\Language\LanguageCs;
  * @license       GPLv3+
  */
 class LocaleCs extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function collation() {
 		return 'croatian_ci';
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'čeština';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'CESTINA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageCs;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,
@@ -38,7 +33,6 @@ class LocaleCs extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

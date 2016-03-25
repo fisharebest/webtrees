@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageKi;
  * @license       GPLv3+
  */
 class LocaleKi extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Gikuyu';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'GIKUYU';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKi;
 	}

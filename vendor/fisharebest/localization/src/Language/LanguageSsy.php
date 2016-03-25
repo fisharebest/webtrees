@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryEr;
  * @license   GPLv3+
  */
 class LanguageSsy extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ssy';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryEr;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

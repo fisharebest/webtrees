@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageNl;
  * @license       GPLv3+
  */
 class LocaleNl extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Nederlands';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'NEDERLANDS';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageNl;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

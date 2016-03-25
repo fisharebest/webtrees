@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -68,7 +68,7 @@ if ($action == "upload") {
 				}
 			}
 
-			// Managers can create new media paths (subfolders).  Users must use existing folders.
+			// Managers can create new media paths (subfolders). Users must use existing folders.
 			if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 				if (Auth::isManager($WT_TREE)) {
 					if (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
@@ -83,7 +83,7 @@ if ($action == "upload") {
 				}
 			}
 
-			// The media folder exists.  Now create a thumbnail folder to match it.
+			// The media folder exists. Now create a thumbnail folder to match it.
 			if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
 				if (!File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
 					FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)));
@@ -133,7 +133,7 @@ if ($action == "upload") {
 			if (!empty($_FILES['mediafile' . $i]['name'])) {
 				$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . $fileName;
 				if (file_exists($serverFileName)) {
-					FlashMessages::addMessage(I18N::translate('The file %s already exists.  Use another filename.', $folderName . $fileName));
+					FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $folderName . $fileName));
 					$filename = '';
 					break;
 				}
@@ -184,7 +184,7 @@ if (empty($filesize)) {
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <p>
-	<?php echo I18N::translate('Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats.'); ?>
+	<?php echo I18N::translate('Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats.'); ?>
 	<?php echo I18N::translate('Maximum upload size: '), $filesize, '</p>'; ?>
 </p>
 
@@ -197,7 +197,7 @@ echo '<input type="hidden" name="action" value="upload">';
 // Print 5 forms for uploading images
 for ($i = 1; $i < 6; $i++) {
 	echo '<table class="upload_media">';
-	echo '<tr><th>', I18N::translate('Media file'), ':&nbsp;&nbsp;', $i, '</th></tr>';
+	echo '<tr><th>', I18N::translate('Media file'), ' ', $i, '</th></tr>';
 	echo '<tr><td>';
 	echo I18N::translate('Media file to upload');
 	echo '</td>';
@@ -210,7 +210,7 @@ for ($i = 1; $i < 6; $i++) {
 	echo '<td>';
 	echo '<input name="thumbnail', $i, '" type="file" size="40">';
 	if ($i === 1) {
-		echo '<p class="small text-muted">', I18N::translate('Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.'), '</p>';
+		echo '<p class="small text-muted">', I18N::translate('Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.'), '</p>';
 	}
 	echo '</td></tr>';
 
@@ -222,7 +222,7 @@ for ($i = 1; $i < 6; $i++) {
 		echo '<input name="filename', $i, '" type="text" size="40">';
 		if ($i == 1) {
 			echo '<p class="small text-muted">', I18N::translate('Do not change to keep original filename.'), "</p>";
-			echo '<p class="small text-muted">', I18N::translate('The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer.'), '</p>';
+			echo '<p class="small text-muted">', I18N::translate('The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer.'), '</p>';
 		}
 		echo '</td></tr>';
 	} else {

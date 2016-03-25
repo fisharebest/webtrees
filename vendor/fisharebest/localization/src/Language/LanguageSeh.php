@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryMz;
  * @license   GPLv3+
  */
 class LanguageSeh extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'seh';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryMz;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

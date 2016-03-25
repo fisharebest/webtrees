@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
+use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
@@ -57,7 +58,7 @@ class BatchUpdateBasePlugin {
 	 */
 	public function getOptionsForm() {
 		return
-			'<div class="form-group">' . 
+			'<div class="form-group">' .
 			'<label class="control-label col-sm-3">' . I18N::translate('Keep the existing “last change” information') . '</label>' .
 			'<div class="col-sm-9">' .
 			FunctionsEdit::radioButtons('chan', array(0 => I18N::translate('no'), 1 => I18N::translate('yes')), ($this->chan ? 1 : 0), 'class="radio-inline" onchange="this.form.submit();"') .
@@ -92,73 +93,26 @@ class BatchUpdateBasePlugin {
 	 * @return string
 	 */
 	public function getActionPreview(GedcomRecord $record) {
-		$old_lines = preg_split('/[\n]+/', $record->getGedcom());
-		$new_lines = preg_split('/[\n]+/', $this->updateRecord($record->getXref(), $record->getGedcom()));
-		// Find matching lines using longest-common-subsequence algorithm.
-		$lcs = self::longestCommonSubsequence($old_lines, $new_lines, 0, count($old_lines) - 1, 0, count($new_lines) - 1);
+		$old_lines   = preg_split('/[\n]+/', $record->getGedcom());
+		$new_lines   = preg_split('/[\n]+/', $this->updateRecord($record->getXref(), $record->getGedcom()));
+		$algorithm   = new MyersDiff;
+		$differences = $algorithm->calculate($old_lines, $new_lines);
+		$diff_lines  = array();
 
-		$diff_lines = array();
-		$last_old   = -1;
-		$last_new   = -1;
-		while ($lcs) {
-			list($old, $new) = array_shift($lcs);
-			while ($last_old < $old - 1) {
-				$diff_lines[] = self::decorateDeletedText($old_lines[++$last_old]);
+		foreach ($differences as $difference) {
+			switch ($difference[1]) {
+			case MyersDiff::DELETE:
+				$diff_lines[] = self::decorateDeletedText($difference[0]);
+				break;
+			case MyersDiff::INSERT:
+				$diff_lines[] = self::decorateInsertedText($difference[0]);
+				break;
+			default:
+				$diff_lines[] = $difference[0];
 			}
-			while ($last_new < $new - 1) {
-				$diff_lines[] = self::decorateInsertedText($new_lines[++$last_new]);
-			}
-			$diff_lines[] = $new_lines[$new];
-			$last_old     = $old;
-			$last_new     = $new;
-		}
-		while ($last_old < count($old_lines) - 1) {
-			$diff_lines[] = self::decorateDeletedText($old_lines[++$last_old]);
-		}
-		while ($last_new < count($new_lines) - 1) {
-			$diff_lines[] = self::decorateInsertedText($new_lines[++$last_new]);
 		}
 
 		return '<pre class="gedcom-data">' . self::createEditLinks(implode("\n", $diff_lines)) . '</pre>';
-	}
-
-	/**
-	 * Longest Common Subsequence.
-	 *
-	 * @param string[] $X
-	 * @param string[] $Y
-	 * @param int      $x1
-	 * @param int      $x2
-	 * @param int      $y1
-	 * @param int      $y2
-	 *
-	 * @return array
-	 */
-	private static function longestCommonSubsequence($X, $Y, $x1, $x2, $y1, $y2) {
-		if ($x2 - $x1 >= 0 && $y2 - $y1 >= 0) {
-			if ($X[$x1] == $Y[$y1]) {
-				// Match at start of sequence
-				$tmp = self::longestCommonSubsequence($X, $Y, $x1 + 1, $x2, $y1 + 1, $y2);
-				array_unshift($tmp, array($x1, $y1));
-
-				return $tmp;
-			} elseif ($X[$x2] == $Y[$y2]) {
-				// Match at end of sequence
-				$tmp = self::longestCommonSubsequence($X, $Y, $x1, $x2 - 1, $y1, $y2 - 1);
-				array_push($tmp, array($x2, $y2));
-
-				return $tmp;
-			} else {
-				// No match.  Look for subsequences
-				$tmp1 = self::longestCommonSubsequence($X, $Y, $x1, $x2, $y1, $y2 - 1);
-				$tmp2 = self::longestCommonSubsequence($X, $Y, $x1, $x2 - 1, $y1, $y2);
-
-				return count($tmp1) > count($tmp2) ? $tmp1 : $tmp2;
-			}
-		} else {
-			// One array is empty - end recursion
-			return array();
-		}
 	}
 
 	/**

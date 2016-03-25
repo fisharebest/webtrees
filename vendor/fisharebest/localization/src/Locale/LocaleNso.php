@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageNso;
  * @license       GPLv3+
  */
 class LocaleNso extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Sesotho sa Leboa';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SESOTHO SA LEBOA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageNso;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP => self::NBSP,

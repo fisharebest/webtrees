@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryCa;
  * @license   GPLv3+
  */
 class LanguageIu extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'iu';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptCans;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryCa;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRuleOneTwoOther;
 	}

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,7 +38,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 * @return string A relative path, such as "themes/foo/"
 	 */
 	public function assetUrl() {
-		return 'themes/colors/css-1.7.0/';
+		return 'themes/colors/css-1.7.4/';
 	}
 
 	/**
@@ -110,7 +110,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 		if (!$this->palette) {
 			$this->palette = Session::get('subColor');
 		}
-		// We haven't selected one this session?  Use the site default
+		// We haven't selected one this session? Use the site default
 		if (!$this->palette) {
 			$this->palette = Site::getPreference('DEFAULT_COLOR_PALETTE');
 		}
@@ -144,17 +144,22 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 * @return Menu
 	 */
 	protected function menuPalette() {
-		$menu = new Menu(/* I18N: A colour scheme */ I18N::translate('Palette'), '#', 'menu-color');
+		if ($this->tree && Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
+			$menu = new Menu(/* I18N: A colour scheme */
+				I18N::translate('Palette'), '#', 'menu-color');
 
-		foreach ($this->palettes as $palette_id => $palette_name) {
-			$menu->addSubmenu(new Menu(
-				$palette_name,
-				Functions::getQueryUrl(array('themecolor' => $palette_id), '&amp;'),
-				'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : '')
-			));
+			foreach ($this->palettes as $palette_id => $palette_name) {
+				$menu->addSubmenu(new Menu(
+					$palette_name,
+					Functions::getQueryUrl(array('themecolor' => $palette_id), '&amp;'),
+					'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : '')
+				));
+			}
+
+			return $menu;
+		} else {
+			return null;
 		}
-
-		return $menu;
 	}
 
 	/**

@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageAf;
  * @license       GPLv3+
  */
 class LocaleAf extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Afrikaans';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'AFRIKAANS';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageAf;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

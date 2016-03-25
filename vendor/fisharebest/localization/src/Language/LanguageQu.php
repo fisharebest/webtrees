@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryPe;
  * @license   GPLv3+
  */
 class LanguageQu extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'qu';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryPe;
 	}

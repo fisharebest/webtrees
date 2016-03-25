@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageId;
  * @license       GPLv3+
  */
 class LocaleId extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
-		return 'Bahasa Indonesia';
+		return 'Indonesia';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
-		return 'BAHASA INDONESIA';
+		return 'INDONESIA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageId;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -64,9 +64,9 @@ class FunctionsRtl {
 	private static $posSpanStart;
 
 	/**
-	 * This function strips &lrm; and &rlm; from the input string.  It should be used for all
+	 * This function strips &lrm; and &rlm; from the input string. It should be used for all
 	 * text that has been passed through the PrintReady() function before that text is stored
-	 * in the database.  The database should NEVER contain these characters.
+	 * in the database. The database should NEVER contain these characters.
 	 *
 	 * @param  string $inputText The string from which the &lrm; and &rlm; characters should be stripped
 	 *
@@ -96,7 +96,7 @@ class FunctionsRtl {
 		$workingText = str_replace(array('<span class="starredname"><br>', '<span<br>class="starredname">'), '<br><span class="starredname">', $workingText); // Reposition some incorrectly placed line breaks
 		$workingText = self::stripLrmRlm($workingText); // Get rid of any existing UTF8 control codes
 
-		//	$nothing  = '&zwnj;'; // Zero Width Non-Joiner  (not sure whether this is still needed to work around a TCPDF bug)
+		// $nothing  = '&zwnj;'; // Zero Width Non-Joiner  (not sure whether this is still needed to work around a TCPDF bug)
 		$nothing = '';
 
 		self::$startLTR = '<LTR>'; // This will become '<span dir="ltr">' at the end
@@ -188,7 +188,7 @@ class FunctionsRtl {
 						$offset    = 0; // Be sure to look at the current character first
 						$charArray = self::getChar($workingText . "\n", $offset);
 						if (strpos(self::NUMBERS, $charArray['letter']) === false) {
-							// This is not a digit.  Is it numeric punctuation?
+							// This is not a digit. Is it numeric punctuation?
 							if (substr($workingText . "\n", $offset, 6) == '&nbsp;') {
 								$offset += 6; // This could be numeric punctuation
 							} elseif (strpos(self::NUMBER_PUNCTUATION, $charArray['letter']) !== false) {
@@ -197,7 +197,7 @@ class FunctionsRtl {
 							// If the next character is a digit, the current character is numeric punctuation
 							$charArray = self::getChar($workingText . "\n", $offset);
 							if (strpos(self::NUMBERS, $charArray['letter']) === false) {
-								// This is not a digit.  End the run of digits and punctuation.
+								// This is not a digit. End the run of digits and punctuation.
 								$numberState = false;
 								if (self::$currentState == 'RTL') {
 									if (strpos(self::NUMBER_PREFIX, $currentLetter) === false) {
@@ -348,7 +348,7 @@ class FunctionsRtl {
 			}
 		}
 
-		// We're done.  Finish last <span> if necessary
+		// We're done. Finish last <span> if necessary
 		if ($numberState) {
 			if (self::$waitingText === '') {
 				if (self::$currentState === 'RTL') {
@@ -612,7 +612,7 @@ class FunctionsRtl {
 		// Get rid of empty spans, so that our check for presence of RTL will work
 		$result = str_replace(array(self::$startLTR . self::$endLTR, self::$startRTL . self::$endRTL), '', $result);
 
-		// Look for numeric strings that are times (hh:mm:ss).  These have to be separated from surrounding numbers.
+		// Look for numeric strings that are times (hh:mm:ss). These have to be separated from surrounding numbers.
 		$tempResult = '';
 		while ($textSpan != '') {
 			$posColon = strpos($textSpan, ':');
@@ -691,7 +691,7 @@ class FunctionsRtl {
 		/* ****************************** LTR text handling ******************************** */
 
 		if (self::$currentState === 'LTR') {
-			// Move trailing numeric strings to the following RTL text.  Include any blanks preceding or following the numeric text too.
+			// Move trailing numeric strings to the following RTL text. Include any blanks preceding or following the numeric text too.
 			if (I18N::direction() === 'rtl' && self::$previousState === 'RTL' && !$theEnd) {
 				$trailingString = '';
 				$savedSpan      = $textSpan;
@@ -828,7 +828,7 @@ class FunctionsRtl {
 					// we don't want to touch it.
 					// This check won’t work if somebody uses ID numbers with an unusual format.
 					$offset    = 1;
-					$charArray = self::getchar($temp, $offset); // Get 1st character of parenthesized text
+					$charArray = self::getChar($temp, $offset); // Get 1st character of parenthesized text
 					if (strpos(self::NUMBERS, $charArray['letter']) !== false) {
 						break;
 					}
@@ -958,7 +958,7 @@ class FunctionsRtl {
 				$textSpan = $savedSpan;
 			}
 
-			// Move trailing numeric strings to the following LTR text.  Include any blanks preceding or following the numeric text too.
+			// Move trailing numeric strings to the following LTR text. Include any blanks preceding or following the numeric text too.
 			if (!$theEnd && I18N::direction() !== 'rtl') {
 				$trailingString = '';
 				$savedSpan      = $textSpan;

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -49,7 +49,7 @@ if ($ctype === 'user') {
 
 $active_blocks = Module::getActiveBlocks($WT_TREE);
 
-// The latest version is shown on the administration page.  This updates it every day.
+// The latest version is shown on the administration page. This updates it every day.
 Functions::fetchLatestVersion();
 
 // We generate individual blocks using AJAX
@@ -75,7 +75,7 @@ if ($action === 'ajax') {
 
 // Redirect search engines to the full URL
 if (Filter::get('ctype') !== $ctype || Filter::get('ged') !== $WT_TREE->getName()) {
-	header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $WT_TREE->getName());
+	header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $WT_TREE->getNameUrl());
 
 	return;
 }
@@ -110,7 +110,7 @@ if ($blocks['main']) {
 				echo $active_blocks[$module_name]->getBlock($block_id);
 			} else {
 				// Load the block asynchronously
-				echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
+				echo '<div id="block_', $block_id, '"><div class="loading-image"></div></div>';
 				$controller->addInlineJavascript(
 					'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
 				);
@@ -132,7 +132,7 @@ if ($blocks['side']) {
 				echo $active_blocks[$module_name]->getBlock($block_id);
 			} else {
 				// Load the block asynchronously
-				echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
+				echo '<div id="block_', $block_id, '"><div class="loading-image"></div></div>';
 				$controller->addInlineJavascript(
 					'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
 				);

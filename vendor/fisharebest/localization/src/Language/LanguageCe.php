@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryRu;
  * @license   GPLv3+
  */
 class LanguageCe extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ce';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptCyrl;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryRu;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

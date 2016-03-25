@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryNo;
  * @license   GPLv3+
  */
 class LanguageSe extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'se';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryNo;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

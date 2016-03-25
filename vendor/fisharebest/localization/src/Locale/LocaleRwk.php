@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageRwk;
  * @license       GPLv3+
  */
 class LocaleRwk extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Kiruwa';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KIRUWA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageRwk;
 	}

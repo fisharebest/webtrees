@@ -10,7 +10,13 @@ use Fisharebest\Localization\Territory\TerritoryMa;
  * @license       GPLv3+
  */
 class LocaleFrMa extends LocaleFr {
-	/** {@inheritdoc} */
+	public function numberSymbols() {
+		return array(
+			self::GROUP   => self::DOT,
+			self::DECIMAL => self::COMMA,
+		);
+	}
+
 	public function territory() {
 		return new TerritoryMa;
 	}

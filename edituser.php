@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -54,10 +54,10 @@ $form_visible_online = Filter::postBool('form_visible_online');
 if ($form_action && Filter::checkCsrf()) {
 	switch ($form_action) {
 	case 'update':
-		if ($form_username !== Auth::user()->getUserName() && User::findByIdentifier($form_username)) {
-			FlashMessages::addMessage(I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
-		} elseif ($form_email !== Auth::user()->getEmail() && User::findByIdentifier($form_email)) {
-			FlashMessages::addMessage(I18N::translate('Duplicate email address.  A user with that email already exists.'));
+		if ($form_username !== Auth::user()->getUserName() && User::findByUserName($form_username)) {
+			FlashMessages::addMessage(I18N::translate('Duplicate user name. A user with that user name already exists. Please choose another user name.'));
+		} elseif ($form_email !== Auth::user()->getEmail() && User::findByEmail($form_email)) {
+			FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
 		} else {
 			// Change username
 			if ($form_username !== Auth::user()->getUserName()) {
@@ -187,7 +187,7 @@ function checkform(frm) {
 					<?php echo I18N::translateContext('unknown people', 'Unknown'); ?>
 				<?php endif; ?>
 				<p class="small text-muted">
-					<?php echo I18N::translate('This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator.'); ?>
+					<?php echo I18N::translate('This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator.'); ?>
 				</p>
 			</div>
 
@@ -284,7 +284,7 @@ function checkform(frm) {
 					<?php endforeach; ?>
 				</select>
 				<p class="small text-muted">
-					<?php echo /* I18N: Help text for the "Default theme" site configuration setting */ I18N::translate('You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc.'); ?>
+					<?php echo /* I18N: Help text for the "Default theme" site configuration setting */ I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.'); ?>
 				</p>
 			</div>
 			<?php endif; ?>
@@ -297,7 +297,7 @@ function checkform(frm) {
 			<div class="value">
 				<?php echo FunctionsEdit::editFieldContact('form_contact_method', Auth::user()->getPreference('contactmethod')); ?>
 				<p class="small text-muted">
-					<?php echo I18N::translate('Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all.'); ?>
+					<?php echo I18N::translate('Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all.'); ?>
 				</p>
 			</div>
 
@@ -309,7 +309,7 @@ function checkform(frm) {
 			<div class="value">
 				<?php echo FunctionsEdit::checkbox('form_visible_online', Auth::user()->getPreference('visibleonline')); ?>
 				<p class="small text-muted">
-					<?php echo I18N::translate('This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible.'); ?>
+					<?php echo I18N::translate('This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible.'); ?>
 				</p>
 			</div>
 		</div>

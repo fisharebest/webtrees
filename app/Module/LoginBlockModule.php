@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -60,7 +60,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 		if (Auth::check()) {
 			$title   = I18N::translate('Logout');
 			$content = '<div class="center"><form method="post" action="logout.php" name="logoutform" onsubmit="return true;">';
-			$content .= '<br><a href="../../edituser.php" class="name2">' . I18N::translate('Logged in as ') . ' ' . Auth::user()->getRealNameHtml() . '</a><br><br>';
+			$content .= '<br><a href="edituser.php" class="name2">' . I18N::translate('Logged in as ') . ' ' . Auth::user()->getRealNameHtml() . '</a><br><br>';
 			$content .= '<input type="submit" value="' . I18N::translate('Logout') . '">';
 
 			$content .= '<br><br></form></div>';

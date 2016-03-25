@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -162,13 +162,6 @@ class PageController extends BaseController {
 			var WT_LOCALE      = "' . Filter::escapeJs(WT_LOCALE) . '";
 			var WT_CSRF_TOKEN  = "' . Filter::escapeJs(Filter::getCsrfToken()) . '";
 		', self::JS_PRIORITY_HIGH);
-
-		// Temporary fix for access to main menu hover elements on android/blackberry touch devices
-		$this->addInlineJavascript('
-			if(navigator.userAgent.match(/Android|PlayBook/i)) {
-				jQuery(".primary-menu > li > a").attr("href", "#");
-			}
-		');
 
 		Theme::theme()->sendHeaders();
 		echo Theme::theme()->doctype();

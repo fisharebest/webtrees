@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryIq;
  * @license   GPLv3+
  */
 class LanguageCkb extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ckb';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptArab;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryIq;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

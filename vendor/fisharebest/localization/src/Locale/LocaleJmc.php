@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageJmc;
  * @license       GPLv3+
  */
 class LocaleJmc extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Kimachame';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KIMACHAME';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageJmc;
 	}

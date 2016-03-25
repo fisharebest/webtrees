@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -76,7 +76,7 @@ class FunctionsMedia {
 		// find out how much memory this image needs for processing, probably only works for jpegs
 		// from comments on http://www.php.net/imagecreatefromjpeg
 		if ($imgsize && isset($imgsize['bits']) && (isset($imgsize['channels']))) {
-			$memoryNeeded = round(($imgsize[0] * $imgsize[1] * $imgsize['bits'] * $imgsize['channels'] / 8 + Pow(2, 16)) * 1.65);
+			$memoryNeeded = round(($imgsize[0] * $imgsize[1] * $imgsize['bits'] * $imgsize['channels'] / 8 + pow(2, 16)) * 1.65);
 			$memorySpare  = $memoryAvailable - $memoryUsed - $memoryNeeded;
 			if ($memorySpare > 0) {
 				// we have enough memory to load this file

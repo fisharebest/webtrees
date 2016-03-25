@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptElba extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Elba';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '226';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Elbasan';
 	}

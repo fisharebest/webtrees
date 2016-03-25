@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryGn;
  * @license   GPLv3+
  */
 class LanguageNqo extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'nqo';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptNkoo;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryGn;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule0;
 	}

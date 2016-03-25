@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Controller\SimpleController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Query\QueryMedia;
 
@@ -71,8 +72,8 @@ if (!Auth::isEditor($WT_TREE) || !$disp) {
 	return;
 }
 
-// There is a lot of common code in the create and update cases....
-// .... and also in the admin_media_upload.php script
+// There is a lot of common code in the create and update cases…
+// …and also in the admin_media_upload.php script
 
 switch ($action) {
 case 'create': // Save the information from the “showcreateform” action
@@ -103,7 +104,7 @@ case 'create': // Save the information from the “showcreateform” action
 		}
 	}
 
-	// Managers can create new media paths (subfolders).  Users must use existing folders.
+	// Managers can create new media paths (subfolders). Users must use existing folders.
 	if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 		if (Auth::isManager($WT_TREE)) {
 			if (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
@@ -118,7 +119,7 @@ case 'create': // Save the information from the “showcreateform” action
 		}
 	}
 
-	// The media folder exists.  Now create a thumbnail folder to match it.
+	// The media folder exists. Now create a thumbnail folder to match it.
 	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
 		if (!File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
 			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)), 'danger');
@@ -174,7 +175,7 @@ case 'create': // Save the information from the “showcreateform” action
 	if (!empty($_FILES['mediafile']['name'])) {
 		$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . $fileName;
 		if (file_exists($serverFileName)) {
-			FlashMessages::addMessage(I18N::translate('The file %s already exists.  Use another filename.', $folderName . $fileName));
+			FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $folderName . $fileName));
 			break;
 		}
 		if (move_uploaded_file($_FILES['mediafile']['tmp_name'], $serverFileName)) {
@@ -260,7 +261,7 @@ case 'update': // Save the information from the “editmedia” action
 		}
 	}
 
-	// Managers can create new media paths (subfolders).  Users must use existing folders.
+	// Managers can create new media paths (subfolders). Users must use existing folders.
 	if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 		if (Auth::isManager($WT_TREE)) {
 			if (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
@@ -275,7 +276,7 @@ case 'update': // Save the information from the “editmedia” action
 		}
 	}
 
-	// The media folder exists.  Now create a thumbnail folder to match it.
+	// The media folder exists. Now create a thumbnail folder to match it.
 	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
 		if (!File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
 			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)), 'danger');
@@ -313,7 +314,9 @@ case 'update': // Save the information from the “editmedia” action
 		break;
 	}
 
-	$messages = false;
+	$messages  = false;
+	$move_file = false;
+
 	// Move files on disk (if we can) to reflect the change to the GEDCOM data
 	if (!$media->isExternal()) {
 		$oldServerFile  = $media->getServerFilename('main');
@@ -328,10 +331,11 @@ case 'update': // Save the information from the “editmedia” action
 			//-- check if the file is used in more than one gedcom
 			//-- do not allow it to be moved or renamed if it is
 			if (!$media->isExternal() && FunctionsDb::isMediaUsedInOtherTree($media->getFilename(), $WT_TREE->getTreeId())) {
-				FlashMessages::addMessage(I18N::translate('This file is linked to another family tree on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'));
+				FlashMessages::addMessage(I18N::translate('This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed.'));
 				break;
 			}
 
+			$move_file = true;
 			if (!file_exists($newServerFile) || md5_file($oldServerFile) === md5_file($newServerFile)) {
 				try {
 					rename($oldServerFile, $newServerFile);
@@ -347,6 +351,7 @@ case 'update': // Save the information from the “editmedia” action
 			}
 		}
 		if ($oldServerThumb != $newServerThumb) {
+			$move_file = true;
 			if (!file_exists($newServerThumb) || md5_file($oldServerFile) == md5_file($newServerThumb)) {
 				try {
 					rename($oldServerThumb, $newServerThumb);
@@ -373,6 +378,12 @@ case 'update': // Save the information from the “editmedia” action
 	$newrec = "0 @$pid@ OBJE\n";
 	$newrec = FunctionsEdit::handleUpdates($newrec);
 	$record->updateRecord($newrec, $update_CHAN);
+
+	if ($move_file) {
+		// We've moved a file. Therefore we must approve the change, as rejecting
+		// the change will create broken references.
+		FunctionsImport::acceptAllChanges($record->getXref(), $record->getTree()->getTreeId());
+	}
 
 	if ($pid && $linktoid) {
 		$record = GedcomRecord::getInstance($linktoid, $WT_TREE);
@@ -446,7 +457,7 @@ if ($gedfile == 'FILE') {
 	if (Auth::isManager($WT_TREE)) {
 		echo '<tr><td class="descriptionbox wrap width25">';
 		echo I18N::translate('Thumbnail to upload') . '</td><td class="optionbox wrap"><input type="file" name="thumbnail" size="40">';
-		echo '<p class="small text-muted">', I18N::translate('Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.'), '</p>';
+		echo '<p class="small text-muted">', I18N::translate('Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.'), '</p>';
 		echo '</td></tr>';
 	}
 }

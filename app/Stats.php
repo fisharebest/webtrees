@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -65,9 +65,6 @@ class Stats {
 			$reflection = new \ReflectionMethod($this, $method);
 			if ($reflection->isPublic() && !in_array($method, $this->public_but_not_allowed)) {
 				$examples[$method] = $this->$method();
-				if (stristr($method, 'highlight')) {
-					$examples[$method] = str_replace(array(' align="left"', ' align="right"'), '', $examples[$method]);
-				}
 			}
 		}
 		ksort($examples);
@@ -969,7 +966,7 @@ class Stats {
 	 * Count the number of living individuals.
 	 *
 	 * The totalLiving/totalDeceased queries assume that every dead person will
-	 * have a DEAT record.  It will not include individuals who were born more
+	 * have a DEAT record. It will not include individuals who were born more
 	 * than MAX_ALIVE_AGE years ago, and who have no DEAT record.
 	 * A good reason to run the “Add missing DEAT records” batch-update!
 	 *
@@ -1486,7 +1483,7 @@ class Stats {
 	 * @param int    $parent
 	 * @param bool   $country
 	 *
-	 * @return integer[]|string[][]
+	 * @return int[]|string[][]
 	 */
 	public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false) {
 		if ($fact) {
@@ -1738,11 +1735,11 @@ class Stats {
 		}
 		$chart = '<div id="google_charts" class="center">';
 		$chart .= '<b>' . $chart_title . '</b><br><br>';
-		$chart .= '<div align="center"><img src="' . $chart_url . '" alt="' . $chart_title . '" title="' . $chart_title . '" class="gchart" /><br>';
+		$chart .= '<div><img src="' . $chart_url . '" alt="' . $chart_title . '" title="' . $chart_title . '" class="gchart" /><br>';
 		$chart .= '<table class="center"><tr>';
-		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR2 . '" width="12"></td><td>' . I18N::translate('Highest population') . '&nbsp;&nbsp;</td>';
-		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR3 . '" width="12"></td><td>' . I18N::translate('Lowest population') . '&nbsp;&nbsp;</td>';
-		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR1 . '" width="12"></td><td>' . I18N::translate('Nobody at all') . '&nbsp;&nbsp;</td>';
+		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR2 . '" width="12"></td><td>' . I18N::translate('Highest population') . '</td>';
+		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR3 . '" width="12"></td><td>' . I18N::translate('Lowest population') . '</td>';
+		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR1 . '" width="12"></td><td>' . I18N::translate('Nobody at all') . '</td>';
 		$chart .= '</tr></table></div></div>';
 
 		return $chart;
@@ -2432,7 +2429,7 @@ class Stats {
 		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		} else {
-			$top10 = implode(';&nbsp; ', $top10);
+			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
@@ -3276,7 +3273,7 @@ class Stats {
 		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		} else {
-			$top10 = implode(';&nbsp; ', $top10);
+			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
@@ -4468,7 +4465,7 @@ class Stats {
 		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		} else {
-			$top10 = implode(';&nbsp; ', $top10);
+			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
@@ -4665,7 +4662,7 @@ class Stats {
 		if ($sex) {
 			$sql .= ', i_sex';
 		}
-		$rows = $this->runSQL($sql);
+		$rows = $this->runSql($sql);
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);
@@ -5106,7 +5103,7 @@ class Stats {
 		if ($type == 'list') {
 			$top10 = implode('', $top10);
 		} else {
-			$top10 = implode(';&nbsp; ', $top10);
+			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
@@ -5269,7 +5266,7 @@ class Stats {
 		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		} else {
-			$top10 = implode(';&nbsp; ', $top10);
+			$top10 = implode('; ', $top10);
 		}
 		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
@@ -5582,7 +5579,7 @@ class Stats {
 				break;
 			}
 			if ($show_tot) {
-				$tot = '&nbsp;(' . I18N::number($total) . ')';
+				$tot = ' (' . I18N::number($total) . ')';
 			} else {
 				$tot = '';
 			}
@@ -6442,7 +6439,7 @@ class Stats {
 	 *
 	 * @link http://bendodson.com/news/google-extended-encoding-made-easy
 	 *
-	 * @param integer[] $a
+	 * @param int[] $a
 	 *
 	 * @return string
 	 */
@@ -6657,8 +6654,8 @@ class Stats {
 
 	/**
 	 * ISO3166 3 letter codes, with their 2 letter equivalent.
-	 * NOTE: this is not 1:1.  ENG/SCO/WAL/NIR => GB
-	 * NOTE: this also includes champman codes and others.  Should it?
+	 * NOTE: this is not 1:1. ENG/SCO/WAL/NIR => GB
+	 * NOTE: this also includes champman codes and others. Should it?
 	 *
 	 * @return string[]
 	 */
@@ -6995,7 +6992,7 @@ class Stats {
 	 */
 	private function centuryName($century) {
 		if ($century < 0) {
-			return str_replace(-$century, self::centuryName(-$century), /* I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */
+			return str_replace(-$century, self::centuryName(-$century), /* I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era */
 				I18N::translate('%s BCE', I18N::number(-$century)));
 		}
 		// The current chart engine (Google charts) can't handle <sup></sup> markup

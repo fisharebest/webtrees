@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageFo;
  * @license       GPLv3+
  */
 class LocaleFo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'føroyskt';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'FOROYSKT';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageFo;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::DOT,
@@ -34,7 +30,6 @@ class LocaleFo extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

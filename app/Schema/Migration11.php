@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,7 +28,7 @@ class Migration11 implements MigrationInterface {
 	public function upgrade() {
 		// - delete the wt_name.n_list column; it has never been used
 		// - a bug in webtrees 1.1.2 caused the wt_name.n_full column
-		// to include slashes around the surname.  These are unnecessary,
+		// to include slashes around the surname. These are unnecessary,
 		// and cause problems when we try to match the name from the
 		// gedcom with the name from the table.
 		// Remove slashes from INDI names

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptKthi extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Kthi';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '317';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Kaithi';
 	}

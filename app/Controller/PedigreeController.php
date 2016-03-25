@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -96,7 +96,7 @@ class PedigreeController extends ChartController {
 		}, array_values($this->sosaAncestors($this->generations)));
 
 		//check earliest generation for any ancestors
-		for ($i = (int) ceil($this->treesize / 2); $i < $this->treesize; $i++) {
+		for ($i = (int) ($this->treesize / 2); $i < $this->treesize; $i++) {
 			$this->chartHasAncestors = $this->chartHasAncestors || ($this->nodes[$i]['indi'] && $this->nodes[$i]['indi']->getChildFamilies());
 		}
 

@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageYi;
  * @license       GPLv3+
  */
 class LocaleYi extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ייִדיש';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageYi;
 	}

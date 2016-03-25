@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,11 +25,12 @@ class CensusColumnAgeMale extends AbstractCensusColumn implements CensusColumnIn
 	/**
 	 * Generate the likely value of this census column, based on available information.
 	 *
-	 * @param Individual $individual
+	 * @param Individual      $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function generate(Individual $individual) {
+	public function generate(Individual $individual, Individual $head = null) {
 		if ($individual->getSex() === 'F') {
 			return '';
 		} else {

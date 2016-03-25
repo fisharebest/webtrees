@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptPrti extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Prti';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '130';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Inscriptional_Parthian';
 	}

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptRunr extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Runr';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '211';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Runic';
 	}

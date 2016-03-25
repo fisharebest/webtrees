@@ -274,7 +274,7 @@
 									</if>
 									<if condition="@PLAC!='' and @TEMP==''">
 										<GedcomValue tag="@fact:PLAC" />
-									</if>	
+									</if>
 									<if condition="@PLAC=='' and @TEMP!=''">
 										<GedcomValue tag="@fact:TEMP" />
 									</if>

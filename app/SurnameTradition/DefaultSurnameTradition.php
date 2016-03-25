@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,10 +23,10 @@ class DefaultSurnameTradition implements SurnameTraditionInterface {
 	const REGEX_GIVN = '~^(?<GIVN>[^/ ]+)~';
 
 	/** Extract a SPFX and SURN from a NAME */
-	const REGEX_SPFX_SURN = '~(?<NAME>/(?<SPFX>[a-z]{0,4}) ?(?<SURN>[^/]*)/)~';
+	const REGEX_SPFX_SURN = '~(?<NAME>/(?<SPFX>[a-z]{0,4}(?: [a-z]{1,4})*) ?(?<SURN>[^/]*)/)~';
 
 	/** Extract a simple SURN from a NAME */
-	const REGEX_SURN = '~(?<NAME>/(?<SURN>[^ /]+)/)~';
+	const REGEX_SURN = '~(?<NAME>/(?<SURN>[^/]+)/)~';
 
 	/** Extract two Spanish/Portuguese SURNs from a NAME */
 	const REGEX_SURNS = '~/(?<SURN1>[^ /]+)(?: | y |/ /|/ y /)(?<SURN2>[^ /]+)/~';

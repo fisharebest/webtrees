@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -76,7 +76,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		}
 		$title .= $this->getTitle();
 
-		$content = "";
+		$content = '';
 		// load the lines from the file
 		$top10 = Database::prepare(
 			"SELECT page_parameter, page_count" .
@@ -86,23 +86,23 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		)->execute(array(
 			'tree_id' => $WT_TREE->getTreeId(),
 			'limit'   => (int) $num,
-		))->FetchAssoc();
+		))->fetchAssoc();
 
 		if ($block) {
-			$content .= "<table width=\"90%\">";
+			$content .= '<table width="90%">';
 		} else {
-			$content .= "<table>";
+			$content .= '<table>';
 		}
 		foreach ($top10 as $id => $count) {
 			$record = GedcomRecord::getInstance($id, $WT_TREE);
 			if ($record && $record->canShow()) {
-				$content .= '<tr valign="top">';
+				$content .= '<tr>';
 				if ($count_placement == 'before') {
-					$content .= '<td dir="ltr" align="right">[' . $count . ']</td>';
+					$content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
 				}
 				$content .= '<td class="name2" ><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
 				if ($count_placement == 'after') {
-					$content .= '<td dir="ltr" align="right">[' . $count . ']</td>';
+					$content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
 				}
 				$content .= '</tr>';
 			}

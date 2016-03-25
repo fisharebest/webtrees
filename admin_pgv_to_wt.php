@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -140,10 +140,9 @@ if (!$PGV_PATH) {
 	$pgv_dirs = array();
 	$dir      = opendir(realpath('..'));
 	while (($subdir = readdir($dir)) !== false) {
-		if ($subdir!='..') {
-			if (is_dir('../' . $subdir) && file_exists('../' . $subdir . '/config.php')) {
-				$pgv_dirs[] = '../' . $subdir;
-			}
+		// Exclude '..' as ascending too many levels can trigger open_basedir_restriction errors.
+		if ($subdir !== '..' && is_dir('../' . $subdir) && file_exists('../' . $subdir . '/config.php')) {
+			$pgv_dirs[] = '../' . $subdir;
 		}
 	}
 	closedir($dir);
@@ -197,12 +196,12 @@ Database::beginTransaction();
 // Delete the existing user accounts, and any information associated with it
 Database::exec("UPDATE `##log` SET user_id=NULL");
 Database::exec("DELETE FROM `##change`");
-Database::exec("DELETE `##block_setting` FROM `##block_setting` JOIN  `##block` USING (block_id) WHERE user_id>0 OR gedcom_id>0");
-Database::exec("DELETE FROM `##block`               WHERE user_id>0 OR gedcom_id>0");
+Database::exec("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id>0 OR gedcom_id>0");
+Database::exec("DELETE FROM `##block` WHERE user_id>0 OR gedcom_id>0");
 Database::exec("DELETE FROM `##message`");
 Database::exec("DELETE FROM `##user_gedcom_setting` WHERE user_id>0");
-Database::exec("DELETE FROM `##user_setting`        WHERE user_id>0");
-Database::exec("DELETE FROM `##user`                WHERE user_id>0");
+Database::exec("DELETE FROM `##user_setting` WHERE user_id>0");
+Database::exec("DELETE FROM `##user` WHERE user_id>0");
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -303,7 +302,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 	echo '<p>pgv_user => wt_user…</p>';
 
 	try {
-		// "INSERT IGNORE" is needed to allow for PhpGedView users with duplicate emails.  Only the first will be imported.
+		// "INSERT IGNORE" is needed to allow for PhpGedView users with duplicate emails. Only the first will be imported.
 		Database::prepare(
 			"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password)" .
 			" SELECT user_id, user_name, CONCAT_WS(' ', us1.setting_value, us2.setting_value), us3.setting_value, password FROM `{$DBNAME}`.`{$TBLPREFIX}user`" .
@@ -420,7 +419,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 	echo '<p>pgv_users => wt_user…</p>';
 
 	try {
-		// "INSERT IGNORE" is needed to allow for PhpGedView users with duplicate emails.  Only the first will be imported.
+		// "INSERT IGNORE" is needed to allow for PhpGedView users with duplicate emails. Only the first will be imported.
 		Database::prepare(
 			"INSERT IGNORE INTO `##user` (user_name, real_name, email, password)" .
 			" SELECT u_username, CONCAT_WS(' ', u_firstname, u_lastname), u_email, u_password FROM `{$DBNAME}`.`{$TBLPREFIX}users`"
@@ -1016,7 +1015,7 @@ if ($PGV_SCHEMA_VERSION >= 13) {
 					try {
 						$statement->execute(array($GED_DATA['id'], $page_name, $page_parameter, $match[3]));
 					} catch (PDOException $ex) {
-						// Primary key violation?  Ignore?
+						// Primary key violation? Ignore?
 					}
 				}
 			}
@@ -1107,7 +1106,7 @@ try {
 		"REPLACE INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)" .
 		" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `{$DBNAME}`.`{$TBLPREFIX}placelocation`"
 	)->execute();
-} catch (PDOexception $ex) {
+} catch (PDOException $ex) {
 	// This table will only exist if the gm module is installed in PhpGedView/WT
 }
 

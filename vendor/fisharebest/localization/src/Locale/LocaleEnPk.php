@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryPk;
  * @license       GPLv3+
  */
 class LocaleEnPk extends LocaleEn {
-	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryPk;
 	}

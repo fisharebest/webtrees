@@ -10,17 +10,14 @@ use Fisharebest\Localization\Territory\TerritoryAu;
  * @license       GPLv3+
  */
 class LocaleEnAu extends LocaleEn {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Australian English';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ENGLISH, AUSTRALIAN';
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryAu;
 	}

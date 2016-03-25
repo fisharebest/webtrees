@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageVe;
  * @license       GPLv3+
  */
 class LocaleVe extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Tshivenḓa';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'TSHIVENDA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageVe;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

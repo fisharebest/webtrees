@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageBn;
  * @license       GPLv3+
  */
 class LocaleBn extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'বাংলা';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageBn;
 	}

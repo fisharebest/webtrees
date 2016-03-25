@@ -10,17 +10,14 @@ use Fisharebest\Localization\Territory\TerritoryCh;
  * @license       GPLv3+
  */
 class LocaleDeCh extends LocaleDe {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Schweizer Hochdeutsch';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SCHWEIZER HOCHDEUTSCH';
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::PRIME,
@@ -28,7 +25,10 @@ class LocaleDeCh extends LocaleDe {
 		);
 	}
 
-	/** {@inheritdoc} */
+	protected function percentFormat() {
+		return '%s%%';
+	}
+
 	public function territory() {
 		return new TerritoryCh;
 	}

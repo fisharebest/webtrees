@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptSyre extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Syre';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '138';
 	}

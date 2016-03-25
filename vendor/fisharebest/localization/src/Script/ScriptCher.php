@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptCher extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Cher';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '445';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Cherokee';
 	}

@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryMa;
  * @license   GPLv3+
  */
 class LanguageTzm extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'tzm';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryMa;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRuleCentralAtlasTamazight();
 	}

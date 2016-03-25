@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -268,7 +268,7 @@ if ($action === 'submit') {
 			if (Auth::isEditor($WT_TREE)) {
 				echo MediaController::getMediaListMenu($mediaobject);
 			}
-			// If sorting by title, highlight the title.  If sorting by filename, highlight the filename
+			// If sorting by title, highlight the title. If sorting by filename, highlight the filename
 			if ($sortby === 'title') {
 				echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
 				echo $mediaobject->getFullName();
@@ -286,6 +286,10 @@ if ($action === 'submit') {
 				if ($mediaobject->fileExists()) {
 					if (Auth::isEditor($WT_TREE)) {
 						echo GedcomTag::getLabelValue('FILE', $mediaobject->getFilename());
+						$mediatype = $mediaobject->getMediaType();
+						if ($mediatype) {
+						echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
+						}
 					}
 					echo GedcomTag::getLabelValue('FORM', $mediaobject->mimeType());
 					echo GedcomTag::getLabelValue('__FILE_SIZE__', $mediaobject->getFilesize());
@@ -303,13 +307,13 @@ if ($action === 'submit') {
 			echo FunctionsPrint::printFactNotes($mediaobject->getGedcom(), 1);
 			echo '</div>';
 			foreach ($mediaobject->linkedIndividuals('OBJE') as $individual) {
-				echo '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View individual') . ' — ' . $individual->getFullname() . '</a><br>';
+				echo '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View individual') . ' — ' . $individual->getFullName() . '</a><br>';
 			}
 			foreach ($mediaobject->linkedFamilies('OBJE') as $family) {
-				echo '<a href="' . $family->getHtmlUrl() . '">' . I18N::translate('View family') . ' — ' . $family->getFullname() . '</a><br>';
+				echo '<a href="' . $family->getHtmlUrl() . '">' . I18N::translate('View family') . ' — ' . $family->getFullName() . '</a><br>';
 			}
 			foreach ($mediaobject->linkedSources('OBJE') as $source) {
-				echo '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View source') . ' — ' . $source->getFullname() . '</a><br>';
+				echo '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View source') . ' — ' . $source->getFullName() . '</a><br>';
 			}
 			echo '</td></tr></table>';
 			echo '</td>';

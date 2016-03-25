@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class TerritoryVe extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'VE';
 	}
 
-	/** {@inheritdoc} */
 	public function firstDay() {
 		return 0;
 	}
 
-	/** {@inheritdoc} */
 	public function paperSize() {
 		return 'US-Letter';
 	}

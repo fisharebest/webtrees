@@ -8,7 +8,6 @@
  * @license   GPLv3+
  */
 class VariantPosix implements VariantInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'posix';
 	}

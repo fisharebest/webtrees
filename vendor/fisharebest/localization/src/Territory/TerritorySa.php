@@ -8,22 +8,18 @@
  * @license   GPLv3+
  */
 class TerritorySa extends AbstractTerritory implements TerritoryInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'SA';
 	}
 
-	/** {@inheritdoc} */
 	public function firstDay() {
 		return 0;
 	}
 
-	/** {@inheritdoc} */
 	public function weekendStart() {
 		return 5;
 	}
 
-	/** {@inheritdoc} */
 	public function weekendEnd() {
 		return 6;
 	}

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,7 +34,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 	 * @return string
 	 */
 	public function getTitle() {
-		return /* I18N: Name of a module.  Top=Most common */ I18N::translate('Top surnames');
+		return /* I18N: Name of a module. Top=Most common */ I18N::translate('Top surnames');
 	}
 
 	/**
@@ -105,7 +105,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 			// I18N: i.e. most popular surname.
 			$title .= I18N::translate('Top surname');
 		} else {
-			// I18N: Title for a list of the most common surnames, %s is a number.  Note that a separate translation exists when %s is 1
+			// I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 			$title .= I18N::plural('Top %s surname', 'Top %s surnames', $num, I18N::number($num));
 		}
 

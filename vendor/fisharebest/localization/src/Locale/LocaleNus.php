@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageNus;
  * @license       GPLv3+
  */
 class LocaleNus extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Thok Nath';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'THOK NATH';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageNus;
 	}

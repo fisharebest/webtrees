@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptSyrn extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Syrn';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '136';
 	}

@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryNz;
  * @license   GPLv3+
  */
 class LanguageMi extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'mi';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryNz;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule2;
 	}

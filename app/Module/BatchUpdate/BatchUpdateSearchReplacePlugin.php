@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -123,7 +123,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 			try {
 				preg_match('/' . $this->search . '/', null);
 			} catch (\ErrorException $ex) {
-				$this->error = '<div class="alert alert-danger">' . I18N::translate('The regex appears to contain an error.  It can’t be used.') . '</div>';
+				$this->error = '<div class="alert alert-danger">' . I18N::translate('The regex appears to contain an error. It can’t be used.') . '</div>';
 			}
 			break;
 		}

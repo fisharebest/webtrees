@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -86,12 +86,12 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				$title .= I18N::translate('Pedigree of %s', $person->getFullName());
 				$chartController = new HourglassController($person->getXref(), $details, false);
 				$controller->addInlineJavascript($chartController->setupJavascript());
-				$content .= '<td valign="middle">';
+				$content .= '<td>';
 				ob_start();
 				FunctionsPrint::printPedigreePerson($person, $details);
 				$content .= ob_get_clean();
 				$content .= '</td>';
-				$content .= '<td valign="middle">';
+				$content .= '<td>';
 				ob_start();
 				$chartController->printPersonPedigree($person, 1);
 				$content .= ob_get_clean();
@@ -101,7 +101,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				$title .= I18N::translate('Descendants of %s', $person->getFullName());
 				$chartController = new HourglassController($person->getXref(), $details, false);
 				$controller->addInlineJavascript($chartController->setupJavascript());
-				$content .= '<td valign="middle">';
+				$content .= '<td>';
 				ob_start();
 				$chartController->printDescendency($person, 1, false);
 				$content .= ob_get_clean();
@@ -111,12 +111,12 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				$title .= I18N::translate('Hourglass chart of %s', $person->getFullName());
 				$chartController = new HourglassController($person->getXref(), $details, false);
 				$controller->addInlineJavascript($chartController->setupJavascript());
-				$content .= '<td valign="middle">';
+				$content .= '<td>';
 				ob_start();
 				$chartController->printDescendency($person, 1, false);
 				$content .= ob_get_clean();
 				$content .= '</td>';
-				$content .= '<td valign="middle">';
+				$content .= '<td>';
 				ob_start();
 				$chartController->printPersonPedigree($person, 1);
 				$content .= ob_get_clean();

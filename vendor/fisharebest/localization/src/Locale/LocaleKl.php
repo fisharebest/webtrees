@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageKl;
  * @license       GPLv3+
  */
 class LocaleKl extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'kalaallisut';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'KALAALLISUT';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKl;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::DOT,
@@ -34,7 +30,6 @@ class LocaleKl extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

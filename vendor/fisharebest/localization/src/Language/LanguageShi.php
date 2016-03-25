@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryMa;
  * @license   GPLv3+
  */
 class LanguageShi extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'shi';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptTfng;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryMa;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRuleTachelhit;
 	}

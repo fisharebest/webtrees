@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryLs;
  * @license   GPLv3+
  */
 class LanguageSt extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'st';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryLs;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

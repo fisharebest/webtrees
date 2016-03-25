@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -167,7 +167,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 					if ($record && $record->canShow()) {
 						if ($record instanceof Individual) {
 							$content .= '<div id="box' . $favorite["gid"] . '.0" class="person_box action_header';
-							switch ($record->getsex()) {
+							switch ($record->getSex()) {
 							case 'M':
 								break;
 							case 'F':

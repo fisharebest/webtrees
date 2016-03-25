@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryIr;
  * @license   GPLv3+
  */
 class LanguageAz extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'az';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryIr;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

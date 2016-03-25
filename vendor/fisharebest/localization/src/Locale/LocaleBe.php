@@ -10,26 +10,26 @@ use Fisharebest\Localization\Language\LanguageBe;
  * @license       GPLv3+
  */
 class LocaleBe extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'беларуская';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'БЕЛАРУСКАЯ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageBe;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,
 			self::DECIMAL => self::COMMA,
 		);
+	}
+
+	protected function percentFormat() {
+		return '%s' . self::NBSP . self::PERCENT;
 	}
 }
