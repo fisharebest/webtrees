@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -61,7 +61,7 @@ class AbstractCensusColumn {
 	 *
 	 * @return string - e.g. "England"
 	 */
-	protected function country($place) {
+	protected function lastPartOfPlace($place) {
 		$place = explode(', ', $place);
 
 		return end($place);
@@ -155,7 +155,7 @@ class AbstractCensusColumn {
 		if (empty($families)) {
 			return null;
 		} else {
-			usort($families, function(Family $x, Family $y) { return Date::compare($x->getMarriageDate(), $y->getMarriageDate()); });
+			usort($families, function (Family $x, Family $y) { return Date::compare($x->getMarriageDate(), $y->getMarriageDate()); });
 
 			return end($families);
 		}

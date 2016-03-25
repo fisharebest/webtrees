@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryFi;
  * @license       GPLv3+
  */
 class LocaleSvFi extends LocaleSv {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryFi;
 	}

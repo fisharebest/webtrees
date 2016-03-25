@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -15,28 +15,23 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Individual;
-
 /**
  * Marital status.
  */
-class CensusColumnConditionEnglish extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual) {
-		$family = $this->spouseFamily($individual);
+class CensusColumnConditionEnglish extends AbstractCensusColumnCondition {
+	/* Text to display for married individuals */
+	protected $husband = 'Mar';
+	protected $wife    = 'Mar';
 
-		if ($family === null || !empty($family->getFacts('_NMR'))) {
-			return 'Unm'; // unmarried
-		} elseif (!empty($family->getFacts('DIV'))) {
-			return 'Div'; // divorced
-		} else {
-			return 'Mar'; // married
-		}
-	}
+	/* Text to display for unmarried individuals */
+	protected $bachelor = 'Unm';
+	protected $spinster = 'Unm';
+
+	/* Text to display for divorced individuals */
+	protected $divorce  = 'Div';
+	protected $divorcee = 'Div';
+
+	/* Text to display for widowed individuals (not yet implemented) */
+	protected $widower = 'Wid';
+	protected $widow   = 'Wid';
 }

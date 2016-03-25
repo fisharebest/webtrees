@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,24 +20,11 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Source;
 
 /**
  * Controller for the source page
  */
 class SourceController extends GedcomRecordController {
-	/**
-	 * Startup activity
-	 */
-	public function __construct() {
-		global $WT_TREE;
-
-		$xref         = Filter::get('sid', WT_REGEX_XREF);
-		$this->record = Source::getInstance($xref, $WT_TREE);
-
-		parent::__construct();
-	}
-
 	/**
 	 * get edit menu
 	 */
@@ -62,12 +49,10 @@ class SourceController extends GedcomRecordController {
 					'onclick' => 'return add_fact("' . $this->record->getXref() . '", "TITL");',
 				)));
 			}
-		}
 
-		// delete
-		if (Auth::isEditor($this->record->getTree())) {
+			// delete
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-sour-del', array(
-				'onclick' => "return delete_source('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');",
+				'onclick' => "return delete_record('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');",
 			)));
 		}
 
@@ -76,24 +61,6 @@ class SourceController extends GedcomRecordController {
 			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-sour-editraw', array(
 				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
 			)));
-		}
-
-		// add to favorites
-		if (Module::getModuleByName('user_favorites')) {
-			$menu->addSubmenu(new Menu(
-			/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
-				'#',
-				'menu-sour-addfav',
-				array(
-					'onlick' => 'jQuery.post("module.php?mod=user_favorites&amp;mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
-				)));
-		}
-
-		// Get the link for the first submenu and set it as the link for the main menu
-		if ($menu->getSubmenus()) {
-			$submenus = $menu->getSubmenus();
-			$menu->setLink($submenus[0]->getLink());
-			$menu->setAttrs($submenus[0]->getAttrs());
 		}
 
 		return $menu;

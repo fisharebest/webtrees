@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryIn;
  * @license   GPLv3+
  */
 class LanguageOr extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'or';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptOrya;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryIn;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

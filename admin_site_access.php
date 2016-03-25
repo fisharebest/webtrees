@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,15 +25,15 @@ require './includes/session.php';
 $rules_display = array(
 	'unknown' => I18N::translate('unknown'),
 	'allow'   => /* I18N: An access rule - allow access to the site */ I18N::translate('allow'),
-	'deny'    => /* I18N: An access rule - deny access to the site */  I18N::translate('deny'),
-	'robot'   => /* I18N: http://en.wikipedia.org/wiki/Web_crawler */  I18N::translate('robot'),
+	'deny'    => /* I18N: An access rule - deny access to the site */ I18N::translate('deny'),
+	'robot'   => /* I18N: http://en.wikipedia.org/wiki/Web_crawler */ I18N::translate('robot'),
 );
 
 $rules_edit = array(
 	'unknown' => I18N::translate('unknown'),
 	'allow'   => /* I18N: An access rule - allow access to the site */ I18N::translate('allow'),
-	'deny'    => /* I18N: An access rule - deny access to the site */  I18N::translate('deny'),
-	'robot'   => /* I18N: http://en.wikipedia.org/wiki/Web_crawler */  I18N::translate('robot'),
+	'deny'    => /* I18N: An access rule - deny access to the site */ I18N::translate('deny'),
+	'robot'   => /* I18N: http://en.wikipedia.org/wiki/Web_crawler */ I18N::translate('robot'),
 );
 
 // Form actions
@@ -50,7 +50,7 @@ case 'save':
 		$ip_address          = WT_CLIENT_IP;
 
 		if ($ip_address_start !== null && $ip_address_end !== null && $user_agent_pattern !== null && $rule !== null) {
-			// This doesn't work with named placeholders.  The :user_agent_string parameter is not recognised...
+			// This doesn't work with named placeholders. The :user_agent_string parameter is not recognised.
 			$oops = $rule !== 'allow' && Database::prepare(
 				"SELECT INET_ATON(:ip_address) BETWEEN INET_ATON(:ip_address_start) AND INET_ATON(:ip_address_end)" .
 				" AND :user_agent_string LIKE :user_agent_pattern"
@@ -162,8 +162,8 @@ case 'load':
 			if ($key > 0) {
 				$sql .= ',';
 			}
-			// Datatables numbers columns 0, 1, 2, ...
-			// MySQL numbers columns 1, 2, 3, ...
+			// Datatables numbers columns 0, 1, 2
+			// MySQL numbers columns 1, 2, 3
 			switch ($value['dir']) {
 			case 'asc':
 				$sql .= " :col_" . $key . " ASC";
@@ -357,9 +357,9 @@ default:
 		<thead>
 		<tr>
 			<th><?php echo I18N::translate('Edit'); ?></th>
-			<th><?php echo /* I18N [...] of a range of addresses */ I18N::translate('Start IP address'); ?></th>
+			<th><?php echo /* I18N …of a range of addresses */ I18N::translate('Start IP address'); ?></th>
 			<th>-</th>
-			<th><?php echo /* I18N [...] of a range of addresses */ I18N::translate('End IP address'); ?></th>
+			<th><?php echo /* I18N …of a range of addresses */ I18N::translate('End IP address'); ?></th>
 			<th>-</th>
 			<th><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent_string */ I18N::translate('User-agent string'); ?></th>
 			<th><?php echo /* I18N: noun */ I18N::translate('Rule'); ?></th>

@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageSmn;
  * @license       GPLv3+
  */
 class LocaleSmn extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'anarâškielâ';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ANARASKIELA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageSmn;
 	}

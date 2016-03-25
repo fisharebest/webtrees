@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,8 +36,6 @@ $controller
 	->addInlineJavascript('
 	(function() {
 		autocomplete();
-// I dont think this is still a problem with version 41.0.2272.76 m
-//		jQuery("html").css("overflow","visible"); // workaround for chrome v37 canvas bugs
 
 		jQuery("#childarrow").on("click", ".menuselect", function(e) {
 			e.preventDefault();
@@ -49,7 +47,7 @@ $controller
 			.height(' . $controller->chartsize['y'] . ');
 
 		// Set variables
-		var	p0, p1, p2,  // Holds the ids of the boxes used in the join calculations
+		var p0, p1, p2,  // Holds the ids of the boxes used in the join calculations
 			canvas       = jQuery("#pedigree_canvas"),
 			ctx          = canvas[0].getContext("2d"),
 			nodes        = jQuery(".shadow").length,

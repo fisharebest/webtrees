@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryAm;
  * @license   GPLv3+
  */
 class LanguageHy extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'hy';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptArmn;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryAm;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule2;
 	}

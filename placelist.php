@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -216,7 +216,7 @@ case 'hierarchy':
 			->addInlineJavascript('jQuery("#places-tabs").css("visibility", "visible");')
 			->addInlineJavascript('jQuery(".loading-image").css("display", "none");');
 
-		echo '<div class="loading-image">&nbsp;</div>';
+		echo '<div class="loading-image"></div>';
 		echo '<div id="places-tabs"><ul>';
 		if ($myindilist) {
 			echo '<li><a href="#places-indi"><span id="indisource">', I18N::translate('Individuals'), '</span></a></li>';

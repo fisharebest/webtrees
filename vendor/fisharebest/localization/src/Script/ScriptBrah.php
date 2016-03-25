@@ -8,22 +8,18 @@
  * @license   GPLv3+
  */
 class ScriptBrah extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Brah';
 	}
 
-	/** {@inheritdoc} */
 	public function numerals() {
 		return array('𑁦', '𑁧', '𑁨', '𑁩', '𑁪', '𑁫', '𑁬', '𑁭', '𑁮', '𑁯');
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '300';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Brahmi';
 	}

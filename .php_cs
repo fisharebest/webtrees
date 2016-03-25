@@ -2,7 +2,7 @@
 
 /*
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,7 +25,7 @@ $finder = Symfony\CS\Finder\DefaultFinder::create()
 
 return Symfony\CS\Config\Config::create()
 	->level(Symfony\CS\FixerInterface::PSR2_LEVEL)
-	->fixers([
+	->fixers(array(
 		// Exclude these PSR2 rules
 		'--indentation',
 		'--braces',
@@ -92,4 +92,4 @@ return Symfony\CS\Config\Config::create()
 		'--short_echo_tag',
 		'--strict',
 		'--strict_param',
-	])->finder($finder);
+	))->finder($finder);

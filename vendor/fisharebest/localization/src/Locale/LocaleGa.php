@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageGa;
  * @license       GPLv3+
  */
 class LocaleGa extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Gaeilge';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'GAEILGE';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageGa;
 	}

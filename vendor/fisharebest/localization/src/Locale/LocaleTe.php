@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageTe;
  * @license       GPLv3+
  */
 class LocaleTe extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'తెలుగు';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageTe;
 	}

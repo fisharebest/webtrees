@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,7 +32,7 @@ class Migration15 implements MigrationInterface {
 		// There is no way to add a RESN tag to NOTE objects
 		Database::exec("UPDATE `##gedcom_setting` SET setting_value='SOUR,RESN' WHERE setting_name='NOTE_FACTS_ADD' AND setting_value='SOUR'");
 
-		// This needs to be an absolute URL.  If not set, it defaults to the full path to login.php
+		// This needs to be an absolute URL. If not set, it defaults to the full path to login.php
 		Database::exec("DELETE FROM `##site_setting` WHERE setting_name='LOGIN_URL' AND setting_value='login.php'");
 		// No need for an empty value
 		Database::exec("DELETE FROM `##site_setting` WHERE setting_name='SERVER_URL' AND setting_value=''");

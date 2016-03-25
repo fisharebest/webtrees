@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageKk;
  * @license       GPLv3+
  */
 class LocaleKk extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'қазақ тілі';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ҚАЗАҚ ТІЛІ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageKk;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

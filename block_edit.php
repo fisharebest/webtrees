@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,7 +33,7 @@ $block    = Database::prepare(
 	"SELECT SQL_CACHE * FROM `##block` WHERE block_id=?"
 )->execute(array($block_id))->fetchOneRow();
 
-// Check access.  (1) the block must exist and be enabled, (2) gedcom blocks require
+// Check access. (1) the block must exist and be enabled, (2) gedcom blocks require
 // managers, (3) user blocks require the user or an admin
 $blocks = Module::getActiveBlocks($WT_TREE);
 if (
@@ -57,7 +57,7 @@ if (Filter::post('save')) {
 	return;
 }
 
-$ctype = FIlter::get('ctype', 'user', 'gedcom');
+$ctype = Filter::get('ctype', 'user', 'gedcom');
 
 $controller = new PageController;
 $controller

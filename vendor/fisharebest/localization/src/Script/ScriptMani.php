@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptMani extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Mani';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '139';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Manichaean';
 	}

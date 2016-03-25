@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -84,11 +84,11 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		$content = '';
 		switch ($infoStyle) {
 		case 'list':
-			// Output style 1:  Old format, no visible tables, much smaller text.  Better suited to right side of page.
+			// Output style 1:  Old format, no visible tables, much smaller text. Better suited to right side of page.
 			$content .= FunctionsPrintLists::eventsList($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
 			break;
 		case 'table':
-			// Style 2: New format, tables, big text, etc.  Not too good on right side of page
+			// Style 2: New format, tables, big text, etc. Not too good on right side of page
 			ob_start();
 			$content .= FunctionsPrintLists::eventsTable($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
 			$content .= ob_get_clean();

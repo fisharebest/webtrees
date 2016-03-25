@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -18,19 +18,24 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
- * @global Tree   $WT_TREE
+ * @global Tree $WT_TREE
  */
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\IndividualController;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
-$controller = new IndividualController;
-$controller
-	->addExternalJavascript(WT_JQUERY_COOKIE_JS_URL); // We use this to record the sidebar state
+
+$pid = Filter::get('pid', WT_REGEX_XREF);
+$record = Individual::getInstance($pid, $WT_TREE);
+if (!$record && $WT_TREE->getPreference('USE_RIN')) {
+	$record = Individual::getInstance(FunctionsDb::findRin($pid), $WT_TREE);
+}
+$controller = new IndividualController($record);
 
 if ($controller->record && $controller->record->canShow()) {
 	if (Filter::get('action') == 'ajax') {
@@ -47,8 +52,8 @@ if ($controller->record && $controller->record->canShow()) {
 		if (Auth::isModerator($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
-					'This individual has been deleted.  You should review the deletion and then %1$s or %2$s it.',
+				/* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate(
+					'This individual has been deleted. You should review the deletion and then %1$s or %2$s it.',
 					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
 					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
@@ -57,7 +62,7 @@ if ($controller->record && $controller->record->canShow()) {
 		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
-				I18N::translate('This individual has been deleted.  The deletion will need to be reviewed by a moderator.'),
+				I18N::translate('This individual has been deleted. The deletion will need to be reviewed by a moderator.'),
 				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		}
@@ -65,8 +70,8 @@ if ($controller->record && $controller->record->canShow()) {
 		if (Auth::isModerator($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
-					'This individual has been edited.  You should review the changes and then %1$s or %2$s them.',
+				/* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate(
+					'This individual has been edited. You should review the changes and then %1$s or %2$s them.',
 					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>',
 					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
@@ -75,7 +80,7 @@ if ($controller->record && $controller->record->canShow()) {
 		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
-				I18N::translate('This individual has been edited.  The changes need to be reviewed by a moderator.'),
+				I18N::translate('This individual has been edited. The changes need to be reviewed by a moderator.'),
 				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		}
@@ -110,11 +115,10 @@ var WT_INDIVIDUAL = (function () {
 		});
 
 		jQuery ("#tabs").tabs ({
-			// If url has a hash (e.g #stories) then don\'t set an active tab - it overrides the hash
-			// otherwise use cookie
-			active: location.hash ? null : jQuery.cookie ("indi-tab"),
+			// Remember the currently selected tab between pages.
+			active: sessionStorage.getItem("indi-tab"),
 			activate: function (event, ui) {
-				jQuery.cookie ("indi-tab", jQuery ("#tabs").tabs ("option", "active"));
+				sessionStorage.setItem("indi-tab", jQuery(this).tabs("option", "active"));
 			},
 			// Only load each tab once
 			beforeLoad: function (event, ui) {
@@ -136,14 +140,14 @@ var WT_INDIVIDUAL = (function () {
 				jQsidebar.animate ({width: "toggle"}, {
 					duration: 300,
 					done: function () {
-						jQuery.cookie ("hide-sb", jQsidebar.is (":hidden"));
+						sessionStorage.setItem("hide-sb", jQsidebar.is(":hidden"));
 						jQseparator.toggleClass("separator-hidden separator-visible");
 					}
 				});
 			});
 
 			// Set initial sidebar state
-			if (jQuery.cookie ("hide-sb") === "true") {
+			if (sessionStorage.getItem("hide-sb") === "true") {
 				jQsidebar.hide ();
 				jQseparator.addClass("separator-hidden");
 			} else {

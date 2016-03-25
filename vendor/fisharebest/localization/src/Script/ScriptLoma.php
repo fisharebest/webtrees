@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptLoma extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Loma';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '437';
 	}

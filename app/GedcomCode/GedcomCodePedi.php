@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -89,7 +89,7 @@ class GedcomCodePedi {
 			// This is an arabic word which does not exist in other languages.
 			// So, it will not have any inflected forms.
 			return
-				/* I18N: This is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing. */
+				/* I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
 				I18N::translate('Rada');
 		default:
 			return $type;
@@ -135,7 +135,7 @@ class GedcomCodePedi {
 				I18N::translate('Family with sealing parents');
 		case 'rada':
 			return
-				/* I18N: “rada” is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing. */
+				/* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
 				I18N::translate('Family with rada parents');
 		default:
 			return I18N::translate('Family with parents') . ' - ' . $pedi;

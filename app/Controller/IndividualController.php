@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,6 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
@@ -47,22 +46,12 @@ class IndividualController extends GedcomRecordController {
 	/**
 	 * Startup activity
 	 */
-	public function __construct() {
-		global $WT_TREE;
-
-		$xref         = Filter::get('pid', WT_REGEX_XREF);
-		$this->record = Individual::getInstance($xref, $WT_TREE);
-
-		if (!$this->record && $WT_TREE->getPreference('USE_RIN')) {
-			$rin          = FunctionsDb::findRin($xref);
-			$this->record = Individual::getInstance($rin, $WT_TREE);
-		}
-
-		parent::__construct();
+	public function __construct($record) {
+		parent::__construct($record);
 
 		// If we can display the details, add them to the page header
 		if ($this->record && $this->record->canShow()) {
-			$this->setPageTitle($this->record->getFullName() . ' ' . $this->record->getLifespan());
+			$this->setPageTitle($this->record->getFullName() . ' ' . $this->record->getLifeSpan());
 			$this->tabs = Module::getActiveTabs($this->record->getTree());
 		}
 	}
@@ -150,7 +139,7 @@ class IndividualController extends GedcomRecordController {
 		$primary_name = $all_names[0];
 
 		$this->name_count++;
-		if ($this->name_count > 1) { echo '<h3 class="name_two">', $dummy->getFullName(), '</h3>'; } //Other names accordion element
+		if ($this->name_count > 1) { echo '<h3 class="name_two">', $dummy->getFullName(), '</h3>'; } // Other names accordion element
 		echo '<div class="indi_name_details';
 		if ($event->isPendingDeletion()) {
 			echo ' old';
@@ -279,23 +268,9 @@ class IndividualController extends GedcomRecordController {
 			return null;
 		}
 		// edit menu
-		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-indi', array(
-			'onclick' => 'return false;',
-		));
+		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-indi');
 
-		// What behaviour shall we give the main menu?  If we leave it blank, the framework
-		// will copy the first submenu - which may be edit-raw or delete.
-		// As a temporary solution, make it edit the name
 		if (Auth::isEditor($this->record->getTree())) {
-			foreach ($this->record->getFacts() as $fact) {
-				if ($fact->getTag() === 'NAME' && $fact->canEdit()) {
-					$menu->setAttrs(array(
-						'onclick' => 'return edit_name("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
-					));
-					break;
-				}
-			}
-
 			$menu->addSubmenu(new Menu(I18N::translate('Add a new name'), '#', 'menu-indi-addname', array(
 				'onclick' => 'return add_name("' . $this->record->getXref() . '");',
 			)));
@@ -321,12 +296,10 @@ class IndividualController extends GedcomRecordController {
 					'onclick' => 'return reorder_families("' . $this->record->getXref() . '");',
 				)));
 			}
-		}
 
-		// delete
-		if (Auth::isEditor($this->record->getTree())) {
+			// delete
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-indi-del', array(
-				'onclick' => 'return delete_individual("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
 			)));
 		}
 
@@ -335,16 +308,6 @@ class IndividualController extends GedcomRecordController {
 			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-indi-editraw', array(
 				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
 			)));
-		}
-
-		// add to favorites
-		if (Module::getModuleByName('user_favorites')) {
-			$menu->addSubmenu(new Menu(
-			/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
-				'#',
-				'menu-indi-addfav', array(
-					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
-				)));
 		}
 
 		return $menu;
@@ -386,7 +349,7 @@ class IndividualController extends GedcomRecordController {
 	 */
 	public function getSignificantSurname() {
 		if ($this->record) {
-			list($surn) = explode(',', $this->record->getSortname());
+			list($surn) = explode(',', $this->record->getSortName());
 
 			return $surn;
 		} else {

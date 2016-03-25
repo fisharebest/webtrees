@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -15,8 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
-
 /**
  * Definitions for a census
  */
@@ -27,7 +25,7 @@ class CensusOfScotland1871 extends CensusOfScotland implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '02 MAR 1871';
+		return '02 APR 1871';
 	}
 
 	/**
@@ -45,7 +43,7 @@ class CensusOfScotland1871 extends CensusOfScotland implements CensusInterface {
 			new CensusColumnOccupation($this, 'Occupation', 'Rank, profession or occupation'),
 			new CensusColumnBirthPlace($this, 'Birthplace', 'Where born'),
 			new CensusColumnNull($this, 'Infirm', 'Whether deaf-and-dumb, blind, imbecile, idiot or lunatic'),
-			new CensusColumnNull($this, 'Sch', 'Number of children between 5 and 13 attending school or educated at home'),
+			new CensusColumnNull($this, 'School', 'Number of children between 5 and 13 attending school or educated at home'),
 		);
 	}
 }

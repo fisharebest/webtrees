@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryTz;
  * @license   GPLv3+
  */
 class LanguageKde extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'kde';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryTz;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule0;
 	}

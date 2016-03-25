@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageNqo;
  * @license       GPLv3+
  */
 class LocaleNqo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ߒߞߏ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageNqo;
 	}

@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageTzm;
  * @license       GPLv3+
  */
 class LocaleTzm extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
-		return 'Tamaziɣt';
+		return 'Tamaziɣt n laṭlaṣ';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
-		return 'TAMAZIGHT';
+		return 'TAMAZIGHT N LATLAS';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageTzm;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

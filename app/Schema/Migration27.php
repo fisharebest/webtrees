@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,7 +42,7 @@ class Migration27 implements MigrationInterface {
 
 		// User data may contains duplicates - these will prevent us from creating the new indexes
 		Database::exec(
-			"DELETE t1 FROM `##site_access_rule` AS t1 JOIN (SELECT MIN(site_access_rule_id) AS site_access_rule_id, ip_address_end, ip_address_start, user_agent_pattern FROM `##site_access_rule`) AS t2 ON t1.ip_address_end = t2.ip_address_end AND t1.ip_address_start = t2.ip_address_start AND t1.user_agent_pattern = t2.user_agent_pattern AND t1.site_access_rule_id <> t2.site_access_rule_id"
+			"DELETE t1 FROM `##site_access_rule` AS t1 JOIN `##site_access_rule` AS t2 ON t1.ip_address_end = t2.ip_address_end AND t1.ip_address_start = t2.ip_address_start AND t1.user_agent_pattern = t2.user_agent_pattern AND t1.site_access_rule_id <> t2.site_access_rule_id"
 		);
 
 		// ix1 - covering index for visitor lookup

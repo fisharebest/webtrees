@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -183,29 +183,29 @@ class FanchartController extends ChartController {
 		$scale = $fanw / 640;
 
 		// image init
-		$image = ImageCreate($fanw, $fanh);
-		$white = ImageColorAllocate($image, 0xFF, 0xFF, 0xFF);
-		ImageFilledRectangle($image, 0, 0, $fanw, $fanh, $white);
-		ImageColorTransparent($image, $white);
+		$image = imagecreate($fanw, $fanh);
+		$white = imagecolorallocate($image, 0xFF, 0xFF, 0xFF);
+		imagefilledrectangle($image, 0, 0, $fanw, $fanh, $white);
+		imagecolortransparent($image, $white);
 
-		$color = ImageColorAllocate(
+		$color = imagecolorallocate(
 			$image,
 			hexdec(substr(Theme::theme()->parameter('chart-font-color'), 0, 2)),
 			hexdec(substr(Theme::theme()->parameter('chart-font-color'), 2, 2)),
 			hexdec(substr(Theme::theme()->parameter('chart-font-color'), 4, 2)));
-		$bgcolor = ImageColorAllocate(
+		$bgcolor = imagecolorallocate(
 			$image,
 			hexdec(substr(Theme::theme()->parameter('chart-background-u'), 0, 2)),
 			hexdec(substr(Theme::theme()->parameter('chart-background-u'), 2, 2)),
 			hexdec(substr(Theme::theme()->parameter('chart-background-u'), 4, 2))
 		);
-		$bgcolorM = ImageColorAllocate(
+		$bgcolorM = imagecolorallocate(
 			$image,
 			hexdec(substr(Theme::theme()->parameter('chart-background-m'), 0, 2)),
 			hexdec(substr(Theme::theme()->parameter('chart-background-m'), 2, 2)),
 			hexdec(substr(Theme::theme()->parameter('chart-background-m'), 4, 2))
 		);
-		$bgcolorF = ImageColorAllocate(
+		$bgcolorF = imagecolorallocate(
 			$image,
 			hexdec(substr(Theme::theme()->parameter('chart-background-f'), 0, 2)),
 			hexdec(substr(Theme::theme()->parameter('chart-background-f'), 2, 2)),
@@ -220,7 +220,7 @@ class FanchartController extends ChartController {
 			// clean current generation area
 			$deg2 = 360 + ($fandeg - 180) / 2;
 			$deg1 = $deg2 - $fandeg;
-			ImageFilledArc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bgcolor, IMG_ARC_PIE);
+			imagefilledarc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bgcolor, IMG_ARC_PIE);
 			$rx -= 3;
 
 			// calculate new angle
@@ -260,7 +260,7 @@ class FanchartController extends ChartController {
 						break;
 					}
 
-					ImageFilledArc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bg, IMG_ARC_PIE);
+					imagefilledarc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bg, IMG_ARC_PIE);
 
 					// split and center text by lines
 					$wmax = (int) ($angle * 7 / Theme::theme()->parameter('chart-font-size') * $scale);
@@ -302,7 +302,7 @@ class FanchartController extends ChartController {
 					}
 
 					// print text
-					ImageTtfText(
+					imagettftext(
 						$image,
 						Theme::theme()->parameter('chart-font-size'),
 						$tangle, $tx, $ty,
@@ -418,10 +418,10 @@ class FanchartController extends ChartController {
 			return $html . $imagemap . '<div id="fan_chart_img"><img src="' . WT_SCRIPT_NAME . '?rootid=' . $this->root->getXref() . '&amp;fan_style=' . $this->fan_style . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width . '&amp;img=1" width="' . $fanw . '" height="' . $fanh . '" alt="' . strip_tags($this->getPageTitle()) . '" usemap="#fanmap"></div>';
 
 		case 'png':
-			ImageStringUp($image, 1, $fanw - 10, $fanh / 3, WT_BASE_URL, $color);
+			imagestringup($image, 1, $fanw - 10, $fanh / 3, WT_BASE_URL, $color);
 			ob_start();
-			ImagePng($image);
-			ImageDestroy($image);
+			imagepng($image);
+			imagedestroy($image);
 
 			return ob_get_clean();
 

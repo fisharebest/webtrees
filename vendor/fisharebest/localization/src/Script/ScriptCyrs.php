@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptCyrs extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Cyrs';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '221';
 	}

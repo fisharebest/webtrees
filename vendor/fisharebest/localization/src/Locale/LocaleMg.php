@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageMg;
  * @license       GPLv3+
  */
 class LocaleMg extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Malagasy';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'MALAGASY';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageMg;
 	}

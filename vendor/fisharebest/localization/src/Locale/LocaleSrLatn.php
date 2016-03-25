@@ -10,17 +10,14 @@ use Fisharebest\Localization\Script\ScriptLatn;
  * @license       GPLv3+
  */
 class LocaleSrLatn extends LocaleSr {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'srpski';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SRPSKI';
 	}
 
-	/** {@inheritdoc} */
 	public function script() {
 		return new ScriptLatn();
 	}

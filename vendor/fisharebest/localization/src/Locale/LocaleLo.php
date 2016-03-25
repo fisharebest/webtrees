@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageLo;
  * @license       GPLv3+
  */
 class LocaleLo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ລາວ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageLo;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

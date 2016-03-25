@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -114,16 +114,16 @@ class ReportHtmlTextbox extends ReportBaseTextbox {
 
 		// Current position
 		if ($this->left == ".") {
-			$cX = $renderer->GetX();
+			$cX = $renderer->getX();
 		} else {
 			$cX = $this->left;
-			$renderer->SetX($cX);
+			$renderer->setX($cX);
 		}
 		// Current position (top)
 		if ($this->top == ".") {
-			$this->top = $renderer->GetY();
+			$this->top = $renderer->getY();
 		} else {
-			$renderer->SetY($this->top);
+			$renderer->setY($this->top);
 		}
 
 		// Check the width if set to page wide OR set by xml to larger then page wide
@@ -237,34 +237,34 @@ class ReportHtmlTextbox extends ReportBaseTextbox {
 
 		// Do a little "margin" trick before print
 		// to get the correct current position => "."
-		$cXT = $renderer->GetX();
-		$cYT = $renderer->GetY();
-		$renderer->SetXY(0, 0);
+		$cXT = $renderer->getX();
+		$cYT = $renderer->getY();
+		$renderer->setXy(0, 0);
 
 		// Print the text elements
 		foreach ($this->elements as $element) {
 			if (is_object($element)) {
 				$element->render($renderer, $cX, false);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$renderer->Footnotes();
+				$renderer->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
-				$renderer->AddPage();
+				$renderer->addPage();
 			}
 		}
 		echo "</div>\n";
 
 		// Reset "margins"
-		$renderer->SetXY($cXT, $cYT);
+		$renderer->setXy($cXT, $cYT);
 		// This will be mostly used to trick the multiple images last height
 		if ($this->reseth) {
 			$cH = 0;
 		}
 		// New line and some clean up
 		if (!$this->newline) {
-			$renderer->SetXY($cX + $this->width, $this->top);
+			$renderer->setXy($cX + $this->width, $this->top);
 			$renderer->lastCellHeight = $cH;
 		} else {
-			$renderer->SetXY(0, $this->top + $cH + ($cP * 2));
+			$renderer->setXy(0, $this->top + $cH + ($cP * 2));
 			$renderer->lastCellHeight = 0;
 		}
 	}

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -1365,7 +1365,7 @@ class ReportParserGenerate extends ReportParserBase {
 		$condition = $this->substituteVars($condition, true);
 		$condition = str_replace(array(" LT ", " GT "), array("<", ">"), $condition);
 		// Replace the first accurance only once of @fact:DATE or in any other combinations to the current fact, such as BIRT
-		$condition = str_replace("@fact", $this->fact, $condition);
+		$condition = str_replace("@fact:", $this->fact . ':', $condition);
 		$match     = array();
 		$count     = preg_match_all("/@([\w:\.]+)/", $condition, $match, PREG_SET_ORDER);
 		$i         = 0;
@@ -1394,14 +1394,13 @@ class ReportParserGenerate extends ReportParserBase {
 					$level++;
 					$value = $this->getGedcomValue($id, $level, $this->gedrec);
 				}
-				$value = preg_replace("/^@(" . WT_REGEX_XREF . ")@$/", "$1", $value);
-				$value = "\"" . addslashes($value) . "\"";
+				$value = preg_replace('/^@(' . WT_REGEX_XREF . ')@$/', '$1', $value);
+				$value = '"' . addslashes($value) . '"';
 			}
 			$condition = str_replace("@$id", $value, $condition);
 			$i++;
 		}
-		$condition = "return (bool) ($condition);";
-		$ret       = @eval($condition);
+		$ret = eval("return (bool) ($condition);");
 		if (!$ret) {
 			$this->process_ifs++;
 		}
@@ -1430,7 +1429,7 @@ class ReportParserGenerate extends ReportParserBase {
 		if (preg_match("/[0-9] (.+) @(.+)@/", $this->gedrec, $match)) {
 			$id = $match[2];
 		}
-		$record = GedcomRecord::GetInstance($id, $WT_TREE);
+		$record = GedcomRecord::getInstance($id, $WT_TREE);
 		if ($record && $record->canShow()) {
 			array_push($this->print_data_stack, $this->print_data);
 			$this->print_data = true;
@@ -1868,7 +1867,7 @@ class ReportParserGenerate extends ReportParserBase {
 				}
 				break;
 			case 'individual':
-				$sql_select   = "SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom FROM `##individuals` ";
+				$sql_select   = "SELECT i_id AS xref, i_gedcom AS gedcom FROM `##individuals` ";
 				$sql_join     = "";
 				$sql_where    = " WHERE i_file = :tree_id";
 				$sql_order_by = "";
@@ -1940,12 +1939,12 @@ class ReportParserGenerate extends ReportParserBase {
 				)->execute($sql_params)->fetchAll();
 
 				foreach ($rows as $row) {
-					$this->list[] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
+					$this->list[$row->xref] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 				}
 				break;
 
 			case 'family':
-				$sql_select   = "SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom FROM `##families`";
+				$sql_select   = "SELECT f_id AS xref, f_gedcom AS gedcom FROM `##families`";
 				$sql_join     = "";
 				$sql_where    = " WHERE f_file = :tree_id";
 				$sql_order_by = "";
@@ -2018,7 +2017,7 @@ class ReportParserGenerate extends ReportParserBase {
 				)->execute($sql_params)->fetchAll();
 
 				foreach ($rows as $row) {
-					$this->list[] = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
+					$this->list[$row->xref] = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
 				}
 				break;
 

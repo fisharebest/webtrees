@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryKe;
  * @license       GPLv3+
  */
 class LocaleOmKe extends LocaleOm {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryKe;
 	}

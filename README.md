@@ -1,15 +1,15 @@
 [![Latest Stable Version](https://poser.pugx.org/fisharebest/webtrees/v/stable.svg)](https://packagist.org/packages/fisharebest/webtrees)
 [![Build Status](https://travis-ci.org/fisharebest/webtrees.svg?branch=master)](https://travis-ci.org/fisharebest/webtrees)
-[![Coverage Status](https://coveralls.io/repos/fisharebest/webtrees/badge.svg?branch=master&service=github)](https://coveralls.io/github/fisharebest/webtrees?branch=master)
-[![Translation status](http://translate.webtrees.net/widgets/webtrees/-/svg-badge.svg)](http://translate.webtrees.net/engage/webtrees/?utm_source=widget)
+[![Coverage Status](https://coveralls.io/repos/github/fisharebest/webtrees/badge.svg?branch=master)](https://coveralls.io/github/fisharebest/webtrees?branch=master)
+[![Translation status](https://translate.webtrees.net/widgets/webtrees/-/svg-badge.svg)](https://translate.webtrees.net/engage/webtrees/?utm_source=widget)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de/mini.png)](https://insight.sensiolabs.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/webtrees/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fisharebest/webtrees/?branch=master)
 [![Code Climate](https://codeclimate.com/github/fisharebest/webtrees/badges/gpa.svg)](https://codeclimate.com/github/fisharebest/webtrees)
 
 # webtrees
 
-The project’s website is [www.webtrees.net](http://www.webtrees.net).
-Further documentation is available at [wiki.webtrees.net](http://wiki.webtrees.net).
+The project’s website is [www.webtrees.net](https://www.webtrees.net).
+Further documentation is available at [wiki.webtrees.net](https://wiki.webtrees.net).
 
 
 ## Contents
@@ -28,7 +28,7 @@ Further documentation is available at [wiki.webtrees.net](http://wiki.webtrees.n
 ### License
 
 * **webtrees: online genealogy**
-* Copyright (C) 2015 webtrees development team
+* Copyright (C) 2016 webtrees development team
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -395,7 +395,7 @@ The requirements are:
 
 #### Warning
 
-Please read the [http://wiki.webtrees.net/en/Converting_from_PhpGedView](http://wiki.webtrees.net/en/Converting_from_PhpGedView)
+Please read the [https://wiki.webtrees.net/en/Converting_from_PhpGedView](https://wiki.webtrees.net/en/Converting_from_PhpGedView)
 before doing a transfer as important pre-processing steps and known issues may
 be outlined there.
 
@@ -418,7 +418,7 @@ FAQs, and HTML blocks.  We hope to add these to the wizard in a future release.
 #### Custom privacy restrictions, block configuration, FAQs and HTML blocks
 
 We hope to add these to the wizard in a future release. Otherwise, read the
-[http://wiki.webtrees.net/en/Converting_from_PhpGedView](http://wiki.webtrees.net/en/Converting_from_PhpGedView)
+[https://wiki.webtrees.net/en/Converting_from_PhpGedView](https://wiki.webtrees.net/en/Converting_from_PhpGedView)
 before reporting a problem in the forum.
 
 The transfer wizard is accessed in **webtrees** from the bottom of the

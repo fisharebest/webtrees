@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageMr;
  * @license       GPLv3+
  */
 class LocaleMr extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'मराठी';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageMr;
 	}

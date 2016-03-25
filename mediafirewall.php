@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,6 @@ require './includes/session.php';
 $mid   = Filter::get('mid', WT_REGEX_XREF);
 $thumb = Filter::getBool('thumb');
 $media = Media::getInstance($mid, $WT_TREE);
-$face = Filter::get('face');
 
 /**
  * Send a “Not found” error as an image
@@ -277,8 +276,7 @@ if ($media->isExternal()) {
 }
 
 $which          = $thumb ? 'thumb' : 'main';
-$individual_names = $face ? unserialize($face) : false;
-$serverFilename = $media->getServerFilename($which, $individual_names);
+$serverFilename = $media->getServerFilename($which);
 
 if (!file_exists($serverFilename)) {
 	send404AsImage();
@@ -356,7 +354,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH'])) {
 	$if_none_match = str_replace('"', '', $_SERVER['HTTP_IF_NONE_MATCH']);
 }
 
-// add caching headers.  allow browser to cache file, but not proxy
+// add caching headers. allow browser to cache file, but not proxy
 header('Last-Modified: ' . $filetimeHeader);
 header('ETag: "' . $etag . '"');
 header('Expires: ' . $expireHeader);
@@ -400,7 +398,7 @@ if ($generatewatermark) {
 
 		return;
 	} else {
-		// this image is defective.  log it
+		// this image is defective. log it
 		Log::addMediaLog('Media Firewall error: >' . I18N::translate('This media file is broken and cannot be watermarked.') . '< in file >' . $serverFilename . '< memory used: ' . memory_get_usage());
 
 		// set usewatermark to false so image will simply be passed through below

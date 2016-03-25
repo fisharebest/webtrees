@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptOgam extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Ogam';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '212';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Ogham';
 	}

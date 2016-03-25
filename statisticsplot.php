@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,9 +30,9 @@ require './includes/session.php';
 /**
  * Month of birth
  *
- * @param int       $z_axis
- * @param integer[] $z_boundaries
- * @param Stats     $stats
+ * @param int   $z_axis
+ * @param int[] $z_boundaries
+ * @param Stats $stats
  *
  * @return int
  */
@@ -86,9 +86,9 @@ function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Month of birth of first child in a relation
  *
- * @param int       $z_axis
- * @param integer[] $z_boundaries
- * @param Stats     $stats
+ * @param int   $z_axis
+ * @param int[] $z_boundaries
+ * @param Stats $stats
  *
  * @return int
  */
@@ -142,9 +142,9 @@ function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stat
 /**
  * Month of death
  *
- * @param int       $z_axis
- * @param integer[] $z_boundaries
- * @param Stats     $stats
+ * @param int   $z_axis
+ * @param int[] $z_boundaries
+ * @param Stats $stats
  *
  * @return int
  */
@@ -198,9 +198,9 @@ function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Month of marriage
  *
- * @param int       $z_axis
- * @param integer[] $z_boundaries
- * @param Stats     $stats
+ * @param int   $z_axis
+ * @param int[] $z_boundaries
+ * @param Stats $stats
  *
  * @return int
  */
@@ -239,9 +239,9 @@ function month_of_marriage($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Month of first marriage
  *
- * @param int       $z_axis
- * @param integer[] $z_boundaries
- * @param Stats     $stats
+ * @param int   $z_axis
+ * @param int[] $z_boundaries
+ * @param Stats $stats
  *
  * @return int
  */
@@ -292,9 +292,9 @@ function month_of_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Age related to birth year
  *
- * @param int       $z_axis
- * @param integer[] $z_boundaries
- * @param Stats     $stats
+ * @param int   $z_axis
+ * @param int[] $z_boundaries
+ * @param Stats $stats
  *
  * @return int
  */
@@ -344,9 +344,9 @@ function lifespan_by_birth_year($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Age related to death year
  *
- * @param int       $z_axis
- * @param integer[] $z_boundaries
- * @param Stats     $stats
+ * @param int   $z_axis
+ * @param int[] $z_boundaries
+ * @param Stats $stats
  *
  * @return int
  */
@@ -396,9 +396,9 @@ function lifespan_by_death_year($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Age in year of marriage
  *
- * @param int       $z_axis
- * @param integer[] $z_boundaries
- * @param Stats     $stats
+ * @param int   $z_axis
+ * @param int[] $z_boundaries
+ * @param Stats $stats
  *
  * @return int
  */
@@ -450,9 +450,9 @@ function age_at_marriage($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Age in year of first marriage
  *
- * @param int       $z_axis
- * @param integer[] $z_boundaries
- * @param Stats     $stats
+ * @param int   $z_axis
+ * @param int[] $z_boundaries
+ * @param Stats $stats
  *
  * @return int
  */
@@ -527,9 +527,9 @@ function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Number of children
  *
- * @param int       $z_axis
- * @param integer[] $z_boundaries
- * @param Stats     $stats
+ * @param int   $z_axis
+ * @param int[] $z_boundaries
+ * @param Stats $stats
  *
  * @return int
  */

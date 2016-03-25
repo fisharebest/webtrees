@@ -8,22 +8,18 @@
  * @license   GPLv3+
  */
 class ScriptJava extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Java';
 	}
 
-	/** {@inheritdoc} */
 	public function numerals() {
 		return array('꧐', '꧑', '꧒', '꧓', '꧔', '꧕', '꧖', '꧗', '꧘', '꧙');
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '361';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Javanese';
 	}

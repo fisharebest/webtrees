@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -65,7 +65,7 @@ class ReportBaseCell extends ReportBaseElement {
 	 */
 	public $left;
 	/**
-	 * Indicates where the current position should go after the call.  Possible values are:<ul><li>0: to the right [DEFAULT]</li><li>1: to the beginning of the next line</li><li>2: below</li></ul>
+	 * Indicates where the current position should go after the call. Possible values are:<ul><li>0: to the right [DEFAULT]</li><li>1: to the beginning of the next line</li><li>2: below</li></ul>
 	 *
 	 * @var int
 	 */

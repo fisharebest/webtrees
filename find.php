@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -71,10 +71,35 @@ case 'source':
 case 'specialchar':
 	$controller->setPageTitle(I18N::translate('Find a special character'));
 	break;
-case 'facts':
+case 'factINDI':
 	$controller
 		->setPageTitle(I18N::translate('Find a fact or event'))
-		->addInlineJavascript('initPickFact();');
+		->addInlineJavascript('initPickFact("INDI");');
+	break;
+case 'factFAM':
+	$controller
+		->setPageTitle(I18N::translate('Find a fact or event'))
+		->addInlineJavascript('initPickFact("FAM");');
+	break;
+case 'factSOUR':
+	$controller
+		->setPageTitle(I18N::translate('Find a fact or event'))
+		->addInlineJavascript('initPickFact("SOUR");');
+	break;
+case 'factREPO':
+	$controller
+		->setPageTitle(I18N::translate('Find a fact or event'))
+		->addInlineJavascript('initPickFact("REPO");');
+	break;
+case 'factNAME':
+	$controller
+		->setPageTitle(I18N::translate('Find a fact or event'))
+		->addInlineJavascript('initPickFact("NAME");');
+	break;
+case 'factPLAC':
+	$controller
+		->setPageTitle(I18N::translate('Find a fact or event'))
+		->addInlineJavascript('initPickFact("PLAC");');
 	break;
 }
 $controller->pageHeader();
@@ -120,7 +145,7 @@ if ($type == "indi") {
 	<input type="hidden" name="callback" value="' . $callback . '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="indi">
-	<span>', /* I18N: Label for search field */ I18N::translate('Name contains'), '&nbsp;</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Name contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -137,7 +162,7 @@ if ($type == "fam") {
 	<input type="hidden" name="callback" value="' . $callback . '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="fam">
-	<span>', I18N::translate('Name contains'), '&nbsp;</span>
+	<span>', I18N::translate('Name contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -163,7 +188,7 @@ if ($type == 'media') {
 	}
 	echo '" autofocus>',
 	'<p class="small text-muted">', I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.'), '</p>',
-	'<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	'<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
 	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
@@ -182,7 +207,7 @@ if ($type == "place") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
 	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
@@ -201,7 +226,7 @@ if ($type == "repo") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
 	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</td></tr></table>
 	</p></form></div>';
@@ -221,7 +246,7 @@ if ($type == "note") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
 	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
@@ -240,7 +265,7 @@ if ($type == "source") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
 	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
@@ -272,7 +297,7 @@ if ($type == 'specialchar') {
 }
 
 // Show facts
-if ($type == "facts") {
+if ($type == "factINDI" || $type == "factFAM" || $type == "factSOUR" || $type == "factREPO" || $type == "factNAME" || $type == "factPLAC") {
 	echo '<div id="find-facts-header">
 	<form name="filterfacts" method="get" action="find.php"
 	input type="hidden" name="type" value="facts">
@@ -377,20 +402,92 @@ if ($type == "facts") {
 		}
 	};
 
-	function initPickFact() {
+	function initPickFact(factType) {
 		var n,i,j,tmp,preselectedDefaultTags="\x01<?php foreach ($preselDefault as $p) { echo addslashes($p), '\\x01'; } ?>";
 
-		DefaultTags=[<?php
-		$firstFact = true;
-		foreach (GedcomTag::getPicklistFacts() as $factId => $factName) {
-			if ($firstFact) {
-				$firstFact = false;
-			} else {
-				echo ',';
-			}
-			echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+		switch (factType) {
+			case "INDI":
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts('INDI') as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
+			case "FAM":
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts('FAM') as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
+			case "SOUR":
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts('SOUR') as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
+			case "REPO":
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts('REPO') as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
+			case "PLAC":
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts('PLAC') as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
+			case "NAME":
+				DefaultTags=[<?php
+				$firstFact = true;
+				foreach (GedcomTag::getPicklistFacts('NAME') as $factId => $factName) {
+					if ($firstFact) {
+						$firstFact = false;
+					} else {
+						echo ',';
+					}
+					echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
+				}
+				?>];
+				break;
+			default:
+				DefaultTags=[];
+				break;
 		}
-		?>];
 		TheList=document.getElementById("tbDefinedTags");
 		i=document.getElementById("tbxFilter");
 		i.onkeypress=i.onchange=i.onkeyup=function() {
@@ -449,12 +546,12 @@ if ($type == "facts") {
 	</form></div>';
 }
 
-if ($action == "filter") {
+if ($action === 'filter') {
 	$filter       = trim($filter);
 	$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 
 	// Output Individual
-	if ($type == "indi") {
+	if ($type === 'indi') {
 		echo '<div id="find-output">';
 		$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
 		if ($myindilist) {
@@ -571,7 +668,7 @@ if ($action == "filter") {
 				echo '</a></li>';
 			}
 			echo '</ul>
-			<p>', I18N::translate('Places found'), '&nbsp;', count($places), '</p>';
+			<p>', I18N::translate('Places found'), ' ', count($places), '</p>';
 		} else {
 			echo '<p>', I18N::translate('No results found.'), '</p>';
 		}

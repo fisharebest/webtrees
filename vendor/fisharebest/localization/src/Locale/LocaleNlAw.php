@@ -10,7 +10,6 @@ use Fisharebest\Localization\Territory\TerritoryAw;
  * @license       GPLv3+
  */
 class LocaleNlAw extends LocaleNl {
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryAw;
 	}

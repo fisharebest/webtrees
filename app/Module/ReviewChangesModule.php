@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -176,7 +176,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 	?>
 	<tr>
 		<td colspan="2">
-			<?php echo I18N::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist.'); ?>
+			<?php echo I18N::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist.'); ?>
 		</td>
 	</tr>
 

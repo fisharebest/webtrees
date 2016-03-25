@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\I18N;
  * midday.
  */
 class CalendarDate {
-	/** @var integer[] Convert GEDCOM month names to month numbers  */
+	/** @var int[] Convert GEDCOM month names to month numbers  */
 	public static $MONTH_ABBREV = array('' => 0, 'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4, 'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8, 'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12);
 
 	/** @var string[] Convert numbers to/from roman numerals */
@@ -363,13 +363,13 @@ class CalendarDate {
 
 		if ($translated_day_names === null) {
 			$translated_day_names = array(
-				0  => /* I18N: abbreviation for Monday    */ I18N::translate('Mon'),
-				1  => /* I18N: abbreviation for Tuesday   */ I18N::translate('Tue'),
+				0  => /* I18N: abbreviation for Monday */ I18N::translate('Mon'),
+				1  => /* I18N: abbreviation for Tuesday */ I18N::translate('Tue'),
 				2  => /* I18N: abbreviation for Wednesday */ I18N::translate('Wed'),
-				3  => /* I18N: abbreviation for Thursday  */ I18N::translate('Thu'),
-				4  => /* I18N: abbreviation for Friday    */ I18N::translate('Fri'),
-				5  => /* I18N: abbreviation for Saturday  */ I18N::translate('Sat'),
-				6  => /* I18N: abbreviation for Sunday    */ I18N::translate('Sun'),
+				3  => /* I18N: abbreviation for Thursday */ I18N::translate('Thu'),
+				4  => /* I18N: abbreviation for Friday */ I18N::translate('Fri'),
+				5  => /* I18N: abbreviation for Saturday */ I18N::translate('Sat'),
+				6  => /* I18N: abbreviation for Sunday */ I18N::translate('Sun'),
 			);
 		}
 
@@ -453,7 +453,7 @@ class CalendarDate {
 			$dm += $this->calendar->monthsInYear();
 			$dy--;
 		}
-		// Not a full age?  Then just the years
+		// Not a full age? Then just the years
 		if (!$full) {
 			return $dy;
 		}
@@ -525,7 +525,7 @@ class CalendarDate {
 			return $this->calendar->daysInMonth($this->y, $this->m);
 		} catch (\InvalidArgumentException $ex) {
 			// calendar.php calls this with "DD MMM" dates, for which we cannot calculate
-			// the length of a month.  Should we validate this before calling this function?
+			// the length of a month. Should we validate this before calling this function?
 			return 0;
 		}
 	}
@@ -781,7 +781,7 @@ class CalendarDate {
 	/**
 	 * Generate the %y format for a date.
 	 *
-	 * NOTE Short year is NOT a 2-digit year.  It is for calendars such as hebrew
+	 * NOTE Short year is NOT a 2-digit year. It is for calendars such as hebrew
 	 * which have a 3-digit form of 4-digit years.
 	 *
 	 * @return string
@@ -840,9 +840,9 @@ class CalendarDate {
 	}
 
 	/**
-	 * Which months follows this one?  Calendars with leap-months should provide their own implementation.
+	 * Which months follows this one? Calendars with leap-months should provide their own implementation.
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	protected function nextMonth() {
 		return array($this->m === $this->calendar->monthsInYear() ? $this->nextYear($this->y) : $this->y, ($this->m % $this->calendar->monthsInYear()) + 1);
@@ -893,7 +893,7 @@ class CalendarDate {
 	/**
 	 * Get today’s date in the current calendar.
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public function todayYmd() {
 		return $this->calendar->jdToYmd(unixtojd());

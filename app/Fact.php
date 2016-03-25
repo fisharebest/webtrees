@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -405,7 +405,7 @@ class Fact {
 
 		return
 			'<div class="' . $class . '">' .
-			/* I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation. */
+			/* I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation. */
 			I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $this->getLabel(), implode(' — ', $attributes)) .
 			'</div>';
 	}

@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageBo;
  * @license       GPLv3+
  */
 class LocaleBo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'བོད་སྐད་';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageBo;
 	}

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -65,9 +65,9 @@ case 'compose':
 	echo '<input type="hidden" name="gedcom_id" value="' . $news['gedcom_id'] . '">';
 	echo '<input type="hidden" name="date" value="' . $news['date'] . '">';
 	echo '<table>';
-	echo '<tr><th style="text-align:left;font-weight:900;" dir="auto;">' . I18N::translate('Title') . '</th><tr>';
+	echo '<tr><th style="text-align:start;">' . I18N::translate('Title') . '</th><tr>';
 	echo '<tr><td><input type="text" name="title" size="50" dir="auto" autofocus value="' . $news['subject'] . '"></td></tr>';
-	echo '<tr><th valign="top" style="text-align:left;font-weight:900;" dir="auto;">' . I18N::translate('Content') . '</th></tr>';
+	echo '<tr><th style="text-align:start;">' . I18N::translate('Content') . '</th></tr>';
 	echo '<tr><td>';
 	echo '<textarea name="text" class="html-edit" cols="80" rows="10" dir="auto">' . Filter::escapeHtml($news['body']) . '</textarea>';
 	echo '</td></tr>';

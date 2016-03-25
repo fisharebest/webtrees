@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageZh;
  * @license       GPLv3+
  */
 class LocaleZh extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return '中文';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageZh;
 	}

@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryKr;
  * @license   GPLv3+
  */
 class LanguageKo extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ko';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptKore;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryKr;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule0;
 	}

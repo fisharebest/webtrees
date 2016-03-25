@@ -10,7 +10,6 @@ use Fisharebest\Localization\Script\ScriptCyrl;
  * @license       GPLv3+
  */
 class LocaleBsCyrl extends LocaleBs {
-	/** {@inheritdoc} */
 	public function script() {
 		return new ScriptCyrl;
 	}

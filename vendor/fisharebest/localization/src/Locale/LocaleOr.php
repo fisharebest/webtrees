@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageOr;
  * @license       GPLv3+
  */
 class LocaleOr extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ଓଡ଼ିଆ';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageOr;
 	}

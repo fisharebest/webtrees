@@ -12,22 +12,18 @@ use Fisharebest\Localization\Territory\TerritoryGe;
  * @license   GPLv3+
  */
 class LanguageKa extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ka';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptGeor;
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryGe;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule1;
 	}

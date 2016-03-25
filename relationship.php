@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -46,58 +46,58 @@ $controller
 if ($person1 && $person2) {
 	$controller
 		->setPageTitle(I18N::translate(/* I18N: %s are individual’s names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
-		->PageHeader();
+		->pageHeader();
 	$paths = $controller->calculateRelationships($person1, $person2, $find_all);
 } else {
 	$controller
 		->setPageTitle(I18N::translate('Relationships'))
-		->PageHeader();
+		->pageHeader();
 	$paths = array();
 }
 
 ?>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+<h2><?php echo $controller->getPageTitle() ?></h2>
 <form name="people" method="get" action="?">
-	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
+	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml() ?>">
 	<table class="list_table">
 		<tbody>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo I18N::translate('Individual 1'); ?>
+					<?php echo I18N::translate('Individual 1') ?>
 				</td>
 				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1; ?>">
-					<?php echo FunctionsPrint::printFindIndividualLink('pid1'); ?>
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1 ?>">
+					<?php echo FunctionsPrint::printFindIndividualLink('pid1') ?>
 				</td>
 				<td class="optionbox">
 					<label>
-						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $show_full); ?>
-						<?php echo I18N::translate('Show details'); ?>
+						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $show_full) ?>
+						<?php echo I18N::translate('Show details') ?>
 					</label>
 				</td>
 				<td class="optionbox vmiddle" rowspan="2">
-					<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+					<input type="submit" value="<?php echo I18N::translate('View') ?>">
 				</td>
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo I18N::translate('Individual 2'); ?>
+					<?php echo I18N::translate('Individual 2') ?>
 				</td>
 				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2; ?>">
-					<?php echo FunctionsPrint::printFindIndividualLink('pid2'); ?>
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2 ?>">
+					<?php echo FunctionsPrint::printFindIndividualLink('pid2') ?>
 					<br>
-					<a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php /* I18N: Reverse the order of two individuals */ echo I18N::translate('Swap individuals'); ?></a>
+					<a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php echo /* I18N: Reverse the order of two individuals */ I18N::translate('Swap individuals') ?></a>
 				</td>
 				<td class="optionbox">
 					<label>
-						<input type="radio" name="find_all" value="0" <?php echo $find_all ? '' : 'checked'; ?>>
-						<?php echo I18N::translate('Find the closest relationships'); ?>
+						<input type="radio" name="find_all" value="0" <?php echo $find_all ? '' : 'checked' ?>>
+						<?php echo I18N::translate('Find the closest relationships') ?>
 					</label>
 					<br>
 					<label>
-						<input type="radio" name="find_all" value="1"<?php echo $find_all ? 'checked' : ''; ?>>
-						<?php echo I18N::translate('Find all possible relationships'); ?>
+						<input type="radio" name="find_all" value="1"<?php echo $find_all ? 'checked' : '' ?>>
+						<?php echo I18N::translate('Find all possible relationships') ?>
 					</label>
 				</td>
 			</tr>

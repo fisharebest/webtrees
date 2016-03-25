@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,7 +37,7 @@ $controller
 	->restrictAccess(Auth::isEditor($WT_TREE))
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')
-	->addInlineJavascript('var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), I18N::dateFormat())) . '";');
+	->addInlineJavascript('var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('j', 'F'), array('D', 'M'), I18N::dateFormat())) . '";');
 
 switch ($action) {
 ////////////////////////////////////////////////////////////////////////////////
@@ -287,7 +287,7 @@ case 'edit':
 		break;
 	case 'FAM':
 	case 'INDI':
-		// FAM and INDI records have real facts.  They can take NOTE/SOUR/OBJE/etc.
+		// FAM and INDI records have real facts. They can take NOTE/SOUR/OBJE/etc.
 		if ($level1type !== 'SEX' && $level1type !== 'NOTE' && $level1type !== 'ALIA') {
 			if ($level1type !== 'SOUR') {
 				FunctionsEdit::printAddLayer('SOUR');
@@ -489,7 +489,7 @@ case 'update':
 	// For the GEDFact_assistant module
 	$pid_array = Filter::post('pid_array');
 	if ($pid_array) {
-		foreach (explode(', ', $pid_array) as $pid) {
+		foreach (explode(',', $pid_array) as $pid) {
 			if ($pid !== $xref) {
 				$indi = Individual::getInstance($pid, $WT_TREE);
 				if ($indi && $indi->canEdit()) {
@@ -1008,7 +1008,7 @@ case 'addfamlink':
 					<td class="facts_value">
 						<?php echo FunctionsEdit::editFieldPedigree('PEDI', '', '', $person); ?>
 						<p class="small text-muted">
-							<?php echo I18N::translate('A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed.'); ?>
+							<?php echo I18N::translate('A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed.'); ?>
 						</p>
 					</td>
 				</tr>
@@ -1315,7 +1315,7 @@ case 'addsourceaction':
 		$newgedrec .= "\n1 REPO @" . $REPO . '@';
 		$CALN = Filter::post('CALN');
 		if ($CALN) {
-			$newgedrec .= "\n1 CALN " . $CALN;
+			$newgedrec .= "\n2 CALN " . $CALN;
 		}
 	}
 	$EVEN = Filter::postArray('EVEN', WT_REGEX_TAG);
@@ -1726,7 +1726,7 @@ case 'reorder_media':
 				<li class="facts_value" style="list-style:none;cursor:move;margin-bottom:2px;" id="li_<?php echo $obje->getXref(); ?>">
 					<table class="pic">
 						<tr>
-							<td width="80" valign="top" align="center">
+							<td>
 								<?php echo $obje->displayImage(); ?>
 							</td>
 							<td>
@@ -2705,7 +2705,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	var oldName = "";
 
 	// Calls to generate_name() trigger an update - hence need to
-	// set the manual change to true first.  We are probably
+	// set the manual change to true first. We are probably
 	// listening to the wrong events on the input fields...
 	var manualChange = true;
 	manualChange = generate_name() !== jQuery("#NAME").val();

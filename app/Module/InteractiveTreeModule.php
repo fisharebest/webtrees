@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -80,10 +80,10 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 				document.createStyleSheet("' . $this->css() . '"); // For Internet Explorer
 			} else {
 				var newSheet=document.createElement("link");
-    		newSheet.setAttribute("rel","stylesheet");
-    		newSheet.setAttribute("type","text/css");
-   			newSheet.setAttribute("href","' . $this->css() . '");
-		    document.getElementsByTagName("head")[0].appendChild(newSheet);
+				newSheet.setAttribute("rel","stylesheet");
+				newSheet.setAttribute("type","text/css");
+				newSheet.setAttribute("href","' . $this->css() . '");
+				document.getElementsByTagName("head")[0].appendChild(newSheet);
 			}
 			</script>';
 	}

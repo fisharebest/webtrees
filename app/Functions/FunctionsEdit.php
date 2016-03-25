@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Census\Census;
+use Fisharebest\Webtrees\Census\CensusOfCzechRepublic;
 use Fisharebest\Webtrees\Census\CensusOfDenmark;
 use Fisharebest\Webtrees\Census\CensusOfEngland;
 use Fisharebest\Webtrees\Census\CensusOfFrance;
@@ -314,10 +315,10 @@ class FunctionsEdit {
 	/**
 	 * Print an edit control for a ADOP field.
 	 *
-	 * @param string $name
-	 * @param string $selected
-	 * @param string $extra
-	 * @param Individual $individual
+	 * @param string          $name
+	 * @param string          $selected
+	 * @param string          $extra
+	 * @param Individual|null $individual
 	 *
 	 * @return string
 	 */
@@ -328,10 +329,10 @@ class FunctionsEdit {
 	/**
 	 * Print an edit control for a PEDI field.
 	 *
-	 * @param string $name
-	 * @param string $selected
-	 * @param string $extra
-	 * @param Individual $individual
+	 * @param string          $name
+	 * @param string          $selected
+	 * @param string          $extra
+	 * @param Individual|null $individual
 	 *
 	 * @return string
 	 */
@@ -342,10 +343,10 @@ class FunctionsEdit {
 	/**
 	 * Print an edit control for a NAME TYPE field.
 	 *
-	 * @param string $name
-	 * @param string $selected
-	 * @param string $extra
-	 * @param Individual $individual
+	 * @param string          $name
+	 * @param string          $selected
+	 * @param string          $extra
+	 * @param Individual|null $individual
 	 *
 	 * @return string
 	 */
@@ -557,7 +558,7 @@ class FunctionsEdit {
 			// Not all facts have help text.
 			switch ($fact) {
 			case 'NAME':
-				if ($upperlevel !== 'REPO') {
+				if ($upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') {
 					echo FunctionsPrint::helpLink($fact);
 				}
 				break;
@@ -620,7 +621,7 @@ class FunctionsEdit {
 				if ($value) {
 					echo 'checked';
 				}
-				echo ' onclick="if (this.checked) ', $element_id, '.value=\'Y\'; else ', $element_id, '.value=\'\';">';
+				echo ' onclick="document.getElementById(\'' . $element_id . '\').value = (this.checked) ? \'Y\' : \'\';">';
 				echo I18N::translate('yes');
 			}
 
@@ -628,9 +629,9 @@ class FunctionsEdit {
 				echo self::censusDateSelector(WT_LOCALE, $xref);
 				if (Module::getModuleByName('GEDFact_assistant') && GedcomRecord::getInstance($xref, $WT_TREE) instanceof Individual) {
 					echo
-						'<a href="#" style="display: none;" id="assistant-link" onclick="return activateCensusAssistant();">' .
+						'<div></div><a href="#" style="display: none;" id="assistant-link" onclick="return activateCensusAssistant();">' .
 						I18N::translate('Create a new shared note using assistant') .
-						'</a>';
+						'</a></div>';
 				}
 			}
 
@@ -696,7 +697,7 @@ class FunctionsEdit {
 				echo '>', $typeValue, '</option>';
 			}
 			echo '</select>';
-		} elseif (($fact === 'NAME' && $upperlevel !== 'REPO') || $fact === '_MARNM') {
+		} elseif (($fact === 'NAME' && $upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') || $fact === '_MARNM') {
 			// Populated in javascript from sub-tags
 			echo '<input type="hidden" id="', $element_id, '" name="', $element_name, '" onchange="updateTextName(\'', $element_id, '\');" value="', Filter::escapeHtml($value), '" class="', $fact, '">';
 			echo '<span id="', $element_id, '_display" dir="auto">', Filter::escapeHtml($value), '</span>';
@@ -738,7 +739,7 @@ class FunctionsEdit {
 					echo ' onblur="valid_lati_long(this, \'E\', \'W\');" onmouseout="valid_lati_long(this, \'E\', \'W\');"';
 					break;
 				case 'NOTE':
-					// Shared notes.  Inline notes are handled elsewhere.
+					// Shared notes. Inline notes are handled elsewhere.
 					echo ' data-autocomplete-type="NOTE"';
 					break;
 				case 'OBJE':
@@ -762,7 +763,7 @@ class FunctionsEdit {
 					echo ' data-autocomplete-type="SURN"';
 					break;
 				case 'TIME':
-					echo ' pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5]0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */
+					echo ' pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */
 						I18N::translate('hh:mm or hh:mm:ss') . '"';
 					break;
 				}
@@ -922,31 +923,31 @@ class FunctionsEdit {
 			case '_ASSO':
 				$tmp = Individual::getInstance($value, $WT_TREE);
 				if ($tmp) {
-					echo ' ', $tmp->getFullname();
+					echo ' ', $tmp->getFullName();
 				}
 				break;
 			case 'SOUR':
 				$tmp = Source::getInstance($value, $WT_TREE);
 				if ($tmp) {
-					echo ' ', $tmp->getFullname();
+					echo ' ', $tmp->getFullName();
 				}
 				break;
 			case 'NOTE':
 				$tmp = Note::getInstance($value, $WT_TREE);
 				if ($tmp) {
-					echo ' ', $tmp->getFullname();
+					echo ' ', $tmp->getFullName();
 				}
 				break;
 			case 'OBJE':
 				$tmp = Media::getInstance($value, $WT_TREE);
 				if ($tmp) {
-					echo ' ', $tmp->getFullname();
+					echo ' ', $tmp->getFullName();
 				}
 				break;
 			case 'REPO':
 				$tmp = Repository::getInstance($value, $WT_TREE);
 				if ($tmp) {
-					echo ' ', $tmp->getFullname();
+					echo ' ', $tmp->getFullName();
 				}
 				break;
 			}
@@ -973,6 +974,9 @@ class FunctionsEdit {
 
 		// Show more likely census details at the top of the list.
 		switch (WT_LOCALE) {
+		case 'cs':
+			$census_places = array(new CensusOfCzechRepublic);
+			break;
 		case 'en-AU':
 		case 'en-GB':
 			$census_places = array(new CensusOfEngland, new CensusOfWales, new CensusOfScotland);
@@ -1002,10 +1006,8 @@ class FunctionsEdit {
 					var option = jQuery(":selected", el);
 					jQuery("input.DATE", jQuery(el).closest("table")).val(option.val());
 					jQuery("input.PLAC", jQuery(el).closest("table")).val(option.data("place"));
-					jQuery("#setctry").val(option.data("place"));
-					jQuery("#setyear").val(option.data("year"));
-					var re = /(United States|England|Wales|Scotland|France)$/;
-					if (re.test(option.data("place"))) {
+					jQuery("input.census-class", jQuery(el).closest("table")).val(option.data("census"));
+					if (option.data("place")) {
 						jQuery("#assistant-link").show();
 					} else {
 						jQuery("#assistant-link").hide();
@@ -1018,9 +1020,10 @@ class FunctionsEdit {
 					if (jQuery("#newshared_note_img").hasClass("icon-plus")) {
 						expand_layer("newshared_note");
 					}
-					var field = jQuery("#newshared_note input.NOTE")[0];
-					var xref  = jQuery("input[name=xref]").val();
-					return addnewnote_assisted(field, xref);
+					var field  = jQuery("#newshared_note input.NOTE")[0];
+					var xref   = jQuery("input[name=xref]").val();
+					var census = jQuery(".census-assistant-selector :selected").data("census");
+					return addnewnote_assisted(field, xref, census);
 				}
 			');
 
@@ -1029,18 +1032,16 @@ class FunctionsEdit {
 		foreach ($census_places as $census_place) {
 			$options .= '<option value=""></option>';
 			foreach ($census_place->allCensusDates() as $census) {
-				$date = new Date($census->censusDate());
-				$year = $date->minimumDate()->format('%Y');
+				$date            = new Date($census->censusDate());
+				$year            = $date->minimumDate()->format('%Y');
 				$place_hierarchy = explode(', ', $census->censusPlace());
-				$options .= '<option value="' . $census->censusDate() . '" data-year="' . $year . '" data-place="' . $census->censusPlace() . '">' . $place_hierarchy[0] . ' ' . $year . '</option>';
+				$options .= '<option value="' . $census->censusDate() . '" data-place="' . $census->censusPlace() . '" data-census="' . get_class($census) . '">' . $place_hierarchy[0] . ' ' . $year . '</option>';
 			}
 		}
 
 		return
-			'<input type="hidden" id="setctry" name="setctry" value="">' .
-			'<input type="hidden" id="setyear" name="setyear" value="">' .
 			'<input type="hidden" id="pid_array" name="pid_array" value="">' .
-			'<select onchange="selectCensus(this);">' . $options . '</select>';
+			'<select class="census-assistant-selector" onchange="selectCensus(this);">' . $options . '</select>';
 	}
 
 	/**
@@ -1447,10 +1448,10 @@ class FunctionsEdit {
 	 * fact that is being edited.
 	 * If the $text[] array is empty for the given line, then it means that the
 	 * user removed that line during editing or that the line is supposed to be
-	 * empty (1 DEAT, 1 BIRT) for example.  To know if the line should be removed
+	 * empty (1 DEAT, 1 BIRT) for example. To know if the line should be removed
 	 * there is a section of code that looks ahead to the next lines to see if there
-	 * are sub lines.  For example we don't want to remove the 1 DEAT line if it has
-	 * a 2 PLAC or 2 DATE line following it.  If there are no sub lines, then the line
+	 * are sub lines. For example we don't want to remove the 1 DEAT line if it has
+	 * a 2 PLAC or 2 DATE line following it. If there are no sub lines, then the line
 	 * can be safely removed.
 	 *
 	 * @param string $newged the new gedcom record to add the lines to
@@ -1605,7 +1606,7 @@ class FunctionsEdit {
 		$add_date    = true;
 		// List of tags we would expect at the next level
 		// NB add_missing_subtags() already takes care of the simple cases
-		// where a level 1 tag is missing a level 2 tag.  Here we only need to
+		// where a level 1 tag is missing a level 2 tag. Here we only need to
 		// handle the more complicated cases.
 		$expected_subtags = array(
 			'SOUR' => array('PAGE', 'DATA'),

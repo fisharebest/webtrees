@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,13 +36,13 @@ class TimelineController extends PageController {
 	/** @var Fact[] The facts to display on the chart */
 	public $indifacts = array(); // array to store the fact records in for sorting and displaying
 
-	/** @var integer[] Numeric birth years of each individual */
+	/** @var int[] Numeric birth years of each individual */
 	public $birthyears = array();
 
-	/** @var integer[] Numeric birth months of each individual */
+	/** @var int[] Numeric birth months of each individual */
 	public $birthmonths = array();
 
-	/** @var integer[] Numeric birth days of each individual */
+	/** @var int[] Numeric birth days of each individual */
 	public $birthdays = array();
 
 	/** @var int Lowest year to display */
@@ -50,9 +50,6 @@ class TimelineController extends PageController {
 
 	/** @var int Highest year to display */
 	public $topyear = 0;
-
-	/** @var string[] List of individual XREFs to display */
-	private $pids = array();
 
 	/** @var Individual[] List of individuals to display */
 	public $people = array();
@@ -77,71 +74,55 @@ class TimelineController extends PageController {
 		$this->setPageTitle(I18N::translate('Timeline'));
 
 		$this->baseyear = (int) date('Y');
-		// new pid
-		$newpid = Filter::get('newpid', WT_REGEX_XREF);
 
-		// pids array
-		$this->pids = Filter::getArray('pids', WT_REGEX_XREF);
-		// make sure that arrays are indexed by numbers
-		$this->pids = array_values($this->pids);
-		if (!empty($newpid) && !in_array($newpid, $this->pids)) {
-			$this->pids[] = $newpid;
-		}
-		if (count($this->pids) == 0) {
-			$this->pids[] = $this->getSignificantIndividual()->getXref();
-		}
+		$pids   = Filter::getArray('pids', WT_REGEX_XREF);
 		$remove = Filter::get('remove', WT_REGEX_XREF);
-		// cleanup user input
-		$newpids = array();
-		foreach ($this->pids as $value) {
-			if ($value != $remove) {
-				$newpids[] = $value;
-				$person    = Individual::getInstance($value, $WT_TREE);
-				if ($person) {
+
+		foreach (array_unique($pids) as $pid) {
+			if ($pid !== $remove) {
+				$person = Individual::getInstance($pid, $WT_TREE);
+				if ($person && $person->canShow()) {
 					$this->people[] = $person;
 				}
 			}
 		}
-		$this->pids     = $newpids;
 		$this->pidlinks = '';
 
 		foreach ($this->people as $indi) {
-			if (!is_null($indi) && $indi->canShow()) {
-				// setup string of valid pids for links
-				$this->pidlinks .= 'pids%5B%5D=' . $indi->getXref() . '&amp;';
-				$bdate = $indi->getBirthDate();
-				if ($bdate->isOK()) {
-					$date                                = new GregorianDate($bdate->minimumJulianDay());
-					$this->birthyears [$indi->getXref()] = $date->y;
-					$this->birthmonths[$indi->getXref()] = max(1, $date->m);
-					$this->birthdays  [$indi->getXref()] = max(1, $date->d);
+			// setup string of valid pids for links
+			$this->pidlinks .= 'pids%5B%5D=' . $indi->getXref() . '&amp;';
+			$bdate = $indi->getBirthDate();
+			if ($bdate->isOK()) {
+				$date                                = new GregorianDate($bdate->minimumJulianDay());
+				$this->birthyears [$indi->getXref()] = $date->y;
+				$this->birthmonths[$indi->getXref()] = max(1, $date->m);
+				$this->birthdays  [$indi->getXref()] = max(1, $date->d);
+			}
+			// find all the fact information
+			$facts = $indi->getFacts();
+			foreach ($indi->getSpouseFamilies() as $family) {
+				foreach ($family->getFacts() as $fact) {
+					$facts[] = $fact;
 				}
-				// find all the fact information
-				$facts = $indi->getFacts();
-				foreach ($indi->getSpouseFamilies() as $family) {
-					foreach ($family->getFacts() as $fact) {
-						$facts[] = $fact;
-					}
-				}
-				foreach ($facts as $event) {
-					// get the fact type
-					$fact = $event->getTag();
-					if (!in_array($fact, $this->nonfacts)) {
-						// check for a date
-						$date = $event->getDate();
-						if ($date->isOK()) {
-							$date           = new GregorianDate($date->minimumJulianDay());
-							$this->baseyear = min($this->baseyear, $date->y);
-							$this->topyear  = max($this->topyear, $date->y);
+			}
+			foreach ($facts as $event) {
+				// get the fact type
+				$fact = $event->getTag();
+				if (!in_array($fact, $this->nonfacts)) {
+					// check for a date
+					$date = $event->getDate();
+					if ($date->isOK()) {
+						$date           = new GregorianDate($date->minimumJulianDay());
+						$this->baseyear = min($this->baseyear, $date->y);
+						$this->topyear  = max($this->topyear, $date->y);
 
-							if (!$indi->isDead()) {
-								$this->topyear = max($this->topyear, (int) date('Y'));
-							}
+						if (!$indi->isDead()) {
+							$this->topyear = max($this->topyear, (int) date('Y'));
+						}
 
-							// do not add the same fact twice (prevents marriages from being added multiple times)
-							if (!in_array($event, $this->indifacts, true)) {
-								$this->indifacts[] = $event;
-							}
+						// do not add the same fact twice (prevents marriages from being added multiple times)
+						if (!in_array($event, $this->indifacts, true)) {
+							$this->indifacts[] = $event;
 						}
 					}
 				}
@@ -203,8 +184,8 @@ class TimelineController extends PageController {
 		$placements[$place] = $yoffset;
 
 		echo "<div id=\"fact$factcount\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? 'left: ' . ($xoffset) : 'right: ' . ($xoffset)) . 'px; top:' . ($yoffset) . "px; font-size: 8pt; height: " . ($this->bheight) . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ");\">";
-		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"cursor: hand;\"><tr><td>";
-		echo "<img src=\"" . Theme::theme()->parameter('image-hline') . "\" name=\"boxline$factcount\" id=\"boxline$factcount\" height=\"3\" align=\"left\" width=\"10\" alt=\"\" style=\"padding-";
+		echo '<table cellspacing="0" cellpadding="0" border="0" style="cursor: hand;"><tr><td>';
+		echo '<img src="' . Theme::theme()->parameter('image-hline') . '" name="boxline' . $factcount . '" id="boxline' . $factcount . '" height="3" width="10" alt="" style="padding-';
 		if (I18N::direction() === 'ltr') {
 			echo 'left: 3px;">';
 		} else {
@@ -221,8 +202,9 @@ class TimelineController extends PageController {
 			$col = array_search($event->getParent()->getWife(), $this->people);
 		}
 		$col = $col % 6;
-		echo '</td><td valign="top" class="person' . $col . '">';
-		if (count($this->pids) > 6) {
+		echo '</td><td class="person' . $col . '">';
+		if (count($this->people) > 6) {
+			// We only have six colours, so show naes if more than this number
 			echo $event->getParent()->getFullName() . ' — ';
 		}
 		$record = $event->getParent();
@@ -294,8 +276,8 @@ class TimelineController extends PageController {
 	public function getSignificantIndividual() {
 		global $WT_TREE;
 
-		if ($this->pids) {
-			return Individual::getInstance($this->pids[0], $WT_TREE);
+		if ($this->people) {
+			return $this->people[0];
 		} else {
 			return parent::getSignificantIndividual();
 		}

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptSgnw extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Sgnw';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '095';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'SignWriting';
 	}

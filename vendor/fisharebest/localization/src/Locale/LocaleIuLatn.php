@@ -10,17 +10,14 @@ use Fisharebest\Localization\Script\ScriptLatn;
  * @license       GPLv3+
  */
 class LocaleIuLatn extends LocaleIu {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Inuktitut';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'INUKTITUT';
 	}
 
-	/** {@inheritdoc} */
 	public function script() {
 		return new ScriptLatn;
 	}

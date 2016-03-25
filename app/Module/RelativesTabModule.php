@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -205,7 +205,6 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 			?>
 			<tr>
 				<td class="facts_label">
-					&nbsp;
 				</td>
 				<td class="facts_value<?php echo $class; ?>">
 					<?php echo GedcomTag::getLabelValue($fact->getTag(), $fact->getDate()->display() . ' — ' . $fact->getPlace()->getFullName()); ?>
@@ -221,7 +220,6 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 			?>
 			<tr>
 				<td class="facts_label">
-					&nbsp;
 				</td>
 				<td class="facts_value">
 					<a href="#" onclick="return add_new_record('<?php echo $family->getXref(); ?>', 'MARR');">
@@ -247,7 +245,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 					$class = 'facts_label';
 				}
 				$next = new Date('');
-				foreach ($person->getFacts(WT_EVENTS_BIRT) as $bfact) {
+				foreach ($person->getFacts(WT_EVENTS_BIRT, true) as $bfact) {
 					if ($bfact->getDate()->isOK()) {
 						$next = $bfact->getDate();
 						break;

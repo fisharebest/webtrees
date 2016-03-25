@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryGb;
  * @license   GPLv3+
  */
 class LanguageCy extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'cy';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryGb;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRuleWelsh;
 	}

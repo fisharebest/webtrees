@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptHluw extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Hluw';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '080';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Anatolian_Hieroglyphs';
 	}

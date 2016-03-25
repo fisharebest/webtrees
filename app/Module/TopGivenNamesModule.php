@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Theme;
 class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module.  Top=Most common */ I18N::translate('Top given names');
+		return /* I18N: Name of a module. Top=Most common */ I18N::translate('Top given names');
 	}
 
 	/** {@inheritdoc} */
@@ -71,14 +71,14 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 			// I18N: i.e. most popular given name.
 			$title .= I18N::translate('Top given name');
 		} else {
-			// I18N: Title for a list of the most common given names, %s is a number.  Note that a separate translation exists when %s is 1
+			// I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 			$title .= I18N::plural('Top %s given name', 'Top %s given names', $num, I18N::number($num));
 		}
 
 		$content = '<div class="normal_inner_block">';
 		//Select List or Table
 		switch ($infoStyle) {
-		case "list": // Output style 1:  Simple list style.  Better suited to left side of page.
+		case "list": // Output style 1:  Simple list style. Better suited to left side of page.
 			if (I18N::direction() === 'ltr') {
 				$padding = 'padding-left: 15px';
 			} else {
@@ -96,10 +96,10 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 				$content .= '<b>' . I18N::translate('Males') . '</b><div class="wrap" style="' . $padding . '">' . $totals . '</div><br>';
 			}
 			break;
-		case "table": // Style 2: Tabular format.  Narrow, 2 or 3 column table, good on right side of page
+		case "table": // Style 2: Tabular format. Narrow, 2 or 3 column table, good on right side of page
 			$params = array(1, $num, 'rcount');
 			$content .= '<table style="margin:auto;">
-						<tr valign="top">
+						<tr>
 						<td>' . $stats->commonGivenFemaleTable($params) . '</td>
 						<td>' . $stats->commonGivenMaleTable($params) . '</td>';
 			$content .= '</tr></table>';

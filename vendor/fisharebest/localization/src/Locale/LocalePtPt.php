@@ -8,7 +8,6 @@
  * @license       GPLv3+
  */
 class LocalePtPt extends LocalePt {
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

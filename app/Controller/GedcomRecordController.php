@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -15,13 +15,17 @@
  */
 namespace Fisharebest\Webtrees\Controller;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
@@ -39,8 +43,12 @@ class GedcomRecordController extends PageController {
 
 	/**
 	 * Startup activity
+	 *
+	 * @param GedcomRecord|null $record
 	 */
-	public function __construct() {
+	public function __construct(GedcomRecord $record = null) {
+		$this->record = $record;
+
 		// Automatically fix broken links
 		if ($this->record && $this->record->canEdit()) {
 			$broken_links = 0;
@@ -52,7 +60,7 @@ class GedcomRecordController extends PageController {
 				}
 			}
 			foreach ($this->record->getFacts('NOTE|SOUR|OBJE') as $fact) {
-				// These can be links or inline.  Only delete links.
+				// These can be links or inline. Only delete links.
 				if (!$fact->isPendingDeletion() && $fact->getTarget() === null && preg_match('/^@.*@$/', $fact->getValue())) {
 					$this->record->deleteFact($fact->getFactId(), false);
 					FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $this->record->getFullName(), $fact->getValue()));
@@ -84,5 +92,33 @@ class GedcomRecordController extends PageController {
 			// No such record
 			$this->setPageTitle(I18N::translate('Private'));
 		}
+	}
+
+	/**
+	 * get edit menu
+	 */
+	public function getEditMenu() {
+		if (!$this->record || $this->record->isPendingDeletion()) {
+			return null;
+		}
+
+		// edit menu
+		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-record');
+
+		// edit raw
+		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
+			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-record-editraw', array(
+				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
+			)));
+		}
+
+		// delete
+		if (Auth::isEditor($this->record->getTree())) {
+			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-record-del', array(
+				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+			)));
+		}
+
+		return $menu;
 	}
 }

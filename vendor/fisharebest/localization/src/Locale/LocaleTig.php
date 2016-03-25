@@ -10,12 +10,10 @@ use Fisharebest\Localization\Language\LanguageTig;
  * @license       GPLv3+
  */
 class LocaleTig extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ትግራይት';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageTig;
 	}

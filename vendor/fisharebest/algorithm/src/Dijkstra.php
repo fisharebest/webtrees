@@ -26,7 +26,7 @@ namespace Fisharebest\Algorithm;
 class Dijkstra {
 	/** @var integer[][] The graph, where $graph[node1][node2]=cost */
 	protected $graph;
-	
+
 	/** @var integer[] Distances from the source node to each other node */
 	protected $distance;
 
@@ -115,7 +115,7 @@ class Dijkstra {
 
 		// Process all nodes in order
 		$this->queue = array($source => 0);
-		while ($this->queue) {
+		while (!empty($this->queue)) {
 			$this->processNextNodeInQueue($exclude);
 		}
 

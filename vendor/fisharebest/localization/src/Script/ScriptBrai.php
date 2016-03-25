@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptBrai extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Brai';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '570';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Braille';
 	}

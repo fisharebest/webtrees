@@ -1,7 +1,7 @@
 <?php namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRule3;
-use Fisharebest\Localization\Territory\TerritoryLv;
+use Fisharebest\Localization\Territory\Territory001;
 
 /**
  * Class LanguagePrg - Representation of the Old Prussian language.
@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryLv;
  * @license   GPLv3+
  */
 class LanguagePrg extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'prg';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
-		return new TerritoryLv;
+		return new Territory001;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule3;
 	}

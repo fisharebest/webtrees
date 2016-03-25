@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -50,7 +50,7 @@ class Migration21 implements MigrationInterface {
 		);
 
 		// Previous versions of webtrees included the MEDIA_DIRECTORY setting in the
-		// FILE tag of the OBJE records.  Remove it…
+		// FILE tag of the OBJE records. Remove it…
 		Database::exec(
 			"UPDATE `##media` m" .
 			" JOIN `##gedcom_setting` gs ON (m.m_file = gs.gedcom_id AND gs.setting_name = 'MEDIA_DIRECTORY')" .

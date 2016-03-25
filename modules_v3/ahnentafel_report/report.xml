@@ -103,7 +103,7 @@
 					<TextBox width="25" height="30">
 						<Text style="text"><var var="num" />.</Text>
 					</TextBox>
-					<!-- 	Sentence 1 Individual, name... -->
+					<!-- Sentence 1 Individual, name... -->
 					<TextBox height="12" newline="1">
 						<Text style="name"><GetPersonName id="" /> </Text>
 						<if condition="$sources==1">
@@ -160,7 +160,7 @@
 								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="I18N::translate(' but the details are unknown')" /></if>.
 							</Text>
 						</Gedcom>
-						<!-- 	Sentence 2 Individual, christened... -->
+						<!-- Sentence 2 Individual, christened... -->
 						<Gedcom id="CHR">
 							<Text style="text">
 								<if condition="$gender=='m'"><var var="I18N::translate('He was christened')" /></if>
@@ -189,7 +189,7 @@
 							</Text>
 						</Gedcom>
 						<if condition="$occu==1">
-							<!-- 	Individual, occupation... -->
+							<!-- Individual, occupation... -->
 							<RepeatTag tag="OCCU">
 								<Text style="text">
 									<if condition="$gender=='m'"><var var="I18N::translate('His occupation was')" /> <GedcomValue tag="OCCU" level="1" /></if>
@@ -216,7 +216,7 @@
 							</RepeatTag>
 						</if>
 						<if condition="$resi==1">
-							<!-- 	Individual, residence... -->
+							<!-- Individual, residence... -->
 							<RepeatTag tag="RESI">
 								<Text style="text"> 
 									<if condition="$gender=='m'"><var var="I18N::translate('He resided at')" /> </if>
@@ -372,7 +372,7 @@
 				<if condition="$children==1">
 					<!-- this section gets the children. -->
 					<RepeatTag tag="FAMS">
-						<SetVar name="individual" value="$cpid" />								
+						<SetVar name="individual" value="$cpid" />
 						<SetVar name="spouse" value="$spid" />
 						<Gedcom id="@FAMS">
 							<if condition="@CHIL!=''">
@@ -429,9 +429,8 @@
 																«<GedcomValue tag="TITL" />»
 																<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 															</Gedcom>
-														<!-- </Footnote> -->
 															<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-														 	<GedcomValue tag="SOUR:DATA:TEXT" />
+															<GedcomValue tag="SOUR:DATA:TEXT" />
 														</Footnote>
 														<SetVar name="source_exist" value="1"/>
 													</RepeatTag>

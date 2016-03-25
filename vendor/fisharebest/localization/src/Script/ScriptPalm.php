@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptPalm extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Palm';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '126';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Palmyrene';
 	}

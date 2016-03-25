@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -15,8 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
-
 /**
  * Definitions for a census
  */
@@ -27,7 +25,7 @@ class CensusOfScotland1841 extends CensusOfScotland implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '06 MAY 1841';
+		return '06 JUN 1841';
 	}
 
 	/**

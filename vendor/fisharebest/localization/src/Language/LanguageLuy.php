@@ -10,12 +10,10 @@ use Fisharebest\Localization\Territory\TerritoryKe;
  * @license   GPLv3+
  */
 class LanguageLuy extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'luy';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryKe;
 	}

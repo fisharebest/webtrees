@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptItal extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Ital';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '210';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Old_Italic';
 	}

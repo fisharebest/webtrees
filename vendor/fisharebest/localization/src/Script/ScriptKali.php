@@ -8,22 +8,18 @@
  * @license   GPLv3+
  */
 class ScriptKali extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Kali';
 	}
 
-	/** {@inheritdoc} */
 	public function numerals() {
 		return array('꤀', '꤁', '꤂', '꤃', '꤄', '꤅', '꤆', '꤇', '꤈', '꤉');
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '357';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Kayah_Li';
 	}

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -14,8 +14,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 namespace Fisharebest\Webtrees\Census;
-
-use Fisharebest\Webtrees\Date;
 
 /**
  * Definitions for a census
@@ -46,11 +44,10 @@ class CensusOfDenmark1835 extends CensusOfDenmark implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnFullName($this, 'TBC', 'To be confirmed'),
-			new CensusColumnAge($this, 'TBC', 'To be confirmed'),
-			new CensusColumnConditionEnglish($this, 'TBC', 'To be confirmed'),
-			new CensusColumnRelationToHead($this, 'TBC', 'To be confirmed'),
-			new CensusColumnOccupation($this, 'TBC', 'To be confirmed'),
+			new CensusColumnFullName($this, 'Navn', ''),
+			new CensusColumnAge($this, 'Alder', ''),
+			new CensusColumnConditionDanish($this, 'Civilstand', ''),
+			new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
 		);
 	}
 }

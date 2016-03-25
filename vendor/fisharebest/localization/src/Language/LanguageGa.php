@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryIe;
  * @license   GPLv3+
  */
 class LanguageGa extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'ga';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryIe;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRule11;
 	}

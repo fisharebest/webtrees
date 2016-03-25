@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -56,7 +56,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		$start    = $this->getBlockSetting($block_id, 'start', '0') || Filter::getBool('start');
 
 		// We can apply the filters using SQL
-		// Do not use "ORDER BY RAND()" - it is very slow on large tables.  Use PHP::array_rand() instead.
+		// Do not use "ORDER BY RAND()" - it is very slow on large tables. Use PHP::array_rand() instead.
 		$all_media = Database::prepare(
 			"SELECT m_id FROM `##media`" .
 			" WHERE m_file = ?" .
@@ -174,13 +174,13 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 			$content .= '<br>';
 			$content .= '<a href="' . $random_media->getHtmlUrl() . '"><b>' . $random_media->getFullName() . '</b></a><br>';
 			foreach ($random_media->linkedIndividuals('OBJE') as $individual) {
-				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View individual') . ' — ' . $individual->getFullname() . '</a><br>';
+				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View individual') . ' — ' . $individual->getFullName() . '</a><br>';
 			}
 			foreach ($random_media->linkedFamilies('OBJE') as $family) {
-				$content .= '<a href="' . $family->getHtmlUrl() . '">' . I18N::translate('View family') . ' — ' . $family->getFullname() . '</a><br>';
+				$content .= '<a href="' . $family->getHtmlUrl() . '">' . I18N::translate('View family') . ' — ' . $family->getFullName() . '</a><br>';
 			}
 			foreach ($random_media->linkedSources('OBJE') as $source) {
-				$content .= '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View source') . ' — ' . $source->getFullname() . '</a><br>';
+				$content .= '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View source') . ' — ' . $source->getFullName() . '</a><br>';
 			}
 			$content .= '<br><div class="indent">';
 			$content .= FunctionsPrint::printFactNotes($random_media->getGedcom(), "1", false);

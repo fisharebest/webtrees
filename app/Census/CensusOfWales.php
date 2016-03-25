@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,6 +34,7 @@ class CensusOfWales extends Census implements CensusPlaceInterface {
 			new CensusOfWales1891(),
 			new CensusOfWales1901(),
 			new CensusOfWales1911(),
+			new RegisterOfWales1939()
 		);
 	}
 

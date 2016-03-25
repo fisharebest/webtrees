@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptTirh extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Tirh';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '326';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Tirhuta';
 	}

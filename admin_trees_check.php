@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,7 +34,7 @@ $controller
 	->pageHeader();
 
 // We need to work with raw GEDCOM data, as we are looking for errors
-// which may prevent the GedcomRecord objects from working...
+// which may prevent the GedcomRecord objects from working.
 
 $rows = Database::prepare(
 	"SELECT i_id AS xref, 'INDI' AS type, i_gedcom AS gedrec FROM `##individuals` WHERE i_file=?" .
@@ -91,7 +91,7 @@ $XREF_LINKS = array(
 	'SUBM'          => 'SUBM',
 	'FAMC'          => 'FAM',
 	'FAMS'          => 'FAM',
-	//'ADOP'=>'FAM', // Need to handle this case specially.  We may have both ADOP and FAMC links to the same FAM, but only store one.
+	//'ADOP'=>'FAM', // Need to handle this case specially. We may have both ADOP and FAMC links to the same FAM, but only store one.
 	'HUSB'          => 'INDI',
 	'WIFE'          => 'INDI',
 	'CHIL'          => 'INDI',
@@ -155,13 +155,13 @@ foreach ($records as $record) {
 foreach ($all_links as $xref1 => $links) {
 	$type1 = $records[$xref1]->type;
 	foreach ($links as $xref2 => $type2) {
-		$type3 = @$records[$xref2]->type;
+		$type3 = isset($records[$xref2]) ? $records[$xref2]->type : '';
 		if (!array_key_exists($xref2, $all_links)) {
 			if (array_key_exists(strtoupper($xref2), $upper_links)) {
 				echo warning(
 					link_message($type1, $xref1, $type2, $xref2) . ' ' .
 					/* I18N: placeholders are GEDCOM XREFs, such as R123 */
-					I18N::translate('%1$s does not exist.  Did you mean %2$s?', format_link($xref2), format_link($upper_links[strtoupper($xref2)]))
+					I18N::translate('%1$s does not exist. Did you mean %2$s?', format_link($xref2), format_link($upper_links[strtoupper($xref2)]))
 				);
 			} else {
 				echo error(
@@ -172,9 +172,9 @@ foreach ($all_links as $xref1 => $links) {
 				);
 			}
 		} elseif ($type2 === 'SOUR' && $type1 === 'NOTE') {
-			// Notes are intended to add explanations and comments to other records.  They should not have their own sources.
+			// Notes are intended to add explanations and comments to other records. They should not have their own sources.
 		} elseif ($type2 === 'SOUR' && $type1 === 'OBJE') {
-			// Media objects are intended to illustrate other records, facts, and source/citations.  They should not have their own sources.
+			// Media objects are intended to illustrate other records, facts, and source/citations. They should not have their own sources.
 		} elseif ($type2 === 'OBJE' && $type1 === 'REPO') {
 			echo warning(
 				link_message($type1, $xref1, $type2, $xref2) . ' ' . I18N::translate('This type of link is not allowed here.')
@@ -188,7 +188,7 @@ foreach ($all_links as $xref1 => $links) {
 			// Target XREF does exist - but is invalid
 			echo error(
 				link_message($type1, $xref1, $type2, $xref2) . ' ' .
-				/* I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR */
+				/* I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR */
 				I18N::translate('%1$s is a %2$s but a %3$s is expected.', format_link($xref2), format_type($type3), format_type($type2))
 			);
 		} elseif (
@@ -224,7 +224,7 @@ echo '</ul>';
  * @return string
  */
 function link_message($type1, $xref1, $type2, $xref2) {
-	return /* I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */ I18N::translate(
+	return /* I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.” */ I18N::translate(
 		'%1$s %2$s has a %3$s link to %4$s.',
 		format_type($type1),
 		format_link($xref1),

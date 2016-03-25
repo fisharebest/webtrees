@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptBass extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Bass';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '259';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Bassa_Vah';
 	}

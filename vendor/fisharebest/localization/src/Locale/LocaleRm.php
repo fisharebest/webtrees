@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageRm;
  * @license       GPLv3+
  */
 class LocaleRm extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'rumantsch';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'RUMANTSCH';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageRm;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP    => self::APOSTROPHE,
@@ -33,7 +29,6 @@ class LocaleRm extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

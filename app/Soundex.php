@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -151,8 +151,8 @@ class Soundex {
 	/**
 	 * The DM sound coding table is organized this way:
 	 * key: a variable-length string that corresponds to the UTF-8 character sequence
-	 * represented by the table entry.  Currently, that string can be up to 7
-	 * bytes long.  This maximum length is defined by the value of global variable
+	 * represented by the table entry. Currently, that string can be up to 7
+	 * bytes long. This maximum length is defined by the value of global variable
 	 * $maxchar.
 	 *
 	 * value: an array as follows:

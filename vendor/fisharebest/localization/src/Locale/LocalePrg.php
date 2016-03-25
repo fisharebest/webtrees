@@ -10,32 +10,26 @@ use Fisharebest\Localization\Language\LanguagePrg;
  * @license       GPLv3+
  */
 class LocalePrg extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function collation() {
 		return 'latvian_ci';
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
-		return 'Old Prussian';
+		return 'prūsiskan';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
-		return 'OLD PRUSSIAN';
+		return 'PRŪSISKAN';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguagePrg;
 	}
 
-	/** {@inheritdoc} */
 	protected function minimumGroupingDigits() {
 		return 3;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,19 +25,6 @@ use Zend_Mail_Transport_Smtp;
  */
 class Mail {
 	const EOL = "<br>\r\n"; // End-of-line that works for both TEXT and HTML messages
-
-	/**
-	 * Audit information to add to email footer
-	 *
-	 * @return string
-	 */
-	public static function auditFooter() {
-		return
-			self::EOL .
-			'---------------------------------------' . self::EOL .
-			'IP ADDRESS: ' . WT_CLIENT_IP . self::EOL .
-			'LANGUAGE: ' . WT_LOCALE . self::EOL;
-	}
 
 	/**
 	 * Send an external email message

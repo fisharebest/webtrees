@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,7 +35,7 @@ class GedcomCodeTemp {
 	/**
 	 * A list of all temple codes, from the GEDCOM 5.5.1 specification
 	 *
-	 * Note that this list is out-of-date.  We could add recently built
+	 * Note that this list is out-of-date. We could add recently built
 	 * temples, but what codes would we use?
 	 *
 	 * @link http://en.wikipedia.org/wiki/List_of_temples_of_The_Church_of_Jesus_Christ_of_Latter-day_Saints

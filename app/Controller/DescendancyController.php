@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -98,10 +98,10 @@ class DescendancyController extends ChartController {
 		echo "<li>";
 		echo "<table><tr><td>";
 		if ($depth == $this->generations) {
-			echo "<img src=\"" . Theme::theme()->parameter('image-spacer') . "\" height=\"3\" width=\"", Theme::theme()->parameter('chart-descendancy-indent'), "\" alt=\"\"></td><td>";
+			echo '<img src="' . Theme::theme()->parameter('image-spacer') . '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent'), "\" alt=\"\"></td><td>";
 		} else {
-			echo "<img src=\"" . Theme::theme()->parameter('image-spacer') . "\" height=\"3\" width=\"3\" alt=\"\">";
-			echo "<img src=\"" . Theme::theme()->parameter('image-hline') . "\" height=\"3\" width=\"", Theme::theme()->parameter('chart-descendancy-indent') - 3, "\" alt=\"\"></td><td>";
+			echo '<img src="' . Theme::theme()->parameter('image-spacer') . '" height="3" width="3" alt="">';
+			echo '<img src="' . Theme::theme()->parameter('image-hline') . '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent') - 3, '" alt=""></td><td>';
 		}
 		FunctionsPrint::printPedigreePerson($person, $this->showFull());
 		echo '</td>';

@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptMoon extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Moon';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '218';
 	}

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -75,7 +75,7 @@ class FunctionsDate {
 	 */
 	public static function formatTimestamp($time) {
 		$time_fmt = I18N::timeFormat();
-		// PHP::date() doesn't do I18N.  Do it ourselves....
+		// PHP::date() doesn't do I18N. Do it ourselves....
 		preg_match_all('/%[^%]/', $time_fmt, $matches);
 		foreach ($matches[0] as $match) {
 			switch ($match) {

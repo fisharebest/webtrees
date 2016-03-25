@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageLuo;
  * @license       GPLv3+
  */
 class LocaleLuo extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Dholuo';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'DHOLUO';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageLuo;
 	}

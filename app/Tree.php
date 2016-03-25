@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,10 +32,10 @@ class Tree {
 	/** @var string The tree's title */
 	private $title;
 
-	/** @var integer[] Default access rules for facts in this tree */
+	/** @var int[] Default access rules for facts in this tree */
 	private $fact_privacy;
 
-	/** @var integer[] Default access rules for individuals in this tree */
+	/** @var int[] Default access rules for individuals in this tree */
 	private $individual_privacy;
 
 	/** @var integer[][] Default access rules for individual facts in this tree */
@@ -51,7 +51,7 @@ class Tree {
 	private $user_preferences = array();
 
 	/**
-	 * Create a tree object.  This is a private constructor - it can only
+	 * Create a tree object. This is a private constructor - it can only
 	 * be called from Tree::getAll() to ensure proper initialisation.
 	 *
 	 * @param int    $tree_id
@@ -149,7 +149,7 @@ class Tree {
 	/**
 	 * The fact-level privacy for this tree.
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public function getFactPrivacy() {
 		return $this->fact_privacy;
@@ -158,7 +158,7 @@ class Tree {
 	/**
 	 * The individual-level privacy for this tree.
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public function getIndividualPrivacy() {
 		return $this->individual_privacy;
@@ -489,7 +489,7 @@ class Tree {
 
 		// Genealogy data
 		// It is simpler to create a temporary/unimported GEDCOM than to populate all the tables...
-		$john_doe = /* I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname. */
+		$john_doe = /* I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname. */
 			I18N::translate('John /DOE/');
 		$note     = I18N::translate('Edit this individual and replace their details with your own.');
 		Database::prepare("INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)")->execute(array(
@@ -518,7 +518,7 @@ class Tree {
 
 	/**
 	 * Delete all the genealogy data from a tree - in preparation for importing
-	 * new data.  Optionally retain the media data, for when the user has been
+	 * new data. Optionally retain the media data, for when the user has been
 	 * editing their data offline using an application which deletes (or does not
 	 * support) media data.
 	 *
@@ -578,15 +578,16 @@ class Tree {
 	 */
 	public function exportGedcom($stream) {
 		$stmt = Database::prepare(
-			"SELECT i_gedcom AS gedcom FROM `##individuals` WHERE i_file = :tree_id_1" .
+			"SELECT i_gedcom AS gedcom, i_id AS xref, 1 AS n FROM `##individuals` WHERE i_file = :tree_id_1" .
 			" UNION ALL " .
-			"SELECT f_gedcom AS gedcom FROM `##families`    WHERE f_file = :tree_id_2" .
+			"SELECT f_gedcom AS gedcom, f_id AS xref, 2 AS n FROM `##families`    WHERE f_file = :tree_id_2" .
 			" UNION ALL " .
-			"SELECT s_gedcom AS gedcom FROM `##sources`     WHERE s_file = :tree_id_3" .
+			"SELECT s_gedcom AS gedcom, s_id AS xref, 3 AS n FROM `##sources`     WHERE s_file = :tree_id_3" .
 			" UNION ALL " .
-			"SELECT o_gedcom AS gedcom FROM `##other`       WHERE o_file = :tree_id_4 AND o_type NOT IN ('HEAD', 'TRLR')" .
+			"SELECT o_gedcom AS gedcom, o_id AS xref, 4 AS n FROM `##other`       WHERE o_file = :tree_id_4 AND o_type NOT IN ('HEAD', 'TRLR')" .
 			" UNION ALL " .
-			"SELECT m_gedcom AS gedcom FROM `##media`       WHERE m_file = :tree_id_5"
+			"SELECT m_gedcom AS gedcom, m_id AS xref, 5 AS n FROM `##media`       WHERE m_file = :tree_id_5" .
+			" ORDER BY n, LENGTH(xref), xref"
 		)->execute(array(
 			'tree_id_1' => $this->tree_id,
 			'tree_id_2' => $this->tree_id,
@@ -616,15 +617,15 @@ class Tree {
 	 * @throws \Exception
 	 */
 	public function importGedcomFile($path, $filename) {
-		// Read the file in blocks of roughly 64K.  Ensure that each block
-		// contains complete gedcom records.  This will ensure we don’t split
+		// Read the file in blocks of roughly 64K. Ensure that each block
+		// contains complete gedcom records. This will ensure we don’t split
 		// multi-byte characters, as well as simplifying the code to import
 		// each block.
 
 		$file_data = '';
 		$fp        = fopen($path, 'rb');
 
-		// Don’t allow the user to cancel the request.  We do not want to be left with an incomplete transaction.
+		// Don’t allow the user to cancel the request. We do not want to be left with an incomplete transaction.
 		ignore_user_abort(true);
 
 		Database::beginTransaction();
@@ -682,7 +683,7 @@ class Tree {
 		}
 
 		do {
-			// Use LAST_INSERT_ID(expr) to provide a transaction-safe sequence.  See
+			// Use LAST_INSERT_ID(expr) to provide a transaction-safe sequence. See
 			// http://dev.mysql.com/doc/refman/5.6/en/information-functions.html#function_last-insert-id
 			$statement = Database::prepare(
 				"UPDATE `##next_id` SET next_id = LAST_INSERT_ID(next_id + 1) WHERE record_type = :record_type AND gedcom_id = :tree_id"
@@ -752,7 +753,7 @@ class Tree {
 			throw new \Exception('Evil line endings found in GedcomRecord::createRecord(' . $gedcom . ')');
 		}
 
-		// webtrees creates XREFs containing digits.  Anything else (e.g. “new”) is just a placeholder.
+		// webtrees creates XREFs containing digits. Anything else (e.g. “new”) is just a placeholder.
 		if (!preg_match('/\d/', $xref)) {
 			$xref   = $this->getNewXref($type);
 			$gedcom = preg_replace('/^0 @(' . WT_REGEX_XREF . ')@/', '0 @' . $xref . '@', $gedcom);
@@ -779,7 +780,7 @@ class Tree {
 		if (Auth::user()->getPreference('auto_accept')) {
 			FunctionsImport::acceptAllChanges($xref, $this->tree_id);
 		}
-		// Return the newly created record.  Note that since GedcomRecord
+		// Return the newly created record. Note that since GedcomRecord
 		// has a cache of pending changes, we cannot use it to create a
 		// record with a newly created pending change.
 		return GedcomRecord::getInstance($xref, $this, $gedcom);

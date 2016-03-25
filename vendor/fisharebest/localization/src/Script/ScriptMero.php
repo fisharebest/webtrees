@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptMero extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Mero';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '100';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Meroitic_Hieroglyphs';
 	}

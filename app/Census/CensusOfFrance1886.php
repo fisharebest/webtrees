@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -15,8 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
-
 /**
  * Definitions for a census
  */
@@ -27,7 +25,7 @@ class CensusOfFrance1886 extends CensusOfFrance implements CensusInterface {
 	 * @return string
 	 */
 	public function censusDate() {
-		return '1886';
+		return '21 JAN 1886';
 	}
 
 	/**
@@ -37,12 +35,12 @@ class CensusOfFrance1886 extends CensusOfFrance implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnSurname($this, 'XXXX', 'XXXX'),
-			new CensusColumnGivenNames($this, 'XXXX', 'XXXX'),
-			new CensusColumnOccupation($this, 'XXXX', 'XXXX'),
-			new CensusColumnAge($this, 'XXXX', 'XXXX'),
-			new CensusColumnRelationToHead($this, 'XXXX', 'XXXX'),
-			new CensusColumnNationality($this, 'XXXX', 'XXXX'),
+			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
+			new CensusColumnGivenNames($this, 'Prénoms', ''),
+			new CensusColumnAge($this, 'Âge', ''),
+			new CensusColumnNationality($this, 'Nationalité', ''),
+			new CensusColumnOccupation($this, 'Profession', ''),
+			new CensusColumnRelationToHead($this, 'Position', 'Position dans le ménage'),
 		);
 	}
 }

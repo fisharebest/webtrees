@@ -10,17 +10,14 @@ use Fisharebest\Localization\Territory\TerritoryGb;
  * @license       GPLv3+
  */
 class LocaleEnGb extends LocaleEn {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'British English';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ENGLISH, BRITISH';
 	}
 
-	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryGb;
 	}

@@ -10,7 +10,12 @@ use Fisharebest\Localization\Variant\VariantPosix;
  * @license       GPLv3+
  */
 class LocaleEnUsPosix extends LocaleEnUs {
-	/** {@inheritdoc} */
+	public function numberSymbols() {
+		return array(
+				self::GROUP => '',
+		);
+	}
+
 	public function variant() {
 		return new VariantPosix;
 	}

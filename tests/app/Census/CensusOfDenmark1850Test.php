@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees\Census;
 
 /**
@@ -43,29 +42,38 @@ class CensusOfDenmark1850Test extends \PHPUnit_Framework_TestCase {
 		$census  = new CensusOfDenmark1850;
 		$columns = $census->columns();
 
-		$this->assertCount(7, $columns);
-		$this->assertInstanceOf(CensusColumnFullName::class, $columns[0]);
-		$this->assertInstanceOf(CensusColumnAge::class, $columns[1]);
-		$this->assertInstanceOf(CensusColumnConditionEnglish::class, $columns[2]);
-		$this->assertInstanceOf(CensusColumnRelationToHead::class, $columns[3]);
-		$this->assertInstanceOf(CensusColumnOccupation::class, $columns[4]);
-		$this->assertInstanceOf(CensusColumnBirthPlace::class, $columns[5]);
-		$this->assertInstanceOf(CensusColumnNull::class, $columns[6]);
+		$this->assertCount(10, $columns);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAge', $columns[1]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionDanish', $columns[2]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[3]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[4]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[5]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[6]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[7]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[8]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[9]);
 
-		$this->assertSame('TBC', $columns[0]->abbreviation());
-		$this->assertSame('TBC', $columns[1]->abbreviation());
-		$this->assertSame('TBC', $columns[2]->abbreviation());
-		$this->assertSame('TBC', $columns[3]->abbreviation());
-		$this->assertSame('TBC', $columns[4]->abbreviation());
-		$this->assertSame('TBC', $columns[5]->abbreviation());
-		$this->assertSame('TBC', $columns[6]->abbreviation());
+		$this->assertSame('Navn', $columns[0]->abbreviation());
+		$this->assertSame('Alder', $columns[1]->abbreviation());
+		$this->assertSame('Civilstand', $columns[2]->abbreviation());
+		$this->assertSame('Erhverv', $columns[3]->abbreviation());
+		$this->assertSame('Stilling i familien', $columns[4]->abbreviation());
+		$this->assertSame('', $columns[5]->abbreviation());
+		$this->assertSame('', $columns[6]->abbreviation());
+		$this->assertSame('', $columns[7]->abbreviation());
+		$this->assertSame('', $columns[8]->abbreviation());
+		$this->assertSame('', $columns[9]->abbreviation());
 
-		$this->assertSame('To be confirmed', $columns[0]->title());
-		$this->assertSame('To be confirmed', $columns[1]->title());
-		$this->assertSame('To be confirmed', $columns[2]->title());
-		$this->assertSame('To be confirmed', $columns[3]->title());
-		$this->assertSame('To be confirmed', $columns[4]->title());
-		$this->assertSame('To be confirmed', $columns[5]->title());
-		$this->assertSame('To be confirmed', $columns[6]->title());
+		$this->assertSame('', $columns[0]->title());
+		$this->assertSame('', $columns[1]->title());
+		$this->assertSame('', $columns[2]->title());
+		$this->assertSame('', $columns[3]->title());
+		$this->assertSame('', $columns[4]->title());
+		$this->assertSame('', $columns[5]->title());
+		$this->assertSame('', $columns[6]->title());
+		$this->assertSame('', $columns[7]->title());
+		$this->assertSame('', $columns[8]->title());
+		$this->assertSame('', $columns[9]->title());
 	}
 }

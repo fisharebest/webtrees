@@ -11,17 +11,14 @@ use Fisharebest\Localization\Territory\TerritoryFi;
  * @license   GPLv3+
  */
 class LanguageSms extends AbstractLanguage implements LanguageInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'sms';
 	}
 
-	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryFi;
 	}
 
-	/** {@inheritdoc} */
 	public function pluralRule() {
 		return new PluralRuleOneTwoOther;
 	}

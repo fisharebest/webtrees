@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,10 +26,6 @@ define('WT_ROOT', '');
 define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
 define('WT_MODULES_DIR', 'modules_v3/');
 
-// We use some PHP5.5 features, but need to run on older servers
-if (version_compare(PHP_VERSION, '5.4', '<')) {
-	require WT_ROOT . 'includes/php_53_compatibility.php';
-}
 require 'vendor/autoload.php';
 
 Session::start();
@@ -72,7 +68,7 @@ echo
 if ($offline_txt) {
 	echo $offline_txt;
 } else {
-	echo I18N::translate('This website is down for maintenance.  You should <a href="index.php">try again</a> in a few minutes.');
+	echo I18N::translate('This website is down for maintenance. You should <a href="index.php">try again</a> in a few minutes.');
 }
 echo '</p>';
 echo '</div>';

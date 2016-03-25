@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptZxxx extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Zxxx';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '997';
 	}

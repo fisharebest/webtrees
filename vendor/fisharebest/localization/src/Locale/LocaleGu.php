@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageGu;
  * @license       GPLv3+
  */
 class LocaleGu extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;
 	}
 
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ગુજરાતી';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageGu;
 	}

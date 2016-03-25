@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Date;
  * Definitions for the Roman calendar
  *
  * The 5.5.1 gedcom spec mentions this calendar, but gives no details of
- * how it is to be represented....  This class is just a place holder so that
+ * how it is to be represented.... This class is just a place holder so that
  * webtrees won’t compain if it receives one.
  */
 class RomanDate extends JulianDate {

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -174,12 +174,12 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 			"INSERT INTO `##link` (l_file, l_from, l_type, l_to)" .
 			" SELECT ?, l_from, l_type, l_to FROM `##link` AS link2 WHERE l_file = ?"
 		)->execute(array($tree2_id, $tree1_id));
-		// This table may contain old (deleted) references, which could clash.  IGNORE these.
+		// This table may contain old (deleted) references, which could clash. IGNORE these.
 		Database::prepare(
 			"INSERT IGNORE INTO `##change` (change_time, status, gedcom_id, xref, old_gedcom, new_gedcom, user_id)" .
 			" SELECT change_time, status, ?, xref, old_gedcom, new_gedcom, user_id FROM `##change` AS change2 WHERE gedcom_id = ?"
 		)->execute(array($tree2_id, $tree1_id));
-		// This table may contain old (deleted) references, which could clash.  IGNORE these.
+		// This table may contain old (deleted) references, which could clash. IGNORE these.
 		Database::prepare(
 			"INSERT IGNORE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count)" .
 			" SELECT ?, page_name, page_parameter, page_count FROM `##hit_counter` AS hit_counter2 WHERE gedcom_id = ? AND page_name <> 'index.php'"
@@ -191,7 +191,7 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 } else {
 	echo '<form method="post">';
 	echo '<input type="hidden" name="go" value="1">';
-	echo '<p>', I18N::translate(/* I18N:  Copy all the records from [family tree 1] into [family tree 2] */
+	echo '<p>', I18N::translate(/* I18N: Copy all the records from [family tree 1] into [family tree 2] */
 		'Copy all the records from %1$s into %2$s.',
 		FunctionsEdit::selectEditControl('tree1_id', Tree::getIdList(), '', null),
 		FunctionsEdit::selectEditControl('tree2_id', Tree::getIdList(), '', null)

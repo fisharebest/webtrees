@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,9 +36,9 @@ class ReportHtmlHtml extends ReportBaseHtml {
 		$this->text = $this->getStart() . $this->text;
 		foreach ($this->elements as $element) {
 			if (is_string($element) && $element == "footnotetexts") {
-				$renderer->Footnotes();
+				$renderer->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
-				$renderer->AddPage();
+				$renderer->addPage();
 			} elseif ($element instanceof ReportBaseHtml) {
 				$element->render($renderer, true, false);
 			} else {
@@ -52,12 +52,12 @@ class ReportHtmlHtml extends ReportBaseHtml {
 
 		// If not called by an other attribute
 		if ($inat) {
-			$startX = $renderer->GetX();
-			$startY = $renderer->GetY();
+			$startX = $renderer->getX();
+			$startY = $renderer->getY();
 			$width  = $renderer->getRemainingWidth();
 			echo "<div style=\"position: absolute;top: ", $startY, "pt;", $renderer->alignRTL, ": ", $startX, "pt;width: ", $width, "pt;\">";
 			$startY += $renderer->getCurrentStyleHeight() + 2;
-			$renderer->SetY($startY);
+			$renderer->setY($startY);
 		}
 
 		echo $this->text;

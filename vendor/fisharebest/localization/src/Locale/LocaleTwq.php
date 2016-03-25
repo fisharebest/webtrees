@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageTwq;
  * @license       GPLv3+
  */
 class LocaleTwq extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Tasawaq senni';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'TASAWAQ SENNI';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageTwq;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP => self::NBSP,

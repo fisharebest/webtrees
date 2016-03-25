@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageAa;
  * @license       GPLv3+
  */
 class LocaleAa extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Qafar';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'QAFAR';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageAa;
 	}

@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageIt;
  * @license       GPLv3+
  */
 class LocaleIt extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'italiano';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'ITALIANO';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageIt;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

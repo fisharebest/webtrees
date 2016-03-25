@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +26,7 @@ class CensusOfFrance extends Census implements CensusPlaceInterface {
 	 */
 	public function allCensusDates() {
 		return array(
+			new CensusOfFrance1831(),
 			new CensusOfFrance1836(),
 			new CensusOfFrance1841(),
 			new CensusOfFrance1846(),
@@ -42,6 +43,11 @@ class CensusOfFrance extends Census implements CensusPlaceInterface {
 			new CensusOfFrance1901(),
 			new CensusOfFrance1906(),
 			new CensusOfFrance1911(),
+			new CensusOfFrance1921(),
+			new CensusOfFrance1926(),
+			new CensusOfFrance1931(),
+			new CensusOfFrance1936(),
+			new CensusOfFrance1946(),
 		);
 	}
 

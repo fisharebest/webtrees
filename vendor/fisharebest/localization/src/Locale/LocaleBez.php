@@ -10,17 +10,14 @@ use Fisharebest\Localization\Language\LanguageBez;
  * @license       GPLv3+
  */
 class LocaleBez extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Hibena';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'HIBENA';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageBez;
 	}

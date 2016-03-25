@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageFf;
  * @license       GPLv3+
  */
 class LocaleFf extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Pulaar';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'PULAAR';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageFf;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::NBSP,

@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptTavt extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Tavt';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '359';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Tai_Viet';
 	}

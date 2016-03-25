@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageLb;
  * @license       GPLv3+
  */
 class LocaleLb extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Lëtzebuergesch';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'LETZEBUERGESCH';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageLb;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,
@@ -33,7 +29,6 @@ class LocaleLb extends AbstractLocale implements LocaleInterface {
 		);
 	}
 
-	/** {@inheritdoc} */
 	protected function percentFormat() {
 		return '%s' . self::NBSP . self::PERCENT;
 	}

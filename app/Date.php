@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2016 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\Date\RomanDate;
  * midnight, solar midnight, sunset, sunrise, etc.), we convert on the basis of
  * midday.
  *
- * We assume that years start on the first day of the first month.  Where
+ * We assume that years start on the first day of the first month. Where
  * this is not the case (e.g. England prior to 1752), we need to use modified
  * years or the OS/NS notation "4 FEB 1750/51".
  */
@@ -468,7 +468,7 @@ class Date {
 					return I18N::number($d1->minimumDate()->getAge(false, $jd));
 				}
 			} else {
-				return '&nbsp;';
+				return '';
 			}
 		default:
 			throw new \InvalidArgumentException('format: ' . $format);
@@ -569,9 +569,9 @@ class Date {
 	}
 
 	/**
-	 * Calculate the gregorian year for a date.  This should NOT be used internally
+	 * Calculate the gregorian year for a date. This should NOT be used internally
 	 * within WT - we should keep the code "calendar neutral" to allow support for
-	 * jewish/arabic users.  This is only for interfacing with external entities,
+	 * jewish/arabic users. This is only for interfacing with external entities,
 	 * such as the ancestry.com search interface or the dated fact icons.
 	 *
 	 * @return int

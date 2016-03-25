@@ -10,22 +10,18 @@ use Fisharebest\Localization\Language\LanguageNnh;
  * @license       GPLv3+
  */
 class LocaleNnh extends AbstractLocale implements LocaleInterface {
-	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Shwóŋò ngiembɔɔn';
 	}
 
-	/** {@inheritdoc} */
 	public function endonymSortable() {
 		return 'SHWONO NGIEMBOON';
 	}
 
-	/** {@inheritdoc} */
 	public function language() {
 		return new LanguageNnh;
 	}
 
-	/** {@inheritdoc} */
 	public function numberSymbols() {
 		return array(
 			self::GROUP   => self::DOT,

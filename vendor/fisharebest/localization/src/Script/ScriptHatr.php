@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptHatr extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Hatr';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '127';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Hatran';
 	}

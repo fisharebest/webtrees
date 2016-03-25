@@ -8,17 +8,14 @@
  * @license   GPLv3+
  */
 class ScriptTglg extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Tglg';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '370';
 	}
 
-	/** {@inheritdoc} */
 	public function unicodeName() {
 		return 'Tagalog';
 	}

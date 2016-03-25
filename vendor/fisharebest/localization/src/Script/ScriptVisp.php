@@ -8,12 +8,10 @@
  * @license   GPLv3+
  */
 class ScriptVisp extends AbstractScript implements ScriptInterface {
-	/** {@inheritdoc} */
 	public function code() {
 		return 'Visp';
 	}
 
-	/** {@inheritdoc} */
 	public function number() {
 		return '280';
 	}
