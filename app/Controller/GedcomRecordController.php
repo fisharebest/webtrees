@@ -119,13 +119,6 @@ class GedcomRecordController extends PageController {
 			)));
 		}
 
-		// Get the link for the first submenu and set it as the link for the main menu
-		if ($menu->getSubmenus()) {
-			$submenus = $menu->getSubmenus();
-			$menu->setLink($submenus[0]->getLink());
-			$menu->setAttrs($submenus[0]->getAttrs());
-		}
-
 		return $menu;
 	}
 }
