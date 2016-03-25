@@ -1315,7 +1315,7 @@ case 'addsourceaction':
 		$newgedrec .= "\n1 REPO @" . $REPO . '@';
 		$CALN = Filter::post('CALN');
 		if ($CALN) {
-			$newgedrec .= "\n1 CALN " . $CALN;
+			$newgedrec .= "\n2 CALN " . $CALN;
 		}
 	}
 	$EVEN = Filter::postArray('EVEN', WT_REGEX_TAG);
