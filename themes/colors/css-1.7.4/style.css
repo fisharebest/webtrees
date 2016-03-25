@@ -4841,6 +4841,14 @@ footer {
 	background-position: right -832px;
 }
 
+.menu-indi-editname {
+	background-position: left -836px;
+}
+
+[dir=rtl] .menu-indi-editname {
+	background-position: right -836px;
+}
+
 .menu-indi-addname {
 	background-position: left -780px;
 }
