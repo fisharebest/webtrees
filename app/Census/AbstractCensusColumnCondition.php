@@ -171,6 +171,6 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
 	 * @return bool
 	 */
 	private function isDead(Individual $individual) {
-		return Date::compare($individual->getDeathDate(), $this->date()) < 0;
+		return $individual->getDeathDate()->isOK() && Date::compare($individual->getDeathDate(), $this->date()) < 0;
 	}
 }
