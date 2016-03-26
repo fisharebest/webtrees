@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-21 14:07+0100\n"
+"PO-Revision-Date: 2016-03-26 22:13+0100\n"
 "Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
@@ -5064,7 +5064,7 @@ msgstr "Деталі"
 
 #: admin_site_config.php:490
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
-msgstr "Дані нового користувача будуть відправлені адміністратору відповідного генеологічного дерева."
+msgstr "Дані нового користувача будуть відправлені адміністратору відповідного генеалогічного дерева."
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Detroit, Michigan"
@@ -7209,12 +7209,12 @@ msgstr "Якщо особа не має фамілії, косі риски не
 #: help_text.php:226
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
-msgstr ""
+msgstr "Якщо особа має дві окремі фамілії, обидві повинні бути поміщені в косі риски: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 
 #: help_text.php:232
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr ""
+msgstr "Якщо особа була відома під прізвиськом, яке не є частиною її офіційного імені, воно має бути взяте в лапки. Наприклад, <%s>Іван &quot;Куля&quot; /Петренко/<%s>."
 
 #: help_text.php:230
 #, php-format
@@ -7224,7 +7224,7 @@ msgstr "Якщо в персони було кілька імен, але тіл
 #. I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1202
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
-msgstr ""
+msgstr "Якщо кількість разів, які зустрічається фамілія, менше порогового значення, то вона не буде відображатися у списку. Вона може бути додана туди вручну. Якщо вводиться більше, ніж одне прізвище, то вони мають бути розділені комами. <b>Фамілії чутливі до регістру.</b>"
 
 #: help_text.php:224
 #, php-format
@@ -7234,16 +7234,16 @@ msgstr "Якщо прізвище невідоме, використовуйте
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:422
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr ""
+msgstr "Якщо з особою пов'язані будь-які події окрім смерті, похорон чи кремації, що трапилися після цієї кількості років, вона буде вважатися \"живою\". Народження дитини теж вважається такою подією у даному випадку."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1025
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
-msgstr ""
+msgstr "Якщо два генеологічні дерева розділяють одну і ту саму папку медіа, то вони можуть розділяти одні і ті ж самі мультимедіа файли. Якщо вони використвують різні папки медіа, то їх медіа дані будуть зберігатися окремо."
 
 #: admin_trees_config.php:381
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-msgstr ""
+msgstr "Якщо відвідувачі не можуть бачити генеалогічне дерево, то вони не зможуть зареєстувати обліковий запис. Вам доведеться додати їх обліковий запис вручну."
 
 #. I18N: Help text for the “Who can upload new media files?” configuration setting
 #: admin_trees_config.php:1040
