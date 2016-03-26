@@ -1,3 +1,41 @@
+### Version 1.4.1 - 2016-03-18
+
+Update comment in random.php
+
+### Version 1.4.0 - 2016-03-18
+
+Restored OpenSSL in the version 1 branch in preparation to remove
+OpenSSL in version 2.
+
+### Version 1.3.1/1.2.3 - 2016-03-18
+
+* Add more possible values to `open_baseir` check.
+
+### Version 1.3.0 - 2016-03-17
+
+* Removed `openssl_random_pseudo_bytes()` entirely. If you are using
+  random_compat in PHP on a Unix-like OS but cannot access
+  `/dev/urandom`, version 1.3+ will throw an `Exception`. If you want to
+  trust OpenSSL, feel free to write your own fallback code. e.g.
+  
+  ```php
+  try {
+      $bytes = random_bytes(32);
+  } catch (Exception $ex) {
+      $strong = false;
+      $bytes = openssl_random_pseudo_bytes(32, $strong);
+      if (!$strong) {
+          throw $ex;
+      }
+  }
+  ```
+
+### Version 1.2.2 - 2016-03-11
+
+* To prevent applications from hanging, if `/dev/urandom` is not
+  accessible to PHP, skip mcrypt (which just fails before giving OpenSSL
+  a chance and was morally equivalent to not offering OpenSSL at all).
+
 ### Version 1.2.1 - 2016-02-29
 
 * PHP 5.6.10 - 5.6.12 will hang when mcrypt is used on Unix-based operating 
