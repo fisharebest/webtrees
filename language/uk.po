@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-26 22:13+0100\n"
+"PO-Revision-Date: 2016-03-28 22:14+0100\n"
 "Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
@@ -44,7 +44,7 @@ msgstr " в "
 #: statisticsplot.php:1195 statisticsplot.php:1245 statisticsplot.php:1295
 #: statisticsplot.php:1345
 msgid " per gender"
-msgstr " по підлозі"
+msgstr " по статі"
 
 #: statisticsplot.php:889 statisticsplot.php:939 statisticsplot.php:993
 #: statisticsplot.php:1043 statisticsplot.php:1097 statisticsplot.php:1147
@@ -4306,7 +4306,7 @@ msgstr "Даллас, Техас"
 #. I18N: A summary of the system status
 #: admin.php:447
 msgid "Dashboard"
-msgstr "Огляд"
+msgstr "Панель приладів"
 
 #. I18N: gedcom tag DATA
 #: admin_site_change.php:391 app/GedcomTag.php:342
@@ -7260,7 +7260,7 @@ msgstr "Якщо Ви самі не можете вирішити проблем
 
 #: admin_trees_manage.php:282
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
-msgstr ""
+msgstr "Якщо ви створили цей GEDCOM файл використовуючи програмне забезепечення, яке оминає пробіли при розбивці довгих рядків, то виберіть цю опцію, щоб повторно вставити відсутні пробіли."
 
 #: login.php:335
 msgid "If you didn’t request an account, you can just delete this message."
@@ -7299,7 +7299,7 @@ msgstr "Якщо Ви виберете іншу папку, необхідно �
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:441
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
-msgstr ""
+msgstr "Якщо ви показуєте живих осіб відвідувачам, всі інші обмеження конфіденційності ігноруються. Робіть це тільки тоді, коли всі дані у вашому дереві є загальнодоступними."
 
 #: setup.php:184
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -7307,21 +7307,21 @@ msgstr "Перевищення цих вимог може виводити на 
 
 #: admin_site_config.php:512
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
-msgstr ""
+msgstr "Якщо ви використовуєте один із наступних сервісів відслідковування і аналітики, webtrees може додати коди відслідковування автоматично."
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1222
 msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-msgstr ""
+msgstr "Якщо ви хочете видалити фамілію зі списку \"Поширені фамілії\" без збільшення порогового значення, ви можете зробити це, ввівши фамілію тут. Якщо введено більше однієї фамілії, вони мають бути розділені комами. <b>Фамілії чутливі до регістру</b>. Фамілії введені тут будуть також видалені зі списку \"Найпоширеніші фамілії\" на \"Домашній сторінці\"."
 
 #: setup.php:186
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
-msgstr ""
+msgstr "Якщо політика безпеки серверу дозволяє, ви можете запросити збільшення кількості пам'яті чи процессорного часу використовуючи панель адміністрування webtrees. Інакше вам необхідно звернутися до адміністратора вашого серверу."
 
 #. I18N: Help text for the "Website URL" site configuration setting
 #: admin_site_config.php:304
 msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one."
-msgstr ""
+msgstr "Якщо ваш сайт може бути доступний через декілька адрес URL, наприклад, <b>http://www.example.com/webtrees/</b> і <b>http://webtrees.example.com/</b>, ви можете вказати основний URL. Запити з інших адрес URL будуть перенаправлені через основний URL."
 
 #: admin_media.php:495 app/GedcomTag.php:1785
 msgid "Image dimensions"
@@ -7342,7 +7342,7 @@ msgstr "Імпортувати"
 
 #: admin_trees_manage.php:175
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "Імпортувати файл GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:4623
 msgid "Import all places from a family tree"
@@ -7350,29 +7350,29 @@ msgstr "Імпортувати всі місця з древа"
 
 #: admin_trees_manage.php:267
 msgid "Import options"
-msgstr ""
+msgstr "Параметри імпорту"
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr ""
+msgstr "В генеалогічному дереві кожний запис має внутрішній номер для посилання (який називається \"XREF\"), наприклад \"F123\" чи \"R14\"."
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr ""
+msgstr "В багатьох культурах є звичним мати ім'я, записане у традиційних символах, і також латинізовану версію імені у вигляді, в якому вона пишеться чи промовляється у мовах, основаних на латиниці, наприклад англійській.<br><br>Якщо ви віддаєте перевагу нелатинським алфавітам, таким як іврит, грецький, російський, китайський чи арабський, щоб вводити імена в стандартних полях, то ви можете використати це поле для того, щоб ввести те саме ім'я в латинському алфавіті. Обидві версії імені будуть відображатися в списках в діаграмах.<br><br>Попри назву, це поле не обмежене символами латинського алфавіту. Це може бути корисним, наприклад, для японських імен, де можуть використовуватись до трьох різних алфавітів."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr ""
+msgstr "В багатьох культурах є звичним мати ім'я, записане у традиційних символах, і також латинізовану версію імені у вигляді, в якому вона пишеться чи промовляється у мовах, основаних на латиниці, наприклад англійській.<br><br>Якщо ви віддаєте перевагу латинському алфавіту для введення імен в стандартних полях, то ви можете використати це поле для того, щоб ввести те саме ім'я в нелатинському алфавіті, такому як іврит, грецький, російський, китайський чи арабський. Обидві версії імені будуть відображатися в списках в діаграмах.<br><br>Попри назву, це поле не обмежене символами івриту."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:716
 msgid "In some calendars, days start at midnight. In other calendars, days start at sunset. The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
-msgstr ""
+msgstr "В деяких календарях дні починаються о півночі. В інших календарях дні починаються на заході сонця. Процес конвертації не враховує час дня, тому для подій, що сталися між заходом сонця і північчю, конвертовані дані для таких календарів будуть зсунуті на один день."
 
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: admin_trees_config.php:462
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
-msgstr ""
+msgstr "В деяких країнах, закони про конфіденційність застосовуються не тільки до живих людей, а й до тих, хто нещодавно помер. Цей параметр дозволить вам поширити політику конфіденційності для живих людей на тих, хто народився чи помер в межах вказаної кількості років. Залиште ці значеня порожніми, щоб відключити даний функціонал."
 
 #: calendar.php:125
 msgid "In this month…"
@@ -7602,7 +7602,7 @@ msgstr "Ізраїль"
 
 #: admin_site_upgrade.php:77 admin_site_upgrade.php:81
 msgid "It can take several minutes to download and install the upgrade. Be patient."
-msgstr ""
+msgstr "Завантаження і встановлення оновлень може зайняти декілька хвилин. Будьте терплячі."
 
 #: app/Stats.php:6839
 msgid "Italy"
@@ -7815,14 +7815,14 @@ msgstr "Зберегти зв'язок в списку"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:272
 msgid "Keep media objects"
-msgstr ""
+msgstr "Залишити медіа об'єкти без змін"
 
 #. I18N: A configuration setting
 #: addmedia.php:705 admin_trees_config.php:2255
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2291
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:545
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Залишити інформацію \"остання зміна\" без змін"
 
 #: app/Stats.php:6844
 msgid "Kenya"
@@ -7965,7 +7965,7 @@ msgstr "Мова"
 #. I18N: Menu entry
 #: admin_site_config.php:146 app/Theme/AdministrationTheme.php:98
 msgid "Languages"
-msgstr ""
+msgstr "Мови"
 
 #: app/Stats.php:6851
 msgid "Laos"
@@ -8152,7 +8152,7 @@ msgstr "Обмежити висновок"
 #. I18N: You need to:
 #: login.php:561
 msgid "Link the user account to an individual."
-msgstr ""
+msgstr "Пов'язати обіковий запис із особою."
 
 #: app/Module/RelativesTabModule.php:367 edit_interface.php:983
 #: edit_interface.php:1043
@@ -8162,21 +8162,21 @@ msgstr "Приєднати до сім'ї в якості дитини"
 #: admin_media.php:531 app/Controller/MediaController.php:57
 #: app/Controller/MediaController.php:148 app/Module/AlbumModule.php:178
 msgid "Link this media object to a family"
-msgstr ""
+msgstr "Пов'язати цей медія об'єкт із сім'єю"
 
 #: admin_media.php:532 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:151 app/Module/AlbumModule.php:184
 msgid "Link this media object to a source"
-msgstr ""
+msgstr "Пов'язати цей медія об'єкт із джерелом"
 
 #: admin_media.php:530 app/Controller/MediaController.php:53
 #: app/Controller/MediaController.php:145 app/Module/AlbumModule.php:172
 msgid "Link this media object to an individual"
-msgstr ""
+msgstr "Пов'язати цей медія об'єкт із особою"
 
 #: admin_users.php:603
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Пов'язати цього користувача із особою в генеалогічному дереві."
 
 #: app/Controller/FamilyController.php:187 app/Module/AlbumModule.php:103
 #: app/Module/AlbumModule.php:104 app/Module/CensusAssistantModule.php:232
@@ -8279,7 +8279,7 @@ msgstr "Посилання (URL) входу"
 #. I18N: Menu entry
 #: admin_site_config.php:140 app/Theme/AdministrationTheme.php:97
 msgid "Login and registration"
-msgstr ""
+msgstr "Вхід в систему і реєстрація"
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1523
@@ -8293,7 +8293,7 @@ msgstr "Лондон, Англія"
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: admin_trees_config.php:1257
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
-msgstr ""
+msgstr "Довгі списки осіб із однаковою фамілією можуть бути розбиті на менші списки у відповідності до першої літери у імені особи.<br><br>Цей параметр визначає, коли буде відбуватись розбивка на менші списки. Щоб відключити розбивку, встановіть значення цього параметру в нуль."
 
 #: statistics.php:249
 msgid "Longest marriage"
@@ -8410,7 +8410,7 @@ msgstr "Мальта"
 #: admin_trees_manage.php:335 admin_trees_merge.php:40
 #: admin_trees_places.php:90 app/Theme/AdministrationTheme.php:127
 msgid "Manage family trees"
-msgstr ""
+msgstr "Управляти генеалогічними деревами"
 
 #: admin_media.php:535 app/Controller/MediaController.php:49
 #: app/Controller/MediaController.php:142 app/Module/AlbumModule.php:166
@@ -8420,7 +8420,7 @@ msgstr "Редагувати зв'язку"
 #. I18N: Menu entry
 #: admin_media.php:588 app/Theme/AdministrationTheme.php:178
 msgid "Manage media"
-msgstr ""
+msgstr "Управляти медіа даними"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:558
@@ -8448,7 +8448,7 @@ msgstr "Рукопис"
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: admin_trees_config.php:1696
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr ""
+msgstr "Багато гереалогічних програм створюють файли GEDCOM з нестандартними тегами, і webtrees розуміє більшість із них. Цей параметр дозволить вам вибрати, ігнорувати чи видавати попереджати про теги, які webtrees невідомі."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: admin_site_config.php:427
@@ -8489,7 +8489,7 @@ msgstr "Березень"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1668
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr ""
+msgstr "Markdown  - це проста система форматування тексту, що використовується такими сайтами як Вікіпедія. Вона використовує ненав'язливі знаки пунктуації, щоб створювати заголовки і підзаголовки, жирний і курсивний текст, списки, таблиці і т. п."
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:572 modules_v3/ahnentafel_report/report.xml:447
@@ -8736,8 +8736,9 @@ msgid "Masquerade as this user"
 msgstr "Прикинеться в якості цього користувача"
 
 #: lifespan.php:101
+#, fuzzy
 msgid "Match calendar"
-msgstr ""
+msgstr "Відповідний календар"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:139
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -8841,7 +8842,7 @@ msgstr "Виберіть мультимедійний файл"
 #: admin_trees_download.php:163
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "Імена медіа файлів будуть мати пркфікс %s."
 
 #: admin_media.php:623 admin_trees_config.php:1030
 msgid "Media files"
@@ -8975,12 +8976,12 @@ msgstr "Меркурій"
 
 #: admin_trees_duplicates.php:174
 msgid "Merge"
-msgstr ""
+msgstr "Злиття"
 
 #. I18N: Menu entry
 #: admin_trees_merge.php:34 app/Theme/AdministrationTheme.php:137
 msgid "Merge family trees"
-msgstr ""
+msgstr "Об'єднати генеалогічні дерева"
 
 #: admin_site_merge.php:35 admin_trees_manage.php:476
 msgid "Merge records"
@@ -9103,7 +9104,7 @@ msgstr "Модератор"
 
 #: admin.php:665
 msgid "Moderators"
-msgstr ""
+msgstr "Модератори"
 
 #: admin_modules.php:152
 msgid "Module"
@@ -9251,7 +9252,7 @@ msgstr "Більшість серверів не використовують б
 
 #: setup.php:281
 msgid "Most sites are configured to use localhost. This means that your database runs on the same computer as your web server."
-msgstr ""
+msgstr "Більшість сайтів налаштовані використовувати localhost. Це значить, що база даних знаходиться на тому ж комп'ютері, що і web-сервер."
 
 #: setup.php:285
 msgid "Most sites are configured to use the default value of 3306."
@@ -9368,7 +9369,7 @@ msgstr "Моя сторінка"
 
 #: app/Theme/AbstractTheme.php:1587
 msgid "My pages"
-msgstr ""
+msgstr "Мої сторінки"
 
 #: app/Module/UserWelcomeModule.php:56 app/Theme/AbstractTheme.php:1613
 msgid "My pedigree"
@@ -9382,7 +9383,7 @@ msgstr "MySQL повідомила про помилку: %s"
 
 #: admin_site_info.php:68
 msgid "MySQL variables"
-msgstr ""
+msgstr "Змінні MySQL"
 
 #: app/Stats.php:6873
 msgid "Myanmar"
@@ -9632,25 +9633,25 @@ msgstr "Ніуе"
 #: app/Date/FrenchDate.php:91
 msgctxt "GENITIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Нівоз"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Nivôse"
-msgstr ""
+msgstr "Нівоз"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:124
 msgctxt "LOCATIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Нівоз"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:58
 msgctxt "NOMINATIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Нівоз"
 
 #: admin_users.php:660 app/Functions/FunctionsPrintFacts.php:308
 msgid "No"
@@ -9658,11 +9659,11 @@ msgstr "Ні"
 
 #: admin_trees_manage.php:101 admin_trees_manage.php:122
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "GEDCOM файл не був отриманий."
 
 #: admin_trees_manage.php:253
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "GEDCOM файл(и) не знайдені."
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
@@ -9691,7 +9692,7 @@ msgstr "Немає включених користувальницьких те�
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "Дублікати не знайдені."
 
 #: admin_trees_check.php:211
 msgid "No errors have been found."
@@ -9844,7 +9845,7 @@ msgstr "Острів Норфолк"
 
 #: admin_users.php:445
 msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
-msgstr ""
+msgstr "Зазвичай, будь-які зміни, зроблені в генеалогічному дереві, мають бути схвалені модератором. Цей параметр дозволяє користувачу робити зміни без схвалення модератора."
 
 #: app/Stats.php:6909
 msgid "North Korea"
@@ -10147,11 +10148,11 @@ msgstr "Тільки менеджери можуть редагувати"
 
 #: site-unavailable.php:81
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr ""
+msgstr "Клепка! Web-сервер не може під'єднатися до серверу бази даних. Сервер баз даних може бути зайнятий, перебувати на обслуговуванні чи просто заманий. Вам слід <a href=\"index.php\">спробувати знову</a> через декілька хвилин чи звернутися до адміністратора сайту."
 
 #: setup.php:212
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr ""
+msgstr "Клепка! webtrees не вдалося створити файли в цій папці."
 
 #: app/Functions/FunctionsPrint.php:476
 msgid "OpenStreetMap™"
@@ -10633,7 +10634,7 @@ msgstr "Місце обрізання"
 
 #: app/GedcomTag.php:230 modules_v3/missing_facts_report/report.xml:557
 msgid "Place of burial"
-msgstr "Дата похорону"
+msgstr "Місце похорону"
 
 #: app/GedcomTag.php:282 modules_v3/missing_facts_report/report.xml:181
 msgid "Place of christening"
