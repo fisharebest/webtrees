@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-21 19:04+0100\n"
+"PO-Revision-Date: 2016-03-30 17:50+0100\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <http://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -6415,7 +6415,7 @@ msgstr "Kasu"
 #: app/GedcomCode/GedcomCodePedi.php:70
 msgctxt "Pedigree"
 msgid "Foster"
-msgstr "Hooldaja"
+msgstr "Kasulaps"
 
 #: app/GedcomCode/GedcomCodeRela.php:120
 msgid "Foster child"
