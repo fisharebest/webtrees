@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-28 18:25+0100\n"
+"PO-Revision-Date: 2016-03-30 08:10+0100\n"
 "Last-Translator: Arnaud Barbié <arnaud.barbie@laposte.net>\n"
 "Language-Team: Occitan <http://translate.webtrees.net/projects/webtrees/webtrees/oc/>\n"
 "Language: oc\n"
@@ -221,7 +221,7 @@ msgstr "%s e las personas que i fan referéncia."
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr "%s e los son hilhs"
+msgstr "%s e los son mainatges"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:124
@@ -240,8 +240,8 @@ msgstr[1] "%s usatgièrs anonims amb accès"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] "%s filh"
-msgstr[1] "%s filhs"
+msgstr[0] "%s mainatge"
+msgstr[1] "%s mainatges"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:59 app/I18N.php:313
@@ -461,14 +461,14 @@ msgstr "%s aniversari"
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr "cousine au (%s+1)<sup>aue</sup> degrà"
+msgstr "cosina au (%s+1)<sup>au</sup> degrà"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:534
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr "cousin au (%s+1)<sup>au</sup> degrà"
+msgstr "cusin au (%s+1)<sup>au</sup> degrà"
 
 #: app/Functions/Functions.php:604
 #, php-format
@@ -504,7 +504,7 @@ msgstr "%s, los sieus parents e fraires"
 #: app/Module/ClippingsCartModule.php:180
 #, php-format
 msgid "%s, her spouses and children"
-msgstr "%s, los sieus marits e filhs"
+msgstr "%s, los sieus marits e mainatges"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:228
@@ -528,7 +528,7 @@ msgstr "%s, los sieus ancessors e las siás familhas"
 #: app/Module/ClippingsCartModule.php:182
 #, php-format
 msgid "%s, his spouses and children"
-msgstr "%s, las siás molhèrs e intfants"
+msgstr "%s, las siás molhèrs e mainatges"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:230
@@ -777,7 +777,7 @@ msgstr ""
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:40
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "Lista dels enregistraments actualizats recentament."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:38
@@ -802,12 +802,12 @@ msgstr ""
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr ""
+msgstr "Lista dels prenoms mai corrents."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "Una lista dels noms de familhas mai frequents."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
@@ -947,7 +947,7 @@ msgstr ""
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr ""
+msgstr "Rapòrt sus los enregistraments de naissença, maridatge o decès per una data o un luòc."
 
 #: admin_users.php:524
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -1260,7 +1260,7 @@ msgstr "Apondre un novèl favorit"
 
 #: app/Module/GoogleMapsModule.php:4603
 msgid "Add a new geographic location"
-msgstr "Apondre un novèl emplacament geografic"
+msgstr "Apondre un novèl luòc"
 
 #: app/Module/RelativesTabModule.php:385 edit_interface.php:810
 #: edit_interface.php:900
@@ -1673,7 +1673,7 @@ msgstr "Edat"
 
 #: statistics.php:281
 msgid "Age at birth of child"
-msgstr ""
+msgstr "Edat a la naissença de l'infant"
 
 #: admin_trees_config.php:410
 msgid "Age at which to assume an individual is dead"
@@ -1681,15 +1681,15 @@ msgstr ""
 
 #: statistics.php:336
 msgid "Age between husband and wife"
-msgstr ""
+msgstr "Diferéncia d'edat entre marit e esposa"
 
 #: statistics.php:328
 msgid "Age between siblings"
-msgstr ""
+msgstr "Diferéncia d'edat dens una frairia"
 
 #: statistics.php:337
 msgid "Age between wife and husband"
-msgstr ""
+msgstr "Diferéncia d'edat entre esposa e marit"
 
 #: statistics.php:325
 msgid "Age difference"
@@ -1711,11 +1711,11 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1392
 msgid "Age of parents next to child’s birthdate"
-msgstr ""
+msgstr "Afichar l'edat dels parents a costat de la data de naissença de l'infant"
 
 #: statistics.php:518 statisticsplot.php:1116
 msgid "Age related to birth year"
-msgstr "Edat l'annada de la naissença"
+msgstr "Edat en fonccion de l'annada de la naissença"
 
 #: app/Functions/FunctionsPrintLists.php:502 statistics.php:521
 #: statisticsplot.php:1166
@@ -1812,7 +1812,7 @@ msgstr "Totas las personas"
 
 #: admin_trees_config.php:558
 msgid "All records"
-msgstr ""
+msgstr "Tots los enregistraments"
 
 #: admin_trees_config.php:2046
 msgid "All repository facts"
@@ -1830,7 +1830,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1678
 msgid "Allow users to see raw GEDCOM records"
-msgstr ""
+msgstr "Autorisar la consultacion dels enregistraments GEDCOM"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:259
@@ -2313,22 +2313,22 @@ msgstr ""
 #: app/Module/FamilyTreeStatisticsModule.php:382
 #: app/Module/HtmlBlockModule.php:241 app/Stats.php:2605 statistics.php:147
 msgid "Average age at death"
-msgstr ""
+msgstr "Atge mejan del decès"
 
 #: app/Stats.php:3936 app/Stats.php:3937 app/Stats.php:3941 app/Stats.php:3945
 #: app/Stats.php:3948
 msgid "Average age in century of marriage"
-msgstr ""
+msgstr "Atge mejan al sègle del maridatge"
 
 #: app/Stats.php:2592 app/Stats.php:2605
 msgid "Average age related to death century"
-msgstr ""
+msgstr "Atge mejan al sègle del decès"
 
 #: app/Module/FamilyTreeStatisticsModule.php:187
 #: app/Module/FamilyTreeStatisticsModule.php:410
 #: app/Module/HtmlBlockModule.php:251 app/Stats.php:4954 statistics.php:304
 msgid "Average number of children per family"
-msgstr ""
+msgstr "Nombre mejan de mainatges per familha"
 
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:631 admin_trees_manage.php:667
@@ -2723,23 +2723,23 @@ msgstr "Naissença"
 
 #: app/Stats.php:1664 statistics.php:536
 msgid "Birth by country"
-msgstr ""
+msgstr "Naissença per país"
 
 #: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
 msgid "Birth date range end"
-msgstr ""
+msgstr "Date de naissença maxi"
 
 #: modules_v3/bdm_report/report.xml:7 modules_v3/birth_report/report.xml:7
 msgid "Birth date range start"
-msgstr ""
+msgstr "Date de naissença mini"
 
 #: app/GedcomTag.php:1075
 msgid "Birth of a brother"
-msgstr ""
+msgstr "Naissença d'un frair"
 
 #: app/GedcomTag.php:1034
 msgid "Birth of a child"
-msgstr ""
+msgstr "Naissença d'un infant"
 
 #: app/GedcomTag.php:1032
 msgid "Birth of a daughter"
@@ -2747,7 +2747,7 @@ msgstr "Naissença d'una filha"
 
 #: app/GedcomTag.php:1043 app/GedcomTag.php:1052 app/GedcomTag.php:1061
 msgid "Birth of a grandchild"
-msgstr ""
+msgstr "Naissença d'un felen"
 
 #: app/GedcomTag.php:1041
 msgid "Birth of a granddaughter"
@@ -2765,59 +2765,59 @@ msgstr "Naissença d'una felena"
 
 #: app/GedcomTag.php:1039
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Naissença d'un felen"
 
 #: app/GedcomTag.php:1048
 msgctxt "daughter’s son"
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Naissença d'un felen"
 
 #: app/GedcomTag.php:1057
 msgctxt "son’s son"
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Naissença d'un felen"
 
 #: app/GedcomTag.php:1066
 msgid "Birth of a half-brother"
-msgstr ""
+msgstr "Naissença d'un frairastre"
 
 #: app/GedcomTag.php:1070
 msgid "Birth of a half-sibling"
-msgstr ""
+msgstr "Naissença d'un frairastre/d'una sorastra"
 
 #: app/GedcomTag.php:1068
 msgid "Birth of a half-sister"
-msgstr ""
+msgstr "Naissença d'una sorastra"
 
 #: app/GedcomTag.php:1079
 msgid "Birth of a sibling"
-msgstr ""
+msgstr "Naissença d'un frair/d'una sòr"
 
 #: app/GedcomTag.php:1077
 msgid "Birth of a sister"
-msgstr ""
+msgstr "Naissença d'una sòr"
 
 #: app/GedcomTag.php:1030
 msgid "Birth of a son"
-msgstr ""
+msgstr "Naissença d'un hilh"
 
 #: statistics.php:408
 msgid "Birth places"
-msgstr ""
+msgstr "Luòc de naissença"
 
 #: modules_v3/birth_report/report.xml:6
 msgid "Birthplace contains"
-msgstr ""
+msgstr "Lo luòc de naissença contien"
 
 #. I18N: Name of a module/report
 #: app/Module/BirthReportModule.php:29 modules_v3/birth_report/report.xml:3
 #: modules_v3/birth_report/report.xml:31
 msgid "Births"
-msgstr ""
+msgstr "Naissenças"
 
 #: app/Stats.php:1959 statistics.php:119
 msgid "Births by century"
-msgstr ""
+msgstr "Naissenças per sègle"
 
 #: app/GedcomCode/GedcomCodeTemp.php:101
 msgid "Bismarck, North Dakota"
@@ -3430,7 +3430,7 @@ msgstr "Diagrama"
 
 #: app/Module/ChartsBlockModule.php:190 statistics.php:582
 msgid "Chart type"
-msgstr ""
+msgstr "Tipe de grafic"
 
 #. I18N: Name of a module/block
 #: admin_modules.php:158 admin_trees_config.php:1287
@@ -3502,31 +3502,31 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:761
 #: modules_v3/relative_ext_report/report.xml:115 statisticsplot.php:1024
 msgid "Children"
-msgstr ""
+msgstr "Mainatges"
 
 #: statistics.php:301
 msgid "Children in family"
-msgstr ""
+msgstr "Nombre de mainatges dens la familha"
 
 #: modules_v3/ahnentafel_report/report.xml:391
 #: modules_v3/descendancy_report/report.xml:484
 msgid "Children of "
-msgstr ""
+msgstr "Mainatges de "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
 msgid "Children take a patronym instead of a surname."
-msgstr ""
+msgstr "Los mainatges an un patronim e pas un noms de familha."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:82
 msgid "Children take one surname from the father and one surname from the mother."
-msgstr ""
+msgstr "Los mainatges an un nom de familha del pair e un de la mair."
 
 #. I18N: In the Portuguese surname tradition, ...
 #: app/SurnameTradition.php:85
 msgid "Children take one surname from the mother and one surname from the father."
-msgstr ""
+msgstr "Los mainatges an un nom de familha de la mair e un del pair."
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the patrilineal surname tradition, ...
@@ -3535,12 +3535,12 @@ msgstr ""
 #: app/SurnameTradition.php:72 app/SurnameTradition.php:76
 #: app/SurnameTradition.php:91 app/SurnameTradition.php:96
 msgid "Children take their father’s surname."
-msgstr ""
+msgstr "Los mainatges an lo nom de familha del pair."
 
 #. I18N: In the matrilineal surname tradition, ...
 #: app/SurnameTradition.php:79
 msgid "Children take their mother’s surname."
-msgstr ""
+msgstr "Los mainatges an lo nom de familha de la mair."
 
 #: app/Stats.php:6767
 msgid "Chile"
@@ -3836,7 +3836,7 @@ msgstr ""
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:80
 msgid "Completed; date unknown"
-msgstr ""
+msgstr "Acabat ; data desconeguda"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
@@ -3958,7 +3958,7 @@ msgstr ""
 #: admin_trees_merge.php:195
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Copiar tots los enregistraments de %1$s vers %2$s."
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:431
@@ -4066,7 +4066,7 @@ msgstr ""
 
 #: statistics.php:430
 msgid "Create your own chart"
-msgstr ""
+msgstr "Crear lo vòstre pròpri grafic"
 
 #: admin_trees_manage.php:744
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
@@ -4318,7 +4318,7 @@ msgstr ""
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1613
@@ -4362,7 +4362,7 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:81
 #: modules_v3/occupation_report/report.xml:49
 msgid "Date of birth"
-msgstr ""
+msgstr "Data de naissença"
 
 #: app/GedcomTag.php:216
 msgid "Date of blessing"
@@ -4637,7 +4637,7 @@ msgstr "Decès"
 
 #: app/Stats.php:1680 statistics.php:542
 msgid "Death by country"
-msgstr ""
+msgstr "Decès per país"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
@@ -4788,7 +4788,7 @@ msgstr ""
 
 #: app/Stats.php:2052 statistics.php:120
 msgid "Deaths by century"
-msgstr ""
+msgstr "Decès per sègle"
 
 #: app/Date/CalendarDate.php:322
 msgctxt "Abbreviation for December"
@@ -4798,7 +4798,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:494
 #: app/Functions/FunctionsPrintLists.php:994
 msgid "Decade of birth"
-msgstr ""
+msgstr "Decada de naissença"
 
 #: app/Functions/FunctionsPrintLists.php:497
 msgid "Decade of death"
@@ -5192,7 +5192,7 @@ msgstr "Divòrci prononcat"
 
 #: app/Stats.php:3643 statistics.php:222
 msgid "Divorces by century"
-msgstr "Divòrci per sègla"
+msgstr "Divòrcis per sègle"
 
 #: app/Stats.php:6785
 msgid "Djibouti"
@@ -5284,7 +5284,7 @@ msgstr "Naissença mai anciana"
 #: app/Module/FamilyTreeStatisticsModule.php:312
 #: app/Module/HtmlBlockModule.php:216
 msgid "Earliest birth year"
-msgstr "Annada de la naissença la mai anciana"
+msgstr "Naissença mai anciana"
 
 #: statistics.php:128
 msgid "Earliest death"
@@ -5636,7 +5636,7 @@ msgstr "Esfand"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1265
 msgid "Estimated dates for birth and death"
-msgstr ""
+msgstr "Datas suposadas per la  naissença e lo decès"
 
 #: app/Stats.php:6797
 msgid "Estonia"
@@ -5655,7 +5655,7 @@ msgstr "Euròpa"
 #: modules_v3/fact_sources/report.xml:157
 #: modules_v3/missing_facts_report/report.xml:55
 msgid "Event"
-msgstr ""
+msgstr "Eveniment"
 
 #: app/Module/GoogleMapsModule.php:2411 statistics.php:108 statistics.php:210
 msgid "Events"
@@ -5846,11 +5846,11 @@ msgstr "Faches e esveniments"
 
 #: admin_trees_config.php:1834
 msgid "Facts for family records"
-msgstr ""
+msgstr "Faches per los enregistraments de familhas"
 
 #: admin_trees_config.php:1716
 msgid "Facts for individual records"
-msgstr ""
+msgstr "Faches per los enregistraments de personas"
 
 #: admin_trees_config.php:1897
 msgid "Facts for new families"
@@ -5862,11 +5862,11 @@ msgstr ""
 
 #: admin_trees_config.php:2041
 msgid "Facts for repository records"
-msgstr ""
+msgstr "Faches per los enregistraments de depauses d'archius"
 
 #: admin_trees_config.php:1952
 msgid "Facts for source records"
-msgstr ""
+msgstr "Faches per los enregistraments de fonts"
 
 #: app/Stats.php:6804
 msgid "Faeroe Islands"
@@ -6041,7 +6041,7 @@ msgstr ""
 #: app/Module/FamilyTreeStatisticsModule.php:396
 #: app/Module/HtmlBlockModule.php:246
 msgid "Family with the most children"
-msgstr ""
+msgstr "Familha damb mai de mainatges"
 
 #: modules_v3/individual_ext_report/report.xml:429
 #: modules_v3/individual_report/report.xml:486
@@ -6116,7 +6116,7 @@ msgstr ""
 #. I18N: A step-family.
 #: app/Individual.php:1005
 msgid "Father’s family with an unknown individual"
-msgstr ""
+msgstr "Familha del pair damb una persona desconeguda"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeFavoritesModule.php:62
@@ -6172,7 +6172,7 @@ msgstr "Femna"
 #: app/Stats.php:2605 app/Stats.php:3948 calendar.php:256 calendar.php:444
 #: statistics.php:149 statistics.php:165 statistics.php:178
 msgid "Females"
-msgstr ""
+msgstr "Femnas"
 
 #: app/Stats.php:6800
 msgid "Fiji"
@@ -6288,7 +6288,7 @@ msgstr ""
 
 #: statistics.php:367
 msgid "First event"
-msgstr ""
+msgstr "Eveniment mai ancian"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:353
@@ -6645,7 +6645,7 @@ msgstr ""
 
 #: statistics.php:593
 msgid "Geographical area"
-msgstr ""
+msgstr "Zòna geografica"
 
 #: app/Stats.php:6808
 msgid "Georgia"
@@ -6694,7 +6694,7 @@ msgstr ""
 #. I18N: gedcom tag GIVN
 #: app/GedcomTag.php:500
 msgid "Given names"
-msgstr ""
+msgstr "Prenoms"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:981
@@ -6768,11 +6768,11 @@ msgstr ""
 
 #: statistics.php:161
 msgid "Greatest age at death"
-msgstr ""
+msgstr "Atge mai gran al decès"
 
 #: statistics.php:329
 msgid "Greatest age between siblings"
-msgstr ""
+msgstr "Mai grana diferéncia d'edat dens una frairia"
 
 #: app/Stats.php:6817
 msgid "Greece"
@@ -7204,7 +7204,7 @@ msgstr ""
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:422
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "S'aquela persona a quin autre eveniment que siá que lo decès, l'enterrament o la cremacion mai recent qu'aquel nombre d'ans, es considerada coma «viva». A aquela fin las datas de naissença dels filhs son considerats coma tales eveniments."
+msgstr "S'aquela persona a quin autre eveniment que siá que lo decès, l'enterrament o la cremacion mai recent qu'aquel nombre d'ans, es considerada coma «viva». A aquela fin las datas de naissença dels mainatges son considerats coma tales eveniments."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1025
@@ -7947,11 +7947,11 @@ msgstr ""
 
 #: app/Stats.php:4862 statistics.php:316
 msgid "Largest families"
-msgstr ""
+msgstr "Familhas mai granas"
 
 #: statistics.php:317
 msgid "Largest number of grandchildren"
-msgstr ""
+msgstr "Nombre de felens mai gran"
 
 #: app/GedcomCode/GedcomCodeTemp.php:199
 msgid "Las Vegas, Nevada"
@@ -7977,7 +7977,7 @@ msgstr ""
 
 #: statistics.php:135
 msgid "Latest birth"
-msgstr ""
+msgstr "Darrièra naisssença"
 
 #: app/Module/FamilyTreeStatisticsModule.php:143
 #: app/Module/FamilyTreeStatisticsModule.php:326
@@ -7987,17 +7987,17 @@ msgstr "Naissença mai recenta"
 
 #: statistics.php:136
 msgid "Latest death"
-msgstr ""
+msgstr "Darrièr decès"
 
 #: app/Module/FamilyTreeStatisticsModule.php:157
 #: app/Module/FamilyTreeStatisticsModule.php:354
 #: app/Module/HtmlBlockModule.php:231
 msgid "Latest death year"
-msgstr "Decès mai recent"
+msgstr "Darrièr decès"
 
 #: statistics.php:238
 msgid "Latest divorce"
-msgstr ""
+msgstr "Darrièr divorcì"
 
 #: statistics.php:237
 msgid "Latest marriage"
@@ -8099,7 +8099,7 @@ msgstr ""
 
 #: statistics.php:144
 msgid "Lifespan"
-msgstr ""
+msgstr "Longevitat"
 
 #: app/Controller/LifespanController.php:120 app/Theme/AbstractTheme.php:1197
 #: lifespan.php:31
@@ -8362,7 +8362,7 @@ msgstr "Òme"
 #: app/Stats.php:2605 app/Stats.php:3948 calendar.php:252 calendar.php:443
 #: statistics.php:148 statistics.php:164 statistics.php:177
 msgid "Males"
-msgstr ""
+msgstr "òmes"
 
 #: app/Stats.php:6871
 msgid "Mali"
@@ -8543,7 +8543,7 @@ msgstr ""
 
 #: app/Stats.php:1696 statistics.php:539
 msgid "Marriage by country"
-msgstr "Maridatge per paìs"
+msgstr "Maridatge per país"
 
 #. I18N: gedcom tag MARC
 #: app/GedcomTag.php:564
@@ -8669,7 +8669,7 @@ msgstr ""
 
 #: app/GedcomTag.php:584
 msgid "Marriage type unknown"
-msgstr ""
+msgstr "Tipe de maridatge desconegut"
 
 #. I18N: Name of a module/report
 #: app/Module/MarriageReportModule.php:29
@@ -8680,7 +8680,7 @@ msgstr ""
 
 #: app/Stats.php:3546 statistics.php:221
 msgid "Marriages by century"
-msgstr ""
+msgstr "Maridatges per sègle"
 
 #. I18N: gedcom tag _MARNM
 #: app/GedcomTag.php:1556 modules_v3/cemetery_report/report.xml:7
@@ -8690,7 +8690,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1562
 msgid "Married surname"
-msgstr ""
+msgstr "Nom de maridada"
 
 #: app/Stats.php:6869
 msgid "Marshall Islands"
@@ -8737,7 +8737,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1244
 msgid "Maximum number of surnames on individual list"
-msgstr ""
+msgstr "Nombre maximun de noms de famlilha suus la lista de personas"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1326
@@ -8842,7 +8842,7 @@ msgstr ""
 #: repo.php:150 source.php:154 statistics.php:350 statistics.php:377
 #: statistics.php:380
 msgid "Media objects"
-msgstr ""
+msgstr "Objectes multimèdia"
 
 #: medialist.php:233
 msgid "Media objects found"
@@ -8954,7 +8954,7 @@ msgstr ""
 
 #: admin_site_merge.php:35 admin_trees_manage.php:476
 msgid "Merge records"
-msgstr ""
+msgstr "Fusionar enregistraments"
 
 #: app/GedcomCode/GedcomCodeTemp.php:213
 msgid "Merida, Mexico"
@@ -9053,7 +9053,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1169
 msgid "Minimum number of occurrences to be a “common surname”"
-msgstr ""
+msgstr "Nombre minimum per estar un \"nom de familha corrent\""
 
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:29
@@ -9141,7 +9141,7 @@ msgstr "Mes de naissença"
 
 #: app/Stats.php:4742 statistics.php:515 statisticsplot.php:1012
 msgid "Month of birth of first child in a relation"
-msgstr "mes de naissença del primièr infant d'una relacion"
+msgstr "Mes de naissença del primièr infant d'una relacion"
 
 #: statistics.php:506 statisticsplot.php:908
 msgid "Month of death"
@@ -9212,7 +9212,7 @@ msgstr ""
 #: app/Module/FamilyTreeStatisticsModule.php:200
 #: app/Module/HtmlBlockModule.php:259
 msgid "Most common surnames"
-msgstr ""
+msgstr "Noms de familha principaus"
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: admin_site_config.php:414
@@ -9260,7 +9260,7 @@ msgstr "Familha de la mair amb %s"
 #. I18N: A step-family.
 #: app/Individual.php:1016
 msgid "Mother’s family with an unknown individual"
-msgstr "Familha de la mair amb una persona desconeguda"
+msgstr "Familha de la mair damb una persona desconeguda"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Mount Timpanogos, Utah"
@@ -9645,7 +9645,7 @@ msgstr ""
 #: app/Controller/DescendancyController.php:213
 #: app/Functions/FunctionsCharts.php:302 app/Module/DescendancyModule.php:273
 msgid "No children"
-msgstr ""
+msgstr "Pas nat de mainatges"
 
 #: app/Functions/FunctionsEdit.php:250
 msgid "No contact"
@@ -9756,7 +9756,7 @@ msgstr ""
 
 #: app/I18N.php:226 app/I18N.php:236
 msgid "No records to display"
-msgstr ""
+msgstr "Pas cap d'enregistraments a mostrar"
 
 #: app/Controller/AdvancedSearchController.php:658
 #: app/Controller/SearchController.php:546
@@ -9938,7 +9938,7 @@ msgstr ""
 #: app/GedcomTag.php:622 app/Stats.php:4947 app/Stats.php:4949
 #: app/Stats.php:4951 statistics.php:530 statisticsplot.php:1316
 msgid "Number of children"
-msgstr ""
+msgstr "Nombre de mainatges"
 
 #: app/Module/RecentChangesModule.php:147
 #: app/Module/UpcomingAnniversariesModule.php:147
@@ -9948,7 +9948,7 @@ msgstr "Nombre de dias a afichar"
 
 #: app/Stats.php:5216 statistics.php:305
 msgid "Number of families without children"
-msgstr ""
+msgstr "Nombre de familhas shens mainatges"
 
 #: app/Module/ClippingsCartModule.php:201
 #: app/Module/ClippingsCartModule.php:218
@@ -10061,31 +10061,31 @@ msgstr ""
 
 #: pedigree.php:181
 msgid "Oldest at bottom"
-msgstr ""
+msgstr "Mai ancians enbàs"
 
 #: pedigree.php:181
 msgid "Oldest at top"
-msgstr ""
+msgstr "Mai ancians en naut"
 
 #: statistics.php:292
 msgid "Oldest father"
-msgstr ""
+msgstr "Pair mai vièlh"
 
 #: statistics.php:270
 msgid "Oldest female"
-msgstr ""
+msgstr "Femna mai vièlha"
 
 #: statistics.php:174
 msgid "Oldest living individuals"
-msgstr ""
+msgstr "Persona vivanta mai vièlha"
 
 #: statistics.php:269
 msgid "Oldest male"
-msgstr ""
+msgstr "Òme mai vièlh"
 
 #: statistics.php:293
 msgid "Oldest mother"
-msgstr ""
+msgstr "Mair mai vièlha"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:87
@@ -10184,7 +10184,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1942 app/Stats.php:5502 app/Stats.php:5921
 msgid "Other"
-msgstr ""
+msgstr "Autres"
 
 #: admin_trees_config.php:1418
 msgid "Other facts to show in charts"
@@ -10208,7 +10208,7 @@ msgstr ""
 
 #: statistics.php:73
 msgid "Own charts"
-msgstr ""
+msgstr "Grafics personaus"
 
 #: app/GedcomCode/GedcomCodeRela.php:212
 msgid "Owner"
@@ -10427,7 +10427,7 @@ msgstr ""
 
 #: admin_site_change.php:374 admin_site_logs.php:313
 msgid "Permanently delete these records?"
-msgstr ""
+msgstr "Suprimir de faiçon definifiva aqueles enregistraments&nbsp;?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:257
 msgid "Perth, Australia"
@@ -10589,7 +10589,7 @@ msgstr ""
 #: app/GedcomTag.php:210 modules_v3/fact_sources/report.xml:273
 #: modules_v3/missing_facts_report/report.xml:93
 msgid "Place of birth"
-msgstr ""
+msgstr "Luòc de naissença"
 
 #: app/GedcomTag.php:218
 msgid "Place of blessing"
@@ -10674,7 +10674,7 @@ msgstr ""
 
 #: admin_trees_config.php:1624 search.php:204 statistics.php:405
 msgid "Places"
-msgstr "Emplaçaments"
+msgstr "Luòcs"
 
 #: find.php:671
 msgid "Places found"
@@ -10719,7 +10719,7 @@ msgstr ""
 
 #: message.php:96
 msgid "Please enter some message text before sending."
-msgstr ""
+msgstr "Entratz lo tèxte a enviar."
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
@@ -10888,7 +10888,7 @@ msgstr ""
 
 #: admin_trees_config.php:505 admin_trees_config.php:525
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr ""
+msgstr "Restriccions de confidentialitat - S'aplican als enregistraments e eveniments qu'an pas d'etiqueta GEDCOM RESN"
 
 #: app/Controller/GedcomRecordController.php:94 app/GedcomRecord.php:532
 #: app/GedcomRecord.php:610 app/GedcomRecord.php:735 app/Individual.php:1309
@@ -11088,7 +11088,7 @@ msgstr ""
 #: app/Module/RelativesTabModule.php:279 edit_interface.php:1803
 #: edit_interface.php:1877
 msgid "Re-order children"
-msgstr ""
+msgstr "Reordonar los mainatges"
 
 #: app/Controller/IndividualController.php:310
 #: app/Module/RelativesTabModule.php:361 edit_interface.php:2188
@@ -11144,7 +11144,7 @@ msgstr ""
 
 #: search.php:83 statistics.php:347
 msgid "Records"
-msgstr ""
+msgstr "Enregistraments"
 
 #: admin_site_merge.php:59
 msgid "Records are not the same type. Cannot merge records that are not the same type."
@@ -11795,7 +11795,7 @@ msgstr ""
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:348
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Causir dus enregistraments a fusionar."
 
 #: app/GedcomCode/GedcomCodeRela.php:236
 msgid "Seller"
@@ -11813,48 +11813,48 @@ msgstr ""
 
 #: app/Module/UserMessagesModule.php:107 login.php:524 message.php:128
 msgid "Send"
-msgstr ""
+msgstr "Enviar"
 
 #: app/Module/LoggedInUsersModule.php:90 app/Module/UserMessagesModule.php:100
 #: app/Stats.php:5979 app/Stats.php:5981 edit_changes.php:196 message.php:103
 msgid "Send a message"
-msgstr ""
+msgstr "Enviar un messatge"
 
 #: admin_users_bulk.php:41
 msgid "Send a message to all users"
-msgstr ""
+msgstr "Envia un messatge o totes los utilisators"
 
 #: admin_users_bulk.php:46
 msgid "Send a message to users who have never logged in"
-msgstr ""
+msgstr "Enviar un messatge als utilizators qu'ajan pas accedit jamai"
 
 #: admin_users_bulk.php:51
 msgid "Send a message to users who have not logged in for 6 months"
-msgstr ""
+msgstr "Envia un messatge als utilizators qu'ajan pas accedit pendent los darrièrs 6 meses"
 
 #. I18N: Menu entry
 #: admin_users_bulk.php:26 app/Theme/AdministrationTheme.php:165
 msgid "Send broadcast messages"
-msgstr ""
+msgstr "Enviar un messatge general"
 
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails?"
-msgstr ""
+msgstr "Enviar alertas per corrièl&nbsp;?"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329
 msgid "Sender name"
-msgstr ""
+msgstr "Nom d'expeditor"
 
 #. I18N: Menu entry
 #: admin_site_config.php:137 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
-msgstr ""
+msgstr "Enviar un corrièl"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:422
 msgid "Sending server name"
-msgstr ""
+msgstr "Nom del servidor expeditor"
 
 #: app/Stats.php:6924
 msgid "Senegal"
@@ -12181,7 +12181,7 @@ msgstr ""
 
 #: statistics.php:250
 msgid "Shortest marriage"
-msgstr ""
+msgstr "Mardiatge mai cort"
 
 #: app/Module/RecentChangesModule.php:176
 msgid "Should this block be hidden when it is empty?"
@@ -12233,11 +12233,11 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
-msgstr ""
+msgstr "Afichar los mainatges dels ancessors&nbsp;?"
 
 #: app/Module/FamilyTreeStatisticsModule.php:291
 msgid "Show common surnames?"
-msgstr ""
+msgstr "Mostrar los noms de familha corrents&nbsp;?"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12261,7 +12261,7 @@ msgstr "Affichar los maridats desempuish mens de 100 ans."
 
 #: app/Functions/FunctionsPrintLists.php:684
 msgid "Show couples with an unknown marriage date."
-msgstr ""
+msgstr "Afichar los maridats damb una data de maridatge desconeguda."
 
 #: ancestry.php:74
 msgid "Show cousins"
@@ -12269,7 +12269,7 @@ msgstr ""
 
 #: app/Module/RelativesTabModule.php:312
 msgid "Show date differences"
-msgstr ""
+msgstr "Mòstrar diferéncia entre datas"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:285
@@ -12375,7 +12375,7 @@ msgstr ""
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages?"
-msgstr ""
+msgstr "Afichar solament las naissenças, decès e maridatges&nbsp;?"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
@@ -12384,7 +12384,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
-msgstr ""
+msgstr "Mostrar solament las femnas."
 
 #: app/Functions/FunctionsPrintLists.php:178
 msgid "Show only individuals for whom the gender is not known."
@@ -12396,7 +12396,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
-msgstr ""
+msgstr "Mostrar solament las òmes."
 
 #: find.php:533
 msgid "Show only the selected tags"
@@ -12488,7 +12488,7 @@ msgstr ""
 
 #: famlist.php:180 indilist.php:181
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "Mostrar la lista dels noms de familha"
 
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:78
@@ -12880,7 +12880,7 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Spouses and children"
-msgstr ""
+msgstr "Esposas e mainatges"
 
 #: app/Stats.php:6857
 msgid "Sri Lanka"
@@ -12936,7 +12936,7 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:162 app/Theme/AbstractTheme.php:1249
 #: statistics.php:38 statistics.php:63
 msgid "Statistics"
-msgstr ""
+msgstr "Estatisticas"
 
 #: statisticsplot.php:836
 msgid "Statistics plot"
@@ -13049,28 +13049,28 @@ msgstr ""
 #. I18N: gedcom tag SURN
 #: app/GedcomTag.php:814 help_text.php:302 search.php:236
 msgid "Surname"
-msgstr ""
+msgstr "Noms de familha"
 
 #: app/Stats.php:1644 statistics.php:585
 msgid "Surname distribution chart"
-msgstr ""
+msgstr "Grafic de distribucion dels noms de familha"
 
 #: admin_trees_config.php:1232
 msgid "Surname list style"
-msgstr ""
+msgstr "Estil de la lista dels noms de familha"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:153
 msgid "Surname option"
-msgstr ""
+msgstr "Opcion pel nom de familha"
 
 #. I18N: gedcom tag SPFX
 #: app/GedcomTag.php:788
 msgid "Surname prefix"
-msgstr ""
+msgstr "Prefix del nom de familha"
 
 #: admin_trees_config.php:2195
 msgid "Surname tradition"
-msgstr ""
+msgstr "Tradicion per la transmission del nom de familha"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
@@ -13595,7 +13595,7 @@ msgstr ""
 #: admin_site_merge.php:168
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Los enregistraments «&nbsp;%1$s&nbsp;» e «&nbsp;%2$s&nbsp;» an estat combinats."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "The regex appears to contain an error. It can’t be used."
@@ -13896,7 +13896,7 @@ msgstr[1] ""
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
-msgstr ""
+msgstr "En aquel arbre genealogic i a pas nat images."
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
@@ -13908,7 +13908,7 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "Aquel arbre genealogic foguèt actualizat per darrièr còp lo %s."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
@@ -14011,7 +14011,7 @@ msgstr ""
 
 #: admin.php:602 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr ""
+msgstr "Aquela es la darrièra version de webtrees. I a pas d'actualizacions disponiblas."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1860
@@ -14606,16 +14606,16 @@ msgstr ""
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Lo prenom mai balhat"
+msgstr[1] "Los %s prenoms mai balhats"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:109
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Lo nom de familha mai corrent"
+msgstr[1] "Los %s noms de familha mai corrents"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:72
@@ -14625,7 +14625,7 @@ msgstr ""
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopGivenNamesModule.php:31 statistics.php:199
 msgid "Top given names"
-msgstr ""
+msgstr "Prenoms mai corrents"
 
 #: app/Module/GoogleMapsModule.php:4533 app/Module/GoogleMapsModule.php:4607
 #: placelist.php:109
@@ -14635,12 +14635,12 @@ msgstr ""
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:106
 msgid "Top surname"
-msgstr ""
+msgstr "Lo nom de familha mai corrent"
 
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopSurnamesModule.php:37 statistics.php:198
 msgid "Top surnames"
-msgstr ""
+msgstr "Noms de familha mai corrents"
 
 #: app/GedcomCode/GedcomCodeTemp.php:327
 msgid "Toronto, Ontario, Canada"
@@ -14656,15 +14656,15 @@ msgstr ""
 
 #: statistics.php:111
 msgid "Total births"
-msgstr ""
+msgstr "Nombre de naissenças"
 
 #: statistics.php:94
 msgid "Total dead"
-msgstr ""
+msgstr "Nombre de mòrts"
 
 #: statistics.php:112
 msgid "Total deaths"
-msgstr ""
+msgstr "Nombre de decès"
 
 #: statistics.php:214
 msgid "Total divorces"
@@ -14675,7 +14675,7 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:203
 #: modules_v3/missing_facts_report/report.xml:602 statistics.php:364
 msgid "Total events"
-msgstr ""
+msgstr "Nombre d'eveniments"
 
 #: app/Stats.php:5214 modules_v3/fact_sources/report.xml:248
 #: modules_v3/fact_sources/report.xml:252
@@ -14688,15 +14688,15 @@ msgstr ""
 #: calendar.php:449 find.php:588 statistics.php:209
 #, php-format
 msgid "Total families: %s"
-msgstr ""
+msgstr "Nombre de familhas&nbsp;: %s"
 
 #: statistics.php:92
 msgid "Total females"
-msgstr ""
+msgstr "Nombre de femnas"
 
 #: statistics.php:191
 msgid "Total given names"
-msgstr ""
+msgstr "Nombre de prenoms"
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:67
 #: modules_v3/cemetery_report/report.xml:88
@@ -14715,19 +14715,19 @@ msgstr ""
 #: statistics.php:88
 #, php-format
 msgid "Total individuals: %s"
-msgstr ""
+msgstr "Nombre de personas&nbsp;: %s"
 
 #: statistics.php:93
 msgid "Total living"
-msgstr ""
+msgstr "Nombre vius"
 
 #: statistics.php:91
 msgid "Total males"
-msgstr ""
+msgstr "Nombre d'òmes"
 
 #: statistics.php:213
 msgid "Total marriages"
-msgstr ""
+msgstr "Nombre de maridatges"
 
 #: admin.php:629
 msgid "Total number of users"
@@ -14752,13 +14752,13 @@ msgstr ""
 #: app/Module/FamilyTreeStatisticsModule.php:320
 #: app/Module/HtmlBlockModule.php:183 statistics.php:190
 msgid "Total surnames"
-msgstr ""
+msgstr "Nombre de noms de familhas"
 
 #: app/Module/FamilyTreeStatisticsModule.php:124
 #: app/Module/FamilyTreeStatisticsModule.php:404
 #: app/Module/HtmlBlockModule.php:207
 msgid "Total users"
-msgstr ""
+msgstr "Utilisators"
 
 #. I18N: e.g. http://www.google.com/analytics
 #. I18N: Menu entry
@@ -14937,7 +14937,7 @@ msgstr "Desconegut"
 #: app/Stats.php:5197
 msgctxt "unknown century"
 msgid "Unknown"
-msgstr ""
+msgstr "Desconegut"
 
 #: app/Controller/IndividualController.php:255
 #: app/Controller/IndividualController.php:258
@@ -14954,7 +14954,7 @@ msgstr "Desconegut"
 #: app/Stats.php:947 app/Stats.php:953 edituser.php:187
 msgctxt "unknown people"
 msgid "Unknown"
-msgstr ""
+msgstr "Desconegut/da"
 
 #: app/Module/AlbumModule.php:190
 msgid "Unlink media"
@@ -14977,7 +14977,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:35
 msgid "Upcoming events"
-msgstr ""
+msgstr "Eveniments qu'arriban"
 
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:78
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:83
@@ -15039,7 +15039,7 @@ msgstr ""
 
 #: admin_site_config.php:116
 msgid "Use PHP mail to send messages"
-msgstr ""
+msgstr "Utilizar PHP per enviar messatges"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:724
@@ -15048,7 +15048,7 @@ msgstr ""
 
 #: admin_site_config.php:117
 msgid "Use SMTP to send messages"
-msgstr ""
+msgstr "Utilizar SMTP per enviar messatges"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
@@ -15277,7 +15277,7 @@ msgstr "Afichar"
 
 #: placelist.php:176
 msgid "View all records found in this place"
-msgstr ""
+msgstr "Mostrar tots los enregistraments per aquel luòc"
 
 #: app/Module/FamilyTreeNewsModule.php:155 help_text.php:297
 msgid "View archive"
@@ -15299,7 +15299,7 @@ msgstr ""
 #: app/Stats.php:4541 app/Stats.php:4568 app/Stats.php:4579 app/Stats.php:4588
 #: medialist.php:313
 msgid "View family"
-msgstr ""
+msgstr "Afichar la familha"
 
 #: app/Module/GoogleMapsModule.php:1354 app/Module/SlideShowModule.php:177
 #: medialist.php:310
@@ -15320,7 +15320,7 @@ msgstr ""
 
 #: app/Module/FamilyTreeStatisticsModule.php:194
 msgid "View statistics as graphs"
-msgstr ""
+msgstr "Mòstra las estatisticas en forma de grafic"
 
 #: calendar.php:308
 msgid "View year"
@@ -15353,7 +15353,7 @@ msgstr ""
 #: app/Module/BirthDeathMarriageReportModule.php:33 calendar.php:262
 #: modules_v3/bdm_report/report.xml:3 modules_v3/bdm_report/report.xml:34
 msgid "Vital records"
-msgstr ""
+msgstr "Enregistraments vitals"
 
 #: app/Stats.php:6978
 msgid "Wales"
@@ -15524,7 +15524,7 @@ msgstr ""
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
 msgid "Who is online"
-msgstr ""
+msgstr "Qual i a en linha"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
 #: search.php:210
@@ -15568,11 +15568,11 @@ msgstr ""
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
-msgstr ""
+msgstr "Lo nom de familha de l'esposa es lo sien novèl nom d'usatge"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr ""
+msgstr "Lo nom de familha de la femna es cambiat en par lo nom del marit"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 msgid "Wildcards"
@@ -15606,7 +15606,7 @@ msgstr ""
 #: app/SurnameTradition.php:73 app/SurnameTradition.php:92
 #: app/SurnameTradition.php:97
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "La femna pòrta lo nom del marit."
 
 #: statistics.php:595
 msgid "World"
@@ -15831,19 +15831,19 @@ msgstr ""
 
 #: statistics.php:284
 msgid "Youngest father"
-msgstr ""
+msgstr "Pair mai joen"
 
 #: statistics.php:262
 msgid "Youngest female"
-msgstr ""
+msgstr "Femna mai joena"
 
 #: statistics.php:261
 msgid "Youngest male"
-msgstr ""
+msgstr "Òme mai joen"
 
 #: statistics.php:285
 msgid "Youngest mother"
-msgstr ""
+msgstr "Femna mai joena"
 
 #: app/Module/ClippingsCartModule.php:329
 #: app/Module/ClippingsCartModule.php:609
@@ -16041,7 +16041,7 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:434
 #: modules_v3/descendancy_report/report.xml:487
 msgid "and"
-msgstr ""
+msgstr "e"
 
 #: app/Functions/Functions.php:1111
 msgctxt "father’s brother’s wife"
@@ -16110,24 +16110,24 @@ msgstr ""
 
 #: app/Stats.php:2916
 msgid "birth"
-msgstr ""
+msgstr "naissença"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:79
 msgid "birth name"
-msgstr ""
+msgstr "nom de naissença"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:76
 msgctxt "FEMALE"
 msgid "birth name"
-msgstr ""
+msgstr "nom de naissença"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:73
 msgctxt "MALE"
 msgid "birth name"
-msgstr ""
+msgstr "nom de naissença"
 
 #. I18N: Extend privacy to dead individuals who were…
 #: admin_trees_config.php:457
@@ -16234,7 +16234,7 @@ msgstr ""
 #: app/Stats.php:2591 app/Stats.php:3932 app/Stats.php:3934 app/Stats.php:4947
 #: app/Stats.php:4949 app/Stats.php:4951 app/Stats.php:5197
 msgid "century"
-msgstr ""
+msgstr "sègle"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:91
@@ -16261,7 +16261,7 @@ msgstr ""
 
 #: statisticsplot.php:1317
 msgid "children"
-msgstr ""
+msgstr "mainatges"
 
 #. I18N: button label
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
@@ -16433,7 +16433,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:799
 msgid "elder sister"
-msgstr ""
+msgstr "sòr mai vièlha"
 
 #: app/Functions/Functions.php:559
 msgctxt "FEMALE"
@@ -19666,7 +19666,7 @@ msgstr "desconegut"
 #: app/Module/InteractiveTree/TreeView.php:342
 msgctxt "unknown family"
 msgid "unknown"
-msgstr ""
+msgstr "Desconegut/da"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
@@ -19727,7 +19727,7 @@ msgstr "Adreça de responsa webtrees"
 
 #: app/Functions/FunctionsEdit.php:248
 msgid "webtrees sends emails with no storage"
-msgstr "webtrees envia lo corrièr sens l'emmagazinar"
+msgstr "webtrees envia lo corrièl sens l'emmagazinar"
 
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
