@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-28 22:14+0100\n"
+"PO-Revision-Date: 2016-03-30 09:27+0100\n"
 "Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
@@ -8736,9 +8736,8 @@ msgid "Masquerade as this user"
 msgstr "Прикинеться в якості цього користувача"
 
 #: lifespan.php:101
-#, fuzzy
 msgid "Match calendar"
-msgstr "Відповідний календар"
+msgstr "Поєднати календар"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:139
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -10270,12 +10269,12 @@ msgstr "PHP заблокував файл з розширення."
 #: setup.php:139
 #, php-format
 msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "Розширення PHP \"%1$s\" відключене. Без нього наступні функції не будуть працювати: %2$s. Будь ласка, зверніться до адміністратора серверу, щоб включити це роширення."
 
 #: setup.php:128
 #, php-format
 msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "Розширення PHP \"%s\" відключене. Ви не можете встановити webtrees доти, доки воно не включене. Будь ласка, зверніться до адміністратора серверу, щоб включити його."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:86
@@ -10289,7 +10288,7 @@ msgstr "Інформація PHP"
 #: setup.php:148
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "Параметр PHP \"%1$s\" відкоючений. Без нього наступні функції не будуть працювати: %2$s. Будь ласка, зверніться до адміністратора серверу, щоб включити його."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:211
@@ -10451,7 +10450,7 @@ msgstr "Очікування зміни"
 
 #: help_text.php:314
 msgid "Pending changes are only shown when your account has permission to edit. When you log out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr ""
+msgstr "Очікувні зміни показуються тільки тоді, коли ваш обліковий запис має дозвіл на редагування. Після виходу із системи ви більше не зможете їх бачити. Також, очікувані зміни показуться тільки на певних сторінках. Напиклад, вони не показуються в списках, звітах та результатах пошуку."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1715
@@ -10512,7 +10511,7 @@ msgstr "Фотографія"
 
 #: admin_pgv_to_wt.php:151
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "PhpGedView може бути встановлений в одній із цих папок:"
 
 #. I18N: %s is a number
 #: admin_trees_manage.php:708
@@ -10585,7 +10584,7 @@ msgstr "Список місць"
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: admin_trees_config.php:1650
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr ""
+msgstr "Назви місць часто занадто довгі, щоб поміщатися на діаграмах, у списках і т. д. Вони можуть бути скорочені шляхом відображення лише декількох перших частин назви, таких як <i>село, район</i>, чи останніх частин назви, таких як <i>регіон, країна</i>."
 
 #: app/GedcomTag.php:178
 msgid "Place of LDS baptism"
@@ -10721,7 +10720,7 @@ msgstr "Місця в %s"
 
 #: help_text.php:253
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr ""
+msgstr "Місця мають вводитися у відповідності до стандартів генеалогії. В генеалогії місця записуються починаючи із найконкретнішої інформації про місце і закінчуючи найзагальнішою, при цьому рівні інформації розділяються комами. Рівні, на яких ви записуєте інформацію про місце, мають відповідати рівням, встановленим державою або церквою, де зберігаються дані про народження та смерті.<br><br>Наприклад, таке місце як Солт-Лейк-Сіті запишеться як \"Солт-Лейк-Сіті, Солт-Лейк, Юта, США\".<br><br>Давайте розглянемо кожну частину окремо. Перша частина, \"Солт-Лейк-Сіті,\" є містом або містечком, де сталася подія. В деяких країнах всередині міста можуть бути муніципалітети чи райони, які важливо записати. В таких випадках вони мають бути записані перед назвою міста. Наступна частина, \"Солт-Лейк\" є округом. \"Юта\" - це штат, а \"США\" - країна. Важливо записати кожну частину місця, тому що генеалогічні записи зберігаються державними органами кожного рівня.<br><br>Якщо певний рівень місця невідомий, ви маєте залишити на його місці пробіл. Наприклад, в прикладі вище, ви не знаєте округ для Солт-Лейк-Сіті. Тоді ви маєте ввести інформацію так: \"Солт-Лейк-Сіті, , Юта, США\". А якщо вам відомо тільки те, що особа народилася в штаті Юта, ви маєте ввести інформацію так: \", , Юта, США\". <br><br>Ви можете використовувати посилання <b>Знайти місце</b> для пошуку місць, що вже існують в базі даних."
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:93
 #: app/Theme/FabTheme.php:109 app/Theme/MinimalTheme.php:106
@@ -10756,31 +10755,31 @@ msgstr "Введіть текст повідомлення."
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
-msgstr ""
+msgstr "Будь ласка, вкажіть вашу адресу електронної пошти, щоб ми могли зв'язатися з вами для відповіді на це повідомлення. Якщо ви не надасте адресу електронної пошти, ми не зможемо відповісти на ваш запит. Надана адреса електронної пошти не буде використана будь-яким чином, окрім як для відповіді на цей запит."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:92
 msgctxt "GENITIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Плювіоз"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Плювіоз"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:125
 msgctxt "LOCATIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Плювіоз"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:59
 msgctxt "NOMINATIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Плювіоз"
 
 #: app/Stats.php:6907
 msgid "Poland"
@@ -10870,12 +10869,12 @@ msgstr "Тільки члени сім'ї можуть запросити обл
 
 #: admin_trees_config.php:332 admin_trees_manage.php:385
 msgid "Preferences"
-msgstr ""
+msgstr "Налаштування"
 
 #: admin_modules.php:93
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr ""
+msgstr "Існують налаштування для модуля \"%s\", але сам модуль вже не існує."
 
 #. I18N: A configuration setting
 #: admin_users.php:472
@@ -11181,7 +11180,7 @@ msgstr "Записів"
 
 #: admin_site_merge.php:59
 msgid "Records are not the same type. Cannot merge records that are not the same type."
-msgstr ""
+msgstr "Записи не однакового типу. Неможливо поєднати записи різного типу."
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
 msgid "Redlands, California"
@@ -11339,7 +11338,7 @@ msgstr "Видалити зв'язок зі списку"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:285
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Видалити GEDCOM медія шлях із імен файлів"
 
 #: app/Module/GoogleMapsModule.php:4506
 msgid "Remove this location?"
@@ -11351,18 +11350,18 @@ msgstr "Ріно, штат Невада"
 
 #: admin_trees_manage.php:506
 msgid "Renumber"
-msgstr ""
+msgstr "Перенумерувати"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:100 admin_trees_merge.php:105
 #: admin_trees_renumber.php:33
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Перенумерувати генеалогічне дерево"
 
 #. I18N: button label
 #: search.php:217
 msgid "Replace"
-msgstr ""
+msgstr "Замінити"
 
 #: admin_trees_places.php:104 search.php:162
 msgid "Replace with"
@@ -11438,11 +11437,11 @@ msgstr "Дослідницькі завдання"
 
 #: app/Module/ResearchTaskModule.php:187
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr ""
+msgstr "Завдання дослідження - це спеціальні події, до додаються до осіб у вашому генеалогічному дереві, які ідентифікують потребу у подальших дослідженнях. Ви можете використовувати їх як нагадування, щоб перевірити факти у більш надійних джерелах, отримати документи чи фотографії, розібратися зі спірною інформацією і т. п."
 
 #: app/Module/ResearchTaskModule.php:189
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr ""
+msgstr "Завдання дослідження зберігаються у нестандартному GEDCOM тезі \"_TODO\". Інші генеалогічні програми можуть не розпізнати цей тег."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:728
@@ -11451,7 +11450,7 @@ msgstr "Місце проживання"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Відновити компонування блоків за замовчанням"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
@@ -11469,7 +11468,7 @@ msgstr "Обмежений доступ"
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr ""
+msgstr "Обмеження можуть бути додані до записів і/або фактів. Вони обмежують, хто може переглядати дані, і хто може їх редагувати."
 
 #: app/Stats.php:90
 msgid "Resulting value"
@@ -11753,7 +11752,7 @@ msgstr "Сіетл, штат Вашингтон"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:370
 msgid "Second record"
-msgstr ""
+msgstr "Другий запис"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:409
@@ -11763,7 +11762,7 @@ msgstr "Безпечне з'єднання"
 #. I18N: A site configuration setting
 #: admin_site_config.php:613
 msgid "Security code"
-msgstr ""
+msgstr "Код безпеки"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
@@ -11773,12 +11772,12 @@ msgstr "См. %s для більш докладної інформації."
 
 #: admin_site_merge.php:210 admin_site_merge.php:257 admin_site_merge.php:303
 msgid "Select"
-msgstr ""
+msgstr "Вибрати"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:205
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Виберіть файл GEDCOM для імпорту"
 
 #: app/Functions/FunctionsEdit.php:403 reportengine.php:244
 msgid "Select a date"
@@ -11798,7 +11797,7 @@ msgstr "Вибрати прапор"
 
 #: lifespan.php:38
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Виберіть осіб за місцем чи датою"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:41
@@ -11815,11 +11814,11 @@ msgstr "Виберіть необхідний інтервал кількост�
 
 #: admin_site_merge.php:196
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Виберіть факти і події для збереження із обох записів."
 
 #: admin_site_config.php:627
 msgid "Select the languages that will be shown in menus."
-msgstr ""
+msgstr "Виберіть мови, які будуть відображені у меню."
 
 #: app/Module/FamilyTreeStatisticsModule.php:298
 msgid "Select the stats to show in this block"
@@ -11828,7 +11827,7 @@ msgstr "Вибрати статистику для показу в цьому б
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:348
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Виберіть два записи для об'єднання."
 
 #: app/GedcomCode/GedcomCodeRela.php:236
 msgid "Seller"
@@ -11882,7 +11881,7 @@ msgstr "Ім'я відправника"
 #. I18N: Menu entry
 #: admin_site_config.php:137 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
-msgstr ""
+msgstr "Надсилання електронного листа"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:422
@@ -11961,7 +11960,7 @@ msgstr "(CSV??) - Файл на сервері з місцями"
 #. I18N: Menu entry
 #: admin.php:562 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
 msgid "Server information"
-msgstr ""
+msgstr "Інформація про сервер"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:344 setup.php:279
@@ -11975,7 +11974,7 @@ msgstr "Час сесії минув"
 
 #: admin_trees_manage.php:438 admin_trees_manage.php:449
 msgid "Set as default"
-msgstr ""
+msgstr "Встановити за замовчуванням"
 
 #: inverselink.php:152
 msgid "Set link"
@@ -11984,7 +11983,7 @@ msgstr "Приєднати"
 #. I18N: You need to:
 #: login.php:559
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Встановити рівень доступу для кожного дерева."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -12019,12 +12018,12 @@ msgstr "Встановити рівень доступу до всіх мерт�
 #. I18N: You need to:
 #: login.php:557
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Встановити статус \"схвалений\"."
 
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:729
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts. This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr ""
+msgstr "Встановіть значення в <b>Так</b> для використання номеру RIN замість ідентифікатора GEDCOM при необхідності використання ідентифікатору особи в конфігураційних файлах, налаштуваннях користувача і діаграмах. Це може бути корисним для генеалогічних програм, які непослідовно експортують ідентифвкатори GEDCOM, але завжди використовують один і той самй номер RIN."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1683
@@ -12343,7 +12342,7 @@ msgstr "Показувати лічильник відвідувань на го
 
 #: compact.php:59
 msgid "Show images"
-msgstr ""
+msgstr "Показати зображення"
 
 #: app/Module/GoogleMapsModule.php:4540
 msgid "Show inactive places"
@@ -12387,12 +12386,12 @@ msgstr "Показати список родоводів"
 #. I18N: A configuration setting
 #: admin_trees_config.php:431
 msgid "Show living individuals"
-msgstr ""
+msgstr "Показати живих осіб"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:471
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Показати імена прихованих осіб"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12513,7 +12512,7 @@ msgstr "Показувати дату і час оновлення"
 #. I18N: A configuration setting
 #: admin_trees_config.php:367
 msgid "Show the family tree"
-msgstr ""
+msgstr "Показати генеалогічне дерево"
 
 #: famlist.php:178 indilist.php:179
 msgid "Show the list of individuals"
@@ -12568,12 +12567,12 @@ msgstr "Показувати відвідувачам"
 #: app/Functions/FunctionsPrintLists.php:256
 #: app/Functions/FunctionsPrintLists.php:673
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr ""
+msgstr "Показати \"листя\" із пар чи осіб. \"Листки\" - це живі особи, що не мають дітей, зареєстрованих у базі даних."
 
 #: app/Functions/FunctionsPrintLists.php:247
 #: app/Functions/FunctionsPrintLists.php:664
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr ""
+msgstr "Показати \"коріння\" із пар і осіб. Цих осіб ще можна назвати \"родоначальниками.\" Це особи, у яких немає батьків, зареєстрованих у базі даних."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:227 app/I18N.php:228
@@ -12605,7 +12604,7 @@ msgstr "Бічна панель"
 #: admin_module_sidebar.php:28 admin_modules.php:156
 #: app/Theme/AdministrationTheme.php:194
 msgid "Sidebars"
-msgstr ""
+msgstr "Бічні панелі"
 
 #: app/Stats.php:6932
 msgid "Sierra Leone"
