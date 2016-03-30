@@ -40,7 +40,7 @@ if ($search && $replace) {
 		" LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')" .
 		" WHERE i_file = ?" .
 		" AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-	)->execute(array($WT_TREE->getTreeId(), $search))->fetchAll();
+	)->execute(array($WT_TREE->getTreeId(), preg_quote($search)))->fetchAll();
 	foreach ($rows as $row) {
 		$record = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		foreach ($record->getFacts() as $fact) {
