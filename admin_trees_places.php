@@ -61,7 +61,7 @@ if ($search && $replace) {
 		" LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')" .
 		" WHERE f_file = ?" .
 		" AND COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-	)->execute(array($WT_TREE->getTreeId(), $search))->fetchAll();
+	)->execute(array($WT_TREE->getTreeId(), preg_quote($search)))->fetchAll();
 	foreach ($rows as $row) {
 		$record = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		foreach ($record->getFacts() as $fact) {
