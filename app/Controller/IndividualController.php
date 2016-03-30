@@ -45,6 +45,8 @@ class IndividualController extends GedcomRecordController {
 
 	/**
 	 * Startup activity
+	 *
+	 * @param Individual|null $record
 	 */
 	public function __construct($record) {
 		parent::__construct($record);
