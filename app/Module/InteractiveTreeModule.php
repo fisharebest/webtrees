@@ -77,15 +77,19 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	 *
 	 * @return Menu
 	 */
-	public function getChartMenu() {
+	public function getChartMenu(Individual $individual) {
 		global $controller, $WT_TREE;
 		
 		return new Menu(
 			$this->getTitle(), 
-			'module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $controller->getSignificantIndividual()->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
+			'module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
 			'menu-chart-tree', 
 			array('rel' => 'nofollow')
 		);
+	}
+	
+	public function getBoxChartMenu(Individual $individual) {
+		return $this->getChartMenu($individual);
 	}
 	
 	/** {@inheritdoc} */

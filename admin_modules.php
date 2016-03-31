@@ -181,7 +181,7 @@ $controller
 			'<td class="text-center text-muted hidden-xs">', $module instanceof ModuleTabInterface ? '<i class="fa fa-folder" title="' . I18N::translate('Tab') . '"></i>' : '-', '</td>',
 			'<td class="text-center text-muted hidden-xs">', $module instanceof ModuleSidebarInterface ? '<i class="fa fa-th-large" title="' . I18N::translate('Sidebar') . '"></i>' : '-', '</td>',
 			'<td class="text-center text-muted hidden-xs">', $module instanceof ModuleBlockInterface ? (($module->isUserBlock() ? '<i class="fa fa-user" title="' . I18N::translate('My page') . '"></i>' : '') . ($module->isGedcomBlock() ? '<i class="fa fa-tree" title="' . I18N::translate('Home page') . '"></i>' : '')) : '-', '</td>',
-			'<td class="text-center text-muted hidden-xs">', $module instanceof ModuleChartInterface ? '<i class="fa fa-check" title="' . I18N::translate('Chart') . '"></i>' : '-', '</td>',
+			'<td class="text-center text-muted hidden-xs">', $module instanceof ModuleChartInterface ? '<i class="fa fa-share-alt" title="' . I18N::translate('Chart') . '"></i>' : '-', '</td>',
 			'<td class="text-center text-muted hidden-xs">', $module instanceof ModuleReportInterface ? '<i class="fa fa-file" title="' . I18N::translate('Report') . '"></i>' : '-', '</td>',
 			'<td class="text-center text-muted hidden">', $module instanceof ModuleThemeInterface ? '<i class="fa fa-check" title="' . I18N::translate('Theme') . '"></i>' : '-', '</td>',
 			'</tr>';

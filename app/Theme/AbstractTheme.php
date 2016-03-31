@@ -35,6 +35,20 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Module\AncestorsChartModule;
+use Fisharebest\Webtrees\Module\CompactTreeChartModule;
+use Fisharebest\Webtrees\Module\DescendancyChartModule;
+use Fisharebest\Webtrees\Module\FamilyBookChartModule;
+use Fisharebest\Webtrees\Module\FanChartModule;
+use Fisharebest\Webtrees\Module\InteractiveTreeModule;
+use Fisharebest\Webtrees\Module\HourglassChartModule;
+use Fisharebest\Webtrees\Module\LifespansChartModule;
+use Fisharebest\Webtrees\Module\PedigreeChartModule;
+use Fisharebest\Webtrees\Module\GoogleMapsModule;
+use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Module\StatisticsChartModule;
+use Fisharebest\Webtrees\Module\TimelineChartModule;
+
 
 /**
  * Common functions for all themes.
@@ -947,7 +961,7 @@ abstract class AbstractTheme {
 	protected function individualBoxMenuCharts(Individual $individual) {
 		$menus = array();
 		foreach (Module::getActiveCharts($this->tree) as $chart) {
-			$menu = $chart->getChartMenu($individual);
+			$menu = $chart->getBoxChartMenu($individual);
 			if ($menu) {
 				$menus[] = $menu;
 			}			 
@@ -1094,6 +1108,110 @@ abstract class AbstractTheme {
 		}		
 	}
 
+	/**
+	 * @deprecated	
+	 */
+	protected function menuChartAncestors(Individual $individual) {
+		$chart = new AncestorsChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
+	}
+
+	/**
+	 * @deprecated	
+	 */
+	protected function menuChartCompact(Individual $individual) {
+		$chart = new CompactTreeChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
+	}
+
+	/**
+	 * @deprecated	
+	 */
+	protected function menuChartDescendants(Individual $individual) {
+		$chart = new DescendancyChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
+	}
+
+	/**
+	 * @deprecated	
+	 */
+	protected function menuChartFamilyBook(Individual $individual) {
+		$chart = new FamilyBookChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
+	}
+
+	/**
+	 * @deprecated	
+	 */
+	protected function menuChartFanChart(Individual $individual) {
+		$chart = new FanChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
+	}
+
+	/**
+	 * @deprecated	
+	 */
+	protected function menuChartInteractiveTree(Individual $individual) {
+		$chart = new InteractiveTreeModule(__DIR__);
+  	return $chart->getChartMenu($individual);
+	}
+
+	/**
+	 * @deprecated	
+	 */
+	protected function menuChartHourglass(Individual $individual) {
+		$chart = new HourglassChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
+	}
+
+	/**
+	 * @deprecated	
+	 */
+	protected function menuChartLifespan(Individual $individual) {
+		$chart = new LifespansChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
+	}
+
+	/**
+	 * @deprecated	
+	 */
+	protected function menuChartPedigree(Individual $individual) {
+		$chart = new PedigreeChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
+	}
+
+	/**
+	 * @deprecated	
+	 */
+	protected function menuChartPedigreeMap(Individual $individual) {
+		$chart = new GoogleMapsModule(__DIR__);
+  	return $chart->getChartMenu($individual);
+	}
+
+	/**
+	 * @deprecated	
+	 */
+	protected function menuChartRelationship(Individual $individual) {
+		$chart = new RelationshipsChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
+	}
+
+	/**
+	 * @deprecated	
+	 */
+	protected function menuChartStatistics() {
+		$chart = new StatisticsChartModule(__DIR__);
+  	return $chart->getChartMenu(null);
+	}
+
+	/**
+	 * @deprecated	
+	 */
+	protected function menuChartTimeline(Individual $individual) {
+		$chart = new TimelineChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
+	}
+	
 	/**
 	 * Generate a menu item for the control panel (admin.php).
 	 *

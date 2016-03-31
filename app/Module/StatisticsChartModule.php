@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * Class StatisticsChartModule
@@ -57,7 +58,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 	 *
 	 * @return Menu
 	 */
-	public function getChartMenu() {
+	public function getChartMenu(Individual $individual) {
 		global $controller, $WT_TREE;
 		
 		return new Menu(
@@ -66,5 +67,9 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 			'menu-chart-statistics', 
 			array('rel' => 'nofollow')
 		);
+	}
+	
+	public function getBoxChartMenu(Individual $individual) {
+		return null;
 	}
 }

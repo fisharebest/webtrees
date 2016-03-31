@@ -15,14 +15,24 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Individual;
+
 /**
  * Interface ModuleChartInterface - Classes and libraries for module system
  */
 interface ModuleChartInterface {
+
 	/**
-	 * Return a menu item for this report.
+	 * Return a menu item for this chart.
 	 *
 	 * @return Menu
 	 */
-	public function getChartMenu();
+	public function getChartMenu(Individual $individual);
+	
+	/**
+	 * Return a menu item for this chart (for menu in individual box).
+	 *
+	 * @return Menu or null if not applicable in box
+	 */
+	public function getBoxChartMenu(Individual $individual);
 }

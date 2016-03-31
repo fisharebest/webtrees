@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * Class TimelineChartModule
@@ -57,14 +58,18 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 	 *
 	 * @return Menu
 	 */
-	public function getChartMenu() {
+	public function getChartMenu(Individual $individual) {
 		global $controller, $WT_TREE;
 		
 		return new Menu(
 			$this->getTitle(), 
-			'timeline.php?pids%5B%5D=' . $controller->getSignificantIndividual()->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
+			'timeline.php?pids%5B%5D=' . $individual->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
 			'menu-chart-timeline', 
 			array('rel' => 'nofollow')
 		);
-	}	
+	}
+	
+	public function getBoxChartMenu(Individual $individual) {
+		return null;
+	}
 }

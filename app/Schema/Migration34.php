@@ -33,10 +33,10 @@ class Migration34 implements MigrationInterface {
 			" ('family_book_chart', 'enabled', NULL, NULL, NULL),".
 			" ('fan_chart', 'enabled', NULL, NULL, NULL),".
 			" ('hourglass_chart', 'enabled', NULL, NULL, NULL),".
-			" ('lifespans_chart', 'enabled', NULL, NULL, NULL),"
-			" ('pedigree_chart', 'enabled', NULL, NULL, NULL),"
-			" ('relationships_chart', 'enabled', NULL, NULL, NULL),"
-			" ('statistics_chart', 'enabled', NULL, NULL, NULL),"
+			" ('lifespans_chart', 'enabled', NULL, NULL, NULL),".
+			" ('pedigree_chart', 'enabled', NULL, NULL, NULL),".
+			" ('relationships_chart', 'enabled', NULL, NULL, NULL),".
+			" ('statistics_chart', 'enabled', NULL, NULL, NULL),".
 			" ('timeline_chart', 'enabled', NULL, NULL, NULL)"
 		);
 	}

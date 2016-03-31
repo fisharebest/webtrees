@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * Class CompactTreeChartModule
@@ -57,14 +58,18 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
 	 *
 	 * @return Menu
 	 */
-	public function getChartMenu() {
+	public function getChartMenu(Individual $individual) {
 		global $controller, $WT_TREE;
 		
 		return new Menu(
 			$this->getTitle(), 
-			'compact.php?rootid=' . $controller->getSignificantIndividual()->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
+			'compact.php?rootid=' . $individual->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
 			'menu-chart-compact', 
 			array('rel' => 'nofollow')
 		);
+	}
+	
+	public function getBoxChartMenu(Individual $individual) {
+		return $this->getChartMenu($individual);
 	}
 }

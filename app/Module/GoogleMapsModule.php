@@ -217,15 +217,19 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 *
 	 * @return Menu
 	 */
-	public function getChartMenu() {
+	public function getChartMenu(Individual $individual) {
 		global $controller, $WT_TREE;
 		
 		return new Menu(
 			I18N::translate('Pedigree map'), 
-			'module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $controller->getSignificantIndividual()->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
+			'module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $individual->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
 			'menu-chart-pedigree_map', 
 			array('rel' => 'nofollow')
 		);
+	}
+		
+	public function getBoxChartMenu(Individual $individual) {
+		return $this->getChartMenu($individual);
 	}
 	
 	/**

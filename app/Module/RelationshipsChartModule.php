@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * Class RelationshipsChartModule
@@ -57,7 +58,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 	 *
 	 * @return Menu
 	 */
-	public function getChartMenu() {
+	public function getChartMenu(Individual $individual) {
 		global $controller, $WT_TREE;
 		
 		$gedcomid = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
@@ -65,17 +66,21 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 		if ($gedcomid && $individual->getXref()) {
 			return new Menu(
 				I18N::translate('Relationship to me'), 
-				'relationship.php?pid1=' . $gedcomid . '&amp;pid2=' . $controller->getSignificantIndividual()->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
+				'relationship.php?pid1=' . $gedcomid . '&amp;pid2=' . $individual->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
 				'menu-chart-relationship', 
 				array('rel' => 'nofollow')
 			);
 		} else {
 			return new Menu(
 				I18N::translate('Relationships'), 
-				'relationship.php?pid1=' . $controller->getSignificantIndividual()->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
+				'relationship.php?pid1=' . $individual->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
 				'menu-chart-relationship', 
 				array('rel' => 'nofollow')
 			);
 		}
+	}
+	
+	public function getBoxChartMenu(Individual $individual) {
+		return $this->getChartMenu($individual);
 	}
 }
