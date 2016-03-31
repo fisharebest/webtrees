@@ -13,16 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Fisharebest\Webtrees\Module;
+namespace Fisharebest\Webtrees;
 
-/**
- * Interface ModuleChartInterface - Classes and libraries for module system
- */
-interface ModuleChartInterface {
-	/**
-	 * Return a menu item for this report.
-	 *
-	 * @return Menu
-	 */
-	public function getChartMenu();
-}
+use Fisharebest\Webtrees\Module\DescendancyChartModule;
+
+return new DescendancyChartModule(__DIR__);
