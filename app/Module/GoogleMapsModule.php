@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Menu;
 use PDO;
 
 /**
@@ -53,7 +54,7 @@ use PDO;
  *
  * Hence, use "Google Maps™ mapping service" where appropriate.
  */
-class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, ModuleTabInterface {
+class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, ModuleTabInterface, ModuleChartInterface {
 	// How to update the database schema for this module
 	const SCHEMA_TARGET_VERSION   = 6;
 	const SCHEMA_SETTING_NAME     = 'GM_SCHEMA_VERSION';
@@ -211,6 +212,26 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		return false;
 	}
 
+	/**
+	 * Return a menu item for this chart.
+	 *
+	 * @return Menu
+	 */
+	public function getChartMenu(Individual $individual) {
+		global $controller, $WT_TREE;
+		
+		return new Menu(
+			I18N::translate('Pedigree map'), 
+			'module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $individual->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
+			'menu-chart-pedigree_map', 
+			array('rel' => 'nofollow')
+		);
+	}
+		
+	public function getBoxChartMenu(Individual $individual) {
+		return $this->getChartMenu($individual);
+	}
+	
 	/**
 	 * A form to edit the module configuration.
 	 */
