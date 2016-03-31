@@ -16,6 +16,8 @@
 namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\I18N;
 
 /**
  * Upgrade the database schema from version 33 to version 34.
@@ -25,19 +27,35 @@ class Migration34 implements MigrationInterface {
 	 * Upgrade to to the next version (Charts as modules, should be enabled by default)
 	 */
 	public function upgrade() {
+		$names = array(
+			"ancestors_chart", 
+			"compact_tree_chart", 
+			"descendancy_chart", 
+			"family_book_chart", 
+			"fan_chart", 
+			"hourglass_chart", 
+			"lifespans_chart", 
+			"pedigree_chart", 
+			"relationships_chart", 
+			"statistics_chart", 
+			"timeline_chart");
+		
+		$func = function($value) {
+    	return " ('".$value."', 'enabled', NULL, NULL, NULL)";
+		};
+		$values = array_map($func, $names);
+			
 		Database::exec(
 			"INSERT IGNORE INTO `##module` (module_name, status, tab_order, menu_order, sidebar_order) VALUES" .
-			" ('ancestors_chart', 'enabled', NULL, NULL, NULL),".
-			" ('compact_tree_chart', 'enabled', NULL, NULL, NULL),".
-			" ('descendancy_chart', 'enabled', NULL, NULL, NULL),".
-			" ('family_book_chart', 'enabled', NULL, NULL, NULL),".
-			" ('fan_chart', 'enabled', NULL, NULL, NULL),".
-			" ('hourglass_chart', 'enabled', NULL, NULL, NULL),".
-			" ('lifespans_chart', 'enabled', NULL, NULL, NULL),".
-			" ('pedigree_chart', 'enabled', NULL, NULL, NULL),".
-			" ('relationships_chart', 'enabled', NULL, NULL, NULL),".
-			" ('statistics_chart', 'enabled', NULL, NULL, NULL),".
-			" ('timeline_chart', 'enabled', NULL, NULL, NULL)"
+			implode(',',$values)
 		);
+		
+		foreach ($names as $name) {
+			Database::prepare(
+				"INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
+				" SELECT ?, gedcom_id, 'chart', 2" .
+				" FROM `##gedcom`"
+			)->execute(array($name));
+		}
 	}
 }
