@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-31 21:37+0100\n"
+"PO-Revision-Date: 2016-04-01 20:21+0000\n"
 "Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.5\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -13547,7 +13547,7 @@ msgstr "Мультимедійний файл не був знайден у сі
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr ""
+msgstr "Медіа-файл, який ви завантажуєте, може, і напевно, повинен, бути названий по-іншому на сервері ніж на вашому локальному комп'ютері. Це так, тому що локальне ім'я файла має значення для вас, але для інших відвідувачів сайту буде мати набагато менше значення. Розгляньте також можливіть того, що ви і ще хтось спробуєте разом завантажити різні файли з назвою \"бабуся.jpg\".<br><br>В цьому полі необхідно вказати нове ім'я файла, який ви завантажуєте. Ім'я, яке ви тут введете, буде також використано у якості імені мініатюри, яка може бути завантажена окремо або згенерована автоматично. Вам не треба вводити розширення файлу (jpg, gif, pdf, doc, і т. п.)<br><br>Залиште це поле порожнім, щоб залишити початкове ім'я файлу, який ви завантажили з вашого локального комп'ютера."
 
 #: setup.php:171
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13595,31 +13595,31 @@ msgstr "Налаштування для всіх генеалогічнох де
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Налаштування для нових генеалогічних дерев були оновлені."
 
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "Налаштування для генеалогічного дерева \"%s\" були оновлені."
 
 #: admin_modules.php:81
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Налаштування для модуля \"%s\" були видалені."
 
 #: app/Module/GoogleMapsModule.php:260
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "Налаштування для модуля \"%s\" були оновлені."
 
 #: setup.php:380
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-msgstr ""
+msgstr "Префікс не є обов'язковим, але є рекомендованим. Додаючи до назв таблиць унікальний префікс, ви надаєте можливість декільком додаткам використовувати одну і ту саму базу даних. Префікс \"wt_\" є рекомендованим, але він може бути будь-яким, на ваш розсуд."
 
 #: admin_trees_renumber.php:242
 #, php-format
 msgid "The record %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "Запис %1$s було переіменовано на %2$s."
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
@@ -13629,7 +13629,7 @@ msgstr "Запис скопійовано в буфер обміну."
 #: admin_site_merge.php:168
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Записи \"%1$s\" і \"%2$s\" було об'єднано."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "The regex appears to contain an error. It can’t be used."
