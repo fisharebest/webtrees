@@ -665,7 +665,67 @@ class Functions {
 				}
 		}
 	}
-
+	
+	/**
+	 * A variation on cousin_name(), for constructs such as “great-nephew of sixth degree”
+	 * Currently used only by German relationship names.
+	 *
+	 * @param int $n
+	 * @param string $sex
+	 * @param string $relation
+	 *
+	 * @return string
+	 */
+	public static function cousinName3($n, $sex, $relation) {
+		switch ($sex) {
+			case 'M':
+				switch ($n) {
+					case  1: // I18N: A German relationship name, such as great-nephew of third degree
+						return I18N::translateContext('MALE', '%s of first degree', $relation);
+					case  2:
+						return I18N::translateContext('MALE', '%s of second degree', $relation);
+					case  3:
+						return I18N::translateContext('MALE', '%s of third degree', $relation);
+					case  4:
+						return I18N::translateContext('MALE', '%s of fourth degree', $relation);
+					case  5:
+						return I18N::translateContext('MALE', '%s of fifth degree', $relation);
+					default:
+						return I18N::translateContext('MALE', '%2$s of %1$s degree', I18N::number($n), $relation);
+				}
+			case 'F':
+				switch ($n) {
+					case  1: // I18N: A German relationship name, such as great-nephew of third degree
+						return I18N::translateContext('FEMALE', '%s of first degree', $relation);
+					case  2:
+						return I18N::translateContext('FEMALE', '%s of second degree', $relation);
+					case  3:
+						return I18N::translateContext('FEMALE', '%s of third degree', $relation);
+					case  4:
+						return I18N::translateContext('FEMALE', '%s of fourth degree', $relation);
+					case  5:
+						return I18N::translateContext('FEMALE', '%s of fifth degree', $relation);
+					default: // I18N: A Spanish relationship name, such as third great-nephew
+						return I18N::translateContext('FEMALE', '%2$s of %1$s degree', I18N::number($n), $relation);
+				}
+			default:
+				switch ($n) {
+					case  1: // I18N: A German relationship name, such as great-nephew of third degree
+						return I18N::translateContext('MALE/FEMALE', '%s of first degree', $relation);
+					case  2:
+						return I18N::translateContext('MALE/FEMALE', '%s of second degree', $relation);
+					case  3:
+						return I18N::translateContext('MALE/FEMALE', '%s of third degree', $relation);
+					case  4:
+						return I18N::translateContext('MALE/FEMALE', '%s of fourth degree', $relation);
+					case  5:
+						return I18N::translateContext('MALE/FEMALE', '%s of fifth degree', $relation);
+					default: // I18N: A Spanish relationship name, such as third great-nephew
+						return I18N::translateContext('MALE/FEMALE', '%2$s of %1$s degree', I18N::number($n), $relation);
+				}
+		}
+	}
+	
 	/** @var string[] Cache for generic relationships (key stores the path, and value represents the relationship name) */
 	protected static $relationshipsCache = array();
 
@@ -2114,6 +2174,24 @@ class Functions {
 								return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $descent, null, null));
 						}
 					}
+				case 'de':
+					// Source: Richard Cissee. https://de.wikipedia.org/wiki/Verwandtschaftsbeziehung
+					if ($down == $up) {
+						return self::cousinName($cousin, $sex2);
+					} elseif ($down < $up) {
+						$relevantAscent = substr($ascent, $cousin*3);
+						switch ($sex2) {							
+							case 'M':
+								return self::cousinName3($cousin + 1, $sex2, self::getRelationshipNameFromPath($relevantAscent.'bro', null, null));
+							case 'F':
+								return self::cousinName3($cousin + 1, $sex2, self::getRelationshipNameFromPath($relevantAscent.'sis', null, null));
+							default:
+								return self::cousinName3($cousin + 1, $sex2, self::getRelationshipNameFromPath($relevantAscent.'sib', null, null));
+						}
+					} else {
+						$relevantDescent = substr($descent, $cousin*3);
+						return self::cousinName3($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $relevantDescent, null, null));
+					}	
 				case 'en_AU': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
 				case 'en_GB':
 				case 'en_US':
