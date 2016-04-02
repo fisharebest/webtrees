@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-04-01 20:21+0000\n"
+"PO-Revision-Date: 2016-04-02 21:04+0000\n"
 "Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
@@ -13633,7 +13633,7 @@ msgstr "Записи \"%1$s\" і \"%2$s\" було об'єднано."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "The regex appears to contain an error. It can’t be used."
-msgstr ""
+msgstr "Регулярний вираз містить помилку. Він не може бути використаний."
 
 #: setup.php:153
 msgid "The server configuration is OK."
@@ -13641,7 +13641,7 @@ msgstr "Конфігурація сервера в порядку."
 
 #: admin_trees_renumber.php:257
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "Ліміт часу серверу було досяснуто."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:37
@@ -13671,20 +13671,20 @@ msgstr "Мініатюра %s не існує."
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:290
 msgid "The time in seconds that a webtrees session remains active before requiring a login. The default is 7200, which is 2 hours."
-msgstr ""
+msgstr "Проміжок часу у секундах, протягом якого сеанс webtrees залишається активним. Значення за замовчуванням - 7200, що складає 2 години."
 
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr ""
+msgstr "Часовий пояс необхідний для обчислення дат, таких як сьогоднішня дата."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Два генеалогічні дерева мають %1$s запис, який використовує той самий \"XREF\"."
+msgstr[1] "Два генеалогічні дерева мають %1$s записи, які використовують той самий \"XREF\"."
+msgstr[2] "Два генеалогічні дерева мають %1$s записів, які використовують той самий \"XREF\"."
 
 #: admin_site_upgrade.php:504
 msgid "The upgrade is complete."
@@ -13698,7 +13698,7 @@ msgstr "Занадто великий файл."
 #: admin_users.php:807
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Користувач %s був видалений."
 
 #: login.php:314
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
@@ -13716,7 +13716,7 @@ msgstr "Неправильне ім'я користувача або парол�
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:967
 msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-msgstr ""
+msgstr "Значення, яке буде записано у тег \"meta description\" в заголовку HTML сторінки. Залиште це поле порожнім, щоб використати ім'я генеалогічного дерева."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
@@ -13730,33 +13730,33 @@ msgstr "Версія %s занадто стара."
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
-msgstr ""
+msgstr "Правило доступу до web-сайту було створено."
 
 #: admin_site_access.php:105
 msgid "The website access rule has been deleted."
-msgstr ""
+msgstr "Правило доступу до web-сайту було видалено."
 
 #: admin_site_access.php:89
 msgid "The website access rule has been updated."
-msgstr ""
+msgstr "Правило доступу до web-сайту було оновлено."
 
 #: admin_site_config.php:47 admin_site_config.php:66 admin_site_config.php:78
 #: admin_site_config.php:93 admin_site_config.php:102
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Налаштування web-сайту було оновлено."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2247
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr ""
+msgstr "Сайт www.geonames.org надає велику базу даних назв місць. Вона може бути використана для пошуку при введенні нових місць. Для використання цієї функції, ви маєте зареєструвати безкоштовний обліковий запис на www.geonames.org і надати ім'я користувача."
 
 #: setup.php:499
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr ""
+msgstr "Розробникам webtrees буде цікаво дізнатися про цю помилку. Якщо ви зв'яжетесь з ними, вони допоможуть вам вирішити проблему."
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr ""
+msgstr "Символ \"%\" є підстановочним і буде відповідати нулю або більше інших символів."
 
 #: admin_modules.php:186 admin_users.php:486 app/Theme/AbstractTheme.php:1698
 #: edituser.php:272
@@ -13775,11 +13775,11 @@ msgstr "Вибір теми"
 
 #: admin_modules.php:160
 msgid "Themes"
-msgstr ""
+msgstr "Теми"
 
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting “default theme” at one level will use the theme at the next level."
-msgstr ""
+msgstr "Теми можуть бути вибрані на трьох рівнях: користувача, генеалогічного дерева і веб-сайту. Налаштуваня користувача мають приорітет над налаштуваннями генеалогічного дерева, які, в свою чергу, мають приорітет над налаштуваннями веб-сайту. Вибір \"тема за замовчуванням\" на одному рівні означає, що буде використана тема з іншого рівня."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:126
@@ -13815,14 +13815,14 @@ msgstr "Є очікують зміни для модерування."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "За останній %s день ніяких змін не було."
+msgstr[1] "За останні %s дні ніяких змін не було."
+msgstr[2] "За останні %s днів ніяких змін не було."
 
 #: login.php:253
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr ""
+msgstr "Намає облікового запису з іменем або адресою електронної пошти \"%s\"."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -13860,32 +13860,32 @@ msgstr "Ці сторінки надають доступ до всіх нала
 #: import.php:150
 #, php-format
 msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-msgstr ""
+msgstr "Цей файл GEDCOM закодовано використовуючи кодування символів %1$s. Припустимо, що це означає %2$s."
 
 #: login.php:89
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr ""
+msgstr "Цей обліковий запис не було схвалено. Будь-ласка, чекайте, доки адміністратор не схвалить його."
 
 #: login.php:84
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr ""
+msgstr "Цей обліковий запис не будо перевірено. Будь-ласка, перевірте надходження на вашу електронну листа перевірки."
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr ""
+msgstr "Цей блок показуе редакторам список записів з очікуваними змінами, які мають бути схвалені модератором. Він також генерує щоденні електронні листи модераторам, коли очікувані зміни існують."
 
 #: admin_users.php:463 edituser.php:312
 msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
-msgstr ""
+msgstr "Цей прапорець контролює вашу видимість іншими користувачам, коли ви знаходитесь на сайті. Він також контролює вашу можливість бачити інших користувачів, присутніх на сайті, якщо вони дозволили себе бачити.<br><br>Коли цей прапорець знято, ви будете повністю невидимі для інших, і ви також не зможете бачити, чи інші користувачі присутні на сайті. Коли цей прапорець встановлено, ви будете видимі для інших і зможете бачити інших користувачів, які дозволили себе бачити."
 
 #: setup.php:350 setup.php:361
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
-msgstr ""
+msgstr "Ця база даних і префікс таблиць використовуються іншим додатком. Якщо у вас є існуюча система PhpGedView, вам потрібно створити нову систему webtrees. Ви зможете імпортувати ваші дані і налаштування PhpGedView пізніше."
 
 #: setup.php:257
 #, php-format
 msgid "This database is only running MySQL version %s. You cannot install webtrees here."
-msgstr ""
+msgstr "Цей сервер баз даних має версію MySQL %s. Ви не можете встановити базу даних webtrees на ньому."
 
 #: admin_users.php:367 edituser.php:265 login.php:420 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
@@ -13901,23 +13901,23 @@ msgstr "Ця сім'я не існує або у Вас немає прав дл
 
 #: family.php:51
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Цю сім'ю було видалено. Видалення має бути переглянуте модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:42
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Цю сім'ю було видалено. Ви маєте перегянути видалення, а потім %1$s чи %2$s його."
 
 #: family.php:69
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Цю сім'ю було відредаговано. Зміни мають бути перевірені модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:60
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Цю сім'ю було відредаговано. Ви маєте перегянути зміни, а потім %1$s чи %2$s їх."
 
 #: app/Functions/FunctionsCharts.php:414 app/Functions/FunctionsCharts.php:551
 msgid "This family remained childless"
@@ -13949,7 +13949,7 @@ msgstr "Це генеалогічне древо було оновлено ос�
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-msgstr ""
+msgstr "Цей файл пов'язаний з іншим ганеалогічним деревом на цьому червері. Він не може бути видалений, переміщений чи перейменований доти, доки ці зв'зки не буде видалено."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:179
@@ -13963,7 +13963,7 @@ msgstr "Ця папка буде використовуватися для зб�
 
 #: app/Filter.php:480
 msgid "This form has expired. Try again."
-msgstr ""
+msgstr "Термін дії цієї форми сплив. Будь-ласка, спробуйте ще раз."
 
 #: app/Controller/ChartController.php:57 individual.php:98
 msgid "This individual does not exist or you do not have permission to view it."
