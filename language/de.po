@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-21 21:08+0100\n"
-"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2016-04-03 16:13+0000\n"
+"Last-Translator: Richard Cissee <ric@richard-cissee.de>\n"
 "Language-Team: German <http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.5\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -1575,12 +1575,12 @@ msgstr "Adoption einer Enkeltochter"
 #: app/GedcomTag.php:888
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "Adoption einer Enkelin"
+msgstr "Adoption einer Enkeltochter"
 
 #: app/GedcomTag.php:897
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "Adoption einer Enkelin"
+msgstr "Adoption einer Enkeltochter"
 
 #: app/GedcomTag.php:877
 msgid "Adoption of a grandson"
@@ -16924,17 +16924,17 @@ msgstr "Enkeltochter"
 #: app/Functions/Functions.php:1065
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "Enkelin's Mann"
+msgstr "Enkeltochters Ehemann"
 
 #: app/Functions/Functions.php:1087
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "Enkelin's Mann"
+msgstr "Enkeltochters Ehemann"
 
 #: app/Functions/Functions.php:1367
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "Enkelin's Mann"
+msgstr "Enkeltochters Ehemann"
 
 #: app/Functions/Functions.php:915
 msgctxt "parent’s father"
