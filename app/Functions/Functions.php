@@ -1719,6 +1719,7 @@ class Functions {
 								default:
 									return I18N::translate('great ×%s aunt/uncle', I18N::number($up - 4));
 							}
+						case 'de':
 						case 'pl':
 							switch ($sex2) {
 								case 'M':
@@ -1869,6 +1870,7 @@ class Functions {
 					//
 					// Need to find out which languages use which rules.
 					switch (WT_LOCALE) {
+						case 'de':
 						case 'pl': // Source: Lukasz Wilenski
 							switch ($sex2) {
 								case 'M':
