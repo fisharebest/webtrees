@@ -2248,12 +2248,37 @@ class Functions {
 		$path1        = substr($path, 0, 3);
 		$path2        = substr($path, 3);
 		while ($path2) {
-			$tmp = I18N::translate(
-			// I18N: A complex relationship, such as “third-cousin’s great-uncle”
-				'%1$s’s %2$s',
-				self::getRelationshipNameFromPath($path1, null, null), // TODO: need the actual people
-				self::getRelationshipNameFromPath($path2, null, null)
-			);
+			switch (WT_LOCALE) {					
+				case 'de':
+					//For relationship names where the first part ends with 's' (such as 'Tante 2. Grades'),
+					//we have to construct the relationship name in a different way than usual.
+					//This is grammatically still somewhat dubious, 
+					//but proper construction of the genitive case would be even more complicated. 				
+					$sub = self::getRelationshipNameFromPath($path1, null, null);
+					if (substr($sub, -1) === 's') {
+						$tmp = I18N::translate(
+							// I18N: A complex relationship, such as “third-cousin’s great-uncle”. First part ends with “s”
+							'%1$s’ %2$s',
+							self::getRelationshipNameFromPath($path1, null, null), // TODO: need the actual people
+							self::getRelationshipNameFromPath($path2, null, null)
+						);					
+					} else {
+						$tmp = I18N::translate(
+							// I18N: A complex relationship, such as “third-cousin’s great-uncle”
+							'%1$s’s %2$s',
+							self::getRelationshipNameFromPath($path1, null, null), // TODO: need the actual people
+							self::getRelationshipNameFromPath($path2, null, null)
+						);
+					}
+					break;
+				default:
+					$tmp = I18N::translate(
+						// I18N: A complex relationship, such as “third-cousin’s great-uncle”
+						'%1$s’s %2$s',
+						self::getRelationshipNameFromPath($path1, null, null), // TODO: need the actual people
+						self::getRelationshipNameFromPath($path2, null, null)
+					);
+			}
 			if (!$relationship || strlen($tmp) < strlen($relationship)) {
 				$relationship = $tmp;
 			}
