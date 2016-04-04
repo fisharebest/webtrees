@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-04-02 21:04+0000\n"
+"PO-Revision-Date: 2016-04-04 15:42+0000\n"
 "Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
@@ -13927,9 +13927,9 @@ msgstr "Ця родина залишилася бездітною"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Це генеалогічне дерево має %s запис, який використовує такий само \"XREF\", як і інше генеалогічне дерево."
+msgstr[1] "Це генеалогічне дерево має %s записи, які використовують такий само \"XREF\", як і інше генеалогічне дерево."
+msgstr[2] "Це генеалогічне дерево має %s записів, які використовують такий само \"XREF\", як і інше генеалогічне дерево."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -13954,7 +13954,7 @@ msgstr "Цей файл пов'язаний з іншим ганеалогічн
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:179
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr ""
+msgstr "Ця папка буде використовуватись webtrees для зберігання файлів медіа, файлів GEDCOM, тимчасових файлів і т. п. Ці файли можуть містити особисті дані, і тому не мають бути доступні через Інтернет."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1023
@@ -13971,23 +13971,23 @@ msgstr "Даних про запитуваної персони немає аб�
 
 #: individual.php:65
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Цю особу було видалено. Видалення має бути переглянуто модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:56
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Цю особу було видалено. Ви маєте переглянути видалення, а потім %1$s чи %2$s його."
 
 #: individual.php:83
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Цю особу було відредаговано. Зміни мають бути переглянуті модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:74
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Цю особу було відредаговано. Ви маєте переглянути зміни, а потім %1$s чи %2$s їх."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:684 admin_users.php:598 edituser.php:207
@@ -14002,36 +14002,36 @@ msgstr "Детальні відомості про цю персону є осо
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr ""
+msgstr "Це поле введення дозволяє вам змінити календарний рік. Введіть рік у поле і натисність <b>Enter</b>, щоб змінити календарний рік на вказаний.<br><br><b>Додаткові функції</b> для <b>Переглянути рік</b><dl><dt><b>Більше ніж один рік</b></dt><dd>Ви можете шукати дати в діяпазоні років.<br><br>Діапазони років <u>включні</u>. Це значить, що один діапазон захоплює період з 1 січня першого року по 31 грудня останнього року. Ось декілька прикладів діапазонів років:<br><br><b>1992-5</b> - для всіх подій з 1992 по 1995.<br><b>1972-89</b> - для всіх подій з 1972 по 1989.<br><b>1610-759</b> - для всіх подій з 1610 по 1759.<br><b>1880-1905</b> - для всіх подій з 1880 по 1905.<br><b>880-1105</b> - для всіх подій з 880 по 1105.<br><br>Щоб побачити всі події у даного десятиліття або століття, ви можете вокористати <b>?</b> на місці останніх цифр. Наприклад, <b>197?</b> - для всіх подій з 1970 по 1979 чи <b>16??</b>  - для всіх подій з 1600 по 1699.<br><br>Вибір діапазону років змінть календар до режиму відображення років.</dd></dl>"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2156
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr ""
+msgstr "Це - розділений комами список тегів GEDCOM фактів, які буде відображено на формі додавання/редагування імені. Якщо ви використовуєте нелатинські алфавіти, такі як іврит, грецький, кирилиця чи арабський, ви, можливо, захочете додати такі теги, як _HEB, ROMN, FONE і т. п., щоб дозволити зберігати імена в декількох різних алфавітах."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1918
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr ""
+msgstr "Це - розділений комами список тегів GEDCOM фактів, які буде відображено при додаванні нової сім'ї. Наприклад, якщо тег MARR є в цьому списку, то поля для дати і місця шлюбу будуть відображені на формі."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1800
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr ""
+msgstr "Це - розділений комами список тегів GEDCOM фактів, які буде відображено при додаванні нової особи. Наприклад, якщо тег BIRT є в цьому списку, то поля для дати і місця народження будуть відображені на формі."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2185
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr ""
+msgstr "Це - розділений комами список тегів GEDCOM фактів, які буде відображено при додаванні чи редагуванні назв місць. Якщо ви використовуєте нелатинські алфавіти, такі як іврит, грецький, кирилиця чи арабський, ви, можливо, захочете додати такі теги, як _HEB, ROMN, FONE і т. п., щоб дозволити зберігати назви місць в декількох різних алфавітах."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
-msgstr ""
+msgstr "Це - посилання на ваш власний запис у генеалогічному дереві. Якщо це неправильна особа, зверніться до адміністратора."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1410
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-msgstr ""
+msgstr "Це - огляд таїнств <abbr title=\"Церква Ісуса Христа Святих останніх днів\">ЦІХСОД</abbr> для особи. \"B\" означає хрещення. \"E\" значить обдарування ЦІХСОД. “S” значить скріплювання шлюбу ЦІХСОД. “P” значить скріплювання дитини з батьком/матыр'ю ЦІХСОД."
 
 #: setup.php:289 setup.php:293
 msgid "This is case sensitive."
@@ -14048,47 +14048,47 @@ msgstr "Це початкове налаштування для опції «п�
 
 #: admin.php:602 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr ""
+msgstr "Поточна версія webtrees є найновішою. Оновлення непотрібне."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1860
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr ""
+msgstr "Це - список фактів GEDCOM, які користувачі можуть додати до сімей. Ви можете змінити цей список, додавши або видаливши назви фактів (навіть нестандартні, якщо це необхідно). Назви фактів у цьому списку не повинні бути присутні у списку \"Унікальні сімейні факти\"."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1742
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr ""
+msgstr "Це - список фактів GEDCOM, які користувачі можуть додавати до осіб. Ви можете змінити цей список, додавши або видаливши назви фактів (навіть нестандартні, якщо це необхідно). Назви фактів у цьому списку не повинні бути присутні у списку \"Унікальні факти осіб\"."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:2067
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr ""
+msgstr "Це - список фактів GEDCOM, які користувачі можуть додавати до сховищ. Ви можете змінити цей список, додавши або видаливши назви фактів (навіть нестандартні, якщо це необхідно). Назви фактів у цьому списку не повинні бути присутні у списку \"Унікальні факти сховищ\"."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1978
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr ""
+msgstr "Це - список фактів GEDCOM, які користувачі можуть додавати до джерел. Ви можете змінити цей список, додавши або видаливши назви фактів (навіть нестандартні, якщо це необхідно). Назви фактів у цьому списку не повинні бути присутні у списку \"Унікальні факти джерел\"."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1889
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr ""
+msgstr "Це - список фактів GEDCOM, які користувачі можуть додавати до сімей лише один раз. Наприклад, якщо MARR є в цьому списку, користувачі не зможуть додати більше ніж один запис MARR до сім'ї. Назви фактів у цьому списку не повинні бути присутні у списку \"Всі сімейні факти\"."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1771
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr ""
+msgstr "Це - список фактів GEDCOM, які користувачі можуть додавати до осіб лише один раз. Наприклад, якщо BIRT є в цьому списку, користувачі не зможуть додати більше ніж один запис BIRT до особи. Назви фактів у цьому списку не повинні бути присутні у списку \"Всі факти осіб\"."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:2096
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr ""
+msgstr "Це - список фактів GEDCOM, які користувачі можуть додавати до сховищ лише один раз. Наприклад, якщо NAME є в цьому списку, користувачі не зможуть додати більше ніж один запис NAME до сховища. Назви фактів у цьому списку не повинні бути присутні у списку \"Всі факти сховищ\"."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:2007
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr ""
+msgstr "Це - список фактів GEDCOM, які користувачі можуть додавати до джерел лише один раз. Наприклад, якщо TITL є в цьому списку, користувачі не зможуть додати більше ніж один запис TITL до джерела. Назви фактів у цьому списку не повинні бути присутні у списку \"Всі факти джерел\"."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:349
@@ -14123,7 +14123,7 @@ msgstr "Це короткий список джерел фактів, які в�
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1081
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default setting is 100."
-msgstr ""
+msgstr "Ширина (в пікселях), яка буде використана для автоматичної генерації мініатюр. Значення за замовчуванням - 100."
 
 #: admin_users.php:318 edituser.php:176 login.php:410 setup.php:430
 msgid "This is your real name, as you would like it displayed on screen."
@@ -14159,23 +14159,23 @@ msgstr "Цей медиаобъект не існує або у Вас нема�
 
 #: mediaviewer.php:52
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Цей медіа-об'єкт було видалено. Видалення має бути переглянуто модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:43
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Цей медіа-об'єкт було видалено. Ви маєте переглянути видалення, а потім %1$s чи %2$s його."
 
 #: mediaviewer.php:70
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Цей медіа-об'єкт було відредаговано. Зміни мають бути переглянуті модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:61
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Цей медіа-об'єкт було відредаговано. Ви маєте переглянути зміни, а потім %1$s чи %2$s їх."
 
 #: admin_media.php:570 find.php:640
 msgid "This media object is not linked to any other record."
@@ -14192,7 +14192,7 @@ msgstr "Це повідомлення буде відправлено %s"
 
 #: setup.php:438
 msgid "This must be at least six characters long. It is case-sensitive."
-msgstr ""
+msgstr "Має складатися принаймні з шести символів. Читливий до регістру."
 
 #. I18N: Help text for the “Sender name” site configuration setting
 #: admin_site_config.php:334
@@ -14205,28 +14205,28 @@ msgstr "Це примітка не існує або у Вас немає пра
 
 #: note.php:53
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Цю примітку було видалено. Видалення має бути переглянуто модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: note.php:44
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Цю примітку було видалено. Ви маєте переглянути це видалення, а потім %1$s чи %2$s його."
 
 #: note.php:71
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Цю примітку було відредаговано. Зміни мають бути переглянуті модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: note.php:62
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Цю примітку було відредаговано. Ви маєте переглянути зміни, а потім %1$s чи %2$s їх."
 
 #. I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting
 #: admin_trees_config.php:1604
 msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-msgstr ""
+msgstr "Цей параметр контролює, чи посилання з Приміток та Джерел, які додані до Фактів будуть відображатися у вкладках Примітки та Джерела на сторінці особи.<br><br>Зазвичай, вкладки Примітки та Джерела відображають лише ті посилання на Примітки та Джерела, які напряму пов'язані із забисом особи у базі даних. Це - посилання на Примітки та Джерела <i>першого рівня</i>.<br><br>При значенні параметру <b>Так</b> на даних вкладках будуть також відображатися посилання на Примітки та Джерела, які є частиною різноманітних Фактів у базі даних осіб. Це - посилання на Примітки та Джерела <i>другого рівня</i>, тому що різноманітні факти знаходяться на першому рівні."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1574
@@ -14266,12 +14266,12 @@ msgstr "Задайте горизонтальне або вертикальне 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:501
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr ""
+msgstr "Цей параметр зберігає родинні зв'язки у прихованих записах. Це означає, що ви побачите порожні \"приховані\" прямокутники на діаграмі родоводу та інших діаграмах, що містять прихованих осіб."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:482
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr ""
+msgstr "Цей параметр контролює відображення імен (але не інших деталей) для прихованих осіб. Особи є прихованими, якщо вони ще живі, або до їх запису були додані обмеження конфіденційності. Щоб приховати конкретне ім'я, додайте обмеження конфіденційності до запису імені."
 
 #: app/Module/GoogleMapsModule.php:499
 msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
@@ -14279,15 +14279,15 @@ msgstr "Ця опція встановлює широту і довготу на
 
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
-msgstr ""
+msgstr "На цій сторінці ви можете редагувати вихідні дані напряму, в обхід стандартних форм. Це розширена опція, і вам не варто користуватись нею, якщо ви не розумієтие формат GEDCOM. Якщо ви зробите тут помилку, її буде важко виправити."
 
 #: app/Theme/AbstractTheme.php:462
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Цю сторінку було переглянуто %s раз."
+msgstr[1] "Цю сторінку було переглянуто %s рази."
+msgstr[2] "Цю сторінку було переглянуто %s разів."
 
 #: app/Module/GoogleMapsModule.php:2829
 msgid "This place has no coordinates"
@@ -14299,27 +14299,27 @@ msgstr "Цей процес дозволяє власникові сайту г�
 
 #: gedrecord.php:90
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Цей запис не існує, або у вас немає дозволу для перегляду."
 
 #: gedrecord.php:64
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Цей запис було видалено. Виделення має бути переглянуте модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: gedrecord.php:55
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Цей запис було видалено. Ви маєте переглянути виделення, а потім %1$s чи %2$s його."
 
 #: gedrecord.php:82
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Цей запис було відредаговано. Зміни мають бути переглянуті модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: gedrecord.php:73
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Цей запис було відредаговано. Ви маєте переглянути зміни, а потім %1$s чи %2$s їх."
 
 #: repo.php:78
 msgid "This repository does not exist or you do not have permission to view it."
@@ -14327,23 +14327,23 @@ msgstr "Цей архів не існує або у Вас немає прав �
 
 #: repo.php:52
 msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Це сховище було видалено. Виделення має бути переглянуте модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: repo.php:43
 #, php-format
 msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Це сховище було видалено. Ви маєте переглянути виделення, а потім %1$s чи %2$s його."
 
 #: repo.php:70
 msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Це сховище було відредаговано. Зміни мають бути переглянуті модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: repo.php:61
 #, php-format
 msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Цей сховище було відредаговано. Ви маєте переглянути зміни, а потім %1$s чи %2$s їх."
 
 #: admin_users.php:553
 msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
