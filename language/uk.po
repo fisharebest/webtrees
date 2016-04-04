@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-03-30 09:27+0100\n"
+"PO-Revision-Date: 2016-04-02 21:04+0000\n"
 "Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.5\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -1455,7 +1455,7 @@ msgstr "Додати до обраного"
 #: app/Module/ClippingsCartModule.php:400
 #: app/Module/ClippingsCartModule.php:493
 msgid "Add to the clippings cart"
-msgstr "Додати у візок вирізок"
+msgstr "Додати у кошик вирізок"
 
 #: admin_trees_manage.php:527
 msgid "Add unlinked records"
@@ -3775,7 +3775,7 @@ msgstr "Клацніть мишею, щоб призначити персону 
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:36
 msgid "Clippings cart"
-msgstr "GEDCOM-Корзина"
+msgstr "Кошик вирізок"
 
 #: app/GedcomTag.php:1916
 msgid "Coat of arms"
@@ -6016,7 +6016,7 @@ msgstr "Допуск до генеалогічному дереву та нал�
 #: app/Module/ClippingsCartModule.php:88
 #: app/Module/ClippingsCartModule.php:426
 msgid "Family tree clippings cart"
-msgstr "GEDCOM-Корзина генеалогічного древа"
+msgstr "Кошик вирізок генеалогічного древа"
 
 #: admin_trees_config.php:594 admin_trees_manage.php:632
 msgid "Family tree title"
@@ -12612,7 +12612,7 @@ msgstr "Сьєрра-Леоне"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr ""
+msgstr "Вважається, що прості дати вказуються в григорианському календарі. Щоб вказати дату в іншому календарі, додайте ключове слово перед датою. Це ключове слово не є обов'язковим, якщо місяць або рік дати роблять її однозначною."
 
 #: find.php:190
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
@@ -12631,22 +12631,22 @@ msgstr "Сестра"
 #: admin_site_config.php:562 admin_site_config.php:578
 #: admin_site_config.php:603
 msgid "Site identification code"
-msgstr ""
+msgstr "Ідентифікаційний код сайту"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:478 edituser.php:300
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Зареєстровані користувачі сайту можуть відправляти один одному повідомлення. Ви можете вибрати спосіб, яким ці повідомлення будуть надсилатися вам, чи відмовитися від отримання повідомлень взагалі."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:520 admin_site_config.php:541
 msgid "Site verification code"
-msgstr ""
+msgstr "Код підтвердження сайту"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:531 admin_site_config.php:552
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr ""
+msgstr "Коди підтвердження сайту не працюють, якщо webtrees встановлено в підпапку."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
@@ -12656,7 +12656,7 @@ msgstr "Карти сайту"
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:306
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr ""
+msgstr "Карта сайту (sitemap) - це спосіб для адміністратора сайту сказати пошуковим системам про сротінки, які доступні для обходу. Всі основні пошукові системи підтримують карти сайтів. Для отримання додаткової інформації звертайтеся на сайт <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:145
@@ -12689,7 +12689,7 @@ msgstr "Розмір карти (в пікселях)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/AbstractTheme.php:71
 msgid "Skip to content"
-msgstr ""
+msgstr "Пропустити вміст"
 
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgid "Slave"
@@ -12743,16 +12743,16 @@ msgstr "Сомалі"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:297
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr ""
+msgstr "Деякі генеалогічні програми створюють файли GEDCOM, що містять імена медіа-файлів з повними шляхами. Ці шляхи не будуть існувати на web-сервері. Щоб дозволити webtrees знайти такий файл, треба видалити першу частину шляху до файлу."
 
 #: app/Module/GoogleMapsModule.php:436
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr ""
+msgstr "Деякі назви місць можуть писатися з необов'язковими префіксами і суфіксами. Наприклад, \"Orange\" і \"Orange County\". Якщо генеалогічне дерево містить повні назви місць, а географічна база містить коротні назви місць, то ви повинні вказати список префіксів і суфіксів, якими можна знехтувати. Декілька варіантів повинні бути розділені крапкою з комою. Наприклад, \"County;County of\" or \"Township;Twp;Twp.\"."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1559
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr ""
+msgstr "Деякі теми можуть відображати іконки на вкладці \"Факти і події\"."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:520
@@ -12823,7 +12823,7 @@ msgstr "Префікс ID джерела"
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: admin_trees_config.php:2213
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-msgstr ""
+msgstr "Посилання на джерела можуть включати в себе поля для запису якості даних (первинні, вторинні та ін.) і дати, коли подія була зареєстрована в джерелі. Якщо ви не використовуєте ці поля, ви можете відключити їх, коли створюєте нове посилання на джерело."
 
 #. I18N: Label for search field
 #: find.php:262
@@ -13125,7 +13125,7 @@ msgstr "Шпіцберген та острови Ян-Майен"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:90
 msgid "Swap individuals"
-msgstr ""
+msgstr "Поміняти місцями осіб"
 
 #: app/Stats.php:6944
 msgid "Swaziland"
@@ -13145,7 +13145,7 @@ msgstr "Сідней, Австралія"
 
 #: admin_trees_manage.php:737
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "Синхронізувати генеалогічні дерева з файлами GEDCOM"
 
 #: app/Stats.php:6946
 msgid "Syrian Arab Republic"
@@ -13275,11 +13275,13 @@ msgstr "Таїланд"
 
 #: help_text.php:219
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr ""
+msgstr "Поле <b>ім'я</b> містиь повне ім'я особи, як воно пишеться або як воно було зафіксовано. Так воно буде відображатися на екрані. Для відокремдення різних частин імені використовуються стандартні генеалогічні анотації."
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr ""
+"Поле <b>фамілія</b> містить ім'я, яке використовується для сортування і групування. Воно може відрізнятися від справжньої фамілії особи, яка завжди береться із поля <b>ім'я</b>. Це поле може бути використано для сортування фамілій з чи без префіксу (Gogh / van Gogh) і для групування різних варіантів написання чи флексії (Kowalski / Kowalska). Якщо особа має відображатися більше ніж під однією фамілією, кожна фамілія має бути відокремлена \n"
+"комою."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:470
 msgid "The FAQ list is empty."
@@ -13288,7 +13290,7 @@ msgstr "Список ЧаВО порожній."
 #: admin_trees_manage.php:145
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "GEDCOM файл \"%s\" було імпортовано."
 
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "The Hague, Netherlands"
@@ -13311,11 +13313,11 @@ msgstr "Майстер перенесення PhpGedView в webtrees предс�
 #: admin_users.php:101
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now login by accessing the following link: %s"
-msgstr ""
+msgstr "Адміністратор webtrees сайту %s схвалив вашу заявку на створення облікового запису. Тепер ви можете увійти, використовуючи наступне посилання: %s"
 
 #: login.php:602
 msgid "The administrator has been informed. As soon as they give you permission to login, you can login with your user name and password."
-msgstr ""
+msgstr "Адміністратора було проінформовано. Щойно він дасть дозвіл на вхід, ви зможете увійти, використовуючи ім'я і пароль вашого облікового запису."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:45
@@ -13331,7 +13333,7 @@ msgstr "Зміни для «%s» відхилені."
 
 #: app/Module/ClippingsCartModule.php:296
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>"
-msgstr ""
+msgstr "Кошик вирізок дозволяє вам робити витяги (\"вирізки\") з цього генеалогічного дерева і поєднати їх у один файл для завантаження і наступного імпорту у вашу власну генеалогічно програму. Завантажуваний файл записується у форматі GEDCOM.<br><ul><li>Як зробити вирізку?<br>Це дуже просто. Кожного разу, коли ви бачите ім'я (особи, сім'ї чи джерела), на яке можна натиснути, перейдіть на сторінку із подробицями для цього імені. Там ви побачите посилання <b>Додати у кошик вирізок</b>. Коли ви перейдете по цьому посиланню, вам буде запропоновано декілька варіантів для завантаження.</li><li>Як завантажувати?<br>Коли у візку будуть усі потрібні вам елементи, ви можете завантажити їх просто натиснувши на посилання \"Завантажити\". Слідуйте інструкціям і посиланням.</li></ul>"
 
 #: site-unavailable.php:54
 msgid "The database reported the following error message:"
@@ -13359,29 +13361,29 @@ msgstr "Генеалогічне древо експортовано в %s."
 #: admin_trees_manage.php:76
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "Генеалогічне дерево \"%s\" уже існує."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:79
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "Генеалогічне дерево \"%s\" було створено."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:56 admin_trees_manage.php:151
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "Генеалогічне дерево \"%s\" було видалено."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:65
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr ""
+msgstr "Генеалогічне дерево \"%s\" буде показано відвідувачам, коли вони вперше заходимуть на цей сайт."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "Генеалогічні дерева були успішно поєднані."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:143
@@ -13392,7 +13394,7 @@ msgstr "Родина «%s» видалено, вона складається з
 #: addmedia.php:178 admin_media_upload.php:136
 #, php-format
 msgid "The file %s already exists. Use another filename."
-msgstr ""
+msgstr "Файл %s вже існує. Вкажіть інше ім'я файлу."
 
 #: admin_site_upgrade.php:295 admin_site_upgrade.php:422
 #: admin_site_upgrade.php:455 admin_trees_export.php:44
@@ -13469,13 +13471,13 @@ msgstr "Папка може бути вказана в повному обсяз
 
 #: admin_site_merge.php:201
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Наступні факти і події були знайдені в обох записах."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:248 admin_site_merge.php:294
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Наступні факти і події були знайдені лише в записах %s."
 
 #: setup.php:173
 msgid "The following list shows typical requirements."
@@ -13522,7 +13524,7 @@ msgstr "Зв'язок між «%1$s» та «%2$s» була видалена."
 #: admin_site_merge.php:109
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Посилання з \"%1$s\" до \"%2$s\" було оновлено."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -13545,7 +13547,7 @@ msgstr "Мультимедійний файл не був знайден у сі
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr ""
+msgstr "Медіа-файл, який ви завантажуєте, може, і напевно, повинен, бути названий по-іншому на сервері ніж на вашому локальному комп'ютері. Це так, тому що локальне ім'я файла має значення для вас, але для інших відвідувачів сайту буде мати набагато менше значення. Розгляньте також можливіть того, що ви і ще хтось спробуєте разом завантажити різні файли з назвою \"бабуся.jpg\".<br><br>В цьому полі необхідно вказати нове ім'я файла, який ви завантажуєте. Ім'я, яке ви тут введете, буде також використано у якості імені мініатюри, яка може бути завантажена окремо або згенерована автоматично. Вам не треба вводити розширення файлу (jpg, gif, pdf, doc, і т. п.)<br><br>Залиште це поле порожнім, щоб залишити початкове ім'я файлу, який ви завантажили з вашого локального комп'ютера."
 
 #: setup.php:171
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13554,12 +13556,12 @@ msgstr "Вимоги до процесора та пам'яті залежать
 #: admin_modules.php:49
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Модуль \"%s\" було відключено."
 
 #: admin_modules.php:51
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Модуль \"%s\" було включено."
 
 #: admin_site_upgrade.php:400
 #, php-format
@@ -13568,7 +13570,7 @@ msgstr "Нові файли знаходяться в папці %s."
 
 #: admin_site_config.php:489
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr ""
+msgstr "Новому користувачу буде запропоновано підтвердити адресу електронної пошти перед тим, як обліковий запис буде створено."
 
 #: help_text.php:303
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13589,35 +13591,35 @@ msgstr "Паролі не збігаються."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Налаштування для всіх генеалогічнох дерев було оновлено."
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Налаштування для нових генеалогічних дерев були оновлені."
 
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "Налаштування для генеалогічного дерева \"%s\" були оновлені."
 
 #: admin_modules.php:81
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Налаштування для модуля \"%s\" були видалені."
 
 #: app/Module/GoogleMapsModule.php:260
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "Налаштування для модуля \"%s\" були оновлені."
 
 #: setup.php:380
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-msgstr ""
+msgstr "Префікс не є обов'язковим, але є рекомендованим. Додаючи до назв таблиць унікальний префікс, ви надаєте можливість декільком додаткам використовувати одну і ту саму базу даних. Префікс \"wt_\" є рекомендованим, але він може бути будь-яким, на ваш розсуд."
 
 #: admin_trees_renumber.php:242
 #, php-format
 msgid "The record %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "Запис %1$s було переіменовано на %2$s."
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
@@ -13627,11 +13629,11 @@ msgstr "Запис скопійовано в буфер обміну."
 #: admin_site_merge.php:168
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Записи \"%1$s\" і \"%2$s\" було об'єднано."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "The regex appears to contain an error. It can’t be used."
-msgstr ""
+msgstr "Регулярний вираз містить помилку. Він не може бути використаний."
 
 #: setup.php:153
 msgid "The server configuration is OK."
@@ -13639,7 +13641,7 @@ msgstr "Конфігурація сервера в порядку."
 
 #: admin_trees_renumber.php:257
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "Ліміт часу серверу було досяснуто."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:37
@@ -13669,20 +13671,20 @@ msgstr "Мініатюра %s не існує."
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:290
 msgid "The time in seconds that a webtrees session remains active before requiring a login. The default is 7200, which is 2 hours."
-msgstr ""
+msgstr "Проміжок часу у секундах, протягом якого сеанс webtrees залишається активним. Значення за замовчуванням - 7200, що складає 2 години."
 
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr ""
+msgstr "Часовий пояс необхідний для обчислення дат, таких як сьогоднішня дата."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Два генеалогічні дерева мають %1$s запис, який використовує той самий \"XREF\"."
+msgstr[1] "Два генеалогічні дерева мають %1$s записи, які використовують той самий \"XREF\"."
+msgstr[2] "Два генеалогічні дерева мають %1$s записів, які використовують той самий \"XREF\"."
 
 #: admin_site_upgrade.php:504
 msgid "The upgrade is complete."
@@ -13696,7 +13698,7 @@ msgstr "Занадто великий файл."
 #: admin_users.php:807
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Користувач %s був видалений."
 
 #: login.php:314
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
@@ -13714,7 +13716,7 @@ msgstr "Неправильне ім'я користувача або парол�
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:967
 msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-msgstr ""
+msgstr "Значення, яке буде записано у тег \"meta description\" в заголовку HTML сторінки. Залиште це поле порожнім, щоб використати ім'я генеалогічного дерева."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
@@ -13728,33 +13730,33 @@ msgstr "Версія %s занадто стара."
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
-msgstr ""
+msgstr "Правило доступу до web-сайту було створено."
 
 #: admin_site_access.php:105
 msgid "The website access rule has been deleted."
-msgstr ""
+msgstr "Правило доступу до web-сайту було видалено."
 
 #: admin_site_access.php:89
 msgid "The website access rule has been updated."
-msgstr ""
+msgstr "Правило доступу до web-сайту було оновлено."
 
 #: admin_site_config.php:47 admin_site_config.php:66 admin_site_config.php:78
 #: admin_site_config.php:93 admin_site_config.php:102
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Налаштування web-сайту було оновлено."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2247
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr ""
+msgstr "Сайт www.geonames.org надає велику базу даних назв місць. Вона може бути використана для пошуку при введенні нових місць. Для використання цієї функції, ви маєте зареєструвати безкоштовний обліковий запис на www.geonames.org і надати ім'я користувача."
 
 #: setup.php:499
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr ""
+msgstr "Розробникам webtrees буде цікаво дізнатися про цю помилку. Якщо ви зв'яжетесь з ними, вони допоможуть вам вирішити проблему."
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr ""
+msgstr "Символ \"%\" є підстановочним і буде відповідати нулю або більше інших символів."
 
 #: admin_modules.php:186 admin_users.php:486 app/Theme/AbstractTheme.php:1698
 #: edituser.php:272
@@ -13773,11 +13775,11 @@ msgstr "Вибір теми"
 
 #: admin_modules.php:160
 msgid "Themes"
-msgstr ""
+msgstr "Теми"
 
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting “default theme” at one level will use the theme at the next level."
-msgstr ""
+msgstr "Теми можуть бути вибрані на трьох рівнях: користувача, генеалогічного дерева і веб-сайту. Налаштуваня користувача мають приорітет над налаштуваннями генеалогічного дерева, які, в свою чергу, мають приорітет над налаштуваннями веб-сайту. Вибір \"тема за замовчуванням\" на одному рівні означає, що буде використана тема з іншого рівня."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:126
@@ -13813,14 +13815,14 @@ msgstr "Є очікують зміни для модерування."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "За останній %s день ніяких змін не було."
+msgstr[1] "За останні %s дні ніяких змін не було."
+msgstr[2] "За останні %s днів ніяких змін не було."
 
 #: login.php:253
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr ""
+msgstr "Намає облікового запису з іменем або адресою електронної пошти \"%s\"."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
@@ -13858,32 +13860,32 @@ msgstr "Ці сторінки надають доступ до всіх нала
 #: import.php:150
 #, php-format
 msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-msgstr ""
+msgstr "Цей файл GEDCOM закодовано використовуючи кодування символів %1$s. Припустимо, що це означає %2$s."
 
 #: login.php:89
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr ""
+msgstr "Цей обліковий запис не було схвалено. Будь-ласка, чекайте, доки адміністратор не схвалить його."
 
 #: login.php:84
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr ""
+msgstr "Цей обліковий запис не будо перевірено. Будь-ласка, перевірте надходження на вашу електронну листа перевірки."
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr ""
+msgstr "Цей блок показуе редакторам список записів з очікуваними змінами, які мають бути схвалені модератором. Він також генерує щоденні електронні листи модераторам, коли очікувані зміни існують."
 
 #: admin_users.php:463 edituser.php:312
 msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
-msgstr ""
+msgstr "Цей прапорець контролює вашу видимість іншими користувачам, коли ви знаходитесь на сайті. Він також контролює вашу можливість бачити інших користувачів, присутніх на сайті, якщо вони дозволили себе бачити.<br><br>Коли цей прапорець знято, ви будете повністю невидимі для інших, і ви також не зможете бачити, чи інші користувачі присутні на сайті. Коли цей прапорець встановлено, ви будете видимі для інших і зможете бачити інших користувачів, які дозволили себе бачити."
 
 #: setup.php:350 setup.php:361
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
-msgstr ""
+msgstr "Ця база даних і префікс таблиць використовуються іншим додатком. Якщо у вас є існуюча система PhpGedView, вам потрібно створити нову систему webtrees. Ви зможете імпортувати ваші дані і налаштування PhpGedView пізніше."
 
 #: setup.php:257
 #, php-format
 msgid "This database is only running MySQL version %s. You cannot install webtrees here."
-msgstr ""
+msgstr "Цей сервер баз даних має версію MySQL %s. Ви не можете встановити базу даних webtrees на ньому."
 
 #: admin_users.php:367 edituser.php:265 login.php:420 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
@@ -13899,23 +13901,23 @@ msgstr "Ця сім'я не існує або у Вас немає прав дл
 
 #: family.php:51
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Цю сім'ю було видалено. Видалення має бути переглянуте модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:42
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Цю сім'ю було видалено. Ви маєте перегянути видалення, а потім %1$s чи %2$s його."
 
 #: family.php:69
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Цю сім'ю було відредаговано. Зміни мають бути перевірені модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:60
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Цю сім'ю було відредаговано. Ви маєте перегянути зміни, а потім %1$s чи %2$s їх."
 
 #: app/Functions/FunctionsCharts.php:414 app/Functions/FunctionsCharts.php:551
 msgid "This family remained childless"
@@ -13947,7 +13949,7 @@ msgstr "Це генеалогічне древо було оновлено ос�
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-msgstr ""
+msgstr "Цей файл пов'язаний з іншим ганеалогічним деревом на цьому червері. Він не може бути видалений, переміщений чи перейменований доти, доки ці зв'зки не буде видалено."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:179
@@ -13961,7 +13963,7 @@ msgstr "Ця папка буде використовуватися для зб�
 
 #: app/Filter.php:480
 msgid "This form has expired. Try again."
-msgstr ""
+msgstr "Термін дії цієї форми сплив. Будь-ласка, спробуйте ще раз."
 
 #: app/Controller/ChartController.php:57 individual.php:98
 msgid "This individual does not exist or you do not have permission to view it."
