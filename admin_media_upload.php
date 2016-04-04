@@ -185,7 +185,7 @@ if (empty($filesize)) {
 
 <p>
 	<?php echo I18N::translate('Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats.'); ?>
-	<?php echo I18N::translate('Maximum upload size: '), $filesize, '</p>'; ?>
+	<?php echo I18N::translate('Maximum upload size: '), $filesize; ?>
 </p>
 
 <?php
