@@ -17,7 +17,7 @@ cache:
     - $HOME/.composer/cache
 
 install:
-  - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
+  - travis_retry composer config github-oauth.github.com 243b960208788c276f2ec67fcd7c3bd6c0d58750
   - travis_retry composer update --prefer-dist --no-interaction
 
 script:
