@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-16 19:21+0100\n"
+"PO-Revision-Date: 2016-04-04 15:18+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <http://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.5\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -10674,7 +10674,7 @@ msgstr "S'està posant el lloc fora de línia, creant el fitxer %s…"
 #: admin_site_upgrade.php:472
 #, php-format
 msgid "Place the website online, by deleting the file %s…"
-msgstr "Poseu el lloc en línia, esborrant el fitxer %s…"
+msgstr "S'està posant el lloc en línia, esborrant el fitxer %s…"
 
 #: admin_trees_config.php:1624 search.php:204 statistics.php:405
 msgid "Places"
@@ -15337,12 +15337,12 @@ msgstr "Villa Hermosa, Mèxic"
 #. I18N: A configuration setting
 #: admin_users.php:454
 msgid "Visible online"
-msgstr "Visble en línia"
+msgstr "Visible en línia"
 
 #. I18N: A configuration setting
 #: admin_users.php:460 edituser.php:306
 msgid "Visible to other users when online"
-msgstr "Visible en línea a altres usuaris"
+msgstr "Visible en línia a altres usuaris"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:193 admin_users.php:39 admin_users.php:530
