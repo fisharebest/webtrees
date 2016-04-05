@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-16 09:36+0100\n"
+"PO-Revision-Date: 2016-03-27 19:43+0100\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -6624,7 +6624,7 @@ msgstr "Nemzedék"
 #: modules_v3/ahnentafel_report/report.xml:78
 #: modules_v3/descendancy_report/report.xml:55
 msgid "Generation "
-msgstr "Nemezedék "
+msgstr "Nemzedék "
 
 #: ancestry.php:96 app/Module/GoogleMapsModule.php:791 descendancy.php:75
 #: familybook.php:65 fanchart.php:99 hourglass.php:66

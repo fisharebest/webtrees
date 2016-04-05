@@ -22,24 +22,34 @@ use Fisharebest\Webtrees\Individual;
  * Marital status.
  */
 abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implements CensusColumnInterface {
-	/* Text to display for married individuals */
+	/* Text to display for married males */
 	protected $husband = '';
+
+	/* Text to display for married females */
 	protected $wife    = '';
 
-	/* Text to display for unmarried individuals */
+	/* Text to display for unmarried males */
 	protected $bachelor = '';
+
+	/* Text to display for unmarried females */
 	protected $spinster = '';
 
-	/* Text to display for children */
+	/* Text to display for male children */
 	protected $boy  = '';
+
+	/* Text to display for female children */
 	protected $girl = '';
 
-	/* Text to display for divorced individuals */
+	/* Text to display for divorced males */
 	protected $divorce  = '';
+
+	/* Text to display for divorced females */
 	protected $divorcee = '';
 
-	/* Text to display for widowed individuals */
+	/* Text to display for widowed males */
 	protected $widower = '';
+
+	/* Text to display for widowed females */
 	protected $widow   = '';
 
 	/* At what age is this individual recorded as an adult */
@@ -171,6 +181,6 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
 	 * @return bool
 	 */
 	private function isDead(Individual $individual) {
-		return Date::compare($individual->getDeathDate(), $this->date()) < 0;
+		return $individual->getDeathDate()->isOK() && Date::compare($individual->getDeathDate(), $this->date()) < 0;
 	}
 }

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-16 09:56+0100\n"
+"PO-Revision-Date: 2016-04-02 18:55+0000\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <http://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.5\n"
 "X-Poedit-Language: Estonian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -42,7 +42,7 @@ msgstr " aga detailid on teadmata"
 #: modules_v3/descendancy_report/report.xml:424
 #: modules_v3/descendancy_report/report.xml:455
 msgid " in "
-msgstr " selles "
+msgstr " kohas "
 
 #: statisticsplot.php:887 statisticsplot.php:937 statisticsplot.php:991
 #: statisticsplot.php:1041 statisticsplot.php:1095 statisticsplot.php:1145
@@ -337,7 +337,7 @@ msgstr[1] "%s isikud sündmustega: %s ning %s ja %s vahel"
 #: setup.php:121
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-msgstr "%s on selles serveris keelatud. Te ei saa paigaldada webtrees-it kuni see on lubatud. Paluge serveri administraatoril see lubada."
+msgstr "%s on selles serveris keelatud. Te ei saa paigaldada webtrees-i kuni see on lubatud. Paluge serveri administraatoril see lubada."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5963
 #, php-format
@@ -717,7 +717,7 @@ msgstr "<center><b>Tere tulemast sellele Genealoogia veebilehele</b></center><br
 
 #: login.php:157
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
-msgstr "<center><b>Tere tulemast sellele Genealoogia veebilehele</b></center><br>Ligipääs sellele saidile on lubatud igale külastajale kel on kasutajakonto.<br><br>Kui sul on kasutajakonto, võid sisse logida. Kui sul ei ole kasutajakontot, võid seda taotleda vajutades alloleval lingil.<br><br>Pärast sinu taotlusega tutvumist aktiveerib administraator sinu konto. Sulle saabub e-kiri kui taotlus on vastu võetud."
+msgstr "<center><b>Tere tulemast sellele Genealoogia veebilehele</b></center><br>Ligipääs sellele saidile on lubatud igale külastajale, kellel on kasutajakonto.<br><br>Kui sul on kasutajakonto, võid sisse logida. Kui sul ei ole kasutajakontot, võid seda taodelda vajutades alloleval lingil.<br><br>Pärast sinu taotlusega tutvumist aktiveerib administraator sinu konto. Sulle saabub e-kiri kui taotlus on vastu võetud."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
@@ -6415,7 +6415,7 @@ msgstr "Kasu"
 #: app/GedcomCode/GedcomCodePedi.php:70
 msgctxt "Pedigree"
 msgid "Foster"
-msgstr "Hooldaja"
+msgstr "Kasu"
 
 #: app/GedcomCode/GedcomCodeRela.php:120
 msgid "Foster child"

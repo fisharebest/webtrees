@@ -2091,6 +2091,7 @@ dd .deletelink {
 	clear: both;
 }
 
+#note-edit .facts_table,
 #notes_content .facts_table,
 #personal_facts_content .facts_table {
 	table-layout: fixed;
@@ -4427,6 +4428,14 @@ footer {
 	background-position:center -261px;
 }
 
+.menu-indi-orderfam {
+	background-position: left 0;
+}
+
+[dir=rtl] .menu-indi-orderfam {
+	background-position: right 0;
+}
+
 .menu-sour {
 	background-position:center -319px;
 }
@@ -4724,6 +4733,14 @@ footer {
 [dir=rtl] .menu-indi-addfav,
 [dir=rtl] .menu-record-addfav {
 	background-position: right -736px;
+}
+
+.menu-indi-editname {
+	background-position: left -690px;
+}
+
+[dir=rtl] .menu-indi-editname {
+	background-position: right -690px;
 }
 
 .menu-indi-addname {

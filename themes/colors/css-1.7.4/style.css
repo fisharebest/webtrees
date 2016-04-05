@@ -2166,6 +2166,7 @@ dd .deletelink {
 	clear: both;
 }
 
+#note-edit .facts_table,
 #notes_content .facts_table,
 #personal_facts_content .facts_table {
 	table-layout: fixed;
@@ -4839,6 +4840,14 @@ footer {
 [dir=rtl] .menu-indi-addfav,
 [dir=rtl] .menu-record-addfav {
 	background-position: right -832px;
+}
+
+.menu-indi-editname {
+	background-position: left -836px;
+}
+
+[dir=rtl] .menu-indi-editname {
+	background-position: right -836px;
 }
 
 .menu-indi-addname {

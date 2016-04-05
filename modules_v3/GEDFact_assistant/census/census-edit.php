@@ -36,7 +36,7 @@ $controller->restrictAccess(class_exists($census));
 $census = new $census;
 $controller->restrictAccess($census instanceof CensusInterface);
 $date = new Date($census->censusDate());
-$year = strip_tags($date->display(false, '%Y', false));
+$year = $date->minimumDate()->format('%Y');
 
 $headImg = '<i class="icon-button_head"></i>';
 

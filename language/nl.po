@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-18 21:23+0100\n"
+"PO-Revision-Date: 2016-03-25 20:39+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -3355,7 +3355,7 @@ msgstr "Centraal-Afrikaanse Republiek"
 
 #: app/GedcomTag.php:1914
 msgid "Certificate"
-msgstr "Certificaat"
+msgstr "Akte"
 
 #: app/Stats.php:6948
 msgid "Chad"
