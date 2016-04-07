@@ -385,7 +385,9 @@ class FunctionsPrintFacts {
 					// These will be shown at the end
 					break;
 				case '_UID':
-					// These shouldn't be displayed at all.
+				case 'RIN':
+					// These don't belong at level 2, so do not display them.
+					// They are only shown when editing.
 					break;
 				case 'EVEN': // 0 SOUR / 1 DATA / 2 EVEN / 3 DATE / 3 PLAC
 					$events = array();
