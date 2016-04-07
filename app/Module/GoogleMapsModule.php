@@ -745,18 +745,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		global $controller, $WT_TREE;
 
 		$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
-
-		$controller        = new ChartController();
-		$this->generations = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
-		$this->treesize    = pow(2, $this->generations) - 1;
-		$this->ancestors   = array_values($controller->sosaAncestors($this->generations));
-
-		// Start of internal configuration variables
 		// Limit this to match available number of icons.
 		// 8 generations equals 255 individuals
 		$MAX_PEDIGREE_GENERATIONS = min($MAX_PEDIGREE_GENERATIONS, 8);
 
-		// End of internal configuration variables
+		$controller        = new ChartController();
+		$this->generations = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
+		$this->treesize    = pow(2, $this->generations) - 1;
+		$this->ancestors   = array_values($controller->sosaAncestors($this->generations));
+
 		$controller
 			->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->root->getFullName()))
 			->pageHeader()
