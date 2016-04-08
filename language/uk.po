@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-04-06 19:08+0000\n"
+"PO-Revision-Date: 2016-04-08 19:51+0000\n"
 "Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
@@ -1246,7 +1246,7 @@ msgstr "Додати %s в корзину"
 
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
-msgstr "Додати дитину створивши неповну сім'ю"
+msgstr "Додати дитину у неповну сім'ю"
 
 #: app/Controller/FamilyController.php:84
 #: app/Functions/FunctionsCharts.php:310
@@ -1264,7 +1264,7 @@ msgstr "Додати чоловіка в цю сім'ю"
 #: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
 #: edit_interface.php:1156
 msgid "Add a husband using an existing individual"
-msgstr "Додати чоловіка з вже имеющеихся персон"
+msgstr "Додати чоловіка з уже існуючих осіб"
 
 #: app/Functions/FunctionsEdit.php:1087 app/Functions/FunctionsEdit.php:1091
 msgid "Add a new associate"
@@ -1941,7 +1941,7 @@ msgstr "Сталася помилка при розпаковуванні фай
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:37
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "Інтерактивне древо, з зазначенням всіх предків і нащадків персони."
+msgstr "Інтерактивне дерево, з зазначенням всіх предків і нащадків персони."
 
 #: setup.php:497
 msgid "An unexpected database error occurred."
@@ -2058,7 +2058,7 @@ msgstr "Прийняти всі зміни"
 
 #: admin_users.php:875
 msgid "Approved"
-msgstr "Затверджено"
+msgstr "Схвалено"
 
 #: admin_users.php:386
 msgid "Approved by administrator"
@@ -3437,7 +3437,7 @@ msgstr "Зміни"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Зміни за останній день"
+msgstr[0] "Зміни за останній %s день"
 msgstr[1] "Зміни за останні %s дні"
 msgstr[2] "Зміни за останні %s днів"
 
@@ -4059,7 +4059,7 @@ msgstr "Створити"
 
 #: admin_trees_manage.php:621
 msgid "Create a new family tree"
-msgstr "Створити нове генеалогічне древо"
+msgstr "Створити нове генеалогічне дерево"
 
 #: edit_interface.php:750
 msgid "Create a new individual"
@@ -4461,7 +4461,7 @@ msgstr "Дата останньої зміни"
 #: modules_v3/fact_sources/report.xml:319
 #: modules_v3/missing_facts_report/report.xml:463
 msgid "Date of marriage"
-msgstr "Дата весілля"
+msgstr "Дата шлюбу"
 
 #: app/GedcomTag.php:558 modules_v3/missing_facts_report/report.xml:420
 msgid "Date of marriage banns"
@@ -4873,7 +4873,7 @@ msgstr "Графік за замовчуванням"
 
 #: admin_trees_manage.php:435
 msgid "Default family tree"
-msgstr "Генеалогічне древо за замовчуванням"
+msgstr "Генеалогічне дерево за замовчуванням"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:658 admin_users.php:582
@@ -5693,7 +5693,7 @@ msgstr "Події"
 
 #: statistics.php:417
 msgid "Events in countries"
-msgstr "Місця подій по країнах"
+msgstr "Події в країнах"
 
 #: app/Module/IndividualFactsTabModule.php:131
 msgid "Events of close relatives"
@@ -6210,7 +6210,7 @@ msgstr "Фіджі"
 
 #: app/Module/GoogleMapsModule.php:4230
 msgid "File containing places (CSV)"
-msgstr "Файл містить місця розташування (CSV??)"
+msgstr "Файл, що містить місця розташування (CSV - значення, розділені комами)"
 
 #: admin_media.php:490 app/GedcomTag.php:1783
 msgid "File size"
@@ -6820,7 +6820,7 @@ msgstr "Гренландія"
 #. I18N: The gregorian calendar
 #: app/Date.php:198 app/Module/YahrzeitModule.php:284
 msgid "Gregorian"
-msgstr "Григоріанськии"
+msgstr "Григоріанський"
 
 #: app/Stats.php:6818
 msgid "Grenada"
@@ -6966,7 +6966,7 @@ msgstr "Єврейське ім'я"
 #: app/GedcomTag.php:1521 app/Module/GoogleMapsModule.php:342
 #: app/Module/GoogleMapsModule.php:467
 msgid "Height"
-msgstr "ріст"
+msgstr "Висота"
 
 #: login.php:243 login.php:324
 #, php-format
@@ -7268,7 +7268,7 @@ msgstr "Якщо Ви ці дані не запитували, то видалі
 
 #: app/Module/GoogleMapsModule.php:4545
 msgid "If you have a large number of inactive places, it can be slow to generate the list."
-msgstr "Якщо у Вас велика кількість невикористовуваних місць, то список буде створюватися довго."
+msgstr "Якщо у вас велика кількість невикористовуваних місць, то список може створюватися довго."
 
 #: addmedia.php:545 admin_media_upload.php:254
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -7533,7 +7533,7 @@ msgstr "Папка для установки"
 #: app/Module/ChartsBlockModule.php:197
 #: app/Module/InteractiveTreeModule.php:32 app/Theme/AbstractTheme.php:1172
 msgid "Interactive tree"
-msgstr "Інтерактивне древо"
+msgstr "Інтерактивне дерево"
 
 #: app/Module/ChartsBlockModule.php:126
 #: app/Module/InteractiveTree/TreeView.php:69
@@ -7541,7 +7541,7 @@ msgstr "Інтерактивне древо"
 #: app/Module/InteractiveTreeModule.php:111
 #, php-format
 msgid "Interactive tree of %s"
-msgstr "Інтерактивне древо для %s"
+msgstr "Інтерактивне дерево для %s"
 
 #: app/Functions/FunctionsEdit.php:246
 msgid "Internal messaging"
@@ -7673,7 +7673,7 @@ msgstr "Японія"
 #. I18N: The Hebrew/Jewish calendar
 #: app/Date.php:201 app/Module/YahrzeitModule.php:283 help_text.php:172
 msgid "Jewish"
-msgstr "Єврейське"
+msgstr "Єврейський"
 
 #: app/GedcomCode/GedcomCodeTemp.php:179
 msgid "Johannesburg, South Africa"
@@ -9078,7 +9078,7 @@ msgstr "Військова служба"
 
 #: app/Module/GoogleMapsModule.php:370
 msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-msgstr "Мінімальний і максимальний фактор масштабу карти Google. 1 - карта повністю, 15 - окремий будинок. Фактор 15 не скрізь доступний."
+msgstr "Мінімальний і максимальний коефіцієнт масштабвання карти Google. 1 - карта повністю, 15 - окремий будинок. Коефіцієнт 15 доступний лише у деяких місцях."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1169
@@ -9358,7 +9358,7 @@ msgstr "Мій родовід"
 
 #: app/Module/UserWelcomeModule.php:57 app/Theme/AbstractTheme.php:1565
 msgid "My individual record"
-msgstr "Моя персональна запис"
+msgstr "Мій особистий запис"
 
 #. I18N: Name of a module
 #: admin_modules.php:183 app/Module/UserWelcomeModule.php:28
@@ -9495,7 +9495,7 @@ msgstr "Наву, штат Іллінойс (оригінал)"
 
 #: app/Module/GoogleMapsModule.php:383 app/Module/GoogleMapsModule.php:3941
 msgid "Neighborhood"
-msgstr "Сусіди"
+msgstr "Район"
 
 #: app/Stats.php:6895
 msgid "Nepal"
@@ -9868,7 +9868,7 @@ msgstr "Неіснуючий номер запису"
 
 #: admin.php:691
 msgid "Not approved by an administrator"
-msgstr "Не затверджено адміністратором"
+msgstr "Не схвалено адміністратором"
 
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1679
@@ -10416,7 +10416,7 @@ msgstr "Родовід"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree Chart"
-msgstr "Висхідне Древо"
+msgstr "Родовід"
 
 #: app/Controller/FanchartController.php:355
 #: app/Module/GoogleMapsModule.php:1393 app/Theme/AbstractTheme.php:1220
@@ -10438,7 +10438,7 @@ msgstr "Предки %s"
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Родовідне древо для %s"
+msgstr "Родовід для %s"
 
 #. I18N: Name of a module
 #: admin.php:740 admin.php:762 admin_site_upgrade.php:100
@@ -10571,7 +10571,7 @@ msgstr "Помістити лічильник до або після імені?
 #: app/Module/GoogleMapsModule.php:440 app/Theme/AbstractTheme.php:1482
 #: placelist.php:41 placelist.php:43 placelist.php:144
 msgid "Place hierarchy"
-msgstr "місця"
+msgstr "Ієрархія місць"
 
 #: app/GedcomTag.php:688
 msgid "Place in Hebrew"
@@ -10676,7 +10676,7 @@ msgstr "Місце імміграції"
 #: modules_v3/fact_sources/report.xml:321
 #: modules_v3/missing_facts_report/report.xml:474
 msgid "Place of marriage"
-msgstr "Місце весілля"
+msgstr "Місце шлюбу"
 
 #: app/GedcomTag.php:560 modules_v3/missing_facts_report/report.xml:431
 msgid "Place of marriage banns"
@@ -11955,7 +11955,7 @@ msgstr "Слуга"
 
 #: app/Module/GoogleMapsModule.php:4243
 msgid "Server file containing places (CSV)"
-msgstr "(CSV??) - Файл на сервері з місцями"
+msgstr "CSV файл на сервері, що містить місця"
 
 #. I18N: Menu entry
 #: admin.php:562 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
@@ -12503,7 +12503,7 @@ msgstr "Показати статистичні діаграми"
 #: admin_trees_config.php:1640
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "Показувати %1$s %2$s частині назви місця."
+msgstr "Показувати %1$s %2$s частин назви місця."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
@@ -13355,7 +13355,7 @@ msgstr "Подробиці цієї людини є приватними."
 #: admin_site_upgrade.php:293 admin_trees_export.php:41
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr "Генеалогічне древо експортовано в %s."
+msgstr "Генеалогічне дерево експортовано в %s."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:76
@@ -13933,7 +13933,7 @@ msgstr[2] "Це генеалогічне дерево має %s записів, 
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
-msgstr "Це генеалогічне древо не має картинки для показу."
+msgstr "Це генеалогічне дерево не має картинки для показу."
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
@@ -13945,7 +13945,7 @@ msgstr "Останнє оновлення фамільне дерево було
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "Це генеалогічне древо було оновлено останній раз %s."
+msgstr "Це генеалогічне дерево було оновлено останній раз %s."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
@@ -15288,7 +15288,7 @@ msgstr "Контрольний код"
 
 #: admin_users.php:874
 msgid "Verified"
-msgstr "Підтверджено"
+msgstr "Перевірено"
 
 #: app/GedcomCode/GedcomCodeTemp.php:331
 msgid "Vernal, Utah"
@@ -19775,7 +19775,7 @@ msgstr "webtrees відсилає лист не зберігаючи"
 
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr "webtrees використовує UTF-8 encoding for accented letters, special characters and non-latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
+msgstr "webtrees використовує кодування UTF-8 для акцентованих літер, спеціальних символів і нелатинських писемностей. Якщо ви хочете використовувати GEDCOM файл з генеалогічними програмами, які не підтримують UTF-8, то ви можете створити його використовуючи кодування ISO-8859-1."
 
 #: app/Functions/FunctionsPrint.php:210
 msgid "webtrees wiki"
