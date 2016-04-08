@@ -38,7 +38,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	 * @return string A relative path, such as "themes/foo/"
 	 */
 	public function assetUrl() {
-		return 'themes/colors/css-1.7.4/';
+		return 'themes/colors/css-1.7.5/';
 	}
 
 	/**

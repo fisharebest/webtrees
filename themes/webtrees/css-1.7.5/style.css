@@ -21,57 +21,19 @@ html {
 }
 
 body {
-	color: #333;
+	color: #555;
 	background-color: #fff;
 	font: 12px tahoma, arial, helvetica, sans-serif;
 	margin: 0;
+	padding: 0 8px;
 }
 
-p {
-	margin: 12px 0;
-}
-
-#content {
+main {
 	display: block;
 	clear: both;
-	margin: 0;
-	padding: 8px;
 }
 
 /* ====== Round Corners ======== */
-input,
-textarea,
-fieldset,
-.border1,
-.block,
-.descriptionbox,
-.facts_label,
-.facts_label03,
-.facts_value,
-.list_label,
-.list_label_wrap,
-.list_value,
-.list_value_wrap,
-.messagebox,
-.optionbox,
-.person_box,
-.person_boxF,
-.person_boxNN,
-.person0,
-.person1,
-.person2,
-.person3,
-.person4,
-.person5,
-.primary-menu ul,
-.secondary-menu li ul,
-footer,
-#indi_main_blocks,
-#tabs,
-#save-cancel,
-.topbottombar {
-	border-radius: 3px;
-}
 
 /* ios on click workaround */
 .iconz {
@@ -96,7 +58,7 @@ textarea:required:invalid {
 }
 
 a {
-	color: #333;
+	color: #555;
 	text-decoration: none;
 }
 
@@ -131,14 +93,13 @@ dt {
 }
 
 h2 {
-	color: #333;
+	color: #006;
 	font-size: 18px;
 	font-weight: bold;
-	margin: 14px 0;
 }
 
 h4 {
-	color: #333;
+	color: #006;
 	font-size: 12px;
 	font-weight: bold;
 }
@@ -163,6 +124,15 @@ legend img {
 	width: 20px;
 }
 
+/* Some styles from bootstrap */
+.text-muted {
+	color: #777;
+}
+
+.small {
+	font-size: 12px;
+}
+
 img.block,
 #mycart img {
 	border: 0;
@@ -174,13 +144,13 @@ input,
 button,
 textarea {
 	border-width: 1px;
-	border-color: #fff #494949 #494949 #fff;
-	font-size: 13px;
+	border-color: #fff #555 #555 #fff;
+	font-size: 12px;
 }
 
 input,
 textarea {
-	padding: 3px;
+	padding: 0 3px;
 }
 
 textarea {
@@ -188,12 +158,12 @@ textarea {
 }
 
 .topbottombar {
+	background-color: #81a9cb;
 	color: #fff;
 	font-size: 12px;
 	font-weight: bold;
 	padding: 4px;
 	text-align: center;
-	border: 1px solid #999;
 }
 
 fieldset {
@@ -210,22 +180,13 @@ legend {
 }
 
 select {
-	border: 1px solid #ccc;
+	border: 1px solid #555;
 	font-size: 12px;
 	margin: 0 7px;
 	padding: 1px;
 }
 
 header form {
-	font-size: 12px;
-}
-
-/* Some styles from bootstrap */
-.text-muted {
-	color: #777;
-}
-
-.small {
 	font-size: 12px;
 }
 
@@ -241,25 +202,21 @@ header form {
 	color: #999;
 }
 
-hr {
-	margin-top: 5px;
-}
-
 .person_box, .action_header {
-	background-color: #ddf;
-	border: 1px solid #aaa;
+	background: #edf7fd;
+	border: solid #81a9cb 1px;
 	padding: 3px;
 }
 
 .person_boxF, .action_headerF {
-	background-color: #fdd;
-	border: 1px solid #aaa;
+	background: #e9daf1;
+	border: 1px solid #ff2080;
 	padding: 3px;
 }
 
 .person_boxNN {
-	background-color: #fff;
-	border: 1px solid #aaa;
+	background: #fff;
+	border: dashed #81a9cb 1px;
 	padding: 3px;
 }
 
@@ -303,7 +260,7 @@ table.center {
 .list_value_wrap {
 	background-color: #edf7f9;
 	font-size: 12px;
-	border: solid #999 1px;
+	border: solid #81a9cb 1px;
 	vertical-align: top;
 }
 
@@ -329,10 +286,6 @@ table.center {
 	white-space: normal;
 }
 
-.facts_table .optionbox {
-	white-space: normal;
-}
-
 div.fact_SHARED_NOTE {
 	clear: both;
 }
@@ -347,7 +300,6 @@ div.fact_SHARED_NOTE {
 
 .facts_label03 {
 	color: #fff;
-	border: 1px solid #999;
 	background-color: #81a9cb;
 	font-size: 12px;
 	padding: 4px;
@@ -358,13 +310,8 @@ div.fact_SHARED_NOTE {
 .facts_value {
 	background-color: #edf7fd;
 	font-size: 12px;
-	border: solid #999 1px;
+	border: solid #81a9cb 1px;
 	padding: 4px;
-}
-
-.facts_label .submenu a {
-	background: #fff;
-	color: #000;
 }
 
 .quickfacts a {
@@ -376,8 +323,7 @@ div.fact_SHARED_NOTE {
 	width: 99%;
 }
 
-.name1,
-.name2 {
+.name1, .name2 {
 	color: #555;
 	font-weight: bold;
 	font-size: 12px;
@@ -405,7 +351,7 @@ a:hover .nameZoom {
 }
 
 .nameZoom {
-	color: #333;
+	color: #555;
 	font-size: 14px;
 	font-weight: bold;
 }
@@ -415,7 +361,7 @@ a:hover .nameZoom {
 }
 
 .name_head {
-	color: #333;
+	color: #555;
 	font-size: 16px;
 	font-weight: bold;
 	line-height: 2;
@@ -431,6 +377,7 @@ a:hover .nameZoom {
 }
 
 .error {
+	color: #d00;
 	font-weight: bold;
 }
 
@@ -446,7 +393,7 @@ a:hover .nameZoom {
 }
 
 .indent {
-	padding-left: 7px;
+	padding-left: 20px;
 }
 
 .image {
@@ -472,7 +419,7 @@ a:hover .nameZoom {
 }
 
 .sublinks_cell {
-	background-color: #9be;
+	background-color: #edf7fd;
 	font-size: 12px;
 }
 
@@ -530,8 +477,8 @@ a:hover .nameZoom {
 .submenu {
 	text-decoration: none;
 	font-size: 11px;
-	background-color: #fff;
-	border: solid #ccc 1px;
+	background-color: #edf7fd;
+	border: solid #81a9cb 1px;
 	visibility: hidden;
 	position: absolute;
 	padding: 5px;
@@ -542,7 +489,7 @@ a:hover .nameZoom {
 	font-size: 11px;
 	height: 20px;
 	text-decoration: none;
-	background-color: #fff;
+	background-color: #edf7fd;
 	padding: 1px;
 	white-space: nowrap;
 }
@@ -551,8 +498,7 @@ a:hover .nameZoom {
 	vertical-align: middle;
 	height: 20px;
 	font-size: 11px;
-	background-color: #fff;
-	border: 1px solid #ccc;
+	background-color: #e6f0fa;
 	white-space: nowrap;
 	padding: 1px;
 }
@@ -570,7 +516,8 @@ a:hover .nameZoom {
 }
 
 .news_box {
-	border-top: solid #ccc 1px;
+	background-color: #edf7fd;
+	border-top: solid #81a9cb 1px;
 }
 
 .news_title {
@@ -661,8 +608,8 @@ a:hover .nameZoom {
 }
 
 .person0 {
-	background-color: #ddf;
-	border: outset #999 1px;
+	background-color: #aaf;
+	border: outset #aaf 1px;
 	vertical-align: top;
 }
 
@@ -679,7 +626,7 @@ a:hover .nameZoom {
 }
 
 .person3 {
-	background-color: #aad;
+	background-color: #55f;
 	border: outset #55f 1px;
 	vertical-align: top;
 }
@@ -717,15 +664,17 @@ a:hover .nameZoom {
 }
 
 .descriptionbox {
+	color: #fff;
 	font-size: 12px;
-	border: 1px solid #999;
+	background-color: #81a9cb;
 	vertical-align: top;
 	padding: 3px;
 }
 
 .optionbox {
+	background-color: #d1d9ef;
 	font-size: 12px;
-	border: solid #999 1px;
+	border: solid #81a9cb 1px;
 	vertical-align: top;
 	white-space: nowrap;
 	padding: 3px;
@@ -810,7 +759,7 @@ a:hover .nameZoom {
 
 .messagebox {
 	background-color: #c2ceef;
-	border: solid #ccc 1px;
+	border: solid #81a9cb 1px;
 }
 
 /* ---Pending edits--- */
@@ -902,7 +851,7 @@ a:hover .nameZoom {
 }
 
 .gchart {
-	border: solid #999 1px;
+	border: solid #81a9cb 1px;
 }
 
 /* ---Find special characters--- */
@@ -918,6 +867,10 @@ a:hover .nameZoom {
 
 .clearfloat {
 	clear: both;
+}
+
+td.descriptionbox a {
+	color: #fff;
 }
 
 /* this keeps the tag color the same when it is a link as when not */
@@ -1000,16 +953,16 @@ a:hover .nameZoom {
 .person_box_template img,
 .person_box_template a.gallery {
 	float: left;
-	height: 45px;
-	margin: 0 3px 0 0;
-	max-width: 60px;
+	height: 50px;
+	margin: 0 2px 0 0;
+	max-width: 80px;
 	width: auto;
 }
 
 [dir=rtl] .person_box_template img,
 [dir=rtl] .person_box_template a.gallery {
 	float: right;
-	margin: 0 0 0 4px;
+	margin: 0 0 0 2px;
 }
 
 .person_box_template i[class^="icon-silhouette"] {
@@ -1139,15 +1092,15 @@ a:hover .nameZoom {
 	float: right;
 }
 
-.list_value_wrap .lb-image_edit {
+.lb-image_edit {
 	background: url(images/image_edit.png) no-repeat 50% 20%;
 }
 
-.list_value_wrap .lb-image_link {
+.lb-image_link {
 	background: url(images/image_link.png) no-repeat 50% 20%;
 }
 
-.list_value_wrap .lb-image_view {
+.lb-image_view {
 	background: url(images/image_view.png) no-repeat 50% 20%;
 }
 
@@ -1202,7 +1155,8 @@ a:hover .nameZoom {
 #new_passwd_form,
 #register-form,
 #verify-form {
-	border: 1px solid #999;
+	background-color: #edf7fd;
+	border: 1px outset #81a9cb;
 	display: inline-block;
 	margin: 10px auto 0;
 	padding: 5px;
@@ -1255,7 +1209,6 @@ a:hover .nameZoom {
 #register-form label input,
 #register-form label select,
 #register-form textarea {
-	background-color: #fff;
 	width: 220px;
 	margin: 0 10px;
 	padding: 3px;
@@ -1326,7 +1279,7 @@ a:hover .nameZoom {
 
 .popup {
 	position: absolute;
-	top: 21px;
+	top: 20px;
 	right: 0;
 	left: auto;
 	visibility: hidden;
@@ -1442,6 +1395,13 @@ a:hover .nameZoom {
 .fam-list {
 	margin: 5px auto;
 	visibility: hidden;
+}
+
+.recent_changes_block,
+.upcoming_events_block,
+.todays_events_block,
+.todo_block {
+	width: 98%;
 }
 
 .surname-list,
@@ -1633,7 +1593,7 @@ a:hover .nameZoom {
 }
 
 .small_inner_block {
-	max-height: 250px;
+	max-height: 200px;
 	overflow: auto;
 }
 
@@ -1642,82 +1602,33 @@ a:hover .nameZoom {
 }
 
 .block {
-	color: #000;
-	margin-bottom: 5px;
-	padding: 1px;
+	background-color: #edf7fd;
+	border: solid #81a9cb 1px;
+	margin-top: 10px;
+	padding: 3px;
 	vertical-align: top;
 }
 
 .blockcontent {
-	border: solid #999 1px;
-	margin:  0 2px 10px 0;
+	margin: 5px;
 	overflow: auto;
-	padding: 5px;
 }
 
 .blockcontent .list_table {
 	border-spacing: 1px;
-	border: solid #999 1px;
+	border: solid #81a9cb 1px;
 	border-right: 0;
 }
 
 .blockcontent .list_value,
 .blockcontent .list_value_wrap {
 	border: 0;
-	border-top: solid #999 1px;
-	border-right: solid #999 1px;
+	border-top: solid #81a9cb 1px;
+	border-right: solid #81a9cb 1px;
 }
 
 .blockheader {
-	width: 100%;
-	padding: 0;
-	margin: 0;
-	border-collapse: collapse;
-}
-
-.blockh1 {
-	background: url(images/left1B.png) no-repeat;
-	height: 24px;
-	width: 26px;
-	padding: 0;
-}
-
-.blockh2 {
-	background: url(images/left2.png) repeat-x;
-	font-size: 13px;
 	font-weight: bold;
-	padding: 0;
-}
-
-.blockh3 {
-	background: url(images/left3.png) no-repeat;
-	height: 24px;
-	width: 8px;
-	padding: 0;
-}
-
-.blockhc {
-	padding: 3px 3px 0;
-}
-
-.blockhc img {
-	padding-right: 3px;
-}
-
-[dir=rtl] .blockh1 {
-	background-image: url(images/right1B.png);
-}
-
-[dir=rtl] .blockh3 {
-	background-image: url(images/right3.png);
-}
-
-[dir=rtl] .blockhc {
-	padding: 3px 0 0 3px;
-}
-
-[dir=rtl] .blockhc img {
-	padding-left: 3px;
 }
 
 /* end Block styles */
@@ -1924,11 +1835,13 @@ span.link_text {
 
 #indi_header {
 	overflow: hidden;
+	border-radius: 3px;
+	border: 1px solid #b2c7d7;
 	margin: 0 0 5px;
+	padding: 10px 0;
 }
 
 #indi_header h3 {
-	color: #555;
 	font-size: 90%;
 	font-weight: bold;
 	margin: 0;
@@ -1944,12 +1857,6 @@ span.link_text {
 
 #indi_header h3 .details1 {
 	font-size: 1.0em;
-}
-
-#indi_header h3.person_box,
-#indi_header h3.person_boxF,
-#indi_header h3.person_boxNN {
-	border: 1px solid #999;
 }
 
 #indi_header h3 .header_age {
@@ -1975,12 +1882,16 @@ span.link_text {
 
 #indi_mainimage {
 	float: left;
-	padding: 0 2px;
+	padding: 0 10px;
 }
 
 #header_accordion1 {
-	padding: 0;
+	padding: 0 10px 0 0;
 	overflow: hidden;
+}
+
+[dir='rtl'] #header_accordion1 {
+	padding: 0 0 0 10px;
 }
 
 #header_accordion1 .indi_name_details {
@@ -2039,7 +1950,7 @@ dd .deletelink {
 	clear: both;
 }
 
-/* ===== markdown formatting ===== */
+/* markdown formatting ===== */
 
 .markdown {
 	/* Tables and pre-formatted text can break the layout. */
@@ -2121,7 +2032,7 @@ dd .deletelink {
 }
 
 .female_gender {
-	background-position: -45px 3px;
+	background-position: -45px 1px;
 	width: 24px;
 	height: 30px;
 }
@@ -2244,30 +2155,12 @@ dd .deletelink {
 	overflow: visible;
 }
 
-.ui-tabs,
-.ui-tabs .ui-tabs-nav li a {
-	padding: 0;
-}
-
 #sidebarAccordion .ui-accordion-header {
 	text-align: center;
 }
 
 .ui-widget-header {
 	padding: 3px;
-}
-
-.ui-menu .ui-menu-item a {
-	font-size: 12px;
-}
-
-.ui-menu .ui-menu-item a.ui-state-hover,
-.ui-menu .ui-menu-item a.ui-state-active {
-	color: #f00;
-}
-
-.ui-helper-reset {
-	line-height: 1.5;
 }
 
 [dir=rtl] .ui-tabs .ui-tabs-nav li {
@@ -2364,7 +2257,6 @@ dd .deletelink {
 .DataTables_sort_wrapper {
 	position: relative;
 	margin: 0 20px;
-	white-space: normal;
 }
 
 .DataTables_sort_wrapper span {
@@ -2435,9 +2327,10 @@ dd .deletelink {
 
 #tabs {
 	background-color: #fff;
-	width: 100%;
+	border-color: #ddd;
+	margin-left: 0;
 	overflow: visible;
-	padding-top: 0.2em;
+	width: 100%;
 }
 
 [dir=rtl] #tabs {
@@ -2467,7 +2360,7 @@ dd .deletelink {
 	width: 10px;
 	height: 99999px;
 	content: "";
-	border: 1px solid #999;
+	border: 1px solid #81a9cb;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
 }
@@ -2479,12 +2372,12 @@ dd .deletelink {
 
 .separator-hidden:after,
 [dir=rtl] .separator-visible:after {
-	background: url(images/general_sprite.png) no-repeat -26px 100px;
+	background: #99c2ff url(images/general_sprite.png) no-repeat -26px 100px;
 }
 
 .separator-visible:after,
 [dir=rtl] .separator-hidden:after {
-	background: url(images/general_sprite.png) no-repeat -1px 100px;
+	background: #99c2ff url(images/general_sprite.png) no-repeat -1px 100px;
 }
 
 /* Sidebar content items */
@@ -2550,7 +2443,7 @@ dd .deletelink {
 
 /* Sidebar*/
 #sb_content_descendancy {
-	margin-top: 2px;
+	margin-top: 5px;
 }
 
 #sb_desc_content {
@@ -2590,7 +2483,7 @@ dd .deletelink {
 /* Individuals and Families */
 #sb_content_individuals,
 #sb_content_families {
-	margin-top: 2px;
+	margin-top: 5px;
 }
 
 .sb_indi_surname_li,
@@ -2611,7 +2504,7 @@ dd .deletelink {
 
 /* Clippings */
 #sb_content_clippings {
-	margin-top: 2px;
+	margin-top: 5px;
 }
 
 #sb_clippings_content ul {
@@ -2670,7 +2563,8 @@ dd .deletelink {
 }
 
 #find-header {
-	border: 1px outset #999;
+	background-color: #81a9cb;
+	border: 1px outset #81a9cb;
 	margin: 10px auto;
 	padding: 5px 20px;
 	width: 50%;
@@ -2688,13 +2582,14 @@ dd .deletelink {
 
 #find-output,
 #find-output-special {
-	border: 1px outset #999;
+	background-color: #edf7f9;
+	border: 1px outset #81a9cb;
 	margin: 20px 5px;
 	padding: 10px;
 }
 
 #find-output p {
-	border-top: 1px solid #999;
+	border-top: 1px solid #81a9cb;
 	font-weight: bold;
 	margin: 0;
 	padding-top: 10px;
@@ -2717,12 +2612,12 @@ dd .deletelink {
 }
 
 #find-output .find-media-dirs {
-	border-bottom: 1px solid #999;
+	border-bottom: 1px solid #81a9cb;
 	padding: 3px;
 }
 
 #find-output .find-media-media {
-	border: 1px solid #999;
+	border: 1px solid #81a9cb;
 	overflow: hidden;
 	margin: 1px;
 	padding: 2px;
@@ -2770,13 +2665,16 @@ dd .deletelink {
 }
 
 #search-page-table {
-	border: 1px solid #999;
+	background-color: #81a9cb;
+	border: 1px outset #ccc;
 	border-top: 0;
 	margin: 20px auto 0;
 	width: 580px;
 }
 
 #search-page-table .label {
+	border-top: 1px solid #ccc;
+	color: #fff;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
@@ -2784,10 +2682,9 @@ dd .deletelink {
 }
 
 #search-page-table .value {
-	background-color: #ecf5ff;
-	color: #333;
-	border-top: 1px solid #999;
-	margin: 0 0 0 30%;
+	background-color: #edf7f9;
+	border-top: 1px solid #ccc;
+	margin: 0 0 0 170px;
 	padding: 5px;
 	white-space: nowrap;
 }
@@ -2801,7 +2698,7 @@ dd .deletelink {
 }
 
 [dir=rtl] #search-page-table .value {
-	margin: 0 30% 0 0;
+	margin: 0 170px 0 0;
 }
 
 /*  edituser.php  */
@@ -2812,13 +2709,16 @@ dd .deletelink {
 }
 
 #edituser-table {
-	border: 1px solid #999;
+	background-color: #81a9cb;
+	border: 1px outset #ccc;
 	border-top: 0;
 	margin: 20px auto 0;
 	width: 800px;
 }
 
 #edituser-table .label {
+	border-top: 1px solid #ccc;
+	color: #fff;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
@@ -2826,9 +2726,8 @@ dd .deletelink {
 }
 
 #edituser-table .value {
-	background-color: #ecf5ff;
-	border-top: 1px solid #999;
-	color: #333;
+	background-color: #edf7f9;
+	border-top: 1px solid #ccc;
 	margin: 0 0 0 260px;
 	padding: 5px;
 }
@@ -2972,8 +2871,9 @@ dd .deletelink {
 #save-cancel {
 	position: fixed;
 	bottom: 0;
+	background-color: #d1d9ef;
 	width: 98%;
-	border: solid #999 1px;
+	border: solid #81a9cb 1px;
 	margin: 0;
 }
 
@@ -3242,6 +3142,7 @@ dd .deletelink {
 }
 
 /* ====== Charts Styles ======== */
+
 #people label {
 	display:block;
 }
@@ -3384,45 +3285,6 @@ dd .deletelink {
 }
 
 /*-- Lifespan ---- */
-.lifespan-form {
-	display: table;
-	margin:  0 auto;
-}
-
-.lifespan-form fieldset {
-	display:        inline-block;
-	margin:         0;
-	vertical-align: top;
-	height:         97px;
-}
-
-.lifespan-form legend {
-	color: inherit;
-}
-
-.lifespan-form fieldset > div {
-	display: table-row;
-}
-
-.lifespan-form label,
-.lifespan-form span {
-	display: table-cell;
-	border:  none;
-}
-
-.lifespan-form .controls {
-	text-align: right;
-}
-
-[dir='rtl'] .lifespan-form .controls {
-	text-align: left;
-}
-
-.lifespan-form select,
-.lifespan-form .controls * {
-	margin: 1px 0;
-}
-
 #lifespan-chart {
 	padding:    0 10px 10px;
 	margin:     0 auto;
@@ -3547,7 +3409,7 @@ dd .deletelink {
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;
-	vertical-align: middle;
+	vertical-align: text-bottom;
 	background-repeat: no-repeat;
 }
 
@@ -3558,9 +3420,10 @@ dd .deletelink {
 }
 
 .icon-admin {
-	width: 20px;
-	height: 20px;
+	width: 15px;
+	height: 15px;
 	background-image: url(images/admin.png);
+	margin: 0 5px;
 }
 
 .icon-bing {
@@ -3671,9 +3534,9 @@ dd .deletelink {
 }
 
 .icon-cfamily {
-	width: 32px;
-	height: 32px;
-	background-image: url(images/cfamily.png);
+	width: 20px;
+	height: 20px;
+	background-image: url(images/family.png);
 }
 
 .icon-childless {
@@ -3689,8 +3552,8 @@ dd .deletelink {
 }
 
 .icon-clippings {
-	width: 32px;
-	height: 32px;
+	width: 22px;
+	height: 22px;
 	background-image: url(images/clippings.png);
 }
 
@@ -3719,8 +3582,8 @@ a.icon-ddarrow:hover {
 }
 
 .icon-edit_indi {
-	width: 22px;
-	height: 22px;
+	width: 20px;
+	height: 20px;
 	background-image: url(images/edit_indi.png);
 }
 
@@ -3731,9 +3594,9 @@ a.icon-ddarrow:hover {
 }
 
 .icon-fam-list {
-	width: 32px;
-	height: 32px;
-	background-image: url(images/sfamily.png);
+	width: 20px;
+	height: 20px;
+	background-image: url(images/family.png);
 }
 
 .icon-googlemaps {
@@ -3747,12 +3610,12 @@ a.icon-ddarrow:hover {
 	margin: 0 5px;
 	width: 15px;
 	height: 15px;
-	background-image: url(images/help.png);
+	background-image: url(images/help2.png);
 }
 
 .icon-indi-list {
-	width: 32px;
-	height: 32px;
+	width: 20px;
+	height: 20px;
 	background-image: url(images/indis.png);
 }
 
@@ -3793,14 +3656,14 @@ a.icon-ldarrow:hover {
 }
 
 .icon-media {
-	width: 32px;
-	height: 32px;
+	width: 20px;
+	height: 20px;
 	background-image: url(images/media.png);
 }
 
 .icon-media-list {
-	width: 32px;
-	height: 32px;
+	width: 20px;
+	height: 20px;
 	background-image: url(images/media.png);
 }
 
@@ -3841,20 +3704,20 @@ a.icon-ldarrow:hover {
 }
 
 .icon-mypage {
-	width: 22px;
-	height: 25px;
+	width: 24px;
+	height: 24px;
 	background-image: url(images/mypage.png);
 }
 
 .icon-note {
-	width: 33px;
-	height: 35px;
+	width: 20px;
+	height: 20px;
 	background-image: url(images/notes.png);
 }
 
 .icon-note-list {
-	width: 33px;
-	height: 35px;
+	width: 20px;
+	height: 20px;
 	background-image: url(images/notes.png);
 }
 
@@ -3901,9 +3764,9 @@ a.icon-rdarrow:hover {
 }
 
 .icon-remove {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/delete.png);
+	width: 20px;
+	height: 20px;
+	background-image: url(images/remove.png);
 }
 
 .icon-resn-confidential {
@@ -3979,8 +3842,8 @@ a.icon-rdarrow:hover {
 }
 
 .icon-source {
-	width: 32px;
-	height: 32px;
+	width: 20px;
+	height: 20px;
 	background-image: url(images/source.png);
 }
 
@@ -4042,19 +3905,19 @@ a.icon-udarrow:hover {
 /* Silhouettes on charts */
 .icon-silhouette-F {
 	width: 37px;
-	height: 45px;
+	height: 50px;
 	background-image: url(images/silhouette_female_small.png);
 }
 
 .icon-silhouette-M {
 	width: 37px;
-	height: 45px;
+	height: 50px;
 	background-image: url(images/silhouette_male_small.png);
 }
 
 .icon-silhouette-U {
 	width: 37px;
-	height: 45px;
+	height: 50px;
 	background-image: url(images/silhouette_unknown_small.png);
 }
 
@@ -4205,12 +4068,13 @@ a.icon-udarrow:hover {
 header h1 {
 	clear: left;
 	float: left;
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: normal;
-	margin: 14px 5px 3px;
+	margin: 0 10px 5px;
 }
 
 [dir=rtl] header h1 {
+	clear: right;
 	float: right;
 }
 
@@ -4218,97 +4082,126 @@ header h1 {
 .secondary-menu ul,
 .primary-menu ul {
 	z-index: 210;
+	max-height: 400px;
+	min-width: 140px;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
-/* Title Line */
-header {
-	height: 98px;
+.header-logo {
+	float: left;
+	width: 242px;
+	height: 50px;
+}
+
+.header-logo:after {
+	content: url(images/webtrees.png);
+}
+
+[dir=rtl] .header-logo {
+	float: right;
+}
+
+.header-search {
+	float: right;
+}
+
+[dir=rtl] .header-search {
+	float: left;
 }
 
 /* ====== Secondary menu ======= */
+.secondary-menu li ul {
+	left: auto;
+	right: 0;
+}
+.secondary-menu ul li a {
+	display: block;
+	padding: 3px;
+}
+.secondary-menu a {
+	background: none;
+	display: inline;
+}
+
 .secondary-menu {
 	float: right;
-	margin: 12px 10px 12px 0;
 	white-space: nowrap;
-	list-style: none;
-	padding: 1px;
+	margin: 20px 10px 0 0;
+	font-weight: bold;
 }
 
 .secondary-menu li {
 	display: inline;
 	position: relative;
+	white-space: nowrap;
+	border-left: 2px solid #ccc;
+	padding: 0 5px;
 }
 
-.secondary-menu li:before {
-	content: " | ";
+.secondary-menu li:first-child,
+.secondary-menu li ul li {
+	border: 0;
 }
 
-.secondary-menu  ul li:before,
-.secondary-menu li:first-child:before {
-	content: "";
-}
-
-.secondary-menu li:last-child:before {
-	content: "  ";
-}
-
-.secondary-menu ul {
-	position: absolute;
-	background-color: #eee;
-	border: thin solid #aaa;
+.secondary-menu li ul {
 	display: none;
-	top: 6px;
-	left: 0;
-	list-style: none;
-	padding: 1px;
+	font-weight: normal;
+	position: absolute;
+	top: 1.1em;
+	background-color: #fff;
+	border: thin solid #aaa;
+	margin: 0;
 }
 
-.secondary-menu ul li {
+.secondary-menu li ul li {
+	padding: 2px;
 	display: block;
 	text-align: left;
 }
 
-.secondary-menu ul li a {
-	background-color: #fff;
-	color: #333;
-	display: block;
-	padding: 5px;
-}
-
+.secondary-menu,
 .secondary-menu li ul {
-	left: auto;
-	right: 0px;
+	list-style: none;
+	padding: 1px;
 }
 
-.secondary-menu li:hover ul {
+.secondary-menu li:hover > ul {
 	display: block;
 }
 
-.secondary-menu ul li a:hover {
-	color: #000;
-}
-
-.secondary-menu .menu-pending a {
-	font-weight: 900;
-}
-
-/* set active theme to bold */
 .secondary-menu .active {
+	color: #006;
 	font-weight: 900;
+}
+
+[dir=rtl] #header-user-links {
+	float: left;
+	margin: 20px 0 0 10px;
+}
+
+[dir=rtl] #header-user-links .secondary-menu li ul {
+	left: 0;
+	right: auto;
 }
 
 [dir=rtl] .secondary-menu {
 	float: left;
-	margin: 12px 0 12px 10px;
+	margin: 20px 0 0 10px;
 }
 
 [dir=rtl] .secondary-menu li ul {
-    left: 0;
-    right: auto;
+	left: 0;
+	right: auto;
 }
 
 [dir=rtl] .secondary-menu li ul li {
 	text-align: right;
+}
+
+[dir=rtl] .secondary-menu li {
+	border-left: none;
+	border-right: 2px solid;
 }
 
 [dir=rtl] .secondary-menu li:first-child,
@@ -4316,53 +4209,58 @@ header {
 	border: 0;
 }
 
-
-.header-search {
-	display: inline;
+header input.image {
+	width: 17px;
+	height: 17px;
+	border: 0;
+	padding: 0;
+	vertical-align: top;
 }
 
-.search-icon {
-	vertical-align: top;
+header input,
+button,
+textarea {
+	border-width: 1px;
+	border-color: #fff #555 #555 #fff;
+	font-size: 12px;
+}
+
+header input,
+textarea {
 	padding: 0 3px;
 }
 
 /* ====== Primary menu ========= */
-
 header nav {
-	clear: both;
+	border-top: 2px solid #81a9cb;
+	border-bottom: 2px solid #81a9cb;
+	margin: 8px auto;
+	padding: 5px 0;
 	position: relative;
+	clear: both;
+}
+
+.primary-menu,
+.primary-menu ul {
+	margin: 0;
+	list-style-type: none;
 }
 
 .primary-menu {
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	height: 48px;
-}
-
-.primary-menu ul {
-	padding: 0;
-	margin: 0;
-	border: 1px solid #ddd;
-	list-style-type: none;
-	position: absolute;
-	visibility: hidden;
-	opacity: 0;
-	background-color: #fff;
+	margin: 0 auto;
+	display: table;
 }
 
 .primary-menu li {
 	float: left;
 	position: relative;
-	display: block;
-	list-style: none;
 }
 
-.primary-menu li a {
-	display: block;
+.primary-menu li li {
+	clear: both;
 }
 
-.primary-menu li > ul {
+.primary-menu li:hover > ul {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -4370,75 +4268,63 @@ header nav {
 	right: auto;
 }
 
-.primary-menu > li > a {
-	color: transparent; /* Use class="sr-only" from bootstrap? */
-}
-
-.primary-menu > li > ul {
+.primary-menu > li:hover > ul {
 	left: 0;
 	right: auto;
-	top: 40px;
+	top: 66px;
 }
 
 .primary-menu a {
 	display: block;
-	text-decoration: none;
-	padding: 0 5px;
-	margin: 0;
 	white-space: nowrap;
+	overflow: hidden;
 }
 
-.primary-menu ul li:hover a,
-.primary-menu li:hover li a {
-	background: none;
-	border: 0;
+.primary-menu ul {
+	position: absolute;
+	display: none;
+	background: #fff;
+	border: thin solid #aaa;
+	padding: 5px 0;
 }
 
-.primary-menu li:hover > ul {
-	visibility: visible;
-	opacity: 1;
-}
-
-.primary-menu > li > ul > li:first-child {
-	text-indent: 0;
-	min-width: 100px;
+.primary-menu li a {
+	margin: auto;
+	padding-top: 52px;
 	width: 100%;
-	background: none;
-	font-weight: bold;
-	white-space: nowrap;
-	font-size: 14px;
-	text-align: center;
-	height: 22px;
+}
+
+.primary-menu li li a {
+	display: block;
+	position: relative;
+	float: left;
+	font-size: 11px;
 	line-height: 1.5;
-	border-bottom: solid #ddd 1px;
+	padding: 1px 10px 1px 5px;
 }
 
 .primary-menu > li {
-	background-image: url(images/sprites-top-menu.png);
+	background-image: url(images/large_menu_sprite.png);
 	background-repeat: no-repeat;
-	height: 40px;
-	line-height: 40px;
-	margin: 4px 9px 4px 7px;
-	text-indent: 32px;
-	width: 40px;
+	min-width: 80px;
+	height: 64px;
+	padding: 0 5px;
+	text-align: center;
 }
 
-.primary-menu li ul li {
-	background-image: url(images/sprites-sub-menu.png);
+.primary-menu li li {
+	background-image: url(images/small_menu_sprite.png);
 	background-repeat: no-repeat;
-	height: 28px;
+	height: 24px;
 	left: auto;
-	line-height: 25px;
+	line-height: 24px;
 	text-align: left;
-	text-indent: 22px;
+	text-indent: 26px;
 	width: 100%;
 }
 
-/* Reverse left and right on RTL pages */
-[dir=rtl] .primary-menu > li {
-	margin: 4px 7px 4px 9px;
-}
 
+/* Reverse left and right on RTL pages */
 [dir=rtl] .primary-menu li {
 	float: right;
 }
@@ -4458,12 +4344,8 @@ header nav {
 }
 
 [dir=rtl] .primary-menu li li a {
-	display: block;
 	float: right;
-}
-
-[dir=rtl] .primary-menu > li > ul > li:first-child {
-	text-align: center;
+	padding: 1px 5px 1px 10px;
 }
 
 /* ====== End Theme Header ===== */
@@ -4472,11 +4354,13 @@ header nav {
 
 footer {
 	clear: both;
+	font-size: 12px;
+	padding-top: 10px;
 	text-align: center;
 }
 
 .contact-links {
-	margin: 30px 0 15px;
+	margin-top: 15px;
 }
 
 .powered-by-webtrees {
@@ -4499,355 +4383,355 @@ footer {
 }
 
 .menu-mymenu {
-	background-position:center -287px;
+	background-position:center -70px;
 }
 
 .menu-chart {
-	background-position:center -41px;
+	background-position:center -140px;
 }
 
 .menu-list {
-	background-position: center -82px;
+	background-position:center -210px;
 }
 
 .menu-report {
-	background-position: center -164px;
+	background-position:center -280px;
 }
 
 .menu-calendar {
-	background-position: center -123px;
+	background-position:center -350px;
 }
 
 .menu-search {
-	background-position: center -205px;
+	background-position:center -420px;
 }
 
 .menu-help {
-	background-position: center -246px;
+	background-position:center -490px;
 }
 
 .menu-clippings {
-	background-position: center -328px;
+	background-position:center -560px;
 }
 
 .menu-indi,
 .menu-record {
-	background-position: center -369px;
+	background-position:center -630px;
 }
 
 .menu-indi-orderfam {
-	background-position: left 0; /* error */
+	background-position: left 0;
 }
 
 [dir=rtl] .menu-indi-orderfam {
-	background-position: right 0; /* error */
+	background-position: right 0;
 }
 
 .menu-sour {
-	background-position: center -451px;
+	background-position:center -700px;
 }
 
 .menu-fam {
-	background-position: center -410px;
+	background-position:center -770px;
 }
 
 .menu-obje {
-	background-position: center -533px;
+	background-position:center -840px;
 }
 
 .menu-note {
-	background-position: center -492px;
+	background-position:center -910px;
 }
 
 .menu-repo {
-	background-position: center -574px;
+	background-position:center -980px;
 }
 
 .menu-story {
-	background-position: center -615px;
+	background-position:center -1045px;
 }
 
 /* Header Sub-menu icons */
 .menu-admin {
-	background-position: left -728px;
+	background-position: left 0;
 }
 
 [dir=rtl] .menu-admin {
-	background-position: right -728px;
+	background-position: right 0;
 }
 
 .menu-branches {
-	background-position: left -468px;
+	background-position: left -450px;
 }
 
 [dir=rtl] .menu-branches {
-	background-position: right -468px;
+	background-position: right -450px;
 }
 
 .menu-calendar-day {
-	background-position: left -572px;
+	background-position: left -60px;
 }
 
 [dir=rtl] .menu-calendar-day {
-	background-position: right -572px;
+	background-position: right -60px;
 }
 
 .menu-calendar-month {
-	background-position: left -572px;
+	background-position: left -60px;
 }
 
 [dir=rtl] .menu-calendar-month {
-	background-position: right -572px;
+	background-position: right -60px;
 }
 
 .menu-calendar-year {
-	background-position: left -572px;
+	background-position: left -60px;
 }
 
 [dir=rtl] .menu-calendar-year {
-	background-position: right -572px;
+	background-position: right -60px;
 }
 
 .menu-chart-ancestry {
-	background-position: left -208px;
+	background-position: left -30px;
 }
 
 [dir=rtl] .menu-chart-ancestry {
-	background-position: right -208px;
+	background-position: right -30px;
 }
 
 .menu-chart-compact {
-	background-position: left -52px;
+	background-position: left -30px;
 }
 
 [dir=rtl] .menu-chart-compact {
-	background-position: right -52px;
+	background-position: right -30px;
 }
 
 .menu-chart-descendants {
-	background-position: left -0px;
+	background-position: left -150px;
 }
 
 [dir=rtl] .menu-chart-descendants {
-	background-position: right -0px;
+	background-position: right -150px;
 }
 
 .menu-chart-familybook {
-	background-position: left -104px;
+	background-position: left -180px;
 }
 
 [dir=rtl] .menu-chart-familybook {
-	background-position: right -104px;
+	background-position: right -180px;
 }
 
 .menu-chart-fanchart {
-	background-position: left -26px;
+	background-position: left -210px;
 }
 
 [dir=rtl] .menu-chart-fanchart {
-	background-position: right -26px;
+	background-position: right -210px;
 }
 
 .menu-chart-hourglass {
-	background-position: left -130px;
+	background-position: left -270px;
 }
 
 [dir=rtl] .menu-chart-hourglass {
-	background-position: right -130px;
+	background-position: right -270px;
 }
 
 .menu-chart-lifespan {
-	background-position: left -182px;
+	background-position: left -660px;
 }
 
 [dir=rtl] .menu-chart-lifespan {
-	background-position: right -182px;
+	background-position: right -660px;
 }
 
 .menu-chart-pedigree {
-	background-position: left -208px;
+	background-position: left -480px;
 }
 
 [dir=rtl] .menu-chart-pedigree {
-	background-position: right -208px;
+	background-position: right -480px;
 }
 
 .menu-chart-pedigree_map {
-	background-position: left -234px;
+	background-position: left -720px;
 }
 
 [dir=rtl] .menu-chart-pedigree_map {
-	background-position: right -234px;
+	background-position: right -720px;
 }
 
 .menu-chart-relationship {
-	background-position: left -260px;
+	background-position: left -540px;
 }
 
 [dir=rtl] .menu-chart-relationship {
-	background-position: right -260px;
+	background-position: right -540px;
 }
 
 .menu-chart-statistics {
-	background-position: left -286px;
+	background-position: left -630px;
 }
 
 [dir=rtl] .menu-chart-statistics {
-	background-position: right -286px;
+	background-position: right -630px;
 }
 
 .menu-chart-timeline {
-	background-position: left -312px;
+	background-position: left -660px;
 }
 
 [dir=rtl] .menu-chart-timeline {
-	background-position: right -312px;
+	background-position: right -660px;
 }
 
 .menu-chart-tree {
-	background-position: left -156px;
+	background-position: left -240px;
 }
 
 [dir=rtl] .menu-chart-tree {
-	background-position: right -156px;
+	background-position: right -240px;
 }
 
 .menu-clippingsadd {
-	background-position: left -702px;
+	background-position: left -930px;
 }
 
 [dir=rtl] .menu-clippingsadd {
-	background-position: right -702px;
+	background-position: right -930px;
 }
 
 .menu-clippingscart {
-	background-position: left -702px;
+	background-position: left -900px;
 }
 
 [dir=rtl] .menu-clippingscart {
-	background-position: right -702px;
+	background-position: right -900px;
 }
 
 .menu-fam-addchil {
-	background-position: left -858px;
+	background-position: left -1050px;
 }
 
 [dir=rtl] .menu-fam-addchil {
-	background-position: right -858px;
+	background-position: right -1050px;
 }
 
 .menu-fam-addfav {
-	background-position: left -832px;
+	background-position: left -870px;
 }
 
 [dir=rtl] .menu-fam-addfav {
-	background-position: right -832px;
+	background-position: right -870px;
 }
 
 .menu-fam-change {
-	background-position: left -858px;
+	background-position: left -90px;
 }
 
 [dir=rtl] .menu-fam-change {
-	background-position: right -858px;
+	background-position: right -90px;
 }
 
 .menu-fam-del {
-	background-position: left -936px;
+	background-position: left -840px;
 }
 
 [dir=rtl] .menu-fam-del {
-	background-position: right -936px;
+	background-position: right -840px;
 }
 
 .menu-fam-editraw {
-	background-position: left -754px;
+	background-position: left -90px;
 }
 
 [dir=rtl] .menu-fam-editraw {
-	background-position: right -574px;
+	background-position: right -90px;
 }
 
 .menu-fam-orderchil {
-	background-position: left -858px;
+	background-position: left -1080px;
 }
 
 [dir=rtl] .menu-fam-orderchil {
-	background-position: right -858px;
+	background-position: right -1080px;
 }
 
 .menu-help-contents {
-	background-position: left -624px;
+	background-position: left -300px;
 }
 
 [dir=rtl] .menu-help-contents {
-	background-position: right -624px;
+	background-position: right -300px;
 }
 
 .menu-help-faq {
-	background-position: left -624px;
+	background-position: left -300px;
 }
 
 [dir=rtl] .menu-help-faq {
-	background-position: right -624px;
+	background-position: right -300px;
 }
 
 .menu-help-genealogy {
-	background-position: left -624px;
+	background-position: left -120px;
 }
 
 [dir=rtl] .menu-help-genealogy {
-	background-position: right -624px;
+	background-position: right -120px;
 }
 
 .menu-help-hide {
-	background-position: left -624px;
+	background-position: left -300px;
 }
 
 [dir=rtl] .menu-help-hide {
-	background-position: right -624px;
+	background-position: right -300px;
 }
 
 .menu-help-show {
-	background-position: left -624px;
+	background-position: left -300px;
 }
 
 [dir=rtl] .menu-help-show {
-	background-position: right -624px;
+	background-position: right -300px;
 }
 
 .menu-help-technical {
-	background-position: left -676px;
+	background-position: left -120px;
 }
 
 [dir=rtl] .menu-help-technical {
-	background-position: right -676px;
+	background-position: right -120px;
 }
 
 .menu-help-wiki {
-	background-position: left -650px;
+	background-position: left -690px;
 }
 
 [dir=rtl] .menu-help-wiki {
-	background-position: right -650px;
+	background-position: right -690px;
 }
 
 .menu-indi-addfav,
 .menu-record-addfav {
-	background-position: left -832px;
+	background-position: left -870px;
 }
 
 [dir=rtl] .menu-indi-addfav,
 [dir=rtl] .menu-record-addfav {
-	background-position: right -832px;
+	background-position: right -870px;
 }
 
 .menu-indi-editname {
-	background-position: left -836px;
+	background-position: left -120px;
 }
 
 [dir=rtl] .menu-indi-editname {
-	background-position: right -836px;
+	background-position: right -120px;
 }
 
 .menu-indi-addname {
@@ -4860,338 +4744,339 @@ footer {
 
 .menu-indi-del,
 .menu-record-del {
-	background-position: left -806px;
+	background-position: left -840px;
 }
 
-[dir=rtl] .menu-indi-del {
-	background-position: right -806px;
+[dir=rtl] .menu-indi-del,
+[dir=rtl] .menu-record-del {
+	background-position: right -840px;
 }
 
 .menu-indi-editraw,
 .menu-record-editraw {
-	background-position: left -754px;
+	background-position: left -750px;
 }
 
 [dir=rtl] .menu-indi-editraw {
-	background-position: right -574px;
+	background-position: right -750px;
 }
 
 .menu-indi-editsex {
-	background-position: left -780px;
+	background-position: left -810px;
 }
 
 [dir=rtl] .menu-indi-editsex {
-	background-position: right -780px;
+	background-position: right -810px;
 }
 
 .menu-list-fam {
-	background-position: left -494px;
+	background-position: left -90px;
 }
 
 [dir=rtl] .menu-list-fam {
-	background-position: right -494px;
+	background-position: right -90px;
 }
 
 .menu-list-indi {
-	background-position: left -520px;
+	background-position: left -120px;
 }
 
 [dir=rtl] .menu-list-indi {
-	background-position: right -520px;
+	background-position: right -120px;
 }
 
 .menu-list-note {
-	background-position: left -416px;
+	background-position: left -420px;
 }
 
 [dir=rtl] .menu-list-note {
-	background-position: right -416px;
+	background-position: right -420px;
 }
 
 .menu-list-obje {
-	background-position: left -338px;
+	background-position: left -330px;
 }
 
 [dir=rtl] .menu-list-obje {
-	background-position: right -338px;
+	background-position: right -330px;
 }
 
 .menu-list-plac {
-	background-position: left -364px;
+	background-position: left -510px;
 }
 
 [dir=rtl] .menu-list-plac {
-	background-position: right -364px;
+	background-position: right -510px;
 }
 
 .menu-list-repo {
-	background-position: left -390px;
+	background-position: left -360px;
 }
 
 [dir=rtl] .menu-list-repo {
-	background-position: right -390px;
+	background-position: right -360px;
 }
 
 .menu-list-sour {
-	background-position: left -442px;
+	background-position: left -180px;
 }
 
 [dir=rtl] .menu-list-sour {
-	background-position: right -442px;
+	background-position: right -180px;
 }
 
 .menu-myaccount {
-	background-position: left -676px;
+	background-position: left -390px;
 }
 
 [dir=rtl] .menu-myaccount {
-	background-position: right -676px;
+	background-position: right -390px;
 }
 
 .menu-mypage {
-	background-position: left -676px;
+	background-position: left -390px;
 }
 
 [dir=rtl] .menu-mypage {
-	background-position: right -676px;
+	background-position: right -390px;
 }
 
 .menu-mypedigree {
-	background-position: left -208px;
+	background-position: left -480px;
 }
 
 [dir=rtl] .menu-mypedigree {
-	background-position: right -208px;
+	background-position: right -480px;
 }
 
 .menu-myrecord {
-	background-position: left -520px;
+	background-position: left -120px;
 }
 
 [dir=rtl] .menu-myrecord {
-	background-position: right -520px;
+	background-position: right -120px;
 }
 
 .menu-note-addfav {
-	background-position: left -832px;
+	background-position: left -870px;
 }
 
-[dir=rtl] .menu-note-fav {
-	background-position: right -832px;
+[dir=rtl] .menu-note-addfav {
+	background-position: right -870px;
 }
 
 .menu-note-del {
-	background-position: left -806px;
+	background-position: left -840px;
 }
 
 [dir=rtl] .menu-note-del {
-	background-position: right -806px;
+	background-position: right -840px;
 }
 
 .menu-note-edit {
-	background-position: left -910px;
+	background-position: left -1020px;
 }
 
 [dir=rtl] .menu-note-edit {
-	background-position: right -910px;
+	background-position: right -1020px;
 }
 
 .menu-note-editraw {
-	background-position: left -754px;
+	background-position: left -1020px;
 }
 
 [dir=rtl] .menu-note-editraw {
-	background-position: right -574px;
+	background-position: right -1020px;
 }
 
 .menu-obje-addfav {
-	background-position: left -832px;
+	background-position: left -870px;
 }
 
 [dir=rtl] .menu-obje-addfav {
-	background-position: right -832px;
+	background-position: right -870px;
 }
 
 .menu-obje-del {
-	background-position: left -1040px;
+	background-position: left -840px;
 }
 
 [dir=rtl] .menu-obje-del {
-	background-position: right -1040px;
+	background-position: right -840px;
 }
 
 .menu-obje-edit {
-	background-position: left -962px;
+	background-position: left -1110px;
 }
 
 [dir=rtl] .menu-obje-edit {
-	background-position: right -962px;
+	background-position: right -1110px;
 }
 
 .menu-obje-editraw {
-	background-position: left -754px;
+	background-position: left -1110px;
 }
 
 [dir=rtl] .menu-obje-editraw {
-	background-position: right -574px;
+	background-position: right -1110px;
 }
 
 .menu-obje-link {
-	background-position: left -988px;
+	background-position: left -1140px;
 }
 
 [dir=rtl] .menu-obje-link {
-	background-position: right -988px;
+	background-position: right -1140px;
 }
 
 .menu-obje-link-fam {
-	background-position: left -494px;
+	background-position: left -90px;
 }
 
 [dir=rtl] .menu-obje-link-fam {
-	background-position: right -494px;
+	background-position: right -90px;
 }
 
 .menu-obje-link-indi {
-	background-position: left -520px;
+	background-position: left -120px;
 }
 
 [dir=rtl] .menu-obje-link-indi {
-	background-position: right -520px;
+	background-position: right -120px;
 }
 
 .menu-obje-link-sour {
-	background-position: left -442px;
+	background-position: left -180px;
 }
 
 [dir=rtl] .menu-obje-link-sour {
-	background-position: right -442px;
+	background-position: right -180px;
 }
 
 .menu-repo-addfav {
-	background-position: left -832px;
+	background-position: left -870px;
 }
 
 [dir=rtl] .menu-repo-addfav {
-	background-position: right -832px;
+	background-position: right -870px;
 }
 
 .menu-repo-del {
-	background-position: left -806px;
+	background-position: left -840px;
 }
 
 [dir=rtl] .menu-repo-del {
-	background-position: right -806px;
+	background-position: right -840px;
 }
 
 .menu-repo-edit {
-	background-position: left -1014px;
+	background-position: left -990px;
 }
 
 [dir=rtl] .menu-repo-edit {
-	background-position: right -1014px;
+	background-position: right -990px;
 }
 
 .menu-repo-editraw {
-	background-position: left -754px;
+	background-position: left -990px;
 }
 
 [dir=rtl] .menu-repo-editraw {
-	background-position: right -574px;
+	background-position: right -990px;
 }
 
 .menu-report li {
-	background-position: left -546px;
+	background-position: left -570px;
 }
 
 [dir=rtl] .menu-report li {
-	background-position: right -546px;
+	background-position: right -570px;
 }
 
 .menu-search-advanced {
-	background-position: left -598px;
+	background-position: left -600px;
 }
 
 [dir=rtl] .menu-search-advanced {
-	background-position: right -598px;
+	background-position: right -600px;
 }
 
 .menu-search-general {
-	background-position: left -598px;
+	background-position: left -600px;
 }
 
 [dir=rtl] .menu-search-general {
-	background-position: right -598px;
+	background-position: right -600px;
 }
 
 .menu-search-replace {
-	background-position: left -598px;
+	background-position: left -600px;
 }
 
 [dir=rtl] .menu-search-replace {
-	background-position: right -598px;
+	background-position: right -600px;
 }
 
 .menu-search-soundex {
-	background-position: left -598px;
+	background-position: left -600px;
 }
 
 [dir=rtl] .menu-search-soundex {
-	background-position: right -598px;
+	background-position: right -600px;
 }
 
 .menu-sour-addfav {
-	background-position: left -832px;
+	background-position: left -870px;
 }
 
 [dir=rtl] .menu-sour-addfav {
-	background-position: right -832px;
+	background-position: right -870px;
 }
 
 .menu-sour-del {
-	background-position: left -1066px;
+	background-position: left -840px;
 }
 
 [dir=rtl] .menu-sour-del {
-	background-position: right -1066px;
+	background-position: right -840px;
 }
 
 .menu-sour-edit {
-	background-position: left -884px;
+	background-position: left -960px;
 }
 
 [dir=rtl] .menu-sour-edit {
-	background-position: right -884px;
+	background-position: right -960px;
 }
 
 .menu-sour-editraw {
-	background-position: left -754px;
+	background-position: left -960px;
 }
 
 [dir=rtl] .menu-sour-editraw {
-	background-position: right -574px;
+	background-position: right -960px;
 }
 
 .menu-story-sub {
-	background-position: left -1092px;
+	background-position: left -1208px;
 }
 
 [dir=rtl] .menu-story-sub {
-	background-position: right -1040px;
+	background-position: right -1208px;
 }
 
 .menu-tree li {
-	background-position: left -754px;
+	background-position: left -240px;
 }
 
 [dir=rtl] .menu-tree li {
-	background-position: right -754px;
+	background-position: right -240px;
 }
 
 .icon-indis {
-	width: 25px;
-	height: 25px;
-	background-image: url(images/mypage.png);
+	width: 20px;
+	height: 20px;
+	background-image: url(images/indis.png);
 }
 
 .icon-patriarch {
@@ -5201,8 +5086,8 @@ footer {
 }
 
 .icon-pedigree {
-	width: 25px;
-	height: 25px;
+	width: 20px;
+	height: 20px;
 	background-image: url(images/pedigree.png);
 }
 
@@ -5231,9 +5116,9 @@ footer {
 }
 
 .icon-sfamily {
-	width: 22px;
-	height: 22px;
-	background-image: url(images/sfamily.png);
+	width: 20px;
+	height: 20px;
+	background-image: url(images/family.png);
 }
 
 .icon-source-list {
@@ -5249,15 +5134,9 @@ footer {
 }
 
 .icon-user_add {
-	width: 25px;
-	height: 25px;
+	width: 20px;
+	height: 20px;
 	background-image: url(images/user_add.png);
-}
-
-.icon-webtrees {
-	width: 100px;
-	height: 21px;
-	background-image: url(images/webtrees.png);
 }
 
 .cookie-warning {
@@ -5282,56 +5161,52 @@ footer {
 		display: none;
 	}
 
-	#header_accordion1 {
-		width: 510px;
-	}
-
 	#pedigree-page h2 {
 		margin: 0;
 	}
 
 	#pedigree_chart {
-		margin: 0 auto;
+		margin: 0;
+	}
+
+	#header_accordion1 {
+		width: 510px;
 	}
 
 	#familybook_chart h3 {
 		margin-bottom: 10px;
 	}
 
-	#lifespan-chart {
-		margin: 0;
-		border: 0;
-		padding: 0;
-	}
+    #lifespan-chart {
+	    margin: 0;
+	    border: 0;
+	    padding: 0;
+    }
 }
 
 /* Mobile low and high resolution viewports */
-@media (max-width: 600px) {
-	.header-search {
-		display: none;
-		}
-	.secondary-menu {
-		min-height: 26px;
-		min-width: 458px;
-		text-align: right;
-		margin: 12px 10px;
-		}
-	[dir="rtl"] .secondary-menu {
-		clear:both;
-		float: left;
-		text-align: left;
-		margin: 5px 10px;
+@media (max-width: 650px) {
+	/* Primary Menu */
+	.primary-menu > li {
+		min-width: 60px;
+	}
+	.primary-menu > li {
+		background-image: url("images/large_menu2_sprite.png");
 	}
 	/* Search */
-	#search-page-table div #query {
-		width: 150px;
-	}
 	#search-page-table {
 		width: auto;
 	}
 	#search-page-table .value {
+		margin: 0 0 0 30%;
 		white-space: normal;
-    }
+	}
+	[dir=rtl] #search-page-table .value {
+		margin: 0 30% 0 0;
+	}
+	#search-page-table div #query {
+		width: 150px;
+	}
 	#search-page-table > input {
 		width: 20px;
 	}
@@ -5346,13 +5221,42 @@ footer {
 	#search-page-table .label {
 		width: 25%;
 	}
-	/* Lists */
-	#place_hierarchy td {
-		white-space: normal;
+	/* Login */
+	#register-form div, #verify-form div {
+		text-align: left;
 	}
-	/* Reports */
-	#reportengine-page table {
-		width: 100%;
+	#register-form, #verify-form {
+		width: 95%;
+	}
+}
+@media (max-width: 550px) {
+	/* Secondary Menu */
+	.header-logo {
+		height: 70px;
+	}
+	.header-search {
+		display: none;
+	}
+	.secondary-menu {
+		position: absolute;
+		top: 30px;
+		right: 0;
+	}
+	[dir=rtl] .secondary-menu {
+		left: 0;
+		right: auto;
+	}
+	/* Primary Menu */
+	.primary-menu > li {
+		min-width: 40px;
+		padding: 0;
+	}
+	header nav {
+		font-size: 10px;
+		padding: 0;
+	}
+	.primary-menu > li:hover > ul {
+		top: 65px;
 	}
 	/* Login */
 	#register-form div, #verify-form div {
@@ -5368,26 +5272,7 @@ footer {
 }
 
 @media (max-width: 400px) {
-/* Header */
-	[dir=rtl] .secondary-menu {
-		text-align: left;
-		margin: 5px 10px;
-	}
-	.primary-menu {
-		height: 40px;
-	}
-	.primary-menu > li {
-		background-image: url("images/sprites-top2-menu.png");
-		margin: 0 0 0 7px;
-		width: 28px;
-	}
-	[dir=rtl] .primary-menu > li {
-		margin: 0 7px 0 0;
-	}
-	.primary-menu > li > ul {
-		top: 32px;
-	}
-/* Front Page */
+	/* Front Page */
 	#index_main_blocks {
 		float: left;
 		width: 100%;
@@ -5399,7 +5284,7 @@ footer {
 	.stat-table1, .stat-table2{
 		width: 100%;
 	}
-/* Indi Page */
+	/* Indi Page */
 	#indi_left {
 		float: left;
 		width: 100%;
@@ -5418,6 +5303,14 @@ footer {
 		float: left;
 		width: 100%;
 		display: inline;
+	}
+	/* Lists */
+	#place_hierarchy td {
+		white-space: normal;
+	}
+	/* Reports */
+	#reportengine-page table {
+		width: 100%;
 	}
 	/* Advanced Search */
 	#field_table {

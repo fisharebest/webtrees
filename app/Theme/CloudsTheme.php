@@ -29,7 +29,7 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string A relative path, such as "themes/foo/"
 	 */
 	public function assetUrl() {
-		return 'themes/clouds/css-1.7.4/';
+		return 'themes/clouds/css-1.7.5/';
 	}
 
 	/**
