@@ -146,12 +146,18 @@ abstract class AbstractTheme {
 	 */
 	protected function analyticsGoogleTracker($analytics_id) {
 		if ($analytics_id) {
+			// Add extra dimensions (i.e. filtering categories)
+			$dimensions = (object) array(
+				'dimension1' => $this->tree ? $this->tree->getName() : '-',
+				'dimension2' => $this->tree ? Auth::accessLevel($this->tree) : '-',
+			);
+
 			return
 				'<script async src="https://www.google-analytics.com/analytics.js"></script>' .
 				'<script>' .
 				'window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;' .
 				'ga("create","' . $analytics_id . '","auto");' .
-				'ga("send", "pageview");' .
+				'ga("send", "pageview", ' . json_encode($dimensions) . ');' .
 				'</script>';
 		} else {
 			return '';
