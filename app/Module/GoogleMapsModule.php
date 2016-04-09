@@ -596,7 +596,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					window.close();
 			</script>
 		<?php
-			exit;
+			return;
 		} else {
 		?>
 		<script>
@@ -2732,7 +2732,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				echo '<tr><td>';
 				echo '<form style="text-align:left; margin-left:5px; font:11px verdana; color:blue;" method="post" action="">';
 				echo $list_latlon;
-				echo '<input type="submit" name="Submit" onclick="update_sv_params($placeid);" value="', I18N::translate('save'), '">';
+				echo '<input type="submit" name="Submit" onclick="update_sv_params(' . $placeid . ');" value="', I18N::translate('save'), '">';
 				echo '</form>';
 				echo '</td></tr>';
 				echo '</table>';
@@ -3229,10 +3229,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		$controller = new SimpleController;
 		$controller
-				->restrictAccess(Auth::isAdmin())
-				->setPageTitle(I18N::translate('Geographic data'))
-				->addInlineJavascript('$("<link>", {rel: "stylesheet", type: "text/css", href: "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css"}).appendTo("head");')
-				->pageHeader();
+			->restrictAccess(Auth::isAdmin())
+			->setPageTitle(I18N::translate('Geographic data'))
+			->addInlineJavascript('$("<link>", {rel: "stylesheet", type: "text/css", href: "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css"}).appendTo("head");')
+			->pageHeader();
 
 		$where_am_i = $this->placeIdToHierarchy($placeid);
 		$level      = count($where_am_i);
@@ -3248,8 +3248,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 
 			$controller->addInlineJavascript('closePopupAndReloadParent();');
-			echo "<div class=\"center\"><button onclick=\"closePopupAndReloadParent();return false;\">", I18N::translate('close'), "</button></div>";
-			exit;
+
+			return;
 		}
 
 		if ($action == 'updaterecord' && Auth::isAdmin()) {
@@ -3263,8 +3263,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 
 			$controller->addInlineJavascript('closePopupAndReloadParent();');
-			echo "<div class=\"center\"><button onclick=\"closePopupAndReloadParent();return false;\">", I18N::translate('close'), "</button></div>";
-			exit;
+
+			return;
 		}
 
 		// Update placelocation STREETVIEW fields
@@ -3281,7 +3281,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$placeid,
 			));
 			$controller->addInlineJavascript('window.close();');
-			exit;
+
+			return;
 		}
 
 		if ($action === 'update') {
@@ -4059,7 +4060,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '"', I18N::translate('Longitude'), '";"', I18N::translate('Latitude'), '";';
 			echo '"', I18N::translate('Zoom level'), '";"', I18N::translate('Icon'), '";', WT_EOL;
 			$this->outputLevel($parent);
-			exit;
+
+			return;
 		}
 
 		$controller
@@ -4301,7 +4303,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			</div>
 		</form>
 		<?php
-			exit;
+			return;
 		}
 
 		if ($action === 'ImportFile2') {
