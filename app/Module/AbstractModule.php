@@ -23,9 +23,6 @@ use Fisharebest\Webtrees\Tree;
  * Class AbstractModule - common functions for blocks
  */
 abstract class AbstractModule {
-	/** @var string A user-friendly, localized name for this module */
-	private $title;
-
 	/** @var string The directory where the module is installed */
 	private $directory;
 
