@@ -4137,6 +4137,10 @@ header h1 {
 .secondary-menu ul,
 .primary-menu ul {
 	z-index: 210;
+	max-height: 400px;
+	min-width: 140px;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .secondary-menu {

@@ -351,28 +351,6 @@ class FunctionsDb {
 	}
 
 	/**
-	 * get recent changes since the given julian day inclusive
-	 *
-	 * @param int $jd leave empty to include all
-	 * @param bool $allgeds
-	 *
-	 * @return string[] List of XREFs of records with changes
-	 */
-	public static function getRecentChanges($jd = 0, $allgeds = false) {
-		global $WT_TREE;
-
-		$sql  = "SELECT d_gid FROM `##dates` WHERE d_fact='CHAN' AND d_julianday1>=?";
-		$vars = array($jd);
-		if (!$allgeds) {
-			$sql .= " AND d_file=?";
-			$vars[] = $WT_TREE->getTreeId();
-		}
-		$sql .= " ORDER BY d_julianday1 DESC";
-
-		return Database::prepare($sql)->execute($vars)->fetchOneColumn();
-	}
-
-	/**
 	 * Search family records
 	 *
 	 * @param string[] $query Search terms
@@ -926,9 +904,6 @@ class FunctionsDb {
 	public static function getCalendarEvents($jd1, $jd2, $facts, Tree $tree) {
 		// If no facts specified, get all except these
 		$skipfacts = "CHAN,BAPL,SLGC,SLGS,ENDL,CENS,RESI,NOTE,ADDR,OBJE,SOUR,PAGE,DATA,TEXT";
-		if ($facts != '_TODO') {
-			$skipfacts .= ',_TODO';
-		}
 
 		$found_facts = array();
 

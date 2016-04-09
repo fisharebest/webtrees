@@ -436,6 +436,14 @@ $old_files = array(
 	WT_ROOT . 'packages/jquery-1.11.3',
 	WT_ROOT . 'packages/jquery-2.1.4',
 	WT_ROOT . 'packages/moment-2.10.6',
+	// Removed in 1.7.5
+	WT_ROOT . 'themes/_administration/css-1.7.4',
+	WT_ROOT . 'themes/clouds/css-1.7.4',
+	WT_ROOT . 'themes/colors/css-1.7.4',
+	WT_ROOT . 'themes/fab/css-1.7.4',
+	WT_ROOT . 'themes/minimal/css-1.7.4',
+	WT_ROOT . 'themes/webtrees/css-1.7.4',
+	WT_ROOT . 'themes/xenea/css-1.7.4',
 );
 
 // Delete old files (if we can).

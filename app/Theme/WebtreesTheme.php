@@ -28,7 +28,7 @@ class WebtreesTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string A relative path, such as "themes/foo/"
 	 */
 	public function assetUrl() {
-		return 'themes/webtrees/css-1.7.4/';
+		return 'themes/webtrees/css-1.7.5/';
 	}
 
 	/**

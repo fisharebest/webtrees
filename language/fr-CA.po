@@ -12186,7 +12186,7 @@ msgid "Shortest marriage"
 msgstr "Mariage le plus court"
 
 #: app/Module/RecentChangesModule.php:176
-msgid "Should this block be hidden when it is empty?"
+msgid "Should this block be hidden when it is empty"
 msgstr "Masquer ce bloc lorsqu’il est vide&nbsp;?"
 
 #: calendar.php:229
