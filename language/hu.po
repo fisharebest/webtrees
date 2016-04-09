@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-04-09 08:56+0000\n"
+"PO-Revision-Date: 2016-04-09 18:10+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -1781,7 +1781,7 @@ msgstr "Élők"
 #: modules_v3/missing_facts_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "All"
-msgstr "Összes"
+msgstr "Mindent"
 
 #: admin_trees_manage.php:711
 msgid "All changes in PhpGedView must be accepted"
@@ -5847,7 +5847,7 @@ msgstr "Tény vagy esemény"
 #: modules_v3/individual_ext_report/report.xml:153
 #: modules_v3/individual_report/report.xml:149
 msgid "Facts and events"
-msgstr "Tények és események"
+msgstr "A tényeket és az eseményeket"
 
 #: admin_trees_config.php:1834
 msgid "Facts for family records"
@@ -7461,7 +7461,7 @@ msgstr "Legmagasabb kort megélt személy"
 #: statisticsplot.php:870 statisticsplot.php:920 statisticsplot.php:1128
 #: statisticsplot.php:1178 statisticsplot.php:1228 statisticsplot.php:1278
 msgid "Individuals"
-msgstr "Személyek"
+msgstr "A személyeket"
 
 #: app/Stats.php:425 statistics.php:391
 msgid "Individuals with sources"
@@ -12397,7 +12397,7 @@ msgstr "Csak azokat a személyeket mutasd, akik neme ismeretlen."
 
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all?"
-msgstr "Csak a személyeket és eseményeket mutassuk vagy mindent?"
+msgstr "A személyeket, az eseményeket vagy mindent mutassunk?"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -12453,7 +12453,7 @@ msgstr "Mutassuk a lakhelyeket?"
 
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls?"
-msgstr "Mutassa a diavetítőgombokat?"
+msgstr "Mutassuk a diavetítőgombokat?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
