@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
@@ -36,6 +37,10 @@ $controller
 
 $modules       = Module::getInstalledModules('disabled');
 $module_status = Database::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
+
+uasort($modules, function (AbstractModule $x, AbstractModule $y) {
+	return I18N::strcasecmp($x->getTitle(), $y->getTitle());
+});
 
 if (Filter::post('action') === 'update_mods' && Filter::checkCsrf()) {
 	foreach ($modules as $module) {
