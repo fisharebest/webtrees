@@ -39,7 +39,6 @@ abstract class AbstractModule {
 	 */
 	public function __construct($directory) {
 		$this->directory = $directory;
-		$this->title     = $this->getTitle();
 	}
 
 	/**

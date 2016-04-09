@@ -322,10 +322,6 @@ class Module {
 			}
 		}
 
-		uasort($modules, function (AbstractModule $x, AbstractModule $y) {
-			return I18N::strcasecmp($x->getTitle(), $y->getTitle());
-		});
-
 		return $modules;
 	}
 
