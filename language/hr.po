@@ -12200,7 +12200,7 @@ msgid "Shortest marriage"
 msgstr "Najkraći brak"
 
 #: app/Module/RecentChangesModule.php:176
-msgid "Should this block be hidden when it is empty?"
+msgid "Should this block be hidden when it is empty"
 msgstr "Treba li ovaj blok biti sakriven ako je prazan?"
 
 #: calendar.php:229

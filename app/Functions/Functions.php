@@ -19,7 +19,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\File;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Site;
@@ -170,42 +169,6 @@ class Functions {
 		}
 
 		return $text;
-	}
-
-	/**
-	 * Sort a list events for the today/upcoming blocks
-	 *
-	 * @param array $a
-	 * @param array $b
-	 *
-	 * @return int
-	 */
-	public static function eventSort($a, $b) {
-		if ($a['jd'] == $b['jd']) {
-			if ($a['anniv'] == $b['anniv']) {
-				return I18N::strcasecmp($a['fact'], $b['fact']);
-			} else {
-				return $a['anniv'] - $b['anniv'];
-			}
-		} else {
-			return $a['jd'] - $b['jd'];
-		}
-	}
-
-	/**
-	 * Sort a list events for the today/upcoming blocks
-	 *
-	 * @param array $a
-	 * @param array $b
-	 *
-	 * @return int
-	 */
-	public static function eventSortName($a, $b) {
-		if ($a['jd'] == $b['jd']) {
-			return GedcomRecord::compare($a['record'], $b['record']);
-		} else {
-			return $a['jd'] - $b['jd'];
-		}
 	}
 
 	/**
