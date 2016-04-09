@@ -3225,6 +3225,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$placeid    = Filter::post('placeid', null, Filter::get('placeid'));
 		$place_name = Filter::post('place_name', null, Filter::get('place_name'));
 
+		$placeid = (int) $placeid; // Convert empty string to zero
+
 		$controller = new SimpleController;
 		$controller
 				->restrictAccess(Auth::isAdmin())
