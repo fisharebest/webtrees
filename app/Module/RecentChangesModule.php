@@ -55,6 +55,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		$days       = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
 		$infoStyle  = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$sortStyle  = $this->getBlockSetting($block_id, 'sortStyle', 'date_desc');
+		$show_user  = $this->getBlockSetting($block_id, 'show_user', '1');
 		$block      = $this->getBlockSetting($block_id, 'block', '1');
 		$hide_empty = $this->getBlockSetting($block_id, 'hide_empty', '0');
 
@@ -87,11 +88,11 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			ob_start();
 			switch ($infoStyle) {
 			case 'list':
-				$content .= FunctionsPrintLists::changesList($found_facts, $sortStyle);
+				$content .= FunctionsPrintLists::changesList($found_facts, $sortStyle, $show_user);
 				break;
 			case 'table':
 				// sortable table
-				$content .= FunctionsPrintLists::changesTable($found_facts, $sortStyle);
+				$content .= FunctionsPrintLists::changesTable($found_facts, $sortStyle, $show_user);
 				break;
 			}
 			$content .= ob_get_clean();
@@ -133,6 +134,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS, self::DEFAULT_DAYS));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
 			$this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'name|date_asc|date_desc', 'date_desc'));
+			$this->setBlockSetting($block_id, 'show_user', Filter::postBool('show_user'));
 			$this->setBlockSetting($block_id, 'hide_empty', Filter::postBool('hide_empty'));
 			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
@@ -140,6 +142,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		$days       = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
 		$infoStyle  = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$sortStyle  = $this->getBlockSetting($block_id, 'sortStyle', 'date_desc');
+		$show_user  = $this->getBlockSetting($block_id, 'show_user', '1');
 		$block      = $this->getBlockSetting($block_id, 'block', '1');
 		$hide_empty = $this->getBlockSetting($block_id, 'hide_empty', '0');
 
@@ -164,6 +167,12 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			'date_asc'  => /* I18N: An option in a list-box */ I18N::translate('sort by date, oldest first'),
 			'date_desc' => /* I18N: An option in a list-box */ I18N::translate('sort by date, newest first'),
 		), null, $sortStyle, '');
+		echo '</td></tr>';
+
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo /* I18N: label for a yes/no option */ I18N::translate('Show the user who made the change');
+		echo '</td><td class="optionbox">';
+		echo FunctionsEdit::editFieldYesNo('show_user', $block);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';

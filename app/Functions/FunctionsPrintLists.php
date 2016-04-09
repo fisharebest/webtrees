@@ -1727,11 +1727,12 @@ class FunctionsPrintLists {
 	 * Print a table of events
 	 *
 	 * @param string[] $change_ids
-	 * @param string $sort
+	 * @param string   $sort
+	 * @param bool     $show_user
 	 *
 	 * @return string
 	 */
-	public static function changesList($change_ids, $sort) {
+	public static function changesList($change_ids, $sort, $show_user) {
 		global $WT_TREE;
 
 		$n   = 0;
@@ -1768,8 +1769,13 @@ class FunctionsPrintLists {
 					$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $value['record']->getAddName() . '</a>';
 				}
 			}
-			$html .= /* I18N: [a record was] Changed on <date/time> by <user> */
-				I18N::translate('Changed on %1$s by %2$s', $value['record']->lastChangeTimestamp(), Filter::escapeHtml($value['record']->lastChangeUser()));
+			if ($show_user) {
+				$html .= /* I18N: [a record was] Changed on <date/time> by <user> */
+					I18N::translate('Changed on %1$s by %2$s', $value['record']->lastChangeTimestamp(), Filter::escapeHtml($value['record']->lastChangeUser()));
+			} else {
+				$html .= /* I18N: [a record was] Changed on <date/time> */
+					I18N::translate('Changed on %1$s', $value['record']->lastChangeTimestamp());
+			}
 			$html .= '</div>';
 		}
 
@@ -1780,25 +1786,27 @@ class FunctionsPrintLists {
 	 * Print a table of events
 	 *
 	 * @param string[] $change_ids
-	 * @param string $sort
+	 * @param string   $sort
+	 * @param bool     $show_user
 	 *
 	 * @return string
 	 */
-	public static function changesTable($change_ids, $sort) {
+	public static function changesTable($change_ids, $sort, $show_user) {
 		global $controller, $WT_TREE;
 
 		$n        = 0;
 		$table_id = 'table-chan-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 		switch ($sort) {
-			case 'name':        //name
-				$aaSorting = "[5,'asc'], [4,'desc']";
-				break;
-			case 'date_asc':    //date ascending
-				$aaSorting = "[4,'asc'], [5,'asc']";
-				break;
-			case 'date_desc':   //date descending
-				$aaSorting = "[4,'desc'], [5,'asc']";
-				break;
+		case 'name':        //name
+		default:
+			$aaSorting = "[2,'asc'], [4,'desc']";
+			break;
+		case 'date_asc':    //date ascending
+			$aaSorting = "[4,'asc'], [2,'asc']";
+			break;
+		case 'date_desc':   //date descending
+			$aaSorting = "[4,'desc'], [2,'asc']";
+			break;
 		}
 		$html = '';
 		$controller
@@ -1816,12 +1824,12 @@ class FunctionsPrintLists {
 					jQueryUI: true,
 					sorting: [' . $aaSorting . '],
 					columns: [
-						/* 0-Type */    { sortable: false, class: "center" },
-						/* 1-Record */  { dataSort: 5 },
-						/* 2-Change */  { dataSort: 4 },
-						/* 3-By */      null,
-						/* 4-DATE */    { visible: false },
-						/* 5-SORTNAME */{ type: "unicode", visible: false }
+						/* 0-Type */     { sortable: false, class: "center" },
+						/* 1-Record */   { dataSort: 2 },
+						/* 2-SORTNAME */ { type: "unicode" },
+						/* 3-Change */   { dataSort: 4 },
+						/* 4-DATE */     null
+						' . ($show_user ? ',/* 5-By */      null' : '') . '
 					]
 				});
 			');
@@ -1831,10 +1839,12 @@ class FunctionsPrintLists {
 		$html .= '<thead><tr>';
 		$html .= '<th></th>';
 		$html .= '<th>' . I18N::translate('Record') . '</th>';
+		$html .= '<th hidden>SORTNAME</th>';
 		$html .= '<th>' . GedcomTag::getLabel('CHAN') . '</th>';
-		$html .= '<th>' . GedcomTag::getLabel('_WT_USER') . '</th>';
-		$html .= '<th>DATE</th>'; //hidden by datatables code
-		$html .= '<th>SORTNAME</th>'; //hidden by datatables code
+		$html .= '<th hidden>DATE</th>';
+		if ($show_user) {
+			$html .= '<th>' . GedcomTag::getLabel('_WT_USER') . '</th>';
+		}
 		$html .= '</tr></thead><tbody>';
 
 		//-- table body
@@ -1880,15 +1890,16 @@ class FunctionsPrintLists {
 					$html .= '<div class="indent"><a href="' . $record->getHtmlUrl() . '">' . $addname . '</a></div>';
 				}
 			}
-			$html .= "</td>";
-			//-- Last change date/time
+			$html .= '</td>';
+			$html .= '<td hidden>' . $record->getSortName() . '</td>';
+			//  Last change date/time
 			$html .= '<td class="wrap">' . $record->lastChangeTimestamp() . '</td>';
-			//-- Last change user
-			$html .= '<td class="wrap">' . Filter::escapeHtml($record->lastChangeUser()) . '</td>';
-			//-- change date (sortable) hidden by datatables code
-			$html .= '<td>' . $record->lastChangeTimestamp(true) . '</td>';
-			//-- names (sortable) hidden by datatables code
-			$html .= '<td>' . $record->getSortName() . '</td></tr>';
+			$html .= '<td hidden>' . $record->lastChangeTimestamp(true) . '</td>';
+			if ($show_user) {
+				//  Last change user
+				$html .= '<td class="wrap">' . Filter::escapeHtml($record->lastChangeUser()) . '</td>';
+			}
+			$html .= '</tr>';
 		}
 
 		$html .= '</tbody></table>';
