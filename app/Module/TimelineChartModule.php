@@ -52,23 +52,26 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 	public function defaultAccessLevel() {
 		return Auth::PRIV_PRIVATE;
 	}
-	
+
 	/**
 	 * Return a menu item for this chart.
 	 *
-	 * @return Menu
+	 * @return Menu|null
 	 */
 	public function getChartMenu(Individual $individual) {
-		global $controller, $WT_TREE;
-		
 		return new Menu(
-			$this->getTitle(), 
-			'timeline.php?pids%5B%5D=' . $individual->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
-			'menu-chart-timeline', 
+			$this->getTitle(),
+			'timeline.php?pids%5B%5D=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
+			'menu-chart-timeline',
 			array('rel' => 'nofollow')
 		);
 	}
-	
+
+	/**
+	 * Return a menu item for this chart - for use in individual boxes.
+	 *
+	 * @return Menu|null
+	 */
 	public function getBoxChartMenu(Individual $individual) {
 		return null;
 	}

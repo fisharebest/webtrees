@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2016 webtrees development team
@@ -13,27 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Fisharebest\Webtrees\Module;
-
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Menu;
 
 /**
- * Interface ModuleChartInterface - Classes and libraries for module system
+ * Test harness for the class PedigreeChartModule
  */
-interface ModuleChartInterface {
+class PedigreeChartModuleTest extends \PHPUnit_Framework_TestCase {
+	/**
+	 * Prepare the environment for these tests
+	 */
+	public function setUp() {
+	}
 
 	/**
-	 * Return a menu item for this chart.
-	 *
-	 * @return Menu|null
+	 * Test that the class exists
 	 */
-	public function getChartMenu(Individual $individual);
-
-	/**
-	 * Return a menu item for this chart (for menu in individual box).
-	 *
-	 * @return Menu|null
-	 */
-	public function getBoxChartMenu(Individual $individual);
+	public function testClassExists() {
+		$this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\PedigreeChartModule'));
+	}
 }

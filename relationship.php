@@ -40,6 +40,7 @@ $person1 = Individual::getInstance($pid1, $WT_TREE);
 $person2 = Individual::getInstance($pid2, $WT_TREE);
 
 $controller
+	->restrictAccess(Module::isActiveChart($WT_TREE, 'relationships_chart'))
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 

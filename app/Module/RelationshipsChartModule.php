@@ -52,34 +52,38 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 	public function defaultAccessLevel() {
 		return Auth::PRIV_PRIVATE;
 	}
-	
+
 	/**
 	 * Return a menu item for this chart.
 	 *
-	 * @return Menu
+	 * @return Menu|null
 	 */
 	public function getChartMenu(Individual $individual) {
-		global $controller, $WT_TREE;
-		
-		$gedcomid = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
+		$tree     = $individual->getTree();
+		$gedcomid = $tree->getUserPreference(Auth::user(), 'gedcomid');
 
-		if ($gedcomid && $individual->getXref()) {
+		if ($gedcomid) {
 			return new Menu(
-				I18N::translate('Relationship to me'), 
-				'relationship.php?pid1=' . $gedcomid . '&amp;pid2=' . $individual->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
-				'menu-chart-relationship', 
+				I18N::translate('Relationship to me'),
+				'relationship.php?pid1=' . $gedcomid . '&amp;pid2=' . $individual->getXref() . '&amp;ged=' . $tree->getNameUrl(),
+				'menu-chart-relationship',
 				array('rel' => 'nofollow')
 			);
 		} else {
 			return new Menu(
-				I18N::translate('Relationships'), 
-				'relationship.php?pid1=' . $individual->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
-				'menu-chart-relationship', 
+				I18N::translate('Relationships'),
+				'relationship.php?pid1=' . $individual->getXref() . '&amp;ged=' . $tree->getNameUrl(),
+				'menu-chart-relationship',
 				array('rel' => 'nofollow')
 			);
 		}
 	}
-	
+
+	/**
+	 * Return a menu item for this chart - for use in individual boxes.
+	 *
+	 * @return Menu|null
+	 */
 	public function getBoxChartMenu(Individual $individual) {
 		return $this->getChartMenu($individual);
 	}

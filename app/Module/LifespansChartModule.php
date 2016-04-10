@@ -56,11 +56,9 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 	/**
 	 * Return a menu item for this chart.
 	 *
-	 * @return Menu
+	 * @return Menu|null
 	 */
 	public function getChartMenu(Individual $individual) {
-		global $controller, $WT_TREE;
-		
 		return new Menu(
 			$this->getTitle(), 
 			'lifespan.php', 
@@ -69,6 +67,11 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 		);
 	}
 	
+	/**
+	 * Return a menu item for this chart - for use in individual boxes.
+	 *
+	 * @return Menu|null
+	 */
 	public function getBoxChartMenu(Individual $individual) {
 		return null;
 	}

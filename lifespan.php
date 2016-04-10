@@ -21,8 +21,11 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 define('WT_SCRIPT_NAME', 'lifespan.php');
 require './includes/session.php';
 
+global $WT_TREE;
+
 $controller = new LifespanController;
 $controller
+	->restrictAccess(Module::isActiveChart($WT_TREE, 'lifespans_chart'))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL);
 

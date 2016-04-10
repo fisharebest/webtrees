@@ -29,26 +29,25 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\AncestorsChartModule;
+use Fisharebest\Webtrees\Module\CompactTreeChartModule;
+use Fisharebest\Webtrees\Module\DescendancyChartModule;
+use Fisharebest\Webtrees\Module\FamilyBookChartModule;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
+use Fisharebest\Webtrees\Module\FanChartModule;
+use Fisharebest\Webtrees\Module\GoogleMapsModule;
+use Fisharebest\Webtrees\Module\HourglassChartModule;
+use Fisharebest\Webtrees\Module\InteractiveTreeModule;
+use Fisharebest\Webtrees\Module\LifespansChartModule;
+use Fisharebest\Webtrees\Module\PedigreeChartModule;
+use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Module\StatisticsChartModule;
+use Fisharebest\Webtrees\Module\TimelineChartModule;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Fisharebest\Webtrees\Module\AncestorsChartModule;
-use Fisharebest\Webtrees\Module\CompactTreeChartModule;
-use Fisharebest\Webtrees\Module\DescendancyChartModule;
-use Fisharebest\Webtrees\Module\FamilyBookChartModule;
-use Fisharebest\Webtrees\Module\FanChartModule;
-use Fisharebest\Webtrees\Module\InteractiveTreeModule;
-use Fisharebest\Webtrees\Module\HourglassChartModule;
-use Fisharebest\Webtrees\Module\LifespansChartModule;
-use Fisharebest\Webtrees\Module\PedigreeChartModule;
-use Fisharebest\Webtrees\Module\GoogleMapsModule;
-use Fisharebest\Webtrees\Module\RelationshipsChartModule;
-use Fisharebest\Webtrees\Module\StatisticsChartModule;
-use Fisharebest\Webtrees\Module\TimelineChartModule;
-
 
 /**
  * Common functions for all themes.
@@ -339,7 +338,8 @@ abstract class AbstractTheme {
 		if (
 			empty($_SERVER['HTTP_DNT']) &&
 			empty($_COOKIE['cookie']) &&
-			(Site::getPreference('GOOGLE_ANALYTICS_ID') || Site::getPreference('PIWIK_SITE_ID') || Site::getPreference('STATCOUNTER_PROJECT_ID'))) {
+			(Site::getPreference('GOOGLE_ANALYTICS_ID') || Site::getPreference('PIWIK_SITE_ID') || Site::getPreference('STATCOUNTER_PROJECT_ID'))
+		) {
 			return
 				'<div class="cookie-warning">' .
 				I18N::translate('Cookies') . ' - ' .
@@ -480,7 +480,7 @@ abstract class AbstractTheme {
 			return
 				'<div class="page-views">' .
 				I18N::plural('This page has been viewed %s time.', 'This page has been viewed %s times.', $count,
-				'<span class="odometer">' . I18N::digits($count) . '</span>') .
+					'<span class="odometer">' . I18N::digits($count) . '</span>') .
 				'</div>';
 		} else {
 			return '';
@@ -746,12 +746,12 @@ abstract class AbstractTheme {
 		}
 
 		$content = '<span class="namedef name1">' . $individual->getFullName() . '</span>';
-		$icons    = '';
+		$icons   = '';
 		if ($individual->canShowName()) {
 			$content =
 				'<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
 				'<div class="namedef name1">' . $individual->getAddName() . '</div>';
-			$icons =
+			$icons   =
 				'<div class="noprint icons">' .
 				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
 				'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
@@ -803,7 +803,7 @@ abstract class AbstractTheme {
 			$content =
 				'<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
 				'<div class="namedef name2">' . $individual->getAddName() . '</div>';
-			$icons =
+			$icons   =
 				'<div class="noprint icons">' .
 				'<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
 				'<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
@@ -948,7 +948,7 @@ abstract class AbstractTheme {
 	 *
 	 * @return Menu[]
 	 */
-	protected function individualBoxMenu(Individual $individual) {
+	public function individualBoxMenu(Individual $individual) {
 		$menus = array_merge(
 			$this->individualBoxMenuCharts($individual),
 			$this->individualBoxMenuFamilyLinks($individual)
@@ -970,18 +970,14 @@ abstract class AbstractTheme {
 			$menu = $chart->getBoxChartMenu($individual);
 			if ($menu) {
 				$menus[] = $menu;
-			}			 
+			}
 		}
-		
-		if ($menus) {
-			usort($menus, function (Menu $x, Menu $y) {
-				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
-			});
 
-			return $menus;
-		} else {
-			return null;
-		}		
+		usort($menus, function (Menu $x, Menu $y) {
+			return I18N::strcasecmp($x->getLabel(), $y->getLabel());
+		});
+
+		return $menus;
 	}
 
 	/**
@@ -1092,7 +1088,7 @@ abstract class AbstractTheme {
 	 *
 	 * @param Individual $individual
 	 *
-	 * @return Menu
+	 * @return Menu|null
 	 */
 	protected function menuChart(Individual $individual) {
 		$submenus = array();
@@ -1102,7 +1098,7 @@ abstract class AbstractTheme {
 				$submenus[] = $menu;
 			}
 		}
-		
+
 		if ($submenus) {
 			usort($submenus, function (Menu $x, Menu $y) {
 				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
@@ -1111,115 +1107,206 @@ abstract class AbstractTheme {
 			return new Menu(I18N::translate('Charts'), '#', 'menu-chart', array('rel' => 'nofollow'), $submenus);
 		} else {
 			return null;
-		}		
+		}
 	}
 
 	/**
-	 * @deprecated	
+	 * Generate a menu item for the ancestors chart.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Menu|null
+	 *
+	 * @deprecated
 	 */
 	protected function menuChartAncestors(Individual $individual) {
-		$chart = new AncestorsChartModule(__DIR__);
-  	return $chart->getChartMenu($individual);
+		$chart = new AncestorsChartModule(WT_ROOT . WT_MODULES_DIR . 'ancestors_chart');
+
+		return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * @deprecated	
+	 * Generate a menu item for the compact tree.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Menu|null
+	 *
+	 * @deprecated
 	 */
 	protected function menuChartCompact(Individual $individual) {
-		$chart = new CompactTreeChartModule(__DIR__);
-  	return $chart->getChartMenu($individual);
+		$chart = new CompactTreeChartModule(WT_ROOT . WT_MODULES_DIR . 'compact_tree_chart');
+
+		return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * @deprecated	
+	 * Generate a menu item for the descendants chart.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Menu|null
+	 *
+	 * @deprecated
 	 */
 	protected function menuChartDescendants(Individual $individual) {
-		$chart = new DescendancyChartModule(__DIR__);
-  	return $chart->getChartMenu($individual);
+		$chart = new DescendancyChartModule(WT_ROOT . WT_MODULES_DIR . 'descendancy_chart');
+
+		return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * @deprecated	
+	 * Generate a menu item for the family-book chart.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Menu|null
+	 *
+	 * @deprecated
 	 */
 	protected function menuChartFamilyBook(Individual $individual) {
-		$chart = new FamilyBookChartModule(__DIR__);
-  	return $chart->getChartMenu($individual);
+		$chart = new FamilyBookChartModule(WT_ROOT . WT_MODULES_DIR . 'family_book_chart');
+
+		return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * @deprecated	
+	 * Generate a menu item for the fan chart.
+	 *
+	 * We can only do this if the GD2 library is installed with TrueType support.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Menu|null
+	 *
+	 * @deprecated
 	 */
 	protected function menuChartFanChart(Individual $individual) {
-		$chart = new FanChartModule(__DIR__);
-  	return $chart->getChartMenu($individual);
+		$chart = new FanChartModule(WT_ROOT . WT_MODULES_DIR . 'fan_chart');
+
+		return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * @deprecated	
+	 * Generate a menu item for the interactive tree.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Menu|null
+	 *
+	 * @deprecated
 	 */
 	protected function menuChartInteractiveTree(Individual $individual) {
-		$chart = new InteractiveTreeModule(__DIR__);
-  	return $chart->getChartMenu($individual);
+		$chart = new InteractiveTreeModule(WT_ROOT . WT_MODULES_DIR . 'tree');
+
+		return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * @deprecated	
+	 * Generate a menu item for the hourglass chart.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Menu|null
+	 *
+	 * @deprecated
 	 */
 	protected function menuChartHourglass(Individual $individual) {
-		$chart = new HourglassChartModule(__DIR__);
-  	return $chart->getChartMenu($individual);
+		$chart = new HourglassChartModule(WT_ROOT . WT_MODULES_DIR . 'hourglass_chart');
+
+		return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * @deprecated	
+	 * Generate a menu item for the lifepsan chart.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Menu|null
+	 *
+	 * @deprecated
 	 */
 	protected function menuChartLifespan(Individual $individual) {
-		$chart = new LifespansChartModule(__DIR__);
-  	return $chart->getChartMenu($individual);
+		$chart = new LifespansChartModule(WT_ROOT . WT_MODULES_DIR . 'lifespans_chart');
+
+		return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * @deprecated	
+	 * Generate a menu item for the pedigree chart.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Menu|null
+	 *
+	 * @deprecated
 	 */
 	protected function menuChartPedigree(Individual $individual) {
-		$chart = new PedigreeChartModule(__DIR__);
-  	return $chart->getChartMenu($individual);
+		$chart = new PedigreeChartModule(WT_ROOT . WT_MODULES_DIR . 'pedigree_chart');
+
+		return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * @deprecated	
+	 * Generate a menu item for the pedigree map.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Menu|null
+	 *
+	 * @deprecated
 	 */
 	protected function menuChartPedigreeMap(Individual $individual) {
-		$chart = new GoogleMapsModule(__DIR__);
-  	return $chart->getChartMenu($individual);
+		$chart = new GoogleMapsModule(WT_ROOT . WT_MODULES_DIR . 'googlemap');
+
+		return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * @deprecated	
+	 * Generate a menu item for the relationship chart.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Menu|null
+	 *
+	 * @deprecated
 	 */
 	protected function menuChartRelationship(Individual $individual) {
-		$chart = new RelationshipsChartModule(__DIR__);
-  	return $chart->getChartMenu($individual);
+		$chart = new RelationshipsChartModule(WT_ROOT . WT_MODULES_DIR . 'relationships_chart');
+
+		return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * @deprecated	
+	 * Generate a menu item for the statistics charts.
+	 *
+	 * @return Menu|null
+	 *
+	 * @deprecated
 	 */
 	protected function menuChartStatistics() {
-		$chart = new StatisticsChartModule(__DIR__);
-  	return $chart->getChartMenu(null);
+		$chart = new StatisticsChartModule(WT_ROOT . WT_MODULES_DIR . 'statistics_chart');
+
+		return $chart->getChartMenu(null);
 	}
 
 	/**
-	 * @deprecated	
+	 * Generate a menu item for the timeline chart.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Menu|null
+	 *
+	 * @deprecated
 	 */
 	protected function menuChartTimeline(Individual $individual) {
-		$chart = new TimelineChartModule(__DIR__);
-  	return $chart->getChartMenu($individual);
+		$chart = new TimelineChartModule(WT_ROOT . WT_MODULES_DIR . 'timeline_chart');
+
+		return $chart->getChartMenu($individual);
 	}
-	
+
 	/**
-	 * Generate a menu item for the control panel (admin.php).
+	 * Generate a menu item for the control panel.
 	 *
 	 * @return Menu|null
 	 */
@@ -1556,14 +1643,14 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * A link to the user's individual record (pedigree.php).
+	 * A link to the user's individual record.
 	 *
 	 * @return Menu|null
 	 */
 	protected function menuMyPedigree() {
 		$gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
 
-		if ($gedcomid) {
+		if ($gedcomid && Module::isActiveChart($this->tree, 'pedigree_chart')) {
 			$showFull   = $this->tree->getPreference('PEDIGREE_FULL_DETAILS') ? 1 : 0;
 			$showLayout = $this->tree->getPreference('PEDIGREE_LAYOUT') ? 1 : 0;
 
@@ -1883,7 +1970,9 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function primaryMenuContent(array $menus) {
-		return implode('', array_map(function (Menu $menu) { return $menu->getMenuAsList(); }, $menus));
+		return implode('', array_map(function (Menu $menu) {
+			return $menu->getMenuAsList();
+		}, $menus));
 	}
 
 	/**
@@ -1922,7 +2011,9 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function secondaryMenuContent(array $menus) {
-		return implode('', array_map(function (Menu $menu) { return $menu->getMenuAsList(); }, $menus));
+		return implode('', array_map(function (Menu $menu) {
+			return $menu->getMenuAsList();
+		}, $menus));
 	}
 
 	/**
