@@ -35,7 +35,7 @@ $MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
 $controller = new AncestryController;
 $controller
-	->restrictAccess(in_array('ancestors_chart', Module::getActiveCharts($WT_TREE)))
+	->restrictAccess(array_key_exists('ancestors_chart', Module::getActiveCharts($WT_TREE)))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');

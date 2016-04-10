@@ -29,7 +29,7 @@ require './includes/session.php';
 
 $controller = new TimelineController;
 $controller
-	->restrictAccess(in_array('timeline_chart', Module::getActiveCharts($WT_TREE)))
+	->restrictAccess(array_key_exists('timeline_chart', Module::getActiveCharts($WT_TREE)))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');

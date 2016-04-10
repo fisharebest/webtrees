@@ -31,7 +31,7 @@ require './includes/session.php';
 
 $controller = new HourglassController;
 $controller
-	->restrictAccess(in_array('hourglass_chart', Module::getActiveCharts($WT_TREE)))
+	->restrictAccess(array_key_exists('hourglass_chart', Module::getActiveCharts($WT_TREE)))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')
