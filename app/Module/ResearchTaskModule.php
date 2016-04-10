@@ -144,7 +144,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 				$content .= '<td class="wrap">' . $fact->getDate()->display() . '</td>';
 				$content .= '<td class="wrap"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
 				$content .= '<td class="wrap">' . $user_name . '</td>';
-				$content .= '<td class="wrap">' . $fact->getValue() . '</td>';
+				$content .= '<td class="wrap" dir="auto">' . $fact->getValue() . '</td>';
 				$content .= '</tr>';
 				$found = true;
 			}
