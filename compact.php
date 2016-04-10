@@ -28,6 +28,13 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 define('WT_SCRIPT_NAME', 'compact.php');
 require './includes/session.php';
 
+//respective module has to be enabled
+if (!Module::getModuleByNameIfAccessible('compact_tree_chart', $WT_TREE, 'chart')) {
+	header('Location: ' . WT_BASE_URL);
+
+	return;
+}
+
 $controller = new CompactController;
 $controller
 	->pageHeader()
