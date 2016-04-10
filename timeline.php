@@ -19,6 +19,8 @@ use Fisharebest\Webtrees\Controller\TimelineController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
+global $WT_TREE;
+
 $basexoffset = 0;
 $baseyoffset = 0;
 
@@ -27,6 +29,7 @@ require './includes/session.php';
 
 $controller = new TimelineController;
 $controller
+	->restrictAccess(in_array('timeline_chart', Module::getActiveCharts($WT_TREE)))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');

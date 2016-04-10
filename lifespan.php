@@ -23,6 +23,7 @@ require './includes/session.php';
 
 $controller = new LifespanController;
 $controller
+	->restrictAccess(in_array('lifespans_chart', Module::getActiveCharts($WT_TREE)))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL);
 

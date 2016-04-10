@@ -31,6 +31,7 @@ require './includes/session.php';
 
 $controller = new FamilyBookController;
 $controller
+	->restrictAccess(in_array('family_book_chart', Module::getActiveCharts($WT_TREE)))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');

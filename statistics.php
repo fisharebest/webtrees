@@ -35,7 +35,9 @@ $ajax = Filter::getBool('ajax');
 
 if (!$ajax) {
 	$controller = new PageController;
-	$controller->setPageTitle(I18N::translate('Statistics'))
+	$controller
+		->restrictAccess(in_array('statistics_chart', Module::getActiveCharts($WT_TREE)))
+		->setPageTitle(I18N::translate('Statistics'))
 		->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 		->addInlineJavascript('
 			jQuery("#statistics_chart").css("visibility", "visible");
