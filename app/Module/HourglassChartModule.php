@@ -56,19 +56,22 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 	/**
 	 * Return a menu item for this chart.
 	 *
-	 * @return Menu
+	 * @return Menu|null
 	 */
 	public function getChartMenu(Individual $individual) {
-		global $controller, $WT_TREE;
-		
 		return new Menu(
 			$this->getTitle(), 
-			'hourglass.php?rootid=' . $individual->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
+			'hourglass.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(), 
 			'menu-chart-hourglass', 
 			array('rel' => 'nofollow')
 		);
 	}
 	
+	/**
+	 * Return a menu item for this chart - for use in individual boxes.
+	 *
+	 * @return Menu|null
+	 */
 	public function getBoxChartMenu(Individual $individual) {
 		return $this->getChartMenu($individual);
 	}

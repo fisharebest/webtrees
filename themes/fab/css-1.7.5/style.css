@@ -3299,11 +3299,6 @@ dd .deletelink {
 	margin: 0;
 }
 
-#fan_chart ul.children li:before {
-	content: "< ";
-	font-weight: bold;
-}
-
 #fan_chart_img {
 	text-align: center;
 }

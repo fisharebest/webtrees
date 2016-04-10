@@ -58,15 +58,13 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface {
 	 * 
 	 * We can only do this if the GD2 library is installed with TrueType support.	 	 
 	 *
-	 * @return Menu
+	 * @return Menu|null
 	 */
 	public function getChartMenu(Individual $individual) {
-		global $controller, $WT_TREE;
-		
 		if (function_exists('imagettftext')) {
 			return new Menu(
 				$this->getTitle(), 
-				'fanchart.php?rootid=' . $individual->getXref() . '&amp;ged=' . $WT_TREE->getNameUrl(), 
+				'fanchart.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(), 
 				'menu-chart-fanchart', 
 				array('rel' => 'nofollow')
 			);
@@ -75,6 +73,11 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface {
 		}
 	}
 	
+	/**
+	 * Return a menu item for this chart - for use in individual boxes.
+	 *
+	 * @return Menu|null
+	 */
 	public function getBoxChartMenu(Individual $individual) {
 		return $this->getChartMenu($individual);
 	}

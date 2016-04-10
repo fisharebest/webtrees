@@ -56,19 +56,22 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 	/**
 	 * Return a menu item for this chart.
 	 *
-	 * @return Menu
+	 * @return Menu|null
 	 */
 	public function getChartMenu(Individual $individual) {
-		global $controller, $WT_TREE;
-		
 		return new Menu(
 			$this->getTitle(), 
-			'statistics.php?ged=' . $WT_TREE->getNameUrl(), 
+			'statistics.php?ged=' . $individual->getTree()->getNameUrl(), 
 			'menu-chart-statistics', 
 			array('rel' => 'nofollow')
 		);
 	}
 	
+	/**
+	 * Return a menu item for this chart - for use in individual boxes.
+	 *
+	 * @return Menu|null
+	 */
 	public function getBoxChartMenu(Individual $individual) {
 		return null;
 	}

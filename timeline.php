@@ -312,8 +312,8 @@ document.onmouseup = function () {
 			<?php } ?>
 		</tr>
 	</table>
-	<br><a href="lifespan.php?ged=<?php echo $WT_TREE->getNameUrl(); ?>"><b><?php echo I18N::translate('Show lifespans'); ?></b></a>
 </form>
+<br>
 <?php
 if (count($controller->people) > 0) {
 	?>
