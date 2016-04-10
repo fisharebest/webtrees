@@ -241,7 +241,7 @@ class Module {
 	}
 
 	/**
-	 * Find a specified module, if it is currently active and has a sufficient access level.
+	 * Find a specified module, if it is currently active and tree/user has a sufficient access level.
 	 *
 	 * @param string $module_name
 	 * @param Tree   $tree
