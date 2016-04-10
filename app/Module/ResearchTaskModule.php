@@ -118,9 +118,11 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		$end_jd = $show_future ? 99999999 : WT_CLIENT_JD;
 
 		$xrefs = Database::prepare(
-			"SELECT DISTINCT d_gid FROM `##dates` WHERE d_fact = '_TODO' AND d_julianday1 < :jd"
+			"SELECT DISTINCT d_gid FROM `##dates`" .
+			" WHERE d_file = :tree_id AND d_fact = '_TODO' AND d_julianday1 < :jd"
 		)->execute(array(
-			'jd' => $end_jd,
+			'tree_id' => $WT_TREE->getTreeId(),
+			'jd'      => $end_jd,
 		))->fetchOneColumn();
 
 		$facts = array();
