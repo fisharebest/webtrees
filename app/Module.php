@@ -241,6 +241,30 @@ class Module {
 	}
 
 	/**
+	 * Find a specified module, if it is currently active and tree/user has a sufficient access level.
+	 *
+	 * @param string $module_name
+	 * @param Tree   $tree
+	 * @param string $component tab, block, menu, etc
+	 *
+	 * @return AbstractModule|null
+	 */
+	public static function getModuleByNameIfAccessible($module_name, $tree, $component) {
+		$module = self::getModuleByName($module_name);
+		if (!$module) {
+			return null;
+		}
+		
+		$tree_access_level = Auth::accessLevel($tree);
+		$module_access_level = $module->getAccessLevel($tree, $component);
+		if ($tree_access_level > $module_access_level) {
+			return null;
+		}
+		
+		return $module;
+	}
+
+	/**
 	 * Scan the source code to find a list of all installed modules.
 	 *
 	 * During setup, new modules need a status of “enabled”.

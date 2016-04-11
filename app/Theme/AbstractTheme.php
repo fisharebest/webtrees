@@ -35,6 +35,20 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Module\AncestorsChartModule;
+use Fisharebest\Webtrees\Module\CompactTreeChartModule;
+use Fisharebest\Webtrees\Module\DescendancyChartModule;
+use Fisharebest\Webtrees\Module\FamilyBookChartModule;
+use Fisharebest\Webtrees\Module\FanChartModule;
+use Fisharebest\Webtrees\Module\InteractiveTreeModule;
+use Fisharebest\Webtrees\Module\HourglassChartModule;
+use Fisharebest\Webtrees\Module\LifespansChartModule;
+use Fisharebest\Webtrees\Module\PedigreeChartModule;
+use Fisharebest\Webtrees\Module\GoogleMapsModule;
+use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Module\StatisticsChartModule;
+use Fisharebest\Webtrees\Module\TimelineChartModule;
+
 
 /**
  * Common functions for all themes.
@@ -951,24 +965,23 @@ abstract class AbstractTheme {
 	 * @return Menu[]
 	 */
 	protected function individualBoxMenuCharts(Individual $individual) {
-		$menus = array_filter(array(
-			$this->menuChartAncestors($individual),
-			$this->menuChartCompact($individual),
-			$this->menuChartDescendants($individual),
-			$this->menuChartFanChart($individual),
-			$this->menuChartHourglass($individual),
-			$this->menuChartInteractiveTree($individual),
-			$this->menuChartPedigree($individual),
-			$this->menuChartPedigreeMap($individual),
-			$this->menuChartRelationship($individual),
-			$this->menuChartTimeline($individual),
-		));
+		$menus = array();
+		foreach (Module::getActiveCharts($this->tree) as $chart) {
+			$menu = $chart->getBoxChartMenu($individual);
+			if ($menu) {
+				$menus[] = $menu;
+			}			 
+		}
+		
+		if ($menus) {
+			usort($menus, function (Menu $x, Menu $y) {
+				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
+			});
 
-		usort($menus, function (Menu $x, Menu $y) {
-			return I18N::strcasecmp($x->getLabel(), $y->getLabel());
-		});
-
-		return $menus;
+			return $menus;
+		} else {
+			return null;
+		}		
 	}
 
 	/**
@@ -1082,190 +1095,129 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuChart(Individual $individual) {
-		$submenus = array_filter(array(
-			$this->menuChartAncestors($individual),
-			$this->menuChartCompact($individual),
-			$this->menuChartDescendants($individual),
-			$this->menuChartFamilyBook($individual),
-			$this->menuChartFanChart($individual),
-			$this->menuChartHourglass($individual),
-			$this->menuChartInteractiveTree($individual),
-			$this->menuChartLifespan($individual),
-			$this->menuChartPedigree($individual),
-			$this->menuChartPedigreeMap($individual),
-			$this->menuChartRelationship($individual),
-			$this->menuChartStatistics(),
-			$this->menuChartTimeline($individual),
-		));
+		$submenus = array();
+		foreach (Module::getActiveCharts($this->tree) as $chart) {
+			$menu = $chart->getChartMenu($individual);
+			if ($menu) {
+				$submenus[] = $menu;
+			}
+		}
+		
+		if ($submenus) {
+			usort($submenus, function (Menu $x, Menu $y) {
+				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
+			});
 
-		usort($submenus, function (Menu $x, Menu $y) {
-			return I18N::strcasecmp($x->getLabel(), $y->getLabel());
-		});
-
-		return new Menu(I18N::translate('Charts'), '#', 'menu-chart', array('rel' => 'nofollow'), $submenus);
+			return new Menu(I18N::translate('Charts'), '#', 'menu-chart', array('rel' => 'nofollow'), $submenus);
+		} else {
+			return null;
+		}		
 	}
 
 	/**
-	 * Generate a menu item for the ancestors chart (ancestry.php).
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu
+	 * @deprecated	
 	 */
 	protected function menuChartAncestors(Individual $individual) {
-		return new Menu(I18N::translate('Ancestors'), 'ancestry.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-ancestry', array('rel' => 'nofollow'));
+		$chart = new AncestorsChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * Generate a menu item for the compact tree (compact.php).
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu
+	 * @deprecated	
 	 */
 	protected function menuChartCompact(Individual $individual) {
-		return new Menu(I18N::translate('Compact tree'), 'compact.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-compact', array('rel' => 'nofollow'));
+		$chart = new CompactTreeChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * Generate a menu item for the descendants chart (descendancy.php).
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu
+	 * @deprecated	
 	 */
 	protected function menuChartDescendants(Individual $individual) {
-		return new Menu(I18N::translate('Descendants'), 'descendancy.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-descendants', array('rel' => 'nofollow'));
+		$chart = new DescendancyChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * Generate a menu item for the family-book chart (familybook.php).
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu
+	 * @deprecated	
 	 */
 	protected function menuChartFamilyBook(Individual $individual) {
-		return new Menu(I18N::translate('Family book'), 'familybook.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-familybook', array('rel' => 'nofollow'));
+		$chart = new FamilyBookChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * Generate a menu item for the fan chart (fanchart.php).
-	 *
-	 * We can only do this if the GD2 library is installed with TrueType support.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu|null
+	 * @deprecated	
 	 */
 	protected function menuChartFanChart(Individual $individual) {
-		if (function_exists('imagettftext')) {
-			return new Menu(I18N::translate('Fan chart'), 'fanchart.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-fanchart', array('rel' => 'nofollow'));
-		} else {
-			return null;
-		}
+		$chart = new FanChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * Generate a menu item for the interactive tree (tree module).
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu|null
+	 * @deprecated	
 	 */
 	protected function menuChartInteractiveTree(Individual $individual) {
-		if (Module::getModuleByName('tree')) {
-			return new Menu(I18N::translate('Interactive tree'), 'module.php?mod=tree&amp;mod_action=treeview&amp;' . $this->tree_url . '&amp;rootid=' . $individual->getXref(), 'menu-chart-tree', array('rel' => 'nofollow'));
-		} else {
-			return null;
-		}
+		$chart = new InteractiveTreeModule(__DIR__);
+  	return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * Generate a menu item for the hourglass chart (hourglass.php).
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu
+	 * @deprecated	
 	 */
 	protected function menuChartHourglass(Individual $individual) {
-		return new Menu(I18N::translate('Hourglass chart'), 'hourglass.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-hourglass', array('rel' => 'nofollow'));
+		$chart = new HourglassChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * Generate a menu item for the lifepsan chart (lifespan.php).
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu
+	 * @deprecated	
 	 */
 	protected function menuChartLifespan(Individual $individual) {
-		return new Menu(I18N::translate('Lifespans'), 'lifespan.php', 'menu-chart-lifespan', array('rel' => 'nofollow'));
+		$chart = new LifespansChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * Generate a menu item for the pedigree chart (pedigree.php).
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu
+	 * @deprecated	
 	 */
 	protected function menuChartPedigree(Individual $individual) {
-		return new Menu(I18N::translate('Pedigree'), 'pedigree.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-pedigree', array('rel' => 'nofollow'));
+		$chart = new PedigreeChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * Generate a menu item for the pedigree map (googlemap module).
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu|null
+	 * @deprecated	
 	 */
 	protected function menuChartPedigreeMap(Individual $individual) {
-		if (Module::getModuleByName('googlemap')) {
-			return new Menu(I18N::translate('Pedigree map'), 'module.php?' . $this->tree_url . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $individual->getXref(), 'menu-chart-pedigree_map', array('rel' => 'nofollow'));
-		} else {
-			return null;
-		}
+		$chart = new GoogleMapsModule(__DIR__);
+  	return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * Generate a menu item for the relationship chart (relationship.php).
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu
+	 * @deprecated	
 	 */
 	protected function menuChartRelationship(Individual $individual) {
-		$gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
-
-		if ($gedcomid && $individual->getXref()) {
-			return new Menu(I18N::translate('Relationship to me'), 'relationship.php?pid1=' . $gedcomid . '&amp;pid2=' . $individual->getXref() . '&amp;ged=' . $this->tree_url, 'menu-chart-relationship', array('rel' => 'nofollow'));
-		} else {
-			return new Menu(I18N::translate('Relationships'), 'relationship.php?pid1=' . $individual->getXref() . '&amp;ged=' . $this->tree_url, 'menu-chart-relationship', array('rel' => 'nofollow'));
-		}
+		$chart = new RelationshipsChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
 	}
 
 	/**
-	 * Generate a menu item for the statistics charts (statistics.php).
-	 *
-	 * @return Menu
+	 * @deprecated	
 	 */
 	protected function menuChartStatistics() {
-		return new Menu(I18N::translate('Statistics'), 'statistics.php?' . $this->tree_url, 'menu-chart-statistics', array('rel' => 'nofollow'));
+		$chart = new StatisticsChartModule(__DIR__);
+  	return $chart->getChartMenu(null);
 	}
 
 	/**
-	 * Generate a menu item for the timeline chart (timeline.php).
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu
+	 * @deprecated	
 	 */
 	protected function menuChartTimeline(Individual $individual) {
-		return new Menu(I18N::translate('Timeline'), 'timeline.php?pids%5B%5D=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-timeline', array('rel' => 'nofollow'));
+		$chart = new TimelineChartModule(__DIR__);
+  	return $chart->getChartMenu($individual);
 	}
-
+	
 	/**
 	 * Generate a menu item for the control panel (admin.php).
 	 *

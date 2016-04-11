@@ -13,26 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Fisharebest\Webtrees\Module;
+namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 
-/**
- * Interface ModuleChartInterface - Classes and libraries for module system
- */
-interface ModuleChartInterface {
-
-	/**
-	 * Return a menu item for this chart.
-	 *
-	 * @return Menu
-	 */
-	public function getChartMenu(Individual $individual);
-	
-	/**
-	 * Return a menu item for this chart (for menu in individual box).
-	 *
-	 * @return Menu or null if not applicable in box
-	 */
-	public function getBoxChartMenu(Individual $individual);
-}
+return new CompactTreeChartModule(__DIR__);

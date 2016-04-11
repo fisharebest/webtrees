@@ -13,26 +13,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Fisharebest\Webtrees\Module;
+namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\I18N;
 
 /**
- * Interface ModuleChartInterface - Classes and libraries for module system
+ * Upgrade the database schema from version 33 to version 34.
  */
-interface ModuleChartInterface {
-
-	/**
-	 * Return a menu item for this chart.
-	 *
-	 * @return Menu
-	 */
-	public function getChartMenu(Individual $individual);
+class Migration34 implements MigrationInterface {
 	
 	/**
-	 * Return a menu item for this chart (for menu in individual box).
-	 *
-	 * @return Menu or null if not applicable in box
+	 * Upgrade to to the next version (for 'Charts as modules', the respective modules should be enabled by default)
 	 */
-	public function getBoxChartMenu(Individual $individual);
+	public function upgrade() {
+		Module::getInstalledModules('enabled');		
+	}
 }
