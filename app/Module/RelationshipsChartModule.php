@@ -138,7 +138,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 				<h2><?php echo $tree->getTitleHtml() ?></h2>
 				<fieldset class="form-group">
 					<legend class="control-label col-sm-3">
-						<?php echo I18N::translate('Option to find all relationships'); ?>
+						<?php echo I18N::translate('Option to find all possible relationships'); ?>
 					</legend>
 					<div class="col-sm-9">
 						<?php echo FunctionsEdit::radioButtons('find-all-paths-' . $tree->getTreeId(), array(0 => I18N::translate('hide'), 1 => I18N::translate('show')), $tree->getPreference('FIND_ALL_PATHS', self::DEFAULT_FIND_ALL_PATHS), 'class="radio-inline"'); ?>
