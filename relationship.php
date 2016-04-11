@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Controller\RelationshipController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 
 define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
@@ -91,6 +92,7 @@ if ($person1 && $person2) {
 					<a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php echo /* I18N: Reverse the order of two individuals */ I18N::translate('Swap individuals') ?></a>
 				</td>
 				<td class="optionbox">
+					<?php if ($WT_TREE->getPreference('FIND_ALL_PATHS', RelationshipsChartModule::DEFAULT_FIND_ALL_PATHS)): ?>
 					<label>
 						<input type="radio" name="find_all" value="0" <?php echo $find_all ? '' : 'checked' ?>>
 						<?php echo I18N::translate('Find the closest relationships') ?>
@@ -100,6 +102,10 @@ if ($person1 && $person2) {
 						<input type="radio" name="find_all" value="1"<?php echo $find_all ? 'checked' : '' ?>>
 						<?php echo I18N::translate('Find all possible relationships') ?>
 					</label>
+					<?php else: ?>
+						<?php echo I18N::translate('Find the closest relationships') ?>
+						<input type="hidden" name="find_all" value="0">
+					<?php endif; ?>
 				</td>
 			</tr>
 		</tbody>
