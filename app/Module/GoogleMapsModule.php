@@ -219,13 +219,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 */
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
-			I18N::translate('Pedigree map'), 
-			'module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(), 
-			'menu-chart-pedigree_map', 
+			I18N::translate('Pedigree map'),
+			'module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
+			'menu-chart-pedigree_map',
 			array('rel' => 'nofollow')
 		);
 	}
-		
+
 	/**
 	 * Return a menu item for this chart - for use in individual boxes.
 	 *
@@ -234,7 +234,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	public function getBoxChartMenu(Individual $individual) {
 		return $this->getChartMenu($individual);
 	}
-	
+
 	/**
 	 * A form to edit the module configuration.
 	 */
@@ -842,11 +842,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$lon        = array();
 		for ($i = 0; $i < ($this->treesize); $i++) {
 			// -- check to see if we have moved to the next generation
-			if ($i + 1 >= pow(2, $curgen)) {$curgen++; }
+			if ($i + 1 >= pow(2, $curgen)) {
+				$curgen++;
+			}
 			$person = $this->ancestors[$i];
 			if (!empty($person)) {
 				$name = $person->getFullName();
-				if ($name == I18N::translate('Private')) $priv++;
+				if ($name == I18N::translate('Private')) {
+					$priv++;
+				}
 				$place = $person->getBirthPlace();
 				if (empty($place)) {
 					$latlongval[$i] = null;
@@ -1736,8 +1740,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				if ($row['pl_place'] != '') {
 					$placestr2 = $mapstr_edit . $id . "&amp;level=" . $level . $mapstr3 . $mapstr5 . I18N::translate('Zoom=') . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
-					if ($row['pl_place'] === 'unknown')
+					if ($row['pl_place'] === 'unknown') {
 						$matched[$x]++;
+					}
 				} else {
 					if ($levels[$z] === 'unknown') {
 						$placestr2 = $mapstr_add . $id . "&amp;level=" . $level . $mapstr3 . $mapstr7 . "<strong>" . I18N::translate('unknown') . "</strong>" . $mapstr8; $matched[$x]++;
@@ -2848,8 +2853,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$parent[$level] = $place2['place'];
 			$this->printHowManyPeople($level + 1, $parent);
 			echo '<br>', I18N::translate('This place has no coordinates');
-			if (Auth::isAdmin())
+			if (Auth::isAdmin()) {
 				echo "<br><a href='module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=", $levelm, "&amp;display=inactive'>", I18N::translate('Geographic data'), "</a>";
+			}
 			echo "</div>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
 		} else {
 			$lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $place2['lati']);
@@ -3043,7 +3049,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			if (isset($levelo[($level - 1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
 				// show the current place on the map
 
-				$place = Database::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id=?")
+				$place = Database::prepare("SELECT pl_id AS place_id, pl_place AS place, pl_lati AS lati, pl_long AS `long`, pl_zoom AS zoom, pl_icon AS icon FROM `##placelocation` WHERE pl_id=?")
 				->execute(array($levelm))
 				->fetch(PDO::FETCH_ASSOC);
 
@@ -3318,10 +3324,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$place_name       = $row->pl_place;
 			$place_icon       = $row->pl_icon;
 			$selected_country = explode("/", $place_icon);
-			if (isset($selected_country[1]) && $selected_country[1] != "flags")
+			if (isset($selected_country[1]) && $selected_country[1] !== 'flags') {
 				$selected_country = $selected_country[1];
-			else
-				$selected_country = "Countries";
+			} else {
+				$selected_country = 'Countries';
+			}
 			$parent_id         = $row->pl_parent_id;
 			$level             = $row->pl_level;
 			$zoomfactor        = $row->pl_zoom;
@@ -3400,8 +3407,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			} else {
 				echo '<b>', $place_name;
 			}
-			if (count($where_am_i) > 0)
+			if (count($where_am_i) > 0) {
 				echo ', ', Filter::escapeHtml(str_replace('Unknown', I18N::translate('unknown'), implode(I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
+			}
 			echo '</b><br>';
 		}
 
@@ -3946,8 +3954,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						$precision2 = -1;
 					}
 					($precision1 > $precision2) ? ($precision = $precision1) : ($precision = $precision2);
-					if ($precision == -1) ($level > 3) ? ($precision = 3) : ($precision = $level);
-					elseif ($precision > 5) {
+					if ($precision == -1) {
+						($level > 3) ? ($precision = 3) : ($precision = $level);
+					} elseif ($precision > 5) {
 						$precision = 5;
 					}
 				?>
@@ -4199,8 +4208,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$parent    = array_reverse($parent);
 				$parent_id = 0;
 				for ($i = 0; $i < count($parent); $i++) {
-					if (!isset($default_zoom_level[$i]))
+					if (!isset($default_zoom_level[$i])) {
 						$default_zoom_level[$i] = $default_zoom_level[$i - 1];
+					}
 					$escparent               = $parent[$i];
 					if ($escparent == '') {
 						$escparent = 'Unknown';
@@ -4440,7 +4450,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						Database::prepare("SELECT pl_id, pl_long, pl_lati, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
 						->execute(array($i, $parent_id, $escparent))
 						->fetchOneRow();
-					if (empty($row)) {       // this name does not yet exist: create entry
+					if (empty($row)) {
+						// this name does not yet exist: create entry
 						if (!Filter::postBool('updateonly')) {
 							$highestIndex = $highestIndex + 1;
 							if (($i + 1) == count($parent)) {
@@ -4579,14 +4590,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '<th>', I18N::translate('Icon'), '</th>';
 		echo '<th>';
 		echo I18N::translate('Edit'), '</th><th>', I18N::translate('Delete'), '</th></tr>';
-		if (count($placelist) == 0)
+		if (count($placelist) == 0) {
 			echo '<tr><td colspan="7">', I18N::translate('No places found'), '</td></tr>';
+		}
 		foreach ($placelist as $place) {
 			echo '<tr><td><a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $place['place_id'], '&inactive=', $inactive, '">';
-			if ($place['place'] != 'Unknown')
-					echo Filter::escapeHtml($place['place']), '</a></td>';
-				else
-					echo I18N::translate('unknown'), '</a></td>';
+			if ($place['place'] != 'Unknown') {
+				echo Filter::escapeHtml($place['place']), '</a></td>';
+			} else {
+				echo I18N::translate('unknown'), '</a></td>';
+			}
 			echo '<td>', $place['lati'], '</td>';
 			echo '<td>', $place['long'], '</td>';
 			echo '<td>', $place['zoom'], '</td>';
