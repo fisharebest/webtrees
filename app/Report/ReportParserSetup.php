@@ -16,7 +16,6 @@
 namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
 
 /**
