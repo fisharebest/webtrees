@@ -33,7 +33,7 @@ if (Filter::getBool('img')) {
 }
 
 $controller
-	->restrictAccess(Module::isActiveChart($WT_TREE, 'fanchart'))
+	->restrictAccess(Module::isActiveChart($WT_TREE, 'fan_chart'))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
