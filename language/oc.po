@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-04-01 21:15+0000\n"
+"PO-Revision-Date: 2016-04-12 10:04+0000\n"
 "Last-Translator: Arnaud Barbié <arnaud.barbie@laposte.net>\n"
 "Language-Team: Occitan <http://translate.webtrees.net/projects/webtrees/webtrees/oc/>\n"
 "Language: oc\n"
@@ -1078,18 +1078,21 @@ msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:158
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
 msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:126
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Aban"
 msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:62
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Aban"
 msgstr "Aban"
@@ -1129,72 +1132,84 @@ msgstr ""
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Adar"
 msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:217
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
 msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:179
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Adar"
 msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:103
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Adar"
 msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:140
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:216
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
 msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:178
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:102
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:142
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:218
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
 msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:180
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:104
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Adar II"
 msgstr "Adar II"
@@ -1481,6 +1496,7 @@ msgid "Administrator comments on user"
 msgstr "Avis de l’administrator sus l'utilizaire"
 
 #: admin.php:639
+#, fuzzy
 msgid "Administrators"
 msgstr "Administrators"
 
@@ -2127,6 +2143,7 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:9
 #: modules_v3/pedigree_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:10
+#, fuzzy
 msgctxt "font name"
 msgid "Arial"
 msgstr "Arial"
@@ -2336,30 +2353,35 @@ msgid "Avoid spaces and punctuation. A family name might be a good choice."
 msgstr "Evitatz d'espacis e pontuacion. Lo nom de la familha poiriá èsser una bona opcion."
 
 #: app/Date/JalaliDate.php:191
+#, fuzzy
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
 msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:95
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:159
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:127
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:63
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Azar"
 msgstr "Azar"
@@ -2373,6 +2395,7 @@ msgid "Azores"
 msgstr ""
 
 #: app/Date/JalaliDate.php:193
+#, fuzzy
 msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
 msgstr "Bah"
@@ -2383,24 +2406,28 @@ msgstr ""
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:97
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:161
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
 msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:129
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:65
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Bahman"
 msgstr "Bahman"
@@ -2488,6 +2515,7 @@ msgstr "Bateg d'un frair"
 
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:190 modules_v3/missing_facts_report/report.xml:17
+#, fuzzy
 msgid "Bar mitzvah"
 msgstr "Bar mitzvah"
 
@@ -2496,11 +2524,13 @@ msgid "Barbados"
 msgstr ""
 
 #: app/Module/GoogleMapsModule.php:297
+#, fuzzy
 msgid "Basic"
 msgstr "Basic"
 
 #. I18N: gedcom tag BASM
 #: app/GedcomTag.php:198 modules_v3/missing_facts_report/report.xml:18
+#, fuzzy
 msgid "Bat mitzvah"
 msgstr "Bat mitzvah"
 
@@ -2538,6 +2568,7 @@ msgid "Belgium"
 msgstr "Bèlgica"
 
 #: app/Stats.php:6750
+#, fuzzy
 msgid "Belize"
 msgstr "Belize"
 
@@ -2576,10 +2607,12 @@ msgid "Binary data object"
 msgstr "Objècte binari"
 
 #: app/Functions/FunctionsPrint.php:475
+#, fuzzy
 msgid "Bing Maps™"
 msgstr "Bing Maps™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
+#, fuzzy
 msgid "Birmingham, Alabama"
 msgstr "Birmingham, Alabama"
 
@@ -2930,6 +2963,7 @@ msgstr ""
 
 #. I18N: gedcom tag _BRTM
 #: app/GedcomTag.php:1084
+#, fuzzy
 msgid "Brit milah"
 msgstr "Brit milah"
 
@@ -2978,12 +3012,14 @@ msgstr "Frair"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:89
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:155
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
 msgstr "Brumaire"
@@ -2996,6 +3032,7 @@ msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:56
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
@@ -3198,6 +3235,7 @@ msgstr ""
 
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
+#, fuzzy
 msgid "CKEditor™"
 msgstr "CKEditor™"
 
@@ -4830,8 +4868,9 @@ msgstr "decembre"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:206
+#, fuzzy
 msgid "Decidi"
-msgstr "Decidi"
+msgstr "Decadi"
 
 #: app/Module/HtmlBlockModule.php:303
 msgid "Default"
@@ -4891,6 +4930,7 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:9
 #: modules_v3/pedigree_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:10
+#, fuzzy
 msgctxt "font name"
 msgid "DejaVu"
 msgstr "DejaVu"
@@ -5041,81 +5081,93 @@ msgid "Detroit, Michigan"
 msgstr ""
 
 #: app/Date/JalaliDate.php:192
+#, fuzzy
 msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
 msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:96
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Dey"
 msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:160
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
 msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:128
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Dey"
 msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:64
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "Dey"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:101
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhu-al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:165
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhu-al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:133
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhu-al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:69
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhu-al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:100
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
-msgstr "Dhu al-Qi’dah"
+msgstr "Dhu-al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:164
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi’dah"
-msgstr "Dhu al-Qi’dah"
+msgstr "Dhu-al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:132
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr "Dhu al-Qi’dah"
+msgstr "Dhu-al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:68
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr "Dhu al-Qi’dah"
+msgstr "Dhu-al-Qi’dah"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:71
@@ -5252,6 +5304,7 @@ msgstr "Descargar las donadas geograficas"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:198
+#, fuzzy
 msgid "Duodi"
 msgstr "Duodi"
 
@@ -5453,24 +5506,28 @@ msgstr "Elevacion"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:148
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Elul"
 msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:224
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
 msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:186
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Elul"
 msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:110
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Elul"
 msgstr "Elul"
@@ -5605,30 +5662,35 @@ msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not cur
 msgstr ""
 
 #: app/Date/JalaliDate.php:194
+#, fuzzy
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
 msgstr "Esf"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:98
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:162
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
 msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:130
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:66
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Esfand"
 msgstr "Esfand"
@@ -6060,30 +6122,35 @@ msgid "Fan chart of %s"
 msgstr "Grafic circular de %s"
 
 #: app/Date/JalaliDate.php:183
+#, fuzzy
 msgctxt "Abbreviation for Persian month: Farvardin"
 msgid "Far"
 msgstr "Far"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:87
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:151
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
 msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:119
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:55
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
@@ -6311,24 +6378,28 @@ msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:95
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Floréal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:161
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Floréal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:128
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Floréal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:62
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Floréal"
 msgstr "Floréal"
@@ -6461,6 +6532,7 @@ msgid "Frequently asked questions"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:151
+#, fuzzy
 msgid "Fresno, California"
 msgstr "Fresno, California"
 
@@ -6489,24 +6561,28 @@ msgstr "Amic"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:90
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:156
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
 msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:123
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:57
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
@@ -6518,29 +6594,34 @@ msgstr "De"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:99
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:165
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
 msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:132
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:66
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
 #: app/GedcomCode/GedcomCodeTemp.php:153
+#, fuzzy
 msgid "Fukuoka, Japan"
 msgstr "Fukuoka, Japan"
 
@@ -6657,24 +6738,28 @@ msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:94
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:160
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
 msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:127
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:61
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Germinal"
 msgstr "Germinal"
@@ -6741,6 +6826,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:221 app/Module/GoogleMapsModule.php:1511
 #: app/Module/GoogleMapsModule.php:4070 app/Module/GoogleMapsModule.php:4931
 #: app/Module/GoogleMapsModule.php:4968
+#, fuzzy
 msgid "Google Maps™"
 msgstr "Google Maps™"
 
@@ -6754,6 +6840,7 @@ msgstr "Preferéncias Google Maps™"
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
 #: app/Module/GoogleMapsModule.php:320 app/Module/GoogleMapsModule.php:2413
 #: app/Module/GoogleMapsModule.php:4934
+#, fuzzy
 msgid "Google Street View™"
 msgstr "Google Street View™"
 
@@ -6977,7 +7064,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "Helvetica"
-msgstr "Helvetica"
+msgstr "Helveticà"
 
 #: modules_v3/ahnentafel_report/report.xml:196
 msgid "Her occupation was"
@@ -7001,24 +7088,28 @@ msgstr ""
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:136
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Heshvan"
 msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:212
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
 msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:174
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Heshvan"
 msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:98
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
 msgstr "Heshvan"
@@ -7045,6 +7136,7 @@ msgstr ""
 
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:202 help_text.php:186
+#, fuzzy
 msgid "Hijri"
 msgstr "Hijri"
 
@@ -7474,7 +7566,7 @@ msgstr "Indonèsia"
 #. I18N: gedcom tag INFL
 #: app/Functions/FunctionsDate.php:38 app/GedcomTag.php:532
 msgid "Infant"
-msgstr "Infant"
+msgstr "Mainatge"
 
 #: app/GedcomCode/GedcomCodeRela.php:182
 msgid "Informant"
@@ -7580,6 +7672,7 @@ msgstr ""
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:144
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Iyar"
 msgstr "Iyar"
@@ -7592,12 +7685,14 @@ msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:182
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Iyar"
 msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:106
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Iyar"
 msgstr "Iyar"
@@ -7701,49 +7796,55 @@ msgstr "julhet"
 #: app/Date/HijriDate.php:94
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Jumad-al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:158
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Jumada-al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:126
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Jumada-al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:62
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Jumada-al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:95
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "Jumada-al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:159
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "Jumada-al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:127
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "Jumada-al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:63
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "Jumada-al-thani"
 
 #: app/Date/CalendarDate.php:316
 msgctxt "Abbreviation for June"
@@ -7803,30 +7904,35 @@ msgid "Keyword examples"
 msgstr ""
 
 #: app/Date/JalaliDate.php:185
+#, fuzzy
 msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
 msgstr "Khor"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:89
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:153
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
 msgstr "Khordad"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:121
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:57
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Khordad"
 msgstr "Khordad"
@@ -7841,24 +7947,28 @@ msgstr ""
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:137
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:213
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
 msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:175
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:99
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Kislev"
 msgstr "Kislev"
@@ -8284,6 +8394,7 @@ msgid "Lost password request"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:195
+#, fuzzy
 msgid "Louisville, Kentucky"
 msgstr "Louisville, Kentucky"
 
@@ -8292,6 +8403,7 @@ msgid "Lowest population"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:197
+#, fuzzy
 msgid "Lubbock, Texas"
 msgstr "Lubbock, Texas"
 
@@ -8878,30 +8990,35 @@ msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
 msgstr ""
 
 #: app/Date/JalaliDate.php:189
+#, fuzzy
 msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
 msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:93
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:157
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
 msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:125
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:61
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Mehr"
 msgstr "Mehr"
@@ -8985,24 +9102,28 @@ msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:97
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:163
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
 msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:130
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:64
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Messidor"
 msgstr "Messidor"
@@ -9172,30 +9293,35 @@ msgid "Montserrat"
 msgstr ""
 
 #: app/Date/JalaliDate.php:187
+#, fuzzy
 msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
 msgstr "Mor"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:91
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:155
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
 msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:123
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:59
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Mordad"
 msgstr "Mordad"
@@ -9263,8 +9389,9 @@ msgid "Mother’s family with an unknown individual"
 msgstr "Familha de la mair damb una persona desconeguda"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
+#, fuzzy
 msgid "Mount Timpanogos, Utah"
-msgstr "Mount Timpanogos, Utah"
+msgstr "Mont Timpanogos, Utah"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:493 index_edit.php:312
 #: index_edit.php:361
@@ -9290,18 +9417,21 @@ msgstr ""
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:90
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Muharram"
 msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:154
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
 msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:122
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Muharram"
 msgstr "Muharram"
@@ -9389,7 +9519,7 @@ msgstr "Nom"
 #. I18N: Label for search field
 #: find.php:148 find.php:165
 msgid "Name contains"
-msgstr "Lo nom conten&nbsp;:"
+msgstr "Lo nom conten"
 
 #: app/GedcomTag.php:606
 msgid "Name in Hebrew"
@@ -9426,8 +9556,9 @@ msgid "Namesake"
 msgstr "Omonim"
 
 #: app/Stats.php:6885
+#, fuzzy
 msgid "Namibia"
-msgstr "Namibia"
+msgstr "Namibià"
 
 #: app/GedcomCode/GedcomCodeRela.php:195
 msgid "Nanny"
@@ -9438,6 +9569,7 @@ msgid "Narrative description"
 msgstr "Descripcion narrativa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:227
+#, fuzzy
 msgid "Nashville, Tennessee"
 msgstr "Nashville, Tennessee"
 
@@ -9452,6 +9584,7 @@ msgid "Naturalization"
 msgstr "Naturalisacion"
 
 #: app/Stats.php:6896
+#, fuzzy
 msgid "Nauru"
 msgstr "Nauru"
 
@@ -9460,6 +9593,7 @@ msgid "Nauvoo, Illinois (new)"
 msgstr "Nauvoo, Illinois (nau)"
 
 #: app/GedcomCode/GedcomCodeTemp.php:231
+#, fuzzy
 msgid "Nauvoo, Illinois (original)"
 msgstr "Nauvoo, Illinois (original)"
 
@@ -9572,24 +9706,28 @@ msgstr ""
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:143
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Nissan"
 msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:219
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
 msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:181
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Nissan"
 msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:105
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Nissan"
 msgstr "Nissan"
@@ -9600,24 +9738,28 @@ msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:91
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Nivôse"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Nivôse"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:124
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Nivôse"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:58
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Nivôse"
 msgstr "Nivôse"
@@ -10130,6 +10272,7 @@ msgid "Optional prefixes and suffixes"
 msgstr ""
 
 #: app/Date/JalaliDate.php:184
+#, fuzzy
 msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
 msgstr "Ord"
@@ -10141,24 +10284,28 @@ msgstr ""
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:88
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:152
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:120
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:56
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
@@ -10341,6 +10488,7 @@ msgstr ""
 
 #: app/Controller/HourglassController.php:342
 #: app/Module/FamilyNavigatorModule.php:196 family.php:98
+#, fuzzy
 msgid "Parents"
 msgstr "Parents"
 
@@ -10727,24 +10875,28 @@ msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:92
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Pluviôse"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Pluviôse"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:125
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Pluviôse"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:59
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Pluviôse"
 msgstr "Pluviôse"
@@ -10793,24 +10945,28 @@ msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:96
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:162
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
 msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:129
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:63
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Prairial"
 msgstr "Prairial"
@@ -10875,6 +11031,7 @@ msgstr ""
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:197
+#, fuzzy
 msgid "Primidi"
 msgstr "Primidi"
 
@@ -10976,51 +11133,58 @@ msgstr ""
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:92
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi’ al-awwal"
+msgstr "Rabi’al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:156
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi’ al-awwal"
+msgstr "Rabi’al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:124
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi’ al-awwal"
+msgstr "Rabi’al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi’ al-awwal"
+msgstr "Rabi’al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:93
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
-msgstr "Rabi’ al-thani"
+msgstr "Rabi’al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:157
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
-msgstr "Rabi’ al-thani"
+msgstr "Rabi’al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:125
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
-msgstr "Rabi’ al-thani"
+msgstr "Rabi’al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:61
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-thani"
-msgstr "Rabi’ al-thani"
+msgstr "Rabi’al-thani"
 
 #. I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:93
@@ -11029,24 +11193,28 @@ msgstr ""
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:96
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:160
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:128
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:64
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Rajab"
 msgstr "Rajab"
@@ -11063,18 +11231,21 @@ msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:162
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:130
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:66
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
@@ -11252,6 +11423,7 @@ msgstr "Tanhença entre %1$s e %2$s"
 #. I18N: gedcom tag RELI
 #: app/GedcomTag.php:720 modules_v3/missing_facts_report/report.xml:26
 #: modules_v3/missing_facts_report/report.xml:587
+#, fuzzy
 msgid "Religion"
 msgstr "Religion"
 
@@ -11378,7 +11550,7 @@ msgstr "Prefix de l'ID del depaus d'archius"
 #. I18N: Label for search field
 #: find.php:223
 msgid "Repository contains"
-msgstr "Depaus d'archius compren :"
+msgstr "Depaus d'archius compren"
 
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
@@ -11452,6 +11624,7 @@ msgid "Retirement"
 msgstr "Retirada"
 
 #: app/Stats.php:6915
+#, fuzzy
 msgid "Reunion"
 msgstr "Reunion"
 
@@ -11465,8 +11638,9 @@ msgid "Role"
 msgstr "Ròtle"
 
 #: app/Stats.php:6916
+#, fuzzy
 msgid "Romania"
-msgstr "Romania"
+msgstr "Romanià"
 
 #. I18N: gedcom tag ROMN
 #: app/GedcomTag.php:758
@@ -11494,12 +11668,14 @@ msgstr "Nòrma"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:29 branches.php:55 search.php:258
+#, fuzzy
 msgid "Russell"
 msgstr "Russell"
 
 #: app/Stats.php:6917
+#, fuzzy
 msgid "Russia"
-msgstr "Russia"
+msgstr "Russià"
 
 #: app/Stats.php:6918
 msgid "Rwanda"
@@ -11515,24 +11691,28 @@ msgstr "Sacramento, Califòrnia"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:91
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Safar"
 msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:155
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
 msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:123
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Safar"
 msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:59
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Safar"
 msgstr "Safar"
@@ -11563,6 +11743,7 @@ msgid "Saint Vincent and the Grenadines"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:299
+#, fuzzy
 msgid "Salt Lake City, Utah"
 msgstr "Salt Lake City, Utah"
 
@@ -11571,20 +11752,23 @@ msgid "Samoa"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:285
+#, fuzzy
 msgid "San Antonio, Texas"
 msgstr "San Antonio, Texas"
 
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "San Diego, California"
-msgstr "San Diego, California"
+msgstr "San Diegò, Californià"
 
 #: app/GedcomCode/GedcomCodeTemp.php:297
+#, fuzzy
 msgid "San Jose, Costa Rica"
-msgstr "San Jose, Costa Rica"
+msgstr "San Jòse, Còsta Ricà"
 
 #: app/Stats.php:6934
+#, fuzzy
 msgid "San Marino"
-msgstr "San Marino"
+msgstr "San Marinò"
 
 #: app/GedcomCode/GedcomCodeTemp.php:283
 msgid "Santiago, Chile"
@@ -12012,30 +12196,35 @@ msgid "Seychelles"
 msgstr ""
 
 #: app/Date/JalaliDate.php:188
+#, fuzzy
 msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
 msgstr "Shah"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:92
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:156
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:124
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:60
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
@@ -12062,48 +12251,56 @@ msgstr "Nòtas comunas trobadas"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:99
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:163
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:131
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:67
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:97
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Sha’aban"
 msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:161
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
 msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:129
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
 msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:65
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
 msgstr "Sha’aban"
@@ -12143,24 +12340,28 @@ msgstr ""
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:139
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Shevat"
 msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:215
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
 msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:177
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Shevat"
 msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:101
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Shevat"
 msgstr "Shevat"
@@ -12628,24 +12829,28 @@ msgstr ""
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:145
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:221
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
 msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:183
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:107
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Sivan"
 msgstr "Sivan"
@@ -12751,6 +12956,7 @@ msgstr "Criteri d’ordenacion"
 #: app/Controller/BranchesController.php:214
 #: app/Controller/BranchesController.php:250
 #: app/Functions/FunctionsPrintLists.php:271
+#, fuzzy
 msgid "Sosa"
 msgstr "Sosa"
 
@@ -13165,18 +13371,21 @@ msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:222
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
 msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:184
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:108
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
@@ -13210,24 +13419,28 @@ msgstr ""
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:138
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:214
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
 msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:176
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:100
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Tevet"
 msgstr "Tevet"
@@ -13794,24 +14007,28 @@ msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:98
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:164
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
 msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:131
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:65
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
@@ -14462,54 +14679,63 @@ msgid "Timor-Leste"
 msgstr ""
 
 #: app/Date/JalaliDate.php:186
+#, fuzzy
 msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
 msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:90
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:154
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:122
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:58
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "Tir"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:135
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:211
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
 msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:173
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:97
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
@@ -14782,6 +15008,7 @@ msgstr ""
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:199
+#, fuzzy
 msgid "Tridi"
 msgstr "Tridi"
 
@@ -15178,6 +15405,7 @@ msgid "Uzbekistan"
 msgstr ""
 
 #: app/Stats.php:6975
+#, fuzzy
 msgid "Vanuatu"
 msgstr "Vanuatu"
 
@@ -15187,52 +15415,61 @@ msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:88
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Vendémiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:154
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Vendémiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:121
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Vendémiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:55
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Vendémiaire"
 msgstr "Vendémiaire"
 
 #: app/Stats.php:6971
+#, fuzzy
 msgid "Venezuela"
-msgstr "Venezuela"
+msgstr "Venezuelà"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:93
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Ventôse"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Ventôse"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:126
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Ventôse"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:60
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Ventôse"
 msgstr "Ventôse"
@@ -15378,6 +15615,7 @@ msgid "Ward"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
+#, fuzzy
 msgid "Washington, DC"
 msgstr "Washington, DC"
 
@@ -18601,6 +18839,7 @@ msgstr "miejanet"
 
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:162
+#, fuzzy
 msgid "minimal"
 msgstr "minimal"
 
@@ -18825,6 +19064,7 @@ msgid "p.m."
 msgstr "p.m."
 
 #: app/Functions/Functions.php:710
+#, fuzzy
 msgid "parent"
 msgstr "parent"
 
@@ -18844,6 +19084,7 @@ msgid "partner"
 msgstr "concubin(a)"
 
 #: app/SurnameTradition.php:71
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "paternal"
 msgstr "paternal"
@@ -19697,6 +19938,7 @@ msgid "was born"
 msgstr ""
 
 #: app/Theme/WebtreesTheme.php:128
+#, fuzzy
 msgid "webtrees"
 msgstr "webtrees"
 
@@ -19752,6 +19994,7 @@ msgstr "femna"
 
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:144
+#, fuzzy
 msgid "xenea"
 msgstr "xenea"
 
