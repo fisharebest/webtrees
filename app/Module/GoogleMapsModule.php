@@ -431,7 +431,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							if ($level == 1) {
 								$label = I18N::translate('Country');
 							} else {
-								$label = I18N::translate('Level') .  ' ' . $level;
+								$label = I18N::translate('Level') . ' ' . $level;
 							}
 							?>
 							<div class="input-group">
@@ -447,7 +447,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							if ($level == 1) {
 								$label = I18N::translate('Country');
 							} else {
-								$label = I18N::translate('Level') .  ' ' . $level;
+								$label = I18N::translate('Level') . ' ' . $level;
 							}
 							?>
 							<div class="input-group">
@@ -3023,7 +3023,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 		');
 
-		$levelm                           = $this->setLevelMap($level, $parent);
+		$levelm = $this->setLevelMap($level, $parent);
 		if (isset($levelo[0])) {
 			$levelo[0] = 0;
 		}
@@ -4158,7 +4158,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						} else {
 							$placelist[$j]['long'] = null;
 						}
-						$j                          = $j + 1;
+						$j = $j + 1;
 					}
 					$i        = $i + 1;
 					$placerec = Functions::getSubRecord(2, '2 PLAC', $gedrec, $i);
@@ -4354,7 +4354,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$j            = 0;
 			$maxLevel     = 0;
 			foreach ($lines as $p => $placerec) {
-				$fieldrec                               = explode(';', $placerec);
+				$fieldrec = explode(';', $placerec);
 				if ($fieldrec[0] > $maxLevel) {
 					$maxLevel = $fieldrec[0];
 				}

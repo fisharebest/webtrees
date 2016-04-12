@@ -61,7 +61,7 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition implements Surn
 	 */
 	public function newParentNames($child_name, $parent_sex) {
 		if (preg_match(self::REGEX_SURNS, $child_name, $match)) {
-			switch($parent_sex) {
+			switch ($parent_sex) {
 			case 'M':
 				return array(
 					'NAME' => '// /' . $match['SURN1'] . '/',

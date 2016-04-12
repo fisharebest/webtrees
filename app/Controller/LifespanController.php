@@ -41,12 +41,12 @@ class LifespanController extends PageController {
 	// Base color parameters
 	const RANGE           = 120; // degrees
 	const SATURATION      = 100; // percent
-	const LIGHTNESS       = 30;  // percent
+	const LIGHTNESS       = 30; // percent
 	const ALPHA           = 0.25;
 	const CHART_TOP       = 10; // pixels
 	const BAR_SPACING     = 22; // pixels
 	const YEAR_SPAN       = 10; // Number of years per scale section
-	const PIXELS_PER_YEAR = 7;  // Number of pixels to shift per year
+	const PIXELS_PER_YEAR = 7; // Number of pixels to shift per year
 	const SESSION_DATA    = 'lifespan_data';
 
 	/** @var string|null Chart parameter */
@@ -457,8 +457,8 @@ class LifespanController extends PageController {
 			}
 			echo
 				'</div>' . // class="popup"
-				'</div>' .  // class="itr"
-				'</div>';   // class=$popupclass
+				'</div>' . // class="itr"
+				'</div>'; // class=$popupclass
 
 			$maxY = max($maxY, $Y);
 		}
@@ -506,23 +506,23 @@ class LifespanController extends PageController {
 	 */
 	public function getCalendarDate($date) {
 		switch ($this->calendar) {
-			case 'julian':
-				$caldate = new JulianDate($date);
-				break;
-			case 'french':
-				$caldate = new FrenchDate($date);
-				break;
-			case 'jewish':
-				$caldate = new JewishDate($date);
-				break;
-			case 'hijri':
-				$caldate = new HijriDate($date);
-				break;
-			case 'jalali':
-				$caldate = new JalaliDate($date);
-				break;
-			default:
-				$caldate = new GregorianDate($date);
+		case 'julian':
+			$caldate = new JulianDate($date);
+			break;
+		case 'french':
+			$caldate = new FrenchDate($date);
+			break;
+		case 'jewish':
+			$caldate = new JewishDate($date);
+			break;
+		case 'hijri':
+			$caldate = new HijriDate($date);
+			break;
+		case 'jalali':
+			$caldate = new JalaliDate($date);
+			break;
+		default:
+			$caldate = new GregorianDate($date);
 		}
 
 		return $caldate;
