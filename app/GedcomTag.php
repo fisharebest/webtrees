@@ -1829,13 +1829,13 @@ class GedcomTag {
 				'NATU', 'EMIG', 'IMMI', 'CENS', 'PROB', 'WILL', 'GRAD', 'RETI', 'EVEN',
 				'CAST', 'DSCR', 'EDUC', 'IDNO', 'NATI', 'NCHI', 'NMR',
 				'OCCU', 'PROP', 'RELI', 'RESI', 'SSN', 'TITL', 'FACT',
-				'BAPL', 'CONL', 'ENDL', 'SLGC',
+				'BAPL', 'CONL', 'ENDL',	'SLGC',
 				'SUBM', 'ASSO', 'ALIA', 'ANCI', 'DESI', 'RFN', 'AFN',
 				'REFN', 'RIN', 'CHAN', 'NOTE', 'SHARED_NOTE', 'SOUR', 'OBJE',
 				// non standard tags
 				'_BRTM', '_DEG', '_EYEC', '_FNRL', '_HAIR', '_HEIG', '_HNM', '_HOL',
 				'_INTE', '_MDCL', '_MEDC', '_MILI', '_MILT', '_NAME', '_NAMS',
-				'_NLIV', '_NMAR', '_PRMN', '_TODO', '_UID', '_WEIG', '_YART',
+				'_NLIV', '_NMAR', '_PRMN',  '_TODO', '_UID', '_WEIG', '_YART',
 			);
 			break;
 		case 'FAM':

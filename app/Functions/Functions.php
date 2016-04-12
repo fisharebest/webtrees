@@ -628,67 +628,7 @@ class Functions {
 			}
 		}
 	}
-	
-	/**
-	 * A variation on cousin_name(), for constructs such as “great-nephew of sixth degree”
-	 * Currently used only by German relationship names.
-	 *
-	 * @param int $n
-	 * @param string $sex
-	 * @param string $relation
-	 *
-	 * @return string
-	 */
-	public static function cousinName3($n, $sex, $relation) {
-		switch ($sex) {
-			case 'M':
-				switch ($n) {
-					case  1: // I18N: A German relationship name, such as great-nephew of third degree
-						return I18N::translateContext('MALE', '%s of first degree', $relation);
-					case  2:
-						return I18N::translateContext('MALE', '%s of second degree', $relation);
-					case  3:
-						return I18N::translateContext('MALE', '%s of third degree', $relation);
-					case  4:
-						return I18N::translateContext('MALE', '%s of fourth degree', $relation);
-					case  5:
-						return I18N::translateContext('MALE', '%s of fifth degree', $relation);
-					default:
-						return I18N::translateContext('MALE', '%2$s of %1$s degree', I18N::number($n), $relation);
-				}
-			case 'F':
-				switch ($n) {
-					case  1: // I18N: A German relationship name, such as great-nephew of third degree
-						return I18N::translateContext('FEMALE', '%s of first degree', $relation);
-					case  2:
-						return I18N::translateContext('FEMALE', '%s of second degree', $relation);
-					case  3:
-						return I18N::translateContext('FEMALE', '%s of third degree', $relation);
-					case  4:
-						return I18N::translateContext('FEMALE', '%s of fourth degree', $relation);
-					case  5:
-						return I18N::translateContext('FEMALE', '%s of fifth degree', $relation);
-					default: // I18N: A Spanish relationship name, such as third great-nephew
-						return I18N::translateContext('FEMALE', '%2$s of %1$s degree', I18N::number($n), $relation);
-				}
-			default:
-				switch ($n) {
-					case  1: // I18N: A German relationship name, such as great-nephew of third degree
-						return I18N::translateContext('MALE/FEMALE', '%s of first degree', $relation);
-					case  2:
-						return I18N::translateContext('MALE/FEMALE', '%s of second degree', $relation);
-					case  3:
-						return I18N::translateContext('MALE/FEMALE', '%s of third degree', $relation);
-					case  4:
-						return I18N::translateContext('MALE/FEMALE', '%s of fourth degree', $relation);
-					case  5:
-						return I18N::translateContext('MALE/FEMALE', '%s of fifth degree', $relation);
-					default: // I18N: A Spanish relationship name, such as third great-nephew
-						return I18N::translateContext('MALE/FEMALE', '%2$s of %1$s degree', I18N::number($n), $relation);
-				}
-		}
-	}
-	
+
 	/** @var string[] Cache for generic relationships (key stores the path, and value represents the relationship name) */
 	protected static $relationshipsCache = array();
 
@@ -1710,50 +1650,6 @@ class Functions {
 					default:
 					return I18N::translate('great ×%s aunt/uncle', I18N::number($up - 1));
 					}
-				default:
-					// Different languages have different rules for naming generations.
-					// An English great ×12 uncle is a Danish great ×10 uncle.
-					//
-					// Need to find out which languages use which rules.
-					switch (WT_LOCALE) {
-						case 'da':
-							switch ($sex2) {
-								case 'M':
-									return I18N::translate('great ×%s uncle', I18N::number($up - 4));
-								case 'F':
-									return I18N::translate('great ×%s aunt', I18N::number($up - 4));
-								default:
-									return I18N::translate('great ×%s aunt/uncle', I18N::number($up - 4));
-							}
-						case 'de':
-						case 'pl':
-							switch ($sex2) {
-								case 'M':
-									if ($bef_last === 'fat') {
-										return I18N::translateContext('great ×(%s-1) grandfather’s brother', 'great ×%s uncle', I18N::number($up - 2));
-									} elseif ($bef_last === 'mot') {
-										return I18N::translateContext('great ×(%s-1) grandmother’s brother', 'great ×%s uncle', I18N::number($up - 2));
-									} else {
-										return I18N::translateContext('great ×(%s-1) grandparent’s brother', 'great ×%s uncle', I18N::number($up - 2));
-									}
-								case 'F':
-									return I18N::translate('great ×%s aunt', I18N::number($up - 2));
-								default:
-									return I18N::translate('great ×%s aunt/uncle', I18N::number($up - 2));
-							}
-						case 'it': // Source: Michele Locati
-						case 'en_AU':
-						case 'en_GB':
-						case 'en_US':
-						default:
-							switch ($sex2) {
-								case 'M': // I18N: if you need a different number for %s, contact the developers, as a code-change is required
-									return I18N::translate('great ×%s uncle', I18N::number($up - 1));
-								case 'F':
-									return I18N::translate('great ×%s aunt', I18N::number($up - 1));
-								default:
-									return I18N::translate('great ×%s aunt/uncle', I18N::number($up - 1));
-							}
 					}
 			}
 		}
@@ -1925,62 +1821,6 @@ class Functions {
 					default:
 					return I18N::translate('great ×%s nephew/niece', I18N::number($down - 2));
 					}
-				default:
-					// Different languages have different rules for naming generations.
-					// An English great ×12 nephew is a Polish great ×11 nephew.
-					//
-					// Need to find out which languages use which rules.
-					switch (WT_LOCALE) {
-						case 'de':
-						case 'pl': // Source: Lukasz Wilenski
-							switch ($sex2) {
-								case 'M':
-									if ($first === 'bro' && $sex1 === 'M') {
-										return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandson', 'great ×%s nephew', I18N::number($down - 3));
-									} elseif ($first === 'sis' && $sex1 === 'M') {
-										return I18N::translateContext('(a man’s) sister’s great ×(%s-1) grandson', 'great ×%s nephew', I18N::number($down - 3));
-									} else {
-										return I18N::translateContext('(a woman’s) great ×%s nephew', 'great ×%s nephew', I18N::number($down - 3));
-									}
-								case 'F':
-									if ($first === 'bro' && $sex1 === 'M') {
-										return I18N::translateContext('(a man’s) brother’s great ×(%s-1) granddaughter', 'great ×%s niece', I18N::number($down - 3));
-									} elseif ($first === 'sis' && $sex1 === 'M') {
-										return I18N::translateContext('(a man’s) sister’s great ×(%s-1) granddaughter', 'great ×%s niece', I18N::number($down - 3));
-									} else {
-										return I18N::translateContext('(a woman’s) great ×%s niece', 'great ×%s niece', I18N::number($down - 3));
-									}
-								default:
-									if ($first === 'bro' && $sex1 === 'M') {
-										return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandchild', 'great ×%s nephew/niece', I18N::number($down - 3));
-									} elseif ($first === 'sis' && $sex1 === 'M') {
-										return I18N::translateContext('(a man’s) sister’s great ×(%s-1) grandchild', 'great ×%s nephew/niece', I18N::number($down - 3));
-									} else {
-										return I18N::translateContext('(a woman’s) great ×%s nephew/niece', 'great ×%s nephew/niece', I18N::number($down - 3));
-									}
-							}
-						case 'he': // Source: Meliza Amity
-							switch ($sex2) {
-								case 'M':
-									return I18N::translate('great ×%s nephew', I18N::number($down - 1));
-								case 'F':
-									return I18N::translate('great ×%s niece', I18N::number($down - 1));
-								default:
-									return I18N::translate('great ×%s nephew/niece', I18N::number($down - 1));
-							}
-						case 'it': // Source: Michele Locati.
-						case 'en_AU':
-						case 'en_GB':
-						case 'en_US':
-						default:
-							switch ($sex2) {
-								case 'M': // I18N: if you need a different number for %s, contact the developers, as a code-change is required
-									return I18N::translate('great ×%s nephew', I18N::number($down - 2));
-								case 'F':
-									return I18N::translate('great ×%s niece', I18N::number($down - 2));
-								default:
-									return I18N::translate('great ×%s nephew/niece', I18N::number($down - 2));
-							}
 					}
 			}
 		}
@@ -2229,111 +2069,53 @@ class Functions {
 					return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $descent, null, null));
 				} else {
 					switch ($sex2) {
-						case 'M':
-							return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('bro' . $descent, null, null));
-						case 'F':
-							return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sis' . $descent, null, null));
-						default:
-							return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $descent, null, null));
+					case 'M':
+					return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('bro' . $descent, null, null));
+					case 'F':
+					return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sis' . $descent, null, null));
+					default:
+					return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $descent, null, null));
 					}
-				}
-			case 'de':
-				// Source: Richard Cissee. https://de.wikipedia.org/wiki/Verwandtschaftsbeziehung
-				if ($down == $up) {
-					return self::cousinName($cousin, $sex2);
-				} elseif ($down < $up) {
-					$relevantAscent = substr($ascent, $cousin*3);
-					switch ($sex2) {							
-						case 'M':
-							return self::cousinName3($cousin + 1, $sex2, self::getRelationshipNameFromPath($relevantAscent.'bro', null, null));
-						case 'F':
-							return self::cousinName3($cousin + 1, $sex2, self::getRelationshipNameFromPath($relevantAscent.'sis', null, null));
-						default:
-							return self::cousinName3($cousin + 1, $sex2, self::getRelationshipNameFromPath($relevantAscent.'sib', null, null));
-					}
-				} else {
-					$relevantDescent = substr($descent, $cousin*3);
-					return self::cousinName3($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $relevantDescent, null, null));
-				}
-				case 'en_AU': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
-				case 'en_GB':
-				case 'en_US':
-				default:
-					switch ($removed) {
-						case 0:
-							return self::cousinName($cousin, $sex2);
-						case 1:
-							if ($up > $down) {
-								/* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
-								return I18N::translate('%s once removed ascending', self::cousinName($cousin, $sex2));
-							} else {
-								/* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
-								return I18N::translate('%s once removed descending', self::cousinName($cousin, $sex2));
-							}
-						case 2:
-							if ($up > $down) {
-								/* I18N: %s=“fifth cousin”, etc. */
-								return I18N::translate('%s twice removed ascending', self::cousinName($cousin, $sex2));
-							} else {
-								/* I18N: %s=“fifth cousin”, etc. */
-								return I18N::translate('%s twice removed descending', self::cousinName($cousin, $sex2));
-							}
-						case 3:
-							if ($up > $down) {
-								/* I18N: %s=“fifth cousin”, etc. */
-								return I18N::translate('%s three times removed ascending', self::cousinName($cousin, $sex2));
-							} else {
-								/* I18N: %s=“fifth cousin”, etc. */
-								return I18N::translate('%s three times removed descending', self::cousinName($cousin, $sex2));
-							}
-						default:
-							if ($up > $down) {
-								/* I18N: %1$s=“fifth cousin”, etc., %2$s>=4 */
-								return I18N::translate('%1$s %2$s times removed ascending', self::cousinName($cousin, $sex2), I18N::number($removed));
-							} else {
-								/* I18N: %1$s=“fifth cousin”, etc., %2$s>=4 */
-								return I18N::translate('%1$s %2$s times removed descending', self::cousinName($cousin, $sex2), I18N::number($removed));
-							}
 					}
 			case 'en_AU': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
 			case 'en_GB':
 			case 'en_US':
 			default:
 				switch ($removed) {
-					case 0:
-						return self::cousinName($cousin, $sex2);
-					case 1:
-						if ($up > $down) {
-							/* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
-							return I18N::translate('%s once removed ascending', self::cousinName($cousin, $sex2));
-						} else {
-							/* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
-							return I18N::translate('%s once removed descending', self::cousinName($cousin, $sex2));
-						}
-					case 2:
-						if ($up > $down) {
-							/* I18N: %s=“fifth cousin”, etc. */
-							return I18N::translate('%s twice removed ascending', self::cousinName($cousin, $sex2));
-						} else {
-							/* I18N: %s=“fifth cousin”, etc. */
-							return I18N::translate('%s twice removed descending', self::cousinName($cousin, $sex2));
-						}
-					case 3:
-						if ($up > $down) {
-							/* I18N: %s=“fifth cousin”, etc. */
-							return I18N::translate('%s three times removed ascending', self::cousinName($cousin, $sex2));
-						} else {
-							/* I18N: %s=“fifth cousin”, etc. */
-							return I18N::translate('%s three times removed descending', self::cousinName($cousin, $sex2));
-						}
-					default:
-						if ($up > $down) {
-							/* I18N: %1$s=“fifth cousin”, etc., %2$s>=4 */
-							return I18N::translate('%1$s %2$s times removed ascending', self::cousinName($cousin, $sex2), I18N::number($removed));
-						} else {
-							/* I18N: %1$s=“fifth cousin”, etc., %2$s>=4 */
-							return I18N::translate('%1$s %2$s times removed descending', self::cousinName($cousin, $sex2), I18N::number($removed));
-						}
+				case 0:
+				return self::cousinName($cousin, $sex2);
+				case 1:
+				if ($up > $down) {
+				/* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
+				return I18N::translate('%s once removed ascending', self::cousinName($cousin, $sex2));
+				} else {
+				/* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
+				return I18N::translate('%s once removed descending', self::cousinName($cousin, $sex2));
+				}
+				case 2:
+				if ($up > $down) {
+				/* I18N: %s=“fifth cousin”, etc. */
+				return I18N::translate('%s twice removed ascending', self::cousinName($cousin, $sex2));
+				} else {
+				/* I18N: %s=“fifth cousin”, etc. */
+				return I18N::translate('%s twice removed descending', self::cousinName($cousin, $sex2));
+				}
+				case 3:
+				if ($up > $down) {
+				/* I18N: %s=“fifth cousin”, etc. */
+				return I18N::translate('%s three times removed ascending', self::cousinName($cousin, $sex2));
+				} else {
+				/* I18N: %s=“fifth cousin”, etc. */
+				return I18N::translate('%s three times removed descending', self::cousinName($cousin, $sex2));
+				}
+				default:
+				if ($up > $down) {
+				/* I18N: %1$s=“fifth cousin”, etc., %2$s>=4 */
+				return I18N::translate('%1$s %2$s times removed ascending', self::cousinName($cousin, $sex2), I18N::number($removed));
+				} else {
+				/* I18N: %1$s=“fifth cousin”, etc., %2$s>=4 */
+				return I18N::translate('%1$s %2$s times removed descending', self::cousinName($cousin, $sex2), I18N::number($removed));
+				}
 				}
 			}
 		}
@@ -2349,37 +2131,12 @@ class Functions {
 		$path1        = substr($path, 0, 3);
 		$path2        = substr($path, 3);
 		while ($path2) {
-			switch (WT_LOCALE) {					
-				case 'de':
-					//For relationship names where the first part ends with 's' (such as 'Tante 2. Grades'),
-					//we have to construct the relationship name in a different way than usual.
-					//This is grammatically still somewhat dubious, 
-					//but proper construction of the genitive case would be even more complicated. 				
-					$sub = self::getRelationshipNameFromPath($path1, null, null);
-					if (substr($sub, -1) === 's') {
-						$tmp = I18N::translate(
-							// I18N: A complex relationship, such as “third-cousin’s great-uncle”. First part ends with “s”
-							'%1$s’ %2$s',
-							self::getRelationshipNameFromPath($path1, null, null), // TODO: need the actual people
-							self::getRelationshipNameFromPath($path2, null, null)
-						);					
-					} else {
-						$tmp = I18N::translate(
-							// I18N: A complex relationship, such as “third-cousin’s great-uncle”
-							'%1$s’s %2$s',
-							self::getRelationshipNameFromPath($path1, null, null), // TODO: need the actual people
-							self::getRelationshipNameFromPath($path2, null, null)
-						);
-					}
-					break;
-				default:
-					$tmp = I18N::translate(
-						// I18N: A complex relationship, such as “third-cousin’s great-uncle”
-						'%1$s’s %2$s',
-						self::getRelationshipNameFromPath($path1, null, null), // TODO: need the actual people
-						self::getRelationshipNameFromPath($path2, null, null)
-					);
-			}
+			$tmp = I18N::translate(
+			// I18N: A complex relationship, such as “third-cousin’s great-uncle”
+				'%1$s’s %2$s',
+				self::getRelationshipNameFromPath($path1, null, null), // TODO: need the actual people
+				self::getRelationshipNameFromPath($path2, null, null)
+			);
 			if (!$relationship || strlen($tmp) < strlen($relationship)) {
 				$relationship = $tmp;
 			}
@@ -2390,7 +2147,7 @@ class Functions {
 		self::$relationshipsCache[$path] = $relationship;
 
 		return $relationship;
-	}}
+	}
 
 	/**
 	 * Function to build an URL querystring from GET variables
