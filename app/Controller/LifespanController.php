@@ -178,10 +178,10 @@ class LifespanController extends PageController {
 		$tmp               = $this->getCalendarDate(unixtojd());
 		$this->currentYear = $tmp->today()->y;
 
-		$tmp = strtoupper(strtr($this->calendar,
-			array('jewish' => 'hebrew',
-			      'french' => 'french r',
-			)));
+		$tmp = strtoupper(strtr($this->calendar, array(
+			'jewish' => 'hebrew',
+			'french' => 'french r',
+		)));
 		$this->calendarEscape = sprintf('@#D%s@', $tmp);
 
 		if ($xrefs) {
@@ -394,8 +394,9 @@ class LifespanController extends PageController {
 
 			$that          = $this; // PHP5.3 cannot access $this inside a closure
 			$acceptedFacts = array_filter($facts, function (Fact $fact) use ($that) {
-				return (in_array($fact->getTag(), $that->facts) && $fact->getDate()->isOK()) ||
-				       (($that->place_obj || $that->startDate) && $that->checkFact($fact));
+				return
+					(in_array($fact->getTag(), $that->facts) && $fact->getDate()->isOK()) ||
+					(($that->place_obj || $that->startDate) && $that->checkFact($fact));
 			});
 
 			$eventList = array();

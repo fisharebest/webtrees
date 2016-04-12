@@ -727,13 +727,13 @@ class FunctionsDb {
 	public static function getAnniversaryEvents($jd, $facts, Tree $tree) {
 		$found_facts = array();
 		foreach (array(
-			         new GregorianDate($jd),
-			         new JulianDate($jd),
-			         new FrenchDate($jd),
-			         new JewishDate($jd),
-			         new HijriDate($jd),
-			         new JalaliDate($jd),
-		         ) as $anniv) {
+			new GregorianDate($jd),
+			new JulianDate($jd),
+			new FrenchDate($jd),
+			new JewishDate($jd),
+			new HijriDate($jd),
+			new JalaliDate($jd),
+		 ) as $anniv) {
 			// Build a SQL where clause to match anniversaries in the appropriate calendar.
 			$ind_sql =
 				"SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
