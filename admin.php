@@ -555,7 +555,7 @@ if (
 	$server_warnings[] =
 		I18N::translate('Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version.', PHP_VERSION) .
 		 '<br><a href="https://php.net/supported-versions.php">https://php.net/supported-versions.php</a>';
-} else
+}
 
 ?>
 <h1><?php echo $controller->getPageTitle(); ?></h1>
