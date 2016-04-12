@@ -954,7 +954,7 @@ class ReportParserGenerate extends ReportParserBase {
 					}
 				}
 				$tmp = explode(':', $tag);
-				if (in_array(end($tmp),  array('NOTE', 'TEXT'))) {
+				if (in_array(end($tmp), array('NOTE', 'TEXT'))) {
 					$value = Filter::formatText($value, $WT_TREE); // We'll strip HTML in addText()
 				}
 				$this->current_element->addText($value);
@@ -2733,7 +2733,7 @@ class ReportParserGenerate extends ReportParserBase {
 		$tags      = explode(':', $tag);
 		$origlevel = $level;
 		if ($level == 0) {
-			$level = $gedrec{0} + 1;
+			$level = $gedrec{0} +1;
 		}
 
 		$subrec = $gedrec;
