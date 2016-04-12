@@ -20,8 +20,8 @@ use Fisharebest\Webtrees\Controller\ChartController;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 
 /**
  * Class InteractiveTreeModule
