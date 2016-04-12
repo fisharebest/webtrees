@@ -32,6 +32,7 @@ require './includes/session.php';
 
 $controller = new DescendancyController;
 $controller
+	->restrictAccess(Module::isActiveChart($WT_TREE, 'descendancy_chart'))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');

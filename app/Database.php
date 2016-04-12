@@ -214,7 +214,7 @@ class Database {
 	 *
 	 * The native quote() function does not convert PHP nulls to DB nulls
 	 *
-	 * @param  $string
+	 * @param  string $string
 	 *
 	 * @return string
 	 *

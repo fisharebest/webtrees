@@ -59,9 +59,8 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 
 		$num             = $this->getBlockSetting($block_id, 'num', '10');
 		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
-		$block           = $this->getBlockSetting($block_id, 'block', '0');
 
-		foreach (array('count_placement', 'num', 'block') as $name) {
+		foreach (array('count_placement', 'num') as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -88,11 +87,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 			'limit'   => (int) $num,
 		))->fetchAssoc();
 
-		if ($block) {
-			$content .= '<table width="90%">';
-		} else {
-			$content .= '<table>';
-		}
+		$content .= '<table>';
 		foreach ($top10 as $id => $count) {
 			$record = GedcomRecord::getInstance($id, $WT_TREE);
 			if ($record && $record->canShow()) {
@@ -110,10 +105,6 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= "</table>";
 
 		if ($template) {
-			if ($block) {
-				$class .= ' small_inner_block';
-			}
-
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
@@ -159,12 +150,10 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
 			$this->setBlockSetting($block_id, 'count_placement', Filter::post('count_placement', 'before|after', 'before'));
-			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
 		$num             = $this->getBlockSetting($block_id, 'num', '10');
 		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
-		$block           = $this->getBlockSetting($block_id, 'block', '0');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Number of items to show');
@@ -176,12 +165,6 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		echo I18N::translate('Place counts before or after name?');
 		echo "</td><td class=\"optionbox\">";
 		echo FunctionsEdit::selectEditControl('count_placement', array('before' => I18N::translate('before'), 'after' => I18N::translate('after')), null, $count_placement, '');
-		echo '</td></tr>';
-
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 	}
 }

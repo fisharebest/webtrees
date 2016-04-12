@@ -52,10 +52,18 @@ $username        = Filter::post('username');
 $password        = Filter::post('password');
 
 // These parameters may come from the URL which is emailed to users.
-if (!$action)        $action        = Filter::get('action');
-if (!$user_name)     $user_name     = Filter::get('user_name');
-if (!$user_hashcode) $user_hashcode = Filter::get('user_hashcode');
-if (!$url)           $url           = Filter::get('url');
+if (!$action) {
+	$action = Filter::get('action');
+}
+if (!$user_name) {
+	$user_name = Filter::get('user_name');
+}
+if (!$user_hashcode) {
+	$user_hashcode = Filter::get('user_hashcode');
+}
+if (!$url) {
+	$url = Filter::get('url');
+}
 
 $message = '';
 

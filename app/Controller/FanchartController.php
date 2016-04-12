@@ -15,10 +15,8 @@
  */
 namespace Fisharebest\Webtrees\Controller;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Theme;
 
 /**
@@ -341,7 +339,6 @@ class FanchartController extends ChartController {
 					// add action url
 					$pid = $person->getXref();
 					$imagemap .= '" href="#' . $pid . '"';
-					$tempURL = 'fanchart.php?rootid=' . $pid . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width . '&amp;fan_style=' . $this->fan_style . '&amp;ged=' . $person->getTree()->getNameUrl();
 					$html .= '<div id="' . $pid . '" class="fan_chart_menu">';
 					$html .= '<div class="person_box"><div class="details1">';
 					$html .= '<a href="' . $person->getHtmlUrl() . '" class="name1">' . $name;
@@ -350,55 +347,10 @@ class FanchartController extends ChartController {
 					}
 					$html .= '</a>';
 					$html .= '<ul class="charts">';
-					$html .= '<li><a href="pedigree.php?rootid=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '" >' . I18N::translate('Pedigree') . '</a></li>';
-					if (Module::getModuleByName('googlemap')) {
-						$html .= '<li><a href="module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '">' . I18N::translate('Pedigree map') . '</a></li>';
-					}
-					$gedcomid = $person->getTree()->getUserPreference(Auth::user(), 'gedcomid');
-					if ($gedcomid && $gedcomid != $pid) {
-						$html .= '<li><a href="relationship.php?pid1=' . $gedcomid . '&amp;pid2=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '">' . I18N::translate('Relationship to me') . '</a></li>';
-					}
-					$html .= '<li><a href="descendancy.php?rootid=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '" >' . I18N::translate('Descendants') . '</a></li>';
-					$html .= '<li><a href="ancestry.php?rootid=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '">' . I18N::translate('Ancestors') . '</a></li>';
-					$html .= '<li><a href="compact.php?rootid=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '">' . I18N::translate('Compact tree') . '</a></li>';
-					$html .= '<li><a href="' . $tempURL . '">' . I18N::translate('Fan chart') . '</a></li>';
-					$html .= '<li><a href="hourglass.php?rootid=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '">' . I18N::translate('Hourglass chart') . '</a></li>';
-					if (Module::getModuleByName('tree')) {
-						$html .= '<li><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged=' . $person->getTree()->getNameUrl() . '&amp;rootid=' . $pid . '">' . I18N::translate('Interactive tree') . '</a></li>';
+					foreach (Theme::theme()->individualBoxMenu($person) as $menu) {
+						$html .= '<li><a href="' . $menu->getLink() . '">' . $menu->getLabel() . '</a></li>';
 					}
 					$html .= '</ul>';
-					// spouse(s) and children
-					foreach ($person->getSpouseFamilies() as $family) {
-						$spouse = $family->getSpouse($person);
-						if ($spouse) {
-							$html .= '<a href="' . $spouse->getHtmlUrl() . '" class="name1">' . $spouse->getFullName() . '</a>';
-							$kids = $family->getChildren();
-							if ($kids) {
-								$html .= '<ul class="children">';
-								foreach ($kids as $child) {
-									$html .= '<li><a href="' . $child->getHtmlUrl() . '" class="name1">' . $child->getFullName() . '</a></li>';
-								}
-								$html .= '</ul>';
-							}
-						}
-					}
-					// siblings
-					foreach ($person->getChildFamilies() as $family) {
-						$children = $family->getChildren();
-						if ($children) {
-							$html .= '<div class="name1">';
-							// With two children in a family, you have only one sibling.
-							$html .= count($children) > 2 ? I18N::translate('Siblings') : I18N::translate('Sibling');
-							$html .= '</div>';
-							$html .= '<ul class="siblings">';
-							foreach ($children as $sibling) {
-								if ($sibling !== $person) {
-									$html .= '<li><a href="' . $sibling->getHtmlUrl() . '" class="name1"> ' . $sibling->getFullName() . '</a></li>';
-								}
-							}
-							$html .= '</ul>';
-						}
-					}
 					$html .= '</div></div>';
 					$html .= '</div>';
 					$imagemap .= ' alt="' . strip_tags($person->getFullName()) . '" title="' . strip_tags($person->getFullName()) . '">';

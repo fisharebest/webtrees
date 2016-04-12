@@ -23,6 +23,7 @@ define('WT_SCRIPT_NAME', 'fanchart.php');
 require './includes/session.php';
 
 $controller = new FanchartController;
+global $WT_TREE;
 
 if (Filter::getBool('img')) {
 	header('Content-Type: image/png');
@@ -32,6 +33,7 @@ if (Filter::getBool('img')) {
 }
 
 $controller
+	->restrictAccess(Module::isActiveChart($WT_TREE, 'fan_chart'))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('

@@ -657,7 +657,7 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 									id="tree_name"
 									maxlength="31"
 									name="tree_name"
-									pattern="[^&lt;&gt;&amp;&quot;#^$.*?{}()\[\]/\\]*"
+									pattern="[^&lt;&gt;&amp;&quot;#^$*?{}()\[\]/\\]*"
 									required
 									type="text"
 									value="<?php echo $default_tree_name; ?>"

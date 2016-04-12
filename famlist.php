@@ -83,6 +83,11 @@ if ($show_all === 'yes') {
 		$legend = I18N::translateContext('Unknown surname', '…');
 	} else {
 		$legend = Filter::escapeHtml($surname);
+		// The surname parameter is a root/canonical form.
+		// Display it as the actual surname
+		foreach (QueryName::surnames($WT_TREE, $surname, $alpha, $show_marnm === 'yes', true) as $details) {
+			$legend = implode('/', array_keys($details));
+		}
 	}
 	$url = WT_SCRIPT_NAME . '?surname=' . rawurlencode($surname) . '&amp;ged=' . $WT_TREE->getNameUrl();
 	switch ($falpha) {
@@ -189,7 +194,7 @@ if ($show === 'indi' || $show === 'surn') {
 	if ($show === 'surn') {
 		// Show the surname list
 		switch ($WT_TREE->getPreference('SURNAME_LIST_STYLE')) {
-		case 'style1';
+		case 'style1':
 			echo FunctionsPrintLists::surnameList($surns, 3, true, WT_SCRIPT_NAME, $WT_TREE);
 			break;
 		case 'style3':

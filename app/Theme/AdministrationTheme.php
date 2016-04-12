@@ -44,7 +44,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string A relative path, such as "themes/foo/"
 	 */
 	public function assetUrl() {
-		return 'themes/_administration/css-1.7.4/';
+		return 'themes/_administration/css-1.7.5/';
 	}
 
 	/**
@@ -192,6 +192,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 			new Menu(/* I18N: Menu entry */ I18N::translate('Tabs'), 'admin_module_tabs.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Blocks'), 'admin_module_blocks.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Sidebars'), 'admin_module_sidebar.php'),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Charts'), 'admin_module_charts.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Reports'), 'admin_module_reports.php'),
 		));
 	}

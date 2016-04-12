@@ -12168,7 +12168,7 @@ msgid "Shortest marriage"
 msgstr "Συντομότερος γάμος"
 
 #: app/Module/RecentChangesModule.php:176
-msgid "Should this block be hidden when it is empty?"
+msgid "Should this block be hidden when it is empty"
 msgstr "Πρέπει αυτό το πλαίσιο να αποκρύπτεται όταν είναι άδειο;"
 
 #: calendar.php:229

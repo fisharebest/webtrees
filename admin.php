@@ -436,6 +436,14 @@ $old_files = array(
 	WT_ROOT . 'packages/jquery-1.11.3',
 	WT_ROOT . 'packages/jquery-2.1.4',
 	WT_ROOT . 'packages/moment-2.10.6',
+	// Removed in 1.7.5
+	WT_ROOT . 'themes/_administration/css-1.7.4',
+	WT_ROOT . 'themes/clouds/css-1.7.4',
+	WT_ROOT . 'themes/colors/css-1.7.4',
+	WT_ROOT . 'themes/fab/css-1.7.4',
+	WT_ROOT . 'themes/minimal/css-1.7.4',
+	WT_ROOT . 'themes/webtrees/css-1.7.4',
+	WT_ROOT . 'themes/xenea/css-1.7.4',
 );
 
 // Delete old files (if we can).
@@ -547,7 +555,7 @@ if (
 	$server_warnings[] =
 		I18N::translate('Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version.', PHP_VERSION) .
 		 '<br><a href="https://php.net/supported-versions.php">https://php.net/supported-versions.php</a>';
-} else
+}
 
 ?>
 <h1><?php echo $controller->getPageTitle(); ?></h1>

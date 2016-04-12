@@ -16,7 +16,7 @@
  */
 
 /**
- * Test harness for the class TopGivenNamesModuleModule
+ * Test harness for the class TopGivenNamesModule
  */
 class TopGivenNamesModuleTest extends \PHPUnit_Framework_TestCase {
 	/**

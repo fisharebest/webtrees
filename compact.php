@@ -30,6 +30,7 @@ require './includes/session.php';
 
 $controller = new CompactController;
 $controller
+	->restrictAccess(Module::isActiveChart($WT_TREE, 'compact_tree_chart'))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');

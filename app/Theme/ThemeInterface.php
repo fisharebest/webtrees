@@ -197,6 +197,15 @@ interface ThemeInterface {
 	public function init(Tree $tree = null);
 
 	/**
+	 * Links, to show in chart boxes;
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return Menu[]
+	 */
+	public function individualBoxMenu(Individual $individual);
+
+	/**
 	 * Themes menu.
 	 *
 	 * @return Menu|null
