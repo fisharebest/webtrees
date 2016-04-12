@@ -15,19 +15,17 @@
  */
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\I18N;
 
 /**
  * Upgrade the database schema from version 33 to version 34.
  */
 class Migration34 implements MigrationInterface {
-	
+
 	/**
-	 * Upgrade to to the next version (for 'Charts as modules', the respective modules should be enabled by default)
+	 * New modules (charts) have been added.
 	 */
 	public function upgrade() {
-		Module::getInstalledModules('enabled');		
+		Module::getInstalledModules('enabled');
 	}
 }

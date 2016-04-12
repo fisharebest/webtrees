@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Census\CensusOfScotland;
 use Fisharebest\Webtrees\Census\CensusOfUnitedStates;
 use Fisharebest\Webtrees\Census\CensusOfWales;
 use Fisharebest\Webtrees\Config;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;

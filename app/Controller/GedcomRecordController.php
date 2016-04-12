@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
