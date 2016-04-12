@@ -87,11 +87,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 			'limit'   => (int) $num,
 		))->fetchAssoc();
 
-		if ($block) {
-			$content .= '<table width="90%">';
-		} else {
-			$content .= '<table>';
-		}
+		$content .= '<table>';
 		foreach ($top10 as $id => $count) {
 			$record = GedcomRecord::getInstance($id, $WT_TREE);
 			if ($record && $record->canShow()) {

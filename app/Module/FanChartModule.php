@@ -39,7 +39,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface {
 	 * @return string
 	 */
 	public function getDescription() {
-		return /* I18N: Description of the “FamilyBookChart” module */ I18N::translate('A fan chart of an individual’s ancestors.');
+		return /* I18N: Description of the “Fan Chart” module */ I18N::translate('A fan chart of an individual’s ancestors.');
 	}
 
 	/**
