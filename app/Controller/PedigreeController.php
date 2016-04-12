@@ -152,7 +152,7 @@ class PedigreeController extends ChartController {
 			switch ($this->orientation) {
 				case self::PORTRAIT:
 					$xoffset = ($this->generations - $curgen) * (($this->getBoxDimensions()->width + $bxspacing) / 1.8);
-					if(!$i && $this->root->getSpouseFamilies()) {
+					if (!$i && $this->root->getSpouseFamilies()) {
 						$xoffset -= self::ARROW_SIZE;
 					}
 					// -- compact the tree
@@ -207,7 +207,7 @@ class PedigreeController extends ChartController {
 				case self::OLDEST_AT_TOP:
 					//swap x & y offsets as chart is rotated
 					$xoffset = $yoffset;
-					$yoffset = $curgen  * ($this->getBoxDimensions()->height + ($byspacing * 4));
+					$yoffset = $curgen * ($this->getBoxDimensions()->height + ($byspacing * 4));
 					break;
 				case self::OLDEST_AT_BOTTOM:
 					//swap x & y offsets as chart is rotated
@@ -245,7 +245,7 @@ class PedigreeController extends ChartController {
 			return $item['y'];
 		}, $this->nodes));
 
-		$this->chartsize['x'] = $max_xoffset + $bxspacing + $this->getBoxDimensions()->width  + $addoffset['x'];
+		$this->chartsize['x'] = $max_xoffset + $bxspacing + $this->getBoxDimensions()->width + $addoffset['x'];
 		$this->chartsize['y'] = $max_yoffset + $byspacing + $this->getBoxDimensions()->height + $addoffset['y'];
 	}
 

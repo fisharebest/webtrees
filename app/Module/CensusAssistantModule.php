@@ -417,10 +417,10 @@ class CensusAssistantModule extends AbstractModule {
 	 * @return string
 	 */
 	public static function censusNavigatorFamily(CensusInterface $census, Family $family, Individual $head) {
-		$headImg2  = '<i class="icon-button_head" title="' . I18N::translate('Click to choose individual as head of family.') . '"></i>';
+		$headImg2 = '<i class="icon-button_head" title="' . I18N::translate('Click to choose individual as head of family.') . '"></i>';
 
 		foreach ($family->getSpouses() as $spouse) {
-			$menu  = new Menu(Functions::getCloseRelationshipName($head, $spouse));
+			$menu = new Menu(Functions::getCloseRelationshipName($head, $spouse));
 			foreach ($spouse->getChildFamilies() as $grandparents) {
 				foreach ($grandparents->getSpouses() as $grandparent) {
 					$submenu = new Menu(
@@ -455,7 +455,7 @@ class CensusAssistantModule extends AbstractModule {
 		}
 
 		foreach ($family->getChildren() as $child) {
-			$menu  = new Menu(Functions::getCloseRelationshipName($head, $child));
+			$menu = new Menu(Functions::getCloseRelationshipName($head, $child));
 			foreach ($child->getSpouseFamilies() as $spouse_family) {
 				foreach ($spouse_family->getSpouses() as $spouse_family_spouse) {
 					if ($spouse_family_spouse != $child) {
