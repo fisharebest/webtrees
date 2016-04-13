@@ -5834,8 +5834,8 @@ msgid "Facts for source records"
 msgstr "Sự kiện cho bản ghi nguồn"
 
 #: app/Stats.php:6804
-msgid "Faeroe Islands"
-msgstr "Faeroe Islands"
+msgid "Faroe Islands"
+msgstr "Faroe Islands"
 
 #: app/Stats.php:6802
 msgid "Falkland Islands"
@@ -15208,7 +15208,7 @@ msgid "Video"
 msgstr "Phim"
 
 #: app/Stats.php:6974
-msgid "Viet Nam"
+msgid "Vietnam"
 msgstr "Việt Nam"
 
 #. I18N: Submit button, on a form
