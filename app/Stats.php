@@ -6961,7 +6961,7 @@ class Stats {
 			'UKR' => I18N::translate('Ukraine'),
 			'UMI' => I18N::translate('US Minor Outlying Islands'),
 			'URY' => I18N::translate('Uruguay'),
-			'USA' => I18N::translate('USA'),
+			'USA' => I18N::translate('United States'),
 			'UZB' => I18N::translate('Uzbekistan'),
 			'VAT' => I18N::translate('Vatican City'),
 			'VCT' => I18N::translate('Saint Vincent and the Grenadines'),
