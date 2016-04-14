@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Theme;
 
@@ -192,7 +193,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 			$content .= '</div>';
 		}
 		$content .= '</div>';
-		if ($stat_link) {
+		if ($stat_link && Module::isActiveChart($WT_TREE, 'statistics_chart')) {
 			$content .= '<div class="clearfloat"><a href="statistics.php?ged=' . $WT_TREE->getNameUrl() . '" rel="nofollow"><b>' . I18N::translate('View statistics as graphs') . '</b></a></div>';
 		}
 

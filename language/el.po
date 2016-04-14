@@ -5864,7 +5864,7 @@ msgid "Facts for source records"
 msgstr "Γεγονότα για εγγραφές πηγών"
 
 #: app/Stats.php:6804
-msgid "Faeroe Islands"
+msgid "Faroe Islands"
 msgstr "Färöer"
 
 #: app/Stats.php:6802
@@ -12168,7 +12168,7 @@ msgid "Shortest marriage"
 msgstr "Συντομότερος γάμος"
 
 #: app/Module/RecentChangesModule.php:176
-msgid "Should this block be hidden when it is empty?"
+msgid "Should this block be hidden when it is empty"
 msgstr "Πρέπει αυτό το πλαίσιο να αποκρύπτεται όταν είναι άδειο;"
 
 #: calendar.php:229
@@ -15248,7 +15248,7 @@ msgid "Video"
 msgstr "Βίντεο"
 
 #: app/Stats.php:6974
-msgid "Viet Nam"
+msgid "Vietnam"
 msgstr "Vietnam"
 
 #. I18N: Submit button, on a form

@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Census\CensusOfScotland;
 use Fisharebest\Webtrees\Census\CensusOfUnitedStates;
 use Fisharebest\Webtrees\Census\CensusOfWales;
 use Fisharebest\Webtrees\Config;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -46,6 +45,7 @@ use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\User;
 use Rhumsaa\Uuid\Uuid;
 
 /**
@@ -301,15 +301,16 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function editFieldUsername($name, $selected = '', $extra = '') {
-		$all_users = Database::prepare(
-			"SELECT user_name, CONCAT_WS(' ', real_name, '-', user_name) FROM `##user` ORDER BY real_name"
-		)->fetchAssoc();
+		$users = array();
+		foreach (User::all() as $user) {
+			$users[$user->getUserName()] = $user->getRealName() . ' - ' . $user->getUserName();
+		}
 		// The currently selected user may not exist
-		if ($selected && !array_key_exists($selected, $all_users)) {
-			$all_users[$selected] = $selected;
+		if ($selected && !array_key_exists($selected, $users)) {
+			$users[$selected] = $selected;
 		}
 
-		return self::selectEditControl($name, $all_users, '-', $selected, $extra);
+		return self::selectEditControl($name, $users, '-', $selected, $extra);
 	}
 
 	/**

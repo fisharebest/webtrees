@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"PO-Revision-Date: 2016-03-02 23:33+0100\n"
+"PO-Revision-Date: 2016-04-13 00:04+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <http://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.5\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -58,7 +58,7 @@ msgstr " na eténi ya ngonga"
 #: app/Module/FrequentlyAskedQuestionsModule.php:475
 #, php-format
 msgid "#%s"
-msgstr ""
+msgstr "#%s"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:228
@@ -82,7 +82,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:1635
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:317
@@ -94,7 +94,7 @@ msgstr ""
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s  ezalí tɛ́."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
@@ -142,33 +142,33 @@ msgstr ""
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:634
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:664
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:497 app/Media.php:386
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "pixels %1$s × %2$s"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: app/Individual.php:550
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2173
@@ -179,36 +179,36 @@ msgstr ""
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:818
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:159
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6999
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s BCE"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:276
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "KB %s"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:194
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s na bankɔ́kɔ na yě"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:196
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s na bankɔ́kɔ na yě"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:277
@@ -220,13 +220,13 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:118
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s na bǎna na yě"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:124
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s na bakitani na yě"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5953
 #, php-format
@@ -239,23 +239,23 @@ msgstr[1] ""
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mwǎna %s"
+msgstr[1] "bǎna %s"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:59 app/I18N.php:313
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mokɔlɔ %s"
+msgstr[1] "mikɔlɔ %s"
 
 #: app/I18N.php:798
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mokɔlɔ %s elekí"
+msgstr[1] "mikɔlɔ %s milekí"
 
 #: app/Controller/SearchController.php:378
 #, php-format
@@ -268,8 +268,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nzeté ya libóta %s"
+msgstr[1] "Nzeté ya libóta %s"
 
 #: app/Stats.php:5261 app/Stats.php:5265
 #, php-format
@@ -282,15 +282,15 @@ msgstr[1] ""
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ngonga %s elekí"
+msgstr[1] "ngonga %s elekí"
 
 #: app/Controller/LifespanController.php:260
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "moto %s"
+msgstr[1] "bato %s"
 
 #: app/Controller/SearchController.php:349
 #, php-format
@@ -5868,7 +5868,7 @@ msgid "Facts for source records"
 msgstr ""
 
 #: app/Stats.php:6804
-msgid "Faeroe Islands"
+msgid "Faroe Islands"
 msgstr ""
 
 #: app/Stats.php:6802
@@ -12183,7 +12183,7 @@ msgid "Shortest marriage"
 msgstr ""
 
 #: app/Module/RecentChangesModule.php:176
-msgid "Should this block be hidden when it is empty?"
+msgid "Should this block be hidden when it is empty"
 msgstr ""
 
 #: calendar.php:229
@@ -15262,7 +15262,7 @@ msgid "Video"
 msgstr ""
 
 #: app/Stats.php:6974
-msgid "Viet Nam"
+msgid "Vietnam"
 msgstr ""
 
 #. I18N: Submit button, on a form
@@ -19734,7 +19734,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrint.php:210
 msgid "webtrees wiki"
-msgstr ""
+msgstr "wiki ya webtrees"
 
 #: admin_trees_manage.php:705
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
@@ -19747,12 +19747,12 @@ msgstr ""
 #: app/Functions/Functions.php:746 edit_interface.php:1937
 #: edit_interface.php:1972
 msgid "wife"
-msgstr ""
+msgstr "mwasi"
 
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:144
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:127
 msgid "years"
@@ -19798,13 +19798,13 @@ msgstr ""
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mbúla ±%s"
+msgstr[1] "mibú ±%s"
 
 #: app/Individual.php:1218
 #, php-format
 msgid "“%s”"
-msgstr ""
+msgstr "“%s”"
 
 #. I18N: %s is the name of an individual, source or other record
 #: app/Module/UserFavoritesModule.php:96

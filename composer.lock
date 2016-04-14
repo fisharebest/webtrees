@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "58098a493195adb164e3028ce3f9bb4f",
-    "content-hash": "19a59c8aebc19340772eae31362a9a87",
+    "hash": "180367df195b76401e28ca59c7ede14e",
+    "content-hash": "be46c88211697758c553583174230607",
     "packages": [
         {
             "name": "bombayworks/zendframework1",
@@ -615,16 +615,16 @@
         },
         {
             "name": "symfony/intl",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/intl.git",
-                "reference": "cafee6f65148dab9058cdb6de5631222aca820d0"
+                "reference": "020a5dcd764e426013dacc2814e7ce4ac09ac2b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/intl/zipball/cafee6f65148dab9058cdb6de5631222aca820d0",
-                "reference": "cafee6f65148dab9058cdb6de5631222aca820d0",
+                "url": "https://api.github.com/repos/symfony/intl/zipball/020a5dcd764e426013dacc2814e7ce4ac09ac2b3",
+                "reference": "020a5dcd764e426013dacc2814e7ce4ac09ac2b3",
                 "shasum": ""
             },
             "require": {
@@ -686,7 +686,7 @@
                 "l10n",
                 "localization"
             ],
-            "time": "2016-02-23 15:16:06"
+            "time": "2016-03-23 13:23:25"
         },
         {
             "name": "symfony/polyfill-apcu",

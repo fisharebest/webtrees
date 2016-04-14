@@ -5925,7 +5925,7 @@ msgid "Facts for source records"
 msgstr ""
 
 #: app/Stats.php:6804
-msgid "Faeroe Islands"
+msgid "Faroe Islands"
 msgstr "Faerské ostrovy"
 
 #: app/Stats.php:6802
@@ -12233,7 +12233,7 @@ msgid "Shortest marriage"
 msgstr "Najkrajši zakon"
 
 #: app/Module/RecentChangesModule.php:176
-msgid "Should this block be hidden when it is empty?"
+msgid "Should this block be hidden when it is empty"
 msgstr "Naj bo ta sklop skrit, kadar je prazen?"
 
 #: calendar.php:229
@@ -15326,7 +15326,7 @@ msgid "Video"
 msgstr "videoposentek"
 
 #: app/Stats.php:6974
-msgid "Viet Nam"
+msgid "Vietnam"
 msgstr "Vietnam"
 
 #. I18N: Submit button, on a form

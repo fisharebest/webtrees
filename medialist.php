@@ -239,13 +239,13 @@ if ($action === 'submit') {
 			echo '<', $tsection, '><tr><td colspan="2">';
 			echo '<table class="list_table_controls"><tr><td>';
 			if ($page > 1) {
-				echo '<a href="', $url, '&amp;page=1" class="icon-', $icons['first'] ,'"></a>';
-				echo '<a href="', $url, '&amp;page=', $page - 1 ,'" class="icon-', $icons['previous'] , '"></a>';
+				echo '<a href="', $url, '&amp;page=1" class="icon-', $icons['first'], '"></a>';
+				echo '<a href="', $url, '&amp;page=', $page - 1, '" class="icon-', $icons['previous'], '"></a>';
 			}
 			echo '</td><td>', I18N::translate('Page %s of %s', $page, $pages), '</td><td>';
 			if ($page < $pages) {
-				echo '<a href="', $url, '&amp;page=', $page + 1 ,'" class="icon-', $icons['next'] , '"></a>';
-				echo '<a href="', $url, '&amp;page=', $pages ,'" class="icon-', $icons['last'] ,'"></a>';
+				echo '<a href="', $url, '&amp;page=', $page + 1, '" class="icon-', $icons['next'], '"></a>';
+				echo '<a href="', $url, '&amp;page=', $pages, '" class="icon-', $icons['last'], '"></a>';
 			}
 			echo '</td></tr></table>';
 			echo '</td></tr></', $tsection, '>';

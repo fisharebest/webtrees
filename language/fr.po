@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-20 21:11+0100\n"
+"PO-Revision-Date: 2016-04-12 06:27+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.5\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -5873,7 +5873,7 @@ msgid "Facts for source records"
 msgstr "Faits pour les enregistrements de sources"
 
 #: app/Stats.php:6804
-msgid "Faeroe Islands"
+msgid "Faroe Islands"
 msgstr "Îles Féroé"
 
 #: app/Stats.php:6802
@@ -12188,7 +12188,7 @@ msgid "Shortest marriage"
 msgstr "Mariage le plus court"
 
 #: app/Module/RecentChangesModule.php:176
-msgid "Should this block be hidden when it is empty?"
+msgid "Should this block be hidden when it is empty"
 msgstr "Masquer ce bloc lorsqu’il est vide&nbsp;?"
 
 #: calendar.php:229
@@ -15267,7 +15267,7 @@ msgid "Video"
 msgstr "Vidéo"
 
 #: app/Stats.php:6974
-msgid "Viet Nam"
+msgid "Vietnam"
 msgstr "Viêt Nam"
 
 #. I18N: Submit button, on a form
@@ -17954,12 +17954,12 @@ msgstr "arrière-arrière-petit(e)-neveu/nièce"
 #: app/Functions/Functions.php:1737
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "arrière-arrière-petit-neveu"
+msgstr "arrière-arrière-petite-nièce"
 
 #: app/Functions/Functions.php:1739
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "arrière-arrière-petit-neveu"
+msgstr "arrière-arrière-petite-nièce"
 
 #: app/Functions/Functions.php:1741
 msgctxt "(a woman’s) great-great-great-niece"
@@ -18044,17 +18044,17 @@ msgstr "arrière-grand-oncle"
 #: app/Functions/Functions.php:1004
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr "petit neveu"
+msgstr "petit-neveu"
 
 #: app/Functions/Functions.php:1024
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr "petit neveu"
+msgstr "petit-neveu"
 
 #: app/Functions/Functions.php:1042
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr "petit neveu"
+msgstr "petit-neveu"
 
 #: app/Functions/Functions.php:1306
 msgctxt "(a man’s) sister’s child’s son"
@@ -18194,17 +18194,17 @@ msgstr "petit-neveu/petite-nièce"
 #: app/Functions/Functions.php:998
 msgctxt "(a man’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr "petit neveu"
+msgstr "petite-nièce"
 
 #: app/Functions/Functions.php:1016
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr "petit neveu"
+msgstr "petite-nièce"
 
 #: app/Functions/Functions.php:1036
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr "petit-neveu"
+msgstr "petite-nièce"
 
 #: app/Functions/Functions.php:1300
 msgctxt "(a man’s) sister’s child’s daughter"
@@ -18219,7 +18219,7 @@ msgstr "petite-nièce"
 #: app/Functions/Functions.php:1344
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr "petit-neveu"
+msgstr "petite-nièce"
 
 #: app/Functions/Functions.php:1000
 msgctxt "(a woman’s) brother’s child’s daughter"

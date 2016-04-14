@@ -1689,213 +1689,39 @@ class FunctionsPrintLists {
 
 		}
 		switch ($style) {
-			case 1:
-				return '<ul><li>' . implode('</li><li>', $html) . '</li></ul>';
-			case 2:
-				return implode(I18N::$list_separator, $html);
-			case 3:
-				$i     = 0;
-				$count = count($html);
-				if ($count > 36) {
-					$col = 4;
-				} elseif ($count > 18) {
-					$col = 3;
-				} elseif ($count > 6) {
-					$col = 2;
-				} else {
-					$col = 1;
-				}
-				$newcol = ceil($count / $col);
-				$html2  = '<table class="list_table"><tr>';
-				$html2 .= '<td class="list_value" style="padding: 14px;">';
+		case 1:
+			return '<ul><li>' . implode('</li><li>', $html) . '</li></ul>';
+		case 2:
+			return implode(I18N::$list_separator, $html);
+		case 3:
+			$i     = 0;
+			$count = count($html);
+			if ($count > 36) {
+				$col = 4;
+			} elseif ($count > 18) {
+				$col = 3;
+			} elseif ($count > 6) {
+				$col = 2;
+			} else {
+				$col = 1;
+			}
+			$newcol = ceil($count / $col);
+			$html2  = '<table class="list_table"><tr>';
+			$html2 .= '<td class="list_value" style="padding: 14px;">';
 
-				foreach ($html as $surns) {
-					$html2 .= $surns . '<br>';
-					$i++;
-					if ($i == $newcol && $i < $count) {
-						$html2 .= '</td><td class="list_value" style="padding: 14px;">';
-						$newcol = $i + ceil($count / $col);
-					}
+			foreach ($html as $surns) {
+				$html2 .= $surns . '<br>';
+				$i++;
+				if ($i == $newcol && $i < $count) {
+					$html2 .= '</td><td class="list_value" style="padding: 14px;">';
+					$newcol = $i + ceil($count / $col);
 				}
-				$html2 .= '</td></tr></table>';
+			}
+			$html2 .= '</td></tr></table>';
 
-				return $html2;
+			return $html2;
 		}
 	}
-
-	/**
-	 * Print a table of events
-	 *
-	 * @param string[] $change_ids
-	 * @param string $sort
-	 *
-	 * @return string
-	 */
-	public static function changesList($change_ids, $sort) {
-		global $WT_TREE;
-
-		$n   = 0;
-		$arr = array();
-		foreach ($change_ids as $change_id) {
-			$record = GedcomRecord::getInstance($change_id, $WT_TREE);
-			if (!$record || !$record->canShow()) {
-				continue;
-			}
-			// setup sorting parameters
-			$arr[$n]['record'] = $record;
-			$arr[$n]['jd']     = ($sort == 'name') ? 1 : $n;
-			$arr[$n]['anniv']  = $record->lastChangeTimestamp(true);
-			$arr[$n++]['fact'] = $record->getSortName(); // in case two changes have same timestamp
-		}
-
-		switch ($sort) {
-			case 'name':
-				uasort($arr, '\Fisharebest\Webtrees\Functions\Functions::eventSortName');
-				break;
-			case 'date_asc':
-				uasort($arr, '\Fisharebest\Webtrees\Functions\Functions::eventSort');
-				$arr = array_reverse($arr);
-				break;
-			case 'date_desc':
-				uasort($arr, '\Fisharebest\Webtrees\Functions\Functions::eventSort');
-		}
-		$html = '';
-		foreach ($arr as $value) {
-			$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item name2">' . $value['record']->getFullName() . '</a>';
-			$html .= '<div class="indent" style="margin-bottom: 5px;">';
-			if ($value['record'] instanceof Individual) {
-				if ($value['record']->getAddName()) {
-					$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $value['record']->getAddName() . '</a>';
-				}
-			}
-			$html .= /* I18N: [a record was] Changed on <date/time> by <user> */
-				I18N::translate('Changed on %1$s by %2$s', $value['record']->lastChangeTimestamp(), Filter::escapeHtml($value['record']->lastChangeUser()));
-			$html .= '</div>';
-		}
-
-		return $html;
-	}
-
-	/**
-	 * Print a table of events
-	 *
-	 * @param string[] $change_ids
-	 * @param string $sort
-	 *
-	 * @return string
-	 */
-	public static function changesTable($change_ids, $sort) {
-		global $controller, $WT_TREE;
-
-		$n        = 0;
-		$table_id = 'table-chan-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
-		switch ($sort) {
-			case 'name':        //name
-				$aaSorting = "[5,'asc'], [4,'desc']";
-				break;
-			case 'date_asc':    //date ascending
-				$aaSorting = "[4,'asc'], [5,'asc']";
-				break;
-			case 'date_desc':   //date descending
-				$aaSorting = "[4,'desc'], [5,'asc']";
-				break;
-		}
-		$html = '';
-		$controller
-			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
-			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
-				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-				jQuery("#' . $table_id . '").dataTable({
-					dom: \'t\',
-					paging: false,
-					autoWidth:false,
-					lengthChange: false,
-					filter: false,
-					' . I18N::datatablesI18N() . ',
-					jQueryUI: true,
-					sorting: [' . $aaSorting . '],
-					columns: [
-						/* 0-Type */    { sortable: false, class: "center" },
-						/* 1-Record */  { dataSort: 5 },
-						/* 2-Change */  { dataSort: 4 },
-						/* 3-By */      null,
-						/* 4-DATE */    { visible: false },
-						/* 5-SORTNAME */{ type: "unicode", visible: false }
-					]
-				});
-			');
-
-		//-- table header
-		$html .= '<table id="' . $table_id . '" class="width100">';
-		$html .= '<thead><tr>';
-		$html .= '<th></th>';
-		$html .= '<th>' . I18N::translate('Record') . '</th>';
-		$html .= '<th>' . GedcomTag::getLabel('CHAN') . '</th>';
-		$html .= '<th>' . GedcomTag::getLabel('_WT_USER') . '</th>';
-		$html .= '<th>DATE</th>'; //hidden by datatables code
-		$html .= '<th>SORTNAME</th>'; //hidden by datatables code
-		$html .= '</tr></thead><tbody>';
-
-		//-- table body
-		foreach ($change_ids as $change_id) {
-			$record = GedcomRecord::getInstance($change_id, $WT_TREE);
-			if (!$record || !$record->canShow()) {
-				continue;
-			}
-			$html .= '<tr><td>';
-			switch ($record::RECORD_TYPE) {
-				case 'INDI':
-					$icon = $record->getSexImage('small');
-					break;
-				case 'FAM':
-					$icon = '<i class="icon-button_family"></i>';
-					break;
-				case 'OBJE':
-					$icon = '<i class="icon-button_media"></i>';
-					break;
-				case 'NOTE':
-					$icon = '<i class="icon-button_note"></i>';
-					break;
-				case 'SOUR':
-					$icon = '<i class="icon-button_source"></i>';
-					break;
-				case 'REPO':
-					$icon = '<i class="icon-button_repository"></i>';
-					break;
-				default:
-					$icon = '&nbsp;';
-					break;
-			}
-			$html .= '<a href="' . $record->getHtmlUrl() . '">' . $icon . '</a>';
-			$html .= '</td>';
-			++$n;
-			//-- Record name(s)
-			$name = $record->getFullName();
-			$html .= '<td class="wrap">';
-			$html .= '<a href="' . $record->getHtmlUrl() . '">' . $name . '</a>';
-			if ($record instanceof Individual) {
-				$addname = $record->getAddName();
-				if ($addname) {
-					$html .= '<div class="indent"><a href="' . $record->getHtmlUrl() . '">' . $addname . '</a></div>';
-				}
-			}
-			$html .= "</td>";
-			//-- Last change date/time
-			$html .= '<td class="wrap">' . $record->lastChangeTimestamp() . '</td>';
-			//-- Last change user
-			$html .= '<td class="wrap">' . Filter::escapeHtml($record->lastChangeUser()) . '</td>';
-			//-- change date (sortable) hidden by datatables code
-			$html .= '<td>' . $record->lastChangeTimestamp(true) . '</td>';
-			//-- names (sortable) hidden by datatables code
-			$html .= '<td>' . $record->getSortName() . '</td></tr>';
-		}
-
-		$html .= '</tbody></table>';
-
-		return $html;
-	}
-
 	/**
 	 * Print a table of events
 	 *
@@ -2094,14 +1920,14 @@ class FunctionsPrintLists {
 
 		// Now we've filtered the list, we can sort by event, if required
 		switch ($sort_by) {
-			case 'anniv':
-				// Data is already sorted by anniversary date
-				break;
-			case 'alpha':
-				uasort($filtered_events, function (Fact $x, Fact $y) {
-					return GedcomRecord::compare($x->getParent(), $y->getParent());
-				});
-				break;
+		case 'anniv':
+			// Data is already sorted by anniversary date
+			break;
+		case 'alpha':
+			uasort($filtered_events, function (Fact $x, Fact $y) {
+				return GedcomRecord::compare($x->getParent(), $y->getParent());
+			});
+			break;
 		}
 
 		foreach ($filtered_events as $fact) {

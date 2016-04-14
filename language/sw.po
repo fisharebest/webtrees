@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-02-22 19:48+0100\n"
+"PO-Revision-Date: 2016-04-12 23:48+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Swahili <http://translate.webtrees.net/projects/webtrees/webtrees/sw/>\n"
 "Language: sw\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.5\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -51,7 +51,7 @@ msgstr ""
 #: statisticsplot.php:1197 statisticsplot.php:1247 statisticsplot.php:1297
 #: statisticsplot.php:1347
 msgid " per time period"
-msgstr ""
+msgstr " kwa kipindi cha muda"
 
 #. I18N: Abbreviation for "number %s"
 #: app/Functions/FunctionsPrintFacts.php:213
@@ -59,7 +59,7 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:475
 #, php-format
 msgid "#%s"
-msgstr ""
+msgstr "#%s"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:228
@@ -143,61 +143,61 @@ msgstr ""
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:634
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:664
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:497 app/Media.php:386
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "pixels %1$s × %2$s"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: app/Individual.php:550
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2173
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s’s %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:818
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:159
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6999
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s BCE"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:276
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:194
@@ -5869,7 +5869,7 @@ msgid "Facts for source records"
 msgstr ""
 
 #: app/Stats.php:6804
-msgid "Faeroe Islands"
+msgid "Faroe Islands"
 msgstr ""
 
 #: app/Stats.php:6802
@@ -12184,7 +12184,7 @@ msgid "Shortest marriage"
 msgstr ""
 
 #: app/Module/RecentChangesModule.php:176
-msgid "Should this block be hidden when it is empty?"
+msgid "Should this block be hidden when it is empty"
 msgstr ""
 
 #: calendar.php:229
@@ -15263,7 +15263,7 @@ msgid "Video"
 msgstr ""
 
 #: app/Stats.php:6974
-msgid "Viet Nam"
+msgid "Vietnam"
 msgstr ""
 
 #. I18N: Submit button, on a form

@@ -170,6 +170,18 @@ class Module {
 	}
 
 	/**
+	 * Get a list of modules which (a) provide a chart and (b) we have permission to see.
+	 *
+	 * @param Tree   $tree
+	 * @param string $module
+	 *
+	 * @return bool
+	 */
+	public static function isActiveChart(Tree $tree, $module) {
+		return array_key_exists($module, self::getActiveModulesByComponent($tree, 'chart'));
+	}
+
+	/**
 	 * Get a list of modules which (a) provide a menu and (b) we have permission to see.
 	 *
 	 * @param Tree $tree
@@ -321,10 +333,6 @@ class Module {
 				// Old or invalid module?
 			}
 		}
-
-		uasort($modules, function (AbstractModule $x, AbstractModule $y) {
-			return I18N::strcasecmp($x->getTitle(), $y->getTitle());
-		});
 
 		return $modules;
 	}

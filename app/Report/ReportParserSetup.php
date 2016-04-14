@@ -16,7 +16,6 @@
 namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -66,11 +65,11 @@ class ReportParserSetup extends ReportParserBase {
 	 */
 	protected function varStartHandler($attrs) {
 		if (preg_match('/^I18N::number\((.+)\)$/', $attrs['var'], $match)) {
-			$this->text .=  I18N::number($match[1]);
+			$this->text .= I18N::number($match[1]);
 		} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $attrs['var'], $match)) {
-			$this->text .=  I18N::translate($match[1]);
+			$this->text .= I18N::translate($match[1]);
 		} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $attrs['var'], $match)) {
-			$this->text .=  I18N::translateContext($match[1], $match[2]);
+			$this->text .= I18N::translateContext($match[1], $match[2]);
 		} else {
 			$this->text .= $attrs['var'];
 		}

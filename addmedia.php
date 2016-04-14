@@ -473,7 +473,7 @@ if ($gedfile == 'FILE') {
 			'<p class="small text-muted">' . I18N::translate('Do not change to keep original filename.') . '<br>' . I18N::translate('You may enter a URL, beginning with “http://”.') . '</p>'
 		);
 	}
-	$folder   = '';
+	$folder = '';
 } else {
 	if ($isExternal) {
 		$fileName = substr($gedfile, 5);
