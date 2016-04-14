@@ -4210,11 +4210,7 @@ header {
 /* Set stack level for top two header menu rows */
 .secondary-menu ul,
 .primary-menu ul {
-	z-index: 210;
-	max-height: 400px;
-	min-width: 140px;
-	overflow-y: auto;
-	overflow-x: hidden;
+ 	z-index: 210;
 }
 
 #topMenu {
