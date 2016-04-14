@@ -2,8 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-04-13 00:04+0000\n"
+"PO-Revision-Date: 2016-04-14 21:51+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <http://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -65,7 +64,7 @@ msgstr "#%s"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s ezalí na %3$s ekangisi na %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2114
@@ -89,13 +88,13 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:317
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "KB %1$s  ezwamí na seconde %2$s."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
 #, php-format
 msgid "%1$s does not exist."
-msgstr "%1$s  ezalí tɛ́."
+msgstr "%1s ezalí tɛ́."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
@@ -5923,7 +5922,7 @@ msgstr ""
 msgid "Facts for source records"
 msgstr ""
 
-#: app/Stats.php:6799
+#: app/Stats.php:6802
 msgid "Falkland Islands"
 msgstr ""
 
@@ -6115,7 +6114,7 @@ msgctxt "Abbreviation for Persian month: Farvardin"
 msgid "Far"
 msgstr ""
 
-#: app/Stats.php:6801
+#: app/Stats.php:6804
 msgid "Faroe Islands"
 msgstr ""
 
