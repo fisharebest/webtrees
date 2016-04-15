@@ -18,7 +18,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
- * @global Tree    $WT_TREE
+ * @global Tree $WT_TREE
  */
 global $WT_TREE;
 
@@ -67,7 +67,9 @@ if ($person1 && $person2) {
 		<tbody>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo I18N::translate('Individual 1') ?>
+					<label for="pid1">
+						<?php echo I18N::translate('Individual 1') ?>
+					</label>
 				</td>
 				<td class="optionbox">
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1 ?>">
@@ -85,7 +87,9 @@ if ($person1 && $person2) {
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo I18N::translate('Individual 2') ?>
+					<label for="pid2">
+						<?php echo I18N::translate('Individual 2') ?>
+					</label>
 				</td>
 				<td class="optionbox">
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2 ?>">
