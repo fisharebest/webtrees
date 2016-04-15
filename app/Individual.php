@@ -125,14 +125,144 @@ class Individual extends GedcomRecord {
 		}
 		// Consider relationship privacy (unless an admin is applying download restrictions)
 		$user_path_length = $this->tree->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH');
+		$user_ancestors_depth = $this->tree->getUserPreference(Auth::user(), 'RELATIONSHIP_ANCESTORS_DEPTH');
+		$user_descendants_depth = $this->tree->getUserPreference(Auth::user(), 'RELATIONSHIP_DESCENDANTS_DEPTH');
 		$gedcomid         = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
 		if ($gedcomid && $user_path_length && $this->tree->getTreeId() == $WT_TREE->getTreeId() && $access_level = Auth::accessLevel($this->tree)) {
-			return self::isRelated($this, $user_path_length);
+			return
+				self::isAncestorOrDescendant($this, "ancestors", $user_ancestors_depth) ||
+				self::isAncestorOrDescendant($this, "descendants", $user_descendants_depth) ||
+				self::isRelated($this, $user_path_length) ||
+				false
+				;
 		}
 
 		// No restriction found - show living people to members only:
 		return Auth::PRIV_USER >= $access_level;
 	}
+
+
+	/**
+	 * For relationship privacy calculations - precalculate all ancestors/descendants of a GEDCOM tree
+	 *
+	 * @param int        $treeId
+	 *
+	 * @return array
+	 */
+	private static function getLinkTree($treeId) {
+		static $cache = null;
+
+		if (!isset($cache[$treeId])) {
+			$links = Database::prepare(
+				"SELECT l_from, l_type, l_to FROM `##link` WHERE l_file = ? AND l_type IN ('FAMC', 'FAMS', 'CHIL', 'WIFE', 'HUSB')"
+			)->execute(array(
+				$treeId,
+			))->fetchAll();
+			$list_indi = array();
+			$list_fam = array();
+			foreach ($links as $l) {
+				switch ($l->l_type) {
+					case "CHIL":
+						$list_indi[$l->l_to]['child_of'][$l->l_from] = $l->l_from;
+						$list_fam[$l->l_from]['descendants'][$l->l_to] = $l->l_to;
+						break;
+					case "HUSB":
+					case "WIFE":
+						$list_indi[$l->l_to]['parent_of'][$l->l_from] = $l->l_from;
+						$list_fam[$l->l_from]['ancestors'][$l->l_to] = $l->l_to;
+						break;
+					case "FAMC":
+						$list_indi[$l->l_from]['child_of'][$l->l_to] = $l->l_to;
+						$list_fam[$l->l_to]['descendants'][$l->l_from] = $l->l_from;
+						break;
+					case "FAMS":
+						$list_indi[$l->l_from]['parent_of'][$l->l_to] = $l->l_to;
+						$list_fam[$l->l_to]['ancestors'][$l->l_from] = $l->l_from;
+						break;
+				}
+			}
+			$tree = array('ancestors'=>array(), 'descendants'=>array());
+			foreach ($list_indi as $indi => $arr) {
+				$tree['ancestors'][$indi] = null;
+				$tree['descendants'][$indi] = null;
+			}
+			foreach ($list_indi as $indi => $arr) {
+
+				if (isset($arr['child_of'])) foreach ($arr['child_of'] as $fam) {
+					if (isset($list_fam[$fam]['ancestors'])) foreach ($list_fam[$fam]['ancestors'] as $parent) {
+						$tree['ancestors'][$indi][$parent] = &$tree['ancestors'][$parent];
+					}
+				}
+
+				if (isset($arr['parent_of'])) foreach ($arr['parent_of'] as $fam) {
+					if (isset($list_fam[$fam]['descendants'])) foreach ($list_fam[$fam]['descendants'] as $child) {
+						$tree['descendants'][$indi][$child] = &$tree['descendants'][$child];
+					}
+				}
+			}
+			$cache[$treeId] = $tree;
+		}
+
+		return $cache[$treeId];
+	}
+
+
+
+	/**
+	 * For relationship privacy calculations - is this individual a ancestor or descendant?
+	 *
+	 * @param Individual $target
+	 * @param string     $AnDes
+	 * @param int        $depth
+	 *
+	 * @return bool
+	 */
+	private static function isAncestorOrDescendant(Individual $target, $AnDes=null, $depth) {
+
+		if (is_null($AnDes)) return false;
+
+		$linkTree = self::getLinkTree($target->tree->getTreeId());
+
+		$user_individual = self::getInstance($target->tree->getUserPreference(Auth::user(), 'gedcomid'), $target->tree);
+
+		if (!$user_individual) {
+			// No individual linked to this account? Cannot use relationship privacy.
+			// We don't give permission to everyone, so return false here
+			return false;
+		}
+
+		return self::isIndividualInLinkTree($target->xref, $linkTree[$AnDes][$user_individual->xref], $depth);
+
+		return false;
+	}
+
+
+	/**
+	 * For relationship privacy calculations - is this individual id in the given tree?
+	 *
+	 * @param string     $id
+	 * @param array      $linkTree
+	 * @param int        $depth
+	 *
+	 * @return bool
+	 */
+	private static function isIndividualInLinkTree($id, $linkTree, $depth=-1) {
+		if ($depth === 0) return false;
+
+		if (in_array($id, array_keys($linkTree))) {
+			return true;
+		}
+		else {
+			$tmp = false;
+			foreach ($linkTree as $key => $arr) {
+				if (is_array($arr)) {
+					if ($tmp = self::isIndividualInLinkTree($id, $arr, $depth-1)) break;
+				}
+			}
+			return $tmp;
+		}
+	}
+
 
 	/**
 	 * For relationship privacy calculations - is this individual a close relative?
