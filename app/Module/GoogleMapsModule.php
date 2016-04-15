@@ -3736,13 +3736,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 				?>
 
-				var prec = 20;
-				for (var i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
-					if (document.editplaces.NEW_PRECISION[i].checked) {
-						prec = document.editplaces.NEW_PRECISION[i].value;
-					}
-				}
-
 				// Set marker by clicking on map ---
 				google.maps.event.addListener(map, 'click', function(event) {
 					clearMarks();
@@ -3768,11 +3761,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				// Set marker by drag-n-drop on map ---
 				google.maps.event.addListener(marker, 'drag', function() {
 					var pos1 = marker.getPosition();
+					var prec = jQuery('input[name=NEW_PRECISION]:checked').val();
 					document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos1.lat()).toFixed(prec);
 					document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos1.lng()).toFixed(prec);
 				});
 				google.maps.event.addListener(marker, 'dragend', function() {
 					var pos2 = marker.getPosition();
+					var prec = jQuery('input[name=NEW_PRECISION]:checked').val();
 					document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos2.lat()).toFixed(prec);
 					document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos2.lng()).toFixed(prec);
 					updateMap('flag_drag');
@@ -3784,12 +3779,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 
 			function setLoc(lat, lng) {
-				var prec = 20;
-				for (var i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
-					if (document.editplaces.NEW_PRECISION[i].checked) {
-						prec = document.editplaces.NEW_PRECISION[i].value;
-					}
-				}
+				var prec = jQuery('input[name=NEW_PRECISION]:checked').val();
 				if (lat < 0.0) {
 					document.editplaces.NEW_PLACE_LATI.value = (lat.toFixed(prec) * -1);
 					document.editplaces.LATI_CONTROL.value = 'PL_S';
