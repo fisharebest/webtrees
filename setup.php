@@ -62,8 +62,6 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION) < 0) {
 	return;
 }
 
-Session::start();
-
 define('WT_LOCALE', I18N::init(Filter::post('lang', '[a-zA-Z-]+', Filter::get('lang', '[a-zA-Z-]+'))));
 
 header('Content-Type: text/html; charset=UTF-8');
