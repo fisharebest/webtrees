@@ -226,7 +226,7 @@ case 'PLAC': // Place names (with hierarchy), that include the search term
 			return $data;
 		}
 		$places = json_decode($json, true);
-		if ($places['geonames']) {
+		if (isset($places['geonames']) && is_array($places['geonames'])) {
 			foreach ($places['geonames'] as $k => $place) {
 				$data[] = $place['name'] . ', ' . $place['adminName2'] . ', ' . $place['adminName1'] . ', ' . $place['countryName'];
 			}
