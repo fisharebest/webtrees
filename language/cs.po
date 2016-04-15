@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-03-09 11:51+0100\n"
+"POT-Creation-Date: 2016-02-16 09:05+0000\n"
+"PO-Revision-Date: 2016-04-15 04:55+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.5\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -5960,7 +5960,7 @@ msgstr "Údaje o repozitářích"
 msgid "Facts for source records"
 msgstr "Údaje pro záznamy pramenů"
 
-#: app/Stats.php:6799
+#: app/Stats.php:6802
 msgid "Falkland Islands"
 msgstr "Falklandy"
 
@@ -6152,7 +6152,7 @@ msgctxt "Abbreviation for Persian month: Farvardin"
 msgid "Far"
 msgstr "Far"
 
-#: app/Stats.php:6801
+#: app/Stats.php:6804
 msgid "Faroe Islands"
 msgstr "Faerské ostrovy"
 
@@ -11256,7 +11256,7 @@ msgstr "Překreslit mapu"
 #. I18N: gedcom tag REFN
 #: app/GedcomTag.php:712
 msgid "Reference number"
-msgstr "Odkazové číslo"
+msgstr "Referenční číslo"
 
 #: app/GedcomCode/GedcomCodeTemp.php:275
 msgid "Regina, Saskatchewan, Canada"
