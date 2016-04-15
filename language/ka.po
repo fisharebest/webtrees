@@ -5830,7 +5830,7 @@ msgid "Facts for source records"
 msgstr "ფაქტები არქივიდან"
 
 #: app/Stats.php:6804
-msgid "Faeroe Islands"
+msgid "Faroe Islands"
 msgstr "ფარერის კუნძულები"
 
 #: app/Stats.php:6802
@@ -15204,7 +15204,7 @@ msgid "Video"
 msgstr "ვიდეო"
 
 #: app/Stats.php:6974
-msgid "Viet Nam"
+msgid "Vietnam"
 msgstr "ვიეტნამი"
 
 #. I18N: Submit button, on a form

@@ -5904,7 +5904,7 @@ msgid "Facts for source records"
 msgstr "Fakty źródeł"
 
 #: app/Stats.php:6804
-msgid "Faeroe Islands"
+msgid "Faroe Islands"
 msgstr "Wyspy Owcze"
 
 #: app/Stats.php:6802
@@ -15307,7 +15307,7 @@ msgid "Video"
 msgstr "Film"
 
 #: app/Stats.php:6974
-msgid "Viet Nam"
+msgid "Vietnam"
 msgstr "Wietnam"
 
 #. I18N: Submit button, on a form

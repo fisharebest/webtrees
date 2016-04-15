@@ -30,13 +30,13 @@ class RelationshipController extends PageController {
 	 *
 	 * @param Individual $individual1
 	 * @param Individual $individual2
-	 * @param bool       $all
+	 * @param int        $recursion   How many levels of recursion to use
 	 *
 	 * @return string[][]
 	 */
-	public function calculateRelationships(Individual $individual1, Individual $individual2, $all) {
+	public function calculateRelationships(Individual $individual1, Individual $individual2, $recursion) {
 		$rows = Database::prepare(
-			"SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC', 'CHIL', 'HUSB', 'WIFE')"
+			"SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
 		)->execute(array(
 			'tree_id' => $individual1->getTree()->getTreeId(),
 		))->fetchAll();
@@ -44,6 +44,7 @@ class RelationshipController extends PageController {
 		$graph = array();
 		foreach ($rows as $row) {
 			$graph[$row->l_from][$row->l_to] = 1;
+			$graph[$row->l_to][$row->l_from] = 1;
 		}
 
 		$xref1    = $individual1->getXref();
@@ -51,39 +52,40 @@ class RelationshipController extends PageController {
 		$dijkstra = new Dijkstra($graph);
 		$paths    = $dijkstra->shortestPaths($xref1, $xref2);
 
-		if ($all) {
-			// Only process each exclusion list once;
-			$excluded = array();
+		// Only process each exclusion list once;
+		$excluded = array();
 
-			$queue = array();
-			foreach ($paths as $path) {
-				// Insert the paths into the queue, with an exclusion list.
-				$queue[] = array('path' => $path, 'exclude' => array());
-				// While there are un-extended paths
-				while (list(, $next) = each($queue)) {
-					// For each family on the path
-					for ($n = count($next['path']) - 2; $n >= 1; $n -= 2) {
-						$exclude   = $next['exclude'];
-						$exclude[] = $next['path'][$n];
-						sort($exclude);
-						$tmp = implode('-', $exclude);
-						if (in_array($tmp, $excluded)) {
-							continue;
-						} else {
-							$excluded[] = $tmp;
-						}
-						// Add any new path to the queue
-						foreach ($dijkstra->shortestPaths($xref1, $xref2, $exclude) as $new_path) {
-							$queue[] = array('path' => $new_path, 'exclude' => $exclude);
-						}
+		$queue = array();
+		foreach ($paths as $path) {
+			// Insert the paths into the queue, with an exclusion list.
+			$queue[] = array('path' => $path, 'exclude' => array());
+			// While there are un-extended paths
+			while (list(, $next) = each($queue)) {
+				// For each family on the path
+				for ($n = count($next['path']) - 2; $n >= 1; $n -= 2) {
+					$exclude   = $next['exclude'];
+					if (count($exclude) >= $recursion) {
+						continue;
+					}
+					$exclude[] = $next['path'][$n];
+					sort($exclude);
+					$tmp = implode('-', $exclude);
+					if (in_array($tmp, $excluded)) {
+						continue;
+					} else {
+						$excluded[] = $tmp;
+					}
+					// Add any new path to the queue
+					foreach ($dijkstra->shortestPaths($xref1, $xref2, $exclude) as $new_path) {
+						$queue[] = array('path' => $new_path, 'exclude' => $exclude);
 					}
 				}
 			}
-			// Extract the paths from the queue, removing duplicates.
-			$paths = array();
-			foreach ($queue as $next) {
-				$paths[implode('-', $next['path'])] = $next['path'];
-			}
+		}
+		// Extract the paths from the queue, removing duplicates.
+		$paths = array();
+		foreach ($queue as $next) {
+			$paths[implode('-', $next['path'])] = $next['path'];
 		}
 
 		return $paths;

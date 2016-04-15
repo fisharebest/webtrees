@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-02-16 09:05+0000\n"
-"PO-Revision-Date: 2016-04-08 19:51+0000\n"
+"PO-Revision-Date: 2016-04-12 08:02+0000\n"
 "Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
@@ -483,7 +483,7 @@ msgstr[2] "%s років тому"
 #: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s року/років назад"
+msgstr "%s річниця"
 
 #: app/Functions/Functions.php:569
 #, php-format
@@ -732,7 +732,7 @@ msgstr "<b>Зверніть увагу:</b> Приватна інформаці�
 
 #: login.php:160
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
-msgstr "<center><b>Ласкаво просимо на цей генеалогічний сайт</b></center><br>Доступ до цього сайту дозволений тільки <u>авторизованим</u> користувачам.<br><br>Якщо у вас є обліковий запис користувача, ви можете аторизуватися на цій сторінці. Якщо у вас немає облікового запису користувача, то ви можете подати заявку, натиснувши на відповідне посилання нижче.<br><br>Після перевірки вашої інформації адміністратор або схвалить, або відхилить вашу заявку. Ви отримаєте листа по електронній пошті, у вападку, якщо адміністратор схвалить вашу заявку."
+msgstr "<center><b>Ласкаво просимо на цей генеалогічний сайт</b></center><br>Доступ до цього сайту дозволений тільки <u>авторизованим</u> користувачам.<br><br>Якщо у вас є обліковий запис користувача, ви можете аторизуватися на цій сторінці. Якщо у вас немає облікового запису користувача, то ви можете подати заявку, натиснувши на відповідне посилання нижче.<br><br>Після перевірки вашої інформації адміністратор або схвалить, або відхилить вашу заявку. У вападку, якщо адміністратор схвалить вашу заявку, ви отримаєте листа електронною поштою."
 
 #: login.php:163
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
@@ -5899,7 +5899,7 @@ msgid "Facts for source records"
 msgstr "Факти для джерела"
 
 #: app/Stats.php:6804
-msgid "Faeroe Islands"
+msgid "Faroe Islands"
 msgstr "Фарерські острови"
 
 #: app/Stats.php:6802
@@ -11858,7 +11858,7 @@ msgstr "Послати повідомлення всім користувача�
 
 #: admin_users_bulk.php:46
 msgid "Send a message to users who have never logged in"
-msgstr "Надіслати повідомлення користувачам, ніколи не входили в систему"
+msgstr "Надіслати повідомлення користувачам, які ніколи не входили в систему"
 
 #: admin_users_bulk.php:51
 msgid "Send a message to users who have not logged in for 6 months"
@@ -15304,7 +15304,7 @@ msgid "Video"
 msgstr "Відео"
 
 #: app/Stats.php:6974
-msgid "Viet Nam"
+msgid "Vietnam"
 msgstr "В'єтнам"
 
 #. I18N: Submit button, on a form
