@@ -178,8 +178,8 @@ case 'load_json':
 	$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
 	$recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##change`")->fetchOne();
 
-	$data = array();
-	$algorithm   = new MyersDiff;
+	$data      = array();
+	$algorithm = new MyersDiff;
 
 	foreach ($rows as $row) {
 		$old_lines = preg_split('/[\n]+/', $row->old_gedcom, -1, PREG_SPLIT_NO_EMPTY);
@@ -202,19 +202,17 @@ case 'load_json':
 		}
 
 		// Only convert valid xrefs to links
+		$record = GedcomRecord::getInstance($row->xref, Tree::findByName($gedc));
 		$data[] = array(
 			$row->change_id,
 			$row->change_time,
 			I18N::translate($row->status),
-			GedcomRecord::getInstance($row->xref, Tree::findByName($gedc)) ?
-				"<a href='gedrecord.php?pid={$row->xref}&ged={$row->gedcom_name}'>{$row->xref}</a>" :
-				$row->xref,
+			$record ? '<a href="' . $record->getHtmlUrl() . '">' . $record->getXref() . '</a>' : $row->xref,
 			'<div class="gedcom-data" dir="ltr">' .
 				preg_replace_callback('/@(' . WT_REGEX_XREF . ')@/',
 					function ($match) use ($gedc) {
-						return GedcomRecord::getInstance($match[1], Tree::findByName($gedc)) ?
-							"<a href='#' onclick='return edit_raw(\"{$match[1]}\");'>{$match[0]}</a>" :
-							$match[0];
+						$record = GedcomRecord::getInstance($match[1], Tree::findByName($gedc));
+						return $record ? '<a href="#" onclick="return edit_raw(\'' . $match[1] . '\');">' . $match[0] . '</a>' : $match[0];
 					},
 					implode("\n", $diff_lines)
 				) .

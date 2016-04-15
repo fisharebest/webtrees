@@ -172,7 +172,7 @@ class FunctionsDb {
 			// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 			$record = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			// Ignore non-genealogy data
-			$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
+			$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->getGedcom());
 			// Ignore links and tags
 			$gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
 			// Re-apply the filtering
@@ -386,7 +386,7 @@ class FunctionsDb {
 			// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 			$record = Family::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			// Ignore non-genealogy data
-			$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
+			$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->getGedcom());
 			// Ignore links and tags
 			$gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
 			// Ignore tags
@@ -489,7 +489,7 @@ class FunctionsDb {
 			// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 			$record = Source::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			// Ignore non-genealogy data
-			$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
+			$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->getGedcom());
 			// Ignore links and tags
 			$gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
 			// Ignore tags
@@ -544,7 +544,7 @@ class FunctionsDb {
 			// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 			$record = Note::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			// Ignore non-genealogy data
-			$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
+			$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->getGedcom());
 			// Ignore links and tags
 			$gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
 			// Ignore tags
@@ -599,7 +599,7 @@ class FunctionsDb {
 			// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 			$record = Repository::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			// Ignore non-genealogy data
-			$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
+			$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->getGedcom());
 			// Ignore links and tags
 			$gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
 			// Ignore tags
