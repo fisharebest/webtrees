@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-04-16 14:06+0000\n"
+"PO-Revision-Date: 2016-04-16 17:02+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <http://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -1676,32 +1676,32 @@ msgstr "Advanced"
 
 #: admin_trees_config.php:2130
 msgid "Advanced fact settings"
-msgstr ""
+msgstr "Advanced fact settings"
 
 #: admin_trees_config.php:2135
 msgid "Advanced name facts"
-msgstr ""
+msgstr "Advanced name facts"
 
 #: admin_trees_config.php:2164
 msgid "Advanced place name facts"
-msgstr ""
+msgstr "Advanced place name facts"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1714
 msgid "Advanced search"
-msgstr ""
+msgstr "Advanced search"
 
 #: app/Stats.php:6719
 msgid "Afghanistan"
-msgstr ""
+msgstr "Afghanistan"
 
 #: statistics.php:602
 msgid "Africa"
-msgstr ""
+msgstr "Africa"
 
 #: admin_trees_manage.php:678
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr ""
+msgstr "After creating the family tree, you will be able to import data from a GEDCOM file."
 
 #: login.php:257
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
@@ -1714,40 +1714,41 @@ msgstr "After you have logged in, select the ‘My account’ link under the ‘
 #: app/GedcomTag.php:142 app/Stats.php:2588 app/Stats.php:3929
 #: app/Stats.php:3931 autocomplete.php:72 timeline.php:380
 msgid "Age"
-msgstr ""
+msgstr "Age"
 
 #: statistics.php:283
 msgid "Age at birth of child"
-msgstr ""
+msgstr "Age at birth of child"
 
 #: admin_trees_config.php:410
 msgid "Age at which to assume an individual is dead"
-msgstr ""
+msgstr "Age at which to assume an individual is dead"
 
 #: statistics.php:338
 msgid "Age between husband and wife"
-msgstr ""
+msgstr "Age between husband and wife"
 
 #: statistics.php:330
 msgid "Age between siblings"
-msgstr ""
+msgstr "Age between siblings"
 
 #: statistics.php:339
 msgid "Age between wife and husband"
-msgstr ""
+msgstr "Age between wife and husband"
 
 #: statistics.php:327
 msgid "Age difference"
-msgstr ""
+msgstr "Age difference"
 
 #: statistics.php:529 statisticsplot.php:1266
+#, fuzzy
 msgid "Age in year of first marriage"
-msgstr ""
+msgstr "Age in year of first marriage"
 
 #: app/Functions/FunctionsPrintLists.php:1002 statistics.php:260
 #: statistics.php:526 statisticsplot.php:1216
 msgid "Age in year of marriage"
-msgstr ""
+msgstr "Age in year of marriage"
 
 #: app/Module/FamilyTreeNewsModule.php:201
 msgid "Age of item"
@@ -1756,21 +1757,21 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1392
 msgid "Age of parents next to child’s birthdate"
-msgstr ""
+msgstr "Age of parents next to child’s birthdate"
 
 #: statistics.php:520 statisticsplot.php:1116
 msgid "Age related to birth year"
-msgstr ""
+msgstr "Age related to birth year"
 
 #: app/Functions/FunctionsPrintLists.php:502 statistics.php:523
 #: statisticsplot.php:1166
 msgid "Age related to death year"
-msgstr ""
+msgstr "Age related to death year"
 
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:146
 msgid "Agency"
-msgstr ""
+msgstr "Agency"
 
 #: app/Stats.php:6722
 msgid "Aland Islands"
@@ -1778,29 +1779,29 @@ msgstr "Åland Islands"
 
 #: app/Stats.php:6723
 msgid "Albania"
-msgstr ""
+msgstr "Albania"
 
 #. I18N: Name of a module
 #: app/Module/AlbumModule.php:40
 msgid "Album"
-msgstr ""
+msgstr "Album"
 
 #: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Albuquerque, New Mexico"
-msgstr ""
+msgstr "Albuquerque, New Mexico"
 
 #: app/Stats.php:6786
 msgid "Algeria"
-msgstr ""
+msgstr "Algeria"
 
 #. I18N: gedcom tag ALIA
 #: app/GedcomTag.php:150
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #: app/Functions/FunctionsPrintLists.php:192
 msgid "Alive"
-msgstr ""
+msgstr "Alive"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: app/I18N.php:178 app/Module/FrequentlyAskedQuestionsModule.php:221
@@ -1821,11 +1822,11 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #: admin_trees_manage.php:711
 msgid "All changes in PhpGedView must be accepted"
-msgstr ""
+msgstr "All changes in PhpGedView must be accepted"
 
 #: admin_trees_manage.php:714
 msgid "All existing PhpGedView users must have distinct email addresses"
@@ -1833,39 +1834,39 @@ msgstr "All existing PhpGedView users must have distinct e-mail addresses"
 
 #: admin_trees_config.php:567
 msgid "All facts and events"
-msgstr ""
+msgstr "All facts and events"
 
 #: admin_trees_config.php:1839
 msgid "All family facts"
-msgstr ""
+msgstr "All family facts"
 
 #: login.php:411
 msgid "All fields must be completed."
-msgstr ""
+msgstr "All fields must be completed."
 
 #: admin_site_upgrade.php:408
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "All files have read and write permission."
 
 #: admin_trees_config.php:1721
 msgid "All individual facts"
-msgstr ""
+msgstr "All individual facts"
 
 #: calendar.php:236 calendar.php:247 calendar.php:446
 msgid "All individuals"
-msgstr ""
+msgstr "All individuals"
 
 #: admin_trees_config.php:558
 msgid "All records"
-msgstr ""
+msgstr "All records"
 
 #: admin_trees_config.php:2046
 msgid "All repository facts"
-msgstr ""
+msgstr "All repository facts"
 
 #: admin_trees_config.php:1957
 msgid "All source facts"
-msgstr ""
+msgstr "All source facts"
 
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
@@ -1875,12 +1876,12 @@ msgstr "Allow other modules to edit text using a ‘WYSIWYG’ editor, instead o
 #. I18N: A configuration setting
 #: admin_trees_config.php:1678
 msgid "Allow users to see raw GEDCOM records"
-msgstr ""
+msgstr "Allow users to see raw GEDCOM records"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:259
 msgid "Allow users to select their own theme"
-msgstr ""
+msgstr "Allow users to select their own theme"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:485
@@ -10617,10 +10618,6 @@ msgstr ""
 msgid "Place contains"
 msgstr ""
 
-#: app/Module/TopPageViewsModule.php:165
-msgid "Show counts before or after name"
-msgstr ""
-
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
 msgid "Place hierarchy"
@@ -11930,7 +11927,7 @@ msgstr ""
 
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Send out reminder e-mails?"
+msgstr "Send out reminder e-mails"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329
@@ -12330,6 +12327,10 @@ msgstr ""
 msgid "Show common surnames"
 msgstr ""
 
+#: app/Module/TopPageViewsModule.php:165
+msgid "Show counts before or after name"
+msgstr ""
+
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
 msgstr ""
@@ -12462,7 +12463,7 @@ msgstr ""
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Show only births, deaths and marriages?"
+msgstr "Show only births, deaths and marriages"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
@@ -12479,7 +12480,7 @@ msgstr "Show only individuals for whom the sex is not known."
 
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Show only individuals, events or all?"
+msgstr "Show only individuals, events or all"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
