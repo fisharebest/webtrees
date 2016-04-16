@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 17:18+0000\n"
+"PO-Revision-Date: 2016-04-16 17:21+0000\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <http://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -1480,7 +1480,7 @@ msgstr "Lisa sidumata kirjeid"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
 msgid "Add watermarks to thumbnails"
-msgstr "Lisa vesimärgid pisipiltidele?"
+msgstr "Lisa vesimärgid pisipiltidele"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -7456,7 +7456,7 @@ msgstr "Kaasa alamkataloogid"
 
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Kaasa isiku otsene perekond?"
+msgstr "Kaasa isiku otsene perekond"
 
 #: app/Stats.php:6828
 msgid "India"
@@ -10960,7 +10960,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Trüki tavalised sündmused kui on tühi?"
+msgstr "Trüki tavalised sündmused kui on tühi"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
 msgid "Privacy"
@@ -11925,7 +11925,7 @@ msgstr "Saatke laiaulatuslike sõnumeid"
 
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Kas saata välja meeldetuletusi?"
+msgstr "Kas saata välja meeldetuletusi"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329
@@ -12310,7 +12310,7 @@ msgstr "Näita kõiki silte"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Näita vanuse kursorit?"
+msgstr "Näita vanuse kursorit"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1366
@@ -12319,15 +12319,15 @@ msgstr "Näita joonise detaile vaikimisi"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Näita laste esivanemaid?"
+msgstr "Näita esivanemate lapsi"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
 msgid "Show common surnames"
-msgstr "Näita sagedamini esinevaid perekonnanimesid?"
+msgstr "Näita sagedamini esinevaid perekonnanimesid"
 
 #: app/Module/TopPageViewsModule.php:165
 msgid "Show counts before or after name"
-msgstr "Paiguta arvut enne või pärast nime?"
+msgstr "Paiguta arvud enne või pärast nime"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12364,7 +12364,7 @@ msgstr "Näita vanuste erinevust"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
 msgid "Show date of last update"
-msgstr "Näita viimase uuenduse kuupäeva?"
+msgstr "Näita viimase uuenduse kuupäeva"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:391
@@ -12452,21 +12452,21 @@ msgstr "Näita privaatsete isikute nimesid"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Näita märkusi?"
+msgstr "Näita märkusi"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Näita ameteid?"
+msgstr "Näita ameteid"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Näita ainult sündinud, surnud ja abiellunud?"
+msgstr "Näita ainult sündinud, surnud ja abiellunud"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Näita ainult elavate inimeste sündmusi?"
+msgstr "Näita ainult elavate inimeste sündmusi"
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
@@ -12478,7 +12478,7 @@ msgstr "Näita ainult neid isikuid kelle sugu on teadmata."
 
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Näita ainult isikuid, sündmusi või kõiki?"
+msgstr "Näita ainult isikuid, sündmusi või kõiki"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -12501,7 +12501,7 @@ msgstr "Näita ootel muudatusi"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Näita pilte?"
+msgstr "Näita pilte"
 
 #: placelist.php:83
 msgid "Show places in hierarchy"
@@ -12530,11 +12530,11 @@ msgstr "Näita uurimisülesandeid, mille valmisoleku kuupäev on lähemas tulevi
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Näita residentsust?"
+msgstr "Näita residentsust"
 
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls"
-msgstr "Näita slaidiseansi juhtnuppe?"
+msgstr "Näita slaidiseansi juhtnuppe"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12542,7 +12542,7 @@ msgstr "Näita slaidiseansi juhtnuppe?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Näita allikaid?"
+msgstr "Näita allikaid"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12589,7 +12589,7 @@ msgstr "Näita kasutajat, kes muudatuse tegi"
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Millistele keeltele seda blokki näidata?"
+msgstr "Millistele keeltele seda blokki näidata"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1038 app/Functions/FunctionsEdit.php:206
@@ -13003,7 +13003,7 @@ msgstr "Alusta vanematest"
 
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load"
-msgstr "Alusta slaidiseansiga lehe laadimisel?"
+msgstr "Alusta slaidiseansiga lehe laadimisel"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13064,12 +13064,12 @@ msgstr "Peata"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
 msgid "Store watermarked full size images on server"
-msgstr "Salvesta vesimärgistatud piltide täissuuruses versioonid serverisse?"
+msgstr "Salvesta vesimärgistatud piltide täissuuruses versioonid serverisse"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
 msgid "Store watermarked thumbnails on server"
-msgstr "Salvesta vesimärgistatud pisipildid serverisse?"
+msgstr "Salvesta vesimärgistatud pisipildid serverisse"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -15613,12 +15613,12 @@ msgstr "Kus asub teie PhpGedView-i paigalduskaust?"
 
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Milliseid sugupuid peaks sitemap sisaldama?"
+msgstr "Milliseid sugupuid peaks sitemap sisaldama"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
 msgid "Who can upload new media files"
-msgstr "Kes saab üles laadida uusi meediafaile?"
+msgstr "Kes saab üles laadida uusi meediafaile"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
