@@ -217,9 +217,9 @@ class Individual extends GedcomRecord {
 	 *
 	 * @return bool
 	 */
-	private static function isAncestorOrDescendant(Individual $target, $AnDes=null, $depth) {
+	private static function isAncestorOrDescendant(Individual $target, $AnDes, $depth=-1) {
 
-		if (is_null($AnDes)) return false;
+		if (!isset($linkTree[$AnDes])) return false;
 
 		$linkTree = self::getLinkTree($target->tree->getTreeId());
 
