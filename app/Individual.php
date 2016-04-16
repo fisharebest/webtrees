@@ -219,9 +219,11 @@ class Individual extends GedcomRecord {
 	 */
 	private static function isAncestorOrDescendant(Individual $target, $AnDes, $depth=-1) {
 
-		if (!isset($linkTree[$AnDes])) return false;
+		if (!in_array($AnDes, array('descendants', 'ancestors'))) return false;
 
 		$linkTree = self::getLinkTree($target->tree->getTreeId());
+
+		if (!isset($linkTree[$AnDes])) return false;
 
 		$user_individual = self::getInstance($target->tree->getUserPreference(Auth::user(), 'gedcomid'), $target->tree);
 
