@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 10:42+0000\n"
+"PO-Revision-Date: 2016-04-16 12:06+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -332,7 +332,7 @@ msgstr[1] "%s persone met gebeurtenisse in %s tussen %s en %s"
 #: setup.php:119
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-msgstr "%s is nie op hierdie bediener gemagtig nie. Jy kan nie webtrees installer nie voordat dit gemagtig word nie. Versoek asseblief die beheerder van die bediener om dit te magtig."
+msgstr "%s is op hierdie bediener gesper. Jy kan webtrees nie installeer voordat dit ontsper word nie. Versoek asseblief die beheerder van jou bediener om dit te ontsper."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5960
 #, php-format
@@ -375,8 +375,8 @@ msgstr[1] "%s maande gelede"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "%s nota is opgedateer."
-msgstr[1] "%s notas is opgedateer."
+msgstr[0] "%s nota is verwerk."
+msgstr[1] "%s notas is verwerk."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2090
@@ -401,8 +401,8 @@ msgstr[1] "%s sekondes gelede"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] "%s bron is opgedateer."
-msgstr[1] "%s bronne is opgedateer."
+msgstr[0] "%s bron is verwerk."
+msgstr[1] "%s bronne is verwerk."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2106
@@ -492,7 +492,7 @@ msgstr "%s&nbsp;n.C."
 #: app/Module/ClippingsCartModule.php:222
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr "%s, haar voorvaders en hulle families"
+msgstr "%s, haar voorouers en hulle families"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:171
@@ -510,13 +510,13 @@ msgstr "%s, haar gades en kinders"
 #: app/Module/ClippingsCartModule.php:241
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr "%s, haar gades en afstammelinge"
+msgstr "%s, haar gades en nageslag"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:225
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr "%s, sy voorvaders en hulle families"
+msgstr "%s, sy voorouers en hulle families"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:174
@@ -534,7 +534,7 @@ msgstr "%s, sy gades en kinders"
 #: app/Module/ClippingsCartModule.php:244
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr "%s, sy gades en afstammelinge"
+msgstr "%s, sy gades en nageslag"
 
 #: app/Functions/FunctionsPrint.php:624 app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
@@ -562,7 +562,7 @@ msgstr "(ouderdom meer as %s)"
 #: app/I18N.php:229
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr "(van %s inskrywings uitgefiltreer)"
+msgstr "(uit %s inskrywings gefiltreer)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
 #: app/I18N.php:293
@@ -692,7 +692,7 @@ msgstr "9de"
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:742
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr "<b>GUID</b> beteken in hierdie konteks ‘Globally Unique ID’.<br><br>GUID's is bedoel om elke individu te op 'n herhaalbare manier te identifiseer, sodat sentrale organisasies soos die Family History Center van die LDS kerk in Salt Lake City of versoenbare programme wat op jou eie bediener loop, kan bepaal of huller met dieslefde persoon te make het ongeag waar die GEDCOM vandaan kom. Die doel van die Family History Center is om 'n sentrale bergplek met genealogiese gegewens te skep en dit via web dienste besckikbaar te stel. Dit sal enige program in staat stel om toegang tot die gegewens te verkry en die inligting ook op te dateer. <br><br>As jy nie van plan is om hierdie GEDCOM lêer met andet te deel nie, dan hoef jy nie te sorg dat webtrees hierdie GUID's skep nie; as jy dit agter toelaat is daar geen ander nadeel verbonde as om die grootte van jou GEDCOM lêer te vergroot."
+msgstr "<b>GUID</b> beteken in hierdie verband ‘Globally Unique ID’.<br><br>GUID's is bedoel om elke persoon op 'n herhaalbare manier te identifiseer, sodat sentrale organisasies soos die Family History Center van die LDS kerk in Salt Lake City of versoenbare programme wat op jou eie bediener loop, kan bepaal of hulle met dieselfde persoon te make het ongeag waar die GEDCOM vandaan kom. Die doel van die Family History Center is om 'n sentrale bergplek met genealogiese gegewens te skep en dit via webdienste beskikbaar te stel. Dit sal enige program in staat stel om toegang tot die gegewens te verkry en die inligting ook te verwerk. <br><br>As jy nie van plan is om hierdie GEDCOM lêer met ander te deel nie, dan hoef jy nie te sorg dat webtrees hierdie GUID's skep nie; as jy dit agter toelaat is daar geen ander nadeel daaraan verbonde as om die grootte van jou GEDCOM lêer te vergroot."
 
 #: admin_trees_manage.php:718
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -708,16 +708,16 @@ msgstr "<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang 
 
 #: login.php:173
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
-msgstr "<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang tot hierdie webwerf is beperk tot <u>familielede</u> gebruikers.<br><br>As jy ’n gebruikersrekening het, kan jy op hierdie bladsy aanmeld. As jy nie ’n gebruikersrekening het nie, kan jy een aanvra deur op die skakel hieronder te klik.<br><br>Nadat jou aanvraag nagegaan is, sal die werfbeheerder jou rekening aktiveer. Jy sal ’n epos ontvang wanneer jou aanvraag goedgekeur is."
+msgstr "<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang tot hierdie webwerf is beperk tot <u>familielede</u>.<br><br>As jy ’n gebruikersrekening het, kan jy op hierdie bladsy aanmeld. As jy nie ’n gebruikersrekening het nie, kan jy een aanvra deur op die skakel hieronder te klik.<br><br>Nadat jou aanvraag nagegaan is, sal die werfbeheerder jou rekening aktiveer. Jy sal ’n epos ontvang wanneer jou aanvraag goedgekeur is."
 
 #: login.php:167
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
-msgstr "<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang tot hierdie webwerf is vir alle besokers wat ’n gebruikersrekening het.<br><br>As jy ’n gebruikersrekening het, kan jy op hierdie bladsy aanmeld. As jy nie ’n gebruikersrekening het nie, kan jy een aanvra deur op die skakel hieronder te klik.<br><br>Nadat jou aanvraag nagegaan is, sal die werfbeheerder jou rekening aktiveer. Jy sal ’n epos ontvang wanneer jou aanvraag goedgekeur is."
+msgstr "<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang tot hierdie webwerf is vir alle besoekers wat ’n gebruikersrekening het.<br><br>As jy ’n gebruikersrekening het, kan jy op hierdie bladsy aanmeld. As jy nie ’n gebruikersrekening het nie, kan jy een aanvra deur op die skakel hieronder te klik.<br><br>Nadat jou aanvraag nagegaan is, sal die werfbeheerder jou rekening aktiveer. Jy sal ’n epos ontvang wanneer jou aanvraag goedgekeur is."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
 msgid "<default theme>"
-msgstr "<standaard tema>"
+msgstr "<verstek tema>"
 
 #: login.php:405
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
@@ -742,12 +742,12 @@ msgstr "'n Diagram wat die verwantskappe tussen twee persone aantoon."
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "'n Diagram van 'n persoon se voor- en nageslagte, soos 'n familieboek."
+msgstr "'n Diagram van 'n persoon se voor- en nageslagte, weergegee as 'n familieboek."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "'n Diagram van 'n persoon se voorgeslagte, soos 'n kompakte boom."
+msgstr "'n Diagram van 'n persoon se voorgeslagte, weergegee as 'n kompakte boom."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
@@ -771,7 +771,7 @@ msgstr "'n Diagram van persone se lewensdure."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "’n kind kan meer as één stel ouers hê. Die verwantskap tussen kind en ouers kan biologies, wettelik of op plaaslike kultuur en tradisie gebaseer wees. As die verwantskap nie gespesifiseer word nie, dan word ’n biologiese verwantskap aanvaar."
+msgstr "’n Kind kan meer as één stel ouers hê. Die verwantskap tussen kind en ouers kan biologies, wettelik of op plaaslike kultuur en tradisie gebaseer wees. As die verwantskap nie gespesifiseer word nie, dan word ’n biologiese verwantskap aanvaar."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -807,7 +807,7 @@ msgstr "’n Welkomsberig vir werfbesoekers."
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need moderator approval, and email notifications."
-msgstr "’n Lys met veranderinge wat die goedkeuring van 'n moderator nodig het, en e-pos boodskappe."
+msgstr "’n Lys met veranderinge wat die goedkeuring van 'n moderator nodig het, en epos-boodskappe."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
