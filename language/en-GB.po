@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 09:08+0000\n"
+"POT-Creation-Date: 2016-04-15 22:08+0100\n"
+"PO-Revision-Date: 2016-04-16 09:23+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <http://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -65,70 +65,70 @@ msgstr " per time period"
 #: app/Module/FrequentlyAskedQuestionsModule.php:475
 #, php-format
 msgid "#%s"
-msgstr ""
+msgstr "#%s"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s has a %3$s link to %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2114
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s %2$s times removed ascending"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2117
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s %2$s times removed descending"
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1635
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:317
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$s KB were downloaded in %2$s seconds."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s does not exist."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s does not exist. Did you mean %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s does not have a link back to %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:374 admin_site_upgrade.php:458
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s file was extracted in %2$s seconds."
+msgstr[1] "%1$s files were extracted in %2$s seconds."
 
 #: app/Module/GoogleMapsModule.php:922
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
+msgstr[1] "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:939
@@ -142,7 +142,7 @@ msgstr[1] "%1$s individuals are missing birthplace map co-ordinates: %2$s."
 #: admin_trees_check.php:192
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s is a %2$s but a %3$s is expected."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:612
@@ -19913,4 +19913,4 @@ msgstr ""
 #: famlist.php:140 indilist.php:83 indilist.php:108 indilist.php:140
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
