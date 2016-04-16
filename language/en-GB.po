@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-04-16 17:02+0000\n"
+"PO-Revision-Date: 2016-04-16 21:57+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <http://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -1741,7 +1741,6 @@ msgid "Age difference"
 msgstr "Age difference"
 
 #: statistics.php:529 statisticsplot.php:1266
-#, fuzzy
 msgid "Age in year of first marriage"
 msgstr "Age in year of first marriage"
 
@@ -1886,32 +1885,32 @@ msgstr "Allow users to select their own theme"
 #. I18N: A site configuration setting
 #: admin_site_config.php:485
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Allow visitors to request a new user account"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:963
 msgid "Also known as"
-msgstr ""
+msgstr "Also known as"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:959
 msgctxt "FEMALE"
 msgid "Also known as"
-msgstr ""
+msgstr "Also known as"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:955
 msgctxt "MALE"
 msgid "Also known as"
-msgstr ""
+msgstr "Also known as"
 
 #: app/Stats.php:6729
 msgid "American Samoa"
-msgstr ""
+msgstr "American Samoa"
 
 #: admin_site_config.php:492
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
-msgstr ""
+msgstr "An administrator must approve the new user account and select an access level before the user can log in."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
@@ -1921,54 +1920,54 @@ msgstr "An alternative to the ‘media’ tab, and an enhanced image viewer."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
 msgid "An alternative way to display charts."
-msgstr ""
+msgstr "An alternative way to display charts."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:44
 msgid "An alternative way to enter census transcripts and link them to individuals."
-msgstr ""
+msgstr "An alternative way to enter census transcripts and link them to individuals."
 
 #. I18N: Description of the “Login” module
 #: app/Module/LoginBlockModule.php:34
 msgid "An alternative way to login and logout."
-msgstr ""
+msgstr "An alternative way to login and logout."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
 msgid "An alternative way to select a new theme."
-msgstr ""
+msgstr "An alternative way to select a new theme."
 
 #: app/Functions/FunctionsEdit.php:916
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr ""
+msgstr "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
 
 #: app/Functions/FunctionsEdit.php:914
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr ""
+msgstr "An associate is another individual who was involved with this individual, such as a friend or an employer."
 
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:33
 msgid "An edit menu for individuals, families, sources, etc."
-msgstr ""
+msgstr "An edit menu for individuals, families, sources, etc."
 
 #: admin_site_upgrade.php:344 admin_site_upgrade.php:366
 #: admin_site_upgrade.php:376 admin_site_upgrade.php:460
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "An error occurred when unzipping the file."
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr ""
+msgstr "An hourglass chart of an individual’s ancestors and descendants."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr ""
+msgstr "An interactive tree, showing all the ancestors and descendants of an individual."
 
 #: setup.php:495
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "An unexpected database error occurred."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -1982,39 +1981,39 @@ msgstr ""
 #. I18N: gedcom tag ANCI
 #: app/GedcomTag.php:158
 msgid "Ancestors interest"
-msgstr ""
+msgstr "Ancestors interest"
 
 #: modules_v3/ahnentafel_report/report.xml:55
 msgid "Ancestors of "
-msgstr ""
+msgstr "Ancestors of "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/AncestryController.php:54
 #: app/Controller/AncestryController.php:80
 #, php-format
 msgid "Ancestors of %s"
-msgstr ""
+msgstr "Ancestors of %s"
 
 #. I18N: gedcom tag AFN
 #: app/GedcomTag.php:138
 msgid "Ancestral file number"
-msgstr ""
+msgstr "Ancestral file number"
 
 #: app/GedcomCode/GedcomCodeTemp.php:87
 msgid "Anchorage, Alaska"
-msgstr ""
+msgstr "Anchorage, Alaska"
 
 #: app/Stats.php:6724
 msgid "Andorra"
-msgstr ""
+msgstr "Andorra"
 
 #: app/Stats.php:6720
 msgid "Angola"
-msgstr ""
+msgstr "Angola"
 
 #: app/Stats.php:6721
 msgid "Anguilla"
-msgstr ""
+msgstr "Anguilla"
 
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
@@ -2022,101 +2021,101 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:1804
 #: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
-msgstr ""
+msgstr "Anniversary"
 
 #: calendar.php:118
 msgid "Anniversary calendar"
-msgstr ""
+msgstr "Anniversary calendar"
 
 #. I18N: gedcom tag ANUL
 #: app/GedcomTag.php:162
 msgid "Annulment"
-msgstr ""
+msgstr "Annulment"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:186
 msgid "Answer"
-msgstr ""
+msgstr "Answer"
 
 #: app/Stats.php:6730
 msgid "Antarctica"
-msgstr ""
+msgstr "Antarctica"
 
 #: app/Stats.php:6732
 msgid "Antigua and Barbuda"
-msgstr ""
+msgstr "Antigua and Barbuda"
 
 #: app/GedcomCode/GedcomCodeTemp.php:281
 msgid "Apia, Samoa"
-msgstr ""
+msgstr "Apia, Samoa"
 
 #. I18N: Description of the “Batch update” module
 #: app/Module/BatchUpdateModule.php:86
 msgid "Apply automatic corrections to your genealogy data."
-msgstr ""
+msgstr "Apply automatic corrections to your genealogy data."
 
 #: admin_trees_download.php:172 app/Module/ClippingsCartModule.php:383
 #: app/Module/ClippingsCartModule.php:402
 #: app/Module/ClippingsCartModule.php:764
 #: app/Module/ClippingsCartModule.php:773
 msgid "Apply privacy settings"
-msgstr ""
+msgstr "Apply privacy settings"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2278
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Apply these preferences to all family trees"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2285
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Apply these preferences to new family trees"
 
 #: admin_users.php:100
 #, php-format
 msgid "Approval of account at %s"
-msgstr ""
+msgstr "Approval of account at %s"
 
 #: edit_changes.php:209 edit_changes.php:220
 msgid "Approve all changes"
-msgstr ""
+msgstr "Approve all changes"
 
 #: admin_users.php:875
 msgid "Approved"
-msgstr ""
+msgstr "Approved"
 
 #: admin_users.php:386
 msgid "Approved by administrator"
-msgstr ""
+msgstr "Approved by administrator"
 
 #: app/Date/CalendarDate.php:314
 msgctxt "Abbreviation for April"
 msgid "Apr"
-msgstr ""
+msgstr "Apr"
 
 #: app/Date/CalendarDate.php:214
 msgctxt "GENITIVE"
 msgid "April"
-msgstr ""
+msgstr "April"
 
 #: app/Date/CalendarDate.php:282
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr ""
+msgstr "April"
 
 #: app/Date/CalendarDate.php:248
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr ""
+msgstr "April"
 
 #: app/Date/CalendarDate.php:180 app/Functions/FunctionsPrint.php:653
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr ""
+msgstr "April"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:76
 msgid "Aqua Marine"
-msgstr ""
+msgstr "Aqua Marine"
 
 #: app/Controller/IndividualController.php:167
 #: app/Functions/FunctionsPrintFacts.php:201
@@ -2124,11 +2123,11 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:1022
 #: app/Functions/FunctionsPrintFacts.php:1170
 msgid "Are you sure you want to delete this fact?"
-msgstr ""
+msgstr "Are you sure you want to delete this fact?"
 
 #: app/Module/UserMessagesModule.php:96 app/Module/UserMessagesModule.php:139
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr ""
+msgstr "Are you sure you want to delete this message? It cannot be retrieved later."
 
 #: admin_media.php:318 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_manage.php:414 admin_trees_manage.php:425 admin_users.php:211
@@ -2150,19 +2149,19 @@ msgstr "Are you sure you want to delete ‘%s’?"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Are you sure you want to remove links to this media object?"
 
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr ""
+msgstr "Are you sure you want to remove this item from your list of favourites?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Are you sure you want to undo all the changes to this family tree?"
 
 #: app/Stats.php:6727
 msgid "Argentina"
-msgstr ""
+msgstr "Argentina"
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -2181,42 +2180,42 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "Arial"
-msgstr ""
+msgstr "Arial"
 
 #: app/Stats.php:6728
 msgid "Armenia"
-msgstr ""
+msgstr "Armenia"
 
 #: app/Stats.php:6717
 msgid "Aruba"
-msgstr ""
+msgstr "Aruba"
 
 #: app/Module/HtmlBlockModule.php:316
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr ""
+msgstr "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:77
 msgid "Ash"
-msgstr ""
+msgstr "Ash"
 
 #: statistics.php:600
 msgid "Asia"
-msgstr ""
+msgstr "Asia"
 
 #. I18N: gedcom tag ASSO
 #. I18N: gedcom tag _ASSO
 #: app/GedcomTag.php:166 app/GedcomTag.php:968
 msgid "Associate"
-msgstr ""
+msgstr "Associate"
 
 #: edit_interface.php:1241 help_text.php:292
 msgid "Associate events with this source"
-msgstr ""
+msgstr "Associate events with this source"
 
 #: search.php:107 search.php:266
 msgid "Associates"
-msgstr ""
+msgstr "Associates"
 
 #: app/GedcomCode/GedcomCodeTemp.php:91
 msgid "Asuncion, Paraguay"
@@ -2224,168 +2223,168 @@ msgstr "Asunción, Paraguay"
 
 #: app/Stats.php:6920
 msgid "At sea"
-msgstr ""
+msgstr "At sea"
 
 #: app/GedcomCode/GedcomCodeTemp.php:93
 msgid "Atlanta, Georgia"
-msgstr ""
+msgstr "Atlanta, Georgia"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
-msgstr ""
+msgstr "Attendant"
 
 #: app/GedcomCode/GedcomCodeRela.php:60
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr ""
+msgstr "Attendant"
 
 #: app/GedcomCode/GedcomCodeRela.php:58
 msgctxt "MALE"
 msgid "Attendant"
-msgstr ""
+msgstr "Attendant"
 
 #: app/GedcomCode/GedcomCodeRela.php:71
 msgid "Attending"
-msgstr ""
+msgstr "Attending"
 
 #: app/GedcomCode/GedcomCodeRela.php:69
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr ""
+msgstr "Attending"
 
 #: app/GedcomCode/GedcomCodeRela.php:67
 msgctxt "MALE"
 msgid "Attending"
-msgstr ""
+msgstr "Attending"
 
 #: app/GedcomTag.php:1908
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: app/Date/CalendarDate.php:318
 msgctxt "Abbreviation for August"
 msgid "Aug"
-msgstr ""
+msgstr "Aug"
 
 #: app/Date/CalendarDate.php:218
 msgctxt "GENITIVE"
 msgid "August"
-msgstr ""
+msgstr "August"
 
 #: app/Date/CalendarDate.php:286
 msgctxt "INSTRUMENTAL"
 msgid "August"
-msgstr ""
+msgstr "August"
 
 #: app/Date/CalendarDate.php:252
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr ""
+msgstr "August"
 
 #: app/Date/CalendarDate.php:184 app/Functions/FunctionsPrint.php:657
 msgctxt "NOMINATIVE"
 msgid "August"
-msgstr ""
+msgstr "August"
 
 #: app/Stats.php:6733
 msgid "Australia"
-msgstr ""
+msgstr "Australia"
 
 #: app/Stats.php:6734
 msgid "Austria"
-msgstr ""
+msgstr "Austria"
 
 #. I18N: gedcom tag AUTH
 #: app/GedcomTag.php:170
 msgid "Author"
-msgstr ""
+msgstr "Author"
 
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:266
 msgid "Author of last change"
-msgstr ""
+msgstr "Author of last change"
 
 #: admin_users.php:442
 msgid "Automatically approve changes made by this user"
-msgstr ""
+msgstr "Automatically approve changes made by this user"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:737
 msgid "Automatically create globally unique IDs"
-msgstr ""
+msgstr "Automatically create globally unique IDs"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1449
 msgid "Automatically expand list of events of close relatives"
-msgstr ""
+msgstr "Automatically expand list of events of close relatives"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1568
 msgid "Automatically expand notes"
-msgstr ""
+msgstr "Automatically expand notes"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1583
 msgid "Automatically expand sources"
-msgstr ""
+msgstr "Automatically expand sources"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:147
 msgctxt "GENITIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:223
 msgctxt "INSTRUMENTAL"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:185
 msgctxt "LOCATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:109
 msgctxt "NOMINATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #: index_edit.php:301
 msgid "Available blocks"
-msgstr ""
+msgstr "Available blocks"
 
 #: app/Functions/FunctionsPrintLists.php:2017 app/Stats.php:3945
 msgid "Average age"
-msgstr ""
+msgstr "Average age"
 
 #: app/Module/FamilyTreeStatisticsModule.php:173
 #: app/Module/FamilyTreeStatisticsModule.php:391
 #: app/Module/HtmlBlockModule.php:241 app/Stats.php:2602 statistics.php:149
 msgid "Average age at death"
-msgstr ""
+msgstr "Average age at death"
 
 #: app/Stats.php:3933 app/Stats.php:3934 app/Stats.php:3938 app/Stats.php:3942
 #: app/Stats.php:3945
 msgid "Average age in century of marriage"
-msgstr ""
+msgstr "Average age in century of marriage"
 
 #: app/Stats.php:2589 app/Stats.php:2602
 msgid "Average age related to death century"
-msgstr ""
+msgstr "Average age related to death century"
 
 #: app/Module/FamilyTreeStatisticsModule.php:189
 #: app/Module/FamilyTreeStatisticsModule.php:419
 #: app/Module/HtmlBlockModule.php:251 app/Stats.php:4951 statistics.php:306
 msgid "Average number of children per family"
-msgstr ""
+msgstr "Average number of children per family"
 
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:631 admin_trees_manage.php:667
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
-msgstr ""
+msgstr "Avoid spaces and punctuation. A family name might be a good choice."
 
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2418,20 +2417,20 @@ msgstr "Āzar"
 
 #: app/Stats.php:6735
 msgid "Azerbaijan"
-msgstr ""
+msgstr "Azerbaijan"
 
 #: app/Stats.php:6736
 msgid "Azores"
-msgstr ""
+msgstr "Azores"
 
 #: app/Date/JalaliDate.php:193
 msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
-msgstr ""
+msgstr "Bah"
 
 #: app/Stats.php:6744
 msgid "Bahamas"
-msgstr ""
+msgstr "Bahamas"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:97
@@ -2459,84 +2458,84 @@ msgstr "Bahman"
 
 #: app/Stats.php:6743
 msgid "Bahrain"
-msgstr ""
+msgstr "Bahrain"
 
 #: app/Stats.php:6741
 msgid "Bangladesh"
-msgstr ""
+msgstr "Bangladesh"
 
 #. I18N: gedcom tag BAPM
 #: app/GedcomTag.php:182 modules_v3/missing_facts_report/report.xml:16
 msgid "Baptism"
-msgstr ""
+msgstr "Baptism"
 
 #: app/GedcomTag.php:1017
 msgid "Baptism of a brother"
-msgstr ""
+msgstr "Baptism of a brother"
 
 #: app/GedcomTag.php:976
 msgid "Baptism of a child"
-msgstr ""
+msgstr "Baptism of a child"
 
 #: app/GedcomTag.php:974
 msgid "Baptism of a daughter"
-msgstr ""
+msgstr "Baptism of a daughter"
 
 #: app/GedcomTag.php:985 app/GedcomTag.php:994 app/GedcomTag.php:1003
 msgid "Baptism of a grandchild"
-msgstr ""
+msgstr "Baptism of a grandchild"
 
 #: app/GedcomTag.php:983
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Baptism of a granddaughter"
 
 #: app/GedcomTag.php:992
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Baptism of a granddaughter"
 
 #: app/GedcomTag.php:1001
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Baptism of a granddaughter"
 
 #: app/GedcomTag.php:981
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Baptism of a grandson"
 
 #: app/GedcomTag.php:990
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Baptism of a grandson"
 
 #: app/GedcomTag.php:999
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Baptism of a grandson"
 
 #: app/GedcomTag.php:1008
 msgid "Baptism of a half-brother"
-msgstr ""
+msgstr "Baptism of a half-brother"
 
 #: app/GedcomTag.php:1012
 msgid "Baptism of a half-sibling"
-msgstr ""
+msgstr "Baptism of a half-sibling"
 
 #: app/GedcomTag.php:1010
 msgid "Baptism of a half-sister"
-msgstr ""
+msgstr "Baptism of a half-sister"
 
 #: app/GedcomTag.php:1021
 msgid "Baptism of a sibling"
-msgstr ""
+msgstr "Baptism of a sibling"
 
 #: app/GedcomTag.php:1019
 msgid "Baptism of a sister"
-msgstr ""
+msgstr "Baptism of a sister"
 
 #: app/GedcomTag.php:972
 msgid "Baptism of a son"
-msgstr ""
+msgstr "Baptism of a son"
 
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:190 modules_v3/missing_facts_report/report.xml:17
