@@ -1508,7 +1508,7 @@ msgstr "Добавить несвязанные записи"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
-msgid "Add watermarks to thumbnails?"
+msgid "Add watermarks to thumbnails"
 msgstr "Добавить водяной знак на миниатюры?"
 
 #. I18N: Description of the “HTML” module
@@ -13075,7 +13075,7 @@ msgstr "Стоп"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
-msgid "Store watermarked full size images on server?"
+msgid "Store watermarked full size images on server"
 msgstr "Сохранять картинки с водяными знаками на сервере?"
 
 #. I18N: A configuration setting
@@ -15510,7 +15510,7 @@ msgstr "Водяные знаки"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Водяные знаки являются необязательными, и они обычно отображаются только для посетителей."
 
-#. I18N: Help text for the “Store watermarked full size images on server?” configuration setting
+#. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr "Добавление каждый раз водяного знака, может замедлить загрузку больших изображений. Для сайтов с большим количеством посетителей является предпочтительным, создание водяных знаков для изображений только один раз и затем сохранить их на сервере."

@@ -1486,7 +1486,7 @@ msgstr "Apondre enregistraments isolats"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
-msgid "Add watermarks to thumbnails?"
+msgid "Add watermarks to thumbnails"
 msgstr "Apondre marques d'aiga digitala a las miniatures?"
 
 #. I18N: Description of the “HTML” module
@@ -13240,7 +13240,7 @@ msgstr ""
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
-msgid "Store watermarked full size images on server?"
+msgid "Store watermarked full size images on server"
 msgstr ""
 
 #. I18N: A configuration setting
@@ -15698,7 +15698,7 @@ msgstr ""
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr ""
 
-#. I18N: Help text for the “Store watermarked full size images on server?” configuration setting
+#. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr ""

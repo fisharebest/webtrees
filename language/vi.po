@@ -1447,7 +1447,7 @@ msgstr "Thêm các hồ sơ không liên kết"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
-msgid "Add watermarks to thumbnails?"
+msgid "Add watermarks to thumbnails"
 msgstr "và ảnh chìm trong hình nhỏ?"
 
 #. I18N: Description of the “HTML” module
@@ -13006,7 +13006,7 @@ msgstr "Ngưng"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
-msgid "Store watermarked full size images on server?"
+msgid "Store watermarked full size images on server"
 msgstr "Lưu trữ hình đủ kích cỡ có hình chìm trên máy phục vụ?"
 
 #. I18N: A configuration setting
@@ -15425,7 +15425,7 @@ msgstr "Hình chìm"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Hình chìm là tùy chọn và thường hiện ở khách thăm."
 
-#. I18N: Help text for the “Store watermarked full size images on server?” configuration setting
+#. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr "Hình chìm có thể làm chậm việc tạo ảnh lớn. Webiste quá bận có thể thích tạo một lần rồi lưu trữ lại hình có hình chìm ở máy chủ."

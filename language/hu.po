@@ -1479,7 +1479,7 @@ msgstr "Hivatkozás nélküli bejegyzések felvétele"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
-msgid "Add watermarks to thumbnails?"
+msgid "Add watermarks to thumbnails"
 msgstr "Adjunk vízjelet a bélyegképekhez?"
 
 #. I18N: Description of the “HTML” module
@@ -13063,7 +13063,7 @@ msgstr "Állj"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
-msgid "Store watermarked full size images on server?"
+msgid "Store watermarked full size images on server"
 msgstr "Tároljuk a vízjeles, teljes méretű képeket a szerveren?"
 
 #. I18N: A configuration setting
@@ -15489,7 +15489,7 @@ msgstr "Vízjelek"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "A vízjelek nem kötelezőek, és általában csak a látogatók látják."
 
-#. I18N: Help text for the “Store watermarked full size images on server?” configuration setting
+#. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr "A vízjelek lelassíthatják a nagy képek létrehozását. Az elfoglalt webhelyeken célszerű a vízjeles képet inkább egyszer létrehozni és tárolni a szerveren."

@@ -1475,7 +1475,7 @@ msgstr "Tilføj ikke linkede poster"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
-msgid "Add watermarks to thumbnails?"
+msgid "Add watermarks to thumbnails"
 msgstr "Tilføj vandmærke på miniaturer?"
 
 #. I18N: Description of the “HTML” module
@@ -13038,7 +13038,7 @@ msgstr "Stop"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
-msgid "Store watermarked full size images on server?"
+msgid "Store watermarked full size images on server"
 msgstr "Gem fuld størrelse billeder med vandmærke på server?"
 
 #. I18N: A configuration setting
@@ -15464,7 +15464,7 @@ msgstr "Vandmærker"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Brug af vandmærker er valgfrie og bliver normalt kun vist til besøgende."
 
-#. I18N: Help text for the “Store watermarked full size images on server?” configuration setting
+#. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr "Vandmærker kan være længe om at blive dannet på store billeder. På ofte besøgte sider kan det anbefales at generere dem én gang og gemme det vandmærkede billede på serveren."

@@ -1475,7 +1475,7 @@ msgstr "Adicionar registros sem vínculo"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
-msgid "Add watermarks to thumbnails?"
+msgid "Add watermarks to thumbnails"
 msgstr "Adicionar marca d'água às miniaturas?"
 
 #. I18N: Description of the “HTML” module
@@ -13038,7 +13038,7 @@ msgstr "Parar"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
-msgid "Store watermarked full size images on server?"
+msgid "Store watermarked full size images on server"
 msgstr "Armazenar imagens com marca d'água em tamanho original no servidor?"
 
 #. I18N: A configuration setting
@@ -15464,7 +15464,7 @@ msgstr "Marcas d'água"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Marcas-d'água são opcionais e normalmente exibidas para visitantes."
 
-#. I18N: Help text for the “Store watermarked full size images on server?” configuration setting
+#. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr "Marcas-d'água podem ser lentas para gerar para grandes imagens. Sites congestionados podem preferir gerá-las uma vez e armazenar a imagem com a marca-d'água no servidor."

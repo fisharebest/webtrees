@@ -1474,7 +1474,7 @@ msgstr "Voeg ongekoppelde rekords by"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
-msgid "Add watermarks to thumbnails?"
+msgid "Add watermarks to thumbnails"
 msgstr "Voeg watermerk by die miniature?"
 
 #. I18N: Description of the “HTML” module
@@ -13058,7 +13058,7 @@ msgstr "Stop"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
-msgid "Store watermarked full size images on server?"
+msgid "Store watermarked full size images on server"
 msgstr "Bewaar beelde wat gewatermerk is teen oorsponklike grootte op bediener?"
 
 #. I18N: A configuration setting
@@ -15484,7 +15484,7 @@ msgstr "Watermerke"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Watermerke is opsioneel en word gewoonlik net aan besoekers vertoon."
 
-#. I18N: Help text for the “Store watermarked full size images on server?” configuration setting
+#. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr "Dit kan lank neem om watermerke vir groot beelde te skep. Besige webwerwe mag verkies om hulle eenmalig te skep en dan die beelde met hulle watermerk op die bediener te bewaar."

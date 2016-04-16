@@ -1475,7 +1475,7 @@ msgstr "Lägg till olänkade dataposter"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
-msgid "Add watermarks to thumbnails?"
+msgid "Add watermarks to thumbnails"
 msgstr "Lägg till vattenstämplar till miniatyrbilder?"
 
 #. I18N: Description of the “HTML” module
@@ -13038,7 +13038,7 @@ msgstr "Stoppa"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
-msgid "Store watermarked full size images on server?"
+msgid "Store watermarked full size images on server"
 msgstr "Spara vattenstämplade fullstora bilder på servern?"
 
 #. I18N: A configuration setting
@@ -15464,7 +15464,7 @@ msgstr "Vattenstämplar"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Vattenstämplar är frivilliga och normalt visas de bara för besökare."
 
-#. I18N: Help text for the “Store watermarked full size images on server?” configuration setting
+#. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr "Vattenstämplar kan vara långsamma att generera för stora bilder. Upptagna webbplatser kanske föredrar att generera dem en gång och lagra den vattenstämplade bilden på servern."

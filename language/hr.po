@@ -1503,7 +1503,7 @@ msgstr "Dodaj nepovezane zapise"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
-msgid "Add watermarks to thumbnails?"
+msgid "Add watermarks to thumbnails"
 msgstr "Dodaj vodeni žig na sličicu?"
 
 #. I18N: Description of the “HTML” module
@@ -13070,7 +13070,7 @@ msgstr "Zaustavi"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
-msgid "Store watermarked full size images on server?"
+msgid "Store watermarked full size images on server"
 msgstr "Spremi sliku pune veličine sa vodenim žigom na server?"
 
 #. I18N: A configuration setting
@@ -15504,7 +15504,7 @@ msgstr "Vodeni žigovi"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Vodeni žigovi su opcionalni i prikazuju se samo posjetiteljima."
 
-#. I18N: Help text for the “Store watermarked full size images on server?” configuration setting
+#. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr "Vodeni žig se može sporo generirati za velike slike. Za opterećene web stranice preporučljivo ih je generirati jednom i spremiti sliku sa vodenim žigom na server."
