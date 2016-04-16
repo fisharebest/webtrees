@@ -4,10 +4,10 @@
 	<Description><var var="I18N::translate('A report of family members and their details.')" /></Description>
 	<!-- User inputs for the report -->
 	<Input name="famid" lookup="FAM" type="text" default=""><var var="I18N::translate('Family')" /></Input>
-	<Input name="sources" type="checkbox" default="1"><var var="I18N::translate('Show sources?')" /></Input>
-	<Input name="notes" type="checkbox" default="1"><var var="I18N::translate('Show notes?')" /></Input>
-	<Input name="photos" type="checkbox" default="1"><var var="I18N::translate('Show photos?')" /></Input>
-	<Input name="blanks" type="checkbox" default="0"><var var="I18N::translate('Print basic events when blank?')" /></Input>
+	<Input name="sources" type="checkbox" default="1"><var var="I18N::translate('Show sources')" /></Input>
+	<Input name="notes" type="checkbox" default="1"><var var="I18N::translate('Show notes')" /></Input>
+	<Input name="photos" type="checkbox" default="1"><var var="I18N::translate('Show photos')" /></Input>
+	<Input name="blanks" type="checkbox" default="0"><var var="I18N::translate('Print basic events when blank')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translateContext('paper size','Letter')|A3=>I18N::translateContext('paper size', 'A3')|A4=>I18N::translateContext('paper size','A4')|legal=>I18N::translateContext('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
 	<Input name="colors" type="checkbox" default="1"><var var="I18N::translate('Use colors')"/></Input>
 	<!--
@@ -282,7 +282,7 @@
 							</TextBox>
 						</if>
 					</Facts>
-					
+
 					<if condition="$blanks==1 or @DEAT:DATE!='' or @DEAT:PLAC!=''">
 						<!-- print Death -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
@@ -636,7 +636,7 @@
 							</TextBox>
 						</if>
 					</Facts>
-					
+
 					<if condition="$blanks==1 or @DEAT:DATE!='' or @DEAT:PLAC!=''">
 						<!-- print Death -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
@@ -741,7 +741,7 @@
 							</Gedcom>
 						</TextBox>
 					</Gedcom>
-					
+
 					<!-- print the wife's notes -->
 					<if condition="$notes==1">
 						<RepeatTag tag="NOTE">
@@ -980,7 +980,7 @@
 								</TextBox>
 							</if>
 						</Facts>
-						
+
 						<if condition="$blanks==1 or @DEAT:DATE!='' or @DEAT:PLAC!=''">
 							<!-- print Death -->
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
@@ -1093,7 +1093,7 @@
 								</if>
 							</Gedcom>
 						</RepeatTag>
-						
+
 						<!-- print any notes for the child -->
 						<if condition="$notes==1">
 							<RepeatTag tag="NOTE">

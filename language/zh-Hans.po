@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-04-15 22:08+0100\n"
+"POT-Creation-Date: 2016-04-16 10:30+0100\n"
 "PO-Revision-Date: 2016-01-12 00:36+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hans/>\n"
@@ -1222,7 +1222,7 @@ msgctxt "NOMINATIVE"
 msgid "Adar II"
 msgstr "第六月"
 
-#. I18N: button label. Add a new item.
+#. I18N: button label. Add an item.
 #: admin_trees_config.php:541 app/Functions/FunctionsPrint.php:574
 #: app/Functions/FunctionsPrint.php:633 app/Module/ClippingsCartModule.php:334
 #: app/Module/ClippingsCartModule.php:460
@@ -1261,87 +1261,87 @@ msgid "Add a husband using an existing individual"
 msgstr "用已有的个人添加丈夫"
 
 #: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add a new associate"
+msgid "Add an associate"
 msgstr "添加相关人员"
 
 #: app/Module/RelativesTabModule.php:273
-msgid "Add a new brother or sister"
+msgid "Add a brother or sister"
 msgstr "添加一个兄弟或姐妹"
 
 #: edit_interface.php:516
-msgid "Add a new child"
+msgid "Add a child"
 msgstr "添加一个孩子"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
-msgid "Add a new father"
+msgid "Add a father"
 msgstr "添加父亲"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
-msgid "Add a new favorite"
+msgid "Add a favorite"
 msgstr "添加一个收藏"
 
 #: app/Module/GoogleMapsModule.php:4628
-msgid "Add a new geographic location"
+msgid "Add a geographic location"
 msgstr "添加一个新的地理位置"
 
 #: app/Module/RelativesTabModule.php:385 edit_interface.php:810
 #: edit_interface.php:900
-msgid "Add a new husband"
+msgid "Add a husband"
 msgstr "添加一个丈夫"
 
 #: app/Module/UserJournalModule.php:110
-msgid "Add a new journal entry"
+msgid "Add a journal entry"
 msgstr "添加日记项目"
 
 #: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1131
 #: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
 #: app/Module/MediaTabModule.php:87 source.php:184
-msgid "Add a new media object"
+msgid "Add a media object"
 msgstr "添加一个新的媒体对象"
 
 #: app/Module/RelativesTabModule.php:323 edit_interface.php:672 family.php:114
-msgid "Add a new mother"
+msgid "Add a mother"
 msgstr "添加母亲"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
-msgid "Add a new name"
+msgid "Add a name"
 msgstr "添加名字"
 
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1110
 #: app/Module/NotesTabModule.php:100
-msgid "Add a new note"
+msgid "Add a note"
 msgstr "添加资源情况记事"
 
 #: app/Functions/FunctionsEdit.php:1141
-msgid "Add a new restriction"
+msgid "Add a restriction"
 msgstr "添加一个新的限制"
 
 #: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1120
 #: app/Module/NotesTabModule.php:110
-msgid "Add a new shared note"
+msgid "Add a shared note"
 msgstr "添加一个新的共享记事"
 
 #: app/Module/RelativesTabModule.php:271
-msgid "Add a new son or daughter"
+msgid "Add a son or daughter"
 msgstr "添加一个儿子或女儿"
 
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1060
 #: app/Module/SourcesTabModule.php:93
-msgid "Add a new source citation"
+msgid "Add a source citation"
 msgstr "添加资源情況"
 
 #: edit_interface.php:837
-msgid "Add a new spouse"
+msgid "Add a spouse"
 msgstr "添加一个配偶"
 
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
-msgid "Add a new user"
+msgid "Add a user"
 msgstr "添加新用户"
 
 #: app/Module/RelativesTabModule.php:373 edit_interface.php:807
 #: edit_interface.php:897
-msgid "Add a new wife"
+msgid "Add a wife"
 msgstr "添加一个妻子"
 
 #: app/Module/FamilyTreeNewsModule.php:148
@@ -1448,7 +1448,7 @@ msgstr "添加未链接的记录"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
-msgid "Add watermarks to thumbnails?"
+msgid "Add watermarks to thumbnails"
 msgstr "添加水印到缩略图？"
 
 #. I18N: Description of the “HTML” module
@@ -7250,7 +7250,7 @@ msgstr "如果两个家谱使用相同的媒体文件夹，那么他们将能够
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
 msgstr "如果游客不能看到的家谱，他们将不能够注册一个账号。您将需要手动添加自己的账户。"
 
-#. I18N: Help text for the “Who can upload new media files?” configuration setting
+#. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1040
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr "如果你是担心用户可能上传不合适的图片,您可以限制只有管理员能上传媒体。"
@@ -7407,7 +7407,7 @@ msgid "Include subfolders"
 msgstr "包括子文件夹"
 
 #: lifespan.php:86
-msgid "Include the individual’s immediate family?"
+msgid "Include the individual’s immediate family"
 msgstr "包括这个人的直系亲属吗?"
 
 #: app/Stats.php:6828
@@ -10564,7 +10564,7 @@ msgid "Place contains"
 msgstr "地方包含"
 
 #: app/Module/TopPageViewsModule.php:165
-msgid "Place counts before or after name?"
+msgid "Show counts before or after name"
 msgstr "放置计数在名字之前或之后？"
 
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
@@ -10910,7 +10910,7 @@ msgid "Primidi"
 msgstr "周一"
 
 #: modules_v3/family_group_report/report.xml:10
-msgid "Print basic events when blank?"
+msgid "Print basic events when blank"
 msgstr "当空白时显示基本事件?"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
@@ -11535,11 +11535,6 @@ msgstr "俄罗斯"
 msgid "Rwanda"
 msgstr "卢旺达"
 
-#. I18N: Description of the “Clippings cart” module
-#: app/Module/ClippingsCartModule.php:43
-msgid "SELECT records FROM your family tree AND save them AS a GEDCOM FILE."
-msgstr ""
-
 #: admin_site_config.php:339
 msgid "SMTP mail server"
 msgstr "SMTP邮件服务器"
@@ -11806,6 +11801,11 @@ msgstr "选择标记"
 msgid "Select individuals by place or date"
 msgstr "按地点或日期选择个人"
 
+#. I18N: Description of the “Clippings cart” module
+#: app/Module/ClippingsCartModule.php:43
+msgid "Select records from your family tree and save them as a GEDCOM file."
+msgstr "从你的家谱选择记录并保存他们为GEDCOM文件。"
+
 #: statistics.php:546 statistics.php:557 statistics.php:566
 msgid "Select the desired age interval"
 msgstr "选择所需的年龄区间"
@@ -11872,7 +11872,7 @@ msgid "Send broadcast messages"
 msgstr "发送广播消息"
 
 #: app/Module/ReviewChangesModule.php:185
-msgid "Send out reminder emails?"
+msgid "Send out reminder emails"
 msgstr "发送提醒邮件吗?"
 
 #. I18N: A site configuration setting
@@ -12257,7 +12257,7 @@ msgstr "显示所有标签"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
-msgid "Show an age cursor?"
+msgid "Show an age cursor"
 msgstr "显示年代标记？"
 
 #. I18N: A configuration setting
@@ -12266,11 +12266,11 @@ msgid "Show chart details by default"
 msgstr "默认情况下显示图表的详细信息"
 
 #: modules_v3/ahnentafel_report/report.xml:12
-msgid "Show children of ancestors?"
+msgid "Show children of ancestors"
 msgstr "显示祖先的孩子？"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
-msgid "Show common surnames?"
+msgid "Show common surnames"
 msgstr "显示常见的姓氏？"
 
 #: app/Functions/FunctionsPrintLists.php:720
@@ -12307,7 +12307,7 @@ msgstr "显示日期差异"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
-msgid "Show date of last update?"
+msgid "Show date of last update"
 msgstr "显示最后一次更新的日期吗?"
 
 #. I18N: A configuration setting
@@ -12395,21 +12395,21 @@ msgstr "显示个人的名称"
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
-msgid "Show notes?"
+msgid "Show notes"
 msgstr "显示记事吗?"
 
 #: modules_v3/ahnentafel_report/report.xml:10
-msgid "Show occupations?"
+msgid "Show occupations"
 msgstr "显示职业吗?"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
-msgid "Show only births, deaths, and marriages?"
+msgid "Show only births, deaths, and marriages"
 msgstr "只显示出生，去世和婚姻？"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
-msgid "Show only events of living individuals?"
+msgid "Show only events of living individuals"
 msgstr "只显示现在活着人的事件？"
 
 #: app/Functions/FunctionsPrintLists.php:169
@@ -12421,7 +12421,7 @@ msgid "Show only individuals for whom the gender is not known."
 msgstr "仅显示性别不知道的人。"
 
 #: app/Module/SlideShowModule.php:262
-msgid "Show only individuals, events, or all?"
+msgid "Show only individuals, events, or all"
 msgstr "只显示个人,事件,还是所有?"
 
 #: app/Functions/FunctionsPrintLists.php:160
@@ -12444,7 +12444,7 @@ msgstr "显示待定的更改"
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
-msgid "Show photos?"
+msgid "Show photos"
 msgstr "显示照片吗?"
 
 #: placelist.php:83
@@ -12473,11 +12473,11 @@ msgid "Show research tasks that have a date in the future"
 msgstr "显示在未来某一日期的考证任务，"
 
 #: modules_v3/ahnentafel_report/report.xml:11
-msgid "Show residences?"
+msgid "Show residences"
 msgstr "显示住宅？"
 
 #: app/Module/SlideShowModule.php:408
-msgid "Show slide show controls?"
+msgid "Show slide show controls"
 msgstr "示幻灯片控制?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
@@ -12485,7 +12485,7 @@ msgstr "示幻灯片控制?"
 #: modules_v3/family_group_report/report.xml:7
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
-msgid "Show sources?"
+msgid "Show sources"
 msgstr "显示资源?"
 
 #: familybook.php:82 hourglass.php:73
@@ -12532,7 +12532,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
-msgid "Show this block for which languages?"
+msgid "Show this block for which languages"
 msgstr "显示语言选择么？"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
@@ -12946,7 +12946,7 @@ msgid "Start at parents"
 msgstr "从父母开始"
 
 #: app/Module/SlideShowModule.php:414
-msgid "Start slide show on page load?"
+msgid "Start slide show on page load"
 msgstr "页面加载时就开始幻灯片展示?"
 
 #. I18N: The earliest year in a range
@@ -13007,12 +13007,12 @@ msgstr "停止"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
-msgid "Store watermarked full size images on server?"
+msgid "Store watermarked full size images on server"
 msgstr "全尺寸的水印图像存储在服务器？"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
-msgid "Store watermarked thumbnails on server?"
+msgid "Store watermarked thumbnails on server"
 msgstr "水印缩略图存储服务器？"
 
 #. I18N: Name of a module
@@ -15426,7 +15426,7 @@ msgstr "水印"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "水印是可选的通常只是对访客所示。"
 
-#. I18N: Help text for the “Store watermarked full size images on server?” configuration setting
+#. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr "产生的高画质图像水印可能会很慢。繁忙的网站可能更愿意生成它们一次并把水印图像存储在服务器上。"
@@ -15549,12 +15549,12 @@ msgid "Where is your PhpGedView installation?"
 msgstr "你的phpgedview安装在哪里？"
 
 #: app/Module/SiteMapModule.php:308
-msgid "Which family trees should be included in the sitemaps?"
+msgid "Which family trees should be included in the sitemaps"
 msgstr "家谱被包含的网站地图中吗？"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
-msgid "Who can upload new media files?"
+msgid "Who can upload new media files"
 msgstr "谁可以上传新的媒体文件？"
 
 #. I18N: Name of a module. (A list of users who are online now)
@@ -15765,7 +15765,7 @@ msgid "You may use HTML to format the answer and to add links to other websites.
 msgstr "您可以使用HTML格式回复，并添加其他网站的链接。"
 
 #: admin_site_config.php:435
-msgid "You must also enable ‘less secure applications’ in your Google account."
+msgid "You must also enable “less secure applications” in your Google account."
 msgstr ""
 
 #: setup.php:212
@@ -19870,9 +19870,6 @@ msgstr "缺少名字"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "缺少姓氏"
-
-#~ msgid "Select records from your family tree and save them as a GEDCOM file."
-#~ msgstr "从你的家谱选择记录并保存他们为GEDCOM文件。"
 
 #~ msgid "Show lifespans"
 #~ msgstr "显示寿命表"

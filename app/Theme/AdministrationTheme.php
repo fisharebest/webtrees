@@ -161,7 +161,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	protected function menuAdminUsers() {
 		return new Menu(/* I18N: Menu entry */ I18N::translate('Users'), '#', '', array(), array(
 			new Menu(/* I18N: Menu entry */ I18N::translate('User administration'), 'admin_users.php'),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Add a new user'), 'admin_users.php?action=edit'),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Add a user'), 'admin_users.php?action=edit'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Send broadcast messages'), 'admin_users_bulk.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Delete inactive users'), 'admin_users.php?action=cleanup'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Set the default blocks for new users'), 'index_edit.php?user_id=-1'),

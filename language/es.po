@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-04-15 22:08+0100\n"
+"POT-Creation-Date: 2016-04-16 10:30+0100\n"
 "PO-Revision-Date: 2015-08-17 20:02+0100\n"
 "Last-Translator: Hernan Lopez <spam3141592654@gmail.com>\n"
 "Language-Team: Spanish <http://translate.webtrees.net/projects/webtrees/webtrees/es/>\n"
@@ -1250,7 +1250,7 @@ msgctxt "NOMINATIVE"
 msgid "Adar II"
 msgstr "adar II"
 
-#. I18N: button label. Add a new item.
+#. I18N: button label. Add an item.
 #: admin_trees_config.php:541 app/Functions/FunctionsPrint.php:574
 #: app/Functions/FunctionsPrint.php:633 app/Module/ClippingsCartModule.php:334
 #: app/Module/ClippingsCartModule.php:460
@@ -1289,87 +1289,87 @@ msgid "Add a husband using an existing individual"
 msgstr "Agregar como marido una persona ya existente"
 
 #: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add a new associate"
+msgid "Add an associate"
 msgstr "Agregar un nuevo asociado"
 
 #: app/Module/RelativesTabModule.php:273
-msgid "Add a new brother or sister"
+msgid "Add a brother or sister"
 msgstr "Agregar un nuevo hermano"
 
 #: edit_interface.php:516
-msgid "Add a new child"
+msgid "Add a child"
 msgstr "Agregar un nuevo hijo"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
-msgid "Add a new father"
+msgid "Add a father"
 msgstr "Agregar un nuevo padre"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
-msgid "Add a new favorite"
+msgid "Add a favorite"
 msgstr "Agregar un nuevo favorito"
 
 #: app/Module/GoogleMapsModule.php:4628
-msgid "Add a new geographic location"
+msgid "Add a geographic location"
 msgstr "Añadir un nuevo lugar geográfico"
 
 #: app/Module/RelativesTabModule.php:385 edit_interface.php:810
 #: edit_interface.php:900
-msgid "Add a new husband"
+msgid "Add a husband"
 msgstr "Agregar un nuevo esposo"
 
 #: app/Module/UserJournalModule.php:110
-msgid "Add a new journal entry"
+msgid "Add a journal entry"
 msgstr "Agregar una nueva entrada al diario"
 
 #: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1131
 #: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
 #: app/Module/MediaTabModule.php:87 source.php:184
-msgid "Add a new media object"
+msgid "Add a media object"
 msgstr "Agregar un nuevo objeto audiovisual"
 
 #: app/Module/RelativesTabModule.php:323 edit_interface.php:672 family.php:114
-msgid "Add a new mother"
+msgid "Add a mother"
 msgstr "Agregar una nueva madre"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
-msgid "Add a new name"
+msgid "Add a name"
 msgstr "Añadir nuevo nombre"
 
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1110
 #: app/Module/NotesTabModule.php:100
-msgid "Add a new note"
+msgid "Add a note"
 msgstr "Agregar una nueva nota"
 
 #: app/Functions/FunctionsEdit.php:1141
-msgid "Add a new restriction"
+msgid "Add a restriction"
 msgstr "Añadir una nueva restricción"
 
 #: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1120
 #: app/Module/NotesTabModule.php:110
-msgid "Add a new shared note"
+msgid "Add a shared note"
 msgstr "Agregar una nueva nota compartida"
 
 #: app/Module/RelativesTabModule.php:271
-msgid "Add a new son or daughter"
+msgid "Add a son or daughter"
 msgstr "Agregar un nuevo hijo"
 
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1060
 #: app/Module/SourcesTabModule.php:93
-msgid "Add a new source citation"
+msgid "Add a source citation"
 msgstr "Agregar una nueva cita de fuente"
 
 #: edit_interface.php:837
-msgid "Add a new spouse"
+msgid "Add a spouse"
 msgstr "Agregar un nuevo cónyuge"
 
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
-msgid "Add a new user"
+msgid "Add a user"
 msgstr "Agregar un nuevo usuario"
 
 #: app/Module/RelativesTabModule.php:373 edit_interface.php:807
 #: edit_interface.php:897
-msgid "Add a new wife"
+msgid "Add a wife"
 msgstr "Agregar una nueva esposa"
 
 #: app/Module/FamilyTreeNewsModule.php:148
@@ -1476,7 +1476,7 @@ msgstr "Agregar registros sin vincular"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
-msgid "Add watermarks to thumbnails?"
+msgid "Add watermarks to thumbnails"
 msgstr "¿Agregar filigranas a las miniaturas?"
 
 #. I18N: Description of the “HTML” module
@@ -7280,7 +7280,7 @@ msgstr "Si dos árboles de la familia usan la misma carpeta de medios, entonces 
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
 msgstr "Si los visitantes no pueden ver el árbol genealógico, no podrán inscribirse para una cuenta. Usted tendrá que añadir su cuenta manualmente."
 
-#. I18N: Help text for the “Who can upload new media files?” configuration setting
+#. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1040
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr "Si le preocupa que los usuarios pueden subir imágenes inapropiadas, puede restringir el cargar de los medios a los administradores solamente."
@@ -7437,7 +7437,7 @@ msgid "Include subfolders"
 msgstr "Incluir subcarpetas"
 
 #: lifespan.php:86
-msgid "Include the individual’s immediate family?"
+msgid "Include the individual’s immediate family"
 msgstr "¿Incluir la familia inmediata?"
 
 #: app/Stats.php:6828
@@ -10596,7 +10596,7 @@ msgid "Place contains"
 msgstr "El lugar contiene"
 
 #: app/Module/TopPageViewsModule.php:165
-msgid "Place counts before or after name?"
+msgid "Show counts before or after name"
 msgstr "¿Colocar contador antes o después del nombre?"
 
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
@@ -10942,7 +10942,7 @@ msgid "Primidi"
 msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
-msgid "Print basic events when blank?"
+msgid "Print basic events when blank"
 msgstr "Imprimir sucesos básicos cuando en blanco?"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
@@ -11567,11 +11567,6 @@ msgstr "Rusia"
 msgid "Rwanda"
 msgstr "Ruanda"
 
-#. I18N: Description of the “Clippings cart” module
-#: app/Module/ClippingsCartModule.php:43
-msgid "SELECT records FROM your family tree AND save them AS a GEDCOM FILE."
-msgstr ""
-
 #: admin_site_config.php:339
 msgid "SMTP mail server"
 msgstr "Servidor de correo SMTP"
@@ -11838,6 +11833,11 @@ msgstr "Seleccionar bandera"
 msgid "Select individuals by place or date"
 msgstr "Seleccione individuos por lugar o fecha"
 
+#. I18N: Description of the “Clippings cart” module
+#: app/Module/ClippingsCartModule.php:43
+msgid "Select records from your family tree and save them as a GEDCOM file."
+msgstr "Escoger registros de su árbol genealógico y los descargan en archivo GEDCOM."
+
 #: statistics.php:546 statistics.php:557 statistics.php:566
 msgid "Select the desired age interval"
 msgstr "Seleccione el intervalo de edad deseado"
@@ -11904,7 +11904,7 @@ msgid "Send broadcast messages"
 msgstr "Enviar mensajes generales"
 
 #: app/Module/ReviewChangesModule.php:185
-msgid "Send out reminder emails?"
+msgid "Send out reminder emails"
 msgstr "¿Enviar correos recordatorios?"
 
 #. I18N: A site configuration setting
@@ -12289,7 +12289,7 @@ msgstr "Mostrar todos los etiquetas"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
-msgid "Show an age cursor?"
+msgid "Show an age cursor"
 msgstr "Mostrar un cursor de edad?"
 
 #. I18N: A configuration setting
@@ -12298,11 +12298,11 @@ msgid "Show chart details by default"
 msgstr "Mostrar detalles de la carta por defecto"
 
 #: modules_v3/ahnentafel_report/report.xml:12
-msgid "Show children of ancestors?"
+msgid "Show children of ancestors"
 msgstr "Mostrar a los niños de los antepasados?"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
-msgid "Show common surnames?"
+msgid "Show common surnames"
 msgstr "¿Mostrar apellidos más comunes?"
 
 #: app/Functions/FunctionsPrintLists.php:720
@@ -12339,7 +12339,7 @@ msgstr "Mostrar diferencias de las fechas"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
-msgid "Show date of last update?"
+msgid "Show date of last update"
 msgstr "Mostrar la fecha de la última actualización?"
 
 #. I18N: A configuration setting
@@ -12427,21 +12427,21 @@ msgstr "Mostrar nombres de personas privadas"
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
-msgid "Show notes?"
+msgid "Show notes"
 msgstr "¿Mostrar notas?"
 
 #: modules_v3/ahnentafel_report/report.xml:10
-msgid "Show occupations?"
+msgid "Show occupations"
 msgstr "¿Mostrar occupaciones?"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
-msgid "Show only births, deaths, and marriages?"
+msgid "Show only births, deaths, and marriages"
 msgstr "¿Mostrar sólo nacimientos, defunciones y matrimonios?"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
-msgid "Show only events of living individuals?"
+msgid "Show only events of living individuals"
 msgstr "¿Mostrar solamente eventos de personas vivas?"
 
 #: app/Functions/FunctionsPrintLists.php:169
@@ -12453,7 +12453,7 @@ msgid "Show only individuals for whom the gender is not known."
 msgstr "Mostrar sólo personas de sexo desconocido."
 
 #: app/Module/SlideShowModule.php:262
-msgid "Show only individuals, events, or all?"
+msgid "Show only individuals, events, or all"
 msgstr "¿Mostrar sólo personas, eventos o todo?"
 
 #: app/Functions/FunctionsPrintLists.php:160
@@ -12476,7 +12476,7 @@ msgstr "Mostrar cambios pendientes"
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
-msgid "Show photos?"
+msgid "Show photos"
 msgstr "¿Mostrar fotos?"
 
 #: placelist.php:83
@@ -12505,11 +12505,11 @@ msgid "Show research tasks that have a date in the future"
 msgstr "Mostrar tareas de investigación que tienen una fecha en el futuro"
 
 #: modules_v3/ahnentafel_report/report.xml:11
-msgid "Show residences?"
+msgid "Show residences"
 msgstr "¿Mostrar residencias?"
 
 #: app/Module/SlideShowModule.php:408
-msgid "Show slide show controls?"
+msgid "Show slide show controls"
 msgstr "Mostrar los controles de la presentación?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
@@ -12517,7 +12517,7 @@ msgstr "Mostrar los controles de la presentación?"
 #: modules_v3/family_group_report/report.xml:7
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
-msgid "Show sources?"
+msgid "Show sources"
 msgstr "¿Mostrar fuentes?"
 
 #: familybook.php:82 hourglass.php:73
@@ -12564,7 +12564,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
-msgid "Show this block for which languages?"
+msgid "Show this block for which languages"
 msgstr "¿Para cuales idiomas mostrar este bloque ?"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
@@ -12978,7 +12978,7 @@ msgid "Start at parents"
 msgstr "Comenzar en los padres"
 
 #: app/Module/SlideShowModule.php:414
-msgid "Start slide show on page load?"
+msgid "Start slide show on page load"
 msgstr "¿Comenzar presentación al cargar la página?"
 
 #. I18N: The earliest year in a range
@@ -13039,12 +13039,12 @@ msgstr "Detener"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
-msgid "Store watermarked full size images on server?"
+msgid "Store watermarked full size images on server"
 msgstr "¿Almacenar en el servidor las imágenes a tamaño original con filigranas?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
-msgid "Store watermarked thumbnails on server?"
+msgid "Store watermarked thumbnails on server"
 msgstr "¿Almacenar en el servidor las miniaturas con filigranas?"
 
 #. I18N: Name of a module
@@ -15465,7 +15465,7 @@ msgstr "Filigranas"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Las filigranas son opcionales y normalmente se muestran sólo a los visitantes."
 
-#. I18N: Help text for the “Store watermarked full size images on server?” configuration setting
+#. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr "Generar las filigranas puede ser lento imágenes grandes.  Sitios ocupados quizás prefieren generar una vez y almacenar la imagen con la filigrana en el servidor."
@@ -15588,12 +15588,12 @@ msgid "Where is your PhpGedView installation?"
 msgstr "¿Dónde está su instalación de PhpGedView?"
 
 #: app/Module/SiteMapModule.php:308
-msgid "Which family trees should be included in the sitemaps?"
+msgid "Which family trees should be included in the sitemaps"
 msgstr "Qué árboles genealógicos deben ser incluidos en los mapas de sitio?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
-msgid "Who can upload new media files?"
+msgid "Who can upload new media files"
 msgstr "¿Quién puede subir nuevos ficheros?"
 
 #. I18N: Name of a module. (A list of users who are online now)
@@ -15804,7 +15804,7 @@ msgid "You may use HTML to format the answer and to add links to other websites.
 msgstr "Se puede usar HTML para la respuesta y para agregar vínculos a otros sitios web."
 
 #: admin_site_config.php:435
-msgid "You must also enable ‘less secure applications’ in your Google account."
+msgid "You must also enable “less secure applications” in your Google account."
 msgstr ""
 
 #: setup.php:212
@@ -19913,9 +19913,6 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid "Select records from your family tree and save them as a GEDCOM file."
-#~ msgstr "Escoger registros de su árbol genealógico y los descargan en archivo GEDCOM."
 
 #~ msgid "Show lifespans"
 #~ msgstr "Mostrar duración de la vida"

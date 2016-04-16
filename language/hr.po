@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-04-15 22:08+0100\n"
+"POT-Creation-Date: 2016-04-16 10:30+0100\n"
 "PO-Revision-Date: 2015-08-14 22:27+0100\n"
 "Last-Translator: Milivoj Bartoš <mic@mikrotakt.com>\n"
 "Language-Team: Croatian <http://translate.webtrees.net/projects/webtrees/webtrees/hr/>\n"
@@ -1277,7 +1277,7 @@ msgctxt "NOMINATIVE"
 msgid "Adar II"
 msgstr ""
 
-#. I18N: button label. Add a new item.
+#. I18N: button label. Add an item.
 #: admin_trees_config.php:541 app/Functions/FunctionsPrint.php:574
 #: app/Functions/FunctionsPrint.php:633 app/Module/ClippingsCartModule.php:334
 #: app/Module/ClippingsCartModule.php:460
@@ -1316,87 +1316,87 @@ msgid "Add a husband using an existing individual"
 msgstr "Dodaj supruga koristeći postojeću osobu"
 
 #: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add a new associate"
+msgid "Add an associate"
 msgstr "Dodaj novog sudionika"
 
 #: app/Module/RelativesTabModule.php:273
-msgid "Add a new brother or sister"
+msgid "Add a brother or sister"
 msgstr "Dodaj brata ili sestru"
 
 #: edit_interface.php:516
-msgid "Add a new child"
+msgid "Add a child"
 msgstr "Dodaj dijete"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
-msgid "Add a new father"
+msgid "Add a father"
 msgstr "Dodaj oca"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
-msgid "Add a new favorite"
+msgid "Add a favorite"
 msgstr "Dodaj novi favorit"
 
 #: app/Module/GoogleMapsModule.php:4628
-msgid "Add a new geographic location"
+msgid "Add a geographic location"
 msgstr "Dodaj novu zemljopisnu lokaciju"
 
 #: app/Module/RelativesTabModule.php:385 edit_interface.php:810
 #: edit_interface.php:900
-msgid "Add a new husband"
+msgid "Add a husband"
 msgstr "Dodaj supruga"
 
 #: app/Module/UserJournalModule.php:110
-msgid "Add a new journal entry"
+msgid "Add a journal entry"
 msgstr "Dodaj novi unos u dnevnik"
 
 #: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1131
 #: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
 #: app/Module/MediaTabModule.php:87 source.php:184
-msgid "Add a new media object"
+msgid "Add a media object"
 msgstr "Dodaj novi medijski objekt"
 
 #: app/Module/RelativesTabModule.php:323 edit_interface.php:672 family.php:114
-msgid "Add a new mother"
+msgid "Add a mother"
 msgstr "Dodaj majku"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
-msgid "Add a new name"
+msgid "Add a name"
 msgstr "Dodaj novo ime"
 
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1110
 #: app/Module/NotesTabModule.php:100
-msgid "Add a new note"
+msgid "Add a note"
 msgstr "Dodaj novu bilješku"
 
 #: app/Functions/FunctionsEdit.php:1141
-msgid "Add a new restriction"
+msgid "Add a restriction"
 msgstr "Dodaj ograničenje"
 
 #: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1120
 #: app/Module/NotesTabModule.php:110
-msgid "Add a new shared note"
+msgid "Add a shared note"
 msgstr "Dodaj novu dijeljenu bilješku"
 
 #: app/Module/RelativesTabModule.php:271
-msgid "Add a new son or daughter"
+msgid "Add a son or daughter"
 msgstr "Dodaj sina ili kćer"
 
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1060
 #: app/Module/SourcesTabModule.php:93
-msgid "Add a new source citation"
+msgid "Add a source citation"
 msgstr "Dodaj novi citat izvora"
 
 #: edit_interface.php:837
-msgid "Add a new spouse"
+msgid "Add a spouse"
 msgstr "Dodaj novog supružnika"
 
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
-msgid "Add a new user"
+msgid "Add a user"
 msgstr "Dodaj novog korisnika"
 
 #: app/Module/RelativesTabModule.php:373 edit_interface.php:807
 #: edit_interface.php:897
-msgid "Add a new wife"
+msgid "Add a wife"
 msgstr "Dodaj suprugu"
 
 #: app/Module/FamilyTreeNewsModule.php:148
@@ -1503,7 +1503,7 @@ msgstr "Dodaj nepovezane zapise"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
-msgid "Add watermarks to thumbnails?"
+msgid "Add watermarks to thumbnails"
 msgstr "Dodaj vodeni žig na sličicu?"
 
 #. I18N: Description of the “HTML” module
@@ -7309,7 +7309,7 @@ msgstr "Ako dva obiteljska stabla koriste istu medijsku mapu, onda oni imaju mog
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
 msgstr "Ako posjetitelj ne vidi obiteljsko stablo, on neće biti u mogućnosti kreirati korisnički račun. Vi ćete trebati ručno kreirati njegov račun."
 
-#. I18N: Help text for the “Who can upload new media files?” configuration setting
+#. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1040
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr "Ako ste zabrinuti da bi korisnici mogli učitati neprilične slike, možete ograničiti učitavanje medija samo na managere."
@@ -7466,7 +7466,7 @@ msgid "Include subfolders"
 msgstr "Uključi podmape"
 
 #: lifespan.php:86
-msgid "Include the individual’s immediate family?"
+msgid "Include the individual’s immediate family"
 msgstr "Uključi za pojedinca užu obitelj?"
 
 #: app/Stats.php:6828
@@ -10627,7 +10627,7 @@ msgid "Place contains"
 msgstr "Mjesto sadrži"
 
 #: app/Module/TopPageViewsModule.php:165
-msgid "Place counts before or after name?"
+msgid "Show counts before or after name"
 msgstr "Postavi brojanje prije ili poslije imena?"
 
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
@@ -10973,7 +10973,7 @@ msgid "Primidi"
 msgstr ""
 
 #: modules_v3/family_group_report/report.xml:10
-msgid "Print basic events when blank?"
+msgid "Print basic events when blank"
 msgstr "Ispiši prazne osnovne događaje?"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
@@ -11598,11 +11598,6 @@ msgstr "Rusija"
 msgid "Rwanda"
 msgstr ""
 
-#. I18N: Description of the “Clippings cart” module
-#: app/Module/ClippingsCartModule.php:43
-msgid "SELECT records FROM your family tree AND save them AS a GEDCOM FILE."
-msgstr ""
-
 #: admin_site_config.php:339
 msgid "SMTP mail server"
 msgstr "SMTP server e-pošte"
@@ -11869,6 +11864,11 @@ msgstr "Odaberi zastavicu"
 msgid "Select individuals by place or date"
 msgstr "Označi pojedince prema mjestu ili datumu"
 
+#. I18N: Description of the “Clippings cart” module
+#: app/Module/ClippingsCartModule.php:43
+msgid "Select records from your family tree and save them as a GEDCOM file."
+msgstr "Odaberite zapis iz vašeg obiteljskog stabla i spremite kao GEDCOM datoteku."
+
 #: statistics.php:546 statistics.php:557 statistics.php:566
 msgid "Select the desired age interval"
 msgstr "Odaberite željeni raspon starosti"
@@ -11935,7 +11935,7 @@ msgid "Send broadcast messages"
 msgstr "Pošalji poruku svima"
 
 #: app/Module/ReviewChangesModule.php:185
-msgid "Send out reminder emails?"
+msgid "Send out reminder emails"
 msgstr "Pošalji podsjetnik e-poštom?"
 
 #. I18N: A site configuration setting
@@ -12320,7 +12320,7 @@ msgstr "Prikaži sve oznake"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
-msgid "Show an age cursor?"
+msgid "Show an age cursor"
 msgstr "Prikaži pokazivač starosti?"
 
 #. I18N: A configuration setting
@@ -12329,11 +12329,11 @@ msgid "Show chart details by default"
 msgstr "Prikaži detalje grafikona kao zadano"
 
 #: modules_v3/ahnentafel_report/report.xml:12
-msgid "Show children of ancestors?"
+msgid "Show children of ancestors"
 msgstr "Prikaži djecu i pretke?"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
-msgid "Show common surnames?"
+msgid "Show common surnames"
 msgstr "Prikaži najčešća prezimena?"
 
 #: app/Functions/FunctionsPrintLists.php:720
@@ -12370,7 +12370,7 @@ msgstr "Prikaži vremenske razlike"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
-msgid "Show date of last update?"
+msgid "Show date of last update"
 msgstr "Prikaži datum zadnje promjene?"
 
 #. I18N: A configuration setting
@@ -12458,21 +12458,21 @@ msgstr "Prikaži imena privatnih pojedinaca"
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
-msgid "Show notes?"
+msgid "Show notes"
 msgstr "Prikaži bilješke?"
 
 #: modules_v3/ahnentafel_report/report.xml:10
-msgid "Show occupations?"
+msgid "Show occupations"
 msgstr "Prikaži zanimanja?"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
-msgid "Show only births, deaths, and marriages?"
+msgid "Show only births, deaths, and marriages"
 msgstr "Prikaži samo rođenja, smrti i brakove?"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
-msgid "Show only events of living individuals?"
+msgid "Show only events of living individuals"
 msgstr "Prikaži samo događaje živih pojedinaca?"
 
 #: app/Functions/FunctionsPrintLists.php:169
@@ -12484,7 +12484,7 @@ msgid "Show only individuals for whom the gender is not known."
 msgstr "Prikaži samo osobe kojima spol nije poznat."
 
 #: app/Module/SlideShowModule.php:262
-msgid "Show only individuals, events, or all?"
+msgid "Show only individuals, events, or all"
 msgstr "Prikaži samo osobe, događaje ili sve?"
 
 #: app/Functions/FunctionsPrintLists.php:160
@@ -12507,7 +12507,7 @@ msgstr "Prikaži promjene na čekanju"
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
-msgid "Show photos?"
+msgid "Show photos"
 msgstr "Prikaži fotografije?"
 
 #: placelist.php:83
@@ -12536,11 +12536,11 @@ msgid "Show research tasks that have a date in the future"
 msgstr "Prikaži zadatke za istraživanje koji imaju datum u budućnosti"
 
 #: modules_v3/ahnentafel_report/report.xml:11
-msgid "Show residences?"
+msgid "Show residences"
 msgstr "Prikaži prebivališta?"
 
 #: app/Module/SlideShowModule.php:408
-msgid "Show slide show controls?"
+msgid "Show slide show controls"
 msgstr "Prikaži kontrole?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
@@ -12548,7 +12548,7 @@ msgstr "Prikaži kontrole?"
 #: modules_v3/family_group_report/report.xml:7
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
-msgid "Show sources?"
+msgid "Show sources"
 msgstr "Prikaži izvore?"
 
 #: familybook.php:82 hourglass.php:73
@@ -12595,7 +12595,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
-msgid "Show this block for which languages?"
+msgid "Show this block for which languages"
 msgstr "Za koje jezike želite prikazati ovaj blok?"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
@@ -13009,7 +13009,7 @@ msgid "Start at parents"
 msgstr "Počni kod roditelja"
 
 #: app/Module/SlideShowModule.php:414
-msgid "Start slide show on page load?"
+msgid "Start slide show on page load"
 msgstr "Mijenjaj slike nakon učitavanja stranice?"
 
 #. I18N: The earliest year in a range
@@ -13070,12 +13070,12 @@ msgstr "Zaustavi"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
-msgid "Store watermarked full size images on server?"
+msgid "Store watermarked full size images on server"
 msgstr "Spremi sliku pune veličine sa vodenim žigom na server?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
-msgid "Store watermarked thumbnails on server?"
+msgid "Store watermarked thumbnails on server"
 msgstr "Spremi sličicu sa vodenim žigom na server?"
 
 #. I18N: Name of a module
@@ -15504,7 +15504,7 @@ msgstr "Vodeni žigovi"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Vodeni žigovi su opcionalni i prikazuju se samo posjetiteljima."
 
-#. I18N: Help text for the “Store watermarked full size images on server?” configuration setting
+#. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr "Vodeni žig se može sporo generirati za velike slike. Za opterećene web stranice preporučljivo ih je generirati jednom i spremiti sliku sa vodenim žigom na server."
@@ -15632,12 +15632,12 @@ msgid "Where is your PhpGedView installation?"
 msgstr "Gdje je vaša PhpGedView instalacija?"
 
 #: app/Module/SiteMapModule.php:308
-msgid "Which family trees should be included in the sitemaps?"
+msgid "Which family trees should be included in the sitemaps"
 msgstr "Koje obiteljsko stablo treba uključiti u kartu stranica?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
-msgid "Who can upload new media files?"
+msgid "Who can upload new media files"
 msgstr "Tko može učitati novu medijsku datoteku?"
 
 #. I18N: Name of a module. (A list of users who are online now)
@@ -15848,7 +15848,7 @@ msgid "You may use HTML to format the answer and to add links to other websites.
 msgstr "Možete koristiti HTML za formatiranje odgovora i za dodavanje linkova na druge web stranice."
 
 #: admin_site_config.php:435
-msgid "You must also enable ‘less secure applications’ in your Google account."
+msgid "You must also enable “less secure applications” in your Google account."
 msgstr ""
 
 #: setup.php:212
@@ -19963,9 +19963,6 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid "Select records from your family tree and save them as a GEDCOM file."
-#~ msgstr "Odaberite zapis iz vašeg obiteljskog stabla i spremite kao GEDCOM datoteku."
 
 #~ msgid "Show lifespans"
 #~ msgstr "Prikaži životni vijek"

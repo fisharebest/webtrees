@@ -23,7 +23,7 @@ class FlashMessages {
 	const FLASH_KEY = 'flash_messages';
 
 	/**
-	 * Add a new message to the session storage.
+	 * Add a message to the session storage.
 	 *
 	 * @param string $text
 	 * @param string $status "success", "info", "warning" or "danger"

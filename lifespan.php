@@ -83,7 +83,7 @@ $controller
 					<td class="optionbox" colspan="2">
 						<label for="addFamily">
 							<input id="addFamily" type="checkbox" value="yes" name="addFamily">
-							<?php echo I18N::translate('Include the individual’s immediate family?') ?>
+							<?php echo /* I18N: Label for a configuration option */ I18N::translate('Include the individual’s immediate family') ?>
 						</label>
 					</td>
 				</tr>

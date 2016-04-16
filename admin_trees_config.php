@@ -538,7 +538,7 @@ $controller
 			<th>
 				<button class="btn btn-primary" id="add-resn" type="button">
 					<i class="fa fa-plus"></i>
-					<?php echo /* I18N: button label. Add a new item. */ I18N::translate('Add'); ?>
+					<?php echo /* I18N: button label. Add an item. */ I18N::translate('Add'); ?>
 				</button>
 			</th>
 		</tr>
@@ -1032,12 +1032,12 @@ $controller
 	<!-- MEDIA_UPLOAD -->
 	<div class="form-group">
 		<label class="control-label col-sm-3" for="MEDIA_UPLOAD">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Who can upload new media files?'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Who can upload new media files'); ?>
 		</label>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::selectEditControl('MEDIA_UPLOAD', array(Auth::PRIV_USER => I18N::translate('Show to members'), Auth::PRIV_NONE => I18N::translate('Show to managers'), Auth::PRIV_HIDE => I18N::translate('Hide from everyone')), null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Who can upload new media files?” configuration setting */ I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.'); ?>
+				<?php echo /* I18N: Help text for the “Who can upload new media files” configuration setting */ I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1113,7 +1113,7 @@ $controller
 	<!-- WATERMARK_THUMB -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Add watermarks to thumbnails?'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Add watermarks to thumbnails'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('WATERMARK_THUMB', $no_yes, $WT_TREE->getPreference('WATERMARK_THUMB'), 'class="radio-inline"'); ?>
@@ -1126,12 +1126,12 @@ $controller
 	<!-- SAVE_WATERMARK_IMAGE -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Store watermarked full size images on server?'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Store watermarked full size images on server'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('SAVE_WATERMARK_IMAGE', $no_yes, $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Store watermarked full size images on server?” configuration setting */ I18N::translate('Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server.'); ?>
+				<?php echo /* I18N: Help text for the “Store watermarked full size images on server” configuration setting */ I18N::translate('Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1139,7 +1139,7 @@ $controller
 	<!-- SAVE_WATERMARK_THUMB -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Store watermarked thumbnails on server?'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Store watermarked thumbnails on server'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('SAVE_WATERMARK_THUMB', $no_yes, $WT_TREE->getPreference('SAVE_WATERMARK_THUMB'), 'class="radio-inline"'); ?>

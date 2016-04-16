@@ -194,7 +194,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
 		<div class="form-group">
 			<label for="xref" class="col-sm-3 control-label">
-				<?php echo I18N::translate('Show this block for which languages?'); ?>
+				<?php echo /* I18N: Label for a configuration option */ I18N::translate('Show this block for which languages'); ?>
 			</label>
 
 			<div class="col-sm-9">

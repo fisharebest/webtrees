@@ -107,11 +107,11 @@ if ($controller->record && $controller->record->canShow()) {
 							if (Auth::isEditor($controller->record->getTree())) {
 								$husb = $controller->record->getHusband();
 								if (!$husb) {
-									echo '<a href="#" onclick="return add_spouse_to_family(\'', $controller->record->getXref(), '\', \'HUSB\');">', I18N::translate('Add a new father'), '</a><br>';
+									echo '<a href="#" onclick="return add_spouse_to_family(\'', $controller->record->getXref(), '\', \'HUSB\');">', I18N::translate('Add a father'), '</a><br>';
 								}
 								$wife = $controller->record->getWife();
 								if (!$wife) {
-									echo '<a href="#" onclick="return add_spouse_to_family(\'', $controller->record->getXref(), '\', \'WIFE\');">', I18N::translate('Add a new mother'), '</a><br>';
+									echo '<a href="#" onclick="return add_spouse_to_family(\'', $controller->record->getXref(), '\', \'WIFE\');">', I18N::translate('Add a mother'), '</a><br>';
 								}
 							}
 							?>

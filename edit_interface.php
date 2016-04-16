@@ -503,7 +503,7 @@ case 'update':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-// Add a new child to an existing family
+// Add a child to an existing family
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_child_to_family':
 	$xref   = Filter::get('xref', WT_REGEX_XREF);
@@ -513,7 +513,7 @@ case 'add_child_to_family':
 	check_record_access($family);
 
 	$controller
-		->setPageTitle($family->getFullName() . ' - ' . I18N::translate('Add a new child'))
+		->setPageTitle($family->getFullName() . ' - ' . I18N::translate('Add a child'))
 		->pageHeader();
 
 	print_indi_form('add_child_to_family_action', null, $family, null, 'CHIL', $gender);
@@ -583,7 +583,7 @@ case 'add_child_to_family_action':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-// Add a new child to an existing individual (creating a one-parent family)
+// Add a child to an existing individual (creating a one-parent family)
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_child_to_individual':
 	$xref = Filter::get('xref', WT_REGEX_XREF);
@@ -669,10 +669,10 @@ case 'add_parent_to_individual':
 	check_record_access($individual);
 
 	if ($gender === 'F') {
-		$controller->setPageTitle(I18N::translate('Add a new mother'));
+		$controller->setPageTitle(I18N::translate('Add a mother'));
 		$famtag = 'WIFE';
 	} else {
-		$controller->setPageTitle(I18N::translate('Add a new father'));
+		$controller->setPageTitle(I18N::translate('Add a father'));
 		$famtag = 'HUSB';
 	}
 	$controller->pageHeader();
@@ -794,7 +794,7 @@ case 'add_unlinked_indi_action':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-// Add a new spouse to an existing individual (creating a new family)
+// Add a spouse to an existing individual (creating a new family)
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_spouse_to_individual':
 	$famtag = Filter::get('famtag', 'HUSB|WIFE');
@@ -804,10 +804,10 @@ case 'add_spouse_to_individual':
 	check_record_access($individual);
 
 	if ($famtag === 'WIFE') {
-		$controller->setPageTitle(I18N::translate('Add a new wife'));
+		$controller->setPageTitle(I18N::translate('Add a wife'));
 		$sex = 'F';
 	} else {
-		$controller->setPageTitle(I18N::translate('Add a new husband'));
+		$controller->setPageTitle(I18N::translate('Add a husband'));
 		$sex = 'M';
 	}
 	$controller->pageHeader();
@@ -834,7 +834,7 @@ case 'add_spouse_to_individual_action':
 	check_record_access($person);
 
 	$controller
-		->setPageTitle(I18N::translate('Add a new spouse'))
+		->setPageTitle(I18N::translate('Add a spouse'))
 		->pageHeader();
 
 	FunctionsEdit::splitSource();
@@ -884,7 +884,7 @@ case 'add_spouse_to_individual_action':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-// Add a new spouse to an existing family
+// Add a spouse to an existing family
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_spouse_to_family':
 	$xref   = Filter::get('xref', WT_REGEX_XREF);
@@ -894,10 +894,10 @@ case 'add_spouse_to_family':
 	check_record_access($family);
 
 	if ($famtag === 'WIFE') {
-		$controller->setPageTitle(I18N::translate('Add a new wife'));
+		$controller->setPageTitle(I18N::translate('Add a wife'));
 		$sex = 'F';
 	} else {
-		$controller->setPageTitle(I18N::translate('Add a new husband'));
+		$controller->setPageTitle(I18N::translate('Add a husband'));
 		$sex = 'M';
 	}
 	$controller->pageHeader();
@@ -1652,7 +1652,7 @@ case 'addname':
 	check_record_access($person);
 
 	$controller
-		->setPageTitle(I18N::translate('Add a new name'))
+		->setPageTitle(I18N::translate('Add a name'))
 		->pageHeader();
 
 	print_indi_form('update', $person, null, null, '', $person->getSex());
