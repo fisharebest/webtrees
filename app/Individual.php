@@ -232,8 +232,6 @@ class Individual extends GedcomRecord {
 		}
 
 		return self::isIndividualInLinkTree($target->xref, $linkTree[$AnDes][$user_individual->xref], $depth);
-
-		return false;
 	}
 
 
