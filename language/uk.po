@@ -1273,7 +1273,7 @@ msgctxt "NOMINATIVE"
 msgid "Adar II"
 msgstr "Адар II"
 
-#. I18N: button label. Add a new item.
+#. I18N: button label. Add an item.
 #: admin_trees_config.php:541 app/Functions/FunctionsPrint.php:574
 #: app/Functions/FunctionsPrint.php:633 app/Module/ClippingsCartModule.php:334
 #: app/Module/ClippingsCartModule.php:460
@@ -1312,87 +1312,87 @@ msgid "Add a husband using an existing individual"
 msgstr "Додати чоловіка з уже існуючих осіб"
 
 #: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add a new associate"
+msgid "Add an associate"
 msgstr "Додати новий зв'язок"
 
 #: app/Module/RelativesTabModule.php:273
-msgid "Add a new brother or sister"
+msgid "Add a brother or sister"
 msgstr "Додати нового брата або сестру"
 
 #: edit_interface.php:516
-msgid "Add a new child"
+msgid "Add a child"
 msgstr "Додати нову дитину"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
-msgid "Add a new father"
+msgid "Add a father"
 msgstr "Додати батька"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
-msgid "Add a new favorite"
+msgid "Add a favorite"
 msgstr "Додати в обране"
 
 #: app/Module/GoogleMapsModule.php:4628
-msgid "Add a new geographic location"
+msgid "Add a geographic location"
 msgstr "Додати нове географічне розташування"
 
 #: app/Module/RelativesTabModule.php:385 edit_interface.php:810
 #: edit_interface.php:900
-msgid "Add a new husband"
+msgid "Add a husband"
 msgstr "Додати нового чоловіка"
 
 #: app/Module/UserJournalModule.php:110
-msgid "Add a new journal entry"
+msgid "Add a journal entry"
 msgstr "Додати нову замітку в щоденник"
 
 #: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1131
 #: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
 #: app/Module/MediaTabModule.php:87 source.php:184
-msgid "Add a new media object"
+msgid "Add a media object"
 msgstr "Додати новий медіаоб'єкт"
 
 #: app/Module/RelativesTabModule.php:323 edit_interface.php:672 family.php:114
-msgid "Add a new mother"
+msgid "Add a mother"
 msgstr "Додати мати"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
-msgid "Add a new name"
+msgid "Add a name"
 msgstr "Додати нове ім'я"
 
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1110
 #: app/Module/NotesTabModule.php:100
-msgid "Add a new note"
+msgid "Add a note"
 msgstr "Додати нову примітку"
 
 #: app/Functions/FunctionsEdit.php:1141
-msgid "Add a new restriction"
+msgid "Add a restriction"
 msgstr "Додати нове обмеження"
 
 #: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1120
 #: app/Module/NotesTabModule.php:110
-msgid "Add a new shared note"
+msgid "Add a shared note"
 msgstr "Додати нову загальну примітку"
 
 #: app/Module/RelativesTabModule.php:271
-msgid "Add a new son or daughter"
+msgid "Add a son or daughter"
 msgstr "Додати нового сина або дочку"
 
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1060
 #: app/Module/SourcesTabModule.php:93
-msgid "Add a new source citation"
+msgid "Add a source citation"
 msgstr "Додати нову цитату із джерела"
 
 #: edit_interface.php:837
-msgid "Add a new spouse"
+msgid "Add a spouse"
 msgstr "Додати нового чоловіка (у)"
 
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
-msgid "Add a new user"
+msgid "Add a user"
 msgstr "Додати нового користувача"
 
 #: app/Module/RelativesTabModule.php:373 edit_interface.php:807
 #: edit_interface.php:897
-msgid "Add a new wife"
+msgid "Add a wife"
 msgstr "Додати дружину"
 
 #: app/Module/FamilyTreeNewsModule.php:148

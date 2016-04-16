@@ -200,7 +200,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
 			$uniqueID = Uuid::uuid4(); // This block can theoretically appear multiple times, so use a unique ID.
 			$content .= '<div class="add_fav_head">';
-			$content .= '<a href="#" onclick="return expand_layer(\'add_fav' . $uniqueID . '\');">' . I18N::translate('Add a new favorite') . '<i id="add_fav' . $uniqueID . '_img" class="icon-plus"></i></a>';
+			$content .= '<a href="#" onclick="return expand_layer(\'add_fav' . $uniqueID . '\');">' . I18N::translate('Add a favorite') . '<i id="add_fav' . $uniqueID . '_img" class="icon-plus"></i></a>';
 			$content .= '</div>';
 			$content .= '<div id="add_fav' . $uniqueID . '" style="display: none;">';
 			$content .= '<form name="addfavform" method="get" action="index.php">';

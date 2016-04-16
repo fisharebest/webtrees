@@ -1057,7 +1057,7 @@ class FunctionsEdit {
 
 		switch ($tag) {
 		case 'SOUR':
-			echo '<a href="#" onclick="return expand_layer(\'newsource\');"><i id="newsource_img" class="icon-plus"></i> ', I18N::translate('Add a new source citation'), '</a>';
+			echo '<a href="#" onclick="return expand_layer(\'newsource\');"><i id="newsource_img" class="icon-plus"></i> ', I18N::translate('Add a source citation'), '</a>';
 			echo '<br>';
 			echo '<div id="newsource" style="display: none;">';
 			echo '<table class="facts_table">';
@@ -1085,11 +1085,11 @@ class FunctionsEdit {
 		case 'ASSO2':
 			//-- Add a new ASSOciate
 			if ($tag === 'ASSO') {
-				echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><i id=\"newasso_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new associate'), '</a>';
+				echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><i id=\"newasso_img\" class=\"icon-plus\"></i> ", I18N::translate('Add an associate'), '</a>';
 				echo '<br>';
 				echo '<div id="newasso" style="display: none;">';
 			} else {
-				echo "<a href=\"#\" onclick=\"return expand_layer('newasso2');\"><i id=\"newasso2_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new associate'), '</a>';
+				echo "<a href=\"#\" onclick=\"return expand_layer('newasso2');\"><i id=\"newasso2_img\" class=\"icon-plus\"></i> ", I18N::translate('Add an associate'), '</a>';
 				echo '<br>';
 				echo '<div id="newasso2" style="display: none;">';
 			}
@@ -1107,7 +1107,7 @@ class FunctionsEdit {
 
 		case 'NOTE':
 			//-- Retrieve existing note or add new note to fact
-			echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><i id=\"newnote_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new note'), '</a>';
+			echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><i id=\"newnote_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a note'), '</a>';
 			echo '<br>';
 			echo '<div id="newnote" style="display: none;">';
 			echo '<table class="facts_table">';
@@ -1117,7 +1117,7 @@ class FunctionsEdit {
 			break;
 
 		case 'SHARED_NOTE':
-			echo "<a href=\"#\" onclick=\"return expand_layer('newshared_note');\"><i id=\"newshared_note_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new shared note'), '</a>';
+			echo "<a href=\"#\" onclick=\"return expand_layer('newshared_note');\"><i id=\"newshared_note_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a shared note'), '</a>';
 			echo '<br>';
 			echo '<div id="newshared_note" style="display: none;">';
 			echo '<table class="facts_table">';
@@ -1128,7 +1128,7 @@ class FunctionsEdit {
 
 		case 'OBJE':
 			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
-				echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new media object'), '</a>';
+				echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a media object'), '</a>';
 				echo '<br>';
 				echo '<div id="newobje" style="display: none;">';
 				echo '<table class="facts_table">';
@@ -1138,7 +1138,7 @@ class FunctionsEdit {
 			break;
 
 		case 'RESN':
-			echo "<a href=\"#\" onclick=\"return expand_layer('newresn');\"><i id=\"newresn_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new restriction'), '</a>';
+			echo "<a href=\"#\" onclick=\"return expand_layer('newresn');\"><i id=\"newresn_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a restriction'), '</a>';
 			echo '<br>';
 			echo '<div id="newresn" style="display: none;">';
 			echo '<table class="facts_table">';

@@ -142,7 +142,7 @@ function add_new_record(xref, fact) {
 	});
 }
 
-// Add a new child to an existing family
+// Add a child to an existing family
 function add_child_to_family(xref, gender) {
 	return edit_interface({
 		"action": "add_child_to_family",
@@ -151,7 +151,7 @@ function add_child_to_family(xref, gender) {
 	});
 }
 
-// Add a new child to an existing individual (creating a one-parent family)
+// Add a child to an existing individual (creating a one-parent family)
 function add_child_to_individual(xref, gender) {
 	return edit_interface({
 		"action": "add_child_to_individual",
@@ -169,7 +169,7 @@ function add_parent_to_individual(xref, gender) {
 	});
 }
 
-// Add a new spouse to an existing family
+// Add a spouse to an existing family
 function add_spouse_to_family(xref, famtag) {
 	return edit_interface({
 		"action": "add_spouse_to_family",
@@ -184,7 +184,7 @@ function add_unlinked_indi() {
 	});
 }
 
-// Add a new spouse to an existing individual (creating a new family)
+// Add a spouse to an existing individual (creating a new family)
 function add_spouse_to_individual(xref, famtag) {
 	return edit_interface({
 		"action": "add_spouse_to_individual",

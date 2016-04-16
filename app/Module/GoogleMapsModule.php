@@ -4625,7 +4625,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		<form class="form-horizontal" action="?" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
 			<div class="form-group">
 				<label class="form-control-static col-sm-4" for="parent_id">
-					<?php echo I18N::translate('Add a new geographic location') ?>
+					<?php echo I18N::translate('Add a geographic location') ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="col-sm-6">

@@ -1277,7 +1277,7 @@ msgctxt "NOMINATIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: button label. Add a new item.
+#. I18N: button label. Add an item.
 #: admin_trees_config.php:541 app/Functions/FunctionsPrint.php:574
 #: app/Functions/FunctionsPrint.php:633 app/Module/ClippingsCartModule.php:334
 #: app/Module/ClippingsCartModule.php:460
@@ -1316,87 +1316,87 @@ msgid "Add a husband using an existing individual"
 msgstr "Įtraukti vyrą naudojant jau sukurtą asmenį"
 
 #: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add a new associate"
+msgid "Add an associate"
 msgstr "Sukurti naują sąsają"
 
 #: app/Module/RelativesTabModule.php:273
-msgid "Add a new brother or sister"
+msgid "Add a brother or sister"
 msgstr "Pridėti naują brolį ar seserį"
 
 #: edit_interface.php:516
-msgid "Add a new child"
+msgid "Add a child"
 msgstr "Pridėti naują vaiką"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
-msgid "Add a new father"
+msgid "Add a father"
 msgstr "Pridėti naują tėvą"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
-msgid "Add a new favorite"
+msgid "Add a favorite"
 msgstr "Pridėti naują mėgstamiausią"
 
 #: app/Module/GoogleMapsModule.php:4628
-msgid "Add a new geographic location"
+msgid "Add a geographic location"
 msgstr "Pridėti naują geografinę vietovę"
 
 #: app/Module/RelativesTabModule.php:385 edit_interface.php:810
 #: edit_interface.php:900
-msgid "Add a new husband"
+msgid "Add a husband"
 msgstr "Pridėti naują vyrą"
 
 #: app/Module/UserJournalModule.php:110
-msgid "Add a new journal entry"
+msgid "Add a journal entry"
 msgstr "Pridėti naują žurnalo įrašą"
 
 #: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1131
 #: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
 #: app/Module/MediaTabModule.php:87 source.php:184
-msgid "Add a new media object"
+msgid "Add a media object"
 msgstr "Pridėti naują medijos objektą"
 
 #: app/Module/RelativesTabModule.php:323 edit_interface.php:672 family.php:114
-msgid "Add a new mother"
+msgid "Add a mother"
 msgstr "Pridėti naują motiną"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
-msgid "Add a new name"
+msgid "Add a name"
 msgstr "Įtraukti naują vardą"
 
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1110
 #: app/Module/NotesTabModule.php:100
-msgid "Add a new note"
+msgid "Add a note"
 msgstr "Pridėti naują pastabą"
 
 #: app/Functions/FunctionsEdit.php:1141
-msgid "Add a new restriction"
+msgid "Add a restriction"
 msgstr "Pridėti naują apribojimą"
 
 #: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1120
 #: app/Module/NotesTabModule.php:110
-msgid "Add a new shared note"
+msgid "Add a shared note"
 msgstr "Pridėti naują bendrai naudojamą pastabą"
 
 #: app/Module/RelativesTabModule.php:271
-msgid "Add a new son or daughter"
+msgid "Add a son or daughter"
 msgstr "Pridėti naują sūnų ar dukterį"
 
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1060
 #: app/Module/SourcesTabModule.php:93
-msgid "Add a new source citation"
+msgid "Add a source citation"
 msgstr "Pridėti naują šaltinio nuorodą"
 
 #: edit_interface.php:837
-msgid "Add a new spouse"
+msgid "Add a spouse"
 msgstr "Pridėti naują sutuoktinį"
 
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
-msgid "Add a new user"
+msgid "Add a user"
 msgstr "Pridėti naują naudotoją"
 
 #: app/Module/RelativesTabModule.php:373 edit_interface.php:807
 #: edit_interface.php:897
-msgid "Add a new wife"
+msgid "Add a wife"
 msgstr "Pridėti naują žmoną"
 
 #: app/Module/FamilyTreeNewsModule.php:148

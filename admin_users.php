@@ -262,7 +262,7 @@ case 'edit':
 	$user_id = Filter::getInteger('user_id');
 
 	if ($user_id === 0) {
-		$controller->setPageTitle(I18N::translate('Add a new user'));
+		$controller->setPageTitle(I18N::translate('Add a user'));
 		$tmp            = new \stdClass;
 		$tmp->user_id   = '';
 		$tmp->user_name = '';

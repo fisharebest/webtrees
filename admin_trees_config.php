@@ -538,7 +538,7 @@ $controller
 			<th>
 				<button class="btn btn-primary" id="add-resn" type="button">
 					<i class="fa fa-plus"></i>
-					<?php echo /* I18N: button label. Add a new item. */ I18N::translate('Add'); ?>
+					<?php echo /* I18N: button label. Add an item. */ I18N::translate('Add'); ?>
 				</button>
 			</th>
 		</tr>
