@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 10:21+0000\n"
+"PO-Revision-Date: 2016-04-16 17:18+0000\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <http://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -742,37 +742,37 @@ msgstr "KKK punkti saab kuvada ainult ühes sugupuus või kõigis sugupuudes."
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Joonis, mis kuvab kahe isiku vahelist sugulust."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "Isiku esivanemate ja järeltulijate joonis perekonnaraamatuna."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "Isiku esivanemate joonis kompaktse puuna."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Isiku esivanemate joonis puukujulises vormingus."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Isiku esivanemate joonis."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "Isiku järeltulijate joonis."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Isikute eluaja joonis."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -789,7 +789,7 @@ msgstr "Andmebaasiserver võib jooksutada mitmeid eraldiseisvaid andmebaase. Sa 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "Ringdiagramm isiku esivanemate kohta."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
@@ -1051,7 +1051,7 @@ msgstr "Vaheleht, mis näitab isikuga seotud allikaid."
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Ajajoon, mis kuvab üksikuid sündmuseid."
 
 #: admin_users.php:398
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
@@ -1267,6 +1267,14 @@ msgstr "Lisa"
 msgid "Add %s to the clippings cart"
 msgstr "Lisa %s väljalõigete lehele"
 
+#: app/Module/RelativesTabModule.php:273
+msgid "Add a brother or sister"
+msgstr "Lisa uus vend või õde"
+
+#: edit_interface.php:516
+msgid "Add a child"
+msgstr "Lisa uus laps"
+
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
 msgstr "Lisa laps, et luua ühe vanemaga perekond"
@@ -1279,27 +1287,6 @@ msgstr "Lisa laps sellesse perekonda"
 #: edit_interface.php:81
 msgid "Add a fact"
 msgstr "Lisa fakt"
-
-#: app/Module/RelativesTabModule.php:154
-msgid "Add a husband to this family"
-msgstr "Lisa mees sellesse perekonda"
-
-#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
-#: edit_interface.php:1156
-msgid "Add a husband using an existing individual"
-msgstr "Lisa mees olemasolevate isikute hulgast"
-
-#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add an associate"
-msgstr "Lisa uus partner"
-
-#: app/Module/RelativesTabModule.php:273
-msgid "Add a brother or sister"
-msgstr "Lisa uus vend või õde"
-
-#: edit_interface.php:516
-msgid "Add a child"
-msgstr "Lisa uus laps"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
@@ -1317,6 +1304,15 @@ msgstr "Lisa uus geograafiline asukoht"
 #: edit_interface.php:900
 msgid "Add a husband"
 msgstr "Lisa uus mees"
+
+#: app/Module/RelativesTabModule.php:154
+msgid "Add a husband to this family"
+msgstr "Lisa mees sellesse perekonda"
+
+#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
+#: edit_interface.php:1156
+msgid "Add a husband using an existing individual"
+msgstr "Lisa mees olemasolevate isikute hulgast"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
@@ -1337,6 +1333,10 @@ msgstr "Lisa uus ema"
 msgid "Add a name"
 msgstr "Lisa uus nimi"
 
+#: app/Module/FamilyTreeNewsModule.php:148
+msgid "Add a news article"
+msgstr "Lisa uudis"
+
 #: app/Controller/FamilyController.php:149
 #: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
@@ -1345,6 +1345,16 @@ msgstr "Lisa uus märkus"
 #: app/Functions/FunctionsEdit.php:1141
 msgid "Add a restriction"
 msgstr "Lisa uus piirang"
+
+#. I18N: label for a yes/no option
+#: app/Module/FamilyTreeFavoritesModule.php:286
+#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
+#: app/Module/UpcomingAnniversariesModule.php:181
+#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
+msgid "Add a scrollbar when block contents grow"
+msgstr "Lisa 'rullik' kui bloki sisu kasvab"
 
 #: app/Controller/FamilyController.php:155
 #: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
@@ -1364,6 +1374,11 @@ msgstr "Lisa uus allika viide"
 msgid "Add a spouse"
 msgstr "Lisa uus kaasa"
 
+#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
+#: app/Module/StoriesModule.php:367
+msgid "Add a story"
+msgstr "Lisa jutustus"
+
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
@@ -1373,25 +1388,6 @@ msgstr "Lisa uus kasutaja"
 #: edit_interface.php:897
 msgid "Add a wife"
 msgstr "Lisa uus naine"
-
-#: app/Module/FamilyTreeNewsModule.php:148
-msgid "Add a news article"
-msgstr "Lisa uudis"
-
-#. I18N: label for a yes/no option
-#: app/Module/FamilyTreeFavoritesModule.php:286
-#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230
-#: app/Module/ReviewChangesModule.php:193
-#: app/Module/UpcomingAnniversariesModule.php:181
-#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
-msgid "Add a scrollbar when block contents grow"
-msgstr "Lisa 'rullik' kui bloki sisu kasvab"
-
-#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
-#: app/Module/StoriesModule.php:367
-msgid "Add a story"
-msgstr "Lisa jutustus"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1406,6 +1402,10 @@ msgstr "Lisa naine olemasolevat isikut kasutades"
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
 msgstr "Lisa KKK punkt"
+
+#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
+msgid "Add an associate"
+msgstr "Lisa uus partner"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -1957,7 +1957,7 @@ msgstr "Faili lahtipakkimisel tekkis viga."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr ""
+msgstr "Liivakella joonis isiku esivanematest ja järeltulijatest."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
@@ -3443,7 +3443,7 @@ msgstr "Muuda 'Minu leht' blokke"
 #: app/Module/RecentChangesModule.php:257
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "Muudetud %1$s"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Module/RecentChangesModule.php:254
@@ -3486,7 +3486,7 @@ msgstr "Diagramm"
 
 #: app/Module/RelationshipsChartModule.php:142
 msgid "Chart preferences"
-msgstr ""
+msgstr "Joonise eelistused"
 
 #: app/Module/ChartsBlockModule.php:190 statistics.php:584
 msgid "Chart type"
@@ -5083,7 +5083,7 @@ msgstr "Kirjelduse META silt"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
-msgstr ""
+msgstr "Kirjeldus pole saadaval"
 
 #: login.php:446
 msgid "Desired password"
@@ -6349,7 +6349,7 @@ msgstr "Leia koopiad"
 
 #: relationship.php:115
 msgid "Find other relationships"
-msgstr ""
+msgstr "Leia teisi sugulussidemeid"
 
 #: relationship.php:102 relationship.php:107
 msgid "Find the closest relationships"
@@ -7184,7 +7184,7 @@ msgstr "Houston, Texas"
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:158
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "Kui palju rekursiooni sugulussidemete otsimisel kasutada"
 
 #: app/Stats.php:6826
 msgid "Hungary"
@@ -10616,10 +10616,6 @@ msgstr "Asukohakontroll"
 msgid "Place contains"
 msgstr "Koht sisaldab"
 
-#: app/Module/TopPageViewsModule.php:165
-msgid "Show counts before or after name"
-msgstr "Paiguta arvut enne või pärast nime?"
-
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
 msgid "Place hierarchy"
@@ -11801,7 +11797,7 @@ msgstr "Otsi teksti/sõna"
 
 #: app/Module/RelationshipsChartModule.php:163
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr ""
+msgstr "Kõikide võimalike sugulussidemete otsimine võib keerulistes puudes palju aega võtta."
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Seattle, Washington"
@@ -12329,6 +12325,10 @@ msgstr "Näita laste esivanemaid?"
 msgid "Show common surnames"
 msgstr "Näita sagedamini esinevaid perekonnanimesid?"
 
+#: app/Module/TopPageViewsModule.php:165
+msgid "Show counts before or after name"
+msgstr "Paiguta arvut enne või pärast nime?"
+
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
 msgstr "Näita paare, kus üks partneritest abiellus rohkem kui ühel korral."
@@ -12584,7 +12584,7 @@ msgstr "Näita kohtade ja sündmuste asupaika kasutades Google Maps™ kaardista
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Näita kasutajat, kes muudatuse tegi"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
@@ -13656,7 +13656,7 @@ msgstr "Eelistused uute sugupuude kohta on uuendatud."
 #: app/Module/RelationshipsChartModule.php:190
 #, php-format
 msgid "The preferences for the chart “%s” have been updated."
-msgstr ""
+msgstr "Eelistused joonise “%s” jaoks on uuendatud."
 
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
@@ -15022,7 +15022,7 @@ msgstr "Reino Unido"
 
 #: app/Stats.php:6964
 msgid "United States"
-msgstr ""
+msgstr "Ühendriigid"
 
 #: app/GedcomRecord.php:1154 app/GedcomRecord.php:1158 app/Stats.php:6716
 msgid "Unknown"
@@ -15278,7 +15278,7 @@ msgstr "Vanuatu"
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Mitmesugused statistikajoonised."
 
 #: app/Stats.php:6966
 msgid "Vatican City"
@@ -15830,7 +15830,7 @@ msgstr "Te võite kasutada HTML-i, et vastust kujundada ja lisada viiteid teiste
 
 #: admin_site_config.php:435
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr ""
+msgstr "Peate oma Google kontol ka \"vähemturvalised rakendused\" lubama."
 
 #: setup.php:212
 msgid "You must change this before you can continue."
@@ -19774,7 +19774,7 @@ msgstr "teadmata"
 
 #: app/Module/RelationshipsChartModule.php:131
 msgid "unlimited"
-msgstr ""
+msgstr "piiramatu"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
