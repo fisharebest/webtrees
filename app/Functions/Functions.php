@@ -583,48 +583,48 @@ class Functions {
 		switch ($sex) {
 		case 'M':
 			switch ($n) {
-			case  1: // I18N: A Spanish relationship name, such as third great-nephew
-			return I18N::translateContext('MALE', 'first %s', $relation);
+			case  1:
+				return /* I18N: A Spanish relationship name, such as third great-nephew */ I18N::translateContext('MALE', 'first %s', $relation);
 			case  2:
-			return I18N::translateContext('MALE', 'second %s', $relation);
+				return I18N::translateContext('MALE', 'second %s', $relation);
 			case  3:
-			return I18N::translateContext('MALE', 'third %s', $relation);
+				return I18N::translateContext('MALE', 'third %s', $relation);
 			case  4:
-			return I18N::translateContext('MALE', 'fourth %s', $relation);
+				return I18N::translateContext('MALE', 'fourth %s', $relation);
 			case  5:
-			return I18N::translateContext('MALE', 'fifth %s', $relation);
-			default: // I18N: A Spanish relationship name, such as third great-nephew
-			return I18N::translateContext('MALE', '%1$s × %2$s', I18N::number($n), $relation);
+				return I18N::translateContext('MALE', 'fifth %s', $relation);
+			default:
+				return /* I18N: A Spanish relationship name, such as third great-nephew */ I18N::translateContext('MALE', '%1$s × %2$s', I18N::number($n), $relation);
 			}
 		case 'F':
 			switch ($n) {
-			case  1: // I18N: A Spanish relationship name, such as third great-nephew
-			return I18N::translateContext('FEMALE', 'first %s', $relation);
+			case  1:
+				return /* I18N: A Spanish relationship name, such as third great-nephew */ I18N::translateContext('FEMALE', 'first %s', $relation);
 			case  2:
-			return I18N::translateContext('FEMALE', 'second %s', $relation);
+				return I18N::translateContext('FEMALE', 'second %s', $relation);
 			case  3:
-			return I18N::translateContext('FEMALE', 'third %s', $relation);
+				return I18N::translateContext('FEMALE', 'third %s', $relation);
 			case  4:
-			return I18N::translateContext('FEMALE', 'fourth %s', $relation);
+				return I18N::translateContext('FEMALE', 'fourth %s', $relation);
 			case  5:
-			return I18N::translateContext('FEMALE', 'fifth %s', $relation);
+				return I18N::translateContext('FEMALE', 'fifth %s', $relation);
 			default: // I18N: A Spanish relationship name, such as third great-nephew
-			return I18N::translateContext('FEMALE', '%1$s × %2$s', I18N::number($n), $relation);
+				return I18N::translateContext('FEMALE', '%1$s × %2$s', I18N::number($n), $relation);
 			}
 		default:
 			switch ($n) {
-			case  1: // I18N: A Spanish relationship name, such as third great-nephew
-			return I18N::translateContext('MALE/FEMALE', 'first %s', $relation);
+			case  1:
+				return /* I18N: A Spanish relationship name, such as third great-nephew */ I18N::translateContext('MALE/FEMALE', 'first %s', $relation);
 			case  2:
-			return I18N::translateContext('MALE/FEMALE', 'second %s', $relation);
+				return I18N::translateContext('MALE/FEMALE', 'second %s', $relation);
 			case  3:
-			return I18N::translateContext('MALE/FEMALE', 'third %s', $relation);
+				return I18N::translateContext('MALE/FEMALE', 'third %s', $relation);
 			case  4:
-			return I18N::translateContext('MALE/FEMALE', 'fourth %s', $relation);
+				return I18N::translateContext('MALE/FEMALE', 'fourth %s', $relation);
 			case  5:
-			return I18N::translateContext('MALE/FEMALE', 'fifth %s', $relation);
-			default: // I18N: A Spanish relationship name, such as third great-nephew
-			return I18N::translateContext('MALE/FEMALE', '%1$s × %2$s', I18N::number($n), $relation);
+				return I18N::translateContext('MALE/FEMALE', 'fifth %s', $relation);
+			default:
+				return /* I18N: A Spanish relationship name, such as third great-nephew */ I18N::translateContext('MALE/FEMALE', '%1$s × %2$s', I18N::number($n), $relation);
 			}
 		}
 	}

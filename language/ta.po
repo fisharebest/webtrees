@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-04-15 22:08+0100\n"
+"POT-Creation-Date: 2016-04-16 10:30+0100\n"
 "PO-Revision-Date: 2012-03-15 15:20+0000\n"
 "Last-Translator: Gokul S <yesgocool@yahoo.co.in>\n"
 "Language: ta\n"
@@ -11560,11 +11560,6 @@ msgstr ""
 msgid "Rwanda"
 msgstr ""
 
-#. I18N: Description of the “Clippings cart” module
-#: app/Module/ClippingsCartModule.php:43
-msgid "SELECT records FROM your family tree AND save them AS a GEDCOM FILE."
-msgstr ""
-
 #: admin_site_config.php:339
 msgid "SMTP mail server"
 msgstr ""
@@ -11829,6 +11824,11 @@ msgstr ""
 
 #: lifespan.php:41
 msgid "Select individuals by place or date"
+msgstr ""
+
+#. I18N: Description of the “Clippings cart” module
+#: app/Module/ClippingsCartModule.php:43
+msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr ""
 
 #: statistics.php:546 statistics.php:557 statistics.php:566
@@ -15797,7 +15797,7 @@ msgid "You may use HTML to format the answer and to add links to other websites.
 msgstr ""
 
 #: admin_site_config.php:435
-msgid "You must also enable ‘less secure applications’ in your Google account."
+msgid "You must also enable “less secure applications” in your Google account."
 msgstr ""
 
 #: setup.php:212

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-04-15 22:08+0100\n"
+"POT-Creation-Date: 2016-04-16 10:30+0100\n"
 "PO-Revision-Date: 2016-02-16 15:10+0100\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
@@ -11562,11 +11562,6 @@ msgstr "Rusland"
 msgid "Rwanda"
 msgstr "Rwanda"
 
-#. I18N: Description of the “Clippings cart” module
-#: app/Module/ClippingsCartModule.php:43
-msgid "SELECT records FROM your family tree AND save them AS a GEDCOM FILE."
-msgstr ""
-
 #: admin_site_config.php:339
 msgid "SMTP mail server"
 msgstr "SMTP e-posbediener"
@@ -11832,6 +11827,11 @@ msgstr "Kies vlag"
 #: lifespan.php:41
 msgid "Select individuals by place or date"
 msgstr "Kies persone op grond van plek of datum"
+
+#. I18N: Description of the “Clippings cart” module
+#: app/Module/ClippingsCartModule.php:43
+msgid "Select records from your family tree and save them as a GEDCOM file."
+msgstr "Kies rekords uit jou stamboom en bewaar hulle as 'n GEDCOM-lêer."
 
 #: statistics.php:546 statistics.php:557 statistics.php:566
 msgid "Select the desired age interval"
@@ -15799,7 +15799,7 @@ msgid "You may use HTML to format the answer and to add links to other websites.
 msgstr "Jy mag HTML formaat gebruik om die antwoord uit te lê en skakels na ander webwerwe by te voeg."
 
 #: admin_site_config.php:435
-msgid "You must also enable ‘less secure applications’ in your Google account."
+msgid "You must also enable “less secure applications” in your Google account."
 msgstr ""
 
 #: setup.php:212
@@ -19908,9 +19908,6 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid "Select records from your family tree and save them as a GEDCOM file."
-#~ msgstr "Kies rekords uit jou stamboom en bewaar hulle as 'n GEDCOM-lêer."
 
 #~ msgid "Show lifespans"
 #~ msgstr "Vertoon lewensduur"
