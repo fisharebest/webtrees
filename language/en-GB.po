@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-04-16 13:19+0000\n"
+"PO-Revision-Date: 2016-04-16 14:06+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <http://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -1268,6 +1268,14 @@ msgstr "Add"
 msgid "Add %s to the clippings cart"
 msgstr "Add %s to the clippings cart"
 
+#: app/Module/RelativesTabModule.php:273
+msgid "Add a brother or sister"
+msgstr "Add a brother or sister"
+
+#: edit_interface.php:516
+msgid "Add a child"
+msgstr "Add a child"
+
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
 msgstr "Add a child to create a one-parent family"
@@ -1280,27 +1288,6 @@ msgstr "Add a child to this family"
 #: edit_interface.php:81
 msgid "Add a fact"
 msgstr "Add a fact"
-
-#: app/Module/RelativesTabModule.php:154
-msgid "Add a husband to this family"
-msgstr "Add a husband to this family"
-
-#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
-#: edit_interface.php:1156
-msgid "Add a husband using an existing individual"
-msgstr "Add a husband using an existing individual"
-
-#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add an associate"
-msgstr "Add an associate"
-
-#: app/Module/RelativesTabModule.php:273
-msgid "Add a brother or sister"
-msgstr "Add a brother or sister"
-
-#: edit_interface.php:516
-msgid "Add a child"
-msgstr "Add a child"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
@@ -1318,6 +1305,15 @@ msgstr "Add a geographic location"
 #: edit_interface.php:900
 msgid "Add a husband"
 msgstr "Add a husband"
+
+#: app/Module/RelativesTabModule.php:154
+msgid "Add a husband to this family"
+msgstr "Add a husband to this family"
+
+#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
+#: edit_interface.php:1156
+msgid "Add a husband using an existing individual"
+msgstr "Add a husband using an existing individual"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
@@ -1338,6 +1334,10 @@ msgstr "Add a mother"
 msgid "Add a name"
 msgstr "Add a name"
 
+#: app/Module/FamilyTreeNewsModule.php:148
+msgid "Add a news article"
+msgstr "Add a news article"
+
 #: app/Controller/FamilyController.php:149
 #: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
@@ -1346,6 +1346,16 @@ msgstr "Add a note"
 #: app/Functions/FunctionsEdit.php:1141
 msgid "Add a restriction"
 msgstr "Add a restriction"
+
+#. I18N: label for a yes/no option
+#: app/Module/FamilyTreeFavoritesModule.php:286
+#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
+#: app/Module/UpcomingAnniversariesModule.php:181
+#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
+msgid "Add a scrollbar when block contents grow"
+msgstr "Add a scrollbar when block contents grow"
 
 #: app/Controller/FamilyController.php:155
 #: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
@@ -1365,6 +1375,11 @@ msgstr "Add a source citation"
 msgid "Add a spouse"
 msgstr "Add a spouse"
 
+#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
+#: app/Module/StoriesModule.php:367
+msgid "Add a story"
+msgstr "Add a story"
+
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
@@ -1374,25 +1389,6 @@ msgstr "Add a user"
 #: edit_interface.php:897
 msgid "Add a wife"
 msgstr "Add a wife"
-
-#: app/Module/FamilyTreeNewsModule.php:148
-msgid "Add a news article"
-msgstr "Add a news article"
-
-#. I18N: label for a yes/no option
-#: app/Module/FamilyTreeFavoritesModule.php:286
-#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230
-#: app/Module/ReviewChangesModule.php:193
-#: app/Module/UpcomingAnniversariesModule.php:181
-#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
-msgid "Add a scrollbar when block contents grow"
-msgstr "Add a scrollbar when block contents grow"
-
-#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
-#: app/Module/StoriesModule.php:367
-msgid "Add a story"
-msgstr "Add a story"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1407,6 +1403,10 @@ msgstr "Add a wife using an existing individual"
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
 msgstr "Add an FAQ item"
+
+#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
+msgid "Add an associate"
+msgstr "Add an associate"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -1523,156 +1523,156 @@ msgstr "Administrator account"
 
 #: admin_users.php:496
 msgid "Administrator comments on user"
-msgstr ""
+msgstr "Administrator comments on user"
 
 #: admin.php:652
 msgid "Administrators"
-msgstr ""
+msgstr "Administrators"
 
 #: app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Female pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Adopted"
 
 #: app/GedcomCode/GedcomCodePedi.php:57
 msgctxt "Male pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Adopted"
 
 #: app/GedcomCode/GedcomCodePedi.php:61
 msgctxt "Pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Adopted"
 
 #: app/GedcomCode/GedcomCodeAdop.php:52
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Adopted by both parents"
 
 #: app/GedcomCode/GedcomCodeAdop.php:50
 msgctxt "FEMALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Adopted by both parents"
 
 #: app/GedcomCode/GedcomCodeAdop.php:48
 msgctxt "MALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Adopted by both parents"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:61 app/GedcomTag.php:932
 msgid "Adopted by father"
-msgstr ""
+msgstr "Adopted by father"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:59 app/GedcomTag.php:928
 msgctxt "FEMALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Adopted by father"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:57 app/GedcomTag.php:924
 msgctxt "MALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Adopted by father"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:70 app/GedcomTag.php:947
 msgid "Adopted by mother"
-msgstr ""
+msgstr "Adopted by mother"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:68 app/GedcomTag.php:943
 msgctxt "FEMALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "Adopted by mother"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:66 app/GedcomTag.php:939
 msgctxt "MALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "Adopted by mother"
 
 #. I18N: gedcom tag ADOP
 #: app/GedcomTag.php:130
 msgid "Adoption"
-msgstr ""
+msgstr "Adoption"
 
 #: app/GedcomTag.php:913
 msgid "Adoption of a brother"
-msgstr ""
+msgstr "Adoption of a brother"
 
 #: app/GedcomTag.php:872
 msgid "Adoption of a child"
-msgstr ""
+msgstr "Adoption of a child"
 
 #: app/GedcomTag.php:870
 msgid "Adoption of a daughter"
-msgstr ""
+msgstr "Adoption of a daughter"
 
 #: app/GedcomTag.php:881 app/GedcomTag.php:890 app/GedcomTag.php:899
 msgid "Adoption of a grandchild"
-msgstr ""
+msgstr "Adoption of a grandchild"
 
 #: app/GedcomTag.php:879
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Adoption of a granddaughter"
 
 #: app/GedcomTag.php:888
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Adoption of a granddaughter"
 
 #: app/GedcomTag.php:897
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Adoption of a granddaughter"
 
 #: app/GedcomTag.php:877
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Adoption of a grandson"
 
 #: app/GedcomTag.php:886
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Adoption of a grandson"
 
 #: app/GedcomTag.php:895
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Adoption of a grandson"
 
 #: app/GedcomTag.php:904
 msgid "Adoption of a half-brother"
-msgstr ""
+msgstr "Adoption of a half-brother"
 
 #: app/GedcomTag.php:908
 msgid "Adoption of a half-sibling"
-msgstr ""
+msgstr "Adoption of a half-sibling"
 
 #: app/GedcomTag.php:906
 msgid "Adoption of a half-sister"
-msgstr ""
+msgstr "Adoption of a half-sister"
 
 #: app/GedcomTag.php:917
 msgid "Adoption of a sibling"
-msgstr ""
+msgstr "Adoption of a sibling"
 
 #: app/GedcomTag.php:915
 msgid "Adoption of a sister"
-msgstr ""
+msgstr "Adoption of a sister"
 
 #: app/GedcomTag.php:868
 msgid "Adoption of a son"
-msgstr ""
+msgstr "Adoption of a son"
 
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
 msgid "Adult christening"
-msgstr ""
+msgstr "Adult christening"
 
 #: app/Module/GoogleMapsModule.php:398
 msgid "Advanced"
-msgstr ""
+msgstr "Advanced"
 
 #: admin_trees_config.php:2130
 msgid "Advanced fact settings"
@@ -19893,23 +19893,23 @@ msgstr ""
 
 #: app/Functions/Functions.php:743
 msgid "younger brother"
-msgstr ""
+msgstr "younger brother"
 
 #: app/Functions/Functions.php:777
 msgid "younger sibling"
-msgstr ""
+msgstr "younger sibling"
 
 #: app/Functions/Functions.php:760
 msgid "younger sister"
-msgstr ""
+msgstr "younger sister"
 
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:169 search_advanced.php:170 search_advanced.php:171
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "±%s year"
+msgstr[1] "±%s years"
 
 #: app/Individual.php:1218
 #, php-format
@@ -19924,7 +19924,7 @@ msgstr "‘%s’ has been added to your favourites."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:107
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Family.php:351 app/Family.php:365 app/Individual.php:1214
 #: app/Individual.php:1303 autocomplete.php:164 autocomplete.php:405
@@ -19932,7 +19932,7 @@ msgstr ""
 #: indilist.php:230
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Family.php:351 app/Family.php:365 app/Individual.php:1213
 #: app/Individual.php:1303 app/Module/FamiliesSidebarModule.php:153
