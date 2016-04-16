@@ -85,7 +85,6 @@
 					<Text style="text">
 						<RepeatTag tag="DEAT:SOUR">
 							<Gedcom id="@SOUR">
-								<if condition="$usebr==1"><br /></if>
 								<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
 								«<GedcomValue tag="TITL" />»
 								<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
