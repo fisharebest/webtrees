@@ -7279,7 +7279,7 @@ msgstr "Als twee stambomen gebruik maken van dezelfde media map, kunnen zij deze
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
 msgstr "Als bezoekers de stamboom niet kunnen zien, dan kunnen zij zich ook niet registreren voor een account. U zult hun account handmatig moeten toevoegen."
 
-#. I18N: Help text for the “Who can upload new media files?” configuration setting
+#. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1040
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr "Om te voorkomen dat gebruikers ongepaste afbeeldingen uploaden, kunt u het uploaden van media alleen tot de managers beperken."
@@ -7436,7 +7436,7 @@ msgid "Include subfolders"
 msgstr "Inclusief submappen"
 
 #: lifespan.php:86
-msgid "Include the individual’s immediate family?"
+msgid "Include the individual’s immediate family"
 msgstr "Inclusief de naaste familie van deze persoon?"
 
 #: app/Stats.php:6828
@@ -10595,7 +10595,7 @@ msgid "Place contains"
 msgstr "Plaats bevat"
 
 #: app/Module/TopPageViewsModule.php:165
-msgid "Place counts before or after name?"
+msgid "Show counts before or after name"
 msgstr "Plaats aantallen vóór of achter de naam?"
 
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
@@ -10941,7 +10941,7 @@ msgid "Primidi"
 msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
-msgid "Print basic events when blank?"
+msgid "Print basic events when blank"
 msgstr "Print standaard gebeurtenissen wanneer leeg?"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
@@ -11903,7 +11903,7 @@ msgid "Send broadcast messages"
 msgstr "Verstuur berichten aan groepen"
 
 #: app/Module/ReviewChangesModule.php:185
-msgid "Send out reminder emails?"
+msgid "Send out reminder emails"
 msgstr "E-mailherinneringen versturen?"
 
 #. I18N: A site configuration setting
@@ -12288,7 +12288,7 @@ msgstr "Toon alle tags"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
-msgid "Show an age cursor?"
+msgid "Show an age cursor"
 msgstr "Leeftijd indicator tonen?"
 
 #. I18N: A configuration setting
@@ -12297,11 +12297,11 @@ msgid "Show chart details by default"
 msgstr "Toon standaard details in diagrammen"
 
 #: modules_v3/ahnentafel_report/report.xml:12
-msgid "Show children of ancestors?"
+msgid "Show children of ancestors"
 msgstr "Kinderen van voorouders laten zien?"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
-msgid "Show common surnames?"
+msgid "Show common surnames"
 msgstr "Toon meest voorkomende achternamen?"
 
 #: app/Functions/FunctionsPrintLists.php:720
@@ -12338,7 +12338,7 @@ msgstr "Toon datum verschillen"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
-msgid "Show date of last update?"
+msgid "Show date of last update"
 msgstr "Laatste wijzigingsdatum tonen?"
 
 #. I18N: A configuration setting
@@ -12426,21 +12426,21 @@ msgstr "Toon namen van privé personen"
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
-msgid "Show notes?"
+msgid "Show notes"
 msgstr "Notities tonen?"
 
 #: modules_v3/ahnentafel_report/report.xml:10
-msgid "Show occupations?"
+msgid "Show occupations"
 msgstr "Toon beroepen?"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
-msgid "Show only births, deaths, and marriages?"
+msgid "Show only births, deaths, and marriages"
 msgstr "Alleen geboortes, overlijdens en huwelijken tonen?"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
-msgid "Show only events of living individuals?"
+msgid "Show only events of living individuals"
 msgstr "Alleen gebeurtenissen van levende personen tonen?"
 
 #: app/Functions/FunctionsPrintLists.php:169
@@ -12452,7 +12452,7 @@ msgid "Show only individuals for whom the gender is not known."
 msgstr "Toon alleen personen waarvan het geslacht onbekend is."
 
 #: app/Module/SlideShowModule.php:262
-msgid "Show only individuals, events, or all?"
+msgid "Show only individuals, events, or all"
 msgstr "Personen, gebeurtenissen of alles tonen?"
 
 #: app/Functions/FunctionsPrintLists.php:160
@@ -12475,7 +12475,7 @@ msgstr "Toon uitstaande wijzigingen"
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
-msgid "Show photos?"
+msgid "Show photos"
 msgstr "Foto's tonen?"
 
 #: placelist.php:83
@@ -12504,11 +12504,11 @@ msgid "Show research tasks that have a date in the future"
 msgstr "Toon onderzoekstaken die een datum in de toekomst hebben"
 
 #: modules_v3/ahnentafel_report/report.xml:11
-msgid "Show residences?"
+msgid "Show residences"
 msgstr "Toon woonplaatsen?"
 
 #: app/Module/SlideShowModule.php:408
-msgid "Show slide show controls?"
+msgid "Show slide show controls"
 msgstr "Besturingsknoppen diavoorstelling tonen?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
@@ -12516,7 +12516,7 @@ msgstr "Besturingsknoppen diavoorstelling tonen?"
 #: modules_v3/family_group_report/report.xml:7
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
-msgid "Show sources?"
+msgid "Show sources"
 msgstr "Bronnen tonen?"
 
 #: familybook.php:82 hourglass.php:73
@@ -12563,7 +12563,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
-msgid "Show this block for which languages?"
+msgid "Show this block for which languages"
 msgstr "Voor welke talen moet dit blok getoond worden?"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
@@ -12977,7 +12977,7 @@ msgid "Start at parents"
 msgstr "Begin bij ouders"
 
 #: app/Module/SlideShowModule.php:414
-msgid "Start slide show on page load?"
+msgid "Start slide show on page load"
 msgstr "Diavoorstelling beginnen als pagina geladen is?"
 
 #. I18N: The earliest year in a range
@@ -13043,7 +13043,7 @@ msgstr "Bewaar afbeeldingen op volledige grootte met watermerk op de server?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
-msgid "Store watermarked thumbnails on server?"
+msgid "Store watermarked thumbnails on server"
 msgstr "Bewaar miniaturen met watermerk op de server?"
 
 #. I18N: Name of a module
@@ -15587,12 +15587,12 @@ msgid "Where is your PhpGedView installation?"
 msgstr "Waar is uw PhpGedView installatie?"
 
 #: app/Module/SiteMapModule.php:308
-msgid "Which family trees should be included in the sitemaps?"
+msgid "Which family trees should be included in the sitemaps"
 msgstr "Welke stambomen moeten in de sitemaps meegenomen worden?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
-msgid "Who can upload new media files?"
+msgid "Who can upload new media files"
 msgstr "Wie mag nieuwe mediabestanden uploaden?"
 
 #. I18N: Name of a module. (A list of users who are online now)

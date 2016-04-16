@@ -7330,7 +7330,7 @@ msgstr "Pokud dva rodokmeny sdílejí stejnou složku médií, pak jsou schopny 
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
 msgstr "Pokud návštěvník rodokmen nemůže prohlížet, pak ani nemůže požádat o účet. Budete muset jeho účet zřídit ručně."
 
-#. I18N: Help text for the “Who can upload new media files?” configuration setting
+#. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1040
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr "Jestli vám záleží na tom, aby uživatelé nemohli nahrávat nevhodné obrázky, můžete omezit nahrávání pouze pro správce."
@@ -7487,7 +7487,7 @@ msgid "Include subfolders"
 msgstr "Včetně podsložek"
 
 #: lifespan.php:86
-msgid "Include the individual’s immediate family?"
+msgid "Include the individual’s immediate family"
 msgstr "Včetně nejbližší rodiny dané osoby?"
 
 #: app/Stats.php:6828
@@ -10651,7 +10651,7 @@ msgid "Place contains"
 msgstr "Místo obsahuje"
 
 #: app/Module/TopPageViewsModule.php:165
-msgid "Place counts before or after name?"
+msgid "Show counts before or after name"
 msgstr "Umístit počty před nebo za jméno?"
 
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
@@ -10997,7 +10997,7 @@ msgid "Primidi"
 msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
-msgid "Print basic events when blank?"
+msgid "Print basic events when blank"
 msgstr "Tisknout základní události, pokud jsou prázdné?"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
@@ -11962,7 +11962,7 @@ msgid "Send broadcast messages"
 msgstr "Poslat zprávy všem uživatelům"
 
 #: app/Module/ReviewChangesModule.php:185
-msgid "Send out reminder emails?"
+msgid "Send out reminder emails"
 msgstr "Posílat emailem upozornění?"
 
 #. I18N: A site configuration setting
@@ -12347,7 +12347,7 @@ msgstr "Zobrazit všechny tagy"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
-msgid "Show an age cursor?"
+msgid "Show an age cursor"
 msgstr "Zobrazit ukazatel věku?"
 
 #. I18N: A configuration setting
@@ -12356,11 +12356,11 @@ msgid "Show chart details by default"
 msgstr "Podrobnosti diagramu normálně zobrazit"
 
 #: modules_v3/ahnentafel_report/report.xml:12
-msgid "Show children of ancestors?"
+msgid "Show children of ancestors"
 msgstr "Zobrazit děti předků?"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
-msgid "Show common surnames?"
+msgid "Show common surnames"
 msgstr "Zobrazit nejčastější příjmení?"
 
 #: app/Functions/FunctionsPrintLists.php:720
@@ -12397,7 +12397,7 @@ msgstr "Zobrazit časové rozdíly"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
-msgid "Show date of last update?"
+msgid "Show date of last update"
 msgstr "Zobrazit datum poslední aktualizace?"
 
 #. I18N: A configuration setting
@@ -12485,21 +12485,21 @@ msgstr "Zobrazit jména neveřejných osob"
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
-msgid "Show notes?"
+msgid "Show notes"
 msgstr "Zobrazit poznámky?"
 
 #: modules_v3/ahnentafel_report/report.xml:10
-msgid "Show occupations?"
+msgid "Show occupations"
 msgstr "Zobrazit zaměstnání?"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
-msgid "Show only births, deaths, and marriages?"
+msgid "Show only births, deaths, and marriages"
 msgstr "Zobrazit jen narození, úmrtí a svatby?"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
-msgid "Show only events of living individuals?"
+msgid "Show only events of living individuals"
 msgstr "Zobrazit události pouze pro žijící osoby?"
 
 #: app/Functions/FunctionsPrintLists.php:169
@@ -12511,7 +12511,7 @@ msgid "Show only individuals for whom the gender is not known."
 msgstr "Zobrazit jen osoby, jejichž pohlaví není známo."
 
 #: app/Module/SlideShowModule.php:262
-msgid "Show only individuals, events, or all?"
+msgid "Show only individuals, events, or all"
 msgstr "Zobrazit pouze osoby, události nebo vše?"
 
 #: app/Functions/FunctionsPrintLists.php:160
@@ -12534,7 +12534,7 @@ msgstr "Zobrazit dosud neschválené změny"
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
-msgid "Show photos?"
+msgid "Show photos"
 msgstr "Zobrazovat fotky?"
 
 #: placelist.php:83
@@ -12563,11 +12563,11 @@ msgid "Show research tasks that have a date in the future"
 msgstr "Zobrazit badatelské úkoly, které mají datum v budoucnosti."
 
 #: modules_v3/ahnentafel_report/report.xml:11
-msgid "Show residences?"
+msgid "Show residences"
 msgstr "Zobrazit sídla?"
 
 #: app/Module/SlideShowModule.php:408
-msgid "Show slide show controls?"
+msgid "Show slide show controls"
 msgstr "Zobrazit ovládací prvky promítání obrázků?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
@@ -12575,7 +12575,7 @@ msgstr "Zobrazit ovládací prvky promítání obrázků?"
 #: modules_v3/family_group_report/report.xml:7
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
-msgid "Show sources?"
+msgid "Show sources"
 msgstr "Zobrazit prameny?"
 
 #: familybook.php:82 hourglass.php:73
@@ -12622,7 +12622,7 @@ msgstr "Zobrazit uživatele, který provedl změnu"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
-msgid "Show this block for which languages?"
+msgid "Show this block for which languages"
 msgstr "Pro které jazyky tento blok zobrazit?"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
@@ -13036,7 +13036,7 @@ msgid "Start at parents"
 msgstr "Začít u rodičů"
 
 #: app/Module/SlideShowModule.php:414
-msgid "Start slide show on page load?"
+msgid "Start slide show on page load"
 msgstr "Spustit promítání obrázků při nahrání stránky?"
 
 #. I18N: The earliest year in a range
@@ -13102,7 +13102,7 @@ msgstr "Ukládat na server obrázky v plné velikosti chráněné vodoznakem?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
-msgid "Store watermarked thumbnails on server?"
+msgid "Store watermarked thumbnails on server"
 msgstr "Ukládat na server vodoznakem chráněné náhledy?"
 
 #. I18N: Name of a module
@@ -15653,12 +15653,12 @@ msgid "Where is your PhpGedView installation?"
 msgstr "Kde je vaše instalace PhpGedView ?"
 
 #: app/Module/SiteMapModule.php:308
-msgid "Which family trees should be included in the sitemaps?"
+msgid "Which family trees should be included in the sitemaps"
 msgstr "Které rodokmeny by se měly zobrazit v mapách stránek?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
-msgid "Who can upload new media files?"
+msgid "Who can upload new media files"
 msgstr "Kdo může nahrávat nové mediální soubory?"
 
 #. I18N: Name of a module. (A list of users who are online now)

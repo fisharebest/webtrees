@@ -7298,7 +7298,7 @@ msgstr "Ha két családfa ugyanazt a médiamappát használja, megoszthatják eg
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
 msgstr "Ha a látogatók nem láthatják a családfát, nem tudnak felhasználói fiókot igényelni. Az ő fiókjaikat kézi úton kell létrehoznia."
 
-#. I18N: Help text for the “Who can upload new media files?” configuration setting
+#. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1040
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr "Ha aggódik, hogy a felhasználók nem ideillő képeket is feltölthetnek, korlátozhatja a médiafeltöltés jogát csak webhelyfelügyelők részére."
@@ -7455,7 +7455,7 @@ msgid "Include subfolders"
 msgstr "Tartalmazza az almappákat"
 
 #: lifespan.php:86
-msgid "Include the individual’s immediate family?"
+msgid "Include the individual’s immediate family"
 msgstr "Tartalmazza a személy közvetlen családját?"
 
 #: app/Stats.php:6828
@@ -10617,7 +10617,7 @@ msgid "Place contains"
 msgstr "Hely tartalmazza:"
 
 #: app/Module/TopPageViewsModule.php:165
-msgid "Place counts before or after name?"
+msgid "Show counts before or after name"
 msgstr "A számláló a cím elé vagy mögé kerüljön?"
 
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
@@ -10963,7 +10963,7 @@ msgid "Primidi"
 msgstr "Egyes napok"
 
 #: modules_v3/family_group_report/report.xml:10
-msgid "Print basic events when blank?"
+msgid "Print basic events when blank"
 msgstr "Megjelenjenek az alapesemények, ha üresek?"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
@@ -11928,7 +11928,7 @@ msgid "Send broadcast messages"
 msgstr "Üzenet küldése"
 
 #: app/Module/ReviewChangesModule.php:185
-msgid "Send out reminder emails?"
+msgid "Send out reminder emails"
 msgstr "Elküldjük az emlékeztető e-maileket?"
 
 #. I18N: A site configuration setting
@@ -12313,7 +12313,7 @@ msgstr "Mutasd az összes címkét"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
-msgid "Show an age cursor?"
+msgid "Show an age cursor"
 msgstr "Mutassa az életkorkurzort?"
 
 #. I18N: A configuration setting
@@ -12322,11 +12322,11 @@ msgid "Show chart details by default"
 msgstr "Alapbeállítás szerint mutassa az ábrarészleteket"
 
 #: modules_v3/ahnentafel_report/report.xml:12
-msgid "Show children of ancestors?"
+msgid "Show children of ancestors"
 msgstr "Mutassa az ősök gyermekeit?"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
-msgid "Show common surnames?"
+msgid "Show common surnames"
 msgstr "Mutassa a leggyakoribb vezetékneveket?"
 
 #: app/Functions/FunctionsPrintLists.php:720
@@ -12363,7 +12363,7 @@ msgstr "Dátumkülönbségek feltüntetése"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
-msgid "Show date of last update?"
+msgid "Show date of last update"
 msgstr "Mutassa az utolsó frissítés dátumát?"
 
 #. I18N: A configuration setting
@@ -12451,21 +12451,21 @@ msgstr "Privát személyek nevének mutatása"
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
-msgid "Show notes?"
+msgid "Show notes"
 msgstr "Mutassa a jegyzeteket?"
 
 #: modules_v3/ahnentafel_report/report.xml:10
-msgid "Show occupations?"
+msgid "Show occupations"
 msgstr "Mutassa a foglalkozásokat?"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
-msgid "Show only births, deaths, and marriages?"
+msgid "Show only births, deaths, and marriages"
 msgstr "Csak a születést, az elhalálozást és a házasságot mutassuk?"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
-msgid "Show only events of living individuals?"
+msgid "Show only events of living individuals"
 msgstr "Csak az élők eseményeit mutassuk?"
 
 #: app/Functions/FunctionsPrintLists.php:169
@@ -12477,7 +12477,7 @@ msgid "Show only individuals for whom the gender is not known."
 msgstr "Csak azokat a személyeket mutasd, akik neme ismeretlen."
 
 #: app/Module/SlideShowModule.php:262
-msgid "Show only individuals, events, or all?"
+msgid "Show only individuals, events, or all"
 msgstr "A személyeket, az eseményeket vagy mindent mutassunk?"
 
 #: app/Functions/FunctionsPrintLists.php:160
@@ -12500,7 +12500,7 @@ msgstr "Mutasd a függőben levő változtatásokat"
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
-msgid "Show photos?"
+msgid "Show photos"
 msgstr "Mutassa a fotókat?"
 
 #: placelist.php:83
@@ -12529,11 +12529,11 @@ msgid "Show research tasks that have a date in the future"
 msgstr "Mutasd a jövőben kutatandó feladatokat"
 
 #: modules_v3/ahnentafel_report/report.xml:11
-msgid "Show residences?"
+msgid "Show residences"
 msgstr "Mutassuk a lakhelyeket?"
 
 #: app/Module/SlideShowModule.php:408
-msgid "Show slide show controls?"
+msgid "Show slide show controls"
 msgstr "Mutassuk a diavetítőgombokat?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
@@ -12541,7 +12541,7 @@ msgstr "Mutassuk a diavetítőgombokat?"
 #: modules_v3/family_group_report/report.xml:7
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
-msgid "Show sources?"
+msgid "Show sources"
 msgstr "Mutassa a forrásokat?"
 
 #: familybook.php:82 hourglass.php:73
@@ -12588,7 +12588,7 @@ msgstr "Mutassa a felhasználót, aki változtatott"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
-msgid "Show this block for which languages?"
+msgid "Show this block for which languages"
 msgstr "Mely nyelveken jelenjen meg ez a blokk?"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
@@ -13002,7 +13002,7 @@ msgid "Start at parents"
 msgstr "Kezdjük a szülőknél"
 
 #: app/Module/SlideShowModule.php:414
-msgid "Start slide show on page load?"
+msgid "Start slide show on page load"
 msgstr "Induljon el a vetítés az oldal betöltésével?"
 
 #. I18N: The earliest year in a range
@@ -13068,7 +13068,7 @@ msgstr "Tároljuk a vízjeles, teljes méretű képeket a szerveren?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
-msgid "Store watermarked thumbnails on server?"
+msgid "Store watermarked thumbnails on server"
 msgstr "Tároljuk a vízjeles bélyegképeket a szerveren?"
 
 #. I18N: Name of a module
@@ -15612,12 +15612,12 @@ msgid "Where is your PhpGedView installation?"
 msgstr "Hol található a PhpGedView-telepítése?"
 
 #: app/Module/SiteMapModule.php:308
-msgid "Which family trees should be included in the sitemaps?"
+msgid "Which family trees should be included in the sitemaps"
 msgstr "Mely családfákat kell a webhelytérképnek tartalmaznia?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
-msgid "Who can upload new media files?"
+msgid "Who can upload new media files"
 msgstr "Ki tölthet fel új médiafájlokat?"
 
 #. I18N: Name of a module. (A list of users who are online now)

@@ -132,25 +132,25 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Show only events of living individuals?');
+		echo /* I18N: Label for a configuration option */ I18N::translate('Show only events of living individuals');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::editFieldYesNo('filter', $filter);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Show only births, deaths, and marriages?');
+		echo /* I18N: Label for a configuration option */ I18N::translate('Show only births, deaths, and marriages');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::editFieldYesNo('onlyBDM', $onlyBDM);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Presentation style');
+		echo /* I18N: Label for a configuration option */ I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Sort order');
+		echo /* I18N: Label for a configuration option */ I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::selectEditControl('sortStyle', array(
 			/* I18N: An option in a list-box */ 'alpha' => I18N::translate('sort by name'),

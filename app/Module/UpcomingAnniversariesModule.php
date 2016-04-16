@@ -151,13 +151,13 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Show only events of living individuals?');
+		echo I18N::translate('Show only events of living individuals');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::editFieldYesNo('filter', $filter);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Show only births, deaths, and marriages?');
+		echo I18N::translate('Show only births, deaths, and marriages');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::editFieldYesNo('onlyBDM', $onlyBDM);
 		echo '</td></tr>';

@@ -7279,7 +7279,7 @@ msgstr "Si dos arbres genealògics utilitzen la mateixa carpeta multimèdia, pod
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
 msgstr "Si els visitants no poden veure l'arbre genealògic, no poden sol·licitar accés. Us caldrà donar-los d'alta manualment."
 
-#. I18N: Help text for the “Who can upload new media files?” configuration setting
+#. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1040
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr "Si us preocupa que els usuaris puguin pujar imatges inapropiades, podeu limitar les càrregues dels multimèdia als administradors solament."
@@ -7436,7 +7436,7 @@ msgid "Include subfolders"
 msgstr "Inclou els subdirectoris"
 
 #: lifespan.php:86
-msgid "Include the individual’s immediate family?"
+msgid "Include the individual’s immediate family"
 msgstr "Incloure els familiars directes de la persona?"
 
 #: app/Stats.php:6828
@@ -10595,7 +10595,7 @@ msgid "Place contains"
 msgstr "L’indret conté"
 
 #: app/Module/TopPageViewsModule.php:165
-msgid "Place counts before or after name?"
+msgid "Show counts before or after name"
 msgstr "Comptador d’indrets abans o després del nom?"
 
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
@@ -10941,7 +10941,7 @@ msgid "Primidi"
 msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
-msgid "Print basic events when blank?"
+msgid "Print basic events when blank"
 msgstr "Imprimir esdeveniments bàsics malgrat que estiguin en blanc?"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
@@ -11903,7 +11903,7 @@ msgid "Send broadcast messages"
 msgstr "Missatges generals"
 
 #: app/Module/ReviewChangesModule.php:185
-msgid "Send out reminder emails?"
+msgid "Send out reminder emails"
 msgstr "Fer sortir els correus electrònics de recordatori?"
 
 #. I18N: A site configuration setting
@@ -12288,7 +12288,7 @@ msgstr "Mostra totes les etiquetes"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
-msgid "Show an age cursor?"
+msgid "Show an age cursor"
 msgstr "Mostrar l’indicador de edat?"
 
 #. I18N: A configuration setting
@@ -12297,11 +12297,11 @@ msgid "Show chart details by default"
 msgstr "Mostra per defecte detalls dels gràfics"
 
 #: modules_v3/ahnentafel_report/report.xml:12
-msgid "Show children of ancestors?"
+msgid "Show children of ancestors"
 msgstr "Mostrar els fills dels avantpassats?"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
-msgid "Show common surnames?"
+msgid "Show common surnames"
 msgstr "Mostrar els cognoms més habituals?"
 
 #: app/Functions/FunctionsPrintLists.php:720
@@ -12338,7 +12338,7 @@ msgstr "Mostra diferència entre dates"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
-msgid "Show date of last update?"
+msgid "Show date of last update"
 msgstr "Mostra la data de l’última actualització?"
 
 #. I18N: A configuration setting
@@ -12426,21 +12426,21 @@ msgstr "Mostra noms de persones privades"
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
-msgid "Show notes?"
+msgid "Show notes"
 msgstr "Incloure notes?"
 
 #: modules_v3/ahnentafel_report/report.xml:10
-msgid "Show occupations?"
+msgid "Show occupations"
 msgstr "Mostrar oficis?"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
-msgid "Show only births, deaths, and marriages?"
+msgid "Show only births, deaths, and marriages"
 msgstr "Mostrar solament Naixements, Òbits i Casaments?"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
-msgid "Show only events of living individuals?"
+msgid "Show only events of living individuals"
 msgstr "Mostrar solament esdeveniments relatius a persones vives?"
 
 #: app/Functions/FunctionsPrintLists.php:169
@@ -12452,7 +12452,7 @@ msgid "Show only individuals for whom the gender is not known."
 msgstr "Mostra solament persones de les que es desconeix el sexe."
 
 #: app/Module/SlideShowModule.php:262
-msgid "Show only individuals, events, or all?"
+msgid "Show only individuals, events, or all"
 msgstr "Mostrar solament persones, esdeveniments o tot?"
 
 #: app/Functions/FunctionsPrintLists.php:160
@@ -12475,7 +12475,7 @@ msgstr "Mostra els canvis pendents"
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
-msgid "Show photos?"
+msgid "Show photos"
 msgstr "Inclore fotografies?"
 
 #: placelist.php:83
@@ -12504,11 +12504,11 @@ msgid "Show research tasks that have a date in the future"
 msgstr "Mostra tasques de recerca que tenen una data futura"
 
 #: modules_v3/ahnentafel_report/report.xml:11
-msgid "Show residences?"
+msgid "Show residences"
 msgstr "Mostrar residències?"
 
 #: app/Module/SlideShowModule.php:408
-msgid "Show slide show controls?"
+msgid "Show slide show controls"
 msgstr "Mostra els controls de passada de diapositives?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
@@ -12516,7 +12516,7 @@ msgstr "Mostra els controls de passada de diapositives?"
 #: modules_v3/family_group_report/report.xml:7
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
-msgid "Show sources?"
+msgid "Show sources"
 msgstr "Incloure fonts?"
 
 #: familybook.php:82 hourglass.php:73
@@ -12563,7 +12563,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
-msgid "Show this block for which languages?"
+msgid "Show this block for which languages"
 msgstr "Per a quins idiomes es mostrarà aquest bloc?"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
@@ -12977,7 +12977,7 @@ msgid "Start at parents"
 msgstr "Començant pels seus pares"
 
 #: app/Module/SlideShowModule.php:414
-msgid "Start slide show on page load?"
+msgid "Start slide show on page load"
 msgstr "Iniciar la presentació de diapositives a la càrrega de la pàgina?"
 
 #. I18N: The earliest year in a range
@@ -13043,7 +13043,7 @@ msgstr "Emmagatzemar imatges de mida natural amb marques d’aigua digitals al s
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
-msgid "Store watermarked thumbnails on server?"
+msgid "Store watermarked thumbnails on server"
 msgstr "Emmagatzemar les miniatures amb marques d’aigua digitals al servidor?"
 
 #. I18N: Name of a module
@@ -15587,12 +15587,12 @@ msgid "Where is your PhpGedView installation?"
 msgstr "On és la instal·lació PhpGedView?"
 
 #: app/Module/SiteMapModule.php:308
-msgid "Which family trees should be included in the sitemaps?"
+msgid "Which family trees should be included in the sitemaps"
 msgstr "Quins arbres genealògics cal incloure als mapes del lloc?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
-msgid "Who can upload new media files?"
+msgid "Who can upload new media files"
 msgstr "Qui pot pujar nous fitxers multimèdia?"
 
 #. I18N: Name of a module. (A list of users who are online now)

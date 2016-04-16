@@ -7249,7 +7249,7 @@ msgstr "Nếu hai cây gia đình dùng chung thư mục đa phương tiện, th
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
 msgstr "Nếu khách thăm không cây gia phả của bạn, họ sẽ không thể đăng ký một tài khoản. Bạn cần phải thêm bằng thủ công một tài khoản cho họ."
 
-#. I18N: Help text for the “Who can upload new media files?” configuration setting
+#. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1040
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr "Nếu bạn quan tâm đến người dùng có thể tải các hình ảnh không phù hợp, bạn có thể giới hạn việc tải tập tin nghe nhìn phải được người quản lý quyết định."
@@ -7406,7 +7406,7 @@ msgid "Include subfolders"
 msgstr "Bao gồm thư mục con"
 
 #: lifespan.php:86
-msgid "Include the individual’s immediate family?"
+msgid "Include the individual’s immediate family"
 msgstr "Bao gồm gia đình trực tiếp của người này?"
 
 #: app/Stats.php:6828
@@ -10563,7 +10563,7 @@ msgid "Place contains"
 msgstr "Địa điểm chứa"
 
 #: app/Module/TopPageViewsModule.php:165
-msgid "Place counts before or after name?"
+msgid "Show counts before or after name"
 msgstr "Thống kê địa điểm trước hay sau tên?"
 
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
@@ -10909,7 +10909,7 @@ msgid "Primidi"
 msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
-msgid "Print basic events when blank?"
+msgid "Print basic events when blank"
 msgstr "In các sự kiện chính khi khộng có gì?"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
@@ -11871,7 +11871,7 @@ msgid "Send broadcast messages"
 msgstr "Gửi quảng bá"
 
 #: app/Module/ReviewChangesModule.php:185
-msgid "Send out reminder emails?"
+msgid "Send out reminder emails"
 msgstr "Có gửi thư nhắc không?"
 
 #. I18N: A site configuration setting
@@ -12256,7 +12256,7 @@ msgstr "Hiện tất cả thẻ"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
-msgid "Show an age cursor?"
+msgid "Show an age cursor"
 msgstr "Có hiển thị dấu trỏ tuổi không?"
 
 #. I18N: A configuration setting
@@ -12265,11 +12265,11 @@ msgid "Show chart details by default"
 msgstr "Hiện chi tiết biểu đồ mặc định"
 
 #: modules_v3/ahnentafel_report/report.xml:12
-msgid "Show children of ancestors?"
+msgid "Show children of ancestors"
 msgstr "Hiện con cháu của tổ tiên?"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
-msgid "Show common surnames?"
+msgid "Show common surnames"
 msgstr "Cho xem tên họ thông thường?"
 
 #: app/Functions/FunctionsPrintLists.php:720
@@ -12306,7 +12306,7 @@ msgstr "Hiển thị các khác biệt ngày tháng"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
-msgid "Show date of last update?"
+msgid "Show date of last update"
 msgstr "Hiện ngày tháng cập nhật lần cuối không?"
 
 #. I18N: A configuration setting
@@ -12394,21 +12394,21 @@ msgstr "Hiển thị tên của người riêng tư"
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
-msgid "Show notes?"
+msgid "Show notes"
 msgstr "Hiện các chú thích?"
 
 #: modules_v3/ahnentafel_report/report.xml:10
-msgid "Show occupations?"
+msgid "Show occupations"
 msgstr "Hiẹn các nghề nghiệp?"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
-msgid "Show only births, deaths, and marriages?"
+msgid "Show only births, deaths, and marriages"
 msgstr "Hiện ngày sinh, chết và kết hôn?"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
-msgid "Show only events of living individuals?"
+msgid "Show only events of living individuals"
 msgstr "Chỉ hiện sự kiện của người sống?"
 
 #: app/Functions/FunctionsPrintLists.php:169
@@ -12420,7 +12420,7 @@ msgid "Show only individuals for whom the gender is not known."
 msgstr "Chỉ hiện người không rõ giới tính."
 
 #: app/Module/SlideShowModule.php:262
-msgid "Show only individuals, events, or all?"
+msgid "Show only individuals, events, or all"
 msgstr "Chỉ hiển thị người, sự kiện hay tất cả?"
 
 #: app/Functions/FunctionsPrintLists.php:160
@@ -12443,7 +12443,7 @@ msgstr "Hiện các thay đổi chờ duyệt"
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
-msgid "Show photos?"
+msgid "Show photos"
 msgstr "Hiển thị hình?"
 
 #: placelist.php:83
@@ -12472,11 +12472,11 @@ msgid "Show research tasks that have a date in the future"
 msgstr "Hiển thị các tác vụ nghiên cứu có thời gian thực hiện ở tương l"
 
 #: modules_v3/ahnentafel_report/report.xml:11
-msgid "Show residences?"
+msgid "Show residences"
 msgstr "Hiện nơi cư trú?"
 
 #: app/Module/SlideShowModule.php:408
-msgid "Show slide show controls?"
+msgid "Show slide show controls"
 msgstr "Hiển thị các nút điều khiển chiếu ảnh?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
@@ -12484,7 +12484,7 @@ msgstr "Hiển thị các nút điều khiển chiếu ảnh?"
 #: modules_v3/family_group_report/report.xml:7
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
-msgid "Show sources?"
+msgid "Show sources"
 msgstr "Hiện các nguồn tư liệu?"
 
 #: familybook.php:82 hourglass.php:73
@@ -12531,7 +12531,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
-msgid "Show this block for which languages?"
+msgid "Show this block for which languages"
 msgstr "Hiện khối này cho ngôn ngữ nào?"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
@@ -12945,7 +12945,7 @@ msgid "Start at parents"
 msgstr "Bắt Đầu ở Cha Mẹ"
 
 #: app/Module/SlideShowModule.php:414
-msgid "Start slide show on page load?"
+msgid "Start slide show on page load"
 msgstr "Bắt đầu chạy ảnh chiếu khi tải trang?"
 
 #. I18N: The earliest year in a range
@@ -13011,7 +13011,7 @@ msgstr "Lưu trữ hình đủ kích cỡ có hình chìm trên máy phục vụ
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
-msgid "Store watermarked thumbnails on server?"
+msgid "Store watermarked thumbnails on server"
 msgstr "Lưu hình nhỏ có hình chìm trên máy chủ?"
 
 #. I18N: Name of a module
@@ -15548,12 +15548,12 @@ msgid "Where is your PhpGedView installation?"
 msgstr "File cài đặt PhpGedView của bạn ở đâu?"
 
 #: app/Module/SiteMapModule.php:308
-msgid "Which family trees should be included in the sitemaps?"
+msgid "Which family trees should be included in the sitemaps"
 msgstr "Cây gia đình nào sẽ được thêm vào sơ đồ site?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
-msgid "Who can upload new media files?"
+msgid "Who can upload new media files"
 msgstr "Ai có thể tải tập tin đa phương tiện?"
 
 #. I18N: Name of a module. (A list of users who are online now)

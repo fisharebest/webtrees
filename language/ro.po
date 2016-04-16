@@ -7306,7 +7306,7 @@ msgstr ""
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
 msgstr ""
 
-#. I18N: Help text for the “Who can upload new media files?” configuration setting
+#. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1040
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr ""
@@ -7463,7 +7463,7 @@ msgid "Include subfolders"
 msgstr ""
 
 #: lifespan.php:86
-msgid "Include the individual’s immediate family?"
+msgid "Include the individual’s immediate family"
 msgstr ""
 
 #: app/Stats.php:6828
@@ -10624,7 +10624,7 @@ msgid "Place contains"
 msgstr "Locul conţine"
 
 #: app/Module/TopPageViewsModule.php:165
-msgid "Place counts before or after name?"
+msgid "Show counts before or after name"
 msgstr "Plasează contoarele înainte sau după nume ?"
 
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
@@ -10970,7 +10970,7 @@ msgid "Primidi"
 msgstr ""
 
 #: modules_v3/family_group_report/report.xml:10
-msgid "Print basic events when blank?"
+msgid "Print basic events when blank"
 msgstr ""
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
@@ -11932,7 +11932,7 @@ msgid "Send broadcast messages"
 msgstr ""
 
 #: app/Module/ReviewChangesModule.php:185
-msgid "Send out reminder emails?"
+msgid "Send out reminder emails"
 msgstr "Trimiteţi emailuri pentru memento-uri ?"
 
 #. I18N: A site configuration setting
@@ -12317,7 +12317,7 @@ msgstr "Arată toate etichetele"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
-msgid "Show an age cursor?"
+msgid "Show an age cursor"
 msgstr ""
 
 #. I18N: A configuration setting
@@ -12326,11 +12326,11 @@ msgid "Show chart details by default"
 msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:12
-msgid "Show children of ancestors?"
+msgid "Show children of ancestors"
 msgstr ""
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
-msgid "Show common surnames?"
+msgid "Show common surnames"
 msgstr "Arată lista de nume de familie comune ?"
 
 #: app/Functions/FunctionsPrintLists.php:720
@@ -12367,7 +12367,7 @@ msgstr "Arată diferenţele între date"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
-msgid "Show date of last update?"
+msgid "Show date of last update"
 msgstr "Afişează data ultimei actualizări?"
 
 #. I18N: A configuration setting
@@ -12455,21 +12455,21 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
-msgid "Show notes?"
+msgid "Show notes"
 msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:10
-msgid "Show occupations?"
+msgid "Show occupations"
 msgstr ""
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
-msgid "Show only births, deaths, and marriages?"
+msgid "Show only births, deaths, and marriages"
 msgstr "Arată doar naşterile, decesele şi căsătoriile ?"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
-msgid "Show only events of living individuals?"
+msgid "Show only events of living individuals"
 msgstr "Arăta doar evenimentele legate de persoanele în viaţă ?"
 
 #: app/Functions/FunctionsPrintLists.php:169
@@ -12481,7 +12481,7 @@ msgid "Show only individuals for whom the gender is not known."
 msgstr "Arată doar persoanele al căror sex este necunoscut."
 
 #: app/Module/SlideShowModule.php:262
-msgid "Show only individuals, events, or all?"
+msgid "Show only individuals, events, or all"
 msgstr "Arată doar persoane, evenimente sau toate?"
 
 #: app/Functions/FunctionsPrintLists.php:160
@@ -12504,7 +12504,7 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
-msgid "Show photos?"
+msgid "Show photos"
 msgstr ""
 
 #: placelist.php:83
@@ -12533,11 +12533,11 @@ msgid "Show research tasks that have a date in the future"
 msgstr "Afişează sarcinile de cercetare care au dată în viitor"
 
 #: modules_v3/ahnentafel_report/report.xml:11
-msgid "Show residences?"
+msgid "Show residences"
 msgstr ""
 
 #: app/Module/SlideShowModule.php:408
-msgid "Show slide show controls?"
+msgid "Show slide show controls"
 msgstr "Afişez controalele secvenţei de imagini?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
@@ -12545,7 +12545,7 @@ msgstr "Afişez controalele secvenţei de imagini?"
 #: modules_v3/family_group_report/report.xml:7
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
-msgid "Show sources?"
+msgid "Show sources"
 msgstr ""
 
 #: familybook.php:82 hourglass.php:73
@@ -12592,7 +12592,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
-msgid "Show this block for which languages?"
+msgid "Show this block for which languages"
 msgstr "Afişează acest bloc pentru ce limbi?"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
@@ -13006,7 +13006,7 @@ msgid "Start at parents"
 msgstr "Începe la părinţi"
 
 #: app/Module/SlideShowModule.php:414
-msgid "Start slide show on page load?"
+msgid "Start slide show on page load"
 msgstr "Pornire secvenţă imagini la încărcarea paginii?"
 
 #. I18N: The earliest year in a range
@@ -13072,7 +13072,7 @@ msgstr ""
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
-msgid "Store watermarked thumbnails on server?"
+msgid "Store watermarked thumbnails on server"
 msgstr ""
 
 #. I18N: Name of a module
@@ -15622,12 +15622,12 @@ msgid "Where is your PhpGedView installation?"
 msgstr ""
 
 #: app/Module/SiteMapModule.php:308
-msgid "Which family trees should be included in the sitemaps?"
+msgid "Which family trees should be included in the sitemaps"
 msgstr "Ce arbori de familie să fie incluşi în hărţile site?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
-msgid "Who can upload new media files?"
+msgid "Who can upload new media files"
 msgstr ""
 
 #. I18N: Name of a module. (A list of users who are online now)
