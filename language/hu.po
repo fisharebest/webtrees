@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 10:01+0000\n"
+"PO-Revision-Date: 2016-04-16 11:18+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -12275,7 +12275,7 @@ msgstr "Legrövidebb házasság"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr "Rejtett legyen ez a blokk, amikor üres?"
+msgstr "Rejtett legyen ez a blokk, amikor üres"
 
 #: calendar.php:229
 msgid "Show"
@@ -15830,7 +15830,7 @@ msgstr "Használhat HTML-t a válasza megformázásához és más webhelyekre ve
 
 #: admin_site_config.php:435
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr "Aktiválnia kell a „kevésbé biztonságos alkalmazások” opciót a Google fiókjában."
+msgstr "Aktiválnia kell a „kevésbé biztonságos alkalmazások” opciót is a Google fiókjában."
 
 #: setup.php:212
 msgid "You must change this before you can continue."
