@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 12:18+0000\n"
+"PO-Revision-Date: 2016-04-17 06:12+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -1297,6 +1297,14 @@ msgstr "Přidat"
 msgid "Add %s to the clippings cart"
 msgstr "Přidat %s do schránky"
 
+#: app/Module/RelativesTabModule.php:273
+msgid "Add a brother or sister"
+msgstr "Přidat nového bratra nebo sestru"
+
+#: edit_interface.php:516
+msgid "Add a child"
+msgstr "Přidat nové dítě"
+
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
 msgstr "Přidat dítě a vytvořit rodinu s jedním rodičem"
@@ -1309,27 +1317,6 @@ msgstr "Přidat dítě k této rodině"
 #: edit_interface.php:81
 msgid "Add a fact"
 msgstr "Přidat údaj"
-
-#: app/Module/RelativesTabModule.php:154
-msgid "Add a husband to this family"
-msgstr "Přidat manžela k této rodině"
-
-#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
-#: edit_interface.php:1156
-msgid "Add a husband using an existing individual"
-msgstr "Přidat manžela použitím existující osoby"
-
-#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add an associate"
-msgstr "Přidat nového společníka"
-
-#: app/Module/RelativesTabModule.php:273
-msgid "Add a brother or sister"
-msgstr "Přidat nového bratra nebo sestru"
-
-#: edit_interface.php:516
-msgid "Add a child"
-msgstr "Přidat nové dítě"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
@@ -1347,6 +1334,15 @@ msgstr "Přidat nové geografické místo"
 #: edit_interface.php:900
 msgid "Add a husband"
 msgstr "Přidat nového manžela"
+
+#: app/Module/RelativesTabModule.php:154
+msgid "Add a husband to this family"
+msgstr "Přidat manžela k této rodině"
+
+#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
+#: edit_interface.php:1156
+msgid "Add a husband using an existing individual"
+msgstr "Přidat manžela použitím existující osoby"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
@@ -1367,6 +1363,10 @@ msgstr "Přidat novou matku"
 msgid "Add a name"
 msgstr "Přidat nové jméno"
 
+#: app/Module/FamilyTreeNewsModule.php:148
+msgid "Add a news article"
+msgstr "Přidat nový článek"
+
 #: app/Controller/FamilyController.php:149
 #: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
@@ -1375,6 +1375,16 @@ msgstr "Přidat novou poznámku"
 #: app/Functions/FunctionsEdit.php:1141
 msgid "Add a restriction"
 msgstr "Přidat omezení"
+
+#. I18N: label for a yes/no option
+#: app/Module/FamilyTreeFavoritesModule.php:286
+#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
+#: app/Module/UpcomingAnniversariesModule.php:181
+#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
+msgid "Add a scrollbar when block contents grow"
+msgstr "Přidat rolovací lištu, pokud se blok zvětšuje"
 
 #: app/Controller/FamilyController.php:155
 #: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
@@ -1394,6 +1404,11 @@ msgstr "Přidat nový pramen citací"
 msgid "Add a spouse"
 msgstr "Přidat nového partnera"
 
+#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
+#: app/Module/StoriesModule.php:367
+msgid "Add a story"
+msgstr "Přidat příběh"
+
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
@@ -1403,25 +1418,6 @@ msgstr "Přidat nového uživatele"
 #: edit_interface.php:897
 msgid "Add a wife"
 msgstr "Přidat novou manželku"
-
-#: app/Module/FamilyTreeNewsModule.php:148
-msgid "Add a news article"
-msgstr "Přidat nový článek"
-
-#. I18N: label for a yes/no option
-#: app/Module/FamilyTreeFavoritesModule.php:286
-#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230
-#: app/Module/ReviewChangesModule.php:193
-#: app/Module/UpcomingAnniversariesModule.php:181
-#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
-msgid "Add a scrollbar when block contents grow"
-msgstr "Přidat rolovací lištu, pokud se blok zvětšuje"
-
-#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
-#: app/Module/StoriesModule.php:367
-msgid "Add a story"
-msgstr "Přidat příběh"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1436,6 +1432,10 @@ msgstr "Přidat manželku použitím existující osoby"
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
 msgstr "Přidat otázku do FAQ"
+
+#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
+msgid "Add an associate"
+msgstr "Přidat nového společníka"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -7488,7 +7488,7 @@ msgstr "Včetně podsložek"
 
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Včetně nejbližší rodiny dané osoby?"
+msgstr "Včetně nejbližší rodiny dané osoby"
 
 #: app/Stats.php:6828
 msgid "India"
@@ -10650,10 +10650,6 @@ msgstr "Kontrola místa"
 msgid "Place contains"
 msgstr "Místo obsahuje"
 
-#: app/Module/TopPageViewsModule.php:165
-msgid "Show counts before or after name"
-msgstr "Umístit počty před nebo za jméno?"
-
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
 msgid "Place hierarchy"
@@ -10998,7 +10994,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Tisknout základní události, pokud jsou prázdné?"
+msgstr "Tisknout základní události, i když jsou prázdné"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
 msgid "Privacy"
@@ -11963,7 +11959,7 @@ msgstr "Poslat zprávy všem uživatelům"
 
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Posílat emailem upozornění?"
+msgstr "Posílat emailem upozornění"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329
@@ -12348,7 +12344,7 @@ msgstr "Zobrazit všechny tagy"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Zobrazit ukazatel věku?"
+msgstr "Zobrazit ukazatel věku"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1366
@@ -12357,11 +12353,15 @@ msgstr "Podrobnosti diagramu normálně zobrazit"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Zobrazit děti předků?"
+msgstr "Zobrazit děti předků"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
 msgid "Show common surnames"
-msgstr "Zobrazit nejčastější příjmení?"
+msgstr "Zobrazit nejčastější příjmení"
+
+#: app/Module/TopPageViewsModule.php:165
+msgid "Show counts before or after name"
+msgstr "Počty zobrazit před nebo za jménem"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12398,7 +12398,7 @@ msgstr "Zobrazit časové rozdíly"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
 msgid "Show date of last update"
-msgstr "Zobrazit datum poslední aktualizace?"
+msgstr "Zobrazit datum poslední aktualizace"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:391
@@ -12486,21 +12486,21 @@ msgstr "Zobrazit jména neveřejných osob"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Zobrazit poznámky?"
+msgstr "Zobrazit poznámky"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Zobrazit zaměstnání?"
+msgstr "Zobrazit zaměstnání"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Zobrazit jen narození, úmrtí a svatby?"
+msgstr "Zobrazit jen narození, úmrtí a sňatky"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Zobrazit události pouze pro žijící osoby?"
+msgstr "Zobrazit pouze události žijících osob"
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
@@ -12512,7 +12512,7 @@ msgstr "Zobrazit jen osoby, jejichž pohlaví není známo."
 
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Zobrazit pouze osoby, události nebo vše?"
+msgstr "Zobrazit pouze osoby, události, nebo vše"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -12535,7 +12535,7 @@ msgstr "Zobrazit dosud neschválené změny"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Zobrazovat fotky?"
+msgstr "Zobrazovat fotky"
 
 #: placelist.php:83
 msgid "Show places in hierarchy"
@@ -12564,11 +12564,11 @@ msgstr "Zobrazit badatelské úkoly, které mají datum v budoucnosti."
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Zobrazit sídla?"
+msgstr "Zobrazit bydliště"
 
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls"
-msgstr "Zobrazit ovládací prvky promítání obrázků?"
+msgstr "Zobrazit ovládací prvky promítání obrázků"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12576,7 +12576,7 @@ msgstr "Zobrazit ovládací prvky promítání obrázků?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Zobrazit prameny?"
+msgstr "Zobrazit prameny"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12623,7 +12623,7 @@ msgstr "Zobrazit uživatele, který provedl změnu"
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Pro které jazyky tento blok zobrazit?"
+msgstr "Pro které jazyky tento blok zobrazit"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1038 app/Functions/FunctionsEdit.php:206
@@ -13037,7 +13037,7 @@ msgstr "Začít u rodičů"
 
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load"
-msgstr "Spustit promítání obrázků při nahrání stránky?"
+msgstr "Spustit promítání obrázků při nahrání stránky"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13098,12 +13098,12 @@ msgstr "Zastavit"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
 msgid "Store watermarked full size images on server"
-msgstr "Ukládat na server obrázky v plné velikosti chráněné vodoznakem?"
+msgstr "Ukládat na server obrázky v plné velikosti chráněné vodoznakem"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
 msgid "Store watermarked thumbnails on server"
-msgstr "Ukládat na server vodoznakem chráněné náhledy?"
+msgstr "Ukládat na server vodoznakem chráněné náhledy"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -15654,12 +15654,12 @@ msgstr "Kde je vaše instalace PhpGedView ?"
 
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Které rodokmeny by se měly zobrazit v mapách stránek?"
+msgstr "Které rodokmeny se mají zahrnout do map stránek"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
 msgid "Who can upload new media files"
-msgstr "Kdo může nahrávat nové mediální soubory?"
+msgstr "Kdo může nahrávat nové mediální soubory"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
