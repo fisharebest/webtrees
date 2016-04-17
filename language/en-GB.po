@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-04-17 16:46+0000\n"
+"PO-Revision-Date: 2016-04-17 17:09+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <http://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -1787,7 +1787,7 @@ msgstr "Album"
 
 #: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Albuquerque, New Mexico"
-msgstr "Albuquerque, New Mexico"
+msgstr "Albuquerque, New Mexico, United States"
 
 #: app/Stats.php:6786
 msgid "Algeria"
@@ -3838,7 +3838,7 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:125
 msgid "Colonia Juarez, Mexico"
-msgstr "Colonia Juárez"
+msgstr "Colonia Juárez, Mexico"
 
 #: app/GedcomCode/GedcomCodeTemp.php:133
 msgid "Columbia River, Washington"
@@ -15685,7 +15685,7 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:337
 msgid "Winter Quarters, Nebraska"
-msgstr ""
+msgstr "Winter Quarters, Nebraska, United States"
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"
