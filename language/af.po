@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 14:56+0000\n"
+"PO-Revision-Date: 2016-04-17 13:37+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -1264,11 +1264,11 @@ msgstr "Voeg %s by die versameling knipsels"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
-msgstr "Skep 'n nuwe broer/suster"
+msgstr "Voeg 'n broer of suster by"
 
 #: edit_interface.php:516
 msgid "Add a child"
-msgstr "Voeg 'n nuwe kind by"
+msgstr "Voeg 'n kind by"
 
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
@@ -1277,69 +1277,69 @@ msgstr "Voeg 'n kind by om 'n eenouergesin te skep"
 #: app/Controller/FamilyController.php:82
 #: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
-msgstr "Skep 'n kind vir hierdie gesin"
+msgstr "Voeg 'n kind by hierdie gesin"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr "Skep ’n feit of gebeurtenis"
+msgstr "Voeg 'n feit by"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
-msgstr "Voeg 'n nuwe vader by"
+msgstr "Voeg 'n vader by"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
-msgstr "Skep 'n nuwe gunsteling"
+msgstr "Voeg 'n gunsteling by"
 
 #: app/Module/GoogleMapsModule.php:4628
 msgid "Add a geographic location"
-msgstr "Voeg 'n nuwe geografiese ligging toe"
+msgstr "Voeg 'n geografiese ligging by"
 
 #: app/Module/RelativesTabModule.php:385 edit_interface.php:810
 #: edit_interface.php:900
 msgid "Add a husband"
-msgstr "Voeg 'n nuwe eggenoot by"
+msgstr "Voeg 'n eggenoot by"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
-msgstr "Skep 'n eggenoot vir hierdie gesin"
+msgstr "Voeg 'n eggenoot by hierdie gesin"
 
 #: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
 #: edit_interface.php:1156
 msgid "Add a husband using an existing individual"
-msgstr "Voeg eggenoot met behulp van 'n bestaande persoon by"
+msgstr "Voeg 'n reeds bestaande persoon as eggenoot by hierdie gesin"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
-msgstr "Skep 'n nuwe joernaalinskrywing"
+msgstr "Voeg 'n joernaalinskrywing by"
 
 #: app/Controller/FamilyController.php:162
 #: app/Functions/FunctionsEdit.php:1131 app/Module/AlbumModule.php:98
 #: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
 #: source.php:184
 msgid "Add a media object"
-msgstr "Voeg 'n nuwe media-objek toe"
+msgstr "Voeg 'n media-objek by"
 
 #: app/Module/RelativesTabModule.php:323 edit_interface.php:672 family.php:114
 msgid "Add a mother"
-msgstr "Voeg 'n nuwe moeder by"
+msgstr "Voeg 'n moeder by"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
 msgid "Add a name"
-msgstr "Voeg nuwe Naam by"
+msgstr "Voeg 'n naam by"
 
 #: app/Module/FamilyTreeNewsModule.php:148
 msgid "Add a news article"
-msgstr "Skep 'n nuwe nuusberig"
+msgstr "Voeg 'n nuusberig by"
 
 #: app/Controller/FamilyController.php:149
 #: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
-msgstr "Skep 'n nuwe nota"
+msgstr "Voeg 'n nota by"
 
 #: app/Functions/FunctionsEdit.php:1141
 msgid "Add a restriction"
-msgstr "Skep 'n nuwe beperking"
+msgstr "Voeg 'n beperking by"
 
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
@@ -1349,66 +1349,66 @@ msgstr "Skep 'n nuwe beperking"
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
-msgstr "Voeg 'n skuifbalk toe wanneer die inhoud van 'n blok toeneem"
+msgstr "Voeg 'n skuifbalk by wanneer die inhoud van 'n blok toeneem"
 
 #: app/Controller/FamilyController.php:155
 #: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
 msgid "Add a shared note"
-msgstr "Skep 'n nuwe gedeelde nota"
+msgstr "Voeg 'n gedeelde nota by"
 
 #: app/Module/RelativesTabModule.php:271
 msgid "Add a son or daughter"
-msgstr "Skep 'n nuwe seun/dogter"
+msgstr "Voeg 'n seun of dogter by"
 
 #: app/Controller/FamilyController.php:172
 #: app/Functions/FunctionsEdit.php:1060 app/Module/SourcesTabModule.php:93
 msgid "Add a source citation"
-msgstr "Skep 'n nuwe bronvermelding"
+msgstr "Voeg 'n bronvermelding by"
 
 #: edit_interface.php:837
 msgid "Add a spouse"
-msgstr "Voeg 'n nuwe gade by"
+msgstr "Voeg 'n gade by"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
 msgid "Add a story"
-msgstr "Skep 'n nuwe verhaal"
+msgstr "Voeg 'n verhaal by"
 
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
-msgstr "Skep 'n nuwe gebruiker"
+msgstr "Voeg 'n gebruiker by"
 
 #: app/Module/RelativesTabModule.php:373 edit_interface.php:807
 #: edit_interface.php:897
 msgid "Add a wife"
-msgstr "Voeg 'n nuwe eggenote by"
+msgstr "Voeg 'n eggenote by"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
-msgstr "Skep 'n eggenote vir hierdie gesin"
+msgstr "Voeg 'n eggenote by hierdie gesin"
 
 #: app/Module/RelativesTabModule.php:378 edit_interface.php:1087
 #: edit_interface.php:1158
 msgid "Add a wife using an existing individual"
-msgstr "Voeg eggenote met behulp van 'n bestaande persoon by"
+msgstr "Voeg 'n reeds bestaande persoon by as 'n eggenote"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
-msgstr "Skep 'n FAQ item"
+msgstr "Voeg 'n FAQ item by"
 
 #: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
 msgid "Add an associate"
-msgstr "Skep 'n nuwe deelgenoot"
+msgstr "Voeg 'n deelgenoot by"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
-msgstr "Voeg nog 'n persoon toe aan die diagram"
+msgstr "Voeg nog 'n persoon by die diagram"
 
 #: app/Functions/FunctionsPrint.php:556
 msgid "Add from clipboard"
-msgstr "Voeg vanaf die klembord by"
+msgstr "Voeg by vanaf die klembord"
 
 #: lifespan.php:44 modules_v3/GEDFact_assistant/census/census-edit.php:77
 msgid "Add individuals"
@@ -1420,7 +1420,7 @@ msgstr "Voeg skakels by"
 
 #: app/Module/RelativesTabModule.php:226
 msgid "Add marriage details"
-msgstr "Voeg huweliks besonderhede by"
+msgstr "Voeg huwelikbesonderhede by"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
@@ -1428,7 +1428,7 @@ msgstr "Voeg ontbrekende sterfrekords by"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:35
 msgid "Add missing married names"
-msgstr "Voeg ontbrekende getroude name toe"
+msgstr "Voeg ontbrekende getroude name by"
 
 #: search_advanced.php:280
 msgid "Add more fields"
@@ -1440,6 +1440,7 @@ msgid "Add narrative stories to individuals in the family tree."
 msgstr "Voeg verhale by vir persone in die stamboom."
 
 #: admin_trees_manage.php:279
+#, fuzzy
 msgid "Add spaces where long lines were wrapped"
 msgstr "Voeg spasies by waar lang reëls onderbreek is"
 
@@ -1447,7 +1448,7 @@ msgstr "Voeg spasies by waar lang reëls onderbreek is"
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:422
 #: app/Module/ClippingsCartModule.php:785
 msgid "Add the GEDCOM media path to filenames"
-msgstr "Voeg die GEDCOM media pad by lêername"
+msgstr "Voeg die GEDCOM media-pad by lêername"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:935
@@ -1475,7 +1476,7 @@ msgstr "Voeg ongekoppelde rekords by"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
 msgid "Add watermarks to thumbnails"
-msgstr "Voeg watermerk by die miniature"
+msgstr "Voeg watermerke by die miniature"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -1484,7 +1485,7 @@ msgstr "Voeg jou eie teks en grafika by."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
-msgstr "Wysig ’n nuusberig/joernaalinskrywing of skep ’n nuwe"
+msgstr "Wysig/voeg ’n joernaalinskrywing/nuusberig by"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:113
 msgid "Add/insert a blank row"
@@ -1822,6 +1823,7 @@ msgid "All changes in PhpGedView must be accepted"
 msgstr "Alle veranderinge in PhpGedView moet aanvaar word"
 
 #: admin_trees_manage.php:714
+#, fuzzy
 msgid "All existing PhpGedView users must have distinct email addresses"
 msgstr "Alle bestaande PhpGedView-gebruikers moet unieke eposadresse hê"
 
@@ -3957,7 +3959,7 @@ msgstr "Inhoud"
 
 #: app/Module/GoogleMapsModule.php:4324
 msgid "Continue adding"
-msgstr "Gaan voort met die toevoegings"
+msgstr "Gaan voort met die byvoegings"
 
 #. I18N: gedcom tag CONT
 #: app/GedcomTag.php:306
@@ -5324,7 +5326,7 @@ msgstr "Duodi"
 
 #: admin_users.php:73 edituser.php:60 login.php:286
 msgid "Duplicate email address. A user with that email already exists."
-msgstr "Duplikaat e-posadres. 'n Gebruiker met daardie e-posadres bestaan reeds."
+msgstr "Duplikaat eposadres. 'n Gebruiker met daardie eposadres bestaan reeds."
 
 #: admin_users.php:71 edituser.php:58 login.php:284
 msgid "Duplicate user name. A user with that user name already exists. Please choose another user name."
@@ -5333,7 +5335,7 @@ msgstr "Duplikaat gebruikersnaam. 'n Gebruiker met daardie naam bestaan reeds. K
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
 msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed. webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required. To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "E-posadres wat outomaties in die ‘Van:’-veld van webtrees gegenereerde e-posse ingevul word.<br><br>webtrees kan outomaties e-posse skep om beheerders in te lig oor wysigings wat gekontroleer moet word. webtrees stuur ook kennisgewings per e-pos aan gebruikers wat 'n rekening versoek het.<br><br>Meestal lyk die ‘Van:’-veld van hierdie outomatiese gegenereerde e-posse iets soos <i>Van: webtrees-noreply@yoursite</i> om te wys dat die e-pos nie 'n antwoord vereis nie. Om gemorspos en ander e-posmisbruik teë te werk vereis sommige e-possstelsels dat die ‘Van:’-veld 'n adres van 'n geldige e-posrekening bevat. Hierdie e-possstelsels aanvaar geen bodskappe nie wat afkomstig is van 'n rekening soos <i>webtrees-noreply</i>."
+msgstr "Eposadres wat outomaties in die ‘Van:’-veld van webtrees gegenereerde eposse ingevul word.<br><br>webtrees kan outomaties eposse skep om beheerders in te lig oor wysigings wat gekontroleer moet word. webtrees stuur ook kennisgewings per epos aan gebruikers wat 'n rekening versoek het.<br><br>Meestal lyk die ‘Van:’-veld van hierdie outomatiese gegenereerde eposse iets soos <i>Van: webtrees-noreply@yoursite</i> om te wys dat die epos nie 'n antwoord vereis nie. Om gemorspos en ander eposmisbruik teë te werk vereis sommige eposstelsels dat die ‘Van:’-veld 'n adres van 'n geldige eposrekening bevat. Hierdie eposstelsels aanvaar geen bodskappe nie wat afkomstig is van 'n rekening soos <i>webtrees-noreply</i>."
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -5551,7 +5553,7 @@ msgstr "Elul"
 #: app/Module/UserMessagesModule.php:114 edituser.php:259 login.php:322
 #: login.php:426 message.php:117 message.php:270 setup.php:441
 msgid "Email address"
-msgstr "E-posadres"
+msgstr "Eposadres"
 
 #: admin_users.php:382
 msgid "Email verified"
@@ -7272,7 +7274,7 @@ msgstr "As 'n persoon nie aan sy eerste voornaam bekend was nie, moet die naam w
 #. I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1202
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
-msgstr "As die aantal kere wat 'n van in die genealogie voorkom minder is as die drempelwaarde, sal die naam nie op de lys verskyn nie. Dit kan hier met die hand bygevoeg word. As meer as een van ingevoer word, moeten hulle deur 'n komma geskei word.<b>Vanne is hooflettergevoelig.</b>"
+msgstr "As die aantal kere wat 'n van in die genealogie voorkom minder is as die drempelwaarde, sal die naam nie op de lys verskyn nie. Dit kan hier met die hand bygevoeg word. As meer as een van ingevoer word, moet hulle deur 'n komma geskei word.<b>Vanne is hooflettergevoelig.</b>"
 
 #: help_text.php:224
 #, php-format
@@ -10773,7 +10775,7 @@ msgstr "Speel af"
 
 #: login.php:338
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
-msgstr "Klik op die volgende skakel en vul die gegewens in om jou gebruikersnaam en e-posadres te bevestig."
+msgstr "Klik op die volgende skakel en vul die gegewens in om jou gebruikersnaam en eposadres te bevestig."
 
 #: search.php:55
 msgid "Please enter a given name, surname, or place in addition to the year"
@@ -10785,7 +10787,7 @@ msgstr "Voer asseblief 'n onderwerp vir die boodskap in."
 
 #: message.php:50
 msgid "Please enter a valid email address."
-msgstr "Voer asseblief 'n geldige e-posadres in."
+msgstr "Voer asseblief 'n geldige eposadres in."
 
 #: app/Module/CensusAssistantModule.php:169 find.php:127 search.php:36
 #: search.php:48
@@ -10798,7 +10800,7 @@ msgstr "Skryf asseblief iets in die teks van die boodskap voordat dit gestuur wo
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
-msgstr "Verskaf asseblief you e-posadres sodat ons met jou in verbinding kan tree in antwoord op hierdie boodskap. As jy nie 'n e-posadres verskaf nie, sal ons nie in staat wees om op jou navraag te reageer nie. Jou e-posadres sal op geen ander manier benut word as om op hierdie navraag te antwoord nie."
+msgstr "Verskaf asseblief you eposadres sodat ons met jou in verbinding kan tree in antwoord op hierdie boodskap. As jy nie 'n eposadres verskaf nie, sal ons nie in staat wees om op jou navraag te reageer nie. Jou eposadres sal op geen ander manier benut word as om op hierdie navraag te antwoord nie."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:92
@@ -11513,7 +11515,7 @@ msgstr "Beperking"
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr "Beperkinge kan by rekords en/of feite gevoeg word. Dit beperk wie die inligting kan sien en wie dit kan wysig."
+msgstr "Beperkinge kan by rekords en/of feite gevoeg word. Dit beperk wie die gegewens kan sien en wie dit kan wysig."
 
 #: app/Stats.php:87
 msgid "Resulting value"
@@ -12664,7 +12666,7 @@ msgstr "Sierra Leone"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr "Dit word aanvaar dat eenvoudige datums in die Gergoriaanse kalender voorkom. Om 'n datum in 'n ander kalender te spesifiseer, moet 'n sleutelwoord voor die datum gevoeg word. Hierdie sleutelwoord is opsioneel as die maand- of jaarformaat dit ondubbelsinnig maak."
+msgstr "Dit word aanvaar dat eenvoudige datums in die Gergoriaanse kalender voorkom. Om 'n datum in 'n ander kalender te spesifiseer, moet 'n sleutelwoord voor die datum bygevoeg word. Hierdie sleutelwoord is opsioneel as die maand- of jaarformaat dit ondubbelsinnig maak."
 
 #: find.php:190
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
@@ -13621,7 +13623,7 @@ msgstr "Die nuwe lêers is op die oomblik in die lêergids %s geplaas."
 
 #: admin_site_config.php:490
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr "Die nuwe gebruiker sal gevra word om sy/haar e-posadres te bevestig voordat die rekening geskep word."
+msgstr "Die nuwe gebruiker sal gevra word om sy/haar eposadres te bevestig voordat die rekening geskep word."
 
 #: help_text.php:303
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13943,7 +13945,7 @@ msgstr "Hierdie databasis loop MySQL weergawe %s. Jy kan nie webtrees hier insta
 
 #: admin_users.php:367 edituser.php:265 login.php:430 setup.php:443
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr "Hierdie e-posadres sal gebruik word om wagwoord herinneringsboodskappe te stuur, as ook webwerf kennisgewings en boodskappe van ander familielede wat op die webwerf geregistreer is."
+msgstr "Hierdie eposadres sal gebruik word om wagwoord herinneringsboodskappe te stuur, as ook webwerf kennisgewings en boodskappe van ander familielede wat op die webwerf geregistreer is."
 
 #: addmedia.php:540
 msgid "This entry is ignored if you have entered a URL into the filename field."
@@ -14104,42 +14106,42 @@ msgstr "Dit is die mees onlangste weergawe van webtrees. Opgradering is nie moon
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1860
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers aan gesinne kan koppel. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir gesinne”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers by gesinne kan voeg. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir gesinne”-lys voorkom nie."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1742
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers aan persone kan koppel. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir persone”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers by persone kan voeg. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir persone”-lys voorkom nie."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:2067
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers aan bergplekke kan koppel. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir bergplekke”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers by bergplekke kan voeg. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir bergplekke”-lys voorkom nie."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1978
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers aan bronne kan koppel. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir bronne”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers by bronne kan voeg. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir bronne”-lys voorkom nie."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1889
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer aan gesinne kan koppel. Byvoorbeeld, as MARR in hierdie lys is, sal gebruikers nie meer as een MARR rekord by 'n gesin kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir gesinne”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer by gesinne kan voeg. Byvoorbeeld, as MARR in hierdie lys is, sal gebruikers nie meer as een MARR rekord by 'n gesin kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir gesinne”-lys voorkom nie."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1771
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer aan persone kan koppel. Byvoorbeeld, as BIRT in hierdie lys is, sal gebruikers nie meer as een BIRT rekord by 'n persoon kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir persone”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer by persone kan voeg. Byvoorbeeld, as BIRT in hierdie lys is, sal gebruikers nie meer as een BIRT rekord by 'n persoon kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir persone”-lys voorkom nie."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:2096
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer aan bergplekke kan koppel. Byvoorbeeld, as NAME in hierdie lys is, sal gebruikers nie meer as een NAME rekord by 'n bergplek kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir bergplekke”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer by bergplekke kan voeg. Byvoorbeeld, as NAME in hierdie lys is, sal gebruikers nie meer as een NAME rekord by 'n bergplek kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir bergplekke”-lys voorkom nie."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:2007
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer aan bronne kan koppel. Byvoorbeeld, as TITL in hierdie lys is, sal gebruikers nie meer as een TITL rekord by 'n bron kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir bronne”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer by bronne kan voeg. Byvoorbeeld, as TITL in hierdie lys is, sal gebruikers nie meer as een TITL rekord by 'n bron kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir bronne”-lys voorkom nie."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:349
@@ -14322,7 +14324,7 @@ msgstr "Hierdie opsie behou die skakels na private rekords. Dit beteken dat jy '
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:482
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "Hierdie opsie sal die name vertoon (maar geen ander besonderhede nie) van persone wie se rekords privaat gemerk is. Persone word privaat gemerk as hulle nog lewend is of as 'n privaatheidsbeperking aan hulle rekord gevoeg is. Om 'n spesifieke naam te verberg, moet 'n privaatheidsbeperking vir die persoon se naamrekord bygevoeg word."
+msgstr "Hierdie opsie sal die name vertoon (maar geen ander besonderhede nie) van persone wie se rekords privaat gemerk is. Persone word privaat gemerk as hulle nog lewend is of as 'n privaatheidsbeperking aan hulle rekord bygevoeg is. Om 'n spesifieke naam te verberg, moet 'n privaatheidsbeperking vir die persoon se naamrekord bygevoeg word."
 
 #: app/Module/GoogleMapsModule.php:523
 msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
@@ -14628,7 +14630,7 @@ msgstr "Om die ogradering te voltooi, moet jy die lêers met die hand installeer
 
 #: app/Module/ResearchTaskModule.php:205
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Om nuwe navorsingstake te skep, moet jy eers “navorsingstaak” by die lys van feite en gebeurtenisse in die voorkeure vir die stamboom byvoeg."
+msgstr "Om nuwe navorsingstake te skep, moet jy eers “navorsingstaak” by die lys van feite en gebeurtenisse in die voorkeure vir die stamboom voeg."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1665
@@ -15239,7 +15241,7 @@ msgstr "Gebruikersnaam"
 
 #: app/Module/LoginBlockModule.php:100 login.php:221
 msgid "Username or email address"
-msgstr "Gebruikersnaam of e-posadres"
+msgstr "Gebruikersnaam of eposadres"
 
 #: admin_users.php:331 edituser.php:164 login.php:440
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
@@ -15492,7 +15494,7 @@ msgstr "Dit kan lank neem om watermerke vir groot beelde te skep. Besige webwerw
 #: login.php:386
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this website, you will need to know your user name and password."
-msgstr "Ons sal nou 'n e-posbevestiging aan die adres <b>%s</b> stuur. Jy moet jou aansoek vir 'n rekening verifieer deur die instruksies in daardie e-pos te volg. As jy nie jou aansoek vir 'n rekening binne sewe dae verifieer nie, sal jou aansoek outomaties afgekeur word. Jy sal dan weer aansoek moet doen.<br><br>Nadat jy die instruksies in die e-posbevestiging gevolg het, moet 'n beheerder nog die aansoek goedkeur voordat jou rekening gebruik kan word.<br><br>Om by hierdie webwerf aan te meld, sal jy jou gebruikersnaam en wagwoord nodig hê."
+msgstr "Ons sal nou 'n eposbevestiging aan die adres <b>%s</b> stuur. Jy moet jou aansoek vir 'n rekening verifieer deur die instruksies in daardie epos te volg. As jy nie jou aansoek vir 'n rekening binne sewe dae verifieer nie, sal jou aansoek outomaties afgekeur word. Jy sal dan weer aansoek moet doen.<br><br>Nadat jy die instruksies in die e-posbevestiging gevolg het, moet 'n beheerder nog die aansoek goedkeur voordat jou rekening gebruik kan word.<br><br>Om by hierdie webwerf aan te meld, sal jy jou gebruikersnaam en wagwoord nodig hê."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:94
@@ -15564,7 +15566,7 @@ msgstr "Wanneer 'n rekord bygewerk word, word die gebruiker en die tydstempel aa
 
 #: admin_users.php:389
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Wanneer 'n gebruiker 'n rekening aanvra, word 'n e-pos na hulle e-posadres gestuur met 'n verifikasieskakel. Sodra hulle op hierdie skakel klik, weet ons dat die e-posadres korrel is, en die “e-pos geverifieer”-opsie word dan outomaties geselekteer."
+msgstr "Wanneer 'n gebruiker 'n rekening aanvra, word 'n epos na hulle eposadres gestuur met 'n verifikasieskakel. Sodra hulle op hierdie skakel klik, weet ons dat die eposadres korrek is, en die “epos geverifieer”-opsie word dan outomaties geselekteer."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -15573,7 +15575,7 @@ msgstr "Wanneer 'n skakel bygevoeg word, kan die ID-veld nie leeg wees nie."
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2226
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "Wanneer nuwe naverwante familie bygevoeg word, kan jy bronverwysings by die rekords (persoon en gesin) of by die feite en gebeurtenisse (geboorte, huwelik, en dood) byvoeg. Hierdie opsie beheer of rekords of feite by verstek geselekteer word."
+msgstr "Wanneer nuwe naverwante familie bygevoeg word, kan jy bronverwysings by die rekords (persoon en gesin) of by die feite en gebeurtenisse (geboorte, huwelik, en dood) voeg. Hierdie opsie beheer of rekords of feite by verstek geselekteer word."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:858
@@ -15596,7 +15598,7 @@ msgstr "Wanneer jy inligting byvoeg, wysig of skrap, word die wysigings nie onmi
 
 #: message.php:132
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
-msgstr "Wanneer jy hierdie boodskap stuur, sal jy 'n afskrif per e-pos ontvang by die adres wat jy verskaf het."
+msgstr "Wanneer jy hierdie boodskap stuur, sal jy 'n afskrif per epos ontvang by die adres wat jy verskaf het."
 
 #: admin_users.php:608
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
@@ -15736,7 +15738,7 @@ msgstr "Jemen"
 #: login.php:336
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "Jy (of iemand wat voordoen om jou te wees) het 'n rekening aangevra vanaf %1$s deur van die e-posadres %2$s gebruik te maak."
+msgstr "Jy (of iemand wat voordoen om jou te wees) het 'n rekening aangevra vanaf %1$s deur van die eposadres %2$s gebruik te maak."
 
 #: logout.php:24
 msgid "You are logged out."
@@ -15785,7 +15787,7 @@ msgstr "Jy kan 'n hoër of laer perk aanvra, alhoewel die bediener hierdie verso
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Jy kan die privaatheidsberekeninge bespoedig deur 'n sterfrekord toe te ken aan persone wie se dood afgelei kan word uit ander datums, maar van wie geen rekord van die dood, begrafnis, verassing, ens. beskikbaar is nie."
+msgstr "Jy kan die privaatheidsberekeninge bespoedig deur 'n sterfrekord by persone te voeg wie se dood afgelei kan word uit ander datums, maar van wie geen rekord van die dood, begrafnis, verassing, ens. beskikbaar is nie."
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
@@ -15917,7 +15919,7 @@ msgstr "Jy moet die “%1$s” van “%2$s” verwyder en weer probeer."
 
 #: admin_users.php:395
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "Jy moet nie 'n rekening goedkeur nie tensy jy seker is dat die e-posadres korrek is."
+msgstr "Jy moet nie 'n rekening goedkeur nie tensy jy seker is dat die eposadres korrek is."
 
 #: login.php:325
 msgid "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
