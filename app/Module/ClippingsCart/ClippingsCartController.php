@@ -317,7 +317,7 @@ class ClippingsCartController {
 			}
 			unlink(WT_DATA_DIR . $tempFileName);
 		} else {
-			echo I18N::translate('Cannot create') . " " . WT_DATA_DIR . "$tempFileName " . I18N::translate('Check the access rights on this folder.') . "<br><br>";
+			echo I18N::translate('The file %s could not be created.', WT_DATA_DIR . $tempFileName) . " " . I18N::translate('Check the access rights on this folder.') . "<br><br>";
 		}
 	}
 
