@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-17 08:47+0000\n"
+"PO-Revision-Date: 2016-04-17 08:50+0000\n"
 "Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
 "Language-Team: Polish <http://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
@@ -1508,7 +1508,7 @@ msgstr "Dodaj niepowiązane wpisy"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
 msgid "Add watermarks to thumbnails"
-msgstr "Dodać znak wodny do miniaturek?"
+msgstr "Dodaj znak wodny do miniaturek"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -12355,11 +12355,11 @@ msgstr "Pokaż dzieci przodków"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
 msgid "Show common surnames"
-msgstr "Pokazać najczęstsze nazwiska?"
+msgstr "Pokaż najczęstsze nazwiska"
 
 #: app/Module/TopPageViewsModule.php:165
 msgid "Show counts before or after name"
-msgstr "Gdzie umieścić liczniki?"
+msgstr "Gdzie umieścić liczniki"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12510,7 +12510,7 @@ msgstr "Pokaż tylko osoby, których płeć jest nieznana."
 
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Pokazać osoby, wydarzenia, czy wszystko?"
+msgstr "Pokaż osoby, wydarzenia, czy wszystko"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -12566,7 +12566,7 @@ msgstr "Pokaż miejsca zamieszkania"
 
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls"
-msgstr "Pokaż kontrolki pokazu slajdów?"
+msgstr "Pokaż kontrolki pokazu slajdów"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -13035,7 +13035,7 @@ msgstr "Zacznij od rodziców"
 
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load"
-msgstr "Rozpocznij pokaz slajdów po odwiedzeniu strony?"
+msgstr "Rozpocznij pokaz slajdów po załadowaniu strony"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13096,12 +13096,12 @@ msgstr "Zatrzymaj"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
 msgid "Store watermarked full size images on server"
-msgstr "Przechowywać obrazy ze znakiem wodnym na serwerze?"
+msgstr "Przechowuj obrazy ze znakiem wodnym na serwerze"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
 msgid "Store watermarked thumbnails on server"
-msgstr "Przechowywać miniaturki ze znakiem wodnym na serwerze?"
+msgstr "Przechowuj miniaturki ze znakiem wodnym na serwerze"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -15652,7 +15652,7 @@ msgstr "Gdzie jest instalacja PhpGedView?"
 
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Które drzewa genealogiczne powinny być zawarte w mapie witryny?"
+msgstr "Drzewa genealogiczne, które powinny być zawarte w mapie witryny"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
