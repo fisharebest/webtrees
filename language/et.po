@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 17:21+0000\n"
+"PO-Revision-Date: 2016-04-17 19:17+0000\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <http://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -726,7 +726,7 @@ msgstr "<vaiketeema>"
 
 #: login.php:405
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">Märkus:</div><div class=\"error\">Peale selle välja täitmist ja salvestamist te kinnitate:<ul><li>,et kaitsete sellel leheküljel olevate elavate isikute privaatsust;</li><li>ja tekstilahtrisse all, et seletade kellega te olete sugulane või selleks, et anda meile infot kellegi kohta, kes peaks olema siin veebilehel kirjas.</li></ul></div>"
+msgstr "<div class=\"largeError\">Märkus:</div><div class=\"error\">Peale selle välja täitmist ja salvestamist te nõustute järgnevaga:<ul><li>te kaitsete sellel leheküljel olevate elavate isikute privaatsust;</li><li>allpool paiknevas tekstilahtris selgitate, kellega siin sugupuu te seotud olete, või annate meile infot isiku(te) kohta, kes siin lehel kirjas võiks olla.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:409 app/Functions/FunctionsPrintFacts.php:545
