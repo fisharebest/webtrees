@@ -105,7 +105,7 @@ if (!isset($_POST['lang'])) {
 	}
 
 	echo
-		'<p>', I18N::translate('Change language'), ' ',
+		'<p>', I18N::translate('Language'), ' ',
 		FunctionsEdit::selectEditControl('change_lang', $installed_languages, null, WT_LOCALE, 'onchange="window.location=\'' . WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
 		'</p>',
 		'<h2>', I18N::translate('Checking server configuration'), '</h2>';
