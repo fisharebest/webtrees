@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-04-17 18:19+0000\n"
+"PO-Revision-Date: 2016-04-17 21:38+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <http://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -3274,123 +3274,123 @@ msgstr "Call number"
 
 #: app/Stats.php:6843
 msgid "Cambodia"
-msgstr ""
+msgstr "Cambodia"
 
 #: app/Stats.php:6767
 msgid "Cameroon"
-msgstr ""
+msgstr "Cameroon"
 
 #: app/GedcomCode/GedcomCodeTemp.php:115
 msgid "Campinas, Brazil"
-msgstr ""
+msgstr "Campinas, Brazil"
 
 #: app/Stats.php:6758
 msgid "Canada"
-msgstr ""
+msgstr "Canada"
 
 #: app/Module/ClippingsCartModule.php:796
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Cannot create"
-msgstr ""
+msgstr "Cannot create"
 
 #: app/Stats.php:6759
 msgid "Cape Colony"
-msgstr ""
+msgstr "Cape Colony"
 
 #: app/Stats.php:6773
 msgid "Cape Verde"
-msgstr ""
+msgstr "Cape Verde"
 
 #: app/GedcomCode/GedcomCodeTemp.php:117
 msgid "Caracas, Venezuela"
-msgstr ""
+msgstr "Caracas, Venezuela"
 
 #: app/GedcomTag.php:1912
 msgid "Card"
-msgstr ""
+msgstr "Card"
 
 #: app/GedcomCode/GedcomCodeTemp.php:83
 msgid "Cardston, Alberta, Canada"
-msgstr ""
+msgstr "Cardston, Alberta, Canada"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:170
 msgid "Case insensitive"
-msgstr ""
+msgstr "Case insensitive"
 
 #. I18N: gedcom tag CAST
 #: app/GedcomTag.php:238
 msgid "Caste"
-msgstr ""
+msgstr "Caste"
 
 #: app/Stats.php:6760
 msgid "Catalonia"
-msgstr ""
+msgstr "Catalonia"
 
 #: statistics.php:606
 msgid "Categories"
-msgstr ""
+msgstr "Categories"
 
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:242
 msgid "Cause"
-msgstr ""
+msgstr "Cause"
 
 #: app/GedcomTag.php:354
 msgid "Cause of death"
-msgstr ""
+msgstr "Cause of death"
 
 #: admin_trees_manage.php:754 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
-msgstr ""
+msgstr "Caution! This may take a long time. Be patient."
 
 #: admin_site_upgrade.php:200
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Caution: old modules may not work, or they may prevent webtrees from working."
 
 #: admin_site_upgrade.php:264
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Caution: old themes may not work, or they may prevent webtrees from working."
 
 #: app/Stats.php:6778
 msgid "Cayman Islands"
-msgstr ""
+msgstr "Cayman Islands"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:29
 #: modules_v3/cemetery_report/report.xml:3
 #: modules_v3/cemetery_report/report.xml:35
 msgid "Cemeteries"
-msgstr ""
+msgstr "Cemeteries"
 
 #. I18N: gedcom tag CEME
 #: app/GedcomTag.php:246 modules_v3/cemetery_report/report.xml:54
 msgid "Cemetery"
-msgstr ""
+msgstr "Cemetery"
 
 #. I18N: gedcom tag CENS
 #: app/GedcomTag.php:250
 msgid "Census"
-msgstr ""
+msgstr "Census"
 
 #. I18N: Name of a module
 #: app/Module/CensusAssistantModule.php:39
 msgid "Census assistant"
-msgstr ""
+msgstr "Census assistant"
 
 #: app/Functions/FunctionsEdit.php:1031 app/GedcomTag.php:252
 msgid "Census date"
-msgstr ""
+msgstr "Census date"
 
 #: app/GedcomTag.php:254
 msgid "Census place"
-msgstr ""
+msgstr "Census place"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:136
 msgid "Census transcript"
-msgstr ""
+msgstr "Census transcript"
 
 #: app/Module/GoogleMapsModule.php:1462
 msgid "Center map here"
@@ -3398,35 +3398,35 @@ msgstr "Centre map here"
 
 #: app/Stats.php:6757
 msgid "Central African Republic"
-msgstr ""
+msgstr "Central African Republic"
 
 #: app/GedcomTag.php:1914
 msgid "Certificate"
-msgstr ""
+msgstr "Certificate"
 
 #: app/Stats.php:6945
 msgid "Chad"
-msgstr ""
+msgstr "Chad"
 
 #: edit_interface.php:1961 edit_interface.php:1997 edit_interface.php:2024
 msgid "Change"
-msgstr ""
+msgstr "Change"
 
 #: app/Controller/FamilyController.php:77 edit_interface.php:1914
 #: edit_interface.php:2081
 msgid "Change family members"
-msgstr ""
+msgstr "Change family members"
 
 #: app/Module/GoogleMapsModule.php:611 app/Module/GoogleMapsModule.php:614
 #: app/Module/GoogleMapsModule.php:617 app/Module/GoogleMapsModule.php:672
 #: app/Module/GoogleMapsModule.php:3843 app/Module/GoogleMapsModule.php:4010
 #: app/Module/GoogleMapsModule.php:4013
 msgid "Change flag"
-msgstr ""
+msgstr "Change flag"
 
 #: setup.php:108
 msgid "Change language"
-msgstr ""
+msgstr "Change language"
 
 #: admin_users.php:217
 msgid "Change the blocks on this user’s “My page”"
@@ -3444,13 +3444,13 @@ msgstr "Change the ‘My page’ blocks"
 #: app/Module/RecentChangesModule.php:257
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "Changed on %1$s"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Module/RecentChangesModule.php:254
 #, php-format
 msgid "Changed on %1$s by %2$s"
-msgstr ""
+msgstr "Changed on %1$s by %2$s"
 
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:436
@@ -3458,40 +3458,40 @@ msgstr ""
 #: modules_v3/change_report/report.xml:3
 #: modules_v3/change_report/report.xml:44
 msgid "Changes"
-msgstr ""
+msgstr "Changes"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:84
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Changes in the last %s day"
+msgstr[1] "Changes in the last %s days"
 
 #: admin_trees_manage.php:516
 msgid "Changes log"
-msgstr ""
+msgstr "Changes log"
 
 #: app/Stats.php:6763
 msgid "Channel Islands"
-msgstr ""
+msgstr "Channel Islands"
 
 #. I18N: gedcom tag CHAR
 #: app/GedcomTag.php:270
 msgid "Character set"
-msgstr ""
+msgstr "Character set"
 
 #: admin_module_charts.php:66 admin_modules.php:189
 msgid "Chart"
-msgstr ""
+msgstr "Chart"
 
 #: app/Module/RelationshipsChartModule.php:142
 msgid "Chart preferences"
-msgstr ""
+msgstr "Chart preferences"
 
 #: app/Module/ChartsBlockModule.php:190 statistics.php:584
 msgid "Chart type"
-msgstr ""
+msgstr "Chart type"
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
@@ -3499,46 +3499,46 @@ msgstr ""
 #: admin_trees_config.php:1287 app/Module/ChartsBlockModule.php:34
 #: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
-msgstr ""
+msgstr "Charts"
 
 #: admin_site_upgrade.php:389
 msgid "Check file permissions…"
-msgstr ""
+msgstr "Check file permissions…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:114
 msgid "Check for custom modules…"
-msgstr ""
+msgstr "Check for custom modules…"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:217
 msgid "Check for custom themes…"
-msgstr ""
+msgstr "Check for custom themes…"
 
 #: admin_trees_check.php:33 admin_trees_manage.php:496
 msgid "Check for errors"
-msgstr ""
+msgstr "Check for errors"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:94
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "Check for pending changes…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
-msgstr ""
+msgstr "Check the access rights on this folder."
 
 #: setup.php:266 setup.php:338
 msgid "Check the settings and try again."
-msgstr ""
+msgstr "Check the settings and try again."
 
 #: setup.php:153
 msgid "Checking server capacity"
-msgstr ""
+msgstr "Checking server capacity"
 
 #: setup.php:111
 msgid "Checking server configuration"
-msgstr ""
+msgstr "Checking server configuration"
 
 #: app/GedcomCode/GedcomCodeTemp.php:119
 msgid "Chicago, Illinois, United States"
@@ -3547,49 +3547,49 @@ msgstr "Chicago, Illinois, United States"
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:36 app/GedcomTag.php:274
 msgid "Child"
-msgstr ""
+msgstr "Child"
 
 #: modules_v3/ahnentafel_report/report.xml:388
 #: modules_v3/descendancy_report/report.xml:481
 msgid "Child of "
-msgstr ""
+msgstr "Child of "
 
 #. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:352
 #, php-format
 msgid "Child of %s"
-msgstr ""
+msgstr "Child of %s"
 
 #: app/Functions/FunctionsPrintLists.php:277
 #: app/Functions/FunctionsPrintLists.php:745
 #: modules_v3/family_group_report/report.xml:761
 #: modules_v3/relative_ext_report/report.xml:115 statisticsplot.php:1024
 msgid "Children"
-msgstr ""
+msgstr "Children"
 
 #: statistics.php:303
 msgid "Children in family"
-msgstr ""
+msgstr "Children in family"
 
 #: modules_v3/ahnentafel_report/report.xml:391
 #: modules_v3/descendancy_report/report.xml:484
 msgid "Children of "
-msgstr ""
+msgstr "Children of "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
 msgid "Children take a patronym instead of a surname."
-msgstr ""
+msgstr "Children take a patronym instead of a surname."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:82
 msgid "Children take one surname from the father and one surname from the mother."
-msgstr ""
+msgstr "Children take one surname from the father and one surname from the mother."
 
 #. I18N: In the Portuguese surname tradition, ...
 #: app/SurnameTradition.php:85
 msgid "Children take one surname from the mother and one surname from the father."
-msgstr ""
+msgstr "Children take one surname from the mother and one surname from the father."
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the patrilineal surname tradition, ...
@@ -3598,42 +3598,42 @@ msgstr ""
 #: app/SurnameTradition.php:72 app/SurnameTradition.php:76
 #: app/SurnameTradition.php:91 app/SurnameTradition.php:96
 msgid "Children take their father’s surname."
-msgstr ""
+msgstr "Children take their father’s surname."
 
 #. I18N: In the matrilineal surname tradition, ...
 #: app/SurnameTradition.php:79
 msgid "Children take their mother’s surname."
-msgstr ""
+msgstr "Children take their mother’s surname."
 
 #: app/Stats.php:6764
 msgid "Chile"
-msgstr ""
+msgstr "Chile"
 
 #: app/Stats.php:6765
 msgid "China"
-msgstr ""
+msgstr "China"
 
 #: reportengine.php:116 reportengine.php:124
 msgid "Choose a report to run"
-msgstr ""
+msgstr "Choose a report to run"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Choose relatives"
-msgstr ""
+msgstr "Choose relatives"
 
 #: addmedia.php:460 admin_media_upload.php:213
 msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-msgstr ""
+msgstr "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
 
 #: admin_site_config.php:124
 msgid "Choose user defined welcome text typed below"
-msgstr ""
+msgstr "Choose user defined welcome text typed below"
 
 #: addmedia.php:522 admin_media_upload.php:240
 msgid "Choose: "
-msgstr ""
+msgstr "Choose: "
 
 #. I18N: gedcom tag CHR
 #: app/GedcomTag.php:278 modules_v3/family_group_report/report.xml:206
@@ -3641,55 +3641,55 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:904
 #: modules_v3/missing_facts_report/report.xml:16
 msgid "Christening"
-msgstr ""
+msgstr "Christening"
 
 #: app/GedcomTag.php:1236
 msgid "Christening of a brother"
-msgstr ""
+msgstr "Christening of a brother"
 
 #: app/GedcomTag.php:1195
 msgid "Christening of a child"
-msgstr ""
+msgstr "Christening of a child"
 
 #: app/GedcomTag.php:1193
 msgid "Christening of a daughter"
-msgstr ""
+msgstr "Christening of a daughter"
 
 #: app/GedcomTag.php:1204 app/GedcomTag.php:1213 app/GedcomTag.php:1222
 msgid "Christening of a grandchild"
-msgstr ""
+msgstr "Christening of a grandchild"
 
 #: app/GedcomTag.php:1202
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Christening of a granddaughter"
 
 #: app/GedcomTag.php:1211
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Christening of a granddaughter"
 
 #: app/GedcomTag.php:1220
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Christening of a granddaughter"
 
 #: app/GedcomTag.php:1200
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Christening of a grandson"
 
 #: app/GedcomTag.php:1209
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Christening of a grandson"
 
 #: app/GedcomTag.php:1218
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Christening of a grandson"
 
 #: app/GedcomTag.php:1227
 msgid "Christening of a half-brother"
-msgstr ""
+msgstr "Christening of a half-brother"
 
 #: app/GedcomTag.php:1231
 msgid "Christening of a half-sibling"
@@ -3697,27 +3697,27 @@ msgstr ""
 
 #: app/GedcomTag.php:1229
 msgid "Christening of a half-sister"
-msgstr ""
+msgstr "Christening of a half-sister"
 
 #: app/GedcomTag.php:1240
 msgid "Christening of a sibling"
-msgstr ""
+msgstr "Christening of a sibling"
 
 #: app/GedcomTag.php:1238
 msgid "Christening of a sister"
-msgstr ""
+msgstr "Christening of a sister"
 
 #: app/GedcomTag.php:1191
 msgid "Christening of a son"
-msgstr ""
+msgstr "Christening of a son"
 
 #: app/Stats.php:6777
 msgid "Christmas Island"
-msgstr ""
+msgstr "Christmas Island"
 
 #: app/GedcomCode/GedcomCodeRela.php:90
 msgid "Circumciser"
-msgstr ""
+msgstr "Circumciser"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:670 modules_v3/fact_sources/report.xml:74
@@ -3725,40 +3725,40 @@ msgstr ""
 #: modules_v3/fact_sources/report.xml:277
 #: modules_v3/fact_sources/report.xml:323
 msgid "Citation details"
-msgstr ""
+msgstr "Citation details"
 
 #. I18N: gedcom tag CITN
 #: app/GedcomTag.php:290
 msgid "Citizenship"
-msgstr ""
+msgstr "Citizenship"
 
 #. I18N: gedcom tag CITY
 #: app/GedcomTag.php:294 app/Module/GoogleMapsModule.php:407
 #: app/Module/GoogleMapsModule.php:3959 app/Module/GoogleMapsModule.php:4066
 msgid "City"
-msgstr ""
+msgstr "City"
 
 #: app/GedcomCode/GedcomCodeTemp.php:121
 msgid "Ciudad Juarez, Mexico"
-msgstr ""
+msgstr "Ciudad Juárez, Mexico"
 
 #: app/GedcomTag.php:578 modules_v3/fact_sources/report.xml:202
 msgid "Civil marriage"
-msgstr ""
+msgstr "Civil marriage"
 
 #: app/GedcomCode/GedcomCodeRela.php:98
 msgid "Civil registrar"
-msgstr ""
+msgstr "Civil registrar"
 
 #: app/GedcomCode/GedcomCodeRela.php:96
 msgctxt "FEMALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "Civil registrar"
 
 #: app/GedcomCode/GedcomCodeRela.php:94
 msgctxt "MALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "Civil registrar"
 
 #. I18N: The “Data folder” is a configuration setting
 #. I18N: Menu entry
@@ -3769,72 +3769,72 @@ msgstr "Clean-up data folder"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:76
 msgid "Cleared but not yet completed"
-msgstr ""
+msgstr "Cleared but not yet completed"
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:98
 #: modules_v3/GEDFact_assistant/census/census-edit.php:64
 #, php-format
 msgid "Click %s to choose individual as head of family."
-msgstr ""
+msgstr "Click %s to choose individual as head of family."
 
 #: edit_interface.php:1718
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr ""
+msgstr "Click a row, then drag-and-drop to re-order media"
 
 #: admin_trees_manage.php:722
 msgid "Click here for PhpGedView to webtrees transfer wizard"
-msgstr ""
+msgstr "Click here for PhpGedView to webtrees transfer wizard"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:368
 msgid "Click here to add, edit, or delete"
-msgstr ""
+msgstr "Click here to add, edit, or delete"
 
 #: individual.php:251
 msgid "Click here to open or close the sidebar"
-msgstr ""
+msgstr "Click here to open or close the sidebar"
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:100
 msgid "Click name to add individual to add links list."
-msgstr ""
+msgstr "Click name to add individual to add links list."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:366
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr ""
+msgstr "Click on a title to go straight to it, or scroll down to read them all."
 
 #: app/Module/CensusAssistantModule.php:420
 msgid "Click to choose individual as head of family."
-msgstr ""
+msgstr "Click to choose individual as head of family."
 
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:37
 msgid "Clippings cart"
-msgstr ""
+msgstr "Clippings cart"
 
 #: app/GedcomTag.php:1916
 msgid "Coat of arms"
-msgstr ""
+msgstr "Coat of arms"
 
 #: app/GedcomCode/GedcomCodeTemp.php:123
 msgid "Cochabamba, Bolivia"
-msgstr ""
+msgstr "Cochabamba, Bolivia"
 
 #: app/Stats.php:6761
 msgid "Cocos (Keeling) Islands"
-msgstr ""
+msgstr "Cocos (Keeling) Islands"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:81
 msgid "Coffee and Cream"
-msgstr ""
+msgstr "Coffee and Cream"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:82
 msgid "Cold Day"
-msgstr ""
+msgstr "Cold Day"
 
 #: app/Stats.php:6771
 msgid "Colombia"
-msgstr ""
+msgstr "Colombia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:125
 msgid "Colonia Juarez, Mexico"
@@ -3854,62 +3854,62 @@ msgstr "Columbus, Ohio, United States"
 
 #: medialist.php:164
 msgid "Columns per page"
-msgstr ""
+msgstr "Columns per page"
 
 #. I18N: gedcom tag COMM
 #: admin_site_access.php:297 admin_site_access.php:366 app/GedcomTag.php:298
 msgid "Comment"
-msgstr ""
+msgstr "Comment"
 
 #: login.php:323 login.php:344 login.php:479
 msgid "Comments"
-msgstr ""
+msgstr "Comments"
 
 #. I18N: gedcom tag _COML
 #: app/GedcomTag.php:1245
 msgid "Common law marriage"
-msgstr ""
+msgstr "Common law marriage"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:38
 msgid "Communicate directly with other users, using private messages."
-msgstr ""
+msgstr "Communicate directly with other users, using private messages."
 
 #: app/Stats.php:6772
 msgid "Comoros"
-msgstr ""
+msgstr "Comoros"
 
 #. I18N: Name of a module/chart
 #: app/Controller/CompactController.php:46
 #: app/Module/CompactTreeChartModule.php:33
 msgid "Compact tree"
-msgstr ""
+msgstr "Compact tree"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:43
 #: app/Controller/CompactController.php:125
 #, php-format
 msgid "Compact tree of %s"
-msgstr ""
+msgstr "Compact tree of %s"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
 msgid "Completed before 1970; date not available"
-msgstr ""
+msgstr "Completed before 1970; date not available"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:80
 msgid "Completed; date unknown"
-msgstr ""
+msgstr "Completed; date unknown"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Compress the GEDCOM file"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
 msgid "Concatenation"
-msgstr ""
+msgstr "Concatenation"
 
 #: app/Module/ChartsBlockModule.php:77 app/Module/FamilyTreeNewsModule.php:110
 #: app/Module/FamilyTreeStatisticsModule.php:85
@@ -3921,54 +3921,54 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:78
 #: app/Module/YahrzeitModule.php:74 block_edit.php:64
 msgid "Configure"
-msgstr ""
+msgstr "Configure"
 
 #: admin_users.php:352 edituser.php:226 login.php:463
 msgid "Confirm password"
-msgstr ""
+msgstr "Confirm password"
 
 #. I18N: gedcom tag CONF
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 msgid "Confirmation"
-msgstr ""
+msgstr "Confirmation"
 
 #: app/Stats.php:6769
 msgid "Congo (Brazzaville)"
-msgstr ""
+msgstr "Congo (Brazzaville)"
 
 #: app/Stats.php:6768
 msgid "Congo (Kinshasa)"
-msgstr ""
+msgstr "Congo (Kinshasa)"
 
 #: setup.php:272
 msgid "Connection to database server"
-msgstr ""
+msgstr "Connection to database server"
 
 #: admin_trees_config.php:863
 msgid "Contact information"
-msgstr ""
+msgstr "Contact information"
 
 #: edituser.php:294
 msgid "Contact method"
-msgstr ""
+msgstr "Contact method"
 
 #: search_advanced.php:159 search_advanced.php:221 search_advanced.php:236
 #: search_advanced.php:257 search_advanced.php:272
 msgid "Contains"
-msgstr ""
+msgstr "Contains"
 
 #: app/Module/HtmlBlockModule.php:314 editnews.php:70
 msgid "Content"
-msgstr ""
+msgstr "Content"
 
 #: app/Module/GoogleMapsModule.php:4324
 msgid "Continue adding"
-msgstr ""
+msgstr "Continue adding"
 
 #. I18N: gedcom tag CONT
 #: app/GedcomTag.php:306
 msgid "Continued"
-msgstr ""
+msgstr "Continued"
 
 #: admin.php:460 admin_media.php:613 admin_media_upload.php:180
 #: admin_module_blocks.php:60 admin_module_charts.php:53
