@@ -1968,7 +1968,7 @@ msgid "Ancestral file number"
 msgstr "祖先文件编号 (AFN)"
 
 #: app/GedcomCode/GedcomCodeTemp.php:87
-msgid "Anchorage, Alaska"
+msgid "Anchorage, Alaska, United States"
 msgstr "安克雷奇，阿拉斯加"
 
 #: app/Stats.php:6724
@@ -2192,7 +2192,7 @@ msgid "At sea"
 msgstr "在海上"
 
 #: app/GedcomCode/GedcomCodeTemp.php:93
-msgid "Atlanta, Georgia"
+msgid "Atlanta, Georgia, United States"
 msgstr "亚特兰大，乔治亚州"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
@@ -2528,7 +2528,7 @@ msgid "Batch update"
 msgstr "批量更新"
 
 #: app/GedcomCode/GedcomCodeTemp.php:113
-msgid "Baton Rouge, Louisiana"
+msgid "Baton Rouge, Louisiana, United States"
 msgstr "巴吞鲁日路易斯安那"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
@@ -2584,7 +2584,7 @@ msgid "Bibliography"
 msgstr "书目"
 
 #: app/GedcomCode/GedcomCodeTemp.php:97
-msgid "Billings, Montana"
+msgid "Billings, Montana, United States"
 msgstr "比林斯，蒙大纳"
 
 #. I18N: gedcom tag BLOB
@@ -2597,7 +2597,7 @@ msgid "Bing Maps™"
 msgstr "Bing Maps™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
-msgid "Birmingham, Alabama"
+msgid "Birmingham, Alabama, United States"
 msgstr "伯明翰，阿拉巴马州"
 
 #. I18N: gedcom tag BIRT
@@ -2837,7 +2837,7 @@ msgid "Births by century"
 msgstr "按世纪统计出生"
 
 #: app/GedcomCode/GedcomCodeTemp.php:101
-msgid "Bismarck, North Dakota"
+msgid "Bismarck, North Dakota, United States"
 msgstr "俾斯麦，北达科他州"
 
 #. I18N: gedcom tag BLES
@@ -2874,7 +2874,7 @@ msgid "Bogota, Colombia"
 msgstr "波哥大,哥伦比亚"
 
 #: app/GedcomCode/GedcomCodeTemp.php:105
-msgid "Boise, Idaho"
+msgid "Boise, Idaho, United States"
 msgstr "博伊西，爱达荷州"
 
 #: app/Stats.php:6749
@@ -2899,7 +2899,7 @@ msgid "Bosnia and Herzegovina"
 msgstr "波斯尼亚和黑塞哥维那"
 
 #: app/GedcomCode/GedcomCodeTemp.php:107
-msgid "Boston, Massachusetts"
+msgid "Boston, Massachusetts, United States"
 msgstr "波士顿，马萨诸塞州"
 
 #: app/Functions/FunctionsPrintLists.php:628
@@ -2915,7 +2915,7 @@ msgid "Botswana"
 msgstr "博茨瓦纳"
 
 #: app/GedcomCode/GedcomCodeTemp.php:109
-msgid "Bountiful, Utah"
+msgid "Bountiful, Utah, United States"
 msgstr "Bountifu，犹他州"
 
 #: app/Stats.php:6754
@@ -3504,7 +3504,7 @@ msgid "Checking server configuration"
 msgstr "检查服务器配置"
 
 #: app/GedcomCode/GedcomCodeTemp.php:119
-msgid "Chicago, Illinois"
+msgid "Chicago, Illinois, United States"
 msgstr "芝加哥伊利诺斯"
 
 #. I18N: gedcom tag CHIL
@@ -3804,15 +3804,15 @@ msgid "Colonia Juarez, Mexico"
 msgstr "殖民地华雷斯,墨西哥"
 
 #: app/GedcomCode/GedcomCodeTemp.php:133
-msgid "Columbia River, Washington"
+msgid "Columbia River, Washington, United States"
 msgstr "哥伦比亚河,华盛顿"
 
 #: app/GedcomCode/GedcomCodeTemp.php:127
-msgid "Columbia, South Carolina"
+msgid "Columbia, South Carolina, United States"
 msgstr "哥伦比亚,南卡罗来纳"
 
 #: app/GedcomCode/GedcomCodeTemp.php:129
-msgid "Columbus, Ohio"
+msgid "Columbus, Ohio, United States"
 msgstr "俄亥俄州哥伦布市"
 
 #: medialist.php:164
@@ -4298,7 +4298,7 @@ msgid "Daitch-Mokotoff"
 msgstr "戴奇–可托夫"
 
 #: app/GedcomCode/GedcomCodeTemp.php:135
-msgid "Dallas, Texas"
+msgid "Dallas, Texas, United States"
 msgstr "达拉斯德克萨斯"
 
 #. I18N: A summary of the system status
@@ -4985,7 +4985,7 @@ msgid "Denmark"
 msgstr "丹麦"
 
 #: app/GedcomCode/GedcomCodeTemp.php:137
-msgid "Denver, Colorado"
+msgid "Denver, Colorado, United States"
 msgstr "科罗拉多州丹佛市"
 
 #: admin_site_upgrade.php:80
@@ -5068,7 +5068,7 @@ msgid "Details of the new user will be sent to the genealogy contact for the cor
 msgstr "新用户的详细信息将被发送到相应家谱。"
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
-msgid "Detroit, Michigan"
+msgid "Detroit, Michigan, United States"
 msgstr "底特律,密歇根州"
 
 #: app/Date/JalaliDate.php:192
@@ -6492,7 +6492,7 @@ msgid "Frequently asked questions"
 msgstr "常见问题"
 
 #: app/GedcomCode/GedcomCodeTemp.php:151
-msgid "Fresno, California"
+msgid "Fresno, California, United States"
 msgstr "加州弗雷斯诺"
 
 #. I18N: abbreviation for Friday
@@ -6904,7 +6904,7 @@ msgid "Hamilton, New Zealand"
 msgstr "汉密尔顿,新西兰"
 
 #: app/GedcomCode/GedcomCodeTemp.php:165
-msgid "Hartford, Connecticut"
+msgid "Hartford, Connecticut, United States"
 msgstr "康涅狄格州哈特福德"
 
 #: modules_v3/descendancy_report/report.xml:429
@@ -7130,7 +7130,7 @@ msgid "Household"
 msgstr "家庭"
 
 #: app/GedcomCode/GedcomCodeTemp.php:175
-msgid "Houston, Texas"
+msgid "Houston, Texas, United States"
 msgstr "休斯顿,德克萨斯州"
 
 #. I18N: Configuration option
@@ -7189,7 +7189,7 @@ msgid "Icon"
 msgstr "图标"
 
 #: app/GedcomCode/GedcomCodeTemp.php:177
-msgid "Idaho Falls, Idaho"
+msgid "Idaho Falls, Idaho, United States"
 msgstr "爱达荷瀑布,爱达荷州"
 
 #. I18N: gedcom tag IDNO
@@ -7692,7 +7692,7 @@ msgid "Jordan"
 msgstr "乔丹"
 
 #: app/GedcomCode/GedcomCodeTemp.php:181
-msgid "Jordan River, Utah"
+msgid "Jordan River, Utah, United States"
 msgstr "约旦河,犹他州"
 
 #. I18N: Name of a module
@@ -7897,7 +7897,7 @@ msgid "Kislev"
 msgstr "第三月"
 
 #: app/GedcomCode/GedcomCodeTemp.php:185
-msgid "Kona, Hawaii"
+msgid "Kona, Hawaii, United States"
 msgstr "夏威夷科纳,夏威夷"
 
 #: app/Stats.php:6846
@@ -7947,7 +7947,7 @@ msgid "LDS temple"
 msgstr "LDS 寺庙"
 
 #: app/GedcomCode/GedcomCodeTemp.php:167
-msgid "Laie, Hawaii"
+msgid "Laie, Hawaii, United States"
 msgstr "Laie,夏威夷"
 
 #. I18N: page orientation
@@ -7987,7 +7987,7 @@ msgid "Largest number of grandchildren"
 msgstr "最多孙子数目"
 
 #: app/GedcomCode/GedcomCodeTemp.php:199
-msgid "Las Vegas, Nevada"
+msgid "Las Vegas, Nevada, United States"
 msgstr "拉斯维加斯,内华达州"
 
 #. I18N: gedcom tag CHAN
@@ -8257,7 +8257,7 @@ msgid "Lodger"
 msgstr "男房客"
 
 #: app/GedcomCode/GedcomCodeTemp.php:191
-msgid "Logan, Utah"
+msgid "Logan, Utah, United States"
 msgstr "犹他州洛根"
 
 #: app/Module/LoginBlockModule.php:63
@@ -8310,7 +8310,7 @@ msgid "Longitude"
 msgstr "经度"
 
 #: app/GedcomCode/GedcomCodeTemp.php:187
-msgid "Los Angeles, California"
+msgid "Los Angeles, California, United States"
 msgstr "加利福尼亚的洛杉矶"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219 login.php:252
@@ -8318,7 +8318,7 @@ msgid "Lost password request"
 msgstr "丢失密码请求"
 
 #: app/GedcomCode/GedcomCodeTemp.php:195
-msgid "Louisville, Kentucky"
+msgid "Louisville, Kentucky, United States"
 msgstr "路易斯维尔，肯塔基"
 
 #: app/Stats.php:1741
@@ -8326,7 +8326,7 @@ msgid "Lowest population"
 msgstr "最低人口"
 
 #: app/GedcomCode/GedcomCodeTemp.php:197
-msgid "Lubbock, Texas"
+msgid "Lubbock, Texas, United States"
 msgstr "卢博克市,德克萨斯州"
 
 #: app/Stats.php:6857
@@ -8442,7 +8442,7 @@ msgid "Manila, Philippines"
 msgstr "马尼拉,菲律宾"
 
 #: app/GedcomCode/GedcomCodeTemp.php:205
-msgid "Manti, Utah"
+msgid "Manti, Utah, United States"
 msgstr "曼泰,犹他州"
 
 #: app/GedcomTag.php:1928
@@ -8812,7 +8812,7 @@ msgid "Mayotte"
 msgstr "马约特"
 
 #: app/GedcomCode/GedcomCodeTemp.php:207
-msgid "Medford, Oregon"
+msgid "Medford, Oregon, United States"
 msgstr "梅德福,俄勒冈州"
 
 #. I18N: Name of a module
@@ -8959,7 +8959,7 @@ msgid "Memory limit"
 msgstr "内存限制"
 
 #: app/GedcomCode/GedcomCodeTemp.php:211
-msgid "Memphis, Tennessee"
+msgid "Memphis, Tennessee, United States"
 msgstr "田纳西州的孟菲斯"
 
 #: admin_module_menus.php:87 admin_modules.php:185
@@ -8995,7 +8995,7 @@ msgid "Merida, Mexico"
 msgstr "梅里达、墨西哥"
 
 #: app/GedcomCode/GedcomCodeTemp.php:89
-msgid "Mesa, Arizona"
+msgid "Mesa, Arizona, United States"
 msgstr "台面、亚利桑那"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
@@ -9195,7 +9195,7 @@ msgid "Month:"
 msgstr "月:"
 
 #: app/GedcomCode/GedcomCodeTemp.php:221
-msgid "Monticello, Utah"
+msgid "Monticello, Utah, United States"
 msgstr "蒙蒂塞洛,犹他州"
 
 #: app/GedcomCode/GedcomCodeTemp.php:223
@@ -9298,7 +9298,7 @@ msgid "Mother’s family with an unknown individual"
 msgstr "一个未知的个体的母亲的家庭"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
-msgid "Mount Timpanogos, Utah"
+msgid "Mount Timpanogos, Utah, United States"
 msgstr "廷帕诺戈斯山，犹他州"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:493 index_edit.php:312
@@ -9473,7 +9473,7 @@ msgid "Narrative description"
 msgstr "叙述性描述"
 
 #: app/GedcomCode/GedcomCodeTemp.php:227
-msgid "Nashville, Tennessee"
+msgid "Nashville, Tennessee, United States"
 msgstr "田纳西州纳什维尔"
 
 #. I18N: gedcom tag NATI
@@ -9491,11 +9491,11 @@ msgid "Nauru"
 msgstr "瑙鲁"
 
 #: app/GedcomCode/GedcomCodeTemp.php:229
-msgid "Nauvoo, Illinois (new)"
+msgid "Nauvoo (new), Illinois, United States"
 msgstr "诺伍，伊利诺斯（新）"
 
 #: app/GedcomCode/GedcomCodeTemp.php:231
-msgid "Nauvoo, Illinois (original)"
+msgid "Nauvoo (original), Illinois, United States"
 msgstr "诺伍，伊利诺斯（原）"
 
 #: app/Module/GoogleMapsModule.php:407 app/Module/GoogleMapsModule.php:3961
@@ -9544,7 +9544,7 @@ msgid "New Caledonia"
 msgstr "新喀里多尼亚"
 
 #: app/GedcomCode/GedcomCodeTemp.php:237
-msgid "New York, New York"
+msgid "New York, New York, United States"
 msgstr "纽约,纽约"
 
 #: app/Stats.php:6895
@@ -9568,7 +9568,7 @@ msgid "New user at %s"
 msgstr "新用户在 %s 验证"
 
 #: app/GedcomCode/GedcomCodeTemp.php:233
-msgid "Newport Beach, California"
+msgid "Newport Beach, California, United States"
 msgstr "纽波特海滩,加利福尼亚州"
 
 #. I18N: Name of a module
@@ -10021,7 +10021,7 @@ msgid "Nurse"
 msgstr "男保姆"
 
 #: app/GedcomCode/GedcomCodeTemp.php:241
-msgid "Oakland, California"
+msgid "Oakland, California, United States"
 msgstr "奥克兰,加利福尼亚"
 
 #: app/GedcomCode/GedcomCodeTemp.php:243
@@ -10076,11 +10076,11 @@ msgid "October"
 msgstr "十月"
 
 #: app/GedcomCode/GedcomCodeTemp.php:245
-msgid "Ogden, Utah"
+msgid "Ogden, Utah, United States"
 msgstr "奥格登，犹他州"
 
 #: app/GedcomCode/GedcomCodeTemp.php:247
-msgid "Oklahoma City, Oklahoma"
+msgid "Oklahoma City, Oklahoma, United States"
 msgstr "俄克拉荷马城奥克拉荷马"
 
 #: admin_site_change.php:336
@@ -10211,7 +10211,7 @@ msgid "Orientation"
 msgstr "方向"
 
 #: app/GedcomCode/GedcomCodeTemp.php:249
-msgid "Orlando, Florida"
+msgid "Orlando, Florida, United States"
 msgstr "奥兰多,佛罗里达"
 
 #: app/GedcomTag.php:1942 app/Stats.php:5499 app/Stats.php:5918
@@ -10351,7 +10351,7 @@ msgid "Palette"
 msgstr "调色板"
 
 #: app/GedcomCode/GedcomCodeTemp.php:253
-msgid "Palmyra, New York"
+msgid "Palmyra, New York, United States"
 msgstr "巴尔米拉,纽约"
 
 #: app/Stats.php:6898
@@ -10795,7 +10795,7 @@ msgid "Port number"
 msgstr "端口号"
 
 #: app/GedcomCode/GedcomCodeTemp.php:263
-msgid "Portland, Oregon"
+msgid "Portland, Oregon, United States"
 msgstr "波特兰,俄勒冈州"
 
 #: app/GedcomCode/GedcomCodeTemp.php:251
@@ -10940,7 +10940,7 @@ msgid "Property"
 msgstr "属性"
 
 #: app/GedcomCode/GedcomCodeTemp.php:267
-msgid "Provo, Utah"
+msgid "Provo, Utah, United States"
 msgstr "犹他州普罗沃"
 
 #. I18N: gedcom tag PUBL
@@ -11083,7 +11083,7 @@ msgid "Rajab"
 msgstr "第七月"
 
 #: app/GedcomCode/GedcomCodeTemp.php:269
-msgid "Raleigh, North Carolina"
+msgid "Raleigh, North Carolina, United States"
 msgstr "北卡罗来纳州的罗利"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
@@ -11179,7 +11179,7 @@ msgid "Records are not the same type. Cannot merge records that are not the same
 msgstr "记录是不相同的类型。不能合并不相同的类型的记录。"
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
-msgid "Redlands, California"
+msgid "Redlands, California, United States"
 msgstr "雷德兰加利福尼亚"
 
 #: app/Module/GoogleMapsModule.php:991 app/Module/GoogleMapsModule.php:2338
@@ -11343,7 +11343,7 @@ msgid "Remove this location?"
 msgstr "删除这个位置吗?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:277
-msgid "Reno, Nevada"
+msgid "Reno, Nevada, United States"
 msgstr "内华达州里诺"
 
 #: admin_trees_manage.php:506
@@ -11540,7 +11540,7 @@ msgid "SMTP mail server"
 msgstr "SMTP邮件服务器"
 
 #: app/GedcomCode/GedcomCodeTemp.php:279
-msgid "Sacramento, California"
+msgid "Sacramento, California, United States"
 msgstr "萨克拉门托，加利福尼亚"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
@@ -11593,7 +11593,7 @@ msgid "Saint Vincent and the Grenadines"
 msgstr "圣文森特和格林纳丁斯"
 
 #: app/GedcomCode/GedcomCodeTemp.php:299
-msgid "Salt Lake City, Utah"
+msgid "Salt Lake City, Utah, United States"
 msgstr "犹他州盐湖城"
 
 #: app/Stats.php:6976
@@ -11601,11 +11601,11 @@ msgid "Samoa"
 msgstr "萨摩亚"
 
 #: app/GedcomCode/GedcomCodeTemp.php:285
-msgid "San Antonio, Texas"
+msgid "San Antonio, Texas, United States"
 msgstr "圣安东尼奥,德克萨斯州"
 
 #: app/GedcomCode/GedcomCodeTemp.php:287
-msgid "San Diego, California"
+msgid "San Diego, California, United States"
 msgstr "圣地亚哥,加利福尼亚"
 
 #: app/GedcomCode/GedcomCodeTemp.php:297
@@ -11748,7 +11748,7 @@ msgid "Searching for all possible relationships can take a lot of time in comple
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Seattle, Washington"
+msgid "Seattle, Washington, United States"
 msgstr "西雅图,华盛顿"
 
 #. I18N: Record is an indvidual, source, etc.
@@ -12725,7 +12725,7 @@ msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
 msgstr "小型系统(500人):16-32MB,10至20秒"
 
 #: app/GedcomCode/GedcomCodeTemp.php:303
-msgid "Snowflake, Arizona"
+msgid "Snowflake, Arizona, United States"
 msgstr "斯诺弗莱克,亚利桑那州"
 
 #. I18N: gedcom tag SSN
@@ -12886,7 +12886,7 @@ msgid "Spanish"
 msgstr "西班牙"
 
 #: app/GedcomCode/GedcomCodeTemp.php:309
-msgid "Spokane, Washington"
+msgid "Spokane, Washington, United States"
 msgstr "斯波坎,华盛顿"
 
 #: modules_v3/bdm_report/report.xml:169
@@ -12920,7 +12920,7 @@ msgid "Sri Lanka"
 msgstr "斯里兰卡"
 
 #: app/GedcomCode/GedcomCodeTemp.php:295
-msgid "St. George, Utah"
+msgid "St. George, Utah, United States"
 msgstr "圣乔治，犹他州"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
@@ -15286,7 +15286,7 @@ msgid "Verified"
 msgstr "验证"
 
 #: app/GedcomCode/GedcomCodeTemp.php:331
-msgid "Vernal, Utah"
+msgid "Vernal, Utah, United States"
 msgstr "韦纳尔，犹他州"
 
 #. I18N: gedcom tag VERS
@@ -15414,7 +15414,7 @@ msgid "Ward"
 msgstr "男病友"
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
-msgid "Washington, DC"
+msgid "Washington, District of Columbia, United States"
 msgstr "华盛顿特区"
 
 #: admin_trees_config.php:1111

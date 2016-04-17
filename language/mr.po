@@ -1991,7 +1991,7 @@ msgid "Ancestral file number"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:87
-msgid "Anchorage, Alaska"
+msgid "Anchorage, Alaska, United States"
 msgstr "अंकोराज, अलास्का"
 
 #: app/Stats.php:6724
@@ -2215,7 +2215,7 @@ msgid "At sea"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:93
-msgid "Atlanta, Georgia"
+msgid "Atlanta, Georgia, United States"
 msgstr "अटलांटा, जॉर्जिया"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
@@ -2551,7 +2551,7 @@ msgid "Batch update"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:113
-msgid "Baton Rouge, Louisiana"
+msgid "Baton Rouge, Louisiana, United States"
 msgstr ""
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
@@ -2607,7 +2607,7 @@ msgid "Bibliography"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:97
-msgid "Billings, Montana"
+msgid "Billings, Montana, United States"
 msgstr "बिल्लीन्ग्स, मोन्टाना"
 
 #. I18N: gedcom tag BLOB
@@ -2620,7 +2620,7 @@ msgid "Bing Maps™"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
-msgid "Birmingham, Alabama"
+msgid "Birmingham, Alabama, United States"
 msgstr "बिर्मिंगहम, अलाबामा"
 
 #. I18N: gedcom tag BIRT
@@ -2860,7 +2860,7 @@ msgid "Births by century"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:101
-msgid "Bismarck, North Dakota"
+msgid "Bismarck, North Dakota, United States"
 msgstr "बिस्मार्क, उत्तर डाकोटा"
 
 #. I18N: gedcom tag BLES
@@ -2897,7 +2897,7 @@ msgid "Bogota, Colombia"
 msgstr "बोगोटा, कोलंबिया"
 
 #: app/GedcomCode/GedcomCodeTemp.php:105
-msgid "Boise, Idaho"
+msgid "Boise, Idaho, United States"
 msgstr "बोईस, इडाहो"
 
 #: app/Stats.php:6749
@@ -2922,7 +2922,7 @@ msgid "Bosnia and Herzegovina"
 msgstr "बॉस्निया-हर्झगोव्हेना"
 
 #: app/GedcomCode/GedcomCodeTemp.php:107
-msgid "Boston, Massachusetts"
+msgid "Boston, Massachusetts, United States"
 msgstr "बॉस्टन, मासाच्युसेट्स"
 
 #: app/Functions/FunctionsPrintLists.php:628
@@ -2938,7 +2938,7 @@ msgid "Botswana"
 msgstr "बोट्स्वाना"
 
 #: app/GedcomCode/GedcomCodeTemp.php:109
-msgid "Bountiful, Utah"
+msgid "Bountiful, Utah, United States"
 msgstr "बौन्तिफुल, उटाह"
 
 #: app/Stats.php:6754
@@ -3529,7 +3529,7 @@ msgid "Checking server configuration"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:119
-msgid "Chicago, Illinois"
+msgid "Chicago, Illinois, United States"
 msgstr "शिकागो, इलिनोई"
 
 #. I18N: gedcom tag CHIL
@@ -3829,15 +3829,15 @@ msgid "Colonia Juarez, Mexico"
 msgstr "कॉलोनिया जुअरेझ, मेक्सिको"
 
 #: app/GedcomCode/GedcomCodeTemp.php:133
-msgid "Columbia River, Washington"
+msgid "Columbia River, Washington, United States"
 msgstr "कोलंबिया रिवर, वाशिंग्टन"
 
 #: app/GedcomCode/GedcomCodeTemp.php:127
-msgid "Columbia, South Carolina"
+msgid "Columbia, South Carolina, United States"
 msgstr "कोलंबिया, दक्षिण कॅरोलिना"
 
 #: app/GedcomCode/GedcomCodeTemp.php:129
-msgid "Columbus, Ohio"
+msgid "Columbus, Ohio, United States"
 msgstr "कोलंबस , ओहायो"
 
 #: medialist.php:164
@@ -4323,7 +4323,7 @@ msgid "Daitch-Mokotoff"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:135
-msgid "Dallas, Texas"
+msgid "Dallas, Texas, United States"
 msgstr "डालस, टेक्सास"
 
 #. I18N: A summary of the system status
@@ -5010,7 +5010,7 @@ msgid "Denmark"
 msgstr "डेन्मार्क"
 
 #: app/GedcomCode/GedcomCodeTemp.php:137
-msgid "Denver, Colorado"
+msgid "Denver, Colorado, United States"
 msgstr "डेन्व्हर, कॉलोराडो"
 
 #: admin_site_upgrade.php:80
@@ -5093,7 +5093,7 @@ msgid "Details of the new user will be sent to the genealogy contact for the cor
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
-msgid "Detroit, Michigan"
+msgid "Detroit, Michigan, United States"
 msgstr "डेट्रोइट, मिशिगन"
 
 #: app/Date/JalaliDate.php:192
@@ -6517,7 +6517,7 @@ msgid "Frequently asked questions"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:151
-msgid "Fresno, California"
+msgid "Fresno, California, United States"
 msgstr "फ्रेस्नो, कॅलिफोर्निया"
 
 #. I18N: abbreviation for Friday
@@ -6929,7 +6929,7 @@ msgid "Hamilton, New Zealand"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:165
-msgid "Hartford, Connecticut"
+msgid "Hartford, Connecticut, United States"
 msgstr ""
 
 #: modules_v3/descendancy_report/report.xml:429
@@ -7155,7 +7155,7 @@ msgid "Household"
 msgstr "घरगुती"
 
 #: app/GedcomCode/GedcomCodeTemp.php:175
-msgid "Houston, Texas"
+msgid "Houston, Texas, United States"
 msgstr ""
 
 #. I18N: Configuration option
@@ -7214,7 +7214,7 @@ msgid "Icon"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:177
-msgid "Idaho Falls, Idaho"
+msgid "Idaho Falls, Idaho, United States"
 msgstr ""
 
 #. I18N: gedcom tag IDNO
@@ -7717,7 +7717,7 @@ msgid "Jordan"
 msgstr "जॉर्डन"
 
 #: app/GedcomCode/GedcomCodeTemp.php:181
-msgid "Jordan River, Utah"
+msgid "Jordan River, Utah, United States"
 msgstr ""
 
 #. I18N: Name of a module
@@ -7922,7 +7922,7 @@ msgid "Kislev"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:185
-msgid "Kona, Hawaii"
+msgid "Kona, Hawaii, United States"
 msgstr ""
 
 #: app/Stats.php:6846
@@ -7972,7 +7972,7 @@ msgid "LDS temple"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:167
-msgid "Laie, Hawaii"
+msgid "Laie, Hawaii, United States"
 msgstr ""
 
 #. I18N: page orientation
@@ -8012,7 +8012,7 @@ msgid "Largest number of grandchildren"
 msgstr "सर्वात जास्त नातवंडे"
 
 #: app/GedcomCode/GedcomCodeTemp.php:199
-msgid "Las Vegas, Nevada"
+msgid "Las Vegas, Nevada, United States"
 msgstr ""
 
 #. I18N: gedcom tag CHAN
@@ -8282,7 +8282,7 @@ msgid "Lodger"
 msgstr "भाडेकरू [पुरूष]"
 
 #: app/GedcomCode/GedcomCodeTemp.php:191
-msgid "Logan, Utah"
+msgid "Logan, Utah, United States"
 msgstr "लॉगन, युटा"
 
 #: app/Module/LoginBlockModule.php:63
@@ -8335,7 +8335,7 @@ msgid "Longitude"
 msgstr "रेखांश"
 
 #: app/GedcomCode/GedcomCodeTemp.php:187
-msgid "Los Angeles, California"
+msgid "Los Angeles, California, United States"
 msgstr "लॉस एंजेल्स"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219 login.php:252
@@ -8343,7 +8343,7 @@ msgid "Lost password request"
 msgstr "संकेत शब्द हरवला आहे"
 
 #: app/GedcomCode/GedcomCodeTemp.php:195
-msgid "Louisville, Kentucky"
+msgid "Louisville, Kentucky, United States"
 msgstr "लुईव्हिल"
 
 #: app/Stats.php:1741
@@ -8351,7 +8351,7 @@ msgid "Lowest population"
 msgstr "सर्वात कमी लोकसंख्या"
 
 #: app/GedcomCode/GedcomCodeTemp.php:197
-msgid "Lubbock, Texas"
+msgid "Lubbock, Texas, United States"
 msgstr "लबक"
 
 #: app/Stats.php:6857
@@ -8467,7 +8467,7 @@ msgid "Manila, Philippines"
 msgstr "मनिला, फिलिपाईन्स"
 
 #: app/GedcomCode/GedcomCodeTemp.php:205
-msgid "Manti, Utah"
+msgid "Manti, Utah, United States"
 msgstr "Manti, युटा"
 
 #: app/GedcomTag.php:1928
@@ -8837,7 +8837,7 @@ msgid "Mayotte"
 msgstr "मायोट्ते"
 
 #: app/GedcomCode/GedcomCodeTemp.php:207
-msgid "Medford, Oregon"
+msgid "Medford, Oregon, United States"
 msgstr "मेडफोर्ड, ओरेगॉन"
 
 #. I18N: Name of a module
@@ -8984,7 +8984,7 @@ msgid "Memory limit"
 msgstr "स्मरण मर्यादा"
 
 #: app/GedcomCode/GedcomCodeTemp.php:211
-msgid "Memphis, Tennessee"
+msgid "Memphis, Tennessee, United States"
 msgstr "मेम्फिस, टेनेसी"
 
 #: admin_module_menus.php:87 admin_modules.php:185
@@ -9020,7 +9020,7 @@ msgid "Merida, Mexico"
 msgstr "मेरिडा, मेक्सिको"
 
 #: app/GedcomCode/GedcomCodeTemp.php:89
-msgid "Mesa, Arizona"
+msgid "Mesa, Arizona, United States"
 msgstr "मेसा, अरिझोना"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
@@ -9220,7 +9220,7 @@ msgid "Month:"
 msgstr "महिना:"
 
 #: app/GedcomCode/GedcomCodeTemp.php:221
-msgid "Monticello, Utah"
+msgid "Monticello, Utah, United States"
 msgstr "मॉन्टीसेलो, युटा"
 
 #: app/GedcomCode/GedcomCodeTemp.php:223
@@ -9323,7 +9323,7 @@ msgid "Mother’s family with an unknown individual"
 msgstr "एका अज्ञात व्यक्ती सह आईचे कुटुंब"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
-msgid "Mount Timpanogos, Utah"
+msgid "Mount Timpanogos, Utah, United States"
 msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:493 index_edit.php:312
@@ -9498,7 +9498,7 @@ msgid "Narrative description"
 msgstr "कथेसंबधीचे वर्णन"
 
 #: app/GedcomCode/GedcomCodeTemp.php:227
-msgid "Nashville, Tennessee"
+msgid "Nashville, Tennessee, United States"
 msgstr "नॅशव्हिल, टेनेसी"
 
 #. I18N: gedcom tag NATI
@@ -9516,11 +9516,11 @@ msgid "Nauru"
 msgstr "नाऊरु"
 
 #: app/GedcomCode/GedcomCodeTemp.php:229
-msgid "Nauvoo, Illinois (new)"
+msgid "Nauvoo (new), Illinois, United States"
 msgstr "Nauvoo, इलिनॉय (नवीन)"
 
 #: app/GedcomCode/GedcomCodeTemp.php:231
-msgid "Nauvoo, Illinois (original)"
+msgid "Nauvoo (original), Illinois, United States"
 msgstr "Nauvoo, इलिनॉय (मूळ)"
 
 #: app/Module/GoogleMapsModule.php:407 app/Module/GoogleMapsModule.php:3961
@@ -9569,7 +9569,7 @@ msgid "New Caledonia"
 msgstr "न्यू कॅलेडोनिया"
 
 #: app/GedcomCode/GedcomCodeTemp.php:237
-msgid "New York, New York"
+msgid "New York, New York, United States"
 msgstr "न्यूयॉर्क, न्यूयॉर्क"
 
 #: app/Stats.php:6895
@@ -9593,7 +9593,7 @@ msgid "New user at %s"
 msgstr "%s नवीन वापरकर्ता"
 
 #: app/GedcomCode/GedcomCodeTemp.php:233
-msgid "Newport Beach, California"
+msgid "Newport Beach, California, United States"
 msgstr "न्युपोर्ट बीच, कॅलिफोर्निया"
 
 #. I18N: Name of a module
@@ -10048,7 +10048,7 @@ msgid "Nurse"
 msgstr "परिचारक"
 
 #: app/GedcomCode/GedcomCodeTemp.php:241
-msgid "Oakland, California"
+msgid "Oakland, California, United States"
 msgstr "ओकलंड"
 
 #: app/GedcomCode/GedcomCodeTemp.php:243
@@ -10103,11 +10103,11 @@ msgid "October"
 msgstr "ओक्टोबर"
 
 #: app/GedcomCode/GedcomCodeTemp.php:245
-msgid "Ogden, Utah"
+msgid "Ogden, Utah, United States"
 msgstr "Ogden, युटा"
 
 #: app/GedcomCode/GedcomCodeTemp.php:247
-msgid "Oklahoma City, Oklahoma"
+msgid "Oklahoma City, Oklahoma, United States"
 msgstr "ओक्लाहोमा सिटी"
 
 #: admin_site_change.php:336
@@ -10238,7 +10238,7 @@ msgid "Orientation"
 msgstr "कल"
 
 #: app/GedcomCode/GedcomCodeTemp.php:249
-msgid "Orlando, Florida"
+msgid "Orlando, Florida, United States"
 msgstr "ऑर्लांडो, फ्लोरिडा"
 
 #: app/GedcomTag.php:1942 app/Stats.php:5499 app/Stats.php:5918
@@ -10378,7 +10378,7 @@ msgid "Palette"
 msgstr "चित्रकाराची रंगफळी"
 
 #: app/GedcomCode/GedcomCodeTemp.php:253
-msgid "Palmyra, New York"
+msgid "Palmyra, New York, United States"
 msgstr "Palmyra, न्यूयॉर्क"
 
 #: app/Stats.php:6898
@@ -10822,7 +10822,7 @@ msgid "Port number"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:263
-msgid "Portland, Oregon"
+msgid "Portland, Oregon, United States"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:251
@@ -10967,7 +10967,7 @@ msgid "Property"
 msgstr "मालमत्ता"
 
 #: app/GedcomCode/GedcomCodeTemp.php:267
-msgid "Provo, Utah"
+msgid "Provo, Utah, United States"
 msgstr "Provo, युटा"
 
 #. I18N: gedcom tag PUBL
@@ -11110,7 +11110,7 @@ msgid "Rajab"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:269
-msgid "Raleigh, North Carolina"
+msgid "Raleigh, North Carolina, United States"
 msgstr ""
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
@@ -11206,7 +11206,7 @@ msgid "Records are not the same type. Cannot merge records that are not the same
 msgstr "नोंदी समान प्रकारच्या नाहीत. समान प्रकारच्या नसलेल्या नोंदी विलीन करू शकत नाही."
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
-msgid "Redlands, California"
+msgid "Redlands, California, United States"
 msgstr "Redlands, कॅलिफोर्निया"
 
 #: app/Module/GoogleMapsModule.php:991 app/Module/GoogleMapsModule.php:2338
@@ -11370,7 +11370,7 @@ msgid "Remove this location?"
 msgstr "हे स्थान हटवू का ?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:277
-msgid "Reno, Nevada"
+msgid "Reno, Nevada, United States"
 msgstr "रिनो, नेव्हाडा"
 
 #: admin_trees_manage.php:506
@@ -11567,7 +11567,7 @@ msgid "SMTP mail server"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:279
-msgid "Sacramento, California"
+msgid "Sacramento, California, United States"
 msgstr "साक्रामेंटो, कॅलिफोर्निया"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
@@ -11620,7 +11620,7 @@ msgid "Saint Vincent and the Grenadines"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:299
-msgid "Salt Lake City, Utah"
+msgid "Salt Lake City, Utah, United States"
 msgstr "सॉल्ट लेक सिटी"
 
 #: app/Stats.php:6976
@@ -11628,11 +11628,11 @@ msgid "Samoa"
 msgstr "सामोआ"
 
 #: app/GedcomCode/GedcomCodeTemp.php:285
-msgid "San Antonio, Texas"
+msgid "San Antonio, Texas, United States"
 msgstr "सॅन अँटोनियो"
 
 #: app/GedcomCode/GedcomCodeTemp.php:287
-msgid "San Diego, California"
+msgid "San Diego, California, United States"
 msgstr "सॅन दिएगो, कॅलिफोर्निया"
 
 #: app/GedcomCode/GedcomCodeTemp.php:297
@@ -11775,7 +11775,7 @@ msgid "Searching for all possible relationships can take a lot of time in comple
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Seattle, Washington"
+msgid "Seattle, Washington, United States"
 msgstr "सिअॅटल, वॉशिंग्टन"
 
 #. I18N: Record is an indvidual, source, etc.
@@ -12752,7 +12752,7 @@ msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:303
-msgid "Snowflake, Arizona"
+msgid "Snowflake, Arizona, United States"
 msgstr ""
 
 #. I18N: gedcom tag SSN
@@ -12913,7 +12913,7 @@ msgid "Spanish"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:309
-msgid "Spokane, Washington"
+msgid "Spokane, Washington, United States"
 msgstr ""
 
 #: modules_v3/bdm_report/report.xml:169
@@ -12947,7 +12947,7 @@ msgid "Sri Lanka"
 msgstr "श्रीलंका"
 
 #: app/GedcomCode/GedcomCodeTemp.php:295
-msgid "St. George, Utah"
+msgid "St. George, Utah, United States"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
@@ -15320,7 +15320,7 @@ msgid "Verified"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:331
-msgid "Vernal, Utah"
+msgid "Vernal, Utah, United States"
 msgstr ""
 
 #. I18N: gedcom tag VERS
@@ -15448,7 +15448,7 @@ msgid "Ward"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
-msgid "Washington, DC"
+msgid "Washington, District of Columbia, United States"
 msgstr ""
 
 #: admin_trees_config.php:1111
