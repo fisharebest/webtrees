@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 12:06+0000\n"
+"PO-Revision-Date: 2016-04-16 14:56+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -1262,6 +1262,14 @@ msgstr "Voeg by"
 msgid "Add %s to the clippings cart"
 msgstr "Voeg %s by die versameling knipsels"
 
+#: app/Module/RelativesTabModule.php:273
+msgid "Add a brother or sister"
+msgstr "Skep 'n nuwe broer/suster"
+
+#: edit_interface.php:516
+msgid "Add a child"
+msgstr "Voeg 'n nuwe kind by"
+
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
 msgstr "Voeg 'n kind by om 'n eenouergesin te skep"
@@ -1274,27 +1282,6 @@ msgstr "Skep 'n kind vir hierdie gesin"
 #: edit_interface.php:81
 msgid "Add a fact"
 msgstr "Skep ’n feit of gebeurtenis"
-
-#: app/Module/RelativesTabModule.php:154
-msgid "Add a husband to this family"
-msgstr "Skep 'n eggenoot vir hierdie gesin"
-
-#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
-#: edit_interface.php:1156
-msgid "Add a husband using an existing individual"
-msgstr "Voeg eggenoot met behulp van 'n bestaande persoon by"
-
-#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add an associate"
-msgstr "Skep 'n nuwe deelgenoot"
-
-#: app/Module/RelativesTabModule.php:273
-msgid "Add a brother or sister"
-msgstr "Skep 'n nuwe broer/suster"
-
-#: edit_interface.php:516
-msgid "Add a child"
-msgstr "Voeg 'n nuwe kind by"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
@@ -1312,6 +1299,15 @@ msgstr "Voeg 'n nuwe geografiese ligging toe"
 #: edit_interface.php:900
 msgid "Add a husband"
 msgstr "Voeg 'n nuwe eggenoot by"
+
+#: app/Module/RelativesTabModule.php:154
+msgid "Add a husband to this family"
+msgstr "Skep 'n eggenoot vir hierdie gesin"
+
+#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
+#: edit_interface.php:1156
+msgid "Add a husband using an existing individual"
+msgstr "Voeg eggenoot met behulp van 'n bestaande persoon by"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
@@ -1332,6 +1328,10 @@ msgstr "Voeg 'n nuwe moeder by"
 msgid "Add a name"
 msgstr "Voeg nuwe Naam by"
 
+#: app/Module/FamilyTreeNewsModule.php:148
+msgid "Add a news article"
+msgstr "Skep 'n nuwe nuusberig"
+
 #: app/Controller/FamilyController.php:149
 #: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
@@ -1340,6 +1340,16 @@ msgstr "Skep 'n nuwe nota"
 #: app/Functions/FunctionsEdit.php:1141
 msgid "Add a restriction"
 msgstr "Skep 'n nuwe beperking"
+
+#. I18N: label for a yes/no option
+#: app/Module/FamilyTreeFavoritesModule.php:286
+#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
+#: app/Module/UpcomingAnniversariesModule.php:181
+#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
+msgid "Add a scrollbar when block contents grow"
+msgstr "Voeg 'n skuifbalk toe wanneer die inhoud van 'n blok toeneem"
 
 #: app/Controller/FamilyController.php:155
 #: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
@@ -1359,6 +1369,11 @@ msgstr "Skep 'n nuwe bronvermelding"
 msgid "Add a spouse"
 msgstr "Voeg 'n nuwe gade by"
 
+#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
+#: app/Module/StoriesModule.php:367
+msgid "Add a story"
+msgstr "Skep 'n nuwe verhaal"
+
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
@@ -1368,25 +1383,6 @@ msgstr "Skep 'n nuwe gebruiker"
 #: edit_interface.php:897
 msgid "Add a wife"
 msgstr "Voeg 'n nuwe eggenote by"
-
-#: app/Module/FamilyTreeNewsModule.php:148
-msgid "Add a news article"
-msgstr "Skep 'n nuwe nuusberig"
-
-#. I18N: label for a yes/no option
-#: app/Module/FamilyTreeFavoritesModule.php:286
-#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230
-#: app/Module/ReviewChangesModule.php:193
-#: app/Module/UpcomingAnniversariesModule.php:181
-#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
-msgid "Add a scrollbar when block contents grow"
-msgstr "Voeg 'n skuifbalk toe wanneer die inhoud van 'n blok toeneem"
-
-#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
-#: app/Module/StoriesModule.php:367
-msgid "Add a story"
-msgstr "Skep 'n nuwe verhaal"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1401,6 +1397,10 @@ msgstr "Voeg eggenote met behulp van 'n bestaande persoon by"
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
 msgstr "Skep 'n FAQ item"
+
+#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
+msgid "Add an associate"
+msgstr "Skep 'n nuwe deelgenoot"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -1475,7 +1475,7 @@ msgstr "Voeg ongekoppelde rekords by"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
 msgid "Add watermarks to thumbnails"
-msgstr "Voeg watermerk by die miniature?"
+msgstr "Voeg watermerk by die miniature"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -7451,7 +7451,7 @@ msgstr "Sluit sub-lêergidse in"
 
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Moet die persoon se naaste familie ingesluit word?"
+msgstr "Sluit die persoon se onmiddelike familie in"
 
 #: app/Stats.php:6828
 msgid "India"
@@ -10611,10 +10611,6 @@ msgstr "Plekkontrole"
 msgid "Place contains"
 msgstr "Pleknaam bevat"
 
-#: app/Module/TopPageViewsModule.php:165
-msgid "Show counts before or after name"
-msgstr "Plaas tellings voor of na die naam?"
-
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
 msgid "Place hierarchy"
@@ -10959,7 +10955,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Druk basiese gebeurtenisse al is hulle leeg?"
+msgstr "Druk basiese gebeurtenisse indien leeg"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
 msgid "Privacy"
@@ -11924,7 +11920,7 @@ msgstr "Stuur uitsaai boodskappe"
 
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Stuur e-posherinneringe?"
+msgstr "Stuur epos-herinneringe"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329
@@ -12309,7 +12305,7 @@ msgstr "Vertoon alle etikette"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Vertoon 'n leeftyd-pyltjie?"
+msgstr "Vertoon 'n ouderdom-pyltjie"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1366
@@ -12318,11 +12314,15 @@ msgstr "Vertoon besonderhede in diagram by verstek"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Vertoon die kinders van voorouers?"
+msgstr "Vertoon die kinders van voorouers"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
 msgid "Show common surnames"
-msgstr "Vertoon die algemene vanne?"
+msgstr "Vertoon die algemene vanne"
+
+#: app/Module/TopPageViewsModule.php:165
+msgid "Show counts before or after name"
+msgstr "Vertoon tellings voor of agter naam"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12359,7 +12359,7 @@ msgstr "Vertoon verskille in datums"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
 msgid "Show date of last update"
-msgstr "Vertoon die datum van die laaste wysiging?"
+msgstr "Vertoon die datum van die laaste wysiging"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:391
@@ -12447,21 +12447,21 @@ msgstr "Vertoon name van privaat persone"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Vertoon notas?"
+msgstr "Vertoon notas"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Vertoon beroepe?"
+msgstr "Vertoon beroepe"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Vertoon slegs geboortes, sterftes en huwelike?"
+msgstr "Vertoon slegs geboortes, sterftes en huwelike"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Vertoon slegs gebeurtenisse van lewende persone?"
+msgstr "Vertoon slegs gebeurtenisse van lewende persone"
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
@@ -12473,7 +12473,7 @@ msgstr "Vertoon slegs persone waarvan die geslag onbekend is."
 
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Vertoon slegs persone, gebeurtenisse, of alles?"
+msgstr "Vertoon slegs persone, gebeurtenisse, of alles"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -12496,7 +12496,7 @@ msgstr "Vertoon die wysigings wat hangend is"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Vertoon fotos?"
+msgstr "Vertoon fotos"
 
 #: placelist.php:83
 msgid "Show places in hierarchy"
@@ -12525,11 +12525,11 @@ msgstr "Vertoon navorsingstake met 'n toekomstige datum"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Vertoon woonplekke?"
+msgstr "Vertoon woonplekke"
 
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls"
-msgstr "Vertoon skyfievertoning beheerknoppies?"
+msgstr "Vertoon skyfievertoning beheerknoppies"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12537,7 +12537,7 @@ msgstr "Vertoon skyfievertoning beheerknoppies?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Vertoon bronne?"
+msgstr "Vertoon bronne"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12584,7 +12584,7 @@ msgstr "Vertoon die gebruiker wat die verandering aangebring het"
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Vir watter tale moet hierdie blok vertoon word?"
+msgstr "Vertoon hierdie blok vir die volgende tale"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1038 app/Functions/FunctionsEdit.php:206
@@ -12998,7 +12998,7 @@ msgstr "Begin by ouers"
 
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load"
-msgstr "Begin skyfievertoning as blad inlaai?"
+msgstr "Begin skyfievertoning wanneer blad inlaai"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13059,12 +13059,12 @@ msgstr "Stop"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
 msgid "Store watermarked full size images on server"
-msgstr "Bewaar beelde wat gewatermerk is teen oorsponklike grootte op bediener?"
+msgstr "Bewaar beelde wat gewatermerk is teen oorsponklike grootte op bediener"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
 msgid "Store watermarked thumbnails on server"
-msgstr "Bewaar miniature wat gewatermerk is op die bediener?"
+msgstr "Bewaar miniature wat gewatermerk is op die bediener"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -15608,12 +15608,12 @@ msgstr "Waar is jou PhPGedView installasie?"
 
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Watter stambome moet by werfkaarte ingesluit word?"
+msgstr "Stambome wat by werfkaarte ingesluit word"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
 msgid "Who can upload new media files"
-msgstr "Wie mag nuwe media-lêers oplaai?"
+msgstr "Wie mag nuwe media-lêers oplaai"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
