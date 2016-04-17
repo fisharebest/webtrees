@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-04-17 17:09+0000\n"
+"PO-Revision-Date: 2016-04-17 18:19+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <http://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -2755,102 +2755,102 @@ msgstr "Birmingham, Alabama, United States"
 #: modules_v3/pedigree_report/report.xml:1368
 #: modules_v3/relative_ext_report/report.xml:56
 msgid "Birth"
-msgstr ""
+msgstr "Birth"
 
 #: app/GedcomCode/GedcomCodePedi.php:50
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "Birth"
 
 #: app/GedcomCode/GedcomCodePedi.php:48
 msgctxt "Male pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "Birth"
 
 #: app/GedcomCode/GedcomCodePedi.php:52
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "Birth"
 
 #: app/Stats.php:1661 statistics.php:538
 msgid "Birth by country"
-msgstr ""
+msgstr "Birth by country"
 
 #: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
 msgid "Birth date range end"
-msgstr ""
+msgstr "Birth date range end"
 
 #: modules_v3/bdm_report/report.xml:7 modules_v3/birth_report/report.xml:7
 msgid "Birth date range start"
-msgstr ""
+msgstr "Birth date range start"
 
 #: app/GedcomTag.php:1075
 msgid "Birth of a brother"
-msgstr ""
+msgstr "Birth of a brother"
 
 #: app/GedcomTag.php:1034
 msgid "Birth of a child"
-msgstr ""
+msgstr "Birth of a child"
 
 #: app/GedcomTag.php:1032
 msgid "Birth of a daughter"
-msgstr ""
+msgstr "Birth of a daughter"
 
 #: app/GedcomTag.php:1043 app/GedcomTag.php:1052 app/GedcomTag.php:1061
 msgid "Birth of a grandchild"
-msgstr ""
+msgstr "Birth of a grandchild"
 
 #: app/GedcomTag.php:1041
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "Birth of a granddaughter"
 
 #: app/GedcomTag.php:1050
 msgctxt "daughter’s daughter"
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "Birth of a granddaughter"
 
 #: app/GedcomTag.php:1059
 msgctxt "son’s daughter"
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "Birth of a granddaughter"
 
 #: app/GedcomTag.php:1039
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Birth of a grandson"
 
 #: app/GedcomTag.php:1048
 msgctxt "daughter’s son"
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Birth of a grandson"
 
 #: app/GedcomTag.php:1057
 msgctxt "son’s son"
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Birth of a grandson"
 
 #: app/GedcomTag.php:1066
 msgid "Birth of a half-brother"
-msgstr ""
+msgstr "Birth of a half-brother"
 
 #: app/GedcomTag.php:1070
 msgid "Birth of a half-sibling"
-msgstr ""
+msgstr "Birth of a half-sibling"
 
 #: app/GedcomTag.php:1068
 msgid "Birth of a half-sister"
-msgstr ""
+msgstr "Birth of a half-sister"
 
 #: app/GedcomTag.php:1079
 msgid "Birth of a sibling"
-msgstr ""
+msgstr "Birth of a sibling"
 
 #: app/GedcomTag.php:1077
 msgid "Birth of a sister"
-msgstr ""
+msgstr "Birth of a sister"
 
 #: app/GedcomTag.php:1030
 msgid "Birth of a son"
-msgstr ""
+msgstr "Birth of a son"
 
 #: statistics.php:410
 msgid "Birth places"
@@ -2858,17 +2858,17 @@ msgstr "Birthplaces"
 
 #: modules_v3/birth_report/report.xml:6
 msgid "Birthplace contains"
-msgstr ""
+msgstr "Birthplace contains"
 
 #. I18N: Name of a module/report
 #: app/Module/BirthReportModule.php:29 modules_v3/birth_report/report.xml:3
 #: modules_v3/birth_report/report.xml:31
 msgid "Births"
-msgstr ""
+msgstr "Births"
 
 #: app/Stats.php:1956 statistics.php:121
 msgid "Births by century"
-msgstr ""
+msgstr "Births by century"
 
 #: app/GedcomCode/GedcomCodeTemp.php:101
 msgid "Bismarck, North Dakota, United States"
@@ -2877,31 +2877,31 @@ msgstr "Bismarck, North Dakota, United States"
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
 msgid "Blessing"
-msgstr ""
+msgstr "Blessing"
 
 #: admin_module_blocks.php:73
 msgid "Block"
-msgstr ""
+msgstr "Block"
 
 #. I18N: Menu entry
 #: admin_module_blocks.php:35 admin_modules.php:162
 #: app/Theme/AdministrationTheme.php:193
 msgid "Blocks"
-msgstr ""
+msgstr "Blocks"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:79
 msgid "Blue Lagoon"
-msgstr ""
+msgstr "Blue Lagoon"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:80
 msgid "Blue Marine"
-msgstr ""
+msgstr "Blue Marine"
 
 #: message.php:127
 msgid "Body"
-msgstr ""
+msgstr "Body"
 
 #: app/GedcomCode/GedcomCodeTemp.php:103
 msgid "Bogota, Colombia"
@@ -2913,24 +2913,24 @@ msgstr "Boise, Idaho, United States"
 
 #: app/Stats.php:6749
 msgid "Bolivia"
-msgstr ""
+msgstr "Bolivia"
 
 #: app/GedcomTag.php:1910
 msgid "Book"
-msgstr ""
+msgstr "Book"
 
 #: ancestry.php:71 descendancy.php:62
 msgid "Booklet"
-msgstr ""
+msgstr "Booklet"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:63
 msgid "Born in the covenant"
-msgstr ""
+msgstr "Born in the covenant"
 
 #: app/Stats.php:6745
 msgid "Bosnia and Herzegovina"
-msgstr ""
+msgstr "Bosnia and Herzegovina"
 
 #: app/GedcomCode/GedcomCodeTemp.php:107
 msgid "Boston, Massachusetts, United States"
@@ -2938,15 +2938,15 @@ msgstr "Boston, Massachusetts, United States"
 
 #: app/Functions/FunctionsPrintLists.php:628
 msgid "Both alive"
-msgstr ""
+msgstr "Both alive"
 
 #: app/Functions/FunctionsPrintLists.php:655
 msgid "Both dead"
-msgstr ""
+msgstr "Both dead"
 
 #: app/Stats.php:6755
 msgid "Botswana"
-msgstr ""
+msgstr "Botswana"
 
 #: app/GedcomCode/GedcomCodeTemp.php:109
 msgid "Bountiful, Utah, United States"
@@ -2954,114 +2954,114 @@ msgstr "Bountiful, Utah, United States"
 
 #: app/Stats.php:6754
 msgid "Bouvet Island"
-msgstr ""
+msgstr "Bouvet Island"
 
 #. I18N: Branches of a family tree
 #: app/Controller/BranchesController.php:68 app/Theme/AbstractTheme.php:1478
 msgid "Branches"
-msgstr ""
+msgstr "Branches"
 
 #. I18N: %s is a surname
 #: app/Controller/BranchesController.php:61
 #, php-format
 msgid "Branches of the %s family"
-msgstr ""
+msgstr "Branches of the %s family"
 
 #: app/Stats.php:6750
 msgid "Brazil"
-msgstr ""
+msgstr "Brazil"
 
 #: app/GedcomCode/GedcomCodeRela.php:78
 msgid "Bridesmaid"
-msgstr ""
+msgstr "Bridesmaid"
 
 #: app/GedcomCode/GedcomCodeTemp.php:111
 msgid "Brisbane, Australia"
-msgstr ""
+msgstr "Brisbane, Australia"
 
 #. I18N: gedcom tag _BRTM
 #: app/GedcomTag.php:1084
 msgid "Brit milah"
-msgstr ""
+msgstr "Brit milah"
 
 #: app/GedcomTag.php:1780
 msgid "Brit milah of a brother"
-msgstr ""
+msgstr "Brit milah of a brother"
 
 #: app/GedcomTag.php:1772
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "Brit milah of a grandson"
 
 #: app/GedcomTag.php:1774
 msgctxt "daughter’s son"
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "Brit milah of a grandson"
 
 #: app/GedcomTag.php:1776
 msgctxt "son’s son"
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "Brit milah of a grandson"
 
 #: app/GedcomTag.php:1778
 msgid "Brit milah of a half-brother"
-msgstr ""
+msgstr "Brit milah of a half-brother"
 
 #: app/GedcomTag.php:1770
 msgid "Brit milah of a son"
-msgstr ""
+msgstr "Brit milah of a son"
 
 #: app/Stats.php:6830
 msgid "British Indian Ocean Territory"
-msgstr ""
+msgstr "British Indian Ocean Territory"
 
 #: app/Stats.php:6969
 msgid "British Virgin Islands"
-msgstr ""
+msgstr "British Virgin Islands"
 
 #: app/Stats.php:6756
 msgid "British West Indies"
-msgstr ""
+msgstr "British West Indies"
 
 #: modules_v3/individual_ext_report/report.xml:313
 #: modules_v3/individual_report/report.xml:316
 msgid "Brother"
-msgstr ""
+msgstr "Brother"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:89
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:122
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:56
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #: app/Stats.php:6752
 msgid "Brunei Darussalam"
-msgstr ""
+msgstr "Brunei Darussalam"
 
 #: app/GedcomCode/GedcomCodeTemp.php:95
 msgid "Buenos Aires, Argentina"
-msgstr ""
+msgstr "Buenos Aires, Argentina"
 
 #: app/Stats.php:6742
 msgid "Bulgaria"
-msgstr ""
+msgstr "Bulgaria"
 
 #. I18N: gedcom tag BURI
 #: app/GedcomTag.php:226 modules_v3/family_group_report/report.xml:351
@@ -3069,208 +3069,208 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:1049
 #: modules_v3/missing_facts_report/report.xml:25
 msgid "Burial"
-msgstr ""
+msgstr "Burial"
 
 #: app/GedcomTag.php:1173
 msgid "Burial of a brother"
-msgstr ""
+msgstr "Burial of a brother"
 
 #: app/GedcomTag.php:1096
 msgid "Burial of a child"
-msgstr ""
+msgstr "Burial of a child"
 
 #: app/GedcomTag.php:1094
 msgid "Burial of a daughter"
-msgstr ""
+msgstr "Burial of a daughter"
 
 #: app/GedcomTag.php:1164
 msgid "Burial of a father"
-msgstr ""
+msgstr "Burial of a father"
 
 #: app/GedcomTag.php:1105 app/GedcomTag.php:1114 app/GedcomTag.php:1123
 msgid "Burial of a grandchild"
-msgstr ""
+msgstr "Burial of a grandchild"
 
 #: app/GedcomTag.php:1103
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Burial of a granddaughter"
 
 #: app/GedcomTag.php:1112
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Burial of a granddaughter"
 
 #: app/GedcomTag.php:1121
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Burial of a granddaughter"
 
 #: app/GedcomTag.php:1128
 msgid "Burial of a grandfather"
-msgstr ""
+msgstr "Burial of a grandfather"
 
 #: app/GedcomTag.php:1130
 msgid "Burial of a grandmother"
-msgstr ""
+msgstr "Burial of a grandmother"
 
 #: app/GedcomTag.php:1132
 msgid "Burial of a grandparent"
-msgstr ""
+msgstr "Burial of a grandparent"
 
 #: app/GedcomTag.php:1101
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Burial of a grandson"
 
 #: app/GedcomTag.php:1110
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Burial of a grandson"
 
 #: app/GedcomTag.php:1119
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Burial of a grandson"
 
 #: app/GedcomTag.php:1155
 msgid "Burial of a half-brother"
-msgstr ""
+msgstr "Burial of a half-brother"
 
 #: app/GedcomTag.php:1159
 msgid "Burial of a half-sibling"
-msgstr ""
+msgstr "Burial of a half-sibling"
 
 #: app/GedcomTag.php:1157
 msgid "Burial of a half-sister"
-msgstr ""
+msgstr "Burial of a half-sister"
 
 #: app/GedcomTag.php:1182
 msgid "Burial of a husband"
-msgstr ""
+msgstr "Burial of a husband"
 
 #: app/GedcomTag.php:1146
 msgid "Burial of a maternal grandfather"
-msgstr ""
+msgstr "Burial of a maternal grandfather"
 
 #: app/GedcomTag.php:1148
 msgid "Burial of a maternal grandmother"
-msgstr ""
+msgstr "Burial of a maternal grandmother"
 
 #: app/GedcomTag.php:1150
 msgid "Burial of a maternal grandparent"
-msgstr ""
+msgstr "Burial of a maternal grandparent"
 
 #: app/GedcomTag.php:1166
 msgid "Burial of a mother"
-msgstr ""
+msgstr "Burial of a mother"
 
 #: app/GedcomTag.php:1168
 msgid "Burial of a parent"
-msgstr ""
+msgstr "Burial of a parent"
 
 #: app/GedcomTag.php:1137
 msgid "Burial of a paternal grandfather"
-msgstr ""
+msgstr "Burial of a paternal grandfather"
 
 #: app/GedcomTag.php:1139
 msgid "Burial of a paternal grandmother"
-msgstr ""
+msgstr "Burial of a paternal grandmother"
 
 #: app/GedcomTag.php:1141
 msgid "Burial of a paternal grandparent"
-msgstr ""
+msgstr "Burial of a paternal grandparent"
 
 #: app/GedcomTag.php:1177
 msgid "Burial of a sibling"
-msgstr ""
+msgstr "Burial of a sibling"
 
 #: app/GedcomTag.php:1175
 msgid "Burial of a sister"
-msgstr ""
+msgstr "Burial of a sister"
 
 #: app/GedcomTag.php:1092
 msgid "Burial of a son"
-msgstr ""
+msgstr "Burial of a son"
 
 #: app/GedcomTag.php:1186
 msgid "Burial of a spouse"
-msgstr ""
+msgstr "Burial of a spouse"
 
 #: app/GedcomTag.php:1184
 msgid "Burial of a wife"
-msgstr ""
+msgstr "Burial of a wife"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
-msgstr ""
+msgstr "Burial place contains"
 
 #: app/Stats.php:6740
 msgid "Burkina Faso"
-msgstr ""
+msgstr "Burkina Faso"
 
 #: app/Stats.php:6737
 msgid "Burundi"
-msgstr ""
+msgstr "Burundi"
 
 #: app/GedcomCode/GedcomCodeRela.php:86
 msgid "Buyer"
-msgstr ""
+msgstr "Buyer"
 
 #: app/GedcomCode/GedcomCodeRela.php:84
 msgctxt "FEMALE"
 msgid "Buyer"
-msgstr ""
+msgstr "Buyer"
 
 #: app/GedcomCode/GedcomCodeRela.php:82
 msgctxt "MALE"
 msgid "Buyer"
-msgstr ""
+msgstr "Buyer"
 
 #. I18N: Help text for the "Port number" site configuration setting
 #: admin_site_config.php:362
 msgid "By default, SMTP works on port 25."
-msgstr ""
+msgstr "By default, SMTP works on port 25."
 
 #: app/Module/GoogleMapsModule.php:4567
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
-msgstr ""
+msgstr "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
 
 #: admin_site_config.php:217
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "By default, your server allows scripts to run for %s second."
+msgstr[1] "By default, your server allows scripts to run for %s seconds."
 
 #. I18N: %s is an amount of memory, such as 32MB
 #: admin_site_config.php:201
 #, php-format
 msgid "By default, your server allows scripts to use %s of memory."
-msgstr ""
+msgstr "By default, your server allows scripts to use %s of memory."
 
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
 msgid "CKEditor™"
-msgstr ""
+msgstr "CKEditor™"
 
 #: admin_trees_manage.php:364
 msgid "Calculating…"
-msgstr ""
+msgstr "Calculating…"
 
 #: app/Module/YahrzeitModule.php:280 app/Theme/AbstractTheme.php:1061
 #: lifespan.php:93
 msgid "Calendar"
-msgstr ""
+msgstr "Calendar"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:692 admin_trees_config.php:694
 #: admin_trees_config.php:697
 msgid "Calendar conversion"
-msgstr ""
+msgstr "Calendar conversion"
 
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
 msgid "Call number"
-msgstr ""
+msgstr "Call number"
 
 #: app/Stats.php:6843
 msgid "Cambodia"
@@ -13840,7 +13840,7 @@ msgstr ""
 
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting “default theme” at one level will use the theme at the next level."
-msgstr "Themes can be selected at three levels: user, family tree and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting “default theme” at one level will use the theme at the next level."
+msgstr "Themes can be selected at three levels: user, family tree and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting ‘default theme’ at one level will use the theme at the next level."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:142
