@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-17 18:16+0000\n"
+"PO-Revision-Date: 2016-04-17 18:43+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -736,43 +736,36 @@ msgstr "Ein FAQ-Eintrag kann entweder nur in einem oder in allen Familienbäumen
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
-#, fuzzy
 msgid "A chart displaying relationships between two individuals."
 msgstr "Ein Diagramm der Beziehungen zwischen zwei Personen."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
-#, fuzzy
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
 msgstr "Ein Diagramm der Vorfahren und Nachkommen einer Person als Familienbuch."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
-#, fuzzy
 msgid "A chart of an individual’s ancestors, as a compact tree."
 msgstr "Ein Diagramm der Vorfahren einer Person als kompakter Baum."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
-#, fuzzy
 msgid "A chart of an individual’s ancestors, formatted as a tree."
 msgstr "Ein Diagramm der Vorfahren einer Person als Baum angeordnet."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
-#, fuzzy
 msgid "A chart of an individual’s ancestors."
 msgstr "Ein Diagramm der Vorfahren einer Person."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
-#, fuzzy
 msgid "A chart of an individual’s descendants."
 msgstr "Ein Diagramm der Nachkommen einer Person."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
-#, fuzzy
 msgid "A chart of individuals’ lifespans."
 msgstr "Ein Diagramm der Lebenszeit einer Person."
 
@@ -790,7 +783,6 @@ msgstr "Ein Datenbank Server kann viele einzelne Datenbanken hosten. Sie müssen
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
-#, fuzzy
 msgid "A fan chart of an individual’s ancestors."
 msgstr "Ein Fächerdiagramm der Vorfahren einer Person."
 
@@ -1053,7 +1045,6 @@ msgstr "Ein Reiter zur Anzeige von Quellen, die mit einzelnen Personen verbunden
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
-#, fuzzy
 msgid "A timeline displaying individual events."
 msgstr "Eine Zeitleiste der Ereignisse einer Person."
 
@@ -1960,7 +1951,6 @@ msgstr "Beim Entpacken der Datei ist ein Fehler aufgetreten."
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
-#, fuzzy
 msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Ein Sanduhrdiagramm der Vorfahren und Nachkommen einer Person."
 
@@ -3446,7 +3436,7 @@ msgstr "Blöcke auf der “Meine Seite”-Seite ändern"
 
 #. I18N: [a record was] Changed on <date/time>
 #: app/Module/RecentChangesModule.php:257
-#, fuzzy, php-format
+#, php-format
 msgid "Changed on %1$s"
 msgstr "Geändert am %1$s"
 
@@ -3490,7 +3480,6 @@ msgid "Chart"
 msgstr "Diagramm"
 
 #: app/Module/RelationshipsChartModule.php:142
-#, fuzzy
 msgid "Chart preferences"
 msgstr "Diagrammeinstellungen"
 
@@ -5088,7 +5077,6 @@ msgid "Description META tag"
 msgstr "META Tag Description"
 
 #: app/Module/CensusAssistantModule.php:316
-#, fuzzy
 msgid "Description unavailable"
 msgstr "Beschreibung nicht verfügbar"
 
@@ -6355,7 +6343,6 @@ msgid "Find duplicates"
 msgstr "Finde Duplikate"
 
 #: relationship.php:115
-#, fuzzy
 msgid "Find other relationships"
 msgstr "Andere Beziehungen finden"
 
@@ -11805,7 +11792,6 @@ msgid "Search text/pattern"
 msgstr "Suchregel oder -text"
 
 #: app/Module/RelationshipsChartModule.php:163
-#, fuzzy
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
 msgstr "Die Suche nach allen möglichen Beziehungen kann in komplexen Stammbäumen sehr lange dauern."
 
@@ -12593,7 +12579,6 @@ msgstr "Anzeige der Lage von Orten und Ereignissen mithilfe von Google Maps ™.
 
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
-#, fuzzy
 msgid "Show the user who made the change"
 msgstr "Den Benutzer anzeigen, der die Änderung machte"
 
@@ -13665,7 +13650,7 @@ msgid "The preferences for new family trees have been updated."
 msgstr "Die Voreinstellungen für neue Stammbäume wurden aktualisiert."
 
 #: app/Module/RelationshipsChartModule.php:190
-#, fuzzy, php-format
+#, php-format
 msgid "The preferences for the chart “%s” have been updated."
 msgstr "Die Einstellungen für das Diagramm “%s” wurden geändert."
 
@@ -15288,7 +15273,6 @@ msgstr "Vanuatu"
 
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
-#, fuzzy
 msgid "Various statistics charts."
 msgstr "Verschiedene Statistikdiagramme."
 
@@ -19786,7 +19770,6 @@ msgid "unknown"
 msgstr "unbekannt"
 
 #: app/Module/RelationshipsChartModule.php:131
-#, fuzzy
 msgid "unlimited"
 msgstr "unbegrenzt"
 
