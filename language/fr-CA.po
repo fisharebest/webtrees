@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-18 04:34+0000\n"
+"PO-Revision-Date: 2016-04-18 14:30+0000\n"
 "Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
 "Language-Team: French (Canada) <http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
 "Language: fr-CA\n"
@@ -14491,7 +14491,7 @@ msgstr "Ce site est momentanément indisponible"
 
 #: app/Theme/AbstractTheme.php:346
 msgid "This website uses cookies to learn about visitor behaviour."
-msgstr "Ce site utilise des cookies pour connaître le comportement des visiteurs."
+msgstr "Ce site utilise des mouchards pour connaître le comportement des visiteurs."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:196
@@ -18029,32 +18029,32 @@ msgstr "arrière-arrière-petit-neveu"
 #: app/Functions/Functions.php:1696
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr "arrière-arrière-petite-nièce"
+msgstr "arrière-arrière-petit-neveu"
 
 #: app/Functions/Functions.php:1708
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "arrière-arrière-petit-neveu"
+msgstr "arrière-arrière-petit-neveu/petite-nièce"
 
 #: app/Functions/Functions.php:1710
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "arrière-arrière-petit-neveu"
+msgstr "arrière-arrière-petit-neveu/petite-nièce"
 
 #: app/Functions/Functions.php:1712
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr "arrière-arrière-petit(e)-neveu/nièce"
+msgstr "arrière-arrière-petit-neveu/petite-nièce"
 
 #: app/Functions/Functions.php:1700
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "arrière-arrière-petit-neveu"
+msgstr "arrière-arrière-petite-nièce"
 
 #: app/Functions/Functions.php:1702
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "arrière-arrière-petit-neveu"
+msgstr "arrière-arrière-petite-nièce"
 
 #: app/Functions/Functions.php:1704
 msgctxt "(a woman’s) great-great-great-niece"
@@ -18094,17 +18094,17 @@ msgstr "arrière-petit-neveu"
 #: app/Functions/Functions.php:1681
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "arrière-petit(e)-neveu/nièce"
+msgstr "arrière-petit-neveu/petite-nièce"
 
 #: app/Functions/Functions.php:1683
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "arrière-petit(e)-neveu/nièce"
+msgstr "arrière-petit-neveu/petite-nièce"
 
 #: app/Functions/Functions.php:1685
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr "arrière-petit(e)-neveu/nièce"
+msgstr "arrière-petit-neveu/petite-nièce"
 
 #: app/Functions/Functions.php:1673
 msgctxt "(a man’s) brother’s great-granddaughter"
@@ -18289,17 +18289,17 @@ msgstr "petit-neveu/petite-nièce"
 #: app/Functions/Functions.php:961
 msgctxt "(a man’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr "petit neveu"
+msgstr "petite-nièce"
 
 #: app/Functions/Functions.php:979
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr "petit neveu"
+msgstr "petite-nièce"
 
 #: app/Functions/Functions.php:999
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr "petit-neveu"
+msgstr "petite-nièce"
 
 #: app/Functions/Functions.php:1263
 msgctxt "(a man’s) sister’s child’s daughter"
@@ -18314,7 +18314,7 @@ msgstr "petite-nièce"
 #: app/Functions/Functions.php:1307
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr "petit-neveu"
+msgstr "petite-nièce"
 
 #: app/Functions/Functions.php:963
 msgctxt "(a woman’s) brother’s child’s daughter"
