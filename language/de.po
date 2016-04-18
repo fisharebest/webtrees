@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-18 09:19+0000\n"
+"PO-Revision-Date: 2016-04-19 05:48+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -4091,10 +4091,6 @@ msgstr "Erstellen"
 msgid "Create a family tree"
 msgstr "Einen neuen Stammbaum erstellen"
 
-#: edit_interface.php:750
-msgid "Create an individual"
-msgstr "Erstelle eine neue Person"
-
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
 msgstr "Erstelle ein neues Medienobjekt"
@@ -4123,6 +4119,10 @@ msgstr "Neue Quelle erstellen"
 #: admin_site_access.php:218
 msgid "Create a website access rule"
 msgstr "Erstelle eine Webseiten Zugriffsregel"
+
+#: edit_interface.php:750
+msgid "Create an individual"
+msgstr "Erstelle eine neue Person"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -7178,9 +7178,8 @@ msgstr "Houston, Texas, Vereinigte Staaten"
 
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:158
-#, fuzzy
 msgid "How much recursion to use when searching for relationships"
-msgstr "Wie viele weitere Verwandschaftsbeziehungen sollen gesucht werden"
+msgstr "Wie viel Rekursion sollen für die Suche nach Beziehungen verwendet werden"
 
 #: app/Stats.php:6826
 msgid "Hungary"
@@ -15825,9 +15824,8 @@ msgid "You may use HTML to format the answer and to add links to other websites.
 msgstr "HTML kann benutzt werden, um die Anwort zu formatieren und Links auf andere Webseiten hinzuzufügen."
 
 #: admin_site_config.php:435
-#, fuzzy
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr "Sie müssen in Ihrem Googleaccount auch “less secure applications” aktivieren."
+msgstr "Sie müssen in Ihrem Googleaccount auch “Weniger sichere Apps” aktivieren."
 
 #: setup.php:212
 msgid "You must change this before you can continue."
