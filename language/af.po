@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-17 13:37+0000\n"
+"PO-Revision-Date: 2016-04-18 15:50+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -1823,7 +1823,6 @@ msgid "All changes in PhpGedView must be accepted"
 msgstr "Alle veranderinge in PhpGedView moet aanvaar word"
 
 #: admin_trees_manage.php:714
-#, fuzzy
 msgid "All existing PhpGedView users must have distinct email addresses"
 msgstr "Alle bestaande PhpGedView-gebruikers moet unieke eposadresse hê"
 
