@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 20:09+0000\n"
-"Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
+"PO-Revision-Date: 2016-04-18 17:11+0000\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Catalan <http://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -1999,7 +1999,7 @@ msgstr "Número d’Ancestral File"
 
 #: app/GedcomCode/GedcomCodeTemp.php:87
 msgid "Anchorage, Alaska, United States"
-msgstr "Anchorage, Alaska, United States"
+msgstr "Anchorage, Alaska, Estats Units"
 
 #: app/Stats.php:6724
 msgid "Andorra"
@@ -2225,7 +2225,7 @@ msgstr "Al Mar"
 
 #: app/GedcomCode/GedcomCodeTemp.php:93
 msgid "Atlanta, Georgia, United States"
-msgstr "Atlanta, Geòrgia"
+msgstr "Atlanta, Geòrgia, Estats Units"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
@@ -2561,7 +2561,7 @@ msgstr "Canvis per lots"
 
 #: app/GedcomCode/GedcomCodeTemp.php:113
 msgid "Baton Rouge, Louisiana, United States"
-msgstr "Baton Rouge, Louisiana, United States"
+msgstr "Baton Rouge, Louisiana, Estats Units"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2752
@@ -2617,7 +2617,7 @@ msgstr "Bibliografia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:97
 msgid "Billings, Montana, United States"
-msgstr "Billings, Montana, United States"
+msgstr "Billings, Montana, Estats Units"
 
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
@@ -2630,7 +2630,7 @@ msgstr "Bing Maps™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Birmingham, Alabama, United States"
-msgstr "Birmingham, Alabama, United States"
+msgstr "Birmingham, Alabama, Estats Units"
 
 #. I18N: gedcom tag BIRT
 #: app/GedcomTag.php:206 modules_v3/ahnentafel_report/report.xml:441
@@ -2870,7 +2870,7 @@ msgstr "Naixements per centúries"
 
 #: app/GedcomCode/GedcomCodeTemp.php:101
 msgid "Bismarck, North Dakota, United States"
-msgstr "Bismarck, Dakota del Nord"
+msgstr "Bismarck, Dakota del Nord, Estats Units"
 
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
@@ -2907,7 +2907,7 @@ msgstr "Bogotà, Colòmbia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:105
 msgid "Boise, Idaho, United States"
-msgstr "Boise, Idaho, United States"
+msgstr "Boise, Idaho, Estats Units"
 
 #: app/Stats.php:6749
 msgid "Bolivia"
@@ -2932,7 +2932,7 @@ msgstr "Bòsnia i Herzegovina"
 
 #: app/GedcomCode/GedcomCodeTemp.php:107
 msgid "Boston, Massachusetts, United States"
-msgstr "Boston, Massachusetts, United States"
+msgstr "Boston, Massachusetts, Estats Units"
 
 #: app/Functions/FunctionsPrintLists.php:628
 msgid "Both alive"
@@ -2948,7 +2948,7 @@ msgstr "Botswana"
 
 #: app/GedcomCode/GedcomCodeTemp.php:109
 msgid "Bountiful, Utah, United States"
-msgstr "Bountiful, Utah, United States"
+msgstr "Bountiful, Utah, Estats Units"
 
 #: app/Stats.php:6754
 msgid "Bouvet Island"
@@ -3540,7 +3540,7 @@ msgstr "Comprovació de la configuració del servidor"
 
 #: app/GedcomCode/GedcomCodeTemp.php:119
 msgid "Chicago, Illinois, United States"
-msgstr "Xicago, Illinois"
+msgstr "Xicago, Illinois, Estats Units"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:36 app/GedcomTag.php:274
@@ -3840,15 +3840,15 @@ msgstr "Colònia Juarez, Mèxic"
 
 #: app/GedcomCode/GedcomCodeTemp.php:133
 msgid "Columbia River, Washington, United States"
-msgstr "Riu Colúmbia, Washington"
+msgstr "Riu Colúmbia, Washington, Estats Units"
 
 #: app/GedcomCode/GedcomCodeTemp.php:127
 msgid "Columbia, South Carolina, United States"
-msgstr "Colúmbia, Carolina del Sud"
+msgstr "Colúmbia, Carolina del Sud, Estats Units"
 
 #: app/GedcomCode/GedcomCodeTemp.php:129
 msgid "Columbus, Ohio, United States"
-msgstr "Columbus, Ohio, United States"
+msgstr "Columbus, Ohio, Estats Units"
 
 #: medialist.php:164
 msgid "Columns per page"
@@ -4095,10 +4095,6 @@ msgstr "Crea"
 msgid "Create a family tree"
 msgstr "Crea un nou arbre genealògic"
 
-#: edit_interface.php:750
-msgid "Create an individual"
-msgstr "Crea una persona nova"
-
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
 msgstr "Crea un nou objecte multimèdia"
@@ -4127,6 +4123,10 @@ msgstr "Crea una nova font"
 #: admin_site_access.php:218
 msgid "Create a website access rule"
 msgstr "Crea una norma d'accés al lloc web"
+
+#: edit_interface.php:750
+msgid "Create an individual"
+msgstr "Crea una persona nova"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -4335,7 +4335,7 @@ msgstr "Daitch-Mokotoff"
 
 #: app/GedcomCode/GedcomCodeTemp.php:135
 msgid "Dallas, Texas, United States"
-msgstr "Dallas, Texas, United States"
+msgstr "Dallas, Texas, Estats Units"
 
 #. I18N: A summary of the system status
 #: admin.php:460
@@ -5025,7 +5025,7 @@ msgstr "Dinamarca"
 
 #: app/GedcomCode/GedcomCodeTemp.php:137
 msgid "Denver, Colorado, United States"
-msgstr "Denver, Colorado, United States"
+msgstr "Denver, Colorado, Estats Units"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
@@ -5109,7 +5109,7 @@ msgstr "Els detalls del nou usuari s'enviaran al la persona de contacte per qüe
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Detroit, Michigan, United States"
-msgstr "Detroit, Michigan, United States"
+msgstr "Detroit, Michigan, Estats Units"
 
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
@@ -6539,7 +6539,7 @@ msgstr "Preguntes més freqüents"
 
 #: app/GedcomCode/GedcomCodeTemp.php:151
 msgid "Fresno, California, United States"
-msgstr "Fresno, Califòrnia"
+msgstr "Fresno, Califòrnia, Estats Units"
 
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:669
@@ -6951,7 +6951,7 @@ msgstr "Hamilton, Nova Zelanda"
 
 #: app/GedcomCode/GedcomCodeTemp.php:165
 msgid "Hartford, Connecticut, United States"
-msgstr "Hartford, Connecticut, United States"
+msgstr "Hartford, Connecticut, Estats Units"
 
 #: modules_v3/descendancy_report/report.xml:429
 msgid "He "
@@ -7178,7 +7178,7 @@ msgstr "Casa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:175
 msgid "Houston, Texas, United States"
-msgstr "Houston, Texas, United States"
+msgstr "Houston, Texas, Estats Units"
 
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:158
@@ -7237,7 +7237,7 @@ msgstr "Icona"
 
 #: app/GedcomCode/GedcomCodeTemp.php:177
 msgid "Idaho Falls, Idaho, United States"
-msgstr "Idaho Falls, Idaho, United States"
+msgstr "Idaho Falls, Idaho, Estats Units"
 
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:516
@@ -7741,7 +7741,7 @@ msgstr "Jordània"
 
 #: app/GedcomCode/GedcomCodeTemp.php:181
 msgid "Jordan River, Utah, United States"
-msgstr "Riu Jordà, Utah"
+msgstr "Riu Jordà, Utah, Estats Units"
 
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:47
@@ -7946,7 +7946,7 @@ msgstr "Quisleu"
 
 #: app/GedcomCode/GedcomCodeTemp.php:185
 msgid "Kona, Hawaii, United States"
-msgstr "Kona, Hawaii, United States"
+msgstr "Kona, Hawaii, Estats Units"
 
 #: app/Stats.php:6846
 msgid "Korea"
@@ -7996,7 +7996,7 @@ msgstr "Temple mormó"
 
 #: app/GedcomCode/GedcomCodeTemp.php:167
 msgid "Laie, Hawaii, United States"
-msgstr "Laie, Hawaii, United States"
+msgstr "Laie, Hawaii, Estats Units"
 
 #. I18N: page orientation
 #: admin_trees_config.php:54 modules_v3/change_report/report.xml:10
@@ -8036,7 +8036,7 @@ msgstr "Més nombre de néts"
 
 #: app/GedcomCode/GedcomCodeTemp.php:199
 msgid "Las Vegas, Nevada, United States"
-msgstr "Las Vegas, Nevada, United States"
+msgstr "Las Vegas, Nevada, Estats Units"
 
 #. I18N: gedcom tag CHAN
 #: app/GedcomTag.php:258 modules_v3/change_report/report.xml:66
@@ -8306,7 +8306,7 @@ msgstr "Hoste"
 
 #: app/GedcomCode/GedcomCodeTemp.php:191
 msgid "Logan, Utah, United States"
-msgstr "Logan, Utah, United States"
+msgstr "Logan, Utah, Estats Units"
 
 #: app/Module/LoginBlockModule.php:63
 msgid "Logged in as "
@@ -8359,7 +8359,7 @@ msgstr "Longitud"
 
 #: app/GedcomCode/GedcomCodeTemp.php:187
 msgid "Los Angeles, California, United States"
-msgstr "Los Angeles, Califòrnia"
+msgstr "Los Angeles, Califòrnia, Estats Units"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219 login.php:252
 msgid "Lost password request"
@@ -8367,7 +8367,7 @@ msgstr "Renoveu la contrasenya perduda"
 
 #: app/GedcomCode/GedcomCodeTemp.php:195
 msgid "Louisville, Kentucky, United States"
-msgstr "Louisville, Kentucky, United States"
+msgstr "Louisville, Kentucky, Estats Units"
 
 #: app/Stats.php:1741
 msgid "Lowest population"
@@ -8375,7 +8375,7 @@ msgstr "Població més baixa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:197
 msgid "Lubbock, Texas, United States"
-msgstr "Lubbock, Texas, United States"
+msgstr "Lubbock, Texas, Estats Units"
 
 #: app/Stats.php:6857
 msgid "Luxembourg"
@@ -8491,7 +8491,7 @@ msgstr "Manila, Filipines"
 
 #: app/GedcomCode/GedcomCodeTemp.php:205
 msgid "Manti, Utah, United States"
-msgstr "Manti, Utah, United States"
+msgstr "Manti, Utah, Estats Units"
 
 #: app/GedcomTag.php:1928
 msgid "Manuscript"
@@ -8861,7 +8861,7 @@ msgstr "Mayotte"
 
 #: app/GedcomCode/GedcomCodeTemp.php:207
 msgid "Medford, Oregon, United States"
-msgstr "Medford, Oregon, United States"
+msgstr "Medford, Oregon, Estats Units"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
@@ -9008,7 +9008,7 @@ msgstr "Llindar de memòria"
 
 #: app/GedcomCode/GedcomCodeTemp.php:211
 msgid "Memphis, Tennessee, United States"
-msgstr "Memphis, Tennessee, United States"
+msgstr "Memphis, Tennessee, Estats Units"
 
 #: admin_module_menus.php:87 admin_modules.php:185
 msgid "Menu"
@@ -9044,7 +9044,7 @@ msgstr "Merida, Mèxic"
 
 #: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Mesa, Arizona, United States"
-msgstr "Mesa, Arizona, United States"
+msgstr "Mesa, Arizona, Estats Units"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
 msgid "Message"
@@ -9244,7 +9244,7 @@ msgstr "Mes:"
 
 #: app/GedcomCode/GedcomCodeTemp.php:221
 msgid "Monticello, Utah, United States"
-msgstr "Monticello, Utah, United States"
+msgstr "Monticello, Utah, Estats Units"
 
 #: app/GedcomCode/GedcomCodeTemp.php:223
 msgid "Montreal, Quebec, Canada"
@@ -9347,7 +9347,7 @@ msgstr "Família materna d’una persona desconeguda"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Mount Timpanogos, Utah, United States"
-msgstr "Mount Timpanogos, Utah, United States"
+msgstr "Mount Timpanogos, Utah, Estats Units"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:493 index_edit.php:312
 #: index_edit.php:361
@@ -9522,7 +9522,7 @@ msgstr "Descripció narrativa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:227
 msgid "Nashville, Tennessee, United States"
-msgstr "Nashville, Tennessee, United States"
+msgstr "Nashville, Tennessee, Estats Units"
 
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:610
@@ -9540,11 +9540,11 @@ msgstr "Nauru"
 
 #: app/GedcomCode/GedcomCodeTemp.php:229
 msgid "Nauvoo (new), Illinois, United States"
-msgstr "Nauvoo, Illinois (nova)"
+msgstr "Nauvoo (nova), Illinois, Estats Units"
 
 #: app/GedcomCode/GedcomCodeTemp.php:231
 msgid "Nauvoo (original), Illinois, United States"
-msgstr "Nauvoo (original), Illinois, United States"
+msgstr "Nauvoo (original), Illinois, Estats Units"
 
 #: app/Module/GoogleMapsModule.php:407 app/Module/GoogleMapsModule.php:3961
 msgid "Neighborhood"
@@ -9593,7 +9593,7 @@ msgstr "Nova Caledònia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:237
 msgid "New York, New York, United States"
-msgstr "Nova York, Nova York"
+msgstr "Nova York, Nova York, Estats Units"
 
 #: app/Stats.php:6895
 msgid "New Zealand"
@@ -9617,7 +9617,7 @@ msgstr "Nou usuari a %s"
 
 #: app/GedcomCode/GedcomCodeTemp.php:233
 msgid "Newport Beach, California, United States"
-msgstr "Newport Beach, Califòrnia"
+msgstr "Newport Beach, Califòrnia, Estats Units"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:54
@@ -10073,7 +10073,7 @@ msgstr "Infermer"
 
 #: app/GedcomCode/GedcomCodeTemp.php:241
 msgid "Oakland, California, United States"
-msgstr "Oakland, Califòrnia"
+msgstr "Oakland, Califòrnia, Estats Units"
 
 #: app/GedcomCode/GedcomCodeTemp.php:243
 msgid "Oaxaca, Mexico"
@@ -10128,11 +10128,11 @@ msgstr "Octubre"
 
 #: app/GedcomCode/GedcomCodeTemp.php:245
 msgid "Ogden, Utah, United States"
-msgstr "Ogden, Utah, United States"
+msgstr "Ogden, Utah, Estats Units"
 
 #: app/GedcomCode/GedcomCodeTemp.php:247
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "Ciutat d’Oklahoma, Oklahoma"
+msgstr "Ciutat d’Oklahoma, Oklahoma, Estats Units"
 
 #: admin_site_change.php:336
 msgid "Old data"
@@ -10263,7 +10263,7 @@ msgstr "Orientació"
 
 #: app/GedcomCode/GedcomCodeTemp.php:249
 msgid "Orlando, Florida, United States"
-msgstr "Orlando, Florida, United States"
+msgstr "Orlando, Florida, Estats Units"
 
 #: app/GedcomTag.php:1942 app/Stats.php:5499 app/Stats.php:5918
 msgid "Other"
@@ -10404,7 +10404,7 @@ msgstr "Paleta"
 
 #: app/GedcomCode/GedcomCodeTemp.php:253
 msgid "Palmyra, New York, United States"
-msgstr "Palmyra, Nova York"
+msgstr "Palmyra, Nova York, Estats Units"
 
 #: app/Stats.php:6898
 msgid "Panama"
@@ -10844,7 +10844,7 @@ msgstr "Número de port"
 
 #: app/GedcomCode/GedcomCodeTemp.php:263
 msgid "Portland, Oregon, United States"
-msgstr "Portland, Oregon, United States"
+msgstr "Portland, Oregon, Estats Units"
 
 #: app/GedcomCode/GedcomCodeTemp.php:251
 msgid "Porto Alegre, Brazil"
@@ -10989,7 +10989,7 @@ msgstr "Propietat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "Provo, Utah, United States"
-msgstr "Provo, Utah, United States"
+msgstr "Provo, Utah, Estats Units"
 
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:704
@@ -11132,7 +11132,7 @@ msgstr "Ràjab"
 
 #: app/GedcomCode/GedcomCodeTemp.php:269
 msgid "Raleigh, North Carolina, United States"
-msgstr "Raleigh, Carolina del Nord"
+msgstr "Raleigh, Carolina del Nord, Estats Units"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:98
@@ -11231,7 +11231,7 @@ msgstr "Els registres no són dels mateix tipus. No es poden fusionar registres 
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
 msgid "Redlands, California, United States"
-msgstr "Redlands, Califòrnia"
+msgstr "Redlands, Califòrnia, Estats Units"
 
 #: app/Module/GoogleMapsModule.php:991 app/Module/GoogleMapsModule.php:2338
 #: app/Module/GoogleMapsModule.php:3645
@@ -11395,7 +11395,7 @@ msgstr "Esborra aquesta ubicació?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Reno, Nevada, United States"
-msgstr "Reno, Nevada, United States"
+msgstr "Reno, Nevada, Estats Units"
 
 #: admin_trees_manage.php:506
 msgid "Renumber"
@@ -11592,7 +11592,7 @@ msgstr "Servidor de correu SMTP"
 
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Sacramento, California, United States"
-msgstr "Sacramento, Califòrnia"
+msgstr "Sacramento, Califòrnia, Estats Units"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:91
@@ -11645,7 +11645,7 @@ msgstr "Saint Vincent i les Grenadines"
 
 #: app/GedcomCode/GedcomCodeTemp.php:299
 msgid "Salt Lake City, Utah, United States"
-msgstr "Salt Lake City, Utah, United States"
+msgstr "Salt Lake City, Utah, Estats Units"
 
 #: app/Stats.php:6976
 msgid "Samoa"
@@ -11653,11 +11653,11 @@ msgstr "Samoa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:285
 msgid "San Antonio, Texas, United States"
-msgstr "San Antonio, Texas, United States"
+msgstr "San Antonio, Texas, Estats Units"
 
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "San Diego, California, United States"
-msgstr "San Diego, Califòrnia"
+msgstr "San Diego, Califòrnia, Estats Units"
 
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "San Jose, Costa Rica"
@@ -11800,7 +11800,7 @@ msgstr "Cercar tots els possibles parentius pot ser molt llarg en arbres complex
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Seattle, Washington, United States"
-msgstr "Seattle, Washington, United States"
+msgstr "Seattle, Washington, Estats Units"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:370
@@ -12781,7 +12781,7 @@ msgstr "Sistemes petits (500 persones): 16-32MB, 10-20 segons"
 
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Snowflake, Arizona, United States"
-msgstr "Snowflake, Arizona, United States"
+msgstr "Snowflake, Arizona, Estats Units"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:792
@@ -12942,7 +12942,7 @@ msgstr "Espanyola"
 
 #: app/GedcomCode/GedcomCodeTemp.php:309
 msgid "Spokane, Washington, United States"
-msgstr "Spokane, Washington, United States"
+msgstr "Spokane, Washington, Estats Units"
 
 #: modules_v3/bdm_report/report.xml:169
 msgid "Spouse"
@@ -12976,7 +12976,7 @@ msgstr "Sri Lanka"
 
 #: app/GedcomCode/GedcomCodeTemp.php:295
 msgid "St. George, Utah, United States"
-msgstr "St. George, Utah, United States"
+msgstr "St. George, Utah, Estats Units"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
 msgid "St. Louis, Missouri"
@@ -15349,7 +15349,7 @@ msgstr "Verificat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:331
 msgid "Vernal, Utah, United States"
-msgstr "Vernal, Utah, United States"
+msgstr "Vernal, Utah, Estats Units"
 
 #. I18N: gedcom tag VERS
 #: app/GedcomTag.php:852
@@ -15477,7 +15477,7 @@ msgstr "Pupil"
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
 msgid "Washington, District of Columbia, United States"
-msgstr "Washington, District of Columbia, United States"
+msgstr "Washington, District of Columbia, Estats Units"
 
 #: admin_trees_config.php:1111
 msgid "Watermarks"
