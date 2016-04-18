@@ -413,7 +413,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function printAddNewMediaLink($element_id) {
-		return '<a href="#" onclick="pastefield=document.getElementById(\'' . $element_id . '\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="' . I18N::translate('Create a new media object') . '"></a>';
+		return '<a href="#" onclick="pastefield=document.getElementById(\'' . $element_id . '\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="' . I18N::translate('Create a media object') . '"></a>';
 	}
 
 	/**
@@ -424,7 +424,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function printAddNewRepositoryLink($element_id) {
-		return '<a href="#" onclick="addnewrepository(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addrepository" title="' . I18N::translate('Create a new repository') . '"></a>';
+		return '<a href="#" onclick="addnewrepository(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addrepository" title="' . I18N::translate('Create a repository') . '"></a>';
 	}
 
 	/**
@@ -435,7 +435,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function printAddNewNoteLink($element_id) {
-		return '<a href="#" onclick="addnewnote(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addnote" title="' . I18N::translate('Create a new shared note') . '"></a>';
+		return '<a href="#" onclick="addnewnote(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addnote" title="' . I18N::translate('Create a shared note') . '"></a>';
 	}
 
 	/**
@@ -457,7 +457,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function printAddNewSourceLink($element_id) {
-		return '<a href="#" onclick="addnewsource(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addsource" title="' . I18N::translate('Create a new source') . '"></a>';
+		return '<a href="#" onclick="addnewsource(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addsource" title="' . I18N::translate('Create a source') . '"></a>';
 	}
 
 	/**
@@ -631,7 +631,7 @@ class FunctionsEdit {
 				if (Module::getModuleByName('GEDFact_assistant') && GedcomRecord::getInstance($xref, $WT_TREE) instanceof Individual) {
 					echo
 						'<div></div><a href="#" style="display: none;" id="assistant-link" onclick="return activateCensusAssistant();">' .
-						I18N::translate('Create a new shared note using assistant') .
+						I18N::translate('Create a shared note using the census assistant') .
 						'</a></div>';
 				}
 			}
