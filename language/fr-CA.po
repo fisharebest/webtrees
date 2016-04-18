@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-17 18:41+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2016-04-18 04:34+0000\n"
+"Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
 "Language-Team: French (Canada) <http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
 "Language: fr-CA\n"
 "MIME-Version: 1.0\n"
@@ -739,37 +739,37 @@ msgstr "Un élément FAQ peut être affiché sur seulement un arbre ou sur tous 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Un diagramme affichant les relations de parenté entre deux individus."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "Un diagramme des ancêtres et des descendants d’un individu, comme un livret de famille."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "Un diagramme des ancêtres d’un individu, comme un arbre compact."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Un diagramme des ancêtres d’un individu, formaté comme un arbre."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Un diagramme des ancêtres d’un individu."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "Un diagramme des descendants d’un individu."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Un diagramme de la durée de vie d’un individu."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -786,7 +786,7 @@ msgstr "Un serveur de base de données peut héberger plusieurs bases de donnée
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "Un diagramme en forme de roue des ancêtres d’un individu."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
@@ -1048,7 +1048,7 @@ msgstr "Onglet affichant les sources reliées à un individu."
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Une chronologie des événements individuels."
 
 #: admin_users.php:398
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
@@ -1954,7 +1954,7 @@ msgstr "Une erreur est survenue lors de la décompression du fichier."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr ""
+msgstr "Un diagramme de type sablier des ancêtres et des descendants d’un individu."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
@@ -3440,7 +3440,7 @@ msgstr "Changer les blocs de la page «&nbsp;Ma page&nbsp;»"
 #: app/Module/RecentChangesModule.php:257
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "Changements de %1$s"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Module/RecentChangesModule.php:254
@@ -3483,7 +3483,7 @@ msgstr "Diagramme"
 
 #: app/Module/RelationshipsChartModule.php:142
 msgid "Chart preferences"
-msgstr ""
+msgstr "Préférences du diagramme"
 
 #: app/Module/ChartsBlockModule.php:190 statistics.php:584
 msgid "Chart type"
@@ -5080,7 +5080,7 @@ msgstr "META Description"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
-msgstr ""
+msgstr "Description non disponible"
 
 #: login.php:446
 msgid "Desired password"
@@ -6346,7 +6346,7 @@ msgstr "Rechercher les doublons"
 
 #: relationship.php:115
 msgid "Find other relationships"
-msgstr ""
+msgstr "Trouver d’autres relations de parenté"
 
 #: relationship.php:102 relationship.php:107
 msgid "Find the closest relationships"
@@ -7181,7 +7181,7 @@ msgstr "Houston, Texas, États-Unis"
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:158
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "Combien de récursivité à utiliser lors de la recherche de relations de parenté"
 
 #: app/Stats.php:6826
 msgid "Hungary"
@@ -11794,7 +11794,7 @@ msgstr "Recherche texte/motif"
 
 #: app/Module/RelationshipsChartModule.php:163
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr ""
+msgstr "Rechercher toutes les relations de parenté possibles peut prendre beaucoup de temps dans les arbres complexes."
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Seattle, Washington, United States"
@@ -12581,7 +12581,7 @@ msgstr "Afficher les cartes des lieux et des événements en utilisant le servic
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Afficher l’utilisateur qui a fait le changement"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
@@ -13653,7 +13653,7 @@ msgstr "Les préférences pour les nouveaux arbres généalogiques ont été mis
 #: app/Module/RelationshipsChartModule.php:190
 #, php-format
 msgid "The preferences for the chart “%s” have been updated."
-msgstr ""
+msgstr "Les préférences du diagramme “%s” ont été mises à jour."
 
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
@@ -15275,7 +15275,7 @@ msgstr "Vanuatu"
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Divers tableaux statistiques."
 
 #: app/Stats.php:6966
 msgid "Vatican City"
@@ -15827,7 +15827,7 @@ msgstr "Vous pouvez utiliser le HTML dans votre format de réponse et pour ajout
 
 #: admin_site_config.php:435
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr ""
+msgstr "Vous devez aussi activer « applications moins sécurisées » dans votre compte Google."
 
 #: setup.php:212
 msgid "You must change this before you can continue."
@@ -19771,7 +19771,7 @@ msgstr "inconnu(e)"
 
 #: app/Module/RelationshipsChartModule.php:131
 msgid "unlimited"
-msgstr ""
+msgstr "illimité"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
