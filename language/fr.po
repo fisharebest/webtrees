@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-18 11:55+0000\n"
+"PO-Revision-Date: 2016-04-18 16:06+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -4095,10 +4095,6 @@ msgstr "Créer"
 msgid "Create a family tree"
 msgstr "Créer un arbre généalogique vide"
 
-#: edit_interface.php:750
-msgid "Create an individual"
-msgstr "Créer un nouvel individu"
-
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
 msgstr "Créer un nouvel objet média"
@@ -4127,6 +4123,10 @@ msgstr "Créer une nouvelle source"
 #: admin_site_access.php:218
 msgid "Create a website access rule"
 msgstr "Créer les règles d’accès au site web"
+
+#: edit_interface.php:750
+msgid "Create an individual"
+msgstr "Créer un nouvel individu"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -18031,17 +18031,17 @@ msgstr "arrière-arrière-petit-neveu"
 #: app/Functions/Functions.php:1696
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr "arrière-arrière-petite-nièce"
+msgstr "arrière-arrière-petit-neveu"
 
 #: app/Functions/Functions.php:1708
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "arrière-arrière-petit-neveu"
+msgstr "arrière-arrière-petit-neveu/nièce"
 
 #: app/Functions/Functions.php:1710
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "arrière-arrière-petit-neveu"
+msgstr "arrière-arrière-petit-neveu/petite nièce"
 
 #: app/Functions/Functions.php:1712
 msgctxt "(a woman’s) great-great-great-nephew/niece"
