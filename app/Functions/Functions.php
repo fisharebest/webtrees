@@ -690,7 +690,7 @@ class Functions {
 
 			return I18N::translate('husband');
 		case 'wif':
-			if ($person1 && $person1) {
+			if ($person1 && $person2) {
 				foreach ($person1->getSpouseFamilies() as $family) {
 					if ($person2 === $family->getSpouse($person1)) {
 						if ($family->getFacts('_NMR')) {
