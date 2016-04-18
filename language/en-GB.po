@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-04-18 16:02+0000\n"
+"PO-Revision-Date: 2016-04-18 16:59+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <http://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -5011,19 +5011,19 @@ msgstr "Delete the preferences for this module."
 
 #: app/Controller/IndividualController.php:167
 msgid "Delete this name"
-msgstr ""
+msgstr "Delete this name"
 
 #: edituser.php:321
 msgid "Delete your account"
-msgstr ""
+msgstr "Delete your account"
 
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr ""
+msgstr "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
 
 #: app/Stats.php:6784
 msgid "Denmark"
-msgstr ""
+msgstr "Denmark"
 
 #: app/GedcomCode/GedcomCodeTemp.php:137
 msgid "Denver, Colorado, United States"
@@ -5031,11 +5031,11 @@ msgstr "Denver, Colorado, United States"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr ""
+msgstr "Depending on your server configuration, you may be able to upgrade automatically."
 
 #: familybook.php:90
 msgid "Descendant generations"
-msgstr ""
+msgstr "Descendant generations"
 
 #. I18N: gedcom tag DESC
 #. I18N: Name of a module/chart
@@ -5051,23 +5051,23 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Descendants"
-msgstr ""
+msgstr "Descendants"
 
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:366
 msgid "Descendants interest"
-msgstr ""
+msgstr "Descendants interest"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
-msgstr ""
+msgstr "Descendants of "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/DescendancyController.php:62
 #: app/Module/ChartsBlockModule.php:101
 #, php-format
 msgid "Descendants of %s"
-msgstr ""
+msgstr "Descendants of %s"
 
 #. I18N: gedcom tag DSCR
 #: admin_module_blocks.php:74 admin_module_charts.php:67
@@ -5075,7 +5075,7 @@ msgstr ""
 #: admin_module_sidebar.php:88 admin_module_tabs.php:88 admin_modules.php:158
 #: app/GedcomTag.php:382 block_edit.php:83 find.php:526
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:955
@@ -5084,30 +5084,30 @@ msgstr ""
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
-msgstr ""
+msgstr "Description unavailable"
 
 #: login.php:446
 msgid "Desired password"
-msgstr ""
+msgstr "Desired password"
 
 #: login.php:436
 msgid "Desired user name"
-msgstr ""
+msgstr "Desired user name"
 
 #. I18N: gedcom tag DEST
 #: app/GedcomTag.php:370
 msgid "Destination"
-msgstr ""
+msgstr "Destination"
 
 #: admin_site_merge.php:213 admin_site_merge.php:260 admin_site_merge.php:306
 #: gedrecord.php:121 mediaviewer.php:110 note.php:122 repo.php:130
 #: source.php:134
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: admin_site_config.php:491
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
-msgstr ""
+msgstr "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Detroit, Michigan, United States"
@@ -5146,98 +5146,98 @@ msgstr "Dey"
 #: app/Date/HijriDate.php:101
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhū al-Ḥijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:165
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhū al-Ḥijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:133
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhū al-Ḥijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:69
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhū al-Ḥijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:100
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhū al-Qiʿdah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:164
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhū al-Qiʿdah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:132
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhū al-Qiʿdah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:68
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhū al-Qiʿdah"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:71
 msgid "Died as a child: exempt"
-msgstr ""
+msgstr "Died as a child: exempt"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:96
 msgid "Died as an infant: exempt"
-msgstr ""
+msgstr "Died as an infant: exempt"
 
 #: modules_v3/change_report/report.xml:60
 msgid "Differences"
-msgstr ""
+msgstr "Differences"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:710
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
-msgstr ""
+msgstr "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors"
-msgstr ""
+msgstr "Direct line ancestors"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors and their families"
-msgstr ""
+msgstr "Direct line ancestors and their families"
 
 #: admin_site_upgrade.php:199
 msgid "Disable these modules"
-msgstr ""
+msgstr "Disable these modules"
 
 #: admin_site_upgrade.php:263
 msgid "Disable these themes"
-msgstr ""
+msgstr "Disable these themes"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: app/I18N.php:182
 #, php-format
 msgid "Display %s"
-msgstr ""
+msgstr "Display %s"
 
 #: find.php:192 find.php:211 find.php:230 find.php:250 find.php:269
 msgid "Display all"
-msgstr ""
+msgstr "Display all"
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:71
@@ -5256,24 +5256,24 @@ msgstr "Display map co-ordinates"
 #. I18N: gedcom tag DIV
 #: app/GedcomTag.php:374
 msgid "Divorce"
-msgstr ""
+msgstr "Divorce"
 
 #. I18N: gedcom tag DIVF
 #: app/GedcomTag.php:378
 msgid "Divorce filed"
-msgstr ""
+msgstr "Divorce filed"
 
 #: app/Stats.php:3640 statistics.php:224
 msgid "Divorces by century"
-msgstr ""
+msgstr "Divorces by century"
 
 #: app/Stats.php:6782
 msgid "Djibouti"
-msgstr ""
+msgstr "Djibouti"
 
 #: addmedia.php:473 addmedia.php:500 admin_media_upload.php:224
 msgid "Do not change to keep original filename."
-msgstr ""
+msgstr "Do not change to keep original filename."
 
 #: app/Module/GoogleMapsModule.php:4302
 msgid "Do not create new locations, just import coordinates for existing locations."
@@ -5282,7 +5282,7 @@ msgstr "Do not create new locations, just import co-ordinates for existing locat
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
 msgid "Do not seal, previous sealing cancelled"
-msgstr ""
+msgstr "Do not seal, previous sealing cancelled"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:84
@@ -5291,15 +5291,15 @@ msgstr "Do not seal: unauthorised"
 
 #: app/GedcomTag.php:1918
 msgid "Document"
-msgstr ""
+msgstr "Document"
 
 #: app/Stats.php:6783
 msgid "Dominica"
-msgstr ""
+msgstr "Dominica"
 
 #: app/Stats.php:6785
 msgid "Dominican Republic"
-msgstr ""
+msgstr "Dominican Republic"
 
 #: app/Module/ClippingsCartModule.php:359
 #: app/Module/ClippingsCartModule.php:432
@@ -5307,26 +5307,26 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:754
 #: app/Module/ClippingsCartModule.php:797 app/Module/GoogleMapsModule.php:4695
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 #. I18N: The system is about to…; %s is a URL.
 #: admin_site_upgrade.php:305
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Download %s…"
 
 #: mediaviewer.php:159
 msgid "Download file"
-msgstr ""
+msgstr "Download file"
 
 #: app/Module/GoogleMapsModule.php:4687
 msgid "Download geographic data"
-msgstr ""
+msgstr "Download geographic data"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:198
 msgid "Duodi"
-msgstr ""
+msgstr "Duodi"
 
 #: admin_users.php:73 edituser.php:60 login.php:286
 msgid "Duplicate email address. A user with that email already exists."
@@ -5334,7 +5334,7 @@ msgstr "Duplicate e-mail address. A user with that e-mail already exists."
 
 #: admin_users.php:71 edituser.php:58 login.php:284
 msgid "Duplicate user name. A user with that user name already exists. Please choose another user name."
-msgstr ""
+msgstr "Duplicate user name. A user with that user name already exists. Please choose another user name."
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
@@ -5351,35 +5351,35 @@ msgstr "Each user account has an option to ‘automatically accept changes’. W
 
 #: statistics.php:129
 msgid "Earliest birth"
-msgstr ""
+msgstr "Earliest birth"
 
 #: app/Module/FamilyTreeStatisticsModule.php:138
 #: app/Module/FamilyTreeStatisticsModule.php:321
 #: app/Module/HtmlBlockModule.php:216
 msgid "Earliest birth year"
-msgstr ""
+msgstr "Earliest birth year"
 
 #: statistics.php:130
 msgid "Earliest death"
-msgstr ""
+msgstr "Earliest death"
 
 #: app/Module/FamilyTreeStatisticsModule.php:152
 #: app/Module/FamilyTreeStatisticsModule.php:349
 #: app/Module/HtmlBlockModule.php:226
 msgid "Earliest death year"
-msgstr ""
+msgstr "Earliest death year"
 
 #: statistics.php:232
 msgid "Earliest divorce"
-msgstr ""
+msgstr "Earliest divorce"
 
 #: statistics.php:231
 msgid "Earliest marriage"
-msgstr ""
+msgstr "Earliest marriage"
 
 #: app/Stats.php:6787
 msgid "Ecuador"
-msgstr ""
+msgstr "Ecuador"
 
 #. I18N: Name of a module/menu
 #: admin_media.php:528 admin_site_access.php:193 admin_site_access.php:359
@@ -5410,20 +5410,20 @@ msgstr ""
 #: edit_interface.php:261 edit_interface.php:418 note.php:167 note.php:172
 #: note.php:173
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
 msgid "Edit FAQ item"
-msgstr ""
+msgstr "Edit FAQ item"
 
 #: admin_site_access.php:216
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Edit a website access rule"
 
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:123
 msgid "Edit details"
-msgstr ""
+msgstr "Edit details"
 
 #: app/Controller/IndividualController.php:283
 #: app/Controller/IndividualController.php:291
@@ -5432,11 +5432,11 @@ msgstr "Edit sex"
 
 #: app/Module/AlbumModule.php:159
 msgid "Edit media"
-msgstr ""
+msgstr "Edit media"
 
 #: addmedia.php:237 addmedia.php:406 app/Controller/MediaController.php:43
 msgid "Edit media object"
-msgstr ""
+msgstr "Edit media object"
 
 #: app/Controller/IndividualController.php:168
 #: app/Functions/FunctionsEdit.php:705 edit_interface.php:1640
@@ -5496,57 +5496,57 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeTemp.php:141
 msgid "Edmonton, Alberta, Canada"
-msgstr ""
+msgstr "Edmonton, Alberta, Canada"
 
 #. I18N: gedcom tag EDUC
 #: app/GedcomTag.php:386
 msgid "Education"
-msgstr ""
+msgstr "Education"
 
 #: app/Stats.php:6788
 msgid "Egypt"
-msgstr ""
+msgstr "Egypt"
 
 #: app/Stats.php:6789
 msgid "Eire"
-msgstr ""
+msgstr "Eire"
 
 #: app/Stats.php:6930
 msgid "El Salvador"
-msgstr ""
+msgstr "El Salvador"
 
 #: app/GedcomTag.php:1920
 msgid "Electronic"
-msgstr ""
+msgstr "Electronic"
 
 #. I18N: Angle of elevation (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2753
 msgid "Elevation"
-msgstr ""
+msgstr "Elevation"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:148
 msgctxt "GENITIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:224
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:186
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:110
 msgctxt "NOMINATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: gedcom tag EMAI
 #. I18N: gedcom tag EMAIL
@@ -5565,50 +5565,50 @@ msgstr "E-mail verified"
 
 #: app/Stats.php:84
 msgid "Embedded variable"
-msgstr ""
+msgstr "Embedded variable"
 
 #. I18N: gedcom tag EMIG
 #: app/GedcomTag.php:404
 msgid "Emigration"
-msgstr ""
+msgstr "Emigration"
 
 #: app/GedcomCode/GedcomCodeRela.php:107
 msgid "Employee"
-msgstr ""
+msgstr "Employee"
 
 #: app/GedcomCode/GedcomCodeRela.php:105
 msgctxt "FEMALE"
 msgid "Employee"
-msgstr ""
+msgstr "Employee"
 
 #: app/GedcomCode/GedcomCodeRela.php:103
 msgctxt "MALE"
 msgid "Employee"
-msgstr ""
+msgstr "Employee"
 
 #: app/GedcomCode/GedcomCodeRela.php:116 app/GedcomTag.php:652
 #: app/GedcomTag.php:742
 msgid "Employer"
-msgstr ""
+msgstr "Employer"
 
 #: app/GedcomCode/GedcomCodeRela.php:114
 msgctxt "FEMALE"
 msgid "Employer"
-msgstr ""
+msgstr "Employer"
 
 #: app/GedcomCode/GedcomCodeRela.php:112
 msgctxt "MALE"
 msgid "Employer"
-msgstr ""
+msgstr "Employer"
 
 #: app/Module/ClippingsCartModule.php:468
 #: app/Module/ClippingsCartModule.php:715
 msgid "Empty the clippings cart"
-msgstr ""
+msgstr "Empty the clippings cart"
 
 #: admin_modules.php:156
 msgid "Enabled"
-msgstr ""
+msgstr "Enabled"
 
 #. I18N: Help text for the “Family tree” configuration setting
 #: admin_trees_config.php:377
@@ -5618,30 +5618,30 @@ msgstr ""
 #. I18N …of a range of addresses
 #: admin_site_access.php:264 admin_site_access.php:362
 msgid "End IP address"
-msgstr ""
+msgstr "End IP address"
 
 #. I18N: The latest year in a range
 #: lifespan.php:77
 msgid "End year"
-msgstr ""
+msgstr "End year"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
-msgstr ""
+msgstr "Ending range of change dates"
 
 #. I18N: http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:145
 msgid "Endowment House"
-msgstr ""
+msgstr "Endowment House"
 
 #. I18N: gedcom tag ENGA
 #: app/GedcomTag.php:420 modules_v3/missing_facts_report/report.xml:20
 msgid "Engagement"
-msgstr ""
+msgstr "Engagement"
 
 #: app/Stats.php:6790
 msgid "England"
-msgstr ""
+msgstr "England"
 
 #: addmedia.php:429 app/Module/FamilyTreeFavoritesModule.php:212
 msgid "Enter an individual, family, or source ID"
@@ -5662,25 +5662,25 @@ msgstr ""
 
 #: search.php:191
 msgid "Entire record"
-msgstr ""
+msgstr "Entire record"
 
 #: app/Stats.php:6813
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "Equatorial Guinea"
 
 #: app/Stats.php:6791
 msgid "Eritrea"
-msgstr ""
+msgstr "Eritrea"
 
 #: import.php:193
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
-msgstr ""
+msgstr "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
 
 #: app/Date/JalaliDate.php:194
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
-msgstr ""
+msgstr "Esf"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:98
@@ -5709,55 +5709,55 @@ msgstr "Esfand"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1265
 msgid "Estimated dates for birth and death"
-msgstr ""
+msgstr "Estimated dates for birth and death"
 
 #: app/Stats.php:6794
 msgid "Estonia"
-msgstr ""
+msgstr "Estonia"
 
 #: app/Stats.php:6795
 msgid "Ethiopia"
-msgstr ""
+msgstr "Ethiopia"
 
 #: statistics.php:598
 msgid "Europe"
-msgstr ""
+msgstr "Europe"
 
 #. I18N: gedcom tag EVEN
 #: app/GedcomTag.php:428 modules_v3/fact_sources/report.xml:70
 #: modules_v3/fact_sources/report.xml:157
 #: modules_v3/missing_facts_report/report.xml:55
 msgid "Event"
-msgstr ""
+msgstr "Event"
 
 #: app/Module/GoogleMapsModule.php:2437 statistics.php:110 statistics.php:212
 msgid "Events"
-msgstr ""
+msgstr "Events"
 
 #: statistics.php:419
 msgid "Events in countries"
-msgstr ""
+msgstr "Events in countries"
 
 #: app/Module/IndividualFactsTabModule.php:132
 msgid "Events of close relatives"
-msgstr ""
+msgstr "Events of close relatives"
 
 #: admin_users.php:533
 msgid "Everybody has this role, including visitors to the website and search engines."
-msgstr ""
+msgstr "Everybody has this role, including visitors to the website and search engines."
 
 #: search_advanced.php:157 search_advanced.php:219 search_advanced.php:234
 #: search_advanced.php:255 search_advanced.php:270
 msgid "Exact"
-msgstr ""
+msgstr "Exact"
 
 #: search_advanced.php:103 search_advanced.php:168
 msgid "Exact date"
-msgstr ""
+msgstr "Exact date"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:162
 msgid "Exact text"
-msgstr ""
+msgstr "Exact text"
 
 #: famlist.php:176 indilist.php:176
 #, php-format
@@ -5766,31 +5766,31 @@ msgstr "Exclude individuals with ‘%s’ as a married name"
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
-msgstr ""
+msgstr "Exclude subfolders"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:92
 msgid "Excluded from this submission"
-msgstr ""
+msgstr "Excluded from this submission"
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:483
 msgid "Explain why you are requesting an account."
-msgstr ""
+msgstr "Explain why you are requesting an account."
 
 #: admin_site_change.php:369 admin_site_logs.php:310
 #: admin_trees_manage.php:591
 msgid "Export"
-msgstr ""
+msgstr "Export"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Export a GEDCOM file"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:281
 msgid "Export all the family trees to GEDCOM files…"
-msgstr ""
+msgstr "Export all the family trees to GEDCOM files…"
 
 #: admin_trees_download.php:134
 msgid "Export options"
@@ -5799,21 +5799,21 @@ msgstr ""
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: admin_trees_config.php:450
 msgid "Extend privacy to dead individuals"
-msgstr ""
+msgstr "Extend privacy to dead individuals"
 
 #. I18N: “External files” are stored on other computers
 #: admin_media.php:637
 msgid "External files"
-msgstr ""
+msgstr "External files"
 
 #: admin_media.php:676
 msgid "External media files have a URL instead of a filename."
-msgstr ""
+msgstr "External media files have a URL instead of a filename."
 
 #. I18N: Name of a module/sidebar
 #: app/Module/ExtraInformationModule.php:29
 msgid "Extra information"
-msgstr ""
+msgstr "Extra information"
 
 #. I18N: gedcom tag _EYEC
 #: app/GedcomTag.php:1467
@@ -5823,13 +5823,13 @@ msgstr "Eye colour"
 #. I18N: Name of a theme.
 #: app/Theme/FabTheme.php:167
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:34
 #: app/Module/FrequentlyAskedQuestionsModule.php:537
 msgid "FAQ"
-msgstr ""
+msgstr "FAQ"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:207
 msgid "FAQ position"
@@ -5846,64 +5846,64 @@ msgstr "FAQs are lists of questions and answers, which allow you to explain the 
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:436
 msgid "Fact"
-msgstr ""
+msgstr "Fact"
 
 #: app/GedcomTag.php:1469
 msgid "Fact 1"
-msgstr ""
+msgstr "Fact 1"
 
 #: app/GedcomTag.php:1487
 msgid "Fact 10"
-msgstr ""
+msgstr "Fact 10"
 
 #: app/GedcomTag.php:1489
 msgid "Fact 11"
-msgstr ""
+msgstr "Fact 11"
 
 #: app/GedcomTag.php:1491
 msgid "Fact 12"
-msgstr ""
+msgstr "Fact 12"
 
 #: app/GedcomTag.php:1493
 msgid "Fact 13"
-msgstr ""
+msgstr "Fact 13"
 
 #: app/GedcomTag.php:1471
 msgid "Fact 2"
-msgstr ""
+msgstr "Fact 2"
 
 #: app/GedcomTag.php:1473
 msgid "Fact 3"
-msgstr ""
+msgstr "Fact 3"
 
 #: app/GedcomTag.php:1475
 msgid "Fact 4"
-msgstr ""
+msgstr "Fact 4"
 
 #: app/GedcomTag.php:1477
 msgid "Fact 5"
-msgstr ""
+msgstr "Fact 5"
 
 #: app/GedcomTag.php:1479
 msgid "Fact 6"
-msgstr ""
+msgstr "Fact 6"
 
 #: app/GedcomTag.php:1481
 msgid "Fact 7"
-msgstr ""
+msgstr "Fact 7"
 
 #: app/GedcomTag.php:1483
 msgid "Fact 8"
-msgstr ""
+msgstr "Fact 8"
 
 #: app/GedcomTag.php:1485
 msgid "Fact 9"
-msgstr ""
+msgstr "Fact 9"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1553
 msgid "Fact icons"
-msgstr ""
+msgstr "Fact icons"
 
 #: admin_trees_config.php:533 app/Functions/FunctionsPrint.php:619
 msgid "Fact or event"
