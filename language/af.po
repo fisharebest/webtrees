@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-18 16:05+0000\n"
+"PO-Revision-Date: 2016-04-18 16:25+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -4089,40 +4089,40 @@ msgstr "Skep"
 
 #: admin_trees_manage.php:621
 msgid "Create a family tree"
-msgstr "Skep 'n nuwe stamboom"
+msgstr "Skep 'n stamboom"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
-msgstr "Skep 'n nuwe mediavoorwerp"
+msgstr "Skep 'n mediavoorwerp"
 
 #: app/Functions/FunctionsEdit.php:427 edit_interface.php:1512
 #: edit_interface.php:1575
 msgid "Create a repository"
-msgstr "Skep bergplek"
+msgstr "Skep 'n bergplek"
 
 #: app/Functions/FunctionsEdit.php:438 edit_interface.php:1348
 #: edit_interface.php:1384
 msgid "Create a shared note"
-msgstr "Skep 'n nuwe Gedeelde Nota"
+msgstr "Skep 'n gedeelde nota"
 
 #: app/Functions/FunctionsEdit.php:634
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
-msgstr "Skep 'n nuwe Gedeelde Nota met behulp van Assistent"
+msgstr "Skep 'n gedeelde nota met behulp van die sensus assistent"
 
 #: app/Functions/FunctionsEdit.php:460 edit_interface.php:1196
 #: edit_interface.php:1279
 msgid "Create a source"
-msgstr "Skep 'n nuwe bron"
+msgstr "Skep 'n bron"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
-msgstr "Skep 'n nuwe werf toegangsreël"
+msgstr "Skep 'n webwerf toegangsreël"
 
 #: edit_interface.php:750
 msgid "Create an individual"
-msgstr "Skep 'n nuwe persoon"
+msgstr "Skep 'n persoon"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -4130,7 +4130,7 @@ msgstr "Skep jou eie diagram"
 
 #: admin_trees_manage.php:744
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr "Skep, verander of verwyder 'n stamboom vir elke GEDCOM lêer in die data-lêergids."
+msgstr "Skep, wysig of verwyder 'n stamboom vir elke GEDCOM lêer in die data-lêergids."
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:330 modules_v3/family_group_report/report.xml:315
@@ -5271,7 +5271,7 @@ msgstr "Moet nie verander nie om die oorspronklike lêernaam te behou."
 
 #: app/Module/GoogleMapsModule.php:4302
 msgid "Do not create new locations, just import coordinates for existing locations."
-msgstr "Maak geen nuwe plekke nie, voer sleg die koördinate van bestaande plekke in."
+msgstr "Moet geen nuwe plekke skep nie, voer sleg die koördinate van bestaande plekke in."
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
@@ -7247,7 +7247,7 @@ msgstr "Wanneer 'n besoeker van die werf geen voorkeurtaal in sy/haar webblaaier
 
 #: admin_users.php:392
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr "As 'n beheerder 'n gebruikersrekening skep, word 'n verifikasie e-pos nie uitgestuur nie en moet die e-posadres met die hand geverifieer word."
+msgstr "As 'n beheerder 'n gebruikersrekening skep, word 'n verifikasie epos nie uitgestuur nie en moet die eposadres met die hand geverifieer word."
 
 #: help_text.php:228
 #, php-format
@@ -7308,7 +7308,7 @@ msgstr "As jy die probleem nie self kan oplos nie, kan jy om hulp vra op die for
 
 #: admin_trees_manage.php:282
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
-msgstr "As jy hierdie GEDCOM-lêer geskep het met genealogie sagteware wat spasies weglaat wanneer lang reëls opgebreek word, selekteer dan hierdie opsie om die ontbrekende spasies weer by te voeg."
+msgstr "As jy hierdie GEDCOM-lêer geskep het met genealogie sagteware wat spasies weglaat wanneer lang reëls afgebreek word, selekteer dan hierdie opsie om die ontbrekende spasies weer by te voeg."
 
 #: login.php:345
 msgid "If you didn’t request an account, you can just delete this message."
@@ -15578,7 +15578,7 @@ msgstr "Wanneer nuwe naverwante familie bygevoeg word, kan jy bronverwysings by 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:858
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
-msgstr "Wanneer nuwe rekords geskep word, word hulle 'n interne ID-nommer toegewys. Jy kan hier die voorvoegsel vir elke soort rekord bepaal."
+msgstr "Wanneer nuwe rekords geskep word, word hulle 'n interne ID-nommer toegeken. Jy kan hier die voorvoegsel vir elke soort rekord bepaal."
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1619
@@ -15789,7 +15789,7 @@ msgstr "Jy kan die privaatheidsberekeninge bespoedig deur 'n sterfrekord by pers
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr "Jy mag nie 'n reël skep nie, wat jou sal verhinder om toegang tot die webwerf te kry nie."
+msgstr "Jy mag nie 'n reël skep wat jou sal verhinder om toegang tot die webwerf te kry nie."
 
 #: login.php:75
 msgid "You cannot login because your browser does not accept cookies."
@@ -15809,7 +15809,7 @@ msgstr "Jy het jou versoek om as gebruiker te registreer bevestig."
 
 #: app/Module/UserJournalModule.php:95
 msgid "You have not created any journal items."
-msgstr "Jy het nog geen joernaal inskrywings gemaak nie."
+msgstr "Jy het nog geen joernaal inskrywings geskep nie."
 
 #: admin_trees_manage.php:198
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
