@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-18 14:30+0000\n"
+"PO-Revision-Date: 2016-04-18 21:34+0000\n"
 "Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
 "Language-Team: French (Canada) <http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
 "Language: fr-CA\n"
@@ -4093,10 +4093,6 @@ msgstr "Créer"
 msgid "Create a family tree"
 msgstr "Créer un arbre généalogique vide"
 
-#: edit_interface.php:750
-msgid "Create an individual"
-msgstr "Créer un nouvel individu"
-
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
 msgstr "Créer un nouvel objet média"
@@ -4125,6 +4121,10 @@ msgstr "Créer une nouvelle source"
 #: admin_site_access.php:218
 msgid "Create a website access rule"
 msgstr "Créer une règle d’accès au site web"
+
+#: edit_interface.php:750
+msgid "Create an individual"
+msgstr "Créer un nouvel individu"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -18139,17 +18139,17 @@ msgstr "arrière-grand-oncle"
 #: app/Functions/Functions.php:967
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr "petit neveu"
+msgstr "petit-neveu"
 
 #: app/Functions/Functions.php:987
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr "petit neveu"
+msgstr "petit-neveu"
 
 #: app/Functions/Functions.php:1005
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr "petit neveu"
+msgstr "petit-neveu"
 
 #: app/Functions/Functions.php:1269
 msgctxt "(a man’s) sister’s child’s son"
@@ -18762,17 +18762,17 @@ msgstr "neveu"
 #: app/Functions/Functions.php:984
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "neveu"
+msgstr "neveu par alliance"
 
 #: app/Functions/Functions.php:1244
 msgctxt "sibling’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "neveu"
+msgstr "neveu par alliance"
 
 #: app/Functions/Functions.php:1286
 msgctxt "sisters’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "neveu"
+msgstr "neveu par alliance"
 
 #: app/Functions/Functions.php:788
 msgctxt "brother’s child"
@@ -18843,7 +18843,7 @@ msgstr "cousin au neuvième degré"
 #: app/Functions/Functions.php:553
 msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
-msgstr "9<sup>e</sup> arrière-petit(e)-cousin(e)"
+msgstr "cousin/cousine au neuvième degré"
 
 #: admin_trees_config.php:74 admin_users.php:242 admin_users.php:243
 #: app/Functions/FunctionsEdit.php:133
