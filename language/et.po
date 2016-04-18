@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-17 19:17+0000\n"
-"Last-Translator: Chip <jorgenchip@gmail.com>\n"
+"PO-Revision-Date: 2016-04-18 17:17+0000\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Estonian <http://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -2000,7 +2000,7 @@ msgstr "Sugupuu faili number"
 
 #: app/GedcomCode/GedcomCodeTemp.php:87
 msgid "Anchorage, Alaska, United States"
-msgstr "Anchorage, Alaska, United States"
+msgstr "Anchorage, Alaska, Ühendriigid"
 
 #: app/Stats.php:6724
 msgid "Andorra"
@@ -2226,7 +2226,7 @@ msgstr "Merel"
 
 #: app/GedcomCode/GedcomCodeTemp.php:93
 msgid "Atlanta, Georgia, United States"
-msgstr "Atlanta, Georgia, United States"
+msgstr "Atlanta, Georgia, Ühendriigid"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
@@ -2562,7 +2562,7 @@ msgstr "Uuenduspartii"
 
 #: app/GedcomCode/GedcomCodeTemp.php:113
 msgid "Baton Rouge, Louisiana, United States"
-msgstr "Baton Rouge, Louisiana, United States"
+msgstr "Baton Rouge, Louisiana, Ühendriigid"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2752
@@ -2618,7 +2618,7 @@ msgstr "Bibliograafia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:97
 msgid "Billings, Montana, United States"
-msgstr "Billings, Montana, United States"
+msgstr "Billings, Montana, Ühendriigid"
 
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
@@ -2631,7 +2631,7 @@ msgstr "Bing Kaardid™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Birmingham, Alabama, United States"
-msgstr "Birmingham, Alabama, United States"
+msgstr "Birmingham, Alabama, Ühendriigid"
 
 #. I18N: gedcom tag BIRT
 #: app/GedcomTag.php:206 modules_v3/ahnentafel_report/report.xml:441
@@ -2871,7 +2871,7 @@ msgstr "Sünnid sajandi lõikes"
 
 #: app/GedcomCode/GedcomCodeTemp.php:101
 msgid "Bismarck, North Dakota, United States"
-msgstr "Bismarck, Põhja Dakota"
+msgstr "Bismarck, Põhja Dakota, Ühendriigid"
 
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
@@ -2908,7 +2908,7 @@ msgstr "Bogota, Kolumbia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:105
 msgid "Boise, Idaho, United States"
-msgstr "Boise, Idaho, United States"
+msgstr "Boise, Idaho, Ühendriigid"
 
 #: app/Stats.php:6749
 msgid "Bolivia"
@@ -2933,7 +2933,7 @@ msgstr "Bosnia y Herzegovina"
 
 #: app/GedcomCode/GedcomCodeTemp.php:107
 msgid "Boston, Massachusetts, United States"
-msgstr "Boston, Massachusetts, United States"
+msgstr "Boston, Massachusetts, Ühendriigid"
 
 #: app/Functions/FunctionsPrintLists.php:628
 msgid "Both alive"
@@ -2949,7 +2949,7 @@ msgstr "Botsuana"
 
 #: app/GedcomCode/GedcomCodeTemp.php:109
 msgid "Bountiful, Utah, United States"
-msgstr "Bountiful, Utah, United States"
+msgstr "Bountiful, Utah, Ühendriigid"
 
 #: app/Stats.php:6754
 msgid "Bouvet Island"
@@ -3541,7 +3541,7 @@ msgstr "Kontrollin serveri konfiguratsiooni"
 
 #: app/GedcomCode/GedcomCodeTemp.php:119
 msgid "Chicago, Illinois, United States"
-msgstr "Chicago, Illinois, United States"
+msgstr "Chicago, Illinois, Ühendriigid"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:36 app/GedcomTag.php:274
@@ -3841,15 +3841,15 @@ msgstr "Colonia Juarez, Mehhiko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:133
 msgid "Columbia River, Washington, United States"
-msgstr "Columbia River, Washington, United States"
+msgstr "Columbia River, Washington, Ühendriigid"
 
 #: app/GedcomCode/GedcomCodeTemp.php:127
 msgid "Columbia, South Carolina, United States"
-msgstr "Columbia, Lõuna Carolina"
+msgstr "Columbia, Lõuna Carolina, Ühendriigid"
 
 #: app/GedcomCode/GedcomCodeTemp.php:129
 msgid "Columbus, Ohio, United States"
-msgstr "Columbus, Ohio, United States"
+msgstr "Columbus, Ohio, Ühendriigid"
 
 #: medialist.php:164
 msgid "Columns per page"
@@ -4096,10 +4096,6 @@ msgstr "Koosta"
 msgid "Create a family tree"
 msgstr "Koosta uus sugupuu"
 
-#: edit_interface.php:750
-msgid "Create an individual"
-msgstr "Loo uus isik"
-
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
 msgstr "Loo uus meediaobjekt"
@@ -4128,6 +4124,10 @@ msgstr "Loo uus allikas"
 #: admin_site_access.php:218
 msgid "Create a website access rule"
 msgstr "Koosta veebilehe juurdepääsureegel"
+
+#: edit_interface.php:750
+msgid "Create an individual"
+msgstr "Loo uus isik"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -4336,7 +4336,7 @@ msgstr "Daitch-Mokotoff"
 
 #: app/GedcomCode/GedcomCodeTemp.php:135
 msgid "Dallas, Texas, United States"
-msgstr "Dallas, Texas, United States"
+msgstr "Dallas, Texas, Ühendriigid"
 
 #. I18N: A summary of the system status
 #: admin.php:460
@@ -5026,7 +5026,7 @@ msgstr "Dinamarca"
 
 #: app/GedcomCode/GedcomCodeTemp.php:137
 msgid "Denver, Colorado, United States"
-msgstr "Denver, Colorado, United States"
+msgstr "Denver, Colorado, Ühendriigid"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
@@ -5110,7 +5110,7 @@ msgstr "Detailid uue kasutaja kohta saadetakse vastava sugupuu genealoogia konta
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Detroit, Michigan, United States"
-msgstr "Detroit, Michigan, United States"
+msgstr "Detroit, Michigan, Ühendriigid"
 
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
@@ -6540,7 +6540,7 @@ msgstr "Korduma kippuvad küsimused"
 
 #: app/GedcomCode/GedcomCodeTemp.php:151
 msgid "Fresno, California, United States"
-msgstr "Fresno, Kalifornia"
+msgstr "Fresno, Kalifornia, Ühendriigid"
 
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:669
@@ -6952,7 +6952,7 @@ msgstr "Hamilton, Uus-Meremaa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:165
 msgid "Hartford, Connecticut, United States"
-msgstr "Hartford, Connecticut, United States"
+msgstr "Hartford, Connecticut, Ühendriigid"
 
 #: modules_v3/descendancy_report/report.xml:429
 msgid "He "
@@ -7179,7 +7179,7 @@ msgstr "Majapidamine"
 
 #: app/GedcomCode/GedcomCodeTemp.php:175
 msgid "Houston, Texas, United States"
-msgstr "Houston, Texas, United States"
+msgstr "Houston, Texas, Ühendriigid"
 
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:158
@@ -7238,7 +7238,7 @@ msgstr "Ikoon"
 
 #: app/GedcomCode/GedcomCodeTemp.php:177
 msgid "Idaho Falls, Idaho, United States"
-msgstr "Idaho Falls, Idaho, United States"
+msgstr "Idaho Falls, Idaho, Ühendriigid"
 
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:516
@@ -7742,7 +7742,7 @@ msgstr "Jordania"
 
 #: app/GedcomCode/GedcomCodeTemp.php:181
 msgid "Jordan River, Utah, United States"
-msgstr "Jordan River, Utah, United States"
+msgstr "Jordan River, Utah, Ühendriigid"
 
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:47
@@ -7947,7 +7947,7 @@ msgstr "Kislev"
 
 #: app/GedcomCode/GedcomCodeTemp.php:185
 msgid "Kona, Hawaii, United States"
-msgstr "Kona, Havai"
+msgstr "Kona, Havai, Ühendriigid"
 
 #: app/Stats.php:6846
 msgid "Korea"
@@ -7997,7 +7997,7 @@ msgstr "LDS tempel"
 
 #: app/GedcomCode/GedcomCodeTemp.php:167
 msgid "Laie, Hawaii, United States"
-msgstr "Laie, Havai"
+msgstr "Laie, Havai, Ühendriigid"
 
 #. I18N: page orientation
 #: admin_trees_config.php:54 modules_v3/change_report/report.xml:10
@@ -8037,7 +8037,7 @@ msgstr "Suurim arv lapselapsi"
 
 #: app/GedcomCode/GedcomCodeTemp.php:199
 msgid "Las Vegas, Nevada, United States"
-msgstr "Las Vegas, Nevada, United States"
+msgstr "Las Vegas, Nevada, Ühendriigid"
 
 #. I18N: gedcom tag CHAN
 #: app/GedcomTag.php:258 modules_v3/change_report/report.xml:66
@@ -8307,7 +8307,7 @@ msgstr "Öömajaline"
 
 #: app/GedcomCode/GedcomCodeTemp.php:191
 msgid "Logan, Utah, United States"
-msgstr "Logan, Utah, United States"
+msgstr "Logan, Utah, Ühendriigid"
 
 #: app/Module/LoginBlockModule.php:63
 msgid "Logged in as "
@@ -8360,7 +8360,7 @@ msgstr "Pikkuskraad"
 
 #: app/GedcomCode/GedcomCodeTemp.php:187
 msgid "Los Angeles, California, United States"
-msgstr "Los Angeles, Kalifornia"
+msgstr "Los Angeles, Kalifornia, Ühendriigid"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219 login.php:252
 msgid "Lost password request"
@@ -8368,7 +8368,7 @@ msgstr "Unustatud parooli küsimine"
 
 #: app/GedcomCode/GedcomCodeTemp.php:195
 msgid "Louisville, Kentucky, United States"
-msgstr "Louisville, Kentucky, United States"
+msgstr "Louisville, Kentucky, Ühendriigid"
 
 #: app/Stats.php:1741
 msgid "Lowest population"
@@ -8376,7 +8376,7 @@ msgstr "Madalaim rahvaarv"
 
 #: app/GedcomCode/GedcomCodeTemp.php:197
 msgid "Lubbock, Texas, United States"
-msgstr "Lubbock, Texas, United States"
+msgstr "Lubbock, Texas, Ühendriigid"
 
 #: app/Stats.php:6857
 msgid "Luxembourg"
@@ -8492,7 +8492,7 @@ msgstr "Manila, Filipiinid"
 
 #: app/GedcomCode/GedcomCodeTemp.php:205
 msgid "Manti, Utah, United States"
-msgstr "Manti, Utah, United States"
+msgstr "Manti, Utah, Ühendriigid"
 
 #: app/GedcomTag.php:1928
 msgid "Manuscript"
@@ -8862,7 +8862,7 @@ msgstr "Mayotte"
 
 #: app/GedcomCode/GedcomCodeTemp.php:207
 msgid "Medford, Oregon, United States"
-msgstr "Medford, Oregon, United States"
+msgstr "Medford, Oregon, Ühendriigid"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
@@ -9009,7 +9009,7 @@ msgstr "Mälulimiit"
 
 #: app/GedcomCode/GedcomCodeTemp.php:211
 msgid "Memphis, Tennessee, United States"
-msgstr "Memphis, Tennessee, United States"
+msgstr "Memphis, Tennessee, Ühendriigid"
 
 #: admin_module_menus.php:87 admin_modules.php:185
 msgid "Menu"
@@ -9045,7 +9045,7 @@ msgstr "Merida, Mehhiko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Mesa, Arizona, United States"
-msgstr "Mesa, Arizona, United States"
+msgstr "Mesa, Arizona, Ühendriigid"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
 msgid "Message"
@@ -9245,7 +9245,7 @@ msgstr "Kuu:"
 
 #: app/GedcomCode/GedcomCodeTemp.php:221
 msgid "Monticello, Utah, United States"
-msgstr "Monticello, Utah, United States"
+msgstr "Monticello, Utah, Ühendriigid"
 
 #: app/GedcomCode/GedcomCodeTemp.php:223
 msgid "Montreal, Quebec, Canada"
@@ -9348,7 +9348,7 @@ msgstr "Ema perekond koos teadmata isikuga"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Mount Timpanogos, Utah, United States"
-msgstr "Mount Timpanogos, Utah, United States"
+msgstr "Mount Timpanogos, Utah, Ühendriigid"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:493 index_edit.php:312
 #: index_edit.php:361
@@ -9523,7 +9523,7 @@ msgstr "Jutustav kirjeldus"
 
 #: app/GedcomCode/GedcomCodeTemp.php:227
 msgid "Nashville, Tennessee, United States"
-msgstr "Nashville, Tennessee, United States"
+msgstr "Nashville, Tennessee, Ühendriigid"
 
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:610
@@ -9541,11 +9541,11 @@ msgstr "Nauru"
 
 #: app/GedcomCode/GedcomCodeTemp.php:229
 msgid "Nauvoo (new), Illinois, United States"
-msgstr "Nauvoo, Illinois (uus)"
+msgstr "Nauvoo (uus), Illinois, Ühendriigid"
 
 #: app/GedcomCode/GedcomCodeTemp.php:231
 msgid "Nauvoo (original), Illinois, United States"
-msgstr "Nauvoo, Illinois (esialgne)"
+msgstr "Nauvoo (esialgne), Illinois, Ühendriigid"
 
 #: app/Module/GoogleMapsModule.php:407 app/Module/GoogleMapsModule.php:3961
 msgid "Neighborhood"
@@ -9594,7 +9594,7 @@ msgstr "Nueva Caledonia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:237
 msgid "New York, New York, United States"
-msgstr "New York, New York, United States"
+msgstr "New York, New York, Ühendriigid"
 
 #: app/Stats.php:6895
 msgid "New Zealand"
@@ -9618,7 +9618,7 @@ msgstr "Uus kasutaja: %s"
 
 #: app/GedcomCode/GedcomCodeTemp.php:233
 msgid "Newport Beach, California, United States"
-msgstr "Newport Beach, Kalifornia"
+msgstr "Newport Beach, Kalifornia, Ühendriigid"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:54
@@ -10074,7 +10074,7 @@ msgstr "Õde"
 
 #: app/GedcomCode/GedcomCodeTemp.php:241
 msgid "Oakland, California, United States"
-msgstr "Oakland, Kalifornia"
+msgstr "Oakland, Kalifornia, Ühendriigid"
 
 #: app/GedcomCode/GedcomCodeTemp.php:243
 msgid "Oaxaca, Mexico"
@@ -10129,11 +10129,11 @@ msgstr "oktoober"
 
 #: app/GedcomCode/GedcomCodeTemp.php:245
 msgid "Ogden, Utah, United States"
-msgstr "Ogden, Utah, United States"
+msgstr "Ogden, Utah, Ühendriigid"
 
 #: app/GedcomCode/GedcomCodeTemp.php:247
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "Oklahoma City, Oklahoma, United States"
+msgstr "Oklahoma City, Oklahoma, Ühendriigid"
 
 #: admin_site_change.php:336
 msgid "Old data"
@@ -10264,7 +10264,7 @@ msgstr "Paigutus"
 
 #: app/GedcomCode/GedcomCodeTemp.php:249
 msgid "Orlando, Florida, United States"
-msgstr "Orlando, Florida, United States"
+msgstr "Orlando, Florida, Ühendriigid"
 
 #: app/GedcomTag.php:1942 app/Stats.php:5499 app/Stats.php:5918
 msgid "Other"
@@ -10405,7 +10405,7 @@ msgstr "Värviskaala"
 
 #: app/GedcomCode/GedcomCodeTemp.php:253
 msgid "Palmyra, New York, United States"
-msgstr "Palmyra, New York, United States"
+msgstr "Palmyra, New York, Ühendriigid"
 
 #: app/Stats.php:6898
 msgid "Panama"
@@ -10845,7 +10845,7 @@ msgstr "Pordinumber"
 
 #: app/GedcomCode/GedcomCodeTemp.php:263
 msgid "Portland, Oregon, United States"
-msgstr "Portland, Oregon, United States"
+msgstr "Portland, Oregon, Ühendriigid"
 
 #: app/GedcomCode/GedcomCodeTemp.php:251
 msgid "Porto Alegre, Brazil"
@@ -10990,7 +10990,7 @@ msgstr "Kinnisvara"
 
 #: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "Provo, Utah, United States"
-msgstr "Provo, Utah, United States"
+msgstr "Provo, Utah, Ühendriigid"
 
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:704
@@ -11133,7 +11133,7 @@ msgstr "Rajab"
 
 #: app/GedcomCode/GedcomCodeTemp.php:269
 msgid "Raleigh, North Carolina, United States"
-msgstr "Raleigh, Põhja-Carolina"
+msgstr "Raleigh, Põhja-Carolina, Ühendriigid"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:98
@@ -11232,7 +11232,7 @@ msgstr "Kirjed ei ole sama tüüpi. Ei saa liita kirjeid, mis pole sama tüüpi.
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
 msgid "Redlands, California, United States"
-msgstr "Redlands, Kalifornia"
+msgstr "Redlands, Kalifornia, Ühendriigid"
 
 #: app/Module/GoogleMapsModule.php:991 app/Module/GoogleMapsModule.php:2338
 #: app/Module/GoogleMapsModule.php:3645
@@ -11396,7 +11396,7 @@ msgstr "Eemalda see asukoht?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Reno, Nevada, United States"
-msgstr "Reno, Nevada, United States"
+msgstr "Reno, Nevada, Ühendriigid"
 
 #: admin_trees_manage.php:506
 msgid "Renumber"
@@ -11593,7 +11593,7 @@ msgstr "SMTP mailiserver"
 
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Sacramento, California, United States"
-msgstr "Sacramento, Kalifornia"
+msgstr "Sacramento, Kalifornia, Ühendriigid"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:91
@@ -11646,7 +11646,7 @@ msgstr "Saint Vincent ja Grenadiinid"
 
 #: app/GedcomCode/GedcomCodeTemp.php:299
 msgid "Salt Lake City, Utah, United States"
-msgstr "Salt Lake City, Utah, United States"
+msgstr "Salt Lake City, Utah, Ühendriigid"
 
 #: app/Stats.php:6976
 msgid "Samoa"
@@ -11654,11 +11654,11 @@ msgstr "Samoa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:285
 msgid "San Antonio, Texas, United States"
-msgstr "San Antonio, Texas, United States"
+msgstr "San Antonio, Texas, Ühendriigid"
 
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "San Diego, California, United States"
-msgstr "San Diego, Kalifornia"
+msgstr "San Diego, Kalifornia, Ühendriigid"
 
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "San Jose, Costa Rica"
@@ -11801,7 +11801,7 @@ msgstr "Kõikide võimalike sugulussidemete otsimine võib keerulistes puudes pa
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Seattle, Washington, United States"
-msgstr "Seattle, Washington, United States"
+msgstr "Seattle, Washington, Ühendriigid"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:370
@@ -12782,7 +12782,7 @@ msgstr "Väiksed süsteemid (500 isikut): 16-32MB, 10-20 sekundit"
 
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Snowflake, Arizona, United States"
-msgstr "Snowflake, Arizona, United States"
+msgstr "Snowflake, Arizona, Ühendriigid"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:792
@@ -12943,7 +12943,7 @@ msgstr "Hispaania"
 
 #: app/GedcomCode/GedcomCodeTemp.php:309
 msgid "Spokane, Washington, United States"
-msgstr "Spokane, Washington, United States"
+msgstr "Spokane, Washington, Ühendriigid"
 
 #: modules_v3/bdm_report/report.xml:169
 msgid "Spouse"
@@ -12977,7 +12977,7 @@ msgstr "Sri Lanka"
 
 #: app/GedcomCode/GedcomCodeTemp.php:295
 msgid "St. George, Utah, United States"
-msgstr "St. George, Utah, United States"
+msgstr "St. George, Utah, Ühendriigid"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
 msgid "St. Louis, Missouri"
@@ -15350,7 +15350,7 @@ msgstr "Kinnitatud"
 
 #: app/GedcomCode/GedcomCodeTemp.php:331
 msgid "Vernal, Utah, United States"
-msgstr "Vernal, Utah, United States"
+msgstr "Vernal, Utah, Ühendriigid"
 
 #. I18N: gedcom tag VERS
 #: app/GedcomTag.php:852
@@ -15478,7 +15478,7 @@ msgstr "Hoolealune"
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
 msgid "Washington, District of Columbia, United States"
-msgstr "Washington, District of Columbia, United States"
+msgstr "Washington, District of Columbia, Ühendriigid"
 
 #: admin_trees_config.php:1111
 msgid "Watermarks"
