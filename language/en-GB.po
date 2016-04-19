@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-04-19 09:36+0000\n"
+"PO-Revision-Date: 2016-04-19 10:33+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -9687,25 +9687,25 @@ msgstr ""
 #: app/Date/FrenchDate.php:91
 msgctxt "GENITIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:124
 msgctxt "LOCATIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:58
 msgctxt "NOMINATIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #: admin_users.php:660 app/Functions/FunctionsPrintFacts.php:308
 msgid "No"
@@ -10810,25 +10810,25 @@ msgstr "Please provide your e-mail address so that we may contact you in respons
 #: app/Date/FrenchDate.php:92
 msgctxt "GENITIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:125
 msgctxt "LOCATIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:59
 msgctxt "NOMINATIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #: app/Stats.php:6904
 msgid "Poland"
@@ -15289,25 +15289,25 @@ msgstr ""
 #: app/Date/FrenchDate.php:88
 msgctxt "GENITIVE"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:154
 msgctxt "INSTRUMENTAL"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:121
 msgctxt "LOCATIVE"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:55
 msgctxt "NOMINATIVE"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #: app/Stats.php:6968
 msgid "Venezuela"
@@ -15317,25 +15317,25 @@ msgstr ""
 #: app/Date/FrenchDate.php:93
 msgctxt "GENITIVE"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
 msgctxt "INSTRUMENTAL"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:126
 msgctxt "LOCATIVE"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #: app/GedcomCode/GedcomCodeTemp.php:329
 msgid "Veracruz, Mexico"
@@ -18570,25 +18570,25 @@ msgstr ""
 #: app/Date/FrenchDate.php:100
 msgctxt "GENITIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:166
 msgctxt "INSTRUMENTAL"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:133
 msgctxt "LOCATIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:67
 msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: button label, last page
 #: admin_trees_config.php:1632 app/I18N.php:222
