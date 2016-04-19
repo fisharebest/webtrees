@@ -1780,8 +1780,8 @@ msgid "Album"
 msgstr "Album"
 
 #: app/GedcomCode/GedcomCodeTemp.php:85
-msgid "Albuquerque, New Mexico"
-msgstr "Albuquerque, Nieu-Meksiko"
+msgid "Albuquerque, New Mexico, United States"
+msgstr "Albuquerque, Nieu-Meksiko, Verenigde State"
 
 #: app/Stats.php:6786
 msgid "Algeria"
@@ -7737,7 +7737,7 @@ msgstr "Jordanië"
 
 #: app/GedcomCode/GedcomCodeTemp.php:181
 msgid "Jordan River, Utah, United States"
-msgstr "Jordan River, Utah,Verenigde State"
+msgstr "Jordan River, Utah, Verenigde State"
 
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:47
@@ -12972,15 +12972,15 @@ msgstr "Sri Lanka"
 
 #: app/GedcomCode/GedcomCodeTemp.php:295
 msgid "St. George, Utah, United States"
-msgstr "St. George, Utah,Verenigde State"
+msgstr "St. George, Utah, Verenigde State"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
-msgid "St. Louis, Missouri"
-msgstr "St. Louis, Missouri"
+msgid "St. Louis, Missouri, United States"
+msgstr "St. Louis, Missouri, Verenigde State"
 
 #: app/GedcomCode/GedcomCodeTemp.php:307
-msgid "St. Paul, Minnesota"
-msgstr "St. Paul, Minnesota"
+msgid "St. Paul, Minnesota, United States"
+msgstr "St. Paul, Minnesota, Verenigde State"
 
 #: app/Module/GoogleMapsModule.php:507
 msgid "Standard"
@@ -15678,8 +15678,8 @@ msgid "Will"
 msgstr "Testament"
 
 #: app/GedcomCode/GedcomCodeTemp.php:337
-msgid "Winter Quarters, Nebraska"
-msgstr "Winter Quarters, Nebraska"
+msgid "Winter Quarters, Nebraska, United States"
+msgstr "Winter Quarters, Nebraska, Verenigde State"
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"

@@ -1809,7 +1809,7 @@ msgid "Album"
 msgstr "Albumas"
 
 #: app/GedcomCode/GedcomCodeTemp.php:85
-msgid "Albuquerque, New Mexico"
+msgid "Albuquerque, New Mexico, United States"
 msgstr "Albuquerque, Naujoji Meksika"
 
 #: app/Stats.php:6786
@@ -12987,12 +12987,12 @@ msgid "St. George, Utah, United States"
 msgstr "St. George, Juta"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
-msgid "St. Louis, Missouri"
+msgid "St. Louis, Missouri, United States"
 msgstr "St. Louis, Misuris"
 
 #: app/GedcomCode/GedcomCodeTemp.php:307
-msgid "St. Paul, Minnesota"
-msgstr "St. Paul, Minnesota"
+msgid "St. Paul, Minnesota, United States"
+msgstr "St. Paul, Minnesota, United States"
 
 #: app/Module/GoogleMapsModule.php:507
 msgid "Standard"
@@ -15696,8 +15696,8 @@ msgid "Will"
 msgstr "Testamentas"
 
 #: app/GedcomCode/GedcomCodeTemp.php:337
-msgid "Winter Quarters, Nebraska"
-msgstr "Winter Quarters, Nebraska"
+msgid "Winter Quarters, Nebraska, United States"
+msgstr "Winter Quarters, Nebraska, United States"
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"

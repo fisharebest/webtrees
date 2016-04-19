@@ -82,7 +82,7 @@ class GedcomCodeTemp {
 		case 'ALBER':
 			return I18N::translate('Cardston, Alberta, Canada');
 		case 'ALBUQ':
-			return I18N::translate('Albuquerque, New Mexico');
+			return I18N::translate('Albuquerque, New Mexico, United States');
 		case 'ANCHO':
 			return I18N::translate('Anchorage, Alaska, United States');
 		case 'ARIZO':
@@ -298,13 +298,13 @@ class GedcomCodeTemp {
 		case 'SLAKE':
 			return I18N::translate('Salt Lake City, Utah, United States');
 		case 'SLOUI':
-			return I18N::translate('St. Louis, Missouri');
+			return I18N::translate('St. Louis, Missouri, United States');
 		case 'SNOWF':
 			return I18N::translate('Snowflake, Arizona, United States');
 		case 'SPAUL':
 			return I18N::translate('Sao Paulo, Brazil');
 		case 'SPMIN':
-			return I18N::translate('St. Paul, Minnesota');
+			return I18N::translate('St. Paul, Minnesota, United States');
 		case 'SPOKA':
 			return I18N::translate('Spokane, Washington, United States');
 		case 'STOCK':
@@ -334,7 +334,7 @@ class GedcomCodeTemp {
 		case 'WASHI':
 			return I18N::translate('Washington, District of Columbia, United States');
 		case 'WINTE':
-			return I18N::translate('Winter Quarters, Nebraska');
+			return I18N::translate('Winter Quarters, Nebraska, United States');
 		default:
 			return $temple_code;
 		}

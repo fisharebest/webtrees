@@ -1777,7 +1777,7 @@ msgid "Album"
 msgstr "אלבאם"
 
 #: app/GedcomCode/GedcomCodeTemp.php:85
-msgid "Albuquerque, New Mexico"
+msgid "Albuquerque, New Mexico, United States"
 msgstr "אלבקרקי, ניו מקסיקו"
 
 #: app/Stats.php:6786
@@ -12951,11 +12951,11 @@ msgid "St. George, Utah, United States"
 msgstr "סאנט ג'ורג', יוטא"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
-msgid "St. Louis, Missouri"
+msgid "St. Louis, Missouri, United States"
 msgstr "סאנט לואיס, מיזורי"
 
 #: app/GedcomCode/GedcomCodeTemp.php:307
-msgid "St. Paul, Minnesota"
+msgid "St. Paul, Minnesota, United States"
 msgstr "סיינט פול, מינעסאטע"
 
 #: app/Module/GoogleMapsModule.php:507
@@ -15653,7 +15653,7 @@ msgid "Will"
 msgstr "צאַוואָע"
 
 #: app/GedcomCode/GedcomCodeTemp.php:337
-msgid "Winter Quarters, Nebraska"
+msgid "Winter Quarters, Nebraska, United States"
 msgstr "ווינטער קורטערס, נעבראסקא"
 
 #: app/Stats.php:421 app/Stats.php:519

@@ -1754,7 +1754,7 @@ msgid "Album"
 msgstr "相册"
 
 #: app/GedcomCode/GedcomCodeTemp.php:85
-msgid "Albuquerque, New Mexico"
+msgid "Albuquerque, New Mexico, United States"
 msgstr "卡德斯顿，阿尔伯塔，加拿大"
 
 #: app/Stats.php:6786
@@ -12924,11 +12924,11 @@ msgid "St. George, Utah, United States"
 msgstr "圣乔治，犹他州"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
-msgid "St. Louis, Missouri"
+msgid "St. Louis, Missouri, United States"
 msgstr "圣路易斯，密苏里"
 
 #: app/GedcomCode/GedcomCodeTemp.php:307
-msgid "St. Paul, Minnesota"
+msgid "St. Paul, Minnesota, United States"
 msgstr "圣保罗，明尼苏达"
 
 #: app/Module/GoogleMapsModule.php:507
@@ -15619,7 +15619,7 @@ msgid "Will"
 msgstr "遗书"
 
 #: app/GedcomCode/GedcomCodeTemp.php:337
-msgid "Winter Quarters, Nebraska"
+msgid "Winter Quarters, Nebraska, United States"
 msgstr "内布拉斯加"
 
 #: app/Stats.php:421 app/Stats.php:519
