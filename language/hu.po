@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-19 06:53+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Hungarian <http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
+"PO-Revision-Date: 2016-04-19 13:59+0000\n"
+"Last-Translator: Tuna András <tunandras@gmail.com>\n"
+"Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1480,7 +1480,7 @@ msgstr "Hivatkozás nélküli bejegyzések felvétele"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
 msgid "Add watermarks to thumbnails"
-msgstr "Adjunk vízjelet a bélyegképekhez"
+msgstr "Tegyünk vízjelet a bélyegképekbe"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -11925,7 +11925,7 @@ msgstr "Üzenet küldése"
 
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Elküldjük az emlékeztető e-maileket"
+msgstr "Küldjünk emlékeztető e-maileket"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329
@@ -12310,7 +12310,7 @@ msgstr "Mutasd az összes címkét"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Mutassa az életkorkurzort"
+msgstr "Lássuk a kormutatót"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1366
@@ -12319,15 +12319,15 @@ msgstr "Alapbeállítás szerint mutassa az ábrarészleteket"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Mutassa az ősök gyermekeit"
+msgstr "Mutassuk az ősök gyermekeit"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
 msgid "Show common surnames"
-msgstr "Mutassa a leggyakoribb vezetékneveket"
+msgstr "Mutassuk a leggyakoribb vezetékneveket"
 
 #: app/Module/TopPageViewsModule.php:165
 msgid "Show counts before or after name"
-msgstr "A számláló a cím elé vagy mögé kerüljön"
+msgstr "Kerüljön számláló a név elé vagy mögé"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12364,7 +12364,7 @@ msgstr "Dátumkülönbségek feltüntetése"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
 msgid "Show date of last update"
-msgstr "Mutassa az utolsó frissítés dátumát"
+msgstr "Mutassuk az utolsó frissítés dátumát"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:391
@@ -12452,11 +12452,11 @@ msgstr "Privát személyek nevének mutatása"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Mutassa a jegyzeteket"
+msgstr "Mutassuk a jegyzeteket"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Mutassa a foglalkozásokat"
+msgstr "Mutassuk a foglalkozásokat"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
@@ -12501,7 +12501,7 @@ msgstr "Mutasd a függőben levő változtatásokat"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Mutassa a fotókat"
+msgstr "Mutassuk a fotókat"
 
 #: placelist.php:83
 msgid "Show places in hierarchy"
@@ -12542,7 +12542,7 @@ msgstr "Mutassuk a diavetítőgombokat"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Mutassa a forrásokat"
+msgstr "Mutassuk a forrásokat"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12669,7 +12669,7 @@ msgstr "Sierra Leone"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr "Az egyszerű dátumok feltételezetten Gergely-naptárbeliek. Más naptár a dátumot megelőző egyedi kulcsszavak megadásával írható elő. Ez a kulcsszó elhagyható, ha a hónap vagy az év formátuma egyértelműsíti a dátumot."
+msgstr "Az egyszerű dátumok feltételezetten Gergely-naptárbeliek. Más naptár a dátumot megelőző kulcsszó megadásával írható elő. Ez a kulcsszó elhagyható, ha a hónap vagy az év formátuma egyértelműsíti a dátumot."
 
 #: find.php:190
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
@@ -13935,7 +13935,7 @@ msgstr "Ez a blokk mutatja a szerkesztőknek a webhelykezelő jóváhagyására 
 
 #: admin_users.php:463 edituser.php:312
 msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
-msgstr "Ez a jelölőnégyzet vezérli az Ön láthatóságát, amíg ki nem jelentkezik. Úgyszintén szabályozza, hogy Ön láthatja-e a többi felhasználót, akik láthatóvá tették magukat.<br><br>Ha a négyzet üres, ön teljes mértékben rejtett mások előtt, és Ön sem láthatja a többi felhasználót. Bejelölt négyzet esetén épp az ellenkezője az igaz. Ön láthatóvá válik a többiek számára, és Ön is láthatja azokat, akik engedélyezték a láthatóságukat."
+msgstr "Ez a jelölőnégyzet vezérli az Ön láthatóságát, amíg ki nem jelentkezik. Úgyszintén szabályozza, hogy Ön láthatja-e a többi felhasználót, akik láthatóvá tették magukat.<br><br>Ha a négyzet üres, Ön teljes mértékben rejtett mások előtt, és Ön sem láthatja a többi felhasználót. Bejelölt négyzet esetén épp az ellenkezője az igaz. Ön láthatóvá válik a többiek számára, és Ön is láthatja azokat, akik engedélyezték a láthatóságukat."
 
 #: setup.php:348 setup.php:359
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
@@ -14078,7 +14078,7 @@ msgstr "Ez az új személy felvételekor megjelenő, vesszővel elválasztott GE
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2185
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Ez a helynevek felvétele/módosítása űrlapon megjelenő, vesszővel elválasztott GEDCOM-ténycímkék listája. Ha nem latin ábécét használ, mint amilyen a héber, görög, cirill vagy arab, célszerű _HEB, ROMN, FONE stb. címkéket is használni, hogy a helyneveket néhány különböző ábécében tárolhassa."
+msgstr "Ez a helynevek felvétele vagy módosítása űrlapon megjelenő, vesszővel elválasztott GEDCOM-ténycímkék listája. Ha nem latin ábécét használ, mint amilyen a héber, görög, cirill vagy arab, célszerű _HEB, ROMN, FONE stb. címkéket is használni, hogy a helyneveket néhány különböző ábécében tárolhassa."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -14129,22 +14129,22 @@ msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók elemeket vehetn
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1889
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "Ez a GEDCOM-tények listája, amely elemei közül a felhasználók <u>csak egyszer</u> adhatnak egyet családokhoz. Például, ha a MARR (házasság) szerepel a listában, a felhasználók nem tudnak további MARR bejegyzést adni a családhoz. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Család bejegyzéseinek tényei</i> listában."
+msgstr "Ez a GEDCOM-tények listája, amely elemei közül a felhasználók <u>csak egyszer</u> egyet vehetnek fel családokhoz. Például, ha a MARR (házasság) szerepel a listában, a felhasználók nem tudnak további MARR bejegyzést felvenni a családhoz. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Család bejegyzéseinek tényei</i> listában."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1771
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók <u>csak egyszer</u> egyet adhatnak személyekhez. Például, ha a BIRT (születés) szerepel a listában, a felhasználók nem tudnak további BIRT bejegyzést adni a személyhez. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Személy bejegyzéseinek tényei</i> listában."
+msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók <u>csak egyszer</u> egyet vehetnek fel személyekhez. Például, ha a BIRT (születés) szerepel a listában, a felhasználók nem tudnak további BIRT bejegyzést felvenni a személyhez. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Személy bejegyzéseinek tényei</i> listában."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:2096
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók <u>csak egyszer</u> egyet adhatnak az adattárakhoz. Például, ha a NAME (név) szerepel a listában, a felhasználók nem tudnak további NAME bejegyzést adni az adattárhoz. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Minden adattártény</i> listában."
+msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók <u>csak egyszer</u> egyet vehetnek fel az adattárakhoz. Például, ha a NAME (név) szerepel a listában, a felhasználók nem tudnak további NAME bejegyzést felvenni az adattárhoz. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Minden adattártény</i> listában."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:2007
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók <u>csak egyszer</u> adhatnak egy elemet forrásokhoz. Például, ha a TITL (cím) szerepel a listában, a felhasználók nem tudnak további TITL bejegyzést adni a forráshoz. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Forrás bejegyzéseinek tényei</i> listában."
+msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók <u>csak egyszer</u> egyet vehetnek fel forrásokhoz. Például, ha a TITL (cím) szerepel a listában, a felhasználók nem tudnak további TITL bejegyzést felvenni a forráshoz. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Forrás bejegyzéseinek tényei</i> listában."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:349
@@ -14327,7 +14327,7 @@ msgstr "Ez a lehetőség megtartja a családi hivatkozásokat a privát bejegyz�
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:482
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "Ez a lehetőség megjeleníti a privát személyek nevét (de egyéb adatát nem). Azok a privát személyek, akik élnek, vagy akik bejegyzésébe adatvédelmi megszorítás került. Egy adott név elrejtéséhez helyezzen adatvédelmi megszorítást a névbejegyzésbe."
+msgstr "Ez a lehetőség megjeleníti a privát személyek nevét (de egyéb adatát nem). Azok a privát személyek, akik élnek, vagy akik bejegyzésébe adatvédelmi megszorítás került. Egy adott név elrejtéséhez vegyen fel adatvédelmi megszorítást a névbejegyzésbe."
 
 #: app/Module/GoogleMapsModule.php:523
 msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
@@ -14673,7 +14673,7 @@ msgstr "Hogy tudassa a webhelytérkép létezését a keresőmotorokkal, egész�
 
 #: admin_site_config.php:435
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
-msgstr "Egy Google-levelezőfiók használatához a következő beállítások szükségesek: szerver: smtp.gmail.com, port: 587, biztonság: tls, felhasználónév: xxxxx@gmail.com, jelszó: [az ön gmail-jelszava]"
+msgstr "Egy Google-levelezőfiók használatához a következő beállítások szükségesek: szerver: smtp.gmail.com, port: 587, biztonság: tls, felhasználónév: xxxxx@gmail.com, jelszó: [az Ön gmail-jelszava]"
 
 #: app/Stats.php:6946
 msgid "Togo"
@@ -15578,7 +15578,7 @@ msgstr "Hivatkozás felvételekor az azonosítómező nem lehet üres."
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2226
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "Új közeli rokon felvételekor forrásidézeteket is lehet adni a (személy- és család-)bejegyzésekhez, vagy a (születés, házasság és halálozás tárgyú) tényekhez és eseményekhez. Ez a lehetőség határozza meg, hogy bejegyzések vagy tények legyenek-e az alapértelmezettek."
+msgstr "Új közeli rokon felvételekor forrásidézetek is felvehetők a (személy- és család-)bejegyzésekhez, vagy a (születés, házasság és halálozás tárgyú) tényekhez és eseményekhez. Ez a lehetőség határozza meg, hogy bejegyzések vagy tények legyenek-e az alapértelmezettek."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:858
@@ -16332,7 +16332,7 @@ msgstr "számított %s"
 
 #: app/Stats.php:2918
 msgid "census added"
-msgstr "népszámláláshoz adva"
+msgstr "népszámlálás felvéve"
 
 #: app/Stats.php:2588 app/Stats.php:3929 app/Stats.php:3931 app/Stats.php:4944
 #: app/Stats.php:4946 app/Stats.php:4948 app/Stats.php:5194
