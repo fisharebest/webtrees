@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-18 16:07+0000\n"
+"PO-Revision-Date: 2016-04-19 06:36+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -18764,17 +18764,17 @@ msgstr "neveu"
 #: app/Functions/Functions.php:984
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "neveu"
+msgstr "neveu par alliance"
 
 #: app/Functions/Functions.php:1244
 msgctxt "sibling’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "neveu"
+msgstr "neveu par alliance"
 
 #: app/Functions/Functions.php:1286
 msgctxt "sisters’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "neveu"
+msgstr "neveu par alliance"
 
 #: app/Functions/Functions.php:788
 msgctxt "brother’s child"
