@@ -6437,28 +6437,28 @@ msgstr ""
 #: app/Date/FrenchDate.php:95
 #, fuzzy
 msgctxt "GENITIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:161
 #, fuzzy
 msgctxt "INSTRUMENTAL"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:128
 #, fuzzy
 msgctxt "LOCATIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:62
 #, fuzzy
 msgctxt "NOMINATIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #: medialist.php:91
@@ -9800,28 +9800,28 @@ msgstr ""
 #: app/Date/FrenchDate.php:91
 #, fuzzy
 msgctxt "GENITIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
 #, fuzzy
 msgctxt "INSTRUMENTAL"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:124
 #, fuzzy
 msgctxt "LOCATIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:58
 #, fuzzy
 msgctxt "NOMINATIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #: admin_users.php:660 app/Functions/FunctionsPrintFacts.php:308
@@ -10935,28 +10935,28 @@ msgstr ""
 #: app/Date/FrenchDate.php:92
 #, fuzzy
 msgctxt "GENITIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
 #, fuzzy
 msgctxt "INSTRUMENTAL"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:125
 #, fuzzy
 msgctxt "LOCATIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:59
 #, fuzzy
 msgctxt "NOMINATIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #: app/Stats.php:6904
@@ -15487,28 +15487,28 @@ msgstr ""
 #: app/Date/FrenchDate.php:88
 #, fuzzy
 msgctxt "GENITIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:154
 #, fuzzy
 msgctxt "INSTRUMENTAL"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:121
 #, fuzzy
 msgctxt "LOCATIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:55
 #, fuzzy
 msgctxt "NOMINATIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #: app/Stats.php:6968
@@ -15520,28 +15520,28 @@ msgstr "Venezuelà"
 #: app/Date/FrenchDate.php:93
 #, fuzzy
 msgctxt "GENITIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
 #, fuzzy
 msgctxt "INSTRUMENTAL"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:126
 #, fuzzy
 msgctxt "LOCATIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:60
 #, fuzzy
 msgctxt "NOMINATIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -18775,25 +18775,25 @@ msgstr ""
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:100
 msgctxt "GENITIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:166
 msgctxt "INSTRUMENTAL"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:133
 msgctxt "LOCATIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:67
 msgctxt "NOMINATIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr ""
 
 #. I18N: button label, last page
