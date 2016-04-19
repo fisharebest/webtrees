@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-04-19 09:02+0000\n"
+"PO-Revision-Date: 2016-04-19 09:36+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -698,7 +698,7 @@ msgstr "9th"
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:742
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr "<b>GUID</b> in this context is an acronym for ‘Globally Unique ID’.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organisations such as the Family History Centre of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates. The goal of the Family History Centre is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
+msgstr "<b>GUID</b> in this context is an acronym for ‘Globally Unique ID’.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organisations such as the Family History Centre of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Centre is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
 
 #: admin_trees_manage.php:718
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -8347,7 +8347,7 @@ msgstr ""
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: admin_trees_config.php:1257
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
-msgstr "Long lists of people with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
+msgstr "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
 
 #: statistics.php:251
 msgid "Longest marriage"
@@ -12397,7 +12397,7 @@ msgstr ""
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1709
 msgid "Show hit counters on Portal and Individual pages."
-msgstr "Show hit counters on home and individual pages."
+msgstr "Show hit counters on Portal and Individual pages."
 
 #: compact.php:60
 msgid "Show images"
@@ -12413,7 +12413,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:236
 msgid "Show individuals born within the last 100 years."
-msgstr "Show people born within the last 100 years."
+msgstr "Show individuals born within the last 100 years."
 
 #: app/Functions/FunctionsPrintLists.php:189
 #: app/Functions/FunctionsPrintLists.php:626
@@ -12515,7 +12515,7 @@ msgstr ""
 
 #: search.php:112 search.php:270
 msgid "Show related individuals/families"
-msgstr "Show related people/families"
+msgstr "Show related individuals/families"
 
 #: app/Module/ResearchTaskModule.php:212
 msgid "Show research tasks that are assigned to other users"
@@ -13446,7 +13446,7 @@ msgstr ""
 #: action.php:138
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr "The family ‘%s’ has been deleted, as it only has one member."
+msgstr "The family ‘%s’ has been deleted, because it only has one member."
 
 #: addmedia.php:178 admin_media_upload.php:136
 #, php-format
@@ -14323,7 +14323,7 @@ msgstr ""
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:501
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "This option will retain family links in private records. This means that you will see empty ‘private’ boxes on the pedigree chart and on other charts with private people."
+msgstr "This option will retain family links in private records. This means that you will see empty ‘private’ boxes on the pedigree chart and on other charts with private individuals."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:482
@@ -19848,7 +19848,7 @@ msgstr ""
 
 #: admin_trees_manage.php:705
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
-msgstr "webtrees database must be on the same server as PhpGedView’s"
+msgstr "webtrees’ database must be on the same server as PhpGedView’s"
 
 #: app/Module/GoogleMapsModule.php:3987
 msgid "west"
