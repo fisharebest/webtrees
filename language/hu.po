@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-18 17:23+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2016-04-19 01:15+0000\n"
+"Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -5026,7 +5026,7 @@ msgstr "Dánia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:137
 msgid "Denver, Colorado, United States"
-msgstr "Denver, Kolorádó, Egyesült Államok"
+msgstr "Denver, Colorado, Egyesült Államok"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
@@ -9045,7 +9045,7 @@ msgstr "Merida, Mexikó"
 
 #: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Mesa, Arizona, United States"
-msgstr "Mesa, Arizóna, Egyesült Államok"
+msgstr "Mesa, Arizona, Egyesült Államok"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
 msgid "Message"
@@ -10074,7 +10074,7 @@ msgstr "Ápoló"
 
 #: app/GedcomCode/GedcomCodeTemp.php:241
 msgid "Oakland, California, United States"
-msgstr "Oakland, California, Egyesült Államok"
+msgstr "Oakland, Kalifornia, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:243
 msgid "Oaxaca, Mexico"
@@ -11232,7 +11232,7 @@ msgstr "A bejegyzések nem azonos típusúak, így azok nem fűzhetők össze."
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
 msgid "Redlands, California, United States"
-msgstr "Redlands, California, Egyesült Államok"
+msgstr "Redlands, Kalifornia, Egyesült Államok"
 
 #: app/Module/GoogleMapsModule.php:991 app/Module/GoogleMapsModule.php:2338
 #: app/Module/GoogleMapsModule.php:3645
@@ -11593,7 +11593,7 @@ msgstr "SMTP-levélszerver"
 
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Sacramento, California, United States"
-msgstr "Sacramento, California, Egyesült Államok"
+msgstr "Sacramento, Kalifornia, Egyesült Államok"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:91
@@ -11658,7 +11658,7 @@ msgstr "San Antonio, Texas, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "San Diego, California, United States"
-msgstr "San Diego, California, Egyesült Államok"
+msgstr "San Diego, Kalifornia, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "San Jose, Costa Rica"
