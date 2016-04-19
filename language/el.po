@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2015-03-12 22:18+0100\n"
+"PO-Revision-Date: 2016-04-19 12:03+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Greek <http://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
+"Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.5\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
@@ -455,8 +455,8 @@ msgid_plural "%s years ago"
 msgstr[0] "Πρίν %s χρόνο"
 msgstr[1] "Πρίν %s χρόνια"
 
-#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
-#: calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:1942
+#: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s Επέτειος"
@@ -1266,31 +1266,6 @@ msgstr "Προσθήκη"
 msgid "Add %s to the clippings cart"
 msgstr "Προσθήκη %s στο καλάθι"
 
-#: app/Module/RelativesTabModule.php:396 edit_interface.php:595
-msgid "Add a child to create a one-parent family"
-msgstr "Προσθέστε ένα παιδί να δημιουργήσετε μια μονογονεική οικογένεια"
-
-#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
-msgid "Add a child to this family"
-msgstr "Προσθήκη παιδιού στην οικογένεια αυτή"
-
-#: edit_interface.php:81
-msgid "Add a fact"
-msgstr ""
-
-#: app/Module/RelativesTabModule.php:154
-msgid "Add a husband to this family"
-msgstr "Προσθήκη Συζύγου-Άνδρα σε αυτή την οικογένεια"
-
-#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
-#: edit_interface.php:1156
-msgid "Add a husband using an existing individual"
-msgstr "Προσθήκη συζύγου (άντρα) χρησιμοποιόντας υπάρχον άτομο"
-
-#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add an associate"
-msgstr ""
-
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
 msgstr "Προσθήκη αδερφού ή αδερφής"
@@ -1298,6 +1273,19 @@ msgstr "Προσθήκη αδερφού ή αδερφής"
 #: edit_interface.php:516
 msgid "Add a child"
 msgstr "Προσθήκη νέου παιδιού"
+
+#: app/Module/RelativesTabModule.php:396 edit_interface.php:595
+msgid "Add a child to create a one-parent family"
+msgstr "Προσθέστε ένα παιδί να δημιουργήσετε μια μονογονεική οικογένεια"
+
+#: app/Controller/FamilyController.php:82
+#: app/Functions/FunctionsCharts.php:310
+msgid "Add a child to this family"
+msgstr "Προσθήκη παιδιού στην οικογένεια αυτή"
+
+#: edit_interface.php:81
+msgid "Add a fact"
+msgstr ""
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
@@ -1316,13 +1304,23 @@ msgstr "Προσθήκη γεωγραφικής τοποθεσίας"
 msgid "Add a husband"
 msgstr "Προσθήκη νέου συζύγου"
 
+#: app/Module/RelativesTabModule.php:154
+msgid "Add a husband to this family"
+msgstr "Προσθήκη Συζύγου-Άνδρα σε αυτή την οικογένεια"
+
+#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
+#: edit_interface.php:1156
+msgid "Add a husband using an existing individual"
+msgstr "Προσθήκη συζύγου (άντρα) χρησιμοποιόντας υπάρχον άτομο"
+
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
 msgstr "Προσθήκη νέας καταχώρησης ημερολογίου"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1131
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:184
+#: app/Controller/FamilyController.php:162
+#: app/Functions/FunctionsEdit.php:1131 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:184
 msgid "Add a media object"
 msgstr "Προσθήκη πολυμέσου"
 
@@ -1334,8 +1332,12 @@ msgstr "Προσθήκη νέας μητέρας"
 msgid "Add a name"
 msgstr "Προσθήκη Νέου Ονόματος"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1110
-#: app/Module/NotesTabModule.php:100
+#: app/Module/FamilyTreeNewsModule.php:148
+msgid "Add a news article"
+msgstr "Προσθήκη άρθρου νέων"
+
+#: app/Controller/FamilyController.php:149
+#: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
 msgstr "Προσθήκη νέου Σημειώματος/Σχολίου"
 
@@ -1343,8 +1345,18 @@ msgstr "Προσθήκη νέου Σημειώματος/Σχολίου"
 msgid "Add a restriction"
 msgstr ""
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1120
-#: app/Module/NotesTabModule.php:110
+#. I18N: label for a yes/no option
+#: app/Module/FamilyTreeFavoritesModule.php:286
+#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
+#: app/Module/UpcomingAnniversariesModule.php:181
+#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
+msgid "Add a scrollbar when block contents grow"
+msgstr ""
+
+#: app/Controller/FamilyController.php:155
+#: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
 msgid "Add a shared note"
 msgstr "Προσθήκη νέας κοινορ. σημείωσης"
 
@@ -1352,14 +1364,19 @@ msgstr "Προσθήκη νέας κοινορ. σημείωσης"
 msgid "Add a son or daughter"
 msgstr "Προσθήκη νέου γιού ή κόρης"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1060
-#: app/Module/SourcesTabModule.php:93
+#: app/Controller/FamilyController.php:172
+#: app/Functions/FunctionsEdit.php:1060 app/Module/SourcesTabModule.php:93
 msgid "Add a source citation"
 msgstr "Προσθήκη αναφοράς πηγής"
 
 #: edit_interface.php:837
 msgid "Add a spouse"
 msgstr "Προσθήκη νέας συζύγου"
+
+#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
+#: app/Module/StoriesModule.php:367
+msgid "Add a story"
+msgstr "Προσθήκη αφήγησης"
 
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
@@ -1370,24 +1387,6 @@ msgstr "Προσθήκη νέου χρήστη"
 #: edit_interface.php:897
 msgid "Add a wife"
 msgstr "Προσθήκη νέας συζύγου"
-
-#: app/Module/FamilyTreeNewsModule.php:148
-msgid "Add a news article"
-msgstr "Προσθήκη άρθρου νέων"
-
-#. I18N: label for a yes/no option
-#: app/Module/FamilyTreeFavoritesModule.php:286
-#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
-#: app/Module/UpcomingAnniversariesModule.php:181
-#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
-msgid "Add a scrollbar when block contents grow"
-msgstr ""
-
-#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
-#: app/Module/StoriesModule.php:367
-msgid "Add a story"
-msgstr "Προσθήκη αφήγησης"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1402,6 +1401,10 @@ msgstr "Προσθήκη συζύγου (γυναίκας) χρησιμοποι�
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
 msgstr "Προσθήκη συχνής ερώτησης"
+
+#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
+msgid "Add an associate"
+msgstr ""
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -1481,7 +1484,7 @@ msgstr "Προσθ. υδατογραφήματος στις μικρογραφί
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
 msgid "Add your own text and graphics."
-msgstr "Προσθήκη ιδίων κειμένων και γραφικών"
+msgstr "Προσθήκη ιδίων κειμένων και γραφικών."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
@@ -1803,10 +1806,10 @@ msgstr "Εν ζωή"
 #: app/Module/GoogleMapsModule.php:1578 app/Module/GoogleMapsModule.php:1591
 #: app/Module/GoogleMapsModule.php:4691 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5623 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
-#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
-#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
-#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
+#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
+#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
+#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -2013,7 +2016,8 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1804 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1804
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr "Επέτειος"
 
@@ -2109,7 +2113,7 @@ msgstr "Απρίλιος"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:76
 msgid "Aqua Marine"
-msgstr "Aqua Marine"
+msgstr ""
 
 #: app/Controller/IndividualController.php:167
 #: app/Functions/FunctionsPrintFacts.php:201
@@ -2160,7 +2164,8 @@ msgstr "Argentinien"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -2885,16 +2890,16 @@ msgstr "Τμήματα"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:79
 msgid "Blue Lagoon"
-msgstr "Blue Lagoon"
+msgstr ""
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:80
 msgid "Blue Marine"
-msgstr "Blue Marine"
+msgstr ""
 
 #: message.php:127
 msgid "Body"
-msgstr "Σώμα:"
+msgstr "Σώμα"
 
 #: app/GedcomCode/GedcomCodeTemp.php:103
 msgid "Bogota, Colombia"
@@ -3324,7 +3329,7 @@ msgstr "Katalonien"
 
 #: statistics.php:606
 msgid "Categories"
-msgstr "Κατηγορίες:"
+msgstr "Κατηγορίες"
 
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:242
@@ -3448,7 +3453,8 @@ msgstr ""
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:436
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr "Αλλαγές"
 
@@ -3487,9 +3493,9 @@ msgstr "Τύπος διαγράμματος"
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1287
-#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
-#: app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163
+#: admin_trees_config.php:1287 app/Module/ChartsBlockModule.php:34
+#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
 msgstr "Διαγράμματα"
 
@@ -3522,7 +3528,7 @@ msgstr ""
 
 #: setup.php:266 setup.php:338
 msgid "Check the settings and try again."
-msgstr "Ελένξτε τις ρυθμίσεις και προσπαθήστε ξανά"
+msgstr "Ελένξτε τις ρυθμίσεις και προσπαθήστε ξανά."
 
 #: setup.php:153
 msgid "Checking server capacity"
@@ -3779,7 +3785,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:368
 msgid "Click here to add, edit, or delete"
-msgstr "Κάντε κλικ εδώ για να Προσθέσετε, να Επεξεργαστείτε ή να Διαγράψετε."
+msgstr "Κάντε κλικ εδώ για να Προσθέσετε, να Επεξεργαστείτε ή να Διαγράψετε"
 
 #: individual.php:251
 msgid "Click here to open or close the sidebar"
@@ -3817,12 +3823,12 @@ msgstr "Kokosinseln"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:81
 msgid "Coffee and Cream"
-msgstr "Coffee and Cream"
+msgstr ""
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:82
 msgid "Cold Day"
-msgstr "Cold Day"
+msgstr ""
 
 #: app/Stats.php:6771
 msgid "Colombia"
@@ -3980,9 +3986,10 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:441
 #: app/Module/GoogleMapsModule.php:294 app/Module/GoogleMapsModule.php:1541
 #: app/Module/GoogleMapsModule.php:4096
-#: app/Module/RelationshipsChartModule.php:147 app/Module/SiteMapModule.php:296
-#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
-#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
+#: app/Module/RelationshipsChartModule.php:147
+#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
+#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
+#: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr ""
 
@@ -4088,10 +4095,6 @@ msgstr ""
 msgid "Create a family tree"
 msgstr "Δημιουργία νέου γεν. δέντρου"
 
-#: edit_interface.php:750
-msgid "Create an individual"
-msgstr "Δημιουργία νέου ατόμου"
-
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
 msgstr "Δημιουργία νέου αρχείου πολυμέσου"
@@ -4120,6 +4123,10 @@ msgstr "Δημιουργία νέας πηγής"
 #: admin_site_access.php:218
 msgid "Create a website access rule"
 msgstr ""
+
+#: edit_interface.php:750
+msgid "Create an individual"
+msgstr "Δημιουργία νέου ατόμου"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -4370,7 +4377,8 @@ msgstr "Όνομα χρήστη Βάσης Δεδομένων"
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -4527,7 +4535,7 @@ msgstr "Ημ/νία εγγραφής"
 
 #: app/Module/UserMessagesModule.php:113
 msgid "Date sent"
-msgstr "Ημερομηνία αποστολής:"
+msgstr "Ημερομηνία αποστολής"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:713
@@ -4935,7 +4943,8 @@ msgstr "Βαθμός/Πτυχίο"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -4951,8 +4960,9 @@ msgid "DejaVu"
 msgstr ""
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
-#: admin_site_change.php:373 admin_site_logs.php:314 admin_trees_config.php:576
-#: admin_trees_manage.php:415 admin_trees_manage.php:426 admin_users.php:211
+#: admin_site_change.php:373 admin_site_logs.php:314
+#: admin_trees_config.php:576 admin_trees_manage.php:415
+#: admin_trees_manage.php:426 admin_users.php:211
 #: app/Controller/FamilyController.php:94
 #: app/Controller/GedcomRecordController.php:116
 #: app/Controller/IndividualController.php:303
@@ -5031,7 +5041,8 @@ msgstr ""
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
 #: app/Module/ChartsBlockModule.php:195
-#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
+#: app/Module/DescendancyChartModule.php:33
+#: app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5765,7 +5776,8 @@ msgstr ""
 msgid "Explain why you are requesting an account."
 msgstr ""
 
-#: admin_site_change.php:369 admin_site_logs.php:310 admin_trees_manage.php:591
+#: admin_site_change.php:369 admin_site_logs.php:310
+#: admin_trees_manage.php:591
 msgid "Export"
 msgstr "Εξαγωγή"
 
@@ -5942,7 +5954,8 @@ msgstr "Falklandinseln"
 #: app/Module/GoogleMapsModule.php:2818 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1489
 #: calendar.php:422 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:134 mediaviewer.php:123
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:225
 #: repo.php:143 search.php:93 source.php:147 statistics.php:71
 #: statisticsplot.php:974 statisticsplot.php:1078 statisticsplot.php:1328
@@ -6039,7 +6052,8 @@ msgstr "Γενεαλογικό δέντρο"
 msgid "Family tree access and settings"
 msgstr "Πρόσβαση σε γεν. δέντρα και ρυθμίσεις"
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90
+#: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr "Καλάθι αποκομμάτων οικογενειακού δέντρου"
 
@@ -6178,7 +6192,8 @@ msgid "Father’s family with an unknown individual"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1345
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1345
 msgid "Favorites"
 msgstr "Αγαπημένα"
 
@@ -6320,7 +6335,8 @@ msgstr "Εύρεση ειδικού χαρακτήρα"
 msgid "Find all possible relationships"
 msgstr ""
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 msgid "Find an individual"
@@ -6405,7 +6421,8 @@ msgstr "Όνομα φακέλου στον server"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6664,7 +6681,7 @@ msgstr "Γενική αναζήτηση"
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:44
 msgid "Generate sitemap files for search engines."
-msgstr "Παραγωγή χάρτη ιστοσελίδας για μηχανές αναζήτησης"
+msgstr "Παραγωγή χάρτη ιστοσελίδας για μηχανές αναζήτησης."
 
 #. I18N: This is a report footer. %s is the name of the application.
 #: app/Report/ReportBase.php:108
@@ -6841,7 +6858,7 @@ msgstr "Griechenland"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:83
 msgid "Green Beam"
-msgstr "Green Beam"
+msgstr ""
 
 #: app/Stats.php:6816
 msgid "Greenland"
@@ -6971,7 +6988,7 @@ msgstr ""
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:69
 msgid "Head of household"
-msgstr "Επικεφαλής του νοικοκυριού:"
+msgstr "Επικεφαλής του νοικοκυριού"
 
 #. I18N: gedcom tag HEAD
 #: app/GedcomTag.php:508
@@ -7006,7 +7023,7 @@ msgstr "Γεια σου %s …"
 #: login.php:385
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Γειά σου %s …<br>Ευχαριστώ για την αίτηση εγγραφής"
+msgstr "Γειά σου %s …<br>Ευχαριστώ για την αίτηση εγγραφής."
 
 #: login.php:317 login.php:554
 msgid "Hello administrator…"
@@ -7023,7 +7040,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7563,7 +7581,8 @@ msgid "Installation folder"
 msgstr "Κατάλογος εγκατάστασης"
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:197 app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:197
+#: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
 msgstr "Διαδραστικό δέντρο"
 
@@ -8175,12 +8194,12 @@ msgstr ""
 
 #: app/Module/FamilyTreeNewsModule.php:206
 msgid "Limit"
-msgstr "Όριο:"
+msgstr "Όριο"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:197
 msgid "Limit display by"
-msgstr "Περιορισμός εμφάνισης με:"
+msgstr "Περιορισμός εμφάνισης με"
 
 #. I18N: You need to:
 #: login.php:571
@@ -8860,7 +8879,7 @@ msgstr "Πρόθεμα ID πολυμέσων"
 #. I18N: Label for search field
 #: find.php:184
 msgid "Media contains"
-msgstr "Το μέσο περιέχει:"
+msgstr "Το μέσο περιέχει"
 
 #: admin_media.php:691 admin_media_upload.php:200
 msgid "Media file"
@@ -8934,7 +8953,7 @@ msgstr "Ιατρική κατάσταση"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:84
 msgid "Mediterranio"
-msgstr "Mediterranio"
+msgstr ""
 
 #: setup.php:175
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
@@ -9004,7 +9023,7 @@ msgstr "Μενού"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:85
 msgid "Mercury"
-msgstr "Mercury"
+msgstr ""
 
 #: admin_trees_duplicates.php:174
 msgid "Merge"
@@ -9151,9 +9170,9 @@ msgstr "Module"
 #: app/Module/FrequentlyAskedQuestionsModule.php:442
 #: app/Module/GoogleMapsModule.php:295 app/Module/GoogleMapsModule.php:1542
 #: app/Module/GoogleMapsModule.php:4097
-#: app/Module/RelationshipsChartModule.php:148 app/Module/SiteMapModule.php:297
-#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
-#: app/Theme/AdministrationTheme.php:190
+#: app/Module/RelationshipsChartModule.php:148
+#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
+#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr "Διαχείριση Module"
 
@@ -9453,7 +9472,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:148 find.php:165
 msgid "Name contains"
-msgstr "Το όνομα περιέχει:"
+msgstr "Το όνομα περιέχει"
 
 #: app/GedcomTag.php:606
 msgid "Name in Hebrew"
@@ -9771,7 +9790,7 @@ msgstr[1] ""
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts for this family."
-msgstr "Δεν υπάρχουν γεγονότα για αυτή την οικογένεια"
+msgstr "Δεν υπάρχουν γεγονότα για αυτή την οικογένεια."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:79
@@ -9846,7 +9865,7 @@ msgstr "Απολύτως κανένας"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:86
 msgid "Nocturnal"
-msgstr "Nocturnal"
+msgstr ""
 
 #: admin_trees_download.php:178 app/Module/ClippingsCartModule.php:387
 #: app/Module/ClippingsCartModule.php:766
@@ -9929,8 +9948,9 @@ msgid "Not verified by the user"
 msgstr "Χρήστες χωρίς ιδία επιβεβαίωση"
 
 #. I18N: gedcom tag NOTE
-#: app/Controller/FamilyController.php:147 app/Functions/FunctionsPrint.php:173
-#: app/GedcomTag.php:634 modules_v3/cemetery_report/report.xml:64
+#: app/Controller/FamilyController.php:147
+#: app/Functions/FunctionsPrint.php:173 app/GedcomTag.php:634
+#: modules_v3/cemetery_report/report.xml:64
 #: modules_v3/family_group_report/report.xml:485
 #: modules_v3/family_group_report/report.xml:749
 #: modules_v3/family_group_report/report.xml:1101
@@ -9962,7 +9982,7 @@ msgstr "Σημειώσεις"
 
 #: admin_users.php:795
 msgid "Nothing found to cleanup"
-msgstr "Δεν βρέθηκε κάτι για καθάρισμα."
+msgstr "Δεν βρέθηκε κάτι για καθάρισμα"
 
 #: app/Module/BatchUpdateModule.php:257
 msgid "Nothing found."
@@ -10017,14 +10037,14 @@ msgstr "Αρ. οικογενειών χωρίς παιδιά"
 #: app/Module/ClippingsCartModule.php:230
 #: app/Module/ClippingsCartModule.php:249
 msgid "Number of generations"
-msgstr "Αριθμός γενεών:"
+msgstr "Αριθμός γενεών"
 
 #: app/Module/FamilyTreeNewsModule.php:202
 msgid "Number of items"
 msgstr "Αριθμός αντικειμένων"
 
-#: app/Module/TopGivenNamesModule.php:146 app/Module/TopPageViewsModule.php:159
-#: app/Module/TopSurnamesModule.php:168
+#: app/Module/TopGivenNamesModule.php:146
+#: app/Module/TopPageViewsModule.php:159 app/Module/TopSurnamesModule.php:168
 msgid "Number of items to show"
 msgstr "Αριθμός αντικειμένων για εμφάνιση"
 
@@ -10153,7 +10173,7 @@ msgstr "Μεγαλύτερη μητέρα"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:87
 msgid "Olivia"
-msgstr "Olivia"
+msgstr ""
 
 #: app/Stats.php:6896
 msgid "Oman"
@@ -10182,7 +10202,7 @@ msgstr ""
 
 #: setup.php:210
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr "ΠΡΟΣΟΧΗ! Το webtrees δεν μπόρεσε να δημιουργήσει αρχεία σε αυτό τον κατάλογο"
+msgstr "ΠΡΟΣΟΧΗ! Το webtrees δεν μπόρεσε να δημιουργήσει αρχεία σε αυτό τον κατάλογο."
 
 #: app/Functions/FunctionsPrint.php:476
 msgid "OpenStreetMap™"
@@ -10329,7 +10349,8 @@ msgstr "Μέγιστος χρόνος PHP"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -10560,7 +10581,7 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:88
 msgid "Pink Plastic"
-msgstr "Pink Plastic"
+msgstr ""
 
 #: app/Stats.php:6899
 msgid "Pitcairn"
@@ -10592,11 +10613,7 @@ msgstr "Έλεγχος Τοποθεσιών"
 #. I18N: Label for search field
 #: find.php:204
 msgid "Place contains"
-msgstr "Ο τόπος περιέχει:"
-
-#: app/Module/TopPageViewsModule.php:165
-msgid "Show counts before or after name"
-msgstr "Τοποθέτηση μετρήσεων πριν ή μετά το όνομα;"
+msgstr "Ο τόπος περιέχει"
 
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
@@ -10777,7 +10794,7 @@ msgstr "Παρακαλώ εισάγετε μια έγκυρη διεύθυνση
 #: app/Module/CensusAssistantModule.php:169 find.php:127 search.php:36
 #: search.php:48
 msgid "Please enter more than one character."
-msgstr "Παρακαλώ εισάγετε περισσότερους από έναν χαρακτήρες"
+msgstr "Παρακαλώ εισάγετε περισσότερους από έναν χαρακτήρες."
 
 #: message.php:96
 msgid "Please enter some message text before sending."
@@ -11146,8 +11163,9 @@ msgstr "Ραμαζάνι"
 msgid "Random images from the current family tree."
 msgstr ""
 
-#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1803 edit_interface.php:1877
+#: app/Controller/FamilyController.php:88
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1803
+#: edit_interface.php:1877
 msgid "Re-order children"
 msgstr "Αναταξινόμηση παιδιών"
 
@@ -11170,7 +11188,8 @@ msgid "Real name"
 msgstr "Πραγματικό όνομα"
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr "Πρόσφατες αλλαγές"
 
@@ -11185,7 +11204,8 @@ msgstr ""
 #: admin_site_change.php:327 admin_site_change.php:388
 #: admin_trees_config.php:530 app/Functions/FunctionsPrintLists.php:1800
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:321 app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:321
+#: app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -11439,7 +11459,7 @@ msgstr "Πρόθεμα Repository ID"
 #. I18N: Label for search field
 #: find.php:223
 msgid "Repository contains"
-msgstr "Ο χώρος φύλαξης περιέχει:"
+msgstr "Ο χώρος φύλαξης περιέχει"
 
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
@@ -11484,7 +11504,7 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "Περιορισμός πρόσβασης με χρήση IP διευθύνσεις και user-agent strings"
+msgstr "Περιορισμός πρόσβασης με χρήση IP διευθύνσεις και user-agent strings."
 
 #: admin_users.php:588
 msgid "Restrict to immediate family"
@@ -11601,7 +11621,7 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:89
 msgid "Sage"
-msgstr "Sage"
+msgstr ""
 
 #: app/Stats.php:6925
 msgid "Saint Helena"
@@ -11818,7 +11838,7 @@ msgstr "Επιλογή ημερομηνίας"
 
 #: statistics.php:501
 msgid "Select chart type"
-msgstr "Επιλογή τύπου διαγράμματος:"
+msgstr "Επιλογή τύπου διαγράμματος"
 
 #: edit_interface.php:1245
 msgid "Select events"
@@ -12046,7 +12066,7 @@ msgstr "Set the maximum number of generations to display on the pedigree charts.
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: admin_trees_config.php:401
 msgid "Set the privacy access level for all dead individuals."
-msgstr "Show dead people<br><br>Set the privacy access level for all dead people"
+msgstr "Show dead people<br><br>Set the privacy access level for all dead people."
 
 #. I18N: You need to:
 #: login.php:567
@@ -12114,7 +12134,7 @@ msgstr "Κοινόχρηστη σημείωση"
 #. I18N: Label for search field
 #: find.php:243
 msgid "Shared note contains"
-msgstr "Η κοινόχρηστη σημείωση περιέχει:"
+msgstr "Η κοινόχρηστη σημείωση περιέχει"
 
 #: app/Functions/FunctionsPrintLists.php:1088 app/Theme/AbstractTheme.php:1518
 #: notelist.php:33 notelist.php:37 search.php:103
@@ -12233,7 +12253,7 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:90
 msgid "Shiny Tomato"
-msgstr "Shiny Tomato"
+msgstr ""
 
 #. I18N: gedcom tag _SUBQ
 #: app/GedcomTag.php:1735
@@ -12304,6 +12324,10 @@ msgstr ""
 msgid "Show common surnames"
 msgstr "Εμφάνιση συνηθισμένων επωνύμων;"
 
+#: app/Module/TopPageViewsModule.php:165
+msgid "Show counts before or after name"
+msgstr "Τοποθέτηση μετρήσεων πριν ή μετά το όνομα;"
+
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
 msgstr ""
@@ -12371,7 +12395,7 @@ msgstr "Εμφ. τονισμένων εικόνων στα κουτιά των �
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1709
 msgid "Show hit counters on Portal and Individual pages."
-msgstr "Εμφ. μετρητή επισκεπτών στην αρχική και τις σελίδες των ατόμων"
+msgstr "Εμφ. μετρητή επισκεπτών στην αρχική και τις σελίδες των ατόμων."
 
 #: compact.php:60
 msgid "Show images"
@@ -12861,7 +12885,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:262
 msgid "Source contains"
-msgstr "Η πηγή περιέχει:"
+msgstr "Η πηγή περιέχει"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2221 modules_v3/fact_sources/report.xml:6
@@ -13068,7 +13092,7 @@ msgstr "Υποδιαίρεση"
 
 #: app/Module/UserMessagesModule.php:112 message.php:119
 msgid "Subject"
-msgstr "Θέμα:"
+msgstr "Θέμα"
 
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:810
@@ -13106,7 +13130,7 @@ msgstr "Κυριακή"
 #: admin.php:603
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr "Υποστήριξη και Εγχειρίδιο Χρήσης μπορείτε να βρείτε στο %s"
+msgstr "Υποστήριξη και Εγχειρίδιο Χρήσης μπορείτε να βρείτε στο %s."
 
 #: app/Stats.php:6937
 msgid "Suriname"
@@ -13254,7 +13278,7 @@ msgstr "Tansania"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:91
 msgid "Teal Top"
-msgstr "Teal Top"
+msgstr ""
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:911
@@ -13387,7 +13411,7 @@ msgstr ""
 #: admin_site_upgrade.php:293 admin_trees_export.php:41
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr "Το Οικογενειακό Δένδρο εξήχθη στο %s"
+msgstr "Το Οικογενειακό Δένδρο εξήχθη στο %s."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:76
@@ -13479,8 +13503,8 @@ msgstr ""
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:294
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:294
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Ο κατάλογος %s δεν υπάρχει, και δεν μπορεί να δημιουργηθεί."
@@ -13575,7 +13599,7 @@ msgstr ""
 
 #: mediafirewall.php:38
 msgid "The media file was not found in this family tree."
-msgstr "Το αρχείο πολυμέσων δεν βρέθηκε σε αυτό το οικογενειακό δέντρο"
+msgstr "Το αρχείο πολυμέσων δεν βρέθηκε σε αυτό το οικογενειακό δέντρο."
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13619,7 +13643,7 @@ msgstr ""
 
 #: setup.php:416
 msgid "The passwords do not match."
-msgstr "Οι κωδικοί πρόσβασης δεν ταιριάζουν"
+msgstr "Οι κωδικοί πρόσβασης δεν ταιριάζουν."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
@@ -13660,7 +13684,7 @@ msgstr ""
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr "Η εγγραφή αντιγράφηκε στη μνήμη"
+msgstr "Η εγγραφή αντιγράφηκε στη μνήμη."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:168
@@ -13836,14 +13860,14 @@ msgstr ""
 
 #: app/Module/ResearchTaskModule.php:154
 msgid "There are no research tasks in this family tree."
-msgstr "Δεν υπάρχουν εργασίες έρευνας σε αυτό το γεν. δέντρο"
+msgstr "Δεν υπάρχουν εργασίες έρευνας σε αυτό το γεν. δέντρο."
 
 #: app/Module/SourcesTabModule.php:81
 msgid "There are no source citations for this individual."
 msgstr "Δεν υπάρχουν αναφορές πηγών για το άτομο αυτό."
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1926
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1926
 msgid "There are pending changes for you to moderate."
 msgstr "Υπάρχουν εκκρεμείς αλλαγές για να εγκρίνετε."
 
@@ -14034,7 +14058,7 @@ msgstr "Οι πληροφορίες είναι ιδιωτικές και δεν 
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "This input box is for changing the year for the calendar in the \"Month mode\" or the list in the \"Year mode\".<br>In \"Day mode\" changing the year will make no difference, as all events of all years are displayed.<dl><dt><b>Advanced features</b> for <b>Προβολή έτους:<br>More than one year</b></dt><dd>You may search for more than one year by entering this in the year field:<br>- Ex. 1: <b>1992-5</b> for all events from 1992 until 1995.<br>- Ex. 2: <b>1972-89</b> for all events from 1972 until 1989.<br>- Ex. 3: <b>1610-759</b> for all events from 1610 until 1759.<br>- Ex. 4: <b>1880-1905</b> for all events from 1880 until 1905.<br>- Ex. 5: <b>880-1105</b> for all events from 880 until 1105.<br><br>You may also leave out the last number of the year to get all events with a date in a certain decade.<br>- Ex.: <b>197</b> for all events from 1970 until 1979.</dd><dt><br><b>Abbreviations</b></dt><dd>Sometimes it's not clear when an event exactly happened. In that case terms like \"after\", \"before\" and \"about\" can be added to a date. The dates are stored in the GEDCOM together with an abbreviation of the term. In the Year mode you can also execute searches on the terms, with or without the accompanying date. Some examples of these searches are:<br><b>abt</b> 1800 (abt = about)<br><b>bet</b> 1950-1959 (bet = between) enter: bet 1950 or just: 1950-59<br><b>bef</b> 1950 (bef = before)<br><b>aft</b> 1900 (aft = after)<br><br><b>Note:</b> PhpGedView will search for the exact string you entered. When you search for \"abt 1850\", a date stored in the GEDCOM like \"abt oct 1850\" will <b>not</b> be included in the search results. - You may enter just the abbreviation without the year, to get all events with dates which contain that abbreviation.</dd></dl>Typing in another year will not directly refresh the screen.<br>Since this input box is not a link, you will have to click the <b>Προβολή μήνα</b> or <b>Προβολή έτους</b> Button before you will see the new situation."
+msgstr ""
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2156
@@ -15318,7 +15342,7 @@ msgstr ""
 
 #: login.php:343 login.php:530
 msgid "Verification code"
-msgstr "Κώδικας επαλήθευσης:"
+msgstr "Κώδικας επαλήθευσης"
 
 #: admin_users.php:874
 msgid "Verified"
@@ -15339,7 +15363,7 @@ msgstr "Βίντεο"
 
 #: app/Stats.php:6971
 msgid "Vietnam"
-msgstr "Vietnam"
+msgstr "Βιετνάμ"
 
 #. I18N: Submit button, on a form
 #: ancestry.php:92 app/Functions/FunctionsPrintFacts.php:1024
@@ -15601,7 +15625,8 @@ msgstr "Ποιοί μπορούν να ανεβάσουν νεα αρχεία π
 msgid "Who is online"
 msgstr "Συνδεδεμένοι χρήστες"
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr "Μόνο ολόκληρες λέξεις"
 
@@ -15650,7 +15675,7 @@ msgstr ""
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 msgid "Wildcards"
-msgstr "Wildcards"
+msgstr ""
 
 #. I18N: gedcom tag WILL
 #: app/GedcomTag.php:860
@@ -15826,11 +15851,11 @@ msgstr "Πρέπει να εισάγετε όνομα χρήστη."
 
 #: setup.php:418
 msgid "You must enter all the administrator account fields."
-msgstr "Πρέπει να εισάγετε στοιχεία σε όλα τα πεδία του λογαριασμού διαχειριστή"
+msgstr "Πρέπει να εισάγετε στοιχεία σε όλα τα πεδία του λογαριασμού διαχειριστή."
 
 #: edit_interface.php:1522
 msgid "You must provide a repository name."
-msgstr "Πρέπει να δώσετε ένα όνομα αποθετηρίου"
+msgstr "Πρέπει να δώσετε ένα όνομα αποθετηρίου."
 
 #: edit_interface.php:1203
 msgid "You must provide a source title"
@@ -16344,14 +16369,15 @@ msgstr "παιδιά"
 #. I18N: button label
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:759
-#: app/Module/GoogleMapsModule.php:4024 app/Theme/AbstractTheme.php:700
-#: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1746
-#: edit_interface.php:1855 edit_interface.php:2048 edit_interface.php:2217
-#: edit_interface.php:2603 find.php:766 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189
+#: app/Module/GoogleMapsModule.php:759 app/Module/GoogleMapsModule.php:4024
+#: app/Theme/AbstractTheme.php:700 edit_changes.php:240 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1746 edit_interface.php:1855 edit_interface.php:2048
+#: edit_interface.php:2217 edit_interface.php:2603 find.php:766
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "κλείσιμο"
@@ -18869,7 +18895,8 @@ msgstr "αριθμοί"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19041,20 +19068,21 @@ msgstr "Μηχανή Αναζήτησης"
 #. I18N: button label
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:199
-#: admin_site_access.php:307 admin_site_config.php:652 admin_site_merge.php:340
-#: admin_trees_config.php:2271 admin_users.php:673
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129
+#: admin_modules.php:199 admin_site_access.php:307 admin_site_config.php:652
+#: admin_site_merge.php:340 admin_trees_config.php:2271 admin_users.php:673
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:533 app/Module/GoogleMapsModule.php:758
 #: app/Module/GoogleMapsModule.php:2764 app/Module/GoogleMapsModule.php:4023
-#: app/Module/RelationshipsChartModule.php:173 app/Module/SiteMapModule.php:320
-#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
-#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1745 edit_interface.php:1853 edit_interface.php:2047
-#: edit_interface.php:2215 edit_interface.php:2599 editnews.php:74
-#: edituser.php:317 find.php:543 index_edit.php:376
+#: app/Module/RelationshipsChartModule.php:173
+#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
+#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
+#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
+#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
+#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1745
+#: edit_interface.php:1853 edit_interface.php:2047 edit_interface.php:2215
+#: edit_interface.php:2599 editnews.php:74 edituser.php:317 find.php:543
+#: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
