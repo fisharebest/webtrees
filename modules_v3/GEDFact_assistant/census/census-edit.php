@@ -41,7 +41,7 @@ $year = $date->minimumDate()->format('%Y');
 $headImg = '<i class="icon-button_head"></i>';
 
 $controller
-	->setPageTitle(I18N::translate('Create a new shared note using assistant'))
+	->setPageTitle(I18N::translate('Create a shared note using the census assistant'))
 	->addInlineJavascript(
 		'jQuery("head").append(\'<link rel="stylesheet" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/census/style.css" type="text/css">\');' .
 		'jQuery("#tblSample").on("click", ".icon-remove", function() { jQuery(this).closest("tr").remove(); });'

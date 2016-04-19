@@ -41,7 +41,7 @@ if (empty($pid_array)) {
 $controller
 	->addInlineJavascript('window.opener.set_pid_array("' . $pid_array . '");')
 	->addInlineJavascript('openerpasteid("' . $xref . '");')
-	->setPageTitle(I18N::translate('Create a new shared note using assistant'))
+	->setPageTitle(I18N::translate('Create a shared note using the census assistant'))
 	->pageHeader();
 ?>
 

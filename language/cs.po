@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 12:18+0000\n"
+"PO-Revision-Date: 2016-04-17 06:12+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -1297,6 +1297,14 @@ msgstr "Přidat"
 msgid "Add %s to the clippings cart"
 msgstr "Přidat %s do schránky"
 
+#: app/Module/RelativesTabModule.php:273
+msgid "Add a brother or sister"
+msgstr "Přidat nového bratra nebo sestru"
+
+#: edit_interface.php:516
+msgid "Add a child"
+msgstr "Přidat nové dítě"
+
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
 msgstr "Přidat dítě a vytvořit rodinu s jedním rodičem"
@@ -1309,27 +1317,6 @@ msgstr "Přidat dítě k této rodině"
 #: edit_interface.php:81
 msgid "Add a fact"
 msgstr "Přidat údaj"
-
-#: app/Module/RelativesTabModule.php:154
-msgid "Add a husband to this family"
-msgstr "Přidat manžela k této rodině"
-
-#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
-#: edit_interface.php:1156
-msgid "Add a husband using an existing individual"
-msgstr "Přidat manžela použitím existující osoby"
-
-#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add an associate"
-msgstr "Přidat nového společníka"
-
-#: app/Module/RelativesTabModule.php:273
-msgid "Add a brother or sister"
-msgstr "Přidat nového bratra nebo sestru"
-
-#: edit_interface.php:516
-msgid "Add a child"
-msgstr "Přidat nové dítě"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
@@ -1347,6 +1334,15 @@ msgstr "Přidat nové geografické místo"
 #: edit_interface.php:900
 msgid "Add a husband"
 msgstr "Přidat nového manžela"
+
+#: app/Module/RelativesTabModule.php:154
+msgid "Add a husband to this family"
+msgstr "Přidat manžela k této rodině"
+
+#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
+#: edit_interface.php:1156
+msgid "Add a husband using an existing individual"
+msgstr "Přidat manžela použitím existující osoby"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
@@ -1367,6 +1363,10 @@ msgstr "Přidat novou matku"
 msgid "Add a name"
 msgstr "Přidat nové jméno"
 
+#: app/Module/FamilyTreeNewsModule.php:148
+msgid "Add a news article"
+msgstr "Přidat nový článek"
+
 #: app/Controller/FamilyController.php:149
 #: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
@@ -1375,6 +1375,16 @@ msgstr "Přidat novou poznámku"
 #: app/Functions/FunctionsEdit.php:1141
 msgid "Add a restriction"
 msgstr "Přidat omezení"
+
+#. I18N: label for a yes/no option
+#: app/Module/FamilyTreeFavoritesModule.php:286
+#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
+#: app/Module/UpcomingAnniversariesModule.php:181
+#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
+msgid "Add a scrollbar when block contents grow"
+msgstr "Přidat rolovací lištu, pokud se blok zvětšuje"
 
 #: app/Controller/FamilyController.php:155
 #: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
@@ -1394,6 +1404,11 @@ msgstr "Přidat nový pramen citací"
 msgid "Add a spouse"
 msgstr "Přidat nového partnera"
 
+#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
+#: app/Module/StoriesModule.php:367
+msgid "Add a story"
+msgstr "Přidat příběh"
+
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
@@ -1403,25 +1418,6 @@ msgstr "Přidat nového uživatele"
 #: edit_interface.php:897
 msgid "Add a wife"
 msgstr "Přidat novou manželku"
-
-#: app/Module/FamilyTreeNewsModule.php:148
-msgid "Add a news article"
-msgstr "Přidat nový článek"
-
-#. I18N: label for a yes/no option
-#: app/Module/FamilyTreeFavoritesModule.php:286
-#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230
-#: app/Module/ReviewChangesModule.php:193
-#: app/Module/UpcomingAnniversariesModule.php:181
-#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
-msgid "Add a scrollbar when block contents grow"
-msgstr "Přidat rolovací lištu, pokud se blok zvětšuje"
-
-#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
-#: app/Module/StoriesModule.php:367
-msgid "Add a story"
-msgstr "Přidat příběh"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1436,6 +1432,10 @@ msgstr "Přidat manželku použitím existující osoby"
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
 msgstr "Přidat otázku do FAQ"
+
+#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
+msgid "Add an associate"
+msgstr "Přidat nového společníka"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -1815,7 +1815,7 @@ msgid "Album"
 msgstr "Album"
 
 #: app/GedcomCode/GedcomCodeTemp.php:85
-msgid "Albuquerque, New Mexico"
+msgid "Albuquerque, New Mexico, United States"
 msgstr "Albuquerque, New Mexico, USA"
 
 #: app/Stats.php:6786
@@ -2029,7 +2029,7 @@ msgid "Ancestral file number"
 msgstr "Číslo souboru předků"
 
 #: app/GedcomCode/GedcomCodeTemp.php:87
-msgid "Anchorage, Alaska"
+msgid "Anchorage, Alaska, United States"
 msgstr "Anchorage, Aljaška, USA"
 
 #: app/Stats.php:6724
@@ -2255,7 +2255,7 @@ msgid "At sea"
 msgstr "U moře"
 
 #: app/GedcomCode/GedcomCodeTemp.php:93
-msgid "Atlanta, Georgia"
+msgid "Atlanta, Georgia, United States"
 msgstr "Atlanta, Georgia, USA"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
@@ -2591,7 +2591,7 @@ msgid "Batch update"
 msgstr "Aktualizace dávkou"
 
 #: app/GedcomCode/GedcomCodeTemp.php:113
-msgid "Baton Rouge, Louisiana"
+msgid "Baton Rouge, Louisiana, United States"
 msgstr "Baton Rouge, Louisiana, USA"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
@@ -2647,7 +2647,7 @@ msgid "Bibliography"
 msgstr "Bibliografie"
 
 #: app/GedcomCode/GedcomCodeTemp.php:97
-msgid "Billings, Montana"
+msgid "Billings, Montana, United States"
 msgstr "Billings, Montana, USA"
 
 #. I18N: gedcom tag BLOB
@@ -2660,7 +2660,7 @@ msgid "Bing Maps™"
 msgstr "Bing Mapy™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
-msgid "Birmingham, Alabama"
+msgid "Birmingham, Alabama, United States"
 msgstr "Birmingham, Alabama, USA"
 
 #. I18N: gedcom tag BIRT
@@ -2900,7 +2900,7 @@ msgid "Births by century"
 msgstr "Narození podle století"
 
 #: app/GedcomCode/GedcomCodeTemp.php:101
-msgid "Bismarck, North Dakota"
+msgid "Bismarck, North Dakota, United States"
 msgstr "Bismarck, North Dakota, USA"
 
 #. I18N: gedcom tag BLES
@@ -2937,7 +2937,7 @@ msgid "Bogota, Colombia"
 msgstr "Bogota, Kolumbie"
 
 #: app/GedcomCode/GedcomCodeTemp.php:105
-msgid "Boise, Idaho"
+msgid "Boise, Idaho, United States"
 msgstr "Boise, Idaho, USA"
 
 #: app/Stats.php:6749
@@ -2962,7 +2962,7 @@ msgid "Bosnia and Herzegovina"
 msgstr "Bosna a Hercegovina"
 
 #: app/GedcomCode/GedcomCodeTemp.php:107
-msgid "Boston, Massachusetts"
+msgid "Boston, Massachusetts, United States"
 msgstr "Boston, Massachusetts, USA"
 
 #: app/Functions/FunctionsPrintLists.php:628
@@ -2978,7 +2978,7 @@ msgid "Botswana"
 msgstr "Botswana"
 
 #: app/GedcomCode/GedcomCodeTemp.php:109
-msgid "Bountiful, Utah"
+msgid "Bountiful, Utah, United States"
 msgstr "Bountiful, Utah, USA"
 
 #: app/Stats.php:6754
@@ -3572,7 +3572,7 @@ msgid "Checking server configuration"
 msgstr "Kontrola nastavení serveru"
 
 #: app/GedcomCode/GedcomCodeTemp.php:119
-msgid "Chicago, Illinois"
+msgid "Chicago, Illinois, United States"
 msgstr "Chicago, Illinois, USA"
 
 #. I18N: gedcom tag CHIL
@@ -3872,15 +3872,15 @@ msgid "Colonia Juarez, Mexico"
 msgstr "Colonia Juarez, Mexiko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:133
-msgid "Columbia River, Washington"
+msgid "Columbia River, Washington, United States"
 msgstr "Columbia River, Washington, USA"
 
 #: app/GedcomCode/GedcomCodeTemp.php:127
-msgid "Columbia, South Carolina"
+msgid "Columbia, South Carolina, United States"
 msgstr "Columbia, South Carolina, USA"
 
 #: app/GedcomCode/GedcomCodeTemp.php:129
-msgid "Columbus, Ohio"
+msgid "Columbus, Ohio, United States"
 msgstr "Columbus, Ohio, USA"
 
 #: medialist.php:164
@@ -4125,36 +4125,36 @@ msgid "Create"
 msgstr "Vytvořit"
 
 #: admin_trees_manage.php:621
-msgid "Create a new family tree"
+msgid "Create a family tree"
 msgstr "Vytvořit nový rodokmen"
 
 #: edit_interface.php:750
-msgid "Create a new individual"
+msgid "Create an individual"
 msgstr "Vytvořit novou osobu"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
-msgid "Create a new media object"
+msgid "Create a media object"
 msgstr "Vytvořit nový mediální objekt"
 
 #: app/Functions/FunctionsEdit.php:427 edit_interface.php:1512
 #: edit_interface.php:1575
-msgid "Create a new repository"
+msgid "Create a repository"
 msgstr "Vytvořit repozitář"
 
 #: app/Functions/FunctionsEdit.php:438 edit_interface.php:1348
 #: edit_interface.php:1384
-msgid "Create a new shared note"
+msgid "Create a shared note"
 msgstr "Vytvořit novou sdílenou poznámku"
 
 #: app/Functions/FunctionsEdit.php:634
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
-msgid "Create a new shared note using assistant"
+msgid "Create a shared note using the census assistant"
 msgstr "Vytvořit novou sdílenou poznámku použitím Asistenta"
 
 #: app/Functions/FunctionsEdit.php:460 edit_interface.php:1196
 #: edit_interface.php:1279
-msgid "Create a new source"
+msgid "Create a source"
 msgstr "Vytvořit nový pramen"
 
 #: admin_site_access.php:218
@@ -4367,7 +4367,7 @@ msgid "Daitch-Mokotoff"
 msgstr "Daitch-Mokotoff"
 
 #: app/GedcomCode/GedcomCodeTemp.php:135
-msgid "Dallas, Texas"
+msgid "Dallas, Texas, United States"
 msgstr "Dallas, Texas, USA"
 
 #. I18N: A summary of the system status
@@ -5057,7 +5057,7 @@ msgid "Denmark"
 msgstr "Dánsko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:137
-msgid "Denver, Colorado"
+msgid "Denver, Colorado, United States"
 msgstr "Denver, Colorado, USA"
 
 #: admin_site_upgrade.php:80
@@ -5141,7 +5141,7 @@ msgid "Details of the new user will be sent to the genealogy contact for the cor
 msgstr "Podrobnosti o novém uživateli budou zaslány na genealogický kontakt příslušného rodokmenu."
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
-msgid "Detroit, Michigan"
+msgid "Detroit, Michigan, United States"
 msgstr "Detroit, Michigan, USA"
 
 #: app/Date/JalaliDate.php:192
@@ -6422,25 +6422,25 @@ msgstr "Flandry"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:95
 msgctxt "GENITIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:161
 msgctxt "INSTRUMENTAL"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:128
 msgctxt "LOCATIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:62
 msgctxt "NOMINATIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #: medialist.php:91
@@ -6571,7 +6571,7 @@ msgid "Frequently asked questions"
 msgstr "Časté dotazy"
 
 #: app/GedcomCode/GedcomCodeTemp.php:151
-msgid "Fresno, California"
+msgid "Fresno, California, United States"
 msgstr "Fresno, Kalifornie, USA"
 
 #. I18N: abbreviation for Friday
@@ -6983,7 +6983,7 @@ msgid "Hamilton, New Zealand"
 msgstr "Hamilton, Nový Zéland"
 
 #: app/GedcomCode/GedcomCodeTemp.php:165
-msgid "Hartford, Connecticut"
+msgid "Hartford, Connecticut, United States"
 msgstr "Hartford, Connecticut, USA"
 
 #: modules_v3/descendancy_report/report.xml:429
@@ -7210,7 +7210,7 @@ msgid "Household"
 msgstr "Domácnost"
 
 #: app/GedcomCode/GedcomCodeTemp.php:175
-msgid "Houston, Texas"
+msgid "Houston, Texas, United States"
 msgstr "Houston, Texas, USA"
 
 #. I18N: Configuration option
@@ -7269,7 +7269,7 @@ msgid "Icon"
 msgstr "Ikona"
 
 #: app/GedcomCode/GedcomCodeTemp.php:177
-msgid "Idaho Falls, Idaho"
+msgid "Idaho Falls, Idaho, United States"
 msgstr "Idaho Falls, Idaho, USA"
 
 #. I18N: gedcom tag IDNO
@@ -7488,7 +7488,7 @@ msgstr "Včetně podsložek"
 
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Včetně nejbližší rodiny dané osoby?"
+msgstr "Včetně nejbližší rodiny dané osoby"
 
 #: app/Stats.php:6828
 msgid "India"
@@ -7773,7 +7773,7 @@ msgid "Jordan"
 msgstr "Jordánsko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:181
-msgid "Jordan River, Utah"
+msgid "Jordan River, Utah, United States"
 msgstr "Jordan River, Utah, USA"
 
 #. I18N: Name of a module
@@ -7978,7 +7978,7 @@ msgid "Kislev"
 msgstr "Kislev"
 
 #: app/GedcomCode/GedcomCodeTemp.php:185
-msgid "Kona, Hawaii"
+msgid "Kona, Hawaii, United States"
 msgstr "Kona, Hawaii, USA"
 
 #: app/Stats.php:6846
@@ -8028,7 +8028,7 @@ msgid "LDS temple"
 msgstr "Chrám LDS (Temple)"
 
 #: app/GedcomCode/GedcomCodeTemp.php:167
-msgid "Laie, Hawaii"
+msgid "Laie, Hawaii, United States"
 msgstr "Laie, Hawaii, USA"
 
 #. I18N: page orientation
@@ -8068,7 +8068,7 @@ msgid "Largest number of grandchildren"
 msgstr "Největší počet vnoučat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:199
-msgid "Las Vegas, Nevada"
+msgid "Las Vegas, Nevada, United States"
 msgstr "Las Vegas, Nevada, USA"
 
 #. I18N: gedcom tag CHAN
@@ -8338,7 +8338,7 @@ msgid "Lodger"
 msgstr "Nájemník"
 
 #: app/GedcomCode/GedcomCodeTemp.php:191
-msgid "Logan, Utah"
+msgid "Logan, Utah, United States"
 msgstr "Logan, Utah, USA"
 
 #: app/Module/LoginBlockModule.php:63
@@ -8391,7 +8391,7 @@ msgid "Longitude"
 msgstr "Zeměpisná délka"
 
 #: app/GedcomCode/GedcomCodeTemp.php:187
-msgid "Los Angeles, California"
+msgid "Los Angeles, California, United States"
 msgstr "Los Angeles, Kalifornie"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219 login.php:252
@@ -8399,7 +8399,7 @@ msgid "Lost password request"
 msgstr "Zapomenuté heslo"
 
 #: app/GedcomCode/GedcomCodeTemp.php:195
-msgid "Louisville, Kentucky"
+msgid "Louisville, Kentucky, United States"
 msgstr "Louisville, Kentucky, USA"
 
 #: app/Stats.php:1741
@@ -8407,7 +8407,7 @@ msgid "Lowest population"
 msgstr "Nejnižší populace"
 
 #: app/GedcomCode/GedcomCodeTemp.php:197
-msgid "Lubbock, Texas"
+msgid "Lubbock, Texas, United States"
 msgstr "Lubbock, Texas, USA"
 
 #: app/Stats.php:6857
@@ -8523,7 +8523,7 @@ msgid "Manila, Philippines"
 msgstr "Maila, Filipíny"
 
 #: app/GedcomCode/GedcomCodeTemp.php:205
-msgid "Manti, Utah"
+msgid "Manti, Utah, United States"
 msgstr "Manti, Utah, USA"
 
 #: app/GedcomTag.php:1928
@@ -8893,7 +8893,7 @@ msgid "Mayotte"
 msgstr "Mayotte"
 
 #: app/GedcomCode/GedcomCodeTemp.php:207
-msgid "Medford, Oregon"
+msgid "Medford, Oregon, United States"
 msgstr "Medford, Oregon, USA"
 
 #. I18N: Name of a module
@@ -9040,7 +9040,7 @@ msgid "Memory limit"
 msgstr "Maximální velikost paměti"
 
 #: app/GedcomCode/GedcomCodeTemp.php:211
-msgid "Memphis, Tennessee"
+msgid "Memphis, Tennessee, United States"
 msgstr "Memphis, Tennessee, USA"
 
 #: admin_module_menus.php:87 admin_modules.php:185
@@ -9076,7 +9076,7 @@ msgid "Merida, Mexico"
 msgstr "Merida, Mexiko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:89
-msgid "Mesa, Arizona"
+msgid "Mesa, Arizona, United States"
 msgstr "Mesa, Arizona, USA"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
@@ -9276,7 +9276,7 @@ msgid "Month:"
 msgstr "Měsíc:"
 
 #: app/GedcomCode/GedcomCodeTemp.php:221
-msgid "Monticello, Utah"
+msgid "Monticello, Utah, United States"
 msgstr "Monticello, Utah, USA"
 
 #: app/GedcomCode/GedcomCodeTemp.php:223
@@ -9379,7 +9379,7 @@ msgid "Mother’s family with an unknown individual"
 msgstr "Matčina rodina s neznámou osobou"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
-msgid "Mount Timpanogos, Utah"
+msgid "Mount Timpanogos, Utah, United States"
 msgstr "Mount Timpanogos, Utah, USA"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:493 index_edit.php:312
@@ -9554,7 +9554,7 @@ msgid "Narrative description"
 msgstr "Vypravěčský popis"
 
 #: app/GedcomCode/GedcomCodeTemp.php:227
-msgid "Nashville, Tennessee"
+msgid "Nashville, Tennessee, United States"
 msgstr "Nashville, Tennessee, USA"
 
 #. I18N: gedcom tag NATI
@@ -9572,11 +9572,11 @@ msgid "Nauru"
 msgstr "Nauru"
 
 #: app/GedcomCode/GedcomCodeTemp.php:229
-msgid "Nauvoo, Illinois (new)"
+msgid "Nauvoo (new), Illinois, United States"
 msgstr "Nauvoo, Illinois, USA"
 
 #: app/GedcomCode/GedcomCodeTemp.php:231
-msgid "Nauvoo, Illinois (original)"
+msgid "Nauvoo (original), Illinois, United States"
 msgstr "Nauvoo, Illinois, USA"
 
 #: app/Module/GoogleMapsModule.php:407 app/Module/GoogleMapsModule.php:3961
@@ -9625,7 +9625,7 @@ msgid "New Caledonia"
 msgstr "Nová Kaledonie"
 
 #: app/GedcomCode/GedcomCodeTemp.php:237
-msgid "New York, New York"
+msgid "New York, New York, United States"
 msgstr "New York, New York, USA"
 
 #: app/Stats.php:6895
@@ -9649,7 +9649,7 @@ msgid "New user at %s"
 msgstr "Nový uživatel na %s"
 
 #: app/GedcomCode/GedcomCodeTemp.php:233
-msgid "Newport Beach, California"
+msgid "Newport Beach, California, United States"
 msgstr "Newport Beach, Kalifornie"
 
 #. I18N: Name of a module
@@ -9717,25 +9717,25 @@ msgstr "Niue"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:91
 msgctxt "GENITIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
 msgctxt "INSTRUMENTAL"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:124
 msgctxt "LOCATIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:58
 msgctxt "NOMINATIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #: admin_users.php:660 app/Functions/FunctionsPrintFacts.php:308
@@ -10107,7 +10107,7 @@ msgid "Nurse"
 msgstr "Kojná"
 
 #: app/GedcomCode/GedcomCodeTemp.php:241
-msgid "Oakland, California"
+msgid "Oakland, California, United States"
 msgstr "Oakland, Kalifornie, USA"
 
 #: app/GedcomCode/GedcomCodeTemp.php:243
@@ -10162,11 +10162,11 @@ msgid "October"
 msgstr "říjen"
 
 #: app/GedcomCode/GedcomCodeTemp.php:245
-msgid "Ogden, Utah"
+msgid "Ogden, Utah, United States"
 msgstr "Ogden, Utah, USA"
 
 #: app/GedcomCode/GedcomCodeTemp.php:247
-msgid "Oklahoma City, Oklahoma"
+msgid "Oklahoma City, Oklahoma, United States"
 msgstr "Oklahoma City, Oklahoma, USA"
 
 #: admin_site_change.php:336
@@ -10297,7 +10297,7 @@ msgid "Orientation"
 msgstr "Natočení"
 
 #: app/GedcomCode/GedcomCodeTemp.php:249
-msgid "Orlando, Florida"
+msgid "Orlando, Florida, United States"
 msgstr "Orlando, Florida, USA"
 
 #: app/GedcomTag.php:1942 app/Stats.php:5499 app/Stats.php:5918
@@ -10438,7 +10438,7 @@ msgid "Palette"
 msgstr "Paleta barev"
 
 #: app/GedcomCode/GedcomCodeTemp.php:253
-msgid "Palmyra, New York"
+msgid "Palmyra, New York, United States"
 msgstr "Palmyra, New York, USA"
 
 #: app/Stats.php:6898
@@ -10650,10 +10650,6 @@ msgstr "Kontrola místa"
 msgid "Place contains"
 msgstr "Místo obsahuje"
 
-#: app/Module/TopPageViewsModule.php:165
-msgid "Show counts before or after name"
-msgstr "Umístit počty před nebo za jméno?"
-
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
 msgid "Place hierarchy"
@@ -10846,25 +10842,25 @@ msgstr "Poskytněte svoji emailovou adresu, abychom vám mohli na tuto zprávu o
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:92
 msgctxt "GENITIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
 msgctxt "INSTRUMENTAL"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:125
 msgctxt "LOCATIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:59
 msgctxt "NOMINATIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #: app/Stats.php:6904
@@ -10882,7 +10878,7 @@ msgid "Port number"
 msgstr "Číslo portu"
 
 #: app/GedcomCode/GedcomCodeTemp.php:263
-msgid "Portland, Oregon"
+msgid "Portland, Oregon, United States"
 msgstr "Portland, Oregon, USA"
 
 #: app/GedcomCode/GedcomCodeTemp.php:251
@@ -10998,7 +10994,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Tisknout základní události, pokud jsou prázdné?"
+msgstr "Tisknout základní události, i když jsou prázdné"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
 msgid "Privacy"
@@ -11027,7 +11023,7 @@ msgid "Property"
 msgstr "Vlastnictví"
 
 #: app/GedcomCode/GedcomCodeTemp.php:267
-msgid "Provo, Utah"
+msgid "Provo, Utah, United States"
 msgstr "Provo, Utah, USA"
 
 #. I18N: gedcom tag PUBL
@@ -11170,7 +11166,7 @@ msgid "Rajab"
 msgstr "radžab"
 
 #: app/GedcomCode/GedcomCodeTemp.php:269
-msgid "Raleigh, North Carolina"
+msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, North Carolina, USA"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
@@ -11269,7 +11265,7 @@ msgid "Records are not the same type. Cannot merge records that are not the same
 msgstr "Záznamy nejsou stejného typu. Není možné sloučit záznamu rozdílných typů."
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
-msgid "Redlands, California"
+msgid "Redlands, California, United States"
 msgstr "Redlands, Kalifornie, USA"
 
 #: app/Module/GoogleMapsModule.php:991 app/Module/GoogleMapsModule.php:2338
@@ -11433,7 +11429,7 @@ msgid "Remove this location?"
 msgstr "Odstranit toto umístění?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:277
-msgid "Reno, Nevada"
+msgid "Reno, Nevada, United States"
 msgstr "Reno, Nevada, USA"
 
 #: admin_trees_manage.php:506
@@ -11630,7 +11626,7 @@ msgid "SMTP mail server"
 msgstr "Emailový server (SMTP)"
 
 #: app/GedcomCode/GedcomCodeTemp.php:279
-msgid "Sacramento, California"
+msgid "Sacramento, California, United States"
 msgstr "Sacramento, Kalifornie, USA"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
@@ -11683,7 +11679,7 @@ msgid "Saint Vincent and the Grenadines"
 msgstr "Svatý Vincenc a Grenadiny"
 
 #: app/GedcomCode/GedcomCodeTemp.php:299
-msgid "Salt Lake City, Utah"
+msgid "Salt Lake City, Utah, United States"
 msgstr "Salt Lake City, Utah, USA"
 
 #: app/Stats.php:6976
@@ -11691,11 +11687,11 @@ msgid "Samoa"
 msgstr "Samoa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:285
-msgid "San Antonio, Texas"
+msgid "San Antonio, Texas, United States"
 msgstr "San Antonio, Texas, USA"
 
 #: app/GedcomCode/GedcomCodeTemp.php:287
-msgid "San Diego, California"
+msgid "San Diego, California, United States"
 msgstr "San Diego, Kalifornie, USA"
 
 #: app/GedcomCode/GedcomCodeTemp.php:297
@@ -11838,7 +11834,7 @@ msgid "Searching for all possible relationships can take a lot of time in comple
 msgstr "Vyhledání všech možných vztahů může u složitých stromů trvat značně dlouho."
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Seattle, Washington"
+msgid "Seattle, Washington, United States"
 msgstr "Seattle, Washington, USA"
 
 #. I18N: Record is an indvidual, source, etc.
@@ -11963,7 +11959,7 @@ msgstr "Poslat zprávy všem uživatelům"
 
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Posílat emailem upozornění?"
+msgstr "Posílat emailem upozornění"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329
@@ -12348,7 +12344,7 @@ msgstr "Zobrazit všechny tagy"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Zobrazit ukazatel věku?"
+msgstr "Zobrazit ukazatel věku"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1366
@@ -12357,11 +12353,15 @@ msgstr "Podrobnosti diagramu normálně zobrazit"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Zobrazit děti předků?"
+msgstr "Zobrazit děti předků"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
 msgid "Show common surnames"
-msgstr "Zobrazit nejčastější příjmení?"
+msgstr "Zobrazit nejčastější příjmení"
+
+#: app/Module/TopPageViewsModule.php:165
+msgid "Show counts before or after name"
+msgstr "Počty zobrazit před nebo za jménem"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12398,7 +12398,7 @@ msgstr "Zobrazit časové rozdíly"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
 msgid "Show date of last update"
-msgstr "Zobrazit datum poslední aktualizace?"
+msgstr "Zobrazit datum poslední aktualizace"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:391
@@ -12486,21 +12486,21 @@ msgstr "Zobrazit jména neveřejných osob"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Zobrazit poznámky?"
+msgstr "Zobrazit poznámky"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Zobrazit zaměstnání?"
+msgstr "Zobrazit zaměstnání"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Zobrazit jen narození, úmrtí a svatby?"
+msgstr "Zobrazit jen narození, úmrtí a sňatky"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Zobrazit události pouze pro žijící osoby?"
+msgstr "Zobrazit pouze události žijících osob"
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
@@ -12512,7 +12512,7 @@ msgstr "Zobrazit jen osoby, jejichž pohlaví není známo."
 
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Zobrazit pouze osoby, události nebo vše?"
+msgstr "Zobrazit pouze osoby, události, nebo vše"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -12535,7 +12535,7 @@ msgstr "Zobrazit dosud neschválené změny"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Zobrazovat fotky?"
+msgstr "Zobrazovat fotky"
 
 #: placelist.php:83
 msgid "Show places in hierarchy"
@@ -12564,11 +12564,11 @@ msgstr "Zobrazit badatelské úkoly, které mají datum v budoucnosti."
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Zobrazit sídla?"
+msgstr "Zobrazit bydliště"
 
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls"
-msgstr "Zobrazit ovládací prvky promítání obrázků?"
+msgstr "Zobrazit ovládací prvky promítání obrázků"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12576,7 +12576,7 @@ msgstr "Zobrazit ovládací prvky promítání obrázků?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Zobrazit prameny?"
+msgstr "Zobrazit prameny"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12623,7 +12623,7 @@ msgstr "Zobrazit uživatele, který provedl změnu"
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Pro které jazyky tento blok zobrazit?"
+msgstr "Pro které jazyky tento blok zobrazit"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1038 app/Functions/FunctionsEdit.php:206
@@ -12815,7 +12815,7 @@ msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
 msgstr "Malé systémy (500 osob): 16–32 MB, 10–20 sekund"
 
 #: app/GedcomCode/GedcomCodeTemp.php:303
-msgid "Snowflake, Arizona"
+msgid "Snowflake, Arizona, United States"
 msgstr "Snowflake, Arizona, USA"
 
 #. I18N: gedcom tag SSN
@@ -12976,7 +12976,7 @@ msgid "Spanish"
 msgstr "španělská"
 
 #: app/GedcomCode/GedcomCodeTemp.php:309
-msgid "Spokane, Washington"
+msgid "Spokane, Washington, United States"
 msgstr "Spokane, Washington, USA"
 
 #: modules_v3/bdm_report/report.xml:169
@@ -13010,15 +13010,15 @@ msgid "Sri Lanka"
 msgstr "Srí Lanka"
 
 #: app/GedcomCode/GedcomCodeTemp.php:295
-msgid "St. George, Utah"
+msgid "St. George, Utah, United States"
 msgstr "St. George, Utah, USA"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
-msgid "St. Louis, Missouri"
+msgid "St. Louis, Missouri, United States"
 msgstr "St. Louis, Missouri, USA"
 
 #: app/GedcomCode/GedcomCodeTemp.php:307
-msgid "St. Paul, Minnesota"
+msgid "St. Paul, Minnesota, United States"
 msgstr "St. Paul, Minnesota, USA"
 
 #: app/Module/GoogleMapsModule.php:507
@@ -13037,7 +13037,7 @@ msgstr "Začít u rodičů"
 
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load"
-msgstr "Spustit promítání obrázků při nahrání stránky?"
+msgstr "Spustit promítání obrázků při nahrání stránky"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13098,12 +13098,12 @@ msgstr "Zastavit"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
 msgid "Store watermarked full size images on server"
-msgstr "Ukládat na server obrázky v plné velikosti chráněné vodoznakem?"
+msgstr "Ukládat na server obrázky v plné velikosti chráněné vodoznakem"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
 msgid "Store watermarked thumbnails on server"
-msgstr "Ukládat na server vodoznakem chráněné náhledy?"
+msgstr "Ukládat na server vodoznakem chráněné náhledy"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -15328,25 +15328,25 @@ msgstr "Vatikán"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:88
 msgctxt "GENITIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:154
 msgctxt "INSTRUMENTAL"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:121
 msgctxt "LOCATIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:55
 msgctxt "NOMINATIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #: app/Stats.php:6968
@@ -15356,25 +15356,25 @@ msgstr "Venezuela"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:93
 msgctxt "GENITIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
 msgctxt "INSTRUMENTAL"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:126
 msgctxt "LOCATIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:60
 msgctxt "NOMINATIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -15390,7 +15390,7 @@ msgid "Verified"
 msgstr "Ověřeno"
 
 #: app/GedcomCode/GedcomCodeTemp.php:331
-msgid "Vernal, Utah"
+msgid "Vernal, Utah, United States"
 msgstr "Vernal, Utah, USA"
 
 #. I18N: gedcom tag VERS
@@ -15518,7 +15518,7 @@ msgid "Ward"
 msgstr "Svěřenec"
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
-msgid "Washington, DC"
+msgid "Washington, District of Columbia, United States"
 msgstr "Washington, DC, USA"
 
 #: admin_trees_config.php:1111
@@ -15654,12 +15654,12 @@ msgstr "Kde je vaše instalace PhpGedView ?"
 
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Které rodokmeny by se měly zobrazit v mapách stránek?"
+msgstr "Které rodokmeny se mají zahrnout do map stránek"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
 msgid "Who can upload new media files"
-msgstr "Kdo může nahrávat nové mediální soubory?"
+msgstr "Kdo může nahrávat nové mediální soubory"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
@@ -15724,7 +15724,7 @@ msgid "Will"
 msgstr "Závěť"
 
 #: app/GedcomCode/GedcomCodeTemp.php:337
-msgid "Winter Quarters, Nebraska"
+msgid "Winter Quarters, Nebraska, United States"
 msgstr "Winter Quarters, Nebraska, USA"
 
 #: app/Stats.php:421 app/Stats.php:519
@@ -18611,25 +18611,25 @@ msgstr "převrátit výběr"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:100
 msgctxt "GENITIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "jours complémentaires (svátky)"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:166
 msgctxt "INSTRUMENTAL"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "jours complémentaires (svátky)"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:133
 msgctxt "LOCATIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "jours complémentaires (svátky)"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:67
 msgctxt "NOMINATIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "jours complémentaires (svátky)"
 
 #. I18N: button label, last page

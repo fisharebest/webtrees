@@ -617,8 +617,8 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 		<div class="panel-heading">
 			<h2 class="panel-title">
 				<i class="fa fa-fw fa-plus"></i>
-				<a data-toggle="collapse" data-parent="#accordion" href="#create-a-new-family-tree">
-					<?php echo I18N::translate('Create a new family tree'); ?>
+				<a data-toggle="collapse" data-parent="#accordion" href="#create-a-family-tree">
+					<?php echo I18N::translate('Create a family tree'); ?>
 				</a>
 			</h2>
 		</div>

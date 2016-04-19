@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-02-16 15:03+0100\n"
+"PO-Revision-Date: 2016-04-18 08:17+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.5\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -423,8 +423,8 @@ msgid "%s year ago"
 msgid_plural "%s years ago"
 msgstr[0] "%s yıl önce"
 
-#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
-#: calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:1942
+#: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s. yıl dönümü"
@@ -709,37 +709,37 @@ msgstr "Bir SSS maddesi sadece bir soy ağacı için veya tüm soy ağaçları i
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "İki birey arasındaki akrabalığı gösteren bir çizelge."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "Bireylerin atalarını ve torunlarını aile kitabı olarak gösterildiği çizelge."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "Bireylerin atalarının kısa ağaç olarak gösteren çizelge."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Bireylerin atalarının ağaç olarak gösteren çizelge."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Bireylerin atalarının çizelge."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "Bireylerin torunlarının çizelge."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Bireylerin yaşam çizelgesi."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -756,7 +756,7 @@ msgstr "Bir veritabanı sunucusu birden fazla veritabanı depolayabilir. (Sunucu
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "Bireylerin atalarının daire çizelgesi."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
@@ -1018,7 +1018,7 @@ msgstr "Bir Bireye bağlı olan kaynakları gösteren bir sekme."
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Bireysel olayları görüntüleyen zaman çizelgesi."
 
 #: admin_users.php:398
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
@@ -1048,7 +1048,6 @@ msgstr "öğleden önce"
 #: modules_v3/occupation_report/report.xml:7
 #: modules_v3/pedigree_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:8
-#, fuzzy
 msgctxt "paper size"
 msgid "A3"
 msgstr "A3"
@@ -1067,7 +1066,6 @@ msgstr "A3"
 #: modules_v3/occupation_report/report.xml:7
 #: modules_v3/pedigree_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:8
-#, fuzzy
 msgctxt "paper size"
 msgid "A4"
 msgstr "A4"
@@ -1236,31 +1234,6 @@ msgstr "Ekle"
 msgid "Add %s to the clippings cart"
 msgstr "%s sepete ekle"
 
-#: app/Module/RelativesTabModule.php:396 edit_interface.php:595
-msgid "Add a child to create a one-parent family"
-msgstr "Tek ebeveyn 'li bir aile oluşturmak için bir çocuk ekle"
-
-#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
-msgid "Add a child to this family"
-msgstr "Bu aileye bir çocuk ekle"
-
-#: edit_interface.php:81
-msgid "Add a fact"
-msgstr "Bir olgu ekle"
-
-#: app/Module/RelativesTabModule.php:154
-msgid "Add a husband to this family"
-msgstr "Bu aile için bir koca ekle"
-
-#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
-#: edit_interface.php:1156
-msgid "Add a husband using an existing individual"
-msgstr "Mevcut bir kişiyi kullanarak bir koca ekle"
-
-#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add an associate"
-msgstr "Yeni bir iştirak ekle"
-
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
 msgstr "Yeni bir erkek veya kız kardeş ekle"
@@ -1268,6 +1241,19 @@ msgstr "Yeni bir erkek veya kız kardeş ekle"
 #: edit_interface.php:516
 msgid "Add a child"
 msgstr "Yeni bir çocuk ekle"
+
+#: app/Module/RelativesTabModule.php:396 edit_interface.php:595
+msgid "Add a child to create a one-parent family"
+msgstr "Tek ebeveyn 'li bir aile oluşturmak için bir çocuk ekle"
+
+#: app/Controller/FamilyController.php:82
+#: app/Functions/FunctionsCharts.php:310
+msgid "Add a child to this family"
+msgstr "Bu aileye bir çocuk ekle"
+
+#: edit_interface.php:81
+msgid "Add a fact"
+msgstr "Bir olgu ekle"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
@@ -1286,13 +1272,23 @@ msgstr "Yeni bir coğrafi konumu ekle"
 msgid "Add a husband"
 msgstr "Yeni bir koca ekle"
 
+#: app/Module/RelativesTabModule.php:154
+msgid "Add a husband to this family"
+msgstr "Bu aile için bir koca ekle"
+
+#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
+#: edit_interface.php:1156
+msgid "Add a husband using an existing individual"
+msgstr "Mevcut bir kişiyi kullanarak bir koca ekle"
+
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
 msgstr "Yeni bir Günlük girdisi ekle"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1131
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:184
+#: app/Controller/FamilyController.php:162
+#: app/Functions/FunctionsEdit.php:1131 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:184
 msgid "Add a media object"
 msgstr "Yeni bir medya öğesi ekle"
 
@@ -1304,8 +1300,12 @@ msgstr "Yeni bir anne ekle"
 msgid "Add a name"
 msgstr "Yeni Adı ekle"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1110
-#: app/Module/NotesTabModule.php:100
+#: app/Module/FamilyTreeNewsModule.php:148
+msgid "Add a news article"
+msgstr "Bir Haber makalesi ekle"
+
+#: app/Controller/FamilyController.php:149
+#: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
 msgstr "Yeni bir not ekle"
 
@@ -1313,8 +1313,18 @@ msgstr "Yeni bir not ekle"
 msgid "Add a restriction"
 msgstr "Yeni bir kısıtlama ekle"
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1120
-#: app/Module/NotesTabModule.php:110
+#. I18N: label for a yes/no option
+#: app/Module/FamilyTreeFavoritesModule.php:286
+#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
+#: app/Module/UpcomingAnniversariesModule.php:181
+#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
+msgid "Add a scrollbar when block contents grow"
+msgstr "Gerektiğinde kaydırma çubuğu ekle"
+
+#: app/Controller/FamilyController.php:155
+#: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
 msgid "Add a shared note"
 msgstr "Yeni bir paylaşılan not ekle"
 
@@ -1322,14 +1332,19 @@ msgstr "Yeni bir paylaşılan not ekle"
 msgid "Add a son or daughter"
 msgstr "Yeni bir oğul veya kız ekle"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1060
-#: app/Module/SourcesTabModule.php:93
+#: app/Controller/FamilyController.php:172
+#: app/Functions/FunctionsEdit.php:1060 app/Module/SourcesTabModule.php:93
 msgid "Add a source citation"
 msgstr "Yeni bir Alıntı Kaynak ekle"
 
 #: edit_interface.php:837
 msgid "Add a spouse"
 msgstr "Yeni bir eş ekle"
+
+#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
+#: app/Module/StoriesModule.php:367
+msgid "Add a story"
+msgstr "Hikaye ekle"
 
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
@@ -1340,24 +1355,6 @@ msgstr "Yeni bir kullanıcı ekle"
 #: edit_interface.php:897
 msgid "Add a wife"
 msgstr "Yeni bir hanım ekle"
-
-#: app/Module/FamilyTreeNewsModule.php:148
-msgid "Add a news article"
-msgstr "Bir Haber makalesi ekle"
-
-#. I18N: label for a yes/no option
-#: app/Module/FamilyTreeFavoritesModule.php:286
-#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
-#: app/Module/UpcomingAnniversariesModule.php:181
-#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
-msgid "Add a scrollbar when block contents grow"
-msgstr "Gerektiğinde kaydırma çubuğu ekle"
-
-#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
-#: app/Module/StoriesModule.php:367
-msgid "Add a story"
-msgstr "Hikaye ekle"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1372,6 +1369,10 @@ msgstr "Mevcut bir kişiyi kullanarak bir hanım ekle"
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
 msgstr "SSS öğe ekle"
+
+#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
+msgid "Add an associate"
+msgstr "Yeni bir iştirak ekle"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -1446,7 +1447,7 @@ msgstr "Bağlantısız kayıt ekle"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
 msgid "Add watermarks to thumbnails"
-msgstr "Resim önizlemelerine filigran ekle?"
+msgstr "Resim ön izlemelerine filigran ekle"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -1751,8 +1752,8 @@ msgid "Album"
 msgstr "Albüm"
 
 #: app/GedcomCode/GedcomCodeTemp.php:85
-msgid "Albuquerque, New Mexico"
-msgstr "Albuquerque, New Mexico"
+msgid "Albuquerque, New Mexico, United States"
+msgstr "Albuquerque, New Mexico, United States"
 
 #: app/Stats.php:6786
 msgid "Algeria"
@@ -1773,10 +1774,10 @@ msgstr "Yaşayan"
 #: app/Module/GoogleMapsModule.php:1578 app/Module/GoogleMapsModule.php:1591
 #: app/Module/GoogleMapsModule.php:4691 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5623 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
-#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
-#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
-#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
+#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
+#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
+#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -1923,7 +1924,7 @@ msgstr "Sıkıştırılmış dosyayı açarken hata oluştu."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr ""
+msgstr "Bireylerin atalarını ve soyunu gösteren kum saati çizelgesi."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
@@ -1965,8 +1966,8 @@ msgid "Ancestral file number"
 msgstr "Atalara İlişkin Dosya Numarası"
 
 #: app/GedcomCode/GedcomCodeTemp.php:87
-msgid "Anchorage, Alaska"
-msgstr "Anchorage, Alaska"
+msgid "Anchorage, Alaska, United States"
+msgstr "Anchorage, Alaska, United States"
 
 #: app/Stats.php:6724
 msgid "Andorra"
@@ -1983,7 +1984,8 @@ msgstr "Anguilla"
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1804 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1804
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr "Yıldönümü"
 
@@ -2130,7 +2132,8 @@ msgstr "Arjantin"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -2141,7 +2144,6 @@ msgstr "Arjantin"
 #: modules_v3/occupation_report/report.xml:9
 #: modules_v3/pedigree_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:10
-#, fuzzy
 msgctxt "font name"
 msgid "Arial"
 msgstr "Arial"
@@ -2190,8 +2192,8 @@ msgid "At sea"
 msgstr "Denizde"
 
 #: app/GedcomCode/GedcomCodeTemp.php:93
-msgid "Atlanta, Georgia"
-msgstr "Atlanta, Georgia"
+msgid "Atlanta, Georgia, United States"
+msgstr "Atlanta, Georgia, United States"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
@@ -2526,8 +2528,8 @@ msgid "Batch update"
 msgstr "Toplu güncelleştirme"
 
 #: app/GedcomCode/GedcomCodeTemp.php:113
-msgid "Baton Rouge, Louisiana"
-msgstr "Baton Rouge, Louisiana"
+msgid "Baton Rouge, Louisiana, United States"
+msgstr "Baton Rouge, Louisiana, United States"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2752
@@ -2582,8 +2584,8 @@ msgid "Bibliography"
 msgstr "Kaynakça"
 
 #: app/GedcomCode/GedcomCodeTemp.php:97
-msgid "Billings, Montana"
-msgstr "Billings, Montana"
+msgid "Billings, Montana, United States"
+msgstr "Billings, Montana, United States"
 
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
@@ -2595,8 +2597,8 @@ msgid "Bing Maps™"
 msgstr "Bing Maps™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
-msgid "Birmingham, Alabama"
-msgstr "Birmingham, Alabama"
+msgid "Birmingham, Alabama, United States"
+msgstr "Birmingham, Alabama, United States"
 
 #. I18N: gedcom tag BIRT
 #: app/GedcomTag.php:206 modules_v3/ahnentafel_report/report.xml:441
@@ -2835,7 +2837,7 @@ msgid "Births by century"
 msgstr "Yüzyıla göre doğumlar"
 
 #: app/GedcomCode/GedcomCodeTemp.php:101
-msgid "Bismarck, North Dakota"
+msgid "Bismarck, North Dakota, United States"
 msgstr "Bismarck, Kuzey Dakota"
 
 #. I18N: gedcom tag BLES
@@ -2872,8 +2874,8 @@ msgid "Bogota, Colombia"
 msgstr "Bogota, Kolombiya"
 
 #: app/GedcomCode/GedcomCodeTemp.php:105
-msgid "Boise, Idaho"
-msgstr "Boise, Idaho"
+msgid "Boise, Idaho, United States"
+msgstr "Boise, Idaho, United States"
 
 #: app/Stats.php:6749
 msgid "Bolivia"
@@ -2897,8 +2899,8 @@ msgid "Bosnia and Herzegovina"
 msgstr "Bosna-Hersek"
 
 #: app/GedcomCode/GedcomCodeTemp.php:107
-msgid "Boston, Massachusetts"
-msgstr "Boston, Massachusetts"
+msgid "Boston, Massachusetts, United States"
+msgstr "Boston, Massachusetts, United States"
 
 #: app/Functions/FunctionsPrintLists.php:628
 msgid "Both alive"
@@ -2913,8 +2915,8 @@ msgid "Botswana"
 msgstr "Botsvana"
 
 #: app/GedcomCode/GedcomCodeTemp.php:109
-msgid "Bountiful, Utah"
-msgstr "Bountiful, Utah"
+msgid "Bountiful, Utah, United States"
+msgstr "Bountiful, Utah, United States"
 
 #: app/Stats.php:6754
 msgid "Bouvet Island"
@@ -3407,7 +3409,7 @@ msgstr "\"Benim sayfam\" bloklarını değiştir"
 #: app/Module/RecentChangesModule.php:257
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "%1$s tarihinde değiştirildi"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Module/RecentChangesModule.php:254
@@ -3418,7 +3420,8 @@ msgstr "%1$s tarihinde %2$s tarafından değiştirdi"
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:436
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr "Değişenler"
 
@@ -3448,7 +3451,7 @@ msgstr "Çizelge"
 
 #: app/Module/RelationshipsChartModule.php:142
 msgid "Chart preferences"
-msgstr ""
+msgstr "Çizelge tercihleri"
 
 #: app/Module/ChartsBlockModule.php:190 statistics.php:584
 msgid "Chart type"
@@ -3456,9 +3459,9 @@ msgstr "Çizelge Tipi"
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1287
-#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
-#: app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163
+#: admin_trees_config.php:1287 app/Module/ChartsBlockModule.php:34
+#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
 msgstr "Çizelgeler"
 
@@ -3502,8 +3505,8 @@ msgid "Checking server configuration"
 msgstr "Sunucu yapılandırması kontrol edliyor"
 
 #: app/GedcomCode/GedcomCodeTemp.php:119
-msgid "Chicago, Illinois"
-msgstr "Chicago, Illinois"
+msgid "Chicago, Illinois, United States"
+msgstr "Chicago, Illinois, United States"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:36 app/GedcomTag.php:274
@@ -3802,16 +3805,16 @@ msgid "Colonia Juarez, Mexico"
 msgstr "Colonia Juarez, Meksika"
 
 #: app/GedcomCode/GedcomCodeTemp.php:133
-msgid "Columbia River, Washington"
-msgstr "Columbia River, Washington"
+msgid "Columbia River, Washington, United States"
+msgstr "Columbia River, Washington, United States"
 
 #: app/GedcomCode/GedcomCodeTemp.php:127
-msgid "Columbia, South Carolina"
+msgid "Columbia, South Carolina, United States"
 msgstr "Columbia, Güney Carolina"
 
 #: app/GedcomCode/GedcomCodeTemp.php:129
-msgid "Columbus, Ohio"
-msgstr "Columbus, Ohio"
+msgid "Columbus, Ohio, United States"
+msgstr "Columbus, Ohio, United States"
 
 #: medialist.php:164
 msgid "Columns per page"
@@ -3949,9 +3952,10 @@ msgstr "Devamlı"
 #: app/Module/FrequentlyAskedQuestionsModule.php:441
 #: app/Module/GoogleMapsModule.php:294 app/Module/GoogleMapsModule.php:1541
 #: app/Module/GoogleMapsModule.php:4096
-#: app/Module/RelationshipsChartModule.php:147 app/Module/SiteMapModule.php:296
-#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
-#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
+#: app/Module/RelationshipsChartModule.php:147
+#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
+#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
+#: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr "Kontrol paneli"
 
@@ -4054,36 +4058,36 @@ msgid "Create"
 msgstr "Oluştur"
 
 #: admin_trees_manage.php:621
-msgid "Create a new family tree"
+msgid "Create a family tree"
 msgstr "Yeni bir aile ağacı oluştur"
 
 #: edit_interface.php:750
-msgid "Create a new individual"
+msgid "Create an individual"
 msgstr "Yeni birey oluştur"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
-msgid "Create a new media object"
+msgid "Create a media object"
 msgstr "Yeni medya öğesi oluştur"
 
 #: app/Functions/FunctionsEdit.php:427 edit_interface.php:1512
 #: edit_interface.php:1575
-msgid "Create a new repository"
+msgid "Create a repository"
 msgstr "Havuz Oluştur"
 
 #: app/Functions/FunctionsEdit.php:438 edit_interface.php:1348
 #: edit_interface.php:1384
-msgid "Create a new shared note"
+msgid "Create a shared note"
 msgstr "Yeni bir Paylaşılan Not oluştur"
 
 #: app/Functions/FunctionsEdit.php:634
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
-msgid "Create a new shared note using assistant"
+msgid "Create a shared note using the census assistant"
 msgstr "Yardımcısı kullanarak yeni bir Paylaşılan Not oluşturun"
 
 #: app/Functions/FunctionsEdit.php:460 edit_interface.php:1196
 #: edit_interface.php:1279
-msgid "Create a new source"
+msgid "Create a source"
 msgstr "Yeni bir kaynak ekle"
 
 #: admin_site_access.php:218
@@ -4296,8 +4300,8 @@ msgid "Daitch-Mokotoff"
 msgstr "Daitch-Mokotoff"
 
 #: app/GedcomCode/GedcomCodeTemp.php:135
-msgid "Dallas, Texas"
-msgstr "Dallas, Texas"
+msgid "Dallas, Texas, United States"
+msgstr "Dallas, Texas, United States"
 
 #. I18N: A summary of the system status
 #: admin.php:460
@@ -4339,7 +4343,8 @@ msgstr "Veritabanı kullanıcı adı"
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -4904,7 +4909,8 @@ msgstr "Derece"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -4915,14 +4921,14 @@ msgstr "Derece"
 #: modules_v3/occupation_report/report.xml:9
 #: modules_v3/pedigree_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:10
-#, fuzzy
 msgctxt "font name"
 msgid "DejaVu"
 msgstr "DejaVu"
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
-#: admin_site_change.php:373 admin_site_logs.php:314 admin_trees_config.php:576
-#: admin_trees_manage.php:415 admin_trees_manage.php:426 admin_users.php:211
+#: admin_site_change.php:373 admin_site_logs.php:314
+#: admin_trees_config.php:576 admin_trees_manage.php:415
+#: admin_trees_manage.php:426 admin_users.php:211
 #: app/Controller/FamilyController.php:94
 #: app/Controller/GedcomRecordController.php:116
 #: app/Controller/IndividualController.php:303
@@ -4984,8 +4990,8 @@ msgid "Denmark"
 msgstr "Danimarka"
 
 #: app/GedcomCode/GedcomCodeTemp.php:137
-msgid "Denver, Colorado"
-msgstr "Denver, Colorado"
+msgid "Denver, Colorado, United States"
+msgstr "Denver, Colorado, United States"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
@@ -5001,7 +5007,8 @@ msgstr "Soyundan nesiller"
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
 #: app/Module/ChartsBlockModule.php:195
-#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
+#: app/Module/DescendancyChartModule.php:33
+#: app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5041,7 +5048,7 @@ msgstr "META etiket açıklama"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
-msgstr ""
+msgstr "Açıklama bulunmuyor"
 
 #: login.php:446
 msgid "Desired password"
@@ -5067,8 +5074,8 @@ msgid "Details of the new user will be sent to the genealogy contact for the cor
 msgstr "Yeni kullanıcı detayları, ilgili soyağacının yetkili kişisine gönderilecektir."
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
-msgid "Detroit, Michigan"
-msgstr "Detroit, Michigan"
+msgid "Detroit, Michigan, United States"
+msgstr "Detroit, Michigan, United States"
 
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
@@ -5735,7 +5742,8 @@ msgstr "Bu teslimden hariç"
 msgid "Explain why you are requesting an account."
 msgstr "Lütfen kendinizi tanıtın, kimsiniz."
 
-#: admin_site_change.php:369 admin_site_logs.php:310 admin_trees_manage.php:591
+#: admin_site_change.php:369 admin_site_logs.php:310
+#: admin_trees_manage.php:591
 msgid "Export"
 msgstr "Dışarı aktar"
 
@@ -5912,7 +5920,8 @@ msgstr "Falkland Adaları"
 #: app/Module/GoogleMapsModule.php:2818 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1489
 #: calendar.php:422 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:134 mediaviewer.php:123
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:225
 #: repo.php:143 search.php:93 source.php:147 statistics.php:71
 #: statisticsplot.php:974 statisticsplot.php:1078 statisticsplot.php:1328
@@ -6009,7 +6018,8 @@ msgstr "Aile ağacı"
 msgid "Family tree access and settings"
 msgstr "Aile ağacı erişim ve ayarları"
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90
+#: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr "Aile Ağacı Kupürleri Çizelgesi"
 
@@ -6148,7 +6158,8 @@ msgid "Father’s family with an unknown individual"
 msgstr "Bilinmeyen kişi ile babanın ailesi"
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1345
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1345
 msgid "Favorites"
 msgstr "Favoriler"
 
@@ -6290,7 +6301,8 @@ msgstr "Özel bir karakter bul"
 msgid "Find all possible relationships"
 msgstr "Tüm olası ilişkileri bul"
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 msgid "Find an individual"
@@ -6302,7 +6314,7 @@ msgstr "Tekrarlayanları bul"
 
 #: relationship.php:115
 msgid "Find other relationships"
-msgstr ""
+msgstr "Diğer akrabalıkları bul"
 
 #: relationship.php:102 relationship.php:107
 msgid "Find the closest relationships"
@@ -6343,25 +6355,25 @@ msgstr "Flandra"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:95
 msgctxt "GENITIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:161
 msgctxt "INSTRUMENTAL"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:128
 msgctxt "LOCATIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:62
 msgctxt "NOMINATIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #: medialist.php:91
@@ -6375,7 +6387,8 @@ msgstr "Sunucudaki klasör adı"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6491,8 +6504,8 @@ msgid "Frequently asked questions"
 msgstr "Sıkça Sorulan Sorular"
 
 #: app/GedcomCode/GedcomCodeTemp.php:151
-msgid "Fresno, California"
-msgstr "Fresno, California"
+msgid "Fresno, California, United States"
+msgstr "Fresno, California, United States"
 
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:669
@@ -6903,8 +6916,8 @@ msgid "Hamilton, New Zealand"
 msgstr "Hamilton, Yeni Zelanda"
 
 #: app/GedcomCode/GedcomCodeTemp.php:165
-msgid "Hartford, Connecticut"
-msgstr "Hartford, Connecticut"
+msgid "Hartford, Connecticut, United States"
+msgstr "Hartford, Connecticut, United States"
 
 #: modules_v3/descendancy_report/report.xml:429
 msgid "He "
@@ -6993,7 +7006,8 @@ msgstr "Helsinki, Finlandiya"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7004,7 +7018,6 @@ msgstr "Helsinki, Finlandiya"
 #: modules_v3/occupation_report/report.xml:9
 #: modules_v3/pedigree_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:10
-#, fuzzy
 msgctxt "font name"
 msgid "Helvetica"
 msgstr "Helvetica"
@@ -7130,13 +7143,13 @@ msgid "Household"
 msgstr "Hane halkı"
 
 #: app/GedcomCode/GedcomCodeTemp.php:175
-msgid "Houston, Texas"
-msgstr "Houston, Texas"
+msgid "Houston, Texas, United States"
+msgstr "Houston, Texas, United States"
 
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:158
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "Akrabalıklar aranırken ne kadar yineleme kullanılsın"
 
 #: app/Stats.php:6826
 msgid "Hungary"
@@ -7189,8 +7202,8 @@ msgid "Icon"
 msgstr "İkon"
 
 #: app/GedcomCode/GedcomCodeTemp.php:177
-msgid "Idaho Falls, Idaho"
-msgstr "Idaho Falls, Idaho"
+msgid "Idaho Falls, Idaho, United States"
+msgstr "Idaho Falls, Idaho, United States"
 
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:516
@@ -7408,7 +7421,7 @@ msgstr "Alt-klasörler dahil"
 
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Kişinin en yakın ailesini içer?"
+msgstr "Kişinin en yakın ailesini içer"
 
 #: app/Stats.php:6828
 msgid "India"
@@ -7534,7 +7547,8 @@ msgid "Installation folder"
 msgstr "Kurulum dizini"
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:197 app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:197
+#: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
 msgstr "Etkileşimli Ağaç"
 
@@ -7692,8 +7706,8 @@ msgid "Jordan"
 msgstr "Ürdün"
 
 #: app/GedcomCode/GedcomCodeTemp.php:181
-msgid "Jordan River, Utah"
-msgstr "Jordan River, Utah"
+msgid "Jordan River, Utah, United States"
+msgstr "Jordan River, Utah, United States"
 
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:47
@@ -7897,8 +7911,8 @@ msgid "Kislev"
 msgstr "Kislev"
 
 #: app/GedcomCode/GedcomCodeTemp.php:185
-msgid "Kona, Hawaii"
-msgstr "Kona, Hawaii"
+msgid "Kona, Hawaii, United States"
+msgstr "Kona, Hawaii, United States"
 
 #: app/Stats.php:6846
 msgid "Korea"
@@ -7947,8 +7961,8 @@ msgid "LDS temple"
 msgstr "LDS Tapınak"
 
 #: app/GedcomCode/GedcomCodeTemp.php:167
-msgid "Laie, Hawaii"
-msgstr "Laie, Hawaii"
+msgid "Laie, Hawaii, United States"
+msgstr "Laie, Hawaii, United States"
 
 #. I18N: page orientation
 #: admin_trees_config.php:54 modules_v3/change_report/report.xml:10
@@ -7987,8 +8001,8 @@ msgid "Largest number of grandchildren"
 msgstr "En çok torunlu aileler"
 
 #: app/GedcomCode/GedcomCodeTemp.php:199
-msgid "Las Vegas, Nevada"
-msgstr "Las Vegas, Nevada"
+msgid "Las Vegas, Nevada, United States"
+msgstr "Las Vegas, Nevada, United States"
 
 #. I18N: gedcom tag CHAN
 #: app/GedcomTag.php:258 modules_v3/change_report/report.xml:66
@@ -8078,7 +8092,6 @@ msgstr "Lübnan"
 #: modules_v3/occupation_report/report.xml:7
 #: modules_v3/pedigree_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:8
-#, fuzzy
 msgctxt "paper size"
 msgid "Legal"
 msgstr "Legal"
@@ -8258,8 +8271,8 @@ msgid "Lodger"
 msgstr "Pansiyoner"
 
 #: app/GedcomCode/GedcomCodeTemp.php:191
-msgid "Logan, Utah"
-msgstr "Logan, Utah"
+msgid "Logan, Utah, United States"
+msgstr "Logan, Utah, United States"
 
 #: app/Module/LoginBlockModule.php:63
 msgid "Logged in as "
@@ -8311,23 +8324,23 @@ msgid "Longitude"
 msgstr "Boylam"
 
 #: app/GedcomCode/GedcomCodeTemp.php:187
-msgid "Los Angeles, California"
-msgstr "Los Angeles, California"
+msgid "Los Angeles, California, United States"
+msgstr "Los Angeles, California, United States"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219 login.php:252
 msgid "Lost password request"
 msgstr "Yeni şifre gönder"
 
 #: app/GedcomCode/GedcomCodeTemp.php:195
-msgid "Louisville, Kentucky"
-msgstr "Louisville, Kentucky"
+msgid "Louisville, Kentucky, United States"
+msgstr "Louisville, Kentucky, United States"
 
 #: app/Stats.php:1741
 msgid "Lowest population"
 msgstr "En düşük nüfus"
 
 #: app/GedcomCode/GedcomCodeTemp.php:197
-msgid "Lubbock, Texas"
+msgid "Lubbock, Texas, United States"
 msgstr "Lubbock, Teksas"
 
 #: app/Stats.php:6857
@@ -8443,8 +8456,8 @@ msgid "Manila, Philippines"
 msgstr "Manila, Filipinler"
 
 #: app/GedcomCode/GedcomCodeTemp.php:205
-msgid "Manti, Utah"
-msgstr "Manti, Utah"
+msgid "Manti, Utah, United States"
+msgstr "Manti, Utah, United States"
 
 #: app/GedcomTag.php:1928
 msgid "Manuscript"
@@ -8813,8 +8826,8 @@ msgid "Mayotte"
 msgstr "Mayotte"
 
 #: app/GedcomCode/GedcomCodeTemp.php:207
-msgid "Medford, Oregon"
-msgstr "Medford, Oregon"
+msgid "Medford, Oregon, United States"
+msgstr "Medford, Oregon, United States"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
@@ -8960,8 +8973,8 @@ msgid "Memory limit"
 msgstr "Hafiza sınırı"
 
 #: app/GedcomCode/GedcomCodeTemp.php:211
-msgid "Memphis, Tennessee"
-msgstr "Memphis, Tennessee"
+msgid "Memphis, Tennessee, United States"
+msgstr "Memphis, Tennessee, United States"
 
 #: admin_module_menus.php:87 admin_modules.php:185
 msgid "Menu"
@@ -8996,8 +9009,8 @@ msgid "Merida, Mexico"
 msgstr "Merida, Meksika"
 
 #: app/GedcomCode/GedcomCodeTemp.php:89
-msgid "Mesa, Arizona"
-msgstr "Mesa, Arizona"
+msgid "Mesa, Arizona, United States"
+msgstr "Mesa, Arizona, United States"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
 msgid "Message"
@@ -9123,9 +9136,9 @@ msgstr "Modül"
 #: app/Module/FrequentlyAskedQuestionsModule.php:442
 #: app/Module/GoogleMapsModule.php:295 app/Module/GoogleMapsModule.php:1542
 #: app/Module/GoogleMapsModule.php:4097
-#: app/Module/RelationshipsChartModule.php:148 app/Module/SiteMapModule.php:297
-#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
-#: app/Theme/AdministrationTheme.php:190
+#: app/Module/RelationshipsChartModule.php:148
+#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
+#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr "Modül yönetimi"
 
@@ -9196,8 +9209,8 @@ msgid "Month:"
 msgstr "Ay:"
 
 #: app/GedcomCode/GedcomCodeTemp.php:221
-msgid "Monticello, Utah"
-msgstr "Monticello, Utah"
+msgid "Monticello, Utah, United States"
+msgstr "Monticello, Utah, United States"
 
 #: app/GedcomCode/GedcomCodeTemp.php:223
 msgid "Montreal, Quebec, Canada"
@@ -9299,8 +9312,8 @@ msgid "Mother’s family with an unknown individual"
 msgstr "Bilinmeyen birey ile annenin ailesi"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
-msgid "Mount Timpanogos, Utah"
-msgstr "Mount Timpanogos, Utah"
+msgid "Mount Timpanogos, Utah, United States"
+msgstr "Mount Timpanogos, Utah, United States"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:493 index_edit.php:312
 #: index_edit.php:361
@@ -9474,8 +9487,8 @@ msgid "Narrative description"
 msgstr "Anlatı açıklaması"
 
 #: app/GedcomCode/GedcomCodeTemp.php:227
-msgid "Nashville, Tennessee"
-msgstr "Nashville, Tennessee"
+msgid "Nashville, Tennessee, United States"
+msgstr "Nashville, Tennessee, United States"
 
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:610
@@ -9492,11 +9505,11 @@ msgid "Nauru"
 msgstr "Nauru Adası"
 
 #: app/GedcomCode/GedcomCodeTemp.php:229
-msgid "Nauvoo, Illinois (new)"
+msgid "Nauvoo (new), Illinois, United States"
 msgstr "Nauvoo, Illinois (yeni)"
 
 #: app/GedcomCode/GedcomCodeTemp.php:231
-msgid "Nauvoo, Illinois (original)"
+msgid "Nauvoo (original), Illinois, United States"
 msgstr "Nauvoo, Illinois (orijinal)"
 
 #: app/Module/GoogleMapsModule.php:407 app/Module/GoogleMapsModule.php:3961
@@ -9545,8 +9558,8 @@ msgid "New Caledonia"
 msgstr "Yeni Kaledonya"
 
 #: app/GedcomCode/GedcomCodeTemp.php:237
-msgid "New York, New York"
-msgstr "New York, New York"
+msgid "New York, New York, United States"
+msgstr "New York, New York, United States"
 
 #: app/Stats.php:6895
 msgid "New Zealand"
@@ -9569,8 +9582,8 @@ msgid "New user at %s"
 msgstr "%s kullanıcı kendini onayladı"
 
 #: app/GedcomCode/GedcomCodeTemp.php:233
-msgid "Newport Beach, California"
-msgstr "Newport Beach, California"
+msgid "Newport Beach, California, United States"
+msgstr "Newport Beach, California, United States"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:54
@@ -9637,25 +9650,25 @@ msgstr "Niue Adaları"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:91
 msgctxt "GENITIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
 msgctxt "INSTRUMENTAL"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:124
 msgctxt "LOCATIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:58
 msgctxt "NOMINATIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #: admin_users.php:660 app/Functions/FunctionsPrintFacts.php:308
@@ -9899,8 +9912,9 @@ msgid "Not verified by the user"
 msgstr "Kendini doğrulamayan kullanıcılar"
 
 #. I18N: gedcom tag NOTE
-#: app/Controller/FamilyController.php:147 app/Functions/FunctionsPrint.php:173
-#: app/GedcomTag.php:634 modules_v3/cemetery_report/report.xml:64
+#: app/Controller/FamilyController.php:147
+#: app/Functions/FunctionsPrint.php:173 app/GedcomTag.php:634
+#: modules_v3/cemetery_report/report.xml:64
 #: modules_v3/family_group_report/report.xml:485
 #: modules_v3/family_group_report/report.xml:749
 #: modules_v3/family_group_report/report.xml:1101
@@ -9993,8 +10007,8 @@ msgstr "Nesillerin sayısı"
 msgid "Number of items"
 msgstr "Öğenin numarası"
 
-#: app/Module/TopGivenNamesModule.php:146 app/Module/TopPageViewsModule.php:159
-#: app/Module/TopSurnamesModule.php:168
+#: app/Module/TopGivenNamesModule.php:146
+#: app/Module/TopPageViewsModule.php:159 app/Module/TopSurnamesModule.php:168
 msgid "Number of items to show"
 msgstr "Gösterilecek öğe sayısı"
 
@@ -10022,8 +10036,8 @@ msgid "Nurse"
 msgstr "Hastabakıcı"
 
 #: app/GedcomCode/GedcomCodeTemp.php:241
-msgid "Oakland, California"
-msgstr "Oakland, California"
+msgid "Oakland, California, United States"
+msgstr "Oakland, California, United States"
 
 #: app/GedcomCode/GedcomCodeTemp.php:243
 msgid "Oaxaca, Mexico"
@@ -10077,12 +10091,12 @@ msgid "October"
 msgstr "Ekim"
 
 #: app/GedcomCode/GedcomCodeTemp.php:245
-msgid "Ogden, Utah"
-msgstr "Ogden, Utah"
+msgid "Ogden, Utah, United States"
+msgstr "Ogden, Utah, United States"
 
 #: app/GedcomCode/GedcomCodeTemp.php:247
-msgid "Oklahoma City, Oklahoma"
-msgstr "Oklahoma City, Oklahoma"
+msgid "Oklahoma City, Oklahoma, United States"
+msgstr "Oklahoma City, Oklahoma, United States"
 
 #: admin_site_change.php:336
 msgid "Old data"
@@ -10212,8 +10226,8 @@ msgid "Orientation"
 msgstr "Yönlendirme"
 
 #: app/GedcomCode/GedcomCodeTemp.php:249
-msgid "Orlando, Florida"
-msgstr "Orlando, Florida"
+msgid "Orlando, Florida, United States"
+msgstr "Orlando, Florida, United States"
 
 #: app/GedcomTag.php:1942 app/Stats.php:5499 app/Stats.php:5918
 msgid "Other"
@@ -10299,7 +10313,8 @@ msgstr "PHP zaman sınırı"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -10352,8 +10367,8 @@ msgid "Palette"
 msgstr "Stil Rengi"
 
 #: app/GedcomCode/GedcomCodeTemp.php:253
-msgid "Palmyra, New York"
-msgstr "Palmyra, New York"
+msgid "Palmyra, New York, United States"
+msgstr "Palmyra, New York, United States"
 
 #: app/Stats.php:6898
 msgid "Panama"
@@ -10564,10 +10579,6 @@ msgstr "Yerleri Kontrol Et"
 msgid "Place contains"
 msgstr "Aranacak Yer"
 
-#: app/Module/TopPageViewsModule.php:165
-msgid "Show counts before or after name"
-msgstr "Ad sayısı adın öncesi yada sonrası?"
-
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
 msgid "Place hierarchy"
@@ -10760,25 +10771,25 @@ msgstr "Lütfen bu mesajınıza cevap verebilmemiz için email adresinizi girin.
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:92
 msgctxt "GENITIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
 msgctxt "INSTRUMENTAL"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:125
 msgctxt "LOCATIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:59
 msgctxt "NOMINATIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #: app/Stats.php:6904
@@ -10796,8 +10807,8 @@ msgid "Port number"
 msgstr "Port numarası"
 
 #: app/GedcomCode/GedcomCodeTemp.php:263
-msgid "Portland, Oregon"
-msgstr "Portland, Oregon"
+msgid "Portland, Oregon, United States"
+msgstr "Portland, Oregon, United States"
 
 #: app/GedcomCode/GedcomCodeTemp.php:251
 msgid "Porto Alegre, Brazil"
@@ -10912,7 +10923,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Boşluk olduğunda temel hadiseleri yazdır?"
+msgstr "Boş olduğunda temel hadiseleri yazdır"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
 msgid "Privacy"
@@ -10941,8 +10952,8 @@ msgid "Property"
 msgstr "Mal-Mülk"
 
 #: app/GedcomCode/GedcomCodeTemp.php:267
-msgid "Provo, Utah"
-msgstr "Provo, Utah"
+msgid "Provo, Utah, United States"
+msgstr "Provo, Utah, United States"
 
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:704
@@ -11084,8 +11095,8 @@ msgid "Rajab"
 msgstr "Recep"
 
 #: app/GedcomCode/GedcomCodeTemp.php:269
-msgid "Raleigh, North Carolina"
-msgstr "Raleigh, North Carolina"
+msgid "Raleigh, North Carolina, United States"
+msgstr "Raleigh, North Carolina, United States"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:98
@@ -11116,8 +11127,9 @@ msgstr "Ramazan"
 msgid "Random images from the current family tree."
 msgstr "Geçerli aile ağacından rastgele resimleri gösterir."
 
-#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1803 edit_interface.php:1877
+#: app/Controller/FamilyController.php:88
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1803
+#: edit_interface.php:1877
 msgid "Re-order children"
 msgstr "Çocukları tekrar sırala"
 
@@ -11140,7 +11152,8 @@ msgid "Real name"
 msgstr "Gerçek adı"
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr "Son değişiklikler"
 
@@ -11155,7 +11168,8 @@ msgstr "Recife, Brezilya"
 #: admin_site_change.php:327 admin_site_change.php:388
 #: admin_trees_config.php:530 app/Functions/FunctionsPrintLists.php:1800
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:321 app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:321
+#: app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -11180,8 +11194,8 @@ msgid "Records are not the same type. Cannot merge records that are not the same
 msgstr "Kayıtlar aynı tip değiller. Aynı tip olmayan kayıtları birleştirilmez."
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
-msgid "Redlands, California"
-msgstr "Redlands, California"
+msgid "Redlands, California, United States"
+msgstr "Redlands, California, United States"
 
 #: app/Module/GoogleMapsModule.php:991 app/Module/GoogleMapsModule.php:2338
 #: app/Module/GoogleMapsModule.php:3645
@@ -11344,8 +11358,8 @@ msgid "Remove this location?"
 msgstr "Bu konumu kaldırmak istiyor musunuz?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:277
-msgid "Reno, Nevada"
-msgstr "Reno, Nevada"
+msgid "Reno, Nevada, United States"
+msgstr "Reno, Nevada, United States"
 
 #: admin_trees_manage.php:506
 msgid "Renumber"
@@ -11541,8 +11555,8 @@ msgid "SMTP mail server"
 msgstr "SMTP email sunucu"
 
 #: app/GedcomCode/GedcomCodeTemp.php:279
-msgid "Sacramento, California"
-msgstr "Sacramento, California"
+msgid "Sacramento, California, United States"
+msgstr "Sacramento, California, United States"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:91
@@ -11594,20 +11608,20 @@ msgid "Saint Vincent and the Grenadines"
 msgstr "Saint Vincent ve Grenadinler"
 
 #: app/GedcomCode/GedcomCodeTemp.php:299
-msgid "Salt Lake City, Utah"
-msgstr "Salt Lake City, Utah"
+msgid "Salt Lake City, Utah, United States"
+msgstr "Salt Lake City, Utah, United States"
 
 #: app/Stats.php:6976
 msgid "Samoa"
 msgstr "Samoa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:285
-msgid "San Antonio, Texas"
+msgid "San Antonio, Texas, United States"
 msgstr "San Antonio, Teksas"
 
 #: app/GedcomCode/GedcomCodeTemp.php:287
-msgid "San Diego, California"
-msgstr "San Diego, California"
+msgid "San Diego, California, United States"
+msgstr "San Diego, California, United States"
 
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "San Jose, Costa Rica"
@@ -11746,11 +11760,11 @@ msgstr "Ara metin/motif"
 
 #: app/Module/RelationshipsChartModule.php:163
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr ""
+msgstr "Tüm olası akrabalıkları aramak, karmaşık ağaçlarda çok zaman alabilir."
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Seattle, Washington"
-msgstr "Seattle, Washington"
+msgid "Seattle, Washington, United States"
+msgstr "Seattle, Washington, United States"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:370
@@ -11874,7 +11888,7 @@ msgstr "Kullanıcılara mesaj gönder"
 
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Hatırlatıcı emailler gönder?"
+msgstr "Hatırlatıcı e-postalar gönder"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329
@@ -12220,7 +12234,7 @@ msgstr "En kısa evlilik"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr "Bu blok boş olduğu zaman gizlensin mi?"
+msgstr "Bu blok boş olduğu zaman gizlensin mi"
 
 #: calendar.php:229
 msgid "Show"
@@ -12259,7 +12273,7 @@ msgstr "Tüm etiketleri göster"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Yaş İşaretleyici Göste?"
+msgstr "Yaş işaretleyici göster"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1366
@@ -12268,11 +12282,15 @@ msgstr "Varsayılan olarak grafik detayını göster"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Ataların çocuklarını göster?"
+msgstr "Ataların çocuklarını göster"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
 msgid "Show common surnames"
-msgstr "Ortak soyadları göster?"
+msgstr "Ortak soyadları göster"
+
+#: app/Module/TopPageViewsModule.php:165
+msgid "Show counts before or after name"
+msgstr "Toplamları adın öncesinde yada sonrasında göster"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12309,7 +12327,7 @@ msgstr "Yaş Farklarını Göster"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
 msgid "Show date of last update"
-msgstr "Son güncelleme tarihi?"
+msgstr "Son güncelleme tarihini göster"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:391
@@ -12397,21 +12415,21 @@ msgstr "Özel (gizli) bireylerin adlarını göster"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Notları göster?"
+msgstr "Notları göster"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Meslekleri göster?"
+msgstr "Meslekleri göster"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Sadece Doğumları, Ölümleri, ve Evlilikleri göster?"
+msgstr "Sadece doğumları, ölümleri, ve evlilikleri göster"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Sadece yaşayan insanların hadiselerini göster?"
+msgstr "Sadece yaşayan insanların hadiselerini göster"
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
@@ -12423,7 +12441,7 @@ msgstr "Sadece cinsiyeti bilinmeyen kişileri göster."
 
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Sadece kişileri, hadiseleri, yada tümü göster?"
+msgstr "Sadece kişileri, hadiseleri, yada tümünü göster"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -12446,7 +12464,7 @@ msgstr "Bekleyen değişiklikleri göster"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Fotoğrafları göster?"
+msgstr "Fotoğrafları göster"
 
 #: placelist.php:83
 msgid "Show places in hierarchy"
@@ -12475,11 +12493,11 @@ msgstr "Gelecekteki bir tarihi araştırma görevleri göster"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Konutları göster?"
+msgstr "Konutları göster"
 
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls"
-msgstr "Slayt gösteri kontrolleri göster?"
+msgstr "Slayt gösterisi kontrollerini göster"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12487,7 +12505,7 @@ msgstr "Slayt gösteri kontrolleri göster?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Kaynakları göster?"
+msgstr "Kaynakları göster"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12529,12 +12547,12 @@ msgstr "Google Maps™ harita hizmeti kullanılarak yer ve olaylar yerini göste
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Değişikliği yapan kullanıcıyı göster"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Bu blok hangi lisanlar ile gösterilsin?"
+msgstr "Bu blok hangi lisanlar ile gösterilsin"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1038 app/Functions/FunctionsEdit.php:206
@@ -12726,8 +12744,8 @@ msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
 msgstr "Küçük sistemler (500 kişi): 16-32MB, 10-20 saniyede"
 
 #: app/GedcomCode/GedcomCodeTemp.php:303
-msgid "Snowflake, Arizona"
-msgstr "Snowflake, Arizona"
+msgid "Snowflake, Arizona, United States"
+msgstr "Snowflake, Arizona, United States"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:792
@@ -12887,8 +12905,8 @@ msgid "Spanish"
 msgstr "İspanyol"
 
 #: app/GedcomCode/GedcomCodeTemp.php:309
-msgid "Spokane, Washington"
-msgstr "Spokane, Washington"
+msgid "Spokane, Washington, United States"
+msgstr "Spokane, Washington, United States"
 
 #: modules_v3/bdm_report/report.xml:169
 msgid "Spouse"
@@ -12921,16 +12939,16 @@ msgid "Sri Lanka"
 msgstr "Sri Lanka"
 
 #: app/GedcomCode/GedcomCodeTemp.php:295
-msgid "St. George, Utah"
-msgstr "St. George, Utah"
+msgid "St. George, Utah, United States"
+msgstr "St. George, Utah, United States"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
-msgid "St. Louis, Missouri"
-msgstr "St. Louis, Missouri"
+msgid "St. Louis, Missouri, United States"
+msgstr "St. Louis, Missouri, United States"
 
 #: app/GedcomCode/GedcomCodeTemp.php:307
-msgid "St. Paul, Minnesota"
-msgstr "St. Paul, Minnesota"
+msgid "St. Paul, Minnesota, United States"
+msgstr "St. Paul, Minnesota, United States"
 
 #: app/Module/GoogleMapsModule.php:507
 msgid "Standard"
@@ -12948,7 +12966,7 @@ msgstr "Ebeveynlerle başla"
 
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load"
-msgstr "Slayt gösterisi sayfa yüklendiğinde başlat?"
+msgstr "Slayt gösterisi sayfa yüklendiğinde başlasın"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13009,12 +13027,12 @@ msgstr "Dur"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
 msgid "Store watermarked full size images on server"
-msgstr "Filigranlı tam boyutlu resimleri ayrıca sunucuya kaydet?"
+msgstr "Filigranlı tam boyutlu resimleri ayrıca sunucuya kaydet"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
 msgid "Store watermarked thumbnails on server"
-msgstr "Filigranlı resim önizlemeleri sunucuya kaydet?"
+msgstr "Filigranlı resim önizlemelerini sunucuya kaydet"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -13448,8 +13466,8 @@ msgstr "%s klasörü silinemedi."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:294
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:294
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "%s klasör mevcut değil, ve oluşturulamadı."
@@ -13601,7 +13619,7 @@ msgstr "Yeni aile ağaçları için ayarlar güncellendi."
 #: app/Module/RelationshipsChartModule.php:190
 #, php-format
 msgid "The preferences for the chart “%s” have been updated."
-msgstr ""
+msgstr "“%s” çizelgesi için tercihler güncellendi."
 
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
@@ -13810,8 +13828,8 @@ msgstr "Bu aile ağacında hiçbir araştırma görevleri mevcut değil."
 msgid "There are no source citations for this individual."
 msgstr "Bu birey için hiçbir Kaynak atıfları mevcut değil."
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1926
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1926
 msgid "There are pending changes for you to moderate."
 msgstr "Onaylanmayı bekleyen değişiklikler mevcut."
 
@@ -14961,7 +14979,7 @@ msgstr "Birleşik Krallık"
 
 #: app/Stats.php:6964
 msgid "United States"
-msgstr ""
+msgstr "Birleşik Devletler"
 
 #: app/GedcomRecord.php:1154 app/GedcomRecord.php:1158 app/Stats.php:6716
 msgid "Unknown"
@@ -15216,7 +15234,7 @@ msgstr "Vanuatu"
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Çeşitli istatistik çizelgeleri."
 
 #: app/Stats.php:6966
 msgid "Vatican City"
@@ -15225,25 +15243,25 @@ msgstr "Vatikan"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:88
 msgctxt "GENITIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:154
 msgctxt "INSTRUMENTAL"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:121
 msgctxt "LOCATIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:55
 msgctxt "NOMINATIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #: app/Stats.php:6968
@@ -15253,25 +15271,25 @@ msgstr "Venezüella"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:93
 msgctxt "GENITIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
 msgctxt "INSTRUMENTAL"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:126
 msgctxt "LOCATIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:60
 msgctxt "NOMINATIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -15287,8 +15305,8 @@ msgid "Verified"
 msgstr "Doğrulandı"
 
 #: app/GedcomCode/GedcomCodeTemp.php:331
-msgid "Vernal, Utah"
-msgstr "Vernal, Utah"
+msgid "Vernal, Utah, United States"
+msgstr "Vernal, Utah, United States"
 
 #. I18N: gedcom tag VERS
 #: app/GedcomTag.php:852
@@ -15415,8 +15433,8 @@ msgid "Ward"
 msgstr "Mahcur"
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
-msgid "Washington, DC"
-msgstr "Washington, DC"
+msgid "Washington, District of Columbia, United States"
+msgstr "Washington, District of Columbia, United States"
 
 #: admin_trees_config.php:1111
 msgid "Watermarks"
@@ -15551,19 +15569,20 @@ msgstr "PhpGedVıew kurulumunuzun yeri neresi?"
 
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Site haritasında dahil edilmesini istediğiniz aile ağaçları?"
+msgstr "Site haritasında dahil edilmesini istediğiniz aile ağaçları"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
 msgid "Who can upload new media files"
-msgstr "Yeni medya dosyalarını kimler yükleyebilir?"
+msgstr "Yeni medya dosyalarını kimler yükleyebilir"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
 msgid "Who is online"
 msgstr "Kimler çevrimiçi"
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr "Sadece tüm kelimeler"
 
@@ -15620,9 +15639,8 @@ msgid "Will"
 msgstr "Vasiyet"
 
 #: app/GedcomCode/GedcomCodeTemp.php:337
-#, fuzzy
-msgid "Winter Quarters, Nebraska"
-msgstr "Winter Quarters, Nebraska"
+msgid "Winter Quarters, Nebraska, United States"
+msgstr "Winter Quarters, Nebraska, United States"
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"
@@ -15651,13 +15669,11 @@ msgstr "Dünya"
 
 #. I18N: gedcom tag _YART
 #: app/GedcomTag.php:1767
-#, fuzzy
 msgid "Yahrzeit"
 msgstr "Yahrzeit"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:37
-#, fuzzy
 msgid "Yahrzeiten"
 msgstr "Yahrzeiten"
 
@@ -15674,7 +15690,6 @@ msgid "Year:"
 msgstr "Yıl:"
 
 #: app/Stats.php:6977
-#, fuzzy
 msgid "Yemen"
 msgstr "Yemen"
 
@@ -15771,7 +15786,7 @@ msgstr "Cevapları biçimlendirmek için HTML kullanabilir ve diğer web siteler
 
 #: admin_site_config.php:435
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr ""
+msgstr "Ayrıca Google hesabınızdaki \"daha az güvenli uygulamalar\" seçeneğini etkinleştirmeniz gerekir."
 
 #: setup.php:212
 msgid "You must change this before you can continue."
@@ -16310,14 +16325,15 @@ msgstr "çocuklar"
 #. I18N: button label
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:759
-#: app/Module/GoogleMapsModule.php:4024 app/Theme/AbstractTheme.php:700
-#: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1746
-#: edit_interface.php:1855 edit_interface.php:2048 edit_interface.php:2217
-#: edit_interface.php:2603 find.php:766 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189
+#: app/Module/GoogleMapsModule.php:759 app/Module/GoogleMapsModule.php:4024
+#: app/Theme/AbstractTheme.php:700 edit_changes.php:240 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1746 edit_interface.php:1855 edit_interface.php:2048
+#: edit_interface.php:2217 edit_interface.php:2603 find.php:766
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "kapat"
@@ -18506,25 +18522,25 @@ msgstr "seçimi tersine çevir"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:100
 msgctxt "GENITIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "ek günler"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:166
 msgctxt "INSTRUMENTAL"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "ek gönler"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:133
 msgctxt "LOCATIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "ek günler"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:67
 msgctxt "NOMINATIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "ek günler"
 
 #. I18N: button label, last page
@@ -18561,7 +18577,6 @@ msgstr "idareciler"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
-#, fuzzy
 msgid "markdown"
 msgstr "markdown"
 
@@ -18833,7 +18848,8 @@ msgstr "sayı"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19005,20 +19021,21 @@ msgstr "robot"
 #. I18N: button label
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:199
-#: admin_site_access.php:307 admin_site_config.php:652 admin_site_merge.php:340
-#: admin_trees_config.php:2271 admin_users.php:673
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129
+#: admin_modules.php:199 admin_site_access.php:307 admin_site_config.php:652
+#: admin_site_merge.php:340 admin_trees_config.php:2271 admin_users.php:673
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:533 app/Module/GoogleMapsModule.php:758
 #: app/Module/GoogleMapsModule.php:2764 app/Module/GoogleMapsModule.php:4023
-#: app/Module/RelationshipsChartModule.php:173 app/Module/SiteMapModule.php:320
-#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
-#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1745 edit_interface.php:1853 edit_interface.php:2047
-#: edit_interface.php:2215 edit_interface.php:2599 editnews.php:74
-#: edituser.php:317 find.php:543 index_edit.php:376
+#: app/Module/RelationshipsChartModule.php:173
+#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
+#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
+#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
+#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
+#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1745
+#: edit_interface.php:1853 edit_interface.php:2047 edit_interface.php:2215
+#: edit_interface.php:2599 editnews.php:74 edituser.php:317 find.php:543
+#: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
@@ -19710,7 +19727,7 @@ msgstr "bilinmiyor"
 
 #: app/Module/RelationshipsChartModule.php:131
 msgid "unlimited"
-msgstr ""
+msgstr "sınırsız"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
@@ -19873,7 +19890,6 @@ msgstr "…"
 #: app/Module/IndividualSidebarModule.php:154 autocomplete.php:164
 #: autocomplete.php:405 autocomplete.php:470 famlist.php:83 famlist.php:108
 #: famlist.php:140 indilist.php:83 indilist.php:108 indilist.php:140
-#, fuzzy
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"

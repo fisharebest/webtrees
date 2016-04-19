@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 14:56+0000\n"
+"PO-Revision-Date: 2016-04-18 16:25+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -1264,11 +1264,11 @@ msgstr "Voeg %s by die versameling knipsels"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
-msgstr "Skep 'n nuwe broer/suster"
+msgstr "Voeg 'n broer of suster by"
 
 #: edit_interface.php:516
 msgid "Add a child"
-msgstr "Voeg 'n nuwe kind by"
+msgstr "Voeg 'n kind by"
 
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
@@ -1277,69 +1277,69 @@ msgstr "Voeg 'n kind by om 'n eenouergesin te skep"
 #: app/Controller/FamilyController.php:82
 #: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
-msgstr "Skep 'n kind vir hierdie gesin"
+msgstr "Voeg 'n kind by hierdie gesin"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr "Skep ’n feit of gebeurtenis"
+msgstr "Voeg 'n feit by"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
-msgstr "Voeg 'n nuwe vader by"
+msgstr "Voeg 'n vader by"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
-msgstr "Skep 'n nuwe gunsteling"
+msgstr "Voeg 'n gunsteling by"
 
 #: app/Module/GoogleMapsModule.php:4628
 msgid "Add a geographic location"
-msgstr "Voeg 'n nuwe geografiese ligging toe"
+msgstr "Voeg 'n geografiese ligging by"
 
 #: app/Module/RelativesTabModule.php:385 edit_interface.php:810
 #: edit_interface.php:900
 msgid "Add a husband"
-msgstr "Voeg 'n nuwe eggenoot by"
+msgstr "Voeg 'n eggenoot by"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
-msgstr "Skep 'n eggenoot vir hierdie gesin"
+msgstr "Voeg 'n eggenoot by hierdie gesin"
 
 #: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
 #: edit_interface.php:1156
 msgid "Add a husband using an existing individual"
-msgstr "Voeg eggenoot met behulp van 'n bestaande persoon by"
+msgstr "Voeg 'n reeds bestaande persoon as eggenoot by hierdie gesin"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
-msgstr "Skep 'n nuwe joernaalinskrywing"
+msgstr "Voeg 'n joernaalinskrywing by"
 
 #: app/Controller/FamilyController.php:162
 #: app/Functions/FunctionsEdit.php:1131 app/Module/AlbumModule.php:98
 #: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
 #: source.php:184
 msgid "Add a media object"
-msgstr "Voeg 'n nuwe media-objek toe"
+msgstr "Voeg 'n media-objek by"
 
 #: app/Module/RelativesTabModule.php:323 edit_interface.php:672 family.php:114
 msgid "Add a mother"
-msgstr "Voeg 'n nuwe moeder by"
+msgstr "Voeg 'n moeder by"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
 msgid "Add a name"
-msgstr "Voeg nuwe Naam by"
+msgstr "Voeg 'n naam by"
 
 #: app/Module/FamilyTreeNewsModule.php:148
 msgid "Add a news article"
-msgstr "Skep 'n nuwe nuusberig"
+msgstr "Voeg 'n nuusberig by"
 
 #: app/Controller/FamilyController.php:149
 #: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
-msgstr "Skep 'n nuwe nota"
+msgstr "Voeg 'n nota by"
 
 #: app/Functions/FunctionsEdit.php:1141
 msgid "Add a restriction"
-msgstr "Skep 'n nuwe beperking"
+msgstr "Voeg 'n beperking by"
 
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
@@ -1349,66 +1349,66 @@ msgstr "Skep 'n nuwe beperking"
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
-msgstr "Voeg 'n skuifbalk toe wanneer die inhoud van 'n blok toeneem"
+msgstr "Voeg 'n skuifbalk by wanneer die inhoud van 'n blok toeneem"
 
 #: app/Controller/FamilyController.php:155
 #: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
 msgid "Add a shared note"
-msgstr "Skep 'n nuwe gedeelde nota"
+msgstr "Voeg 'n gedeelde nota by"
 
 #: app/Module/RelativesTabModule.php:271
 msgid "Add a son or daughter"
-msgstr "Skep 'n nuwe seun/dogter"
+msgstr "Voeg 'n seun of dogter by"
 
 #: app/Controller/FamilyController.php:172
 #: app/Functions/FunctionsEdit.php:1060 app/Module/SourcesTabModule.php:93
 msgid "Add a source citation"
-msgstr "Skep 'n nuwe bronvermelding"
+msgstr "Voeg 'n bronvermelding by"
 
 #: edit_interface.php:837
 msgid "Add a spouse"
-msgstr "Voeg 'n nuwe gade by"
+msgstr "Voeg 'n gade by"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
 msgid "Add a story"
-msgstr "Skep 'n nuwe verhaal"
+msgstr "Voeg 'n verhaal by"
 
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
-msgstr "Skep 'n nuwe gebruiker"
+msgstr "Voeg 'n gebruiker by"
 
 #: app/Module/RelativesTabModule.php:373 edit_interface.php:807
 #: edit_interface.php:897
 msgid "Add a wife"
-msgstr "Voeg 'n nuwe eggenote by"
+msgstr "Voeg 'n eggenote by"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
-msgstr "Skep 'n eggenote vir hierdie gesin"
+msgstr "Voeg 'n eggenote by hierdie gesin"
 
 #: app/Module/RelativesTabModule.php:378 edit_interface.php:1087
 #: edit_interface.php:1158
 msgid "Add a wife using an existing individual"
-msgstr "Voeg eggenote met behulp van 'n bestaande persoon by"
+msgstr "Voeg 'n reeds bestaande persoon by as 'n eggenote"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
-msgstr "Skep 'n FAQ item"
+msgstr "Voeg 'n FAQ item by"
 
 #: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
 msgid "Add an associate"
-msgstr "Skep 'n nuwe deelgenoot"
+msgstr "Voeg 'n deelgenoot by"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
-msgstr "Voeg nog 'n persoon toe aan die diagram"
+msgstr "Voeg nog 'n persoon by die diagram"
 
 #: app/Functions/FunctionsPrint.php:556
 msgid "Add from clipboard"
-msgstr "Voeg vanaf die klembord by"
+msgstr "Voeg by vanaf die klembord"
 
 #: lifespan.php:44 modules_v3/GEDFact_assistant/census/census-edit.php:77
 msgid "Add individuals"
@@ -1420,7 +1420,7 @@ msgstr "Voeg skakels by"
 
 #: app/Module/RelativesTabModule.php:226
 msgid "Add marriage details"
-msgstr "Voeg huweliks besonderhede by"
+msgstr "Voeg huwelikbesonderhede by"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
@@ -1428,7 +1428,7 @@ msgstr "Voeg ontbrekende sterfrekords by"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:35
 msgid "Add missing married names"
-msgstr "Voeg ontbrekende getroude name toe"
+msgstr "Voeg ontbrekende getroude name by"
 
 #: search_advanced.php:280
 msgid "Add more fields"
@@ -1441,13 +1441,13 @@ msgstr "Voeg verhale by vir persone in die stamboom."
 
 #: admin_trees_manage.php:279
 msgid "Add spaces where long lines were wrapped"
-msgstr "Voeg spasies by waar lang reëls onderbreek is"
+msgstr "Voeg spasies by waar lang reëls afgebreek is"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:422
 #: app/Module/ClippingsCartModule.php:785
 msgid "Add the GEDCOM media path to filenames"
-msgstr "Voeg die GEDCOM media pad by lêername"
+msgstr "Voeg die GEDCOM media-pad by lêername"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:935
@@ -1475,7 +1475,7 @@ msgstr "Voeg ongekoppelde rekords by"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
 msgid "Add watermarks to thumbnails"
-msgstr "Voeg watermerk by die miniature"
+msgstr "Voeg watermerke by die miniature"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -1484,7 +1484,7 @@ msgstr "Voeg jou eie teks en grafika by."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
-msgstr "Wysig ’n nuusberig/joernaalinskrywing of skep ’n nuwe"
+msgstr "Wysig/voeg ’n joernaalinskrywing/nuusberig by"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:113
 msgid "Add/insert a blank row"
@@ -1780,8 +1780,8 @@ msgid "Album"
 msgstr "Album"
 
 #: app/GedcomCode/GedcomCodeTemp.php:85
-msgid "Albuquerque, New Mexico"
-msgstr "Albuquerque, Nieu-Meksiko"
+msgid "Albuquerque, New Mexico, United States"
+msgstr "Albuquerque, Nieu-Meksiko, Verenigde State"
 
 #: app/Stats.php:6786
 msgid "Algeria"
@@ -1994,8 +1994,8 @@ msgid "Ancestral file number"
 msgstr "‘Ancestral File’ nommer"
 
 #: app/GedcomCode/GedcomCodeTemp.php:87
-msgid "Anchorage, Alaska"
-msgstr "Anchorage, Alaska"
+msgid "Anchorage, Alaska, United States"
+msgstr "Anchorage, Alaska, Verenigde State"
 
 #: app/Stats.php:6724
 msgid "Andorra"
@@ -2220,8 +2220,8 @@ msgid "At sea"
 msgstr "Ter see"
 
 #: app/GedcomCode/GedcomCodeTemp.php:93
-msgid "Atlanta, Georgia"
-msgstr "Atlanta, Georgia"
+msgid "Atlanta, Georgia, United States"
+msgstr "Atlanta, Georgia, Verenigde State"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
@@ -2556,8 +2556,8 @@ msgid "Batch update"
 msgstr "Bondelbywerking"
 
 #: app/GedcomCode/GedcomCodeTemp.php:113
-msgid "Baton Rouge, Louisiana"
-msgstr "Baton Rouge, Louisiana"
+msgid "Baton Rouge, Louisiana, United States"
+msgstr "Baton Rouge, Louisiana, Verenigde State"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2752
@@ -2612,8 +2612,8 @@ msgid "Bibliography"
 msgstr "Bibliografie"
 
 #: app/GedcomCode/GedcomCodeTemp.php:97
-msgid "Billings, Montana"
-msgstr "Billings, Montana"
+msgid "Billings, Montana, United States"
+msgstr "Billings, Montana, Verenigde State"
 
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
@@ -2625,8 +2625,8 @@ msgid "Bing Maps™"
 msgstr "Bing Maps™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
-msgid "Birmingham, Alabama"
-msgstr "Birmingham, Alabama"
+msgid "Birmingham, Alabama, United States"
+msgstr "Birmingham, Alabama, Verenigde State"
 
 #. I18N: gedcom tag BIRT
 #: app/GedcomTag.php:206 modules_v3/ahnentafel_report/report.xml:441
@@ -2865,7 +2865,7 @@ msgid "Births by century"
 msgstr "Geboortes per eeu"
 
 #: app/GedcomCode/GedcomCodeTemp.php:101
-msgid "Bismarck, North Dakota"
+msgid "Bismarck, North Dakota, United States"
 msgstr "Bismarck, Noord-Dakota"
 
 #. I18N: gedcom tag BLES
@@ -2902,8 +2902,8 @@ msgid "Bogota, Colombia"
 msgstr "Bogotá, Colombia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:105
-msgid "Boise, Idaho"
-msgstr "Boise, Idaho"
+msgid "Boise, Idaho, United States"
+msgstr "Boise, Idaho, Verenigde State"
 
 #: app/Stats.php:6749
 msgid "Bolivia"
@@ -2927,8 +2927,8 @@ msgid "Bosnia and Herzegovina"
 msgstr "Bosnië en Herzegowina"
 
 #: app/GedcomCode/GedcomCodeTemp.php:107
-msgid "Boston, Massachusetts"
-msgstr "Boston, Massachusetts"
+msgid "Boston, Massachusetts, United States"
+msgstr "Boston, Massachusetts, Verenigde State"
 
 #: app/Functions/FunctionsPrintLists.php:628
 msgid "Both alive"
@@ -2943,8 +2943,8 @@ msgid "Botswana"
 msgstr "Botswana"
 
 #: app/GedcomCode/GedcomCodeTemp.php:109
-msgid "Bountiful, Utah"
-msgstr "Bountiful, Utah"
+msgid "Bountiful, Utah, United States"
+msgstr "Bountiful, Utah, Verenigde State"
 
 #: app/Stats.php:6754
 msgid "Bouvet Island"
@@ -3535,8 +3535,8 @@ msgid "Checking server configuration"
 msgstr "Besig om die bediener opstelling te kontroleer"
 
 #: app/GedcomCode/GedcomCodeTemp.php:119
-msgid "Chicago, Illinois"
-msgstr "Chicago, Illinois"
+msgid "Chicago, Illinois, United States"
+msgstr "Chicago, Illinois, Verenigde State"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:36 app/GedcomTag.php:274
@@ -3835,16 +3835,16 @@ msgid "Colonia Juarez, Mexico"
 msgstr "Colonia Juarez, Meksiko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:133
-msgid "Columbia River, Washington"
+msgid "Columbia River, Washington, United States"
 msgstr "Columbiarivier, Washington"
 
 #: app/GedcomCode/GedcomCodeTemp.php:127
-msgid "Columbia, South Carolina"
+msgid "Columbia, South Carolina, United States"
 msgstr "Columbia, Suid-Carolina"
 
 #: app/GedcomCode/GedcomCodeTemp.php:129
-msgid "Columbus, Ohio"
-msgstr "Columbus, Ohio"
+msgid "Columbus, Ohio, United States"
+msgstr "Columbus, Ohio, Verenigde State"
 
 #: medialist.php:164
 msgid "Columns per page"
@@ -3957,7 +3957,7 @@ msgstr "Inhoud"
 
 #: app/Module/GoogleMapsModule.php:4324
 msgid "Continue adding"
-msgstr "Gaan voort met die toevoegings"
+msgstr "Gaan voort met die byvoegings"
 
 #. I18N: gedcom tag CONT
 #: app/GedcomTag.php:306
@@ -4088,41 +4088,41 @@ msgid "Create"
 msgstr "Skep"
 
 #: admin_trees_manage.php:621
-msgid "Create a new family tree"
-msgstr "Skep 'n nuwe stamboom"
-
-#: edit_interface.php:750
-msgid "Create a new individual"
-msgstr "Skep 'n nuwe persoon"
+msgid "Create a family tree"
+msgstr "Skep 'n stamboom"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
-msgid "Create a new media object"
-msgstr "Skep 'n nuwe mediavoorwerp"
+msgid "Create a media object"
+msgstr "Skep 'n mediavoorwerp"
 
 #: app/Functions/FunctionsEdit.php:427 edit_interface.php:1512
 #: edit_interface.php:1575
-msgid "Create a new repository"
-msgstr "Skep bergplek"
+msgid "Create a repository"
+msgstr "Skep 'n bergplek"
 
 #: app/Functions/FunctionsEdit.php:438 edit_interface.php:1348
 #: edit_interface.php:1384
-msgid "Create a new shared note"
-msgstr "Skep 'n nuwe Gedeelde Nota"
+msgid "Create a shared note"
+msgstr "Skep 'n gedeelde nota"
 
 #: app/Functions/FunctionsEdit.php:634
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
-msgid "Create a new shared note using assistant"
-msgstr "Skep 'n nuwe Gedeelde Nota met behulp van Assistent"
+msgid "Create a shared note using the census assistant"
+msgstr "Skep 'n gedeelde nota met behulp van die sensus assistent"
 
 #: app/Functions/FunctionsEdit.php:460 edit_interface.php:1196
 #: edit_interface.php:1279
-msgid "Create a new source"
-msgstr "Skep 'n nuwe bron"
+msgid "Create a source"
+msgstr "Skep 'n bron"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
-msgstr "Skep 'n nuwe werf toegangsreël"
+msgstr "Skep 'n webwerf toegangsreël"
+
+#: edit_interface.php:750
+msgid "Create an individual"
+msgstr "Skep 'n persoon"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -4130,7 +4130,7 @@ msgstr "Skep jou eie diagram"
 
 #: admin_trees_manage.php:744
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr "Skep, verander of verwyder 'n stamboom vir elke GEDCOM lêer in die data-lêergids."
+msgstr "Skep, wysig of verwyder 'n stamboom vir elke GEDCOM lêer in die data-lêergids."
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:330 modules_v3/family_group_report/report.xml:315
@@ -4330,8 +4330,8 @@ msgid "Daitch-Mokotoff"
 msgstr "Daitch–Mokotoff"
 
 #: app/GedcomCode/GedcomCodeTemp.php:135
-msgid "Dallas, Texas"
-msgstr "Dallas, Texas"
+msgid "Dallas, Texas, United States"
+msgstr "Dallas, Texas, Verenigde State"
 
 #. I18N: A summary of the system status
 #: admin.php:460
@@ -5020,8 +5020,8 @@ msgid "Denmark"
 msgstr "Denemarke"
 
 #: app/GedcomCode/GedcomCodeTemp.php:137
-msgid "Denver, Colorado"
-msgstr "Denver, Colorado"
+msgid "Denver, Colorado, United States"
+msgstr "Denver, Colorado, Verenigde State"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
@@ -5104,8 +5104,8 @@ msgid "Details of the new user will be sent to the genealogy contact for the cor
 msgstr "Besonderhede van die nuwe gebruiker sal na die genealogiese kontakpersoon van die ooreenstemmende stamboom gestuur word."
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
-msgid "Detroit, Michigan"
-msgstr "Detroit, Michigan"
+msgid "Detroit, Michigan, United States"
+msgstr "Detroit, Michigan, Verenigde State"
 
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
@@ -5271,7 +5271,7 @@ msgstr "Moet nie verander nie om die oorspronklike lêernaam te behou."
 
 #: app/Module/GoogleMapsModule.php:4302
 msgid "Do not create new locations, just import coordinates for existing locations."
-msgstr "Maak geen nuwe plekke nie, voer sleg die koördinate van bestaande plekke in."
+msgstr "Moet geen nuwe plekke skep nie, voer sleg die koördinate van bestaande plekke in."
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
@@ -5324,7 +5324,7 @@ msgstr "Duodi"
 
 #: admin_users.php:73 edituser.php:60 login.php:286
 msgid "Duplicate email address. A user with that email already exists."
-msgstr "Duplikaat e-posadres. 'n Gebruiker met daardie e-posadres bestaan reeds."
+msgstr "Duplikaat eposadres. 'n Gebruiker met daardie eposadres bestaan reeds."
 
 #: admin_users.php:71 edituser.php:58 login.php:284
 msgid "Duplicate user name. A user with that user name already exists. Please choose another user name."
@@ -5333,7 +5333,7 @@ msgstr "Duplikaat gebruikersnaam. 'n Gebruiker met daardie naam bestaan reeds. K
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
 msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed. webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required. To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "E-posadres wat outomaties in die ‘Van:’-veld van webtrees gegenereerde e-posse ingevul word.<br><br>webtrees kan outomaties e-posse skep om beheerders in te lig oor wysigings wat gekontroleer moet word. webtrees stuur ook kennisgewings per e-pos aan gebruikers wat 'n rekening versoek het.<br><br>Meestal lyk die ‘Van:’-veld van hierdie outomatiese gegenereerde e-posse iets soos <i>Van: webtrees-noreply@yoursite</i> om te wys dat die e-pos nie 'n antwoord vereis nie. Om gemorspos en ander e-posmisbruik teë te werk vereis sommige e-possstelsels dat die ‘Van:’-veld 'n adres van 'n geldige e-posrekening bevat. Hierdie e-possstelsels aanvaar geen bodskappe nie wat afkomstig is van 'n rekening soos <i>webtrees-noreply</i>."
+msgstr "Eposadres wat outomaties in die ‘Van:’-veld van webtrees gegenereerde eposse ingevul word.<br><br>webtrees kan outomaties eposse skep om beheerders in te lig oor wysigings wat gekontroleer moet word. webtrees stuur ook kennisgewings per epos aan gebruikers wat 'n rekening versoek het.<br><br>Meestal lyk die ‘Van:’-veld van hierdie outomatiese gegenereerde eposse iets soos <i>Van: webtrees-noreply@yoursite</i> om te wys dat die epos nie 'n antwoord vereis nie. Om gemorspos en ander eposmisbruik teë te werk vereis sommige eposstelsels dat die ‘Van:’-veld 'n adres van 'n geldige eposrekening bevat. Hierdie eposstelsels aanvaar geen bodskappe nie wat afkomstig is van 'n rekening soos <i>webtrees-noreply</i>."
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -5551,7 +5551,7 @@ msgstr "Elul"
 #: app/Module/UserMessagesModule.php:114 edituser.php:259 login.php:322
 #: login.php:426 message.php:117 message.php:270 setup.php:441
 msgid "Email address"
-msgstr "E-posadres"
+msgstr "Eposadres"
 
 #: admin_users.php:382
 msgid "Email verified"
@@ -6385,25 +6385,25 @@ msgstr "Vlaandere"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:95
 msgctxt "GENITIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:161
 msgctxt "INSTRUMENTAL"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:128
 msgctxt "LOCATIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:62
 msgctxt "NOMINATIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Floréal"
 
 #: medialist.php:91
@@ -6534,7 +6534,7 @@ msgid "Frequently asked questions"
 msgstr "Vrae wat gereeld voorkom"
 
 #: app/GedcomCode/GedcomCodeTemp.php:151
-msgid "Fresno, California"
+msgid "Fresno, California, United States"
 msgstr "Fresno, Kalifornië"
 
 #. I18N: abbreviation for Friday
@@ -6946,8 +6946,8 @@ msgid "Hamilton, New Zealand"
 msgstr "Hamilton, Nieu-Seeland"
 
 #: app/GedcomCode/GedcomCodeTemp.php:165
-msgid "Hartford, Connecticut"
-msgstr "Hartford, Connecticut"
+msgid "Hartford, Connecticut, United States"
+msgstr "Hartford, Connecticut, Verenigde State"
 
 #: modules_v3/descendancy_report/report.xml:429
 msgid "He "
@@ -7173,8 +7173,8 @@ msgid "Household"
 msgstr "Huishouding"
 
 #: app/GedcomCode/GedcomCodeTemp.php:175
-msgid "Houston, Texas"
-msgstr "Houston, Texas"
+msgid "Houston, Texas, United States"
+msgstr "Houston, Texas, Verenigde State"
 
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:158
@@ -7232,8 +7232,8 @@ msgid "Icon"
 msgstr "Ikoon"
 
 #: app/GedcomCode/GedcomCodeTemp.php:177
-msgid "Idaho Falls, Idaho"
-msgstr "Idaho Falls, Idaho"
+msgid "Idaho Falls, Idaho, United States"
+msgstr "Idaho Falls, Idaho, Verenigde State"
 
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:516
@@ -7247,7 +7247,7 @@ msgstr "Wanneer 'n besoeker van die werf geen voorkeurtaal in sy/haar webblaaier
 
 #: admin_users.php:392
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr "As 'n beheerder 'n gebruikersrekening skep, word 'n verifikasie e-pos nie uitgestuur nie en moet die e-posadres met die hand geverifieer word."
+msgstr "As 'n beheerder 'n gebruikersrekening skep, word 'n verifikasie epos nie uitgestuur nie en moet die eposadres met die hand geverifieer word."
 
 #: help_text.php:228
 #, php-format
@@ -7272,7 +7272,7 @@ msgstr "As 'n persoon nie aan sy eerste voornaam bekend was nie, moet die naam w
 #. I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1202
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
-msgstr "As die aantal kere wat 'n van in die genealogie voorkom minder is as die drempelwaarde, sal die naam nie op de lys verskyn nie. Dit kan hier met die hand bygevoeg word. As meer as een van ingevoer word, moeten hulle deur 'n komma geskei word.<b>Vanne is hooflettergevoelig.</b>"
+msgstr "As die aantal kere wat 'n van in die genealogie voorkom minder is as die drempelwaarde, sal die naam nie op de lys verskyn nie. Dit kan hier met die hand bygevoeg word. As meer as een van ingevoer word, moet hulle deur 'n komma geskei word.<b>Vanne is hooflettergevoelig.</b>"
 
 #: help_text.php:224
 #, php-format
@@ -7308,7 +7308,7 @@ msgstr "As jy die probleem nie self kan oplos nie, kan jy om hulp vra op die for
 
 #: admin_trees_manage.php:282
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
-msgstr "As jy hierdie GEDCOM-lêer geskep het met genealogie sagteware wat spasies weglaat wanneer lang reëls opgebreek word, selekteer dan hierdie opsie om die ontbrekende spasies weer by te voeg."
+msgstr "As jy hierdie GEDCOM-lêer geskep het met genealogie sagteware wat spasies weglaat wanneer lang reëls afgebreek word, selekteer dan hierdie opsie om die ontbrekende spasies weer by te voeg."
 
 #: login.php:345
 msgid "If you didn’t request an account, you can just delete this message."
@@ -7736,8 +7736,8 @@ msgid "Jordan"
 msgstr "Jordanië"
 
 #: app/GedcomCode/GedcomCodeTemp.php:181
-msgid "Jordan River, Utah"
-msgstr "Jordan River, Utah"
+msgid "Jordan River, Utah, United States"
+msgstr "Jordan River, Utah, Verenigde State"
 
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:47
@@ -7941,8 +7941,8 @@ msgid "Kislev"
 msgstr "Kislev"
 
 #: app/GedcomCode/GedcomCodeTemp.php:185
-msgid "Kona, Hawaii"
-msgstr "Kona, Hawaii"
+msgid "Kona, Hawaii, United States"
+msgstr "Kona, Hawaii, Verenigde State"
 
 #: app/Stats.php:6846
 msgid "Korea"
@@ -7991,8 +7991,8 @@ msgid "LDS temple"
 msgstr "LDS tempel"
 
 #: app/GedcomCode/GedcomCodeTemp.php:167
-msgid "Laie, Hawaii"
-msgstr "Laie, Hawaii"
+msgid "Laie, Hawaii, United States"
+msgstr "Laie, Hawaii, Verenigde State"
 
 #. I18N: page orientation
 #: admin_trees_config.php:54 modules_v3/change_report/report.xml:10
@@ -8031,8 +8031,8 @@ msgid "Largest number of grandchildren"
 msgstr "Grootste aantal kleinkinders"
 
 #: app/GedcomCode/GedcomCodeTemp.php:199
-msgid "Las Vegas, Nevada"
-msgstr "Las Vegas, Nevada"
+msgid "Las Vegas, Nevada, United States"
+msgstr "Las Vegas, Nevada, Verenigde State"
 
 #. I18N: gedcom tag CHAN
 #: app/GedcomTag.php:258 modules_v3/change_report/report.xml:66
@@ -8301,8 +8301,8 @@ msgid "Lodger"
 msgstr "Loseerder"
 
 #: app/GedcomCode/GedcomCodeTemp.php:191
-msgid "Logan, Utah"
-msgstr "Logan, Utah"
+msgid "Logan, Utah, United States"
+msgstr "Logan, Utah, Verenigde State"
 
 #: app/Module/LoginBlockModule.php:63
 msgid "Logged in as "
@@ -8354,7 +8354,7 @@ msgid "Longitude"
 msgstr "Lengtegraad"
 
 #: app/GedcomCode/GedcomCodeTemp.php:187
-msgid "Los Angeles, California"
+msgid "Los Angeles, California, United States"
 msgstr "Los Angeles, Kalifornië"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219 login.php:252
@@ -8362,16 +8362,16 @@ msgid "Lost password request"
 msgstr "Verlore wagwoord versoek"
 
 #: app/GedcomCode/GedcomCodeTemp.php:195
-msgid "Louisville, Kentucky"
-msgstr "Louisville, Kentucky"
+msgid "Louisville, Kentucky, United States"
+msgstr "Louisville, Kentucky, Verenigde State"
 
 #: app/Stats.php:1741
 msgid "Lowest population"
 msgstr "Kleinste bevolking"
 
 #: app/GedcomCode/GedcomCodeTemp.php:197
-msgid "Lubbock, Texas"
-msgstr "Lubbock, Texas"
+msgid "Lubbock, Texas, United States"
+msgstr "Lubbock, Texas, Verenigde State"
 
 #: app/Stats.php:6857
 msgid "Luxembourg"
@@ -8486,8 +8486,8 @@ msgid "Manila, Philippines"
 msgstr "Manila, Filippyne"
 
 #: app/GedcomCode/GedcomCodeTemp.php:205
-msgid "Manti, Utah"
-msgstr "Manti, Utah"
+msgid "Manti, Utah, United States"
+msgstr "Manti, Utah, Verenigde State"
 
 #: app/GedcomTag.php:1928
 msgid "Manuscript"
@@ -8856,8 +8856,8 @@ msgid "Mayotte"
 msgstr "Mayotte"
 
 #: app/GedcomCode/GedcomCodeTemp.php:207
-msgid "Medford, Oregon"
-msgstr "Medford, Oregon"
+msgid "Medford, Oregon, United States"
+msgstr "Medford, Oregon, Verenigde State"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
@@ -9003,8 +9003,8 @@ msgid "Memory limit"
 msgstr "Geheue limiet"
 
 #: app/GedcomCode/GedcomCodeTemp.php:211
-msgid "Memphis, Tennessee"
-msgstr "Memphis, Tennessee"
+msgid "Memphis, Tennessee, United States"
+msgstr "Memphis, Tennessee, Verenigde State"
 
 #: admin_module_menus.php:87 admin_modules.php:185
 msgid "Menu"
@@ -9039,8 +9039,8 @@ msgid "Merida, Mexico"
 msgstr "Merida, Meksiko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:89
-msgid "Mesa, Arizona"
-msgstr "Mesa, Arizona"
+msgid "Mesa, Arizona, United States"
+msgstr "Mesa, Arizona, Verenigde State"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
 msgid "Message"
@@ -9239,8 +9239,8 @@ msgid "Month:"
 msgstr "Maand:"
 
 #: app/GedcomCode/GedcomCodeTemp.php:221
-msgid "Monticello, Utah"
-msgstr "Monticello, Utah"
+msgid "Monticello, Utah, United States"
+msgstr "Monticello, Utah, Verenigde State"
 
 #: app/GedcomCode/GedcomCodeTemp.php:223
 msgid "Montreal, Quebec, Canada"
@@ -9342,8 +9342,8 @@ msgid "Mother’s family with an unknown individual"
 msgstr "Moeder se gesin met 'n onbekende persoon"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
-msgid "Mount Timpanogos, Utah"
-msgstr "Mount Timpanogos, Utah"
+msgid "Mount Timpanogos, Utah, United States"
+msgstr "Mount Timpanogos, Utah, Verenigde State"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:493 index_edit.php:312
 #: index_edit.php:361
@@ -9517,8 +9517,8 @@ msgid "Narrative description"
 msgstr "Verhalende beskrywing"
 
 #: app/GedcomCode/GedcomCodeTemp.php:227
-msgid "Nashville, Tennessee"
-msgstr "Nashville, Tennessee"
+msgid "Nashville, Tennessee, United States"
+msgstr "Nashville, Tennessee, Verenigde State"
 
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:610
@@ -9535,11 +9535,11 @@ msgid "Nauru"
 msgstr "Nauru"
 
 #: app/GedcomCode/GedcomCodeTemp.php:229
-msgid "Nauvoo, Illinois (new)"
+msgid "Nauvoo (new), Illinois, United States"
 msgstr "Nauvoo, Illinois (nuut)"
 
 #: app/GedcomCode/GedcomCodeTemp.php:231
-msgid "Nauvoo, Illinois (original)"
+msgid "Nauvoo (original), Illinois, United States"
 msgstr "Nauvoo, Illinois (oorspronklik)"
 
 #: app/Module/GoogleMapsModule.php:407 app/Module/GoogleMapsModule.php:3961
@@ -9588,8 +9588,8 @@ msgid "New Caledonia"
 msgstr "Nieu-Kaledonië"
 
 #: app/GedcomCode/GedcomCodeTemp.php:237
-msgid "New York, New York"
-msgstr "New York, New York"
+msgid "New York, New York, United States"
+msgstr "New York, New York, Verenigde State"
 
 #: app/Stats.php:6895
 msgid "New Zealand"
@@ -9612,7 +9612,7 @@ msgid "New user at %s"
 msgstr "Nuwe gebruiker by %s"
 
 #: app/GedcomCode/GedcomCodeTemp.php:233
-msgid "Newport Beach, California"
+msgid "Newport Beach, California, United States"
 msgstr "Newport Beach, Kalifornië"
 
 #. I18N: Name of a module
@@ -9680,25 +9680,25 @@ msgstr "Niue"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:91
 msgctxt "GENITIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
 msgctxt "INSTRUMENTAL"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:124
 msgctxt "LOCATIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:58
 msgctxt "NOMINATIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Nivôse"
 
 #: admin_users.php:660 app/Functions/FunctionsPrintFacts.php:308
@@ -10068,7 +10068,7 @@ msgid "Nurse"
 msgstr "Verpleër"
 
 #: app/GedcomCode/GedcomCodeTemp.php:241
-msgid "Oakland, California"
+msgid "Oakland, California, United States"
 msgstr "Oakland, Kalifornië"
 
 #: app/GedcomCode/GedcomCodeTemp.php:243
@@ -10123,12 +10123,12 @@ msgid "October"
 msgstr "Oktober"
 
 #: app/GedcomCode/GedcomCodeTemp.php:245
-msgid "Ogden, Utah"
-msgstr "Ogden, Utah"
+msgid "Ogden, Utah, United States"
+msgstr "Ogden, Utah, Verenigde State"
 
 #: app/GedcomCode/GedcomCodeTemp.php:247
-msgid "Oklahoma City, Oklahoma"
-msgstr "Oklahoma City, Oklahoma"
+msgid "Oklahoma City, Oklahoma, United States"
+msgstr "Oklahoma City, Oklahoma, Verenigde State"
 
 #: admin_site_change.php:336
 msgid "Old data"
@@ -10258,8 +10258,8 @@ msgid "Orientation"
 msgstr "Orientasie"
 
 #: app/GedcomCode/GedcomCodeTemp.php:249
-msgid "Orlando, Florida"
-msgstr "Orlando, Florida"
+msgid "Orlando, Florida, United States"
+msgstr "Orlando, Florida, Verenigde State"
 
 #: app/GedcomTag.php:1942 app/Stats.php:5499 app/Stats.php:5918
 msgid "Other"
@@ -10399,8 +10399,8 @@ msgid "Palette"
 msgstr "Palet"
 
 #: app/GedcomCode/GedcomCodeTemp.php:253
-msgid "Palmyra, New York"
-msgstr "Palmyra, New York"
+msgid "Palmyra, New York, United States"
+msgstr "Palmyra, New York, Verenigde State"
 
 #: app/Stats.php:6898
 msgid "Panama"
@@ -10773,7 +10773,7 @@ msgstr "Speel af"
 
 #: login.php:338
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
-msgstr "Klik op die volgende skakel en vul die gegewens in om jou gebruikersnaam en e-posadres te bevestig."
+msgstr "Klik op die volgende skakel en vul die gegewens in om jou gebruikersnaam en eposadres te bevestig."
 
 #: search.php:55
 msgid "Please enter a given name, surname, or place in addition to the year"
@@ -10785,7 +10785,7 @@ msgstr "Voer asseblief 'n onderwerp vir die boodskap in."
 
 #: message.php:50
 msgid "Please enter a valid email address."
-msgstr "Voer asseblief 'n geldige e-posadres in."
+msgstr "Voer asseblief 'n geldige eposadres in."
 
 #: app/Module/CensusAssistantModule.php:169 find.php:127 search.php:36
 #: search.php:48
@@ -10798,30 +10798,30 @@ msgstr "Skryf asseblief iets in die teks van die boodskap voordat dit gestuur wo
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
-msgstr "Verskaf asseblief you e-posadres sodat ons met jou in verbinding kan tree in antwoord op hierdie boodskap. As jy nie 'n e-posadres verskaf nie, sal ons nie in staat wees om op jou navraag te reageer nie. Jou e-posadres sal op geen ander manier benut word as om op hierdie navraag te antwoord nie."
+msgstr "Verskaf asseblief you eposadres sodat ons met jou in verbinding kan tree in antwoord op hierdie boodskap. As jy nie 'n eposadres verskaf nie, sal ons nie in staat wees om op jou navraag te reageer nie. Jou eposadres sal op geen ander manier benut word as om op hierdie navraag te antwoord nie."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:92
 msgctxt "GENITIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
 msgctxt "INSTRUMENTAL"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:125
 msgctxt "LOCATIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:59
 msgctxt "NOMINATIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Pluviôse"
 
 #: app/Stats.php:6904
@@ -10839,8 +10839,8 @@ msgid "Port number"
 msgstr "Poortnommer"
 
 #: app/GedcomCode/GedcomCodeTemp.php:263
-msgid "Portland, Oregon"
-msgstr "Portland, Oregon"
+msgid "Portland, Oregon, United States"
+msgstr "Portland, Oregon, Verenigde State"
 
 #: app/GedcomCode/GedcomCodeTemp.php:251
 msgid "Porto Alegre, Brazil"
@@ -10984,8 +10984,8 @@ msgid "Property"
 msgstr "Eiendom"
 
 #: app/GedcomCode/GedcomCodeTemp.php:267
-msgid "Provo, Utah"
-msgstr "Provo, Utah"
+msgid "Provo, Utah, United States"
+msgstr "Provo, Utah, Verenigde State"
 
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:704
@@ -11127,7 +11127,7 @@ msgid "Rajab"
 msgstr "Rajab"
 
 #: app/GedcomCode/GedcomCodeTemp.php:269
-msgid "Raleigh, North Carolina"
+msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, Noord-Carolina"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
@@ -11226,7 +11226,7 @@ msgid "Records are not the same type. Cannot merge records that are not the same
 msgstr "Rekords is nie van dieselfde tipe nie. Kan nie rekords wat nie dieselfde tipe is kombineer."
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
-msgid "Redlands, California"
+msgid "Redlands, California, United States"
 msgstr "Redlands, Kalifornië"
 
 #: app/Module/GoogleMapsModule.php:991 app/Module/GoogleMapsModule.php:2338
@@ -11390,8 +11390,8 @@ msgid "Remove this location?"
 msgstr "Verwyder hierdie plek?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:277
-msgid "Reno, Nevada"
-msgstr "Reno, Nevada"
+msgid "Reno, Nevada, United States"
+msgstr "Reno, Nevada, Verenigde State"
 
 #: admin_trees_manage.php:506
 msgid "Renumber"
@@ -11513,7 +11513,7 @@ msgstr "Beperking"
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr "Beperkinge kan by rekords en/of feite gevoeg word. Dit beperk wie die inligting kan sien en wie dit kan wysig."
+msgstr "Beperkinge kan by rekords en/of feite gevoeg word. Dit beperk wie die gegewens kan sien en wie dit kan wysig."
 
 #: app/Stats.php:87
 msgid "Resulting value"
@@ -11587,7 +11587,7 @@ msgid "SMTP mail server"
 msgstr "SMTP e-posbediener"
 
 #: app/GedcomCode/GedcomCodeTemp.php:279
-msgid "Sacramento, California"
+msgid "Sacramento, California, United States"
 msgstr "Sacramento, Kalifornië"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
@@ -11640,19 +11640,19 @@ msgid "Saint Vincent and the Grenadines"
 msgstr "St. Vincent en die Grenadines"
 
 #: app/GedcomCode/GedcomCodeTemp.php:299
-msgid "Salt Lake City, Utah"
-msgstr "Salt Lake City, Utah"
+msgid "Salt Lake City, Utah, United States"
+msgstr "Salt Lake City, Utah, Verenigde State"
 
 #: app/Stats.php:6976
 msgid "Samoa"
 msgstr "Samoa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:285
-msgid "San Antonio, Texas"
-msgstr "San Antonio, Texas"
+msgid "San Antonio, Texas, United States"
+msgstr "San Antonio, Texas, Verenigde State"
 
 #: app/GedcomCode/GedcomCodeTemp.php:287
-msgid "San Diego, California"
+msgid "San Diego, California, United States"
 msgstr "San Diego, Kalifornië"
 
 #: app/GedcomCode/GedcomCodeTemp.php:297
@@ -11795,8 +11795,8 @@ msgid "Searching for all possible relationships can take a lot of time in comple
 msgstr "Om vir alle moontlike verwantskappe te soek kan baie tyd neem in komplekse bome."
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Seattle, Washington"
-msgstr "Seattle, Washington"
+msgid "Seattle, Washington, United States"
+msgstr "Seattle, Washington, Verenigde State"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:370
@@ -12664,7 +12664,7 @@ msgstr "Sierra Leone"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr "Dit word aanvaar dat eenvoudige datums in die Gergoriaanse kalender voorkom. Om 'n datum in 'n ander kalender te spesifiseer, moet 'n sleutelwoord voor die datum gevoeg word. Hierdie sleutelwoord is opsioneel as die maand- of jaarformaat dit ondubbelsinnig maak."
+msgstr "Dit word aanvaar dat eenvoudige datums in die Gergoriaanse kalender voorkom. Om 'n datum in 'n ander kalender te spesifiseer, moet 'n sleutelwoord voor die datum bygevoeg word. Hierdie sleutelwoord is opsioneel as die maand- of jaarformaat dit ondubbelsinnig maak."
 
 #: find.php:190
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
@@ -12776,8 +12776,8 @@ msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
 msgstr "Klein stelsels (500 persone): 16-32 MB, 10-20 sekondes"
 
 #: app/GedcomCode/GedcomCodeTemp.php:303
-msgid "Snowflake, Arizona"
-msgstr "Snowflake, Arizona"
+msgid "Snowflake, Arizona, United States"
+msgstr "Snowflake, Arizona, Verenigde State"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:792
@@ -12937,8 +12937,8 @@ msgid "Spanish"
 msgstr "Spaans"
 
 #: app/GedcomCode/GedcomCodeTemp.php:309
-msgid "Spokane, Washington"
-msgstr "Spokane, Washington"
+msgid "Spokane, Washington, United States"
+msgstr "Spokane, Washington, Verenigde State"
 
 #: modules_v3/bdm_report/report.xml:169
 msgid "Spouse"
@@ -12971,16 +12971,16 @@ msgid "Sri Lanka"
 msgstr "Sri Lanka"
 
 #: app/GedcomCode/GedcomCodeTemp.php:295
-msgid "St. George, Utah"
-msgstr "St. George, Utah"
+msgid "St. George, Utah, United States"
+msgstr "St. George, Utah, Verenigde State"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
-msgid "St. Louis, Missouri"
-msgstr "St. Louis, Missouri"
+msgid "St. Louis, Missouri, United States"
+msgstr "St. Louis, Missouri, Verenigde State"
 
 #: app/GedcomCode/GedcomCodeTemp.php:307
-msgid "St. Paul, Minnesota"
-msgstr "St. Paul, Minnesota"
+msgid "St. Paul, Minnesota, United States"
+msgstr "St. Paul, Minnesota, Verenigde State"
 
 #: app/Module/GoogleMapsModule.php:507
 msgid "Standard"
@@ -13621,7 +13621,7 @@ msgstr "Die nuwe lêers is op die oomblik in die lêergids %s geplaas."
 
 #: admin_site_config.php:490
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr "Die nuwe gebruiker sal gevra word om sy/haar e-posadres te bevestig voordat die rekening geskep word."
+msgstr "Die nuwe gebruiker sal gevra word om sy/haar eposadres te bevestig voordat die rekening geskep word."
 
 #: help_text.php:303
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13943,7 +13943,7 @@ msgstr "Hierdie databasis loop MySQL weergawe %s. Jy kan nie webtrees hier insta
 
 #: admin_users.php:367 edituser.php:265 login.php:430 setup.php:443
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr "Hierdie e-posadres sal gebruik word om wagwoord herinneringsboodskappe te stuur, as ook webwerf kennisgewings en boodskappe van ander familielede wat op die webwerf geregistreer is."
+msgstr "Hierdie eposadres sal gebruik word om wagwoord herinneringsboodskappe te stuur, as ook webwerf kennisgewings en boodskappe van ander familielede wat op die webwerf geregistreer is."
 
 #: addmedia.php:540
 msgid "This entry is ignored if you have entered a URL into the filename field."
@@ -14104,42 +14104,42 @@ msgstr "Dit is die mees onlangste weergawe van webtrees. Opgradering is nie moon
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1860
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers aan gesinne kan koppel. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir gesinne”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers by gesinne kan voeg. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir gesinne”-lys voorkom nie."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1742
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers aan persone kan koppel. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir persone”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers by persone kan voeg. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir persone”-lys voorkom nie."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:2067
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers aan bergplekke kan koppel. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir bergplekke”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers by bergplekke kan voeg. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir bergplekke”-lys voorkom nie."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1978
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers aan bronne kan koppel. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir bronne”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers by bronne kan voeg. Jy kan hierdie lys wysig deur feite te verwyder of feite by te voeg, ook jou eie aangepaste feite indien nodig. Feite wat in hierdie lys voorkom moet nie ook in die “Unieke feite vir bronne”-lys voorkom nie."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1889
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer aan gesinne kan koppel. Byvoorbeeld, as MARR in hierdie lys is, sal gebruikers nie meer as een MARR rekord by 'n gesin kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir gesinne”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer by gesinne kan voeg. Byvoorbeeld, as MARR in hierdie lys is, sal gebruikers nie meer as een MARR rekord by 'n gesin kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir gesinne”-lys voorkom nie."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1771
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer aan persone kan koppel. Byvoorbeeld, as BIRT in hierdie lys is, sal gebruikers nie meer as een BIRT rekord by 'n persoon kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir persone”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer by persone kan voeg. Byvoorbeeld, as BIRT in hierdie lys is, sal gebruikers nie meer as een BIRT rekord by 'n persoon kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir persone”-lys voorkom nie."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:2096
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer aan bergplekke kan koppel. Byvoorbeeld, as NAME in hierdie lys is, sal gebruikers nie meer as een NAME rekord by 'n bergplek kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir bergplekke”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer by bergplekke kan voeg. Byvoorbeeld, as NAME in hierdie lys is, sal gebruikers nie meer as een NAME rekord by 'n bergplek kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir bergplekke”-lys voorkom nie."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:2007
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer aan bronne kan koppel. Byvoorbeeld, as TITL in hierdie lys is, sal gebruikers nie meer as een TITL rekord by 'n bron kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir bronne”-lys voorkom nie."
+msgstr "Dit is die lys van GEDCOM-feite wat jou gebruikers net een keer by bronne kan voeg. Byvoorbeeld, as TITL in hierdie lys is, sal gebruikers nie meer as een TITL rekord by 'n bron kan voeg nie. Feite wat in hierdie lys voorkom moet nie ook in die “Alle feite vir bronne”-lys voorkom nie."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:349
@@ -14322,7 +14322,7 @@ msgstr "Hierdie opsie behou die skakels na private rekords. Dit beteken dat jy '
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:482
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "Hierdie opsie sal die name vertoon (maar geen ander besonderhede nie) van persone wie se rekords privaat gemerk is. Persone word privaat gemerk as hulle nog lewend is of as 'n privaatheidsbeperking aan hulle rekord gevoeg is. Om 'n spesifieke naam te verberg, moet 'n privaatheidsbeperking vir die persoon se naamrekord bygevoeg word."
+msgstr "Hierdie opsie sal die name vertoon (maar geen ander besonderhede nie) van persone wie se rekords privaat gemerk is. Persone word privaat gemerk as hulle nog lewend is of as 'n privaatheidsbeperking aan hulle rekord bygevoeg is. Om 'n spesifieke naam te verberg, moet 'n privaatheidsbeperking vir die persoon se naamrekord bygevoeg word."
 
 #: app/Module/GoogleMapsModule.php:523
 msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
@@ -14628,7 +14628,7 @@ msgstr "Om die ogradering te voltooi, moet jy die lêers met die hand installeer
 
 #: app/Module/ResearchTaskModule.php:205
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Om nuwe navorsingstake te skep, moet jy eers “navorsingstaak” by die lys van feite en gebeurtenisse in die voorkeure vir die stamboom byvoeg."
+msgstr "Om nuwe navorsingstake te skep, moet jy eers “navorsingstaak” by die lys van feite en gebeurtenisse in die voorkeure vir die stamboom voeg."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1665
@@ -15239,7 +15239,7 @@ msgstr "Gebruikersnaam"
 
 #: app/Module/LoginBlockModule.php:100 login.php:221
 msgid "Username or email address"
-msgstr "Gebruikersnaam of e-posadres"
+msgstr "Gebruikersnaam of eposadres"
 
 #: admin_users.php:331 edituser.php:164 login.php:440
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
@@ -15282,25 +15282,25 @@ msgstr "Vatikaanstad"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:88
 msgctxt "GENITIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:154
 msgctxt "INSTRUMENTAL"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:121
 msgctxt "LOCATIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:55
 msgctxt "NOMINATIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
 #: app/Stats.php:6968
@@ -15310,25 +15310,25 @@ msgstr "Venezuela"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:93
 msgctxt "GENITIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
 msgctxt "INSTRUMENTAL"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:126
 msgctxt "LOCATIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:60
 msgctxt "NOMINATIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Ventôse"
 
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -15344,8 +15344,8 @@ msgid "Verified"
 msgstr "Geverifieer"
 
 #: app/GedcomCode/GedcomCodeTemp.php:331
-msgid "Vernal, Utah"
-msgstr "Vernal, Utah"
+msgid "Vernal, Utah, United States"
+msgstr "Vernal, Utah, Verenigde State"
 
 #. I18N: gedcom tag VERS
 #: app/GedcomTag.php:852
@@ -15472,8 +15472,8 @@ msgid "Ward"
 msgstr "Voog"
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
-msgid "Washington, DC"
-msgstr "Washington, D.C."
+msgid "Washington, District of Columbia, United States"
+msgstr "Washington, Distrik Columbia, Verenigde State"
 
 #: admin_trees_config.php:1111
 msgid "Watermarks"
@@ -15492,7 +15492,7 @@ msgstr "Dit kan lank neem om watermerke vir groot beelde te skep. Besige webwerw
 #: login.php:386
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this website, you will need to know your user name and password."
-msgstr "Ons sal nou 'n e-posbevestiging aan die adres <b>%s</b> stuur. Jy moet jou aansoek vir 'n rekening verifieer deur die instruksies in daardie e-pos te volg. As jy nie jou aansoek vir 'n rekening binne sewe dae verifieer nie, sal jou aansoek outomaties afgekeur word. Jy sal dan weer aansoek moet doen.<br><br>Nadat jy die instruksies in die e-posbevestiging gevolg het, moet 'n beheerder nog die aansoek goedkeur voordat jou rekening gebruik kan word.<br><br>Om by hierdie webwerf aan te meld, sal jy jou gebruikersnaam en wagwoord nodig hê."
+msgstr "Ons sal nou 'n eposbevestiging aan die adres <b>%s</b> stuur. Jy moet jou aansoek vir 'n rekening verifieer deur die instruksies in daardie epos te volg. As jy nie jou aansoek vir 'n rekening binne sewe dae verifieer nie, sal jou aansoek outomaties afgekeur word. Jy sal dan weer aansoek moet doen.<br><br>Nadat jy die instruksies in die e-posbevestiging gevolg het, moet 'n beheerder nog die aansoek goedkeur voordat jou rekening gebruik kan word.<br><br>Om by hierdie webwerf aan te meld, sal jy jou gebruikersnaam en wagwoord nodig hê."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:94
@@ -15564,7 +15564,7 @@ msgstr "Wanneer 'n rekord bygewerk word, word die gebruiker en die tydstempel aa
 
 #: admin_users.php:389
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Wanneer 'n gebruiker 'n rekening aanvra, word 'n e-pos na hulle e-posadres gestuur met 'n verifikasieskakel. Sodra hulle op hierdie skakel klik, weet ons dat die e-posadres korrel is, en die “e-pos geverifieer”-opsie word dan outomaties geselekteer."
+msgstr "Wanneer 'n gebruiker 'n rekening aanvra, word 'n epos na hulle eposadres gestuur met 'n verifikasieskakel. Sodra hulle op hierdie skakel klik, weet ons dat die eposadres korrek is, en die “epos geverifieer”-opsie word dan outomaties geselekteer."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -15573,12 +15573,12 @@ msgstr "Wanneer 'n skakel bygevoeg word, kan die ID-veld nie leeg wees nie."
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2226
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "Wanneer nuwe naverwante familie bygevoeg word, kan jy bronverwysings by die rekords (persoon en gesin) of by die feite en gebeurtenisse (geboorte, huwelik, en dood) byvoeg. Hierdie opsie beheer of rekords of feite by verstek geselekteer word."
+msgstr "Wanneer nuwe naverwante familie bygevoeg word, kan jy bronverwysings by die rekords (persoon en gesin) of by die feite en gebeurtenisse (geboorte, huwelik, en dood) voeg. Hierdie opsie beheer of rekords of feite by verstek geselekteer word."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:858
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
-msgstr "Wanneer nuwe rekords geskep word, word hulle 'n interne ID-nommer toegewys. Jy kan hier die voorvoegsel vir elke soort rekord bepaal."
+msgstr "Wanneer nuwe rekords geskep word, word hulle 'n interne ID-nommer toegeken. Jy kan hier die voorvoegsel vir elke soort rekord bepaal."
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1619
@@ -15596,7 +15596,7 @@ msgstr "Wanneer jy inligting byvoeg, wysig of skrap, word die wysigings nie onmi
 
 #: message.php:132
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
-msgstr "Wanneer jy hierdie boodskap stuur, sal jy 'n afskrif per e-pos ontvang by die adres wat jy verskaf het."
+msgstr "Wanneer jy hierdie boodskap stuur, sal jy 'n afskrif per epos ontvang by die adres wat jy verskaf het."
 
 #: admin_users.php:608
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
@@ -15678,8 +15678,8 @@ msgid "Will"
 msgstr "Testament"
 
 #: app/GedcomCode/GedcomCodeTemp.php:337
-msgid "Winter Quarters, Nebraska"
-msgstr "Winter Quarters, Nebraska"
+msgid "Winter Quarters, Nebraska, United States"
+msgstr "Winter Quarters, Nebraska, Verenigde State"
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"
@@ -15736,7 +15736,7 @@ msgstr "Jemen"
 #: login.php:336
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "Jy (of iemand wat voordoen om jou te wees) het 'n rekening aangevra vanaf %1$s deur van die e-posadres %2$s gebruik te maak."
+msgstr "Jy (of iemand wat voordoen om jou te wees) het 'n rekening aangevra vanaf %1$s deur van die eposadres %2$s gebruik te maak."
 
 #: logout.php:24
 msgid "You are logged out."
@@ -15785,11 +15785,11 @@ msgstr "Jy kan 'n hoër of laer perk aanvra, alhoewel die bediener hierdie verso
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Jy kan die privaatheidsberekeninge bespoedig deur 'n sterfrekord toe te ken aan persone wie se dood afgelei kan word uit ander datums, maar van wie geen rekord van die dood, begrafnis, verassing, ens. beskikbaar is nie."
+msgstr "Jy kan die privaatheidsberekeninge bespoedig deur 'n sterfrekord by persone te voeg wie se dood afgelei kan word uit ander datums, maar van wie geen rekord van die dood, begrafnis, verassing, ens. beskikbaar is nie."
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr "Jy mag nie 'n reël skep nie, wat jou sal verhinder om toegang tot die webwerf te kry nie."
+msgstr "Jy mag nie 'n reël skep wat jou sal verhinder om toegang tot die webwerf te kry nie."
 
 #: login.php:75
 msgid "You cannot login because your browser does not accept cookies."
@@ -15809,7 +15809,7 @@ msgstr "Jy het jou versoek om as gebruiker te registreer bevestig."
 
 #: app/Module/UserJournalModule.php:95
 msgid "You have not created any journal items."
-msgstr "Jy het nog geen joernaal inskrywings gemaak nie."
+msgstr "Jy het nog geen joernaal inskrywings geskep nie."
 
 #: admin_trees_manage.php:198
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
@@ -15917,7 +15917,7 @@ msgstr "Jy moet die “%1$s” van “%2$s” verwyder en weer probeer."
 
 #: admin_users.php:395
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "Jy moet nie 'n rekening goedkeur nie tensy jy seker is dat die e-posadres korrek is."
+msgstr "Jy moet nie 'n rekening goedkeur nie tensy jy seker is dat die eposadres korrek is."
 
 #: login.php:325
 msgid "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
@@ -18563,25 +18563,25 @@ msgstr "keer seleksie om"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:100
 msgctxt "GENITIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:166
 msgctxt "INSTRUMENTAL"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:133
 msgctxt "LOCATIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:67
 msgctxt "NOMINATIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "jours complémentaires"
 
 #. I18N: button label, last page

@@ -747,7 +747,7 @@ case 'add_parent_to_individual_action':
 case 'add_unlinked_indi':
 	$controller
 		->restrictAccess(Auth::isManager($WT_TREE))
-		->setPageTitle(I18N::translate('Create a new individual'))
+		->setPageTitle(I18N::translate('Create an individual'))
 		->pageHeader();
 
 	print_indi_form('add_unlinked_indi_action', null, null, null, null, null);
@@ -1193,7 +1193,7 @@ case 'linkspouseaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewsource':
 	$controller
-		->setPageTitle(I18N::translate('Create a new source'))
+		->setPageTitle(I18N::translate('Create a source'))
 		->pageHeader();
 
 	?>
@@ -1276,7 +1276,7 @@ case 'addnewsource':
 
 case 'addsourceaction':
 	$controller
-		->setPageTitle(I18N::translate('Create a new source'))
+		->setPageTitle(I18N::translate('Create a source'))
 		->pageHeader();
 
 	if (!Filter::checkCsrf()) {
@@ -1345,7 +1345,7 @@ case 'addsourceaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewnote':
 	$controller
-		->setPageTitle(I18N::translate('Create a new shared note'))
+		->setPageTitle(I18N::translate('Create a shared note'))
 		->pageHeader();
 
 	?>
@@ -1381,7 +1381,7 @@ case 'addnewnote':
 
 case 'addnoteaction':
 	$controller
-		->setPageTitle(I18N::translate('Create a new shared note'))
+		->setPageTitle(I18N::translate('Create a shared note'))
 		->pageHeader();
 
 	if (!Filter::checkCsrf()) {
@@ -1509,7 +1509,7 @@ case 'editnoteaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewrepository':
 	$controller
-		->setPageTitle(I18N::translate('Create a new repository'))
+		->setPageTitle(I18N::translate('Create a repository'))
 		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
@@ -1572,7 +1572,7 @@ case 'addrepoaction':
 	}
 
 	$controller
-		->setPageTitle(I18N::translate('Create a new repository'))
+		->setPageTitle(I18N::translate('Create a repository'))
 		->pageHeader();
 
 	$gedrec    = '0 @XREF@ REPO';

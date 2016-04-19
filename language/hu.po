@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 11:18+0000\n"
-"Last-Translator: Tuna András <tunandras@gmail.com>\n"
+"PO-Revision-Date: 2016-04-19 06:53+0000\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Hungarian <http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -1267,6 +1267,14 @@ msgstr "Hozzáad"
 msgid "Add %s to the clippings cart"
 msgstr "%s kerüljön a metszési kosárba"
 
+#: app/Module/RelativesTabModule.php:273
+msgid "Add a brother or sister"
+msgstr "Új testvér felvétele"
+
+#: edit_interface.php:516
+msgid "Add a child"
+msgstr "Új gyermek felvétele"
+
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
 msgstr "Gyermek felvétele egyszülős család létrehozása céljából"
@@ -1279,27 +1287,6 @@ msgstr "Gyermek felvétele ebbe a családba"
 #: edit_interface.php:81
 msgid "Add a fact"
 msgstr "Tény felvétele"
-
-#: app/Module/RelativesTabModule.php:154
-msgid "Add a husband to this family"
-msgstr "Férj felvétele ebbe a családba"
-
-#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
-#: edit_interface.php:1156
-msgid "Add a husband using an existing individual"
-msgstr "Férj felvétele egy bejegyzett személy felhasználásával"
-
-#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add an associate"
-msgstr "Új kapcsolat felvétele"
-
-#: app/Module/RelativesTabModule.php:273
-msgid "Add a brother or sister"
-msgstr "Új testvér felvétele"
-
-#: edit_interface.php:516
-msgid "Add a child"
-msgstr "Új gyermek felvétele"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
@@ -1317,6 +1304,15 @@ msgstr "Új földrajzi hely felvétele"
 #: edit_interface.php:900
 msgid "Add a husband"
 msgstr "Új férj felvétele"
+
+#: app/Module/RelativesTabModule.php:154
+msgid "Add a husband to this family"
+msgstr "Férj felvétele ebbe a családba"
+
+#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
+#: edit_interface.php:1156
+msgid "Add a husband using an existing individual"
+msgstr "Férj felvétele egy bejegyzett személy felhasználásával"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
@@ -1337,6 +1333,10 @@ msgstr "Új anya felvétele"
 msgid "Add a name"
 msgstr "Új név felvétele"
 
+#: app/Module/FamilyTreeNewsModule.php:148
+msgid "Add a news article"
+msgstr "Újságcikk felvétele"
+
 #: app/Controller/FamilyController.php:149
 #: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
@@ -1345,6 +1345,16 @@ msgstr "Új jegyzet felvétele"
 #: app/Functions/FunctionsEdit.php:1141
 msgid "Add a restriction"
 msgstr "Új korlátozás felvétele"
+
+#. I18N: label for a yes/no option
+#: app/Module/FamilyTreeFavoritesModule.php:286
+#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
+#: app/Module/UpcomingAnniversariesModule.php:181
+#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
+msgid "Add a scrollbar when block contents grow"
+msgstr "Legyen függőleges görgetősáv, ha a blokk túl magas"
 
 #: app/Controller/FamilyController.php:155
 #: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
@@ -1364,6 +1374,11 @@ msgstr "Új forrásidézet felvétele"
 msgid "Add a spouse"
 msgstr "Új házastárs felvétele"
 
+#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
+#: app/Module/StoriesModule.php:367
+msgid "Add a story"
+msgstr "Történet felvétele"
+
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
@@ -1373,25 +1388,6 @@ msgstr "Új felhasználó felvétele"
 #: edit_interface.php:897
 msgid "Add a wife"
 msgstr "Új feleség felvétele"
-
-#: app/Module/FamilyTreeNewsModule.php:148
-msgid "Add a news article"
-msgstr "Újságcikk felvétele"
-
-#. I18N: label for a yes/no option
-#: app/Module/FamilyTreeFavoritesModule.php:286
-#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230
-#: app/Module/ReviewChangesModule.php:193
-#: app/Module/UpcomingAnniversariesModule.php:181
-#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
-msgid "Add a scrollbar when block contents grow"
-msgstr "Legyen függőleges görgetősáv, ha a blokk túl magas"
-
-#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
-#: app/Module/StoriesModule.php:367
-msgid "Add a story"
-msgstr "Történet felvétele"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1406,6 +1402,10 @@ msgstr "Feleség felvétele egy bejegyzett személy felhasználásával"
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
 msgstr "GYIK-elem felvétele"
+
+#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
+msgid "Add an associate"
+msgstr "Új kapcsolat felvétele"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -1480,7 +1480,7 @@ msgstr "Hivatkozás nélküli bejegyzések felvétele"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
 msgid "Add watermarks to thumbnails"
-msgstr "Adjunk vízjelet a bélyegképekhez?"
+msgstr "Adjunk vízjelet a bélyegképekhez"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -1785,8 +1785,8 @@ msgid "Album"
 msgstr "Album"
 
 #: app/GedcomCode/GedcomCodeTemp.php:85
-msgid "Albuquerque, New Mexico"
-msgstr "Albuquerque, Új Mexikó"
+msgid "Albuquerque, New Mexico, United States"
+msgstr "Albuquerque, Új Mexikó, Egyesült Államok"
 
 #: app/Stats.php:6786
 msgid "Algeria"
@@ -1999,8 +1999,8 @@ msgid "Ancestral file number"
 msgstr "Ősök fájlszáma (AFN)"
 
 #: app/GedcomCode/GedcomCodeTemp.php:87
-msgid "Anchorage, Alaska"
-msgstr "Anchorage, Alaszka"
+msgid "Anchorage, Alaska, United States"
+msgstr "Anchorage, Alaszka, Egyesült Államok"
 
 #: app/Stats.php:6724
 msgid "Andorra"
@@ -2225,8 +2225,8 @@ msgid "At sea"
 msgstr "Tengeren"
 
 #: app/GedcomCode/GedcomCodeTemp.php:93
-msgid "Atlanta, Georgia"
-msgstr "Atlanta, Georgia"
+msgid "Atlanta, Georgia, United States"
+msgstr "Atlanta, Georgia, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
@@ -2561,8 +2561,8 @@ msgid "Batch update"
 msgstr "Kötegelt frissítés"
 
 #: app/GedcomCode/GedcomCodeTemp.php:113
-msgid "Baton Rouge, Louisiana"
-msgstr "Baton Rouge, Louisiana"
+msgid "Baton Rouge, Louisiana, United States"
+msgstr "Baton Rouge, Louisiana, Egyesült Államok"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2752
@@ -2617,8 +2617,8 @@ msgid "Bibliography"
 msgstr "Irodalomjegyzék"
 
 #: app/GedcomCode/GedcomCodeTemp.php:97
-msgid "Billings, Montana"
-msgstr "Billings, Montana"
+msgid "Billings, Montana, United States"
+msgstr "Billings, Montana, Egyesült Államok"
 
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
@@ -2630,8 +2630,8 @@ msgid "Bing Maps™"
 msgstr "Bing Maps™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
-msgid "Birmingham, Alabama"
-msgstr "Birmingham, Alabama"
+msgid "Birmingham, Alabama, United States"
+msgstr "Birmingham, Alabama, Egyesült Államok"
 
 #. I18N: gedcom tag BIRT
 #: app/GedcomTag.php:206 modules_v3/ahnentafel_report/report.xml:441
@@ -2870,8 +2870,8 @@ msgid "Births by century"
 msgstr "Születések századok szerint"
 
 #: app/GedcomCode/GedcomCodeTemp.php:101
-msgid "Bismarck, North Dakota"
-msgstr "Bismarck, Észak Dakota"
+msgid "Bismarck, North Dakota, United States"
+msgstr "Bismarck, Észak Dakota, Egyesült Államok"
 
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
@@ -2907,8 +2907,8 @@ msgid "Bogota, Colombia"
 msgstr "Bogota, Kolumbia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:105
-msgid "Boise, Idaho"
-msgstr "Boise, Idaho"
+msgid "Boise, Idaho, United States"
+msgstr "Boise, Idaho, Egyesült Államok"
 
 #: app/Stats.php:6749
 msgid "Bolivia"
@@ -2932,8 +2932,8 @@ msgid "Bosnia and Herzegovina"
 msgstr "Bosznia-Hercegovina"
 
 #: app/GedcomCode/GedcomCodeTemp.php:107
-msgid "Boston, Massachusetts"
-msgstr "Boston, Massachusetts"
+msgid "Boston, Massachusetts, United States"
+msgstr "Boston, Massachusetts, Egyesült Államok"
 
 #: app/Functions/FunctionsPrintLists.php:628
 msgid "Both alive"
@@ -2948,8 +2948,8 @@ msgid "Botswana"
 msgstr "Botswana"
 
 #: app/GedcomCode/GedcomCodeTemp.php:109
-msgid "Bountiful, Utah"
-msgstr "Bountiful, Utah"
+msgid "Bountiful, Utah, United States"
+msgstr "Bountiful, Utah, Egyesült Államok"
 
 #: app/Stats.php:6754
 msgid "Bouvet Island"
@@ -3540,8 +3540,8 @@ msgid "Checking server configuration"
 msgstr "Szerverbeállítások ellenőrzése"
 
 #: app/GedcomCode/GedcomCodeTemp.php:119
-msgid "Chicago, Illinois"
-msgstr "Chicago, Illinois"
+msgid "Chicago, Illinois, United States"
+msgstr "Chicago, Illinois, Egyesült Államok"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:36 app/GedcomTag.php:274
@@ -3840,16 +3840,16 @@ msgid "Colonia Juarez, Mexico"
 msgstr "Colonia Juarez, Mexikó"
 
 #: app/GedcomCode/GedcomCodeTemp.php:133
-msgid "Columbia River, Washington"
-msgstr "Columbia River, Washington"
+msgid "Columbia River, Washington, United States"
+msgstr "Columbia River, Washington, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:127
-msgid "Columbia, South Carolina"
-msgstr "Columbia, South Carolina"
+msgid "Columbia, South Carolina, United States"
+msgstr "Columbia, South Carolina, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:129
-msgid "Columbus, Ohio"
-msgstr "Columbus, Ohio"
+msgid "Columbus, Ohio, United States"
+msgstr "Columbus, Ohio, Egyesült Államok"
 
 #: medialist.php:164
 msgid "Columns per page"
@@ -4093,41 +4093,41 @@ msgid "Create"
 msgstr "Létrehoz"
 
 #: admin_trees_manage.php:621
-msgid "Create a new family tree"
+msgid "Create a family tree"
 msgstr "Új családfa létrehozása"
 
-#: edit_interface.php:750
-msgid "Create a new individual"
-msgstr "Új személy létrehozása"
-
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
-msgid "Create a new media object"
+msgid "Create a media object"
 msgstr "Új médiaobjektum létrehozása"
 
 #: app/Functions/FunctionsEdit.php:427 edit_interface.php:1512
 #: edit_interface.php:1575
-msgid "Create a new repository"
+msgid "Create a repository"
 msgstr "Új adattár létrehozása"
 
 #: app/Functions/FunctionsEdit.php:438 edit_interface.php:1348
 #: edit_interface.php:1384
-msgid "Create a new shared note"
+msgid "Create a shared note"
 msgstr "Új megosztott jegyzet létrehozása"
 
 #: app/Functions/FunctionsEdit.php:634
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
-msgid "Create a new shared note using assistant"
+msgid "Create a shared note using the census assistant"
 msgstr "Új megosztott jegyzet létrehozása segítő használatával"
 
 #: app/Functions/FunctionsEdit.php:460 edit_interface.php:1196
 #: edit_interface.php:1279
-msgid "Create a new source"
+msgid "Create a source"
 msgstr "Új forrás létrehozása"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
 msgstr "Új webhelyelérési szabály létrehozása"
+
+#: edit_interface.php:750
+msgid "Create an individual"
+msgstr "Új személy létrehozása"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -4335,8 +4335,8 @@ msgid "Daitch-Mokotoff"
 msgstr "Daitch-Mokotoff"
 
 #: app/GedcomCode/GedcomCodeTemp.php:135
-msgid "Dallas, Texas"
-msgstr "Dallas, Texas"
+msgid "Dallas, Texas, United States"
+msgstr "Dallas, Texas, Egyesült Államok"
 
 #. I18N: A summary of the system status
 #: admin.php:460
@@ -5025,8 +5025,8 @@ msgid "Denmark"
 msgstr "Dánia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:137
-msgid "Denver, Colorado"
-msgstr "Denver, Kolorádó"
+msgid "Denver, Colorado, United States"
+msgstr "Denver, Colorado, Egyesült Államok"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
@@ -5109,8 +5109,8 @@ msgid "Details of the new user will be sent to the genealogy contact for the cor
 msgstr "Az új felhasználó adatait elküldjük a megfelelő családfa származástani kapcsolattartójának."
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
-msgid "Detroit, Michigan"
-msgstr "Detroit, Michigan"
+msgid "Detroit, Michigan, United States"
+msgstr "Detroit, Michigan, Egyesült Államok"
 
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
@@ -6390,25 +6390,25 @@ msgstr "Flandria"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:95
 msgctxt "GENITIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Virágzás hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:161
 msgctxt "INSTRUMENTAL"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Virágzás hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:128
 msgctxt "LOCATIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Virágzás hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:62
 msgctxt "NOMINATIVE"
-msgid "Floréal"
+msgid "Floreal"
 msgstr "Virágzás hava"
 
 #: medialist.php:91
@@ -6539,8 +6539,8 @@ msgid "Frequently asked questions"
 msgstr "Gyakran ismételt kérdések (GYIK)"
 
 #: app/GedcomCode/GedcomCodeTemp.php:151
-msgid "Fresno, California"
-msgstr "Fresno, Kalifornia"
+msgid "Fresno, California, United States"
+msgstr "Fresno, Kalifornia, Egyesült Államok"
 
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:669
@@ -6951,8 +6951,8 @@ msgid "Hamilton, New Zealand"
 msgstr "Hamilton, Új-Zéland"
 
 #: app/GedcomCode/GedcomCodeTemp.php:165
-msgid "Hartford, Connecticut"
-msgstr "Hartford, Connecticut"
+msgid "Hartford, Connecticut, United States"
+msgstr "Hartford, Connecticut, Egyesült Államok"
 
 #: modules_v3/descendancy_report/report.xml:429
 msgid "He "
@@ -7178,8 +7178,8 @@ msgid "Household"
 msgstr "Háztartás"
 
 #: app/GedcomCode/GedcomCodeTemp.php:175
-msgid "Houston, Texas"
-msgstr "Houston, Texas"
+msgid "Houston, Texas, United States"
+msgstr "Houston, Texas, Egyesült Államok"
 
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:158
@@ -7237,8 +7237,8 @@ msgid "Icon"
 msgstr "Ikon"
 
 #: app/GedcomCode/GedcomCodeTemp.php:177
-msgid "Idaho Falls, Idaho"
-msgstr "Idaho Falls, Idaho"
+msgid "Idaho Falls, Idaho, United States"
+msgstr "Idaho Falls, Idaho, Egyesült Államok"
 
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:516
@@ -7456,7 +7456,7 @@ msgstr "Tartalmazza az almappákat"
 
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Tartalmazza a személy közvetlen családját?"
+msgstr "Tartalmazza a személy közvetlen családját"
 
 #: app/Stats.php:6828
 msgid "India"
@@ -7741,8 +7741,8 @@ msgid "Jordan"
 msgstr "Jordánia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:181
-msgid "Jordan River, Utah"
-msgstr "Jordan River, Utah"
+msgid "Jordan River, Utah, United States"
+msgstr "Jordan River, Utah, Egyesült Államok"
 
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:47
@@ -7946,8 +7946,8 @@ msgid "Kislev"
 msgstr "Kiszlév"
 
 #: app/GedcomCode/GedcomCodeTemp.php:185
-msgid "Kona, Hawaii"
-msgstr "Kona, Hawaii"
+msgid "Kona, Hawaii, United States"
+msgstr "Kona, Hawaii, Egyesült Államok"
 
 #: app/Stats.php:6846
 msgid "Korea"
@@ -7996,8 +7996,8 @@ msgid "LDS temple"
 msgstr "UNSZ-templom"
 
 #: app/GedcomCode/GedcomCodeTemp.php:167
-msgid "Laie, Hawaii"
-msgstr "Laie, Hawaii"
+msgid "Laie, Hawaii, United States"
+msgstr "Laie, Hawaii, Egyesült Államok"
 
 #. I18N: page orientation
 #: admin_trees_config.php:54 modules_v3/change_report/report.xml:10
@@ -8036,8 +8036,8 @@ msgid "Largest number of grandchildren"
 msgstr "Legtöbb unoka"
 
 #: app/GedcomCode/GedcomCodeTemp.php:199
-msgid "Las Vegas, Nevada"
-msgstr "Las Vegas, Nevada"
+msgid "Las Vegas, Nevada, United States"
+msgstr "Las Vegas, Nevada, Egyesült Államok"
 
 #. I18N: gedcom tag CHAN
 #: app/GedcomTag.php:258 modules_v3/change_report/report.xml:66
@@ -8306,8 +8306,8 @@ msgid "Lodger"
 msgstr "Albérlő"
 
 #: app/GedcomCode/GedcomCodeTemp.php:191
-msgid "Logan, Utah"
-msgstr "Logan, Utah"
+msgid "Logan, Utah, United States"
+msgstr "Logan, Utah, Egyesült Államok"
 
 #: app/Module/LoginBlockModule.php:63
 msgid "Logged in as "
@@ -8359,24 +8359,24 @@ msgid "Longitude"
 msgstr "Földrajzi hosszúság"
 
 #: app/GedcomCode/GedcomCodeTemp.php:187
-msgid "Los Angeles, California"
-msgstr "Los Angeles, Kalifornia"
+msgid "Los Angeles, California, United States"
+msgstr "Los Angeles, Kalifornia, Egyesült Államok"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219 login.php:252
 msgid "Lost password request"
 msgstr "Új jelszó kérése"
 
 #: app/GedcomCode/GedcomCodeTemp.php:195
-msgid "Louisville, Kentucky"
-msgstr "Louisville, Kentucky"
+msgid "Louisville, Kentucky, United States"
+msgstr "Louisville, Kentucky, Egyesült Államok"
 
 #: app/Stats.php:1741
 msgid "Lowest population"
 msgstr "Legkisebb népesség"
 
 #: app/GedcomCode/GedcomCodeTemp.php:197
-msgid "Lubbock, Texas"
-msgstr "Lubbock, Texas"
+msgid "Lubbock, Texas, United States"
+msgstr "Lubbock, Texas, Egyesült Államok"
 
 #: app/Stats.php:6857
 msgid "Luxembourg"
@@ -8491,8 +8491,8 @@ msgid "Manila, Philippines"
 msgstr "Manila, Philippines"
 
 #: app/GedcomCode/GedcomCodeTemp.php:205
-msgid "Manti, Utah"
-msgstr "Manti, Utah"
+msgid "Manti, Utah, United States"
+msgstr "Manti, Utah, Egyesült Államok"
 
 #: app/GedcomTag.php:1928
 msgid "Manuscript"
@@ -8861,8 +8861,8 @@ msgid "Mayotte"
 msgstr "Mayotte"
 
 #: app/GedcomCode/GedcomCodeTemp.php:207
-msgid "Medford, Oregon"
-msgstr "Medford, Oregon"
+msgid "Medford, Oregon, United States"
+msgstr "Medford, Oregon, Egyesült Államok"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
@@ -9008,8 +9008,8 @@ msgid "Memory limit"
 msgstr "Memóriahatár"
 
 #: app/GedcomCode/GedcomCodeTemp.php:211
-msgid "Memphis, Tennessee"
-msgstr "Memphis, Tennessee"
+msgid "Memphis, Tennessee, United States"
+msgstr "Memphis, Tennessee, Egyesült Államok"
 
 #: admin_module_menus.php:87 admin_modules.php:185
 msgid "Menu"
@@ -9044,8 +9044,8 @@ msgid "Merida, Mexico"
 msgstr "Merida, Mexikó"
 
 #: app/GedcomCode/GedcomCodeTemp.php:89
-msgid "Mesa, Arizona"
-msgstr "Mesa, Arizóna"
+msgid "Mesa, Arizona, United States"
+msgstr "Mesa, Arizona, Egyesült Államok"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
 msgid "Message"
@@ -9244,8 +9244,8 @@ msgid "Month:"
 msgstr "Hónap:"
 
 #: app/GedcomCode/GedcomCodeTemp.php:221
-msgid "Monticello, Utah"
-msgstr "Monticello, Utah"
+msgid "Monticello, Utah, United States"
+msgstr "Monticello, Utah, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:223
 msgid "Montreal, Quebec, Canada"
@@ -9347,8 +9347,8 @@ msgid "Mother’s family with an unknown individual"
 msgstr "Anya családja. Társa ismeretlen személlyel"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
-msgid "Mount Timpanogos, Utah"
-msgstr "Mount Timpanogos, Utah"
+msgid "Mount Timpanogos, Utah, United States"
+msgstr "Mount Timpanogos, Utah, Egyesült Államok"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:493 index_edit.php:312
 #: index_edit.php:361
@@ -9522,8 +9522,8 @@ msgid "Narrative description"
 msgstr "Narratív leírás"
 
 #: app/GedcomCode/GedcomCodeTemp.php:227
-msgid "Nashville, Tennessee"
-msgstr "Nashville, Tennessee"
+msgid "Nashville, Tennessee, United States"
+msgstr "Nashville, Tennessee, Egyesült Államok"
 
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:610
@@ -9540,12 +9540,12 @@ msgid "Nauru"
 msgstr "Nauru"
 
 #: app/GedcomCode/GedcomCodeTemp.php:229
-msgid "Nauvoo, Illinois (new)"
-msgstr "Nauvoo, Illinois (új)"
+msgid "Nauvoo (new), Illinois, United States"
+msgstr "Nauvoo (új), Illinois, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:231
-msgid "Nauvoo, Illinois (original)"
-msgstr "Nauvoo, Illinois (eredeti)"
+msgid "Nauvoo (original), Illinois, United States"
+msgstr "Nauvoo (eredeti), Illinois, Egyesült Államok"
 
 #: app/Module/GoogleMapsModule.php:407 app/Module/GoogleMapsModule.php:3961
 msgid "Neighborhood"
@@ -9593,8 +9593,8 @@ msgid "New Caledonia"
 msgstr "Új-Kaledónia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:237
-msgid "New York, New York"
-msgstr "New York, New York"
+msgid "New York, New York, United States"
+msgstr "New York, New York, Egyesült Államok"
 
 #: app/Stats.php:6895
 msgid "New Zealand"
@@ -9617,8 +9617,8 @@ msgid "New user at %s"
 msgstr "Új felhasználó a(z) %s webhelyen"
 
 #: app/GedcomCode/GedcomCodeTemp.php:233
-msgid "Newport Beach, California"
-msgstr "Newport Beach, Kalifornia"
+msgid "Newport Beach, California, United States"
+msgstr "Newport Beach, Kalifornia, Egyesült Államok"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:54
@@ -9685,25 +9685,25 @@ msgstr "Niue"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:91
 msgctxt "GENITIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Hó hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
 msgctxt "INSTRUMENTAL"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Hó hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:124
 msgctxt "LOCATIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Hó hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:58
 msgctxt "NOMINATIVE"
-msgid "Nivôse"
+msgid "Nivose"
 msgstr "Hó hava"
 
 #: admin_users.php:660 app/Functions/FunctionsPrintFacts.php:308
@@ -10073,8 +10073,8 @@ msgid "Nurse"
 msgstr "Ápoló"
 
 #: app/GedcomCode/GedcomCodeTemp.php:241
-msgid "Oakland, California"
-msgstr "Oakland, California"
+msgid "Oakland, California, United States"
+msgstr "Oakland, Kalifornia, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:243
 msgid "Oaxaca, Mexico"
@@ -10128,12 +10128,12 @@ msgid "October"
 msgstr "október"
 
 #: app/GedcomCode/GedcomCodeTemp.php:245
-msgid "Ogden, Utah"
-msgstr "Ogden, Utah"
+msgid "Ogden, Utah, United States"
+msgstr "Ogden, Utah, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:247
-msgid "Oklahoma City, Oklahoma"
-msgstr "Oklahoma City, Oklahoma"
+msgid "Oklahoma City, Oklahoma, United States"
+msgstr "Oklahoma City, Oklahoma, Egyesült Államok"
 
 #: admin_site_change.php:336
 msgid "Old data"
@@ -10263,8 +10263,8 @@ msgid "Orientation"
 msgstr "Orientáció"
 
 #: app/GedcomCode/GedcomCodeTemp.php:249
-msgid "Orlando, Florida"
-msgstr "Orlando, Florida"
+msgid "Orlando, Florida, United States"
+msgstr "Orlando, Florida, Egyesült Államok"
 
 #: app/GedcomTag.php:1942 app/Stats.php:5499 app/Stats.php:5918
 msgid "Other"
@@ -10404,8 +10404,8 @@ msgid "Palette"
 msgstr "Színpaletta"
 
 #: app/GedcomCode/GedcomCodeTemp.php:253
-msgid "Palmyra, New York"
-msgstr "Palmyra, New York"
+msgid "Palmyra, New York, United States"
+msgstr "Palmyra, New York, Egyesült Államok"
 
 #: app/Stats.php:6898
 msgid "Panama"
@@ -10616,10 +10616,6 @@ msgstr "Hely ellenőrzése"
 msgid "Place contains"
 msgstr "Hely tartalmazza:"
 
-#: app/Module/TopPageViewsModule.php:165
-msgid "Show counts before or after name"
-msgstr "A számláló a cím elé vagy mögé kerüljön?"
-
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
 msgid "Place hierarchy"
@@ -10812,25 +10808,25 @@ msgstr "Kérjük, adja meg az e-mail címét, hogy kapcsolatba léphessünk Önn
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:92
 msgctxt "GENITIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Eső hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
 msgctxt "INSTRUMENTAL"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Eső hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:125
 msgctxt "LOCATIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Eső hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:59
 msgctxt "NOMINATIVE"
-msgid "Pluviôse"
+msgid "Pluviose"
 msgstr "Eső hava"
 
 #: app/Stats.php:6904
@@ -10848,8 +10844,8 @@ msgid "Port number"
 msgstr "Portszám"
 
 #: app/GedcomCode/GedcomCodeTemp.php:263
-msgid "Portland, Oregon"
-msgstr "Portland, Oregon"
+msgid "Portland, Oregon, United States"
+msgstr "Portland, Oregon, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:251
 msgid "Porto Alegre, Brazil"
@@ -10964,7 +10960,7 @@ msgstr "Egyes napok"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Megjelenjenek az alapesemények, ha üresek?"
+msgstr "Megjelenjenek az alapesemények, ha üresek"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
 msgid "Privacy"
@@ -10993,8 +10989,8 @@ msgid "Property"
 msgstr "Tulajdon"
 
 #: app/GedcomCode/GedcomCodeTemp.php:267
-msgid "Provo, Utah"
-msgstr "Provo, Utah"
+msgid "Provo, Utah, United States"
+msgstr "Provo, Utah, Egyesült Államok"
 
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:704
@@ -11136,8 +11132,8 @@ msgid "Rajab"
 msgstr "Redseb"
 
 #: app/GedcomCode/GedcomCodeTemp.php:269
-msgid "Raleigh, North Carolina"
-msgstr "Raleigh, Észak Karolina"
+msgid "Raleigh, North Carolina, United States"
+msgstr "Raleigh, Észak Karolina, Egyesült Államok"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:98
@@ -11235,8 +11231,8 @@ msgid "Records are not the same type. Cannot merge records that are not the same
 msgstr "A bejegyzések nem azonos típusúak, így azok nem fűzhetők össze."
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
-msgid "Redlands, California"
-msgstr "Redlands, California"
+msgid "Redlands, California, United States"
+msgstr "Redlands, Kalifornia, Egyesült Államok"
 
 #: app/Module/GoogleMapsModule.php:991 app/Module/GoogleMapsModule.php:2338
 #: app/Module/GoogleMapsModule.php:3645
@@ -11399,8 +11395,8 @@ msgid "Remove this location?"
 msgstr "Töröljük ezt a helyet?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:277
-msgid "Reno, Nevada"
-msgstr "Reno, Nevada"
+msgid "Reno, Nevada, United States"
+msgstr "Reno, Nevada, Egyesült Államok"
 
 #: admin_trees_manage.php:506
 msgid "Renumber"
@@ -11596,8 +11592,8 @@ msgid "SMTP mail server"
 msgstr "SMTP-levélszerver"
 
 #: app/GedcomCode/GedcomCodeTemp.php:279
-msgid "Sacramento, California"
-msgstr "Sacramento, California"
+msgid "Sacramento, California, United States"
+msgstr "Sacramento, Kalifornia, Egyesült Államok"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:91
@@ -11649,20 +11645,20 @@ msgid "Saint Vincent and the Grenadines"
 msgstr "Saint Vincent és Grenadines"
 
 #: app/GedcomCode/GedcomCodeTemp.php:299
-msgid "Salt Lake City, Utah"
-msgstr "Salt Lake City, Utah"
+msgid "Salt Lake City, Utah, United States"
+msgstr "Salt Lake City, Utah, Egyesült Államok"
 
 #: app/Stats.php:6976
 msgid "Samoa"
 msgstr "Szamoa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:285
-msgid "San Antonio, Texas"
-msgstr "San Antonio, Texas"
+msgid "San Antonio, Texas, United States"
+msgstr "San Antonio, Texas, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:287
-msgid "San Diego, California"
-msgstr "San Diego, California"
+msgid "San Diego, California, United States"
+msgstr "San Diego, Kalifornia, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "San Jose, Costa Rica"
@@ -11804,8 +11800,8 @@ msgid "Searching for all possible relationships can take a lot of time in comple
 msgstr "A bonyolult fákban az összes lehetséges kapcsolat megkeresése hosszú ideig tarthat."
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Seattle, Washington"
-msgstr "Seattle, Washington"
+msgid "Seattle, Washington, United States"
+msgstr "Seattle, Washington, Egyesült Államok"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:370
@@ -11929,7 +11925,7 @@ msgstr "Üzenet küldése"
 
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Elküldjük az emlékeztető e-maileket?"
+msgstr "Elküldjük az emlékeztető e-maileket"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329
@@ -12314,7 +12310,7 @@ msgstr "Mutasd az összes címkét"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Mutassa az életkorkurzort?"
+msgstr "Mutassa az életkorkurzort"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1366
@@ -12323,11 +12319,15 @@ msgstr "Alapbeállítás szerint mutassa az ábrarészleteket"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Mutassa az ősök gyermekeit?"
+msgstr "Mutassa az ősök gyermekeit"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
 msgid "Show common surnames"
-msgstr "Mutassa a leggyakoribb vezetékneveket?"
+msgstr "Mutassa a leggyakoribb vezetékneveket"
+
+#: app/Module/TopPageViewsModule.php:165
+msgid "Show counts before or after name"
+msgstr "A számláló a cím elé vagy mögé kerüljön"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12364,7 +12364,7 @@ msgstr "Dátumkülönbségek feltüntetése"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
 msgid "Show date of last update"
-msgstr "Mutassa az utolsó frissítés dátumát?"
+msgstr "Mutassa az utolsó frissítés dátumát"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:391
@@ -12452,21 +12452,21 @@ msgstr "Privát személyek nevének mutatása"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Mutassa a jegyzeteket?"
+msgstr "Mutassa a jegyzeteket"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Mutassa a foglalkozásokat?"
+msgstr "Mutassa a foglalkozásokat"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Csak a születést, az elhalálozást és a házasságot mutassuk?"
+msgstr "Csak a születést, az elhalálozást és a házasságot mutassuk"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Csak az élők eseményeit mutassuk?"
+msgstr "Csak az élők eseményeit mutassuk"
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
@@ -12478,7 +12478,7 @@ msgstr "Csak azokat a személyeket mutasd, akik neme ismeretlen."
 
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "A személyeket, az eseményeket vagy mindent mutassunk?"
+msgstr "A személyeket, az eseményeket vagy mindent mutassunk"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -12501,7 +12501,7 @@ msgstr "Mutasd a függőben levő változtatásokat"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Mutassa a fotókat?"
+msgstr "Mutassa a fotókat"
 
 #: placelist.php:83
 msgid "Show places in hierarchy"
@@ -12530,11 +12530,11 @@ msgstr "Mutasd a jövőben kutatandó feladatokat"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Mutassuk a lakhelyeket?"
+msgstr "Mutassuk a lakhelyeket"
 
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls"
-msgstr "Mutassuk a diavetítőgombokat?"
+msgstr "Mutassuk a diavetítőgombokat"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12542,7 +12542,7 @@ msgstr "Mutassuk a diavetítőgombokat?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Mutassa a forrásokat?"
+msgstr "Mutassa a forrásokat"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12589,7 +12589,7 @@ msgstr "Mutassa a felhasználót, aki változtatott"
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Mely nyelveken jelenjen meg ez a blokk?"
+msgstr "Mely nyelveken jelenjen meg ez a blokk"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1038 app/Functions/FunctionsEdit.php:206
@@ -12781,8 +12781,8 @@ msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
 msgstr "Kis rendszerek (500 személy): 16–32 megabájt, 10–20 másodperc"
 
 #: app/GedcomCode/GedcomCodeTemp.php:303
-msgid "Snowflake, Arizona"
-msgstr "Snowflake, Arizona"
+msgid "Snowflake, Arizona, United States"
+msgstr "Snowflake, Arizona, Egyesült Államok"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:792
@@ -12942,8 +12942,8 @@ msgid "Spanish"
 msgstr "spanyol"
 
 #: app/GedcomCode/GedcomCodeTemp.php:309
-msgid "Spokane, Washington"
-msgstr "Spokane, Washington"
+msgid "Spokane, Washington, United States"
+msgstr "Spokane, Washington, Egyesült Államok"
 
 #: modules_v3/bdm_report/report.xml:169
 msgid "Spouse"
@@ -12976,16 +12976,16 @@ msgid "Sri Lanka"
 msgstr "Srí Lanka"
 
 #: app/GedcomCode/GedcomCodeTemp.php:295
-msgid "St. George, Utah"
-msgstr "St. George, Utah"
+msgid "St. George, Utah, United States"
+msgstr "St. George, Utah, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
-msgid "St. Louis, Missouri"
-msgstr "St. Louis, Missouri"
+msgid "St. Louis, Missouri, United States"
+msgstr "St. Louis, Missouri, Egyesült Államok"
 
 #: app/GedcomCode/GedcomCodeTemp.php:307
-msgid "St. Paul, Minnesota"
-msgstr "St. Paul, Minnesota"
+msgid "St. Paul, Minnesota, United States"
+msgstr "St. Paul, Minnesota, Egyesült Államok"
 
 #: app/Module/GoogleMapsModule.php:507
 msgid "Standard"
@@ -13003,7 +13003,7 @@ msgstr "Kezdjük a szülőknél"
 
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load"
-msgstr "Induljon el a vetítés az oldal betöltésével?"
+msgstr "Induljon el a vetítés az oldal betöltésével"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13064,12 +13064,12 @@ msgstr "Állj"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
 msgid "Store watermarked full size images on server"
-msgstr "Tároljuk a vízjeles, teljes méretű képeket a szerveren?"
+msgstr "Tároljuk a vízjeles, teljes méretű képeket a szerveren"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
 msgid "Store watermarked thumbnails on server"
-msgstr "Tároljuk a vízjeles bélyegképeket a szerveren?"
+msgstr "Tároljuk a vízjeles bélyegképeket a szerveren"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -15287,25 +15287,25 @@ msgstr "Vatikán"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:88
 msgctxt "GENITIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Szüret hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:154
 msgctxt "INSTRUMENTAL"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Szüret hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:121
 msgctxt "LOCATIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Szüret hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:55
 msgctxt "NOMINATIVE"
-msgid "Vendémiaire"
+msgid "Vendemiaire"
 msgstr "Szüret hava"
 
 #: app/Stats.php:6968
@@ -15315,25 +15315,25 @@ msgstr "Venezuela"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:93
 msgctxt "GENITIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Szél hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
 msgctxt "INSTRUMENTAL"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Szél hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:126
 msgctxt "LOCATIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Szél hava"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:60
 msgctxt "NOMINATIVE"
-msgid "Ventôse"
+msgid "Ventose"
 msgstr "Szél hava"
 
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -15349,8 +15349,8 @@ msgid "Verified"
 msgstr "Ellenőrizve"
 
 #: app/GedcomCode/GedcomCodeTemp.php:331
-msgid "Vernal, Utah"
-msgstr "Vernal, Utah"
+msgid "Vernal, Utah, United States"
+msgstr "Vernal, Utah, Egyesült Államok"
 
 #. I18N: gedcom tag VERS
 #: app/GedcomTag.php:852
@@ -15477,8 +15477,8 @@ msgid "Ward"
 msgstr "Gyám"
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
-msgid "Washington, DC"
-msgstr "Washington, DC"
+msgid "Washington, District of Columbia, United States"
+msgstr "Washington, District of Columbia, Egyesült Államok"
 
 #: admin_trees_config.php:1111
 msgid "Watermarks"
@@ -15613,12 +15613,12 @@ msgstr "Hol található a PhpGedView-telepítése?"
 
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Mely családfákat kell a webhelytérképnek tartalmaznia?"
+msgstr "Mely családfákat kell a webhelytérképnek tartalmaznia"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
 msgid "Who can upload new media files"
-msgstr "Ki tölthet fel új médiafájlokat?"
+msgstr "Ki tölthet fel új médiafájlokat"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
@@ -15683,8 +15683,8 @@ msgid "Will"
 msgstr "Végrendelet"
 
 #: app/GedcomCode/GedcomCodeTemp.php:337
-msgid "Winter Quarters, Nebraska"
-msgstr "Winter Quarters, Nebraska"
+msgid "Winter Quarters, Nebraska, United States"
+msgstr "Winter Quarters, Nebraska, Egyesült Államok"
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"
@@ -18568,25 +18568,25 @@ msgstr "inverz kijelölés"
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:100
 msgctxt "GENITIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "extra napok"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:166
 msgctxt "INSTRUMENTAL"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "extra napok"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:133
 msgctxt "LOCATIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "extra napok"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:67
 msgctxt "NOMINATIVE"
-msgid "jours complémentaires"
+msgid "jours complementaires"
 msgstr "extra napok"
 
 #. I18N: button label, last page
