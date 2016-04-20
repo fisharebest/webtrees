@@ -10414,7 +10414,7 @@ msgid "Pedigree"
 msgstr "Phả hệ"
 
 #: modules_v3/pedigree_report/report.xml:739
-msgid "Pedigree Chart"
+msgid "Pedigree chart"
 msgstr "Đồ Thị Dòng Giống"
 
 #: app/Module/GoogleMapsModule.php:222 app/Module/GoogleMapsModule.php:1418

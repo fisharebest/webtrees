@@ -10495,7 +10495,7 @@ msgid "Pedigree"
 msgstr "Родовід"
 
 #: modules_v3/pedigree_report/report.xml:739
-msgid "Pedigree Chart"
+msgid "Pedigree chart"
 msgstr "Родовід"
 
 #: app/Module/GoogleMapsModule.php:222 app/Module/GoogleMapsModule.php:1418

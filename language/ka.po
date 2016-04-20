@@ -10410,8 +10410,8 @@ msgid "Pedigree"
 msgstr "გენეალოგია"
 
 #: modules_v3/pedigree_report/report.xml:739
-msgid "Pedigree Chart"
-msgstr "Восходящее<br />Древо"
+msgid "Pedigree chart"
+msgstr ""
 
 #: app/Module/GoogleMapsModule.php:222 app/Module/GoogleMapsModule.php:1418
 msgid "Pedigree map"

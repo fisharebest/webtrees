@@ -427,7 +427,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'<input type="text" name="wtname" value="', Filter::escapeHtml($_POST['wtname']), '" autofocus></td><td>',
 		I18N::translate('This is your real name, as you would like it displayed on screen.'),
 		'</td></tr><tr><td>',
-		I18N::translate('Login ID'), '</td><td>',
+		I18N::translate('Username'), '</td><td>',
 		'<input type="text" name="wtuser" value="', Filter::escapeHtml($_POST['wtuser']), '"></td><td>',
 		I18N::translate('You will use this to login to webtrees.'),
 		'</td></tr><tr><td>',

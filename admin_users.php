@@ -72,7 +72,7 @@ case 'save':
 			} elseif (User::findByEmail($email)) {
 				FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
 			} elseif ($pass1 !== $pass2) {
-				FlashMessages::addMessage(I18N::translate('Passwords do not match.'));
+				FlashMessages::addMessage(I18N::translate('The passwords do not match.'));
 			} else {
 				$user = User::create($username, $real_name, $email, $pass1);
 				$user->setPreference('reg_timestamp', date('U'))->setPreference('sessiontime', '0');

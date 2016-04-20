@@ -10469,8 +10469,8 @@ msgid "Pedigree"
 msgstr "Pedigree"
 
 #: modules_v3/pedigree_report/report.xml:739
-msgid "Pedigree Chart"
-msgstr "Pedigree Chart"
+msgid "Pedigree chart"
+msgstr "Pedigree chart"
 
 #: app/Module/GoogleMapsModule.php:222 app/Module/GoogleMapsModule.php:1418
 msgid "Pedigree map"

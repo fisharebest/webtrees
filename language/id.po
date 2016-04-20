@@ -10436,8 +10436,8 @@ msgid "Pedigree"
 msgstr "Kerabat"
 
 #: modules_v3/pedigree_report/report.xml:739
-msgid "Pedigree Chart"
-msgstr "Bagan Kerabat"
+msgid "Pedigree chart"
+msgstr "Bagan kerabat"
 
 #: app/Module/GoogleMapsModule.php:222 app/Module/GoogleMapsModule.php:1418
 msgid "Pedigree map"

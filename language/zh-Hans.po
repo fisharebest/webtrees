@@ -10415,7 +10415,7 @@ msgid "Pedigree"
 msgstr "家谱树"
 
 #: modules_v3/pedigree_report/report.xml:739
-msgid "Pedigree Chart"
+msgid "Pedigree chart"
 msgstr "家谱图"
 
 #: app/Module/GoogleMapsModule.php:222 app/Module/GoogleMapsModule.php:1418

@@ -10532,7 +10532,7 @@ msgid "Pedigree"
 msgstr "Rodovnik"
 
 #: modules_v3/pedigree_report/report.xml:739
-msgid "Pedigree Chart"
+msgid "Pedigree chart"
 msgstr "Družinsko drevo"
 
 #: app/Module/GoogleMapsModule.php:222 app/Module/GoogleMapsModule.php:1418

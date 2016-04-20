@@ -10465,7 +10465,7 @@ msgid "Pedigree"
 msgstr "Ascendance"
 
 #: modules_v3/pedigree_report/report.xml:739
-msgid "Pedigree Chart"
+msgid "Pedigree chart"
 msgstr "Arbre d’ascendance"
 
 #: app/Module/GoogleMapsModule.php:222 app/Module/GoogleMapsModule.php:1418
