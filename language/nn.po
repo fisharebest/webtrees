@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-16 14:21+0000\n"
+"PO-Revision-Date: 2016-04-20 05:21+0000\n"
 "Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
-"Language-Team: Norwegian Nynorsk <http://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
+"Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -746,32 +746,32 @@ msgstr "Eit diagram som syner slektskapen mellom to personar."
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "Eit diagram over ein person sine anar og etterkomarar, som ei familiebok."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "Eit diagram over ein person sine anar, som eit kompakt tre."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Eit diagram over ein person sine anar, synt som eit tre."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Eit diagram over ein person sine anar."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "Eit diagram over ein person sine etterkomarar."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Eit diagram over personar sine tidslinjer."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -788,7 +788,7 @@ msgstr "Ein databaseserver kan romme mange separate databaser. Du kan velje ein 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "Eit viftediagram over ein person sine anar."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
@@ -1050,7 +1050,7 @@ msgstr "Fane som syner kjelder knytt til ein bestemt person."
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Ei tidslinje som syner personlege hendingar."
 
 #: admin_users.php:398
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
@@ -1956,7 +1956,7 @@ msgstr "Ein feil oppstod under utpakking av fila."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr ""
+msgstr "Eit timeglasdiagram over ein person sine anar og etterkomarar."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
@@ -3442,7 +3442,7 @@ msgstr "Endre blokkene på «Mi side»"
 #: app/Module/RecentChangesModule.php:257
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "Endra %1$s"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Module/RecentChangesModule.php:254
@@ -3485,7 +3485,7 @@ msgstr "Diagram"
 
 #: app/Module/RelationshipsChartModule.php:142
 msgid "Chart preferences"
-msgstr ""
+msgstr "Diagramval"
 
 #: app/Module/ChartsBlockModule.php:190 statistics.php:584
 msgid "Chart type"
@@ -4095,10 +4095,6 @@ msgstr "Opprett"
 msgid "Create a family tree"
 msgstr "Opprett eit nytt slektstre"
 
-#: edit_interface.php:750
-msgid "Create an individual"
-msgstr "Opprett ein ny person"
-
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
 msgstr "Opprett nytt medieobjekt"
@@ -4127,6 +4123,10 @@ msgstr "Opprett ei ny kjelde"
 #: admin_site_access.php:218
 msgid "Create a website access rule"
 msgstr "Opprett ein regel for tilgjenge på nettstaden"
+
+#: edit_interface.php:750
+msgid "Create an individual"
+msgstr "Opprett ein ny person"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -5082,7 +5082,7 @@ msgstr "META tag: Skildring"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
-msgstr ""
+msgstr "Forklaring ikkje tilgjengeleg"
 
 #: login.php:446
 msgid "Desired password"
@@ -6348,7 +6348,7 @@ msgstr "Finn duplikat"
 
 #: relationship.php:115
 msgid "Find other relationships"
-msgstr ""
+msgstr "Finn andre slektskap"
 
 #: relationship.php:102 relationship.php:107
 msgid "Find the closest relationships"
@@ -7183,7 +7183,7 @@ msgstr "Houston, Texas, United States"
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:158
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "Grad av rekursjon som skal nyttast ved søk av slektskap"
 
 #: app/Stats.php:6826
 msgid "Hungary"
@@ -10615,10 +10615,6 @@ msgstr "Stadsjekk"
 msgid "Place contains"
 msgstr "Stadnamn inneheld"
 
-#: app/Module/TopPageViewsModule.php:165
-msgid "Show counts before or after name"
-msgstr "Plasser mengd før eller etter namn?"
-
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
 msgid "Place hierarchy"
@@ -11800,7 +11796,7 @@ msgstr "Søk tekst/mønster"
 
 #: app/Module/RelationshipsChartModule.php:163
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr ""
+msgstr "Søk etter alle mogelege slektskap kan ta lang tid i komplekse slektstre."
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Seattle, Washington, United States"
@@ -12328,6 +12324,10 @@ msgstr "Syn born til forfedrar?"
 msgid "Show common surnames"
 msgstr "Syne mest nytta etternamn?"
 
+#: app/Module/TopPageViewsModule.php:165
+msgid "Show counts before or after name"
+msgstr "Plasser mengd før eller etter namn?"
+
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
 msgstr "Syn par der ein av partnarane har vore gift meir enn ein gong."
@@ -12583,7 +12583,7 @@ msgstr "Syn kart over stader og hendingar med Google Maps™-tenesten."
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Syn brukaren kven som har utført endringa"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
@@ -13655,7 +13655,7 @@ msgstr "Innstillingane for nye familietre er oppdaterte."
 #: app/Module/RelationshipsChartModule.php:190
 #, php-format
 msgid "The preferences for the chart “%s” have been updated."
-msgstr ""
+msgstr "Førehandsvalet for diagrammet “%s 1” har blitt oppdatert."
 
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
@@ -15021,7 +15021,7 @@ msgstr "Storbritannia"
 
 #: app/Stats.php:6964
 msgid "United States"
-msgstr ""
+msgstr "USA"
 
 #: app/GedcomRecord.php:1154 app/GedcomRecord.php:1158 app/Stats.php:6716
 msgid "Unknown"
@@ -15277,7 +15277,7 @@ msgstr "Vanuatu"
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Ulike statistikkdiagram."
 
 #: app/Stats.php:6966
 msgid "Vatican City"
@@ -15829,7 +15829,7 @@ msgstr "HTML kan nyttast for å formatere svaret og for å lenke til andre netts
 
 #: admin_site_config.php:435
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr ""
+msgstr "Du må også velge “less secure applications” i din Googlekonto."
 
 #: setup.php:212
 msgid "You must change this before you can continue."
@@ -19773,7 +19773,7 @@ msgstr "ukjend"
 
 #: app/Module/RelationshipsChartModule.php:131
 msgid "unlimited"
-msgstr ""
+msgstr "uavgrensa"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
