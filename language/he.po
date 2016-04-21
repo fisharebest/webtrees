@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-21 06:08+0000\n"
+"PO-Revision-Date: 2016-04-21 18:54+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -746,22 +746,22 @@ msgstr "תרשים המציג יחס בין שני אנשים."
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "תרשים של אבות וצאצאים של אדם בצורת עץ משפחה."
+msgstr "תרשים של אב-אבות וצאצאים של אדם בצורת עץ משפחה."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "תרשים של אבות של אדם בצורת עץ קומפקטי."
+msgstr "תרשים של אב-אבות של אדם בצורת עץ קומפקטי."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "תרשים של אבות של אדם מעוצב כעץ."
+msgstr "תרשים של אב-אבות של אדם מעוצב כעץ."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr "תרשים של אבות של אדם."
+msgstr "תרשים של אב-אבות של אדם."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
@@ -771,7 +771,7 @@ msgstr "תרשים של צאצאים של אדם."
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr "תרשים של תוחלות חיים של אנשים."
+msgstr "תרשים של משך החיים של אנשים."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -788,7 +788,7 @@ msgstr "שרת מאגר מידע יכול לאחסן הרבה מאגרי מיד�
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr "תרשים מניפה של אבות של אדם."
+msgstr "תרשים מניפה של אב-אבות של אדם."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
@@ -901,13 +901,13 @@ msgstr "משתמש פוטנציאלי נרשם ב-webtrees ב-%s."
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "דו״ח של אבותיו של אדם, במבנה עץ."
+msgstr "דו״ח של אב-אבות של אדם, במבנה עץ."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "דו״ח של אבותיו של אדם, בסגנון סיפורי."
+msgstr "דו״ח של אב-אבות של אדם, בסגנון סיפורי."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
@@ -1956,12 +1956,12 @@ msgstr "אירעה שגיאה בעת שחרור דחיסת הקובץ."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr "תרשים שעון חול המציג אבות וצאצאים של אדם."
+msgstr "תרשים שעון חול המציג אב-אבות וצאצאים של אדם."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "עץ אינטראקטיבי, המציג את האב אבות והצאצאים."
+msgstr "עץ אינטראקטיבי, המציג את האב-אבות והצאצאים של אדם."
 
 #: setup.php:495
 msgid "An unexpected database error occurred."
@@ -1983,7 +1983,7 @@ msgstr "עניין אב-אבות"
 
 #: modules_v3/ahnentafel_report/report.xml:55
 msgid "Ancestors of "
-msgstr "האבות של "
+msgstr "האב-אבות של "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/AncestryController.php:54
@@ -6710,7 +6710,7 @@ msgstr "דורות"
 #. I18N: gedcom tag ANCE
 #: app/GedcomTag.php:154
 msgid "Generations of ancestors"
-msgstr "אב-אבות"
+msgstr "דורות של אב-אבות"
 
 #: app/Module/GoogleMapsModule.php:169 app/Module/GoogleMapsModule.php:307
 #: app/Module/GoogleMapsModule.php:901 app/Module/GoogleMapsModule.php:1554
@@ -8180,13 +8180,13 @@ msgstr "ליכטנשטיין"
 
 #: statistics.php:146
 msgid "Lifespan"
-msgstr "תוחלת החיים"
+msgstr "משך החיים"
 
 #. I18N: Name of a module/chart
 #: app/Controller/LifespanController.php:120
 #: app/Module/LifespansChartModule.php:33 lifespan.php:34
 msgid "Lifespans"
-msgstr "תוחלות חיים"
+msgstr "משכי החיים"
 
 #: app/GedcomCode/GedcomCodeTemp.php:189
 msgid "Lima, Peru"
@@ -12318,7 +12318,7 @@ msgstr "הצג פרטי תרשים כברירת מחדל"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "הצג ילדים של אבות"
+msgstr "הצג ילדים של אב-אבות"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
 msgid "Show common surnames"
