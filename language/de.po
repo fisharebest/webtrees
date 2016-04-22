@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-21 13:13+0000\n"
-"Last-Translator: Richard Cissee <ric@richard-cissee.de>\n"
+"PO-Revision-Date: 2016-04-22 05:27+0000\n"
+"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -7179,7 +7179,7 @@ msgstr "Houston, Texas, Vereinigte Staaten"
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:158
 msgid "How much recursion to use when searching for relationships"
-msgstr "Wie viel Rekursion soll für die Suche nach Beziehungen verwendet werden"
+msgstr "Wie viele zusätzliche Durchläufe sollen für die Suche nach Beziehungen verwendet werden"
 
 #: app/Stats.php:6826
 msgid "Hungary"
