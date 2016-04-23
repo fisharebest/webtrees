@@ -166,7 +166,7 @@ if ($person1 && $person2) {
 				case 'bro':
 				case 'sis':
 				case 'sib':
-					$table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center; font-size: 12px; width: 94px; text-align: center"><div style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px;">' . $horizontal_arrow . '</div></div>';
+					$table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px;">' . $horizontal_arrow . '</div></div>';
 					$x += 2;
 					break;
 				case 'son':
@@ -177,7 +177,7 @@ if ($person1 && $person2) {
 						$x += 2;
 					} else {
 						$table[$x][$y - 1] = '<div style="background:url(' . Theme::theme()
-								->parameter('image-vline') . ') repeat-y center; font-size: 12px; height: 64px; text-align: center;"><div style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . $down_arrow . '</div></div>';
+								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . $down_arrow . '</div></div>';
 					}
 					$y -= 2;
 					break;
@@ -189,7 +189,7 @@ if ($person1 && $person2) {
 						$x += 2;
 					} else {
 						$table[$x][$y + 1] = '<div style="background:url(' . Theme::theme()
-								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div style="display: inline-block; width: 50%; line-height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div></div>';
+								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div></div>';
 					}
 					$y += 2;
 					break;
