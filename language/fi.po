@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-02-17 19:42+0200\n"
-"Last-Translator: Meliza <meliza@amitys.com>\n"
-"Language-Team: Finnish <http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
+"PO-Revision-Date: 2016-04-21 04:42+0000\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
+"Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.5\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -451,8 +451,8 @@ msgid_plural "%s years ago"
 msgstr[0] "%s vuosi sitten"
 msgstr[1] "%s vuotta sitten"
 
-#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
-#: calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:1942
+#: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s. vuosipäivä"
@@ -737,37 +737,37 @@ msgstr "Usein kysytyt kysymykset aihe voi näkyä vain yhdessä sukupuussa tai k
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Kaavio, joka esittää kahden henkilön välisen suhteen."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "Kaavio henkilön esi-isistä ja jälkeläisistä, sukukirjana."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "Kaavio henkilön esi-isistä, kompaktipuuna."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Kaavio henkilön esi-isistä, puu muodossa."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Kaavio henkilön esi-isistä."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "Kaavio henkilön jälkeläisistä."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Kaavio henkilöiden elinkaarista."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -784,7 +784,7 @@ msgstr "Tietokantajärjestelmässä voi olla useita erillisiä tietokantoja. Val
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "Viuhkakaavio henkilön esi-isistä."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
@@ -1046,7 +1046,7 @@ msgstr "Välilehti joka näyttää henkilöön liitetyt lähteet."
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Aikajana, joka esittää henkilön tapahtumia."
 
 #: admin_users.php:398
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
@@ -1262,31 +1262,6 @@ msgstr "Lisää"
 msgid "Add %s to the clippings cart"
 msgstr "Lisää %s leikekoriin"
 
-#: app/Module/RelativesTabModule.php:396 edit_interface.php:595
-msgid "Add a child to create a one-parent family"
-msgstr "Lisää lapsi ja luo yhden vanhemman perhe"
-
-#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
-msgid "Add a child to this family"
-msgstr "Lisää lapsi perheeseen"
-
-#: edit_interface.php:81
-msgid "Add a fact"
-msgstr "Lisää fakta"
-
-#: app/Module/RelativesTabModule.php:154
-msgid "Add a husband to this family"
-msgstr "Lisää aviomies perheeseen"
-
-#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
-#: edit_interface.php:1156
-msgid "Add a husband using an existing individual"
-msgstr "Liitä mies puolisoksi käyttäen tiedostossa olevaa henkilöä"
-
-#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add an associate"
-msgstr "Lisää läheinen"
-
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
 msgstr "Lisää veli tai sisko perheeseen"
@@ -1294,6 +1269,19 @@ msgstr "Lisää veli tai sisko perheeseen"
 #: edit_interface.php:516
 msgid "Add a child"
 msgstr "Lisää lapsi"
+
+#: app/Module/RelativesTabModule.php:396 edit_interface.php:595
+msgid "Add a child to create a one-parent family"
+msgstr "Lisää lapsi ja luo yhden vanhemman perhe"
+
+#: app/Controller/FamilyController.php:82
+#: app/Functions/FunctionsCharts.php:310
+msgid "Add a child to this family"
+msgstr "Lisää lapsi perheeseen"
+
+#: edit_interface.php:81
+msgid "Add a fact"
+msgstr "Lisää fakta"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
@@ -1312,13 +1300,23 @@ msgstr "Lisää maantieteellinen sijaintipaikka"
 msgid "Add a husband"
 msgstr "Lisää puoliso"
 
+#: app/Module/RelativesTabModule.php:154
+msgid "Add a husband to this family"
+msgstr "Lisää aviomies perheeseen"
+
+#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
+#: edit_interface.php:1156
+msgid "Add a husband using an existing individual"
+msgstr "Liitä mies puolisoksi käyttäen tiedostossa olevaa henkilöä"
+
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
 msgstr "Lisää päiväkirjamerkintä"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1131
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:184
+#: app/Controller/FamilyController.php:162
+#: app/Functions/FunctionsEdit.php:1131 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:184
 msgid "Add a media object"
 msgstr "Lisää mediakohde"
 
@@ -1330,8 +1328,12 @@ msgstr "Lisää äiti"
 msgid "Add a name"
 msgstr "Lisää nimi"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1110
-#: app/Module/NotesTabModule.php:100
+#: app/Module/FamilyTreeNewsModule.php:148
+msgid "Add a news article"
+msgstr "Lisää uutisartikkeli"
+
+#: app/Controller/FamilyController.php:149
+#: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
 msgstr "Lisää lisätieto"
 
@@ -1339,8 +1341,18 @@ msgstr "Lisää lisätieto"
 msgid "Add a restriction"
 msgstr "Lisää rajoitus"
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1120
-#: app/Module/NotesTabModule.php:110
+#. I18N: label for a yes/no option
+#: app/Module/FamilyTreeFavoritesModule.php:286
+#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
+#: app/Module/UpcomingAnniversariesModule.php:181
+#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
+msgid "Add a scrollbar when block contents grow"
+msgstr "Lisää vierityspalkki kun sisältö laajenee"
+
+#: app/Controller/FamilyController.php:155
+#: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
 msgid "Add a shared note"
 msgstr "Lisää jaettu lisätieto"
 
@@ -1348,14 +1360,19 @@ msgstr "Lisää jaettu lisätieto"
 msgid "Add a son or daughter"
 msgstr "Lisää poika tai tytär"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1060
-#: app/Module/SourcesTabModule.php:93
+#: app/Controller/FamilyController.php:172
+#: app/Functions/FunctionsEdit.php:1060 app/Module/SourcesTabModule.php:93
 msgid "Add a source citation"
 msgstr "Lisää tietolähdeviite"
 
 #: edit_interface.php:837
 msgid "Add a spouse"
 msgstr "Lisää puoliso"
+
+#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
+#: app/Module/StoriesModule.php:367
+msgid "Add a story"
+msgstr "Lisää tarina"
 
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
@@ -1366,24 +1383,6 @@ msgstr "Lisää käyttäjä"
 #: edit_interface.php:897
 msgid "Add a wife"
 msgstr "Lisää vaimo"
-
-#: app/Module/FamilyTreeNewsModule.php:148
-msgid "Add a news article"
-msgstr "Lisää uutisartikkeli"
-
-#. I18N: label for a yes/no option
-#: app/Module/FamilyTreeFavoritesModule.php:286
-#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
-#: app/Module/UpcomingAnniversariesModule.php:181
-#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
-msgid "Add a scrollbar when block contents grow"
-msgstr "Lisää vierityspalkki kun sisältö laajenee"
-
-#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
-#: app/Module/StoriesModule.php:367
-msgid "Add a story"
-msgstr "Lisää tarina"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1398,6 +1397,10 @@ msgstr "Liitä vaimo käyttäen tiedostossa olevaa henkilöä"
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
 msgstr "Lisää Usein kysytyt kysymykset aihe"
+
+#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
+msgid "Add an associate"
+msgstr "Lisää läheinen"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -1429,7 +1432,7 @@ msgstr "Lisää puuttuvat avionimet"
 
 #: search_advanced.php:280
 msgid "Add more fields"
-msgstr "Lisää uusia kenttiä"
+msgstr "Lisää kenttiä"
 
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
@@ -1472,7 +1475,7 @@ msgstr "Lisää tietoja ilman viittauksia muihin"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
 msgid "Add watermarks to thumbnails"
-msgstr "Lisää vesileimat pienoiskuviin?"
+msgstr "Lisää vesileimat pienoiskuviin"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -1778,7 +1781,7 @@ msgstr "Albumi"
 
 #: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Albuquerque, New Mexico, United States"
-msgstr "Albuquerque, New Mexico, United States"
+msgstr "Albuquerque, New Mexico, Yhdysvallat"
 
 #: app/Stats.php:6786
 msgid "Algeria"
@@ -1799,10 +1802,10 @@ msgstr "Elävät"
 #: app/Module/GoogleMapsModule.php:1578 app/Module/GoogleMapsModule.php:1591
 #: app/Module/GoogleMapsModule.php:4691 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5623 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
-#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
-#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
-#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
+#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
+#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
+#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -1949,7 +1952,7 @@ msgstr "Virhe kun tiedosto purettiin."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr ""
+msgstr "Tiimalasikaavio henkilön esi-isistä ja jälkeläisistä."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
@@ -1992,7 +1995,7 @@ msgstr "Ancestral file number (AFN)"
 
 #: app/GedcomCode/GedcomCodeTemp.php:87
 msgid "Anchorage, Alaska, United States"
-msgstr "Anchorage, Alaska, United States"
+msgstr "Anchorage, Alaska, Yhdysvallat"
 
 #: app/Stats.php:6724
 msgid "Andorra"
@@ -2009,7 +2012,8 @@ msgstr "Anguilla"
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1804 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1804
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr "Vuosipäivä"
 
@@ -2156,7 +2160,8 @@ msgstr "Argentiina"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -2216,7 +2221,7 @@ msgstr "Merellä"
 
 #: app/GedcomCode/GedcomCodeTemp.php:93
 msgid "Atlanta, Georgia, United States"
-msgstr "Atlanta, Georgia, United States"
+msgstr "Atlanta, Georgia, Yhdysvallat"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
@@ -2552,7 +2557,7 @@ msgstr "Eräpäivitys"
 
 #: app/GedcomCode/GedcomCodeTemp.php:113
 msgid "Baton Rouge, Louisiana, United States"
-msgstr "Baton Rouge, Louisiana, United States"
+msgstr "Baton Rouge, Louisiana, Yhdysvallat"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2752
@@ -2608,7 +2613,7 @@ msgstr "Bibliografia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:97
 msgid "Billings, Montana, United States"
-msgstr "Billings, Montana, United States"
+msgstr "Billings, Montana, Yhdysvallat"
 
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
@@ -2621,7 +2626,7 @@ msgstr "Bing Kartat™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Birmingham, Alabama, United States"
-msgstr "Birmingham, Alabama, United States"
+msgstr "Birmingham, Alabama, Yhdysvallat"
 
 #. I18N: gedcom tag BIRT
 #: app/GedcomTag.php:206 modules_v3/ahnentafel_report/report.xml:441
@@ -2861,7 +2866,7 @@ msgstr "Syntymät vuosisadoittain"
 
 #: app/GedcomCode/GedcomCodeTemp.php:101
 msgid "Bismarck, North Dakota, United States"
-msgstr "Bismarck, Pohjois-Dakota"
+msgstr "Bismarck, Pohjois-Dakota, Yhdysvallat"
 
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
@@ -2898,7 +2903,7 @@ msgstr "Bogota, Kolumbia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:105
 msgid "Boise, Idaho, United States"
-msgstr "Boise, Idaho, United States"
+msgstr "Boise, Idaho, Yhdysvallat"
 
 #: app/Stats.php:6749
 msgid "Bolivia"
@@ -2923,7 +2928,7 @@ msgstr "Bosnia ja Hertsegovina"
 
 #: app/GedcomCode/GedcomCodeTemp.php:107
 msgid "Boston, Massachusetts, United States"
-msgstr "Boston, Massachusetts, United States"
+msgstr "Boston, Massachusetts, Yhdysvallat"
 
 #: app/Functions/FunctionsPrintLists.php:628
 msgid "Both alive"
@@ -2939,7 +2944,7 @@ msgstr "Botswana"
 
 #: app/GedcomCode/GedcomCodeTemp.php:109
 msgid "Bountiful, Utah, United States"
-msgstr "Bountiful, Utah, United States"
+msgstr "Bountiful, Utah, Yhdysvallat"
 
 #: app/Stats.php:6754
 msgid "Bouvet Island"
@@ -3433,7 +3438,7 @@ msgstr "Vaihda ”Oma sivuni” lohkot"
 #: app/Module/RecentChangesModule.php:257
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "Muutettu %1$s"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Module/RecentChangesModule.php:254
@@ -3444,7 +3449,8 @@ msgstr "Muutosajankohta %1$s, muuttaja %2$s"
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:436
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr "Muutokset"
 
@@ -3475,7 +3481,7 @@ msgstr "Kaavio"
 
 #: app/Module/RelationshipsChartModule.php:142
 msgid "Chart preferences"
-msgstr ""
+msgstr "Kaavion asetukset"
 
 #: app/Module/ChartsBlockModule.php:190 statistics.php:584
 msgid "Chart type"
@@ -3483,9 +3489,9 @@ msgstr "Kaaviomalli"
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1287
-#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
-#: app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163
+#: admin_trees_config.php:1287 app/Module/ChartsBlockModule.php:34
+#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
 msgstr "Kaaviot"
 
@@ -3530,7 +3536,7 @@ msgstr "Tarkistetaan palvelimen asetuksia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:119
 msgid "Chicago, Illinois, United States"
-msgstr "Chicago, Illinois, United States"
+msgstr "Chicago, Illinois, Yhdysvallat"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:36 app/GedcomTag.php:274
@@ -3830,15 +3836,15 @@ msgstr "Colonia Juarez, Meksiko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:133
 msgid "Columbia River, Washington, United States"
-msgstr "Columbia, Washington"
+msgstr "Columbia, Washington, Yhdysvallat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:127
 msgid "Columbia, South Carolina, United States"
-msgstr "Columbia, Etelä-Carolina"
+msgstr "Columbia, Etelä-Carolina, Yhdysvallat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:129
 msgid "Columbus, Ohio, United States"
-msgstr "Columbus, Ohio, United States"
+msgstr "Columbus, Ohio, Yhdysvallat"
 
 #: medialist.php:164
 msgid "Columns per page"
@@ -3976,9 +3982,10 @@ msgstr "Jatkuu"
 #: app/Module/FrequentlyAskedQuestionsModule.php:441
 #: app/Module/GoogleMapsModule.php:294 app/Module/GoogleMapsModule.php:1541
 #: app/Module/GoogleMapsModule.php:4096
-#: app/Module/RelationshipsChartModule.php:147 app/Module/SiteMapModule.php:296
-#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
-#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
+#: app/Module/RelationshipsChartModule.php:147
+#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
+#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
+#: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr "Ohjauspaneeli"
 
@@ -4082,11 +4089,7 @@ msgstr "Luo"
 
 #: admin_trees_manage.php:621
 msgid "Create a family tree"
-msgstr "Luo uusi sukupuu"
-
-#: edit_interface.php:750
-msgid "Create an individual"
-msgstr "Luo uusi henkilö"
+msgstr "Luo sukupuu"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
@@ -4106,7 +4109,7 @@ msgstr "Luo jaettu lisätieto"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
-msgstr "Lisää jaettu lisätieto avustajaa käyttäen"
+msgstr "Lisää jaettu lisätieto väestönlaskenta avustajaa käyttäen"
 
 #: app/Functions/FunctionsEdit.php:460 edit_interface.php:1196
 #: edit_interface.php:1279
@@ -4116,6 +4119,10 @@ msgstr "Luo lähde"
 #: admin_site_access.php:218
 msgid "Create a website access rule"
 msgstr "Luo sivustoon pääsemissääntö"
+
+#: edit_interface.php:750
+msgid "Create an individual"
+msgstr "Luo henkilö"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -4324,7 +4331,7 @@ msgstr "Daitch-Mokotoff"
 
 #: app/GedcomCode/GedcomCodeTemp.php:135
 msgid "Dallas, Texas, United States"
-msgstr "Dallas, Texas, United States"
+msgstr "Dallas, Texas, Yhdysvallat"
 
 #. I18N: A summary of the system status
 #: admin.php:460
@@ -4366,7 +4373,8 @@ msgstr "Tietokannan käyttäjätunnus"
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -4931,7 +4939,8 @@ msgstr "Tutkinto"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -4947,8 +4956,9 @@ msgid "DejaVu"
 msgstr "DejaVu"
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
-#: admin_site_change.php:373 admin_site_logs.php:314 admin_trees_config.php:576
-#: admin_trees_manage.php:415 admin_trees_manage.php:426 admin_users.php:211
+#: admin_site_change.php:373 admin_site_logs.php:314
+#: admin_trees_config.php:576 admin_trees_manage.php:415
+#: admin_trees_manage.php:426 admin_users.php:211
 #: app/Controller/FamilyController.php:94
 #: app/Controller/GedcomRecordController.php:116
 #: app/Controller/IndividualController.php:303
@@ -5011,7 +5021,7 @@ msgstr "Tanska"
 
 #: app/GedcomCode/GedcomCodeTemp.php:137
 msgid "Denver, Colorado, United States"
-msgstr "Denver, Colorado, United States"
+msgstr "Denver, Colorado, Yhdysvallat"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
@@ -5027,7 +5037,8 @@ msgstr "Jälkisukupolvet"
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
 #: app/Module/ChartsBlockModule.php:195
-#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
+#: app/Module/DescendancyChartModule.php:33
+#: app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5067,7 +5078,7 @@ msgstr "Kuvaus META tunniste (tag)"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
-msgstr ""
+msgstr "Selitystä ei ole saatavilla"
 
 #: login.php:446
 msgid "Desired password"
@@ -5094,7 +5105,7 @@ msgstr "Tiedot uudesta käyttäjästä lähetetään vastaavan sukupuun sukututk
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Detroit, Michigan, United States"
-msgstr "Detroit, Michigan, United States"
+msgstr "Detroit, Michigan, Yhdysvallat"
 
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
@@ -5761,7 +5772,8 @@ msgstr "Ei mukana tässä valinnassa"
 msgid "Explain why you are requesting an account."
 msgstr "Selitä, miksi pyydät tilin."
 
-#: admin_site_change.php:369 admin_site_logs.php:310 admin_trees_manage.php:591
+#: admin_site_change.php:369 admin_site_logs.php:310
+#: admin_trees_manage.php:591
 msgid "Export"
 msgstr "Siirrä"
 
@@ -5938,7 +5950,8 @@ msgstr "Falklandinsaaret"
 #: app/Module/GoogleMapsModule.php:2818 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1489
 #: calendar.php:422 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:134 mediaviewer.php:123
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:225
 #: repo.php:143 search.php:93 source.php:147 statistics.php:71
 #: statisticsplot.php:974 statisticsplot.php:1078 statisticsplot.php:1328
@@ -6035,7 +6048,8 @@ msgstr "Sukupuu"
 msgid "Family tree access and settings"
 msgstr "Sukupuun oikeudet ja asetukset"
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90
+#: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr "Sukupuun leikekori"
 
@@ -6174,7 +6188,8 @@ msgid "Father’s family with an unknown individual"
 msgstr "Isän ja tuntemattoman henkilön perhe"
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1345
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1345
 msgid "Favorites"
 msgstr "Suosikit"
 
@@ -6316,7 +6331,8 @@ msgstr "Etsi erikoismerkki"
 msgid "Find all possible relationships"
 msgstr "Etsi kaikki mahdolliset sukulaisuudet"
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 msgid "Find an individual"
@@ -6328,7 +6344,7 @@ msgstr "Etsi kaksoiskappaleita"
 
 #: relationship.php:115
 msgid "Find other relationships"
-msgstr ""
+msgstr "Etsi muut suhteet"
 
 #: relationship.php:102 relationship.php:107
 msgid "Find the closest relationships"
@@ -6401,7 +6417,8 @@ msgstr "Kansion nimi palvelimella"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6518,7 +6535,7 @@ msgstr "Usein kysytty"
 
 #: app/GedcomCode/GedcomCodeTemp.php:151
 msgid "Fresno, California, United States"
-msgstr "Fresno, Kalifornia"
+msgstr "Fresno, Kalifornia, Yhdysvallat"
 
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:669
@@ -6930,7 +6947,7 @@ msgstr "Hamilton, Uusi Seelanti"
 
 #: app/GedcomCode/GedcomCodeTemp.php:165
 msgid "Hartford, Connecticut, United States"
-msgstr "Hartford, Connecticut, United States"
+msgstr "Hartford, Connecticut, Yhdysvallat"
 
 #: modules_v3/descendancy_report/report.xml:429
 msgid "He "
@@ -7019,7 +7036,8 @@ msgstr "Helsinki, Suomi"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7156,12 +7174,12 @@ msgstr "Perhe- eli ruokakunta"
 
 #: app/GedcomCode/GedcomCodeTemp.php:175
 msgid "Houston, Texas, United States"
-msgstr "Houston, Texas, United States"
+msgstr "Houston, Texas, Yhdysvallat"
 
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:158
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "Kuinka paljon rekursiota tulee käyttää kun etsitään suhteita"
 
 #: app/Stats.php:6826
 msgid "Hungary"
@@ -7215,7 +7233,7 @@ msgstr "Kuvake"
 
 #: app/GedcomCode/GedcomCodeTemp.php:177
 msgid "Idaho Falls, Idaho, United States"
-msgstr "Idaho Falls, Idaho, United States"
+msgstr "Idaho Falls, Idaho, Yhdysvallat"
 
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:516
@@ -7433,7 +7451,7 @@ msgstr "Sisällytä alikansiot"
 
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Lisää henkilön lähisukulaiset?"
+msgstr "Lisää henkilön lähisukulaiset"
 
 #: app/Stats.php:6828
 msgid "India"
@@ -7559,7 +7577,8 @@ msgid "Installation folder"
 msgstr "Asennushakemisto"
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:197 app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:197
+#: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
 msgstr "Interaktiivinen sukupuu"
 
@@ -7718,7 +7737,7 @@ msgstr "Jordania"
 
 #: app/GedcomCode/GedcomCodeTemp.php:181
 msgid "Jordan River, Utah, United States"
-msgstr "Jordan River, Utah, United States"
+msgstr "Jordan River, Utah, Yhdysvallat"
 
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:47
@@ -7923,7 +7942,7 @@ msgstr "kislev-kuu"
 
 #: app/GedcomCode/GedcomCodeTemp.php:185
 msgid "Kona, Hawaii, United States"
-msgstr "Kona, Havaiji"
+msgstr "Kona, Havaiji, Yhdysvallat"
 
 #: app/Stats.php:6846
 msgid "Korea"
@@ -7973,7 +7992,7 @@ msgstr "MAP-kirkon temppeli"
 
 #: app/GedcomCode/GedcomCodeTemp.php:167
 msgid "Laie, Hawaii, United States"
-msgstr "Laie, Havaiji"
+msgstr "Laie, Havaiji, Yhdysvallat"
 
 #. I18N: page orientation
 #: admin_trees_config.php:54 modules_v3/change_report/report.xml:10
@@ -8013,7 +8032,7 @@ msgstr "Suurin lastenlasten lukumäärä"
 
 #: app/GedcomCode/GedcomCodeTemp.php:199
 msgid "Las Vegas, Nevada, United States"
-msgstr "Las Vegas, Nevada, United States"
+msgstr "Las Vegas, Nevada, Yhdysvallat"
 
 #. I18N: gedcom tag CHAN
 #: app/GedcomTag.php:258 modules_v3/change_report/report.xml:66
@@ -8283,7 +8302,7 @@ msgstr "Asukki"
 
 #: app/GedcomCode/GedcomCodeTemp.php:191
 msgid "Logan, Utah, United States"
-msgstr "Logan, Utah, United States"
+msgstr "Logan, Utah, Yhdysvallat"
 
 #: app/Module/LoginBlockModule.php:63
 msgid "Logged in as "
@@ -8336,15 +8355,15 @@ msgstr "Pituusaste"
 
 #: app/GedcomCode/GedcomCodeTemp.php:187
 msgid "Los Angeles, California, United States"
-msgstr "Los Angeles, Kalifornia"
+msgstr "Los Angeles, Kalifornia, Yhdysvallat"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219 login.php:252
 msgid "Lost password request"
-msgstr "Pyydä uusi salasana"
+msgstr "Kadonneen salasanan pyyntö"
 
 #: app/GedcomCode/GedcomCodeTemp.php:195
 msgid "Louisville, Kentucky, United States"
-msgstr "Louisville, Kentucky, United States"
+msgstr "Louisville, Kentucky, Yhdysvallat"
 
 #: app/Stats.php:1741
 msgid "Lowest population"
@@ -8352,7 +8371,7 @@ msgstr "Pienin väestömäärä"
 
 #: app/GedcomCode/GedcomCodeTemp.php:197
 msgid "Lubbock, Texas, United States"
-msgstr "Lubbock, Texas, United States"
+msgstr "Lubbock, Texas, Yhdysvallat"
 
 #: app/Stats.php:6857
 msgid "Luxembourg"
@@ -8468,7 +8487,7 @@ msgstr "Manila, Filippiinit"
 
 #: app/GedcomCode/GedcomCodeTemp.php:205
 msgid "Manti, Utah, United States"
-msgstr "Manti, Utah, United States"
+msgstr "Manti, Utah, Yhdysvallat"
 
 #: app/GedcomTag.php:1928
 msgid "Manuscript"
@@ -8838,7 +8857,7 @@ msgstr "Mayotte"
 
 #: app/GedcomCode/GedcomCodeTemp.php:207
 msgid "Medford, Oregon, United States"
-msgstr "Medford, Oregon, United States"
+msgstr "Medford, Oregon, Yhdysvallat"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
@@ -8985,7 +9004,7 @@ msgstr "Muistiraja"
 
 #: app/GedcomCode/GedcomCodeTemp.php:211
 msgid "Memphis, Tennessee, United States"
-msgstr "Memphis, Tennessee, United States"
+msgstr "Memphis, Tennessee, Yhdysvallat"
 
 #: admin_module_menus.php:87 admin_modules.php:185
 msgid "Menu"
@@ -9021,7 +9040,7 @@ msgstr "Merida, Meksiko"
 
 #: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Mesa, Arizona, United States"
-msgstr "Mesa, Arizona, United States"
+msgstr "Mesa, Arizona, Yhdysvallat"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
 msgid "Message"
@@ -9147,9 +9166,9 @@ msgstr "Moduuli"
 #: app/Module/FrequentlyAskedQuestionsModule.php:442
 #: app/Module/GoogleMapsModule.php:295 app/Module/GoogleMapsModule.php:1542
 #: app/Module/GoogleMapsModule.php:4097
-#: app/Module/RelationshipsChartModule.php:148 app/Module/SiteMapModule.php:297
-#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
-#: app/Theme/AdministrationTheme.php:190
+#: app/Module/RelationshipsChartModule.php:148
+#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
+#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr "Moduulien hallinta"
 
@@ -9221,7 +9240,7 @@ msgstr "Kuukausi:"
 
 #: app/GedcomCode/GedcomCodeTemp.php:221
 msgid "Monticello, Utah, United States"
-msgstr "Monticello, Utah, United States"
+msgstr "Monticello, Utah, Yhdysvallat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:223
 msgid "Montreal, Quebec, Canada"
@@ -9324,7 +9343,7 @@ msgstr "Äidin ja tuntemattoman henkilön perhe"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Mount Timpanogos, Utah, United States"
-msgstr "Mount Timpanogos, Utah, United States"
+msgstr "Mount Timpanogos, Utah, Yhdysvallat"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:493 index_edit.php:312
 #: index_edit.php:361
@@ -9499,7 +9518,7 @@ msgstr "Kertomuksen seloste"
 
 #: app/GedcomCode/GedcomCodeTemp.php:227
 msgid "Nashville, Tennessee, United States"
-msgstr "Nashville, Tennessee, United States"
+msgstr "Nashville, Tennessee, Yhdysvallat"
 
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:610
@@ -9517,11 +9536,11 @@ msgstr "Nauru"
 
 #: app/GedcomCode/GedcomCodeTemp.php:229
 msgid "Nauvoo (new), Illinois, United States"
-msgstr "Nauvoo, Illinois (uusi)"
+msgstr "Nauvoo (uusi), Illinois, Yhdysvallat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:231
 msgid "Nauvoo (original), Illinois, United States"
-msgstr "Nauvoo, Illinois (alkuperäinen)"
+msgstr "Nauvoo (alkuperäinen), Illinois, Yhdysvallat"
 
 #: app/Module/GoogleMapsModule.php:407 app/Module/GoogleMapsModule.php:3961
 msgid "Neighborhood"
@@ -9570,7 +9589,7 @@ msgstr "Uusi-Kaledonia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:237
 msgid "New York, New York, United States"
-msgstr "New York, New York, United States"
+msgstr "New York, New York, Yhdysvallat"
 
 #: app/Stats.php:6895
 msgid "New Zealand"
@@ -9590,11 +9609,11 @@ msgstr "Uusi kirjoittautuminen koneella %s"
 #: login.php:573
 #, php-format
 msgid "New user at %s"
-msgstr "Uusi vahvistus koneella %s"
+msgstr "Uusi käyttäjä %s:llä"
 
 #: app/GedcomCode/GedcomCodeTemp.php:233
 msgid "Newport Beach, California, United States"
-msgstr "Newport Beach, Kalifornia"
+msgstr "Newport Beach, Kalifornia, Yhdysvallat"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:54
@@ -9925,8 +9944,9 @@ msgid "Not verified by the user"
 msgstr "Käyttäjä jättänyt vahvistamatta"
 
 #. I18N: gedcom tag NOTE
-#: app/Controller/FamilyController.php:147 app/Functions/FunctionsPrint.php:173
-#: app/GedcomTag.php:634 modules_v3/cemetery_report/report.xml:64
+#: app/Controller/FamilyController.php:147
+#: app/Functions/FunctionsPrint.php:173 app/GedcomTag.php:634
+#: modules_v3/cemetery_report/report.xml:64
 #: modules_v3/family_group_report/report.xml:485
 #: modules_v3/family_group_report/report.xml:749
 #: modules_v3/family_group_report/report.xml:1101
@@ -10019,8 +10039,8 @@ msgstr "Sukupolvien lukumäärä"
 msgid "Number of items"
 msgstr "Kohteiden lukumäärä"
 
-#: app/Module/TopGivenNamesModule.php:146 app/Module/TopPageViewsModule.php:159
-#: app/Module/TopSurnamesModule.php:168
+#: app/Module/TopGivenNamesModule.php:146
+#: app/Module/TopPageViewsModule.php:159 app/Module/TopSurnamesModule.php:168
 msgid "Number of items to show"
 msgstr "Näytettävien kohteiden lukumäärä"
 
@@ -10049,7 +10069,7 @@ msgstr "Hoitaja"
 
 #: app/GedcomCode/GedcomCodeTemp.php:241
 msgid "Oakland, California, United States"
-msgstr "Oakland, Kalifornia"
+msgstr "Oakland, Kalifornia, Yhdysvallat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:243
 msgid "Oaxaca, Mexico"
@@ -10104,11 +10124,11 @@ msgstr "lokakuu"
 
 #: app/GedcomCode/GedcomCodeTemp.php:245
 msgid "Ogden, Utah, United States"
-msgstr "Ogden, Utah, United States"
+msgstr "Ogden, Utah, Yhdysvallat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:247
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "Oklahoma City, Oklahoma, United States"
+msgstr "Oklahoma City, Oklahoma, Yhdysvallat"
 
 #: admin_site_change.php:336
 msgid "Old data"
@@ -10239,7 +10259,7 @@ msgstr "Sivun asento"
 
 #: app/GedcomCode/GedcomCodeTemp.php:249
 msgid "Orlando, Florida, United States"
-msgstr "Orlando, Florida, United States"
+msgstr "Orlando, Florida, Yhdysvallat"
 
 #: app/GedcomTag.php:1942 app/Stats.php:5499 app/Stats.php:5918
 msgid "Other"
@@ -10325,7 +10345,8 @@ msgstr "PHP aikaraja"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -10379,7 +10400,7 @@ msgstr "Paletti"
 
 #: app/GedcomCode/GedcomCodeTemp.php:253
 msgid "Palmyra, New York, United States"
-msgstr "Palmyra, New York, United States"
+msgstr "Palmyra, New York, Yhdysvallat"
 
 #: app/Stats.php:6898
 msgid "Panama"
@@ -10589,10 +10610,6 @@ msgstr "Paikkojen tarkistus"
 #: find.php:204
 msgid "Place contains"
 msgstr "Paikan nimi sisältää"
-
-#: app/Module/TopPageViewsModule.php:165
-msgid "Show counts before or after name"
-msgstr "Sijoita lukumäärät ennen nimeä tai sen jälkeen?"
 
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
@@ -10823,7 +10840,7 @@ msgstr "Portin numero"
 
 #: app/GedcomCode/GedcomCodeTemp.php:263
 msgid "Portland, Oregon, United States"
-msgstr "Portland, Oregon, United States"
+msgstr "Portland, Oregon, Yhdysvallat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:251
 msgid "Porto Alegre, Brazil"
@@ -10938,7 +10955,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Tulosta perustapahtumat, jotka ovat tyhjiä?"
+msgstr "Tulosta perustapahtumat, jotka ovat tyhjiä"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
 msgid "Privacy"
@@ -10968,7 +10985,7 @@ msgstr "Omaisuus"
 
 #: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "Provo, Utah, United States"
-msgstr "Provo, Utah, United States"
+msgstr "Provo, Utah, Yhdysvallat"
 
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:704
@@ -11111,7 +11128,7 @@ msgstr "rajab"
 
 #: app/GedcomCode/GedcomCodeTemp.php:269
 msgid "Raleigh, North Carolina, United States"
-msgstr "Raleigh, Pohjois-Carolina"
+msgstr "Raleigh, Pohjois-Carolina, Yhdysvallat"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:98
@@ -11142,8 +11159,9 @@ msgstr "ramadan"
 msgid "Random images from the current family tree."
 msgstr "Nykyisen sukupuun satunnaisia kuvia."
 
-#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1803 edit_interface.php:1877
+#: app/Controller/FamilyController.php:88
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1803
+#: edit_interface.php:1877
 msgid "Re-order children"
 msgstr "Järjestä lapset uudelleen"
 
@@ -11166,7 +11184,8 @@ msgid "Real name"
 msgstr "Etu- ja sukunimi"
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr "Viimeiset muutokset"
 
@@ -11181,7 +11200,8 @@ msgstr "Recife, Brasilia"
 #: admin_site_change.php:327 admin_site_change.php:388
 #: admin_trees_config.php:530 app/Functions/FunctionsPrintLists.php:1800
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:321 app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:321
+#: app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -11207,7 +11227,7 @@ msgstr "Tietueet eivät ole samaa typpiä. Erityyppisiä tietueita ei voi yhdist
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
 msgid "Redlands, California, United States"
-msgstr "Redlands, Kalifornia"
+msgstr "Redlands, Kalifornia, Yhdysvallat"
 
 #: app/Module/GoogleMapsModule.php:991 app/Module/GoogleMapsModule.php:2338
 #: app/Module/GoogleMapsModule.php:3645
@@ -11371,7 +11391,7 @@ msgstr "Poista tämä sijainti?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Reno, Nevada, United States"
-msgstr "Reno, Nevada, United States"
+msgstr "Reno, Nevada, Yhdysvallat"
 
 #: admin_trees_manage.php:506
 msgid "Renumber"
@@ -11568,7 +11588,7 @@ msgstr "SMTP sähköpostipalvelimen nimi"
 
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Sacramento, California, United States"
-msgstr "Sacramento, Kalifornia"
+msgstr "Sacramento, Kalifornia, Yhdysvallat"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:91
@@ -11621,7 +11641,7 @@ msgstr "Saint Vincent ja Grenadiinit"
 
 #: app/GedcomCode/GedcomCodeTemp.php:299
 msgid "Salt Lake City, Utah, United States"
-msgstr "Salt Lake City, Utah, United States"
+msgstr "Salt Lake City, Utah, Yhdysvallat"
 
 #: app/Stats.php:6976
 msgid "Samoa"
@@ -11629,11 +11649,11 @@ msgstr "Samoa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:285
 msgid "San Antonio, Texas, United States"
-msgstr "San Antonio, Texas, United States"
+msgstr "San Antonio, Texas, Yhdysvallat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "San Diego, California, United States"
-msgstr "San Diego, Kalifornia"
+msgstr "San Diego, Kalifornia, Yhdysvallat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "San Jose, Costa Rica"
@@ -11772,11 +11792,11 @@ msgstr "Etsi tekstiä/kuviota"
 
 #: app/Module/RelationshipsChartModule.php:163
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr ""
+msgstr "Monimutkaisten puiden kaikkien mahdollisten suhteiden etsintä voi viedä paljon aikaa."
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Seattle, Washington, United States"
-msgstr "Seattle, Washington, United States"
+msgstr "Seattle, Washington, Yhdysvallat"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:370
@@ -11900,7 +11920,7 @@ msgstr "Lähetä kaikille ilmoituksia"
 
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Lähetä muistutusviestit?"
+msgstr "Lähetä muistutusviestit"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329
@@ -12246,7 +12266,7 @@ msgstr "Lyhyin avioliiton kesto"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr "Tulisiko tämän lohkon olla piilossa kun se on tyhjä?"
+msgstr "Tulisiko tämän lohkon olla piilossa kun se on tyhjä"
 
 #: calendar.php:229
 msgid "Show"
@@ -12285,7 +12305,7 @@ msgstr "Näytä kaikki tunnisteet (tag)"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Näytä ikäkursori?"
+msgstr "Näytä ikäkursori"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1366
@@ -12294,11 +12314,15 @@ msgstr "Näytä kaavion yksityiskohdat oletusarvoisesti"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Näytä esipolvien lapset?"
+msgstr "Näytä esipolvien lapset"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
 msgid "Show common surnames"
-msgstr "Näytä yleisimmät sukunimet?"
+msgstr "Näytä yleisimmät sukunimet"
+
+#: app/Module/TopPageViewsModule.php:165
+msgid "Show counts before or after name"
+msgstr "Sijoita lukumäärät ennen nimeä tai sen jälkeen"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12335,7 +12359,7 @@ msgstr "Näytä aikapoikkeamat"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
 msgid "Show date of last update"
-msgstr "Näytä viimeisin päivitysaika?"
+msgstr "Näytä viimeisin päivitysaika"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:391
@@ -12423,21 +12447,21 @@ msgstr "Näytä yksityisten henkilöiden nimet"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Näytä lisätiedot?"
+msgstr "Näytä lisätiedot"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Näytä ammatit?"
+msgstr "Näytä ammatit"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Näytä vain syntymät, kuolemat ja avioliitot?"
+msgstr "Näytä vain syntymät, kuolemat ja avioliitot"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Näytä vain elossa olevien henkilöiden tapahtumat?"
+msgstr "Näytä vain elossa olevien henkilöiden tapahtumat"
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
@@ -12449,7 +12473,7 @@ msgstr "Näytä vain tuntematonta sukupuolta olevat henkilöt."
 
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Näytetäänkö ainoastaan henkilöt, tapahtumat vai kaikki?"
+msgstr "Näytetäänkö ainoastaan henkilöt, tapahtumat vai kaikki"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -12472,7 +12496,7 @@ msgstr "Näytä vireillä olevat muutokset"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Näytä valokuvat?"
+msgstr "Näytä valokuvat"
 
 #: placelist.php:83
 msgid "Show places in hierarchy"
@@ -12501,11 +12525,11 @@ msgstr "Näytä tutkimustehtävät, joiden päivämäärä on tulevaisuudessa"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Näytä asuinpaikat?"
+msgstr "Näytä asuinpaikat"
 
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls"
-msgstr "Näytä diaesityksen valvonta?"
+msgstr "Näytä diaesityksen valvonta"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12513,7 +12537,7 @@ msgstr "Näytä diaesityksen valvonta?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Näytä tietolähteet?"
+msgstr "Näytä tietolähteet"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12555,12 +12579,12 @@ msgstr "Näytä paikkojen ja tapahtumien sijainti käyttäen Google Maps™-kart
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Näytä käyttäjä joka teki muutoksen"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Millä kielillä tämä näytetään?"
+msgstr "Millä kielillä tämä näytetään"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1038 app/Functions/FunctionsEdit.php:206
@@ -12753,7 +12777,7 @@ msgstr "Pieni sovellus (500 henkilöä): 16–32MB, 10–20 sekuntia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Snowflake, Arizona, United States"
-msgstr "Snowflake, Arizona, United States"
+msgstr "Snowflake, Arizona, Yhdysvallat"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:792
@@ -12914,7 +12938,7 @@ msgstr "Espanjan sukunimen esitystapa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:309
 msgid "Spokane, Washington, United States"
-msgstr "Spokane, Washington, United States"
+msgstr "Spokane, Washington, Yhdysvallat"
 
 #: modules_v3/bdm_report/report.xml:169
 msgid "Spouse"
@@ -12948,15 +12972,15 @@ msgstr "Sri Lanka"
 
 #: app/GedcomCode/GedcomCodeTemp.php:295
 msgid "St. George, Utah, United States"
-msgstr "St. George, Utah, United States"
+msgstr "St. George, Utah, Yhdysvallat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
 msgid "St. Louis, Missouri, United States"
-msgstr "St. Louis, Missouri, United States"
+msgstr "St. Louis, Missouri, Yhdysvallat"
 
 #: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "St. Paul, Minnesota, United States"
-msgstr "St. Paul, Minnesota, United States"
+msgstr "St. Paul, Minnesota, Yhdysvallat"
 
 #: app/Module/GoogleMapsModule.php:507
 msgid "Standard"
@@ -12974,7 +12998,7 @@ msgstr "Aloita vanhemmista"
 
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load"
-msgstr "Aloita diaesitys sivun latautuessa?"
+msgstr "Aloita diaesitys sivun latautuessa"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13035,12 +13059,12 @@ msgstr "Pysäytä"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
 msgid "Store watermarked full size images on server"
-msgstr "Tallenna täyskokoiset vesileimatut kuvat palvelimeen?"
+msgstr "Tallenna täyskokoiset vesileimatut kuvat palvelimeen"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
 msgid "Store watermarked thumbnails on server"
-msgstr "Tallenna vesileimatut pienoiskuvat tälle palvelimeen?"
+msgstr "Tallenna vesileimatut pienoiskuvat tälle palvelimeen"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -13474,8 +13498,8 @@ msgstr "Kansiota %s ei voitu poistaa."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:294
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:294
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Kansio %s ei ole olemassa, ja sitä ei voi luoda."
@@ -13627,7 +13651,7 @@ msgstr "Uusien sukupuiden asetukset on päivitetty."
 #: app/Module/RelationshipsChartModule.php:190
 #, php-format
 msgid "The preferences for the chart “%s” have been updated."
-msgstr ""
+msgstr "Kaavion ”%s” asetukset on päivitetty."
 
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
@@ -13752,7 +13776,7 @@ msgstr "Teksti joka lisätään meta-kuvaustunnisteeksi (tag) kun rakennetaan HT
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too new."
-msgstr "%s versio on liian uusi."
+msgstr "%s:n versio on liian uusi."
 
 #: admin_pgv_to_wt.php:101
 #, php-format
@@ -13837,8 +13861,8 @@ msgstr "Tässä sukupuussa ei ole tutkimustehtäviä."
 msgid "There are no source citations for this individual."
 msgstr "Tällä henkilöllä ei ole lähdetietoviitteitä."
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1926
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1926
 msgid "There are pending changes for you to moderate."
 msgstr "Tarkista vireillä olevat muutokset."
 
@@ -13910,7 +13934,7 @@ msgstr "Tämä valintaruutu ohjaa näkyvyyttäsi muille käyttäjille ollessasi 
 
 #: setup.php:348 setup.php:359
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
-msgstr "Tietokanta ja taulukko (etuliitteellä) ovat jo toisen sovelluksen käytössä. Jos sinulla on jo asennettuna PhpGedView, luo uuden webtrees käyttöä varten. Voit siirtää aikaisemmat PhpGedView tiedot ja asetukset myöhemmässä vaiheessa."
+msgstr "Tietokanta ja taulukko (etuliitteellä) ovat jo toisen sovelluksen käytössä. Jos sinulla on jo asennettuna PhpGedView, luo uusi webtrees käyttöä varten. Voit siirtää aikaisemmat PhpGedView tiedot ja asetukset myöhemmässä vaiheessa."
 
 #: setup.php:255
 #, php-format
@@ -14993,7 +15017,7 @@ msgstr "Iso-Britannia"
 
 #: app/Stats.php:6964
 msgid "United States"
-msgstr ""
+msgstr "Yhdysvallat"
 
 #: app/GedcomRecord.php:1154 app/GedcomRecord.php:1158 app/Stats.php:6716
 msgid "Unknown"
@@ -15249,7 +15273,7 @@ msgstr "Vanuatu"
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Erilaiset tilastokaaviot."
 
 #: app/Stats.php:6966
 msgid "Vatican City"
@@ -15321,7 +15345,7 @@ msgstr "Varmistettu"
 
 #: app/GedcomCode/GedcomCodeTemp.php:331
 msgid "Vernal, Utah, United States"
-msgstr "Vernal, Utah, United States"
+msgstr "Vernal, Utah, Yhdysvallat"
 
 #. I18N: gedcom tag VERS
 #: app/GedcomTag.php:852
@@ -15449,7 +15473,7 @@ msgstr "Hoidokki"
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
 msgid "Washington, District of Columbia, United States"
-msgstr "Washington, District of Columbia, United States"
+msgstr "Washington, District of Columbia, Yhdysvallat"
 
 #: admin_trees_config.php:1111
 msgid "Watermarks"
@@ -15584,19 +15608,20 @@ msgstr "Mihin on asennettu PhpGedView aineistosi?"
 
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Mitkä sukupuut pitäisi sisältää sivustokarttaan?"
+msgstr "Mitkä sukupuut pitäisi sisältää sivustokarttaan"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
 msgid "Who can upload new media files"
-msgstr "Kuka voi ladata web-palvelimelle uusia mediatiedostoja?"
+msgstr "Kuka voi ladata web-palvelimelle uusia mediatiedostoja"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
 msgid "Who is online"
 msgstr "Kuka on online"
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr "Vain kokonaiset sanat"
 
@@ -15654,7 +15679,7 @@ msgstr "Testamentti"
 
 #: app/GedcomCode/GedcomCodeTemp.php:337
 msgid "Winter Quarters, Nebraska, United States"
-msgstr "Winter Quarters, Nebraska, United States"
+msgstr "Winter Quarters, Nebraska, Yhdysvallat"
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"
@@ -15800,7 +15825,7 @@ msgstr "Käytä HTML:ää, kun haluat muotoilla vastauksen ja upottaa siihen lin
 
 #: admin_site_config.php:435
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr ""
+msgstr "Sinun on myös mahdollistettava ”vähemmän turvalliset sovellukset” Google tililläsi."
 
 #: setup.php:212
 msgid "You must change this before you can continue."
@@ -16339,14 +16364,15 @@ msgstr "lapsia"
 #. I18N: button label
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:759
-#: app/Module/GoogleMapsModule.php:4024 app/Theme/AbstractTheme.php:700
-#: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1746
-#: edit_interface.php:1855 edit_interface.php:2048 edit_interface.php:2217
-#: edit_interface.php:2603 find.php:766 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189
+#: app/Module/GoogleMapsModule.php:759 app/Module/GoogleMapsModule.php:4024
+#: app/Theme/AbstractTheme.php:700 edit_changes.php:240 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1746 edit_interface.php:1855 edit_interface.php:2048
+#: edit_interface.php:2217 edit_interface.php:2603 find.php:766
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "sulje"
@@ -18864,7 +18890,8 @@ msgstr "lukumäärät"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19036,20 +19063,21 @@ msgstr "hakukone"
 #. I18N: button label
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:199
-#: admin_site_access.php:307 admin_site_config.php:652 admin_site_merge.php:340
-#: admin_trees_config.php:2271 admin_users.php:673
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129
+#: admin_modules.php:199 admin_site_access.php:307 admin_site_config.php:652
+#: admin_site_merge.php:340 admin_trees_config.php:2271 admin_users.php:673
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:533 app/Module/GoogleMapsModule.php:758
 #: app/Module/GoogleMapsModule.php:2764 app/Module/GoogleMapsModule.php:4023
-#: app/Module/RelationshipsChartModule.php:173 app/Module/SiteMapModule.php:320
-#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
-#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1745 edit_interface.php:1853 edit_interface.php:2047
-#: edit_interface.php:2215 edit_interface.php:2599 editnews.php:74
-#: edituser.php:317 find.php:543 index_edit.php:376
+#: app/Module/RelationshipsChartModule.php:173
+#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
+#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
+#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
+#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
+#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1745
+#: edit_interface.php:1853 edit_interface.php:2047 edit_interface.php:2215
+#: edit_interface.php:2599 editnews.php:74 edituser.php:317 find.php:543
+#: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
@@ -19741,7 +19769,7 @@ msgstr "perhe ei tiedossa"
 
 #: app/Module/RelationshipsChartModule.php:131
 msgid "unlimited"
-msgstr ""
+msgstr "rajoittamaton"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51

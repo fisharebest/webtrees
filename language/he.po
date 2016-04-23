@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-02-18 08:48+0200\n"
-"Last-Translator: Meliza <meliza@amitys.com>\n"
-"Language-Team: Hebrew <http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
+"PO-Revision-Date: 2016-04-21 18:54+0000\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
+"Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3\n"
+"X-Generator: Weblate 2.5\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -455,8 +455,8 @@ msgid_plural "%s years ago"
 msgstr[0] "לפני שנה"
 msgstr[1] "לפני %s שנים"
 
-#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
-#: calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:1942
+#: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
 msgstr "יום השנה %s"
@@ -704,7 +704,7 @@ msgstr "<b>הודעה חשובה:</b> אשף העברה אינו מסוגל לס
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr "<b>שים לב:</b> מידע פרטי על אנשים חיים יינתן רק לקרובי משפחה וחברים קרובים. אתה תתבקש לאמת את היחסים שלך לפני שתקבל את כל הנתונים הפרטיים. לפעמים גם המידע של אנשים מתים עשוי להיות פרטי. במקרה הזה, הדבר קורה משום שאין מספיק מידע ידוע על האדם כדי לקבוע אם הוא בחיים או לא, ואין לנו כנראה מידע נוסף על אדם זה.<br><br>לפני שתשאל שאלה , ודא שאתה חוקר את האדם הנכון ע״י בדיקת תאריכים, מקומות, וקרובי משפחה. אם אתה שולח שינויים לנתוני חקר שושלת היוחסין, בבקשה כלול את המקורות שמהם השגת את הנתונים."
+msgstr "<b>שים לב:</b> מידע פרטי על אנשים חיים יינתן רק לקרובי משפחה וחברים קרובים. אתה תתבקש לאמת את הקירבה שלך לפני שתקבל את כל הנתונים הפרטיים. לפעמים גם המידע של אנשים מתים עשוי להיות פרטי. במקרה הזה, הדבר קורה משום שאין מספיק מידע ידוע על האדם כדי לקבוע אם הוא בחיים או לא, ואין לנו כנראה מידע נוסף על אדם זה.<br><br>לפני שתשאל שאלה , ודא שאתה חוקר את האדם הנכון ע״י בדיקת תאריכים, מקומות, וקרובי משפחה. אם אתה שולח שינויים לנתוני חקר שושלת היוחסין, בבקשה כלול את המקורות שמהם השגת את הנתונים."
 
 #: login.php:170
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
@@ -741,37 +741,37 @@ msgstr "ישות שאלות ותשובות יכולה להיות מוצגת רק
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "תרשים המציג יחס בין שני אנשים."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "תרשים של אב-אבות וצאצאים של אדם בצורת עץ משפחה."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "תרשים של אב-אבות של אדם בצורת עץ קומפקטי."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "תרשים של אב-אבות של אדם מעוצב כעץ."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "תרשים של אב-אבות של אדם."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "תרשים של צאצאים של אדם."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "תרשים של משך החיים של אנשים."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -783,12 +783,12 @@ msgstr "שגיאה כללית של GEDCOM היא קיום קישורים מרו�
 
 #: setup.php:369
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-msgstr "שרת מאגר מידע יכול לאחסן הרבה מאגרי מידע. אתה צריך לבחור מאגר מידע קיים (נוצר על ידי מנהל השרת שלך) או ליצור אחד חדש (אם משתמש שרת מאגר המידע שלך בעל הרשאות מספיקות)."
+msgstr "שרת מאגר מידע יכול לאחסן הרבה מאגרי מידע. אתה צריך לבחור מאגר מידע קיים (נוצר על ידי מנהל השרת שלך) או ליצור חדש (אם משתמש שרת מאגר המידע שלך בעל הרשאות מספיקות)."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "תרשים מניפה של אב-אבות של אדם."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:222
 msgid "A file on the server"
@@ -901,13 +901,13 @@ msgstr "משתמש פוטנציאלי נרשם ב-webtrees ב-%s."
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "דו״ח של אבותיו של אדם, במבנה עץ."
+msgstr "דו״ח של אב-אבות של אדם, במבנה עץ."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "דו״ח של אבותיו של אדם, בסגנון סיפורי."
+msgstr "דו״ח של אב-אבות של אדם, בסגנון סיפורי."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
@@ -1050,7 +1050,7 @@ msgstr "לשונית המציגה מקורות קשורים לאדם."
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "קו זמן המציג ארועים של אדם."
 
 #: admin_users.php:398
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
@@ -1266,17 +1266,43 @@ msgstr "הוסף"
 msgid "Add %s to the clippings cart"
 msgstr "הוסף %s לעגלה"
 
+#: app/Module/RelativesTabModule.php:273
+msgid "Add a brother or sister"
+msgstr "הוסף אח או אחות"
+
+#: edit_interface.php:516
+msgid "Add a child"
+msgstr "הוסף ילד/ה"
+
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
 msgstr "הוסף ילד/ה וצור משפחה חד-הורית"
 
-#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
+#: app/Controller/FamilyController.php:82
+#: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
 msgstr "הוסף ילד/ה למשפחה"
 
 #: edit_interface.php:81
 msgid "Add a fact"
 msgstr "הוסף עובדה"
+
+#: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
+msgid "Add a father"
+msgstr "הוסף אב"
+
+#: app/Module/FamilyTreeFavoritesModule.php:203
+msgid "Add a favorite"
+msgstr "הוסף מועדף"
+
+#: app/Module/GoogleMapsModule.php:4628
+msgid "Add a geographic location"
+msgstr "הוספת מיקום גיאוגרפי"
+
+#: app/Module/RelativesTabModule.php:385 edit_interface.php:810
+#: edit_interface.php:900
+msgid "Add a husband"
+msgstr "הוסף בעל"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
@@ -1287,55 +1313,31 @@ msgstr "הוסף בעל למשפחה"
 msgid "Add a husband using an existing individual"
 msgstr "הוסף בעל ע״י שימוש באדם קיים"
 
-#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add an associate"
-msgstr "הוסף שותף חדש"
-
-#: app/Module/RelativesTabModule.php:273
-msgid "Add a brother or sister"
-msgstr "הוסף אח או אחות חדשים"
-
-#: edit_interface.php:516
-msgid "Add a child"
-msgstr "הוסף ילד/ה חדש"
-
-#: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
-msgid "Add a father"
-msgstr "הוסף אב חדש"
-
-#: app/Module/FamilyTreeFavoritesModule.php:203
-msgid "Add a favorite"
-msgstr "הוסף מועדף חדש"
-
-#: app/Module/GoogleMapsModule.php:4628
-msgid "Add a geographic location"
-msgstr "הוספת מיקום גיאוגרפי חדש"
-
-#: app/Module/RelativesTabModule.php:385 edit_interface.php:810
-#: edit_interface.php:900
-msgid "Add a husband"
-msgstr "הוסף בעל חדש"
-
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
-msgstr "הוסף כניסת יומן חדשה"
+msgstr "הוסף כניסת יומן"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1131
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:184
+#: app/Controller/FamilyController.php:162
+#: app/Functions/FunctionsEdit.php:1131 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:184
 msgid "Add a media object"
-msgstr "הוסף ישות מדיה חדשה"
+msgstr "הוסף ישות מדיה"
 
 #: app/Module/RelativesTabModule.php:323 edit_interface.php:672 family.php:114
 msgid "Add a mother"
-msgstr "הוסף אם חדשה"
+msgstr "הוסף אם"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
 msgid "Add a name"
 msgstr "הוסף שם"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1110
-#: app/Module/NotesTabModule.php:100
+#: app/Module/FamilyTreeNewsModule.php:148
+msgid "Add a news article"
+msgstr "הוסף מאמר חדשות"
+
+#: app/Controller/FamilyController.php:149
+#: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
 msgstr "הוסף הערה"
 
@@ -1343,8 +1345,18 @@ msgstr "הוסף הערה"
 msgid "Add a restriction"
 msgstr "הוסף הגבלה"
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1120
-#: app/Module/NotesTabModule.php:110
+#. I18N: label for a yes/no option
+#: app/Module/FamilyTreeFavoritesModule.php:286
+#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
+#: app/Module/UpcomingAnniversariesModule.php:181
+#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
+msgid "Add a scrollbar when block contents grow"
+msgstr "הוסף פס גלילה כאשר תוכן הבלוק גדל"
+
+#: app/Controller/FamilyController.php:155
+#: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
 msgid "Add a shared note"
 msgstr "הוסף הערה משותפת"
 
@@ -1352,42 +1364,29 @@ msgstr "הוסף הערה משותפת"
 msgid "Add a son or daughter"
 msgstr "הוסף בן או בת"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1060
-#: app/Module/SourcesTabModule.php:93
+#: app/Controller/FamilyController.php:172
+#: app/Functions/FunctionsEdit.php:1060 app/Module/SourcesTabModule.php:93
 msgid "Add a source citation"
-msgstr "הוסף ציטוט של מקור חדש"
+msgstr "הוסף ציטוט של מקור"
 
 #: edit_interface.php:837
 msgid "Add a spouse"
 msgstr "הוסף בעל או אישה"
 
-#. I18N: Menu entry
-#: admin_users.php:265 app/Theme/AdministrationTheme.php:164
-msgid "Add a user"
-msgstr "הוסף משתמש חדש"
-
-#: app/Module/RelativesTabModule.php:373 edit_interface.php:807
-#: edit_interface.php:897
-msgid "Add a wife"
-msgstr "הוסף אישה חדשה"
-
-#: app/Module/FamilyTreeNewsModule.php:148
-msgid "Add a news article"
-msgstr "הוסף מאמר חדשות"
-
-#. I18N: label for a yes/no option
-#: app/Module/FamilyTreeFavoritesModule.php:286
-#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
-#: app/Module/UpcomingAnniversariesModule.php:181
-#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
-msgid "Add a scrollbar when block contents grow"
-msgstr "הוסף פס גלילה כאשר תוכן הבלוק גדל"
-
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
 msgid "Add a story"
 msgstr "הוסף סיפור"
+
+#. I18N: Menu entry
+#: admin_users.php:265 app/Theme/AdministrationTheme.php:164
+msgid "Add a user"
+msgstr "הוסף משתמש"
+
+#: app/Module/RelativesTabModule.php:373 edit_interface.php:807
+#: edit_interface.php:897
+msgid "Add a wife"
+msgstr "הוסף אישה"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1402,6 +1401,10 @@ msgstr "הוסף אישה ע״י שימוש באדם קיים"
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
 msgstr "הוסף ישות שאלות ותשובות"
+
+#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
+msgid "Add an associate"
+msgstr "הוסף שותף"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -1476,7 +1479,7 @@ msgstr "הוסף רשומות לא קשורות"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
 msgid "Add watermarks to thumbnails"
-msgstr "הוסף סימני מים לתמונות ממוזערות?"
+msgstr "הוסף סימני מים לתמונות ממוזערות"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -1782,7 +1785,7 @@ msgstr "אלבום"
 
 #: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Albuquerque, New Mexico, United States"
-msgstr "אלבקרקי, ניו מקסיקו"
+msgstr "אלבקרקי, ניו מקסיקו, ארצות הברית"
 
 #: app/Stats.php:6786
 msgid "Algeria"
@@ -1803,10 +1806,10 @@ msgstr "חיים"
 #: app/Module/GoogleMapsModule.php:1578 app/Module/GoogleMapsModule.php:1591
 #: app/Module/GoogleMapsModule.php:4691 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5623 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
-#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
-#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
-#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
+#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
+#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
+#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -1953,12 +1956,12 @@ msgstr "אירעה שגיאה בעת שחרור דחיסת הקובץ."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr ""
+msgstr "תרשים שעון חול המציג אב-אבות וצאצאים של אדם."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "עץ אינטראקטיבי, המציג את האב אבות והצאצאים."
+msgstr "עץ אינטראקטיבי, המציג את האב-אבות והצאצאים של אדם."
 
 #: setup.php:495
 msgid "An unexpected database error occurred."
@@ -1980,7 +1983,7 @@ msgstr "עניין אב-אבות"
 
 #: modules_v3/ahnentafel_report/report.xml:55
 msgid "Ancestors of "
-msgstr "האבות של "
+msgstr "האב-אבות של "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/AncestryController.php:54
@@ -1996,7 +1999,7 @@ msgstr "מספר קובץ אב-אבות"
 
 #: app/GedcomCode/GedcomCodeTemp.php:87
 msgid "Anchorage, Alaska, United States"
-msgstr "אנקורג׳, אלסקה"
+msgstr "אנקורג׳, אלסקה, ארצות הברית"
 
 #: app/Stats.php:6724
 msgid "Andorra"
@@ -2013,7 +2016,8 @@ msgstr "אנגווילה"
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1804 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1804
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr "יום השנה"
 
@@ -2160,7 +2164,8 @@ msgstr "ארגנטינה"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -2220,7 +2225,7 @@ msgstr "בים"
 
 #: app/GedcomCode/GedcomCodeTemp.php:93
 msgid "Atlanta, Georgia, United States"
-msgstr "אטלנטה, ג׳ורג׳יה"
+msgstr "אטלנטה, ג׳ורג׳יה, ארצות הברית"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
@@ -2556,7 +2561,7 @@ msgstr "עדכון אצווה"
 
 #: app/GedcomCode/GedcomCodeTemp.php:113
 msgid "Baton Rouge, Louisiana, United States"
-msgstr "באטון רוז׳, לואיזיאנה"
+msgstr "באטון רוז׳, לואיזיאנה, ארצות הברית"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2752
@@ -2612,7 +2617,7 @@ msgstr "ביבליוגרפיה"
 
 #: app/GedcomCode/GedcomCodeTemp.php:97
 msgid "Billings, Montana, United States"
-msgstr "בילינגס, מונטנה"
+msgstr "בילינגס, מונטנה, ארצות הברית"
 
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
@@ -2625,7 +2630,7 @@ msgstr "בינג מפות™"
 
 #: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Birmingham, Alabama, United States"
-msgstr "ברמינגהאם, אלבמה"
+msgstr "ברמינגהאם, אלבמה, ארצות הברית"
 
 #. I18N: gedcom tag BIRT
 #: app/GedcomTag.php:206 modules_v3/ahnentafel_report/report.xml:441
@@ -2865,7 +2870,7 @@ msgstr "לידות לפי מאה"
 
 #: app/GedcomCode/GedcomCodeTemp.php:101
 msgid "Bismarck, North Dakota, United States"
-msgstr "ביסמרק, דקוטה הצפונית"
+msgstr "ביסמרק, דקוטה הצפונית, ארצות הברית"
 
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
@@ -2902,7 +2907,7 @@ msgstr "בוגוטה, קולומביה"
 
 #: app/GedcomCode/GedcomCodeTemp.php:105
 msgid "Boise, Idaho, United States"
-msgstr "בויסי, איידהו"
+msgstr "בויסי, איידהו, ארצות הברית"
 
 #: app/Stats.php:6749
 msgid "Bolivia"
@@ -2927,7 +2932,7 @@ msgstr "בוסניה הרצגובינה"
 
 #: app/GedcomCode/GedcomCodeTemp.php:107
 msgid "Boston, Massachusetts, United States"
-msgstr "בוסטון, מסצ׳וסטס"
+msgstr "בוסטון, מסצ׳וסטס, ארצות הברית"
 
 #: app/Functions/FunctionsPrintLists.php:628
 msgid "Both alive"
@@ -2943,7 +2948,7 @@ msgstr "בוטסואנה"
 
 #: app/GedcomCode/GedcomCodeTemp.php:109
 msgid "Bountiful, Utah, United States"
-msgstr "באונטיפול, יוטה"
+msgstr "באונטיפול, יוטה, ארצות הברית"
 
 #: app/Stats.php:6754
 msgid "Bouvet Island"
@@ -3437,7 +3442,7 @@ msgstr "שנה הבלוקים של ה”דף שלי”"
 #: app/Module/RecentChangesModule.php:257
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "שונה ב-%1$s"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Module/RecentChangesModule.php:254
@@ -3448,7 +3453,8 @@ msgstr "שונה ב-%1$s ע״י %2$s"
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:436
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr "שינויים"
 
@@ -3479,7 +3485,7 @@ msgstr "תרשים"
 
 #: app/Module/RelationshipsChartModule.php:142
 msgid "Chart preferences"
-msgstr ""
+msgstr "העדפות תרשים"
 
 #: app/Module/ChartsBlockModule.php:190 statistics.php:584
 msgid "Chart type"
@@ -3487,9 +3493,9 @@ msgstr "סוג תרשים"
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1287
-#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
-#: app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163
+#: admin_trees_config.php:1287 app/Module/ChartsBlockModule.php:34
+#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
 msgstr "תרשימים"
 
@@ -3534,7 +3540,7 @@ msgstr "בדיקת תצורת השרת"
 
 #: app/GedcomCode/GedcomCodeTemp.php:119
 msgid "Chicago, Illinois, United States"
-msgstr "שיקגו, אילינוי"
+msgstr "שיקגו, אילינוי, ארצות הברית"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:36 app/GedcomTag.php:274
@@ -3834,15 +3840,15 @@ msgstr "קולוניה חוארס, מקסיקו"
 
 #: app/GedcomCode/GedcomCodeTemp.php:133
 msgid "Columbia River, Washington, United States"
-msgstr "קולומביה ריבר, וושינגטון"
+msgstr "קולומביה ריבר, וושינגטון, ארצות הברית"
 
 #: app/GedcomCode/GedcomCodeTemp.php:127
 msgid "Columbia, South Carolina, United States"
-msgstr "קולומביה, קרוליינה הדרומית"
+msgstr "קולומביה, קרוליינה הדרומית, ארצות הברית"
 
 #: app/GedcomCode/GedcomCodeTemp.php:129
 msgid "Columbus, Ohio, United States"
-msgstr "קולומבוס, אוהיו"
+msgstr "קולומבוס, אוהיו, ארצות הברית"
 
 #: medialist.php:164
 msgid "Columns per page"
@@ -3980,9 +3986,10 @@ msgstr "נמשך"
 #: app/Module/FrequentlyAskedQuestionsModule.php:441
 #: app/Module/GoogleMapsModule.php:294 app/Module/GoogleMapsModule.php:1541
 #: app/Module/GoogleMapsModule.php:4096
-#: app/Module/RelationshipsChartModule.php:147 app/Module/SiteMapModule.php:296
-#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
-#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
+#: app/Module/RelationshipsChartModule.php:147
+#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
+#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
+#: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr "לוח בקרה"
 
@@ -4086,15 +4093,11 @@ msgstr "צור"
 
 #: admin_trees_manage.php:621
 msgid "Create a family tree"
-msgstr "צור עץ משפחה חדש"
-
-#: edit_interface.php:750
-msgid "Create an individual"
-msgstr "צור אדם חדש"
+msgstr "צור עץ משפחה"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
-msgstr "צור ישות מדיה חדשה"
+msgstr "צור ישות מדיה"
 
 #: app/Functions/FunctionsEdit.php:427 edit_interface.php:1512
 #: edit_interface.php:1575
@@ -4104,22 +4107,26 @@ msgstr "צור מאגר"
 #: app/Functions/FunctionsEdit.php:438 edit_interface.php:1348
 #: edit_interface.php:1384
 msgid "Create a shared note"
-msgstr "צור הערה משותפת חדשה"
+msgstr "צור הערה משותפת"
 
 #: app/Functions/FunctionsEdit.php:634
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
-msgstr "צור הערה משותפת חדשה בעזרת מסייע"
+msgstr "צור הערה משותפת בעזרת מסייע למיפקד"
 
 #: app/Functions/FunctionsEdit.php:460 edit_interface.php:1196
 #: edit_interface.php:1279
 msgid "Create a source"
-msgstr "צור מקור חדש"
+msgstr "צור מקור"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
 msgstr "צור חוק גישה לאתר"
+
+#: edit_interface.php:750
+msgid "Create an individual"
+msgstr "צור אדם"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -4328,7 +4335,7 @@ msgstr "דאיטש-מוקוטוף"
 
 #: app/GedcomCode/GedcomCodeTemp.php:135
 msgid "Dallas, Texas, United States"
-msgstr "דאלאס, טקסס"
+msgstr "דאלאס, טקסס, ארצות הברית"
 
 #. I18N: A summary of the system status
 #: admin.php:460
@@ -4370,7 +4377,8 @@ msgstr "חשבון המשתמש של מאגר המידע"
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -4935,7 +4943,8 @@ msgstr "דרגה"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -4951,8 +4960,9 @@ msgid "DejaVu"
 msgstr "DejaVu"
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
-#: admin_site_change.php:373 admin_site_logs.php:314 admin_trees_config.php:576
-#: admin_trees_manage.php:415 admin_trees_manage.php:426 admin_users.php:211
+#: admin_site_change.php:373 admin_site_logs.php:314
+#: admin_trees_config.php:576 admin_trees_manage.php:415
+#: admin_trees_manage.php:426 admin_users.php:211
 #: app/Controller/FamilyController.php:94
 #: app/Controller/GedcomRecordController.php:116
 #: app/Controller/IndividualController.php:303
@@ -5015,7 +5025,7 @@ msgstr "דנמרק"
 
 #: app/GedcomCode/GedcomCodeTemp.php:137
 msgid "Denver, Colorado, United States"
-msgstr "דנוור, קולורדו"
+msgstr "דנוור, קולורדו, ארצות הברית"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
@@ -5031,7 +5041,8 @@ msgstr "דורות של צאצאי אדם"
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
 #: app/Module/ChartsBlockModule.php:195
-#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
+#: app/Module/DescendancyChartModule.php:33
+#: app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5071,7 +5082,7 @@ msgstr "תג מטה של תאור"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
-msgstr ""
+msgstr "תיאור אינו זמין"
 
 #: login.php:446
 msgid "Desired password"
@@ -5098,7 +5109,7 @@ msgstr "פרטים של המשתמש החדש יישלחו לאיש הקשר ש�
 
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Detroit, Michigan, United States"
-msgstr "דטרויט, מישיגן"
+msgstr "דטרויט, מישיגן, ארצות הברית"
 
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
@@ -5765,7 +5776,8 @@ msgstr "מחוץ להגשה הזו"
 msgid "Explain why you are requesting an account."
 msgstr "הסבר מדוע אתה מבקש חשבון."
 
-#: admin_site_change.php:369 admin_site_logs.php:310 admin_trees_manage.php:591
+#: admin_site_change.php:369 admin_site_logs.php:310
+#: admin_trees_manage.php:591
 msgid "Export"
 msgstr "ייצא"
 
@@ -5942,7 +5954,8 @@ msgstr "איי פוקלנד"
 #: app/Module/GoogleMapsModule.php:2818 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1489
 #: calendar.php:422 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:134 mediaviewer.php:123
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:225
 #: repo.php:143 search.php:93 source.php:147 statistics.php:71
 #: statisticsplot.php:974 statisticsplot.php:1078 statisticsplot.php:1328
@@ -6039,7 +6052,8 @@ msgstr "עץ משפחה"
 msgid "Family tree access and settings"
 msgstr "גישה והגדרות של עץ המשפחה"
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90
+#: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr "עגלת גזירי עץ המשפחה"
 
@@ -6178,7 +6192,8 @@ msgid "Father’s family with an unknown individual"
 msgstr "משפחתו של אב עם אדם לא ידוע"
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1345
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1345
 msgid "Favorites"
 msgstr "מועדפים"
 
@@ -6320,7 +6335,8 @@ msgstr "מצא סימן מיוחד"
 msgid "Find all possible relationships"
 msgstr "מצא את כל היחסים האפשריים"
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 msgid "Find an individual"
@@ -6332,7 +6348,7 @@ msgstr "מצא כפילויות"
 
 #: relationship.php:115
 msgid "Find other relationships"
-msgstr ""
+msgstr "מצא יחסים אחרים"
 
 #: relationship.php:102 relationship.php:107
 msgid "Find the closest relationships"
@@ -6405,7 +6421,8 @@ msgstr "שם התיקייה על השרת"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6522,7 +6539,7 @@ msgstr "שאלות ותשובות"
 
 #: app/GedcomCode/GedcomCodeTemp.php:151
 msgid "Fresno, California, United States"
-msgstr "פרזנו, קליפורניה"
+msgstr "פרזנו, קליפורניה, ארצות הברית"
 
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:669
@@ -6693,7 +6710,7 @@ msgstr "דורות"
 #. I18N: gedcom tag ANCE
 #: app/GedcomTag.php:154
 msgid "Generations of ancestors"
-msgstr "אב-אבות"
+msgstr "דורות של אב-אבות"
 
 #: app/Module/GoogleMapsModule.php:169 app/Module/GoogleMapsModule.php:307
 #: app/Module/GoogleMapsModule.php:901 app/Module/GoogleMapsModule.php:1554
@@ -6934,7 +6951,7 @@ msgstr "המילטון, ניו זילנד"
 
 #: app/GedcomCode/GedcomCodeTemp.php:165
 msgid "Hartford, Connecticut, United States"
-msgstr "הרטפורד, קונטיקט"
+msgstr "הרטפורד, קונטיקט, ארצות הברית"
 
 #: modules_v3/descendancy_report/report.xml:429
 msgid "He "
@@ -7023,7 +7040,8 @@ msgstr "הלסינקי, פינלנד"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7160,12 +7178,12 @@ msgstr "בית אב"
 
 #: app/GedcomCode/GedcomCodeTemp.php:175
 msgid "Houston, Texas, United States"
-msgstr "יוסטון, טקסס"
+msgstr "יוסטון, טקסס, ארצות הברית"
 
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:158
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "כמה איטרציות לערוך בחיפוש אחר יחסים"
 
 #: app/Stats.php:6826
 msgid "Hungary"
@@ -7219,7 +7237,7 @@ msgstr "צלמית"
 
 #: app/GedcomCode/GedcomCodeTemp.php:177
 msgid "Idaho Falls, Idaho, United States"
-msgstr "איידהו פאלס, איידהו"
+msgstr "איידהו פאלס, איידהו, ארצות הברית"
 
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:516
@@ -7437,7 +7455,7 @@ msgstr "כלול תיקיות משנה"
 
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "כלול את המשפחה הקרובה של האדם?"
+msgstr "כלול את המשפחה הקרובה של האדם"
 
 #: app/Stats.php:6828
 msgid "India"
@@ -7563,7 +7581,8 @@ msgid "Installation folder"
 msgstr "תיקיית התקנה"
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:197 app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:197
+#: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
 msgstr "עץ אינטראקטיבי"
 
@@ -7722,7 +7741,7 @@ msgstr "ירדן"
 
 #: app/GedcomCode/GedcomCodeTemp.php:181
 msgid "Jordan River, Utah, United States"
-msgstr "יורדן ריבר, יוטה"
+msgstr "יורדן ריבר, יוטה, ארצות הברית"
 
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:47
@@ -7927,7 +7946,7 @@ msgstr "כסלו"
 
 #: app/GedcomCode/GedcomCodeTemp.php:185
 msgid "Kona, Hawaii, United States"
-msgstr "קונה, הוואי"
+msgstr "קונה, הוואי, ארצות הברית"
 
 #: app/Stats.php:6846
 msgid "Korea"
@@ -7977,7 +7996,7 @@ msgstr "מקדש מורמונים"
 
 #: app/GedcomCode/GedcomCodeTemp.php:167
 msgid "Laie, Hawaii, United States"
-msgstr "לאיה, הוואי"
+msgstr "לאיה, הוואי, ארצות הברית"
 
 #. I18N: page orientation
 #: admin_trees_config.php:54 modules_v3/change_report/report.xml:10
@@ -8017,7 +8036,7 @@ msgstr "המספר הגדול ביותר של נכדים"
 
 #: app/GedcomCode/GedcomCodeTemp.php:199
 msgid "Las Vegas, Nevada, United States"
-msgstr "לאס וגאס, נבדה"
+msgstr "לאס וגאס, נבדה, ארצות הברית"
 
 #. I18N: gedcom tag CHAN
 #: app/GedcomTag.php:258 modules_v3/change_report/report.xml:66
@@ -8161,13 +8180,13 @@ msgstr "ליכטנשטיין"
 
 #: statistics.php:146
 msgid "Lifespan"
-msgstr "תוחלת החיים"
+msgstr "משך החיים"
 
 #. I18N: Name of a module/chart
 #: app/Controller/LifespanController.php:120
 #: app/Module/LifespansChartModule.php:33 lifespan.php:34
 msgid "Lifespans"
-msgstr "תוחלות חיים"
+msgstr "משכי החיים"
 
 #: app/GedcomCode/GedcomCodeTemp.php:189
 msgid "Lima, Peru"
@@ -8287,7 +8306,7 @@ msgstr "דייר"
 
 #: app/GedcomCode/GedcomCodeTemp.php:191
 msgid "Logan, Utah, United States"
-msgstr "לוגן, יוטה"
+msgstr "לוגן, יוטה, ארצות הברית"
 
 #: app/Module/LoginBlockModule.php:63
 msgid "Logged in as "
@@ -8340,7 +8359,7 @@ msgstr "קו אורך"
 
 #: app/GedcomCode/GedcomCodeTemp.php:187
 msgid "Los Angeles, California, United States"
-msgstr "לוס אנג׳לס, קליפורניה"
+msgstr "לוס אנג׳לס, קליפורניה, ארצות הברית"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219 login.php:252
 msgid "Lost password request"
@@ -8348,7 +8367,7 @@ msgstr "בקשת סיסמה אבודה"
 
 #: app/GedcomCode/GedcomCodeTemp.php:195
 msgid "Louisville, Kentucky, United States"
-msgstr "לואיוויל, קנטקי"
+msgstr "לואיוויל, קנטקי, ארצות הברית"
 
 #: app/Stats.php:1741
 msgid "Lowest population"
@@ -8356,7 +8375,7 @@ msgstr "האוכלוסייה הקטנה ביותר"
 
 #: app/GedcomCode/GedcomCodeTemp.php:197
 msgid "Lubbock, Texas, United States"
-msgstr "לובוק, טקסס"
+msgstr "לובוק, טקסס, ארצות הברית"
 
 #: app/Stats.php:6857
 msgid "Luxembourg"
@@ -8472,7 +8491,7 @@ msgstr "מנילה, הפיליפינים"
 
 #: app/GedcomCode/GedcomCodeTemp.php:205
 msgid "Manti, Utah, United States"
-msgstr "מנטי, יוטה"
+msgstr "מנטי, יוטה, ארצות הברית"
 
 #: app/GedcomTag.php:1928
 msgid "Manuscript"
@@ -8842,7 +8861,7 @@ msgstr "מאיוט"
 
 #: app/GedcomCode/GedcomCodeTemp.php:207
 msgid "Medford, Oregon, United States"
-msgstr "מדפורד, אורגון"
+msgstr "מדפורד, אורגון, ארצות הברית"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
@@ -8989,7 +9008,7 @@ msgstr "גודל הזיכרון המוקצה ל-PHP"
 
 #: app/GedcomCode/GedcomCodeTemp.php:211
 msgid "Memphis, Tennessee, United States"
-msgstr "ממפיס, טנסי"
+msgstr "ממפיס, טנסי, ארצות הברית"
 
 #: admin_module_menus.php:87 admin_modules.php:185
 msgid "Menu"
@@ -9025,7 +9044,7 @@ msgstr "מרידה, מקסיקו"
 
 #: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Mesa, Arizona, United States"
-msgstr "מסה, אריזונה"
+msgstr "מסה, אריזונה, ארצות הברית"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
 msgid "Message"
@@ -9151,9 +9170,9 @@ msgstr "מודול"
 #: app/Module/FrequentlyAskedQuestionsModule.php:442
 #: app/Module/GoogleMapsModule.php:295 app/Module/GoogleMapsModule.php:1542
 #: app/Module/GoogleMapsModule.php:4097
-#: app/Module/RelationshipsChartModule.php:148 app/Module/SiteMapModule.php:297
-#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
-#: app/Theme/AdministrationTheme.php:190
+#: app/Module/RelationshipsChartModule.php:148
+#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
+#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr "ניהול מודולים"
 
@@ -9225,7 +9244,7 @@ msgstr "חודש:"
 
 #: app/GedcomCode/GedcomCodeTemp.php:221
 msgid "Monticello, Utah, United States"
-msgstr "מונטיצ׳לו, יוטה"
+msgstr "מונטיצ׳לו, יוטה, ארצות הברית"
 
 #: app/GedcomCode/GedcomCodeTemp.php:223
 msgid "Montreal, Quebec, Canada"
@@ -9328,7 +9347,7 @@ msgstr "משפחתה של אם עם אדם לא ידוע"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Mount Timpanogos, Utah, United States"
-msgstr "מואונט טימפנוגוס, יוטה"
+msgstr "מואונט טימפנוגוס, יוטה, ארצות הברית"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:493 index_edit.php:312
 #: index_edit.php:361
@@ -9503,7 +9522,7 @@ msgstr "תיאור ספורי"
 
 #: app/GedcomCode/GedcomCodeTemp.php:227
 msgid "Nashville, Tennessee, United States"
-msgstr "נאשוויל, טנסי"
+msgstr "נאשוויל, טנסי, ארצות הברית"
 
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:610
@@ -9521,11 +9540,11 @@ msgstr "נאורו"
 
 #: app/GedcomCode/GedcomCodeTemp.php:229
 msgid "Nauvoo (new), Illinois, United States"
-msgstr "נאוו, אילינוי (חדש)"
+msgstr "נאוו (חדש), אילינוי, ארצות הברית"
 
 #: app/GedcomCode/GedcomCodeTemp.php:231
 msgid "Nauvoo (original), Illinois, United States"
-msgstr "נאוו, אילינוי (מקורי)"
+msgstr "נאוו (מקורי), אילינוי, ארצות הברית"
 
 #: app/Module/GoogleMapsModule.php:407 app/Module/GoogleMapsModule.php:3961
 msgid "Neighborhood"
@@ -9574,7 +9593,7 @@ msgstr "קלדוניה החדשה"
 
 #: app/GedcomCode/GedcomCodeTemp.php:237
 msgid "New York, New York, United States"
-msgstr "ניו יורק, ניו יורק"
+msgstr "ניו יורק, ניו יורק, ארצות הברית"
 
 #: app/Stats.php:6895
 msgid "New Zealand"
@@ -9598,7 +9617,7 @@ msgstr "משתמש חדש ב-%s"
 
 #: app/GedcomCode/GedcomCodeTemp.php:233
 msgid "Newport Beach, California, United States"
-msgstr "ניופורט ביצ׳, קליפורניה"
+msgstr "ניופורט ביצ׳, קליפורניה, ארצות הברית"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:54
@@ -9929,8 +9948,9 @@ msgid "Not verified by the user"
 msgstr "לא אומת ע״י משתמש"
 
 #. I18N: gedcom tag NOTE
-#: app/Controller/FamilyController.php:147 app/Functions/FunctionsPrint.php:173
-#: app/GedcomTag.php:634 modules_v3/cemetery_report/report.xml:64
+#: app/Controller/FamilyController.php:147
+#: app/Functions/FunctionsPrint.php:173 app/GedcomTag.php:634
+#: modules_v3/cemetery_report/report.xml:64
 #: modules_v3/family_group_report/report.xml:485
 #: modules_v3/family_group_report/report.xml:749
 #: modules_v3/family_group_report/report.xml:1101
@@ -10023,8 +10043,8 @@ msgstr "מספר דורות"
 msgid "Number of items"
 msgstr "מספר כניסות"
 
-#: app/Module/TopGivenNamesModule.php:146 app/Module/TopPageViewsModule.php:159
-#: app/Module/TopSurnamesModule.php:168
+#: app/Module/TopGivenNamesModule.php:146
+#: app/Module/TopPageViewsModule.php:159 app/Module/TopSurnamesModule.php:168
 msgid "Number of items to show"
 msgstr "מספר פריטים להצגה"
 
@@ -10053,7 +10073,7 @@ msgstr "אח מטפל"
 
 #: app/GedcomCode/GedcomCodeTemp.php:241
 msgid "Oakland, California, United States"
-msgstr "אוקלנד, קליפורניה"
+msgstr "אוקלנד, קליפורניה, ארצות הברית"
 
 #: app/GedcomCode/GedcomCodeTemp.php:243
 msgid "Oaxaca, Mexico"
@@ -10108,11 +10128,11 @@ msgstr "אוקטובר"
 
 #: app/GedcomCode/GedcomCodeTemp.php:245
 msgid "Ogden, Utah, United States"
-msgstr "אוגדן, יוטה"
+msgstr "אוגדן, יוטה, ארצות הברית"
 
 #: app/GedcomCode/GedcomCodeTemp.php:247
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "אוקלהומה סיטי, אוקלהומה"
+msgstr "אוקלהומה סיטי, אוקלהומה, ארצות הברית"
 
 #: admin_site_change.php:336
 msgid "Old data"
@@ -10243,7 +10263,7 @@ msgstr "כוון"
 
 #: app/GedcomCode/GedcomCodeTemp.php:249
 msgid "Orlando, Florida, United States"
-msgstr "אורלנדו, פלורידה"
+msgstr "אורלנדו, פלורידה, ארצות הברית"
 
 #: app/GedcomTag.php:1942 app/Stats.php:5499 app/Stats.php:5918
 msgid "Other"
@@ -10329,7 +10349,8 @@ msgstr "הגבלת זמן של PHP"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -10383,7 +10404,7 @@ msgstr "לוח צבעים"
 
 #: app/GedcomCode/GedcomCodeTemp.php:253
 msgid "Palmyra, New York, United States"
-msgstr "פאלמירה, ניו יורק"
+msgstr "פאלמירה, ניו יורק, ארצות הברית"
 
 #: app/Stats.php:6898
 msgid "Panama"
@@ -10593,10 +10614,6 @@ msgstr "בדיקת מקום"
 #: find.php:204
 msgid "Place contains"
 msgstr "מקום מכיל"
-
-#: app/Module/TopPageViewsModule.php:165
-msgid "Show counts before or after name"
-msgstr "שים מונים לפני או אחרי השם?"
 
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
@@ -10827,7 +10844,7 @@ msgstr "מספר הפורט"
 
 #: app/GedcomCode/GedcomCodeTemp.php:263
 msgid "Portland, Oregon, United States"
-msgstr "פורטלנד, אורגון"
+msgstr "פורטלנד, אורגון, ארצות הברית"
 
 #: app/GedcomCode/GedcomCodeTemp.php:251
 msgid "Porto Alegre, Brazil"
@@ -10942,7 +10959,7 @@ msgstr "פרימידי"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "הדפס אירועים בסיסיים ריקים?"
+msgstr "הדפס אירועים בסיסיים ריקים"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
 msgid "Privacy"
@@ -10972,7 +10989,7 @@ msgstr "נכס"
 
 #: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "Provo, Utah, United States"
-msgstr "פרובו, יוטה"
+msgstr "פרובו, יוטה, ארצות הברית"
 
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:704
@@ -11115,7 +11132,7 @@ msgstr "רג׳ב"
 
 #: app/GedcomCode/GedcomCodeTemp.php:269
 msgid "Raleigh, North Carolina, United States"
-msgstr "ראלי, קרוליינה הצפונית"
+msgstr "ראלי, קרוליינה הצפונית, ארצות הברית"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:98
@@ -11146,8 +11163,9 @@ msgstr "רמדאן"
 msgid "Random images from the current family tree."
 msgstr "תמונות אקראיות מעץ המשפחה הנוכחי."
 
-#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1803 edit_interface.php:1877
+#: app/Controller/FamilyController.php:88
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1803
+#: edit_interface.php:1877
 msgid "Re-order children"
 msgstr "סדר מחדש את הילדים"
 
@@ -11170,7 +11188,8 @@ msgid "Real name"
 msgstr "שם אמיתי"
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr "שינויים אחרונים"
 
@@ -11185,7 +11204,8 @@ msgstr "רסיפה, ברזיל"
 #: admin_site_change.php:327 admin_site_change.php:388
 #: admin_trees_config.php:530 app/Functions/FunctionsPrintLists.php:1800
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:321 app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:321
+#: app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -11211,7 +11231,7 @@ msgstr "הרשומות אינן מסוג זהה. לא ניתן למזג רשומ
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
 msgid "Redlands, California, United States"
-msgstr "רדלנדס, קליפורניה"
+msgstr "רדלנדס, קליפורניה, ארצות הברית"
 
 #: app/Module/GoogleMapsModule.php:991 app/Module/GoogleMapsModule.php:2338
 #: app/Module/GoogleMapsModule.php:3645
@@ -11375,7 +11395,7 @@ msgstr "הסר המיקום?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Reno, Nevada, United States"
-msgstr "רינו, נבדה"
+msgstr "רינו, נבדה, ארצות הברית"
 
 #: admin_trees_manage.php:506
 msgid "Renumber"
@@ -11572,7 +11592,7 @@ msgstr "שרת SMTP"
 
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Sacramento, California, United States"
-msgstr "סקרמנטו, קליפורניה"
+msgstr "סקרמנטו, קליפורניה, ארצות הברית"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:91
@@ -11625,7 +11645,7 @@ msgstr "סנט וינסנט והגרנדינים"
 
 #: app/GedcomCode/GedcomCodeTemp.php:299
 msgid "Salt Lake City, Utah, United States"
-msgstr "סולט לייק סיטי, יוטה"
+msgstr "סולט לייק סיטי, יוטה, ארצות הברית"
 
 #: app/Stats.php:6976
 msgid "Samoa"
@@ -11633,11 +11653,11 @@ msgstr "סמואה"
 
 #: app/GedcomCode/GedcomCodeTemp.php:285
 msgid "San Antonio, Texas, United States"
-msgstr "סן אנטוניו, טקסס"
+msgstr "סן אנטוניו, טקסס, ארצות הברית"
 
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "San Diego, California, United States"
-msgstr "סן דייגו, קליפורניה"
+msgstr "סן דייגו, קליפורניה, ארצות הברית"
 
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "San Jose, Costa Rica"
@@ -11776,11 +11796,11 @@ msgstr "חפש מחרוזת/תבנית"
 
 #: app/Module/RelationshipsChartModule.php:163
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr ""
+msgstr "חיפוש אחר כל היחסים האפשריים יארך זמן רב בעצים מורכבים."
 
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Seattle, Washington, United States"
-msgstr "סיאטל, וושינגטון"
+msgstr "סיאטל, וושינגטון, ארצות הברית"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:370
@@ -11904,7 +11924,7 @@ msgstr "שלח הודעות שידור"
 
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "שלח תזכורת בדואר אלקטרוני?"
+msgstr "שלח תזכורת בדואר אלקטרוני"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329
@@ -12250,7 +12270,7 @@ msgstr "הנישואין הקצרים"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr "האם להחביא את הבלוק כאשר הוא ריק?"
+msgstr "האם להחביא את הבלוק כאשר הוא ריק"
 
 #: calendar.php:229
 msgid "Show"
@@ -12289,7 +12309,7 @@ msgstr "הראה את כל התגים"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "הצג סמן גיל?"
+msgstr "הצג סמן גיל"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1366
@@ -12298,11 +12318,15 @@ msgstr "הצג פרטי תרשים כברירת מחדל"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "הצג ילדים של אבות?"
+msgstr "הצג ילדים של אב-אבות"
 
 #: app/Module/FamilyTreeStatisticsModule.php:300
 msgid "Show common surnames"
-msgstr "הראה שמות משפחה שכיחים?"
+msgstr "הראה שמות משפחה שכיחים"
+
+#: app/Module/TopPageViewsModule.php:165
+msgid "Show counts before or after name"
+msgstr "שים מונים לפני או אחרי השם"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12339,7 +12363,7 @@ msgstr "הראה הפרשי תאריכים"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
 msgid "Show date of last update"
-msgstr "הצג תאריך העדכון האחרון?"
+msgstr "הצג תאריך העדכון האחרון"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:391
@@ -12427,21 +12451,21 @@ msgstr "הצג שמות של אנשים פרטיים"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "הצג הערות?"
+msgstr "הצג הערות"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "הצג עיסוקים?"
+msgstr "הצג עיסוקים"
 
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "הראה רק לידות, פטירות וחתונות?"
+msgstr "הראה רק לידות, פטירות וחתונות"
 
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "הצג רק אירועים של אנשים חיים?"
+msgstr "הצג רק אירועים של אנשים חיים"
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
@@ -12453,7 +12477,7 @@ msgstr "הראה רק אנשים שמינם בלתי ידוע."
 
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "הראה רק אנשים, אירועים, או הכל?"
+msgstr "הראה רק אנשים, אירועים, או הכל"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -12476,7 +12500,7 @@ msgstr "הראה שינויים שממתינים לאישור"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "הראה תמונות?"
+msgstr "הראה תמונות"
 
 #: placelist.php:83
 msgid "Show places in hierarchy"
@@ -12505,11 +12529,11 @@ msgstr "הצג משימות מחקר בעלות תאריך עתידי"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "הצג מגורים?"
+msgstr "הצג מגורים"
 
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls"
-msgstr "הצג בקרת מצגת שקופיות?"
+msgstr "הצג בקרת מצגת שקופיות"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12517,7 +12541,7 @@ msgstr "הצג בקרת מצגת שקופיות?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "הצג מקורות?"
+msgstr "הצג מקורות"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12559,12 +12583,12 @@ msgstr "מיקום האירועים והמקומות בעזרת מיפוי מפ�
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "הצג את המשתמש שעשה את השינוי"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "באיזה שפות להראות את הבלוק הזה?"
+msgstr "באיזה שפות להראות את הבלוק הזה"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1038 app/Functions/FunctionsEdit.php:206
@@ -12757,7 +12781,7 @@ msgstr "מערכות קטנות (500 אנשים): 32-16 מגה-בית , 20-10 ש
 
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Snowflake, Arizona, United States"
-msgstr "סנואופלייק, אריזונה"
+msgstr "סנואופלייק, אריזונה, ארצות הברית"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:792
@@ -12918,7 +12942,7 @@ msgstr "ספרדית"
 
 #: app/GedcomCode/GedcomCodeTemp.php:309
 msgid "Spokane, Washington, United States"
-msgstr "ספוקיין, וושינגטון"
+msgstr "ספוקיין, וושינגטון, ארצות הברית"
 
 #: modules_v3/bdm_report/report.xml:169
 msgid "Spouse"
@@ -12952,15 +12976,15 @@ msgstr "סרי לנקה"
 
 #: app/GedcomCode/GedcomCodeTemp.php:295
 msgid "St. George, Utah, United States"
-msgstr "סנט ג׳ורג׳, יוטה"
+msgstr "סנט ג׳ורג׳, יוטה, ארצות הברית"
 
 #: app/GedcomCode/GedcomCodeTemp.php:301
 msgid "St. Louis, Missouri, United States"
-msgstr "סנט לואיס, מיזורי"
+msgstr "סנט לואיס, מיזורי, ארצות הברית"
 
 #: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "St. Paul, Minnesota, United States"
-msgstr "סיינט פול, מינסוטה"
+msgstr "סיינט פול, מינסוטה, ארצות הברית"
 
 #: app/Module/GoogleMapsModule.php:507
 msgid "Standard"
@@ -12978,7 +13002,7 @@ msgstr "התחל מההורים"
 
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load"
-msgstr "התחל מצגת שקופיות עם טעינת הדף?"
+msgstr "התחל מצגת שקופיות עם טעינת הדף"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13039,12 +13063,12 @@ msgstr "עצור"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
 msgid "Store watermarked full size images on server"
-msgstr "שמור תמונות בעלות סימני מים בגודל מלא על השרת?"
+msgstr "שמור תמונות בעלות סימני מים בגודל מלא על השרת"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
 msgid "Store watermarked thumbnails on server"
-msgstr "שמור תמונות ממוזערות בעלות סימני מים על השרת?"
+msgstr "שמור תמונות ממוזערות בעלות סימני מים על השרת"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -13478,8 +13502,8 @@ msgstr "לא ניתן למחוק את התיקייה %s."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:294
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:294
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "תיקייה %s אינה קיימת, ולא ניתן ליצור אותה."
@@ -13631,7 +13655,7 @@ msgstr "ההעדפות לעצי משפחה חדשים עודכנו."
 #: app/Module/RelationshipsChartModule.php:190
 #, php-format
 msgid "The preferences for the chart “%s” have been updated."
-msgstr ""
+msgstr "ההעדפות של התרשים ”%s” עודכנו."
 
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
@@ -13841,8 +13865,8 @@ msgstr "אין משימות מחקר בעץ המשפחה הזה."
 msgid "There are no source citations for this individual."
 msgstr "לאדם זה אין ציטוטים של מקורות."
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1926
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1926
 msgid "There are pending changes for you to moderate."
 msgstr "ישנם שינויים שממתינים לאישורך."
 
@@ -14997,7 +15021,7 @@ msgstr "בריטניה"
 
 #: app/Stats.php:6964
 msgid "United States"
-msgstr ""
+msgstr "ארצות הברית"
 
 #: app/GedcomRecord.php:1154 app/GedcomRecord.php:1158 app/Stats.php:6716
 msgid "Unknown"
@@ -15253,7 +15277,7 @@ msgstr "ונואטו"
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
 msgid "Various statistics charts."
-msgstr ""
+msgstr "תרשימים סטטיסטיים שונים."
 
 #: app/Stats.php:6966
 msgid "Vatican City"
@@ -15325,7 +15349,7 @@ msgstr "אומת"
 
 #: app/GedcomCode/GedcomCodeTemp.php:331
 msgid "Vernal, Utah, United States"
-msgstr "ורנאל, יוטה"
+msgstr "ורנאל, יוטה, ארצות הברית"
 
 #. I18N: gedcom tag VERS
 #: app/GedcomTag.php:852
@@ -15453,7 +15477,7 @@ msgstr "חניך"
 
 #: app/GedcomCode/GedcomCodeTemp.php:335
 msgid "Washington, District of Columbia, United States"
-msgstr "וושינגטון די סי"
+msgstr "וושינגטון די סי, ארצות הברית"
 
 #: admin_trees_config.php:1111
 msgid "Watermarks"
@@ -15588,19 +15612,20 @@ msgstr "היכן התקנת ה-PhpGedView שלך?"
 
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "איזה עצי משפחה יש לכלול במפויי האתר?"
+msgstr "איזה עצי משפחה יש לכלול במפויי האתר"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
 msgid "Who can upload new media files"
-msgstr "מי יכול להעלות קבצי מדיה חדשים?"
+msgstr "מי יכול להעלות קבצי מדיה חדשים"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
 msgid "Who is online"
 msgstr "מי מחובר"
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr "מילים שלמות בלבד"
 
@@ -15658,7 +15683,7 @@ msgstr "צוואה"
 
 #: app/GedcomCode/GedcomCodeTemp.php:337
 msgid "Winter Quarters, Nebraska, United States"
-msgstr "ווינטר קוורטרס, נברסקה"
+msgstr "ווינטר קוורטרס, נברסקה, ארצות הברית"
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"
@@ -15804,7 +15829,7 @@ msgstr "אתה יכול להשתמש ב-HTML כדי לעצב את התשובה �
 
 #: admin_site_config.php:435
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr ""
+msgstr "עליך לאפשר גם ”ישומים פחות מאובטחים” בחשבון הגוגל שלך."
 
 #: setup.php:212
 msgid "You must change this before you can continue."
@@ -16343,14 +16368,15 @@ msgstr "ילדים"
 #. I18N: button label
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:759
-#: app/Module/GoogleMapsModule.php:4024 app/Theme/AbstractTheme.php:700
-#: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1746
-#: edit_interface.php:1855 edit_interface.php:2048 edit_interface.php:2217
-#: edit_interface.php:2603 find.php:766 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189
+#: app/Module/GoogleMapsModule.php:759 app/Module/GoogleMapsModule.php:4024
+#: app/Theme/AbstractTheme.php:700 edit_changes.php:240 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1746 edit_interface.php:1855 edit_interface.php:2048
+#: edit_interface.php:2217 edit_interface.php:2603 find.php:766
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "סגור"
@@ -18868,7 +18894,8 @@ msgstr "ספרות"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19040,20 +19067,21 @@ msgstr "רובוט"
 #. I18N: button label
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:199
-#: admin_site_access.php:307 admin_site_config.php:652 admin_site_merge.php:340
-#: admin_trees_config.php:2271 admin_users.php:673
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129
+#: admin_modules.php:199 admin_site_access.php:307 admin_site_config.php:652
+#: admin_site_merge.php:340 admin_trees_config.php:2271 admin_users.php:673
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:533 app/Module/GoogleMapsModule.php:758
 #: app/Module/GoogleMapsModule.php:2764 app/Module/GoogleMapsModule.php:4023
-#: app/Module/RelationshipsChartModule.php:173 app/Module/SiteMapModule.php:320
-#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
-#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1745 edit_interface.php:1853 edit_interface.php:2047
-#: edit_interface.php:2215 edit_interface.php:2599 editnews.php:74
-#: edituser.php:317 find.php:543 index_edit.php:376
+#: app/Module/RelationshipsChartModule.php:173
+#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
+#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
+#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
+#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
+#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1745
+#: edit_interface.php:1853 edit_interface.php:2047 edit_interface.php:2215
+#: edit_interface.php:2599 editnews.php:74 edituser.php:317 find.php:543
+#: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
@@ -19745,7 +19773,7 @@ msgstr "לא ידוע"
 
 #: app/Module/RelationshipsChartModule.php:131
 msgid "unlimited"
-msgstr ""
+msgstr "בלתי מוגבל"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
