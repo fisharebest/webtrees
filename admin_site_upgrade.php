@@ -386,7 +386,7 @@ echo '</li>';
 // This is it - take the site offline first
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', I18N::translate('Check file permissions…');
+echo '<li>', /* I18N: The system is about to… */ I18N::translate('Check file permissions…');
 
 reset_timeout();
 $iterator = new \RecursiveDirectoryIterator($zip_dir);

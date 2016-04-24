@@ -273,7 +273,7 @@ class IndividualController extends GedcomRecordController {
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-indi');
 
 		if (Auth::isEditor($this->record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Add a new name'), '#', 'menu-indi-addname', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Add a name'), '#', 'menu-indi-addname', array(
 				'onclick' => 'return add_name("' . $this->record->getXref() . '");',
 			)));
 

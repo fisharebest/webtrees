@@ -21,15 +21,19 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 
 /**
  * Class RelationshipsChartModule
  */
 class RelationshipsChartModule extends AbstractModule implements ModuleConfigInterface, ModuleChartInterface {
-	const DEFAULT_FIND_ALL_PATHS = '1';
+	/** It would be more correct to use PHP_INT_MAX, but this isn't friendly in URLs */
+	const UNLIMITED_RECURSION = 99;
+
+	/** By default new trees allow unlimited recursion */
+	const DEFAULT_RECURSION   = self::UNLIMITED_RECURSION;
 
 	/**
 	 * How should this module be labelled on tabs, menus, etc.?
@@ -116,6 +120,19 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 	}
 
 	/**
+	 * Possible options for the recursion option
+	 */
+	private function recursionOptions() {
+		return array(
+			0           => I18N::translate('none'),
+			1           => I18N::number(1),
+			2           => I18N::number(2),
+			3           => I18N::number(3),
+			PHP_INT_MAX => I18N::translate('unlimited'),
+		);
+	}
+
+	/**
 	 * Display a form to edit configuration settings.
 	 */
 	private function editConfig() {
@@ -138,10 +155,10 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 				<h2><?php echo $tree->getTitleHtml() ?></h2>
 				<fieldset class="form-group">
 					<legend class="control-label col-sm-3">
-						<?php echo I18N::translate('Option to find all possible relationships'); ?>
+						<?php echo /* I18N: Configuration option */I18N::translate('How much recursion to use when searching for relationships'); ?>
 					</legend>
 					<div class="col-sm-9">
-						<?php echo FunctionsEdit::radioButtons('find-all-paths-' . $tree->getTreeId(), array(0 => I18N::translate('hide'), 1 => I18N::translate('show')), $tree->getPreference('FIND_ALL_PATHS', self::DEFAULT_FIND_ALL_PATHS), 'class="radio-inline"'); ?>
+						<?php echo FunctionsEdit::radioButtons('relationship-recursion-' . $tree->getTreeId(), $this->recursionOptions(), $tree->getPreference('RELATIONSHIP_RECURSION', self::DEFAULT_RECURSION), 'class="radio-inline"'); ?>
 						<p class="small text-muted">
 							<?php echo I18N::translate('Searching for all possible relationships can take a lot of time in complex trees.') ?>
 						</p>
@@ -167,7 +184,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 	private function saveConfig() {
 		if (Auth::isAdmin()) {
 			foreach (Tree::getAll() as $tree) {
-				$tree->setPreference('FIND_ALL_PATHS', Filter::post('find-all-paths-' . $tree->getTreeId()));
+				$tree->setPreference('RELATIONSHIP_RECURSION', Filter::post('relationship-recursion-' . $tree->getTreeId()));
 			}
 
 			FlashMessages::addMessage(I18N::translate('The preferences for the chart “%s” have been updated.', $this->getTitle()), 'success');

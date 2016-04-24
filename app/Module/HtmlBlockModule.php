@@ -329,7 +329,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap">';
-		echo I18N::translate('Show this block for which languages?');
+		echo I18N::translate('Show this block for which languages');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::editLanguageCheckboxes('lang', $languages);
 		echo '</td></tr>';

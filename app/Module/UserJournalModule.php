@@ -107,7 +107,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 			$content .= '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($news->subject)) . "');\">" . I18N::translate('Delete') . '</a><br>';
 			$content .= "</div><br>";
 		}
-		$content .= '<br><a href="#" onclick="window.open(\'editnews.php?user_id=' . Auth::id() . '\', \'_blank\', indx_window_specs); return false;">' . I18N::translate('Add a new journal entry') . '</a>';
+		$content .= '<br><a href="#" onclick="window.open(\'editnews.php?user_id=' . Auth::id() . '\', \'_blank\', indx_window_specs); return false;">' . I18N::translate('Add a journal entry') . '</a>';
 
 		if ($template) {
 			if ($block) {

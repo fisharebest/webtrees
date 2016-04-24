@@ -85,7 +85,7 @@ class Session {
 	 * @return bool
 	 */
 	public static function has($name) {
-		return array_key_exists($name, $_SESSION);
+		return isset($_SESSION[$name]);
 	}
 
 	/**

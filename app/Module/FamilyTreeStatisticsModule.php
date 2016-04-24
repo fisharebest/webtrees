@@ -289,7 +289,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		<tr>
 			<td class="descriptionbox wrap width33">
 				<?php echo /* I18N: label for yes/no option */
-				I18N::translate('Show date of last update?') ?>
+				I18N::translate('Show date of last update') ?>
 			</td>
 			<td class="optionbox">
 				<?php echo FunctionsEdit::editFieldYesNo('show_last_update', $show_last_update) ?>
@@ -297,7 +297,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		</tr>
 		<tr>
 			<td class="descriptionbox wrap width33">
-				<?php echo I18N::translate('Show common surnames?') ?>
+				<?php echo I18N::translate('Show common surnames') ?>
 			</td>
 			<td class="optionbox">
 				<?php echo FunctionsEdit::editFieldYesNo('show_common_surnames', $show_common_surnames) ?>

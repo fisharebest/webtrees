@@ -3440,6 +3440,12 @@ dd .deletelink {
 	min-width: 600px;
 }
 
+/*-- Relationship ---- */
+
+#relationship-page .hline-text, #relationship-page .vline-text {
+	font-size: 12px;
+}
+
 /* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {

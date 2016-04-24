@@ -277,7 +277,7 @@ document.onmouseup = function () {
 						<span class="details1"><?php echo I18N::translate('Remove individual'); ?></span></a>
 						<?php if (!empty($controller->birthyears[$pid])) { ?>
 							<span class="details1"><br>
-								<?php echo /* I18N: an age indicator, which can be dragged around the screen */ I18N::translate('Show an age cursor?'); ?>
+								<?php echo /* I18N: an age indicator, which can be dragged around the screen */ I18N::translate('Show an age cursor'); ?>
 								<input type="checkbox" name="agebar<?php echo $p; ?>" value="ON" onclick="jQuery('#agebox<?php echo $p; ?>').toggle();">
 							</span>
 						<?php } ?>
