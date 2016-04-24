@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
@@ -117,25 +116,6 @@ class GedcomRecordController extends PageController {
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-record-del', array(
 				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
 			)));
-		}
-
-		// add to favorites
-		if (Module::getModuleByName('user_favorites')) {
-			$menu->addSubmenu(new Menu(
-				/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
-				'#',
-				'menu-record-addfav',
-				array(
-					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite" ,{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
-				)
-			));
-		}
-
-		// Get the link for the first submenu and set it as the link for the main menu
-		if ($menu->getSubmenus()) {
-			$submenus = $menu->getSubmenus();
-			$menu->setLink($submenus[0]->getLink());
-			$menu->setAttrs($submenus[0]->getAttrs());
 		}
 
 		return $menu;

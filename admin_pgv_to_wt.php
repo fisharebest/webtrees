@@ -766,7 +766,10 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'COMMON_NAMES_ADD', $COMMON_NAMES_ADD));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'COMMON_NAMES_REMOVE', $COMMON_NAMES_REMOVE));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'COMMON_NAMES_THRESHOLD', $COMMON_NAMES_THRESHOLD));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CONTACT_USER_ID', User::findByIdentifier($CONTACT_EMAIL)->getUserId()));
+	$user = User::findByIdentifier($CONTACT_EMAIL);
+	if ($user) {
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'CONTACT_USER_ID', $user->getUserId()]);
+	}
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'DEFAULT_PEDIGREE_GENERATIONS', $DEFAULT_PEDIGREE_GENERATIONS));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'EXPAND_NOTES', $EXPAND_NOTES));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'EXPAND_RELATIVES_EVENTS', $EXPAND_RELATIVES_EVENTS));
@@ -933,7 +936,10 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'USE_RELATIONSHIP_PRIVACY', $USE_RELATIONSHIP_PRIVACY));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'USE_RIN', $USE_RIN));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WATERMARK_THUMB', $WATERMARK_THUMB));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WEBMASTER_USER_ID', User::findByIdentifier($WEBMASTER_EMAIL)->getUserId()));
+	$user = User::findByIdentifier($WEBMASTER_EMAIL);
+	if ($user) {
+		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'WEBMASTER_USER_ID', $user->getUserId()]);
+	}
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES));
 }
 Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('config', 'privacy', 'path', 'pgv_ver', 'imported')")->execute();

@@ -262,7 +262,7 @@ case 'edit':
 	$user_id = Filter::getInteger('user_id');
 
 	if ($user_id === 0) {
-		$controller->setPageTitle(I18N::translate('Add a new user'));
+		$controller->setPageTitle(I18N::translate('Add a user'));
 		$tmp            = new \stdClass;
 		$tmp->user_id   = '';
 		$tmp->user_name = '';
@@ -717,7 +717,7 @@ case 'cleanup':
 		} else {
 			$datelogin = (int) $user->getPreference('sessiontime');
 		}
-		if (mktime(0, 0, 0, (int) date('m') - $month, (int) date('d'), (int) date('Y')) > $datelogin && $user->getPreference('verified') && $user->getPreference('approved')) {
+		if (mktime(0, 0, 0, (int) date('m') - $month, (int) date('d'), (int) date('Y')) > $datelogin && $user->getPreference('verified') && $user->getPreference('verified_by_admin')) {
 			$ucnt++;
 			?>
 			<tr>
@@ -765,7 +765,7 @@ case 'cleanup':
 
 	// Check users not verified by admin
 	foreach (User::all() as $user) {
-		if ($user->getUserId() !== Auth::id() && !$user->getPreference('approved') && $user->getPreference('verified')) {
+		if ($user->getUserId() !== Auth::id() && !$user->getPreference('verified_by_admin') && $user->getPreference('verified')) {
 			$ucnt++;
 			?>
 			<tr>

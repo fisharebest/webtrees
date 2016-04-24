@@ -16,9 +16,10 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
@@ -28,6 +29,11 @@ use Rhumsaa\Uuid\Uuid;
  * Class ResearchTaskModule
  */
 class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface {
+	const DEFAULT_SHOW_OTHER      = '1';
+	const DEFAULT_SHOW_UNASSIGNED = '1';
+	const DEFAULT_SHOW_FUTURE     = '1';
+	const DEFAULT_BLOCK           = '1';
+
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module. Tasks that need further research. */ I18N::translate('Research tasks');
@@ -50,10 +56,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 	public function getBlock($block_id, $template = true, $cfg = array()) {
 		global $ctype, $controller, $WT_TREE;
 
-		$show_other      = $this->getBlockSetting($block_id, 'show_other', '1');
-		$show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', '1');
-		$show_future     = $this->getBlockSetting($block_id, 'show_future', '1');
-		$block           = $this->getBlockSetting($block_id, 'block', '1');
+		$show_other      = $this->getBlockSetting($block_id, 'show_other', self::DEFAULT_SHOW_OTHER);
+		$show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', self::DEFAULT_SHOW_UNASSIGNED);
+		$show_future     = $this->getBlockSetting($block_id, 'show_future', self::DEFAULT_SHOW_FUTURE);
+		$block           = $this->getBlockSetting($block_id, 'block', self::DEFAULT_BLOCK);
 
 		foreach (array('show_unassigned', 'show_other', 'show_future', 'block') as $name) {
 			if (array_key_exists($name, $cfg)) {
@@ -85,11 +91,11 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 				info: true,
 				jQueryUI: true,
 				columns: [
-					/* 0-DATE */     { visible: false },
+					/* 0-DATE */     null,
 					/* 1-Date */     { dataSort: 0 },
-					/* 1-Record */   null,
-					/* 2-Username */ null,
-					/* 3-Text */     null
+					/* 2-Record */   null,
+					/* 3-Username */ null,
+					/* 4-Text */     null
 				]
 			});
 			jQuery("#' . $table_id . '").css("visibility", "visible");
@@ -100,33 +106,44 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '<div class="loading-image">&nbsp;</div>';
 		$content .= '<table id="' . $table_id . '" style="visibility:hidden;">';
 		$content .= '<thead><tr>';
-		$content .= '<th>DATE</th>'; //hidden by datables code
+		$content .= '<th hidden>DATE</th>';
 		$content .= '<th>' . GedcomTag::getLabel('DATE') . '</th>';
 		$content .= '<th>' . I18N::translate('Record') . '</th>';
-		if ($show_unassigned || $show_other) {
-			$content .= '<th>' . I18N::translate('Username') . '</th>';
-		}
+		$content .= '<th>' . I18N::translate('Username') . '</th>';
 		$content .= '<th>' . GedcomTag::getLabel('TEXT') . '</th>';
 		$content .= '</tr></thead><tbody>';
 
 		$found  = false;
 		$end_jd = $show_future ? 99999999 : WT_CLIENT_JD;
-		foreach (FunctionsDb::getCalendarEvents(0, $end_jd, '_TODO', $WT_TREE) as $fact) {
+
+		$xrefs = Database::prepare(
+			"SELECT DISTINCT d_gid FROM `##dates`" .
+			" WHERE d_file = :tree_id AND d_fact = '_TODO' AND d_julianday1 < :jd"
+		)->execute(array(
+			'tree_id' => $WT_TREE->getTreeId(),
+			'jd'      => $end_jd,
+		))->fetchOneColumn();
+
+		$facts = array();
+		foreach ($xrefs as $xref) {
+			$record = GedcomRecord::getInstance($xref, $WT_TREE);
+			if ($record->canShow()) {
+				foreach ($record->getFacts('_TODO') as $fact) {
+					$facts[] = $fact;
+				}
+			}
+		}
+
+		foreach ($facts as $fact) {
 			$record    = $fact->getParent();
 			$user_name = $fact->getAttribute('_WT_USER');
 			if ($user_name === Auth::user()->getUserName() || !$user_name && $show_unassigned || $user_name && $show_other) {
 				$content .= '<tr>';
-				//-- Event date (sortable)
-				$content .= '<td>'; //hidden by datables code
-				$content .= $fact->getDate()->julianDay();
-				$content .= '</td>';
+				$content .= '<td hidden>' . $fact->getDate()->julianDay() . '</td>';
 				$content .= '<td class="wrap">' . $fact->getDate()->display() . '</td>';
 				$content .= '<td class="wrap"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
-				if ($show_unassigned || $show_other) {
-					$content .= '<td class="wrap">' . $user_name . '</td>';
-				}
-				$text = $fact->getValue();
-				$content .= '<td class="wrap">' . $text . '</td>';
+				$content .= '<td class="wrap">' . $user_name . '</td>';
+				$content .= '<td class="wrap" dir="auto">' . $fact->getValue() . '</td>';
 				$content .= '</tr>';
 				$found = true;
 			}
@@ -176,10 +193,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		$show_other      = $this->getBlockSetting($block_id, 'show_other', '1');
-		$show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', '1');
-		$show_future     = $this->getBlockSetting($block_id, 'show_future', '1');
-		$block           = $this->getBlockSetting($block_id, 'block', '1');
+		$show_other      = $this->getBlockSetting($block_id, 'show_other', self::DEFAULT_SHOW_OTHER);
+		$show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', self::DEFAULT_SHOW_UNASSIGNED);
+		$show_future     = $this->getBlockSetting($block_id, 'show_future', self::DEFAULT_SHOW_FUTURE);
+		$block           = $this->getBlockSetting($block_id, 'block', self::DEFAULT_BLOCK);
 
 		?>
 		<tr>

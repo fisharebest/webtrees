@@ -63,9 +63,8 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 
 		$num       = $this->getBlockSetting($block_id, 'num', '10');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
-		$block     = $this->getBlockSetting($block_id, 'block', '0');
 
-		foreach (array('num', 'infoStyle', 'block') as $name) {
+		foreach (array('num', 'infoStyle') as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -130,13 +129,8 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		if ($template) {
-			if ($block) {
-				$class .= ' small_inner_block';
-			}
-
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
-
 			return $content;
 		}
 	}
@@ -165,12 +159,10 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|array|table|tagcloud', 'table'));
-			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
 		$num       = $this->getBlockSetting($block_id, 'num', '10');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
-		$block     = $this->getBlockSetting($block_id, 'block', '0');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Number of items to show');
@@ -182,12 +174,6 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('bullet list'), 'array' => I18N::translate('compact list'), 'table' => I18N::translate('table'), 'tagcloud' => I18N::translate('tag cloud')), null, $infoStyle, '');
-		echo '</td></tr>';
-
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 	}
 

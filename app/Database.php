@@ -214,7 +214,7 @@ class Database {
 	 *
 	 * The native quote() function does not convert PHP nulls to DB nulls
 	 *
-	 * @param  $string
+	 * @param  string $string
 	 *
 	 * @return string
 	 *
@@ -284,6 +284,8 @@ class Database {
 	 * @param string $schema_name    Where to find our MigrationXXX classes
 	 * @param int    $target_version updade/downgrade to this version
 	 *
+	 * @return bool  Were any updates applied
+	 *
 	 * @throws PDOException
 	 */
 	public static function updateSchema($namespace, $schema_name, $target_version) {
@@ -294,6 +296,8 @@ class Database {
 			$current_version = 0;
 		}
 
+		$updates_applied = false;
+
 		try {
 			// Update the schema, one version at a time.
 			while ($current_version < $target_version) {
@@ -302,6 +306,7 @@ class Database {
 				$migration = new $class;
 				$migration->upgrade();
 				Site::setPreference($schema_name, ++$current_version);
+				$updates_applied = true;
 			}
 		} catch (PDOException $ex) {
 			// The schema update scripts should never fail. If they do, there is no clean recovery.
@@ -309,5 +314,7 @@ class Database {
 			header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
 			throw $ex;
 		}
+
+		return $updates_applied;
 	}
 }

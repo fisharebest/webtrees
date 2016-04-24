@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Module;
 
 /**
  * Controller for the family page
@@ -90,10 +89,8 @@ class FamilyController extends GedcomRecordController {
 					'onclick' => 'return reorder_children("' . $this->record->getXref() . '");',
 				)));
 			}
-		}
 
-		// delete
-		if (Auth::isEditor($this->record->getTree())) {
+			// delete
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-fam-del', array(
 				'onclick' => 'return delete_record("' . I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?') . '", "' . $this->record->getXref() . '");',
 			)));
@@ -104,25 +101,6 @@ class FamilyController extends GedcomRecordController {
 			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-fam-editraw', array(
 				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
 			)));
-		}
-
-		// add to favorites
-		if (Module::getModuleByName('user_favorites')) {
-			$menu->addSubmenu(new Menu(
-				/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
-				'#',
-				'menu-fam-addfav',
-				array(
-					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
-				)
-			));
-		}
-
-		// Get the link for the first submenu and set it as the link for the main menu
-		if ($menu->getSubmenus()) {
-			$submenus = $menu->getSubmenus();
-			$menu->setLink($submenus[0]->getLink());
-			$menu->setAttrs($submenus[0]->getAttrs());
 		}
 
 		return $menu;
@@ -168,20 +146,20 @@ class FamilyController extends GedcomRecordController {
 			echo '<tr><td class="descriptionbox">';
 			echo I18N::translate('Note');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','NOTE');\">", I18N::translate('Add a new note'), '</a>';
+			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','NOTE');\">", I18N::translate('Add a note'), '</a>';
 			echo '</td></tr>';
 
 			echo '<tr><td class="descriptionbox">';
 			echo I18N::translate('Shared note');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','SHARED_NOTE');\">", I18N::translate('Add a new shared note'), '</a>';
+			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','SHARED_NOTE');\">", I18N::translate('Add a shared note'), '</a>';
 			echo '</td></tr>';
 
 			if ($this->record->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($this->record->getTree())) {
 				echo '<tr><td class="descriptionbox">';
 				echo I18N::translate('Media object');
 				echo '</td><td class="optionbox">';
-				echo "<a href=\"#\" onclick=\"window.open('addmedia.php?action=showmediaform&amp;linktoid=" . $this->record->getXref() . "', '_blank', edit_window_specs); return false;\">", I18N::translate('Add a new media object'), '</a>';
+				echo "<a href=\"#\" onclick=\"window.open('addmedia.php?action=showmediaform&amp;linktoid=" . $this->record->getXref() . "', '_blank', edit_window_specs); return false;\">", I18N::translate('Add a media object'), '</a>';
 				echo FunctionsPrint::helpLink('OBJE');
 				echo '<br>';
 				echo "<a href=\"#\" onclick=\"window.open('inverselink.php?linktoid=" . $this->record->getXref() . "&amp;linkto=family', '_blank', find_window_specs); return false;\">", I18N::translate('Link to an existing media object'), '</a>';
@@ -191,7 +169,7 @@ class FamilyController extends GedcomRecordController {
 			echo '<tr><td class="descriptionbox">';
 			echo I18N::translate('Source');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','SOUR');\">", I18N::translate('Add a new source citation'), '</a>';
+			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','SOUR');\">", I18N::translate('Add a source citation'), '</a>';
 			echo '</td></tr>';
 		}
 	}

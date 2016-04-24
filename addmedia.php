@@ -77,7 +77,7 @@ if (!Auth::isEditor($WT_TREE) || !$disp) {
 
 switch ($action) {
 case 'create': // Save the information from the “showcreateform” action
-	$controller->setPageTitle(I18N::translate('Create a new media object'));
+	$controller->setPageTitle(I18N::translate('Create a media object'));
 
 	// Validate the media folder
 	$folderName = str_replace('\\', '/', $folder);
@@ -399,7 +399,7 @@ case 'update': // Save the information from the “editmedia” action
 
 	return;
 case 'showmediaform':
-	$controller->setPageTitle(I18N::translate('Create a new media object'));
+	$controller->setPageTitle(I18N::translate('Create a media object'));
 	$action = 'create';
 	break;
 case 'editmedia':
@@ -473,7 +473,7 @@ if ($gedfile == 'FILE') {
 			'<p class="small text-muted">' . I18N::translate('Do not change to keep original filename.') . '<br>' . I18N::translate('You may enter a URL, beginning with “http://”.') . '</p>'
 		);
 	}
-	$folder   = '';
+	$folder = '';
 } else {
 	if ($isExternal) {
 		$fileName = substr($gedfile, 5);

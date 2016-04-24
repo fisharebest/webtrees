@@ -52,10 +52,18 @@ $username        = Filter::post('username');
 $password        = Filter::post('password');
 
 // These parameters may come from the URL which is emailed to users.
-if (!$action)        $action        = Filter::get('action');
-if (!$user_name)     $user_name     = Filter::get('user_name');
-if (!$user_hashcode) $user_hashcode = Filter::get('user_hashcode');
-if (!$url)           $url           = Filter::get('url');
+if (!$action) {
+	$action = Filter::get('action');
+}
+if (!$user_name) {
+	$user_name = Filter::get('user_name');
+}
+if (!$user_hashcode) {
+	$user_hashcode = Filter::get('user_hashcode');
+}
+if (!$url) {
+	$url = Filter::get('url');
+}
 
 $message = '';
 
@@ -119,9 +127,11 @@ case 'login':
 			// Switch to a tree where we have a genealogy record (or keep to the current/default).
 			$tree = Database::prepare(
 				"SELECT gedcom_name FROM `##gedcom` JOIN `##user_gedcom_setting` USING (gedcom_id)" .
-				" WHERE setting_name = 'gedcomid' AND user_id = :user_id"
+				" WHERE setting_name = 'gedcomid' AND user_id = :user_id" .
+				" ORDER BY gedcom_id = :tree_id DESC"
 			)->execute(array(
 				'user_id' => Auth::user()->getUserId(),
+				'tree_id' => $WT_TREE->getTreeId(),
 			))->fetchOne();
 			$url .= '&ged=' . Filter::escapeUrl($tree);
 		}

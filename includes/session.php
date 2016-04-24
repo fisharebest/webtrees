@@ -109,7 +109,7 @@ define('WT_DEBUG', strpos(WT_VERSION, 'dev') !== false);
 define('WT_DEBUG_SQL', false);
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 34);
+define('WT_SCHEMA_VERSION', 35);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
@@ -194,8 +194,6 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 });
 
 set_exception_handler(function ($ex) {
-	$message = '';
-
 	$message = $ex->getFile() . ':' . $ex->getLine() . ' ' . $ex->getMessage() . PHP_EOL;
 
 	foreach ($ex->getTrace() as $level => $frame) {
@@ -279,7 +277,12 @@ try {
 	// Some of the FAMILY JOIN HUSBAND JOIN WIFE queries can excede the MAX_JOIN_SIZE setting
 	Database::exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci', SQL_BIG_SELECTS=1");
 	// Update the database schema
-	Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
+	$updated = Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
+	if ($updated) {
+		// updateSchema() might load custom modules - which we cannot load again.
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''));
+		exit;
+	}
 } catch (PDOException $ex) {
 	FlashMessages::addMessage($ex->getMessage(), 'danger');
 	header('Location: ' . WT_BASE_URL . 'site-unavailable.php');

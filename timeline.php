@@ -19,6 +19,8 @@ use Fisharebest\Webtrees\Controller\TimelineController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
+global $WT_TREE;
+
 $basexoffset = 0;
 $baseyoffset = 0;
 
@@ -27,6 +29,7 @@ require './includes/session.php';
 
 $controller = new TimelineController;
 $controller
+	->restrictAccess(Module::isActiveChart($WT_TREE, 'timeline_chart'))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
@@ -274,7 +277,7 @@ document.onmouseup = function () {
 						<span class="details1"><?php echo I18N::translate('Remove individual'); ?></span></a>
 						<?php if (!empty($controller->birthyears[$pid])) { ?>
 							<span class="details1"><br>
-								<?php echo /* I18N: an age indicator, which can be dragged around the screen */ I18N::translate('Show an age cursor?'); ?>
+								<?php echo /* I18N: an age indicator, which can be dragged around the screen */ I18N::translate('Show an age cursor'); ?>
 								<input type="checkbox" name="agebar<?php echo $p; ?>" value="ON" onclick="jQuery('#agebox<?php echo $p; ?>').toggle();">
 							</span>
 						<?php } ?>
@@ -312,8 +315,8 @@ document.onmouseup = function () {
 			<?php } ?>
 		</tr>
 	</table>
-	<br><a href="lifespan.php?ged=<?php echo $WT_TREE->getNameUrl(); ?>"><b><?php echo I18N::translate('Show lifespans'); ?></b></a>
 </form>
+<br>
 <?php
 if (count($controller->people) > 0) {
 	?>

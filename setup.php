@@ -62,8 +62,6 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION) < 0) {
 	return;
 }
 
-Session::start();
-
 define('WT_LOCALE', I18N::init(Filter::post('lang', '[a-zA-Z-]+', Filter::get('lang', '[a-zA-Z-]+'))));
 
 header('Content-Type: text/html; charset=UTF-8');
@@ -107,7 +105,7 @@ if (!isset($_POST['lang'])) {
 	}
 
 	echo
-		'<p>', I18N::translate('Change language'), ' ',
+		'<p>', I18N::translate('Language'), ' ',
 		FunctionsEdit::selectEditControl('change_lang', $installed_languages, null, WT_LOCALE, 'onchange="window.location=\'' . WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
 		'</p>',
 		'<h2>', I18N::translate('Checking server configuration'), '</h2>';

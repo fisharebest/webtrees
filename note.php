@@ -157,6 +157,10 @@ if (Module::getModuleByName('GEDFact_assistant')) {
 
 		<div id="note-edit">
 			<table class="facts_table">
+				<colgroup>
+					<col class="width20">
+					<col class="width80">
+				</colgroup>
 				<tr>
 					<td class="descriptionbox">
 						<?php if (Auth::isEditor($controller->record->getTree())) { ?>

@@ -36,12 +36,12 @@ $controller->restrictAccess(class_exists($census));
 $census = new $census;
 $controller->restrictAccess($census instanceof CensusInterface);
 $date = new Date($census->censusDate());
-$year = strip_tags($date->display(false, '%Y', false));
+$year = $date->minimumDate()->format('%Y');
 
 $headImg = '<i class="icon-button_head"></i>';
 
 $controller
-	->setPageTitle(I18N::translate('Create a new shared note using assistant'))
+	->setPageTitle(I18N::translate('Create a shared note using the census assistant'))
 	->addInlineJavascript(
 		'jQuery("head").append(\'<link rel="stylesheet" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/census/style.css" type="text/css">\');' .
 		'jQuery("#tblSample").on("click", ".icon-remove", function() { jQuery(this).closest("tr").remove(); });'
@@ -56,9 +56,7 @@ $controller
 
 <form method="post" action="edit_interface.php" onsubmit="updateCensusText();">
 	<input type="hidden" name="action" value="addnoteaction_assisted">
-	<input type="hidden" name="noteid" value="newnote">
 	<input id="pid_array" type="hidden" name="pid_array" value="none">
-	<input id="xref" type="hidden" name="xref" value="<?php echo $xref; ?>">
 	<input type="hidden" name="NOTE" id="NOTE">
 	<?php echo Filter::getCsrf(); ?>
 
@@ -135,7 +133,7 @@ $controller
 						</label>
 					</th>
 					<td>
-						<input id="Titl" name="Titl" type="text" value="<?php echo $year, ' ', $census->censusPlace(), ' - ', I18N::translate('Census transcript'), ' - ', strip_tags($head->getFullName()), ' - ', I18N::translate('Household'); ?>">
+						<input id="Titl" type="text" value="<?php echo $year, ' ', $census->censusPlace(), ' - ', I18N::translate('Census transcript'), ' - ', strip_tags($head->getFullName()), ' - ', I18N::translate('Household'); ?>">
 					</td>
 				</tr>
 				<tr>
@@ -145,7 +143,7 @@ $controller
 						</label>
 					</th>
 					<td>
-						<input id="citation" name="citation" type="text">
+						<input id="citation" type="text">
 					</td>
 				</tr>
 				<tr>
@@ -155,7 +153,7 @@ $controller
 						</label>
 					</th>
 					<td>
-						<input id="locality" name="locality" type="text">
+						<input id="locality" type="text">
 					</td>
 				</tr>
 			</tbody>
@@ -179,7 +177,7 @@ $controller
 						</label>
 					</th>
 					<td>
-						<input id="notes" name="notes" type="text">
+						<input id="notes" type="text">
 					</td>
 				</tr>
 			</tbody>

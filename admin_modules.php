@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
@@ -36,6 +37,10 @@ $controller
 
 $modules       = Module::getInstalledModules('disabled');
 $module_status = Database::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
+
+uasort($modules, function (AbstractModule $x, AbstractModule $y) {
+	return I18N::strcasecmp($x->getTitle(), $y->getTitle());
+});
 
 if (Filter::post('action') === 'update_mods' && Filter::checkCsrf()) {
 	foreach ($modules as $module) {
@@ -124,7 +129,7 @@ $controller
 				{ class: "center" },
 				{ class: "center" },
 				{ class: "center" },
-				{ class: "center", visible: false }, // The Module system does not yet include charts
+				{ class: "center" },
 				{ class: "center" },
 				{ class: "center", visible: false } // The Module system does not yet include themes
 			]
@@ -155,7 +160,7 @@ $controller
 			<th class="hidden-xs"><a href="admin_module_tabs.php"><?php echo I18N::translate('Tabs'); ?></a></th>
 			<th class="hidden-xs"><a href="admin_module_sidebar.php"><?php echo I18N::translate('Sidebars'); ?></a></th>
 			<th class="hidden-xs"><a href="admin_module_blocks.php"><?php echo I18N::translate('Blocks'); ?></a></th>
-			<th class="hidden"><?php echo I18N::translate('Charts'); ?></th>
+			<th class="hidden-xs"><a href="admin_module_charts.php"><?php echo I18N::translate('Charts'); ?></a></th>
 			<th class="hidden-xs"><a href="admin_module_reports.php"><?php echo I18N::translate('Reports'); ?></a></th>
 			<th class="hidden"><?php echo I18N::translate('Themes'); ?></th>
 		</tr>
@@ -181,7 +186,7 @@ $controller
 			'<td class="text-center text-muted hidden-xs">', $module instanceof ModuleTabInterface ? '<i class="fa fa-folder" title="' . I18N::translate('Tab') . '"></i>' : '-', '</td>',
 			'<td class="text-center text-muted hidden-xs">', $module instanceof ModuleSidebarInterface ? '<i class="fa fa-th-large" title="' . I18N::translate('Sidebar') . '"></i>' : '-', '</td>',
 			'<td class="text-center text-muted hidden-xs">', $module instanceof ModuleBlockInterface ? (($module->isUserBlock() ? '<i class="fa fa-user" title="' . I18N::translate('My page') . '"></i>' : '') . ($module->isGedcomBlock() ? '<i class="fa fa-tree" title="' . I18N::translate('Home page') . '"></i>' : '')) : '-', '</td>',
-			'<td class="text-center text-muted hidden">', $module instanceof ModuleChartInterface ? '<i class="fa fa-check" title="' . I18N::translate('Chart') . '"></i>' : '-', '</td>',
+			'<td class="text-center text-muted hidden-xs">', $module instanceof ModuleChartInterface ? '<i class="fa fa-share-alt" title="' . I18N::translate('Chart') . '"></i>' : '-', '</td>',
 			'<td class="text-center text-muted hidden-xs">', $module instanceof ModuleReportInterface ? '<i class="fa fa-file" title="' . I18N::translate('Report') . '"></i>' : '-', '</td>',
 			'<td class="text-center text-muted hidden">', $module instanceof ModuleThemeInterface ? '<i class="fa fa-check" title="' . I18N::translate('Theme') . '"></i>' : '-', '</td>',
 			'</tr>';

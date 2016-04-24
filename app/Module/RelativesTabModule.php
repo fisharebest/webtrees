@@ -193,7 +193,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 		///// MARR /////
 		$found = false;
 		$prev  = new Date('');
-		foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
+		foreach ($family->getFacts(WT_EVENTS_MARR . '|' . WT_EVENTS_DIV) as $fact) {
 			$found |= !$fact->isPendingDeletion();
 			if ($fact->isPendingAddition()) {
 				$class = ' new';
@@ -268,9 +268,9 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 		// Re-order children / add a new child
 		if ($family->canEdit()) {
 			if ($type == 'FAMS') {
-				$add_child_text = I18N::translate('Add a new son or daughter');
+				$add_child_text = I18N::translate('Add a son or daughter');
 			} else {
-				$add_child_text = I18N::translate('Add a new brother or sister');
+				$add_child_text = I18N::translate('Add a brother or sister');
 			}
 			?>
 			<tr>
@@ -317,10 +317,10 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 			?>
 			<table class="facts_table">
 				<tr>
-					<td class="facts_value"><a href="#" onclick="return add_parent_to_individual('<?php echo $controller->record->getXref(); ?>', 'M');"><?php echo I18N::translate('Add a new father'); ?></td>
+					<td class="facts_value"><a href="#" onclick="return add_parent_to_individual('<?php echo $controller->record->getXref(); ?>', 'M');"><?php echo I18N::translate('Add a father'); ?></td>
 				</tr>
 				<tr>
-					<td class="facts_value"><a href="#" onclick="return add_parent_to_individual('<?php echo $controller->record->getXref(); ?>', 'F');"><?php echo I18N::translate('Add a new mother'); ?></a></td>
+					<td class="facts_value"><a href="#" onclick="return add_parent_to_individual('<?php echo $controller->record->getXref(); ?>', 'F');"><?php echo I18N::translate('Add a mother'); ?></a></td>
 				</tr>
 			</table>
 			<?php
@@ -370,7 +370,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 			<?php if ($controller->record->getSex() != "F") { ?>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo I18N::translate('Add a new wife'); ?></a>
+				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo I18N::translate('Add a wife'); ?></a>
 				</td>
 			</tr>
 			<tr>
@@ -382,7 +382,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 			if ($controller->record->getSex() != "M") { ?>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo I18N::translate('Add a new husband'); ?></a>
+				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo I18N::translate('Add a husband'); ?></a>
 				</td>
 			</tr>
 			<tr>

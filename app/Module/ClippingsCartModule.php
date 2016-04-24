@@ -40,7 +40,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Clippings cart” module */
-			I18N::translate('SELECT records FROM your family tree AND save them AS a GEDCOM FILE.');
+			I18N::translate('Select records from your family tree and save them as a GEDCOM file.');
 	}
 
 	/**

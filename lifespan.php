@@ -21,8 +21,11 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 define('WT_SCRIPT_NAME', 'lifespan.php');
 require './includes/session.php';
 
+global $WT_TREE;
+
 $controller = new LifespanController;
 $controller
+	->restrictAccess(Module::isActiveChart($WT_TREE, 'lifespans_chart'))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL);
 
@@ -80,7 +83,7 @@ $controller
 					<td class="optionbox" colspan="2">
 						<label for="addFamily">
 							<input id="addFamily" type="checkbox" value="yes" name="addFamily">
-							<?php echo I18N::translate('Include the individual’s immediate family?') ?>
+							<?php echo /* I18N: Label for a configuration option */ I18N::translate('Include the individual’s immediate family') ?>
 						</label>
 					</td>
 				</tr>

@@ -227,7 +227,7 @@ class Media extends GedcomRecord {
 								Log::addMediaLog('Thumbnail created for ' . $main_file);
 							}
 						} catch (\ErrorException $ex) {
-							Log::addMediaLog('Failed to create thumbnail for ' . $main_file);
+							Log::addMediaLog('Failed to create thumbnail for ' . $main_file . ' (' . $ex . ')');
 						}
 					} else {
 						Log::addMediaLog('Not enough memory to create thumbnail for ' . $main_file);

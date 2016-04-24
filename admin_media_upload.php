@@ -185,7 +185,7 @@ if (empty($filesize)) {
 
 <p>
 	<?php echo I18N::translate('Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats.'); ?>
-	<?php echo I18N::translate('Maximum upload size: '), $filesize, '</p>'; ?>
+	<?php echo I18N::translate('Maximum upload size: '), $filesize; ?>
 </p>
 
 <?php
@@ -237,7 +237,7 @@ for ($i = 1; $i < 6; $i++) {
 
 		echo '<select name="folder_list', $i, '" onchange="document.uploadmedia.folder', $i, '.value=this.options[this.selectedIndex].value;">';
 		echo '<option';
-		echo ' value="/"> ', I18N::translate('Choose: '), ' </option>';
+		echo ' value="/"> ', I18N::translate('&lt;select&gt;'), ' </option>';
 		if (Auth::isAdmin()) {
 			echo '<option value="other" disabled>', I18N::translate('Other folder… please type in'), "</option>";
 		}

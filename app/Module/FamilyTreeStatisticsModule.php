@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Theme;
 
@@ -192,7 +193,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 			$content .= '</div>';
 		}
 		$content .= '</div>';
-		if ($stat_link) {
+		if ($stat_link && Module::isActiveChart($WT_TREE, 'statistics_chart')) {
 			$content .= '<div class="clearfloat"><a href="statistics.php?ged=' . $WT_TREE->getNameUrl() . '" rel="nofollow"><b>' . I18N::translate('View statistics as graphs') . '</b></a></div>';
 		}
 
@@ -288,7 +289,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		<tr>
 			<td class="descriptionbox wrap width33">
 				<?php echo /* I18N: label for yes/no option */
-				I18N::translate('Show date of last update?') ?>
+				I18N::translate('Show date of last update') ?>
 			</td>
 			<td class="optionbox">
 				<?php echo FunctionsEdit::editFieldYesNo('show_last_update', $show_last_update) ?>
@@ -296,7 +297,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		</tr>
 		<tr>
 			<td class="descriptionbox wrap width33">
-				<?php echo I18N::translate('Show common surnames?') ?>
+				<?php echo I18N::translate('Show common surnames') ?>
 			</td>
 			<td class="optionbox">
 				<?php echo FunctionsEdit::editFieldYesNo('show_common_surnames', $show_common_surnames) ?>

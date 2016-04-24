@@ -256,7 +256,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
 					<div class="form-group">
 						<label for="xref" class="col-sm-3 control-label">
-							<?php echo I18N::translate('Show this block for which languages?'); ?>
+							<?php echo I18N::translate('Show this block for which languages'); ?>
 						</label>
 						<div class="col-sm-9">
 							<?php echo FunctionsEdit::editLanguageCheckboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))); ?>

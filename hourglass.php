@@ -15,6 +15,10 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Controller\HourglassController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+
 /**
  * Defined in session.php
  *
@@ -22,15 +26,12 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
-use Fisharebest\Webtrees\Controller\HourglassController;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
-
 define('WT_SCRIPT_NAME', 'hourglass.php');
 require './includes/session.php';
 
 $controller = new HourglassController;
 $controller
+	->restrictAccess(Module::isActiveChart($WT_TREE, 'hourglass_chart'))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')

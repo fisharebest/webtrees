@@ -121,6 +121,7 @@ class AdvancedSearchController extends SearchController {
 			'NOTE',
 			'OCCU',
 			'ORDN:DATE', 'ORDN:PLAC',
+			'REFN',
 			'RELI',
 			'RESI', 'RESI:DATE', 'RESI:PLAC',
 			'SLGC:DATE', 'SLGC:PLAC',

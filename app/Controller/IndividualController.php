@@ -45,6 +45,8 @@ class IndividualController extends GedcomRecordController {
 
 	/**
 	 * Startup activity
+	 *
+	 * @param Individual|null $record
 	 */
 	public function __construct($record) {
 		parent::__construct($record);
@@ -268,24 +270,10 @@ class IndividualController extends GedcomRecordController {
 			return null;
 		}
 		// edit menu
-		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-indi', array(
-			'onclick' => 'return false;',
-		));
+		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-indi');
 
-		// What behaviour shall we give the main menu? If we leave it blank, the framework
-		// will copy the first submenu - which may be edit-raw or delete.
-		// As a temporary solution, make it edit the name
 		if (Auth::isEditor($this->record->getTree())) {
-			foreach ($this->record->getFacts() as $fact) {
-				if ($fact->getTag() === 'NAME' && $fact->canEdit()) {
-					$menu->setAttrs(array(
-						'onclick' => 'return edit_name("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
-					));
-					break;
-				}
-			}
-
-			$menu->addSubmenu(new Menu(I18N::translate('Add a new name'), '#', 'menu-indi-addname', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Add a name'), '#', 'menu-indi-addname', array(
 				'onclick' => 'return add_name("' . $this->record->getXref() . '");',
 			)));
 
@@ -310,10 +298,8 @@ class IndividualController extends GedcomRecordController {
 					'onclick' => 'return reorder_families("' . $this->record->getXref() . '");',
 				)));
 			}
-		}
 
-		// delete
-		if (Auth::isEditor($this->record->getTree())) {
+			// delete
 			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-indi-del', array(
 				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
 			)));
@@ -324,16 +310,6 @@ class IndividualController extends GedcomRecordController {
 			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-indi-editraw', array(
 				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
 			)));
-		}
-
-		// add to favorites
-		if (Module::getModuleByName('user_favorites')) {
-			$menu->addSubmenu(new Menu(
-			/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
-				'#',
-				'menu-indi-addfav', array(
-					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
-				)));
 		}
 
 		return $menu;

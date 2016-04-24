@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Module;
 interface ModuleConfigInterface {
 	/**
 	 * The URL to a page where the user can modify the configuration of this module.
-	 * These links are displayed in the admin page menu.
 	 *
 	 * @return string
 	 */

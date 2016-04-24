@@ -259,7 +259,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		$start    = $this->getBlockSetting($block_id, 'start', '0') || Filter::getBool('start');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Show only individuals, events, or all?');
+		echo /* I18N: Label for a configuration option */ I18N::translate('Show only individuals, events, or all');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::selectEditControl('filter', array('indi' => I18N::translate('Individuals'), 'event' => I18N::translate('Facts and events'), 'all' => I18N::translate('All')), null, $filter, '');
 		echo '</td></tr>';
@@ -405,13 +405,13 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 	<?php
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Show slide show controls?');
+		echo /* I18N: Label for a configuration option */ I18N::translate('Show slide show controls');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::editFieldYesNo('controls', $controls);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Start slide show on page load?');
+		echo /* I18N: Label for a configuration option */ I18N::translate('Start slide show on page load');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::editFieldYesNo('start', $start);
 		echo '</td></tr>';

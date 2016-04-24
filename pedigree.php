@@ -31,6 +31,7 @@ require './includes/session.php';
 
 $controller = new PedigreeController;
 $controller
+	->restrictAccess(Module::isActiveChart($WT_TREE, 'pedigree_chart'))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('

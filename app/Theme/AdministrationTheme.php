@@ -44,7 +44,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string A relative path, such as "themes/foo/"
 	 */
 	public function assetUrl() {
-		return 'themes/_administration/css-1.7.4/';
+		return 'themes/_administration/css-1.7.5/';
 	}
 
 	/**
@@ -161,7 +161,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	protected function menuAdminUsers() {
 		return new Menu(/* I18N: Menu entry */ I18N::translate('Users'), '#', '', array(), array(
 			new Menu(/* I18N: Menu entry */ I18N::translate('User administration'), 'admin_users.php'),
-			new Menu(/* I18N: Menu entry */ I18N::translate('Add a new user'), 'admin_users.php?action=edit'),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Add a user'), 'admin_users.php?action=edit'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Send broadcast messages'), 'admin_users_bulk.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Delete inactive users'), 'admin_users.php?action=cleanup'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Set the default blocks for new users'), 'index_edit.php?user_id=-1'),
@@ -192,6 +192,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 			new Menu(/* I18N: Menu entry */ I18N::translate('Tabs'), 'admin_module_tabs.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Blocks'), 'admin_module_blocks.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Sidebars'), 'admin_module_sidebar.php'),
+			new Menu(/* I18N: Menu entry */ I18N::translate('Charts'), 'admin_module_charts.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Reports'), 'admin_module_reports.php'),
 		));
 	}

@@ -84,7 +84,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
 				</td>
 				<td class="facts_value">
 					<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=<?php echo $controller->record->getXref(); ?>&amp;ged=<?php echo $controller->record->getTree()->getNameUrl(); ?>', '_blank', edit_window_specs); return false;">
-						<?php echo I18N::translate('Add a new media object'); ?>
+						<?php echo I18N::translate('Add a media object'); ?>
 					</a>
 					<?php echo FunctionsPrint::helpLink('OBJE'); ?>
 					<br>
