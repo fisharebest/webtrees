@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-04-20 22:50+0000\n"
+"PO-Revision-Date: 2016-04-21 16:00+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -8290,7 +8290,7 @@ msgstr "Location"
 
 #: app/Module/GoogleMapsModule.php:4508
 msgid "Location not removed: this location contains sub-locations"
-msgstr ""
+msgstr "Location not removed: this location contains sub-locations"
 
 #: app/GedcomCode/GedcomCodeRela.php:191
 msgid "Lodger"
@@ -9334,18 +9334,18 @@ msgstr "Mother: %s"
 
 #: app/Functions/FunctionsPrint.php:267
 msgid "Mother’s age"
-msgstr ""
+msgstr "Mother’s age"
 
 #. I18N: A step-family. %s is an individual’s name
 #: app/Individual.php:1012
 #, php-format
 msgid "Mother’s family with %s"
-msgstr ""
+msgstr "Mother’s family with %s"
 
 #. I18N: A step-family.
 #: app/Individual.php:1016
 msgid "Mother’s family with an unknown individual"
-msgstr ""
+msgstr "Mother’s family with an unknown individual"
 
 #: app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Mount Timpanogos, Utah, United States"
@@ -9354,24 +9354,24 @@ msgstr "Mount Timpanogos, Utah, United States"
 #: app/Module/FrequentlyAskedQuestionsModule.php:493 index_edit.php:312
 #: index_edit.php:361
 msgid "Move down"
-msgstr ""
+msgstr "Move down"
 
 #: index_edit.php:342
 msgid "Move left"
-msgstr ""
+msgstr "Move left"
 
 #: index_edit.php:325
 msgid "Move right"
-msgstr ""
+msgstr "Move right"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:487 index_edit.php:310
 #: index_edit.php:359
 msgid "Move up"
-msgstr ""
+msgstr "Move up"
 
 #: app/Stats.php:6874
 msgid "Mozambique"
-msgstr ""
+msgstr "Mozambique"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:90
@@ -9399,49 +9399,49 @@ msgstr "Muḥarram"
 
 #: app/Functions/FunctionsPrintLists.php:722
 msgid "Multiple marriages"
-msgstr ""
+msgstr "Multiple marriages"
 
 #: app/Module/UserWelcomeModule.php:53 app/Theme/AbstractTheme.php:1595
 #: edituser.php:111
 msgid "My account"
-msgstr ""
+msgstr "My account"
 
 #. I18N: Default name for a new tree
 #: admin_trees_manage.php:162
 msgid "My family tree"
-msgstr ""
+msgstr "My family tree"
 
 #: app/Module/UserWelcomeModule.php:58 app/Theme/AbstractTheme.php:1610
 msgid "My individual record"
-msgstr ""
+msgstr "My individual record"
 
 #. I18N: Name of a module
 #: admin_modules.php:188 app/Module/UserWelcomeModule.php:29
 #: app/Theme/AbstractTheme.php:1622 index.php:88 index.php:96
 msgid "My page"
-msgstr ""
+msgstr "My page"
 
 #: app/Theme/AbstractTheme.php:1632
 msgid "My pages"
-msgstr ""
+msgstr "My pages"
 
 #: app/Module/UserWelcomeModule.php:57 app/Theme/AbstractTheme.php:1658
 msgid "My pedigree"
-msgstr ""
+msgstr "My pedigree"
 
 #. I18N: %s is an error message
 #: admin_pgv_to_wt.php:113
 #, php-format
 msgid "MySQL gave the error: %s"
-msgstr ""
+msgstr "MySQL gave the error: %s"
 
 #: admin_site_info.php:68
 msgid "MySQL variables"
-msgstr ""
+msgstr "MySQL variables"
 
 #: app/Stats.php:6870
 msgid "Myanmar"
-msgstr ""
+msgstr "Myanmar"
 
 #. I18N: gedcom tag NAME
 #: app/Controller/IndividualController.php:155 app/GedcomTag.php:601
@@ -9463,64 +9463,64 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:43
 #: modules_v3/relative_ext_report/report.xml:50
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #. I18N: gedcom tag REPO:NAME
 #: app/GedcomTag.php:597
 msgctxt "Repository"
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #. I18N: Label for search field
 #: find.php:148 find.php:165
 msgid "Name contains"
-msgstr ""
+msgstr "Name contains"
 
 #: app/GedcomTag.php:606
 msgid "Name in Hebrew"
-msgstr ""
+msgstr "Name in Hebrew"
 
 #. I18N: gedcom tag NPFX
 #: app/GedcomTag.php:638
 msgid "Name prefix"
-msgstr ""
+msgstr "Name prefix"
 
 #. I18N: gedcom tag NSFX
 #: app/GedcomTag.php:642
 msgid "Name suffix"
-msgstr ""
+msgstr "Name suffix"
 
 #: admin_trees_config.php:1164 modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10 search.php:198 statistics.php:189
 msgid "Names"
-msgstr ""
+msgstr "Names"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1190
 msgid "Names to add to common surnames (comma separated)"
-msgstr ""
+msgstr "Names to add to common surnames (comma separated)"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1210
 msgid "Names to remove from common surnames (comma separated)"
-msgstr ""
+msgstr "Names to remove from common surnames (comma separated)"
 
 #. I18N: gedcom tag _NAMS
 #: app/GedcomTag.php:1675
 msgid "Namesake"
-msgstr ""
+msgstr "Namesake"
 
 #: app/Stats.php:6882
 msgid "Namibia"
-msgstr ""
+msgstr "Namibia"
 
 #: app/GedcomCode/GedcomCodeRela.php:195
 msgid "Nanny"
-msgstr ""
+msgstr "Nanny"
 
 #: app/Module/HtmlBlockModule.php:159
 msgid "Narrative description"
-msgstr ""
+msgstr "Narrative description"
 
 #: app/GedcomCode/GedcomCodeTemp.php:227
 msgid "Nashville, Tennessee, United States"
@@ -9529,7 +9529,7 @@ msgstr "Nashville, Tennessee, United States"
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:610
 msgid "Nationality"
-msgstr ""
+msgstr "Nationality"
 
 #. I18N: gedcom tag NATU
 #: app/GedcomTag.php:614
@@ -9538,7 +9538,7 @@ msgstr "Naturalisation"
 
 #: app/Stats.php:6893
 msgid "Nauru"
-msgstr ""
+msgstr "Nauru"
 
 #: app/GedcomCode/GedcomCodeTemp.php:229
 msgid "Nauvoo (new), Illinois, United States"
@@ -9554,44 +9554,44 @@ msgstr "Neighbourhood"
 
 #: app/Stats.php:6892
 msgid "Nepal"
-msgstr ""
+msgstr "Nepal"
 
 #: app/Stats.php:6890
 msgid "Netherlands"
-msgstr ""
+msgstr "Netherlands"
 
 #: app/Stats.php:6725
 msgid "Netherlands Antilles"
-msgstr ""
+msgstr "Netherlands Antilles"
 
 #: app/Stats.php:6894
 msgid "Neutral Zone"
-msgstr ""
+msgstr "Neutral Zone"
 
 #: admin_users.php:240
 msgid "Never"
-msgstr ""
+msgstr "Never"
 
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1693
 msgid "Never married"
-msgstr ""
+msgstr "Never married"
 
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1689
 msgctxt "FEMALE"
 msgid "Never married"
-msgstr ""
+msgstr "Never married"
 
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1685
 msgctxt "MALE"
 msgid "Never married"
-msgstr ""
+msgstr "Never married"
 
 #: app/Stats.php:6883
 msgid "New Caledonia"
-msgstr ""
+msgstr "New Caledonia"
 
 #: app/GedcomCode/GedcomCodeTemp.php:237
 msgid "New York, New York, United States"
@@ -9599,23 +9599,23 @@ msgstr "New York, New York, United States"
 
 #: app/Stats.php:6895
 msgid "New Zealand"
-msgstr ""
+msgstr "New Zealand"
 
 #: admin_site_change.php:343
 msgid "New data"
-msgstr ""
+msgstr "New data"
 
 #. I18N: %s is a server name/URL
 #: login.php:327
 #, php-format
 msgid "New registration at %s"
-msgstr ""
+msgstr "New registration at %s"
 
 #. I18N: %s is a server name/URL
 #: login.php:573
 #, php-format
 msgid "New user at %s"
-msgstr ""
+msgstr "New user at %s"
 
 #: app/GedcomCode/GedcomCodeTemp.php:233
 msgid "Newport Beach, California, United States"
@@ -9624,11 +9624,11 @@ msgstr "Newport Beach, California, United States"
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:54
 msgid "News"
-msgstr ""
+msgstr "News"
 
 #: app/GedcomTag.php:1932
 msgid "Newspaper"
-msgstr ""
+msgstr "Newspaper"
 
 #: app/Module/ReviewChangesModule.php:115
 msgid "Next email reminder will be sent after "
@@ -9636,52 +9636,52 @@ msgstr "Next e-mail reminder will be sent after "
 
 #: app/Module/SlideShowModule.php:140
 msgid "Next image"
-msgstr ""
+msgstr "Next image"
 
 #: app/Stats.php:6887
 msgid "Nicaragua"
-msgstr ""
+msgstr "Nicaragua"
 
 #. I18N: gedcom tag NICK
 #: app/GedcomTag.php:626
 msgid "Nickname"
-msgstr ""
+msgstr "Nickname"
 
 #: app/Stats.php:6884
 msgid "Niger"
-msgstr ""
+msgstr "Niger"
 
 #: app/Stats.php:6886
 msgid "Nigeria"
-msgstr ""
+msgstr "Nigeria"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:143
 msgctxt "GENITIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:219
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:181
 msgctxt "LOCATIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:105
 msgctxt "NOMINATIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #: app/Stats.php:6889
 msgid "Niue"
-msgstr ""
+msgstr "Niue"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:91
@@ -9709,48 +9709,48 @@ msgstr "Nivôse"
 
 #: admin_users.php:660 app/Functions/FunctionsPrintFacts.php:308
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: admin_trees_manage.php:101 admin_trees_manage.php:122
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "No GEDCOM file was received."
 
 #: admin_trees_manage.php:253
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "No GEDCOM files found."
 
 #: app/Module/GoogleMapsModule.php:936
 msgid "No ancestors in the database."
-msgstr ""
+msgstr "No ancestors in the database."
 
 #: admin_trees_config.php:35
 msgid "No calendar conversion"
-msgstr ""
+msgstr "No calendar conversion"
 
 #: app/Controller/DescendancyController.php:213
 #: app/Functions/FunctionsCharts.php:302 app/Module/DescendancyModule.php:273
 msgid "No children"
-msgstr ""
+msgstr "No children"
 
 #: app/Functions/FunctionsEdit.php:250
 msgid "No contact"
-msgstr ""
+msgstr "No contact"
 
 #: admin_site_upgrade.php:206
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "No custom modules are enabled."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "No custom themes are enabled."
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "No duplicates have been found."
 
 #: admin_trees_check.php:211
 msgid "No errors have been found."
-msgstr ""
+msgstr "No errors have been found."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: app/Functions/FunctionsPrintLists.php:1854
@@ -9758,28 +9758,28 @@ msgstr ""
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "No events exist for the next %s day."
+msgstr[1] "No events exist for the next %s days."
 
 #: app/Functions/FunctionsPrintLists.php:1841
 #: app/Functions/FunctionsPrintLists.php:1956
 msgid "No events exist for today."
-msgstr ""
+msgstr "No events exist for today."
 
 #: app/Functions/FunctionsPrintLists.php:1851
 #: app/Functions/FunctionsPrintLists.php:1966
 msgid "No events exist for tomorrow."
-msgstr ""
+msgstr "No events exist for tomorrow."
 
 #: app/Functions/FunctionsPrintLists.php:1843
 #: app/Functions/FunctionsPrintLists.php:1958
 msgid "No events for living individuals exist for today."
-msgstr ""
+msgstr "No events for living individuals exist for today."
 
 #: app/Functions/FunctionsPrintLists.php:1858
 #: app/Functions/FunctionsPrintLists.php:1973
 msgid "No events for living individuals exist for tomorrow."
-msgstr ""
+msgstr "No events for living individuals exist for tomorrow."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: app/Functions/FunctionsPrintLists.php:1861
@@ -9787,61 +9787,61 @@ msgstr ""
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "No events for living people exist for the next %s day."
+msgstr[1] "No events for living people exist for the next %s days."
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts for this family."
-msgstr ""
+msgstr "No facts for this family."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:79
 msgid "No file was received. Please try again."
-msgstr ""
+msgstr "No file was received. Please try again."
 
 #: app/Module/FamilyTreeNewsModule.php:200
 msgid "No limit"
-msgstr ""
+msgstr "No limit"
 
 #: relationship.php:223
 msgid "No link between the two individuals could be found."
-msgstr ""
+msgstr "No link between the two individuals could be found."
 
 #: app/Stats.php:5947
 msgid "No logged-in and no anonymous users"
-msgstr ""
+msgstr "No logged-in and no anonymous users"
 
 #: app/Module/GoogleMapsModule.php:193
 msgid "No map data for this individual"
-msgstr ""
+msgstr "No map data for this individual"
 
 #: admin_site_merge.php:237 admin_site_merge.php:284 admin_site_merge.php:330
 msgid "No matching facts found"
-msgstr ""
+msgstr "No matching facts found"
 
 #: addmedia.php:168 addmedia.php:302 admin_media_upload.php:126
 msgid "No media file was provided."
-msgstr ""
+msgstr "No media file was provided."
 
 #: app/Module/FamilyTreeNewsModule.php:118
 msgid "No news articles have been submitted."
-msgstr ""
+msgstr "No news articles have been submitted."
 
 #: app/Module/GoogleMapsModule.php:3849 app/Module/GoogleMapsModule.php:4584
 msgid "No places found"
-msgstr ""
+msgstr "No places found"
 
 #: admin_trees_places.php:127
 msgid "No places have been found."
-msgstr ""
+msgstr "No places have been found."
 
 #: admin_site_config.php:120
 msgid "No predefined text"
-msgstr ""
+msgstr "No predefined text"
 
 #: app/I18N.php:226 app/I18N.php:236
 msgid "No records to display"
-msgstr ""
+msgstr "No records to display"
 
 #: app/Controller/AdvancedSearchController.php:659
 #: app/Controller/SearchController.php:546
@@ -9850,24 +9850,24 @@ msgstr ""
 #: find.php:646 find.php:673 find.php:695 find.php:717 find.php:741
 #: placelist.php:60
 msgid "No results found."
-msgstr ""
+msgstr "No results found."
 
 #: app/Functions/FunctionsEdit.php:640
 msgid "No temple - living ordinance"
-msgstr ""
+msgstr "No temple - living ordinance"
 
 #: admin.php:608 admin_site_upgrade.php:61
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "No upgrade information is available."
 
 #: app/Stats.php:1742
 msgid "Nobody at all"
-msgstr ""
+msgstr "Nobody at all"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:86
 msgid "Nocturnal"
-msgstr ""
+msgstr "Nocturnal"
 
 #: admin_trees_download.php:178 app/Module/ClippingsCartModule.php:387
 #: app/Module/ClippingsCartModule.php:766
@@ -9879,12 +9879,12 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "None"
-msgstr ""
+msgstr "None"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:205
 msgid "Nonidi"
-msgstr ""
+msgstr "Nonidi"
 
 #. I18N: time format “%A” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:108
@@ -9893,27 +9893,27 @@ msgstr "M."
 
 #: app/Stats.php:6885
 msgid "Norfolk Island"
-msgstr ""
+msgstr "Norfolk Island"
 
 #: admin_users.php:445
 msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
-msgstr ""
+msgstr "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
 
 #: app/Stats.php:6906
 msgid "North Korea"
-msgstr ""
+msgstr "North Korea"
 
 #: app/Stats.php:6888
 msgid "Northern Ireland"
-msgstr ""
+msgstr "Northern Ireland"
 
 #: app/Stats.php:6872
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "Northern Mariana Islands"
 
 #: app/Stats.php:6891
 msgid "Norway"
-msgstr ""
+msgstr "Norway"
 
 #: app/Module/CensusAssistantModule.php:262
 msgid "Not a valid individual, family, or source ID"
@@ -9921,33 +9921,33 @@ msgstr "Not a valid individual, family or source ID"
 
 #: admin.php:704
 msgid "Not approved by an administrator"
-msgstr ""
+msgstr "Not approved by an administrator"
 
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1679
 msgid "Not living"
-msgstr ""
+msgstr "Not living"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1708
 msgid "Not married"
-msgstr ""
+msgstr "Not married"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1704
 msgctxt "FEMALE"
 msgid "Not married"
-msgstr ""
+msgstr "Not married"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1700
 msgctxt "MALE"
 msgid "Not married"
-msgstr ""
+msgstr "Not married"
 
 #: admin.php:691
 msgid "Not verified by the user"
-msgstr ""
+msgstr "Not verified by the user"
 
 #. I18N: gedcom tag NOTE
 #: app/Controller/FamilyController.php:147
