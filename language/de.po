@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-16 10:30+0100\n"
-"PO-Revision-Date: 2016-04-22 05:27+0000\n"
-"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2016-04-27 18:15+0000\n"
+"Last-Translator: Richard Cissee <ric@richard-cissee.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1628,16 +1628,16 @@ msgstr "Adoption eines Enkelsohns"
 #: app/GedcomTag.php:886
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr "Adoption eines Enkels"
+msgstr "Adoption eines Enkelsohns"
 
 #: app/GedcomTag.php:895
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr "Adoption eines Enkels"
+msgstr "Adoption eines Enkelsohns"
 
 #: app/GedcomTag.php:904
 msgid "Adoption of a half-brother"
-msgstr "Adoption eines Halb-Bruders"
+msgstr "Adoption eines Halbbruders"
 
 #: app/GedcomTag.php:908
 msgid "Adoption of a half-sibling"
@@ -1645,7 +1645,7 @@ msgstr "Adoption eines Halbgeschwisterkinds"
 
 #: app/GedcomTag.php:906
 msgid "Adoption of a half-sister"
-msgstr "Adoption einer Halb-Schwester"
+msgstr "Adoption einer Halbschwester"
 
 #: app/GedcomTag.php:917
 msgid "Adoption of a sibling"
@@ -1657,7 +1657,7 @@ msgstr "Adoption einer Schwester"
 
 #: app/GedcomTag.php:868
 msgid "Adoption of a son"
-msgstr "Adoption eines Sohnes"
+msgstr "Adoption eines Sohns"
 
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
@@ -2509,7 +2509,7 @@ msgstr "Taufe eines Enkelsohns"
 
 #: app/GedcomTag.php:1008
 msgid "Baptism of a half-brother"
-msgstr "Taufe eines Halb-Bruders"
+msgstr "Taufe eines Halbbruders"
 
 #: app/GedcomTag.php:1012
 msgid "Baptism of a half-sibling"
@@ -2824,7 +2824,7 @@ msgstr "Geburt eines Enkelsohns"
 
 #: app/GedcomTag.php:1066
 msgid "Birth of a half-brother"
-msgstr "Geburt eines Halb-Bruders"
+msgstr "Geburt eines Halbbruders"
 
 #: app/GedcomTag.php:1070
 msgid "Birth of a half-sibling"
@@ -2844,7 +2844,7 @@ msgstr "Geburt einer Schwester"
 
 #: app/GedcomTag.php:1030
 msgid "Birth of a son"
-msgstr "Geburt eines Sohnes"
+msgstr "Geburt eines Sohns"
 
 #: statistics.php:410
 msgid "Birth places"
@@ -2984,7 +2984,7 @@ msgstr "Brit Mila eines Bruders"
 
 #: app/GedcomTag.php:1772
 msgid "Brit milah of a grandson"
-msgstr "Brit Mila eines Enkels"
+msgstr "Brit Mila eines Enkelsohns"
 
 #: app/GedcomTag.php:1774
 msgctxt "daughter’s son"
@@ -3127,7 +3127,7 @@ msgstr "Beerdigung eines Enkelsohns"
 
 #: app/GedcomTag.php:1155
 msgid "Burial of a half-brother"
-msgstr "Beerdigung eines Halb-Bruders"
+msgstr "Beerdigung eines Halbbruders"
 
 #: app/GedcomTag.php:1159
 msgid "Burial of a half-sibling"
@@ -3135,7 +3135,7 @@ msgstr "Beerdigung eiens Halbgeschwisterkinds"
 
 #: app/GedcomTag.php:1157
 msgid "Burial of a half-sister"
-msgstr "Beerdigung einer Halb-Schwester"
+msgstr "Beerdigung einer Halbschwester"
 
 #: app/GedcomTag.php:1182
 msgid "Burial of a husband"
@@ -3651,7 +3651,7 @@ msgstr "Taufe einer Tochter"
 
 #: app/GedcomTag.php:1204 app/GedcomTag.php:1213 app/GedcomTag.php:1222
 msgid "Christening of a grandchild"
-msgstr "Taufe eines Enkelkinds"
+msgstr "Taufe eines Enkels"
 
 #: app/GedcomTag.php:1202
 msgid "Christening of a granddaughter"
@@ -3683,7 +3683,7 @@ msgstr "Taufe eines Enkelsohns"
 
 #: app/GedcomTag.php:1227
 msgid "Christening of a half-brother"
-msgstr "Taufe eines Halb-Bruders"
+msgstr "Taufe eines Halbbruders"
 
 #: app/GedcomTag.php:1231
 msgid "Christening of a half-sibling"
@@ -3691,7 +3691,7 @@ msgstr "Taufe eines Halbgeschwisterkinds"
 
 #: app/GedcomTag.php:1229
 msgid "Christening of a half-sister"
-msgstr "Taufe einer Halb-Schwester"
+msgstr "Taufe einer Halbschwester"
 
 #: app/GedcomTag.php:1240
 msgid "Christening of a sibling"
@@ -3703,7 +3703,7 @@ msgstr "Taufe einer Schwester"
 
 #: app/GedcomTag.php:1191
 msgid "Christening of a son"
-msgstr "Taufe eines Sohnes"
+msgstr "Taufe eines Sohns"
 
 #: app/Stats.php:6777
 msgid "Christmas Island"
@@ -4204,7 +4204,7 @@ msgstr "Einäscherung eines Enkelsohns"
 
 #: app/GedcomTag.php:1312
 msgid "Cremation of a half-brother"
-msgstr "Einäscherung eines Halb-Bruders"
+msgstr "Einäscherung eines Halbbruders"
 
 #: app/GedcomTag.php:1316
 msgid "Cremation of a half-sibling"
@@ -4212,7 +4212,7 @@ msgstr "Einäscherung eines Halbgeschwisterkinds"
 
 #: app/GedcomTag.php:1314
 msgid "Cremation of a half-sister"
-msgstr "Einäscherung einer Halb-Schwester"
+msgstr "Einäscherung einer Halbschwester"
 
 #: app/GedcomTag.php:1339
 msgid "Cremation of a husband"
@@ -4252,7 +4252,7 @@ msgstr "Einäscherung einer Schwester"
 
 #: app/GedcomTag.php:1249
 msgid "Cremation of a son"
-msgstr "Einäscherung eines Sohnes"
+msgstr "Einäscherung eines Sohns"
 
 #: app/GedcomTag.php:1343
 msgid "Cremation of a spouse"
@@ -4769,7 +4769,7 @@ msgstr "Tod eines Enkelsohns"
 
 #: app/GedcomTag.php:1415
 msgid "Death of a half-brother"
-msgstr "Tod eines Halb-Bruders"
+msgstr "Tod eines Halbbruders"
 
 #: app/GedcomTag.php:1419
 msgid "Death of a half-sibling"
@@ -4777,7 +4777,7 @@ msgstr "Tod eines Halbgeschwisterkinds"
 
 #: app/GedcomTag.php:1417
 msgid "Death of a half-sister"
-msgstr "Tod einer Halb-Schwester"
+msgstr "Tod einer Halbschwester"
 
 #: app/GedcomTag.php:1442
 msgid "Death of a husband"
@@ -4817,7 +4817,7 @@ msgstr "Tod einer Schwester"
 
 #: app/GedcomTag.php:1352
 msgid "Death of a son"
-msgstr "Tod eines Sohnes"
+msgstr "Tod eines Sohns"
 
 #: app/GedcomTag.php:1446
 msgid "Death of a spouse"
@@ -8662,7 +8662,7 @@ msgstr "Heirat eines Vaters"
 
 #: app/GedcomTag.php:1583 app/GedcomTag.php:1592 app/GedcomTag.php:1601
 msgid "Marriage of a grandchild"
-msgstr "Heirat eines Enkelkinds"
+msgstr "Heirat eines Enkels"
 
 #: app/GedcomTag.php:1581
 msgid "Marriage of a granddaughter"
@@ -8694,7 +8694,7 @@ msgstr "Heirat eines Enkelsohns"
 
 #: app/GedcomTag.php:1606
 msgid "Marriage of a half-brother"
-msgstr "Heirat eines Halb-Bruders"
+msgstr "Heirat eines Halbbruders"
 
 #: app/GedcomTag.php:1610
 msgid "Marriage of a half-sibling"
@@ -16444,17 +16444,17 @@ msgstr "Schwiegertochter"
 #: app/Functions/Functions.php:1342
 msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
-msgstr "Vater der Schwiegertochter"
+msgstr "Schwiegertochters Vater"
 
 #: app/Functions/Functions.php:1344
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr "Mutter der Schwiegertochter"
+msgstr "Schwiegertochters Mutter"
 
 #: app/Functions/Functions.php:1346
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr "Eltern der Schwiegertochter"
+msgstr "Schwiegertochters Vater/Mutter"
 
 #: app/Stats.php:2914
 msgid "death"
@@ -16991,17 +16991,17 @@ msgstr "gehe zur neuen Person"
 #: app/Functions/Functions.php:796
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr "Enkelkind"
+msgstr "Enkel"
 
 #: app/Functions/Functions.php:808
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr "Enkelkind"
+msgstr "Enkel"
 
 #: app/Functions/Functions.php:908
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr "Enkelkind"
+msgstr "Enkel"
 
 #: app/Functions/Functions.php:798
 msgctxt "child’s daughter"
@@ -17021,17 +17021,17 @@ msgstr "Enkeltochter"
 #: app/Functions/Functions.php:1028
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "Ehemann der Enkeltochter"
+msgstr "Enkeltochters Ehemann"
 
 #: app/Functions/Functions.php:1050
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "Ehemann der Enkeltochter"
+msgstr "Enkeltochters Ehemann"
 
 #: app/Functions/Functions.php:1330
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "Ehemann der Enkeltochter"
+msgstr "Enkeltochters Ehemann"
 
 #: app/Functions/Functions.php:878
 msgctxt "parent’s father"
@@ -17066,17 +17066,17 @@ msgstr "Enkelsohn"
 #: app/Functions/Functions.php:1038
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr "Enkelsohns Frau"
+msgstr "Enkelsohns Ehefrau"
 
 #: app/Functions/Functions.php:1066
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr "Enkelsohns Frau"
+msgstr "Enkelsohns Ehefrau"
 
 #: app/Functions/Functions.php:1340
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr "Enkelsohns Frau"
+msgstr "Enkelsohns Ehefrau"
 
 #: app/Functions/Functions.php:1621 app/Functions/Functions.php:1636
 #: app/Functions/Functions.php:1649
@@ -17088,17 +17088,17 @@ msgstr "%s× Großtante"
 #: app/Functions/Functions.php:1651
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr "%s× Großtante/Großonkel"
+msgstr "(%s-1)×Ur-Großtante/-onkel"
 
 #: app/Functions/Functions.php:2024 app/Functions/Functions.php:2039
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "%s× Großenkelkind"
+msgstr "%s×Ur-Enkel"
 
 #: app/Functions/Functions.php:2022 app/Functions/Functions.php:2037
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "%s× Großenkelin"
+msgstr "%s×Ur-Enkeltochter"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1894 app/Functions/Functions.php:1904
@@ -17106,399 +17106,399 @@ msgstr "%s× Großenkelin"
 #: app/Functions/Functions.php:1936
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "%s× Ur-Großvater"
+msgstr "%s×Ur-Großvater"
 
 #: app/Functions/Functions.php:1896 app/Functions/Functions.php:1906
 #: app/Functions/Functions.php:1916 app/Functions/Functions.php:1926
 #: app/Functions/Functions.php:1938
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "%s× Ur-Großmutter"
+msgstr "%s×Ur-Großmutter"
 
 #: app/Functions/Functions.php:1898 app/Functions/Functions.php:1908
 #: app/Functions/Functions.php:1918 app/Functions/Functions.php:1928
 #: app/Functions/Functions.php:1940
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "%s× Ur-Großelternteil"
+msgstr "%s×Ur-Großvater/-mutter"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2020 app/Functions/Functions.php:2035
 #, php-format
 msgid "great ×%s grandson"
-msgstr "%s× Großenkel"
+msgstr "%s×Ur-Enkelsohn"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1805 app/Functions/Functions.php:1818
 #, php-format
 msgid "great ×%s nephew"
-msgstr "(%s-1)× Urgroßneffe"
+msgstr "(%s-1)×Ur-Großneffe"
 
 #: app/Functions/Functions.php:1779
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "(%s-1)× Urgroßneffe"
+msgstr "(%s-1)×Ur-Großneffe"
 
 #: app/Functions/Functions.php:1781
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "(%s-1)× Urgroßneffe"
+msgstr "(%s-1)×Ur-Großneffe"
 
 #: app/Functions/Functions.php:1783
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr "(%s-1)× Urgroßneffe"
+msgstr "(%s-1)×Ur-Großneffe"
 
 #: app/Functions/Functions.php:1809 app/Functions/Functions.php:1822
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr "(%s-1)× Urgroßneffe/-nichte"
+msgstr "(%s-1)×Ur-Großneffe/-nichte"
 
 #: app/Functions/Functions.php:1795
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "(%s-1)× Urgroßneffe/-nichte"
+msgstr "(%s-1)×Ur-Großneffe/-nichte"
 
 #: app/Functions/Functions.php:1797
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "(%s-1)× Urgroßneffe/-nichte"
+msgstr "(%s-1)×Ur-Großneffe/-nichte"
 
 #: app/Functions/Functions.php:1799
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr "(%s-1)× Urgroßneffe/-nichte"
+msgstr "(%s-1)×Ur-Großneffe/-nichte"
 
 #: app/Functions/Functions.php:1807 app/Functions/Functions.php:1820
 #, php-format
 msgid "great ×%s niece"
-msgstr "(%s-1)× Urgroßnichte"
+msgstr "(%s-1)×Ur-Großnichte"
 
 #: app/Functions/Functions.php:1787
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr "(%s-1)× Urgroßnichte"
+msgstr "(%s-1)×Ur-Großnichte"
 
 #: app/Functions/Functions.php:1789
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr "(%s-1)× Urgroßnichte"
+msgstr "(%s-1)×Ur-Großnichte"
 
 #: app/Functions/Functions.php:1791
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr "(%s-1)× Urgroßnichte"
+msgstr "(%s-1)×Ur-Großnichte"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1619 app/Functions/Functions.php:1647
 #, php-format
 msgid "great ×%s uncle"
-msgstr "%s× Großonkel"
+msgstr "(%s-1)×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1629
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr "(%s-1)× Urgroßonkel"
+msgstr "(%s-1)×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1631
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr "(%s-1)× Urgroßonkel"
+msgstr "(%s-1)×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1633
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr "(%s-1)× Urgroßonkel"
+msgstr "(%s-1)×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1561
 msgid "great ×4 aunt"
-msgstr "3× Ur-Großtante"
+msgstr "3×Ur-Großtante"
 
 #: app/Functions/Functions.php:1563
 msgid "great ×4 aunt/uncle"
-msgstr "3× Ur-Großtante/Onkel"
+msgstr "3×Ur-Großtante/-onkel"
 
 #: app/Functions/Functions.php:1976
 msgid "great ×4 grandchild"
-msgstr "3× Ur Großenkelkind"
+msgstr "4×Ur-Enkel"
 
 #: app/Functions/Functions.php:1974
 msgid "great ×4 granddaughter"
-msgstr "3× Ur-Großenkelin"
+msgstr "4×Ur-Enkeltochter"
 
 #: app/Functions/Functions.php:1852
 msgid "great ×4 grandfather"
-msgstr "4× Ur-Großvater"
+msgstr "4×Ur-Großvater"
 
 #: app/Functions/Functions.php:1854
 msgid "great ×4 grandmother"
-msgstr "4× Ur-Großmutter"
+msgstr "4×Ur-Großmutter"
 
 #: app/Functions/Functions.php:1856
 msgid "great ×4 grandparent"
-msgstr "4× Ur-Großelternteil"
+msgstr "4×Ur-Großvater/-mutter"
 
 #: app/Functions/Functions.php:1972
 msgid "great ×4 grandson"
-msgstr "3× Ur-Großenkel"
+msgstr "4×Ur-Enkelsohn"
 
 #: app/Functions/Functions.php:1719
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr "Urururgroßneffe"
+msgstr "3×Ur-Großneffe"
 
 #: app/Functions/Functions.php:1721
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr "Urururgroßneffe"
+msgstr "3×Ur-Großneffe"
 
 #: app/Functions/Functions.php:1723
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr "Urururgroßneffe"
+msgstr "3×Ur-Großneffe"
 
 #: app/Functions/Functions.php:1735
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr "Urururgroßneffe/-nichte"
+msgstr "3×Ur-Großneffe/-nichte"
 
 #: app/Functions/Functions.php:1737
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr "Urururgroßneffe/-nichte"
+msgstr "3×Ur-Großneffe/-nichte"
 
 #: app/Functions/Functions.php:1739
 msgctxt "(a woman’s) great ×4 nephew/niece"
 msgid "great ×4 nephew/niece"
-msgstr "Urururgroßneffe/-nichte"
+msgstr "3×Ur-Großneffe/-nichte"
 
 #: app/Functions/Functions.php:1727
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr "Urururgroßnichte"
+msgstr "3×Ur-Großnichte"
 
 #: app/Functions/Functions.php:1729
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr "Urururgroßnichte"
+msgstr "3×Ur-Großnichte"
 
 #: app/Functions/Functions.php:1731
 msgctxt "(a woman’s) great ×4 niece"
 msgid "great ×4 niece"
-msgstr "Urururgroßnichte"
+msgstr "3×Ur-Großnichte"
 
 #: app/Functions/Functions.php:1554
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr "Ur-Ur-Urgroßonkel"
+msgstr "3×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1556
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr "Ur-Ur-Urgroßonkel"
+msgstr "3×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1558
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr "Ur-Ur-Urgroßonkel"
+msgstr "3×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1576
 msgid "great ×5 aunt"
-msgstr "4× Ur-Großtante"
+msgstr "4×Ur-Großtante"
 
 #: app/Functions/Functions.php:1578
 msgid "great ×5 aunt/uncle"
-msgstr "4× Ur-Großtante/Onkel"
+msgstr "4×Ur-Großtante/-onkel"
 
 #: app/Functions/Functions.php:1986
 msgid "great ×5 grandchild"
-msgstr "4× Ur Großenkelkind"
+msgstr "5×Ur-Enkel"
 
 #: app/Functions/Functions.php:1984
 msgid "great ×5 granddaughter"
-msgstr "Ururururgroßenkelin"
+msgstr "5×Ur-Enkeltochter"
 
 #: app/Functions/Functions.php:1861
 msgid "great ×5 grandfather"
-msgstr "5× Ur-Großvater"
+msgstr "5×Ur-Großvater"
 
 #: app/Functions/Functions.php:1863
 msgid "great ×5 grandmother"
-msgstr "5× Ur-Großmutter"
+msgstr "5×Ur-Großmutter"
 
 #: app/Functions/Functions.php:1865
 msgid "great ×5 grandparent"
-msgstr "5× Ur-Großelternteil"
+msgstr "5×Ur-Großvater/-mutter"
 
 #: app/Functions/Functions.php:1982
 msgid "great ×5 grandson"
-msgstr "4× Ur-Großenkel"
+msgstr "5×Ur-Enkelsohn"
 
 #: app/Functions/Functions.php:1746
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "Ururururgroßneffe"
+msgstr "4×Ur-Großneffe"
 
 #: app/Functions/Functions.php:1748
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "Ururururgroßneffe"
+msgstr "4×Ur-Großneffe"
 
 #: app/Functions/Functions.php:1750
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr "Ururururgroßneffe"
+msgstr "4×Ur-Großneffe"
 
 #: app/Functions/Functions.php:1762
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "Ururururgroßneffe/-nichte"
+msgstr "4×Ur-Großneffe/-nichte"
 
 #: app/Functions/Functions.php:1764
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "Ururururgroßneffe/-nichte"
+msgstr "4×Ur-Großneffe/-nichte"
 
 #: app/Functions/Functions.php:1766
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr "Ururururgroßneffe/-nichte"
+msgstr "4×Ur-Großneffe/-nichte"
 
 #: app/Functions/Functions.php:1754
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "Ururururgroßnichte"
+msgstr "4×Ur-Großnichte"
 
 #: app/Functions/Functions.php:1756
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "Ururururgroßnichte"
+msgstr "4×Ur-Großnichte"
 
 #: app/Functions/Functions.php:1758
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr "Ururururgroßnichte"
+msgstr "4×Ur-Großnichte"
 
 #: app/Functions/Functions.php:1569
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr "Ur-Ur-Ur-Urgroßonkel"
+msgstr "4×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1571
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr "Ur-Ur-Ur-Urgroßonkel"
+msgstr "4×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1573
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr "Ur-Ur-Ur-Urgroßonkel"
+msgstr "4×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1591
 msgid "great ×6 aunt"
-msgstr "5× Ur-Großtante"
+msgstr "5×Ur-Großtante"
 
 #: app/Functions/Functions.php:1593
 msgid "great ×6 aunt/uncle"
-msgstr "Urururururgroßtante/Urururururgroßonkel"
+msgstr "5×Ur-Großtante/-onkel"
 
 #: app/Functions/Functions.php:1996
 msgid "great ×6 grandchild"
-msgstr "5× Ur-Großenkelkind"
+msgstr "6×Ur-Enkel"
 
 #: app/Functions/Functions.php:1994
 msgid "great ×6 granddaughter"
-msgstr "5× Ur-Großenkelin"
+msgstr "6×Ur-Enkeltochter"
 
 #: app/Functions/Functions.php:1870
 msgid "great ×6 grandfather"
-msgstr "6× Ur-Großvater"
+msgstr "6×Ur-Großvater"
 
 #: app/Functions/Functions.php:1872
 msgid "great ×6 grandmother"
-msgstr "6× Ur-Großmutter"
+msgstr "6×Ur-Großmutter"
 
 #: app/Functions/Functions.php:1874
 msgid "great ×6 grandparent"
-msgstr "6× Ur-Großelternteil"
+msgstr "6×Ur-Großvater/-mutter"
 
 #: app/Functions/Functions.php:1992
 msgid "great ×6 grandson"
-msgstr "5× Ur-Großenkel"
+msgstr "6×Ur-Enkelsohn"
 
 #: app/Functions/Functions.php:1584
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr "Ur-Ur-Ur-Ur-Urgroßonkel"
+msgstr "5×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1586
 msgctxt "great ×5 grandmother’s brother"
 msgid "great ×6 uncle"
-msgstr "Ur-Ur-Ur-Ur-Urgroßonkel"
+msgstr "5×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1588
 msgctxt "great ×5 grandparent’s brother"
 msgid "great ×6 uncle"
-msgstr "Ur-Ur-Ur-Ur-Urgroßonkel"
+msgstr "5×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1606
 msgid "great ×7 aunt"
-msgstr "6× Ur-Großtante"
+msgstr "6×Ur-Großtante"
 
 #: app/Functions/Functions.php:1608
 msgid "great ×7 aunt/uncle"
-msgstr "6× Ur-Großtante/Onkel"
+msgstr "6×Ur-Großtante/-onkel"
 
 #: app/Functions/Functions.php:2006
 msgid "great ×7 grandchild"
-msgstr "6× Ur-Großenkelkind"
+msgstr "7×Ur-Enkel"
 
 #: app/Functions/Functions.php:2004
 msgid "great ×7 granddaughter"
-msgstr "6× Ur-Großenkelin"
+msgstr "7×Ur-Enkeltochter"
 
 #: app/Functions/Functions.php:1879
 msgid "great ×7 grandfather"
-msgstr "7× Ur-Großvater"
+msgstr "7×Ur-Großvater"
 
 #: app/Functions/Functions.php:1881
 msgid "great ×7 grandmother"
-msgstr "7× Ur-Großmutter"
+msgstr "7×Ur-Großmutter"
 
 #: app/Functions/Functions.php:1883
 msgid "great ×7 grandparent"
-msgstr "7× Ur-Großelternteil"
+msgstr "7×Ur-Großvater/-mutter"
 
 #: app/Functions/Functions.php:2002
 msgid "great ×7 grandson"
-msgstr "6× Ur-Großenkel"
+msgstr "7×Ur-Enkelsohn"
 
 #: app/Functions/Functions.php:1599
 msgctxt "great ×6 grandfather’s brother"
 msgid "great ×7 uncle"
-msgstr "Ur-Ur-Ur-Ur-Ur-Urgroßonkel"
+msgstr "6×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1601
 msgctxt "great ×6 grandmother’s brother"
 msgid "great ×7 uncle"
-msgstr "Ur-Ur-Ur-Ur-Ur-Urgroßonkel"
+msgstr "6×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1603
 msgctxt "great ×6 grandparent’s brother"
 msgid "great ×7 uncle"
-msgstr "Ur-Ur-Ur-Ur-Ur-Urgroßonkel"
+msgstr "6×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1354
 msgctxt "father’s father’s brother’s wife"
@@ -17683,47 +17683,47 @@ msgstr "Großtante/-onkel"
 #: app/Functions/Functions.php:1018
 msgctxt "child’s child’s child"
 msgid "great-grandchild"
-msgstr "Urenkelkind"
+msgstr "Urenkel"
 
 #: app/Functions/Functions.php:1024
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr "Urenkelkind"
+msgstr "Urenkel"
 
 #: app/Functions/Functions.php:1032
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr "Urenkelkind"
+msgstr "Urenkel"
 
 #: app/Functions/Functions.php:1040
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr "Urenkelkind"
+msgstr "Urenkel"
 
 #: app/Functions/Functions.php:1046
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr "Urenkelkind"
+msgstr "Urenkel"
 
 #: app/Functions/Functions.php:1060
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr "Urenkelkind"
+msgstr "Urenkel"
 
 #: app/Functions/Functions.php:1320
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr "Urenkelkind"
+msgstr "Urenkel"
 
 #: app/Functions/Functions.php:1326
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr "Urenkelkind"
+msgstr "Urenkel"
 
 #: app/Functions/Functions.php:1334
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr "Urenkelkind"
+msgstr "Urenkel"
 
 #: app/Functions/Functions.php:1020
 msgctxt "child’s child’s daughter"
@@ -17863,47 +17863,47 @@ msgstr "Urgroßmutter"
 #: app/Functions/Functions.php:1082
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr "Ururgroßeltern"
+msgstr "Urgroßvater/-mutter"
 
 #: app/Functions/Functions.php:1094
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr "Ururgroßeltern"
+msgstr "Urgroßvater/-mutter"
 
 #: app/Functions/Functions.php:1106
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr "Ururgroßeltern"
+msgstr "Urgroßvater/-mutter"
 
 #: app/Functions/Functions.php:1144
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr "Ururgroßeltern"
+msgstr "Urgroßvater/-mutter"
 
 #: app/Functions/Functions.php:1162
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr "Ururgroßeltern"
+msgstr "Urgroßvater/-mutter"
 
 #: app/Functions/Functions.php:1174
 msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
-msgstr "Ururgroßeltern"
+msgstr "Urgroßvater/-mutter"
 
 #: app/Functions/Functions.php:1196
 msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
-msgstr "Ururgroßeltern"
+msgstr "Urgroßvater/-mutter"
 
 #: app/Functions/Functions.php:1208
 msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
-msgstr "Ururgroßeltern"
+msgstr "Urgroßvater/-mutter"
 
 #: app/Functions/Functions.php:1220
 msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
-msgstr "Ururgroßeltern"
+msgstr "Urgroßvater/-mutter"
 
 #: app/Functions/Functions.php:1022
 msgctxt "child’s child’s son"
@@ -17956,123 +17956,123 @@ msgstr "Urgroßtante"
 
 #: app/Functions/Functions.php:1533
 msgid "great-great-aunt/uncle"
-msgstr "Urgroßtante/Urgroßonkel"
+msgstr "Urgroßtante/-onkel"
 
 #: app/Functions/Functions.php:1956
 msgid "great-great-grandchild"
-msgstr "Urgroßenkelkind"
+msgstr "2×Ur-Enkel"
 
 #: app/Functions/Functions.php:1954
 msgid "great-great-granddaughter"
-msgstr "Urgroßenkelin"
+msgstr "2×Ur-Enkeltochter"
 
 #: app/Functions/Functions.php:1834
 msgid "great-great-grandfather"
-msgstr "Ur-Ur-Großvater"
+msgstr "2×Ur-Großvater"
 
 #: app/Functions/Functions.php:1836
 msgid "great-great-grandmother"
-msgstr "Ur-Ur-Großmutter"
+msgstr "2×Ur-Großmutter"
 
 #: app/Functions/Functions.php:1838
 msgid "great-great-grandparent"
-msgstr "Ur-Ur-Großelternteil"
+msgstr "2×Ur-Großvater/-mutter"
 
 #: app/Functions/Functions.php:1952
 msgid "great-great-grandson"
-msgstr "Urgroßenkel"
+msgstr "2×Ur-Enkelsohn"
 
 #: app/Functions/Functions.php:1546
 msgid "great-great-great-aunt"
-msgstr "Ur-Ur-Großtante"
+msgstr "2×Ur-Großtante"
 
 #: app/Functions/Functions.php:1548
 msgid "great-great-great-aunt/uncle"
-msgstr "Ur-Ur-Großtante/onkel"
+msgstr "2×Ur-Großtante/-onkel"
 
 #: app/Functions/Functions.php:1966
 msgid "great-great-great-grandchild"
-msgstr "Ururgroßenkelkind"
+msgstr "3×Ur-Enkel"
 
 #: app/Functions/Functions.php:1964
 msgid "great-great-great-granddaughter"
-msgstr "Ururgroßenkelin"
+msgstr "3×Ur-Enkeltochter"
 
 #: app/Functions/Functions.php:1843
 msgid "great-great-great-grandfather"
-msgstr "Ur-Ur-Ur-Großvater"
+msgstr "3×Ur-Großvater"
 
 #: app/Functions/Functions.php:1845
 msgid "great-great-great-grandmother"
-msgstr "Ur-Ur-Ur-Großmutter"
+msgstr "3×Ur-Großmutter"
 
 #: app/Functions/Functions.php:1847
 msgid "great-great-great-grandparent"
-msgstr "Ur-Ur-Ur-Großelternteil"
+msgstr "3×Ur-Großvater/-mutter"
 
 #: app/Functions/Functions.php:1962
 msgid "great-great-great-grandson"
-msgstr "Ururgroßenkel"
+msgstr "3×Ur-Enkelsohn"
 
 #: app/Functions/Functions.php:1692
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr "Ur-Ur-Großneffe"
+msgstr "2×Ur-Großneffe"
 
 #: app/Functions/Functions.php:1694
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr "Ur-Ur-Großneffe"
+msgstr "2×Ur-Großneffe"
 
 #: app/Functions/Functions.php:1696
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr "Ur-Ur-Großneffe"
+msgstr "2×Ur-Großneffe"
 
 #: app/Functions/Functions.php:1708
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "Ur-Ur-Großneffe/-nichte"
+msgstr "2×Ur-Großneffe/-nichte"
 
 #: app/Functions/Functions.php:1710
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "Ur-Ur-Großneffe/-nichte"
+msgstr "2×Ur-Großneffe/-nichte"
 
 #: app/Functions/Functions.php:1712
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr "Ur-Ur-Großneffe/-nichte"
+msgstr "2×Ur-Großneffe/-nichte"
 
 #: app/Functions/Functions.php:1700
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "Ur-Ur-Großnichte"
+msgstr "2×Ur-Großnichte"
 
 #: app/Functions/Functions.php:1702
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "Ur-Ur-Großnichte"
+msgstr "2×Ur-Großnichte"
 
 #: app/Functions/Functions.php:1704
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr "Ur-Ur-Großnichte"
+msgstr "2×Ur-Großnichte"
 
 #: app/Functions/Functions.php:1539
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr "Ur-Urgroßonkel"
+msgstr "2×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1541
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr "Ur-Urgroßonkel"
+msgstr "2×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1543
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr "Ur-Urgroßonkel"
+msgstr "2×Ur-Großonkel"
 
 #: app/Functions/Functions.php:1665
 msgctxt "(a man’s) brother’s great-grandson"
@@ -18472,17 +18472,17 @@ msgstr "Halbbruder"
 #: app/Functions/Functions.php:818
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr "Halb-Geschwister"
+msgstr "Halbgeschwister"
 
 #: app/Functions/Functions.php:854
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr "Halb-Geschwister"
+msgstr "Halbgeschwister"
 
 #: app/Functions/Functions.php:874
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr "Halb-Geschwister"
+msgstr "Halbgeschwister"
 
 #: app/Functions/Functions.php:820
 msgctxt "father’s daughter"
@@ -19386,17 +19386,17 @@ msgstr "Schwiegersohn"
 #: app/Functions/Functions.php:1054
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr "Vater des Schwiegersohns"
+msgstr "Schwiegersohns Vater"
 
 #: app/Functions/Functions.php:1056
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr "Mutter des Schwiegersohns"
+msgstr "Schwiegersohns Mutter"
 
 #: app/Functions/Functions.php:1058
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr "Eltern des Schwiegersohns"
+msgstr "Schwiegersohns Vater/Mutter"
 
 #: app/Functions/Functions.php:804
 msgctxt "child’s spouse"
