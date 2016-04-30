@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-04-21 16:00+0000\n"
+"PO-Revision-Date: 2016-04-30 15:32+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -9958,19 +9958,19 @@ msgstr "Not verified by the user"
 #: modules_v3/family_group_report/report.xml:1101
 #: modules_v3/occupation_report/report.xml:64
 msgid "Note"
-msgstr ""
+msgstr "Note"
 
 #: admin_trees_config.php:843
 msgid "Note ID prefix"
-msgstr ""
+msgstr "Note ID prefix"
 
 #: help_text.php:261
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr ""
+msgstr "Note that if a user account is linked to a record, then that user will always be able to view that record."
 
 #: admin_users.php:610
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr ""
+msgstr "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
 
 #. I18N: Name of a module
 #: app/Controller/SearchController.php:528 app/Module/NotesTabModule.php:34
@@ -9980,40 +9980,40 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:226 note.php:153 repo.php:161
 #: source.php:165 statistics.php:354
 msgid "Notes"
-msgstr ""
+msgstr "Notes"
 
 #: admin_users.php:795
 msgid "Nothing found to cleanup"
-msgstr ""
+msgstr "Nothing found to cleanup"
 
 #: app/Module/BatchUpdateModule.php:257
 msgid "Nothing found."
-msgstr ""
+msgstr "Nothing found."
 
 #: app/Date/CalendarDate.php:321
 msgctxt "Abbreviation for November"
 msgid "Nov"
-msgstr ""
+msgstr "Nov"
 
 #: app/Date/CalendarDate.php:221
 msgctxt "GENITIVE"
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: app/Date/CalendarDate.php:289
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: app/Date/CalendarDate.php:255
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:660
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: app/GedcomCode/GedcomCodeTemp.php:235
 msgid "Nuku’Alofa, Tonga"
@@ -10023,55 +10023,55 @@ msgstr "Nukuʻalofa, Tonga"
 #: app/GedcomTag.php:622 app/Stats.php:4944 app/Stats.php:4946
 #: app/Stats.php:4948 statistics.php:532 statisticsplot.php:1316
 msgid "Number of children"
-msgstr ""
+msgstr "Number of children"
 
 #: app/Module/RecentChangesModule.php:146
 #: app/Module/UpcomingAnniversariesModule.php:147
 #: app/Module/YahrzeitModule.php:267
 msgid "Number of days to show"
-msgstr ""
+msgstr "Number of days to show"
 
 #: app/Stats.php:5213 statistics.php:307
 msgid "Number of families without children"
-msgstr ""
+msgstr "Number of families without children"
 
 #: app/Module/ClippingsCartModule.php:211
 #: app/Module/ClippingsCartModule.php:230
 #: app/Module/ClippingsCartModule.php:249
 msgid "Number of generations"
-msgstr ""
+msgstr "Number of generations"
 
 #: app/Module/FamilyTreeNewsModule.php:202
 msgid "Number of items"
-msgstr ""
+msgstr "Number of items"
 
 #: app/Module/TopGivenNamesModule.php:146
 #: app/Module/TopPageViewsModule.php:159 app/Module/TopSurnamesModule.php:168
 msgid "Number of items to show"
-msgstr ""
+msgstr "Number of items to show"
 
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:630
 msgid "Number of marriages"
-msgstr ""
+msgstr "Number of marriages"
 
 #: admin_users.php:701
 msgid "Number of months since the last login for a user’s account to be considered inactive: "
-msgstr ""
+msgstr "Number of months since the last login for a user’s account to be considered inactive: "
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
-msgstr ""
+msgstr "Nurse"
 
 #: app/GedcomCode/GedcomCodeRela.php:201
 msgctxt "FEMALE"
 msgid "Nurse"
-msgstr ""
+msgstr "Nurse"
 
 #: app/GedcomCode/GedcomCodeRela.php:199
 msgctxt "MALE"
 msgid "Nurse"
-msgstr ""
+msgstr "Nurse"
 
 #: app/GedcomCode/GedcomCodeTemp.php:241
 msgid "Oakland, California, United States"
@@ -10079,54 +10079,54 @@ msgstr "Oakland, California, United States"
 
 #: app/GedcomCode/GedcomCodeTemp.php:243
 msgid "Oaxaca, Mexico"
-msgstr ""
+msgstr "Oaxaca, Mexico"
 
 #. I18N: gedcom tag OCCU
 #: app/GedcomTag.php:650 modules_v3/occupation_report/report.xml:5
 #: modules_v3/occupation_report/report.xml:54
 msgid "Occupation"
-msgstr ""
+msgstr "Occupation"
 
 #. I18N: Name of a report
 #: app/Module/OccupationReportModule.php:29
 #: modules_v3/occupation_report/report.xml:3
 #: modules_v3/occupation_report/report.xml:37
 msgid "Occupations"
-msgstr ""
+msgstr "Occupations"
 
 #: app/Stats.php:6909
 msgid "Occupied Palestinian Territory"
-msgstr ""
+msgstr "Occupied Palestinian Territory"
 
 #: app/Date/CalendarDate.php:320
 msgctxt "Abbreviation for October"
 msgid "Oct"
-msgstr ""
+msgstr "Oct"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:204
 msgid "Octidi"
-msgstr ""
+msgstr "Octidi"
 
 #: app/Date/CalendarDate.php:220
 msgctxt "GENITIVE"
 msgid "October"
-msgstr ""
+msgstr "October"
 
 #: app/Date/CalendarDate.php:288
 msgctxt "INSTRUMENTAL"
 msgid "October"
-msgstr ""
+msgstr "October"
 
 #: app/Date/CalendarDate.php:254
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr ""
+msgstr "October"
 
 #: app/Date/CalendarDate.php:186 app/Functions/FunctionsPrint.php:659
 msgctxt "NOMINATIVE"
 msgid "October"
-msgstr ""
+msgstr "October"
 
 #: app/GedcomCode/GedcomCodeTemp.php:245
 msgid "Ogden, Utah, United States"
@@ -10138,44 +10138,44 @@ msgstr "Oklahoma City, Oklahoma, United States"
 
 #: admin_site_change.php:336
 msgid "Old data"
-msgstr ""
+msgstr "Old data"
 
 #: admin.php:872
 msgid "Old files found"
-msgstr ""
+msgstr "Old files found"
 
 #: pedigree.php:182
 msgid "Oldest at bottom"
-msgstr ""
+msgstr "Oldest at bottom"
 
 #: pedigree.php:182
 msgid "Oldest at top"
-msgstr ""
+msgstr "Oldest at top"
 
 #: statistics.php:294
 msgid "Oldest father"
-msgstr ""
+msgstr "Oldest father"
 
 #: statistics.php:272
 msgid "Oldest female"
-msgstr ""
+msgstr "Oldest female"
 
 #: statistics.php:176
 msgid "Oldest living individuals"
-msgstr ""
+msgstr "Oldest living individuals"
 
 #: statistics.php:271
 msgid "Oldest male"
-msgstr ""
+msgstr "Oldest male"
 
 #: statistics.php:295
 msgid "Oldest mother"
-msgstr ""
+msgstr "Oldest mother"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:87
 msgid "Olivia"
-msgstr ""
+msgstr "Olivia"
 
 #: app/Stats.php:6896
 msgid "Oman"
@@ -10184,11 +10184,11 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/OnThisDayModule.php:31
 msgid "On this day"
-msgstr ""
+msgstr "On this day"
 
 #: calendar.php:122
 msgid "On this day…"
-msgstr ""
+msgstr "On this day…"
 
 #: app/Functions/FunctionsEdit.php:228
 #: app/Functions/FunctionsPrintFacts.php:274
@@ -10196,7 +10196,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:835
 #: app/Functions/FunctionsPrintFacts.php:1101
 msgid "Only managers can edit"
-msgstr ""
+msgstr "Only managers can edit"
 
 #: site-unavailable.php:81
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -10204,64 +10204,64 @@ msgstr "Oops! The webserver is unable to connect to the database server. It coul
 
 #: setup.php:210
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr ""
+msgstr "Oops! webtrees was unable to create files in this folder."
 
 #: app/Functions/FunctionsPrint.php:476
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: app/Module/GoogleMapsModule.php:423
 msgid "Optional prefixes and suffixes"
-msgstr ""
+msgstr "Optional prefixes and suffixes"
 
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
-msgstr ""
+msgstr "Ord"
 
 #: admin_module_menus.php:89 admin_module_sidebar.php:89
 #: admin_module_tabs.php:89
 msgid "Order"
-msgstr ""
+msgstr "Order"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:88
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:152
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:120
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:56
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: gedcom tag ORDI
 #: app/GedcomTag.php:656
 msgid "Ordinance"
-msgstr ""
+msgstr "Ordinance"
 
 #. I18N: gedcom tag ORDN
 #: app/GedcomTag.php:660
 msgid "Ordination"
-msgstr ""
+msgstr "Ordination"
 
 #: modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6
 msgid "Orientation"
-msgstr ""
+msgstr "Orientation"
 
 #: app/GedcomCode/GedcomCodeTemp.php:249
 msgid "Orlando, Florida, United States"
@@ -10269,23 +10269,23 @@ msgstr "Orlando, Florida, United States"
 
 #: app/GedcomTag.php:1942 app/Stats.php:5499 app/Stats.php:5918
 msgid "Other"
-msgstr ""
+msgstr "Other"
 
 #: admin_trees_config.php:1418
 msgid "Other facts to show in charts"
-msgstr ""
+msgstr "Other facts to show in charts"
 
 #: addmedia.php:524 admin_media_upload.php:242
 msgid "Other folder… please type in"
-msgstr ""
+msgstr "Other folder… please type in"
 
 #: admin_trees_config.php:2190
 msgid "Other settings"
-msgstr ""
+msgstr "Other settings"
 
 #: statistics.php:73
 msgid "Others"
-msgstr ""
+msgstr "Others"
 
 #: app/Module/GoogleMapsModule.php:4312
 msgid "Overwrite existing coordinates."
@@ -10293,31 +10293,31 @@ msgstr "Overwrite existing co-ordinates."
 
 #: statistics.php:75
 msgid "Own charts"
-msgstr ""
+msgstr "Own charts"
 
 #: app/GedcomCode/GedcomCodeRela.php:212
 msgid "Owner"
-msgstr ""
+msgstr "Owner"
 
 #: app/GedcomCode/GedcomCodeRela.php:210
 msgctxt "FEMALE"
 msgid "Owner"
-msgstr ""
+msgstr "Owner"
 
 #: app/GedcomCode/GedcomCodeRela.php:208
 msgctxt "MALE"
 msgid "Owner"
-msgstr ""
+msgstr "Owner"
 
 #. I18N: time format “%A” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:111
 msgid "P.M."
-msgstr ""
+msgstr "P.M."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:88
 msgid "PHP blocked the file because of its extension."
-msgstr ""
+msgstr "PHP blocked the file because of its extension."
 
 #: setup.php:137
 #, php-format
@@ -10332,11 +10332,11 @@ msgstr "PHP extension ‘%s’ is disabled. You cannot install webtrees until th
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:85
 msgid "PHP failed to write to disk."
-msgstr ""
+msgstr "PHP failed to write to disk."
 
 #: admin_site_info.php:51
 msgid "PHP information"
-msgstr ""
+msgstr "PHP information"
 
 #: setup.php:146
 #, php-format
@@ -10346,7 +10346,7 @@ msgstr "PHP setting ‘%1$s’ is disabled. Without it, the following features w
 #. I18N: A site configuration setting
 #: admin_site_config.php:211
 msgid "PHP time limit"
-msgstr ""
+msgstr "PHP time limit"
 
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
@@ -10363,12 +10363,12 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:38
 #: modules_v3/relative_ext_report/report.xml:44
 msgid "Page"
-msgstr ""
+msgstr "Page"
 
 #: medialist.php:245
 #, php-format
 msgid "Page %s of %s"
-msgstr ""
+msgstr "Page %s of %s"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -10385,24 +10385,24 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:8
 msgid "Page size"
-msgstr ""
+msgstr "Page size"
 
 #: app/GedcomTag.php:1940
 msgid "Painting"
-msgstr ""
+msgstr "Painting"
 
 #: app/Stats.php:6897
 msgid "Pakistan"
-msgstr ""
+msgstr "Pakistan"
 
 #: app/Stats.php:6902
 msgid "Palau"
-msgstr ""
+msgstr "Palau"
 
 #. I18N: A colour scheme
 #: app/Theme/ColorsTheme.php:149
 msgid "Palette"
-msgstr ""
+msgstr "Palette"
 
 #: app/GedcomCode/GedcomCodeTemp.php:253
 msgid "Palmyra, New York, United States"
@@ -10410,45 +10410,45 @@ msgstr "Palmyra, New York, United States"
 
 #: app/Stats.php:6898
 msgid "Panama"
-msgstr ""
+msgstr "Panama"
 
 #: app/GedcomCode/GedcomCodeTemp.php:255
 msgid "Papeete, Tahiti"
-msgstr ""
+msgstr "Papeete, Tahiti"
 
 #: app/Stats.php:6903
 msgid "Papua New Guinea"
-msgstr ""
+msgstr "Papua New Guinea"
 
 #: app/Stats.php:6908
 msgid "Paraguay"
-msgstr ""
+msgstr "Paraguay"
 
 #: app/Controller/HourglassController.php:342
 #: app/Module/FamilyNavigatorModule.php:196 family.php:100
 msgid "Parents"
-msgstr ""
+msgstr "Parents"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Parents and siblings"
-msgstr ""
+msgstr "Parents and siblings"
 
 #: app/Functions/FunctionsPrint.php:279
 msgid "Parent’s age"
-msgstr ""
+msgstr "Parent’s age"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:396 admin_users.php:339
 #: app/Module/LoginBlockModule.php:78 edituser.php:213 login.php:194
 #: login.php:256 login.php:526 setup.php:434
 msgid "Password"
-msgstr ""
+msgstr "Password"
 
 #: admin_users.php:75 edituser.php:134
 msgid "Passwords do not match."
-msgstr ""
+msgstr "Passwords do not match."
 
 #: admin_users.php:344 edituser.php:219 login.php:457
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
@@ -10456,7 +10456,7 @@ msgstr "Passwords must be at least 6 characters long and are case-sensitive, so 
 
 #: edituser.php:139
 msgid "Passwords must contain at least 6 characters."
-msgstr ""
+msgstr "Passwords must contain at least 6 characters."
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
@@ -10466,32 +10466,32 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:3
 #: modules_v3/pedigree_report/report.xml:43
 msgid "Pedigree"
-msgstr ""
+msgstr "Pedigree"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree Chart"
-msgstr ""
+msgstr "Pedigree Chart"
 
 #: app/Module/GoogleMapsModule.php:222 app/Module/GoogleMapsModule.php:1418
 msgid "Pedigree map"
-msgstr ""
+msgstr "Pedigree map"
 
 #. I18N: %s is an individual’s name
 #: app/Module/GoogleMapsModule.php:782
 #, php-format
 msgid "Pedigree map of %s"
-msgstr ""
+msgstr "Pedigree map of %s"
 
 #: app/Module/ChartsBlockModule.php:86
 #, php-format
 msgid "Pedigree of %s"
-msgstr ""
+msgstr "Pedigree of %s"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr ""
+msgstr "Pedigree tree of %s"
 
 #. I18N: Name of a module
 #: admin.php:753 admin.php:775 admin_site_upgrade.php:100
@@ -10499,42 +10499,42 @@ msgstr ""
 #: app/Theme/AbstractTheme.php:1674 edit_changes.php:34 edit_changes.php:48
 #: help_text.php:307 modules_v3/change_report/report.xml:52
 msgid "Pending changes"
-msgstr ""
+msgstr "Pending changes"
 
 #: help_text.php:314
 msgid "Pending changes are only shown when your account has permission to edit. When you log out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr ""
+msgstr "Pending changes are only shown when your account has permission to edit. When you log out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1715
 msgid "Permanent number"
-msgstr ""
+msgstr "Permanent number"
 
 #: admin_site_change.php:372 admin_site_logs.php:313
 msgid "Permanently delete these records?"
-msgstr ""
+msgstr "Permanently delete these records?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:257
 msgid "Perth, Australia"
-msgstr ""
+msgstr "Perth, Australia"
 
 #: app/Stats.php:6900
 msgid "Peru"
-msgstr ""
+msgstr "Peru"
 
 #: app/Stats.php:6901
 msgid "Philippines"
-msgstr ""
+msgstr "Philippines"
 
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:678
 msgid "Phone"
-msgstr ""
+msgstr "Phone"
 
 #. I18N: gedcom tag FONE
 #: app/GedcomTag.php:488
 msgid "Phonetic"
-msgstr ""
+msgstr "Phonetic"
 
 #: search.php:253
 msgid "Phonetic algorithm"
