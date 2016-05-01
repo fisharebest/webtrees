@@ -5402,7 +5402,7 @@ msgstr "Trùng lắp tên người dùng. Đã có một thành viên với tên
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
-msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed. webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required. To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 msgstr "Địa chỉ E-mail dùng ở trường \"Từ: \" của email mà webtrees tạo ra tự động.<br><br>webtrees có thể tự động tạo email để báo cho quản trị viên về các thay đổi cần xem xét. webtrees cũng gửi email thông báo cho người dùng đang yêu cầu mở tài khoản<br><br>Thông thường, trường \"Từ: \" của các thư này được tự động tạo ra email đại loại như <i>Từ: webtrees-noreply@sitecủabạn</i> để cho biết là không cần trả lời cho email này. Để bảo vệ chống lại thư rác, vài chương trình mail yêu cầu trường \"Từ: \" để chỉ địa chỉ email thật và sẽ không chấp nhận thư từ tài khoản <i>webtrees-noreply</i>."
 
 #: help_text.php:293
@@ -14075,7 +14075,7 @@ msgid "The user %s has been deleted."
 msgstr "Người dùng %s đã được xóa bỏ."
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
+msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "Người dùng đã được gửi email với thông tin cần thiết để xác nhận yêu cầu muốn truy cập."
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -16273,7 +16273,7 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "Bạn không nên chấp thuận tài khoản trừ phi biết địa chỉ email là đúng."
 
 #: login.php:325
-msgid "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
 msgstr "Bạn sẽ được báo bằng email khi người dùng tương lai này đã xác nhận lại. Khi đó bạn có thể hoàn tất quá trình bằng cách kích hoạt tên người dùng. Người dùng mới này sẽ không thể đăng nhập cho tới khi bạn kích hoạt tài khoản."
 
 #: setup.php:432

@@ -5403,7 +5403,7 @@ msgstr "重复的用户名。该用户名已经被一个用户使用。请选择
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
-msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed. webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required. To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 msgstr "E-mail地址用于webtrees自动创建电子邮件时候的邮件来自于项。<br><br>webtrees可以自动创建电子邮件通知系统管理员的需要进行审批变化。webtrees发送通知电子邮件给注册一个帐户的用户。<br><br>通常情况下，这些自动创建的电子邮件发件人是<i>webtrees-noreply@ yoursite</i>，并且暗示不用回复。为了防止垃圾邮件或其他电子邮件滥用的一些电子邮件系统需要每封邮件的有个邮件来自于项，以此确认一个有效的e-mail帐号，否则将不接受邮件，这将显然从帐户 <i>webtrees noreply</i>来了邮件。"
 
 #: help_text.php:293
@@ -14076,7 +14076,7 @@ msgid "The user %s has been deleted."
 msgstr "用户 %s 已被删除。"
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
+msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "已经将包含需要确认访问请求信息发送邮件给用户。"
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -16274,7 +16274,7 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "你不应该批准一个帐户,除非你知道电子邮件地址是正确的。"
 
 #: login.php:325
-msgid "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
 msgstr "用户请求将通过电子邮件通知。您就可以激活的用户名。直到您激活帐户,此用户将无法登录。"
 
 #: setup.php:432

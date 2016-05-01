@@ -5432,7 +5432,7 @@ msgstr "Er bestaat al een gebruiker met deze naam. Kies a.u.b. een andere naam."
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
-msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed. webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required. To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 msgstr "E-mailadres dat wordt ingevuld in het ‘Van:’-veld van automatisch door webtrees gegenereerde e-mails.<br><br>webtrees kan automatisch e-mails maken om beheerders te informeren over wijzigingen die gecontroleerd moeten worden. webtrees stuurt ook notificatie e-mails naar gebruikers die om een account hebben verzocht.<br><br>Meestal staat in het ‘Van:’-veld van deze automatisch gegenereerde e-mail iets als <i>Van: webtrees-noreply@yoursite</i> om te laten zien dat de e-mail geen antwoord vereist. Om spam en ander e-mailmisbruik tegen te gaan vereisen sommige e-mailsystemen dat in het ‘Van:’-veld het adres van een geldig e-mailaccount wordt gebruikt. Deze e-mailsystemen accepteren geen berichten die afkomstig lijken te zijn van een account als <i>webtrees-noreply</i>."
 
 #: help_text.php:293
@@ -14108,7 +14108,7 @@ msgid "The user %s has been deleted."
 msgstr "De gebruiker %s is verwijderd."
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
+msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "De gebruiker heeft een e-mail ontvangen met de benodigde informatie om zijn verzoek te bevestigen."
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -16312,7 +16312,7 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "U moet geen account goedkeuren, tenzij u weet dat het e-mailadres klopt."
 
 #: login.php:325
-msgid "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
 msgstr "U wordt per e-mail geïnformeerd wanneer deze toekomstige gebruiker zijn verzoek heeft bevestigd. U kan het proces dan afmaken door de gebruikersnaam te activeren. De nieuwe gebruiker kan zich niet aanmelden totdat u zijn account heeft geactiveerd."
 
 #: setup.php:432

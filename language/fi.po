@@ -5428,7 +5428,7 @@ msgstr "Tämä käyttäjätunnus on jo olemassa. Valitse toinen käyttäjätunnu
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
-msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed. webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required. To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 msgstr "Sähköpostiosoite ”From:” jota webtrees käyttää luodessaan automaattisia sähköposteja.<br><br>webtrees voi lähettää ylläpitäjille automaattisesti postia, kun muutoksia on tehty ja niitä pitää tarkistaa.webtrees lähettää lisäksi postia käyttäjille, jotka ovat pyytäneet käyttäjätilin.<br><br>Tavallisesti ”From:” kenttä, jota käytetään automaattisissa sähköposteissa, on muodossa <i>From: webtrees-noreply@sivustosi-osoite</i>, jolla halutaan korostaa (noreply) ettei postiin tarvitse vastata. Roskapostin estämiseksi, jotkut sähköpostipalvelut vaativat että ”From:” kenttään täytetään oikea ja olemassa oleva sähköpostiosoite."
 
 #: help_text.php:293
@@ -14104,7 +14104,7 @@ msgid "The user %s has been deleted."
 msgstr "Käyttäjä %s on poistettu."
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
+msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "Käyttäjälle on lähetetty ohjeita sähköpostilla, hänen pitää vahvistaa käyttäjätilipyyntönsä."
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -16308,7 +16308,7 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "Älä hyväksy käyttäjätunnusta / käyttäjätiliä ennen kuin tiedät että sähköpostiosoite on oikea."
 
 #: login.php:325
-msgid "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
 msgstr "Sinulle ilmoitetaan sähköpostilla milloin mahdollinen uusi käyttäjä on vastannut ja vahvistanut käyttäjätilipyyntönsä. Voit sen jälkeen aktivoida käyttäjätunnuksen ja vasta sen jälkeen käyttäjä pystyy kirjautumaan sisään."
 
 #: setup.php:432

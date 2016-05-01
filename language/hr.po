@@ -5462,7 +5462,7 @@ msgstr "Postojeće korisničko ime. Korisnik sa tim imenom već postoji. Molimo 
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
-msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed. webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required. To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 msgstr "Adrese e-pošte koje će biti u polju „From:” kada webtrees šalje e-poštu automatski.<br><br>webtrees može automatski kreirati e-poštu da obavijesti administratore o promjenama koje trebaju biti pregledane. webtrees također šalje obavijesti korisnicima koji su zatražili otvaranje računa.<br><br>Obično je „From:” polje za automatsko slanje e-pošte <i>From: webtrees-noreply@yoursite</i> da pokaže da nije potrebno odgovoriti na e-poštu. Da se obranite od spam-a i ostalih uznemiravanja e-poštom, neki sistemi zahtijevaju da „From:” polje ima valjanu adresu e-pošte i neće prihvatiti koje se predstavljanju sa <i>webtrees-noreply</i>."
 
 #: help_text.php:293
@@ -14141,7 +14141,7 @@ msgid "The user %s has been deleted."
 msgstr "Korisnik %s je obrisan."
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
+msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "Korisniku je poslana e-pošta sa informacijama potrebnim da potvrdi pristupni zahtjev."
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -16357,7 +16357,7 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "Ne bi trebali odobriti račun iako znate da je adresa e-pošte ispravna."
 
 #: login.php:325
-msgid "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
 msgstr "Biti ćete obaviješteni e-poštom kada ovaj potencijalni korisnik potvrdi zahtjev. Možete dovršiti proces tako da aktivirate korisnika. Novi korisnik neće se moći prijaviti dok ne aktivirate njegov račun."
 
 #: setup.php:432

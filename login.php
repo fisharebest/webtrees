@@ -321,8 +321,8 @@ case 'register':
 				I18N::translate('Real name') . ' ' . $user->getRealNameHtml() . Mail::EOL .
 				I18N::translate('Email address') . ' ' . Filter::escapeHtml($user->getEmail()) . Mail::EOL .
 				I18N::translate('Comments') . ' ' . Filter::escapeHtml($user_comments) . Mail::EOL . Mail::EOL .
-				I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request.') . Mail::EOL . Mail::EOL .
-				I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account.');
+				I18N::translate('The user has been sent an email with the information necessary to confirm the access request.') . Mail::EOL . Mail::EOL .
+				I18N::translate('You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account.');
 
 			$mail1_subject = /* I18N: %s is a server name/URL */ I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $WT_TREE->getTitle());
 			I18N::init(WT_LOCALE);

@@ -5434,7 +5434,7 @@ msgstr "Nome utente già esistente: sceglierne un altro."
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
-msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed. webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required. To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 msgstr "Indirizzo email da utilizzare per il campo &laquo;Da:&raquo; delle email create automaticamente da webtrees.<br><br>webtrees può creare automaticamente delle email per notificare gli amministratori delle modifiche che devono essere verificate. webtrees invia anche email di notifica agli utenti che hanno richiesto un account.<br><br>Di solito, il campo &laquo;From:&raquo; di queste email create automaticamente è del tipo <i>Da: webtrees-noreply@tuosito</i> per indicare che non è dovuta alcuna risposta all’email. Per difendersi da spam e da altri abusi alcuni sistemi di posta elettronica richiedono che al campo &laquo;Da:&raquo; di ogni messaggio corrisponda un account di posta elettronica valido e non accettano i messaggi che in apparenza provengono dall’account <i>webtrees-noreply</i>."
 
 #: help_text.php:293
@@ -14110,7 +14110,7 @@ msgid "The user %s has been deleted."
 msgstr ""
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
+msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "È stata inviata all’utente un’email contenente le istruzioni da seguire per confermare la richiesta di accesso"
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -16314,7 +16314,7 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "Non si dovrebbe approvare un utente se non si è certi che l’indirizzo email sia corretto."
 
 #: login.php:325
-msgid "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
 msgstr "Si riceverà un’email quando questo aspirante utente avrà confermato la propria richiesta. L’amministratore potrà quindi completare il processo attivando l’account. Il nuovo utente non potrà collegarsi finché l’account non verrà attivato."
 
 #: setup.php:432

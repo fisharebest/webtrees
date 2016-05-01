@@ -5465,7 +5465,7 @@ msgstr "Toto uživatelské jméno již existuje. Prosím, vraťte se zpět a vyb
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
-msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed. webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required. To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 msgstr "Emailová adresa, která se použije v poli &laquo;From:&raquo; (Od) pro emaily, které webtrees automaticky vytváří.<br><br>webtrees automaticky vytváří emaily, aby upozornil správce o změnách, které potřebujou zrevidovat. Dalé posílá upozornění uživatelům, kteří zažádali o účet.<br><br>Obvykle pole &laquo;From:&raquo; (Od) vypadá podobně jako <i>From: webtrees-noreply@yoursite</i>, abyste zdůraznili, že není vyžadována žádná odpověď. Abyste se uchránili proti spamu nebo jinému zneužití emailu, některé emailové systémy vyžadují, aby pole &laquo;From:&raquo; odpovídalo platnému emailovému účtu a nepřijmou zprávy, které jsou zjevně z účtu <i>webtrees-noreply</i>."
 
 #: help_text.php:293
@@ -14144,7 +14144,7 @@ msgid "The user %s has been deleted."
 msgstr "Uživatel %s je vymazán."
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
+msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "Uživateli byl odeslán email s informacemi nutnými pro potvrzení žádosti o přístup."
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -16354,7 +16354,7 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "Neměli byste schvalovat účet, pokud nevíte, že je emailová adresa správná."
 
 #: login.php:325
-msgid "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
 msgstr "Budete informování emailem, pokud tento případný uživatel potvrdí žádost. Můžete pak dokončit proces aktivováním uživatelského jména. Nový uživatel se nebude schopen přihlásit, dokud neaktivujete jeho účet."
 
 #: setup.php:432

@@ -5432,7 +5432,7 @@ msgstr "Nom d’usuari duplicat. Ja n’hi ha un amb el mateix nom. Escolliu-ne 
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
-msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed. webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required. To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 msgstr "Adreça de correu electrònic que s’utilitzarà al camp &laquo;De:&raquo;. dels correus electrònics que webtrees crea automàticament<br><br>webtrees pot creta automàticament missatges de correu electrònic per notificar als administradors canvis que necessiten ser revisats. webtrees també envia correus electrònics de notificació als usuaris que han demanat un compte.<br><br>En general, el camp &laquo;De:&raquo; d’aquests missatges automàtics és quelcom semblant a això <i>De: webtrees-noreply@elvostrelloc</i> per a palesar que no es demana resposta. Per protegir-se contra el correu brossa i altres abusos de correu electrònic, alguns sistemes requereixen que el camp &laquo;De:&raquo; de cada missatge reflecteixi un compte de correu electrònic vàlid i no accepten els missatges que aparentment provenen del compte <i>webtrees-noreply</i>."
 
 #: help_text.php:293
@@ -14108,7 +14108,7 @@ msgid "The user %s has been deleted."
 msgstr "S'ha eliminat l'usuari %s."
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
+msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "S’ha enviat un correu electrònic a l’usuari ha amb la informació necessària per a confirmar la sol·licitud d’accés."
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -16312,7 +16312,7 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "No heu d’aprovar cap compte a menys que sapigueu que l’adreça de correu electrònic és correcta."
 
 #: login.php:325
-msgid "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
 msgstr "Us informarem per correu electrònic quan aquest usuari potencial hagi confirmat la sol·licitud. A continuació, podreu completar el procés mitjançant l’activació del nom d’usuari. El nou usuari no podrà iniciar cap sessió fins que activeu el compte."
 
 #: setup.php:432
