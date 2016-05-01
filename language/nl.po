@@ -5279,7 +5279,7 @@ msgstr "Maak geen nieuwe locaties aan, importeer alleen coördinaten voor bestaa
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
-msgid "Do not seal, previous sealing cancelled"
+msgid "Do not seal, previous sealing canceled"
 msgstr "Niet verzegelen, vorige verzegeling afgebroken"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -11733,7 +11733,7 @@ msgstr "Verzegeling"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
-msgid "Sealing cancelled (divorce)"
+msgid "Sealing canceled (divorce)"
 msgstr "Verzegeling afgezegd (echtscheiding)"
 
 #. I18N: button label

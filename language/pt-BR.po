@@ -5268,7 +5268,7 @@ msgstr "Não crie novos locais, apenas importe coordenadas de locais existentes.
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
-msgid "Do not seal, previous sealing cancelled"
+msgid "Do not seal, previous sealing canceled"
 msgstr "Não selar, selamento anterior cancelado"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -11713,7 +11713,7 @@ msgstr "Selamento"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
-msgid "Sealing cancelled (divorce)"
+msgid "Sealing canceled (divorce)"
 msgstr "Selamento cancelado (divórcio)"
 
 #. I18N: button label

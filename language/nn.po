@@ -5279,7 +5279,7 @@ msgstr "Ikkje opprett nye stadar, importer kun koordinatane for eksisterande sta
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
-msgid "Do not seal, previous sealing cancelled"
+msgid "Do not seal, previous sealing canceled"
 msgstr "Ikke besegl: forrige besegling er annullert (mormon)"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -11733,7 +11733,7 @@ msgstr "Besegling"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
-msgid "Sealing cancelled (divorce)"
+msgid "Sealing canceled (divorce)"
 msgstr "Besegling annullert (skilsmisse)"
 
 #. I18N: button label

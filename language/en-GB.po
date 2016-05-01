@@ -5281,7 +5281,7 @@ msgstr "Do not create new locations, just import co-ordinates for existing locat
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
-msgid "Do not seal, previous sealing cancelled"
+msgid "Do not seal, previous sealing canceled"
 msgstr "Do not seal, previous sealing cancelled"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -7412,11 +7412,11 @@ msgstr "In a family tree, each record has an internal reference number (called a
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanised version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled ‘Romanised’, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
+msgstr "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanised version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labelled ‘Romanised’, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanised version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled ‘Hebrew’, it is not restricted to containing only Hebrew characters."
+msgstr "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanised version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labelled ‘Hebrew’, it is not restricted to containing only Hebrew characters."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:716
@@ -11735,7 +11735,7 @@ msgstr "Sealing"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
-msgid "Sealing cancelled (divorce)"
+msgid "Sealing canceled (divorce)"
 msgstr "Sealing cancelled (divorce)"
 
 #. I18N: button label

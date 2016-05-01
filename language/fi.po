@@ -5275,7 +5275,7 @@ msgstr "Älä luo uusia sijainteja, tuo vain koordinaatit olemassa oleville sija
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
-msgid "Do not seal, previous sealing cancelled"
+msgid "Do not seal, previous sealing canceled"
 msgstr "(mormoni) Älä sinetöi: aiempi sinetöinti peruutettu"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -11729,7 +11729,7 @@ msgstr "Sinetöinti"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
-msgid "Sealing cancelled (divorce)"
+msgid "Sealing canceled (divorce)"
 msgstr "Sinetöinnin mitätöinti (avioero)"
 
 #. I18N: button label

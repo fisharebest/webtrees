@@ -5299,8 +5299,8 @@ msgstr "Nevytvárajte nové lokality, ale naimportujte koordináty existujúcich
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
-msgid "Do not seal, previous sealing cancelled"
-msgstr "Do not seal, previous sealing cancelled (LDS)"
+msgid "Do not seal, previous sealing canceled"
+msgstr "Do not seal, previous sealing canceled (LDS)"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:84
@@ -11746,7 +11746,7 @@ msgstr "LDS Sealing"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
-msgid "Sealing cancelled (divorce)"
+msgid "Sealing canceled (divorce)"
 msgstr "Manželstvo zrušené (rozvod)"
 
 #. I18N: button label

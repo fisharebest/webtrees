@@ -5238,7 +5238,7 @@ msgstr "Đừng tạo vị trí mới, chỉ nhập vào tọa độ cho các v�
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
-msgid "Do not seal, previous sealing cancelled"
+msgid "Do not seal, previous sealing canceled"
 msgstr "Đừng niêm seal, lần niêm trước đã hủy bỏ"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -11681,8 +11681,8 @@ msgstr "Ràng buộc"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
-msgid "Sealing cancelled (divorce)"
-msgstr "Sealing cancelled (divorce)"
+msgid "Sealing canceled (divorce)"
+msgstr "Sealing canceled (divorce)"
 
 #. I18N: button label
 #: app/Module/DescendancyModule.php:101 app/Module/DescendancyModule.php:134
