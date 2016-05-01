@@ -69,7 +69,7 @@ global $controller;
 			<td>
 				<table class="outer_nav">
 					<tr>
-						<th class="descriptionbox"><?php echo I18N::translate('Search for individuals to add to add Links list.'); ?></th>
+						<th class="descriptionbox"><?php echo I18N::translate('Find an individual'); ?></th>
 					</tr>
 					<tr>
 						<td id="srch" class="optionbox center">
