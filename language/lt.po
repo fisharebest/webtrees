@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-04-16 10:30+0100\n"
+"POT-Creation-Date: 2016-05-01 09:56+0100\n"
 "PO-Revision-Date: 2015-08-12 15:38+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Lithuanian <http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
@@ -568,7 +568,8 @@ msgstr "%s, jo sutuoktines ir vaikus"
 msgid "%s, his spouses and descendants"
 msgstr "%s, jo sutuoktines ir palikuonis"
 
-#: app/Functions/FunctionsPrint.php:624 app/Module/UserMessagesModule.php:102
+#: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:624
+#: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
 msgstr "&lt;pasirinkti&gt;"
 
@@ -726,7 +727,7 @@ msgstr "9-tą"
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
 msgstr "<b>GUID</b> šiame kontekste reiškia „Globaliai unikalus ID“.<br><br>GUID padeda atpažinti kiekvieną asmenį, kai centrinės organizacijos, tokios kaip „Family History Center“ ar kitos programos, galėtų nustatyti tą patį asmenį nepaisant GEDCOM bylų šaltinio. „Family History Center“ siekia būti centriniu geneologinės informacijos šaltiniu, kuris pasiekiamas per interneto paslaugas. Tokiu būdu bet kuri programa gali pasiekti ir atsinaujinti geneologinę informaciją.<br><br>Jei jūs neketinate dalintis GEDCOM bylomis, galite išjungti GUID sukurimą."
 
-#: admin_trees_manage.php:718
+#: admin_trees_manage.php:721
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr "<b>Svarbi pastaba:</b> Persiuntimo vediklis negali padėti perkelti medijos elementus. Jums reikės sukurti ir perkelti ar perkopijuoti savo medijos konfigūraciją ir elementus atskirai po persiuntimo vediklio pabaigos."
 
@@ -818,11 +819,11 @@ msgstr "Duomenų bazių serveryje galima laikyti daugelį atskirų duomenų bazi
 msgid "A fan chart of an individual’s ancestors."
 msgstr ""
 
-#: admin_trees_download.php:115 admin_trees_manage.php:222
+#: admin_trees_download.php:115 admin_trees_manage.php:225
 msgid "A file on the server"
 msgstr "Byla serveryje"
 
-#: admin_trees_download.php:200 admin_trees_manage.php:211
+#: admin_trees_download.php:200 admin_trees_manage.php:214
 msgid "A file on your computer"
 msgstr "Byla jūsų kompiuteryje"
 
@@ -1138,6 +1139,7 @@ msgstr "ALPHABET_lower=aąbcčdeęėfghiyįjklmnoprsštuųūvzž"
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 msgstr "ALPHABET_upper=AĄBCČDEĘĖFGHIYĮJKLMNOPRSŠTUŲŪVZŽ"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:77
 msgid "Aba, Nigeria"
 msgstr "Aba, Nigerija"
@@ -1182,6 +1184,7 @@ msgstr "Sutrumpinti vietovių pavadinimai"
 msgid "Abbreviation"
 msgstr "Santrumpa"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6718
 msgid "Acadia"
 msgstr "Akadijos"
@@ -1201,6 +1204,7 @@ msgstr "Prieigos lygis"
 msgid "Account approval and email verification"
 msgstr "Pritarimas paskyrai ir el. pašto patvirtinimas"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:79
 msgid "Accra, Ghana"
 msgstr "Akra, Gana"
@@ -1294,6 +1298,14 @@ msgstr "Pridėti"
 msgid "Add %s to the clippings cart"
 msgstr "Pridėti %s į iškarpų krepšelį"
 
+#: app/Module/RelativesTabModule.php:273
+msgid "Add a brother or sister"
+msgstr "Pridėti naują brolį ar seserį"
+
+#: edit_interface.php:516
+msgid "Add a child"
+msgstr "Pridėti naują vaiką"
+
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
 msgstr "Pridėti vaiką sukuriant vienišos motinos ar vienišo tėvo šeimą"
@@ -1305,27 +1317,6 @@ msgstr "Į šeimą pridėti vaiką"
 #: edit_interface.php:81
 msgid "Add a fact"
 msgstr "Pridėti faktą"
-
-#: app/Module/RelativesTabModule.php:154
-msgid "Add a husband to this family"
-msgstr "Į šią šeimą pridėti vyrą"
-
-#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
-#: edit_interface.php:1156
-msgid "Add a husband using an existing individual"
-msgstr "Įtraukti vyrą naudojant jau sukurtą asmenį"
-
-#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
-msgid "Add an associate"
-msgstr "Sukurti naują sąsają"
-
-#: app/Module/RelativesTabModule.php:273
-msgid "Add a brother or sister"
-msgstr "Pridėti naują brolį ar seserį"
-
-#: edit_interface.php:516
-msgid "Add a child"
-msgstr "Pridėti naują vaiką"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
@@ -1343,6 +1334,15 @@ msgstr "Pridėti naują geografinę vietovę"
 #: edit_interface.php:900
 msgid "Add a husband"
 msgstr "Pridėti naują vyrą"
+
+#: app/Module/RelativesTabModule.php:154
+msgid "Add a husband to this family"
+msgstr "Į šią šeimą pridėti vyrą"
+
+#: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
+#: edit_interface.php:1156
+msgid "Add a husband using an existing individual"
+msgstr "Įtraukti vyrą naudojant jau sukurtą asmenį"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
@@ -1362,6 +1362,10 @@ msgstr "Pridėti naują motiną"
 msgid "Add a name"
 msgstr "Įtraukti naują vardą"
 
+#: app/Module/FamilyTreeNewsModule.php:148
+msgid "Add a news article"
+msgstr "Pridėti naujieną"
+
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1110
 #: app/Module/NotesTabModule.php:100
 msgid "Add a note"
@@ -1370,6 +1374,15 @@ msgstr "Pridėti naują pastabą"
 #: app/Functions/FunctionsEdit.php:1141
 msgid "Add a restriction"
 msgstr "Pridėti naują apribojimą"
+
+#. I18N: label for a yes/no option
+#: app/Module/FamilyTreeFavoritesModule.php:286
+#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
+#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
+#: app/Module/UpcomingAnniversariesModule.php:181
+#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
+msgid "Add a scrollbar when block contents grow"
+msgstr "Pridėti slinktis kai bloko turinys perauga bloko matmenis"
 
 #: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1120
 #: app/Module/NotesTabModule.php:110
@@ -1389,6 +1402,11 @@ msgstr "Pridėti naują šaltinio nuorodą"
 msgid "Add a spouse"
 msgstr "Pridėti naują sutuoktinį"
 
+#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
+#: app/Module/StoriesModule.php:367
+msgid "Add a story"
+msgstr "Įtraukti istoriją"
+
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
@@ -1398,24 +1416,6 @@ msgstr "Pridėti naują naudotoją"
 #: edit_interface.php:897
 msgid "Add a wife"
 msgstr "Pridėti naują žmoną"
-
-#: app/Module/FamilyTreeNewsModule.php:148
-msgid "Add a news article"
-msgstr "Pridėti naujieną"
-
-#. I18N: label for a yes/no option
-#: app/Module/FamilyTreeFavoritesModule.php:286
-#: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
-#: app/Module/UpcomingAnniversariesModule.php:181
-#: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
-msgid "Add a scrollbar when block contents grow"
-msgstr "Pridėti slinktis kai bloko turinys perauga bloko matmenis"
-
-#: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
-#: app/Module/StoriesModule.php:367
-msgid "Add a story"
-msgstr "Įtraukti istoriją"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1430,6 +1430,10 @@ msgstr "Įtraukti žmoną naudojant jau sukurtą asmenį"
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
 msgstr "Įtraukti įrašą į DUK"
+
+#: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
+msgid "Add an associate"
+msgstr "Sukurti naują sąsają"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -1468,7 +1472,7 @@ msgstr "Įkelti daugiau laukų"
 msgid "Add narrative stories to individuals in the family tree."
 msgstr "Pridėti pasakojimus apie asmenį šeimos medyje."
 
-#: admin_trees_manage.php:279
+#: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
 msgstr "Pridėti tarpus kur ilgos eilės buvo perkeltos"
 
@@ -1497,7 +1501,7 @@ msgstr "Pridėti prie mėgstamiausių"
 msgid "Add to the clippings cart"
 msgstr "Įdėti į iškarpų krepšelį"
 
-#: admin_trees_manage.php:527
+#: admin_trees_manage.php:530
 msgid "Add unlinked records"
 msgstr "Įtraukti nesusijusį įrašą"
 
@@ -1532,6 +1536,7 @@ msgstr "Pirma adreso eilutė"
 msgid "Address line 2"
 msgstr "Antra adreso eilutė"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
 msgid "Adelaide, Australia"
 msgstr "Adelaidė, Australija"
@@ -1714,6 +1719,7 @@ msgstr "Išplėstinis vietovių pavadinimas"
 msgid "Advanced search"
 msgstr "Išplėstinė paieška"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6719
 msgid "Afghanistan"
 msgstr "Afganistanas"
@@ -1722,7 +1728,7 @@ msgstr "Afganistanas"
 msgid "Africa"
 msgstr "Afrika"
 
-#: admin_trees_manage.php:678
+#: admin_trees_manage.php:681
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr "Po šeimos medžio sukurimo, jūs galėsite įvežti duomenis iš GEDCOM bylos."
 
@@ -1795,10 +1801,12 @@ msgstr "Amžius susijęs su mirties metais"
 msgid "Agency"
 msgstr "Agentūra"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6722
 msgid "Aland Islands"
 msgstr "Aland salos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6723
 msgid "Albania"
 msgstr "Albanija"
@@ -1808,10 +1816,12 @@ msgstr "Albanija"
 msgid "Album"
 msgstr "Albumas"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Albuquerque, New Mexico, United States"
 msgstr "Albuquerque, Naujoji Meksika"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6786
 msgid "Algeria"
 msgstr "Alžyras"
@@ -1846,11 +1856,11 @@ msgstr "Gyvi"
 msgid "All"
 msgstr "Visi"
 
-#: admin_trees_manage.php:711
+#: admin_trees_manage.php:714
 msgid "All changes in PhpGedView must be accepted"
 msgstr "Visi PhpGedView pakeitimai turi būti patvirtinti"
 
-#: admin_trees_manage.php:714
+#: admin_trees_manage.php:717
 msgid "All existing PhpGedView users must have distinct email addresses"
 msgstr "Visi esami PhpGedView vartotojai turi turėti skirtingus elektroninio pašto adresus"
 
@@ -1900,12 +1910,12 @@ msgstr "Leidžia kitiems moduliams keisti tekstą naudojant „WYSIWYG“ editor
 msgid "Allow users to see raw GEDCOM records"
 msgstr "Leisti lankytojams matyti pradinius GEDCOM įrašus"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:259
 msgid "Allow users to select their own theme"
 msgstr "Leisti nariams pasirinkti puslapiui savo temą"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:485
 msgid "Allow visitors to request a new user account"
 msgstr "Leisti lankytojams prašyti naujos naudotojo sąskaitos"
@@ -1927,6 +1937,7 @@ msgctxt "MALE"
 msgid "Also known as"
 msgstr "Dar žinomas kaip"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6729
 msgid "American Samoa"
 msgstr "Amerikos Samoa"
@@ -2022,18 +2033,22 @@ msgstr "%s protėviai"
 msgid "Ancestral file number"
 msgstr "Protėvių failo numeris"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:87
 msgid "Anchorage, Alaska, United States"
 msgstr "Anchorage, Aliaska"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6724
 msgid "Andorra"
 msgstr "Andora"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6720
 msgid "Angola"
 msgstr "Angola"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6721
 msgid "Anguilla"
 msgstr "Angilija"
@@ -2058,15 +2073,18 @@ msgstr "Nutraukimas"
 msgid "Answer"
 msgstr "Atsakymas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6730
 msgid "Antarctica"
 msgstr "Antartida"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6732
 msgid "Antigua and Barbuda"
 msgstr "Antigva ir Barbuda"
 
-#: app/GedcomCode/GedcomCodeTemp.php:281
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Apia, Samoa"
 msgstr "Apia, Samoa"
 
@@ -2152,7 +2170,7 @@ msgid "Are you sure you want to delete this message? It cannot be retrieved late
 msgstr "Ar jūs tikrai norite ištrinti šią žinutę? Atstatymas negalimas."
 
 #: admin_media.php:318 admin_media.php:529 admin_site_access.php:193
-#: admin_trees_manage.php:414 admin_trees_manage.php:425 admin_users.php:211
+#: admin_trees_manage.php:417 admin_trees_manage.php:428 admin_users.php:211
 #: app/Controller/GedcomRecordController.php:117
 #: app/Controller/IndividualController.php:304
 #: app/Controller/MediaController.php:68 app/Controller/NoteController.php:45
@@ -2181,6 +2199,7 @@ msgstr "Ar tikrai norite pašalinti šį elementą iš mėgstamiausių sąrašo?
 msgid "Are you sure you want to undo all the changes to this family tree?"
 msgstr "Ar tikrai norite atmesti visus pakeitumus šiame šeimos medyje?"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6727
 msgid "Argentina"
 msgstr "Argentina"
@@ -2203,10 +2222,12 @@ msgctxt "font name"
 msgid "Arial"
 msgstr "Arial"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6728
 msgid "Armenia"
 msgstr "Armėnija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6717
 msgid "Aruba"
 msgstr "Aruba"
@@ -2238,14 +2259,17 @@ msgstr "Su šiuo šaltiniu susiję renginiai"
 msgid "Associates"
 msgstr "Kompanionai"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:91
 msgid "Asuncion, Paraguay"
 msgstr "Asunsjonas, Paragvajus"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6920
 msgid "At sea"
 msgstr "Jūroje"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
 msgid "Atlanta, Georgia, United States"
 msgstr "Atlanta, Džordžija"
@@ -2278,6 +2302,7 @@ msgctxt "MALE"
 msgid "Attending"
 msgstr "Dalyvaujantis"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1908
 msgid "Audio"
 msgstr "Garsas"
@@ -2307,10 +2332,12 @@ msgctxt "NOMINATIVE"
 msgid "August"
 msgstr "Rugpjūčio"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6733
 msgid "Australia"
 msgstr "Australija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6734
 msgid "Austria"
 msgstr "Austrija"
@@ -2403,7 +2430,7 @@ msgid "Average number of children per family"
 msgstr "Vidutinis vaikų skaičius šeimoje"
 
 #. I18N: help text for family tree / GEDCOM file names
-#: admin_trees_config.php:631 admin_trees_manage.php:667
+#: admin_trees_config.php:631 admin_trees_manage.php:670
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
 msgstr "Vengti tarpų ir skyrybos ženklų. Pavardė gali būti geras pasirinkimas."
 
@@ -2436,10 +2463,12 @@ msgctxt "NOMINATIVE"
 msgid "Azar"
 msgstr "Azar"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6735
 msgid "Azerbaijan"
 msgstr "Azerbaidžanas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6736
 msgid "Azores"
 msgstr "Azorai"
@@ -2449,6 +2478,7 @@ msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
 msgstr "Bah"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6744
 msgid "Bahamas"
 msgstr "Bahamos"
@@ -2477,10 +2507,12 @@ msgctxt "NOMINATIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6743
 msgid "Bahrain"
 msgstr "Bahreinas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6741
 msgid "Bangladesh"
 msgstr "Bangladešas"
@@ -2563,6 +2595,7 @@ msgstr "Sūnaus krikštas"
 msgid "Bar mitzvah"
 msgstr "Bar mitzvah"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6751
 msgid "Barbados"
 msgstr "Barbadosas"
@@ -2582,6 +2615,7 @@ msgstr "Bat mitzvah"
 msgid "Batch update"
 msgstr "Grupinis atnaujinimas"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:113
 msgid "Baton Rouge, Louisiana, United States"
 msgstr "Baton Rouge, Liuiziana"
@@ -2596,6 +2630,7 @@ msgstr "Azimutas"
 msgid "Begins with"
 msgstr "Prasideda su"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6746
 msgid "Belarus"
 msgstr "Baltarusija"
@@ -2605,23 +2640,28 @@ msgstr "Baltarusija"
 msgid "Belgian Chocolate"
 msgstr "Ruda"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6738
 msgid "Belgium"
 msgstr "Belgija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6747
 msgid "Belize"
 msgstr "Belizas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6739
 msgid "Benin"
 msgstr "Beninas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6748
 msgid "Bermuda"
 msgstr "Bermudai"
 
-#: app/GedcomCode/GedcomCodeTemp.php:315
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:311
 msgid "Bern, Switzerland"
 msgstr "Bern, Šveicarija"
 
@@ -2629,6 +2669,7 @@ msgstr "Bern, Šveicarija"
 msgid "Best man"
 msgstr "Pabrolys"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6753
 msgid "Bhutan"
 msgstr "Butanas"
@@ -2638,6 +2679,7 @@ msgstr "Butanas"
 msgid "Bibliography"
 msgstr "Bibliografija"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:97
 msgid "Billings, Montana, United States"
 msgstr "Billings, Montana, United States"
@@ -2651,6 +2693,7 @@ msgstr "Dvejetainis duomenų objektas"
 msgid "Bing Maps™"
 msgstr "Bing Maps™"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Birmingham, Alabama, United States"
 msgstr "Birmingham, Alabama, United States"
@@ -2891,6 +2934,7 @@ msgstr "Gimimai"
 msgid "Births by century"
 msgstr "Gimusių per šimtmetį"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:101
 msgid "Bismarck, North Dakota, United States"
 msgstr "Bismarck, Šiaurės Dakota"
@@ -2924,18 +2968,22 @@ msgstr "Mėlyna kaip jūra"
 msgid "Body"
 msgstr "Tekstas"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:103
 msgid "Bogota, Colombia"
 msgstr "Bogota, Kolumbija"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:105
 msgid "Boise, Idaho, United States"
 msgstr "Boise, Idaho, United States"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6749
 msgid "Bolivia"
 msgstr "Bolivija"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1910
 msgid "Book"
 msgstr "Knyga"
@@ -2949,10 +2997,12 @@ msgstr "Skrajutė"
 msgid "Born in the covenant"
 msgstr "Gimė sandoroje"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6745
 msgid "Bosnia and Herzegovina"
 msgstr "Bosnija ir Hercegovina"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:107
 msgid "Boston, Massachusetts, United States"
 msgstr "Boston, Masačiusetas"
@@ -2965,14 +3015,17 @@ msgstr "Abu gyvi"
 msgid "Both dead"
 msgstr "Abu mirę"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6755
 msgid "Botswana"
 msgstr "Botsvana"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:109
 msgid "Bountiful, Utah, United States"
 msgstr "Bountiful, Juta"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6754
 msgid "Bouvet Island"
 msgstr "Bouvet sala"
@@ -2988,6 +3041,7 @@ msgstr "Atšakos"
 msgid "Branches of the %s family"
 msgstr "%s šeimos atšakos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6750
 msgid "Brazil"
 msgstr "Brazilija"
@@ -2996,6 +3050,7 @@ msgstr "Brazilija"
 msgid "Bridesmaid"
 msgstr "Pamergė"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
 msgid "Brisbane, Australia"
 msgstr "Brisbenas, Australija"
@@ -3031,14 +3086,17 @@ msgstr "Įbrolio apipjaustymas"
 msgid "Brit milah of a son"
 msgstr "Sūnaus apipjaustymas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6830
 msgid "British Indian Ocean Territory"
 msgstr "Indijos vandenyno britų sritis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6969
 msgid "British Virgin Islands"
 msgstr "Didžiosios Britanijos Mergelių salos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6756
 msgid "British West Indies"
 msgstr "Britų Vakarų Indija"
@@ -3072,14 +3130,17 @@ msgctxt "NOMINATIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6752
 msgid "Brunei Darussalam"
 msgstr "Brunėjaus Darusalamas"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:95
 msgid "Buenos Aires, Argentina"
 msgstr "Buenos Airės, Argentina"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6742
 msgid "Bulgaria"
 msgstr "Bulgarija"
@@ -3224,10 +3285,12 @@ msgstr "Žmonos laidotuvės"
 msgid "Burial place contains"
 msgstr "Laidojimo vieta turi"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6740
 msgid "Burkina Faso"
 msgstr "Burkina Faso"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6737
 msgid "Burundi"
 msgstr "Burundis"
@@ -3274,7 +3337,7 @@ msgstr "Pagal nutylėjimą jūsų serveris leidžia skriptams naudoti %s atminti
 msgid "CKEditor™"
 msgstr "CKEditor™"
 
-#: admin_trees_manage.php:364
+#: admin_trees_manage.php:367
 msgid "Calculating…"
 msgstr "Apskaičiuojama…"
 
@@ -3294,18 +3357,22 @@ msgstr "Kalendoriaus perskaičiavimas"
 msgid "Call number"
 msgstr "Telefono numeris"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6843
 msgid "Cambodia"
 msgstr "Kambodža"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6767
 msgid "Cameroon"
 msgstr "Kamerūnas"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:115
 msgid "Campinas, Brazil"
 msgstr "Campinas, Brazilija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6758
 msgid "Canada"
 msgstr "Kanada"
@@ -3314,26 +3381,27 @@ msgstr "Kanada"
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: app/Module/ClippingsCart/ClippingsCartController.php:320
-msgid "Cannot create"
-msgstr "Negalima sukurti"
-
+#. I18N: Name of country or state
 #: app/Stats.php:6759
 msgid "Cape Colony"
 msgstr "Kolonijos Kyšulys"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6773
 msgid "Cape Verde"
 msgstr "Žaliasis Kyšulys"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
 msgid "Caracas, Venezuela"
 msgstr "Karakasas, Venesuela"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1912
 msgid "Card"
 msgstr "Korta"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:83
 msgid "Cardston, Alberta, Canada"
 msgstr "Cardston, Alberta, Kanada"
@@ -3347,6 +3415,7 @@ msgstr "Nepaisyti raidžių dydžio"
 msgid "Caste"
 msgstr "Kasta"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6760
 msgid "Catalonia"
 msgstr "Katalonija"
@@ -3364,7 +3433,7 @@ msgstr "Priežastis"
 msgid "Cause of death"
 msgstr "Mirties priežastis"
 
-#: admin_trees_manage.php:754 admin_trees_renumber.php:286
+#: admin_trees_manage.php:757 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
 msgstr "Atsargiai! Tai gali užtrukti gana ilgai. Būkite kantrūs."
 
@@ -3376,6 +3445,7 @@ msgstr "Atsargiai: seni moduliai gali neveikti, arba jie gali sustabdyti webtree
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
 msgstr "Atsargiai: senos temos gali neveikti, arba jie gali sustabdyti webtrees veikla."
 
+#. I18N: Name of country or state
 #: app/Stats.php:6778
 msgid "Cayman Islands"
 msgstr "Kaimanų salos"
@@ -3418,14 +3488,17 @@ msgstr "Surašymo nuorašas"
 msgid "Center map here"
 msgstr "Centruoti žemėlapį čia"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6757
 msgid "Central African Republic"
 msgstr "Centrinės Afrikos Respublika"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1914
 msgid "Certificate"
 msgstr "Sertifikatas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6945
 msgid "Chad"
 msgstr "Čadas"
@@ -3446,15 +3519,11 @@ msgstr "Keisti šeimos narius"
 msgid "Change flag"
 msgstr "Pakeisti vėliavą"
 
-#: setup.php:108
-msgid "Change language"
-msgstr "Pakeisti kalbą"
-
 #: admin_users.php:217
 msgid "Change the blocks on this user’s “My page”"
 msgstr "Pakeisti šio vartotojo „Mano puslapis“ blokus"
 
-#: admin_trees_manage.php:405 index_edit.php:50
+#: admin_trees_manage.php:408 index_edit.php:50
 msgid "Change the “Home page” blocks"
 msgstr "Pakeisti „Pirminis puslapis“ blokus"
 
@@ -3490,10 +3559,11 @@ msgstr[0] "Pastarosios %s dienos pakeitimai"
 msgstr[1] "Pastarūjų %s dienų pakeitimai"
 msgstr[2] "Pastarūjų %s dienų pakeitimai"
 
-#: admin_trees_manage.php:516
+#: admin_trees_manage.php:519
 msgid "Changes log"
 msgstr "Pakeitimų sąrašas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6763
 msgid "Channel Islands"
 msgstr "Normandijos salos"
@@ -3523,6 +3593,7 @@ msgstr "Diagramos tipas"
 msgid "Charts"
 msgstr "Diagramos"
 
+#. I18N: The system is about to…
 #: admin_site_upgrade.php:389
 msgid "Check file permissions…"
 msgstr "Tikrinami bylos leidimai…"
@@ -3537,7 +3608,7 @@ msgstr "Ieškoma nestandartinių modulių…"
 msgid "Check for custom themes…"
 msgstr "Ieškoma nestandartinių temų…"
 
-#: admin_trees_check.php:33 admin_trees_manage.php:496
+#: admin_trees_check.php:33 admin_trees_manage.php:499
 msgid "Check for errors"
 msgstr "Klaidų tikrinimas"
 
@@ -3562,6 +3633,7 @@ msgstr "Tikrinama serverio talpa"
 msgid "Checking server configuration"
 msgstr "Tikrinami serverio nustatymai"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:119
 msgid "Chicago, Illinois, United States"
 msgstr "Čikaga, Ilinojus"
@@ -3627,10 +3699,12 @@ msgstr "Vaikai gauna tėvo pavardę."
 msgid "Children take their mother’s surname."
 msgstr "Vaikai gauna motinos pavardę."
 
+#. I18N: Name of country or state
 #: app/Stats.php:6764
 msgid "Chile"
 msgstr "Čilė"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6765
 msgid "China"
 msgstr "Kinija"
@@ -3653,7 +3727,7 @@ msgstr "Pasirinkite miniatiūrą, kurią norite įkelti. Nors miniatiūros gali 
 msgid "Choose user defined welcome text typed below"
 msgstr "Pasirinkite vartotojo apibrėžtą pasisveikinimo tekstą įvestą žemiau"
 
-#: addmedia.php:522 admin_media_upload.php:240
+#: addmedia.php:522
 msgid "Choose: "
 msgstr "Pasirinkite: "
 
@@ -3733,6 +3807,7 @@ msgstr "Sesers krikštynos"
 msgid "Christening of a son"
 msgstr "Sūnaus krikštynos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6777
 msgid "Christmas Island"
 msgstr "Kalėdų sala"
@@ -3760,6 +3835,7 @@ msgstr "Pilietybė"
 msgid "City"
 msgstr "Miestas"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:121
 msgid "Ciudad Juarez, Mexico"
 msgstr "Ciudad Juarez, Meksika"
@@ -3803,7 +3879,7 @@ msgstr "Paspauskite %s, kad pasirinkti asmenį kaip šeimos galvą."
 msgid "Click a row, then drag-and-drop to re-order media"
 msgstr "Paspauskite eilutę, tuomet nutempkite perrikiuotą mediją"
 
-#: admin_trees_manage.php:722
+#: admin_trees_manage.php:725
 msgid "Click here for PhpGedView to webtrees transfer wizard"
 msgstr "Spauskite čia kad patekti PhpGedView vertimo į webtrees vedlį"
 
@@ -3832,14 +3908,17 @@ msgstr "Paspauskite, kad pasirinkti asmenį kaip šeimos galvą."
 msgid "Clippings cart"
 msgstr "Iškarpų krepšelis"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1916
 msgid "Coat of arms"
 msgstr "Herbas"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
 msgid "Cochabamba, Bolivia"
 msgstr "Cochabamba, Bolivija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6761
 msgid "Cocos (Keeling) Islands"
 msgstr "Kokosų (Kilingo) salos"
@@ -3854,22 +3933,27 @@ msgstr "Kava ir grietinėlė"
 msgid "Cold Day"
 msgstr "Šalta diena"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6771
 msgid "Colombia"
 msgstr "Kolumbija"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:125
 msgid "Colonia Juarez, Mexico"
 msgstr "Colonia Juarez, Meksika"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:133
 msgid "Columbia River, Washington, United States"
 msgstr "Columbia River, Vašingtonas"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:127
 msgid "Columbia, South Carolina, United States"
 msgstr "Columbia, Pietų Karolina"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
 msgid "Columbus, Ohio, United States"
 msgstr "Columbus, Ohajo"
@@ -3897,6 +3981,7 @@ msgstr "Bendrosios teisės vedybos"
 msgid "Communicate directly with other users, using private messages."
 msgstr "Bendrauti tiesiogiai su kitais vartotojais, naudojant privačių žinučių sistemą."
 
+#. I18N: Name of country or state
 #: app/Stats.php:6772
 msgid "Comoros"
 msgstr "Komorai"
@@ -3954,10 +4039,12 @@ msgstr "Patvirtinkite slaptažodį"
 msgid "Confirmation"
 msgstr "Patvirtinimas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6769
 msgid "Congo (Brazzaville)"
 msgstr "Kongas (Brazavilis)"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6768
 msgid "Congo (Kinshasa)"
 msgstr "Kongas (Kinšasa)"
@@ -4001,8 +4088,8 @@ msgstr "Pratęsta"
 #: admin_site_info.php:40 admin_site_logs.php:236 admin_site_merge.php:182
 #: admin_site_readme.php:37 admin_trees_check.php:124
 #: admin_trees_config.php:348 admin_trees_download.php:102
-#: admin_trees_duplicates.php:149 admin_trees_manage.php:180
-#: admin_trees_manage.php:334 admin_trees_merge.php:39
+#: admin_trees_duplicates.php:149 admin_trees_manage.php:183
+#: admin_trees_manage.php:337 admin_trees_merge.php:39
 #: admin_trees_places.php:89 admin_users.php:298 admin_users.php:690
 #: admin_users.php:856 admin_users_bulk.php:32
 #: app/Module/BatchUpdateModule.php:191
@@ -4021,6 +4108,7 @@ msgstr "Valdymo skydas"
 msgid "Convert from UTF-8 to ISO-8859-1"
 msgstr "Konvertuoti iš UTF-8 į ISO-8859-1"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6770
 msgid "Cook Islands"
 msgstr "Kuko salos"
@@ -4029,6 +4117,7 @@ msgstr "Kuko salos"
 msgid "Cookies"
 msgstr ""
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:131
 msgid "Copenhagen, Denmark"
 msgstr "Kopenhaga, Danija"
@@ -4071,10 +4160,12 @@ msgstr "Korporacija"
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
 msgstr "Taisyti VARDO įrašus formos „Vardenis/PAVARDENIS/“ arba „Vardenis /Pavardenis“, kaip buvo naudojama senesnėse genealoginėse programose."
 
+#. I18N: Name of country or state
 #: app/Stats.php:6774
 msgid "Costa Rica"
 msgstr "Kosta Rika"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6766
 msgid "Cote d’Ivoire"
 msgstr "Dramblio Kaulo Krantas"
@@ -4114,13 +4205,9 @@ msgstr "Apskritis"
 msgid "Create"
 msgstr "Sukurti"
 
-#: admin_trees_manage.php:621
+#: admin_trees_manage.php:624
 msgid "Create a family tree"
 msgstr "Sukurti naują šeimos medį"
-
-#: edit_interface.php:750
-msgid "Create an individual"
-msgstr "Sukurti naują asmenį"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
@@ -4151,11 +4238,15 @@ msgstr "Sukurti naują šaltinį"
 msgid "Create a website access rule"
 msgstr "Sukurti svetainės prieigos taisyklę"
 
+#: edit_interface.php:750
+msgid "Create an individual"
+msgstr "Sukurti naują asmenį"
+
 #: statistics.php:432
 msgid "Create your own chart"
 msgstr "Sukurk savo diagramą"
 
-#: admin_trees_manage.php:744
+#: admin_trees_manage.php:747
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr "Sukurti, atnaujinti ir ištrinti šeimos medžius kiekvienai GEDCOM bylai data aplankoje."
 
@@ -4289,10 +4380,12 @@ msgstr "Sutuoktinio kremacija"
 msgid "Cremation of a wife"
 msgstr "Žmonos kremacija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6824
 msgid "Croatia"
 msgstr "Kroatija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6776
 msgid "Cuba"
 msgstr "Kuba"
@@ -4325,7 +4418,7 @@ msgstr "Pasirinktinės žymės"
 msgid "Custom theme"
 msgstr "Pasirinktinė tema"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:472
 msgid "Custom welcome text"
 msgstr "Nustatytomas pasisveikinimo tekstas"
@@ -4334,14 +4427,17 @@ msgstr "Nustatytomas pasisveikinimo tekstas"
 msgid "Customize this page"
 msgstr "Tinkinti šį puslapį"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6779
 msgid "Cyprus"
 msgstr "Kipras"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6780
 msgid "Czech Republic"
 msgstr "Čekija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6775
 msgid "Czechoslovakia"
 msgstr "Čekoslovakija"
@@ -4356,6 +4452,7 @@ msgstr "DNR žymekliai"
 msgid "Daitch-Mokotoff"
 msgstr "Daitch-Mokotoff"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:135
 msgid "Dallas, Texas, United States"
 msgstr "Dallas, Texas, United States"
@@ -4370,7 +4467,7 @@ msgstr "Prietaisų skydas"
 msgid "Data"
 msgstr "Duomenys"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:174
 msgid "Data folder"
 msgstr "Duomenų aplankas"
@@ -4411,18 +4508,22 @@ msgstr "Data"
 msgid "Date differences"
 msgstr "Datų skirtumai"
 
+#. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:176
 msgid "Date of LDS baptism"
 msgstr "Mormonų krikšto data"
 
+#. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:774
 msgid "Date of LDS child sealing"
 msgstr "Mormonų vaikų sandaros data"
 
+#. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:414
 msgid "Date of LDS endowment"
 msgstr "Mormonų šventyklos apdovanojimo data"
 
+#. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:466
 msgid "Date of LDS spouse sealing"
 msgstr "Mormonų sutuoktinių sandaros data"
@@ -4914,7 +5015,7 @@ msgctxt "NOMINATIVE"
 msgid "December"
 msgstr "Gruodžio"
 
-#. I18N: a day in the French republican calendar
+#. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php:206
 msgid "Decidi"
 msgstr "Decidi"
@@ -4927,7 +5028,7 @@ msgstr "Numatytas"
 msgid "Default chart"
 msgstr "Įprasta diagrama"
 
-#: admin_trees_manage.php:435
+#: admin_trees_manage.php:438
 msgid "Default family tree"
 msgstr "Įprastas šeimos medis"
 
@@ -4951,7 +5052,6 @@ msgstr "Numatytasis kilmės diagramos išdėstymas"
 msgid "Default pedigree generations"
 msgstr "Numatytasis kilmės kartų skaičius"
 
-#. I18N: A site configuration setting
 #. I18N: A configuration setting
 #: admin_site_config.php:243 admin_trees_config.php:989
 msgid "Default theme"
@@ -4982,7 +5082,7 @@ msgstr "DejaVu"
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
 #: admin_site_change.php:373 admin_site_logs.php:314 admin_trees_config.php:576
-#: admin_trees_manage.php:415 admin_trees_manage.php:426 admin_users.php:211
+#: admin_trees_manage.php:418 admin_trees_manage.php:429 admin_users.php:211
 #: app/Controller/FamilyController.php:94
 #: app/Controller/GedcomRecordController.php:116
 #: app/Controller/IndividualController.php:303
@@ -5039,10 +5139,12 @@ msgstr "Ištrinti savo sąskaitą"
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
 msgstr "Ištrinant šeimą bus nutraukti visi asmeniniai tarpusavio ryšių įrašai, bet asmeniniai įrašai išliks. Ar Jūs tikrai norite ištrinti įrašus apie šią šeimą?"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6784
 msgid "Denmark"
 msgstr "Danija"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:137
 msgid "Denver, Colorado, United States"
 msgstr "Denver, Kolorado"
@@ -5126,6 +5228,7 @@ msgstr "Išsamiau"
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr "Naujo vartotojo detalės bus išsiustos asmeniui atsakingam genelogijos klausimais šitame kilmės medyje."
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Detroit, Michigan, United States"
 msgstr "Detroit, Mičiganas"
@@ -5284,6 +5387,7 @@ msgstr "Skyrybų įforminimas"
 msgid "Divorces by century"
 msgstr "Iš viso skyrybų per šimtmetį"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6782
 msgid "Djibouti"
 msgstr "Džibutis"
@@ -5306,14 +5410,17 @@ msgstr "Nėra sandaros, ankstesnė sandara atšaukta"
 msgid "Do not seal: unauthorized"
 msgstr "Nėra sandaros: neįgaliotas"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1918
 msgid "Document"
 msgstr "Dokumentas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6783
 msgid "Dominica"
 msgstr "Dominika"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6785
 msgid "Dominican Republic"
 msgstr "Dominikos Respublika"
@@ -5340,7 +5447,7 @@ msgstr "Parsisiųsti bylą"
 msgid "Download geographic data"
 msgstr "Parsisiųsti geografinius duomenis"
 
-#. I18N: a day in the French republican calendar
+#. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:198
 msgid "Duodi"
 msgstr "Duodi"
@@ -5394,6 +5501,7 @@ msgstr "Ankščiausios skyrybos"
 msgid "Earliest marriage"
 msgstr "Ankščiausios vedybos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6787
 msgid "Ecuador"
 msgstr "Ekvadoras"
@@ -5511,6 +5619,7 @@ msgstr "Redaguoti vartotoją"
 msgid "Editor"
 msgstr "Redaktorius"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:141
 msgid "Edmonton, Alberta, Canada"
 msgstr "Edmonton, Alberta, Kanada"
@@ -5520,18 +5629,22 @@ msgstr "Edmonton, Alberta, Kanada"
 msgid "Education"
 msgstr "Išsimokslinimas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6788
 msgid "Egypt"
 msgstr "Egiptas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6789
 msgid "Eire"
 msgstr "Airija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6930
 msgid "El Salvador"
 msgstr "Salvadoras"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1920
 msgid "Electronic"
 msgstr "Elektroninis formatas"
@@ -5646,8 +5759,8 @@ msgstr "Pabaigos metai"
 msgid "Ending range of change dates"
 msgstr "Užbaigiama sritis nuo datų pakeitimo"
 
-#. I18N: http://en.wikipedia.org/wiki/Endowment_house
-#: app/GedcomCode/GedcomCodeTemp.php:145
+#. I18N: Location of an LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
+#: app/GedcomCode/GedcomCodeTemp.php:143
 msgid "Endowment House"
 msgstr "Endowment House"
 
@@ -5656,6 +5769,7 @@ msgstr "Endowment House"
 msgid "Engagement"
 msgstr "Sužadėtuvės"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6790
 msgid "England"
 msgstr "Anglija"
@@ -5681,10 +5795,12 @@ msgstr "Įveskite raporto reikšmes"
 msgid "Entire record"
 msgstr "Visą įrašą"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6813
 msgid "Equatorial Guinea"
 msgstr "Pusiaujo Gvinėja"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6791
 msgid "Eritrea"
 msgstr "Eritrėja"
@@ -5728,10 +5844,12 @@ msgstr "Esfand"
 msgid "Estimated dates for birth and death"
 msgstr "Apytikrės gimimo ir mirties datos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6794
 msgid "Estonia"
 msgstr "Estija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6795
 msgid "Ethiopia"
 msgstr "Etiopija"
@@ -5795,7 +5913,7 @@ msgstr "Nepatenka į šį pateikimą"
 msgid "Explain why you are requesting an account."
 msgstr "Paaiškinkite, kodėl Jūs prašote prieigos sąskaitos."
 
-#: admin_site_change.php:369 admin_site_logs.php:310 admin_trees_manage.php:591
+#: admin_site_change.php:369 admin_site_logs.php:310 admin_trees_manage.php:594
 msgid "Export"
 msgstr "Eksportuoti"
 
@@ -5957,6 +6075,7 @@ msgstr "Faktai saugyklos įrašams"
 msgid "Facts for source records"
 msgstr "Faktai šaltinių įrašams"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6799
 msgid "Falkland Islands"
 msgstr "Folklendo salos"
@@ -6056,7 +6175,7 @@ msgid "Family of %s"
 msgstr "%s šeima"
 
 #: admin.php:752 admin_site_change.php:357 admin_site_change.php:391
-#: admin_site_logs.php:298 admin_site_logs.php:332 admin_trees_manage.php:377
+#: admin_site_logs.php:298 admin_site_logs.php:332 admin_trees_manage.php:380
 #: admin_users.php:576 app/Module/BatchUpdateModule.php:204
 #: app/Module/FrequentlyAskedQuestionsModule.php:452
 #: app/Module/GoogleMapsModule.php:1574 app/Module/HtmlBlockModule.php:299
@@ -6073,7 +6192,7 @@ msgstr "Šeimos medžio prieiga ir nustatymai"
 msgid "Family tree clippings cart"
 msgstr "Šeimos medžio iškarpų krepšelis"
 
-#: admin_trees_config.php:594 admin_trees_manage.php:632
+#: admin_trees_config.php:594 admin_trees_manage.php:635
 msgid "Family tree title"
 msgstr "Šeimos medžio pavadinimas"
 
@@ -6149,6 +6268,7 @@ msgctxt "Abbreviation for Persian month: Farvardin"
 msgid "Far"
 msgstr "Far"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6801
 msgid "Faroe Islands"
 msgstr "Farerų salos"
@@ -6262,6 +6382,7 @@ msgstr "Moteris"
 msgid "Females"
 msgstr "Moterys"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6797
 msgid "Fiji"
 msgstr "Fidžis"
@@ -6356,7 +6477,7 @@ msgstr "Rasti visus galimus giminystės ryšius"
 msgid "Find an individual"
 msgstr "Rasti asmenį"
 
-#: admin_trees_duplicates.php:33 admin_trees_manage.php:466
+#: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
 msgstr "Rasti duplikatus"
 
@@ -6368,6 +6489,7 @@ msgstr ""
 msgid "Find the closest relationships"
 msgstr "Rasti arčiausią giminystės ryšį"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6796
 msgid "Finland"
 msgstr "Finlandia"
@@ -6396,6 +6518,7 @@ msgstr "Taisyti vardo įžambius brūkšnius ir tarpus"
 msgid "Flag"
 msgstr "Vėliava"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6798
 msgid "Flanders"
 msgstr "Flandrija"
@@ -6450,7 +6573,7 @@ msgid "Font"
 msgstr "Šriftas"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
-#: admin_trees_manage.php:298
+#: admin_trees_manage.php:301
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr "Pavyzdžiui, jei GEDCOM byloje yra %1$s ir webtrees tikisi surasti %2$s medijos aplankos varde, tada jums reikės pašalinti %3$s."
@@ -6514,15 +6637,18 @@ msgstr "Įtėvis"
 msgid "Foster mother"
 msgstr "Įmotė"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6800
 msgid "France"
 msgstr "Prancūzija"
 
-#: app/GedcomCode/GedcomCodeTemp.php:147
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:145
 msgid "Frankfurt am Main, Germany"
 msgstr "Frankfurt am Main, Vokietija"
 
-#: app/GedcomCode/GedcomCodeTemp.php:149
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:147
 msgid "Freiburg, Germany"
 msgstr "Freiburg, Vokietija"
 
@@ -6531,14 +6657,17 @@ msgstr "Freiburg, Vokietija"
 msgid "French"
 msgstr "Prancūzų"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6818
 msgid "French Guiana"
 msgstr "Prancūzijos Gviana"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6910
 msgid "French Polynesia"
 msgstr "Prancūzijos Polinezija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6731
 msgid "French Southern Territories"
 msgstr "Prancūzijos Pietų ir Antarkties sritys"
@@ -6550,7 +6679,8 @@ msgstr "Prancūzijos Pietų ir Antarkties sritys"
 msgid "Frequently asked questions"
 msgstr "Dažniausiai užduodami klausimai"
 
-#: app/GedcomCode/GedcomCodeTemp.php:151
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:149
 msgid "Fresno, California, United States"
 msgstr "Fresno, Kalifornija"
 
@@ -6630,7 +6760,8 @@ msgctxt "NOMINATIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#: app/GedcomCode/GedcomCodeTemp.php:153
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:151
 msgid "Fukuoka, Japan"
 msgstr "Fukuoka, Japonija"
 
@@ -6646,14 +6777,16 @@ msgstr "GEDCOM klaidos"
 
 #. I18N: gedcom tag GEDC
 #. I18N: gedcom tag _GEDF
-#: admin_trees_manage.php:584 app/GedcomTag.php:496 app/GedcomTag.php:1505
+#: admin_trees_manage.php:587 app/GedcomTag.php:496 app/GedcomTag.php:1505
 msgid "GEDCOM file"
 msgstr "GEDCOM byla"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6803
 msgid "Gabon"
 msgstr "Gabonas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6811
 msgid "Gambia"
 msgstr "Gambija"
@@ -6678,7 +6811,7 @@ msgid "Genealogy contact"
 msgstr "Genealoginio medžio kontaktas"
 
 #. I18N: Individuals, sources, dates, places, etc.
-#: admin_trees_manage.php:459
+#: admin_trees_manage.php:462
 msgid "Genealogy data"
 msgstr "Genealogijos duomenys"
 
@@ -6737,10 +6870,12 @@ msgstr "Geografiniai duomenys"
 msgid "Geographical area"
 msgstr "Geografinė vietovė"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6805
 msgid "Georgia"
 msgstr "Gruzija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6781
 msgid "Germany"
 msgstr "Vokėtija"
@@ -6769,10 +6904,12 @@ msgctxt "NOMINATIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6807
 msgid "Ghana"
 msgstr "Gana"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6808
 msgid "Gibraltar"
 msgstr "Gibraltaras"
@@ -6864,6 +7001,7 @@ msgstr "Ilgiausiai išgyventa"
 msgid "Greatest age between siblings"
 msgstr "Didžiausias amžiaus skirtumas tarp brolių ir seserų"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6814
 msgid "Greece"
 msgstr "Graikija"
@@ -6873,6 +7011,7 @@ msgstr "Graikija"
 msgid "Green Beam"
 msgstr "Žalia"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6816
 msgid "Greenland"
 msgstr "Grenlandija"
@@ -6882,18 +7021,22 @@ msgstr "Grenlandija"
 msgid "Gregorian"
 msgstr "Grigaliaus"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6815
 msgid "Grenada"
 msgstr "Grenada"
 
-#: app/GedcomCode/GedcomCodeTemp.php:155
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:153
 msgid "Guadalajara, Mexico"
 msgstr "Guadalajara, Meksika"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6810
 msgid "Guadeloupe"
 msgstr "Gvadelupa"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6819
 msgid "Guam"
 msgstr "Guamas"
@@ -6912,30 +7055,37 @@ msgctxt "MALE"
 msgid "Guardian"
 msgstr "Globėjas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6817
 msgid "Guatemala"
 msgstr "Gvatemala"
 
-#: app/GedcomCode/GedcomCodeTemp.php:157
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:155
 msgid "Guatemala City, Guatemala"
 msgstr "Guatemala City, Gvatemala"
 
-#: app/GedcomCode/GedcomCodeTemp.php:159
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:157
 msgid "Guayaquil, Ecuador"
 msgstr "Guayaquil, Ekvadoras"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6806
 msgid "Guernsey"
 msgstr "Gernsis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6809
 msgid "Guinea"
 msgstr "Gvinėja"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6812
 msgid "Guinea-Bissau"
 msgstr "Bisau-Gvinėja"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6820
 msgid "Guyana"
 msgstr "Gajana"
@@ -6950,19 +7100,23 @@ msgstr "HTML blokas"
 msgid "Hair color"
 msgstr "Plaukų spalva"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6825
 msgid "Haiti"
 msgstr "Haitis"
 
-#: app/GedcomCode/GedcomCodeTemp.php:163
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "Halifax, Nova Scotia, Canada"
 msgstr "Halifax, Nova Scotia, Kanada"
 
-#: app/GedcomCode/GedcomCodeTemp.php:239
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:237
 msgid "Hamilton, New Zealand"
 msgstr "Hamilton, Naujoji Zelandija"
 
-#: app/GedcomCode/GedcomCodeTemp.php:165
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:163
 msgid "Hartford, Connecticut, United States"
 msgstr "Hartford, Konektikutas"
 
@@ -7008,6 +7162,7 @@ msgstr "Namų ūkio galva"
 msgid "Header"
 msgstr "Antraštė"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6822
 msgid "Heard Island and McDonald Islands"
 msgstr "Heardo ir McDonaldo Salos"
@@ -7046,7 +7201,8 @@ msgstr "Sveikas Administratoriau…"
 msgid "Help"
 msgstr "Pagalba"
 
-#: app/GedcomCode/GedcomCodeTemp.php:169
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:167
 msgid "Helsinki, Finland"
 msgstr "Helsinki, Suomija"
 
@@ -7084,7 +7240,8 @@ msgstr "Čia gali būti įvestas mastelis. Ši vertė bus naudojama kaip minimal
 msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
 msgstr "Čia galite įvesti tikslumą. Remiantis šiuo parametru nustatomas skaitmenų skaičius, kurie bus naudojami platumos ir ilgumos tikslumui."
 
-#: app/GedcomCode/GedcomCodeTemp.php:171
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:169
 msgid "Hermosillo, Mexico"
 msgstr "Hermosillo, Meksika"
 
@@ -7160,11 +7317,14 @@ msgstr "Holokaustas"
 msgid "Home page"
 msgstr "Pirminis puslapis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6823
 msgid "Honduras"
 msgstr "Hondūras"
 
-#: app/GedcomCode/GedcomCodeTemp.php:173 app/Stats.php:6821
+#. I18N: Location of an LDS church temple
+#. I18N: Name of country or state
+#: app/GedcomCode/GedcomCodeTemp.php:171 app/Stats.php:6821
 msgid "Hong Kong"
 msgstr "Honkongas"
 
@@ -7188,7 +7348,8 @@ msgstr "Namas"
 msgid "Household"
 msgstr "Namų ūkis"
 
-#: app/GedcomCode/GedcomCodeTemp.php:175
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:173
 msgid "Houston, Texas, United States"
 msgstr "Houston, Texas, United States"
 
@@ -7197,6 +7358,7 @@ msgstr "Houston, Texas, United States"
 msgid "How much recursion to use when searching for relationships"
 msgstr ""
 
+#. I18N: Name of country or state
 #: app/Stats.php:6826
 msgid "Hungary"
 msgstr "Vengrija"
@@ -7234,6 +7396,7 @@ msgstr "ID nustatymai"
 msgid "IP address"
 msgstr "IP adresas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6834
 msgid "Iceland"
 msgstr "Islandija"
@@ -7247,7 +7410,8 @@ msgstr "Islandų"
 msgid "Icon"
 msgstr "Piktograma"
 
-#: app/GedcomCode/GedcomCodeTemp.php:177
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:175
 msgid "Idaho Falls, Idaho, United States"
 msgstr "Idaho Falls, Idaho, United States"
 
@@ -7322,7 +7486,7 @@ msgstr "Jei Jūs esate tinklapio administratorius, turėtumėte tai peržiūrėt
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
 msgstr "Jei negalite išspręsti problemos pats, galite prašyti pagalbos forume <a href=\"http://webtrees.net\">webtrees.net</a>."
 
-#: admin_trees_manage.php:282
+#: admin_trees_manage.php:285
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
 msgstr ""
 
@@ -7338,7 +7502,7 @@ msgstr "Jei Jūs turite daug nesusietų vietovių įrašų, tai gali stabdyti s�
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
 msgstr "Jei jūs turite daug medijos bylų jūs galite sugrupuoti jas į aplankas ir poaplankes."
 
-#: admin_trees_manage.php:275
+#: admin_trees_manage.php:278
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr "Jei įtraukėte video, foto ar audio failus, ir naudojant programą redagavote savo GEDCOM neprisijungę prie kilmės medžio puslapio (off-line), kuri ištrina video, foto ar audio failus, tada pažymėkite šį langelį, kad sujungtų esamus video, foto ar audio failus su nauju GEDCOM."
 
@@ -7400,11 +7564,11 @@ msgstr "Paveikslai be vandenženklių"
 msgid "Immigration"
 msgstr "Imigracija"
 
-#: admin_trees_manage.php:601 app/Module/GoogleMapsModule.php:4656
+#: admin_trees_manage.php:604 app/Module/GoogleMapsModule.php:4656
 msgid "Import"
 msgstr "Importuoti"
 
-#: admin_trees_manage.php:175
+#: admin_trees_manage.php:178
 msgid "Import a GEDCOM file"
 msgstr "Importuoti GEDCOM bylą"
 
@@ -7412,7 +7576,7 @@ msgstr "Importuoti GEDCOM bylą"
 msgid "Import all places from a family tree"
 msgstr "Idėti visas vietoves iš šeimos medžio"
 
-#: admin_trees_manage.php:267
+#: admin_trees_manage.php:270
 msgid "Import options"
 msgstr "Importavimo nustatymai"
 
@@ -7465,17 +7629,19 @@ msgstr "Įtraukti mediją (automatiškai suspaus failus)"
 msgid "Include subfolders"
 msgstr "Įtraukti poaplankius"
 
+#. I18N: Label for a configuration option
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
 msgstr "Įtraukti asmens artimiausius giminaičius?"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6828
 msgid "India"
 msgstr "Indija"
 
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
-#: admin_trees_manage.php:534 ancestry.php:52
+#: admin_trees_manage.php:537 ancestry.php:52
 #: app/Functions/FunctionsEdit.php:855 app/GedcomTag.php:528
 #: app/Module/ChartsBlockModule.php:209 app/Module/GoogleMapsModule.php:800
 #: app/Module/IndividualReportModule.php:29 app/Module/StoriesModule.php:246
@@ -7561,6 +7727,7 @@ msgstr "Asmenys su aprašymu"
 msgid "Individuals with surname %s"
 msgstr "Asmenys su pavarde %s"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6827
 msgid "Indonesia"
 msgstr "Indonezija"
@@ -7642,22 +7809,27 @@ msgstr "Blogas GEDCOM formatas"
 msgid "Invalid date"
 msgstr "Neteisinga data"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6832
 msgid "Iran"
 msgstr "Iranas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6833
 msgid "Iraq"
 msgstr "Irakas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6831
 msgid "Ireland"
 msgstr "Airija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6829
 msgid "Isle of Man"
 msgstr "Meno sala"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6835
 msgid "Israel"
 msgstr "Izraelis"
@@ -7666,6 +7838,7 @@ msgstr "Izraelis"
 msgid "It can take several minutes to download and install the upgrade. Be patient."
 msgstr "Tai gali užtrukti keletą minučių atsisiųsti ir įdiegti atnaujinimą. Būkite kantrūs."
 
+#. I18N: Name of country or state
 #: app/Stats.php:6836
 msgid "Italy"
 msgstr "Italija"
@@ -7699,6 +7872,7 @@ msgstr "Iyar"
 msgid "Jalali"
 msgstr "Jalali"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6837
 msgid "Jamaica"
 msgstr "Jamaika"
@@ -7728,6 +7902,7 @@ msgctxt "NOMINATIVE"
 msgid "January"
 msgstr "Sausio"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6839
 msgid "Japan"
 msgstr "Japonija"
@@ -7737,7 +7912,8 @@ msgstr "Japonija"
 msgid "Jewish"
 msgstr "Žydiškas"
 
-#: app/GedcomCode/GedcomCodeTemp.php:179
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:177
 msgid "Johannesburg, South Africa"
 msgstr "Johannesburg, Pietų Afrikos Respublika"
 
@@ -7746,11 +7922,13 @@ msgstr "Johannesburg, Pietų Afrikos Respublika"
 msgid "John /DOE/"
 msgstr "Vardenis /Pavardenis/"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6838
 msgid "Jordan"
 msgstr "Jordanija"
 
-#: app/GedcomCode/GedcomCodeTemp.php:181
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:179
 msgid "Jordan River, Utah, United States"
 msgstr "Jordan River, Juta"
 
@@ -7862,6 +8040,7 @@ msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "Birželio"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6840
 msgid "Kazakhstan"
 msgstr "Kazachstanas"
@@ -7875,7 +8054,7 @@ msgid "Keep link in list"
 msgstr "Palikti nuorodą sąraše"
 
 #. I18N: A configuration setting
-#: admin_trees_manage.php:272
+#: admin_trees_manage.php:275
 msgid "Keep media objects"
 msgstr "Saugoti medijos objektus"
 
@@ -7886,6 +8065,7 @@ msgstr "Saugoti medijos objektus"
 msgid "Keep the existing “last change” information"
 msgstr "Išsaugoti dabartine „Paskutinis pakeitimas“ informaciją"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6841
 msgid "Kenya"
 msgstr "Kenija"
@@ -7923,10 +8103,12 @@ msgctxt "NOMINATIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
-#: app/GedcomCode/GedcomCodeTemp.php:183
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:181
 msgid "Kiev, Ukraine"
 msgstr "Kijevas, Ukraina"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6844
 msgid "Kiribati"
 msgstr "Kiribatis"
@@ -7955,38 +8137,42 @@ msgctxt "NOMINATIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
-#: app/GedcomCode/GedcomCodeTemp.php:185
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:183
 msgid "Kona, Hawaii, United States"
 msgstr "Kona, Havajai"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6846
 msgid "Korea"
 msgstr "Korėja"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6847
 msgid "Kuwait"
 msgstr "Kuveitas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6842
 msgid "Kyrgyzstan"
 msgstr "Kirgizija"
 
-#. I18N: gedcom tag BAPL
+#. I18N: gedcom tag BAPL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:174
 msgid "LDS baptism"
 msgstr "Mormonų krikštas"
 
-#. I18N: gedcom tag SLGC
+#. I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:772
 msgid "LDS child sealing"
 msgstr "Mormonų vaikų sandara"
 
-#. I18N: gedcom tag CONL
+#. I18N: gedcom tag CONL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:318
 msgid "LDS confirmation"
 msgstr "Mormonų patvirtinimas"
 
-#. I18N: gedcom tag ENDL
+#. I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:412
 msgid "LDS endowment"
 msgstr "Mormonų šventyklos apdovanojimas"
@@ -7996,7 +8182,7 @@ msgstr "Mormonų šventyklos apdovanojimas"
 msgid "LDS ordinance codes in chart boxes"
 msgstr "Mormonų apeigų kodai diagramų dėžėms"
 
-#. I18N: gedcom tag SLGS
+#. I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:780
 msgid "LDS spouse sealing"
 msgstr "Mormonų sutuoktinių sandara"
@@ -8005,7 +8191,8 @@ msgstr "Mormonų sutuoktinių sandara"
 msgid "LDS temple"
 msgstr "Mormonų šventykla"
 
-#: app/GedcomCode/GedcomCodeTemp.php:167
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:165
 msgid "Laie, Hawaii, United States"
 msgstr "Laie, Havajai"
 
@@ -8015,12 +8202,11 @@ msgstr "Laie, Havajai"
 msgid "Landscape"
 msgstr "Horizontaliai"
 
-#. I18N: A site configuration setting
 #. I18N: A configuration setting
 #. I18N: gedcom tag LANG
 #: admin_site_config.php:633 admin_trees_config.php:639 admin_users.php:407
 #: admin_users.php:869 app/GedcomTag.php:536 app/Theme/AbstractTheme.php:1404
-#: edituser.php:238
+#: edituser.php:238 setup.php:108
 msgid "Language"
 msgstr "Kalba"
 
@@ -8029,6 +8215,7 @@ msgstr "Kalba"
 msgid "Languages"
 msgstr "Kalbos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6848
 msgid "Laos"
 msgstr "Laosas"
@@ -8045,7 +8232,8 @@ msgstr "Didžiausios šeimos"
 msgid "Largest number of grandchildren"
 msgstr "Didžiausias anūkų skaičius"
 
-#: app/GedcomCode/GedcomCodeTemp.php:199
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:197
 msgid "Las Vegas, Nevada, United States"
 msgstr "Las Vegas, Nevada, United States"
 
@@ -8101,6 +8289,7 @@ msgstr "Vėliausios vedybos"
 msgid "Latitude"
 msgstr "Platuma"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6858
 msgid "Latvia"
 msgstr "Latvija"
@@ -8119,6 +8308,7 @@ msgstr "Palikite slaptažodžio langelį tuščią, jei norite palikti esamą sl
 msgid "Leaves"
 msgstr "Lapai"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6849
 msgid "Lebanon"
 msgstr "Libanas"
@@ -8150,6 +8340,7 @@ msgstr "Įpėdinis"
 msgid "Length of marriage"
 msgstr "Šeimyninio gyvenimo trukmė"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6855
 msgid "Lesotho"
 msgstr "Lesotas"
@@ -8177,14 +8368,17 @@ msgstr "Letter"
 msgid "Level"
 msgstr "Lygis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6850
 msgid "Liberia"
 msgstr "Liberija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6851
 msgid "Libya"
 msgstr "Libia"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6853
 msgid "Liechtenstein"
 msgstr "Lichtenšteinas"
@@ -8199,7 +8393,8 @@ msgstr "Gyvenimo trukmė"
 msgid "Lifespans"
 msgstr "Gyvenimo trukmės"
 
-#: app/GedcomCode/GedcomCodeTemp.php:189
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:187
 msgid "Lima, Peru"
 msgstr "Lima, Peru"
 
@@ -8266,6 +8461,7 @@ msgstr "Sąrašas"
 msgid "Lists"
 msgstr "Sąrašai"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6856
 msgid "Lithuania"
 msgstr "Lietuva"
@@ -8315,7 +8511,8 @@ msgctxt "MALE"
 msgid "Lodger"
 msgstr "Įnamis"
 
-#: app/GedcomCode/GedcomCodeTemp.php:191
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:189
 msgid "Logan, Utah, United States"
 msgstr "Logan, Juta"
 
@@ -8330,11 +8527,7 @@ msgstr "Prisijungęs kaip "
 msgid "Login"
 msgstr "Prisijungti"
 
-#: setup.php:430
-msgid "Login ID"
-msgstr "Nario ID"
-
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:447
 msgid "Login URL"
 msgstr "URL prisiregistravus"
@@ -8349,7 +8542,8 @@ msgstr "Prisijungimas ir registracija"
 msgid "Logout"
 msgstr "Atsijungti"
 
-#: app/GedcomCode/GedcomCodeTemp.php:193
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:191
 msgid "London, England"
 msgstr "Londonas, Anglija"
 
@@ -8368,7 +8562,8 @@ msgstr "Ilgiausios trukmės šeimyninis gyvenimas"
 msgid "Longitude"
 msgstr "Ilguma"
 
-#: app/GedcomCode/GedcomCodeTemp.php:187
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:185
 msgid "Los Angeles, California, United States"
 msgstr "Los Angeles, Kalifornija"
 
@@ -8376,7 +8571,8 @@ msgstr "Los Angeles, Kalifornija"
 msgid "Lost password request"
 msgstr "Pamesto slaptažodžio prašymas"
 
-#: app/GedcomCode/GedcomCodeTemp.php:195
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:193
 msgid "Louisville, Kentucky, United States"
 msgstr "Louisville, Kentukis"
 
@@ -8384,30 +8580,37 @@ msgstr "Louisville, Kentukis"
 msgid "Lowest population"
 msgstr "Mažiausia populiacija"
 
-#: app/GedcomCode/GedcomCodeTemp.php:197
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:195
 msgid "Lubbock, Texas, United States"
 msgstr "Lubbock, Texas, United States"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6857
 msgid "Luxembourg"
 msgstr "Liuksemburgas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6859
 msgid "Macau"
 msgstr "Makao"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6867
 msgid "Macedonia"
 msgstr "Makedonija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6863
 msgid "Madagascar"
 msgstr "Madagaskaras"
 
-#: app/GedcomCode/GedcomCodeTemp.php:201
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:199
 msgid "Madrid, Spain"
 msgstr "Madridas, Ispanija"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1926
 msgid "Magazine"
 msgstr "Žurnalas"
@@ -8425,14 +8628,17 @@ msgstr "Siųsti el. pašto nuorodą"
 msgid "Main section blocks"
 msgstr "Pagrindinis pasirinkimų blokas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6879
 msgid "Malawi"
 msgstr "Malavis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6880
 msgid "Malaysia"
 msgstr "Malaizija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6864
 msgid "Maldives"
 msgstr "Maldyvai"
@@ -8457,10 +8663,12 @@ msgstr "Vyras"
 msgid "Males"
 msgstr "Vyrai"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6868
 msgid "Mali"
 msgstr "Malis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6869
 msgid "Malta"
 msgstr "Malta"
@@ -8469,8 +8677,8 @@ msgstr "Malta"
 #: admin_pgv_to_wt.php:130 admin_site_change.php:288 admin_site_merge.php:183
 #: admin_trees_check.php:125 admin_trees_config.php:349
 #: admin_trees_download.php:103 admin_trees_duplicates.php:150
-#: admin_trees_manage.php:34 admin_trees_manage.php:181
-#: admin_trees_manage.php:335 admin_trees_merge.php:40
+#: admin_trees_manage.php:35 admin_trees_manage.php:184
+#: admin_trees_manage.php:338 admin_trees_merge.php:40
 #: admin_trees_places.php:90 app/Theme/AdministrationTheme.php:127
 msgid "Manage family trees"
 msgstr "Tvarkyti šeimos medžius"
@@ -8496,14 +8704,17 @@ msgstr "Tvarkytojas"
 msgid "Managers"
 msgstr "Tvarkytojai"
 
-#: app/GedcomCode/GedcomCodeTemp.php:203
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:201
 msgid "Manila, Philippines"
 msgstr "Manila, Filipinai"
 
-#: app/GedcomCode/GedcomCodeTemp.php:205
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:203
 msgid "Manti, Utah, United States"
 msgstr "Manti, Juta"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1928
 msgid "Manuscript"
 msgstr "Rankraštis"
@@ -8519,6 +8730,7 @@ msgid "Many mail servers require that the sending server identifies itself corre
 msgstr "Daugelis pašto serverių reikalauja, kad siunčiantis serveris identifikuoja save teisingai, naudojant teisingą domeno vardą."
 
 #. I18N: gedcom tag MAP
+#. I18N: Type of media object
 #: app/GedcomTag.php:552 app/GedcomTag.php:1930
 #: app/Module/GoogleMapsModule.php:331
 msgid "Map"
@@ -8785,10 +8997,12 @@ msgstr "Vardas po santuokos"
 msgid "Married surname"
 msgstr "Pavardė po vedybų"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6866
 msgid "Marshall Islands"
 msgstr "Maršalo salos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6877
 msgid "Martinique"
 msgstr "Martinika"
@@ -8810,10 +9024,12 @@ msgstr "Atitinka tiksliai nurodyta tekstą, net jei jis randamas žodžio vidury
 msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr "Atitinka tiksliai nurodytą tekstą, išskyrus atvejus, kai jis randamas žodžio viduryje."
 
+#. I18N: Name of country or state
 #: app/Stats.php:6875
 msgid "Mauritania"
 msgstr "Mauritanija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6878
 msgid "Mauritius"
 msgstr "Mauricijus"
@@ -8866,11 +9082,13 @@ msgctxt "NOMINATIVE"
 msgid "May"
 msgstr "Gegužės"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6881
 msgid "Mayotte"
 msgstr "Mayotte"
 
-#: app/GedcomCode/GedcomCodeTemp.php:207
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:205
 msgid "Medford, Oregon, United States"
 msgstr "Medford, Oregonas"
 
@@ -8920,7 +9138,7 @@ msgid "Media folders"
 msgstr "Media aplankai"
 
 #. I18N: gedcom tag OBJE
-#: admin_media.php:693 admin_trees_manage.php:564
+#: admin_media.php:693 admin_trees_manage.php:567
 #: app/Controller/FamilyController.php:160 app/GedcomTag.php:646
 msgid "Media object"
 msgstr "Medijos objektas"
@@ -8999,7 +9217,8 @@ msgctxt "NOMINATIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
-#: app/GedcomCode/GedcomCodeTemp.php:209
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:207
 msgid "Melbourne, Australia"
 msgstr "Melburnas, Australija"
 
@@ -9012,12 +9231,13 @@ msgstr "Melburnas, Australija"
 msgid "Member"
 msgstr "Narys"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:196
 msgid "Memory limit"
 msgstr "Atminties limitas"
 
-#: app/GedcomCode/GedcomCodeTemp.php:211
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:209
 msgid "Memphis, Tennessee, United States"
 msgstr "Memphis, Tenesis"
 
@@ -9045,14 +9265,16 @@ msgstr "Sujungti"
 msgid "Merge family trees"
 msgstr "Sujungti šeimos medžius"
 
-#: admin_site_merge.php:35 admin_trees_manage.php:476
+#: admin_site_merge.php:35 admin_trees_manage.php:479
 msgid "Merge records"
 msgstr "Sujungti įrašus"
 
-#: app/GedcomCode/GedcomCodeTemp.php:213
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:211
 msgid "Merida, Mexico"
 msgstr "Merida, Meksika"
 
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Mesa, Arizona, United States"
 msgstr "Mesa, Arizona, United States"
@@ -9070,7 +9292,7 @@ msgstr "Žinutė sėkmingai nusiųsta %s"
 msgid "Message was not sent"
 msgstr "Žinutė išsiūsta nebuvo"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #. I18N: Name of a module
 #: admin_site_config.php:316 app/Module/UserMessagesModule.php:33
 msgid "Messages"
@@ -9100,22 +9322,27 @@ msgctxt "NOMINATIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6865
 msgid "Mexico"
 msgstr "Meksika"
 
-#: app/GedcomCode/GedcomCodeTemp.php:215
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:213
 msgid "Mexico City, Mexico"
 msgstr "Meksikas, Meksika"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1922
 msgid "Microfiche"
 msgstr "Mikrokorta"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1924
 msgid "Microfilm"
 msgstr "Mikrofilmas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6802
 msgid "Micronesia"
 msgstr "Mikronezija"
@@ -9192,6 +9419,7 @@ msgstr "Modulio administravimas"
 msgid "Modules"
 msgstr "Moduliai"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6862
 msgid "Moldova"
 msgstr "Moldavia"
@@ -9201,6 +9429,7 @@ msgstr "Moldavia"
 msgid "Mon"
 msgstr "Pirm."
 
+#. I18N: Name of country or state
 #: app/Stats.php:6861
 msgid "Monaco"
 msgstr "Monakas"
@@ -9209,19 +9438,23 @@ msgstr "Monakas"
 msgid "Monday"
 msgstr "Pirmadienis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6871
 msgid "Mongolia"
 msgstr "Mongolija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6873
 msgid "Montenegro"
 msgstr "Juodkalnija"
 
-#: app/GedcomCode/GedcomCodeTemp.php:219
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:217
 msgid "Monterrey, Mexico"
 msgstr "Monterrey, Meksika"
 
-#: app/GedcomCode/GedcomCodeTemp.php:217
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:215
 msgid "Montevideo, Uruguay"
 msgstr "Montevideo, Urugvajus"
 
@@ -9253,14 +9486,17 @@ msgstr "Santuokos mėnesis"
 msgid "Month:"
 msgstr "Mėnuo:"
 
-#: app/GedcomCode/GedcomCodeTemp.php:221
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:219
 msgid "Monticello, Utah, United States"
 msgstr "Monticello, Juta"
 
-#: app/GedcomCode/GedcomCodeTemp.php:223
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:221
 msgid "Montreal, Quebec, Canada"
 msgstr "Monrealis, Kvebekas, Kanada"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6876
 msgid "Montserrat"
 msgstr "Montseratas"
@@ -9294,6 +9530,7 @@ msgctxt "NOMINATIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6860
 msgid "Morocco"
 msgstr "Marokas"
@@ -9356,7 +9593,8 @@ msgstr "Motinos šeima su %s"
 msgid "Mother’s family with an unknown individual"
 msgstr "Motinos šeima su nežinomu žmogum"
 
-#: app/GedcomCode/GedcomCodeTemp.php:225
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:223
 msgid "Mount Timpanogos, Utah, United States"
 msgstr "Mount Timpanogos, Juta"
 
@@ -9378,6 +9616,7 @@ msgstr "Į dešinę"
 msgid "Move up"
 msgstr "Į viršų"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6874
 msgid "Mozambique"
 msgstr "Mozambikas"
@@ -9416,7 +9655,7 @@ msgid "My account"
 msgstr "Mano informacija"
 
 #. I18N: Default name for a new tree
-#: admin_trees_manage.php:162
+#: admin_trees_manage.php:165
 msgid "My family tree"
 msgstr "Mano šeimos medis"
 
@@ -9448,6 +9687,7 @@ msgstr "MySQL nurodė klaidą: %s"
 msgid "MySQL variables"
 msgstr "MySQL kintamieji"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6870
 msgid "Myanmar"
 msgstr "Mianmaras"
@@ -9519,6 +9759,7 @@ msgstr "Vardai ištrynimui iš dažniausiai pasitaikančių pavardžių (atskirt
 msgid "Namesake"
 msgstr "Bendravardis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6882
 msgid "Namibia"
 msgstr "Namibija"
@@ -9531,7 +9772,8 @@ msgstr "Auklė"
 msgid "Narrative description"
 msgstr "Pasakojamasis aprašymas"
 
-#: app/GedcomCode/GedcomCodeTemp.php:227
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Nashville, Tennessee, United States"
 msgstr "Nashville, Tenesis"
 
@@ -9545,15 +9787,18 @@ msgstr "Tautybė"
 msgid "Naturalization"
 msgstr "Natūralizacija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6893
 msgid "Nauru"
 msgstr "Nauru"
 
-#: app/GedcomCode/GedcomCodeTemp.php:229
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:227
 msgid "Nauvoo (new), Illinois, United States"
 msgstr "Nauvoo, Ilinojus (naujasis)"
 
-#: app/GedcomCode/GedcomCodeTemp.php:231
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:229
 msgid "Nauvoo (original), Illinois, United States"
 msgstr "Nauvoo, Ilinojus"
 
@@ -9561,18 +9806,22 @@ msgstr "Nauvoo, Ilinojus"
 msgid "Neighborhood"
 msgstr "Kaimynystė"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6892
 msgid "Nepal"
 msgstr "Nepalas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6890
 msgid "Netherlands"
 msgstr "Olandija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6725
 msgid "Netherlands Antilles"
 msgstr "Olandijos Antilai"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6894
 msgid "Neutral Zone"
 msgstr "Neutrali Zona"
@@ -9598,14 +9847,17 @@ msgctxt "MALE"
 msgid "Never married"
 msgstr "Niekada nebuvo vedes"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6883
 msgid "New Caledonia"
 msgstr "Naujoji Kaledonija"
 
-#: app/GedcomCode/GedcomCodeTemp.php:237
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:235
 msgid "New York, New York, United States"
 msgstr "Niujorkas, Niujorko valstija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6895
 msgid "New Zealand"
 msgstr "Naujoji Zelandija"
@@ -9626,7 +9878,8 @@ msgstr "Nauja registracija %s|"
 msgid "New user at %s"
 msgstr "Naujas naudotojas iš %s"
 
-#: app/GedcomCode/GedcomCodeTemp.php:233
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:231
 msgid "Newport Beach, California, United States"
 msgstr "Newport Beach, Kalifornija"
 
@@ -9635,6 +9888,7 @@ msgstr "Newport Beach, Kalifornija"
 msgid "News"
 msgstr "Naujienos"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1932
 msgid "Newspaper"
 msgstr "Laikraštis"
@@ -9647,6 +9901,7 @@ msgstr "Sekantis priminimas elektroniniu paštu bus išsiųstas po "
 msgid "Next image"
 msgstr "Sekanti nuotrauka"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6887
 msgid "Nicaragua"
 msgstr "Nikaragva"
@@ -9656,10 +9911,12 @@ msgstr "Nikaragva"
 msgid "Nickname"
 msgstr "Pravardė"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6884
 msgid "Niger"
 msgstr "Nigeris"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6886
 msgid "Nigeria"
 msgstr "Nigerija"
@@ -9688,6 +9945,7 @@ msgctxt "NOMINATIVE"
 msgid "Nissan"
 msgstr "Nissan"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6889
 msgid "Niue"
 msgstr "Niue salos"
@@ -9720,11 +9978,11 @@ msgstr "Nivôse"
 msgid "No"
 msgstr "Ne"
 
-#: admin_trees_manage.php:101 admin_trees_manage.php:122
+#: admin_trees_manage.php:104 admin_trees_manage.php:125
 msgid "No GEDCOM file was received."
 msgstr "GEDCOM byla nebuvo gauta."
 
-#: admin_trees_manage.php:253
+#: admin_trees_manage.php:256
 msgid "No GEDCOM files found."
 msgstr "Jokių GEDCOM bylų nebuvo rasta."
 
@@ -9892,7 +10150,7 @@ msgstr "Naktinė"
 msgid "None"
 msgstr "Nieko"
 
-#. I18N: a day in the French republican calendar
+#. I18N: The ninth day in the French republican calendar
 #: app/Date/FrenchDate.php:205
 msgid "Nonidi"
 msgstr "Nonidi"
@@ -9902,6 +10160,7 @@ msgstr "Nonidi"
 msgid "Noon"
 msgstr "Vidurdienis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6885
 msgid "Norfolk Island"
 msgstr "Norfolko sala"
@@ -9910,18 +10169,22 @@ msgstr "Norfolko sala"
 msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
 msgstr "Paprastai visi šeimos medžio pakeitimai turi būti patvirtinti moderatoriaus. Ši parinktis leidžia vartotojui padaryti pakeitimus be moderatoriaus patvirtinimo."
 
+#. I18N: Name of country or state
 #: app/Stats.php:6906
 msgid "North Korea"
 msgstr "Šiaurės Korėja"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6888
 msgid "Northern Ireland"
 msgstr "Šiaurės Airija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6872
 msgid "Northern Mariana Islands"
 msgstr "Marianos šiaurinės salos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6891
 msgid "Norway"
 msgstr "Norvegija"
@@ -10025,7 +10288,8 @@ msgctxt "NOMINATIVE"
 msgid "November"
 msgstr "Lapkričio"
 
-#: app/GedcomCode/GedcomCodeTemp.php:235
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:233
 msgid "Nuku’Alofa, Tonga"
 msgstr "Nuku'Alofa, Tonga"
 
@@ -10055,6 +10319,7 @@ msgstr "Kartų skaičius"
 msgid "Number of items"
 msgstr "Elementų skaičius"
 
+#. I18N: Label for a configuration option
 #: app/Module/TopGivenNamesModule.php:146 app/Module/TopPageViewsModule.php:159
 #: app/Module/TopSurnamesModule.php:168
 msgid "Number of items to show"
@@ -10083,11 +10348,13 @@ msgctxt "MALE"
 msgid "Nurse"
 msgstr "Slaugytojas"
 
-#: app/GedcomCode/GedcomCodeTemp.php:241
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:239
 msgid "Oakland, California, United States"
 msgstr "Oakland, Kalifornija"
 
-#: app/GedcomCode/GedcomCodeTemp.php:243
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:241
 msgid "Oaxaca, Mexico"
 msgstr "Oaxaca, Meksika"
 
@@ -10104,6 +10371,7 @@ msgstr "Profesija"
 msgid "Occupations"
 msgstr "Profesijos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6909
 msgid "Occupied Palestinian Territory"
 msgstr "Okupuota Palestinos teritorija"
@@ -10113,7 +10381,7 @@ msgctxt "Abbreviation for October"
 msgid "Oct"
 msgstr "Spa"
 
-#. I18N: a day in the French republican calendar
+#. I18N: The eighth day in the French republican calendar
 #: app/Date/FrenchDate.php:204
 msgid "Octidi"
 msgstr "Octidi"
@@ -10138,11 +10406,13 @@ msgctxt "NOMINATIVE"
 msgid "October"
 msgstr "Spalio"
 
-#: app/GedcomCode/GedcomCodeTemp.php:245
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:243
 msgid "Ogden, Utah, United States"
 msgstr "Ogden, Juta"
 
-#: app/GedcomCode/GedcomCodeTemp.php:247
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:245
 msgid "Oklahoma City, Oklahoma, United States"
 msgstr "Oklahoma City, Oklahoma, United States"
 
@@ -10187,6 +10457,7 @@ msgstr "Vyriausia motina"
 msgid "Olivia"
 msgstr "Olivia"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6896
 msgid "Oman"
 msgstr "Omanas"
@@ -10273,10 +10544,12 @@ msgstr "Įšventinimas"
 msgid "Orientation"
 msgstr "Orientacija"
 
-#: app/GedcomCode/GedcomCodeTemp.php:249
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:247
 msgid "Orlando, Florida, United States"
 msgstr "Orlando, Florida, United States"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1942 app/Stats.php:5499 app/Stats.php:5918
 msgid "Other"
 msgstr "Kitas"
@@ -10353,7 +10626,7 @@ msgstr "PHP informacija"
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
 msgstr "PHP nustatymas „%1$s“ yra išjungtas. Be to, neveiks šios funkcijos: %2$s . Prašome kreiptis į serverio administratorių, kad jis pakeistų PHP nustatymus."
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:211
 msgid "PHP time limit"
 msgstr "PHP laiko limitas"
@@ -10396,14 +10669,17 @@ msgstr "Puslapis %s iš %s"
 msgid "Page size"
 msgstr "Puslapio dydis"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1940
 msgid "Painting"
 msgstr "Paveikslas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6897
 msgid "Pakistan"
 msgstr "Pakistanas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6902
 msgid "Palau"
 msgstr "Palau"
@@ -10413,22 +10689,27 @@ msgstr "Palau"
 msgid "Palette"
 msgstr "Paletė"
 
-#: app/GedcomCode/GedcomCodeTemp.php:253
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:251
 msgid "Palmyra, New York, United States"
 msgstr "Palmyra, New York, United States"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6898
 msgid "Panama"
 msgstr "Panama"
 
-#: app/GedcomCode/GedcomCodeTemp.php:255
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:253
 msgid "Papeete, Tahiti"
 msgstr "Papeete, Tahiti"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6903
 msgid "Papua New Guinea"
 msgstr "Papua ir Naujoji Gvinėja"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6908
 msgid "Paraguay"
 msgstr "Paragvajus"
@@ -10448,16 +10729,12 @@ msgstr "Tėvai, broliai ir seserys"
 msgid "Parent’s age"
 msgstr "Tėvų amžius"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:396 admin_users.php:339
 #: app/Module/LoginBlockModule.php:78 edituser.php:213 login.php:194
 #: login.php:256 login.php:526 setup.php:434
 msgid "Password"
 msgstr "Slaptažodis"
-
-#: admin_users.php:75 edituser.php:134
-msgid "Passwords do not match."
-msgstr "Slaptažodžiai nesutampa."
 
 #: admin_users.php:344 edituser.php:219 login.php:457
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
@@ -10523,14 +10800,17 @@ msgstr "Nuolatinis numeris"
 msgid "Permanently delete these records?"
 msgstr "Ar tikrai visiškai ištrinti šiuos įrašus?"
 
-#: app/GedcomCode/GedcomCodeTemp.php:257
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:255
 msgid "Perth, Australia"
 msgstr "Perth, Australija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6900
 msgid "Peru"
 msgstr "Peru"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6901
 msgid "Philippines"
 msgstr "Filipinai"
@@ -10567,6 +10847,7 @@ msgstr "Fonetinė paieška"
 msgid "Phonetic title"
 msgstr "Fonetinis pavadinimas"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1934
 msgid "Photo"
 msgstr "Nuotrauka"
@@ -10576,7 +10857,7 @@ msgid "PhpGedView might be installed in one of these folders:"
 msgstr "PhpGedView galimai įkurtas vienoje iš šių aplankų:"
 
 #. I18N: %s is a number
-#: admin_trees_manage.php:708
+#: admin_trees_manage.php:711
 #, php-format
 msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
 msgstr "PhpGedView versija privalo būti 4.2.3, arba bet kuri SVN iki #%s"
@@ -10585,7 +10866,7 @@ msgstr "PhpGedView versija privalo būti 4.2.3, arba bet kuri SVN iki #%s"
 msgid "PhpGedView must use the same database as webtrees."
 msgstr "PhpGedView turi naudoti tą pačią duomenų bazę kaip ir webtrees."
 
-#: admin_pgv_to_wt.php:42 admin_trees_manage.php:694
+#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697
 msgid "PhpGedView to webtrees transfer wizard"
 msgstr "PhpGedView transformavimo į webtrees vedlys"
 
@@ -10594,6 +10875,7 @@ msgstr "PhpGedView transformavimo į webtrees vedlys"
 msgid "Pink Plastic"
 msgstr "Rožinis plastikas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6899
 msgid "Pitcairn"
 msgstr "Pitkerno salos"
@@ -10626,10 +10908,6 @@ msgstr "Vietovių patikrinimas"
 msgid "Place contains"
 msgstr "Vietovėje yra"
 
-#: app/Module/TopPageViewsModule.php:165
-msgid "Show counts before or after name"
-msgstr "Skaitliukas prieš ar po vardo?"
-
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
 msgid "Place hierarchy"
@@ -10648,18 +10926,22 @@ msgstr "Vietovių sąrašas"
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 msgstr ""
 
+#. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:178
 msgid "Place of LDS baptism"
 msgstr "Mormonų krikšto vieta"
 
+#. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:776
 msgid "Place of LDS child sealing"
 msgstr "Mormonų vaikų sandaros vieta"
 
+#. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:416
 msgid "Place of LDS endowment"
 msgstr "Mormonų šventyklos apdovanojimo vieta"
 
+#. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:468
 msgid "Place of LDS spouse sealing"
 msgstr "Mormonų sutuoktinių sandaros vieta"
@@ -10843,6 +11125,7 @@ msgctxt "NOMINATIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6904
 msgid "Poland"
 msgstr "Lenkija"
@@ -10852,16 +11135,18 @@ msgctxt "Surname tradition"
 msgid "Polish"
 msgstr "Lenkų"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:357 setup.php:281
 msgid "Port number"
 msgstr "Porto numeris"
 
-#: app/GedcomCode/GedcomCodeTemp.php:263
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:259
 msgid "Portland, Oregon, United States"
 msgstr "Portland, Oregonas"
 
-#: app/GedcomCode/GedcomCodeTemp.php:251
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:249
 msgid "Porto Alegre, Brazil"
 msgstr "Porto Alegre, Brazilija"
 
@@ -10871,6 +11156,7 @@ msgstr "Porto Alegre, Brazilija"
 msgid "Portrait"
 msgstr "Vertikaliai"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6907
 msgid "Portugal"
 msgstr "Portugalija"
@@ -10929,7 +11215,7 @@ msgstr "Numatytasis tekstas pranešantis kad visi lankytojai gali pareikalauti r
 msgid "Predefined text that states only family members can request a user account"
 msgstr "Numatytasis tekstas pranešantis kad tik šeimos nariai gali reikalauti registruoto lankytojo stątuso"
 
-#: admin_trees_config.php:332 admin_trees_manage.php:385
+#: admin_trees_config.php:332 admin_trees_manage.php:388
 msgid "Preferences"
 msgstr "Nustatymai"
 
@@ -10947,6 +11233,7 @@ msgstr "Kokiam susisiekimo metodui teikiate primenybę"
 msgid "Prefixes"
 msgstr "Priešdėliai"
 
+#. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:147 app/Module/RecentChangesModule.php:153
 #: app/Module/TopGivenNamesModule.php:152 app/Module/TopSurnamesModule.php:174
 #: app/Module/UpcomingAnniversariesModule.php:166
@@ -10954,12 +11241,13 @@ msgstr "Priešdėliai"
 msgid "Presentation style"
 msgstr "Prezentacijos stilius"
 
-#. I18N: http://en.wikipedia.org/wiki/President_of_the_Church
-#: app/GedcomCode/GedcomCodeTemp.php:261
+#. I18N: I18N: Location of an LDS church temple - http://en.wikipedia.org/wiki/President_of_the_Church
+#: app/GedcomCode/GedcomCodeTemp.php:257
 msgid "President’s Office"
 msgstr "Prezidento biuras"
 
-#: app/GedcomCode/GedcomCodeTemp.php:265
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:261
 msgid "Preston, England"
 msgstr "Preston, Anglija"
 
@@ -10967,7 +11255,7 @@ msgstr "Preston, Anglija"
 msgid "Priest"
 msgstr "Dvasininkas"
 
-#. I18N: a day in the French republican calendar
+#. I18N: The first day in the French republican calendar
 #: app/Date/FrenchDate.php:197
 msgid "Primidi"
 msgstr "Primidi"
@@ -10976,7 +11264,7 @@ msgstr "Primidi"
 msgid "Print basic events when blank"
 msgstr "Atspausdinti pagrindinius įvykius jei tušti?"
 
-#: admin_trees_config.php:317 admin_trees_manage.php:395
+#: admin_trees_config.php:317 admin_trees_manage.php:398
 msgid "Privacy"
 msgstr "Slaptumas"
 
@@ -11002,7 +11290,8 @@ msgstr "Testamentas"
 msgid "Property"
 msgstr "Nuosavybė"
 
-#: app/GedcomCode/GedcomCodeTemp.php:267
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:263
 msgid "Provo, Utah, United States"
 msgstr "Provo, Juta"
 
@@ -11011,10 +11300,12 @@ msgstr "Provo, Juta"
 msgid "Publication"
 msgstr "Publikacija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6905
 msgid "Puerto Rico"
 msgstr "Puerto Rikas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6911
 msgid "Qatar"
 msgstr "Kataras"
@@ -11024,7 +11315,7 @@ msgstr "Kataras"
 msgid "Quality of data"
 msgstr "Duomenų kokybė"
 
-#. I18N: a day in the French republican calendar
+#. I18N: The fourth day in the French republican calendar
 #: app/Date/FrenchDate.php:200
 msgid "Quartidi"
 msgstr "Quartidi"
@@ -11049,7 +11340,7 @@ msgstr "Greiti saugyklos faktai"
 msgid "Quick source facts"
 msgstr "Greiti šaltinio faktai"
 
-#. I18N: a day in the French republican calendar
+#. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:201
 msgid "Quintidi"
 msgstr "Quintidi"
@@ -11145,7 +11436,8 @@ msgctxt "NOMINATIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
-#: app/GedcomCode/GedcomCodeTemp.php:269
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:265
 msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, Šiaurės Karolina"
 
@@ -11210,7 +11502,8 @@ msgstr "Naujausi pakeitimai"
 msgid "Recent years (&lt; 100 yrs)"
 msgstr "Pastarieji metai (&lt; 100 m)"
 
-#: app/GedcomCode/GedcomCodeTemp.php:271
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "Recife, Brazil"
 msgstr "Recife, Brazilija"
 
@@ -11241,7 +11534,8 @@ msgstr "Įrašai"
 msgid "Records are not the same type. Cannot merge records that are not the same type."
 msgstr "Įrašai nėra to paties tipo. Negalima sujungti įrašų, kurie nėra to paties tipo."
 
-#: app/GedcomCode/GedcomCodeTemp.php:273
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:269
 msgid "Redlands, California, United States"
 msgstr "Redlands, Kalifornija"
 
@@ -11255,7 +11549,8 @@ msgstr "Perpiešti žemėlapį"
 msgid "Reference number"
 msgstr "Nuorodos numeris"
 
-#: app/GedcomCode/GedcomCodeTemp.php:275
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:271
 msgid "Regina, Saskatchewan, Canada"
 msgstr "Regina, Saskatchewan, Kanada"
 
@@ -11397,7 +11692,7 @@ msgid "Remove link from list"
 msgstr "Ištrinti nuorodą iš sąrašo"
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
-#: admin_trees_manage.php:285
+#: admin_trees_manage.php:288
 msgid "Remove the GEDCOM media path from filenames"
 msgstr "Ištrinti GEDCOM medijos aplankos vardą iš bylos vardų"
 
@@ -11405,11 +11700,12 @@ msgstr "Ištrinti GEDCOM medijos aplankos vardą iš bylos vardų"
 msgid "Remove this location?"
 msgstr "Ar panaikinti šią vietovę?"
 
-#: app/GedcomCode/GedcomCodeTemp.php:277
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:273
 msgid "Reno, Nevada, United States"
 msgstr "Reno, Nevada, United States"
 
-#: admin_trees_manage.php:506
+#: admin_trees_manage.php:509
 msgid "Renumber"
 msgstr "Pernumeruoti"
 
@@ -11460,7 +11756,7 @@ msgid "Repositories found"
 msgstr "Rastos saugyklos"
 
 #. I18N: gedcom tag REPO
-#: admin_trees_manage.php:554 app/GedcomTag.php:724 inverselink.php:130
+#: admin_trees_manage.php:557 app/GedcomTag.php:724 inverselink.php:130
 msgid "Repository"
 msgstr "Saugykla"
 
@@ -11544,6 +11840,7 @@ msgstr "Rezultatai"
 msgid "Retirement"
 msgstr "Išėjimas į pensiją"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6912
 msgid "Reunion"
 msgstr "Reunion"
@@ -11557,6 +11854,7 @@ msgstr "Dešinysis pasirinkimų blokas"
 msgid "Role"
 msgstr "Vaidmuo"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6913
 msgid "Romania"
 msgstr "Rumunija"
@@ -11590,10 +11888,12 @@ msgstr "Taisyklė"
 msgid "Russell"
 msgstr "Russell"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6914
 msgid "Russia"
 msgstr "Rusija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6915
 msgid "Rwanda"
 msgstr "Ruanda"
@@ -11602,7 +11902,8 @@ msgstr "Ruanda"
 msgid "SMTP mail server"
 msgstr "SMTP pašto serveris"
 
-#: app/GedcomCode/GedcomCodeTemp.php:279
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:275
 msgid "Sacramento, California, United States"
 msgstr "Sacramento, Kalifornija"
 
@@ -11635,62 +11936,77 @@ msgstr "Safar"
 msgid "Sage"
 msgstr "Šalavijas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6925
 msgid "Saint Helena"
 msgstr "Šventosios Helenos sala"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6845
 msgid "Saint Kitts and Nevis"
 msgstr "Saint Kitts ir Nevis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6852
 msgid "Saint Lucia"
 msgstr "Šventoji Liucija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6933
 msgid "Saint Pierre and Miquelon"
 msgstr "Šventieji Pierre ir Miquelon"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6967
 msgid "Saint Vincent and the Grenadines"
 msgstr "Šventieji Vinsentas ir Grenadinai"
 
-#: app/GedcomCode/GedcomCodeTemp.php:299
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:295
 msgid "Salt Lake City, Utah, United States"
 msgstr "Salt Lake City, Juta"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6976
 msgid "Samoa"
 msgstr "Samoa"
 
-#: app/GedcomCode/GedcomCodeTemp.php:285
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:281
 msgid "San Antonio, Texas, United States"
 msgstr "San Antonio, Tehasas"
 
-#: app/GedcomCode/GedcomCodeTemp.php:287
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:283
 msgid "San Diego, California, United States"
 msgstr "San Diego, Kalifornija"
 
-#: app/GedcomCode/GedcomCodeTemp.php:297
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:293
 msgid "San Jose, Costa Rica"
 msgstr "San Chosė, Kosta Rika"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6931
 msgid "San Marino"
 msgstr "San Marinas"
 
-#: app/GedcomCode/GedcomCodeTemp.php:283
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Santiago, Chile"
 msgstr "Santjago, Čilė"
 
-#: app/GedcomCode/GedcomCodeTemp.php:289
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:285
 msgid "Santo Domingo, Dominican Republic"
 msgstr "Santo Domingas, Dominikos Respublika"
 
-#: app/GedcomCode/GedcomCodeTemp.php:305
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:301
 msgid "Sao Paulo, Brazil"
 msgstr "Sao Paulo, Brazilija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6935
 msgid "Sao Tome and Principe"
 msgstr "San Tomė ir Prinsipė"
@@ -11708,6 +12024,7 @@ msgstr "Palydovas"
 msgid "Saturday"
 msgstr "Šeštadienis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6916
 msgid "Saudi Arabia"
 msgstr "Saudo Arabija"
@@ -11716,6 +12033,7 @@ msgstr "Saudo Arabija"
 msgid "School or college"
 msgstr "Mokykla ar kolegija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6918
 msgid "Scotland"
 msgstr "Škotija"
@@ -11810,7 +12128,8 @@ msgstr "Ieškoti teksto/atitikmens"
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
 msgstr ""
 
-#: app/GedcomCode/GedcomCodeTemp.php:291
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "Seattle, Washington, United States"
 msgstr "Seattle, Vašingtonas"
 
@@ -11819,12 +12138,12 @@ msgstr "Seattle, Vašingtonas"
 msgid "Second record"
 msgstr "Antras įrašas"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:409
 msgid "Secure connection"
 msgstr "Saugus sujungimas"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:614
 msgid "Security code"
 msgstr "Apsaugos kodas"
@@ -11840,7 +12159,7 @@ msgid "Select"
 msgstr "Pasirinkti"
 
 #. I18N: A configuration setting
-#: admin_trees_manage.php:205
+#: admin_trees_manage.php:208
 msgid "Select a GEDCOM file to import"
 msgstr "Pasirinkti GEDCOM bylą importavimui"
 
@@ -11934,11 +12253,12 @@ msgstr "Siųsti pranešimus vartotojams, kurie neprisijungė 6 mėnesius"
 msgid "Send broadcast messages"
 msgstr "Siųsti žinutes"
 
+#. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
 msgstr "Ar siųsti priminimo laiškus?"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:329
 msgid "Sender name"
 msgstr "Siuntėjo vardas"
@@ -11948,16 +12268,18 @@ msgstr "Siuntėjo vardas"
 msgid "Sending email"
 msgstr "Siunčiame elektroninį laišką"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:422
 msgid "Sending server name"
 msgstr "Siuntančio serverio vardas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6921
 msgid "Senegal"
 msgstr "Senegalas"
 
-#: app/GedcomCode/GedcomCodeTemp.php:293
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:289
 msgid "Seoul, Korea"
 msgstr "Seulas, Pietų Korėja"
 
@@ -11991,15 +12313,17 @@ msgctxt "NOMINATIVE"
 msgid "September"
 msgstr "Rugsėjo"
 
-#. I18N: a day in the French republican calendar
+#. I18N: The seventh day in the French republican calendar
 #: app/Date/FrenchDate.php:203
 msgid "Septidi"
 msgstr "Septidi"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6922
 msgid "Serbia"
 msgstr "Serbija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6917
 msgid "Serbia and Montenegro"
 msgstr "Serbija ir Juodkalnija"
@@ -12027,17 +12351,17 @@ msgstr "Serverio byla kurioje surašytos vietovės (CSV)"
 msgid "Server information"
 msgstr "Serverio informacija"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:344 setup.php:277
 msgid "Server name"
 msgstr "Serverio vardas"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:285
 msgid "Session timeout"
 msgstr "Sesijos darbo laiko pabaiga"
 
-#: admin_trees_manage.php:438 admin_trees_manage.php:449
+#: admin_trees_manage.php:441 admin_trees_manage.php:452
 msgid "Set as default"
 msgstr "Nustatyti kaip įprastą"
 
@@ -12099,11 +12423,12 @@ msgstr ""
 msgid "Setup wizard for webtrees"
 msgstr "webtrees nustatymų vedlys"
 
-#. I18N: a day in the French republican calendar
+#. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:202
 msgid "Sextidi"
 msgstr "Sextidi"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6942
 msgid "Seychelles"
 msgstr "Seišelių salos"
@@ -12137,7 +12462,7 @@ msgctxt "NOMINATIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#: admin_trees_manage.php:577 app/Controller/FamilyController.php:153
+#: admin_trees_manage.php:580 app/Controller/FamilyController.php:153
 #: app/GedcomTag.php:768 edit_interface.php:1364 edit_interface.php:1457
 #: inverselink.php:141 note.php:168 note.php:178
 msgid "Shared note"
@@ -12288,7 +12613,7 @@ msgstr "Ar šis blokas turi būti paslėptas jei jis yra tuščias?"
 msgid "Show"
 msgstr "Rodyti"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:500
 msgid "Show acceptable use agreement on “Request new user account” page"
 msgstr "Rodyti svetainės naudojimosi susitarimo tekstą puslapyje „Naujo lankytojo registracija“"
@@ -12335,6 +12660,11 @@ msgstr "Rodyti vaikams protėvius?"
 #: app/Module/FamilyTreeStatisticsModule.php:300
 msgid "Show common surnames"
 msgstr "Ar rodyti dažniausiai pasitaikančias pavardes?"
+
+#. I18N: Label for a configuration option
+#: app/Module/TopPageViewsModule.php:165
+msgid "Show counts before or after name"
+msgstr "Skaitliukas prieš ar po vardo?"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12439,7 +12769,7 @@ msgstr "Rodyti asmenis mirusius daugiau kaip prieš šimtą metų."
 msgid "Show individuals who died within the last 100 years."
 msgstr "Rodyti asmenis mirusius per paskutinius šimtą metų."
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:272
 msgid "Show list of family trees"
 msgstr "Rodyti šeimos medžių sąrašą"
@@ -12465,11 +12795,13 @@ msgstr "Ar rodyti pastabas?"
 msgid "Show occupations"
 msgstr "Ar rodyti profesijas?"
 
+#. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
 msgstr "Ar rodyti tik gimimus, mirtis ir santuokas?"
 
+#. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
@@ -12483,6 +12815,7 @@ msgstr "Rodyti tik moteriškos lyties atstoves."
 msgid "Show only individuals for whom the gender is not known."
 msgstr "Rodyti tik nežinomos lyties atstovus."
 
+#. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
 msgstr "Rodyti tik asmenis, įvykius ar viską?"
@@ -12539,6 +12872,7 @@ msgstr "Rodyti tyrimo užduotis, kurios turi numatytą datą"
 msgid "Show residences"
 msgstr "Rodyti gyvenamąsias vietas?"
 
+#. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls"
 msgstr "Rodyti skaidrių rodyme valdiklį?"
@@ -12593,6 +12927,7 @@ msgstr "Rodo vietas ir įvykius naudojant Google Maps™ servisą."
 msgid "Show the user who made the change"
 msgstr ""
 
+#. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
@@ -12656,6 +12991,7 @@ msgstr "Brolis ar sesuo"
 msgid "Siblings"
 msgstr "Broliai ar seserys"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6926
 msgid "Sicily"
 msgstr "Sicilija"
@@ -12670,6 +13006,7 @@ msgstr "Šoninė juosta"
 msgid "Sidebars"
 msgstr "Šoninės juostos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6929
 msgid "Sierra Leone"
 msgstr "Siera Leonė"
@@ -12682,6 +13019,7 @@ msgstr "Paprastai datos yra naudojamos pagal Grigaliaus kalendorių. Norėdami n
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
 msgstr "Paprastos paieškos filtras remiasi įvestomis raidėmis, jokie pakaitos simboliai nėra priimami."
 
+#. I18N: Name of country or state
 #: app/Stats.php:6923
 msgid "Singapore"
 msgstr "Singapūras"
@@ -12691,7 +13029,7 @@ msgstr "Singapūras"
 msgid "Sister"
 msgstr "Sesuo"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:563 admin_site_config.php:579
 #: admin_site_config.php:604
 msgid "Site identification code"
@@ -12702,7 +13040,7 @@ msgstr "Svetainės identifikacijos kodas"
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr "Svetainės nariai gali siųsti vieni kitiems laiškus. Jus galite pasirinkti, kaip šie pranešimai yra siunčiami jums, arba pasirinkti negauna jų iš viso."
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:521 admin_site_config.php:542
 msgid "Site verification code"
 msgstr "Svetainės verifikacijos kodas"
@@ -12775,10 +13113,12 @@ msgstr "Vergas"
 msgid "Slide show"
 msgstr "Nuotraukų rodymas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6938
 msgid "Slovakia"
 msgstr "Slovakija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6939
 msgid "Slovenia"
 msgstr "Slovėnija"
@@ -12787,7 +13127,8 @@ msgstr "Slovėnija"
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
 msgstr "Mažos sistemos (500 individų): 16-32MB, 10-20 sekundžių"
 
-#: app/GedcomCode/GedcomCodeTemp.php:303
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:299
 msgid "Snowflake, Arizona, United States"
 msgstr "Snowflake, Arizona, United States"
 
@@ -12796,16 +13137,18 @@ msgstr "Snowflake, Arizona, United States"
 msgid "Social security number"
 msgstr "Socialinio draudimo pažymėjimo numeris"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6928
 msgid "Solomon Islands"
 msgstr "Saliamono salos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6932
 msgid "Somalia"
 msgstr "Somalis"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
-#: admin_trees_manage.php:297
+#: admin_trees_manage.php:300
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
 
@@ -12830,6 +13173,7 @@ msgstr "Sūnus"
 msgid "Son of %s"
 msgstr "Sūnus %s"
 
+#. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:153 app/Module/RecentChangesModule.php:159
 #: app/Module/UpcomingAnniversariesModule.php:172 medialist.php:100
 #: modules_v3/bdm_report/report.xml:11 modules_v3/birth_report/report.xml:9
@@ -12857,7 +13201,7 @@ msgstr "Skamba kaip"
 
 #. I18N: gedcom tag SOUR
 #. I18N: Name of a module/report
-#: admin_trees_manage.php:544 app/Controller/FamilyController.php:170
+#: admin_trees_manage.php:547 app/Controller/FamilyController.php:170
 #: app/Functions/FunctionsPrintFacts.php:596 app/GedcomTag.php:784
 #: app/Module/AlbumModule.php:151 app/Module/FactSourcesReportModule.php:29
 #: inverselink.php:119 modules_v3/bdm_report/report.xml:136
@@ -12923,6 +13267,7 @@ msgstr "Šaltiniai"
 msgid "Sources to the events"
 msgstr "Šaltiniai į įvykius"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6979
 msgid "South Africa"
 msgstr "Pietų Afrika"
@@ -12931,14 +13276,17 @@ msgstr "Pietų Afrika"
 msgid "South America"
 msgstr "Pietų Amerika"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6924
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Pietų Džordžija ir Pietų Sandvičo salos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6934
 msgid "South Sudan"
 msgstr "Pietų Sudanas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6793
 msgid "Spain"
 msgstr "Ispanija"
@@ -12948,7 +13296,8 @@ msgctxt "Surname tradition"
 msgid "Spanish"
 msgstr "Ispanų"
 
-#: app/GedcomCode/GedcomCodeTemp.php:309
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:305
 msgid "Spokane, Washington, United States"
 msgstr "Spokane, Vašingtonas"
 
@@ -12978,19 +13327,23 @@ msgstr "Sutuoktiniai"
 msgid "Spouses and children"
 msgstr "Sutuoktiniai ir vaikai"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6854
 msgid "Sri Lanka"
 msgstr "Šri Lanka"
 
-#: app/GedcomCode/GedcomCodeTemp.php:295
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "St. George, Utah, United States"
 msgstr "St. George, Juta"
 
-#: app/GedcomCode/GedcomCodeTemp.php:301
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "St. Louis, Missouri, United States"
 msgstr "St. Louis, Misuris"
 
-#: app/GedcomCode/GedcomCodeTemp.php:307
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "St. Paul, Minnesota, United States"
 msgstr "St. Paul, Minnesota, United States"
 
@@ -13008,6 +13361,7 @@ msgstr "Pradinis IP adresas"
 msgid "Start at parents"
 msgstr "Pradėti nuo tėvų"
 
+#. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load"
 msgstr "Pradėti skaidrių rodymą puslapio įkėlime?"
@@ -13058,7 +13412,8 @@ msgstr "Gimė negyvas"
 msgid "Stillborn: exempt"
 msgstr "Gimė negyvas: atleistas"
 
-#: app/GedcomCode/GedcomCodeTemp.php:311
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "Stockholm, Sweden"
 msgstr "Stockholm, Švedija"
 
@@ -13116,6 +13471,7 @@ msgstr "Pateikta, bet dar nepriimta"
 msgid "Submitter"
 msgstr "Pateikėjas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6919
 msgid "Sudan"
 msgstr "Sudanas"
@@ -13139,6 +13495,7 @@ msgstr "Sekmadienis"
 msgid "Support and documentation can be found at %s."
 msgstr "Palaikymą ir dokumentaciją galima rasti %s."
 
+#. I18N: Name of country or state
 #: app/Stats.php:6937
 msgid "Suriname"
 msgstr "Surinamas"
@@ -13179,10 +13536,12 @@ msgstr "Pavardės keičiasi pagal asmens lytį ir šeimyninę padėtį."
 msgid "Surnames are inflected to indicate an individual’s gender."
 msgstr "Pavardės keičiasi pagal asmens lytį."
 
-#: app/GedcomCode/GedcomCodeTemp.php:313
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:309
 msgid "Suva, Fiji"
 msgstr "Suva, Fidžis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6927
 msgid "Svalbard and Jan Mayen Islands"
 msgstr "Svalbardas ir Jan Mayenas"
@@ -13192,26 +13551,31 @@ msgstr "Svalbardas ir Jan Mayenas"
 msgid "Swap individuals"
 msgstr "Sukeisti asmenis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6941
 msgid "Swaziland"
 msgstr "Svazilandas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6940
 msgid "Sweden"
 msgstr "Švedija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6762
 msgid "Switzerland"
 msgstr "Šveicarija"
 
-#: app/GedcomCode/GedcomCodeTemp.php:317
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:313
 msgid "Sydney, Australia"
 msgstr "Sydney, Australija"
 
-#: admin_trees_manage.php:737
+#: admin_trees_manage.php:740
 msgid "Synchronize family trees with GEDCOM files"
 msgstr "Sinchronizuoti šeimos medžius su GEDCOM bylomis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6943
 msgid "Syrian Arab Republic"
 msgstr "Sirijos Arabų Respublika"
@@ -13238,19 +13602,23 @@ msgstr "Kortelės"
 msgid "Tag"
 msgstr "Žyma"
 
-#: app/GedcomCode/GedcomCodeTemp.php:319
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:315
 msgid "Taipei, Taiwan"
 msgstr "Taipei, Taivanas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6958
 msgid "Taiwan"
 msgstr "Taivanas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6948
 msgid "Tajikistan"
 msgstr "Tadžikistanas"
 
-#: app/GedcomCode/GedcomCodeTemp.php:321
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:317
 msgid "Tampico, Mexico"
 msgstr "Tampico, Meksika"
 
@@ -13278,6 +13646,7 @@ msgctxt "NOMINATIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6959
 msgid "Tanzania"
 msgstr "Tanzanija"
@@ -13334,6 +13703,7 @@ msgstr "Tevet"
 msgid "Text"
 msgstr "Tekstas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6947
 msgid "Thailand"
 msgstr "Tailandas"
@@ -13350,12 +13720,13 @@ msgstr ""
 msgid "The FAQ list is empty."
 msgstr "DUK sąrašas yra tuščias."
 
-#: admin_trees_manage.php:145
+#: admin_trees_manage.php:148
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
 msgstr "GEDCOM byla „%s“ buvo importuota."
 
-#: app/GedcomCode/GedcomCodeTemp.php:161
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:159
 msgid "The Hague, Netherlands"
 msgstr "The Hague, Olandija"
 
@@ -13369,7 +13740,7 @@ msgstr ""
 msgid "The PHP temporary folder is missing."
 msgstr "Trūksta PHP laikinosios aplankos."
 
-#: admin_trees_manage.php:701
+#: admin_trees_manage.php:704
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
 msgstr ""
 
@@ -13421,25 +13792,25 @@ msgid "The family tree has been exported to %s."
 msgstr "Šeimos medis eksportuotas į %s."
 
 #. I18N: %s is the name of a family tree
-#: admin_trees_manage.php:76
+#: admin_trees_manage.php:77
 #, php-format
 msgid "The family tree “%s” already exists."
 msgstr "Šeimos medis „%s“ jau egzistuoja."
 
 #. I18N: %s is the name of a family tree
-#: admin_trees_manage.php:79
+#: admin_trees_manage.php:80
 #, php-format
 msgid "The family tree “%s” has been created."
 msgstr "Šeimos medis „%s“ buvo sukurtas."
 
 #. I18N: %s is the name of a family tree
-#: admin_trees_manage.php:56 admin_trees_manage.php:151
+#: admin_trees_manage.php:57 admin_trees_manage.php:154
 #, php-format
 msgid "The family tree “%s” has been deleted."
 msgstr "Šeimos medis „%s“ buvo ištrintas."
 
 #. I18N: %s is the name of a family tree
-#: admin_trees_manage.php:65
+#: admin_trees_manage.php:66
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr "Šeimos medis „%s“ bus rodomas lankytojams, kai jie pirmą kartą atvyksta į šią svetainę."
@@ -13461,6 +13832,7 @@ msgstr "Šis %s bylos pavadinimas jau naudojamas. Prašome naudoti kitą pavadin
 
 #: admin_site_upgrade.php:295 admin_site_upgrade.php:422
 #: admin_site_upgrade.php:455 admin_trees_export.php:44
+#: app/Module/ClippingsCart/ClippingsCartController.php:320
 #, php-format
 msgid "The file %s could not be created."
 msgstr "Byla %s negali būti sukurta."
@@ -13648,7 +14020,7 @@ msgstr "Slaptažodis turi būti bent iš šešių simbolių."
 msgid "The password required for authentication with the SMTP server."
 msgstr "Reikalingas slaptažodis naudojant autentifikuotą SMTP serverį."
 
-#: setup.php:416
+#: admin_users.php:75 edituser.php:134 setup.php:416
 msgid "The passwords do not match."
 msgstr "Slaptažodžiai nesutampa."
 
@@ -14508,7 +14880,7 @@ msgid "This website uses cookies to learn about visitor behaviour."
 msgstr ""
 
 #. I18N: %s is the name of a family tree
-#: admin_trees_manage.php:196
+#: admin_trees_manage.php:199
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr "Tai ištrins visus genealoginius duomenis iš „%s“ ir pakeis duomenimis iš kito GEDCOM."
@@ -14562,6 +14934,7 @@ msgstr "Laiko juosta"
 msgid "Timestamp"
 msgstr "Laiko žymė"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6951
 msgid "Timor-Leste"
 msgstr "Rytų Timoras"
@@ -14686,22 +15059,27 @@ msgstr "Kad pasakyti paieškos tarnyboms kad turite svetainės turinio žemėlap
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
 msgstr "Norėdami naudotis Google (Gmail) elektroninio pašto abonementu, naudokite sekančius nustatymus: server=smtp.gmail.com, port=587, security=tls, username=[jūsų_gmail_abonemento_vardas]@gmail.com, password=[jūsų gmail slaptažodis]"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6946
 msgid "Togo"
 msgstr "Togas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6949
 msgid "Tokelau"
 msgstr "Tokelau"
 
-#: app/GedcomCode/GedcomCodeTemp.php:325
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:321
 msgid "Tokyo, Japan"
 msgstr "Tokyo, Japonija"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1936
 msgid "Tombstone"
 msgstr "Paminklas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6952
 msgid "Tonga"
 msgstr "Tonga"
@@ -14749,7 +15127,8 @@ msgstr "Dažniausia pavardė"
 msgid "Top surnames"
 msgstr "Dažniausiai vartojamos pavardės"
 
-#: app/GedcomCode/GedcomCodeTemp.php:327
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:323
 msgid "Toronto, Ontario, Canada"
 msgstr "Toronto, Ontario, Kanada"
 
@@ -14788,7 +15167,7 @@ msgstr "Iš viso įvykių"
 #: modules_v3/fact_sources/report.xml:252
 #: modules_v3/fact_sources/report.xml:350
 #: modules_v3/fact_sources/report.xml:354
-#: modules_v3/marriage_report/report.xml:112
+#: modules_v3/marriage_report/report.xml:111
 msgid "Total families"
 msgstr "Iš viso šeimų"
 
@@ -14805,10 +15184,9 @@ msgstr "Iš viso moterų"
 msgid "Total given names"
 msgstr "Iš viso vardų"
 
-#: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:67
+#: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:88
-#: modules_v3/death_report/report.xml:100
-#: modules_v3/fact_sources/report.xml:142
+#: modules_v3/death_report/report.xml:99 modules_v3/fact_sources/report.xml:142
 #: modules_v3/fact_sources/report.xml:146
 #: modules_v3/fact_sources/report.xml:305
 #: modules_v3/fact_sources/report.xml:309
@@ -14883,15 +15261,17 @@ msgstr "Sėkimai ir analizės nėra pridėti prie valdymo skydo puslapių."
 msgid "Trailer"
 msgstr "Priekaba"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6953
 msgid "Transylvania"
 msgstr "Transilvanija"
 
-#. I18N: a day in the French republican calendar
+#. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:199
 msgid "Tridi"
 msgstr "Tridi"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6954
 msgid "Trinidad and Tobago"
 msgstr "Trinidadas ir Tobagas"
@@ -14905,27 +15285,33 @@ msgstr "Antr."
 msgid "Tuesday"
 msgstr "Antradienis"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6955
 msgid "Tunisia"
 msgstr "Tunisas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6956
 msgid "Turkey"
 msgstr "Turkija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6950
 msgid "Turkmenistan"
 msgstr "Turkmėnija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6944
 msgid "Turks and Caicos Islands"
 msgstr "Terkso ir Kaikoso salos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6957
 msgid "Tuvalu"
 msgstr "Tuvalu"
 
-#: app/GedcomCode/GedcomCodeTemp.php:323
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:319
 msgid "Tuxtla Gutierrez, Mexico"
 msgstr "Tuxtla Gutierrez, Meksika"
 
@@ -14953,24 +15339,27 @@ msgstr "Įveskite slaptažodį dar kartą, kad įsitikinti ar įvedėte teisinga
 msgid "Types of error"
 msgstr "Klaidos tipas"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
 #. I18N: gedcom tag _URL
 #: admin_site_config.php:589 admin_trees_config.php:613
-#: admin_trees_manage.php:648 app/GedcomTag.php:848 app/GedcomTag.php:864
+#: admin_trees_manage.php:651 app/GedcomTag.php:848 app/GedcomTag.php:864
 #: app/GedcomTag.php:1751
 msgid "URL"
 msgstr "URL"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6962
 msgid "US Minor Outlying Islands"
 msgstr "JAV mažosios aplinkinės salos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6970
 msgid "US Virgin Islands"
 msgstr "JAV Mergelių salos"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6936
 msgid "USSR"
 msgstr "TSSR"
@@ -14980,10 +15369,12 @@ msgstr "TSSR"
 msgid "UTC"
 msgstr "UTC"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6960
 msgid "Uganda"
 msgstr "Uganda"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6961
 msgid "Ukraine"
 msgstr "Ukraina"
@@ -15025,18 +15416,22 @@ msgstr "Unikalūs saugyklos faktai"
 msgid "Unique source facts"
 msgstr "Unikalūs šaltinio faktai"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6726
 msgid "United Arab Emirates"
 msgstr "Jungtiniai Arabų Emyratai"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6804
 msgid "United Kingdom"
 msgstr "Jungtinė Karalystė"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6964
 msgid "United States"
 msgstr ""
 
+#. I18N: Name of country or state
 #: app/GedcomRecord.php:1154 app/GedcomRecord.php:1158 app/Stats.php:6716
 msgid "Unknown"
 msgstr "Nežinomas"
@@ -15099,7 +15494,7 @@ msgstr "Atnaujinti viską"
 msgid "Update all the place names in a family tree"
 msgstr "Atnaujinkite visus vietovardžius šeimos medyje"
 
-#: admin_trees_manage.php:486
+#: admin_trees_manage.php:489
 msgid "Update place names"
 msgstr "Atnaujinkite vietovardžius"
 
@@ -15136,6 +15531,7 @@ msgstr "Įkelti medijos failus"
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
 msgstr "Įkelkite vieną ar daugiau bylų iš jūsų vietinio kompiuterio. Medijos bylos gali būti nuotraukų, vaizdo, garso ar kitokiais formatais."
 
+#. I18N: Name of country or state
 #: app/Stats.php:6963
 msgid "Uruguay"
 msgstr "Urugvajus"
@@ -15185,7 +15581,7 @@ msgstr "Naudoti kompaktišką išplanavimą"
 msgid "Use full source citations"
 msgstr "Naudokite visą šaltinio citatą"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:370
 msgid "Use password"
 msgstr "Naudoti slaptažodį"
@@ -15248,11 +15644,11 @@ msgstr "Naudotojo patvirtinimas"
 msgid "User-agent string"
 msgstr "Naudotojo agento eilutę"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:383 admin_users.php:326 admin_users.php:866
 #: app/Module/LoginBlockModule.php:73 app/Module/ResearchTaskModule.php:112
 #: edituser.php:158 login.php:189 login.php:255 login.php:320 login.php:342
-#: login.php:522
+#: login.php:522 setup.php:430
 msgid "Username"
 msgstr "Nario vardas"
 
@@ -15281,10 +15677,12 @@ msgstr "Nario sąskaita buvo per ilgai neaktyvi: "
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
 msgstr "Naudojant išskleidžiamą meniu galima pasirinkti šalį, kurios vėliava bus pasirinkta. Jei vėliavos nerodomos, tada nėra šaliai priskirtos vėliavos."
 
+#. I18N: Name of country or state
 #: app/Stats.php:6965
 msgid "Uzbekistan"
 msgstr "Uzbekistanas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6972
 msgid "Vanuatu"
 msgstr "Vanuatu"
@@ -15294,6 +15692,7 @@ msgstr "Vanuatu"
 msgid "Various statistics charts."
 msgstr ""
 
+#. I18N: Name of country or state
 #: app/Stats.php:6966
 msgid "Vatican City"
 msgstr "Vatikanas"
@@ -15322,6 +15721,7 @@ msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6968
 msgid "Venezuela"
 msgstr "Venesuela"
@@ -15350,7 +15750,8 @@ msgctxt "NOMINATIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#: app/GedcomCode/GedcomCodeTemp.php:329
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:325
 msgid "Veracruz, Mexico"
 msgstr "Veracruz, Meksika"
 
@@ -15362,7 +15763,8 @@ msgstr "Patvirtinimo kodas"
 msgid "Verified"
 msgstr "Patikrintas"
 
-#: app/GedcomCode/GedcomCodeTemp.php:331
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:327
 msgid "Vernal, Utah, United States"
 msgstr "Vernal, Juta"
 
@@ -15371,10 +15773,12 @@ msgstr "Vernal, Juta"
 msgid "Version"
 msgstr "Versija"
 
+#. I18N: Type of media object
 #: app/GedcomTag.php:1938
 msgid "Video"
 msgstr "Vaizdas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6971
 msgid "Vietnam"
 msgstr "Vietnamas"
@@ -15439,7 +15843,8 @@ msgstr "Statistiką rodyti grafikų pavidalu"
 msgid "View year"
 msgstr "Žiūrėti metus"
 
-#: app/GedcomCode/GedcomCodeTemp.php:333
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:329
 msgid "Villa Hermosa, Mexico"
 msgstr "Villa Hermosa, Meksika"
 
@@ -15468,10 +15873,12 @@ msgstr "Lankytojas"
 msgid "Vital records"
 msgstr "Esminiai įrašai"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6975
 msgid "Wales"
 msgstr "Velsas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6974
 msgid "Wallis and Futuna Islands"
 msgstr "Volis ir Futūna"
@@ -15490,7 +15897,8 @@ msgctxt "MALE"
 msgid "Ward"
 msgstr "Globotinis"
 
-#: app/GedcomCode/GedcomCodeTemp.php:335
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:331
 msgid "Washington, District of Columbia, United States"
 msgstr "Vašingtono apygarda"
 
@@ -15518,7 +15926,7 @@ msgstr "Mes išsiųsime patvirtinimo laišką adresu <b>%s</b>. Jums reikės pat
 msgid "Website"
 msgstr "Svetainė"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:299
 msgid "Website URL"
 msgstr "Svetainės URL"
@@ -15563,15 +15971,17 @@ msgstr "Svoris"
 msgid "Welcome %s"
 msgstr "Sveiki %s"
 
-#. I18N: A site configuration setting
+#. I18N: A configuration setting
 #: admin_site_config.php:460
 msgid "Welcome text on login page"
 msgstr "Pasisveikinimo tekstas registracijos puslapyje"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6973
 msgid "West Africa"
 msgstr "Vakarų Afrika"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6792
 msgid "Western Sahara"
 msgstr "Vakarų Sachara"
@@ -15625,6 +16035,7 @@ msgstr ""
 msgid "Where is your PhpGedView installation?"
 msgstr "Kur yra jūsų PhpGedView instaliacija?"
 
+#. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
 msgstr "Kurie šeimos medžiai turi būti įtraukti į „Sitemaps“?"
@@ -15695,7 +16106,8 @@ msgstr "Pakaitos simboliai"
 msgid "Will"
 msgstr "Testamentas"
 
-#: app/GedcomCode/GedcomCodeTemp.php:337
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:333
 msgid "Winter Quarters, Nebraska, United States"
 msgstr "Winter Quarters, Nebraska, United States"
 
@@ -15746,6 +16158,7 @@ msgstr "Metų įvesties laukelis"
 msgid "Year:"
 msgstr "Metai:"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6977
 msgid "Yemen"
 msgstr "Jemenas"
@@ -15829,7 +16242,7 @@ msgstr "Jūs patvirtinote savo norą tapti registruotu naudotoju."
 msgid "You have not created any journal items."
 msgstr "Jūs nesukūrėte jokių žurnalo įrašų."
 
-#: admin_trees_manage.php:198
+#: admin_trees_manage.php:201
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
 msgstr "Jūs pasirinkote GEDCOM skirtingu vardu. Ar taip palikti?"
 
@@ -15886,7 +16299,7 @@ msgstr "Turite pasirinkti asmenį ir diagramos tipą nustatymų bloke."
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr "Turite nurodyti priežastį atskiru įrašu, prieš galėdami apriboti nario prieigą prie jo šeimos artimųjų."
 
-#: admin_trees_manage.php:317
+#: admin_trees_manage.php:320
 msgid "You need to create a family tree."
 msgstr "Jus turite sukurti šeimos medį."
 
@@ -15994,18 +16407,22 @@ msgstr "Jūsų žiniatinklio serveris naudoja PHP versija %s, kuri nebėra palai
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr "Jūsų žiniatinklio serveris naudoja PHP versija %s, kuri nebegauna saugumo atnaujinimų. Jūs turėtumėt atnaujinti ją į naujesnę versiją kiek galima greičiau."
 
+#. I18N: Name of country or state
 #: app/Stats.php:6978
 msgid "Yugoslavia"
 msgstr "Jugoslavija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6980
 msgid "Zaire"
 msgstr "Zairas"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6981
 msgid "Zambia"
 msgstr "Zambija"
 
+#. I18N: Name of country or state
 #: app/Stats.php:6982
 msgid "Zimbabwe"
 msgstr "Zimbabvė"
@@ -16413,7 +16830,7 @@ msgstr "glaustas sąrašas"
 #. I18N: button label
 #: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1164 admin_site_merge.php:387
 #: admin_trees_download.php:119 admin_trees_download.php:204
-#: admin_trees_manage.php:306 admin_trees_manage.php:751
+#: admin_trees_manage.php:309 admin_trees_manage.php:754
 #: admin_trees_merge.php:202 admin_trees_renumber.php:281
 #: app/Module/ClippingsCartModule.php:134
 #: app/Module/ClippingsCartModule.php:257
@@ -16425,7 +16842,7 @@ msgid "continue"
 msgstr "tęsti"
 
 #. I18N: Button label
-#: admin_trees_manage.php:675
+#: admin_trees_manage.php:678
 msgid "create"
 msgstr "sukurti"
 
@@ -19858,7 +20275,7 @@ msgstr "webtrees naudoja UTF-8 koduotę laiškams, specialiems simboliams ir ne 
 msgid "webtrees wiki"
 msgstr "webtrees vikis"
 
-#: admin_trees_manage.php:705
+#: admin_trees_manage.php:708
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
 msgstr "webtrees duomenų bazė turi būti tame pačiame serveryje, kaip ir PhpGedView's"
 
@@ -19955,6 +20372,18 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
+
+#~ msgid "Cannot create"
+#~ msgstr "Negalima sukurti"
+
+#~ msgid "Change language"
+#~ msgstr "Pakeisti kalbą"
+
+#~ msgid "Login ID"
+#~ msgstr "Nario ID"
+
+#~ msgid "Passwords do not match."
+#~ msgstr "Slaptažodžiai nesutampa."
 
 #~ msgid "Show lifespans"
 #~ msgstr "Rodyti gyvenimo trukmes"
