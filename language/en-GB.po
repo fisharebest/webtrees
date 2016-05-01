@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-01 09:56+0100\n"
-"PO-Revision-Date: 2016-05-01 14:49+0000\n"
+"PO-Revision-Date: 2016-05-01 18:30+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -12100,7 +12100,7 @@ msgstr "Search for"
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
 msgid "Search for individuals to add to add Links list."
-msgstr ""
+msgstr "Search for individuals to add to add Links list."
 
 #: app/Module/GoogleMapsModule.php:3924
 msgid "Search globally"
@@ -12670,59 +12670,59 @@ msgstr "Show couples where only the female partner is dead."
 
 #: app/Functions/FunctionsPrintLists.php:644
 msgid "Show couples where only the male partner is dead."
-msgstr ""
+msgstr "Show couples where only the male partner is dead."
 
 #: app/Functions/FunctionsPrintLists.php:693
 msgid "Show couples who married more than 100 years ago."
-msgstr ""
+msgstr "Show couples who married more than 100 years ago."
 
 #: app/Functions/FunctionsPrintLists.php:702
 msgid "Show couples who married within the last 100 years."
-msgstr ""
+msgstr "Show couples who married within the last 100 years."
 
 #: app/Functions/FunctionsPrintLists.php:684
 msgid "Show couples with an unknown marriage date."
-msgstr ""
+msgstr "Show couples with an unknown marriage date."
 
 #: ancestry.php:75
 msgid "Show cousins"
-msgstr ""
+msgstr "Show cousins"
 
 #: app/Module/RelativesTabModule.php:312
 msgid "Show date differences"
-msgstr ""
+msgstr "Show date differences"
 
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:292
 msgid "Show date of last update"
-msgstr ""
+msgstr "Show date of last update"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:391
 msgid "Show dead individuals"
-msgstr ""
+msgstr "Show dead individuals"
 
 #: ancestry.php:115 app/Module/ChartsBlockModule.php:203 descendancy.php:84
 #: familybook.php:55 hourglass.php:56 pedigree.php:166 relationship.php:81
 msgid "Show details"
-msgstr ""
+msgstr "Show details"
 
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show divorced couples."
-msgstr ""
+msgstr "Show divorced couples."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1048
 msgid "Show download link in media viewer"
-msgstr ""
+msgstr "Show download link in media viewer"
 
 #: admin_trees_config.php:1462
 msgid "Show events of close relatives on individual page"
-msgstr ""
+msgstr "Show events of close relatives on individual page"
 
 #: admin_trees_config.php:1102
 msgid "Show highlight images in individual boxes"
-msgstr ""
+msgstr "Show highlight images in individual boxes"
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1709
@@ -12731,15 +12731,15 @@ msgstr "Show hit counters on Portal and Individual pages."
 
 #: compact.php:60
 msgid "Show images"
-msgstr ""
+msgstr "Show images"
 
 #: app/Module/GoogleMapsModule.php:4563
 msgid "Show inactive places"
-msgstr ""
+msgstr "Show inactive places"
 
 #: app/Functions/FunctionsPrintLists.php:227
 msgid "Show individuals born more than 100 years ago."
-msgstr ""
+msgstr "Show individuals born more than 100 years ago."
 
 #: app/Functions/FunctionsPrintLists.php:236
 msgid "Show individuals born within the last 100 years."
@@ -12748,46 +12748,46 @@ msgstr "Show individuals born within the last 100 years."
 #: app/Functions/FunctionsPrintLists.php:189
 #: app/Functions/FunctionsPrintLists.php:626
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr ""
+msgstr "Show individuals who are alive or couples where both partners are alive."
 
 #: app/Functions/FunctionsPrintLists.php:198
 #: app/Functions/FunctionsPrintLists.php:653
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr ""
+msgstr "Show individuals who are dead or couples where both partners are dead."
 
 #: app/Functions/FunctionsPrintLists.php:207
 msgid "Show individuals who died more than 100 years ago."
-msgstr ""
+msgstr "Show individuals who died more than 100 years ago."
 
 #: app/Functions/FunctionsPrintLists.php:216
 msgid "Show individuals who died within the last 100 years."
-msgstr ""
+msgstr "Show individuals who died within the last 100 years."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:272
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Show list of family trees"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:431
 msgid "Show living individuals"
-msgstr ""
+msgstr "Show living individuals"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:471
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Show names of private individuals"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr ""
+msgstr "Show notes"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr ""
+msgstr "Show occupations"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:141
@@ -12799,11 +12799,11 @@ msgstr "Show only births, deaths and marriages"
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr ""
+msgstr "Show only events of living individuals"
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
-msgstr ""
+msgstr "Show only females."
 
 #: app/Functions/FunctionsPrintLists.php:178
 msgid "Show only individuals for whom the gender is not known."
@@ -12816,35 +12816,35 @@ msgstr "Show only individuals, events or all"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
-msgstr ""
+msgstr "Show only males."
 
 #: find.php:533
 msgid "Show only the selected tags"
-msgstr ""
+msgstr "Show only the selected tags"
 
 #: app/Functions/FunctionsPrintLists.php:299
 #: app/Functions/FunctionsPrintLists.php:760
 msgid "Show parents"
-msgstr ""
+msgstr "Show parents"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
-msgstr ""
+msgstr "Show pending changes"
 
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr ""
+msgstr "Show photos"
 
 #: placelist.php:83
 msgid "Show places in hierarchy"
-msgstr ""
+msgstr "Show places in hierarchy"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:491
 msgid "Show private relationships"
-msgstr ""
+msgstr "Show private relationships"
 
 #: search.php:112 search.php:270
 msgid "Show related individuals/families"
@@ -12852,24 +12852,24 @@ msgstr "Show related individuals/families"
 
 #: app/Module/ResearchTaskModule.php:212
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "Show research tasks that are assigned to other users"
 
 #: app/Module/ResearchTaskModule.php:218
 msgid "Show research tasks that are not assigned to any user"
-msgstr ""
+msgstr "Show research tasks that are not assigned to any user"
 
 #: app/Module/ResearchTaskModule.php:224
 msgid "Show research tasks that have a date in the future"
-msgstr ""
+msgstr "Show research tasks that have a date in the future"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr ""
+msgstr "Show residences"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls"
-msgstr ""
+msgstr "Show slide show controls"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12877,55 +12877,55 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr ""
+msgstr "Show sources"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
-msgstr ""
+msgstr "Show spouses"
 
 #: app/Functions/FunctionsPrintLists.php:302
 #: app/Functions/FunctionsPrintLists.php:763
 msgid "Show statistics charts"
-msgstr ""
+msgstr "Show statistics charts"
 
 #. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #: admin_trees_config.php:1640
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr ""
+msgstr "Show the %1$s %2$s parts of a place name."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
-msgstr ""
+msgstr "Show the date and time of update"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:367
 msgid "Show the family tree"
-msgstr ""
+msgstr "Show the family tree"
 
 #: famlist.php:183 indilist.php:183
 msgid "Show the list of individuals"
-msgstr ""
+msgstr "Show the list of individuals"
 
 #: famlist.php:185 indilist.php:185
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "Show the list of surnames"
 
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:79
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr ""
+msgstr "Show the location of places and events using the Google Maps™ mapping service."
 
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Show the user who made the change"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr ""
+msgstr "Show this block for which languages"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1038 app/Functions/FunctionsEdit.php:206
@@ -12935,7 +12935,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:832
 #: app/Functions/FunctionsPrintFacts.php:1098
 msgid "Show to managers"
-msgstr ""
+msgstr "Show to managers"
 
 #: admin_trees_config.php:80 admin_trees_config.php:87
 #: admin_trees_config.php:375 admin_trees_config.php:439
@@ -12946,7 +12946,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:829
 #: app/Functions/FunctionsPrintFacts.php:1095
 msgid "Show to members"
-msgstr ""
+msgstr "Show to members"
 
 #: admin_trees_config.php:79 admin_trees_config.php:86
 #: admin_trees_config.php:375 admin_trees_config.php:439
@@ -12957,7 +12957,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:826
 #: app/Functions/FunctionsPrintFacts.php:1092
 msgid "Show to visitors"
-msgstr ""
+msgstr "Show to visitors"
 
 #: app/Functions/FunctionsPrintLists.php:256
 #: app/Functions/FunctionsPrintLists.php:673
@@ -12973,81 +12973,81 @@ msgstr "Show ‘roots’ couples or individuals. These people may also be called
 #: app/I18N.php:227 app/I18N.php:228
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
-msgstr ""
+msgstr "Showing %1$s to %2$s of %3$s"
 
 #: app/Controller/HourglassController.php:360
 #: app/Controller/PedigreeController.php:285
 msgid "Sibling"
-msgstr ""
+msgstr "Sibling"
 
 #: app/Controller/HourglassController.php:360
 #: app/Controller/PedigreeController.php:285
 msgid "Siblings"
-msgstr ""
+msgstr "Siblings"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6926
 msgid "Sicily"
-msgstr ""
+msgstr "Sicily"
 
 #: admin_module_sidebar.php:87 admin_modules.php:187
 msgid "Sidebar"
-msgstr ""
+msgstr "Sidebar"
 
 #. I18N: Menu entry
 #: admin_module_sidebar.php:28 admin_modules.php:161
 #: app/Theme/AdministrationTheme.php:194
 msgid "Sidebars"
-msgstr ""
+msgstr "Sidebars"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6929
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Sierra Leone"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr ""
+msgstr "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
 
 #: find.php:190
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
-msgstr ""
+msgstr "Simple search filter based on the characters entered, no wildcards are accepted."
 
 #. I18N: Name of country or state
 #: app/Stats.php:6923
 msgid "Singapore"
-msgstr ""
+msgstr "Singapore"
 
 #: modules_v3/individual_ext_report/report.xml:349
 #: modules_v3/individual_report/report.xml:352
 msgid "Sister"
-msgstr ""
+msgstr "Sister"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:563 admin_site_config.php:579
 #: admin_site_config.php:604
 msgid "Site identification code"
-msgstr ""
+msgstr "Site identification code"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:478 edituser.php:300
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:521 admin_site_config.php:542
 msgid "Site verification code"
-msgstr ""
+msgstr "Site verification code"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:532 admin_site_config.php:553
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr ""
+msgstr "Site verification codes do not work when webtrees is installed in a subfolder."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
 msgid "Sitemaps"
-msgstr ""
+msgstr "Sitemaps"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:306
@@ -13058,68 +13058,68 @@ msgstr "Sitemaps are a way for webmasters to tell search engines about the pages
 #: app/Date/JewishDate.php:145
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:221
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:183
 msgctxt "LOCATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:107
 msgctxt "NOMINATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #: app/Module/GoogleMapsModule.php:354 app/Module/GoogleMapsModule.php:479
 msgid "Size of map (in pixels)"
-msgstr ""
+msgstr "Size of map (in pixels)"
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/AbstractTheme.php:84
 msgid "Skip to content"
-msgstr ""
+msgstr "Skip to content"
 
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgid "Slave"
-msgstr ""
+msgstr "Slave"
 
 #: app/GedcomCode/GedcomCodeRela.php:252
 msgctxt "FEMALE"
 msgid "Slave"
-msgstr ""
+msgstr "Slave"
 
 #: app/GedcomCode/GedcomCodeRela.php:250
 msgctxt "MALE"
 msgid "Slave"
-msgstr ""
+msgstr "Slave"
 
 #. I18N: gedcom tag _SSHOW
 #. I18N: Name of a module
 #: app/GedcomTag.php:1727 app/Module/SlideShowModule.php:34
 msgid "Slide show"
-msgstr ""
+msgstr "Slide show"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6938
 msgid "Slovakia"
-msgstr ""
+msgstr "Slovakia"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6939
 msgid "Slovenia"
-msgstr ""
+msgstr "Slovenia"
 
 #: setup.php:173
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
-msgstr ""
+msgstr "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:299
@@ -13129,22 +13129,22 @@ msgstr "Snowflake, Arizona, United States"
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:792
 msgid "Social security number"
-msgstr ""
+msgstr "Social security number"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6928
 msgid "Solomon Islands"
-msgstr ""
+msgstr "Solomon Islands"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6932
 msgid "Somalia"
-msgstr ""
+msgstr "Somalia"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:300
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr ""
+msgstr "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
 
 #: app/Module/GoogleMapsModule.php:460
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
@@ -13153,19 +13153,19 @@ msgstr "Some place names may be written with optional prefixes and suffixes. For
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1559
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr ""
+msgstr "Some themes can display icons on the ‘Facts and events’ tab."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:520
 #: modules_v3/individual_report/report.xml:530
 msgid "Son"
-msgstr ""
+msgstr "Son"
 
 #. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:346
 #, php-format
 msgid "Son of %s"
-msgstr ""
+msgstr "Son of %s"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:153 app/Module/RecentChangesModule.php:159
@@ -13179,19 +13179,19 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "Sort order"
-msgstr ""
+msgstr "Sort order"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: app/Controller/BranchesController.php:214
 #: app/Controller/BranchesController.php:250
 #: app/Functions/FunctionsPrintLists.php:271
 msgid "Sosa"
-msgstr ""
+msgstr "Sosa"
 
 #: search_advanced.php:160 search_advanced.php:222 search_advanced.php:237
 #: search_advanced.php:258 search_advanced.php:273
 msgid "Sounds like"
-msgstr ""
+msgstr "Sounds like"
 
 #. I18N: gedcom tag SOUR
 #. I18N: Name of a module/report
@@ -13216,26 +13216,26 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:529
 #: modules_v3/missing_facts_report/report.xml:570
 msgid "Source"
-msgstr ""
+msgstr "Source"
 
 #: admin_trees_config.php:792
 msgid "Source ID prefix"
-msgstr ""
+msgstr "Source ID prefix"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: admin_trees_config.php:2213
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-msgstr ""
+msgstr "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
 
 #. I18N: Label for search field
 #: find.php:262
 msgid "Source contains"
-msgstr ""
+msgstr "Source contains"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2221 modules_v3/fact_sources/report.xml:6
 msgid "Source type"
-msgstr ""
+msgstr "Source type"
 
 #. I18N: Name of a module
 #: admin.php:756 admin.php:805 admin_trees_duplicates.php:141
@@ -13255,40 +13255,40 @@ msgstr ""
 #: search.php:98 source.php:160 sourcelist.php:33 sourcelist.php:37
 #: statistics.php:353 statistics.php:390
 msgid "Sources"
-msgstr ""
+msgstr "Sources"
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
-msgstr ""
+msgstr "Sources to the events"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6979
 msgid "South Africa"
-msgstr ""
+msgstr "South Africa"
 
 #: statistics.php:599
 msgid "South America"
-msgstr ""
+msgstr "South America"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6924
 msgid "South Georgia and the South Sandwich Islands"
-msgstr ""
+msgstr "South Georgia and the South Sandwich Islands"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6934
 msgid "South Sudan"
-msgstr ""
+msgstr "South Sudan"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6793
 msgid "Spain"
-msgstr ""
+msgstr "Spain"
 
 #: app/SurnameTradition.php:81
 msgctxt "Surname tradition"
 msgid "Spanish"
-msgstr ""
+msgstr "Spanish"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:305
@@ -13297,34 +13297,34 @@ msgstr "Spokane, Washington, United States"
 
 #: modules_v3/bdm_report/report.xml:169
 msgid "Spouse"
-msgstr ""
+msgstr "Spouse"
 
 #: app/GedcomTag.php:454
 msgid "Spouse census date"
-msgstr ""
+msgstr "Spouse census date"
 
 #: app/GedcomTag.php:456
 msgid "Spouse census place"
-msgstr ""
+msgstr "Spouse census place"
 
 #: app/GedcomTag.php:464
 msgid "Spouse note"
-msgstr ""
+msgstr "Spouse note"
 
 #: app/Functions/FunctionsPrintLists.php:1547
 msgid "Spouses"
-msgstr ""
+msgstr "Spouses"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Spouses and children"
-msgstr ""
+msgstr "Spouses and children"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6854
 msgid "Sri Lanka"
-msgstr ""
+msgstr "Sri Lanka"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
@@ -13334,46 +13334,46 @@ msgstr "St. George, Utah, United States"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "St. Louis, Missouri, United States"
-msgstr ""
+msgstr "St. Louis, Missouri, United States"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "St. Paul, Minnesota, United States"
-msgstr ""
+msgstr "St. Paul, Minnesota, United States"
 
 #: app/Module/GoogleMapsModule.php:507
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 #. I18N …of a range of addresses
 #: admin_site_access.php:254 admin_site_access.php:360
 msgid "Start IP address"
-msgstr ""
+msgstr "Start IP address"
 
 #: app/Controller/DescendancyController.php:114
 #: app/Controller/DescendancyController.php:191
 msgid "Start at parents"
-msgstr ""
+msgstr "Start at parents"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load"
-msgstr ""
+msgstr "Start slide show on page load"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
 msgid "Start year"
-msgstr ""
+msgstr "Start year"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
-msgstr ""
+msgstr "Starting range of change dates"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:796 app/Module/GoogleMapsModule.php:407
 #: app/Module/GoogleMapsModule.php:3957 app/Module/GoogleMapsModule.php:4060
 msgid "State"
-msgstr ""
+msgstr "State"
 
 #. I18N: Name of a module
 #. I18N: Name of a module/chart
@@ -13381,144 +13381,144 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:162 app/Module/StatisticsChartModule.php:33
 #: statistics.php:40 statistics.php:65
 msgid "Statistics"
-msgstr ""
+msgstr "Statistics"
 
 #: statisticsplot.php:836
 msgid "Statistics plot"
-msgstr ""
+msgstr "Statistics plot"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:320 admin_site_change.php:387
 #: app/Functions/FunctionsPrint.php:488 app/GedcomTag.php:800
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: app/GedcomTag.php:802
 msgid "Status change date"
-msgstr ""
+msgstr "Status change date"
 
 #: app/Functions/FunctionsDate.php:40
 msgid "Stillborn"
-msgstr ""
+msgstr "Stillborn"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:104
 msgid "Stillborn: exempt"
-msgstr ""
+msgstr "Stillborn: exempt"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "Stockholm, Sweden"
-msgstr ""
+msgstr "Stockholm, Sweden"
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:94
 #: app/Theme/FabTheme.php:110 app/Theme/MinimalTheme.php:107
 #: app/Theme/WebtreesTheme.php:73 app/Theme/XeneaTheme.php:89
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1129
 msgid "Store watermarked full size images on server"
-msgstr ""
+msgstr "Store watermarked full size images on server"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1142
 msgid "Store watermarked thumbnails on server"
-msgstr ""
+msgstr "Store watermarked thumbnails on server"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
 msgid "Stories"
-msgstr ""
+msgstr "Stories"
 
 #: app/Module/StoriesModule.php:237
 msgid "Story"
-msgstr ""
+msgstr "Story"
 
 #: app/Module/StoriesModule.php:228 app/Module/StoriesModule.php:374
 #: app/Module/StoriesModule.php:458
 msgid "Story title"
-msgstr ""
+msgstr "Story title"
 
 #. I18N: Part of a country, state/region/county
 #: app/Module/GoogleMapsModule.php:730 app/Module/GoogleMapsModule.php:1589
 msgid "Subdivision"
-msgstr ""
+msgstr "Subdivision"
 
 #: app/Module/UserMessagesModule.php:112 message.php:119
 msgid "Subject"
-msgstr ""
+msgstr "Subject"
 
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:810
 msgid "Submission"
-msgstr ""
+msgstr "Submission"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:108
 msgid "Submitted but not yet cleared"
-msgstr ""
+msgstr "Submitted but not yet cleared"
 
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:806
 msgid "Submitter"
-msgstr ""
+msgstr "Submitter"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6919
 msgid "Sudan"
-msgstr ""
+msgstr "Sudan"
 
 #: app/Module/GoogleMapsModule.php:444
 msgid "Suffixes"
-msgstr ""
+msgstr "Suffixes"
 
 #. I18N: abbreviation for Sunday
 #: app/Date/CalendarDate.php:372 app/Functions/FunctionsPrint.php:664
 msgid "Sun"
-msgstr ""
+msgstr "Sun"
 
 #: app/Date/CalendarDate.php:347
 msgid "Sunday"
-msgstr ""
+msgstr "Sunday"
 
 #. I18N: %s is a URL/link to the project website
 #: admin.php:603
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr ""
+msgstr "Support and documentation can be found at %s."
 
 #. I18N: Name of country or state
 #: app/Stats.php:6937
 msgid "Suriname"
-msgstr ""
+msgstr "Suriname"
 
 #. I18N: gedcom tag SURN
 #: app/GedcomTag.php:814 help_text.php:302 search.php:236
 msgid "Surname"
-msgstr ""
+msgstr "Surname"
 
 #: app/Stats.php:1641 statistics.php:587
 msgid "Surname distribution chart"
-msgstr ""
+msgstr "Surname distribution chart"
 
 #: admin_trees_config.php:1232
 msgid "Surname list style"
-msgstr ""
+msgstr "Surname list style"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:153
 msgid "Surname option"
-msgstr ""
+msgstr "Surname option"
 
 #. I18N: gedcom tag SPFX
 #: app/GedcomTag.php:788
 msgid "Surname prefix"
-msgstr ""
+msgstr "Surname prefix"
 
 #: admin_trees_config.php:2195
 msgid "Surname tradition"
-msgstr ""
+msgstr "Surname tradition"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
@@ -13533,37 +13533,37 @@ msgstr "Surnames are inflected to indicate an individual’s sex."
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:309
 msgid "Suva, Fiji"
-msgstr ""
+msgstr "Suva, Fiji"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6927
 msgid "Svalbard and Jan Mayen Islands"
-msgstr ""
+msgstr "Svalbard and Jan Mayen Islands"
 
 #. I18N: Reverse the order of two individuals
 #: relationship.php:98
 msgid "Swap individuals"
-msgstr ""
+msgstr "Swap individuals"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6941
 msgid "Swaziland"
-msgstr ""
+msgstr "Swaziland"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6940
 msgid "Sweden"
-msgstr ""
+msgstr "Sweden"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6762
 msgid "Switzerland"
-msgstr ""
+msgstr "Switzerland"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:313
 msgid "Sydney, Australia"
-msgstr ""
+msgstr "Sydney, Australia"
 
 #: admin_trees_manage.php:740
 msgid "Synchronize family trees with GEDCOM files"
@@ -13572,147 +13572,147 @@ msgstr "Synchronise family trees with GEDCOM files"
 #. I18N: Name of country or state
 #: app/Stats.php:6943
 msgid "Syrian Arab Republic"
-msgstr ""
+msgstr "Syrian Arab Republic"
 
 #: setup.php:421
 msgid "System settings"
-msgstr ""
+msgstr "System settings"
 
 #: admin_module_tabs.php:87 admin_modules.php:186
 msgid "Tab"
-msgstr ""
+msgstr "Tab"
 
 #: setup.php:376
 msgid "Table prefix"
-msgstr ""
+msgstr "Table prefix"
 
 #. I18N: Menu entry
 #: admin_module_tabs.php:28 admin_modules.php:160
 #: app/Theme/AdministrationTheme.php:192
 msgid "Tabs"
-msgstr ""
+msgstr "Tabs"
 
 #: find.php:525
 msgid "Tag"
-msgstr ""
+msgstr "Tag"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:315
 msgid "Taipei, Taiwan"
-msgstr ""
+msgstr "Taipei, Taiwan"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6958
 msgid "Taiwan"
-msgstr ""
+msgstr "Taiwan"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6948
 msgid "Tajikistan"
-msgstr ""
+msgstr "Tajikistan"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:317
 msgid "Tampico, Mexico"
-msgstr ""
+msgstr "Tampico, Mexico"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:146
 msgctxt "GENITIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:222
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:184
 msgctxt "LOCATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:108
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6959
 msgid "Tanzania"
-msgstr ""
+msgstr "Tanzania"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:91
 msgid "Teal Top"
-msgstr ""
+msgstr "Teal Top"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:911
 msgid "Technical help contact"
-msgstr ""
+msgstr "Technical help contact"
 
 #: app/Module/HtmlBlockModule.php:276
 msgid "Templates"
-msgstr ""
+msgstr "Templates"
 
 #. I18N: gedcom tag TEMP
 #: app/GedcomTag.php:818 modules_v3/individual_report/report.xml:208
 msgid "Temple"
-msgstr ""
+msgstr "Temple"
 
 #: app/Module/GoogleMapsModule.php:334
 msgid "Terrain"
-msgstr ""
+msgstr "Terrain"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:138
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:214
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:176
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:100
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: gedcom tag TEXT
 #: app/GedcomTag.php:822
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6947
 msgid "Thailand"
-msgstr ""
+msgstr "Thailand"
 
 #: help_text.php:219
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr ""
+msgstr "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr ""
+msgstr "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:470
 msgid "The FAQ list is empty."
-msgstr ""
+msgstr "The FAQ list is empty."
 
 #: admin_trees_manage.php:148
 #, php-format
@@ -13722,30 +13722,30 @@ msgstr "The GEDCOM file ‘%s’ has been imported."
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:159
 msgid "The Hague, Netherlands"
-msgstr ""
+msgstr "The Hague, Netherlands"
 
 #. I18N: Help text for the “Show download link in media viewer” configuration setting
 #: admin_trees_config.php:1053
 msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
-msgstr ""
+msgstr "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:82
 msgid "The PHP temporary folder is missing."
-msgstr ""
+msgstr "The PHP temporary folder is missing."
 
 #: admin_trees_manage.php:704
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-msgstr ""
+msgstr "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
 
 #: admin_users.php:101
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now login by accessing the following link: %s"
-msgstr ""
+msgstr "The administrator at the webtrees site %s has approved your application for an account. You may now login by accessing the following link: %s"
 
 #: login.php:612
 msgid "The administrator has been informed. As soon as they give you permission to login, you can login with your user name and password."
-msgstr ""
+msgstr "The administrator has been informed. As soon as they give you permission to login, you can login with your user name and password."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:45
@@ -13765,25 +13765,25 @@ msgstr "The clippings cart allows you to take extracts (‘clippings’) from th
 
 #: site-unavailable.php:54
 msgid "The database reported the following error message:"
-msgstr ""
+msgstr "The database reported the following error message:"
 
 #: admin_trees_config.php:1278
 msgid "The date and time of the last update"
-msgstr ""
+msgstr "The date and time of the last update"
 
 #: family.php:129
 msgid "The details of this family are private."
-msgstr ""
+msgstr "The details of this family are private."
 
 #: individual.php:92
 msgid "The details of this individual are private."
-msgstr ""
+msgstr "The details of this individual are private."
 
 #. I18N: %s is a filename
 #: admin_site_upgrade.php:293 admin_trees_export.php:41
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr ""
+msgstr "The family tree has been exported to %s."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:77
@@ -13811,7 +13811,7 @@ msgstr "The family tree ‘%s’ will be shown to visitors when they first arriv
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "The family trees have been merged successfully."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:138
@@ -13822,46 +13822,46 @@ msgstr "The family ‘%s’ has been deleted, because it only has one member."
 #: addmedia.php:178 admin_media_upload.php:136
 #, php-format
 msgid "The file %s already exists. Use another filename."
-msgstr ""
+msgstr "The file %s already exists. Use another filename."
 
 #: admin_site_upgrade.php:295 admin_site_upgrade.php:422
 #: admin_site_upgrade.php:455 admin_trees_export.php:44
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "The file %s could not be created."
 
 #: admin_media.php:63 admin_media.php:72 admin_site_clean.php:38
 #: admin_site_upgrade.php:477 admin_site_upgrade.php:498
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "The file %s could not be deleted."
 
 #: admin_site_upgrade.php:397
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "The file %s could not be updated."
 
 #: admin_site_upgrade.php:420
 #, php-format
 msgid "The file %s has been created."
-msgstr ""
+msgstr "The file %s has been created."
 
 #: admin_media.php:61 admin_media.php:70 admin_site_clean.php:32
 #: admin_site_upgrade.php:475 admin_site_upgrade.php:496
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "The file %s has been deleted."
 
 #: admin_media_upload.php:141 admin_media_upload.php:159
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr ""
+msgstr "The file %s has been uploaded."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:76
 msgid "The file was only partially uploaded. Please try again."
-msgstr ""
+msgstr "The file was only partially uploaded. Please try again."
 
 #. I18N: %s is a filename
 #: medialist.php:301 mediaviewer.php:162
@@ -13872,7 +13872,7 @@ msgstr "The file ‘%s’ does not exist."
 #: admin_site_clean.php:36 admin_site_upgrade.php:492
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "The folder %s could not be deleted."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
@@ -13880,67 +13880,67 @@ msgstr ""
 #: admin_site_config.php:37 admin_trees_config.php:294
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
-msgstr ""
+msgstr "The folder %s does not exist, and it could not be created."
 
 #: addmedia.php:100 addmedia.php:111 addmedia.php:257 addmedia.php:268
 #: admin_media_upload.php:64 admin_media_upload.php:75
 #: admin_trees_config.php:292
 #, php-format
 msgid "The folder %s has been created."
-msgstr ""
+msgstr "The folder %s has been created."
 
 #: admin_site_clean.php:30 admin_site_upgrade.php:490
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "The folder %s has been deleted."
 
 #: admin_site_config.php:188
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
-msgstr ""
+msgstr "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 
 #: admin_site_merge.php:201
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "The following facts and events were found in both records."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:248 admin_site_merge.php:294
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "The following facts and events were only found in the record of %s."
 
 #: setup.php:171
 msgid "The following list shows typical requirements."
-msgstr ""
+msgstr "The following list shows typical requirements."
 
 #: message.php:300 message.php:303
 msgid "The following message has been sent to your webtrees user account from "
-msgstr ""
+msgstr "The following message has been sent to your webtrees user account from "
 
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
-msgstr ""
+msgstr "The following places have been changed:"
 
 #: admin_trees_places.php:114
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "The following places would be changed:"
 
 #: admin_site_access.php:355
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-msgstr ""
+msgstr "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
 
 #: help_text.php:326
 msgid "The help text has not been written for this item."
-msgstr ""
+msgstr "The help text has not been written for this item."
 
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: admin_trees_config.php:925
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
-msgstr ""
+msgstr "The individual to be contacted about technical questions or errors encountered on your website."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:903
 msgid "The individual to contact about the genealogy data on this website."
-msgstr ""
+msgstr "The individual to contact about the genealogy data on this website."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:146 action.php:150 app/Controller/GedcomRecordController.php:57
@@ -13953,26 +13953,26 @@ msgstr "The link from ‘%1$s’ to ‘%2$s’ has been deleted."
 #: admin_site_merge.php:109
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "The link from ‘%1$s’ to ‘%2$s’ has been updated."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr ""
+msgstr "The media file %1$s could not be renamed to %2$s."
 
 #: addmedia.php:342
 #, php-format
 msgid "The media file %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "The media file %1$s has been renamed to %2$s."
 
 #: addmedia.php:349
 #, php-format
 msgid "The media file %s does not exist."
-msgstr ""
+msgstr "The media file %s does not exist."
 
 #: mediafirewall.php:38
 msgid "The media file was not found in this family tree."
-msgstr ""
+msgstr "The media file was not found in this family tree."
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13980,7 +13980,7 @@ msgstr "The media file you are uploading can be, and probably should be, named d
 
 #: setup.php:169
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr ""
+msgstr "The memory and CPU time requirements depend on the number of individuals in your family tree."
 
 #: admin_modules.php:54
 #, php-format
@@ -13995,46 +13995,46 @@ msgstr "The module ‘%s’ has been enabled."
 #: admin_site_upgrade.php:400
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "The new files are currently located in the folder %s."
 
 #: admin_site_config.php:490
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr ""
+msgstr "The new user will be asked to confirm their email address before the account is created."
 
 #: help_text.php:303
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
-msgstr ""
+msgstr "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
 
 #: setup.php:414
 msgid "The password needs to be at least six characters long."
-msgstr ""
+msgstr "The password needs to be at least six characters long."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:401
 msgid "The password required for authentication with the SMTP server."
-msgstr ""
+msgstr "The password required for authentication with the SMTP server."
 
 #: admin_users.php:75 edituser.php:134 setup.php:416
 msgid "The passwords do not match."
-msgstr ""
+msgstr "The passwords do not match."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "The preferences for all family trees have been updated."
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "The preferences for new family trees have been updated."
 
 #: app/Module/RelationshipsChartModule.php:190
 #, php-format
 msgid "The preferences for the chart “%s” have been updated."
-msgstr ""
+msgstr "The preferences for the chart ‘%s’ have been updated."
 
 #: admin_trees_config.php:178 admin_trees_config.php:308
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "The preferences for the family tree ‘%s’ have been updated."
 
 #: admin_modules.php:86
 #, php-format
@@ -14044,7 +14044,7 @@ msgstr "The preferences for the module ‘%s’ have been deleted."
 #: app/Module/GoogleMapsModule.php:284
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "The preferences for the module ‘%s’ have been updated."
 
 #: setup.php:378
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -14053,17 +14053,17 @@ msgstr "The prefix is optional, but recommended. By giving the table names a uni
 #: admin_trees_renumber.php:242
 #, php-format
 msgid "The record %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "The record %1$s has been renamed to %2$s."
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr ""
+msgstr "The record has been copied to the clipboard."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:168
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "The records ‘%1$s’ and ‘%2$s’ have been merged."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "The regex appears to contain an error. It can’t be used."
