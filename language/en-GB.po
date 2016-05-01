@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-01 09:56+0100\n"
-"PO-Revision-Date: 2016-05-01 18:30+0000\n"
+"PO-Revision-Date: 2016-05-01 19:14+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -14067,75 +14067,75 @@ msgstr "The records ‘%1$s’ and ‘%2$s’ have been merged."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "The regular expression appears to contain an error. It can’t be used."
-msgstr ""
+msgstr "The regular expression appears to contain an error. It can’t be used."
 
 #: setup.php:151
 msgid "The server configuration is OK."
-msgstr ""
+msgstr "The server configuration is OK."
 
 #: admin_trees_renumber.php:257
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "The server’s time limit has been reached."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:38
 msgid "The size of the family tree, earliest and latest events, common names, etc."
-msgstr ""
+msgstr "The size of the family tree, earliest and latest events, common names, etc."
 
 #: help_text.php:222
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
 
 #: addmedia.php:360
 #, php-format
 msgid "The thumbnail file %1$s could not be renamed to %2$s."
-msgstr ""
+msgstr "The thumbnail file %1$s could not be renamed to %2$s."
 
 #: addmedia.php:358
 #, php-format
 msgid "The thumbnail file %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "The thumbnail file %1$s has been renamed to %2$s."
 
 #: addmedia.php:365
 #, php-format
 msgid "The thumbnail file %s does not exist."
-msgstr ""
+msgstr "The thumbnail file %s does not exist."
 
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:290
 msgid "The time in seconds that a webtrees session remains active before requiring a login. The default is 7200, which is 2 hours."
-msgstr ""
+msgstr "The time in seconds that a webtrees session remains active before requiring a login. The default is 7200, which is 2 hours."
 
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr ""
+msgstr "The time zone is required for date calculations, such as knowing today’s date."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "The two family trees have %1$s record which uses the same ‘XREF’."
+msgstr[1] "The two family trees have %1$s records which use the same ‘XREF’."
 
 #: admin_site_upgrade.php:504
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "The upgrade is complete."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:73
 msgid "The uploaded file exceeds the allowed size."
-msgstr ""
+msgstr "The uploaded file exceeds the allowed size."
 
 #: admin_users.php:807
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "The user %s has been deleted."
 
 #: login.php:324
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
-msgstr ""
+msgstr "The user has been sent an e-mail with the information necessary to confirm the access request."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:388
