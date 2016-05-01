@@ -4259,7 +4259,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			</div>
 
 			<!-- LOCAL FILE -->
-			<?php if (count($placefiles) > 0): ?>
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="localfile">
 					<?php echo I18N::translate('Server file containing places (CSV)') ?>
@@ -4284,7 +4283,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</div>
 				</div>
 			</div>
-			<?php endif ?>
 
 			<!-- CLEAR DATABASE -->
 			<fieldset class="form-group">
@@ -4321,7 +4319,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<div class="col-sm-offset-4 col-sm-8">
 					<button type="submit" class="btn btn-primary">
 						<i class="fa fa-check"></i>
-						<?php echo I18N::translate('Continue adding') ?>
+						<?php echo I18N::translate('continue') ?>
 					</button>
 				</div>
 			</div>
