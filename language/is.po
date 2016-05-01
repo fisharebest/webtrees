@@ -12635,11 +12635,11 @@ msgid "Show couples where either partner married more than once."
 msgstr "Sýna pör þar sem annar sambýlisaðilinn giftist oftar en einu sinni."
 
 #: app/Functions/FunctionsPrintLists.php:635
-msgid "Show couples where only the female partner is deceased."
+msgid "Show couples where only the female partner is dead."
 msgstr "Sýna pör þar sem aðeins sambýliskonan er látin."
 
 #: app/Functions/FunctionsPrintLists.php:644
-msgid "Show couples where only the male partner is deceased."
+msgid "Show couples where only the male partner is dead."
 msgstr "Sýna pör þar sem aðeins sambýlismaður er látinn."
 
 #: app/Functions/FunctionsPrintLists.php:693
@@ -12722,7 +12722,7 @@ msgstr "Sýna fólk sem eru á lífi eða par þar sem baðir sambýlisaðilar e
 
 #: app/Functions/FunctionsPrintLists.php:198
 #: app/Functions/FunctionsPrintLists.php:653
-msgid "Show individuals who are dead or couples where both partners are deceased."
+msgid "Show individuals who are dead or couples where both partners are dead."
 msgstr "Sýna fólk sem er dáið eða par þar sem báðir sambýlisaðilar eru látnir."
 
 #: app/Functions/FunctionsPrintLists.php:207

@@ -12607,11 +12607,11 @@ msgid "Show couples where either partner married more than once."
 msgstr "Hiện cặp vợ chồng trong đó có một người kết hôn nhiều hơn 1 lần."
 
 #: app/Functions/FunctionsPrintLists.php:635
-msgid "Show couples where only the female partner is deceased."
+msgid "Show couples where only the female partner is dead."
 msgstr "Hiển thị cặp vợ chồng chỉ bên gái còn sống."
 
 #: app/Functions/FunctionsPrintLists.php:644
-msgid "Show couples where only the male partner is deceased."
+msgid "Show couples where only the male partner is dead."
 msgstr "Hiện cặp vợ chồng chỉ bên nam còn sống."
 
 #: app/Functions/FunctionsPrintLists.php:693
@@ -12694,7 +12694,7 @@ msgstr "Hiện người sống hay cặp vợ chồng khi cả hai còn sống."
 
 #: app/Functions/FunctionsPrintLists.php:198
 #: app/Functions/FunctionsPrintLists.php:653
-msgid "Show individuals who are dead or couples where both partners are deceased."
+msgid "Show individuals who are dead or couples where both partners are dead."
 msgstr "Hiện người chết hay cặp vợ chồng khi cả hai chết."
 
 #: app/Functions/FunctionsPrintLists.php:207

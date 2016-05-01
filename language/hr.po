@@ -12671,11 +12671,11 @@ msgid "Show couples where either partner married more than once."
 msgstr "Prikaži parove gdje je bilo koji parner vjenčan više puta."
 
 #: app/Functions/FunctionsPrintLists.php:635
-msgid "Show couples where only the female partner is deceased."
+msgid "Show couples where only the female partner is dead."
 msgstr "Prikaži parove gdje je samo žensko umrlo."
 
 #: app/Functions/FunctionsPrintLists.php:644
-msgid "Show couples where only the male partner is deceased."
+msgid "Show couples where only the male partner is dead."
 msgstr "Prikaži parov gdje je samo muško umrlo."
 
 #: app/Functions/FunctionsPrintLists.php:693
@@ -12758,7 +12758,7 @@ msgstr "Prikaži osobe koje su žive ili parove gdje su oba partnera živa."
 
 #: app/Functions/FunctionsPrintLists.php:198
 #: app/Functions/FunctionsPrintLists.php:653
-msgid "Show individuals who are dead or couples where both partners are deceased."
+msgid "Show individuals who are dead or couples where both partners are dead."
 msgstr "Prikaži osobe koje su umrle ili parove gdje su oba partnera umrla."
 
 #: app/Functions/FunctionsPrintLists.php:207

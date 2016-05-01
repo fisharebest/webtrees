@@ -12635,11 +12635,11 @@ msgid "Show couples where either partner married more than once."
 msgstr "कोणी एका जोडीदाराने पुनर्विवाह केलेली दाम्पत्ये दाखवा."
 
 #: app/Functions/FunctionsPrintLists.php:635
-msgid "Show couples where only the female partner is deceased."
+msgid "Show couples where only the female partner is dead."
 msgstr "फक्त स्त्री जोडीदार स्वर्गवासी झालेली दाम्पत्ये दाखवा."
 
 #: app/Functions/FunctionsPrintLists.php:644
-msgid "Show couples where only the male partner is deceased."
+msgid "Show couples where only the male partner is dead."
 msgstr "फक्त पुरुष जोडीदार स्वर्गवासी झालेली दाम्पत्ये दाखवा."
 
 #: app/Functions/FunctionsPrintLists.php:693
@@ -12722,7 +12722,7 @@ msgstr "जिवंत व्यक्ती अथवा दोन्ही �
 
 #: app/Functions/FunctionsPrintLists.php:198
 #: app/Functions/FunctionsPrintLists.php:653
-msgid "Show individuals who are dead or couples where both partners are deceased."
+msgid "Show individuals who are dead or couples where both partners are dead."
 msgstr "स्वर्गवासी व्यक्ती अथवा दोन्ही जोडीदार स्वर्गवासी असलेली दाम्पत्ये दाखवा."
 
 #: app/Functions/FunctionsPrintLists.php:207

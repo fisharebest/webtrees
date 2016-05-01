@@ -12640,11 +12640,11 @@ msgid "Show couples where either partner married more than once."
 msgstr "Mutasd azokat a párokat, ahol valamelyik társ egynél többször házasodott."
 
 #: app/Functions/FunctionsPrintLists.php:635
-msgid "Show couples where only the female partner is deceased."
+msgid "Show couples where only the female partner is dead."
 msgstr "Mutasd azokat a párokat, ahol csak a nő hunyt el."
 
 #: app/Functions/FunctionsPrintLists.php:644
-msgid "Show couples where only the male partner is deceased."
+msgid "Show couples where only the male partner is dead."
 msgstr "Mutasd azokat a párokat, ahol csak a férfi hunyt el."
 
 #: app/Functions/FunctionsPrintLists.php:693
@@ -12727,7 +12727,7 @@ msgstr "Mutasd az élő személyeket vagy párokat, melyek mindkét tagja él."
 
 #: app/Functions/FunctionsPrintLists.php:198
 #: app/Functions/FunctionsPrintLists.php:653
-msgid "Show individuals who are dead or couples where both partners are deceased."
+msgid "Show individuals who are dead or couples where both partners are dead."
 msgstr "Mutasd az elhunyt személyeket vagy párokat, melyek mindkét tagja elhunyt."
 
 #: app/Functions/FunctionsPrintLists.php:207

@@ -999,7 +999,7 @@ class Stats {
 	}
 
 	/**
-	 * Count the number of deceased individuals.
+	 * Count the number of dead individuals.
 	 *
 	 * @return int
 	 */
@@ -1012,7 +1012,7 @@ class Stats {
 	}
 
 	/**
-	 * Count the number of deceased individuals.
+	 * Count the number of dead individuals.
 	 *
 	 * @return string
 	 */
@@ -1021,7 +1021,7 @@ class Stats {
 	}
 
 	/**
-	 * Count the number of deceased individuals.
+	 * Count the number of dead individuals.
 	 *
 	 * @return string
 	 */

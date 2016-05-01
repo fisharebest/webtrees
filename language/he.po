@@ -12639,11 +12639,11 @@ msgid "Show couples where either partner married more than once."
 msgstr "הצג זוגות שאחד מבני הזוג נשוי יותר מפעם אחת."
 
 #: app/Functions/FunctionsPrintLists.php:635
-msgid "Show couples where only the female partner is deceased."
+msgid "Show couples where only the female partner is dead."
 msgstr "הראה זוגות שבהם רק בת הזוג נפטרה."
 
 #: app/Functions/FunctionsPrintLists.php:644
-msgid "Show couples where only the male partner is deceased."
+msgid "Show couples where only the male partner is dead."
 msgstr "הראה זוגות שבהם רק בן הזוג נפטר."
 
 #: app/Functions/FunctionsPrintLists.php:693
@@ -12726,7 +12726,7 @@ msgstr "הראה אנשים חיים או זוגות שבהם שני בני הז
 
 #: app/Functions/FunctionsPrintLists.php:198
 #: app/Functions/FunctionsPrintLists.php:653
-msgid "Show individuals who are dead or couples where both partners are deceased."
+msgid "Show individuals who are dead or couples where both partners are dead."
 msgstr "הראה אנשים שנפטרו או זוגות שבהם שני בני הזוג נפטרו."
 
 #: app/Functions/FunctionsPrintLists.php:207
