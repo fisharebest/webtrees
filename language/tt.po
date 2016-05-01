@@ -14008,8 +14008,8 @@ msgid "The records “%1$s” and “%2$s” have been merged."
 msgstr ""
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
-msgid "The regex appears to contain an error. It can’t be used."
-msgstr "Эзләү аңлатмасы (regex) дөрес булмаганга охшаган. Аны кулланып булмый."
+msgid "The regular expression appears to contain an error. It can’t be used."
+msgstr "Эзләү аңлатмасы дөрес булмаганга охшаган. Аны кулланып булмый."
 
 #: setup.php:151
 msgid "The server configuration is OK."

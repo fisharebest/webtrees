@@ -11537,7 +11537,7 @@ msgid "Registry officer"
 msgstr "Bevolkingsregister amptenaar"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:165
-msgid "Regular expression"
+msgid "Regulært uttrykk"
 msgstr "Gewone uitdrukking"
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
@@ -14036,8 +14036,8 @@ msgid "The records “%1$s” and “%2$s” have been merged."
 msgstr "Die rekords “%1$s” en “%2$s” is saamgevoeg."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
-msgid "The regex appears to contain an error. It can’t be used."
-msgstr "Die 'regex' blyk 'n fout te bevat. Dit kan nie gebruik word nie."
+msgid "The regular expression appears to contain an error. It can’t be used."
+msgstr "Die reëlmatige uitdrukking blyk 'n fout te bevat. Dit kan nie gebruik word nie."
 
 #: setup.php:151
 msgid "The server configuration is OK."

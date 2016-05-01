@@ -14072,8 +14072,8 @@ msgid "The records “%1$s” and “%2$s” have been merged."
 msgstr "Zapisi “%1$s” i “%2$s” su spojeni."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
-msgid "The regex appears to contain an error. It can’t be used."
-msgstr "Izgleda da regex sadrži grešku. Ne može se koristiti."
+msgid "The regular expression appears to contain an error. It can’t be used."
+msgstr "Izgleda da regular expression sadrži grešku. Ne može se koristiti."
 
 #: setup.php:151
 msgid "The server configuration is OK."

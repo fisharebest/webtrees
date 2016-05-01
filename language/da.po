@@ -14040,8 +14040,8 @@ msgid "The records “%1$s” and “%2$s” have been merged."
 msgstr "Posterne “%1$s” og “%2$s” er blevet flettet."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
-msgid "The regex appears to contain an error. It can’t be used."
-msgstr "Denne regex indeholder tilsyneladende en fejl. Den kan ikke bruges."
+msgid "The regular expression appears to contain an error. It can’t be used."
+msgstr "Denne regulært udtryk indeholder tilsyneladende en fejl. Den kan ikke bruges."
 
 #: setup.php:151
 msgid "The server configuration is OK."

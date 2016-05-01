@@ -14041,7 +14041,7 @@ msgid "The records “%1$s” and “%2$s” have been merged."
 msgstr "Kirjed “%1$s” ja “%2$s” on liidetud."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
-msgid "The regex appears to contain an error. It can’t be used."
+msgid "The regular expression appears to contain an error. It can’t be used."
 msgstr "Regex sisaldab viga. Seda ei saa kasutada."
 
 #: setup.php:151

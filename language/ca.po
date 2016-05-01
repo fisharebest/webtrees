@@ -14040,7 +14040,7 @@ msgid "The records “%1$s” and “%2$s” have been merged."
 msgstr "S'han fusionat els registres “%1$s” i “%2$s”."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
-msgid "The regex appears to contain an error. It can’t be used."
+msgid "The regular expression appears to contain an error. It can’t be used."
 msgstr "L’expressió regular sembla contenir un error. No pot emprar-se."
 
 #: setup.php:151

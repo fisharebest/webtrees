@@ -11548,7 +11548,7 @@ msgstr "Reguláris kifejezés"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr "A „reguláris kifejezés” (regex) egy speciális minta szerinti szövegegyeztetési eljárás."
+msgstr "A „reguláris kifejezés” egy speciális minta szerinti szövegegyeztetési eljárás."
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
@@ -14041,7 +14041,7 @@ msgid "The records “%1$s” and “%2$s” have been merged."
 msgstr "A(z) „%1$s” és „%2$s” bejegyzések összefűzése megtörtént."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
-msgid "The regex appears to contain an error. It can’t be used."
+msgid "The regular expression appears to contain an error. It can’t be used."
 msgstr "Úgy tűnik, a regex hibát tartalmaz, ezért nem használható."
 
 #: setup.php:151

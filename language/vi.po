@@ -14008,8 +14008,8 @@ msgid "The records “%1$s” and “%2$s” have been merged."
 msgstr "Các bản ghi “%1$s” và “%2$s” đã được nhập một."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
-msgid "The regex appears to contain an error. It can’t be used."
-msgstr "regex có vẻ chứa lỗi. Không dùng được."
+msgid "The regular expression appears to contain an error. It can’t be used."
+msgstr "Cụm từ thông thường có vẻ chứa lỗi. Không dùng được."
 
 #: setup.php:151
 msgid "The server configuration is OK."

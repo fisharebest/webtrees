@@ -14009,7 +14009,7 @@ msgid "The records “%1$s” and “%2$s” have been merged."
 msgstr "已经合并的记录“%1$s”和“%2$s”。"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
-msgid "The regex appears to contain an error. It can’t be used."
+msgid "The regular expression appears to contain an error. It can’t be used."
 msgstr "正则表达式似乎包含错误。不能用。"
 
 #: setup.php:151
