@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-04-15 22:08+0100\n"
-"PO-Revision-Date: 2016-04-30 15:32+0000\n"
+"PO-Revision-Date: 2016-05-01 07:51+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -777,7 +777,7 @@ msgstr "A chart of individuals’ lifespans."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
+msgstr "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -3787,7 +3787,7 @@ msgstr "Click here for PhpGedView to webtrees transfer wizard"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:368
 msgid "Click here to add, edit, or delete"
-msgstr "Click here to add, edit, or delete"
+msgstr "Click here to add, edit or delete"
 
 #: individual.php:251
 msgid "Click here to open or close the sidebar"
@@ -5645,7 +5645,7 @@ msgstr "England"
 
 #: addmedia.php:429 app/Module/FamilyTreeFavoritesModule.php:212
 msgid "Enter an individual, family, or source ID"
-msgstr "Enter an individual, family, or source ID"
+msgstr "Enter an individual, family or source ID"
 
 #: app/Module/FamilyTreeFavoritesModule.php:225
 msgid "Enter an optional note about this favorite"
@@ -5654,7 +5654,7 @@ msgstr "Enter an optional note about this favourite"
 #: addmedia.php:434
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
 msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-msgstr "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
+msgstr "Enter or search for the ID of the individual, family or source to which this media object should be linked."
 
 #: reportengine.php:152
 msgid "Enter report values"
@@ -7288,7 +7288,7 @@ msgstr "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:422
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be ‘alive’. Children’s birth dates are considered to be such events for this purpose."
+msgstr "If this individual has any events other than death, burial or cremation more recent than this number of years, they are considered to be ‘alive’. Children’s birth dates are considered to be such events for this purpose."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1025
@@ -7412,11 +7412,11 @@ msgstr "In a family tree, each record has an internal reference number (called a
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanised version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled ‘Romanised’, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
+msgstr "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanised version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled ‘Romanised’, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanised version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled ‘Hebrew’, it is not restricted to containing only Hebrew characters."
+msgstr "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanised version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled ‘Hebrew’, it is not restricted to containing only Hebrew characters."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:716
@@ -10179,7 +10179,7 @@ msgstr "Olivia"
 
 #: app/Stats.php:6896
 msgid "Oman"
-msgstr ""
+msgstr "Oman"
 
 #. I18N: Name of a module
 #: app/Module/OnThisDayModule.php:31
@@ -10503,7 +10503,7 @@ msgstr "Pending changes"
 
 #: help_text.php:314
 msgid "Pending changes are only shown when your account has permission to edit. When you log out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr "Pending changes are only shown when your account has permission to edit. When you log out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
+msgstr "Pending changes are only shown when your account has permission to edit. When you log out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports or search results."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1715
@@ -10538,56 +10538,56 @@ msgstr "Phonetic"
 
 #: search.php:253
 msgid "Phonetic algorithm"
-msgstr ""
+msgstr "Phonetic algorithm"
 
 #: app/GedcomTag.php:604
 msgid "Phonetic name"
-msgstr ""
+msgstr "Phonetic name"
 
 #: app/GedcomTag.php:684
 msgid "Phonetic place"
-msgstr ""
+msgstr "Phonetic place"
 
 #. I18N: search using “sounds like”, rather than exact spelling
 #: app/Controller/SearchController.php:198 app/Theme/AbstractTheme.php:1712
 #: branches.php:51
 msgid "Phonetic search"
-msgstr ""
+msgstr "Phonetic search"
 
 #: app/GedcomTag.php:832
 msgid "Phonetic title"
-msgstr ""
+msgstr "Phonetic title"
 
 #: app/GedcomTag.php:1934
 msgid "Photo"
-msgstr ""
+msgstr "Photo"
 
 #: admin_pgv_to_wt.php:151
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "PhpGedView might be installed in one of these folders:"
 
 #. I18N: %s is a number
 #: admin_trees_manage.php:708
 #, php-format
 msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-msgstr ""
+msgstr "PhpGedView must be version 4.2.3, or any SVN up to #%s"
 
 #: admin_pgv_to_wt.php:91
 msgid "PhpGedView must use the same database as webtrees."
-msgstr ""
+msgstr "PhpGedView must use the same database as webtrees."
 
 #: admin_pgv_to_wt.php:42 admin_trees_manage.php:694
 msgid "PhpGedView to webtrees transfer wizard"
-msgstr ""
+msgstr "PhpGedView to webtrees transfer wizard"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:88
 msgid "Pink Plastic"
-msgstr ""
+msgstr "Pink Plastic"
 
 #: app/Stats.php:6899
 msgid "Pitcairn"
-msgstr ""
+msgstr "Pitcairn"
 
 #. I18N: gedcom tag PLAC
 #: app/GedcomTag.php:682 app/Module/GoogleMapsModule.php:1676
@@ -10603,133 +10603,133 @@ msgstr ""
 #: modules_v3/marriage_report/report.xml:50
 #: modules_v3/occupation_report/report.xml:60 search.php:242
 msgid "Place"
-msgstr ""
+msgstr "Place"
 
 #: app/Module/GoogleMapsModule.php:172 app/Module/GoogleMapsModule.php:312
 #: app/Module/GoogleMapsModule.php:904 app/Module/GoogleMapsModule.php:1559
 #: app/Module/GoogleMapsModule.php:1565 app/Module/GoogleMapsModule.php:2696
 #: app/Module/GoogleMapsModule.php:4114
 msgid "Place check"
-msgstr ""
+msgstr "Place check"
 
 #. I18N: Label for search field
 #: find.php:204
 msgid "Place contains"
-msgstr ""
+msgstr "Place contains"
 
 #: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
 msgid "Place hierarchy"
-msgstr ""
+msgstr "Place hierarchy"
 
 #: app/GedcomTag.php:688
 msgid "Place in Hebrew"
-msgstr ""
+msgstr "Place in Hebrew"
 
 #: placelist.php:46 placelist.php:65
 msgid "Place list"
-msgstr ""
+msgstr "Place list"
 
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: admin_trees_config.php:1650
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr ""
+msgstr "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 
 #: app/GedcomTag.php:178
 msgid "Place of LDS baptism"
-msgstr ""
+msgstr "Place of LDS baptism"
 
 #: app/GedcomTag.php:776
 msgid "Place of LDS child sealing"
-msgstr ""
+msgstr "Place of LDS child sealing"
 
 #: app/GedcomTag.php:416
 msgid "Place of LDS endowment"
-msgstr ""
+msgstr "Place of LDS endowment"
 
 #: app/GedcomTag.php:468
 msgid "Place of LDS spouse sealing"
-msgstr ""
+msgstr "Place of LDS spouse sealing"
 
 #: app/GedcomTag.php:134
 msgid "Place of adoption"
-msgstr ""
+msgstr "Place of adoption"
 
 #: app/GedcomTag.php:186 modules_v3/missing_facts_report/report.xml:140
 msgid "Place of baptism"
-msgstr ""
+msgstr "Place of baptism"
 
 #: app/GedcomTag.php:194 modules_v3/missing_facts_report/report.xml:223
 msgid "Place of bar mitzvah"
-msgstr ""
+msgstr "Place of bar mitzvah"
 
 #: app/GedcomTag.php:202 modules_v3/missing_facts_report/report.xml:264
 msgid "Place of bat mitzvah"
-msgstr ""
+msgstr "Place of bat mitzvah"
 
 #: app/GedcomTag.php:210 modules_v3/fact_sources/report.xml:273
 #: modules_v3/missing_facts_report/report.xml:93
 msgid "Place of birth"
-msgstr ""
+msgstr "Place of birth"
 
 #: app/GedcomTag.php:218
 msgid "Place of blessing"
-msgstr ""
+msgstr "Place of blessing"
 
 #: app/GedcomTag.php:1088
 msgid "Place of brit milah"
-msgstr ""
+msgstr "Place of brit milah"
 
 #: app/GedcomTag.php:230 modules_v3/missing_facts_report/report.xml:557
 msgid "Place of burial"
-msgstr ""
+msgstr "Place of burial"
 
 #: app/GedcomTag.php:282 modules_v3/missing_facts_report/report.xml:181
 msgid "Place of christening"
-msgstr ""
+msgstr "Place of christening"
 
 #: app/GedcomTag.php:314 modules_v3/missing_facts_report/report.xml:305
 msgid "Place of confirmation"
-msgstr ""
+msgstr "Place of confirmation"
 
 #: app/GedcomTag.php:334
 msgid "Place of cremation"
-msgstr ""
+msgstr "Place of cremation"
 
 #: app/GedcomTag.php:358 modules_v3/fact_sources/report.xml:275
 #: modules_v3/missing_facts_report/report.xml:516
 msgid "Place of death"
-msgstr ""
+msgstr "Place of death"
 
 #: app/GedcomTag.php:408
 msgid "Place of emigration"
-msgstr ""
+msgstr "Place of emigration"
 
 #: app/GedcomTag.php:424 modules_v3/missing_facts_report/report.xml:347
 msgid "Place of engagement"
-msgstr ""
+msgstr "Place of engagement"
 
 #: app/GedcomTag.php:432
 msgid "Place of event"
-msgstr ""
+msgstr "Place of event"
 
 #: app/GedcomTag.php:480 modules_v3/missing_facts_report/report.xml:389
 msgid "Place of first communion"
-msgstr ""
+msgstr "Place of first communion"
 
 #: app/GedcomTag.php:524
 msgid "Place of immigration"
-msgstr ""
+msgstr "Place of immigration"
 
 #: app/GedcomTag.php:462 app/GedcomTag.php:576
 #: modules_v3/fact_sources/report.xml:321
 #: modules_v3/missing_facts_report/report.xml:474
 msgid "Place of marriage"
-msgstr ""
+msgstr "Place of marriage"
 
 #: app/GedcomTag.php:560 modules_v3/missing_facts_report/report.xml:431
 msgid "Place of marriage banns"
-msgstr ""
+msgstr "Place of marriage banns"
 
 #: app/GedcomTag.php:618
 msgid "Place of naturalization"
@@ -10737,35 +10737,35 @@ msgstr "Place of naturalisation"
 
 #: app/GedcomTag.php:666
 msgid "Place of ordination"
-msgstr ""
+msgstr "Place of ordination"
 
 #: app/GedcomTag.php:732
 msgid "Place of residence"
-msgstr ""
+msgstr "Place of residence"
 
 #: admin_site_upgrade.php:416
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Place the website offline, by creating the file %s…"
 
 #: admin_site_upgrade.php:472
 #, php-format
 msgid "Place the website online, by deleting the file %s…"
-msgstr ""
+msgstr "Place the website online, by deleting the file %s…"
 
 #: admin_trees_config.php:1624 search.php:204 statistics.php:407
 msgid "Places"
-msgstr ""
+msgstr "Places"
 
 #: find.php:671
 msgid "Places found"
-msgstr ""
+msgstr "Places found"
 
 #. I18N: %s is a country or region
 #: placelist.php:142
 #, php-format
 msgid "Places in %s"
-msgstr ""
+msgstr "Places in %s"
 
 #: help_text.php:253
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
@@ -10775,7 +10775,7 @@ msgstr "Places should be entered according to the standards for genealogy. In ge
 #: app/Theme/FabTheme.php:109 app/Theme/MinimalTheme.php:106
 #: app/Theme/WebtreesTheme.php:72 app/Theme/XeneaTheme.php:88
 msgid "Play"
-msgstr ""
+msgstr "Play"
 
 #: login.php:338
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
@@ -10783,11 +10783,11 @@ msgstr "Please click on the following link and fill in the requested data to con
 
 #: search.php:55
 msgid "Please enter a given name, surname, or place in addition to the year"
-msgstr ""
+msgstr "Please enter a given name, surname or place in addition to the year"
 
 #: message.php:91
 msgid "Please enter a message subject."
-msgstr ""
+msgstr "Please enter a message subject."
 
 #: message.php:50
 msgid "Please enter a valid email address."
@@ -10796,11 +10796,11 @@ msgstr "Please enter a valid e-mail address."
 #: app/Module/CensusAssistantModule.php:169 find.php:127 search.php:36
 #: search.php:48
 msgid "Please enter more than one character."
-msgstr ""
+msgstr "Please enter more than one character."
 
 #: message.php:96
 msgid "Please enter some message text before sending."
-msgstr ""
+msgstr "Please enter some message text before sending."
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
@@ -10832,17 +10832,17 @@ msgstr "Pluviôse"
 
 #: app/Stats.php:6904
 msgid "Poland"
-msgstr ""
+msgstr "Poland"
 
 #: app/SurnameTradition.php:90
 msgctxt "Surname tradition"
 msgid "Polish"
-msgstr ""
+msgstr "Polish"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:357 setup.php:281
 msgid "Port number"
-msgstr ""
+msgstr "Port number"
 
 #: app/GedcomCode/GedcomCodeTemp.php:263
 msgid "Portland, Oregon, United States"
@@ -10850,22 +10850,22 @@ msgstr "Portland, Oregon, United States"
 
 #: app/GedcomCode/GedcomCodeTemp.php:251
 msgid "Porto Alegre, Brazil"
-msgstr ""
+msgstr "Porto Alegre, Brazil"
 
 #. I18N: page orientation
 #: admin_trees_config.php:53 modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6 pedigree.php:182
 msgid "Portrait"
-msgstr ""
+msgstr "Portrait"
 
 #: app/Stats.php:6907
 msgid "Portugal"
-msgstr ""
+msgstr "Portugal"
 
 #: app/SurnameTradition.php:84
 msgctxt "Surname tradition"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portuguese"
 
 #. I18N: gedcom tag POST
 #: app/GedcomTag.php:692
@@ -10876,49 +10876,49 @@ msgstr "Post code"
 #: app/Date/FrenchDate.php:96
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:129
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:63
 msgctxt "NOMINATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #: app/Module/GoogleMapsModule.php:3931
 msgid "Precision"
-msgstr ""
+msgstr "Precision"
 
 #: app/Module/GoogleMapsModule.php:403
 msgid "Precision of the latitude and longitude"
-msgstr ""
+msgstr "Precision of the latitude and longitude"
 
 #: admin_site_config.php:122
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr ""
+msgstr "Predefined text that states admin will decide on each request for a user account"
 
 #: admin_site_config.php:121
 msgid "Predefined text that states all users can request a user account"
-msgstr ""
+msgstr "Predefined text that states all users can request a user account"
 
 #: admin_site_config.php:123
 msgid "Predefined text that states only family members can request a user account"
-msgstr ""
+msgstr "Predefined text that states only family members can request a user account"
 
 #: admin_trees_config.php:332 admin_trees_manage.php:385
 msgid "Preferences"
-msgstr ""
+msgstr "Preferences"
 
 #: admin_modules.php:98
 #, php-format
@@ -10928,48 +10928,48 @@ msgstr "Preferences exist for the module ‘%s’, but this module no longer exi
 #. I18N: A configuration setting
 #: admin_users.php:472
 msgid "Preferred contact method"
-msgstr ""
+msgstr "Preferred contact method"
 
 #: app/Module/GoogleMapsModule.php:428
 msgid "Prefixes"
-msgstr ""
+msgstr "Prefixes"
 
 #: app/Module/OnThisDayModule.php:147 app/Module/RecentChangesModule.php:153
 #: app/Module/TopGivenNamesModule.php:152 app/Module/TopSurnamesModule.php:174
 #: app/Module/UpcomingAnniversariesModule.php:166
 #: app/Module/YahrzeitModule.php:274
 msgid "Presentation style"
-msgstr ""
+msgstr "Presentation style"
 
 #. I18N: http://en.wikipedia.org/wiki/President_of_the_Church
 #: app/GedcomCode/GedcomCodeTemp.php:261
 msgid "President’s Office"
-msgstr ""
+msgstr "President’s Office"
 
 #: app/GedcomCode/GedcomCodeTemp.php:265
 msgid "Preston, England"
-msgstr ""
+msgstr "Preston, England"
 
 #: app/GedcomCode/GedcomCodeRela.php:216
 msgid "Priest"
-msgstr ""
+msgstr "Priest"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:197
 msgid "Primidi"
-msgstr ""
+msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr ""
+msgstr "Print basic events when blank"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:395
 msgid "Privacy"
-msgstr ""
+msgstr "Privacy"
 
 #: admin_trees_config.php:505 admin_trees_config.php:525
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr ""
+msgstr "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:532
 #: app/GedcomRecord.php:610 app/GedcomRecord.php:735 app/Individual.php:1309
@@ -10977,17 +10977,17 @@ msgstr ""
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1470 app/Stats.php:2975 expand_view.php:33
 msgid "Private"
-msgstr ""
+msgstr "Private"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:696
 msgid "Probate"
-msgstr ""
+msgstr "Probate"
 
 #. I18N: gedcom tag PROP
 #: app/GedcomTag.php:700
 msgid "Property"
-msgstr ""
+msgstr "Property"
 
 #: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "Provo, Utah, United States"
@@ -10996,64 +10996,64 @@ msgstr "Provo, Utah, United States"
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:704
 msgid "Publication"
-msgstr ""
+msgstr "Publication"
 
 #: app/Stats.php:6905
 msgid "Puerto Rico"
-msgstr ""
+msgstr "Puerto Rico"
 
 #: app/Stats.php:6911
 msgid "Qatar"
-msgstr ""
+msgstr "Qatar"
 
 #. I18N: gedcom tag QUAY
 #: app/GedcomTag.php:708
 msgid "Quality of data"
-msgstr ""
+msgstr "Quality of data"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:200
 msgid "Quartidi"
-msgstr ""
+msgstr "Quartidi"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:175
 msgid "Question"
-msgstr ""
+msgstr "Question"
 
 #: admin_trees_config.php:1926
 msgid "Quick family facts"
-msgstr ""
+msgstr "Quick family facts"
 
 #: admin_trees_config.php:1808
 msgid "Quick individual facts"
-msgstr ""
+msgstr "Quick individual facts"
 
 #: admin_trees_config.php:2104
 msgid "Quick repository facts"
-msgstr ""
+msgstr "Quick repository facts"
 
 #: admin_trees_config.php:2015
 msgid "Quick source facts"
-msgstr ""
+msgstr "Quick source facts"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:201
 msgid "Quintidi"
-msgstr ""
+msgstr "Quintidi"
 
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:133 app/Module/UserMessagesModule.php:134
 msgid "RE: "
-msgstr ""
+msgstr "RE: "
 
 #. I18N: Menu entry
 #: admin_site_readme.php:28 app/Theme/AdministrationTheme.php:104
 msgid "README documentation"
-msgstr ""
+msgstr "README documentation"
 
 #: app/GedcomCode/GedcomCodeRela.php:219
 msgid "Rabbi"
-msgstr ""
+msgstr "Rabbi"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:92
@@ -11112,25 +11112,25 @@ msgstr "Radāʿ"
 #: app/Date/HijriDate.php:96
 msgctxt "GENITIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:128
 msgctxt "LOCATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:64
 msgctxt "NOMINATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #: app/GedcomCode/GedcomCodeTemp.php:269
 msgid "Raleigh, North Carolina, United States"
@@ -11140,68 +11140,68 @@ msgstr "Raleigh, North Carolina, United States"
 #: app/Date/HijriDate.php:98
 msgctxt "GENITIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:130
 msgctxt "LOCATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:66
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:39
 msgid "Random images from the current family tree."
-msgstr ""
+msgstr "Random images from the current family tree."
 
 #: app/Controller/FamilyController.php:88
 #: app/Module/RelativesTabModule.php:279 edit_interface.php:1803
 #: edit_interface.php:1877
 msgid "Re-order children"
-msgstr ""
+msgstr "Re-order children"
 
 #: app/Controller/IndividualController.php:297
 #: app/Module/RelativesTabModule.php:361 edit_interface.php:2188
 #: edit_interface.php:2239
 msgid "Re-order families"
-msgstr ""
+msgstr "Re-order families"
 
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: app/GedcomTag.php:1763 app/Module/AlbumModule.php:110
 #: app/Module/AlbumModule.php:111 edit_interface.php:1671
 #: edit_interface.php:1768
 msgid "Re-order media"
-msgstr ""
+msgstr "Re-order media"
 
 #: admin_users.php:313 admin_users.php:867 edituser.php:170 login.php:321
 #: login.php:416
 msgid "Real name"
-msgstr ""
+msgstr "Real name"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:44
 #: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
-msgstr ""
+msgstr "Recent changes"
 
 #: calendar.php:242
 msgid "Recent years (&lt; 100 yrs)"
-msgstr ""
+msgstr "Recent years (&lt; 100 yrs)"
 
 #: app/GedcomCode/GedcomCodeTemp.php:271
 msgid "Recife, Brazil"
-msgstr ""
+msgstr "Recife, Brazil"
 
 #: admin_site_change.php:327 admin_site_change.php:388
 #: admin_trees_config.php:530 app/Functions/FunctionsPrintLists.php:1800
@@ -11211,25 +11211,25 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
-msgstr ""
+msgstr "Record"
 
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:750
 msgid "Record ID number"
-msgstr ""
+msgstr "Record ID number"
 
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:746
 msgid "Record file number"
-msgstr ""
+msgstr "Record file number"
 
 #: search.php:83 statistics.php:349
 msgid "Records"
-msgstr ""
+msgstr "Records"
 
 #: admin_site_merge.php:59
 msgid "Records are not the same type. Cannot merge records that are not the same type."
-msgstr ""
+msgstr "Records are not the same type. Cannot merge records that are not the same type."
 
 #: app/GedcomCode/GedcomCodeTemp.php:273
 msgid "Redlands, California, United States"
@@ -11238,113 +11238,113 @@ msgstr "Redlands, California, United States"
 #: app/Module/GoogleMapsModule.php:991 app/Module/GoogleMapsModule.php:2338
 #: app/Module/GoogleMapsModule.php:3645
 msgid "Redraw map"
-msgstr ""
+msgstr "Redraw map"
 
 #. I18N: gedcom tag REFN
 #: app/GedcomTag.php:712
 msgid "Reference number"
-msgstr ""
+msgstr "Reference number"
 
 #: app/GedcomCode/GedcomCodeTemp.php:275
 msgid "Regina, Saskatchewan, Canada"
-msgstr ""
+msgstr "Regina, Saskatchewan, Canada"
 
 #: app/GedcomTag.php:580 modules_v3/fact_sources/report.xml:205
 msgid "Registered partnership"
-msgstr ""
+msgstr "Registered partnership"
 
 #: app/GedcomCode/GedcomCodeRela.php:227
 msgid "Registry officer"
-msgstr ""
+msgstr "Registry officer"
 
 #: app/GedcomCode/GedcomCodeRela.php:225
 msgctxt "FEMALE"
 msgid "Registry officer"
-msgstr ""
+msgstr "Registry officer"
 
 #: app/GedcomCode/GedcomCodeRela.php:223
 msgctxt "MALE"
 msgid "Registry officer"
-msgstr ""
+msgstr "Registry officer"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:165
 msgid "Regular expression"
-msgstr ""
+msgstr "Regular expression"
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Regular expressions are an advanced pattern matching technique."
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
 #: modules_v3/individual_ext_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:91
 msgid "Related families"
-msgstr ""
+msgstr "Related families"
 
 #. I18N: Name of a report
 #: app/Module/RelatedIndividualsReportModule.php:29
 #: modules_v3/relative_ext_report/report.xml:3
 #: modules_v3/relative_ext_report/report.xml:43
 msgid "Related individuals"
-msgstr ""
+msgstr "Related individuals"
 
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:716
 msgid "Relationship"
-msgstr ""
+msgstr "Relationship"
 
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1501
 msgid "Relationship to father"
-msgstr ""
+msgstr "Relationship to father"
 
 #: app/Module/RelationshipsChartModule.php:78
 msgid "Relationship to me"
-msgstr ""
+msgstr "Relationship to me"
 
 #. I18N: gedcom tag _MREL
 #: app/GedcomTag.php:1663
 msgid "Relationship to mother"
-msgstr ""
+msgstr "Relationship to mother"
 
 #. I18N: gedcom tag PEDI
 #: app/GedcomTag.php:674
 msgid "Relationship to parents"
-msgstr ""
+msgstr "Relationship to parents"
 
 #: relationship.php:147
 #, php-format
 msgid "Relationship: %s"
-msgstr ""
+msgstr "Relationship: %s"
 
 #. I18N: Name of a module/chart
 #: app/Functions/FunctionsPrintLists.php:356
 #: app/Module/RelationshipsChartModule.php:44
 #: app/Module/RelationshipsChartModule.php:85 relationship.php:57
 msgid "Relationships"
-msgstr ""
+msgstr "Relationships"
 
 #. I18N: %s are individual’s names
 #: relationship.php:52
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr ""
+msgstr "Relationships between %1$s and %2$s"
 
 #. I18N: gedcom tag RELI
 #: app/GedcomTag.php:720 modules_v3/missing_facts_report/report.xml:26
 #: modules_v3/missing_facts_report/report.xml:587
 msgid "Religion"
-msgstr ""
+msgstr "Religion"
 
 #: app/GedcomTag.php:662
 msgid "Religious institution"
-msgstr ""
+msgstr "Religious institution"
 
 #: app/GedcomTag.php:582 modules_v3/fact_sources/report.xml:199
 msgid "Religious marriage"
-msgstr ""
+msgstr "Religious marriage"
 
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
@@ -11353,7 +11353,7 @@ msgstr "Reminder e-mail frequency (days)"
 #. I18N: gedcom tag SERV
 #: app/GedcomTag.php:762
 msgid "Remote server"
-msgstr ""
+msgstr "Remote server"
 
 #: app/Module/CensusAssistantModule.php:386
 #: app/Module/CensusAssistantModule.php:407
@@ -11367,33 +11367,33 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:526
 msgid "Remove"
-msgstr ""
+msgstr "Remove"
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:30
 msgid "Remove duplicate links"
-msgstr ""
+msgstr "Remove duplicate links"
 
 #: app/Module/GoogleMapsModule.php:611 app/Module/GoogleMapsModule.php:614
 #: app/Module/GoogleMapsModule.php:617 app/Module/GoogleMapsModule.php:4011
 msgid "Remove flag"
-msgstr ""
+msgstr "Remove flag"
 
 #: timeline.php:277 timeline.php:292
 msgid "Remove individual"
-msgstr ""
+msgstr "Remove individual"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:127
 msgid "Remove link from list"
-msgstr ""
+msgstr "Remove link from list"
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:285
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Remove the GEDCOM media path from filenames"
 
 #: app/Module/GoogleMapsModule.php:4529
 msgid "Remove this location?"
-msgstr ""
+msgstr "Remove this location?"
 
 #: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Reno, Nevada, United States"
@@ -11401,41 +11401,41 @@ msgstr "Reno, Nevada, United States"
 
 #: admin_trees_manage.php:506
 msgid "Renumber"
-msgstr ""
+msgstr "Renumber"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:100 admin_trees_merge.php:105
 #: admin_trees_renumber.php:33
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Renumber family tree"
 
 #. I18N: button label
 #: search.php:217
 msgid "Replace"
-msgstr ""
+msgstr "Replace"
 
 #: admin_trees_places.php:104 search.php:162
 msgid "Replace with"
-msgstr ""
+msgstr "Replace with"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:153
 msgid "Replacement text"
-msgstr ""
+msgstr "Replacement text"
 
 #: app/Module/UserMessagesModule.php:137
 msgid "Reply"
-msgstr ""
+msgstr "Reply"
 
 #: admin_module_reports.php:66 admin_modules.php:190 reportengine.php:125
 #: reportengine.php:153
 msgid "Report"
-msgstr ""
+msgstr "Report"
 
 #. I18N: Menu entry
 #: admin_module_reports.php:28 admin_modules.php:164
 #: app/Theme/AbstractTheme.php:1694 app/Theme/AdministrationTheme.php:196
 msgid "Reports"
-msgstr ""
+msgstr "Reports"
 
 #: admin.php:757 admin.php:815 admin_trees_duplicates.php:140
 #: app/Module/FamilyTreeStatisticsModule.php:120
@@ -11443,52 +11443,52 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:199 app/Theme/AbstractTheme.php:1536
 #: repolist.php:33 repolist.php:37 statistics.php:355
 msgid "Repositories"
-msgstr ""
+msgstr "Repositories"
 
 #: find.php:693
 msgid "Repositories found"
-msgstr ""
+msgstr "Repositories found"
 
 #. I18N: gedcom tag REPO
 #: admin_trees_manage.php:554 app/GedcomTag.php:724 inverselink.php:130
 msgid "Repository"
-msgstr ""
+msgstr "Repository"
 
 #: admin_trees_config.php:809
 msgid "Repository ID prefix"
-msgstr ""
+msgstr "Repository ID prefix"
 
 #. I18N: Label for search field
 #: find.php:223
 msgid "Repository contains"
-msgstr ""
+msgstr "Repository contains"
 
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
-msgstr ""
+msgstr "Repository name"
 
 #: app/Module/LoginBlockModule.php:86 login.php:207
 msgid "Request new password"
-msgstr ""
+msgstr "Request new password"
 
 #: app/Module/LoginBlockModule.php:89 app/Module/WelcomeBlockModule.php:60
 #: login.php:210 login.php:277
 msgid "Request new user account"
-msgstr ""
+msgstr "Request new user account"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1739
 msgid "Research task"
-msgstr ""
+msgstr "Research task"
 
 #. I18N: Name of a module. Tasks that need further research.
 #: app/Module/ResearchTaskModule.php:39
 msgid "Research tasks"
-msgstr ""
+msgstr "Research tasks"
 
 #: app/Module/ResearchTaskModule.php:204
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr ""
+msgstr "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
 
 #: app/Module/ResearchTaskModule.php:206
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
@@ -11497,42 +11497,42 @@ msgstr "Research tasks are stored using the custom GEDCOM tag ‘_TODO’. Other
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:728
 msgid "Residence"
-msgstr ""
+msgstr "Residence"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Restore the default block layout"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr ""
+msgstr "Restrict access to the website, using IP addresses and user-agent strings."
 
 #: admin_users.php:588
 msgid "Restrict to immediate family"
-msgstr ""
+msgstr "Restrict to immediate family"
 
 #. I18N: gedcom tag RESN
 #: app/GedcomTag.php:736
 msgid "Restriction"
-msgstr ""
+msgstr "Restriction"
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr ""
+msgstr "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
 
 #: app/Stats.php:87
 msgid "Resulting value"
-msgstr ""
+msgstr "Resulting value"
 
 #: statistics.php:634
 msgid "Results"
-msgstr ""
+msgstr "Results"
 
 #. I18N: gedcom tag RETI
 #: app/GedcomTag.php:740
 msgid "Retirement"
-msgstr ""
+msgstr "Retirement"
 
 #: app/Stats.php:6912
 msgid "Reunion"
@@ -11540,16 +11540,16 @@ msgstr "Réunion"
 
 #: index_edit.php:304
 msgid "Right section blocks"
-msgstr ""
+msgstr "Right section blocks"
 
 #. I18N: gedcom tag ROLE
 #: admin_users.php:579 app/GedcomTag.php:754
 msgid "Role"
-msgstr ""
+msgstr "Role"
 
 #: app/Stats.php:6913
 msgid "Romania"
-msgstr ""
+msgstr "Romania"
 
 #. I18N: gedcom tag ROMN
 #: app/GedcomTag.php:758
@@ -11567,30 +11567,30 @@ msgstr "Romanised title"
 #: app/Functions/FunctionsPrintLists.php:250
 #: app/Functions/FunctionsPrintLists.php:666
 msgid "Roots"
-msgstr ""
+msgstr "Roots"
 
 #. I18N: A configuration setting
 #. I18N: noun
 #: admin_site_access.php:287 admin_site_access.php:365
 msgid "Rule"
-msgstr ""
+msgstr "Rule"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:29 branches.php:55 search.php:258
 msgid "Russell"
-msgstr ""
+msgstr "Russell"
 
 #: app/Stats.php:6914
 msgid "Russia"
-msgstr ""
+msgstr "Russia"
 
 #: app/Stats.php:6915
 msgid "Rwanda"
-msgstr ""
+msgstr "Rwanda"
 
 #: admin_site_config.php:339
 msgid "SMTP mail server"
-msgstr ""
+msgstr "SMTP mail server"
 
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Sacramento, California, United States"
@@ -11623,27 +11623,27 @@ msgstr "Ṣafar"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:89
 msgid "Sage"
-msgstr ""
+msgstr "Sage"
 
 #: app/Stats.php:6925
 msgid "Saint Helena"
-msgstr ""
+msgstr "Saint Helena"
 
 #: app/Stats.php:6845
 msgid "Saint Kitts and Nevis"
-msgstr ""
+msgstr "Saint Kitts and Nevis"
 
 #: app/Stats.php:6852
 msgid "Saint Lucia"
-msgstr ""
+msgstr "Saint Lucia"
 
 #: app/Stats.php:6933
 msgid "Saint Pierre and Miquelon"
-msgstr ""
+msgstr "Saint Pierre and Miquelon"
 
 #: app/Stats.php:6967
 msgid "Saint Vincent and the Grenadines"
-msgstr ""
+msgstr "Saint Vincent and the Grenadines"
 
 #: app/GedcomCode/GedcomCodeTemp.php:299
 msgid "Salt Lake City, Utah, United States"
@@ -11651,7 +11651,7 @@ msgstr "Salt Lake City, Utah, United States"
 
 #: app/Stats.php:6976
 msgid "Samoa"
-msgstr ""
+msgstr "Samoa"
 
 #: app/GedcomCode/GedcomCodeTemp.php:285
 msgid "San Antonio, Texas, United States"
@@ -11667,15 +11667,15 @@ msgstr "San José, Costa Rica"
 
 #: app/Stats.php:6931
 msgid "San Marino"
-msgstr ""
+msgstr "San Marino"
 
 #: app/GedcomCode/GedcomCodeTemp.php:283
 msgid "Santiago, Chile"
-msgstr ""
+msgstr "Santiago, Chile"
 
 #: app/GedcomCode/GedcomCodeTemp.php:289
 msgid "Santo Domingo, Dominican Republic"
-msgstr ""
+msgstr "Santo Domingo, Dominican Republic"
 
 #: app/GedcomCode/GedcomCodeTemp.php:305
 msgid "Sao Paulo, Brazil"
@@ -11688,55 +11688,55 @@ msgstr "São Tomé and Príncipe"
 #. I18N: abbreviation for Saturday
 #: app/Date/CalendarDate.php:371 app/Functions/FunctionsPrint.php:670
 msgid "Sat"
-msgstr ""
+msgstr "Sat"
 
 #: app/Module/GoogleMapsModule.php:332
 msgid "Satellite"
-msgstr ""
+msgstr "Satellite"
 
 #: app/Date/CalendarDate.php:346
 msgid "Saturday"
-msgstr ""
+msgstr "Saturday"
 
 #: app/Stats.php:6916
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "Saudi Arabia"
 
 #: app/GedcomTag.php:388
 msgid "School or college"
-msgstr ""
+msgstr "School or college"
 
 #: app/Stats.php:6918
 msgid "Scotland"
-msgstr ""
+msgstr "Scotland"
 
 #. I18N: gedcom tag _SCBK
 #: app/GedcomTag.php:1719
 msgid "Scrapbook"
-msgstr ""
+msgstr "Scrapbook"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:81
 msgctxt "Female pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Sealing"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:77
 msgctxt "Male pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Sealing"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:85
 msgctxt "Pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Sealing"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
 msgid "Sealing cancelled (divorce)"
-msgstr ""
+msgstr "Sealing cancelled (divorce)"
 
 #. I18N: button label
 #: app/Module/DescendancyModule.php:101 app/Module/DescendancyModule.php:134
@@ -13390,7 +13390,7 @@ msgstr "The changes to ‘%s’ have been rejected."
 
 #: app/Module/ClippingsCartModule.php:311
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>"
-msgstr "The clippings cart allows you to take extracts (‘clippings’) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the ‘Download’ link. Follow the instructions and links.</li></ul>"
+msgstr "The clippings cart allows you to take extracts (‘clippings’) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the ‘Download’ link. Follow the instructions and links.</li></ul>"
 
 #: site-unavailable.php:54
 msgid "The database reported the following error message:"
@@ -13604,7 +13604,7 @@ msgstr ""
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr "The media file you are uploading can be and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called ‘granny.jpg’.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
+msgstr "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called ‘granny.jpg’.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
 
 #: setup.php:169
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -14006,7 +14006,7 @@ msgstr ""
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-msgstr ""
+msgstr "This file is linked to another family tree on this server. It cannot be deleted, moved or renamed until these links have been removed."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:179
@@ -14079,7 +14079,7 @@ msgstr "This is a comma separated list of GEDCOM fact tags that will be shown wh
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2185
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr ""
+msgstr "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -14336,7 +14336,7 @@ msgstr ""
 
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
-msgstr ""
+msgstr "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
 
 #: app/Theme/AbstractTheme.php:482
 #, php-format
@@ -14649,7 +14649,7 @@ msgstr ""
 #. I18N: “Apache” is a software program.
 #: admin_site_config.php:182
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr ""
+msgstr "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 
 #: help_text.php:298
 msgid "To reduce the height of the News block, the administrator has hidden some articles. You can reveal these hidden articles by clicking the <b>View archive</b> link."
@@ -14662,7 +14662,7 @@ msgstr ""
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:477
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr ""
+msgstr "To set this text for other languages, you must switch to that language, and visit this page again."
 
 #: app/Module/SiteMapModule.php:331
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -15122,7 +15122,7 @@ msgstr ""
 
 #: admin_media_upload.php:187
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr ""
+msgstr "Upload one or more media files from your local computer. Media files can be pictures, video, audio or other formats."
 
 #: app/Stats.php:6963
 msgid "Uruguay"
@@ -15579,7 +15579,7 @@ msgstr ""
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2226
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr ""
+msgstr "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage and death). This option controls whether records or facts will be selected by default."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:858
@@ -19790,38 +19790,38 @@ msgstr ""
 #: admin_trees_config.php:434 admin_trees_config.php:474
 #: admin_trees_config.php:494
 msgid "visitors"
-msgstr ""
+msgstr "visitors"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:107
 msgctxt "FEMALE"
 msgid "was born"
-msgstr ""
+msgstr "was born"
 
 #: modules_v3/ahnentafel_report/report.xml:140
 #: modules_v3/descendancy_report/report.xml:104
 msgctxt "MALE"
 msgid "was born"
-msgstr ""
+msgstr "was born"
 
 #: app/Theme/WebtreesTheme.php:128
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:110
 #, php-format
 msgid "webtrees cannot connect to the PhpGedView database: %s."
-msgstr ""
+msgstr "webtrees cannot connect to the PhpGedView database: %s."
 
 #: message.php:40 message.php:260 message.php:322
 msgid "webtrees message"
-msgstr ""
+msgstr "webtrees message"
 
 #: setup.php:273
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr ""
+msgstr "webtrees needs a MySQL database, version %s or later."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:321
@@ -19831,7 +19831,7 @@ msgstr "webtrees needs to send e-mails, such as password reminders and website n
 #. I18N: A configuration setting
 #: admin_trees_config.php:868
 msgid "webtrees reply address"
-msgstr ""
+msgstr "webtrees reply address"
 
 #: app/Functions/FunctionsEdit.php:248
 msgid "webtrees sends emails with no storage"
@@ -19839,11 +19839,11 @@ msgstr "webtrees sends e-mail with no storage"
 
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr ""
+msgstr "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 
 #: app/Functions/FunctionsPrint.php:210
 msgid "webtrees wiki"
-msgstr ""
+msgstr "webtrees wiki"
 
 #: admin_trees_manage.php:705
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
@@ -19851,21 +19851,21 @@ msgstr "webtrees’ database must be on the same server as PhpGedView’s"
 
 #: app/Module/GoogleMapsModule.php:3987
 msgid "west"
-msgstr ""
+msgstr "west"
 
 #: app/Functions/Functions.php:709 edit_interface.php:1937
 #: edit_interface.php:1972
 msgid "wife"
-msgstr ""
+msgstr "wife"
 
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:144
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:130
 msgid "years"
-msgstr ""
+msgstr "years"
 
 #: admin_trees_config.php:75 admin_users.php:242 admin_users.php:243
 #: app/Functions/FunctionsEdit.php:133 app/Functions/FunctionsEdit.php:626
@@ -19883,12 +19883,12 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:179
 #: modules_v3/individual_report/report.xml:175
 msgid "yes"
-msgstr ""
+msgstr "yes"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:93
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr ""
+msgstr "you can connect to the database using other applications, such as phpmyadmin"
 
 #: app/Functions/Functions.php:743
 msgid "younger brother"
