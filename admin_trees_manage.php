@@ -675,7 +675,7 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 						<div class="col-sm-offset-2 col-sm-10">
 							<button type="submit" class="btn btn-primary">
 								<i class="fa fa-check"></i>
-								<?php echo /* I18N: Button label */ I18N::translate('create'); ?>
+								<?php echo /* I18N: A button label */ I18N::translate('create'); ?>
 							</button>
 							<p class="small text-muted">
 								<?php echo I18N::translate('After creating the family tree, you will be able to import data from a GEDCOM file.'); ?>
@@ -751,7 +751,7 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 					<input type="hidden" name="action" value="synchronize">
 					<button type="submit" class="btn btn-danger">
 						<i class="fa fa-refresh"></i>
-						<?php echo /* I18N: Button label */ I18N::translate('continue'); ?>
+						<?php echo /* I18N: A button label */ I18N::translate('continue'); ?>
 					</button>
 					<p class="small text-muted">
 						<?php echo I18N::translate('Caution! This may take a long time. Be patient.'); ?>

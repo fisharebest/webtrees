@@ -112,6 +112,6 @@ sort($entries);
 	</fieldset>
 	<button class="btn btn-danger" type="submit">
 		<i class="fa fa-trash-o"></i>
-		<?php echo /* I18N: Button label */ I18N::translate('delete'); ?>
+		<?php echo /* I18N: A button label */ I18N::translate('delete'); ?>
 	</button>
 </form>

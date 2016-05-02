@@ -538,7 +538,7 @@ $controller
 			<th>
 				<button class="btn btn-primary" id="add-resn" type="button">
 					<i class="fa fa-plus"></i>
-					<?php echo /* I18N: button label. Add an item. */ I18N::translate('Add'); ?>
+					<?php echo /* I18N: A button label. Add an item. */ I18N::translate('Add'); ?>
 				</button>
 			</th>
 		</tr>
@@ -1431,7 +1431,7 @@ $controller
 				<div class="input-group-btn">
 					<a class="btn btn-default" onclick="return findFact('CHART_BOX_TAGS', 'INDI');">
 						<i class="fa fa-pencil"></i>
-						<?php echo /* I18N: button label */ I18N::translate('edit'); ?>
+						<?php echo /* I18N: A button label */ I18N::translate('edit'); ?>
 					</a>
 				</div>
 			</div>

@@ -184,7 +184,7 @@ if (!isset($_POST['lang'])) {
 		I18N::translate('If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator.'),
 		'</p>';
 	if (!$errors) {
-		echo '<br><hr><input type="submit" id="btncontinue" value="', /* I18N: button label */ I18N::translate('continue'), '">';
+		echo '<br><hr><input type="submit" id="btncontinue" value="', /* I18N: A button label */ I18N::translate('continue'), '">';
 
 	}
 	echo '</form></body></html>';

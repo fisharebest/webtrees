@@ -222,7 +222,7 @@ default:
 				'<input type="text" id="new_passwd_username" name="new_passwd_username" value="">
 			</label>
 		</div>
-		<div><input type="submit" value="', /* I18N: button label */ I18N::translate('continue'), '"></div>
+		<div><input type="submit" value="', /* I18N: A button label */ I18N::translate('continue'), '"></div>
 		</form>
 	</div>';
 	echo '</div>';

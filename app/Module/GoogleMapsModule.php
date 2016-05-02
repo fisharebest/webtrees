@@ -1739,7 +1739,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 
 				if ($row['pl_place'] != '') {
-					$placestr2 = $mapstr_edit . $id . "&amp;level=" . $level . $mapstr3 . $mapstr5 . I18N::translate('Zoom=') . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
+					$placestr2 = $mapstr_edit . $id . "&amp;level=" . $level . $mapstr3 . $mapstr5 . I18N::translate('Zoom') . ' ' . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
 					if ($row['pl_place'] === 'unknown') {
 						$matched[$x]++;
 					}
