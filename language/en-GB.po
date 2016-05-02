@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-01 09:56+0100\n"
-"PO-Revision-Date: 2016-05-02 15:37+0000\n"
+"PO-Revision-Date: 2016-05-02 15:57+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -16931,153 +16931,153 @@ msgstr "edit"
 #: app/Functions/Functions.php:516
 msgctxt "FEMALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "eighth cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:473
 msgctxt "MALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "eighth cousin"
 
 #: app/Functions/Functions.php:551
 msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "eighth cousin"
 
 #: app/Functions/Functions.php:745
 msgid "elder brother"
-msgstr ""
+msgstr "elder brother"
 
 #: app/Functions/Functions.php:779
 msgid "elder sibling"
-msgstr ""
+msgstr "elder sibling"
 
 #: app/Functions/Functions.php:762
 msgid "elder sister"
-msgstr ""
+msgstr "elder sister"
 
 #: app/Functions/Functions.php:522
 msgctxt "FEMALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "eleventh cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:482
 msgctxt "MALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "eleventh cousin"
 
 #: app/Functions/Functions.php:557
 msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "eleventh cousin"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:103
 msgid "estate name"
-msgstr ""
+msgstr "estate name"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:100
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "estate name"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:97
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "estate name"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:304
 #, php-format
 msgid "estimated %s"
-msgstr ""
+msgstr "estimated %s"
 
 #: app/Functions/Functions.php:685
 msgid "ex-husband"
-msgstr ""
+msgstr "ex-husband"
 
 #: app/Functions/Functions.php:698
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partner"
 
 #: app/Functions/Functions.php:680
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partner"
 
 #: app/Functions/Functions.php:716
 msgctxt "MALE/FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partner"
 
 #: app/Functions/Functions.php:721
 msgid "ex-spouse"
-msgstr ""
+msgstr "ex-spouse"
 
 #: app/Functions/Functions.php:703
 msgid "ex-wife"
-msgstr ""
+msgstr "ex-wife"
 
 #: admin_trees_config.php:69 modules_v3/fact_sources/report.xml:6
 msgid "facts"
-msgstr ""
+msgstr "facts"
 
 #: app/Functions/Functions.php:671
 msgid "father"
-msgstr ""
+msgstr "father"
 
 #: app/Functions/Functions.php:842
 msgctxt "husband’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "father-in-law"
 
 #: app/Functions/Functions.php:922
 msgctxt "spouse’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "father-in-law"
 
 #: app/Functions/Functions.php:940
 msgctxt "wife’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "father-in-law"
 
 #: app/Functions/Functions.php:530
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "fifteenth cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:494
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "fifteenth cousin"
 
 #: app/Functions/Functions.php:565
 msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "fifteenth cousin"
 
 #: app/Functions/Functions.php:610
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "fifth %s"
 
 #: app/Functions/Functions.php:595
 #, php-format
 msgctxt "MALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "fifth %s"
 
 #: app/Functions/Functions.php:625
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "fifth %s"
 
 #: app/Functions/Functions.php:510
 msgctxt "FEMALE"
@@ -17093,7 +17093,7 @@ msgstr ""
 #: app/Functions/Functions.php:545
 msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "fifth cousin"
 
 #. I18N: a program feature
 #: setup.php:143
@@ -17129,7 +17129,7 @@ msgstr ""
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "first %s"
 
 #: app/Functions/Functions.php:502
 msgctxt "FEMALE"
@@ -17145,7 +17145,7 @@ msgstr ""
 #: app/Functions/Functions.php:537
 msgctxt "MALE/FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #: app/Functions/Functions.php:1068
 msgctxt "father’s brother’s child"
@@ -17341,7 +17341,7 @@ msgstr ""
 #: app/Functions/Functions.php:563
 msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "fourteenth cousin"
 
 #: app/Functions/Functions.php:608
 #, php-format
@@ -17359,7 +17359,7 @@ msgstr ""
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "fourth %s"
 
 #: app/Functions/Functions.php:508
 msgctxt "FEMALE"
@@ -17375,7 +17375,7 @@ msgstr ""
 #: app/Functions/Functions.php:543
 msgctxt "MALE/FEMALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "fourth cousin"
 
 #. I18N: from 1700 interval 50 years
 #: statistics.php:621 statistics.php:623 statistics.php:625 statistics.php:627
@@ -19265,7 +19265,7 @@ msgstr ""
 #: app/Functions/Functions.php:553
 msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "ninth cousin"
 
 #: admin_trees_config.php:74 admin_users.php:242 admin_users.php:243
 #: app/Functions/FunctionsEdit.php:133
@@ -19363,7 +19363,7 @@ msgstr ""
 #: app/Functions/Functions.php:718
 msgctxt "MALE/FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
@@ -19523,7 +19523,7 @@ msgstr ""
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "second %s"
-msgstr ""
+msgstr "second %s"
 
 #: app/Functions/Functions.php:504
 msgctxt "FEMALE"
@@ -19539,7 +19539,7 @@ msgstr ""
 #: app/Functions/Functions.php:539
 msgctxt "MALE/FEMALE"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1463
 msgctxt "grandfather’s brother’s grandchild"
@@ -19710,7 +19710,7 @@ msgstr ""
 #: app/Functions/Functions.php:549
 msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "seventh cousin"
 
 #. I18N: Button label
 #: admin_trees_config.php:43 app/Module/FrequentlyAskedQuestionsModule.php:457
@@ -19785,7 +19785,7 @@ msgstr ""
 #: app/Functions/Functions.php:547
 msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "sixth cousin"
 
 #: app/Functions/Functions.php:729 app/Functions/FunctionsCharts.php:311
 #: app/Module/GoogleMapsModule.php:2074 app/Module/GoogleMapsModule.php:2104
@@ -20034,7 +20034,7 @@ msgstr ""
 #: app/Functions/Functions.php:555
 msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "tenth cousin"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:87
@@ -20062,7 +20062,7 @@ msgstr ""
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "third %s"
-msgstr ""
+msgstr "third %s"
 
 #: app/Functions/Functions.php:506
 msgctxt "FEMALE"
@@ -20078,7 +20078,7 @@ msgstr ""
 #: app/Functions/Functions.php:541
 msgctxt "MALE/FEMALE"
 msgid "third cousin"
-msgstr ""
+msgstr "third cousin"
 
 #: app/Functions/Functions.php:526
 msgctxt "FEMALE"
@@ -20094,7 +20094,7 @@ msgstr ""
 #: app/Functions/Functions.php:561
 msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "thirteenth cousin"
 
 #: admin_trees_config.php:554
 msgid "this record does not exist"
@@ -20130,7 +20130,7 @@ msgstr ""
 #: app/Functions/Functions.php:559
 msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "twelfth cousin"
 
 #: app/Functions/Functions.php:741
 msgid "twin brother"
