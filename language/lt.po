@@ -15323,7 +15323,7 @@ msgid "Type"
 msgstr "Tipas"
 
 #: app/Module/GoogleMapsModule.php:502
-msgid "Type of place markers in Place Hierarchy"
+msgid "Type of place markers in the place hierarchy"
 msgstr "Vietovių žymeklių tipas vietovių hierarchijoje"
 
 #. I18N: placeholder text for repeat-password field

@@ -499,7 +499,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- GM_PH_MARKER -->
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="GM_PH_MARKER">
-					<?php echo I18N::translate('Type of place markers in Place Hierarchy') ?>
+					<?php echo I18N::translate('Type of place markers in the place hierarchy') ?>
 				</label>
 				<div class="col-sm-9">
 					<?php

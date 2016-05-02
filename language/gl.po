@@ -15281,7 +15281,7 @@ msgid "Type"
 msgstr "Tipo"
 
 #: app/Module/GoogleMapsModule.php:502
-msgid "Type of place markers in Place Hierarchy"
+msgid "Type of place markers in the place hierarchy"
 msgstr "Tipo de marcadores de lugar na Xerarquia de Lugares"
 
 #. I18N: placeholder text for repeat-password field

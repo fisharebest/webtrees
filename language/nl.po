@@ -15285,7 +15285,7 @@ msgid "Type"
 msgstr "Soort"
 
 #: app/Module/GoogleMapsModule.php:502
-msgid "Type of place markers in Place Hierarchy"
+msgid "Type of place markers in the place hierarchy"
 msgstr "Type plaatsmarkering in de Plaatshiërarchie"
 
 #. I18N: placeholder text for repeat-password field
