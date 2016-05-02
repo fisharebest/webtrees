@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-01 09:56+0100\n"
-"PO-Revision-Date: 2016-05-02 13:44+0000\n"
+"PO-Revision-Date: 2016-05-02 15:37+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -16185,55 +16185,55 @@ msgstr "You can make it easier to search for married women by recording their ma
 
 #: admin_site_upgrade.php:199
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "You can re-enable these modules after the upgrade."
 
 #: admin_site_upgrade.php:263
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "You can re-enable these themes after the upgrade."
 
 #: admin_trees_renumber.php:266
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr ""
+msgstr "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 
 #: admin_trees_renumber.php:279
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "You can renumber this family tree."
 
 #: admin_site_config.php:202 admin_site_config.php:221
 msgid "You can request a higher or lower limit, although the server may ignore this request."
-msgstr ""
+msgstr "You can request a higher or lower limit, although the server may ignore this request."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr ""
+msgstr "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr ""
+msgstr "You cannot create a rule which would prevent yourself from accessing the website."
 
 #: login.php:75
 msgid "You cannot login because your browser does not accept cookies."
-msgstr ""
+msgstr "You cannot login because your browser does not accept cookies."
 
 #: includes/session.php:505
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "You do not have permission to view this page."
 
 #: admin_site_merge.php:55
 msgid "You entered the same IDs. You cannot merge the same records."
-msgstr ""
+msgstr "You entered the same IDs. You cannot merge the same records."
 
 #: login.php:611
 msgid "You have confirmed your request to become a registered user."
-msgstr ""
+msgstr "You have confirmed your request to become a registered user."
 
 #: app/Module/UserJournalModule.php:95
 msgid "You have not created any journal items."
-msgstr ""
+msgstr "You have not created any journal items."
 
 #: admin_trees_manage.php:201
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
-msgstr ""
+msgstr "You have selected a GEDCOM file with a different name. Is this correct?"
 
 #: addmedia.php:473
 msgid "You may enter a URL, beginning with “http://”."
@@ -16241,68 +16241,68 @@ msgstr "You may enter a URL, beginning with ‘http://’."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:448
 msgid "You may use HTML to format the answer and to add links to other websites."
-msgstr ""
+msgstr "You may use HTML to format the answer and to add links to other websites."
 
 #: admin_site_config.php:435
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr ""
+msgstr "You must also enable “less secure applications” in your Google account."
 
 #: setup.php:212
 msgid "You must change this before you can continue."
-msgstr ""
+msgstr "You must change this before you can continue."
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:81
 #: modules_v3/GEDFact_assistant/census/census-edit.php:200
 msgid "You must enter a name"
-msgstr ""
+msgstr "You must enter a name"
 
 #: edituser.php:129
 msgid "You must enter a real name."
-msgstr ""
+msgstr "You must enter a real name."
 
 #: edituser.php:124
 msgid "You must enter a user name."
-msgstr ""
+msgstr "You must enter a user name."
 
 #: setup.php:418
 msgid "You must enter all the administrator account fields."
-msgstr ""
+msgstr "You must enter all the administrator account fields."
 
 #: edit_interface.php:1522
 msgid "You must provide a repository name."
-msgstr ""
+msgstr "You must provide a repository name."
 
 #: edit_interface.php:1203
 msgid "You must provide a source title"
-msgstr ""
+msgstr "You must provide a source title"
 
 #: admin_trees_merge.php:96
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "You must renumber the records in one of the trees before you can merge them."
 
 #: app/Module/ChartsBlockModule.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
-msgstr ""
+msgstr "You must select an individual and chart type in the block configuration settings."
 
 #: admin_users.php:287
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
-msgstr ""
+msgstr "You must specify an individual record before you can restrict the user to their immediate family."
 
 #: admin_trees_manage.php:320
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "You need to create a family tree."
 
 #: admin_pgv_to_wt.php:1163
 msgid "You need to login again, using your PhpGedView username and password."
-msgstr ""
+msgstr "You need to login again, using your PhpGedView username and password."
 
 #: login.php:563
 msgid "You need to review the account details."
-msgstr ""
+msgstr "You need to review the account details."
 
 #: setup.php:423
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr ""
+msgstr "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
 
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:452
@@ -16311,23 +16311,23 @@ msgstr "You only need to enter a Login URL if you want to redirect to a differen
 
 #: message.php:247
 msgid "You sent the following message to a webtrees administrator:"
-msgstr ""
+msgstr "You sent the following message to a webtrees administrator:"
 
 #: message.php:244
 msgid "You sent the following message to a webtrees user:"
-msgstr ""
+msgstr "You sent the following message to a webtrees user:"
 
 #: admin_site_upgrade.php:99
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "You should accept or reject all pending changes before upgrading."
 
 #: admin_site_upgrade.php:198
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "You should consult the module’s author to confirm compatibility with this version of webtrees."
 
 #: admin_site_upgrade.php:262
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "You should consult the theme’s author to confirm compatibility with this version of webtrees."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:290 message.php:58
@@ -16345,42 +16345,42 @@ msgstr "You will be informed by e-mail when this prospective user has confirmed 
 
 #: setup.php:432
 msgid "You will use this to login to webtrees."
-msgstr ""
+msgstr "You will use this to login to webtrees."
 
 #: statistics.php:286
 msgid "Youngest father"
-msgstr ""
+msgstr "Youngest father"
 
 #: statistics.php:264
 msgid "Youngest female"
-msgstr ""
+msgstr "Youngest female"
 
 #: statistics.php:263
 msgid "Youngest male"
-msgstr ""
+msgstr "Youngest male"
 
 #: statistics.php:287
 msgid "Youngest mother"
-msgstr ""
+msgstr "Youngest mother"
 
 #: app/Module/ClippingsCartModule.php:344
 #: app/Module/ClippingsCartModule.php:678
 msgid "Your clippings cart is empty."
-msgstr ""
+msgstr "Your clippings cart is empty."
 
 #: message.php:116 message.php:269 setup.php:426
 msgid "Your name"
-msgstr ""
+msgstr "Your name"
 
 #. I18N: %s is a server name/URL
 #: login.php:346
 #, php-format
 msgid "Your registration at %s"
-msgstr ""
+msgstr "Your registration at %s"
 
 #: setup.php:274
 msgid "Your server’s administrator will provide you with the connection details."
-msgstr ""
+msgstr "Your server’s administrator will provide you with the connection details."
 
 #: app/Module/BatchUpdateModule.php:228
 msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
@@ -16389,169 +16389,169 @@ msgstr "Your user account does not have ‘automatically approve changes’ enab
 #: admin.php:556
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
-msgstr ""
+msgstr "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
 
 #: admin.php:548
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
-msgstr ""
+msgstr "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 
 #. I18N: Name of country or state
 #: app/Stats.php:6978
 msgid "Yugoslavia"
-msgstr ""
+msgstr "Yugoslavia"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6980
 msgid "Zaire"
-msgstr ""
+msgstr "Zaire"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6981
 msgid "Zambia"
-msgstr ""
+msgstr "Zambia"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6982
 msgid "Zimbabwe"
-msgstr ""
+msgstr "Zimbabwe"
 
 #: app/Module/ClippingsCartModule.php:368
 #: app/Module/ClippingsCartModule.php:755
 msgid "Zip file(s)"
-msgstr ""
+msgstr "Zip file(s)"
 
 #: app/Module/GoogleMapsModule.php:2754 fanchart.php:109
 msgid "Zoom"
-msgstr ""
+msgstr "Zoom"
 
 #: app/Module/GoogleMapsModule.php:1458 timeline.php:311
 msgid "Zoom in"
-msgstr ""
+msgstr "Zoom in"
 
 #: app/Module/GoogleMapsModule.php:1460
 msgid "Zoom in here"
-msgstr ""
+msgstr "Zoom in here"
 
 #: app/Theme/AbstractTheme.php:756 app/Theme/AbstractTheme.php:808
 msgid "Zoom in/out on this box."
-msgstr ""
+msgstr "Zoom in/out on this box."
 
 #: app/Module/GoogleMapsModule.php:3993 app/Module/GoogleMapsModule.php:4084
 #: app/Module/GoogleMapsModule.php:4579
 msgid "Zoom level"
-msgstr ""
+msgstr "Zoom level"
 
 #: app/Module/GoogleMapsModule.php:377
 msgid "Zoom level of map"
-msgstr ""
+msgstr "Zoom level of map"
 
 #: app/Module/GoogleMapsModule.php:1459 timeline.php:312
 msgid "Zoom out"
-msgstr ""
+msgstr "Zoom out"
 
 #: app/Module/GoogleMapsModule.php:1461
 msgid "Zoom out here"
-msgstr ""
+msgstr "Zoom out here"
 
 #: app/Module/GoogleMapsModule.php:1742
 msgid "Zoom="
-msgstr ""
+msgstr "Zoom="
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:89
 msgid "a.m."
-msgstr ""
+msgstr "a.m."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:298
 #, php-format
 msgid "about %s"
-msgstr ""
+msgstr "about %s"
 
 #: family.php:63 gedrecord.php:74 individual.php:75 mediaviewer.php:62
 #: note.php:63 repo.php:62 source.php:62
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr ""
+msgstr "accept"
 
 #: family.php:44 gedrecord.php:56 individual.php:57 mediaviewer.php:44
 #: note.php:45 repo.php:44 source.php:44
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr ""
+msgstr "accept"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:54
 msgid "accepted"
-msgstr ""
+msgstr "accepted"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
 msgid "adopted name"
-msgstr ""
+msgstr "adopted name"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:52
 msgctxt "FEMALE"
 msgid "adopted name"
-msgstr ""
+msgstr "adopted name"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:49
 msgctxt "MALE"
 msgid "adopted name"
-msgstr ""
+msgstr "adopted name"
 
 #: app/Stats.php:2916
 msgid "adoption"
-msgstr ""
+msgstr "adoption"
 
 #: app/Module/TopPageViewsModule.php:167
 msgid "after"
-msgstr ""
+msgstr "after"
 
 #. I18N: Gedcom AFT dates
 #: app/Date.php:313
 #, php-format
 msgid "after %s"
-msgstr ""
+msgstr "after %s"
 
 #: app/Functions/FunctionsPrint.php:374
 msgid "after death"
-msgstr ""
+msgstr "after death"
 
 #: statisticsplot.php:1117 statisticsplot.php:1167 statisticsplot.php:1217
 #: statisticsplot.php:1267
 msgid "age"
-msgstr ""
+msgstr "age"
 
 #. I18N: An access rule - allow access to the site
 #: admin_site_access.php:27 admin_site_access.php:34
 msgid "allow"
-msgstr ""
+msgstr "allow"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:67
 msgid "also known as"
-msgstr ""
+msgstr "also known as"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:64
 msgctxt "FEMALE"
 msgid "also known as"
-msgstr ""
+msgstr "also known as"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:61
 msgctxt "MALE"
 msgid "also known as"
-msgstr ""
+msgstr "also known as"
 
 #. I18N: option in list box “always use this image”
 #: app/Functions/FunctionsEdit.php:663
 msgid "always"
-msgstr ""
+msgstr "always"
 
 #: app/Controller/AncestryController.php:92 app/Stats.php:4536
 #: app/Stats.php:4562 app/Stats.php:4573 app/Stats.php:4583 app/Stats.php:5957
@@ -16563,227 +16563,227 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:434
 #: modules_v3/descendancy_report/report.xml:487
 msgid "and"
-msgstr ""
+msgstr "and"
 
 #: app/Functions/Functions.php:1074
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "aunt"
 
 #: app/Functions/Functions.php:830
 msgctxt "father’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "aunt"
 
 #: app/Functions/Functions.php:1136
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "aunt"
 
 #: app/Functions/Functions.php:868
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "aunt"
 
 #: app/Functions/Functions.php:1188
 msgctxt "parent’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "aunt"
 
 #: app/Functions/Functions.php:886
 msgctxt "parent’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "aunt"
 
 #: app/Functions/Functions.php:828
 msgctxt "father’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "aunt/uncle"
 
 #: app/Functions/Functions.php:866
 msgctxt "mother’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "aunt/uncle"
 
 #: app/Functions/Functions.php:884
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "aunt/uncle"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:390
 msgid "back to top"
-msgstr ""
+msgstr "back to top"
 
 #: app/Module/TopPageViewsModule.php:167
 msgid "before"
-msgstr ""
+msgstr "before"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:310
 #, php-format
 msgid "before %s"
-msgstr ""
+msgstr "before %s"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:322
 #, php-format
 msgid "between %s and %s"
-msgstr ""
+msgstr "between %s and %s"
 
 #: app/Stats.php:2913
 msgid "birth"
-msgstr ""
+msgstr "birth"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:79
 msgid "birth name"
-msgstr ""
+msgstr "birth name"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:76
 msgctxt "FEMALE"
 msgid "birth name"
-msgstr ""
+msgstr "birth name"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:73
 msgctxt "MALE"
 msgid "birth name"
-msgstr ""
+msgstr "birth name"
 
 #. I18N: Extend privacy to dead individuals who were…
 #: admin_trees_config.php:457
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr ""
+msgstr "born in the last %1$s years or died in the last %2$s years"
 
 #: app/Functions/Functions.php:750
 msgid "brother"
-msgstr ""
+msgstr "brother"
 
 #: app/Functions/Functions.php:1012
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "brother-in-law"
 
 #: app/Functions/Functions.php:836
 msgctxt "husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "brother-in-law"
 
 #: app/Functions/Functions.php:1128
 msgctxt "husband’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "brother-in-law"
 
 #: app/Functions/Functions.php:904
 msgctxt "sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "brother-in-law"
 
 #: app/Functions/Functions.php:1294
 msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "brother-in-law"
 
 #: app/Functions/Functions.php:916
 msgctxt "spouse’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "brother-in-law"
 
 #: app/Functions/Functions.php:934
 msgctxt "wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "brother-in-law"
 
 #: app/Functions/Functions.php:1350
 msgctxt "wife’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "brother-in-law"
 
 #: app/Functions/Functions.php:1014
 msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "brother/sister-in-law"
 
 #: app/Functions/Functions.php:846
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "brother/sister-in-law"
 
 #: app/Functions/Functions.php:898
 msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "brother/sister-in-law"
 
 #: app/Functions/Functions.php:1296
 msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "brother/sister-in-law"
 
 #: app/Functions/Functions.php:932
 msgctxt "spouse’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "brother/sister-in-law"
 
 #: app/Functions/Functions.php:944
 msgctxt "wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "brother/sister-in-law"
 
 #: app/Module/TopSurnamesModule.php:176
 msgid "bullet list"
-msgstr ""
+msgstr "bullet list"
 
 #: app/Stats.php:2917
 msgid "burial"
-msgstr ""
+msgstr "burial"
 
 #: app/GedcomTag.php:1711
 msgid "by"
-msgstr ""
+msgstr "by"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:301
 #, php-format
 msgid "calculated %s"
-msgstr ""
+msgstr "calculated %s"
 
 #: app/Stats.php:2918
 msgid "census added"
-msgstr ""
+msgstr "census added"
 
 #: app/Stats.php:2588 app/Stats.php:3929 app/Stats.php:3931 app/Stats.php:4944
 #: app/Stats.php:4946 app/Stats.php:4948 app/Stats.php:5194
 msgid "century"
-msgstr ""
+msgstr "century"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:91
 msgid "change of name"
-msgstr ""
+msgstr "change of name"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:88
 msgctxt "FEMALE"
 msgid "change of name"
-msgstr ""
+msgstr "change of name"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:85
 msgctxt "MALE"
 msgid "change of name"
-msgstr ""
+msgstr "change of name"
 
 #: app/Functions/Functions.php:733 app/Module/GoogleMapsModule.php:2078
 #: app/Module/GoogleMapsModule.php:2112 edit_interface.php:2009
 #: edit_interface.php:2031
 msgid "child"
-msgstr ""
+msgstr "child"
 
 #: statisticsplot.php:1317
 msgid "children"
-msgstr ""
+msgstr "children"
 
 #. I18N: button label
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
@@ -16799,12 +16799,12 @@ msgstr ""
 #: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
-msgstr ""
+msgstr "close"
 
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:175
 msgid "clouds"
-msgstr ""
+msgstr "clouds"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:193
@@ -16813,7 +16813,7 @@ msgstr "colours"
 
 #: app/Module/TopSurnamesModule.php:176
 msgid "compact list"
-msgstr ""
+msgstr "compact list"
 
 #. I18N: A button label
 #. I18N: Button label
@@ -16829,91 +16829,91 @@ msgstr ""
 #: reportengine.php:131 reportengine.php:265 setup.php:187 setup.php:213
 #: setup.php:295 setup.php:381 setup.php:447
 msgid "continue"
-msgstr ""
+msgstr "continue"
 
 #. I18N: Button label
 #: admin_trees_manage.php:678
 msgid "create"
-msgstr ""
+msgstr "create"
 
 #. I18N: a program feature
 #: setup.php:132
 msgid "creating thumbnails of images"
-msgstr ""
+msgstr "creating thumbnails of images"
 
 #: statistics.php:616
 msgid "date periods"
-msgstr ""
+msgstr "date periods"
 
 #: app/Functions/Functions.php:731 app/Functions/FunctionsCharts.php:312
 #: app/Module/GoogleMapsModule.php:2070 app/Module/GoogleMapsModule.php:2108
 #: edit_interface.php:2008
 msgid "daughter"
-msgstr ""
+msgstr "daughter"
 
 #: modules_v3/descendancy_report/report.xml:227
 msgid "daughter of"
-msgstr ""
+msgstr "daughter of"
 
 #: app/Functions/Functions.php:806
 msgctxt "child’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "daughter-in-law"
 
 #: app/Functions/Functions.php:914
 msgctxt "son’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "daughter-in-law"
 
 #: app/Functions/Functions.php:1342
 msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
-msgstr ""
+msgstr "daughter-in-law’s father"
 
 #: app/Functions/Functions.php:1344
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr ""
+msgstr "daughter-in-law’s mother"
 
 #: app/Functions/Functions.php:1346
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr ""
+msgstr "daughter-in-law’s parent"
 
 #: app/Stats.php:2914
 msgid "death"
-msgstr ""
+msgstr "death"
 
 #. I18N: Measure of latitude/longitude
 #: app/Module/GoogleMapsModule.php:3974 app/Module/GoogleMapsModule.php:3984
 msgid "degrees"
-msgstr ""
+msgstr "degrees"
 
 #. I18N: Button label
 #: admin_site_clean.php:115 admin_users.php:793
 msgid "delete"
-msgstr ""
+msgstr "delete"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:28 admin_site_access.php:35
 msgid "deny"
-msgstr ""
+msgstr "deny"
 
 #: modules_v3/descendancy_report/report.xml:139
 #: modules_v3/descendancy_report/report.xml:366
 msgctxt "FEMALE"
 msgid "died"
-msgstr ""
+msgstr "died"
 
 #: modules_v3/descendancy_report/report.xml:136
 #: modules_v3/descendancy_report/report.xml:436
 msgctxt "MALE"
 msgid "died"
-msgstr ""
+msgstr "died"
 
 #: app/Module/GoogleMapsModule.php:3986
 msgid "east"
-msgstr ""
+msgstr "east"
 
 #. I18N: button label
 #: admin_trees_config.php:1434 admin_trees_config.php:1737
@@ -16926,7 +16926,7 @@ msgstr ""
 #: admin_trees_config.php:2120 admin_trees_config.php:2151
 #: admin_trees_config.php:2180
 msgid "edit"
-msgstr ""
+msgstr "edit"
 
 #: app/Functions/Functions.php:516
 msgctxt "FEMALE"
