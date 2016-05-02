@@ -16114,8 +16114,8 @@ msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "您可以下载从 %s 的GEDCOM规格的副本。"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
-msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr "您可以更容易地搜索已婚妇女如果记录他们的婚姻名。<br>但是不是所有的女人需要随丈夫的姓，所以要当心输入不正确的信息到你的数据库中。"
+msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+msgstr "您可以更容易地搜索已婚妇女如果记录他们的婚姻名。但是不是所有的女人需要随丈夫的姓，所以要当心输入不正确的信息到你的数据库中。"
 
 #: admin_site_upgrade.php:199
 msgid "You can re-enable these modules after the upgrade."

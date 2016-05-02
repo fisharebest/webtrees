@@ -16148,8 +16148,8 @@ msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "Jy kan 'n afskrif van die GEDCOM-spesifikasie by %s bekom."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
-msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr "Jy kan dit makliker maak om vir getroude vroue te soek deur hulle getroude naam aan te teken. <br> Nie alle vroue neem egter hulle man se van aan nie, so pasop dat jy nie foutiewe inligting in jou databasis invoer nie."
+msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+msgstr "Jy kan dit makliker maak om vir getroude vroue te soek deur hulle getroude naam aan te teken. Nie alle vroue neem egter hulle man se van aan nie, so pasop dat jy nie foutiewe inligting in jou databasis invoer nie."
 
 #: admin_site_upgrade.php:199
 msgid "You can re-enable these modules after the upgrade."

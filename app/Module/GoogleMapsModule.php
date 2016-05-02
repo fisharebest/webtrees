@@ -4024,6 +4024,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<input type="button" class="cancel" value="<?php echo I18N::translate('close') ?>" onclick="window.close();">
 			</p>
 		</form>
+		<br>
+		<br>
+		<br>
 		<?php
 	}
 

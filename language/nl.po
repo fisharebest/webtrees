@@ -16152,8 +16152,8 @@ msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "U kunt een kopie van de Gedcom specificatie downloaden van %s."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
-msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr "U kunt makkelijker zoeken naar getrouwde vrouwen door hun huwelijksnaam op te nemen.<br>Echter, niet alle vrouwen nemen de achternaam van hun echtgenoot over, pas dus op met het opnemen van incorrecte informatie in uw database."
+msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
+msgstr "U kunt makkelijker zoeken naar getrouwde vrouwen door hun huwelijksnaam op te nemen. Echter, niet alle vrouwen nemen de achternaam van hun echtgenoot over, pas dus op met het opnemen van incorrecte informatie in uw database."
 
 #: admin_site_upgrade.php:199
 msgid "You can re-enable these modules after the upgrade."

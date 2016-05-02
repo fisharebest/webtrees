@@ -1762,9 +1762,7 @@ class GedcomTag {
 				/* I18N: gedcom tag _WT_OBJE_SORT */
 				I18N::translate('Re-order media');
 		case '_YART':
-			return
-				/* I18N: gedcom tag _YART */
-				I18N::translate('Yahrzeit');
+			return /* I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar. */ I18N::translate('Yahrzeit');
 			// Brit milah applies only to males, no need for male/female translations
 		case '__BRTM_CHIL':
 			return I18N::translate('Brit milah of a son');
