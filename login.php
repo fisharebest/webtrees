@@ -204,7 +204,7 @@ default:
 		if ($WT_TREE) {
 			echo '
 			<div>
-				<a href="#" id="passwd_click">', I18N::translate('Request new password'), '</a>
+				<a href="#" id="passwd_click">', I18N::translate('Forgot password?'), '</a>
 			</div>';
 			if (Site::getPreference('USE_REGISTRATION_MODULE')) {
 				echo '<div><a href="' . WT_LOGIN_URL . '?action=register">', I18N::translate('Request new user account'), '</a></div>';
