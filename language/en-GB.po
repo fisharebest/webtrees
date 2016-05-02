@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-01 09:56+0100\n"
-"PO-Revision-Date: 2016-05-02 07:14+0000\n"
+"PO-Revision-Date: 2016-05-02 13:44+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -15313,20 +15313,20 @@ msgstr "Type"
 
 #: app/Module/GoogleMapsModule.php:502
 msgid "Type of place markers in the place hierarchy"
-msgstr ""
+msgstr "Type of place markers in the place hierarchy"
 
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:355 login.php:468
 msgid "Type the password again."
-msgstr ""
+msgstr "Type the password again."
 
 #: edituser.php:232 login.php:473 setup.php:439
 msgid "Type your password again, to make sure you have typed it correctly."
-msgstr ""
+msgstr "Type your password again, to make sure you have typed it correctly."
 
 #: admin_trees_check.php:132
 msgid "Types of error"
-msgstr ""
+msgstr "Types of error"
 
 #. I18N: A configuration setting
 #. I18N: gedcom tag URL (A web address / URL)
@@ -15336,99 +15336,99 @@ msgstr ""
 #: admin_trees_manage.php:651 app/GedcomTag.php:848 app/GedcomTag.php:864
 #: app/GedcomTag.php:1751
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6962
 msgid "US Minor Outlying Islands"
-msgstr ""
+msgstr "US Minor Outlying Islands"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6970
 msgid "US Virgin Islands"
-msgstr ""
+msgstr "US Virgin Islands"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6936
 msgid "USSR"
-msgstr ""
+msgstr "USSR"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:41
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6960
 msgid "Uganda"
-msgstr ""
+msgstr "Uganda"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6961
 msgid "Ukraine"
-msgstr ""
+msgstr "Ukraine"
 
 #: setup.php:264 setup.php:336
 msgid "Unable to connect using these settings. Your server gave the following error."
-msgstr ""
+msgstr "Unable to connect using these settings. Your server gave the following error."
 
 #: admin_trees_config.php:678
 msgid "Unable to find record with ID"
-msgstr ""
+msgstr "Unable to find record with ID"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:112
 msgid "Uncleared: insufficient data"
-msgstr ""
+msgstr "Uncleared: insufficient data"
 
 #: edit_changes.php:181 edit_changes.php:201
 msgid "Undo"
-msgstr ""
+msgstr "Undo"
 
 #: edit_changes.php:211 edit_changes.php:231
 msgid "Undo all changes"
-msgstr ""
+msgstr "Undo all changes"
 
 #: admin_trees_config.php:1868
 msgid "Unique family facts"
-msgstr ""
+msgstr "Unique family facts"
 
 #: admin_trees_config.php:1750
 msgid "Unique individual facts"
-msgstr ""
+msgstr "Unique individual facts"
 
 #: admin_trees_config.php:2075
 msgid "Unique repository facts"
-msgstr ""
+msgstr "Unique repository facts"
 
 #: admin_trees_config.php:1986
 msgid "Unique source facts"
-msgstr ""
+msgstr "Unique source facts"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6726
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "United Arab Emirates"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6804
 msgid "United Kingdom"
-msgstr ""
+msgstr "United Kingdom"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6964
 msgid "United States"
-msgstr ""
+msgstr "United States"
 
 #. I18N: Name of country or state
 #: app/GedcomRecord.php:1154 app/GedcomRecord.php:1158 app/Stats.php:6716
 msgid "Unknown"
-msgstr ""
+msgstr "Unknown"
 
 #: app/Stats.php:5194
 msgctxt "unknown century"
 msgid "Unknown"
-msgstr ""
+msgstr "Unknown"
 
 #: app/Controller/IndividualController.php:256
 #: app/Controller/IndividualController.php:259
@@ -15440,16 +15440,16 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:602
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr ""
+msgstr "Unknown"
 
 #: app/Stats.php:944 app/Stats.php:950 edituser.php:187
 msgctxt "unknown people"
 msgid "Unknown"
-msgstr ""
+msgstr "Unknown"
 
 #: app/Module/AlbumModule.php:190
 msgid "Unlink media"
-msgstr ""
+msgstr "Unlink media"
 
 #: app/GedcomTag.php:1795
 msgid "Unrecognized GEDCOM code"
@@ -15457,64 +15457,64 @@ msgstr "Unrecognised GEDCOM Code"
 
 #: admin_media.php:642
 msgid "Unused files"
-msgstr ""
+msgstr "Unused files"
 
 #. I18N: The system is about to…; %s is a .ZIP file.
 #: admin_site_upgrade.php:335
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Unzip %s to a temporary folder…"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:35
 msgid "Upcoming events"
-msgstr ""
+msgstr "Upcoming events"
 
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:78
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:83
 msgid "Update"
-msgstr ""
+msgstr "Update"
 
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:79
 msgid "Update all"
-msgstr ""
+msgstr "Update all"
 
 #: admin_trees_places.php:84
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Update all the place names in a family tree"
 
 #: admin_trees_manage.php:489
 msgid "Update place names"
-msgstr ""
+msgstr "Update place names"
 
 #. I18N: Ignore the warnings, and…
 #: admin_site_upgrade.php:200 admin_site_upgrade.php:264
 msgid "Upgrade anyway"
-msgstr ""
+msgstr "Upgrade anyway"
 
 #. I18N: %s is a version number
 #. I18N: %s is a version number, such as 1.2.3
 #: admin.php:612 admin_site_upgrade.php:82 login.php:117
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr ""
+msgstr "Upgrade to webtrees %s."
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Upgrade wizard"
 
 #: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4674
 msgid "Upload"
-msgstr ""
+msgstr "Upload"
 
 #: app/Module/GoogleMapsModule.php:4668
 msgid "Upload geographic data"
-msgstr ""
+msgstr "Upload geographic data"
 
 #. I18N: Menu entry
 #: admin_media_upload.php:37 app/Theme/AdministrationTheme.php:179
 msgid "Upload media files"
-msgstr ""
+msgstr "Upload media files"
 
 #: admin_media_upload.php:187
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
@@ -15523,24 +15523,24 @@ msgstr "Upload one or more media files from your local computer. Media files can
 #. I18N: Name of country or state
 #: app/Stats.php:6963
 msgid "Uruguay"
-msgstr ""
+msgstr "Uruguay"
 
 #: app/Module/GoogleMapsModule.php:469
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr ""
+msgstr "Use Google Maps™ for the place hierarchy"
 
 #: admin_site_config.php:116
 msgid "Use PHP mail to send messages"
-msgstr ""
+msgstr "Use PHP mail to send messages"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:724
 msgid "Use RIN number instead of GEDCOM ID"
-msgstr ""
+msgstr "Use RIN number instead of GEDCOM ID"
 
 #: admin_site_config.php:117
 msgid "Use SMTP to send messages"
-msgstr ""
+msgstr "Use SMTP to send messages"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
@@ -15551,8 +15551,8 @@ msgstr "Use a ‘?’ to match a single character, use ‘*’ to match zero or 
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Use at least %s character."
+msgstr[1] "Use at least %s characters."
 
 #: modules_v3/family_group_report/report.xml:12
 #: modules_v3/individual_ext_report/report.xml:13
@@ -15562,17 +15562,17 @@ msgstr "Use colours"
 
 #: app/Module/InteractiveTree/TreeView.php:59
 msgid "Use compact layout"
-msgstr ""
+msgstr "Use compact layout"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2208
 msgid "Use full source citations"
-msgstr ""
+msgstr "Use full source citations"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:370
 msgid "Use password"
-msgstr ""
+msgstr "Use password"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1094
@@ -15582,55 +15582,55 @@ msgstr "Use silhouette images when no highlighted image for that individual has 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1089
 msgid "Use silhouettes"
-msgstr ""
+msgstr "Use silhouettes"
 
 #: admin_trees_config.php:2234
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr ""
+msgstr "Use the GeoNames database for autocomplete on places"
 
 #: login.php:487
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
-msgstr ""
+msgstr "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 
 #: app/Functions/FunctionsEdit.php:671
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "Use this image for charts and on the individual’s page."
 
 #: app/Module/GoogleMapsModule.php:3855
 msgid "Use this value"
-msgstr ""
+msgstr "Use this value"
 
 #: admin_site_change.php:350 admin_site_change.php:390 admin_site_logs.php:291
 #: admin_site_logs.php:331 edit_changes.php:178
 msgid "User"
-msgstr ""
+msgstr "User"
 
 #. I18N: Menu entry
 #: admin_users.php:299 admin_users.php:691 admin_users.php:815
 #: admin_users_bulk.php:33 app/Theme/AdministrationTheme.php:163
 msgid "User administration"
-msgstr ""
+msgstr "User administration"
 
 #: admin_users.php:756
 msgid "User didn’t verify within 7 days."
-msgstr ""
+msgstr "User didn’t verify within 7 days."
 
 #: admin_users.php:780
 msgid "User not verified by administrator."
-msgstr ""
+msgstr "User not verified by administrator."
 
 #: admin_trees_config.php:972
 msgid "User options"
-msgstr ""
+msgstr "User options"
 
 #: login.php:514 login.php:520 login.php:578 login.php:582
 msgid "User verification"
-msgstr ""
+msgstr "User verification"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: admin_site_access.php:274 admin_site_access.php:364
 msgid "User-agent string"
-msgstr ""
+msgstr "User-agent string"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:383 admin_users.php:326 admin_users.php:866
@@ -15638,7 +15638,7 @@ msgstr ""
 #: edituser.php:158 login.php:189 login.php:255 login.php:320 login.php:342
 #: login.php:522 setup.php:430
 msgid "Username"
-msgstr ""
+msgstr "Username"
 
 #: app/Module/LoginBlockModule.php:100 login.php:221
 msgid "Username or email address"
@@ -15651,39 +15651,39 @@ msgstr "Usernames are case-insensitive and ignore accented letters, so that ‘c
 #. I18N: Menu entry
 #: admin.php:629 admin.php:637 app/Theme/AdministrationTheme.php:162
 msgid "Users"
-msgstr ""
+msgstr "Users"
 
 #: admin.php:717
 msgid "Users logged in"
-msgstr ""
+msgstr "Users logged in"
 
 #: admin_users.php:732
 msgid "User’s account has been inactive too long: "
-msgstr ""
+msgstr "User’s account has been inactive too long: "
 
 #: app/Module/GoogleMapsModule.php:675
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
-msgstr ""
+msgstr "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
 
 #. I18N: Name of country or state
 #: app/Stats.php:6965
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Uzbekistan"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6972
 msgid "Vanuatu"
-msgstr ""
+msgstr "Vanuatu"
 
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Various statistics charts."
 
 #. I18N: Name of country or state
 #: app/Stats.php:6966
 msgid "Vatican City"
-msgstr ""
+msgstr "Vatican City"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:88
@@ -15712,7 +15712,7 @@ msgstr "Vendémiaire"
 #. I18N: Name of country or state
 #: app/Stats.php:6968
 msgid "Venezuela"
-msgstr ""
+msgstr "Venezuela"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:93
@@ -15741,15 +15741,15 @@ msgstr "Ventôse"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:325
 msgid "Veracruz, Mexico"
-msgstr ""
+msgstr "Veracruz, Mexico"
 
 #: login.php:343 login.php:530
 msgid "Verification code"
-msgstr ""
+msgstr "Verification code"
 
 #: admin_users.php:874
 msgid "Verified"
-msgstr ""
+msgstr "Verified"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:327
@@ -15759,17 +15759,17 @@ msgstr "Vernal, Utah, United States"
 #. I18N: gedcom tag VERS
 #: app/GedcomTag.php:852
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1938
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6971
 msgid "Vietnam"
-msgstr ""
+msgstr "Vietnam"
 
 #. I18N: Submit button, on a form
 #: ancestry.php:92 app/Functions/FunctionsPrintFacts.php:1024
@@ -15778,23 +15778,23 @@ msgstr ""
 #: descendancy.php:71 familybook.php:61 fanchart.php:95 hourglass.php:62
 #: pedigree.php:169 relationship.php:85
 msgid "View"
-msgstr ""
+msgstr "View"
 
 #: placelist.php:176
 msgid "View all records found in this place"
-msgstr ""
+msgstr "View all records found in this place"
 
 #: app/Module/FamilyTreeNewsModule.php:155 help_text.php:297
 msgid "View archive"
-msgstr ""
+msgstr "View archive"
 
 #: calendar.php:300
 msgid "View day"
-msgstr ""
+msgstr "View day"
 
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
 msgid "View details"
-msgstr ""
+msgstr "View details"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15804,47 +15804,47 @@ msgstr ""
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313
 msgid "View family"
-msgstr ""
+msgstr "View family"
 
 #: app/Module/GoogleMapsModule.php:1379 app/Module/SlideShowModule.php:177
 #: medialist.php:310
 msgid "View individual"
-msgstr ""
+msgstr "View individual"
 
 #: calendar.php:304
 msgid "View month"
-msgstr ""
+msgstr "View month"
 
 #: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
 msgid "View notes"
-msgstr ""
+msgstr "View notes"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
 msgid "View source"
-msgstr ""
+msgstr "View source"
 
 #: app/Module/FamilyTreeStatisticsModule.php:197
 msgid "View statistics as graphs"
-msgstr ""
+msgstr "View statistics as graphs"
 
 #: calendar.php:308
 msgid "View year"
-msgstr ""
+msgstr "View year"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
 msgid "Villa Hermosa, Mexico"
-msgstr ""
+msgstr "Villa Hermosa, Mexico"
 
 #. I18N: A configuration setting
 #: admin_users.php:454
 msgid "Visible online"
-msgstr ""
+msgstr "Visible online"
 
 #. I18N: A configuration setting
 #: admin_users.php:460 edituser.php:306
 msgid "Visible to other users when online"
-msgstr ""
+msgstr "Visible to other users when online"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:193 admin_users.php:39 admin_users.php:530
@@ -15853,37 +15853,37 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:769
 #: app/Module/ClippingsCartModule.php:776
 msgid "Visitor"
-msgstr ""
+msgstr "Visitor"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:33 calendar.php:262
 #: modules_v3/bdm_report/report.xml:3 modules_v3/bdm_report/report.xml:34
 msgid "Vital records"
-msgstr ""
+msgstr "Vital records"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6975
 msgid "Wales"
-msgstr ""
+msgstr "Wales"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6974
 msgid "Wallis and Futuna Islands"
-msgstr ""
+msgstr "Wallis and Futuna Islands"
 
 #: app/GedcomCode/GedcomCodeRela.php:263
 msgid "Ward"
-msgstr ""
+msgstr "Ward"
 
 #: app/GedcomCode/GedcomCodeRela.php:261
 msgctxt "FEMALE"
 msgid "Ward"
-msgstr ""
+msgstr "Ward"
 
 #: app/GedcomCode/GedcomCodeRela.php:259
 msgctxt "MALE"
 msgid "Ward"
-msgstr ""
+msgstr "Ward"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:331
@@ -15892,17 +15892,17 @@ msgstr "Washington, District of Columbia, United States"
 
 #: admin_trees_config.php:1111
 msgid "Watermarks"
-msgstr ""
+msgstr "Watermarks"
 
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: admin_trees_config.php:1157
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Watermarks are optional and normally shown just to visitors."
 
 #. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 
 #: login.php:386
 #, php-format
@@ -15912,67 +15912,67 @@ msgstr "We will now send a confirmation e-mail to the address <b>%s</b>. You mus
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:94
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:299
 msgid "Website URL"
-msgstr ""
+msgstr "Website URL"
 
 #. I18N: Menu entry
 #: admin_site_access.php:127 admin_site_access.php:240
 #: app/Theme/AdministrationTheme.php:101
 msgid "Website access rules"
-msgstr ""
+msgstr "Website access rules"
 
 #: admin_trees_config.php:930
 msgid "Website and META tag settings"
-msgstr ""
+msgstr "Website and META tag settings"
 
 #. I18N: Menu entry
 #: admin_site_logs.php:35 app/Theme/AdministrationTheme.php:100
 msgid "Website logs"
-msgstr ""
+msgstr "Website logs"
 
 #. I18N: Menu entry
 #: admin_site_config.php:134 app/Theme/AdministrationTheme.php:95
 msgid "Website preferences"
-msgstr ""
+msgstr "Website preferences"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:368 app/Functions/FunctionsPrint.php:667
 msgid "Wed"
-msgstr ""
+msgstr "Wed"
 
 #: app/Date/CalendarDate.php:343
 msgid "Wednesday"
-msgstr ""
+msgstr "Wednesday"
 
 #. I18N: gedcom tag _WEIG
 #: app/GedcomTag.php:1755
 msgid "Weight"
-msgstr ""
+msgstr "Weight"
 
 #. I18N: A greeting; %s is the user’s name
 #: app/Module/UserWelcomeModule.php:51
 #, php-format
 msgid "Welcome %s"
-msgstr ""
+msgstr "Welcome %s"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:460
 msgid "Welcome text on login page"
-msgstr ""
+msgstr "Welcome text on login page"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6973
 msgid "West Africa"
-msgstr ""
+msgstr "West Africa"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6792
 msgid "Western Sahara"
-msgstr ""
+msgstr "Western Sahara"
 
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:2260
@@ -15985,7 +15985,7 @@ msgstr "When a user registers for an account, an e-mail is sent to their e-mail 
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
-msgstr ""
+msgstr "When adding a link, the ID field cannot be empty."
 
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2226
@@ -15995,17 +15995,17 @@ msgstr "When adding new close relatives, you can add source citations to the rec
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:858
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
-msgstr ""
+msgstr "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1619
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr ""
+msgstr "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2200
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr ""
+msgstr "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
 
 #: help_text.php:310
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
@@ -16021,44 +16021,44 @@ msgstr "Where a user is associated to an individual record in a family tree and 
 
 #: admin_pgv_to_wt.php:163
 msgid "Where is your PhpGedView installation?"
-msgstr ""
+msgstr "Where is your PhpGedView installation?"
 
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr ""
+msgstr "Which family trees should be included in the sitemaps"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
 msgid "Who can upload new media files"
-msgstr ""
+msgstr "Who can upload new media files"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
 msgid "Who is online"
-msgstr ""
+msgstr "Who is online"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
 #: search.php:210
 msgid "Whole words only"
-msgstr ""
+msgstr "Whole words only"
 
 #: app/Functions/FunctionsPrintLists.php:646
 msgid "Widow"
-msgstr ""
+msgstr "Widow"
 
 #: app/Functions/FunctionsPrintLists.php:637
 msgid "Widower"
-msgstr ""
+msgstr "Widower"
 
 #: app/Module/GoogleMapsModule.php:360 app/Module/GoogleMapsModule.php:485
 msgid "Width"
-msgstr ""
+msgstr "Width"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1063
 msgid "Width of generated thumbnails"
-msgstr ""
+msgstr "Width of generated thumbnails"
 
 #. I18N: gedcom tag WIFE
 #: app/GedcomTag.php:856 edit_interface.php:1088
@@ -16072,28 +16072,28 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:489
 #: modules_v3/relative_ext_report/report.xml:104
 msgid "Wife"
-msgstr ""
+msgstr "Wife"
 
 #: app/Controller/TimelineController.php:228
 msgid "Wife’s age"
-msgstr ""
+msgstr "Wife’s age"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
-msgstr ""
+msgstr "Wife’s maiden surname becomes new given name"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr ""
+msgstr "Wife’s surname replaced by husband’s surname"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 msgid "Wildcards"
-msgstr ""
+msgstr "Wildcards"
 
 #. I18N: gedcom tag WILL
 #: app/GedcomTag.php:860
 msgid "Will"
-msgstr ""
+msgstr "Will"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
@@ -16102,16 +16102,16 @@ msgstr "Winter Quarters, Nebraska, United States"
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"
-msgstr ""
+msgstr "With sources"
 
 #: app/Stats.php:420 app/Stats.php:518
 msgid "Without sources"
-msgstr ""
+msgstr "Without sources"
 
 #. I18N: gedcom tag _WITN
 #: app/GedcomCode/GedcomCodeRela.php:267 app/GedcomTag.php:1759
 msgid "Witness"
-msgstr ""
+msgstr "Witness"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -16119,38 +16119,38 @@ msgstr ""
 #: app/SurnameTradition.php:73 app/SurnameTradition.php:92
 #: app/SurnameTradition.php:97
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "Wives take their husband’s surname."
 
 #: statistics.php:597
 msgid "World"
-msgstr ""
+msgstr "World"
 
 #. I18N: gedcom tag _YART
 #: app/GedcomTag.php:1767
 msgid "Yahrzeit"
-msgstr ""
+msgstr "Yahrzeit"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:37
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "Yahrzeiten"
 
 #: app/Theme/AbstractTheme.php:1067 calendar.php:211 search.php:248
 msgid "Year"
-msgstr ""
+msgstr "Year"
 
 #: help_text.php:279
 msgid "Year input box"
-msgstr ""
+msgstr "Year input box"
 
 #: timeline.php:132 timeline.php:375
 msgid "Year:"
-msgstr ""
+msgstr "Year:"
 
 #. I18N: Name of country or state
 #: app/Stats.php:6977
 msgid "Yemen"
-msgstr ""
+msgstr "Yemen"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
 #: login.php:336
@@ -16160,11 +16160,11 @@ msgstr "You (or someone claiming to be you) has requested an account at %1$s usi
 
 #: logout.php:24
 msgid "You are logged out."
-msgstr ""
+msgstr "You are logged out."
 
 #: login.php:289 message.php:57
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "You are not allowed to send messages that contain external links."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -16177,11 +16177,11 @@ msgstr "You can change the appearance of webtrees using ‘themes’. Each theme
 #: help_text.php:288
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr ""
+msgstr "You can download a copy of the GEDCOM specification from %s."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr ""
+msgstr "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 
 #: admin_site_upgrade.php:199
 msgid "You can re-enable these modules after the upgrade."
