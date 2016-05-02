@@ -159,7 +159,6 @@ msgstr "%1$s × %2$s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:627
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
@@ -476,7 +475,6 @@ msgstr "%s × neef"
 
 #: app/Functions/Functions.php:567
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
 msgstr "%s × neef/nicht"
 
@@ -16911,7 +16909,6 @@ msgid "eighth cousin"
 msgstr "achterneef 18e graad"
 
 #: app/Functions/Functions.php:551
-msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
 msgstr "achterneef/achternicht 18e graad"
 
@@ -16939,7 +16936,6 @@ msgid "eleventh cousin"
 msgstr "achterneef 24e graad"
 
 #: app/Functions/Functions.php:557
-msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
 msgstr "achterneef/achternicht 24e graad"
 
@@ -16981,7 +16977,6 @@ msgid "ex-partner"
 msgstr "ex-partner"
 
 #: app/Functions/Functions.php:716
-msgctxt "MALE/FEMALE"
 msgid "ex-partner"
 msgstr "ex-partner"
 
@@ -17028,7 +17023,6 @@ msgid "fifteenth cousin"
 msgstr "achterneef 32e graad"
 
 #: app/Functions/Functions.php:565
-msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
 msgstr "achterneef/achternicht 32e graad"
 
@@ -17046,7 +17040,6 @@ msgstr "vijfde %s"
 
 #: app/Functions/Functions.php:625
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fifth %s"
 msgstr "vijfde %s"
 
@@ -17062,7 +17055,6 @@ msgid "fifth cousin"
 msgstr "achterneef 12e graad"
 
 #: app/Functions/Functions.php:545
-msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
 msgstr "achterneef/achternicht 12e graad"
 
@@ -17098,7 +17090,6 @@ msgstr "eerste %s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:617
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "first %s"
 msgstr "eerste %s"
 
@@ -17114,7 +17105,6 @@ msgid "first cousin"
 msgstr "neef"
 
 #: app/Functions/Functions.php:537
-msgctxt "MALE/FEMALE"
 msgid "first cousin"
 msgstr "neef/nicht"
 
@@ -17310,7 +17300,6 @@ msgid "fourteenth cousin"
 msgstr "achterneef 30e graad"
 
 #: app/Functions/Functions.php:563
-msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
 msgstr "achterneef/achternicht 30e graad"
 
@@ -17328,7 +17317,6 @@ msgstr "vierde %s"
 
 #: app/Functions/Functions.php:623
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fourth %s"
 msgstr "vierde %s"
 
@@ -17344,7 +17332,6 @@ msgid "fourth cousin"
 msgstr "achterneef 10e graad"
 
 #: app/Functions/Functions.php:543
-msgctxt "MALE/FEMALE"
 msgid "fourth cousin"
 msgstr "achterneef/achternicht 10e graad"
 
@@ -19234,7 +19221,6 @@ msgid "ninth cousin"
 msgstr "achterneef 20e graad"
 
 #: app/Functions/Functions.php:553
-msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "achterneef/achternicht 20e graad"
 
@@ -19331,7 +19317,6 @@ msgid "partner"
 msgstr "partner"
 
 #: app/Functions/Functions.php:718
-msgctxt "MALE/FEMALE"
 msgid "partner"
 msgstr "partner"
 
@@ -19490,7 +19475,6 @@ msgstr "tweede %s"
 
 #: app/Functions/Functions.php:619
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "second %s"
 msgstr "tweede %s"
 
@@ -19506,7 +19490,6 @@ msgid "second cousin"
 msgstr "achterneef 6e graad"
 
 #: app/Functions/Functions.php:539
-msgctxt "MALE/FEMALE"
 msgid "second cousin"
 msgstr "achterneef/achternicht 6e graad"
 
@@ -19677,7 +19660,6 @@ msgid "seventh cousin"
 msgstr "achterneef 16e graad"
 
 #: app/Functions/Functions.php:549
-msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
 msgstr "achterneef/achternicht 16e graad"
 
@@ -19752,7 +19734,6 @@ msgid "sixth cousin"
 msgstr "achterneef 14e graad"
 
 #: app/Functions/Functions.php:547
-msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
 msgstr "achterneef/achternicht 14e graad"
 
@@ -20001,7 +19982,6 @@ msgid "tenth cousin"
 msgstr "achterneef 22e graad"
 
 #: app/Functions/Functions.php:555
-msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
 msgstr "achterneef/achternicht 22e graad"
 
@@ -20029,7 +20009,6 @@ msgstr "derde %s"
 
 #: app/Functions/Functions.php:621
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "third %s"
 msgstr "derde %s"
 
@@ -20045,7 +20024,6 @@ msgid "third cousin"
 msgstr "achterneef 8e graad"
 
 #: app/Functions/Functions.php:541
-msgctxt "MALE/FEMALE"
 msgid "third cousin"
 msgstr "achterneef/achternicht 8e graad"
 
@@ -20061,7 +20039,6 @@ msgid "thirteenth cousin"
 msgstr "achterneef 28e graad"
 
 #: app/Functions/Functions.php:561
-msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
 msgstr "achterneef/achternicht 28e graad"
 
@@ -20097,7 +20074,6 @@ msgid "twelfth cousin"
 msgstr "achterneef 26e graad"
 
 #: app/Functions/Functions.php:559
-msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
 msgstr "achterneef/achternicht 26e graad"
 

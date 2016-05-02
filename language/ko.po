@@ -152,7 +152,6 @@ msgstr ""
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:627
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
 msgstr ""
 
@@ -444,7 +443,6 @@ msgstr ""
 
 #: app/Functions/Functions.php:567
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
 msgstr ""
 
@@ -16868,7 +16866,6 @@ msgid "eighth cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:551
-msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
 msgstr ""
 
@@ -16896,7 +16893,6 @@ msgid "eleventh cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:557
-msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
 msgstr ""
 
@@ -16938,7 +16934,6 @@ msgid "ex-partner"
 msgstr ""
 
 #: app/Functions/Functions.php:716
-msgctxt "MALE/FEMALE"
 msgid "ex-partner"
 msgstr ""
 
@@ -16985,7 +16980,6 @@ msgid "fifteenth cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:565
-msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
 msgstr ""
 
@@ -17003,7 +16997,6 @@ msgstr ""
 
 #: app/Functions/Functions.php:625
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fifth %s"
 msgstr ""
 
@@ -17019,7 +17012,6 @@ msgid "fifth cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:545
-msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
 msgstr ""
 
@@ -17055,7 +17047,6 @@ msgstr ""
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:617
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "first %s"
 msgstr ""
 
@@ -17071,7 +17062,6 @@ msgid "first cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:537
-msgctxt "MALE/FEMALE"
 msgid "first cousin"
 msgstr ""
 
@@ -17267,7 +17257,6 @@ msgid "fourteenth cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:563
-msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
 msgstr ""
 
@@ -17285,7 +17274,6 @@ msgstr ""
 
 #: app/Functions/Functions.php:623
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fourth %s"
 msgstr ""
 
@@ -17301,7 +17289,6 @@ msgid "fourth cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:543
-msgctxt "MALE/FEMALE"
 msgid "fourth cousin"
 msgstr ""
 
@@ -19188,7 +19175,6 @@ msgid "ninth cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:553
-msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr ""
 
@@ -19285,7 +19271,6 @@ msgid "partner"
 msgstr ""
 
 #: app/Functions/Functions.php:718
-msgctxt "MALE/FEMALE"
 msgid "partner"
 msgstr ""
 
@@ -19444,7 +19429,6 @@ msgstr ""
 
 #: app/Functions/Functions.php:619
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "second %s"
 msgstr ""
 
@@ -19460,7 +19444,6 @@ msgid "second cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:539
-msgctxt "MALE/FEMALE"
 msgid "second cousin"
 msgstr ""
 
@@ -19631,7 +19614,6 @@ msgid "seventh cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:549
-msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
 msgstr ""
 
@@ -19706,7 +19688,6 @@ msgid "sixth cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:547
-msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
 msgstr ""
 
@@ -19955,7 +19936,6 @@ msgid "tenth cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:555
-msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
 msgstr ""
 
@@ -19983,7 +19963,6 @@ msgstr ""
 
 #: app/Functions/Functions.php:621
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "third %s"
 msgstr ""
 
@@ -19999,7 +19978,6 @@ msgid "third cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:541
-msgctxt "MALE/FEMALE"
 msgid "third cousin"
 msgstr ""
 
@@ -20015,7 +19993,6 @@ msgid "thirteenth cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:561
-msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
 msgstr ""
 
@@ -20051,7 +20028,6 @@ msgid "twelfth cousin"
 msgstr ""
 
 #: app/Functions/Functions.php:559
-msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
 msgstr ""
 

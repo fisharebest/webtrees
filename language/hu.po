@@ -160,7 +160,6 @@ msgstr "%1$s × %2$s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:627
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
@@ -477,7 +476,6 @@ msgstr "%s × unokatestvér"
 
 #: app/Functions/Functions.php:567
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
 msgstr "%s × unokatestvér"
 
@@ -16912,7 +16910,6 @@ msgid "eighth cousin"
 msgstr "nyolcad-unokatestvér"
 
 #: app/Functions/Functions.php:551
-msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
 msgstr "nyolcad-unokatestvér"
 
@@ -16940,7 +16937,6 @@ msgid "eleventh cousin"
 msgstr "tizenegyed-unokatestvér"
 
 #: app/Functions/Functions.php:557
-msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
 msgstr "tizenegyed-unokatestvér"
 
@@ -16982,7 +16978,6 @@ msgid "ex-partner"
 msgstr "volt élettárs"
 
 #: app/Functions/Functions.php:716
-msgctxt "MALE/FEMALE"
 msgid "ex-partner"
 msgstr "volt élettárs"
 
@@ -17029,7 +17024,6 @@ msgid "fifteenth cousin"
 msgstr "tizenötöd-unokatestvér"
 
 #: app/Functions/Functions.php:565
-msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
 msgstr "tizenötöd-unokatestvér"
 
@@ -17047,7 +17041,6 @@ msgstr "ötödik %s"
 
 #: app/Functions/Functions.php:625
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fifth %s"
 msgstr "ötödik %s"
 
@@ -17063,7 +17056,6 @@ msgid "fifth cousin"
 msgstr "ötöd-unokatestvér"
 
 #: app/Functions/Functions.php:545
-msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
 msgstr "ötöd-unokatestvér"
 
@@ -17099,7 +17091,6 @@ msgstr "első %s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:617
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "first %s"
 msgstr "első %s"
 
@@ -17115,7 +17106,6 @@ msgid "first cousin"
 msgstr "első unokatestvér"
 
 #: app/Functions/Functions.php:537
-msgctxt "MALE/FEMALE"
 msgid "first cousin"
 msgstr "első unokatestvér"
 
@@ -17311,7 +17301,6 @@ msgid "fourteenth cousin"
 msgstr "tizennegyed-unokatestvér"
 
 #: app/Functions/Functions.php:563
-msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
 msgstr "tizennegyed-unokatestvér"
 
@@ -17329,7 +17318,6 @@ msgstr "negyedik %s"
 
 #: app/Functions/Functions.php:623
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fourth %s"
 msgstr "negyedik %s"
 
@@ -17345,7 +17333,6 @@ msgid "fourth cousin"
 msgstr "negyed-unokatestvér"
 
 #: app/Functions/Functions.php:543
-msgctxt "MALE/FEMALE"
 msgid "fourth cousin"
 msgstr "negyed-unokatestvér"
 
@@ -19235,7 +19222,6 @@ msgid "ninth cousin"
 msgstr "kilenced-unokatestvér"
 
 #: app/Functions/Functions.php:553
-msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "kilenced-unokatestvér"
 
@@ -19332,7 +19318,6 @@ msgid "partner"
 msgstr "élettárs"
 
 #: app/Functions/Functions.php:718
-msgctxt "MALE/FEMALE"
 msgid "partner"
 msgstr "élettárs"
 
@@ -19491,7 +19476,6 @@ msgstr "második %s"
 
 #: app/Functions/Functions.php:619
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "second %s"
 msgstr "második %s"
 
@@ -19507,7 +19491,6 @@ msgid "second cousin"
 msgstr "másod-unokatestvér"
 
 #: app/Functions/Functions.php:539
-msgctxt "MALE/FEMALE"
 msgid "second cousin"
 msgstr "másod-unokatestvér"
 
@@ -19678,7 +19661,6 @@ msgid "seventh cousin"
 msgstr "heted-unokatestvér"
 
 #: app/Functions/Functions.php:549
-msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
 msgstr "heted-unokatestvér"
 
@@ -19753,7 +19735,6 @@ msgid "sixth cousin"
 msgstr "hatod-unokatestvér"
 
 #: app/Functions/Functions.php:547
-msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
 msgstr "hatod-unokatestvér"
 
@@ -20002,7 +19983,6 @@ msgid "tenth cousin"
 msgstr "tized-unokatestvér"
 
 #: app/Functions/Functions.php:555
-msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
 msgstr "tized-unokatestvér"
 
@@ -20030,7 +20010,6 @@ msgstr "harmadik %s"
 
 #: app/Functions/Functions.php:621
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "third %s"
 msgstr "harmadik %s"
 
@@ -20046,7 +20025,6 @@ msgid "third cousin"
 msgstr "harmad-unokatestvér"
 
 #: app/Functions/Functions.php:541
-msgctxt "MALE/FEMALE"
 msgid "third cousin"
 msgstr "harmad-unokatestvér"
 
@@ -20062,7 +20040,6 @@ msgid "thirteenth cousin"
 msgstr "tizenharmad-unokatestvér"
 
 #: app/Functions/Functions.php:561
-msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
 msgstr "tizenharmad-unokatestvér"
 
@@ -20098,7 +20075,6 @@ msgid "twelfth cousin"
 msgstr "tizenketted-unokatestvér"
 
 #: app/Functions/Functions.php:559
-msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
 msgstr "tizenketted-unokatestvér"
 

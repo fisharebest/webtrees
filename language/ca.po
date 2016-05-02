@@ -159,7 +159,6 @@ msgstr "%1$s × %2$s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:627
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
@@ -476,7 +475,6 @@ msgstr "cosí %s è"
 
 #: app/Functions/Functions.php:567
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
 msgstr "cosí/na %sè/a"
 
@@ -16911,7 +16909,6 @@ msgid "eighth cousin"
 msgstr "cosí 8è"
 
 #: app/Functions/Functions.php:551
-msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
 msgstr "cosí/na 8è/a"
 
@@ -16939,7 +16936,6 @@ msgid "eleventh cousin"
 msgstr "cosí 11è"
 
 #: app/Functions/Functions.php:557
-msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
 msgstr "cosí/na 11è/a"
 
@@ -16981,7 +16977,6 @@ msgid "ex-partner"
 msgstr "ex-marit"
 
 #: app/Functions/Functions.php:716
-msgctxt "MALE/FEMALE"
 msgid "ex-partner"
 msgstr "ex-cònjuge"
 
@@ -17028,7 +17023,6 @@ msgid "fifteenth cousin"
 msgstr "cosí 15è"
 
 #: app/Functions/Functions.php:565
-msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
 msgstr "cosí/na 15è/a"
 
@@ -17046,7 +17040,6 @@ msgstr "%s cinquè"
 
 #: app/Functions/Functions.php:625
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fifth %s"
 msgstr "%s cinquè/na"
 
@@ -17062,7 +17055,6 @@ msgid "fifth cousin"
 msgstr "cosí 5è"
 
 #: app/Functions/Functions.php:545
-msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
 msgstr "cosí/na 5è/a"
 
@@ -17098,7 +17090,6 @@ msgstr "%s primer"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:617
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "first %s"
 msgstr "%s primer/a"
 
@@ -17114,7 +17105,6 @@ msgid "first cousin"
 msgstr "cosí germà"
 
 #: app/Functions/Functions.php:537
-msgctxt "MALE/FEMALE"
 msgid "first cousin"
 msgstr "cosí/na germà/na"
 
@@ -17310,7 +17300,6 @@ msgid "fourteenth cousin"
 msgstr "cosí 14è"
 
 #: app/Functions/Functions.php:563
-msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
 msgstr "cosí/na 14è/a"
 
@@ -17328,7 +17317,6 @@ msgstr "%s quart"
 
 #: app/Functions/Functions.php:623
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fourth %s"
 msgstr "%s quart/a"
 
@@ -17344,7 +17332,6 @@ msgid "fourth cousin"
 msgstr "cosí quart"
 
 #: app/Functions/Functions.php:543
-msgctxt "MALE/FEMALE"
 msgid "fourth cousin"
 msgstr "cosí/na quart/a"
 
@@ -19234,7 +19221,6 @@ msgid "ninth cousin"
 msgstr "cosí 9è"
 
 #: app/Functions/Functions.php:553
-msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "cosí/na 9è/a"
 
@@ -19331,7 +19317,6 @@ msgid "partner"
 msgstr "parella"
 
 #: app/Functions/Functions.php:718
-msgctxt "MALE/FEMALE"
 msgid "partner"
 msgstr "parella"
 
@@ -19490,7 +19475,6 @@ msgstr "%s segon"
 
 #: app/Functions/Functions.php:619
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "second %s"
 msgstr "%s segon/a"
 
@@ -19506,7 +19490,6 @@ msgid "second cousin"
 msgstr "cosí segon"
 
 #: app/Functions/Functions.php:539
-msgctxt "MALE/FEMALE"
 msgid "second cousin"
 msgstr "cosi/na segon/a"
 
@@ -19677,7 +19660,6 @@ msgid "seventh cousin"
 msgstr "cosí 7è"
 
 #: app/Functions/Functions.php:549
-msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
 msgstr "cosí/na 7è/a"
 
@@ -19752,7 +19734,6 @@ msgid "sixth cousin"
 msgstr "cosí 6è"
 
 #: app/Functions/Functions.php:547
-msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
 msgstr "cosí/na 6è/a"
 
@@ -20001,7 +19982,6 @@ msgid "tenth cousin"
 msgstr "cosí 10è"
 
 #: app/Functions/Functions.php:555
-msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
 msgstr "cosí/na 10è/a"
 
@@ -20029,7 +20009,6 @@ msgstr "%s tercer"
 
 #: app/Functions/Functions.php:621
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "third %s"
 msgstr "%s tercer/a"
 
@@ -20045,7 +20024,6 @@ msgid "third cousin"
 msgstr "cosí tercer"
 
 #: app/Functions/Functions.php:541
-msgctxt "MALE/FEMALE"
 msgid "third cousin"
 msgstr "cosí/na tercer/a"
 
@@ -20061,7 +20039,6 @@ msgid "thirteenth cousin"
 msgstr "cosí 13è"
 
 #: app/Functions/Functions.php:561
-msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
 msgstr "cosí/na 13è/a"
 
@@ -20097,7 +20074,6 @@ msgid "twelfth cousin"
 msgstr "cosí 12è"
 
 #: app/Functions/Functions.php:559
-msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
 msgstr "cosí/na 12è/a"
 

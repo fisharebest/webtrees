@@ -163,7 +163,6 @@ msgstr "%1$s× %2$s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:627
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
 msgstr "%1$s× %2$s"
 
@@ -505,7 +504,6 @@ msgstr "kuzyn %s stopnia"
 
 #: app/Functions/Functions.php:567
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
 msgstr "kuzyn(ka) %s stopnia"
 
@@ -16951,7 +16949,6 @@ msgid "eighth cousin"
 msgstr "kuzyn ósmego stopnia"
 
 #: app/Functions/Functions.php:551
-msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
 msgstr "kuzyn(ka) ósmego stopnia"
 
@@ -16979,7 +16976,6 @@ msgid "eleventh cousin"
 msgstr "kuzyn jedenastego stopnia"
 
 #: app/Functions/Functions.php:557
-msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
 msgstr "kuzyn(ka) jedenastego stopnia"
 
@@ -17021,7 +17017,6 @@ msgid "ex-partner"
 msgstr "były partner"
 
 #: app/Functions/Functions.php:716
-msgctxt "MALE/FEMALE"
 msgid "ex-partner"
 msgstr "były partner"
 
@@ -17068,7 +17063,6 @@ msgid "fifteenth cousin"
 msgstr "kuzyn piętnastego stopnia"
 
 #: app/Functions/Functions.php:565
-msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
 msgstr "kuzyn(ka) piętnastego stopnia"
 
@@ -17086,7 +17080,6 @@ msgstr "piąty %s"
 
 #: app/Functions/Functions.php:625
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fifth %s"
 msgstr "piąty/a %s"
 
@@ -17102,7 +17095,6 @@ msgid "fifth cousin"
 msgstr "kuzyn piątego stopnia"
 
 #: app/Functions/Functions.php:545
-msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
 msgstr "kuzyn(ka) piątego stopnia"
 
@@ -17138,7 +17130,6 @@ msgstr "pierwszy %s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:617
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "first %s"
 msgstr "pierwszy/a %s"
 
@@ -17154,7 +17145,6 @@ msgid "first cousin"
 msgstr "kuzyn pierwszego stopnia"
 
 #: app/Functions/Functions.php:537
-msgctxt "MALE/FEMALE"
 msgid "first cousin"
 msgstr "kuzyn(ka) pierszego stopnia"
 
@@ -17350,7 +17340,6 @@ msgid "fourteenth cousin"
 msgstr "kuzyn czternastego stopnia"
 
 #: app/Functions/Functions.php:563
-msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
 msgstr "kuzyn(ka) czternastego stopnia"
 
@@ -17368,7 +17357,6 @@ msgstr "czwarty %s"
 
 #: app/Functions/Functions.php:623
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fourth %s"
 msgstr "czwarty/a %s"
 
@@ -17384,7 +17372,6 @@ msgid "fourth cousin"
 msgstr "kuzyn czwartego stopnia"
 
 #: app/Functions/Functions.php:543
-msgctxt "MALE/FEMALE"
 msgid "fourth cousin"
 msgstr "kuzyn(ka) czwartego stopnia"
 
@@ -19277,7 +19264,6 @@ msgid "ninth cousin"
 msgstr "kuzyn dziewiątego stopnia"
 
 #: app/Functions/Functions.php:553
-msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "kuzyn(ka) dziewiątego stopnia"
 
@@ -19374,7 +19360,6 @@ msgid "partner"
 msgstr "partner"
 
 #: app/Functions/Functions.php:718
-msgctxt "MALE/FEMALE"
 msgid "partner"
 msgstr "partner"
 
@@ -19533,7 +19518,6 @@ msgstr "drugi %s"
 
 #: app/Functions/Functions.php:619
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "second %s"
 msgstr "drugi/a %s"
 
@@ -19549,7 +19533,6 @@ msgid "second cousin"
 msgstr "kuzyn drugiego stopnia"
 
 #: app/Functions/Functions.php:539
-msgctxt "MALE/FEMALE"
 msgid "second cousin"
 msgstr "kuzyn(ka) drugiego stopnia"
 
@@ -19720,7 +19703,6 @@ msgid "seventh cousin"
 msgstr "kuzyn siódmego stopnia"
 
 #: app/Functions/Functions.php:549
-msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
 msgstr "kuzyn(ka) siódmego stopnia"
 
@@ -19795,7 +19777,6 @@ msgid "sixth cousin"
 msgstr "kuzyn szóstego stopnia"
 
 #: app/Functions/Functions.php:547
-msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
 msgstr "kuzyn(ka) szóstego stopnia"
 
@@ -20044,7 +20025,6 @@ msgid "tenth cousin"
 msgstr "kuzyn dziesiątego stopnia"
 
 #: app/Functions/Functions.php:555
-msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
 msgstr "kuzyn(ka) dziesiątego stopnia"
 
@@ -20072,7 +20052,6 @@ msgstr "trzeci %s"
 
 #: app/Functions/Functions.php:621
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "third %s"
 msgstr "trzeci/a %s"
 
@@ -20088,7 +20067,6 @@ msgid "third cousin"
 msgstr "kuzyn treciego stopnia"
 
 #: app/Functions/Functions.php:541
-msgctxt "MALE/FEMALE"
 msgid "third cousin"
 msgstr "kuzyn(ka) treciego stopnia"
 
@@ -20104,7 +20082,6 @@ msgid "thirteenth cousin"
 msgstr "kuzyn trzynastego stopnia"
 
 #: app/Functions/Functions.php:561
-msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
 msgstr "kuzyn(ka) trzynastego stopnia"
 
@@ -20140,7 +20117,6 @@ msgid "twelfth cousin"
 msgstr "kuzyn dwunastego stopnia"
 
 #: app/Functions/Functions.php:559
-msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
 msgstr "kuzyn(ka) dwunastego stopnia"
 

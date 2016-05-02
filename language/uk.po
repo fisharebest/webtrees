@@ -158,7 +158,6 @@ msgstr "%1$s × %2$s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:627
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
@@ -500,7 +499,6 @@ msgstr "двоюрідний брат (в %s коліні)"
 
 #: app/Functions/Functions.php:567
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
 msgstr "двоюрідний брат/сестра (в %s коліні)"
 
@@ -16948,7 +16946,6 @@ msgid "eighth cousin"
 msgstr "двоюрідний брат (8-го коліна)"
 
 #: app/Functions/Functions.php:551
-msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
 msgstr "двоюрідний брат/сестра (8-го коліна)"
 
@@ -16976,7 +16973,6 @@ msgid "eleventh cousin"
 msgstr "двоюрідний брат (11-го коліна)"
 
 #: app/Functions/Functions.php:557
-msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
 msgstr "двоюрідний брат/сестра (11-го коліна)"
 
@@ -17018,7 +17014,6 @@ msgid "ex-partner"
 msgstr "екс-партнер"
 
 #: app/Functions/Functions.php:716
-msgctxt "MALE/FEMALE"
 msgid "ex-partner"
 msgstr "екс-партнер"
 
@@ -17065,7 +17060,6 @@ msgid "fifteenth cousin"
 msgstr "двоюрідний брат (15-го коліна)"
 
 #: app/Functions/Functions.php:565
-msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
 msgstr "двоюрідний брат/сестра (15-го коліна)"
 
@@ -17083,7 +17077,6 @@ msgstr "п'ятий %s"
 
 #: app/Functions/Functions.php:625
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fifth %s"
 msgstr "п'ятий/п'ята %s"
 
@@ -17099,7 +17092,6 @@ msgid "fifth cousin"
 msgstr "двоюрідний брат (5-го коліна)"
 
 #: app/Functions/Functions.php:545
-msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
 msgstr "двоюрідний брат/сестра (5-го коліна)"
 
@@ -17135,7 +17127,6 @@ msgstr "перший %s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:617
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "first %s"
 msgstr "перший/перша %s"
 
@@ -17151,7 +17142,6 @@ msgid "first cousin"
 msgstr "двоюрідний брат (1-го коліна)"
 
 #: app/Functions/Functions.php:537
-msgctxt "MALE/FEMALE"
 msgid "first cousin"
 msgstr "двоюрідний брат/сестра (1-го коліна)"
 
@@ -17347,7 +17337,6 @@ msgid "fourteenth cousin"
 msgstr "двоюрідний брат (14-го коліна)"
 
 #: app/Functions/Functions.php:563
-msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
 msgstr "двоюрідний брат/сестра (14-го коліна)"
 
@@ -17365,7 +17354,6 @@ msgstr "четвертий %s"
 
 #: app/Functions/Functions.php:623
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fourth %s"
 msgstr "четвертий/четверта %s"
 
@@ -17381,7 +17369,6 @@ msgid "fourth cousin"
 msgstr "двоюрідний брат (4-го коліна)"
 
 #: app/Functions/Functions.php:543
-msgctxt "MALE/FEMALE"
 msgid "fourth cousin"
 msgstr "двоюрідний брат/сестра (4-го коліна)"
 
@@ -19274,7 +19261,6 @@ msgid "ninth cousin"
 msgstr "двоюрідний брат (9-го коліна)"
 
 #: app/Functions/Functions.php:553
-msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "двоюрідний брат/сестра (9-го коліна)"
 
@@ -19371,7 +19357,6 @@ msgid "partner"
 msgstr "партнер"
 
 #: app/Functions/Functions.php:718
-msgctxt "MALE/FEMALE"
 msgid "partner"
 msgstr "партнер"
 
@@ -19530,7 +19515,6 @@ msgstr "другий %s"
 
 #: app/Functions/Functions.php:619
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "second %s"
 msgstr "другий/друга %s"
 
@@ -19546,7 +19530,6 @@ msgid "second cousin"
 msgstr "двоюрідний брат (2-го коліна)"
 
 #: app/Functions/Functions.php:539
-msgctxt "MALE/FEMALE"
 msgid "second cousin"
 msgstr "двоюрідний брат/сестра (2-го коліна)"
 
@@ -19717,7 +19700,6 @@ msgid "seventh cousin"
 msgstr "двоюрідний брат (7-го коліна)"
 
 #: app/Functions/Functions.php:549
-msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
 msgstr "двоюрідний брат/сестра (7-го коліна)"
 
@@ -19792,7 +19774,6 @@ msgid "sixth cousin"
 msgstr "двоюрідний брат (6-го коліна)"
 
 #: app/Functions/Functions.php:547
-msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
 msgstr "двоюрідний брат/сестра (6-го коліна)"
 
@@ -20041,7 +20022,6 @@ msgid "tenth cousin"
 msgstr "двоюрідний брат (10-го коліна)"
 
 #: app/Functions/Functions.php:555
-msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
 msgstr "двоюрідний брат/сестра (10-го коліна)"
 
@@ -20069,7 +20049,6 @@ msgstr "третій %s"
 
 #: app/Functions/Functions.php:621
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "third %s"
 msgstr "третій/третя %s"
 
@@ -20085,7 +20064,6 @@ msgid "third cousin"
 msgstr "двоюрідний брат (3-го коліна)"
 
 #: app/Functions/Functions.php:541
-msgctxt "MALE/FEMALE"
 msgid "third cousin"
 msgstr "двоюрідний брат/сестра (3-го коліна)"
 
@@ -20101,7 +20079,6 @@ msgid "thirteenth cousin"
 msgstr "двоюрідний брат (13-го коліна)"
 
 #: app/Functions/Functions.php:561
-msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
 msgstr "двоюрідний брат/сестра (13-го коліна)"
 
@@ -20137,7 +20114,6 @@ msgid "twelfth cousin"
 msgstr "двоюрідний брат (12-го коліна)"
 
 #: app/Functions/Functions.php:559
-msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
 msgstr "двоюрідний брат/сестра (12-го коліна)"
 

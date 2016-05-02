@@ -172,7 +172,6 @@ msgstr "%1$s × %2$s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:627
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
@@ -589,7 +588,6 @@ msgstr "حفيد %s لسلف مشترك"
 
 #: app/Functions/Functions.php:567
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
 msgstr "حفيد %s لسلف مشترك"
 
@@ -17068,7 +17066,6 @@ msgid "eighth cousin"
 msgstr "حفيد ثامن لسلف مشترك"
 
 #: app/Functions/Functions.php:551
-msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
 msgstr "حفيد ثامن لسلف مشترك"
 
@@ -17096,7 +17093,6 @@ msgid "eleventh cousin"
 msgstr "حفيد حادي عشر لسلف مشترك"
 
 #: app/Functions/Functions.php:557
-msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
 msgstr "حفيد حادي عشر لسلف مشترك"
 
@@ -17138,7 +17134,6 @@ msgid "ex-partner"
 msgstr ""
 
 #: app/Functions/Functions.php:716
-msgctxt "MALE/FEMALE"
 msgid "ex-partner"
 msgstr ""
 
@@ -17185,7 +17180,6 @@ msgid "fifteenth cousin"
 msgstr "حفيد خامس عشر لسلف مشترك"
 
 #: app/Functions/Functions.php:565
-msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
 msgstr "حفيد خامس عشر لسلف مشترك"
 
@@ -17203,7 +17197,6 @@ msgstr "%s خامس"
 
 #: app/Functions/Functions.php:625
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fifth %s"
 msgstr "%s خامس"
 
@@ -17219,7 +17212,6 @@ msgid "fifth cousin"
 msgstr "حفيد خامس لسلف مشترك"
 
 #: app/Functions/Functions.php:545
-msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
 msgstr "حفيد خامس لسلف مشترك"
 
@@ -17255,7 +17247,6 @@ msgstr "%s أول"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:617
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "first %s"
 msgstr "%s أول"
 
@@ -17271,7 +17262,6 @@ msgid "first cousin"
 msgstr "حفيد لسلف مشترك"
 
 #: app/Functions/Functions.php:537
-msgctxt "MALE/FEMALE"
 msgid "first cousin"
 msgstr "حفيد لسلف مشترك"
 
@@ -17467,7 +17457,6 @@ msgid "fourteenth cousin"
 msgstr "حفيد رابع عشر لسلف مشترك"
 
 #: app/Functions/Functions.php:563
-msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
 msgstr "حفيد رابع عشر لسلف مشترك"
 
@@ -17485,7 +17474,6 @@ msgstr "%s رابع"
 
 #: app/Functions/Functions.php:623
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fourth %s"
 msgstr "%s رابع"
 
@@ -17501,7 +17489,6 @@ msgid "fourth cousin"
 msgstr "حفيد رابع لسلف مشترك"
 
 #: app/Functions/Functions.php:543
-msgctxt "MALE/FEMALE"
 msgid "fourth cousin"
 msgstr "حفيد رابع لسلف مشترك"
 
@@ -19403,7 +19390,6 @@ msgid "ninth cousin"
 msgstr "حفيد تاسع لسلف مشترك"
 
 #: app/Functions/Functions.php:553
-msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "حفيد تاسع لسلف مشترك"
 
@@ -19500,7 +19486,6 @@ msgid "partner"
 msgstr "خليل"
 
 #: app/Functions/Functions.php:718
-msgctxt "MALE/FEMALE"
 msgid "partner"
 msgstr "خليل"
 
@@ -19659,7 +19644,6 @@ msgstr "%s ثاني"
 
 #: app/Functions/Functions.php:619
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "second %s"
 msgstr "%s ثاني"
 
@@ -19675,7 +19659,6 @@ msgid "second cousin"
 msgstr "حفيد ثاني لسلف مشترك"
 
 #: app/Functions/Functions.php:539
-msgctxt "MALE/FEMALE"
 msgid "second cousin"
 msgstr "حفيد ثاني لسلف مشترك"
 
@@ -19846,7 +19829,6 @@ msgid "seventh cousin"
 msgstr "حفيد سابع لسلف مشترك"
 
 #: app/Functions/Functions.php:549
-msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
 msgstr "حفيد سابع لسلف مشترك"
 
@@ -19921,7 +19903,6 @@ msgid "sixth cousin"
 msgstr "حفيد سادس لسلف مشترك"
 
 #: app/Functions/Functions.php:547
-msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
 msgstr "حفيد سادس لسلف مشترك"
 
@@ -20170,7 +20151,6 @@ msgid "tenth cousin"
 msgstr "حفيد عاشر لسلف مشترك"
 
 #: app/Functions/Functions.php:555
-msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
 msgstr "حفيد عاشر لسلف مشترك"
 
@@ -20198,7 +20178,6 @@ msgstr "%s ثالث"
 
 #: app/Functions/Functions.php:621
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "third %s"
 msgstr "%s ثالث"
 
@@ -20214,7 +20193,6 @@ msgid "third cousin"
 msgstr "حفيد ثالث لسلف مشترك"
 
 #: app/Functions/Functions.php:541
-msgctxt "MALE/FEMALE"
 msgid "third cousin"
 msgstr "حفيد ثالث لسلف مشترك"
 
@@ -20230,7 +20208,6 @@ msgid "thirteenth cousin"
 msgstr "حفيد ثالث عشر لسلف مشترك"
 
 #: app/Functions/Functions.php:561
-msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
 msgstr "حفيد ثالث عشر لسلف مشترك"
 
@@ -20266,7 +20243,6 @@ msgid "twelfth cousin"
 msgstr "حفيد ثاني عشر لسلف مشترك"
 
 #: app/Functions/Functions.php:559
-msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
 msgstr "حفيد ثاني عشر لسلف مشترك"
 

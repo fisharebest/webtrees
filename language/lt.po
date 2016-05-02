@@ -162,7 +162,6 @@ msgstr "%1$s × %2$s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:627
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
@@ -504,7 +503,6 @@ msgstr "%s × pusbrolis"
 
 #: app/Functions/Functions.php:567
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
 msgstr "%s × pusbrolis/pusseserė"
 
@@ -16950,7 +16948,6 @@ msgid "eighth cousin"
 msgstr "aštuntos eilės pusbrolis"
 
 #: app/Functions/Functions.php:551
-msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
 msgstr "aštuntos eilės pusbrolis/pusseserė"
 
@@ -16978,7 +16975,6 @@ msgid "eleventh cousin"
 msgstr "vienuoliktos eilės pusbrolis"
 
 #: app/Functions/Functions.php:557
-msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
 msgstr "vienuoliktos eilės pusbrolis/pusseserė"
 
@@ -17020,7 +17016,6 @@ msgid "ex-partner"
 msgstr "buves sugiventinis"
 
 #: app/Functions/Functions.php:716
-msgctxt "MALE/FEMALE"
 msgid "ex-partner"
 msgstr "buves(usi) sugiventinis(ė)"
 
@@ -17067,7 +17062,6 @@ msgid "fifteenth cousin"
 msgstr "penkioliktos eilės pusbrolis"
 
 #: app/Functions/Functions.php:565
-msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
 msgstr "penkioliktos eilės pusbrolis/pusseserė"
 
@@ -17085,7 +17079,6 @@ msgstr "penktas %s"
 
 #: app/Functions/Functions.php:625
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fifth %s"
 msgstr "penktas/penkta %s"
 
@@ -17101,7 +17094,6 @@ msgid "fifth cousin"
 msgstr "penktos eilės pusbrolis"
 
 #: app/Functions/Functions.php:545
-msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
 msgstr "penktos eilės pusbrolis/pusseserė"
 
@@ -17137,7 +17129,6 @@ msgstr "pirmas %s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:617
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "first %s"
 msgstr "pirmas/pirma %s"
 
@@ -17153,7 +17144,6 @@ msgid "first cousin"
 msgstr "pirmos eilės pusbrolis"
 
 #: app/Functions/Functions.php:537
-msgctxt "MALE/FEMALE"
 msgid "first cousin"
 msgstr "pirmos eilės pusbrolis/pusseserė"
 
@@ -17349,7 +17339,6 @@ msgid "fourteenth cousin"
 msgstr "keturioliktos eilės pusbrolis"
 
 #: app/Functions/Functions.php:563
-msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
 msgstr "keturioliktos eilės pusbrolis/pusseserė"
 
@@ -17367,7 +17356,6 @@ msgstr "ketvirtas %s"
 
 #: app/Functions/Functions.php:623
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fourth %s"
 msgstr "ketvirtas/ketvirta %s"
 
@@ -17383,7 +17371,6 @@ msgid "fourth cousin"
 msgstr "ketvirtos eilės pusbrolis"
 
 #: app/Functions/Functions.php:543
-msgctxt "MALE/FEMALE"
 msgid "fourth cousin"
 msgstr "ketvirtos eilės pusbrolis/pusseserė"
 
@@ -19276,7 +19263,6 @@ msgid "ninth cousin"
 msgstr "devintos eilės pusbrolis"
 
 #: app/Functions/Functions.php:553
-msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "devintos eilės pusbrolis/pusseserė"
 
@@ -19373,7 +19359,6 @@ msgid "partner"
 msgstr "sugyventinis"
 
 #: app/Functions/Functions.php:718
-msgctxt "MALE/FEMALE"
 msgid "partner"
 msgstr "sugyventiniai"
 
@@ -19532,7 +19517,6 @@ msgstr "antras %s"
 
 #: app/Functions/Functions.php:619
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "second %s"
 msgstr "antras/antra %s"
 
@@ -19548,7 +19532,6 @@ msgid "second cousin"
 msgstr "antros eilės pusbrolis"
 
 #: app/Functions/Functions.php:539
-msgctxt "MALE/FEMALE"
 msgid "second cousin"
 msgstr "antros eilės pusbrolis/pusseserė"
 
@@ -19719,7 +19702,6 @@ msgid "seventh cousin"
 msgstr "septintos eilės pusbrolis"
 
 #: app/Functions/Functions.php:549
-msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
 msgstr "septintos eilės pusbrolis/pusseserė"
 
@@ -19794,7 +19776,6 @@ msgid "sixth cousin"
 msgstr "šeštos eilės pusbrolis"
 
 #: app/Functions/Functions.php:547
-msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
 msgstr "šeštos eilės pusbrolis/pusseserė"
 
@@ -20043,7 +20024,6 @@ msgid "tenth cousin"
 msgstr "dešimtos eilės pusbrolis"
 
 #: app/Functions/Functions.php:555
-msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
 msgstr "dešimtos eilės pusbrolis/pusseserė"
 
@@ -20071,7 +20051,6 @@ msgstr "trečias %s"
 
 #: app/Functions/Functions.php:621
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "third %s"
 msgstr "trečias/trečia %s"
 
@@ -20087,7 +20066,6 @@ msgid "third cousin"
 msgstr "trečios eilės pusbrolis"
 
 #: app/Functions/Functions.php:541
-msgctxt "MALE/FEMALE"
 msgid "third cousin"
 msgstr "trečios eilės pusbrolis/pusseserė"
 
@@ -20103,7 +20081,6 @@ msgid "thirteenth cousin"
 msgstr "tryliktos eilės pusbrolis"
 
 #: app/Functions/Functions.php:561
-msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
 msgstr "tryliktos eilės pusbrolis/pusseserė"
 
@@ -20139,7 +20116,6 @@ msgid "twelfth cousin"
 msgstr "dvyliktos eilės pusbrolis"
 
 #: app/Functions/Functions.php:559
-msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
 msgstr "dvyliktos eilės pusbrolis/pusseserė"
 

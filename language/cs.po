@@ -165,7 +165,6 @@ msgstr "%1$s × %2$s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:627
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
@@ -507,7 +506,6 @@ msgstr "bratranec (z %s. kolena)"
 
 #: app/Functions/Functions.php:567
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
 msgstr "bratranec/sestřenice (z %s. kolena)"
 
@@ -16953,7 +16951,6 @@ msgid "eighth cousin"
 msgstr "bratranec (z 8. kolena)"
 
 #: app/Functions/Functions.php:551
-msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
 msgstr "bratranec/sestřenice (z 8. kolena)"
 
@@ -16981,7 +16978,6 @@ msgid "eleventh cousin"
 msgstr "bratranec (z 11. kolena)"
 
 #: app/Functions/Functions.php:557
-msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
 msgstr "bratranec/sestřenice (z 11. kolena)"
 
@@ -17023,7 +17019,6 @@ msgid "ex-partner"
 msgstr "bývalý partner"
 
 #: app/Functions/Functions.php:716
-msgctxt "MALE/FEMALE"
 msgid "ex-partner"
 msgstr "bývalý/á partner/ka"
 
@@ -17070,7 +17065,6 @@ msgid "fifteenth cousin"
 msgstr "bratranec (z 15. kolena)"
 
 #: app/Functions/Functions.php:565
-msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
 msgstr "bratranec/sestřenice (z 15. kolena)"
 
@@ -17088,7 +17082,6 @@ msgstr "pátý %s"
 
 #: app/Functions/Functions.php:625
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fifth %s"
 msgstr "pátý %s"
 
@@ -17104,7 +17097,6 @@ msgid "fifth cousin"
 msgstr "bratranec (z 5. kolena)"
 
 #: app/Functions/Functions.php:545
-msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
 msgstr "bratranec/sestřenice (z 5. kolena)"
 
@@ -17140,7 +17132,6 @@ msgstr "první %s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:617
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "first %s"
 msgstr "první %s"
 
@@ -17156,7 +17147,6 @@ msgid "first cousin"
 msgstr "bratranec"
 
 #: app/Functions/Functions.php:537
-msgctxt "MALE/FEMALE"
 msgid "first cousin"
 msgstr "bratranec/sestřenice"
 
@@ -17352,7 +17342,6 @@ msgid "fourteenth cousin"
 msgstr "bratranec (z 14. kolena)"
 
 #: app/Functions/Functions.php:563
-msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
 msgstr "bratranec/sestřenice (z 14. kolena)"
 
@@ -17370,7 +17359,6 @@ msgstr "čtvrtý %s"
 
 #: app/Functions/Functions.php:623
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fourth %s"
 msgstr "čtvrtý %s"
 
@@ -17386,7 +17374,6 @@ msgid "fourth cousin"
 msgstr "bratranec (z 4. kolena)"
 
 #: app/Functions/Functions.php:543
-msgctxt "MALE/FEMALE"
 msgid "fourth cousin"
 msgstr "bratranec/sestřenice (z 4. kolena)"
 
@@ -19279,7 +19266,6 @@ msgid "ninth cousin"
 msgstr "bratranec (z 9. kolena)"
 
 #: app/Functions/Functions.php:553
-msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "bratranec/sestřenice (z 9. kolena)"
 
@@ -19376,7 +19362,6 @@ msgid "partner"
 msgstr "partner"
 
 #: app/Functions/Functions.php:718
-msgctxt "MALE/FEMALE"
 msgid "partner"
 msgstr "partner/ka"
 
@@ -19535,7 +19520,6 @@ msgstr "druhý %s"
 
 #: app/Functions/Functions.php:619
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "second %s"
 msgstr "druhý %s"
 
@@ -19551,7 +19535,6 @@ msgid "second cousin"
 msgstr "bratranec (z 2. kolena)"
 
 #: app/Functions/Functions.php:539
-msgctxt "MALE/FEMALE"
 msgid "second cousin"
 msgstr "bratranec/sestřenice (z 2. kolena)"
 
@@ -19722,7 +19705,6 @@ msgid "seventh cousin"
 msgstr "bratranec (z 7. kolena)"
 
 #: app/Functions/Functions.php:549
-msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
 msgstr "bratranec/sestřenice (z 7. kolena)"
 
@@ -19797,7 +19779,6 @@ msgid "sixth cousin"
 msgstr "bratranec (z 6. kolena)"
 
 #: app/Functions/Functions.php:547
-msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
 msgstr "bratranec/sestřenice (z 6. kolena)"
 
@@ -20046,7 +20027,6 @@ msgid "tenth cousin"
 msgstr "bratranec (z 10. kolena)"
 
 #: app/Functions/Functions.php:555
-msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
 msgstr "bratranec/sestřenice (z 10. kolena)"
 
@@ -20074,7 +20054,6 @@ msgstr "třetí %s"
 
 #: app/Functions/Functions.php:621
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "third %s"
 msgstr "třetí %s"
 
@@ -20090,7 +20069,6 @@ msgid "third cousin"
 msgstr "bratranec (z 3. kolena)"
 
 #: app/Functions/Functions.php:541
-msgctxt "MALE/FEMALE"
 msgid "third cousin"
 msgstr "bratranec/sestřenice (z 3. kolena)"
 
@@ -20106,7 +20084,6 @@ msgid "thirteenth cousin"
 msgstr "bratranec (z 13. kolena)"
 
 #: app/Functions/Functions.php:561
-msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
 msgstr "bratranec/sestřenice (z 13. kolena)"
 
@@ -20142,7 +20119,6 @@ msgid "twelfth cousin"
 msgstr "bratranec (z 12. kolena)"
 
 #: app/Functions/Functions.php:559
-msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
 msgstr "bratranec/sestřenice (z 12. kolena)"
 

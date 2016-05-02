@@ -156,7 +156,6 @@ msgstr "%1$s × %2$s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:627
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
@@ -448,7 +447,6 @@ msgstr "bà con họ %s × đời"
 
 #: app/Functions/Functions.php:567
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
 msgstr "%s × anh chị em họ"
 
@@ -16872,7 +16870,6 @@ msgid "eighth cousin"
 msgstr "bà con họ 8 đời"
 
 #: app/Functions/Functions.php:551
-msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
 msgstr "anh em họ 8 đời"
 
@@ -16900,7 +16897,6 @@ msgid "eleventh cousin"
 msgstr "bà con họ 11 đời"
 
 #: app/Functions/Functions.php:557
-msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
 msgstr "anh em họ 11 đời"
 
@@ -16942,7 +16938,6 @@ msgid "ex-partner"
 msgstr "bạn đời khác [MALE]"
 
 #: app/Functions/Functions.php:716
-msgctxt "MALE/FEMALE"
 msgid "ex-partner"
 msgstr "bạn đời khác [MALE/FEMALE]"
 
@@ -16989,7 +16984,6 @@ msgid "fifteenth cousin"
 msgstr "bà con họ 15 đời"
 
 #: app/Functions/Functions.php:565
-msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
 msgstr "anh chị em họ thứ 15"
 
@@ -17007,7 +17001,6 @@ msgstr "%s thứ năm"
 
 #: app/Functions/Functions.php:625
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fifth %s"
 msgstr "%s thứ năm"
 
@@ -17023,7 +17016,6 @@ msgid "fifth cousin"
 msgstr "bà con họ 5 đời"
 
 #: app/Functions/Functions.php:545
-msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
 msgstr "anh em họ 5 đời"
 
@@ -17059,7 +17051,6 @@ msgstr "%s thứ nhất"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:617
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "first %s"
 msgstr "%s thứ nhất"
 
@@ -17075,7 +17066,6 @@ msgid "first cousin"
 msgstr "bà con họ 1 đời"
 
 #: app/Functions/Functions.php:537
-msgctxt "MALE/FEMALE"
 msgid "first cousin"
 msgstr "anh em họ"
 
@@ -17271,7 +17261,6 @@ msgid "fourteenth cousin"
 msgstr "bà con họ 14 đời"
 
 #: app/Functions/Functions.php:563
-msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
 msgstr "anh chị em họ thứ 14"
 
@@ -17289,7 +17278,6 @@ msgstr "%s thứ tư"
 
 #: app/Functions/Functions.php:623
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fourth %s"
 msgstr "%s thứ tư"
 
@@ -17305,7 +17293,6 @@ msgid "fourth cousin"
 msgstr "bà con họ 4 đời"
 
 #: app/Functions/Functions.php:543
-msgctxt "MALE/FEMALE"
 msgid "fourth cousin"
 msgstr "anh em họ 4 đời"
 
@@ -19192,7 +19179,6 @@ msgid "ninth cousin"
 msgstr "bà con họ 9 đời"
 
 #: app/Functions/Functions.php:553
-msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "anh em họ 9 đời"
 
@@ -19289,7 +19275,6 @@ msgid "partner"
 msgstr "bạn đời"
 
 #: app/Functions/Functions.php:718
-msgctxt "MALE/FEMALE"
 msgid "partner"
 msgstr "bạn đời"
 
@@ -19448,7 +19433,6 @@ msgstr "%s thứ hai"
 
 #: app/Functions/Functions.php:619
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "second %s"
 msgstr "%s thứ hai"
 
@@ -19464,7 +19448,6 @@ msgid "second cousin"
 msgstr "bà con họ 2 đời"
 
 #: app/Functions/Functions.php:539
-msgctxt "MALE/FEMALE"
 msgid "second cousin"
 msgstr "anh em họ 2 đời"
 
@@ -19635,7 +19618,6 @@ msgid "seventh cousin"
 msgstr "bà con họ 7 đời"
 
 #: app/Functions/Functions.php:549
-msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
 msgstr "anh em họ 7 đời"
 
@@ -19710,7 +19692,6 @@ msgid "sixth cousin"
 msgstr "bà con họ 6 đời"
 
 #: app/Functions/Functions.php:547
-msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
 msgstr "anh em họ 6 đời"
 
@@ -19959,7 +19940,6 @@ msgid "tenth cousin"
 msgstr "bà con họ 10 đời"
 
 #: app/Functions/Functions.php:555
-msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
 msgstr "anh em họ 10 đời"
 
@@ -19987,7 +19967,6 @@ msgstr "%s thứ ba"
 
 #: app/Functions/Functions.php:621
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "third %s"
 msgstr "%s thứ ba"
 
@@ -20003,7 +19982,6 @@ msgid "third cousin"
 msgstr "bà con họ 3 đời"
 
 #: app/Functions/Functions.php:541
-msgctxt "MALE/FEMALE"
 msgid "third cousin"
 msgstr "anh em họ 3 đời"
 
@@ -20019,7 +19997,6 @@ msgid "thirteenth cousin"
 msgstr "bà con họ 13 đời"
 
 #: app/Functions/Functions.php:561
-msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
 msgstr "anh chị em họ thứ 13"
 
@@ -20055,7 +20032,6 @@ msgid "twelfth cousin"
 msgstr "bà con họ 12 đời"
 
 #: app/Functions/Functions.php:559
-msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
 msgstr "anh chị em họ thứ 12"
 

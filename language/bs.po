@@ -158,7 +158,6 @@ msgstr ""
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:627
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%1$s × %2$s"
 msgstr ""
 
@@ -500,7 +499,6 @@ msgstr "%s × rođak"
 
 #: app/Functions/Functions.php:567
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
 msgstr "%s × rod"
 
@@ -16946,7 +16944,6 @@ msgid "eighth cousin"
 msgstr "rođak u osmom koljenu"
 
 #: app/Functions/Functions.php:551
-msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
 msgstr "rod u osmom koljenu"
 
@@ -16974,7 +16971,6 @@ msgid "eleventh cousin"
 msgstr "rođak u jedanaestom koljenu"
 
 #: app/Functions/Functions.php:557
-msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
 msgstr "rod u jedanaestom koljenu"
 
@@ -17016,7 +17012,6 @@ msgid "ex-partner"
 msgstr ""
 
 #: app/Functions/Functions.php:716
-msgctxt "MALE/FEMALE"
 msgid "ex-partner"
 msgstr ""
 
@@ -17063,7 +17058,6 @@ msgid "fifteenth cousin"
 msgstr "rođak u petnaestom koljenu"
 
 #: app/Functions/Functions.php:565
-msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
 msgstr "rod u petnaestom koljenu"
 
@@ -17081,7 +17075,6 @@ msgstr "peti %s"
 
 #: app/Functions/Functions.php:625
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fifth %s"
 msgstr "peti/peta %s"
 
@@ -17097,7 +17090,6 @@ msgid "fifth cousin"
 msgstr "rođak u petom koljenu"
 
 #: app/Functions/Functions.php:545
-msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
 msgstr "rod u petom koljenu"
 
@@ -17133,7 +17125,6 @@ msgstr "prvi %s"
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:617
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "first %s"
 msgstr "prvi/prva %s"
 
@@ -17149,7 +17140,6 @@ msgid "first cousin"
 msgstr "rođak u prvom koljenu"
 
 #: app/Functions/Functions.php:537
-msgctxt "MALE/FEMALE"
 msgid "first cousin"
 msgstr "rod u prvom koljenu"
 
@@ -17345,7 +17335,6 @@ msgid "fourteenth cousin"
 msgstr "rođak u četrnaestom koljenu"
 
 #: app/Functions/Functions.php:563
-msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
 msgstr "rod u četrnaestom koljenu"
 
@@ -17363,7 +17352,6 @@ msgstr "četvrti %s"
 
 #: app/Functions/Functions.php:623
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "fourth %s"
 msgstr "četvrti/četvrta %s"
 
@@ -17379,7 +17367,6 @@ msgid "fourth cousin"
 msgstr "rođak u četvrtom koljenu"
 
 #: app/Functions/Functions.php:543
-msgctxt "MALE/FEMALE"
 msgid "fourth cousin"
 msgstr "rod u četvrtom koljenu"
 
@@ -19272,7 +19259,6 @@ msgid "ninth cousin"
 msgstr "rođak u devetom koljenu"
 
 #: app/Functions/Functions.php:553
-msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "rod u devetom koljenu"
 
@@ -19369,7 +19355,6 @@ msgid "partner"
 msgstr ""
 
 #: app/Functions/Functions.php:718
-msgctxt "MALE/FEMALE"
 msgid "partner"
 msgstr ""
 
@@ -19528,7 +19513,6 @@ msgstr "drugi %s"
 
 #: app/Functions/Functions.php:619
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "second %s"
 msgstr "drugi/druga %s"
 
@@ -19544,7 +19528,6 @@ msgid "second cousin"
 msgstr "rođak u drugom koljenu"
 
 #: app/Functions/Functions.php:539
-msgctxt "MALE/FEMALE"
 msgid "second cousin"
 msgstr "rod u drugom koljenu"
 
@@ -19715,7 +19698,6 @@ msgid "seventh cousin"
 msgstr "rođak u sedmom koljenu"
 
 #: app/Functions/Functions.php:549
-msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
 msgstr "rod u sedmom koljenu"
 
@@ -19790,7 +19772,6 @@ msgid "sixth cousin"
 msgstr "rođak u šetom koljenu"
 
 #: app/Functions/Functions.php:547
-msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
 msgstr "rod u šetom koljenu"
 
@@ -20039,7 +20020,6 @@ msgid "tenth cousin"
 msgstr "rođak u desetom koljenu"
 
 #: app/Functions/Functions.php:555
-msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
 msgstr "rod u desetom koljenu"
 
@@ -20067,7 +20047,6 @@ msgstr "treći %s"
 
 #: app/Functions/Functions.php:621
 #, php-format
-msgctxt "MALE/FEMALE"
 msgid "third %s"
 msgstr "treći/treća %s"
 
@@ -20083,7 +20062,6 @@ msgid "third cousin"
 msgstr "rođak u trećem koljenu"
 
 #: app/Functions/Functions.php:541
-msgctxt "MALE/FEMALE"
 msgid "third cousin"
 msgstr "rod u trećem koljenu"
 
@@ -20099,7 +20077,6 @@ msgid "thirteenth cousin"
 msgstr "rođak u trinaestom koljenu"
 
 #: app/Functions/Functions.php:561
-msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
 msgstr "rod u trinaestom koljenu"
 
@@ -20135,7 +20112,6 @@ msgid "twelfth cousin"
 msgstr "rođak u dvanaestom koljenu"
 
 #: app/Functions/Functions.php:559
-msgctxt "MALE/FEMALE"
 msgid "twelfth cousin"
 msgstr "rod u dvanaestom koljenu"
 
