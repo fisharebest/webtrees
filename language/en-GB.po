@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-01 09:56+0100\n"
-"PO-Revision-Date: 2016-05-02 15:57+0000\n"
+"PO-Revision-Date: 2016-05-03 22:32+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -145,6 +145,12 @@ msgid "%1$s is a %2$s but a %3$s is expected."
 msgstr "%1$s is a %2$s but a %3$s is expected."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
+#: app/Functions/Functions.php:627
+#, php-format
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
+#. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:612
 #, php-format
 msgctxt "FEMALE"
@@ -155,12 +161,6 @@ msgstr "%1$s × %2$s"
 #: app/Functions/Functions.php:597
 #, php-format
 msgctxt "MALE"
-msgid "%1$s × %2$s"
-msgstr "%1$s × %2$s"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Functions/Functions.php:627
-#, php-format
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
@@ -462,6 +462,11 @@ msgstr[1] "%s years ago"
 msgid "%s year anniversary"
 msgstr "%s year anniversary"
 
+#: app/Functions/Functions.php:567
+#, php-format
+msgid "%s × cousin"
+msgstr "%s × cousin"
+
 #: app/Functions/Functions.php:532
 #, php-format
 msgctxt "FEMALE"
@@ -472,11 +477,6 @@ msgstr "%s × cousin"
 #: app/Functions/Functions.php:497
 #, php-format
 msgctxt "MALE"
-msgid "%s × cousin"
-msgstr "%s × cousin"
-
-#: app/Functions/Functions.php:567
-#, php-format
 msgid "%s × cousin"
 msgstr "%s × cousin"
 
@@ -16926,6 +16926,10 @@ msgstr "east"
 msgid "edit"
 msgstr "edit"
 
+#: app/Functions/Functions.php:551
+msgid "eighth cousin"
+msgstr "eighth cousin"
+
 #: app/Functions/Functions.php:516
 msgctxt "FEMALE"
 msgid "eighth cousin"
@@ -16934,10 +16938,6 @@ msgstr "eighth cousin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:473
 msgctxt "MALE"
-msgid "eighth cousin"
-msgstr "eighth cousin"
-
-#: app/Functions/Functions.php:551
 msgid "eighth cousin"
 msgstr "eighth cousin"
 
@@ -16953,6 +16953,10 @@ msgstr "elder sibling"
 msgid "elder sister"
 msgstr "elder sister"
 
+#: app/Functions/Functions.php:557
+msgid "eleventh cousin"
+msgstr "eleventh cousin"
+
 #: app/Functions/Functions.php:522
 msgctxt "FEMALE"
 msgid "eleventh cousin"
@@ -16961,10 +16965,6 @@ msgstr "eleventh cousin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:482
 msgctxt "MALE"
-msgid "eleventh cousin"
-msgstr "eleventh cousin"
-
-#: app/Functions/Functions.php:557
 msgid "eleventh cousin"
 msgstr "eleventh cousin"
 
@@ -16995,6 +16995,10 @@ msgstr "estimated %s"
 msgid "ex-husband"
 msgstr "ex-husband"
 
+#: app/Functions/Functions.php:716
+msgid "ex-partner"
+msgstr "ex-partner"
+
 #: app/Functions/Functions.php:698
 msgctxt "FEMALE"
 msgid "ex-partner"
@@ -17002,10 +17006,6 @@ msgstr "ex-partner"
 
 #: app/Functions/Functions.php:680
 msgctxt "MALE"
-msgid "ex-partner"
-msgstr "ex-partner"
-
-#: app/Functions/Functions.php:716
 msgid "ex-partner"
 msgstr "ex-partner"
 
@@ -17040,6 +17040,10 @@ msgctxt "wife’s father"
 msgid "father-in-law"
 msgstr "father-in-law"
 
+#: app/Functions/Functions.php:565
+msgid "fifteenth cousin"
+msgstr "fifteenth cousin"
+
 #: app/Functions/Functions.php:530
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
@@ -17051,9 +17055,10 @@ msgctxt "MALE"
 msgid "fifteenth cousin"
 msgstr "fifteenth cousin"
 
-#: app/Functions/Functions.php:565
-msgid "fifteenth cousin"
-msgstr "fifteenth cousin"
+#: app/Functions/Functions.php:625
+#, php-format
+msgid "fifth %s"
+msgstr "fifth %s"
 
 #: app/Functions/Functions.php:610
 #, php-format
@@ -17067,54 +17072,35 @@ msgctxt "MALE"
 msgid "fifth %s"
 msgstr "fifth %s"
 
-#: app/Functions/Functions.php:625
-#, php-format
-msgid "fifth %s"
-msgstr "fifth %s"
+#: app/Functions/Functions.php:545
+msgid "fifth cousin"
+msgstr "fifth cousin"
 
 #: app/Functions/Functions.php:510
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "fifth cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:464
 msgctxt "MALE"
-msgid "fifth cousin"
-msgstr ""
-
-#: app/Functions/Functions.php:545
 msgid "fifth cousin"
 msgstr "fifth cousin"
 
 #. I18N: a program feature
 #: setup.php:143
 msgid "file upload capability"
-msgstr ""
+msgstr "file upload capability"
 
 #. I18N: button label, first page
 #: admin_trees_config.php:1632 app/I18N.php:221
 msgid "first"
-msgstr ""
+msgstr "first"
 
 #: admin_trees_config.php:1643
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr ""
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Functions/Functions.php:602
-#, php-format
-msgctxt "FEMALE"
-msgid "first %s"
-msgstr ""
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Functions/Functions.php:587
-#, php-format
-msgctxt "MALE"
-msgid "first %s"
-msgstr ""
+msgstr "first"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:617
@@ -17122,245 +17108,259 @@ msgstr ""
 msgid "first %s"
 msgstr "first %s"
 
+#. I18N: A Spanish relationship name, such as third great-nephew
+#: app/Functions/Functions.php:602
+#, php-format
+msgctxt "FEMALE"
+msgid "first %s"
+msgstr "first %s"
+
+#. I18N: A Spanish relationship name, such as third great-nephew
+#: app/Functions/Functions.php:587
+#, php-format
+msgctxt "MALE"
+msgid "first %s"
+msgstr "first %s"
+
+#: app/Functions/Functions.php:537
+msgid "first cousin"
+msgstr "first cousin"
+
 #: app/Functions/Functions.php:502
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:452
 msgctxt "MALE"
-msgid "first cousin"
-msgstr ""
-
-#: app/Functions/Functions.php:537
 msgid "first cousin"
 msgstr "first cousin"
 
 #: app/Functions/Functions.php:1068
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #: app/Functions/Functions.php:1070
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #: app/Functions/Functions.php:1072
 msgctxt "father’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #: app/Functions/Functions.php:1112
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #: app/Functions/Functions.php:1114
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #: app/Functions/Functions.php:1118
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #: app/Functions/Functions.php:1130
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #: app/Functions/Functions.php:1132
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #: app/Functions/Functions.php:1134
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #: app/Functions/Functions.php:1180
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #: app/Functions/Functions.php:1182
 msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #: app/Functions/Functions.php:1186
 msgctxt "mother’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "first cousin"
 
 #: app/Functions/Functions.php:1412
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1408
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1410
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1418
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1414
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1416
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1424
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1420
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1422
 msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1430
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1426
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1428
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1436
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1432
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1434
 msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1442
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1438
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1440
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1448
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1444
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1446
 msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1454
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1450
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1452
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Functions/Functions.php:528
-msgctxt "FEMALE"
-msgid "fourteenth cousin"
-msgstr ""
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Functions/Functions.php:491
-msgctxt "MALE"
-msgid "fourteenth cousin"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:563
 msgid "fourteenth cousin"
 msgstr "fourteenth cousin"
 
-#: app/Functions/Functions.php:608
-#, php-format
+#: app/Functions/Functions.php:528
 msgctxt "FEMALE"
-msgid "fourth %s"
-msgstr ""
+msgid "fourteenth cousin"
+msgstr "fourteenth cousin"
 
-#: app/Functions/Functions.php:593
-#, php-format
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
+#: app/Functions/Functions.php:491
 msgctxt "MALE"
-msgid "fourth %s"
-msgstr ""
+msgid "fourteenth cousin"
+msgstr "fourteenth cousin"
 
 #: app/Functions/Functions.php:623
 #, php-format
 msgid "fourth %s"
 msgstr "fourth %s"
 
+#: app/Functions/Functions.php:608
+#, php-format
+msgctxt "FEMALE"
+msgid "fourth %s"
+msgstr "fourth %s"
+
+#: app/Functions/Functions.php:593
+#, php-format
+msgctxt "MALE"
+msgid "fourth %s"
+msgstr "fourth %s"
+
+#: app/Functions/Functions.php:543
+msgid "fourth cousin"
+msgstr "fourth cousin"
+
 #: app/Functions/Functions.php:508
 msgctxt "FEMALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "fourth cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:461
 msgctxt "MALE"
-msgid "fourth cousin"
-msgstr ""
-
-#: app/Functions/Functions.php:543
 msgid "fourth cousin"
 msgstr "fourth cousin"
 
@@ -17370,25 +17370,25 @@ msgstr "fourth cousin"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "from %1$s interval %2$s year"
+msgstr[1] "from %1$s interval %2$s years"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:316
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "from %s"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:325
 #, php-format
 msgid "from %s to %s"
-msgstr ""
+msgstr "from %s to %s"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:69
 msgid "full circle"
-msgstr ""
+msgstr "full circle"
 
 #: statistics.php:613
 msgid "gender"
@@ -17397,119 +17397,119 @@ msgstr "sex"
 #. I18N: button label
 #: edit_interface.php:2601
 msgid "go to new individual"
-msgstr ""
+msgstr "go to new individual"
 
 #: app/Functions/Functions.php:796
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "grandchild"
 
 #: app/Functions/Functions.php:808
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "grandchild"
 
 #: app/Functions/Functions.php:908
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "grandchild"
 
 #: app/Functions/Functions.php:798
 msgctxt "child’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "granddaughter"
 
 #: app/Functions/Functions.php:810
 msgctxt "daughter’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "granddaughter"
 
 #: app/Functions/Functions.php:910
 msgctxt "son’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "granddaughter"
 
 #: app/Functions/Functions.php:1028
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "granddaughter’s husband"
 
 #: app/Functions/Functions.php:1050
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "granddaughter’s husband"
 
 #: app/Functions/Functions.php:1330
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "granddaughter’s husband"
 
 #: app/Functions/Functions.php:878
 msgctxt "parent’s father"
 msgid "grandfather"
-msgstr ""
+msgstr "grandfather"
 
 #: app/Functions/Functions.php:880
 msgctxt "parent’s mother"
 msgid "grandmother"
-msgstr ""
+msgstr "grandmother"
 
 #: app/Functions/Functions.php:882
 msgctxt "parent’s parent"
 msgid "grandparent"
-msgstr ""
+msgstr "grandparent"
 
 #: app/Functions/Functions.php:802
 msgctxt "child’s son"
 msgid "grandson"
-msgstr ""
+msgstr "grandson"
 
 #: app/Functions/Functions.php:814
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr ""
+msgstr "grandson"
 
 #: app/Functions/Functions.php:912
 msgctxt "son’s son"
 msgid "grandson"
-msgstr ""
+msgstr "grandson"
 
 #: app/Functions/Functions.php:1038
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "grandson’s wife"
 
 #: app/Functions/Functions.php:1066
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "grandson’s wife"
 
 #: app/Functions/Functions.php:1340
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "grandson’s wife"
 
 #: app/Functions/Functions.php:1621 app/Functions/Functions.php:1636
 #: app/Functions/Functions.php:1649
 #, php-format
 msgid "great ×%s aunt"
-msgstr ""
+msgstr "great ×%s aunt"
 
 #: app/Functions/Functions.php:1623 app/Functions/Functions.php:1638
 #: app/Functions/Functions.php:1651
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr ""
+msgstr "great ×%s aunt/uncle"
 
 #: app/Functions/Functions.php:2024 app/Functions/Functions.php:2039
 #, php-format
 msgid "great ×%s grandchild"
-msgstr ""
+msgstr "great ×%s grandchild"
 
 #: app/Functions/Functions.php:2022 app/Functions/Functions.php:2037
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr ""
+msgstr "great ×%s granddaughter"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1894 app/Functions/Functions.php:1904
@@ -17517,1459 +17517,1459 @@ msgstr ""
 #: app/Functions/Functions.php:1936
 #, php-format
 msgid "great ×%s grandfather"
-msgstr ""
+msgstr "great ×%s grandfather"
 
 #: app/Functions/Functions.php:1896 app/Functions/Functions.php:1906
 #: app/Functions/Functions.php:1916 app/Functions/Functions.php:1926
 #: app/Functions/Functions.php:1938
 #, php-format
 msgid "great ×%s grandmother"
-msgstr ""
+msgstr "great ×%s grandmother"
 
 #: app/Functions/Functions.php:1898 app/Functions/Functions.php:1908
 #: app/Functions/Functions.php:1918 app/Functions/Functions.php:1928
 #: app/Functions/Functions.php:1940
 #, php-format
 msgid "great ×%s grandparent"
-msgstr ""
+msgstr "great ×%s grandparent"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2020 app/Functions/Functions.php:2035
 #, php-format
 msgid "great ×%s grandson"
-msgstr ""
+msgstr "great ×%s grandson"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1805 app/Functions/Functions.php:1818
 #, php-format
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "great ×%s nephew"
 
 #: app/Functions/Functions.php:1779
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "great ×%s nephew"
 
 #: app/Functions/Functions.php:1781
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "great ×%s nephew"
 
 #: app/Functions/Functions.php:1783
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "great ×%s nephew"
 
 #: app/Functions/Functions.php:1809 app/Functions/Functions.php:1822
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "great ×%s nephew/niece"
 
 #: app/Functions/Functions.php:1795
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "great ×%s nephew/niece"
 
 #: app/Functions/Functions.php:1797
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "great ×%s nephew/niece"
 
 #: app/Functions/Functions.php:1799
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "great ×%s nephew/niece"
 
 #: app/Functions/Functions.php:1807 app/Functions/Functions.php:1820
 #, php-format
 msgid "great ×%s niece"
-msgstr ""
+msgstr "great ×%s niece"
 
 #: app/Functions/Functions.php:1787
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "great ×%s niece"
 
 #: app/Functions/Functions.php:1789
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "great ×%s niece"
 
 #: app/Functions/Functions.php:1791
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "great ×%s niece"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1619 app/Functions/Functions.php:1647
 #, php-format
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "great ×%s uncle"
 
 #: app/Functions/Functions.php:1629
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "great ×%s uncle"
 
 #: app/Functions/Functions.php:1631
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "great ×%s uncle"
 
 #: app/Functions/Functions.php:1633
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "great ×%s uncle"
 
 #: app/Functions/Functions.php:1561
 msgid "great ×4 aunt"
-msgstr ""
+msgstr "great ×4 aunt"
 
 #: app/Functions/Functions.php:1563
 msgid "great ×4 aunt/uncle"
-msgstr ""
+msgstr "great ×4 aunt/uncle"
 
 #: app/Functions/Functions.php:1976
 msgid "great ×4 grandchild"
-msgstr ""
+msgstr "great ×4 grandchild"
 
 #: app/Functions/Functions.php:1974
 msgid "great ×4 granddaughter"
-msgstr ""
+msgstr "great ×4 granddaughter"
 
 #: app/Functions/Functions.php:1852
 msgid "great ×4 grandfather"
-msgstr ""
+msgstr "great ×4 grandfather"
 
 #: app/Functions/Functions.php:1854
 msgid "great ×4 grandmother"
-msgstr ""
+msgstr "great ×4 grandmother"
 
 #: app/Functions/Functions.php:1856
 msgid "great ×4 grandparent"
-msgstr ""
+msgstr "great ×4 grandparent"
 
 #: app/Functions/Functions.php:1972
 msgid "great ×4 grandson"
-msgstr ""
+msgstr "great ×4 grandson"
 
 #: app/Functions/Functions.php:1719
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "great ×4 nephew"
 
 #: app/Functions/Functions.php:1721
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "great ×4 nephew"
 
 #: app/Functions/Functions.php:1723
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "great ×4 nephew"
 
 #: app/Functions/Functions.php:1735
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "great ×4 nephew/niece"
 
 #: app/Functions/Functions.php:1737
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "great ×4 nephew/niece"
 
 #: app/Functions/Functions.php:1739
 msgctxt "(a woman’s) great ×4 nephew/niece"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "great ×4 nephew/niece"
 
 #: app/Functions/Functions.php:1727
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "great ×4 niece"
 
 #: app/Functions/Functions.php:1729
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "great ×4 niece"
 
 #: app/Functions/Functions.php:1731
 msgctxt "(a woman’s) great ×4 niece"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "great ×4 niece"
 
 #: app/Functions/Functions.php:1554
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "great ×4 uncle"
 
 #: app/Functions/Functions.php:1556
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "great ×4 uncle"
 
 #: app/Functions/Functions.php:1558
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "great ×4 uncle"
 
 #: app/Functions/Functions.php:1576
 msgid "great ×5 aunt"
-msgstr ""
+msgstr "great ×5 aunt"
 
 #: app/Functions/Functions.php:1578
 msgid "great ×5 aunt/uncle"
-msgstr ""
+msgstr "great ×5 aunt/uncle"
 
 #: app/Functions/Functions.php:1986
 msgid "great ×5 grandchild"
-msgstr ""
+msgstr "great ×5 grandchild"
 
 #: app/Functions/Functions.php:1984
 msgid "great ×5 granddaughter"
-msgstr ""
+msgstr "great ×5 granddaughter"
 
 #: app/Functions/Functions.php:1861
 msgid "great ×5 grandfather"
-msgstr ""
+msgstr "great ×5 grandfather"
 
 #: app/Functions/Functions.php:1863
 msgid "great ×5 grandmother"
-msgstr ""
+msgstr "great ×5 grandmother"
 
 #: app/Functions/Functions.php:1865
 msgid "great ×5 grandparent"
-msgstr ""
+msgstr "great ×5 grandparent"
 
 #: app/Functions/Functions.php:1982
 msgid "great ×5 grandson"
-msgstr ""
+msgstr "great ×5 grandson"
 
 #: app/Functions/Functions.php:1746
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "great ×5 nephew"
 
 #: app/Functions/Functions.php:1748
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "great ×5 nephew"
 
 #: app/Functions/Functions.php:1750
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "great ×5 nephew"
 
 #: app/Functions/Functions.php:1762
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "great ×5 nephew/niece"
 
 #: app/Functions/Functions.php:1764
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "great ×5 nephew/niece"
 
 #: app/Functions/Functions.php:1766
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "great ×5 nephew/niece"
 
 #: app/Functions/Functions.php:1754
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "great ×5 niece"
 
 #: app/Functions/Functions.php:1756
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "great ×5 niece"
 
 #: app/Functions/Functions.php:1758
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "great ×5 niece"
 
 #: app/Functions/Functions.php:1569
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "great ×5 uncle"
 
 #: app/Functions/Functions.php:1571
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "great ×5 uncle"
 
 #: app/Functions/Functions.php:1573
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "great ×5 uncle"
 
 #: app/Functions/Functions.php:1591
 msgid "great ×6 aunt"
-msgstr ""
+msgstr "great ×6 aunt"
 
 #: app/Functions/Functions.php:1593
 msgid "great ×6 aunt/uncle"
-msgstr ""
+msgstr "great ×6 aunt/uncle"
 
 #: app/Functions/Functions.php:1996
 msgid "great ×6 grandchild"
-msgstr ""
+msgstr "great ×6 grandchild"
 
 #: app/Functions/Functions.php:1994
 msgid "great ×6 granddaughter"
-msgstr ""
+msgstr "great ×6 granddaughter"
 
 #: app/Functions/Functions.php:1870
 msgid "great ×6 grandfather"
-msgstr ""
+msgstr "great ×6 grandfather"
 
 #: app/Functions/Functions.php:1872
 msgid "great ×6 grandmother"
-msgstr ""
+msgstr "great ×6 grandmother"
 
 #: app/Functions/Functions.php:1874
 msgid "great ×6 grandparent"
-msgstr ""
+msgstr "great ×6 grandparent"
 
 #: app/Functions/Functions.php:1992
 msgid "great ×6 grandson"
-msgstr ""
+msgstr "great ×6 grandson"
 
 #: app/Functions/Functions.php:1584
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "great ×6 uncle"
 
 #: app/Functions/Functions.php:1586
 msgctxt "great ×5 grandmother’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "great ×6 uncle"
 
 #: app/Functions/Functions.php:1588
 msgctxt "great ×5 grandparent’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "great ×6 uncle"
 
 #: app/Functions/Functions.php:1606
 msgid "great ×7 aunt"
-msgstr ""
+msgstr "great ×7 aunt"
 
 #: app/Functions/Functions.php:1608
 msgid "great ×7 aunt/uncle"
-msgstr ""
+msgstr "great ×7 aunt/uncle"
 
 #: app/Functions/Functions.php:2006
 msgid "great ×7 grandchild"
-msgstr ""
+msgstr "great ×7 grandchild"
 
 #: app/Functions/Functions.php:2004
 msgid "great ×7 granddaughter"
-msgstr ""
+msgstr "great ×7 granddaughter"
 
 #: app/Functions/Functions.php:1879
 msgid "great ×7 grandfather"
-msgstr ""
+msgstr "great ×7 grandfather"
 
 #: app/Functions/Functions.php:1881
 msgid "great ×7 grandmother"
-msgstr ""
+msgstr "great ×7 grandmother"
 
 #: app/Functions/Functions.php:1883
 msgid "great ×7 grandparent"
-msgstr ""
+msgstr "great ×7 grandparent"
 
 #: app/Functions/Functions.php:2002
 msgid "great ×7 grandson"
-msgstr ""
+msgstr "great ×7 grandson"
 
 #: app/Functions/Functions.php:1599
 msgctxt "great ×6 grandfather’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "great ×7 uncle"
 
 #: app/Functions/Functions.php:1601
 msgctxt "great ×6 grandmother’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "great ×7 uncle"
 
 #: app/Functions/Functions.php:1603
 msgctxt "great ×6 grandparent’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "great ×7 uncle"
 
 #: app/Functions/Functions.php:1354
 msgctxt "father’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1086
 msgctxt "father’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1360
 msgctxt "father’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1098
 msgctxt "father’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1366
 msgctxt "father’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1110
 msgctxt "father’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1372
 msgctxt "mother’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1148
 msgctxt "mother’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1378
 msgctxt "mother’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1166
 msgctxt "mother’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1384
 msgctxt "mother’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1178
 msgctxt "mother’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1390
 msgctxt "parent’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1200
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1396
 msgctxt "parent’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1212
 msgctxt "parent’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1402
 msgctxt "parent’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1224
 msgctxt "parent’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "great-aunt"
 
 #: app/Functions/Functions.php:1084
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1356
 msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1096
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1362
 msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1108
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1368
 msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1146
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1374
 msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1164
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1380
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1176
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1386
 msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1198
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1392
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1210
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1398
 msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1222
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1404
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "great-aunt/uncle"
 
 #: app/Functions/Functions.php:1018
 msgctxt "child’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "great-grandchild"
 
 #: app/Functions/Functions.php:1024
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "great-grandchild"
 
 #: app/Functions/Functions.php:1032
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "great-grandchild"
 
 #: app/Functions/Functions.php:1040
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "great-grandchild"
 
 #: app/Functions/Functions.php:1046
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "great-grandchild"
 
 #: app/Functions/Functions.php:1060
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "great-grandchild"
 
 #: app/Functions/Functions.php:1320
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "great-grandchild"
 
 #: app/Functions/Functions.php:1326
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "great-grandchild"
 
 #: app/Functions/Functions.php:1334
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "great-grandchild"
 
 #: app/Functions/Functions.php:1020
 msgctxt "child’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "great-granddaughter"
 
 #: app/Functions/Functions.php:1026
 msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "great-granddaughter"
 
 #: app/Functions/Functions.php:1034
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "great-granddaughter"
 
 #: app/Functions/Functions.php:1042
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "great-granddaughter"
 
 #: app/Functions/Functions.php:1048
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "great-granddaughter"
 
 #: app/Functions/Functions.php:1062
 msgctxt "daughter’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "great-granddaughter"
 
 #: app/Functions/Functions.php:1322
 msgctxt "son’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "great-granddaughter"
 
 #: app/Functions/Functions.php:1328
 msgctxt "son’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "great-granddaughter"
 
 #: app/Functions/Functions.php:1336
 msgctxt "son’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "great-granddaughter"
 
 #: app/Functions/Functions.php:1078
 msgctxt "father’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "great-grandfather"
 
 #: app/Functions/Functions.php:1090
 msgctxt "father’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "great-grandfather"
 
 #: app/Functions/Functions.php:1102
 msgctxt "father’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "great-grandfather"
 
 #: app/Functions/Functions.php:1140
 msgctxt "mother’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "great-grandfather"
 
 #: app/Functions/Functions.php:1158
 msgctxt "mother’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "great-grandfather"
 
 #: app/Functions/Functions.php:1170
 msgctxt "mother’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "great-grandfather"
 
 #: app/Functions/Functions.php:1192
 msgctxt "parent’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "great-grandfather"
 
 #: app/Functions/Functions.php:1204
 msgctxt "parent’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "great-grandfather"
 
 #: app/Functions/Functions.php:1216
 msgctxt "parent’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "great-grandfather"
 
 #: app/Functions/Functions.php:1080
 msgctxt "father’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "great-grandmother"
 
 #: app/Functions/Functions.php:1092
 msgctxt "father’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "great-grandmother"
 
 #: app/Functions/Functions.php:1104
 msgctxt "father’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "great-grandmother"
 
 #: app/Functions/Functions.php:1142
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "great-grandmother"
 
 #: app/Functions/Functions.php:1160
 msgctxt "mother’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "great-grandmother"
 
 #: app/Functions/Functions.php:1172
 msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "great-grandmother"
 
 #: app/Functions/Functions.php:1194
 msgctxt "parent’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "great-grandmother"
 
 #: app/Functions/Functions.php:1206
 msgctxt "parent’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "great-grandmother"
 
 #: app/Functions/Functions.php:1218
 msgctxt "parent’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "great-grandmother"
 
 #: app/Functions/Functions.php:1082
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "great-grandparent"
 
 #: app/Functions/Functions.php:1094
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "great-grandparent"
 
 #: app/Functions/Functions.php:1106
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "great-grandparent"
 
 #: app/Functions/Functions.php:1144
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "great-grandparent"
 
 #: app/Functions/Functions.php:1162
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "great-grandparent"
 
 #: app/Functions/Functions.php:1174
 msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "great-grandparent"
 
 #: app/Functions/Functions.php:1196
 msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "great-grandparent"
 
 #: app/Functions/Functions.php:1208
 msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "great-grandparent"
 
 #: app/Functions/Functions.php:1220
 msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "great-grandparent"
 
 #: app/Functions/Functions.php:1022
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "great-grandson"
 
 #: app/Functions/Functions.php:1030
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "great-grandson"
 
 #: app/Functions/Functions.php:1036
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "great-grandson"
 
 #: app/Functions/Functions.php:1044
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "great-grandson"
 
 #: app/Functions/Functions.php:1052
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "great-grandson"
 
 #: app/Functions/Functions.php:1064
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "great-grandson"
 
 #: app/Functions/Functions.php:1324
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "great-grandson"
 
 #: app/Functions/Functions.php:1332
 msgctxt "son’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "great-grandson"
 
 #: app/Functions/Functions.php:1338
 msgctxt "son’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "great-grandson"
 
 #: app/Functions/Functions.php:1531
 msgid "great-great-aunt"
-msgstr ""
+msgstr "great-great-aunt"
 
 #: app/Functions/Functions.php:1533
 msgid "great-great-aunt/uncle"
-msgstr ""
+msgstr "great-great-aunt/uncle"
 
 #: app/Functions/Functions.php:1956
 msgid "great-great-grandchild"
-msgstr ""
+msgstr "great-great-grandchild"
 
 #: app/Functions/Functions.php:1954
 msgid "great-great-granddaughter"
-msgstr ""
+msgstr "great-great-granddaughter"
 
 #: app/Functions/Functions.php:1834
 msgid "great-great-grandfather"
-msgstr ""
+msgstr "great-great-grandfather"
 
 #: app/Functions/Functions.php:1836
 msgid "great-great-grandmother"
-msgstr ""
+msgstr "great-great-grandmother"
 
 #: app/Functions/Functions.php:1838
 msgid "great-great-grandparent"
-msgstr ""
+msgstr "great-great-grandparent"
 
 #: app/Functions/Functions.php:1952
 msgid "great-great-grandson"
-msgstr ""
+msgstr "great-great-grandson"
 
 #: app/Functions/Functions.php:1546
 msgid "great-great-great-aunt"
-msgstr ""
+msgstr "great-great-great-aunt"
 
 #: app/Functions/Functions.php:1548
 msgid "great-great-great-aunt/uncle"
-msgstr ""
+msgstr "great-great-great-aunt/uncle"
 
 #: app/Functions/Functions.php:1966
 msgid "great-great-great-grandchild"
-msgstr ""
+msgstr "great-great-great-grandchild"
 
 #: app/Functions/Functions.php:1964
 msgid "great-great-great-granddaughter"
-msgstr ""
+msgstr "great-great-great-granddaughter"
 
 #: app/Functions/Functions.php:1843
 msgid "great-great-great-grandfather"
-msgstr ""
+msgstr "great-great-great-grandfather"
 
 #: app/Functions/Functions.php:1845
 msgid "great-great-great-grandmother"
-msgstr ""
+msgstr "great-great-great-grandmother"
 
 #: app/Functions/Functions.php:1847
 msgid "great-great-great-grandparent"
-msgstr ""
+msgstr "great-great-great-grandparent"
 
 #: app/Functions/Functions.php:1962
 msgid "great-great-great-grandson"
-msgstr ""
+msgstr "great-great-great-grandson"
 
 #: app/Functions/Functions.php:1692
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "great-great-great-nephew"
 
 #: app/Functions/Functions.php:1694
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "great-great-great-nephew"
 
 #: app/Functions/Functions.php:1696
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "great-great-great-nephew"
 
 #: app/Functions/Functions.php:1708
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "great-great-great-nephew/niece"
 
 #: app/Functions/Functions.php:1710
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "great-great-great-nephew/niece"
 
 #: app/Functions/Functions.php:1712
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "great-great-great-nephew/niece"
 
 #: app/Functions/Functions.php:1700
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "great-great-great-niece"
 
 #: app/Functions/Functions.php:1702
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "great-great-great-niece"
 
 #: app/Functions/Functions.php:1704
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "great-great-great-niece"
 
 #: app/Functions/Functions.php:1539
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "great-great-great-uncle"
 
 #: app/Functions/Functions.php:1541
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "great-great-great-uncle"
 
 #: app/Functions/Functions.php:1543
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "great-great-great-uncle"
 
 #: app/Functions/Functions.php:1665
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "great-great-nephew"
 
 #: app/Functions/Functions.php:1667
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "great-great-nephew"
 
 #: app/Functions/Functions.php:1669
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "great-great-nephew"
 
 #: app/Functions/Functions.php:1681
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "great-great-nephew/niece"
 
 #: app/Functions/Functions.php:1683
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "great-great-nephew/niece"
 
 #: app/Functions/Functions.php:1685
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "great-great-nephew/niece"
 
 #: app/Functions/Functions.php:1673
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "great-great-niece"
 
 #: app/Functions/Functions.php:1675
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "great-great-niece"
 
 #: app/Functions/Functions.php:1677
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr ""
+msgstr "great-great-niece"
 
 #: app/Functions/Functions.php:1524
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "great-great-uncle"
 
 #: app/Functions/Functions.php:1526
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "great-great-uncle"
 
 #: app/Functions/Functions.php:1528
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "great-great-uncle"
 
 #: app/Functions/Functions.php:967
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:987
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:1005
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:1269
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:1289
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:1313
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:969
 msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:989
 msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:1007
 msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:1271
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:1291
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:1315
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:1238
 msgctxt "sibling’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:1246
 msgctxt "sibling’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:1252
 msgctxt "sibling’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "great-nephew"
 
 #: app/Functions/Functions.php:955
 msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:973
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:993
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:1257
 msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:1275
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:1301
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:957
 msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:975
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:995
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:1259
 msgctxt "(a woman’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:1277
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:1303
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:1234
 msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:1240
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:1248
 msgctxt "sibling’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "great-nephew/niece"
 
 #: app/Functions/Functions.php:961
 msgctxt "(a man’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:979
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:999
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:1263
 msgctxt "(a man’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:1281
 msgctxt "(a man’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:1307
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:963
 msgctxt "(a woman’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:981
 msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:1001
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:1265
 msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:1283
 msgctxt "(a woman’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:1309
 msgctxt "(a woman’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:1236
 msgctxt "sibling’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:1242
 msgctxt "sibling’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:1250
 msgctxt "sibling’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "great-niece"
 
 #: app/Functions/Functions.php:1076
 msgctxt "father’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1358
 msgctxt "father’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1088
 msgctxt "father’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1364
 msgctxt "father’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1100
 msgctxt "father’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1370
 msgctxt "father’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1138
 msgctxt "mother’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1376
 msgctxt "mother’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1156
 msgctxt "mother’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1382
 msgctxt "mother’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1168
 msgctxt "mother’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1388
 msgctxt "mother’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1190
 msgctxt "parent’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1394
 msgctxt "parent’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1202
 msgctxt "parent’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1400
 msgctxt "parent’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1214
 msgctxt "parent’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #: app/Functions/Functions.php:1406
 msgctxt "parent’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "great-uncle"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:67
 msgid "half circle"
-msgstr ""
+msgstr "half circle"
 
 #: app/Functions/Functions.php:832
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "half-brother"
 
 #: app/Functions/Functions.php:870
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "half-brother"
 
 #: app/Functions/Functions.php:888
 msgctxt "parent’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "half-brother"
 
 #: app/Functions/Functions.php:818
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "half-sibling"
 
 #: app/Functions/Functions.php:854
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "half-sibling"
 
 #: app/Functions/Functions.php:874
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "half-sibling"
 
 #: app/Functions/Functions.php:820
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "half-sister"
 
 #: app/Functions/Functions.php:856
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "half-sister"
 
 #: app/Functions/Functions.php:876
 msgctxt "parent’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "half-sister"
 
 #: statistics.php:571
 msgid "half-year after marriage"
-msgstr ""
+msgstr "half-year after marriage"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:768
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "hh:mm or hh:mm:ss"
 
 #: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:347
 msgid "hide"
-msgstr ""
+msgstr "hide"
 
 #: app/Functions/Functions.php:691 edit_interface.php:1936
 #: edit_interface.php:1971
 msgid "husband"
-msgstr ""
+msgstr "husband"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:115
 msgid "immigration name"
-msgstr ""
+msgstr "immigration name"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:112
 msgctxt "FEMALE"
 msgid "immigration name"
-msgstr ""
+msgstr "immigration name"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:109
 msgctxt "MALE"
 msgid "immigration name"
-msgstr ""
+msgstr "immigration name"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr ""
+msgstr "interpreted %s (%s)"
 
 #: statistics.php:549 statistics.php:551 statistics.php:553 statistics.php:560
 #: statistics.php:562
 #, php-format
 msgid "interval %s year"
 msgid_plural "interval %s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "interval %s year"
+msgstr[1] "interval %s years"
 
 #: statistics.php:577
 msgid "interval one child"
-msgstr ""
+msgstr "interval one child"
 
 #: statistics.php:578
 msgid "interval two children"
-msgstr ""
+msgstr "interval two children"
 
 #: search.php:122 search.php:279
 msgid "invert selection"
-msgstr ""
+msgstr "invert selection"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:100
@@ -18987,7 +18987,7 @@ msgstr "jours complémentaires"
 #: app/Date/FrenchDate.php:133
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complementaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:67
@@ -18998,16 +18998,16 @@ msgstr "jours complémentaires"
 #. I18N: button label, last page
 #: admin_trees_config.php:1632 app/I18N.php:222
 msgid "last"
-msgstr ""
+msgstr "last"
 
 #: admin_trees_config.php:1644
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr ""
+msgstr "last"
 
 #: statisticsplot.php:764
 msgid "less than"
-msgstr ""
+msgstr "less than"
 
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
@@ -19016,76 +19016,76 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:168
 #: app/Module/YahrzeitModule.php:276
 msgid "list"
-msgstr ""
+msgstr "list"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:121
 msgid "maiden name"
-msgstr ""
+msgstr "maiden name"
 
 #: admin_trees_config.php:476
 msgid "managers"
-msgstr ""
+msgstr "managers"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: app/Stats.php:2915
 msgid "marriage"
-msgstr ""
+msgstr "marriage"
 
 #: modules_v3/descendancy_report/report.xml:246
 msgctxt "FEMALE"
 msgid "married"
-msgstr ""
+msgstr "married"
 
 #: modules_v3/descendancy_report/report.xml:177
 msgctxt "MALE"
 msgid "married"
-msgstr ""
+msgstr "married"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:132
 msgid "married name"
-msgstr ""
+msgstr "married name"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:129
 msgctxt "FEMALE"
 msgid "married name"
-msgstr ""
+msgstr "married name"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:126
 msgctxt "MALE"
 msgid "married name"
-msgstr ""
+msgstr "married name"
 
 #: app/Functions/Functions.php:858
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr ""
+msgstr "maternal grandfather"
 
 #: app/Functions/Functions.php:862
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr ""
+msgstr "maternal grandmother"
 
 #: app/Functions/Functions.php:864
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr ""
+msgstr "maternal grandparent"
 
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:78
 msgid "matrilineal"
-msgstr ""
+msgstr "matrilineal"
 
 #: app/Module/GoogleMapsModule.php:389
 msgid "maximum"
-msgstr ""
+msgstr "maximum"
 
 #: app/Module/RecentChangesModule.php:149
 #: app/Module/UpcomingAnniversariesModule.php:150
@@ -19093,163 +19093,163 @@ msgstr ""
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "maximum %s day"
+msgstr[1] "maximum %s days"
 
 #: admin_trees_config.php:371 admin_trees_config.php:395
 #: admin_trees_config.php:435 admin_trees_config.php:475
 #: admin_trees_config.php:495
 msgid "members"
-msgstr ""
+msgstr "members"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: app/Functions/FunctionsDate.php:86
 msgid "midnight"
-msgstr ""
+msgstr "midnight"
 
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:162
 msgid "minimal"
-msgstr ""
+msgstr "minimal"
 
 #: app/Module/GoogleMapsModule.php:383
 msgid "minimum"
-msgstr ""
+msgstr "minimum"
 
 #: statisticsplot.php:859 statisticsplot.php:909 statisticsplot.php:963
 #: statisticsplot.php:1013 statisticsplot.php:1067
 msgid "month"
-msgstr ""
+msgstr "month"
 
 #: statistics.php:568
 msgid "months after marriage"
-msgstr ""
+msgstr "months after marriage"
 
 #: statistics.php:569
 msgid "months before and after marriage"
-msgstr ""
+msgstr "months before and after marriage"
 
 #: app/Functions/Functions.php:669
 msgid "mother"
-msgstr ""
+msgstr "mother"
 
 #: app/Functions/Functions.php:844
 msgctxt "husband’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "mother-in-law"
 
 #: app/Functions/Functions.php:924
 msgctxt "spouse’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "mother-in-law"
 
 #: app/Functions/Functions.php:942
 msgctxt "wife’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "mother-in-law"
 
 #: app/Functions/Functions.php:930
 msgctxt "spouse’s parent"
 msgid "mother/father-in-law"
-msgstr ""
+msgstr "mother/father-in-law"
 
 #: app/Functions/Functions.php:792
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nephew"
 
 #: app/Functions/Functions.php:896
 msgctxt "sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nephew"
 
 #: app/Functions/Functions.php:906
 msgctxt "sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nephew"
 
 #: app/Functions/Functions.php:984
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "nephew-in-law"
 
 #: app/Functions/Functions.php:1244
 msgctxt "sibling’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "nephew-in-law"
 
 #: app/Functions/Functions.php:1286
 msgctxt "sisters’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "nephew-in-law"
 
 #: app/Functions/Functions.php:788
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nephew/niece"
 
 #: app/Functions/Functions.php:892
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nephew/niece"
 
 #: app/Functions/Functions.php:900
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nephew/niece"
 
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:669
 msgid "never"
-msgstr ""
+msgstr "never"
 
 #. I18N: button label, next page
 #: app/I18N.php:223 app/Module/BatchUpdateModule.php:247
 msgid "next"
-msgstr ""
+msgstr "next"
 
 #: app/Functions/Functions.php:790
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niece"
 
 #: app/Functions/Functions.php:894
 msgctxt "sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niece"
 
 #: app/Functions/Functions.php:902
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niece"
 
 #: app/Functions/Functions.php:1010
 msgctxt "brother’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "niece-in-law"
 
 #: app/Functions/Functions.php:1254
 msgctxt "sibling’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "niece-in-law"
 
 #: app/Functions/Functions.php:1318
 msgctxt "sisters’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "niece-in-law"
+
+#: app/Functions/Functions.php:553
+msgid "ninth cousin"
+msgstr "ninth cousin"
 
 #: app/Functions/Functions.php:518
 msgctxt "FEMALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "ninth cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:476
 msgctxt "MALE"
-msgid "ninth cousin"
-msgstr ""
-
-#: app/Functions/Functions.php:553
 msgid "ninth cousin"
 msgstr "ninth cousin"
 
@@ -19267,35 +19267,35 @@ msgstr "ninth cousin"
 #: modules_v3/individual_ext_report/report.xml:182
 #: modules_v3/individual_report/report.xml:178
 msgid "no"
-msgstr ""
+msgstr "no"
 
 #. I18N: None of the other options
 #: admin_site_config.php:111 admin_trees_config.php:63
 #: admin_trees_config.php:68 app/Module/FamilyNavigatorModule.php:252
 #: app/Module/RelationshipsChartModule.php:127
 msgid "none"
-msgstr ""
+msgstr "none"
 
 #: app/SurnameTradition.php:100
 msgctxt "Surname tradition"
 msgid "none"
-msgstr ""
+msgstr "none"
 
 #. I18N: time format “%a” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:92
 msgid "noon"
-msgstr ""
+msgstr "noon"
 
 #: app/Module/GoogleMapsModule.php:3976
 msgid "north"
-msgstr ""
+msgstr "north"
 
 #: statistics.php:636 statisticsplot.php:860 statisticsplot.php:910
 #: statisticsplot.php:964 statisticsplot.php:1014 statisticsplot.php:1068
 #: statisticsplot.php:1118 statisticsplot.php:1168 statisticsplot.php:1218
 #: statisticsplot.php:1268 statisticsplot.php:1318
 msgid "numbers"
-msgstr ""
+msgstr "numbers"
 
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
@@ -19313,19 +19313,19 @@ msgstr ""
 #: statisticsplot.php:1106 statisticsplot.php:1156 statisticsplot.php:1206
 #: statisticsplot.php:1256 statisticsplot.php:1306 statisticsplot.php:1356
 msgid "of"
-msgstr ""
+msgstr "of"
 
 #: app/Functions/FunctionsPrint.php:372
 msgid "on the date of death"
-msgstr ""
+msgstr "on the date of death"
 
 #: statisticsplot.php:788
 msgid "over"
-msgstr ""
+msgstr "over"
 
 #: statistics.php:610
 msgid "overall"
-msgstr ""
+msgstr "overall"
 
 #. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:95
@@ -19336,6 +19336,10 @@ msgstr ""
 msgid "parent"
 msgstr ""
 
+#: app/Functions/Functions.php:718
+msgid "partner"
+msgstr "partner"
+
 #: app/Functions/Functions.php:700
 msgctxt "FEMALE"
 msgid "partner"
@@ -19345,10 +19349,6 @@ msgstr ""
 msgctxt "MALE"
 msgid "partner"
 msgstr ""
-
-#: app/Functions/Functions.php:718
-msgid "partner"
-msgstr "partner"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
@@ -19492,6 +19492,11 @@ msgstr ""
 msgid "save"
 msgstr ""
 
+#: app/Functions/Functions.php:619
+#, php-format
+msgid "second %s"
+msgstr "second %s"
+
 #: app/Functions/Functions.php:604
 #, php-format
 msgctxt "FEMALE"
@@ -19504,10 +19509,9 @@ msgctxt "MALE"
 msgid "second %s"
 msgstr ""
 
-#: app/Functions/Functions.php:619
-#, php-format
-msgid "second %s"
-msgstr "second %s"
+#: app/Functions/Functions.php:539
+msgid "second cousin"
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:504
 msgctxt "FEMALE"
@@ -19519,10 +19523,6 @@ msgstr ""
 msgctxt "MALE"
 msgid "second cousin"
 msgstr ""
-
-#: app/Functions/Functions.php:539
-msgid "second cousin"
-msgstr "second cousin"
 
 #: app/Functions/Functions.php:1463
 msgctxt "grandfather’s brother’s grandchild"
@@ -19679,6 +19679,10 @@ msgstr ""
 msgid "self"
 msgstr ""
 
+#: app/Functions/Functions.php:549
+msgid "seventh cousin"
+msgstr "seventh cousin"
+
 #: app/Functions/Functions.php:514
 msgctxt "FEMALE"
 msgid "seventh cousin"
@@ -19689,10 +19693,6 @@ msgstr ""
 msgctxt "MALE"
 msgid "seventh cousin"
 msgstr ""
-
-#: app/Functions/Functions.php:549
-msgid "seventh cousin"
-msgstr "seventh cousin"
 
 #. I18N: Button label
 #: admin_trees_config.php:43 app/Module/FrequentlyAskedQuestionsModule.php:457
@@ -19753,6 +19753,10 @@ msgctxt "wife’s sister"
 msgid "sister-in-law"
 msgstr ""
 
+#: app/Functions/Functions.php:547
+msgid "sixth cousin"
+msgstr "sixth cousin"
+
 #: app/Functions/Functions.php:512
 msgctxt "FEMALE"
 msgid "sixth cousin"
@@ -19763,10 +19767,6 @@ msgstr ""
 msgctxt "MALE"
 msgid "sixth cousin"
 msgstr ""
-
-#: app/Functions/Functions.php:547
-msgid "sixth cousin"
-msgstr "sixth cousin"
 
 #: app/Functions/Functions.php:729 app/Functions/FunctionsCharts.php:311
 #: app/Module/GoogleMapsModule.php:2074 app/Module/GoogleMapsModule.php:2104
@@ -20001,6 +20001,10 @@ msgstr ""
 msgid "tag cloud"
 msgstr ""
 
+#: app/Functions/Functions.php:555
+msgid "tenth cousin"
+msgstr "tenth cousin"
+
 #: app/Functions/Functions.php:520
 msgctxt "FEMALE"
 msgid "tenth cousin"
@@ -20012,10 +20016,6 @@ msgctxt "MALE"
 msgid "tenth cousin"
 msgstr ""
 
-#: app/Functions/Functions.php:555
-msgid "tenth cousin"
-msgstr "tenth cousin"
-
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:87
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
@@ -20025,6 +20025,11 @@ msgstr "the database connection settings in the file ‘/data/config.ini.php’ 
 #: site-unavailable.php:90
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "the folder ‘/data’ and the file ‘/data/config.ini.php’ have access permissions that allow the webserver to read them"
+
+#: app/Functions/Functions.php:621
+#, php-format
+msgid "third %s"
+msgstr "third %s"
 
 #: app/Functions/Functions.php:606
 #, php-format
@@ -20038,10 +20043,9 @@ msgctxt "MALE"
 msgid "third %s"
 msgstr ""
 
-#: app/Functions/Functions.php:621
-#, php-format
-msgid "third %s"
-msgstr "third %s"
+#: app/Functions/Functions.php:541
+msgid "third cousin"
+msgstr "third cousin"
 
 #: app/Functions/Functions.php:506
 msgctxt "FEMALE"
@@ -20054,9 +20058,9 @@ msgctxt "MALE"
 msgid "third cousin"
 msgstr ""
 
-#: app/Functions/Functions.php:541
-msgid "third cousin"
-msgstr "third cousin"
+#: app/Functions/Functions.php:561
+msgid "thirteenth cousin"
+msgstr "thirteenth cousin"
 
 #: app/Functions/Functions.php:526
 msgctxt "FEMALE"
@@ -20068,10 +20072,6 @@ msgstr ""
 msgctxt "MALE"
 msgid "thirteenth cousin"
 msgstr ""
-
-#: app/Functions/Functions.php:561
-msgid "thirteenth cousin"
-msgstr "thirteenth cousin"
 
 #: admin_trees_config.php:554
 msgid "this record does not exist"
@@ -20093,6 +20093,10 @@ msgstr ""
 msgid "to %s"
 msgstr ""
 
+#: app/Functions/Functions.php:559
+msgid "twelfth cousin"
+msgstr "twelfth cousin"
+
 #: app/Functions/Functions.php:524
 msgctxt "FEMALE"
 msgid "twelfth cousin"
@@ -20103,10 +20107,6 @@ msgstr ""
 msgctxt "MALE"
 msgid "twelfth cousin"
 msgstr ""
-
-#: app/Functions/Functions.php:559
-msgid "twelfth cousin"
-msgstr "twelfth cousin"
 
 #: app/Functions/Functions.php:741
 msgid "twin brother"
