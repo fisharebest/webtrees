@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-01 09:56+0100\n"
-"PO-Revision-Date: 2016-04-21 04:47+0000\n"
+"PO-Revision-Date: 2016-05-03 07:42+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
@@ -143,6 +143,12 @@ msgid "%1$s is a %2$s but a %3$s is expected."
 msgstr "%1$s är av typen %2$s, men %3$s förväntades."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
+#: app/Functions/Functions.php:627
+#, php-format
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
+#. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:612
 #, php-format
 msgctxt "FEMALE"
@@ -153,12 +159,6 @@ msgstr "%1$s × %2$s"
 #: app/Functions/Functions.php:597
 #, php-format
 msgctxt "MALE"
-msgid "%1$s × %2$s"
-msgstr "%1$s × %2$s"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Functions/Functions.php:627
-#, php-format
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
@@ -454,11 +454,16 @@ msgid_plural "%s years ago"
 msgstr[0] "%s år sedan"
 msgstr[1] "%s år sedan"
 
-#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
-#: calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:1942
+#: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s årsdag"
+
+#: app/Functions/Functions.php:567
+#, php-format
+msgid "%s × cousin"
+msgstr "%s. kusin"
 
 #: app/Functions/Functions.php:532
 #, php-format
@@ -470,11 +475,6 @@ msgstr "%s. kusin"
 #: app/Functions/Functions.php:497
 #, php-format
 msgctxt "MALE"
-msgid "%s × cousin"
-msgstr "%s. kusin"
-
-#: app/Functions/Functions.php:567
-#, php-format
 msgid "%s × cousin"
 msgstr "%s. kusin"
 
@@ -883,7 +883,7 @@ msgstr "En ny användare (%1$s) har begärt ett konto (%2$s) och verifierat en e
 
 #: admin.php:610 admin_site_upgrade.php:79 login.php:115
 msgid "A new version of webtrees is available."
-msgstr "En ny version av webtrees finns."
+msgstr "En ny version av webtrees finns tillgänglig."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
@@ -1280,7 +1280,8 @@ msgstr "Lägg till barn"
 msgid "Add a child to create a one-parent family"
 msgstr "Lägg till ett barn för att skapa en enföräldersfamilj"
 
-#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
+#: app/Controller/FamilyController.php:82
+#: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
 msgstr "Lägg till barn till denna familj"
 
@@ -1318,9 +1319,10 @@ msgstr "Lägg till en befintlig person som make"
 msgid "Add a journal entry"
 msgstr "Lägg till en dagboksnotering"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1131
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:184
+#: app/Controller/FamilyController.php:162
+#: app/Functions/FunctionsEdit.php:1131 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:184
 msgid "Add a media object"
 msgstr "Lägg till ett mediaobjekt"
 
@@ -1336,8 +1338,8 @@ msgstr "Lägg till ett namn"
 msgid "Add a news article"
 msgstr "Lägg till en nyhetsartikel"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1110
-#: app/Module/NotesTabModule.php:100
+#: app/Controller/FamilyController.php:149
+#: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
 msgstr "Lägg till en anteckning"
 
@@ -1348,14 +1350,15 @@ msgstr "Lägg till en begränsning"
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
 #: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
 msgstr "Lägg till rullningslist när blocket vidgas"
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1120
-#: app/Module/NotesTabModule.php:110
+#: app/Controller/FamilyController.php:155
+#: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
 msgid "Add a shared note"
 msgstr "Lägg till en delad anteckning"
 
@@ -1363,8 +1366,8 @@ msgstr "Lägg till en delad anteckning"
 msgid "Add a son or daughter"
 msgstr "Lägg till en son eller dotter"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1060
-#: app/Module/SourcesTabModule.php:93
+#: app/Controller/FamilyController.php:172
+#: app/Functions/FunctionsEdit.php:1060 app/Module/SourcesTabModule.php:93
 msgid "Add a source citation"
 msgstr "Lägg till ett källcitat"
 
@@ -1455,7 +1458,7 @@ msgstr "Lägg till GEDCOM media sökvägen till filnamn"
 #. I18N: A configuration setting
 #: admin_trees_config.php:935
 msgid "Add to TITLE header tag"
-msgstr "Lägg till TITEL-rubriktagg"
+msgstr "Lägg till TITLE-rubriktagg"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
@@ -1811,10 +1814,10 @@ msgstr "Levande"
 #: app/Module/GoogleMapsModule.php:1578 app/Module/GoogleMapsModule.php:1591
 #: app/Module/GoogleMapsModule.php:4691 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5623 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
-#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
-#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
-#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
+#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
+#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
+#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -2026,7 +2029,8 @@ msgstr "Anguilla"
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1804 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1804
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr "Årsdag"
 
@@ -2177,7 +2181,8 @@ msgstr "Argentina"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -3515,7 +3520,8 @@ msgstr "Ändrad den %1$s av %2$s"
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:436
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr "Ändringar"
 
@@ -3555,9 +3561,9 @@ msgstr "Diagramtyp"
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1287
-#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
-#: app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163
+#: admin_trees_config.php:1287 app/Module/ChartsBlockModule.php:34
+#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
 msgstr "Tavlor"
 
@@ -4065,9 +4071,10 @@ msgstr "Fortsättning"
 #: app/Module/FrequentlyAskedQuestionsModule.php:441
 #: app/Module/GoogleMapsModule.php:294 app/Module/GoogleMapsModule.php:1541
 #: app/Module/GoogleMapsModule.php:4096
-#: app/Module/RelationshipsChartModule.php:147 app/Module/SiteMapModule.php:296
-#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
-#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
+#: app/Module/RelationshipsChartModule.php:147
+#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
+#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
+#: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr "Kontrollpanel"
 
@@ -4465,7 +4472,8 @@ msgstr "Databasens användarkonto"
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -5033,7 +5041,8 @@ msgstr "Betyg"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -5049,8 +5058,9 @@ msgid "DejaVu"
 msgstr "DejaVu"
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
-#: admin_site_change.php:373 admin_site_logs.php:314 admin_trees_config.php:576
-#: admin_trees_manage.php:418 admin_trees_manage.php:429 admin_users.php:211
+#: admin_site_change.php:373 admin_site_logs.php:314
+#: admin_trees_config.php:576 admin_trees_manage.php:418
+#: admin_trees_manage.php:429 admin_users.php:211
 #: app/Controller/FamilyController.php:94
 #: app/Controller/GedcomRecordController.php:116
 #: app/Controller/IndividualController.php:303
@@ -5093,7 +5103,7 @@ msgstr "Ta bort temporära filer…"
 
 #: admin_modules.php:103
 msgid "Delete the preferences for this module."
-msgstr "Ta bort inställningar för denna modul."
+msgstr "Ta bort inställningarna för denna modul."
 
 #: app/Controller/IndividualController.php:167
 msgid "Delete this name"
@@ -5131,7 +5141,8 @@ msgstr "Efterkommande generationer"
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
 #: app/Module/ChartsBlockModule.php:195
-#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
+#: app/Module/DescendancyChartModule.php:33
+#: app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5428,11 +5439,6 @@ msgstr "Det finns redan en användare med e-postadressen."
 msgid "Duplicate user name. A user with that user name already exists. Please choose another user name."
 msgstr "En avändare med detta användarnamn finns redan. Välj ett annat användarnamn."
 
-#. I18N: Help text for the “webtrees reply address” configuration setting
-#: admin_trees_config.php:881
-msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "E-postadress som skall användas i ”från:”-fältet för e-post som webtrees skapar automatiskt.<br><br>webtrees kan automatiskt skapa e-post för att meddela administratörer av förändringar som behöver granskas. webtrees skickar också e-postmeddelanden till användare som har ansökt om ett konto.<br><br>Vanligtvis är ”från:” fältet i dessa automatiskt skapade e-postmeddelanden t.ex. <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-post krävs. För att skydda mot skräppost eller andra e-missbruk, kräver vissa system en giltig adress i ”från:” fältet och kommer inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>."
-
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr "Varje källa registrerar specifika händelser, i allmänhet för ett visst datumintervall och för en plats jurisdiktion. Till exempel en folkräkning registrerar folkräkning händelser och kyrkans register registrerar födelse, giftermål och dödshändelser.<br><br>Markera de händelser som registreras av denna källa från listan över händelser som tillhandahålls. Datum bör anges i datumintervall format såsom <i>FROM 1900 TO 1910</i>. Plats jurisdiktion är namnet på den lägsta behörigheten som omfattar alla lägre nivå platser som nämns i denna källa. Exempelvis skulle ”Oneida, Idaho, USA” användas som en källa jurisdiktion plats för händelser som inträffar i de olika städerna inom Oneida County. ”Idaho, USA” skulle vara källa behörighet om de händelser som registrerats ägde rum inte bara i Oneida County, utan även i andra län i Idaho."
@@ -5656,6 +5662,11 @@ msgstr "elul"
 #: login.php:426 message.php:117 message.php:270 setup.php:441
 msgid "Email address"
 msgstr "E-postadress"
+
+#. I18N: Help text for the “webtrees reply address” configuration setting
+#: admin_trees_config.php:881
+msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+msgstr "E-postadress som skall användas i ”från:”-fältet för e-post som webtrees skapar automatiskt.<br><br>webtrees kan automatiskt skapa e-post för att meddela administratörer av förändringar som behöver granskas. webtrees skickar också e-postmeddelanden till användare som har ansökt om ett konto.<br><br>Vanligtvis är ”från:” fältet i dessa automatiskt skapade e-postmeddelanden t.ex. <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-post krävs. För att skydda mot skräppost eller andra e-missbruk, kräver vissa system en giltig adress i ”från:” fältet och kommer inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>."
 
 #: admin_users.php:382
 msgid "Email verified"
@@ -5881,7 +5892,8 @@ msgstr "Utesluten från denna skickning"
 msgid "Explain why you are requesting an account."
 msgstr "Förklara varför du begär ett konto."
 
-#: admin_site_change.php:369 admin_site_logs.php:310 admin_trees_manage.php:594
+#: admin_site_change.php:369 admin_site_logs.php:310
+#: admin_trees_manage.php:594
 msgid "Export"
 msgstr "Exportera"
 
@@ -6059,7 +6071,8 @@ msgstr "Falklandsöarna"
 #: app/Module/GoogleMapsModule.php:2818 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1489
 #: calendar.php:422 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:134 mediaviewer.php:123
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:225
 #: repo.php:143 search.php:93 source.php:147 statistics.php:71
 #: statisticsplot.php:974 statisticsplot.php:1078 statisticsplot.php:1328
@@ -6156,7 +6169,8 @@ msgstr "Släktträd"
 msgid "Family tree access and settings"
 msgstr "Åtkomst och inställningar för släktträd"
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90
+#: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr "Släktträdsurklippskorg"
 
@@ -6296,7 +6310,8 @@ msgid "Father’s family with an unknown individual"
 msgstr "Faderns familj med en okänd person"
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1345
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1345
 msgid "Favorites"
 msgstr "Favoriter"
 
@@ -6439,7 +6454,8 @@ msgstr "Hitta ett specialtecken"
 msgid "Find all possible relationships"
 msgstr "Hitta alla möjliga relationer"
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 msgid "Find an individual"
@@ -6526,7 +6542,8 @@ msgstr "Mappnamn på servern"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7177,7 +7194,8 @@ msgstr "Helsingfors, Finland"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7728,7 +7746,8 @@ msgid "Installation folder"
 msgstr "Installationsmapp"
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:197 app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:197
+#: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
 msgstr "Interaktivt träd"
 
@@ -9376,9 +9395,9 @@ msgstr "Modul"
 #: app/Module/FrequentlyAskedQuestionsModule.php:442
 #: app/Module/GoogleMapsModule.php:295 app/Module/GoogleMapsModule.php:1542
 #: app/Module/GoogleMapsModule.php:4097
-#: app/Module/RelationshipsChartModule.php:148 app/Module/SiteMapModule.php:297
-#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
-#: app/Theme/AdministrationTheme.php:190
+#: app/Module/RelationshipsChartModule.php:148
+#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
+#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr "Moduladministration"
 
@@ -10190,8 +10209,9 @@ msgid "Not verified by the user"
 msgstr "Ej verifierad av användare"
 
 #. I18N: gedcom tag NOTE
-#: app/Controller/FamilyController.php:147 app/Functions/FunctionsPrint.php:173
-#: app/GedcomTag.php:634 modules_v3/cemetery_report/report.xml:64
+#: app/Controller/FamilyController.php:147
+#: app/Functions/FunctionsPrint.php:173 app/GedcomTag.php:634
+#: modules_v3/cemetery_report/report.xml:64
 #: modules_v3/family_group_report/report.xml:485
 #: modules_v3/family_group_report/report.xml:749
 #: modules_v3/family_group_report/report.xml:1101
@@ -10286,8 +10306,8 @@ msgid "Number of items"
 msgstr "Antal artiklar"
 
 #. I18N: Label for a configuration option
-#: app/Module/TopGivenNamesModule.php:146 app/Module/TopPageViewsModule.php:159
-#: app/Module/TopSurnamesModule.php:168
+#: app/Module/TopGivenNamesModule.php:146
+#: app/Module/TopPageViewsModule.php:159 app/Module/TopSurnamesModule.php:168
 msgid "Number of items to show"
 msgstr "Antal objekt att visa"
 
@@ -10600,7 +10620,8 @@ msgstr "PHP-tidsgräns"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -11436,8 +11457,9 @@ msgstr "Ramadan"
 msgid "Random images from the current family tree."
 msgstr "Slumpvisa bilder från nuvarande släktträd."
 
-#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1803 edit_interface.php:1877
+#: app/Controller/FamilyController.php:88
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1803
+#: edit_interface.php:1877
 msgid "Re-order children"
 msgstr "Ändra ordning på barn"
 
@@ -11460,7 +11482,8 @@ msgid "Real name"
 msgstr "Verkligt namn"
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr "Senaste ändringar"
 
@@ -11476,7 +11499,8 @@ msgstr "Recife, Brasilien"
 #: admin_site_change.php:327 admin_site_change.php:388
 #: admin_trees_config.php:530 app/Functions/FunctionsPrintLists.php:1800
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:321 app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:321
+#: app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -13848,8 +13872,8 @@ msgstr "Mappen %s kunde inte tas bort."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:294
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:294
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Mappen %s finns inte och kunde inte skapas."
@@ -14211,8 +14235,8 @@ msgstr "Det finns inga forskningsuppgifter i detta släktträd."
 msgid "There are no source citations for this individual."
 msgstr "Det finns inget källcitat om denna person."
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1926
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1926
 msgid "There are pending changes for you to moderate."
 msgstr "Det finns väntande ändringar för dig att moderera."
 
@@ -15146,7 +15170,8 @@ msgstr "Antal förnamn"
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:88
-#: modules_v3/death_report/report.xml:99 modules_v3/fact_sources/report.xml:142
+#: modules_v3/death_report/report.xml:99
+#: modules_v3/fact_sources/report.xml:142
 #: modules_v3/fact_sources/report.xml:146
 #: modules_v3/fact_sources/report.xml:305
 #: modules_v3/fact_sources/report.xml:309
@@ -15468,7 +15493,7 @@ msgstr "Uppdatera i alla fall"
 #: admin.php:612 admin_site_upgrade.php:82 login.php:117
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Uppdatera till webtrees v. %s."
+msgstr "Uppgradera till webtrees v. %s."
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
@@ -16009,7 +16034,8 @@ msgstr "Vem kan ladda upp nya media filer"
 msgid "Who is online"
 msgstr "Vem är online"
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr "Endast hela ord"
 
@@ -16758,14 +16784,15 @@ msgstr "barn"
 #. I18N: button label
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:759
-#: app/Module/GoogleMapsModule.php:4024 app/Theme/AbstractTheme.php:700
-#: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1746
-#: edit_interface.php:1855 edit_interface.php:2048 edit_interface.php:2217
-#: edit_interface.php:2603 find.php:766 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189
+#: app/Module/GoogleMapsModule.php:759 app/Module/GoogleMapsModule.php:4024
+#: app/Theme/AbstractTheme.php:700 edit_changes.php:240 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1746 edit_interface.php:1855 edit_interface.php:2048
+#: edit_interface.php:2217 edit_interface.php:2603 find.php:766
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "stäng"
@@ -16897,6 +16924,10 @@ msgstr "öst"
 msgid "edit"
 msgstr "redigera"
 
+#: app/Functions/Functions.php:551
+msgid "eighth cousin"
+msgstr "8. kusin"
+
 #: app/Functions/Functions.php:516
 msgctxt "FEMALE"
 msgid "eighth cousin"
@@ -16905,10 +16936,6 @@ msgstr "8. kusin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:473
 msgctxt "MALE"
-msgid "eighth cousin"
-msgstr "8. kusin"
-
-#: app/Functions/Functions.php:551
 msgid "eighth cousin"
 msgstr "8. kusin"
 
@@ -16924,6 +16951,10 @@ msgstr "äldre syskon"
 msgid "elder sister"
 msgstr "äldre syster"
 
+#: app/Functions/Functions.php:557
+msgid "eleventh cousin"
+msgstr "11. kusin"
+
 #: app/Functions/Functions.php:522
 msgctxt "FEMALE"
 msgid "eleventh cousin"
@@ -16932,10 +16963,6 @@ msgstr "11. kusin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:482
 msgctxt "MALE"
-msgid "eleventh cousin"
-msgstr "11. kusin"
-
-#: app/Functions/Functions.php:557
 msgid "eleventh cousin"
 msgstr "11. kusin"
 
@@ -16966,6 +16993,10 @@ msgstr "uppskattad %s"
 msgid "ex-husband"
 msgstr "ex-make"
 
+#: app/Functions/Functions.php:716
+msgid "ex-partner"
+msgstr "ex-partner"
+
 #: app/Functions/Functions.php:698
 msgctxt "FEMALE"
 msgid "ex-partner"
@@ -16973,10 +17004,6 @@ msgstr "ex-partner"
 
 #: app/Functions/Functions.php:680
 msgctxt "MALE"
-msgid "ex-partner"
-msgstr "ex-partner"
-
-#: app/Functions/Functions.php:716
 msgid "ex-partner"
 msgstr "ex-partner"
 
@@ -17011,6 +17038,10 @@ msgctxt "wife’s father"
 msgid "father-in-law"
 msgstr "svärfar"
 
+#: app/Functions/Functions.php:565
+msgid "fifteenth cousin"
+msgstr "15. kusin"
+
 #: app/Functions/Functions.php:530
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
@@ -17022,9 +17053,10 @@ msgctxt "MALE"
 msgid "fifteenth cousin"
 msgstr "15. kusin"
 
-#: app/Functions/Functions.php:565
-msgid "fifteenth cousin"
-msgstr "15. kusin"
+#: app/Functions/Functions.php:625
+#, php-format
+msgid "fifth %s"
+msgstr "femte %s"
 
 #: app/Functions/Functions.php:610
 #, php-format
@@ -17038,10 +17070,9 @@ msgctxt "MALE"
 msgid "fifth %s"
 msgstr "femte %s"
 
-#: app/Functions/Functions.php:625
-#, php-format
-msgid "fifth %s"
-msgstr "femte %s"
+#: app/Functions/Functions.php:545
+msgid "fifth cousin"
+msgstr "5. kusin"
 
 #: app/Functions/Functions.php:510
 msgctxt "FEMALE"
@@ -17051,10 +17082,6 @@ msgstr "5. kusin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:464
 msgctxt "MALE"
-msgid "fifth cousin"
-msgstr "5. kusin"
-
-#: app/Functions/Functions.php:545
 msgid "fifth cousin"
 msgstr "5. kusin"
 
@@ -17074,6 +17101,12 @@ msgid "first"
 msgstr "första"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
+#: app/Functions/Functions.php:617
+#, php-format
+msgid "first %s"
+msgstr "första %s"
+
+#. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:602
 #, php-format
 msgctxt "FEMALE"
@@ -17087,11 +17120,9 @@ msgctxt "MALE"
 msgid "first %s"
 msgstr "första %s"
 
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Functions/Functions.php:617
-#, php-format
-msgid "first %s"
-msgstr "första %s"
+#: app/Functions/Functions.php:537
+msgid "first cousin"
+msgstr "kusin"
 
 #: app/Functions/Functions.php:502
 msgctxt "FEMALE"
@@ -17101,10 +17132,6 @@ msgstr "kusin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:452
 msgctxt "MALE"
-msgid "first cousin"
-msgstr "kusin"
-
-#: app/Functions/Functions.php:537
 msgid "first cousin"
 msgstr "kusin"
 
@@ -17288,6 +17315,10 @@ msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
 msgstr "mormors systerson"
 
+#: app/Functions/Functions.php:563
+msgid "fourteenth cousin"
+msgstr "14. kusin"
+
 #: app/Functions/Functions.php:528
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
@@ -17299,9 +17330,10 @@ msgctxt "MALE"
 msgid "fourteenth cousin"
 msgstr "14. kusin"
 
-#: app/Functions/Functions.php:563
-msgid "fourteenth cousin"
-msgstr "14. kusin"
+#: app/Functions/Functions.php:623
+#, php-format
+msgid "fourth %s"
+msgstr "fjärde %s"
 
 #: app/Functions/Functions.php:608
 #, php-format
@@ -17315,10 +17347,9 @@ msgctxt "MALE"
 msgid "fourth %s"
 msgstr "fjärde %s"
 
-#: app/Functions/Functions.php:623
-#, php-format
-msgid "fourth %s"
-msgstr "fjärde %s"
+#: app/Functions/Functions.php:543
+msgid "fourth cousin"
+msgstr "4. kusin"
 
 #: app/Functions/Functions.php:508
 msgctxt "FEMALE"
@@ -17328,10 +17359,6 @@ msgstr "4. kusin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:461
 msgctxt "MALE"
-msgid "fourth cousin"
-msgstr "4. kusin"
-
-#: app/Functions/Functions.php:543
 msgid "fourth cousin"
 msgstr "4. kusin"
 
@@ -19209,6 +19236,10 @@ msgctxt "sisters’s son’s wife"
 msgid "niece-in-law"
 msgstr "systersons maka"
 
+#: app/Functions/Functions.php:553
+msgid "ninth cousin"
+msgstr "9. kusin"
+
 #: app/Functions/Functions.php:518
 msgctxt "FEMALE"
 msgid "ninth cousin"
@@ -19217,10 +19248,6 @@ msgstr "9. kusin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:476
 msgctxt "MALE"
-msgid "ninth cousin"
-msgstr "9. kusin"
-
-#: app/Functions/Functions.php:553
 msgid "ninth cousin"
 msgstr "9. kusin"
 
@@ -19271,7 +19298,8 @@ msgstr "antal"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19306,6 +19334,10 @@ msgstr "e.m."
 msgid "parent"
 msgstr "förälder"
 
+#: app/Functions/Functions.php:718
+msgid "partner"
+msgstr "partner"
+
 #: app/Functions/Functions.php:700
 msgctxt "FEMALE"
 msgid "partner"
@@ -19313,10 +19345,6 @@ msgstr "partner"
 
 #: app/Functions/Functions.php:682
 msgctxt "MALE"
-msgid "partner"
-msgstr "partner"
-
-#: app/Functions/Functions.php:718
 msgid "partner"
 msgstr "partner"
 
@@ -19442,24 +19470,30 @@ msgstr "robot"
 #. I18N: button label
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:199
-#: admin_site_access.php:307 admin_site_config.php:652 admin_site_merge.php:340
-#: admin_trees_config.php:2271 admin_users.php:673
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129
+#: admin_modules.php:199 admin_site_access.php:307 admin_site_config.php:652
+#: admin_site_merge.php:340 admin_trees_config.php:2271 admin_users.php:673
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:533 app/Module/GoogleMapsModule.php:758
 #: app/Module/GoogleMapsModule.php:2764 app/Module/GoogleMapsModule.php:4023
-#: app/Module/RelationshipsChartModule.php:173 app/Module/SiteMapModule.php:320
-#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
-#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1745 edit_interface.php:1853 edit_interface.php:2047
-#: edit_interface.php:2215 edit_interface.php:2599 editnews.php:74
-#: edituser.php:317 find.php:543 index_edit.php:376
+#: app/Module/RelationshipsChartModule.php:173
+#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
+#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
+#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
+#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
+#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1745
+#: edit_interface.php:1853 edit_interface.php:2047 edit_interface.php:2215
+#: edit_interface.php:2599 editnews.php:74 edituser.php:317 find.php:543
+#: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
 msgstr "spara"
+
+#: app/Functions/Functions.php:619
+#, php-format
+msgid "second %s"
+msgstr "andra %s"
 
 #: app/Functions/Functions.php:604
 #, php-format
@@ -19473,10 +19507,9 @@ msgctxt "MALE"
 msgid "second %s"
 msgstr "andra %s"
 
-#: app/Functions/Functions.php:619
-#, php-format
-msgid "second %s"
-msgstr "andra %s"
+#: app/Functions/Functions.php:539
+msgid "second cousin"
+msgstr "2. kusin"
 
 #: app/Functions/Functions.php:504
 msgctxt "FEMALE"
@@ -19486,10 +19519,6 @@ msgstr "2. kusin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:455
 msgctxt "MALE"
-msgid "second cousin"
-msgstr "2. kusin"
-
-#: app/Functions/Functions.php:539
 msgid "second cousin"
 msgstr "2. kusin"
 
@@ -19648,6 +19677,10 @@ msgstr "välj ingen"
 msgid "self"
 msgstr "själv"
 
+#: app/Functions/Functions.php:549
+msgid "seventh cousin"
+msgstr "7. kusin"
+
 #: app/Functions/Functions.php:514
 msgctxt "FEMALE"
 msgid "seventh cousin"
@@ -19656,10 +19689,6 @@ msgstr "7. kusin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:470
 msgctxt "MALE"
-msgid "seventh cousin"
-msgstr "7. kusin"
-
-#: app/Functions/Functions.php:549
 msgid "seventh cousin"
 msgstr "7. kusin"
 
@@ -19722,6 +19751,10 @@ msgctxt "wife’s sister"
 msgid "sister-in-law"
 msgstr "svägerska"
 
+#: app/Functions/Functions.php:547
+msgid "sixth cousin"
+msgstr "6. kusin"
+
 #: app/Functions/Functions.php:512
 msgctxt "FEMALE"
 msgid "sixth cousin"
@@ -19730,10 +19763,6 @@ msgstr "6. kusin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:467
 msgctxt "MALE"
-msgid "sixth cousin"
-msgstr "6. kusin"
-
-#: app/Functions/Functions.php:547
 msgid "sixth cousin"
 msgstr "6. kusin"
 
@@ -19970,6 +19999,10 @@ msgstr "tabell"
 msgid "tag cloud"
 msgstr "tagg moln"
 
+#: app/Functions/Functions.php:555
+msgid "tenth cousin"
+msgstr "10. kusin"
+
 #: app/Functions/Functions.php:520
 msgctxt "FEMALE"
 msgid "tenth cousin"
@@ -19978,10 +20011,6 @@ msgstr "10. kusin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:479
 msgctxt "MALE"
-msgid "tenth cousin"
-msgstr "10. kusin"
-
-#: app/Functions/Functions.php:555
 msgid "tenth cousin"
 msgstr "10. kusin"
 
@@ -19995,6 +20024,11 @@ msgstr "databasanslutningens inställningar i filen “/data/config.ini.php” �
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "mappen “/data” och filen “/data/config.ini.php” har åtkomsträttigheter som tillåter webbservern att läsa dem"
 
+#: app/Functions/Functions.php:621
+#, php-format
+msgid "third %s"
+msgstr "tredje %s"
+
 #: app/Functions/Functions.php:606
 #, php-format
 msgctxt "FEMALE"
@@ -20007,10 +20041,9 @@ msgctxt "MALE"
 msgid "third %s"
 msgstr "tredje %s"
 
-#: app/Functions/Functions.php:621
-#, php-format
-msgid "third %s"
-msgstr "tredje %s"
+#: app/Functions/Functions.php:541
+msgid "third cousin"
+msgstr "3. kusin"
 
 #: app/Functions/Functions.php:506
 msgctxt "FEMALE"
@@ -20023,9 +20056,9 @@ msgctxt "MALE"
 msgid "third cousin"
 msgstr "3. kusin"
 
-#: app/Functions/Functions.php:541
-msgid "third cousin"
-msgstr "3. kusin"
+#: app/Functions/Functions.php:561
+msgid "thirteenth cousin"
+msgstr "13. kusin"
 
 #: app/Functions/Functions.php:526
 msgctxt "FEMALE"
@@ -20035,10 +20068,6 @@ msgstr "13. kusin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:488
 msgctxt "MALE"
-msgid "thirteenth cousin"
-msgstr "13. kusin"
-
-#: app/Functions/Functions.php:561
 msgid "thirteenth cousin"
 msgstr "13. kusin"
 
@@ -20062,6 +20091,10 @@ msgstr "tls"
 msgid "to %s"
 msgstr "till %s"
 
+#: app/Functions/Functions.php:559
+msgid "twelfth cousin"
+msgstr "12. kusin"
+
 #: app/Functions/Functions.php:524
 msgctxt "FEMALE"
 msgid "twelfth cousin"
@@ -20070,10 +20103,6 @@ msgstr "12. kusin"
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:485
 msgctxt "MALE"
-msgid "twelfth cousin"
-msgstr "12. kusin"
-
-#: app/Functions/Functions.php:559
 msgid "twelfth cousin"
 msgstr "12. kusin"
 
