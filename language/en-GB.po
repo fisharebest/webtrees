@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-01 09:56+0100\n"
-"PO-Revision-Date: 2016-05-03 22:32+0000\n"
+"PO-Revision-Date: 2016-05-04 07:59+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -19330,11 +19330,11 @@ msgstr "overall"
 #. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:95
 msgid "p.m."
-msgstr ""
+msgstr "p.m."
 
 #: app/Functions/Functions.php:673
 msgid "parent"
-msgstr ""
+msgstr "parent"
 
 #: app/Functions/Functions.php:718
 msgid "partner"
@@ -19343,131 +19343,131 @@ msgstr "partner"
 #: app/Functions/Functions.php:700
 msgctxt "FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/Functions/Functions.php:682
 msgctxt "MALE"
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr ""
+msgstr "paternal"
 
 #: app/Functions/Functions.php:822
 msgctxt "father’s father"
 msgid "paternal grandfather"
-msgstr ""
+msgstr "paternal grandfather"
 
 #: app/Functions/Functions.php:824
 msgctxt "father’s mother"
 msgid "paternal grandmother"
-msgstr ""
+msgstr "paternal grandmother"
 
 #: app/Functions/Functions.php:826
 msgctxt "father’s parent"
 msgid "paternal grandparent"
-msgstr ""
+msgstr "paternal grandparent"
 
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:75
 msgid "patrilineal"
-msgstr ""
+msgstr "patrilineal"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:56
 msgid "pending"
-msgstr ""
+msgstr "pending"
 
 #: statistics.php:638 statisticsplot.php:873 statisticsplot.php:923
 #: statisticsplot.php:977 statisticsplot.php:1027 statisticsplot.php:1081
 #: statisticsplot.php:1131 statisticsplot.php:1181 statisticsplot.php:1231
 #: statisticsplot.php:1281 statisticsplot.php:1331
 msgid "percentage"
-msgstr ""
+msgstr "percentage"
 
 #: admin_trees_config.php:1077
 msgid "pixels"
-msgstr ""
+msgstr "pixels"
 
 #. I18N: button label
 #: admin_trees_places.php:107
 msgid "preview"
-msgstr ""
+msgstr "preview"
 
 #. I18N: button label, previous page
 #: app/I18N.php:224 app/Module/BatchUpdateModule.php:246
 msgid "previous"
-msgstr ""
+msgstr "previous"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/GedcomCode/GedcomCodeQuay.php:39
 msgid "primary evidence"
-msgstr ""
+msgstr "primary evidence"
 
 #: statistics.php:570
 msgid "quarters after marriage"
-msgstr ""
+msgstr "quarters after marriage"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/GedcomCode/GedcomCodeQuay.php:47
 msgid "questionable evidence"
-msgstr ""
+msgstr "questionable evidence"
 
 #: admin_trees_config.php:70 modules_v3/fact_sources/report.xml:6
 msgid "records"
-msgstr ""
+msgstr "records"
 
 #: family.php:64 gedrecord.php:75 individual.php:76 mediaviewer.php:63
 #: note.php:64 repo.php:63 source.php:63
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr ""
+msgstr "reject"
 
 #: family.php:45 gedrecord.php:57 individual.php:58 mediaviewer.php:45
 #: note.php:46 repo.php:45 source.php:45
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr ""
+msgstr "reject"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:55
 msgid "rejected"
-msgstr ""
+msgstr "rejected"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:144
 msgid "religious name"
-msgstr ""
+msgstr "religious name"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:141
 msgctxt "FEMALE"
 msgid "religious name"
-msgstr ""
+msgstr "religious name"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:138
 msgctxt "MALE"
 msgid "religious name"
-msgstr ""
+msgstr "religious name"
 
 #. I18N: a program feature
 #: setup.php:133 setup.php:134
 msgid "reporting"
-msgstr ""
+msgstr "reporting"
 
 #. I18N: Button label
 #: app/Module/GoogleMapsModule.php:4994 lifespan.php:109 medialist.php:196
 #: statistics.php:646 timeline.php:313
 msgid "reset"
-msgstr ""
+msgstr "reset"
 
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: admin_site_access.php:29 admin_site_access.php:36
 msgid "robot"
-msgstr ""
+msgstr "robot"
 
 #. I18N: button label
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
@@ -19490,7 +19490,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
-msgstr ""
+msgstr "save"
 
 #: app/Functions/Functions.php:619
 #, php-format
@@ -19501,13 +19501,13 @@ msgstr "second %s"
 #, php-format
 msgctxt "FEMALE"
 msgid "second %s"
-msgstr ""
+msgstr "second %s"
 
 #: app/Functions/Functions.php:589
 #, php-format
 msgctxt "MALE"
 msgid "second %s"
-msgstr ""
+msgstr "second %s"
 
 #: app/Functions/Functions.php:539
 msgid "second cousin"
@@ -19516,168 +19516,168 @@ msgstr "second cousin"
 #: app/Functions/Functions.php:504
 msgctxt "FEMALE"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:455
 msgctxt "MALE"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1463
 msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1459
 msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1461
 msgctxt "grandfather’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1475
 msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1471
 msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1473
 msgctxt "grandfather’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1469
 msgctxt "grandfather’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1465
 msgctxt "grandfather’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1467
 msgctxt "grandfather’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1481
 msgctxt "grandmother’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1477
 msgctxt "grandmother’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1479
 msgctxt "grandmother’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1493
 msgctxt "grandmother’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1489
 msgctxt "grandmother’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1491
 msgctxt "grandmother’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1487
 msgctxt "grandmother’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1483
 msgctxt "grandmother’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1485
 msgctxt "grandmother’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1499
 msgctxt "grandparent’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1495
 msgctxt "grandparent’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1497
 msgctxt "grandparent’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1511
 msgctxt "grandparent’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1507
 msgctxt "grandparent’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1509
 msgctxt "grandparent’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1505
 msgctxt "grandparent’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1501
 msgctxt "grandparent’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #: app/Functions/Functions.php:1503
 msgctxt "grandparent’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "second cousin"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/GedcomCode/GedcomCodeQuay.php:43
 msgid "secondary evidence"
-msgstr ""
+msgstr "secondary evidence"
 
 #. I18N: select all (of the family trees)
 #: search.php:119 search.php:276
 msgid "select all"
-msgstr ""
+msgstr "select all"
 
 #. I18N: select none (of the family trees)
 #: search.php:120 search.php:277
 msgid "select none"
-msgstr ""
+msgstr "select none"
 
 #: app/Functions/Functions.php:241 app/Functions/Functions.php:259
 #: app/Functions/Functions.php:666
 msgid "self"
-msgstr ""
+msgstr "self"
 
 #: app/Functions/Functions.php:549
 msgid "seventh cousin"
@@ -19686,72 +19686,72 @@ msgstr "seventh cousin"
 #: app/Functions/Functions.php:514
 msgctxt "FEMALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "seventh cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:470
 msgctxt "MALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "seventh cousin"
 
 #. I18N: Button label
 #: admin_trees_config.php:43 app/Module/FrequentlyAskedQuestionsModule.php:457
 #: app/Module/GoogleMapsModule.php:347 app/Module/StoriesModule.php:361
 #: lifespan.php:110
 msgid "show"
-msgstr ""
+msgstr "show"
 
 #: statistics.php:645
 msgid "show the plot"
-msgstr ""
+msgstr "show the plot"
 
 #: app/Functions/Functions.php:784
 msgid "sibling"
-msgstr ""
+msgstr "sibling"
 
 #: app/Functions/Functions.php:767
 msgid "sister"
-msgstr ""
+msgstr "sister"
 
 #: app/Functions/Functions.php:794
 msgctxt "brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "sister-in-law"
 
 #: app/Functions/Functions.php:1016
 msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "sister-in-law"
 
 #: app/Functions/Functions.php:1126
 msgctxt "husband’s brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "sister-in-law"
 
 #: app/Functions/Functions.php:848
 msgctxt "husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "sister-in-law"
 
 #: app/Functions/Functions.php:1298
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "sister-in-law"
 
 #: app/Functions/Functions.php:926
 msgctxt "spouse’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "sister-in-law"
 
 #: app/Functions/Functions.php:1348
 msgctxt "wife’s brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "sister-in-law"
 
 #: app/Functions/Functions.php:946
 msgctxt "wife’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "sister-in-law"
 
 #: app/Functions/Functions.php:547
 msgid "sixth cousin"
@@ -19760,60 +19760,60 @@ msgstr "sixth cousin"
 #: app/Functions/Functions.php:512
 msgctxt "FEMALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "sixth cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:467
 msgctxt "MALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "sixth cousin"
 
 #: app/Functions/Functions.php:729 app/Functions/FunctionsCharts.php:311
 #: app/Module/GoogleMapsModule.php:2074 app/Module/GoogleMapsModule.php:2104
 #: edit_interface.php:2007
 msgid "son"
-msgstr ""
+msgstr "son"
 
 #: modules_v3/descendancy_report/report.xml:296
 msgid "son of"
-msgstr ""
+msgstr "son of"
 
 #: app/Functions/Functions.php:800
 msgctxt "child’s husband"
 msgid "son-in-law"
-msgstr ""
+msgstr "son-in-law"
 
 #: app/Functions/Functions.php:812
 msgctxt "daughter’s husband"
 msgid "son-in-law"
-msgstr ""
+msgstr "son-in-law"
 
 #: app/Functions/Functions.php:1054
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr ""
+msgstr "son-in-law’s father"
 
 #: app/Functions/Functions.php:1056
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr ""
+msgstr "son-in-law’s mother"
 
 #: app/Functions/Functions.php:1058
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr ""
+msgstr "son-in-law’s parent"
 
 #: app/Functions/Functions.php:804
 msgctxt "child’s spouse"
 msgid "son/daughter-in-law"
-msgstr ""
+msgstr "son/daughter-in-law"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:157
 #: app/Module/UpcomingAnniversariesModule.php:176
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr ""
+msgstr "sort by date"
 
 #: edit_interface.php:1854 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9 modules_v3/change_report/report.xml:7
@@ -19822,32 +19822,32 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of birth"
-msgstr ""
+msgstr "sort by date of birth"
 
 #: modules_v3/bdm_report/report.xml:11 modules_v3/cemetery_report/report.xml:6
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of death"
-msgstr ""
+msgstr "sort by date of death"
 
 #: edit_interface.php:2216 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
-msgstr ""
+msgstr "sort by date of marriage"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:164
 msgid "sort by date, newest first"
-msgstr ""
+msgstr "sort by date, newest first"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:163
 msgid "sort by date, oldest first"
-msgstr ""
+msgstr "sort by date, oldest first"
 
 #. I18N: An option in a list-box
 #: medialist.php:109
 msgid "sort by filename"
-msgstr ""
+msgstr "sort by filename"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:156 app/Module/RecentChangesModule.php:162
@@ -19861,131 +19861,131 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by name"
-msgstr ""
+msgstr "sort by name"
 
 #. I18N: An option in a list-box
 #: medialist.php:106
 msgid "sort by title"
-msgstr ""
+msgstr "sort by title"
 
 #: app/Module/GoogleMapsModule.php:3977
 msgid "south"
-msgstr ""
+msgstr "south"
 
 #: app/Functions/Functions.php:727 edit_interface.php:1938
 #: edit_interface.php:1948 edit_interface.php:1973 edit_interface.php:1984
 msgid "spouse"
-msgstr ""
+msgstr "spouse"
 
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: admin_site_config.php:112
 msgid "ssl"
-msgstr ""
+msgstr "ssl"
 
 #: app/Functions/Functions.php:1124
 msgctxt "father’s wife’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "step-brother"
 
 #: app/Functions/Functions.php:1154
 msgctxt "mother’s husband’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "step-brother"
 
 #: app/Functions/Functions.php:1232
 msgctxt "parent’s spouse’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "step-brother"
 
 #: app/Functions/Functions.php:838
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr ""
+msgstr "step-child"
 
 #: app/Functions/Functions.php:918
 msgctxt "spouse’s child"
 msgid "step-child"
-msgstr ""
+msgstr "step-child"
 
 #: app/Functions/Functions.php:936
 msgctxt "wife’s child"
 msgid "step-child"
-msgstr ""
+msgstr "step-child"
 
 #: app/Functions/Functions.php:840
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "step-daughter"
 
 #: app/Functions/Functions.php:920
 msgctxt "spouse’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "step-daughter"
 
 #: app/Functions/Functions.php:938
 msgctxt "wife’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "step-daughter"
 
 #: app/Functions/Functions.php:860 app/Module/FamilyNavigatorModule.php:216
 msgctxt "mother’s husband"
 msgid "step-father"
-msgstr ""
+msgstr "step-father"
 
 #: app/Functions/Functions.php:834 app/Module/FamilyNavigatorModule.php:216
 msgctxt "father’s wife"
 msgid "step-mother"
-msgstr ""
+msgstr "step-mother"
 
 #: app/Functions/Functions.php:890
 msgctxt "parent’s spouse"
 msgid "step-parent"
-msgstr ""
+msgstr "step-parent"
 
 #: app/Functions/Functions.php:1120
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "step-sibling"
 
 #: app/Functions/Functions.php:1150
 msgctxt "mother’s husband’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "step-sibling"
 
 #: app/Functions/Functions.php:1228
 msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "step-sibling"
 
 #: app/Functions/Functions.php:1122
 msgctxt "father’s wife’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "step-sister"
 
 #: app/Functions/Functions.php:1152
 msgctxt "mother’s husband’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "step-sister"
 
 #: app/Functions/Functions.php:1230
 msgctxt "parent’s spouse’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "step-sister"
 
 #: app/Functions/Functions.php:850
 msgctxt "husband’s son"
 msgid "step-son"
-msgstr ""
+msgstr "step-son"
 
 #: app/Functions/Functions.php:928
 msgctxt "spouse’s son"
 msgid "step-son"
-msgstr ""
+msgstr "step-son"
 
 #: app/Functions/Functions.php:948
 msgctxt "wife’s son"
 msgid "step-son"
-msgstr ""
+msgstr "step-son"
 
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:48 app/Module/OnThisDayModule.php:149
@@ -19994,12 +19994,12 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:168
 #: app/Module/YahrzeitModule.php:276
 msgid "table"
-msgstr ""
+msgstr "table"
 
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:49 app/Module/TopSurnamesModule.php:176
 msgid "tag cloud"
-msgstr ""
+msgstr "tag cloud"
 
 #: app/Functions/Functions.php:555
 msgid "tenth cousin"
@@ -20008,13 +20008,13 @@ msgstr "tenth cousin"
 #: app/Functions/Functions.php:520
 msgctxt "FEMALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "tenth cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:479
 msgctxt "MALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "tenth cousin"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:87
@@ -20035,13 +20035,13 @@ msgstr "third %s"
 #, php-format
 msgctxt "FEMALE"
 msgid "third %s"
-msgstr ""
+msgstr "third %s"
 
 #: app/Functions/Functions.php:591
 #, php-format
 msgctxt "MALE"
 msgid "third %s"
-msgstr ""
+msgstr "third %s"
 
 #: app/Functions/Functions.php:541
 msgid "third cousin"
@@ -20050,13 +20050,13 @@ msgstr "third cousin"
 #: app/Functions/Functions.php:506
 msgctxt "FEMALE"
 msgid "third cousin"
-msgstr ""
+msgstr "third cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:458
 msgctxt "MALE"
 msgid "third cousin"
-msgstr ""
+msgstr "third cousin"
 
 #: app/Functions/Functions.php:561
 msgid "thirteenth cousin"
@@ -20065,33 +20065,33 @@ msgstr "thirteenth cousin"
 #: app/Functions/Functions.php:526
 msgctxt "FEMALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "thirteenth cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:488
 msgctxt "MALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "thirteenth cousin"
 
 #: admin_trees_config.php:554
 msgid "this record does not exist"
-msgstr ""
+msgstr "this record does not exist"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:68
 msgid "three-quarter circle"
-msgstr ""
+msgstr "three-quarter circle"
 
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:113
 msgid "tls"
-msgstr ""
+msgstr "tls"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:319
 #, php-format
 msgid "to %s"
-msgstr ""
+msgstr "to %s"
 
 #: app/Functions/Functions.php:559
 msgid "twelfth cousin"
@@ -20100,55 +20100,55 @@ msgstr "twelfth cousin"
 #: app/Functions/Functions.php:524
 msgctxt "FEMALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "twelfth cousin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:485
 msgctxt "MALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "twelfth cousin"
 
 #: app/Functions/Functions.php:741
 msgid "twin brother"
-msgstr ""
+msgstr "twin brother"
 
 #: app/Functions/Functions.php:775
 msgid "twin sibling"
-msgstr ""
+msgstr "twin sibling"
 
 #: app/Functions/Functions.php:758
 msgid "twin sister"
-msgstr ""
+msgstr "twin sister"
 
 #: app/Functions/Functions.php:816
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "uncle"
 
 #: app/Functions/Functions.php:1116
 msgctxt "father’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "uncle"
 
 #: app/Functions/Functions.php:852
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "uncle"
 
 #: app/Functions/Functions.php:1184
 msgctxt "mother’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "uncle"
 
 #: app/Functions/Functions.php:872
 msgctxt "parent’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "uncle"
 
 #: app/Functions/Functions.php:1226
 msgctxt "parent’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "uncle"
 
 #: admin_site_access.php:26 admin_site_access.php:33
 #: app/Module/FamilyNavigatorModule.php:180
@@ -20159,27 +20159,27 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:4550 app/Module/GoogleMapsModule.php:4591
 #: app/Place.php:141 placelist.php:120
 msgid "unknown"
-msgstr ""
+msgstr "unknown"
 
 #: app/Module/FamilyNavigatorModule.php:222
 #: app/Module/InteractiveTree/TreeView.php:342
 msgctxt "unknown family"
 msgid "unknown"
-msgstr ""
+msgstr "unknown"
 
 #: app/Module/RelationshipsChartModule.php:131
 msgid "unlimited"
-msgstr ""
+msgstr "unlimited"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
 msgid "unreliable evidence"
-msgstr ""
+msgstr "unreliable evidence"
 
 #. I18N: button label
 #: admin_trees_places.php:108
 msgid "update"
-msgstr ""
+msgstr "update"
 
 #: admin_trees_config.php:370 admin_trees_config.php:394
 #: admin_trees_config.php:434 admin_trees_config.php:474
