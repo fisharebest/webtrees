@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-01 09:56+0100\n"
-"PO-Revision-Date: 2016-05-03 13:29+0000\n"
+"PO-Revision-Date: 2016-05-04 06:47+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -13382,7 +13382,7 @@ msgstr "Statisztika"
 
 #: statisticsplot.php:836
 msgid "Statistics plot"
-msgstr "Statisztikai görbe"
+msgstr "Statisztikai ábra"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:320 admin_site_change.php:387
