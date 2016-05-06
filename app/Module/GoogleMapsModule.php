@@ -3750,6 +3750,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					echo '});';
 					?>
 					var pos3 = marker.getPosition();
+					var prec = jQuery('input[name=NEW_PRECISION]:checked').val();
 					document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos3.lat()).toFixed(prec);
 					document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos3.lng()).toFixed(prec);
 					updateMap('flag_drag');
