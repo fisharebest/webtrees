@@ -3708,18 +3708,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				google.maps.event.addListener(map, 'click', function(event) {
 					clearMarks();
 					latlng = event.latLng;
-					<?php
-						echo 'marker = new google.maps.Marker({';
-						echo 'position: latlng,';
-						echo 'map: map,';
-						echo 'title: pl_name,';
-						echo 'draggable: true,';
-						echo 'zIndex: 1';
-					echo '});';
-					?>
-					var pos3 = marker.getPosition();
-					document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos3.lat()).toFixed(5);
-					document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos3.lng()).toFixed(5);
+					marker = new google.maps.Marker({
+						position: latlng,
+						map: map,
+						title: pl_name,
+						draggable: true,
+						zIndex: 1
+					});
+					document.getElementById('NEW_PLACE_LATI').value = marker.getPosition().lat().toFixed(5);
+					document.getElementById('NEW_PLACE_LONG').value = marker.getPosition().lng().toFixed(5);
 					updateMap('flag_drag');
 					var currzoom = parseInt(document.editplaces.NEW_ZOOM_FACTOR.value);
 					mapType = map.getMapTypeId();
@@ -3728,14 +3725,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				// If the marker is moved, update the location fields
 				google.maps.event.addListener(marker, 'drag', function() {
-					var pos1 = marker.getPosition();
-					document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos1.lat()).toFixed(5);
-					document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos1.lng()).toFixed(5);
+					document.getElementById('NEW_PLACE_LATI').value = marker.getPosition().lat().toFixed(5);
+					document.getElementById('NEW_PLACE_LONG').value = marker.getPosition().lng().toFixed(5);
 				});
 				google.maps.event.addListener(marker, 'dragend', function() {
-					var pos2 = marker.getPosition();
-					document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos2.lat()).toFixed(5);
-					document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos2.lng()).toFixed(5);
 					updateMap('flag_drag');
 				});
 			}
@@ -3744,6 +3737,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				marker.setMap(null);
 			}
 
+			/**
+			 * Called when we select one of the search results.
+			 *
+			 * @param latitude
+			 * @param longitude
+			 */
 			function setLoc(lat, lng) {
 				if (lat < 0.0) {
 					document.editplaces.NEW_PLACE_LATI.value = (lat.toFixed(5) * -1);
