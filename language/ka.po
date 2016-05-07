@@ -9219,11 +9219,11 @@ msgstr "წერილი"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "Сообщение послано в адрес пользователя %s"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "შეტყობინება არ გაიგზავნა"
 
 #. I18N: A configuration setting

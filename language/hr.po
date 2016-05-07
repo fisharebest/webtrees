@@ -9283,11 +9283,11 @@ msgstr "Poruka"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "Poruka uspješno poslana za %s"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "Poruka nije poslana"
 
 #. I18N: A configuration setting

@@ -9224,11 +9224,11 @@ msgstr "消息"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "信息成功发送到 %s"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "消息没有发送"
 
 #. I18N: A configuration setting

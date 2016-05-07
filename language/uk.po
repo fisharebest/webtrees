@@ -9279,11 +9279,11 @@ msgstr "Повідомлення"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "Повідомлення надіслане на адресу користувача %s"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "Повідомлення не було послано"
 
 #. I18N: A configuration setting

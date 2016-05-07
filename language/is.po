@@ -9249,11 +9249,11 @@ msgstr "Skilaboð"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "Það tókst að senda skilaboðin á %s"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "Skilaboð var ekki sent"
 
 #. I18N: A configuration setting

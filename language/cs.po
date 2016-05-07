@@ -9305,11 +9305,11 @@ msgstr "Zpráva"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "Zpráva pro %s byla úspěšně odeslána"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "Zpráva nebyla odeslána"
 
 #. I18N: A configuration setting

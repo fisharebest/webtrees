@@ -9268,12 +9268,12 @@ msgstr "Message"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
-msgstr "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
+msgstr "The message was successfully sent to %s"
 
 #: message.php:193
-msgid "Message was not sent"
-msgstr "Message was not sent"
+msgid "The message was not sent"
+msgstr "The message was not sent"
 
 #. I18N: A configuration setting
 #. I18N: Name of a module

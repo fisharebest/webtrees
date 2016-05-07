@@ -9251,11 +9251,11 @@ msgstr "Message"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "Message envoyé avec succès à %s"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "Le message n’a pas été envoyé"
 
 #. I18N: A configuration setting

@@ -9374,11 +9374,11 @@ msgstr "رسالة"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "ارسلت الرسالة بنجاح إلى %s"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "لم يتم إرسال الرسالة"
 
 #. I18N: A configuration setting

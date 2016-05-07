@@ -9249,11 +9249,11 @@ msgstr "संदेश"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "संदेश यशस्वीरित्या %s ला पाठविला"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "संदेश पाठवला गेला नाही"
 
 #. I18N: A configuration setting

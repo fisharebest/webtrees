@@ -9253,11 +9253,11 @@ msgstr "Bericht"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "Bericht met succes verstuurd naar %s"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "Bericht werd niet verstuurd"
 
 #. I18N: A configuration setting

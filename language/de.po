@@ -9268,11 +9268,11 @@ msgstr "Nachricht"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "Nachricht an %s gesendet"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "Nachricht wurde nicht gesendet"
 
 #. I18N: A configuration setting

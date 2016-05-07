@@ -9284,11 +9284,11 @@ msgstr "Správa"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "Správa bola úspešne odoslaná na %s"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "Správa nebola odoslaná"
 
 #. I18N: A configuration setting

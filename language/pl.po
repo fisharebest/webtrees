@@ -9284,11 +9284,11 @@ msgstr "Komunikat"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "Wiadomość do %s została wysłana"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "Wiadomość nie została wysłana"
 
 #. I18N: A configuration setting

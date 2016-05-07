@@ -9253,11 +9253,11 @@ msgstr "הודעה"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "ההודעה נשלחה בהצלחה ל-%s"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "ההודעה לא נשלחה"
 
 #. I18N: A configuration setting

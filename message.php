@@ -188,9 +188,9 @@ case 'send':
 			$message['no_from'] = true;
 		}
 		if (addMessage($message)) {
-			FlashMessages::addMessage(I18N::translate('Message successfully sent to %s', Filter::escapeHtml($to)));
+			FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s', Filter::escapeHtml($to)));
 		} else {
-			FlashMessages::addMessage(I18N::translate('Message was not sent'));
+			FlashMessages::addMessage(I18N::translate('The message was not sent'));
 			Log::addErrorLog('Unable to send a message. FROM:' . $from . ' TO:' . $to . ' (failed to send)');
 		}
 		$i++;

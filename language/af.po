@@ -9249,11 +9249,11 @@ msgstr "Boodskap"
 
 #: message.php:191
 #, php-format
-msgid "Message successfully sent to %s"
+msgid "The message was successfully sent to %s"
 msgstr "Boodskap is suksesvol na %s gestuur"
 
 #: message.php:193
-msgid "Message was not sent"
+msgid "The message was not sent"
 msgstr "Boodskap is nie gestuur nie"
 
 #. I18N: A configuration setting
