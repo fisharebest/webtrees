@@ -43,11 +43,11 @@ $controller
 </p>
 <p>
 	<a href="#" onclick="return message('never_logged', 'messaging2', '');">
-		<?php echo I18N::translate('Send a message to users who have never logged in'); ?>
+		<?php echo I18N::translate('Send a message to users who have never signed in'); ?>
 	</a>
 </p>
 <p>
 	<a href="#" onclick="return message('last_6mo', 'messaging2', '');">
-		<?php echo I18N::translate('Send a message to users who have not logged in for 6 months'); ?>
+		<?php echo I18N::translate('Send a message to users who have not signed in for 6 months'); ?>
 	</a>
 </p>

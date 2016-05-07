@@ -174,13 +174,13 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 			$content .= '<br>';
 			$content .= '<a href="' . $random_media->getHtmlUrl() . '"><b>' . $random_media->getFullName() . '</b></a><br>';
 			foreach ($random_media->linkedIndividuals('OBJE') as $individual) {
-				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View individual') . ' — ' . $individual->getFullName() . '</a><br>';
+				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View the individual') . ' — ' . $individual->getFullName() . '</a><br>';
 			}
 			foreach ($random_media->linkedFamilies('OBJE') as $family) {
-				$content .= '<a href="' . $family->getHtmlUrl() . '">' . I18N::translate('View family') . ' — ' . $family->getFullName() . '</a><br>';
+				$content .= '<a href="' . $family->getHtmlUrl() . '">' . I18N::translate('View the family') . ' — ' . $family->getFullName() . '</a><br>';
 			}
 			foreach ($random_media->linkedSources('OBJE') as $source) {
-				$content .= '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View source') . ' — ' . $source->getFullName() . '</a><br>';
+				$content .= '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View the source') . ' — ' . $source->getFullName() . '</a><br>';
 			}
 			$content .= '<br><div class="indent">';
 			$content .= FunctionsPrint::printFactNotes($random_media->getGedcom(), "1", false);

@@ -429,7 +429,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'</td></tr><tr><td>',
 		I18N::translate('Username'), '</td><td>',
 		'<input type="text" name="wtuser" value="', Filter::escapeHtml($_POST['wtuser']), '"></td><td>',
-		I18N::translate('You will use this to login to webtrees.'),
+		I18N::translate('You will use this to sign in to webtrees.'),
 		'</td></tr><tr><td>',
 		I18N::translate('Password'), '</td><td>',
 		'<input type="password" name="wtpass" value="', Filter::escapeHtml($_POST['wtpass']), '"></td><td>',

@@ -4535,7 +4535,7 @@ class Stats {
 					$return = '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
 					$return .= I18N::translate('and') . ' ';
 					$return .= '<a href="' . $child1->getHtmlUrl() . '">' . $child1->getFullName() . '</a>';
-					$return .= ' <a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View family') . ']</a>';
+					$return .= ' <a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View the family') . ']</a>';
 				} else {
 					$return = I18N::translate('This information is private and cannot be shown.');
 				}
@@ -4562,7 +4562,7 @@ class Stats {
 						$return .= I18N::translate('and') . " ";
 						$return .= "<a href=\"" . $child1->getHtmlUrl() . "\">" . $child1->getFullName() . "</a>";
 						$return .= " (" . $age . ")";
-						$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View family') . "]</a>";
+						$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View the family') . "]</a>";
 						$return .= '</li>';
 						$top10[] = $return;
 						$dist[]  = $fam['family'];
@@ -4573,7 +4573,7 @@ class Stats {
 					$return .= I18N::translate('and') . " ";
 					$return .= "<a href=\"" . $child1->getHtmlUrl() . "\">" . $child1->getFullName() . "</a>";
 					$return .= " (" . $age . ")";
-					$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View family') . "]</a>";
+					$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View the family') . "]</a>";
 					$return .= '</li>';
 					$top10[] = $return;
 				}
@@ -4582,7 +4582,7 @@ class Stats {
 					$return = $child2->formatList('span', false, $child2->getFullName());
 					$return .= "<br>" . I18N::translate('and') . "<br>";
 					$return .= $child1->formatList('span', false, $child1->getFullName());
-					$return .= "<br><a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View family') . "]</a>";
+					$return .= "<br><a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View the family') . "]</a>";
 
 					return $return;
 				} else {
@@ -5944,10 +5944,10 @@ class Stats {
 		}
 		$LoginUsers = count($loggedusers);
 		if ($LoginUsers == 0 && $NumAnonymous == 0) {
-			return I18N::translate('No logged-in and no anonymous users');
+			return I18N::translate('No signed-in and no anonymous users');
 		}
 		if ($NumAnonymous > 0) {
-			$content .= '<b>' . I18N::plural('%s anonymous logged-in user', '%s anonymous logged-in users', $NumAnonymous, I18N::number($NumAnonymous)) . '</b>';
+			$content .= '<b>' . I18N::plural('%s anonymous signed-in user', '%s anonymous signed-in users', $NumAnonymous, I18N::number($NumAnonymous)) . '</b>';
 		}
 		if ($LoginUsers > 0) {
 			if ($NumAnonymous) {
@@ -5957,7 +5957,7 @@ class Stats {
 					$content .= " " . I18N::translate('and') . " ";
 				}
 			}
-			$content .= '<b>' . I18N::plural('%s logged-in user', '%s logged-in users', $LoginUsers, I18N::number($LoginUsers)) . '</b>';
+			$content .= '<b>' . I18N::plural('%s signed-in user', '%s signed-in users', $LoginUsers, I18N::number($LoginUsers)) . '</b>';
 			if ($type == 'list') {
 				$content .= '<ul>';
 			} else {
@@ -6940,7 +6940,7 @@ class Stats {
 			'SWE' => /* I18N: Name of a country or state */ I18N::translate('Sweden'),
 			'SWZ' => /* I18N: Name of a country or state */ I18N::translate('Swaziland'),
 			'SYC' => /* I18N: Name of a country or state */ I18N::translate('Seychelles'),
-			'SYR' => /* I18N: Name of a country or state */ I18N::translate('Syrian Arab Republic'),
+			'SYR' => /* I18N: Name of a country or state */ I18N::translate('Syria'),
 			'TCA' => /* I18N: Name of a country or state */ I18N::translate('Turks and Caicos Islands'),
 			'TCD' => /* I18N: Name of a country or state */ I18N::translate('Chad'),
 			'TGO' => /* I18N: Name of a country or state */ I18N::translate('Togo'),

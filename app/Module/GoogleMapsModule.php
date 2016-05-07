@@ -190,7 +190,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 		} else {
 			$html = '<table class="facts_table">';
-			$html .= '<tr><td colspan="2" class="facts_value">' . I18N::translate('No map data for this individual');
+			$html .= '<tr><td colspan="2" class="facts_value">' . I18N::translate('No map data exists for this individual');
 			$html .= '</td></tr>';
 			if (Auth::isAdmin()) {
 				$html .= '<tr><td class="center" colspan="2">';
@@ -1347,7 +1347,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				$birth     = $person->getFirstFact('BIRT');
 				$dataleft  = Filter::escapeJs($image . $event . ' — ' . $name);
-				$datamid   = Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">(' . I18N::translate('View individual') . ')</a></span>');
+				$datamid   = Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">(' . I18N::translate('View the individual') . ')</a></span>');
 				$dataright = $birth ? Filter::escapeJs($birth->summary()) : '';
 
 				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());

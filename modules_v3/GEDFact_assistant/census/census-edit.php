@@ -120,7 +120,7 @@ $controller
 	</div>
 
 	<h3>
-		<?php echo I18N::translate('Edit details'); ?>
+		<?php echo I18N::translate('Edit the details'); ?>
 	</h3>
 
 	<div class="census-assistant-input optionbox">

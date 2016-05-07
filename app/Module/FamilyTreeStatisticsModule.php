@@ -194,7 +194,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		}
 		$content .= '</div>';
 		if ($stat_link && Module::isActiveChart($WT_TREE, 'statistics_chart')) {
-			$content .= '<div class="clearfloat"><a href="statistics.php?ged=' . $WT_TREE->getNameUrl() . '" rel="nofollow"><b>' . I18N::translate('View statistics as graphs') . '</b></a></div>';
+			$content .= '<div class="clearfloat"><a href="statistics.php?ged=' . $WT_TREE->getNameUrl() . '" rel="nofollow"><b>' . I18N::translate('View the statistics as graphs') . '</b></a></div>';
 		}
 
 		if ($show_common_surnames) {

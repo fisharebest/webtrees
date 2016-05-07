@@ -642,7 +642,7 @@ if (!$ajax) {
 			<table width="100%">
 			<tr style="text-align:center;"><td>
 				<br>
-				<input type="submit" value="', I18N::translate('show the plot'), ' ">
+				<input type="submit" value="', I18N::translate('show the chart'), ' ">
 			</td>
 			</tr>
 		</table>

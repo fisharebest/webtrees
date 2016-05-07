@@ -446,7 +446,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function printEditNoteLink($note_id) {
-		return '<a href="#" onclick="edit_note(\'' . $note_id . '\'); return false;" class="icon-button_note" title="' . I18N::translate('Edit shared note') . '"></a>';
+		return '<a href="#" onclick="edit_note(\'' . $note_id . '\'); return false;" class="icon-button_note" title="' . I18N::translate('Edit the shared note') . '"></a>';
 	}
 
 	/**
@@ -702,7 +702,7 @@ class FunctionsEdit {
 			// Populated in javascript from sub-tags
 			echo '<input type="hidden" id="', $element_id, '" name="', $element_name, '" onchange="updateTextName(\'', $element_id, '\');" value="', Filter::escapeHtml($value), '" class="', $fact, '">';
 			echo '<span id="', $element_id, '_display" dir="auto">', Filter::escapeHtml($value), '</span>';
-			echo ' <a href="#edit_name" onclick="convertHidden(\'', $element_id, '\'); return false;" class="icon-edit_indi" title="' . I18N::translate('Edit name') . '"></a>';
+			echo ' <a href="#edit_name" onclick="convertHidden(\'', $element_id, '\'); return false;" class="icon-edit_indi" title="' . I18N::translate('Edit the name') . '"></a>';
 		} else {
 			// textarea
 			if ($fact === 'TEXT' || $fact === 'ADDR' || ($fact === 'NOTE' && !$islink)) {

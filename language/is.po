@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-05-01 09:56+0100\n"
+"POT-Creation-Date: 2016-05-07 22:09+0100\n"
 "PO-Revision-Date: 2016-01-18 20:44+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Icelandic <http://translate.webtrees.net/projects/webtrees/webtrees/is/>\n"
@@ -117,7 +117,7 @@ msgid_plural "%1$s files were extracted in %2$s seconds."
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/Module/GoogleMapsModule.php:922
+#: app/Module/GoogleMapsModule.php:893
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
@@ -125,7 +125,7 @@ msgstr[0] "%1$s einstaklingur birtur af venjulegum fjölda af %2$s, frá %3$s ky
 msgstr[1] "%1$s einstaklingar birtir af venjulegum fjölda af %2$s, frá %3$s kynslóðum."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
-#: app/Module/GoogleMapsModule.php:939
+#: app/Module/GoogleMapsModule.php:910
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
@@ -138,6 +138,12 @@ msgstr[1] "%1$s einstaklinga vantar staðsetningarhnit fæðingarstaðarkorts: %
 msgid "%1$s is a %2$s but a %3$s is expected."
 msgstr "%1$s er %2$s en %3$s er vænst."
 
+#. I18N: A Spanish relationship name, such as 7th great-nephew
+#: app/Functions/Functions.php:627
+#, php-format
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
+
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:612
 #, php-format
@@ -149,12 +155,6 @@ msgstr "%1$s × %2$s"
 #: app/Functions/Functions.php:597
 #, php-format
 msgctxt "MALE"
-msgid "%1$s × %2$s"
-msgstr "%1$s × %2$s"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Functions/Functions.php:627
-#, php-format
 msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
@@ -230,8 +230,8 @@ msgstr ""
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5950
 #, php-format
-msgid "%s anonymous logged-in user"
-msgid_plural "%s anonymous logged-in users"
+msgid "%s anonymous signed-in user"
+msgid_plural "%s anonymous signed-in users"
 msgstr[0] "%s óþekkt innskráður notandi"
 msgstr[1] "%s óþekkt innskráðir notendur"
 
@@ -299,7 +299,7 @@ msgid_plural "%s individuals have been updated."
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/Module/GoogleMapsModule.php:932
+#: app/Module/GoogleMapsModule.php:903
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
@@ -332,13 +332,6 @@ msgstr[1] ""
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
 msgstr ""
-
-#: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5960
-#, php-format
-msgid "%s logged-in user"
-msgid_plural "%s logged-in users"
-msgstr[0] "%s innskráður notandi"
-msgstr[1] "%s innskráður notendur"
 
 #: app/Module/UserMessagesModule.php:91
 #, php-format
@@ -396,6 +389,13 @@ msgid_plural "%s seconds ago"
 msgstr[0] "%s sekúnda síðan"
 msgstr[1] "%s sekúndur síðan"
 
+#: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5960
+#, php-format
+msgid "%s signed-in user"
+msgid_plural "%s signed-in users"
+msgstr[0] "%s innskráður notandi"
+msgstr[1] "%s innskráður notendur"
+
 #: app/Controller/SearchController.php:411
 #, php-format
 msgid "%s source has been updated."
@@ -450,11 +450,16 @@ msgid_plural "%s years ago"
 msgstr[0] "%s ár síðan"
 msgstr[1] "%s ár síðan"
 
-#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
+#: app/Functions/FunctionsPrintLists.php:1941 app/Module/YahrzeitModule.php:129
 #: calendar.php:609
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s ára afmæli"
+
+#: app/Functions/Functions.php:567
+#, php-format
+msgid "%s × cousin"
+msgstr "%s × frændsystkini"
 
 #: app/Functions/Functions.php:532
 #, php-format
@@ -468,11 +473,6 @@ msgstr "%s × frænka"
 msgctxt "MALE"
 msgid "%s × cousin"
 msgstr "%s × frændi"
-
-#: app/Functions/Functions.php:567
-#, php-format
-msgid "%s × cousin"
-msgstr "%s × frændsystkini"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:85
@@ -702,15 +702,15 @@ msgid "<b>Please note:</b> Private information of living individuals will only b
 msgstr "<b>Vinsamlega athugið:</b> Friðhelgis upplýsingar um fólk á lífi verða eingöngu aðgengilegar fyrir fjölskyldu og nána vini. Þú verður beðin/-n um að staðfesta skyldleika þinn áður en þú færð einhverjar friðhelgisgögn. Stundum kunna upplýsingar um látnar persónur að vera friðhelgar. Ef svo er, þá er það vegna þess að ekki eru nægar upplýsingar þekktar um persónuna til að ákvarða hvort þær eru á lífi eða ekki og við erum líklega ekki með frekari upplýsingar um þessa persónu.<br><br>Áður en þú spyrð spurninga, vinsamlega staðfestu að þú sért með fyrirspurn um rétta persónu með því að athuga dagsetningu, staðsetningu og náin skyldmenni. Ef þú ert að senda breytingar við ættfræðigögn, vinsamlega láttu þá heimildina fylgja með um hvaðan gögnin eru fengin."
 
 #: login.php:170
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
 msgstr "<center><b>Velkomin/-n á þessa ættfræði vefsíðu</b></center><br>Aðgangur að þessari vefsíðu er leyfileg fyrir <u>heimilaða</u> notendur eingöngu.<br><br>Ef þú ert með notandareikning þá getur þú skráð þig inn á þessari síðu. Ef þú ert ekki með notandareikning, þá getur þú sótt um slíkan með því að smella á viðeigandi krækju hér að neðan.<br><br>Eftir að hafa staðfest þínar upplýsingar, þá mun kerfisstjórinn annað hvort samþykkja eða hafna umsókn þinni um reikning. Þú færð tölvupóst skilaboð þegar umsókn þín hefur verið samþykkt."
 
 #: login.php:173
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
 msgstr "<center><b>Velkomin/-n á þessa ættfræði vefsíðu</b></center><br>Aðgangur að þessari vefsíðu er leyfileg fyrir <u>fjölskyldumeðlimi eingöngu</u>.<br><br>Ef þú ert með notandareikning þá getur þú skráð þig inn á þessari síðu. Ef þú ert ekki með notandareikning, þá getur þú sótt um slíkan með því að smella á viðeigandi krækju hér að neðan.<br><br>Eftir að hafa staðfest upplýsingar sem þú hefur látið í té, þá mun kerfisstjórinn annað hvort samþykkja eða hafna beiðni þinni um reikning. Þú færð tölvupóst skilaboð þegar umsókn þín hefur verið samþykkt."
 
 #: login.php:167
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
 msgstr "<center><b>Velkomin/-n á þessa ættfræði vefsíðu</b></center><br>Aðgangur að þessari vefsíðu er leyfilegur fyrir alla gesti sem eru með notandareikning.<br><br>Ef þú ert með notandareikning, þá getur þú skráð þig inn á þessa síðu. Ef þú ert ekki með notandareikning, þá getur þú sótt um með því að smella á viðeigandi krækju hér að neðan.<br><br>Eftir að umsókn þín hefur verið staðfest, þá mun kerfisstjóri vefsíðunnar virkja reikninginn þinn. Þú færð tölvupóst þegar umsókn þín hefur verið samþykkt."
 
 #. I18N: default option in list of themes
@@ -724,7 +724,7 @@ msgstr "<div class=\"largeError\">Tilkynning:</div><div class=\"error\">Með þv
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:409 app/Functions/FunctionsPrintFacts.php:545
-#: app/GedcomTag.php:1813
+#: app/GedcomTag.php:1811
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr ""
@@ -864,7 +864,7 @@ msgstr "Miðilshlutur er færsla í fjölskyldutrénu sem inniheldur upplýsinga
 
 #: login.php:261
 #, php-format
-msgid "A new password has been created and emailed to %s. You can change this password after you login."
+msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
 msgstr "Nýtt lykilorð hefur verið útbúið og sent í tölvupósti til %s. Þú getur breytt þessu lykilorði þegar þú hefur skráð þig inn."
 
 #: login.php:254
@@ -1048,7 +1048,7 @@ msgid "A timeline displaying individual events."
 msgstr ""
 
 #: admin_users.php:398
-msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
+msgid "A user will not be able to sign in until both the “email verified” and “approved by administrator” options are selected."
 msgstr "Notandi mun ekki geta skráð sig inn fyrr en bæði „tölvupóstur staðfestur“ og „samþykkt af kerfisstjóra“ valkostirnir hafa verið valdir."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
@@ -1150,7 +1150,7 @@ msgstr "Skammstafa staðarheiti"
 msgid "Abbreviation"
 msgstr "Skammstöfun"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6718
 msgid "Acadia"
 msgstr "Acadia"
@@ -1247,12 +1247,12 @@ msgctxt "NOMINATIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: button label. Add an item.
+#. I18N: A button label. Add an item.
 #: admin_trees_config.php:541 app/Functions/FunctionsPrint.php:574
 #: app/Functions/FunctionsPrint.php:633 app/Module/ClippingsCartModule.php:334
 #: app/Module/ClippingsCartModule.php:460
 #: app/Module/FamilyTreeFavoritesModule.php:228
-#: app/Module/GoogleMapsModule.php:4636 edit_interface.php:2041
+#: app/Module/GoogleMapsModule.php:4559 edit_interface.php:2041
 #: index_edit.php:329 index_edit.php:346
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:170
 #: timeline.php:304
@@ -1292,7 +1292,7 @@ msgstr "Bæta við nýjan föður"
 msgid "Add a favorite"
 msgstr "Bæta við nýju eftirlæti"
 
-#: app/Module/GoogleMapsModule.php:4628
+#: app/Module/GoogleMapsModule.php:4551
 msgid "Add a geographic location"
 msgstr "Bæta við nýrri landfræðilegri staðsetningu"
 
@@ -1664,10 +1664,6 @@ msgstr "Ættleiðing sonar"
 msgid "Adult christening"
 msgstr "Fullorðins skírnarathöfn"
 
-#: app/Module/GoogleMapsModule.php:398
-msgid "Advanced"
-msgstr "Ítarlegur"
-
 #: admin_trees_config.php:2130
 msgid "Advanced fact settings"
 msgstr "Ítarlegar staðreynda stillingar"
@@ -1685,7 +1681,7 @@ msgstr "Ítarlegar staðarheita staðreyndir"
 msgid "Advanced search"
 msgstr "Ítarleg leit"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6719
 msgid "Afghanistan"
 msgstr "Afghanistan"
@@ -1699,7 +1695,7 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr ""
 
 #: login.php:257
-msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
+msgid "After you have signed in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
 msgstr "Eftir að þú hefur skráð þig inn, veldu þá krækjuna «Minn reikningur» undir valmyndinni «Mín síða» og fyllið út lykilorðsreitina til að breyta lykilorðinu þínu."
 
 #. I18N: gedcom tag AGE
@@ -1767,12 +1763,12 @@ msgstr "Aldur tengdur við andlátsár"
 msgid "Agency"
 msgstr "Umboðsskrifstofa"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6722
 msgid "Aland Islands"
 msgstr "Álandseyjar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6723
 msgid "Albania"
 msgstr "Albanía"
@@ -1787,7 +1783,7 @@ msgstr "Albúm"
 msgid "Albuquerque, New Mexico, United States"
 msgstr "Albuquerque, Nýja Mexikó"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6786
 msgid "Algeria"
 msgstr "Alsír"
@@ -1804,8 +1800,8 @@ msgstr "Á lífi"
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: app/I18N.php:178 app/Module/FrequentlyAskedQuestionsModule.php:221
 #: app/Module/FrequentlyAskedQuestionsModule.php:477
-#: app/Module/GoogleMapsModule.php:1578 app/Module/GoogleMapsModule.php:1591
-#: app/Module/GoogleMapsModule.php:4691 app/Module/SlideShowModule.php:264
+#: app/Module/GoogleMapsModule.php:1549 app/Module/GoogleMapsModule.php:1562
+#: app/Module/GoogleMapsModule.php:4614 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5623 calendar.php:265
 #: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
 #: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
@@ -1903,13 +1899,13 @@ msgctxt "MALE"
 msgid "Also known as"
 msgstr "Einnig þekktur sem"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6729
 msgid "American Samoa"
 msgstr "Bandaríska Samóa"
 
 #: admin_site_config.php:492
-msgid "An administrator must approve the new user account and select an access level before the user can log in."
+msgid "An administrator must approve the new user account and select an access level before the user can sign in."
 msgstr ""
 
 #. I18N: Description of the “Album” module
@@ -1927,15 +1923,15 @@ msgstr "Önnur leið til að birta gröf."
 msgid "An alternative way to enter census transcripts and link them to individuals."
 msgstr "Önnur leið við innskráningu manntalsafrits og tengingu þess við einstaklinga."
 
-#. I18N: Description of the “Login” module
-#: app/Module/LoginBlockModule.php:34
-msgid "An alternative way to login and logout."
-msgstr "Önnur leið fyrir innskráningu og útskráningu."
-
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
 msgid "An alternative way to select a new theme."
 msgstr "Önnu leið til að velja nýja þemu."
+
+#. I18N: Description of the “Sign in” module
+#: app/Module/LoginBlockModule.php:34
+msgid "An alternative way to sign in and sign out."
+msgstr "Önnur leið fyrir innskráningu og útskráningu."
 
 #: app/Functions/FunctionsEdit.php:916
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -1965,7 +1961,7 @@ msgstr ""
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr "Gagnvirkt tré, sem sýnir alla forfeður og afkomendur persónu."
 
-#: setup.php:495
+#: setup.php:505
 msgid "An unexpected database error occurred."
 msgstr "Óvænt gagnagrunnsvilla kom upp."
 
@@ -2004,17 +2000,17 @@ msgstr "Forfeðra skráarnúmer"
 msgid "Anchorage, Alaska, United States"
 msgstr "Anchorage, Alaska, United States"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6724
 msgid "Andorra"
 msgstr "Andorra"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6720
 msgid "Angola"
 msgstr "Angola"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6721
 msgid "Anguilla"
 msgstr "Anguilla"
@@ -2039,12 +2035,12 @@ msgstr "Ógilding"
 msgid "Answer"
 msgstr "Svar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6730
 msgid "Antarctica"
 msgstr "Suðurskautslandið"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6732
 msgid "Antigua and Barbuda"
 msgstr "Antígva og Barbúda"
@@ -2165,7 +2161,7 @@ msgstr "Ertu viss um að þú viljir fjarlægja þetta atriði úr eftirlætisli
 msgid "Are you sure you want to undo all the changes to this family tree?"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6727
 msgid "Argentina"
 msgstr "Argentína"
@@ -2188,12 +2184,12 @@ msgctxt "font name"
 msgid "Arial"
 msgstr "Arial"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6728
 msgid "Armenia"
 msgstr "Armenía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6717
 msgid "Aruba"
 msgstr "Aruba"
@@ -2230,7 +2226,7 @@ msgstr "Samstarfsmenn"
 msgid "Asuncion, Paraguay"
 msgstr "Asuncion, Paragvæ"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6920
 msgid "At sea"
 msgstr "Til sjós"
@@ -2269,7 +2265,7 @@ msgid "Attending"
 msgstr "Mætir"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1908
+#: app/GedcomTag.php:1906
 msgid "Audio"
 msgstr "Hljóð"
 
@@ -2298,12 +2294,12 @@ msgctxt "NOMINATIVE"
 msgid "August"
 msgstr "Ágúst"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6733
 msgid "Australia"
 msgstr "Ástralía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6734
 msgid "Austria"
 msgstr "Austurríki"
@@ -2370,12 +2366,12 @@ msgstr "Av"
 msgid "Available blocks"
 msgstr "Tiltækir Kassar"
 
-#: app/Functions/FunctionsPrintLists.php:2017 app/Stats.php:3945
+#: app/Functions/FunctionsPrintLists.php:2016 app/Stats.php:3945
 msgid "Average age"
 msgstr "Meðalaldur"
 
 #: app/Module/FamilyTreeStatisticsModule.php:173
-#: app/Module/FamilyTreeStatisticsModule.php:391
+#: app/Module/FamilyTreeStatisticsModule.php:387
 #: app/Module/HtmlBlockModule.php:241 app/Stats.php:2602 statistics.php:149
 msgid "Average age at death"
 msgstr "Meðalaldur við andlát"
@@ -2390,7 +2386,7 @@ msgid "Average age related to death century"
 msgstr "Meðalaldur tengdur við andlátsöld"
 
 #: app/Module/FamilyTreeStatisticsModule.php:189
-#: app/Module/FamilyTreeStatisticsModule.php:419
+#: app/Module/FamilyTreeStatisticsModule.php:415
 #: app/Module/HtmlBlockModule.php:251 app/Stats.php:4951 statistics.php:306
 msgid "Average number of children per family"
 msgstr "Meðalfjöldi barna á fjölskyldu"
@@ -2429,12 +2425,12 @@ msgctxt "NOMINATIVE"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6735
 msgid "Azerbaijan"
 msgstr "Aserbaídsjan"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6736
 msgid "Azores"
 msgstr "Asoreyjar"
@@ -2444,7 +2440,7 @@ msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
 msgstr "Bah"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6744
 msgid "Bahamas"
 msgstr "Bahamaeyjar"
@@ -2473,12 +2469,12 @@ msgctxt "NOMINATIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6743
 msgid "Bahrain"
 msgstr "Barein"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6741
 msgid "Bangladesh"
 msgstr "Bangladess"
@@ -2561,14 +2557,10 @@ msgstr "Skírn sonar"
 msgid "Bar mitzvah"
 msgstr "Bar mitzvah"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6751
 msgid "Barbados"
 msgstr "Barbados"
-
-#: app/Module/GoogleMapsModule.php:321
-msgid "Basic"
-msgstr "Grunnur"
 
 #. I18N: gedcom tag BASM
 #: app/GedcomTag.php:198 modules_v3/missing_facts_report/report.xml:18
@@ -2577,7 +2569,7 @@ msgstr "Bar mitzvah"
 
 #. I18N: Name of a module
 #: app/Module/BatchUpdateModule.php:77 app/Module/BatchUpdateModule.php:184
-#: app/Module/BatchUpdateModule.php:210 app/Module/GoogleMapsModule.php:2703
+#: app/Module/BatchUpdateModule.php:210 app/Module/GoogleMapsModule.php:2674
 msgid "Batch update"
 msgstr "Bunka uppfærsla"
 
@@ -2587,7 +2579,7 @@ msgid "Baton Rouge, Louisiana, United States"
 msgstr "Baton Rouge, Louisiana, United States"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
-#: app/Module/GoogleMapsModule.php:2752
+#: app/Module/GoogleMapsModule.php:2723
 msgid "Bearing"
 msgstr "Stefna"
 
@@ -2596,7 +2588,7 @@ msgstr "Stefna"
 msgid "Begins with"
 msgstr "Byrjar á"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6746
 msgid "Belarus"
 msgstr "Hvíta-rússland"
@@ -2606,22 +2598,22 @@ msgstr "Hvíta-rússland"
 msgid "Belgian Chocolate"
 msgstr "Belgian Chocolate"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6738
 msgid "Belgium"
 msgstr "Belgía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6747
 msgid "Belize"
 msgstr "Belís"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6739
 msgid "Benin"
 msgstr "Benín"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6748
 msgid "Bermuda"
 msgstr "Bermúda"
@@ -2635,7 +2627,7 @@ msgstr "Bern, Swiss"
 msgid "Best man"
 msgstr "Svaramaður"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6753
 msgid "Bhutan"
 msgstr "Bútan"
@@ -2944,13 +2936,13 @@ msgstr "Bogota, Kólombía"
 msgid "Boise, Idaho, United States"
 msgstr "Boise, Idaho, United States"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6749
 msgid "Bolivia"
 msgstr "Bólivía"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1910
+#: app/GedcomTag.php:1908
 msgid "Book"
 msgstr "Bók"
 
@@ -2963,7 +2955,7 @@ msgstr "Bæklingur"
 msgid "Born in the covenant"
 msgstr "Fædd/-ur í sáttmála"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6745
 msgid "Bosnia and Herzegovina"
 msgstr "Bosnía og Herzegóvína"
@@ -2981,7 +2973,7 @@ msgstr "Bæði á lífi"
 msgid "Both dead"
 msgstr "Bæði látin"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6755
 msgid "Botswana"
 msgstr "Botsvana"
@@ -2991,7 +2983,7 @@ msgstr "Botsvana"
 msgid "Bountiful, Utah, United States"
 msgstr "Bountiful, Utah, United States"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6754
 msgid "Bouvet Island"
 msgstr "Bouvet eyja"
@@ -3007,7 +2999,7 @@ msgstr "Greinar"
 msgid "Branches of the %s family"
 msgstr "Greinar af %s fjölskyldunni"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6750
 msgid "Brazil"
 msgstr "Brasilía"
@@ -3026,43 +3018,43 @@ msgstr "Brisbane, Ástralía"
 msgid "Brit milah"
 msgstr "Umskurður"
 
-#: app/GedcomTag.php:1780
+#: app/GedcomTag.php:1778
 msgid "Brit milah of a brother"
 msgstr "Umskurður bróðurs"
 
-#: app/GedcomTag.php:1772
+#: app/GedcomTag.php:1770
 msgid "Brit milah of a grandson"
 msgstr "Umskurður sonarsonar/dóttursonar"
 
-#: app/GedcomTag.php:1774
+#: app/GedcomTag.php:1772
 msgctxt "daughter’s son"
 msgid "Brit milah of a grandson"
 msgstr "Umskurður dóttursonar"
 
-#: app/GedcomTag.php:1776
+#: app/GedcomTag.php:1774
 msgctxt "son’s son"
 msgid "Brit milah of a grandson"
 msgstr "Umskurður sonarsonar"
 
-#: app/GedcomTag.php:1778
+#: app/GedcomTag.php:1776
 msgid "Brit milah of a half-brother"
 msgstr "Umskurður hálfbróðurs"
 
-#: app/GedcomTag.php:1770
+#: app/GedcomTag.php:1768
 msgid "Brit milah of a son"
 msgstr "Umskurður sonar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6830
 msgid "British Indian Ocean Territory"
 msgstr "Bresku Indlandshafseyjar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6969
 msgid "British Virgin Islands"
 msgstr "Bresku Jómfrúreyjar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6756
 msgid "British West Indies"
 msgstr "Breska vesturindía"
@@ -3096,7 +3088,7 @@ msgctxt "NOMINATIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6752
 msgid "Brunei Darussalam"
 msgstr "Brúnei Darussalam"
@@ -3106,7 +3098,7 @@ msgstr "Brúnei Darussalam"
 msgid "Buenos Aires, Argentina"
 msgstr "Buenos Aires, Argentína"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6742
 msgid "Bulgaria"
 msgstr "Búlgaría"
@@ -3251,12 +3243,12 @@ msgstr "Jarðaför eiginkonu"
 msgid "Burial place contains"
 msgstr "Grafarstaður inniheldur"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6740
 msgid "Burkina Faso"
 msgstr "Búrkína Fasó"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6737
 msgid "Burundi"
 msgstr "Búrúndí"
@@ -3280,7 +3272,7 @@ msgstr "Kaupandi"
 msgid "By default, SMTP works on port 25."
 msgstr "Sjálfgefið er, að SMTP vinnur á tengi 25."
 
-#: app/Module/GoogleMapsModule.php:4567
+#: app/Module/GoogleMapsModule.php:4490
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
 msgstr "Sjálfgefið birtir listinn eingöngu þá staði sem hægt er að finna í fjölskyldutrénu þínu. Þú kannt að vera með upplýsingar um aðra staði, t.d. þá sem fluttir voru inn í magni frá ytri skrá. Með því að velja þennan valkost þá birtast allir staðir, einnig þeir sem ekki eru í notkun."
 
@@ -3322,12 +3314,12 @@ msgstr "Umbreyting dagatals"
 msgid "Call number"
 msgstr "Boðnúmer"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6843
 msgid "Cambodia"
 msgstr "Kambódía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6767
 msgid "Cameroon"
 msgstr "Kamerún"
@@ -3337,7 +3329,7 @@ msgstr "Kamerún"
 msgid "Campinas, Brazil"
 msgstr "Campinas, Brasilía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6758
 msgid "Canada"
 msgstr "Kanada"
@@ -3346,12 +3338,12 @@ msgstr "Kanada"
 msgid "Cancel"
 msgstr "Hætta við"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6759
 msgid "Cape Colony"
 msgstr "Cape Colony"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6773
 msgid "Cape Verde"
 msgstr "Grænhöfðaeyjar"
@@ -3362,7 +3354,7 @@ msgid "Caracas, Venezuela"
 msgstr "Caracas, Venesúela"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1912
+#: app/GedcomTag.php:1910
 msgid "Card"
 msgstr "Kort"
 
@@ -3380,7 +3372,7 @@ msgstr "Óháð há- og lágstöfum"
 msgid "Caste"
 msgstr "Erfðastétt"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6760
 msgid "Catalonia"
 msgstr "Katalónía"
@@ -3410,7 +3402,7 @@ msgstr ""
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6778
 msgid "Cayman Islands"
 msgstr "Cayman-eyjar"
@@ -3449,21 +3441,21 @@ msgstr "Manntalsstaður"
 msgid "Census transcript"
 msgstr "Manntalsafrit"
 
-#: app/Module/GoogleMapsModule.php:1462
+#: app/Module/GoogleMapsModule.php:1433
 msgid "Center map here"
 msgstr "Miðjustilla kort hér"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6757
 msgid "Central African Republic"
 msgstr "Miðafríkulýðveldið"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1914
+#: app/GedcomTag.php:1912
 msgid "Certificate"
 msgstr "Vottorð"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6945
 msgid "Chad"
 msgstr "Tsjad"
@@ -3477,10 +3469,10 @@ msgstr "Breyta"
 msgid "Change family members"
 msgstr "Breyta fjölskyldumeðlimum"
 
-#: app/Module/GoogleMapsModule.php:611 app/Module/GoogleMapsModule.php:614
-#: app/Module/GoogleMapsModule.php:617 app/Module/GoogleMapsModule.php:672
-#: app/Module/GoogleMapsModule.php:3843 app/Module/GoogleMapsModule.php:4010
-#: app/Module/GoogleMapsModule.php:4013
+#: app/Module/GoogleMapsModule.php:582 app/Module/GoogleMapsModule.php:585
+#: app/Module/GoogleMapsModule.php:588 app/Module/GoogleMapsModule.php:643
+#: app/Module/GoogleMapsModule.php:3807 app/Module/GoogleMapsModule.php:3932
+#: app/Module/GoogleMapsModule.php:3935
 msgid "Change flag"
 msgstr "Breyta fána"
 
@@ -3527,7 +3519,7 @@ msgstr[1] "Breytingar á síðustu %s dögum"
 msgid "Changes log"
 msgstr "Breytingaskrá"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6763
 msgid "Channel Islands"
 msgstr "Channel Islands"
@@ -3663,12 +3655,12 @@ msgstr ""
 msgid "Children take their mother’s surname."
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6764
 msgid "Chile"
 msgstr "Chíle"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6765
 msgid "China"
 msgstr "Kína"
@@ -3771,7 +3763,7 @@ msgstr "Skírn systur"
 msgid "Christening of a son"
 msgstr "Skírn sonar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6777
 msgid "Christmas Island"
 msgstr "Jólaeyja"
@@ -3794,8 +3786,7 @@ msgid "Citizenship"
 msgstr "Ríkisfang"
 
 #. I18N: gedcom tag CITY
-#: app/GedcomTag.php:294 app/Module/GoogleMapsModule.php:407
-#: app/Module/GoogleMapsModule.php:3959 app/Module/GoogleMapsModule.php:4066
+#: app/GedcomTag.php:294 app/Module/GoogleMapsModule.php:3991
 msgid "City"
 msgstr "Borg"
 
@@ -3873,7 +3864,7 @@ msgid "Clippings cart"
 msgstr "Úrklippukarfa"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1916
+#: app/GedcomTag.php:1914
 msgid "Coat of arms"
 msgstr "Skjaldarmerki"
 
@@ -3882,7 +3873,7 @@ msgstr "Skjaldarmerki"
 msgid "Cochabamba, Bolivia"
 msgstr "Cochabamba, Bólivía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6761
 msgid "Cocos (Keeling) Islands"
 msgstr "Kókoseyjar (Keeling-eyjar)"
@@ -3897,7 +3888,7 @@ msgstr "Coffee and Cream"
 msgid "Cold Day"
 msgstr "Cold Day"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6771
 msgid "Colombia"
 msgstr "Kólumbía"
@@ -3945,7 +3936,7 @@ msgstr "Fordæmisréttur hjúskapar"
 msgid "Communicate directly with other users, using private messages."
 msgstr "Hafið beint samband við aðra notendur með því að nota skilaboð."
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6772
 msgid "Comoros"
 msgstr "Kómoreyjar"
@@ -4003,12 +3994,12 @@ msgstr "Staðfesta lykilorð"
 msgid "Confirmation"
 msgstr "Staðfesting"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6769
 msgid "Congo (Brazzaville)"
 msgstr "Kongó (Brazzaville)"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6768
 msgid "Congo (Kinshasa)"
 msgstr "Kongó (Kinshasa)"
@@ -4034,10 +4025,6 @@ msgstr "Inniheldur"
 msgid "Content"
 msgstr "Innihald"
 
-#: app/Module/GoogleMapsModule.php:4324
-msgid "Continue adding"
-msgstr "Halda áfram að bæta við"
-
 #. I18N: gedcom tag CONT
 #: app/GedcomTag.php:306
 msgid "Continued"
@@ -4059,8 +4046,8 @@ msgstr "Áframhaldandi"
 #: app/Module/BatchUpdateModule.php:191
 #: app/Module/FrequentlyAskedQuestionsModule.php:161
 #: app/Module/FrequentlyAskedQuestionsModule.php:441
-#: app/Module/GoogleMapsModule.php:294 app/Module/GoogleMapsModule.php:1541
-#: app/Module/GoogleMapsModule.php:4096
+#: app/Module/GoogleMapsModule.php:288 app/Module/GoogleMapsModule.php:1512
+#: app/Module/GoogleMapsModule.php:4021
 #: app/Module/RelationshipsChartModule.php:147 app/Module/SiteMapModule.php:296
 #: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
 #: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
@@ -4072,7 +4059,7 @@ msgstr ""
 msgid "Convert from UTF-8 to ISO-8859-1"
 msgstr "Umbreyta frá UTF-8 í ISO-8859-1"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6770
 msgid "Cook Islands"
 msgstr "Cook-eyjar"
@@ -4124,12 +4111,12 @@ msgstr "Fyrirtæki"
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
 msgstr "Leiðrétta NAFN færslur á sniðinu 'John/DOE/' eða 'John /DOE' sem koma til vegna eldri ættfræði forrita."
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6774
 msgid "Costa Rica"
 msgstr "Kosta Ríka"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6766
 msgid "Cote d’Ivoire"
 msgstr "Fílabeinsströndin"
@@ -4142,15 +4129,14 @@ msgstr "Ekki var hægt að staðfesta upplýsingarnar sem þú slóst inn. Vinsa
 msgid "Count"
 msgstr "Talning"
 
-#: app/Module/GoogleMapsModule.php:686
+#: app/Module/GoogleMapsModule.php:657
 msgid "Countries"
 msgstr "Lönd"
 
 #. I18N: gedcom tag CTRY
-#: app/GedcomTag.php:338 app/Module/GoogleMapsModule.php:407
-#: app/Module/GoogleMapsModule.php:432 app/Module/GoogleMapsModule.php:448
-#: app/Module/GoogleMapsModule.php:1576 app/Module/GoogleMapsModule.php:1681
-#: app/Module/GoogleMapsModule.php:3955 app/Module/GoogleMapsModule.php:4058
+#: app/GedcomTag.php:338 app/Module/GoogleMapsModule.php:403
+#: app/Module/GoogleMapsModule.php:419 app/Module/GoogleMapsModule.php:1547
+#: app/Module/GoogleMapsModule.php:1652 app/Module/GoogleMapsModule.php:3983
 msgid "Country"
 msgstr "Land"
 
@@ -4161,7 +4147,7 @@ msgstr "Land"
 msgid "Counts "
 msgstr "Telja "
 
-#: app/Module/GoogleMapsModule.php:4063
+#: app/Module/GoogleMapsModule.php:3988
 msgid "County"
 msgstr "Sýsla"
 
@@ -4344,12 +4330,12 @@ msgstr "Líkbrennsla maka"
 msgid "Cremation of a wife"
 msgstr "Líkbrennsla eiginkonu"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6824
 msgid "Croatia"
 msgstr "Króatía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6776
 msgid "Cuba"
 msgstr "Kúba"
@@ -4391,17 +4377,17 @@ msgstr "Sérsniðin móttökutexti"
 msgid "Customize this page"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6779
 msgid "Cyprus"
 msgstr "Kýpur"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6780
 msgid "Czech Republic"
 msgstr "Lýðveldið Tékkland"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6775
 msgid "Czechoslovakia"
 msgstr "Tekkóslóvakía"
@@ -5002,7 +4988,7 @@ msgstr "Sjálfgefið fjölskyldutré"
 msgid "Default individual"
 msgstr "Sjálfgefin einstaklingur"
 
-#: app/Module/GoogleMapsModule.php:326
+#: app/Module/GoogleMapsModule.php:319
 msgid "Default map type"
 msgstr "Sjálfgefin gerð landakorts"
 
@@ -5063,13 +5049,13 @@ msgstr "DejaVu"
 #: app/Functions/FunctionsPrintLists.php:1388
 #: app/Module/FamilyTreeNewsModule.php:142
 #: app/Module/FrequentlyAskedQuestionsModule.php:498
-#: app/Module/GoogleMapsModule.php:4582 app/Module/StoriesModule.php:377
+#: app/Module/GoogleMapsModule.php:4505 app/Module/StoriesModule.php:377
 #: app/Module/StoriesModule.php:406 app/Module/UserJournalModule.php:107
 #: app/Module/UserMessagesModule.php:111 app/Module/UserMessagesModule.php:139
 msgid "Delete"
 msgstr "Eyða"
 
-#: app/Module/GoogleMapsModule.php:4292
+#: app/Module/GoogleMapsModule.php:4215
 msgid "Delete all existing geographic data before importing the file."
 msgstr "Eyða öllum fyrirliggjandi landfræði gögnum áður en skráin er flutt inn."
 
@@ -5103,7 +5089,7 @@ msgstr ""
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
 msgstr "Með því að eyða fjölskyldunni þá aftengjast allir einstaklingar frá hverjum öðrum en einstaklingarnir sitja eftir. Ertu viss um að þú viljir eyða fjölskyldunni?"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6784
 msgid "Denmark"
 msgstr "Danmörk"
@@ -5333,7 +5319,7 @@ msgstr "Birta og stjórna eftirlætissíðum fjölskyldutrés."
 msgid "Display and manage a user’s favorite pages."
 msgstr "Birta og stjórna uppáhaldssíður notanda."
 
-#: app/Module/GoogleMapsModule.php:518
+#: app/Module/GoogleMapsModule.php:489
 msgid "Display map coordinates"
 msgstr "Birta staðsetningarhnit landakorts"
 
@@ -5351,7 +5337,7 @@ msgstr "Skilnaður skráður"
 msgid "Divorces by century"
 msgstr "Fráskilnaður eftir öldum"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6782
 msgid "Djibouti"
 msgstr "Djíbútí"
@@ -5360,7 +5346,7 @@ msgstr "Djíbútí"
 msgid "Do not change to keep original filename."
 msgstr "Ekki breyta til að halda í uppruna skráarheiti."
 
-#: app/Module/GoogleMapsModule.php:4302
+#: app/Module/GoogleMapsModule.php:4225
 msgid "Do not create new locations, just import coordinates for existing locations."
 msgstr "Ekki stofna nýja staðsetningu, flytjið eingöngu inn hnitin fyrir fyrirliggjandi staðsetningar."
 
@@ -5375,16 +5361,16 @@ msgid "Do not seal: unauthorized"
 msgstr "Innsiglið ekki: óheimilt"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1918
+#: app/GedcomTag.php:1916
 msgid "Document"
 msgstr "Skjal"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6783
 msgid "Dominica"
 msgstr "Dóminíka"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6785
 msgid "Dominican Republic"
 msgstr "Dóminíska lýðveldið"
@@ -5393,7 +5379,7 @@ msgstr "Dóminíska lýðveldið"
 #: app/Module/ClippingsCartModule.php:432
 #: app/Module/ClippingsCartModule.php:719
 #: app/Module/ClippingsCartModule.php:754
-#: app/Module/ClippingsCartModule.php:797 app/Module/GoogleMapsModule.php:4695
+#: app/Module/ClippingsCartModule.php:797 app/Module/GoogleMapsModule.php:4618
 msgid "Download"
 msgstr "Hlaða niður"
 
@@ -5407,7 +5393,7 @@ msgstr ""
 msgid "Download file"
 msgstr "Hlaða niður skrá"
 
-#: app/Module/GoogleMapsModule.php:4687
+#: app/Module/GoogleMapsModule.php:4610
 msgid "Download geographic data"
 msgstr "Hlaða niður landfræðigögnum"
 
@@ -5424,11 +5410,6 @@ msgstr "Tvöfalt netfang. Notandi með þetta netfang er þegar til staðar."
 msgid "Duplicate user name. A user with that user name already exists. Please choose another user name."
 msgstr "Tvöfalt notandaheiti. Notandi með þetta notandaheiti er þegar til staðar. Vinsamlega veljið annað notandaheiti."
 
-#. I18N: Help text for the “webtrees reply address” configuration setting
-#: admin_trees_config.php:881
-msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr ""
-
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
@@ -5442,7 +5423,7 @@ msgid "Earliest birth"
 msgstr "Fyrsta fæðing"
 
 #: app/Module/FamilyTreeStatisticsModule.php:138
-#: app/Module/FamilyTreeStatisticsModule.php:321
+#: app/Module/FamilyTreeStatisticsModule.php:317
 #: app/Module/HtmlBlockModule.php:216
 msgid "Earliest birth year"
 msgstr "Fyrsta fæðingarár"
@@ -5452,7 +5433,7 @@ msgid "Earliest death"
 msgstr "Fyrsta andlát"
 
 #: app/Module/FamilyTreeStatisticsModule.php:152
-#: app/Module/FamilyTreeStatisticsModule.php:349
+#: app/Module/FamilyTreeStatisticsModule.php:345
 #: app/Module/HtmlBlockModule.php:226
 msgid "Earliest death year"
 msgstr "Fyrsta andlátsárið"
@@ -5465,7 +5446,7 @@ msgstr "Fyrsti skilnaður"
 msgid "Earliest marriage"
 msgstr "Fyrsta gifting"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6787
 msgid "Ecuador"
 msgstr "Ekvador"
@@ -5493,7 +5474,7 @@ msgstr "Ekvador"
 #: app/Functions/FunctionsPrintFacts.php:1168
 #: app/Module/FamilyTreeNewsModule.php:142
 #: app/Module/FrequentlyAskedQuestionsModule.php:496
-#: app/Module/GoogleMapsModule.php:4582 app/Module/GoogleMapsModule.php:4607
+#: app/Module/GoogleMapsModule.php:4505 app/Module/GoogleMapsModule.php:4530
 #: app/Module/PageMenuModule.php:28 app/Module/StoriesModule.php:376
 #: app/Module/StoriesModule.php:398 app/Module/UserJournalModule.php:106
 #: edit_interface.php:261 edit_interface.php:418 note.php:167 note.php:172
@@ -5501,44 +5482,42 @@ msgstr "Ekvador"
 msgid "Edit"
 msgstr "Breyta"
 
-#: app/Module/FrequentlyAskedQuestionsModule.php:136
-msgid "Edit FAQ item"
-msgstr "Breyta atriði í spurningum og svörum"
-
 #: admin_site_access.php:216
 msgid "Edit a website access rule"
 msgstr ""
 
+#. I18N: Options for editing
+#: admin_trees_config.php:1714
+msgid "Edit options"
+msgstr "Ritstýringar valkostir"
+
+#: app/Module/FrequentlyAskedQuestionsModule.php:136
+msgid "Edit the FAQ item"
+msgstr "Breyta atriði í spurningum og svörum"
+
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:123
-msgid "Edit details"
+msgid "Edit the details"
 msgstr "Ritstýra Upplýsingum"
 
 #: app/Controller/IndividualController.php:283
 #: app/Controller/IndividualController.php:291
-msgid "Edit gender"
+msgid "Edit the gender"
 msgstr "Breyta kyni"
 
-#: app/Module/AlbumModule.php:159
-msgid "Edit media"
-msgstr "Breyta miðli"
-
 #: addmedia.php:237 addmedia.php:406 app/Controller/MediaController.php:43
-msgid "Edit media object"
+#: app/Module/AlbumModule.php:159
+msgid "Edit the media object"
 msgstr "Breyta miðilshlut"
 
 #: app/Controller/IndividualController.php:168
 #: app/Functions/FunctionsEdit.php:705 edit_interface.php:1640
-msgid "Edit name"
+msgid "Edit the name"
 msgstr "Breyta nafni"
 
 #: app/Controller/NoteController.php:39
-msgid "Edit note"
+msgid "Edit the note"
 msgstr "Breyta glósu"
-
-#: admin_trees_config.php:1714
-msgid "Edit options"
-msgstr "Ritstýringar valkostir"
 
 #: app/Controller/FamilyController.php:101
 #: app/Controller/GedcomRecordController.php:109
@@ -5548,35 +5527,35 @@ msgstr "Ritstýringar valkostir"
 #: app/Controller/SourceController.php:60 edit_interface.php:51
 #: edit_interface.php:112 edit_interface.php:162 edit_interface.php:224
 #: edit_interface.php:319 edit_interface.php:2594 help_text.php:284
-msgid "Edit raw GEDCOM"
+msgid "Edit the raw GEDCOM"
 msgstr "Breyta hrárri GEDCOM færslu"
 
 #: app/Controller/RepositoryController.php:43
 #: app/Controller/RepositoryController.php:48
-msgid "Edit repository"
+msgid "Edit the repository"
 msgstr "Breyta gagnageymslu"
 
 #: app/Functions/FunctionsEdit.php:449 edit_interface.php:1444
 #: edit_interface.php:1490
-msgid "Edit shared note"
+msgid "Edit the shared note"
 msgstr "Breyta sameiginlegri glósu"
 
 #: app/Controller/SourceController.php:42
 #: app/Controller/SourceController.php:47
-msgid "Edit source"
+msgid "Edit the source"
 msgstr "Breyta heimild"
 
 #: app/Module/StoriesModule.php:106 app/Module/StoriesModule.php:188
-msgid "Edit story"
+msgid "Edit the story"
 msgstr "Breyta sögu"
+
+#: admin_users.php:273
+msgid "Edit the user"
+msgstr ""
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
 msgstr "Breyta þessum einstaklingi og skipta út þeirra upplýsingum með þínum eigin."
-
-#: admin_users.php:273
-msgid "Edit user"
-msgstr ""
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:544
@@ -5593,28 +5572,28 @@ msgstr "Edmonton, Alberta, Kanada"
 msgid "Education"
 msgstr "Menntun"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6788
 msgid "Egypt"
 msgstr "Egyptaland"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6789
 msgid "Eire"
 msgstr "Írland"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6930
 msgid "El Salvador"
 msgstr "El Salvador"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1920
+#: app/GedcomTag.php:1918
 msgid "Electronic"
 msgstr "Rafræn"
 
 #. I18N: Angle of elevation (in degrees), for street-view mapping
-#: app/Module/GoogleMapsModule.php:2753
+#: app/Module/GoogleMapsModule.php:2724
 msgid "Elevation"
 msgstr "Hæð (y/s)"
 
@@ -5652,6 +5631,11 @@ msgstr "Elul"
 #: login.php:426 message.php:117 message.php:270 setup.php:441
 msgid "Email address"
 msgstr "Netfang"
+
+#. I18N: Help text for the “webtrees reply address” configuration setting
+#: admin_trees_config.php:881
+msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+msgstr ""
 
 #: admin_users.php:382
 msgid "Email verified"
@@ -5706,7 +5690,7 @@ msgstr "Virk"
 
 #. I18N: Help text for the “Family tree” configuration setting
 #: admin_trees_config.php:377
-msgid "Enabling this option will force all visitors to login before they can view any data on the website."
+msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr "Með því að virkja þennan valkost þá þurfa allir gestir að skrá sig inn áður en þeir geta skoðað einhver gögn á vefsíðunni."
 
 #. I18N …of a range of addresses
@@ -5733,7 +5717,7 @@ msgstr "Brúðkaupsgjafahús"
 msgid "Engagement"
 msgstr "Trúlofun"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6790
 msgid "England"
 msgstr "England"
@@ -5759,12 +5743,12 @@ msgstr "Sláið inn skýrslugildi"
 msgid "Entire record"
 msgstr "Heildar færsla"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6813
 msgid "Equatorial Guinea"
 msgstr "Miðbaugs-Gínea"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6791
 msgid "Eritrea"
 msgstr "Erítrea"
@@ -5808,12 +5792,12 @@ msgstr "Esfand"
 msgid "Estimated dates for birth and death"
 msgstr "Áætlaðar dagsetningar fyrir fæðingar og andlát"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6794
 msgid "Estonia"
 msgstr "Eistland"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6795
 msgid "Ethiopia"
 msgstr "Eþíópía"
@@ -5829,7 +5813,7 @@ msgstr "Evrópa"
 msgid "Event"
 msgstr "Atburður"
 
-#: app/Module/GoogleMapsModule.php:2437 statistics.php:110 statistics.php:212
+#: app/Module/GoogleMapsModule.php:2408 statistics.php:110 statistics.php:212
 msgid "Events"
 msgstr "Atburðir"
 
@@ -6039,7 +6023,7 @@ msgstr "Staðreyndir fyrir geymslufærslur"
 msgid "Facts for source records"
 msgstr "Staðreyndir fyrir heimildafærslur"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6799
 msgid "Falkland Islands"
 msgstr "Falklandseyjar (Malvinas)"
@@ -6051,8 +6035,8 @@ msgstr "Falklandseyjar (Malvinas)"
 #: app/Functions/FunctionsPrintLists.php:1222
 #: app/Functions/FunctionsPrintLists.php:1450
 #: app/Module/FamilyTreeStatisticsModule.php:111
-#: app/Module/FamilyTreeStatisticsModule.php:343
-#: app/Module/GoogleMapsModule.php:2818 app/Module/HtmlBlockModule.php:187
+#: app/Module/FamilyTreeStatisticsModule.php:339
+#: app/Module/GoogleMapsModule.php:2789 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1489
 #: calendar.php:422 descendancy.php:68 famlist.php:130 famlist.php:133
 #: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
@@ -6142,7 +6126,7 @@ msgstr "Fjölskylda %s"
 #: admin_site_logs.php:298 admin_site_logs.php:332 admin_trees_manage.php:380
 #: admin_users.php:576 app/Module/BatchUpdateModule.php:204
 #: app/Module/FrequentlyAskedQuestionsModule.php:452
-#: app/Module/GoogleMapsModule.php:1574 app/Module/HtmlBlockModule.php:299
+#: app/Module/GoogleMapsModule.php:1545 app/Module/HtmlBlockModule.php:299
 #: app/Module/StoriesModule.php:356 app/Theme/AbstractTheme.php:1382
 #: edit_changes.php:180
 msgid "Family tree"
@@ -6206,7 +6190,7 @@ msgid "Family with spouse"
 msgstr "Fjölskylda með maka"
 
 #: app/Module/FamilyTreeStatisticsModule.php:182
-#: app/Module/FamilyTreeStatisticsModule.php:405
+#: app/Module/FamilyTreeStatisticsModule.php:401
 #: app/Module/HtmlBlockModule.php:246
 msgid "Family with the most children"
 msgstr "Fjölskylda með flest börn"
@@ -6232,7 +6216,7 @@ msgctxt "Abbreviation for Persian month: Farvardin"
 msgid "Far"
 msgstr "Far"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6801
 msgid "Faroe Islands"
 msgstr "Færeyjar"
@@ -6336,7 +6320,7 @@ msgstr "Febrúar"
 msgid "Female"
 msgstr "Kvenkyn"
 
-#: app/Functions/FunctionsPrintLists.php:2017
+#: app/Functions/FunctionsPrintLists.php:2016
 #: app/Module/FamilyTreeStatisticsModule.php:105
 #: app/Module/FamilyTreeStatisticsModule.php:176
 #: app/Module/HtmlBlockModule.php:179 app/Module/TopGivenNamesModule.php:90
@@ -6346,16 +6330,16 @@ msgstr "Kvenkyn"
 msgid "Females"
 msgstr "Kvenmenn"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6797
 msgid "Fiji"
 msgstr "Fídjieyjar"
 
-#: app/Module/GoogleMapsModule.php:4252
+#: app/Module/GoogleMapsModule.php:4177
 msgid "File containing places (CSV)"
 msgstr "Skrá sem inniheldur staði (CSV)"
 
-#: admin_media.php:490 app/GedcomTag.php:1783
+#: admin_media.php:490 app/GedcomTag.php:1781
 msgid "File size"
 msgstr "Skráarstærð"
 
@@ -6438,6 +6422,7 @@ msgstr ""
 #: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
+#: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
 msgid "Find an individual"
 msgstr "Finna einstakling"
 
@@ -6453,7 +6438,7 @@ msgstr ""
 msgid "Find the closest relationships"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6796
 msgid "Finland"
 msgstr "Finnland"
@@ -6477,12 +6462,12 @@ msgid "Fix name slashes and spaces"
 msgstr "Lagfæra nöfn með skástrikum og orðabilum"
 
 #. I18N: The emblem of a country or region
-#: app/Module/GoogleMapsModule.php:508 app/Module/GoogleMapsModule.php:4004
-#: app/Module/GoogleMapsModule.php:4009
+#: app/Module/GoogleMapsModule.php:479 app/Module/GoogleMapsModule.php:3926
+#: app/Module/GoogleMapsModule.php:3931
 msgid "Flag"
 msgstr "Fáni"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6798
 msgid "Flanders"
 msgstr "Flanders"
@@ -6563,6 +6548,10 @@ msgstr "Fyrir tæknilega aðstoð eða ættfræðispurningar, vinsamlega hafið 
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 msgstr ""
 
+#: app/Module/LoginBlockModule.php:86 login.php:207
+msgid "Forgot password?"
+msgstr ""
+
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:492 help_text.php:136 help_text.php:148 help_text.php:159
 #: help_text.php:166
@@ -6601,7 +6590,7 @@ msgstr "Fósturfaðir"
 msgid "Foster mother"
 msgstr "Fósturmóðir"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6800
 msgid "France"
 msgstr "Frakkland"
@@ -6621,17 +6610,17 @@ msgstr "Freiburg, Þýskaland"
 msgid "French"
 msgstr "Franskt"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6818
 msgid "French Guiana"
 msgstr "Franska Gvæjana"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6910
 msgid "French Polynesia"
 msgstr "Franska Pólýnesía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6731
 msgid "French Southern Territories"
 msgstr "Frönsku suðurhafshéruðin"
@@ -6745,12 +6734,12 @@ msgstr "GEDCOM villur"
 msgid "GEDCOM file"
 msgstr "GEDCOM skrá"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6803
 msgid "Gabon"
 msgstr "Gabon"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6811
 msgid "Gambia"
 msgstr "Gambía"
@@ -6808,7 +6797,7 @@ msgstr "Kynslóð"
 msgid "Generation "
 msgstr "Kynslóð "
 
-#: ancestry.php:97 app/Module/GoogleMapsModule.php:812 descendancy.php:76
+#: ancestry.php:97 app/Module/GoogleMapsModule.php:783 descendancy.php:76
 #: familybook.php:66 fanchart.php:101 hourglass.php:67
 #: modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
@@ -6822,11 +6811,11 @@ msgstr "Kynslóðir"
 msgid "Generations of ancestors"
 msgstr "Kynslóðir af forfeðrum"
 
-#: app/Module/GoogleMapsModule.php:169 app/Module/GoogleMapsModule.php:307
-#: app/Module/GoogleMapsModule.php:901 app/Module/GoogleMapsModule.php:1554
-#: app/Module/GoogleMapsModule.php:1677 app/Module/GoogleMapsModule.php:2694
-#: app/Module/GoogleMapsModule.php:2857 app/Module/GoogleMapsModule.php:3263
-#: app/Module/GoogleMapsModule.php:4109 app/Module/GoogleMapsModule.php:4119
+#: app/Module/GoogleMapsModule.php:169 app/Module/GoogleMapsModule.php:301
+#: app/Module/GoogleMapsModule.php:872 app/Module/GoogleMapsModule.php:1525
+#: app/Module/GoogleMapsModule.php:1648 app/Module/GoogleMapsModule.php:2665
+#: app/Module/GoogleMapsModule.php:2828 app/Module/GoogleMapsModule.php:3234
+#: app/Module/GoogleMapsModule.php:4034 app/Module/GoogleMapsModule.php:4044
 msgid "Geographic data"
 msgstr "Landfræðileg gögn"
 
@@ -6834,12 +6823,12 @@ msgstr "Landfræðileg gögn"
 msgid "Geographical area"
 msgstr "Landfræðilegt svæði"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6805
 msgid "Georgia"
 msgstr "Georgía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6781
 msgid "Germany"
 msgstr "Þýskaland"
@@ -6868,12 +6857,12 @@ msgctxt "NOMINATIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6807
 msgid "Ghana"
 msgstr "Gana"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6808
 msgid "Gibraltar"
 msgstr "Gíbraltar"
@@ -6929,22 +6918,22 @@ msgstr "Guðsonur"
 
 #. I18N: The name of a module. Google Maps™ is a trademark. Do not translate it? http://en.wikipedia.org/wiki/Google_maps
 #: app/Functions/FunctionsPrint.php:474 app/Module/GoogleMapsModule.php:74
-#: app/Module/GoogleMapsModule.php:245 app/Module/GoogleMapsModule.php:1536
-#: app/Module/GoogleMapsModule.php:4091 app/Module/GoogleMapsModule.php:4956
-#: app/Module/GoogleMapsModule.php:4993
+#: app/Module/GoogleMapsModule.php:245 app/Module/GoogleMapsModule.php:1507
+#: app/Module/GoogleMapsModule.php:4016 app/Module/GoogleMapsModule.php:4879
+#: app/Module/GoogleMapsModule.php:4916
 msgid "Google Maps™"
 msgstr "Google Maps™"
 
 #: app/Module/GoogleMapsModule.php:166 app/Module/GoogleMapsModule.php:197
-#: app/Module/GoogleMapsModule.php:302 app/Module/GoogleMapsModule.php:317
-#: app/Module/GoogleMapsModule.php:898 app/Module/GoogleMapsModule.php:1549
-#: app/Module/GoogleMapsModule.php:2692 app/Module/GoogleMapsModule.php:4104
+#: app/Module/GoogleMapsModule.php:296 app/Module/GoogleMapsModule.php:311
+#: app/Module/GoogleMapsModule.php:869 app/Module/GoogleMapsModule.php:1520
+#: app/Module/GoogleMapsModule.php:2663 app/Module/GoogleMapsModule.php:4029
 msgid "Google Maps™ preferences"
 msgstr "Google Maps™ valkostir"
 
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
-#: app/Module/GoogleMapsModule.php:344 app/Module/GoogleMapsModule.php:2439
-#: app/Module/GoogleMapsModule.php:4959
+#: app/Module/GoogleMapsModule.php:337 app/Module/GoogleMapsModule.php:2410
+#: app/Module/GoogleMapsModule.php:4882
 msgid "Google Street View™"
 msgstr "Google Street View™"
 
@@ -6965,7 +6954,7 @@ msgstr "Hæsti aldur við andlát"
 msgid "Greatest age between siblings"
 msgstr "Mesti aldur á milli systkina"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6814
 msgid "Greece"
 msgstr "Grikkland"
@@ -6975,7 +6964,7 @@ msgstr "Grikkland"
 msgid "Green Beam"
 msgstr "Green Beam"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6816
 msgid "Greenland"
 msgstr "Grænland"
@@ -6985,7 +6974,7 @@ msgstr "Grænland"
 msgid "Gregorian"
 msgstr "Georgískt"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6815
 msgid "Grenada"
 msgstr "Grenada"
@@ -6995,12 +6984,12 @@ msgstr "Grenada"
 msgid "Guadalajara, Mexico"
 msgstr "Guadalajara, Mexikó"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6810
 msgid "Guadeloupe"
 msgstr "Gvadalúp"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6819
 msgid "Guam"
 msgstr "Gvam"
@@ -7019,7 +7008,7 @@ msgctxt "MALE"
 msgid "Guardian"
 msgstr "Fjárhaldsmaður"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6817
 msgid "Guatemala"
 msgstr "Gvatemala"
@@ -7034,22 +7023,22 @@ msgstr "Guatemala City, Gvatemala"
 msgid "Guayaquil, Ecuador"
 msgstr "Guayaquil, Ekvador"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6806
 msgid "Guernsey"
 msgstr "Guernsey"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6809
 msgid "Guinea"
 msgstr "Gínea"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6812
 msgid "Guinea-Bissau"
 msgstr "Gínea-Bissá"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6820
 msgid "Guyana"
 msgstr "Gvæjana"
@@ -7064,7 +7053,7 @@ msgstr "HTML"
 msgid "Hair color"
 msgstr "Hárlitur"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6825
 msgid "Haiti"
 msgstr "Haítí"
@@ -7126,7 +7115,7 @@ msgstr "Forsvarsmaður heimilis"
 msgid "Header"
 msgstr "Haus"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6822
 msgid "Heard Island and McDonald Islands"
 msgstr "Heard-eyja og McDonald-eyjur"
@@ -7142,8 +7131,8 @@ msgid "Hebrew name"
 msgstr "Hebresku nafn"
 
 #. I18N: gedcom tag _HEIG
-#: app/GedcomTag.php:1521 app/Module/GoogleMapsModule.php:366
-#: app/Module/GoogleMapsModule.php:491
+#: app/GedcomTag.php:1521 app/Module/GoogleMapsModule.php:359
+#: app/Module/GoogleMapsModule.php:462
 msgid "Height"
 msgstr "Hæð"
 
@@ -7192,17 +7181,13 @@ msgstr "Helvetica"
 msgid "Her occupation was"
 msgstr "Starfsheiti hennar var"
 
-#: app/Module/GoogleMapsModule.php:4017
+#: app/Module/GoogleMapsModule.php:3939
 msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
 msgstr "Hér er hægt að velja eða fjarlægja tákn. Með því að nota þessa krækju að þá er hægt að velja fána. Þegar þessi landfræðilega staðsetning er birt, þá verður þessi fáni birtur."
 
-#: app/Module/GoogleMapsModule.php:3998
+#: app/Module/GoogleMapsModule.php:3920
 msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
 msgstr "Hér er hægt að slá inn þysjunarstig. Þetta gildi verður notað sem lágmarksgildi þegar þessi landfræðilega staðsetning verður birt á landakorti."
-
-#: app/Module/GoogleMapsModule.php:3967
-msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
-msgstr "Hér getur þú slegið inn nákvæmnina. Þessi stilling ákvarðar fjölda tölustafa sem notaðir verða í breiddar- og lengdargráðum."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:169
@@ -7281,13 +7266,13 @@ msgstr "Helför"
 msgid "Home page"
 msgstr "Heimasíða"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6823
 msgid "Honduras"
 msgstr "Hondúras"
 
 #. I18N: Location of an LDS church temple
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/GedcomCode/GedcomCodeTemp.php:171 app/Stats.php:6821
 msgid "Hong Kong"
 msgstr "Hong Kong"
@@ -7304,10 +7289,6 @@ msgstr "Stundaglasagraf"
 msgid "Hourglass chart of %s"
 msgstr "Stundaglasagraf fyrir %s"
 
-#: app/Module/GoogleMapsModule.php:407 app/Module/GoogleMapsModule.php:3963
-msgid "House"
-msgstr "Hús"
-
 #: modules_v3/GEDFact_assistant/census/census-edit.php:136
 msgid "Household"
 msgstr "Í heimili"
@@ -7322,7 +7303,7 @@ msgstr "Houston, Texas, United States"
 msgid "How much recursion to use when searching for relationships"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6826
 msgid "Hungary"
 msgstr "Ungverjaland"
@@ -7347,7 +7328,7 @@ msgstr "Eiginmaður"
 msgid "Husband’s age"
 msgstr "Aldur eiginmanns"
 
-#: app/Module/GoogleMapsModule.php:333
+#: app/Module/GoogleMapsModule.php:326
 msgid "Hybrid"
 msgstr "Blendingur"
 
@@ -7360,7 +7341,7 @@ msgstr "Auðkennistilling"
 msgid "IP address"
 msgstr "IP vistfang"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6834
 msgid "Iceland"
 msgstr "Ísland"
@@ -7370,7 +7351,7 @@ msgctxt "Surname tradition"
 msgid "Icelandic"
 msgstr "Íslenska"
 
-#: app/Module/GoogleMapsModule.php:4084 app/Module/GoogleMapsModule.php:4580
+#: app/Module/GoogleMapsModule.php:4009 app/Module/GoogleMapsModule.php:4503
 msgid "Icon"
 msgstr "Tákn"
 
@@ -7447,8 +7428,8 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Ef þú ert vefstjóri þá ættir þú að athuga að:"
 
 #: site-unavailable.php:97
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
-msgstr "Ef þú getur ekki lagfært vandamálið sjálfur, þá getur þú óskað eftir aðstoð á umræðuvefnum <a href=\"http://webtrees.net\">webtrees.net</a>."
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
+msgstr "Ef þú getur ekki lagfært vandamálið sjálfur, þá getur þú óskað eftir aðstoð á umræðuvefnum <a href=\"https://webtrees.net\">webtrees.net</a>."
 
 #: admin_trees_manage.php:285
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7458,7 +7439,7 @@ msgstr ""
 msgid "If you didn’t request an account, you can just delete this message."
 msgstr "Ef þú óskaðir ekki eftir reikning, þá getur þú einfaldlega eytt þessum skilaboðum."
 
-#: app/Module/GoogleMapsModule.php:4568
+#: app/Module/GoogleMapsModule.php:4491
 msgid "If you have a large number of inactive places, it can be slow to generate the list."
 msgstr "Ef þú ert með mikinn fjölda af óvirkum stöðum, þá getur myndun listans verið hæg."
 
@@ -7515,7 +7496,7 @@ msgstr "Ef öryggisstefna vefþjónsins leyfir það, þá getur þú óskað ef
 msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one."
 msgstr "Ef hægt er að ná vefsíðu þinni með fleiru en einu vefffangi, sem dæmi <b>http://www.example.com/webtrees/</b> og <b>http://webtrees.example.com/</b>, þá getur þú tilgreint forgangs veffangið. Beiðni um önnur vefföng munu flytjast áfram yfir á forgangs veffangið."
 
-#: admin_media.php:495 app/GedcomTag.php:1785
+#: admin_media.php:495 app/GedcomTag.php:1783
 msgid "Image dimensions"
 msgstr "Myndastærð"
 
@@ -7528,7 +7509,7 @@ msgstr ""
 msgid "Immigration"
 msgstr "Fólksinnflutningur"
 
-#: admin_trees_manage.php:604 app/Module/GoogleMapsModule.php:4656
+#: admin_trees_manage.php:604 app/Module/GoogleMapsModule.php:4579
 msgid "Import"
 msgstr "Flytja inn"
 
@@ -7536,7 +7517,7 @@ msgstr "Flytja inn"
 msgid "Import a GEDCOM file"
 msgstr ""
 
-#: app/Module/GoogleMapsModule.php:4648
+#: app/Module/GoogleMapsModule.php:4571
 msgid "Import all places from a family tree"
 msgstr "Flygja inn alla staði úr fjölskyldutré"
 
@@ -7574,7 +7555,7 @@ msgstr "Í þessum mánuði …"
 msgid "In this year…"
 msgstr "Á þessu ári …"
 
-#: app/Module/GoogleMapsModule.php:1603
+#: app/Module/GoogleMapsModule.php:1574
 msgid "Include fully matched places"
 msgstr "Innifela staði með fullri samsvörun"
 
@@ -7598,7 +7579,7 @@ msgstr ""
 msgid "Include the individual’s immediate family"
 msgstr "Láta nánustu fjölskyldu persónunnar fylgja með?"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6828
 msgid "India"
 msgstr "Indland"
@@ -7607,7 +7588,7 @@ msgstr "Indland"
 #. I18N: Name of a module/report
 #: admin_trees_manage.php:537 ancestry.php:52
 #: app/Functions/FunctionsEdit.php:855 app/GedcomTag.php:528
-#: app/Module/ChartsBlockModule.php:209 app/Module/GoogleMapsModule.php:800
+#: app/Module/ChartsBlockModule.php:209 app/Module/GoogleMapsModule.php:771
 #: app/Module/IndividualReportModule.php:29 app/Module/StoriesModule.php:246
 #: app/Module/StoriesModule.php:375 app/Module/StoriesModule.php:459
 #: compact.php:47 descendancy.php:48 familybook.php:48 fanchart.php:79
@@ -7658,7 +7639,7 @@ msgid "Individual record"
 msgstr "Einstaklings færsla"
 
 #: app/Module/FamilyTreeStatisticsModule.php:166
-#: app/Module/FamilyTreeStatisticsModule.php:377
+#: app/Module/FamilyTreeStatisticsModule.php:373
 #: app/Module/HtmlBlockModule.php:236
 msgid "Individual who lived the longest"
 msgstr "Persóna sem lifði lengst"
@@ -7670,8 +7651,8 @@ msgstr "Persóna sem lifði lengst"
 #: app/Functions/FunctionsPrintLists.php:1448
 #: app/Functions/FunctionsPrintLists.php:1549
 #: app/Module/FamilyTreeStatisticsModule.php:103
-#: app/Module/FamilyTreeStatisticsModule.php:315
-#: app/Module/GoogleMapsModule.php:2818 app/Module/HtmlBlockModule.php:171
+#: app/Module/FamilyTreeStatisticsModule.php:311
+#: app/Module/GoogleMapsModule.php:2789 app/Module/HtmlBlockModule.php:171
 #: app/Module/SlideShowModule.php:264 app/Theme/AbstractTheme.php:1500
 #: calendar.php:421 descendancy.php:65 gedrecord.php:127 indilist.php:130
 #: indilist.php:133 mediaviewer.php:116 modules_v3/fact_sources/report.xml:54
@@ -7691,7 +7672,7 @@ msgstr "Einstaklingar með heimildir"
 msgid "Individuals with surname %s"
 msgstr "Einstaklingar með eftirnöfn %s"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6827
 msgid "Indonesia"
 msgstr "Indónesía"
@@ -7773,27 +7754,27 @@ msgstr "Ógilt GEDCOM snið"
 msgid "Invalid date"
 msgstr "Ógild dagsetning"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6832
 msgid "Iran"
 msgstr "Íran"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6833
 msgid "Iraq"
 msgstr "Írak"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6831
 msgid "Ireland"
 msgstr "Írland"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6829
 msgid "Isle of Man"
 msgstr "Eyjan Mön"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6835
 msgid "Israel"
 msgstr "Ísrael"
@@ -7802,7 +7783,7 @@ msgstr "Ísrael"
 msgid "It can take several minutes to download and install the upgrade. Be patient."
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6836
 msgid "Italy"
 msgstr "Ítalía"
@@ -7836,7 +7817,7 @@ msgstr "Iyar"
 msgid "Jalali"
 msgstr "Jalali"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6837
 msgid "Jamaica"
 msgstr "Jamaíka"
@@ -7866,7 +7847,7 @@ msgctxt "NOMINATIVE"
 msgid "January"
 msgstr "Janúar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6839
 msgid "Japan"
 msgstr "Japan"
@@ -7886,7 +7867,7 @@ msgstr "Johannesburg, Suður Afríka"
 msgid "John /DOE/"
 msgstr "John /DOE/"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6838
 msgid "Jordan"
 msgstr "Jórdanía"
@@ -8004,7 +7985,7 @@ msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "Júní"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6840
 msgid "Kazakhstan"
 msgstr "Kasakstan"
@@ -8029,7 +8010,7 @@ msgstr ""
 msgid "Keep the existing “last change” information"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6841
 msgid "Kenya"
 msgstr "Kenýa"
@@ -8072,7 +8053,7 @@ msgstr "Khordad"
 msgid "Kiev, Ukraine"
 msgstr "Kiev, Úkranía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6844
 msgid "Kiribati"
 msgstr "Kíribatí"
@@ -8106,17 +8087,17 @@ msgstr "Kislev"
 msgid "Kona, Hawaii, United States"
 msgstr "Kona, Hawaii, United States"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6846
 msgid "Korea"
 msgstr "Kórea"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6847
 msgid "Kuwait"
 msgstr "Kúveit"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6842
 msgid "Kyrgyzstan"
 msgstr "Kirgisistan"
@@ -8179,7 +8160,7 @@ msgstr "Tungumál"
 msgid "Languages"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6848
 msgid "Laos"
 msgstr "Laos"
@@ -8216,7 +8197,7 @@ msgid "Last event"
 msgstr "Síðasti atburður"
 
 #: admin_users.php:873
-msgid "Last logged in"
+msgid "Last signed in"
 msgstr "Síðast skráður inn"
 
 #: statistics.php:137
@@ -8224,7 +8205,7 @@ msgid "Latest birth"
 msgstr "Síðasta fæðing"
 
 #: app/Module/FamilyTreeStatisticsModule.php:145
-#: app/Module/FamilyTreeStatisticsModule.php:335
+#: app/Module/FamilyTreeStatisticsModule.php:331
 #: app/Module/HtmlBlockModule.php:221
 msgid "Latest birth year"
 msgstr "Nýjasta fæðingarár"
@@ -8234,7 +8215,7 @@ msgid "Latest death"
 msgstr "Síðasta andlát"
 
 #: app/Module/FamilyTreeStatisticsModule.php:159
-#: app/Module/FamilyTreeStatisticsModule.php:363
+#: app/Module/FamilyTreeStatisticsModule.php:359
 #: app/Module/HtmlBlockModule.php:231
 msgid "Latest death year"
 msgstr "Nýjasta andlátsárið"
@@ -8248,12 +8229,12 @@ msgid "Latest marriage"
 msgstr "Síðasta gifting"
 
 #. I18N: gedcom tag LATI
-#: app/GedcomTag.php:540 app/Module/GoogleMapsModule.php:1689
-#: app/Module/GoogleMapsModule.php:4083
+#: app/GedcomTag.php:540 app/Module/GoogleMapsModule.php:1660
+#: app/Module/GoogleMapsModule.php:4008
 msgid "Latitude"
 msgstr "Breiddargráða"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6858
 msgid "Latvia"
 msgstr "Lettland"
@@ -8272,7 +8253,7 @@ msgstr "Skildu lykilorð eftir autt ef þú vilt halda núverandi lykilorði."
 msgid "Leaves"
 msgstr "Leyfi"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6849
 msgid "Lebanon"
 msgstr "Líbanon"
@@ -8304,7 +8285,7 @@ msgstr "Erfingi"
 msgid "Length of marriage"
 msgstr "Lengd giftingar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6855
 msgid "Lesotho"
 msgstr "Lesótó"
@@ -8327,22 +8308,22 @@ msgctxt "paper size"
 msgid "Letter"
 msgstr "Letter"
 
-#: app/Module/GoogleMapsModule.php:434 app/Module/GoogleMapsModule.php:450
-#: app/Module/GoogleMapsModule.php:1683 app/Module/GoogleMapsModule.php:4058
+#: app/Module/GoogleMapsModule.php:405 app/Module/GoogleMapsModule.php:421
+#: app/Module/GoogleMapsModule.php:1654 app/Module/GoogleMapsModule.php:3983
 msgid "Level"
 msgstr "Stig"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6850
 msgid "Liberia"
 msgstr "Líbería"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6851
 msgid "Libya"
 msgstr "Líbýa"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6853
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
@@ -8425,7 +8406,7 @@ msgstr "Listi"
 msgid "Lists"
 msgstr "Listar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6856
 msgid "Lithuania"
 msgstr "Litháen"
@@ -8457,7 +8438,7 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
-#: app/Module/GoogleMapsModule.php:4508
+#: app/Module/GoogleMapsModule.php:4431
 msgid "Location not removed: this location contains sub-locations"
 msgstr "Staðsetning ekki fjarlægð: þessi staðsetning inniheldur undirstaðsetningu"
 
@@ -8480,32 +8461,6 @@ msgstr "Leigjandi"
 msgid "Logan, Utah, United States"
 msgstr "Logan, Utah, United States"
 
-#: app/Module/LoginBlockModule.php:63
-msgid "Logged in as "
-msgstr "Innskráður sem "
-
-#. I18N: Name of a module
-#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
-#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
-#: login.php:150 login.php:199
-msgid "Login"
-msgstr "Innskráning"
-
-#. I18N: A configuration setting
-#: admin_site_config.php:447
-msgid "Login URL"
-msgstr "Innskráningar veffang"
-
-#. I18N: Menu entry
-#: admin_site_config.php:140 app/Theme/AdministrationTheme.php:97
-msgid "Login and registration"
-msgstr ""
-
-#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
-#: app/Theme/AbstractTheme.php:1568
-msgid "Logout"
-msgstr "Útskráning"
-
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:191
 msgid "London, England"
@@ -8521,8 +8476,8 @@ msgid "Longest marriage"
 msgstr "Lengsta gifting"
 
 #. I18N: gedcom tag LONG
-#: app/GedcomTag.php:548 app/Module/GoogleMapsModule.php:1690
-#: app/Module/GoogleMapsModule.php:4083
+#: app/GedcomTag.php:548 app/Module/GoogleMapsModule.php:1661
+#: app/Module/GoogleMapsModule.php:4008
 msgid "Longitude"
 msgstr "Lengdargráða"
 
@@ -8549,22 +8504,22 @@ msgstr "Lægsti íbúafjöldi"
 msgid "Lubbock, Texas, United States"
 msgstr "Lubbock, Texas, United States"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6857
 msgid "Luxembourg"
 msgstr "Lúxemborg"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6859
 msgid "Macau"
 msgstr "Maká"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6867
 msgid "Macedonia"
 msgstr "Makedónía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6863
 msgid "Madagascar"
 msgstr "Madagaskar"
@@ -8575,7 +8530,7 @@ msgid "Madrid, Spain"
 msgstr "Madrid, Spánn"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1926
+#: app/GedcomTag.php:1924
 msgid "Magazine"
 msgstr "Tímarit"
 
@@ -8592,17 +8547,17 @@ msgstr "Tölvupóstkrækja"
 msgid "Main section blocks"
 msgstr "Aðal Hluta Kassar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6879
 msgid "Malawi"
 msgstr "Malaví"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6880
 msgid "Malaysia"
 msgstr "Malasía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6864
 msgid "Maldives"
 msgstr "Maldíveyjar"
@@ -8617,7 +8572,7 @@ msgstr "Maldíveyjar"
 msgid "Male"
 msgstr "Karlkyn"
 
-#: app/Functions/FunctionsPrintLists.php:2017
+#: app/Functions/FunctionsPrintLists.php:2016
 #: app/Module/FamilyTreeStatisticsModule.php:104
 #: app/Module/FamilyTreeStatisticsModule.php:175
 #: app/Module/HtmlBlockModule.php:175 app/Module/TopGivenNamesModule.php:95
@@ -8627,12 +8582,12 @@ msgstr "Karlkyn"
 msgid "Males"
 msgstr "Karlmenn"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6868
 msgid "Mali"
 msgstr "Malí"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6869
 msgid "Malta"
 msgstr "Malta"
@@ -8646,11 +8601,6 @@ msgstr "Malta"
 #: admin_trees_places.php:90 app/Theme/AdministrationTheme.php:127
 msgid "Manage family trees"
 msgstr ""
-
-#: admin_media.php:535 app/Controller/MediaController.php:49
-#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
-msgid "Manage links"
-msgstr "Stjórna krækjum"
 
 #. I18N: Menu entry
 #: admin_media.php:588 app/Theme/AdministrationTheme.php:178
@@ -8668,6 +8618,11 @@ msgstr "Stjórnandi"
 msgid "Managers"
 msgstr "Stjórnendur"
 
+#: admin_media.php:535 app/Controller/MediaController.php:49
+#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
+msgid "Mange the links"
+msgstr "Stjórna krækjum"
+
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
 msgid "Manila, Philippines"
@@ -8679,7 +8634,7 @@ msgid "Manti, Utah, United States"
 msgstr "Manti, Utah, United States"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1928
+#: app/GedcomTag.php:1926
 msgid "Manuscript"
 msgstr "Handrit"
 
@@ -8695,8 +8650,8 @@ msgstr ""
 
 #. I18N: gedcom tag MAP
 #. I18N: Type of media object
-#: app/GedcomTag.php:552 app/GedcomTag.php:1930
-#: app/Module/GoogleMapsModule.php:331
+#: app/GedcomTag.php:552 app/GedcomTag.php:1928
+#: app/Module/GoogleMapsModule.php:324
 msgid "Map"
 msgstr "Landakort"
 
@@ -8783,18 +8738,6 @@ msgstr ""
 msgid "Marriage"
 msgstr "Gifting"
 
-#: modules_v3/marriage_report/report.xml:8
-msgid "Marriage Date range end"
-msgstr "Hjúskapar Dagsetningasvið endar"
-
-#: modules_v3/marriage_report/report.xml:7
-msgid "Marriage Date range start"
-msgstr "Hjúskapar Dagsetningasvið byrjar"
-
-#: modules_v3/marriage_report/report.xml:6
-msgid "Marriage Place contains"
-msgstr "Hjúskapar Staður inniheldur"
-
 #. I18N: gedcom tag MARB
 #: app/GedcomTag.php:556 modules_v3/missing_facts_report/report.xml:22
 msgid "Marriage banns"
@@ -8818,6 +8761,14 @@ msgstr "Gifting eftir landi"
 #: app/GedcomTag.php:564
 msgid "Marriage contract"
 msgstr "Giftingarsamningur"
+
+#: modules_v3/marriage_report/report.xml:8
+msgid "Marriage date range end"
+msgstr "Hjúskapar Dagsetningasvið endar"
+
+#: modules_v3/marriage_report/report.xml:7
+msgid "Marriage date range start"
+msgstr "Hjúskapar Dagsetningasvið byrjar"
 
 #. I18N: gedcom tag _MEND
 #: app/GedcomTag.php:1651
@@ -8922,6 +8873,10 @@ msgstr "Gifting sonar"
 msgid "Marriage of parents"
 msgstr "Gifting foreldra"
 
+#: modules_v3/marriage_report/report.xml:6
+msgid "Marriage place contains"
+msgstr "Hjúskapar Staður inniheldur"
+
 #: statistics.php:418
 msgid "Marriage places"
 msgstr "Giftingarstaðir"
@@ -8961,12 +8916,12 @@ msgstr "Hjúskaparnafn"
 msgid "Married surname"
 msgstr "Giftingar eftirnafn"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6866
 msgid "Marshall Islands"
 msgstr "Marshall-eyjar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6877
 msgid "Martinique"
 msgstr "Martiník"
@@ -8988,19 +8943,15 @@ msgstr "Finnið nákvæma samsvörun textans, jafnvel þó að það eigi sér s
 msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr "Finnið nákvæma samsvörun textans, nema að það eigi sér stað í miðju orði."
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6875
 msgid "Mauritania"
 msgstr "Máritanía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6878
 msgid "Mauritius"
 msgstr "Máritus"
-
-#: app/Module/GoogleMapsModule.php:407 app/Module/GoogleMapsModule.php:3965
-msgid "Max"
-msgstr "Hámark"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1346
@@ -9046,7 +8997,7 @@ msgctxt "NOMINATIVE"
 msgid "May"
 msgstr "Maí"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6881
 msgid "Mayotte"
 msgstr "Mayott"
@@ -9111,7 +9062,7 @@ msgstr "Miðilshlutur"
 #: app/Functions/FunctionsPrintLists.php:1086
 #: app/Functions/FunctionsPrintLists.php:1224
 #: app/Module/FamilyTreeStatisticsModule.php:117
-#: app/Module/FamilyTreeStatisticsModule.php:371
+#: app/Module/FamilyTreeStatisticsModule.php:367
 #: app/Module/HtmlBlockModule.php:195 app/Theme/AbstractTheme.php:1509
 #: gedrecord.php:141 medialist.php:37 mediaviewer.php:130 note.php:142
 #: repo.php:150 source.php:154 statistics.php:352 statistics.php:379
@@ -9247,15 +9198,6 @@ msgstr "Mesa, Arizona, United States"
 msgid "Message"
 msgstr "Skilaboð"
 
-#: message.php:191
-#, php-format
-msgid "The message was successfully sent to %s"
-msgstr "Það tókst að senda skilaboðin á %s"
-
-#: message.php:193
-msgid "The message was not sent"
-msgstr "Skilaboð var ekki sent"
-
 #. I18N: A configuration setting
 #. I18N: Name of a module
 #: admin_site_config.php:316 app/Module/UserMessagesModule.php:33
@@ -9286,7 +9228,7 @@ msgctxt "NOMINATIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6865
 msgid "Mexico"
 msgstr "Mexíkó"
@@ -9297,16 +9239,16 @@ msgid "Mexico City, Mexico"
 msgstr "Mexico City, Mexikó"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1922
+#: app/GedcomTag.php:1920
 msgid "Microfiche"
 msgstr "Örmyndaspjald"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1924
+#: app/GedcomTag.php:1922
 msgid "Microfilm"
 msgstr "Örfilma"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6802
 msgid "Micronesia"
 msgstr "Míkrónesía"
@@ -9330,7 +9272,7 @@ msgstr "Hernaðar"
 msgid "Military service"
 msgstr "Hernaðarþjónusta"
 
-#: app/Module/GoogleMapsModule.php:394
+#: app/Module/GoogleMapsModule.php:387
 msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
 msgstr "Lágmarks og hámarks þysjunarstuðull fyrir Google landakortið. 1 er allt landakortið, 15 er einstakt hús. Athugið að 15 er eingöngu til staðar á vissum svæðum."
 
@@ -9370,8 +9312,8 @@ msgstr "Eining"
 #: admin_modules.php:152 app/Module/BatchUpdateModule.php:192
 #: app/Module/FrequentlyAskedQuestionsModule.php:162
 #: app/Module/FrequentlyAskedQuestionsModule.php:442
-#: app/Module/GoogleMapsModule.php:295 app/Module/GoogleMapsModule.php:1542
-#: app/Module/GoogleMapsModule.php:4097
+#: app/Module/GoogleMapsModule.php:289 app/Module/GoogleMapsModule.php:1513
+#: app/Module/GoogleMapsModule.php:4022
 #: app/Module/RelationshipsChartModule.php:148 app/Module/SiteMapModule.php:297
 #: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
 #: app/Theme/AdministrationTheme.php:190
@@ -9383,7 +9325,7 @@ msgstr "Einingar kerfisstjórn"
 msgid "Modules"
 msgstr "Einingar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6862
 msgid "Moldova"
 msgstr "Moldavía"
@@ -9393,7 +9335,7 @@ msgstr "Moldavía"
 msgid "Mon"
 msgstr "Mán"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6861
 msgid "Monaco"
 msgstr "Mónakó"
@@ -9402,12 +9344,12 @@ msgstr "Mónakó"
 msgid "Monday"
 msgstr "Mánudagur"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6871
 msgid "Mongolia"
 msgstr "Mongólía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6873
 msgid "Montenegro"
 msgstr "Svartfjallaland"
@@ -9460,7 +9402,7 @@ msgstr "Monticello, Utah, United States"
 msgid "Montreal, Quebec, Canada"
 msgstr "Montreal, Quebec, Kanada"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6876
 msgid "Montserrat"
 msgstr "Montserrat"
@@ -9494,7 +9436,7 @@ msgctxt "NOMINATIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6860
 msgid "Morocco"
 msgstr "Marokkó"
@@ -9504,7 +9446,7 @@ msgstr "Marokkó"
 msgid "Most SMTP servers require a password."
 msgstr "Flestir SMTP þjónar þurfa lykilorð."
 
-#: app/Module/FamilyTreeStatisticsModule.php:203
+#: app/Module/FamilyTreeStatisticsModule.php:209
 #: app/Module/HtmlBlockModule.php:259
 msgid "Most common surnames"
 msgstr "Algengustu eftirnöfnin"
@@ -9580,7 +9522,7 @@ msgstr "Færa til hægri"
 msgid "Move up"
 msgstr "Færa upp"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6874
 msgid "Mozambique"
 msgstr "Mósambík"
@@ -9623,7 +9565,7 @@ msgstr "Minn reikningur"
 msgid "My family tree"
 msgstr ""
 
-#: app/Module/UserWelcomeModule.php:58 app/Theme/AbstractTheme.php:1610
+#: app/Module/UserWelcomeModule.php:61 app/Theme/AbstractTheme.php:1610
 msgid "My individual record"
 msgstr "Mínar einstaklingsfærslur"
 
@@ -9637,7 +9579,7 @@ msgstr "Mín síða"
 msgid "My pages"
 msgstr ""
 
-#: app/Module/UserWelcomeModule.php:57 app/Theme/AbstractTheme.php:1658
+#: app/Module/UserWelcomeModule.php:59 app/Theme/AbstractTheme.php:1658
 msgid "My pedigree"
 msgstr "Mín ættartala"
 
@@ -9651,7 +9593,7 @@ msgstr "MySQL skilaði villunni: %s"
 msgid "MySQL variables"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6870
 msgid "Myanmar"
 msgstr "Mjanmar"
@@ -9723,7 +9665,7 @@ msgstr "Nöfn til að fjarlægja úr algengum eftirnöfnum (aðgreind með kommu
 msgid "Namesake"
 msgstr "Nafni"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6882
 msgid "Namibia"
 msgstr "Namibía"
@@ -9751,7 +9693,7 @@ msgstr "Þjóðerni"
 msgid "Naturalization"
 msgstr "Veiting þegnréttar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6893
 msgid "Nauru"
 msgstr "Nárú"
@@ -9766,26 +9708,22 @@ msgstr "Nauvoo (new), Illinois, United States"
 msgid "Nauvoo (original), Illinois, United States"
 msgstr "Nauvoo (original), Illinois, United States"
 
-#: app/Module/GoogleMapsModule.php:407 app/Module/GoogleMapsModule.php:3961
-msgid "Neighborhood"
-msgstr "Nágrenni"
-
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6892
 msgid "Nepal"
 msgstr "Nepal"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6890
 msgid "Netherlands"
 msgstr "Holland"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6725
 msgid "Netherlands Antilles"
 msgstr "Hollensku Antillaeyjar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6894
 msgid "Neutral Zone"
 msgstr "Hlutlaust svæði"
@@ -9811,7 +9749,7 @@ msgctxt "MALE"
 msgid "Never married"
 msgstr "Aldrei giftur"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6883
 msgid "New Caledonia"
 msgstr "Nýja Kaledónía"
@@ -9821,7 +9759,7 @@ msgstr "Nýja Kaledónía"
 msgid "New York, New York, United States"
 msgstr "New York, New York, United States"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6895
 msgid "New Zealand"
 msgstr "Nýja Sjáland"
@@ -9853,7 +9791,7 @@ msgid "News"
 msgstr "Fréttir"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1932
+#: app/GedcomTag.php:1930
 msgid "Newspaper"
 msgstr "Dagblað"
 
@@ -9865,7 +9803,7 @@ msgstr "Næsta tölvupóst áminning verður send eftir "
 msgid "Next image"
 msgstr "Næsta mynd"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6887
 msgid "Nicaragua"
 msgstr "Níkaragva"
@@ -9875,12 +9813,12 @@ msgstr "Níkaragva"
 msgid "Nickname"
 msgstr "Gælunafn"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6884
 msgid "Niger"
 msgstr "Níger"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6886
 msgid "Nigeria"
 msgstr "Nígería"
@@ -9909,7 +9847,7 @@ msgctxt "NOMINATIVE"
 msgid "Nissan"
 msgstr "Nissan"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6889
 msgid "Niue"
 msgstr "Niue"
@@ -9950,7 +9888,7 @@ msgstr ""
 msgid "No GEDCOM files found."
 msgstr ""
 
-#: app/Module/GoogleMapsModule.php:936
+#: app/Module/GoogleMapsModule.php:907
 msgid "No ancestors in the database."
 msgstr "Engir forfeður í gagnagrunni."
 
@@ -9984,8 +9922,8 @@ msgid "No errors have been found."
 msgstr "Engar villur fundust."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
-#: app/Functions/FunctionsPrintLists.php:1854
-#: app/Functions/FunctionsPrintLists.php:1969
+#: app/Functions/FunctionsPrintLists.php:1853
+#: app/Functions/FunctionsPrintLists.php:1968
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
@@ -9993,28 +9931,28 @@ msgstr[0] "Engir atburðir eru til staðar næsta %s dag."
 msgstr[1] "Engir atburðir eru til staðar næstu %s daga."
 
 #: app/Functions/FunctionsPrintLists.php:1841
-#: app/Functions/FunctionsPrintLists.php:1956
+#: app/Functions/FunctionsPrintLists.php:1955
 msgid "No events exist for today."
 msgstr "Engir atburðir eru til staðar í dag."
 
 #: app/Functions/FunctionsPrintLists.php:1851
-#: app/Functions/FunctionsPrintLists.php:1966
+#: app/Functions/FunctionsPrintLists.php:1965
 msgid "No events exist for tomorrow."
 msgstr "Engir atburðir eru til staðar á morgun."
 
 #: app/Functions/FunctionsPrintLists.php:1843
-#: app/Functions/FunctionsPrintLists.php:1958
+#: app/Functions/FunctionsPrintLists.php:1957
 msgid "No events for living individuals exist for today."
 msgstr "Engir atburðir eru til staðar fyrir fólk á lífi í dag."
 
-#: app/Functions/FunctionsPrintLists.php:1858
-#: app/Functions/FunctionsPrintLists.php:1973
+#: app/Functions/FunctionsPrintLists.php:1857
+#: app/Functions/FunctionsPrintLists.php:1972
 msgid "No events for living individuals exist for tomorrow."
 msgstr "Engir atburðir eru til staðar á morgun fyrir fólk á lífi."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
-#: app/Functions/FunctionsPrintLists.php:1861
-#: app/Functions/FunctionsPrintLists.php:1976
+#: app/Functions/FunctionsPrintLists.php:1860
+#: app/Functions/FunctionsPrintLists.php:1975
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
@@ -10022,7 +9960,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: app/Controller/FamilyController.php:140
-msgid "No facts for this family."
+msgid "No facts exist for this family."
 msgstr "Engar staðreyndir fyrir þessa fjöldskyldu."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -10038,12 +9976,8 @@ msgstr "Engin takmörk"
 msgid "No link between the two individuals could be found."
 msgstr "Engin tengsl fundust á milli þessara tveggja einstaklinga."
 
-#: app/Stats.php:5947
-msgid "No logged-in and no anonymous users"
-msgstr "Engin innskráður og engir óþekktir notendur"
-
 #: app/Module/GoogleMapsModule.php:193
-msgid "No map data for this individual"
+msgid "No map data exists for this individual"
 msgstr "Engin kortagögn fyrir þessa persónu"
 
 #: admin_site_merge.php:237 admin_site_merge.php:284 admin_site_merge.php:330
@@ -10058,7 +9992,7 @@ msgstr ""
 msgid "No news articles have been submitted."
 msgstr "Engar fréttagreinar hafa verið sendar inn."
 
-#: app/Module/GoogleMapsModule.php:3849 app/Module/GoogleMapsModule.php:4584
+#: app/Module/GoogleMapsModule.php:3813 app/Module/GoogleMapsModule.php:4507
 msgid "No places found"
 msgstr "Engir staðir fundust"
 
@@ -10082,6 +10016,10 @@ msgstr "Engar færslur til að birta"
 #: placelist.php:60
 msgid "No results found."
 msgstr "Engar niðurstöður fundust."
+
+#: app/Stats.php:5947
+msgid "No signed-in and no anonymous users"
+msgstr "Engin innskráður og engir óþekktir notendur"
 
 #: app/Functions/FunctionsEdit.php:640
 msgid "No temple - living ordinance"
@@ -10122,7 +10060,7 @@ msgstr "Nonidi"
 msgid "Noon"
 msgstr "Hádegi"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6885
 msgid "Norfolk Island"
 msgstr "Norfolkeyja"
@@ -10131,22 +10069,22 @@ msgstr "Norfolkeyja"
 msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
 msgstr "Venjulega, þurfa hvaða breytingar sem gerðar eru á fjölskyldutré að vera samþykktar af stjórnanda. Þessi valkostur leyfir notanda að gera breytingar án þess að þurfa samþykki stjórnanda."
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6906
 msgid "North Korea"
 msgstr "Norður-Kórea"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6888
 msgid "Northern Ireland"
 msgstr "Norður Írland"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6872
 msgid "Northern Mariana Islands"
 msgstr "Norður-Maríanaeyjar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6891
 msgid "Norway"
 msgstr "Noregur"
@@ -10293,7 +10231,7 @@ msgid "Number of marriages"
 msgstr "Fjöldi giftinga"
 
 #: admin_users.php:701
-msgid "Number of months since the last login for a user’s account to be considered inactive: "
+msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
 msgstr "Fjöldi mánaða frá síðustu innskráningu þar til að notandareikningur geti talist óvirkur: "
 
 #: app/GedcomCode/GedcomCodeRela.php:203
@@ -10333,7 +10271,7 @@ msgstr "Starfsheiti"
 msgid "Occupations"
 msgstr "Starfsheiti"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6909
 msgid "Occupied Palestinian Territory"
 msgstr "Herteknu svæði Palestínu"
@@ -10419,7 +10357,7 @@ msgstr "Elsta móðir"
 msgid "Olivia"
 msgstr "Olivia"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6896
 msgid "Oman"
 msgstr "Óman"
@@ -10453,7 +10391,7 @@ msgstr "Því miður webtrees gat ekki stofnað skrár í þessari möppu."
 msgid "OpenStreetMap™"
 msgstr ""
 
-#: app/Module/GoogleMapsModule.php:423
+#: app/Module/GoogleMapsModule.php:394
 msgid "Optional prefixes and suffixes"
 msgstr "Valkvæð forskeyti og viðskeyti"
 
@@ -10512,7 +10450,7 @@ msgid "Orlando, Florida, United States"
 msgstr "Orlando, Florída"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1942 app/Stats.php:5499 app/Stats.php:5918
+#: app/GedcomTag.php:1940 app/Stats.php:5499 app/Stats.php:5918
 msgid "Other"
 msgstr "Annað"
 
@@ -10532,7 +10470,7 @@ msgstr "Aðrar stillingar"
 msgid "Others"
 msgstr "Aðrir"
 
-#: app/Module/GoogleMapsModule.php:4312
+#: app/Module/GoogleMapsModule.php:4235
 msgid "Overwrite existing coordinates."
 msgstr "Yfirskrifa fyrirliggjandi hnit."
 
@@ -10632,16 +10570,16 @@ msgid "Page size"
 msgstr "Síðustærð"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1940
+#: app/GedcomTag.php:1938
 msgid "Painting"
 msgstr "Málverk"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6897
 msgid "Pakistan"
 msgstr "Pakistan"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6902
 msgid "Palau"
 msgstr "Palá"
@@ -10656,7 +10594,7 @@ msgstr "Litaspjald"
 msgid "Palmyra, New York, United States"
 msgstr "Palmyra, New York, United States"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6898
 msgid "Panama"
 msgstr "Panama"
@@ -10666,12 +10604,12 @@ msgstr "Panama"
 msgid "Papeete, Tahiti"
 msgstr "Papeete, Tahiti"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6903
 msgid "Papua New Guinea"
 msgstr "Papúa Nýja-Gínea"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6908
 msgid "Paraguay"
 msgstr "Paragvæ"
@@ -10720,12 +10658,12 @@ msgstr "Ættartala"
 msgid "Pedigree chart"
 msgstr "Manntalsgraf"
 
-#: app/Module/GoogleMapsModule.php:222 app/Module/GoogleMapsModule.php:1418
+#: app/Module/GoogleMapsModule.php:222 app/Module/GoogleMapsModule.php:1389
 msgid "Pedigree map"
 msgstr "Ættartölukort"
 
 #. I18N: %s is an individual’s name
-#: app/Module/GoogleMapsModule.php:782
+#: app/Module/GoogleMapsModule.php:753
 #, php-format
 msgid "Pedigree map of %s"
 msgstr "Ættartölukort fyrir %s"
@@ -10750,7 +10688,7 @@ msgid "Pending changes"
 msgstr "Fyrirhugaðar breytingar"
 
 #: help_text.php:314
-msgid "Pending changes are only shown when your account has permission to edit. When you log out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
+msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
 msgstr "Fyrirhugaðar breytingar eru aðeins sýndar þegar reikningur þinn hefur réttindi til að breyta. Þegar þú skráir þig út, þá sérðu þær ekki lengur. Að auki, þá eru fyrirhugaðar breytingar aðeins sýndar á vissum síðum. Sem dæmi, þær eru ekki sýndar á listum, skýrslum eða leitarniðurstöðum."
 
 #. I18N: gedcom tag _PRMN
@@ -10767,12 +10705,12 @@ msgstr "Eyða þessum færslum endanlega?"
 msgid "Perth, Australia"
 msgstr "Perth, Ástralía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6900
 msgid "Peru"
 msgstr "Perú"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6901
 msgid "Philippines"
 msgstr "Filippseyjar"
@@ -10810,7 +10748,7 @@ msgid "Phonetic title"
 msgstr "Hljóðritunarheiti"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1934
+#: app/GedcomTag.php:1932
 msgid "Photo"
 msgstr "Ljósmynd"
 
@@ -10837,16 +10775,16 @@ msgstr "PhpGedView yfir í webtrees flutningsálfur"
 msgid "Pink Plastic"
 msgstr "Pink Plastic"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6899
 msgid "Pitcairn"
 msgstr "Pitkairn-eyja"
 
 #. I18N: gedcom tag PLAC
-#: app/GedcomTag.php:682 app/Module/GoogleMapsModule.php:1676
-#: app/Module/GoogleMapsModule.php:4069 app/Module/GoogleMapsModule.php:4072
-#: app/Module/GoogleMapsModule.php:4075 app/Module/GoogleMapsModule.php:4078
-#: app/Module/GoogleMapsModule.php:4081
+#: app/GedcomTag.php:682 app/Module/GoogleMapsModule.php:1647
+#: app/Module/GoogleMapsModule.php:3994 app/Module/GoogleMapsModule.php:3997
+#: app/Module/GoogleMapsModule.php:4000 app/Module/GoogleMapsModule.php:4003
+#: app/Module/GoogleMapsModule.php:4006
 #: modules_v3/GEDFact_assistant/census/census-edit.php:152
 #: modules_v3/bdm_report/report.xml:6 modules_v3/bdm_report/report.xml:134
 #: modules_v3/bdm_report/report.xml:160 modules_v3/bdm_report/report.xml:194
@@ -10858,10 +10796,10 @@ msgstr "Pitkairn-eyja"
 msgid "Place"
 msgstr "Staður"
 
-#: app/Module/GoogleMapsModule.php:172 app/Module/GoogleMapsModule.php:312
-#: app/Module/GoogleMapsModule.php:904 app/Module/GoogleMapsModule.php:1559
-#: app/Module/GoogleMapsModule.php:1565 app/Module/GoogleMapsModule.php:2696
-#: app/Module/GoogleMapsModule.php:4114
+#: app/Module/GoogleMapsModule.php:172 app/Module/GoogleMapsModule.php:306
+#: app/Module/GoogleMapsModule.php:875 app/Module/GoogleMapsModule.php:1530
+#: app/Module/GoogleMapsModule.php:1536 app/Module/GoogleMapsModule.php:2667
+#: app/Module/GoogleMapsModule.php:4039
 msgid "Place check"
 msgstr "Staðsetja merkingu"
 
@@ -10870,7 +10808,7 @@ msgstr "Staðsetja merkingu"
 msgid "Place contains"
 msgstr "Staður inniheldur"
 
-#: app/Module/GoogleMapsModule.php:464 app/Theme/AbstractTheme.php:1527
+#: app/Module/GoogleMapsModule.php:435 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
 msgid "Place hierarchy"
 msgstr "Staðar stigveldi"
@@ -11087,7 +11025,7 @@ msgctxt "NOMINATIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6904
 msgid "Poland"
 msgstr "Pólland"
@@ -11118,7 +11056,7 @@ msgstr "Porto Alegre, Brasilía"
 msgid "Portrait"
 msgstr "Lóðrétt"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6907
 msgid "Portugal"
 msgstr "Portúgal"
@@ -11157,14 +11095,6 @@ msgctxt "NOMINATIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#: app/Module/GoogleMapsModule.php:3931
-msgid "Precision"
-msgstr "Nákvæmni"
-
-#: app/Module/GoogleMapsModule.php:403
-msgid "Precision of the latitude and longitude"
-msgstr "Nákvæmni breiddar- og lengdargráða"
-
 #: admin_site_config.php:122
 msgid "Predefined text that states admin will decide on each request for a user account"
 msgstr "Fyrirfram skilgreindur texti sem staðhæfir að kerfisstjóri muni ákveða með notendareikning fyrir hverja ósk"
@@ -11191,7 +11121,7 @@ msgstr ""
 msgid "Preferred contact method"
 msgstr "Forgangs samskiptaháttur"
 
-#: app/Module/GoogleMapsModule.php:428
+#: app/Module/GoogleMapsModule.php:399
 msgid "Prefixes"
 msgstr "Forskeyti"
 
@@ -11236,7 +11166,7 @@ msgstr "Friðhelgis takmörkun - þetta á við færslur og staðreyndir sem ekk
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:532
 #: app/GedcomRecord.php:610 app/GedcomRecord.php:735 app/Individual.php:1309
-#: app/Module/GoogleMapsModule.php:851 app/Note.php:71
+#: app/Module/GoogleMapsModule.php:822 app/Note.php:71
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1470 app/Stats.php:2975 expand_view.php:33
 msgid "Private"
@@ -11262,12 +11192,12 @@ msgstr "Provo, Utah, United States"
 msgid "Publication"
 msgstr "Útgáfa"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6905
 msgid "Puerto Rico"
 msgstr "Puerto Ríko"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6911
 msgid "Qatar"
 msgstr "Katar"
@@ -11501,8 +11431,8 @@ msgstr "Færslurnar eru ekki sömu gerðar. Ekki er hægt að sameina færslur s
 msgid "Redlands, California, United States"
 msgstr "Redlands, Kalifornía"
 
-#: app/Module/GoogleMapsModule.php:991 app/Module/GoogleMapsModule.php:2338
-#: app/Module/GoogleMapsModule.php:3645
+#: app/Module/GoogleMapsModule.php:962 app/Module/GoogleMapsModule.php:2309
+#: app/Module/GoogleMapsModule.php:3613
 msgid "Redraw map"
 msgstr "Endurteikna kort"
 
@@ -11628,7 +11558,7 @@ msgstr "Fjarlægur þjónn"
 #: app/Module/ClippingsCartModule.php:524
 #: app/Module/ClippingsCartModule.php:705
 #: app/Module/FamilyTreeFavoritesModule.php:156
-#: app/Module/GoogleMapsModule.php:4613 edit_interface.php:1956
+#: app/Module/GoogleMapsModule.php:4536 edit_interface.php:1956
 #: edit_interface.php:1992 edit_interface.php:2019 edit_interface.php:2038
 #: index_edit.php:327 index_edit.php:344
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106
@@ -11640,8 +11570,8 @@ msgstr "Fjarlægja"
 msgid "Remove duplicate links"
 msgstr "Fjarlægja tvöfaldar krækjur"
 
-#: app/Module/GoogleMapsModule.php:611 app/Module/GoogleMapsModule.php:614
-#: app/Module/GoogleMapsModule.php:617 app/Module/GoogleMapsModule.php:4011
+#: app/Module/GoogleMapsModule.php:582 app/Module/GoogleMapsModule.php:585
+#: app/Module/GoogleMapsModule.php:588 app/Module/GoogleMapsModule.php:3933
 msgid "Remove flag"
 msgstr "Fjarlægja fána"
 
@@ -11658,7 +11588,7 @@ msgstr "Fjarlægja krækju úr lista"
 msgid "Remove the GEDCOM media path from filenames"
 msgstr ""
 
-#: app/Module/GoogleMapsModule.php:4529
+#: app/Module/GoogleMapsModule.php:4452
 msgid "Remove this location?"
 msgstr "Fjarlægja þessa staðsetningu?"
 
@@ -11677,7 +11607,7 @@ msgstr ""
 msgid "Renumber family tree"
 msgstr ""
 
-#. I18N: button label
+#. I18N: A button label
 #: search.php:217
 msgid "Replace"
 msgstr ""
@@ -11707,7 +11637,7 @@ msgstr "Skýrslur"
 
 #: admin.php:757 admin.php:815 admin_trees_duplicates.php:140
 #: app/Module/FamilyTreeStatisticsModule.php:120
-#: app/Module/FamilyTreeStatisticsModule.php:385
+#: app/Module/FamilyTreeStatisticsModule.php:381
 #: app/Module/HtmlBlockModule.php:199 app/Theme/AbstractTheme.php:1536
 #: repolist.php:33 repolist.php:37 statistics.php:355
 msgid "Repositories"
@@ -11735,13 +11665,9 @@ msgstr "Gagnageymsla inniheldur"
 msgid "Repository name"
 msgstr "Geymsluheiti"
 
-#: app/Module/LoginBlockModule.php:86 login.php:207
-msgid "Request new password"
-msgstr "Óska eftir nýju lykilorði"
-
 #: app/Module/LoginBlockModule.php:89 app/Module/WelcomeBlockModule.php:60
 #: login.php:210 login.php:277
-msgid "Request new user account"
+msgid "Request a new user account"
 msgstr "Óska eftir nýjum notandareikningi"
 
 #. I18N: gedcom tag _TODO
@@ -11802,7 +11728,7 @@ msgstr "Niðurstöður"
 msgid "Retirement"
 msgstr "Starfslok"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6912
 msgid "Reunion"
 msgstr "Réunion"
@@ -11816,7 +11742,7 @@ msgstr "Hægri Hluta Kassar"
 msgid "Role"
 msgstr "Hlutverk"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6913
 msgid "Romania"
 msgstr "Rúmenía"
@@ -11850,12 +11776,12 @@ msgstr "Regla"
 msgid "Russell"
 msgstr "Russell"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6914
 msgid "Russia"
 msgstr "Rússland"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6915
 msgid "Rwanda"
 msgstr "Rúanda"
@@ -11898,27 +11824,27 @@ msgstr "Safar"
 msgid "Sage"
 msgstr "Sage"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6925
 msgid "Saint Helena"
 msgstr "Sankti Helena"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6845
 msgid "Saint Kitts and Nevis"
 msgstr "Sankti Kitts og Neviseyjur"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6852
 msgid "Saint Lucia"
 msgstr "Sankti Lúsía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6933
 msgid "Saint Pierre and Miquelon"
 msgstr "Sankti Pierre og Miquelon"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6967
 msgid "Saint Vincent and the Grenadines"
 msgstr "Sankti Vincent og Grenadineeyjar"
@@ -11928,7 +11854,7 @@ msgstr "Sankti Vincent og Grenadineeyjar"
 msgid "Salt Lake City, Utah, United States"
 msgstr "Salt Lake City, Utah, United States"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6976
 msgid "Samoa"
 msgstr "Samóa"
@@ -11948,7 +11874,7 @@ msgstr "San Diego, Kalifornía"
 msgid "San Jose, Costa Rica"
 msgstr "San Jose, Kosta Ríka"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6931
 msgid "San Marino"
 msgstr "San Marínó"
@@ -11968,7 +11894,7 @@ msgstr "Santo Domingo, Dominican Republic"
 msgid "Sao Paulo, Brazil"
 msgstr "Sao Paulo, Brasilía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6935
 msgid "Sao Tome and Principe"
 msgstr "Saó Tóme og Prinsípe"
@@ -11978,7 +11904,7 @@ msgstr "Saó Tóme og Prinsípe"
 msgid "Sat"
 msgstr "Lau"
 
-#: app/Module/GoogleMapsModule.php:332
+#: app/Module/GoogleMapsModule.php:325
 msgid "Satellite"
 msgstr "Gervitungl"
 
@@ -11986,7 +11912,7 @@ msgstr "Gervitungl"
 msgid "Saturday"
 msgstr "Laugardagur"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6916
 msgid "Saudi Arabia"
 msgstr "Sádí-Arabía"
@@ -11995,7 +11921,7 @@ msgstr "Sádí-Arabía"
 msgid "School or college"
 msgstr "Skóli eða framhaldsskóli"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6918
 msgid "Scotland"
 msgstr "Skotland"
@@ -12028,7 +11954,7 @@ msgstr "Staðfesting"
 msgid "Sealing canceled (divorce)"
 msgstr "Staðfestingu aflétt (skilnaður)"
 
-#. I18N: button label
+#. I18N: A button label
 #: app/Module/DescendancyModule.php:101 app/Module/DescendancyModule.php:134
 #: app/Module/FamiliesSidebarModule.php:149
 #: app/Module/IndividualSidebarModule.php:150 app/Theme/AbstractTheme.php:528
@@ -12066,15 +11992,11 @@ msgstr "Leitarsíur"
 msgid "Search for"
 msgstr "Leita að"
 
-#: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
-msgid "Search for individuals to add to add Links list."
-msgstr "Leita að fólki til að bæta við á krækjulista."
-
-#: app/Module/GoogleMapsModule.php:3924
+#: app/Module/GoogleMapsModule.php:3888
 msgid "Search globally"
 msgstr "Leita á heimsvísu"
 
-#: app/Module/GoogleMapsModule.php:3926
+#: app/Module/GoogleMapsModule.php:3890
 msgid "Search locally"
 msgstr "Leita staðbundið"
 
@@ -12137,7 +12059,7 @@ msgstr "Velja grafsnið"
 msgid "Select events"
 msgstr "Velja atburði"
 
-#: app/Module/GoogleMapsModule.php:558
+#: app/Module/GoogleMapsModule.php:529
 msgid "Select flag"
 msgstr "Velja fána"
 
@@ -12166,7 +12088,7 @@ msgstr ""
 msgid "Select the languages that will be shown in menus."
 msgstr ""
 
-#: app/Module/FamilyTreeStatisticsModule.php:307
+#: app/Module/FamilyTreeStatisticsModule.php:303
 msgid "Select the stats to show in this block"
 msgstr "Velja tölfræðina til að sýna í þessu boxi"
 
@@ -12203,11 +12125,11 @@ msgid "Send a message to all users"
 msgstr "Senda skilaboð til allra notenda"
 
 #: admin_users_bulk.php:46
-msgid "Send a message to users who have never logged in"
+msgid "Send a message to users who have never signed in"
 msgstr "Senda skilaboð til notenda sem hafa aldrei skáð sig inn"
 
 #: admin_users_bulk.php:51
-msgid "Send a message to users who have not logged in for 6 months"
+msgid "Send a message to users who have not signed in for 6 months"
 msgstr "Senda skilaboð til notenda sem hafa ekki skráð sig inn í 6 mánuði"
 
 #. I18N: Menu entry
@@ -12235,7 +12157,7 @@ msgstr ""
 msgid "Sending server name"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6921
 msgid "Senegal"
 msgstr "Senegal"
@@ -12280,12 +12202,12 @@ msgstr "September"
 msgid "Septidi"
 msgstr "Septidi"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6922
 msgid "Serbia"
 msgstr "Serbía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6917
 msgid "Serbia and Montenegro"
 msgstr "Serbía og Svartfjallaland"
@@ -12304,7 +12226,7 @@ msgctxt "MALE"
 msgid "Servant"
 msgstr "Þjónn"
 
-#: app/Module/GoogleMapsModule.php:4265
+#: app/Module/GoogleMapsModule.php:4189
 msgid "Server file containing places (CSV)"
 msgstr "Þjónaskrá sem inniheldur staði (CSV)"
 
@@ -12390,7 +12312,7 @@ msgstr "Uppsetningarálfur fyrir webtrees"
 msgid "Sextidi"
 msgstr "Sextidi"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6942
 msgid "Seychelles"
 msgstr "Seychell-eyjar"
@@ -12576,8 +12498,13 @@ msgid "Show"
 msgstr "Sýna"
 
 #. I18N: A configuration setting
+#: admin_trees_config.php:1048
+msgid "Show a download link in the media viewer"
+msgstr "Sýna niðurhalskrækju í miðils skoðara"
+
+#. I18N: A configuration setting
 #: admin_site_config.php:500
-msgid "Show acceptable use agreement on “Request new user account” page"
+msgid "Show acceptable use agreement on “Request a new user account” page"
 msgstr "Sýna ásættanlegt notkunarsamkomulag á «Óska eftir nýjum notandareikning» síðu"
 
 #: app/Module/NotesTabModule.php:73
@@ -12619,7 +12546,7 @@ msgstr ""
 msgid "Show children of ancestors"
 msgstr "Sýna börn forfeðra?"
 
-#: app/Module/FamilyTreeStatisticsModule.php:300
+#: app/Module/FamilyTreeStatisticsModule.php:296
 msgid "Show common surnames"
 msgstr "Sýna algeng eftirnöfn?"
 
@@ -12661,7 +12588,7 @@ msgid "Show date differences"
 msgstr "Sýna mismun dagsetninga"
 
 #. I18N: label for yes/no option
-#: app/Module/FamilyTreeStatisticsModule.php:292
+#: app/Module/FamilyTreeStatisticsModule.php:288
 msgid "Show date of last update"
 msgstr "Sýna dagsetningu á nýjustu uppfærslu?"
 
@@ -12679,15 +12606,6 @@ msgstr "Sýna upplýsingar"
 msgid "Show divorced couples."
 msgstr "Sýna skilin pör."
 
-#. I18N: A configuration setting
-#: admin_trees_config.php:1048
-msgid "Show download link in media viewer"
-msgstr "Sýna niðurhalskrækju í miðils skoðara"
-
-#: admin_trees_config.php:1462
-msgid "Show events of close relatives on individual page"
-msgstr "Sýna atburði hjá nánum ættingjum á einstaklingssíðu"
-
 #: admin_trees_config.php:1102
 msgid "Show highlight images in individual boxes"
 msgstr "Sýna áherslumerktar myndir í fólkskassa"
@@ -12701,7 +12619,7 @@ msgstr "Sýna vefteljara á gáttar- og einstaklingssíðum."
 msgid "Show images"
 msgstr ""
 
-#: app/Module/GoogleMapsModule.php:4563
+#: app/Module/GoogleMapsModule.php:4486
 msgid "Show inactive places"
 msgstr "Sýna óvirka staði"
 
@@ -12866,6 +12784,10 @@ msgstr "Sýna %1$s %2$s hlutina af staðarheiti."
 msgid "Show the date and time of update"
 msgstr "Sýna dagsetningu og tímasetningu á uppfærslu"
 
+#: admin_trees_config.php:1462
+msgid "Show the events of close relatives on the individual page"
+msgstr "Sýna atburði hjá nánum ættingjum á einstaklingssíðu"
+
 #. I18N: A configuration setting
 #: admin_trees_config.php:367
 msgid "Show the family tree"
@@ -12953,7 +12875,7 @@ msgstr "Systkin"
 msgid "Siblings"
 msgstr "Systkini"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6926
 msgid "Sicily"
 msgstr "Sikiley"
@@ -12968,10 +12890,32 @@ msgstr "Hliðarslá"
 msgid "Sidebars"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6929
 msgid "Sierra Leone"
 msgstr "Síerra Leóne"
+
+#. I18N: Name of a module
+#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
+#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
+#: login.php:150 login.php:199
+msgid "Sign in"
+msgstr "Innskráning"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "Sign out"
+msgstr "Útskráning"
+
+#. I18N: A configuration setting
+#: admin_site_config.php:447
+msgid "Sign-in URL"
+msgstr "Innskráningar veffang"
+
+#. I18N: Menu entry
+#: admin_site_config.php:140 app/Theme/AdministrationTheme.php:97
+msgid "Sign-in and registration"
+msgstr ""
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -12981,7 +12925,7 @@ msgstr "Einfaldar dagsetningar eru taldar vera í gregóríansku dagatali. Til a
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
 msgstr "Einföld leitarsía sem byggir á innslegnum bókstöfum, óvissutákn eru ekki samþykkt."
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6923
 msgid "Singapore"
 msgstr "Singapúr"
@@ -13046,7 +12990,7 @@ msgctxt "NOMINATIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
-#: app/Module/GoogleMapsModule.php:354 app/Module/GoogleMapsModule.php:479
+#: app/Module/GoogleMapsModule.php:347 app/Module/GoogleMapsModule.php:450
 msgid "Size of map (in pixels)"
 msgstr "Stærð landakorts (í pixlum)"
 
@@ -13075,12 +13019,12 @@ msgstr "Þræll"
 msgid "Slide show"
 msgstr "Myndasýning"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6938
 msgid "Slovakia"
 msgstr "Slóvakía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6939
 msgid "Slovenia"
 msgstr "Slóvenía"
@@ -13099,12 +13043,12 @@ msgstr "Snowflake, Arizona, United States"
 msgid "Social security number"
 msgstr "Kennitala"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6928
 msgid "Solomon Islands"
 msgstr "Salómonseyjar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6932
 msgid "Somalia"
 msgstr "Sómalía"
@@ -13114,7 +13058,7 @@ msgstr "Sómalía"
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
 
-#: app/Module/GoogleMapsModule.php:460
+#: app/Module/GoogleMapsModule.php:431
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
 msgstr ""
 
@@ -13212,7 +13156,7 @@ msgstr "Heimildargerð"
 #: app/Functions/FunctionsPrintLists.php:1336
 #: app/Functions/FunctionsPrintLists.php:1452
 #: app/Module/FamilyTreeStatisticsModule.php:114
-#: app/Module/FamilyTreeStatisticsModule.php:357
+#: app/Module/FamilyTreeStatisticsModule.php:353
 #: app/Module/HtmlBlockModule.php:191 app/Module/SourcesTabModule.php:34
 #: app/Theme/AbstractTheme.php:1545 gedrecord.php:147 mediaviewer.php:136
 #: modules_v3/ahnentafel_report/report.xml:473
@@ -13229,7 +13173,7 @@ msgstr "Heimildir"
 msgid "Sources to the events"
 msgstr "Heimildir við atburði"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6979
 msgid "South Africa"
 msgstr "Suður-Afríka"
@@ -13238,17 +13182,17 @@ msgstr "Suður-Afríka"
 msgid "South America"
 msgstr "Suður Amerkíka"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6924
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Suður-Georgía og Suður-Sandwich eyjar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6934
 msgid "South Sudan"
 msgstr "Suður Súdan"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6793
 msgid "Spain"
 msgstr "Spánn"
@@ -13289,7 +13233,7 @@ msgstr "Makar"
 msgid "Spouses and children"
 msgstr "Makar og börn"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6854
 msgid "Sri Lanka"
 msgstr "Srí Lanka"
@@ -13309,7 +13253,7 @@ msgstr "St. Louis, Missouri, United States"
 msgid "St. Paul, Minnesota, United States"
 msgstr "St. Paul, Minnesota, United States"
 
-#: app/Module/GoogleMapsModule.php:507
+#: app/Module/GoogleMapsModule.php:478
 msgid "Standard"
 msgstr "Venjulegt"
 
@@ -13338,8 +13282,7 @@ msgid "Starting range of change dates"
 msgstr "Byrjunarsvið á breytingar dagsetningum"
 
 #. I18N: gedcom tag STAE
-#: app/GedcomTag.php:796 app/Module/GoogleMapsModule.php:407
-#: app/Module/GoogleMapsModule.php:3957 app/Module/GoogleMapsModule.php:4060
+#: app/GedcomTag.php:796 app/Module/GoogleMapsModule.php:3985
 msgid "State"
 msgstr "Fylki"
 
@@ -13352,7 +13295,7 @@ msgid "Statistics"
 msgstr "Tölfræði"
 
 #: statisticsplot.php:836
-msgid "Statistics plot"
+msgid "Statistics chart"
 msgstr "Tölfræði teikning"
 
 #. I18N: gedcom tag STAT
@@ -13410,7 +13353,7 @@ msgid "Story title"
 msgstr "Söguheiti"
 
 #. I18N: Part of a country, state/region/county
-#: app/Module/GoogleMapsModule.php:730 app/Module/GoogleMapsModule.php:1589
+#: app/Module/GoogleMapsModule.php:701 app/Module/GoogleMapsModule.php:1560
 msgid "Subdivision"
 msgstr "Undirflokkur"
 
@@ -13433,12 +13376,12 @@ msgstr "Sent en ekki þegar afgreitt"
 msgid "Submitter"
 msgstr "Sendandi"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6919
 msgid "Sudan"
 msgstr "Súdan"
 
-#: app/Module/GoogleMapsModule.php:444
+#: app/Module/GoogleMapsModule.php:415
 msgid "Suffixes"
 msgstr "Viðskeyti"
 
@@ -13457,7 +13400,7 @@ msgstr "Sunnudagur"
 msgid "Support and documentation can be found at %s."
 msgstr "Þjónustu og skjalasafn er að finna á %s."
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6937
 msgid "Suriname"
 msgstr "Súrínam"
@@ -13503,7 +13446,7 @@ msgstr ""
 msgid "Suva, Fiji"
 msgstr "Suva, Fiji"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6927
 msgid "Svalbard and Jan Mayen Islands"
 msgstr "Svalbarði og Jan Mayen"
@@ -13513,17 +13456,17 @@ msgstr "Svalbarði og Jan Mayen"
 msgid "Swap individuals"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6941
 msgid "Swaziland"
 msgstr "Svasíland"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6940
 msgid "Sweden"
 msgstr "Svíþjóð"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6762
 msgid "Switzerland"
 msgstr "Sviss"
@@ -13537,10 +13480,10 @@ msgstr "Sydney, Ástralía"
 msgid "Synchronize family trees with GEDCOM files"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6943
-msgid "Syrian Arab Republic"
-msgstr "Sýrlenska arabalýðveldið"
+msgid "Syria"
+msgstr "Sýrland"
 
 #: setup.php:421
 msgid "System settings"
@@ -13569,12 +13512,12 @@ msgstr "Merkimiði"
 msgid "Taipei, Taiwan"
 msgstr "Taipei, Taiwan"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6958
 msgid "Taiwan"
 msgstr "Tævan"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6948
 msgid "Tajikistan"
 msgstr "Tadsjikistan"
@@ -13608,7 +13551,7 @@ msgctxt "NOMINATIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6959
 msgid "Tanzania"
 msgstr "Tansanía"
@@ -13632,7 +13575,7 @@ msgstr "Sniðmát"
 msgid "Temple"
 msgstr "Musteri"
 
-#: app/Module/GoogleMapsModule.php:334
+#: app/Module/GoogleMapsModule.php:327
 msgid "Terrain"
 msgstr "Landslag"
 
@@ -13665,7 +13608,7 @@ msgstr "Tevet"
 msgid "Text"
 msgstr "Texti"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6947
 msgid "Thailand"
 msgstr "Taíland"
@@ -13692,7 +13635,7 @@ msgstr ""
 msgid "The Hague, Netherlands"
 msgstr "The Hague, Holland"
 
-#. I18N: Help text for the “Show download link in media viewer” configuration setting
+#. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1053
 msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
 msgstr "Miðilsskoðarinn getur sýnt krækju sem, ef smellt er á hana, mun hlaða niður miðilsskránni á staðbundna tölvu.<br><br>Það getur verið að þú viljir fela niðurhals krækjuna af öryggisástæðum."
@@ -13708,11 +13651,11 @@ msgstr "PhpGedView til webtrees álfurinn er sjálfvirkt ferli til að aðstoða
 
 #: admin_users.php:101
 #, php-format
-msgid "The administrator at the webtrees site %s has approved your application for an account. You may now login by accessing the following link: %s"
+msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
 msgstr "Kerfisstjórinn á webtrees vefsíðunni %s hefur samþykkt þína umsókn um reikning. Þú getur núna skráð þig inn með því að fylgja eftirfarandi krækju: %s"
 
 #: login.php:612
-msgid "The administrator has been informed. As soon as they give you permission to login, you can login with your user name and password."
+msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your user name and password."
 msgstr "Kerfisstjórinn hefur verið upplýstur. Um leið og hann gefur þér heimild til innskráningar, þá getur þú skráð þig inn með notandaheiti þínu og lykilorði."
 
 #. I18N: %s is the name of an individual, source or other record
@@ -13950,6 +13893,15 @@ msgstr ""
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
 msgstr "Kröfurnar um minni og örgjörvatíma ráðast af fjölda einstaklinga í fjölskyldutrénu þínu."
 
+#: message.php:193
+msgid "The message was not sent."
+msgstr "Skilaboð var ekki sent"
+
+#: message.php:191
+#, php-format
+msgid "The message was successfully sent to %s."
+msgstr "Það tókst að senda skilaboðin á %s"
+
 #: admin_modules.php:54
 #, php-format
 msgid "The module “%s” has been disabled."
@@ -14009,7 +13961,7 @@ msgstr ""
 msgid "The preferences for the module “%s” have been deleted."
 msgstr ""
 
-#: app/Module/GoogleMapsModule.php:284
+#: app/Module/GoogleMapsModule.php:278
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
 msgstr ""
@@ -14033,6 +13985,7 @@ msgstr "Færsla afrituð á klippiborð."
 msgid "The records “%1$s” and “%2$s” have been merged."
 msgstr ""
 
+#. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "The regular expression appears to contain an error. It can’t be used."
 msgstr "„Regexið“ virðist innihalda villu. Ekki er hægt að nota það."
@@ -14072,7 +14025,7 @@ msgstr "Smámyndaskrá %s er ekki til."
 
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:290
-msgid "The time in seconds that a webtrees session remains active before requiring a login. The default is 7200, which is 2 hours."
+msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
 msgstr "Tíminn í sekúndum sem webtrees seta helst virk áður en krafist er innskráningar. Sjálfgefið er 7200, sem eru 2 klst."
 
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:253
@@ -14151,7 +14104,7 @@ msgstr ""
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
 msgstr ""
 
-#: setup.php:497
+#: setup.php:507
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
 msgstr "Þróunaraðilar webtrees eru mjög áhugasamir um að fá upplýsingar um þessa villu. Ef þú hefur samband við þá, þá munu þeir hjálpa þér við að leysa þetta vandamál."
 
@@ -14398,7 +14351,7 @@ msgid "This information is private and cannot be shown."
 msgstr "Þessar upplýsingar eru einkamál og ekki hægt að sýna."
 
 #: help_text.php:280
-msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
+msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
 msgstr ""
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
@@ -14670,7 +14623,7 @@ msgstr "Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með f
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
 msgstr "Þessi valkostur mun sýna nöfn (án annarra upplýsinga) á einstaklingum með friðhelgi. Einstaklingar eru með friðhelgi ef þeir eru ennþá á lífi eða ef friðhelgis takmörkun hefur verið bætt við einstaklings færslur þeirra. Til að fela ákveðið nafn, bættu þá við friðhelgis takmörk við þá nafna færslu."
 
-#: app/Module/GoogleMapsModule.php:523
+#: app/Module/GoogleMapsModule.php:494
 msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
 msgstr "Þessi valkostur ákveður hvort breiddar- og lengdargráður eru birtar á sprettiglugga sem tengdur er landakorta leiðarmerkjum."
 
@@ -14685,7 +14638,7 @@ msgid_plural "This page has been viewed %s times."
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/Module/GoogleMapsModule.php:2855
+#: app/Module/GoogleMapsModule.php:2826
 msgid "This place has no coordinates"
 msgstr "Þessi staður hefur engin staðsetningarhnit"
 
@@ -14800,10 +14753,6 @@ msgstr "Þessari heimild hefur verið breytt. Breytingarnar verða endurskoðað
 msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Þessari heimild hefur verið breytt. Þú ættir að sendurskoða breytinguna og síðan %1$s eða %2$s þau."
 
-#: app/Module/GoogleMapsModule.php:416
-msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
-msgstr "Þetta tilgreinir nákvæmni mismunandi stiga þegar ný landfæðileg staðsetning er slegin inn. Sem dæmi að þá er land tilgreint með nákvæmnina 0 (=0 tölustafur eftir tugabrotskommu), á meðan að bær þarf 3 eða 4 tölustafi."
-
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: admin_trees_config.php:947
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
@@ -14892,7 +14841,7 @@ msgstr "Tímalína"
 msgid "Timestamp"
 msgstr "Tímastimpill"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6951
 msgid "Timor-Leste"
 msgstr "Tímor-Leste"
@@ -14993,7 +14942,7 @@ msgid "To protect this private data, webtrees uses an Apache configuration file 
 msgstr ""
 
 #: help_text.php:298
-msgid "To reduce the height of the News block, the administrator has hidden some articles. You can reveal these hidden articles by clicking the <b>View archive</b> link."
+msgid "To reduce the height of the News block, the administrator has hidden some articles. You can reveal these hidden articles by clicking the <b>View the archive</b> link."
 msgstr "Til að minnka hæðina á Fréttakassanum, þá hefur kerfisstjórinn falið nokkrar greinar. Þú getur birt þessar földu greinar með því að smella á krækjuna <b>Skoða geymslu</b>."
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:364
@@ -15017,12 +14966,12 @@ msgstr "Til að láta leitarvélar vita af aðgengilegum staðarkortum, þá æt
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
 msgstr "Til að nota Google tölvupóstreikning, notið þá eftirfarandi stillingar: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6946
 msgid "Togo"
 msgstr "Tógó"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6949
 msgid "Tokelau"
 msgstr "Tókelá"
@@ -15033,11 +14982,11 @@ msgid "Tokyo, Japan"
 msgstr "Tokyo, Japan"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1936
+#: app/GedcomTag.php:1934
 msgid "Tombstone"
 msgstr "Legsteinn"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6952
 msgid "Tonga"
 msgstr "Tonga"
@@ -15068,7 +15017,7 @@ msgstr "Vinsælt fornafn"
 msgid "Top given names"
 msgstr "Vinsælustu skírnarnöfnin"
 
-#: app/Module/GoogleMapsModule.php:4556 app/Module/GoogleMapsModule.php:4632
+#: app/Module/GoogleMapsModule.php:4479 app/Module/GoogleMapsModule.php:4555
 #: placelist.php:109
 msgid "Top level"
 msgstr "Efsta stig"
@@ -15113,7 +15062,7 @@ msgid "Total divorces"
 msgstr "Samtals skilnaðir"
 
 #: app/Module/FamilyTreeStatisticsModule.php:123
-#: app/Module/FamilyTreeStatisticsModule.php:399
+#: app/Module/FamilyTreeStatisticsModule.php:395
 #: app/Module/HtmlBlockModule.php:203
 #: modules_v3/missing_facts_report/report.xml:602 statistics.php:366
 msgid "Total events"
@@ -15179,7 +15128,7 @@ msgid "Total pending changes: "
 msgstr "Samtals fyrirhugaðar breytingar: "
 
 #. I18N: A count of places
-#: app/Module/GoogleMapsModule.php:1801
+#: app/Module/GoogleMapsModule.php:1772
 #, php-format
 msgid "Total places: %s"
 msgstr "Samtals staðir: %s"
@@ -15190,13 +15139,13 @@ msgid "Total sources: %s"
 msgstr "Samtals upprunar: %s"
 
 #: app/Module/FamilyTreeStatisticsModule.php:108
-#: app/Module/FamilyTreeStatisticsModule.php:329
+#: app/Module/FamilyTreeStatisticsModule.php:325
 #: app/Module/HtmlBlockModule.php:183 statistics.php:192
 msgid "Total surnames"
 msgstr "Samtals eftirnöfn"
 
 #: app/Module/FamilyTreeStatisticsModule.php:126
-#: app/Module/FamilyTreeStatisticsModule.php:413
+#: app/Module/FamilyTreeStatisticsModule.php:409
 #: app/Module/HtmlBlockModule.php:207
 msgid "Total users"
 msgstr "Samtals notendur"
@@ -15217,7 +15166,7 @@ msgstr ""
 msgid "Trailer"
 msgstr "Sýnishorn"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6953
 msgid "Transylvania"
 msgstr "Transylvanía"
@@ -15227,7 +15176,7 @@ msgstr "Transylvanía"
 msgid "Tridi"
 msgstr "Tridi"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6954
 msgid "Trinidad and Tobago"
 msgstr "Trínidad og Tóbagó"
@@ -15241,27 +15190,27 @@ msgstr "Þri"
 msgid "Tuesday"
 msgstr "Þriðjudagur"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6955
 msgid "Tunisia"
 msgstr "Túnis"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6956
 msgid "Turkey"
 msgstr "Tyrkland"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6950
 msgid "Turkmenistan"
 msgstr "Túrkmenistan"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6944
 msgid "Turks and Caicos Islands"
 msgstr "Turks og Kaikós eyjar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6957
 msgid "Tuvalu"
 msgstr "Túvalú"
@@ -15278,7 +15227,7 @@ msgstr "Tuxtla Gutierrez, Mexikó"
 msgid "Type"
 msgstr "Tegund"
 
-#: app/Module/GoogleMapsModule.php:502
+#: app/Module/GoogleMapsModule.php:473
 msgid "Type of place markers in the place hierarchy"
 msgstr "Gerð staðarmerkja í staðar stigveldi"
 
@@ -15305,17 +15254,17 @@ msgstr "Tegundir villna"
 msgid "URL"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6962
 msgid "US Minor Outlying Islands"
 msgstr "US Minor Outlying Islands"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6970
 msgid "US Virgin Islands"
 msgstr "Bandarísku Jómfrúreyjar"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6936
 msgid "USSR"
 msgstr "USSR"
@@ -15325,12 +15274,12 @@ msgstr "USSR"
 msgid "UTC"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6960
 msgid "Uganda"
 msgstr "Úganda"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6961
 msgid "Ukraine"
 msgstr "Úkraína"
@@ -15372,22 +15321,22 @@ msgstr "Einstakar gagnahirslu staðreyndir"
 msgid "Unique source facts"
 msgstr "Einstakar heimilda staðreyndir"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6726
 msgid "United Arab Emirates"
 msgstr "Sameinuðu arabísku furstadæmin"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6804
 msgid "United Kingdom"
 msgstr "Bretland"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6964
 msgid "United States"
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/GedcomRecord.php:1154 app/GedcomRecord.php:1158 app/Stats.php:6716
 msgid "Unknown"
 msgstr "Óþekkt"
@@ -15415,10 +15364,10 @@ msgid "Unknown"
 msgstr "Óþekkt"
 
 #: app/Module/AlbumModule.php:190
-msgid "Unlink media"
+msgid "Unlink the media object"
 msgstr "Afkrækja miðil"
 
-#: app/GedcomTag.php:1795
+#: app/GedcomTag.php:1793
 msgid "Unrecognized GEDCOM code"
 msgstr "Óþekktur GEDCOM kóði"
 
@@ -15470,11 +15419,11 @@ msgstr "Uppfæra í webtrees %s."
 msgid "Upgrade wizard"
 msgstr ""
 
-#: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4674
+#: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4597
 msgid "Upload"
 msgstr "Hlaða upp"
 
-#: app/Module/GoogleMapsModule.php:4668
+#: app/Module/GoogleMapsModule.php:4591
 msgid "Upload geographic data"
 msgstr "Hlaða inn landfræðigögnum"
 
@@ -15487,12 +15436,12 @@ msgstr "Flytja inn miðlunarskrár"
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
 msgstr "Flytjið inn eina eða fleiri miðilsskrár frá staðbundinni tölvu þinni. Miðilsskrár geta verið myndir, myndbönd, hljóð eða önnur snið."
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6963
 msgid "Uruguay"
 msgstr "Úrúgvæ"
 
-#: app/Module/GoogleMapsModule.php:469
+#: app/Module/GoogleMapsModule.php:440
 msgid "Use Google Maps™ for the place hierarchy"
 msgstr "Nota Google Maps™ fyrir staðar stigveldi"
 
@@ -15563,7 +15512,7 @@ msgstr "Notið þennan reit til að láta kerfisstjóra vefsíðunnar vita hvers
 msgid "Use this image for charts and on the individual’s page."
 msgstr ""
 
-#: app/Module/GoogleMapsModule.php:3855
+#: app/Module/GoogleMapsModule.php:3819
 msgid "Use this value"
 msgstr "Nota þetta gildi"
 
@@ -15621,23 +15570,23 @@ msgid "Users"
 msgstr "Notendur"
 
 #: admin.php:717
-msgid "Users logged in"
+msgid "Users who are signed in"
 msgstr "Notendur skráðir inn"
 
 #: admin_users.php:732
 msgid "User’s account has been inactive too long: "
 msgstr "Reikningur notanda hefur verið óvirkur of lengi: "
 
-#: app/Module/GoogleMapsModule.php:675
+#: app/Module/GoogleMapsModule.php:646
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
 msgstr "Með því að nota flettivalmyndina að þá er hægt að velja land, þar sem hægt er að velja fána. Ef engir fánar eru sýndir, þá eru engir fánar skilgreindir fyrir þetta land."
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6965
 msgid "Uzbekistan"
 msgstr "Úsbekistan"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6972
 msgid "Vanuatu"
 msgstr "Vanuatú"
@@ -15647,7 +15596,7 @@ msgstr "Vanuatú"
 msgid "Various statistics charts."
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6966
 msgid "Vatican City"
 msgstr "Vatíkanið"
@@ -15676,7 +15625,7 @@ msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6968
 msgid "Venezuela"
 msgstr "Venesúela"
@@ -15729,11 +15678,11 @@ msgid "Version"
 msgstr "Útgáfa"
 
 #. I18N: Type of media object
-#: app/GedcomTag.php:1938
+#: app/GedcomTag.php:1936
 msgid "Video"
 msgstr "Myndband"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6971
 msgid "Vietnam"
 msgstr "Víetnam"
@@ -15741,7 +15690,7 @@ msgstr "Víetnam"
 #. I18N: Submit button, on a form
 #: ancestry.php:92 app/Functions/FunctionsPrintFacts.php:1024
 #: app/Functions/FunctionsPrintFacts.php:1056
-#: app/Module/GoogleMapsModule.php:807 branches.php:49 compact.php:54
+#: app/Module/GoogleMapsModule.php:778 branches.php:49 compact.php:54
 #: descendancy.php:71 familybook.php:61 fanchart.php:95 hourglass.php:62
 #: pedigree.php:169 relationship.php:85
 msgid "View"
@@ -15752,16 +15701,16 @@ msgid "View all records found in this place"
 msgstr "Skoða allar færslur sem finnast á þessum stað"
 
 #: app/Module/FamilyTreeNewsModule.php:155 help_text.php:297
-msgid "View archive"
+msgid "View the archive"
 msgstr "Skoða gagnasafn"
 
 #: calendar.php:300
-msgid "View day"
+msgid "View the day"
 msgstr "Skoða dag"
 
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
-msgid "View details"
-msgstr "Skoða upplýsingar"
+msgid "View the details"
+msgstr ""
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15770,32 +15719,32 @@ msgstr "Skoða upplýsingar"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313
-msgid "View family"
+msgid "View the family"
 msgstr "Skoða fjölskyldu"
 
-#: app/Module/GoogleMapsModule.php:1379 app/Module/SlideShowModule.php:177
+#: app/Module/GoogleMapsModule.php:1350 app/Module/SlideShowModule.php:177
 #: medialist.php:310
-msgid "View individual"
+msgid "View the individual"
 msgstr "Skoða persónu"
 
 #: calendar.php:304
-msgid "View month"
+msgid "View the month"
 msgstr "Skoða mánuð"
 
 #: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
-msgid "View notes"
+msgid "View the notes"
 msgstr "Skoða glósur"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-msgid "View source"
+msgid "View the source"
 msgstr "Skoða uppruna"
 
 #: app/Module/FamilyTreeStatisticsModule.php:197
-msgid "View statistics as graphs"
+msgid "View the statistics as graphs"
 msgstr "Skoða tölfræði sem graf"
 
 #: calendar.php:308
-msgid "View year"
+msgid "View the year"
 msgstr "Skoða ár"
 
 #. I18N: Location of an LDS church temple
@@ -15828,12 +15777,12 @@ msgstr "Gestur"
 msgid "Vital records"
 msgstr "Mikilvægar færslur"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6975
 msgid "Wales"
 msgstr "Wales"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6974
 msgid "Wallis and Futuna Islands"
 msgstr "Wallis og Futuna eyjar"
@@ -15873,7 +15822,7 @@ msgstr ""
 
 #: login.php:386
 #, php-format
-msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this website, you will need to know your user name and password."
+msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your user name and password."
 msgstr "Við munum núna senda staðfestingar tölvupóst á netfangið <b>%s</b>. Þú verður að staðfesta beiðni þína um reikning með því að fylgja leiðbeiningum í staðfestingar tölvupóstinum. Ef þú staðfestir ekki reikningsbeiðni þína innan sjö daga, þá verður þinni umsókn hafnað sjálfkrafa. Þú þarft síðan að sækja um aftur.<br><br>Eftir að þú hefur fylgt leiðbeiningunum í staðfestingar tölvupóstinum, þá þarf kerfisstjórinn sem sem áður að samþykkja beiðni þína áður en hægt er að nota reikningingin þinn.<br><br>Til að skrá þig inn á vefsíðuna, þá þarftu að vita notandaheitið þitt og lykilorð."
 
 #. I18N: Menu entry
@@ -15928,15 +15877,15 @@ msgstr "Velkomin/-n %s"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:460
-msgid "Welcome text on login page"
+msgid "Welcome text on sign-in page"
 msgstr "Móttökutexti á innskráningarsíðu"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6973
 msgid "West Africa"
 msgstr "Vestur Afríka"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6792
 msgid "Western Sahara"
 msgstr "Vestur-Sahara"
@@ -16017,7 +15966,7 @@ msgstr "Ekkja"
 msgid "Widower"
 msgstr "Ekkill"
 
-#: app/Module/GoogleMapsModule.php:360 app/Module/GoogleMapsModule.php:485
+#: app/Module/GoogleMapsModule.php:353 app/Module/GoogleMapsModule.php:456
 msgid "Width"
 msgstr "Breidd"
 
@@ -16091,8 +16040,8 @@ msgstr ""
 msgid "World"
 msgstr "Heimur"
 
-#. I18N: gedcom tag _YART
-#: app/GedcomTag.php:1767
+#. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
+#: app/GedcomTag.php:1765
 msgid "Yahrzeit"
 msgstr "Árstími"
 
@@ -16113,7 +16062,7 @@ msgstr "Ár innsláttarkassi"
 msgid "Year:"
 msgstr "Ár:"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6977
 msgid "Yemen"
 msgstr "Jemen"
@@ -16124,13 +16073,14 @@ msgstr "Jemen"
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr "Þú (eða einhver sem segist vera þú) hefur stofnað reikning á %1$s með því að nota netfangið %2$s."
 
-#: logout.php:24
-msgid "You are logged out."
-msgstr ""
-
 #: login.php:289 message.php:57
 msgid "You are not allowed to send messages that contain external links."
 msgstr "Þú hefur ekki heimild til að senda skilaboð sem innihalda ytri krækjur."
+
+#: app/Module/LoginBlockModule.php:63
+#, php-format
+msgid "You are signed in as %s"
+msgstr ""
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -16178,7 +16128,7 @@ msgid "You cannot create a rule which would prevent yourself from accessing the 
 msgstr ""
 
 #: login.php:75
-msgid "You cannot login because your browser does not accept cookies."
+msgid "You cannot sign in because your browser does not accept cookies."
 msgstr ""
 
 #: includes/session.php:505
@@ -16200,6 +16150,10 @@ msgstr "Þú hefur ekki stofnað neitt dagbókaratriði."
 #: admin_trees_manage.php:201
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
 msgstr "Þú hefur valið GEDCOM með öðru heiti. Er þetta rétt?"
+
+#: logout.php:24
+msgid "You have signed out."
+msgstr ""
 
 #: addmedia.php:473
 msgid "You may enter a URL, beginning with “http://”."
@@ -16258,10 +16212,6 @@ msgstr "Þú verður að tilgreina einstaklingsfærslu áður en þú getur takm
 msgid "You need to create a family tree."
 msgstr ""
 
-#: admin_pgv_to_wt.php:1163
-msgid "You need to login again, using your PhpGedView username and password."
-msgstr "Þú verður að innskrá þig aftur, með því að nota PhpGedView notandanafn og lykilorð."
-
 #: login.php:563
 msgid "You need to review the account details."
 msgstr ""
@@ -16270,9 +16220,13 @@ msgstr ""
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
 msgstr "Þú þarft að setja upp kerfisstjóra reikning. Þessi reikningur getur stjórnað öllum atriðum á þessari webtrees uppsetningu. Vinsamlega veljið sterkt lykilorð."
 
+#: admin_pgv_to_wt.php:1163
+msgid "You need to sign in again, using your PhpGedView username and password."
+msgstr "Þú verður að innskrá þig aftur, með því að nota PhpGedView notandanafn og lykilorð."
+
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:452
-msgid "You only need to enter a Login URL if you want to redirect to a different website or location when your users login. This is very useful if you need to switch from http to https when your users login. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
+msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
 msgstr "Þú þarft aðeins að slá inn innskráningar veffang ef þú vilt senda áfram á aðra vefsíðu eða staðsetningu þegar notendur þínir skrá sig inn. Þetta er mjög gagnlegt ef þú þarft að skipta úr http yfir á https þegar notendur þínir skrá sig inn. Láttu fulla veffanga slóð fylgja <i>login.php</i>. Sem dæmi, https://www.yourserver.com/webtrees/login.php."
 
 #: message.php:247
@@ -16306,11 +16260,11 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "Þú ættir ekki að samþykkja reikning nema því aðeins að þú vitir að netfangið sé rétt."
 
 #: login.php:325
-msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to sign in until you activate the account."
 msgstr "Þú verður upplýstur með tölvupósti þegar þessi væntanlegi notandi hefur staðfest beiðnina. Þú getur þá afgreitt ferlið með því að virkja notandaheitið. Nýji notandinn getur ekki skráð sig inn fyrr en þú hefur virkjað reikninginn."
 
 #: setup.php:432
-msgid "You will use this to login to webtrees."
+msgid "You will use this to sign in to webtrees."
 msgstr "Þú munt nota þetta til að skrá þig inn á webtrees."
 
 #: statistics.php:286
@@ -16362,22 +16316,22 @@ msgstr ""
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr ""
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6978
 msgid "Yugoslavia"
 msgstr "Júgóslavía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6980
 msgid "Zaire"
 msgstr "Saír"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6981
 msgid "Zambia"
 msgstr "Sambía"
 
-#. I18N: Name of country or state
+#. I18N: Name of a country or state
 #: app/Stats.php:6982
 msgid "Zimbabwe"
 msgstr "Simbabve"
@@ -16387,15 +16341,16 @@ msgstr "Simbabve"
 msgid "Zip file(s)"
 msgstr "Þjöppuð skrá(-r)"
 
-#: app/Module/GoogleMapsModule.php:2754 fanchart.php:109
+#: app/Module/GoogleMapsModule.php:1713 app/Module/GoogleMapsModule.php:2725
+#: fanchart.php:109
 msgid "Zoom"
 msgstr "Þysja"
 
-#: app/Module/GoogleMapsModule.php:1458 timeline.php:311
+#: app/Module/GoogleMapsModule.php:1429 timeline.php:311
 msgid "Zoom in"
 msgstr "Þysja inn"
 
-#: app/Module/GoogleMapsModule.php:1460
+#: app/Module/GoogleMapsModule.php:1431
 msgid "Zoom in here"
 msgstr "Þysja inn hér"
 
@@ -16403,26 +16358,22 @@ msgstr "Þysja inn hér"
 msgid "Zoom in/out on this box."
 msgstr "Þysja inn/út í þessum kassa."
 
-#: app/Module/GoogleMapsModule.php:3993 app/Module/GoogleMapsModule.php:4084
-#: app/Module/GoogleMapsModule.php:4579
+#: app/Module/GoogleMapsModule.php:3915 app/Module/GoogleMapsModule.php:4009
+#: app/Module/GoogleMapsModule.php:4502
 msgid "Zoom level"
 msgstr "Þysjunarstuðull"
 
-#: app/Module/GoogleMapsModule.php:377
+#: app/Module/GoogleMapsModule.php:370
 msgid "Zoom level of map"
 msgstr "Þysjunarstuðull landakorts"
 
-#: app/Module/GoogleMapsModule.php:1459 timeline.php:312
+#: app/Module/GoogleMapsModule.php:1430 timeline.php:312
 msgid "Zoom out"
 msgstr "Þysja út"
 
-#: app/Module/GoogleMapsModule.php:1461
+#: app/Module/GoogleMapsModule.php:1432
 msgid "Zoom out here"
 msgstr "Þysja út hér"
-
-#: app/Module/GoogleMapsModule.php:1742
-msgid "Zoom="
-msgstr "Þysja="
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:89
@@ -16741,8 +16692,8 @@ msgctxt "MALE"
 msgid "change of name"
 msgstr "breyting á nafni"
 
-#: app/Functions/Functions.php:733 app/Module/GoogleMapsModule.php:2078
-#: app/Module/GoogleMapsModule.php:2112 edit_interface.php:2009
+#: app/Functions/Functions.php:733 app/Module/GoogleMapsModule.php:2049
+#: app/Module/GoogleMapsModule.php:2083 edit_interface.php:2009
 #: edit_interface.php:2031
 msgid "child"
 msgstr "barn"
@@ -16751,11 +16702,11 @@ msgstr "barn"
 msgid "children"
 msgstr "börn"
 
-#. I18N: button label
+#. I18N: A button label
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:759
-#: app/Module/GoogleMapsModule.php:4024 app/Theme/AbstractTheme.php:700
+#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:730
+#: app/Module/GoogleMapsModule.php:3946 app/Theme/AbstractTheme.php:700
 #: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
 #: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
 #: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
@@ -16781,22 +16732,20 @@ msgid "compact list"
 msgstr "samanþjappaður listi"
 
 #. I18N: A button label
-#. I18N: Button label
-#. I18N: button label
 #: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1164 admin_site_merge.php:387
 #: admin_trees_download.php:119 admin_trees_download.php:204
 #: admin_trees_manage.php:309 admin_trees_manage.php:754
 #: admin_trees_merge.php:202 admin_trees_renumber.php:281
 #: app/Module/ClippingsCartModule.php:134
 #: app/Module/ClippingsCartModule.php:257
-#: app/Module/ClippingsCartModule.php:300 app/Module/LoginBlockModule.php:104
-#: app/Theme/AbstractTheme.php:347 login.php:225 login.php:494
-#: reportengine.php:131 reportengine.php:265 setup.php:187 setup.php:213
-#: setup.php:295 setup.php:381 setup.php:447
+#: app/Module/ClippingsCartModule.php:300 app/Module/GoogleMapsModule.php:4247
+#: app/Module/LoginBlockModule.php:104 app/Theme/AbstractTheme.php:347
+#: login.php:225 login.php:494 reportengine.php:131 reportengine.php:265
+#: setup.php:187 setup.php:213 setup.php:295 setup.php:381 setup.php:447
 msgid "continue"
 msgstr "halda áfram"
 
-#. I18N: Button label
+#. I18N: A button label
 #: admin_trees_manage.php:678
 msgid "create"
 msgstr ""
@@ -16811,7 +16760,7 @@ msgid "date periods"
 msgstr "dagsetninga tímabil"
 
 #: app/Functions/Functions.php:731 app/Functions/FunctionsCharts.php:312
-#: app/Module/GoogleMapsModule.php:2070 app/Module/GoogleMapsModule.php:2108
+#: app/Module/GoogleMapsModule.php:2041 app/Module/GoogleMapsModule.php:2079
 #: edit_interface.php:2008
 msgid "daughter"
 msgstr "dóttir"
@@ -16850,11 +16799,11 @@ msgid "death"
 msgstr "andlát"
 
 #. I18N: Measure of latitude/longitude
-#: app/Module/GoogleMapsModule.php:3974 app/Module/GoogleMapsModule.php:3984
+#: app/Module/GoogleMapsModule.php:3896 app/Module/GoogleMapsModule.php:3906
 msgid "degrees"
 msgstr "gráður"
 
-#. I18N: Button label
+#. I18N: A button label
 #: admin_site_clean.php:115 admin_users.php:793
 msgid "delete"
 msgstr ""
@@ -16876,11 +16825,11 @@ msgctxt "MALE"
 msgid "died"
 msgstr "dó"
 
-#: app/Module/GoogleMapsModule.php:3986
+#: app/Module/GoogleMapsModule.php:3908
 msgid "east"
 msgstr "austur"
 
-#. I18N: button label
+#. I18N: A button label
 #: admin_trees_config.php:1434 admin_trees_config.php:1737
 #: admin_trees_config.php:1766 admin_trees_config.php:1795
 #: admin_trees_config.php:1824 admin_trees_config.php:1855
@@ -16893,6 +16842,10 @@ msgstr "austur"
 msgid "edit"
 msgstr ""
 
+#: app/Functions/Functions.php:551
+msgid "eighth cousin"
+msgstr "áttundu frændsystkini"
+
 #: app/Functions/Functions.php:516
 msgctxt "FEMALE"
 msgid "eighth cousin"
@@ -16903,10 +16856,6 @@ msgstr "áttunda frænka"
 msgctxt "MALE"
 msgid "eighth cousin"
 msgstr "áttundi frændi"
-
-#: app/Functions/Functions.php:551
-msgid "eighth cousin"
-msgstr "áttundu frændsystkini"
 
 #: app/Functions/Functions.php:745
 msgid "elder brother"
@@ -16920,6 +16869,10 @@ msgstr "eldri systkini"
 msgid "elder sister"
 msgstr "eldri systir"
 
+#: app/Functions/Functions.php:557
+msgid "eleventh cousin"
+msgstr "elleftu frændsystkini"
+
 #: app/Functions/Functions.php:522
 msgctxt "FEMALE"
 msgid "eleventh cousin"
@@ -16930,10 +16883,6 @@ msgstr "ellefta frænka"
 msgctxt "MALE"
 msgid "eleventh cousin"
 msgstr "ellefti frændi"
-
-#: app/Functions/Functions.php:557
-msgid "eleventh cousin"
-msgstr "elleftu frændsystkini"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:103
@@ -16962,6 +16911,10 @@ msgstr "áætlað %s"
 msgid "ex-husband"
 msgstr "fyrrverandi eiginmaður"
 
+#: app/Functions/Functions.php:716
+msgid "ex-partner"
+msgstr ""
+
 #: app/Functions/Functions.php:698
 msgctxt "FEMALE"
 msgid "ex-partner"
@@ -16969,10 +16922,6 @@ msgstr ""
 
 #: app/Functions/Functions.php:680
 msgctxt "MALE"
-msgid "ex-partner"
-msgstr ""
-
-#: app/Functions/Functions.php:716
 msgid "ex-partner"
 msgstr ""
 
@@ -17007,6 +16956,10 @@ msgctxt "wife’s father"
 msgid "father-in-law"
 msgstr "tengdafaðir"
 
+#: app/Functions/Functions.php:565
+msgid "fifteenth cousin"
+msgstr "fimmtándu frændsystkini"
+
 #: app/Functions/Functions.php:530
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
@@ -17018,9 +16971,11 @@ msgctxt "MALE"
 msgid "fifteenth cousin"
 msgstr "fimmtándi frændi"
 
-#: app/Functions/Functions.php:565
-msgid "fifteenth cousin"
-msgstr "fimmtándu frændsystkini"
+#. I18N: A Spanish relationship name, such as fifth great-nephew
+#: app/Functions/Functions.php:625
+#, php-format
+msgid "fifth %s"
+msgstr "fimmtu %s"
 
 #: app/Functions/Functions.php:610
 #, php-format
@@ -17034,10 +16989,9 @@ msgctxt "MALE"
 msgid "fifth %s"
 msgstr "fimmti %s"
 
-#: app/Functions/Functions.php:625
-#, php-format
-msgid "fifth %s"
-msgstr "fimmtu %s"
+#: app/Functions/Functions.php:545
+msgid "fifth cousin"
+msgstr "fimmtu frændsystkini"
 
 #: app/Functions/Functions.php:510
 msgctxt "FEMALE"
@@ -17050,16 +17004,12 @@ msgctxt "MALE"
 msgid "fifth cousin"
 msgstr "fimmti frændi"
 
-#: app/Functions/Functions.php:545
-msgid "fifth cousin"
-msgstr "fimmtu frændsystkini"
-
 #. I18N: a program feature
 #: setup.php:143
 msgid "file upload capability"
 msgstr "skráar upphleðslu möguleiki"
 
-#. I18N: button label, first page
+#. I18N: A button label, first page
 #: admin_trees_config.php:1632 app/I18N.php:221
 msgid "first"
 msgstr "fyrsta"
@@ -17068,6 +17018,12 @@ msgstr "fyrsta"
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
 msgstr "fyrsta"
+
+#. I18N: A Spanish relationship name, such as first great-nephew
+#: app/Functions/Functions.php:617
+#, php-format
+msgid "first %s"
+msgstr "fyrstu %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:602
@@ -17083,11 +17039,9 @@ msgctxt "MALE"
 msgid "first %s"
 msgstr "fyrsti %s"
 
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Functions/Functions.php:617
-#, php-format
-msgid "first %s"
-msgstr "fyrstu %s"
+#: app/Functions/Functions.php:537
+msgid "first cousin"
+msgstr "fyrstu frændsystkini"
 
 #: app/Functions/Functions.php:502
 msgctxt "FEMALE"
@@ -17099,10 +17053,6 @@ msgstr "fyrsta frænka"
 msgctxt "MALE"
 msgid "first cousin"
 msgstr "fyrsti frændi"
-
-#: app/Functions/Functions.php:537
-msgid "first cousin"
-msgstr "fyrstu frændsystkini"
 
 #: app/Functions/Functions.php:1068
 msgctxt "father’s brother’s child"
@@ -17284,6 +17234,10 @@ msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
 msgstr ""
 
+#: app/Functions/Functions.php:563
+msgid "fourteenth cousin"
+msgstr "fjórtándu frændsystkini"
+
 #: app/Functions/Functions.php:528
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
@@ -17295,9 +17249,11 @@ msgctxt "MALE"
 msgid "fourteenth cousin"
 msgstr "fjórtándi frændi"
 
-#: app/Functions/Functions.php:563
-msgid "fourteenth cousin"
-msgstr "fjórtándu frændsystkini"
+#. I18N: A Spanish relationship name, such as fourth great-nephew
+#: app/Functions/Functions.php:623
+#, php-format
+msgid "fourth %s"
+msgstr "fjórðu %s"
 
 #: app/Functions/Functions.php:608
 #, php-format
@@ -17311,10 +17267,9 @@ msgctxt "MALE"
 msgid "fourth %s"
 msgstr "fjórði %s"
 
-#: app/Functions/Functions.php:623
-#, php-format
-msgid "fourth %s"
-msgstr "fjórðu %s"
+#: app/Functions/Functions.php:543
+msgid "fourth cousin"
+msgstr "fjórðu frændsystkini"
 
 #: app/Functions/Functions.php:508
 msgctxt "FEMALE"
@@ -17326,10 +17281,6 @@ msgstr "fjórða frænka"
 msgctxt "MALE"
 msgid "fourth cousin"
 msgstr "fjórði frændi"
-
-#: app/Functions/Functions.php:543
-msgid "fourth cousin"
-msgstr "fjórðu frændsystkini"
 
 #. I18N: from 1700 interval 50 years
 #: statistics.php:621 statistics.php:623 statistics.php:625 statistics.php:627
@@ -17361,7 +17312,7 @@ msgstr "heill hringur"
 msgid "gender"
 msgstr "kyn"
 
-#. I18N: button label
+#. I18N: A button label
 #: edit_interface.php:2601
 msgid "go to new individual"
 msgstr ""
@@ -18886,7 +18837,7 @@ msgstr "hálft ár eftir giftingu"
 msgid "hh:mm or hh:mm:ss"
 msgstr ""
 
-#: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:347
+#: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:340
 msgid "hide"
 msgstr "fela"
 
@@ -18962,7 +18913,7 @@ msgctxt "NOMINATIVE"
 msgid "jours complementaires"
 msgstr "jours complémentaires"
 
-#. I18N: button label, last page
+#. I18N: A button label, last page
 #: admin_trees_config.php:1632 app/I18N.php:222
 msgid "last"
 msgstr "síðasta"
@@ -19050,7 +19001,7 @@ msgstr "móðurafi og -amma"
 msgid "matrilineal"
 msgstr ""
 
-#: app/Module/GoogleMapsModule.php:389
+#: app/Module/GoogleMapsModule.php:382
 msgid "maximum"
 msgstr "hámark"
 
@@ -19079,7 +19030,7 @@ msgstr "miðnætti"
 msgid "minimal"
 msgstr ""
 
-#: app/Module/GoogleMapsModule.php:383
+#: app/Module/GoogleMapsModule.php:376
 msgid "minimum"
 msgstr "lágmark"
 
@@ -19170,7 +19121,7 @@ msgstr "frændi/frænka"
 msgid "never"
 msgstr ""
 
-#. I18N: button label, next page
+#. I18N: A button label, next page
 #: app/I18N.php:223 app/Module/BatchUpdateModule.php:247
 msgid "next"
 msgstr "næsta"
@@ -19205,6 +19156,10 @@ msgctxt "sisters’s son’s wife"
 msgid "niece-in-law"
 msgstr ""
 
+#: app/Functions/Functions.php:553
+msgid "ninth cousin"
+msgstr "níundu frændsystkini"
+
 #: app/Functions/Functions.php:518
 msgctxt "FEMALE"
 msgid "ninth cousin"
@@ -19215,10 +19170,6 @@ msgstr "níunda frænka"
 msgctxt "MALE"
 msgid "ninth cousin"
 msgstr "níundi frændi"
-
-#: app/Functions/Functions.php:553
-msgid "ninth cousin"
-msgstr "níundu frændsystkini"
 
 #: admin_trees_config.php:74 admin_users.php:242 admin_users.php:243
 #: app/Functions/FunctionsEdit.php:133
@@ -19253,7 +19204,7 @@ msgstr "ekkert"
 msgid "noon"
 msgstr "hádegi"
 
-#: app/Module/GoogleMapsModule.php:3976
+#: app/Module/GoogleMapsModule.php:3898
 msgid "north"
 msgstr "norður"
 
@@ -19302,6 +19253,10 @@ msgstr "p.m."
 msgid "parent"
 msgstr "foreldri"
 
+#: app/Functions/Functions.php:718
+msgid "partner"
+msgstr "sambýlismaki"
+
 #: app/Functions/Functions.php:700
 msgctxt "FEMALE"
 msgid "partner"
@@ -19311,10 +19266,6 @@ msgstr "sambýliskona"
 msgctxt "MALE"
 msgid "partner"
 msgstr "sambýlismaður"
-
-#: app/Functions/Functions.php:718
-msgid "partner"
-msgstr "sambýlismaki"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
@@ -19357,12 +19308,12 @@ msgstr "prósenta"
 msgid "pixels"
 msgstr ""
 
-#. I18N: button label
+#. I18N: A button label
 #: admin_trees_places.php:107
 msgid "preview"
 msgstr "Forskoða"
 
-#. I18N: button label, previous page
+#. I18N: A button label, previous page
 #: app/I18N.php:224 app/Module/BatchUpdateModule.php:246
 msgid "previous"
 msgstr "fyrri"
@@ -19424,9 +19375,9 @@ msgstr "trúarnafn"
 msgid "reporting"
 msgstr "geri skýrslu"
 
-#. I18N: Button label
-#: app/Module/GoogleMapsModule.php:4994 lifespan.php:109 medialist.php:196
-#: statistics.php:646 timeline.php:313
+#. I18N: A button label
+#: app/Module/GoogleMapsModule.php:4917 lifespan.php:109 medialist.php:196
+#: timeline.php:313
 msgid "reset"
 msgstr "endursetja"
 
@@ -19435,15 +19386,15 @@ msgstr "endursetja"
 msgid "robot"
 msgstr "vélmenni"
 
-#. I18N: button label
+#. I18N: A button label
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
 #: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:199
 #: admin_site_access.php:307 admin_site_config.php:652 admin_site_merge.php:340
 #: admin_trees_config.php:2271 admin_users.php:673
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
-#: app/Module/GoogleMapsModule.php:533 app/Module/GoogleMapsModule.php:758
-#: app/Module/GoogleMapsModule.php:2764 app/Module/GoogleMapsModule.php:4023
+#: app/Module/GoogleMapsModule.php:504 app/Module/GoogleMapsModule.php:729
+#: app/Module/GoogleMapsModule.php:2735 app/Module/GoogleMapsModule.php:3945
 #: app/Module/RelationshipsChartModule.php:173 app/Module/SiteMapModule.php:320
 #: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
 #: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
@@ -19457,6 +19408,12 @@ msgstr "vélmenni"
 msgid "save"
 msgstr "vista"
 
+#. I18N: A Spanish relationship name, such as second great-nephew
+#: app/Functions/Functions.php:619
+#, php-format
+msgid "second %s"
+msgstr "önnur %s"
+
 #: app/Functions/Functions.php:604
 #, php-format
 msgctxt "FEMALE"
@@ -19469,10 +19426,9 @@ msgctxt "MALE"
 msgid "second %s"
 msgstr "annar %s"
 
-#: app/Functions/Functions.php:619
-#, php-format
-msgid "second %s"
-msgstr "önnur %s"
+#: app/Functions/Functions.php:539
+msgid "second cousin"
+msgstr "önnur frændsystkini"
 
 #: app/Functions/Functions.php:504
 msgctxt "FEMALE"
@@ -19484,10 +19440,6 @@ msgstr "önnur frænka"
 msgctxt "MALE"
 msgid "second cousin"
 msgstr "annar frændi"
-
-#: app/Functions/Functions.php:539
-msgid "second cousin"
-msgstr "önnur frændsystkini"
 
 #: app/Functions/Functions.php:1463
 msgctxt "grandfather’s brother’s grandchild"
@@ -19644,6 +19596,10 @@ msgstr "velja ekkert"
 msgid "self"
 msgstr "Sjálf"
 
+#: app/Functions/Functions.php:549
+msgid "seventh cousin"
+msgstr "sjöundu frændsystkini"
+
 #: app/Functions/Functions.php:514
 msgctxt "FEMALE"
 msgid "seventh cousin"
@@ -19655,19 +19611,15 @@ msgctxt "MALE"
 msgid "seventh cousin"
 msgstr "sjöundi frændi"
 
-#: app/Functions/Functions.php:549
-msgid "seventh cousin"
-msgstr "sjöundu frændsystkini"
-
-#. I18N: Button label
+#. I18N: A button label
 #: admin_trees_config.php:43 app/Module/FrequentlyAskedQuestionsModule.php:457
-#: app/Module/GoogleMapsModule.php:347 app/Module/StoriesModule.php:361
+#: app/Module/GoogleMapsModule.php:340 app/Module/StoriesModule.php:361
 #: lifespan.php:110
 msgid "show"
 msgstr "sýna"
 
 #: statistics.php:645
-msgid "show the plot"
+msgid "show the chart"
 msgstr "sýna teikningu"
 
 #: app/Functions/Functions.php:784
@@ -19718,6 +19670,10 @@ msgctxt "wife’s sister"
 msgid "sister-in-law"
 msgstr "mágkona"
 
+#: app/Functions/Functions.php:547
+msgid "sixth cousin"
+msgstr "sjöttu frændsystkini"
+
 #: app/Functions/Functions.php:512
 msgctxt "FEMALE"
 msgid "sixth cousin"
@@ -19729,12 +19685,8 @@ msgctxt "MALE"
 msgid "sixth cousin"
 msgstr "sjötti frændi"
 
-#: app/Functions/Functions.php:547
-msgid "sixth cousin"
-msgstr "sjöttu frændsystkini"
-
 #: app/Functions/Functions.php:729 app/Functions/FunctionsCharts.php:311
-#: app/Module/GoogleMapsModule.php:2074 app/Module/GoogleMapsModule.php:2104
+#: app/Module/GoogleMapsModule.php:2045 app/Module/GoogleMapsModule.php:2075
 #: edit_interface.php:2007
 msgid "son"
 msgstr "sonur"
@@ -19833,7 +19785,7 @@ msgstr "raða eftir nafni"
 msgid "sort by title"
 msgstr "raða eftir heiti"
 
-#: app/Module/GoogleMapsModule.php:3977
+#: app/Module/GoogleMapsModule.php:3899
 msgid "south"
 msgstr "suður"
 
@@ -19966,6 +19918,10 @@ msgstr "tafla"
 msgid "tag cloud"
 msgstr "merkimiðaský"
 
+#: app/Functions/Functions.php:555
+msgid "tenth cousin"
+msgstr "tíundu frændsystkini"
+
 #: app/Functions/Functions.php:520
 msgctxt "FEMALE"
 msgid "tenth cousin"
@@ -19977,10 +19933,6 @@ msgctxt "MALE"
 msgid "tenth cousin"
 msgstr "tíundi frændi"
 
-#: app/Functions/Functions.php:555
-msgid "tenth cousin"
-msgstr "tíundu frændsystkini"
-
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:87
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
@@ -19990,6 +19942,12 @@ msgstr "tengistillingar gagnagrunnsins í skránni „/data/config.ini.php“ er
 #: site-unavailable.php:90
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "mappan „/data“ og skráin „/data/config.ini.php“ eru með aðgangsréttindi sem heimila vefþjóninum að lesa þau"
+
+#. I18N: A Spanish relationship name, such as third great-nephew
+#: app/Functions/Functions.php:621
+#, php-format
+msgid "third %s"
+msgstr "þriðju %s"
 
 #: app/Functions/Functions.php:606
 #, php-format
@@ -20003,10 +19961,9 @@ msgctxt "MALE"
 msgid "third %s"
 msgstr "þriðji %s"
 
-#: app/Functions/Functions.php:621
-#, php-format
-msgid "third %s"
-msgstr "þriðju %s"
+#: app/Functions/Functions.php:541
+msgid "third cousin"
+msgstr "þriðju frændsystkini"
 
 #: app/Functions/Functions.php:506
 msgctxt "FEMALE"
@@ -20019,9 +19976,9 @@ msgctxt "MALE"
 msgid "third cousin"
 msgstr "þriðji frændi"
 
-#: app/Functions/Functions.php:541
-msgid "third cousin"
-msgstr "þriðju frændsystkini"
+#: app/Functions/Functions.php:561
+msgid "thirteenth cousin"
+msgstr "þrettándu frændsystkini"
 
 #: app/Functions/Functions.php:526
 msgctxt "FEMALE"
@@ -20033,10 +19990,6 @@ msgstr "þrettánda frænka"
 msgctxt "MALE"
 msgid "thirteenth cousin"
 msgstr "þrettándi frændi"
-
-#: app/Functions/Functions.php:561
-msgid "thirteenth cousin"
-msgstr "þrettándu frændsystkini"
 
 #: admin_trees_config.php:554
 msgid "this record does not exist"
@@ -20058,6 +20011,10 @@ msgstr "tls"
 msgid "to %s"
 msgstr "til %s"
 
+#: app/Functions/Functions.php:559
+msgid "twelfth cousin"
+msgstr "tólftu frændsystkini"
+
 #: app/Functions/Functions.php:524
 msgctxt "FEMALE"
 msgid "twelfth cousin"
@@ -20068,10 +20025,6 @@ msgstr "tólfta frænka"
 msgctxt "MALE"
 msgid "twelfth cousin"
 msgstr "tólfti frændi"
-
-#: app/Functions/Functions.php:559
-msgid "twelfth cousin"
-msgstr "tólftu frændsystkini"
 
 #: app/Functions/Functions.php:741
 msgid "twin brother"
@@ -20117,11 +20070,11 @@ msgstr "frændi"
 
 #: admin_site_access.php:26 admin_site_access.php:33
 #: app/Module/FamilyNavigatorModule.php:180
-#: app/Module/GoogleMapsModule.php:1748 app/Module/GoogleMapsModule.php:2698
-#: app/Module/GoogleMapsModule.php:2848 app/Module/GoogleMapsModule.php:2893
-#: app/Module/GoogleMapsModule.php:3364 app/Module/GoogleMapsModule.php:3406
-#: app/Module/GoogleMapsModule.php:3411 app/Module/GoogleMapsModule.php:4543
-#: app/Module/GoogleMapsModule.php:4550 app/Module/GoogleMapsModule.php:4591
+#: app/Module/GoogleMapsModule.php:1719 app/Module/GoogleMapsModule.php:2669
+#: app/Module/GoogleMapsModule.php:2819 app/Module/GoogleMapsModule.php:2864
+#: app/Module/GoogleMapsModule.php:3335 app/Module/GoogleMapsModule.php:3377
+#: app/Module/GoogleMapsModule.php:3382 app/Module/GoogleMapsModule.php:4466
+#: app/Module/GoogleMapsModule.php:4473 app/Module/GoogleMapsModule.php:4514
 #: app/Place.php:141 placelist.php:120
 msgid "unknown"
 msgstr "óþekkt"
@@ -20141,7 +20094,7 @@ msgstr ""
 msgid "unreliable evidence"
 msgstr ""
 
-#. I18N: button label
+#. I18N: A button label
 #: admin_trees_places.php:108
 msgid "update"
 msgstr "Uppfæra"
@@ -20209,7 +20162,7 @@ msgstr "webtrees wiki"
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
 msgstr "webrees gagnagrunnur verður að vera á sama vefþjóni og PhpGedView"
 
-#: app/Module/GoogleMapsModule.php:3987
+#: app/Module/GoogleMapsModule.php:3909
 msgid "west"
 msgstr "vestur"
 
@@ -20302,20 +20255,68 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
+#~ msgid "Advanced"
+#~ msgstr "Ítarlegur"
+
+#~ msgid "Basic"
+#~ msgstr "Grunnur"
+
 #~ msgid "Cannot create"
 #~ msgstr "Ekki hægt að stofna"
 
 #~ msgid "Change language"
 #~ msgstr "Breyta tungumáli"
 
+#~ msgid "Continue adding"
+#~ msgstr "Halda áfram að bæta við"
+
+#~ msgid "Edit media"
+#~ msgstr "Breyta miðli"
+
+#~ msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
+#~ msgstr "Hér getur þú slegið inn nákvæmnina. Þessi stilling ákvarðar fjölda tölustafa sem notaðir verða í breiddar- og lengdargráðum."
+
+#~ msgid "House"
+#~ msgstr "Hús"
+
 #~ msgid "Login ID"
 #~ msgstr "Innskráningar auðkenni"
+
+#~ msgid "Max"
+#~ msgstr "Hámark"
+
+#~ msgid "Neighborhood"
+#~ msgstr "Nágrenni"
 
 #~ msgid "Passwords do not match."
 #~ msgstr "Lykilorðin stemma ekki."
 
+#~ msgid "Precision"
+#~ msgstr "Nákvæmni"
+
+#~ msgid "Precision of the latitude and longitude"
+#~ msgstr "Nákvæmni breiddar- og lengdargráða"
+
+#~ msgid "Request new password"
+#~ msgstr "Óska eftir nýju lykilorði"
+
+#~ msgid "Search for individuals to add to add Links list."
+#~ msgstr "Leita að fólki til að bæta við á krækjulista."
+
 #~ msgid "Show lifespans"
 #~ msgstr "Sýna líftíma"
 
+#~ msgid "Signed-in as "
+#~ msgstr "Innskráður sem "
+
+#~ msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
+#~ msgstr "Þetta tilgreinir nákvæmni mismunandi stiga þegar ný landfæðileg staðsetning er slegin inn. Sem dæmi að þá er land tilgreint með nákvæmnina 0 (=0 tölustafur eftir tugabrotskommu), á meðan að bær þarf 3 eða 4 tölustafi."
+
 #~ msgid "USA"
 #~ msgstr "Bandaríkin"
+
+#~ msgid "View details"
+#~ msgstr "Skoða upplýsingar"
+
+#~ msgid "Zoom="
+#~ msgstr "Þysja="

@@ -374,7 +374,7 @@ $controller
 		<div class="col-sm-8">
 			<?php echo FunctionsEdit::selectEditControl('REQUIRE_AUTHENTICATION', array('0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')), null, $WT_TREE->getPreference('REQUIRE_AUTHENTICATION'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Family tree” configuration setting */ I18N::translate('Enabling this option will force all visitors to login before they can view any data on the website.'); ?>
+				<?php echo /* I18N: Help text for the “Family tree” configuration setting */ I18N::translate('Enabling this option will force all visitors to sign in before they can view any data on the website.'); ?>
 			</p>
 			<?php if (Site::getPreference('USE_REGISTRATION_MODULE')): ?>
 			<p class="small text-muted">
@@ -1045,12 +1045,12 @@ $controller
 	<!-- SHOW_MEDIA_DOWNLOAD -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Show download link in media viewer'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Show a download link in the media viewer'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('SHOW_MEDIA_DOWNLOAD', $no_yes, $WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Show download link in media viewer” configuration setting */ I18N::translate('The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons.'); ?>
+				<?php echo /* I18N: Help text for the “Show a download link in the media viewer” configuration setting */ I18N::translate('The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1459,7 +1459,7 @@ $controller
 	<!-- SHOW_RELATIVES_EVENTS -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo I18N::translate('Show events of close relatives on individual page'); ?>
+			<?php echo I18N::translate('Show the events of close relatives on the individual page'); ?>
 		</legend>
 		<div class="col-sm-3">
 			<div class="checkbox">
@@ -1711,7 +1711,7 @@ $controller
 		</div>
 	</fieldset>
 
-	<h3><?php echo I18N::translate('Edit options'); ?></h3>
+	<h3><?php echo /* I18N: Options for editing */ I18N::translate('Edit options'); ?></h3>
 
 	<h3><?php echo I18N::translate('Facts for individual records'); ?></h3>
 

@@ -137,7 +137,7 @@ case 'email':
 	$controller->setPageTitle(I18N::translate('Sending email'));
 	break;
 case 'login':
-	$controller->setPageTitle(I18N::translate('Login and registration'));
+	$controller->setPageTitle(I18N::translate('Sign-in and registration'));
 	break;
 case 'tracking':
 	$controller->setPageTitle(/* I18N: e.g. http://www.google.com/analytics */ I18N::translate('Tracking and analytics'));
@@ -287,7 +287,7 @@ $controller->pageHeader();
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="SESSION_TIME" name="SESSION_TIME" value="<?php echo Filter::escapeHtml(Site::getPreference('SESSION_TIME')) ?>" pattern="[0-9]*" placeholder="7200" maxlength="255">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Session timeout” site configuration setting */ I18N::translate('The time in seconds that a webtrees session remains active before requiring a login. The default is 7200, which is 2 hours.') ?>
+				<?php echo /* I18N: Help text for the “Session timeout” site configuration setting */ I18N::translate('The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours.') ?>
 				<?php echo I18N::translate('If you leave this setting empty, the default value will be used.') ?>
 			</p>
 		</div>
@@ -444,12 +444,12 @@ $controller->pageHeader();
 	<!-- LOGIN_URL -->
 	<div class="form-group">
 		<label for="LOGIN_URL" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Login URL') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Sign-in URL') ?>
 		</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="LOGIN_URL" name="LOGIN_URL" value="<?php echo Filter::escapeHtml(Site::getPreference('LOGIN_URL')) ?>" maxlength="255">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Login URL" site configuration setting */ I18N::translate('You only need to enter a Login URL if you want to redirect to a different website or location when your users login. This is very useful if you need to switch from http to https when your users login. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php .') ?>
+				<?php echo /* I18N: Help text for the "Login URL" site configuration setting */ I18N::translate('You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php .') ?>
 			</p>
 		</div>
 	</div>
@@ -457,7 +457,7 @@ $controller->pageHeader();
 	<!-- WELCOME_TEXT_AUTH_MODE -->
 	<div class="form-group">
 		<label for="WELCOME_TEXT_AUTH_MODE" class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Welcome text on login page') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Welcome text on sign-in page') ?>
 		</label>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::selectEditControl('WELCOME_TEXT_AUTH_MODE', $WELCOME_TEXT_AUTH_MODE_OPTIONS, null, Site::getPreference('WELCOME_TEXT_AUTH_MODE'), 'class="form-control"') ?>
@@ -489,7 +489,7 @@ $controller->pageHeader();
 			<p class="small text-muted">
 				<?php echo I18N::translate('The new user will be asked to confirm their email address before the account is created.') ?>
 				<?php echo I18N::translate('Details of the new user will be sent to the genealogy contact for the corresponding family tree.') ?>
-				<?php echo I18N::translate('An administrator must approve the new user account and select an access level before the user can log in.') ?>
+				<?php echo I18N::translate('An administrator must approve the new user account and select an access level before the user can sign in.') ?>
 			</p>
 		</div>
 	</fieldset>
@@ -497,7 +497,7 @@ $controller->pageHeader();
 	<!-- SHOW_REGISTER_CAUTION -->
 	<fieldset class="form-group">
 		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Show acceptable use agreement on “Request new user account” page') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Show acceptable use agreement on “Request a new user account” page') ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::editFieldYesNo('SHOW_REGISTER_CAUTION', Site::getPreference('SHOW_REGISTER_CAUTION'), 'class="radio-inline"') ?>

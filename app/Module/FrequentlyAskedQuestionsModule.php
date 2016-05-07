@@ -133,7 +133,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
 			$block_id = Filter::getInteger('block_id');
 		if ($block_id) {
-			$controller->setPageTitle(I18N::translate('Edit FAQ item'));
+			$controller->setPageTitle(I18N::translate('Edit the FAQ item'));
 			$header      = $this->getBlockSetting($block_id, 'header');
 			$faqbody     = $this->getBlockSetting($block_id, 'faqbody');
 			$block_order = Database::prepare(

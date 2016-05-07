@@ -2059,7 +2059,7 @@ class Functions {
 				return self::cousinName($up + $down + 2, $sex2);
 			case 'it':
 				// Source: Michele Locati. See italian_cousins_names.zip
-				// http://webtrees.net/forums/8-translation/1200-great-xn-grandparent?limit=6&start=6
+				// https://webtrees.net/forums/8-translation/1200-great-xn-grandparent?limit=6&start=6
 				return self::cousinName($up + $down - 3, $sex2);
 			case 'es':
 				// Source: Wes Groleau. See http://UniGen.us/Parentesco.html & http://UniGen.us/Parentesco-D.html

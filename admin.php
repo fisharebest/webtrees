@@ -600,7 +600,7 @@ if (
 		<div id="webtrees-version-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="webtrees-version-heading">
 			<div class="panel-body">
 				<p>
-					<?php echo /* I18N: %s is a URL/link to the project website */ I18N::translate('Support and documentation can be found at %s.', '<a href="http://webtrees.net/">webtrees.net</a>'); ?>
+					<?php echo /* I18N: %s is a URL/link to the project website */ I18N::translate('Support and documentation can be found at %s.', '<a href="https://webtrees.net/">webtrees.net</a>'); ?>
 				</p>
 				<?php if (Auth::isAdmin()): ?>
 				<p>
@@ -714,7 +714,7 @@ if (
 						</tr>
 						<tr>
 							<th>
-								<?php echo I18N::translate('Users logged in'); ?>
+								<?php echo I18N::translate('Users who are signed in'); ?>
 							</th>
 							<td>
 								<?php foreach ($logged_in as $n => $user): ?>

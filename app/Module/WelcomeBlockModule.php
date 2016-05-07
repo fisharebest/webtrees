@@ -57,7 +57,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 		}
 		$content .= '<td><a href="individual.php?pid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-indis"></i><br>' . I18N::translate('Default individual') . '</a></td>';
 		if (Site::getPreference('USE_REGISTRATION_MODULE') && !Auth::check()) {
-			$content .= '<td><a href="' . WT_LOGIN_URL . '?action=register"><i class="icon-user_add"></i><br>' . I18N::translate('Request new user account') . '</a></td>';
+			$content .= '<td><a href="' . WT_LOGIN_URL . '?action=register"><i class="icon-user_add"></i><br>' . I18N::translate('Request a new user account') . '</a></td>';
 		}
 		$content .= "</tr>";
 		$content .= "</table>";
