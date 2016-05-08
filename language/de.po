@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-08 04:09+0000\n"
-"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
+"PO-Revision-Date: 2016-05-08 21:17+0000\n"
+"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -731,7 +731,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
 msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Ein FAQ-Eintrag kann entweder nur in einem oder in allen Familienbäumen angezeigt werden."
+msgstr "Ein FAQ-Eintrag kann entweder nur in einem oder in allen Stammbäumen angezeigt werden."
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
@@ -5884,7 +5884,7 @@ msgstr "Eine GEDCOM-Datei exportieren"
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:281
 msgid "Export all the family trees to GEDCOM files…"
-msgstr "Exportiere alle Familienbäume in GEDCOM Dateien…"
+msgstr "Exportiere alle Stammbäume in GEDCOM-Dateien…"
 
 #: admin_trees_download.php:134
 msgid "Export options"
@@ -6152,7 +6152,7 @@ msgstr "Zugriff auf Stammbaum und Einstellungen"
 #: app/Module/ClippingsCartModule.php:90
 #: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
-msgstr "Familien Baum Sammelbehälter"
+msgstr "Stammbaum-Sammelbehälter"
 
 #: admin_trees_config.php:594 admin_trees_manage.php:635
 msgid "Family tree title"
@@ -7430,7 +7430,7 @@ msgstr "Das maximale Alter einer Person, das maximale Alter eines persönlichen 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1025
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
-msgstr "Wenn zwei Familienbäume dasselbe Medienverzeichnis verwenden, können sie die Mediendateien gemeinsam verwenden. Wenn sie unterschiedliche Medienverzeichnisse verwenden, werden die Mediendateien getrennt verwaltet."
+msgstr "Wenn zwei Stammbäume dasselbe Medienverzeichnis verwenden, können sie die Mediendateien gemeinsam verwenden. Wenn sie unterschiedliche Medienverzeichnisse verwenden, werden die Mediendateien getrennt verwaltet."
 
 #: admin_trees_config.php:381
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -13696,7 +13696,7 @@ msgstr "Die Änderungen an „%s“ wurden nicht angenommen."
 
 #: app/Module/ClippingsCartModule.php:311
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>"
-msgstr "Der Sammelbehälter erlaubt es Ausschnitte aus diesem Stammbaum zu sammeln und in eine separate GEDCOM-Datei zu speichern, die man anschließend herunterladen kann.<br><ul><li>Wie wählt man Abschnitte?<br>Jeder anklickbare Name führt zur Detailseite der betreffenden Person (Familie, Quelle). Dort gibt es die Option <b>Zum Sammelcontainer hinzufügen</b>. Klicken Sie auf diesen Link und Sie gelangen zu einer Liste von Optionen.</li><li><b>Wie herunterladen?</b>Sobald Sie die gewünschten Elemente in Ihrem Sammelbehälter haben, können Sie diese durch einen Klick auf <b>Jetzt herunterladen</b> herunterladen.</li></ul>"
+msgstr "Der Sammelbehälter erlaubt es Ihnen, Teile aus diesem Stammbaum zu nehmen und in einer GEDCOM-Datei für das Herunterladen und den nachfolgenden Import in einem Genealogieprogramm zusammenzufassen.<br><br><ul><li><b>Wie wählt man diese Teile aus?</b> Dies ist wirklich einfach. Immer, wenn Sie den Link zu einer Person, Familie oder Quelle sehen, können Sie auf deren Detailseite gehen. Dort finden Sie die Option <b>Zum Sammelbehälter hinzufügen</b>. Wenn Sie diesen Link anklicken, wird Ihnen eine Liste mit verschiedenen Möglichkeiten für das Herunterladen angezeigt.</li><li><b>Wie wird heruntergeladen?</b> Sobald Sie Elemente in Ihrem Sammelbehälter haben, können Sie den Knopf <b>Herunterladen</b> wählen. Folgen Sie den weiteren Anweisungen.</li></ul><br>"
 
 #: site-unavailable.php:54
 msgid "The database reported the following error message:"
@@ -13718,7 +13718,7 @@ msgstr "Die Details dieser Person sind nicht öffentlich."
 #: admin_site_upgrade.php:293 admin_trees_export.php:41
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr "Stammbaum wurde in %s exportiert."
+msgstr "Der Stammbaum wurde in %s exportiert."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:77
@@ -13915,7 +13915,7 @@ msgstr "Die Mediendatei, die Sie hochladen möchten, sollte auf dem Webserver an
 
 #: setup.php:169
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr "Die Speicher- und CPU-Zeit-Anforderungen sind abhängig von der Anzahl der Personen im Familienbaum."
+msgstr "Die Speicher- und Prozessorzeit-Anforderungen sind abhängig von der Anzahl der Personen in Ihrem Stammbaum."
 
 #: message.php:193
 msgid "The message was not sent."
@@ -13964,7 +13964,7 @@ msgstr "Die Passwörter stimmen nicht überein."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
-msgstr "Die Voreinstellungen aller Stammbäume wurden aktualisiert."
+msgstr "Die Voreinstellungen für alle Stammbäume wurden aktualisiert."
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
@@ -14094,7 +14094,7 @@ msgstr "Der Benutzername oder das Passwort sind ungültig."
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:967
 msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-msgstr "Der Wert für das META Tag Feld «description» im HTML-Seitenkopf. Lassen Sie dieses Feld leer, um den Titel der aktuellen GEDCOM-Datei zu verwenden."
+msgstr "Der Wert für das META Tag Feld «description» im HTML-Seitenkopf. Lassen Sie dieses Feld leer, um den Namen des Stammbaumes zu verwenden."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
@@ -14303,7 +14303,7 @@ msgstr "Diese Familie blieb kinderlos"
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
 msgstr[0] "Dieser Stammbaum hat einen Datensatz, der den selben „XREF“ verwendet wie in einem anderen Stammbaum."
-msgstr[1] "Dieser Stammbaum hat %s Datensätze, die den selben „XREF“ verwendet wie einem anderen Stammbaum."
+msgstr[1] "Dieser Stammbaum hat %s Datensätze, die den selben „XREF“ verwenden wie einem anderen Stammbaum."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -14312,18 +14312,18 @@ msgstr "Dieser Stammbaum besitzt keine darzustellenden Bilder."
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Diese Stammbaum wurde aktualisiert am #gedcomUpdated#. Es gibt insgesamt #totalSurnames# Nachnamen, ältester Eintrag: #firstEventType# von #firstEventName# im Jahre #firstEventYear#. Neuester Eintrag: #lastEventType# von #lastEventName# im Jahre #lastEventYear#.<br><br>Für Anmerkungen oder Hinweise kontaktieren Sie bitte #contactWebmaster#."
+msgstr "Diese Stammbaum wurde aktualisiert am #gedcomUpdated#. Es gibt insgesamt #totalSurnames# Nachnamen in diesem Stammbaum. Das älteste gespeicherte Ereignis ist #firstEventType# von #firstEventName# im Jahre #firstEventYear#. Das neueste Ereignis ist #lastEventType# von #lastEventName# im Jahre #lastEventYear#.<br><br>Für Anmerkungen oder Hinweise kontaktieren Sie bitte #contactWebmaster#."
 
 #. I18N: %s is a date
 #: app/Module/FamilyTreeStatisticsModule.php:97
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "Dieser Stammbaum wurde am %s zuletzt aktualisiert."
+msgstr "Dieser Stammbaum wurde zuletzt am %s aktualisiert."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-msgstr "Diese Mediendatei wird von einer anderen genealogischen Datei auf diesem Server verwendet. Sie kann nicht gelöscht, verschoben oder umbenannt werden, bis diese Verbindungen gelöscht wurden."
+msgstr "Diese Mediendatei ist mit einem anderen Stammbaum auf diesem Server verbunden. Sie kann nicht gelöscht, verschoben oder umbenannt werden, bis diese Verbindungen gelöscht wurden."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:179
@@ -14376,7 +14376,7 @@ msgstr "Details sind vertraulich und dürfen deshalb nicht gezeigt werden."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "In diesem Feld können Sie das Jahr eingeben für die Ausgabe der Liste im «Jahres Modus» bzw. für den Kalender im «Monats Modus».<br><br>Im «Tages-Modus» ändert die Jahreszahl nichts, da die Ereignisse aller Jahre gezeigt werden.<dl><dt><b>Tipps für Fortgeschrittene</b> bei <b>Jahr zeigen:<br>Mehrere Jahre</b></dt><dd>Sie können über mehrere Jahre suchen, indem Sie im Jahresfeld folgende Eingabe machen:<br>- Beisp. 1: <b>1992-5</b> für alle Ereignisse von 1992 bis 1995.<br>- Beisp. 2: <b>1972-89</b> für alle Ereignisse von 1972 bis 1989.<br>- Beisp. 3: <b>1610-759</b> für alle Ereignisse von 1610 bis 1759.<br>- Beisp. 4: <b>1880-1905</b> für alle Ereignisse von 1880 bis 1905.<br>- Beisp. 5: <b>880-1105</b> für alle Ereignisse von 880 bis 1105.<br><br>Sie können auch die letzten Ziffern der Jahreszahl durch Fragezeichen <b>?</b> erzetzen, um alle Ereignisse eines Jahrzehntes oder Jahrhundertes zu erhalten.<br>- Beisp.: <b>197?</b> für alle Ereignisse von 1970 bis 1979 oder <b>16??</b> für alle Ereignisse von 1600 bis 1699.</dd><dt><b>Abkürzungen</b></dt><dd>Manchmal ist das genaue Datum eines Ereignisses nicht bekannt. In diesem Fall können Begriffe wie «nach», «vor» und «um» in Verbindung mit einem Datum verwendet werden. Die Daten werden zusammen mit einer englischen Abkürzung dieser Begriffe in der GEDCOM-Datei gespeichert. Im Jahres-Modus können Sie auch nach diesen Begriffen (mit oder ohne Datumsangabe) suchen. Hier einige Beispiele:<br><b>abt</b> 1800 (abt = about, d.h. um)<br><b>bet</b> 1950-1959 (bet = between, d.h. zwischen) Eingabe: bet 1950-59<br><b>bef</b> 1950 (bef = before, d.h. vor)<br><b>aft</b> 1900 (aft = after, d.h. nach)<br><br>Wichtig: <i><b>Diese Abkürzungen müssen in Englisch eingegeben werden, da der GEDCOM-Standard die englischen Kürzel beinhaltet!</b> Das Programm sucht nach der genauen Zeichenfolge, die Sie eingeben. Wenn Sie also nach «abt 1850» suchen, wird ein Datum wie «abt oct 1850» <b>nicht</b> unter den Suchergebnissen erscheinen.</i></dd></dl>Wenn Sie eine neue Jahreszahl eingeben, wird der Bildschirm nicht sofort aktualisiert. Sie müssen auf die Schaltflächen <b>Monat zeigen</b> oder <b>Jahr zeigen</b> klicken, um die Anzeige zu aktualisieren."
+msgstr "In diesem Feld können Sie das Jahr für die Liste im Modus «Jahr zeigen» oder «Monat zeigen» ändern. Im Modus «Tag zeigen» ist das Jahr nicht wichtig, da die Ereignisse aller Jahre angezeigt werden.<br><br>Wenn Sie eine neue Jahreszahl eingeben, wird die Liste nicht sofort aktualisiert. Sie müssen mit <b>Enter</b> bestätigen oder auf die Schaltflächen <b>Monat zeigen</b> oder <b>Jahr zeigen</b> klicken, um die Anzeige zu aktualisieren.<br><br><b>Tipps für Fortgeschrittene</b> bei <b>«Jahr zeigen»</b><br><dl><dt><b>Mehr als ein Jahr</b></dt><dd>Sie können im Bereich mehrerer Jahre suchen.<br><br>Der Jahresbereich selbst wird <u>automatisch</u> berücksichtigt. Das bedeutet, dass sich der Zeitraum vom 1. Januar des ersten Jahres bis zum 31. Dezember des letzten Jahres des eingegebenen Bereiches erstreckt.<br><br>Hier einige Beispiele für Jahresbereiche:<br><b>1992-5</b> für alle Ereignisse von 1992 bis 1995.<br><b>1972-89</b> für alle Ereignisse von 1972 bis 1989.<br><b>1610-759</b> für alle Ereignisse von 1610 bis 1759.<br><b>1880-1905</b> für alle Ereignisse von 1880 bis 1905.<br><b>880-1105</b> für alle Ereignisse von 880 bis 1105.<br><br>Sie können auch die letzten Ziffern der Jahreszahl durch Fragezeichen <b>?</b> ersetzen, um alle Ereignisse eines Jahrzehntes oder Jahrhundertes anzuzeigen.<br><br>Zum Beispiel:<br><b>197?</b> für alle Ereignisse von 1970 bis 1979 oder<br><b>16??</b> für alle Ereignisse von 1600 bis 1699.<br><br>Bei Wahl eines Jahresbereiches wechselt der Kalender immer in den Modus «Jahr zeigen».</dd><br><dt><b>Hinweis: Datumsunschärfen</b></dt><dd>Manchmal ist das genaue Datum eines Ereignisses nicht bekannt. In diesem Fall werden Datumsunschärfebegriffe wie «nach», «vor» und «um» in Verbindung mit einem Datum verwendet. Die Daten werden zusammen mit der englischen Abkürzung dieser Begriffe in der Datenbank gespeichert. Im Modus «Jahr zeigen» können Sie auch nach diesen Begriffen (mit oder ohne Datumsangabe) suchen.<br><br>Hier einige Beispiele:<br><b>abt</b> 1800 (abt = about, d.h. um)<br><b>bet</b> 1950-1959 (bet = between, d.h. zwischen) Eingabe: bet 1950-59<br><b>bef</b> 1950 (bef = before, d.h. vor)<br><b>aft</b> 1900 (aft = after, d.h. nach)<br><br><b>Wichtig: <i>Diese Abkürzungen müssen in englischer Form eingegeben werden, da der GEDCOM-Standard die englischen Kürzel beinhaltet!</b></i> Das Programm sucht nach der genauen Zeichenfolge, die Sie eingeben. Wenn Sie also nach «abt 1850» suchen, wird ein Datum wie «abt oct 1850» <b>nicht</b> unter den Suchergebnissen erscheinen.</dd></dl>"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2156
@@ -14400,7 +14400,7 @@ msgstr "Dies ist eine Komma getrennte Liste von GEDCOM Tags die in dem Bearbeitu
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
-msgstr "Dies ist ein Link zu Ihrem eigenen Datensatz im Stammbaum. Ist dies eine falsche Person, bitte einen Administrator kontaktieren."
+msgstr "Dies ist ein Link zu Ihrem eigenen Datensatz im Stammbaum. Falls dies die falsche Person ist, kontaktieren Sie bitte den Administrator."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1410
@@ -15967,7 +15967,7 @@ msgstr "Wo befindet sich Ihre PhpGedView Installation?"
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Welcher Stammbaum soll in der Sitemap enthalten sein"
+msgstr "Welche Stammbäume sollen in den Sitemaps enthalten sein?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
@@ -16106,7 +16106,7 @@ msgstr "Sie dürfen keine Mitteilungen versenden, die externe Adressen enthalten
 #: app/Module/LoginBlockModule.php:63
 #, php-format
 msgid "You are signed in as %s"
-msgstr "Sie sind als %s angemeldet"
+msgstr "Sie sind als %s angemeldet."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -16135,7 +16135,7 @@ msgstr "Sie können die Themen nach der Aktualisierung wieder aktivieren."
 
 #: admin_trees_renumber.php:266
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr "Sie können die Datensätze in einem Familienstammbaum neu nummerieren, damit diese internen Referenznummern nicht in einem anderen Familienstammbaum vorkommen."
+msgstr "Sie können die Datensätze in einem Stammbaum neu nummerieren, damit diese internen Referenznummern nicht in einem anderen Stammbaum vorkommen."
 
 #: admin_trees_renumber.php:279
 msgid "You can renumber this family tree."
