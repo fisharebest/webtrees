@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-07 21:51+0000\n"
+"PO-Revision-Date: 2016-05-07 21:52+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
@@ -13923,12 +13923,12 @@ msgstr "Els requisits de temps de la memòria i la CPU depèn del nombre de pers
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr "No s’ha enviat el missatge"
+msgstr "No s’ha enviat el missatge."
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "S’ha enviat el missatge a %s"
+msgstr "S’ha enviat el missatge a %s."
 
 #: admin_modules.php:54
 #, php-format

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-08 07:30+0000\n"
+"PO-Revision-Date: 2016-05-08 08:00+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -1301,15 +1301,15 @@ msgstr "Přidat %s do schránky"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
-msgstr "Přidat nového bratra nebo sestru"
+msgstr "Přidat bratra nebo sestru"
 
 #: edit_interface.php:516
 msgid "Add a child"
-msgstr "Přidat nové dítě"
+msgstr "Přidat dítě"
 
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
-msgstr "Přidat dítě a vytvořit rodinu s jedním rodičem"
+msgstr "Přidat dítě a vytvořit tak rodinu s jedním rodičem"
 
 #: app/Controller/FamilyController.php:82
 #: app/Functions/FunctionsCharts.php:310
@@ -1322,20 +1322,20 @@ msgstr "Přidat údaj"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
-msgstr "Přidat nového otce"
+msgstr "Přidat otce"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
-msgstr "Přidat nového oblíbeného"
+msgstr "Přidat oblíbeného"
 
 #: app/Module/GoogleMapsModule.php:4551
 msgid "Add a geographic location"
-msgstr "Přidat nové geografické místo"
+msgstr "Přidat zeměpisné místo"
 
 #: app/Module/RelativesTabModule.php:385 edit_interface.php:810
 #: edit_interface.php:900
 msgid "Add a husband"
-msgstr "Přidat nového manžela"
+msgstr "Přidat manžela"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
@@ -1348,31 +1348,31 @@ msgstr "Přidat manžela použitím existující osoby"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
-msgstr "Přidat do deníku nový záznam"
+msgstr "Přidat do deníku záznam"
 
 #: app/Controller/FamilyController.php:162
 #: app/Functions/FunctionsEdit.php:1131 app/Module/AlbumModule.php:98
 #: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
 #: source.php:184
 msgid "Add a media object"
-msgstr "Přidat nový objekt médií"
+msgstr "Přidat objekt médií"
 
 #: app/Module/RelativesTabModule.php:323 edit_interface.php:672 family.php:114
 msgid "Add a mother"
-msgstr "Přidat novou matku"
+msgstr "Přidat matku"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
 msgid "Add a name"
-msgstr "Přidat nové jméno"
+msgstr "Přidat jméno"
 
 #: app/Module/FamilyTreeNewsModule.php:148
 msgid "Add a news article"
-msgstr "Přidat nový článek"
+msgstr "Přidat novinku"
 
 #: app/Controller/FamilyController.php:149
 #: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
-msgstr "Přidat novou poznámku"
+msgstr "Přidat poznámku"
 
 #: app/Functions/FunctionsEdit.php:1141
 msgid "Add a restriction"
@@ -1386,25 +1386,25 @@ msgstr "Přidat omezení"
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
-msgstr "Přidat rolovací lištu, pokud se blok zvětšuje"
+msgstr "Přidat rolovací lištu, když se blok zvětšuje"
 
 #: app/Controller/FamilyController.php:155
 #: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
 msgid "Add a shared note"
-msgstr "Přidat novou sdílenou poznámku"
+msgstr "Přidat sdílenou poznámku"
 
 #: app/Module/RelativesTabModule.php:271
 msgid "Add a son or daughter"
-msgstr "Přidat nového syna nebo dceru"
+msgstr "Přidat syna nebo dceru"
 
 #: app/Controller/FamilyController.php:172
 #: app/Functions/FunctionsEdit.php:1060 app/Module/SourcesTabModule.php:93
 msgid "Add a source citation"
-msgstr "Přidat nový pramen citací"
+msgstr "Přidat pramen citací"
 
 #: edit_interface.php:837
 msgid "Add a spouse"
-msgstr "Přidat nového partnera"
+msgstr "Přidat partnera"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
@@ -1414,12 +1414,12 @@ msgstr "Přidat příběh"
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
-msgstr "Přidat nového uživatele"
+msgstr "Přidat uživatele"
 
 #: app/Module/RelativesTabModule.php:373 edit_interface.php:807
 #: edit_interface.php:897
 msgid "Add a wife"
-msgstr "Přidat novou manželku"
+msgstr "Přidat manželku"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1437,7 +1437,7 @@ msgstr "Přidat otázku do FAQ"
 
 #: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
 msgid "Add an associate"
-msgstr "Přidat nového společníka"
+msgstr "Přidat společníka"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -13958,12 +13958,12 @@ msgstr "Požadavky na paměť a procesorový čas závisí na počtu osob ve va�
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr "Zpráva nebyla odeslána"
+msgstr "Zpráva nebyla odeslána."
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Zpráva pro %s byla úspěšně odeslána"
+msgstr "Zpráva pro %s byla úspěšně odeslána."
 
 #: admin_modules.php:54
 #, php-format
@@ -14418,7 +14418,7 @@ msgstr "Podrobnosti o této osobě jsou soukromé."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "Toto políčko slouží pro přepínání roku v kalendáři v „režimu měsíců“ nebo v seznamu v „režimu roků“.<br>V „režimu den“ se změna roku nijak neprojeví, protože jsou zobrazeny události za celý rok.<dl><dt><b>Rozšířené možnosti</b> pro <b>Zobrazit rok:<br>Více roků najednou</b></dt><dd>Můžete hledat více než jeden rok zapsáním do políčka roku::<br>- Př. 1: <b>1992-5</b> pro všechny události od 1992 do 1995.<br>- Př. 2: <b>1972-89</b> pro všechny události od 1972 do 1989.<br>- Př. 3: <b>1610-759</b> pro všechny události od 1610 do 1759.<br>- Př. 4: <b>1880-1905</b> pro všechny události od 1880 do 1905.<br>- Př. 5: <b>880-1105</b> pro všechny události od 880 do 1105.<br><br>Také můžete vynechat poslední číslici roku pro zobrazení všech událostí za určité desetiletí.<br>- Př.: <b>197</b> pro všechny události od 1970 do 1979.</dd><dt><br><b>Zkratky</b></dt><dd>Někdy není úplně jasné, kdy přesně se daná událost stala. V těchto případech mohou být k datu přidána slova jako „po“, „před“ a „kolem“. Data jsou v GEDCOMu uložena společně se zkratkou daného termínu. V režimu roku můžete zadávat i hledání těchto termínů s nebo bez přidruženého data. Zde je několik příkladů takových dotazů:<br><b>abt</b> 1800 (abt = about = KOLEM)<br><b>bet</b> 1950-1959 (bet = between = MEZI) zadejte: bet 1950 nepo jen: 1950-59<br><b>bef</b> 1950 (bef = before = PŘED)<br><b>aft</b> 1900 (aft = after = PO)<br><br><b>Poznámka:</b> PhpGedView bude hledat výraz přesně tak, jak jej zadáte. Hledáte-li „abt 1850“, datum z GEDCOMu jako např. „abt oct 1850“ <b>nebude</b> zahrnuto ve výsledcích vyhledávání. - Můžete zadat jen zkratku bez roku a získáte seznam všech dat, která tuto zkratku obsahují.</dd></dl>Samotným vepsáním roku nespustíte vyhledávání.<br>Jelikož toto políčko není odkazem, budete po zapsání roku muset kliknout na tlačítko <b>Zobrazit měsíc</b> nebo tlačítko <b>Zobrazit rok</b>."
+msgstr "Toto políčko slouží pro přepínání roku v kalendáři v „režimu měsíců“ nebo v seznamu v „režimu roků“.<br>V „režimu den“ se změna roku nijak neprojeví, protože jsou zobrazeny události za celý rok.<dl><dt><b>Rozšířené možnosti</b> pro <b>Zobrazit rok:<br>Více roků najednou</b></dt><dd>Můžete hledat více než jeden rok zapsáním do políčka roku::<br>- Př. 1: <b>1992-5</b> pro všechny události od 1992 do 1995.<br>- Př. 2: <b>1972-89</b> pro všechny události od 1972 do 1989.<br>- Př. 3: <b>1610-759</b> pro všechny události od 1610 do 1759.<br>- Př. 4: <b>1880-1905</b> pro všechny události od 1880 do 1905.<br>- Př. 5: <b>880-1105</b> pro všechny události od 880 do 1105.<br><br>Také můžete vynechat poslední číslici roku pro zobrazení všech událostí za určité desetiletí.<br>- Př.: <b>197</b> pro všechny události od 1970 do 1979.</dd><dt><br><b>Zkratky</b></dt><dd>Někdy není úplně jasné, kdy přesně se daná událost stala. V těchto případech mohou být k datu přidána slova jako „po“, „před“ a „kolem“. Data jsou v GEDCOMu uložena společně se zkratkou daného termínu. V režimu roku můžete zadávat i hledání těchto termínů s nebo bez přidruženého data. Zde je několik příkladů takových dotazů:<br><b>abt</b> 1800 (abt = about = KOLEM)<br><b>bet</b> 1950-1959 (bet = between = MEZI) zadejte: bet 1950 nepo jen: 1950-59<br><b>bef</b> 1950 (bef = before = PŘED)<br><b>aft</b> 1900 (aft = after = PO)<br><br><b>Poznámka:</b> PhpGedView bude hledat výraz přesně tak, jak jej zadáte. Hledáte-li „abt 1850“, datum z GEDCOMu jako např. „abt oct 1850“ <b>nebude</b> zahrnuto ve výsledcích vyhledávání. - Můžete zadat jen zkratku bez roku a získáte seznam všech dat, která tuto zkratku obsahují.</dd></dl>Samotným vepsáním roku nespustíte vyhledávání.<br>Jelikož toto políčko není odkazem, budete po zapsání roku muset kliknout na tlačítko <b>Zobrazit měsíc</b> nebo tlačítko <b>Zobrazit rok</b>"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2156
@@ -14687,7 +14687,7 @@ msgstr "Tato volba nechá rodinné spojení v soukromých záznamech. To znamen�
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:482
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "Tato volba zobrazí jména (ale bez dalších podrobností) soukromých osob. Osoby jsou soukromé, pokud jsou stále naživu nebo pokud bylo nastaveno na jejich záznam omezení soukromí. Pro schování konkrétního jména přidejte omezení soukromí na daný záznam."
+msgstr "Tato volba zobrazí jména (ale bez dalších podrobností) soukromých osob. Osoby jsou soukromé, pokud jsou stále naživu nebo pokud bylo nastaveno na jejich záznam omezení soukromí. Pro schování konkrétního jména přidejte k danému záznamu omezení soukromí."
 
 #: app/Module/GoogleMapsModule.php:494
 msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
@@ -15992,7 +15992,7 @@ msgstr "Pokud je tato volba vybrána, webtrees spočítají rozdíly věků mezi
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2200
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr "Pokud přidáváte nového člena rodiny, může se vám nabídnout příjmení, které bude vycházet z místní tradice."
+msgstr "Když přidáváte nového člena rodiny, může se vám nabídnout příjmení, které bude vycházet z místní tradice."
 
 #: help_text.php:310
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."

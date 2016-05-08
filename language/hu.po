@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-07 22:49+0000\n"
+"PO-Revision-Date: 2016-05-07 23:38+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -7210,7 +7210,7 @@ msgstr "Itt egy ikon adható meg vagy távolítható el. A hivatkozással egy z�
 
 #: app/Module/GoogleMapsModule.php:3920
 msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
-msgstr "Itt adható meg a nagyítás mértéke. Ez lesz a legkisebb érték, amikor ez a földrajzi hely jelenik meg a térképen."
+msgstr "Itt adható meg a nagyítás mértéke. Ez lesz a legkisebb érték, amikor ez a földrajzi hely jelenik meg egy térképen."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:169
@@ -13924,12 +13924,12 @@ msgstr "A memóriaigény és a központi egység (CPU) időszükséglete a csal�
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr "Az üzenetet nem küldtük el"
+msgstr "Az üzenetet nem küldtük el."
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Az üzenetet sikeresen elküldtük. A címzett: %s"
+msgstr "Az üzenetet sikeresen elküldtük. A címzett: %s."
 
 #: admin_modules.php:54
 #, php-format
