@@ -5288,6 +5288,7 @@ footer .error {
 	form,
 	#sidebar,
 	#separator,
+	.editfacts,
 	.noprint {
 		display: none;
 	}

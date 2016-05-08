@@ -63,7 +63,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 		ob_start();
 		?>
 		<table class="facts_table">
-			<tr>
+			<tr class="noprint">
 				<td colspan="2" class="descriptionbox rela">
 				<input id="checkbox_sour2" type="checkbox" <?php echo $WT_TREE->getPreference('SHOW_LEVEL2_NOTES') ? 'checked' : ''; ?> onclick="jQuery('tr.row_sour2').toggle();">
 				<label for="checkbox_sour2"><?php echo I18N::translate('Show all sources'); ?></label>
@@ -84,7 +84,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 			// New Source Link
 			if ($controller->record->canEdit()) {
 				?>
-				<tr>
+				<tr class="noprint">
 					<td class="facts_label">
 						<?php echo GedcomTag::getLabel('SOUR'); ?>
 					</td>
