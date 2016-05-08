@@ -83,7 +83,7 @@ $controller
 					<td class="optionbox" colspan="2">
 						<label for="addFamily">
 							<input id="addFamily" type="checkbox" value="yes" name="addFamily">
-							<?php echo I18N::translate('Include the individual’s immediate family?') ?>
+							<?php echo /* I18N: Label for a configuration option */ I18N::translate('Include the individual’s immediate family') ?>
 						</label>
 					</td>
 				</tr>
@@ -106,8 +106,8 @@ $controller
 					</td>
 					<th class="descriptionbox" colspan="2">
 						<input id="clear" type="hidden" name="clear" value=0>
-						<input type="reset" value="<?php echo /* I18N: Button label */ I18N::translate('reset') ?>">
-						<input type="submit" value="<?php echo /* I18N: Button label */ I18N::translate('show') ?>">
+						<input type="reset" value="<?php echo /* I18N: A button label */ I18N::translate('reset') ?>">
+						<input type="submit" value="<?php echo /* I18N: A button label */ I18N::translate('show') ?>">
 					</th>
 				</tr>
 			</tbody>

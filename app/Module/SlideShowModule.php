@@ -174,13 +174,13 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 			$content .= '<br>';
 			$content .= '<a href="' . $random_media->getHtmlUrl() . '"><b>' . $random_media->getFullName() . '</b></a><br>';
 			foreach ($random_media->linkedIndividuals('OBJE') as $individual) {
-				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View individual') . ' — ' . $individual->getFullName() . '</a><br>';
+				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View the individual') . ' — ' . $individual->getFullName() . '</a><br>';
 			}
 			foreach ($random_media->linkedFamilies('OBJE') as $family) {
-				$content .= '<a href="' . $family->getHtmlUrl() . '">' . I18N::translate('View family') . ' — ' . $family->getFullName() . '</a><br>';
+				$content .= '<a href="' . $family->getHtmlUrl() . '">' . I18N::translate('View the family') . ' — ' . $family->getFullName() . '</a><br>';
 			}
 			foreach ($random_media->linkedSources('OBJE') as $source) {
-				$content .= '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View source') . ' — ' . $source->getFullName() . '</a><br>';
+				$content .= '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View the source') . ' — ' . $source->getFullName() . '</a><br>';
 			}
 			$content .= '<br><div class="indent">';
 			$content .= FunctionsPrint::printFactNotes($random_media->getGedcom(), "1", false);
@@ -259,7 +259,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		$start    = $this->getBlockSetting($block_id, 'start', '0') || Filter::getBool('start');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Show only individuals, events, or all?');
+		echo /* I18N: Label for a configuration option */ I18N::translate('Show only individuals, events, or all');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::selectEditControl('filter', array('indi' => I18N::translate('Individuals'), 'event' => I18N::translate('Facts and events'), 'all' => I18N::translate('All')), null, $filter, '');
 		echo '</td></tr>';
@@ -405,13 +405,13 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 	<?php
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Show slide show controls?');
+		echo /* I18N: Label for a configuration option */ I18N::translate('Show slide show controls');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::editFieldYesNo('controls', $controls);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Start slide show on page load?');
+		echo /* I18N: Label for a configuration option */ I18N::translate('Start slide show on page load');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::editFieldYesNo('start', $start);
 		echo '</td></tr>';

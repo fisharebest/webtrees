@@ -5,17 +5,17 @@
 	<Description><var var="I18N::translate('A report of an individual’s ancestors, in a narrative style.')" /></Description>
 	<Input name="pid" lookup="INDI" type="text"><var var="I18N::translate('Individual')" /></Input>
 	<Input name="maxgen" type="select" options="3=>I18N::number(3)|4=>I18N::number(4)|5=>I18N::number(5)|6=>I18N::number(6)|7=>I18N::number(7)|8=>I18N::number(8)|9=>I18N::number(9)|10=>I18N::number(10)|*=>I18N::translate('All')"><var var="I18N::translate('Generations')" /></Input>
-	<Input name="sources" type="checkbox" default="1"><var var="I18N::translate('Show sources?')" /></Input>
-	<Input name="notes" type="checkbox" default="0"><var var="I18N::translate('Show notes?')" /></Input>
-	<Input name="occu" type="checkbox" default="0"><var var="I18N::translate('Show occupations?')" /></Input>
-	<Input name="resi" type="checkbox" default="0"><var var="I18N::translate('Show residences?')" /></Input>
-	<Input name="children" type="checkbox" default="0"><var var="I18N::translate('Show children of ancestors?')" /></Input>
+	<Input name="sources" type="checkbox" default="1"><var var="I18N::translate('Show sources')" /></Input>
+	<Input name="notes" type="checkbox" default="0"><var var="I18N::translate('Show notes')" /></Input>
+	<Input name="occu" type="checkbox" default="0"><var var="I18N::translate('Show occupations')" /></Input>
+	<Input name="resi" type="checkbox" default="0"><var var="I18N::translate('Show residences')" /></Input>
+	<Input name="children" type="checkbox" default="0"><var var="I18N::translate('Show children of ancestors')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translateContext('paper size','Letter')|A3=>I18N::translateContext('paper size', 'A3')|A4=>I18N::translateContext('paper size','A4')|legal=>I18N::translateContext('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
 	<!--
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translateContext('font name', 'Arial')|dejavusans=>I18N::translateContext('font name', 'DejaVu')|helvetica=>I18N::translateContext('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 	-->
 	<SetVar name="fonts" value="dejavusans" />
-	
+
 	<!-- Header -->
 	<Style name="header" font="$fonts" size="14" style="b" />
 	<!-- Page numbers text -->
@@ -218,7 +218,7 @@
 						<if condition="$resi==1">
 							<!-- Individual, residence... -->
 							<RepeatTag tag="RESI">
-								<Text style="text"> 
+								<Text style="text">
 									<if condition="$gender=='m'"><var var="I18N::translate('He resided at')" /> </if>
 									<if condition="$gender=='f'"><var var="I18N::translate('She resided at')" /> </if>
 									<if condition="@ADDR!=''"><GedcomValue tag="RESI:ADDR" level="1" /></if>
@@ -239,7 +239,7 @@
 									</RepeatTag>
 								</if>
 								<Text style="text">
-									<if condition="@DATE!=''"><var var=" " /> <GedcomValue tag="DATE" level="2" /></if>. 
+									<if condition="@DATE!=''"><var var=" " /> <GedcomValue tag="DATE" level="2" /></if>.
 								</Text>
 							</RepeatTag>
 						</if>
@@ -450,7 +450,7 @@
 														<Text style="label1"><Gedcom id="MARR"><if condition="@DATE!=''"> <GedcomValue tag="DATE" level="2" /></if><if condition="@PLAC!=''"> <GedcomValue tag="PLAC" level="2" /></if></Gedcom> <br /></Text>
 													</Gedcom>
 												</RepeatTag>
-												<!-- End BIRT start DEAT --> 
+												<!-- End BIRT start DEAT -->
 												<Gedcom id="DEAT">
 													<Text style="label1"> <var var="I18N::translate('Death')" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/> <br /></Text>
 												</Gedcom>

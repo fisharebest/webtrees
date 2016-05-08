@@ -181,7 +181,7 @@ usort(
 						echo '<tr><td class="descriptionbox">';
 						echo GedcomTag::getLabel('OBJE');
 						echo '</td><td class="optionbox">';
-						echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', I18N::translate('Add a new media object'), '</a>';
+						echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', I18N::translate('Add a media object'), '</a>';
 						echo FunctionsPrint::helpLink('OBJE');
 						echo '<br>';
 						echo '<a href="#" onclick="window.open(\'inverselink.php?linktoid=', $controller->record->getXref(), '&amp;linkto=source\', \'_blank\', find_window_specs); return false;">', I18N::translate('Link to an existing media object'), '</a>';

@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Soundex;
 
 /**
@@ -210,8 +211,13 @@ class BranchesController extends PageController {
 		// Is this individual one of our ancestors?
 		$sosa = array_search($individual, $this->ancestors, true);
 		if ($sosa) {
-			$sosa_class = 'search_hit';
-			$sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $this->ancestors[1]->getXref() . '&amp;pid1=' . $individual->getXref() . '">' . $sosa . '</a>' . self::sosaGeneration($sosa);
+			$sosa_class = 'search_hit';												
+			$link = Module::getLinkForRelationship($individual, $this->ancestors[1]);
+			if ($link) {
+				$sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="' . $link . '">' . $sosa . '</a>' . self::sosaGeneration($sosa);
+			} else {
+				$sosa_html  = ' <span class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '">' . $sosa . '</span>' . self::sosaGeneration($sosa);
+			}												
 		} else {
 			$sosa_class = '';
 			$sosa_html  = '';
@@ -247,7 +253,12 @@ class BranchesController extends PageController {
 					$sosa = array_search($spouse, $this->ancestors, true);
 					if ($sosa) {
 						$sosa_class = 'search_hit';
-						$sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $this->ancestors[1]->getXref() . '&amp;pid1=' . $spouse->getXref() . '"> ' . $sosa . ' </a>' . self::sosaGeneration($sosa);
+						$link = Module::getLinkForRelationship($spouse, $this->ancestors[1]);
+						if ($link) {
+							$sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="' . $link . '">' . $sosa . '</a>' . self::sosaGeneration($sosa);
+						} else {
+							$sosa_html  = ' <span class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '">' . $sosa . '</span>' . self::sosaGeneration($sosa);
+						}																		
 					} else {
 						$sosa_class = '';
 						$sosa_html  = '';

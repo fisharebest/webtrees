@@ -156,13 +156,13 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Number of items to show');
+		echo /* I18N: Label for a configuration option */ I18N::translate('Number of items to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
 		echo '</td></tr>';
 
 		echo "<tr><td class=\"descriptionbox wrap width33\">";
-		echo I18N::translate('Place counts before or after name?');
+		echo /* I18N: Label for a configuration option */ I18N::translate('Show counts before or after name');
 		echo "</td><td class=\"optionbox\">";
 		echo FunctionsEdit::selectEditControl('count_placement', array('before' => I18N::translate('before'), 'after' => I18N::translate('after')), null, $count_placement, '');
 		echo '</td></tr>';

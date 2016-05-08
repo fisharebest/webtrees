@@ -413,7 +413,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function printAddNewMediaLink($element_id) {
-		return '<a href="#" onclick="pastefield=document.getElementById(\'' . $element_id . '\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="' . I18N::translate('Create a new media object') . '"></a>';
+		return '<a href="#" onclick="pastefield=document.getElementById(\'' . $element_id . '\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="' . I18N::translate('Create a media object') . '"></a>';
 	}
 
 	/**
@@ -424,7 +424,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function printAddNewRepositoryLink($element_id) {
-		return '<a href="#" onclick="addnewrepository(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addrepository" title="' . I18N::translate('Create a new repository') . '"></a>';
+		return '<a href="#" onclick="addnewrepository(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addrepository" title="' . I18N::translate('Create a repository') . '"></a>';
 	}
 
 	/**
@@ -435,7 +435,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function printAddNewNoteLink($element_id) {
-		return '<a href="#" onclick="addnewnote(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addnote" title="' . I18N::translate('Create a new shared note') . '"></a>';
+		return '<a href="#" onclick="addnewnote(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addnote" title="' . I18N::translate('Create a shared note') . '"></a>';
 	}
 
 	/**
@@ -446,7 +446,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function printEditNoteLink($note_id) {
-		return '<a href="#" onclick="edit_note(\'' . $note_id . '\'); return false;" class="icon-button_note" title="' . I18N::translate('Edit shared note') . '"></a>';
+		return '<a href="#" onclick="edit_note(\'' . $note_id . '\'); return false;" class="icon-button_note" title="' . I18N::translate('Edit the shared note') . '"></a>';
 	}
 
 	/**
@@ -457,7 +457,7 @@ class FunctionsEdit {
 	 * @return string
 	 */
 	public static function printAddNewSourceLink($element_id) {
-		return '<a href="#" onclick="addnewsource(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addsource" title="' . I18N::translate('Create a new source') . '"></a>';
+		return '<a href="#" onclick="addnewsource(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addsource" title="' . I18N::translate('Create a source') . '"></a>';
 	}
 
 	/**
@@ -631,7 +631,7 @@ class FunctionsEdit {
 				if (Module::getModuleByName('GEDFact_assistant') && GedcomRecord::getInstance($xref, $WT_TREE) instanceof Individual) {
 					echo
 						'<div></div><a href="#" style="display: none;" id="assistant-link" onclick="return activateCensusAssistant();">' .
-						I18N::translate('Create a new shared note using assistant') .
+						I18N::translate('Create a shared note using the census assistant') .
 						'</a></div>';
 				}
 			}
@@ -702,7 +702,7 @@ class FunctionsEdit {
 			// Populated in javascript from sub-tags
 			echo '<input type="hidden" id="', $element_id, '" name="', $element_name, '" onchange="updateTextName(\'', $element_id, '\');" value="', Filter::escapeHtml($value), '" class="', $fact, '">';
 			echo '<span id="', $element_id, '_display" dir="auto">', Filter::escapeHtml($value), '</span>';
-			echo ' <a href="#edit_name" onclick="convertHidden(\'', $element_id, '\'); return false;" class="icon-edit_indi" title="' . I18N::translate('Edit name') . '"></a>';
+			echo ' <a href="#edit_name" onclick="convertHidden(\'', $element_id, '\'); return false;" class="icon-edit_indi" title="' . I18N::translate('Edit the name') . '"></a>';
 		} else {
 			// textarea
 			if ($fact === 'TEXT' || $fact === 'ADDR' || ($fact === 'NOTE' && !$islink)) {
@@ -1057,7 +1057,7 @@ class FunctionsEdit {
 
 		switch ($tag) {
 		case 'SOUR':
-			echo '<a href="#" onclick="return expand_layer(\'newsource\');"><i id="newsource_img" class="icon-plus"></i> ', I18N::translate('Add a new source citation'), '</a>';
+			echo '<a href="#" onclick="return expand_layer(\'newsource\');"><i id="newsource_img" class="icon-plus"></i> ', I18N::translate('Add a source citation'), '</a>';
 			echo '<br>';
 			echo '<div id="newsource" style="display: none;">';
 			echo '<table class="facts_table">';
@@ -1085,11 +1085,11 @@ class FunctionsEdit {
 		case 'ASSO2':
 			//-- Add a new ASSOciate
 			if ($tag === 'ASSO') {
-				echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><i id=\"newasso_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new associate'), '</a>';
+				echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><i id=\"newasso_img\" class=\"icon-plus\"></i> ", I18N::translate('Add an associate'), '</a>';
 				echo '<br>';
 				echo '<div id="newasso" style="display: none;">';
 			} else {
-				echo "<a href=\"#\" onclick=\"return expand_layer('newasso2');\"><i id=\"newasso2_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new associate'), '</a>';
+				echo "<a href=\"#\" onclick=\"return expand_layer('newasso2');\"><i id=\"newasso2_img\" class=\"icon-plus\"></i> ", I18N::translate('Add an associate'), '</a>';
 				echo '<br>';
 				echo '<div id="newasso2" style="display: none;">';
 			}
@@ -1107,7 +1107,7 @@ class FunctionsEdit {
 
 		case 'NOTE':
 			//-- Retrieve existing note or add new note to fact
-			echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><i id=\"newnote_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new note'), '</a>';
+			echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><i id=\"newnote_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a note'), '</a>';
 			echo '<br>';
 			echo '<div id="newnote" style="display: none;">';
 			echo '<table class="facts_table">';
@@ -1117,7 +1117,7 @@ class FunctionsEdit {
 			break;
 
 		case 'SHARED_NOTE':
-			echo "<a href=\"#\" onclick=\"return expand_layer('newshared_note');\"><i id=\"newshared_note_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new shared note'), '</a>';
+			echo "<a href=\"#\" onclick=\"return expand_layer('newshared_note');\"><i id=\"newshared_note_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a shared note'), '</a>';
 			echo '<br>';
 			echo '<div id="newshared_note" style="display: none;">';
 			echo '<table class="facts_table">';
@@ -1128,7 +1128,7 @@ class FunctionsEdit {
 
 		case 'OBJE':
 			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
-				echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new media object'), '</a>';
+				echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a media object'), '</a>';
 				echo '<br>';
 				echo '<div id="newobje" style="display: none;">';
 				echo '<table class="facts_table">';
@@ -1138,7 +1138,7 @@ class FunctionsEdit {
 			break;
 
 		case 'RESN':
-			echo "<a href=\"#\" onclick=\"return expand_layer('newresn');\"><i id=\"newresn_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new restriction'), '</a>';
+			echo "<a href=\"#\" onclick=\"return expand_layer('newresn');\"><i id=\"newresn_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a restriction'), '</a>';
 			echo '<br>';
 			echo '<div id="newresn" style="display: none;">';
 			echo '<table class="facts_table">';

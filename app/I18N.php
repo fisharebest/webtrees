@@ -218,10 +218,10 @@ class I18N {
 		return
 			'"language": {' .
 			' "paginate": {' .
-			'  "first":    "' . /* I18N: button label, first page */ self::translate('first') . '",' .
-			'  "last":     "' . /* I18N: button label, last page */ self::translate('last') . '",' .
-			'  "next":     "' . /* I18N: button label, next page */ self::translate('next') . '",' .
-			'  "previous": "' . /* I18N: button label, previous page */ self::translate('previous') . '"' .
+			'  "first":    "' . /* I18N: A button label, first page */ self::translate('first') . '",' .
+			'  "last":     "' . /* I18N: A button label, last page */ self::translate('last') . '",' .
+			'  "next":     "' . /* I18N: A button label, next page */ self::translate('next') . '",' .
+			'  "previous": "' . /* I18N: A button label, previous page */ self::translate('previous') . '"' .
 			' },' .
 			' "emptyTable":     "' . self::translate('No records to display') . '",' .
 			' "info":           "' . /* I18N: %s are placeholders for numbers */ self::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_') . '",' .

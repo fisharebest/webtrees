@@ -48,7 +48,7 @@ case 'editraw':
 	check_record_access($record);
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit raw GEDCOM'))
+		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit the raw GEDCOM'))
 		->pageHeader()
 		->addInlineJavascript('jQuery("#raw-gedcom-list").sortable({opacity: 0.7, cursor: "move", axis: "y"});');
 
@@ -109,7 +109,7 @@ case 'updateraw':
 	check_record_access($record);
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit raw GEDCOM'))
+		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit the raw GEDCOM'))
 		->pageHeader();
 
 	$gedcom = '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE;
@@ -159,7 +159,7 @@ case 'editrawfact':
 	}
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit raw GEDCOM'))
+		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit the raw GEDCOM'))
 		->pageHeader();
 
 	?>
@@ -221,7 +221,7 @@ case 'updaterawfact':
 	}
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit raw GEDCOM'))
+		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit the raw GEDCOM'))
 		->pageHeader();
 
 	// Cleanup the client’s bad editing?
@@ -316,7 +316,7 @@ case 'edit':
 	if (Auth::isAdmin() || $WT_TREE->getPreference('SHOW_GEDCOM_RECORD')) {
 		echo
 			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', $WT_TREE->getNameUrl(), '">',
-			I18N::translate('Edit raw GEDCOM'),
+			I18N::translate('Edit the raw GEDCOM'),
 			'</a>';
 	}
 	?>
@@ -503,7 +503,7 @@ case 'update':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-// Add a new child to an existing family
+// Add a child to an existing family
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_child_to_family':
 	$xref   = Filter::get('xref', WT_REGEX_XREF);
@@ -513,7 +513,7 @@ case 'add_child_to_family':
 	check_record_access($family);
 
 	$controller
-		->setPageTitle($family->getFullName() . ' - ' . I18N::translate('Add a new child'))
+		->setPageTitle($family->getFullName() . ' - ' . I18N::translate('Add a child'))
 		->pageHeader();
 
 	print_indi_form('add_child_to_family_action', null, $family, null, 'CHIL', $gender);
@@ -583,7 +583,7 @@ case 'add_child_to_family_action':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-// Add a new child to an existing individual (creating a one-parent family)
+// Add a child to an existing individual (creating a one-parent family)
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_child_to_individual':
 	$xref = Filter::get('xref', WT_REGEX_XREF);
@@ -669,10 +669,10 @@ case 'add_parent_to_individual':
 	check_record_access($individual);
 
 	if ($gender === 'F') {
-		$controller->setPageTitle(I18N::translate('Add a new mother'));
+		$controller->setPageTitle(I18N::translate('Add a mother'));
 		$famtag = 'WIFE';
 	} else {
-		$controller->setPageTitle(I18N::translate('Add a new father'));
+		$controller->setPageTitle(I18N::translate('Add a father'));
 		$famtag = 'HUSB';
 	}
 	$controller->pageHeader();
@@ -747,7 +747,7 @@ case 'add_parent_to_individual_action':
 case 'add_unlinked_indi':
 	$controller
 		->restrictAccess(Auth::isManager($WT_TREE))
-		->setPageTitle(I18N::translate('Create a new individual'))
+		->setPageTitle(I18N::translate('Create an individual'))
 		->pageHeader();
 
 	print_indi_form('add_unlinked_indi_action', null, null, null, null, null);
@@ -794,7 +794,7 @@ case 'add_unlinked_indi_action':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-// Add a new spouse to an existing individual (creating a new family)
+// Add a spouse to an existing individual (creating a new family)
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_spouse_to_individual':
 	$famtag = Filter::get('famtag', 'HUSB|WIFE');
@@ -804,10 +804,10 @@ case 'add_spouse_to_individual':
 	check_record_access($individual);
 
 	if ($famtag === 'WIFE') {
-		$controller->setPageTitle(I18N::translate('Add a new wife'));
+		$controller->setPageTitle(I18N::translate('Add a wife'));
 		$sex = 'F';
 	} else {
-		$controller->setPageTitle(I18N::translate('Add a new husband'));
+		$controller->setPageTitle(I18N::translate('Add a husband'));
 		$sex = 'M';
 	}
 	$controller->pageHeader();
@@ -834,7 +834,7 @@ case 'add_spouse_to_individual_action':
 	check_record_access($person);
 
 	$controller
-		->setPageTitle(I18N::translate('Add a new spouse'))
+		->setPageTitle(I18N::translate('Add a spouse'))
 		->pageHeader();
 
 	FunctionsEdit::splitSource();
@@ -884,7 +884,7 @@ case 'add_spouse_to_individual_action':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-// Add a new spouse to an existing family
+// Add a spouse to an existing family
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_spouse_to_family':
 	$xref   = Filter::get('xref', WT_REGEX_XREF);
@@ -894,10 +894,10 @@ case 'add_spouse_to_family':
 	check_record_access($family);
 
 	if ($famtag === 'WIFE') {
-		$controller->setPageTitle(I18N::translate('Add a new wife'));
+		$controller->setPageTitle(I18N::translate('Add a wife'));
 		$sex = 'F';
 	} else {
-		$controller->setPageTitle(I18N::translate('Add a new husband'));
+		$controller->setPageTitle(I18N::translate('Add a husband'));
 		$sex = 'M';
 	}
 	$controller->pageHeader();
@@ -1193,7 +1193,7 @@ case 'linkspouseaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewsource':
 	$controller
-		->setPageTitle(I18N::translate('Create a new source'))
+		->setPageTitle(I18N::translate('Create a source'))
 		->pageHeader();
 
 	?>
@@ -1276,7 +1276,7 @@ case 'addnewsource':
 
 case 'addsourceaction':
 	$controller
-		->setPageTitle(I18N::translate('Create a new source'))
+		->setPageTitle(I18N::translate('Create a source'))
 		->pageHeader();
 
 	if (!Filter::checkCsrf()) {
@@ -1345,7 +1345,7 @@ case 'addsourceaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewnote':
 	$controller
-		->setPageTitle(I18N::translate('Create a new shared note'))
+		->setPageTitle(I18N::translate('Create a shared note'))
 		->pageHeader();
 
 	?>
@@ -1381,7 +1381,7 @@ case 'addnewnote':
 
 case 'addnoteaction':
 	$controller
-		->setPageTitle(I18N::translate('Create a new shared note'))
+		->setPageTitle(I18N::translate('Create a shared note'))
 		->pageHeader();
 
 	if (!Filter::checkCsrf()) {
@@ -1441,7 +1441,7 @@ case 'editnote':
 	check_record_access($note);
 
 	$controller
-		->setPageTitle(I18N::translate('Edit shared note'))
+		->setPageTitle(I18N::translate('Edit the shared note'))
 		->pageHeader();
 
 	?>
@@ -1487,7 +1487,7 @@ case 'editnoteaction':
 	check_record_access($record);
 
 	$controller
-		->setPageTitle(I18N::translate('Edit shared note'))
+		->setPageTitle(I18N::translate('Edit the shared note'))
 		->pageHeader();
 
 	// We have user-supplied data in a replacement string - escape it against backreferences
@@ -1509,7 +1509,7 @@ case 'editnoteaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewrepository':
 	$controller
-		->setPageTitle(I18N::translate('Create a new repository'))
+		->setPageTitle(I18N::translate('Create a repository'))
 		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
@@ -1572,7 +1572,7 @@ case 'addrepoaction':
 	}
 
 	$controller
-		->setPageTitle(I18N::translate('Create a new repository'))
+		->setPageTitle(I18N::translate('Create a repository'))
 		->pageHeader();
 
 	$gedrec    = '0 @XREF@ REPO';
@@ -1637,7 +1637,7 @@ case 'editname':
 	}
 
 	$controller
-		->setPageTitle(I18N::translate('Edit name'))
+		->setPageTitle(I18N::translate('Edit the name'))
 		->pageHeader();
 
 	print_indi_form('update', $person, null, $name_fact, '', $person->getSex());
@@ -1652,7 +1652,7 @@ case 'addname':
 	check_record_access($person);
 
 	$controller
-		->setPageTitle(I18N::translate('Add a new name'))
+		->setPageTitle(I18N::translate('Add a name'))
 		->pageHeader();
 
 	print_indi_form('update', $person, null, null, '', $person->getSex());
@@ -2591,16 +2591,16 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	if ($name_fact && (Auth::isAdmin() || $WT_TREE->getPreference('SHOW_GEDCOM_RECORD'))) {
 		echo
 			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $name_fact->getFactId(), '&amp;ged=', $WT_TREE->getNameUrl(), '">',
-			I18N::translate('Edit raw GEDCOM'),
+			I18N::translate('Edit the raw GEDCOM'),
 			'</a>';
 	}
 
 	echo '<p id="save-cancel">';
-	echo '<input type="submit" class="save" value="', /* I18N: button label */ I18N::translate('save'), '">';
+	echo '<input type="submit" class="save" value="', /* I18N: A button label */ I18N::translate('save'), '">';
 	if (preg_match('/^add_(child|spouse|parent|unlinked_indi)/', $nextaction)) {
-		echo '<input type="submit" class="save" value="', /* I18N: button label */ I18N::translate('go to new individual'), '" onclick="document.addchildform.goto.value=\'new\';">';
+		echo '<input type="submit" class="save" value="', /* I18N: A button label */ I18N::translate('go to new individual'), '" onclick="document.addchildform.goto.value=\'new\';">';
 	}
-	echo '<input type="button" class="cancel" value="', /* I18N: button label */ I18N::translate('close'), '" onclick="window.close();">';
+	echo '<input type="button" class="cancel" value="', /* I18N: A button label */ I18N::translate('close'), '" onclick="window.close();">';
 	echo '</p>';
 	echo '</form>';
 	$controller->addInlineJavascript('

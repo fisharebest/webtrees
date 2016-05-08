@@ -72,7 +72,7 @@ case 'save':
 			} elseif (User::findByEmail($email)) {
 				FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
 			} elseif ($pass1 !== $pass2) {
-				FlashMessages::addMessage(I18N::translate('Passwords do not match.'));
+				FlashMessages::addMessage(I18N::translate('The passwords do not match.'));
 			} else {
 				$user = User::create($username, $real_name, $email, $pass1);
 				$user->setPreference('reg_timestamp', date('U'))->setPreference('sessiontime', '0');
@@ -98,7 +98,7 @@ case 'save':
 					$WT_TREE,
 					$user,
 					I18N::translate('Approval of account at %s', WT_BASE_URL),
-					I18N::translate('The administrator at the webtrees site %s has approved your application for an account. You may now login by accessing the following link: %s', WT_BASE_URL, WT_BASE_URL)
+					I18N::translate('The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s', WT_BASE_URL, WT_BASE_URL)
 				);
 			}
 
@@ -262,7 +262,7 @@ case 'edit':
 	$user_id = Filter::getInteger('user_id');
 
 	if ($user_id === 0) {
-		$controller->setPageTitle(I18N::translate('Add a new user'));
+		$controller->setPageTitle(I18N::translate('Add a user'));
 		$tmp            = new \stdClass;
 		$tmp->user_id   = '';
 		$tmp->user_name = '';
@@ -270,7 +270,7 @@ case 'edit':
 		$tmp->email     = '';
 		$user           = new User($tmp);
 	} else {
-		$controller->setPageTitle(I18N::translate('Edit user'));
+		$controller->setPageTitle(I18N::translate('Edit the user'));
 		$user = User::find($user_id);
 	}
 
@@ -395,7 +395,7 @@ case 'edit':
 						<?php echo I18N::translate('You should not approve an account unless you know that the email address is correct.'); ?>
 					</p>
 					<p class="small text-muted">
-						<?php echo I18N::translate('A user will not be able to login until both the “email verified” and “approved by administrator” options are selected.'); ?>
+						<?php echo I18N::translate('A user will not be able to sign in until both the “email verified” and “approved by administrator” options are selected.'); ?>
 					</p>
 				</div>
 			</div>
@@ -698,7 +698,7 @@ case 'cleanup':
 	<?php
 	// Check for idle users
 	$month = Filter::getInteger('month', 1, 12, 6);
-	echo '<tr><th colspan="2">', I18N::translate('Number of months since the last login for a user’s account to be considered inactive: '), '</th>';
+	echo '<tr><th colspan="2">', I18N::translate('Number of months since the last sign-in for a user’s account to be considered inactive: '), '</th>';
 	echo '<td><select onchange="document.location=options[selectedIndex].value;">';
 	for ($i = 1; $i <= 12; $i++) {
 		echo '<option value="admin_users.php?action=cleanup&amp;month=' . $i . '" ';
@@ -717,7 +717,7 @@ case 'cleanup':
 		} else {
 			$datelogin = (int) $user->getPreference('sessiontime');
 		}
-		if (mktime(0, 0, 0, (int) date('m') - $month, (int) date('d'), (int) date('Y')) > $datelogin && $user->getPreference('verified') && $user->getPreference('approved')) {
+		if (mktime(0, 0, 0, (int) date('m') - $month, (int) date('d'), (int) date('Y')) > $datelogin && $user->getPreference('verified') && $user->getPreference('verified_by_admin')) {
 			$ucnt++;
 			?>
 			<tr>
@@ -765,7 +765,7 @@ case 'cleanup':
 
 	// Check users not verified by admin
 	foreach (User::all() as $user) {
-		if ($user->getUserId() !== Auth::id() && !$user->getPreference('approved') && $user->getPreference('verified')) {
+		if ($user->getUserId() !== Auth::id() && !$user->getPreference('verified_by_admin') && $user->getPreference('verified')) {
 			$ucnt++;
 			?>
 			<tr>
@@ -847,7 +847,7 @@ default:
 					/* approved          */ null
 				]
 			})
-			.fnFilter("' . Filter::get('filter') . '"); // View details of a newly created user
+			.fnFilter("' . Filter::get('filter') . '"); // View the details of a newly created user
 		')
 		->pageHeader();
 
@@ -870,7 +870,7 @@ default:
 				<th><!-- date registered --></th>
 				<th><?php echo I18N::translate('Date registered'); ?></th>
 				<th><!-- last login --></th>
-				<th><?php echo I18N::translate('Last logged in'); ?></th>
+				<th><?php echo I18N::translate('Last signed in'); ?></th>
 				<th><?php echo I18N::translate('Verified'); ?></th>
 				<th><?php echo I18N::translate('Approved'); ?></th>
 			</tr>

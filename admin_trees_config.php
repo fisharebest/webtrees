@@ -374,7 +374,7 @@ $controller
 		<div class="col-sm-8">
 			<?php echo FunctionsEdit::selectEditControl('REQUIRE_AUTHENTICATION', array('0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')), null, $WT_TREE->getPreference('REQUIRE_AUTHENTICATION'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Family tree” configuration setting */ I18N::translate('Enabling this option will force all visitors to login before they can view any data on the website.'); ?>
+				<?php echo /* I18N: Help text for the “Family tree” configuration setting */ I18N::translate('Enabling this option will force all visitors to sign in before they can view any data on the website.'); ?>
 			</p>
 			<?php if (Site::getPreference('USE_REGISTRATION_MODULE')): ?>
 			<p class="small text-muted">
@@ -538,7 +538,7 @@ $controller
 			<th>
 				<button class="btn btn-primary" id="add-resn" type="button">
 					<i class="fa fa-plus"></i>
-					<?php echo /* I18N: button label. Add a new item. */ I18N::translate('Add'); ?>
+					<?php echo /* I18N: A button label. Add an item. */ I18N::translate('Add'); ?>
 				</button>
 			</th>
 		</tr>
@@ -878,7 +878,7 @@ $controller
 				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('WEBTREES_EMAIL')); ?>"
 				>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “webtrees reply address” configuration setting */ I18N::translate('E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed. webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required. To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>.'); ?>
+				<?php echo /* I18N: Help text for the “webtrees reply address” configuration setting */ I18N::translate('Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1032,12 +1032,12 @@ $controller
 	<!-- MEDIA_UPLOAD -->
 	<div class="form-group">
 		<label class="control-label col-sm-3" for="MEDIA_UPLOAD">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Who can upload new media files?'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Who can upload new media files'); ?>
 		</label>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::selectEditControl('MEDIA_UPLOAD', array(Auth::PRIV_USER => I18N::translate('Show to members'), Auth::PRIV_NONE => I18N::translate('Show to managers'), Auth::PRIV_HIDE => I18N::translate('Hide from everyone')), null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Who can upload new media files?” configuration setting */ I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.'); ?>
+				<?php echo /* I18N: Help text for the “Who can upload new media files” configuration setting */ I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1045,12 +1045,12 @@ $controller
 	<!-- SHOW_MEDIA_DOWNLOAD -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Show download link in media viewer'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Show a download link in the media viewer'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('SHOW_MEDIA_DOWNLOAD', $no_yes, $WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Show download link in media viewer” configuration setting */ I18N::translate('The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons.'); ?>
+				<?php echo /* I18N: Help text for the “Show a download link in the media viewer” configuration setting */ I18N::translate('The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1113,7 +1113,7 @@ $controller
 	<!-- WATERMARK_THUMB -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Add watermarks to thumbnails?'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Add watermarks to thumbnails'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('WATERMARK_THUMB', $no_yes, $WT_TREE->getPreference('WATERMARK_THUMB'), 'class="radio-inline"'); ?>
@@ -1126,12 +1126,12 @@ $controller
 	<!-- SAVE_WATERMARK_IMAGE -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Store watermarked full size images on server?'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Store watermarked full size images on server'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('SAVE_WATERMARK_IMAGE', $no_yes, $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Store watermarked full size images on server?” configuration setting */ I18N::translate('Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server.'); ?>
+				<?php echo /* I18N: Help text for the “Store watermarked full size images on server” configuration setting */ I18N::translate('Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1139,7 +1139,7 @@ $controller
 	<!-- SAVE_WATERMARK_THUMB -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Store watermarked thumbnails on server?'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Store watermarked thumbnails on server'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('SAVE_WATERMARK_THUMB', $no_yes, $WT_TREE->getPreference('SAVE_WATERMARK_THUMB'), 'class="radio-inline"'); ?>
@@ -1431,7 +1431,7 @@ $controller
 				<div class="input-group-btn">
 					<a class="btn btn-default" onclick="return findFact('CHART_BOX_TAGS', 'INDI');">
 						<i class="fa fa-pencil"></i>
-						<?php echo /* I18N: button label */ I18N::translate('edit'); ?>
+						<?php echo /* I18N: A button label */ I18N::translate('edit'); ?>
 					</a>
 				</div>
 			</div>
@@ -1459,7 +1459,7 @@ $controller
 	<!-- SHOW_RELATIVES_EVENTS -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo I18N::translate('Show events of close relatives on individual page'); ?>
+			<?php echo I18N::translate('Show the events of close relatives on the individual page'); ?>
 		</legend>
 		<div class="col-sm-3">
 			<div class="checkbox">
@@ -1711,7 +1711,7 @@ $controller
 		</div>
 	</fieldset>
 
-	<h3><?php echo I18N::translate('Edit options'); ?></h3>
+	<h3><?php echo /* I18N: Options for editing */ I18N::translate('Edit options'); ?></h3>
 
 	<h3><?php echo I18N::translate('Facts for individual records'); ?></h3>
 

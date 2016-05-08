@@ -170,12 +170,12 @@ class GedcomTag {
 				I18N::translate('Author');
 		case 'BAPL':
 			return
-				/* I18N: gedcom tag BAPL */
+				/* I18N: gedcom tag BAPL. LDS = Church of Latter Day Saints. */
 				I18N::translate('LDS baptism');
 		case 'BAPL:DATE':
-			return I18N::translate('Date of LDS baptism');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Date of LDS baptism');
 		case 'BAPL:PLAC':
-			return I18N::translate('Place of LDS baptism');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Place of LDS baptism');
 		case 'BAPM':
 			return
 				/* I18N: gedcom tag BAPM */
@@ -314,7 +314,7 @@ class GedcomTag {
 			return I18N::translate('Place of confirmation');
 		case 'CONL':
 			return
-				/* I18N: gedcom tag CONL */
+				/* I18N: gedcom tag CONL. LDS = Church of Latter Day Saints. */
 				I18N::translate('LDS confirmation');
 		case 'COPR':
 			return
@@ -408,12 +408,12 @@ class GedcomTag {
 			return I18N::translate('Place of emigration');
 		case 'ENDL':
 			return
-				/* I18N: gedcom tag ENDL */
+				/* I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints. */
 				I18N::translate('LDS endowment');
 		case 'ENDL:DATE':
-			return I18N::translate('Date of LDS endowment');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Date of LDS endowment');
 		case 'ENDL:PLAC':
-			return I18N::translate('Place of LDS endowment');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Place of LDS endowment');
 		case 'ENGA':
 			return
 				/* I18N: gedcom tag ENGA */
@@ -463,9 +463,9 @@ class GedcomTag {
 		case 'FAMS:NOTE':
 			return I18N::translate('Spouse note');
 		case 'FAMS:SLGS:DATE':
-			return I18N::translate('Date of LDS spouse sealing');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Date of LDS spouse sealing');
 		case 'FAMS:SLGS:PLAC':
-			return I18N::translate('Place of LDS spouse sealing');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Place of LDS spouse sealing');
 		case 'FAX':
 			return
 				/* I18N: gedcom tag FAX */
@@ -768,15 +768,15 @@ class GedcomTag {
 			return I18N::translate('Shared note');
 		case 'SLGC':
 			return
-				/* I18N: gedcom tag SLGC */
+				/* I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints. */
 				I18N::translate('LDS child sealing');
 		case 'SLGC:DATE':
-			return I18N::translate('Date of LDS child sealing');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Date of LDS child sealing');
 		case 'SLGC:PLAC':
-			return I18N::translate('Place of LDS child sealing');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Place of LDS child sealing');
 		case 'SLGS':
 			return
-				/* I18N: gedcom tag SLGS */
+				/* I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints. */
 				I18N::translate('LDS spouse sealing');
 		case 'SOUR':
 			return
@@ -1762,9 +1762,7 @@ class GedcomTag {
 				/* I18N: gedcom tag _WT_OBJE_SORT */
 				I18N::translate('Re-order media');
 		case '_YART':
-			return
-				/* I18N: gedcom tag _YART */
-				I18N::translate('Yahrzeit');
+			return /* I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar. */ I18N::translate('Yahrzeit');
 			// Brit milah applies only to males, no need for male/female translations
 		case '__BRTM_CHIL':
 			return I18N::translate('Brit milah of a son');
@@ -1905,41 +1903,41 @@ class GedcomTag {
 	public static function getFileFormTypeValue($type) {
 		switch (strtolower($type)) {
 		case 'audio':
-			return I18N::translate('Audio');
+			return /* I18N: Type of media object */ I18N::translate('Audio');
 		case 'book':
-			return I18N::translate('Book');
+			return /* I18N: Type of media object */ I18N::translate('Book');
 		case 'card':
-			return I18N::translate('Card');
+			return /* I18N: Type of media object */ I18N::translate('Card');
 		case 'certificate':
-			return I18N::translate('Certificate');
+			return /* I18N: Type of media object */ I18N::translate('Certificate');
 		case 'coat':
-			return I18N::translate('Coat of arms');
+			return /* I18N: Type of media object */ I18N::translate('Coat of arms');
 		case 'document':
-			return I18N::translate('Document');
+			return /* I18N: Type of media object */ I18N::translate('Document');
 		case 'electronic':
-			return I18N::translate('Electronic');
+			return /* I18N: Type of media object */ I18N::translate('Electronic');
 		case 'fiche':
-			return I18N::translate('Microfiche');
+			return /* I18N: Type of media object */ I18N::translate('Microfiche');
 		case 'film':
-			return I18N::translate('Microfilm');
+			return /* I18N: Type of media object */ I18N::translate('Microfilm');
 		case 'magazine':
-			return I18N::translate('Magazine');
+			return /* I18N: Type of media object */ I18N::translate('Magazine');
 		case 'manuscript':
-			return I18N::translate('Manuscript');
+			return /* I18N: Type of media object */ I18N::translate('Manuscript');
 		case 'map':
-			return I18N::translate('Map');
+			return /* I18N: Type of media object */ I18N::translate('Map');
 		case 'newspaper':
-			return I18N::translate('Newspaper');
+			return /* I18N: Type of media object */ I18N::translate('Newspaper');
 		case 'photo':
-			return I18N::translate('Photo');
+			return /* I18N: Type of media object */ I18N::translate('Photo');
 		case 'tombstone':
-			return I18N::translate('Tombstone');
+			return /* I18N: Type of media object */ I18N::translate('Tombstone');
 		case 'video':
-			return I18N::translate('Video');
+			return /* I18N: Type of media object */ I18N::translate('Video');
 		case 'painting':
-			return I18N::translate('Painting');
+			return /* I18N: Type of media object */ I18N::translate('Painting');
 		default:
-			return I18N::translate('Other');
+			return /* I18N: Type of media object */ I18N::translate('Other');
 		}
 	}
 

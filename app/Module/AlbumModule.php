@@ -92,11 +92,11 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 		//Show Lightbox-Album header Links
 		if (Auth::isEditor($WT_TREE)) {
 			$html .= '<table class="facts_table"><tr><td class="descriptionbox rela">';
-			// Add a new media object
+			// Add a media object
 			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
 				$html .= '<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=' . $controller->record->getXref() . '\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
-				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_add.png" id="head_icon" class="icon" title="' . I18N::translate('Add a new media object') . '" alt="' . I18N::translate('Add a new media object') . '">';
-				$html .= I18N::translate('Add a new media object');
+				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_add.png" id="head_icon" class="icon" title="' . I18N::translate('Add a media object') . '" alt="' . I18N::translate('Add a media object') . '">';
+				$html .= I18N::translate('Add a media object');
 				$html .= '</a></span>';
 				// Link to an existing item
 				$html .= '<span><a href="#" onclick="window.open(\'inverselink.php?linktoid=' . $controller->record->getXref() . '&linkto=person\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=300,width=450\');">';
@@ -133,14 +133,14 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 
 			// View Notes
 			if (strpos($media->getGedcom(), "\n1 NOTE")) {
-				$submenu = new Menu(I18N::translate('View notes'), '#', '', array(
-					'onclick' => 'modalNotes("' . Filter::escapeJs($notes) . '","' . I18N::translate('View notes') . '"); return false;',
+				$submenu = new Menu(I18N::translate('View the notes'), '#', '', array(
+					'onclick' => 'modalNotes("' . Filter::escapeJs($notes) . '","' . I18N::translate('View the notes') . '"); return false;',
 				));
 				$submenu->addClass("submenuitem");
 				$menu->addSubmenu($submenu);
 			}
 			//View Details
-			$submenu = new Menu(I18N::translate('View details'), $media->getHtmlUrl());
+			$submenu = new Menu(I18N::translate('View the details'), $media->getHtmlUrl());
 			$submenu->addClass("submenuitem");
 			$menu->addSubmenu($submenu);
 
@@ -156,14 +156,14 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 
 			if (Auth::isEditor($media->getTree())) {
 				// Edit Media
-				$submenu = new Menu(I18N::translate('Edit media'), '#', '', array(
+				$submenu = new Menu(I18N::translate('Edit the media object'), '#', '', array(
 					'onclick' => 'return window.open("addmedia.php?action=editmedia&pid=' . $media->getXref() . '", "_blank", edit_window_specs);',
 				));
 				$submenu->addClass("submenuitem");
 				$menu->addSubmenu($submenu);
 				if (Auth::isAdmin()) {
 					if (Module::getModuleByName('GEDFact_assistant')) {
-						$submenu = new Menu(I18N::translate('Manage links'), '#', '', array(
+						$submenu = new Menu(I18N::translate('Mange the links'), '#', '', array(
 							'onclick' => 'return window.open("inverselink.php?mediaid=' . $media->getXref() . '&linkto=manage", "_blank", find_window_specs);',
 						));
 						$submenu->addClass("submenuitem");
@@ -187,7 +187,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 						$submenu->addClass('submenuitem');
 						$menu->addSubmenu($submenu);
 					}
-					$submenu = new Menu(I18N::translate('Unlink media'), '#', '', array(
+					$submenu = new Menu(I18N::translate('Unlink the media object'), '#', '', array(
 						'onclick' => 'return unlink_media("' . I18N::translate('Are you sure you want to remove links to this media object?') . '", "' . $controller->record->getXref() . '", "' . $media->getXref() . '");',
 					));
 					$submenu->addClass("submenuitem");

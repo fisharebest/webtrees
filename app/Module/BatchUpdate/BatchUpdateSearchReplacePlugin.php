@@ -123,7 +123,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 			try {
 				preg_match('/' . $this->search . '/', null);
 			} catch (\ErrorException $ex) {
-				$this->error = '<div class="alert alert-danger">' . I18N::translate('The regex appears to contain an error. It can’t be used.') . '</div>';
+				$this->error = '<div class="alert alert-danger">' . /* I18N: http://en.wikipedia.org/wiki/Regular_expression */ I18N::translate('The regular expression appears to contain an error. It can’t be used.') . '</div>';
 			}
 			break;
 		}

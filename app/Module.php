@@ -168,6 +168,22 @@ class Module {
 	public static function getActiveCharts(Tree $tree) {
 		return self::getActiveModulesByComponent($tree, 'chart');
 	}
+	
+	/**
+	 * Get a link to a chart displaying relationships, if there is one that we have permission to see.
+	 * If there is more than one such chart, return the first one.	  
+	 *
+	 * @return string|null
+	 */
+	public static function getLinkForRelationship(Individual $individual1, Individual $individual2) {
+		foreach (Module::getActiveCharts($individual1->getTree()) as $chart) {
+			$link = $chart->getLinkForRelationship($individual1, $individual2);
+			if ($link) {
+				return $link;
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * Get a list of modules which (a) provide a chart and (b) we have permission to see.

@@ -18,7 +18,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
- * @global Tree    $WT_TREE
+ * @global Tree $WT_TREE
  */
 global $WT_TREE;
 
@@ -67,7 +67,9 @@ if ($person1 && $person2) {
 		<tbody>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo I18N::translate('Individual 1') ?>
+					<label for="pid1">
+						<?php echo I18N::translate('Individual 1') ?>
+					</label>
 				</td>
 				<td class="optionbox">
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1 ?>">
@@ -85,7 +87,9 @@ if ($person1 && $person2) {
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo I18N::translate('Individual 2') ?>
+					<label for="pid2">
+						<?php echo I18N::translate('Individual 2') ?>
+					</label>
 				</td>
 				<td class="optionbox">
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2 ?>">
@@ -162,7 +166,7 @@ if ($person1 && $person2) {
 				case 'bro':
 				case 'sis':
 				case 'sib':
-					$table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center; width: 64px; text-align: center"><div style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px;">' . $horizontal_arrow . '</div></div>';
+					$table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px;">' . $horizontal_arrow . '</div></div>';
 					$x += 2;
 					break;
 				case 'son':
@@ -173,7 +177,7 @@ if ($person1 && $person2) {
 						$x += 2;
 					} else {
 						$table[$x][$y - 1] = '<div style="background:url(' . Theme::theme()
-								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align: center;"><div style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . $down_arrow . '</div></div>';
+								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . $down_arrow . '</div></div>';
 					}
 					$y -= 2;
 					break;
@@ -185,7 +189,7 @@ if ($person1 && $person2) {
 						$x += 2;
 					} else {
 						$table[$x][$y + 1] = '<div style="background:url(' . Theme::theme()
-								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div style="display: inline-block; width: 50%; line-height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div></div>';
+								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div></div>';
 					}
 					$y += 2;
 					break;
@@ -200,7 +204,7 @@ if ($person1 && $person2) {
 				$table[$x][$y] = ob_get_clean();
 			}
 		}
-		echo '<table style="border-collapse: collapse; margin: 20px 50px;">';
+		echo '<table id="relationship-page" style="border-collapse: collapse; margin: 20px 50px;">';
 		for ($y = $max_y; $y >= $min_y; --$y) {
 			echo '<tr>';
 			for ($x = 0; $x <= $max_x; ++$x) {

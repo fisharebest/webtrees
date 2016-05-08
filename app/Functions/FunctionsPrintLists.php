@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Repository;
@@ -195,7 +196,7 @@ class FunctionsPrintLists {
 											class="ui-state-default"
 											data-filter-column="22"
 											data-filter-value="Y"
-											title="' . I18N::translate('Show individuals who are dead or couples where both partners are deceased.') . '"
+											title="' . I18N::translate('Show individuals who are dead or couples where both partners are dead.') . '"
 											type="button"
 										>
 											' . I18N::translate('Dead') . '
@@ -353,7 +354,12 @@ class FunctionsPrintLists {
 			$html .= '<td>' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . 'AAAA' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . '</td>';
 			//-- SOSA
 			if ($option == 'sosa') {
-				$html .= '<td><a href="relationship.php?pid1=' . $datalist[1] . '&amp;pid2=' . $person->getXref() . '" title="' . I18N::translate('Relationships') . '">' . I18N::number($key) . '</a></td><td>' . $key . '</td>';
+				$link = Module::getLinkForRelationship($datalist[1], $person);
+				if ($link) {
+					$html .= '<td><a href="' . $link . '" title="' . I18N::translate('Relationships') . '">' . I18N::number($key) . '</a></td><td>' . $key . '</td>';
+				} else {
+					$html .= '<td>' . I18N::number($key) . '</td><td>' . $key . '</td>';
+				}
 			} else {
 				$html .= '<td></td><td>0</td>';
 			}
@@ -632,7 +638,7 @@ class FunctionsPrintLists {
 											data-filter-column="21"
 											data-filter-value="W"
 											class="ui-state-default"
-											title="' . I18N::translate('Show couples where only the female partner is deceased.') . '"
+											title="' . I18N::translate('Show couples where only the female partner is dead.') . '"
 										>
 											' . I18N::translate('Widower') . '
 										</button>
@@ -641,7 +647,7 @@ class FunctionsPrintLists {
 											data-filter-column="21"
 											data-filter-value="H"
 											class="ui-state-default"
-											title="' . I18N::translate('Show couples where only the male partner is deceased.') . '"
+											title="' . I18N::translate('Show couples where only the male partner is dead.') . '"
 										>
 											' . I18N::translate('Widow') . '
 										</button>
@@ -650,7 +656,7 @@ class FunctionsPrintLists {
 											data-filter-column="21"
 											data-filter-value="Y"
 											class="ui-state-default"
-											title="' . I18N::translate('Show individuals who are dead or couples where both partners are deceased.') . '"
+											title="' . I18N::translate('Show individuals who are dead or couples where both partners are dead.') . '"
 										>
 											' . I18N::translate('Both dead') . '
 										</button>
@@ -1850,8 +1856,7 @@ class FunctionsPrintLists {
 					if ($endjd == $startjd) {
 						$summary = I18N::translate('No events exist for tomorrow.');
 					} else {
-						// I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
-						$summary = I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
+						$summary = /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */ I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
 					}
 				} else {
 					if ($endjd == $startjd) {

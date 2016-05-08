@@ -103,7 +103,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 				$html .= '<div class="story_body optionbox">' . $this->getBlockSetting($block_id, 'story_body') . '</div>';
 				if (Auth::isEditor($WT_TREE)) {
 					$html .= '<div class="story_edit"><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_edit&amp;block_id=' . $block_id . '">';
-					$html .= I18N::translate('Edit story') . '</a></div>';
+					$html .= I18N::translate('Edit the story') . '</a></div>';
 				}
 			}
 		}
@@ -185,7 +185,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
 				$controller = new PageController;
 				if ($block_id) {
-					$controller->setPageTitle(I18N::translate('Edit story'));
+					$controller->setPageTitle(I18N::translate('Edit the story'));
 					$title      = $this->getBlockSetting($block_id, 'title');
 					$story_body = $this->getBlockSetting($block_id, 'story_body');
 					$xref       = Database::prepare(
@@ -256,7 +256,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
 					<div class="form-group">
 						<label for="xref" class="col-sm-3 control-label">
-							<?php echo I18N::translate('Show this block for which languages?'); ?>
+							<?php echo I18N::translate('Show this block for which languages'); ?>
 						</label>
 						<div class="col-sm-9">
 							<?php echo FunctionsEdit::editLanguageCheckboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))); ?>

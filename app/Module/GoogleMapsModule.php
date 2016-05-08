@@ -190,7 +190,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 		} else {
 			$html = '<table class="facts_table">';
-			$html .= '<tr><td colspan="2" class="facts_value">' . I18N::translate('No map data for this individual');
+			$html .= '<tr><td colspan="2" class="facts_value">' . I18N::translate('No map data exists for this individual');
 			$html .= '</td></tr>';
 			if (Auth::isAdmin()) {
 				$html .= '<tr><td class="center" colspan="2">';
@@ -234,7 +234,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	public function getBoxChartMenu(Individual $individual) {
 		return $this->getChartMenu($individual);
 	}
-
+	
+	/**
+	 * Return a link to this chart, if it is a relationship chart.
+	 *
+	 * @return string|null
+	 */
+	public function getLinkForRelationship(Individual $individual1, Individual $individual2) {
+		return null;
+	}
+		
 	/**
 	 * A form to edit the module configuration.
 	 */
@@ -251,12 +260,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$this->setSetting('GM_MAX_ZOOM', Filter::post('GM_MAX_ZOOM'));
 			$this->setSetting('GM_XSIZE', Filter::post('GM_XSIZE'));
 			$this->setSetting('GM_YSIZE', Filter::post('GM_YSIZE'));
-			$this->setSetting('GM_PRECISION_0', Filter::post('GM_PRECISION_0'));
-			$this->setSetting('GM_PRECISION_1', Filter::post('GM_PRECISION_1'));
-			$this->setSetting('GM_PRECISION_2', Filter::post('GM_PRECISION_2'));
-			$this->setSetting('GM_PRECISION_3', Filter::post('GM_PRECISION_3'));
-			$this->setSetting('GM_PRECISION_4', Filter::post('GM_PRECISION_4'));
-			$this->setSetting('GM_PRECISION_5', Filter::post('GM_PRECISION_5'));
 			$this->setSetting('GM_COORD', Filter::post('GM_COORD'));
 			$this->setSetting('GM_PLACE_HIERARCHY', Filter::post('GM_PLACE_HIERARCHY'));
 			$this->setSetting('GM_PH_XSIZE', Filter::post('GM_PH_XSIZE'));
@@ -281,7 +284,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$this->setSetting('GM_POSTFIX_8', Filter::post('GM_POSTFIX_8'));
 			$this->setSetting('GM_POSTFIX_9', Filter::post('GM_POSTFIX_9'));
 
-			FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->getName()), 'success');
+			FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->getTitle()), 'success');
 			header('Location: ' . WT_BASE_URL . 'module.php?mod=googlemap&mod_action=admin_config');
 
 			return;
@@ -318,7 +321,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		<form class="form-horizontal" method="post" name="configform" action="module.php?mod=googlemap&mod_action=admin_config">
 			<input type="hidden" name="action" value="update">
-			<h3><?php echo I18N::translate('Basic') ?></h3>
 
 			<!-- GM_MAP_TYPE -->
 			<div class="form-group">
@@ -392,28 +394,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						</div>
 					</div>
 					<p class="small text-muted"><?php echo I18N::translate('Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas.') ?></p>
-				</div>
-			</fieldset>
-
-			<h3><?php echo I18N::translate('Advanced') ?></h3>
-
-			<!-- GM_PRECISION -->
-			<fieldset class="form-group">
-				<legend class="control-label col-sm-3">
-					<?php echo I18N::translate('Precision of the latitude and longitude') ?>
-				</legend>
-				<div class="col-sm-9">
-					<div class="row">
-						<?php foreach (array(I18N::translate('Country'), I18N::translate('State'), I18N::translate('City'), I18N::translate('Neighborhood'), I18N::translate('House'), I18N::translate('Max')) as $level => $label): ?>
-						<div class="col-sm-4">
-							<div class="input-group">
-								<label class="input-group-addon" for="GM_PRECISION_<?php echo $level ?>"><?php echo $label ?></label>
-								<?php echo FunctionsEdit::selectEditControl('GM_PRECISION_' . $level, range(0, 9), null, $this->getSetting('GM_PRECISION_' . $level), 'class="form-control"') ?>
-							</div>
-						</div>
-						<?php endforeach ?>
-					</div>
-					<p class="small text-muted"><?php echo I18N::translate('This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits.') ?></p>
 				</div>
 			</fieldset>
 
@@ -499,7 +479,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- GM_PH_MARKER -->
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="GM_PH_MARKER">
-					<?php echo I18N::translate('Type of place markers in Place Hierarchy') ?>
+					<?php echo I18N::translate('Type of place markers in the place hierarchy') ?>
 				</label>
 				<div class="col-sm-9">
 					<?php
@@ -1376,7 +1356,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				$birth     = $person->getFirstFact('BIRT');
 				$dataleft  = Filter::escapeJs($image . $event . ' — ' . $name);
-				$datamid   = Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">(' . I18N::translate('View individual') . ')</a></span>');
+				$datamid   = Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">(' . I18N::translate('View the individual') . ')</a></span>');
 				$dataright = $birth ? Filter::escapeJs($birth->summary()) : '';
 
 				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
@@ -1739,7 +1719,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 
 				if ($row['pl_place'] != '') {
-					$placestr2 = $mapstr_edit . $id . "&amp;level=" . $level . $mapstr3 . $mapstr5 . I18N::translate('Zoom=') . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
+					$placestr2 = $mapstr_edit . $id . "&amp;level=" . $level . $mapstr3 . $mapstr5 . I18N::translate('Zoom') . ' ' . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
 					if ($row['pl_place'] === 'unknown') {
 						$matched[$x]++;
 					}
@@ -3448,27 +3428,25 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				});
 			}
 
+			/**
+			 * Redraw the map, centered and zoomed on the selected point.
+			 *
+			 * @param event
+			 */
 			function updateMap(event) {
 				var point;
 				var zoom = parseInt(document.editplaces.NEW_ZOOM_FACTOR.value);
 				var latitude;
 				var longitude;
-				var i;
-				var prec = 20;
 
-				for (i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
-					if (document.editplaces.NEW_PRECISION[i].checked) {
-						prec = document.editplaces.NEW_PRECISION[i].value;
-					}
-				}
 				if ((document.editplaces.NEW_PLACE_LATI.value == '') ||
 					(document.editplaces.NEW_PLACE_LONG.value == '')) {
-					latitude = parseFloat(document.editplaces.parent_lati.value).toFixed(prec);
-					longitude = parseFloat(document.editplaces.parent_long.value).toFixed(prec);
+					latitude = parseFloat(document.editplaces.parent_lati.value).toFixed(5);
+					longitude = parseFloat(document.editplaces.parent_long.value).toFixed(5);
 					point = new google.maps.LatLng(latitude, longitude);
 				} else {
-					latitude = parseFloat(document.editplaces.NEW_PLACE_LATI.value).toFixed(prec);
-					longitude = parseFloat(document.editplaces.NEW_PLACE_LONG.value).toFixed(prec);
+					latitude = parseFloat(document.editplaces.NEW_PLACE_LATI.value).toFixed(5);
+					longitude = parseFloat(document.editplaces.NEW_PLACE_LONG.value).toFixed(5);
 					document.editplaces.NEW_PLACE_LATI.value = latitude;
 					document.editplaces.NEW_PLACE_LONG.value = longitude;
 
@@ -3519,7 +3497,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				map.setCenter(point);
 				map.setZoom(zoom);
 				marker.setPosition(point);
-
 			}
 
 			// === Create Borders for the UK Countries =========================================================
@@ -3736,45 +3713,31 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 				?>
 
-				var prec = 20;
-				for (var i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
-					if (document.editplaces.NEW_PRECISION[i].checked) {
-						prec = document.editplaces.NEW_PRECISION[i].value;
-					}
-				}
-
 				// Set marker by clicking on map ---
 				google.maps.event.addListener(map, 'click', function(event) {
 					clearMarks();
 					latlng = event.latLng;
-					<?php
-						echo 'marker = new google.maps.Marker({';
-						echo 'position: latlng,';
-						echo 'map: map,';
-						echo 'title: pl_name,';
-						echo 'draggable: true,';
-						echo 'zIndex: 1';
-					echo '});';
-					?>
-					var pos3 = marker.getPosition();
-					document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos3.lat()).toFixed(prec);
-					document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos3.lng()).toFixed(prec);
+					marker = new google.maps.Marker({
+						position: latlng,
+						map: map,
+						title: pl_name,
+						draggable: true,
+						zIndex: 1
+					});
+					document.getElementById('NEW_PLACE_LATI').value = marker.getPosition().lat().toFixed(5);
+					document.getElementById('NEW_PLACE_LONG').value = marker.getPosition().lng().toFixed(5);
 					updateMap('flag_drag');
 					var currzoom = parseInt(document.editplaces.NEW_ZOOM_FACTOR.value);
 					mapType = map.getMapTypeId();
 					loadMap(currzoom, mapType);
 				});
 
-				// Set marker by drag-n-drop on map ---
+				// If the marker is moved, update the location fields
 				google.maps.event.addListener(marker, 'drag', function() {
-					var pos1 = marker.getPosition();
-					document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos1.lat()).toFixed(prec);
-					document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos1.lng()).toFixed(prec);
+					document.getElementById('NEW_PLACE_LATI').value = marker.getPosition().lat().toFixed(5);
+					document.getElementById('NEW_PLACE_LONG').value = marker.getPosition().lng().toFixed(5);
 				});
 				google.maps.event.addListener(marker, 'dragend', function() {
-					var pos2 = marker.getPosition();
-					document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos2.lat()).toFixed(prec);
-					document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos2.lng()).toFixed(prec);
 					updateMap('flag_drag');
 				});
 			}
@@ -3783,28 +3746,28 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				marker.setMap(null);
 			}
 
+			/**
+			 * Called when we select one of the search results.
+			 *
+			 * @param latitude
+			 * @param longitude
+			 */
 			function setLoc(lat, lng) {
-				var prec = 20;
-				for (var i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
-					if (document.editplaces.NEW_PRECISION[i].checked) {
-						prec = document.editplaces.NEW_PRECISION[i].value;
-					}
-				}
 				if (lat < 0.0) {
-					document.editplaces.NEW_PLACE_LATI.value = (lat.toFixed(prec) * -1);
+					document.editplaces.NEW_PLACE_LATI.value = (lat.toFixed(5) * -1);
 					document.editplaces.LATI_CONTROL.value = 'PL_S';
 				} else {
-					document.editplaces.NEW_PLACE_LATI.value = lat.toFixed(prec);
+					document.editplaces.NEW_PLACE_LATI.value = lat.toFixed(5);
 					document.editplaces.LATI_CONTROL.value = 'PL_N';
 				}
 				if (lng < 0.0) {
-					document.editplaces.NEW_PLACE_LONG.value = (lng.toFixed(prec) * -1);
+					document.editplaces.NEW_PLACE_LONG.value = (lng.toFixed(5) * -1);
 					document.editplaces.LONG_CONTROL.value = 'PL_W';
 				} else {
-					document.editplaces.NEW_PLACE_LONG.value = lng.toFixed(prec);
+					document.editplaces.NEW_PLACE_LONG.value = lng.toFixed(5);
 					document.editplaces.LONG_CONTROL.value = 'PL_E';
 				}
-				new google.maps.LatLng (lat.toFixed(prec), lng.toFixed(prec));
+				new google.maps.LatLng (lat.toFixed(5), lng.toFixed(5));
 				updateMap();
 			}
 
@@ -3937,52 +3900,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox">
-					<?php echo I18N::translate('Precision') ?>
-				</td>
-				<?php
-					$exp = explode(".", $place_lati);
-					if (isset($exp[1])) {
-						$precision1 = strlen($exp[1]);
-					} else {
-						$precision1 = -1;
-					}
-					$exp = explode(".", $place_long);
-					if (isset($exp[1])) {
-						$precision2 = strlen($exp[1]);
-					} else {
-						$precision2 = -1;
-					}
-					($precision1 > $precision2) ? ($precision = $precision1) : ($precision = $precision2);
-					if ($precision == -1) {
-						($level > 3) ? ($precision = 3) : ($precision = $level);
-					} elseif ($precision > 5) {
-						$precision = 5;
-					}
-				?>
-				<td class="optionbox" colspan="2">
-					<input type="radio" id="new_prec_0" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_0')) echo 'checked' ?> value="<?php echo $this->getSetting('GM_PRECISION_0') ?>">
-					<label for="new_prec_0"><?php echo I18N::translate('Country') ?></label>
-					<input type="radio" id="new_prec_1" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_1')) echo 'checked' ?> value="<?php echo $this->getSetting('GM_PRECISION_1') ?>">
-					<label for="new_prec_1"><?php echo I18N::translate('State') ?></label>
-					<input type="radio" id="new_prec_2" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_2')) echo 'checked' ?> value="<?php echo $this->getSetting('GM_PRECISION_2') ?>">
-					<label for="new_prec_2"><?php echo I18N::translate('City') ?></label>
-					<input type="radio" id="new_prec_3" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_3')) echo 'checked' ?> value="<?php echo $this->getSetting('GM_PRECISION_3') ?>">
-					<label for="new_prec_3"><?php echo I18N::translate('Neighborhood') ?></label>
-					<input type="radio" id="new_prec_4" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_4')) echo 'checked' ?> value="<?php echo $this->getSetting('GM_PRECISION_4') ?>">
-					<label for="new_prec_4"><?php echo I18N::translate('House') ?></label>
-					<input type="radio" id="new_prec_5" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision >= $this->getSetting('GM_PRECISION_5')) echo 'checked' ?> value="<?php echo $this->getSetting('GM_PRECISION_5') ?>">
-					<label for="new_prec_5"><?php echo I18N::translate('Max') ?></label>
-					<p class="small text-muted">
-						<?php echo I18N::translate('Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined.') ?>
-					</p>
-				</td>
-			</tr>
-			<tr>
 				<td class="descriptionbox"><?php echo GedcomTag::getLabel('LATI') ?></td>
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees') ?>" value="<?php echo abs($place_lati) ?>" size="20" onchange="updateMap();">
-					<select name="LATI_CONTROL" onchange="updateMap();">
+					<select name="LATI_CONTROL" id="LATI_CONTROL" onchange="updateMap();">
 						<option value="PL_N" <?php if ($place_lati >= 0) echo "selected"; echo ">", I18N::translate('north') ?></option>
 						<option value="PL_S" <?php if ($place_lati < 0) echo "selected"; echo ">", I18N::translate('south') ?></option>
 					</select>
@@ -3992,7 +3913,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<td class="descriptionbox"><?php echo GedcomTag::getLabel('LONG') ?></td>
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees') ?>" value="<?php echo abs($place_long) ?>" size="20" onchange="updateMap();">
-					<select name="LONG_CONTROL" onchange="updateMap();">
+					<select name="LONG_CONTROL" id="LONG_CONTROL" onchange="updateMap();">
 						<option value="PL_E" <?php if ($place_long >= 0) echo "selected"; echo ">", I18N::translate('east') ?></option>
 						<option value="PL_W" <?php if ($place_long < 0) echo "selected"; echo ">", I18N::translate('west') ?></option>
 					</select>
@@ -4034,6 +3955,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<input type="button" class="cancel" value="<?php echo I18N::translate('close') ?>" onclick="window.close();">
 			</p>
 		</form>
+		<br>
+		<br>
+		<br>
 		<?php
 	}
 
@@ -4269,7 +4193,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			</div>
 
 			<!-- LOCAL FILE -->
-			<?php if (count($placefiles) > 0): ?>
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="localfile">
 					<?php echo I18N::translate('Server file containing places (CSV)') ?>
@@ -4294,7 +4217,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</div>
 				</div>
 			</div>
-			<?php endif ?>
 
 			<!-- CLEAR DATABASE -->
 			<fieldset class="form-group">
@@ -4331,7 +4253,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<div class="col-sm-offset-4 col-sm-8">
 					<button type="submit" class="btn btn-primary">
 						<i class="fa fa-check"></i>
-						<?php echo I18N::translate('Continue adding') ?>
+						<?php echo I18N::translate('continue') ?>
 					</button>
 				</div>
 			</div>
@@ -4635,7 +4557,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		<form class="form-horizontal" action="?" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
 			<div class="form-group">
 				<label class="form-control-static col-sm-4" for="parent_id">
-					<?php echo I18N::translate('Add a new geographic location') ?>
+					<?php echo I18N::translate('Add a geographic location') ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="col-sm-6">

@@ -968,6 +968,8 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function repeatTagStartHandler($attrs) {
+		global $WT_TREE;
+
 		$this->process_repeats++;
 		if ($this->process_repeats > 1) {
 			return;
@@ -1019,8 +1021,16 @@ class ReportParserGenerate extends ReportParserBase {
 				$count = preg_match_all("/$level $t(.*)/", $subrec, $match, PREG_SET_ORDER);
 				$i     = 0;
 				while ($i < $count) {
-					$this->repeats[] = Functions::getSubRecord($level, "$level $t", $subrec, $i + 1);
 					$i++;
+					// Privacy check - is this a link, and are we allowed to view the linked object?
+					$subrecord = Functions::getSubRecord($level, "$level $t", $subrec, $i);
+					if (preg_match('/^\d ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@/', $subrecord, $xref_match)) {
+						$linked_object = GedcomRecord::getInstance($xref_match[1], $WT_TREE);
+						if ($linked_object && !$linked_object->canShow()) {
+							continue;
+						}
+					}
+					$this->repeats[] = $subrecord;
 				}
 			}
 		}

@@ -36,7 +36,7 @@ class NoteController extends GedcomRecordController {
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-note');
 
 		if (Auth::isEditor($this->record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit note'), '#', 'menu-note-edit', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the note'), '#', 'menu-note-edit', array(
 				'onclick' => 'return edit_note("' . $this->record->getXref() . '");',
 			)));
 

@@ -257,7 +257,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			}
 			$data = '<' . '?xml version="1.0" encoding="UTF-8" ?' . '>' . PHP_EOL . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . PHP_EOL . $data . '</urlset>' . PHP_EOL;
 			// Cache this data - but only for visitors, as we don’t want
-			// visitors to see data created by logged-in users.
+			// visitors to see data created by signed-in users.
 			if (!Auth::check()) {
 				$this->setSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml', $data);
 				$this->setSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp', WT_TIMESTAMP);
@@ -305,7 +305,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			/* I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL. */
 			I18N::translate('Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href="http://www.sitemaps.org/">www.sitemaps.org</a>.') .
 			'</p>',
-		'<p>', I18N::translate('Which family trees should be included in the sitemaps?'), '</p>',
+		'<p>', /* I18N: Label for a configuration option */ I18N::translate('Which family trees should be included in the sitemaps'), '</p>',
 			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=admin">',
 		'<input type="hidden" name="action" value="save">';
 		foreach (Tree::getAll() as $tree) {

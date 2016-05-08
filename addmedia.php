@@ -77,7 +77,7 @@ if (!Auth::isEditor($WT_TREE) || !$disp) {
 
 switch ($action) {
 case 'create': // Save the information from the “showcreateform” action
-	$controller->setPageTitle(I18N::translate('Create a new media object'));
+	$controller->setPageTitle(I18N::translate('Create a media object'));
 
 	// Validate the media folder
 	$folderName = str_replace('\\', '/', $folder);
@@ -234,7 +234,7 @@ case 'create': // Save the information from the “showcreateform” action
 	return;
 
 case 'update': // Save the information from the “editmedia” action
-	$controller->setPageTitle(I18N::translate('Edit media object'));
+	$controller->setPageTitle(I18N::translate('Edit the media object'));
 
 	// Validate the media folder
 	$folderName = str_replace('\\', '/', $folder);
@@ -399,11 +399,11 @@ case 'update': // Save the information from the “editmedia” action
 
 	return;
 case 'showmediaform':
-	$controller->setPageTitle(I18N::translate('Create a new media object'));
+	$controller->setPageTitle(I18N::translate('Create a media object'));
 	$action = 'create';
 	break;
 case 'editmedia':
-	$controller->setPageTitle(I18N::translate('Edit media object'));
+	$controller->setPageTitle(I18N::translate('Edit the media object'));
 	$action = 'update';
 	break;
 default:

@@ -90,7 +90,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 					</td>
 					<td class="facts_value">
 						<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;">
-							<?php echo I18N::translate('Add a new source citation'); ?>
+							<?php echo I18N::translate('Add a source citation'); ?>
 						</a>
 					</td>
 				</tr>

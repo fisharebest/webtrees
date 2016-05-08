@@ -3,9 +3,9 @@
 	<Title><var var="I18N::translate('Individual')" /></Title>
 	<Description><var var="I18N::translate('A report of an individual’s details.')" /></Description>
 	<Input name="pid" lookup="INDI" type="text" default=""><var var="I18N::translate('Individual')" /></Input>
-	<Input name="sources" type="checkbox" default="1"><var var="I18N::translate('Show sources?')" /></Input>
-	<Input name="notes" type="checkbox" default="1"><var var="I18N::translate('Show notes?')" /></Input>
-	<Input name="photos" type="select" default="highlighted" options="none=>I18N::translate('None')|all=>I18N::translate('All')|highlighted=>I18N::translate('Highlighted image')"><var var="I18N::translate('Show photos?')"/></Input>
+	<Input name="sources" type="checkbox" default="1"><var var="I18N::translate('Show sources')" /></Input>
+	<Input name="notes" type="checkbox" default="1"><var var="I18N::translate('Show notes')" /></Input>
+	<Input name="photos" type="select" default="highlighted" options="none=>I18N::translate('None')|all=>I18N::translate('All')|highlighted=>I18N::translate('Highlighted image')"><var var="I18N::translate('Show photos')"/></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translateContext('paper size','Letter')|A3=>I18N::translateContext('paper size', 'A3')|A4=>I18N::translateContext('paper size','A4')|legal=>I18N::translateContext('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
 	<Input name="colors" type="checkbox" default="1"><var var="I18N::translate('Use colors')"/></Input>
 	<!--
@@ -60,7 +60,7 @@
 		<!-- Text color - black -->
 		<SetVar name="tcolor" value="#000000"/>
 	</if>
-	
+
 	<!-- New Page controller -->
 	<SetVar name="newpage" value="0"/>
 	<!-- New Page for Sources controller if SOUR exist -->

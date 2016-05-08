@@ -26,12 +26,12 @@ use Fisharebest\Webtrees\Theme;
 class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Login');
+		return /* I18N: Name of a module */ I18N::translate('Sign in');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Login” module */ I18N::translate('An alternative way to login and logout.');
+		return /* I18N: Description of the “Sign in” module */ I18N::translate('An alternative way to sign in and sign out.');
 	}
 
 	/**
@@ -58,14 +58,14 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 		');
 
 		if (Auth::check()) {
-			$title   = I18N::translate('Logout');
+			$title   = I18N::translate('Sign out');
 			$content = '<div class="center"><form method="post" action="logout.php" name="logoutform" onsubmit="return true;">';
-			$content .= '<br><a href="edituser.php" class="name2">' . I18N::translate('Logged in as ') . ' ' . Auth::user()->getRealNameHtml() . '</a><br><br>';
-			$content .= '<input type="submit" value="' . I18N::translate('Logout') . '">';
+			$content .= '<br><a href="edituser.php" class="name2">' . I18N::translate('You are signed in as %s', Auth::user()->getRealNameHtml()) . '</a><br><br>';
+			$content .= '<input type="submit" value="' . I18N::translate('Sign out') . '">';
 
 			$content .= '<br><br></form></div>';
 		} else {
-			$title   = I18N::translate('Login');
+			$title   = I18N::translate('Sign in');
 			$content = '<div id="login-box">
 				<form id="login-form" name="login-form" method="post" action="' . WT_LOGIN_URL . '">
 				<input type="hidden" name="action" value="login">';
@@ -80,13 +80,13 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 					</label>
 				</div>
 				<div>
-					<input type="submit" value="' . I18N::translate('Login') . '">
+					<input type="submit" value="' . I18N::translate('Sign in') . '">
 				</div>
 				<div>
-					<a href="#" id="passwd_click">' . I18N::translate('Request new password') . '</a>
+					<a href="#" id="passwd_click">' . I18N::translate('Forgot password?') . '</a>
 				</div>';
 			if (Site::getPreference('USE_REGISTRATION_MODULE')) {
-				$content .= '<div><a href="' . WT_LOGIN_URL . '?action=register">' . I18N::translate('Request new user account') . '</a></div>';
+				$content .= '<div><a href="' . WT_LOGIN_URL . '?action=register">' . I18N::translate('Request a new user account') . '</a></div>';
 			}
 		$content .= '</form>'; // close "login-form"
 

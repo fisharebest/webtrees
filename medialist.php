@@ -307,13 +307,13 @@ if ($action === 'submit') {
 			echo FunctionsPrint::printFactNotes($mediaobject->getGedcom(), 1);
 			echo '</div>';
 			foreach ($mediaobject->linkedIndividuals('OBJE') as $individual) {
-				echo '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View individual') . ' — ' . $individual->getFullName() . '</a><br>';
+				echo '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View the individual') . ' — ' . $individual->getFullName() . '</a><br>';
 			}
 			foreach ($mediaobject->linkedFamilies('OBJE') as $family) {
-				echo '<a href="' . $family->getHtmlUrl() . '">' . I18N::translate('View family') . ' — ' . $family->getFullName() . '</a><br>';
+				echo '<a href="' . $family->getHtmlUrl() . '">' . I18N::translate('View the family') . ' — ' . $family->getFullName() . '</a><br>';
 			}
 			foreach ($mediaobject->linkedSources('OBJE') as $source) {
-				echo '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View source') . ' — ' . $source->getFullName() . '</a><br>';
+				echo '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View the source') . ' — ' . $source->getFullName() . '</a><br>';
 			}
 			echo '</td></tr></table>';
 			echo '</td>';

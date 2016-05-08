@@ -133,7 +133,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
 			$block_id = Filter::getInteger('block_id');
 		if ($block_id) {
-			$controller->setPageTitle(I18N::translate('Edit FAQ item'));
+			$controller->setPageTitle(I18N::translate('Edit the FAQ item'));
 			$header      = $this->getBlockSetting($block_id, 'header');
 			$faqbody     = $this->getBlockSetting($block_id, 'faqbody');
 			$block_order = Database::prepare(
@@ -194,7 +194,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
 		<div class="form-group">
 			<label for="xref" class="col-sm-3 control-label">
-				<?php echo I18N::translate('Show this block for which languages?'); ?>
+				<?php echo /* I18N: Label for a configuration option */ I18N::translate('Show this block for which languages'); ?>
 			</label>
 
 			<div class="col-sm-9">
