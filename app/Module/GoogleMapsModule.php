@@ -1960,7 +1960,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$spouse = null;
 				}
 				if ($ctla && $ctlo) {
-					$i++;
 					$gmarks[$i] = array(
 						'class'        => 'optionbox',
 						'date'         => $fact->getDate()->display(true),
@@ -1979,10 +1978,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						'sv_zoom'      => '0',
 						'tooltip'      => $fact->getPlace()->getGedcomName(),
 					);
+					$i++;
 				} else {
 					$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
 					if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
-						$i++;
 						$gmarks[$i] = array(
 							'class'        => 'optionbox',
 							'date'         => $fact->getDate()->display(true),
@@ -2001,6 +2000,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							'sv_zoom'      => $latlongval->sv_zoom,
 							'tooltip'      => $fact->getPlace()->getGedcomName(),
 						);
+						$i++;
 						if ($GM_MAX_ZOOM > $latlongval->pl_zoom) {
 							$GM_MAX_ZOOM = $latlongval->pl_zoom;
 						}
