@@ -94,6 +94,15 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	public function getBoxChartMenu(Individual $individual) {
 		return $this->getChartMenu($individual);
 	}
+		
+	/**
+	 * Return a link to this chart, if it is a relationship chart.
+	 *
+	 * @return string|null
+	 */
+	public function getLinkForRelationship(Individual $individual1, Individual $individual2) {
+		return null;
+	}
 	
 	/** {@inheritdoc} */
 	public function getPreLoadContent() {

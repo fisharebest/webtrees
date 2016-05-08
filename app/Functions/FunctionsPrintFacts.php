@@ -536,8 +536,12 @@ class FunctionsPrintFacts {
 						// For family ASSO records (e.g. MARR), identify the spouse with a sex icon
 						$relationship_name .= $associate->getSexImage();
 					}
-
-					$values[] = '<a href="relationship.php?pid1=' . $associate->getXref() . '&amp;pid2=' . $person->getXref() . '&amp;ged=' . $associate->getTree()->getNameUrl() . '" rel="nofollow">' . $relationship_name . '</a>';
+					$link = Module::getLinkForRelationship($associate, $person);
+					if ($link) {
+						$values[] = '<a href="' . $link . '" rel="nofollow">' . $relationship_name . '</a>';
+					} else {
+						$values[] = $relationship_name;
+					}
 				}
 				$value = implode(' — ', $values);
 
