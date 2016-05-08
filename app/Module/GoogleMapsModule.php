@@ -1947,7 +1947,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		// Create the markers list array
 		$gmarks = array();
-		$i      = 0;
 
 		foreach ($indifacts as $fact) {
 			if (!$fact->getPlace()->isEmpty()) {
@@ -1960,7 +1959,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$spouse = null;
 				}
 				if ($ctla && $ctlo) {
-					$gmarks = array(
+					$gmark = array(
 						'class'        => 'optionbox',
 						'date'         => $fact->getDate()->display(true),
 						'fact_label'   => $fact->getLabel(),
@@ -2035,8 +2034,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								'sv_zoom'      => '0',
 								'tooltip'      => $birth->getPlace()->getGedcomName(),
 							);
-							$i++;
-							switch ($child->getSex()) {
+\							switch ($child->getSex()) {
 							case'F':
 								$gmark['fact_label'] = I18N::translate('daughter');
 								$gmark['class']      = 'person_boxF';
@@ -2070,7 +2068,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									'sv_zoom'      => $latlongval->sv_zoom,
 									'tooltip'      => $birth->getPlace()->getGedcomName(),
 								);
-								$i++;
 								switch ($child->getSex()) {
 								case 'M':
 									$gmark['fact_label'] = I18N::translate('son');
