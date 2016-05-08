@@ -137,7 +137,7 @@ case 'email':
 	$controller->setPageTitle(I18N::translate('Sending email'));
 	break;
 case 'login':
-	$controller->setPageTitle(I18N::translate('Login and registration'));
+	$controller->setPageTitle(I18N::translate('Sign-in and registration'));
 	break;
 case 'tracking':
 	$controller->setPageTitle(/* I18N: e.g. http://www.google.com/analytics */ I18N::translate('Tracking and analytics'));
@@ -171,7 +171,7 @@ $controller->pageHeader();
 	<!-- INDEX_DIRECTORY -->
 	<div class="form-group">
 		<label for="INDEX_DIRECTORY" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Data folder') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Data folder') ?>
 		</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" dir="ltr" id="INDEX_DIRECTORY" name="INDEX_DIRECTORY" value="<?php echo Filter::escapeHtml(Site::getPreference('INDEX_DIRECTORY')) ?>" maxlength="255" placeholder="data/" required>
@@ -193,7 +193,7 @@ $controller->pageHeader();
 	<!-- MEMORY_LIMIT -->
 	<div class="form-group">
 		<label for="MEMORY_LIMIT" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Memory limit') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Memory limit') ?>
 		</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="MEMORY_LIMIT" name="MEMORY_LIMIT" value="<?php echo Filter::escapeHtml(Site::getPreference('MEMORY_LIMIT')) ?>" pattern="[0-9]+[KMG]" placeholder="<?php echo get_cfg_var('memory_limit') ?>" maxlength="255">
@@ -208,7 +208,7 @@ $controller->pageHeader();
 	<!-- MAX_EXECUTION_TIME -->
 	<div class="form-group">
 		<label for="MAX_EXECUTION_TIME" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('PHP time limit') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('PHP time limit') ?>
 		</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="MAX_EXECUTION_TIME" name="MAX_EXECUTION_TIME" value="<?php echo Filter::escapeHtml(Site::getPreference('MAX_EXECUTION_TIME')) ?>" pattern="[0-9]*" placeholder="<?php echo get_cfg_var('max_execution_time') ?>" maxlength="255">
@@ -240,7 +240,7 @@ $controller->pageHeader();
 	<!-- THEME_DIR -->
 	<div class="form-group">
 		<label for="THEME_DIR" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Default theme') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Default theme') ?>
 		</label>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::selectEditControl('THEME_DIR', Theme::themeNames(), null, Site::getPreference('THEME_DIR'), 'class="form-control"') ?>
@@ -256,7 +256,7 @@ $controller->pageHeader();
 	<!-- ALLOW_USER_THEMES -->
 	<fieldset class="form-group">
 		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Allow users to select their own theme') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Allow users to select their own theme') ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::editFieldYesNo('ALLOW_USER_THEMES', Site::getPreference('ALLOW_USER_THEMES'), 'class="radio-inline"') ?>
@@ -269,7 +269,7 @@ $controller->pageHeader();
 	<!-- ALLOW_CHANGE_GEDCOM -->
 	<fieldset class="form-group">
 		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Show list of family trees') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Show list of family trees') ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::editFieldYesNo('ALLOW_CHANGE_GEDCOM', Site::getPreference('ALLOW_CHANGE_GEDCOM'), 'class="radio-inline"') ?>
@@ -282,12 +282,12 @@ $controller->pageHeader();
 	<!-- SESSION_TIME -->
 	<div class="form-group">
 		<label for="SESSION_TIME" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Session timeout') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Session timeout') ?>
 		</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="SESSION_TIME" name="SESSION_TIME" value="<?php echo Filter::escapeHtml(Site::getPreference('SESSION_TIME')) ?>" pattern="[0-9]*" placeholder="7200" maxlength="255">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Session timeout” site configuration setting */ I18N::translate('The time in seconds that a webtrees session remains active before requiring a login. The default is 7200, which is 2 hours.') ?>
+				<?php echo /* I18N: Help text for the “Session timeout” site configuration setting */ I18N::translate('The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours.') ?>
 				<?php echo I18N::translate('If you leave this setting empty, the default value will be used.') ?>
 			</p>
 		</div>
@@ -296,7 +296,7 @@ $controller->pageHeader();
 	<!-- SERVER_URL -->
 	<div class="form-group">
 		<label for="SERVER_URL" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Website URL') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Website URL') ?>
 		</label>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::selectEditControl('SERVER_URL', array(WT_BASE_URL => WT_BASE_URL), '', Site::getPreference('SERVER_URL'), 'class="form-control"') ?>
@@ -313,7 +313,7 @@ $controller->pageHeader();
 	<!-- SMTP_ACTIVE -->
 	<div class="form-group">
 		<label for="SMTP_ACTIVE" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Messages') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Messages') ?>
 		</label>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::selectEditControl('SMTP_ACTIVE', $SMTP_ACTIVE_OPTIONS, null, Site::getPreference('SMTP_ACTIVE'), 'class="form-control"') ?>
@@ -326,7 +326,7 @@ $controller->pageHeader();
 	<!-- SMTP_FROM_NAME -->
 	<div class="form-group">
 		<label for="SMTP_FROM_NAME" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Sender name') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Sender name') ?>
 		</label>
 		<div class="col-sm-9">
 			<input type="email" class="form-control" id="SMTP_FROM_NAME" name="SMTP_FROM_NAME" value="<?php echo Filter::escapeHtml(Site::getPreference('SMTP_FROM_NAME')) ?>" placeholder="no-reply@localhost" maxlength="255">
@@ -341,7 +341,7 @@ $controller->pageHeader();
 	<!-- SMTP_HOST -->
 	<div class="form-group">
 		<label for="SMTP_HOST" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Server name') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Server name') ?>
 		</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="SMTP_HOST" name="SMTP_HOST" value="<?php echo Filter::escapeHtml(Site::getPreference('SMTP_HOST')) ?>" placeholder="smtp.example.com" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
@@ -354,7 +354,7 @@ $controller->pageHeader();
 	<!-- SMTP_PORT -->
 	<div class="form-group">
 		<label for="SMTP_PORT" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Port number') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Port number') ?>
 		</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="SMTP_PORT" name="SMTP_PORT" value="<?php echo Filter::escapeHtml(Site::getPreference('SMTP_PORT')) ?>" pattern="[0-9]*" placeholder="25" maxlength="5">
@@ -367,7 +367,7 @@ $controller->pageHeader();
 	<!-- SMTP_AUTH -->
 	<fieldset class="form-group">
 		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Use password') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Use password') ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::editFieldYesNo('SMTP_AUTH', Site::getPreference('SMTP_AUTH'), 'class="radio-inline"') ?>
@@ -380,7 +380,7 @@ $controller->pageHeader();
 	<!-- SMTP_AUTH_USER -->
 	<div class="form-group">
 		<label for="SMTP_AUTH_USER" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Username') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Username') ?>
 		</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="SMTP_AUTH_USER" name="SMTP_AUTH_USER" value="<?php echo Filter::escapeHtml(Site::getPreference('SMTP_AUTH_USER')) ?>" maxlength="255">
@@ -393,7 +393,7 @@ $controller->pageHeader();
 	<!-- SMTP_AUTH_PASS -->
 	<div class="form-group">
 		<label for="SMTP_AUTH_PASS" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Password') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Password') ?>
 		</label>
 		<div class="col-sm-9">
 			<input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="">
@@ -406,7 +406,7 @@ $controller->pageHeader();
 	<!-- SMTP_SSL -->
 	<div class="form-group">
 		<label for="SMTP_SSL" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Secure connection') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Secure connection') ?>
 		</label>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::selectEditControl('SMTP_SSL', $SMTP_SSL_OPTIONS, null, Site::getPreference('SMTP_SSL'), 'class="form-control"') ?>
@@ -419,7 +419,7 @@ $controller->pageHeader();
 	<!-- SMTP_HELO -->
 	<div class="form-group">
 		<label for="SMTP_HELO" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Sending server name') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Sending server name') ?>
 		</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="SMTP_HELO" name="SMTP_HELO" value="<?php echo Filter::escapeHtml(Site::getPreference('SMTP_HELO')) ?>" placeholder="localhost" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
@@ -444,12 +444,12 @@ $controller->pageHeader();
 	<!-- LOGIN_URL -->
 	<div class="form-group">
 		<label for="LOGIN_URL" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Login URL') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Sign-in URL') ?>
 		</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="LOGIN_URL" name="LOGIN_URL" value="<?php echo Filter::escapeHtml(Site::getPreference('LOGIN_URL')) ?>" maxlength="255">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Login URL" site configuration setting */ I18N::translate('You only need to enter a Login URL if you want to redirect to a different website or location when your users login. This is very useful if you need to switch from http to https when your users login. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php .') ?>
+				<?php echo /* I18N: Help text for the "Login URL" site configuration setting */ I18N::translate('You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php .') ?>
 			</p>
 		</div>
 	</div>
@@ -457,7 +457,7 @@ $controller->pageHeader();
 	<!-- WELCOME_TEXT_AUTH_MODE -->
 	<div class="form-group">
 		<label for="WELCOME_TEXT_AUTH_MODE" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Welcome text on login page') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Welcome text on sign-in page') ?>
 		</label>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::selectEditControl('WELCOME_TEXT_AUTH_MODE', $WELCOME_TEXT_AUTH_MODE_OPTIONS, null, Site::getPreference('WELCOME_TEXT_AUTH_MODE'), 'class="form-control"') ?>
@@ -469,7 +469,7 @@ $controller->pageHeader();
 	<!-- LOGIN_URL -->
 	<div class="form-group">
 		<label for="WELCOME_TEXT_AUTH_MODE_4" class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Custom welcome text') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Custom welcome text') ?>
 		</label>
 		<div class="col-sm-9">
 			<textarea class="form-control" maxlength="2000" id="WELCOME_TEXT_AUTH_MODE_4" name="WELCOME_TEXT_AUTH_MODE_4" rows="4"><?php echo Filter::escapeHtml(Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE)) ?></textarea>
@@ -482,14 +482,14 @@ $controller->pageHeader();
 	<!-- USE_REGISTRATION_MODULE -->
 	<fieldset class="form-group">
 		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Allow visitors to request a new user account') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Allow visitors to request a new user account') ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::editFieldYesNo('USE_REGISTRATION_MODULE', Site::getPreference('USE_REGISTRATION_MODULE'), 'class="radio-inline"') ?>
 			<p class="small text-muted">
 				<?php echo I18N::translate('The new user will be asked to confirm their email address before the account is created.') ?>
 				<?php echo I18N::translate('Details of the new user will be sent to the genealogy contact for the corresponding family tree.') ?>
-				<?php echo I18N::translate('An administrator must approve the new user account and select an access level before the user can log in.') ?>
+				<?php echo I18N::translate('An administrator must approve the new user account and select an access level before the user can sign in.') ?>
 			</p>
 		</div>
 	</fieldset>
@@ -497,7 +497,7 @@ $controller->pageHeader();
 	<!-- SHOW_REGISTER_CAUTION -->
 	<fieldset class="form-group">
 		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Show acceptable use agreement on “Request new user account” page') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Show acceptable use agreement on “Request a new user account” page') ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::editFieldYesNo('SHOW_REGISTER_CAUTION', Site::getPreference('SHOW_REGISTER_CAUTION'), 'class="radio-inline"') ?>
@@ -518,7 +518,7 @@ $controller->pageHeader();
 		<!-- BING_WEBMASTER_ID -->
 		<div class="form-group">
 			<label for="BING_WEBMASTER_ID" class="col-sm-3 control-label">
-				<?php echo /* I18N: A site configuration setting */ I18N::translate('Site verification code') ?>
+				<?php echo /* I18N: A configuration setting */ I18N::translate('Site verification code') ?>
 				<span class="sr-only">Google Webmaster Tools</span>
 			</label>
 			<div class="col-sm-9">
@@ -539,7 +539,7 @@ $controller->pageHeader();
 		<!-- GOOGLE_WEBMASTER_ID -->
 		<div class="form-group">
 			<label for="GOOGLE_WEBMASTER_ID" class="col-sm-3 control-label">
-				<?php echo /* I18N: A site configuration setting */ I18N::translate('Site verification code') ?>
+				<?php echo /* I18N: A configuration setting */ I18N::translate('Site verification code') ?>
 				<span class="sr-only">Google Webmaster Tools</span>
 			</label>
 			<div class="col-sm-9">
@@ -560,7 +560,7 @@ $controller->pageHeader();
 		<!-- GOOGLE_ANALYTICS_ID -->
 		<div class="form-group">
 			<label for="GOOGLE_ANALYTICS_ID" class="col-sm-3 control-label">
-				<?php echo /* I18N: A site configuration setting */ I18N::translate('Site identification code') ?>
+				<?php echo /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
 				<span class="sr-only">Google Analytics</span>
 			</label>
 			<div class="col-sm-9">
@@ -576,7 +576,7 @@ $controller->pageHeader();
 		<!-- PIWIK_SITE_ID -->
 		<div class="form-group">
 			<label for="PIWIK_SITE_ID" class="col-sm-3 control-label">
-				<?php echo /* I18N: A site configuration setting */ I18N::translate('Site identification code') ?>
+				<?php echo /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
 			</label>
 			<div class="col-sm-9">
 				<input type="text" class="form-control" id="PIWIK_SITE_ID" name="PIWIK_SITE_ID" value="<?php echo Filter::escapeHtml(Site::getPreference('PIWIK_SITE_ID')) ?>" maxlength="255" pattern="[0-9]+">
@@ -586,7 +586,7 @@ $controller->pageHeader();
 		<!-- PIWIK_URL -->
 		<div class="form-group">
 			<label for="PIWIK_URL" class="col-sm-3 control-label">
-				<?php echo /* I18N: A site configuration setting */ I18N::translate('URL') ?>
+				<?php echo /* I18N: A configuration setting */ I18N::translate('URL') ?>
 			</label>
 			<div class="col-sm-9">
 				<input type="text" class="form-control" id="PIWIK_URL" name="PIWIK_URL" value="<?php echo Filter::escapeHtml(Site::getPreference('PIWIK_URL')) ?>" placeholder="example.com/piwik" maxlength="255">
@@ -601,7 +601,7 @@ $controller->pageHeader();
 		<!-- STATCOUNTER_PROJECT_ID -->
 		<div class="form-group">
 			<label for="STATCOUNTER_PROJECT_ID" class="col-sm-3 control-label">
-				<?php echo /* I18N: A site configuration setting */ I18N::translate('Site identification code') ?>
+				<?php echo /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
 			</label>
 			<div class="col-sm-9">
 				<input type="text" class="form-control" id="STATCOUNTER_PROJECT_ID" name="STATCOUNTER_PROJECT_ID" value="<?php echo Filter::escapeHtml(Site::getPreference('STATCOUNTER_PROJECT_ID')) ?>" maxlength="255" pattern="[0-9]+">
@@ -611,7 +611,7 @@ $controller->pageHeader();
 		<!-- STATCOUNTER_SECURITY_ID -->
 		<div class="form-group">
 			<label for="STATCOUNTER_SECURITY_ID" class="col-sm-3 control-label">
-				<?php echo /* I18N: A site configuration setting */ I18N::translate('Security code') ?>
+				<?php echo /* I18N: A configuration setting */ I18N::translate('Security code') ?>
 			</label>
 			<div class="col-sm-9">
 				<input type="text" class="form-control" id="STATCOUNTER_SECURITY_ID" name="STATCOUNTER_SECURITY_ID" value="<?php echo Filter::escapeHtml(Site::getPreference('STATCOUNTER_SECURITY_ID')) ?>" maxlength="255" pattern="[0-9a-zA-Z]+">
@@ -630,7 +630,7 @@ $controller->pageHeader();
 
 		<fieldset class="form-group">
 			<legend class="col-sm-3 control-label">
-				<?php echo /* I18N: A site configuration setting */ I18N::translate('Language') ?>
+				<?php echo /* I18N: A configuration setting */ I18N::translate('Language') ?>
 			</legend>
 			<div class="col-sm-9" style="columns: 4 150px;-moz-columns: 4 150px;">
 				<?php foreach (I18N::installedLocales() as $installed_locale): ?>

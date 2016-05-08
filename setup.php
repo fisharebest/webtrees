@@ -184,7 +184,7 @@ if (!isset($_POST['lang'])) {
 		I18N::translate('If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator.'),
 		'</p>';
 	if (!$errors) {
-		echo '<br><hr><input type="submit" id="btncontinue" value="', /* I18N: button label */ I18N::translate('continue'), '">';
+		echo '<br><hr><input type="submit" id="btncontinue" value="', /* I18N: A button label */ I18N::translate('continue'), '">';
 
 	}
 	echo '</form></body></html>';
@@ -427,9 +427,9 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'<input type="text" name="wtname" value="', Filter::escapeHtml($_POST['wtname']), '" autofocus></td><td>',
 		I18N::translate('This is your real name, as you would like it displayed on screen.'),
 		'</td></tr><tr><td>',
-		I18N::translate('Login ID'), '</td><td>',
+		I18N::translate('Username'), '</td><td>',
 		'<input type="text" name="wtuser" value="', Filter::escapeHtml($_POST['wtuser']), '"></td><td>',
-		I18N::translate('You will use this to login to webtrees.'),
+		I18N::translate('You will use this to sign in to webtrees.'),
 		'</td></tr><tr><td>',
 		I18N::translate('Password'), '</td><td>',
 		'<input type="password" name="wtpass" value="', Filter::escapeHtml($_POST['wtpass']), '"></td><td>',
@@ -466,14 +466,24 @@ try {
 	// Create/update the database tables.
 	Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', 30);
 
-	// Create the admin user
-	$admin = User::create($_POST['wtuser'], $_POST['wtname'], $_POST['wtemail'], $_POST['wtpass']);
-	$admin->setPreference('canadmin', '1');
-	$admin->setPreference('language', WT_LOCALE);
-	$admin->setPreference('verified', '1');
-	$admin->setPreference('verified_by_admin', '1');
-	$admin->setPreference('auto_accept', '0');
-	$admin->setPreference('visibleonline', '1');
+	// If we are re-installing, then this user may already exist.
+	$admin = User::findByIdentifier($_POST['wtemail']);
+	if ($admin === null) {
+		$admin = User::findByIdentifier($_POST['wtuser']);
+	}
+	// Create the user
+	if ($admin === null) {
+		$admin = User::create($_POST['wtuser'], $_POST['wtname'], $_POST['wtemail'], $_POST['wtpass'])
+			->setPreference('language', WT_LOCALE)
+			->setPreference('visibleonline', '1');
+	} else {
+		$admin->setPassword($_POST['wtpass']);
+	}
+	// Make the user an administrator
+	$admin
+		->setPreference('canadmin', '1')
+		->setPreference('verified', '1')
+		->setPreference('verified_by_admin', '1');
 
 	// Write the config file. We already checked that this would work.
 	$config_ini_php =

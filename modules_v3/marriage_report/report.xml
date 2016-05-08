@@ -3,9 +3,9 @@
 	<Title><var var="I18N::translate('Marriages')" /></Title>
 	<Description><var var="I18N::translate('A report of individuals who were married in a given time or place.')" /></Description>
 	<Input name="name" lookup="NAME" type="text"><var var="I18N::translate('Name')" /></Input>
-	<Input name="marrplace" lookup="PLAC" type="text"><var var="I18N::translate('Marriage Place contains')" /> </Input>
-	<Input name="marrdate1" lookup="DATE" type="text"><var var="I18N::translate('Marriage Date range start')" /></Input>
-	<Input name="marrdate2" lookup="DATE" type="text"><var var="I18N::translate('Marriage Date range end')" /></Input>
+	<Input name="marrplace" lookup="PLAC" type="text"><var var="I18N::translate('Marriage place contains')" /> </Input>
+	<Input name="marrdate1" lookup="DATE" type="text"><var var="I18N::translate('Marriage date range start')" /></Input>
+	<Input name="marrdate2" lookup="DATE" type="text"><var var="I18N::translate('Marriage date range end')" /></Input>
 	<Input name="sortby" type="select" default="NAME" options="NAME=>I18N::translate('sort by name')|MARR:DATE=>I18N::translate('sort by date of marriage')"><var var="I18N::translate('Sort order')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translateContext('paper size','Letter')|A3=>I18N::translateContext('paper size', 'A3')|A4=>I18N::translateContext('paper size','A4')|legal=>I18N::translateContext('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
 	<!--

@@ -642,8 +642,7 @@ if (!$ajax) {
 			<table width="100%">
 			<tr style="text-align:center;"><td>
 				<br>
-				<input type="submit" value="', I18N::translate('show the plot'), ' ">
-				<input type="reset"  value=" ', I18N::translate('reset'), ' " onclick="{statusEnable(\'z_sex\'); statusHide(\'x_years\'); statusHide(\'x_months\'); statusHide(\'x_numbers\'); statusHide(\'map_opt\');}"><br>
+				<input type="submit" value="', I18N::translate('show the chart'), ' ">
 			</td>
 			</tr>
 		</table>

@@ -123,8 +123,8 @@ if ($action == 'choose' && $paramok) {
 			echo '</td><td>';
 			echo $record->getFullName();
 			echo '</td>';
-			echo '<td><input alt="', I18N::translate('Keep link in list'), '" title="', I18N::translate('Keep link in list'), '" type="radio" id="', $record->getXref(), '_off" name="', $record->getXref(), '" checked></td>';
-			echo '<td><input alt="', I18N::translate('Remove link from list'), '" title="', I18N::translate('Remove link from list'), '" type="radio" id="', $record->getXref(), '_on"  name="', $record->getXref(), '"></td>';
+			echo '<td><input title="', I18N::translate('Keep link in list'), '" type="radio" id="', $record->getXref(), '_off" name="', $record->getXref(), '" checked></td>';
+			echo '<td><input title="', I18N::translate('Remove link from list'), '" type="radio" id="', $record->getXref(), '_on"  name="', $record->getXref(), '"></td>';
 
 			if ($record instanceof Individual) {
 				?>

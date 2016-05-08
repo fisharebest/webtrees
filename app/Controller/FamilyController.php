@@ -98,7 +98,7 @@ class FamilyController extends GedcomRecordController {
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-fam-editraw', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-fam-editraw', array(
 				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
 			)));
 		}
@@ -137,7 +137,7 @@ class FamilyController extends GedcomRecordController {
 				FunctionsPrintFacts::printFact($fact, $this->record);
 			}
 		} else {
-			echo '<tr><td class="messagebox" colspan="2">', I18N::translate('No facts for this family.'), '</td></tr>';
+			echo '<tr><td class="messagebox" colspan="2">', I18N::translate('No facts exist for this family.'), '</td></tr>';
 		}
 
 		if (Auth::isEditor($this->record->getTree())) {

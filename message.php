@@ -188,9 +188,9 @@ case 'send':
 			$message['no_from'] = true;
 		}
 		if (addMessage($message)) {
-			FlashMessages::addMessage(I18N::translate('Message successfully sent to %s', Filter::escapeHtml($to)));
+			FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', Filter::escapeHtml($to)));
 		} else {
-			FlashMessages::addMessage(I18N::translate('Message was not sent'));
+			FlashMessages::addMessage(I18N::translate('The message was not sent.'));
 			Log::addErrorLog('Unable to send a message. FROM:' . $from . ' TO:' . $to . ' (failed to send)');
 		}
 		$i++;
@@ -240,7 +240,7 @@ function addMessage($message) {
 		}
 
 		if ($sender) {
-			// Message from a logged-in user
+			// Message from a signed-in user
 			$copy_email = I18N::translate('You sent the following message to a webtrees user:') . ' ' . $recipient->getRealNameHtml() . Mail::EOL . Mail::EOL . $copy_email;
 		} else {
 			// Message from a visitor

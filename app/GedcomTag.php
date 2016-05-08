@@ -170,12 +170,12 @@ class GedcomTag {
 				I18N::translate('Author');
 		case 'BAPL':
 			return
-				/* I18N: gedcom tag BAPL */
+				/* I18N: gedcom tag BAPL. LDS = Church of Latter Day Saints. */
 				I18N::translate('LDS baptism');
 		case 'BAPL:DATE':
-			return I18N::translate('Date of LDS baptism');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Date of LDS baptism');
 		case 'BAPL:PLAC':
-			return I18N::translate('Place of LDS baptism');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Place of LDS baptism');
 		case 'BAPM':
 			return
 				/* I18N: gedcom tag BAPM */
@@ -314,7 +314,7 @@ class GedcomTag {
 			return I18N::translate('Place of confirmation');
 		case 'CONL':
 			return
-				/* I18N: gedcom tag CONL */
+				/* I18N: gedcom tag CONL. LDS = Church of Latter Day Saints. */
 				I18N::translate('LDS confirmation');
 		case 'COPR':
 			return
@@ -408,12 +408,12 @@ class GedcomTag {
 			return I18N::translate('Place of emigration');
 		case 'ENDL':
 			return
-				/* I18N: gedcom tag ENDL */
+				/* I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints. */
 				I18N::translate('LDS endowment');
 		case 'ENDL:DATE':
-			return I18N::translate('Date of LDS endowment');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Date of LDS endowment');
 		case 'ENDL:PLAC':
-			return I18N::translate('Place of LDS endowment');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Place of LDS endowment');
 		case 'ENGA':
 			return
 				/* I18N: gedcom tag ENGA */
@@ -463,9 +463,9 @@ class GedcomTag {
 		case 'FAMS:NOTE':
 			return I18N::translate('Spouse note');
 		case 'FAMS:SLGS:DATE':
-			return I18N::translate('Date of LDS spouse sealing');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Date of LDS spouse sealing');
 		case 'FAMS:SLGS:PLAC':
-			return I18N::translate('Place of LDS spouse sealing');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Place of LDS spouse sealing');
 		case 'FAX':
 			return
 				/* I18N: gedcom tag FAX */
@@ -768,15 +768,15 @@ class GedcomTag {
 			return I18N::translate('Shared note');
 		case 'SLGC':
 			return
-				/* I18N: gedcom tag SLGC */
+				/* I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints. */
 				I18N::translate('LDS child sealing');
 		case 'SLGC:DATE':
-			return I18N::translate('Date of LDS child sealing');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Date of LDS child sealing');
 		case 'SLGC:PLAC':
-			return I18N::translate('Place of LDS child sealing');
+			return /* I18N: LDS = Church of Latter Day Saints. */ I18N::translate('Place of LDS child sealing');
 		case 'SLGS':
 			return
-				/* I18N: gedcom tag SLGS */
+				/* I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints. */
 				I18N::translate('LDS spouse sealing');
 		case 'SOUR':
 			return
@@ -1762,9 +1762,7 @@ class GedcomTag {
 				/* I18N: gedcom tag _WT_OBJE_SORT */
 				I18N::translate('Re-order media');
 		case '_YART':
-			return
-				/* I18N: gedcom tag _YART */
-				I18N::translate('Yahrzeit');
+			return /* I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar. */ I18N::translate('Yahrzeit');
 			// Brit milah applies only to males, no need for male/female translations
 		case '__BRTM_CHIL':
 			return I18N::translate('Brit milah of a son');

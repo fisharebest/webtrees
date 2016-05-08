@@ -97,7 +97,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 				</td>
 				<td class="facts_value">
 					<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','NOTE'); return false;">
-						<?php echo I18N::translate(' Add a note'); ?>
+						<?php echo I18N::translate('Add a note'); ?>
 					</a>
 				</td>
 			</tr>
