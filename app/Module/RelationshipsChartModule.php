@@ -63,7 +63,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 	public function defaultAccessLevel() {
 		return Auth::PRIV_PRIVATE;
 	}
-
+	
 	/**
 	 * Return a menu item for this chart.
 	 *
@@ -89,7 +89,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 			);
 		}
 	}
-
+	
 	/**
 	 * Return a menu item for this chart - for use in individual boxes.
 	 *
@@ -99,6 +99,15 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 		return $this->getChartMenu($individual);
 	}
 
+	/**
+	 * Return a link to this chart, if it is a relationship chart.
+	 *
+	 * @return string|null
+	 */
+	public function getLinkForRelationship(Individual $individual1, Individual $individual2) {
+		return 'relationship.php?pid1=' . $individual1->getXref() . '&amp;pid2=' . $individual2->getXref() . '&amp;ged=' . $individual1->getTree()->getNameUrl();
+	}
+	
 	/**
 	 * This is a general purpose hook, allowing modules to respond to routes
 	 * of the form module.php?mod=FOO&mod_action=BAR
