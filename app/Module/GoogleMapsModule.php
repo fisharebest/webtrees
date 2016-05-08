@@ -2019,7 +2019,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						$ctla = preg_match('/\n4 LATI (.+)/', $birthrec, $match1);
 						$ctlo = preg_match('/\n4 LONG (.+)/', $birthrec, $match2);
 						if ($ctla && $ctlo) {
-							$i++;
 							$gmarks[$i] = array(
 								'date'         => $birth->getDate()->display(true),
 								'image'        => $child->displayImage(),
@@ -2036,6 +2035,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								'sv_zoom'      => '0',
 								'tooltip'      => $birth->getPlace()->getGedcomName(),
 							);
+							$i++;
 							switch ($child->getSex()) {
 							case'F':
 								$gmarks[$i]['fact_label'] = I18N::translate('daughter');
@@ -2053,7 +2053,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						} else {
 							$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($birth->getPlace()->getGedcomName());
 							if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
-								$i++;
 								$gmarks[$i] = array(
 									'date'         => $birth->getDate()->display(true),
 									'image'        => $child->displayImage(),
@@ -2070,6 +2069,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									'sv_zoom'      => $latlongval->sv_zoom,
 									'tooltip'      => $birth->getPlace()->getGedcomName(),
 								);
+								$i++;
 								switch ($child->getSex()) {
 								case 'M':
 									$gmarks[$i]['fact_label'] = I18N::translate('son');
