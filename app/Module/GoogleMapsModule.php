@@ -1960,7 +1960,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$spouse = null;
 				}
 				if ($ctla && $ctlo) {
-					$gmarks[$i] = array(
+					$gmarks = array(
 						'class'        => 'optionbox',
 						'date'         => $fact->getDate()->display(true),
 						'fact_label'   => $fact->getLabel(),
@@ -1978,11 +1978,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						'sv_zoom'      => '0',
 						'tooltip'      => $fact->getPlace()->getGedcomName(),
 					);
-					$i++;
+					$gmarks[] = $gmark;
 				} else {
 					$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
 					if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
-						$gmarks[$i] = array(
+						$gmark = array(
 							'class'        => 'optionbox',
 							'date'         => $fact->getDate()->display(true),
 							'fact_label'   => $fact->getLabel(),
@@ -2000,7 +2000,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							'sv_zoom'      => $latlongval->sv_zoom,
 							'tooltip'      => $fact->getPlace()->getGedcomName(),
 						);
-						$i++;
+						$gmarks[] = $gmark;
 						if ($GM_MAX_ZOOM > $latlongval->pl_zoom) {
 							$GM_MAX_ZOOM = $latlongval->pl_zoom;
 						}
@@ -2019,7 +2019,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						$ctla = preg_match('/\n4 LATI (.+)/', $birthrec, $match1);
 						$ctlo = preg_match('/\n4 LONG (.+)/', $birthrec, $match2);
 						if ($ctla && $ctlo) {
-							$gmarks[$i] = array(
+							$gmark = array(
 								'date'         => $birth->getDate()->display(true),
 								'image'        => $child->displayImage(),
 								'info'         => '',
@@ -2038,22 +2038,23 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							$i++;
 							switch ($child->getSex()) {
 							case'F':
-								$gmarks[$i]['fact_label'] = I18N::translate('daughter');
-								$gmarks[$i]['class']      = 'person_boxF';
+								$gmark['fact_label'] = I18N::translate('daughter');
+								$gmark['class']      = 'person_boxF';
 								break;
 							case 'M':
-								$gmarks[$i]['fact_label'] = I18N::translate('son');
-								$gmarks[$i]['class']      = 'person_box';
+								$gmark['fact_label'] = I18N::translate('son');
+								$gmark['class']      = 'person_box';
 								break;
 							default:
-								$gmarks[$i]['fact_label'] = I18N::translate('child');
-								$gmarks[$i]['class']      = 'person_boxNN';
+								$gmark['fact_label'] = I18N::translate('child');
+								$gmark['class']      = 'person_boxNN';
 								break;
 							}
+							$gmarks[] = $gmark;
 						} else {
 							$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($birth->getPlace()->getGedcomName());
 							if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
-								$gmarks[$i] = array(
+								$gmark = array(
 									'date'         => $birth->getDate()->display(true),
 									'image'        => $child->displayImage(),
 									'info'         => '',
@@ -2072,18 +2073,19 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								$i++;
 								switch ($child->getSex()) {
 								case 'M':
-									$gmarks[$i]['fact_label'] = I18N::translate('son');
-									$gmarks[$i]['class']      = 'person_box';
+									$gmark['fact_label'] = I18N::translate('son');
+									$gmark['class']      = 'person_box';
 									break;
 								case 'F':
-									$gmarks[$i]['fact_label'] = I18N::translate('daughter');
-									$gmarks[$i]['class']      = 'person_boxF';
+									$gmark['fact_label'] = I18N::translate('daughter');
+									$gmark['class']      = 'person_boxF';
 									break;
 								default:
-									$gmarks[$i]['fact_label'] = I18N::translate('child');
-									$gmarks[$i]['class']      = 'option_boxNN';
+									$gmark['fact_label'] = I18N::translate('child');
+									$gmark['class']      = 'option_boxNN';
 									break;
 								}
+								$gmarks[] = $gmark;
 								if ($GM_MAX_ZOOM > $latlongval->pl_zoom) {
 									$GM_MAX_ZOOM = $latlongval->pl_zoom;
 								}
