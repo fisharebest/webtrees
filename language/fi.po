@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-08 20:35+0000\n"
+"PO-Revision-Date: 2016-05-09 07:27+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
@@ -831,7 +831,7 @@ msgstr "Luettelo lähitulevaisuudessa tapahtuvista juutalaisista kuoleman vuosip
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
 msgid "A list of the anniversaries that occur today."
-msgstr "Tämän päivän merkkitapahtumat."
+msgstr "Luettelo tänä päivänä tapahtuvista vuosipäivistä."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
@@ -851,7 +851,7 @@ msgstr "Suosituimpien sukunimien luettelo."
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "Luettelon katsotuimmista sivuista."
+msgstr "Luettelo katsotuimmista sivuista."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
@@ -1020,7 +1020,7 @@ msgstr "Sivupalkki, joka näyttää henkilön jälkeläiset."
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
 msgid "A tab showing the close relatives of an individual."
-msgstr "Välilehti joka näyttää henkilön lähisukulaiset."
+msgstr "Välilehti, joka näyttää henkilön lähisukulaiset."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
@@ -1030,7 +1030,7 @@ msgstr "Välilehti näyttää henkilöön liittyvät faktat ja tapahtumat."
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Välilehti joka näyttää henkilöön liitetyt mediakohteet."
+msgstr "Välilehti, joka näyttää henkilöön liitetyt mediakohteet."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
@@ -1040,7 +1040,7 @@ msgstr "Välilehti, joka näyttää henkilöön liitetyt muistiinpanot."
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr "Välilehti joka näyttää henkilöön liitetyt lähteet."
+msgstr "Välilehti, joka näyttää henkilöön liitetyt lähteet."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
@@ -1695,7 +1695,7 @@ msgstr "Afrikka"
 
 #: admin_trees_manage.php:681
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr "Kun olet luonut sukupuun, voit tuoda tietoja GEDCOM -tiedostosta."
+msgstr "Kun olet luonut sukupuun, voit tuoda tietoja GEDCOM-tiedostosta."
 
 #: login.php:257
 msgid "After you have signed in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
@@ -5519,7 +5519,7 @@ msgstr "Muuta sukupuoli"
 #: addmedia.php:237 addmedia.php:406 app/Controller/MediaController.php:43
 #: app/Module/AlbumModule.php:159
 msgid "Edit the media object"
-msgstr "Muokkaa mediakohdetta"
+msgstr "Muokkaa mediakohde"
 
 #: app/Controller/IndividualController.php:168
 #: app/Functions/FunctionsEdit.php:705 edit_interface.php:1640
@@ -5539,7 +5539,7 @@ msgstr "Muokkaa lisätiedot"
 #: edit_interface.php:112 edit_interface.php:162 edit_interface.php:224
 #: edit_interface.php:319 edit_interface.php:2594 help_text.php:284
 msgid "Edit the raw GEDCOM"
-msgstr "Muokkaa GEDCOM raakadataa"
+msgstr "Muokkaa GEDCOM raakadata"
 
 #: app/Controller/RepositoryController.php:43
 #: app/Controller/RepositoryController.php:48
@@ -5549,7 +5549,7 @@ msgstr "Muokkaa tietovarasto"
 #: app/Functions/FunctionsEdit.php:449 edit_interface.php:1444
 #: edit_interface.php:1490
 msgid "Edit the shared note"
-msgstr "Muokkaa jaettua lisätietoa"
+msgstr "Muokkaa jaettu lisätieto"
 
 #: app/Controller/SourceController.php:42
 #: app/Controller/SourceController.php:47
@@ -5558,7 +5558,7 @@ msgstr "Muokkaa lähde"
 
 #: app/Module/StoriesModule.php:106 app/Module/StoriesModule.php:188
 msgid "Edit the story"
-msgstr "Muokkaa tarinaa"
+msgstr "Muokkaa tarina"
 
 #: admin_users.php:273
 msgid "Edit the user"
@@ -5702,7 +5702,7 @@ msgstr "Käytössä, Sallittu"
 #. I18N: Help text for the “Family tree” configuration setting
 #: admin_trees_config.php:377
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
-msgstr "Tällä valinnalla pakotetaan kaikki vierailijat ensin kirjautumaan sisään ennen kuin he näkevät mitään sivuston aineistoa."
+msgstr "Tällä valinnalla pakotetaan kaikkia vierailijoita ensin kirjautumaan sisään, ennen kuin he näkevät mitään sivuston aineistoa."
 
 #. I18N …of a range of addresses
 #: admin_site_access.php:264 admin_site_access.php:362
@@ -9980,7 +9980,7 @@ msgstr[1] "Ei elävien henkilöiden tapahtumia tulevien %s päivän aikana."
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
-msgstr "Ei faktoja tästä perheestä."
+msgstr "Faktoja ei ole olemassa tälle perheelle."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:79
@@ -9997,7 +9997,7 @@ msgstr "Sukuyhteyttä näiden kahden henkilön välillä ei löydy."
 
 #: app/Module/GoogleMapsModule.php:193
 msgid "No map data exists for this individual"
-msgstr "Ei kartta tietoa tällä henkilöllä"
+msgstr "Kartta tietoa ei ole olemassa tälle henkilölle"
 
 #: admin_site_merge.php:237 admin_site_merge.php:284 admin_site_merge.php:330
 msgid "No matching facts found"
@@ -13320,7 +13320,7 @@ msgstr "Tilastot"
 
 #: statisticsplot.php:836
 msgid "Statistics chart"
-msgstr "Tilastokäyrä"
+msgstr "Tilastokaavio"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:320 admin_site_change.php:387
@@ -13919,12 +13919,12 @@ msgstr "Muistin ja CPU vaatimukset riippuvat siitä, miten paljon henkilöitä s
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr "Viesti ei lähetetty."
+msgstr "Viestiä ei lähetetty."
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Viestin lähetys %slle onnistunut."
+msgstr "Viestin lähetys %s:lle onnistui."
 
 #: admin_modules.php:54
 #, php-format
@@ -19649,7 +19649,7 @@ msgstr "näytä"
 
 #: statistics.php:645
 msgid "show the chart"
-msgstr "näytä käyrä"
+msgstr "näytä kaavio"
 
 #: app/Functions/Functions.php:784
 msgid "sibling"
