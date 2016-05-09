@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-09 07:50+0000\n"
+"PO-Revision-Date: 2016-05-09 08:20+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -230,6 +230,7 @@ msgstr "%s ve onların nesli"
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
 msgstr[0] "%s anonim kullanıcı çevrimiçi"
+msgstr[1] "%s anonim kullanıcı çevrimiçi"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4457 app/Stats.php:4461
 #, php-format
@@ -371,6 +372,7 @@ msgstr[0] "%s saniye önce"
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
 msgstr[0] "%s kullanıcı çevrimiçi"
+msgstr[1] "%s kullanıcı çevrimiçi"
 
 #: app/Controller/SearchController.php:411
 #, php-format
@@ -1458,7 +1460,7 @@ msgstr "HTML destekli kendi metin ve grafikleri ekleyebileceğiniz blok."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
-msgstr "Ekle/Düzelt Günlük/Haber girişi"
+msgstr "Günlük/Haber kaydı Ekle/Düzelt"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:113
 msgid "Add/insert a blank row"
@@ -4397,7 +4399,7 @@ msgstr "Veri"
 #. I18N: A configuration setting
 #: admin_site_config.php:174
 msgid "Data folder"
-msgstr "Veri klasörünü"
+msgstr "Veri klasörü"
 
 #: setup.php:368
 msgid "Database and table names"
@@ -5901,7 +5903,7 @@ msgstr "SSS konumu"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:217
 msgid "FAQ visibility"
-msgstr "S.S.S görülebilir"
+msgstr "S.S.S görülebilirliği"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:447
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
@@ -6322,7 +6324,7 @@ msgstr "Fiji"
 
 #: app/Module/GoogleMapsModule.php:4177
 msgid "File containing places (CSV)"
-msgstr "Yerlerin içerdiği dosya (CSV"
+msgstr "Yer bilgileri içeren dosya (CSV)"
 
 #: admin_media.php:490 app/GedcomTag.php:1781
 msgid "File size"
@@ -6866,7 +6868,7 @@ msgstr "Verilen Adı"
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:981
 msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu. To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
-msgstr "Kullanıcıya menüden kişisel temasını seçme imkanı tanır.<br><br>Bu seçeneği seçmeniz size tema menüsünü aktif hale getirmeyebilir. Bu seçeneğin çalışabilmesi için <b>Kullanıcı kendi temasını seçebilir</b> seçeneği de seçili olmalıdır."
+msgstr "Kullanıcıya menüden kişisel temasını seçme imkanı tanır.<br><br>Bu seçeneği seçmeniz size tema menüsünü aktif hale getirmeyebilir. Bu seçeneğin çalışabilmesi için <b>Kullanıcı kendi temasını seçebilir</b> özelliği aktif olmalıdır."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -7171,11 +7173,11 @@ msgstr "onun meşguliyeti"
 
 #: app/Module/GoogleMapsModule.php:3939
 msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
-msgstr "Buradan ikon seçilebilir yada kaldırılabilir. Bu bağlantı kullanılarak bir bayrak seçilebilir. Bu coğrafik lokasyon ile birlikte bu bayrak da gösterilir."
+msgstr "Bu bağlantıyı kullanılarak bir bayrak yada ikon seçilebilirsiniz. Coğrafi lokasyon ile birlikte bu ikon da gösterilir."
 
 #: app/Module/GoogleMapsModule.php:3920
 msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
-msgstr "Buraya yakınlık seviyesi girilebilir. Bu coğrafik lokasyon haritada gösterildiğinde bu değer en küçük yakınlık seviyesi olarak kullanılır."
+msgstr "Buraya yakınlık seviyesi girilebilir. Bu coğrafi lokasyon haritada gösterildiğinde bu değer en küçük yakınlık seviyesi olarak kullanılır."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:169
@@ -12605,7 +12607,7 @@ msgstr "Kişi kutularında vurgulanan resimleri göster"
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1709
 msgid "Show hit counters on Portal and Individual pages."
-msgstr "Portal ve Bireysel sayfaların hit sayaçları göster."
+msgstr "Ana sayfa ve Bireysel sayfalarda sayaçları göster."
 
 #: compact.php:60
 msgid "Show images"
@@ -13817,7 +13819,7 @@ msgstr "Aşağıdaki liste tipik gereksinimlerini gösterir."
 
 #: message.php:300 message.php:303
 msgid "The following message has been sent to your webtrees user account from "
-msgstr "Aşağıdaki mesaj webtrees kullanıcıdan gönderildi. Gönderen "
+msgstr "Aşağıdaki mesaj bir webtrees kullanıcısından gönderildi. Gönderen "
 
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
@@ -13887,12 +13889,12 @@ msgstr "Aile ağacınızın bireylerin sayısı sunucunuzun hafıza ve ve CPU za
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr "Mesaj gönderilemedi"
+msgstr "Mesaj gönderilemedi."
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "%s kullanıcıya mesaj başarıyla gönderildi"
+msgstr "%s kullanıcıya mesaj başarıyla gönderildi."
 
 #: admin_modules.php:54
 #, php-format
@@ -14116,7 +14118,7 @@ msgstr "Tema değiştir"
 #. I18N: A configuration setting
 #: admin_trees_config.php:976
 msgid "Theme dropdown selector for theme changes"
-msgstr "Tema değiştirmek için açılır menü seçicide"
+msgstr "Tema değiştirmek için açılır menü"
 
 #: admin_modules.php:165
 msgid "Themes"
@@ -14219,7 +14221,7 @@ msgstr "Bu blok moderator tarafından onaylanmayı bekleyen değişikliklerin li
 
 #: admin_users.php:463 edituser.php:312
 msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
-msgstr "Bu işaret kutusu çevrim içi olduğunuzda diğer kullanıcılara görünür olmanızı belirler. Aynı zamanda baska kullanıcıların çevrimiçi olup olmadıklarını görebilmenizi sağlar.<br><br>Bu kutunun işareti kaldırıldığında, diğer kullanıcılara tamamen görünmez olacak aynı zamanda diğer çevrim içi kullanıcıları göremeyeceksiniz. Bu kutu işaretlendiğinde ise bunun tamamen tersi geçerli olacaktır. Başkalarına görünür olacak ve aynı zamanda kendisini görünür olarak ayarlayan diğer kullanıcıları da görebileceksiniz."
+msgstr "Bu işaret kutusu çevrim içi olduğunuzda diğer kullanıcılara görünür olmanızı belirler. Aynı zamanda başka kullanıcıların çevrimiçi olup olmadıklarını görebilmenizi sağlar.<br><br>Bu kutunun işareti kaldırıldığında, diğer kullanıcılara tamamen görünmez olacak aynı zamanda diğer çevrim içi kullanıcıları göremeyeceksiniz. Bu kutu işaretlendiğinde ise bunun tamamen tersi geçerli olacaktır. Başkalarına görünür olacak ve aynı zamanda kendisini görünür olarak ayarlayan diğer kullanıcıları da görebileceksiniz."
 
 #: setup.php:348 setup.php:359
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
