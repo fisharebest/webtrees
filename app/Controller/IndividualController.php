@@ -164,8 +164,8 @@ class IndividualController extends GedcomRecordController {
 			}
 		}
 		if ($this->record->canEdit() && !$event->isPendingDeletion()) {
-			echo "<div class=\"deletelink\"><a class=\"deleteicon\" href=\"#\" onclick=\"return delete_fact('" . I18N::translate('Are you sure you want to delete this fact?') . "', '" . $this->record->getXref() . "', '" . $event->getFactId() . "');\" title=\"" . I18N::translate('Delete this name') . "\"><span class=\"link_text\">" . I18N::translate('Delete this name') . "</span></a></div>";
-			echo "<div class=\"editlink\"><a href=\"#\" class=\"editicon\" onclick=\"edit_name('" . $this->record->getXref() . "', '" . $event->getFactId() . "'); return false;\" title=\"" . I18N::translate('Edit the name') . "\"><span class=\"link_text\">" . I18N::translate('Edit the name') . "</span></a></div>";
+			echo "<div class=\"deletelink noprint\"><a class=\"deleteicon\" href=\"#\" onclick=\"return delete_fact('" . I18N::translate('Are you sure you want to delete this fact?') . "', '" . $this->record->getXref() . "', '" . $event->getFactId() . "');\" title=\"" . I18N::translate('Delete this name') . "\"><span class=\"link_text\">" . I18N::translate('Delete this name') . "</span></a></div>";
+			echo "<div class=\"editlink noprint\"><a href=\"#\" class=\"editicon\" onclick=\"edit_name('" . $this->record->getXref() . "', '" . $event->getFactId() . "'); return false;\" title=\"" . I18N::translate('Edit the name') . "\"><span class=\"link_text\">" . I18N::translate('Edit the name') . "</span></a></div>";
 		}
 		echo '</dd>';
 		echo '</dl>';

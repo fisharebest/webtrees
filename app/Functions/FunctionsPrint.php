@@ -552,7 +552,7 @@ class FunctionsPrint {
 				if ($fact["type"] == $type || $fact["type"] == 'all') {
 					if ($newRow) {
 						$newRow = false;
-						echo '<tr><td class="descriptionbox">';
+						echo '<tr class="noprint"><td class="descriptionbox">';
 						echo I18N::translate('Add from clipboard'), '</td>';
 						echo '<td class="optionbox wrap"><form method="get" name="newFromClipboard" action="?" onsubmit="return false;">';
 						echo '<select id="newClipboardFact">';
@@ -615,7 +615,7 @@ class FunctionsPrint {
 		uasort($translated_addfacts, function ($x, $y) {
 			return I18N::strcasecmp(I18N::translate($x), I18N::translate($y));
 		});
-		echo '<tr><td class="descriptionbox">';
+		echo '<tr class="noprint"><td class="descriptionbox">';
 		echo I18N::translate('Fact or event');
 		echo '</td>';
 		echo '<td class="optionbox wrap">';

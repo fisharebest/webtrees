@@ -161,7 +161,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '<tr><td>';
 			echo '<div id="map_pane" style="border: 1px solid gray; color: black; width: 100%; height: ', $this->getSetting('GM_YSIZE'), 'px"></div>';
 			if (Auth::isAdmin()) {
-				echo '<table width="100%"><tr>';
+				echo '<table width="100%"><tr class="noprint">';
 				echo '<td>';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
 				echo '</td>';
