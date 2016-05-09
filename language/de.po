@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-09 13:29+0000\n"
-"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
+"PO-Revision-Date: 2016-05-09 18:28+0000\n"
+"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1454,7 +1454,7 @@ msgstr "Füge den GEDCOM Medienpfad zu Dateinamen hinzu"
 #. I18N: A configuration setting
 #: admin_trees_config.php:935
 msgid "Add to TITLE header tag"
-msgstr "Zur «TITLE» Kennung im Kopfbereich hinzufügen"
+msgstr "Zum Seitentitel (<title>-Tag) hinzufügen"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
@@ -1486,11 +1486,11 @@ msgstr "Hinzufügen eigener Texte und Grafiken."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
-msgstr "Journal-/Nachrichteneinträge hinzufügen oder bearbeiten"
+msgstr "Journal-/Nachrichteneintrag hinzufügen oder bearbeiten"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:113
 msgid "Add/insert a blank row"
-msgstr "Einfügen einer leeren Zeile"
+msgstr "Eine leere Zeile einfügen"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -5160,7 +5160,7 @@ msgstr "Beschreibung"
 #. I18N: A configuration setting
 #: admin_trees_config.php:955
 msgid "Description META tag"
-msgstr "META-Tag Beschreibung"
+msgstr "Seitenbeschreibung (Metadaten)"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
@@ -5748,7 +5748,7 @@ msgstr "Die ID Nummer einer Person, Familie, oder Quelle eingeben oder suchen, u
 
 #: reportengine.php:152
 msgid "Enter report values"
-msgstr "Bericht Daten eingeben"
+msgstr "Einstellungen Bericht"
 
 #: search.php:191
 msgid "Entire record"
@@ -14302,8 +14302,8 @@ msgstr "Diese Familie blieb kinderlos"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Dieser Stammbaum hat einen Datensatz, der den selben „XREF“ verwendet wie in einem anderen Stammbaum."
-msgstr[1] "Dieser Stammbaum hat %s Datensätze, die den selben „XREF“ verwenden wie einem anderen Stammbaum."
+msgstr[0] "Dieser Stammbaum hat einen Datensatz, der die gleiche „XREF“ verwendet wie in einem anderen Stammbaum."
+msgstr[1] "Dieser Stammbaum hat %s Datensätze, die die gleiche „XREF“ verwenden wie in einem anderen Stammbaum."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
