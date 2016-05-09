@@ -2463,17 +2463,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		// Create the normal googlemap sidebar of events and children
 		echo '<div style="overflow: auto; overflow-x: hidden; overflow-y: auto; height:', $this->getSetting('GM_YSIZE'), 'px;"><table class="facts_table">';
 
+		$garray = array();
+		foreach ($gmarks as $key => $gmark) {
+			$garray[$key] = $gmark['place'];
+		}
+		$gunique = array_values(array_unique($garray));
+
 		foreach ($gmarks as $key => $gmark) {
 			echo '<tr>';
 			echo '<td class="facts_label">';
-			if ($key == 0) {
-				$key_mark = 0;
-			} elseif ($gmark['place'] == $gmarks[$key-1]['place']) {
-				$key_mark = $key_mark;
-			} else {
-				$key_mark++;
-			}
-			echo '<a href="#" onclick="return myclick(\'', Filter::escapeHtml($key_mark), '\')">', $gmark['fact_label'], '</a></td>';
+			echo '<a href="#" onclick="return myclick(\'', Filter::escapeHtml(array_search($gmark['place'], $gunique)), '\')">', $gmark['fact_label'], '</a></td>';
 			echo '<td class="', $gmark['class'], '" style="white-space: normal">';
 			if ($gmark['info']) {
 				echo '<span class="field">', Filter::escapeHtml($gmark['info']), '</span><br>';
