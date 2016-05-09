@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-08 20:53+0000\n"
+"PO-Revision-Date: 2016-05-09 07:19+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
@@ -5748,7 +5748,7 @@ msgstr "Skriv en extra anteckning om denna favorit"
 #: addmedia.php:434
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
 msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-msgstr "Skriv in eller sök efter ID för person, familj eller källa till vilket denna media objekt ska länkas."
+msgstr "Skriv in eller sök efter ID för person, familj eller källa till vilket detta media objekt ska länkas."
 
 #: reportengine.php:152
 msgid "Enter report values"
@@ -6411,7 +6411,7 @@ msgstr "Sök familj"
 
 #: app/Functions/FunctionsPrint.php:788 find.php:57
 msgid "Find a media object"
-msgstr "Sök mediaobjekt"
+msgstr "Sök ett mediaobjekt"
 
 #: app/Functions/FunctionsPrint.php:703 find.php:60
 msgid "Find a place"
@@ -8644,7 +8644,7 @@ msgstr "Manager"
 #: admin_media.php:535 app/Controller/MediaController.php:49
 #: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
 msgid "Mange the links"
-msgstr "Hantera länkar"
+msgstr "Hantera länkarna"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
@@ -9984,7 +9984,7 @@ msgstr[1] "Inga händelser för levande människor existerar för de kommande %s
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
-msgstr "Inga fakta om denna familj."
+msgstr "Inga fakta finns för denna familj."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:79
@@ -10001,7 +10001,7 @@ msgstr "Ingen förbindelse mellan de två personerna kunde hittas."
 
 #: app/Module/GoogleMapsModule.php:193
 msgid "No map data exists for this individual"
-msgstr "Inga kartuppgifter för denna person"
+msgstr "Ingen kartdata finns för denna person"
 
 #: admin_site_merge.php:237 admin_site_merge.php:284 admin_site_merge.php:330
 msgid "No matching facts found"
@@ -11696,7 +11696,7 @@ msgstr "Arkivnamn"
 #: app/Module/LoginBlockModule.php:89 app/Module/WelcomeBlockModule.php:60
 #: login.php:210 login.php:277
 msgid "Request a new user account"
-msgstr "Begär nytt användarkonto"
+msgstr "Begär ett nytt användarkonto"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1739
@@ -12533,7 +12533,7 @@ msgstr "Visa nedladdninglänken i mediavisaren"
 #. I18N: A configuration setting
 #: admin_site_config.php:500
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "Visa godtagbara användaravtal på sidan ”Begär nytt användarkonto”"
+msgstr "Visa godtagbara användaravtal på sidan ”Begär ett nytt användarkonto”"
 
 #: app/Module/NotesTabModule.php:73
 msgid "Show all notes"
@@ -12814,7 +12814,7 @@ msgstr "Visa datum och tid för uppdatering"
 
 #: admin_trees_config.php:1462
 msgid "Show the events of close relatives on the individual page"
-msgstr "Visa händelser för nära släkt på personsida"
+msgstr "Visa händelser för nära släkt på personsidan"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:367
@@ -13324,7 +13324,7 @@ msgstr "Statistik"
 
 #: statisticsplot.php:836
 msgid "Statistics chart"
-msgstr "Statistikgraf"
+msgstr "Statistikdiagram"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:320 admin_site_change.php:387
@@ -13923,12 +13923,12 @@ msgstr "Minneskrav och processor-tidskrav beror på antalet personer som finns i
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr "Meddelande icke sänt."
+msgstr "Meddelandet skickades inte."
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Meddelande skickat till %s."
+msgstr "Meddelandet har skickats till %s."
 
 #: admin_modules.php:54
 #, php-format
@@ -14170,7 +14170,7 @@ msgstr "Det finns inga fakta om denna person."
 
 #: app/Module/MediaTabModule.php:76
 msgid "There are no media objects for this individual."
-msgstr "Det finns ingen mediaobjekt för denna person."
+msgstr "Det finns inget mediaobjekt för denna person."
 
 #: app/Module/NotesTabModule.php:88
 msgid "There are no notes for this individual."
@@ -14380,7 +14380,7 @@ msgstr "Dessa uppgifter är skyddade."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "I den här textrutan kan du ändra året av kalendern. Skriv ett år i rutan och tryck <b>Enter</b> för att ändra kalendern till det året.<br><br><b>Avancerade funktioner</b> för <b>Visa år</b><dl><dt><b>Mer än ett år</b></dt><dd>Du kan söka efter datum i ett årintervall.<br><br>Årintervall är <u>inkluderande</u>. Detta innebär att intervallet sträcker sig från 1 januari det första året till 31 december det sista året av nämnda intervallet. Några exempel på årintervall:<br><br><b>1992-5</b> för alla händelser från 1992 till 1995.<br><b>1972-89</b> för alla händelser från 1972 till 1989.<br><b>1610-759</b> för alla händelser från 1610 till 1759.<br><b>1880-1905</b> för alla händelser från 1880 till 1905.<br><b>880-1105</b> för alla händelser från 880 till 1105.<br><br>För att se alla händelser i ett visst decennium eller århundrade, kan du använda <b>?</b> i stället för de slutliga siffrorna. Till exempel, <b>197?</b> för alla händelser från 1970 till 1979 or <b>16??</b> för alla händelser från 1600 till 1699.<br><br>Valet av ett antal år kommer att ändra kalendern till år vyn.</dd></dl>"
+msgstr "I den här textrutan kan du ändra året av kalendern. Skriv ett år i rutan och tryck <b>Enter</b> för att ändra kalendern till det året.<br><br><b>Avancerade funktioner</b> för <b>Visa året</b><dl><dt><b>Mer än ett år</b></dt><dd>Du kan söka efter datum i ett årintervall.<br><br>Årintervall är <u>inkluderande</u>. Detta innebär att intervallet sträcker sig från 1 januari det första året till 31 december det sista året av nämnda intervallet. Några exempel på årintervall:<br><br><b>1992-5</b> för alla händelser från 1992 till 1995.<br><b>1972-89</b> för alla händelser från 1972 till 1989.<br><b>1610-759</b> för alla händelser från 1610 till 1759.<br><b>1880-1905</b> för alla händelser från 1880 till 1905.<br><b>880-1105</b> för alla händelser från 880 till 1105.<br><br>För att se alla händelser i ett visst decennium eller århundrade, kan du använda <b>?</b> i stället för de slutliga siffrorna. Till exempel, <b>197?</b> för alla händelser från 1970 till 1979 or <b>16??</b> för alla händelser från 1600 till 1699.<br><br>Valet av ett antal år kommer att ändra kalendern till år vyn.</dd></dl>"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2156
@@ -14533,27 +14533,27 @@ msgstr "Media filen är trasig och kan inte vattenstämplas."
 
 #: mediaviewer.php:78
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr "Denna media objekt existerar inte eller så saknar du rättigheter att se det."
+msgstr "Detta media objekt existerar inte eller så saknar du rättigheter att se det."
 
 #: mediaviewer.php:52
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Denna media objekt har avlägsnats. En moderator måste ännu kontrollera det."
+msgstr "Detta media objekt har avlägsnats. En moderator måste ännu kontrollera det."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:43
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Denna media objekt har avlägsnats. Du bör kontrollera om det skall avlägsnas och sedan välja antingen %1$s eller %2$s."
+msgstr "Detta media objekt har avlägsnats. Du bör kontrollera om det skall avlägsnas och sedan välja antingen %1$s eller %2$s."
 
 #: mediaviewer.php:70
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr "Denna media objekt har redigerats. Ändringarna måste granskas av en moderator."
+msgstr "Detta media objekt har redigerats. Ändringarna måste granskas av en moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:61
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Denna media objekt har redigerats. Du bör granska ändringarna och sedan %1$s eller %2$s dem."
+msgstr "Detta media objekt har redigerats. Du bör granska ändringarna och sedan %1$s eller %2$s dem."
 
 #: admin_media.php:570 find.php:640
 msgid "This media object is not linked to any other record."
@@ -14971,7 +14971,7 @@ msgstr "För att skydda privat data, använder webtrees en Apache konfigurations
 
 #: help_text.php:298
 msgid "To reduce the height of the News block, the administrator has hidden some articles. You can reveal these hidden articles by clicking the <b>View the archive</b> link."
-msgstr "För att minska höjden på nyhetsblocket har administratören dolt vissa artiklar, Du kan visa dessa dolda artiklar genom att klicka på <b>Visa arkiv</b>."
+msgstr "För att minska höjden på nyhetsblocket har administratören dolt vissa artiklar, Du kan visa dessa dolda artiklar genom att klicka på <b>Visa arkivet</b>."
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:364
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
@@ -15394,7 +15394,7 @@ msgstr "Okänd"
 
 #: app/Module/AlbumModule.php:190
 msgid "Unlink the media object"
-msgstr "Avlänka media"
+msgstr "Avlänka media objektet"
 
 #: app/GedcomTag.php:1793
 msgid "Unrecognized GEDCOM code"
@@ -15600,7 +15600,7 @@ msgstr "Användare"
 
 #: admin.php:717
 msgid "Users who are signed in"
-msgstr "Användare inloggad"
+msgstr "Användare som är inloggade"
 
 #: admin_users.php:732
 msgid "User’s account has been inactive too long: "
@@ -15731,15 +15731,15 @@ msgstr "Visa alla poster från denna ort"
 
 #: app/Module/FamilyTreeNewsModule.php:155 help_text.php:297
 msgid "View the archive"
-msgstr "Visa arkiv"
+msgstr "Visa arkivet"
 
 #: calendar.php:300
 msgid "View the day"
-msgstr "Visa dag"
+msgstr "Visa dagen"
 
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
 msgid "View the details"
-msgstr "Visa detaljer"
+msgstr "Visa detaljerna"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15749,24 +15749,24 @@ msgstr "Visa detaljer"
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313
 msgid "View the family"
-msgstr "Visa familj"
+msgstr "Visa familjen"
 
 #: app/Module/GoogleMapsModule.php:1350 app/Module/SlideShowModule.php:177
 #: medialist.php:310
 msgid "View the individual"
-msgstr "Visa person"
+msgstr "Visa personen"
 
 #: calendar.php:304
 msgid "View the month"
-msgstr "Visa månad"
+msgstr "Visa månaden"
 
 #: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
 msgid "View the notes"
-msgstr "Visa anteckningar"
+msgstr "Visa anteckningarna"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
 msgid "View the source"
-msgstr "Visa källa"
+msgstr "Visa källan"
 
 #: app/Module/FamilyTreeStatisticsModule.php:197
 msgid "View the statistics as graphs"
@@ -15774,7 +15774,7 @@ msgstr "Visa statistiken grafiskt"
 
 #: calendar.php:308
 msgid "View the year"
-msgstr "Visa år"
+msgstr "Visa året"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -19653,7 +19653,7 @@ msgstr "visa"
 
 #: statistics.php:645
 msgid "show the chart"
-msgstr "visa graf"
+msgstr "visa diagrammet"
 
 #: app/Functions/Functions.php:784
 msgid "sibling"
