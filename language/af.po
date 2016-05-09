@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-08 12:03+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2016-05-09 12:21+0000\n"
+"Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
 "MIME-Version: 1.0\n"
@@ -6567,7 +6567,7 @@ msgstr "Vir webwerwe met meer as een stamboom sal hierdie opsie 'n lys van beski
 
 #: app/Module/LoginBlockModule.php:86 login.php:207
 msgid "Forgot password?"
-msgstr ""
+msgstr "Wagwoord vergeet?"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:492 help_text.php:136 help_text.php:148 help_text.php:159
@@ -11490,7 +11490,7 @@ msgstr "Bevolkingsregister amptenaar"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:165
 msgid "Regular expression"
-msgstr ""
+msgstr "Reëlmatige uitdrukking"
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
@@ -16106,7 +16106,7 @@ msgstr "Jy word nie toegelaat om boodskappe te stuur wat eksterne skakels bevat.
 #: app/Module/LoginBlockModule.php:63
 #, php-format
 msgid "You are signed in as %s"
-msgstr ""
+msgstr "Jy is aangemeld as %s"
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
