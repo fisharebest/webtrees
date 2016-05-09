@@ -2466,7 +2466,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		foreach ($gmarks as $key => $gmark) {
 			echo '<tr>';
 			echo '<td class="facts_label">';
-			echo '<a href="#" onclick="return myclick(\'', Filter::escapeHtml($key), '\')">', $gmark['fact_label'], '</a></td>';
+			if ($key == 0) {
+				$key_mark = 0;
+			}
+			else if ($gmark['place'] == $gmarks[$key-1]['place']) {
+				$key_mark = $key_mark;
+			} else {
+				$key_mark++;
+			}
+			echo '<a href="#" onclick="return myclick(\'', Filter::escapeHtml($key_mark), '\')">', $gmark['fact_label'], '</a></td>';
 			echo '<td class="', $gmark['class'], '" style="white-space: normal">';
 			if ($gmark['info']) {
 				echo '<span class="field">', Filter::escapeHtml($gmark['info']), '</span><br>';
