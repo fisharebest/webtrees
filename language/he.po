@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-08 20:55+0000\n"
+"PO-Revision-Date: 2016-05-09 08:20+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -13923,12 +13923,12 @@ msgstr "דרישות ה-CPU והזיכרון תלויות במספר האנשי�
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr "ההודעה לא נשלחה"
+msgstr "ההודעה לא נשלחה."
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "ההודעה נשלחה בהצלחה ל-%s"
+msgstr "ההודעה נשלחה בהצלחה ל-%s."
 
 #: admin_modules.php:54
 #, php-format
@@ -15739,7 +15739,7 @@ msgstr "הצג יום"
 
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
 msgid "View the details"
-msgstr "ראה פרטים"
+msgstr "הצג פרטים"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15762,15 +15762,15 @@ msgstr "הצג חודש"
 
 #: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
 msgid "View the notes"
-msgstr "ראה הערות"
+msgstr "הצג הערות"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
 msgid "View the source"
-msgstr "ראה מקור"
+msgstr "הצג מקור"
 
 #: app/Module/FamilyTreeStatisticsModule.php:197
 msgid "View the statistics as graphs"
-msgstr "ראה תרשימים סטטיסטיים"
+msgstr "הצג תרשימים סטטיסטיים"
 
 #: calendar.php:308
 msgid "View the year"
