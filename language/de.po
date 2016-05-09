@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-08 21:17+0000\n"
-"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2016-05-09 13:26+0000\n"
+"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1745,7 +1745,7 @@ msgstr "Alter im Jahr der Eheschließung"
 
 #: app/Module/FamilyTreeNewsModule.php:201
 msgid "Age of item"
-msgstr "Alter"
+msgstr "Alter des Eintrages"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1392
@@ -5160,7 +5160,7 @@ msgstr "Beschreibung"
 #. I18N: A configuration setting
 #: admin_trees_config.php:955
 msgid "Description META tag"
-msgstr "META Tag Description"
+msgstr "META-Tag Beschreibung"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
