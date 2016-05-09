@@ -163,7 +163,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 				$menu->addSubmenu($submenu);
 				if (Auth::isAdmin()) {
 					if (Module::getModuleByName('GEDFact_assistant')) {
-						$submenu = new Menu(I18N::translate('Mange the links'), '#', '', array(
+						$submenu = new Menu(I18N::translate('Manage the links'), '#', '', array(
 							'onclick' => 'return window.open("inverselink.php?mediaid=' . $media->getXref() . '&linkto=manage", "_blank", find_window_specs);',
 						));
 						$submenu->addClass("submenuitem");

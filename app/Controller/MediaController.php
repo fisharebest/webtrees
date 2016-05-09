@@ -46,7 +46,7 @@ class MediaController extends GedcomRecordController {
 
 			// main link displayed on page
 			if (Module::getModuleByName('GEDFact_assistant')) {
-				$menu->addSubmenu(new Menu(I18N::translate('Mange the links'), '#', 'menu-obje-link', array(
+				$menu->addSubmenu(new Menu(I18N::translate('Manage the links'), '#', 'menu-obje-link', array(
 					'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","manage");',
 				)));
 			} else {
@@ -118,7 +118,7 @@ class MediaController extends GedcomRecordController {
 		));
 		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
 
-		$menu = new Menu(I18N::translate('Mange the links'), '#', 'lb-image_link', array(
+		$menu = new Menu(I18N::translate('Manage the links'), '#', 'lb-image_link', array(
 			'onclick' => 'return false;',
 		), array(
 			new Menu(I18N::translate('Link this media object to an individual'), '#', '', array(

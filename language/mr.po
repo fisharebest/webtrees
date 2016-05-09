@@ -8620,7 +8620,7 @@ msgstr "व्यवस्थापक"
 
 #: admin_media.php:535 app/Controller/MediaController.php:49
 #: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
-msgid "Mange the links"
+msgid "Manage the links"
 msgstr "दुवे पहा आणि व्यवस्थापित करा"
 
 #. I18N: Location of an LDS church temple
