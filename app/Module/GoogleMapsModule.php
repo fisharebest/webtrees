@@ -2034,7 +2034,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								'sv_zoom'      => '0',
 								'tooltip'      => $birth->getPlace()->getGedcomName(),
 							);
-\							switch ($child->getSex()) {
+							switch ($child->getSex()) {
 							case'F':
 								$gmark['fact_label'] = I18N::translate('daughter');
 								$gmark['class']      = 'person_boxF';
