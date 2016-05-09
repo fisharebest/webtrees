@@ -2468,8 +2468,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '<td class="facts_label">';
 			if ($key == 0) {
 				$key_mark = 0;
-			}
-			else if ($gmark['place'] == $gmarks[$key-1]['place']) {
+			} elseif ($gmark['place'] == $gmarks[$key-1]['place']) {
 				$key_mark = $key_mark;
 			} else {
 				$key_mark++;
