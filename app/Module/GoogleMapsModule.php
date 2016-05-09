@@ -2682,10 +2682,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		if ($STREETVIEW) {
 			$controller->addInlineJavascript('
 				function update_sv_params(placeid) {
-					var svlati = document.getElementById("sv_latiText").value.slice(0, -1);
-					var svlong = document.getElementById("sv_longText").value.slice(0, -1);
-					var svbear = document.getElementById("sv_bearText").value.slice(0, -1);
-					var svelev = document.getElementById("sv_elevText").value.slice(0, -1);
+					var svlati = document.getElementById("sv_latiText").value;
+					var svlong = document.getElementById("sv_longText").value;
+					var svbear = document.getElementById("sv_bearText").value;
+					var svelev = document.getElementById("sv_elevText").value;
 					var svzoom = document.getElementById("sv_zoomText").value;
 					win03 = window.open("module.php?mod=googlemap&mod_action=places_edit&action=update_sv_params&placeid="+placeid+"&svlati="+svlati+"&svlong="+svlong+"&svbear="+svbear+"&svelev="+svelev+"&svzoom="+svzoom, "win03", indx_window_specs);
 					if (window.focus) {win03.focus();}
