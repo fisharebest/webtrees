@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-09 18:28+0000\n"
+"PO-Revision-Date: 2016-05-10 06:49+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -7545,7 +7545,7 @@ msgstr "Importeinstellungen"
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "In einem Stammbaum hat jeder Datensatz eine interne Referenznummer (auch „XREF“ genannt) wie „F123“ oder „R14“."
+msgstr "In einem Stammbaum hat jeder Datensatz eine interne Referenznummer („xref_ID“ genannt) wie „F123“ oder „R14“."
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
@@ -8626,6 +8626,11 @@ msgstr "Stammbäume verwalten"
 msgid "Manage media"
 msgstr "Medien verwalten"
 
+#: admin_media.php:535 app/Controller/MediaController.php:49
+#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
+msgid "Manage the links"
+msgstr "Verbindungen bearbeiten"
+
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:558
 #: app/Module/ClippingsCartModule.php:390
@@ -8636,11 +8641,6 @@ msgstr "Verwalter"
 #: admin.php:665
 msgid "Managers"
 msgstr "Verwalter"
-
-#: admin_media.php:535 app/Controller/MediaController.php:49
-#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
-msgid "Manage the links"
-msgstr "Verbindungen bearbeiten"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
@@ -14061,8 +14061,8 @@ msgstr "Die Angabe der Zeitzone wird für die Datumsberechnungen, wie z.B das he
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "Die beiden Stammbäume haben einen Datensatz, der die selbe „XREF“ verwendet."
-msgstr[1] "Die beiden Stammbäume haben %1$s Datensätze, die die selben „XREF“ verwenden."
+msgstr[0] "Die beiden Stammbäume haben einen Datensatz, der die gleiche „xref_ID“ verwendet."
+msgstr[1] "Die beiden Stammbäume haben %1$s Datensätze, die die gleiche „xref_ID“ verwenden."
 
 #: admin_site_upgrade.php:504
 msgid "The upgrade is complete."
@@ -14302,8 +14302,8 @@ msgstr "Diese Familie blieb kinderlos"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Dieser Stammbaum hat einen Datensatz, der die gleiche „XREF“ verwendet wie in einem anderen Stammbaum."
-msgstr[1] "Dieser Stammbaum hat %s Datensätze, die die gleiche „XREF“ verwenden wie in einem anderen Stammbaum."
+msgstr[0] "Dieser Stammbaum hat einen Datensatz, der die gleiche „xref_ID“ verwendet wie in einem anderen Stammbaum."
+msgstr[1] "Dieser Stammbaum hat %s Datensätze, die die gleiche „xref_ID“ verwenden wie in einem anderen Stammbaum."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
