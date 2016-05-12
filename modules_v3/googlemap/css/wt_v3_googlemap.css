@@ -313,12 +313,40 @@ ul.tabs a.current {
 	font-size: 12px !important;
 }
 
+#place_map_links {
+	margin: 1px auto;
+	text-align: center;
+	border: 1px solid black;
+	background-color: #ccc;
+}
+
+#place_map_links a {
+	color: #00f;
+	vertical-align: middle;
+	display: inline-block;
+	margin: 4px;
+}
+
+#place_map_links a:hover {
+	color: #f00;
+}
+
+#sv_frame {
+	overflow: hidden;
+	width: 530px;
+	padding: 0;
+	border: 0;
+	margin: 0;
+	display: block;
+}
+
 #sv_parameters {
-	margin-left: 4px;
 	border: solid 1px black;
-	width: 520px;
-	margin-top: -24px;
+	width: 100%;
+	height: 100%;
 	background: #cccccc;
+	margin: -7px auto 0;
+	padding: 2px 0;
 }
 
 #sv_parameters form {
@@ -326,6 +354,12 @@ ul.tabs a.current {
 	margin-left: 5px;
 	font: 10px verdana;
 	color: blue;
+	vertical-align: middle;
+}
+
+#sv_parameters input {
+	padding: 0;
+	margin: 0;
 }
 
 #sv_latiText,
