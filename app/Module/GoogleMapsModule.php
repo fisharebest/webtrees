@@ -1622,8 +1622,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$x   = 0;
 		$max = 0;
 		while ($x < $i) {
-			$levels                 = explode(",", $place_list[$x]);
-			$parts                  = count($levels);
+			$levels = explode(I18N::$list_separator, $place_list[$x]);
+			$parts  = count($levels);
 			if ($parts > $max) {
 				$max = $parts;
 			}
@@ -1668,7 +1668,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$matched   = array();
 		while ($x < $i) {
 			$placestr = '';
-			$levels   = explode(', ', $place_list[$x]);
+			$levels   = explode(I18N::$list_separator, $place_list[$x]);
 			$parts    = count($levels);
 			$levels   = array_reverse($levels);
 			$placestr .= '<a href="placelist.php?action=show';
@@ -1902,12 +1902,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return null|\stdClass
 	 */
 	private function getLatitudeAndLongitudeFromPlaceLocation($place) {
-		$parent   = explode(',', $place);
+		$parent   = explode(I18N::$list_separator, $place);
 		$parent   = array_reverse($parent);
 		$place_id = 0;
 		$num_parent = count($parent);
 		for ($i = 0; $i < $num_parent; $i++) {
-			$parent[$i] = trim($parent[$i]);
 			if (empty($parent[$i])) {
 				$parent[$i] = 'unknown'; // GoogleMap module uses "unknown" while GEDCOM uses , ,
 			}
@@ -2405,13 +2404,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return int
 	 */
 	private function getPlaceLocationId($place) {
-		$par      = explode(',', strip_tags($place));
+		$par      = explode(I18N::$list_separator, strip_tags($place));
 		$par      = array_reverse($par);
 		$place_id = 0;
 		$pl_id    = 0;
 		$num_par  = count($par);
 		for ($i = 0; $i < $num_par; $i++) {
-			$par[$i] = trim($par[$i]);
 			if (empty($par[$i])) {
 				$par[$i] = 'unknown';
 			}
@@ -2447,13 +2445,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function getPlaceId($place) {
 		global $WT_TREE;
 
-		$par      = explode(',', $place);
+		$par      = explode(I18N::$list_separator, $place);
 		$par      = array_reverse($par);
 		$place_id = 0;
 		$pl_id    = 0;
 		$num_par  = count($par);
 		for ($i = 0; $i < $num_par; $i++) {
-			$par[$i]   = trim($par[$i]);
 			$placelist = $this->createPossiblePlaceNames($par[$i], $i + 1);
 			foreach ($placelist as $placename) {
 				$pl_id = (int) Database::prepare(
@@ -2485,16 +2482,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return int
 	 */
 	private function setPlaceIdMap($level, $parent) {
-		$fullplace = '';
+		$fullplace = array();
 		if ($level == 0) {
 			return 0;
 		} else {
 			for ($i = 1; $i <= $level; $i++) {
-				$fullplace .= $parent[$level - $i] . ', ';
-			}
-			$fullplace = substr($fullplace, 0, -2);
+				$fullplace[] = $parent[$level - $i];
 
-			return $this->getPlaceId($fullplace);
+			}
+			return $this->getPlaceId(implode(I18N::$list_separator, $fullplace));
 		}
 	}
 
@@ -4161,7 +4157,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$default_zoom_level[2] = 10;
 			$default_zoom_level[3] = 12;
 			foreach ($placelistUniq as $k => $place) {
-				$parent     = explode(',', $place['place']);
+				$parent     = explode(I18N::$list_separator, $place['place']);
 				$parent     = array_reverse($parent);
 				$parent_id  = 0;
 				$num_parent = count($parent);
