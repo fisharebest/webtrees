@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-08 08:00+0000\n"
+"PO-Revision-Date: 2016-05-14 08:12+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -2419,11 +2419,11 @@ msgstr "Průměrná délka života"
 #: app/Stats.php:3933 app/Stats.php:3934 app/Stats.php:3938 app/Stats.php:3942
 #: app/Stats.php:3945
 msgid "Average age in century of marriage"
-msgstr "Průměrný věk ve století svateb"
+msgstr "Průměrný věk při sňatku podle století"
 
 #: app/Stats.php:2589 app/Stats.php:2602
 msgid "Average age related to death century"
-msgstr "Průměrný věk vztažený ke století úmrtí"
+msgstr "Průměrný věk při úmrtí podle století"
 
 #: app/Module/FamilyTreeStatisticsModule.php:189
 #: app/Module/FamilyTreeStatisticsModule.php:415
@@ -8663,6 +8663,11 @@ msgstr "Správa rodokmenů"
 msgid "Manage media"
 msgstr "Správa médií"
 
+#: admin_media.php:535 app/Controller/MediaController.php:49
+#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
+msgid "Manage the links"
+msgstr "Spravovat odkazy"
+
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:558
 #: app/Module/ClippingsCartModule.php:390
@@ -8673,11 +8678,6 @@ msgstr "Správce"
 #: admin.php:665
 msgid "Managers"
 msgstr "Správci"
-
-#: admin_media.php:535 app/Controller/MediaController.php:49
-#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
-msgid "Manage the links"
-msgstr "Spravovat odkazy"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
