@@ -63,7 +63,7 @@ class RelationshipController extends PageController {
 			while (list(, $next) = each($queue)) {
 				// For each family on the path
 				for ($n = count($next['path']) - 2; $n >= 1; $n -= 2) {
-					$exclude   = $next['exclude'];
+					$exclude = $next['exclude'];
 					if (count($exclude) >= $recursion) {
 						continue;
 					}
