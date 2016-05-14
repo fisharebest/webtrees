@@ -534,37 +534,37 @@ class Functions {
 		default:
 			switch ($n) {
 			case  1:
-			return I18N::translateContext('MALE/FEMALE', 'first cousin');
+			return I18N::translate('first cousin');
 			case  2:
-			return I18N::translateContext('MALE/FEMALE', 'second cousin');
+			return I18N::translate('second cousin');
 			case  3:
-			return I18N::translateContext('MALE/FEMALE', 'third cousin');
+			return I18N::translate('third cousin');
 			case  4:
-			return I18N::translateContext('MALE/FEMALE', 'fourth cousin');
+			return I18N::translate('fourth cousin');
 			case  5:
-			return I18N::translateContext('MALE/FEMALE', 'fifth cousin');
+			return I18N::translate('fifth cousin');
 			case  6:
-			return I18N::translateContext('MALE/FEMALE', 'sixth cousin');
+			return I18N::translate('sixth cousin');
 			case  7:
-			return I18N::translateContext('MALE/FEMALE', 'seventh cousin');
+			return I18N::translate('seventh cousin');
 			case  8:
-			return I18N::translateContext('MALE/FEMALE', 'eighth cousin');
+			return I18N::translate('eighth cousin');
 			case  9:
-			return I18N::translateContext('MALE/FEMALE', 'ninth cousin');
+			return I18N::translate('ninth cousin');
 			case 10:
-			return I18N::translateContext('MALE/FEMALE', 'tenth cousin');
+			return I18N::translate('tenth cousin');
 			case 11:
-			return I18N::translateContext('MALE/FEMALE', 'eleventh cousin');
+			return I18N::translate('eleventh cousin');
 			case 12:
-			return I18N::translateContext('MALE/FEMALE', 'twelfth cousin');
+			return I18N::translate('twelfth cousin');
 			case 13:
-			return I18N::translateContext('MALE/FEMALE', 'thirteenth cousin');
+			return I18N::translate('thirteenth cousin');
 			case 14:
-			return I18N::translateContext('MALE/FEMALE', 'fourteenth cousin');
+			return I18N::translate('fourteenth cousin');
 			case 15:
-			return I18N::translateContext('MALE/FEMALE', 'fifteenth cousin');
+			return I18N::translate('fifteenth cousin');
 			default:
-			return I18N::translateContext('MALE/FEMALE', '%s × cousin', I18N::number($n));
+			return I18N::translate('%s × cousin', I18N::number($n));
 			}
 		}
 	}
@@ -614,17 +614,17 @@ class Functions {
 		default:
 			switch ($n) {
 			case  1:
-				return /* I18N: A Spanish relationship name, such as third great-nephew */ I18N::translateContext('MALE/FEMALE', 'first %s', $relation);
+				return /* I18N: A Spanish relationship name, such as first great-nephew */ I18N::translate('first %s', $relation);
 			case  2:
-				return I18N::translateContext('MALE/FEMALE', 'second %s', $relation);
+				return /* I18N: A Spanish relationship name, such as second great-nephew */ I18N::translate('second %s', $relation);
 			case  3:
-				return I18N::translateContext('MALE/FEMALE', 'third %s', $relation);
+				return /* I18N: A Spanish relationship name, such as third great-nephew */ I18N::translate('third %s', $relation);
 			case  4:
-				return I18N::translateContext('MALE/FEMALE', 'fourth %s', $relation);
+				return /* I18N: A Spanish relationship name, such as fourth great-nephew */ I18N::translate('fourth %s', $relation);
 			case  5:
-				return I18N::translateContext('MALE/FEMALE', 'fifth %s', $relation);
+				return /* I18N: A Spanish relationship name, such as fifth great-nephew */ I18N::translate('fifth %s', $relation);
 			default:
-				return /* I18N: A Spanish relationship name, such as third great-nephew */ I18N::translateContext('MALE/FEMALE', '%1$s × %2$s', I18N::number($n), $relation);
+				return /* I18N: A Spanish relationship name, such as 7th great-nephew */ I18N::translate('%1$s × %2$s', I18N::number($n), $relation);
 			}
 		}
 	}
@@ -713,9 +713,9 @@ class Functions {
 					if ($person2 === $family->getSpouse($person1)) {
 						if ($family->getFacts('_NMR')) {
 							if ($family->getFacts(WT_EVENTS_DIV)) {
-								return I18N::translateContext('MALE/FEMALE', 'ex-partner');
+								return I18N::translate('ex-partner');
 							} else {
-								return I18N::translateContext('MALE/FEMALE', 'partner');
+								return I18N::translate('partner');
 							}
 						} elseif ($family->getFacts(WT_EVENTS_DIV)) {
 							return I18N::translate('ex-spouse');
@@ -2059,7 +2059,7 @@ class Functions {
 				return self::cousinName($up + $down + 2, $sex2);
 			case 'it':
 				// Source: Michele Locati. See italian_cousins_names.zip
-				// http://webtrees.net/forums/8-translation/1200-great-xn-grandparent?limit=6&start=6
+				// https://webtrees.net/forums/8-translation/1200-great-xn-grandparent?limit=6&start=6
 				return self::cousinName($up + $down - 3, $sex2);
 			case 'es':
 				// Source: Wes Groleau. See http://UniGen.us/Parentesco.html & http://UniGen.us/Parentesco-D.html

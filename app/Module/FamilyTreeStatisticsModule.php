@@ -194,24 +194,20 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		}
 		$content .= '</div>';
 		if ($stat_link && Module::isActiveChart($WT_TREE, 'statistics_chart')) {
-			$content .= '<div class="clearfloat"><a href="statistics.php?ged=' . $WT_TREE->getNameUrl() . '" rel="nofollow"><b>' . I18N::translate('View statistics as graphs') . '</b></a></div>';
+			$content .= '<div class="clearfloat"><a href="statistics.php?ged=' . $WT_TREE->getNameUrl() . '" rel="nofollow"><b>' . I18N::translate('View the statistics as graphs') . '</b></a></div>';
 		}
 
 		if ($show_common_surnames) {
 			$surnames = FunctionsDb::getCommonSurnames($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'), $WT_TREE);
-			if (count($surnames) > 0) {
-				$content .= '<div class="clearfloat"><p><b>' . I18N::translate('Most common surnames') . '</b></p>';
-				$content .= '<div class="common_surnames">';
-				$i = 0;
-				foreach ($surnames as $indexval => $surname) {
-					if (stristr($surname['name'], '@N.N') === false) {
-						if ($i > 0) {
-							$content .= ', ';
-						}
-						$content .= '<a href="' . "indilist.php?ged=" . $WT_TREE->getNameUrl() . "&amp;surname=" . rawurlencode($surname['name']) . '">' . $surname['name'] . '</a>';
-						$i++;
-					}
-				}
+			$surnames = array_map(function ($x) use ($WT_TREE) {
+				return '<a href="indilist.php?ged=' . $WT_TREE->getNameUrl() . '&amp;surname=' . Filter::escapeUrl($x['name']) . '">' . Filter::escapeHtml($x['name']) . '</a>';
+			}, $surnames);
+			$surnames = implode(I18N::$list_separator, $surnames);
+
+			if ($surnames) {
+				$content .= '<div class="clearfloat">';
+				$content .= '<p><strong>' . I18N::translate('Most common surnames') . '</strong></p>';
+				$content .= '<div class="common_surnames">' . $surnames . '</div>';
 				$content .= '</div>';
 			}
 		}

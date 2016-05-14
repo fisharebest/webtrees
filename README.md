@@ -60,7 +60,7 @@ participation and good ancestral recording habits, as it simplifies the process
 of collaborating with others working on your family lines. Your latest information
 is always on your web site and available for others to see, defined by viewing
 rules you set. For more information and to see working demos, visit
-[webtrees.net](http://webtrees.net/).
+[webtrees.net](https://webtrees.net/).
 
 **webtrees** is Open Source software that has been produced by people from many
 countries freely donating their time and talents to the project. All service,
@@ -122,7 +122,7 @@ Installing **webtrees** is really easy. All you need is a webserver with PHP and
 MySQL. Almost every web hosting service provides these, but be sure to confirm
 that those supplied meet or exceed the minimum system requirements.
 
-1. Download latest stable version from [webtrees.net](http://webtrees.net/)
+1. Download latest stable version from [webtrees.net](https://webtrees.net/)
 2. Unzip the files and upload them to an empty directory on your web server.
 3. Open your web browser and type the URL for your **webtrees** site (for example,
    [http://www.yourserver.com/webtrees](http://www.yourserver.com/webtrees)) into
@@ -154,7 +154,7 @@ administration page, where you'll need to select one of the following options:
 There are *lots* of configuration options. You'll probably want to review the
 privacy settings first. Don't worry too much about all the other options - the
 defaults are good for most people. If you get stuck, there's lots of built-in
-help and you can get friendly advice from the [help](http://webtrees.net/forums)
+help and you can get friendly advice from the [help](https://webtrees.net/forums)
 forum.
 
 
@@ -169,7 +169,7 @@ new version is available.
 
 1. Now would be a good time to make a [backup](#backup).
 2. Download the latest version of **webtrees** available from
-   [webtrees.net](http://webtrees.net/)
+   [webtrees.net](https://webtrees.net/)
 3. While you are in the middle of uploading the new files,
    a visitor to your site would encounter a mixture of new and old files.  This
    could cause unpredictable behaviour or errors.  To prevent this, create the
@@ -212,7 +212,7 @@ cache can be cleared simply by going to ``Administration`` ->
 ``Cleanup data directory`` and deleting the cache.
 
 If you have any problems or questions, help is available on the
-[webtrees forum](http://webtrees.net/forums).
+[webtrees forum](https://webtrees.net/forums).
 
 
 ### Gedcom (family tree) files

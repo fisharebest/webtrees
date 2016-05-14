@@ -532,7 +532,7 @@ function mediaObjectInfo(Media $media) {
 		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'source\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to a source') . '</a></li>';
 
 	if (Module::getModuleByName('GEDFact_assistant')) {
-		$html .= '<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'manage\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Manage links') . '</a></li>';
+		$html .= '<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'manage\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Manage the links') . '</a></li>';
 	}
 
 	$html .=

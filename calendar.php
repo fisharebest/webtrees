@@ -297,15 +297,15 @@ $controller->pageHeader();
 			<tr>
 				<td class="topbottombar width50">
 					<a class="<?php echo $view === 'day' ? 'error' : '' ?>" href="?cal=<?php echo $cal ?>&amp;day=<?php echo $cal_date->d ?>&amp;month=<?php echo $cal_month ?>&amp;year=<?php echo $cal_date->y ?>&amp;filterev=<?php echo $filterev ?>&amp;filterof=<?php echo $filterof ?>&amp;filtersx=<?php echo $filtersx ?>&amp;view=day">
-						<?php echo I18N::translate('View day') ?>
+						<?php echo I18N::translate('View the day') ?>
 					</a>
 					|
 					<a class="<?php echo $view === 'month' ? 'error' : '' ?>" href="?cal=<?php echo $cal ?>&amp;day=<?php echo $cal_date->d ?>&amp;month=<?php echo $cal_month ?>&amp;year=<?php echo $cal_date->y ?>&amp;filterev=<?php echo $filterev ?>&amp;filterof=<?php echo $filterof ?>&amp;filtersx=<?php echo $filtersx ?>&amp;view=month">
-						<?php echo I18N::translate('View month') ?>
+						<?php echo I18N::translate('View the month') ?>
 					</a>
 					|
 					<a class="<?php echo $view === 'year' ? 'error' : '' ?>" href="?cal=<?php echo $cal ?>&amp;day=<?php echo $cal_date->d ?>&amp;month=<?php echo $cal_month ?>&amp;year=<?php echo $cal_date->y ?>&amp;filterev=<?php echo $filterev ?>&amp;filterof=<?php echo $filterof ?>&amp;filtersx=<?php echo $filtersx ?>&amp;view=year">
-						<?php echo I18N::translate('View year') ?>
+						<?php echo I18N::translate('View the year') ?>
 					</a>
 				</td>
 				<td class="topbottombar width50">

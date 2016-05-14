@@ -53,8 +53,11 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 		$content .= '<td><a href="edituser.php"><i class="icon-mypage"></i><br>' . I18N::translate('My account') . '</a></td>';
 
 		$gedcomid = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
-		if ($gedcomid && Module::isActiveChart($WT_TREE, 'pedigree_chart')) {
-			$content .= '<td><a href="pedigree.php?rootid=' . $gedcomid . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-pedigree"></i><br>' . I18N::translate('My pedigree') . '</a></td>';
+
+		if ($gedcomid) {
+			if (Module::isActiveChart($WT_TREE, 'pedigree_chart')) {
+				$content .= '<td><a href="pedigree.php?rootid=' . $gedcomid . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-pedigree"></i><br>' . I18N::translate('My pedigree') . '</a></td>';
+			}
 			$content .= '<td><a href="individual.php?pid=' . $gedcomid . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-indis"></i><br>' . I18N::translate('My individual record') . '</a></td>';
 		}
 		$content .= '</tr></table>';

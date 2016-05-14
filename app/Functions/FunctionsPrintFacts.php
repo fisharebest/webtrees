@@ -229,7 +229,7 @@ class FunctionsPrintFacts {
 						echo '<a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> — ';
 					}
 				}
-				echo '<a href="', $parent->getHtmlUrl(), '">', I18N::translate('View family'), '</a><br>';
+				echo '<a href="', $parent->getHtmlUrl(), '">', I18N::translate('View the family'), '</a><br>';
 			} elseif ($parent instanceof Individual) {
 				echo '<a href="', $parent->getHtmlUrl(), '">', $parent->getFullName(), '</a><br>';
 			}
@@ -646,7 +646,7 @@ class FunctionsPrintFacts {
 					// Here we could show that we do actually have sources for this data,
 					// but not the details. For example “Sources: ”.
 					// But not by default, based on user feedback.
-					// http://webtrees.net/index.php/en/forum/3-help-for-beta-and-svn-versions/27002-source-media-privacy-issue
+					// https://webtrees.net/index.php/en/forum/3-help-for-beta-and-svn-versions/27002-source-media-privacy-issue
 				}
 			} else {
 				$data .= GedcomTag::getLabelValue('SOUR', '<span class="error">' . $sid . '</span>');
@@ -709,7 +709,7 @@ class FunctionsPrintFacts {
 								if ($spouse) {
 									echo " - ";
 								}
-								echo '<a href="', $family->getHtmlUrl(), '">', I18N::translate('View family'), '</a>';
+								echo '<a href="', $family->getHtmlUrl(), '">', I18N::translate('View the family'), '</a>';
 							}
 						}
 					}

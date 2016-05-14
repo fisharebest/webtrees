@@ -88,7 +88,7 @@ class AncestryController extends ChartController {
 		if ($family && $depth > 0) {
 			// Marriage details
 			echo '<span class="details1">';
-			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', Theme::theme()->parameter('chart-descendancy-indent'), '" alt=""><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', I18N::translate('View family'), '"></i></a>';
+			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', Theme::theme()->parameter('chart-descendancy-indent'), '" alt=""><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', I18N::translate('View the family'), '"></i></a>';
 			echo ' <span class="person_box">', I18N::number($sosa * 2), '</span> ', I18N::translate('and');
 			echo ' <span class="person_boxF">', I18N::number($sosa * 2 + 1), '</span>';
 			if ($family->canShow()) {

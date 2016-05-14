@@ -48,7 +48,7 @@ case 'editraw':
 	check_record_access($record);
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit raw GEDCOM'))
+		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit the raw GEDCOM'))
 		->pageHeader()
 		->addInlineJavascript('jQuery("#raw-gedcom-list").sortable({opacity: 0.7, cursor: "move", axis: "y"});');
 
@@ -109,7 +109,7 @@ case 'updateraw':
 	check_record_access($record);
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit raw GEDCOM'))
+		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit the raw GEDCOM'))
 		->pageHeader();
 
 	$gedcom = '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE;
@@ -159,7 +159,7 @@ case 'editrawfact':
 	}
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit raw GEDCOM'))
+		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit the raw GEDCOM'))
 		->pageHeader();
 
 	?>
@@ -221,7 +221,7 @@ case 'updaterawfact':
 	}
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit raw GEDCOM'))
+		->setPageTitle($record->getFullName() . ' - ' . I18N::translate('Edit the raw GEDCOM'))
 		->pageHeader();
 
 	// Cleanup the client’s bad editing?
@@ -316,7 +316,7 @@ case 'edit':
 	if (Auth::isAdmin() || $WT_TREE->getPreference('SHOW_GEDCOM_RECORD')) {
 		echo
 			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', $WT_TREE->getNameUrl(), '">',
-			I18N::translate('Edit raw GEDCOM'),
+			I18N::translate('Edit the raw GEDCOM'),
 			'</a>';
 	}
 	?>
@@ -1441,7 +1441,7 @@ case 'editnote':
 	check_record_access($note);
 
 	$controller
-		->setPageTitle(I18N::translate('Edit shared note'))
+		->setPageTitle(I18N::translate('Edit the shared note'))
 		->pageHeader();
 
 	?>
@@ -1487,7 +1487,7 @@ case 'editnoteaction':
 	check_record_access($record);
 
 	$controller
-		->setPageTitle(I18N::translate('Edit shared note'))
+		->setPageTitle(I18N::translate('Edit the shared note'))
 		->pageHeader();
 
 	// We have user-supplied data in a replacement string - escape it against backreferences
@@ -1637,7 +1637,7 @@ case 'editname':
 	}
 
 	$controller
-		->setPageTitle(I18N::translate('Edit name'))
+		->setPageTitle(I18N::translate('Edit the name'))
 		->pageHeader();
 
 	print_indi_form('update', $person, null, $name_fact, '', $person->getSex());
@@ -2591,16 +2591,16 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	if ($name_fact && (Auth::isAdmin() || $WT_TREE->getPreference('SHOW_GEDCOM_RECORD'))) {
 		echo
 			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $name_fact->getFactId(), '&amp;ged=', $WT_TREE->getNameUrl(), '">',
-			I18N::translate('Edit raw GEDCOM'),
+			I18N::translate('Edit the raw GEDCOM'),
 			'</a>';
 	}
 
 	echo '<p id="save-cancel">';
-	echo '<input type="submit" class="save" value="', /* I18N: button label */ I18N::translate('save'), '">';
+	echo '<input type="submit" class="save" value="', /* I18N: A button label */ I18N::translate('save'), '">';
 	if (preg_match('/^add_(child|spouse|parent|unlinked_indi)/', $nextaction)) {
-		echo '<input type="submit" class="save" value="', /* I18N: button label */ I18N::translate('go to new individual'), '" onclick="document.addchildform.goto.value=\'new\';">';
+		echo '<input type="submit" class="save" value="', /* I18N: A button label */ I18N::translate('go to new individual'), '" onclick="document.addchildform.goto.value=\'new\';">';
 	}
-	echo '<input type="button" class="cancel" value="', /* I18N: button label */ I18N::translate('close'), '" onclick="window.close();">';
+	echo '<input type="button" class="cancel" value="', /* I18N: A button label */ I18N::translate('close'), '" onclick="window.close();">';
 	echo '</p>';
 	echo '</form>';
 	$controller->addInlineJavascript('

@@ -199,7 +199,7 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 	'</p>';
 
 	echo '<button type="submit" class="btn btn-primary">';
-	echo '<i class="fa fa-check"></i> ', /* I18N: Button label */ I18N::translate('continue');
+	echo '<i class="fa fa-check"></i> ', /* I18N: A button label */ I18N::translate('continue');
 	echo '</button>';
 	echo '</form>';
 }

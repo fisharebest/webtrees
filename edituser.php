@@ -131,7 +131,7 @@ function checkform(frm) {
 		return false;
 	}
 	if (frm.form_pass1.value!=frm.form_pass2.value) {
-		alert("<?php echo I18N::translate('Passwords do not match.'); ?>");
+		alert("<?php echo I18N::translate('The passwords do not match.'); ?>");
 		frm.form_pass1.focus();
 		return false;
 	}

@@ -152,7 +152,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 			if ($printedAddLink) {
 				$content .= '&nbsp;&nbsp;|&nbsp;&nbsp;';
 			}
-			$content .= '<a href="index.php?gedcom_news_archive=yes&amp;ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '">' . I18N::translate('View archive') . "</a>";
+			$content .= '<a href="index.php?gedcom_news_archive=yes&amp;ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '">' . I18N::translate('View the archive') . "</a>";
 			$content .= FunctionsPrint::helpLink('gedcom_news_archive') . '<br>';
 		}
 

@@ -194,16 +194,16 @@ class FrenchDate extends CalendarDate {
 
 		if ($translated_day_names === null) {
 			$translated_day_names = array(
-				0  => /* I18N: a day in the French republican calendar */ I18N::translate('Primidi'),
-				1  => /* I18N: a day in the French republican calendar */ I18N::translate('Duodi'),
-				2  => /* I18N: a day in the French republican calendar */ I18N::translate('Tridi'),
-				3  => /* I18N: a day in the French republican calendar */ I18N::translate('Quartidi'),
-				4  => /* I18N: a day in the French republican calendar */ I18N::translate('Quintidi'),
-				5  => /* I18N: a day in the French republican calendar */ I18N::translate('Sextidi'),
-				6  => /* I18N: a day in the French republican calendar */ I18N::translate('Septidi'),
-				7  => /* I18N: a day in the French republican calendar */ I18N::translate('Octidi'),
-				8  => /* I18N: a day in the French republican calendar */ I18N::translate('Nonidi'),
-				9  => /* I18N: a day in the French republican calendar */ I18N::translate('Decidi'),
+				0  => /* I18N: The first day in the French republican calendar */ I18N::translate('Primidi'),
+				1  => /* I18N: The second day in the French republican calendar */ I18N::translate('Duodi'),
+				2  => /* I18N: The third day in the French republican calendar */ I18N::translate('Tridi'),
+				3  => /* I18N: The fourth day in the French republican calendar */ I18N::translate('Quartidi'),
+				4  => /* I18N: The fifth day in the French republican calendar */ I18N::translate('Quintidi'),
+				5  => /* I18N: The sixth day in the French republican calendar */ I18N::translate('Sextidi'),
+				6  => /* I18N: The seventh day in the French republican calendar */ I18N::translate('Septidi'),
+				7  => /* I18N: The eighth day in the French republican calendar */ I18N::translate('Octidi'),
+				8  => /* I18N: The ninth day in the French republican calendar */ I18N::translate('Nonidi'),
+				9  => /* I18N: The tenth day in the French republican calendar */ I18N::translate('Decidi'),
 			);
 		}
 

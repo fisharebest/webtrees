@@ -106,8 +106,8 @@ $controller
 					</td>
 					<th class="descriptionbox" colspan="2">
 						<input id="clear" type="hidden" name="clear" value=0>
-						<input type="reset" value="<?php echo /* I18N: Button label */ I18N::translate('reset') ?>">
-						<input type="submit" value="<?php echo /* I18N: Button label */ I18N::translate('show') ?>">
+						<input type="reset" value="<?php echo /* I18N: A button label */ I18N::translate('reset') ?>">
+						<input type="submit" value="<?php echo /* I18N: A button label */ I18N::translate('show') ?>">
 					</th>
 				</tr>
 			</tbody>

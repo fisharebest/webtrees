@@ -278,7 +278,7 @@ if ($xrefs) {
 	echo '<form>';
 	echo '<p>', I18N::translate('You can renumber this family tree.'), '</p>';
 	echo '<button type="submit" class="btn btn-primary">';
-	echo '<i class="fa fa-check"></i> ', /* I18N: Button label */ I18N::translate('continue');
+	echo '<i class="fa fa-check"></i> ', /* I18N: A button label */ I18N::translate('continue');
 	echo '</button>';
 	echo '<input type="hidden" name="action" value="renumber">';
 	echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
