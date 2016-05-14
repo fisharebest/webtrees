@@ -88,7 +88,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
 	/**
 	 * How is this condition written in a census column.
 	 *
-	 * @param $sex
+	 * @param string $sex
 	 *
 	 * @return string
 	 */
@@ -103,7 +103,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
 	/**
 	 * How is this condition written in a census column.
 	 *
-	 * @param $sex
+	 * @param string $sex
 	 *
 	 * @return string
 	 */
@@ -118,7 +118,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
 	/**
 	 * How is this condition written in a census column.
 	 *
-	 * @param $sex
+	 * @param string $sex
 	 *
 	 * @return string
 	 */
@@ -133,7 +133,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
 	/**
 	 * How is this condition written in a census column.
 	 *
-	 * @param $sex
+	 * @param string $sex
 	 *
 	 * @return string
 	 */
@@ -148,7 +148,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
 	/**
 	 * How is this condition written in a census column.
 	 *
-	 * @param $sex
+	 * @param string $sex
 	 *
 	 * @return string
 	 */
