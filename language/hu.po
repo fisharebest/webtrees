@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-07 23:38+0000\n"
+"PO-Revision-Date: 2016-05-08 20:57+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -8644,7 +8644,7 @@ msgstr "Webhelyfelügyelők"
 
 #: admin_media.php:535 app/Controller/MediaController.php:49
 #: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
-msgid "Mange the links"
+msgid "Manage the links"
 msgstr "Hivatkozáskezelés"
 
 #. I18N: Location of an LDS church temple
@@ -13929,7 +13929,7 @@ msgstr "Az üzenetet nem küldtük el."
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Az üzenetet sikeresen elküldtük. A címzett: %s."
+msgstr "Az üzenetet sikeresen elküldtük %s részére."
 
 #: admin_modules.php:54
 #, php-format

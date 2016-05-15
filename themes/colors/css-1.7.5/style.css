@@ -5273,6 +5273,7 @@ footer {
 	form,
 	#sidebar,
 	#separator,
+	.editfacts,
 	.noprint {
 		display: none;
 	}

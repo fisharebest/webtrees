@@ -8639,8 +8639,8 @@ msgstr "Managers"
 
 #: admin_media.php:535 app/Controller/MediaController.php:49
 #: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
-msgid "Mange the links"
-msgstr "Mange the links"
+msgid "Manage the links"
+msgstr "Manage the links"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201

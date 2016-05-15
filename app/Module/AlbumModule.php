@@ -91,7 +91,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 		$html = '<div id="' . $this->getName() . '_content">';
 		//Show Lightbox-Album header Links
 		if (Auth::isEditor($WT_TREE)) {
-			$html .= '<table class="facts_table"><tr><td class="descriptionbox rela">';
+			$html .= '<table class="facts_table"><tr class="noprint"><td class="descriptionbox rela">';
 			// Add a media object
 			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
 				$html .= '<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=' . $controller->record->getXref() . '\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
@@ -163,7 +163,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 				$menu->addSubmenu($submenu);
 				if (Auth::isAdmin()) {
 					if (Module::getModuleByName('GEDFact_assistant')) {
-						$submenu = new Menu(I18N::translate('Mange the links'), '#', '', array(
+						$submenu = new Menu(I18N::translate('Manage the links'), '#', '', array(
 							'onclick' => 'return window.open("inverselink.php?mediaid=' . $media->getXref() . '&linkto=manage", "_blank", find_window_specs);',
 						));
 						$submenu->addClass("submenuitem");

@@ -161,7 +161,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '<tr><td>';
 			echo '<div id="map_pane" style="border: 1px solid gray; color: black; width: 100%; height: ', $this->getSetting('GM_YSIZE'), 'px"></div>';
 			if (Auth::isAdmin()) {
-				echo '<table width="100%"><tr>';
+				echo '<table width="100%"><tr class="noprint">';
 				echo '<td>';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
 				echo '</td>';
@@ -1956,7 +1956,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		// Create the markers list array
 		$gmarks = array();
-		$i      = 0;
 
 		foreach ($indifacts as $fact) {
 			if (!$fact->getPlace()->isEmpty()) {
@@ -1969,8 +1968,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$spouse = null;
 				}
 				if ($ctla && $ctlo) {
-					$i++;
-					$gmarks[$i] = array(
+					$gmark = array(
 						'class'        => 'optionbox',
 						'date'         => $fact->getDate()->display(true),
 						'fact_label'   => $fact->getLabel(),
@@ -1988,11 +1986,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						'sv_zoom'      => '0',
 						'tooltip'      => $fact->getPlace()->getGedcomName(),
 					);
+					$gmarks[] = $gmark;
 				} else {
 					$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
 					if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
-						$i++;
-						$gmarks[$i] = array(
+						$gmark = array(
 							'class'        => 'optionbox',
 							'date'         => $fact->getDate()->display(true),
 							'fact_label'   => $fact->getLabel(),
@@ -2010,6 +2008,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							'sv_zoom'      => $latlongval->sv_zoom,
 							'tooltip'      => $fact->getPlace()->getGedcomName(),
 						);
+						$gmarks[] = $gmark;
 						if ($GM_MAX_ZOOM > $latlongval->pl_zoom) {
 							$GM_MAX_ZOOM = $latlongval->pl_zoom;
 						}
@@ -2028,8 +2027,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						$ctla = preg_match('/\n4 LATI (.+)/', $birthrec, $match1);
 						$ctlo = preg_match('/\n4 LONG (.+)/', $birthrec, $match2);
 						if ($ctla && $ctlo) {
-							$i++;
-							$gmarks[$i] = array(
+							$gmark = array(
 								'date'         => $birth->getDate()->display(true),
 								'image'        => $child->displayImage(),
 								'info'         => '',
@@ -2047,23 +2045,23 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							);
 							switch ($child->getSex()) {
 							case'F':
-								$gmarks[$i]['fact_label'] = I18N::translate('daughter');
-								$gmarks[$i]['class']      = 'person_boxF';
+								$gmark['fact_label'] = I18N::translate('daughter');
+								$gmark['class']      = 'person_boxF';
 								break;
 							case 'M':
-								$gmarks[$i]['fact_label'] = I18N::translate('son');
-								$gmarks[$i]['class']      = 'person_box';
+								$gmark['fact_label'] = I18N::translate('son');
+								$gmark['class']      = 'person_box';
 								break;
 							default:
-								$gmarks[$i]['fact_label'] = I18N::translate('child');
-								$gmarks[$i]['class']      = 'person_boxNN';
+								$gmark['fact_label'] = I18N::translate('child');
+								$gmark['class']      = 'person_boxNN';
 								break;
 							}
+							$gmarks[] = $gmark;
 						} else {
 							$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($birth->getPlace()->getGedcomName());
 							if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
-								$i++;
-								$gmarks[$i] = array(
+								$gmark = array(
 									'date'         => $birth->getDate()->display(true),
 									'image'        => $child->displayImage(),
 									'info'         => '',
@@ -2081,18 +2079,19 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								);
 								switch ($child->getSex()) {
 								case 'M':
-									$gmarks[$i]['fact_label'] = I18N::translate('son');
-									$gmarks[$i]['class']      = 'person_box';
+									$gmark['fact_label'] = I18N::translate('son');
+									$gmark['class']      = 'person_box';
 									break;
 								case 'F':
-									$gmarks[$i]['fact_label'] = I18N::translate('daughter');
-									$gmarks[$i]['class']      = 'person_boxF';
+									$gmark['fact_label'] = I18N::translate('daughter');
+									$gmark['class']      = 'person_boxF';
 									break;
 								default:
-									$gmarks[$i]['fact_label'] = I18N::translate('child');
-									$gmarks[$i]['class']      = 'option_boxNN';
+									$gmark['fact_label'] = I18N::translate('child');
+									$gmark['class']      = 'option_boxNN';
 									break;
 								}
+								$gmarks[] = $gmark;
 								if ($GM_MAX_ZOOM > $latlongval->pl_zoom) {
 									$GM_MAX_ZOOM = $latlongval->pl_zoom;
 								}
@@ -2472,11 +2471,17 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		<?php
 		// Create the normal googlemap sidebar of events and children
 		echo '<div style="overflow: auto; overflow-x: hidden; overflow-y: auto; height:', $this->getSetting('GM_YSIZE'), 'px;"><table class="facts_table">';
+		
+		$garray = array();
+		foreach ($gmarks as $key => $gmark) {
+			$garray[$key] = $gmark['place'];
+		}
+		$gunique = array_values(array_unique($garray));
 
 		foreach ($gmarks as $key => $gmark) {
 			echo '<tr>';
 			echo '<td class="facts_label">';
-			echo '<a href="#" onclick="return myclick(\'', Filter::escapeHtml($key), '\')">', $gmark['fact_label'], '</a></td>';
+			echo '<a href="#" onclick="return myclick(\'', Filter::escapeHtml((string) array_search($gmark['place'], $gunique)), '\')">', $gmark['fact_label'], '</a></td>';
 			echo '<td class="', $gmark['class'], '" style="white-space: normal">';
 			if ($gmark['info']) {
 				echo '<span class="field">', Filter::escapeHtml($gmark['info']), '</span><br>';
@@ -2691,10 +2696,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		if ($STREETVIEW) {
 			$controller->addInlineJavascript('
 				function update_sv_params(placeid) {
-					var svlati = document.getElementById("sv_latiText").value.slice(0, -1);
-					var svlong = document.getElementById("sv_longText").value.slice(0, -1);
-					var svbear = document.getElementById("sv_bearText").value.slice(0, -1);
-					var svelev = document.getElementById("sv_elevText").value.slice(0, -1);
+					var svlati = document.getElementById("sv_latiText").value;
+					var svlong = document.getElementById("sv_longText").value;
+					var svbear = document.getElementById("sv_bearText").value;
+					var svelev = document.getElementById("sv_elevText").value;
 					var svzoom = document.getElementById("sv_zoomText").value;
 					win03 = window.open("module.php?mod=googlemap&mod_action=places_edit&action=update_sv_params&placeid="+placeid+"&svlati="+svlati+"&svlong="+svlong+"&svbear="+svbear+"&svelev="+svelev+"&svzoom="+svzoom, "win03", indx_window_specs);
 					if (window.focus) {win03.focus();}

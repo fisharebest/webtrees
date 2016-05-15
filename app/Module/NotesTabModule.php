@@ -67,7 +67,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 				<col class="width20">
 				<col class="width80">
 			</colgroup>
-			<tr>
+			<tr class="noprint">
 				<td colspan="2" class="descriptionbox rela">
 					<input id="checkbox_note2" type="checkbox" <?php echo $WT_TREE->getPreference('SHOW_LEVEL2_NOTES') ? 'checked' : ''; ?> onclick="jQuery('tr.row_note2').toggle();">
 					<label for="checkbox_note2"><?php echo I18N::translate('Show all notes'); ?></label>
@@ -91,7 +91,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 		// New note link
 		if ($controller->record->canEdit()) {
 			?>
-			<tr>
+			<tr class="noprint">
 				<td class="facts_label">
 					<?php echo GedcomTag::getLabel('NOTE'); ?>
 				</td>
@@ -101,7 +101,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 					</a>
 				</td>
 			</tr>
-			<tr>
+			<tr class="noprint">
 				<td class="facts_label">
 					<?php echo GedcomTag::getLabel('SHARED_NOTE'); ?>
 				</td>
