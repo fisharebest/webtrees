@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
 "PO-Revision-Date: 2016-05-15 13:29+0000\n"
-"Last-Translator: Jopla <jop@planje.info>\n"
+"Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -2634,7 +2634,7 @@ msgstr "Bern, Zwitserland"
 
 #: app/GedcomCode/GedcomCodeRela.php:75
 msgid "Best man"
-msgstr "Bruidsjonker"
+msgstr "Getuige bij huwelijk"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6753
