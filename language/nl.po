@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-15 13:02+0000\n"
+"PO-Revision-Date: 2016-05-15 13:29+0000\n"
 "Last-Translator: Jopla <jop@planje.info>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -15818,17 +15818,17 @@ msgstr "Wallis en Futuna-eilanden"
 
 #: app/GedcomCode/GedcomCodeRela.php:263
 msgid "Ward"
-msgstr "Voogd"
+msgstr "Pupil"
 
 #: app/GedcomCode/GedcomCodeRela.php:261
 msgctxt "FEMALE"
 msgid "Ward"
-msgstr "Voogdes"
+msgstr "Pupil"
 
 #: app/GedcomCode/GedcomCodeRela.php:259
 msgctxt "MALE"
 msgid "Ward"
-msgstr "Voogd"
+msgstr "Pupil"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:331
