@@ -1156,7 +1156,7 @@ class FunctionsPrintLists {
 			}
 			//-- Delete
 			if (Auth::isManager($WT_TREE)) {
-				$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
+				$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
 			} else {
 				$html .= '<td></td>';
 			}
@@ -1271,7 +1271,7 @@ class FunctionsPrintLists {
 			}
 			//-- Delete
 			if (Auth::isManager($WT_TREE)) {
-				$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . "', '" . $note->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
+				$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . "', '" . $note->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
 			} else {
 				$html .= '<td></td>';
 			}
@@ -1385,7 +1385,7 @@ class FunctionsPrintLists {
 			}
 			//-- Delete
 			if (Auth::isManager($WT_TREE)) {
-				$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
+				$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
 			} else {
 				$html .= '<td></td>';
 			}
