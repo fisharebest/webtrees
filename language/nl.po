@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-15 14:49+0000\n"
+"PO-Revision-Date: 2016-05-16 02:58+0000\n"
 "Last-Translator: Jopla <jop@planje.info>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -5892,7 +5892,7 @@ msgstr "Exporteer alle stambomen naar GEDCOM bestanden…"
 
 #: admin_trees_download.php:134
 msgid "Export options"
-msgstr "Export opties"
+msgstr "Opties voor exporteren"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: admin_trees_config.php:450
@@ -5935,7 +5935,7 @@ msgstr "FAQ-positie"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:217
 msgid "FAQ visibility"
-msgstr "FAQ zichtbaarheid"
+msgstr "Zichtbaarheid FAQ"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:447
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
@@ -6356,7 +6356,7 @@ msgstr "Fiji"
 
 #: app/Module/GoogleMapsModule.php:4177
 msgid "File containing places (CSV)"
-msgstr "Bestand met plaatsgegevens (CSV)"
+msgstr "Bestand met locatiegegevens (CSV)"
 
 #: admin_media.php:490 app/GedcomTag.php:1781
 msgid "File size"
@@ -6909,9 +6909,8 @@ msgstr "Geeft gebruikers de mogelijkheid hun eigen thema te kiezen."
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1747
-#, fuzzy
 msgid "Globally unique identifier"
-msgstr "Globally unique identifier"
+msgstr "Globale unieke identificeerder"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
 msgid "Godchild"
