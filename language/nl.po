@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-16 02:58+0000\n"
-"Last-Translator: Jopla <jop@planje.info>\n"
+"PO-Revision-Date: 2016-05-16 03:00+0000\n"
+"Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -6910,7 +6910,7 @@ msgstr "Geeft gebruikers de mogelijkheid hun eigen thema te kiezen."
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1747
 msgid "Globally unique identifier"
-msgstr "Globale unieke identificeerder"
+msgstr "Uniek identificatienummer"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
 msgid "Godchild"
