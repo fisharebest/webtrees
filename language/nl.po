@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-16 03:01+0000\n"
-"Last-Translator: Jopla <jop@planje.info>\n"
+"PO-Revision-Date: 2016-05-16 17:02+0000\n"
+"Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -6216,7 +6216,7 @@ msgstr "Gezin met de meeste kinderen"
 #: modules_v3/individual_ext_report/report.xml:429
 #: modules_v3/individual_report/report.xml:486
 msgid "Family with wife"
-msgstr "Gezin met vrouw"
+msgstr "Gezin met echtgenote"
 
 #. I18N: Name of a module/chart
 #: app/Controller/FanchartController.php:56 app/Module/FanChartModule.php:33
