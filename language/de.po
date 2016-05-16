@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-10 06:49+0000\n"
-"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2016-05-14 11:52+0000\n"
+"Last-Translator: Richard Cissee <ric@richard-cissee.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -2543,7 +2543,7 @@ msgstr "Taufe eines Halbgeschwisterkinds"
 
 #: app/GedcomTag.php:1010
 msgid "Baptism of a half-sister"
-msgstr "Taufe einer Halb-Schwester"
+msgstr "Taufe einer Halbschwester"
 
 #: app/GedcomTag.php:1021
 msgid "Baptism of a sibling"
@@ -7344,7 +7344,7 @@ msgstr "Ehemann"
 
 #: app/Controller/TimelineController.php:228
 msgid "Husband’s age"
-msgstr "Alter des Ehegattens"
+msgstr "Alter des Ehemannes"
 
 #: app/Module/GoogleMapsModule.php:326
 msgid "Hybrid"
@@ -17438,7 +17438,7 @@ msgstr "Enkelsohns Ehefrau"
 #: app/Functions/Functions.php:1649
 #, php-format
 msgid "great ×%s aunt"
-msgstr "%s× Großtante"
+msgstr "(%s-1)×Ur-Großtante"
 
 #: app/Functions/Functions.php:1623 app/Functions/Functions.php:1638
 #: app/Functions/Functions.php:1651
@@ -18443,37 +18443,37 @@ msgstr "Urgroßneffe"
 #: app/Functions/Functions.php:1669
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr "Ur-Großneffe"
+msgstr "Urgroßneffe"
 
 #: app/Functions/Functions.php:1681
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "Ur-Großneffe/-nichte"
+msgstr "Urgroßneffe/-nichte"
 
 #: app/Functions/Functions.php:1683
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "Ur-Großneffe/-nichte"
+msgstr "Urgroßneffe/-nichte"
 
 #: app/Functions/Functions.php:1685
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr "Ur-Großneffe/-nichte"
+msgstr "Urgroßneffe/-nichte"
 
 #: app/Functions/Functions.php:1673
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr "Ur-Großnichte"
+msgstr "Urgroßnichte"
 
 #: app/Functions/Functions.php:1675
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr "Ur-Großnichte"
+msgstr "Urgroßnichte"
 
 #: app/Functions/Functions.php:1677
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr "Ur-Großnichte"
+msgstr "Urgroßnichte"
 
 #: app/Functions/Functions.php:1524
 msgctxt "great-grandfather’s brother"
