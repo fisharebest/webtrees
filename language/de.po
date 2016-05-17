@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-14 11:52+0000\n"
-"Last-Translator: Richard Cissee <ric@richard-cissee.de>\n"
+"PO-Revision-Date: 2016-05-17 15:59+0000\n"
+"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1266,45 +1266,45 @@ msgstr "%s zum Sammelbehälter hinzufügen"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
-msgstr "Einen neuen Bruder oder Schwester hinzufügen"
+msgstr "Einen Bruder oder eine Schwester hinzufügen"
 
 #: edit_interface.php:516
 msgid "Add a child"
-msgstr "Ein neues Kind hinzufügen"
+msgstr "Ein Kind hinzufügen"
 
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
-msgstr "Kind hinzufügen, um gleichzeitig eine Familie mit nur einem Elternteil zu erstellen"
+msgstr "Ein Kind hinzufügen, um gleichzeitig eine Familie mit nur einem Elternteil zu erstellen"
 
 #: app/Controller/FamilyController.php:82
 #: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
-msgstr "Kind zu dieser Familie hinzufügen"
+msgstr "Ein Kind zu dieser Familie hinzufügen"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr "Fakt hinzufügen"
+msgstr "Einen Fakt hinzufügen"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
-msgstr "Vater hinzufügen"
+msgstr "Einen Vater hinzufügen"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
-msgstr "Neuen Favoriten hinzufügen"
+msgstr "Einen Favorit hinzufügen"
 
 #: app/Module/GoogleMapsModule.php:4551
 msgid "Add a geographic location"
-msgstr "Füge einen neuen geografischen Ort hinzu"
+msgstr "Einen Ort hinzufügen"
 
 #: app/Module/RelativesTabModule.php:385 edit_interface.php:810
 #: edit_interface.php:900
 msgid "Add a husband"
-msgstr "Einen weiteren Ehemann hinzufügen"
+msgstr "Einen Ehemann hinzufügen"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
-msgstr "Ehemann dieser Familie hinzufügen"
+msgstr "Einen Ehemann zu dieser Familie hinzufügen"
 
 #: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
 #: edit_interface.php:1156
@@ -1313,31 +1313,31 @@ msgstr "Eine existierende Person als Ehemann hinzufügen"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
-msgstr "Einen neuen Eintrag hinzufügen"
+msgstr "Einen Journaleintrag hinzufügen"
 
 #: app/Controller/FamilyController.php:162
 #: app/Functions/FunctionsEdit.php:1131 app/Module/AlbumModule.php:98
 #: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
 #: source.php:184
 msgid "Add a media object"
-msgstr "Ein neues Medienobjekt hinzufügen"
+msgstr "Ein Medienobjekt hinzufügen"
 
 #: app/Module/RelativesTabModule.php:323 edit_interface.php:672 family.php:114
 msgid "Add a mother"
-msgstr "Mutter hinzufügen"
+msgstr "Eine Mutter hinzufügen"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
 msgid "Add a name"
-msgstr "Neuen Namen hinzufügen"
+msgstr "Einen Namen hinzufügen"
 
 #: app/Module/FamilyTreeNewsModule.php:148
 msgid "Add a news article"
-msgstr "Einen Artikel unter Neuigkeiten eintragen"
+msgstr "Einen Neuigkeiten-Artikel hinzufügen"
 
 #: app/Controller/FamilyController.php:149
 #: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
-msgstr "Neue Notiz hinzufügen"
+msgstr "Eine Notiz hinzufügen"
 
 #: app/Functions/FunctionsEdit.php:1141
 msgid "Add a restriction"
@@ -1351,44 +1351,44 @@ msgstr "Neue Beschränkung hinzufügen"
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
-msgstr "Fügt einen Rollbalken hinzu, wenn der Inhalt des Blocks anwächst"
+msgstr "Einen Rollbalken hinzufügen, wenn der Blockinhalt größer wird"
 
 #: app/Controller/FamilyController.php:155
 #: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
 msgid "Add a shared note"
-msgstr "Neue gemeinsame Notiz hinzufügen"
+msgstr "Eine gemeinsame Notiz hinzufügen"
 
 #: app/Module/RelativesTabModule.php:271
 msgid "Add a son or daughter"
-msgstr "Einen neuen Sohn oder Tochter hinzufügen"
+msgstr "Einen Sohn oder eine Tochter hinzufügen"
 
 #: app/Controller/FamilyController.php:172
 #: app/Functions/FunctionsEdit.php:1060 app/Module/SourcesTabModule.php:93
 msgid "Add a source citation"
-msgstr "Neues Quellenzitat hinzufügen"
+msgstr "Ein Quellenzitat hinzufügen"
 
 #: edit_interface.php:837
 msgid "Add a spouse"
-msgstr "Einen neuen Ehepartner hinzufügen"
+msgstr "Einen Ehepartner hinzufügen"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
 msgid "Add a story"
-msgstr "Geschichte hinzufügen"
+msgstr "Eine Geschichte hinzufügen"
 
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
-msgstr "Neuen Benutzer hinzufügen"
+msgstr "Einen Benutzer hinzufügen"
 
 #: app/Module/RelativesTabModule.php:373 edit_interface.php:807
 #: edit_interface.php:897
 msgid "Add a wife"
-msgstr "Eine weitere Ehefrau hinzufügen"
+msgstr "Eine Ehefrau hinzufügen"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
-msgstr "Eine Ehefrau dieser Familie hinzufügen"
+msgstr "Eine Ehefrau zu dieser Familie hinzufügen"
 
 #: app/Module/RelativesTabModule.php:378 edit_interface.php:1087
 #: edit_interface.php:1158
@@ -1398,11 +1398,11 @@ msgstr "Eine existierende Person als Ehefrau hinzufügen"
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
-msgstr "FAQ Eintrag hinzufügen"
+msgstr "Einen FAQ-Eintrag hinzufügen"
 
 #: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
 msgid "Add an associate"
-msgstr "Neue Beziehung hinzufügen"
+msgstr "Eine Beziehung hinzufügen"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -1454,7 +1454,7 @@ msgstr "Füge den GEDCOM Medienpfad zu Dateinamen hinzu"
 #. I18N: A configuration setting
 #: admin_trees_config.php:935
 msgid "Add to TITLE header tag"
-msgstr "Zum Seitentitel (<title>-Tag) hinzufügen"
+msgstr "Zum Seitentitel (&lt;title&gt;-Tag) hinzufügen"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
@@ -14094,7 +14094,7 @@ msgstr "Der Benutzername oder das Passwort sind ungültig."
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:967
 msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-msgstr "Der Wert für das META Tag Feld «description» im HTML-Seitenkopf. Lassen Sie dieses Feld leer, um den Namen des Stammbaumes zu verwenden."
+msgstr "Zusätzliche Angaben in den Metadaten (&lt;meta&gt;) der HTML-Seite. Lassen Sie dieses Feld leer, um den Namen des Stammbaumes zu verwenden."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
@@ -15868,7 +15868,7 @@ msgstr "Zugangsregeln"
 
 #: admin_trees_config.php:930
 msgid "Website and META tag settings"
-msgstr "Webseiten und META Tags Einstellungen"
+msgstr "Titel- und Meta-Einstellungen"
 
 #. I18N: Menu entry
 #: admin_site_logs.php:35 app/Theme/AdministrationTheme.php:100
