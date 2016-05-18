@@ -721,7 +721,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		}
 		$record = Individual::getInstance($pid, $WT_TREE);
 		if ($record && !array_key_exists($record->getXref(), $cart[$WT_TREE->getTreeId()])) {
-			$out .= '<br><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;add=' . $pid . '&amp;pid=' . $pid . '" class="add_cart"><i class="icon-clippings"></i> ' . I18N::translate('Add %s to the clippings cart', $record->getFullName()) . '</a>';
+			$out .= '<br><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;action=add1&amp;type=INDI&amp;id=' . $pid . '&amp;pid=' . $pid . '" class="add_cart"><i class="icon-clippings"></i> ' . I18N::translate('Add %s to the clippings cart', $record->getFullName()) . '</a>';
 		}
 
 		return $out;
