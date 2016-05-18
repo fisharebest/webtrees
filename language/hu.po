@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-08 20:57+0000\n"
+"PO-Revision-Date: 2016-05-18 09:54+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -141,7 +141,7 @@ msgstr[1] "%1$s személynek hiányoznak a születési hely térképkoordinátái
 #: admin_trees_check.php:192
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s egy %2$s típusú azonosító, de %3$s típusú a várt bejegyzés."
+msgstr "%1$s egy %2$s típusú azonosító %3$s helyett."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:627
@@ -884,7 +884,7 @@ msgstr "Egy új felhasználó (%1$s) fiókért (%2$s) folyamodott és igazolta a
 
 #: admin.php:610 admin_site_upgrade.php:79 login.php:115
 msgid "A new version of webtrees is available."
-msgstr "A webtrees egy új verziója érhető el."
+msgstr "A webtrees új verziója érhető el."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
@@ -2084,7 +2084,7 @@ msgstr "Ezen beállítások alkalmazása az új családfákra"
 #: admin_users.php:100
 #, php-format
 msgid "Approval of account at %s"
-msgstr "Felhasználó elfogadása itt: %s"
+msgstr "Felhasználó jóváhagyása itt: %s"
 
 #: edit_changes.php:209 edit_changes.php:220
 msgid "Approve all changes"
@@ -7684,7 +7684,7 @@ msgstr "Legmagasabb kort megélt személy"
 #: statisticsplot.php:870 statisticsplot.php:920 statisticsplot.php:1128
 #: statisticsplot.php:1178 statisticsplot.php:1228 statisticsplot.php:1278
 msgid "Individuals"
-msgstr "A személyeket"
+msgstr "Személyek"
 
 #: app/Stats.php:422 statistics.php:393
 msgid "Individuals with sources"
@@ -8631,6 +8631,11 @@ msgstr "Családfakezelés"
 msgid "Manage media"
 msgstr "Médiakezelés"
 
+#: admin_media.php:535 app/Controller/MediaController.php:49
+#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
+msgid "Manage the links"
+msgstr "Hivatkozáskezelés"
+
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:558
 #: app/Module/ClippingsCartModule.php:390
@@ -8641,11 +8646,6 @@ msgstr "Webhelyfelügyelő"
 #: admin.php:665
 msgid "Managers"
 msgstr "Webhelyfelügyelők"
-
-#: admin_media.php:535 app/Controller/MediaController.php:49
-#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
-msgid "Manage the links"
-msgstr "Hivatkozáskezelés"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
@@ -9931,11 +9931,11 @@ msgstr "Nincs kapcsolat"
 
 #: admin_site_upgrade.php:206
 msgid "No custom modules are enabled."
-msgstr "Az egyedi modulok nem engedélyezettek."
+msgstr "Nincs engedélyezett egyedi modul."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr "Az egyedi témák nem engedélyezettek."
+msgstr "Nincs engedélyezett egyedi téma."
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
@@ -10967,12 +10967,12 @@ msgstr "Lakhely"
 #: admin_site_upgrade.php:416
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr "A webhely nem elérhető állapotba helyezhető a(z) %s fájl létrehozásával…"
+msgstr "A webhely üzemen kívül helyezése a(z) %s fájl létrehozásával…"
 
 #: admin_site_upgrade.php:472
 #, php-format
 msgid "Place the website online, by deleting the file %s…"
-msgstr "A webhely elérhető állapotba helyezhető a(z) %s fájl eltávolításával…"
+msgstr "A webhely üzembe helyezése a(z) %s fájl törlésével…"
 
 #: admin_trees_config.php:1624 search.php:204 statistics.php:407
 msgid "Places"
@@ -14819,7 +14819,7 @@ msgstr "Ez a webhely sütiket használ, hogy látogatói viselkedéssel ismerked
 #: admin_trees_manage.php:199
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Ez törli a(z) „%s” összes származástani adatát, és felcseréli azokat egy GEDCOM-fájl adataival."
+msgstr "Ez törli a(z) „%s” összes származástani adatát, és felváltja azokat a megadott GEDCOM-fájl adataival."
 
 #: admin_trees_places.php:97
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
@@ -15443,7 +15443,7 @@ msgstr "Mindenképpen frissíteni"
 #: admin.php:612 admin_site_upgrade.php:82 login.php:117
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Frissítsen a webtrees %s változatára."
+msgstr "Frissítés a webtrees %s változatára."
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
