@@ -13924,7 +13924,7 @@ msgstr ""
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "אָנזאָג מיט הצלחה געשיקט צו %s"
+msgstr "אָנזאָג מיט הצלחה געשיקט צו %s."
 
 #: admin_modules.php:54
 #, php-format
