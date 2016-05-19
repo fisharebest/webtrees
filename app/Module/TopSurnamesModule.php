@@ -62,6 +62,12 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		$COMMON_NAMES_THRESHOLD = $WT_TREE->getPreference('COMMON_NAMES_THRESHOLD');
 
 		$num       = $this->getBlockSetting($block_id, 'num', '10');
+		// The “Minimum number of occurrences” input field from Control Panel’s Preferences page 
+		// has to be copied here otherwise user doesn't understand why the result is different 
+		// than expected (input of add and remove surnames may also be copied to make this module 
+		// indenpendent from module statistics; it is not copied yet).  The data of original input 
+		// field is still used in the bottom of the statistics module
+		$threshold = $this->getBlockSetting($block_id, 'threshold', '5');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
 		foreach (array('num', 'infoStyle') as $name) {
@@ -71,7 +77,23 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		// This next function is a bit out of date, and doesn't cope well with surname variants
-		$top_surnames = FunctionsDb::getTopSurnames($WT_TREE->getTreeId(), $COMMON_NAMES_THRESHOLD, $num);
+		
+		// First defining the upper limit of surname occurrences to get at least one row in 
+		// result list if user sets too high number in “Minimum number of occurrences” field.  
+		// Without this definition a short message “No data available in table” appears by 
+		// webtrees\packages\datatables-1.10.7\js\jquery.dataTables.min.js JavaScript file 
+		// without the possibility of translating (and only if presentation style is table; 
+		// all other styles result no message at all)
+		$top_surnames_in_DB = FunctionsDb::getCommonSurnames($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'), $WT_TREE);
+		$max_occurrences = 0;
+		foreach ($top_surnames_in_DB as $array) {
+			if ($array['match'] > $max_occurrences)
+				$max_occurrences = $array['match'];
+		}
+		if ($threshold > $max_occurrences)
+			$threshold = $max_occurrences;
+
+		$top_surnames = FunctionsDb::getTopSurnames($WT_TREE->getTreeId(), $threshold, $num);
 
 		// Remove names found in the "Remove Names" list
 		if ($COMMON_NAMES_REMOVE) {
@@ -158,16 +180,26 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
+			$this->setBlockSetting($block_id, 'threshold', Filter::postInteger('threshold', 1, 100, 5));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|array|table|tagcloud', 'table'));
 		}
 
 		$num       = $this->getBlockSetting($block_id, 'num', '10');
+		$threshold = $this->getBlockSetting($block_id, 'threshold', '5');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Number of items to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
+		echo '</td></tr>';
+
+		// The new input row in the form.  Its copied from Control Panel’s Preferences 
+		// page
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo I18N::translate('Minimum number of occurrences to be a “common surname”');
+		echo '</td><td class="optionbox">';
+		echo '<input type="text" name="threshold" size="2" value="', $threshold, '">';
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
