@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-17 15:59+0000\n"
+"PO-Revision-Date: 2016-05-19 15:43+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -716,7 +716,7 @@ msgstr "<center><b>Willkommen auf dieser Genealogie Webseite</b></center><br>Den
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
 msgid "<default theme>"
-msgstr "<voreingestelltes Layout>"
+msgstr "<Standardthema>"
 
 #: login.php:405
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
@@ -746,7 +746,7 @@ msgstr "Ein Diagramm der Vorfahren und Nachkommen einer Person als Familienbuch.
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "Ein Diagramm der Vorfahren einer Person als kompakter Baum."
+msgstr "Eine kompakte Ahnentafel der Vorfahren einer Person."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
@@ -1015,7 +1015,7 @@ msgstr "Eine Seitenleiste mit nicht genealogischen Informationen einer Person."
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr "Eine Seitenleiste, die die Nachfahren einer Person anzeigt."
+msgstr "Eine Seitenleiste, die die Nachkommen einer Person anzeigt."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
@@ -1962,7 +1962,7 @@ msgstr "Ein Sanduhrdiagramm der Vorfahren und Nachkommen einer Person."
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "Ein interaktiver Baum, der alle Vorfahren und Nachkommen einer Person zeigt."
+msgstr "Ein interaktives Sanduhrdiagramm, welches alle Vorfahren und Nachkommen einer Person zeigt."
 
 #: setup.php:505
 msgid "An unexpected database error occurred."
@@ -3285,14 +3285,14 @@ msgstr "Standardmäßig zeigt diese Liste nur die Orte, die in den Stammbäumen 
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
-msgstr[0] "In der Voreinstellung erlaubt dieser Server die Ausführung von Scripten für maximal %s Sekunde."
-msgstr[1] "In der Voreinstellung erlaubt dieser Server die Ausführung von Scripten für maximal %s Sekunden."
+msgstr[0] "Standardmäßig erlaubt Ihr Server die Ausführung von Skripten für maximal %s Sekunde."
+msgstr[1] "Standardmäßig erlaubt Ihr Server die Ausführung von Skripten für maximal %s Sekunden."
 
 #. I18N: %s is an amount of memory, such as 32MB
 #: admin_site_config.php:201
 #, php-format
 msgid "By default, your server allows scripts to use %s of memory."
-msgstr "In der Voreinstellung erlaubt dieser Server bei Scripten die Nutzung von maximal %s Arbeitsspeicher."
+msgstr "Standardmäßig erlaubt Ihr Server bei Skripten die Nutzung von maximal %s Arbeitsspeicher."
 
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
@@ -3951,14 +3951,14 @@ msgstr "Komoren"
 #: app/Controller/CompactController.php:46
 #: app/Module/CompactTreeChartModule.php:33
 msgid "Compact tree"
-msgstr "Kompakter Baum"
+msgstr "Kompakte Ahnentafel"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:43
 #: app/Controller/CompactController.php:125
 #, php-format
 msgid "Compact tree of %s"
-msgstr "Kompakter Stammbaum von %s"
+msgstr "Kompakte Ahnentafel von %s"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
@@ -4988,32 +4988,32 @@ msgstr "Standarddiagramm"
 
 #: admin_trees_manage.php:438
 msgid "Default family tree"
-msgstr "Standard Stammbaum"
+msgstr "Standardstammbaum"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:658 admin_users.php:582
 #: app/Module/WelcomeBlockModule.php:58 edituser.php:196
 msgid "Default individual"
-msgstr "Voreingestellte Startperson"
+msgstr "Startperson"
 
 #: app/Module/GoogleMapsModule.php:319
 msgid "Default map type"
-msgstr "Standard Kartentyp"
+msgstr "Standardkartentyp"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1292
 msgid "Default pedigree chart layout"
-msgstr "Standard Stammbaum Layout"
+msgstr "Standardlayout Stammbaumdiagramm"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1305
 msgid "Default pedigree generations"
-msgstr "Voreinstellung für Stammbaumgenerationen"
+msgstr "Standard für Stammbaumgenerationen"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:243 admin_trees_config.php:989
 msgid "Default theme"
-msgstr "Standard Thema"
+msgstr "Standardthema"
 
 #. I18N: gedcom tag _DEG
 #: app/GedcomTag.php:1451
@@ -5136,7 +5136,7 @@ msgstr "Nachkommen"
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:366
 msgid "Descendants interest"
-msgstr "Nachfahrenforscher"
+msgstr "Interessent an Nachkommen"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
@@ -7298,14 +7298,14 @@ msgstr "Hongkong"
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php:196 app/Module/HourglassChartModule.php:33
 msgid "Hourglass chart"
-msgstr "Sanduhr Diagramm"
+msgstr "Sanduhrdiagramm"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/HourglassController.php:87
 #: app/Module/ChartsBlockModule.php:111
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "Sanduhr-Darstellung von %s"
+msgstr "Sanduhrdiagramm von %s"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:136
 msgid "Household"
@@ -7476,7 +7476,7 @@ msgstr "Wenn Sie einen leeren Block verbergen, können Sie seine Konfiguration e
 #: admin_site_config.php:203 admin_site_config.php:222
 #: admin_site_config.php:291 admin_site_config.php:305
 msgid "If you leave this setting empty, the default value will be used."
-msgstr "Wenn diese Einstellung leer bleibt, wird der Wert der Voreinstellung benutzt."
+msgstr "Wenn Sie diese Einstellung leer lassen, wird der Standardwert benutzt."
 
 #: admin_site_config.php:185
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7726,7 +7726,7 @@ msgstr "Installations Verzeichnis"
 #: app/Module/ChartsBlockModule.php:197
 #: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
-msgstr "Interaktives Baumdiagramm"
+msgstr "Interaktives Sanduhrdiagramm"
 
 #: app/Module/ChartsBlockModule.php:126
 #: app/Module/InteractiveTree/TreeView.php:69
@@ -7734,7 +7734,7 @@ msgstr "Interaktives Baumdiagramm"
 #: app/Module/InteractiveTreeModule.php:135
 #, php-format
 msgid "Interactive tree of %s"
-msgstr "Interaktives Baumdiagramm von %s"
+msgstr "Interaktives Sanduhrdiagramm von %s"
 
 #: app/Functions/FunctionsEdit.php:246
 msgid "Internal messaging"
@@ -8975,7 +8975,7 @@ msgstr "Mauritius"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1346
 msgid "Maximum descendancy generations"
-msgstr "Maximale Anzahl an Generationen im Nachfahrenbaum"
+msgstr "Maximale Anzahl von Nachkommengenerationen"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1244
@@ -11719,7 +11719,7 @@ msgstr "Wohnort"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr "Stelle das ursprüngliche Block Layout wieder her"
+msgstr "Das Standardblocklayout wieder herstellen"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
@@ -12285,22 +12285,22 @@ msgstr "Setzen der Berechtigungsstufe für jeden Stammbaum."
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
 msgid "Set the default blocks for new family trees"
-msgstr "Standardblöcke für neue Stammbäume anordnen"
+msgstr "Standardblöcke für neue Stammbäume festlegen"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:167 index_edit.php:39
 msgid "Set the default blocks for new users"
-msgstr "Standardblöcke für neue Benutzer anordnen"
+msgstr "Standardblöcke für neue Benutzer festlegen"
 
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1318
 msgid "Set the default number of generations to display on descendancy and pedigree charts."
-msgstr "Bestimmt die Anzahl standardmäßig dargestellter Generationen, die in der Nachfahrenbaum- und Stammbaumdarstellungen gleichzeitig gezeigt werden."
+msgstr "Legt die Standardanzahl darzustellender Generationen fest, mit der Nachkommen- und Vorfahrendiagramme angezeigt werden."
 
 #. I18N: Help text for the “Maximum descendancy generations” configuration setting
 #: admin_trees_config.php:1358
 msgid "Set the maximum number of generations to display on descendancy charts."
-msgstr "Ändert die Anzahl der Generationen, die maximal im Nachfahrenbaum gezeigt werden."
+msgstr "Legt die maximale Generationenanzahl fest, die in Nachkommendiagrammen angezeigt werden."
 
 #. I18N: Help text for the “Maximum pedigree generations” configuration setting
 #: admin_trees_config.php:1338
@@ -13084,7 +13084,7 @@ msgstr "Manche Genealogie-Software erstellt GEDCOM-Dateien, die Mediendateinamen
 
 #: app/Module/GoogleMapsModule.php:431
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Einige Ortsnamen können mit optionalen Zusatzbezeichnungen versehen sein. zB. „Orange“ oder „Orange County“. Falls der Stammbaum die vollständige Ortsbezeichnung enthält, die geographische Datenbank jedoch die Kurzform, dann sollte eine Auswahl an zu entfernenden Bezeichnungen erstellt werden. Mehrere Möglichkeiten sollten mit Semikolon getrennt aufgeführt werden, z.B. „County;County of“, „Township;Twp;Twp.“ oder „Kreis;Kr;Kr.“."
+msgstr "Einige Ortsnamen können mit optionalen Zusatzbezeichnungen versehen sein, z.B. „Orange“ oder „Orange County“. Falls der Stammbaum die vollständige Ortsbezeichnung enthält, die geographische Datenbank jedoch die Kurzform, dann sollte eine Auswahl an zu entfernenden Bezeichnungen erstellt werden. Mehrere Möglichkeiten sollten mit Semikolon getrennt aufgeführt werden, z.B. „County;County of“, „Township;Twp;Twp.“ oder „Kreis;Kr;Kr.“."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1559
@@ -14366,7 +14366,7 @@ msgstr "Die Person wurde bearbeitet. Sie sollten die Änderungen prüfen und dan
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:684 admin_users.php:598 edituser.php:207
 msgid "This individual will be selected by default when viewing charts and reports."
-msgstr "Diese Person wird als Ausgangsperson in Darstellungen und Berichten angenommen."
+msgstr "Diese Person wird standardmäßig als Ausgangsperson in Darstellungen und Berichten gewählt."
 
 #: app/Stats.php:1455 app/Stats.php:2270 app/Stats.php:2378 app/Stats.php:2953
 #: app/Stats.php:3127 app/Stats.php:3425 app/Stats.php:4408 app/Stats.php:4540
@@ -15946,7 +15946,7 @@ msgstr "Wird diese Option ausgewählt ist, berechnet webtrees die Altersuntersch
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2200
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr "Beim Hinzufügen eines neuen Familienmitgliedes kann ein voreingestellter Name in Abhängigkeit von lokalen Traditionen zu Verfügung gestellt werden."
+msgstr "Beim Hinzufügen eines neuen Familienmitgliedes kann ein Standardnachname in Abhängigkeit von lokalen Traditionen vorgeschlagen werden."
 
 #: help_text.php:310
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
