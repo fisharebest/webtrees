@@ -64,7 +64,7 @@ class GedcomCodeStat {
 		case 'CANCELED':
 			return
 				/* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
-				I18N::translate('Sealing cancelled (divorce)');
+				I18N::translate('Sealing canceled (divorce)');
 		case 'CHILD':
 			return
 				/* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
@@ -85,7 +85,7 @@ class GedcomCodeStat {
 		case 'DNS/CAN':
 			return
 				/* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
-				I18N::translate('Do not seal, previous sealing cancelled');
+				I18N::translate('Do not seal, previous sealing canceled');
 		case 'EXCLUDED':
 			return
 				/* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */

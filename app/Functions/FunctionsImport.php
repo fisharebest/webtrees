@@ -1025,6 +1025,8 @@ class FunctionsImport {
 			$gedrec = str_replace("\n0 OBJE\n", '0 @' . $xref . "@ OBJE\n", $gedrec);
 			// Fix Legacy GEDCOMS
 			$gedrec = preg_replace('/\n1 FORM (.+)\n1 FILE (.+)\n1 TITL (.+)/', "\n1 FILE $2\n2 FORM $1\n2 TITL $3", $gedrec);
+			// Fix FTB GEDCOMS
+			$gedrec = preg_replace('/\n1 FORM (.+)\n1 TITL (.+)\n1 FILE (.+)/', "\n1 FILE $3\n2 FORM $1\n2 TITL $2", $gedrec);
 			// Create new record
 			$record = new Media($xref, $gedrec, null, $tree);
 			Database::prepare(

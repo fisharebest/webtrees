@@ -94,7 +94,7 @@ if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && 
 				</li>
 			</ol>
 			<p class="good">
-				<?php echo I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="http://webtrees.net">webtrees.net</a>.'); ?>
+				<?php echo I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="https://webtrees.net">webtrees.net</a>.'); ?>
 			</p>
 		</div>
 	</body>

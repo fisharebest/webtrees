@@ -29,6 +29,12 @@ abstract class AbstractModule {
 	/** @var string[] A cached copy of the module settings */
 	private $settings;
 
+	/** @var string For custom modules - optional (recommended) version number */
+	const CUSTOM_VERSION = '';
+
+	/** @var string For custom modules - link for support, upgrades, etc. */
+	const CUSTOM_WEBSITE = '';
+
 	/**
 	 * Create a new module.
 	 *

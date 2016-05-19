@@ -234,7 +234,7 @@ case 'create': // Save the information from the “showcreateform” action
 	return;
 
 case 'update': // Save the information from the “editmedia” action
-	$controller->setPageTitle(I18N::translate('Edit media object'));
+	$controller->setPageTitle(I18N::translate('Edit the media object'));
 
 	// Validate the media folder
 	$folderName = str_replace('\\', '/', $folder);
@@ -403,7 +403,7 @@ case 'showmediaform':
 	$action = 'create';
 	break;
 case 'editmedia':
-	$controller->setPageTitle(I18N::translate('Edit media object'));
+	$controller->setPageTitle(I18N::translate('Edit the media object'));
 	$action = 'update';
 	break;
 default:

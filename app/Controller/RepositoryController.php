@@ -40,12 +40,12 @@ class RepositoryController extends GedcomRecordController {
 			$fact = $this->record->getFirstFact('NAME');
 			if ($fact) {
 				// Edit existing name
-				$menu->addSubmenu(new Menu(I18N::translate('Edit repository'), '#', 'menu-repo-edit', array(
+				$menu->addSubmenu(new Menu(I18N::translate('Edit the repository'), '#', 'menu-repo-edit', array(
 					'onclick' => 'return edit_record("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
 				)));
 			} else {
 				// Add new name
-				$menu->addSubmenu(new Menu(I18N::translate('Edit repository'), '#', 'menu-repo-edit', array(
+				$menu->addSubmenu(new Menu(I18N::translate('Edit the repository'), '#', 'menu-repo-edit', array(
 					'onclick' => 'return add_fact("' . $this->record->getXref() . '", "NAME");',
 				)));
 			}
@@ -60,7 +60,7 @@ class RepositoryController extends GedcomRecordController {
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-repo-editraw', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-repo-editraw', array(
 				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
 			)));
 		}

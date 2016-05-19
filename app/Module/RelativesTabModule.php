@@ -114,8 +114,8 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 					<i class="icon-cfamily"></i>
 				</td>
 				<td>
-					<span class="subheaders"> <?php echo $label; ?> </span> -
-					<a href="<?php echo $family->getHtmlUrl(); ?>"><?php echo I18N::translate('View family'); ?></a>
+					<span class="subheaders"> <?php echo $label; ?></span>
+					<a class="noprint" href="<?php echo $family->getHtmlUrl(); ?>"> - <?php echo I18N::translate('View the family'); ?></a>
 				</td>
 			</tr>
 		</table>
@@ -273,7 +273,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				$add_child_text = I18N::translate('Add a brother or sister');
 			}
 			?>
-			<tr>
+			<tr class="noprint">
 				<td class="facts_label">
 					<?php if (count($family->getChildren()) > 1) { ?>
 					<a href="#" onclick="reorder_children('<?php echo $family->getXref(); ?>');tabswitch(5);"><i class="icon-media-shuffle"></i> <?php echo I18N::translate('Re-order children'); ?></a>
@@ -307,7 +307,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 
 		ob_start();
 		?>
-		<table class="facts_table"><tr><td class="descriptionbox rela">
+		<table class="facts_table"><tr class="noprint"><td class="descriptionbox rela">
 		<input id="checkbox_elder" type="checkbox" onclick="jQuery('div.elderdate').toggle();" <?php echo $WT_TREE->getPreference('SHOW_AGE_DIFF') ? 'checked' : ''; ?>>
 		<label for="checkbox_elder"><?php echo I18N::translate('Show date differences'); ?></label>
 		</td></tr></table>
@@ -353,7 +353,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 
 		if ($controller->record->canEdit()) {
 		?>
-		<br><table class="facts_table">
+		<br><table class="facts_table noprint">
 		<?php
 			if (count($families) > 1) { ?>
 			<tr>

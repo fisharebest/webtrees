@@ -140,7 +140,7 @@ function checknames(frm) {
 
 			<div class="label"></div>
 			<div class="value">
-				<input type="submit" value="<?php echo /* I18N: button label */ I18N::translate('Search'); ?>">
+				<input type="submit" value="<?php echo /* I18N: A button label */ I18N::translate('Search'); ?>">
 			</div>
 		</div>
 	</form>
@@ -214,7 +214,7 @@ function checknames(frm) {
 
 			<div class="label"></div>
 			<div class="value">
-				<input type="submit" value="<?php echo /* I18N: button label */ I18N::translate('Replace'); ?>">
+				<input type="submit" value="<?php echo /* I18N: A button label */ I18N::translate('Replace'); ?>">
 			</div>
 		</div>
 	</form>
@@ -297,7 +297,7 @@ function checknames(frm) {
 
 			<div class="label"></div>
 			<div class="value">
-				<input type="submit" value="<?php echo  /* I18N: button label */ I18N::translate('Search'); ?>">
+				<input type="submit" value="<?php echo  /* I18N: A button label */ I18N::translate('Search'); ?>">
 			</div>
 		</div>
 	</form>

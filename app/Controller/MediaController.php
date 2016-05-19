@@ -40,13 +40,13 @@ class MediaController extends GedcomRecordController {
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-obje');
 
 		if (Auth::isEditor($this->record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit media object'), '#', 'menu-obje-edit', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the media object'), '#', 'menu-obje-edit', array(
 				'onclick' => 'window.open("addmedia.php?action=editmedia&pid=' . $this->record->getXref() . '", "_blank", edit_window_specs)',
 			)));
 
 			// main link displayed on page
 			if (Module::getModuleByName('GEDFact_assistant')) {
-				$menu->addSubmenu(new Menu(I18N::translate('Manage links'), '#', 'menu-obje-link', array(
+				$menu->addSubmenu(new Menu(I18N::translate('Manage the links'), '#', 'menu-obje-link', array(
 					'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","manage");',
 				)));
 			} else {
@@ -71,7 +71,7 @@ class MediaController extends GedcomRecordController {
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-obje-editraw', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-obje-editraw', array(
 				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
 			)));
 		}
@@ -113,12 +113,12 @@ class MediaController extends GedcomRecordController {
 	public static function getMediaListMenu(Media $mediaobject) {
 		$html = '';
 
-		$menu = new Menu(I18N::translate('Edit details'), '#', 'lb-image_edit', array(
+		$menu = new Menu(I18N::translate('Edit the details'), '#', 'lb-image_edit', array(
 			'onclick' => 'return window.open("addmedia.php?action=editmedia&pid=' . $mediaobject->getXref() . '", "_blank", edit_window_specs);',
 		));
 		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
 
-		$menu = new Menu(I18N::translate('Manage links'), '#', 'lb-image_link', array(
+		$menu = new Menu(I18N::translate('Manage the links'), '#', 'lb-image_link', array(
 			'onclick' => 'return false;',
 		), array(
 			new Menu(I18N::translate('Link this media object to an individual'), '#', '', array(
@@ -133,7 +133,7 @@ class MediaController extends GedcomRecordController {
 		));
 		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
 
-		$menu = new Menu(I18N::translate('View details'), $mediaobject->getHtmlUrl(), 'lb-image_view');
+		$menu = new Menu(I18N::translate('View the details'), $mediaobject->getHtmlUrl(), 'lb-image_view');
 		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
 
 		return '<div class="lightbox-menu">' . $html . '</div>';

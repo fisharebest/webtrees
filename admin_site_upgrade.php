@@ -34,7 +34,6 @@ if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 }
 
 $latest_version_html = '<span dir="ltr">' . $latest_version . '</span>';
-$download_url_html   = '<b dir="auto"><a href="' . Filter::escapeHtml($download_url) . '">' . Filter::escapeHtml($download_url) . '</a></b>';
 
 // Show a friendly message while the site is being upgraded
 $lock_file           = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'offline.txt';
@@ -115,69 +114,7 @@ echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Check for
 
 $custom_modules = false;
 foreach (Module::getInstalledModules('disabled') as $module) {
-	switch ($module->getName()) {
-	case 'GEDFact_assistant':
-	case 'ahnentafel_report':
-	case 'batch_update':
-	case 'bdm_report':
-	case 'birth_report':
-	case 'cemetery_report':
-	case 'change_report':
-	case 'charts':
-	case 'ckeditor':
-	case 'clippings':
-	case 'death_report':
-	case 'descendancy':
-	case 'descendancy_report':
-	case 'extra_info':
-	case 'fact_sources':
-	case 'families':
-	case 'family_group_report':
-	case 'family_nav':
-	case 'faq':
-	case 'gedcom_block':
-	case 'gedcom_favorites':
-	case 'gedcom_news':
-	case 'gedcom_stats':
-	case 'googlemap':
-	case 'html':
-	case 'individual_ext_report':
-	case 'individual_report':
-	case 'individuals':
-	case 'lightbox':
-	case 'logged_in':
-	case 'login_block':
-	case 'marriage_report':
-	case 'media':
-	case 'missing_facts_report':
-	case 'notes':
-	case 'occupation_report':
-	case 'page_menu':
-	case 'pedigree_report':
-	case 'personal_facts':
-	case 'random_media':
-	case 'recent_changes':
-	case 'relative_ext_report':
-	case 'relatives':
-	case 'review_changes':
-	case 'sitemap':
-	case 'sources_tab':
-	case 'stories':
-	case 'theme_select':
-	case 'todays_events':
-	case 'todo':
-	case 'top10_givnnames':
-	case 'top10_pageviews':
-	case 'top10_surnames':
-	case 'tree':
-	case 'upcoming_events':
-	case 'user_blog':
-	case 'user_favorites':
-	case 'user_messages':
-	case 'user_welcome':
-	case 'yahrzeit':
-		break;
-	default:
+	if (!in_array($module->getName(), Module::getCoreModuleNames())) {
 		switch ($modules_action) {
 		case 'disable':
 			Database::prepare(
@@ -302,7 +239,7 @@ echo '</li>';
 // Download a .ZIP file containing the new code
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', /* I18N: The system is about to…; %s is a URL. */ I18N::translate('Download %s…', Html::filename($download_url_html));
+echo '<li>', /* I18N: The system is about to…; %s is a URL. */ I18N::translate('Download %s…', Html::filename($download_url));
 
 $zip_file   = WT_DATA_DIR . basename($download_url);
 $zip_dir    = WT_DATA_DIR . basename($download_url, '.zip');

@@ -1554,7 +1554,7 @@ abstract class AbstractTheme {
 		if (Auth::check() || WT_SCRIPT_NAME === 'login.php') {
 			return null;
 		} else {
-			return new Menu(I18N::translate('Login'), WT_LOGIN_URL . '?url=' . rawurlencode(Functions::getQueryUrl()), 'menu-login', array('rel' => 'nofollow'));
+			return new Menu(I18N::translate('Sign in'), WT_LOGIN_URL . '?url=' . rawurlencode(Functions::getQueryUrl()), 'menu-login', array('rel' => 'nofollow'));
 		}
 	}
 
@@ -1565,7 +1565,7 @@ abstract class AbstractTheme {
 	 */
 	protected function menuLogout() {
 		if (Auth::check()) {
-			return new Menu(I18N::translate('Logout'), 'logout.php', 'menu-logout');
+			return new Menu(I18N::translate('Sign out'), 'logout.php', 'menu-logout');
 		} else {
 			return null;
 		}

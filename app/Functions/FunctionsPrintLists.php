@@ -195,7 +195,7 @@ class FunctionsPrintLists {
 											class="ui-state-default"
 											data-filter-column="22"
 											data-filter-value="Y"
-											title="' . I18N::translate('Show individuals who are dead or couples where both partners are deceased.') . '"
+											title="' . I18N::translate('Show individuals who are dead or couples where both partners are dead.') . '"
 											type="button"
 										>
 											' . I18N::translate('Dead') . '
@@ -632,7 +632,7 @@ class FunctionsPrintLists {
 											data-filter-column="21"
 											data-filter-value="W"
 											class="ui-state-default"
-											title="' . I18N::translate('Show couples where only the female partner is deceased.') . '"
+											title="' . I18N::translate('Show couples where only the female partner is dead.') . '"
 										>
 											' . I18N::translate('Widower') . '
 										</button>
@@ -641,7 +641,7 @@ class FunctionsPrintLists {
 											data-filter-column="21"
 											data-filter-value="H"
 											class="ui-state-default"
-											title="' . I18N::translate('Show couples where only the male partner is deceased.') . '"
+											title="' . I18N::translate('Show couples where only the male partner is dead.') . '"
 										>
 											' . I18N::translate('Widow') . '
 										</button>
@@ -650,7 +650,7 @@ class FunctionsPrintLists {
 											data-filter-column="21"
 											data-filter-value="Y"
 											class="ui-state-default"
-											title="' . I18N::translate('Show individuals who are dead or couples where both partners are deceased.') . '"
+											title="' . I18N::translate('Show individuals who are dead or couples where both partners are dead.') . '"
 										>
 											' . I18N::translate('Both dead') . '
 										</button>
@@ -1156,7 +1156,7 @@ class FunctionsPrintLists {
 			}
 			//-- Delete
 			if (Auth::isManager($WT_TREE)) {
-				$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
+				$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
 			} else {
 				$html .= '<td></td>';
 			}
@@ -1271,7 +1271,7 @@ class FunctionsPrintLists {
 			}
 			//-- Delete
 			if (Auth::isManager($WT_TREE)) {
-				$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . "', '" . $note->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
+				$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . "', '" . $note->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
 			} else {
 				$html .= '<td></td>';
 			}
@@ -1385,7 +1385,7 @@ class FunctionsPrintLists {
 			}
 			//-- Delete
 			if (Auth::isManager($WT_TREE)) {
-				$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
+				$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
 			} else {
 				$html .= '<td></td>';
 			}
@@ -1850,8 +1850,7 @@ class FunctionsPrintLists {
 					if ($endjd == $startjd) {
 						$summary = I18N::translate('No events exist for tomorrow.');
 					} else {
-						// I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
-						$summary = I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
+						$summary = /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */ I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
 					}
 				} else {
 					if ($endjd == $startjd) {

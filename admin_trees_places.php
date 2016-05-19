@@ -104,8 +104,8 @@ $controller
 		<dt><label for="replace"><?php echo I18N::translate('Replace with'); ?></label></dt>
 		<dd><input name="replace" id="replace" type="text" size="30" value="<?php echo Filter::escapeHtml($replace); ?>" required></dd>
 	</dl>
-	<button type="submit" value="preview"><?php echo /* I18N: button label */ I18N::translate('preview'); ?></button>
-	<button type="submit" value="update" name="confirm"><?php echo /* I18N: button label */ I18N::translate('update'); ?></button>
+	<button type="submit" value="preview"><?php echo /* I18N: A button label */ I18N::translate('preview'); ?></button>
+	<button type="submit" value="update" name="confirm"><?php echo /* I18N: A button label */ I18N::translate('update'); ?></button>
 </form>
 
 <?php if ($search && $replace) { ?>

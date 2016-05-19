@@ -833,7 +833,7 @@ $z_axis       = Filter::getInteger('z-as', 300, 302, 302);
 $stats        = new Stats($WT_TREE);
 $z_boundaries = array();
 
-echo '<div class="statistics_chart" title="', I18N::translate('Statistics plot'), '">';
+echo '<div class="statistics_chart" title="', I18N::translate('Statistics chart'), '">';
 
 switch ($x_axis) {
 case '1':

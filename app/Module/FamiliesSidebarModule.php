@@ -101,7 +101,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 			function fsearchQ() {
 				var query = jQuery("#sb_fam_name").val();
 				if (query.length>1) {
-					jQuery("#sb_fam_content").load("module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=families&search="+query);
+					jQuery("#sb_fam_content").load("module.php?mod=' . $this->getName() . '&mod_action=ajax&search="+query);
 				}
 			}
 
@@ -121,7 +121,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 
 				if (!famloadedNames[surname]) {
 					jQuery.ajax({
-					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=families&alpha=" + encodeURIComponent(alpha) + "&surname=" + encodeURIComponent(surname),
+					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&alpha=" + encodeURIComponent(alpha) + "&surname=" + encodeURIComponent(surname),
 					  cache: false,
 					  success: function(html) {
 					    jQuery("div.name_tree_div", element.closest("li"))
@@ -162,7 +162,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 				$html = $letter;
 				break;
 			}
-			$html = '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=families&amp;alpha=' . urlencode($letter) . '" class="sb_fam_letter">' . $html . '</a>';
+			$html = '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;alpha=' . urlencode($letter) . '" class="sb_fam_letter">' . $html . '</a>';
 			$out .= $html . " ";
 		}
 
