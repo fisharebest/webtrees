@@ -102,7 +102,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 			function isearchQ() {
 				var query = jQuery("#sb_indi_name").val();
 				if (query.length>1) {
-					jQuery("#sb_indi_content").load("module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=individuals&search="+query);
+					jQuery("#sb_indi_content").load("module.php?mod=' . $this->getName() . '&mod_action=ajax&search="+query);
 				}
 			}
 
@@ -122,7 +122,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 
 				if (!loadedNames[surname]) {
 					jQuery.ajax({
-					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=individuals&alpha=" + encodeURIComponent(alpha) + "&surname=" + encodeURIComponent(surname),
+					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&alpha=" + encodeURIComponent(alpha) + "&surname=" + encodeURIComponent(surname),
 					  cache: false,
 					  success: function(html) {
 					    jQuery("div.name_tree_div", element.closest("li"))
@@ -163,7 +163,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 				$html = $letter;
 				break;
 			}
-			$html = '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=individuals&amp;alpha=' . urlencode($letter) . '" class="sb_indi_letter">' . $html . '</a>';
+			$html = '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;alpha=' . urlencode($letter) . '" class="sb_indi_letter">' . $html . '</a>';
 			$out .= $html . " ";
 		}
 

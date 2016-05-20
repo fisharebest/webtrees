@@ -702,7 +702,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 						$out .= ' (' . $record->getLifeSpan() . ')';
 					}
 					$out .= '</a>';
-					$out .= '<a class="icon-remove remove_cart" href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=clippings&amp;remove=' . $xref . '&amp;pid=' . $pid . '" title="' . I18N::translate('Remove') . '"></a>';
+					$out .= '<a class="icon-remove remove_cart" href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;remove=' . $xref . '&amp;pid=' . $pid . '" title="' . I18N::translate('Remove') . '"></a>';
 					$out .= '</li>';
 				}
 			}
@@ -711,17 +711,17 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 
 		if ($cart[$WT_TREE->getTreeId()]) {
 			$out .=
-				'<br><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=clippings&amp;empty=true&amp;pid=' . $pid . '" class="remove_cart">' .
+				'<br><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;empty=true&amp;pid=' . $pid . '" class="remove_cart">' .
 				I18N::translate('Empty the clippings cart') .
 				'</a>' .
 				'<br>' .
-				'<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=clippings&amp;download=true&amp;pid=' . $pid . '" class="add_cart">' .
+				'<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;download=true&amp;pid=' . $pid . '" class="add_cart">' .
 				I18N::translate('Download') .
 				'</a>';
 		}
 		$record = Individual::getInstance($pid, $WT_TREE);
 		if ($record && !array_key_exists($record->getXref(), $cart[$WT_TREE->getTreeId()])) {
-			$out .= '<br><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=clippings&amp;add=' . $pid . '&amp;pid=' . $pid . '" class="add_cart"><i class="icon-clippings"></i> ' . I18N::translate('Add %s to the clippings cart', $record->getFullName()) . '</a>';
+			$out .= '<br><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;action=add1&amp;type=INDI&amp;id=' . $pid . '&amp;pid=' . $pid . '" class="add_cart"><i class="icon-clippings"></i> ' . I18N::translate('Add %s to the clippings cart', $record->getFullName()) . '</a>';
 		}
 
 		return $out;
@@ -741,7 +741,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 
 		$out = '<script>';
 		$out .= 'function cancelDownload() {
-				var link = "module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=clippings&pid=' . $pid . '";
+				var link = "module.php?mod=' . $this->getName() . '&mod_action=ajax&pid=' . $pid . '";
 				jQuery("#sb_clippings_content").load(link);
 			}';
 		$out .= '</script>';
