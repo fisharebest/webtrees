@@ -810,12 +810,17 @@ class GedcomRecord {
 	public function formatFirstMajorFact($facts, $style) {
 		foreach ($this->getFacts($facts, true) as $event) {
 			// Only display if it has a date or place (or both)
+			if ($event->getDate()->isOK() && !$event->getPlace()->isEmpty()) {
+				$joiner = ' — ';
+			} else {
+				$joiner = '';
+			}
 			if ($event->getDate()->isOK() || !$event->getPlace()->isEmpty()) {
 				switch ($style) {
 				case 1:
-					return '<br><em>' . $event->getLabel() . ' ' . FunctionsPrint::formatFactDate($event, $this, false, false) . ' ' . FunctionsPrint::formatFactPlace($event) . '</em>';
+					return '<br><em>' . $event->getLabel() . ' ' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event) . '</em>';
 				case 2:
-					return '<dl><dt class="label">' . $event->getLabel() . '</dt><dd class="field">' . FunctionsPrint::formatFactDate($event, $this, false, false) . ' ' . FunctionsPrint::formatFactPlace($event) . '</dd></dl>';
+					return '<dl><dt class="label">' . $event->getLabel() . '</dt><dd class="field">' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event) . '</dd></dl>';
 				}
 			}
 		}
