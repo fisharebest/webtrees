@@ -537,14 +537,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		$country = array();
 		if (is_dir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/flags')) {
-			$rep = opendir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/flags');
-			while ($file = readdir($rep)) {
-				if (stristr($file, '.png')) {
-					$country[] = substr($file, 0, strlen($file) - 4);
-				}
+			$files = glob(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/flags/*.png');
+			foreach ($files as $file) {
+				$country[] = basename($file, '.png');
 			}
-			closedir($rep);
-			sort($country);
 		}
 
 		if ($countrySelected == 'Countries') {
@@ -552,40 +548,33 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		} else {
 			$flags = array();
 			if (is_dir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags')) {
-				$rep = opendir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags');
-				while ($file = readdir($rep)) {
-					if (stristr($file, '.png')) {
-						$flags[] = substr($file, 0, strlen($file) - 4);
-					}
-				}
-				closedir($rep);
-				sort($flags);
-			}
-		}
-		$flags_s = array();
-		if ($stateSelected != 'States' && is_dir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected)) {
-			$rep = opendir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected);
-			while ($file = readdir($rep)) {
-				if (stristr($file, '.png')) {
-					$flags_s[] = substr($file, 0, strlen($file) - 4);
+				$files = glob(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/*.png');
+				foreach ($files as $file) {
+					$flags[] = basename($file, '.png');
 				}
 			}
-			closedir($rep);
-			sort($flags_s);
 		}
 
-		if ($action == 'ChangeFlag' && isset($_POST['FLAGS'])) {
+		$flags_s = array();
+		if ($stateSelected != 'States' && is_dir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected)) {
+			$files = glob (WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected . '*.png');
+			foreach ($files as $file) {
+				$flag_s[] = basename($file, '.png');
+			}
+		}
+
+		if ($action == 'ChangeFlag' && Filter::post('FLAGS')) {
 		?>
 			<script>
-		<?php if ($_POST['selcountry'] == 'Countries') { ?>
-					window.opener.document.editplaces.icon.value = 'places/flags/<?php echo $flags[$_POST['FLAGS']] ?>.png';
-					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/places/flags/<?php echo $country[$_POST['FLAGS']] ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag') ?></a>";
-		<?php } elseif ($_POST['selstate'] != "States") { ?>
-					window.opener.document.editplaces.icon.value = 'places/<?php echo $countrySelected . '/flags/' . $_POST['selstate'] . '/' . $flags_s[$_POST['FLAGS']] ?>.png';
-					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/places/<?php echo $countrySelected . "/flags/" . $_POST['selstate'] . '/' . $flags_s[$_POST['FLAGS']] ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag') ?></a>";
+		<?php if (Filter::post('selcountry') == 'Countries') { ?>
+					window.opener.document.editplaces.icon.value = 'places/flags/<?php echo $flags[Filter::post('FLAGS')] ?>.png';
+					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/places/flags/<?php echo $country[Filter::post('FLAGS')] ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag') ?></a>";
+		<?php } elseif (Filter::post('selstate') != "States") { ?>
+					window.opener.document.editplaces.icon.value = 'places/<?php echo $countrySelected . '/flags/' . Filter::post('selstate') . '/' . $flags_s[Filter::post('FLAGS')] ?>.png';
+					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/places/<?php echo $countrySelected . "/flags/" . Filter::post('selstate') . '/' . $flags_s[Filter::post('FLAGS')] ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag') ?></a>";
 		<?php } else { ?>
-					window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected . '/flags/' . $flags[$_POST['FLAGS']] ?>.png";
-					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/places/<?php echo $countrySelected . '/flags/' . $flags[$_POST['FLAGS']] ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag') ?></a>";
+					window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected . '/flags/' . $flags[Filter::post('FLAGS')] ?>.png";
+					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/places/<?php echo $countrySelected . '/flags/' . $flags[Filter::post('FLAGS')] ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo I18N::translate('Change flag') ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo I18N::translate('Remove flag') ?></a>";
 		<?php } ?>
 					window.opener.updateMap();
 					window.close();
@@ -626,19 +615,21 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 		asort($countryList);
 		$stateList = array();
+
 		if ($countrySelected != 'Countries') {
 			$placesDir = scandir(WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/');
-			for ($i = 0; $i < count($flags); $i++) {
-				if (in_array($flags[$i], $placesDir)) {
-					$rep = opendir(WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $flags[$i] . '/');
+			foreach($flags as $flag) {
+				if (in_array($flag, $placesDir)) {
+					$rep = opendir(WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $flag . '/');
 					while ($file = readdir($rep)) {
-						$stateList[$flags[$i]] = $flags[$i];
+						$stateList[$flag] = $flag;
 					}
 					closedir($rep);
 				}
 			}
 			asort($stateList);
 		}
+
 		?>
 		<h4><?php echo I18N::translate('Change flag') ?></h4>
 
@@ -665,6 +656,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						</select>
 					</td>
 				</tr>
+
 				<tr>
 		<?php
 				$j = 1;
@@ -722,8 +714,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					}
 					$j++;
 				}
+
 		?>
 				</tr>
+
 			</table>
 			<p id="save-cancel">
 				<input type="submit" class="save" value="<?php echo I18N::translate('save') ?>">
@@ -829,8 +823,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
 				}
 				if ($latlongval[$i]) {
-					$lat[$i] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]->pl_lati);
-					$lon[$i] = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]->pl_long);
+					$lat[$i] = strtr($latlongval[$i]->pl_lati, array('N' => '', 'S' => '-', ',' => '.'));
+					$lon[$i] = strtr($latlongval[$i]->pl_long, array('N' => '', 'S' => '-', ',' => '.'));
 					if ($lat[$i] && $lon[$i]) {
 						$count++;
 					} else {
@@ -1352,8 +1346,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
 				if ($latlongval[$i]) {
-					$lat[$i] = (double) str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]->pl_lati);
-					$lon[$i] = (double) str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]->pl_long);
+					$lat[$i] = (double) strtr($latlongval[$i]->pl_lati, array('N' => '', 'S' => '-', ',' => '.'));
+					$lon[$i] = (double) strtr($latlongval[$i]->pl_long, array('E' => '', 'W' => '-', ',' => '.'));
 					if ($lat[$i] || $lon[$i]) {
 						$marker_number = $curgen;
 						$dups          = 0;
@@ -1376,12 +1370,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								case 5: //adjust position where markers have same coodinates
 								default:
 									$marker_number = $curgen;
-									$lon[$i]       = $lon[$i] + 0.0025;
-									$lat[$i]       = $lat[$i] + 0.0025;
+									$lon[$i] += 0.0025;
+									$lat[$i] += 0.0025;
 									break;
 								}
 							}
 						}
+
 						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
 						$js .= "var marker = createMarker(point, \"" . Filter::escapeJs($name) . "\",\"<div>" . $dataleft . $datamid . $dataright . "</div>\", \"";
 						$js .= "<div class='iwstyle'>";
@@ -2000,6 +1995,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							'tooltip'      => $fact->getPlace()->getGedcomName(),
 						);
 						$gmarks[] = $gmark;
+
 						if ($GM_MAX_ZOOM > $latlongval->pl_zoom) {
 							$GM_MAX_ZOOM = $latlongval->pl_zoom;
 						}
@@ -2112,25 +2108,25 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			gicons["red"] = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
 				new google.maps.Size(20, 34),
-				new google.maps.Point(0,0),
+				new google.maps.Point(0, 0),
 				new google.maps.Point(9, 34)
 			);
 
 			var iconImage = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
 				new google.maps.Size(20, 34),
-				new google.maps.Point(0,0),
+				new google.maps.Point(0, 0),
 				new google.maps.Point(9, 34)
 			);
 
 			var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
 				new google.maps.Size(37, 34),
-				new google.maps.Point(0,0),
+				new google.maps.Point(0, 0),
 				new google.maps.Point(9, 34)
 			);
 
 			var iconShape = {
-				coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],
-				type: "poly"
+				coord: [9, 0, 6, 1, 4, 2, 2, 4, 0, 8, 0, 12, 1, 14, 2, 16, 5, 19, 7, 23, 8, 26, 9, 30, 9, 34, 11, 34, 11, 30, 12, 26, 13, 24, 14, 21, 16, 18, 18, 16, 20, 12, 20, 8, 18, 4, 16, 2, 15, 1, 13, 0],
+				type:  "poly"
 			};
 
 			function getMarkerImage(iconColor) {
@@ -2153,21 +2149,21 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			// A function to create the marker and set up the event window
 			function createMarker(latlng, html, tooltip, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
-				var contentString = '<div id="iwcontent">'+html+'</div>';
+				var contentString = '<div id="iwcontent">' + html + '</div>';
 
 				// Use flag icon (if defined) instead of regular marker icon
 				if (marker_icon) {
-					var icon_image = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/'+marker_icon,
+					var icon_image  = new google.maps.MarkerImage(WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/' + marker_icon,
 						new google.maps.Size(25, 15),
-						new google.maps.Point(0,0),
+						new google.maps.Point(0, 0),
 						new google.maps.Point(12, 15));
-					var icon_shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/images/flag_shadow.png',
+					var icon_shadow = new google.maps.MarkerImage(WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/images/flag_shadow.png',
 						new google.maps.Size(35, 45), // Shadow size
-						new google.maps.Point(0,0),   // Shadow origin
+						new google.maps.Point(0, 0),  // Shadow origin
 						new google.maps.Point(1, 45)  // Shadow anchor is base of flagpole
 					);
 				} else {
-					var icon_image = getMarkerImage('red');
+					var icon_image  = getMarkerImage('red');
 					var icon_shadow = iconShadow;
 				}
 
@@ -2185,7 +2181,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					shadow:   icon_shadow,
 					map:      map,
 					title:    tooltip,
-					zIndex:   Math.round(latlng.lat()*-100000)<<5
+					zIndex:   Math.round(latlng.lat() * -100000) << 5
 				});
 
 				// Store the tab and event info as marker properties
@@ -2223,7 +2219,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						navigationControl: false,
 						linksControl:      false,
 						addressControl:    false,
-						pov: {
+						pov:               {
 							heading: sv_bearing,
 							pitch:   sv_elevation,
 							zoom:    sv_zoom
@@ -2234,40 +2230,44 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					google.maps.event.addListener(infowindow, 'domready', function() {
 						//jQuery code here
 						jQuery('#EV').click(function() {
-							document.tabLayerEV = document.getElementById("EV");
-							document.tabLayerEV.style.background = '#ffffff';
+							document.tabLayerEV                     = document.getElementById("EV");
+							document.tabLayerEV.style.background    = '#ffffff';
 							document.tabLayerEV.style.paddingBottom = '1px';
 							<?php if ($STREETVIEW) { ?>
-							document.tabLayerSV = document.getElementById("SV");
-							document.tabLayerSV.style.background = '#cccccc';
+							document.tabLayerSV                     = document.getElementById("SV");
+							document.tabLayerSV.style.background    = '#cccccc';
 							document.tabLayerSV.style.paddingBottom = '0px';
 							<?php } ?>
-							document.panelLayer1 = document.getElementById("pane1");
+							document.panelLayer1               = document.getElementById("pane1");
 							document.panelLayer1.style.display = 'block';
 							<?php if ($STREETVIEW) { ?>
-							document.panelLayer2 = document.getElementById("pane2");
+							document.panelLayer2               = document.getElementById("pane2");
 							document.panelLayer2.style.display = 'none';
 							<?php } ?>
 						});
 
 						jQuery('#SV').click(function() {
-							document.tabLayerEV = document.getElementById("EV");
-							document.tabLayerEV.style.background = '#cccccc';
+							document.tabLayerEV                     = document.getElementById("EV");
+							document.tabLayerEV.style.background    = '#cccccc';
 							document.tabLayerEV.style.paddingBottom = '0px';
 							<?php if ($STREETVIEW) { ?>
-							document.tabLayerSV = document.getElementById("SV");
-							document.tabLayerSV.style.background = '#ffffff';
+							document.tabLayerSV                     = document.getElementById("SV");
+							document.tabLayerSV.style.background    = '#ffffff';
 							document.tabLayerSV.style.paddingBottom = '1px';
 							<?php } ?>
-							document.panelLayer1 = document.getElementById("pane1");
+							document.panelLayer1               = document.getElementById("pane1");
 							document.panelLayer1.style.display = 'none';
 							<?php if ($STREETVIEW) { ?>
-							document.panelLayer2 = document.getElementById("pane2");
+							document.panelLayer2               = document.getElementById("pane2");
 							document.panelLayer2.style.display = 'block';
 							<?php } ?>
 							var panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
-							setTimeout(function() { panorama.setVisible(true); }, 100);
-							setTimeout(function() { panorama.setVisible(true); }, 500);
+							setTimeout(function() {
+								panorama.setVisible(true);
+							}, 100);
+							setTimeout(function() {
+								panorama.setVisible(true);
+							}, 500);
 						});
 					});
 				});
@@ -2286,26 +2286,26 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			function HomeControl(controlDiv, map) {
 				// Set CSS styles for the DIV containing the control
 				// Setting padding to 5 px will offset the control from the edge of the map
-				controlDiv.style.paddingTop = '5px';
+				controlDiv.style.paddingTop   = '5px';
 				controlDiv.style.paddingRight = '0px';
 
 				// Set CSS for the control border
-				var controlUI = document.createElement('DIV');
+				var controlUI                   = document.createElement('DIV');
 				controlUI.style.backgroundColor = 'white';
-				controlUI.style.borderStyle = 'solid';
-				controlUI.style.borderWidth = '2px';
-				controlUI.style.cursor = 'pointer';
-				controlUI.style.textAlign = 'center';
-				controlUI.title = '';
+				controlUI.style.borderStyle     = 'solid';
+				controlUI.style.borderWidth     = '2px';
+				controlUI.style.cursor          = 'pointer';
+				controlUI.style.textAlign       = 'center';
+				controlUI.title                 = '';
 				controlDiv.appendChild(controlUI);
 
 				// Set CSS for the control interior
-				var controlText = document.createElement('DIV');
-				controlText.style.fontFamily = 'Arial,sans-serif';
-				controlText.style.fontSize = '12px';
-				controlText.style.paddingLeft = '15px';
+				var controlText                = document.createElement('DIV');
+				controlText.style.fontFamily   = 'Arial,sans-serif';
+				controlText.style.fontSize     = '12px';
+				controlText.style.paddingLeft  = '15px';
 				controlText.style.paddingRight = '15px';
-				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map') ?></b>';
+				controlText.innerHTML          = '<b><?php echo I18N::translate('Redraw map') ?></b>';
 				controlUI.appendChild(controlText);
 
 				// Setup the click event listeners: simply set the map to original LatLng
@@ -2317,21 +2317,21 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			function loadMap() {
 				// Create the map and mapOptions
 				var mapOptions = {
-					zoom: 7,
-					center: map_center,
-					mapTypeId: google.maps.MapTypeId.<?php echo $this->getSetting('GM_MAP_TYPE') ?>,
-					mapTypeControlOptions: {
+					zoom:                     7,
+					center:                   map_center,
+					mapTypeId:                google.maps.MapTypeId.<?php echo $this->getSetting('GM_MAP_TYPE') ?>,
+					mapTypeControlOptions:    {
 						style: google.maps.MapTypeControlStyle.DROPDOWN_MENU  // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
 					},
-					navigationControl: true,
+					navigationControl:        true,
 					navigationControlOptions: {
-					position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-					style: google.maps.NavigationControlStyle.SMALL  // ANDROID, DEFAULT, SMALL, ZOOM_PAN
+						position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
+						style:    google.maps.NavigationControlStyle.SMALL  // ANDROID, DEFAULT, SMALL, ZOOM_PAN
 					},
-					streetViewControl: false,  // Show Pegman or not
-					scrollwheel: false
+					streetViewControl:        false,  // Show Pegman or not
+					scrollwheel:              false
 				};
-				map = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
+				map            = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
 
 				// Close any infowindow when map is clicked
 				google.maps.event.addListener(map, 'click', function() {
@@ -2339,8 +2339,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				});
 
 				// Create the Home DIV and call the HomeControl() constructor in this DIV.
-				var homeControlDiv = document.createElement('DIV');
-				var homeControl = new HomeControl(homeControlDiv, map);
+				var homeControlDiv   = document.createElement('DIV');
+				var homeControl      = new HomeControl(homeControlDiv, map);
 				homeControlDiv.index = 1;
 				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
 
@@ -2423,8 +2423,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							'</div>' +
 						'</div>' +
 					'</div>';
-
-					// create the marker
 					var point        = new google.maps.LatLng(location.lat,     location.lng);     // Place Latitude, Longitude
 					var sv_point     = new google.maps.LatLng(location.sv_lati, location.sv_long); // StreetView Latitude and Longitide
 
@@ -2680,8 +2678,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 			}
 		}
-		echo '</td></tr></table>';
+		echo '</td></tr>';
+		echo '</table>';
 		echo '</td>';
+
 		echo '<td style="margin-left:15px; float:right;">';
 
 		if ($STREETVIEW) {
@@ -2699,8 +2699,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			global $pl_lati, $pl_long;
 			if ($level >= 1) {
-				$pl_lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlng['pl_lati']); // WT_placelocation lati
-				$pl_long = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlng['pl_long']); // WT_placelocation long
+				$pl_lati = strtr($latlng['pl_lati'], array('N' => '', 'S' => '-', ',' => '.')); // WT_placelocation lati
+				$pl_long = strtr($latlng['pl_long'], array('E' => '', 'W' => '-', ',' => '.')); // WT_placelocation long
 
 				// Check if Streetview location parameters are stored in database
 				$placeid  = $latlng['pl_id']; // Placelocation place id
@@ -2834,8 +2834,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 			echo "</div>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
 		} else {
-			$lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $place2['lati']);
-			$long = str_replace(array('E', 'W', ','), array('', '-', '.'), $place2['long']);
+			$lati = strtr($place2['lati'], array('N' => '', 'S' => '-', ',' => '.'));
+			$long = strtr($place2['long'], array('E' => '', 'W' => '-', ',' => '.'));
 			//delete leading zero
 			if ($lati >= 0) {
 				$lati = abs($lati);
@@ -3011,6 +3011,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 		$numls                            = count($parent) - 1;
 		$levelo                           = $this->checkWhereAmI($numls, $levelm);
+
 		if ($numfound < 2 && ($level == 1 || !isset($levelo[$level - 1]))) {
 			$controller->addInlineJavascript('map.maxZoom=6;');
 		} elseif ($numfound < 2 && !isset($levelo[$level - 2])) {
@@ -3019,7 +3020,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 		//create markers
 
-		ob_start(); // TODO: rewrite print_gm_markers, and the functions called therein, to either return text or add JS directly.
+		ob_start();
 
 		if ($numfound == 0 && $level > 0) {
 			if (isset($levelo[($level - 1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
@@ -3081,7 +3082,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * Input: place ID
 	 * Output: ordered array of id=>name values, starting with the Top level
 	 * e.g. 0=>"Top level", 16=>"England", 19=>"London", 217=>"Westminster"
-	 * NB This function exists in both places.php and places_edit.php
 	 *
 	 * @param int $id
 	 *
@@ -3204,18 +3204,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function findFiles($path) {
 		$placefiles = array();
 
-		if (file_exists($path)) {
-			$dir = dir($path);
-			while (false !== ($entry = $dir->read())) {
-				if ($entry !== '.' && $entry !== '..') {
-					if (is_dir($path . '/' . $entry)) {
-						$this->findFiles($path . '/' . $entry);
-					} elseif (strstr($entry, '.csv') !== false) {
-						$placefiles[] = preg_replace('~' . WT_MODULES_DIR . 'googlemap/extra~', '', $path) . '/' . $entry;
-					}
-				}
+		$di = new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS);
+		$it = new \RecursiveIteratorIterator($di);
+
+		foreach($it as $file) {
+			if ($file->getExtension() == "csv") {
+				$placefiles[] = '/' . $file->getFilename();
 			}
-			$dir->close();
 		}
 
 		return $placefiles;
@@ -3237,7 +3232,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$controller
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle(I18N::translate('Geographic data'))
-			->addInlineJavascript('$("<link>", {rel: "stylesheet", type: "text/css", href: "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css"}).appendTo("head");')
+			->addInlineJavascript('jQuery("<link>", {rel: "stylesheet", type: "text/css", href: "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css"}).appendTo("head");')
 			->pageHeader();
 
 		$where_am_i = $this->placeIdToHierarchy($placeid);
@@ -3356,12 +3351,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						->execute(array($parent_id))
 						->fetchOneRow();
 					if ($row->pl_lati !== null && $row->pl_long !== null) {
-						$parent_lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $row->pl_lati);
-						$parent_long = str_replace(array('E', 'W', ','), array('', '-', '.'), $row->pl_long);
-						$zoomfactor  = $row->pl_zoom;
-						if ($zoomfactor > $GM_MAX_ZOOM) {
-							$zoomfactor = $GM_MAX_ZOOM;
-						}
+						$parent_lati = strtr($row->pl_lati, array('N' => '', 'S' => '-', ',' => '.'));
+						$parent_long = strtr($row->pl_long, array('E' => '', 'W' => '-', ',' => '.'));
+						$zoomfactor  = min($row->pl_zoom, $GM_MAX_ZOOM);
 						$level = $row->pl_level + 1;
 					}
 					$parent_id = $row->pl_parent_id;
@@ -3397,11 +3389,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			var marker;
 			var zoom;
 			var pl_name = '<?php echo Filter::escapeJs($place_name) ?>';
-			if (<?php echo $place_lati ?> !== 0.0 && <?php echo $place_long ?> !== 0.0) {
+			<?php if ($place_lati !== 0.0 && $place_long !== 0.0) { ?>
 				var latlng = new google.maps.LatLng(<?php echo $place_lati ?>, <?php echo $place_long ?>);
-			} else {
+			<?php } else {?>
 				var latlng = new google.maps.LatLng(<?php echo $parent_lati ?>, <?php echo $parent_long ?>);
-			}
+			<?php } ?>
 			var pl_zoom = <?php echo $zoomfactor ?>;
 			var polygon1;
 			var polygon2;
@@ -3866,8 +3858,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			function paste_char(value) {
 				document.editplaces.NEW_PLACE_NAME.value += value;
 			}
-			window.onload = function() { loadMap(); };
+			window.onload = function() {
+				loadMap();
+			};
 		</script>
+
 		<form method="post" id="editplaces" name="editplaces" action="module.php?mod=googlemap&amp;mod_action=places_edit">
 			<input type="hidden" name="action" value="<?php echo $action ?>record">
 			<input type="hidden" name="placeid" value="<?php echo $placeid ?>">
