@@ -3,13 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2013-05-12 19:51+0000\n"
-"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2016-05-22 16:48+0000\n"
+"Last-Translator: Astrit Bokshi <astritbokshi@gmail.com>\n"
+"Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/webtrees/sq/>\n"
 "Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.5\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -18,7 +20,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr ""
+msgstr " por detajet nuk janë të njohura"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -35,21 +37,21 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:424
 #: modules_v3/descendancy_report/report.xml:455
 msgid " in "
-msgstr ""
+msgstr " në "
 
 #: statisticsplot.php:887 statisticsplot.php:937 statisticsplot.php:991
 #: statisticsplot.php:1041 statisticsplot.php:1095 statisticsplot.php:1145
 #: statisticsplot.php:1195 statisticsplot.php:1245 statisticsplot.php:1295
 #: statisticsplot.php:1345
 msgid " per gender"
-msgstr ""
+msgstr " për gjini"
 
 #: statisticsplot.php:889 statisticsplot.php:939 statisticsplot.php:993
 #: statisticsplot.php:1043 statisticsplot.php:1097 statisticsplot.php:1147
 #: statisticsplot.php:1197 statisticsplot.php:1247 statisticsplot.php:1297
 #: statisticsplot.php:1347
 msgid " per time period"
-msgstr ""
+msgstr " për periudhë kohore"
 
 #. I18N: Abbreviation for "number %s"
 #: app/Functions/FunctionsPrintFacts.php:213
@@ -57,293 +59,293 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:475
 #, php-format
 msgid "#%s"
-msgstr ""
+msgstr "#%s"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s ka një %3$s link në %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2114
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s %2$s herë mënjanuar në ngritje"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2117
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s %2$s herë mënjanuar në zbritje"
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1635
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:317
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$s KB u shkarkuan për %2$s sekonda."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s nuk ekziston."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s nuk ekziston. Keni menduar %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s nuk ka link prapa në %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:374 admin_site_upgrade.php:458
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s fajl u ekstraktua në %2$s sekonda."
+msgstr[1] "%1$s fajla u ekstraktuan në %2$s sekonda."
 
 #: app/Module/GoogleMapsModule.php:893
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s individ i shfaqur, nga totali i %2$s, nga %3$s gjenerata."
+msgstr[1] "%1$s individë të shfaqur, nga totali i %2$s, nga %3$s gjenerata."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:910
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s individ i mungojnë koordinatat e hartës së lindjes: %2$s."
+msgstr[1] "%1$s iindividëve u mungojnë koordinatat e hartës së lindjes: %2$s."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:192
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s është %2$s por %3$s priten."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:627
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:612
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s piksela"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:597
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:497 app/Media.php:386
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s piksela"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: app/Individual.php:550
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2136
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:819
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:159
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6996
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s p.e.s"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:276
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:203
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s dhe paraardhësit e saj"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:206
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s dhe paraardhësit e tij"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:292
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s dhe individët e lidhur me të."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:121
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s dhe fëmijët e tyre"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:128
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s dhe fëmijët e tyre"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5950
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s përdorues anonim i kyçur"
+msgstr[1] "%s përdorues anonim të kyçur"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4457 app/Stats.php:4461
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s fëmijë"
+msgstr[1] "%s fëmijë"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:59 app/I18N.php:313
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ditë"
+msgstr[1] "%s ditë"
 
 #: app/I18N.php:799
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ditë më parë"
+msgstr[1] "%s ditë më parë"
 
 #: app/Controller/SearchController.php:378
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s familje u përditësua."
+msgstr[1] "%s familje u përditësuan."
 
 #: admin.php:839
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s trung familjar"
+msgstr[1] "%s trungje familjare"
 
 #: app/Stats.php:5258 app/Stats.php:5262
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s nip"
+msgstr[1] "%s nipa"
 
 #: app/I18N.php:803
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s orë më parë"
+msgstr[1] "%s orë më parë"
 
 #: app/Controller/LifespanController.php:260
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s individ"
+msgstr[1] "%s individë"
 
 #: app/Controller/SearchController.php:349
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s individ është përditësuar."
+msgstr[1] "%s individë janë përditësuar."
 
 #: app/Module/GoogleMapsModule.php:903
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s individ është privat."
+msgstr[1] "%s individë janë privat."
 
 #: app/Controller/LifespanController.php:253
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s individ me ndodhi në mes %s dhe %s"
+msgstr[1] "%s individë me ndodhi në mes %s dhe %s"
 
 #: app/Controller/LifespanController.php:246
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s individ me ndodhi në %s"
+msgstr[1] "%s individë me ndodhi në %s"
 
 #: app/Controller/LifespanController.php:239
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s individ me ndodhi në %s ndërmjet %s dhe %s"
+msgstr[1] "%s individë me ndodhi në %s ndërmjet %s dhe %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:119
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "%s iështë shkyçur nga ky server. Nuk mund të instaloni webtrees përderisa të mos kyçet. Kërkoni nga administratori që ta kyç atë."
 
 #: app/Module/UserMessagesModule.php:91
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s mesazh"
+msgstr[1] "%s mesazhe"
 
 #: app/I18N.php:807
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Para %s minute"
+msgstr[1] "Para %s minutash"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:55 app/I18N.php:305
@@ -351,374 +353,379 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s muaj"
+msgstr[1] "%s muaj"
 
 #: app/I18N.php:795
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s muaj më parë"
+msgstr[1] "%s muaj më parë"
 
 #: app/Controller/SearchController.php:432
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s shënim u përditësua."
+msgstr[1] "%s shënime u përditësuan."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2090
 #, php-format
 msgid "%s once removed ascending"
-msgstr ""
+msgstr "%s prej se u mënjanua ngritja"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2093
 #, php-format
 msgid "%s once removed descending"
-msgstr ""
+msgstr "%s prej se u mënjanua rënja"
 
 #: app/I18N.php:809
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Para %s sekonde"
+msgstr[1] "Para %s sekondash"
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5960
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s përdorues i paraqitur"
+msgstr[1] "%s përdorues të paraqitur"
 
 #: app/Controller/SearchController.php:411
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s burim u përditësua."
+msgstr[1] "%s burime u përditësuan."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2106
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s tri herë mënjanuar në ngritje"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2109
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "%s tri herë mënjanuar në rënje"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2098
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s dy herë mënjanuar në ngritje"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2101
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "%s dy herë mënjanuar në rënje"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:57 app/I18N.php:309
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s javë"
+msgstr[1] "%s javë"
 
 #: app/Functions/FunctionsDate.php:50 app/I18N.php:299
 #: app/Module/RelativesTabModule.php:83
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s vit"
+msgstr[1] "%s vite"
 
 #: app/I18N.php:791
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Para %s viti"
+msgstr[1] "Para %s vitesh"
 
-#: app/Functions/FunctionsPrintLists.php:1941 app/Module/YahrzeitModule.php:129
-#: calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:1941
+#: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s përvjetor"
 
 #: app/Functions/Functions.php:567
 #, php-format
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × kushërinjë"
 
 #: app/Functions/Functions.php:532
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × kushërira"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:497
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × kushëri"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;p.e.s"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;e.r"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:222
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, paraardhësit e saj dhe familjet e tyre"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:171
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, prindërit e saj dhe vëllezërit dhe motrat"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, bashkëshortët e saj dhe fëmijët"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:241
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, bashkëshortët e saj dhe pasardhësit"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:225
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, paraardhësit e tij dhe familjet e tyre"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:174
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, prindërit e tij dhe vëllezërit dhe motrat"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:190
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, bashkëshortet e tij dhe fëmijët"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:244
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, bashkëshortet e tij dhe pasardhësit"
 
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:624
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;zgjedh&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/I18N.php:328 app/I18N.php:332
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(mosha %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:322
 #, php-format
 msgid "(aged less than %s)"
-msgstr ""
+msgstr "(në moshë më të vogël se %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/I18N.php:325
 #, php-format
 msgid "(aged more than %s)"
-msgstr ""
+msgstr "(në moshë më të madhe se %s)"
 
 #. I18N: %s is a placeholder for a number
 #: app/I18N.php:229
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr ""
+msgstr "(filtruar nga %s shënimet totale)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
 #: app/I18N.php:293
 msgid "(in childhood)"
-msgstr ""
+msgstr "(në fëmijëri)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in infancy)
 #: app/I18N.php:290
 msgid "(in infancy)"
-msgstr ""
+msgstr "(foshnje)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (stillborn)
 #: app/I18N.php:287
 msgid "(stillborn)"
-msgstr ""
+msgstr "(lindur i vdekur)"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:440
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Stats.php:7023
 msgctxt "CENTURY"
 msgid "10th"
-msgstr ""
+msgstr "10"
 
 #: app/Stats.php:7021
 msgctxt "CENTURY"
 msgid "11th"
-msgstr ""
+msgstr "11"
 
 #: app/Stats.php:7019
 msgctxt "CENTURY"
 msgid "12th"
-msgstr ""
+msgstr "12"
 
 #: app/Stats.php:7017
 msgctxt "CENTURY"
 msgid "13th"
-msgstr ""
+msgstr "13"
 
 #: app/Stats.php:7015
 msgctxt "CENTURY"
 msgid "14th"
-msgstr ""
+msgstr "14"
 
 #: app/Stats.php:7013
 msgctxt "CENTURY"
 msgid "15th"
-msgstr ""
+msgstr "15"
 
 #: app/Stats.php:7011
 msgctxt "CENTURY"
 msgid "16th"
-msgstr ""
+msgstr "16"
 
 #: app/Stats.php:7009
 msgctxt "CENTURY"
 msgid "17th"
-msgstr ""
+msgstr "17"
 
 #: app/Stats.php:7007
 msgctxt "CENTURY"
 msgid "18th"
-msgstr ""
+msgstr "18"
 
 #: app/Stats.php:7005
 msgctxt "CENTURY"
 msgid "19th"
-msgstr ""
+msgstr "19"
 
 #: app/Stats.php:7041
 msgctxt "CENTURY"
 msgid "1st"
-msgstr ""
+msgstr "1"
 
 #: app/Stats.php:7003
 msgctxt "CENTURY"
 msgid "20th"
-msgstr ""
+msgstr "20"
 
 #: app/Stats.php:7001
 msgctxt "CENTURY"
 msgid "21st"
-msgstr ""
+msgstr "21"
 
 #: app/Stats.php:7039
 msgctxt "CENTURY"
 msgid "2nd"
-msgstr ""
+msgstr "2"
 
 #: app/Stats.php:7037
 msgctxt "CENTURY"
 msgid "3rd"
-msgstr ""
+msgstr "3"
 
 #: app/Stats.php:7035
 msgctxt "CENTURY"
 msgid "4th"
-msgstr ""
+msgstr "4"
 
 #: app/Stats.php:7033
 msgctxt "CENTURY"
 msgid "5th"
-msgstr ""
+msgstr "5"
 
 #: app/Stats.php:7031
 msgctxt "CENTURY"
 msgid "6th"
-msgstr ""
+msgstr "6"
 
 #: app/Stats.php:7029
 msgctxt "CENTURY"
 msgid "7th"
-msgstr ""
+msgstr "7"
 
 #: app/Stats.php:7027
 msgctxt "CENTURY"
 msgid "8th"
-msgstr ""
+msgstr "8"
 
 #: app/Stats.php:7025
 msgctxt "CENTURY"
 msgid "9th"
-msgstr ""
+msgstr "9"
 
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:742
+#, fuzzy
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr ""
+msgstr "<b>GUID</b> në këtë kontekst është shkurtesë e \"Globally Unique ID\".<br><br>GUID ka për detyrë të ndihmoj në identifikimin e secilit individ në kuptimin e përsëritjes, ashtuqë organizatat qëndrore si Qendra e Historisë së Familjes e kishës  LDS në Salt Lake City, ose ndonjë programi kompatibil i aktivizuar në serverin tuaj, mund të përcaktoj se a bëhet fjalë për të njëjtin individ pa marrë parasysh në shënimet e GEDCOM. Qëllimi i Qendrës së Historisë së Familjes është që të ketë bazën qëndrore të shënimeve gjenealogjike dhe që t’i ofrojë ato përmes web shërbimeve të veta.  Kjo do të mundësojë që secili aplikacion të ketë çasje në këto shënime dhe të azhurnohet me to.<br><br>Nëse nuk dëshironi të ndani shënimet e databazës suaj GEDCOM, atëherë webtrees nuk ka nevojë t’i krijoj ata GUID numra; edhepse, nëse e bëni këtë, nuk do të bëhet ndonjë dëm, vetëmse do të rritet pak databaza e juaj GEDCOM."
 
 #: admin_trees_manage.php:721
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr ""
+msgstr "<b>Vërejtje e rëndësishme:</b> Magjistari i transferimit nuk mund të asistojë në lëvizjen e media artikujve. Ju duhet të vendosni dhe lëvizni ose të kopjoni konfigurimin tuaj medial dhe objektet pasi që magjistari i transferimit të ketë përfunduar."
 
 #: message.php:107
+#, fuzzy
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr ""
+msgstr "<b>Vërejtje:</b> Informatat private të individëve të gjallë do t’i jepen vetëm familjarëve dhe shokëve. Do t’u kërkohet të verifikoni lidhjet familjare para se të pranoni ndonjë shënim privat. Ndonjëherë edhe informatat për të vdekurit mund të jenë poashtu private. Po të jetë ky rast, atëherë sigurisht nuk ka informata të duhura për personin që të përcaktohet se a janë ata gjallë apo jo dhe ne sigurisht nuk kemi informata tjera për këtë person.<br><br>Para se të bëni pyetje, ju lutem verifikoni se ju po kërkoni personin e duhur duke kontrolluar shënimet, vendet dhe të afërmit. Nëse bëni ndryshime në shënimet gjenealogjike, ju lutem përfshini burimet nga i keni marrë shënimet."
 
 #: login.php:170
+#, fuzzy
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
-msgstr ""
+msgstr "<center><b>Mirë se erdhët në web faqes e gjenealogjisë </b></center><br>Çasja ndaj kësaj faqeje u lejohet vetëm<u>authorized</u> përdoruesve.<br><br>Nëse keni llogari përdoruesish ju mund të kyçeni në këtë faqe. Po të mos keni llogari, ju mund ta kërkoni atë duke klikuar në lidhjen e duhur më poshtë.<br><br>Pas verifikimit të informatave tuaja, administratori ose do të aprovojë ose do të refuzojë aplikimin tuaj për llogari. Ju do të pranoni një mesazh emaili kur aplikimi juaj aprovohet."
 
 #: login.php:173
+#, fuzzy
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
-msgstr ""
+msgstr "<center><b>Mirë se erdhët në këtë web faqe të gjenealogjisë</b></center><br>Çasja në këtë web faqe u lejohet <u>vetëm antarëve të familjes</u>.<br><br>Po të keni llogari përdoruesi ju mund të kyçeni në këtë faqe. Po të mos keni llogari, ju mund të aplikoni duke klikuar në linkun e duhur më poshtë.<br><br>Pasi të verifikohen oinformatat që ju jepni, administratori ose do të aprovojë ose të refuzojë kërkesën tuaj. Sapo që kërkesa juaj të qprovohet, ju do të pranoni një email."
 
 #: login.php:167
+#, fuzzy
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
-msgstr ""
+msgstr "<center><b>Mirë se erdhët në këtë web faqe të gjenealogjisë</b></center><br>\\nÇasja në këtë web faqe i lejohet çdo vizitori që ka një logari përdoruesi.<br><br> Nëse keni llogari ju mund të kyçeni në këtë faqe. Po të mos keni llogari, ju mund të aplikoni duke klikuar në linkun e duhur më poshtë.<br><br>Pasi të verifikohet aplikacioni juaj, administratori i web faqes do të aktivizojë llogarinë tuaj. Sapo që kërkesa juaj të qprovohet, ju do të pranoni një email."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
 msgid "<default theme>"
-msgstr ""
+msgstr "<tema e parazgjedhur>"
 
 #: login.php:405
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr ""
+msgstr "<div class=\"largeError\">Njoftim:</div><div class=\"error\">Me kompletimin dhe dërgimin e kësaj forme, ju pajtoheni:<ul><li>të mbroni privatsinë e personave të gjallë në faqen tonë;</li><li>dhe në tekstin e mëposhtëm, të spjegoni se me kë keni afërsi, ose të na jepni informata për dikë që duhet të futet në listën e faqes sonë.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:409 app/Functions/FunctionsPrintFacts.php:545
@@ -729,335 +736,335 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
 msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
-msgstr ""
+msgstr "Një artikull PFP mund të shfaqet në vetëm një trung familjar ose në të gjitha trungjet familjare."
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Grafi që shfaq lidhjet ndërmjet dy personave."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "Grafi i paraardhësve dhe pasardhësve të një personi, si libër familjar."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "Grafi i paraardhësve të një personi, si trung kompakt."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Grafi i paraardhësve të një personi, i formatuar si trung."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Grafi i paraardhësve të një personi."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "Grafi i pasardhësve të një personi."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Grafi i jetëgjatvsisë së personit."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr ""
+msgstr "Një fëmijë mund të ketë më shumë se një çift prindërish. Marrëdhënja ndërmjet fëmijës dhe prindërve mund të jetë biologjike, juridike, ose e bazuar në traditë dhe kulturë lokale. Nëse nuk është specifikuar ndonjë origjinë, atëherë do të supozohet marrëdhënja biologjike."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr ""
+msgstr "Gabim i zakonshëm është të kemi lidhje të shumëfishta për të njëjtin shënim, p.sh. listimi i të njëjtit fëmijë më shumë herë në shënimet familjare."
 
 #: setup.php:369
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-msgstr ""
+msgstr "Serveri i databazës mund të mbajë më shumë databaza të ndryshme. Ju duhet të zgjedhni një databazë ekzistuese (të krijuar nga administratori i juaj i serverit) ose të krijoni një të re (nëse llogaria juaj e përdoruesit ka privilegje të mjaftueshme)."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "Grafi ventilator i paraardhësve të personit."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:225
 msgid "A file on the server"
-msgstr ""
+msgstr "Një fajl në server"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:214
 msgid "A file on your computer"
-msgstr ""
+msgstr "Një fajl në kompjuterin tuaj"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
 msgid "A greeting message and useful links for a user."
-msgstr ""
+msgstr "Mesazh përshëndetjeje dhe lidhje e dobishme për një përdorues."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:35
 msgid "A greeting message for site visitors."
-msgstr ""
+msgstr "Mesazh përshëndetjeje për vizitorët e faqes."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need moderator approval, and email notifications."
-msgstr ""
+msgstr "Lista e ndryshimeve, të cilat kanë nevojë për aprovim të administratorit, dhe lajmërimeve me email."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
 msgid "A list of frequently asked questions and answers."
-msgstr ""
+msgstr "Lista e pyetjeve dhe përgjigjeve më të shpeshta."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:49
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "Lista e të dhënve, të cilat së fundi janë përditësuar."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:44
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "Lista e detyrave dhe aktiviteteve, të cilat janë lidhur me trungun familjar."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Lista Hebraike e përvjetoreve të vdekjes që do të shfaqen së shpejti."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "Lista e përvjetoreve që shfaqen sot."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Lista e përvjetoreve që do të shfaqen së shpejti."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr ""
+msgstr "Lista e emrave më të popullarizuar."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "Lista e mbiemrave më të popullarizuar."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "Lista e faqeve të shikuara më së shumti."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "Lista e përdoruesve dhe vizitorëve që aktualisht janë online."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr ""
+msgstr "Media objekti është një e dhënë në trungun familjar që përbën informata rreth një media fajli. Kjo informatë mund të jetë një titull, njoftim rreth së drejtë autoriale, kopje, kufizim privatsie, etj. Media fajli, si foto ose video, mund të vendosen lokalisht (në këtë server) ose në largësi (në një server tjetër)."
 
 #: login.php:261
 #, php-format
 msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-msgstr ""
+msgstr "Një fjalëkalim është krijuar dhe u përcjell me email te %s. Mund ta ndryshoni këtë fjalëkalim pasi të jeni kyçur."
 
 #: login.php:254
 msgid "A new password has been requested for your user name."
-msgstr ""
+msgstr "Një fjalëkalim është kërkuar për pseudonimin tuaj."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:557
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr ""
+msgstr "Një përdorues (%1$s) ka kërkuar një llogari (%2$s) dhe ka verifikuar email adresën (%3$s)."
 
 #: admin.php:610 admin_site_upgrade.php:79 login.php:115
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Verzion i ri i webtrees është në dispozicion."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
 msgid "A private area to record notes or keep a journal."
-msgstr ""
+msgstr "Hapësirë private për të ruajtur shënime ose për të mbajtur një ditar."
 
 #. I18N: %s is a server name/URL
 #: login.php:319
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "Përdoruesi potencial është regjistruar në webtrees në %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Raport i paraardhësve të një personi, formatuar si trung."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr ""
+msgstr "Raport i paraardhësve të një personi, në formë narrative."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr ""
+msgstr "Raport i pasaardhësve të një personi, në formë narrative."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "Raport i detajeve të një personi."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr ""
+msgstr "Raport i fakteve që përkrahen nga burimi i dhënë."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "Raport i antarëve të familjes dhe detajet e tyre."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr ""
+msgstr "Raport i personave që kanë vdekur në një kohë ose një vend të dhënë."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr ""
+msgstr "Raport i personave që kanë profesionin e dhënë."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr ""
+msgstr "Raport i personave të cilë kanë lindur në një kohë ose një vend të dhënë."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr ""
+msgstr "Raport i personave të cilët janë varrosur në një vend të dhënë."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr ""
+msgstr "Raport i personave të cilët janë martuar në një kohë ose një vend të dhënë."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr ""
+msgstr "Raport i ndryshimeve të fundit dhe atryre të pezulluara."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:35
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr ""
+msgstr "Raport i familjeve që janë ngusht të lidhur me një person."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:35
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr ""
+msgstr "Raport i personave që janë ngusht të lidhur me një person."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "Raport i informatave të siguruara nga një burim."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:35
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr ""
+msgstr "Raport i informatave që mungojnë pë një person dhe të afërmve të tij."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr ""
+msgstr "Raport i të dhënave vitale për datë ose vend të dhënë."
 
 #: admin_users.php:524
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr ""
+msgstr "Roli është një mori të drejtash hyrjeje, të cilat japin autorizim për të shikuar shënimet, për të ndryshuar përkufizimet e konfigurimit, etj. Të drejtat e hyrjes u janë caktuar roleve, dhe rolet u barten përdoruesve. Secili trung familjar mund të përcaktojë hyrje të ndryshme për secilin rol, dhe përdoruesit mund të kenë role të ndryshme për secilin trung familjeje."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
 msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-msgstr ""
+msgstr "Kolona anësore që tregon listën alfabetike të të gjitha familjeve në trungun e familjes."
 
 #. I18N: Description of “Individuals” module
 #: app/Module/IndividualSidebarModule.php:38
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-msgstr ""
+msgstr "Kolona anësore që tregon listën alfabetike të të gjithë personave në trungun e familjes."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr ""
+msgstr "Kolona anësore që tregon familjet dhe të afërmit e personit."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:34
 msgid "A sidebar showing non-genealogy information about an individual."
-msgstr ""
+msgstr "Kolona anësore që tregon informatat jo-gjenealogjike për një person."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr ""
+msgstr "Kolona anësore që tregon pasardhësit e personit."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
 msgid "A tab showing the close relatives of an individual."
-msgstr ""
+msgstr "Kartela që tregon të afërmit e ngushtë të një personi."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
 msgid "A tab showing the facts and events of an individual."
-msgstr ""
+msgstr "Kartela që tregon faktet dhe ndodhitë e një personi."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
 msgid "A tab showing the media objects linked to an individual."
-msgstr ""
+msgstr "Kartela që tregon media objektet të lishura për një person."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
 msgid "A tab showing the notes attached to an individual."
-msgstr ""
+msgstr "Kartela që tregon shënimet e bashkangjitura te një person."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "Kartela që tregon burimet e lidhura për një person."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Afati kohor që tregon ndodhitë e personit."
 
 #: admin_users.php:398
 msgid "A user will not be able to sign in until both the “email verified” and “approved by administrator” options are selected."
-msgstr ""
+msgstr "Përdoruesi nuk do të mund të kyçet përderisa që të dy opcionet “emaili u verifikua” dhe “aprovuar nga administratori” të jenë të zgjedhura."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1121
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Shenja e ujit është tekst që i shtohet një imazhi, për të diskurajuar të tjerët që ta kopjojnë atë pa autorizim."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:105
 msgid "A.M."
-msgstr ""
+msgstr "P.D."
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -1097,11 +1104,11 @@ msgstr ""
 
 #: app/I18N.php:438
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-msgstr ""
+msgstr "ALPHABET_lower=abcçdeëfghijklmnopqrstuvxyz"
 
 #: app/I18N.php:436
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-msgstr ""
+msgstr "ALPHABET_upper=ABCÇDEËFGHIJKLMNOPQRSTUVXYZ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:77
@@ -1141,12 +1148,12 @@ msgstr ""
 #: admin_trees_config.php:1629 admin_trees_config.php:1631
 #: admin_trees_config.php:1635
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "Emrat e shkurtuar të vendeve."
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
 msgid "Abbreviation"
-msgstr ""
+msgstr "Shkurtesa"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6718
@@ -1155,18 +1162,18 @@ msgstr ""
 
 #: edit_changes.php:176 edit_changes.php:184
 msgid "Accept"
-msgstr ""
+msgstr "Prano"
 
 #: admin_module_blocks.php:75 admin_module_charts.php:68
 #: admin_module_menus.php:90 admin_module_reports.php:68
 #: admin_module_sidebar.php:90 admin_module_tabs.php:90
 #: admin_trees_config.php:536
 msgid "Access level"
-msgstr ""
+msgstr "Niveli i çasjes"
 
 #: admin_users.php:376
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "Aprovimi i llogarisë dhe email verifikimi"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:79
@@ -1255,206 +1262,209 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:170
 #: timeline.php:304
 msgid "Add"
-msgstr ""
+msgstr "Shto"
 
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr ""
+msgstr "Shto %s në kapëse"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
-msgstr ""
+msgstr "Shto vëlla ose motër"
 
 #: edit_interface.php:516
 msgid "Add a child"
-msgstr ""
+msgstr "Shto fëmijë"
 
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
-msgstr ""
+msgstr "Shto fëmijë për të krijuar një familje një-prindore"
 
-#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
+#: app/Controller/FamilyController.php:82
+#: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
-msgstr ""
+msgstr "Shto fëmijë në këtë familje"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr ""
+msgstr "Shto fakt"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
-msgstr ""
+msgstr "Shto baba"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
-msgstr ""
+msgstr "Shto favorit"
 
 #: app/Module/GoogleMapsModule.php:4551
 msgid "Add a geographic location"
-msgstr ""
+msgstr "Shto lokacion gjeografik"
 
 #: app/Module/RelativesTabModule.php:385 edit_interface.php:810
 #: edit_interface.php:900
 msgid "Add a husband"
-msgstr ""
+msgstr "Shto burrë"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
-msgstr ""
+msgstr "Shto burrë në këtë familje"
 
 #: app/Module/RelativesTabModule.php:390 edit_interface.php:1084
 #: edit_interface.php:1156
 msgid "Add a husband using an existing individual"
-msgstr ""
+msgstr "Shto burrë duke përdorur një person ekzistues"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
-msgstr ""
+msgstr "Shto shënim në ditar"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1131
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:184
+#: app/Controller/FamilyController.php:162
+#: app/Functions/FunctionsEdit.php:1131 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:184
 msgid "Add a media object"
-msgstr ""
+msgstr "Shto media objekt"
 
 #: app/Module/RelativesTabModule.php:323 edit_interface.php:672 family.php:114
 msgid "Add a mother"
-msgstr ""
+msgstr "Shto nënë"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
 msgid "Add a name"
-msgstr ""
+msgstr "Shto emër"
 
 #: app/Module/FamilyTreeNewsModule.php:148
 msgid "Add a news article"
-msgstr ""
+msgstr "Shto artikull lajmesh"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1110
-#: app/Module/NotesTabModule.php:100
+#: app/Controller/FamilyController.php:149
+#: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
-msgstr ""
+msgstr "Shto shënim"
 
 #: app/Functions/FunctionsEdit.php:1141
 msgid "Add a restriction"
-msgstr ""
+msgstr "Shto kufizim"
 
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
 #: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
-msgstr ""
+msgstr "Shto shiritin lëvizës kur të rritet blloku i përmbajtjes"
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1120
-#: app/Module/NotesTabModule.php:110
+#: app/Controller/FamilyController.php:155
+#: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
 msgid "Add a shared note"
-msgstr ""
+msgstr "Shto shënim të ndarë"
 
 #: app/Module/RelativesTabModule.php:271
 msgid "Add a son or daughter"
-msgstr ""
+msgstr "Shto djalë ose vajzë"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1060
-#: app/Module/SourcesTabModule.php:93
+#: app/Controller/FamilyController.php:172
+#: app/Functions/FunctionsEdit.php:1060 app/Module/SourcesTabModule.php:93
 msgid "Add a source citation"
-msgstr ""
+msgstr "Shto citat burimor"
 
 #: edit_interface.php:837
 msgid "Add a spouse"
-msgstr ""
+msgstr "Shto bashkëshort"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
 msgid "Add a story"
-msgstr ""
+msgstr "Shto storje"
 
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
-msgstr ""
+msgstr "Shto përdorues"
 
 #: app/Module/RelativesTabModule.php:373 edit_interface.php:807
 #: edit_interface.php:897
 msgid "Add a wife"
-msgstr ""
+msgstr "Shto grua"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
-msgstr ""
+msgstr "Shto grua në këtë familje"
 
 #: app/Module/RelativesTabModule.php:378 edit_interface.php:1087
 #: edit_interface.php:1158
 msgid "Add a wife using an existing individual"
-msgstr ""
+msgstr "Shto grua duke përdorur një person ekzistues"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ item"
-msgstr ""
+msgstr "Shto element PTSH"
 
 #: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
 msgid "Add an associate"
-msgstr ""
+msgstr "Shto një bashkëpunëtor"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
-msgstr ""
+msgstr "Shto edhe një person në graf"
 
 #: app/Functions/FunctionsPrint.php:556
 msgid "Add from clipboard"
-msgstr ""
+msgstr "Shto nga clipboard-i"
 
 #: lifespan.php:44 modules_v3/GEDFact_assistant/census/census-edit.php:77
 msgid "Add individuals"
-msgstr ""
+msgstr "Shto persona"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:158
 msgid "Add links"
-msgstr ""
+msgstr "Shto lidhje"
 
 #: app/Module/RelativesTabModule.php:226
 msgid "Add marriage details"
-msgstr ""
+msgstr "Shto detaje të martesës"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
-msgstr ""
+msgstr "Shto shënime të munguara të vdekjes"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:35
 msgid "Add missing married names"
-msgstr ""
+msgstr "Shto emrat e munguar të martesës"
 
 #: search_advanced.php:280
 msgid "Add more fields"
-msgstr ""
+msgstr "Shto më shumë fusha"
 
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr ""
+msgstr "Shto storje narrative për personat e trungut familjar."
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Shto hapësira ku linjat e gjata janë këputur"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:422
 #: app/Module/ClippingsCartModule.php:785
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Shto pathin e media GEDCOM në emrat e fajlave"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:935
 msgid "Add to TITLE header tag"
-msgstr ""
+msgstr "Shto në tagun e kaptinës së TITULLIT"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
 msgid "Add to favorites"
-msgstr ""
+msgstr "Shto në favoritë"
 
 #: app/Module/ClippingsCartModule.php:106
 #: app/Module/ClippingsCartModule.php:151
@@ -1463,42 +1473,42 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:446
 #: app/Module/ClippingsCartModule.php:562
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Shto në kapëse"
 
 #: admin_trees_manage.php:530
 msgid "Add unlinked records"
-msgstr ""
+msgstr "Shto shënime të palidhura"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
 msgid "Add watermarks to thumbnails"
-msgstr ""
+msgstr "Shto shenja uji në fotografiza"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
 msgid "Add your own text and graphics."
-msgstr ""
+msgstr "Shto tekstin dhe grafikën tënde."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
-msgstr ""
+msgstr "Shto/edito lajm"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:113
 msgid "Add/insert a blank row"
-msgstr ""
+msgstr "Shto/fut një rresht të zbrazët"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
 msgid "Address"
-msgstr ""
+msgstr "Adresa"
 
 #: app/GedcomTag.php:124
 msgid "Address line 1"
-msgstr ""
+msgstr "Rreshti 1 i adresës"
 
 #: app/GedcomTag.php:126
 msgid "Address line 2"
-msgstr ""
+msgstr "Rreshti 2 i adresës"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
@@ -1507,177 +1517,177 @@ msgstr ""
 
 #: admin_users.php:515 admin_users.php:564
 msgid "Administrator"
-msgstr ""
+msgstr "Administratori"
 
 #: setup.php:422 setup.php:424
 msgid "Administrator account"
-msgstr ""
+msgstr "Llogaria e administratorit"
 
 #: admin_users.php:496
 msgid "Administrator comments on user"
-msgstr ""
+msgstr "Komentet e administratorit për përdoruesin"
 
 #: admin.php:652
 msgid "Administrators"
-msgstr ""
+msgstr "Administratorët"
 
 #: app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Female pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Adoptuar"
 
 #: app/GedcomCode/GedcomCodePedi.php:57
 msgctxt "Male pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Adoptuar"
 
 #: app/GedcomCode/GedcomCodePedi.php:61
 msgctxt "Pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Adoptuar"
 
 #: app/GedcomCode/GedcomCodeAdop.php:52
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Adoptuar nga të dy prindërit"
 
 #: app/GedcomCode/GedcomCodeAdop.php:50
 msgctxt "FEMALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Adoptuar nga të dy prindërit"
 
 #: app/GedcomCode/GedcomCodeAdop.php:48
 msgctxt "MALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Adoptuar nga të dy prindërit"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:61 app/GedcomTag.php:932
 msgid "Adopted by father"
-msgstr ""
+msgstr "Adoptuar nga babai"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:59 app/GedcomTag.php:928
 msgctxt "FEMALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Adoptuar nga babai"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:57 app/GedcomTag.php:924
 msgctxt "MALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Adoptuar nga babai"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:70 app/GedcomTag.php:947
 msgid "Adopted by mother"
-msgstr ""
+msgstr "Adoptuar nga nëna"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:68 app/GedcomTag.php:943
 msgctxt "FEMALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "Adoptuar nga nëna"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:66 app/GedcomTag.php:939
 msgctxt "MALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "Adoptuar nga nëna"
 
 #. I18N: gedcom tag ADOP
 #: app/GedcomTag.php:130
 msgid "Adoption"
-msgstr ""
+msgstr "Adoptimi"
 
 #: app/GedcomTag.php:913
 msgid "Adoption of a brother"
-msgstr ""
+msgstr "Adoptimi i vëllaut"
 
 #: app/GedcomTag.php:872
 msgid "Adoption of a child"
-msgstr ""
+msgstr "Adoptimi i fëmijës"
 
 #: app/GedcomTag.php:870
 msgid "Adoption of a daughter"
-msgstr ""
+msgstr "Adoptimi i vajzës"
 
 #: app/GedcomTag.php:881 app/GedcomTag.php:890 app/GedcomTag.php:899
 msgid "Adoption of a grandchild"
-msgstr ""
+msgstr "Adoptimi i nipit"
 
 #: app/GedcomTag.php:879
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Adoptimi i mbesës"
 
 #: app/GedcomTag.php:888
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Adoptimi i mbesës nga vajza"
 
 #: app/GedcomTag.php:897
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Adoptimi i mbesës nga djali"
 
 #: app/GedcomTag.php:877
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Adoptimi i nipit"
 
 #: app/GedcomTag.php:886
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Adoptimi i nipit nga vajza"
 
 #: app/GedcomTag.php:895
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "Adoptimi i nipit nga djali"
 
 #: app/GedcomTag.php:904
 msgid "Adoption of a half-brother"
-msgstr ""
+msgstr "Adoptimi i gjysmë-vëllaut"
 
 #: app/GedcomTag.php:908
 msgid "Adoption of a half-sibling"
-msgstr ""
+msgstr "Adoptimi i gjysmë-vëllau/motre"
 
 #: app/GedcomTag.php:906
 msgid "Adoption of a half-sister"
-msgstr ""
+msgstr "Adoptimi i gjysëm-motrës"
 
 #: app/GedcomTag.php:917
 msgid "Adoption of a sibling"
-msgstr ""
+msgstr "Adoptimi i vëllaut/motrës"
 
 #: app/GedcomTag.php:915
 msgid "Adoption of a sister"
-msgstr ""
+msgstr "Adoptimi i motrës"
 
 #: app/GedcomTag.php:868
 msgid "Adoption of a son"
-msgstr ""
+msgstr "Adoptimi i djalit"
 
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
 msgid "Adult christening"
-msgstr ""
+msgstr "Krishterimi i personit të rritur"
 
 #: admin_trees_config.php:2130
 msgid "Advanced fact settings"
-msgstr ""
+msgstr "Përkufizimet e avansuara të fakteve"
 
 #: admin_trees_config.php:2135
 msgid "Advanced name facts"
-msgstr ""
+msgstr "Faktet e avansuara të emrave"
 
 #: admin_trees_config.php:2164
 msgid "Advanced place name facts"
-msgstr ""
+msgstr "Faktet e avansuara të emrave të vendeve"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1714
 msgid "Advanced search"
-msgstr ""
+msgstr "Kërkim i avansuar"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6719
@@ -1690,11 +1700,11 @@ msgstr ""
 
 #: admin_trees_manage.php:681
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr ""
+msgstr "Pasi të krijoni trungun familjar, ju do të mund të importoni shënime nga një GEDCOM fajl."
 
 #: login.php:257
 msgid "After you have signed in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
-msgstr ""
+msgstr "Pasi të jeni kyçur, zgjedhni lidhjen “Llogaria ime” në menynë “Faqja ime” dhe plotësoni fushën e fjalëkalimit për ta ndryshuar atë."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
@@ -1703,63 +1713,63 @@ msgstr ""
 #: app/GedcomTag.php:142 app/Stats.php:2588 app/Stats.php:3929
 #: app/Stats.php:3931 autocomplete.php:72 timeline.php:380
 msgid "Age"
-msgstr ""
+msgstr "Mosha"
 
 #: statistics.php:283
 msgid "Age at birth of child"
-msgstr ""
+msgstr "Mosha te lindja e fëmijës"
 
 #: admin_trees_config.php:410
 msgid "Age at which to assume an individual is dead"
-msgstr ""
+msgstr "Mosha kur personi pretendohet i vdekur"
 
 #: statistics.php:338
 msgid "Age between husband and wife"
-msgstr ""
+msgstr "Ndryshimi i moshës së burrit dhe gruas"
 
 #: statistics.php:330
 msgid "Age between siblings"
-msgstr ""
+msgstr "Ndryshimi i moshës së vëllezërve dhe motrave"
 
 #: statistics.php:339
 msgid "Age between wife and husband"
-msgstr ""
+msgstr "Ndryshimi i moshëa së gruas dhe burrit"
 
 #: statistics.php:327
 msgid "Age difference"
-msgstr ""
+msgstr "Diferenca në moshë"
 
 #: statistics.php:529 statisticsplot.php:1266
 msgid "Age in year of first marriage"
-msgstr ""
+msgstr "Mosha në vitin e martesës së parë"
 
 #: app/Functions/FunctionsPrintLists.php:1002 statistics.php:260
 #: statistics.php:526 statisticsplot.php:1216
 msgid "Age in year of marriage"
-msgstr ""
+msgstr "Mosha në vitin e martesës"
 
 #: app/Module/FamilyTreeNewsModule.php:201
 msgid "Age of item"
-msgstr ""
+msgstr "Mosha e elementit"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1392
 msgid "Age of parents next to child’s birthdate"
-msgstr ""
+msgstr "Mosha e prindërve në krahasim me ditëlindjen e fëmijës"
 
 #: statistics.php:520 statisticsplot.php:1116
 msgid "Age related to birth year"
-msgstr ""
+msgstr "Mosha në raport me vitin e lindjes"
 
 #: app/Functions/FunctionsPrintLists.php:502 statistics.php:523
 #: statisticsplot.php:1166
 msgid "Age related to death year"
-msgstr ""
+msgstr "Mosha në raport me vitin e vdekjes"
 
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:146
 msgid "Agency"
-msgstr ""
+msgstr "Agjencia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6722
@@ -1769,12 +1779,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6723
 msgid "Albania"
-msgstr ""
+msgstr "Shqipëria"
 
 #. I18N: Name of a module
 #: app/Module/AlbumModule.php:40
 msgid "Album"
-msgstr ""
+msgstr "Albumi"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:85
@@ -1784,16 +1794,16 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6786
 msgid "Algeria"
-msgstr ""
+msgstr "Algjeria"
 
 #. I18N: gedcom tag ALIA
 #: app/GedcomTag.php:150
 msgid "Alias"
-msgstr ""
+msgstr "Llagapi"
 
 #: app/Functions/FunctionsPrintLists.php:192
 msgid "Alive"
-msgstr ""
+msgstr "Jeton"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: app/I18N.php:178 app/Module/FrequentlyAskedQuestionsModule.php:221
@@ -1801,10 +1811,10 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:1549 app/Module/GoogleMapsModule.php:1562
 #: app/Module/GoogleMapsModule.php:4614 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5623 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
-#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
-#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
-#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
+#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
+#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
+#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -1814,154 +1824,154 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "All"
-msgstr ""
+msgstr "Krejt"
 
 #: admin_trees_manage.php:714
 msgid "All changes in PhpGedView must be accepted"
-msgstr ""
+msgstr "Të gjitha ndryshimet në PhpGedView duhet të pranohen."
 
 #: admin_trees_manage.php:717
 msgid "All existing PhpGedView users must have distinct email addresses"
-msgstr ""
+msgstr "Të gjithë PhpGedView përdoruesit ekzistues duhet të kenë adresa të qarta emaili"
 
 #: admin_trees_config.php:567
 msgid "All facts and events"
-msgstr ""
+msgstr "Të gjitha faktet dhe ngjarjet"
 
 #: admin_trees_config.php:1839
 msgid "All family facts"
-msgstr ""
+msgstr "Të gjitha faktet familjare"
 
 #: login.php:411
 msgid "All fields must be completed."
-msgstr ""
+msgstr "Të gjitha fushat duhet kompletuar."
 
 #: admin_site_upgrade.php:408
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "Të gjithë fajlat kanë autorizim leximi dhe shkrimi."
 
 #: admin_trees_config.php:1721
 msgid "All individual facts"
-msgstr ""
+msgstr "Të gjitha faktet e personit"
 
 #: calendar.php:236 calendar.php:247 calendar.php:446
 msgid "All individuals"
-msgstr ""
+msgstr "Të gjithë personat"
 
 #: admin_trees_config.php:558
 msgid "All records"
-msgstr ""
+msgstr "Të gjitha të dhënat"
 
 #: admin_trees_config.php:2046
 msgid "All repository facts"
-msgstr ""
+msgstr "Të gjitha faktet e deponimit"
 
 #: admin_trees_config.php:1957
 msgid "All source facts"
-msgstr ""
+msgstr "Të gjitha faktet e burimeve"
 
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr ""
+msgstr "Lejo modulet tjera që të editojnë tekstin duke përdorur editorin \"WYSIWYG\", në vend të kodit HTML."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1678
 msgid "Allow users to see raw GEDCOM records"
-msgstr ""
+msgstr "Lejo përdoruesit të shohin të dhënat e pastërta GEDCOM"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:259
 msgid "Allow users to select their own theme"
-msgstr ""
+msgstr "Lejo përdoruesit të zgjedhin temat e tyre"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:485
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Lejo vizitorët të kërkojnë llogari të reja përdoruesish"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:963
 msgid "Also known as"
-msgstr ""
+msgstr "Poashtu e njohur si"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:959
 msgctxt "FEMALE"
 msgid "Also known as"
-msgstr ""
+msgstr "Poashtu e njohur si"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:955
 msgctxt "MALE"
 msgid "Also known as"
-msgstr ""
+msgstr "Poashtu i njohur si"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6729
 msgid "American Samoa"
-msgstr ""
+msgstr "Samoa Amerikane"
 
 #: admin_site_config.php:492
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
-msgstr ""
+msgstr "Administratori duhet ta aprovojë llogarinë e re të përdoruesit dhe të zgjedh një nivel çasjeje para se përdoruesi të mund të hyj."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr ""
+msgstr "Alternativë e kartelës \"media\", dhe shikuesi i zgjeruar i imazheve."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
 msgid "An alternative way to display charts."
-msgstr ""
+msgstr "Mënyrë alternative e shfaqjes së grafeve."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:44
 msgid "An alternative way to enter census transcripts and link them to individuals."
-msgstr ""
+msgstr "Mënyrë alternative për të futur transkriptet e regjistrimit dhe t'i lidhim ato te personat."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
 msgid "An alternative way to select a new theme."
-msgstr ""
+msgstr "Mënyrë alternative për të zgjedhur temë të re."
 
 #. I18N: Description of the “Sign in” module
 #: app/Module/LoginBlockModule.php:34
 msgid "An alternative way to sign in and sign out."
-msgstr ""
+msgstr "Mënyrë alternative e hyrjes dhe daljes."
 
 #: app/Functions/FunctionsEdit.php:916
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr ""
+msgstr "Bashkëpunëtori është një person tjetër i involvuar me fakte apo ngjarje, siç është dëshmitari apo prifti."
 
 #: app/Functions/FunctionsEdit.php:914
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr ""
+msgstr "Bashkëpunëtori është një person tjetër i involvuar me personin, siç është shoku apo punëdhënësi."
 
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:33
 msgid "An edit menu for individuals, families, sources, etc."
-msgstr ""
+msgstr "Menya për editim të personave, familjeve, burimeve, etj."
 
 #: admin_site_upgrade.php:344 admin_site_upgrade.php:366
 #: admin_site_upgrade.php:376 admin_site_upgrade.php:460
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "U shfaq gabim gjatë shpaketimit të fajlit."
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr ""
+msgstr "Graf orëqelqi i paraardhësve dhe pasardhësve të personit."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr ""
+msgstr "Trungu interaktiv, që tregon të gjithë paraardhësit dhe pasardhësit e personit."
 
 #: setup.php:505
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "U shfaq një gabim i paparashikuar i databazës."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -1970,28 +1980,28 @@ msgstr ""
 #: app/Module/AncestorsChartModule.php:33
 #: modules_v3/ahnentafel_report/report.xml:4
 msgid "Ancestors"
-msgstr ""
+msgstr "Paraardhësit"
 
 #. I18N: gedcom tag ANCI
 #: app/GedcomTag.php:158
 msgid "Ancestors interest"
-msgstr ""
+msgstr "Interesi i paraardhësve"
 
 #: modules_v3/ahnentafel_report/report.xml:55
 msgid "Ancestors of "
-msgstr ""
+msgstr "Paraardhësit e "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/AncestryController.php:54
 #: app/Controller/AncestryController.php:80
 #, php-format
 msgid "Ancestors of %s"
-msgstr ""
+msgstr "Paraardhësit e %s"
 
 #. I18N: gedcom tag AFN
 #: app/GedcomTag.php:138
 msgid "Ancestral file number"
-msgstr ""
+msgstr "Numi i fajlit të paraardhësve"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:87
@@ -2016,32 +2026,33 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1804 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1804
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
-msgstr ""
+msgstr "Përvjetori"
 
 #: calendar.php:118
 msgid "Anniversary calendar"
-msgstr ""
+msgstr "Kalendari i përvjetorëve"
 
 #. I18N: gedcom tag ANUL
 #: app/GedcomTag.php:162
 msgid "Annulment"
-msgstr ""
+msgstr "Anulim"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:186
 msgid "Answer"
-msgstr ""
+msgstr "Përgjigjja"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6730
 msgid "Antarctica"
-msgstr ""
+msgstr "Antarktiku"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6732
 msgid "Antigua and Barbuda"
-msgstr ""
+msgstr "Antigua dhe Barbuda"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:277
@@ -2051,66 +2062,66 @@ msgstr ""
 #. I18N: Description of the “Batch update” module
 #: app/Module/BatchUpdateModule.php:86
 msgid "Apply automatic corrections to your genealogy data."
-msgstr ""
+msgstr "Zbato përmirësimet automatike në të dhënat tuaja gjenealogjike."
 
 #: admin_trees_download.php:172 app/Module/ClippingsCartModule.php:383
 #: app/Module/ClippingsCartModule.php:402
 #: app/Module/ClippingsCartModule.php:764
 #: app/Module/ClippingsCartModule.php:773
 msgid "Apply privacy settings"
-msgstr ""
+msgstr "Zbato përkufizimet e privatësisë"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2278
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Zbato këto preferenca për të gjitha trungjet e familjeve"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2285
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Zbato këto preferenca për trungjet e reja të familjeve"
 
 #: admin_users.php:100
 #, php-format
 msgid "Approval of account at %s"
-msgstr ""
+msgstr "Miratimi i llogarisë në %s"
 
 #: edit_changes.php:209 edit_changes.php:220
 msgid "Approve all changes"
-msgstr ""
+msgstr "Mirato të gjitha ndryshimet"
 
 #: admin_users.php:875
 msgid "Approved"
-msgstr ""
+msgstr "Miratuar"
 
 #: admin_users.php:386
 msgid "Approved by administrator"
-msgstr ""
+msgstr "Miratuar nga administratori"
 
 #: app/Date/CalendarDate.php:314
 msgctxt "Abbreviation for April"
 msgid "Apr"
-msgstr ""
+msgstr "Pri"
 
 #: app/Date/CalendarDate.php:214
 msgctxt "GENITIVE"
 msgid "April"
-msgstr ""
+msgstr "Prillit"
 
 #: app/Date/CalendarDate.php:282
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr ""
+msgstr "Prillin"
 
 #: app/Date/CalendarDate.php:248
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr ""
+msgstr "Prilli"
 
 #: app/Date/CalendarDate.php:180 app/Functions/FunctionsPrint.php:653
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr ""
+msgstr "Prilli"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:76
@@ -2123,11 +2134,11 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:1022
 #: app/Functions/FunctionsPrintFacts.php:1170
 msgid "Are you sure you want to delete this fact?"
-msgstr ""
+msgstr "Jeni të sigurt që doni të fshini këtë fakt?"
 
 #: app/Module/UserMessagesModule.php:96 app/Module/UserMessagesModule.php:139
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr ""
+msgstr "Jeni të sigurt që doni të fshini këtë mesazh? Më vonë nuk do të mund ta riktheni."
 
 #: admin_media.php:318 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_manage.php:417 admin_trees_manage.php:428 admin_users.php:211
@@ -2145,29 +2156,30 @@ msgstr ""
 #: edituser.php:320
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "Jeni të sigurt që doni të fshini \"%s\"?"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Jeni të sigurt që doni të mënjanoni lidhjen nga media objekti?"
 
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr ""
+msgstr "Jeni të sigurt që doni të mënjanoni këtë element nga lista e favoritëve?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Jeni të sigurt që doni të zhbëni të gjitha ndryshimet në këtë trung familjar?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6727
 msgid "Argentina"
-msgstr ""
+msgstr "Argjentina"
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -2194,7 +2206,7 @@ msgstr ""
 
 #: app/Module/HtmlBlockModule.php:316
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr ""
+msgstr "Kur të përdorni shiritin e veglave pë formatizim HTML, ju mund të fusni fusha të databazës, të cilat përditësohen automatikisht. Këto fusha speciale shënohen me karakteret <b>#</b>. P.sh. <b>#totalFamilies#</b> do të zëvendësohet me numrin aktual të familjeve në databazë. Përdoruesit e avansuar do të duan të aplikojnë klasat CSS në tekstin e tyre, ashtuqë formatimi t'i përshtatet temës së zgjedhur."
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:77
@@ -2203,21 +2215,21 @@ msgstr ""
 
 #: statistics.php:600
 msgid "Asia"
-msgstr ""
+msgstr "Azia"
 
 #. I18N: gedcom tag ASSO
 #. I18N: gedcom tag _ASSO
 #: app/GedcomTag.php:166 app/GedcomTag.php:968
 msgid "Associate"
-msgstr ""
+msgstr "Bashkëpunëtor"
 
 #: edit_interface.php:1241 help_text.php:292
 msgid "Associate events with this source"
-msgstr ""
+msgstr "Bashkangjitni këto ndodhi këtij burimi"
 
 #: search.php:107 search.php:266
 msgid "Associates"
-msgstr ""
+msgstr "Bashkëpunëtorët"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:91
@@ -2227,7 +2239,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6920
 msgid "At sea"
-msgstr ""
+msgstr "Në det"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
@@ -2236,31 +2248,31 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
-msgstr ""
+msgstr "Shoqëruesi"
 
 #: app/GedcomCode/GedcomCodeRela.php:60
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr ""
+msgstr "Shoqëruesja"
 
 #: app/GedcomCode/GedcomCodeRela.php:58
 msgctxt "MALE"
 msgid "Attendant"
-msgstr ""
+msgstr "Shoqëruesi"
 
 #: app/GedcomCode/GedcomCodeRela.php:71
 msgid "Attending"
-msgstr ""
+msgstr "I pranishëm"
 
 #: app/GedcomCode/GedcomCodeRela.php:69
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr ""
+msgstr "E pranishme"
 
 #: app/GedcomCode/GedcomCodeRela.php:67
 msgctxt "MALE"
 msgid "Attending"
-msgstr ""
+msgstr "I pranishëm"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1906
@@ -2270,27 +2282,27 @@ msgstr ""
 #: app/Date/CalendarDate.php:318
 msgctxt "Abbreviation for August"
 msgid "Aug"
-msgstr ""
+msgstr "Gush"
 
 #: app/Date/CalendarDate.php:218
 msgctxt "GENITIVE"
 msgid "August"
-msgstr ""
+msgstr "Gushtit"
 
 #: app/Date/CalendarDate.php:286
 msgctxt "INSTRUMENTAL"
 msgid "August"
-msgstr ""
+msgstr "Gushtin"
 
 #: app/Date/CalendarDate.php:252
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr ""
+msgstr "Gusht"
 
 #: app/Date/CalendarDate.php:184 app/Functions/FunctionsPrint.php:657
 msgctxt "NOMINATIVE"
 msgid "August"
-msgstr ""
+msgstr "Gusht"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6733
@@ -2305,36 +2317,36 @@ msgstr ""
 #. I18N: gedcom tag AUTH
 #: app/GedcomTag.php:170
 msgid "Author"
-msgstr ""
+msgstr "Autori"
 
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:266
 msgid "Author of last change"
-msgstr ""
+msgstr "Autori i ndryshimit të fundit"
 
 #: admin_users.php:442
 msgid "Automatically approve changes made by this user"
-msgstr ""
+msgstr "Automatikisht mirato ndryshimet e bëra nga ky përdorues"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:737
 msgid "Automatically create globally unique IDs"
-msgstr ""
+msgstr "Automatikisht krijo IDtë unike globale"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1449
 msgid "Automatically expand list of events of close relatives"
-msgstr ""
+msgstr "Automatikisht zgjero listën e ngjarjeve të të afëmve të ngushtë"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1568
 msgid "Automatically expand notes"
-msgstr ""
+msgstr "Automatikisht zgjero njoftimet"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1583
 msgid "Automatically expand sources"
-msgstr ""
+msgstr "Automatikisht zgjero burimet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:147
@@ -2362,37 +2374,37 @@ msgstr ""
 
 #: index_edit.php:301
 msgid "Available blocks"
-msgstr ""
+msgstr "Blloqet e mundshme"
 
 #: app/Functions/FunctionsPrintLists.php:2016 app/Stats.php:3945
 msgid "Average age"
-msgstr ""
+msgstr "Mosha mesatare"
 
 #: app/Module/FamilyTreeStatisticsModule.php:173
 #: app/Module/FamilyTreeStatisticsModule.php:387
 #: app/Module/HtmlBlockModule.php:241 app/Stats.php:2602 statistics.php:149
 msgid "Average age at death"
-msgstr ""
+msgstr "Mosha mesatare te vdekja"
 
 #: app/Stats.php:3933 app/Stats.php:3934 app/Stats.php:3938 app/Stats.php:3942
 #: app/Stats.php:3945
 msgid "Average age in century of marriage"
-msgstr ""
+msgstr "Mosha mesatare e martesës në shekull"
 
 #: app/Stats.php:2589 app/Stats.php:2602
 msgid "Average age related to death century"
-msgstr ""
+msgstr "Mosha mesatare në raport me shekullin e vdekjes"
 
 #: app/Module/FamilyTreeStatisticsModule.php:189
 #: app/Module/FamilyTreeStatisticsModule.php:415
 #: app/Module/HtmlBlockModule.php:251 app/Stats.php:4951 statistics.php:306
 msgid "Average number of children per family"
-msgstr ""
+msgstr "Numri mesatar i fëmijëve për familje"
 
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:631 admin_trees_manage.php:670
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
-msgstr ""
+msgstr "Shmangni hapësirat dhe pikësimin. Emri i familjes duhet të jetë zgjedhje e mirë."
 
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2426,7 +2438,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6735
 msgid "Azerbaijan"
-msgstr ""
+msgstr "Azerbajxhan"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6736
@@ -2475,80 +2487,80 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
 msgid "Bangladesh"
-msgstr ""
+msgstr "Bangladeshi"
 
 #. I18N: gedcom tag BAPM
 #: app/GedcomTag.php:182 modules_v3/missing_facts_report/report.xml:16
 msgid "Baptism"
-msgstr ""
+msgstr "Pagëzimi"
 
 #: app/GedcomTag.php:1017
 msgid "Baptism of a brother"
-msgstr ""
+msgstr "Pagëzimi i vëllaut"
 
 #: app/GedcomTag.php:976
 msgid "Baptism of a child"
-msgstr ""
+msgstr "Pagëzimi i fëmijës"
 
 #: app/GedcomTag.php:974
 msgid "Baptism of a daughter"
-msgstr ""
+msgstr "Pagëzimi i vajzës"
 
 #: app/GedcomTag.php:985 app/GedcomTag.php:994 app/GedcomTag.php:1003
 msgid "Baptism of a grandchild"
-msgstr ""
+msgstr "Pagëzimi i nipit"
 
 #: app/GedcomTag.php:983
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Pagëzimi i mbesës"
 
 #: app/GedcomTag.php:992
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Pagëzimi i mbesës nga vajza"
 
 #: app/GedcomTag.php:1001
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Pagëzimi i mbesës nga djali"
 
 #: app/GedcomTag.php:981
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Pagëzimi i nipit"
 
 #: app/GedcomTag.php:990
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Pagëzimi i nipit nga vajza"
 
 #: app/GedcomTag.php:999
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Pagëzimi i nipit nga djali"
 
 #: app/GedcomTag.php:1008
 msgid "Baptism of a half-brother"
-msgstr ""
+msgstr "Pagëzimi i gjysmë-vëllaut"
 
 #: app/GedcomTag.php:1012
 msgid "Baptism of a half-sibling"
-msgstr ""
+msgstr "Pagëzimi i gjysmë-vëllaut/motrës"
 
 #: app/GedcomTag.php:1010
 msgid "Baptism of a half-sister"
-msgstr ""
+msgstr "Pagëzimi i gjysmë-motrës"
 
 #: app/GedcomTag.php:1021
 msgid "Baptism of a sibling"
-msgstr ""
+msgstr "Pagëzimi i vëllaut/motrës"
 
 #: app/GedcomTag.php:1019
 msgid "Baptism of a sister"
-msgstr ""
+msgstr "Pagëzimi i motrës"
 
 #: app/GedcomTag.php:972
 msgid "Baptism of a son"
-msgstr ""
+msgstr "Pagëzimi i djalit"
 
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:190 modules_v3/missing_facts_report/report.xml:17
@@ -2569,7 +2581,7 @@ msgstr ""
 #: app/Module/BatchUpdateModule.php:77 app/Module/BatchUpdateModule.php:184
 #: app/Module/BatchUpdateModule.php:210 app/Module/GoogleMapsModule.php:2674
 msgid "Batch update"
-msgstr ""
+msgstr "Përditësimi grupor"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:113
@@ -2579,27 +2591,27 @@ msgstr ""
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2723
 msgid "Bearing"
-msgstr ""
+msgstr "Drejtimi"
 
 #: search_advanced.php:158 search_advanced.php:220 search_advanced.php:235
 #: search_advanced.php:256 search_advanced.php:271
 msgid "Begins with"
-msgstr ""
+msgstr "Fillon me"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6746
 msgid "Belarus"
-msgstr ""
+msgstr "Belorusia"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:78
 msgid "Belgian Chocolate"
-msgstr ""
+msgstr "Çokollatë Belgjike"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6738
 msgid "Belgium"
-msgstr ""
+msgstr "Belgjika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6747
@@ -2623,7 +2635,7 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:75
 msgid "Best man"
-msgstr ""
+msgstr "Kumbara (martesë)"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6753
@@ -2633,7 +2645,7 @@ msgstr ""
 #. I18N: gedcom tag _BIBL
 #: app/GedcomTag.php:1026
 msgid "Bibliography"
-msgstr ""
+msgstr "Bibliografia"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:97
@@ -2643,7 +2655,7 @@ msgstr ""
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
 msgid "Binary data object"
-msgstr ""
+msgstr "Objekt i të dhënave binare"
 
 #: app/Functions/FunctionsPrint.php:475
 msgid "Bing Maps™"
@@ -2775,120 +2787,120 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:1368
 #: modules_v3/relative_ext_report/report.xml:56
 msgid "Birth"
-msgstr ""
+msgstr "Lindja"
 
 #: app/GedcomCode/GedcomCodePedi.php:50
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "Lindur si"
 
 #: app/GedcomCode/GedcomCodePedi.php:48
 msgctxt "Male pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "Lindur si"
 
 #: app/GedcomCode/GedcomCodePedi.php:52
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "Lindur si"
 
 #: app/Stats.php:1661 statistics.php:538
 msgid "Birth by country"
-msgstr ""
+msgstr "Lindjet sipas shtetit"
 
 #: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
 msgid "Birth date range end"
-msgstr ""
+msgstr "Fundi i brezit të datë së lindjes"
 
 #: modules_v3/bdm_report/report.xml:7 modules_v3/birth_report/report.xml:7
 msgid "Birth date range start"
-msgstr ""
+msgstr "Fillimi i brezit të datës së lindjes"
 
 #: app/GedcomTag.php:1075
 msgid "Birth of a brother"
-msgstr ""
+msgstr "Lindja e vëllaut"
 
 #: app/GedcomTag.php:1034
 msgid "Birth of a child"
-msgstr ""
+msgstr "Lindja e fëmijës"
 
 #: app/GedcomTag.php:1032
 msgid "Birth of a daughter"
-msgstr ""
+msgstr "Lindja e vajzës"
 
 #: app/GedcomTag.php:1043 app/GedcomTag.php:1052 app/GedcomTag.php:1061
 msgid "Birth of a grandchild"
-msgstr ""
+msgstr "Lindja e nipit"
 
 #: app/GedcomTag.php:1041
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "lindja e mbesës"
 
 #: app/GedcomTag.php:1050
 msgctxt "daughter’s daughter"
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "Lindja e mbesës nga vajza"
 
 #: app/GedcomTag.php:1059
 msgctxt "son’s daughter"
 msgid "Birth of a granddaughter"
-msgstr ""
+msgstr "Lindja e mbesës nga djali"
 
 #: app/GedcomTag.php:1039
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Lindja e nipit"
 
 #: app/GedcomTag.php:1048
 msgctxt "daughter’s son"
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Lindja e nipit nga vajza"
 
 #: app/GedcomTag.php:1057
 msgctxt "son’s son"
 msgid "Birth of a grandson"
-msgstr ""
+msgstr "Lindja e nipit nga djali"
 
 #: app/GedcomTag.php:1066
 msgid "Birth of a half-brother"
-msgstr ""
+msgstr "Lindja e gjysmë-vëllaut"
 
 #: app/GedcomTag.php:1070
 msgid "Birth of a half-sibling"
-msgstr ""
+msgstr "Lindja e gjysmë-vëllaut/motrës"
 
 #: app/GedcomTag.php:1068
 msgid "Birth of a half-sister"
-msgstr ""
+msgstr "Lindja e gjysmë-motrës"
 
 #: app/GedcomTag.php:1079
 msgid "Birth of a sibling"
-msgstr ""
+msgstr "Lindja e vëllaut/motrës"
 
 #: app/GedcomTag.php:1077
 msgid "Birth of a sister"
-msgstr ""
+msgstr "Lindja e motrës"
 
 #: app/GedcomTag.php:1030
 msgid "Birth of a son"
-msgstr ""
+msgstr "Lindja e djalit"
 
 #: statistics.php:410
 msgid "Birth places"
-msgstr ""
+msgstr "Vendet e lindjes"
 
 #: modules_v3/birth_report/report.xml:6
 msgid "Birthplace contains"
-msgstr ""
+msgstr "Vendi i lindjes përbën"
 
 #. I18N: Name of a module/report
 #: app/Module/BirthReportModule.php:29 modules_v3/birth_report/report.xml:3
 #: modules_v3/birth_report/report.xml:31
 msgid "Births"
-msgstr ""
+msgstr "Lindjet"
 
 #: app/Stats.php:1956 statistics.php:121
 msgid "Births by century"
-msgstr ""
+msgstr "Lindjet sipas shekulit"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:101
@@ -2898,31 +2910,31 @@ msgstr ""
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
 msgid "Blessing"
-msgstr ""
+msgstr "Bekimi"
 
 #: admin_module_blocks.php:73
 msgid "Block"
-msgstr ""
+msgstr "Blloku"
 
 #. I18N: Menu entry
 #: admin_module_blocks.php:35 admin_modules.php:162
 #: app/Theme/AdministrationTheme.php:193
 msgid "Blocks"
-msgstr ""
+msgstr "Blloqet"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:79
 msgid "Blue Lagoon"
-msgstr ""
+msgstr "Laguna e Kaltërt"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:80
 msgid "Blue Marine"
-msgstr ""
+msgstr "Marina e Kaltërt"
 
 #: message.php:127
 msgid "Body"
-msgstr ""
+msgstr "Teksti"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:103
@@ -2942,21 +2954,21 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1908
 msgid "Book"
-msgstr ""
+msgstr "Libri"
 
 #: ancestry.php:71 descendancy.php:62
 msgid "Booklet"
-msgstr ""
+msgstr "Libreza"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:63
 msgid "Born in the covenant"
-msgstr ""
+msgstr "Lindur në komunitet"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
 msgid "Bosnia and Herzegovina"
-msgstr ""
+msgstr "Bosnja dhe Hercegovina"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:107
@@ -2965,11 +2977,11 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:628
 msgid "Both alive"
-msgstr ""
+msgstr "Të dy të gjallë"
 
 #: app/Functions/FunctionsPrintLists.php:655
 msgid "Both dead"
-msgstr ""
+msgstr "Të dy të vdekur"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6755
@@ -2989,22 +3001,22 @@ msgstr ""
 #. I18N: Branches of a family tree
 #: app/Controller/BranchesController.php:68 app/Theme/AbstractTheme.php:1478
 msgid "Branches"
-msgstr ""
+msgstr "Degët"
 
 #. I18N: %s is a surname
 #: app/Controller/BranchesController.php:61
 #, php-format
 msgid "Branches of the %s family"
-msgstr ""
+msgstr "Degët e familjes %s"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6750
 msgid "Brazil"
-msgstr ""
+msgstr "Brazili"
 
 #: app/GedcomCode/GedcomCodeRela.php:78
 msgid "Bridesmaid"
-msgstr ""
+msgstr "Shoqëruesja (e nuses)"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
@@ -3014,33 +3026,33 @@ msgstr ""
 #. I18N: gedcom tag _BRTM
 #: app/GedcomTag.php:1084
 msgid "Brit milah"
-msgstr ""
+msgstr "Synetia"
 
 #: app/GedcomTag.php:1778
 msgid "Brit milah of a brother"
-msgstr ""
+msgstr "Synetia e vëllaut"
 
 #: app/GedcomTag.php:1770
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "Synetia e nipit"
 
 #: app/GedcomTag.php:1772
 msgctxt "daughter’s son"
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "Synetia e nipit nga vajza"
 
 #: app/GedcomTag.php:1774
 msgctxt "son’s son"
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "Synetia e nipit nga djali"
 
 #: app/GedcomTag.php:1776
 msgid "Brit milah of a half-brother"
-msgstr ""
+msgstr "Synetia e gjysmë-vëllaut"
 
 #: app/GedcomTag.php:1768
 msgid "Brit milah of a son"
-msgstr ""
+msgstr "Synetia e djalit"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6830
@@ -3060,7 +3072,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:313
 #: modules_v3/individual_report/report.xml:316
 msgid "Brother"
-msgstr ""
+msgstr "Vëllau"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:89
@@ -3099,7 +3111,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6742
 msgid "Bulgaria"
-msgstr ""
+msgstr "Bullgaria"
 
 #. I18N: gedcom tag BURI
 #: app/GedcomTag.php:226 modules_v3/family_group_report/report.xml:351
@@ -3107,139 +3119,139 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:1049
 #: modules_v3/missing_facts_report/report.xml:25
 msgid "Burial"
-msgstr ""
+msgstr "Varrimi"
 
 #: app/GedcomTag.php:1173
 msgid "Burial of a brother"
-msgstr ""
+msgstr "Varrimi i vëllaut"
 
 #: app/GedcomTag.php:1096
 msgid "Burial of a child"
-msgstr ""
+msgstr "Varrimi i fëmijës"
 
 #: app/GedcomTag.php:1094
 msgid "Burial of a daughter"
-msgstr ""
+msgstr "varrimi i vajzës"
 
 #: app/GedcomTag.php:1164
 msgid "Burial of a father"
-msgstr ""
+msgstr "Varrimi i babait"
 
 #: app/GedcomTag.php:1105 app/GedcomTag.php:1114 app/GedcomTag.php:1123
 msgid "Burial of a grandchild"
-msgstr ""
+msgstr "Varrimi i nipit"
 
 #: app/GedcomTag.php:1103
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Varrimi i mbesës"
 
 #: app/GedcomTag.php:1112
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Varrimi i mbesës nga vajza"
 
 #: app/GedcomTag.php:1121
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Varrimi i mbesës nga djali"
 
 #: app/GedcomTag.php:1128
 msgid "Burial of a grandfather"
-msgstr ""
+msgstr "Varrimi i gjyshit"
 
 #: app/GedcomTag.php:1130
 msgid "Burial of a grandmother"
-msgstr ""
+msgstr "Varrimi i gjyshes"
 
 #: app/GedcomTag.php:1132
 msgid "Burial of a grandparent"
-msgstr ""
+msgstr "Varrimi i gjyshit/gjyshes"
 
 #: app/GedcomTag.php:1101
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Varrimi i nipit"
 
 #: app/GedcomTag.php:1110
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Varrimi i nipit nga vajza"
 
 #: app/GedcomTag.php:1119
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Varrimi i nipit nga djali"
 
 #: app/GedcomTag.php:1155
 msgid "Burial of a half-brother"
-msgstr ""
+msgstr "Varrimi i gjysmë-vëllaut"
 
 #: app/GedcomTag.php:1159
 msgid "Burial of a half-sibling"
-msgstr ""
+msgstr "Varrimi i gjysmë-vëllaut/motrës"
 
 #: app/GedcomTag.php:1157
 msgid "Burial of a half-sister"
-msgstr ""
+msgstr "Varrimi i gjysmë-motrës"
 
 #: app/GedcomTag.php:1182
 msgid "Burial of a husband"
-msgstr ""
+msgstr "Varrimi i burrit"
 
 #: app/GedcomTag.php:1146
 msgid "Burial of a maternal grandfather"
-msgstr ""
+msgstr "Varrimi i gjyshit nga nëna"
 
 #: app/GedcomTag.php:1148
 msgid "Burial of a maternal grandmother"
-msgstr ""
+msgstr "Varrimi i gjyshes nga nëna"
 
 #: app/GedcomTag.php:1150
 msgid "Burial of a maternal grandparent"
-msgstr ""
+msgstr "Varrimi i gjyshit/gjyshes nga nëna"
 
 #: app/GedcomTag.php:1166
 msgid "Burial of a mother"
-msgstr ""
+msgstr "Varrimi i nënës"
 
 #: app/GedcomTag.php:1168
 msgid "Burial of a parent"
-msgstr ""
+msgstr "Varrimi i prindit"
 
 #: app/GedcomTag.php:1137
 msgid "Burial of a paternal grandfather"
-msgstr ""
+msgstr "Varrimi i gjyshit nga babai"
 
 #: app/GedcomTag.php:1139
 msgid "Burial of a paternal grandmother"
-msgstr ""
+msgstr "Varrimi i gjyshes nga babai"
 
 #: app/GedcomTag.php:1141
 msgid "Burial of a paternal grandparent"
-msgstr ""
+msgstr "Varrimi i gjyshit/gjyshes nga babai"
 
 #: app/GedcomTag.php:1177
 msgid "Burial of a sibling"
-msgstr ""
+msgstr "Varrimi i vëllaut/motrës"
 
 #: app/GedcomTag.php:1175
 msgid "Burial of a sister"
-msgstr ""
+msgstr "Varrimi i motrës"
 
 #: app/GedcomTag.php:1092
 msgid "Burial of a son"
-msgstr ""
+msgstr "Varrimi i djalit"
 
 #: app/GedcomTag.php:1186
 msgid "Burial of a spouse"
-msgstr ""
+msgstr "Varrimi i bashkëshortit"
 
 #: app/GedcomTag.php:1184
 msgid "Burial of a wife"
-msgstr ""
+msgstr "Varrimi i gruas"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
-msgstr ""
+msgstr "Vendi i varrimit përbën"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6740
@@ -3253,22 +3265,22 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:86
 msgid "Buyer"
-msgstr ""
+msgstr "Blerësi"
 
 #: app/GedcomCode/GedcomCodeRela.php:84
 msgctxt "FEMALE"
 msgid "Buyer"
-msgstr ""
+msgstr "Blerësja"
 
 #: app/GedcomCode/GedcomCodeRela.php:82
 msgctxt "MALE"
 msgid "Buyer"
-msgstr ""
+msgstr "Blerësi"
 
 #. I18N: Help text for the "Port number" site configuration setting
 #: admin_site_config.php:362
 msgid "By default, SMTP works on port 25."
-msgstr ""
+msgstr "Normalisht, SMTP punon në portin 25."
 
 #: app/Module/GoogleMapsModule.php:4490
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
@@ -3501,7 +3513,8 @@ msgstr ""
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:436
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr ""
 
@@ -3541,9 +3554,9 @@ msgstr ""
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1287
-#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
-#: app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163
+#: admin_trees_config.php:1287 app/Module/ChartsBlockModule.php:34
+#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
 msgstr ""
 
@@ -4046,9 +4059,10 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:441
 #: app/Module/GoogleMapsModule.php:288 app/Module/GoogleMapsModule.php:1512
 #: app/Module/GoogleMapsModule.php:4021
-#: app/Module/RelationshipsChartModule.php:147 app/Module/SiteMapModule.php:296
-#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
-#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
+#: app/Module/RelationshipsChartModule.php:147
+#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
+#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
+#: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr ""
 
@@ -4445,7 +4459,8 @@ msgstr ""
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -5013,7 +5028,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -5029,8 +5045,9 @@ msgid "DejaVu"
 msgstr ""
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
-#: admin_site_change.php:373 admin_site_logs.php:314 admin_trees_config.php:576
-#: admin_trees_manage.php:418 admin_trees_manage.php:429 admin_users.php:211
+#: admin_site_change.php:373 admin_site_logs.php:314
+#: admin_trees_config.php:576 admin_trees_manage.php:418
+#: admin_trees_manage.php:429 admin_users.php:211
 #: app/Controller/FamilyController.php:94
 #: app/Controller/GedcomRecordController.php:116
 #: app/Controller/IndividualController.php:303
@@ -5111,7 +5128,8 @@ msgstr ""
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
 #: app/Module/ChartsBlockModule.php:195
-#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
+#: app/Module/DescendancyChartModule.php:33
+#: app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5859,7 +5877,8 @@ msgstr ""
 msgid "Explain why you are requesting an account."
 msgstr ""
 
-#: admin_site_change.php:369 admin_site_logs.php:310 admin_trees_manage.php:594
+#: admin_site_change.php:369 admin_site_logs.php:310
+#: admin_trees_manage.php:594
 msgid "Export"
 msgstr ""
 
@@ -6037,7 +6056,8 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:2789 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1489
 #: calendar.php:422 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:134 mediaviewer.php:123
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:225
 #: repo.php:143 search.php:93 source.php:147 statistics.php:71
 #: statisticsplot.php:974 statisticsplot.php:1078 statisticsplot.php:1328
@@ -6134,7 +6154,8 @@ msgstr ""
 msgid "Family tree access and settings"
 msgstr ""
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90
+#: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr ""
 
@@ -6274,7 +6295,8 @@ msgid "Father’s family with an unknown individual"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1345
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1345
 msgid "Favorites"
 msgstr ""
 
@@ -6417,7 +6439,8 @@ msgstr ""
 msgid "Find all possible relationships"
 msgstr ""
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
@@ -6505,7 +6528,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7160,7 +7184,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7703,7 +7728,8 @@ msgid "Installation folder"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:197 app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:197
+#: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
 msgstr ""
 
@@ -8605,6 +8631,11 @@ msgstr ""
 msgid "Manage media"
 msgstr ""
 
+#: admin_media.php:535 app/Controller/MediaController.php:49
+#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
+msgid "Manage the links"
+msgstr ""
+
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:558
 #: app/Module/ClippingsCartModule.php:390
@@ -8614,11 +8645,6 @@ msgstr ""
 
 #: admin.php:665
 msgid "Managers"
-msgstr ""
-
-#: admin_media.php:535 app/Controller/MediaController.php:49
-#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
-msgid "Manage the links"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -9312,9 +9338,9 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:442
 #: app/Module/GoogleMapsModule.php:289 app/Module/GoogleMapsModule.php:1513
 #: app/Module/GoogleMapsModule.php:4022
-#: app/Module/RelationshipsChartModule.php:148 app/Module/SiteMapModule.php:297
-#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
-#: app/Theme/AdministrationTheme.php:190
+#: app/Module/RelationshipsChartModule.php:148
+#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
+#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr ""
 
@@ -10122,8 +10148,9 @@ msgid "Not verified by the user"
 msgstr ""
 
 #. I18N: gedcom tag NOTE
-#: app/Controller/FamilyController.php:147 app/Functions/FunctionsPrint.php:173
-#: app/GedcomTag.php:634 modules_v3/cemetery_report/report.xml:64
+#: app/Controller/FamilyController.php:147
+#: app/Functions/FunctionsPrint.php:173 app/GedcomTag.php:634
+#: modules_v3/cemetery_report/report.xml:64
 #: modules_v3/family_group_report/report.xml:485
 #: modules_v3/family_group_report/report.xml:749
 #: modules_v3/family_group_report/report.xml:1101
@@ -10218,8 +10245,8 @@ msgid "Number of items"
 msgstr ""
 
 #. I18N: Label for a configuration option
-#: app/Module/TopGivenNamesModule.php:146 app/Module/TopPageViewsModule.php:159
-#: app/Module/TopSurnamesModule.php:168
+#: app/Module/TopGivenNamesModule.php:146
+#: app/Module/TopPageViewsModule.php:159 app/Module/TopSurnamesModule.php:168
 msgid "Number of items to show"
 msgstr ""
 
@@ -10532,7 +10559,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -11360,8 +11388,9 @@ msgstr ""
 msgid "Random images from the current family tree."
 msgstr ""
 
-#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1803 edit_interface.php:1877
+#: app/Controller/FamilyController.php:88
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1803
+#: edit_interface.php:1877
 msgid "Re-order children"
 msgstr ""
 
@@ -11384,7 +11413,8 @@ msgid "Real name"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr ""
 
@@ -11400,7 +11430,8 @@ msgstr ""
 #: admin_site_change.php:327 admin_site_change.php:388
 #: admin_trees_config.php:530 app/Functions/FunctionsPrintLists.php:1800
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:321 app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:321
+#: app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -13785,8 +13816,8 @@ msgstr ""
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:294
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:294
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr ""
@@ -14158,8 +14189,8 @@ msgstr ""
 msgid "There are no source citations for this individual."
 msgstr ""
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1926
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1926
 msgid "There are pending changes for you to moderate."
 msgstr ""
 
@@ -15089,7 +15120,8 @@ msgstr ""
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:88
-#: modules_v3/death_report/report.xml:99 modules_v3/fact_sources/report.xml:142
+#: modules_v3/death_report/report.xml:99
+#: modules_v3/fact_sources/report.xml:142
 #: modules_v3/fact_sources/report.xml:146
 #: modules_v3/fact_sources/report.xml:305
 #: modules_v3/fact_sources/report.xml:309
@@ -15952,7 +15984,8 @@ msgstr ""
 msgid "Who is online"
 msgstr ""
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr ""
 
@@ -16703,14 +16736,15 @@ msgstr ""
 #. I18N: A button label
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:730
-#: app/Module/GoogleMapsModule.php:3946 app/Theme/AbstractTheme.php:700
-#: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1746
-#: edit_interface.php:1855 edit_interface.php:2048 edit_interface.php:2217
-#: edit_interface.php:2603 find.php:766 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189
+#: app/Module/GoogleMapsModule.php:730 app/Module/GoogleMapsModule.php:3946
+#: app/Theme/AbstractTheme.php:700 edit_changes.php:240 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1746 edit_interface.php:1855 edit_interface.php:2048
+#: edit_interface.php:2217 edit_interface.php:2603 find.php:766
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr ""
@@ -19216,7 +19250,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19387,20 +19422,21 @@ msgstr ""
 #. I18N: A button label
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:199
-#: admin_site_access.php:307 admin_site_config.php:652 admin_site_merge.php:340
-#: admin_trees_config.php:2271 admin_users.php:673
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129
+#: admin_modules.php:199 admin_site_access.php:307 admin_site_config.php:652
+#: admin_site_merge.php:340 admin_trees_config.php:2271 admin_users.php:673
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:504 app/Module/GoogleMapsModule.php:729
 #: app/Module/GoogleMapsModule.php:2735 app/Module/GoogleMapsModule.php:3945
-#: app/Module/RelationshipsChartModule.php:173 app/Module/SiteMapModule.php:320
-#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
-#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1745 edit_interface.php:1853 edit_interface.php:2047
-#: edit_interface.php:2215 edit_interface.php:2599 editnews.php:74
-#: edituser.php:317 find.php:543 index_edit.php:376
+#: app/Module/RelationshipsChartModule.php:173
+#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
+#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
+#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
+#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
+#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1745
+#: edit_interface.php:1853 edit_interface.php:2047 edit_interface.php:2215
+#: edit_interface.php:2599 editnews.php:74 edituser.php:317 find.php:543
+#: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
