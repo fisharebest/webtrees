@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-19 11:32+0000\n"
+"PO-Revision-Date: 2016-05-22 16:45+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -6014,7 +6014,7 @@ msgstr "Tény vagy esemény"
 #: modules_v3/individual_ext_report/report.xml:153
 #: modules_v3/individual_report/report.xml:149
 msgid "Facts and events"
-msgstr "A tényeket és az eseményeket"
+msgstr "Tények és események"
 
 #: admin_trees_config.php:1834
 msgid "Facts for family records"
@@ -10030,7 +10030,7 @@ msgstr "Nincs előredefiniált szöveg"
 
 #: app/I18N.php:226 app/I18N.php:236
 msgid "No records to display"
-msgstr "Nincsenek kijelezni való bejegyzések"
+msgstr "Nincsenek kijelezni való adatok"
 
 #: app/Controller/AdvancedSearchController.php:659
 #: app/Controller/SearchController.php:546
@@ -18966,7 +18966,7 @@ msgstr "kevesebb mint"
 #: app/Module/UpcomingAnniversariesModule.php:168
 #: app/Module/YahrzeitModule.php:276
 msgid "list"
-msgstr "lista"
+msgstr "felsorolás"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:121
