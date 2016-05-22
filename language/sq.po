@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-22 17:45+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2016-05-22 21:13+0000\n"
+"Last-Translator: Astrit Bokshi <astritbokshi@gmail.com>\n"
 "Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/webtrees/sq/>\n"
 "Language: sq\n"
 "MIME-Version: 1.0\n"
@@ -1692,11 +1692,11 @@ msgstr "Kërkim i avansuar"
 #. I18N: Name of a country or state
 #: app/Stats.php:6719
 msgid "Afghanistan"
-msgstr ""
+msgstr "Afganistani"
 
 #: statistics.php:602
 msgid "Africa"
-msgstr ""
+msgstr "Afrika"
 
 #: admin_trees_manage.php:681
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
@@ -2565,7 +2565,7 @@ msgstr "Pagëzimi i djalit"
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:190 modules_v3/missing_facts_report/report.xml:17
 msgid "Bar mitzvah"
-msgstr ""
+msgstr "Syneti"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6751
@@ -2575,7 +2575,7 @@ msgstr ""
 #. I18N: gedcom tag BASM
 #: app/GedcomTag.php:198 modules_v3/missing_facts_report/report.xml:18
 msgid "Bat mitzvah"
-msgstr ""
+msgstr "Syneti"
 
 #. I18N: Name of a module
 #: app/Module/BatchUpdateModule.php:77 app/Module/BatchUpdateModule.php:184
@@ -2640,7 +2640,7 @@ msgstr "Kumbara (martesë)"
 #. I18N: Name of a country or state
 #: app/Stats.php:6753
 msgid "Bhutan"
-msgstr ""
+msgstr "Butani"
 
 #. I18N: gedcom tag _BIBL
 #: app/GedcomTag.php:1026
@@ -3284,20 +3284,20 @@ msgstr "Normalisht, SMTP punon në portin 25."
 
 #: app/Module/GoogleMapsModule.php:4490
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
-msgstr ""
+msgstr "Nirmalisht, lista shfaq vetëm ato vende të cilat mund të gjenden në trungun tuaj familjar. Ju mund të keni detaje për vendet tjera, si ato të importuara në grumbuj nga një fajl i jashtëm. Me zgjedhjen e kësaj mundësie do të shfaqen të gjitha vendet, përfshirë këtu ato të cilat nuk përdoren aktualisht."
 
 #: admin_site_config.php:217
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Si përzgjedhje, serveri juaj lejon ekzekutimin e skriptës për %s sekondë."
+msgstr[1] "Si përzgjedhje, serveri juaj lejon ekzekutimin e skriptës për %s sekonda."
 
 #. I18N: %s is an amount of memory, such as 32MB
 #: admin_site_config.php:201
 #, php-format
 msgid "By default, your server allows scripts to use %s of memory."
-msgstr ""
+msgstr "Si përzgjedhje, serveri juaj lejon skriptet të përdorin %s të memorjes."
 
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
@@ -3306,33 +3306,33 @@ msgstr ""
 
 #: admin_trees_manage.php:367
 msgid "Calculating…"
-msgstr ""
+msgstr "Po llogaris…"
 
 #: app/Module/YahrzeitModule.php:280 app/Theme/AbstractTheme.php:1061
 #: lifespan.php:93
 msgid "Calendar"
-msgstr ""
+msgstr "Kalendari"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:692 admin_trees_config.php:694
 #: admin_trees_config.php:697
 msgid "Calendar conversion"
-msgstr ""
+msgstr "Konvertimi i kalendarit"
 
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
 msgid "Call number"
-msgstr ""
+msgstr "Numri i kontaktit"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6843
 msgid "Cambodia"
-msgstr ""
+msgstr "Kamboxha"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6767
 msgid "Cameroon"
-msgstr ""
+msgstr "Kameruni"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:115
@@ -3342,11 +3342,11 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6758
 msgid "Canada"
-msgstr ""
+msgstr "Kanadaja"
 
 #: app/Module/ClippingsCartModule.php:796
 msgid "Cancel"
-msgstr ""
+msgstr "Anulo"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6759
@@ -3366,7 +3366,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1910
 msgid "Card"
-msgstr ""
+msgstr "Kartela"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:83
@@ -3375,7 +3375,7 @@ msgstr ""
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:170
 msgid "Case insensitive"
-msgstr ""
+msgstr "E pandjeshme në shkronja të mëdha/të vogla"
 
 #. I18N: gedcom tag CAST
 #: app/GedcomTag.php:238
@@ -3385,32 +3385,32 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6760
 msgid "Catalonia"
-msgstr ""
+msgstr "Katalonia"
 
 #: statistics.php:606
 msgid "Categories"
-msgstr ""
+msgstr "Kategoritë"
 
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:242
 msgid "Cause"
-msgstr ""
+msgstr "Shkaku"
 
 #: app/GedcomTag.php:354
 msgid "Cause of death"
-msgstr ""
+msgstr "Shkaku i vdekjes"
 
 #: admin_trees_manage.php:757 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
-msgstr ""
+msgstr "Kujdes! Kjo mund të marrë shumë kohë. Keni durim."
 
 #: admin_site_upgrade.php:200
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Kujdes: modulet e vjetra mund të mos punojnë, ose ato mund të parandalojnë punën e webtrees."
 
 #: admin_site_upgrade.php:264
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Kujdes: temat e vjetra mund të mos punojnë, ose ato mund të parandalojnë punën e webtrees."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6778
@@ -3422,93 +3422,93 @@ msgstr ""
 #: modules_v3/cemetery_report/report.xml:3
 #: modules_v3/cemetery_report/report.xml:35
 msgid "Cemeteries"
-msgstr ""
+msgstr "Varrezat"
 
 #. I18N: gedcom tag CEME
 #: app/GedcomTag.php:246 modules_v3/cemetery_report/report.xml:54
 msgid "Cemetery"
-msgstr ""
+msgstr "Varrezë"
 
 #. I18N: gedcom tag CENS
 #: app/GedcomTag.php:250
 msgid "Census"
-msgstr ""
+msgstr "Regjistrimi"
 
 #. I18N: Name of a module
 #: app/Module/CensusAssistantModule.php:39
 msgid "Census assistant"
-msgstr ""
+msgstr "Asisteniti i regjistrimit"
 
 #: app/Functions/FunctionsEdit.php:1031 app/GedcomTag.php:252
 msgid "Census date"
-msgstr ""
+msgstr "Data e regjistrimit"
 
 #: app/GedcomTag.php:254
 msgid "Census place"
-msgstr ""
+msgstr "Vendi i regjistrimit"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:136
 msgid "Census transcript"
-msgstr ""
+msgstr "Transkriptimi i regjistrimit"
 
 #: app/Module/GoogleMapsModule.php:1433
 msgid "Center map here"
-msgstr ""
+msgstr "Mesi i hartës këtu"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6757
 msgid "Central African Republic"
-msgstr ""
+msgstr "Republika Qëndrore Afrikane"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1912
 msgid "Certificate"
-msgstr ""
+msgstr "Çertifikata"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6945
 msgid "Chad"
-msgstr ""
+msgstr "Çadi"
 
 #: edit_interface.php:1961 edit_interface.php:1997 edit_interface.php:2024
 msgid "Change"
-msgstr ""
+msgstr "Ndrysho"
 
 #: app/Controller/FamilyController.php:77 edit_interface.php:1914
 #: edit_interface.php:2081
 msgid "Change family members"
-msgstr ""
+msgstr "Ndrysho antarët e familjes"
 
 #: app/Module/GoogleMapsModule.php:582 app/Module/GoogleMapsModule.php:585
 #: app/Module/GoogleMapsModule.php:588 app/Module/GoogleMapsModule.php:643
 #: app/Module/GoogleMapsModule.php:3807 app/Module/GoogleMapsModule.php:3932
 #: app/Module/GoogleMapsModule.php:3935
 msgid "Change flag"
-msgstr ""
+msgstr "Ndrysho flamurin"
 
 #: admin_users.php:217
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Ndrysho blloqet në \"Faqja ime\" e këtij përdoruesi"
 
 #: admin_trees_manage.php:408 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Ndrysho blloqet e \"Faqja fillestare\""
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Ndrysho blloqet e \"Faqja ime\""
 
 #. I18N: [a record was] Changed on <date/time>
 #: app/Module/RecentChangesModule.php:257
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "U ndryshua %1$s"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Module/RecentChangesModule.php:254
 #, php-format
 msgid "Changed on %1$s by %2$s"
-msgstr ""
+msgstr "Ndryshuar %1$s nga %2$s"
 
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:436
@@ -3516,19 +3516,19 @@ msgstr ""
 #: modules_v3/change_report/report.xml:3
 #: modules_v3/change_report/report.xml:44
 msgid "Changes"
-msgstr ""
+msgstr "Ndryshimet"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:84
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ndryshimet në %s ditë të fundit"
+msgstr[1] "Ndryshimet në %s ditët e fundit"
 
 #: admin_trees_manage.php:519
 msgid "Changes log"
-msgstr ""
+msgstr "Ditari i ndryshimeve"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6763
@@ -3538,19 +3538,19 @@ msgstr ""
 #. I18N: gedcom tag CHAR
 #: app/GedcomTag.php:270
 msgid "Character set"
-msgstr ""
+msgstr "Bashkësia e karaktereve"
 
 #: admin_module_charts.php:66 admin_modules.php:189
 msgid "Chart"
-msgstr ""
+msgstr "Grafi"
 
 #: app/Module/RelationshipsChartModule.php:142
 msgid "Chart preferences"
-msgstr ""
+msgstr "Preferencat e grafit"
 
 #: app/Module/ChartsBlockModule.php:190 statistics.php:584
 msgid "Chart type"
-msgstr ""
+msgstr "Lloji i grafit"
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
@@ -3558,47 +3558,47 @@ msgstr ""
 #: admin_trees_config.php:1287 app/Module/ChartsBlockModule.php:34
 #: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
-msgstr ""
+msgstr "Grafet"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:389
 msgid "Check file permissions…"
-msgstr ""
+msgstr "Verifikoni autorizimet e fajlit…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:114
 msgid "Check for custom modules…"
-msgstr ""
+msgstr "Verifikoni modulet vetanake…"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:217
 msgid "Check for custom themes…"
-msgstr ""
+msgstr "Verifikoni temat vetanake…"
 
 #: admin_trees_check.php:33 admin_trees_manage.php:499
 msgid "Check for errors"
-msgstr ""
+msgstr "Verifikoni gabimet"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:94
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "Verifikoni ndryshimet e pezulluara…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
-msgstr ""
+msgstr "Verifikoni të drejtat hyrëse në këtë folder."
 
 #: setup.php:266 setup.php:338
 msgid "Check the settings and try again."
-msgstr ""
+msgstr "Verifikoni përkufizimet dhe provoni përsëri."
 
 #: setup.php:153
 msgid "Checking server capacity"
-msgstr ""
+msgstr "Po verifikohet kapaciteti i serverit"
 
 #: setup.php:111
 msgid "Checking server configuration"
-msgstr ""
+msgstr "Po verifikohet konfigurimi i serverit"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:119
@@ -3608,49 +3608,49 @@ msgstr ""
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:36 app/GedcomTag.php:274
 msgid "Child"
-msgstr ""
+msgstr "Fëmijë"
 
 #: modules_v3/ahnentafel_report/report.xml:388
 #: modules_v3/descendancy_report/report.xml:481
 msgid "Child of "
-msgstr ""
+msgstr "Fëmijë i "
 
 #. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:352
 #, php-format
 msgid "Child of %s"
-msgstr ""
+msgstr "Fëmijë i %s"
 
 #: app/Functions/FunctionsPrintLists.php:277
 #: app/Functions/FunctionsPrintLists.php:745
 #: modules_v3/family_group_report/report.xml:761
 #: modules_v3/relative_ext_report/report.xml:115 statisticsplot.php:1024
 msgid "Children"
-msgstr ""
+msgstr "Fëmijët"
 
 #: statistics.php:303
 msgid "Children in family"
-msgstr ""
+msgstr "Fëmijë në familje"
 
 #: modules_v3/ahnentafel_report/report.xml:391
 #: modules_v3/descendancy_report/report.xml:484
 msgid "Children of "
-msgstr ""
+msgstr "Fëmijë të "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
 msgid "Children take a patronym instead of a surname."
-msgstr ""
+msgstr "Fëmijët marrin emrin e babait në vend të mbiemrit."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:82
 msgid "Children take one surname from the father and one surname from the mother."
-msgstr ""
+msgstr "Fëmijët marrin një mbiemër nga babai dhe një mbiemër nga e ëma."
 
 #. I18N: In the Portuguese surname tradition, ...
 #: app/SurnameTradition.php:85
 msgid "Children take one surname from the mother and one surname from the father."
-msgstr ""
+msgstr "Fëmijët marrin një mbiemër nga nëna dhe një mbiemër nga e ati."
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the patrilineal surname tradition, ...
@@ -3659,44 +3659,44 @@ msgstr ""
 #: app/SurnameTradition.php:72 app/SurnameTradition.php:76
 #: app/SurnameTradition.php:91 app/SurnameTradition.php:96
 msgid "Children take their father’s surname."
-msgstr ""
+msgstr "Fëmijët marrin mbiemrin e babait të tyre."
 
 #. I18N: In the matrilineal surname tradition, ...
 #: app/SurnameTradition.php:79
 msgid "Children take their mother’s surname."
-msgstr ""
+msgstr "Fëmijët marrin mbiemrin e së ëmës."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6764
 msgid "Chile"
-msgstr ""
+msgstr "Kili"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6765
 msgid "China"
-msgstr ""
+msgstr "Kina"
 
 #: reportengine.php:116 reportengine.php:124
 msgid "Choose a report to run"
-msgstr ""
+msgstr "Zgjedhni një raport për ta ekzekutuar"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Choose relatives"
-msgstr ""
+msgstr "Zgjedhni të afërmit"
 
 #: addmedia.php:460 admin_media_upload.php:213
 msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-msgstr ""
+msgstr "Zgjedhni imazhin e fotos së vogël që doni ta ngarkoni. Edhepse këto foto mund të gjenerohen automatikisht nga imazhet, ju mund të kërkoni të gjeneroni fotot e juaja të vogla, veçanërisht pë llojet tjera të medias. P.sh., ju mund të siguroni një imazh nga video, ose një fotografi të personit i cili ka bërë një inçizim audio."
 
 #: admin_site_config.php:124
 msgid "Choose user defined welcome text typed below"
-msgstr ""
+msgstr "Zgjedhni tekstin e mirëseardhjes të definuar nga përdoruesi më poshtë"
 
 #: addmedia.php:522
 msgid "Choose: "
-msgstr ""
+msgstr "Zgjedhni: "
 
 #. I18N: gedcom tag CHR
 #: app/GedcomTag.php:278 modules_v3/family_group_report/report.xml:206
@@ -3704,75 +3704,75 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:904
 #: modules_v3/missing_facts_report/report.xml:16
 msgid "Christening"
-msgstr ""
+msgstr "Pagëzimi"
 
 #: app/GedcomTag.php:1236
 msgid "Christening of a brother"
-msgstr ""
+msgstr "Pagëzimi i vëllaut"
 
 #: app/GedcomTag.php:1195
 msgid "Christening of a child"
-msgstr ""
+msgstr "Pagëzimi i fëmijës"
 
 #: app/GedcomTag.php:1193
 msgid "Christening of a daughter"
-msgstr ""
+msgstr "Pagëzimi i vajzës"
 
 #: app/GedcomTag.php:1204 app/GedcomTag.php:1213 app/GedcomTag.php:1222
 msgid "Christening of a grandchild"
-msgstr ""
+msgstr "Pagëzimi i nipit"
 
 #: app/GedcomTag.php:1202
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Pagëzimi i mbesës"
 
 #: app/GedcomTag.php:1211
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Pagëzimi i mbesës nga vajza"
 
 #: app/GedcomTag.php:1220
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Pagëzimi i mbesës nga djali"
 
 #: app/GedcomTag.php:1200
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Pagëzimi i nipit"
 
 #: app/GedcomTag.php:1209
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Pagëzimi i nipit nga vajza"
 
 #: app/GedcomTag.php:1218
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Pagëzimi i nipit nga djali"
 
 #: app/GedcomTag.php:1227
 msgid "Christening of a half-brother"
-msgstr ""
+msgstr "Pagëzimi i gjysmë-vëllaut"
 
 #: app/GedcomTag.php:1231
 msgid "Christening of a half-sibling"
-msgstr ""
+msgstr "Pagëzimi i gjysmë-vëllaut/motrës"
 
 #: app/GedcomTag.php:1229
 msgid "Christening of a half-sister"
-msgstr ""
+msgstr "Pagëzimi i gjysmë-motrës"
 
 #: app/GedcomTag.php:1240
 msgid "Christening of a sibling"
-msgstr ""
+msgstr "Pagëzimi i vëllaut/motrës"
 
 #: app/GedcomTag.php:1238
 msgid "Christening of a sister"
-msgstr ""
+msgstr "Pagëzimi i motrës"
 
 #: app/GedcomTag.php:1191
 msgid "Christening of a son"
-msgstr ""
+msgstr "Pagëzimi i djalit"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6777
@@ -3781,7 +3781,7 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:90
 msgid "Circumciser"
-msgstr ""
+msgstr "Synet bërësi"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:670 modules_v3/fact_sources/report.xml:74
@@ -3789,17 +3789,17 @@ msgstr ""
 #: modules_v3/fact_sources/report.xml:277
 #: modules_v3/fact_sources/report.xml:323
 msgid "Citation details"
-msgstr ""
+msgstr "Detajet e citatit"
 
 #. I18N: gedcom tag CITN
 #: app/GedcomTag.php:290
 msgid "Citizenship"
-msgstr ""
+msgstr "Nënshtetësia"
 
 #. I18N: gedcom tag CITY
 #: app/GedcomTag.php:294 app/Module/GoogleMapsModule.php:3991
 msgid "City"
-msgstr ""
+msgstr "Qyteti"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:121
@@ -3808,76 +3808,76 @@ msgstr ""
 
 #: app/GedcomTag.php:578 modules_v3/fact_sources/report.xml:202
 msgid "Civil marriage"
-msgstr ""
+msgstr "Martesa qytetare"
 
 #: app/GedcomCode/GedcomCodeRela.php:98
 msgid "Civil registrar"
-msgstr ""
+msgstr "Regjistri qytetar"
 
 #: app/GedcomCode/GedcomCodeRela.php:96
 msgctxt "FEMALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "Regjistri qytetar"
 
 #: app/GedcomCode/GedcomCodeRela.php:94
 msgctxt "MALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "Regjistri qytetar"
 
 #. I18N: The “Data folder” is a configuration setting
 #. I18N: Menu entry
 #: admin_site_clean.php:51 app/Theme/AdministrationTheme.php:102
 msgid "Clean up data folder"
-msgstr ""
+msgstr "Pastroni folderin e shënimeve"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:76
 msgid "Cleared but not yet completed"
-msgstr ""
+msgstr "Pastruar por ende e pakompletuar"
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:98
 #: modules_v3/GEDFact_assistant/census/census-edit.php:64
 #, php-format
 msgid "Click %s to choose individual as head of family."
-msgstr ""
+msgstr "Kliko %s për të zgjedhur personin si kryefamiljar."
 
 #: edit_interface.php:1718
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr ""
+msgstr "Kliko rreshtin, atëherë kap dhe tërheq për të renditur mediat."
 
 #: admin_trees_manage.php:725
 msgid "Click here for PhpGedView to webtrees transfer wizard"
-msgstr ""
+msgstr "Kliko këtu për të aktivizuar magjistarin e tranferimit nga PhpGedView në webtrees"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:368
 msgid "Click here to add, edit, or delete"
-msgstr ""
+msgstr "Kliko për të shtuar, edituar, ose fshirë"
 
 #: individual.php:251
 msgid "Click here to open or close the sidebar"
-msgstr ""
+msgstr "Kliko këtu për të hapur ose mbyllur kolonën anësore"
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:100
 msgid "Click name to add individual to add links list."
-msgstr ""
+msgstr "Kliko emrin për të shtuar personin në listën e shto lidhjet"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:366
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr ""
+msgstr "Kliko në titull për të kaluar drejt aty, ose lëvizni te poshtë që t'i lexoni ato."
 
 #: app/Module/CensusAssistantModule.php:420
 msgid "Click to choose individual as head of family."
-msgstr ""
+msgstr "Kliko për të zgjedhur personin si kryefamiljar."
 
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:37
 msgid "Clippings cart"
-msgstr ""
+msgstr "Kapëset"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1914
 msgid "Coat of arms"
-msgstr ""
+msgstr "Shtresë e armëve"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
@@ -3926,26 +3926,26 @@ msgstr ""
 
 #: medialist.php:164
 msgid "Columns per page"
-msgstr ""
+msgstr "Kolona për faqe"
 
 #. I18N: gedcom tag COMM
 #: admin_site_access.php:297 admin_site_access.php:366 app/GedcomTag.php:298
 msgid "Comment"
-msgstr ""
+msgstr "Koment"
 
 #: login.php:323 login.php:344 login.php:479
 msgid "Comments"
-msgstr ""
+msgstr "Komentet"
 
 #. I18N: gedcom tag _COML
 #: app/GedcomTag.php:1245
 msgid "Common law marriage"
-msgstr ""
+msgstr "Bashkësia jashtëmartesore"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:38
 msgid "Communicate directly with other users, using private messages."
-msgstr ""
+msgstr "Komuniko drejtpërdrejtë me përdoruesit tjerë, duke përdorur mesazhet private."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6772
@@ -3956,33 +3956,33 @@ msgstr ""
 #: app/Controller/CompactController.php:46
 #: app/Module/CompactTreeChartModule.php:33
 msgid "Compact tree"
-msgstr ""
+msgstr "Trungu kompakt"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:43
 #: app/Controller/CompactController.php:125
 #, php-format
 msgid "Compact tree of %s"
-msgstr ""
+msgstr "Trungu kompakt i %s"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
 msgid "Completed before 1970; date not available"
-msgstr ""
+msgstr "Kompletuar para 1970; data nuk është në dispozicion"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:80
 msgid "Completed; date unknown"
-msgstr ""
+msgstr "Kompletuar; data e panjohur"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Kompreso fajlin GEDCOM"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
 msgid "Concatenation"
-msgstr ""
+msgstr "Vargëzimi"
 
 #: app/Module/ChartsBlockModule.php:77 app/Module/FamilyTreeNewsModule.php:110
 #: app/Module/FamilyTreeStatisticsModule.php:85
@@ -3994,16 +3994,16 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:78
 #: app/Module/YahrzeitModule.php:74 block_edit.php:64
 msgid "Configure"
-msgstr ""
+msgstr "Konfiguro"
 
 #: admin_users.php:352 edituser.php:226 login.php:463
 msgid "Confirm password"
-msgstr ""
+msgstr "Konfirmo fjalëkalimin"
 
 #. I18N: gedcom tag CONF
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 msgid "Confirmation"
-msgstr ""
+msgstr "Konfirmimi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6769
@@ -4017,29 +4017,29 @@ msgstr ""
 
 #: setup.php:272
 msgid "Connection to database server"
-msgstr ""
+msgstr "Lidhja me serverin e databazës"
 
 #: admin_trees_config.php:863
 msgid "Contact information"
-msgstr ""
+msgstr "Informata kontaktuese"
 
 #: edituser.php:294
 msgid "Contact method"
-msgstr ""
+msgstr "Metoda kontaktuese"
 
 #: search_advanced.php:159 search_advanced.php:221 search_advanced.php:236
 #: search_advanced.php:257 search_advanced.php:272
 msgid "Contains"
-msgstr ""
+msgstr "Përbën"
 
 #: app/Module/HtmlBlockModule.php:314 editnews.php:70
 msgid "Content"
-msgstr ""
+msgstr "Përmbajtja"
 
 #. I18N: gedcom tag CONT
 #: app/GedcomTag.php:306
 msgid "Continued"
-msgstr ""
+msgstr "Vazhdimi"
 
 #: admin.php:460 admin_media.php:613 admin_media_upload.php:180
 #: admin_module_blocks.php:60 admin_module_charts.php:53
@@ -4064,12 +4064,12 @@ msgstr ""
 #: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
 #: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
-msgstr ""
+msgstr "Paneli kontrollues"
 
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:413
 #: app/Module/ClippingsCartModule.php:781
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr ""
+msgstr "Konverto nga UTF-8 në ISO-8859-1"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6770
@@ -4078,7 +4078,7 @@ msgstr ""
 
 #: app/Theme/AbstractTheme.php:345
 msgid "Cookies"
-msgstr ""
+msgstr "Kukit"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:131
@@ -4091,126 +4091,126 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:1021
 #: app/Functions/FunctionsPrintFacts.php:1169
 msgid "Copy"
-msgstr ""
+msgstr "Kopjo"
 
 #. I18N: Copy all the records from [family tree 1] into [family tree 2]
 #: admin_trees_merge.php:195
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Kopjo të gjitha të dhënat nga %1$s në %2$s"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:431
 msgid "Copy files…"
-msgstr ""
+msgstr "Kopjo fajlat…"
 
 #: admin_site_upgrade.php:401
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr ""
+msgstr "Kopjo këta fajla në folderin %s, duke zëvendësuar të gjithë me emër të njëjtë."
 
 #. I18N: gedcom tag COPR
 #: app/GedcomTag.php:322
 msgid "Copyright"
-msgstr ""
+msgstr "E drejta autoriale"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:326
 msgid "Corporation"
-msgstr ""
+msgstr "Korporata"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:39
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr ""
+msgstr "Përmirëso EMRAT e formës \"John/DOE/\" ose \"John /DOE\", si e përdorin programet e vjetra gjenealogjike."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6774
 msgid "Costa Rica"
-msgstr ""
+msgstr "Kostarika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6766
 msgid "Cote d’Ivoire"
-msgstr ""
+msgstr "Bregu i Fildishtë"
 
 #: login.php:615
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
-msgstr ""
+msgstr "Nuk mund të verifikohen informatat që ju futët. Ju lutem provoni përsëri ose kontaktoni administratorin e faqes për më shumë informata."
 
 #: app/Stats.php:5625
 msgid "Count"
-msgstr ""
+msgstr "Numëro"
 
 #: app/Module/GoogleMapsModule.php:657
 msgid "Countries"
-msgstr ""
+msgstr "Shtetet"
 
 #. I18N: gedcom tag CTRY
 #: app/GedcomTag.php:338 app/Module/GoogleMapsModule.php:403
 #: app/Module/GoogleMapsModule.php:419 app/Module/GoogleMapsModule.php:1547
 #: app/Module/GoogleMapsModule.php:1652 app/Module/GoogleMapsModule.php:3983
 msgid "Country"
-msgstr ""
+msgstr "Shteti"
 
 #: statisticsplot.php:898 statisticsplot.php:948 statisticsplot.php:1002
 #: statisticsplot.php:1052 statisticsplot.php:1106 statisticsplot.php:1156
 #: statisticsplot.php:1206 statisticsplot.php:1256 statisticsplot.php:1306
 #: statisticsplot.php:1356
 msgid "Counts "
-msgstr ""
+msgstr "Numëron "
 
 #: app/Module/GoogleMapsModule.php:3988
 msgid "County"
-msgstr ""
+msgstr "Qarku"
 
 #: admin_media.php:314
 msgid "Create"
-msgstr ""
+msgstr "Krijo"
 
 #: admin_trees_manage.php:624
 msgid "Create a family tree"
-msgstr ""
+msgstr "Krijo trungun familjar"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
-msgstr ""
+msgstr "Krijo media objekt"
 
 #: app/Functions/FunctionsEdit.php:427 edit_interface.php:1512
 #: edit_interface.php:1575
 msgid "Create a repository"
-msgstr ""
+msgstr "Krijo vend të ri ruajtjeje"
 
 #: app/Functions/FunctionsEdit.php:438 edit_interface.php:1348
 #: edit_interface.php:1384
 msgid "Create a shared note"
-msgstr ""
+msgstr "Krijo shënim të ndarë"
 
 #: app/Functions/FunctionsEdit.php:634
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
-msgstr ""
+msgstr "Krijo shënim të ndarë duke përdorur asistentin e regjistrimit"
 
 #: app/Functions/FunctionsEdit.php:460 edit_interface.php:1196
 #: edit_interface.php:1279
 msgid "Create a source"
-msgstr ""
+msgstr "Krijo burim"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Krijo rregull çasjeje të web faqes"
 
 #: edit_interface.php:750
 msgid "Create an individual"
-msgstr ""
+msgstr "Krijo person"
 
 #: statistics.php:432
 msgid "Create your own chart"
-msgstr ""
+msgstr "Krijo grafin tënd vetanak"
 
 #: admin_trees_manage.php:747
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "Krijo, përditëso, dhe fshij trungun familjar për secilin fajl GEDCOM në folderin e shënimeve"
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:330 modules_v3/family_group_report/report.xml:315
@@ -4220,194 +4220,194 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:1013
 #: modules_v3/family_group_report/report.xml:1040
 msgid "Cremation"
-msgstr ""
+msgstr "Kremimi"
 
 #: app/GedcomTag.php:1330
 msgid "Cremation of a brother"
-msgstr ""
+msgstr "Kremimi i vëllaut"
 
 #: app/GedcomTag.php:1253
 msgid "Cremation of a child"
-msgstr ""
+msgstr "Kremimi i fëmijës"
 
 #: app/GedcomTag.php:1251
 msgid "Cremation of a daughter"
-msgstr ""
+msgstr "Kremimi i vajzës"
 
 #: app/GedcomTag.php:1321
 msgid "Cremation of a father"
-msgstr ""
+msgstr "Kremimi i babait"
 
 #: app/GedcomTag.php:1289 app/GedcomTag.php:1298 app/GedcomTag.php:1307
 msgid "Cremation of a grand-parent"
-msgstr ""
+msgstr "Kremimi i gjyshit/gjyshes"
 
 #: app/GedcomTag.php:1262 app/GedcomTag.php:1271 app/GedcomTag.php:1280
 msgid "Cremation of a grandchild"
-msgstr ""
+msgstr "Kremimi i nipit"
 
 #: app/GedcomTag.php:1260
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "Kremimi i mbesës"
 
 #: app/GedcomTag.php:1269
 msgctxt "daughter’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "Kremimi i mbesës nga vajza"
 
 #: app/GedcomTag.php:1278
 msgctxt "son’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "Kremimi i mbesës nga djali"
 
 #: app/GedcomTag.php:1285
 msgid "Cremation of a grandfather"
-msgstr ""
+msgstr "Kremimi i gjyshit"
 
 #: app/GedcomTag.php:1287
 msgid "Cremation of a grandmother"
-msgstr ""
+msgstr "Kremimi i gjyshes"
 
 #: app/GedcomTag.php:1258
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Kremimi i nipit"
 
 #: app/GedcomTag.php:1267
 msgctxt "daughter’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Kremimi i nipit nga vajza"
 
 #: app/GedcomTag.php:1276
 msgctxt "son’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Kremimi i nipit nga djali"
 
 #: app/GedcomTag.php:1312
 msgid "Cremation of a half-brother"
-msgstr ""
+msgstr "Kremimi i gjysmë-vëllaut"
 
 #: app/GedcomTag.php:1316
 msgid "Cremation of a half-sibling"
-msgstr ""
+msgstr "Kremimi i gjysmë-vëllaut/motrës"
 
 #: app/GedcomTag.php:1314
 msgid "Cremation of a half-sister"
-msgstr ""
+msgstr "Kremimi i gjysmë-motrës"
 
 #: app/GedcomTag.php:1339
 msgid "Cremation of a husband"
-msgstr ""
+msgstr "Kremimi i burrit"
 
 #: app/GedcomTag.php:1303
 msgid "Cremation of a maternal grandfather"
-msgstr ""
+msgstr "Kremimi i gjyshit nga nëna"
 
 #: app/GedcomTag.php:1305
 msgid "Cremation of a maternal grandmother"
-msgstr ""
+msgstr "Kremimi i gjyshes nga nëna"
 
 #: app/GedcomTag.php:1323
 msgid "Cremation of a mother"
-msgstr ""
+msgstr "Kremimi i nënës"
 
 #: app/GedcomTag.php:1325
 msgid "Cremation of a parent"
-msgstr ""
+msgstr "Kremimi i prindit"
 
 #: app/GedcomTag.php:1294
 msgid "Cremation of a paternal grandfather"
-msgstr ""
+msgstr "Kremimi i gjyshit nga babai"
 
 #: app/GedcomTag.php:1296
 msgid "Cremation of a paternal grandmother"
-msgstr ""
+msgstr "Kremimi i gjyshes nga babai"
 
 #: app/GedcomTag.php:1334
 msgid "Cremation of a sibling"
-msgstr ""
+msgstr "Kremimi i vëllaut/motrës"
 
 #: app/GedcomTag.php:1332
 msgid "Cremation of a sister"
-msgstr ""
+msgstr "Kremimi i motrës"
 
 #: app/GedcomTag.php:1249
 msgid "Cremation of a son"
-msgstr ""
+msgstr "Kremimi i djalit"
 
 #: app/GedcomTag.php:1343
 msgid "Cremation of a spouse"
-msgstr ""
+msgstr "Kremimi i bashkëshortit"
 
 #: app/GedcomTag.php:1341
 msgid "Cremation of a wife"
-msgstr ""
+msgstr "Kremimi i gruas"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6824
 msgid "Croatia"
-msgstr ""
+msgstr "Kroacia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6776
 msgid "Cuba"
-msgstr ""
+msgstr "Kuba"
 
 #: app/Module/HtmlBlockModule.php:302
 msgid "Current"
-msgstr ""
+msgstr "Aktual"
 
 #: app/Module/HtmlBlockModule.php:285
 msgid "Custom"
-msgstr ""
+msgstr "Vetanak"
 
 #: app/Functions/FunctionsPrint.php:630 calendar.php:289
 msgid "Custom event"
-msgstr ""
+msgstr "Ndodhi vetanake"
 
 #: app/Functions/FunctionsPrint.php:629
 msgid "Custom fact"
-msgstr ""
+msgstr "Fakt vetanak"
 
 #: admin_site_upgrade.php:188 admin_site_upgrade.php:191
 msgid "Custom module"
-msgstr ""
+msgstr "Modul vetanak"
 
 #: find.php:539
 msgid "Custom tags"
-msgstr ""
+msgstr "Shenjat vetanake"
 
 #: admin_site_upgrade.php:249 admin_site_upgrade.php:252
 msgid "Custom theme"
-msgstr ""
+msgstr "Tema vetanake"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:472
 msgid "Custom welcome text"
-msgstr ""
+msgstr "Teksti mirëseardhës vetanak"
 
 #: app/Theme/AbstractTheme.php:1078 app/Theme/AbstractTheme.php:1080
 msgid "Customize this page"
-msgstr ""
+msgstr "Përshtate këtë faqe"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6779
 msgid "Cyprus"
-msgstr ""
+msgstr "Qipro"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6780
 msgid "Czech Republic"
-msgstr ""
+msgstr "Republika Çeke"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6775
 msgid "Czechoslovakia"
-msgstr ""
+msgstr "Çekoslovakia"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1459
 msgid "DNA markers"
-msgstr ""
+msgstr "Markerat ADN"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:30 branches.php:57 search.php:262
@@ -4422,37 +4422,37 @@ msgstr ""
 #. I18N: A summary of the system status
 #: admin.php:460
 msgid "Dashboard"
-msgstr ""
+msgstr "Pulti"
 
 #. I18N: gedcom tag DATA
 #: admin_site_change.php:389 app/GedcomTag.php:342
 msgid "Data"
-msgstr ""
+msgstr "Shënimet"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:174
 msgid "Data folder"
-msgstr ""
+msgstr "Folderi i shënimeve"
 
 #: setup.php:368
 msgid "Database and table names"
-msgstr ""
+msgstr "Emrat e databazës dhe të tabelave"
 
 #: setup.php:275
 msgid "Database connection"
-msgstr ""
+msgstr "Lidhja e databazës"
 
 #: setup.php:370 setup.php:372
 msgid "Database name"
-msgstr ""
+msgstr "Emri i databazës"
 
 #: setup.php:289
 msgid "Database password"
-msgstr ""
+msgstr "Fjalëkalimi i databazës"
 
 #: setup.php:285
 msgid "Database user account"
-msgstr ""
+msgstr "Llogaria e përdoruesit të databazës"
 
 #. I18N: gedcom tag DATE
 #: app/GedcomTag.php:348 edit_changes.php:179 help_text.php:136
@@ -4464,12 +4464,12 @@ msgstr ""
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1613
 msgid "Date differences"
-msgstr ""
+msgstr "Ndryshimet e datës"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:176
@@ -4493,11 +4493,11 @@ msgstr ""
 
 #: app/GedcomTag.php:132
 msgid "Date of adoption"
-msgstr ""
+msgstr "Data e adoptimit"
 
 #: app/GedcomTag.php:184 modules_v3/missing_facts_report/report.xml:129
 msgid "Date of baptism"
-msgstr ""
+msgstr "Data e pagëzimit"
 
 #: app/GedcomTag.php:192 modules_v3/missing_facts_report/report.xml:212
 msgid "Date of bar mitzvah"
@@ -4512,53 +4512,53 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:81
 #: modules_v3/occupation_report/report.xml:49
 msgid "Date of birth"
-msgstr ""
+msgstr "Data e lindjes"
 
 #: app/GedcomTag.php:216
 msgid "Date of blessing"
-msgstr ""
+msgstr "Data e bekimit"
 
 #: app/GedcomTag.php:1086
 msgid "Date of brit milah"
-msgstr ""
+msgstr "Data e synetisë"
 
 #: app/GedcomTag.php:228 modules_v3/missing_facts_report/report.xml:546
 msgid "Date of burial"
-msgstr ""
+msgstr "Data e varrimit"
 
 #: app/GedcomTag.php:280 modules_v3/missing_facts_report/report.xml:170
 msgid "Date of christening"
-msgstr ""
+msgstr "Data e pagëzimit"
 
 #: app/GedcomTag.php:312 modules_v3/missing_facts_report/report.xml:294
 msgid "Date of confirmation"
-msgstr ""
+msgstr "Data e konfirmimit"
 
 #: app/GedcomTag.php:332
 msgid "Date of cremation"
-msgstr ""
+msgstr "Data e kremimit"
 
 #: app/GedcomTag.php:356 modules_v3/cemetery_report/report.xml:47
 #: modules_v3/fact_sources/report.xml:274
 #: modules_v3/missing_facts_report/report.xml:505
 msgid "Date of death"
-msgstr ""
+msgstr "Data e vdekjes"
 
 #: app/GedcomTag.php:458
 msgid "Date of divorce"
-msgstr ""
+msgstr "Data e divorcit"
 
 #: app/GedcomTag.php:406
 msgid "Date of emigration"
-msgstr ""
+msgstr "Data e emigrimit"
 
 #: app/GedcomTag.php:422 modules_v3/missing_facts_report/report.xml:336
 msgid "Date of engagement"
-msgstr ""
+msgstr "Data e fejesës"
 
 #: app/GedcomTag.php:344
 msgid "Date of entry in original source"
-msgstr ""
+msgstr "Data e shënimit në burimin origjinal"
 
 #: app/GedcomTag.php:430
 msgid "Date of event"
