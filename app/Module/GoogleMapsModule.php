@@ -559,7 +559,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		if ($stateSelected != 'States' && is_dir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected)) {
 			$files = glob (WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected . '*.png');
 			foreach ($files as $file) {
-				$flag_s[] = basename($file, '.png');
+				$flags_s[] = basename($file, '.png');
 			}
 		}
 
@@ -2460,7 +2460,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		<?php
 		// Create the normal googlemap sidebar of events and children
 		echo '<div style="overflow: auto; overflow-x: hidden; overflow-y: auto; height:', $this->getSetting('GM_YSIZE'), 'px;"><table class="facts_table">';
-		
+
 		$garray = array();
 		foreach ($gmarks as $key => $gmark) {
 			$garray[$key] = $gmark['place'];
