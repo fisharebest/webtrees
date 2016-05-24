@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-08 15:13+0000\n"
+"PO-Revision-Date: 2016-05-24 18:10+0000\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -8631,6 +8631,11 @@ msgstr "Korralda sugupuid"
 msgid "Manage media"
 msgstr "Korralda meediat"
 
+#: admin_media.php:535 app/Controller/MediaController.php:49
+#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
+msgid "Manage the links"
+msgstr "Korralda viiteid"
+
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:558
 #: app/Module/ClippingsCartModule.php:390
@@ -8641,11 +8646,6 @@ msgstr "Haldaja"
 #: admin.php:665
 msgid "Managers"
 msgstr "Haldajad"
-
-#: admin_media.php:535 app/Controller/MediaController.php:49
-#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
-msgid "Manage the links"
-msgstr "Korralda viiteid"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
@@ -13196,7 +13196,7 @@ msgstr "Allika tüüp"
 #: search.php:98 source.php:160 sourcelist.php:33 sourcelist.php:37
 #: statistics.php:353 statistics.php:390
 msgid "Sources"
-msgstr "Allikaid"
+msgstr "Allikad"
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
@@ -14199,7 +14199,7 @@ msgstr "Ootel on mõned muudatused, mida peaksite korraldama."
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
 msgstr[0] "Viimase %s päeva jooksul pole ühtegi muudatust toimunud."
-msgstr[1] "Viimaste %s päevade jooksul pole ühtegi muudatust toimunud."
+msgstr[1] "Viimase %s päeva jooksul pole ühtegi muudatust toimunud."
 
 #: login.php:263
 #, php-format
