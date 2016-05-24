@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-22 16:45+0000\n"
+"PO-Revision-Date: 2016-05-24 19:12+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -398,8 +398,8 @@ msgstr[1] "%s másodperccel ezelőtt"
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] "%s belépett felhasználó"
-msgstr[1] "%s belépett felhasználó"
+msgstr[0] "%s bejelentkezett felhasználó"
+msgstr[1] "%s bejelentkezett felhasználó"
 
 #: app/Controller/SearchController.php:411
 #, php-format
@@ -1054,7 +1054,7 @@ msgstr "Személyes események idővonala."
 
 #: admin_users.php:398
 msgid "A user will not be able to sign in until both the “email verified” and “approved by administrator” options are selected."
-msgstr "A felhasználó nem tud belépni az „E-mail cím ellenőrizve” és „A rendszergazda jóváhagyta” jelölőnégyzet kipipálása nélkül."
+msgstr "A felhasználó nem tud bejelentkezni az „E-mail cím ellenőrizve” és a „Rendszergazda jóváhagyta” opció kiválasztása nélkül."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1121
@@ -2096,7 +2096,7 @@ msgstr "Jóváhagyva"
 
 #: admin_users.php:386
 msgid "Approved by administrator"
-msgstr "A rendszergazda jóváhagyta"
+msgstr "Rendszergazda jóváhagyta"
 
 #: app/Date/CalendarDate.php:314
 msgctxt "Abbreviation for April"
@@ -2168,7 +2168,7 @@ msgstr "Biztos, hogy törli ezt az elemet a kedvencei listájából?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr "Biztos, hogy vissza szeretné állítani a családfán belüli összes változtatást?"
+msgstr "Biztos, hogy vissza szeretné vonni a családfán belüli összes változtatást?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6727
@@ -3863,7 +3863,7 @@ msgstr "Kattintson a névre, hogy felvegye a személyt a hivatkozásfelvétel-li
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:366
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "Kattintson egy címre, hogy egyenesen hozzá juthasson, vagy görgessen lefelé, hogy mindegyiket olvashassa."
+msgstr "Kattintson egy kérdésre, hogy a választ rá egyből megkapja, vagy mindegyik olvasásához görgessen lefelé."
 
 #: app/Module/CensusAssistantModule.php:420
 msgid "Click to choose individual as head of family."
@@ -5655,7 +5655,7 @@ msgstr "Ez az e-mail cím kerül a webtrees által automatikusan létrehozott e-
 
 #: admin_users.php:382
 msgid "Email verified"
-msgstr "Ellenőrzött e-mail cím"
+msgstr "E-mail cím ellenőrizve"
 
 #: app/Stats.php:84
 msgid "Embedded variable"
@@ -8222,7 +8222,7 @@ msgstr "Az utolsó esemény"
 
 #: admin_users.php:873
 msgid "Last signed in"
-msgstr "Az utolsó belépés"
+msgstr "Utolsó bejelentkezés"
 
 #: statistics.php:137
 msgid "Latest birth"
@@ -12929,12 +12929,12 @@ msgstr "Sierra Leone"
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
 msgid "Sign in"
-msgstr "Belépés"
+msgstr "Bejelentkezés"
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
-msgstr "Kilépés"
+msgstr "Kijelentkezés"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447
@@ -13681,11 +13681,11 @@ msgstr "A PhpGedView–webtrees-varázsló egy automatikus folyamat, amely segí
 #: admin_users.php:101
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr "A(z) %s webtrees webhely rendszergazdája jóváhagyta a fiókigénylését. Most már beléphet a következő hivatkozás révén: %s"
+msgstr "A(z) %s webtrees webhely rendszergazdája jóváhagyta a fiókigénylését. Most már bejelentkezhet a következő hivatkozás révén: %s"
 
 #: login.php:612
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your user name and password."
-msgstr "A rendszergazdát értesítettük. Amint megadja az engedélyt a belépéshez, bejelentkezhet a felhasználónevével és a jelszavával."
+msgstr "A rendszergazdát értesítettük. Amint megadja az engedélyt a bejelentkezéshez, bejelentkezhet a felhasználónevével és a jelszavával."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:45
@@ -14377,7 +14377,7 @@ msgstr "Ő lesz az alapértelmezett személy ábrák és jelentések megjelenít
 #: app/Stats.php:3127 app/Stats.php:3425 app/Stats.php:4408 app/Stats.php:4540
 #: app/Stats.php:4589 timeline.php:287
 msgid "This information is private and cannot be shown."
-msgstr "Privát adat. Csak belépés után tekinthető meg."
+msgstr "Privát adat. Csak bejelentkezés után tekinthető meg."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
@@ -15853,7 +15853,7 @@ msgstr "A vízjelek lelassíthatják a nagy képek létrehozását. Az elfoglalt
 #: login.php:386
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your user name and password."
-msgstr "Most küldünk egy megerősítő e-mailt a <b>%s</b> címre. Ellenőriznie kell a fiókkérelmét a megerősítő e-mailben lévő utasítások követésével. Ha hét napon belül nem erősíti meg a fiókkérelmét, a kérelme automatikus elutasítást von maga után. Újra kell kérnie.<br><br>Miután követte a megerősítő e-mail utasításait, a fiók használata előtt a rendszergazdának még jóvá kell hagynia az Ön kérelmét.<br><br>E webhelyre történő bejelentkezéshez tudnia kell a felhasználónevét és jelszavát."
+msgstr "Most küldünk egy megerősítő e-mailt a <b>%s</b> címre. Ellenőriznie kell a fiókkérelmét a megerősítő e-mailben lévő utasítások követésével. Ha hét napon belül nem erősíti meg a fiókkérelmét, a kérelme automatikusan elutasításra kerül. Újra kell kérnie.<br><br>Miután követte a megerősítő e-mail utasításait, a fiók használata előtt a rendszergazdának még jóvá kell hagynia az Ön kérelmét.<br><br>E webhelyre történő bejelentkezéshez tudnia kell a felhasználónevét és jelszavát."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:94
@@ -15927,7 +15927,7 @@ msgstr "Bejegyzés módosításakor a felhasználó és a módosítás ideje tá
 
 #: admin_users.php:389
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Amikor egy látogató felhasználói fiókot igényel, egy – visszaigazoló hivatkozást tartalmazó – ellenőrző e-mailt kap az e-mail címére. Amikor rákattint erre a hivatkozásra, tudjuk, hogy az e-mail cím helyes, és az „e-mail ellenőrizve” opció bejelölése automatikusan megtörténik."
+msgstr "Amikor egy látogató felhasználói fiókot igényel, egy – visszaigazoló hivatkozást tartalmazó – ellenőrző levelet kap az e-mail címére. Amikor rákattint erre a hivatkozásra, tudjuk, hogy az e-mail cím helyes, és az „E-mail cím ellenőrizve” opció bejelölése automatikusan megtörténik."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -16296,7 +16296,7 @@ msgstr "E-mail értesítést kap, ha a leendő felhasználó visszaigazolta a k�
 
 #: setup.php:432
 msgid "You will use this to sign in to webtrees."
-msgstr "Ezt fogja használni, hogy belépjen a webtrees webhelyre."
+msgstr "Ezt fogja használni, hogy bejelentkezzen a webtrees webhelyre."
 
 #: statistics.php:286
 msgid "Youngest father"
@@ -16560,7 +16560,7 @@ msgstr "nagynéni/nagybácsi"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:390
 msgid "back to top"
-msgstr "vissza az elejére"
+msgstr "vissza a tetejére"
 
 #: app/Module/TopPageViewsModule.php:167
 msgid "before"
@@ -19224,12 +19224,12 @@ msgstr "nem"
 #: admin_trees_config.php:68 app/Module/FamilyNavigatorModule.php:252
 #: app/Module/RelationshipsChartModule.php:127
 msgid "none"
-msgstr "semilyen"
+msgstr "nincs"
 
 #: app/SurnameTradition.php:100
 msgctxt "Surname tradition"
 msgid "none"
-msgstr "semmi"
+msgstr "nincs"
 
 #. I18N: time format “%a” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:92
@@ -20117,7 +20117,7 @@ msgstr "ismeretlen"
 #: app/Module/InteractiveTree/TreeView.php:342
 msgctxt "unknown family"
 msgid "unknown"
-msgstr "Ismeretlen"
+msgstr "ismeretlen"
 
 #: app/Module/RelationshipsChartModule.php:131
 msgid "unlimited"
@@ -20131,7 +20131,7 @@ msgstr "megbízhatatlan bizonyíték"
 #. I18N: A button label
 #: admin_trees_places.php:108
 msgid "update"
-msgstr "Frissít"
+msgstr "frissít"
 
 #: admin_trees_config.php:370 admin_trees_config.php:394
 #: admin_trees_config.php:434 admin_trees_config.php:474
