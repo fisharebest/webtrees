@@ -17,10 +17,28 @@
 	margin-top: 10px;
 }
 
+#wrapper {
+	border: 1px solid #888;
+	margin: 2px;
+	display: flex;
+}
+
 #map_pane {
-	border: 1px solid gray;
-	color: black;
-	width: 100%;
+	width: 70%;
+	height: 100%;
+}
+
+#map_events {
+	width: 30%;
+	height: 100%;
+	padding: 0;
+	overflow-y: auto;
+}
+
+.gmoptions {
+	width: 70%;
+	margin: 2px;
+	text-align: center;
 }
 
 div.infowindow {

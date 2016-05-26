@@ -162,45 +162,25 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		if ($this->checkMapData($controller->record)) {
 			ob_start();
-			echo '<table style="border:none; width:100%; margin-bottom: 10px;"><tr><td>';
-			echo '<table style="border:none" class="facts_table">';
-			echo '<tr><td>';
-			echo '<div id="map_pane" style="height: ', $this->getSetting('GM_YSIZE'), 'px"></div>';
-			if (Auth::isAdmin()) {
-				echo '<table width="100%"><tr class="noprint">';
-				echo '<td>';
-				echo'<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a>';
-				echo '</td>';
-				echo '<td "style=text-align:center;">';
-				echo '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_places">' . I18N::translate('Geographic data') . '</a>';
-				echo '</td>';
-				echo '<td style="text-align:end;">';
-				echo '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_placecheck">' . I18N::translate('Place check') . '</a>';
-				echo '</td>';
-				echo '</tr></table>';
-			}
-			echo '</td>';
-			echo '<td width="30%">';
-			echo '<div id="map_content">';
-
+			echo '<div id="wrapper" style="height:' . $this->getSetting('GM_YSIZE') . 'px;">';
+			echo '<div id="map_pane"></div>';
 			$this->buildIndividualMap($controller->record);
 			echo '</div>';
-			echo '</td>';
-			echo '</tr></table>';
-			echo '</td></tr></table>';
-			echo '<script>loadMap();</script>';
-
-			return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
-		} else {
-			$html = '<table class="facts_table">';
-			$html .= '<tr><td colspan="2" class="facts_value">' . I18N::translate('No map data exists for this individual');
-			$html .= '</td></tr>';
 			if (Auth::isAdmin()) {
-				$html .= '<tr><td class="center" colspan="2">';
-				$html .= '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a>';
-				$html .= '</td></tr>';
+				echo '<div class="gmoptions noprint">';
+				echo '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a>';
+				echo ' | <a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_places">' . I18N::translate('Geographic data') . '</a>';
+				echo ' | <a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_placecheck">' . I18N::translate('Place check') . '</a>';
+				echo '</div>';
 			}
-
+			echo '<script>loadMap();</script>';
+			return '<div id="' . $this->getName() . '_content" class="facts_table">' . ob_get_clean() . '</div>';
+		} else {
+			$html = '<div class="facts_value noprint">';
+			$html .= I18N::translate('No map data exists for this individual');
+			if (Auth::isAdmin()) {
+				$html .= '<div style="text-align: center;"><a href="module.php?mod=googlemap&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a></div>';
+			}
 			return $html;
 		}
 	}
@@ -1622,8 +1602,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$x   = 0;
 		$max = 0;
 		while ($x < $i) {
-			$levels = explode(I18N::$list_separator, $place_list[$x]);
-			$parts  = count($levels);
+			$levels                 = explode(",", $place_list[$x]);
+			$parts                  = count($levels);
 			if ($parts > $max) {
 				$max = $parts;
 			}
@@ -1668,7 +1648,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$matched   = array();
 		while ($x < $i) {
 			$placestr = '';
-			$levels   = explode(I18N::$list_separator, $place_list[$x]);
+			$levels   = explode(', ', $place_list[$x]);
 			$parts    = count($levels);
 			$levels   = array_reverse($levels);
 			$placestr .= '<a href="placelist.php?action=show';
@@ -1902,11 +1882,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return null|\stdClass
 	 */
 	private function getLatitudeAndLongitudeFromPlaceLocation($place) {
-		$parent   = explode(I18N::$list_separator, $place);
+		$parent   = explode(',', $place);
 		$parent   = array_reverse($parent);
 		$place_id = 0;
 		$num_parent = count($parent);
 		for ($i = 0; $i < $num_parent; $i++) {
+			$parent[$i] = trim($parent[$i]);
 			if (empty($parent[$i])) {
 				$parent[$i] = 'unknown'; // GoogleMap module uses "unknown" while GEDCOM uses , ,
 			}
@@ -2046,6 +2027,31 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				'placeid'    => $index
 			);
 		}
+
+		$places = array_keys($unique_places);
+		// Create the normal googlemap sidebar of events and children
+		echo '<div id="map_events" class="optionbox"><table class="facts_table">';
+
+		foreach ($events as $event) {
+			$index = array_search($event['placeid'], $places);
+			echo '<tr>';
+			echo '<td class="facts_label">';
+			echo '<a href="#" onclick="return openInfowindow(\'', $index, '\')">', $event['fact_label'], '</a></td>';
+			echo '<td class="', $event['class'], '">';
+			if ($event['info']) {
+				echo '<div><span class="field">', Filter::escapeHtml($event['info']), '</span></div>';
+			}
+			if ($event['name']) {
+				echo '<div>', $event['name'], '</div>';
+			}
+			echo '<div>', $event['place'], '</div>';
+			if ($event['date']) {
+				echo '<div>', $event['date'], '</div>';
+			}
+			echo '</td>';
+			echo '</tr>';
+		}
+		echo '</table></div>';
 
 		// *** ENABLE STREETVIEW ***
 		$STREETVIEW = (bool) $this->getSetting('GM_USE_STREETVIEW');
@@ -2289,7 +2295,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					streetViewControl:        true,
 					scrollwheel:              true
 				};
-				map            = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
+				map = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
 
 				// Close any infowindow when map is clicked
 				google.maps.event.addListener(map, 'click', function() {
@@ -2370,30 +2376,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		</script>
 		<?php
-		$places = array_keys($unique_places);
-		// Create the normal googlemap sidebar of events and children
-		echo '<div style="overflow-x: hidden; overflow-y: auto; height:', $this->getSetting('GM_YSIZE'), 'px;"><table class="facts_table">';
-
-		foreach ($events as $event) {
-			$index = array_search($event['placeid'], $places);
-			echo '<tr>';
-			echo '<td class="facts_label">';
-			echo '<a href="#" onclick="return openInfowindow(\'', $index, '\')">', $event['fact_label'], '</a></td>';
-			echo '<td class="', $event['class'], '">';
-			if ($event['info']) {
-				echo '<div><span class="field">', Filter::escapeHtml($event['info']), '</span></div>';
-			}
-			if ($event['name']) {
-				echo '<div>', $event['name'], '</div>';
-			}
-			echo '<div>', $event['place'], '</div>';
-			if ($event['date']) {
-				echo '<div>', $event['date'], '</div>';
-			}
-			echo '</td>';
-			echo '</tr>';
-		}
-		echo '</table></div><br>';
 	}
 
 	/**
@@ -2404,12 +2386,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return int
 	 */
 	private function getPlaceLocationId($place) {
-		$par      = explode(I18N::$list_separator, strip_tags($place));
+		$par      = explode(',', strip_tags($place));
 		$par      = array_reverse($par);
 		$place_id = 0;
 		$pl_id    = 0;
 		$num_par  = count($par);
 		for ($i = 0; $i < $num_par; $i++) {
+			$par[$i] = trim($par[$i]);
 			if (empty($par[$i])) {
 				$par[$i] = 'unknown';
 			}
@@ -2445,12 +2428,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function getPlaceId($place) {
 		global $WT_TREE;
 
-		$par      = explode(I18N::$list_separator, $place);
+		$par      = explode(',', $place);
 		$par      = array_reverse($par);
 		$place_id = 0;
 		$pl_id    = 0;
 		$num_par  = count($par);
 		for ($i = 0; $i < $num_par; $i++) {
+			$par[$i]   = trim($par[$i]);
 			$placelist = $this->createPossiblePlaceNames($par[$i], $i + 1);
 			foreach ($placelist as $placename) {
 				$pl_id = (int) Database::prepare(
@@ -2482,15 +2466,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return int
 	 */
 	private function setPlaceIdMap($level, $parent) {
-		$fullplace = array();
+		$fullplace = '';
 		if ($level == 0) {
 			return 0;
 		} else {
 			for ($i = 1; $i <= $level; $i++) {
-				$fullplace[] = $parent[$level - $i];
-
+				$fullplace .= $parent[$level - $i] . ', ';
 			}
-			return $this->getPlaceId(implode(I18N::$list_separator, $fullplace));
+			$fullplace = substr($fullplace, 0, -2);
+
+			return $this->getPlaceId($fullplace);
 		}
 	}
 
@@ -4157,7 +4142,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$default_zoom_level[2] = 10;
 			$default_zoom_level[3] = 12;
 			foreach ($placelistUniq as $k => $place) {
-				$parent     = explode(I18N::$list_separator, $place['place']);
+				$parent     = explode(',', $place['place']);
 				$parent     = array_reverse($parent);
 				$parent_id  = 0;
 				$num_parent = count($parent);
