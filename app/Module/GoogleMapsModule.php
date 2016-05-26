@@ -181,9 +181,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '</div>';
 			echo '</td>';
 			echo '</tr></table>';
-			// start
-			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" id="marker6" width="1" height="1" alt="">';
-			// end
 			echo '</td></tr></table>';
 			echo '<script>loadMap();</script>';
 
@@ -215,7 +212,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	/**
 	 * Return a menu item for this chart.
 	 *
-	 * @return Menu|null
+	 * @param Individual $individual
+	 *
+	 * @return Menu
 	 */
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
@@ -229,7 +228,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	/**
 	 * Return a menu item for this chart - for use in individual boxes.
 	 *
-	 * @return Menu|null
+	 * @param Individual $individual
+	 *
+	 * @return Menu
 	 */
 	public function getBoxChartMenu(Individual $individual) {
 		return $this->getChartMenu($individual);
@@ -557,7 +558,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		$flags_s = array();
 		if ($stateSelected != 'States' && is_dir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected)) {
-			$files = glob (WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected . '*.png');
+			$files = glob(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected . '*.png');
 			foreach ($files as $file) {
 				$flags_s[] = basename($file, '.png');
 			}
@@ -618,7 +619,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		if ($countrySelected != 'Countries') {
 			$placesDir = scandir(WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/');
-			foreach($flags as $flag) {
+			foreach ($flags as $flag) {
 				if (in_array($flag, $placesDir)) {
 					$rep = opendir(WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $flag . '/');
 					while ($file = readdir($rep)) {
@@ -2090,7 +2091,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 
 		// *** ENABLE STREETVIEW ***
-		$STREETVIEW = $this->getSetting('GM_USE_STREETVIEW');
+		$STREETVIEW = (bool) $this->getSetting('GM_USE_STREETVIEW');
 		?>
 
 		<script>
@@ -2134,10 +2135,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					iconColor = 'red';
 				}
 				if (!gicons[iconColor]) {
-					gicons[iconColor] = new google.maps.MarkerImage('//maps.google.com/mapfiles/marker'+ iconColor +'.png',
-					new google.maps.Size(20, 34),
-					new google.maps.Point(0,0),
-					new google.maps.Point(9, 34));
+					gicons[iconColor] = new google.maps.MarkerImage(
+						'//maps.google.com/mapfiles/marker' + iconColor + '.png',
+						new google.maps.Size(20, 34),
+						new google.maps.Point(0, 0),
+						new google.maps.Point(9, 34)
+					);
 				}
 				return gicons[iconColor];
 			}
@@ -2500,8 +2503,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$par      = array_reverse($par);
 		$place_id = 0;
 		$pl_id    = 0;
-
-		for ($i = 0; $i < count($par); $i++) {
+		$num_par  = count($par);
+		for ($i = 0; $i < $num_par; $i++) {
 			$par[$i] = trim($par[$i]);
 			if (empty($par[$i])) {
 				$par[$i] = 'unknown';
@@ -2542,8 +2545,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$par      = array_reverse($par);
 		$place_id = 0;
 		$pl_id    = 0;
-
-		for ($i = 0; $i < count($par); $i++) {
+		$num_par  = count($par);
+		for ($i = 0; $i < $num_par; $i++) {
 			$par[$i]   = trim($par[$i]);
 			$placelist = $this->createPossiblePlaceNames($par[$i], $i + 1);
 			foreach ($placelist as $placename) {
@@ -2625,14 +2628,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
 
-		$STREETVIEW = $this->getSetting('GM_USE_STREETVIEW');
+		$STREETVIEW = (bool) $this->getSetting('GM_USE_STREETVIEW');
 		$parent     = Filter::getArray('parent');
 
 		// create the map
 		echo '<table style="margin:20px auto 0 auto;"><tr><td>';
 		//<!-- start of map display -->
 		echo '<table><tr>';
-		echo '<td class="center" width="200px">';
+		echo '<td class="center" style="width:200px">';
 
 		$levelm = $this->setLevelMap($level, $parent);
 		$latlng =
@@ -2640,7 +2643,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			->execute(array($levelm))
 			->fetch(PDO::FETCH_ASSOC);
 		if ($STREETVIEW && $level != 0) {
-			echo '<div id="place_map" style="margin-top:20px; border:1px solid gray; width: ', $this->getSetting('GM_PH_XSIZE'), 'px; height: ', $this->getSetting('GM_PH_YSIZE'), 'px; ';
+			echo '<div id="place_map" style="margin-top:25px; border:1px solid gray; width: ', $this->getSetting('GM_PH_XSIZE'), 'px; height: ', $this->getSetting('GM_PH_YSIZE'), 'px; ';
 		} else {
 			echo '<div id="place_map" style="border:1px solid gray; width:', $this->getSetting('GM_PH_XSIZE'), 'px; height:', $this->getSetting('GM_PH_YSIZE'), 'px; ';
 		}
@@ -3006,11 +3009,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		');
 
 		$levelm = $this->setLevelMap($level, $parent);
-		if (isset($levelo[0])) {
-			$levelo[0] = 0;
-		}
-		$numls                            = count($parent) - 1;
-		$levelo                           = $this->checkWhereAmI($numls, $levelm);
+		$numls  = count($parent) - 1;
+		$levelo = $this->checkWhereAmI($numls, $levelm);
 
 		if ($numfound < 2 && ($level == 1 || !isset($levelo[$level - 1]))) {
 			$controller->addInlineJavascript('map.maxZoom=6;');
@@ -3053,13 +3053,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 		}
 
-		if ($placeidlist) {
+		if (!empty($placeidlist)) {
 			// flip the array (thus removing duplicates)
 			$placeidlist = array_flip($placeidlist);
 			// remove entry for parent location
 			unset($placeidlist[$levelm]);
-		}
-		if ($placeidlist) {
+
 			// the keys are all we care about (this reverses the earlier array_flip, and ensures there are no "holes" in the array)
 			$placeidlist = array_keys($placeidlist);
 			// note: this implode/array_fill code generates one '?' for each entry in the $placeidlist array
@@ -3207,7 +3206,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$di = new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS);
 		$it = new \RecursiveIteratorIterator($di);
 
-		foreach($it as $file) {
+		foreach ($it as $file) {
 			if ($file->getExtension() == "csv") {
 				$placefiles[] = '/' . $file->getFilename();
 			}
@@ -3489,7 +3488,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			// === Create Borders for the UK Countries =========================================================
 			function overlays() {
-
 				// Define place LatLng arrays
 				var polygon1;
 				var num_arrays = "";
@@ -3737,8 +3735,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			/**
 			 * Called when we select one of the search results.
 			 *
-			 * @param latitude
-			 * @param longitude
+			 * @param lat
+			 * @param lng
 			 */
 			function setLoc(lat, lng) {
 				if (lat < 0.0) {
@@ -4119,10 +4117,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			$default_zoom_level = array(4, 7, 10, 12);
 			foreach ($placelistUniq as $k => $place) {
-				$parent    = preg_split('/ *, */', $place['place']);
-				$parent    = array_reverse($parent);
-				$parent_id = 0;
-				for ($i = 0; $i < count($parent); $i++) {
+				$parent     = preg_split('/ *, */', $place['place']);
+				$parent     = array_reverse($parent);
+				$parent_id  = 0;
+				$num_parent = count($parent);
+				for ($i = 0; $i < $num_parent; $i++) {
 					if (!isset($default_zoom_level[$i])) {
 						$default_zoom_level[$i] = $default_zoom_level[$i - 1];
 					}
@@ -4134,7 +4133,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						Database::prepare("SELECT pl_id, pl_long, pl_lati, pl_zoom FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ?")
 						->execute(array($i, $parent_id, $escparent))
 						->fetchOneRow();
-					if ($i < count($parent) - 1) {
+					if ($i < $num_parent - 1) {
 						// Create higher-level places, if necessary
 						if (empty($row)) {
 							$highestIndex++;
@@ -4351,10 +4350,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$default_zoom_level[2] = 10;
 			$default_zoom_level[3] = 12;
 			foreach ($placelistUniq as $k => $place) {
-				$parent    = explode(',', $place['place']);
-				$parent    = array_reverse($parent);
-				$parent_id = 0;
-				for ($i = 0; $i < count($parent); $i++) {
+				$parent     = explode(',', $place['place']);
+				$parent     = array_reverse($parent);
+				$parent_id  = 0;
+				$num_parent = count($parent);
+				for ($i = 0; $i < $num_parent; $i++) {
 					$escparent = $parent[$i];
 					if ($escparent == '') {
 						$escparent = 'Unknown';
@@ -4367,14 +4367,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						// this name does not yet exist: create entry
 						if (!Filter::postBool('updateonly')) {
 							$highestIndex = $highestIndex + 1;
-							if (($i + 1) == count($parent)) {
+							if (($i + 1) == $num_parent) {
 								$zoomlevel = $place['zoom'];
 							} elseif (isset($default_zoom_level[$i])) {
 								$zoomlevel = $default_zoom_level[$i];
 							} else {
 								$zoomlevel = $this->getSetting('GM_MAX_ZOOM');
 							}
-							if (($place['lati'] == '0') || ($place['long'] == '0') || (($i + 1) < count($parent))) {
+							if (($place['lati'] == '0') || ($place['long'] == '0') || (($i + 1) < $num_parent)) {
 								Database::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?)")
 									->execute(array($highestIndex, $parent_id, $i, $escparent, $zoomlevel, $place['icon']));
 							} else {
