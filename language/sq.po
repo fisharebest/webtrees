@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-26 12:56+0000\n"
+"PO-Revision-Date: 2016-05-27 14:59+0000\n"
 "Last-Translator: Astrit Bokshi <astritbokshi@gmail.com>\n"
 "Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/webtrees/sq/>\n"
 "Language: sq\n"
@@ -7494,20 +7494,20 @@ msgstr "Po të përdorni folder tjetër, ju duhet poashtu të lëvizim të gjith
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1024
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
-msgstr ""
+msgstr "Po të zgjedhni një folder tjetër, ju poashtu duhet të lëvizni çdo media fajl nga folderi ekzistues në atë të riun."
 
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:441
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
-msgstr ""
+msgstr "Nëse shfaqni personat e gjallë te vizitorët, të gjitha kufizimet e privatësisë injorohen. Bëjeni këtë vetëm nëse të gjitha shënimet në trungun tuaj janë publike."
 
 #: setup.php:182
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
-msgstr ""
+msgstr "Po të provoni të tejkaloni këta kufij, ju mund të përjetoni ndalesa të serverit dhe faqe të zbrazëta."
 
 #: admin_site_config.php:513
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
-msgstr ""
+msgstr "Po të përdorni një nga shërbimet vijuese të përcjelljes dhe analizës, webtrees mund të shtojë kodet e përcjelljes automatikisht."
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1222
