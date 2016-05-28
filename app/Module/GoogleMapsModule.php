@@ -156,20 +156,20 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		if ($this->checkMapData($controller->record)) {
 			ob_start();
 			echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
-			echo '<table border="0" width="100%"><tr><td>';
-			echo '<table width="100%" border="0" class="facts_table">';
+			echo '<table style="border:none; width:100%; margin-bottom: 10px;"><tr><td>';
+			echo '<table style="border:none" class="facts_table">';
 			echo '<tr><td>';
-			echo '<div id="map_pane" style="border: 1px solid gray; color: black; width: 100%; height: ', $this->getSetting('GM_YSIZE'), 'px"></div>';
+			echo '<div id="map_pane" style="height: ', $this->getSetting('GM_YSIZE'), 'px"></div>';
 			if (Auth::isAdmin()) {
 				echo '<table width="100%"><tr class="noprint">';
 				echo '<td>';
-				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
+				echo'<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a>';
 				echo '</td>';
 				echo '<td "style=text-align:center;">';
-				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_places">', I18N::translate('Geographic data'), '</a>';
+				echo '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_places">' . I18N::translate('Geographic data') . '</a>';
 				echo '</td>';
 				echo '<td style="text-align:end;">';
-				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_placecheck">', I18N::translate('Place check'), '</a>';
+				echo '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_placecheck">' . I18N::translate('Place check') . '</a>';
 				echo '</td>';
 				echo '</tr></table>';
 			}
@@ -598,20 +598,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		<?php
 		}
 		$countryList = array();
-		$placesDir   = scandir(WT_MODULES_DIR . 'googlemap/places/');
-		for ($i = 0; $i < count($country); $i++) {
-			if (count(preg_grep('/' . $country[$i] . '/', $placesDir)) != 0) {
-				$rep = opendir(WT_MODULES_DIR . 'googlemap/places/' . $country[$i] . '/');
-				while ($file = readdir($rep)) {
-					if (stristr($file, 'flags')) {
-						if (isset($countries[$country[$i]])) {
-							$countryList[$country[$i]] = $countries[$country[$i]];
-						} else {
-							$countryList[$country[$i]] = $country[$i];
-						}
-					}
+
+		foreach ($country as $item) {
+			if (is_dir(WT_MODULES_DIR . 'googlemap/places/' . $item . '/flags')) {
+				if (isset($countries[$item])) {
+					$countryList[$item] = $countries[$item];
+				} else {
+					$countryList[$item] = $item;
 				}
-				closedir($rep);
 			}
 		}
 		asort($countryList);
@@ -642,7 +636,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<input type="hidden" name="action" value="ChangeFlag">
 			<input type="hidden" name="selcountry" value="<?php echo $countrySelected ?>">
 			<input type="hidden" name="selstate" value="<?php echo $stateSelected ?>">
-			<table class="facts_table">
+			<table class="facts_table" style="margin: 0 auto 20px">
 				<tr>
 					<td class="optionbox" colspan="4">
 						<select name="COUNTRYSELECT" dir="ltr" onchange="selectCountry()">
@@ -689,21 +683,21 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 				echo '>';
 		?>
-					<td class="optionbox" colspan="4">
-						<select name="STATESELECT" dir="ltr" onchange="selectCountry()">
-							<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ I18N::translate('Subdivision') ?></option>
-							<?php foreach ($stateList as $state_key => $state_name) {
-								echo '<option value="', $state_key, '" ';
-								if ($stateSelected == $state_key) {
-									echo 'selected';
-								}
-								echo '>', $state_name, '</option>';
-							} ?>
-						</select>
-					</td>
-				</tr>
-				<tr>
-		<?php
+				<td class="optionbox" colspan="4">
+					<select name="STATESELECT" dir="ltr" onchange="selectCountry()">
+						<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ I18N::translate('Subdivision') ?></option>
+						<?php foreach ($stateList as $state_key => $state_name) {
+							echo '<option value="', $state_key, '" ';
+							if ($stateSelected == $state_key) {
+								echo 'selected';
+							}
+							echo '>', $state_name, '</option>';
+						} ?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+			<?php
 				$j = 1;
 				for ($i = 0; $i < count($flags_s); $i++) {
 					if ($stateSelected != 'States') {
@@ -716,7 +710,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$j++;
 				}
 
-		?>
+			?>
 				</tr>
 
 			</table>
@@ -1898,7 +1892,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$parent   = explode(',', $place);
 		$parent   = array_reverse($parent);
 		$place_id = 0;
-		for ($i = 0; $i < count($parent); $i++) {
+		$num_parent = count($parent);
+		for ($i = 0; $i < $num_parent; $i++) {
 			$parent[$i] = trim($parent[$i]);
 			if (empty($parent[$i])) {
 				$parent[$i] = 'unknown'; // GoogleMap module uses "unknown" while GEDCOM uses , ,
@@ -2404,34 +2399,33 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					// All locations are the same in each group, so create a marker with the first
 					var location = location_groups[key][0];
 					var html =
-					'<div class="infowindow">' +
+						'<div class="infowindow">' +
 						'<div id="gmtabs">' +
-							'<ul class="tabs" >' +
-								'<li><a href="#event" id="EV"><?php echo I18N::translate('Events') ?></a></li>' +
-								<?php if ($STREETVIEW) { ?>
-								'<li><a href="#sview" id="SV"><?php echo I18N::translate('Google Street View™') ?></a></li>' +
-								<?php } ?>
-							'</ul>' +
-							'<div class="panes">' +
-								'<div id="pane1">' +
-									'<h4 id="iwhead">' + location.place + '</h4>' +
-									event_details +
-								'</div>' +
-								<?php if ($STREETVIEW) { ?>
-								'<div id="pane2">' +
-									'<h4 id="iwhead">' + location.place + '</h4>' +
-									'<div id="pano"></div>' +
-								'</div>' +
-								<?php } ?>
-							'</div>' +
+						'<ul class="tabs" >' +
+						'<li><a href="#event" id="EV"><?php echo I18N::translate('Events') ?></a></li>' +
+						<?php if ($STREETVIEW) { ?>
+						'<li><a href="#sview" id="SV"><?php echo I18N::translate('Google Street View™') ?></a></li>' +
+						<?php } ?>
+						'</ul>' +
+						'<div class="panes">' +
+						'<div id="pane1">' +
+						'<h4 id="iwhead">' + location.place + '</h4>' +
+						event_details +
 						'</div>' +
-					'</div>';
+						<?php if ($STREETVIEW) { ?>
+						'<div id="pane2">' +
+						'<h4 id="iwhead">' + location.place + '</h4>' +
+						'<div id="pano"></div>' +
+						'</div>' +
+						<?php } ?>
+						'</div>' +
+						'</div>' +
+						'</div>';
 					var point        = new google.maps.LatLng(location.lat,     location.lng);     // Place Latitude, Longitude
 					var sv_point     = new google.maps.LatLng(location.sv_lati, location.sv_long); // StreetView Latitude and Longitide
 
 					var zoomLevel = <?php echo $GM_MAX_ZOOM ?>;
-					var marker    = createMarker(point, html, location.tooltip, location.sv_lati, location.sv_long, location.sv_bearing, location.sv_elevation, location.sv_zoom, sv_point, location.pl_icon);
-
+					createMarker(point, html, location.tooltip, location.sv_lati, location.sv_long, location.sv_bearing, location.sv_elevation, location.sv_zoom, sv_point, location.pl_icon);
 					// if streetview coordinates are available, use them for marker,
 					// else use the place coordinates
 					if (sv_point && sv_point != "(0, 0)") {
@@ -2667,17 +2661,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 			echo '</tr><tr><td>';
 			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
-			echo '&nbsp;|&nbsp;';
-			echo '<a href="' . $adminplaces_url . '">', I18N::translate('Geographic data'), '</a>';
-			echo '&nbsp;|&nbsp;';
-			echo '<a href="' . $placecheck_url . '">', I18N::translate('Place check'), '</a>';
+			echo ' | <a href="' . $adminplaces_url . '">' . I18N::translate('Geographic data') . '</a>';
+			echo ' | <a href="' . $placecheck_url . '">' . I18N::translate('Place check') . '</a>';
 			if (Module::getModuleByName('batch_update')) {
 				$placelevels = preg_replace('/, ' . I18N::translate('unknown') . '/', ', ', $placelevels); // replace ", unknown" with ", "
 				$placelevels = substr($placelevels, 2); // remove the leading ", "
 				if ($placelevels) {
 					$batchupdate_url = 'module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=BatchUpdateSearchReplacePlugin&amp;method=exact&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;search=' . urlencode($placelevels); // exact match
-					echo '&nbsp;|&nbsp;';
-					echo '<a href="' . $batchupdate_url . '">', I18N::translate('Batch update'), '</a>';
+					echo ' | <a href="' . $batchupdate_url . '">' . I18N::translate('Batch update') . '</a>';
 				}
 			}
 		}
@@ -3512,11 +3503,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 				?>
 				var coordStr = <?php echo json_encode($coordsAsStr); ?>;
-				jQuery.each(coordStr, function(index, value){
+				jQuery.each(coordStr, function(index, value) {
 					var coordXY = value.split('|');
 					var coords  = [];
 					var points  = [];
-					jQuery.each(coordXY, function(i, v){
+					jQuery.each(coordXY, function(i, v) {
 						coords = v.split(',');
 						points.push(new google.maps.LatLng(parseFloat(coords[1]), parseFloat(coords[0])));
 					});
@@ -3846,8 +3837,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees') ?>" value="<?php echo abs($place_lati) ?>" size="20" onchange="updateMap();">
 					<select name="LATI_CONTROL" id="LATI_CONTROL" onchange="updateMap();">
-						<option value="PL_N" <?php if ($place_lati >= 0) echo "selected"; echo ">", I18N::translate('north') ?></option>
-						<option value="PL_S" <?php if ($place_lati < 0) echo "selected"; echo ">", I18N::translate('south') ?></option>
+						<option value="PL_N"<?php echo $place_lati >= 0 ? ' selected' : ''; ?>><?php echo I18N::translate('north'); ?></option>
+						<option value="PL_S"<?php echo $place_lati < 0 ? ' selected' : ''; ?>><?php echo I18N::translate('south'); ?></option>
+
 					</select>
 				</td>
 			</tr>
@@ -3856,8 +3848,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees') ?>" value="<?php echo abs($place_long) ?>" size="20" onchange="updateMap();">
 					<select name="LONG_CONTROL" id="LONG_CONTROL" onchange="updateMap();">
-						<option value="PL_E" <?php if ($place_long >= 0) echo "selected"; echo ">", I18N::translate('east') ?></option>
-						<option value="PL_W" <?php if ($place_long < 0) echo "selected"; echo ">", I18N::translate('west') ?></option>
+						<option value="PL_E"<?php echo $place_long >= 0 ? ' selected' : ''; ?>><?php echo I18N::translate('east'); ?></option>
+						<option value="PL_W"<?php echo $place_long < 0 ? ' selected' : ''; ?>><?php echo I18N::translate('west'); ?></option>
+
 					</select>
 				</td>
 			</tr>
@@ -4388,7 +4381,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		?>
 		<script>
 		function updateList(inactive) {
-			window.location.href='<?php if (strstr($_SERVER['REQUEST_URI'], '&inactive', true)) { $uri = strstr($_SERVER['REQUEST_URI'], '&inactive', true); } else { $uri = $_SERVER['REQUEST_URI']; } echo $uri, '&inactive=' ?>'+inactive;
+			window.location.href='<?php if (strstr(Filter::server('REQUEST_URI'), '&inactive', true)) { $uri = strstr(Filter::server('REQUEST_URI'), '&inactive', true); } else { $uri = Filter::server('REQUEST_URI'); } echo $uri, '&inactive=' ?>'+inactive;
 		}
 
 		function edit_place_location(placeid) {
@@ -4580,7 +4573,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * Generate the streetview window.
 	 */
 	private function wtStreetView() {
-	header('Content-type: text/html; charset=UTF-8');
+		header('Content-type: text/html; charset=UTF-8');
 
 		?>
 		<html>
@@ -4865,10 +4858,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				<div id="toggle">
 					<form name="myForm" title="myForm">
-						<?php
-						echo '<input id="butt1" name ="butt1" type="button" value="', I18N::translate('Google Maps™'), '" onclick="toggleStreetView();"></input>';
-						echo '<input id="butt2" name ="butt2" type="button" value="', I18N::translate('reset'), '" onclick="initialize();"></input>';
-						?>
+						<input id="butt1" name ="butt1" type="button" value="<?php echo I18N::translate('Google Maps™') ?>" onclick="toggleStreetView();">
+						<input id="butt2" name ="butt2" type="button" value="<?php echo I18N::translate('reset') ?>" onclick="initialize();">
 					</form>
 				</div>
 
