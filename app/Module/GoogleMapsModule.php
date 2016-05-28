@@ -564,7 +564,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 		}
 
-		if ($action == 'ChangeFlag' && Filter::post('FLAGS')) {
+		if ($action == 'ChangeFlag' && Filter::post('FLAGS') !== null) {
 		?>
 			<script>
 		<?php if (Filter::post('selcountry') == 'Countries') { ?>
@@ -3879,9 +3879,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag') ?></a>
 						<?php } ?>
 					</div>
-					<p class="small text-muted">
-						<?php echo I18N::translate('Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed.') ?>
-					</p>
 				</td>
 			</tr>
 			</table>
