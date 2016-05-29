@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-28 16:46+0000\n"
+"PO-Revision-Date: 2016-05-29 18:35+0000\n"
 "Last-Translator: Astrit Bokshi <astritbokshi@gmail.com>\n"
 "Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/webtrees/sq/>\n"
 "Language: sq\n"
@@ -690,7 +690,6 @@ msgstr "9"
 
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:742
-#, fuzzy
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
 msgstr "<b>GUID</b> në këtë kontekst është shkurtesë e \"Globally Unique ID\".<br><br>GUID ka për detyrë të ndihmoj në identifikimin e secilit individ në kuptimin e përsëritjes, ashtuqë organizatat qëndrore si Qendra e Historisë së Familjes e kishës  LDS në Salt Lake City, ose ndonjë programi kompatibil i aktivizuar në serverin tuaj, mund të përcaktoj se a bëhet fjalë për të njëjtin individ pa marrë parasysh në shënimet e GEDCOM. Qëllimi i Qendrës së Historisë së Familjes është që të ketë bazën qëndrore të shënimeve gjenealogjike dhe që t’i ofrojë ato përmes web shërbimeve të veta.  Kjo do të mundësojë që secili aplikacion të ketë çasje në këto shënime dhe të azhurnohet me to.<br><br>Nëse nuk dëshironi të ndani shënimet e databazës suaj GEDCOM, atëherë webtrees nuk ka nevojë t’i krijoj ata GUID numra; edhepse, nëse e bëni këtë, nuk do të bëhet ndonjë dëm, vetëmse do të rritet pak databaza e juaj GEDCOM."
 
@@ -699,24 +698,20 @@ msgid "<b>Important note:</b> The transfer wizard is not able to assist with mov
 msgstr "<b>Vërejtje e rëndësishme:</b> Magjistari i transferimit nuk mund të asistojë në lëvizjen e media artikujve. Ju duhet të vendosni dhe lëvizni ose të kopjoni konfigurimin tuaj medial dhe objektet pasi që magjistari i transferimit të ketë përfunduar."
 
 #: message.php:107
-#, fuzzy
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr "<b>Vërejtje:</b> Informatat private të individëve të gjallë do t’i jepen vetëm familjarëve dhe shokëve. Do t’u kërkohet të verifikoni lidhjet familjare para se të pranoni ndonjë shënim privat. Ndonjëherë edhe informatat për të vdekurit mund të jenë poashtu private. Po të jetë ky rast, atëherë sigurisht nuk ka informata të duhura për personin që të përcaktohet se a janë ata gjallë apo jo dhe ne sigurisht nuk kemi informata tjera për këtë person.<br><br>Para se të bëni pyetje, ju lutem verifikoni se ju po kërkoni personin e duhur duke kontrolluar shënimet, vendet dhe të afërmit. Nëse bëni ndryshime në shënimet gjenealogjike, ju lutem përfshini burimet nga i keni marrë shënimet."
 
 #: login.php:170
-#, fuzzy
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
 msgstr "<center><b>Mirë se erdhët në web faqes e gjenealogjisë </b></center><br>Çasja ndaj kësaj faqeje u lejohet vetëm<u>authorized</u> përdoruesve.<br><br>Nëse keni llogari përdoruesish ju mund të kyçeni në këtë faqe. Po të mos keni llogari, ju mund ta kërkoni atë duke klikuar në lidhjen e duhur më poshtë.<br><br>Pas verifikimit të informatave tuaja, administratori ose do të aprovojë ose do të refuzojë aplikimin tuaj për llogari. Ju do të pranoni një mesazh emaili kur aplikimi juaj aprovohet."
 
 #: login.php:173
-#, fuzzy
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
 msgstr "<center><b>Mirë se erdhët në këtë web faqe të gjenealogjisë</b></center><br>Çasja në këtë web faqe u lejohet <u>vetëm antarëve të familjes</u>.<br><br>Po të keni llogari përdoruesi ju mund të kyçeni në këtë faqe. Po të mos keni llogari, ju mund të aplikoni duke klikuar në linkun e duhur më poshtë.<br><br>Pasi të verifikohen oinformatat që ju jepni, administratori ose do të aprovojë ose të refuzojë kërkesën tuaj. Sapo që kërkesa juaj të qprovohet, ju do të pranoni një email."
 
 #: login.php:167
-#, fuzzy
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
-msgstr "<center><b>Mirë se erdhët në këtë web faqe të gjenealogjisë</b></center><br>\\nÇasja në këtë web faqe i lejohet çdo vizitori që ka një logari përdoruesi.<br><br> Nëse keni llogari ju mund të kyçeni në këtë faqe. Po të mos keni llogari, ju mund të aplikoni duke klikuar në linkun e duhur më poshtë.<br><br>Pasi të verifikohet aplikacioni juaj, administratori i web faqes do të aktivizojë llogarinë tuaj. Sapo që kërkesa juaj të qprovohet, ju do të pranoni një email."
+msgstr "<center><b>Mirë se erdhët në këtë web faqe të gjenealogjisë</b></center><br>Çasja në këtë web faqe i lejohet çdo vizitori që ka një logari përdoruesi.<br><br> Nëse keni llogari ju mund të kyçeni në këtë faqe. Po të mos keni llogari, ju mund të aplikoni duke klikuar në linkun e duhur më poshtë.<br><br>Pasi të verifikohet aplikacioni juaj, administratori i web faqes do të aktivizojë llogarinë tuaj. Sapo që kërkesa juaj të qprovohet, ju do të pranoni një email."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
@@ -5115,7 +5110,6 @@ msgid "Denver, Colorado, United States"
 msgstr "Denver, Colorado, United States"
 
 #: admin_site_upgrade.php:80
-#, fuzzy
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
 msgstr "Varësisht nga konfigurimi juaj i serverit, juve mund t'u mundësohet të ngreni në post automatikisht."
 
@@ -5726,7 +5720,6 @@ msgstr "Brezi i fundit i kohës së ndryshuar"
 
 #. I18N: Location of an LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:143
-#, fuzzy
 msgid "Endowment House"
 msgstr "Shtëpia e thesarit"
 
@@ -5871,7 +5864,6 @@ msgstr "Përjashto nënfolderat"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:92
-#, fuzzy
 msgid "Excluded from this submission"
 msgstr "Përjashtuar nga kjo paraqitje"
 
@@ -7316,7 +7308,6 @@ msgid "Hourglass chart of %s"
 msgstr "Grafi i orës së qelqit i %s"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:136
-#, fuzzy
 msgid "Household"
 msgstr "Vatra"
 
@@ -10410,11 +10401,11 @@ msgstr "Vetëm udhëheqësit mund të editojnë"
 
 #: site-unavailable.php:81
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr ""
+msgstr "Upps! Web serveri nuk është në gjendje të lidhet me serverin e databazës. Mund të jetë e zënë, në mirëmbajtje, ose thjeshtë e prishur.  Ju mund të <a href=\"index.php\">provoni përsëri</a>pas pak ose të kontaktoni administratorin e web faqes."
 
 #: setup.php:210
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr ""
+msgstr "Upps! webtrees nuk ishte në gjendje të krijojë fajla në këtë folder."
 
 #: app/Functions/FunctionsPrint.php:476
 msgid "OpenStreetMap™"
@@ -10422,7 +10413,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:394
 msgid "Optional prefixes and suffixes"
-msgstr ""
+msgstr "Prefikset dhe sufikset e mundshme"
 
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
@@ -10432,7 +10423,7 @@ msgstr ""
 #: admin_module_menus.php:89 admin_module_sidebar.php:89
 #: admin_module_tabs.php:89
 msgid "Order"
-msgstr ""
+msgstr "Renditja"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:88
@@ -10461,17 +10452,17 @@ msgstr ""
 #. I18N: gedcom tag ORDI
 #: app/GedcomTag.php:656
 msgid "Ordinance"
-msgstr ""
+msgstr "Urdhëresë"
 
 #. I18N: gedcom tag ORDN
 #: app/GedcomTag.php:660
 msgid "Ordination"
-msgstr ""
+msgstr "Vendimi"
 
 #: modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6
 msgid "Orientation"
-msgstr ""
+msgstr "Orientimi"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:247
@@ -10481,84 +10472,84 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1940 app/Stats.php:5499 app/Stats.php:5918
 msgid "Other"
-msgstr ""
+msgstr "Tjetër"
 
 #: admin_trees_config.php:1418
 msgid "Other facts to show in charts"
-msgstr ""
+msgstr "Faktet tjera për të shfaqur në grafe"
 
 #: addmedia.php:524 admin_media_upload.php:242
 msgid "Other folder… please type in"
-msgstr ""
+msgstr "Folder tjetër... ju lutem shtypni"
 
 #: admin_trees_config.php:2190
 msgid "Other settings"
-msgstr ""
+msgstr "Përkufizimet tjera"
 
 #: statistics.php:73
 msgid "Others"
-msgstr ""
+msgstr "Të tjerat"
 
 #: app/Module/GoogleMapsModule.php:4235
 msgid "Overwrite existing coordinates."
-msgstr ""
+msgstr "Mbishkruaj koordinatat ekzistuese."
 
 #: statistics.php:75
 msgid "Own charts"
-msgstr ""
+msgstr "Grafet vetanake"
 
 #: app/GedcomCode/GedcomCodeRela.php:212
 msgid "Owner"
-msgstr ""
+msgstr "Pronari"
 
 #: app/GedcomCode/GedcomCodeRela.php:210
 msgctxt "FEMALE"
 msgid "Owner"
-msgstr ""
+msgstr "Pronarja"
 
 #: app/GedcomCode/GedcomCodeRela.php:208
 msgctxt "MALE"
 msgid "Owner"
-msgstr ""
+msgstr "Pronari"
 
 #. I18N: time format “%A” - between 12:00:01 and 23:59:59
 #: app/Functions/FunctionsDate.php:111
 msgid "P.M."
-msgstr ""
+msgstr "M.D."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:88
 msgid "PHP blocked the file because of its extension."
-msgstr ""
+msgstr "PHP bllokoi fajlin për shkak të ekstensionit të saj."
 
 #: setup.php:137
 #, php-format
 msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "Ekstensioni PHP \"%1$s\" është deaktivizuar. Pa të, veçoritë në vijim nuk do të punojnë: %2$s. Ju lutem kërkoni nga administratori që ta aktivizojë atë."
 
 #: setup.php:126
 #, php-format
 msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "Ekstensioni PHP \"%s\" është deaktivizuar. Nuk mund të instaloni wetrees përderisa kjo të mos aktivizohet. Ju lutem pyeteni administratorin e serverit tuaj që ta aktivizojë atë."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:85
 msgid "PHP failed to write to disk."
-msgstr ""
+msgstr "PHP dështoi të shkruaj në disk."
 
 #: admin_site_info.php:51
 msgid "PHP information"
-msgstr ""
+msgstr "Informatat PHP"
 
 #: setup.php:146
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "Përkufizimi iPHP \"%1$s\" është deaktivizuar. Pa të, veçoritë në vijim nuk do të punojnë: %2$s. Ju lutem pyeteni administratorin tuaj të serverit që ta aktivizojë atë."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:211
 msgid "PHP time limit"
-msgstr ""
+msgstr "Kufiri kohor i PHP"
 
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
@@ -10575,12 +10566,12 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:38
 #: modules_v3/relative_ext_report/report.xml:44
 msgid "Page"
-msgstr ""
+msgstr "Faqja"
 
 #: medialist.php:245
 #, php-format
 msgid "Page %s of %s"
-msgstr ""
+msgstr "Faqe %s nga %s"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -10597,17 +10588,17 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:8
 msgid "Page size"
-msgstr ""
+msgstr "Madhësia e faqes"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1938
 msgid "Painting"
-msgstr ""
+msgstr "Piktura"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6897
 msgid "Pakistan"
-msgstr ""
+msgstr "Pakistani"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6902
@@ -10627,7 +10618,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6898
 msgid "Panama"
-msgstr ""
+msgstr "Panamaja"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:253
@@ -10642,37 +10633,37 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6908
 msgid "Paraguay"
-msgstr ""
+msgstr "Paraguaji"
 
 #: app/Controller/HourglassController.php:342
 #: app/Module/FamilyNavigatorModule.php:196 family.php:100
 msgid "Parents"
-msgstr ""
+msgstr "Prindërit"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Parents and siblings"
-msgstr ""
+msgstr "Prindërit dhe vëllezërit/motrat"
 
 #: app/Functions/FunctionsPrint.php:279
 msgid "Parent’s age"
-msgstr ""
+msgstr "Mosha e prindërve"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:396 admin_users.php:339
 #: app/Module/LoginBlockModule.php:78 edituser.php:213 login.php:194
 #: login.php:256 login.php:526 setup.php:434
 msgid "Password"
-msgstr ""
+msgstr "Fjalëkalimi"
 
 #: admin_users.php:344 edituser.php:219 login.php:457
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr ""
+msgstr "Fjalëkalimi duhet të ketë së paku 6 karaktere dhe është i ndjeshëm në shkronja të vogla/mëdha, ashtuqë \"fshehtësia\" është ndryshe nga \"FSHEHTËSIA\"."
 
 #: edituser.php:139
 msgid "Passwords must contain at least 6 characters."
-msgstr ""
+msgstr "Fjalëkalimi duhet të ketë së paku 6 karaktere."
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
@@ -10682,32 +10673,32 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:3
 #: modules_v3/pedigree_report/report.xml:43
 msgid "Pedigree"
-msgstr ""
+msgstr "Prejardhja"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree chart"
-msgstr ""
+msgstr "Grafi i prejardhjes"
 
 #: app/Module/GoogleMapsModule.php:222 app/Module/GoogleMapsModule.php:1389
 msgid "Pedigree map"
-msgstr ""
+msgstr "Harta e prejardhjes"
 
 #. I18N: %s is an individual’s name
 #: app/Module/GoogleMapsModule.php:753
 #, php-format
 msgid "Pedigree map of %s"
-msgstr ""
+msgstr "Harta e prejardhjes e %s"
 
 #: app/Module/ChartsBlockModule.php:86
 #, php-format
 msgid "Pedigree of %s"
-msgstr ""
+msgstr "Prejardhja e %s"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr ""
+msgstr "Trungu i prejardhjes së %s"
 
 #. I18N: Name of a module
 #: admin.php:753 admin.php:775 admin_site_upgrade.php:100
@@ -10715,20 +10706,20 @@ msgstr ""
 #: app/Theme/AbstractTheme.php:1674 edit_changes.php:34 edit_changes.php:48
 #: help_text.php:307 modules_v3/change_report/report.xml:52
 msgid "Pending changes"
-msgstr ""
+msgstr "Ndryshimet e pezulluara"
 
 #: help_text.php:314
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr ""
+msgstr "Ndryshimet e pezulluara shfaqen vetëm kur llogaria juaj ka leje të editimit. Kur të keni dalur, ju nuk do të mund t'i shihni më ato. Poashtu, ndryshimet e pezulluara shfaqen vetëm në faqet e caktuara. P.sh., ato nuk shfaqen në lista, raporte, ose rezultate të kërkimit."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1715
 msgid "Permanent number"
-msgstr ""
+msgstr "Numër i përhershëm"
 
 #: admin_site_change.php:372 admin_site_logs.php:313
 msgid "Permanently delete these records?"
-msgstr ""
+msgstr "Fshij përgjithmonë këto shënime?"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:255
@@ -10743,62 +10734,62 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6901
 msgid "Philippines"
-msgstr ""
+msgstr "Filipinet"
 
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:678
 msgid "Phone"
-msgstr ""
+msgstr "Telefoni"
 
 #. I18N: gedcom tag FONE
 #: app/GedcomTag.php:488
 msgid "Phonetic"
-msgstr ""
+msgstr "Fonetike"
 
 #: search.php:253
 msgid "Phonetic algorithm"
-msgstr ""
+msgstr "Algoritmi fonetik"
 
 #: app/GedcomTag.php:604
 msgid "Phonetic name"
-msgstr ""
+msgstr "Emri fonetik"
 
 #: app/GedcomTag.php:684
 msgid "Phonetic place"
-msgstr ""
+msgstr "Vendi fonetik"
 
 #. I18N: search using “sounds like”, rather than exact spelling
 #: app/Controller/SearchController.php:198 app/Theme/AbstractTheme.php:1712
 #: branches.php:51
 msgid "Phonetic search"
-msgstr ""
+msgstr "Kërkimi fonetik"
 
 #: app/GedcomTag.php:832
 msgid "Phonetic title"
-msgstr ""
+msgstr "Titulli fonetik"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1932
 msgid "Photo"
-msgstr ""
+msgstr "Foto"
 
 #: admin_pgv_to_wt.php:151
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "PhpGedView duhet instaluar në një nga këta foldera:"
 
 #. I18N: %s is a number
 #: admin_trees_manage.php:711
 #, php-format
 msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-msgstr ""
+msgstr "PhpGedView duhet të jetë e versionit 4.2.3, ose çfarëdo SVN deri në %s"
 
 #: admin_pgv_to_wt.php:91
 msgid "PhpGedView must use the same database as webtrees."
-msgstr ""
+msgstr "PhpGedView duhet të përdor të njëjtën databazë si edhe wetrees."
 
 #: admin_pgv_to_wt.php:42 admin_trees_manage.php:697
 msgid "PhpGedView to webtrees transfer wizard"
-msgstr ""
+msgstr "Magjistari i transferimit PhpGedView në webtrees"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:88
@@ -10824,37 +10815,37 @@ msgstr ""
 #: modules_v3/marriage_report/report.xml:50
 #: modules_v3/occupation_report/report.xml:60 search.php:242
 msgid "Place"
-msgstr ""
+msgstr "Vendi"
 
 #: app/Module/GoogleMapsModule.php:172 app/Module/GoogleMapsModule.php:306
 #: app/Module/GoogleMapsModule.php:875 app/Module/GoogleMapsModule.php:1530
 #: app/Module/GoogleMapsModule.php:1536 app/Module/GoogleMapsModule.php:2667
 #: app/Module/GoogleMapsModule.php:4039
 msgid "Place check"
-msgstr ""
+msgstr "Verifikimi i vendit"
 
 #. I18N: Label for search field
 #: find.php:204
 msgid "Place contains"
-msgstr ""
+msgstr "Vendi përbën"
 
 #: app/Module/GoogleMapsModule.php:435 app/Theme/AbstractTheme.php:1527
 #: placelist.php:41 placelist.php:43 placelist.php:144
 msgid "Place hierarchy"
-msgstr ""
+msgstr "Kierarkia e vendit"
 
 #: app/GedcomTag.php:688
 msgid "Place in Hebrew"
-msgstr ""
+msgstr "Vendi në Hebraishte"
 
 #: placelist.php:46 placelist.php:65
 msgid "Place list"
-msgstr ""
+msgstr "Lista e vendeve"
 
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: admin_trees_config.php:1650
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr ""
+msgstr "Emrat e vendeve shpeshherë janë tepër të gjatë që t'i zë grafi, lista, etj. Ata mund të shkurtohen duke shfaqur vetëm disa pjesë të para të emrit, si <i>fshati, krahina</i>, ose pjesët e fundit të saj, si <i>regjioni, shteti</i>."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:178
@@ -10878,11 +10869,11 @@ msgstr ""
 
 #: app/GedcomTag.php:134
 msgid "Place of adoption"
-msgstr ""
+msgstr "Vendi i adoptimit"
 
 #: app/GedcomTag.php:186 modules_v3/missing_facts_report/report.xml:140
 msgid "Place of baptism"
-msgstr ""
+msgstr "Vendi i pagëzimit"
 
 #: app/GedcomTag.php:194 modules_v3/missing_facts_report/report.xml:223
 msgid "Place of bar mitzvah"
@@ -10895,11 +10886,11 @@ msgstr ""
 #: app/GedcomTag.php:210 modules_v3/fact_sources/report.xml:273
 #: modules_v3/missing_facts_report/report.xml:93
 msgid "Place of birth"
-msgstr ""
+msgstr "Vendi i lindjes"
 
 #: app/GedcomTag.php:218
 msgid "Place of blessing"
-msgstr ""
+msgstr "Vendi i bekimit"
 
 #: app/GedcomTag.php:1088
 msgid "Place of brit milah"
@@ -10907,36 +10898,36 @@ msgstr ""
 
 #: app/GedcomTag.php:230 modules_v3/missing_facts_report/report.xml:557
 msgid "Place of burial"
-msgstr ""
+msgstr "Vendi i varrimit"
 
 #: app/GedcomTag.php:282 modules_v3/missing_facts_report/report.xml:181
 msgid "Place of christening"
-msgstr ""
+msgstr "Vendi i pagëzimit"
 
 #: app/GedcomTag.php:314 modules_v3/missing_facts_report/report.xml:305
 msgid "Place of confirmation"
-msgstr ""
+msgstr "Vendi i konfirmimit"
 
 #: app/GedcomTag.php:334
 msgid "Place of cremation"
-msgstr ""
+msgstr "Vendi i kremimit"
 
 #: app/GedcomTag.php:358 modules_v3/fact_sources/report.xml:275
 #: modules_v3/missing_facts_report/report.xml:516
 msgid "Place of death"
-msgstr ""
+msgstr "Vendi i vdekjes"
 
 #: app/GedcomTag.php:408
 msgid "Place of emigration"
-msgstr ""
+msgstr "Vendi i emigrimit"
 
 #: app/GedcomTag.php:424 modules_v3/missing_facts_report/report.xml:347
 msgid "Place of engagement"
-msgstr ""
+msgstr "Vendi i angazhimit"
 
 #: app/GedcomTag.php:432
 msgid "Place of event"
-msgstr ""
+msgstr "Vendi i ngjarjes"
 
 #: app/GedcomTag.php:480 modules_v3/missing_facts_report/report.xml:389
 msgid "Place of first communion"
@@ -10944,92 +10935,92 @@ msgstr ""
 
 #: app/GedcomTag.php:524
 msgid "Place of immigration"
-msgstr ""
+msgstr "Vendi i imigrimit"
 
 #: app/GedcomTag.php:462 app/GedcomTag.php:576
 #: modules_v3/fact_sources/report.xml:321
 #: modules_v3/missing_facts_report/report.xml:474
 msgid "Place of marriage"
-msgstr ""
+msgstr "Vendi i martesës"
 
 #: app/GedcomTag.php:560 modules_v3/missing_facts_report/report.xml:431
 msgid "Place of marriage banns"
-msgstr ""
+msgstr "Vendi i njoftimeve martesore"
 
 #: app/GedcomTag.php:618
 msgid "Place of naturalization"
-msgstr ""
+msgstr "Vendi i natyralizimit"
 
 #: app/GedcomTag.php:666
 msgid "Place of ordination"
-msgstr ""
+msgstr "Vendi i vendimit"
 
 #: app/GedcomTag.php:732
 msgid "Place of residence"
-msgstr ""
+msgstr "Vendi i banimit"
 
 #: admin_site_upgrade.php:416
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Vendos web faqen offline, duke krijuar fajlin %s…"
 
 #: admin_site_upgrade.php:472
 #, php-format
 msgid "Place the website online, by deleting the file %s…"
-msgstr ""
+msgstr "Vendos web faqen pnline, duke fshirë fajlin %s…"
 
 #: admin_trees_config.php:1624 search.php:204 statistics.php:407
 msgid "Places"
-msgstr ""
+msgstr "Vendet"
 
 #: find.php:671
 msgid "Places found"
-msgstr ""
+msgstr "Vendet e gjetura"
 
 #. I18N: %s is a country or region
 #: placelist.php:142
 #, php-format
 msgid "Places in %s"
-msgstr ""
+msgstr "Vendet në %s"
 
 #: help_text.php:253
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr ""
+msgstr "Vendet duhet të futen në pajtim me standardet për gjenealogji. Në gjenealogji, vendet regjistrohen së pari me informatat më të pakta e pastaj ato me informata më të shumta, duke përdorurpresjet për të ndarë nivelet e vendeve të ndryshme. P. sh., vendi Prishtinë duhet shkruar \"Prishtinë, Kosovë\". <br><br>Le të ekzaminojmë secilën pjesë të ktij vendi. Pjesa e parë, \"Prishtina\", është qyteti ku ngjarja ka ndodhur. Pjesa tjetër, \"Kosova\" është shteti. Kur na duhet të fusim ndonjë vend më të vogël apo ndonjë fshat që nuk është shumë i njohur dhe që i përket ndonjë qyteti më të madh, atëherë atë e fusim para qytetit. Shembull: \"Ajvali, Prishtinë, Kosovë\". Kështu dihet se bëhet fjalë për Ajvalinë afër Prishtinës, sepse mund të ekzistojë edhe ndonjë ajvali në Kosovë.<br><br>Nëse ndonjë nga nivelet e vendit është i panjohur, atëherë lëreni një zbrazësirë ndërmjet presjeve. Le të themi në shembullin e mësipërm se ju nuk e dini se cilit qytet më të madh i përket Ajvalia. Në këtë rast, ju duhet të shkruani: \"Ajvalia, , Kosovë\". Le të themi se e dini se personi ka lindur në Kosovë. Në këtë rast ju shkruani: \", , Kosovë\". <br><br>Mund të përdorni lidhjen <b>Kërko vendin</b>si ndihmë për të gjetur vendin që tashmë ekziston në databazë."
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:93
 #: app/Theme/FabTheme.php:109 app/Theme/MinimalTheme.php:106
 #: app/Theme/WebtreesTheme.php:72 app/Theme/XeneaTheme.php:88
 msgid "Play"
-msgstr ""
+msgstr "Fillo"
 
 #: login.php:338
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
-msgstr ""
+msgstr "Ju lutem klikoni në lidhjen më poshtë dhe plotësoni shënimet e kërkuara për të konfirmuar kërkesën tuaj dhe email adresën."
 
 #: search.php:55
 msgid "Please enter a given name, surname, or place in addition to the year"
-msgstr ""
+msgstr "Ju lutem të fusni emrin, mbiemrin, ose vendin përkrah vitit"
 
 #: message.php:91
 msgid "Please enter a message subject."
-msgstr ""
+msgstr "Ju lutem të fusni titullin e mesazhit."
 
 #: message.php:50
 msgid "Please enter a valid email address."
-msgstr ""
+msgstr "Ju lutem të fusni email adresë të vlefshme."
 
 #: app/Module/CensusAssistantModule.php:169 find.php:127 search.php:36
 #: search.php:48
 msgid "Please enter more than one character."
-msgstr ""
+msgstr "Ju lutem fusni më shumë se një karakter."
 
 #: message.php:96
 msgid "Please enter some message text before sending."
-msgstr ""
+msgstr "Ju lutem të fusni tekst të mesazhit para se ta dërgoni."
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
-msgstr ""
+msgstr "Ju lutem jepni email adresën ashtuqë të mund t'ju kontaktojmë në përgjigje të këtij mesazhi. Po të mos jepni email adrezën tuaj ne nuk do të mund të përgjigjemi në kërkesën tuaj. Email adresa juaj nuk do të përdoret pë ndonjë qëllim tjetër përpos për t'u përgjigjur në kërkesën tuaj."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:92
@@ -11058,7 +11049,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6904
 msgid "Poland"
-msgstr ""
+msgstr "Polonia"
 
 #: app/SurnameTradition.php:90
 msgctxt "Surname tradition"
@@ -11068,7 +11059,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:357 setup.php:281
 msgid "Port number"
-msgstr ""
+msgstr "Numri i portit"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:259
@@ -11084,12 +11075,12 @@ msgstr ""
 #: admin_trees_config.php:53 modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6 pedigree.php:182
 msgid "Portrait"
-msgstr ""
+msgstr "Vertikale"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6907
 msgid "Portugal"
-msgstr ""
+msgstr "Portugalia"
 
 #: app/SurnameTradition.php:84
 msgctxt "Surname tradition"
@@ -11099,7 +11090,7 @@ msgstr ""
 #. I18N: gedcom tag POST
 #: app/GedcomTag.php:692
 msgid "Postal code"
-msgstr ""
+msgstr "Kodi postal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:96
@@ -11127,33 +11118,33 @@ msgstr ""
 
 #: admin_site_config.php:122
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr ""
+msgstr "Teksti i paracaktuar që thotë se admin do të vendosë për secilën kërkesë për llogarinë e përdoruesit"
 
 #: admin_site_config.php:121
 msgid "Predefined text that states all users can request a user account"
-msgstr ""
+msgstr "Teksti i paracaktuar që tregon se të gjithë përdoruesit mund të kërkojnë një llogari përdoruesi"
 
 #: admin_site_config.php:123
 msgid "Predefined text that states only family members can request a user account"
-msgstr ""
+msgstr "Teksti i paracaktuar që tregon që vetëm antarët e familjes mund të kërkojnë një llogari përdoruesi"
 
 #: admin_trees_config.php:332 admin_trees_manage.php:388
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencat"
 
 #: admin_modules.php:98
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr ""
+msgstr "Preferencat ekzistojnë për modulin \"%s\", por ky modul tashmë nuk ekziston."
 
 #. I18N: A configuration setting
 #: admin_users.php:472
 msgid "Preferred contact method"
-msgstr ""
+msgstr "Metoda e preferuar e kontaktit"
 
 #: app/Module/GoogleMapsModule.php:399
 msgid "Prefixes"
-msgstr ""
+msgstr "Prefikset"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:147 app/Module/RecentChangesModule.php:153
@@ -11161,7 +11152,7 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:166
 #: app/Module/YahrzeitModule.php:274
 msgid "Presentation style"
-msgstr ""
+msgstr "Stili i prezentimit"
 
 #. I18N: I18N: Location of an LDS church temple - http://en.wikipedia.org/wiki/President_of_the_Church
 #: app/GedcomCode/GedcomCodeTemp.php:257
@@ -11175,7 +11166,7 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:216
 msgid "Priest"
-msgstr ""
+msgstr "Prifti"
 
 #. I18N: The first day in the French republican calendar
 #: app/Date/FrenchDate.php:197
@@ -11184,15 +11175,15 @@ msgstr ""
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr ""
+msgstr "Printo ngjarjet themelore kur është e zbrazët"
 
 #: admin_trees_config.php:317 admin_trees_manage.php:398
 msgid "Privacy"
-msgstr ""
+msgstr "Privatësia"
 
 #: admin_trees_config.php:505 admin_trees_config.php:525
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr ""
+msgstr "Kufizimet e privatësisë - kjo aplikohet në shënimet dhe faktet që nuk përbëjnë tagun GEDCOM RESN"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:532
 #: app/GedcomRecord.php:610 app/GedcomRecord.php:735 app/Individual.php:1309
@@ -11200,17 +11191,17 @@ msgstr ""
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1470 app/Stats.php:2975 expand_view.php:33
 msgid "Private"
-msgstr ""
+msgstr "Private"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:696
 msgid "Probate"
-msgstr ""
+msgstr "Trashëgimia"
 
 #. I18N: gedcom tag PROP
 #: app/GedcomTag.php:700
 msgid "Property"
-msgstr ""
+msgstr "Prona"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:263
@@ -11220,22 +11211,22 @@ msgstr ""
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:704
 msgid "Publication"
-msgstr ""
+msgstr "Publikimi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6905
 msgid "Puerto Rico"
-msgstr ""
+msgstr "Porto Riko"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6911
 msgid "Qatar"
-msgstr ""
+msgstr "Katari"
 
 #. I18N: gedcom tag QUAY
 #: app/GedcomTag.php:708
 msgid "Quality of data"
-msgstr ""
+msgstr "Cilësia e shënimeve"
 
 #. I18N: The fourth day in the French republican calendar
 #: app/Date/FrenchDate.php:200
@@ -11244,23 +11235,23 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:175
 msgid "Question"
-msgstr ""
+msgstr "Pyetje"
 
 #: admin_trees_config.php:1926
 msgid "Quick family facts"
-msgstr ""
+msgstr "Faktet e shpejta të familjes"
 
 #: admin_trees_config.php:1808
 msgid "Quick individual facts"
-msgstr ""
+msgstr "Faktet e shpejta të personit"
 
 #: admin_trees_config.php:2104
 msgid "Quick repository facts"
-msgstr ""
+msgstr "Faktet e shpejta të vendeve të ruajtjes"
 
 #: admin_trees_config.php:2015
 msgid "Quick source facts"
-msgstr ""
+msgstr "Faktet e shpejta të burimit"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:201
@@ -11270,16 +11261,16 @@ msgstr ""
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:133 app/Module/UserMessagesModule.php:134
 msgid "RE: "
-msgstr ""
+msgstr "PË: "
 
 #. I18N: Menu entry
 #: admin_site_readme.php:28 app/Theme/AdministrationTheme.php:104
 msgid "README documentation"
-msgstr ""
+msgstr "Dokumentacioni ndihmës"
 
 #: app/GedcomCode/GedcomCodeRela.php:219
 msgid "Rabbi"
-msgstr ""
+msgstr "Rabini"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:92
@@ -11390,41 +11381,41 @@ msgstr ""
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:39
 msgid "Random images from the current family tree."
-msgstr ""
+msgstr "Imazhet e rastësishme nga trungu aktual familjar."
 
 #: app/Controller/FamilyController.php:88
 #: app/Module/RelativesTabModule.php:279 edit_interface.php:1803
 #: edit_interface.php:1877
 msgid "Re-order children"
-msgstr ""
+msgstr "Ri-rendit fëmijët"
 
 #: app/Controller/IndividualController.php:297
 #: app/Module/RelativesTabModule.php:361 edit_interface.php:2188
 #: edit_interface.php:2239
 msgid "Re-order families"
-msgstr ""
+msgstr "Ri-rendit familjet"
 
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: app/GedcomTag.php:1763 app/Module/AlbumModule.php:110
 #: app/Module/AlbumModule.php:111 edit_interface.php:1671
 #: edit_interface.php:1768
 msgid "Re-order media"
-msgstr ""
+msgstr "Ri-rendit mediat"
 
 #: admin_users.php:313 admin_users.php:867 edituser.php:170 login.php:321
 #: login.php:416
 msgid "Real name"
-msgstr ""
+msgstr "Emri real"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:44
 #: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
-msgstr ""
+msgstr "Ndryshimet e fundit"
 
 #: calendar.php:242
 msgid "Recent years (&lt; 100 yrs)"
-msgstr ""
+msgstr "Vitet e fundit (&lt; 100 vite)"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:267
@@ -11439,25 +11430,25 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
-msgstr ""
+msgstr "Shënimi"
 
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:750
 msgid "Record ID number"
-msgstr ""
+msgstr "Numri ID i shënimit"
 
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:746
 msgid "Record file number"
-msgstr ""
+msgstr "Shëno numrin e fajlit"
 
 #: search.php:83 statistics.php:349
 msgid "Records"
-msgstr ""
+msgstr "Shënimet"
 
 #: admin_site_merge.php:59
 msgid "Records are not the same type. Cannot merge records that are not the same type."
-msgstr ""
+msgstr "Shënimet nuk janë të një lloji. Shënimet nuk mund të bashkohen nëse nuk janë të të njëjtit lloj."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:269
@@ -11467,12 +11458,12 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:962 app/Module/GoogleMapsModule.php:2309
 #: app/Module/GoogleMapsModule.php:3613
 msgid "Redraw map"
-msgstr ""
+msgstr "Vizato përsëri hartën"
 
 #. I18N: gedcom tag REFN
 #: app/GedcomTag.php:712
 msgid "Reference number"
-msgstr ""
+msgstr "Numri i referencës"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:271
@@ -11481,109 +11472,109 @@ msgstr ""
 
 #: app/GedcomTag.php:580 modules_v3/fact_sources/report.xml:205
 msgid "Registered partnership"
-msgstr ""
+msgstr "Partneritet i regjistruar"
 
 #: app/GedcomCode/GedcomCodeRela.php:227
 msgid "Registry officer"
-msgstr ""
+msgstr "Personi i regjistrimit"
 
 #: app/GedcomCode/GedcomCodeRela.php:225
 msgctxt "FEMALE"
 msgid "Registry officer"
-msgstr ""
+msgstr "Personi i regjistrimit"
 
 #: app/GedcomCode/GedcomCodeRela.php:223
 msgctxt "MALE"
 msgid "Registry officer"
-msgstr ""
+msgstr "Personi i regjistrimit"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:165
 msgid "Regular expression"
-msgstr ""
+msgstr "Shprehje regulare"
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Shprehjet regulare janë strukturë e avansuar e teknikës së harmonizimt."
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
 #: modules_v3/individual_ext_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:91
 msgid "Related families"
-msgstr ""
+msgstr "Familjet e lidhura"
 
 #. I18N: Name of a report
 #: app/Module/RelatedIndividualsReportModule.php:29
 #: modules_v3/relative_ext_report/report.xml:3
 #: modules_v3/relative_ext_report/report.xml:43
 msgid "Related individuals"
-msgstr ""
+msgstr "Personat e lidhur"
 
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:716
 msgid "Relationship"
-msgstr ""
+msgstr "Lidhjet familjare"
 
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1501
 msgid "Relationship to father"
-msgstr ""
+msgstr "Lidhjet me babain"
 
 #: app/Module/RelationshipsChartModule.php:78
 msgid "Relationship to me"
-msgstr ""
+msgstr "Lidhjet me mua"
 
 #. I18N: gedcom tag _MREL
 #: app/GedcomTag.php:1663
 msgid "Relationship to mother"
-msgstr ""
+msgstr "Lidhjet me nënën"
 
 #. I18N: gedcom tag PEDI
 #: app/GedcomTag.php:674
 msgid "Relationship to parents"
-msgstr ""
+msgstr "Lidhjet me prindërit"
 
 #: relationship.php:147
 #, php-format
 msgid "Relationship: %s"
-msgstr ""
+msgstr "Lidhja: %s"
 
 #. I18N: Name of a module/chart
 #: app/Functions/FunctionsPrintLists.php:356
 #: app/Module/RelationshipsChartModule.php:44
 #: app/Module/RelationshipsChartModule.php:85 relationship.php:57
 msgid "Relationships"
-msgstr ""
+msgstr "Lidhjet"
 
 #. I18N: %s are individual’s names
 #: relationship.php:52
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr ""
+msgstr "Lidhjet ndërmjet %1$s dhe %2$s"
 
 #. I18N: gedcom tag RELI
 #: app/GedcomTag.php:720 modules_v3/missing_facts_report/report.xml:26
 #: modules_v3/missing_facts_report/report.xml:587
 msgid "Religion"
-msgstr ""
+msgstr "Religjioni"
 
 #: app/GedcomTag.php:662
 msgid "Religious institution"
-msgstr ""
+msgstr "Institucioni religjioz"
 
 #: app/GedcomTag.php:582 modules_v3/fact_sources/report.xml:199
 msgid "Religious marriage"
-msgstr ""
+msgstr "Martesë religjioze"
 
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
-msgstr ""
+msgstr "Frekuenca e përkujtuesit të emailit (ditë)"
 
 #. I18N: gedcom tag SERV
 #: app/GedcomTag.php:762
 msgid "Remote server"
-msgstr ""
+msgstr "Serveri i largët"
 
 #: app/Module/CensusAssistantModule.php:386
 #: app/Module/CensusAssistantModule.php:407
@@ -11597,33 +11588,33 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:526
 msgid "Remove"
-msgstr ""
+msgstr "Mënjano"
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:30
 msgid "Remove duplicate links"
-msgstr ""
+msgstr "Mënjano lidhjet e dyfishta"
 
 #: app/Module/GoogleMapsModule.php:582 app/Module/GoogleMapsModule.php:585
 #: app/Module/GoogleMapsModule.php:588 app/Module/GoogleMapsModule.php:3933
 msgid "Remove flag"
-msgstr ""
+msgstr "Mënjano flamurin"
 
 #: timeline.php:277 timeline.php:292
 msgid "Remove individual"
-msgstr ""
+msgstr "Mënjano personin"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:127
 msgid "Remove link from list"
-msgstr ""
+msgstr "Mënjano lidhjen nga lista"
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:288
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Mënjano path-in e mediave GEDCOM nga emri i fajlit"
 
 #: app/Module/GoogleMapsModule.php:4452
 msgid "Remove this location?"
-msgstr ""
+msgstr "Të mënjanohet ky lokacion?"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:273
@@ -11632,41 +11623,41 @@ msgstr ""
 
 #: admin_trees_manage.php:509
 msgid "Renumber"
-msgstr ""
+msgstr "Rinumërimi"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:100 admin_trees_merge.php:105
 #: admin_trees_renumber.php:33
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Rinumëro trungun familjar"
 
 #. I18N: A button label
 #: search.php:217
 msgid "Replace"
-msgstr ""
+msgstr "Zëvendëso"
 
 #: admin_trees_places.php:104 search.php:162
 msgid "Replace with"
-msgstr ""
+msgstr "Zëvendëso me"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:153
 msgid "Replacement text"
-msgstr ""
+msgstr "Teksti i zëvendësimit"
 
 #: app/Module/UserMessagesModule.php:137
 msgid "Reply"
-msgstr ""
+msgstr "Përgjigje"
 
 #: admin_module_reports.php:66 admin_modules.php:190 reportengine.php:125
 #: reportengine.php:153
 msgid "Report"
-msgstr ""
+msgstr "Raporti"
 
 #. I18N: Menu entry
 #: admin_module_reports.php:28 admin_modules.php:164
 #: app/Theme/AbstractTheme.php:1694 app/Theme/AdministrationTheme.php:196
 msgid "Reports"
-msgstr ""
+msgstr "Raportet"
 
 #: admin.php:757 admin.php:815 admin_trees_duplicates.php:140
 #: app/Module/FamilyTreeStatisticsModule.php:120
@@ -11674,44 +11665,44 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:199 app/Theme/AbstractTheme.php:1536
 #: repolist.php:33 repolist.php:37 statistics.php:355
 msgid "Repositories"
-msgstr ""
+msgstr "Vendet e ruajtjes"
 
 #: find.php:693
 msgid "Repositories found"
-msgstr ""
+msgstr "U gjetën vendet e ruajtjes"
 
 #. I18N: gedcom tag REPO
 #: admin_trees_manage.php:557 app/GedcomTag.php:724 inverselink.php:130
 msgid "Repository"
-msgstr ""
+msgstr "Vendi i ruajtjes"
 
 #: admin_trees_config.php:809
 msgid "Repository ID prefix"
-msgstr ""
+msgstr "Prefiksi ID i vendit të ruajtjes"
 
 #. I18N: Label for search field
 #: find.php:223
 msgid "Repository contains"
-msgstr ""
+msgstr "Vendi i ruajtjes përbën"
 
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
-msgstr ""
+msgstr "Emri i vendit të ruajtjes"
 
 #: app/Module/LoginBlockModule.php:89 app/Module/WelcomeBlockModule.php:60
 #: login.php:210 login.php:277
 msgid "Request a new user account"
-msgstr ""
+msgstr "Kërko një llogari përdoruesi"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1739
 msgid "Research task"
-msgstr ""
+msgstr "Detyra e kërkimit"
 
 #. I18N: Name of a module. Tasks that need further research.
 #: app/Module/ResearchTaskModule.php:39
 msgid "Research tasks"
-msgstr ""
+msgstr "Detyrat e kërkimit"
 
 #: app/Module/ResearchTaskModule.php:204
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
