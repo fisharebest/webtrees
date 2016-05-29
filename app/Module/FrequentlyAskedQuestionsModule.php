@@ -526,11 +526,15 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 		global $WT_TREE;
 
 		$faqs = Database::prepare(
-			"SELECT block_id FROM `##block` WHERE module_name = :module_name AND IFNULL(gedcom_id, :tree_id_1) = :tree_id_2"
+			"SELECT block_id FROM `##block`" .
+			" JOIN `##block_setting` USING (block_id)" .
+			" WHERE module_name = :module_name AND IFNULL(gedcom_id, :tree_id_1) = :tree_id_2" .
+			" AND setting_name='languages' AND (setting_value LIKE CONCAT('%', :locale, '%') OR setting_value='')"
 		)->execute(array(
 			'module_name' => $this->getName(),
 			'tree_id_1'   => $WT_TREE->getTreeId(),
 			'tree_id_2'   => $WT_TREE->getTreeId(),
+			'locale'      => WT_LOCALE,
 		))->fetchAll();
 
 		if ($faqs) {

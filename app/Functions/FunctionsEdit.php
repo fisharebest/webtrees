@@ -532,7 +532,7 @@ class FunctionsEdit {
 
 		// label
 		echo '<tr id="', $element_id, '_tr"';
-		if ($fact === 'MAP' || ($fact === 'LATI' || $fact === 'LONG') && $value === '') {
+		if ($fact === 'DATA' || $fact === 'MAP' || ($fact === 'LATI' || $fact === 'LONG') && $value === '') {
 			echo ' style="display:none;"';
 		}
 		echo '>';
@@ -575,13 +575,6 @@ class FunctionsEdit {
 		}
 		// tag level
 		if ($level > 0) {
-			if ($fact === 'TEXT' && $level > 1) {
-				echo '<input type="hidden" name="glevels[]" value="', $level - 1, '">';
-				echo '<input type="hidden" name="islink[]" value="0">';
-				echo '<input type="hidden" name="tag[]" value="DATA">';
-				// leave data text[] value empty because the following TEXT line will cause the DATA to be added
-				echo '<input type="hidden" name="text[]" value="">';
-			}
 			echo '<input type="hidden" name="glevels[]" value="', $level, '">';
 			echo '<input type="hidden" name="islink[]" value="', $islink, '">';
 			echo '<input type="hidden" name="tag[]" value="', $fact, '">';
@@ -1512,13 +1505,9 @@ class FunctionsEdit {
 
 			//-- if the value is not empty or it has sub lines
 			//--- then write the line to the gedcom record
-			//if ((($text[trim($j)]!='')||($pass==true)) && (strlen($text[$j]) > 0)) {
 			//-- we have to let some emtpy text lines pass through... (DEAT, BIRT, etc)
 			if ($pass) {
 				$newline = $glevels[$j] + $levelAdjust . ' ' . $tag[$j];
-				//-- check and translate the incoming dates
-				if ($tag[$j] === 'DATE' && $text[$j] !== '') {
-				}
 				if ($text[$j] !== '') {
 					if ($islink[$j]) {
 						$newline .= ' @' . $text[$j] . '@';
@@ -1651,7 +1640,7 @@ class FunctionsEdit {
 				$inSource = false;
 			}
 
-			if ($type !== 'DATA' && $type !== 'CONT') {
+			if ($type !== 'CONT') {
 				$tags[]    = $type;
 				$person    = Individual::getInstance($pid, $WT_TREE);
 				$subrecord = $level . ' ' . $type . ' ' . $text;
@@ -1685,9 +1674,7 @@ class FunctionsEdit {
 			if (!empty($expected_subtags[$type])) {
 				foreach ($expected_subtags[$type] as $subtag) {
 					if (!in_array($subtag, $subtags)) {
-						if (!$inSource || $subtag !== 'DATA') {
-							self::addSimpleTag(($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
-						}
+						self::addSimpleTag(($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
 						if (!empty($expected_subtags[$subtag])) {
 							foreach ($expected_subtags[$subtag] as $subsubtag) {
 								self::addSimpleTag(($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel($label . ':' . $subtag . ':' . $subsubtag));

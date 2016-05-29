@@ -444,7 +444,7 @@ class FunctionsPrint {
 			$html = '<a href="' . $event->getPlace()->getURL() . '">' . $event->getPlace()->getFullName() . '</a>';
 		} else {
 			// Abbreviate the place name, for chart boxes
-			return ' - ' . $event->getPlace()->getShortName();
+			return $event->getPlace()->getShortName();
 		}
 
 		if ($sub_records) {
