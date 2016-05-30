@@ -3194,12 +3194,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function findFiles($path) {
 		$placefiles = array();
 
-		$di = new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS);
-		$it = new \RecursiveIteratorIterator($di);
+		if (is_dir($path)) {
+			$di = new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS);
+			$it = new \RecursiveIteratorIterator($di);
 
-		foreach ($it as $file) {
-			if ($file->getExtension() == "csv") {
-				$placefiles[] = '/' . $file->getFilename();
+			foreach ($it as $file) {
+				if ($file->getExtension() == "csv") {
+					$placefiles[] = '/' . $file->getFilename();
+				}
 			}
 		}
 
