@@ -3031,9 +3031,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		// display any sub-places
 		$placeidlist = array();
 		foreach ($place_names as $placename) {
-			$thisloc                         = $parent;
-			$thisloc[]                       = $placename;
-			$this_levelm                     = $this->setLevelMap($level + 1, $thisloc);
+			$thisloc     = $parent;
+			$thisloc[]   = $placename;
+			$this_levelm = $this->setLevelMap($level + 1, $thisloc);
 			if ($this_levelm) {
 				$placeidlist[] = $this_levelm;
 			}
@@ -3214,8 +3214,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$action     = Filter::post('action', null, Filter::get('action'));
 		$placeid    = Filter::post('placeid', null, Filter::get('placeid'));
 		$place_name = Filter::post('place_name', null, Filter::get('place_name'));
-
-		$placeid = (int) $placeid; // Convert empty string to zero
+		$placeid    = (int) $placeid; // Convert empty string to zero
 
 		$controller = new SimpleController;
 		$controller
@@ -3281,19 +3280,19 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				Database::prepare("SELECT pl_place, pl_lati, pl_long, pl_icon, pl_parent_id, pl_level, pl_zoom FROM `##placelocation` WHERE pl_id=?")
 				->execute(array($placeid))
 				->fetchOneRow();
-			$place_name       = $row->pl_place;
-			$place_icon       = $row->pl_icon;
+			$place_name = $row->pl_place;
+			$place_icon = $row->pl_icon;
 			$selected_country = explode("/", $place_icon);
 			if (isset($selected_country[1]) && $selected_country[1] !== 'flags') {
 				$selected_country = $selected_country[1];
 			} else {
 				$selected_country = 'Countries';
 			}
-			$parent_id         = $row->pl_parent_id;
-			$level             = $row->pl_level;
-			$zoomfactor        = $row->pl_zoom;
-			$parent_lati       = 0.0;
-			$parent_long       = 0.0;
+			$parent_id   = $row->pl_parent_id;
+			$level       = $row->pl_level;
+			$zoomfactor  = $row->pl_zoom;
+			$parent_lati = 0.0;
+			$parent_long = 0.0;
 			if ($row->pl_lati !== null && $row->pl_long !== null) {
 				$place_lati = (float) (str_replace(array('N', 'S', ','), array('', '-', '.'), $row->pl_lati));
 				$place_long = (float) (str_replace(array('E', 'W', ','), array('', '-', '.'), $row->pl_long));
@@ -3911,13 +3910,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$controller->restrictAccess(Auth::isAdmin());
 
 		if ($action == 'ExportFile' && Auth::isAdmin()) {
-			$tmp                         = $this->placeIdToHierarchy($parent);
-			$maxLevel                    = $this->getHighestLevel();
+			$tmp      = $this->placeIdToHierarchy($parent);
+			$maxLevel = $this->getHighestLevel();
 			if ($maxLevel > 8) {
 				$maxLevel = 8;
 			}
-			$tmp[0]                      = 'places';
-			$outputFileName              = preg_replace('/[:;\/\\\(\)\{\}\[\] $]/', '_', implode('-', $tmp)) . '.csv';
+			$tmp[0]         = 'places';
+			$outputFileName = preg_replace('/[:;\/\\\(\)\{\}\[\] $]/', '_', implode('-', $tmp)) . '.csv';
 			header('Content-Type: application/octet-stream');
 			header('Content-Disposition: attachment; filename="' . $outputFileName . '"');
 			echo '"', I18N::translate('Level'), '";"', I18N::translate('Country'), '";';
@@ -4067,7 +4066,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					if (!isset($default_zoom_level[$i])) {
 						$default_zoom_level[$i] = $default_zoom_level[$i - 1];
 					}
-					$escparent               = $parent[$i];
+					$escparent = $parent[$i];
 					if ($escparent == '') {
 						$escparent = 'Unknown';
 					}
@@ -4476,9 +4475,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				->fetchOne();
 			if ($noRows == 0) { ?>
 				<td><a href="#" onclick="delete_place(<?php echo $place['place_id'] ?>);return false;" class="icon-delete" title="<?php echo I18N::translate('Remove') ?>"></a></td>
-		<?php       } else { ?>
+		<?php } else { ?>
 				<td><i class="icon-delete-grey"></i></td>
-		<?php       } ?>
+		<?php } ?>
 			</tr>
 			<?php
 		}
