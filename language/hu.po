@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-26 10:42+0000\n"
+"PO-Revision-Date: 2016-05-30 16:20+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -16421,13 +16421,13 @@ msgstr "%s körül"
 #: note.php:63 repo.php:62 source.php:62
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr "<b>elfogad</b>"
+msgstr "elfogad"
 
 #: family.php:44 gedrecord.php:56 individual.php:57 mediaviewer.php:44
 #: note.php:45 repo.php:44 source.php:44
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr "<b>elfogad</b>"
+msgstr "elfogad"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:54
@@ -19373,13 +19373,13 @@ msgstr "bejegyzések"
 #: note.php:64 repo.php:63 source.php:63
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr "<b>elutasít</b>"
+msgstr "elutasít"
 
 #: family.php:45 gedrecord.php:57 individual.php:58 mediaviewer.php:45
 #: note.php:46 repo.php:45 source.php:45
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr "<b>elutasít</b>"
+msgstr "elutasít"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:55
