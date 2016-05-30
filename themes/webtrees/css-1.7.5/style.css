@@ -1162,6 +1162,10 @@ td.descriptionbox a {
 	padding: 5px;
 }
 
+#login-form div label {
+	text-align: right;
+}
+
 #register-form,
 #verify-form {
 	width: 440px;
