@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-30 18:35+0000\n"
+"PO-Revision-Date: 2016-05-30 19:42+0000\n"
 "Last-Translator: Astrit Bokshi <astritbokshi@gmail.com>\n"
 "Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/webtrees/sq/>\n"
 "Language: sq\n"
@@ -12681,105 +12681,105 @@ msgstr "Shfaq listën e trungjeve familjare"
 #. I18N: A configuration setting
 #: admin_trees_config.php:431
 msgid "Show living individuals"
-msgstr ""
+msgstr "Shfaq personat e gjallë"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:471
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Shfaq emrat e personave privat"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr ""
+msgstr "Shfaq njoftimet"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr ""
+msgstr "Shfaq profesionet"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr ""
+msgstr "Shfaq vetëm lindjet, vdekjet dhe martesat"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr ""
+msgstr "Shfaq vetëm ngjarjet e personave të gjallë"
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
-msgstr ""
+msgstr "Shfaq vetëm femrat."
 
 #: app/Functions/FunctionsPrintLists.php:178
 msgid "Show only individuals for whom the gender is not known."
-msgstr ""
+msgstr "Shfaq vetëm personat për të cilët nuk është e njohur gjinia."
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr ""
+msgstr "Shfaq vetëm personat, ngjarjet, ose të gjitha"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
-msgstr ""
+msgstr "Shfaq vetëm meshkujt."
 
 #: find.php:533
 msgid "Show only the selected tags"
-msgstr ""
+msgstr "Shfaq vetëm tag-at e zgjedhur"
 
 #: app/Functions/FunctionsPrintLists.php:299
 #: app/Functions/FunctionsPrintLists.php:760
 msgid "Show parents"
-msgstr ""
+msgstr "Shfaq prindërit"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
-msgstr ""
+msgstr "Shfaq ndryshimet që janë pezull"
 
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr ""
+msgstr "Shfaq fotot"
 
 #: placelist.php:83
 msgid "Show places in hierarchy"
-msgstr ""
+msgstr "Shfaq vendet në hierarki"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:491
 msgid "Show private relationships"
-msgstr ""
+msgstr "Shfaq marëdhënjet private"
 
 #: search.php:112 search.php:270
 msgid "Show related individuals/families"
-msgstr ""
+msgstr "Shfaq personat/familjet e lidhura"
 
 #: app/Module/ResearchTaskModule.php:212
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "Shfaq detyrat kërkimore që i janë përcaktuar përdoruesve tjerë"
 
 #: app/Module/ResearchTaskModule.php:218
 msgid "Show research tasks that are not assigned to any user"
-msgstr ""
+msgstr "Shfaq detyrat kërkimore që nuk i janë përcaktuar ndonjë përdoruesi"
 
 #: app/Module/ResearchTaskModule.php:224
 msgid "Show research tasks that have a date in the future"
-msgstr ""
+msgstr "Shfaq detyrat kërkimore që kanë datë në të ardhmen"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr ""
+msgstr "Shfaq banesat"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls"
-msgstr ""
+msgstr "Shfaq kontrollet e slajdave"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12787,59 +12787,59 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr ""
+msgstr "Shfaq burimet"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
-msgstr ""
+msgstr "Shfaq bashkëshortët"
 
 #: app/Functions/FunctionsPrintLists.php:302
 #: app/Functions/FunctionsPrintLists.php:763
 msgid "Show statistics charts"
-msgstr ""
+msgstr "Shfaq grafet statistikore"
 
 #. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #: admin_trees_config.php:1640
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr ""
+msgstr "Shfaq pjesët %1$s %2$s të një emri vendi."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
-msgstr ""
+msgstr "Shfaq datën dhe kohën e përditësimit"
 
 #: admin_trees_config.php:1462
 msgid "Show the events of close relatives on the individual page"
-msgstr ""
+msgstr "Shfaq ngjarjet e të afërmve të ngushtë në faqen e personave"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:367
 msgid "Show the family tree"
-msgstr ""
+msgstr "Shfaq trungun familjar"
 
 #: famlist.php:183 indilist.php:183
 msgid "Show the list of individuals"
-msgstr ""
+msgstr "Shfaq listën e personave"
 
 #: famlist.php:185 indilist.php:185
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "Shfaq listën e mbiemrave"
 
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:79
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr ""
+msgstr "Shfaq lokacionet e vendeve dhe ngjarjet duke përdorur shërbimin e hartave të Google Maps™."
 
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Shfaq përdoruesin që bëri këtë ndryshim"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr ""
+msgstr "Për cilat gjuhë doni të shfaqni këtë bllok"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1038 app/Functions/FunctionsEdit.php:206
@@ -12849,7 +12849,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:832
 #: app/Functions/FunctionsPrintFacts.php:1098
 msgid "Show to managers"
-msgstr ""
+msgstr "Shfaq për ushëheqësit"
 
 #: admin_trees_config.php:80 admin_trees_config.php:87
 #: admin_trees_config.php:375 admin_trees_config.php:439
@@ -12860,7 +12860,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:829
 #: app/Functions/FunctionsPrintFacts.php:1095
 msgid "Show to members"
-msgstr ""
+msgstr "Shfaq për anëtarët"
 
 #: admin_trees_config.php:79 admin_trees_config.php:86
 #: admin_trees_config.php:375 admin_trees_config.php:439
@@ -12871,48 +12871,48 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:826
 #: app/Functions/FunctionsPrintFacts.php:1092
 msgid "Show to visitors"
-msgstr ""
+msgstr "Shfaq për vizitorët"
 
 #: app/Functions/FunctionsPrintLists.php:256
 #: app/Functions/FunctionsPrintLists.php:673
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr ""
+msgstr "Shfaq çiftet ose personat \"largues\". Këta janë personat që janë gjallë por që nuk kanë fëmijë të regjistruar në bazën e shënimeve."
 
 #: app/Functions/FunctionsPrintLists.php:247
 #: app/Functions/FunctionsPrintLists.php:664
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr ""
+msgstr "Shfaq çiftet apo personat \"rrënjët\". Këta persona poshtu mund të quhen \"patriarkët\". Ata janë persona të cilët nuk kanë prindër të regjistruar në databazë."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:227 app/I18N.php:228
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
-msgstr ""
+msgstr "Shfaq %1$s deri në %2$s nga %3$s"
 
 #: app/Controller/HourglassController.php:360
 #: app/Controller/PedigreeController.php:285
 msgid "Sibling"
-msgstr ""
+msgstr "Vëllau/motra"
 
 #: app/Controller/HourglassController.php:360
 #: app/Controller/PedigreeController.php:285
 msgid "Siblings"
-msgstr ""
+msgstr "Vëllezërit/motrat"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6926
 msgid "Sicily"
-msgstr ""
+msgstr "Sicilia"
 
 #: admin_module_sidebar.php:87 admin_modules.php:187
 msgid "Sidebar"
-msgstr ""
+msgstr "Shiriti anësor"
 
 #. I18N: Menu entry
 #: admin_module_sidebar.php:28 admin_modules.php:161
 #: app/Theme/AdministrationTheme.php:194
 msgid "Sidebars"
-msgstr ""
+msgstr "Shiritat anësorë"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6929
@@ -12924,71 +12924,71 @@ msgstr ""
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
 msgid "Sign in"
-msgstr ""
+msgstr "Hyr"
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
-msgstr ""
+msgstr "Dil"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447
 msgid "Sign-in URL"
-msgstr ""
+msgstr "URL hyrëse"
 
 #. I18N: Menu entry
 #: admin_site_config.php:140 app/Theme/AdministrationTheme.php:97
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "Hyrja dhe regjistrimi"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr ""
+msgstr "Datat e thjeshta supozohen të jenë në kalendarin gregorian. Specifikimi i datës në kalendarë tjerë, duhet bërë duke shtuar një fjalë kyçe para datës. Kjo fjalë kyçe është opcionale nëse formati i muajit ose vitit e bën datën të qartë."
 
 #: find.php:190
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
-msgstr ""
+msgstr "Filtri i kërkimit të thjeshtë bazuar në karakteret e futura, ku nuk pranohen shenjat."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6923
 msgid "Singapore"
-msgstr ""
+msgstr "Singapori"
 
 #: modules_v3/individual_ext_report/report.xml:349
 #: modules_v3/individual_report/report.xml:352
 msgid "Sister"
-msgstr ""
+msgstr "Motra"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:563 admin_site_config.php:579
 #: admin_site_config.php:604
 msgid "Site identification code"
-msgstr ""
+msgstr "Kodi i identifikimit të sajtit"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:478 edituser.php:300
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Anëtarët e sajtit mund t'i dërgojnë njëri tjetrit mesazhe. Ju mund të zgjedhni se si këto mesazhe do të dërgohen te ju, ose të zgjedhni që të mos i pranoni ato fare."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:521 admin_site_config.php:542
 msgid "Site verification code"
-msgstr ""
+msgstr "Kodi i verifikimit të sajtit"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:532 admin_site_config.php:553
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr ""
+msgstr "Kodet e verifikimit të sajtit nuk punojnë kur webtrees instalohet në nënfolder."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
 msgid "Sitemaps"
-msgstr ""
+msgstr "Hartat e sajtit"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:306
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr ""
+msgstr "Sitemaps janë mënyrë për webmasterat të tregojnë makinave kërkuese për faqet në web sajt që janë në dispozicion për kërkim. Të gjitha makinat kryesore të kërkimit përkrahin sitemaps. Për më shumë informata, shikoni <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:145
