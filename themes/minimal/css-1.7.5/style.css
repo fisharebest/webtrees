@@ -2142,6 +2142,10 @@ dd .deletelink {
 }
 
 /* === jquery-ui.css changes === */
+.ui-state-highlight a {
+	font-weight: bold;
+}
+
 .ui-tabs .ui-tabs-panel {
 	border-radius: 4px;
 	padding: 4px;

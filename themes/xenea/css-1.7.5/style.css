@@ -2166,6 +2166,10 @@ dd .deletelink {
 }
 
 /* === jquery-ui.css changes === */
+.ui-state-highlight a {
+	font-weight: bold;
+}
+
 .ui-accordion .ui-accordion-content {
 	border: 0;
 	position: relative;
