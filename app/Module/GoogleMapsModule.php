@@ -745,8 +745,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			->addInlineJavascript('autocomplete();');
 
 		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
-		echo '<div id="pedigreemap-page">
-				<h2>', $controller->getPageTitle(), '</h2>';
+		echo '<div id="pedigreemap-page"><h2>', $controller->getPageTitle(), '</h2>';
 
 		// -- print the form to change the number of displayed generations
 		?>
@@ -795,7 +794,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$priv     = 0;
 		$count    = 0;
 		$miscount = 0;
-		$missing  = '';
+		$missing  = array();
 
 		$latlongval = array();
 		$lat        = array();
@@ -825,20 +824,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					} else {
 						// The place is in the table but has empty values
 						if ($name) {
-							if ($missing) {
-								$missing .= ', ';
-							}
-							$missing .= '<a href="' . $person->getHtmlUrl() . '">' . $name . '</a>';
+							$missing[] = '<a href="' . $person->getHtmlUrl() . '">' . $name . '</a>';
 							$miscount++;
 						}
 					}
 				} else {
 					// There was no place, or not listed in the map table
 					if ($name) {
-						if ($missing) {
-							$missing .= ', ';
-						}
-						$missing .= '<a href="' . $person->getHtmlUrl() . '">' . $name . '</a>';
+						$missing[] = '<a href="' . $person->getHtmlUrl() . '">' . $name . '</a>';
 						$miscount++;
 					}
 				}
@@ -878,28 +871,30 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		// print summary statistics
 		if (isset($curgen)) {
 			$total = pow(2, $curgen) - 1;
+			echo '<div>';
 			echo I18N::plural(
 				'%1$s individual displayed, out of the normal total of %2$s, from %3$s generations.',
 				'%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations.',
 				$count,
 				I18N::number($count), I18N::number($total), I18N::number($curgen)
-			), '<br>';
+			);
+			echo '</div>';
 			echo '</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<td>';
 			if ($priv) {
-				echo I18N::plural('%s individual is private.', '%s individuals are private.', $priv, $priv), '<br>';
+				echo '<div>' . I18N::plural('%s individual is private.', '%s individuals are private.', $priv, $priv), '</div>';
 			}
 			if ($count + $priv != $total) {
 				if ($miscount == 0) {
-					echo I18N::translate('No ancestors in the database.'), "<br>";
+					echo '<div>' . I18N::translate('No ancestors in the database.'), '</div>';
 				} else {
-					echo /* I18N: %1$s is a count of individuals, %2$s is a list of their names */ I18N::plural(
+					echo '<div>' . /* I18N: %1$s is a count of individuals, %2$s is a list of their names */ I18N::plural(
 						'%1$s individual is missing birthplace map coordinates: %2$s.',
 						'%1$s individuals are missing birthplace map coordinates: %2$s.',
-						$miscount, I18N::number($miscount), $missing),
-						'<br>';
+						$miscount, I18N::number($miscount), implode(I18N::$list_separator, $missing)),
+						'</div>';
 				}
 			}
 		}
@@ -1759,7 +1754,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '</tbody>';
 		echo '<tfoot>';
 		echo '<tr>';
-		echo '<th colspan="', (1 + 3 * $max), '">', /* I18N: A count of places */ I18N::translate('Total places: %s', I18N::number($countrows)), '</th>';
+		echo '<td colspan="', (1 + 3 * $max), '">', /* I18N: A count of places */ I18N::translate('Total places: %s', I18N::number($countrows)), '</td>';
 		echo '</tr>';
 		echo '</tfoot>';
 		echo '</table>';
@@ -2626,7 +2621,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$parent     = Filter::getArray('parent');
 
 		// create the map
-		echo '<table style="margin:20px auto 0 auto;"><tr><td>';
+		echo '<table style="margin:auto; border-collapse: collapse;"><tr><td>';
 		//<!-- start of map display -->
 		echo '<table><tr>';
 		echo '<td class="center" style="width:200px">';
@@ -3194,7 +3189,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function findFiles($path) {
 		$placefiles = array();
 
-		if (is_dir($path)) {
+		try {
 			$di = new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS);
 			$it = new \RecursiveIteratorIterator($di);
 
@@ -3203,6 +3198,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$placefiles[] = '/' . $file->getFilename();
 				}
 			}
+		} catch (\Exception $e) {
+			Log::addErrorLog(basename($e->getFile()) . ' - line: ' . $e->getLine() . ' - ' . $e->getMessage());
 		}
 
 		return $placefiles;
