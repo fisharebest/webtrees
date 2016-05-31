@@ -4778,16 +4778,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			google.maps.event.addListener(panorama, 'pov_changed', function() {
 				var povLevel = panorama.getPov();
-				parent.document.getElementById('sv_bearText').value = roundNumber(povLevel.heading, 2)+"\u00B0";
-				parent.document.getElementById('sv_elevText').value = roundNumber(povLevel.pitch, 2)+"\u00B0";
+				parent.document.getElementById('sv_bearText').value = roundNumber(povLevel.heading, 2);
+				parent.document.getElementById('sv_elevText').value = roundNumber(povLevel.pitch, 2);
 				parent.document.getElementById('sv_zoomText').value = roundNumber(povLevel.zoom, 2);
 			});
 
 			google.maps.event.addListener(panorama, 'position_changed', function() {
 				var pos = panorama.getPosition();
 				marker.setPosition(pos);
-				parent.document.getElementById('sv_latiText').value = pos.lat()+"\u00B0";
-				parent.document.getElementById('sv_longText').value = pos.lng()+"\u00B0";
+				parent.document.getElementById('sv_latiText').value = pos.lat();
+				parent.document.getElementById('sv_longText').value = pos.lng();
 			});
 
 			//======================================================================================
