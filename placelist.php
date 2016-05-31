@@ -237,7 +237,6 @@ case 'hierarchy':
 	echo '<h4><a href="placelist.php?display=list">', I18N::translate('Show all places in a list'), '</a></h4>';
 
 	if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
-		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 		$gm_module->mapScripts($numfound, $level, $parent, $linklevels, $place_names);
 	}
 	break;
