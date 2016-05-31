@@ -3233,7 +3233,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			if ((Filter::post('LONG_CONTROL') == '') || (Filter::post('NEW_PLACE_LONG') == '') || (Filter::post('NEW_PLACE_LATI') == '')) {
 				$statement->execute(array($this->getHighestIndex() + 1, $placeid, $level, Filter::post('NEW_PLACE_NAME'), null, null, Filter::post('NEW_ZOOM_FACTOR'), Filter::post('icon')));
 			} else {
-				$statement->execute(array($this->getHighestIndex() + 1, $placeid, $level, Filter::post('NEW_PLACE_NAME'), Filter::post('LONG_CONTROL')[3] . Filter::post('NEW_PLACE_LONG'), Filter::post('LATI_CONTROL')[3] . Filter::post('NEW_PLACE_LATI'), Filter::post('NEW_ZOOM_FACTOR'), Filter::post('icon')));
+				$statement->execute(array($this->getHighestIndex() + 1, $placeid, $level, Filter::post('NEW_PLACE_NAME'), Filter::post('LONG_CONTROL') . Filter::post('NEW_PLACE_LONG'), Filter::post('LATI_CONTROL') . Filter::post('NEW_PLACE_LATI'), Filter::post('NEW_ZOOM_FACTOR'), Filter::post('icon')));
 			}
 
 			$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -3248,7 +3248,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			if ((Filter::post('LONG_CONTROL') == '') || (Filter::post('NEW_PLACE_LONG') == '') || (Filter::post('NEW_PLACE_LATI') == '')) {
 				$statement->execute(array(Filter::post('NEW_PLACE_NAME'), null, null, Filter::post('NEW_ZOOM_FACTOR'), Filter::post('icon'), $placeid));
 			} else {
-				$statement->execute(array(Filter::post('NEW_PLACE_NAME'), Filter::post('LATI_CONTROL')[3] . Filter::post('NEW_PLACE_LATI'), Filter::post('LONG_CONTROL')[3] . Filter::post('NEW_PLACE_LONG'), Filter::post('NEW_ZOOM_FACTOR'), Filter::post('icon'), $placeid));
+				$statement->execute(array(Filter::post('NEW_PLACE_NAME'), Filter::post('LATI_CONTROL') . Filter::post('NEW_PLACE_LATI'), Filter::post('LONG_CONTROL') . Filter::post('NEW_PLACE_LONG'), Filter::post('NEW_ZOOM_FACTOR'), Filter::post('icon'), $placeid));
 			}
 
 			$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -3430,24 +3430,24 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						if (longitude < 0.0 ) {
 							longitude = longitude * -1;
 							document.editplaces.NEW_PLACE_LONG.value = longitude;
-							document.editplaces.LONG_CONTROL.value = 'PL_W';
+							document.editplaces.LONG_CONTROL.value = 'W';
 						} else {
 							document.editplaces.NEW_PLACE_LONG.value = longitude;
-							document.editplaces.LONG_CONTROL.value = 'PL_E';
+							document.editplaces.LONG_CONTROL.value = 'E';
 						}
 						if (latitude < 0.0 ) {
 							latitude = latitude * -1;
 							document.editplaces.NEW_PLACE_LATI.value = latitude;
-							document.editplaces.LATI_CONTROL.value = 'PL_S';
+							document.editplaces.LATI_CONTROL.value = 'S';
 						} else {
 							document.editplaces.NEW_PLACE_LATI.value = latitude;
-							document.editplaces.LATI_CONTROL.value = 'PL_N';
+							document.editplaces.LATI_CONTROL.value = 'N';
 						}
 
-						if (document.editplaces.LATI_CONTROL.value == 'PL_S') {
+						if (document.editplaces.LATI_CONTROL.value == 'S') {
 							latitude = latitude * -1;
 						}
-						if (document.editplaces.LONG_CONTROL.value == 'PL_W') {
+						if (document.editplaces.LONG_CONTROL.value == 'W') {
 							longitude = longitude * -1;
 						}
 						point = new google.maps.LatLng(latitude, longitude);
@@ -3460,10 +3460,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							longitude = longitude * -1;
 							document.editplaces.NEW_PLACE_LONG.value = longitude;
 						}
-						if (document.editplaces.LATI_CONTROL.value == 'PL_S') {
+						if (document.editplaces.LATI_CONTROL.value == 'S') {
 							latitude = latitude * -1;
 						}
-						if (document.editplaces.LONG_CONTROL.value == 'PL_W') {
+						if (document.editplaces.LONG_CONTROL.value == 'W') {
 							longitude = longitude * -1;
 						}
 						point = new google.maps.LatLng(latitude, longitude);
@@ -3683,17 +3683,17 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			function setLoc(lat, lng) {
 				if (lat < 0.0) {
 					document.editplaces.NEW_PLACE_LATI.value = (lat.toFixed(5) * -1);
-					document.editplaces.LATI_CONTROL.value = 'PL_S';
+					document.editplaces.LATI_CONTROL.value = 'S';
 				} else {
 					document.editplaces.NEW_PLACE_LATI.value = lat.toFixed(5);
-					document.editplaces.LATI_CONTROL.value = 'PL_N';
+					document.editplaces.LATI_CONTROL.value = 'N';
 				}
 				if (lng < 0.0) {
 					document.editplaces.NEW_PLACE_LONG.value = (lng.toFixed(5) * -1);
-					document.editplaces.LONG_CONTROL.value = 'PL_W';
+					document.editplaces.LONG_CONTROL.value = 'W';
 				} else {
 					document.editplaces.NEW_PLACE_LONG.value = lng.toFixed(5);
-					document.editplaces.LONG_CONTROL.value = 'PL_E';
+					document.editplaces.LONG_CONTROL.value = 'E';
 				}
 				new google.maps.LatLng (lat.toFixed(5), lng.toFixed(5));
 				updateMap();
@@ -3837,8 +3837,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees') ?>" value="<?php echo abs($place_lati) ?>" size="20" onchange="updateMap();">
 					<select name="LATI_CONTROL" id="LATI_CONTROL" onchange="updateMap();">
-						<option value="PL_N"<?php echo $place_lati >= 0 ? ' selected' : ''; ?>><?php echo I18N::translate('north'); ?></option>
-						<option value="PL_S"<?php echo $place_lati < 0 ? ' selected' : ''; ?>><?php echo I18N::translate('south'); ?></option>
+						<option value="N"<?php echo $place_lati >= 0 ? ' selected' : ''; ?>><?php echo I18N::translate('north'); ?></option>
+						<option value="S"<?php echo $place_lati < 0 ? ' selected' : ''; ?>><?php echo I18N::translate('south'); ?></option>
 
 					</select>
 				</td>
@@ -3848,8 +3848,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees') ?>" value="<?php echo abs($place_long) ?>" size="20" onchange="updateMap();">
 					<select name="LONG_CONTROL" id="LONG_CONTROL" onchange="updateMap();">
-						<option value="PL_E"<?php echo $place_long >= 0 ? ' selected' : ''; ?>><?php echo I18N::translate('east'); ?></option>
-						<option value="PL_W"<?php echo $place_long < 0 ? ' selected' : ''; ?>><?php echo I18N::translate('west'); ?></option>
+						<option value="E"<?php echo $place_long >= 0 ? ' selected' : ''; ?>><?php echo I18N::translate('east'); ?></option>
+						<option value="W"<?php echo $place_long < 0 ? ' selected' : ''; ?>><?php echo I18N::translate('west'); ?></option>
 
 					</select>
 				</td>
