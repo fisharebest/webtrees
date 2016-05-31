@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-16 17:02+0000\n"
+"PO-Revision-Date: 2016-05-31 18:52+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -9661,7 +9661,7 @@ msgstr "Naam in het Hebreeuws"
 #. I18N: gedcom tag NPFX
 #: app/GedcomTag.php:638
 msgid "Name prefix"
-msgstr "Voorvoegsel van naam"
+msgstr "Titel"
 
 #. I18N: gedcom tag NSFX
 #: app/GedcomTag.php:642
