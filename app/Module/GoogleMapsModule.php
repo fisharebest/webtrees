@@ -4830,8 +4830,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		// Onload handler to fire off the app.
 		google.maps.event.addDomListener(window, 'load', initialize);
 
-			</script>
-
+				</script>
+			</head>
+			<body>
 				<div id="toggle">
 					<form name="myForm" title="myForm">
 						<input id="butt1" name ="butt1" type="button" value="<?php echo I18N::translate('Google Maps™') ?>" onclick="toggleStreetView();">
