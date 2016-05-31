@@ -2655,18 +2655,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			if ($latlng && isset($latlng['pl_id'])) {
 				$adminplaces_url .= '&amp;parent=' . $latlng['pl_id'];
 			}
+			$update_places_url = 'admin_trees_places.php?ged=' . $WT_TREE->getNameHtml() . '&amp;search=' . urlencode(implode(', ', array_reverse($parent)));
 			echo '</tr><tr><td>';
 			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
 			echo ' | <a href="' . $adminplaces_url . '">' . I18N::translate('Geographic data') . '</a>';
 			echo ' | <a href="' . $placecheck_url . '">' . I18N::translate('Place check') . '</a>';
-			if (Module::getModuleByName('batch_update')) {
-				$placelevels = preg_replace('/, ' . I18N::translate('unknown') . '/', ', ', $placelevels); // replace ", unknown" with ", "
-				$placelevels = substr($placelevels, 2); // remove the leading ", "
-				if ($placelevels) {
-					$batchupdate_url = 'module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=BatchUpdateSearchReplacePlugin&amp;method=exact&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;search=' . urlencode($placelevels); // exact match
-					echo ' | <a href="' . $batchupdate_url . '">' . I18N::translate('Batch update') . '</a>';
-				}
-			}
+		echo ' | <a href="' . $update_places_url . '">' . I18N::translate('Update place names') . '</a>';
 		}
 		echo '</td></tr>';
 		echo '</table>';
