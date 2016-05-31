@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-16 15:01+0000\n"
+"PO-Revision-Date: 2016-05-22 21:05+0000\n"
 "Last-Translator: Надія <nadia_la@mail.ru>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
@@ -9498,7 +9498,7 @@ msgstr "Більшість SMTP серверів вимагають пароль
 #: app/Module/FamilyTreeStatisticsModule.php:209
 #: app/Module/HtmlBlockModule.php:259
 msgid "Most common surnames"
-msgstr "Найбільш часто зустрічаються прізвища"
+msgstr "Найчастіше зустрічаються прізвища"
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: admin_site_config.php:414
@@ -13981,7 +13981,7 @@ msgstr "Новому користувачу буде запропоновано 
 
 #: help_text.php:303
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
-msgstr "Кількість повторень зазначеного імені для показу на карті. Якщо залишити це поле порожнім, буде використовуватися найпоширеніша прізвище."
+msgstr "Кількість повторень зазначеного імені для показу на карті. Якщо залишити це поле порожнім, буде використовуватися найпоширеніше прізвище."
 
 #: setup.php:414
 msgid "The password needs to be at least six characters long."
@@ -15067,7 +15067,7 @@ msgstr[2] "%s самиx поширених імен"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "%s найпоширеніша прізвище"
+msgstr[0] "%s найпоширеніше прізвище"
 msgstr[1] "%s найпоширеніших прізвищ"
 msgstr[2] "%s найпоширеніших прізвищ"
 
@@ -15079,7 +15079,7 @@ msgstr "Найпоширеніші імена"
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopGivenNamesModule.php:31 statistics.php:201
 msgid "Top given names"
-msgstr "Найбільш часто зустрічаються імена та по батькові"
+msgstr "Найчастіше зустрічаються імена та по батькові"
 
 #: app/Module/GoogleMapsModule.php:4479 app/Module/GoogleMapsModule.php:4555
 #: placelist.php:109
@@ -15094,7 +15094,7 @@ msgstr "Поширена прізвище"
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopSurnamesModule.php:37 statistics.php:200
 msgid "Top surnames"
-msgstr "Найбільш часто зустрічаються прізвища"
+msgstr "Найчастіше зустрічаються прізвища"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:323
@@ -15303,7 +15303,7 @@ msgstr "Введіть пароль ще раз."
 
 #: edituser.php:232 login.php:473 setup.php:439
 msgid "Type your password again, to make sure you have typed it correctly."
-msgstr "Повторіть пароль, щоб переконати в правильності набраного пароля."
+msgstr "Повторіть пароль, щоб переконатися в правильності набраного пароля."
 
 #: admin_trees_check.php:132
 msgid "Types of error"
@@ -15628,7 +15628,7 @@ msgstr "Ім'я користувача або адрес електронної 
 
 #: admin_users.php:331 edituser.php:164 login.php:440
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Імена користувачів є нечутливими до герістру і ігнорують акцентовані літери, тому \"chloe\", \"chloë\" і \"Chloe\" вважаютсья одним і тим самим іменем."
+msgstr "Імена користувачів є нечутливими до регістру і ігнорують акцентовані літери, тому \"chloe\", \"chloë\" і \"Chloe\" вважаються одним і тим самим іменем."
 
 #. I18N: Menu entry
 #: admin.php:629 admin.php:637 app/Theme/AdministrationTheme.php:162
@@ -16324,7 +16324,7 @@ msgstr "Видаліть «%1$s» з «%2$s» і спробуйте заново
 
 #: admin_users.php:395
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "Ви не повинні затверджувати обліковий запис, якщо адреса електронної пошти не підтверджений користувачем."
+msgstr "Ви не повинні затверджувати обліковий запис, якщо адреса електронної пошти не підтверджена користувачем."
 
 #: login.php:325
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to sign in until you activate the account."

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-19 15:43+0000\n"
+"PO-Revision-Date: 2016-05-24 09:24+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -7463,7 +7463,7 @@ msgstr "Bei einer großen Anzahl von aktuell nicht genutzten Orten kann dies die
 
 #: addmedia.php:545 admin_media_upload.php:254
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr "Wenn Sie eine große Menge an Mediendateien haben, können Sie sie in Unterverzeichnissen organisieren."
+msgstr "Wenn Sie sehr viele Mediendateien haben, können Sie diese auch in Ordnern und Unterordnern organisieren."
 
 #: admin_trees_manage.php:278
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."

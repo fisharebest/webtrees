@@ -127,8 +127,8 @@ class PageController extends BaseController {
 			Theme::theme()->footerContainerPopupWindow() .
 			'<!--[if lt IE 9]><script src="' . WT_JQUERY_JS_URL . '"></script><![endif]-->' .
 			'<!--[if gte IE 9]><!--><script src="' . WT_JQUERY2_JS_URL . '"></script><!--<![endif]-->' .
-			'<script src="' . WT_JQUERYUI_JS_URL . '">"</script>' .
-			'<script src="' . WT_WEBTREES_JS_URL . '">"</script>' .
+			'<script src="' . WT_JQUERYUI_JS_URL . '"></script>' .
+			'<script src="' . WT_WEBTREES_JS_URL . '"></script>' .
 			$this->getJavascript() .
 			Theme::theme()->hookFooterExtraJavascript() .
 			(WT_DEBUG_SQL ? Database::getQueryLog() : '') .

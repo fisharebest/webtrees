@@ -1532,6 +1532,7 @@ class FunctionsPrintLists {
 					dom: \'t\',
 					jQueryUI: true,
 					autoWidth: false,
+					' . I18N::datatablesI18N() . ',
 					paging: false,
 					sorting: [[1, "asc"]],
 					columns: [

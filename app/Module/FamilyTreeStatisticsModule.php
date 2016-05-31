@@ -86,18 +86,18 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		} else {
 			$title = '';
 		}
-		$title .= $this->getTitle();
+		$title .= $this->getTitle() . ' — ' . $WT_TREE->getTitleHtml();
 
 		$stats = new Stats($WT_TREE);
 
-		$content = '<b>' . $WT_TREE->getTitleHtml() . '</b><br>';
+		$content = '';
 
 		if ($show_last_update) {
-			$content .= '<div>' . /* I18N: %s is a date */
-				I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())) . '</div>';
+			$content .= '<p>' . /* I18N: %s is a date */
+				I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())) . '</p>';
 		}
-		/** Responsive Design */
 
+		/** Responsive Design */
 		$content .= '<div class="stat-table1">';
 		if ($stat_indi) {
 			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Individuals') . '</div><div class="facts_value stats_value stat-cell"><a href="' . "indilist.php?surname_sublist=no&amp;ged=" . $WT_TREE->getNameUrl() . '">' . $stats->totalIndividuals() . '</a></div></div>';
@@ -194,7 +194,11 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		}
 		$content .= '</div>';
 		if ($stat_link && Module::isActiveChart($WT_TREE, 'statistics_chart')) {
-			$content .= '<div class="clearfloat"><a href="statistics.php?ged=' . $WT_TREE->getNameUrl() . '" rel="nofollow"><b>' . I18N::translate('View the statistics as graphs') . '</b></a></div>';
+			$content .= '<div class="clearfloat">';
+			$content .= '<p>';
+			$content .= '<a href="statistics.php?ged=' . $WT_TREE->getNameUrl() . '" rel="nofollow"><b>' . I18N::translate('View the statistics as graphs') . '</b></a>';
+			$content .= '</p>';
+			$content .= '</div>';
 		}
 
 		if ($show_common_surnames) {
@@ -206,8 +210,11 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
 			if ($surnames) {
 				$content .= '<div class="clearfloat">';
-				$content .= '<p><strong>' . I18N::translate('Most common surnames') . '</strong></p>';
-				$content .= '<div class="common_surnames">' . $surnames . '</div>';
+				$content .= '<p>';
+				$content .= '<strong>' . I18N::translate('Most common surnames') . '</strong>';
+				$content .= '<br>';
+				$content .= '<span class="common_surnames">' . $surnames . '</span>';
+				$content .= '</p>';
 				$content .= '</div>';
 			}
 		}

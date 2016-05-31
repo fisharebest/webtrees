@@ -58,9 +58,6 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = array()) {
 		global $WT_TREE, $ctype;
 
-		$COMMON_NAMES_REMOVE    = $WT_TREE->getPreference('COMMON_NAMES_REMOVE');
-		$COMMON_NAMES_THRESHOLD = $WT_TREE->getPreference('COMMON_NAMES_THRESHOLD');
-
 		$num       = $this->getBlockSetting($block_id, 'num', '10');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
@@ -71,15 +68,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		// This next function is a bit out of date, and doesn't cope well with surname variants
-		$top_surnames = FunctionsDb::getTopSurnames($WT_TREE->getTreeId(), $COMMON_NAMES_THRESHOLD, $num);
-
-		// Remove names found in the "Remove Names" list
-		if ($COMMON_NAMES_REMOVE) {
-			foreach (preg_split("/[,; ]+/", $COMMON_NAMES_REMOVE) as $delname) {
-				unset($top_surnames[$delname]);
-				unset($top_surnames[I18N::strtoupper($delname)]);
-			}
-		}
+		$top_surnames = FunctionsDb::getTopSurnames($WT_TREE->getTreeId(), 0, $num);
 
 		$all_surnames = array();
 		$i            = 0;

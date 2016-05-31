@@ -52,7 +52,7 @@ class ChartController extends PageController {
 			$this->root = $this->getSignificantIndividual();
 		}
 
-		if (!$this->root || !$this->root->canShowName()) {
+		if (!$this->root || !$WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS')) {
 			http_response_code(404);
 			$this->error_message = I18N::translate('This individual does not exist or you do not have permission to view it.');
 		}

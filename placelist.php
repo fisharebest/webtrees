@@ -94,7 +94,7 @@ case 'hierarchy':
 	$numfound = count($child_places);
 
 	//-- if the number of places found is 0 then automatically redirect to search page
-	if ($numfound == 0) {
+	if ($numfound === 0) {
 		$action = 'show';
 	}
 
@@ -122,6 +122,7 @@ case 'hierarchy':
 				$placelevels = ', ' . $parent[$j] . $placelevels;
 			}
 		}
+
 		$gm_module->createMap($placelevels);
 	} elseif (Module::getModuleByName('places_assistant')) {
 		// Places Assistant is a custom/add-on module that was once part of the core code.
@@ -218,28 +219,24 @@ case 'hierarchy':
 
 		echo '<div class="loading-image"></div>';
 		echo '<div id="places-tabs"><ul>';
-		if ($myindilist) {
+		if (!empty($myindilist)) {
 			echo '<li><a href="#places-indi"><span id="indisource">', I18N::translate('Individuals'), '</span></a></li>';
 		}
-		if ($myfamlist) {
+		if (!empty($myfamlist)) {
 			echo '<li><a href="#places-fam"><span id="famsource">', I18N::translate('Families'), '</span></a></li>';
 		}
 		echo '</ul>';
-		if ($myindilist) {
+		if (!empty($myindilist)) {
 			echo '<div id="places-indi">', FunctionsPrintLists::individualTable($myindilist), '</div>';
 		}
-		if ($myfamlist) {
+		if (!empty($myfamlist)) {
 			echo '<div id="places-fam">', FunctionsPrintLists::familyTable($myfamlist), '</div>';
-		}
-		if (!$myindilist && !$myfamlist) {
-			echo '<div id="places-indi">', FunctionsPrintLists::individualTable(array()), '</div>';
 		}
 		echo '</div>'; // <div id="places-tabs">
 	}
 	echo '<h4><a href="placelist.php?display=list">', I18N::translate('Show all places in a list'), '</a></h4>';
 
 	if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
-		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 		$gm_module->mapScripts($numfound, $level, $parent, $linklevels, $place_names);
 	}
 	break;

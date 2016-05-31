@@ -625,7 +625,7 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 				</a>
 			</h2>
 		</div>
-		<div id="create-a-new-family-tree" class="panel-collapse collapse<?php echo Tree::getAll() ? '' : ' in'; ?>">
+		<div id="create-a-family-tree" class="panel-collapse collapse<?php echo Tree::getAll() ? '' : ' in'; ?>">
 			<div class="panel-body">
 				<form role="form" class="form-horizontal" method="post">
 					<?php echo Filter::getCsrf(); ?>

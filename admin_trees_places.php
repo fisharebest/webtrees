@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Controller\PageController;
 define('WT_SCRIPT_NAME', 'admin_trees_places.php');
 require './includes/session.php';
 
-$search  = Filter::post('search');
+$search  = Filter::post('search', null, Filter::get('search'));
 $replace = Filter::post('replace');
 $confirm = Filter::post('confirm');
 
