@@ -75,7 +75,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		$stat_avg_chil        = $this->getBlockSetting($block_id, 'stat_avg_chil', '1');
 
 		// This can be overriden when embedding in an HTML block
-		$block     = '0';
+		$block = '0';
 
 		foreach (array('show_common_surnames', 'number_common_surnames', 'stat_indi', 'stat_fam', 'stat_sour', 'stat_media', 'stat_surname', 'stat_events', 'stat_users', 'stat_first_birth', 'stat_last_birth', 'stat_first_death', 'stat_last_death', 'stat_long_life', 'stat_avg_life', 'stat_most_chil', 'stat_avg_chil', 'block') as $name) {
 			if (array_key_exists($name, $cfg)) {

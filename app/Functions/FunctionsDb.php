@@ -647,7 +647,7 @@ class FunctionsDb {
 	 * @param int $min The number of times a surname must occur before it is added to the array
 	 * @param Tree $tree
 	 *
-	 * @return mixed[][]
+	 * @return int[]
 	 */
 	public static function getCommonSurnames($min, Tree $tree) {
 		return self::getTopSurnames($tree->getTreeId(), $min, 0);
@@ -660,7 +660,7 @@ class FunctionsDb {
 	 * @param int $min only fetch surnames occuring this many times
 	 * @param int $max only fetch this number of surnames (0=all)
 	 *
-	 * @return string[]
+	 * @return int[]
 	 */
 	public static function getTopSurnames($ged_id, $min, $max) {
 		// Use n_surn, rather than n_surname, as it is used to generate URLs for
