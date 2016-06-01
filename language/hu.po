@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-30 16:20+0000\n"
+"PO-Revision-Date: 2016-06-01 14:04+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -126,16 +126,16 @@ msgstr[1] "%1$s fájl kibontása %2$s másodperc alatt kész."
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] "%1$s személy látható összesen %2$s, %3$s nemzedékből."
-msgstr[1] "%1$s személy látható összesen %2$s, %3$s nemzedékből."
+msgstr[0] "%1$s személy látható összesen ennyiből: %2$s, %3$s nemzedékből."
+msgstr[1] "%1$s személy látható összesen ennyiből: %2$s, %3$s nemzedékből."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:910
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "%1$s személynek hiányoznak a születési hely térképkoordinátái: %2$s."
-msgstr[1] "%1$s személynek hiányoznak a születési hely térképkoordinátái: %2$s."
+msgstr[0] "%1$s személy születési helyének térképkoordinátái hiányoznak: %2$s."
+msgstr[1] "%1$s személy születési helyének térképkoordinátái hiányoznak: %2$s."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:192
@@ -1464,7 +1464,7 @@ msgstr "A html-headerben a title címke toldaléka"
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
 msgid "Add to favorites"
-msgstr "Felvétel a kedvencek közé"
+msgstr "Tegyük a kedvencek közé"
 
 #: app/Module/ClippingsCartModule.php:106
 #: app/Module/ClippingsCartModule.php:151
@@ -1824,7 +1824,7 @@ msgstr "Élők"
 #: modules_v3/missing_facts_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "All"
-msgstr "Mindent"
+msgstr "Mind"
 
 #: admin_trees_manage.php:714
 msgid "All changes in PhpGedView must be accepted"
@@ -3284,7 +3284,7 @@ msgstr "Alapértelmezés szerint az SMTP a 25-ös porton fut."
 
 #: app/Module/GoogleMapsModule.php:4490
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
-msgstr "Alapértelmezés szerint a listában csak a családfájában található helyek szerepelnek. Amennyiben vannak adatok más helyekről is, ezeket ömlesztve egy fájlból lehet beimportálni. Bejelölve ezt az opciót, megjelennek azon helyek is, amelyeket eddig nem használt fel."
+msgstr "Alapértelmezés szerint a listában csak a családfájában található helyek szerepelnek. Amennyiben vannak adatok más helyekről is, ezeket ömlesztve egy fájlból lehet betölteni. Bejelölve ezt az opciót, megjelennek azon helyek is, amelyeket eddig nem használt fel."
 
 #: admin_site_config.php:217
 #, php-format
@@ -7534,7 +7534,7 @@ msgstr "Bevándorlás"
 
 #: admin_trees_manage.php:604 app/Module/GoogleMapsModule.php:4579
 msgid "Import"
-msgstr "Adatbetöltés"
+msgstr "Betöltés"
 
 #: admin_trees_manage.php:178
 msgid "Import a GEDCOM file"
@@ -10018,7 +10018,7 @@ msgstr "Nem küldött el senki újságcikket."
 
 #: app/Module/GoogleMapsModule.php:3813 app/Module/GoogleMapsModule.php:4507
 msgid "No places found"
-msgstr "Nem találhatóak helyszínek"
+msgstr "Nem találhatóak helyek"
 
 #: admin_trees_places.php:127
 msgid "No places have been found."
@@ -10418,7 +10418,7 @@ msgstr "OpenStreetMap™"
 
 #: app/Module/GoogleMapsModule.php:394
 msgid "Optional prefixes and suffixes"
-msgstr "Választható előtagok és utótagok"
+msgstr "Választható elő- és utótagok"
 
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
@@ -10820,7 +10820,7 @@ msgstr "Pitcairn-szigetek"
 #: modules_v3/marriage_report/report.xml:50
 #: modules_v3/occupation_report/report.xml:60 search.php:242
 msgid "Place"
-msgstr "Helyszín"
+msgstr "Hely"
 
 #: app/Module/GoogleMapsModule.php:172 app/Module/GoogleMapsModule.php:306
 #: app/Module/GoogleMapsModule.php:875 app/Module/GoogleMapsModule.php:1530
@@ -12833,7 +12833,7 @@ msgstr "Vezetéknevek listája"
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:79
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr "Mutasd a helyek és események helyszínét a Google Maps™-térképszolgáltatás segítségével."
+msgstr "A helyek és események helyszínét a Google Maps™-térképszolgáltatás segítségével mutatja."
 
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
@@ -13089,7 +13089,7 @@ msgstr "Némely származástani alkalmazás által létrehozott GEDCOM-fájlokba
 
 #: app/Module/GoogleMapsModule.php:431
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Egyes helynevek elhagyható elő- vagy utótaggal írhatók, mint amilyen az „Orange” és „Orange County”. Ha a családfa a teljes helynevet tartalmazza, viszont a földrajzi adatállomány csak a rövidebb változatot, akkor meg kell adni a figyelmen kívül hagyandó előtagok és utótagok listáját. A több változatot pontosvesszővel kell elválasztani, például: „County;County of” vagy „Township;Twp;Twp”."
+msgstr "Egyes helynevek elhagyható elő- vagy utótaggal írhatók, mint amilyen az „Orange” és „Orange County”. Ha a családfa a teljes helynevet tartalmazza, viszont a földrajzi adatállomány csak a rövidebb változatot, akkor meg kell adni a figyelmen kívül hagyandó előtagok és utótagok listáját. Több változatot pontosvesszővel kell elválasztani, például: „County;County of” vagy „Township;Twp;Twp.”."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1559
@@ -15259,7 +15259,7 @@ msgstr "Típus"
 
 #: app/Module/GoogleMapsModule.php:473
 msgid "Type of place markers in the place hierarchy"
-msgstr "Helyjelölők a Helyhierarchia térképen"
+msgstr "Helyjelölőtípusok a helyrangsorban"
 
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:355 login.php:468
@@ -15473,7 +15473,7 @@ msgstr "Uruguay"
 
 #: app/Module/GoogleMapsModule.php:440
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr "Google Maps™ használata a földrajzi helyek hierarchiájához"
+msgstr "Google Maps™ használata a helyrangsorhoz"
 
 #: admin_site_config.php:116
 msgid "Use PHP mail to send messages"
@@ -15755,7 +15755,7 @@ msgstr "Család megjelenítése"
 #: app/Module/GoogleMapsModule.php:1350 app/Module/SlideShowModule.php:177
 #: medialist.php:310
 msgid "View the individual"
-msgstr "Személy megjelenítése"
+msgstr "személy megjelenítése"
 
 #: calendar.php:304
 msgid "View the month"
