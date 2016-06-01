@@ -642,36 +642,15 @@ class FunctionsDb {
 	 * This function returns a simple array of the most common surnames
 	 * found in the individuals list.
 	 *
+	 * @deprecated
+	 *
 	 * @param int $min The number of times a surname must occur before it is added to the array
 	 * @param Tree $tree
 	 *
 	 * @return mixed[][]
 	 */
 	public static function getCommonSurnames($min, Tree $tree) {
-		$COMMON_NAMES_ADD    = $tree->getPreference('COMMON_NAMES_ADD');
-		$COMMON_NAMES_REMOVE = $tree->getPreference('COMMON_NAMES_REMOVE');
-
-		$topsurns = self::getTopSurnames($tree->getTreeId(), $min, 0);
-		foreach (explode(',', $COMMON_NAMES_ADD) as $surname) {
-			if ($surname && !array_key_exists($surname, $topsurns)) {
-				$topsurns[$surname] = $min;
-			}
-		}
-		foreach (explode(',', $COMMON_NAMES_REMOVE) as $surname) {
-			unset($topsurns[I18N::strtoupper($surname)]);
-		}
-
-		//-- check if we found some, else recurse
-		if (empty($topsurns) && $min > 2) {
-			return self::getCommonSurnames($min / 2, $tree);
-		} else {
-			uksort($topsurns, '\Fisharebest\Webtrees\I18N::strcasecmp');
-			foreach ($topsurns as $key => $value) {
-				$topsurns[$key] = array('name' => $key, 'match' => $value);
-			}
-
-			return $topsurns;
-		}
+		return self::getTopSurnames($tree->getTreeId(), $min, 0);
 	}
 
 	/**
@@ -691,7 +670,7 @@ class FunctionsDb {
 			return
 				Database::prepare(
 					"SELECT SQL_CACHE n_surn, COUNT(n_surn) FROM `##name`" .
-					" WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '', '?', 'UNKNOWN')" .
+					" WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '')" .
 					" GROUP BY n_surn HAVING COUNT(n_surn) >= :min" .
 					" ORDER BY 2 DESC"
 				)->execute(array(
@@ -702,7 +681,7 @@ class FunctionsDb {
 			return
 				Database::prepare(
 					"SELECT SQL_CACHE n_surn, COUNT(n_surn) FROM `##name`" .
-					" WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '', '?', 'UNKNOWN')" .
+					" WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '')" .
 					" GROUP BY n_surn HAVING COUNT(n_surn) >= :min" .
 					" ORDER BY 2 DESC" .
 					" LIMIT :limit"

@@ -629,9 +629,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$ALLOW_THEME_DROPDOWN         = '';
 	$CALENDAR_FORMAT              = '';
 	$CHART_BOX_TAGS               = '';
-	$COMMON_NAMES_ADD             = '';
-	$COMMON_NAMES_REMOVE          = '';
-	$COMMON_NAMES_THRESHOLD       = '';
 	$CONTACT_EMAIL                = '';
 	$DEFAULT_PEDIGREE_GENERATIONS = '';
 	$EXPAND_NOTES                 = '';
@@ -763,9 +760,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'ALLOW_THEME_DROPDOWN', $ALLOW_THEME_DROPDOWN));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CALENDAR_FORMAT', $CALENDAR_FORMAT));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CHART_BOX_TAGS', $CHART_BOX_TAGS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'COMMON_NAMES_ADD', $COMMON_NAMES_ADD));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'COMMON_NAMES_REMOVE', $COMMON_NAMES_REMOVE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'COMMON_NAMES_THRESHOLD', $COMMON_NAMES_THRESHOLD));
 	$user = User::findByIdentifier($CONTACT_EMAIL);
 	if ($user) {
 		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'CONTACT_USER_ID', $user->getUserId()]);
