@@ -2522,25 +2522,22 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		$STREETVIEW = (bool) $this->getSetting('GM_USE_STREETVIEW');
 		$parent     = Filter::getArray('parent');
-
-		// create the map
-		echo '<table style="margin:auto; border-collapse: collapse;"><tr><td>';
-		//<!-- start of map display -->
-//		echo '<table><tr>';
-//		echo '<td>';
-
 		$levelm = $this->setLevelMap($level, $parent);
+
 		$latlng =
 			Database::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM `##placelocation` WHERE pl_id=?")
 			->execute(array($levelm))
 			->fetch(PDO::FETCH_ASSOC);
+
+		echo '<table style="margin:auto; border-collapse: collapse;">';
+		echo '<tr style="vertical-align:top;"><td>';
 		if ($STREETVIEW && $level != 0) {
-			echo '<div id="place_map" style="margin-top:25px; border:1px solid gray; width: ', $this->getSetting('GM_PH_XSIZE'), 'px; height: ', $this->getSetting('GM_PH_YSIZE'), 'px; ';
+			// Leave space for the Street View buttons, so that the maps align vertically
+			echo '<div id="place_map" style="margin-top:31px; border:1px solid gray; width: ', $this->getSetting('GM_PH_XSIZE'), 'px; height: ', $this->getSetting('GM_PH_YSIZE'), 'px; ';
 		} else {
 			echo '<div id="place_map" style="border:1px solid gray; width:', $this->getSetting('GM_PH_XSIZE'), 'px; height:', $this->getSetting('GM_PH_YSIZE'), 'px; ';
 		}
 		echo '"><i class="icon-loading-large"></i></div>';
-//		echo '</td></tr>';
 		echo '<script src="', $this->googleMapsScript(), '"></script>';
 
 		$plzoom = $latlng['pl_zoom']; // Map zoom level
