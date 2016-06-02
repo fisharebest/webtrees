@@ -2526,8 +2526,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		// create the map
 		echo '<table style="margin:auto; border-collapse: collapse;"><tr><td>';
 		//<!-- start of map display -->
-		echo '<table><tr>';
-		echo '<td class="center" style="width:200px">';
+//		echo '<table><tr>';
+//		echo '<td>';
 
 		$levelm = $this->setLevelMap($level, $parent);
 		$latlng =
@@ -2539,8 +2539,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		} else {
 			echo '<div id="place_map" style="border:1px solid gray; width:', $this->getSetting('GM_PH_XSIZE'), 'px; height:', $this->getSetting('GM_PH_YSIZE'), 'px; ';
 		}
-		echo "\"><i class=\"icon-loading-large\"></i></div>";
-		echo '</td>';
+		echo '"><i class="icon-loading-large"></i></div>';
+//		echo '</td></tr>';
 		echo '<script src="', $this->googleMapsScript(), '"></script>';
 
 		$plzoom = $latlng['pl_zoom']; // Map zoom level
@@ -2558,18 +2558,17 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$adminplaces_url .= '&amp;parent=' . $latlng['pl_id'];
 			}
 			$update_places_url = 'admin_trees_places.php?ged=' . $WT_TREE->getNameHtml() . '&amp;search=' . urlencode(implode(', ', array_reverse($parent)));
-			echo '</tr><tr><td>';
+			echo '<p>';
 			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
 			echo ' | <a href="' . $adminplaces_url . '">' . I18N::translate('Geographic data') . '</a>';
 			echo ' | <a href="' . $placecheck_url . '">' . I18N::translate('Place check') . '</a>';
-		echo ' | <a href="' . $update_places_url . '">' . I18N::translate('Update place names') . '</a>';
+			echo ' | <a href="' . $update_places_url . '">' . I18N::translate('Update place names') . '</a>';
+			echo '</p>';
 		}
-		echo '</td></tr>';
-		echo '</table>';
 		echo '</td>';
 
 		if ($STREETVIEW) {
-			echo '<td style="margin-left:15px; float:right;">';
+			echo '<td>';
 
 			global $pl_lati, $pl_long;
 			if ($level >= 1) {
@@ -2595,36 +2594,32 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<?php
 				if (Auth::isAdmin()) {
 					?>
-					<table id="sv_parameters">
-						<tr>
-						<td>
-							<form method="post" action="module.php?mod=googlemap&amp;mod_action=places_edit">
-								<?php echo Filter::getCsrf(); ?>
-								<input type='hidden' name='placeid' value='<?php echo $placeid; ?>'>
-								<input type='hidden' name='action' value='update_sv_params'>
-								<input type='hidden' name='destination' value='<?php echo Filter::server("REQUEST_URI"); ?>'>
-								<label for='sv_latiText'><?php echo GedcomTag::getLabel('LATI'); ?></label>
-								<input name='sv_latiText' id='sv_latiText' type='text' title="<?php echo $sv_lat; ?>"
-									   style='width:42px;' value='<?php echo $sv_lat; ?>'>
-								<label for='sv_longText'><?php echo GedcomTag::getLabel('LONG'); ?></label>
-								<input name='sv_longText' id='sv_longText' type='text' title="<?php echo $sv_lng; ?>"
-									   style='width:42px;' value='<?php echo $sv_lng; ?>'>
-								<label for='sv_bearText'><?php /* I18N: Compass bearing (in degrees), for street-view mapping */echo I18N::translate('Bearing'); ?></label>
-								<input name='sv_bearText' id='sv_bearText' type='text'
-									   style='width:30px;' value='<?php echo $sv_dir; ?>'>
-								<label for='sv_elevText'><?php /* I18N: Angle of elevation (in degrees), for street-view mapping */echo I18N::translate('Elevation'); ?></label>
-								<input name='sv_elevText' id='sv_elevText' type='text'
-									   style='width:30px;'
-									   value='<?php echo $sv_pitch; ?>'>
-								<label for='sv_zoomText'><?php echo I18N::translate('Zoom'); ?></label>
-								<input name='sv_zoomText' id='sv_zoomText' type='text'
-									   style='width:30px;'
-									   value='<?php echo $sv_zoom; ?>'>
-								<input type="submit" name="Submit" value="<?php echo I18N::translate('save'); ?>">
-							</form>
-						</td>
-					</tr>
-					</table>
+					<div id="sv_parameters">
+						<form method="post" action="module.php?mod=googlemap&amp;mod_action=places_edit">
+							<?php echo Filter::getCsrf(); ?>
+							<input type='hidden' name='placeid' value='<?php echo $placeid; ?>'>
+							<input type='hidden' name='action' value='update_sv_params'>
+							<input type='hidden' name='destination' value='<?php echo Filter::server("REQUEST_URI"); ?>'>
+							<label for='sv_latiText'><?php echo GedcomTag::getLabel('LATI'); ?></label>
+							<input name='sv_latiText' id='sv_latiText' type='text' title="<?php echo $sv_lat; ?>"
+								   style='width:42px;' value='<?php echo $sv_lat; ?>'>
+							<label for='sv_longText'><?php echo GedcomTag::getLabel('LONG'); ?></label>
+							<input name='sv_longText' id='sv_longText' type='text' title="<?php echo $sv_lng; ?>"
+								   style='width:42px;' value='<?php echo $sv_lng; ?>'>
+							<label for='sv_bearText'><?php /* I18N: Compass bearing (in degrees), for street-view mapping */echo I18N::translate('Bearing'); ?></label>
+							<input name='sv_bearText' id='sv_bearText' type='text'
+								   style='width:30px;' value='<?php echo $sv_dir; ?>'>
+							<label for='sv_elevText'><?php /* I18N: Angle of elevation (in degrees), for street-view mapping */echo I18N::translate('Elevation'); ?></label>
+							<input name='sv_elevText' id='sv_elevText' type='text'
+								   style='width:30px;'
+								   value='<?php echo $sv_pitch; ?>'>
+							<label for='sv_zoomText'><?php echo I18N::translate('Zoom'); ?></label>
+							<input name='sv_zoomText' id='sv_zoomText' type='text'
+								   style='width:30px;'
+								   value='<?php echo $sv_zoom; ?>'>
+							<input type="submit" name="Submit" value="<?php echo I18N::translate('save'); ?>">
+						</form>
+					</div>
 					<?php
 				}
 			}
@@ -4718,10 +4713,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			var toggle = panorama.getVisible();
 			if (toggle == false) {
 				panorama.setVisible(true);
-				document.myForm.butt1.value = "<?php echo I18N::translate('Google Maps™') ?>";
+				document.getElementById('butt1').value = "<?php echo I18N::translate('Google Maps™') ?>";
 			} else {
 				panorama.setVisible(false);
-				document.myForm.butt1.value = "<?php echo I18N::translate('Google Street View™') ?>";
+				document.getElementById('butt1').value = "<?php echo I18N::translate('Google Street View™') ?>";
 			}
 		}
 
@@ -4732,10 +4727,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			</head>
 			<body>
 				<div id="toggle">
-					<form name="myForm" title="myForm">
-						<input id="butt1" name ="butt1" type="button" value="<?php echo I18N::translate('Google Maps™') ?>" onclick="toggleStreetView();">
-						<input id="butt2" name ="butt2" type="button" value="<?php echo I18N::translate('reset') ?>" onclick="initialize();">
-					</form>
+					<button id="butt1" type="button" onclick="toggleStreetView();">
+						<?php echo I18N::translate('Google Maps™') ?>
+					</button>
+					<button type="button" onclick="initialize();">
+						<?php echo I18N::translate('reset') ?>
+					</button>
 				</div>
 
 				<div id="mapCanvas">
