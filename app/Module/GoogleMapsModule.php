@@ -658,37 +658,36 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</td>
 				</tr>
 
-				<tr>
-		<?php
-				$j = 1;
-				for ($i = 0; $i < count($flags); $i++) {
-					if ($countrySelected == 'Countries') {
-						$tempstr = '<td><label><input type="radio" dir="ltr" name="FLAGS" value="' . $i . '"><img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/places/flags/' . $flags[$i] . '.png" alt="' . $flags[$i] . '"  title="';
-						if ($flags[$i] != 'blank') {
-							if (isset($countries[$flags[$i]])) {
-								$tempstr .= $countries[$flags[$i]];
+				<?php
+				$i    = 0;
+				$path = WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/places/';
+				$path .= $countrySelected == 'Countries' ? 'flags/' : $countrySelected . '/flags/';
+				foreach (array_chunk($flags, 4) as $row) {
+					echo "<tr>";
+					foreach ($row as $flag) {
+						if ($flag != 'blank') {
+							if (isset($countries[$flag])) {
+								$title = $countries[$flag];
 							} else {
-								$tempstr .= $flags[$i];
+								$title = $flag;
 							}
 						} else {
-							$tempstr .= $countries['???'];
+							$title = $countries['???'];
 						}
-						echo $tempstr, '"> ', $flags[$i], '</label></td>';
-					} else {
-						echo '<td><label><input type="radio" name="FLAGS" value="', $i, '"><img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $flags[$i], '.png"> ', $flags[$i], '</label></td>';
+						echo '<td>';
+						echo '<input type="radio" dir="ltr" name="FLAGS" value="' . $i++ . '">';
+						echo '<img style="width:25px; height:15px; margin-right:15px" src="' . $path . $flag . '.png" alt="' . $flag . '" title="' . $title . '">';
+						echo $flag . '</td>';
+
 					}
-					if ($j == 4) {
-						echo '</tr><tr>';
-						$j = 0;
-					}
-					$j++;
+
+					echo str_repeat('<td></td>', 4 - count($row));
+					echo "</tr>";
 				}
-				echo '</tr><tr';
-				if ($countrySelected == 'Countries' || count($stateList) == 0) {
-					echo ' style=" visibility: hidden"';
-				}
-				echo '>';
-		?>
+
+				echo'<tr style="visibility:' . $countrySelected == 'Countries' || count($stateList) == 0 ? 'hidden' : 'visible' . '">';
+				?>
+
 				<td class="optionbox" colspan="4">
 					<select name="STATESELECT" dir="ltr" onchange="selectCountry()">
 						<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ I18N::translate('Subdivision'); ?></option>
@@ -702,22 +701,21 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</select>
 				</td>
 			</tr>
-			<tr>
+
 			<?php
-				$j = 1;
-				for ($i = 0; $i < count($flags_s); $i++) {
-					if ($stateSelected != 'States') {
-						echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i, '"><img src="', WT_STATIC_URL . WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $stateSelected, '/', $flags_s[$i], '.png">&nbsp;&nbsp;', $flags_s[$i], '</input></td>';
+
+			if (!empty($flags_s)) {
+				foreach (array_chunk($flags_s, 4) as $row) {
+					echo "<tr>";
+					foreach ($row as $flag) {
+						echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i++, '"><img src="', WT_STATIC_URL . WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $stateSelected, '/', $flag, '.png">&nbsp;&nbsp;', $flag, '></td>';
 					}
-					if ($j == 4) {
-						echo '</tr><tr>';
-						$j = 0;
-					}
-					$j++;
+					echo str_repeat('<td></td>', 4 - count($row));
+					echo '</tr>';
 				}
+			}
 
 			?>
-				</tr>
 
 			</table>
 			<p id="save-cancel">
