@@ -1928,161 +1928,111 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 */
 	private function buildIndividualMap(Individual $indi) {
 		$GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM');
-
-		$indifacts = $indi->getFacts();
+		$facts = $indi->getFacts();
 		foreach ($indi->getSpouseFamilies() as $family) {
-			$indifacts = array_merge($indifacts, $family->getFacts());
+			$facts = array_merge($facts, $family->getFacts());
+			// Add birth of children from this family to the facts array
+			foreach ($family->getChildren() as $child) {
+				$facts[] = $child->getFirstFact('BIRT');
+			}
 		}
 
-		Functions::sortFacts($indifacts);
+		$facts = array_values(array_filter($facts, function ($item) {
+			// remove null facts (child without birth event) and
+			// facts without places
+			return !is_null($item) && !$item->getPlace()->isEmpty();
+		}));
 
-		// Create the markers list array
-		$gmarks = array();
+		Functions::sortFacts($facts);
 
-		foreach ($indifacts as $fact) {
-			if (!$fact->getPlace()->isEmpty()) {
-				$ctla = preg_match("/\d LATI (.*)/", $fact->getGedcom(), $match1);
-				$ctlo = preg_match("/\d LONG (.*)/", $fact->getGedcom(), $match2);
+		// At this point we have an array of valid sorted facts
+		// so now build the data structures needed for the map display
+		$events        = array();
+		$unique_places = array();
 
-				if ($fact->getParent() instanceof Family) {
-					$spouse = $fact->getParent()->getSpouse($indi);
-				} else {
-					$spouse = null;
-				}
-				if ($ctla && $ctlo) {
-					$gmark = array(
+		foreach ($facts as $fact) {
+			$index = 'ID' . $fact->getPlace()->getPlaceId();
+			if (!array_key_exists($index, $unique_places)) {
+				$unique_places[$index] = array();
+			}
+			$ctla = preg_match("/\d LATI (.*)/", $fact->getGedcom(), $match1);
+			$ctlo = preg_match("/\d LONG (.*)/", $fact->getGedcom(), $match2);
+
+			// If co-ordinates are stored in the GEDCOM then use them
+			if ($ctla && $ctlo) {
+				if (empty($unique_places[$index])) {
+					$unique_places[$index] = array(
 						'class'        => 'optionbox',
-						'date'         => $fact->getDate()->display(true),
-						'fact_label'   => $fact->getLabel(),
-						'image'        => $spouse ? $spouse->displayImage() : Theme::theme()->icon($fact),
-						'info'         => $fact->getValue(),
-						'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.'), $match1[1]),
-						'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.'), $match2[1]),
-						'name'         => $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '',
-						'pl_icon'      => '',
 						'place'        => $fact->getPlace()->getFullName(),
+						'tooltip'      => $fact->getPlace()->getGedcomName(),
+						'lat'          => strtr($match1[1], array('N' => '', 'S' => '-', ',' => '.')),
+						'lng'          => strtr($match2[1], array('E' => '', 'W' => '-', ',' => '.')),
+						'pl_icon'      => '',
 						'sv_bearing'   => '0',
 						'sv_elevation' => '0',
 						'sv_lati'      => '0',
 						'sv_long'      => '0',
 						'sv_zoom'      => '0',
-						'tooltip'      => $fact->getPlace()->getGedcomName(),
+						'events'       => ''
 					);
-					$gmarks[] = $gmark;
-				} else {
-					$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
-					if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
-						$gmark = array(
+				}
+			} else {
+				$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
+				if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
+					if (empty($unique_places[$index])) {
+						$unique_places[$index] = array(
 							'class'        => 'optionbox',
-							'date'         => $fact->getDate()->display(true),
-							'fact_label'   => $fact->getLabel(),
-							'image'        => $spouse ? $spouse->displayImage() : Theme::theme()->icon($fact),
-							'info'         => $fact->getValue(),
-							'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval->pl_lati),
-							'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval->pl_long),
-							'name'         => $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '',
-							'pl_icon'      => $latlongval->pl_icon,
 							'place'        => $fact->getPlace()->getFullName(),
+							'tooltip'      => $fact->getPlace()->getGedcomName(),
+							'lat'          => strtr($latlongval->pl_lati, array('N' => '', 'S' => '-', ',' => '.')),
+							'lng'          => strtr($latlongval->pl_long, array('E' => '', 'W' => '-', ',' => '.')),
+							'pl_icon'      => $latlongval->pl_icon,
 							'sv_bearing'   => $latlongval->sv_bearing,
 							'sv_elevation' => $latlongval->sv_elevation,
 							'sv_lati'      => $latlongval->sv_lati,
 							'sv_long'      => $latlongval->sv_long,
 							'sv_zoom'      => $latlongval->sv_zoom,
-							'tooltip'      => $fact->getPlace()->getGedcomName(),
+							'events'       => ''
 						);
-						$gmarks[] = $gmark;
-
-						if ($GM_MAX_ZOOM > $latlongval->pl_zoom) {
-							$GM_MAX_ZOOM = $latlongval->pl_zoom;
-						}
 					}
+					$GM_MAX_ZOOM = min($GM_MAX_ZOOM, $latlongval->pl_zoom);
 				}
 			}
-		}
 
-		// Add children to the markers list array
-		foreach ($indi->getSpouseFamilies() as $family) {
-			foreach ($family->getChildren() as $child) {
-				$birth = $child->getFirstFact('BIRT');
-				if ($birth) {
-					$birthrec = $birth->getGedcom();
-					if (!$birth->getPlace()->isEmpty()) {
-						$ctla = preg_match('/\n4 LATI (.+)/', $birthrec, $match1);
-						$ctlo = preg_match('/\n4 LONG (.+)/', $birthrec, $match2);
-						if ($ctla && $ctlo) {
-							$gmark = array(
-								'date'         => $birth->getDate()->display(true),
-								'image'        => $child->displayImage(),
-								'info'         => '',
-								'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.'), $match1[1]),
-								'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.'), $match2[1]),
-								'name'         => '<a href="' . $child->getHtmlUrl() . '"' . $child->getFullName() . '</a>',
-								'pl_icon'      => '',
-								'place'        => $birth->getPlace()->getFullName(),
-								'sv_bearing'   => '0',
-								'sv_elevation' => '0',
-								'sv_lati'      => '0',
-								'sv_long'      => '0',
-								'sv_zoom'      => '0',
-								'tooltip'      => $birth->getPlace()->getGedcomName(),
-							);
-							switch ($child->getSex()) {
-							case'F':
-								$gmark['fact_label'] = I18N::translate('daughter');
-								$gmark['class']      = 'person_boxF';
-								break;
-							case 'M':
-								$gmark['fact_label'] = I18N::translate('son');
-								$gmark['class']      = 'person_box';
-								break;
-							default:
-								$gmark['fact_label'] = I18N::translate('child');
-								$gmark['class']      = 'person_boxNN';
-								break;
-							}
-							$gmarks[] = $gmark;
-						} else {
-							$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($birth->getPlace()->getGedcomName());
-							if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
-								$gmark = array(
-									'date'         => $birth->getDate()->display(true),
-									'image'        => $child->displayImage(),
-									'info'         => '',
-									'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval->pl_lati),
-									'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval->pl_long),
-									'name'         => '<a href="' . $child->getHtmlUrl() . '"' . $child->getFullName() . '</a>',
-									'pl_icon'      => $latlongval->pl_icon,
-									'place'        => $birth->getPlace()->getFullName(),
-									'sv_bearing'   => $latlongval->sv_bearing,
-									'sv_elevation' => $latlongval->sv_elevation,
-									'sv_lati'      => $latlongval->sv_lati,
-									'sv_long'      => $latlongval->sv_long,
-									'sv_zoom'      => $latlongval->sv_zoom,
-									'tooltip'      => $birth->getPlace()->getGedcomName(),
-								);
-								switch ($child->getSex()) {
-								case 'M':
-									$gmark['fact_label'] = I18N::translate('son');
-									$gmark['class']      = 'person_box';
-									break;
-								case 'F':
-									$gmark['fact_label'] = I18N::translate('daughter');
-									$gmark['class']      = 'person_boxF';
-									break;
-								default:
-									$gmark['fact_label'] = I18N::translate('child');
-									$gmark['class']      = 'option_boxNN';
-									break;
-								}
-								$gmarks[] = $gmark;
-								if ($GM_MAX_ZOOM > $latlongval->pl_zoom) {
-									$GM_MAX_ZOOM = $latlongval->pl_zoom;
-								}
-							}
-						}
-					}
+			// Produce the html for the sidebar
+			$parent = $fact->getParent();
+			if ($parent instanceof Individual && $parent->getXref() !== $indi->getXref()) {
+				// Childs birth
+				$name   = '<a href="' . $parent->getHtmlUrl() . '"' . $parent->getFullName() . '</a>';
+				$label  = strtr($parent->getSex(), array('F' => I18N::translate('Birth of a daughter'), 'M' => I18N::translate('Birth of a son'), 'U' => I18N::translate('Birth of a child')));
+				$class  = 'person_box' . strtr($parent->getSex(), array('F' => 'F', 'M' => '', 'U' => 'NN'));
+				$evtStr = '<div class="info_event"><span class="highlt_img">' . $parent->displayImage() . '</span><div class="sp1">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
+			} else {
+				$spouse = $parent instanceof Family ? $parent->getSpouse($indi) : null;
+				$name   = $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '';
+				$label  = $fact->getLabel();
+				$class  = 'optionbox';
+				if ($fact->getValue() && $spouse) {
+					$evtStr = '<div class="info_event"><span class="highlt_img">' . $spouse->displayImage() . '</span><div class="sp1">' . $label . '<div>' . $fact->getValue() . '</div><div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
+				} else if ($spouse) {
+					$evtStr = '<div class="info_event"><span class="highlt_img">' . $spouse->displayImage() . '</span><div class="sp1">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
+				} else if ($fact->getValue()) {
+					$evtStr = '<div class="info_event"><span class="highlt_img">' . Theme::theme()->icon($fact) . '</span><div class="sp1">' . $label . '<div> ' . $fact->getValue() . '</div><div>' . $fact->getDate()->display(true) . '</div></div></div>';
+				} else {
+					$evtStr = '<div class="info_event"><span class="highlt_img">' . Theme::theme()->icon($fact) . '</span><div class="sp1">' . $label . '<div>' . $fact->getDate()->display(true) . '</div></div></div>';
 				}
 			}
+
+			$unique_places[$index]['events'] .= $evtStr;
+			$events[] = array(
+				'class'      => $class,
+				'fact_label' => $label,
+				'date'       => $fact->getDate()->display(true),
+				'info'       => $fact->getValue(),
+				'name'       => $name,
+				'place'      => '<a href="'. $fact->getPlace()->getURL() . '">' . $fact->getPlace()->getFullName() . '</a>',
+				'placeid'    => $index
+			);
 		}
 
 		// *** ENABLE STREETVIEW ***
@@ -2324,7 +2274,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
 						style:    google.maps.NavigationControlStyle.SMALL  // ANDROID, DEFAULT, SMALL, ZOOM_PAN
 					},
-					streetViewControl:        false,  // Show Pegman or not
+					streetViewControl:        true,
 					scrollwheel:              false
 				};
 				map            = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
@@ -2340,62 +2290,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				homeControlDiv.index = 1;
 				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
 
-				// Add the markers to the map from the $gmarks array
-				var locations = [
-					<?php foreach ($gmarks as $n => $gmark) { ?>
-					<?php echo $n ? ',' : '' ?>
-					{
-						"event":        "<?php echo Filter::escapeJs($gmark['fact_label']) ?>",
-						"lat":          "<?php echo Filter::escapeJs($gmark['lat']) ?>",
-						"lng":          "<?php echo Filter::escapeJs($gmark['lng']) ?>",
-						"date":         "<?php echo Filter::escapeJs($gmark['date']) ?>",
-						"info":         "<?php echo Filter::escapeJs($gmark['info']) ?>",
-						"name":         "<?php echo Filter::escapeJs($gmark['name']) ?>",
-						"place":        "<?php echo Filter::escapeJs($gmark['place']) ?>",
-						"tooltip":      "<?php echo Filter::escapeJs($gmark['tooltip']) ?>",
-						"image":        "<?php echo Filter::escapeJs($gmark['image']) ?>",
-						"pl_icon":      "<?php echo Filter::escapeJs($gmark['pl_icon']) ?>",
-						"sv_lati":      "<?php echo Filter::escapeJs($gmark['sv_lati']) ?>",
-						"sv_long":      "<?php echo Filter::escapeJs($gmark['sv_long']) ?>",
-						"sv_bearing":   "<?php echo Filter::escapeJs($gmark['sv_bearing']) ?>",
-						"sv_elevation": "<?php echo Filter::escapeJs($gmark['sv_elevation']) ?>",
-						"sv_zoom":      "<?php echo Filter::escapeJs($gmark['sv_zoom']) ?>"
-					}
-					<?php } ?>
-				];
+				// Add the markers to the map
 
 				// Group the markers by location
-				var location_groups = [];
-				for (var key in locations) {
-					if (!location_groups.hasOwnProperty(locations[key].place)) {
-						location_groups[locations[key].place] = [];
-					}
-					location_groups[locations[key].place].push(locations[key]);
-				}
+				var locations = <?php echo json_encode($unique_places); ?>;
 
 				// Set the Marker bounds
 				var bounds = new google.maps.LatLngBounds ();
 
-				var key;
-				// Iterate over each location
-				for (key in location_groups) {
-					var locations = location_groups[key];
-					// Iterate over each marker at this location
-					var event_details = '';
-					for (var j in locations) {
-						var location = locations[j];
-						if (location.info && location.name) {
-							event_details += '<table><tr><td class="highlt_img">' + location.image + '</td><td><p><span id="sp1">' + location.event + '</span> ' + location.info + '<br><b>' + location.name + '</b><br>' + location.date + '<br></p></td></tr></table>';
-						} else if (location.name) {
-							event_details += '<table><tr><td class="highlt_img">' + location.image + '</td><td><p><span id="sp1">' + location.event + '</span><br><b>' + location.name + '</b><br>' + location.date + '<br></p></td></tr></table>';
-						} else if (location.info) {
-							event_details += '<table><tr><td class="highlt_img">' + location.image + '</td><td><p><span id="sp1">' + location.event + '</span> ' + location.info + '<br>' + location.date + '<br></p></td></tr></table>';
-						} else {
-							event_details += '<table><tr><td class="highlt_img">' + location.image + '</td><td><p><span id="sp1">' + location.event + '</span><br>' + location.date + '<br></p></td></tr></table>';
-						}
-					}
-					// All locations are the same in each group, so create a marker with the first
-					var location = location_groups[key][0];
+				jQuery.each(locations, function(index, location) {
+
 					var html =
 						'<div class="infowindow">' +
 						'<div id="gmtabs">' +
@@ -2407,8 +2311,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						'</ul>' +
 						'<div class="panes">' +
 						'<div id="pane1">' +
-						'<h4 id="iwhead">' + location.place + '</h4>' +
-						event_details +
+						'<h4 id="iwhead">' + '<?php echo $indi->getFullName(); ?>: ' + location.place + '</h4>' +
+						location.events +
 						'</div>' +
 						<?php if ($STREETVIEW) { ?>
 						'<div id="pane2">' +
@@ -2433,7 +2337,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					}
 
 					// Correct zoom level when only one marker is present
-					if (location_groups.length == 1) {
+					if (locations.length == 1) {
 						bounds.extend(myLatLng);
 						map.setZoom(zoomLevel);
 						map.setCenter(myLatLng);
@@ -2448,34 +2352,31 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							google.maps.event.removeListener(listener1);
 						});
 					}
-				} // end loop through location markers
+				}); // end loop through location markers
+
 			} // end loadMap()
 
 		</script>
 		<?php
+		$places = array_keys($unique_places);
 		// Create the normal googlemap sidebar of events and children
 		echo '<div style="overflow-x: hidden; overflow-y: auto; height:', $this->getSetting('GM_YSIZE'), 'px;"><table class="facts_table">';
 
-		$garray = array();
-		foreach ($gmarks as $key => $gmark) {
-			$garray[$key] = $gmark['place'];
-		}
-		$gunique = array_values(array_unique($garray));
-
-		foreach ($gmarks as $key => $gmark) {
+		foreach ($events as $event) {
+			$index = array_search($event['placeid'], $places);
 			echo '<tr>';
 			echo '<td class="facts_label">';
-			echo '<a href="#" onclick="return openInfowindow(\'', Filter::escapeHtml((string) array_search($gmark['place'], $gunique)), '\')">', $gmark['fact_label'], '</a></td>';
-			echo '<td class="', $gmark['class'], '" style="white-space: normal">';
-			if ($gmark['info']) {
-				echo '<span class="field">', Filter::escapeHtml($gmark['info']), '</span><br>';
+			echo '<a href="#" onclick="return openInfowindow(\'', $index, '\')">', $event['fact_label'], '</a></td>';
+			echo '<td class="', $event['class'], '">';
+			if ($event['info']) {
+				echo '<div><span class="field">', Filter::escapeHtml($event['info']), '</span></div>';
 			}
-			if ($gmark['name']) {
-				echo $gmark['name'], '<br>';
+			if ($event['name']) {
+				echo '<div>', $event['name'], '</div>';
 			}
-			echo $gmark['place'], '<br>';
-			if ($gmark['date']) {
-				echo $gmark['date'], '<br>';
+			echo '<div>', $event['place'], '</div>';
+			if ($event['date']) {
+				echo '<div>', $event['date'], '</div>';
 			}
 			echo '</td>';
 			echo '</tr>';
@@ -2613,9 +2514,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	/**
 	 * Called by placelist.php
 	 *
-	 * @param string $placelevels
 	 */
-	public function createMap($placelevels) {
+	public function createMap() {
 		global $level, $levelm, $plzoom, $WT_TREE;
 
 		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);

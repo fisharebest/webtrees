@@ -123,7 +123,7 @@ case 'hierarchy':
 			}
 		}
 
-		$gm_module->createMap($placelevels);
+		$gm_module->createMap();
 	} elseif (Module::getModuleByName('places_assistant')) {
 		// Places Assistant is a custom/add-on module that was once part of the core code.
 		\PlacesAssistantModule::display_map($level, $parent);
