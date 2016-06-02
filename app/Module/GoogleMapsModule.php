@@ -2030,7 +2030,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				'date'       => $fact->getDate()->display(true),
 				'info'       => $fact->getValue(),
 				'name'       => $name,
-				'place'      => '<a href="'. $fact->getPlace()->getURL() . '">' . $fact->getPlace()->getFullName() . '</a>',
+				'place'      => '<a href="' . $fact->getPlace()->getURL() . '">' . $fact->getPlace()->getFullName() . '</a>',
 				'placeid'    => $index
 			);
 		}
