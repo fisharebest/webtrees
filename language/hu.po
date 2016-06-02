@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-01 14:04+0000\n"
+"PO-Revision-Date: 2016-06-02 19:18+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -15982,7 +15982,7 @@ msgstr "Ki tölthet fel új médiafájlokat"
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
 msgid "Who is online"
-msgstr "Bejelentkezett felhasználók"
+msgstr "Aki belépett"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
 #: search.php:210
