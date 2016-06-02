@@ -2275,7 +2275,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						style:    google.maps.NavigationControlStyle.SMALL  // ANDROID, DEFAULT, SMALL, ZOOM_PAN
 					},
 					streetViewControl:        true,
-					scrollwheel:              false
+					scrollwheel:              true
 				};
 				map            = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
 
@@ -2811,7 +2811,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					style: google.maps.NavigationControlStyle.SMALL  // ANDROID, DEFAULT, SMALL, ZOOM_PAN
 				},
 				streetViewControl: false, // Show Pegman or not
-				scrollwheel: false
+				scrollwheel: true
 			};
 			map = new google.maps.Map(document.getElementById("place_map"), mapOptions);
 

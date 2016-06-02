@@ -112,15 +112,9 @@ case 'hierarchy':
 
 	if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
 		$linklevels  = '';
-		$placelevels = '';
 		$place_names = array();
 		for ($j = 0; $j < $level; $j++) {
 			$linklevels .= '&amp;parent[' . $j . ']=' . rawurlencode($parent[$j]);
-			if ($parent[$j] == '') {
-				$placelevels = ', ' . I18N::translate('unknown') . $placelevels;
-			} else {
-				$placelevels = ', ' . $parent[$j] . $placelevels;
-			}
 		}
 
 		$gm_module->createMap();
