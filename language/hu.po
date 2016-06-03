@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-02 19:18+0000\n"
+"PO-Revision-Date: 2016-06-03 18:41+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -1459,7 +1459,7 @@ msgstr "A GEDCOM-média elérési útvonalak fájlnevekhez adása"
 #. I18N: A configuration setting
 #: admin_trees_config.php:935
 msgid "Add to TITLE header tag"
-msgstr "A html-headerben a title címke toldaléka"
+msgstr "A html-headerben a titlecímke toldaléka"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
@@ -12727,7 +12727,7 @@ msgstr "Csak azokat a személyeket mutasd, akik neme ismeretlen."
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "A személyeket, az eseményeket vagy mindent mutassunk"
+msgstr "Csak személyeket, eseményeket vagy mindent mutassunk"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -14099,7 +14099,7 @@ msgstr "A felhasználónév vagy jelszó helytelen."
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:967
 msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-msgstr "A HTML-oldal fejlécében lévő „META description (leírás)” címke értéke. Hagyja üresen ezt a mezőt a családfa nevének használatához."
+msgstr "A html-oldal fejlécében lévő „meta description (leírás)” címke értéke. Hagyja üresen ezt a mezőt a családfa nevének használatához."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
