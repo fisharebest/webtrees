@@ -252,6 +252,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			->setPageTitle(I18N::translate('Google Maps™'));
 
 		if (Filter::post('action') === 'update') {
+			$this->setSetting('GM_API_KEY', Filter::post('GM_API_KEY'));
 			$this->setSetting('GM_MAP_TYPE', Filter::post('GM_MAP_TYPE'));
 			$this->setSetting('GM_USE_STREETVIEW', Filter::post('GM_USE_STREETVIEW'));
 			$this->setSetting('GM_MIN_ZOOM', Filter::post('GM_MIN_ZOOM'));
@@ -321,6 +322,17 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<input type="hidden" name="action" value="update">
 
 			<!-- GM_MAP_TYPE -->
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="GM_API_KEY">
+					<?php echo I18N::translate('API Key') ?>
+				</label>
+				<div class="col-sm-9">
+					<input id="GM_API_KEY" class="form-control" type="text" name="GM_API_KEY" value="<?php echo $this->getSetting('GM_API_KEY') ?>">
+					<p class="small text-muted"><?php echo I18N::translate('All JavaScript API applications require authentication using an API key (or a client ID for Google Maps API for Work customers). Including a key when loading the API allows you to monitor your application\'s API usage in the Google Developers Console, enables per-key instead of per-IP-address quota limits, and ensures that Google can contact you about your application if necessary.'); ?>
+						<a href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php echo I18N::translate('Get API Key'); ?></a>
+					</p>
+				</div>
+			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="GM_MAP_TYPE">
 					<?php echo I18N::translate('Default map type') ?>
@@ -522,7 +534,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return string
 	 */
 	private function googleMapsScript() {
-		return 'https://maps.google.com/maps/api/js?v=3.2&amp;sensor=false&amp;language=' . WT_LOCALE;
+		$key = $this->getSetting('GM_API_KEY');
+		return 'https://maps.google.com/maps/api/js?v=3&amp;key=' . $key . '&amp;language=' . WT_LOCALE;
 	}
 
 	/**
@@ -2533,7 +2546,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '<tr style="vertical-align:top;"><td>';
 		if ($STREETVIEW && $level != 0) {
 			// Leave space for the Street View buttons, so that the maps align vertically
-			echo '<div id="place_map" style="margin-top:31px; border:1px solid gray; width: ', $this->getSetting('GM_PH_XSIZE'), 'px; height: ', $this->getSetting('GM_PH_YSIZE'), 'px; ';
+			echo '<div id="place_map" style="margin-top:25px; border:1px solid gray; width: ', $this->getSetting('GM_PH_XSIZE'), 'px; height: ', $this->getSetting('GM_PH_YSIZE'), 'px; ';
 		} else {
 			echo '<div id="place_map" style="border:1px solid gray; width:', $this->getSetting('GM_PH_XSIZE'), 'px; height:', $this->getSetting('GM_PH_YSIZE'), 'px; ';
 		}
@@ -2555,12 +2568,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$adminplaces_url .= '&amp;parent=' . $latlng['pl_id'];
 			}
 			$update_places_url = 'admin_trees_places.php?ged=' . $WT_TREE->getNameHtml() . '&amp;search=' . urlencode(implode(', ', array_reverse($parent)));
-			echo '<p>';
+			echo '<div id="place_map_links" style="width:' . $this->getSetting('GM_PH_XSIZE') . 'px;">';
 			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
 			echo ' | <a href="' . $adminplaces_url . '">' . I18N::translate('Geographic data') . '</a>';
 			echo ' | <a href="' . $placecheck_url . '">' . I18N::translate('Place check') . '</a>';
 			echo ' | <a href="' . $update_places_url . '">' . I18N::translate('Update place names') . '</a>';
-			echo '</p>';
+			echo '</div>';
 		}
 		echo '</td>';
 
@@ -2585,9 +2598,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						$sv_lat = $pl_lati;
 						$sv_lng = $pl_long;
 				}
+				$frameheight = $this->getSetting('GM_PH_YSIZE') + 35 . 'px'; // Add height of buttons
 
 				?>
-				<iframe style="overflow: hidden; width: 530px; height: 405px; padding: 0; border: 0;" src="module.php?mod=googlemap&amp;mod_action=wt_street_view&amp;x=<?php echo $sv_lng ?>&amp;y=<?php echo $sv_lat ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir ?>&amp;p=<?php echo $sv_pitch ?>&amp;m=<?php echo $sv_zoom ?>&amp;j=1&amp;k=1&amp;v=1"></iframe>
+				<iframe id="sv_frame" style="height: <?php echo $frameheight; ?>;" src="module.php?mod=googlemap&amp;mod_action=wt_street_view&amp;x=<?php echo $sv_lng ?>&amp;y=<?php echo $sv_lat ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir ?>&amp;p=<?php echo $sv_pitch ?>&amp;m=<?php echo $sv_zoom ?>&amp;j=1&amp;k=1&amp;v=1"></iframe>
 				<?php
 				if (Auth::isAdmin()) {
 					?>
@@ -2890,7 +2904,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		if ($numfound < 2 && ($level == 1 || !isset($levelo[$level - 1]))) {
 			$controller->addInlineJavascript('map.maxZoom=6;');
-		} elseif ($numfound < 2 && !isset($levelo[$level - 2])) {
 		} elseif ($level == 2) {
 			$controller->addInlineJavascript('map.maxZoom=10;');
 		}
@@ -2899,7 +2912,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		ob_start();
 
 		if ($numfound == 0 && $level > 0) {
-			if (isset($levelo[($level - 1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
+//			if (isset($levelo[($level - 1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
 				// show the current place on the map
 
 				$place = Database::prepare("SELECT pl_id AS place_id, pl_place AS place, pl_lati AS lati, pl_long AS `long`, pl_zoom AS zoom, pl_icon AS icon FROM `##placelocation` WHERE pl_id=?")
@@ -2915,7 +2928,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 					$this->printGoogleMapMarkers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels);
 				}
-			}
+//			}
 		}
 
 		// display any sub-places
@@ -3147,19 +3160,18 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 
 		// Update placelocation STREETVIEW fields
-		// TODO: This ought to be a POST request, rather than a GET request
-		if ($action == 'update_sv_params' && Auth::isAdmin()) {
+		if ($action == 'update_sv_params' && Auth::isAdmin() && Filter::checkCsrf()) {
 			Database::prepare(
 				"UPDATE `##placelocation` SET sv_lati=?, sv_long=?, sv_bearing=?, sv_elevation=?, sv_zoom=? WHERE pl_id=?"
 			)->execute(array(
-				Filter::get('svlati'),
-				Filter::get('svlong'),
-				Filter::get('svbear'),
-				Filter::get('svelev'),
-				Filter::get('svzoom'),
+				(float) Filter::post('sv_latiText'),
+				(float) Filter::post('sv_longText'),
+				(float) Filter::post('sv_bearText'),
+				(float) Filter::post('sv_elevText'),
+				(float) Filter::post('sv_zoomText'),
 				$placeid,
 			));
-			$controller->addInlineJavascript('window.close();');
+			header('Location: ' . Filter::post('destination', null, 'index.php'));
 
 			return;
 		}
@@ -4460,14 +4472,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * Generate the streetview window.
 	 */
 	private function wtStreetView() {
-		header('Content-type: text/html; charset=UTF-8');
-
+	header('Content-type: text/html; charset=UTF-8');
+	$key = $this->getSetting('GM_API_KEY');
 		?>
 		<html>
 			<head>
 				<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 				<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/gm_streetview.css" rel="stylesheet">
-				<script src="https://maps.google.com/maps/api/js?v=3.2&amp;sensor=false&amp;language=<?php echo WT_LOCALE; ?>"></script>
+				<script src="https://maps.google.com/maps/api/js?v=3&amp;key=<?php echo $key; ?>&amp;language=<?php echo WT_LOCALE; ?>"></script>
 				<script>
 
 		// Following function creates an array of the google map parameters passed ---------------------
@@ -4692,8 +4704,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			//--------------------------------------------------------------------------------------
 			var street = new google.maps.ImageMapType({
 				getTileUrl: function(coord, zoom) {
-					var X = coord.x % (1 << zoom);  // wrap
-					return 'https://cbk0.google.com/cbk?output=overlay&zoom=' + zoom + '&x=' + X + '&y=' + coord.y + '&cb_client=api';
+					//var X = coord.x % (1 << zoom);  // wrap
+					//return 'https://cbk0.google.com/cbk?output=overlay&zoom=' + zoom + '&x=' + X + '&y=' + coord.y + '&cb_client=api';
+					//return "http://tile.openstreetmap.org/" + zoom + "/" + X + "/" + coord.y + ".png";
+					return '';
 				},
 				tileSize: new google.maps.Size(256, 256),
 				isPng: true
@@ -4732,7 +4746,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</button>
 				</div>
 
-				<div id="mapCanvas">
+				<div id="mapCanvas" style="height: <?php echo $this->getSetting('GM_PH_YSIZE'); ?>;">
 				</div>
 
 				<div id="infoPanel">

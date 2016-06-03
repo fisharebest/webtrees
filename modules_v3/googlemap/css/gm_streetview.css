@@ -1,16 +1,23 @@
-body{
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
 	margin: 0;
 }
+
 #mapCanvas {
-	width: 520px;
-	height: 350px;
-	/*margin: -10px auto 0;*/
+	width: 100%;
 	margin: 0 auto;
 	border: 1px solid black;
 }
 
-#toggle form {
-	margin-bottom: 4px;
+#toggle {
+	height: 25px;
 }
 
 #infoPanel {
@@ -26,6 +33,10 @@ body{
 
 div {
 	text-align: center;
+}
+
+.gm-iv-address {
+	min-height: 60px!important;
 }
 
 .gm-iv-address-link a {
