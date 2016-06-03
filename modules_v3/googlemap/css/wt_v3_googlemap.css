@@ -313,11 +313,35 @@ ul.tabs a.current {
 	font-size: 12px !important;
 }
 
+#place_map_links {
+	margin: 1px auto;
+	text-align: center;
+	border: 1px solid black;
+	background-color: #ccc;
+	height: 20px;
+}
+
+#place_map_links a {
+	color: #00f;
+}
+
+#place_map_links a:hover {
+	color: #f00;
+}
+
+#sv_frame {
+	overflow: hidden;
+	width: 530px;
+	padding: 0;
+	border: 0;
+	display: block;
+}
+
 #sv_parameters {
 	margin-left: 4px;
 	border: solid 1px black;
 	width: 520px;
-	margin-top: -24px;
+	margin-top: -7px;
 	background: #cccccc;
 }
 
@@ -326,6 +350,11 @@ ul.tabs a.current {
 	margin-left: 5px;
 	font: 10px verdana;
 	color: blue;
+}
+
+#sv_parameters input {
+	padding: 0;
+	margin: 0;
 }
 
 #sv_latiText,

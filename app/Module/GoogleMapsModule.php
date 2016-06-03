@@ -2533,7 +2533,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '<tr style="vertical-align:top;"><td>';
 		if ($STREETVIEW && $level != 0) {
 			// Leave space for the Street View buttons, so that the maps align vertically
-			echo '<div id="place_map" style="margin-top:31px; border:1px solid gray; width: ', $this->getSetting('GM_PH_XSIZE'), 'px; height: ', $this->getSetting('GM_PH_YSIZE'), 'px; ';
+			echo '<div id="place_map" style="margin-top:25px; border:1px solid gray; width: ', $this->getSetting('GM_PH_XSIZE'), 'px; height: ', $this->getSetting('GM_PH_YSIZE'), 'px; ';
 		} else {
 			echo '<div id="place_map" style="border:1px solid gray; width:', $this->getSetting('GM_PH_XSIZE'), 'px; height:', $this->getSetting('GM_PH_YSIZE'), 'px; ';
 		}
@@ -2555,12 +2555,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$adminplaces_url .= '&amp;parent=' . $latlng['pl_id'];
 			}
 			$update_places_url = 'admin_trees_places.php?ged=' . $WT_TREE->getNameHtml() . '&amp;search=' . urlencode(implode(', ', array_reverse($parent)));
-			echo '<p>';
+			echo '<div id="place_map_links" style="width:' . $this->getSetting('GM_PH_XSIZE') . 'px;">';
 			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
 			echo ' | <a href="' . $adminplaces_url . '">' . I18N::translate('Geographic data') . '</a>';
 			echo ' | <a href="' . $placecheck_url . '">' . I18N::translate('Place check') . '</a>';
 			echo ' | <a href="' . $update_places_url . '">' . I18N::translate('Update place names') . '</a>';
-			echo '</p>';
+			echo '</div>';
 		}
 		echo '</td>';
 
@@ -2585,9 +2585,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						$sv_lat = $pl_lati;
 						$sv_lng = $pl_long;
 				}
+				$frameheight = $this->getSetting('GM_PH_YSIZE') + 35 . 'px'; // Add height of buttons
 
 				?>
-				<iframe style="overflow: hidden; width: 530px; height: 405px; padding: 0; border: 0;" src="module.php?mod=googlemap&amp;mod_action=wt_street_view&amp;x=<?php echo $sv_lng ?>&amp;y=<?php echo $sv_lat ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir ?>&amp;p=<?php echo $sv_pitch ?>&amp;m=<?php echo $sv_zoom ?>&amp;j=1&amp;k=1&amp;v=1"></iframe>
+				<iframe id="sv_frame" style="height: <?php echo $frameheight; ?>;" src="module.php?mod=googlemap&amp;mod_action=wt_street_view&amp;x=<?php echo $sv_lng ?>&amp;y=<?php echo $sv_lat ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir ?>&amp;p=<?php echo $sv_pitch ?>&amp;m=<?php echo $sv_zoom ?>&amp;j=1&amp;k=1&amp;v=1"></iframe>
 				<?php
 				if (Auth::isAdmin()) {
 					?>
@@ -4732,7 +4733,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</button>
 				</div>
 
-				<div id="mapCanvas">
+				<div id="mapCanvas" style="height: <?php echo $this->getSetting('GM_PH_YSIZE'); ?>;">
 				</div>
 
 				<div id="infoPanel">
