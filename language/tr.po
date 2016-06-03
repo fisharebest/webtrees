@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-09 08:20+0000\n"
+"PO-Revision-Date: 2016-06-03 11:22+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -298,12 +298,14 @@ msgstr[0] "%s bireyin hususi alanıdır."
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
 msgstr[0] "%s ve %s tarihleri arasındaki olaylarla %s birey"
+msgstr[1] "%s ve %s tarihleri arasındaki olaylarla %s birey"
 
 #: app/Controller/LifespanController.php:246
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] "%s tarihinde %s olaylı birey"
+msgstr[0] "%s ile alakalı %s adet birey"
+msgstr[1] "%s ile alakalı %s adet birey"
 
 #: app/Controller/LifespanController.php:239
 #, php-format
@@ -2976,7 +2978,7 @@ msgstr "Dallar"
 #: app/Controller/BranchesController.php:61
 #, php-format
 msgid "Branches of the %s family"
-msgstr "%s ailenin dalları"
+msgstr "%s ailesinin dalları"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6750
@@ -5828,7 +5830,7 @@ msgstr "Tam metin"
 #: famlist.php:176 indilist.php:176
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Evlilik adı ile “%s” bireyleri hariç tut"
+msgstr "Evlilik adı “%s” olan bireyleri hariç tut"
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
@@ -8598,6 +8600,11 @@ msgstr "Soy ağaçlarını yonet"
 msgid "Manage media"
 msgstr "Medyaları yönet"
 
+#: admin_media.php:535 app/Controller/MediaController.php:49
+#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
+msgid "Manage the links"
+msgstr "Link yönetimi"
+
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:558
 #: app/Module/ClippingsCartModule.php:390
@@ -8608,11 +8615,6 @@ msgstr "İdareci"
 #: admin.php:665
 msgid "Managers"
 msgstr "İdareciler"
-
-#: admin_media.php:535 app/Controller/MediaController.php:49
-#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
-msgid "Manage the links"
-msgstr "Link yönetimi"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
@@ -11493,7 +11495,7 @@ msgstr "Babaya Akrabalık Bağı"
 
 #: app/Module/RelationshipsChartModule.php:78
 msgid "Relationship to me"
-msgstr "Benimle akrabalık bağı"
+msgstr "Benimle Akrabalık Bağı"
 
 #. I18N: gedcom tag _MREL
 #: app/GedcomTag.php:1663
@@ -11562,7 +11564,7 @@ msgstr "Kaldır"
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:30
 msgid "Remove duplicate links"
-msgstr "Aynı likleri kaldır"
+msgstr "Aynı linkleri kaldır"
 
 #: app/Module/GoogleMapsModule.php:582 app/Module/GoogleMapsModule.php:585
 #: app/Module/GoogleMapsModule.php:588 app/Module/GoogleMapsModule.php:3933
