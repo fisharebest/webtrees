@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-02 16:06+0000\n"
+"PO-Revision-Date: 2016-06-03 14:57+0000\n"
 "Last-Translator: Astrit Bokshi <astritbokshi@gmail.com>\n"
 "Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/webtrees/sq/>\n"
 "Language: sq\n"
@@ -1490,7 +1490,7 @@ msgstr "Shto/edito lajm"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:113
 msgid "Add/insert a blank row"
-msgstr "Shto/fut një rresht të zbrazët"
+msgstr "Shto një rresht të zbrazët"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -5160,7 +5160,7 @@ msgstr "Përshkrim"
 #. I18N: A configuration setting
 #: admin_trees_config.php:955
 msgid "Description META tag"
-msgstr "META tag përshkrues"
+msgstr "META tag-u përshkrues"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
@@ -5744,7 +5744,7 @@ msgstr "Fut shënim opcional për këtë favorit"
 #: addmedia.php:434
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
 msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-msgstr "Fut ose kërko IDnë e personit, familjes, apo burimit me të cilin media objekti duhet të lidhet."
+msgstr "Fut ose kërko ID-në e personit, familjes, apo burimit me të cilin media objekti duhet të lidhet."
 
 #: reportengine.php:152
 msgid "Enter report values"
@@ -15523,60 +15523,60 @@ msgstr "Përdor fjalëkalimin"
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1094
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
-msgstr ""
+msgstr "Përdor imazhe siluetë kur nuk përcaktohet imazhi për atë person. Imazhet e përdorura janë specifik për gjininë e personit në fjalë."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1089
 msgid "Use silhouettes"
-msgstr ""
+msgstr "Përdor siluetat"
 
 #: admin_trees_config.php:2234
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr ""
+msgstr "Përdor databazën e GeoNames për mbulim automatik të vendeve"
 
 #: login.php:487
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
-msgstr ""
+msgstr "Përdorni këtë fushë për t'i treguar administratorit të sajtit se pse po kërkoni llogari dhe se në çfarë lidhje jeni me gjenealogjinë e shfaqur në sajt. Ju poashtu mund të përdorni këtë për të futur çfarëdo komenti tjetër që mund të keni për administratorin e sajtit."
 
 #: app/Functions/FunctionsEdit.php:671
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "Përdorni këtë imazh për grafet dhe në faqen e personave."
 
 #: app/Module/GoogleMapsModule.php:3819
 msgid "Use this value"
-msgstr ""
+msgstr "Përdorni këtë vlerë"
 
 #: admin_site_change.php:350 admin_site_change.php:390 admin_site_logs.php:291
 #: admin_site_logs.php:331 edit_changes.php:178
 msgid "User"
-msgstr ""
+msgstr "Prdoruesi"
 
 #. I18N: Menu entry
 #: admin_users.php:299 admin_users.php:691 admin_users.php:815
 #: admin_users_bulk.php:33 app/Theme/AdministrationTheme.php:163
 msgid "User administration"
-msgstr ""
+msgstr "Administrimi i përdoruesve"
 
 #: admin_users.php:756
 msgid "User didn’t verify within 7 days."
-msgstr ""
+msgstr "Përdoruesi nuk është verifikuar brenda 7 ditësh."
 
 #: admin_users.php:780
 msgid "User not verified by administrator."
-msgstr ""
+msgstr "Përdoruesi nuk është verifikuar nga administratori."
 
 #: admin_trees_config.php:972
 msgid "User options"
-msgstr ""
+msgstr "Mundësitë e përdoruesit"
 
 #: login.php:514 login.php:520 login.php:578 login.php:582
 msgid "User verification"
-msgstr ""
+msgstr "Verifikimi i përdoruesit"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: admin_site_access.php:274 admin_site_access.php:364
 msgid "User-agent string"
-msgstr ""
+msgstr "Stringu user-agent"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:383 admin_users.php:326 admin_users.php:866
@@ -15584,37 +15584,37 @@ msgstr ""
 #: edituser.php:158 login.php:189 login.php:255 login.php:320 login.php:342
 #: login.php:522 setup.php:430
 msgid "Username"
-msgstr ""
+msgstr "Pseudonimi"
 
 #: app/Module/LoginBlockModule.php:100 login.php:221
 msgid "Username or email address"
-msgstr ""
+msgstr "Pseudonimi ose email adresa"
 
 #: admin_users.php:331 edituser.php:164 login.php:440
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr ""
+msgstr "Pseudonimet nuk janë të ndjeshme në shkronja të mëdha/vogla dhe injorojnë shkronjat me theks, kështu \"vlore\", \"vlorë\" dhe \"Vlore\" konsiderohen të jenë të njëjta."
 
 #. I18N: Menu entry
 #: admin.php:629 admin.php:637 app/Theme/AdministrationTheme.php:162
 msgid "Users"
-msgstr ""
+msgstr "Përdoruesit"
 
 #: admin.php:717
 msgid "Users who are signed in"
-msgstr ""
+msgstr "Përdoruesit që kanë hyrë"
 
 #: admin_users.php:732
 msgid "User’s account has been inactive too long: "
-msgstr ""
+msgstr "Llogaria e përdoruesit ka qenë jo aktive për një kohë të gjatë: "
 
 #: app/Module/GoogleMapsModule.php:646
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
-msgstr ""
+msgstr "Më përdorimin e menysë rënëse mund të zgjedhni një shtet, flamuri i së cilës mund të zgjedhet. Nëse nuk ka flamur, atëherë nuk ka flamur të definuar për atë shtet."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6965
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Uzbekistani"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6972
@@ -15624,7 +15624,7 @@ msgstr ""
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Grafet e ndryshme statistikore."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6966
@@ -15658,7 +15658,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6968
 msgid "Venezuela"
-msgstr ""
+msgstr "Venecuela"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:93
@@ -15691,11 +15691,11 @@ msgstr ""
 
 #: login.php:343 login.php:530
 msgid "Verification code"
-msgstr ""
+msgstr "Kodi i verifikimit"
 
 #: admin_users.php:874
 msgid "Verified"
-msgstr ""
+msgstr "Verifikuar"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:327
@@ -15705,17 +15705,17 @@ msgstr ""
 #. I18N: gedcom tag VERS
 #: app/GedcomTag.php:852
 msgid "Version"
-msgstr ""
+msgstr "Versioni"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1936
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6971
 msgid "Vietnam"
-msgstr ""
+msgstr "Vietnami"
 
 #. I18N: Submit button, on a form
 #: ancestry.php:92 app/Functions/FunctionsPrintFacts.php:1024
@@ -15724,23 +15724,23 @@ msgstr ""
 #: descendancy.php:71 familybook.php:61 fanchart.php:95 hourglass.php:62
 #: pedigree.php:169 relationship.php:85
 msgid "View"
-msgstr ""
+msgstr "Shiko"
 
 #: placelist.php:176
 msgid "View all records found in this place"
-msgstr ""
+msgstr "Shih të gjitha shënimet në këtë vend"
 
 #: app/Module/FamilyTreeNewsModule.php:155 help_text.php:297
 msgid "View the archive"
-msgstr ""
+msgstr "Shih arkivën"
 
 #: calendar.php:300
 msgid "View the day"
-msgstr ""
+msgstr "Shih ditën"
 
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
 msgid "View the details"
-msgstr ""
+msgstr "Shih detajet"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15750,32 +15750,32 @@ msgstr ""
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313
 msgid "View the family"
-msgstr ""
+msgstr "Shih familjen"
 
 #: app/Module/GoogleMapsModule.php:1350 app/Module/SlideShowModule.php:177
 #: medialist.php:310
 msgid "View the individual"
-msgstr ""
+msgstr "Shih personin"
 
 #: calendar.php:304
 msgid "View the month"
-msgstr ""
+msgstr "Shih muajin"
 
 #: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
 msgid "View the notes"
-msgstr ""
+msgstr "Shih njoftimet"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
 msgid "View the source"
-msgstr ""
+msgstr "Shih burimin"
 
 #: app/Module/FamilyTreeStatisticsModule.php:197
 msgid "View the statistics as graphs"
-msgstr ""
+msgstr "Shih statistikat si grafe"
 
 #: calendar.php:308
 msgid "View the year"
-msgstr ""
+msgstr "Shih vitin"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -15785,12 +15785,12 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_users.php:454
 msgid "Visible online"
-msgstr ""
+msgstr "E dukshme online"
 
 #. I18N: A configuration setting
 #: admin_users.php:460 edituser.php:306
 msgid "Visible to other users when online"
-msgstr ""
+msgstr "E dukshme për përdoruesit tjerë kur janë online"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:193 admin_users.php:39 admin_users.php:530
@@ -15799,18 +15799,18 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:769
 #: app/Module/ClippingsCartModule.php:776
 msgid "Visitor"
-msgstr ""
+msgstr "Vizitori"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:33 calendar.php:262
 #: modules_v3/bdm_report/report.xml:3 modules_v3/bdm_report/report.xml:34
 msgid "Vital records"
-msgstr ""
+msgstr "Shënimet vitale"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6975
 msgid "Wales"
-msgstr ""
+msgstr "Uellsi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6974
@@ -15819,17 +15819,17 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:263
 msgid "Ward"
-msgstr ""
+msgstr "Kujdestar"
 
 #: app/GedcomCode/GedcomCodeRela.php:261
 msgctxt "FEMALE"
 msgid "Ward"
-msgstr ""
+msgstr "Kujdestare"
 
 #: app/GedcomCode/GedcomCodeRela.php:259
 msgctxt "MALE"
 msgid "Ward"
-msgstr ""
+msgstr "Kujdestar"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:331
@@ -15838,173 +15838,173 @@ msgstr ""
 
 #: admin_trees_config.php:1111
 msgid "Watermarks"
-msgstr ""
+msgstr "Vulat e ujit"
 
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: admin_trees_config.php:1157
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Vulat e ujit janë opcionale dhe normalisht shfaqen për vizitorët."
 
 #. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1134
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "Vulat e ujit mund të jenë të ngadalshme për imazhed e mëdha. Websajtat e zënë mund të preferojnë t'i gjenerojnë ato një herë dhe të ruajnë imazhin me vulë uji në server."
 
 #: login.php:386
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your user name and password."
-msgstr ""
+msgstr "Ne do të dërgojmë tash një email konfirmimi në adresën <b>%s</b>. Ju duhet ta verifikoni kërkesën për llogarinë tuaj duke ndjekur këshillat në emailin për konfirmim. Po të mos konfirmoni kërkesën tuaj për llogari brenda shtatë ditësh, kërkesa juaj do të refuzohet automatikisht. Ju duhet të aplikoni përsëri.<br><br>Pasi të keni ndjekur këshillat në emailin konfirmues, administratori prap duhet të aprovojë kërkesën tuaj para se llogaria e juaj të mund të përdoret.<br><br>Për të hyrë në këtë websajt, ju duhet të dini pseudonimin dhe fjalëkalimin tuaj."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:94
 msgid "Website"
-msgstr ""
+msgstr "Websajti"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:299
 msgid "Website URL"
-msgstr ""
+msgstr "URL e websajtit"
 
 #. I18N: Menu entry
 #: admin_site_access.php:127 admin_site_access.php:240
 #: app/Theme/AdministrationTheme.php:101
 msgid "Website access rules"
-msgstr ""
+msgstr "Rregullat e çasjes së websajtit"
 
 #: admin_trees_config.php:930
 msgid "Website and META tag settings"
-msgstr ""
+msgstr "Përkufizimet e websajtit dhe tag-ave META"
 
 #. I18N: Menu entry
 #: admin_site_logs.php:35 app/Theme/AdministrationTheme.php:100
 msgid "Website logs"
-msgstr ""
+msgstr "Logjet e websajtit"
 
 #. I18N: Menu entry
 #: admin_site_config.php:134 app/Theme/AdministrationTheme.php:95
 msgid "Website preferences"
-msgstr ""
+msgstr "Preferencat e websajtit"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:368 app/Functions/FunctionsPrint.php:667
 msgid "Wed"
-msgstr ""
+msgstr "Mër"
 
 #: app/Date/CalendarDate.php:343
 msgid "Wednesday"
-msgstr ""
+msgstr "E Mërkurë"
 
 #. I18N: gedcom tag _WEIG
 #: app/GedcomTag.php:1755
 msgid "Weight"
-msgstr ""
+msgstr "Pesha"
 
 #. I18N: A greeting; %s is the user’s name
 #: app/Module/UserWelcomeModule.php:51
 #, php-format
 msgid "Welcome %s"
-msgstr ""
+msgstr "Mirë se vini %s"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:460
 msgid "Welcome text on sign-in page"
-msgstr ""
+msgstr "Teksti mirëseardhës në faqen hyrëse"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6973
 msgid "West Africa"
-msgstr ""
+msgstr "Afrika Perëndimore"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6792
 msgid "Western Sahara"
-msgstr ""
+msgstr "Sahara Perëndimore"
 
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:2260
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr ""
+msgstr "Kur një shënim editohet, regjistrohet përdoruesi dhe koha e ndryshimit, Ndonjëherë është e dëshirueshme të ruhet informata ekzistuese \"ndryshimi i fundit\", p. sh. kur të bëni përmirësime të vogla në shënimet e dikujt tjetër. Kjo mundësi kontrollon se a është zgjedhur kjo veçori si parazgjedhje."
 
 #: admin_users.php:389
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr ""
+msgstr "Kur përdoruesi regjistrohet për një llogari, një email dërgohet në email adresën me lidhje për verifikim. Kur të klikoni këtë lidhje, ne e dijmë që email adresa është korrekte dhe mundësia \"emaili u verifikua\" zgjedhet automatikisht."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
-msgstr ""
+msgstr "Kur të shtoni një lidhje, fusha ID nuk mund të jetë e zbrazët."
 
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2226
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr ""
+msgstr "Kur të shtoni të afërm të ngushtë të ri, ju mund të shtoni citatet burimore në shënime (persona dhe familje) ose te faktet dhe ngjarjet (lindja, martesa dhe vdekja). Kjo mundësi kontrollon se a do të zgjedhen si parazgjedhje shënimet ose faktet."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:858
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
-msgstr ""
+msgstr "Kur të krijohen shënimet e reja, atyre u jepet një numër intern ID. Ju mund të specifikoni prefiksin e përdorur për secilin lloj shënimi."
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1619
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr ""
+msgstr "Kur të zgjedhet kjo mundësi, webtrees do të kalkulojë diferencat ndërmjet vëllezërve/motrave, fëmijëve, bashkëshortëve, etj."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2200
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr ""
+msgstr "Kur të shtoni një anëtar të familjes, do t'i jepet mbiemri i parazgjedhur. Ky mbiemër do të varet nga tradita lokale."
 
 #: help_text.php:310
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr ""
+msgstr "Kur të shtoni, editoni apo fshini informatat, ndryshimet nuk ruhen menjëherë. Ato përkohësisht do të mbahen në një hapësirë \"pezull\". Këto ndryshime pezull duhet të kontrollohen nga moderatopri para se të pranohen."
 
 #: message.php:132
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
-msgstr ""
+msgstr "Kur të dërgoni këtë mesazh ju do të pranoni një kopje të dërguar përmes emailit në adresën që e keni dhënë."
 
 #: admin_users.php:608
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr ""
+msgstr "Kur një përdorues është i lidhur me një shënim personal në trungun familjar dhe ka rolin e anëtarit, editorit ose moderatorit, ju mund ta parandaloni atë që t'i çaset detajeve të kushërinjëve të largët të gjallë. Ju specifikoni numrin e hapave të marëdhënjeve që përdoruesit i lejohet të shoh."
 
 #: admin_pgv_to_wt.php:163
 msgid "Where is your PhpGedView installation?"
-msgstr ""
+msgstr "Ku është instalimi i juaj PhpGedView?"
 
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr ""
+msgstr "Cilat trungje familjare duhet të përfshihen në sitemaps"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1035
 msgid "Who can upload new media files"
-msgstr ""
+msgstr "Kush mund të ngarkojë media fajla"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
 msgid "Who is online"
-msgstr ""
+msgstr "Kush është online"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
 #: search.php:210
 msgid "Whole words only"
-msgstr ""
+msgstr "Vetëm fjalët e plota"
 
 #: app/Functions/FunctionsPrintLists.php:646
 msgid "Widow"
-msgstr ""
+msgstr "Vejusha"
 
 #: app/Functions/FunctionsPrintLists.php:637
 msgid "Widower"
-msgstr ""
+msgstr "Vejan"
 
 #: app/Module/GoogleMapsModule.php:353 app/Module/GoogleMapsModule.php:456
 msgid "Width"
-msgstr ""
+msgstr "Gjerësia"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1063
 msgid "Width of generated thumbnails"
-msgstr ""
+msgstr "Gjerësia e fotove të vogla të gjeneruara"
 
 #. I18N: gedcom tag WIFE
 #: app/GedcomTag.php:856 edit_interface.php:1088
@@ -16018,28 +16018,28 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:489
 #: modules_v3/relative_ext_report/report.xml:104
 msgid "Wife"
-msgstr ""
+msgstr "Gruaja"
 
 #: app/Controller/TimelineController.php:228
 msgid "Wife’s age"
-msgstr ""
+msgstr "Mosha e gruas"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
-msgstr ""
+msgstr "Mbiemri i vajzërisë së gruas bëhet emri i ri"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr ""
+msgstr "Mbiemri i gruas zëvendësohet me mbiemrin e burrit"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 msgid "Wildcards"
-msgstr ""
+msgstr "Shenjat zëvendësuese"
 
 #. I18N: gedcom tag WILL
 #: app/GedcomTag.php:860
 msgid "Will"
-msgstr ""
+msgstr "Testamenti"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
@@ -16048,16 +16048,16 @@ msgstr ""
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"
-msgstr ""
+msgstr "Me burime"
 
 #: app/Stats.php:420 app/Stats.php:518
 msgid "Without sources"
-msgstr ""
+msgstr "Pa burime"
 
 #. I18N: gedcom tag _WITN
 #: app/GedcomCode/GedcomCodeRela.php:267 app/GedcomTag.php:1759
 msgid "Witness"
-msgstr ""
+msgstr "Dëshmitari"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -16065,11 +16065,11 @@ msgstr ""
 #: app/SurnameTradition.php:73 app/SurnameTradition.php:92
 #: app/SurnameTradition.php:97
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "Gratë marrin mbiemrin e burrit të tyre."
 
 #: statistics.php:597
 msgid "World"
-msgstr ""
+msgstr "Bota"
 
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
 #: app/GedcomTag.php:1765
@@ -16083,190 +16083,190 @@ msgstr ""
 
 #: app/Theme/AbstractTheme.php:1067 calendar.php:211 search.php:248
 msgid "Year"
-msgstr ""
+msgstr "Viti"
 
 #: help_text.php:279
 msgid "Year input box"
-msgstr ""
+msgstr "Kutia e futjes së vitit"
 
 #: timeline.php:132 timeline.php:375
 msgid "Year:"
-msgstr ""
+msgstr "Viti:"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6977
 msgid "Yemen"
-msgstr ""
+msgstr "Jemeni"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
 #: login.php:336
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr ""
+msgstr "Ju (ose dikush që thotë se është ju) ka kërkuar një llogari te %1$s duke përdorur email adresën %2$s."
 
 #: login.php:289 message.php:57
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "Nuk lejoheni të dërgoni mesazhe që përbëjnë lidhje të jashtme."
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
 msgid "You are signed in as %s"
-msgstr ""
+msgstr "Ju keni hyrë si %s"
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
 #. I18N: Help text for the "Default theme" site configuration setting
 #: admin_site_config.php:248 admin_trees_config.php:994 edituser.php:287
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr ""
+msgstr "Ju mund të ndryshoni dukjen e webtrees me përdorimin e \"temave\". Secila temë ka stil të ndryshëm, shtrirje, skemë ngjyrash, etj."
 
 #. I18N: %s is a URL
 #: help_text.php:288
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr ""
+msgstr "Ju mund të shkarkoni një kopje të specifikacionit GEDCOM nga %s."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
 msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr ""
+msgstr "Ju më lehtë kërkoni gruan e martuar duke shënuar emrin e saj të martesës. Megjithatë jo të gjitha gratë marrin mbiemrin e burrit të tyre, prandaj keni kujdes gjatë futjes së shënimeve në databazë."
 
 #: admin_site_upgrade.php:199
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "Ju mund të ri-aktivizoni këto module pas ngritjes në post."
 
 #: admin_site_upgrade.php:263
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "Ju mund të ri-aktivizoni këto tema pas ngritjes në post."
 
 #: admin_trees_renumber.php:266
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr ""
+msgstr "Ju mund të rinumëroni shënimet në një trung familjar, ashtuqë këta numra internal reference të mos jenë dyfishuar në cilindo trung tjetër familjar."
 
 #: admin_trees_renumber.php:279
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Ju mund të rinumëroni këtë trung familjar."
 
 #: admin_site_config.php:202 admin_site_config.php:221
 msgid "You can request a higher or lower limit, although the server may ignore this request."
-msgstr ""
+msgstr "Ju mund të kërkoni një kufi më të lartë ose më të ulët, edhepse serveri mund ta injorojë këtë kërkesë."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr ""
+msgstr "Ju mund të shpejtoni kalkulimet e privatësisë duke shtuar shënimin e vdekjes për personat vdekja e të cilëve mund të konkludohet nga datat tjera, por që nuk kanë shënim për vdekje, varrim, kremim, etj."
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr ""
+msgstr "Ju nuk mund të krijoni rregull, e cila do të ju ndalojë çasjen e websajtit."
 
 #: login.php:75
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr ""
+msgstr "Ju nuk mund të hyni sepse shfletuesi nuk i pranon kukit."
 
 #: includes/session.php:505
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "Ju nuk keni autorizim të shihni këtë faqe."
 
 #: admin_site_merge.php:55
 msgid "You entered the same IDs. You cannot merge the same records."
-msgstr ""
+msgstr "Ju futë ID-të e njëjta. Ju nuk mund të bashkoni shënimet e njëjta."
 
 #: login.php:611
 msgid "You have confirmed your request to become a registered user."
-msgstr ""
+msgstr "Ju keni konfirmuar kërkesën tuaj për t'u regjistruar si përdorues."
 
 #: app/Module/UserJournalModule.php:95
 msgid "You have not created any journal items."
-msgstr ""
+msgstr "Ju nuk keni krijuar asnjë element ditari."
 
 #: admin_trees_manage.php:201
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
-msgstr ""
+msgstr "Ju keni zgjedhur një fajl GEDCOM me emër tjetër. A është kjo korrekte?"
 
 #: logout.php:24
 msgid "You have signed out."
-msgstr ""
+msgstr "Ju keni dalur."
 
 #: addmedia.php:473
 msgid "You may enter a URL, beginning with “http://”."
-msgstr ""
+msgstr "Ju mund të fusni një URL, duke filluar me \"http://\"."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:448
 msgid "You may use HTML to format the answer and to add links to other websites."
-msgstr ""
+msgstr "Ju mund të përdorni HTML për formatizimin e përgjigjes dhe për të shtuar lidhje për websajtat tjerë."
 
 #: admin_site_config.php:435
 msgid "You must also enable “less secure applications” in your Google account."
-msgstr ""
+msgstr "Ju poashtu duhet të aktivizoni \"aplikacionet më pak të sigurta\" në llogarinë tuaj Google."
 
 #: setup.php:212
 msgid "You must change this before you can continue."
-msgstr ""
+msgstr "Ju duhet ta ndryshoni këtë para se të vazhdoni."
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:81
 #: modules_v3/GEDFact_assistant/census/census-edit.php:200
 msgid "You must enter a name"
-msgstr ""
+msgstr "Ju duhet të fusni një emër"
 
 #: edituser.php:129
 msgid "You must enter a real name."
-msgstr ""
+msgstr "Ju duhet të fusni një emër të vërtetë."
 
 #: edituser.php:124
 msgid "You must enter a user name."
-msgstr ""
+msgstr "Ju duhet të fusni një pseudonim."
 
 #: setup.php:418
 msgid "You must enter all the administrator account fields."
-msgstr ""
+msgstr "Ju duhet të plotësoni të gjitha fushat e llogarisë së administratorit."
 
 #: edit_interface.php:1522
 msgid "You must provide a repository name."
-msgstr ""
+msgstr "Ju duhet të jepni një emër të vendeve të ruajtjes."
 
 #: edit_interface.php:1203
 msgid "You must provide a source title"
-msgstr ""
+msgstr "Ju duhet të siguroni një titull burimi"
 
 #: admin_trees_merge.php:96
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "Ju duhet të rinumëroni shënimet në një nga trungjet para se t'i bashkoni ato."
 
 #: app/Module/ChartsBlockModule.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
-msgstr ""
+msgstr "Ju duhet të zgjedhni një person dhe lloj grafi në bllokun e përkufizimeve të konfigurimit."
 
 #: admin_users.php:287
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
-msgstr ""
+msgstr "Ju duhet të specifikoni një shënim të personit para se të mund të kufizoni përdoruesin në familjen e tij të drejtpërdrejt."
 
 #: admin_trees_manage.php:320
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Ju duhet të krijoni një trung familjar."
 
 #: login.php:563
 msgid "You need to review the account details."
-msgstr ""
+msgstr "Ju duhet të kontrolloni detajet e llogarisë."
 
 #: setup.php:423
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr ""
+msgstr "Ju duhet të krijoni një llogari administratori. Kjo llogari mund të kontrollojë të gjitha aspektet e instalimit të kësaj web faqeje. Ju lutem zgjedhni fjalëkalim të fortë."
 
 #: admin_pgv_to_wt.php:1163
 msgid "You need to sign in again, using your PhpGedView username and password."
-msgstr ""
+msgstr "Ju duhet të hyni përsëri, duke përdorur pseudonimin dha fjalëkalimin PhpGedView."
 
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:452
 msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr ""
+msgstr "Ju duhet vetë të fusni URL-në e hyrjes nëse doni të shkoni në websajt tjetër ose lokacion ku përdoruesit tuaj hyjnë. Kjo është shumë e dobishme nëse doni të kaloni nga http në https kur të hyjnë përdoruesit. Përfshini tërë URL-në në <i>login.php</i>. P. sh., https://www.serverijuaj.com/webtrees/login.php."
 
 #: message.php:247
 msgid "You sent the following message to a webtrees administrator:"
-msgstr ""
+msgstr "Ju keni dërguar mesazhin vijues te administratori:"
 
 #: message.php:244
 msgid "You sent the following message to a webtrees user:"
-msgstr ""
+msgstr "Ju keni dërguar mesazhin vijues te përdoruesi:"
 
 #: admin_site_upgrade.php:99
 msgid "You should accept or reject all pending changes before upgrading."
