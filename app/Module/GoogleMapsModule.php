@@ -4684,11 +4684,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				parent.document.getElementById('sv_latiText').value = pos.lat();
 				parent.document.getElementById('sv_longText').value = pos.lng();
 			});
-
-			//======================================================================================
-			// Now add the ImageMapType overlay to the map
-			//--------------------------------------------------------------------------------------
-			map.overlayMapTypes.push(null);
 		}
 
 		function toggleStreetView() {
