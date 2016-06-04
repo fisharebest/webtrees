@@ -3107,6 +3107,26 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$place_name = Filter::post('place_name', null, Filter::get('place_name'));
 		$placeid    = (int) $placeid; // Convert empty string to zero
 
+		// Update Street View fields fields
+		if ($action === 'update_sv_params' && Auth::isAdmin() && Filter::checkCsrf()) {
+			Database::prepare(
+				"UPDATE `##placelocation`" .
+				" SET sv_lati = :sv_latitude, sv_long = :sv_longitude, sv_bearing = :sv_bearing, sv_elevation = :sv_elevation, sv_zoom = :sv_zoom" .
+				" WHERE pl_id = :place_id"
+			)->execute(array(
+				'sv_latitude'  => (float) Filter::post('sv_latiText'),
+				'sv_longitude' => (float) Filter::post('sv_longText'),
+				'sv_bearing'   => (float) Filter::post('sv_bearText'),
+				'sv_elevation' => (float) Filter::post('sv_elevText'),
+				'sv_zoom'      => (float) Filter::post('sv_zoomText'),
+				'place_id'     => $placeid,
+			));
+			// TODO - submit this data via AJAX, so we won't need to redraw the page.
+			header('Location: ' . Filter::post('destination', null, 'index.php'));
+
+			return;
+		}
+
 		$controller = new SimpleController;
 		$controller
 			->restrictAccess(Auth::isAdmin())
@@ -3143,24 +3163,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 
 			$controller->addInlineJavascript('closePopupAndReloadParent();');
-
-			return;
-		}
-
-		// Update placelocation STREETVIEW fields
-		// TODO: This ought to be a POST request, rather than a GET request
-		if ($action == 'update_sv_params' && Auth::isAdmin()) {
-			Database::prepare(
-				"UPDATE `##placelocation` SET sv_lati=?, sv_long=?, sv_bearing=?, sv_elevation=?, sv_zoom=? WHERE pl_id=?"
-			)->execute(array(
-				(float) Filter::get('svlati'),
-				(float) Filter::get('svlong'),
-				(float) Filter::get('svbear'),
-				(float) Filter::get('svelev'),
-				(float) Filter::get('svzoom'),
-				$placeid,
-			));
-			$controller->addInlineJavascript('window.close();');
 
 			return;
 		}
