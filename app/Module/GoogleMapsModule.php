@@ -4536,16 +4536,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			var mapOptions = {
 				zoom: 16,
 				center: latLng,
-				mapTypeId: google.maps.MapTypeId.ROADMAP,  // ROADMAP, SATELLITE, HYBRID, TERRAIN
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				mapTypeControlOptions: {
-					style: google.maps.MapTypeControlStyle.DROPDOWN_MENU  // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
+					mapTypeIds: [] // Disable the map type (road/satellite) selector.
 				},
 				navigationControl: true,
 				navigationControlOptions: {
-					position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-					style: google.maps.NavigationControlStyle.SMALL   // ANDROID, DEFAULT, SMALL, ZOOM_PAN
+					position: google.maps.ControlPosition.TOP_RIGHT,
+					style: google.maps.NavigationControlStyle.SMALL
 				},
-				streetViewControl: false,  // Show Pegman or not
+				streetViewControl: false,
 				scrollwheel: true
 			};
 
