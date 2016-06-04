@@ -2627,26 +2627,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
-	 * Find the current location.
-	 *
-	 * @param int $numls
-	 * @param int $levelm
-	 *
-	 * @return int[]
-	 */
-	private function checkWhereAmI($numls, $levelm) {
-		$where_am_i = $this->placeIdToHierarchy($levelm);
-		$i          = $numls + 1;
-		$levelo     = array(0 => 0);
-		foreach (array_reverse($where_am_i, true) as $id => $place2) {
-			$levelo[$i] = $id;
-			$i--;
-		}
-
-		return $levelo;
-	}
-
-	/**
 	 * Print the numbers of individuals.
 	 *
 	 * @param int      $level
@@ -2886,36 +2866,25 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		');
 
 		$levelm = $this->setLevelMap($level, $parent);
-		$numls  = count($parent) - 1;
-		$levelo = $this->checkWhereAmI($numls, $levelm);
 
-		if ($numfound < 2 && ($level == 1 || !isset($levelo[$level - 1]))) {
-			$controller->addInlineJavascript('map.maxZoom=6;');
-		} elseif ($numfound < 2 && !isset($levelo[$level - 2])) {
-		} elseif ($level == 2) {
-			$controller->addInlineJavascript('map.maxZoom=10;');
-		}
 		//create markers
-
 		ob_start();
 
 		if ($numfound == 0 && $level > 0) {
-			if (isset($levelo[($level - 1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
-				// show the current place on the map
+			// show the current place on the map
 
-				$place = Database::prepare("SELECT pl_id AS place_id, pl_place AS place, pl_lati AS lati, pl_long AS `long`, pl_zoom AS zoom, pl_icon AS icon FROM `##placelocation` WHERE pl_id=?")
+			$place = Database::prepare("SELECT pl_id AS place_id, pl_place AS place, pl_lati AS lati, pl_long AS `long`, pl_zoom AS zoom, pl_icon AS icon FROM `##placelocation` WHERE pl_id=?")
 				->execute(array($levelm))
 				->fetch(PDO::FETCH_ASSOC);
 
-				if ($place) {
-					// re-calculate the hierarchy information required to display the current place
-					$thisloc = $parent;
-					array_pop($thisloc);
-					$thislevel      = $level - 1;
-					$thislinklevels = substr($linklevels, 0, strrpos($linklevels, '&amp;'));
+			if ($place) {
+				// re-calculate the hierarchy information required to display the current place
+				$thisloc = $parent;
+				array_pop($thisloc);
+				$thislevel      = $level - 1;
+				$thislinklevels = substr($linklevels, 0, strrpos($linklevels, '&amp;'));
 
-					$this->printGoogleMapMarkers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels);
-				}
+				$this->printGoogleMapMarkers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels);
 			}
 		}
 
