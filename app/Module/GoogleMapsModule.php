@@ -3153,11 +3153,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			Database::prepare(
 				"UPDATE `##placelocation` SET sv_lati=?, sv_long=?, sv_bearing=?, sv_elevation=?, sv_zoom=? WHERE pl_id=?"
 			)->execute(array(
-				Filter::get('svlati'),
-				Filter::get('svlong'),
-				Filter::get('svbear'),
-				Filter::get('svelev'),
-				Filter::get('svzoom'),
+				(float) Filter::get('svlati'),
+				(float) Filter::get('svlong'),
+				(float) Filter::get('svbear'),
+				(float) Filter::get('svelev'),
+				(float) Filter::get('svzoom'),
 				$placeid,
 			));
 			$controller->addInlineJavascript('window.close();');
