@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-04 18:43+0000\n"
+"PO-Revision-Date: 2016-06-04 22:01+0000\n"
 "Last-Translator: Astrit Bokshi <astritbokshi@gmail.com>\n"
 "Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/webtrees/sq/>\n"
 "Language: sq\n"
@@ -20032,7 +20032,7 @@ msgstr "ky shënim nuk ekziston"
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:68
 msgid "three-quarter circle"
-msgstr ""
+msgstr "Rrethi tri të katërtat"
 
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:113
@@ -20043,64 +20043,64 @@ msgstr ""
 #: app/Date.php:319
 #, php-format
 msgid "to %s"
-msgstr ""
+msgstr "deri te %s"
 
 #: app/Functions/Functions.php:559
 msgid "twelfth cousin"
-msgstr ""
+msgstr "kushëri i rrënjës së dymbëdhjetë"
 
 #: app/Functions/Functions.php:524
 msgctxt "FEMALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "kushërira e rrënjës së dymbëdhjetë"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:485
 msgctxt "MALE"
 msgid "twelfth cousin"
-msgstr ""
+msgstr "kushëri i rrënjës së dymbëdhjetë"
 
 #: app/Functions/Functions.php:741
 msgid "twin brother"
-msgstr ""
+msgstr "vëlla binjak"
 
 #: app/Functions/Functions.php:775
 msgid "twin sibling"
-msgstr ""
+msgstr "vëlla/motër binjake"
 
 #: app/Functions/Functions.php:758
 msgid "twin sister"
-msgstr ""
+msgstr "motër binjake"
 
 #: app/Functions/Functions.php:816
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "axha"
 
 #: app/Functions/Functions.php:1116
 msgctxt "father’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "burri i hallës"
 
 #: app/Functions/Functions.php:852
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "daja"
 
 #: app/Functions/Functions.php:1184
 msgctxt "mother’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "burri i tezes"
 
 #: app/Functions/Functions.php:872
 msgctxt "parent’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "axha/daja"
 
 #: app/Functions/Functions.php:1226
 msgctxt "parent’s sister’s husband"
 msgid "uncle"
-msgstr ""
+msgstr "burri i hallës/tezes"
 
 #: admin_site_access.php:26 admin_site_access.php:33
 #: app/Module/FamilyNavigatorModule.php:180
@@ -20111,45 +20111,45 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:4473 app/Module/GoogleMapsModule.php:4514
 #: app/Place.php:141 placelist.php:120
 msgid "unknown"
-msgstr ""
+msgstr "e panjohur"
 
 #: app/Module/FamilyNavigatorModule.php:222
 #: app/Module/InteractiveTree/TreeView.php:342
 msgctxt "unknown family"
 msgid "unknown"
-msgstr ""
+msgstr "e panjohur"
 
 #: app/Module/RelationshipsChartModule.php:131
 msgid "unlimited"
-msgstr ""
+msgstr "e pakufishme"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/GedcomCode/GedcomCodeQuay.php:51
 msgid "unreliable evidence"
-msgstr ""
+msgstr "evidencë e pabesueshme"
 
 #. I18N: A button label
 #: admin_trees_places.php:108
 msgid "update"
-msgstr ""
+msgstr "përditëso"
 
 #: admin_trees_config.php:370 admin_trees_config.php:394
 #: admin_trees_config.php:434 admin_trees_config.php:474
 #: admin_trees_config.php:494
 msgid "visitors"
-msgstr ""
+msgstr "vizitorë"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:107
 msgctxt "FEMALE"
 msgid "was born"
-msgstr ""
+msgstr "ishte lindur"
 
 #: modules_v3/ahnentafel_report/report.xml:140
 #: modules_v3/descendancy_report/report.xml:104
 msgctxt "MALE"
 msgid "was born"
-msgstr ""
+msgstr "ishte lindur"
 
 #: app/Theme/WebtreesTheme.php:128
 msgid "webtrees"
@@ -20159,11 +20159,11 @@ msgstr ""
 #: admin_pgv_to_wt.php:110
 #, php-format
 msgid "webtrees cannot connect to the PhpGedView database: %s."
-msgstr ""
+msgstr "webtrees nuk mund të lidhet me databazën PhpGedView: %s."
 
 #: message.php:40 message.php:260 message.php:322
 msgid "webtrees message"
-msgstr ""
+msgstr "mesazh i webtrees"
 
 #: setup.php:273
 #, php-format
