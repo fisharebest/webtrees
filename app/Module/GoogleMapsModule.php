@@ -4684,7 +4684,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				parent.document.getElementById('sv_latiText').value = pos.lat();
 				parent.document.getElementById('sv_longText').value = pos.lng();
 			});
-		}
+
+			var streetViewLayer = new google.maps.StreetViewCoverageLayer();
+			streetViewLayer.setMap(map);		}
 
 		function toggleStreetView() {
 			var toggle = panorama.getVisible();
