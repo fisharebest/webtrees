@@ -252,6 +252,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			->setPageTitle(I18N::translate('Google Maps™'));
 
 		if (Filter::post('action') === 'update') {
+			$this->setSetting('GM_API_KEY', Filter::post('GM_API_KEY'));
 			$this->setSetting('GM_MAP_TYPE', Filter::post('GM_MAP_TYPE'));
 			$this->setSetting('GM_USE_STREETVIEW', Filter::post('GM_USE_STREETVIEW'));
 			$this->setSetting('GM_MIN_ZOOM', Filter::post('GM_MIN_ZOOM'));
@@ -321,6 +322,19 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<input type="hidden" name="action" value="update">
 
 			<!-- GM_MAP_TYPE -->
+			<!-- TODO - this needs a more user-friendly explanation.
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="GM_API_KEY">
+					<?php echo I18N::translate('API Key') ?>
+				</label>
+				<div class="col-sm-9">
+					<input id="GM_API_KEY" class="form-control" type="text" name="GM_API_KEY" value="<?php echo $this->getSetting('GM_API_KEY') ?>">
+					<p class="small text-muted"><?php echo I18N::translate('All JavaScript API applications require authentication using an API key (or a client ID for Google Maps API for Work customers). Including a key when loading the API allows you to monitor your application\'s API usage in the Google Developers Console, enables per-key instead of per-IP-address quota limits, and ensures that Google can contact you about your application if necessary.') ?>
+						<a href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php echo I18N::translate('Get an API key from Google') ?></a>
+					</p>
+				</div>
+			</div>
+			-->
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="GM_MAP_TYPE">
 					<?php echo I18N::translate('Default map type') ?>
@@ -522,7 +536,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return string
 	 */
 	private function googleMapsScript() {
-		return 'https://maps.google.com/maps/api/js?v=3.2&amp;sensor=false&amp;language=' . WT_LOCALE;
+		$key = $this->getSetting('GM_API_KEY');
+
+		return 'https://maps.googleapis.com/maps/api/js?key=' . $key . '&amp;language=' . WT_LOCALE;
 	}
 
 	/**
@@ -690,7 +706,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				<td class="optionbox" colspan="4">
 					<select name="STATESELECT" dir="ltr" onchange="selectCountry()">
-						<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ I18N::translate('Subdivision'); ?></option>
+						<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ I18N::translate('Subdivision') ?></option>
 						<?php foreach ($stateList as $state_key => $state_name) {
 							echo '<option value="', $state_key, '" ';
 							if ($stateSelected == $state_key) {
@@ -908,10 +924,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '</table>';
 		echo '</div>'; // close #pedigreemap_chart
 		echo '</div>'; // close #pedigreemap-page
-		?>
-		<!-- end of map display -->
-		<!-- Start of map scripts -->
-		<?php
 		echo '<script src="', $this->googleMapsScript(), '"></script>';
 		$controller->addInlineJavascript($this->pedigreeMapJavascript());
 	}
@@ -2293,7 +2305,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				// Add the markers to the map
 
 				// Group the markers by location
-				var locations = <?php echo json_encode($unique_places); ?>;
+				var locations = <?php echo json_encode($unique_places) ?>;
 
 				// Set the Marker bounds
 				var bounds = new google.maps.LatLngBounds ();
@@ -2303,7 +2315,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					var html =
 						'<div class="infowindow">' +
 						'<div id="gmtabs">' +
-						'<ul class="tabs" >' +
+						'<ul class="tabs">' +
 						'<li><a href="#event" id="EV"><?php echo I18N::translate('Events') ?></a></li>' +
 						<?php if ($STREETVIEW) { ?>
 						'<li><a href="#sview" id="SV"><?php echo I18N::translate('Google Street View™') ?></a></li>' +
@@ -2311,7 +2323,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						'</ul>' +
 						'<div class="panes">' +
 						'<div id="pane1">' +
-						'<h4 id="iwhead">' + '<?php echo $indi->getFullName(); ?>: ' + location.place + '</h4>' +
+						'<h4 id="iwhead"><?php echo $indi->getFullName() ?>: ' + location.place + '</h4>' +
 						location.events +
 						'</div>' +
 						<?php if ($STREETVIEW) { ?>
@@ -2585,37 +2597,30 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						$sv_lat = $pl_lati;
 						$sv_lng = $pl_long;
 				}
-				$frameheight = $this->getSetting('GM_PH_YSIZE') + 35 . 'px'; // Add height of buttons
+				$frameheight = $this->getSetting('GM_PH_YSIZE') + 35; // Add height of buttons
 
 				?>
-				<iframe id="sv_frame" style="height: <?php echo $frameheight; ?>;" src="module.php?mod=googlemap&amp;mod_action=wt_street_view&amp;x=<?php echo $sv_lng ?>&amp;y=<?php echo $sv_lat ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir ?>&amp;p=<?php echo $sv_pitch ?>&amp;m=<?php echo $sv_zoom ?>&amp;j=1&amp;k=1&amp;v=1"></iframe>
+				<iframe id="sv_frame" style="height: <?php echo $frameheight ?>px;" src="module.php?mod=googlemap&amp;mod_action=wt_street_view&amp;x=<?php echo $sv_lng ?>&amp;y=<?php echo $sv_lat ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir ?>&amp;p=<?php echo $sv_pitch ?>&amp;m=<?php echo $sv_zoom ?>&amp;j=1&amp;k=1&amp;v=1"></iframe>
 				<?php
 				if (Auth::isAdmin()) {
 					?>
 					<div id="sv_parameters">
 						<form method="post" action="module.php?mod=googlemap&amp;mod_action=places_edit">
-							<?php echo Filter::getCsrf(); ?>
-							<input type='hidden' name='placeid' value='<?php echo $placeid; ?>'>
+							<?php echo Filter::getCsrf() ?>
+							<input type='hidden' name='placeid' value='<?php echo $placeid ?>'>
 							<input type='hidden' name='action' value='update_sv_params'>
-							<input type='hidden' name='destination' value='<?php echo Filter::server("REQUEST_URI"); ?>'>
-							<label for='sv_latiText'><?php echo GedcomTag::getLabel('LATI'); ?></label>
-							<input name='sv_latiText' id='sv_latiText' type='text' title="<?php echo $sv_lat; ?>"
-								   style='width:42px;' value='<?php echo $sv_lat; ?>'>
-							<label for='sv_longText'><?php echo GedcomTag::getLabel('LONG'); ?></label>
-							<input name='sv_longText' id='sv_longText' type='text' title="<?php echo $sv_lng; ?>"
-								   style='width:42px;' value='<?php echo $sv_lng; ?>'>
-							<label for='sv_bearText'><?php /* I18N: Compass bearing (in degrees), for street-view mapping */echo I18N::translate('Bearing'); ?></label>
-							<input name='sv_bearText' id='sv_bearText' type='text'
-								   style='width:30px;' value='<?php echo $sv_dir; ?>'>
-							<label for='sv_elevText'><?php /* I18N: Angle of elevation (in degrees), for street-view mapping */echo I18N::translate('Elevation'); ?></label>
-							<input name='sv_elevText' id='sv_elevText' type='text'
-								   style='width:30px;'
-								   value='<?php echo $sv_pitch; ?>'>
-							<label for='sv_zoomText'><?php echo I18N::translate('Zoom'); ?></label>
-							<input name='sv_zoomText' id='sv_zoomText' type='text'
-								   style='width:30px;'
-								   value='<?php echo $sv_zoom; ?>'>
-							<input type="submit" name="Submit" value="<?php echo I18N::translate('save'); ?>">
+							<input type='hidden' name='destination' value='<?php echo Filter::server("REQUEST_URI") ?>'>
+							<label for='sv_latiText'><?php echo GedcomTag::getLabel('LATI') ?></label>
+							<input name='sv_latiText' id='sv_latiText' type='text' title="<?php echo $sv_lat ?>" style='width:42px;' value='<?php echo $sv_lat ?>'>
+							<label for='sv_longText'><?php echo GedcomTag::getLabel('LONG') ?></label>
+							<input name='sv_longText' id='sv_longText' type='text' title="<?php echo $sv_lng ?>" style='width:42px;' value='<?php echo $sv_lng ?>'>
+							<label for='sv_bearText'><?php echo /* I18N: Compass bearing (in degrees), for street-view mapping */ I18N::translate('Bearing') ?></label>
+							<input name='sv_bearText' id='sv_bearText' type='text' style='width:30px;' value='<?php echo $sv_dir ?>'>
+							<label for='sv_elevText'><?php echo /* I18N: Angle of elevation (in degrees), for street-view mapping */ I18N::translate('Elevation') ?></label>
+							<input name='sv_elevText' id='sv_elevText' type='text' style='width:30px;' value='<?php echo $sv_pitch ?>'>
+							<label for='sv_zoomText'><?php echo I18N::translate('Zoom') ?></label>
+							<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px;' value='<?php echo $sv_zoom ?>'>
+							<input type="submit" name="Submit" value="<?php echo I18N::translate('save') ?>">
 						</form>
 					</div>
 					<?php
@@ -3362,7 +3367,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				default:
 				}
 				?>
-				var coordStr = <?php echo json_encode($coordsAsStr); ?>;
+				var coordStr = <?php echo json_encode($coordsAsStr) ?>;
 				jQuery.each(coordStr, function(index, value) {
 					var coordXY = value.split('|');
 					var coords  = [];
@@ -3699,8 +3704,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees') ?>" value="<?php echo abs($place_lati) ?>" size="20" onchange="updateMap();">
 					<select name="LATI_CONTROL" id="LATI_CONTROL" onchange="updateMap();">
-						<option value="N"<?php echo $place_lati >= 0 ? ' selected' : ''; ?>><?php echo I18N::translate('north'); ?></option>
-						<option value="S"<?php echo $place_lati < 0 ? ' selected' : ''; ?>><?php echo I18N::translate('south'); ?></option>
+						<option value="N"<?php echo $place_lati >= 0 ? ' selected' : '' ?>><?php echo I18N::translate('north') ?></option>
+						<option value="S"<?php echo $place_lati < 0 ? ' selected' : '' ?>><?php echo I18N::translate('south') ?></option>
 
 					</select>
 				</td>
@@ -3710,8 +3715,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees') ?>" value="<?php echo abs($place_long) ?>" size="20" onchange="updateMap();">
 					<select name="LONG_CONTROL" id="LONG_CONTROL" onchange="updateMap();">
-						<option value="E"<?php echo $place_long >= 0 ? ' selected' : ''; ?>><?php echo I18N::translate('east'); ?></option>
-						<option value="W"<?php echo $place_long < 0 ? ' selected' : ''; ?>><?php echo I18N::translate('west'); ?></option>
+						<option value="E"<?php echo $place_long >= 0 ? ' selected' : '' ?>><?php echo I18N::translate('east') ?></option>
+						<option value="W"<?php echo $place_long < 0 ? ' selected' : '' ?>><?php echo I18N::translate('west') ?></option>
 
 					</select>
 				</td>
@@ -4439,7 +4444,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<head>
 				<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 				<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/gm_streetview.css" rel="stylesheet">
-				<script src="https://maps.google.com/maps/api/js?v=3.2&amp;sensor=false&amp;language=<?php echo WT_LOCALE; ?>"></script>
+				<script src="<?php echo $this->googleMapsScript() ?>"></script>
 				<script>
 
 		// Following function creates an array of the google map parameters passed ---------------------
@@ -4683,7 +4688,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</button>
 				</div>
 
-				<div id="mapCanvas" style="height: <?php echo $this->getSetting('GM_PH_YSIZE'); ?>;">
+				<div id="mapCanvas" style="height: <?php echo $this->getSetting('GM_PH_YSIZE') ?>;">
 				</div>
 
 				<div id="infoPanel">
