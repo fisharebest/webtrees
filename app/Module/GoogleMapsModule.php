@@ -4689,24 +4689,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			// Now add the ImageMapType overlay to the map
 			//--------------------------------------------------------------------------------------
 			map.overlayMapTypes.push(null);
-
-			//======================================================================================
-			// Now create the StreetView ImageMap
-			//--------------------------------------------------------------------------------------
-			var street = new google.maps.ImageMapType({
-				getTileUrl: function(coord, zoom) {
-					var X = coord.x % (1 << zoom);  // wrap
-					return 'https://cbk0.google.com/cbk?output=overlay&zoom=' + zoom + '&x=' + X + '&y=' + coord.y + '&cb_client=api';
-				},
-				tileSize: new google.maps.Size(256, 256),
-				isPng: true
-			});
-
-			//======================================================================================
-			//  Add the Street view Image Map
-			//--------------------------------------------------------------------------------------
-			map.overlayMapTypes.setAt(1, street);
-			//==============================================================================================
 		}
 
 		function toggleStreetView() {
