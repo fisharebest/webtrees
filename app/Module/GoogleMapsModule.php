@@ -538,7 +538,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function googleMapsScript() {
 		$key = $this->getSetting('GM_API_KEY');
 
-		return 'https://maps.googleapis.com/maps/api/js?key=' . $key . '&amp;language=' . WT_LOCALE;
+		return 'https://maps.googleapis.com/maps/api/js?v=3&amp;key=' . $key . '&amp;language=' . WT_LOCALE;
 	}
 
 	/**
