@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-19 10:02+0000\n"
-"Last-Translator: Michel <gustine@laposte.net>\n"
+"PO-Revision-Date: 2016-06-04 13:30+0000\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -15332,7 +15332,7 @@ msgstr "Annuler"
 
 #: edit_changes.php:211 edit_changes.php:231
 msgid "Undo all changes"
-msgstr "<span class=\"warning\">Annuler toutes les modifications</span>"
+msgstr "Annuler toutes les modifications"
 
 #: admin_trees_config.php:1868
 msgid "Unique family facts"
