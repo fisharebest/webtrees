@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-03 18:41+0000\n"
+"PO-Revision-Date: 2016-06-04 05:28+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -15386,7 +15386,7 @@ msgstr "Ismeretlen"
 #: modules_v3/individual_report/report.xml:602
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr "Ismeretlen"
+msgstr "Nincs adat"
 
 #: app/Stats.php:944 app/Stats.php:950 edituser.php:187
 msgctxt "unknown people"
@@ -15464,7 +15464,7 @@ msgstr "Médiaállományok feltöltése"
 
 #: admin_media_upload.php:187
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr "Töltsön fel egy vagy több médiafájlt a számítógépéről. A médiafájl lehet kép, videó, hanganyag vagy egyéb formátum."
+msgstr "Egy vagy több médiafájl felöltése a számítógépéről. A médiafájl lehet kép, videó, hanganyag vagy egyéb formátum."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6963
@@ -19628,7 +19628,7 @@ msgstr "kijelölés megszüntetése"
 #: app/Functions/Functions.php:241 app/Functions/Functions.php:259
 #: app/Functions/Functions.php:666
 msgid "self"
-msgstr "saját"
+msgstr "ő maga"
 
 #: app/Functions/Functions.php:549
 msgid "seventh cousin"
@@ -20117,7 +20117,7 @@ msgstr "ismeretlen"
 #: app/Module/InteractiveTree/TreeView.php:342
 msgctxt "unknown family"
 msgid "unknown"
-msgstr "ismeretlen"
+msgstr "nincs adat"
 
 #: app/Module/RelationshipsChartModule.php:131
 msgid "unlimited"
