@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-05 03:34+0000\n"
+"PO-Revision-Date: 2016-06-05 15:25+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -542,7 +542,7 @@ msgstr "%s, házastársai és leszármazottai"
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:624
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
-msgstr "&lt;kijelöl&gt;"
+msgstr "&lt;válasszon&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/I18N.php:328 app/I18N.php:332
@@ -1262,7 +1262,7 @@ msgstr "Ádár séni"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:170
 #: timeline.php:304
 msgid "Add"
-msgstr "Hozzáad"
+msgstr "Felvétel"
 
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
@@ -1279,7 +1279,7 @@ msgstr "Új gyermek felvétele"
 
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
-msgstr "Gyermek felvétele egyszülős család létrehozása céljából"
+msgstr "Gyermek felvétele egyszülős család létrehozásához"
 
 #: app/Controller/FamilyController.php:82
 #: app/Functions/FunctionsCharts.php:310
@@ -8384,7 +8384,7 @@ msgstr "Rendelje a felhasználói fiókot egy személyhez."
 #: app/Module/RelativesTabModule.php:367 edit_interface.php:983
 #: edit_interface.php:1043
 msgid "Link this individual to an existing family as a child"
-msgstr "E személy felvétele egy létező család gyermekeként"
+msgstr "E személy egy létező családhoz kapcsolása gyermekként"
 
 #: admin_media.php:531 app/Controller/MediaController.php:57
 #: app/Controller/MediaController.php:127 app/Module/AlbumModule.php:178
