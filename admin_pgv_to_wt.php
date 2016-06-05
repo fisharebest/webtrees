@@ -762,7 +762,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CHART_BOX_TAGS', $CHART_BOX_TAGS));
 	$user = User::findByIdentifier($CONTACT_EMAIL);
 	if ($user) {
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'CONTACT_USER_ID', $user->getUserId()]);
+		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CONTACT_USER_ID', $user->getUserId()));
 	}
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'DEFAULT_PEDIGREE_GENERATIONS', $DEFAULT_PEDIGREE_GENERATIONS));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'EXPAND_NOTES', $EXPAND_NOTES));
@@ -932,7 +932,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WATERMARK_THUMB', $WATERMARK_THUMB));
 	$user = User::findByIdentifier($WEBMASTER_EMAIL);
 	if ($user) {
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'WEBMASTER_USER_ID', $user->getUserId()]);
+		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WEBMASTER_USER_ID', $user->getUserId()));
 	}
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES));
 }
