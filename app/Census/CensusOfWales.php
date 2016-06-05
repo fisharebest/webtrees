@@ -34,7 +34,7 @@ class CensusOfWales extends Census implements CensusPlaceInterface {
 			new CensusOfWales1891(),
 			new CensusOfWales1901(),
 			new CensusOfWales1911(),
-			new RegisterOfWales1939()
+			new RegisterOfWales1939(),
 		);
 	}
 

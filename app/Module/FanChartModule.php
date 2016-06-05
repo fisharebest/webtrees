@@ -17,8 +17,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Menu;
 
 /**
  * Class FanChartModule
@@ -52,7 +52,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface {
 	public function defaultAccessLevel() {
 		return Auth::PRIV_PRIVATE;
 	}
-	
+
 	/**
 	 * Return a menu item for this chart.
 	 * 
@@ -63,16 +63,16 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface {
 	public function getChartMenu(Individual $individual) {
 		if (function_exists('imagettftext')) {
 			return new Menu(
-				$this->getTitle(), 
-				'fanchart.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(), 
-				'menu-chart-fanchart', 
+				$this->getTitle(),
+				'fanchart.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
+				'menu-chart-fanchart',
 				array('rel' => 'nofollow')
 			);
 		} else {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * Return a menu item for this chart - for use in individual boxes.
 	 *

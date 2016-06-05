@@ -62,6 +62,7 @@ case 'list':
 		echo '<b>', I18N::translate('No results found.'), '</b><br>';
 	} else {
 		$columns = array_chunk($list_places, ceil($numfound / $divisor));
+		
 		$html = '<table class="list_table"><thead>';
 		$html .= '<tr><th class="list_label" colspan="' . $divisor . '">';
 		$html .= '<i class="icon-place"></i> ' . I18N::translate('Place list');
@@ -144,7 +145,7 @@ case 'hierarchy':
 			foreach ($column as $item) {
 				$html .= '<li><a href="' . $item->getURL() . '" class="list_item">' . $item->getPlaceName() . '</a></li>';
 				if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
-					list($tmp) = explode(', ', $item->getGedcomName(), 2);
+					list($tmp)     = explode(', ', $item->getGedcomName(), 2);
 					$place_names[] = $tmp;
 				}
 			}

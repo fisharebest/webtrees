@@ -17,8 +17,6 @@
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Individual;
 use Mockery;
 
 /**

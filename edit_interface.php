@@ -2066,7 +2066,7 @@ case 'changefamily_update':
 	}
 
 	$CHIL = array();
-	for ($i = 0; ; ++$i) {
+	for ($i = 0;; ++$i) {
 		if (isset($_POST['CHIL' . $i])) {
 			$CHIL[] = Filter::post('CHIL' . $i, WT_REGEX_XREF);
 		} else {

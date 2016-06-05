@@ -71,7 +71,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	public function canLoadAjax() {
 		return true;
 	}
-	
+
 	/**
 	 * Return a menu item for this chart.
 	 *
@@ -79,13 +79,13 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	 */
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
-			$this->getTitle(), 
-			'module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(), 
-			'menu-chart-tree', 
+			$this->getTitle(),
+			'module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
+			'menu-chart-tree',
 			array('rel' => 'nofollow')
 		);
 	}
-	
+
 	/**
 	 * Return a menu item for this chart - for use in individual boxes.
 	 *
@@ -94,7 +94,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	public function getBoxChartMenu(Individual $individual) {
 		return $this->getChartMenu($individual);
 	}
-	
+
 	/** {@inheritdoc} */
 	public function getPreLoadContent() {
 		// We cannot use jQuery("head").append(<link rel="stylesheet" ...as jQuery is not loaded at this time

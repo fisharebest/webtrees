@@ -5421,8 +5421,8 @@ class Stats {
 			return '';
 		}
 		$SURNAME_TRADITION = $this->tree->getPreference('SURNAME_TRADITION');
-		$all_surnames = array();
-		$tot          = 0;
+		$all_surnames      = array();
+		$tot               = 0;
 		foreach ($surnames as $surname => $num) {
 			$all_surnames = array_merge($all_surnames, QueryName::surnames($this->tree, I18N::strtoupper($surname), '', false, false));
 			$tot += $num;

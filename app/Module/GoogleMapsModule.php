@@ -1902,9 +1902,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return null|\stdClass
 	 */
 	private function getLatitudeAndLongitudeFromPlaceLocation($place) {
-		$parent   = explode(',', $place);
-		$parent   = array_reverse($parent);
-		$place_id = 0;
+		$parent     = explode(',', $place);
+		$parent     = array_reverse($parent);
+		$place_id   = 0;
 		$num_parent = count($parent);
 		for ($i = 0; $i < $num_parent; $i++) {
 			$parent[$i] = trim($parent[$i]);
@@ -1941,7 +1941,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 */
 	private function buildIndividualMap(Individual $indi) {
 		$GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM');
-		$facts = $indi->getFacts();
+		$facts       = $indi->getFacts();
 		foreach ($indi->getSpouseFamilies() as $family) {
 			$facts = array_merge($facts, $family->getFacts());
 			// Add birth of children from this family to the facts array
@@ -1986,7 +1986,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						'sv_lati'      => '0',
 						'sv_long'      => '0',
 						'sv_zoom'      => '0',
-						'events'       => ''
+						'events'       => '',
 					);
 				}
 			} else {
@@ -2005,7 +2005,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							'sv_lati'      => $latlongval->sv_lati,
 							'sv_long'      => $latlongval->sv_long,
 							'sv_zoom'      => $latlongval->sv_zoom,
-							'events'       => ''
+							'events'       => '',
 						);
 					}
 					$GM_MAX_ZOOM = min($GM_MAX_ZOOM, $latlongval->pl_zoom);
@@ -2027,9 +2027,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$class  = 'optionbox';
 				if ($fact->getValue() && $spouse) {
 					$evtStr = '<div class="info_event"><span class="highlt_img">' . $spouse->displayImage() . '</span><div class="sp1">' . $label . '<div>' . $fact->getValue() . '</div><div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
-				} else if ($spouse) {
+				} elseif ($spouse) {
 					$evtStr = '<div class="info_event"><span class="highlt_img">' . $spouse->displayImage() . '</span><div class="sp1">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
-				} else if ($fact->getValue()) {
+				} elseif ($fact->getValue()) {
 					$evtStr = '<div class="info_event"><span class="highlt_img">' . Theme::theme()->icon($fact) . '</span><div class="sp1">' . $label . '<div> ' . $fact->getValue() . '</div><div>' . $fact->getDate()->display(true) . '</div></div></div>';
 				} else {
 					$evtStr = '<div class="info_event"><span class="highlt_img">' . Theme::theme()->icon($fact) . '</span><div class="sp1">' . $label . '<div>' . $fact->getDate()->display(true) . '</div></div></div>';
@@ -2044,7 +2044,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				'info'       => $fact->getValue(),
 				'name'       => $name,
 				'place'      => '<a href="' . $fact->getPlace()->getURL() . '">' . $fact->getPlace()->getFullName() . '</a>',
-				'placeid'    => $index
+				'placeid'    => $index,
 			);
 		}
 
@@ -2526,7 +2526,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 	/**
 	 * Called by placelist.php
-	 *
 	 */
 	public function createMap() {
 		global $level, $levelm, $plzoom, $WT_TREE;
@@ -2535,7 +2534,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		$STREETVIEW = (bool) $this->getSetting('GM_USE_STREETVIEW');
 		$parent     = Filter::getArray('parent');
-		$levelm = $this->setLevelMap($level, $parent);
+		$levelm     = $this->setLevelMap($level, $parent);
 
 		$latlng =
 			Database::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM `##placelocation` WHERE pl_id=?")
@@ -3148,8 +3147,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				Database::prepare("SELECT pl_place, pl_lati, pl_long, pl_icon, pl_parent_id, pl_level, pl_zoom FROM `##placelocation` WHERE pl_id=?")
 				->execute(array($placeid))
 				->fetchOneRow();
-			$place_name = $row->pl_place;
-			$place_icon = $row->pl_icon;
+			$place_name       = $row->pl_place;
+			$place_icon       = $row->pl_icon;
 			$selected_country = explode("/", $place_icon);
 			if (isset($selected_country[1]) && $selected_country[1] !== 'flags') {
 				$selected_country = $selected_country[1];
@@ -3210,7 +3209,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						$parent_lati = strtr($row->pl_lati, array('N' => '', 'S' => '-', ',' => '.'));
 						$parent_long = strtr($row->pl_long, array('E' => '', 'W' => '-', ',' => '.'));
 						$zoomfactor  = min($row->pl_zoom, $GM_MAX_ZOOM);
-						$level = $row->pl_level + 1;
+						$level       = $row->pl_level + 1;
 					}
 					$parent_id = $row->pl_parent_id;
 				} while ($row->pl_parent_id != 0 && $row->pl_lati === null && $row->pl_long === null);
