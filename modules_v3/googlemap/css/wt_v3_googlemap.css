@@ -23,16 +23,10 @@
 	display: flex;
 }
 
-#map_pane {
+#map_pane,
+#pm_map {
 	width: 70%;
 	height: 100%;
-}
-
-#map_events {
-	width: 30%;
-	height: 100%;
-	padding: 0;
-	overflow-y: auto;
 }
 
 .gmoptions {
@@ -260,16 +254,9 @@ ul.tabs a.current {
 	width: 360px;
 }
 
-#side_bar {
-	width: 300px;
-	font-size: 0.85em;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-
 .link {
 	min-height: 50px;
-	margin: 5px 0;
+	margin: 5px;
 	padding: 0!important;
 	border: 1px solid transparent;
 }
@@ -279,14 +266,30 @@ ul.tabs a.current {
 	border: 1px solid #ffdd00;
 }
 
+#side_bar {
+	width: 30%;
+	font-size: 0.85em;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
 #side_bar .relation {
 	cursor: pointer;
+}
+
+#wrapper .gallery {
+	float: left;
+	width: 50px;
+}
+
+[dir=rtl] #wrapper .gallery {
+	float: right;
 }
 
 #side_bar .gallery img,
 .iwstyle .gallery img,
 .highlt_img .gallery img {
-	float: left;
+	float: right;
 	height: auto;
 	margin: 0 4px;
 	max-height: 50px;
@@ -297,8 +300,7 @@ ul.tabs a.current {
 [dir=rtl] #side_bar .gallery img,
 [dir=rtl] .iwstyle .gallery img,
 [dir=rtl] .highlt_img .gallery img {
-	float: right;
-	margin: 0 0 0 4px;
+	float: left;
 }
 
 #side_bar .icon-silhouette-M,
@@ -308,6 +310,8 @@ ul.tabs a.current {
 .iwstyle .icon-silhouette-F,
 .iwstyle .icon-silhouette-U {
 	float: left;
+	max-height: 50px;
+	width: 50px;
 }
 
 [dir=rtl] #side_bar .icon-silhouette-M,
