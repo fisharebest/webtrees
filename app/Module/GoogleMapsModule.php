@@ -322,19 +322,20 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<input type="hidden" name="action" value="update">
 
 			<!-- GM_MAP_TYPE -->
-			<!-- TODO - this needs a more user-friendly explanation.
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="GM_API_KEY">
-					<?php echo I18N::translate('API Key') ?>
+					<?php echo /* I18N: https://en.wikipedia.org/wiki/API_key */ I18N::translate('API key') ?>
 				</label>
 				<div class="col-sm-9">
 					<input id="GM_API_KEY" class="form-control" type="text" name="GM_API_KEY" value="<?php echo $this->getSetting('GM_API_KEY') ?>">
-					<p class="small text-muted"><?php echo I18N::translate('All JavaScript API applications require authentication using an API key (or a client ID for Google Maps API for Work customers). Including a key when loading the API allows you to monitor your application\'s API usage in the Google Developers Console, enables per-key instead of per-IP-address quota limits, and ensures that Google can contact you about your application if necessary.') ?>
-						<a href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php echo I18N::translate('Get an API key from Google') ?></a>
+					<p class="small text-muted"><?php echo I18N::translate('Google allows a small number of anonymous map requests per day.  If you need more than this, you will need a Google account and an API key.') ?>
+						<a href="https://developers.google.com/maps/documentation/javascript/get-api-key">
+							<?php echo /* I18N: https://en.wikipedia.org/wiki/API_key */ I18N::translate('Get an API key from Google.') ?>
+						</a>
 					</p>
 				</div>
 			</div>
-			-->
+
 			<div class="form-group">
 				<label class="control-label col-sm-3" for="GM_MAP_TYPE">
 					<?php echo I18N::translate('Default map type') ?>
