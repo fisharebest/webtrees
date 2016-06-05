@@ -285,7 +285,7 @@ class Database {
 	 * @param int    $target_version updade/downgrade to this version
 	 *
 	 * @throws PDOException
- *
+	 *
 	 * @return bool  Were any updates applied
 	 */
 	public static function updateSchema($namespace, $schema_name, $target_version) {

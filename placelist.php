@@ -62,7 +62,7 @@ case 'list':
 		echo '<b>', I18N::translate('No results found.'), '</b><br>';
 	} else {
 		$columns = array_chunk($list_places, ceil($numfound / $divisor));
-		
+
 		$html = '<table class="list_table"><thead>';
 		$html .= '<tr><th class="list_label" colspan="' . $divisor . '">';
 		$html .= '<i class="icon-place"></i> ' . I18N::translate('Place list');
