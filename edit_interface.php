@@ -2066,12 +2066,8 @@ case 'changefamily_update':
 	}
 
 	$CHIL = array();
-	for ($i = 0;; ++$i) {
-		if (isset($_POST['CHIL' . $i])) {
-			$CHIL[] = Filter::post('CHIL' . $i, WT_REGEX_XREF);
-		} else {
-			break;
-		}
+	for ($i = 0; isset($_POST['CHIL' . $i]); ++$i) {
+		$CHIL[] = Filter::post('CHIL' . $i, WT_REGEX_XREF);
 	}
 
 	$family = Family::getInstance($xref, $WT_TREE);
@@ -2090,10 +2086,8 @@ case 'changefamily_update':
 	$new_father   = Individual::getInstance($HUSB, $WT_TREE);
 	$new_mother   = Individual::getInstance($WIFE, $WT_TREE);
 	$new_children = array();
-	if (is_array($CHIL)) {
-		foreach ($CHIL as $child) {
-			$new_children[] = Individual::getInstance($child, $WT_TREE);
-		}
+	foreach ($CHIL as $child) {
+		$new_children[] = Individual::getInstance($child, $WT_TREE);
 	}
 
 	if ($old_father !== $new_father) {
