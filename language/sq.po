@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-04 22:01+0000\n"
+"PO-Revision-Date: 2016-06-05 13:59+0000\n"
 "Last-Translator: Astrit Bokshi <astritbokshi@gmail.com>\n"
 "Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/webtrees/sq/>\n"
 "Language: sq\n"
@@ -2560,7 +2560,7 @@ msgstr "Pagëzimi i djalit"
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:190 modules_v3/missing_facts_report/report.xml:17
 msgid "Bar mitzvah"
-msgstr "Syneti"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6751
@@ -4496,7 +4496,7 @@ msgstr "Data e pagëzimit"
 
 #: app/GedcomTag.php:192 modules_v3/missing_facts_report/report.xml:212
 msgid "Date of bar mitzvah"
-msgstr "Date of bar mitzvah"
+msgstr ""
 
 #: app/GedcomTag.php:200 modules_v3/missing_facts_report/report.xml:253
 msgid "Date of bat mitzvah"
@@ -11054,7 +11054,7 @@ msgstr "Polonia"
 #: app/SurnameTradition.php:90
 msgctxt "Surname tradition"
 msgid "Polish"
-msgstr ""
+msgstr "Polak"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:357 setup.php:281
@@ -11085,7 +11085,7 @@ msgstr "Portugalia"
 #: app/SurnameTradition.php:84
 msgctxt "Surname tradition"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugez"
 
 #. I18N: gedcom tag POST
 #: app/GedcomTag.php:692
@@ -11387,20 +11387,20 @@ msgstr "Imazhet e rastësishme nga trungu aktual familjar."
 #: app/Module/RelativesTabModule.php:279 edit_interface.php:1803
 #: edit_interface.php:1877
 msgid "Re-order children"
-msgstr "Ri-rendit fëmijët"
+msgstr "Rirendit fëmijët"
 
 #: app/Controller/IndividualController.php:297
 #: app/Module/RelativesTabModule.php:361 edit_interface.php:2188
 #: edit_interface.php:2239
 msgid "Re-order families"
-msgstr "Ri-rendit familjet"
+msgstr "Rirendit familjet"
 
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: app/GedcomTag.php:1763 app/Module/AlbumModule.php:110
 #: app/Module/AlbumModule.php:111 edit_interface.php:1671
 #: edit_interface.php:1768
 msgid "Re-order media"
-msgstr "Ri-rendit mediat"
+msgstr "Rirendit mediat"
 
 #: admin_users.php:313 admin_users.php:867 edituser.php:170 login.php:321
 #: login.php:416
@@ -13387,7 +13387,6 @@ msgstr "Tema"
 
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:810
-#, fuzzy
 msgid "Submission"
 msgstr "Paraqitja"
 
@@ -13458,7 +13457,6 @@ msgstr "Tradita e mbiemrit"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
-#, fuzzy
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
 msgstr "Mbiemrat mëtojnë të tregojnë gjininë e personit dhe gjendjen martesore."
 
@@ -14526,9 +14524,8 @@ msgid "This media file exists, but cannot be accessed."
 msgstr "Ky media fajl ekziston, por nuk mund t'i çaseni."
 
 #: mediafirewall.php:402
-#, fuzzy
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Ky media fajl është prishur dhe nuk mund të bëhet watermark."
+msgstr "Ky media fajl është prishur dhe nuk mund të marrë vulë uji."
 
 #: mediaviewer.php:78
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14782,7 +14779,6 @@ msgstr "Ky burim është edituar. Ju duhet të kontrolloni ndryshimet dhe pastaj
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: admin_trees_config.php:947
-#, fuzzy
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
 msgstr "Ky tekst do t'i shtohet secilit titull faqeje. Ai do të shfaqet në shiritin e titullit të shfletuesit, bookmarks, etj."
 
@@ -14799,7 +14795,6 @@ msgid "This usually means that you need to change the folder permissions to 777.
 msgstr "Kjo zakonisht nënkupton që ju duhet të ndryshoni lejen e folderit në 777."
 
 #: admin_site_upgrade.php:41
-#, fuzzy
 msgid "This website is being upgraded. Try again in a few minutes."
 msgstr "Ky web sajt po ngritet në post. Provoni përsëri pas disa minutash."
 
@@ -15022,7 +15017,7 @@ msgstr ""
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:74
-#, fuzzy, php-format
+#, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
 msgstr[0] "Emri më i shpeshtë %s"
@@ -20168,25 +20163,25 @@ msgstr "mesazh i webtrees"
 #: setup.php:273
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr ""
+msgstr "webtrees ka nevojë për dataabazë MySQL, versioni %s ose i më vonshëm."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:321
 msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-msgstr ""
+msgstr "webtrees duhet të dërgojë email, si përkujtuesit e fjalëkalimit dhe njoftimet e web sajtit. Për ta bërë këtë, ajo mund të përdor aftësinë e postës PHP të ndërtuar në server (që nuk është gjithmonë në dispozicion) ose një shërbim të jashtëm SMTP, për të cilën duhet të merrni detajet e lidhjes."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:868
 msgid "webtrees reply address"
-msgstr ""
+msgstr "adresa e përgjigjeve të webtrees"
 
 #: app/Functions/FunctionsEdit.php:248
 msgid "webtrees sends emails with no storage"
-msgstr ""
+msgstr "webtrees dërgon emaila pa deponim"
 
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr ""
+msgstr "webtrees përdor enkodimin UTF-8 për shenjat me thekse, karakteret speciale dhe shkronjat jo latine. Po të dëshironi ta përdorni këtë GEDCOM fajl me softuerin gjenealogjik që nuk përkrah UTF-8, atëherë ju mund ta krijoni atë duke përdorur enkodimin ISO-8859-1."
 
 #: app/Functions/FunctionsPrint.php:210
 msgid "webtrees wiki"
@@ -20194,16 +20189,16 @@ msgstr ""
 
 #: admin_trees_manage.php:708
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
-msgstr ""
+msgstr "databaza webtrees duhet të jetë në të njëjtin server si PhpGedView"
 
 #: app/Module/GoogleMapsModule.php:3909
 msgid "west"
-msgstr ""
+msgstr "perëndim"
 
 #: app/Functions/Functions.php:709 edit_interface.php:1937
 #: edit_interface.php:1972
 msgid "wife"
-msgstr ""
+msgstr "gruaja"
 
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:144
@@ -20212,7 +20207,7 @@ msgstr ""
 
 #: timeline.php:130
 msgid "years"
-msgstr ""
+msgstr "vite"
 
 #: admin_trees_config.php:75 admin_users.php:242 admin_users.php:243
 #: app/Functions/FunctionsEdit.php:133 app/Functions/FunctionsEdit.php:626
@@ -20230,43 +20225,43 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:179
 #: modules_v3/individual_report/report.xml:175
 msgid "yes"
-msgstr ""
+msgstr "po"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:93
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr ""
+msgstr "ju mund të lidheni në databazë duke përdorur aplikacione tjera, siç është phpmyadmin"
 
 #: app/Functions/Functions.php:743
 msgid "younger brother"
-msgstr ""
+msgstr "vëllau i vogël"
 
 #: app/Functions/Functions.php:777
 msgid "younger sibling"
-msgstr ""
+msgstr "vëllau/motra e vogël"
 
 #: app/Functions/Functions.php:760
 msgid "younger sister"
-msgstr ""
+msgstr "motra e vogël"
 
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:169 search_advanced.php:170 search_advanced.php:171
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "±%s vit"
+msgstr[1] "±%s vite"
 
 #: app/Individual.php:1218
 #, php-format
 msgid "“%s”"
-msgstr ""
+msgstr "\"%s\""
 
 #. I18N: %s is the name of an individual, source or other record
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr ""
+msgstr "\"%s\" është shtuar te favoritët tuaj."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:107
 msgid "…"
