@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-31 18:52+0000\n"
+"PO-Revision-Date: 2016-06-06 14:04+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -3687,7 +3687,7 @@ msgstr "Kies familieleden"
 
 #: addmedia.php:460 admin_media_upload.php:213
 msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-msgstr "Kies het miniatuurplaatje dat u wilt uploaden. Hoewel miniaturen van afbeeldingen automatisch gemaakt kunnen worden, wilt u misschien zelf een miniatuur maken, vooral voor andere bestandstypes. U wilt bijvoorbeeld een stilstaand shot uit een video gebruiken of een foto van de maker van een audio-opname."
+msgstr "Kies de miniatuurafbeelding die u wilt uploaden. Miniaturen van afbeeldingen kunnen automatisch gemaakt worden maar u kunt ook een eigen miniatuur gebruiken, vooral bij andere bestandstypes. Denk aan een stilstaand shot uit een video of een foto van de maker van een audio-opname."
 
 #: admin_site_config.php:124
 msgid "Choose user defined welcome text typed below"
@@ -14311,7 +14311,7 @@ msgstr[1] "Deze stamboom heeft %s record met dezelfde ‘XREF’ als een andere 
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
-msgstr "Deze stamboom heeft geen plaatjes om te laten zien."
+msgstr "Deze stamboom heeft geen afbeeldingen om te laten zien."
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
