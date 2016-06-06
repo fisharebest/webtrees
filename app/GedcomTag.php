@@ -37,7 +37,7 @@ class GedcomTag {
 		'DESC', 'DESI', 'DEST', 'DIV', 'DIVF', 'DSCR', 'EDUC', 'EDUC:AGNC', 'EMAI',
 		'EMAIL', 'EMAL', 'EMIG', 'EMIG:DATE', 'EMIG:PLAC', 'ENDL', 'ENDL:DATE',
 		'ENDL:PLAC', 'ENGA', 'ENGA:DATE', 'ENGA:PLAC', 'EVEN', 'EVEN:DATE',
-		'EVEN:PLAC', 'FACT', 'FAM', 'FAMC', 'FAMF', 'FAMS', 'FAMS:CENS:DATE', 'FAMS:CENS:PLAC',
+		'EVEN:PLAC', 'EVEN:TYPE', 'FACT', 'FACT:TYPE', 'FAM', 'FAMC', 'FAMF', 'FAMS', 'FAMS:CENS:DATE', 'FAMS:CENS:PLAC',
 		'FAMS:DIV:DATE', 'FAMS:MARR:DATE', 'FAMS:MARR:PLAC', 'FAMS:NOTE',
 		'FAX', 'FCOM', 'FCOM:DATE',
 		'FCOM:PLAC', 'FILE', 'FONE', 'FORM', 'GEDC', 'GIVN', 'GRAD',
@@ -430,10 +430,14 @@ class GedcomTag {
 			return I18N::translate('Date of event');
 		case 'EVEN:PLAC':
 			return I18N::translate('Place of event');
+		case 'EVEN:TYPE':
+			return I18N::translate('Type of event');
 		case 'FACT':
 			return
 				/* I18N: gedcom tag FACT */
 				I18N::translate('Fact');
+		case 'FACT:TYPE':
+			return I18N::translate('Type of fact');
 		case 'FAM':
 			return
 				/* I18N: gedcom tag FAM */
