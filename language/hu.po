@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-05 15:25+0000\n"
+"PO-Revision-Date: 2016-06-06 11:11+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -5337,7 +5337,7 @@ msgstr "A felhasználó kedvenc oldalainak megjelenítése és kezelése."
 
 #: app/Module/GoogleMapsModule.php:489
 msgid "Display map coordinates"
-msgstr "A térkép koordinátáinak megjelenítése"
+msgstr "Térképkoordináták megjelenítése"
 
 #. I18N: gedcom tag DIV
 #: app/GedcomTag.php:374
@@ -5611,7 +5611,7 @@ msgstr "Elektronikus"
 #. I18N: Angle of elevation (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2724
 msgid "Elevation"
-msgstr "Magasság"
+msgstr "Emelkedés"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:148
@@ -10248,7 +10248,7 @@ msgstr "Elemek száma"
 #: app/Module/TopGivenNamesModule.php:146
 #: app/Module/TopPageViewsModule.php:159 app/Module/TopSurnamesModule.php:168
 msgid "Number of items to show"
-msgstr "Mutatandó elemek maximális száma"
+msgstr "Mutatandó elemek száma"
 
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:630
@@ -11477,7 +11477,7 @@ msgstr "Regina, Saskatchewan, Kanada"
 
 #: app/GedcomTag.php:580 modules_v3/fact_sources/report.xml:205
 msgid "Registered partnership"
-msgstr "Élettársi kapcsolat"
+msgstr "Bejegyzett kapcsolat"
 
 #: app/GedcomCode/GedcomCodeRela.php:227
 msgid "Registry officer"
@@ -12090,7 +12090,7 @@ msgstr "Válasszon eseményt"
 
 #: app/Module/GoogleMapsModule.php:529
 msgid "Select flag"
-msgstr "Válasszon zászlót"
+msgstr "Zászlóválasztás"
 
 #: lifespan.php:41
 msgid "Select individuals by place or date"
@@ -13384,7 +13384,7 @@ msgstr "Történetcím"
 #. I18N: Part of a country, state/region/county
 #: app/Module/GoogleMapsModule.php:701 app/Module/GoogleMapsModule.php:1560
 msgid "Subdivision"
-msgstr "Felosztás"
+msgstr "Részterület"
 
 #: app/Module/UserMessagesModule.php:112 message.php:119
 msgid "Subject"
@@ -13676,7 +13676,7 @@ msgstr "A PHP ideiglenes mappa hiányzik."
 
 #: admin_trees_manage.php:704
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-msgstr "A PhpGedView–webtrees-varázsló egy automatikus folyamat, amely segíti a rendszergazdát a PhpGedView-rendszerről az új webtrees-változatra való áttérésben. Áthelyezi a teljes PhpGedView GEDCOM- és egyéb adatbázis-információt közvetlenül az Ön új webtrees-adatbázisába. A következő kellékekre van szükség:"
+msgstr "A PhpGedView–webtreesvarázsló egy automatikus folyamat, amely segíti a rendszergazdát a PhpGedView-rendszerről az új webtreesváltozatra való áttérésben. Áthelyezi a teljes PhpGedView GEDCOM- és egyéb adatbázis-információt közvetlenül az Ön új webtreesadatbázisába. A következő kellékekre van szükség:"
 
 #: admin_users.php:101
 #, php-format
@@ -13854,7 +13854,7 @@ msgstr "A következő lista a tipikus követelményeket mutatja."
 
 #: message.php:300 message.php:303
 msgid "The following message has been sent to your webtrees user account from "
-msgstr "A webtrees-felhasználó fiókjába a következő üzenetet küldtük erről a címről "
+msgstr "A webtreesfelhasználó fiókjába a következő üzenetet küldtük erről a címről "
 
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
@@ -14055,7 +14055,7 @@ msgstr "A(z) %s bélyegképfájl nem létezik."
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:290
 msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-msgstr "Az idő másodpercben, amíg aktív a webtrees-munkamenet, és mielőtt be kellene jelentkezni. Az alapértelmezett érték 7200, ami 2 óra."
+msgstr "Az idő másodpercben, amíg aktív a webtreesmunkamenet, és mielőtt újra be kellene jelentkezni. Az alapértelmezett érték 7200, ami 2 óra."
 
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
@@ -14262,7 +14262,7 @@ msgstr "Ez a jelölőnégyzet vezérli az Ön láthatóságát, amíg ki nem jel
 
 #: setup.php:348 setup.php:359
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
-msgstr "Úgy tűnik, ezt az adatbázis- és táblaelőtagot egy másik alkalmazás használja. Ha van egy létező PhpGedView-rendszere, létre kell hoznia egy új webtrees-rendszert. A PhpGedView-adatokat és -beállításokat később betöltheti."
+msgstr "Úgy tűnik, ezt az adatbázis- és táblaelőtagot egy másik alkalmazás használja. Ha van egy létező PhpGedView-rendszere, létre kell hoznia egy új webtreesrendszert. A PhpGedView-adatokat és -beállításokat később betöltheti."
 
 #: setup.php:255
 #, php-format
@@ -14518,7 +14518,7 @@ msgstr "Ez gondot okozhat más alkalmazások számára."
 
 #: admin_trees_check.php:133
 msgid "This may cause a problem for webtrees."
-msgstr "Ez gondot okozhat a webtrees-nek."
+msgstr "Ez gondot okozhat a webtreesnek."
 
 #: admin_media.php:509
 msgid "This media file does not exist."
@@ -14823,7 +14823,7 @@ msgstr "Ez törli a(z) „%s” összes származástani adatát, és felváltja 
 
 #: admin_trees_places.php:97
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Ez frissíti a helynév legmagasabb szintű részét vagy részeit. Például „Mexico” illeszkedik majd „Quintana Roo, Mexico”-hoz, szemben „Santa Fe, New Mexico”-val."
+msgstr "Az űrlap segítségével frissítheti a helynév legmagasabb szintű részét vagy részeit. Például „Mexico”-nak megfelel majd „Quintana Roo, Mexico”, „Santa Fe, New Mexico” viszont nem."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:668
@@ -20163,7 +20163,7 @@ msgstr "A webtrees nem tud csatlakozni a PhpGedView adatbázisához: %s."
 
 #: message.php:40 message.php:260 message.php:322
 msgid "webtrees message"
-msgstr "webtrees-üzenet"
+msgstr "webtreesüzenet"
 
 #: setup.php:273
 #, php-format
@@ -20178,7 +20178,7 @@ msgstr "A webtrees automatikusan küld leveleket, például jelszó-emlékeztet�
 #. I18N: A configuration setting
 #: admin_trees_config.php:868
 msgid "webtrees reply address"
-msgstr "webtrees-válaszcím"
+msgstr "webtreesválaszcím"
 
 #: app/Functions/FunctionsEdit.php:248
 msgid "webtrees sends emails with no storage"
