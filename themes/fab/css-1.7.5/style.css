@@ -445,6 +445,10 @@ a:hover .nameZoom {
 	vertical-align: bottom;
 }
 
+#family-table .subheaders:first-child {
+	width: 295px;
+}
+
 .age {
 	font-size: 9px;
 }
