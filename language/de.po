@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-05 14:47+0000\n"
+"PO-Revision-Date: 2016-06-07 15:09+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -841,12 +841,12 @@ msgstr "Eine Liste von Jubiläen in der nächsten Zeit."
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr "Eine Liste der beliebtesten Vornamen."
+msgstr "Eine Liste der häufigsten Vornamen."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr "Eine Liste der am meisten verbreiteten Nachnamen."
+msgstr "Eine Liste der häufigsten Nachnamen."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
@@ -2224,7 +2224,7 @@ msgstr "Ereignisse mit dieser Quelle verbinden"
 
 #: search.php:107 search.php:266
 msgid "Associates"
-msgstr "Beziehungen"
+msgstr "Verbundene Personen"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:91
@@ -12758,7 +12758,7 @@ msgstr "Verwandtschaft zu privaten Personen zeigen"
 
 #: search.php:112 search.php:270
 msgid "Show related individuals/families"
-msgstr "Verwandte Personen/Familien zeigen"
+msgstr "Verbundene Personen/Familien anzeigen"
 
 #: app/Module/ResearchTaskModule.php:212
 msgid "Show research tasks that are assigned to other users"
