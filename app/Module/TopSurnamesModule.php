@@ -104,11 +104,11 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 			break;
 		case 'list':
 			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
-			$content = FunctionsPrintLists::surnameList($all_surnames, '1', true, 'indilist.php', $WT_TREE);
+			$content = FunctionsPrintLists::surnameList($all_surnames, 1, true, 'indilist.php', $WT_TREE);
 			break;
 		case 'array':
 			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
-			$content = FunctionsPrintLists::surnameList($all_surnames, '2', true, 'indilist.php', $WT_TREE);
+			$content = FunctionsPrintLists::surnameList($all_surnames, 2, true, 'indilist.php', $WT_TREE);
 			break;
 		case 'table':
 		default:
@@ -154,7 +154,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Number of items to show');
+		echo I18N::translate('Number of surnames');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
 		echo '</td></tr>';

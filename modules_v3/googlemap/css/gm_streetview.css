@@ -1,0 +1,35 @@
+body{
+	margin: 0;
+}
+
+#mapCanvas {
+	width: 520px;
+	height: 350px;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+
+#toggle form {
+	margin-bottom: 4px;
+}
+
+#infoPanel {
+	display: none;
+	margin: 5px auto 0;
+}
+
+#infoPanel div {
+	display: none;
+	margin-bottom: 5px;
+	background: #ffffff;
+}
+
+div {
+	text-align: center;
+}
+
+.gm-iv-address-link a {
+	top: 50px;
+	left: 20px;
+}
+

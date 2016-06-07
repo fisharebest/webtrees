@@ -1151,6 +1151,10 @@ a:hover .nameZoom {
 	padding: 5px;
 }
 
+#login-form div label {
+	text-align: right;
+}
+
 #register-form,
 #verify-form {
 	width: 440px;
@@ -2138,6 +2142,10 @@ dd .deletelink {
 }
 
 /* === jquery-ui.css changes === */
+.ui-state-highlight a {
+	font-weight: bold;
+}
+
 .ui-tabs .ui-tabs-panel {
 	border-radius: 4px;
 	padding: 4px;

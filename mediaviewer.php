@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 define('WT_SCRIPT_NAME', 'mediaviewer.php');
 require './includes/session.php';
 
-$record = Media::getInstance(Filter::get('mid', WT_REGEX_XREF), $WT_TREE);
+$record     = Media::getInstance(Filter::get('mid', WT_REGEX_XREF), $WT_TREE);
 $controller = new MediaController($record);
 
 if ($controller->record && $controller->record->canShow()) {

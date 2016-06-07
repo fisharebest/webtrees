@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-24 09:24+0000\n"
+"PO-Revision-Date: 2016-06-05 14:47+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -846,7 +846,7 @@ msgstr "Eine Liste der beliebtesten Vornamen."
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr "Eine Liste der am meisten verbreiteten Vornamen."
+msgstr "Eine Liste der am meisten verbreiteten Nachnamen."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
@@ -1402,7 +1402,7 @@ msgstr "Einen FAQ-Eintrag hinzufügen"
 
 #: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
 msgid "Add an associate"
-msgstr "Eine Beziehung hinzufügen"
+msgstr "Eine verbundene Person hinzufügen"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -1938,11 +1938,11 @@ msgstr "Eine alternative An- oder Abmeldemöglichkeit."
 
 #: app/Functions/FunctionsEdit.php:916
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr "Eine „verbundene Person“ ist eine Person, die bei einem Ereignis beteiligt war, z.B. ein Zeuge oder ein Geistlicher."
+msgstr "Eine \"verbundene Person\" ist eine Person, die bei einem Ereignis beteiligt war, z.B. ein Zeuge oder ein Geistlicher."
 
 #: app/Functions/FunctionsEdit.php:914
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr "Eine „verbundene Person“ ist eine Person, die Umgang mit dieser Person hatte, z.B. ein Freund oder Arbeitgeber."
+msgstr "Eine \"verbundene Person\" ist eine Person, die Umgang mit dieser Person hatte, z.B. ein Freund oder Arbeitgeber."
 
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:33
@@ -2216,7 +2216,7 @@ msgstr "Asien"
 #. I18N: gedcom tag _ASSO
 #: app/GedcomTag.php:166 app/GedcomTag.php:968
 msgid "Associate"
-msgstr "Beziehung"
+msgstr "Verbundene Person"
 
 #: edit_interface.php:1241 help_text.php:292
 msgid "Associate events with this source"
@@ -3812,7 +3812,7 @@ msgstr "Standesbeamter"
 #: app/GedcomCode/GedcomCodeRela.php:96
 msgctxt "FEMALE"
 msgid "Civil registrar"
-msgstr "Standesbeamter"
+msgstr "Standesbeamtin"
 
 #: app/GedcomCode/GedcomCodeRela.php:94
 msgctxt "MALE"
@@ -11514,7 +11514,7 @@ msgstr "Verwandte Personen"
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:716
 msgid "Relationship"
-msgstr "Verwandtschaft"
+msgstr "Beziehung"
 
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1501

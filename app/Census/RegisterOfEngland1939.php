@@ -42,7 +42,7 @@ class RegisterOfEngland1939 extends CensusOfEngland implements CensusInterface {
 			new CensusColumnSexMF($this, 'Sex', 'Male or Female'),
 			new CensusColumnBirthDayMonthSlashYear($this, 'DOB', 'Date of birth'),
 			new CensusColumnConditionEnglish($this, 'MC', 'Marital Condition - Married, Single, Unmarried, Widowed or Divorced'),
-			new CensusColumnOccupation($this, 'Occupation', 'Occupation')
+			new CensusColumnOccupation($this, 'Occupation', 'Occupation'),
 		);
 	}
 }

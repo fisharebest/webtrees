@@ -212,6 +212,7 @@ case 'load_json':
 				preg_replace_callback('/@(' . WT_REGEX_XREF . ')@/',
 					function ($match) use ($gedc) {
 						$record = GedcomRecord::getInstance($match[1], Tree::findByName($gedc));
+
 						return $record ? '<a href="#" onclick="return edit_raw(\'' . $match[1] . '\');">' . $match[0] . '</a>' : $match[0];
 					},
 					implode("\n", $diff_lines)

@@ -52,7 +52,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
 	public function defaultAccessLevel() {
 		return Auth::PRIV_PRIVATE;
 	}
-	
+
 	/**
 	 * Return a menu item for this chart.
 	 *
@@ -60,13 +60,13 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
 	 */
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
-			$this->getTitle(), 
-			'compact.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(), 
-			'menu-chart-compact', 
+			$this->getTitle(),
+			'compact.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
+			'menu-chart-compact',
 			array('rel' => 'nofollow')
 		);
 	}
-	
+
 	/**
 	 * Return a menu item for this chart - for use in individual boxes.
 	 *

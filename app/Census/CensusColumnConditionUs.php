@@ -28,7 +28,7 @@ class CensusColumnConditionUs extends CensusColumnConditionEnglish {
 	protected $spinster = 'S';
 
 	/* Text to display for children */
-	protected $boy = 'S';
+	protected $boy  = 'S';
 	protected $girl = 'S';
 
 	/* Text to display for divorced individuals */

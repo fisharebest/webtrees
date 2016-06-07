@@ -56,7 +56,7 @@ class FunctionsImport {
 		$newrec = '';
 		foreach ($matches as $n => $match) {
 			list(, $level, $xref, $tag, $data) = $match;
-			$tag = strtoupper($tag); // Tags should always be upper case
+			$tag                               = strtoupper($tag); // Tags should always be upper case
 			switch ($tag) {
 				// Convert PhpGedView tags to WT
 			case '_PGVU':
@@ -188,7 +188,7 @@ class FunctionsImport {
 				// Preserve text from INT dates
 				if (strpos($data, '(') !== false) {
 					list($date, $text) = explode('(', $data, 2);
-					$text = ' (' . $text;
+					$text              = ' (' . $text;
 				} else {
 					$date = $data;
 					$text = '';

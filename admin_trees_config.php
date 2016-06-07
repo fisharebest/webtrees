@@ -203,9 +203,6 @@ case 'general':
 		Filter::post('CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
 	))));
 	$WT_TREE->setPreference('CHART_BOX_TAGS', Filter::post('CHART_BOX_TAGS'));
-	$WT_TREE->setPreference('COMMON_NAMES_ADD', str_replace(' ', '', Filter::post('COMMON_NAMES_ADD')));
-	$WT_TREE->setPreference('COMMON_NAMES_REMOVE', str_replace(' ', '', Filter::post('COMMON_NAMES_REMOVE')));
-	$WT_TREE->setPreference('COMMON_NAMES_THRESHOLD', Filter::post('COMMON_NAMES_THRESHOLD', WT_REGEX_INTEGER, 40));
 	$WT_TREE->setPreference('CONTACT_USER_ID', Filter::post('CONTACT_USER_ID'));
 	$WT_TREE->setPreference('DEFAULT_PEDIGREE_GENERATIONS', Filter::post('DEFAULT_PEDIGREE_GENERATIONS'));
 	$WT_TREE->setPreference('EXPAND_NOTES', Filter::postBool('EXPAND_NOTES'));
@@ -1155,71 +1152,6 @@ $controller
 			<?php echo FunctionsEdit::selectEditControl('SHOW_NO_WATERMARK', $privacy, null, $WT_TREE->getPreference('SHOW_NO_WATERMARK'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Images without watermarks” configuration setting */ I18N::translate('Watermarks are optional and normally shown just to visitors.'); ?>
-			</p>
-		</div>
-	</div>
-
-	<h3><?php echo I18N::translate('Layout'); ?></h3>
-
-	<h3><?php echo I18N::translate('Names'); ?></h3>
-
-	<!-- COMMON_NAMES_THRESHOLD -->
-	<div class="form-group">
-		<label class="control-label col-sm-3" for="COMMON_NAMES_THRESHOLD">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Minimum number of occurrences to be a “common surname”'); ?>
-		</label>
-		<div class="col-sm-9">
-			<input
-				class="form-control"
-				id="COMMON_NAMES_THRESHOLD"
-				maxlength="5"
-				name="COMMON_NAMES_THRESHOLD"
-				required
-				type="text"
-				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD')); ?>"
-				>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Minimum number of occurrences to be a ‘common surname’” configuration setting */ I18N::translate('This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”.'); ?>
-			</p>
-		</div>
-	</div>
-
-	<!-- COMMON_NAMES_ADD -->
-	<div class="form-group">
-		<label class="control-label col-sm-3" for="COMMON_NAMES_ADD">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Names to add to common surnames (comma separated)'); ?>
-		</label>
-		<div class="col-sm-9">
-			<input
-				class="form-control"
-				id="COMMON_NAMES_ADD"
-				maxlength="255"
-				name="COMMON_NAMES_ADD"
-				type="text"
-				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_ADD')); ?>"
-				>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting */ I18N::translate('If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>'); ?>
-			</p>
-		</div>
-	</div>
-
-	<!-- COMMON_NAMES_REMOVE -->
-	<div class="form-group">
-		<label class="control-label col-sm-3" for="COMMON_NAMES_REMOVE">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Names to remove from common surnames (comma separated)'); ?>
-		</label>
-		<div class="col-sm-9">
-			<input
-				class="form-control"
-				id="COMMON_NAMES_REMOVE"
-				maxlength="255"
-				name="COMMON_NAMES_REMOVE"
-				type="text"
-				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_REMOVE')); ?>"
-				>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting */ I18N::translate('If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”.'); ?>
 			</p>
 		</div>
 	</div>

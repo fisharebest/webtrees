@@ -1698,26 +1698,57 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * Create the search menu
+	 * Create the search menu.
 	 *
 	 * @return Menu
 	 */
 	protected function menuSearch() {
-		//-- main search menu item
-		$menu = new Menu(I18N::translate('Search'), '#', 'menu-search', array('rel' => 'nofollow'));
-		//-- search_general sub menu
-		$menu->addSubmenu(new Menu(I18N::translate('General search'), 'search.php?' . $this->tree_url, 'menu-search-general', array('rel' => 'nofollow')));
-		//-- search_soundex sub menu
-		$menu->addSubmenu(new Menu(/* I18N: search using “sounds like”, rather than exact spelling */
-			I18N::translate('Phonetic search'), 'search.php?' . $this->tree_url . '&amp;action=soundex', 'menu-search-soundex', array('rel' => 'nofollow')));
-		//-- advanced search
-		$menu->addSubmenu(new Menu(I18N::translate('Advanced search'), 'search_advanced.php?' . $this->tree_url, 'menu-search-advanced', array('rel' => 'nofollow')));
-		//-- search_replace sub menu
-		if (Auth::isEditor($this->tree)) {
-			$menu->addSubmenu(new Menu(I18N::translate('Search and replace'), 'search.php?' . $this->tree_url . '&amp;action=replace', 'menu-search-replace'));
-		}
+		return new Menu(I18N::translate('Search'), '#', 'menu-search', array('rel' => 'nofollow'), array_filter(array(
+			$this->menuSearchGeneral(),
+			$this->menuSearchPhonetic(),
+			$this->menuSearchAdvanced(),
+			$this->menuSearchAndReplace(),
+		)));
+	}
 
-		return $menu;
+	/**
+	 * Create the general search sub-menu.
+	 *
+	 * @return Menu
+	 */
+	protected function menuSearchGeneral() {
+		return new Menu(I18N::translate('General search'), 'search.php?' . $this->tree_url, 'menu-search-general', array('rel' => 'nofollow'));
+	}
+
+	/**
+	 * Create the phonetic search sub-menu.
+	 *
+	 * @return Menu
+	 */
+	protected function menuSearchPhonetic() {
+		return new Menu(/* I18N: search using “sounds like”, rather than exact spelling */ I18N::translate('Phonetic search'), 'search.php?' . $this->tree_url . '&amp;action=soundex', 'menu-search-soundex', array('rel' => 'nofollow'));
+	}
+
+	/**
+	 * Create the advanced search sub-menu.
+	 *
+	 * @return Menu
+	 */
+	protected function menuSearchAdvanced() {
+		return new Menu(I18N::translate('Advanced search'), 'search_advanced.php?' . $this->tree_url, 'menu-search-advanced', array('rel' => 'nofollow'));
+	}
+
+	/**
+	 * Create the advanced search sub-menu.
+	 *
+	 * @return Menu
+	 */
+	protected function menuSearchAndReplace() {
+		if (Auth::isEditor($this->tree)) {
+			return new Menu(I18N::translate('Search and replace'), 'search.php?' . $this->tree_url . '&amp;action=replace', 'menu-search-replace');
+		} else {
+			return null;
+		}
 	}
 
 	/**

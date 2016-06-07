@@ -106,8 +106,8 @@ class AdvancedSearchController extends SearchController {
 			'EMAIL',
 			'EMIG:DATE', 'EMIG:PLAC',
 			'ENDL:DATE', 'ENDL:PLAC',
-			'EVEN',
-			'EVEN:DATE', 'EVEN:PLAC',
+			'EVEN', 'EVEN:TYPE', 'EVEN:DATE', 'EVEN:PLAC',
+			'FACT', 'FACT:TYPE',
 			'FAMS:CENS:DATE', 'FAMS:CENS:PLAC',
 			'FAMS:DIV:DATE',
 			'FAMS:NOTE',
@@ -621,10 +621,15 @@ class AdvancedSearchController extends SearchController {
 					}
 					break;
 				}
-			} elseif ($parts[0] == 'FAMS') {
+			} elseif ($parts[0] === 'FAMS') {
 				// e.g. searches for occupation, religion, note, etc.
 				$sql .= " AND fam.f_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
 				$bind[] = $parts[1];
+				$bind[] = $value;
+			} elseif ($parts[1] === 'TYPE') {
+				// e.g. FACT:TYPE or EVEN:TYPE
+				$sql .= " AND ind.i_gedcom REGEXP CONCAT('\n1 ', ?, '.*(\n[2-9] .*)*\n2 TYPE .*', ?)";
+				$bind[] = $parts[0];
 				$bind[] = $value;
 			} else {
 				// e.g. searches for occupation, religion, note, etc.

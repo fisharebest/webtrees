@@ -52,7 +52,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 	public function defaultAccessLevel() {
 		return Auth::PRIV_PRIVATE;
 	}
-	
+
 	/**
 	 * Return a menu item for this chart.
 	 *
@@ -60,13 +60,13 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 	 */
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
-			$this->getTitle(), 
-			'statistics.php?ged=' . $individual->getTree()->getNameUrl(), 
-			'menu-chart-statistics', 
+			$this->getTitle(),
+			'statistics.php?ged=' . $individual->getTree()->getNameUrl(),
+			'menu-chart-statistics',
 			array('rel' => 'nofollow')
 		);
 	}
-	
+
 	/**
 	 * Return a menu item for this chart - for use in individual boxes.
 	 *

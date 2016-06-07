@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 define('WT_SCRIPT_NAME', 'repo.php');
 require './includes/session.php';
 
-$record = Repository::getInstance(Filter::get('rid', WT_REGEX_XREF), $WT_TREE);
+$record     = Repository::getInstance(Filter::get('rid', WT_REGEX_XREF), $WT_TREE);
 $controller = new RepositoryController($record);
 
 if ($controller->record && $controller->record->canShow()) {

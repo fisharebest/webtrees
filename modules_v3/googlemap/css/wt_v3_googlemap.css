@@ -13,6 +13,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#place_hierarchy {
+	margin-top: 10px;
+}
+
+#map_pane {
+	border: 1px solid gray;
+	color: black;
+	width: 100%;
+}
+
 div.infowindow {
 	max-height: 240px;
 	overflow-x: hidden;
@@ -82,14 +92,31 @@ h4 {
 	margin-top: 0;
 }
 
-.highlt_img {
-	background-color: #eee;
-	text-align: center;
+.info_event {
+	width: 100%;
+	min-height: 50px;
+	margin: 5px 0;
+	padding: 0 3px;
+	border-bottom: 1px dotted #aaa;
 }
 
-.highlt_img img {
-	border: none;
-	float: none;
+.sp1 {
+	float: left;
+	color: #00f;
+	font-weight: 400;
+}
+
+[dir=rtl] .sp1 {
+	float: right;
+}
+
+.highlt_img {
+	float: right;
+	padding: 0 3px;
+}
+
+[dir=rtl] .highlt_img {
+	float: left;
 }
 
 /* root element for tabs */
@@ -215,9 +242,10 @@ ul.tabs a.current {
 .iwstyle .gallery img,
 .highlt_img .gallery img {
 	float: left;
-	height: 50px;
-	margin: 0 4px 0 0;
-	max-width: 50px;
+	height: auto;
+	margin: 0 4px;
+	max-height: 50px;
+	max-width: 36px;
 	width: auto;
 }
 
@@ -264,4 +292,78 @@ ul.tabs a.current {
 
 [dir=rtl] #side_bar img {
 	padding-left: 5px;
+}
+
+.gmpref {
+	border: solid 1px gray;
+	background: #cccccc;
+	height: 21px;
+}
+
+.gmpref a {
+	font: 10px verdana;
+	color: blue;
+}
+
+.gmpref a:hover {
+	color: red;
+}
+
+.gm-style-iw {
+	font-size: 12px !important;
+}
+
+#place_map_links {
+	margin: 1px auto;
+	text-align: center;
+	border: 1px solid black;
+	background-color: #ccc;
+	height: 20px;
+}
+
+#place_map_links a {
+	color: #00f;
+}
+
+#place_map_links a:hover {
+	color: #f00;
+}
+
+#sv_frame {
+	overflow: hidden;
+	width: 530px;
+	padding: 0;
+	border: 0;
+	display: block;
+}
+
+#sv_parameters {
+	margin-left: 4px;
+	border: solid 1px black;
+	width: 520px;
+	margin-top: -7px;
+	background: #cccccc;
+}
+
+#sv_parameters form {
+	text-align: left;
+	margin-left: 5px;
+	font: 10px verdana;
+	color: blue;
+}
+
+#sv_parameters input {
+	padding: 0;
+	margin: 0;
+}
+
+#sv_latiText,
+#sv_longText,
+#sv_bearText,
+#sv_elevText,
+#sv_zoomText {
+	font-size: inherit;
+	text-overflow: ellipsis;
+	background: none;
+	border: none;
 }

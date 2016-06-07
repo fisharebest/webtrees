@@ -125,7 +125,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 	/**
 	 * Action from the configuration page
 	 */
-		private function edit() {
+	private function edit() {
 		global $WT_TREE;
 
 		$controller = new PageController;

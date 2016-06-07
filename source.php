@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 define('WT_SCRIPT_NAME', 'source.php');
 require './includes/session.php';
 
-$record = Source::getInstance(Filter::get('sid', WT_REGEX_XREF), $WT_TREE);
+$record     = Source::getInstance(Filter::get('sid', WT_REGEX_XREF), $WT_TREE);
 $controller = new SourceController($record);
 
 if ($controller->record && $controller->record->canShow()) {

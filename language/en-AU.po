@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-07 21:40+0000\n"
+"PO-Revision-Date: 2016-06-06 22:22+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (Australia) <https://translate.webtrees.net/projects/webtrees/webtrees/en-AU/>\n"
 "Language: en-AU\n"
@@ -4584,7 +4584,7 @@ msgstr "Date of marriage banns"
 
 #: app/GedcomTag.php:616
 msgid "Date of naturalization"
-msgstr "Date of Naturalisation"
+msgstr "Date of naturalisation"
 
 #: app/GedcomTag.php:664
 msgid "Date of ordination"
@@ -8626,6 +8626,11 @@ msgstr "Manage family trees"
 msgid "Manage media"
 msgstr "Manage media"
 
+#: admin_media.php:535 app/Controller/MediaController.php:49
+#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
+msgid "Manage the links"
+msgstr "Manage the links"
+
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:558
 #: app/Module/ClippingsCartModule.php:390
@@ -8636,11 +8641,6 @@ msgstr "Manager"
 #: admin.php:665
 msgid "Managers"
 msgstr "Managers"
-
-#: admin_media.php:535 app/Controller/MediaController.php:49
-#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
-msgid "Manage the links"
-msgstr "Manage the links"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201

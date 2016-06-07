@@ -18,9 +18,10 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Query\QueryName;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Theme;
 
@@ -28,6 +29,9 @@ use Fisharebest\Webtrees\Theme;
  * Class FamilyTreeStatisticsModule
  */
 class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockInterface {
+	/** Show this number of surnames by default */
+	const DEFAULT_NUMBER_OF_SURNAMES = 10;
+
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Statistics');
@@ -52,6 +56,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
 		$show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
 		$show_common_surnames = $this->getBlockSetting($block_id, 'show_common_surnames', '1');
+		$number_of_surnames   = $this->getBlockSetting($block_id, 'number_of_surnames', self::DEFAULT_NUMBER_OF_SURNAMES);
 		$stat_indi            = $this->getBlockSetting($block_id, 'stat_indi', '1');
 		$stat_fam             = $this->getBlockSetting($block_id, 'stat_fam', '1');
 		$stat_sour            = $this->getBlockSetting($block_id, 'stat_sour', '1');
@@ -70,10 +75,9 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		$stat_avg_chil        = $this->getBlockSetting($block_id, 'stat_avg_chil', '1');
 
 		// This can be overriden when embedding in an HTML block
-		$block     = '0';
-		$stat_link = '1';
+		$block = '0';
 
-		foreach (array('show_common_surnames', 'stat_indi', 'stat_fam', 'stat_sour', 'stat_media', 'stat_surname', 'stat_events', 'stat_users', 'stat_first_birth', 'stat_last_birth', 'stat_first_death', 'stat_last_death', 'stat_long_life', 'stat_avg_life', 'stat_most_chil', 'stat_avg_chil', 'stat_link', 'block') as $name) {
+		foreach (array('show_common_surnames', 'number_common_surnames', 'stat_indi', 'stat_fam', 'stat_sour', 'stat_media', 'stat_surname', 'stat_events', 'stat_users', 'stat_first_birth', 'stat_last_birth', 'stat_first_death', 'stat_last_death', 'stat_long_life', 'stat_avg_life', 'stat_most_chil', 'stat_avg_chil', 'block') as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -193,27 +197,22 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 			$content .= '</div>';
 		}
 		$content .= '</div>';
-		if ($stat_link && Module::isActiveChart($WT_TREE, 'statistics_chart')) {
-			$content .= '<div class="clearfloat">';
-			$content .= '<p>';
-			$content .= '<a href="statistics.php?ged=' . $WT_TREE->getNameUrl() . '" rel="nofollow"><b>' . I18N::translate('View the statistics as graphs') . '</b></a>';
-			$content .= '</p>';
-			$content .= '</div>';
-		}
 
 		if ($show_common_surnames) {
-			$surnames = FunctionsDb::getCommonSurnames($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'), $WT_TREE);
-			$surnames = array_map(function ($x) use ($WT_TREE) {
-				return '<a href="indilist.php?ged=' . $WT_TREE->getNameUrl() . '&amp;surname=' . Filter::escapeUrl($x['name']) . '">' . Filter::escapeHtml($x['name']) . '</a>';
-			}, $surnames);
-			$surnames = implode(I18N::$list_separator, $surnames);
+			$surnames = FunctionsDb::getTopSurnames($WT_TREE->getTreeId(), 0, (int) $number_of_surnames);
 
-			if ($surnames) {
+			$all_surnames = array();
+			foreach (array_keys($surnames) as $surname) {
+				$all_surnames = array_merge($all_surnames, QueryName::surnames($WT_TREE, $surname, '', false, false));
+			}
+
+			if (!empty($surnames)) {
+				ksort($all_surnames);
 				$content .= '<div class="clearfloat">';
 				$content .= '<p>';
 				$content .= '<strong>' . I18N::translate('Most common surnames') . '</strong>';
 				$content .= '<br>';
-				$content .= '<span class="common_surnames">' . $surnames . '</span>';
+				$content .= '<span class="common_surnames">' . FunctionsPrintLists::surnameList($all_surnames, 2, false, 'indilist.php', $WT_TREE) . '</span>';
 				$content .= '</p>';
 				$content .= '</div>';
 			}
@@ -250,6 +249,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'show_last_update', Filter::postBool('show_last_update'));
 			$this->setBlockSetting($block_id, 'show_common_surnames', Filter::postBool('show_common_surnames'));
+			$this->setBlockSetting($block_id, 'number_of_surnames', Filter::postInteger('number_of_surnames'));
 			$this->setBlockSetting($block_id, 'stat_indi', Filter::postBool('stat_indi'));
 			$this->setBlockSetting($block_id, 'stat_fam', Filter::postBool('stat_fam'));
 			$this->setBlockSetting($block_id, 'stat_sour', Filter::postBool('stat_sour'));
@@ -271,6 +271,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
 		$show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
 		$show_common_surnames = $this->getBlockSetting($block_id, 'show_common_surnames', '1');
+		$number_of_surnames   = $this->getBlockSetting($block_id, 'number_of_surnames', self::DEFAULT_NUMBER_OF_SURNAMES);
 		$stat_indi            = $this->getBlockSetting($block_id, 'stat_indi', '1');
 		$stat_fam             = $this->getBlockSetting($block_id, 'stat_fam', '1');
 		$stat_sour            = $this->getBlockSetting($block_id, 'stat_sour', '1');
@@ -291,23 +292,18 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		?>
 		<tr>
 			<td class="descriptionbox wrap width33">
-				<?php echo /* I18N: label for yes/no option */
-				I18N::translate('Show date of last update') ?>
+				<label for="show-last-update">
+					<?php echo /* I18N: label for yes/no option */ I18N::translate('Show date of last update') ?>
+				</label>
 			</td>
 			<td class="optionbox">
-				<?php echo FunctionsEdit::editFieldYesNo('show_last_update', $show_last_update) ?>
+				<input type="checkbox" value="yes" id="show-last-update" name="show_last_update" <?php echo $show_last_update ? 'checked' : ''; ?>>
 			</td>
 		</tr>
 		<tr>
 			<td class="descriptionbox wrap width33">
-				<?php echo I18N::translate('Show common surnames') ?>
+				<?php echo I18N::translate('Statistics'); ?>
 			</td>
-			<td class="optionbox">
-				<?php echo FunctionsEdit::editFieldYesNo('show_common_surnames', $show_common_surnames) ?>
-			</td>
-		</tr>
-		<tr>
-			<td class="descriptionbox wrap width33"><?php echo I18N::translate('Select the stats to show in this block'); ?></td>
 			<td class="optionbox">
 				<table>
 					<tbody>
@@ -425,6 +421,34 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 						</tr>
 					</tbody>
 				</table>
+			</td>
+		</tr>
+		<tr>
+			<td class="descriptionbox wrap width33">
+				<label for="show-common-surnames">
+					<?php echo I18N::translate('Most common surnames') ?>
+				</label>
+			</td>
+			<td class="optionbox">
+				<input type="checkbox" value="yes" id="show-common-surnames" name="show_common_surnames" <?php echo $show_common_surnames ? 'checked' : ''; ?>>
+			</td>
+		</tr>
+		<tr>
+			<td class="descriptionbox wrap width33">
+				<label for="number-of-surnames">
+					<?php echo I18N::translate('Number of surnames') ?>
+				</label>
+			</td>
+			<td class="optionbox">
+				<input
+					id="number-of-surnames"
+					maxlength="5"
+					name="number_of_surnames"
+					pattern="[1-9][0-9]*"
+					required
+					type="text"
+					value="<?php echo Filter::escapeHtml($number_of_surnames); ?>"
+				>
 			</td>
 		</tr>
 		<?php

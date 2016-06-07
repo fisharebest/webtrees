@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-26 10:42+0000\n"
+"PO-Revision-Date: 2016-06-06 11:11+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -126,16 +126,16 @@ msgstr[1] "%1$s fájl kibontása %2$s másodperc alatt kész."
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] "%1$s személy látható összesen %2$s, %3$s nemzedékből."
-msgstr[1] "%1$s személy látható összesen %2$s, %3$s nemzedékből."
+msgstr[0] "%1$s személy látható összesen ennyiből: %2$s, %3$s nemzedékből."
+msgstr[1] "%1$s személy látható összesen ennyiből: %2$s, %3$s nemzedékből."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:910
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "%1$s személynek hiányoznak a születési hely térképkoordinátái: %2$s."
-msgstr[1] "%1$s személynek hiányoznak a születési hely térképkoordinátái: %2$s."
+msgstr[0] "%1$s személy születési helyének térképkoordinátái hiányoznak: %2$s."
+msgstr[1] "%1$s személy születési helyének térképkoordinátái hiányoznak: %2$s."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:192
@@ -542,7 +542,7 @@ msgstr "%s, házastársai és leszármazottai"
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:624
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
-msgstr "&lt;kijelöl&gt;"
+msgstr "&lt;válasszon&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/I18N.php:328 app/I18N.php:332
@@ -708,11 +708,11 @@ msgstr "<b>Megjegyzés:</b> Élő személyek bizalmas információit csak a csal
 
 #: login.php:170
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
-msgstr "<center><b>Üdvözöljük ezen a származástani webhelyen!</b><center><br>E webhelyet kizárólag <u>engedéllyel ellátott</u> felhasználók érhetik el.<br><br>Amennyiben Ön rendelkezik felhasználói fiókkal, bejelentkezhet ezen az oldalon. Ha még nem, a megfelelő alábbi hivatkozásra kattintva kérhet egyet.<br><br>Az adatok ellenőrzése után a rendszergazda fogadja vagy visszautasítja az Ön fiókkérelmét. A kérése jóváhagyásáról e-mailben kap értesítést."
+msgstr "<center><b>Üdvözöljük ezen a származástani webhelyen!</b><center><br>E webhelyet kizárólag <u>engedéllyel ellátott</u> felhasználók érhetik el.<br><br>Amennyiben Ön rendelkezik felhasználói fiókkal, bejelentkezhet ezen az oldalon. Ha még nem, a megfelelő alábbi hivatkozásra kattintva kérhet egyet.<br><br>Az adatok ellenőrzése után a rendszergazda elfogadja vagy visszautasítja az Ön fiókkérelmét. A kérése jóváhagyásáról e-mailben kap értesítést."
 
 #: login.php:173
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
-msgstr "<center><b>Üdvözöljük ezen a származástani webhelyen!</b></center><br>A webhelyet <u>kizárólag családtagok</u> érhetik el.<br><br>Amennyiben Ön már rendelkezik felhasználói fiókkal, bejelentkezhet ezen az oldalon. Ha még nem, a megfelelő alábbi hivatkozásra kattintva kérhet egyet.<br><br>A megadott adatok ellenőrzése után a rendszergazda fogadja vagy visszautasítja az Ön fiókkérelmét. A kérése jóváhagyásáról e-mailben kap értesítést."
+msgstr "<center><b>Üdvözöljük ezen a származástani webhelyen!</b></center><br>A webhelyet <u>kizárólag családtagok</u> érhetik el.<br><br>Amennyiben Ön már rendelkezik felhasználói fiókkal, bejelentkezhet ezen az oldalon. Ha még nem, a megfelelő alábbi hivatkozásra kattintva kérhet egyet.<br><br>A megadott adatok ellenőrzése után a rendszergazda elfogadja vagy visszautasítja az Ön fiókkérelmét. A kérése jóváhagyásáról e-mailben kap értesítést."
 
 #: login.php:167
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
@@ -1262,7 +1262,7 @@ msgstr "Ádár séni"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:170
 #: timeline.php:304
 msgid "Add"
-msgstr "Hozzáad"
+msgstr "Felvétel"
 
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
@@ -1279,7 +1279,7 @@ msgstr "Új gyermek felvétele"
 
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
-msgstr "Gyermek felvétele egyszülős család létrehozása céljából"
+msgstr "Gyermek felvétele egyszülős család létrehozásához"
 
 #: app/Controller/FamilyController.php:82
 #: app/Functions/FunctionsCharts.php:310
@@ -1459,12 +1459,12 @@ msgstr "A GEDCOM-média elérési útvonalak fájlnevekhez adása"
 #. I18N: A configuration setting
 #: admin_trees_config.php:935
 msgid "Add to TITLE header tag"
-msgstr "A html-headerben a title címke toldaléka"
+msgstr "A html-headerben a titlecímke toldaléka"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
 msgid "Add to favorites"
-msgstr "Felvétel a kedvencek közé"
+msgstr "Tegyük a kedvencek közé"
 
 #: app/Module/ClippingsCartModule.php:106
 #: app/Module/ClippingsCartModule.php:151
@@ -1824,7 +1824,7 @@ msgstr "Élők"
 #: modules_v3/missing_facts_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "All"
-msgstr "Mindent"
+msgstr "Mind"
 
 #: admin_trees_manage.php:714
 msgid "All changes in PhpGedView must be accepted"
@@ -3284,7 +3284,7 @@ msgstr "Alapértelmezés szerint az SMTP a 25-ös porton fut."
 
 #: app/Module/GoogleMapsModule.php:4490
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
-msgstr "Alapértelmezés szerint a listában csak a családfájában található helyek szerepelnek. Amennyiben vannak adatok más helyekről is, ezeket ömlesztve egy fájlból lehet beimportálni. Bejelölve ezt az opciót, megjelennek azon helyek is, amelyeket eddig nem használt fel."
+msgstr "Alapértelmezés szerint a listában csak a családfájában található helyek szerepelnek. Amennyiben vannak adatok más helyekről is, ezeket ömlesztve egy fájlból lehet betölteni. Bejelölve ezt az opciót, megjelennek azon helyek is, amelyeket eddig nem használt fel."
 
 #: admin_site_config.php:217
 #, php-format
@@ -5337,7 +5337,7 @@ msgstr "A felhasználó kedvenc oldalainak megjelenítése és kezelése."
 
 #: app/Module/GoogleMapsModule.php:489
 msgid "Display map coordinates"
-msgstr "A térkép koordinátáinak megjelenítése"
+msgstr "Térképkoordináták megjelenítése"
 
 #. I18N: gedcom tag DIV
 #: app/GedcomTag.php:374
@@ -5611,7 +5611,7 @@ msgstr "Elektronikus"
 #. I18N: Angle of elevation (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2724
 msgid "Elevation"
-msgstr "Magasság"
+msgstr "Emelkedés"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:148
@@ -7534,7 +7534,7 @@ msgstr "Bevándorlás"
 
 #: admin_trees_manage.php:604 app/Module/GoogleMapsModule.php:4579
 msgid "Import"
-msgstr "Adatbetöltés"
+msgstr "Betöltés"
 
 #: admin_trees_manage.php:178
 msgid "Import a GEDCOM file"
@@ -8384,7 +8384,7 @@ msgstr "Rendelje a felhasználói fiókot egy személyhez."
 #: app/Module/RelativesTabModule.php:367 edit_interface.php:983
 #: edit_interface.php:1043
 msgid "Link this individual to an existing family as a child"
-msgstr "E személy felvétele egy létező család gyermekeként"
+msgstr "E személy egy létező családhoz kapcsolása gyermekként"
 
 #: admin_media.php:531 app/Controller/MediaController.php:57
 #: app/Controller/MediaController.php:127 app/Module/AlbumModule.php:178
@@ -10018,7 +10018,7 @@ msgstr "Nem küldött el senki újságcikket."
 
 #: app/Module/GoogleMapsModule.php:3813 app/Module/GoogleMapsModule.php:4507
 msgid "No places found"
-msgstr "Nem találhatóak helyszínek"
+msgstr "Nem találhatóak helyek"
 
 #: admin_trees_places.php:127
 msgid "No places have been found."
@@ -10248,7 +10248,7 @@ msgstr "Elemek száma"
 #: app/Module/TopGivenNamesModule.php:146
 #: app/Module/TopPageViewsModule.php:159 app/Module/TopSurnamesModule.php:168
 msgid "Number of items to show"
-msgstr "Mutatandó elemek maximális száma"
+msgstr "Mutatandó elemek száma"
 
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:630
@@ -10418,7 +10418,7 @@ msgstr "OpenStreetMap™"
 
 #: app/Module/GoogleMapsModule.php:394
 msgid "Optional prefixes and suffixes"
-msgstr "Választható előtagok és utótagok"
+msgstr "Választható elő- és utótagok"
 
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
@@ -10820,7 +10820,7 @@ msgstr "Pitcairn-szigetek"
 #: modules_v3/marriage_report/report.xml:50
 #: modules_v3/occupation_report/report.xml:60 search.php:242
 msgid "Place"
-msgstr "Helyszín"
+msgstr "Hely"
 
 #: app/Module/GoogleMapsModule.php:172 app/Module/GoogleMapsModule.php:306
 #: app/Module/GoogleMapsModule.php:875 app/Module/GoogleMapsModule.php:1530
@@ -11477,7 +11477,7 @@ msgstr "Regina, Saskatchewan, Kanada"
 
 #: app/GedcomTag.php:580 modules_v3/fact_sources/report.xml:205
 msgid "Registered partnership"
-msgstr "Élettársi kapcsolat"
+msgstr "Bejegyzett kapcsolat"
 
 #: app/GedcomCode/GedcomCodeRela.php:227
 msgid "Registry officer"
@@ -12090,7 +12090,7 @@ msgstr "Válasszon eseményt"
 
 #: app/Module/GoogleMapsModule.php:529
 msgid "Select flag"
-msgstr "Válasszon zászlót"
+msgstr "Zászlóválasztás"
 
 #: lifespan.php:41
 msgid "Select individuals by place or date"
@@ -12727,7 +12727,7 @@ msgstr "Csak azokat a személyeket mutasd, akik neme ismeretlen."
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "A személyeket, az eseményeket vagy mindent mutassunk"
+msgstr "Csak személyeket, eseményeket vagy mindent mutassunk"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -12833,7 +12833,7 @@ msgstr "Vezetéknevek listája"
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:79
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr "Mutasd a helyek és események helyszínét a Google Maps™-térképszolgáltatás segítségével."
+msgstr "A helyek és események helyszínét a Google Maps™-térképszolgáltatás segítségével mutatja."
 
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
@@ -13089,7 +13089,7 @@ msgstr "Némely származástani alkalmazás által létrehozott GEDCOM-fájlokba
 
 #: app/Module/GoogleMapsModule.php:431
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Egyes helynevek elhagyható elő- vagy utótaggal írhatók, mint amilyen az „Orange” és „Orange County”. Ha a családfa a teljes helynevet tartalmazza, viszont a földrajzi adatállomány csak a rövidebb változatot, akkor meg kell adni a figyelmen kívül hagyandó előtagok és utótagok listáját. A több változatot pontosvesszővel kell elválasztani, például: „County;County of” vagy „Township;Twp;Twp”."
+msgstr "Egyes helynevek elhagyható elő- vagy utótaggal írhatók, mint amilyen az „Orange” és „Orange County”. Ha a családfa a teljes helynevet tartalmazza, viszont a földrajzi adatállomány csak a rövidebb változatot, akkor meg kell adni a figyelmen kívül hagyandó előtagok és utótagok listáját. Több változatot pontosvesszővel kell elválasztani, például: „County;County of” vagy „Township;Twp;Twp.”."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1559
@@ -13384,7 +13384,7 @@ msgstr "Történetcím"
 #. I18N: Part of a country, state/region/county
 #: app/Module/GoogleMapsModule.php:701 app/Module/GoogleMapsModule.php:1560
 msgid "Subdivision"
-msgstr "Felosztás"
+msgstr "Részterület"
 
 #: app/Module/UserMessagesModule.php:112 message.php:119
 msgid "Subject"
@@ -13676,7 +13676,7 @@ msgstr "A PHP ideiglenes mappa hiányzik."
 
 #: admin_trees_manage.php:704
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-msgstr "A PhpGedView–webtrees-varázsló egy automatikus folyamat, amely segíti a rendszergazdát a PhpGedView-rendszerről az új webtrees-változatra való áttérésben. Áthelyezi a teljes PhpGedView GEDCOM- és egyéb adatbázis-információt közvetlenül az Ön új webtrees-adatbázisába. A következő kellékekre van szükség:"
+msgstr "A PhpGedView–webtreesvarázsló egy automatikus folyamat, amely segíti a rendszergazdát a PhpGedView-rendszerről az új webtreesváltozatra való áttérésben. Áthelyezi a teljes PhpGedView GEDCOM- és egyéb adatbázis-információt közvetlenül az Ön új webtreesadatbázisába. A következő kellékekre van szükség:"
 
 #: admin_users.php:101
 #, php-format
@@ -13854,7 +13854,7 @@ msgstr "A következő lista a tipikus követelményeket mutatja."
 
 #: message.php:300 message.php:303
 msgid "The following message has been sent to your webtrees user account from "
-msgstr "A webtrees-felhasználó fiókjába a következő üzenetet küldtük erről a címről "
+msgstr "A webtreesfelhasználó fiókjába a következő üzenetet küldtük erről a címről "
 
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
@@ -14055,7 +14055,7 @@ msgstr "A(z) %s bélyegképfájl nem létezik."
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:290
 msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-msgstr "Az idő másodpercben, amíg aktív a webtrees-munkamenet, és mielőtt be kellene jelentkezni. Az alapértelmezett érték 7200, ami 2 óra."
+msgstr "Az idő másodpercben, amíg aktív a webtreesmunkamenet, és mielőtt újra be kellene jelentkezni. Az alapértelmezett érték 7200, ami 2 óra."
 
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
@@ -14085,7 +14085,7 @@ msgstr "A(z) %s felhasználó törlése megtörtént."
 
 #: login.php:324
 msgid "The user has been sent an email with the information necessary to confirm the access request."
-msgstr "A felhasználó egy e-mailt küldött a kért hozzáférés jóváhagyásához szükséges információkkal."
+msgstr "A felhasználó egy e-mailt küldött a kért hozzáférés-kérelem megerősítéséhez szükséges információkkal."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:388
@@ -14099,7 +14099,7 @@ msgstr "A felhasználónév vagy jelszó helytelen."
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:967
 msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-msgstr "A HTML-oldal fejlécében lévő „META description (leírás)” címke értéke. Hagyja üresen ezt a mezőt a családfa nevének használatához."
+msgstr "A html-oldal fejlécében lévő „meta description (leírás)” címke értéke. Hagyja üresen ezt a mezőt a családfa nevének használatához."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
@@ -14262,7 +14262,7 @@ msgstr "Ez a jelölőnégyzet vezérli az Ön láthatóságát, amíg ki nem jel
 
 #: setup.php:348 setup.php:359
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
-msgstr "Úgy tűnik, ezt az adatbázis- és táblaelőtagot egy másik alkalmazás használja. Ha van egy létező PhpGedView-rendszere, létre kell hoznia egy új webtrees-rendszert. A PhpGedView-adatokat és -beállításokat később betöltheti."
+msgstr "Úgy tűnik, ezt az adatbázis- és táblaelőtagot egy másik alkalmazás használja. Ha van egy létező PhpGedView-rendszere, létre kell hoznia egy új webtreesrendszert. A PhpGedView-adatokat és -beállításokat később betöltheti."
 
 #: setup.php:255
 #, php-format
@@ -14518,7 +14518,7 @@ msgstr "Ez gondot okozhat más alkalmazások számára."
 
 #: admin_trees_check.php:133
 msgid "This may cause a problem for webtrees."
-msgstr "Ez gondot okozhat a webtrees-nek."
+msgstr "Ez gondot okozhat a webtreesnek."
 
 #: admin_media.php:509
 msgid "This media file does not exist."
@@ -14823,7 +14823,7 @@ msgstr "Ez törli a(z) „%s” összes származástani adatát, és felváltja 
 
 #: admin_trees_places.php:97
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Ez frissíti a helynév legmagasabb szintű részét vagy részeit. Például „Mexico” illeszkedik majd „Quintana Roo, Mexico”-hoz, szemben „Santa Fe, New Mexico”-val."
+msgstr "Az űrlap segítségével frissítheti a helynév legmagasabb szintű részét vagy részeit. Például „Mexico”-nak megfelel majd „Quintana Roo, Mexico”, „Santa Fe, New Mexico” viszont nem."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:668
@@ -15259,7 +15259,7 @@ msgstr "Típus"
 
 #: app/Module/GoogleMapsModule.php:473
 msgid "Type of place markers in the place hierarchy"
-msgstr "Helyjelölők a Helyhierarchia térképen"
+msgstr "Helyjelölőtípusok a helyrangsorban"
 
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:355 login.php:468
@@ -15386,7 +15386,7 @@ msgstr "Ismeretlen"
 #: modules_v3/individual_report/report.xml:602
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr "Ismeretlen"
+msgstr "Nincs adat"
 
 #: app/Stats.php:944 app/Stats.php:950 edituser.php:187
 msgctxt "unknown people"
@@ -15464,7 +15464,7 @@ msgstr "Médiaállományok feltöltése"
 
 #: admin_media_upload.php:187
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr "Töltsön fel egy vagy több médiafájlt a számítógépéről. A médiafájl lehet kép, videó, hanganyag vagy egyéb formátum."
+msgstr "Egy vagy több médiafájl felöltése a számítógépéről. A médiafájl lehet kép, videó, hanganyag vagy egyéb formátum."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6963
@@ -15473,7 +15473,7 @@ msgstr "Uruguay"
 
 #: app/Module/GoogleMapsModule.php:440
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr "Google Maps™ használata a földrajzi helyek hierarchiájához"
+msgstr "Google Maps™ használata a helyrangsorhoz"
 
 #: admin_site_config.php:116
 msgid "Use PHP mail to send messages"
@@ -15755,7 +15755,7 @@ msgstr "Család megjelenítése"
 #: app/Module/GoogleMapsModule.php:1350 app/Module/SlideShowModule.php:177
 #: medialist.php:310
 msgid "View the individual"
-msgstr "Személy megjelenítése"
+msgstr "személy megjelenítése"
 
 #: calendar.php:304
 msgid "View the month"
@@ -15982,7 +15982,7 @@ msgstr "Ki tölthet fel új médiafájlokat"
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
 msgid "Who is online"
-msgstr "Bejelentkezett felhasználók"
+msgstr "Aki belépett"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
 #: search.php:210
@@ -16274,11 +16274,11 @@ msgstr "Az összes függőben levő változtatást el kell fogadnia vagy el kell
 
 #: admin_site_upgrade.php:198
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr "Beszélnie kell a modul szerzőjével, hogy jóváhagyja a webtrees jelenlegi változatával való kompatibilitást."
+msgstr "Beszélnie kell a modul szerzőjével, hogy megerősítse a webtrees jelenlegi változatával való kompatibilitást."
 
 #: admin_site_upgrade.php:262
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr "Beszélnie kell a téma szerzőjével, hogy jóváhagyja a webtrees jelenlegi változatával való kompatibilitást."
+msgstr "Beszélnie kell a téma szerzőjével, hogy megerősítse a webtrees jelenlegi változatával való kompatibilitást."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:290 message.php:58
@@ -16292,7 +16292,7 @@ msgstr "Nem szabad jóváhagyni egy felhasználói fiókot, amíg nem tudja, hog
 
 #: login.php:325
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to sign in until you activate the account."
-msgstr "E-mail értesítést kap, ha a leendő felhasználó visszaigazolta a kérelmét. Ezután befejezheti a folyamatot a felhasználó nevének aktiválásával. Az új felhasználó addig nem tud bejelentkezni, amíg nem aktiválja a fiókját."
+msgstr "E-mail értesítést kap, ha a leendő felhasználó megerősítette a kérelmét. Ezután befejezheti a folyamatot a felhasználó nevének aktiválásával. Az új felhasználó addig nem tud bejelentkezni, amíg Ön nem aktiválja a fiókját."
 
 #: setup.php:432
 msgid "You will use this to sign in to webtrees."
@@ -16421,13 +16421,13 @@ msgstr "%s körül"
 #: note.php:63 repo.php:62 source.php:62
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr "<b>elfogad</b>"
+msgstr "elfogad"
 
 #: family.php:44 gedrecord.php:56 individual.php:57 mediaviewer.php:44
 #: note.php:45 repo.php:44 source.php:44
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr "<b>elfogad</b>"
+msgstr "elfogad"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:54
@@ -19373,13 +19373,13 @@ msgstr "bejegyzések"
 #: note.php:64 repo.php:63 source.php:63
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr "<b>elutasít</b>"
+msgstr "elutasít"
 
 #: family.php:45 gedrecord.php:57 individual.php:58 mediaviewer.php:45
 #: note.php:46 repo.php:45 source.php:45
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr "<b>elutasít</b>"
+msgstr "elutasít"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:55
@@ -19628,7 +19628,7 @@ msgstr "kijelölés megszüntetése"
 #: app/Functions/Functions.php:241 app/Functions/Functions.php:259
 #: app/Functions/Functions.php:666
 msgid "self"
-msgstr "saját"
+msgstr "ő maga"
 
 #: app/Functions/Functions.php:549
 msgid "seventh cousin"
@@ -20117,7 +20117,7 @@ msgstr "ismeretlen"
 #: app/Module/InteractiveTree/TreeView.php:342
 msgctxt "unknown family"
 msgid "unknown"
-msgstr "ismeretlen"
+msgstr "nincs adat"
 
 #: app/Module/RelationshipsChartModule.php:131
 msgid "unlimited"
@@ -20163,7 +20163,7 @@ msgstr "A webtrees nem tud csatlakozni a PhpGedView adatbázisához: %s."
 
 #: message.php:40 message.php:260 message.php:322
 msgid "webtrees message"
-msgstr "webtrees-üzenet"
+msgstr "webtreesüzenet"
 
 #: setup.php:273
 #, php-format
@@ -20178,7 +20178,7 @@ msgstr "A webtrees automatikusan küld leveleket, például jelszó-emlékeztet�
 #. I18N: A configuration setting
 #: admin_trees_config.php:868
 msgid "webtrees reply address"
-msgstr "webtrees-válaszcím"
+msgstr "webtreesválaszcím"
 
 #: app/Functions/FunctionsEdit.php:248
 msgid "webtrees sends emails with no storage"

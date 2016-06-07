@@ -1162,6 +1162,10 @@ td.descriptionbox a {
 	padding: 5px;
 }
 
+#login-form div label {
+	text-align: right;
+}
+
 #register-form,
 #verify-form {
 	width: 440px;
@@ -2148,6 +2152,10 @@ dd .deletelink {
 }
 
 /* === jquery-ui.css changes === */
+.ui-state-highlight a {
+	font-weight: bold;
+}
+
 .ui-accordion .ui-accordion-content {
 	border: 0;
 	position: relative;
