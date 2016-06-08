@@ -436,7 +436,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		<tr>
 			<td class="descriptionbox wrap width33">
 				<label for="number-of-surnames">
-					<?php echo I18N::translate('Number of surnames') ?>
+					<?php echo /* I18N: ... to show in a list */ I18N::translate('Number of surnames') ?>
 				</label>
 			</td>
 			<td class="optionbox">

@@ -156,7 +156,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: Label for a configuration option */ I18N::translate('Number of items to show');
+		echo /* I18N: ... to show in a list */ I18N::translate('Number of pages');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
 		echo '</td></tr>';

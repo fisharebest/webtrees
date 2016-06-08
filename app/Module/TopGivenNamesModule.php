@@ -143,7 +143,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Number of items to show');
+		echo /* I18N: ... to show in a list */ I18N::translate('Number of given names');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
 		echo '</td></tr>';
