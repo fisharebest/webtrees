@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-06 11:11+0000\n"
+"PO-Revision-Date: 2016-06-08 21:38+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -126,8 +126,8 @@ msgstr[1] "%1$s fájl kibontása %2$s másodperc alatt kész."
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] "%1$s személy látható összesen ennyiből: %2$s, %3$s nemzedékből."
-msgstr[1] "%1$s személy látható összesen ennyiből: %2$s, %3$s nemzedékből."
+msgstr[0] "%1$s / %2$s személy látható – %3$s nemzedékből."
+msgstr[1] "%1$s / %2$s személy látható – %3$s nemzedékből."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:910
@@ -1271,11 +1271,11 @@ msgstr "%s kerüljön a metszési kosárba"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
-msgstr "Új testvér felvétele"
+msgstr "Testvér felvétele"
 
 #: edit_interface.php:516
 msgid "Add a child"
-msgstr "Új gyermek felvétele"
+msgstr "Gyermek felvétele"
 
 #: app/Module/RelativesTabModule.php:396 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
@@ -1292,20 +1292,20 @@ msgstr "Tény felvétele"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
-msgstr "Új apa felvétele"
+msgstr "Apa felvétele"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
-msgstr "Új kedvenc felvétele"
+msgstr "Kedvenc felvétele"
 
 #: app/Module/GoogleMapsModule.php:4551
 msgid "Add a geographic location"
-msgstr "Új földrajzi hely felvétele"
+msgstr "Földrajzi hely felvétele"
 
 #: app/Module/RelativesTabModule.php:385 edit_interface.php:810
 #: edit_interface.php:900
 msgid "Add a husband"
-msgstr "Új férj felvétele"
+msgstr "Férj felvétele"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
@@ -1318,22 +1318,22 @@ msgstr "Férj felvétele egy bejegyzett személy felhasználásával"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
-msgstr "Új naplóbejegyzés felvétele"
+msgstr "Naplóbejegyzés felvétele"
 
 #: app/Controller/FamilyController.php:162
 #: app/Functions/FunctionsEdit.php:1131 app/Module/AlbumModule.php:98
 #: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
 #: source.php:184
 msgid "Add a media object"
-msgstr "Új médiaobjektum felvétele"
+msgstr "Médiaobjektum felvétele"
 
 #: app/Module/RelativesTabModule.php:323 edit_interface.php:672 family.php:114
 msgid "Add a mother"
-msgstr "Új anya felvétele"
+msgstr "Anya felvétele"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
 msgid "Add a name"
-msgstr "Új név felvétele"
+msgstr "Név felvétele"
 
 #: app/Module/FamilyTreeNewsModule.php:148
 msgid "Add a news article"
@@ -1342,11 +1342,11 @@ msgstr "Újságcikk felvétele"
 #: app/Controller/FamilyController.php:149
 #: app/Functions/FunctionsEdit.php:1110 app/Module/NotesTabModule.php:100
 msgid "Add a note"
-msgstr "Új jegyzet felvétele"
+msgstr "Jegyzet felvétele"
 
 #: app/Functions/FunctionsEdit.php:1141
 msgid "Add a restriction"
-msgstr "Új korlátozás felvétele"
+msgstr "Korlátozás felvétele"
 
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
@@ -1361,20 +1361,20 @@ msgstr "Legyen függőleges görgetősáv, ha a blokk túl magas"
 #: app/Controller/FamilyController.php:155
 #: app/Functions/FunctionsEdit.php:1120 app/Module/NotesTabModule.php:110
 msgid "Add a shared note"
-msgstr "Új megosztott jegyzet felvétele"
+msgstr "Megosztott jegyzet felvétele"
 
 #: app/Module/RelativesTabModule.php:271
 msgid "Add a son or daughter"
-msgstr "Új gyermek felvétele"
+msgstr "Gyermek felvétele"
 
 #: app/Controller/FamilyController.php:172
 #: app/Functions/FunctionsEdit.php:1060 app/Module/SourcesTabModule.php:93
 msgid "Add a source citation"
-msgstr "Új forrásidézet felvétele"
+msgstr "Forrásidézet felvétele"
 
 #: edit_interface.php:837
 msgid "Add a spouse"
-msgstr "Új házastárs felvétele"
+msgstr "Házastárs felvétele"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
@@ -1384,12 +1384,12 @@ msgstr "Történet felvétele"
 #. I18N: Menu entry
 #: admin_users.php:265 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
-msgstr "Új felhasználó felvétele"
+msgstr "Felhasználó felvétele"
 
 #: app/Module/RelativesTabModule.php:373 edit_interface.php:807
 #: edit_interface.php:897
 msgid "Add a wife"
-msgstr "Új feleség felvétele"
+msgstr "Feleség felvétele"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1407,7 +1407,7 @@ msgstr "GYIK-elem felvétele"
 
 #: app/Functions/FunctionsEdit.php:1088 app/Functions/FunctionsEdit.php:1092
 msgid "Add an associate"
-msgstr "Új kapcsolat felvétele"
+msgstr "Kapcsolat felvétele"
 
 #: timeline.php:298
 msgid "Add another individual to the chart"
@@ -1454,7 +1454,7 @@ msgstr "Plusz szóközök hosszú sorok sortörésekor"
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:422
 #: app/Module/ClippingsCartModule.php:785
 msgid "Add the GEDCOM media path to filenames"
-msgstr "A GEDCOM-média elérési útvonalak fájlnevekhez adása"
+msgstr "A GEDCOM-média elérési útvonalának fájlnevekhez adása"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:935
@@ -1477,7 +1477,7 @@ msgstr "Tegyük a metszési kosárba"
 
 #: admin_trees_manage.php:530
 msgid "Add unlinked records"
-msgstr "Hivatkozás nélküli bejegyzések felvétele"
+msgstr "Nem kapcsolódó bejegyzések felvétele"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1116
@@ -3998,7 +3998,7 @@ msgstr "Beállítás"
 
 #: admin_users.php:352 edituser.php:226 login.php:463
 msgid "Confirm password"
-msgstr "Jelszó még egyszer"
+msgstr "A kívánt jelszó megerősítése"
 
 #. I18N: gedcom tag CONF
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
@@ -4169,40 +4169,40 @@ msgstr "Létrehoz"
 
 #: admin_trees_manage.php:624
 msgid "Create a family tree"
-msgstr "Új családfa létrehozása"
+msgstr "Családfa létrehozása"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
-msgstr "Új médiaobjektum létrehozása"
+msgstr "Médiaobjektum létrehozása"
 
 #: app/Functions/FunctionsEdit.php:427 edit_interface.php:1512
 #: edit_interface.php:1575
 msgid "Create a repository"
-msgstr "Új adattár létrehozása"
+msgstr "Adattár létrehozása"
 
 #: app/Functions/FunctionsEdit.php:438 edit_interface.php:1348
 #: edit_interface.php:1384
 msgid "Create a shared note"
-msgstr "Új megosztott jegyzet létrehozása"
+msgstr "Megosztott jegyzet létrehozása"
 
 #: app/Functions/FunctionsEdit.php:634
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
-msgstr "Új megosztott jegyzet létrehozása segítő használatával"
+msgstr "Megosztott jegyzet létrehozása összeíró-segédlet használatával"
 
 #: app/Functions/FunctionsEdit.php:460 edit_interface.php:1196
 #: edit_interface.php:1279
 msgid "Create a source"
-msgstr "Új forrás létrehozása"
+msgstr "Forrás létrehozása"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
-msgstr "Új webhelyelérési szabály létrehozása"
+msgstr "Webhelyelérési szabály létrehozása"
 
 #: edit_interface.php:750
 msgid "Create an individual"
-msgstr "Új személy létrehozása"
+msgstr "Személy létrehozása"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -5651,7 +5651,7 @@ msgstr "E-mail cím"
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
 msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "Ez az e-mail cím kerül a webtrees által automatikusan létrehozott e-mailek „Feladó:” rovatába.<br><br>A webtrees automatikusan is létrehozhat e-maileket a rendszergazdák értesítésére az ellenőrizendő változtatásokról, továbbá értesítő e-mailt küld fiókot igénylő felhasználóknak is.<br><br>Általában ezeknek az automatikusan létrehozott e-mailek „Feladó:” rovata valami ilyen: <i>Feladó: webtrees-nem-var-valaszt@webhely</i>, jelezve, hogy erre az e-mailre nem kell válaszolni. A rosszindulatú e-mailek elleni védelem érdekében egyes e-mail rendszerek megkívánják, hogy minden üzenet „Feladó:” rovata valós e-mail fióknak tűnjön, és nem fogadják el a <i>webtrees-nem-var-valaszt</i> alakútól eltérő fiókok üzeneteit."
+msgstr "E-mail cím, ami a webtrees által automatikusan létrehozott e-mailek „Feladó:” rovatába kerül .<br><br>A webtrees automatikusan létrehozhat e-maileket a rendszergazdák értesítésére az ellenőrizendő változtatásokról, továbbá értesítő e-mailt küld fiókot igénylő felhasználóknak is.<br><br>Általában ezen automatikusan létrehozott e-mailek „Feladó:” rovata valami ilyen: <i>Feladó: webtrees-noreply@webhely</i>, jelezve, hogy erre az e-mailre nem kell válaszolni. A rosszindulatú e-mailek elleni védelem érdekében egyes e-mail rendszerek megkívánják, hogy minden üzenet „Feladó:” rovata valós e-mail fióknak tűnjön, és nem fogadják el a <i>webtrees-noreply</i> alakútól eltérő fiókok üzeneteit."
 
 #: admin_users.php:382
 msgid "Email verified"
@@ -7287,7 +7287,7 @@ msgstr "Népirtás"
 #. I18N: Name of a module
 #: admin_modules.php:188 app/Module/WelcomeBlockModule.php:30
 msgid "Home page"
-msgstr "Kezdőlap"
+msgstr "Honlap"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6823
@@ -7508,7 +7508,7 @@ msgstr "Ha a következő követő- és elemzőszolgáltatások egyikét használ
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1222
 msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-msgstr "Egy vezetéknév a küszöbérték növelése nélkül úgy is eltávolítható a „Gyakori vezetéknevek” listájáról, ha ide beírja. Egynél több vezetéknevet vesszővel kell elválasztani. <b>A vezetéknevek érzékenyek a kis- és nagybetűk közötti különbségre</b>. Az itt megadott vezetéknevek a nyitólap „Leggyakoribb vezetéknevek” listájáról is lekerülnek."
+msgstr "Egy vezetéknév a küszöbérték növelése nélkül úgy is eltávolítható a „Gyakori vezetéknevek” listájáról, ha ide beírja. Egynél több vezetéknevet vesszővel kell elválasztani. <b>A vezetéknevek érzékenyek a kis- és nagybetűk közötti különbségre</b>. Az itt megadott vezetéknevek a „Honlap” „Leggyakoribb vezetéknevek” listájáról is lekerülnek."
 
 #: setup.php:184
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
@@ -8512,7 +8512,7 @@ msgstr "Los Angeles, Kalifornia, Egyesült Államok"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219 login.php:252
 msgid "Lost password request"
-msgstr "Új jelszó kérése"
+msgstr "Elveszített jelszó miatti kérelem"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:193
@@ -10394,7 +10394,7 @@ msgstr "A mai napon"
 
 #: calendar.php:122
 msgid "On this day…"
-msgstr "A mai napon az Ön múltjában…"
+msgstr "A mai napon…"
 
 #: app/Functions/FunctionsEdit.php:228
 #: app/Functions/FunctionsPrintFacts.php:274
@@ -10576,7 +10576,7 @@ msgstr "Oldal"
 #: medialist.php:245
 #, php-format
 msgid "Page %s of %s"
-msgstr "%s/%s oldal"
+msgstr "%s / %s oldal"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -10664,7 +10664,7 @@ msgstr "Jelszó"
 
 #: admin_users.php:344 edituser.php:219 login.php:457
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "A jelszónak legalább 6 karakter hosszúnak kell lennie, továbbá érzékeny a kis- és nagybetűre, tehát a „titok” és a „TITOK” különbözik."
+msgstr "A jelszó legyen legalább 6 karakter hosszú, és érzékeny a kis- és nagybetűk közötti különbségre, tehát a „titok” és a „TITOK” különbözik."
 
 #: edituser.php:139
 msgid "Passwords must contain at least 6 characters."
@@ -12534,7 +12534,7 @@ msgstr "Mutasd a letöltési hivatkozást a médiamegjelenítőben"
 #. I18N: A configuration setting
 #: admin_site_config.php:500
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "Mutassa az elfogadandó megállapodást az „Új felhasználói fiók igénylése” lapon"
+msgstr "Mutasd az elfogadandó megállapodást az „Új felhasználói fiók igénylése” lapon"
 
 #: app/Module/NotesTabModule.php:73
 msgid "Show all notes"
@@ -12642,7 +12642,7 @@ msgstr "Mutassunk képrészletet a személy keretében"
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1709
 msgid "Show hit counters on Portal and Individual pages."
-msgstr "Látogatószámláló feltüntetése a honlapon és a személyek oldalain."
+msgstr "Látogatószámláló feltüntetése a „Honlapon” és a Személyoldalakon."
 
 #: compact.php:60
 msgid "Show images"
@@ -12815,7 +12815,7 @@ msgstr "Mutasd a frissítés dátumát és idejét"
 
 #: admin_trees_config.php:1462
 msgid "Show the events of close relatives on the individual page"
-msgstr "Közeli hozzátartozók eseményeinek mutatása a személy lapján"
+msgstr "Közeli hozzátartozók eseményeinek mutatása a Személyoldalon"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:367
@@ -13676,7 +13676,7 @@ msgstr "A PHP ideiglenes mappa hiányzik."
 
 #: admin_trees_manage.php:704
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-msgstr "A PhpGedView–webtreesvarázsló egy automatikus folyamat, amely segíti a rendszergazdát a PhpGedView-rendszerről az új webtreesváltozatra való áttérésben. Áthelyezi a teljes PhpGedView GEDCOM- és egyéb adatbázis-információt közvetlenül az Ön új webtreesadatbázisába. A következő kellékekre van szükség:"
+msgstr "A PhpGedView–webtrees-varázsló egy automatikus folyamat, amely segíti a rendszergazdát a PhpGedView-rendszerről egy új webtrees-változatra való áttérésben. Áthelyezi a teljes PhpGedView GEDCOM- és egyéb adatbázis-információt közvetlenül az Ön új webtrees-adatbázisába. A következő kellékek szükségesek:"
 
 #: admin_users.php:101
 #, php-format
@@ -13854,7 +13854,7 @@ msgstr "A következő lista a tipikus követelményeket mutatja."
 
 #: message.php:300 message.php:303
 msgid "The following message has been sent to your webtrees user account from "
-msgstr "A webtreesfelhasználó fiókjába a következő üzenetet küldtük erről a címről "
+msgstr "A webtrees-felhasználó fiókjába a következő üzenetet küldtük erről a címről "
 
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
@@ -14055,7 +14055,7 @@ msgstr "A(z) %s bélyegképfájl nem létezik."
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:290
 msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-msgstr "Az idő másodpercben, amíg aktív a webtreesmunkamenet, és mielőtt újra be kellene jelentkezni. Az alapértelmezett érték 7200, ami 2 óra."
+msgstr "Az idő másodpercben, amíg aktív a webtrees-munkamenet, és mielőtt újra be kellene jelentkezni. Az alapértelmezett érték 7200, ami 2 óra."
 
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
@@ -14262,7 +14262,7 @@ msgstr "Ez a jelölőnégyzet vezérli az Ön láthatóságát, amíg ki nem jel
 
 #: setup.php:348 setup.php:359
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
-msgstr "Úgy tűnik, ezt az adatbázis- és táblaelőtagot egy másik alkalmazás használja. Ha van egy létező PhpGedView-rendszere, létre kell hoznia egy új webtreesrendszert. A PhpGedView-adatokat és -beállításokat később betöltheti."
+msgstr "Úgy tűnik, ezt az adatbázis- és táblaelőtagot egy másik alkalmazás használja. Ha van egy létező PhpGedView-rendszere, létre kell hoznia egy új webtrees-rendszert. A PhpGedView-adatokat és -beállításokat később betöltheti."
 
 #: setup.php:255
 #, php-format
@@ -14271,7 +14271,7 @@ msgstr "Ez az adatbázis csak MySQL %s verzión fut. A webtrees ide nem telepít
 
 #: admin_users.php:367 edituser.php:265 login.php:430 setup.php:443
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr "Ezt az e-mail címet használjuk jelszó-emlékeztetők küldésére, webhelyjelentésekre és az itt regisztrált más családtagok üzenetei számára."
+msgstr "Ezt az e-mail címet használjuk jelszó-emlékeztetők, webhelyértesítések és az ezen a webhelyen regisztrált más családtagok üzeneteinek elküldéséhez."
 
 #: addmedia.php:540
 msgid "This entry is ignored if you have entered a URL into the filename field."
@@ -14381,7 +14381,7 @@ msgstr "Privát adat. Csak bejelentkezés után jelenik meg."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "Ez a beviteli mező szolgál a naptár évének megváltoztatására. Írjon a rovatba egy évszámot, és az <b>Enter</b> billentyű lenyomására a naptár az adott évre vált.<br><br><b>Speciális lehetőségek</b> <b>adott év megtekintésére</b><dl><dt><b>Egynél több év</b></dt><dd>Kereshet dátumokat adott évtartományban.<br><br>A tartományba annak határai is <u>beleértendők</u>, ami azt jelenti, hogy az érintett első évben január 1-től az utolsó évben december 31-ig tart. Néhány évtartománypélda:<br><br><b>1992-5</b> minden esemény 1992-től 1995-ig.<br><b>1972-89</b> minden esemény 1972-től 1989-ig.<br><b>1610-759</b> minden esemény 1610-től 1759-ig.<br><b>1880-1905</b> minden esemény 1880-tól 1905-ig.<br><b>880-1105</b> minden esemény 880-tól 1105-ig.<br><br>Egy adott évtized vagy évszázad valamennyi eseményének megtekintéséhez használható a <b>?</b> (kérdőjel) az utolsó számjegyek helyén, például <b>197?</b> az összes eseményre 1970-től 1979-ig vagy <b>16??</b> az összes eseményre 1600-tól 1699-ig.<br><br>Az évtartomány megadása átváltja a napárt éves nézetre.</dd></dl>"
+msgstr "Ez a rovat szolgál a naptár évének megváltoztatására. Írjon a mezőbe egy évszámot, és az <b>Enter</b> billentyű lenyomására a naptár az adott évre vált.<br><br><b>Speciális lehetőségek</b> <b>adott év megtekintésére</b><dl><dt><b>Egynél több év</b></dt><dd>Kereshet dátumokat adott évtartományban.<br><br>A tartományba annak határai is <u>beleértendők</u>, ami azt jelenti, hogy az érintett első évben január 1-től az utolsó évben december 31-ig tart. Néhány évtartománypélda:<br><br><b>1992-5</b> minden esemény 1992-től 1995-ig.<br><b>1972-89</b> minden esemény 1972-től 1989-ig.<br><b>1610-759</b> minden esemény 1610-től 1759-ig.<br><b>1880-1905</b> minden esemény 1880-tól 1905-ig.<br><b>880-1105</b> minden esemény 880-tól 1105-ig.<br><br>Egy adott évtized vagy évszázad valamennyi eseményének megtekintéséhez használható a <b>?</b> (kérdőjel) az utolsó számjegyek helyén, például <b>197?</b> az összes eseményre 1970-től 1979-ig vagy <b>16??</b> az összes eseményre 1600-tól 1699-ig.<br><br>Az évtartomány megadása átváltja a napárt éves nézetre.</dd></dl>"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2156
@@ -14605,17 +14605,17 @@ msgstr "Ezt a jegyzetet szerkesztették. Ellenőrizze a változtatásokat, amely
 #. I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting
 #: admin_trees_config.php:1604
 msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-msgstr "Ez a beállítás határozza meg, hogy azon jegyzet- és forráshivatkozások, amelyek tényekhez kapcsolódnak, megjelenjenek-e a személyadatok oldal Jegyzetek és Források fülén.<br><br>Általában a Jegyzetek és Források fülek csak azokat a jegyzet- és forráshivatkozásokat mutatják, amelyek közvetlenül a személy adatbázis-bejegyzéséhez kapcsolódnak. Ezek az <i>első szintű</i> jegyzet- és forráshivatkozások.<br><br>Az <b>Igen</b> hatására azok a jegyzet- és forráshivatkozások, amelyek az egyes ténybejegyzések részei, szintén megjelennek ezeken a füleken. Ezek a <i>második szintű</i> jegyzet- és forráshivatkozások, mert a különböző tények az első szinten szerepelnek."
+msgstr "Ez a beállítás határozza meg, hogy azon jegyzet- és forráshivatkozások, amelyek tényekhez kapcsolódnak, megjelenjenek-e a Személyoldal Jegyzetek és Források fülén.<br><br>Általában a Jegyzetek és Források fülek csak azokat a jegyzet- és forráshivatkozásokat mutatják, amelyek közvetlenül a személy adatbázis-bejegyzéséhez kapcsolódnak. Ezek az <i>első szintű</i> jegyzet- és forráshivatkozások.<br><br>Az <b>Igen</b> hatására azok a jegyzet- és forráshivatkozások, amelyek az egyes ténybejegyzések részei, szintén megjelennek ezeken a füleken. Ezek a <i>második szintű</i> jegyzet- és forráshivatkozások, mert a különböző tények az első szinten szerepelnek."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1574
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
-msgstr "Ez a lehetőség határozza meg, hogy egy <i>Jegyzet</i>bejegyzés tartalma automatikusan megjelenjen-e a személyadatok oldalon."
+msgstr "Ez a lehetőség határozza meg, hogy egy <i>Jegyzet</i>bejegyzés tartalma automatikusan megjelenjen-e a Személyoldalon."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: admin_trees_config.php:1589
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
-msgstr "Ez a lehetőség határozza meg, hogy a <i>Forrás</i>bejegyzés tartalma automatikusan megjelenjen-e a személyadatok oldalon."
+msgstr "Ez a lehetőség határozza meg, hogy a <i>Forrás</i>bejegyzés tartalma automatikusan megjelenjen-e a Személyoldalon."
 
 #. I18N: Help text for the “Automatically expand list of events of close relatives” configuration setting
 #: admin_trees_config.php:1454
@@ -15592,7 +15592,7 @@ msgstr "Falhasználónév vagy e-mail cím"
 
 #: admin_users.php:331 edituser.php:164 login.php:440
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "A felhasználónév nem érzékeny a kis- és nagybetűk közötti különbségre, és az ékezetek sem számítanak, tehát a „chloe”, „chloë” és „Chloe” megegyezik."
+msgstr "A felhasználónév érzéketlen a kis- és nagybetűk közötti különbségre, valamint az ékezetekre, tehát a „györgyi”, „gyorgyi” és „Györgyi” megegyezik."
 
 #. I18N: Menu entry
 #: admin.php:629 admin.php:637 app/Theme/AdministrationTheme.php:162
@@ -15805,7 +15805,7 @@ msgstr "Látogató"
 #: app/Module/BirthDeathMarriageReportModule.php:33 calendar.php:262
 #: modules_v3/bdm_report/report.xml:3 modules_v3/bdm_report/report.xml:34
 msgid "Vital records"
-msgstr "Élettani adatok"
+msgstr "Alapvető adatok"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6975
@@ -16249,7 +16249,7 @@ msgstr "Át kell tekintenie a felhasználói adatokat."
 
 #: setup.php:423
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr "Létre kell hoznia egy rendszergazdafiókot. Ez a fiók vezérelheti a teljes webtreestelepítést. Kérjük, válasszon egy erős jelszót."
+msgstr "Létre kell hoznia egy rendszergazdafiókot. Ez a fiók vezérelheti a teljes webtrees-telepítést. Kérjük, válasszon egy erős jelszót."
 
 #: admin_pgv_to_wt.php:1163
 msgid "You need to sign in again, using your PhpGedView username and password."
@@ -19788,12 +19788,12 @@ msgstr "rendezés házasság dátuma szerint"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:164
 msgid "sort by date, newest first"
-msgstr "rendezés dátum szerint, újak fölül"
+msgstr "rendezés dátum szerint, újak előbb"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:163
 msgid "sort by date, oldest first"
-msgstr "rendezés dátum szerint, régiek fölül"
+msgstr "rendezés dátum szerint, régiek előbb"
 
 #. I18N: An option in a list-box
 #: medialist.php:109
@@ -20163,7 +20163,7 @@ msgstr "A webtrees nem tud csatlakozni a PhpGedView adatbázisához: %s."
 
 #: message.php:40 message.php:260 message.php:322
 msgid "webtrees message"
-msgstr "webtreesüzenet"
+msgstr "webtrees-üzenet"
 
 #: setup.php:273
 #, php-format
@@ -20178,7 +20178,7 @@ msgstr "A webtrees automatikusan küld leveleket, például jelszó-emlékeztet�
 #. I18N: A configuration setting
 #: admin_trees_config.php:868
 msgid "webtrees reply address"
-msgstr "webtreesválaszcím"
+msgstr "webtrees-válaszcím"
 
 #: app/Functions/FunctionsEdit.php:248
 msgid "webtrees sends emails with no storage"
