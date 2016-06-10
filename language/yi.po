@@ -20323,7 +20323,7 @@ msgstr "…"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "פּינטלעכקייַט פון די ברייט און לאַנדזשאַטוד"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "ביטע נייַ פּאַראָל"
 
 #~ msgid "USA"

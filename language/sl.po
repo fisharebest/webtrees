@@ -20402,7 +20402,7 @@ msgstr ""
 #~ msgid "Precision"
 #~ msgstr "Ločljivost"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Zahtevaj novo geslo"
 
 #~ msgid "Search for individuals to add to add Links list."

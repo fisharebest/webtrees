@@ -20291,7 +20291,7 @@ msgstr ""
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Precisión da latitude e lonxitude"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Solicitar novo contrasinal"
 
 #~ msgid "Show lifespans"

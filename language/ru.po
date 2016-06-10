@@ -20380,7 +20380,7 @@ msgstr "…"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Точность ширины и долготы"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Запрос нового пароля"
 
 #~ msgid "Search for individuals to add to add Links list."

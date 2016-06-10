@@ -20258,7 +20258,7 @@ msgstr ""
 #~ msgid "Passwords do not match."
 #~ msgstr "Sandi tidak cocok."
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Minta sandi baru"
 
 #~ msgid "Signed-in as "

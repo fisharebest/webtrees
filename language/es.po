@@ -20331,7 +20331,7 @@ msgstr "…"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Precisión de la latitud y la longitud"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Solicitar una nueva contraseña"
 
 #~ msgid "Search for individuals to add to add Links list."

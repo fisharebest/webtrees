@@ -20378,7 +20378,7 @@ msgstr "…"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Preciznost dužine i širine"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Zatražite novu lozinku"
 
 #~ msgid "Search for individuals to add to add Links list."

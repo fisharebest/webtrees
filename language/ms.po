@@ -20229,7 +20229,7 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Mohon kata laluan baru"
 
 #~ msgid "Show lifespans"

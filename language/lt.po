@@ -20373,7 +20373,7 @@ msgstr "…"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Platumos ir ilgumos nustatymo tikslumas"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Naujo slaptažodžio sukūrimas"
 
 #~ msgid "Search for individuals to add to add Links list."

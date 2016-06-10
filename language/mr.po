@@ -20285,7 +20285,7 @@ msgstr ""
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "अक्षांश व रेखांशाचा नेमकेपणा"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "नवीन संकेत शब्द विनंती"
 
 #~ msgid "Search for individuals to add to add Links list."

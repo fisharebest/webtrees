@@ -20282,7 +20282,7 @@ msgstr ""
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Киңлек/озынлыкны күрсәтү төгәллеге"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Яңа серсүз сорарга"
 
 #~ msgid "Search for individuals to add to add Links list."

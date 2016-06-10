@@ -20326,7 +20326,7 @@ msgstr "…"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Leveys- ja pituusasteiden tarkkuus"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Pyydä uusi salasana"
 
 #~ msgid "Search for individuals to add to add Links list."

@@ -20297,7 +20297,7 @@ msgstr "…"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Nákvæmni breiddar- og lengdargráða"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Óska eftir nýju lykilorði"
 
 #~ msgid "Search for individuals to add to add Links list."

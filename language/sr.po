@@ -20306,7 +20306,7 @@ msgstr ""
 #~ msgid "Passwords do not match."
 #~ msgstr "Lozinke nisu identične."
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Затражи нову лозинку"
 
 #~ msgid "Signed-in as "

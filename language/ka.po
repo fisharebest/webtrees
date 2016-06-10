@@ -20251,7 +20251,7 @@ msgstr ""
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "გრძედის და განედის სიზუსტე"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "ახალი პაროლის მოთხოვნა"
 
 #~ msgid "Search for individuals to add to add Links list."

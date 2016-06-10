@@ -20330,7 +20330,7 @@ msgstr "…"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "דיוק בקו אורך וקו רוחב"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "בקש סיסמה חדשה"
 
 #~ msgid "Search for individuals to add to add Links list."

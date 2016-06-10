@@ -20345,7 +20345,7 @@ msgstr "…"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Presnosť zem. šírky a dĺžky"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Zažiadať o nové heslo"
 
 #~ msgid "Search for individuals to add to add Links list."

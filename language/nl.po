@@ -20330,7 +20330,7 @@ msgstr "…"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Precisie van geografische breedte- en lengtegraden"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Vraag nieuw wachtwoord aan"
 
 #~ msgid "Search for individuals to add to add Links list."

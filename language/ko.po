@@ -20212,7 +20212,7 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "새 암호 요청"
 
 #~ msgid "Signed-in as "

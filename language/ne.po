@@ -20282,7 +20282,7 @@ msgstr ""
 #~ msgid "Precision"
 #~ msgstr "यथार्थता"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "नयाँ पास्वर्डको लागि अनुरोध"
 
 #~ msgid "USA"

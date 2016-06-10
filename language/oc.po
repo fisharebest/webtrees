@@ -20513,7 +20513,7 @@ msgstr "…"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Precision de la latitud e la longitud"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Demandar un novèl mot de Santa Clara"
 
 #~ msgid "Show lifespans"

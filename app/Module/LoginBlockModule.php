@@ -95,7 +95,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 			<form id="new_passwd_form" name="new_passwd_form" action="' . WT_LOGIN_URL . '" method="post">
 			<input type="hidden" name="time" value="">
 			<input type="hidden" name="action" value="requestpw">
-			<h4>' . I18N::translate('Lost password request') . '</h4>
+			<h4>' . I18N::translate('Request a new password') . '</h4>
 			<div>
 				<label for="new_passwd_username">' . I18N::translate('Username or email address') .
 					'<input type="text" id="new_passwd_username" name="new_passwd_username" value="">

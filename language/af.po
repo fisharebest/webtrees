@@ -20329,7 +20329,7 @@ msgstr "…"
 #~ msgid "Regulært uttrykk"
 #~ msgstr "Gewone uitdrukking"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Vra nuwe wagwoord aan"
 
 #~ msgid "Search for individuals to add to add Links list."

@@ -20331,7 +20331,7 @@ msgstr "…"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Laiuskraadi ja pikkuskraadi täpsus"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Küsi uus parool"
 
 #~ msgid "Search for individuals to add to add Links list."

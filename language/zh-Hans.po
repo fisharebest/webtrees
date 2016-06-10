@@ -20259,7 +20259,7 @@ msgstr "缺少姓氏"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "纬度和经度的精确"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "请求新密码"
 
 #~ msgid "Search for individuals to add to add Links list."

@@ -20314,7 +20314,7 @@ msgstr ""
 #~ msgid "Precision"
 #~ msgstr "Precizitāte"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Jaunas paroles pieprasījums"
 
 #~ msgid "Signed-in as "

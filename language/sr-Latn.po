@@ -20309,7 +20309,7 @@ msgstr ""
 #~ msgid "Passwords do not match."
 #~ msgstr "Lozinke nisu identične."
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Zahtevajte novu lozinku"
 
 #~ msgid "Signed-in as "

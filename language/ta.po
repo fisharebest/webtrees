@@ -20253,5 +20253,5 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "கடவுச்சொல் வேண்டுகோள்"

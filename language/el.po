@@ -20328,7 +20328,7 @@ msgstr ""
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Ακρίβεια του γεωγραφικού πλάτους και μήκους"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Αίτηση νέου κωδικού"
 
 #~ msgid "Show lifespans"

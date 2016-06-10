@@ -20287,7 +20287,7 @@ msgstr "…"
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Enlem ve boylam hassasiyeti"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Yeni şifre talep et"
 
 #~ msgid "Search for individuals to add to add Links list."

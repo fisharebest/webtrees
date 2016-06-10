@@ -20323,7 +20323,7 @@ msgstr ""
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "Прецизност на координатите за географска ширина и дължина"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "Забравена парола"
 
 #~ msgid "Search for individuals to add to add Links list."

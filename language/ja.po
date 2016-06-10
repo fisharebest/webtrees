@@ -20242,7 +20242,7 @@ msgstr ""
 #~ msgid "Precision of the latitude and longitude"
 #~ msgstr "東経と北緯の精度"
 
-#~ msgid "Request new password"
+#~ msgid "Request a new password"
 #~ msgstr "パスワードの再発行請求"
 
 #~ msgid "Signed-in as "
