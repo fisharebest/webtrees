@@ -1462,8 +1462,9 @@ msgid "Add/edit a journal/news entry"
 msgstr "Thêm/Sửa Tin Tức/Nhật Ký"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:113
-msgid "Add/insert a blank row"
-msgstr "Thêm/ chèn dòng trống"
+msgid "Add a blank row"
+msgstr "Thêm dòng trống"
+#, fuzzy
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122

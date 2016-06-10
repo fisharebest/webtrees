@@ -1519,8 +1519,9 @@ msgid "Add/edit a journal/news entry"
 msgstr "Pridať/upraviť denník/novinky"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:113
-msgid "Add/insert a blank row"
-msgstr "Pridať/vložiť prázdny riadok"
+msgid "Add a blank row"
+msgstr "Pridať prázdny riadok"
+#, fuzzy
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122

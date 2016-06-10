@@ -1465,8 +1465,9 @@ msgid "Add/edit a journal/news entry"
 msgstr "Günlük/Haber kaydı Ekle/Düzelt"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:113
-msgid "Add/insert a blank row"
+msgid "Add a blank row"
 msgstr "Boş Satır Ekle"
+#, fuzzy
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122

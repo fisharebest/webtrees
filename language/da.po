@@ -1490,8 +1490,9 @@ msgid "Add/edit a journal/news entry"
 msgstr "Tilføj/rediger journal/nyhed"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:113
-msgid "Add/insert a blank row"
-msgstr "Tilføj/indsæt tom række"
+msgid "Add a blank row"
+msgstr "Tilføj tom række"
+#, fuzzy
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
