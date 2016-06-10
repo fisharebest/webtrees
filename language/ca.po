@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-07 21:52+0000\n"
+"PO-Revision-Date: 2016-06-10 21:53+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
@@ -1263,14 +1263,14 @@ msgstr "Adar II"
 msgid "Add"
 msgstr "Afegeix"
 
-msgid "add"
-msgstr "afegeix"
-#, fuzzy
-
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "Posa %s al cistell"
+
+#: modules_v3/GEDFact_assistant/census/census-edit.php:113
+msgid "Add a blank row"
+msgstr "Afegeix files en blanc"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
@@ -1495,11 +1495,6 @@ msgstr "Afegiu els vostres propis textos i gràfics."
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
 msgstr "Afegeix/edita entrades de l’Agenda"
-
-#: modules_v3/GEDFact_assistant/census/census-edit.php:113
-msgid "Add a blank row"
-msgstr "Afegeix files en blanc"
-#, fuzzy
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -8635,6 +8630,11 @@ msgstr "Gestió d'arbres genealògics"
 msgid "Manage media"
 msgstr "Gestió de multimèdia"
 
+#: admin_media.php:535 app/Controller/MediaController.php:49
+#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
+msgid "Manage the links"
+msgstr "Gestiona els enllaços"
+
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:558
 #: app/Module/ClippingsCartModule.php:390
@@ -8645,11 +8645,6 @@ msgstr "Gestor"
 #: admin.php:665
 msgid "Managers"
 msgstr "Gestors"
-
-#: admin_media.php:535 app/Controller/MediaController.php:49
-#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
-msgid "Manage the links"
-msgstr "Gestiona els enllaços"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
@@ -11640,12 +11635,6 @@ msgstr "Renumera"
 msgid "Renumber family tree"
 msgstr "Renumera l'arbre genealògic"
 
-#. I18N: A button label
-#: search.php:217
-msgid "replace"
-msgstr "substitueix"
-#, fuzzy
-
 msgid "Replace"
 msgstr "Substitueix"
 
@@ -12005,10 +11994,6 @@ msgstr "Segellament cancel·lat (divorci)"
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
 msgstr "Cerca"
-
-msgid "search"
-msgstr "cerca"
-#, fuzzy
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12936,29 +12921,13 @@ msgstr "Barres laterals"
 msgid "Sierra Leone"
 msgstr "Serra Lleona"
 
-#. I18N: Name of a module
-#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
-#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
-#: login.php:150 login.php:199
-msgid "sign in"
-msgstr "accés"
-#, fuzzy
-
-#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
-#: app/Theme/AbstractTheme.php:1568
-msgid "sign out"
-msgstr "surt"
-#, fuzzy
-
 msgid "Sign in"
 msgstr "Accés"
-#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Surt"
-#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447
@@ -16458,6 +16427,9 @@ msgstr "accepteu"
 msgid "accepted"
 msgstr "acceptat"
 
+msgid "add"
+msgstr "afegeix"
+
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
 msgid "adopted name"
@@ -19427,6 +19399,11 @@ msgctxt "MALE"
 msgid "religious name"
 msgstr "nom religiós"
 
+#. I18N: A button label
+#: search.php:217
+msgid "replace"
+msgstr "substitueix"
+
 #. I18N: a program feature
 #: setup.php:133 setup.php:134
 msgid "reporting"
@@ -19465,6 +19442,9 @@ msgstr "robot"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
 msgstr "desa"
+
+msgid "search"
+msgstr "cerca"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:619
@@ -19683,6 +19663,18 @@ msgstr "mostra el gràfic"
 #: app/Functions/Functions.php:784
 msgid "sibling"
 msgstr "germà"
+
+#. I18N: Name of a module
+#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
+#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
+#: login.php:150 login.php:199
+msgid "sign in"
+msgstr "accés"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "surt"
 
 #: app/Functions/Functions.php:767
 msgid "sister"
