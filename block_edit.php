@@ -61,7 +61,7 @@ $ctype = Filter::get('ctype', 'user', 'gedcom');
 
 $controller = new PageController;
 $controller
-	->setPageTitle(I18N::translate('Configure') . ' — ' . $block->getTitle())
+	->setPageTitle($block->getTitle() . ' — ' . I18N::translate('Preferences'))
 	->pageHeader();
 
 if (Module::getModuleByName('ckeditor')) {
