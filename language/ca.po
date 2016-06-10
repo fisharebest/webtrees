@@ -16109,8 +16109,8 @@ msgstr "No es permet l’enviament de missatges que contenen enllaços externs."
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "Heu iniciat la sessió com a %s"
+msgid "You are signed in as %s."
+msgstr "Heu iniciat la sessió com a %s."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting

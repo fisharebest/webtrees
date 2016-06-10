@@ -60,7 +60,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 		if (Auth::check()) {
 			$title   = I18N::translate('Sign out');
 			$content = '<div class="center"><form method="post" action="logout.php" name="logoutform" onsubmit="return true;">';
-			$content .= '<br><a href="edituser.php" class="name2">' . I18N::translate('You are signed in as %s', Auth::user()->getRealNameHtml()) . '</a><br><br>';
+			$content .= '<br>' . I18N::translate('You are signed in as %s.', '<a href="edituser.php" class="name2">' . Auth::user()->getRealNameHtml() . '</a>') . '<br><br>';
 			$content .= '<input type="submit" value="' . I18N::translate('Sign out') . '">';
 
 			$content .= '<br><br></form></div>';

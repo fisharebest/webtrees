@@ -16155,8 +16155,8 @@ msgstr "Вы не можете посылать сообщения, которы
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "Вы вошли как %s"
+msgid "You are signed in as %s."
+msgstr "Вы вошли как %s."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting

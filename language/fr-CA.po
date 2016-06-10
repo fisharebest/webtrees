@@ -16107,8 +16107,8 @@ msgstr "Vous n’êtes pas autorisé à envoyer des messages contenant des liens
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "Vous êtes connecté en tant que %s"
+msgid "You are signed in as %s."
+msgstr "Vous êtes connecté en tant que %s."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting

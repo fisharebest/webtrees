@@ -16110,8 +16110,8 @@ msgstr "Teil ei ole lubatud saata sõnumeid, mis sisaldavad väliseid linke."
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "Olete sisse logitud kui %s"
+msgid "You are signed in as %s."
+msgstr "Olete sisse logitud kui %s."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting

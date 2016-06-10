@@ -16109,8 +16109,8 @@ msgstr "Du har ikkje løyve til å sende meldingar som inneheld eksterne lenker.
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "Du er logga inn som %s"
+msgid "You are signed in as %s."
+msgstr "Du er logga inn som %s."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting

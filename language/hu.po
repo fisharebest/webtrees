@@ -16110,8 +16110,8 @@ msgstr "Ön nem küldhet külső hivatkozásokat tartalmazó üzeneteket."
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "%s néven jelentkezett be"
+msgid "You are signed in as %s."
+msgstr "%s néven jelentkezett be."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting

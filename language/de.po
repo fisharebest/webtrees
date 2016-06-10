@@ -16105,7 +16105,7 @@ msgstr "Sie dürfen keine Mitteilungen versenden, die externe Adressen enthalten
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
+msgid "You are signed in as %s."
 msgstr "Sie sind als %s angemeldet."
 
 #. I18N: Help text for the "Default theme" site configuration setting

@@ -16149,8 +16149,8 @@ msgstr "Nie masz uprawnień do wysyłania wiadomości, które zawierają linki z
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "Jesteś zalogowany jako %s"
+msgid "You are signed in as %s."
+msgstr "Jesteś zalogowany jako %s."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting

@@ -16105,8 +16105,8 @@ msgstr "You are not allowed to send messages that contain external links."
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "You are signed in as %s"
+msgid "You are signed in as %s."
+msgstr "You are signed in as %s."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting

@@ -16109,8 +16109,8 @@ msgstr "אין לשלוח הודעות שמכילות קישורים חיצונ�
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "אתה מחובר בתור %s"
+msgid "You are signed in as %s."
+msgstr "אתה מחובר בתור %s."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting

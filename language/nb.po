@@ -16105,8 +16105,8 @@ msgstr "Du har ikke tillatelse til å sende meldinger som inneholder eksterne le
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "Du er logget inn som %s"
+msgid "You are signed in as %s."
+msgstr "Du er logget inn som %s."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting

@@ -16105,8 +16105,8 @@ msgstr "Nuk lejoheni të dërgoni mesazhe që përbëjnë lidhje të jashtme."
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "Ju keni hyrë si %s"
+msgid "You are signed in as %s."
+msgstr "Ju keni hyrë si %s."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting

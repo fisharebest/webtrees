@@ -16109,8 +16109,8 @@ msgstr "Het is niet toegestaan berichten te versturen die externe links bevatten
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "U bent ingelogd als %s"
+msgid "You are signed in as %s."
+msgstr "U bent ingelogd als %s."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting

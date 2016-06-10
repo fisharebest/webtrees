@@ -16151,8 +16151,8 @@ msgstr "Nesmíte posílat zprávy, které obsahují externí odkazy."
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "Jste přihlášen/a jako %s"
+msgid "You are signed in as %s."
+msgstr "Jste přihlášen/a jako %s."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting

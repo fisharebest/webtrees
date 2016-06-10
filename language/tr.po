@@ -16070,8 +16070,8 @@ msgstr "Dış bağlantılar içeren bir mesaj gönderme yetkiniz yok."
 
 #: app/Module/LoginBlockModule.php:63
 #, php-format
-msgid "You are signed in as %s"
-msgstr "%s olarak giriş yaptınız"
+msgid "You are signed in as %s."
+msgstr "%s olarak giriş yaptınız."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
