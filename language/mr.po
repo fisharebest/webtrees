@@ -1259,6 +1259,10 @@ msgstr ""
 msgid "Add"
 msgstr "समाविष्ट करा"
 
+msgid "add"
+msgstr "समाविष्ट करा"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11970,6 +11974,9 @@ msgstr ""
 msgid "Search"
 msgstr "शोधा"
 
+msgid "search"
+msgstr "शोधा"
+
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1717
@@ -12900,6 +12907,14 @@ msgstr "सीएर्रा लेओन"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "लॉग इन करा"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "लॉगआउट"
+
 msgid "Sign in"
 msgstr "लॉग इन करा"
 

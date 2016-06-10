@@ -1231,6 +1231,10 @@ msgstr ""
 msgid "Add"
 msgstr "追加"
 
+msgid "add"
+msgstr "追加"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11937,6 +11941,9 @@ msgstr ""
 msgid "Search"
 msgstr "検索"
 
+msgid "search"
+msgstr "検索"
+
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1717
@@ -12867,6 +12874,14 @@ msgstr ""
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "ログイン"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "ログアウト"
+
 msgid "Sign in"
 msgstr "ログイン"
 

@@ -12897,6 +12897,14 @@ msgstr ""
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "புகுபதிகை"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "விடுபதிகை"
+
 msgid "Sign in"
 msgstr "புகுபதிகை"
 

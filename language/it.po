@@ -1265,6 +1265,10 @@ msgstr "Adar II"
 msgid "Add"
 msgstr "Aggiungi"
 
+msgid "add"
+msgstr "aggiungi"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11973,8 +11977,9 @@ msgstr "Sigillatura annullata (divorzio)"
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:89
 #: modules_v3/GEDFact_assistant/census/census-edit.php:104 search.php:143
 #: search.php:185 search.php:300 search_advanced.php:288
-msgid "Search"
-msgstr "Cerca"
+msgid "search"
+msgstr "cerca"
+#, fuzzy
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12906,13 +12911,25 @@ msgstr "Sierra Leone"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "accedi"
+#, fuzzy
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "esci"
+#, fuzzy
+
 msgid "Sign in"
 msgstr "Accedi"
+#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Esci"
+#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447

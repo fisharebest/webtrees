@@ -1376,6 +1376,10 @@ msgstr "أدار الثاني"
 msgid "Add"
 msgstr "إضافة"
 
+msgid "add"
+msgstr "إضافة"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -12103,6 +12107,9 @@ msgstr "إحكام ملغى (طلاق)"
 msgid "Search"
 msgstr "بحث"
 
+msgid "search"
+msgstr "بحث"
+
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1717
@@ -13033,13 +13040,25 @@ msgstr "سيراليون"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "تسجيل دخول"
+#, fuzzy
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "خروج"
+#, fuzzy
+
 msgid "Sign in"
 msgstr "تسجيل دخول"
+#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "خروج"
+#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447

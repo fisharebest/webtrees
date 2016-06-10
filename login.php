@@ -196,7 +196,7 @@ default:
 			</label>
 		</div>
 		<div>
-			<input type="submit" value="', I18N::translate('Sign in'), '">
+			<input type="submit" value="', /* I18N: A button label. */ I18N::translate('sign in'), '">
 		</div>
 		';
 		// Emails are sent from a TREE, not from a SITE. Therefore if there is no
@@ -222,7 +222,7 @@ default:
 				'<input type="text" id="new_passwd_username" name="new_passwd_username" value="">
 			</label>
 		</div>
-		<div><input type="submit" value="', /* I18N: A button label */ I18N::translate('continue'), '"></div>
+		<div><input type="submit" value="', /* I18N: A button label. */ I18N::translate('continue'), '"></div>
 		</form>
 	</div>';
 	echo '</div>';

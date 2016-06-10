@@ -331,7 +331,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<?php echo FunctionsPrint::printFindIndividualLink('cart_item_id'); ?>
 										<?php echo FunctionsPrint::printFindFamilyLink('cart_item_id'); ?>
 										<?php echo FunctionsPrint::printFindSourceLink('cart_item_id', ''); ?>
-										<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
+										<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('add'); ?>">
 									</td>
 								</tr>
 							</tbody>
@@ -457,7 +457,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<?php echo FunctionsPrint::printFindIndividualLink('cart_item_id'); ?>
 										<?php echo FunctionsPrint::printFindFamilyLink('cart_item_id'); ?>
 										<?php echo FunctionsPrint::printFindSourceLink('cart_item_id'); ?>
-										<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
+										<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('add'); ?>">
 									</td>
 								</tr>
 							</tbody>

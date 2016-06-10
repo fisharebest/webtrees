@@ -4366,7 +4366,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</div>
 					<button type="submit" class="btn btn-default">
 						<i class="fa fa-plus"></i>
-						<?php echo I18N::translate('Add') ?>
+						<?php echo /* I18N: A button label. */ I18N::translate('add') ?>
 					</button>
 				</div>
 			</div>

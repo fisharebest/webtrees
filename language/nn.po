@@ -1263,6 +1263,10 @@ msgstr "Adar II"
 msgid "Add"
 msgstr "Legg til"
 
+msgid "add"
+msgstr "legg til"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11638,6 +11642,10 @@ msgstr "Gi postane i slektstreet nye referansenummer"
 
 #. I18N: A button label
 #: search.php:217
+msgid "replace"
+msgstr "erstatt"
+#, fuzzy
+
 msgid "Replace"
 msgstr "Erstatt"
 
@@ -11997,6 +12005,10 @@ msgstr "Besegling annullert (skilsmisse)"
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
 msgstr "Søk"
+
+msgid "search"
+msgstr "søk"
+#, fuzzy
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12928,13 +12940,25 @@ msgstr "Sierra Leone"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "logg inn"
+#, fuzzy
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "logg ut"
+#, fuzzy
+
 msgid "Sign in"
 msgstr "Logg inn"
+#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Logg ut"
+#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447

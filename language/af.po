@@ -1259,6 +1259,10 @@ msgstr "Adar II"
 msgid "Add"
 msgstr "Voeg by"
 
+msgid "add"
+msgstr "voeg by"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11634,6 +11638,10 @@ msgstr "Hernommer die stamboom"
 
 #. I18N: A button label
 #: search.php:217
+msgid "replace"
+msgstr "vervang"
+#, fuzzy
+
 msgid "Replace"
 msgstr "Vervang"
 
@@ -11993,6 +12001,10 @@ msgstr "Verseëling herroep (egskeiding)"
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
 msgstr "Soek"
+
+msgid "search"
+msgstr "soek"
+#, fuzzy
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12924,13 +12936,25 @@ msgstr "Sierra Leone"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "meld aan"
+#, fuzzy
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "meld af"
+#, fuzzy
+
 msgid "Sign in"
 msgstr "Meld aan"
+#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Meld af"
+#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447

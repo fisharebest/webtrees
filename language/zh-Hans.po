@@ -1236,6 +1236,10 @@ msgstr "第六月"
 msgid "Add"
 msgstr "添加"
 
+msgid "add"
+msgstr "添加"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11583,6 +11587,9 @@ msgstr "重新编号家谱"
 
 #. I18N: A button label
 #: search.php:217
+msgid "replace"
+msgstr "替换"
+
 msgid "Replace"
 msgstr "替换"
 
@@ -11941,6 +11948,9 @@ msgstr "密封取消（离婚）"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:104 search.php:143
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
+msgstr "搜索"
+
+msgid "search"
 msgstr "搜索"
 
 #: app/Controller/SearchController.php:202
@@ -12873,6 +12883,14 @@ msgstr "塞拉利昂"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "登录"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "注销"
+
 msgid "Sign in"
 msgstr "登录"
 

@@ -571,7 +571,7 @@ class FunctionsPrint {
 			}
 			if (!$newRow) {
 				echo '</select>';
-				echo '&nbsp;&nbsp;<input type="button" value="', I18N::translate('Add'), "\" onclick=\"return paste_fact('$id', '#newClipboardFact');\"> ";
+				echo '&nbsp;&nbsp;<input type="button" value="', /* I18N: A button label. */ I18N::translate('add'), "\" onclick=\"return paste_fact('$id', '#newClipboardFact');\"> ";
 				echo '</form></td></tr>', "\n";
 			}
 		}
@@ -630,7 +630,7 @@ class FunctionsPrint {
 			echo '<option value="EVEN">', I18N::translate('Custom event'), '</option>';
 		}
 		echo '</select>';
-		echo '<input type="button" value="', I18N::translate('Add'), '" onclick="add_record(\'' . $id . '\', \'newfact\');">';
+		echo '<input type="button" value="', /* I18N: A button label. */ I18N::translate('add'), '" onclick="add_record(\'' . $id . '\', \'newfact\');">';
 		echo '<span class="quickfacts">';
 		foreach ($quickfacts as $fact) {
 			echo '<a href="#" onclick="add_new_record(\'' . $id . '\', \'' . $fact . '\');return false;">', GedcomTag::getLabel($fact), '</a>';

@@ -116,7 +116,7 @@ $controller->pageHeader();
 		</label>
 		<div class="col-sm-9">
 			<button id="submit-export" type="submit" class="btn btn-primary">
-				<?php echo /* I18N: A button label */ I18N::translate('continue'); ?>
+				<?php echo /* I18N: A button label. */ I18N::translate('continue'); ?>
 			</button>
 		</div>
 	</div>
@@ -201,7 +201,7 @@ $controller->pageHeader();
 		</label>
 		<div class="col-sm-9">
 			<button id="submit-export" type="submit" class="btn btn-primary">
-				<?php echo /* I18N: A button label */ I18N::translate('continue'); ?>
+				<?php echo /* I18N: A button label. */ I18N::translate('continue'); ?>
 			</button>
 		</div>
 	</div>

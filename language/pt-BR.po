@@ -1263,6 +1263,10 @@ msgstr "Adar II"
 msgid "Add"
 msgstr "Adicionar"
 
+msgid "add"
+msgstr "adicionar"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11614,6 +11618,10 @@ msgstr "Renumerar árvore genealógica"
 
 #. I18N: A button label
 #: search.php:217
+msgid "replace"
+msgstr "substituir"
+#, fuzzy
+
 msgid "Replace"
 msgstr "Substituir"
 
@@ -11973,6 +11981,10 @@ msgstr "Selamento cancelado (divórcio)"
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
 msgstr "Pesquisar"
+
+msgid "search"
+msgstr "pesquisar"
+#, fuzzy
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12904,13 +12916,25 @@ msgstr "Serra-Leoa"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "conectar"
+#, fuzzy
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "desconectar"
+#, fuzzy
+
 msgid "Sign in"
 msgstr "Conectar"
+#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Desconectar"
+#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447

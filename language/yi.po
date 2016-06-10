@@ -1259,6 +1259,10 @@ msgstr "אדר ב'"
 msgid "Add"
 msgstr "שטעלן"
 
+msgid "add"
+msgstr "שטעלן"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11994,6 +11998,9 @@ msgstr ""
 msgid "Search"
 msgstr "זוך"
 
+msgid "search"
+msgstr "זוך"
+
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1717
@@ -12924,6 +12931,14 @@ msgstr "סיערע לעאנע"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "ארײַנלאָגירן"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "אַרויסלאָגירן"
+
 msgid "Sign in"
 msgstr "ארײַנלאָגירן"
 

@@ -1235,6 +1235,10 @@ msgstr "Adar II"
 msgid "Add"
 msgstr "Thêm"
 
+msgid "add"
+msgstr "thêm"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11582,6 +11586,10 @@ msgstr "Đánh số lại cây gia đình"
 
 #. I18N: A button label
 #: search.php:217
+msgid "replace"
+msgstr "thay thế"
+#, fuzzy
+
 msgid "Replace"
 msgstr "Thay thế"
 
@@ -11941,6 +11949,10 @@ msgstr "Sealing canceled (divorce)"
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
 msgstr "Truy tìm"
+
+msgid "search"
+msgstr "truy tìm"
+#, fuzzy
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12872,13 +12884,25 @@ msgstr "Sierra Leone"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "đăng nhập"
+#, fuzzy
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "thoát"
+#, fuzzy
+
 msgid "Sign in"
 msgstr "Đăng nhập"
+#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Thoát"
+#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447

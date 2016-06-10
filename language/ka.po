@@ -1231,6 +1231,10 @@ msgstr ""
 msgid "Add"
 msgstr "დამატება"
 
+msgid "add"
+msgstr "დამატება"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11938,6 +11942,10 @@ msgstr ""
 msgid "Search"
 msgstr "ძიება"
 
+msgid "search"
+msgstr "ძიება"
+#, fuzzy
+
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1717
@@ -12868,13 +12876,25 @@ msgstr "სიერა-ლეონე"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "ავტორიზაცია"
+#, fuzzy
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "გასვლა"
+#, fuzzy
+
 msgid "Sign in"
 msgstr "ავტორიზაცია"
+#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "გასვლა"
+#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447

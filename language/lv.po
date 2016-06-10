@@ -1285,6 +1285,10 @@ msgstr ""
 msgid "Add"
 msgstr "Pievienot"
 
+msgid "add"
+msgstr "pievienot"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11999,6 +12003,10 @@ msgstr ""
 msgid "Search"
 msgstr "Meklēt"
 
+msgid "search"
+msgstr "meklēt"
+#, fuzzy
+
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1717
@@ -12929,13 +12937,25 @@ msgstr ""
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "pieslēgties"
+#, fuzzy
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "atslēgties"
+#, fuzzy
+
 msgid "Sign in"
 msgstr "Pieslēgties"
+#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Atslēgties"
+#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447

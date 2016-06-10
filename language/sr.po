@@ -1292,6 +1292,10 @@ msgstr ""
 msgid "Add"
 msgstr "Dodaj"
 
+msgid "add"
+msgstr "dodaj"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -12936,13 +12940,25 @@ msgstr ""
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "prijava"
+#, fuzzy
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "odjava"
+#, fuzzy
+
 msgid "Sign in"
 msgstr "Prijava"
+#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Odjava"
+#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447

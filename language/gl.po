@@ -1259,6 +1259,10 @@ msgstr ""
 msgid "Add"
 msgstr "Engadir"
 
+msgid "add"
+msgstr "engadir"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11969,6 +11973,10 @@ msgstr ""
 msgid "Search"
 msgstr "Procurar"
 
+msgid "search"
+msgstr "procurar"
+#, fuzzy
+
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1717
@@ -12899,13 +12907,25 @@ msgstr ""
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "iniciar a sesión"
+#, fuzzy
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "sair"
+#, fuzzy
+
 msgid "Sign in"
 msgstr "Iniciar a sesión"
+#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Sair"
+#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447

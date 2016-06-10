@@ -1231,6 +1231,10 @@ msgstr ""
 msgid "Add"
 msgstr "加入"
 
+msgid "add"
+msgstr "加入"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"

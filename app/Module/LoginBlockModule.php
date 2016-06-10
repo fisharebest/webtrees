@@ -61,7 +61,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 			$title   = I18N::translate('Sign out');
 			$content = '<div class="center"><form method="post" action="logout.php" name="logoutform" onsubmit="return true;">';
 			$content .= '<br>' . I18N::translate('You are signed in as %s.', '<a href="edituser.php" class="name2">' . Auth::user()->getRealNameHtml() . '</a>') . '<br><br>';
-			$content .= '<input type="submit" value="' . I18N::translate('Sign out') . '">';
+			$content .= '<input type="submit" value="' . /* I18N: A button label. */ I18N::translate('sign out') . '">';
 
 			$content .= '<br><br></form></div>';
 		} else {
@@ -80,7 +80,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 					</label>
 				</div>
 				<div>
-					<input type="submit" value="' . I18N::translate('Sign in') . '">
+					<input type="submit" value="' . /* I18N: A button label. */ I18N::translate('sign in') . '">
 				</div>
 				<div>
 					<a href="#" id="passwd_click">' . I18N::translate('Forgot password?') . '</a>

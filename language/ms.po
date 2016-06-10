@@ -1234,6 +1234,10 @@ msgstr ""
 msgid "Add"
 msgstr "Tambah"
 
+msgid "add"
+msgstr "tambah"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -12874,13 +12878,25 @@ msgstr ""
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "log masuk"
+#, fuzzy
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "log keluar"
+#, fuzzy
+
 msgid "Sign in"
-msgstr "Log Masuk"
+msgstr "Log masuk"
+#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
-msgstr "Log Keluar"
+msgstr "Log keluar"
+#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447

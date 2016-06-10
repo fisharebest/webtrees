@@ -1263,6 +1263,10 @@ msgstr "אדר ב׳"
 msgid "Add"
 msgstr "הוסף"
 
+msgid "add"
+msgstr "הוסף"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11638,6 +11642,10 @@ msgstr "מספר מחדש עץ משפחה"
 
 #. I18N: A button label
 #: search.php:217
+msgid "replace"
+msgstr "החלף"
+#, fuzzy
+
 msgid "Replace"
 msgstr "החלף"
 
@@ -11996,6 +12004,9 @@ msgstr "ביטול חותמת מורמונים (גירושין)"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:104 search.php:143
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
+msgstr "חפש"
+
+msgid "search"
 msgstr "חפש"
 
 #: app/Controller/SearchController.php:202
@@ -12928,6 +12939,14 @@ msgstr "סיירה לאונה"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "התחבר"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "התנתק"
+
 msgid "Sign in"
 msgstr "התחבר"
 

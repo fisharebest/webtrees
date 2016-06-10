@@ -1259,6 +1259,10 @@ msgstr "adar II-kuu"
 msgid "Add"
 msgstr "Lisää"
 
+msgid "add"
+msgstr "lisää"
+#, fuzzy
+
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
@@ -11634,6 +11638,10 @@ msgstr "Numeroi sukupuu uudelleen"
 
 #. I18N: A button label
 #: search.php:217
+msgid "replace"
+msgstr "korvaa"
+#, fuzzy
+
 msgid "Replace"
 msgstr "Korvaa"
 
@@ -11993,6 +12001,10 @@ msgstr "Sinetöinnin mitätöinti (avioero)"
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
 msgstr "Etsi"
+
+msgid "search"
+msgstr "etsi"
+#, fuzzy
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12924,13 +12936,25 @@ msgstr "Sierra Leone"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
 #: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
 #: login.php:150 login.php:199
+msgid "sign in"
+msgstr "kirjaudu sisään"
+#, fuzzy
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "kirjaudu ulos"
+#, fuzzy
+
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
+#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
+#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447

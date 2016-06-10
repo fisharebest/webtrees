@@ -285,7 +285,7 @@ echo '</script>';
 </table>
 </div>
 		<div class="center" style="margin-top:10px;">
-			<p><input type="submit" value="<?php echo I18N::translate('Search'); ?>"></p>
+			<p><input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('search'); ?>"></p>
 		</div>
 </form>
 </div>
