@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-03 11:22+0000\n"
+"PO-Revision-Date: 2016-06-10 11:32+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -5121,7 +5121,7 @@ msgstr "Soyu "
 #: app/Module/ChartsBlockModule.php:101
 #, php-format
 msgid "Descendants of %s"
-msgstr "%s için Şahsı İzleyen Nesiller Çizelgesi"
+msgstr "%s için Nesiller Çizelgesi"
 
 #. I18N: gedcom tag DSCR
 #: admin_module_blocks.php:74 admin_module_charts.php:67
@@ -9272,7 +9272,7 @@ msgstr "Google haritası için minimum ve maksimum zoom seviyesi. 1 haritanın t
 #. I18N: A configuration setting
 #: admin_trees_config.php:1169
 msgid "Minimum number of occurrences to be a “common surname”"
-msgstr "En çok kullanılan “Ortak Soyadı” için en az sayı"
+msgstr "En çok kullanılan “Ortak Soyadı” için minimum değer"
 
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:29
@@ -10195,11 +10195,11 @@ msgstr "Çocuk sayısı"
 #: app/Module/UpcomingAnniversariesModule.php:147
 #: app/Module/YahrzeitModule.php:267
 msgid "Number of days to show"
-msgstr "Gösterilecek öğe sayısı"
+msgstr "Gösterilecek gün sayısı"
 
 #: app/Stats.php:5213 statistics.php:307
 msgid "Number of families without children"
-msgstr "Çocuklar olmadan aile sayısı"
+msgstr "Çocuksuz aile sayısı"
 
 #: app/Module/ClippingsCartModule.php:211
 #: app/Module/ClippingsCartModule.php:230
@@ -10209,7 +10209,7 @@ msgstr "Nesillerin sayısı"
 
 #: app/Module/FamilyTreeNewsModule.php:202
 msgid "Number of items"
-msgstr "Öğenin numarası"
+msgstr "Öğe sayısı"
 
 #. I18N: Label for a configuration option
 #: app/Module/TopGivenNamesModule.php:146
@@ -12267,17 +12267,17 @@ msgstr "Yeni kullanıcılar için varsayılan blok ayarı"
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1318
 msgid "Set the default number of generations to display on descendancy and pedigree charts."
-msgstr "Seçere Çizelgesinde göstermek için nesillerin varsayılan sayıyı girin."
+msgstr "Nesil ve soy çizelgesinde gösterilecek nesil sayısının varsayılan değerini girin."
 
 #. I18N: Help text for the “Maximum descendancy generations” configuration setting
 #: admin_trees_config.php:1358
 msgid "Set the maximum number of generations to display on descendancy charts."
-msgstr "Şahsı izleyen nesiller Çizelgesinde göstermek için nesillerin en fazla sayıyı girin."
+msgstr "Nesiller çizelgesinde gösterilecek nesil sayısı için maksimum değeri girin."
 
 #. I18N: Help text for the “Maximum pedigree generations” configuration setting
 #: admin_trees_config.php:1338
 msgid "Set the maximum number of generations to display on pedigree charts."
-msgstr "Seçere Çizelgesinde göstermek için nesillerin en fazla sayıyı girin."
+msgstr "Soy ağacı çizelgesinde gösterilecek nesil sayısı için maksimum değeri girin."
 
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: admin_trees_config.php:401
@@ -13887,7 +13887,7 @@ msgstr "Yüklediğiniz medya dosyası, sunucuda bilgisayarınızdaki isminden fa
 
 #: setup.php:169
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr "Aile ağacınızın bireylerin sayısı sunucunuzun hafıza ve ve CPU zamanı gereksinimlere bağlıdır."
+msgstr "Hafıza ve CPU gereksinimleri soy ağacınızdaki bireylerin sayısına bağlıdır."
 
 #: message.php:193
 msgid "The message was not sent."
@@ -14441,7 +14441,7 @@ msgstr "Bu SMTP sunucusu adıdır. 'localhost' email servisi web sunucusu olarak
 #. I18N: Help text for the “Minimum number of occurrences to be a ‘common surname’” configuration setting
 #: admin_trees_config.php:1182
 msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
-msgstr "Bir soyadının \"Ana Sayfa\" da bulunan \"En çok ortak soy adlerı\" listesinde listelenebilmesi için gerekli olan tekrar sayısı."
+msgstr "Bir soyadının \"Ana Sayfa\" da bulunan \"En çok ortak soy adları\" listesinde görüntülenebilmesi için gerekli olan tekrar sayısı."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1947
@@ -15112,7 +15112,7 @@ msgstr "Toplam evlilikler"
 
 #: admin.php:642
 msgid "Total number of users"
-msgstr "Toplam kullanıcı"
+msgstr "Toplam kullanıcı sayısı"
 
 #: modules_v3/change_report/report.xml:87
 msgid "Total pending changes: "
