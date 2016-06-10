@@ -12950,8 +12950,8 @@ msgid "sign out"
 msgstr "odjava"
 #, fuzzy
 
-msgid "sign in"
-msgstr "prijava"
+msgid "Sign in"
+msgstr "Prijava"
 #, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
