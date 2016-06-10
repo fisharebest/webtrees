@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-10 07:35+0000\n"
+"PO-Revision-Date: 2016-06-10 19:57+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -8517,7 +8517,7 @@ msgstr "Los Angeles, Kalifornia, Egyesült Államok"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219 login.php:252
 msgid "Lost password request"
-msgstr "Jelszókérés"
+msgstr "Elveszett jelszó miatti kérelem"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:193
@@ -15411,7 +15411,7 @@ msgstr "Ismeretlen"
 #: modules_v3/individual_report/report.xml:602
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr "Nincs adat"
+msgstr "Ismeretlen"
 
 #: app/Stats.php:944 app/Stats.php:950 edituser.php:187
 msgctxt "unknown people"
@@ -20142,7 +20142,7 @@ msgstr "ismeretlen"
 #: app/Module/InteractiveTree/TreeView.php:342
 msgctxt "unknown family"
 msgid "unknown"
-msgstr "nincs adat"
+msgstr "ismeretlenek"
 
 #: app/Module/RelationshipsChartModule.php:131
 msgid "unlimited"
