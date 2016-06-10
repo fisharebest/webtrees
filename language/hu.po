@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-08 21:38+0000\n"
+"PO-Revision-Date: 2016-06-10 07:35+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -3998,7 +3998,7 @@ msgstr "Beállítás"
 
 #: admin_users.php:352 edituser.php:226 login.php:463
 msgid "Confirm password"
-msgstr "A kívánt jelszó megerősítése"
+msgstr "A jelszó megerősítése"
 
 #. I18N: gedcom tag CONF
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
@@ -5611,7 +5611,7 @@ msgstr "Elektronikus"
 #. I18N: Angle of elevation (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2724
 msgid "Elevation"
-msgstr "Emelkedés"
+msgstr "Emelkedési szög"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:148
@@ -5651,7 +5651,7 @@ msgstr "E-mail cím"
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:881
 msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "E-mail cím, ami a webtrees által automatikusan létrehozott e-mailek „Feladó:” rovatába kerül .<br><br>A webtrees automatikusan létrehozhat e-maileket a rendszergazdák értesítésére az ellenőrizendő változtatásokról, továbbá értesítő e-mailt küld fiókot igénylő felhasználóknak is.<br><br>Általában ezen automatikusan létrehozott e-mailek „Feladó:” rovata valami ilyen: <i>Feladó: webtrees-noreply@webhely</i>, jelezve, hogy erre az e-mailre nem kell válaszolni. A rosszindulatú e-mailek elleni védelem érdekében egyes e-mail rendszerek megkívánják, hogy minden üzenet „Feladó:” rovata valós e-mail fióknak tűnjön, és nem fogadják el a <i>webtrees-noreply</i> alakútól eltérő fiókok üzeneteit."
+msgstr "E-mail cím, ami a webtrees által automatikusan létrehozott e-mailek „Feladó:” rovatába kerül.<br><br>A webtrees automatikusan létrehozhat e-maileket a rendszergazdák értesítésére az ellenőrizendő változtatásokról, továbbá értesítő e-mailt küld fiókot igénylő felhasználóknak is.<br><br>Általában ezen automatikusan létrehozott e-mailek „Feladó:” rovata valami ilyen: <i>Feladó: webtrees-noreply@webhely</i>, jelezve, hogy erre az e-mailre nem kell válaszolni. A rosszindulatú e-mailek elleni védelem érdekében egyes e-mail rendszerek megkívánják, hogy minden üzenet „Feladó:” rovata valós e-mail fióknak tűnjön, és nem fogadják el a <i>webtrees-noreply</i> alakútól eltérő fiókok üzeneteit."
 
 #: admin_users.php:382
 msgid "Email verified"
@@ -8512,7 +8512,7 @@ msgstr "Los Angeles, Kalifornia, Egyesült Államok"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219 login.php:252
 msgid "Lost password request"
-msgstr "Elveszített jelszó miatti kérelem"
+msgstr "Jelszókérés"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:193
@@ -10664,7 +10664,7 @@ msgstr "Jelszó"
 
 #: admin_users.php:344 edituser.php:219 login.php:457
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "A jelszó legyen legalább 6 karakter hosszú, és érzékeny a kis- és nagybetűk közötti különbségre, tehát a „titok” és a „TITOK” különbözik."
+msgstr "A jelszó, ami legalább 6 karakter hosszú kell legyen, érzékeny a kis- és nagybetűk közötti különbségre, tehát a „titkos” és a „TITKOS” különbözik."
 
 #: edituser.php:139
 msgid "Passwords must contain at least 6 characters."
@@ -12534,7 +12534,7 @@ msgstr "Mutasd a letöltési hivatkozást a médiamegjelenítőben"
 #. I18N: A configuration setting
 #: admin_site_config.php:500
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "Mutasd az elfogadandó megállapodást az „Új felhasználói fiók igénylése” lapon"
+msgstr "Jelenjen meg az elfogadandó felhasználói megállapodás az „Új felhasználói fiók igénylése” lapon"
 
 #: app/Module/NotesTabModule.php:73
 msgid "Show all notes"
@@ -14346,7 +14346,7 @@ msgstr "Ez az űrlap (időtúllépés miatt) lejárt. Próbálja újra."
 
 #: app/Controller/ChartController.php:57 individual.php:98
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr "Ilyen azonosítójú személy nem létezik, vagy Önnek nincs jogosultsága megtekinteni."
+msgstr "Ez a személy nem létezik, vagy Önnek nincs jogosultsága megtekinteni."
 
 #: individual.php:65
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
@@ -15951,7 +15951,7 @@ msgstr "Az opció bejelölt állapotában a webtrees kiszámolja a testvérek, g
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2200
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr "Egy új családtag felvételekor megadható egy alapértelmezett vezetéknév. Ez a vezetéknév függ a helyi hagyományoktól."
+msgstr "Egy családtag felvételekor megadható egy alapértelmezett vezetéknév. Ez a vezetéknév függ a helyi hagyományoktól."
 
 #: help_text.php:310
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
