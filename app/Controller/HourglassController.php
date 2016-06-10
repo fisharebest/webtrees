@@ -153,7 +153,7 @@ class HourglassController extends ChartController {
 			echo
 			'</tr><tr>',
 			"<td style='vertical-align:top'><img class='pvline' src='" . Theme::theme()->parameter('image-vline') . "' width='3' alt=''></td>",
-				'<td><img class="line4" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3" alt=""></td>',
+				'<td><img class="line4" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>',
 			'<td>';
 			//-- print the mother box
 			FunctionsPrint::printPedigreePerson($family->getWife(), $this->showFull());
@@ -254,7 +254,7 @@ class HourglassController extends ChartController {
 							echo "<td style='vertical-align:top'><img alt='' class='bvertline' id='vline_$chil' src='" . Theme::theme()->parameter('image-vline') . "' width='3'></td>";
 						} else {
 							// Middle child
-							echo '<td style="background: url(\'' . Theme::theme()->parameter('image-vline') . '\');"><img src=\'' . Theme::theme()->parameter('image-spacer') . '\' width="3" alt=""></td>';
+							echo '<td style="background: url(\'' . Theme::theme()->parameter('image-vline') . '\');"><img src=\'' . Theme::theme()->parameter('image-spacer') . '\' width="3"></td>';
 						}
 					}
 					echo '</tr>';

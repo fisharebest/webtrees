@@ -368,7 +368,7 @@ class FunctionsCharts {
 							} else {
 								echo '<img height="' . $pbheight . 'px"';
 							}
-							echo ' width="3" src="' . Theme::theme()->parameter('image-vline') . '" alt="">';
+							echo ' width="3" src="' . Theme::theme()->parameter('image-vline') . '">';
 							echo '</td>';
 						}
 						echo '<td class="details1" style="text-align:center;">';
@@ -516,7 +516,7 @@ class FunctionsCharts {
 		if ($kids) {
 			echo '<table cellspacing="0" cellpadding="0" border="0" ><tr>';
 			if ($kids > 1) {
-				echo '<td rowspan="', $kids, '"><img width="3px" height="', (($bheight + 9) * ($kids - 1)), 'px" src="', Theme::theme()->parameter('image-vline'), '" alt=""></td>';
+				echo '<td rowspan="', $kids, '"><img width="3px" height="', (($bheight + 9) * ($kids - 1)), 'px" src="', Theme::theme()->parameter('image-vline'), '"></td>';
 			}
 			$ctkids = count($fchildren);
 			$i      = 1;
@@ -531,7 +531,7 @@ class FunctionsCharts {
 				} else {
 					echo ' style="padding-left: 2px;"';
 				}
-				echo ' src="', Theme::theme()->parameter('image-hline'), '" alt=""></td><td>';
+				echo ' src="', Theme::theme()->parameter('image-hline'), '"></td><td>';
 				FunctionsPrint::printPedigreePerson($fchil, $show_full);
 				echo '</td></tr>';
 				if ($i < $ctkids) {

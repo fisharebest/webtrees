@@ -119,7 +119,7 @@ class FamilyBookController extends ChartController {
 								$h = ($kids - 1) * 4 + $h;
 							}
 							echo '<td class="tdbot">',
-							'<img class="tvertline" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '"  height="', $h - 1, '" alt=""></td>';
+							'<img class="tvertline" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '"  height="', $h - 1, '"></td>';
 						} elseif ($i === count($children) - 1) {
 							// Adjust for the first column on left
 							$h = round(((($this->getBoxDimensions()->height) * $kids) + 8) / 2);
@@ -128,10 +128,10 @@ class FamilyBookController extends ChartController {
 								$h = ($kids - 1) * 4 + $h;
 							}
 							echo '<td class="tdtop">',
-							'<img class="bvertline" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" height="', $h + 1, '" alt=""></td>';
+							'<img class="bvertline" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" height="', $h + 1, '"></td>';
 						} else {
 							echo '<td style="background: url(', Theme::theme()->parameter('image-vline'), ');">',
-							'<img class="spacer" src="', Theme::theme()->parameter('image-spacer'), '" alt=""></td>';
+							'<img class="spacer" src="', Theme::theme()->parameter('image-spacer'), '"></td>';
 						}
 					}
 					echo '</tr>';
@@ -154,7 +154,7 @@ class FamilyBookController extends ChartController {
 		if ($person) {
 			FunctionsPrint::printPedigreePerson($person, $this->showFull());
 			echo '</td><td>',
-			'<img class="line2" src="', Theme::theme()->parameter('image-hline'), '" width="8" height="3" alt="">';
+			'<img class="line2" src="', Theme::theme()->parameter('image-hline'), '" width="8" height="3">';
 		} else {
 			echo '<div style="width:', $this->getBoxDimensions()->width + 19, 'px; height:', $this->getBoxDimensions()->height + 8, 'px;"></div>',
 			'</td><td>';
@@ -253,9 +253,9 @@ class FamilyBookController extends ChartController {
 					$lh = $savlh;
 				}
 			}
-			echo '<img class="line3 pvline"  src="', Theme::theme()->parameter('image-vline'), '" height="', $lh - 1, '" alt=""></td>',
+			echo '<img class="line3 pvline"  src="', Theme::theme()->parameter('image-vline'), '" height="', $lh - 1, '"></td>',
 			'<td>',
-			'<img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3" alt=""></td>',
+			'<img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
 			$lh = $savlh; // restore original line height
 			//-- print the father box
