@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-04 13:30+0000\n"
+"PO-Revision-Date: 2016-06-10 21:21+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -1263,13 +1263,14 @@ msgstr "Adar II"
 msgid "Add"
 msgstr "Ajouter"
 
-msgid "add"
-msgstr "ajouter"
-
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "Ajouter %s au panier"
+
+#: modules_v3/GEDFact_assistant/census/census-edit.php:113
+msgid "Add a blank row"
+msgstr "Ajouter une ligne vide"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
@@ -1494,10 +1495,6 @@ msgstr "Ajouter votre texte et vos graphiques personnalisés."
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
 msgstr "Ajouter/Modifier le journal/Nouvelle entrée"
-
-#: modules_v3/GEDFact_assistant/census/census-edit.php:113
-msgid "Add a blank row"
-msgstr "Ajouter une ligne vide"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -11638,12 +11635,6 @@ msgstr "Renuméroter"
 msgid "Renumber family tree"
 msgstr "Renumérote l’arbre généalogique"
 
-#. I18N: A button label
-#: search.php:217
-msgid "replace"
-msgstr "remplacer"
-#, fuzzy
-
 msgid "Replace"
 msgstr "Remplacer"
 
@@ -12003,10 +11994,6 @@ msgstr "Signature de l’annulation (divorce)"
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
 msgstr "Recherche"
-
-msgid "search"
-msgstr "recherche"
-#, fuzzy
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12934,32 +12921,17 @@ msgstr "Barres latérales"
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#. I18N: Name of a module
-#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
-#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
-#: login.php:150 login.php:199
-msgid "sign in"
-msgstr "connexion"
-#, fuzzy
-
-#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
-#: app/Theme/AbstractTheme.php:1568
-msgid "sign out"
-msgstr "déconnexion"
-#, fuzzy
-
 msgid "Sign in"
 msgstr "Connexion"
-#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Déconnexion"
-#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447
+#, fuzzy
 msgid "Sign-in URL"
 msgstr "URL de connexion (login)"
 
@@ -16456,6 +16428,9 @@ msgstr "approuver"
 msgid "accepted"
 msgstr "approuvé"
 
+msgid "add"
+msgstr "ajouter"
+
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
 msgid "adopted name"
@@ -19425,6 +19400,11 @@ msgctxt "MALE"
 msgid "religious name"
 msgstr "nom en religion"
 
+#. I18N: A button label
+#: search.php:217
+msgid "replace"
+msgstr "remplacer"
+
 #. I18N: a program feature
 #: setup.php:133 setup.php:134
 msgid "reporting"
@@ -19463,6 +19443,9 @@ msgstr "robot"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
 msgstr "enregistrer"
+
+msgid "search"
+msgstr "recherche"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:619
@@ -19681,6 +19664,18 @@ msgstr "montrer le graphique"
 #: app/Functions/Functions.php:784
 msgid "sibling"
 msgstr "frère/sœur"
+
+#. I18N: Name of a module
+#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
+#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
+#: login.php:150 login.php:199
+msgid "sign in"
+msgstr "connexion"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "déconnexion"
 
 #: app/Functions/Functions.php:767
 msgid "sister"
