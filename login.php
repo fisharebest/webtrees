@@ -433,7 +433,7 @@ case 'register':
 
 				<div>
 					<label for="username">
-						<?php echo I18N::translate('Desired user name'); ?>
+						<?php echo I18N::translate('Username'); ?>
 						<input type="text" id="username" name="user_name" required maxlength="32" value="<?php Filter::escapeHtml($user_name); ?>">
 					</label>
 					<p class="small text-muted">
@@ -443,7 +443,7 @@ case 'register':
 
 				<div>
 					<label for="user_password01">
-						<?php echo I18N::translate('Desired password'); ?>
+						<?php echo I18N::translate('Password'); ?>
 						<input required
 							type="password"
 							id="user_password01" name="user_password01"
