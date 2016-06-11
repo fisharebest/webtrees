@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-11 21:29+0000\n"
+"PO-Revision-Date: 2016-06-11 22:49+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -6861,7 +6861,7 @@ msgstr "Sarjadás hava"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:333
 msgid "Get an API key from Google."
-msgstr "API-kulcsszerzés a Google-tól."
+msgstr "API-kulcs szerzése a Google-tól."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6765
@@ -6945,7 +6945,7 @@ msgstr "Google Street View™ (utcakép)"
 
 #: app/Module/GoogleMapsModule.php:331
 msgid "Google allows a small number of anonymous map requests per day.  If you need more than this, you will need a Google account and an API key."
-msgstr "A Google napi kisszámú névtelen térképkérelmet enged meg. Ha ennél többet szeretne, Google-fiókra és egy API-kulcsra lesz szüksége."
+msgstr "A Google napi kisszámú névtelen térképkérelmet engedélyez. Ha ennél többet szeretne, Google-fiókra és egy API-kulcsra lesz szüksége."
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:508
@@ -7375,7 +7375,7 @@ msgstr "Azonosító"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:650
 msgid "If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines."
-msgstr "Ha a webhely látogatója nem állított be egy alapértelmezett nyelvet a böngészőben, vagy egy itt nem támogatott nyelvet adott meg, ez lesz a használt nyelv. Általában ez a beállítás a keresőmotorokra vonatkozik."
+msgstr "Ha a webhely látogatója nem választott ki egy előnyben részesített nyelvet a böngészőjében, vagy egy itt nem támogatott nyelvet állított be, ezt a nyelvet használjuk. Általában ez a beállítás a keresőmotorokra vonatkozik."
 
 #: admin_users.php:392
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -16117,7 +16117,7 @@ msgstr "Kérhet magasabb vagy alacsonyabb határértéket, habár a szerver mell
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: admin_trees_config.php:504
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it.  If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "Korlátozás hozzárendelésével beállítható egy egyedi bejegyzés, tény vagy esemény elérése. Ha egy bejegyzéshez, tényhez vagy eseményhez nem tartozik korlátozás, a következőt alapértelmezettet használjuk."
+msgstr "Korlátozás hozzárendelésével beállítható egy egyedi bejegyzés, tény vagy esemény elérése. Ha egy bejegyzéshez, tényhez vagy eseményhez nem tartozik korlátozás, a következő alapértelmezettet használjuk."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
