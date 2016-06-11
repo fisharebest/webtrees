@@ -7395,8 +7395,9 @@ msgstr "Número ID"
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:650
-msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used. Typically, this setting applies to search engines."
+msgid "If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines."
 msgstr "Si un visitante del sitio no ha especificado un idioma de preferencia en su configuración del navegador, o ha especificado un idioma no disponible, entonces se utilizará este idioma. Normalmente, este valor se aplica a los motores de búsqueda."
+#, fuzzy
 
 #: admin_users.php:392
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -7485,8 +7486,9 @@ msgstr "Si oculta un bloque vacío, no podrá cambiar su configuración hasta qu
 
 #: admin_site_config.php:203 admin_site_config.php:222
 #: admin_site_config.php:291 admin_site_config.php:305
-msgid "If you leave this setting empty, the default value will be used."
+msgid "Leave this blank to use the default value."
 msgstr "Si deja esta opción en blanco, el valor por defecto será usada."
+#, fuzzy
 
 #: admin_site_config.php:185
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -11195,6 +11197,10 @@ msgstr "Privacidad"
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "Restricciones de privacidad—esas se aplica a los registros y hechos que no tienen etiqueta RESN"
 
+msgid "Privacy restrictions"
+msgstr "Restricciones de privacidad"
+#, fuzzy
+
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:532
 #: app/GedcomRecord.php:610 app/GedcomRecord.php:735 app/Individual.php:1309
 #: app/Module/GoogleMapsModule.php:822 app/Note.php:71
@@ -14449,8 +14455,9 @@ msgstr "Hay que distinguir entre mayúsculas y minúsculas. Si una base de datos
 
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1371
-msgid "This is the initial setting for the “show details” option on the charts."
+msgid "This is the initial value for the “show details” option on the charts."
 msgstr "Este es el ajuste inicial para la opción «mostrar detalles» en las diagramas."
+#, fuzzy
 
 #: admin.php:615 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
@@ -14528,8 +14535,9 @@ msgstr "Es la lista corta de hechos GEDCOM para las fuentes que aparece junto a 
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1081
-msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default setting is 100."
+msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
 msgstr "Es la anchura (en pixeles) a utilizar al generar automáticamente las miniaturas. El valor predeterminado es 100."
+#, fuzzy
 
 #: admin_users.php:318 edituser.php:176 login.php:420 setup.php:428
 msgid "This is your real name, as you would like it displayed on screen."
@@ -15342,8 +15350,9 @@ msgid "Ukraine"
 msgstr "Ucrania"
 
 #: setup.php:264 setup.php:336
-msgid "Unable to connect using these settings. Your server gave the following error."
+msgid "Unable to connect using this username and password. Your server gave the following error."
 msgstr "Ha sido imposible realizar la conexión con la configuración actual.  El servidor devolvió el siguiente error."
+#, fuzzy
 
 #: admin_trees_config.php:678
 msgid "Unable to find record with ID"

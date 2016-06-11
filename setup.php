@@ -261,7 +261,7 @@ try {
 	if ($_POST['dbuser']) {
 		// If we’ve supplied a login, then show the error
 		echo
-			'<p class="bad">', I18N::translate('Unable to connect using these settings. Your server gave the following error.'), '</p>',
+			'<p class="bad">', I18N::translate('Unable to connect using this username and password. Your server gave the following error.'), '</p>',
 			'<pre>', $ex->getMessage(), '</pre>',
 			'<p class="bad">', I18N::translate('Check the settings and try again.'), '</p>';
 	}
@@ -333,7 +333,7 @@ if ($DBNAME && $DBNAME == $_POST['dbname'] && $TBLPREFIX == $_POST['tblpfx']) {
 		$dbname_ok = true;
 	} catch (PDOException $ex) {
 		echo
-			'<p class="bad">', I18N::translate('Unable to connect using these settings. Your server gave the following error.'), '</p>',
+			'<p class="bad">', I18N::translate('Unable to connect using this username and password. Your server gave the following error.'), '</p>',
 			'<pre>', $ex->getMessage(), '</pre>',
 			'<p class="bad">', I18N::translate('Check the settings and try again.'), '</p>';
 	}
