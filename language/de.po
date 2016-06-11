@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-11 09:20+0000\n"
-"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
+"PO-Revision-Date: 2016-06-11 10:55+0000\n"
+"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -12918,7 +12918,7 @@ msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
 msgid "Sign in"
-msgstr "Anmeldung"
+msgstr "Anmelden"
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
@@ -14151,7 +14151,7 @@ msgstr "Themen"
 
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
-msgstr "Themen können in drei Stufen ausgewählt werden: Benutzer, Stammbaum und Webseite. Die Benutzereinstellungen haben Vorrang vor den Stammbaum-Einstellungen, die wiederum Vorrang vor der Webseiten-Einstellung haben. Die Auswahl des „Standardthemas“ auf einer Stufe wird das Thema auch auf der nächsten Stufe verwenden."
+msgstr "Themen können in drei Stufen ausgewählt werden: Benutzer, Stammbaum und Webseite. Die Benutzer-Einstellungen haben Vorrang vor den Stammbaum-Einstellungen, die wiederum Vorrang vor der Webseiten-Einstellung haben. Bei Auswahl des „Standardthemas“ auf einer Stufe wird das Thema auch auf der nächsten Stufe verwendet."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:142
@@ -14225,13 +14225,13 @@ msgstr "Thermidor"
 
 #: admin.php:564
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
-msgstr "Diese Seiten erlauben den Zugang zu allen Konfigurationseinstellungen und Verwaltungsprogrammen für diese webtrees Seite."
+msgstr "Diese Seiten erlauben den Zugang zu allen Konfigurationseinstellungen und Verwaltungswerkzeugen für diese webtrees-Seite."
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:150
 #, php-format
 msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-msgstr "Diese GEDCOM-Datei ist gemäß %1$s verschlüsselt. Dies bedeutet %2$s."
+msgstr "Diese GEDCOM-Datei verwendet den Zeichensatz %1$s. Dies bedeutet %2$s."
 
 #: login.php:97
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -19670,7 +19670,7 @@ msgstr "anmeldung"
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "sign out"
-msgstr "Abmeldung"
+msgstr "Abmelden"
 
 #: app/Functions/Functions.php:767
 msgid "sister"
