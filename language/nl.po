@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-06 14:04+0000\n"
+"PO-Revision-Date: 2016-06-11 13:30+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -1263,14 +1263,14 @@ msgstr "Adar II"
 msgid "Add"
 msgstr "Toevoegen"
 
-msgid "add"
-msgstr "toevoegen"
-#, fuzzy
-
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "%s toevoegen aan de knipselverzameling"
+
+#: modules_v3/GEDFact_assistant/census/census-edit.php:113
+msgid "Add a blank row"
+msgstr "Voeg een lege regel toe"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
@@ -1495,11 +1495,6 @@ msgstr "Voeg uw eigen tekst en tekeningen toe."
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
 msgstr "Wijzig een journaal-ingang/nieuwsartikel of voeg er een toe"
-
-#: modules_v3/GEDFact_assistant/census/census-edit.php:113
-msgid "Add a blank row"
-msgstr "Voeg een lege regel toe"
-#, fuzzy
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -11645,10 +11640,6 @@ msgstr "Stamboom hernummeren"
 msgid "Replace"
 msgstr "Vervang"
 
-msgid "replace"
-msgstr "vervang"
-#, fuzzy
-
 #: admin_trees_places.php:104 search.php:162
 msgid "Replace with"
 msgstr "Vervang door"
@@ -12005,10 +11996,6 @@ msgstr "Verzegeling afgezegd (echtscheiding)"
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
 msgstr "Zoek"
-
-msgid "search"
-msgstr "zoek"
-#, fuzzy
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12936,29 +12923,13 @@ msgstr "Zijpaneel"
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#. I18N: Name of a module
-#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
-#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
-#: login.php:150 login.php:199
-msgid "sign in"
-msgstr "aanmelden"
-#, fuzzy
-
-#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
-#: app/Theme/AbstractTheme.php:1568
-msgid "sign out"
-msgstr "afmelden"
-#, fuzzy
-
 msgid "Sign in"
 msgstr "Aanmelden"
-#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Afmelden"
-#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447
@@ -14187,7 +14158,6 @@ msgstr "Thema's"
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 msgstr "Thema’s kunnen worden geselecteerd op drie niveau’s: gebruiker, stamboom en website. Gebruikersinstellingen hebben voorrang op stamboominstellingen, die op hun beurt voorrang hebben op de website instelling. Het selecteren van “standaard thema” op één niveau zorgt ervoor dat dit thema ook op het volgende niveau wordt gebruikt."
-#, fuzzy
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:142
@@ -14262,13 +14232,12 @@ msgstr "Thermidor"
 #: admin.php:564
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
 msgstr "Deze pagina's geven toegang tot alle configuratie instellingen en beheer gereedschappen voor deze webtrees site."
-#, fuzzy
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:150
 #, php-format
 msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-msgstr "Dit GEDCOM bestand is gecodeerd met %1$s. Dit betekent %2$s."
+msgstr "Dit GEDCOM bestand is gecodeerd met %1$s. Behandel dit als %2$s."
 
 #: login.php:97
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -16459,6 +16428,9 @@ msgstr "accepteer"
 #: admin_site_change.php:54
 msgid "accepted"
 msgstr "geaccepteerd"
+
+msgid "add"
+msgstr "toevoegen"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
@@ -19429,6 +19401,9 @@ msgctxt "MALE"
 msgid "religious name"
 msgstr "religieuze naam"
 
+msgid "replace"
+msgstr "vervang"
+
 #. I18N: a program feature
 #: setup.php:133 setup.php:134
 msgid "reporting"
@@ -19467,6 +19442,9 @@ msgstr "robot"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
 msgstr "opslaan"
+
+msgid "search"
+msgstr "zoek"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:619
@@ -19685,6 +19663,18 @@ msgstr "Toon grafiek"
 #: app/Functions/Functions.php:784
 msgid "sibling"
 msgstr "broer/zus"
+
+#. I18N: Name of a module
+#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
+#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
+#: login.php:150 login.php:199
+msgid "sign in"
+msgstr "aanmelden"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "afmelden"
 
 #: app/Functions/Functions.php:767
 msgid "sister"
