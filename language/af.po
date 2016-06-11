@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-11 05:14+0000\n"
+"PO-Revision-Date: 2016-06-11 05:36+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -707,7 +707,7 @@ msgstr "<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang 
 
 #: login.php:173
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
-msgstr "<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang tot hierdie webwerf is beperk tot <u>familielede</u>.<br><br>As jy ’n gebruikersrekening het, kan jy op hierdie bladsy aanmeld. As jy nie ’n gebruikersrekening het nie, kan jy een aanvra deur op die skakel hieronder te klik.<br><br>Nadat jou aanvraag nagegaan is, sal die werfbeheerder jou rekening aktiveer. Jy sal ’n epos ontvang wanneer jou aanvraag goedgekeur is."
+msgstr "<center><b>Welkom by hierdie genealogie webwerf</b></center><br>Toegang tot hierdie webwerf is beperk tot <u>familielede</u>.<br><br>As jy ’n gebruikersrekening het, kan jy op hierdie bladsy aanmeld. As jy nie ’n gebruikersrekening het nie, kan jy een aanvra deur op die skakel hieronder te klik.<br><br>Nadat jou versoek nagegaan is, sal die werfbeheerder jou rekening aktiveer. Jy sal ’n epos ontvang sodra jou versoek goedgekeur is."
 
 #: login.php:167
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
@@ -7455,7 +7455,7 @@ msgstr "As jy hierdie GEDCOM-lêer geskep het met genealogie sagteware wat spasi
 
 #: login.php:345
 msgid "If you didn’t request an account, you can just delete this message."
-msgstr "As jy nie 'n rekening aangevra het nie, kan jy hierdie boodskap skrap."
+msgstr "As jy nie 'n rekening aangevra het nie, kan jy hierdie boodskap verwyder."
 
 #: app/Module/GoogleMapsModule.php:4491
 msgid "If you have a large number of inactive places, it can be slow to generate the list."
@@ -7507,7 +7507,7 @@ msgstr "As jy 'n van van die \"Algemene vanne\"-lys wil verwyder sonder om die d
 
 #: setup.php:184
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
-msgstr "As jou bediener se sekerheidsbeleid dit toelaat, dan sal jy meer geheue of SVE-tyd kan aanvra op die webtrees beheerblad. Andersins, sal jy jou bediener se beheerder moet raadpleeg."
+msgstr "As jou bediener se sekerheidsbeleid dit toelaat, sal jy meer geheue of SVE-tyd kan aanvra op die webtrees beheerblad. Andersins, sal jy jou bediener se beheerder moet raadpleeg."
 
 #. I18N: Help text for the "Website URL" site configuration setting
 #: admin_site_config.php:304
@@ -7716,7 +7716,7 @@ msgstr "Informant"
 
 #: login.php:337
 msgid "Information about the request is shown under the link below."
-msgstr "Inligting oor die versoek word in die skakel hieronder vertoon."
+msgstr "Inligting oor die versoek word onder die skakel vertoon."
 
 #: admin_pgv_to_wt.php:173
 msgid "Installation folder"
@@ -10995,7 +10995,7 @@ msgstr "Speel af"
 
 #: login.php:338
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
-msgstr "Klik op die volgende skakel en vul die gegewens in om jou gebruikersnaam en eposadres te bevestig."
+msgstr "Klik op die volgende skakel en vul die gegewens in om jou versoek en eposadres te bevestig."
 
 #: search.php:55
 msgid "Please enter a given name, surname, or place in addition to the year"
@@ -11690,7 +11690,7 @@ msgstr "Bergpleknaam"
 #: app/Module/LoginBlockModule.php:89 app/Module/WelcomeBlockModule.php:60
 #: login.php:210 login.php:277
 msgid "Request a new user account"
-msgstr "Vra nuwe gebruikerrekening aan"
+msgstr "Versoek ’n nuwe gebruikerrekening"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1739
@@ -14074,7 +14074,7 @@ msgstr "Die gebruiker %s is geskrap."
 
 #: login.php:324
 msgid "The user has been sent an email with the information necessary to confirm the access request."
-msgstr "'n E-pos is na die gebruiker gestuur met die inligting wat benodig word om die versoek vir toegang te bevestig."
+msgstr "'n Epos is na die gebruiker gestuur met die inligting wat benodig word om die versoek vir toegang te bevestig."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:388
@@ -15842,7 +15842,7 @@ msgstr "Dit kan lank neem om watermerke vir groot beelde te skep. Besige webwerw
 #: login.php:386
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your user name and password."
-msgstr "Ons sal nou 'n eposbevestiging aan die adres <b>%s</b> stuur. Jy moet jou aansoek vir 'n rekening verifieer deur die instruksies in daardie epos te volg. As jy nie jou aansoek vir 'n rekening binne sewe dae verifieer nie, sal jou aansoek outomaties afgekeur word. Jy sal dan weer aansoek moet doen.<br><br>Nadat jy die instruksies in die e-posbevestiging gevolg het, moet 'n beheerder nog die aansoek goedkeur voordat jou rekening gebruik kan word.<br><br>Om by hierdie webwerf aan te meld, sal jy jou gebruikersnaam en wagwoord nodig hê."
+msgstr "Ons sal nou 'n eposbevestiging aan die adres <b>%s</b> stuur. Jy moet jou aanvraag vir 'n rekening verifieer deur die instruksies in daardie epos te volg. As jy nie jou aanvraag vir 'n rekening binne sewe dae verifieer nie, sal jou aansoek outomaties afgekeur word. Jy sal dan weer aansoek moet doen.<br><br>Nadat jy die instruksies in die e-posbevestiging gevolg het, moet 'n beheerder nog die aanvraag goedkeur voordat jou rekening gebruik kan word.<br><br>Om by hierdie webwerf aan te meld, sal jy jou gebruikersnaam en wagwoord nodig hê."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:94
@@ -16161,7 +16161,7 @@ msgstr "Jy het die dieselfde ID's ingevoer. Jy kan nie dieselfde rekords saamvoe
 
 #: login.php:611
 msgid "You have confirmed your request to become a registered user."
-msgstr "Jy het jou versoek om as gebruiker te registreer bevestig."
+msgstr "Jy het jou aanvraag om as gebruiker te registreer bevestig."
 
 #: app/Module/UserJournalModule.php:95
 msgid "You have not created any journal items."
