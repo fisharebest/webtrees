@@ -248,7 +248,7 @@ $controller->pageHeader();
 				<?php echo /* I18N: Help text for the "Default theme" site configuration setting */ I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
 			</p>
 			<p class="small text-muted">
-				<?php echo I18N::translate('Themes can be selected at three levels: user, family tree, and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting “default theme” at one level will use the theme at the next level.') ?>
+				<?php echo I18N::translate('Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level.') ?>
 			</p>
 		</div>
 	</div>

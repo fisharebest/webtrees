@@ -14185,8 +14185,9 @@ msgid "Themes"
 msgstr "Thema's"
 
 #: admin_site_config.php:251
-msgid "Themes can be selected at three levels: user, family tree, and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting “default theme” at one level will use the theme at the next level."
+msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 msgstr "Thema’s kunnen worden geselecteerd op drie niveau’s: gebruiker, stamboom en website. Gebruikersinstellingen hebben voorrang op stamboominstellingen, die op hun beurt voorrang hebben op de website instelling. Het selecteren van “standaard thema” op één niveau zorgt ervoor dat dit thema ook op het volgende niveau wordt gebruikt."
+#, fuzzy
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:142
@@ -14259,8 +14260,9 @@ msgid "Thermidor"
 msgstr "Thermidor"
 
 #: admin.php:564
-msgid "These pages provide access to all the configuration settings and management tools for this webtrees site."
+msgid "These pages provide access to all the preferences and management tools for this webtrees site."
 msgstr "Deze pagina's geven toegang tot alle configuratie instellingen en beheer gereedschappen voor deze webtrees site."
+#, fuzzy
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:150
