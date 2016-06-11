@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-06 22:22+0000\n"
+"PO-Revision-Date: 2016-06-11 20:44+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (Australia) <https://translate.webtrees.net/projects/webtrees/webtrees/en-AU/>\n"
 "Language: en-AU\n"
@@ -1259,13 +1259,14 @@ msgstr "Adar II"
 msgid "Add"
 msgstr "Add"
 
-msgid "add"
-msgstr "add"
-
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "Add %s to the clippings cart"
+
+#: modules_v3/GEDFact_assistant/census/census-edit.php:113
+msgid "Add a blank row"
+msgstr "Add a blank row"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
@@ -1490,10 +1491,6 @@ msgstr "Add your own text and graphics."
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
 msgstr "Add/edit a journal/news entry"
-
-#: modules_v3/GEDFact_assistant/census/census-edit.php:113
-msgid "Add a blank row"
-msgstr "Add a blank row"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -7390,7 +7387,6 @@ msgstr "Identification number"
 #: admin_trees_config.php:650
 msgid "If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines."
 msgstr "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used. Typically, this setting applies to search engines."
-#, fuzzy
 
 #: admin_users.php:392
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -7476,12 +7472,6 @@ msgstr "If you have created media objects in webtrees, and have subsequently edi
 #: app/Module/RecentChangesModule.php:186
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
 msgstr "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-
-#: admin_site_config.php:203 admin_site_config.php:222
-#: admin_site_config.php:291 admin_site_config.php:305
-msgid "Leave this blank to use the default value."
-msgstr "If you leave this setting empty, the default value will be used."
-#, fuzzy
 
 #: admin_site_config.php:185
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -8271,6 +8261,11 @@ msgstr "Layout"
 #: edituser.php:220
 msgid "Leave the password blank if you want to keep the current password."
 msgstr "Leave the password blank if you want to keep the current password."
+
+#: admin_site_config.php:203 admin_site_config.php:222
+#: admin_site_config.php:291 admin_site_config.php:305
+msgid "Leave this blank to use the default value."
+msgstr "If you leave this setting empty, the default value will be used."
 
 #: app/Functions/FunctionsPrintLists.php:259
 #: app/Functions/FunctionsPrintLists.php:675
@@ -11186,12 +11181,12 @@ msgstr "Print basic events when blank"
 msgid "Privacy"
 msgstr "Privacy"
 
+msgid "Privacy restrictions"
+msgstr "Privacy restrictions"
+
 #: admin_trees_config.php:505 admin_trees_config.php:525
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-
-msgid "Privacy restrictions"
-msgstr "Privacy restrictions"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:532
 #: app/GedcomRecord.php:610 app/GedcomRecord.php:735 app/Individual.php:1309
@@ -11639,11 +11634,6 @@ msgstr "Renumber"
 msgid "Renumber family tree"
 msgstr "Renumber family tree"
 
-#. I18N: A button label
-#: search.php:217
-msgid "replace"
-msgstr "replace"
-
 msgid "Replace"
 msgstr "Replace"
 
@@ -12003,9 +11993,6 @@ msgstr "Sealing cancelled (divorce)"
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
 msgstr "Search"
-
-msgid "search"
-msgstr "search"
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12932,18 +12919,6 @@ msgstr "Sidebars"
 #: app/Stats.php:6929
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
-
-#. I18N: Name of a module
-#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
-#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
-#: login.php:150 login.php:199
-msgid "sign in"
-msgstr "sign in"
-
-#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
-#: app/Theme/AbstractTheme.php:1568
-msgid "sign out"
-msgstr "sign out"
 
 msgid "Sign in"
 msgstr "Sign in"
@@ -14104,14 +14079,14 @@ msgstr "The user %s has been deleted."
 msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr "The user has been sent an e-mail with the information necessary to confirm the access request."
 
+#: login.php:82 login.php:87
+msgid "The username or password is incorrect."
+msgstr "The username or password is incorrect."
+
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:388
 msgid "The username required for authentication with the SMTP server."
 msgstr "The username required for authentication with the SMTP server."
-
-#: login.php:82 login.php:87
-msgid "The username or password is incorrect."
-msgstr "The username or password is incorrect."
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:967
@@ -14180,7 +14155,6 @@ msgstr "Themes"
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 msgstr "Themes can be selected at three levels: user, family tree and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting ‘default theme’ at one level will use the theme at the next level."
-#, fuzzy
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:142
@@ -14255,7 +14229,6 @@ msgstr "Thermidor"
 #: admin.php:564
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
 msgstr "These pages provide access to all the configuration settings and management tools for this webtrees site."
-#, fuzzy
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:150
@@ -14443,7 +14416,6 @@ msgstr "This is case sensitive. If a database with this name does not already ex
 #: admin_trees_config.php:1371
 msgid "This is the initial value for the “show details” option on the charts."
 msgstr "This is the initial setting for the ‘show details’ option on the charts."
-#, fuzzy
 
 #: admin.php:615 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
@@ -14523,7 +14495,6 @@ msgstr "This is the short list of GEDCOM source facts that appears next to the f
 #: admin_trees_config.php:1081
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
 msgstr "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default setting is 100."
-#, fuzzy
 
 #: admin_users.php:318 edituser.php:176 login.php:420 setup.php:428
 msgid "This is your real name, as you would like it displayed on screen."
@@ -15338,7 +15309,6 @@ msgstr "Ukraine"
 #: setup.php:264 setup.php:336
 msgid "Unable to connect using this username and password. Your server gave the following error."
 msgstr "Unable to connect using these settings. Your server gave the following error."
-#, fuzzy
 
 #: admin_trees_config.php:678
 msgid "Unable to find record with ID"
@@ -16455,6 +16425,9 @@ msgstr "accept"
 #: admin_site_change.php:54
 msgid "accepted"
 msgstr "accepted"
+
+msgid "add"
+msgstr "add"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
@@ -19425,6 +19398,11 @@ msgctxt "MALE"
 msgid "religious name"
 msgstr "religious name"
 
+#. I18N: A button label
+#: search.php:217
+msgid "replace"
+msgstr "replace"
+
 #. I18N: a program feature
 #: setup.php:133 setup.php:134
 msgid "reporting"
@@ -19463,6 +19441,9 @@ msgstr "robot"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
 msgstr "save"
+
+msgid "search"
+msgstr "search"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:619
@@ -19681,6 +19662,18 @@ msgstr "show the chart"
 #: app/Functions/Functions.php:784
 msgid "sibling"
 msgstr "sibling"
+
+#. I18N: Name of a module
+#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
+#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
+#: login.php:150 login.php:199
+msgid "sign in"
+msgstr "sign in"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "sign out"
 
 #: app/Functions/Functions.php:767
 msgid "sister"
