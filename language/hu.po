@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-11 01:04+0000\n"
+"PO-Revision-Date: 2016-06-11 07:52+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -14157,7 +14157,6 @@ msgstr "Témák"
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 msgstr "A témák három szinten választhatók: felhasználói, családfa- és webhelyszinten. A felhasználói beállítás elsőbbséget élvez a családfa-beállításhoz képest, amely elsőbbséget élvez a webhelybeállításhoz képest. Az „alapértelmezett téma” választása egyik szinten előírja, hogy azt a témát használja a következő szint is."
-#, fuzzy
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:142
@@ -14232,13 +14231,12 @@ msgstr "Hőség hónapja"
 #: admin.php:564
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
 msgstr "Ezek az oldalak hozzáférést biztosítanak a webtrees összes beállításához és vezérlőeszközéhez."
-#, fuzzy
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:150
 #, php-format
 msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-msgstr "Ez a GEDCOM-fájl %1$s kódolást használ. Feltételezés szerint ennek jelentése: %2$s."
+msgstr "E GEDCOM-fájl karakterkódolása %1$s. Feltételezés szerint ennek jelentése: %2$s."
 
 #: login.php:97
 msgid "This account has not been approved. Please wait for an administrator to approve it."
