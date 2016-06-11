@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-11 21:18+0000\n"
+"PO-Revision-Date: 2016-06-11 21:19+0000\n"
 "Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -7454,9 +7454,8 @@ msgid "If you hide an empty block, you will not be able to change its configurat
 msgstr "Wenn Sie einen leeren Block verbergen, können Sie seine Konfiguration erst dann wieder ändern, wenn er wieder sichtbar wird, weil er nicht mehr leer ist."
 
 #: admin_site_config.php:185
-#, fuzzy
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
-msgstr "Wenn Sie ein anderes Verzeichnis wählen, müssen sie auch alle Dateien (außer die config.init.php, index.php und .htaccess) in den neuen Ordner verschieben."
+msgstr "Wenn Sie ein anderes Verzeichnis wählen, müssen Sie auch alle Dateien (außer die config.init.php, index.php und .htaccess) in den neuen Ordner verschieben."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1023
@@ -11174,7 +11173,6 @@ msgstr "Datenschutzeinschränkungen - diese werden auf Datensätze angewandt, di
 #: app/Module/GoogleMapsModule.php:832 app/Note.php:71
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1470 app/Stats.php:2975 expand_view.php:33
-#, fuzzy
 msgid "Private"
 msgstr "Vertraulich"
 
