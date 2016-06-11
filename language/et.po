@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-24 18:10+0000\n"
+"PO-Revision-Date: 2016-06-11 08:42+0000\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -1264,14 +1264,14 @@ msgstr "Adar II"
 msgid "Add"
 msgstr "Lisa"
 
-msgid "add"
-msgstr "lisa"
-#, fuzzy
-
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "Lisa %s väljalõigete lehele"
+
+#: modules_v3/GEDFact_assistant/census/census-edit.php:113
+msgid "Add a blank row"
+msgstr "Lisaa tühi rida"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
@@ -1496,11 +1496,6 @@ msgstr "Lisa enda tekst ja graafika."
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
 msgstr "Lisa/Muuda päeviku/uudiste sissekannet"
-
-#: modules_v3/GEDFact_assistant/census/census-edit.php:113
-msgid "Add a blank row"
-msgstr "Lisaa tühi rida"
-#, fuzzy
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -11641,12 +11636,6 @@ msgstr "Nummerda ümber"
 msgid "Renumber family tree"
 msgstr "Nummerda sugupuu ümber"
 
-#. I18N: A button label
-#: search.php:217
-msgid "replace"
-msgstr "asenda"
-#, fuzzy
-
 msgid "Replace"
 msgstr "Asenda"
 
@@ -12006,10 +11995,6 @@ msgstr "\"Sealing\" tühistatud (lahutus)"
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
 msgstr "Otsi"
-
-msgid "search"
-msgstr "otsi"
-#, fuzzy
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12937,29 +12922,13 @@ msgstr "Külgribad"
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#. I18N: Name of a module
-#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
-#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
-#: login.php:150 login.php:199
-msgid "sign in"
-msgstr "logi sisse"
-#, fuzzy
-
-#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
-#: app/Theme/AbstractTheme.php:1568
-msgid "sign out"
-msgstr "logi välja"
-#, fuzzy
-
 msgid "Sign in"
 msgstr "Logi sisse"
-#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Logi välja"
-#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447
@@ -14188,12 +14157,11 @@ msgstr "Teemad"
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 msgstr "Teemasid saab valida kolmel tasandil: kasutaja, sugupuu ja veebileht. Kasutaja seaded ületavad sugupuu seadeid, mis omakorda ületavad veebilehe seadeid. Valides \"vaikimisi teema\" ühel tasemel, kasutatakse seda teemat ka järgmisel tasemel."
-#, fuzzy
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:142
 msgid "There are no facts for this individual."
-msgstr "Selle isiku kohta puuduvad faktid."
+msgstr "Selle isiku kohta fakte ei ole."
 
 #: app/Module/MediaTabModule.php:76
 msgid "There are no media objects for this individual."
@@ -14263,7 +14231,6 @@ msgstr "Thermidor"
 #: admin.php:564
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
 msgstr "Need leheküljed sisaldavad juurdepääsu konfiguratsiooni seadetele ja haldamise tööristadele selle lehekülje jaoks."
-#, fuzzy
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:150
@@ -16460,6 +16427,9 @@ msgstr "kinnita"
 #: admin_site_change.php:54
 msgid "accepted"
 msgstr "kinnitatud"
+
+msgid "add"
+msgstr "lisa"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
@@ -19430,6 +19400,11 @@ msgctxt "MALE"
 msgid "religious name"
 msgstr "religioosne nimi"
 
+#. I18N: A button label
+#: search.php:217
+msgid "replace"
+msgstr "asenda"
+
 #. I18N: a program feature
 #: setup.php:133 setup.php:134
 msgid "reporting"
@@ -19468,6 +19443,9 @@ msgstr "robot"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
 msgstr "salvesta"
+
+msgid "search"
+msgstr "otsi"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:619
@@ -19686,6 +19664,18 @@ msgstr "näita diagrammi"
 #: app/Functions/Functions.php:784
 msgid "sibling"
 msgstr "õde/vend"
+
+#. I18N: Name of a module
+#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
+#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
+#: login.php:150 login.php:199
+msgid "sign in"
+msgstr "logi sisse"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "logi välja"
 
 #: app/Functions/Functions.php:767
 msgid "sister"
