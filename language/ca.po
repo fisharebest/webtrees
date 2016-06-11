@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-10 21:53+0000\n"
+"PO-Revision-Date: 2016-06-11 07:58+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
@@ -14156,12 +14156,11 @@ msgstr "Presentacions"
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 msgstr "Les presentacions poden seleccionar-se en tres nivells: usuari, arbre de família, i lloc web. La configuració d'usuari té prioritat sobre els els arbres de la família, que al seu torn tenen prioritat sobre la configuració del lloc web. En seleccionar una \"presentació per defecte\" per a un nivell s'utilitzarà també per al següent nivell."
-#, fuzzy
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:142
 msgid "There are no facts for this individual."
-msgstr "No hi ha Esdeveniments d’aquesta persona."
+msgstr "No hi ha esdeveniments d’aquesta persona."
 
 #: app/Module/MediaTabModule.php:76
 msgid "There are no media objects for this individual."
@@ -14231,7 +14230,6 @@ msgstr "Termidor"
 #: admin.php:564
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
 msgstr "Aquestes pàgines proporcionen accés a totes les opcions de configuració i eines de gestió d’aquest lloc webtrees."
-#, fuzzy
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:150
