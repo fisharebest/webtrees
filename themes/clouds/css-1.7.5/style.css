@@ -1708,6 +1708,10 @@ background-color: #fff;
 	padding-right: 3px;
 }
 
+.blockhc h2 {
+	margin: 0;
+}
+
 [dir=rtl] .blockh1 {
 	background-image: url(images/right1B.png);
 }
