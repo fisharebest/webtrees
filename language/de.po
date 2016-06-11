@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-11 20:56+0000\n"
-"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2016-06-11 21:18+0000\n"
+"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1107,8 +1107,9 @@ msgstr "ALPHABET_upper=AÄBCDEFGHIJKLMNOÖPQRSßTUÜVWXYZ"
 
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:327
+#, fuzzy
 msgid "API key"
-msgstr ""
+msgstr "API Schlüsselwort"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:77
@@ -6856,7 +6857,7 @@ msgstr "Germinal"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:333
 msgid "Get an API key from Google."
-msgstr ""
+msgstr "Von Google einen API Schlüssel erhalten."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6765
@@ -6940,7 +6941,7 @@ msgstr "Google Street View™"
 
 #: app/Module/GoogleMapsModule.php:331
 msgid "Google allows a small number of anonymous map requests per day.  If you need more than this, you will need a Google account and an API key."
-msgstr ""
+msgstr "Google erlaubt eine kleine Anzahl von anonymen Kartenaufrufen pro Tag. Sollten mehr gewünscht werden, wird ein Google Konto und ein API Schlüssel benötigt."
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:508
@@ -7373,7 +7374,6 @@ msgid "If a visitor to the website has not selected a preferred language in thei
 msgstr "Diese Sprache wird genutzt, wenn im Browser des Besuchers keine oder eine nicht unterstützte Standardsprache eingetragen ist. Typischerweise dient diese Einstellung für Suchmaschinen."
 
 #: admin_users.php:392
-#, fuzzy
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
 msgstr "Wenn ein Verwalter ein Benutzerkonto anlegt, wird keine E-Mail zur Überprüfung gesendet und die E-Mail muss manuell geprüft werden."
 
