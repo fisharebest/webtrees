@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-11 21:19+0000\n"
+"PO-Revision-Date: 2016-06-11 21:32+0000\n"
 "Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -1107,9 +1107,8 @@ msgstr "ALPHABET_upper=AÄBCDEFGHIJKLMNOÖPQRSßTUÜVWXYZ"
 
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:327
-#, fuzzy
 msgid "API key"
-msgstr "API Schlüsselwort"
+msgstr "API Schlüssel"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:77
@@ -14391,9 +14390,8 @@ msgid "This is the initial value for the “show details” option on the charts
 msgstr "Dies ist die initiale Einstellung für die „Zeige Details“-Option für Diagramme."
 
 #: admin.php:615 admin_site_upgrade.php:66
-#, fuzzy
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr "Dies ist die neuste Version von webtrees. Keine Aktualisierung notwendig."
+msgstr "Dies ist die neueste Version von webtrees. Es ist keine Aktualisierung verfügbar."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1815
@@ -14466,9 +14464,8 @@ msgid "This is the width (in pixels) that the program will use when automaticall
 msgstr "Automatisch erstellte Vorschaubilder werden in dieser Breite erstellt. Die standardmäßige Breite ist 100px."
 
 #: admin_users.php:318 edituser.php:176 login.php:420 setup.php:428
-#, fuzzy
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr "Dies ist Ihr richtiger Name, mit dem Sie in webtrees angezeigt werden."
+msgstr "Dies ist Ihr richtiger Name, mit dem Sie in webtrees angezeigt werden möchten."
 
 #: admin_trees_check.php:135
 msgid "This may be a mistake in your data."
@@ -15221,11 +15218,11 @@ msgstr "Typ"
 
 #: app/GedcomTag.php:434
 msgid "Type of event"
-msgstr ""
+msgstr "Ereignistyp"
 
 #: app/GedcomTag.php:440
 msgid "Type of fact"
-msgstr ""
+msgstr "Typ der Gegebenheit"
 
 #: app/Module/GoogleMapsModule.php:495
 msgid "Type of place markers in the place hierarchy"
@@ -15289,7 +15286,6 @@ msgid "Unable to connect using this username and password. Your server gave the 
 msgstr "Mit diesen Einstellungen konnte keine Verbindung aufgebaut werden. Der Server meldete folgenden Fehler zurück."
 
 #: admin_trees_config.php:678
-#, fuzzy
 msgid "Unable to find record with ID"
 msgstr "Kein Datensatz gefunden mit der ID"
 
@@ -16116,7 +16112,7 @@ msgstr "Sie können einen höheren oder niedrigeren Wert anfordern, wenngleich d
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: admin_trees_config.php:504
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it.  If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr ""
+msgstr "Sie können die Zugriffsrechte für einzelne Datensätze, Gegebenheiten oder Ereignisse setzen, indem Sie Zugriffsbeschränkungen hinzufügen. Wenn ein Datensatz, eine Gegebenheit oder ein Ereignis keine Zugriffsbeschränkung aufweist, gelten die folgenden voreingestellten Beschränkungen."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
