@@ -873,7 +873,7 @@ msgid "A new password has been created and emailed to %s. You can change this pa
 msgstr "Új jelszót hoztunk létre, és elküldtük %s címre. A jelszavát bejelentkezés után megváltoztathatja."
 
 #: login.php:254
-msgid "A new password has been requested for your user name."
+msgid "A new password has been requested for your username."
 msgstr "Az Ön felhasználónevéhez új jelszót kértek."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
@@ -5176,7 +5176,7 @@ msgid "Desired password"
 msgstr "A kívánt jelszó"
 
 #: login.php:436
-msgid "Desired user name"
+msgid "Desired username"
 msgstr "A kívánt felhasználónév"
 
 #. I18N: gedcom tag DEST
@@ -5423,7 +5423,7 @@ msgid "Duplicate email address. A user with that email already exists."
 msgstr "E-mail cím kettőzése. Egy felhasználó ezzel az e-mail címmel már létezik."
 
 #: admin_users.php:71 edituser.php:58 login.php:284
-msgid "Duplicate user name. A user with that user name already exists. Please choose another user name."
+msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr "Felhasználónév-kettőzés. Egy felhasználó ezzel a névvel már létezik. Kérjük, válasszon másikat."
 
 #: help_text.php:293
@@ -13678,7 +13678,7 @@ msgid "The administrator at the webtrees site %s has approved your application f
 msgstr "A(z) %s webtrees webhely rendszergazdája jóváhagyta a fiókigénylését. Most már bejelentkezhet a következő hivatkozás révén: %s"
 
 #: login.php:612
-msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your user name and password."
+msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
 msgstr "A rendszergazdát értesítettük. Amint megadja az engedélyt a bejelentkezéshez, bejelentkezhet a felhasználónevével és a jelszavával."
 
 #. I18N: %s is the name of an individual, source or other record
@@ -14083,7 +14083,7 @@ msgstr "A felhasználó egy e-mailt küldött a kért hozzáférés-kérelem meg
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:388
-msgid "The user name required for authentication with the SMTP server."
+msgid "The username required for authentication with the SMTP server."
 msgstr "A felhasználónév szükséges az SMTP-szerverrel történő azonosításhoz."
 
 #: login.php:82 login.php:87
@@ -15846,7 +15846,7 @@ msgstr "A vízjelek lelassíthatják a nagy képek létrehozását. Az elfoglalt
 
 #: login.php:386
 #, php-format
-msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your user name and password."
+msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
 msgstr "Most küldünk egy megerősítő e-mailt a <b>%s</b> címre. Ellenőriznie kell a fiókkérelmét a megerősítő e-mailben lévő utasítások követésével. Ha hét napon belül nem erősíti meg a fiókkérelmét, a kérelme automatikusan elutasításra kerül. Újra kell kérnie.<br><br>Miután követte a megerősítő e-mail utasításait, a fiók használata előtt a rendszergazdának még jóvá kell hagynia az Ön kérelmét.<br><br>E webhelyre történő bejelentkezéshez tudnia kell a felhasználónevét és jelszavát."
 
 #. I18N: Menu entry
@@ -16206,7 +16206,7 @@ msgid "You must enter a real name."
 msgstr "Egy valós nevet kell megadnia."
 
 #: edituser.php:124
-msgid "You must enter a user name."
+msgid "You must enter a username."
 msgstr "Meg kell adnia egy felhasználónevet."
 
 #: setup.php:418
@@ -16285,7 +16285,7 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "Nem szabad jóváhagyni egy felhasználói fiókot, amíg nem tudja, hogy az e-mail cím helyes."
 
 #: login.php:325
-msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to sign in until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr "E-mail értesítést kap, ha a leendő felhasználó megerősítette a kérelmét. Ezután befejezheti a folyamatot a felhasználó nevének aktiválásával. Az új felhasználó addig nem tud bejelentkezni, amíg Ön nem aktiválja a fiókját."
 
 #: setup.php:432

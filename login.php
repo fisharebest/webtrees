@@ -251,7 +251,7 @@ case 'requestpw':
 			$user,
 			I18N::translate('Lost password request'),
 			I18N::translate('Hello %s…', $user->getRealNameHtml()) . Mail::EOL . Mail::EOL .
-			I18N::translate('A new password has been requested for your user name.') . Mail::EOL . Mail::EOL .
+			I18N::translate('A new password has been requested for your username.') . Mail::EOL . Mail::EOL .
 			I18N::translate('Username') . ": " . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
 			I18N::translate('Password') . ": " . $user_new_pw . Mail::EOL . Mail::EOL .
 			I18N::translate('After you have signed in, select the “My account” link under the “My page” menu and fill in the password fields to change your password.') . Mail::EOL . Mail::EOL .
@@ -281,7 +281,7 @@ case 'register':
 
 		// These validation errors cannot be shown in the client.
 		if (User::findByUserName($user_name)) {
-			FlashMessages::addMessage(I18N::translate('Duplicate user name. A user with that user name already exists. Please choose another user name.'));
+			FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
 		} elseif (User::findByEmail($user_email)) {
 			FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
 		} elseif (preg_match('/(?!' . preg_quote(WT_BASE_URL, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $user_comments, $match)) {
@@ -322,7 +322,7 @@ case 'register':
 				I18N::translate('Email address') . ' ' . Filter::escapeHtml($user->getEmail()) . Mail::EOL .
 				I18N::translate('Comments') . ' ' . Filter::escapeHtml($user_comments) . Mail::EOL . Mail::EOL .
 				I18N::translate('The user has been sent an email with the information necessary to confirm the access request.') . Mail::EOL . Mail::EOL .
-				I18N::translate('You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to sign in until you activate the account.');
+				I18N::translate('You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account.');
 
 			$mail1_subject = /* I18N: %s is a server name/URL */ I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $WT_TREE->getTitle());
 			I18N::init(WT_LOCALE);
@@ -383,7 +383,7 @@ case 'register':
 			}
 
 			echo '<div class="confirm"><p>', I18N::translate('Hello %s…<br>Thank you for your registration.', $user->getRealNameHtml()), '</p>';
-			echo '<p>', I18N::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your user name and password.', $user->getEmail()), '</p>';
+			echo '<p>', I18N::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password.', $user->getEmail()), '</p>';
 			echo '</div>';
 			echo '</div>';
 
@@ -609,7 +609,7 @@ case 'verify_hash':
 		Log::addAuthenticationLog('User ' . $user_name . ' verified their email address');
 
 		echo '<p>', I18N::translate('You have confirmed your request to become a registered user.'), '</p>';
-		echo '<p>', I18N::translate('The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your user name and password.'), '</p>';
+		echo '<p>', I18N::translate('The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password.'), '</p>';
 	} else {
 		echo '<p class="warning">';
 		echo I18N::translate('Could not verify the information you entered. Please try again or contact the site administrator for more information.');

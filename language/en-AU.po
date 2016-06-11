@@ -868,8 +868,8 @@ msgid "A new password has been created and emailed to %s. You can change this pa
 msgstr "A new password has been created and e-mailed to %s. You can change this password after you sign in."
 
 #: login.php:254
-msgid "A new password has been requested for your user name."
-msgstr "A new password has been requested for your user name."
+msgid "A new password has been requested for your username."
+msgstr "A new password has been requested for your username."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:557
@@ -5174,8 +5174,8 @@ msgid "Desired password"
 msgstr "Desired password"
 
 #: login.php:436
-msgid "Desired user name"
-msgstr "Desired user name"
+msgid "Desired username"
+msgstr "Desired username"
 
 #. I18N: gedcom tag DEST
 #: app/GedcomTag.php:370
@@ -5421,8 +5421,8 @@ msgid "Duplicate email address. A user with that email already exists."
 msgstr "Duplicate e-mail address. A user with that e-mail already exists."
 
 #: admin_users.php:71 edituser.php:58 login.php:284
-msgid "Duplicate user name. A user with that user name already exists. Please choose another user name."
-msgstr "Duplicate user name. A user with that user name already exists. Please choose another user name."
+msgid "Duplicate username. A user with that username already exists. Please choose another username."
+msgstr "Duplicate username. A user with that username already exists. Please choose another username."
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -13696,8 +13696,8 @@ msgid "The administrator at the webtrees site %s has approved your application f
 msgstr "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
 
 #: login.php:612
-msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your user name and password."
-msgstr "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your user name and password."
+msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
+msgstr "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:45
@@ -14101,8 +14101,8 @@ msgstr "The user has been sent an e-mail with the information necessary to confi
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:388
-msgid "The user name required for authentication with the SMTP server."
-msgstr "The user name required for authentication with the SMTP server."
+msgid "The username required for authentication with the SMTP server."
+msgstr "The username required for authentication with the SMTP server."
 
 #: login.php:82 login.php:87
 msgid "The username or password is incorrect."
@@ -15866,8 +15866,8 @@ msgstr "Watermarks can be slow to generate for large images. Busy websites may p
 
 #: login.php:386
 #, php-format
-msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your user name and password."
-msgstr "We will now send a confirmation e-mail to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation e-mail. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation e-mail, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your user name and password."
+msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
+msgstr "We will now send a confirmation e-mail to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation e-mail. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation e-mail, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:94
@@ -16226,8 +16226,8 @@ msgid "You must enter a real name."
 msgstr "You must enter a real name."
 
 #: edituser.php:124
-msgid "You must enter a user name."
-msgstr "You must enter a user name."
+msgid "You must enter a username."
+msgstr "You must enter a username."
 
 #: setup.php:418
 msgid "You must enter all the administrator account fields."
@@ -16305,8 +16305,8 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "You should not approve an account unless you know that the e-mail address is correct."
 
 #: login.php:325
-msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to sign in until you activate the account."
-msgstr "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to sign in until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
+msgstr "You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 
 #: setup.php:432
 msgid "You will use this to sign in to webtrees."

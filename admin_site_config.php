@@ -385,7 +385,7 @@ $controller->pageHeader();
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="SMTP_AUTH_USER" name="SMTP_AUTH_USER" value="<?php echo Filter::escapeHtml(Site::getPreference('SMTP_AUTH_USER')) ?>" maxlength="255">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Username" site configuration setting */ I18N::translate('The user name required for authentication with the SMTP server.') ?>
+				<?php echo /* I18N: Help text for the "Username" site configuration setting */ I18N::translate('The username required for authentication with the SMTP server.') ?>
 			</p>
 		</div>
 	</div>

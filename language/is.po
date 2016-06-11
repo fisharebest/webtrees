@@ -868,7 +868,7 @@ msgid "A new password has been created and emailed to %s. You can change this pa
 msgstr "Nýtt lykilorð hefur verið útbúið og sent í tölvupósti til %s. Þú getur breytt þessu lykilorði þegar þú hefur skráð þig inn."
 
 #: login.php:254
-msgid "A new password has been requested for your user name."
+msgid "A new password has been requested for your username."
 msgstr "Óskað var eftir nýju lykilorði fyrir þitt notandaheiti."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
@@ -5165,7 +5165,7 @@ msgid "Desired password"
 msgstr "Óska lykilorð"
 
 #: login.php:436
-msgid "Desired user name"
+msgid "Desired username"
 msgstr "Óska notandaheiti"
 
 #. I18N: gedcom tag DEST
@@ -5412,7 +5412,7 @@ msgid "Duplicate email address. A user with that email already exists."
 msgstr "Tvöfalt netfang. Notandi með þetta netfang er þegar til staðar."
 
 #: admin_users.php:71 edituser.php:58 login.php:284
-msgid "Duplicate user name. A user with that user name already exists. Please choose another user name."
+msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr "Tvöfalt notandaheiti. Notandi með þetta notandaheiti er þegar til staðar. Vinsamlega veljið annað notandaheiti."
 
 #: help_text.php:293
@@ -13676,7 +13676,7 @@ msgid "The administrator at the webtrees site %s has approved your application f
 msgstr "Kerfisstjórinn á webtrees vefsíðunni %s hefur samþykkt þína umsókn um reikning. Þú getur núna skráð þig inn með því að fylgja eftirfarandi krækju: %s"
 
 #: login.php:612
-msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your user name and password."
+msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
 msgstr "Kerfisstjórinn hefur verið upplýstur. Um leið og hann gefur þér heimild til innskráningar, þá getur þú skráð þig inn með notandaheiti þínu og lykilorði."
 
 #. I18N: %s is the name of an individual, source or other record
@@ -14081,7 +14081,7 @@ msgstr "Notandinn hefur fengið tölvupóst með nauðsynlegar upplýsingar til 
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:388
-msgid "The user name required for authentication with the SMTP server."
+msgid "The username required for authentication with the SMTP server."
 msgstr "Notandanafnið sem nauðsynlegt er til staðfestingar hjá SMTP póstþjóninum."
 
 #: login.php:82 login.php:87
@@ -15845,7 +15845,7 @@ msgstr ""
 
 #: login.php:386
 #, php-format
-msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your user name and password."
+msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
 msgstr "Við munum núna senda staðfestingar tölvupóst á netfangið <b>%s</b>. Þú verður að staðfesta beiðni þína um reikning með því að fylgja leiðbeiningum í staðfestingar tölvupóstinum. Ef þú staðfestir ekki reikningsbeiðni þína innan sjö daga, þá verður þinni umsókn hafnað sjálfkrafa. Þú þarft síðan að sækja um aftur.<br><br>Eftir að þú hefur fylgt leiðbeiningunum í staðfestingar tölvupóstinum, þá þarf kerfisstjórinn sem sem áður að samþykkja beiðni þína áður en hægt er að nota reikningingin þinn.<br><br>Til að skrá þig inn á vefsíðuna, þá þarftu að vita notandaheitið þitt og lykilorð."
 
 #. I18N: Menu entry
@@ -16204,7 +16204,7 @@ msgid "You must enter a real name."
 msgstr "Þú verður að slá inn raunverulegt heiti."
 
 #: edituser.php:124
-msgid "You must enter a user name."
+msgid "You must enter a username."
 msgstr "Þú verður að slá inn notandaheiti."
 
 #: setup.php:418
@@ -16283,7 +16283,7 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "Þú ættir ekki að samþykkja reikning nema því aðeins að þú vitir að netfangið sé rétt."
 
 #: login.php:325
-msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to sign in until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr "Þú verður upplýstur með tölvupósti þegar þessi væntanlegi notandi hefur staðfest beiðnina. Þú getur þá afgreitt ferlið með því að virkja notandaheitið. Nýji notandinn getur ekki skráð sig inn fyrr en þú hefur virkjað reikninginn."
 
 #: setup.php:432

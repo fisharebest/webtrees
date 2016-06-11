@@ -903,7 +903,7 @@ msgid "A new password has been created and emailed to %s. You can change this pa
 msgstr "Bylo vytvořeno a posláno nové heslo uživateli %s. Můžete si ho změnit po přihlášení."
 
 #: login.php:254
-msgid "A new password has been requested for your user name."
+msgid "A new password has been requested for your username."
 msgstr "Bylo zažádáno o nové heslo pro vaše uživatelské jméno."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
@@ -5208,7 +5208,7 @@ msgid "Desired password"
 msgstr "Požadované heslo"
 
 #: login.php:436
-msgid "Desired user name"
+msgid "Desired username"
 msgstr "Uživatelské jméno"
 
 #. I18N: gedcom tag DEST
@@ -5455,7 +5455,7 @@ msgid "Duplicate email address. A user with that email already exists."
 msgstr "Duplicitní emailová adresa. Uživatel s tímto emailem už existuje."
 
 #: admin_users.php:71 edituser.php:58 login.php:284
-msgid "Duplicate user name. A user with that user name already exists. Please choose another user name."
+msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr "Toto uživatelské jméno již existuje. Prosím, vraťte se zpět a vyberte jiné uživatelské jméno."
 
 #: help_text.php:293
@@ -13712,7 +13712,7 @@ msgid "The administrator at the webtrees site %s has approved your application f
 msgstr "Správce webu webtrees %s schválil vaši žádost na přístupový účet. Můžete se přihlásit na následujícím odkaze: %s"
 
 #: login.php:612
-msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your user name and password."
+msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
 msgstr "Správce byl upozorněn.<br>Jakmile vám dám povolení k přihlášení, budete se moci přihlásit zadáním svého uživatelského jména a hesla."
 
 #. I18N: %s is the name of an individual, source or other record
@@ -14118,7 +14118,7 @@ msgstr "Uživateli byl odeslán email s informacemi nutnými pro potvrzení žá
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:388
-msgid "The user name required for authentication with the SMTP server."
+msgid "The username required for authentication with the SMTP server."
 msgstr "Uživatelské jméno vyžadované pro přihlášení k SMTP serveru."
 
 #: login.php:82 login.php:87
@@ -15887,7 +15887,7 @@ msgstr "Vodoznaky můžou zpomalit generování větších obrázků. Vytížen�
 
 #: login.php:386
 #, php-format
-msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your user name and password."
+msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
 msgstr "Nyní na e-mail ( %s ) obdržíte potvrzení. Tento e-mail použijte k aktivování svého účtu; jestliže se vám nepodaří aktivovat svůj účet do sedmi dní, bude vymazán (pak se můžete znovu pokusit zaregistrovat). Abyste se mohli přihlásit na tyto stránky, budete potřebovat znát své přihlašovací jméno a heslo."
 
 #. I18N: Menu entry
@@ -16247,7 +16247,7 @@ msgid "You must enter a real name."
 msgstr "Musíte vložit skutečné jméno."
 
 #: edituser.php:124
-msgid "You must enter a user name."
+msgid "You must enter a username."
 msgstr "Musíte vložit uživatelské jméno."
 
 #: setup.php:418
@@ -16326,7 +16326,7 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "Neměli byste schvalovat účet, pokud nevíte, že je emailová adresa správná."
 
 #: login.php:325
-msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to sign in until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr "Budete informování emailem, pokud tento případný uživatel potvrdí žádost. Můžete pak dokončit proces aktivováním uživatelského jména. Nový uživatel se nebude schopen přihlásit, dokud neaktivujete jeho účet."
 
 #: setup.php:432

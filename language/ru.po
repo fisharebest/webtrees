@@ -905,7 +905,7 @@ msgid "A new password has been created and emailed to %s. You can change this pa
 msgstr "Новый пароль был создан и отправлен по электронной почте %s. Вы можете изменить этот пароль после входа в систему."
 
 #: login.php:254
-msgid "A new password has been requested for your user name."
+msgid "A new password has been requested for your username."
 msgstr "Для Вашего имя пользователя сделан запрос на новый пароль."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
@@ -5215,7 +5215,7 @@ msgid "Desired password"
 msgstr "Выберите пароль"
 
 #: login.php:436
-msgid "Desired user name"
+msgid "Desired username"
 msgstr "Имя пользователя"
 
 #. I18N: gedcom tag DEST
@@ -5462,7 +5462,7 @@ msgid "Duplicate email address. A user with that email already exists."
 msgstr "Дубликат адреса электронной почты. Пользователь с таким адресом электронной почты, уже существует."
 
 #: admin_users.php:71 edituser.php:58 login.php:284
-msgid "Duplicate user name. A user with that user name already exists. Please choose another user name."
+msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr "Дубликат имя пользователя. Пользователь с таким именем уже существует. Пожалуйста, выберите другое имя пользователя."
 
 #: help_text.php:293
@@ -13745,7 +13745,7 @@ msgid "The administrator at the webtrees site %s has approved your application f
 msgstr "Администратор webtrees сайта %s одобрил Вашу заявку на создание учетной записи. Теперь Вы можете войти, используя следующую ссылку: %s"
 
 #: login.php:612
-msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your user name and password."
+msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
 msgstr "Администратор был проинформирован. Как только он даст разрешение на вход в систему, Вы можете войти, используя имя пользователя и пароль."
 
 #. I18N: %s is the name of an individual, source or other record
@@ -14151,7 +14151,7 @@ msgstr "Пользователю было отправлено сообщени�
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:388
-msgid "The user name required for authentication with the SMTP server."
+msgid "The username required for authentication with the SMTP server."
 msgstr "Имя пользователя, необходимое для аутентификации с SMTP сервером ."
 
 #: login.php:82 login.php:87
@@ -15924,7 +15924,7 @@ msgstr "Добавление каждый раз водяного знака, м
 
 #: login.php:386
 #, php-format
-msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your user name and password."
+msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
 msgstr "В ближайшее время Вы получите письмо по электронной почте на адрес <b>%s</b>. Вы должны подтвердить свою заявку на создание учетной записи, следуя инструкциям в письме. Если Вы не подтвердите Вашу учетную запись в течение семи дней, Ваша заявка будет отклонена автоматически. Вам придется пройти процедуру регистрации повторно.<br><br>После того как Вы, следуя инструкцией подтвердили свою заявку, администратор должен одобрить Вашу заявку, прежде чем учетная запись может быть использована.<br><br>Чтобы воспользоваться всеми преимуществами этого сайта, пожалуйста, помните, ваше имя пользователя и пароль."
 
 #. I18N: Menu entry
@@ -16284,7 +16284,7 @@ msgid "You must enter a real name."
 msgstr "Необходимо ввести настоящее имя."
 
 #: edituser.php:124
-msgid "You must enter a user name."
+msgid "You must enter a username."
 msgstr "Введите имя пользователя."
 
 #: setup.php:418
@@ -16363,7 +16363,7 @@ msgid "You should not approve an account unless you know that the email address 
 msgstr "Вы не должны утверждать учётную запись, если адрес электронной почты не подтверждён пользователем."
 
 #: login.php:325
-msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to sign in until you activate the account."
+msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr "Вы будете проинформированы по электронной почте, когда этот потенциальный пользователь подтвердит запрос. Вы можете завершить процесс активации этого пользователя. Новый пользователь не сможет войти на сайт, пока учетная запись не будет активирована администратором."
 
 #: setup.php:432
