@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-09 12:21+0000\n"
+"PO-Revision-Date: 2016-06-11 05:14+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -1259,14 +1259,14 @@ msgstr "Adar II"
 msgid "Add"
 msgstr "Voeg by"
 
-msgid "add"
-msgstr "voeg by"
-#, fuzzy
-
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "Voeg %s by die versameling knipsels"
+msgstr "Plaas %s in die knipselmandjie"
+
+#: modules_v3/GEDFact_assistant/census/census-edit.php:113
+msgid "Add a blank row"
+msgstr "Voeg 'n leë reël by"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
@@ -1491,11 +1491,6 @@ msgstr "Voeg jou eie teks en grafika by."
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
 msgstr "Wysig/voeg ’n joernaalinskrywing/nuusberig by"
-
-#: modules_v3/GEDFact_assistant/census/census-edit.php:113
-msgid "Add a blank row"
-msgstr "Voeg 'n leë reël by"
-#, fuzzy
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -8631,6 +8626,11 @@ msgstr "Bestuur stambome"
 msgid "Manage media"
 msgstr "Bestuur media"
 
+#: admin_media.php:535 app/Controller/MediaController.php:49
+#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
+msgid "Manage the links"
+msgstr "Bestuur skakels"
+
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:558
 #: app/Module/ClippingsCartModule.php:390
@@ -8641,11 +8641,6 @@ msgstr "Bestuurder"
 #: admin.php:665
 msgid "Managers"
 msgstr "Bestuurders"
-
-#: admin_media.php:535 app/Controller/MediaController.php:49
-#: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
-msgid "Manage the links"
-msgstr "Bestuur skakels"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
@@ -11636,12 +11631,6 @@ msgstr "Hernommer"
 msgid "Renumber family tree"
 msgstr "Hernommer die stamboom"
 
-#. I18N: A button label
-#: search.php:217
-msgid "replace"
-msgstr "vervang"
-#, fuzzy
-
 msgid "Replace"
 msgstr "Vervang"
 
@@ -12001,10 +11990,6 @@ msgstr "Verseëling herroep (egskeiding)"
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
 msgstr "Soek"
-
-msgid "search"
-msgstr "soek"
-#, fuzzy
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12932,34 +12917,18 @@ msgstr "Sypanele"
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#. I18N: Name of a module
-#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
-#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
-#: login.php:150 login.php:199
-msgid "sign in"
-msgstr "meld aan"
-#, fuzzy
-
-#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
-#: app/Theme/AbstractTheme.php:1568
-msgid "sign out"
-msgstr "meld af"
-#, fuzzy
-
 msgid "Sign in"
 msgstr "Meld aan"
-#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Meld af"
-#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447
 msgid "Sign-in URL"
-msgstr "In-teken URL"
+msgstr "Aanteken URL"
 
 #. I18N: Menu entry
 #: admin_site_config.php:140 app/Theme/AdministrationTheme.php:97
@@ -16454,6 +16423,9 @@ msgstr "aanvaar"
 msgid "accepted"
 msgstr "suksesvol aanvaar"
 
+msgid "add"
+msgstr "voeg by"
+
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
 msgid "adopted name"
@@ -19423,6 +19395,11 @@ msgctxt "MALE"
 msgid "religious name"
 msgstr "godsdienstige naam"
 
+#. I18N: A button label
+#: search.php:217
+msgid "replace"
+msgstr "vervang"
+
 #. I18N: a program feature
 #: setup.php:133 setup.php:134
 msgid "reporting"
@@ -19461,6 +19438,9 @@ msgstr "robot"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
 msgstr "bewaar"
+
+msgid "search"
+msgstr "soek"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:619
@@ -19679,6 +19659,18 @@ msgstr "vertoon die diagram"
 #: app/Functions/Functions.php:784
 msgid "sibling"
 msgstr "broer/suster"
+
+#. I18N: Name of a module
+#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
+#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
+#: login.php:150 login.php:199
+msgid "sign in"
+msgstr "meld aan"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "meld af"
 
 #: app/Functions/Functions.php:767
 msgid "sister"
