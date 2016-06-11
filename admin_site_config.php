@@ -200,7 +200,7 @@ $controller->pageHeader();
 			<p class="small text-muted">
 				<?php echo /* I18N: %s is an amount of memory, such as 32MB */ I18N::translate('By default, your server allows scripts to use %s of memory.', get_cfg_var('memory_limit')) ?>
 				<?php echo I18N::translate('You can request a higher or lower limit, although the server may ignore this request.') ?>
-				<?php echo I18N::translate('If you leave this setting empty, the default value will be used.') ?>
+				<?php echo I18N::translate('Leave this blank to use the default value.') ?>
 			</p>
 		</div>
 	</div>
@@ -219,7 +219,7 @@ $controller->pageHeader();
 					get_cfg_var('max_execution_time'), I18N::number(get_cfg_var('max_execution_time')));
 				?>
 				<?php echo I18N::translate('You can request a higher or lower limit, although the server may ignore this request.') ?>
-				<?php echo I18N::translate('If you leave this setting empty, the default value will be used.') ?>
+				<?php echo I18N::translate('Leave this blank to use the default value.') ?>
 			</p>
 		</div>
 	</div>
@@ -248,7 +248,7 @@ $controller->pageHeader();
 				<?php echo /* I18N: Help text for the "Default theme" site configuration setting */ I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
 			</p>
 			<p class="small text-muted">
-				<?php echo I18N::translate('Themes can be selected at three levels: user, family tree, and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting “default theme” at one level will use the theme at the next level.') ?>
+				<?php echo I18N::translate('Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level.') ?>
 			</p>
 		</div>
 	</div>
@@ -288,7 +288,7 @@ $controller->pageHeader();
 			<input type="text" class="form-control" id="SESSION_TIME" name="SESSION_TIME" value="<?php echo Filter::escapeHtml(Site::getPreference('SESSION_TIME')) ?>" pattern="[0-9]*" placeholder="7200" maxlength="255">
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Session timeout” site configuration setting */ I18N::translate('The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours.') ?>
-				<?php echo I18N::translate('If you leave this setting empty, the default value will be used.') ?>
+				<?php echo I18N::translate('Leave this blank to use the default value.') ?>
 			</p>
 		</div>
 	</div>
@@ -302,7 +302,7 @@ $controller->pageHeader();
 			<?php echo FunctionsEdit::selectEditControl('SERVER_URL', array(WT_BASE_URL => WT_BASE_URL), '', Site::getPreference('SERVER_URL'), 'class="form-control"') ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the "Website URL" site configuration setting */ I18N::translate('If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one.') ?>
-				<?php echo I18N::translate('If you leave this setting empty, the default value will be used.') ?>
+				<?php echo I18N::translate('Leave this blank to use the default value.') ?>
 			</p>
 		</div>
 	</div>
@@ -385,7 +385,7 @@ $controller->pageHeader();
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="SMTP_AUTH_USER" name="SMTP_AUTH_USER" value="<?php echo Filter::escapeHtml(Site::getPreference('SMTP_AUTH_USER')) ?>" maxlength="255">
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the "Username" site configuration setting */ I18N::translate('The user name required for authentication with the SMTP server.') ?>
+				<?php echo /* I18N: Help text for the "Username" site configuration setting */ I18N::translate('The username required for authentication with the SMTP server.') ?>
 			</p>
 		</div>
 	</div>

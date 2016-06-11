@@ -561,7 +561,7 @@ if (
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <p>
-	<?php echo I18N::translate('These pages provide access to all the configuration settings and management tools for this webtrees site.'); ?>
+	<?php echo I18N::translate('These pages provide access to all the preferences and management tools for this webtrees site.'); ?>
 </p>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

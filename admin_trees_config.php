@@ -499,7 +499,10 @@ $controller
 			</p>
 		</div>
 	</div>
-	<h2><?php echo I18N::translate('Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag'); ?></h2>
+	<h2><?php echo /* I18N: Privacy restrictions are set by RESN tags in GEDCOM. */ I18N::translate('Privacy restrictions'); ?></h2>
+	<p>
+		<?php echo /* I18N: Privacy restrictions are RESN tags in GEDCOM. */ I18N::translate('You can set the access for a specific record, fact, or event by adding a restriction to it.  If a record, fact, or event does not have a restriction, the following default restrictions will be used.') ?>
+	</p>
 
 	<script id="new-resn-template" type="text/html">
 		<tr>
@@ -644,7 +647,7 @@ $controller
 				<?php endforeach; ?>
 			</select>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Language” configuration setting */ I18N::translate('If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used. Typically, this setting applies to search engines.'); ?>
+				<?php echo /* I18N: Help text for the “Language” configuration setting */ I18N::translate('If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines.'); ?>
 			</p>
 		</div>
 	</div>
@@ -924,7 +927,7 @@ $controller
 		</div>
 	</div>
 
-	<h3><?php echo I18N::translate('Website and META tag settings'); ?></h3>
+	<h3><?php echo I18N::translate('Website'); ?></h3>
 
 	<!-- META_TITLE -->
 	<div class="form-group">
@@ -993,7 +996,6 @@ $controller
 		</div>
 	</div>
 
-	<h3><?php echo I18N::translate('Media'); ?></h3>
 	<h3><?php echo I18N::translate('Media folders'); ?></h3>
 
 	<!-- MEDIA_DIRECTORY -->
@@ -1075,7 +1077,7 @@ $controller
 				</span>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Width of generated thumbnails” configuration setting */ I18N::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails. The default setting is 100.'); ?>
+				<?php echo /* I18N: Help text for the “Width of generated thumbnails” configuration setting */ I18N::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1300,7 +1302,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('PEDIGREE_FULL_DETAILS', $no_yes, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Show chart details by default” configuration setting */ I18N::translate('This is the initial setting for the “show details” option on the charts.'); ?>
+				<?php echo /* I18N: Help text for the “Show chart details by default” configuration setting */ I18N::translate('This is the initial value for the “show details” option on the charts.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1584,7 +1586,28 @@ $controller
 		</div>
 	</fieldset>
 
-	<h3><?php echo GedcomTag::getLabel('TEXT'); ?></h3>
+		<!-- GEONAMES_ACCOUNT -->
+		<div class="form-group">
+			<label class="control-label col-sm-3" for="GEONAMES_ACCOUNT">
+				<?php echo I18N::translate('Use the GeoNames database for autocomplete on places'); ?>
+			</label>
+			<div class="col-sm-9">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="GEONAMES_ACCOUNT"
+					maxlength="255"
+					name="GEONAMES_ACCOUNT"
+					type="text"
+					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('GEONAMES_ACCOUNT')); ?>"
+				>
+				<p class="small text-muted">
+					<?php echo /* I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting */ I18N::translate('The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username.'); ?>
+				</p>
+			</div>
+		</div>
+
+		<h3><?php echo GedcomTag::getLabel('TEXT'); ?></h3>
 
 	<!-- FORMAT_TEXT -->
 	<fieldset class="form-group">
@@ -2159,27 +2182,6 @@ $controller
 			</p>
 		</div>
 	</fieldset>
-
-	<!-- GEONAMES_ACCOUNT -->
-	<div class="form-group">
-		<label class="control-label col-sm-3" for="GEONAMES_ACCOUNT">
-			<?php echo I18N::translate('Use the GeoNames database for autocomplete on places'); ?>
-		</label>
-		<div class="col-sm-9">
-			<input
-				class="form-control"
-				dir="ltr"
-				id="GEONAMES_ACCOUNT"
-				maxlength="255"
-				name="GEONAMES_ACCOUNT"
-				type="text"
-				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('GEONAMES_ACCOUNT')); ?>"
-				>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting */ I18N::translate('The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username.'); ?>
-			</p>
-		</div>
-	</div>
 
 	<!-- NO_UPDATE_CHAN -->
 	<fieldset class="form-group">
