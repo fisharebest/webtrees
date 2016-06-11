@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-05-11 11:08+0000\n"
+"PO-Revision-Date: 2016-06-11 10:03+0000\n"
 "Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
@@ -1292,14 +1292,14 @@ msgstr "adar II"
 msgid "Add"
 msgstr "Dodaj"
 
-msgid "add"
-msgstr "dodaj"
-#, fuzzy
-
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "Dodaj %s do koszyka"
+
+#: modules_v3/GEDFact_assistant/census/census-edit.php:113
+msgid "Add a blank row"
+msgstr "Dodaj pustą linię"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
@@ -1524,11 +1524,6 @@ msgstr "Dodaj swój własny tekst i grafikę."
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
 msgstr "Dodaj/zmień artykuł lub wpis do dziennika"
-
-#: modules_v3/GEDFact_assistant/census/census-edit.php:113
-msgid "Add a blank row"
-msgstr "Dodaj pustą linię"
-#, fuzzy
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -11673,12 +11668,6 @@ msgstr "Przenumeruj"
 msgid "Renumber family tree"
 msgstr "Zmienić numerację drzewa genealogicznego"
 
-#. I18N: A button label
-#: search.php:217
-msgid "replace"
-msgstr "zamień"
-#, fuzzy
-
 msgid "Replace"
 msgstr "Zamień"
 
@@ -12038,10 +12027,6 @@ msgstr "Naznaczenie anulowane (rozwód)"
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
 msgstr "Szukaj"
-
-msgid "search"
-msgstr "szukaj"
-#, fuzzy
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12969,29 +12954,13 @@ msgstr "Panele boczne"
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#. I18N: Name of a module
-#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
-#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
-#: login.php:150 login.php:199
-msgid "sign in"
-msgstr "logowanie"
-#, fuzzy
-
-#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
-#: app/Theme/AbstractTheme.php:1568
-msgid "sign out"
-msgstr "wyloguj"
-#, fuzzy
-
 msgid "Sign in"
 msgstr "Logowanie"
-#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Wyloguj"
-#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447
@@ -14221,7 +14190,6 @@ msgstr "Motywy"
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 msgstr "Motywy mogą być wybrane na trzech poziomach: użytkownika, drzewa genealogicznego, oraz na strony internetowej. Ustawienia użytkownika mają pierwszeństwo przed ustawieniami drzewa genealogicznego, które z kolei mają pierwszeństwo przed ustawieniami strony. Wybór „domyślnego motywu” na jednym poziomie spowoduje użycie jego na kolejnym poziomie."
-#, fuzzy
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:142
@@ -14297,7 +14265,6 @@ msgstr "Thermidor"
 #: admin.php:564
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
 msgstr "Strony te zapewniają dostęp do wszystkich ustawień konfiguracyjnych i narzędzi administracyjnych dla tej witryny webtrees."
-#, fuzzy
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:150
@@ -16499,6 +16466,9 @@ msgstr "zaakceptować"
 #: admin_site_change.php:54
 msgid "accepted"
 msgstr "zaakceptowana"
+
+msgid "add"
+msgstr "dodaj"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
@@ -19472,6 +19442,11 @@ msgctxt "MALE"
 msgid "religious name"
 msgstr "zakonne"
 
+#. I18N: A button label
+#: search.php:217
+msgid "replace"
+msgstr "zamień"
+
 #. I18N: a program feature
 #: setup.php:133 setup.php:134
 msgid "reporting"
@@ -19510,6 +19485,9 @@ msgstr "robot"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
 msgstr "Zapisz"
+
+msgid "search"
+msgstr "szukaj"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:619
@@ -19728,6 +19706,18 @@ msgstr "Pokaż wykres"
 #: app/Functions/Functions.php:784
 msgid "sibling"
 msgstr "rodzeństwo"
+
+#. I18N: Name of a module
+#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
+#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
+#: login.php:150 login.php:199
+msgid "sign in"
+msgstr "logowanie"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "wyloguj"
 
 #: app/Functions/Functions.php:767
 msgid "sister"
