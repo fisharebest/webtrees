@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-10 11:32+0000\n"
+"PO-Revision-Date: 2016-06-11 12:41+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -1235,14 +1235,14 @@ msgstr "Adar II"
 msgid "Add"
 msgstr "Ekle"
 
-msgid "add"
-msgstr "ekle"
-#, fuzzy
-
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "%s sepete ekle"
+
+#: modules_v3/GEDFact_assistant/census/census-edit.php:113
+msgid "Add a blank row"
+msgstr "Boş Satır Ekle"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
@@ -1467,11 +1467,6 @@ msgstr "HTML destekli kendi metin ve grafikleri ekleyebileceğiniz blok."
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
 msgstr "Günlük/Haber kaydı Ekle/Düzelt"
-
-#: modules_v3/GEDFact_assistant/census/census-edit.php:113
-msgid "Add a blank row"
-msgstr "Boş Satır Ekle"
-#, fuzzy
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -11608,12 +11603,6 @@ msgstr "Yeniden numaralandır"
 msgid "Renumber family tree"
 msgstr "soyağacını yeniden numaralandır"
 
-#. I18N: A button label
-#: search.php:217
-msgid "replace"
-msgstr "değiştir"
-#, fuzzy
-
 msgid "Replace"
 msgstr "Değiştir"
 
@@ -11974,15 +11963,11 @@ msgstr "Kapatma iptalı (boşanma)"
 msgid "Search"
 msgstr "Ara"
 
-msgid "search"
-msgstr "ara"
-#, fuzzy
-
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1717
 msgid "Search and replace"
-msgstr "Bul ve Değiştir"
+msgstr "Bul ve değiştir"
 
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:59
@@ -12904,29 +12889,13 @@ msgstr "Kenar çubukları"
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#. I18N: Name of a module
-#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
-#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
-#: login.php:150 login.php:199
-msgid "sign in"
-msgstr "giriş"
-#, fuzzy
-
-#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
-#: app/Theme/AbstractTheme.php:1568
-msgid "sign out"
-msgstr "çıkış"
-#, fuzzy
-
 msgid "Sign in"
-msgstr "Giriş"
-#, fuzzy
+msgstr "Oturum aç"
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
-msgstr "Çıkış"
-#, fuzzy
+msgstr "Oturumu kapat"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447
@@ -14154,12 +14123,11 @@ msgstr "Temalar"
 #: admin_site_config.php:251
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 msgstr "Temalar üç düzeyde seçilebilir: Kullanıcı, aile ağacı ve web sitesi. Kullanıcı ayarları soyağacı ayarlarından, soyağacı ayarları da web sitesi ayarından önceliklidir. Bir düzeyde \"varsayılan tema\" seçilmesi sonraki düzeyde de kullanılır."
-#, fuzzy
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:142
 msgid "There are no facts for this individual."
-msgstr "Bu birey için hiçbir Olgu mevcut değil."
+msgstr "Bu birey için hiçbir olgu mevcut değil."
 
 #: app/Module/MediaTabModule.php:76
 msgid "There are no media objects for this individual."
@@ -14228,13 +14196,12 @@ msgstr "Thermidor"
 #: admin.php:564
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
 msgstr "Bu sayfa bu webtrees sitesi için tüm yapılandırma ayarlarını ve yönetim araçlarına erişim sağlar."
-#, fuzzy
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:150
 #, php-format
 msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-msgstr "Bu GEDCOM %1$s kullanılarak kodlandı. %2$s anlamına gelmek için bunu varsaymak."
+msgstr "Bu GEDCOM %1$s kullanılarak kodlandı. Bunun %2$s olduğunu varsay."
 
 #: login.php:97
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -16420,6 +16387,9 @@ msgstr "kabul et"
 #: admin_site_change.php:54
 msgid "accepted"
 msgstr "kabul edildi"
+
+msgid "add"
+msgstr "ekle"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
@@ -19387,6 +19357,11 @@ msgctxt "MALE"
 msgid "religious name"
 msgstr "dini ismi"
 
+#. I18N: A button label
+#: search.php:217
+msgid "replace"
+msgstr "değiştir"
+
 #. I18N: a program feature
 #: setup.php:133 setup.php:134
 msgid "reporting"
@@ -19425,6 +19400,9 @@ msgstr "robot"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
 msgstr "kaydet"
+
+msgid "search"
+msgstr "ara"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:619
@@ -19643,6 +19621,18 @@ msgstr "çizelgeyi göster"
 #: app/Functions/Functions.php:784
 msgid "sibling"
 msgstr "kardeş"
+
+#. I18N: Name of a module
+#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
+#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
+#: login.php:150 login.php:199
+msgid "sign in"
+msgstr "giriş"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "oturumu kapat"
 
 #: app/Functions/Functions.php:767
 msgid "sister"
