@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-05-07 22:09+0100\n"
-"PO-Revision-Date: 2016-06-10 19:57+0000\n"
+"PO-Revision-Date: 2016-06-11 00:54+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -1264,14 +1264,14 @@ msgstr "Ádár séni"
 msgid "Add"
 msgstr "Felvétel"
 
-msgid "add"
-msgstr "felvétel"
-#, fuzzy
-
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "%s kerüljön a metszési kosárba"
+
+#: modules_v3/GEDFact_assistant/census/census-edit.php:113
+msgid "Add a blank row"
+msgstr "Üres sor felvétele"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
@@ -1497,15 +1497,10 @@ msgstr "Saját szöveg és grafika felvétele."
 msgid "Add/edit a journal/news entry"
 msgstr "Napló- vagy hírbejegyzés felvétele/szerkesztése"
 
-#: modules_v3/GEDFact_assistant/census/census-edit.php:113
-msgid "Add a blank row"
-msgstr "Üres sor felvétele"
-#, fuzzy
-
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
 msgid "Address"
-msgstr "Lakcím"
+msgstr "Cím"
 
 #: app/GedcomTag.php:124
 msgid "Address line 1"
@@ -11641,12 +11636,6 @@ msgstr "Átszámozás"
 msgid "Renumber family tree"
 msgstr "A családfa átszámozása"
 
-#. I18N: A button label
-#: search.php:217
-msgid "replace"
-msgstr "csere"
-#, fuzzy
-
 msgid "Replace"
 msgstr "Csere"
 
@@ -12006,10 +11995,6 @@ msgstr "Érvénytelenített pecsételés (válás)"
 #: search.php:185 search.php:300 search_advanced.php:288
 msgid "Search"
 msgstr "Keresés"
-
-msgid "search"
-msgstr "keresés"
-#, fuzzy
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -12937,29 +12922,13 @@ msgstr "Oldalpanelok"
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#. I18N: Name of a module
-#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
-#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
-#: login.php:150 login.php:199
-msgid "sign in"
-msgstr "bejelentkezés"
-#, fuzzy
-
-#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
-#: app/Theme/AbstractTheme.php:1568
-msgid "sign out"
-msgstr "kijelentkezés"
-#, fuzzy
-
 msgid "Sign in"
 msgstr "Bejelentkezés"
-#, fuzzy
 
 #: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
 #: app/Theme/AbstractTheme.php:1568
 msgid "Sign out"
 msgstr "Kijelentkezés"
-#, fuzzy
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447
@@ -16459,6 +16428,9 @@ msgstr "elfogad"
 msgid "accepted"
 msgstr "elfogadva"
 
+msgid "add"
+msgstr "felvétel"
+
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
 msgid "adopted name"
@@ -19428,6 +19400,11 @@ msgctxt "MALE"
 msgid "religious name"
 msgstr "vallási név"
 
+#. I18N: A button label
+#: search.php:217
+msgid "replace"
+msgstr "csere"
+
 #. I18N: a program feature
 #: setup.php:133 setup.php:134
 msgid "reporting"
@@ -19466,6 +19443,9 @@ msgstr "keresőrobot"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
 msgstr "ment"
+
+msgid "search"
+msgstr "keresés"
 
 #. I18N: A Spanish relationship name, such as second great-nephew
 #: app/Functions/Functions.php:619
@@ -19684,6 +19664,18 @@ msgstr "mutasd az ábrát"
 #: app/Functions/Functions.php:784
 msgid "sibling"
 msgstr "testvér"
+
+#. I18N: Name of a module
+#: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:68
+#: app/Module/LoginBlockModule.php:83 app/Theme/AbstractTheme.php:1557
+#: login.php:150 login.php:199
+msgid "sign in"
+msgstr "bejelentkezés"
+
+#: app/Module/LoginBlockModule.php:61 app/Module/LoginBlockModule.php:64
+#: app/Theme/AbstractTheme.php:1568
+msgid "sign out"
+msgstr "kijelentkezés"
 
 #: app/Functions/Functions.php:767
 msgid "sister"
