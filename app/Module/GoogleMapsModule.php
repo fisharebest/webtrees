@@ -1997,7 +1997,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						'sv_zoom'      => $latlongval->sv_zoom,
 						'events'       => '',
 					);
-					$GM_MAX_ZOOM           = min($GM_MAX_ZOOM, $latlongval->pl_zoom);
+					$GM_MAX_ZOOM = min($GM_MAX_ZOOM, $latlongval->pl_zoom);
 				}
 			}
 
