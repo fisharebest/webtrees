@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-11 21:32+0000\n"
-"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
+"PO-Revision-Date: 2016-06-12 13:08+0000\n"
+"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -918,7 +918,7 @@ msgstr "Ein Bericht mit personenbezogenen Detailinformationen."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Ein Bericht aller Ereignisse, die durch Angabe einer Quelle gestützt sind."
+msgstr "Ein Bericht der Ereignisse, welche durch die gewählte Quelle belegt sind."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
@@ -1025,7 +1025,7 @@ msgstr "Ein Reiter zur Anzeige von nahen Verwandten einer Person."
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
 msgid "A tab showing the facts and events of an individual."
-msgstr "Ein Reiter zur Anzeige der Fakten und Ereignisse einer Person."
+msgstr "Ein Reiter zur Anzeige der Tatsachen und Ereignisse einer Person."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
@@ -1286,7 +1286,7 @@ msgstr "Ein Kind zu dieser Familie hinzufügen"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr "Einen Fakt hinzufügen"
+msgstr "Eine Tatsache hinzufügen"
 
 #: app/Module/RelativesTabModule.php:320 edit_interface.php:675 family.php:110
 msgid "Add a father"
@@ -1668,15 +1668,15 @@ msgstr "Erwachsenen Taufe"
 
 #: admin_trees_config.php:2085
 msgid "Advanced fact settings"
-msgstr "Erweiterte Fakteneinstellungen"
+msgstr "Erweiterte Einstellungen für Tatsachen"
 
 #: admin_trees_config.php:2090
 msgid "Advanced name facts"
-msgstr "Besondere Namensfakten"
+msgstr "Erweiterte Namensfakten"
 
 #: admin_trees_config.php:2119
 msgid "Advanced place name facts"
-msgstr "Besondere Ortsnamenfakten"
+msgstr "Erweiterte Ortsnamenfakten"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1742
@@ -1937,7 +1937,7 @@ msgstr "Eine alternative An- oder Abmeldemöglichkeit."
 
 #: app/Functions/FunctionsEdit.php:909
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr "Eine \"verbundene Person\" ist eine Person, die bei einem Ereignis beteiligt war, z.B. ein Zeuge oder ein Geistlicher."
+msgstr "Eine verbundene Person ist eine Person, die bei dieser Tastasche oder diesem Ereignis z.B. als Zeuge oder Geistlicher beteiligt war."
 
 #: app/Functions/FunctionsEdit.php:907
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
@@ -4348,7 +4348,7 @@ msgstr "Benutzerdefiniertes Ereignis"
 
 #: app/Functions/FunctionsPrint.php:629
 msgid "Custom fact"
-msgstr "Benutzerdefinierter Fakt"
+msgstr "Benutzerdefinierte Tatsache"
 
 #: admin_modules.php:191 admin_site_upgrade.php:125 admin_site_upgrade.php:128
 msgid "Custom module"
@@ -6378,7 +6378,7 @@ msgstr "Filter"
 #: app/Functions/FunctionsPrint.php:799 find.php:76 find.php:81 find.php:86
 #: find.php:91 find.php:96 find.php:101
 msgid "Find a fact or event"
-msgstr "Finde eine Begebenheit oder ein Ereignis"
+msgstr "Finde eine Tatsache oder ein Ereignis"
 
 #: app/Functions/FunctionsPrint.php:714 find.php:54
 msgid "Find a family"
@@ -6940,7 +6940,7 @@ msgstr "Google Street View™"
 
 #: app/Module/GoogleMapsModule.php:331
 msgid "Google allows a small number of anonymous map requests per day.  If you need more than this, you will need a Google account and an API key."
-msgstr "Google erlaubt eine kleine Anzahl von anonymen Kartenaufrufen pro Tag. Sollten mehr gewünscht werden, wird ein Google Konto und ein API Schlüssel benötigt."
+msgstr "Google erlaubt eine kleine Anzahl von anonymen Kartenaufrufen pro Tag. Sollten mehr gewünscht werden, benötigen Sie ein Google-Konto und einen API-Schlüssel."
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:508
@@ -9939,7 +9939,7 @@ msgstr[1] "Es stehen keine Ereignisse für lebende Personen in den nächsten %s 
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
-msgstr "Keine Ereignisse für diese Familie."
+msgstr "Es sind keine Ereignisse für diese Familie vorhanden."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:79
@@ -9960,7 +9960,7 @@ msgstr "Keine Karteninformation für diese Person"
 
 #: admin_site_merge.php:237 admin_site_merge.php:284 admin_site_merge.php:330
 msgid "No matching facts found"
-msgstr "Keine übereinstimmende Fakten gefunden"
+msgstr "Keine übereinstimmenden Angaben gefunden"
 
 #: addmedia.php:168 addmedia.php:302 admin_media_upload.php:126
 msgid "No media file was provided."
@@ -11165,7 +11165,7 @@ msgstr "Datenschutzeinschränkungen"
 
 #: admin_trees_config.php:525
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Datenschutzeinschränkungen - diese werden auf Datensätze angewandt, die kein GEDCOM RESN Tag enthalten"
+msgstr "Datenschutzeinschränkungen - diese werden auf Datensätze angewandt, die keinen GEDCOM RESN Tag enthalten"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:532
 #: app/GedcomRecord.php:610 app/GedcomRecord.php:735 app/Individual.php:1309
@@ -13057,7 +13057,7 @@ msgstr "Einige Ortsnamen können mit optionalen Zusatzbezeichnungen versehen sei
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1493
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Einige Designs können Symbole auf der Registerkarte „Fakten und Ereignisse“ anzeigen."
+msgstr "Einige Designs können Symbole auf dem Reiter „Tatsachen und Ereignisse“ anzeigen."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:520
@@ -13804,13 +13804,13 @@ msgstr "Das Verzeichnis kann mit dem vollen Pfad (z.B. /home/user_name/webtrees_
 
 #: admin_site_merge.php:201
 msgid "The following facts and events were found in both records."
-msgstr "Die folgenden Fakten und Ereignisse wurden in beiden Datensätze gefunden."
+msgstr "Die folgenden Tatsachen und Ereignisse wurden in beiden Datensätze gefunden."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:248 admin_site_merge.php:294
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr "Die folgenden Fakten und Ereignisse wurden nur im Datensatz %s gefunden."
+msgstr "Die folgenden Tatsachen und Ereignisse wurden nur im Datensatz %s gefunden."
 
 #: setup.php:171
 msgid "The following list shows typical requirements."
@@ -14350,12 +14350,12 @@ msgstr "In diesem Feld können Sie das Jahr für die Liste im Modus «Jahr zeige
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2111
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Dies ist eine Komma getrennte Liste von GEDCOM Tags die in dem Bearbeitungsformular für Namen gezeigt werden. Wenn Sie Alphabete benutzen, die nicht vom lateinischen Alphabet stammen, z.B., die hebräischen, griechischen, russischen, oder arabischen Alphabete, möchten Sie wahrscheinlich Tags wie _HEB, ROM, FONE, usw. dem Formular hinzufügen. Solche Tags ermöglichen Ihnen, Namen in verschiedenen Alphabeten zu speichern."
+msgstr "Dies ist eine Komma-getrennte Liste von GEDCOM Ereignis-Tags die in dem Bearbeitungsformular für Namen gezeigt werden. Wenn Sie Alphabete benutzen, die nicht vom lateinischen Alphabet stammen, z.B., die hebräischen, griechischen, russischen, oder arabischen Alphabete, möchten Sie wahrscheinlich Tags wie _HEB, ROM, FONE, usw. dem Formular hinzufügen. Solche Tags ermöglichen Ihnen, Namen in verschiedenen Alphabeten zu speichern."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1873
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Dies ist eine Komma-getrennte Liste von korrespondierenden GEDCOM-Ereignis-Tags, die beim Hinzufügen einer neuen Familie angezeigt wird. Zum Beispiel: Wenn das Tag MARR in der Liste erscheint, werden die Felder für Hochzeitsdatum und Hochzeitsort auf dem Formular angezeigt."
+msgstr "Dies ist eine Komma-getrennte Liste von korrespondierenden GEDCOM Ereignis-Tags, die beim Hinzufügen einer neuen Familie angezeigt wird. Zum Beispiel: Wenn das Tag MARR in der Liste erscheint, werden die Felder für Hochzeitsdatum und Hochzeitsort auf dem Formular angezeigt."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1755
@@ -14365,7 +14365,7 @@ msgstr "Dies ist eine Komma-getrennte Liste von korrespondierenden GEDCOM-Ereign
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2140
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Dies ist eine Komma getrennte Liste von GEDCOM Tags die in dem Bearbeitungsformular für Ortsnamen gezeigt werden. Wenn Sie Alphabete benutzen, die nicht vom lateinischen Alphabet stammen, z.B., die hebräischen, griechischen, russischen, oder arabischen Alphabete, möchten Sie wahrscheinlich Tags wie _HEB, ROM, FONE, usw. dem Formular hinzufügen. Solche Tags ermöglichen Ihnen, Ortsnamen in verschiedenen Alphabeten zu speichern."
+msgstr "Dies ist eine Komma-getrennte Liste von GEDCOM Ereignis-Tags die in dem Bearbeitungsformular für Ortsnamen gezeigt werden. Wenn Sie Alphabete benutzen, die nicht vom lateinischen Alphabet stammen, z.B., die hebräischen, griechischen, russischen, oder arabischen Alphabete, möchten Sie wahrscheinlich Tags wie _HEB, ROM, FONE, usw. dem Formular hinzufügen. Solche Tags ermöglichen Ihnen, Ortsnamen in verschiedenen Alphabeten zu speichern."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -15218,11 +15218,11 @@ msgstr "Typ"
 
 #: app/GedcomTag.php:434
 msgid "Type of event"
-msgstr "Ereignistyp"
+msgstr "Art des Ereignisses"
 
 #: app/GedcomTag.php:440
 msgid "Type of fact"
-msgstr "Typ der Gegebenheit"
+msgstr "Art der Tatsache"
 
 #: app/Module/GoogleMapsModule.php:495
 msgid "Type of place markers in the place hierarchy"
