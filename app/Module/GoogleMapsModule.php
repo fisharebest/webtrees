@@ -176,8 +176,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '<script>loadMap();</script>';
 			return '<div id="' . $this->getName() . '_content" class="facts_table">' . ob_get_clean() . '</div>';
 		} else {
-			$html = '<div class="facts_value noprint">';
-			$html .= I18N::translate('No map data exists for this individual');
+			$html = '<div class="facts_value noprint">'. I18N::translate('No map data exists for this individual') . '</div>';
 			if (Auth::isAdmin()) {
 				$html .= '<div style="text-align: center;"><a href="module.php?mod=googlemap&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a></div>';
 			}
