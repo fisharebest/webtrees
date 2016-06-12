@@ -256,6 +256,13 @@ ul.tabs a.current {
 	width: 360px;
 }
 
+#side_bar {
+	width: 300px;
+	font-size: 0.85em;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
 #side_bar .gallery img,
 .iwstyle .gallery img,
 .highlt_img .gallery img {

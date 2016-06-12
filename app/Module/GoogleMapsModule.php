@@ -742,9 +742,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->root->getFullName()))
 			->pageHeader()
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+			/* prepending the module css in the page head allows the theme to over-ride it*/
 			->addInlineJavascript("
-				jQuery('head').append('<link type=\"text/css\" href =\"" . WT_STATIC_URL . WT_MODULES_DIR . "googlemap/css/wt_v3_googlemap.css\" rel=\"stylesheet\">');
-				autocomplete();");
+				jQuery('head').prepend('<link type=\"text/css\" href =\"" . WT_STATIC_URL . WT_MODULES_DIR . "googlemap/css/wt_v3_googlemap.css\" rel=\"stylesheet\">');
+				autocomplete();" .
+				$this->pedigreeMapJavascript()
+			);
 
 		echo '<div id="pedigreemap-page"><h2>', $controller->getPageTitle(), '</h2>';
 
@@ -754,7 +757,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml() ?>">
 			<input type="hidden" name="mod" value="googlemap">
 			<input type="hidden" name="mod_action" value="pedigree_map">
-			<table class="list_table" width="555">
+			<table class="list_table">
 				<tr>
 					<td class="descriptionbox wrap">
 						<?php echo I18N::translate('Individual') ?>
@@ -861,7 +864,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 		echo '</td><td width="15px"></td>';
 		echo '<td width="310px">';
-		echo '<div id="side_bar" style="width:300px; font-size:0.9em; overflow:auto; overflow-x:hidden; overflow-y:auto; height:', $this->getSetting('GM_YSIZE'), 'px;"></div></td>';
+		echo '<div id="side_bar" style="height:', $this->getSetting('GM_YSIZE'), 'px;"></div></td>';
 		echo '</tr>';
 		echo '</table>';
 		// display info under map
@@ -905,7 +908,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '</div>'; // close #pedigreemap_chart
 		echo '</div>'; // close #pedigreemap-page
 		echo '<script src="', $this->googleMapsScript(), '"></script>';
-		$controller->addInlineJavascript($this->pedigreeMapJavascript());
 	}
 
 	/**
@@ -944,7 +946,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			controlUI.appendChild(controlText);' .
 			// Setup the click event listeners: simply set the map to original LatLng
 			'google.maps.event.addDomListener(controlUI, "click", function() {
-				pm_map.setMapTypeId(google.maps.MapTypeId.TERRAIN),
+				pm_map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
 				pm_map.fitBounds(bounds),
 				pm_map.setCenter(bounds.getCenter()),
 				infowindow.close()
@@ -1389,6 +1391,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								plines.setMap(pm_map);';
 						}
 						// Extend and fit marker bounds
+
 						$js .= 'bounds.extend(point);';
 						$js .= 'pm_map.fitBounds(bounds);';
 						$count++;
@@ -1404,70 +1407,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			document.getElementById(lastlinkid).className = "person_box:target";
 		});' .
 		// put the assembled side_bar_html contents into the side_bar div
-		'document.getElementById("side_bar").innerHTML = side_bar_html;' .
-		// create the context menu div
-		'var contextmenu = document.createElement("div");
-			contextmenu.style.visibility="hidden";
-			contextmenu.innerHTML = "<a href=\'#\' onclick=\'zoomIn()\'><div class=\'optionbox\'>&nbsp;&nbsp;' . I18N::translate('Zoom in') . '&nbsp;&nbsp;</div></a>"
-								+ "<a href=\'#\' onclick=\'zoomOut()\'><div class=\'optionbox\'>&nbsp;&nbsp;' . I18N::translate('Zoom out') . '&nbsp;&nbsp;</div></a>"
-								+ "<a href=\'#\' onclick=\'zoomInHere()\'><div class=\'optionbox\'>&nbsp;&nbsp;' . I18N::translate('Zoom in here') . '</div></a>"
-								+ "<a href=\'#\' onclick=\'zoomOutHere()\'><div class=\'optionbox\'>&nbsp;&nbsp;' . I18N::translate('Zoom out here') . '&nbsp;&nbsp;</div></a>"
-								+ "<a href=\'#\' onclick=\'centreMapHere()\'><div class=\'optionbox\'>&nbsp;&nbsp;' . I18N::translate('Center map here') . '&nbsp;&nbsp;</div></a>";' .
-		// listen for singlerightclick
-		'google.maps.event.addListener(pm_map,"singlerightclick", function(pixel,tile) {' .
-			// store the "pixel" info in case we need it later
-			// adjust the context menu location if near an egde
-			// create a GControlPosition
-			// apply it to the context menu, and make the context menu visible
-			'clickedPixel = pixel;
-			var x=pixel.x;
-			var y=pixel.y;
-			if (x > pm_map.getSize().width - 120) { x = pm_map.getSize().width - 120 }
-			if (y > pm_map.getSize().height - 100) { y = pm_map.getSize().height - 100 }
-			var pos = new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(x,y));
-			pos.apply(contextmenu);
-			contextmenu.style.visibility = "visible";
-		});
-		' .
-		// functions that perform the context menu options
-		'function zoomIn() {' .
-			// perform the requested operation
-			'pm_map.zoomIn();' .
-			// hide the context menu now that it has been used
-			'contextmenu.style.visibility="hidden";
-		}
-		function zoomOut() {' .
-			// perform the requested operation
-			'pm_map.zoomOut();' .
-			// hide the context menu now that it has been used
-			'contextmenu.style.visibility="hidden";
-		}
-		function zoomInHere() {' .
-			// perform the requested operation
-			'var point = pm_map.fromContainerPixelToLatLng(clickedPixel)
-			pm_map.zoomIn(point,true);' .
-			// hide the context menu now that it has been used
-			'contextmenu.style.visibility="hidden";
-		}
-		function zoomOutHere() {' .
-			// perform the requested operation
-			'var point = pm_map.fromContainerPixelToLatLng(clickedPixel)
-			pm_map.setCenter(point,pm_map.getZoom()-1);' .
-			// There is no pm_map.zoomOut() equivalent
-			// hide the context menu now that it has been used
-			'contextmenu.style.visibility="hidden";
-		}
-		function centreMapHere() {' .
-			// perform the requested operation
-			'var point = pm_map.fromContainerPixelToLatLng(clickedPixel)
-			pm_map.setCenter(point);' .
-			// hide the context menu now that it has been used
-			'contextmenu.style.visibility="hidden";
-		}' .
-		// If the user clicks on the map, close the context menu
-		'google.maps.event.addListener(pm_map, "click", function() {
-			contextmenu.style.visibility="hidden";
-		});';
+		'document.getElementById("side_bar").innerHTML = side_bar_html;';
 
 		return $js;
 	}
