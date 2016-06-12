@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-11 22:49+0000\n"
+"PO-Revision-Date: 2016-06-12 17:31+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -5523,7 +5523,7 @@ msgstr "Jegyzet szerkesztése"
 #: edit_interface.php:112 edit_interface.php:162 edit_interface.php:224
 #: edit_interface.php:319 edit_interface.php:2588 help_text.php:284
 msgid "Edit the raw GEDCOM"
-msgstr "A nyers GEDCOM-adat szerkesztése"
+msgstr "A nyers GEDCOM-kód szerkesztése"
 
 #: app/Controller/RepositoryController.php:43
 #: app/Controller/RepositoryController.php:48
@@ -13670,7 +13670,7 @@ msgstr "A(z) „%s” adatmódosításait egy webhelykezelő elutasította."
 
 #: app/Module/ClippingsCartModule.php:311
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>"
-msgstr "A metszési kosár segítségével a családfából kivonatok („metszetek”) hozhatók létre, amelyek egyetlen fájlban kötegelve letölthetők, majd betölthetők más családfakezelő alkalmazásokba. A letöltött állomány GEDCOM-formátumú.<br><ul><li>Hogyan végezzük a metszést?<br>Ez igazán egyszerű: akármelyik kattintható név (személy, család vagy forrás) révén eljuthat a név részletező oldalára. Ott látható a <b>Tegyük a metszési kosárba</b> hivatkozás, melyre kattintva több opció jelenik meg a letöltéshez.</li><li>Hogyan kell letölteni?<br>Amint elem található a kosárban, a „Letöltés” hivatkozásra kattintva letöltheti. Kövesse az utasításokat és a hivatkozásokat!</li></ul>"
+msgstr "A metszési kosárba a családfából kivonatok  („metszetek”) képezhetők, amelyek egyetlen fájlban kötegelve letölthetők, majd betölthetők más családfakezelő alkalmazásokba. A letöltött állomány GEDCOM-formátumú.<br><ul><li>Hogyan végezzük a metszést?<br>Ez igazán egyszerű: akármelyik kattintható név (személy, család vagy forrás) révén eljuthat a név részletező oldalára. Ott látható a <b>Tegyük a metszési kosárba</b> hivatkozás, melyre kattintva több opció jelenik meg a letöltéshez.</li><li>Hogyan kell letölteni?<br>Amint elem található a kosárban, a „Letöltés” hivatkozásra kattintva letöltheti. Kövesse az utasításokat és a hivatkozásokat!</li></ul>"
 
 #: site-unavailable.php:54
 msgid "The database reported the following error message:"
