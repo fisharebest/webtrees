@@ -34,7 +34,7 @@ if (empty($pid_array)) {
 	$xref = '';
 } else {
 	$NOTE   = Filter::post('NOTE');
-	$gedcom = '0 @XREF@ NOTE ' . preg_replace('/\r?\n/', "\n2 CONT ", trim($NOTE));
+	$gedcom = '0 @XREF@ NOTE ' . preg_replace('/\r?\n/', "\n1 CONT ", trim($NOTE));
 	$xref   = $WT_TREE->createRecord($gedcom)->getXref();
 }
 
