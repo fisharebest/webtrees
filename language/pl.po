@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-11 10:03+0000\n"
+"PO-Revision-Date: 2016-06-12 11:02+0000\n"
 "Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
@@ -483,8 +483,8 @@ msgstr[0] "%s rok temu"
 msgstr[1] "%s lata temu"
 msgstr[2] "%s lat temu"
 
-#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
-#: calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:1942
+#: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s rocznica"
@@ -1141,7 +1141,7 @@ msgstr "ALPHABET_upper=AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:327
 msgid "API key"
-msgstr ""
+msgstr "Klucz API"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:77
@@ -1312,7 +1312,8 @@ msgstr "Dodaj nowe dziecko"
 msgid "Add a child to create a one-parent family"
 msgstr "Dodaj dziecko do tej osoby"
 
-#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
+#: app/Controller/FamilyController.php:82
+#: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
 msgstr "Dodaj dziecko do tej rodziny"
 
@@ -1350,9 +1351,10 @@ msgstr "Dodaj męża spośród istniejących osób"
 msgid "Add a journal entry"
 msgstr "Dodaj nowy wpis do dziennika"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1124
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:184
+#: app/Controller/FamilyController.php:162
+#: app/Functions/FunctionsEdit.php:1124 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:184
 msgid "Add a media object"
 msgstr "Dodaj nowy obiekt multimedialny"
 
@@ -1368,8 +1370,8 @@ msgstr "Dodaj imię/nazwisko"
 msgid "Add a news article"
 msgstr "Dodaj artykuł"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1103
-#: app/Module/NotesTabModule.php:100
+#: app/Controller/FamilyController.php:149
+#: app/Functions/FunctionsEdit.php:1103 app/Module/NotesTabModule.php:100
 msgid "Add a note"
 msgstr "Dodaj nową notatkę"
 
@@ -1380,14 +1382,15 @@ msgstr "Dodaj nowe ograniczenie"
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
 #: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
 msgstr "Dodaj pasek przewijania, gdy zawartość bloku jest długa"
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1113
-#: app/Module/NotesTabModule.php:110
+#: app/Controller/FamilyController.php:155
+#: app/Functions/FunctionsEdit.php:1113 app/Module/NotesTabModule.php:110
 msgid "Add a shared note"
 msgstr "Dodaj nową wspólną notatkę"
 
@@ -1395,8 +1398,8 @@ msgstr "Dodaj nową wspólną notatkę"
 msgid "Add a son or daughter"
 msgstr "Dodaj nowego syna lub córkę"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1053
-#: app/Module/SourcesTabModule.php:93
+#: app/Controller/FamilyController.php:172
+#: app/Functions/FunctionsEdit.php:1053 app/Module/SourcesTabModule.php:93
 msgid "Add a source citation"
 msgstr "Dodaj nowe źródło"
 
@@ -1835,10 +1838,10 @@ msgstr "Żyjący"
 #: app/Module/GoogleMapsModule.php:1552 app/Module/GoogleMapsModule.php:1565
 #: app/Module/GoogleMapsModule.php:4424 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5581 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
-#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
-#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
-#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
+#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
+#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
+#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -2050,7 +2053,8 @@ msgstr "Anguilla"
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1805 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1805
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr "Rocznica"
 
@@ -2201,7 +2205,8 @@ msgstr "Argentyna"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -3536,7 +3541,8 @@ msgstr "Zmieniono %1$s - %2$s"
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:436
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr "Zmiany"
 
@@ -3577,9 +3583,9 @@ msgstr "Typ diagramu"
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1221
-#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
-#: app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163
+#: admin_trees_config.php:1221 app/Module/ChartsBlockModule.php:34
+#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
 msgstr "Diagramy"
 
@@ -4070,9 +4076,10 @@ msgstr "Kontynuowane"
 #: app/Module/FrequentlyAskedQuestionsModule.php:441
 #: app/Module/GoogleMapsModule.php:296 app/Module/GoogleMapsModule.php:1515
 #: app/Module/GoogleMapsModule.php:3829
-#: app/Module/RelationshipsChartModule.php:147 app/Module/SiteMapModule.php:296
-#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
-#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
+#: app/Module/RelationshipsChartModule.php:147
+#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
+#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
+#: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr "Panel sterowania"
 
@@ -4469,7 +4476,8 @@ msgstr "Użytkownik bazy danych"
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -5037,7 +5045,8 @@ msgstr "Stopień"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -5053,8 +5062,9 @@ msgid "DejaVu"
 msgstr "DejaVu"
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
-#: admin_site_change.php:374 admin_site_logs.php:314 admin_trees_config.php:576
-#: admin_trees_manage.php:418 admin_trees_manage.php:429 admin_users.php:211
+#: admin_site_change.php:374 admin_site_logs.php:314
+#: admin_trees_config.php:576 admin_trees_manage.php:418
+#: admin_trees_manage.php:429 admin_users.php:211
 #: app/Controller/FamilyController.php:94
 #: app/Controller/GedcomRecordController.php:116
 #: app/Controller/IndividualController.php:303
@@ -5135,7 +5145,8 @@ msgstr "Liczba pokoleń potomków"
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
 #: app/Module/ChartsBlockModule.php:195
-#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
+#: app/Module/DescendancyChartModule.php:33
+#: app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5875,7 +5886,8 @@ msgstr "Wyłączone z tego przedstawienia"
 msgid "Explain why you are requesting an account."
 msgstr "Wyjaśnij dlaczego chcesz utworzyć konto."
 
-#: admin_site_change.php:370 admin_site_logs.php:310 admin_trees_manage.php:594
+#: admin_site_change.php:370 admin_site_logs.php:310
+#: admin_trees_manage.php:594
 msgid "Export"
 msgstr "Eksportuj"
 
@@ -6053,7 +6065,8 @@ msgstr "Falklandy (Malwiny)"
 #: app/Module/GoogleMapsModule.php:2659 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1493
 #: calendar.php:422 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:134 mediaviewer.php:123
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:201
 #: repo.php:143 search.php:93 source.php:147 statistics.php:71
 #: statisticsplot.php:974 statisticsplot.php:1078 statisticsplot.php:1328
@@ -6150,7 +6163,8 @@ msgstr "Drzewo genealogiczne"
 msgid "Family tree access and settings"
 msgstr "Ustawienia dostępu i parametry drzewa genealogicznego"
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90
+#: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr "Koszyk wycinków z drzewa genealogicznego"
 
@@ -6290,7 +6304,8 @@ msgid "Father’s family with an unknown individual"
 msgstr "Rodzina ojca z nieznaną osobą"
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1375
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1375
 msgid "Favorites"
 msgstr "Ulubione"
 
@@ -6433,7 +6448,8 @@ msgstr "Znajdź znak specjalny"
 msgid "Find all possible relationships"
 msgstr "Znajdź wszystkie możliwe relacje"
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
@@ -6521,7 +6537,8 @@ msgstr "Nazwa katalogu na serwerze"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6874,7 +6891,7 @@ msgstr "Germinal"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:333
 msgid "Get an API key from Google."
-msgstr ""
+msgstr "Uzyskaj klucz API z Google."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6765
@@ -6958,7 +6975,7 @@ msgstr "Google Street View™"
 
 #: app/Module/GoogleMapsModule.php:331
 msgid "Google allows a small number of anonymous map requests per day.  If you need more than this, you will need a Google account and an API key."
-msgstr ""
+msgstr "Google umożliwia niewielką liczbę anonimowych żądań map dziennie. Jeśli zachodzi potrzebie większej ilości żądań, należy posiadać konto Google i klucz API."
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:508
@@ -7185,7 +7202,8 @@ msgstr "Helsinki, Finlandia"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7390,9 +7408,8 @@ msgid "If a visitor to the website has not selected a preferred language in thei
 msgstr "Jeśli odwiedzający stronę nie podał preferowanego języka w konfiguracji przeglądarki lub podał język nieobsługiwany, to ten język będzie używany. Zazwyczaj to ustawienie dotyczy wyszukiwarek."
 
 #: admin_users.php:392
-#, fuzzy
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr "Jeśli administrator tworzy konto użytkownika, email weryfikacyjny nie jest wysyłany i musi być sprawdzony ręcznie."
+msgstr "W przypadku gdy administrator tworzy konto użytkownika, email weryfikacyjny nie jest wysyłany i musi zostać sprawdzony ręcznie."
 
 #: help_text.php:228
 #, php-format
@@ -7471,7 +7488,6 @@ msgid "If you hide an empty block, you will not be able to change its configurat
 msgstr "Jeśli ukryjesz pusty blok, nie będziesz w stanie zmienić jego konfiguracji do momentu gdy pojawi się w nim zawartość i stanie się widoczny."
 
 #: admin_site_config.php:185
-#, fuzzy
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr "W przypadku wybrania innego katalogu, należy również przenieść wszystkie pliki (oprócz plików config.ini.php, index.php i .htaccess) z istniejącego katalogu do nowo wybranego katalogu."
 
@@ -7711,7 +7727,8 @@ msgid "Installation folder"
 msgstr "Katalog instalacji"
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:197 app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:197
+#: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
 msgstr "Interaktywne drzewo"
 
@@ -9019,9 +9036,9 @@ msgstr "Medford, Oregon, Stany Zjednoczone"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
-#: admin.php:758 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1446
-#: app/Module/MediaTabModule.php:35 app/Theme/AdministrationTheme.php:177
-#: inverselink.php:70
+#: admin.php:758 admin_media.php:692
+#: app/Functions/FunctionsPrintLists.php:1446 app/Module/MediaTabModule.php:35
+#: app/Theme/AdministrationTheme.php:177 inverselink.php:70
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:74
 msgid "Media"
 msgstr "Multimedia"
@@ -9319,9 +9336,9 @@ msgstr "Moduł"
 #: app/Module/FrequentlyAskedQuestionsModule.php:442
 #: app/Module/GoogleMapsModule.php:297 app/Module/GoogleMapsModule.php:1516
 #: app/Module/GoogleMapsModule.php:3830
-#: app/Module/RelationshipsChartModule.php:148 app/Module/SiteMapModule.php:297
-#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
-#: app/Theme/AdministrationTheme.php:190
+#: app/Module/RelationshipsChartModule.php:148
+#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
+#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr "Administracja modułami"
 
@@ -10122,8 +10139,9 @@ msgid "Not verified by the user"
 msgstr "Niepotwierdzeni przez użytkownika"
 
 #. I18N: gedcom tag NOTE
-#: app/Controller/FamilyController.php:147 app/Functions/FunctionsPrint.php:173
-#: app/GedcomTag.php:638 modules_v3/cemetery_report/report.xml:64
+#: app/Controller/FamilyController.php:147
+#: app/Functions/FunctionsPrint.php:173 app/GedcomTag.php:638
+#: modules_v3/cemetery_report/report.xml:64
 #: modules_v3/family_group_report/report.xml:485
 #: modules_v3/family_group_report/report.xml:749
 #: modules_v3/family_group_report/report.xml:1101
@@ -10216,7 +10234,7 @@ msgstr "Liczba pokoleń"
 #. I18N: ... to show in a list
 #: app/Module/TopGivenNamesModule.php:146
 msgid "Number of given names"
-msgstr ""
+msgstr "Liczba imion"
 
 #: app/Module/FamilyTreeNewsModule.php:202
 msgid "Number of items"
@@ -10234,13 +10252,13 @@ msgstr "Liczba miesięcy od ostatniego logowania do uznania konta za nieaktywne:
 #. I18N: ... to show in a list
 #: app/Module/TopPageViewsModule.php:159
 msgid "Number of pages"
-msgstr ""
+msgstr "Liczba stron"
 
 #. I18N: ... to show in a list
 #: app/Module/FamilyTreeStatisticsModule.php:439
 #: app/Module/TopSurnamesModule.php:157
 msgid "Number of surnames"
-msgstr ""
+msgstr "Liczba nazwisk"
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
@@ -10542,7 +10560,8 @@ msgstr "Limit czasu PHP"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -11190,7 +11209,6 @@ msgstr "Ograniczenia prywatności - stosuje się do tych faktów i wpisów, któ
 #: app/Module/GoogleMapsModule.php:832 app/Note.php:71
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1470 app/Stats.php:2975 expand_view.php:33
-#, fuzzy
 msgid "Private"
 msgstr "Prywatne"
 
@@ -11384,8 +11402,9 @@ msgstr "ramadan"
 msgid "Random images from the current family tree."
 msgstr "Losowe zdjęcia z bieżącego drzewa genealogicznego."
 
-#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1803 edit_interface.php:1877
+#: app/Controller/FamilyController.php:88
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1803
+#: edit_interface.php:1877
 msgid "Re-order children"
 msgstr "Uporządkuj dzieci"
 
@@ -11408,7 +11427,8 @@ msgid "Real name"
 msgstr "Imię i nazwisko"
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr "Ostatnie zmiany"
 
@@ -11424,7 +11444,8 @@ msgstr "Recife, Brazylia"
 #: admin_site_change.php:328 admin_site_change.php:389
 #: admin_trees_config.php:530 app/Functions/FunctionsPrintLists.php:1801
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:321 app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:321
+#: app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -13796,8 +13817,8 @@ msgstr "Katalog %s nie może być usunięty."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:291
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:291
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Katalog %s nie istnieje i nie może zostać utworzony."
@@ -14170,8 +14191,8 @@ msgstr "Nie ma żadnych prac badawczych w tym drzewie genealogicznym."
 msgid "There are no source citations for this individual."
 msgstr "Brak źródeł powiązanych z tą osobą."
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1961
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1961
 msgid "There are pending changes for you to moderate."
 msgstr "Są zmiany oczekujące na przejrzenie."
 
@@ -14409,7 +14430,6 @@ msgid "This is the initial value for the “show details” option on the charts
 msgstr "Jest to początkowe ustawienie dla opcji „Pokaż szczegóły” na diagramach."
 
 #: admin.php:615 admin_site_upgrade.php:66
-#, fuzzy
 msgid "This is the latest version of webtrees. No upgrade is available."
 msgstr "Używasz aktualnej wersji webtrees. Brak dostępnej aktualizacji."
 
@@ -14484,9 +14504,8 @@ msgid "This is the width (in pixels) that the program will use when automaticall
 msgstr "To jest szerokość (w pikselach), którą system zastosuje podczas automatycznego generowania miniaturek. Domyślna wartość to 100."
 
 #: admin_users.php:318 edituser.php:176 login.php:420 setup.php:428
-#, fuzzy
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr "To jest imię i nazwisko jakie ma być wyświetlane na ekranie."
+msgstr "To jest imię i nazwisko, które ma być wyświetlane na ekranie."
 
 #: admin_trees_check.php:135
 msgid "This may be a mistake in your data."
@@ -15103,7 +15122,8 @@ msgstr "Liczba imion"
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:88
-#: modules_v3/death_report/report.xml:99 modules_v3/fact_sources/report.xml:142
+#: modules_v3/death_report/report.xml:99
+#: modules_v3/fact_sources/report.xml:142
 #: modules_v3/fact_sources/report.xml:146
 #: modules_v3/fact_sources/report.xml:305
 #: modules_v3/fact_sources/report.xml:309
@@ -15241,11 +15261,11 @@ msgstr "Typ"
 
 #: app/GedcomTag.php:434
 msgid "Type of event"
-msgstr ""
+msgstr "Typ wydarzenia"
 
 #: app/GedcomTag.php:440
 msgid "Type of fact"
-msgstr ""
+msgstr "Typ faktu"
 
 #: app/Module/GoogleMapsModule.php:495
 msgid "Type of place markers in the place hierarchy"
@@ -15309,7 +15329,6 @@ msgid "Unable to connect using this username and password. Your server gave the 
 msgstr "Nie można połączyć się przy użyciu tych ustawień. Serwer zwrócił następujący błąd."
 
 #: admin_trees_config.php:678
-#, fuzzy
 msgid "Unable to find record with ID"
 msgstr "Nie znaleziono wpisu o tym identyfikatorze"
 
@@ -15968,7 +15987,8 @@ msgstr "Opcja wgrywania nowych plików multimedialnych"
 msgid "Who is online"
 msgstr "Kto jest na stronie"
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr "Tylko całe wyrazy"
 
@@ -16136,7 +16156,7 @@ msgstr "Można ustawić większe lub mniejsze ograniczenia, chociaż serwer moż
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: admin_trees_config.php:504
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it.  If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr ""
+msgstr "Można ustawić prawa dostępu do konkretnego rekordu, faktu, lub wydarzenia, dodając do niego ograniczenia. Jeśli rekord, fakt, czy wydarzenie nie ma ograniczeń, stosowane będą domyślne ograniczenia dostępu."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
@@ -16732,14 +16752,15 @@ msgstr "dzieci"
 #. I18N: A button label.
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:740
-#: app/Module/GoogleMapsModule.php:3754 app/Theme/AbstractTheme.php:700
-#: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1746
-#: edit_interface.php:1855 edit_interface.php:2048 edit_interface.php:2211
-#: edit_interface.php:2597 find.php:766 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189
+#: app/Module/GoogleMapsModule.php:740 app/Module/GoogleMapsModule.php:3754
+#: app/Theme/AbstractTheme.php:700 edit_changes.php:240 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1746 edit_interface.php:1855 edit_interface.php:2048
+#: edit_interface.php:2211 edit_interface.php:2597 find.php:766
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "Zamknij"
@@ -19247,7 +19268,8 @@ msgstr "ilościowa"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19423,20 +19445,21 @@ msgstr "robot"
 #. I18N: A button label.
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:262
-#: admin_site_access.php:307 admin_site_config.php:652 admin_site_merge.php:340
-#: admin_trees_config.php:2205 admin_users.php:673
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129
+#: admin_modules.php:262 admin_site_access.php:307 admin_site_config.php:652
+#: admin_site_merge.php:340 admin_trees_config.php:2205 admin_users.php:673
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:526 app/Module/GoogleMapsModule.php:739
 #: app/Module/GoogleMapsModule.php:2623 app/Module/GoogleMapsModule.php:3753
-#: app/Module/RelationshipsChartModule.php:173 app/Module/SiteMapModule.php:320
-#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
-#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1745 edit_interface.php:1853 edit_interface.php:2047
-#: edit_interface.php:2209 edit_interface.php:2593 editnews.php:74
-#: edituser.php:317 find.php:543 index_edit.php:376
+#: app/Module/RelationshipsChartModule.php:173
+#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
+#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
+#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
+#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
+#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1745
+#: edit_interface.php:1853 edit_interface.php:2047 edit_interface.php:2209
+#: edit_interface.php:2593 editnews.php:74 edituser.php:317 find.php:543
+#: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:190
 msgid "save"
