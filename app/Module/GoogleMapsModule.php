@@ -1945,49 +1945,59 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		foreach ($facts as $fact) {
 			$index = 'ID' . $fact->getPlace()->getPlaceId();
 			if (!array_key_exists($index, $unique_places)) {
-				$unique_places[$index] = array();
+				// Set some default values that will be overwritten if map locations exist
+				$unique_places[$index] = array(
+					'class'        => 'optionbox',
+					'place'        => $fact->getPlace()->getFullName(),
+					'tooltip'      => I18N::translate('%s has no map co-ordinates', $fact->getPlace()->getGedcomName()),
+					'lat'          => 0,
+					'lng'          => 0,
+					'pl_icon'      => '',
+					'sv_bearing'   => '0',
+					'sv_elevation' => '0',
+					'sv_lati'      => '0',
+					'sv_long'      => '0',
+					'sv_zoom'      => '0',
+					'events'       => '',
+				);
 			}
 			$ctla = preg_match("/\d LATI (.*)/", $fact->getGedcom(), $match1);
 			$ctlo = preg_match("/\d LONG (.*)/", $fact->getGedcom(), $match2);
 
 			// If co-ordinates are stored in the GEDCOM then use them
 			if ($ctla && $ctlo) {
-				if (empty($unique_places[$index])) {
+				$unique_places[$index] = array(
+					'class'        => 'optionbox',
+					'place'        => $fact->getPlace()->getFullName(),
+					'tooltip'      => $fact->getPlace()->getGedcomName(),
+					'lat'          => strtr($match1[1], array('N' => '', 'S' => '-', ',' => '.')),
+					'lng'          => strtr($match2[1], array('E' => '', 'W' => '-', ',' => '.')),
+					'pl_icon'      => '',
+					'sv_bearing'   => '0',
+					'sv_elevation' => '0',
+					'sv_lati'      => '0',
+					'sv_long'      => '0',
+					'sv_zoom'      => '0',
+					'events'       => '',
+				);
+			} else {
+				$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
+				if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
 					$unique_places[$index] = array(
 						'class'        => 'optionbox',
 						'place'        => $fact->getPlace()->getFullName(),
 						'tooltip'      => $fact->getPlace()->getGedcomName(),
-						'lat'          => strtr($match1[1], array('N' => '', 'S' => '-', ',' => '.')),
-						'lng'          => strtr($match2[1], array('E' => '', 'W' => '-', ',' => '.')),
-						'pl_icon'      => '',
-						'sv_bearing'   => '0',
-						'sv_elevation' => '0',
-						'sv_lati'      => '0',
-						'sv_long'      => '0',
-						'sv_zoom'      => '0',
+						'lat'          => strtr($latlongval->pl_lati, array('N' => '', 'S' => '-', ',' => '.')),
+						'lng'          => strtr($latlongval->pl_long, array('E' => '', 'W' => '-', ',' => '.')),
+						'pl_icon'      => $latlongval->pl_icon,
+						'sv_bearing'   => $latlongval->sv_bearing,
+						'sv_elevation' => $latlongval->sv_elevation,
+						'sv_lati'      => $latlongval->sv_lati,
+						'sv_long'      => $latlongval->sv_long,
+						'sv_zoom'      => $latlongval->sv_zoom,
 						'events'       => '',
 					);
-				}
-			} else {
-				$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
-				if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
-					if (empty($unique_places[$index])) {
-						$unique_places[$index] = array(
-							'class'        => 'optionbox',
-							'place'        => $fact->getPlace()->getFullName(),
-							'tooltip'      => $fact->getPlace()->getGedcomName(),
-							'lat'          => strtr($latlongval->pl_lati, array('N' => '', 'S' => '-', ',' => '.')),
-							'lng'          => strtr($latlongval->pl_long, array('E' => '', 'W' => '-', ',' => '.')),
-							'pl_icon'      => $latlongval->pl_icon,
-							'sv_bearing'   => $latlongval->sv_bearing,
-							'sv_elevation' => $latlongval->sv_elevation,
-							'sv_lati'      => $latlongval->sv_lati,
-							'sv_long'      => $latlongval->sv_long,
-							'sv_zoom'      => $latlongval->sv_zoom,
-							'events'       => '',
-						);
-					}
-					$GM_MAX_ZOOM = min($GM_MAX_ZOOM, $latlongval->pl_zoom);
+					$GM_MAX_ZOOM           = min($GM_MAX_ZOOM, $latlongval->pl_zoom);
 				}
 			}
 
