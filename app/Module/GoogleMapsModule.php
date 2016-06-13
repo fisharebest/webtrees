@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Controller\ChartController;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Controller\SimpleController;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
@@ -187,6 +188,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$html .= '<div style="text-align: center;"><a href="module.php?mod=googlemap&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a></div>';
 			}
 		}
+
 		return $html;
 	}
 
@@ -1860,10 +1862,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
-	 * @param \Fisharebest\Webtrees\Fact $fact
+	 * @param Fact $fact
+	 *
 	 * @return array
 	 */
-	private function getPlaceData($fact) {
+	private function getPlaceData(Fact $fact) {
 
 		$result = array();
 
@@ -1914,6 +1917,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				);
 			}
 		}
+
 		return $result;
 	}
 
@@ -1948,13 +1952,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		foreach ($facts as $fact) {
 
-			$placeData = $this->getPlaceData($fact);
+			$place_data = $this->getPlaceData($fact);
 
-			if (!empty($placeData)) {
-				$index = $placeData['index'];
+			if (!empty($place_data)) {
+				$index = $place_data['index'];
 
-				if ($placeData['mapdata']['pl_zoom']) {
-					$GM_MAX_ZOOM = min($GM_MAX_ZOOM, $placeData['mapdata']['pl_zoom']);
+				if ($place_data['mapdata']['pl_zoom']) {
+					$GM_MAX_ZOOM = min($GM_MAX_ZOOM, $place_data['mapdata']['pl_zoom']);
 				}
 				// Produce the html for the sidebar
 				$parent = $fact->getParent();
@@ -1981,7 +1985,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 
 				if (empty($unique_places[$index])) {
-					$unique_places[$index] = $placeData['mapdata'];
+					$unique_places[$index] = $place_data['mapdata'];
 				}
 				$unique_places[$index]['events'] .= $evtStr;
 				$events[] = array(
@@ -2062,7 +2066,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					type:  "poly"
 				};
 
-				function getMarkerImage(iconColor){
+				function getMarkerImage(iconColor) {
 					if (typeof(iconColor) === 'undefined' || iconColor === null) {
 						iconColor = 'red';
 					}
@@ -2083,7 +2087,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				var placer   = null;
 
 				// A function to create the marker and set up the event window
-				function createMarker(latlng, html, tooltip, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon){
+				function createMarker(latlng, html, tooltip, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
 					var contentString = '<div id="iwcontent">' + html + '</div>';
 
 					// Use flag icon (if defined) instead of regular marker icon
@@ -2144,7 +2148,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					gmarkers.push(marker);
 
 					// Open infowindow when marker is clicked
-					google.maps.event.addListener(marker, 'click', function(){
+					google.maps.event.addListener(marker, 'click', function() {
 						infowindow.close();
 						infowindow.setContent(contentString);
 						infowindow.open(map, marker);
@@ -2162,9 +2166,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						};
 
 						// Use jquery for info window tabs
-						google.maps.event.addListener(infowindow, 'domready', function(){
+						google.maps.event.addListener(infowindow, 'domready', function() {
 							//jQuery code here
-							jQuery('#EV').click(function(){
+							jQuery('#EV').click(function() {
 								document.tabLayerEV                     = document.getElementById("EV");
 								document.tabLayerEV.style.background    = '#ffffff';
 								document.tabLayerEV.style.paddingBottom = '1px';
@@ -2181,7 +2185,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								<?php } ?>
 							});
 
-							jQuery('#SV').click(function(){
+							jQuery('#SV').click(function() {
 								document.tabLayerEV                     = document.getElementById("EV");
 								document.tabLayerEV.style.background    = '#cccccc';
 								document.tabLayerEV.style.paddingBottom = '0px';
@@ -2197,10 +2201,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								document.panelLayer2.style.display = 'block';
 								<?php } ?>
 								var panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
-								setTimeout(function(){
+								setTimeout(function() {
 									panorama.setVisible(true);
 								}, 100);
-								setTimeout(function(){
+								setTimeout(function() {
 									panorama.setVisible(true);
 								}, 500);
 							});
@@ -2209,7 +2213,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 
 				// Opens Marker infowindow when corresponding Sidebar item is clicked
-				function openInfowindow(i){
+				function openInfowindow(i) {
 					infowindow.close();
 					google.maps.event.trigger(gmarkers[i], 'click');
 					return false;
@@ -2218,7 +2222,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				// Home control
 				// returns the user to the original map position ... loadMap() function
 				// This constructor takes the control DIV as an argument.
-				function HomeControl(controlDiv, map){
+				function HomeControl(controlDiv, map) {
 					// Set CSS styles for the DIV containing the control
 					// Setting padding to 5 px will offset the control from the edge of the map
 					controlDiv.style.paddingTop   = '5px';
@@ -2244,12 +2248,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					controlUI.appendChild(controlText);
 
 					// Setup the click event listeners: simply set the map to original LatLng
-					google.maps.event.addDomListener(controlUI, 'click', function(){
+					google.maps.event.addDomListener(controlUI, 'click', function() {
 						loadMap();
 					});
 				}
 
-				function loadMap(){
+				function loadMap() {
 					// Create the map and mapOptions
 					var mapOptions = {
 						zoom:                     7,
@@ -2269,7 +2273,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					map            = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
 
 					// Close any infowindow when map is clicked
-					google.maps.event.addListener(map, 'click', function(){
+					google.maps.event.addListener(map, 'click', function() {
 						infowindow.close();
 					});
 
@@ -2287,7 +2291,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					// Set the Marker bounds
 					var bounds = new google.maps.LatLngBounds();
 
-					jQuery.each(locations, function(index, location){
+					jQuery.each(locations, function(index, location) {
 
 						var html     =
 							    '<div class="infowindow">' +
@@ -2334,7 +2338,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							bounds.extend(myLatLng);
 							map.fitBounds(bounds);
 							// Correct zoom level when multiple markers have the same coordinates
-							var listener1 = google.maps.event.addListenerOnce(map, "idle", function(){
+							var listener1 = google.maps.event.addListenerOnce(map, "idle", function() {
 								if (map.getZoom() > zoomLevel) {
 									map.setZoom(zoomLevel);
 								}
@@ -2351,6 +2355,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		} else {
 			$html = '';
 		}
+
 		return $html;
 	}
 
