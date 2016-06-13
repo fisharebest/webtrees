@@ -927,7 +927,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		global $PEDIGREE_GENERATIONS;
 
 		// The HomeControl returns the map to the original position and style
-		$js = 'function HomeControl(controlDiv, pm_map) {' .
+		$js = 'var oneplace = false;
+			function HomeControl(controlDiv, pm_map) {' .
 			// Set CSS styles for the DIV containing the control
 			// Setting padding to 5 px will offset the control from the edge of the map
 			'controlDiv.style.paddingTop = "5px";
@@ -955,28 +956,23 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			// Setup the click event listeners: simply set the map to original LatLng
 			'google.maps.event.addDomListener(controlUI, "click", function() {
 				pm_map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
-				pm_map.fitBounds(bounds),
-				pm_map.setCenter(bounds.getCenter()),
-				infowindow.close()
-				if (document.getElementById(lastlinkid) != null) {
-					document.getElementById(lastlinkid).className = "person_box:target";
+				if (oneplace) {
+					pm_map.setZoom(12);
+				} else {
+					pm_map.fitBounds(bounds);
 				}
+				pm_map.setCenter(bounds.getCenter());
+				lastlinkid=null;
+				jQuery(".link").removeClass("person_box link_visited");
+				infowindow.close();
 			});
-		}' .
-		// This function picks up the click and opens the corresponding info window
-		'function myclick(i) {
-			if (document.getElementById(lastlinkid) != null) {
-				document.getElementById(lastlinkid).className = "person_box:target";
-			}
-			google.maps.event.trigger(gmarkers[i], "click");
-			return false;
 		}' .
 		// this variable will collect the html which will eventually be placed in the side_bar
 		'var side_bar_html = "";' .
 		// arrays to hold copies of the markers and html used by the side_bar
 		// because the function closure trick doesnt work there
 		'var gmarkers = [];
-		var i = 0;
+		var index = 0;
 		var lastlinkid;
 		var infowindow = new google.maps.InfoWindow({});' .
 		// === Create an associative array of GIcons()
@@ -1248,24 +1244,31 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				shadow:   gicons[icontype].shadow,
 				map:      pm_map,
 				position: point,
+				id:       index,
 				zIndex:   0
 			});
-			var linkid = "link"+i;
 			google.maps.event.addListener(marker, "click", function() {
 				infowindow.close();
 				infowindow.setContent(contentString);
 				infowindow.open(pm_map, marker);
-				document.getElementById(linkid).className = "person_box";
-				if (document.getElementById(lastlinkid) != null) {
-					document.getElementById(lastlinkid).className = "person_box:target";
+				var el = jQuery("#link_" + marker.id);
+				if(el.hasClass("person_box")) {
+					el
+						.removeClass("person_box")
+						.addClass("link_visited");
+					infowindow.close();
+				} else {
+					el
+					.addClass("person_box")
+					.removeClass("link_visited");
 				}
-				lastlinkid=linkid;
+				var anchor = infowindow.getAnchor();
+				lastlinkid = anchor ? anchor.id : null;
 			});' .
 			// save the info we need to use later for the side_bar
-			'gmarkers[i] = marker;' .
+			'gmarkers[index] = marker;' .
 			// add a line to the side_bar html
-			'side_bar_html += "<br><div id=\'"+linkid+"\' onclick=\'return myclick(" + i + ")\'>" + html +"<br></div>";
-			i++;
+			'side_bar_html += "<div id=\'link_" + index++ + "\' class=\'link\'>" + html +"</div>";
 			return marker;
 		};' .
 		// create the map
@@ -1285,10 +1288,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		};
 		var pm_map = new google.maps.Map(document.getElementById("pm_map"), myOptions);
 		google.maps.event.addListener(pm_map, "click", function() {
-			if (document.getElementById(lastlinkid) != null) {
-				document.getElementById(lastlinkid).className = "person_box:target";
-			}
-		infowindow.close();
+			jQuery(".link.person_box")
+				.removeClass("person_box")
+				.addClass("link_visited");
+			infowindow.close();
+			lastlinkid = null;
 		});' .
 		// Create the DIV to hold the control and call HomeControl() passing in this DIV. --
 		'var homeControlDiv = document.createElement("DIV");
@@ -1337,8 +1341,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				// end of add image
 
 				$birth     = $person->getFirstFact('BIRT');
-				$dataleft  = Filter::escapeJs($image . $event . ' — ' . $name);
-				$datamid   = Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">(' . I18N::translate('View the individual') . ')</a></span>');
+				$dataleft  = Filter::escapeJs($image);
+				$datamid   = Filter::escapeJs($event . ' <span><a href="' . $person->getHtmlUrl() . '">' . $name . '</a></span>');
 				$dataright = $birth ? Filter::escapeJs($birth->summary()) : '';
 
 				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
@@ -1375,7 +1379,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						}
 
 						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
-						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","<div>' . $dataleft . $datamid . $dataright . '</div>", "';
+						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","' . $dataleft . '<div class=\"relation\">' . $datamid . $dataright . '</div>", "';
 						$js .= '<div class=\"iwstyle\">';
 						$js .= '<a href=\"module.php?ged=' . $person->getTree()->getNameUrl() . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $person->getXref() . '&amp;PEDIGREE_GENERATIONS=' . $PEDIGREE_GENERATIONS;
 						$js .= '\" title=\"' . I18N::translate('Pedigree map') . '\">' . $dataleft . '</a>' . $datamid . $dataright . '</div>", "' . $marker_number . '");';
@@ -1401,7 +1405,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						// Extend and fit marker bounds
 
 						$js .= 'bounds.extend(point);';
-						$js .= 'pm_map.fitBounds(bounds);';
 						$count++;
 					}
 				}
@@ -1409,13 +1412,35 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$latlongval[$i] = null;
 			}
 		}
-		$js .= 'pm_map.setCenter(bounds.getCenter());' .
+		$js .= 'oneplace=' . json_encode(count(array_unique($lat)) == 1 && count(array_unique($lon)) == 1) . ';';
+		$js .= 'if (oneplace) {
+			// Only have one location so adjust zoom
+			pm_map.setZoom(12);
+		} else {
+			pm_map.fitBounds(bounds);
+		}
+		pm_map.setCenter(bounds.getCenter());' .
 		// Close the sidebar highlight when the infowindow is closed
 		'google.maps.event.addListener(infowindow, "closeclick", function() {
-			document.getElementById(lastlinkid).className = "person_box:target";
+			jQuery("#link_"+lastlinkid).toggleClass("link_visited person_box ");
+			lastlinkid = null;
 		});' .
 		// put the assembled side_bar_html contents into the side_bar div
 		'document.getElementById("side_bar").innerHTML = side_bar_html;';
+
+		$js .= 'jQuery(".relation")
+					.on("click", "a", function(e) {
+						e.stopPropagation();
+					})' .
+					'.on("click", function(e) {
+						if (lastlinkid != null) {
+							jQuery("#link_" + lastlinkid).toggleClass("person_box link_visited");
+						}
+						var el = jQuery(this).closest(".link");
+						var target = el.attr("id").split("_").pop();
+						google.maps.event.trigger(gmarkers[target], "click");
+					});
+		';
 
 		return $js;
 	}
@@ -1874,12 +1899,17 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		// If co-ordinates are stored in the GEDCOM then use them
 		if ($has_latitude && $has_longitude) {
+			if ($fact->getAttribute('ADDR') !== null) {
+				$tooltip = $fact->getAttribute('ADDR') . I18N::$list_separator . $fact->getPlace()->getGedcomName();
+			} else {
+				$tooltip = $fact->getPlace()->getGedcomName() . ' ' . I18N::translate('(Latitude: %s, Longitude: %s)', $match1[1], $match2[1]);
+			}
 			$result = array(
 				'index'   => 'ID' . $match1[1] . $match2[1],
 				'mapdata' => array(
 					'class'        => 'optionbox',
-					'place'        => $fact->getPlace()->getFullName(),
-					'tooltip'      => $fact->getPlace()->getGedcomName(),
+					'place'        => '<span dir="auto">' . $tooltip . '</span>',
+					'tooltip'      => $tooltip,
 					'lat'          => strtr($match1[1], array('N' => '', 'S' => '-', ',' => '.')),
 					'lng'          => strtr($match2[1], array('E' => '', 'W' => '-', ',' => '.')),
 					'pl_icon'      => '',

@@ -248,6 +248,10 @@ ul.tabs a.current {
 	color: #f00;
 }
 
+.list_table {
+	width: 500px;
+}
+
 .optionbox #gname {
 	white-space: normal;
 }
@@ -261,6 +265,22 @@ ul.tabs a.current {
 	font-size: 0.85em;
 	overflow-x: hidden;
 	overflow-y: auto;
+}
+
+.link {
+	min-height: 50px;
+	margin: 5px 0;
+	padding: 0!important;
+	border: 1px solid transparent;
+}
+
+.link_visited {
+	background-color: #ffc;
+	border: 1px solid #ffdd00;
+}
+
+#side_bar .relation {
+	cursor: pointer;
 }
 
 #side_bar .gallery img,
@@ -301,10 +321,6 @@ ul.tabs a.current {
 
 #pedigreemap_chart {
 	margin: 20px;
-}
-
-#side_bar .NAME {
-	padding-left: 5px;
 }
 
 #side_bar img {
