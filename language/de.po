@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-12 13:08+0000\n"
+"PO-Revision-Date: 2016-06-13 05:48+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -3806,17 +3806,17 @@ msgstr "standesamtliche Ehe"
 
 #: app/GedcomCode/GedcomCodeRela.php:98
 msgid "Civil registrar"
-msgstr "Standesbeamter"
+msgstr "Standesbeamter (Trauung)"
 
 #: app/GedcomCode/GedcomCodeRela.php:96
 msgctxt "FEMALE"
 msgid "Civil registrar"
-msgstr "Standesbeamtin"
+msgstr "Standesbeamtin (Trauung)"
 
 #: app/GedcomCode/GedcomCodeRela.php:94
 msgctxt "MALE"
 msgid "Civil registrar"
-msgstr "Standesbeamter"
+msgstr "Standesbeamter (Trauung)"
 
 #. I18N: The “Data folder” is a configuration setting
 #. I18N: Menu entry
@@ -11458,17 +11458,17 @@ msgstr "eingetragene Lebenspartnerschaft"
 
 #: app/GedcomCode/GedcomCodeRela.php:227
 msgid "Registry officer"
-msgstr "Standesbeamter"
+msgstr "Standesbeamter (Beurkundung)"
 
 #: app/GedcomCode/GedcomCodeRela.php:225
 msgctxt "FEMALE"
 msgid "Registry officer"
-msgstr "Standesbeamtin"
+msgstr "Standesbeamtin (Beurkundung)"
 
 #: app/GedcomCode/GedcomCodeRela.php:223
 msgctxt "MALE"
 msgid "Registry officer"
-msgstr "Standesbeamter"
+msgstr "Standesbeamter (Beurkundung)"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:165
 msgid "Regular expression"
