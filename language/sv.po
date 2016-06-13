@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-12 21:50+0000\n"
+"PO-Revision-Date: 2016-06-13 10:16+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
@@ -1112,7 +1112,7 @@ msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:327
 msgid "API key"
-msgstr ""
+msgstr "API-nyckel"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:77
@@ -6860,7 +6860,7 @@ msgstr "Germinal"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:333
 msgid "Get an API key from Google."
-msgstr ""
+msgstr "Få en API-nyckel från Google."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6765
@@ -6944,7 +6944,7 @@ msgstr "Google Street View™"
 
 #: app/Module/GoogleMapsModule.php:331
 msgid "Google allows a small number of anonymous map requests per day.  If you need more than this, you will need a Google account and an API key."
-msgstr ""
+msgstr "Google tillåter ett litet antal anonyma kart förfrågningar per dag. Om du behöver mer än detta, behöver du ett Google-konto och en API-nyckel."
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:508
@@ -10201,7 +10201,7 @@ msgstr "Antal generationer"
 #. I18N: ... to show in a list
 #: app/Module/TopGivenNamesModule.php:146
 msgid "Number of given names"
-msgstr ""
+msgstr "Antal förnamn"
 
 #: app/Module/FamilyTreeNewsModule.php:202
 msgid "Number of items"
@@ -10219,13 +10219,13 @@ msgstr "Antal månader sedan senaste inloggning innan ett användarkonto anses i
 #. I18N: ... to show in a list
 #: app/Module/TopPageViewsModule.php:159
 msgid "Number of pages"
-msgstr ""
+msgstr "Antal sidor"
 
 #. I18N: ... to show in a list
 #: app/Module/FamilyTreeStatisticsModule.php:439
 #: app/Module/TopSurnamesModule.php:157
 msgid "Number of surnames"
-msgstr ""
+msgstr "Antal efternamn"
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
@@ -15222,11 +15222,11 @@ msgstr "Typ"
 
 #: app/GedcomTag.php:434
 msgid "Type of event"
-msgstr ""
+msgstr "Händelsetyp"
 
 #: app/GedcomTag.php:440
 msgid "Type of fact"
-msgstr ""
+msgstr "Faktumtyp"
 
 #: app/Module/GoogleMapsModule.php:495
 msgid "Type of place markers in the place hierarchy"
@@ -16116,7 +16116,7 @@ msgstr "Du kan begära ett högre eller lägre gränsvärde, men servern kanske 
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: admin_trees_config.php:504
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it.  If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr ""
+msgstr "Du kan ställa in åtkomst för vissa post, faktum eller händelse genom att lägga till en begränsning till dem. Om en post, faktum eller händelse inte har en begränsning, kommer följande standard begränsningar att användas."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
