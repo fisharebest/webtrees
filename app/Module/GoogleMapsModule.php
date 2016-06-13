@@ -1375,10 +1375,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						}
 
 						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
-						$js .= "var marker = createMarker(point, \"" . Filter::escapeJs($name) . "\",\"<div>" . $dataleft . $datamid . $dataright . "</div>\", \"";
-						$js .= "<div class='iwstyle'>";
-						$js .= "<a href='module.php?ged=" . $person->getTree()->getNameUrl() . "&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
-						$js .= "' title='" . I18N::translate('Pedigree map') . "'>" . $dataleft . "</a>" . $datamid . $dataright . "</div>\", \"" . $marker_number . "\");";
+						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","<div>' . $dataleft . $datamid . $dataright . '</div>", "';
+						$js .= '<div class="iwstyle">';
+						$js .= '<a href="module.php?ged=' . $person->getTree()->getNameUrl() . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $person->getXref() . '&amp;PEDIGREE_GENERATIONS=' . $PEDIGREE_GENERATIONS;
+						$js .= '" title="' . I18N::translate('Pedigree map') . '">' . $dataleft . '</a>' . $datamid . $dataright . '</div>", "' . $marker_number . '");';
 						// Construct the polygon lines
 						$to_child = (intval(($i - 1) / 2)); // Draw a line from parent to child
 						if (array_key_exists($to_child, $lat) && $lat[$to_child] != 0 && $lon[$to_child] != 0) {
@@ -1867,53 +1867,51 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return array
 	 */
 	private function getPlaceData(Fact $fact) {
-
 		$result = array();
 
-		$ctla = preg_match("/\d LATI (.*)/", $fact->getGedcom(), $match1);
-		$ctlo = preg_match("/\d LONG (.*)/", $fact->getGedcom(), $match2);
+		$has_latitude  = preg_match('/\n4 LATI (.+)/', $fact->getGedcom(), $match1);
+		$has_longitude = preg_match('/\n4 LONG (.+)/', $fact->getGedcom(), $match2);
 
 		// If co-ordinates are stored in the GEDCOM then use them
-		if ($ctla && $ctlo) {
-			if ($fact->getAttribute('ADDR') !== null) {
-				$tooltip = $fact->getAttribute('ADDR') . I18N::$list_separator . $fact->getPlace()->getGedcomName();
-			} else {
-				$tooltip = $fact->getPlace()->getGedcomName() . ' ' . I18N::translate('(Latitude: %s, Longitude: %s)', $match1[1], $match2[1]);
-			}
-			$result['index']   = 'ID' . $match1[1] . $match2[1];
-			$result['mapdata'] = array(
-				'class'        => 'optionbox',
-				'place'        => '<span dir="auto">' . $tooltip . '</span>',
-				'tooltip'      => $tooltip,
-				'lat'          => strtr($match1[1], array('N' => '', 'S' => '-', ',' => '.')),
-				'lng'          => strtr($match2[1], array('E' => '', 'W' => '-', ',' => '.')),
-				'pl_icon'      => '',
-				'pl_zoom'      => '0',
-				'sv_bearing'   => '0',
-				'sv_elevation' => '0',
-				'sv_lati'      => '0',
-				'sv_long'      => '0',
-				'sv_zoom'      => '0',
-				'events'       => '',
-			);
-		} else {
-			$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
-			if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
-				$result['index']   = 'ID' . $latlongval->pl_lati . $latlongval->pl_long;
-				$result['mapdata'] = array(
+		if ($has_latitude && $has_longitude) {
+			$result = array(
+				'index'   => 'ID' . $match1[1] . $match2[1],
+				'mapdata' => array(
 					'class'        => 'optionbox',
 					'place'        => $fact->getPlace()->getFullName(),
 					'tooltip'      => $fact->getPlace()->getGedcomName(),
-					'lat'          => strtr($latlongval->pl_lati, array('N' => '', 'S' => '-', ',' => '.')),
-					'lng'          => strtr($latlongval->pl_long, array('E' => '', 'W' => '-', ',' => '.')),
-					'pl_icon'      => $latlongval->pl_icon,
-					'pl_zoom'      => $latlongval->pl_zoom,
-					'sv_bearing'   => $latlongval->sv_bearing,
-					'sv_elevation' => $latlongval->sv_elevation,
-					'sv_lati'      => $latlongval->sv_lati,
-					'sv_long'      => $latlongval->sv_long,
-					'sv_zoom'      => $latlongval->sv_zoom,
+					'lat'          => strtr($match1[1], array('N' => '', 'S' => '-', ',' => '.')),
+					'lng'          => strtr($match2[1], array('E' => '', 'W' => '-', ',' => '.')),
+					'pl_icon'      => '',
+					'pl_zoom'      => '0',
+					'sv_bearing'   => '0',
+					'sv_elevation' => '0',
+					'sv_lati'      => '0',
+					'sv_long'      => '0',
+					'sv_zoom'      => '0',
 					'events'       => '',
+				),
+			);
+		} else {
+			$place_location = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
+			if ($place_location && $place_location->pl_lati && $place_location->pl_long) {
+				$result = array(
+					'index'   => 'ID' . $place_location->pl_lati . $place_location->pl_long,
+					'mapdata' => array(
+						'class'        => 'optionbox',
+						'place'        => $fact->getPlace()->getFullName(),
+						'tooltip'      => $fact->getPlace()->getGedcomName(),
+						'lat'          => strtr($place_location->pl_lati, array('N' => '', 'S' => '-', ',' => '.')),
+						'lng'          => strtr($place_location->pl_long, array('E' => '', 'W' => '-', ',' => '.')),
+						'pl_icon'      => $place_location->pl_icon,
+						'pl_zoom'      => $place_location->pl_zoom,
+						'sv_bearing'   => $place_location->sv_bearing,
+						'sv_elevation' => $place_location->sv_elevation,
+						'sv_lati'      => $place_location->sv_lati,
+						'sv_long'      => $place_location->sv_long,
+						'sv_zoom'      => $place_location->sv_zoom,
+						'events'       => '',
+					),
 				);
 			}
 		}
@@ -1951,7 +1949,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$unique_places = array();
 
 		foreach ($facts as $fact) {
-
 			$place_data = $this->getPlaceData($fact);
 
 			if (!empty($place_data)) {
@@ -2638,14 +2635,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo 'icon_type.iconSize = google.maps.Size(20, 34);';
 			echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
 			echo 'var point = new google.maps.LatLng(0, 0);';
-			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "&amp;parent[{$level}]=";
-			if ($place2['place'] == "Unknown") {
-				echo "'><br>";
+			echo 'var marker = createMarker(point, "<div class="iwstyle" style="width: 250px;"><a href="?action=find', $linklevels, '&amp;parent[' . $level . ']=';
+			if ($place2['place'] == 'Unknown') {
+				echo '"><br>';
 			} else {
-				echo addslashes($place2['place']), "'><br>";
+				echo addslashes($place2['place']), '"><br>';
 			}
 			if (($place2['icon'] !== null) && ($place2['icon'] !== '')) {
-				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
+				echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '">&nbsp;&nbsp;';
 			}
 			if ($place2['place'] == 'Unknown') {
 					echo I18N::translate('unknown');
