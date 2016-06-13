@@ -1376,9 +1376,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
 						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","<div>' . $dataleft . $datamid . $dataright . '</div>", "';
-						$js .= '<div class="iwstyle">';
-						$js .= '<a href="module.php?ged=' . $person->getTree()->getNameUrl() . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $person->getXref() . '&amp;PEDIGREE_GENERATIONS=' . $PEDIGREE_GENERATIONS;
-						$js .= '" title="' . I18N::translate('Pedigree map') . '">' . $dataleft . '</a>' . $datamid . $dataright . '</div>", "' . $marker_number . '");';
+						$js .= '<div class=\"iwstyle\">';
+						$js .= '<a href=\"module.php?ged=' . $person->getTree()->getNameUrl() . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $person->getXref() . '&amp;PEDIGREE_GENERATIONS=' . $PEDIGREE_GENERATIONS;
+						$js .= '\" title=\"' . I18N::translate('Pedigree map') . '\">' . $dataleft . '</a>' . $datamid . $dataright . '</div>", "' . $marker_number . '");';
 						// Construct the polygon lines
 						$to_child = (intval(($i - 1) / 2)); // Draw a line from parent to child
 						if (array_key_exists($to_child, $lat) && $lat[$to_child] != 0 && $lon[$to_child] != 0) {
