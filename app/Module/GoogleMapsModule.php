@@ -852,34 +852,20 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		//<!-- end of count records by type -->
 		//<!-- start of map display -->
 		echo '<div id="pedigreemap_chart">';
-		echo '<table class="tabs_table" cellspacing="0" cellpadding="0" border="0" width="100%">';
-		echo '<tr>';
-		echo '<td>';
-		echo '<div id="pm_map" style="border: 1px solid gray; height: ', $this->getSetting('GM_YSIZE'), 'px; font-size: 0.9em;';
-		echo '"><i class="icon-loading-large"></i></div>';
+		echo '<div id="wrapper" style="height:' . $this->getSetting('GM_YSIZE') . 'px;">';
+		echo '<div id="pm_map"><i class="icon-loading-large"></i></div>';
+		echo '<div id="side_bar"></div>';
+		echo '</div>';
+
 		if (Auth::isAdmin()) {
-			echo '<table width="100%">';
-			echo '<tr><td>';
-			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
-			echo '</td>';
-			echo '<td style="text-align:center;">';
-			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_places">', I18N::translate('Geographic data'), '</a>';
-			echo '</td>';
-			echo '<td style="text-align:end;">';
-			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">', I18N::translate('Place check'), '</a>';
-			echo '</td></tr>';
-			echo '</table>';
+			echo '<div class="gmoptions noprint">';
+			echo '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a>';
+			echo ' | <a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_places">' . I18N::translate('Geographic data') . '</a>';
+			echo ' | <a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_placecheck">' . I18N::translate('Place check') . '</a>';
+			echo '</div>';
 		}
-		echo '</td><td width="15px"></td>';
-		echo '<td width="310px">';
-		echo '<div id="side_bar" style="height:', $this->getSetting('GM_YSIZE'), 'px;"></div></td>';
-		echo '</tr>';
-		echo '</table>';
 		// display info under map
 		echo '<hr>';
-		echo '<table cellspacing="0" cellpadding="0" border="0" width="100%">';
-		echo '<tr>';
-		echo '<td>';
 		// print summary statistics
 		if (isset($curgen)) {
 			$total = pow(2, $curgen) - 1;
@@ -891,10 +877,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				I18N::number($count), I18N::number($total), I18N::number($curgen)
 			);
 			echo '</div>';
-			echo '</td>';
-			echo '</tr>';
-			echo '<tr>';
-			echo '<td>';
 			if ($priv) {
 				echo '<div>' . I18N::plural('%s individual is private.', '%s individuals are private.', $priv, $priv), '</div>';
 			}
@@ -910,9 +892,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 			}
 		}
-		echo '</td>';
-		echo '</tr>';
-		echo '</table>';
 		echo '</div>'; // close #pedigreemap_chart
 		echo '</div>'; // close #pedigreemap-page
 		echo '<script src="', $this->googleMapsScript(), '"></script>';
@@ -1981,7 +1960,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$places = array_keys($unique_places);
 			ob_start();
 			// Create the normal googlemap sidebar of events and children
-			echo '<div id="map_events" class="optionbox"><table class="facts_table">';
+			echo '<div id="side_bar" class="optionbox"><table class="facts_table">';
 
 			foreach ($events as $event) {
 				$index = array_search($event['placeid'], $places);
