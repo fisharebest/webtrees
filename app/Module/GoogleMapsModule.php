@@ -926,47 +926,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function pedigreeMapJavascript() {
 		global $PEDIGREE_GENERATIONS;
 
-		// The HomeControl returns the map to the original position and style
-		$js = 'var oneplace = false;
-			function HomeControl(controlDiv, pm_map) {' .
-			// Set CSS styles for the DIV containing the control
-			// Setting padding to 5 px will offset the control from the edge of the map
-			'controlDiv.style.paddingTop = "5px";
-			controlDiv.style.paddingRight = "0px";' .
-			// Set CSS for the control border
-			'var controlUI = document.createElement("DIV");
-			controlUI.style.backgroundColor = "white";
-			controlUI.style.color = "black";
-			controlUI.style.borderColor = "black";
-			controlUI.style.borderColor = "black";
-			controlUI.style.borderStyle = "solid";
-			controlUI.style.borderWidth = "2px";
-			controlUI.style.cursor = "pointer";
-			controlUI.style.textAlign = "center";
-			controlUI.title = "";
-			controlDiv.appendChild(controlUI);' .
-			// Set CSS for the control interior
-			'var controlText = document.createElement("DIV");
-			controlText.style.fontFamily = "Arial,sans-serif";
-			controlText.style.fontSize = "12px";
-			controlText.style.paddingLeft = "15px";
-			controlText.style.paddingRight = "15px";
-			controlText.innerHTML = "<b>' . I18N::translate('Redraw map') . '<\/b>";
-			controlUI.appendChild(controlText);' .
-			// Setup the click event listeners: simply set the map to original LatLng
-			'google.maps.event.addDomListener(controlUI, "click", function() {
-				pm_map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
-				if (oneplace) {
-					pm_map.setZoom(12);
-				} else {
-					pm_map.fitBounds(bounds);
-				}
-				pm_map.setCenter(bounds.getCenter());
-				lastlinkid=null;
-				jQuery(".link").removeClass("person_box link_visited");
-				infowindow.close();
-			});
-		}' .
+		$js = '' .
 		// this variable will collect the html which will eventually be placed in the side_bar
 		'var side_bar_html = "";' .
 		// arrays to hold copies of the markers and html used by the side_bar
@@ -1294,11 +1254,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			infowindow.close();
 			lastlinkid = null;
 		});' .
-		// Create the DIV to hold the control and call HomeControl() passing in this DIV. --
-		'var homeControlDiv = document.createElement("DIV");
-		var homeControl = new HomeControl(homeControlDiv, pm_map);
-		homeControlDiv.index = 1;
-		pm_map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);' .
 		// create the map bounds
 		'var bounds = new google.maps.LatLngBounds();';
 		// add the points
@@ -2246,40 +2201,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					return false;
 				}
 
-				// Home control
-				// returns the user to the original map position ... loadMap() function
-				// This constructor takes the control DIV as an argument.
-				function HomeControl(controlDiv, map) {
-					// Set CSS styles for the DIV containing the control
-					// Setting padding to 5 px will offset the control from the edge of the map
-					controlDiv.style.paddingTop   = '5px';
-					controlDiv.style.paddingRight = '0px';
-
-					// Set CSS for the control border
-					var controlUI                   = document.createElement('DIV');
-					controlUI.style.backgroundColor = 'white';
-					controlUI.style.borderStyle     = 'solid';
-					controlUI.style.borderWidth     = '2px';
-					controlUI.style.cursor          = 'pointer';
-					controlUI.style.textAlign       = 'center';
-					controlUI.title                 = '';
-					controlDiv.appendChild(controlUI);
-
-					// Set CSS for the control interior
-					var controlText                = document.createElement('DIV');
-					controlText.style.fontFamily   = 'Arial,sans-serif';
-					controlText.style.fontSize     = '12px';
-					controlText.style.paddingLeft  = '15px';
-					controlText.style.paddingRight = '15px';
-					controlText.innerHTML          = '<b><?php echo I18N::translate('Redraw map') ?></b>';
-					controlUI.appendChild(controlText);
-
-					// Setup the click event listeners: simply set the map to original LatLng
-					google.maps.event.addDomListener(controlUI, 'click', function() {
-						loadMap();
-					});
-				}
-
 				function loadMap() {
 					// Create the map and mapOptions
 					var mapOptions = {
@@ -2297,18 +2218,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						streetViewControl:        true,
 						scrollwheel:              true
 					};
-					map            = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
+					map = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
 
 					// Close any infowindow when map is clicked
 					google.maps.event.addListener(map, 'click', function() {
 						infowindow.close();
 					});
-
-					// Create the Home DIV and call the HomeControl() constructor in this DIV.
-					var homeControlDiv   = document.createElement('DIV');
-					var homeControl      = new HomeControl(homeControlDiv, map);
-					homeControlDiv.index = 1;
-					map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
 
 					// Add the markers to the map
 
