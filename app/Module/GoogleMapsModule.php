@@ -2554,14 +2554,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo 'icon_type.iconSize = google.maps.Size(20, 34);';
 			echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
 			echo 'var point = new google.maps.LatLng(0, 0);';
-			echo 'var marker = createMarker(point, "<div class="iwstyle" style="width: 250px;"><a href="?action=find', $linklevels, '&amp;parent[' . $level . ']=';
+			echo 'var marker = createMarker(point, "<div class=\"iwstyle\" style=\"width: 250px;\"><a href=\"?action=find', $linklevels, '&amp;parent[' . $level . ']=';
 			if ($place2['place'] == 'Unknown') {
-				echo '"><br>';
+				echo '\"><br>';
 			} else {
-				echo addslashes($place2['place']), '"><br>';
+				echo addslashes($place2['place']), '\"><br>';
 			}
 			if (($place2['icon'] !== null) && ($place2['icon'] !== '')) {
-				echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '">&nbsp;&nbsp;';
+				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 			}
 			if ($place2['place'] == 'Unknown') {
 					echo I18N::translate('unknown');
@@ -2573,9 +2573,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$this->printHowManyPeople($level + 1, $parent);
 			echo '<br>', I18N::translate('This place has no coordinates');
 			if (Auth::isAdmin()) {
-				echo "<br><a href='module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=", $levelm, "&amp;display=inactive'>", I18N::translate('Geographic data'), "</a>";
+				echo '<br><a href=\"module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=', $levelm, '&amp;display=inactive\">', I18N::translate('Geographic data'), '</a>';
 			}
-			echo "</div>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
+			echo '</div>", icon_type, "', str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), '");';
 		} else {
 			$lati = strtr($place2['lati'], array('N' => '', 'S' => '-', ',' => '.'));
 			$long = strtr($place2['long'], array('E' => '', 'W' => '-', ',' => '.'));
