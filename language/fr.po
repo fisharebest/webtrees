@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-12 07:32+0000\n"
+"PO-Revision-Date: 2016-06-14 06:53+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -11176,7 +11176,6 @@ msgstr "Restrictions de confidentialité - Celles-ci s’appliquent aux dossiers
 #: app/Module/GoogleMapsModule.php:832 app/Note.php:71
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1470 app/Stats.php:2975 expand_view.php:33
-#, fuzzy
 msgid "Private"
 msgstr "Détails privés"
 
@@ -12906,9 +12905,8 @@ msgstr "Déconnexion"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:447
-#, fuzzy
 msgid "Sign-in URL"
-msgstr "URL de connexion (login)"
+msgstr "URL de connexion"
 
 #. I18N: Menu entry
 #: admin_site_config.php:140 app/Theme/AdministrationTheme.php:97
@@ -15292,9 +15290,8 @@ msgid "Unable to connect using this username and password. Your server gave the 
 msgstr "Impossible de se connecter avec ces paramètres. Le serveur a renvoyé l’erreur suivante."
 
 #: admin_trees_config.php:678
-#, fuzzy
 msgid "Unable to find record with ID"
-msgstr "Aucun enregistrement trouvé"
+msgstr "Aucun enregistrement trouvé pour cet ID"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:112
