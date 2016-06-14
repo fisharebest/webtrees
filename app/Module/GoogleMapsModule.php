@@ -1854,17 +1854,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		// If co-ordinates are stored in the GEDCOM then use them
 		if ($has_latitude && $has_longitude) {
-			if ($fact->getAttribute('ADDR') !== null) {
-				$tooltip = $fact->getAttribute('ADDR') . I18N::$list_separator . $fact->getPlace()->getGedcomName();
-			} else {
-				$tooltip = $fact->getPlace()->getGedcomName() . ' ' . I18N::translate('(Latitude: %s, Longitude: %s)', $match1[1], $match2[1]);
-			}
 			$result = array(
 				'index'   => 'ID' . $match1[1] . $match2[1],
 				'mapdata' => array(
 					'class'        => 'optionbox',
-					'place'        => '<span dir="auto">' . $tooltip . '</span>',
-					'tooltip'      => $tooltip,
+					'place'        => $fact->getPlace()->getFullName(),
+					'tooltip'      => $fact->getPlace()->getGedcomName(),
 					'lat'          => strtr($match1[1], array('N' => '', 'S' => '-', ',' => '.')),
 					'lng'          => strtr($match2[1], array('E' => '', 'W' => '-', ',' => '.')),
 					'pl_icon'      => '',
