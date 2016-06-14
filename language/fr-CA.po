@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-14 03:59+0000\n"
+"PO-Revision-Date: 2016-06-14 04:17+0000\n"
 "Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
 "Language-Team: French (Canada) <https://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
 "Language: fr-CA\n"
@@ -7191,7 +7191,7 @@ msgstr "Son métier était"
 
 #: app/Module/GoogleMapsModule.php:3731
 msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
-msgstr "Permet de définir le facteur de zoom. Cette valeur définit le facteur minimal lors de l’affichage de ce lieu sur la carte."
+msgstr "Permet de définir le facteur de zoom minimal lors de l’affichage de ce lieu sur la carte."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:169
@@ -12604,7 +12604,7 @@ msgstr "Affichage des couples divorcés."
 
 #: admin_trees_config.php:1101
 msgid "Show highlight images in individual boxes"
-msgstr "Afficher les miniatures des individus"
+msgstr "Afficher les vignettes des individus"
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1664
