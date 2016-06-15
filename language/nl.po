@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-12 18:48+0000\n"
+"PO-Revision-Date: 2016-06-15 19:45+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -13719,7 +13719,7 @@ msgstr "De stamboom “%s” wordt getoond aan bezoekers wanneer zij voor het ee
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
-msgstr "De stambomen zijn sucessvol samengevoegd."
+msgstr "De stambomen zijn succesvol samengevoegd."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:138
