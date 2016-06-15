@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-12 17:31+0000\n"
+"PO-Revision-Date: 2016-06-15 01:51+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -696,7 +696,7 @@ msgstr "9."
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:742
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr "A <b>GUID</b> ebben a szövegkörnyezetben a „Globally Unique ID” (Globális egyedi azonosító) mozaikszava.<br><br>A GUID-ok szándéka, hogy segítsenek azonosítani minden személyt bizonyos értelemben megismételhető módon úgy, hogy az olyan központi szervezetek, mint az <abbr title=\"Az Utolsó Napok Szentjeinek Jézus Krisztus Egyháza\">UNSZ</abbr>-egyház Salt Lake City-i Családtörténeti Központja vagy akár az Ön saját szerverén futó kompatibilis alkalmazás meghatározhassák, hogy ugyanarról a személyről van-e szó – függetlenül a GEDCOM-fájl eredetétől. A Családtörténeti Központ célja, hogy legyen közzétéve egy, a világhálón elérhető központi származástani adattár. Így bármely alkalmazás hozzáférhet az adatokhoz és frissíteni tudja a sajátjait.<br><br>Ha Ön nem szándékozik megosztani ezt a GEDCOM-állományt mással, nem szükséges engedélyeznie a webtreesnek ezen GUID-ok létrehozását, habár nem származhat egyéb hátránya, mint a GEDCOM-fájl nagyságának növekedése."
+msgstr "A <b>GUID</b> ebben a szövegkörnyezetben a „Globally Unique ID” (Globális egyedi azonosító) mozaikszava.<br><br>A GUID-ok szándéka, hogy segítsenek azonosítani minden személyt bizonyos értelemben megismételhető módon úgy, hogy az olyan központi szervezetek, mint az <abbr title=\"Az Utolsó Napok Szentjeinek Jézus Krisztus Egyháza\">UNSZ</abbr> Salt Lake City-i Családtörténeti Központja vagy akár az Ön saját szerverén futó kompatibilis alkalmazás meghatározhassák, hogy ugyanarról a személyről van-e szó – függetlenül a GEDCOM-fájl eredetétől. A Családtörténeti Központ célja, hogy legyen közzétéve egy, a világhálón elérhető központi származástani adattár. Így bármely alkalmazás hozzáférhet az adatokhoz és frissíteni tudja a sajátjait.<br><br>Ha Ön nem szándékozik megosztani ezt a GEDCOM-állományt mással, nem szükséges engedélyeznie a webtreesnek ezen GUID-ok létrehozását, habár nem származhat egyéb hátránya, mint a GEDCOM-fájl nagyságának növekedése."
 
 #: admin_trees_manage.php:721
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -1451,7 +1451,7 @@ msgstr "Leíró történetek felvétele a családfa személyeihez."
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
-msgstr "Plusz szóközök hosszú sorok sortörésekor"
+msgstr "Sortörés miatt elvesztett szóközök pótlása"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:422
@@ -1882,7 +1882,7 @@ msgstr "A felhasználók láthatják a nyers GEDCOM-bejegyzéseket"
 #. I18N: A configuration setting
 #: admin_site_config.php:259
 msgid "Allow users to select their own theme"
-msgstr "Engedélyezzük a felhasználóknak hogy saját témát válasszanak"
+msgstr "A felhasználók saját témát választhatnak"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:485
@@ -6547,7 +6547,7 @@ msgstr "Technikai vagy származástani kérdésekben segítséget nyújt:"
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr "Egynél több családfát tartalmazó webhelyek esetén ez az opció megjeleníti a családfák listáját a főmenüben, a keresőoldalakon stb."
+msgstr "Egynél több családfát tartalmazó webhelyek esetén ez a beállítás megjeleníti a családfák listáját a főmenüben, a keresőoldalakon stb."
 
 #: app/Module/LoginBlockModule.php:86 login.php:207
 msgid "Forgot password?"
@@ -6885,7 +6885,7 @@ msgstr "Utónév"
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:981
 msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu. To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
-msgstr "Biztosítja a felhasználóknak azt a lehetőséget, hogy kiválasszák saját asztaltémájukat egy legördülő menüből (ha ez a lehetőség létezik az adott asztaltémában).<br><br>Ehhez a lehetőséghez az <b>Engedjük a felhasználóknak hogy témát váltsanak</b> opciót szintén be kell állítani."
+msgstr "Lehetővé teszi, hogy a felhasználók saját témát válasszanak egy menüből.<br><br>E beállítástól a jelenleg aktuális téma még nem feltétlenül biztosít ilyen menüt. Hogy érvényes legyen, <b>A felhasználók saját témát választhatnak</b> opciót szintén be kell állítani."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -8466,7 +8466,7 @@ msgstr "London, Anglia"
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: admin_trees_config.php:1191
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
-msgstr "Terjedelmes, azonos vezetéknevű személyek listája felszabdalható kisebb részlistákba – a személyek utónevének első betűje szerint.<br><br>Ez a választási lehetőség határozza meg, hogy mikor fordulnak elő a vezetéknevek részlistái. A részlistázás megszüntetéséhez az érték legyen nulla."
+msgstr "Terjedelmes, azonos vezetéknevű személyek listája felszabdalható kisebb részlistákba – a személyek utónevének első betűje szerint.<br><br>Ez az érték határozza meg, hogy mikor fordulnak elő a vezetéknevek részlistái. A részlistázás megszüntetéséhez az érték legyen nulla."
 
 #: statistics.php:251
 msgid "Longest marriage"
@@ -8680,7 +8680,7 @@ msgstr "március"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1623
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "A Markdown egy egyszerű formázórendszer, amelyet olyan webhelyeken használnak, mint a Wikipedia. Diszkrét írásjelek használatával hoz létre fejléceket és alcímeket, félkövér és dőlt betűket, listákat, táblázatokat stb."
+msgstr "A Markdown egy egyszerű szövegformázó jelölőnyelv, amelyet olyan webhelyeken használnak, mint a Wikipedia. Diszkrét írásjelek használatával hoz létre címeket és alcímeket, félkövér és dőlt betűket, listákat, táblázatokat stb."
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:576 modules_v3/ahnentafel_report/report.xml:447
@@ -11226,11 +11226,11 @@ msgstr "Kérdés"
 
 #: admin_trees_config.php:1881
 msgid "Quick family facts"
-msgstr "Családi tények – gyors felvételhez"
+msgstr "Családtények – gyors felvételhez"
 
 #: admin_trees_config.php:1763
 msgid "Quick individual facts"
-msgstr "Személyi tények – gyors felvételhez"
+msgstr "Személytények – gyors felvételhez"
 
 #: admin_trees_config.php:2059
 msgid "Quick repository facts"
@@ -12299,12 +12299,12 @@ msgstr "A státuszt állítsa „jóváhagyva” állapotúra."
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:729
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts. This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr "Az <b>Igen</b> a RIN-szám (bejegyzésazonosító szám) használata a GEDCOM-azonosító helyett – azonosító megadásakor a beállítások fájlban, a felhasználói beállításokban és ábrákon. Ez az olyan származástani alkalmazások esetén hasznos, amelyek nem mentik következetesen az egyes személyek GEDCOM-azonosítóját, viszont mindig azonos RIN-számot használnak."
+msgstr "Az <b>igen</b> jelenti a RIN („Record Identification Number”, azaz a bejegyzésazonosító szám) használatát a GEDCOM-azonosító helyett – azonosító megadásakor a beállítások fájlban, a felhasználói beállításokban és ábrákon. Ez az olyan származástani alkalmazások esetén hasznos, amelyek nem mentik következetesen az egyes személyek GEDCOM-azonosítóját, viszont mindig azonos RIN-t használnak."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1638
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Az <b>Igen</b> elhelyez a személyekhez, forrásokhoz és családokhoz egy hivatkozást, hogy a felhasználók egy felugró ablakban megjeleníthessék a nyers adatokat egyenesen a GEDCOM-fájlból."
+msgstr "Az <b>igen</b> hivatkozást helyez el személyekhez, forrásokhoz és családokhoz, hogy a felhasználók egy felugró ablakban megjeleníthessék a nyers adatokat egyenesen a GEDCOM-fájlból."
 
 #: setup.php:90
 msgid "Setup wizard for webtrees"
@@ -12503,7 +12503,7 @@ msgstr "Megjelenít"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1047
 msgid "Show a download link in the media viewer"
-msgstr "Mutasd a letöltési hivatkozást a médiamegjelenítőben"
+msgstr "Mutass letöltési hivatkozást a médiamegjelenítőben"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:500
@@ -12607,7 +12607,7 @@ msgstr "Elvált párok mutatása."
 
 #: admin_trees_config.php:1101
 msgid "Show highlight images in individual boxes"
-msgstr "Mutassunk képrészletet a személy keretében"
+msgstr "Mutassunk kijelölt képet a személy keretében"
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1664
@@ -12777,7 +12777,7 @@ msgstr "Statisztikai ábrák"
 #: admin_trees_config.php:1574
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "Mutasd a helynév %1$s %2$s részeit."
+msgstr "Mutasd a helynév %1$s %2$s részét."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
@@ -13414,7 +13414,7 @@ msgstr "Vezetéknév-eloszlási ábra"
 
 #: admin_trees_config.php:1166
 msgid "Surname list style"
-msgstr "Vezetéknévlisták stílusa"
+msgstr "A vezetéknévlista stílusa"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:153
 msgid "Surname option"
@@ -13678,7 +13678,7 @@ msgstr "Az adatbázis a következő hibaüzenetet jelentette:"
 
 #: admin_trees_config.php:1212
 msgid "The date and time of the last update"
-msgstr "Az utolsó módosítás dátuma és ideje"
+msgstr "Az utolsó frissítés dátuma és ideje"
 
 #: family.php:129
 msgid "The details of this family are private."
@@ -14028,7 +14028,7 @@ msgstr "Az idő másodpercben, amíg aktív a webtrees-munkamenet, és mielőtt 
 
 #: admin_site_config.php:235 admin_users.php:428 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr "Az időzóna szükséges a dátumszámításhoz, mint pl. a mai dátum ismeretéhez."
+msgstr "Az időzóna szükséges a dátumszámításhoz, mint a mai dátum ismeretéhez."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
@@ -14068,7 +14068,7 @@ msgstr "A felhasználónév szükséges az SMTP-szerverrel történő azonosít�
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:967
 msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-msgstr "A html-oldal fejlécében lévő „meta description (leírás)” címke értéke. Hagyja üresen ezt a mezőt a családfa nevének használatához."
+msgstr "A HTML-oldal fejlécében lévő „meta description” (metaleírás) címke értéke. Hagyja üresen ezt a mezőt a családfa nevének használatához."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
@@ -14100,7 +14100,7 @@ msgstr "A webhelybeállítások frissítése megtörtént."
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:1605
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr "A www.geonames.org egy hatalmas helynévgyűjteményt szolgáltat. A helynév megadásakor ebben az állományban is lehet keresni. E lehetőség használatához regisztrálni kell a www.geonames.org webhelyen és felhasználónév megadásával egy ingyenes fiókot kell létrehozni."
+msgstr "A www.geonames.org egy óriási helynévgyűjteményt tartalmaz. A helynév megadásakor ebben az állományban is lehet keresni. E szolgáltatás használatához regisztrálni kell a www.geonames.org webhelyen, és meg kell adni a felhasználónevet."
 
 #: setup.php:507
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
@@ -14123,7 +14123,7 @@ msgstr "Témaváltás"
 #. I18N: A configuration setting
 #: admin_trees_config.php:976
 msgid "Theme dropdown selector for theme changes"
-msgstr "Legördülő témaválasztó témaváltásokhoz"
+msgstr "Legördülő menü témaváltáshoz"
 
 #: admin_modules.php:165
 msgid "Themes"
@@ -14355,7 +14355,7 @@ msgstr "Ez a rovat szolgál a naptár évének megváltoztatására. Írjon a me
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2111
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Ez a név felvétele/módosítása űrlapon megjelenő, vesszővel elválasztott GEDCOM-ténycímkék listája. Ha nem latin ábécét használ, mint amilyen a héber, görög, cirill vagy arab, célszerű _HEB, ROMN, FONE stb. címkéket is használni, hogy a neveket néhány különböző ábécében tárolhassa."
+msgstr "Ez a név felvétele/módosítása űrlapon megjelenő, vesszővel elválasztott GEDCOM-ténycímkék listája. Ha nem latin ábécét használ, mint amilyen a héber, görög, cirill vagy arab, célszerű _HEB, ROMN, FONE stb. címkéket is használni, hogy a neveket néhány, különböző ábécében tárolhassa."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1873
@@ -14370,7 +14370,7 @@ msgstr "Ez az új személy felvételekor megjelenő, vesszővel elválasztott GE
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2140
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Ez a helynevek felvétele vagy módosítása űrlapon megjelenő, vesszővel elválasztott GEDCOM-ténycímkék listája. Ha nem latin ábécét használ, mint amilyen a héber, görög, cirill vagy arab, célszerű _HEB, ROMN, FONE stb. címkéket is használni, hogy a helyneveket néhány különböző ábécében tárolhassa."
+msgstr "Ez a helynevek felvétele vagy módosítása űrlapon megjelenő, vesszővel elválasztott GEDCOM-ténycímkék listája. Ha nem latin ábécét használ, mint amilyen a héber, görög, cirill vagy arab, célszerű _HEB, ROMN, FONE stb. címkéket is használni, hogy a helyneveket néhány, különböző ábécében tárolhassa."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -14401,42 +14401,42 @@ msgstr "Ez a webtrees legutolsó változata. Ennél nincs frissebb."
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1815
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "Ez a GEDCOM-tények listája, amelyet a felhasználók családokhoz vehetnek fel. Ez a lista megváltoztatható ténynevek eltávolításával vagy felvételével – akár egyediekkel is, ha szükséges. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Család egyedülálló tényei</i> listában."
+msgstr "Ez a GEDCOM-tények listája, amelyet a felhasználók családokhoz vehetnek fel. Ez a lista megváltoztatható ténynevek eltávolításával vagy felvételével – akár egyediekkel is, ha szükséges. Az ebben a listában található ténynevek nem szerepelhetnek az „Egyedi családtények” listában."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1697
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók elemeket vehetnek fel személyekhez. Ez a lista megváltoztatható ténynevek eltávolításával vagy felvételével – akár egyediekkel is, ha szükséges. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Személy egyedülálló tényei</i> listában."
+msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók elemeket vehetnek fel személyekhez. Ez a lista megváltoztatható ténynevek eltávolításával vagy felvételével – akár egyediekkel is, ha szükséges. Az ebben a listában található ténynevek nem szerepelhetnek az „Egyedi személytények” listában."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:2022
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók adattárakhoz vehetnek fel elemeket. Ez a lista megváltoztatható ténynevek eltávolításával vagy felvételével – akár egyediekkel is, ha szükséges. Az ebben a listában található ténynevek nem szerepelhetnek az <i>Egyedi adattártények</i> listában."
+msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók adattárakhoz vehetnek fel elemeket. Ez a lista megváltoztatható ténynevek eltávolításával vagy felvételével – akár egyediekkel is, ha szükséges. Az ebben a listában található ténynevek nem szerepelhetnek az „Egyedi adattártények” listában."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1933
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók elemeket vehetnek fel forrásokhoz. Ez a lista megváltoztatható ténynevek eltávolításával vagy felvételével – akár egyediekkel is, ha szükséges. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Forrás egyedülálló tényei</i> listában."
+msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók elemeket vehetnek fel forrásokhoz. Ez a lista megváltoztatható ténynevek eltávolításával vagy felvételével – akár egyediekkel is, ha szükséges. Az ebben a listában található ténynevek nem szerepelhetnek az „Egyedi forrástények” listában."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1844
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "Ez a GEDCOM-tények listája, amely elemei közül a felhasználók <u>csak egyszer</u> egyet vehetnek fel családokhoz. Például, ha a MARR (házasság) szerepel a listában, a felhasználók nem tudnak további MARR bejegyzést felvenni a családhoz. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Család bejegyzéseinek tényei</i> listában."
+msgstr "Ez a GEDCOM-tények listája, amit a felhasználók csak egyszer vehetnek fel családokhoz. Például, ha a MARR (házasság) szerepel a listában, a felhasználók nem tudnak további MARR bejegyzést felvenni a családhoz. Az ebben a listában található ténynevek nem szerepelhetnek „Az összes családtény” listában."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1726
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók <u>csak egyszer</u> egyet vehetnek fel személyekhez. Például, ha a BIRT (születés) szerepel a listában, a felhasználók nem tudnak további BIRT bejegyzést felvenni a személyhez. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Személy bejegyzéseinek tényei</i> listában."
+msgstr "Ez a GEDCOM-tények listája, amit a felhasználók csak egyszer vehetnek fel személyekhez. Például, ha a BIRT (születés) szerepel a listában, a felhasználók nem tudnak további BIRT bejegyzést felvenni a személyhez. Az ebben a listában található ténynevek nem szerepelhetnek „Az összes személytény” listában."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:2051
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók <u>csak egyszer</u> egyet vehetnek fel az adattárakhoz. Például, ha a NAME (név) szerepel a listában, a felhasználók nem tudnak további NAME bejegyzést felvenni az adattárhoz. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Minden adattártény</i> listában."
+msgstr "Ez a GEDCOM-tények listája, amit a felhasználók csak egyszer vehetnek fel adattárakhoz. Például, ha a NAME (név) szerepel a listában, a felhasználók nem tudnak további NAME bejegyzést felvenni az adattárhoz. Az ebben a listában található ténynevek nem szerepelhetnek „Az összes adattártény” listában."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:1962
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "Ez a GEDCOM-tények listája, amelyből a felhasználók <u>csak egyszer</u> egyet vehetnek fel forrásokhoz. Például, ha a TITL (cím) szerepel a listában, a felhasználók nem tudnak további TITL bejegyzést felvenni a forráshoz. Az ebben a listában található ténynevek nem szerepelhetnek a <i>Forrás bejegyzéseinek tényei</i> listában."
+msgstr "Ez a GEDCOM-tények listája, amit a felhasználók csak egyszer vehetnek fel forrásokhoz. Például, ha a TITL (cím) szerepel a listában, a felhasználók nem tudnak további TITL bejegyzést felvenni a forráshoz. Az ebben a listában található ténynevek nem szerepelhetnek „Az összes forrástény” listában."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:349
@@ -14569,42 +14569,42 @@ msgstr "Ezt a jegyzetet szerkesztették. Ellenőrizze a változtatásokat, amely
 #. I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting
 #: admin_trees_config.php:1538
 msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-msgstr "Ez a beállítás határozza meg, hogy azon jegyzet- és forráshivatkozások, amelyek tényekhez kapcsolódnak, megjelenjenek-e a Személyoldal Jegyzetek és Források fülén.<br><br>Általában a Jegyzetek és Források fülek csak azokat a jegyzet- és forráshivatkozásokat mutatják, amelyek közvetlenül a személy adatbázis-bejegyzéséhez kapcsolódnak. Ezek az <i>első szintű</i> jegyzet- és forráshivatkozások.<br><br>Az <b>Igen</b> hatására azok a jegyzet- és forráshivatkozások, amelyek az egyes ténybejegyzések részei, szintén megjelennek ezeken a füleken. Ezek a <i>második szintű</i> jegyzet- és forráshivatkozások, mert a különböző tények az első szinten szerepelnek."
+msgstr "Ez a beállítás határozza meg, hogy azon jegyzet- és forráshivatkozások, amelyek tényekhez kapcsolódnak, megjelenjenek-e a Személyoldal Jegyzetek és Források fülén.<br><br>Általában a Jegyzetek és Források fülek csak azokat a jegyzet- és forráshivatkozásokat mutatják, amelyek közvetlenül a személy adatbázis-bejegyzéséhez kapcsolódnak. Ezek az <i>első szintű</i> jegyzet- és forráshivatkozások.<br><br>Az <b>igen</b> hatására azok a jegyzet- és forráshivatkozások, amelyek az egyes ténybejegyzések részei, szintén megjelennek ezeken a füleken. Ezek a <i>második szintű</i> jegyzet- és forráshivatkozások, mert a különböző tények az első szinten szerepelnek."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1508
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
-msgstr "Ez a lehetőség határozza meg, hogy egy <i>Jegyzet</i>bejegyzés tartalma automatikusan megjelenjen-e a Személyoldalon."
+msgstr "Ez a beállítás határozza meg, hogy egy <i>Jegyzet</i>bejegyzés tartalma automatikusan megjelenjen-e a Személyoldalon."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: admin_trees_config.php:1523
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
-msgstr "Ez a lehetőség határozza meg, hogy a <i>Forrás</i>bejegyzés tartalma automatikusan megjelenjen-e a Személyoldalon."
+msgstr "Ez a beállítás határozza meg, hogy egy <i>Forrás</i>bejegyzés tartalma automatikusan megjelenjen-e a Személyoldalon."
 
 #. I18N: Help text for the “Automatically expand list of events of close relatives” configuration setting
 #: admin_trees_config.php:1388
 msgid "This option controls whether or not to automatically expand the <i>Events of close relatives</i> list."
-msgstr "Ez a lehetőség határozza meg, hogy a <i>Közeli hozzátartozók eseményei</i>-lista automatikusan kitárt legyen-e."
+msgstr "Ez a beállítás határozza meg, hogy a <i>Közeli hozzátartozók eseményei</i>-lista automatikusan kitárt legyen-e."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: admin_trees_config.php:1331
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
-msgstr "Ez a lehetőség határozza meg, hogy megjelenjen-e az apa és az anya kora a gyerek születési dátuma mellett az ábrákon."
+msgstr "Ez a beállítás határozza meg, hogy megjelenjen-e az apa és az anya kora a gyerek születési dátuma mellett az ábrákon."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: admin_trees_config.php:1204
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Ez a lehetőség határozza meg, hogy megjelenjen-e a személyek becsült születési és elhalálozási dátuma a személyes listákon és ábrákon, ha a dátumok nem ismertek."
+msgstr "Ez a beállítás határozza meg, hogy megjelenjen-e a személyek becsült születési és elhalálozási dátuma a személyes listákon és ábrákon, ha a dátumok nem ismertek."
 
 #. I18N: Help text for the “Gender icon on charts” configuration setting
 #: admin_trees_config.php:1318
 msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
-msgstr "Ez a lehetőség határozza meg, hogy megjelenjen-e a személy nemének ikonja az ábrákon.<br><br>Minthogy a nemeket a keretek színe is jelzi, ez a beállítás nem rejti el a nemet. Az opció egyszerűen töröl néhány kettős információt a keretből."
+msgstr "Ez a beállítás határozza meg, hogy megjelenjen-e a személy nemének ikonja az ábrákon.<br><br>Minthogy a nemeket a keretek színe is jelzi, ez a beállítás nem rejti el a nemet. Az opció egyszerűen töröl néhány kettős információt a keretből."
 
 #. I18N: Help text for the “Default pedigree chart layout” tree configuration setting
 #: admin_trees_config.php:1231
 msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-msgstr "Ez a lehetőség jelzi, hogy az ősfa szélesebb vagy keskenyebb alakban jelenjen-e meg."
+msgstr "Ez a beállítás határozza meg, hogy az ősfa keskenyebb vagy szélesebb alakban jelenjen-e meg."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:498
@@ -15454,7 +15454,7 @@ msgstr "PHP mail funkció használata levélküldéshez"
 #. I18N: A configuration setting
 #: admin_trees_config.php:724
 msgid "Use RIN number instead of GEDCOM ID"
-msgstr "RIN-szám használata GEDCOM-azonosító helyett"
+msgstr "RIN használata GEDCOM-azonosító helyett"
 
 #: admin_site_config.php:117
 msgid "Use SMTP to send messages"
@@ -15539,7 +15539,7 @@ msgstr "Rendszergazda által nem ellenőrzött felhasználó."
 
 #: admin_trees_config.php:972
 msgid "User options"
-msgstr "Felhasználói opciók"
+msgstr "Felhasználói lehetőségek"
 
 #: login.php:514 login.php:520 login.php:578 login.php:582
 msgid "User verification"
@@ -15887,7 +15887,7 @@ msgstr "Nyugat-Szahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:2194
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Bejegyzés módosításakor a felhasználó és a módosítás ideje tárolódik. Előfordul, hogy a korábbi, „utoljára módosult”-adatot szeretnénk megtartani, például a más által megadott adatok apró javításakor. Ez az opció határozza meg, hogy ez a tulajdonság alapértelmezetten kiválasztott legyen-e."
+msgstr "Bejegyzés módosításakor a felhasználó és az időpont tárolódik. Előfordul, hogy a korábbi, „utoljára módosult”-adatot szeretnénk megtartani, például más adatainak apró javításakor. Ez a beállítás határozza meg, hogy ez a tulajdonság alapértelmezetten kiválasztott legyen-e."
 
 #: admin_users.php:389
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -15900,7 +15900,7 @@ msgstr "Hivatkozás felvételekor az azonosítómező nem lehet üres."
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2181
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "Új közeli rokon felvételekor forrásidézetek is felvehetők a (személy- és család-)bejegyzésekhez, vagy a (születés, házasság és halálozás tárgyú) tényekhez és eseményekhez. Ez a lehetőség határozza meg, hogy bejegyzések vagy tények legyenek-e az alapértelmezettek."
+msgstr "Új közeli rokon felvételekor forrásidézetek is felvehetők a (személy- és család-)bejegyzésekhez, vagy a (születés, házasság és halálozás tárgyú) tényekhez és eseményekhez. Ez a beállítás határozza meg, hogy bejegyzések vagy tények legyenek-e az alapértelmezettek."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:858
@@ -15910,7 +15910,7 @@ msgstr "Az új bejegyzések létrehozásukkor belső azonosítót kapnak. Ön me
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1553
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr "Az opció bejelölt állapotában a webtrees kiszámolja a testvérek, gyerekek, házastársak stb. közti korkülönbséget."
+msgstr "A <b>mutat</b> opció bejelölt állapotában a webtrees kiszámolja a testvérek, gyerekek, házastársak stb. közti korkülönbséget."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2155
@@ -18956,7 +18956,7 @@ msgstr "webhelyfelügyelők"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
 msgid "markdown"
-msgstr "formázatlan szöveg (markdown)"
+msgstr "Markdown"
 
 #: app/Stats.php:2915
 msgid "marriage"
