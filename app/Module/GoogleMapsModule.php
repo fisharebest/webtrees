@@ -1173,12 +1173,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									new google.maps.Size(24, 24), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(2, 22)  // Image anchor
-								);' .
+								);
 		// / A function to create the marker and set up the event window
-		'function createMarker(point, name, html, mhtml, icontype) {
-			var contentString = "<div class=\"gm-info-window-content-edit\">" + mhtml + "</div>";' .
+		function createMarker(point, name, html, mhtml, icontype) {
 			// Create a marker with the requested icon
-			'var marker = new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				icon:     gicons[icontype],
 				shadow:   gicons[icontype].shadow,
 				map:      pm_map,
@@ -1188,7 +1187,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			});
 			google.maps.event.addListener(marker, "click", function() {
 				infowindow.close();
-				infowindow.setContent(contentString);
+				infowindow.setContent(mhtml);
 				infowindow.open(pm_map, marker);
 				var el = jQuery("#link_" + marker.id);
 				if(el.hasClass("person_box")) {
@@ -1314,7 +1313,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
 						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","' . $dataleft . '<div class=\"relation\">' . $datamid . $dataright . '</div>", "';
-						$js .= '<div class=\"iwstyle\">';
+						$js .= '<div>';
 						$js .= '<a href=\"module.php?ged=' . $person->getTree()->getNameUrl() . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $person->getXref() . '&amp;PEDIGREE_GENERATIONS=' . $PEDIGREE_GENERATIONS;
 						$js .= '\" title=\"' . I18N::translate('Pedigree map') . '\">' . $dataleft . '</a>' . $datamid . $dataright . '</div>", "' . $marker_number . '");';
 						// Construct the polygon lines
@@ -2523,7 +2522,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo 'icon_type.iconSize = google.maps.Size(20, 34);';
 			echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
 			echo 'var point = new google.maps.LatLng(0, 0);';
-			echo 'var marker = createMarker(point, "<div class=\"iwstyle\" style=\"width: 250px;\"><a href=\"?action=find', $linklevels, '&amp;parent[' . $level . ']=';
+			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels, '&amp;parent[' . $level . ']=';
 			if ($place2['place'] == 'Unknown') {
 				echo '\"><br>';
 			} else {
@@ -2568,7 +2567,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				echo ' icon_type.shadowSize = new google.maps.Size(35, 45);';
 			}
 			echo 'var point = new google.maps.LatLng(', $lati, ', ', $long, ');';
-			echo 'var marker = createMarker(point, "<div class=\"iwstyle\" style=\"width: 250px;\"><a href=\"?action=find', $linklevels;
+			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels;
 			echo '&amp;parent[', $level, ']=';
 			if ($place2['place'] !== 'Unknown') {
 				echo Filter::escapeJs($place2['place']);
@@ -3366,11 +3365,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					document.editplaces.LONG_CONTROL.value = 'E';
 				}
 				new google.maps.LatLng (lat.toFixed(5), lng.toFixed(5));
+				infowindow.close();
 				updateMap();
 			}
 
 			function createMarker(i, point, name) {
-				var contentString = '<div class="gm-info-window-content-edit">'+name+'<\/div>';
 				<?php
 				echo 'var image = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png",';
 					echo 'new google.maps.Size(20, 34),'; // Image size
@@ -3393,7 +3392,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				google.maps.event.addListener(marker, 'click', function() {
 					infowindow.close();
-					infowindow.setContent(contentString);
+					infowindow.setContent(name);
 					infowindow.open(map, marker);
 				});
 
@@ -3422,9 +3421,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					if (response.length > 0) {
 						for (var i=0; i<response.length; i++) {
 							// 5 decimal places is approx 1 metre accuracy.
-							var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br>('+response[i].geometry.location.lng().toFixed(5)+','+response[i].geometry.location.lat().toFixed(5)+'';
-								name += '<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo I18N::translate('Use this value') ?></div></a>';
-								name += '</div>';
+							var name =
+								'<div>' + response[i].address_components[0].short_name +
+								'<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');">' +
+								'<?php echo I18N::translate('Use this value') ?></a>' +
+								'</div>';
 							var point = response[i].geometry.location;
 							var marker = createMarker(i, point, name);
 							bounds.extend(response[i].geometry.location);
