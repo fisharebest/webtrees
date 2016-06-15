@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-14 06:53+0000\n"
+"PO-Revision-Date: 2016-06-15 05:48+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -6860,7 +6860,7 @@ msgstr "germinal"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:333
 msgid "Get an API key from Google."
-msgstr "Obtenir une clé API de Google."
+msgstr "Procurez-vous une clé API de Google."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6765
@@ -6944,7 +6944,7 @@ msgstr "Google Street View™"
 
 #: app/Module/GoogleMapsModule.php:331
 msgid "Google allows a small number of anonymous map requests per day.  If you need more than this, you will need a Google account and an API key."
-msgstr "Google autorise chaque jour un petit nombre de requêtes anonymes. S’il vous en faut plus, vous devez ouvrir un compte Google et obtenir une clé API."
+msgstr "Google autorise chaque jour la construction d’un petit nombre de cartes avec des requêtes anonymes. S’il vous en faut plus, vous devez ouvrir un compte Google et obtenir une clé API."
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:508
@@ -14469,7 +14469,7 @@ msgstr "Largeur (en pixels) que le programme utilisera lors de la génération a
 
 #: admin_users.php:318 edituser.php:176 login.php:420 setup.php:428
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr "Ceci est votre véritable nom, tel qu’il apparaîtra à l’écran."
+msgstr "Ceci est votre vrai nom, tel que vous aimeriez le voir à l’écran."
 
 #: admin_trees_check.php:135
 msgid "This may be a mistake in your data."
