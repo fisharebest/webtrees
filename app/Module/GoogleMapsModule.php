@@ -463,13 +463,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<div class="col-sm-6">
 							<div class="input-group">
 								<label class="input-group-addon" for="GM_PH_XSIZE"><?php echo I18N::translate('Width') ?></label>
-								<input id="GM_XSIZE" class="form-control" type="text" name="GM_PH_XSIZE" value="<?php echo $this->getSetting('GM_PH_XSIZE') ?>">
+								<input id="GM_PH_XSIZE" class="form-control" type="text" name="GM_PH_XSIZE" value="<?php echo $this->getSetting('GM_PH_XSIZE') ?>">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="input-group">
 								<label class="input-group-addon" for="GM_PH_YSIZE"><?php echo I18N::translate('Height') ?></label>
-								<input id="GM_YSIZE" class="form-control" type="text" name="GM_PH_YSIZE" value="<?php echo $this->getSetting('GM_PH_YSIZE') ?>">
+								<input id="GM_PH_YSIZE" class="form-control" type="text" name="GM_PH_YSIZE" value="<?php echo $this->getSetting('GM_PH_YSIZE') ?>">
 							</div>
 						</div>
 					</div>
