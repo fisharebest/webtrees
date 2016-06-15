@@ -3235,43 +3235,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				});
 			}
 
-			// The HomeControl returns user to original position and style =================
-			function HomeControl(controlDiv, map) {
-				// Set CSS styles for the DIV containing the control
-				// Setting padding to 5 px will offset the control from the edge of the map
-				controlDiv.style.paddingTop = '5px';
-				controlDiv.style.paddingRight = '0px';
-
-				// Set CSS for the control border
-				var controlUI = document.createElement('DIV');
-				controlUI.style.backgroundColor = 'white';
-				controlUI.style.color = 'black';
-				controlUI.style.borderColor = 'black';
-				controlUI.style.borderColor = 'black';
-				controlUI.style.borderStyle = 'solid';
-				controlUI.style.borderWidth = '2px';
-				controlUI.style.cursor = 'pointer';
-				controlUI.style.textAlign = 'center';
-				controlUI.title = '';
-				controlDiv.appendChild(controlUI);
-
-				// Set CSS for the control interior
-				var controlText = document.createElement('DIV');
-				controlText.style.fontFamily = 'Arial,sans-serif';
-				controlText.style.fontSize = '12px';
-				controlText.style.paddingLeft = '15px';
-				controlText.style.paddingRight = '15px';
-				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map') ?><\/b>';
-				controlUI.appendChild(controlText);
-
-				// Setup the click event listeners: simply set the map to original LatLng
-				google.maps.event.addDomListener(controlUI, 'click', function() {
-					map.setCenter(latlng);
-					map.setZoom(pl_zoom);
-					map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
-				});
-			}
-
 			function loadMap(zoom, mapType) {
 				var mapTyp;
 
@@ -3309,13 +3272,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				google.maps.event.addListener(map, 'click', function() {
 					infowindow.close();
 				});
-
-				// Create the DIV to hold the control and call HomeControl() passing in this DIV. --
-				var homeControlDiv = document.createElement('DIV');
-				var homeControl = new HomeControl(homeControlDiv, map);
-				homeControlDiv.index = 1;
-				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
-				// ---------------------------------------------------------------------------------
 
 				// Check for zoom changes
 				google.maps.event.addListener(map, 'zoom_changed', function() {
