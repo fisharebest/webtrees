@@ -858,7 +858,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '<div class="gm-pedigree-map">';
 		echo '<div class="gm-wrapper" style="height:' . $this->getSetting('GM_YSIZE') . 'px;">';
 		echo '<div class="gm-map"><i class="icon-loading-large"></i></div>';
-		echo '<div id="side_bar"></div>';
+		echo '<div class="gm-ancestors"></div>';
 		echo '</div>';
 
 		if (Auth::isAdmin()) {
@@ -910,9 +910,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		global $PEDIGREE_GENERATIONS;
 
 		$js = '
-		// this variable will collect the html which will eventually be placed in the side_bar
-		var side_bar_html = "";
-		// arrays to hold copies of the markers and html used by the side_bar
+		// this variable will collect the html which will eventually be placed in the side bar
+		var gm_ancestors_html = "";
+		// arrays to hold copies of the markers and html used by the side bar
 		// because the function closure trick doesnt work there
 		var gmarkers = [];
 		var index = 0;
@@ -1197,20 +1197,20 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				if(el.hasClass("person_box")) {
 					el
 						.removeClass("person_box")
-						.addClass("link_visited");
+						.addClass("gm-ancestor-visited");
 					infowindow.close();
 				} else {
 					el
 					.addClass("person_box")
-					.removeClass("link_visited");
+					.removeClass("gm-ancestor-visited");
 				}
 				var anchor = infowindow.getAnchor();
 				lastlinkid = anchor ? anchor.id : null;
 			});
-			// save the info we need to use later for the side_bar
+			// save the info we need to use later for the side bar
 			gmarkers[index] = marker;
-			// add a line to the side_bar html
-			side_bar_html += "<div id=\'link_" + index++ + "\' class=\'link\'>" + html +"</div>";
+			gm_ancestors_html += "<div id=\"link_" + index++ + "\" class=\"gm-ancestor\">" + html +"</div>";
+
 			return marker;
 		};
 		// create the map
@@ -1230,9 +1230,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		};
 		var pm_map = new google.maps.Map(document.querySelector(".gm-map"), myOptions);
 		google.maps.event.addListener(pm_map, "click", function() {
-			jQuery(".link.person_box")
+			jQuery(".gm-ancestor.person_box")
 				.removeClass("person_box")
-				.addClass("link_visited");
+				.addClass("gm-ancestor-visited");
 			infowindow.close();
 			lastlinkid = null;
 		});
@@ -1316,8 +1316,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						}
 
 						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
-						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","' . $dataleft . '<div class=\"relation\">' . $datamid . $dataright . '</div>", "';
-						$js .= '<div>';
+						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","' . $dataleft . '<div class=\"gm-ancestor-link\">' . $datamid . $dataright . '</div>", "';
+						$js .= '<div class=\"gm-info-window\">';
 						$js .= '<a href=\"module.php?ged=' . $person->getTree()->getNameUrl() . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $person->getXref() . '&amp;PEDIGREE_GENERATIONS=' . $PEDIGREE_GENERATIONS;
 						$js .= '\" title=\"' . I18N::translate('Pedigree map') . '\">' . $dataleft . '</a>' . $datamid . $dataright . '</div>", "' . $marker_number . '");';
 						// Construct the polygon lines
@@ -1356,27 +1356,27 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		} else {
 			pm_map.fitBounds(bounds);
 		}
-		pm_map.setCenter(bounds.getCenter());' .
+		pm_map.setCenter(bounds.getCenter());
 		// Close the sidebar highlight when the infowindow is closed
-		'google.maps.event.addListener(infowindow, "closeclick", function() {
-			jQuery("#link_"+lastlinkid).toggleClass("link_visited person_box ");
+		google.maps.event.addListener(infowindow, "closeclick", function() {
+			jQuery("#link_" + lastlinkid).toggleClass("gm-ancestor-visited person_box");
 			lastlinkid = null;
-		});' .
-		// put the assembled side_bar_html contents into the side_bar div
-		'document.getElementById("side_bar").innerHTML = side_bar_html;';
+		});
+		// put the assembled gm_ancestors_html contents into the gm-ancestors div
+		document.querySelector(".gm-ancestors").innerHTML = gm_ancestors_html;
 
-		$js .= 'jQuery(".relation")
-					.on("click", "a", function(e) {
-						e.stopPropagation();
-					})' .
-					'.on("click", function(e) {
-						if (lastlinkid != null) {
-							jQuery("#link_" + lastlinkid).toggleClass("person_box link_visited");
-						}
-						var el = jQuery(this).closest(".link");
-						var target = el.attr("id").split("_").pop();
-						google.maps.event.trigger(gmarkers[target], "click");
-					});
+		jQuery(".gm-ancestor-link")
+			.on("click", "a", function(e) {
+				e.stopPropagation();
+			})' .
+			'.on("click", function(e) {
+				if (lastlinkid != null) {
+					jQuery("#link_" + lastlinkid).toggleClass("person_box gm-ancestor-visited");
+				}
+				var el = jQuery(this).closest(".gm-ancestor");
+				var target = el.attr("id").split("_").pop();
+				google.maps.event.trigger(gmarkers[target], "click");
+			});
 		';
 
 		return $js;
@@ -1964,7 +1964,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$places = array_keys($unique_places);
 			ob_start();
 			// Create the normal googlemap sidebar of events and children
-			echo '<div id="side_bar" class="optionbox"><table class="facts_table">';
+			echo '<div class="gm-events" class="optionbox"><table class="facts_table">';
 
 			foreach ($events as $event) {
 				$index = array_search($event['placeid'], $places);
@@ -2417,7 +2417,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$adminplaces_url .= '&amp;parent=' . $latlng['pl_id'];
 			}
 			$update_places_url = 'admin_trees_places.php?ged=' . $WT_TREE->getNameHtml() . '&amp;search=' . urlencode(implode(', ', array_reverse($parent)));
-			echo '<div id="place_map_links" style="width:' . $this->getSetting('GM_PH_XSIZE') . 'px;">';
+			echo '<div class="gm-options">';
 			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
 			echo ' | <a href="' . $adminplaces_url . '">' . I18N::translate('Geographic data') . '</a>';
 			echo ' | <a href="' . $placecheck_url . '">' . I18N::translate('Place check') . '</a>';
@@ -2450,11 +2450,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$frameheight = $this->getSetting('GM_PH_YSIZE') + 35; // Add height of buttons
 
 				?>
-				<iframe id="sv_frame" style="height: <?php echo $frameheight ?>px;" src="module.php?mod=googlemap&amp;mod_action=wt_street_view&amp;x=<?php echo $sv_lng ?>&amp;y=<?php echo $sv_lat ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir ?>&amp;p=<?php echo $sv_pitch ?>&amp;m=<?php echo $sv_zoom ?>&amp;j=1&amp;k=1&amp;v=1"></iframe>
+				<iframe class="gm-streetview-frame" style="height: <?php echo $frameheight ?>px;" src="module.php?mod=googlemap&amp;mod_action=wt_street_view&amp;x=<?php echo $sv_lng ?>&amp;y=<?php echo $sv_lat ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir ?>&amp;p=<?php echo $sv_pitch ?>&amp;m=<?php echo $sv_zoom ?>&amp;j=1&amp;k=1&amp;v=1"></iframe>
 				<?php
 				if (Auth::isAdmin()) {
 					?>
-					<div id="sv_parameters">
+					<div class="gm-streetview-parameters">
 						<form method="post" action="module.php?mod=googlemap&amp;mod_action=places_edit">
 							<?php echo Filter::getCsrf() ?>
 							<input type='hidden' name='placeid' value='<?php echo $placeid ?>'>
