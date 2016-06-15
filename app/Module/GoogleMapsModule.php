@@ -768,7 +768,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<table class="list_table">
 				<tr>
 					<td class="descriptionbox wrap">
-						<?php echo I18N::translate('Individual') ?>
+						<label for="rootid">
+							<?php echo I18N::translate('Individual') ?>
+						</label>
 					</td>
 					<td class="optionbox">
 						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref() ?>">
@@ -780,10 +782,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap">
-						<?php echo I18N::translate('Generations') ?>
+						<label for="PEDIGREE_GENERATIONS">
+							<?php echo I18N::translate('Generations') ?>
+						</label>
 					</td>
 					<td class="optionbox">
-						<select name="PEDIGREE_GENERATIONS">
+						<select name="PEDIGREE_GENERATIONS" id="PEDIGREE_GENERATIONS">
 						<?php
 							for ($p = 3; $p <= $MAX_PEDIGREE_GENERATIONS; $p++) {
 								echo '<option value="', $p, '" ';
@@ -905,17 +909,17 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function pedigreeMapJavascript() {
 		global $PEDIGREE_GENERATIONS;
 
-		$js = '' .
+		$js = '
 		// this variable will collect the html which will eventually be placed in the side_bar
-		'var side_bar_html = "";' .
+		var side_bar_html = "";
 		// arrays to hold copies of the markers and html used by the side_bar
 		// because the function closure trick doesnt work there
-		'var gmarkers = [];
+		var gmarkers = [];
 		var index = 0;
 		var lastlinkid;
-		var infowindow = new google.maps.InfoWindow({});' .
+		var infowindow = new google.maps.InfoWindow({});
 		// === Create an associative array of GIcons()
-		'var gicons = [];
+		var gicons = [];
 		gicons["1"]        = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon1.png")
 		gicons["1"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
 									new google.maps.Size(37, 34), // Shadow size
@@ -1202,15 +1206,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 				var anchor = infowindow.getAnchor();
 				lastlinkid = anchor ? anchor.id : null;
-			});' .
+			});
 			// save the info we need to use later for the side_bar
-			'gmarkers[index] = marker;' .
+			gmarkers[index] = marker;
 			// add a line to the side_bar html
-			'side_bar_html += "<div id=\'link_" + index++ + "\' class=\'link\'>" + html +"</div>";
+			side_bar_html += "<div id=\'link_" + index++ + "\' class=\'link\'>" + html +"</div>";
 			return marker;
-		};' .
+		};
 		// create the map
-		'var myOptions = {
+		var myOptions = {
 			zoom: 6,
 			center: new google.maps.LatLng(0, 0),
 			mapTypeId: google.maps.MapTypeId.TERRAIN,  // ROADMAP, SATELLITE, HYBRID, TERRAIN
@@ -1231,9 +1235,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				.addClass("link_visited");
 			infowindow.close();
 			lastlinkid = null;
-		});' .
+		});
 		// create the map bounds
-		'var bounds = new google.maps.LatLngBounds();';
+		var bounds = new google.maps.LatLngBounds();';
 		// add the points
 		$curgen       = 1;
 		$count        = 0;
