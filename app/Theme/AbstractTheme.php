@@ -1357,7 +1357,7 @@ abstract class AbstractTheme {
 				$record = GedcomRecord::getInstance($favorite['gid'], $this->tree);
 				if ($record && $record->canShowName()) {
 					$submenus[] = new Menu($record->getFullName(), $record->getHtmlUrl());
-					$records[] = $record;
+					$records[]  = $record;
 				}
 				break;
 			}

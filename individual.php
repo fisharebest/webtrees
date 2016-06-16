@@ -252,4 +252,3 @@ echo
 		$sidebar_html;
 	}
 	echo '</div>'; // close #main
-
