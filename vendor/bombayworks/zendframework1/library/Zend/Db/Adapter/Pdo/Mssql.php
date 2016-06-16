@@ -420,4 +420,19 @@ class Zend_Db_Adapter_Pdo_Mssql extends Zend_Db_Adapter_Pdo_Abstract
             return null;
         }
     }
+
+    /**
+     * Quote a raw string.
+     *
+     * @param string $value     Raw string
+     * @return string           Quoted string
+     */
+    protected function _quote($value)
+    {
+        if (!is_int($value) && !is_float($value)) {
+            // Fix for null-byte injection
+            $value = addcslashes($value, "\000\032");
+        }
+        return parent::_quote($value);
+    }
 }

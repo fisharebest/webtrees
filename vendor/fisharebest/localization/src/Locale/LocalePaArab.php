@@ -16,7 +16,6 @@ class LocalePaArab extends LocalePa {
 
 	public function numberSymbols() {
 		return array(
-			//self::GROUP    => self::ARAB_GROUP,
 			self::DECIMAL  => self::ARAB_DECIMAL,
 		);
 	}

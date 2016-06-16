@@ -246,7 +246,7 @@ class Zend_Form_Decorator_ViewHelper extends Zend_Form_Decorator_Abstract
 
         // Check list separator
         if (isset($attribs['listsep'])
-            && in_array($helper, array('formMulticheckbox', 'formRadio', 'formSelect'))
+            && in_array($helper, array('formMultiCheckbox', 'formRadio', 'formSelect'))
         ) {
             $listsep = $attribs['listsep'];
             unset($attribs['listsep']);
