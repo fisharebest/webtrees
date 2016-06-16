@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-15 01:51+0000\n"
+"PO-Revision-Date: 2016-06-16 01:21+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -76,13 +76,13 @@ msgstr "Az ezen: %1$s %2$s lévő %3$s hivatkozik erre: %4$s."
 #: app/Functions/Functions.php:2114
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s %2$s. szintű unokája"
+msgstr "%1$s %2$s. fokú unokája"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2117
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr "%1$s %2$s. rendű nagyszülője"
+msgstr "%1$s %2$s. fokú nagyszülője"
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1636
@@ -231,7 +231,7 @@ msgstr "%s és gyerekeik"
 #: app/Module/ClippingsCartModule.php:128
 #, php-format
 msgid "%s and their descendants"
-msgstr "%s és leszármazottaik"
+msgstr "%s és utódok"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5908
 #, php-format
@@ -379,13 +379,13 @@ msgstr[1] "%s jegyzet frissítése megtörtént."
 #: app/Functions/Functions.php:2090
 #, php-format
 msgid "%s once removed ascending"
-msgstr "%s. rendű unokatestvér gyereke"
+msgstr "%s elsőfokú unokatestvér gyereke"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2093
 #, php-format
 msgid "%s once removed descending"
-msgstr "%s. rendű unokatestvér szülője"
+msgstr "%s elsőfokú unokatestvére"
 
 #: app/I18N.php:809
 #, php-format
@@ -412,25 +412,25 @@ msgstr[1] "%s forrás frissítése megtörtént."
 #: app/Functions/Functions.php:2106
 #, php-format
 msgid "%s three times removed ascending"
-msgstr "%s. rendű unokatestvér dédunokája"
+msgstr "%s harmadfokú unokatestvér dédunokája"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2109
 #, php-format
 msgid "%s three times removed descending"
-msgstr "%s. rendű unokatestvér dédszülője"
+msgstr "%s harmadfokú unokatestvér dédszülője"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2098
 #, php-format
 msgid "%s twice removed ascending"
-msgstr "%s. rendű unokatestvér unokája"
+msgstr "%s másodfokú unokatestvér unokája"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2101
 #, php-format
 msgid "%s twice removed descending"
-msgstr "%s. rendű unokatestvér nagyszülője"
+msgstr "%s másodfokú unokatestvér nagyszülője"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:57 app/I18N.php:309
@@ -513,7 +513,7 @@ msgstr "%s, házastársai és gyermekei"
 #: app/Module/ClippingsCartModule.php:241
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr "%s, házastársai és leszármazottai"
+msgstr "%s, házastársai és utódai"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:225
@@ -537,7 +537,7 @@ msgstr "%s, házastársai és gyermekei"
 #: app/Module/ClippingsCartModule.php:244
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr "%s, házastársai és leszármazottai"
+msgstr "%s, házastársai és utódai"
 
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:624
 #: app/Module/UserMessagesModule.php:102
@@ -746,12 +746,12 @@ msgstr "Egy ábra, amely két személy közötti kapcsolatot mutat."
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "Egy ábra, amely egy személy őseit és leszármazottjait családi könyvként mutat."
+msgstr "Egy ábra, amely egy személy őseit és utódait családi albumként mutat."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "Egy ábra, amely egy személy őseit tömör családfaként mutat."
+msgstr "Egy ábra, amely egy személy őseit tömör faként mutat."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
@@ -766,7 +766,7 @@ msgstr "Egy személy őseinek ábrája."
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr "Egy személy leszármazottjainak ábrája."
+msgstr "Egy személy utódainak ábrája."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
@@ -788,7 +788,7 @@ msgstr "Egy adatbázisszerver különböző adatbázisokat is tárolhat. Válass
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr "Egy személy őseinek legyezős ábrája."
+msgstr "Egy személy őseinek legyezőábrája."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:225
 msgid "A file on the server"
@@ -821,7 +821,7 @@ msgstr "Gyakran ismételt kérdések (GYIK) és válaszok listája."
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:49
 msgid "A list of records that have been updated recently."
-msgstr "Az utóbbi időben módosított bejegyzések listája."
+msgstr "Az utóbbi időben frissített bejegyzések listája."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:44
@@ -913,7 +913,7 @@ msgstr "Jelentés egy személy őseiről – elbeszélő stílusban."
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "Jelentés egy személy leszármazottairól – elbeszélő stílusban."
+msgstr "Jelentés egy személy utódairól – elbeszélő stílusban."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
@@ -1020,32 +1020,32 @@ msgstr "Oldalpanel egy személy nem származástani adatainak megjelenítésére
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr "Oldalpanel egy személy leszármazottainak megjelenítésére."
+msgstr "Oldalpanel egy személy utódainak megjelenítésére."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
 msgid "A tab showing the close relatives of an individual."
-msgstr "Egy személy közeli rokonait megjelenítő fül."
+msgstr "A személy közeli rokonai."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
 msgid "A tab showing the facts and events of an individual."
-msgstr "Egy személyhez kötődő tényeket és eseményeket megjelenítő fül."
+msgstr "A személyhez kötődő tények és események."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Egy személyhez rendelt médiaobjektumokat megjelenítő fül."
+msgstr "A személyhez kapcsolódó médiaobjektumok."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
 msgid "A tab showing the notes attached to an individual."
-msgstr "Egy személyhez fűződő jegyzeteket megjelenítő fül."
+msgstr "A személyhez fűződő jegyzetek."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr "Egy személyhez kötött forrásokat megjelenítő fül."
+msgstr "A személyhez kapcsolódó források."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
@@ -1961,12 +1961,12 @@ msgstr "Hiba történt a tömörített fájl kibontása közben."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr "Egy személy őseinek és leszármazottjainak homokóraábrája."
+msgstr "Egy személy őseinek és utódainak homokóraábrája."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "Családfaág – egy személy összes ősével és leszármazottjával."
+msgstr "Egy családfaág – a személy összes ősével és utódával."
 
 #: setup.php:505
 msgid "An unexpected database error occurred."
@@ -3955,14 +3955,14 @@ msgstr "Comore-szigetek"
 #: app/Controller/CompactController.php:46
 #: app/Module/CompactTreeChartModule.php:33
 msgid "Compact tree"
-msgstr "Tömör családfa"
+msgstr "Tömör fa"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:43
 #: app/Controller/CompactController.php:125
 #, php-format
 msgid "Compact tree of %s"
-msgstr "%s tömör családfája"
+msgstr "%s tömör fája"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
@@ -4614,7 +4614,7 @@ msgstr "Küldés dátuma"
 #: admin_trees_config.php:713
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar. For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
-msgstr "A dátumok csak akkor válthatók át, ha érvényesek a naptár számára. Például csak %1$s és %2$s közti napok válthatók át francia forradalmi naptárra, és csak %3$s utáni napok válthatók át Gergely-naptárra."
+msgstr "A dátumok csak akkor válthatók át, ha érvényesek a naptár számára. Például csak %1$s és %2$s közötti napok válthatók át francia forradalmi naptárra, és csak %3$s utáni napok válthatók át Gergely-naptárra."
 
 #: help_text.php:134
 msgid "Dates are stored using English abbreviations and keywords. Shortcuts are available as alternatives to these abbreviations and keywords."
@@ -5107,7 +5107,7 @@ msgstr "Az Ön szerverkonfigurációjától függően automatikusan is frissíth
 
 #: familybook.php:90
 msgid "Descendant generations"
-msgstr "Leszármazott nemzedékek"
+msgstr "Utódnemzedékek"
 
 #. I18N: gedcom tag DESC
 #. I18N: Name of a module/chart
@@ -5123,7 +5123,7 @@ msgstr "Leszármazott nemzedékek"
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Descendants"
-msgstr "Leszármazottak"
+msgstr "Utódok"
 
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:366
@@ -6079,13 +6079,13 @@ msgstr "E családban házastárs"
 #: app/Controller/FamilyBookController.php:63
 #: app/Module/FamilyBookChartModule.php:33
 msgid "Family book"
-msgstr "Családi könyv"
+msgstr "Családi album"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/FamilyBookController.php:60
 #, php-format
 msgid "Family book of %s"
-msgstr "%s családi könyve"
+msgstr "%s családi albuma"
 
 #. I18N: gedcom tag FAMF
 #: app/GedcomTag.php:452
@@ -6201,13 +6201,13 @@ msgstr "Család feleséggel"
 #. I18N: Name of a module/chart
 #: app/Controller/FanchartController.php:56 app/Module/FanChartModule.php:33
 msgid "Fan chart"
-msgstr "Legyezős ábra"
+msgstr "Legyezőábra"
 
 #. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Controller/FanchartController.php:53
 #, php-format
 msgid "Fan chart of %s"
-msgstr "%s legyezős ábrája"
+msgstr "%s legyezőábrája"
 
 #: app/Date/JalaliDate.php:183
 msgctxt "Abbreviation for Persian month: Farvardin"
@@ -7287,7 +7287,7 @@ msgstr "Hongkong"
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php:196 app/Module/HourglassChartModule.php:33
 msgid "Hourglass chart"
-msgstr "Homokóra"
+msgstr "Homokóraábra"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/HourglassController.php:87
@@ -7532,7 +7532,7 @@ msgstr "Sok kultúrában szokás hagyományos betűkkel írt, hagyományos nevet
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:716
 msgid "In some calendars, days start at midnight. In other calendars, days start at sunset. The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
-msgstr "Egyes naptárakban a napok éjfélkor kezdődnek, míg más naptárakban napnyugtával. Az átalakítás ezt az időeltolódást nem veszi figyelembe, ezért a napnyugta és éjfél között történt események a két eltérő típusú naptár közti váltás során egy napi időeltolódást szenvednek."
+msgstr "Egyes naptárakban a napok éjfélkor kezdődnek, míg más naptárakban napnyugtával. Az átalakítás ezt az időeltolódást nem veszi figyelembe, ezért a napnyugta és éjfél között történt események a két eltérő típusú naptár közötti váltás során egy napi időeltolódást szenvednek."
 
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: admin_trees_config.php:459
@@ -8389,7 +8389,7 @@ msgstr "Kapcsolás egy létező médiaobjektumhoz"
 #. I18N: gedcom tag _DBID
 #: app/GedcomTag.php:1352
 msgid "Linked database ID"
-msgstr "Kapcsolt adatbázis-azonosító"
+msgstr "Kapcsolódó adatbázis-azonosító"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:97
 msgid "Links"
@@ -8953,7 +8953,7 @@ msgstr "Mauritius"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1280
 msgid "Maximum descendancy generations"
-msgstr "A leszármazott nemzedékek legnagyobb száma"
+msgstr "Az utódnemzedékek legnagyobb száma"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1178
@@ -10666,7 +10666,7 @@ msgstr "%s származási térképe"
 #: app/Module/ChartsBlockModule.php:86
 #, php-format
 msgid "Pedigree of %s"
-msgstr "%s származása"
+msgstr "%s ősfája"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/PedigreeController.php:85
@@ -11538,7 +11538,7 @@ msgstr "Kapcsolatok"
 #: relationship.php:52
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr "%1$s és %2$s közti kapcsolat"
+msgstr "%1$s és %2$s közötti kapcsolat"
 
 #. I18N: gedcom tag RELI
 #: app/GedcomTag.php:724 modules_v3/missing_facts_report/report.xml:26
@@ -12274,12 +12274,12 @@ msgstr "Új felhasználók alapértelmezett blokkjainak beállítása"
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1252
 msgid "Set the default number of generations to display on descendancy and pedigree charts."
-msgstr "A megjelenítendő nemzedékek alapértelmezett száma a leszármazottak és ősfa ábráin."
+msgstr "A megjelenítendő nemzedékek alapértelmezett száma az utódok és ősfa ábráin."
 
 #. I18N: Help text for the “Maximum descendancy generations” configuration setting
 #: admin_trees_config.php:1292
 msgid "Set the maximum number of generations to display on descendancy charts."
-msgstr "A megjelenítendő nemzedékek maximális száma a leszármazottak ábráin."
+msgstr "A megjelenítendő nemzedékek maximális száma az utódok ábráin."
 
 #. I18N: Help text for the “Maximum pedigree generations” configuration setting
 #: admin_trees_config.php:1272
@@ -12803,7 +12803,7 @@ msgstr "Vezetéknevek listája"
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:80
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr "A helyek és események helyszínét a Google Maps™-térképszolgáltatás segítségével mutatja."
+msgstr "A helyek és események helyszíne a Google Maps™-térképszolgáltatás segítségével."
 
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
@@ -13938,11 +13938,11 @@ msgstr "A jelszavak nem egyeznek."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
-msgstr "Az összes családfát érintő beállítások felülíródtak."
+msgstr "Az összes családfát érintő beállítások frissítése megtörtént."
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr "Az új családfák beállításai felülíródtak."
+msgstr "Az új családfák beállításainak frissítése megtörtént."
 
 #: app/Module/RelationshipsChartModule.php:190
 #, php-format
@@ -13952,7 +13952,7 @@ msgstr "A(z) „%s” ábra beállításainak frissítése megtörtént."
 #: admin_trees_config.php:178 admin_trees_config.php:305
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "A(z) „%s” családfa beállításai felülíródtak."
+msgstr "A(z) „%s” családfa beállításainak frissítése megtörtént."
 
 #: admin_modules.php:86
 #, php-format
@@ -13962,7 +13962,7 @@ msgstr "A(z) „%s” modul beállításainak törlése megtörtént."
 #: app/Module/GoogleMapsModule.php:286
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "A(z) „%s” modul beállításai felülíródtak."
+msgstr "A(z) „%s” modul beállításainak frissítése megtörtént."
 
 #: setup.php:378
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -14297,7 +14297,7 @@ msgstr "A családfa utolsó frissítésének időpontja: %s"
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-msgstr "Ezt a fájlt egy másik családfa is használja a szerveren. Ameddig ez a kapcsolat él, nem törölheti, mozgathatja vagy nevezheti át."
+msgstr "Ez a fájl egy másik családfához is kapcsolódik a szerveren. Ameddig ez a kapcsolat él, nem törölheti, mozgathatja vagy nevezheti át."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:179
@@ -14522,7 +14522,7 @@ msgstr "Ezt a médiaobjektumot szerkesztették. Ellenőrizze a változtatásokat
 
 #: admin_media.php:570 find.php:640
 msgid "This media object is not linked to any other record."
-msgstr "Ez a médiaobjektum egyetlen bejegyzéshez sincs kötve."
+msgstr "Ez a médiaobjektum egyetlen másik bejegyzéshez sem kapcsolódik."
 
 #: message.php:239 message.php:280
 msgid "This message was sent while viewing the following URL: "
@@ -14569,7 +14569,7 @@ msgstr "Ezt a jegyzetet szerkesztették. Ellenőrizze a változtatásokat, amely
 #. I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting
 #: admin_trees_config.php:1538
 msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-msgstr "Ez a beállítás határozza meg, hogy azon jegyzet- és forráshivatkozások, amelyek tényekhez kapcsolódnak, megjelenjenek-e a Személyoldal Jegyzetek és Források fülén.<br><br>Általában a Jegyzetek és Források fülek csak azokat a jegyzet- és forráshivatkozásokat mutatják, amelyek közvetlenül a személy adatbázis-bejegyzéséhez kapcsolódnak. Ezek az <i>első szintű</i> jegyzet- és forráshivatkozások.<br><br>Az <b>igen</b> hatására azok a jegyzet- és forráshivatkozások, amelyek az egyes ténybejegyzések részei, szintén megjelennek ezeken a füleken. Ezek a <i>második szintű</i> jegyzet- és forráshivatkozások, mert a különböző tények az első szinten szerepelnek."
+msgstr "Ez a beállítás határozza meg, hogy azon jegyzet- és forráshivatkozások, amelyek tényekhez fűződnek, megjelenjenek-e a Személyoldal Jegyzetek és Források fülén.<br><br>Általában a Jegyzetek és Források fülek csak azokat a jegyzet- és forráshivatkozásokat mutatják, amelyek közvetlenül a személy adatbázis-bejegyzéséhez fűződnek. Ezek az <i>első szintű</i> jegyzet- és forráshivatkozások.<br><br>Az <b>igen</b> hatására azok a jegyzet- és forráshivatkozások, amelyek az egyes ténybejegyzések részei, szintén megjelennek ezeken a füleken. Ezek a <i>második szintű</i> jegyzet- és forráshivatkozások, mert a különböző tények az első szinten szerepelnek."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1508
@@ -16659,7 +16659,7 @@ msgstr "sógor/sógornő"
 
 #: app/Module/TopSurnamesModule.php:165
 msgid "bullet list"
-msgstr "felsorolás"
+msgstr "lista"
 
 #: app/Stats.php:2917
 msgid "burial"
@@ -16738,7 +16738,7 @@ msgstr "színes"
 
 #: app/Module/TopSurnamesModule.php:165
 msgid "compact list"
-msgstr "kompakt lista"
+msgstr "felsorolás"
 
 #. I18N: A button label.
 #: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1158 admin_site_merge.php:387
@@ -16867,7 +16867,7 @@ msgstr "nyolcad-unokatestvér"
 
 #: app/Functions/Functions.php:745
 msgid "elder brother"
-msgstr "idősebb fiútestvér"
+msgstr "báty"
 
 #: app/Functions/Functions.php:779
 msgid "elder sibling"
@@ -17125,7 +17125,7 @@ msgstr "unokafivér"
 #: app/Functions/Functions.php:1412
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "apa első unokatestvére"
+msgstr "apa elsőfokú unokatestvére"
 
 #: app/Functions/Functions.php:1408
 msgctxt "father’s father’s brother’s daughter"
@@ -18789,7 +18789,7 @@ msgstr "nagy-nagybácsi"
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:67
 msgid "half circle"
-msgstr "félkörös"
+msgstr "fél körös"
 
 #: app/Functions/Functions.php:832
 msgctxt "father’s son"
