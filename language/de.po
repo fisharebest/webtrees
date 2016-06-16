@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-13 05:48+0000\n"
+"PO-Revision-Date: 2016-06-16 19:09+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -15867,7 +15867,7 @@ msgstr "Willkommen, %s"
 #. I18N: A configuration setting
 #: admin_site_config.php:460
 msgid "Welcome text on sign-in page"
-msgstr "Begrüßungstext auf der Loginseite"
+msgstr "Begrüßungstext auf der Anmeldungsseite"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6931
@@ -16222,7 +16222,7 @@ msgstr "Bitte erneut anmelden, und zwar mit dem PhpGedView Benutzernamen und Pas
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:452
 msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "Die Sign-in URL muss nur dann angegeben werden, wenn Sie zu einer anderen Seite umleiten möchten, wenn die Benutzer sich anmelden. Dies ist dann sinnvoll, wenn Sie beim Benutzer-Login von http auf https wechseln möchten. Geben Sie die vollständige URL für <i>login.php</i> ein. Zum Beispiel https://www.example.com/webtrees/login.php."
+msgstr "Die Anmeldeadresse (URL) muss nur dann angegeben werden, wenn Sie zu einer anderen Seite umleiten möchten, wenn die Benutzer sich anmelden. Dies ist dann sinnvoll, wenn Sie beim Benutzer-Login von http auf https wechseln möchten. Geben Sie die vollständige URL für <i>login.php</i> ein. Zum Beispiel https://www.example.com/webtrees/login.php."
 
 #: message.php:247
 msgid "You sent the following message to a webtrees administrator:"
@@ -19645,7 +19645,7 @@ msgstr "Geschwister"
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:83 login.php:199
 msgid "sign in"
-msgstr "anmeldung"
+msgstr "Anmelden"
 
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:64
