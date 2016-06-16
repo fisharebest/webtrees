@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-16 01:21+0000\n"
+"PO-Revision-Date: 2016-06-16 20:07+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -231,7 +231,7 @@ msgstr "%s és gyerekeik"
 #: app/Module/ClippingsCartModule.php:128
 #, php-format
 msgid "%s and their descendants"
-msgstr "%s és utódok"
+msgstr "%s és utódaik"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5908
 #, php-format
@@ -746,17 +746,17 @@ msgstr "Egy ábra, amely két személy közötti kapcsolatot mutat."
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "Egy ábra, amely egy személy őseit és utódait családi albumként mutat."
+msgstr "Egy személy őseinek és utódainak családi album jellegű ábrája."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "Egy ábra, amely egy személy őseit tömör faként mutat."
+msgstr "Egy személy őseinek tömör fa jellegű ábrája."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "Egy ábra, amely egy személy őseit faként formázza."
+msgstr "Egy személy őseinek fa jellegű ábrája."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
@@ -1758,12 +1758,12 @@ msgstr "Szülők kora a gyermek születésnapja mellett"
 
 #: statistics.php:520 statisticsplot.php:1116
 msgid "Age related to birth year"
-msgstr "Életkor a születés évéhez viszonyítva"
+msgstr "Életkor a születés éve szerint"
 
 #: app/Functions/FunctionsPrintLists.php:502 statistics.php:523
 #: statisticsplot.php:1166
 msgid "Age related to death year"
-msgstr "Életkor az elhalálozás évéhez viszonyítva"
+msgstr "Életkor az elhalálozás éve szerint"
 
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:146
@@ -2392,7 +2392,7 @@ msgstr "Átlagéletkor a házasság századában"
 
 #: app/Stats.php:2589 app/Stats.php:2602
 msgid "Average age related to death century"
-msgstr "Átlagéletkor az elhalálozás századában"
+msgstr "Átlagéletkor az elhalálozás százada szerint"
 
 #: app/Module/FamilyTreeStatisticsModule.php:193
 #: app/Module/FamilyTreeStatisticsModule.php:418
@@ -10436,7 +10436,7 @@ msgstr "Felszentelés"
 #: modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6
 msgid "Orientation"
-msgstr "Orientáció"
+msgstr "Elrendezés"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:247
@@ -12714,7 +12714,7 @@ msgstr "Mutasd a szülőket"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
-msgstr "Mutasd a függőben levő változtatásokat"
+msgstr "Mutassuk a függőben lévő változtatásokat"
 
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
@@ -13670,7 +13670,7 @@ msgstr "A(z) „%s” adatmódosításait egy webhelykezelő elutasította."
 
 #: app/Module/ClippingsCartModule.php:311
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>"
-msgstr "A metszési kosárba a családfából kivonatok  („metszetek”) képezhetők, amelyek egyetlen fájlban kötegelve letölthetők, majd betölthetők más családfakezelő alkalmazásokba. A letöltött állomány GEDCOM-formátumú.<br><ul><li>Hogyan végezzük a metszést?<br>Ez igazán egyszerű: akármelyik kattintható név (személy, család vagy forrás) révén eljuthat a név részletező oldalára. Ott látható a <b>Tegyük a metszési kosárba</b> hivatkozás, melyre kattintva több opció jelenik meg a letöltéshez.</li><li>Hogyan kell letölteni?<br>Amint elem található a kosárban, a „Letöltés” hivatkozásra kattintva letöltheti. Kövesse az utasításokat és a hivatkozásokat!</li></ul>"
+msgstr "A metszési kosárba a családfából kivonatok („metszetek”) képezhetők, amelyek egyetlen fájlban kötegelve letölthetők, majd betölthetők más családfakezelő alkalmazásokba. A letöltött állomány GEDCOM-formátumú.<br><ul><li>Hogyan végezzük a metszést?<br>Ez igazán egyszerű: akármelyik kattintható név (személy, család vagy forrás) révén eljuthat a név részletező oldalára. Ott látható a <b>Tegyük a metszési kosárba</b> hivatkozás, melyre kattintva több opció jelenik meg a letöltéshez.</li><li>Hogyan kell letölteni?<br>Amint elem található a kosárban, a „Letöltés” hivatkozásra kattintva letöltheti. Kövesse az utasításokat és a hivatkozásokat!</li></ul>"
 
 #: site-unavailable.php:54
 msgid "The database reported the following error message:"
@@ -13938,7 +13938,7 @@ msgstr "A jelszavak nem egyeznek."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
-msgstr "Az összes családfát érintő beállítások frissítése megtörtént."
+msgstr "Az összes családfát érintő beállítás frissítése megtörtént."
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
@@ -14148,7 +14148,7 @@ msgstr "E személy rekordjában nincs jegyzet."
 
 #: admin_site_upgrade.php:104
 msgid "There are no pending changes."
-msgstr "Nincs függőben levő változtatás."
+msgstr "Nincs függőben lévő változtatás."
 
 #: app/Module/ResearchTaskModule.php:154
 msgid "There are no research tasks in this family tree."
@@ -16239,7 +16239,7 @@ msgstr "A következő üzenetet küldte a webtrees egyik felhasználójának:"
 
 #: admin_site_upgrade.php:98
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr "Az összes függőben levő változtatást el kell fogadnia vagy el kell utasítania frissítés előtt."
+msgstr "Az összes függőben lévő változtatást el kell fogadnia vagy el kell utasítania frissítés előtt."
 
 #: admin_site_upgrade.php:135
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -19304,7 +19304,7 @@ msgstr "patrilineáris (apai ági)"
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:56
 msgid "pending"
-msgstr "függőben levő"
+msgstr "függőben lévő"
 
 #: statistics.php:638 statisticsplot.php:873 statisticsplot.php:923
 #: statisticsplot.php:977 statisticsplot.php:1027 statisticsplot.php:1081
