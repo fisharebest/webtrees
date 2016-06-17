@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-16 20:07+0000\n"
+"PO-Revision-Date: 2016-06-17 11:05+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -94,7 +94,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:254
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$s kilobájt letöltve, %2$s másodperc alatt."
+msgstr "%1$s kilobájt letöltése %2$s másodperc alatt megtörtént."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
@@ -119,8 +119,8 @@ msgstr "Ezen: %1$s nincs visszahivatkozás erre: %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "%1$s fájl kibontása %2$s másodperc alatt kész."
-msgstr[1] "%1$s fájl kibontása %2$s másodperc alatt kész."
+msgstr[0] "%1$s fájl kibontása %2$s másodperc alatt megtörtént."
+msgstr[1] "%1$s fájl kibontása %2$s másodperc alatt megtörtént."
 
 #: app/Module/GoogleMapsModule.php:898
 #, php-format
@@ -708,7 +708,7 @@ msgstr "<b>Megjegyzés:</b> Élő személyek bizalmas információit csak a csal
 
 #: login.php:170
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
-msgstr "<center><b>Üdvözöljük ezen a származástani webhelyen!</b><center><br>E webhelyet kizárólag <u>engedéllyel ellátott</u> felhasználók érhetik el.<br><br>Amennyiben Ön rendelkezik felhasználói fiókkal, bejelentkezhet ezen az oldalon. Ha még nem, a megfelelő alábbi hivatkozásra kattintva kérhet egyet.<br><br>Az adatok ellenőrzése után a rendszergazda elfogadja vagy visszautasítja az Ön fiókkérelmét. A kérése jóváhagyásáról e-mailben kap értesítést."
+msgstr "<center><b>Üdvözöljük ezen a származástani webhelyen!</b></center><br>E webhelyet kizárólag <u>engedéllyel ellátott</u> felhasználók érhetik el.<br><br>Amennyiben Ön rendelkezik felhasználói fiókkal, bejelentkezhet ezen az oldalon. Ha még nem, a megfelelő alábbi hivatkozásra kattintva kérhet egyet.<br><br>Az adatok ellenőrzése után a rendszergazda elfogadja vagy visszautasítja az Ön fiókkérelmét. A kérése jóváhagyásáról e-mailben kap értesítést."
 
 #: login.php:173
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
