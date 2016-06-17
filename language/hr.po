@@ -733,17 +733,8 @@ msgstr "<b>Važna napomena:</b> Čarobnjak za prijenos nije u stanju premiješta
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr "<b>Molim pažnju:</b> Privatne informacije o živim osobama će biti dane samo rođacima i bliskim prijateljima. Biti ćete zamoljeni da dokažete svoju srodnost prije nego vam se prenesu ikakvi podaci. U nekim slučajevima i informacije o umrlim osobama mogu biti privatne. Ako je to slučaj, to je zato što nemamo dovoljno podataka o toj osobi da bi odredili je li osoba živa ili ne.<br><br>Prije ikakvih upita, molimo da provjerite da je osoba o kojoj se raspitujete baš ta osoba koju tražite. Provjerite podatke! Ako radite promjene na genealškim podacima, molimo da priložite informacije o vašim izvorima podataka."
 
-#: login.php:170
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
-msgstr "<center><b>Dobrodošli na genealošku web stranicu</b></center><br>Pristup ovomj stranici je dozvoljen <u>registriranim</u> korisnicima.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod.<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-poštom nakon pregleda prijave."
-
-#: login.php:173
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
-msgstr "<center><b>Dobrodošli na genealošku web stranicu</b></center><br>Pristup stranici je dopušten <u>samo članovima obitelji</u>.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-poštom nakon pregleda prijave."
-
-#: login.php:167
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
-msgstr "<center><b>Dobrodošli na genealošku web stranicu</b></center><br>Pristup stranici je dopušten svakome tko ima korisnički račun.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate korisnički račun, možete se prijaviti za dobivanje jednog na prikladnom linku ispod<br><br>Nakon pregleda vaše prijave, administrator će aktivirati vaš račun. Primiti će te potvrdu aktivacije računa na vašu e-poštu."
+msgid "Welcome to this genealogy website"
+msgstr "Dobrodošli na genealošku web stranicu"
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
@@ -7248,7 +7239,8 @@ msgid "Highest population"
 msgstr "Najveća populacija"
 
 #: index_edit.php:284 index_edit.php:367
-msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
+#, fuzzy
+msgid "Select a block and use the arrows to move it."
 msgstr "Označite blok i onda kliknite na neku od strelica kako bi ga pomicali u tom smjeru."
 
 #. I18N: gedcom tag _PRIM
@@ -10980,7 +10972,8 @@ msgid "Play"
 msgstr "Pokreni"
 
 #: login.php:338
-msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
+#, fuzzy
+msgid "Follow this link to verify your email address."
 msgstr "Molim kliknite na slijedeći link da potvrdite vaš zahtjev i adresu e-pošte."
 
 #: search.php:55
@@ -13650,7 +13643,8 @@ msgstr ""
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1052
-msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+#, fuzzy
+msgid "This option will make it easier for users to download images."
 msgstr "Preglednik medija može prikazati link, na koji kada kliknemo, možete skinuti medijsku datoteku na vaše lokalno računalo.<br><br>Vi možete sakriti link za skidanje iz sigurnosnih razloga."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -13684,7 +13678,8 @@ msgid "The changes to “%s” have been rejected."
 msgstr "Promjena na „%s” su odbijene."
 
 #: app/Module/ClippingsCartModule.php:311
-msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>"
+#, fuzzy
+msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
 msgstr "Isječci vam omogućuju da izvatke iz ovog obiteljskog stabla grupirate u jednu datoteku za preuzimanje u drugi genealoški program. Kreirana datoteka se sprema u GEDCOM formatu. <br><ul><li>Kako preuzeti isječak?<br>To je vrlo jednostavno. Kada god vidite ime, osobu, obitelj ili izvor na koji možete kliknuti, tada možete otići na detalje tog imena. Tamo ćete vidjeti opciju <b>Dodaj isječak</b>. Kada kliknete na taj link biti će vam ponuđeno nekoliko opcija za preuzimanje.</li><li>Kako preuzeti?<br>Jednom kada imate stavku u isječcima, možete ju preuzeti klikom na link <b>Preuzmi sada</b>. Slijedite instrukcije i linkove.</li></ul>"
 
 #: site-unavailable.php:54
@@ -14466,22 +14461,26 @@ msgstr "Ovo je ime SMTP servera. „localhost” znači da je servis e-pošte po
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1902
-msgid "This is the short list of GEDCOM family facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common family facts and events are listed separately, so that they can be added more easily."
 msgstr "Ovo je kratki popis GEDCOM obiteljskih činjenica koje se prikazuju pokraj punog popisa i mogu biti dodane jednim klikom."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1784
-msgid "This is the short list of GEDCOM individual facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr "Ovo je kratki popis GEDCOM činjenica pojedinaca koje se prikazuju pokraj punog popisa i mogu biti dodane jednim klikom."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2080
-msgid "This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common repository facts are listed separately, so that they can be added more easily."
 msgstr "Ovo je kratki popis GEDCOM činjenica mjesta čuvanja koje se prikazuju pokraj punog popisa i mogu biti dodane jednim klikom."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1991
-msgid "This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common source facts are listed separately, so that they can be added more easily."
 msgstr "Ovo je kratki popis GEDCOM činjenica izvora koje se prikazuju pokraj punog popisa i mogu biti dodane jednim klikom."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
@@ -15919,7 +15918,8 @@ msgstr ""
 "Ova opcija kontrolira da li će ovo svojstvo biti odabrano kao zadano."
 
 #: admin_users.php:389
-msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
+#, fuzzy
+msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr "Kada korisnik registrira račun, pošalje mu se e-poštom poruka sa potvrdnim linkom. Kada on klikne na taj link, mi znamo da je adresa e-pošte ispravna. Opcija „e-pošta provjerena” se automatski uključi."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46

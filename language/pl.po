@@ -734,17 +734,8 @@ msgstr "<b>Ważna informacja:</b> Kreator transferu nie jest w stanie wesprzeć 
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr "<b>Uwaga:</b> Informacje na temat osób żyjących są udostępniane jedynie członkom rodziny i bliskim znajomym. Przed uzyskaniem jakichkolwiek danych konieczne jest zweryfikowanie swojego pokrewieństwa. Czasem informacje o osobach zmarłych również mogą być ukryte, najczęściej kiedy brak informacji, czy dana osoba ta żyje, czy nie.<br><br>Przed zadaniem pytania sprawdź czy interesujesz się właściwą osobą, sprawdzając daty, miejsca i bliskich krewnych. Jeśli wysyłasz nowe dane genealogiczne, dołącz także informacje o źródłach pochodzenia tych danych."
 
-#: login.php:170
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
-msgstr "<center><b>Witaj na naszej stronie genealogicznej</b></center><br><br>Dostęp do tej strony mają tylko <b>autoryzowani</b> użytkownicy.<br>Jeżeli masz już swoje konto, zaloguj się.<br><br>Jeśli nie posiadasz jeszcze konta, załóż je klikając na odpowiedni odnośnik poniżej.<br>Po weryfikacji danych administrator przyjmie lub odrzuci twoje zgłoszenie.<br>Otrzymasz email z powiadomieniem o akceptacji."
-
-#: login.php:173
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
-msgstr "<center><b>Witaj na naszej stronie genealogicznej</b></center><br>Dostęp do tej strony mają jedynie <b>członkowie rodziny</b>. Jeżeli już masz swoje konto, zaloguj się.<br><br>Jeśli nie posiadasz jeszcze konta, załóż je klikając na odpowiedni odnośnik poniżej.<br>Po weryfikacji danych administrator przyjmie lub odrzuci twoje zgłoszenie.<br>Otrzymasz email z powiadomieniem o akceptacji."
-
-#: login.php:167
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
-msgstr "<center><b>Witaj na naszej stronie genealogicznej</b></center><br><br>Dostęp do tej strony mają wszystkie osoby posiadające konto użytkownika.<br>Jeżeli już masz swoje konto, zaloguj się.<br><br>Jeśli nie posiadasz jeszcze konta, załóż je klikając na odpowiedni odnośnik poniżej. Po weryfikacji danych administrator aktywuje twoje konto. Otrzymasz email z powiadomieniem o aktywacji."
+msgid "Welcome to this genealogy website"
+msgstr "Witaj na naszej stronie genealogicznej"
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
@@ -7266,7 +7257,8 @@ msgid "Highest population"
 msgstr "Duża liczba osób"
 
 #: index_edit.php:284 index_edit.php:367
-msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
+#, fuzzy
+msgid "Select a block and use the arrows to move it."
 msgstr "Zaznacz nazwę bloku, a następnie kliknij odpowiednią strzałkę aby przesunąć blok we wskazanym kierunku."
 
 #. I18N: gedcom tag _PRIM
@@ -10999,7 +10991,8 @@ msgid "Play"
 msgstr "Odtwórz"
 
 #: login.php:338
-msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
+#, fuzzy
+msgid "Follow this link to verify your email address."
 msgstr "Kliknij na odnośnik poniżej i wpisz wymagane informacje aby zweryfikować swoje konto i adres email."
 
 #: search.php:55
@@ -13667,7 +13660,8 @@ msgstr "The Hague, Holandia"
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1052
-msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+#, fuzzy
+msgid "This option will make it easier for users to download images."
 msgstr "Przeglądarka multimediów może wyświetlać odnośnik, którego kliknięcie spowoduje pobranie pliku multimedialnego na lokalny komputer użytkownika.<br><br>Ze względów bezpieczeństwa zaleca się ukryć odnośnik do pobierania plików."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -13701,7 +13695,8 @@ msgid "The changes to “%s” have been rejected."
 msgstr "Zmiany wprowadzone do wpisu „%s” zostały odrzucone."
 
 #: app/Module/ClippingsCartModule.php:311
-msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>"
+#, fuzzy
+msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
 msgstr "Koszyk wycinków umożliwia zbieranie wybranych informacji („wycinków”) z drzewa genealogicznego. Wycinki są zebrane w jednym pliku GEDCOM, który można następnie pobrać na lokalny komputer i zaimportować do innej aplikacji genealogicznej.<br><ul><li>Jak zbierać wycinki?<br>Za każdym razem, gdy dostępne są nazwiska lub nazwy, na które można kliknąć, można przejść do strony z danymi osoby, rodziny lub źródła. Znajduje się tam opcja <b>Dodaj do koszyka wycinków</b>. Po kliknięciu na ten odnośnik pojawi się kilka opcji pobierania.</li><li>Jak pobierać wycinki?<br>Kiedy zostaną zgromadzone odpowiednie wycinki, można pobrać je na lokalny komputer klikając odnośnik <b>Pobierz teraz</b>. Należy postępować zgodnie z instrukcjami.</li></ul>"
 
 #: site-unavailable.php:54
@@ -14480,22 +14475,26 @@ msgstr "Jest to nazwa serwera SMTP. ‘localhost’ oznacza, że usługa poczty 
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1902
-msgid "This is the short list of GEDCOM family facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common family facts and events are listed separately, so that they can be added more easily."
 msgstr "To jest krótka lista faktów rodzinnych GEDCOM, które są wyświetlane obok pełnej listy i mogą być szybko dodane za jednym kliknięciem myszki."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1784
-msgid "This is the short list of GEDCOM individual facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr "To jest krótka lista faktów osobowych GEDCOM, które są wyświetlane obok pełnej listy i mogą być szybko dodane za jednym kliknięciem myszki."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2080
-msgid "This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common repository facts are listed separately, so that they can be added more easily."
 msgstr "To jest krótka lista faktów repozytorium GEDCOM, które są wyświetlane obok pełnej listy i mogą być szybko dodane za jednym kliknięciem myszki."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1991
-msgid "This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common source facts are listed separately, so that they can be added more easily."
 msgstr "To jest krótka lista faktów źródłowych, które są wyświetlane obok pełnej listy i mogą być szybko dodane za jednym kliknięciem myszki."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
@@ -15929,7 +15928,8 @@ msgid "When a record is edited, the user and timestamp are recorded. Sometimes i
 msgstr "Podczas edycji wpisu rejestrowane są informacje o użytkowniku i czasie wprowadzenia zmian. W pewnych przypadkach zachodzi konieczność zachowania informacji o „ostatniej zmianie” (np. w przypadku drobnych poprawek danych wprowadzonych przez innego użytkownika). Ta opcja określa czy ta funkcjonalność jest domyślne włączona."
 
 #: admin_users.php:389
-msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
+#, fuzzy
+msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr "Gdy użytkownik zarejestruje konto, wysyłana jest wiadomość email na adres email użytkownika z odnośnikiem weryfikacyjnym. Po kliknięciu na ten odnośnik, użytkownik potwierdzi, że adres email jest prawidłowy i opcja „Email potwierdzony” zostanie zaznaczona automatycznie."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46

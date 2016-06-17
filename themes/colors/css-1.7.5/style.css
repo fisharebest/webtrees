@@ -1874,26 +1874,11 @@ div.faq_body {
 	padding: 0 1em;
 }
 
-.faq_italic {
-	font-style: italic;
-	font-weight: bold;
-	font-size: 90%;
-	padding: 0 10px;
-}
-
 .faq_top {
 	float: right;
 }
 
-.faq_edit {
-	float: right;
-}
-
 [dir=rtl] .faq_top {
-	float: left;
-}
-
-[dir=rtl] .faq_edit {
 	float: left;
 }
 
