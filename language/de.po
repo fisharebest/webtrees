@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-17 13:58+0000\n"
-"Last-Translator: Thomas Weiland <ahnenforschung@weiland24.de>\n"
+"PO-Revision-Date: 2016-06-17 14:10+0000\n"
+"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1335,7 +1335,7 @@ msgstr "Eine Notiz hinzufügen"
 
 #: app/Functions/FunctionsEdit.php:1134
 msgid "Add a restriction"
-msgstr "Neue Beschränkung hinzufügen"
+msgstr "Eine Beschränkung hinzufügen"
 
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
@@ -1412,7 +1412,7 @@ msgstr "Personen hinzufügen"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:158
 msgid "Add links"
-msgstr "Neue Verbindungen"
+msgstr "Verbindungen hinzufügen"
 
 #: app/Module/RelativesTabModule.php:226
 msgid "Add marriage details"
@@ -3844,7 +3844,7 @@ msgstr "Klicken Sie hier, um die Seitenleiste zu öffnen oder zu schließen"
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:100
 msgid "Click name to add individual to add links list."
-msgstr "Klicken Sie auf den Namen der Person um sie der Liste neuer Verbindungen hinzuzufügen."
+msgstr "Klicken Sie auf den Namen der Person um sie der Liste der Verbindungen hinzuzufügen."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:366
 msgid "Click on a title to go straight to it, or scroll down to read them all."
@@ -4142,11 +4142,11 @@ msgstr "Erstellen"
 
 #: admin_trees_manage.php:624
 msgid "Create a family tree"
-msgstr "Einen neuen Stammbaum erstellen"
+msgstr "Einen Stammbaum erstellen"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
-msgstr "Erstelle ein neues Medienobjekt"
+msgstr "Ein Medienobjekt erstellen"
 
 #: app/Functions/FunctionsEdit.php:427 edit_interface.php:1512
 #: edit_interface.php:1575
@@ -4156,18 +4156,18 @@ msgstr "Archiv erstellen"
 #: app/Functions/FunctionsEdit.php:438 edit_interface.php:1348
 #: edit_interface.php:1384
 msgid "Create a shared note"
-msgstr "Neue gemeinsame Notiz erstellen"
+msgstr "Eine gemeinsame Notiz erstellen"
 
 #: app/Functions/FunctionsEdit.php:627
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
-msgstr "Neue gemeinsame Notiz mit Hilfe des Assistenten erstellen"
+msgstr "Eine gemeinsame Notiz mit Hilfe des Assistenten erstellen"
 
 #: app/Functions/FunctionsEdit.php:460 edit_interface.php:1196
 #: edit_interface.php:1279
 msgid "Create a source"
-msgstr "Neue Quelle erstellen"
+msgstr "Eine Quelle erstellen"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
@@ -4175,7 +4175,7 @@ msgstr "Erstelle eine Webseiten Zugriffsregel"
 
 #: edit_interface.php:750
 msgid "Create an individual"
-msgstr "Erstelle eine neue Person"
+msgstr "Eine Person erstellen"
 
 #: statistics.php:432
 msgid "Create your own chart"
@@ -12496,7 +12496,7 @@ msgstr "Zeige Download-Links im Medienbetrachter"
 #. I18N: A configuration setting
 #: admin_site_config.php:500
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "Bedingungen auf der „Neues Benutzerkonto anfragen“ Seite zeigen"
+msgstr "Nutzungsbedingungen auf der Seite \"Neues Benutzerkonto anfragen\" anzeigen"
 
 #: app/Module/NotesTabModule.php:73
 msgid "Show all notes"
@@ -14631,7 +14631,7 @@ msgstr "Dieser Ort ist ohne Koordinaten"
 
 #: help_text.php:312
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
-msgstr "Dieser Prozess ermöglicht dem Webseitenbesitzer die Sicherstellung, dass die neuen Informationen den Standards und Konventionen folgen, bspw. korrekte Quellenzuordnungen, nomenklaturgerechte Ortsangaben, usw."
+msgstr "Dieser Prozess ermöglicht dem Webseitenbesitzer die Sicherstellung, dass die neuen Informationen den Standards und Konventionen folgen, wie korrekte Quellenzuordnungen, nomenklaturgerechte Ortsangaben, usw."
 
 #: gedrecord.php:90
 msgid "This record does not exist or you do not have permission to view it."
