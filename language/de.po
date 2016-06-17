@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-16 19:09+0000\n"
-"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2016-06-17 13:58+0000\n"
+"Last-Translator: Thomas Weiland <ahnenforschung@weiland24.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -6546,7 +6546,7 @@ msgstr "Diese Einstellung zeigt bei Seiten mit mehr als einem Stammbaum eine Auf
 
 #: app/Module/LoginBlockModule.php:86 login.php:207
 msgid "Forgot password?"
-msgstr "Password vergessen?"
+msgstr "Passwort vergessen?"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:496 help_text.php:136 help_text.php:148 help_text.php:159
