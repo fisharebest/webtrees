@@ -2754,12 +2754,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 		}
 
-		if (!empty($placeidlist)) {
-			// flip the array (thus removing duplicates)
-			$placeidlist = array_flip($placeidlist);
-			// remove entry for parent location
-			unset($placeidlist[$levelm]);
+		// flip the array (thus removing duplicates)
+		$placeidlist = array_flip($placeidlist);
+		// remove entry for parent location
+		unset($placeidlist[$levelm]);
 
+		if (!empty($placeidlist)) {
 			// the keys are all we care about (this reverses the earlier array_flip, and ensures there are no "holes" in the array)
 			$placeidlist = array_keys($placeidlist);
 			// note: this implode/array_fill code generates one '?' for each entry in the $placeidlist array
