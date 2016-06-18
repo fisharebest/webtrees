@@ -1012,7 +1012,8 @@ msgid "A report of vital records for a given date or place."
 msgstr "Izvještaj za vitalne zapise po datumu ili mjestu."
 
 #: admin_users.php:524
-msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
+#, fuzzy
+msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr "Dužnost je skup pristupnih prava, koja vam daju dopuštenje da vidite podatke, mijenjate postavke, itd. Pristupna prava su dodijeljena dužnosti, a dužnosti dodijeljena korisnicima. Svako obiteljsko stablo ima dodijeljen drugačiji pristup za svaku dužnost, i korisnik može imati drugačiju dužnost u svakom obiteljskom stablu."
 
 #. I18N: Description of the “Families” module
@@ -1071,7 +1072,8 @@ msgid "A timeline displaying individual events."
 msgstr ""
 
 #: admin_users.php:398
-msgid "A user will not be able to sign in until both the “email verified” and “approved by administrator” options are selected."
+#, fuzzy
+msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr "Korisnik se neće moći prijaviti dok su obje „e-pošta provjerena” i „odobreno od administratora” opcije označene."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
@@ -1688,7 +1690,8 @@ msgid "Adult christening"
 msgstr "Krštenje u odrasloj dobi"
 
 #: admin_trees_config.php:2085
-msgid "Advanced fact settings"
+#, fuzzy
+msgid "Advanced fact preferences"
 msgstr "Napredne postavke činjenica"
 
 #: admin_trees_config.php:2090
@@ -5495,7 +5498,8 @@ msgstr "Uredi pristupna pravila web stranice"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1669
-msgid "Edit options"
+#, fuzzy
+msgid "Edit preferences"
 msgstr "Opcije za uređivanje"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
@@ -5882,7 +5886,8 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr "Izvezi sva obiteljska stabla u GEDCOM datoteke…"
 
 #: admin_trees_download.php:134
-msgid "Export options"
+#, fuzzy
+msgid "Export preferences"
 msgstr "Opcije za izvoz"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
@@ -7347,7 +7352,8 @@ msgstr ""
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:750
-msgid "ID settings"
+#, fuzzy
+msgid "ID preferences"
 msgstr "ID postavke"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330
@@ -7522,7 +7528,8 @@ msgid "Import all places from a family tree"
 msgstr "Učitaj sva mjesta iz obiteljskog stabla"
 
 #: admin_trees_manage.php:270
-msgid "Import options"
+#, fuzzy
+msgid "Import preferences"
 msgstr "Opcije za uvoz"
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
@@ -10465,7 +10472,8 @@ msgid "Other folder… please type in"
 msgstr "Druga mapa… molimo unesite"
 
 #: admin_trees_config.php:2145
-msgid "Other settings"
+#, fuzzy
+msgid "Other preferences"
 msgstr "Ostale postavke"
 
 #: statistics.php:73
@@ -13066,7 +13074,8 @@ msgid "Some genealogy software creates GEDCOM files that contain media filenames
 msgstr "Neki genealoški programi kreiraju GEDCOM datoteke koje sadrže imena datoteka medija sa punom putanjom. Te putanje ne postoje na web-serveru. Da bi omogućili webrees-u pronalaženje datoteka, prvi dio putanje mora biti uklonjen."
 
 #: app/Module/GoogleMapsModule.php:453
-msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
+#, fuzzy
+msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
 msgstr "Neka imena mjesta mogu biti napisana sa prefiksima i sufiksima. Na primjer: \"Zagreb\" prema \"Grad Zagreb\". Ako obiteljsko stablo sadrži puna imena mjesta, a zemljopisna baza podataka sadrži skraćena imena mjesta, tada možete specificirati listu prefiksa i sufiksa koji će biti zanemareni. Višestruke opcije trebaju biti odvojene točka zarezom. Na primjer: \"Grad;Selo;Otok\"."
 
 #. I18N: Help text for the “Fact icons” configuration setting
@@ -15567,7 +15576,8 @@ msgid "User not verified by administrator."
 msgstr "Korisnik nije potvrđen od administratora."
 
 #: admin_trees_config.php:972
-msgid "User options"
+#, fuzzy
+msgid "User preferences"
 msgstr "Korisničke postavke"
 
 #: login.php:514 login.php:520 login.php:578 login.php:582
@@ -16241,7 +16251,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr "Morate renumerirati zapise u jednom obiteljskom stablu prije nego ih spojite."
 
 #: app/Module/ChartsBlockModule.php:139
-msgid "You must select an individual and chart type in the block configuration settings."
+#, fuzzy
+msgid "You must select an individual and a chart type in the block preferences"
 msgstr "Morate označiti pojedinca i tip grafikona u postavkama bloka."
 
 #: admin_users.php:287

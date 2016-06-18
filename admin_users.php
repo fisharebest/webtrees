@@ -395,7 +395,7 @@ case 'edit':
 						<?php echo I18N::translate('You should not approve an account unless you know that the email address is correct.'); ?>
 					</p>
 					<p class="small text-muted">
-						<?php echo I18N::translate('A user will not be able to sign in until both the “email verified” and “approved by administrator” options are selected.'); ?>
+						<?php echo I18N::translate('A user will not be able to sign in until both “email verified” and “approved by administrator” are selected.'); ?>
 					</p>
 				</div>
 			</div>
@@ -521,7 +521,7 @@ case 'edit':
 		<h3><?php echo I18N::translate('Family tree access and settings'); ?></h3>
 
 		<p>
-			<?php echo I18N::translate('A role is a set of access rights, which give permission to view data, change configuration settings, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree.'); ?>
+			<?php echo I18N::translate('A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree.'); ?>
 		</p>
 
 		<div class="row">

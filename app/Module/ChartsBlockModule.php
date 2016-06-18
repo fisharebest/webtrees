@@ -136,7 +136,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			}
 			$content .= '</tr></table>';
 		} else {
-			$content = I18N::translate('You must select an individual and chart type in the block configuration settings.');
+			$content = I18N::translate('You must select an individual and a chart type in the block preferences');
 		}
 
 		if ($template) {

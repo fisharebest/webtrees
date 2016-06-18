@@ -418,8 +418,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		echo '<p class="bad">', I18N::translate('You must enter all the administrator account fields.'), '</p>';
 	}
 	echo
-		'<h2>', I18N::translate('System settings'), '</h2>',
-		'<h3>', I18N::translate('Administrator account'), '</h3>',
+		'<h2>', I18N::translate('Administrator account'), '</h2>',
 		'<p>', I18N::translate('You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password.'), '</p>',
 		'<fieldset><legend>', I18N::translate('Administrator account'), '</legend>',
 		'<table border="0"><tr><td>',

@@ -437,7 +437,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							<?php endfor ?>
 						</div>
 					</div>
-					<p class="small text-muted"><?php echo I18N::translate('Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”.') ?></p>
+					<p class="small text-muted"><?php echo I18N::translate('Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”.') ?></p>
 				</div>
 			</fieldset>
 

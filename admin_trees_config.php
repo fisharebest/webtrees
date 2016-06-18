@@ -747,7 +747,7 @@ $controller
 	<!-- XXXXX_ID_PREFIX -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('ID settings'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('ID preferences'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<div class="row">
@@ -855,7 +855,7 @@ $controller
 				</div>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “ID settings” configuration setting */ I18N::translate('When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record.'); ?>
+				<?php echo /* I18N: Help text for the “ID preferences” configuration setting */ I18N::translate('When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -969,7 +969,7 @@ $controller
 		</div>
 	</div>
 
-	<h3><?php echo I18N::translate('User options'); ?></h3>
+	<h3><?php echo I18N::translate('User preferences'); ?></h3>
 	<!-- ALLOW_THEME_DROPDOWN -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
@@ -1666,7 +1666,7 @@ $controller
 		</div>
 	</fieldset>
 
-	<h3><?php echo /* I18N: Options for editing */ I18N::translate('Edit options'); ?></h3>
+	<h3><?php echo /* I18N: Options for editing */ I18N::translate('Edit preferences'); ?></h3>
 
 	<h3><?php echo I18N::translate('Facts for individual records'); ?></h3>
 
@@ -2082,7 +2082,7 @@ $controller
 		</div>
 	</div>
 
-	<h3><?php echo I18N::translate('Advanced fact settings'); ?></h3>
+	<h3><?php echo I18N::translate('Advanced fact preferences'); ?></h3>
 
 	<!-- ADVANCED_NAME_FACTS -->
 	<div class="form-group">
@@ -2142,7 +2142,7 @@ $controller
 		</div>
 	</div>
 
-	<h3><?php echo I18N::translate('Other settings'); ?></h3>
+	<h3><?php echo I18N::translate('Other preferences'); ?></h3>
 
 	<!-- SURNAME_TRADITION -->
 	<fieldset class="form-group">

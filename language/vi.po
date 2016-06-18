@@ -956,7 +956,8 @@ msgid "A report of vital records for a given date or place."
 msgstr "Một báo cáo về các điểm quan trọng cho một ngày hay địa điểm nào đó."
 
 #: admin_users.php:524
-msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
+#, fuzzy
+msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr "Vai trò là một tập hợp các quyền truy cập, như cho phép xem dữ liệu, thay đổi các thiết lập cấu hình, vv. Quyền truy cập được cấp cho vai trò, và vai trò được cấp cho người sử dụng. Mỗi cây gia đình có thể chỉ định quyền truy cập khác nhau cho từng vai trò, và người dùng có thể có một vai trò khác nhau trong từng cây gia đình."
 
 #. I18N: Description of the “Families” module
@@ -1015,7 +1016,8 @@ msgid "A timeline displaying individual events."
 msgstr ""
 
 #: admin_users.php:398
-msgid "A user will not be able to sign in until both the “email verified” and “approved by administrator” options are selected."
+#, fuzzy
+msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr "Môt người dùng không thể nào đăng nhập cho tới khi tùy chọn xác minh bằng email và chấp thuận của quản trị được chọn."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
@@ -1632,7 +1634,8 @@ msgid "Adult christening"
 msgstr "Lể Rửa Tội Cho Người Lớn"
 
 #: admin_trees_config.php:2085
-msgid "Advanced fact settings"
+#, fuzzy
+msgid "Advanced fact preferences"
 msgstr "Thiết đặt cho sự kiện nâng cao"
 
 #: admin_trees_config.php:2090
@@ -5435,7 +5438,8 @@ msgstr "Chỉnh sửa một qui luật truy cập website"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1669
-msgid "Edit options"
+#, fuzzy
+msgid "Edit preferences"
 msgstr "Chỉnh sửa tùy chọn"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
@@ -5822,7 +5826,8 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr "Xuất tất cả cây gia đình sang tập tin GEDCOM…"
 
 #: admin_trees_download.php:134
-msgid "Export options"
+#, fuzzy
+msgid "Export preferences"
 msgstr "Các tùy chọn xuất"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
@@ -7287,7 +7292,8 @@ msgstr "Hỗn hợp"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:750
-msgid "ID settings"
+#, fuzzy
+msgid "ID preferences"
 msgstr "Thiết đặt ID"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330
@@ -7462,7 +7468,8 @@ msgid "Import all places from a family tree"
 msgstr "Nhập tất cả các nơi từ một cây gia đình"
 
 #: admin_trees_manage.php:270
-msgid "Import options"
+#, fuzzy
+msgid "Import preferences"
 msgstr "Các tùy chọn khi nhập"
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
@@ -10401,7 +10408,8 @@ msgid "Other folder… please type in"
 msgstr "Thư mục khác… xin nhập vào"
 
 #: admin_trees_config.php:2145
-msgid "Other settings"
+#, fuzzy
+msgid "Other preferences"
 msgstr "Các thiết đặt khắc"
 
 #: statistics.php:73
@@ -13002,7 +13010,8 @@ msgid "Some genealogy software creates GEDCOM files that contain media filenames
 msgstr "Một vài phần mềm gia phả tạo tập tin GEDCOM có chưa tên tập tin đa phương tiện về đường dẫn đầy đủ. Các đường dẫn này sẽ khôn tồn tại ở máy chủ. Để cho phép webtrees tìm tập tin này, phần đầu của đường dẫn phải được loại bỏ."
 
 #: app/Module/GoogleMapsModule.php:453
-msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
+#, fuzzy
+msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
 msgstr "Vài địa danh có thể viết ra cùng tiền hoặc hậu tố tùy chọn. Thí dụ “Orange” thay vì “Orange County”. Nếu cây gia đình chứa tên địa điểm đầy đủ, nhưng cơ sở dữ liệu chứa tên ngắn của địa điểm đó, bạn phải nêu cụ thể các tiền và hậu tố được bỏ qua. Đa tùy chọn có thể tách bằng dấu chấm phẩy. Thí dụ “County;County of” hoặc “Township;Twp;Twp.”."
 
 #. I18N: Help text for the “Fact icons” configuration setting
@@ -15488,7 +15497,8 @@ msgid "User not verified by administrator."
 msgstr "Người dùng không được quản trị xác minh."
 
 #: admin_trees_config.php:972
-msgid "User options"
+#, fuzzy
+msgid "User preferences"
 msgstr "Tùy chọn người dùng"
 
 #: login.php:514 login.php:520 login.php:578 login.php:582
@@ -16157,7 +16167,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr "Bạn phải đánh số các bản ghi lại ở một trong các cây gia đình trước khi hợp nhất chúng."
 
 #: app/Module/ChartsBlockModule.php:139
-msgid "You must select an individual and chart type in the block configuration settings."
+#, fuzzy
+msgid "You must select an individual and a chart type in the block preferences"
 msgstr "Bạn phải chọn một cá nhân và loại biểu đồ trong khối thiết đặt cấu hình."
 
 #: admin_users.php:287

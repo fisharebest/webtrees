@@ -267,7 +267,7 @@ case 'importform':
 
 		<fieldset class="form-group">
 			<legend class="control-label col-sm-3">
-				<?php echo I18N::translate('Import options'); ?>
+				<?php echo I18N::translate('Import preferences'); ?>
 			</legend>
 			<div class="col-sm-9">
 				<label>

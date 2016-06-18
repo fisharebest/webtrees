@@ -957,7 +957,8 @@ msgid "A report of vital records for a given date or place."
 msgstr "对于一个给定的日期或地点的重要记录报告。"
 
 #: admin_users.php:524
-msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
+#, fuzzy
+msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr "角色是一组访问权限，它允许查看数据，更改配置设置等。访问权限分配给角色，角色授予用户。每个家谱可以分配不同的访问给每一个角色，用户可以在每个家谱的不同作用。"
 
 #. I18N: Description of the “Families” module
@@ -1016,7 +1017,8 @@ msgid "A timeline displaying individual events."
 msgstr ""
 
 #: admin_users.php:398
-msgid "A user will not be able to sign in until both the “email verified” and “approved by administrator” options are selected."
+#, fuzzy
+msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr "用户将无法登录除非“邮件验证”和“经管理员批准”的选项被选择。"
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
@@ -1633,7 +1635,8 @@ msgid "Adult christening"
 msgstr "成人洗礼"
 
 #: admin_trees_config.php:2085
-msgid "Advanced fact settings"
+#, fuzzy
+msgid "Advanced fact preferences"
 msgstr "高级事件设置"
 
 #: admin_trees_config.php:2090
@@ -5436,7 +5439,8 @@ msgstr "编辑网站的访问规则"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1669
-msgid "Edit options"
+#, fuzzy
+msgid "Edit preferences"
 msgstr "编辑选项"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
@@ -5823,7 +5827,8 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr "导出所有的家族树到GEDCOM文件…"
 
 #: admin_trees_download.php:134
-msgid "Export options"
+#, fuzzy
+msgid "Export preferences"
 msgstr "导出选项"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
@@ -7288,7 +7293,8 @@ msgstr "混合"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:750
-msgid "ID settings"
+#, fuzzy
+msgid "ID preferences"
 msgstr "ID设置"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330
@@ -7463,7 +7469,8 @@ msgid "Import all places from a family tree"
 msgstr "从一个家谱导入所有的地方"
 
 #: admin_trees_manage.php:270
-msgid "Import options"
+#, fuzzy
+msgid "Import preferences"
 msgstr "导入选项"
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
@@ -10402,7 +10409,8 @@ msgid "Other folder… please type in"
 msgstr "其他文件夹…请输入"
 
 #: admin_trees_config.php:2145
-msgid "Other settings"
+#, fuzzy
+msgid "Other preferences"
 msgstr "其他设置"
 
 #: statistics.php:73
@@ -12999,7 +13007,8 @@ msgid "Some genealogy software creates GEDCOM files that contain media filenames
 msgstr "一些家谱软件创建 GEDCOM 文件，其中包含媒体文件名的完整路径。 这些路径将在 web 服务器上不存在。 若要允许 webtrees，找到该文件，必须删除路径的第一部分。"
 
 #: app/Module/GoogleMapsModule.php:453
-msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
+#, fuzzy
+msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
 msgstr "一些地名可以用可选的前缀和后缀。例如 ‘Durham‘ 与 ‘County Durham‘。如果家谱包含完整的地名，但地理数据库包含短的地名，那么你应该指定一个列的前缀和后缀应不予考虑。应该用分号分隔多个选项。比如县 ‘County;County of‘ 或者 ‘Parish;Par;Par.‘."
 
 #. I18N: Help text for the “Fact icons” configuration setting
@@ -15485,7 +15494,8 @@ msgid "User not verified by administrator."
 msgstr "没有被管理员确认的用户。"
 
 #: admin_trees_config.php:972
-msgid "User options"
+#, fuzzy
+msgid "User preferences"
 msgstr "用户选项"
 
 #: login.php:514 login.php:520 login.php:578 login.php:582
@@ -16154,7 +16164,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr "在您可以将它们合并前，必须重新编号家谱的记录。"
 
 #: app/Module/ChartsBlockModule.php:139
-msgid "You must select an individual and chart type in the block configuration settings."
+#, fuzzy
+msgid "You must select an individual and a chart type in the block preferences"
 msgstr "块中的配置设置时您必须选择一个个体和图表类型。"
 
 #: admin_users.php:287

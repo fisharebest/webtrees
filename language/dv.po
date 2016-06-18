@@ -947,7 +947,8 @@ msgid "A report of vital records for a given date or place."
 msgstr ""
 
 #: admin_users.php:524
-msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
+#, fuzzy
+msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr ""
 
 #. I18N: Description of the “Families” module
@@ -1006,7 +1007,8 @@ msgid "A timeline displaying individual events."
 msgstr ""
 
 #: admin_users.php:398
-msgid "A user will not be able to sign in until both the “email verified” and “approved by administrator” options are selected."
+#, fuzzy
+msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr ""
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
@@ -1622,7 +1624,8 @@ msgid "Adult christening"
 msgstr ""
 
 #: admin_trees_config.php:2085
-msgid "Advanced fact settings"
+#, fuzzy
+msgid "Advanced fact preferences"
 msgstr ""
 
 #: admin_trees_config.php:2090
@@ -5425,7 +5428,8 @@ msgstr ""
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1669
-msgid "Edit options"
+#, fuzzy
+msgid "Edit preferences"
 msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
@@ -5812,7 +5816,8 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr ""
 
 #: admin_trees_download.php:134
-msgid "Export options"
+#, fuzzy
+msgid "Export preferences"
 msgstr ""
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
@@ -7277,7 +7282,8 @@ msgstr ""
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:750
-msgid "ID settings"
+#, fuzzy
+msgid "ID preferences"
 msgstr ""
 
 #: admin_site_logs.php:275 admin_site_logs.php:330
@@ -7450,7 +7456,8 @@ msgid "Import all places from a family tree"
 msgstr ""
 
 #: admin_trees_manage.php:270
-msgid "Import options"
+#, fuzzy
+msgid "Import preferences"
 msgstr ""
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
@@ -10389,7 +10396,8 @@ msgid "Other folder… please type in"
 msgstr ""
 
 #: admin_trees_config.php:2145
-msgid "Other settings"
+#, fuzzy
+msgid "Other preferences"
 msgstr ""
 
 #: statistics.php:73
@@ -12985,7 +12993,8 @@ msgid "Some genealogy software creates GEDCOM files that contain media filenames
 msgstr ""
 
 #: app/Module/GoogleMapsModule.php:453
-msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
+#, fuzzy
+msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
 msgstr ""
 
 #. I18N: Help text for the “Fact icons” configuration setting
@@ -15467,7 +15476,8 @@ msgid "User not verified by administrator."
 msgstr ""
 
 #: admin_trees_config.php:972
-msgid "User options"
+#, fuzzy
+msgid "User preferences"
 msgstr ""
 
 #: login.php:514 login.php:520 login.php:578 login.php:582
@@ -16136,7 +16146,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr ""
 
 #: app/Module/ChartsBlockModule.php:139
-msgid "You must select an individual and chart type in the block configuration settings."
+#, fuzzy
+msgid "You must select an individual and a chart type in the block preferences"
 msgstr ""
 
 #: admin_users.php:287
