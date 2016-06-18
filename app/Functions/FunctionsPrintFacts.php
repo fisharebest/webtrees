@@ -597,7 +597,7 @@ class FunctionsPrintFacts {
 		for ($j = 0; $j < $ct; $j++) {
 			if (strpos($match[$j][1], '@') === false) {
 				$source = Filter::escapeHtml($match[$j][1]) . Filter::escapeHtml(Functions::getCont(3, Functions::getSubRecord(2, "2 SOUR", $factrec, $j+1)));
-				$data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ': </span><span class="field" dir="auto">' . Filter::formatText($source, $WT_TREE) . '</span></div>';
+				$data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::formatText($source, $WT_TREE) . '</span></div>';
 			}
 		}
 		// -- find source for each fact
