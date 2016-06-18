@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-18 14:30+0000\n"
+"PO-Revision-Date: 2016-06-18 15:35+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian "
 "<https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -1159,7 +1159,7 @@ msgstr "Akadia"
 
 #: edit_changes.php:176 edit_changes.php:184
 msgid "Accept"
-msgstr "Jóváhagyás"
+msgstr "Elfogadás"
 
 #: admin_module_blocks.php:75 admin_module_charts.php:68
 #: admin_module_menus.php:90 admin_module_reports.php:68
@@ -2078,9 +2078,8 @@ msgid "Approval of account at %s"
 msgstr "Felhasználó jóváhagyása itt: %s"
 
 #: edit_changes.php:209 edit_changes.php:220
-#, fuzzy
 msgid "Accept all changes"
-msgstr "Az összes változtatás jóváhagyása"
+msgstr "Az összes változtatás elfogadása"
 
 #: admin_users.php:875
 msgid "Approved"
@@ -2159,9 +2158,8 @@ msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Biztos, hogy törli ezt az elemet a kedvencei listájából?"
 
 #: edit_changes.php:231
-#, fuzzy
 msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr "Biztos, hogy vissza szeretné vonni a családfán belüli összes változtatást?"
+msgstr "Biztos, hogy el akarja utasítani a családfa összes változtatását?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
