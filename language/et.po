@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-18 15:17+0000\n"
+"PO-Revision-Date: 2016-06-18 16:56+0000\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -1157,6 +1157,10 @@ msgstr "Acadia"
 msgid "Accept"
 msgstr "Nõustu"
 
+#: edit_changes.php:209 edit_changes.php:220
+msgid "Accept all changes"
+msgstr "Kinnita kõik muudatused"
+
 #: admin_module_blocks.php:75 admin_module_charts.php:68
 #: admin_module_menus.php:90 admin_module_reports.php:68
 #: admin_module_sidebar.php:90 admin_module_tabs.php:90
@@ -2073,11 +2077,6 @@ msgstr "Rakenda need eelistused uutele sugupuudele"
 msgid "Approval of account at %s"
 msgstr "Kasutaja kinnitamine %s"
 
-#: edit_changes.php:209 edit_changes.php:220
-#, fuzzy
-msgid "Accept all changes"
-msgstr "Kinnita kõik muudatused"
-
 #: admin_users.php:875
 msgid "Approved"
 msgstr "Kinnitatud"
@@ -2146,6 +2145,10 @@ msgstr "Kas soovid kindlasti valitud sõnumid kustutada? Kustutatud sõnumit ei 
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Olete kindel, et soovite kustutada “%s”?"
 
+#: edit_changes.php:231
+msgid "Are you sure you want to reject all the changes to this family tree?"
+msgstr "Olete kindel, et tahate tühistada kõik sellele sugupuule tehtud muudatused?"
+
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
 msgstr "Olete kindel, et soovide eemaldada viited sellele meediaobjektile?"
@@ -2153,11 +2156,6 @@ msgstr "Olete kindel, et soovide eemaldada viited sellele meediaobjektile?"
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Kas soovid kindlasti selle lemmiku nimekirjast eemaldada?"
-
-#: edit_changes.php:231
-#, fuzzy
-msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr "Olete kindel, et tahate tühistada kõik sellele sugupuule tehtud muudatused?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
@@ -11470,6 +11468,14 @@ msgstr "Tavaline väljend"
 msgid "Regular expressions are an advanced pattern matching technique."
 msgstr "Tavalised väljendid on keerukamad mustriloomis tehnikad."
 
+#: edit_changes.php:181 edit_changes.php:201
+msgid "Reject"
+msgstr "Lükka tagasi"
+
+#: edit_changes.php:211 edit_changes.php:231
+msgid "Reject all changes"
+msgstr "Lükka kõik muudatused tagasi"
+
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
 #: modules_v3/individual_ext_report/report.xml:3
@@ -15288,16 +15294,6 @@ msgstr "Ei leia kirjet, mille ID on"
 #: app/GedcomCode/GedcomCodeStat.php:112
 msgid "Uncleared: insufficient data"
 msgstr "Uncleared: pole piisavalt andmeid"
-
-#: edit_changes.php:181 edit_changes.php:201
-#, fuzzy
-msgid "Reject"
-msgstr "Taasta"
-
-#: edit_changes.php:211 edit_changes.php:231
-#, fuzzy
-msgid "Reject all changes"
-msgstr "Tühista kõik muudatused"
 
 #: admin_trees_config.php:1823
 msgid "Unique family facts"
