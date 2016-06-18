@@ -593,7 +593,8 @@ class FunctionsPrintFacts {
 		$ct = preg_match_all("/$level SOUR (.*)/", $factrec, $match, PREG_SET_ORDER);
 		for ($j = 0; $j < $ct; $j++) {
 			if (strpos($match[$j][1], '@') === false) {
-				$data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::escapeHtml($match[$j][1]) . '</span></div>';
+				$data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Old Source') . ': </span>';
+				$data .= '<span class="field" dir="auto">' . Filter::escapeHtml($match[$j][1]) . '</span></div>';
 			}
 		}
 		// -- find source for each fact
