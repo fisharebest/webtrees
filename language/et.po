@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-18 16:56+0000\n"
+"PO-Revision-Date: 2016-06-18 19:39+0000\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -982,9 +982,8 @@ msgid "A report of vital records for a given date or place."
 msgstr "Väljavõte erinevatest kirjetest etteantud ajal või kohas."
 
 #: admin_users.php:524
-#, fuzzy
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Roll on juurdepääsuõiguste kogum, mis annab võimaluse vaadata andmeid, muuta konfiguratsiooniseadeid jne. Juurdepääsuõigused on määratud erinevatele rollidele ja rollid on määratud kasutajatele. Iga sugupuu saab määrata erineva juurdepääsurolli ja kasutajad saavad omada erinevat rolli igas sugupuus."
+msgstr "Roll on juurdepääsuõiguste kogum, mis annab võimaluse vaadata andmeid, muuta eelistusi jne. Juurdepääsuõigused on määratud erinevatele rollidele ja rollid on määratud kasutajatele. Igas sugupuus saab määrata erinevad juurdepääsuõigused erinevatele rollidele ja kasutajad saavad omada erinevat rolli igas sugupuus."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1042,7 +1041,6 @@ msgid "A timeline displaying individual events."
 msgstr "Ajajoon, mis kuvab üksikuid sündmuseid."
 
 #: admin_users.php:398
-#, fuzzy
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr "Kasutaja ei saa enne sisse logida, kuni mõlemad punktid: \"e-mail kinnitatud\" ja \"kinnitatud administraatori poolt\" on valitud."
 
@@ -1666,9 +1664,8 @@ msgid "Adult christening"
 msgstr "Täiskasvanu ristimine"
 
 #: admin_trees_config.php:2085
-#, fuzzy
 msgid "Advanced fact preferences"
-msgstr "Täpsemad faktiseaded"
+msgstr "Täpsemad faktieelistused"
 
 #: admin_trees_config.php:2090
 msgid "Advanced name facts"
@@ -5474,9 +5471,8 @@ msgstr "Muuda veebilehe juurdepääsureeglit"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1669
-#, fuzzy
 msgid "Edit preferences"
-msgstr "Muuda valikuid"
+msgstr "Muuda eelistusi"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
 msgid "Edit the FAQ item"
@@ -5863,9 +5859,8 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr "Ekspordi kõik sugupuud GEDCOM failidesse…"
 
 #: admin_trees_download.php:134
-#, fuzzy
 msgid "Export preferences"
-msgstr "Eksportimise valikud"
+msgstr "Eksportimise eelistused"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: admin_trees_config.php:447
@@ -7334,9 +7329,8 @@ msgstr "Hübriid"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:750
-#, fuzzy
 msgid "ID preferences"
-msgstr "ID seaded"
+msgstr "ID eelistused"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330
 msgid "IP address"
@@ -7508,9 +7502,8 @@ msgid "Import all places from a family tree"
 msgstr "Impordi kõik asukohad sugupuust"
 
 #: admin_trees_manage.php:270
-#, fuzzy
 msgid "Import preferences"
-msgstr "Importimise valikud"
+msgstr "Importimise eelistused"
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -10452,9 +10445,8 @@ msgid "Other folder… please type in"
 msgstr "Teises kataloogis... palun trüki"
 
 #: admin_trees_config.php:2145
-#, fuzzy
 msgid "Other preferences"
-msgstr "Muud seaded"
+msgstr "Muud eelistused"
 
 #: statistics.php:73
 msgid "Others"
@@ -13060,9 +13052,8 @@ msgid "Some genealogy software creates GEDCOM files that contain media filenames
 msgstr "Mõned genealoogia tarkvarad loovad GEDCOM faile, mis sisaldavad meedia failinimesid täispikkade (faili) asukohtadega. Need asukohad ei eksisteeri veebiserveris. Selleks, et lubada webtrees-il faili leida, peate faili esmase asukoha eemaldama."
 
 #: app/Module/GoogleMapsModule.php:453
-#, fuzzy
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Mõnesid kohanimesid saab kirjutada valikuliste ees- ja järelliidetega. Näiteks \"Orange\" või \"Orange maakond\". Kui sugupuu sisaldab täispikki kohnimesid, aga andmebaas sisaldab lühikseid kohanimesid, siis te peaksite määrama nimekirja ees- ja järelliidetest mida peaks eirama. Mitu võimalust tuleks eralda semikoolonitega. Näiteks “County;County of” või “Township;Twp;Twp.”."
+msgstr "Mõnesid kohanimesid saab kirjutada valikuliste ees- ja järelliidetega. Näiteks \"Orange\" või \"Orange County\". Kui sugupuu sisaldab täispikki kohanimesid, aga andmebaas sisaldab lühikesi kohanimesid, siis te peaksite määrama nimekirja ees- ja järelliidetest mida peaks eirama. Mitu võimalust tuleks eralda semikoolonitega. Näiteks “County;County of” või “Township;Twp;Twp.”."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1493
@@ -15535,9 +15526,8 @@ msgid "User not verified by administrator."
 msgstr "Kasutaja pole administraatori poolt kinnitatud."
 
 #: admin_trees_config.php:972
-#, fuzzy
 msgid "User preferences"
-msgstr "Kasutaja valikud"
+msgstr "Kasutaja eelistused"
 
 #: login.php:514 login.php:520 login.php:578 login.php:582
 msgid "User verification"
@@ -16202,9 +16192,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr "Selleks, et saaksite need puud liita peate ühes puus kirjed ümbernummerdama."
 
 #: app/Module/ChartsBlockModule.php:139
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Te peate valima isiku ja joonise tüübi bloki konfiguratsiooniseadetest."
+msgstr "Te peate valima isiku ja joonise tüübi bloki konfiguratsioonieelistustest"
 
 #: admin_users.php:287
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
