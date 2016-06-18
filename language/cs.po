@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-12 07:56+0000\n"
+"PO-Revision-Date: 2016-06-18 16:54+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -736,9 +736,6 @@ msgstr "<b>Důležitá poznámka:</b> Průvodce pro přechod neumí pomoct s př
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr "<b>Poznámka:</b> Soukromá data žijících osob budou poskytnuta pouze příbuzným a blízkým přátelům. Než obdržíte soukromá data, požádáme vás o potvrzení vašeho vztahu. Někdy jsou soukromá i data o nežijících osobách. Tak je tomu v případech, kdy není dostatek údajů o tom, zda daná osoba žije nebo ne, nebo máme o dané osobě málo informací.<br><br>Než se začnete ptát, ověřte si zkontrolováním dat, míst a blízkých příbuzných, že se ptáte na správnou osobu. Pokud navrhujete změny genealogických údajů, poskytněte prameny, ze kterých vycházíte."
 
-msgid "Welcome to this genealogy website"
-msgstr "Vítejte na těchto rodopisných stránkách"
-
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
 msgid "<default theme>"
@@ -1189,6 +1186,10 @@ msgstr "Acadia"
 #: edit_changes.php:176 edit_changes.php:184
 msgid "Accept"
 msgstr "Přijmout"
+
+#: edit_changes.php:209 edit_changes.php:220
+msgid "Accept all changes"
+msgstr "Schválit všechny změny"
 
 #: admin_module_blocks.php:75 admin_module_charts.php:68
 #: admin_module_menus.php:90 admin_module_reports.php:68
@@ -2106,11 +2107,6 @@ msgstr "Tyto předvolby vztáhnout na nové rodokmeny"
 msgid "Approval of account at %s"
 msgstr "Schválení účtu v %s"
 
-#: edit_changes.php:209 edit_changes.php:220
-#, fuzzy
-msgid "Accept all changes"
-msgstr "Schválit všechny změny"
-
 #: admin_users.php:875
 msgid "Approved"
 msgstr "Schváleno"
@@ -2179,6 +2175,10 @@ msgstr "Jste si jistí, že chcete smazat tuto zprávu? Nebude možné ji pozdě
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Opravdu chcete vymazat „%s“?"
 
+#: edit_changes.php:231
+msgid "Are you sure you want to reject all the changes to this family tree?"
+msgstr "Opravdu chcete odmítnout všechny změny provedené v tomto rodokmenu?"
+
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
 msgstr "Opravdu chcete odstranit odkazy na tento mediální objekt?"
@@ -2186,11 +2186,6 @@ msgstr "Opravdu chcete odstranit odkazy na tento mediální objekt?"
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Jste si jisti, že chcete odstranit tuto položku z vašich oblíbených?"
-
-#: edit_changes.php:231
-#, fuzzy
-msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr "Opravdu chcete zrušit všechny změny provedené v tomto rodokmenu?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
@@ -6529,6 +6524,10 @@ msgstr "Složka"
 msgid "Folder name on server"
 msgstr "Jméno složky na serveru"
 
+#: login.php:338
+msgid "Follow this link to verify your email address."
+msgstr "Přejděte na tento odkaz a ověřte svoji e-mailovou adresu."
+
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
@@ -7259,11 +7258,6 @@ msgstr "Schovat přede všemi"
 #: app/Stats.php:1740
 msgid "Highest population"
 msgstr "Nejvyšší populace"
-
-#: index_edit.php:284 index_edit.php:367
-#, fuzzy
-msgid "Select a block and use the arrows to move it."
-msgstr "Označte jméno bloku a klikněte na šipku. Tímto přesunete blok ve směru daném šipkou."
 
 #. I18N: gedcom tag _PRIM
 #: app/GedcomTag.php:1564 modules_v3/individual_ext_report/report.xml:11
@@ -10994,11 +10988,6 @@ msgstr "Místa by měla být vkládána podle standardů pro rodokmeny. Nejurči
 msgid "Play"
 msgstr "Přehrát"
 
-#: login.php:338
-#, fuzzy
-msgid "Follow this link to verify your email address."
-msgstr "Prosím klikněte na odkaz dole a vyplňte požadovaná data pro ověření vašeho účtu a vaší e-mailové adresy."
-
 #: search.php:55
 msgid "Please enter a given name, surname, or place in addition to the year"
 msgstr "Zadejte k roku ještě křestní jméno, příjmení nebo místo"
@@ -11512,6 +11501,14 @@ msgstr "Regulární výraz"
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 msgid "Regular expressions are an advanced pattern matching technique."
 msgstr "Regulární výrazy jsou pokročilá technika pro vyhledávání textu."
+
+#: edit_changes.php:181 edit_changes.php:201
+msgid "Reject"
+msgstr "Odmítnout"
+
+#: edit_changes.php:211 edit_changes.php:231
+msgid "Reject all changes"
+msgstr "Odmítnout všechny změny"
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
@@ -12082,6 +12079,10 @@ msgstr "Vybrat"
 #: admin_trees_manage.php:208
 msgid "Select a GEDCOM file to import"
 msgstr "Vybrat soubor GEDCOM k importu"
+
+#: index_edit.php:284 index_edit.php:367
+msgid "Select a block and use the arrows to move it."
+msgstr "Označte jméno bloku a klikněte na šipku. Tímto přesunete blok ve směru daném šipkou."
 
 #: app/Functions/FunctionsEdit.php:404 reportengine.php:244
 msgid "Select a date"
@@ -13662,12 +13663,6 @@ msgstr "Soubor GEDCOM “%s” je importován."
 msgid "The Hague, Netherlands"
 msgstr "Den Haag, Nizozemsko"
 
-#. I18N: Help text for the “Show a download link in the media viewer” configuration setting
-#: admin_trees_config.php:1052
-#, fuzzy
-msgid "This option will make it easier for users to download images."
-msgstr "Prohlížeč médií může zobrazit odkaz, který umožní stáhnutí média do lokálního počítače.<br>Tento odkaz je možno z bezpečnostních důvodů skrýt."
-
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:82
 msgid "The PHP temporary folder is missing."
@@ -13699,9 +13694,8 @@ msgid "The changes to “%s” have been rejected."
 msgstr "Změny pro „%s“ byly odmítnuty."
 
 #: app/Module/ClippingsCartModule.php:311
-#, fuzzy
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "Schránka výstřižků vám umožňuje zkopírovat části („výstřižky“) rodokmenu a dát je dohromady do jednoho souboru, který můžete stáhnout a případně importovat do svého rodokmenového programu. Stáhnutelný soubor je ve formátu GEDCOM.<br><ul><li>Jak tvořit výstřižky?<br>Je to opravdu jednoduché. Kdykoliv uvidíte klikatelné jméno (osoba, rodina nebo zdroj), můžete jít na stránku Podrobnosti k tomuto jménu. Tam uvidíte volbu <b>Přidat do Schránky výstřižků</b>. Když kliknete na ten odkaz, v nabídce dostanete několik možnosti na stáhnutí.</li><li>Jak je stáhnout?<br>Poté, co máte všechny položky ve schránce, stáhnete je kliknutím na odkaz <b>Stáhnout nyní</b>. Následujte instrukce a další odkazy.</li></ul>"
+msgstr "Schránka výstřižků vám umožňuje vybírat úryvky z tohoto rodokmneu a stáhnout je jako soubor GEDCOM."
 
 #: site-unavailable.php:54
 msgid "The database reported the following error message:"
@@ -13940,6 +13934,26 @@ msgstr "Modul “%s” je deaktivován."
 #, php-format
 msgid "The module “%s” has been enabled."
 msgstr "Module “%s” je aktivován."
+
+#. I18N: Help text for the “Quick family facts” configuration setting
+#: admin_trees_config.php:1902
+msgid "The most common family facts and events are listed separately, so that they can be added more easily."
+msgstr "Nejužívanější rodinná fakta a události se zobrazí odděleně, takže je lze snadněji přidávat."
+
+#. I18N: Help text for the “Quick individual facts” configuration setting
+#: admin_trees_config.php:1784
+msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
+msgstr "Nejužívanější osobní fakta a události se zobrazí odděleně, takže je lze snadněji přidávat."
+
+#. I18N: Help text for the “Quick repository facts” configuration setting
+#: admin_trees_config.php:2080
+msgid "The most common repository facts are listed separately, so that they can be added more easily."
+msgstr "Nejužívanější fakta a události k repozitáři se zobrazí odděleně, takže je lze snadněji přidávat."
+
+#. I18N: Help text for the “Quick source facts” configuration setting
+#: admin_trees_config.php:1991
+msgid "The most common source facts are listed separately, so that they can be added more easily."
+msgstr "Nejužívanější fakta a události k pramenům se zobrazí odděleně, takže je lze snadněji přidávat."
 
 #: admin_site_upgrade.php:337
 #, php-format
@@ -14477,30 +14491,6 @@ msgstr "Toto je seznam údajů v GEDCOMu, které vaši uživatelé mohou přidat
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr "Toto je jméno SMTP serveru. 'localhost' znamená, že mailová služba běží na stejném počítači jako webový server."
 
-#. I18N: Help text for the “Quick family facts” configuration setting
-#: admin_trees_config.php:1902
-#, fuzzy
-msgid "The most common family facts and events are listed separately, so that they can be added more easily."
-msgstr "Toto je krátký seznam údajů o rodině v GEDCOMu, které se zobrazí vedle úplného seznamu a mohou být přidány na jeden klik myší."
-
-#. I18N: Help text for the “Quick individual facts” configuration setting
-#: admin_trees_config.php:1784
-#, fuzzy
-msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr "Toto je krátký seznam osobních údajů v GEDCOMu, které se zobrazí vedle úplného seznamu a mohou být přidány na jeden klik myší."
-
-#. I18N: Help text for the “Quick repository facts” configuration setting
-#: admin_trees_config.php:2080
-#, fuzzy
-msgid "The most common repository facts are listed separately, so that they can be added more easily."
-msgstr "Toto je krátký seznam údajů o repozitářích v GEDCOMu, které se zobrazí vedle úplného seznamu a mohou být přidány na jeden klik myší."
-
-#. I18N: Help text for the “Quick source facts” configuration setting
-#: admin_trees_config.php:1991
-#, fuzzy
-msgid "The most common source facts are listed separately, so that they can be added more easily."
-msgstr "Toto je krátký seznam údajů o pramenech v GEDCOMu, které se zobrazí vedle úplného seznamu a mohou být přidány na jeden klik myší."
-
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1080
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
@@ -14643,6 +14633,11 @@ msgstr "Tato volba vám umožní, zda zobrazovat ikonu pohlaví osob v diagramec
 #: admin_trees_config.php:1231
 msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
 msgstr "Toto nastavení určuje, jestli bude Vývod orientován na šířku nebo na výšku."
+
+#. I18N: Help text for the “Show a download link in the media viewer” configuration setting
+#: admin_trees_config.php:1052
+msgid "This option will make it easier for users to download images."
+msgstr "Tato volba usnadní uživatelům stahování obrázků."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:498
@@ -15340,16 +15335,6 @@ msgstr "Nelze nalézt záznam s ID"
 msgid "Uncleared: insufficient data"
 msgstr "Nejasné: nedostatečná data"
 
-#: edit_changes.php:181 edit_changes.php:201
-#, fuzzy
-msgid "Reject"
-msgstr "Vrátit změny"
-
-#: edit_changes.php:211 edit_changes.php:231
-#, fuzzy
-msgid "Reject all changes"
-msgstr "Vrátit všechny změny zpět"
-
 #: admin_trees_config.php:1823
 msgid "Unique family facts"
 msgstr "Jedinečné údaje o rodině"
@@ -15750,14 +15735,17 @@ msgstr "Zobrazit všechny záznamy spojené s tímto místem"
 msgid "View the archive"
 msgstr "Zobrazit archív"
 
-#: calendar.php:300
-#, fuzzy
-msgid "View this day"
-msgstr "Zobrazit den"
-
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
 msgid "View the details"
 msgstr "Zobrazit podrobnosti"
+
+#: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
+msgid "View the notes"
+msgstr "Zobrazit poznámky"
+
+#: calendar.php:300
+msgid "View this day"
+msgstr "Zobrazit tento den"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15766,34 +15754,25 @@ msgstr "Zobrazit podrobnosti"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313
-#, fuzzy
 msgid "View this family"
-msgstr "Zobrazit rodinu"
+msgstr "Zobrazit tuto rodinu"
 
 #: app/Module/GoogleMapsModule.php:1352 app/Module/SlideShowModule.php:177
 #: medialist.php:310
-#, fuzzy
 msgid "View this individual"
-msgstr "Zobrazit osobu"
+msgstr "Zobrazit tuto osobu"
 
 #: calendar.php:304
-#, fuzzy
 msgid "View this month"
-msgstr "Zobrazit měsíc"
-
-#: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
-msgid "View the notes"
-msgstr "Zobrazit poznámky"
+msgstr "Zobrazit tento měsíc"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-#, fuzzy
 msgid "View this source"
-msgstr "Zobrazit pramen"
+msgstr "Zobrazit tento pramen"
 
 #: calendar.php:308
-#, fuzzy
 msgid "View this year"
-msgstr "Zobrazit rok"
+msgstr "Zobrazit tento rok"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -15924,6 +15903,9 @@ msgstr "Vítejte %s"
 msgid "Welcome text on sign-in page"
 msgstr "Vítací text na přihlašovací stránce"
 
+msgid "Welcome to this genealogy website"
+msgstr "Vítejte na těchto rodopisných stránkách"
+
 #. I18N: Name of a country or state
 #: app/Stats.php:6931
 msgid "West Africa"
@@ -15940,7 +15922,6 @@ msgid "When a record is edited, the user and timestamp are recorded. Sometimes i
 msgstr "Při úpravě záznamu se zaznamená uživatel a časové razítko. Někdy je užitečné zachovat existující informaci „poslední změna“, např. při malých opravách změn učiněných někým jiným. Tato volba určuje, zda se bude tato vlastnost pokládat za výchozí."
 
 #: admin_users.php:389
-#, fuzzy
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr "Když se uživatel zaregistruje, je mu poslán email s ověřovacím odkazem. Když na něj klikne, my víme, že emailová adresa je správná a volba „email ověřen“ je zaškrtnuta automaticky."
 
