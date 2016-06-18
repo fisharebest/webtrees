@@ -640,7 +640,7 @@ class FunctionsImport {
 			$gedrec = self::convertInlineMedia($tree, $gedrec);
 
 			$record = new Individual($xref, $gedrec, null, $tree);
-			if ($tree->getPreference('USE_RIN') && preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
+			if (preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
 				$rin = $match[1];
 			} else {
 				$rin = $xref;

@@ -268,7 +268,6 @@ case 'general':
 	$WT_TREE->setPreference('SURNAME_TRADITION', Filter::post('SURNAME_TRADITION'));
 	$WT_TREE->setPreference('THEME_DIR', Filter::post('THEME_DIR'));
 	$WT_TREE->setPreference('THUMBNAIL_WIDTH', Filter::post('THUMBNAIL_WIDTH'));
-	$WT_TREE->setPreference('USE_RIN', Filter::postBool('USE_RIN'));
 	$WT_TREE->setPreference('USE_SILHOUETTE', Filter::postBool('USE_SILHOUETTE'));
 	$WT_TREE->setPreference('WATERMARK_THUMB', Filter::postBool('WATERMARK_THUMB'));
 	$WT_TREE->setPreference('WEBMASTER_USER_ID', Filter::post('WEBMASTER_USER_ID'));
@@ -714,19 +713,6 @@ $controller
 			</p>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Calendar conversion” configuration setting */ I18N::translate('In some calendars, days start at midnight. In other calendars, days start at sunset. The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- USE_RIN -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Use RIN number instead of GEDCOM ID'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('USE_RIN', $no_yes, $WT_TREE->getPreference('USE_RIN'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting */ I18N::translate('Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts. This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN.'); ?>
 			</p>
 		</div>
 	</fieldset>
