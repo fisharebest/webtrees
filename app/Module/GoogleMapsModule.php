@@ -246,7 +246,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$this->setSetting('GM_MAX_ZOOM', Filter::post('GM_MAX_ZOOM'));
 			$this->setSetting('GM_XSIZE', Filter::post('GM_XSIZE'));
 			$this->setSetting('GM_YSIZE', Filter::post('GM_YSIZE'));
-			$this->setSetting('GM_COORD', Filter::post('GM_COORD'));
 			$this->setSetting('GM_PLACE_HIERARCHY', Filter::post('GM_PLACE_HIERARCHY'));
 			$this->setSetting('GM_PH_XSIZE', Filter::post('GM_PH_XSIZE'));
 			$this->setSetting('GM_PH_YSIZE', Filter::post('GM_PH_YSIZE'));
@@ -491,19 +490,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					?>
 				</div>
 			</div>
-
-			<!-- GM_COORD -->
-			<fieldset class="form-group">
-				<legend class="control-label col-sm-3">
-					<?php echo I18N::translate('Display map coordinates') ?>
-				</legend>
-				<div class="col-sm-9">
-					<?php echo FunctionsEdit::editFieldYesNo('GM_COORD', $this->getSetting('GM_COORD'), 'class="radio-inline"') ?>
-					<p class="small text-muted">
-						<?php echo I18N::translate('This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers.') ?>
-					</p>
-				</div>
-			</fieldset>
 
 			<!-- SAVE BUTTON -->
 			<div class="form-group">
@@ -2588,10 +2574,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '</a>';
 			$parent[$level] = $place2['place'];
 			$this->printHowManyPeople($level + 1, $parent);
-			echo '<br><br>';
-			if ($this->getSetting('GM_COORD')) {
-				echo '', $place2['lati'], ', ', $place2['long'];
-			}
 			echo '</div>", icon_type, "', Filter::escapeJs($place2['place']), '");';
 		}
 	}
