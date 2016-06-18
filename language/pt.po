@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-18 14:22+0000\n"
+"PO-Revision-Date: 2016-06-18 14:30+0000\n"
 "Last-Translator: João Neri <neri@nery.name>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/webtrees/pt/>\n"
 "Language: pt\n"
@@ -231,7 +231,7 @@ msgstr "%s e seus filhos"
 #: app/Module/ClippingsCartModule.php:128
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s e os seus descendentes"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5908
 #, php-format
@@ -266,15 +266,15 @@ msgstr[1] "%s dias atrás"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s família foi atualizada."
+msgstr[1] "%s famílias foram atualizadas."
 
 #: admin.php:839
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s árvore genealógica"
+msgstr[1] "%s árvores genealógicas"
 
 #: app/Stats.php:5258 app/Stats.php:5262
 #, php-format
@@ -301,8 +301,8 @@ msgstr[1] "%s pessoas"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s pessoa foi atualizada."
+msgstr[1] "%s pessoas foram atualizadas."
 
 #: app/Module/GoogleMapsModule.php:909
 #, php-format
@@ -315,28 +315,28 @@ msgstr[1] "%s pessoas são privativas."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s pessoa com eventos entre %s e %s"
+msgstr[1] "%s pessoas com eventos entre %s e %s"
 
 #: app/Controller/LifespanController.php:246
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s pessoa com eventos em %s"
+msgstr[1] "%s pessoas com eventos em %s"
 
 #: app/Controller/LifespanController.php:239
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s pessoa com eventos em %s entre %s e %s"
+msgstr[1] "%s pessoas com eventos em %s entre %s e %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:119
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "%s está desativado neste servidor. Não pode instalar o webtrees até que ele esteja ativado. Por favor solicite ao administrador de seu servidor web que o ative."
 
 #: app/Module/UserMessagesModule.php:91
 #, php-format
