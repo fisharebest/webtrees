@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-17 11:05+0000\n"
+"PO-Revision-Date: 2016-06-18 09:32+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -6876,12 +6876,12 @@ msgstr "Utónév"
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:981
 msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu. To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
-msgstr "Lehetővé teszi, hogy a felhasználók saját témát válasszanak egy menüből.<br><br>E beállítástól a jelenleg aktuális téma még nem feltétlenül biztosít ilyen menüt. Hogy érvényes legyen, <b>A felhasználók saját témát választhatnak</b> opciót szintén be kell állítani."
+msgstr "Lehetővé teszi, hogy a felhasználók saját témát válasszanak egy menüből.<br><br>E beállítástól a jelenleg aktuális téma még nem feltétlenül biztosít ilyen menüt. Hogy érvényes legyen, a <a href=\"admin_site_config.php?action=site\" target=\"_blank\">Webhelybeállítások oldalon</a> is engedélyezni kell <b>A felhasználók saját témát választhatnak</b> opciót."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
 msgid "Gives users the option of selecting their own theme."
-msgstr "Lehetővé teszi a felhasználók számára, hogy kiválaszthassák a saját témájukat."
+msgstr "Lehetővé teszi, hogy a felhasználók saját témát válasszanak."
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
@@ -9354,7 +9354,7 @@ msgstr "Hónap"
 
 #: statistics.php:505 statisticsplot.php:858
 msgid "Month of birth"
-msgstr "Születési hónap"
+msgstr "A születés hónapja"
 
 #: app/Stats.php:4739 statistics.php:517 statisticsplot.php:1012
 msgid "Month of birth of first child in a relation"
@@ -9362,7 +9362,7 @@ msgstr "Az első gyermek születési hónapja egy kapcsolatban"
 
 #: statistics.php:508 statisticsplot.php:908
 msgid "Month of death"
-msgstr "Elhalálozási hónap"
+msgstr "Az elhalálozás hónapja"
 
 #: statistics.php:514 statisticsplot.php:1066
 msgid "Month of first marriage"
@@ -9370,7 +9370,7 @@ msgstr "Az első házasságkötés hónapja"
 
 #: statistics.php:511 statisticsplot.php:962
 msgid "Month of marriage"
-msgstr "Házasságkötési hónap"
+msgstr "A házasságkötés hónapja"
 
 #: timeline.php:128 timeline.php:130 timeline.php:132
 msgid "Month:"
@@ -12496,7 +12496,7 @@ msgstr "Megjelenít"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1047
 msgid "Show a download link in the media viewer"
-msgstr "Mutass letöltési hivatkozást a médiamegjelenítőben"
+msgstr "Legyen letöltési hivatkozás a médiamegjelenítőben"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:500
@@ -13628,9 +13628,14 @@ msgstr "Hága, Hollandia"
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1052
+<<<<<<< HEAD
 #, fuzzy
 msgid "This option will make it easier for users to download images."
 msgstr "A médiamegjelenítő tartalmazhat egy hivatkozást, amely rákattintáskor letölti a médiafájlt a helyi számítógépre.<br><br>Biztonsági okokból a letöltési hivatkozás elrejthető."
+=======
+msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+msgstr "A médiamegjelenítő (media viewer) tartalmazhat egy hivatkozást, amelyre kattintva letölthető a médiafájl a helyi számítógépre.<br><br>Biztonsági okokból a letöltési hivatkozás elrejthető."
+>>>>>>> translate.webtrees.net -  Hungarian -  100.0%
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:82
@@ -18939,7 +18944,7 @@ msgstr "utolsó"
 
 #: statisticsplot.php:764
 msgid "less than"
-msgstr "kevesebb mint"
+msgstr "kevesebb, mint"
 
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
@@ -19253,7 +19258,7 @@ msgstr "az elhalálozás napján"
 
 #: statisticsplot.php:788
 msgid "over"
-msgstr "felül"
+msgstr "felett"
 
 #: statistics.php:610
 msgid "overall"
