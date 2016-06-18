@@ -590,11 +590,14 @@ class FunctionsPrintFacts {
 		$nlevel = $level + 1;
 
 		// -- Systems not using source records [ 1046971 ]
+		// -- The old style is not supported when entering sources, but if found in the GEDCOM then display them fully
+		// -- Also, the old style sources allow histo.* files to use tree independent source citations, which
+		// -- will display nicely when markdown is used
 		$ct = preg_match_all("/$level SOUR (.*)/", $factrec, $match, PREG_SET_ORDER);
 		for ($j = 0; $j < $ct; $j++) {
 			if (strpos($match[$j][1], '@') === false) {
-				$data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Old Source') . ': </span>';
-				$data .= '<span class="field" dir="auto">' . Filter::escapeHtml($match[$j][1]) . '</span></div>';
+				$source = Filter::escapeHtml($match[$j][1]) . Filter::escapeHtml(Functions::getCont(3, Functions::getSubRecord(2, "2 SOUR", $factrec, $j+1)));
+				$data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ': </span><span class="field" dir="auto">' . Filter::formatText($source, $WT_TREE) . '</span></div>';
 			}
 		}
 		// -- find source for each fact
