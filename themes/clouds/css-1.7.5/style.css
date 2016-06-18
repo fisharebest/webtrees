@@ -479,6 +479,10 @@ a:hover .nameZoom {
 	vertical-align: bottom;
 }
 
+#family-table .subheaders:first-child {
+	width: 285px;
+}
+
 .age {
 	font-size: 9px;
 }
@@ -1702,6 +1706,10 @@ background-color: #fff;
 
 .blockhc img {
 	padding-right: 3px;
+}
+
+.blockhc h2 {
+	margin: 0;
 }
 
 [dir=rtl] .blockh1 {

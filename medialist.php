@@ -190,10 +190,10 @@ $medialist = QueryMedia::mediaList(
 				<td class="descriptionbox wrap"></td>
 				<td class="optionbox wrap">
 					<button type="submit" name="action" value="submit">
-						<?php echo I18N::translate('Search'); ?>
+						<?php echo /* I18N: A button label. */ I18N::translate('search'); ?>
 					</button>
 					<button type="submit" name="action" value="reset">
-						<?php echo I18N::translate('reset'); ?>
+						<?php echo /* I18N: A button label. */ I18N::translate('reset'); ?>
 					</button>
 				</td>
 			</tr>

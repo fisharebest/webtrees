@@ -110,7 +110,7 @@ $controller
 							</td>
 							<td class="facts_value" colspan="2">
 								<button type="button" onclick="return appendCensusRow('<?php echo Filter::escapeHtml(CensusAssistantModule::censusTableEmptyRow($census)); ?>');">
-									<?php echo I18N::translate('Add/insert a blank row'); ?>
+									<?php echo I18N::translate('Add a blank row'); ?>
 								</button>
 							</td>
 						</tr>

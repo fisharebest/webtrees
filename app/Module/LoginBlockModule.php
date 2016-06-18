@@ -60,8 +60,8 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 		if (Auth::check()) {
 			$title   = I18N::translate('Sign out');
 			$content = '<div class="center"><form method="post" action="logout.php" name="logoutform" onsubmit="return true;">';
-			$content .= '<br><a href="edituser.php" class="name2">' . I18N::translate('You are signed in as %s', Auth::user()->getRealNameHtml()) . '</a><br><br>';
-			$content .= '<input type="submit" value="' . I18N::translate('Sign out') . '">';
+			$content .= '<br>' . I18N::translate('You are signed in as %s.', '<a href="edituser.php" class="name2">' . Auth::user()->getRealNameHtml() . '</a>') . '<br><br>';
+			$content .= '<input type="submit" value="' . /* I18N: A button label. */ I18N::translate('sign out') . '">';
 
 			$content .= '<br><br></form></div>';
 		} else {
@@ -80,7 +80,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 					</label>
 				</div>
 				<div>
-					<input type="submit" value="' . I18N::translate('Sign in') . '">
+					<input type="submit" value="' . /* I18N: A button label. */ I18N::translate('sign in') . '">
 				</div>
 				<div>
 					<a href="#" id="passwd_click">' . I18N::translate('Forgot password?') . '</a>
@@ -95,7 +95,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 			<form id="new_passwd_form" name="new_passwd_form" action="' . WT_LOGIN_URL . '" method="post">
 			<input type="hidden" name="time" value="">
 			<input type="hidden" name="action" value="requestpw">
-			<h4>' . I18N::translate('Lost password request') . '</h4>
+			<h4>' . I18N::translate('Request a new password') . '</h4>
 			<div>
 				<label for="new_passwd_username">' . I18N::translate('Username or email address') .
 					'<input type="text" id="new_passwd_username" name="new_passwd_username" value="">

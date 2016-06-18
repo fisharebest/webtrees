@@ -68,7 +68,7 @@ case 'save':
 		if ($user_id === 0) {
 			// Create a new user
 			if (User::findByUserName($username)) {
-				FlashMessages::addMessage(I18N::translate('Duplicate user name. A user with that user name already exists. Please choose another user name.'));
+				FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
 			} elseif (User::findByEmail($email)) {
 				FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
 			} elseif ($pass1 !== $pass2) {
@@ -222,7 +222,7 @@ case 'load_json':
 		if ($user_id != Auth::id()) {
 			$datum[4] = '<a href="#" onclick="return message(\'' . Filter::escapeHtml($datum[2]) . '\', \'\', \'\');">' . Filter::escapeHtml($datum[4]) . '</i></a>';
 		}
-		// $datum[2] is the user name
+		// $datum[2] is the username
 		$datum[2] = '<span dir="auto">' . Filter::escapeHtml($datum[2]) . '</span>';
 		// $datum[5] is the langauge
 		if (array_key_exists($datum[5], $installed_languages)) {

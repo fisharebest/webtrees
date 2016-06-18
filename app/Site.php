@@ -77,7 +77,7 @@ class Site {
 
 			self::$settings[$setting_name] = $setting_value;
 
-			Log::addConfigurationLog('Site setting "' . $setting_name . '" set to "' . $setting_value . '"');
+			Log::addConfigurationLog('Site preference "' . $setting_name . '" set to "' . $setting_value . '"');
 		}
 	}
 }

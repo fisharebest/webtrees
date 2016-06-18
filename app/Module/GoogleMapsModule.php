@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Controller\ChartController;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Controller\SimpleController;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
@@ -161,48 +162,34 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
 
 		if ($this->checkMapData($controller->record)) {
-			ob_start();
-			echo '<table style="border:none; width:100%; margin-bottom: 10px;"><tr><td>';
-			echo '<table style="border:none" class="facts_table">';
-			echo '<tr><td>';
-			echo '<div id="map_pane" style="height: ', $this->getSetting('GM_YSIZE'), 'px"></div>';
-			if (Auth::isAdmin()) {
-				echo '<table width="100%"><tr class="noprint">';
-				echo '<td>';
-				echo'<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a>';
-				echo '</td>';
-				echo '<td "style=text-align:center;">';
-				echo '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_places">' . I18N::translate('Geographic data') . '</a>';
-				echo '</td>';
-				echo '<td style="text-align:end;">';
-				echo '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_placecheck">' . I18N::translate('Place check') . '</a>';
-				echo '</td>';
-				echo '</tr></table>';
-			}
-			echo '</td>';
-			echo '<td width="30%">';
-			echo '<div id="map_content">';
-
-			$this->buildIndividualMap($controller->record);
-			echo '</div>';
-			echo '</td>';
-			echo '</tr></table>';
-			echo '</td></tr></table>';
-			echo '<script>loadMap();</script>';
-
-			return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
+			// This call can return an empty string if no facts with map co-ordinates exist
+			$mapdata = $this->buildIndividualMap($controller->record);
 		} else {
-			$html = '<table class="facts_table">';
-			$html .= '<tr><td colspan="2" class="facts_value">' . I18N::translate('No map data exists for this individual');
-			$html .= '</td></tr>';
-			if (Auth::isAdmin()) {
-				$html .= '<tr><td class="center" colspan="2">';
-				$html .= '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a>';
-				$html .= '</td></tr>';
-			}
-
-			return $html;
+			$mapdata = '';
 		}
+		if ($mapdata) {
+			$html = '<div id="' . $this->getName() . '_content" class="facts_table">';
+			$html .= '<div id="wrapper" style="height:' . $this->getSetting('GM_YSIZE') . 'px;">';
+			$html .= '<div id="map_pane"></div>';
+			$html .= $mapdata;
+			$html .= '</div>';
+			if (Auth::isAdmin()) {
+				$html .= '<div class="gmoptions noprint">';
+				$html .= '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a>';
+				$html .= ' | <a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_places">' . I18N::translate('Geographic data') . '</a>';
+				$html .= ' | <a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_placecheck">' . I18N::translate('Place check') . '</a>';
+				$html .= '</div>';
+			}
+			$html .= '<script>loadMap();</script>';
+			$html .= '</div>';
+		} else {
+			$html = '<div class="facts_value noprint">' . I18N::translate('No map data exists for this individual') . '</div>';
+			if (Auth::isAdmin()) {
+				$html .= '<div style="text-align: center;"><a href="module.php?mod=googlemap&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a></div>';
+			}
+		}
+
+		return $html;
 	}
 
 	/** {@inheritdoc} */
@@ -763,9 +750,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->root->getFullName()))
 			->pageHeader()
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+			/* prepending the module css in the page head allows the theme to over-ride it*/
 			->addInlineJavascript("
-				jQuery('head').append('<link type=\"text/css\" href =\"" . WT_STATIC_URL . WT_MODULES_DIR . "googlemap/css/wt_v3_googlemap.css\" rel=\"stylesheet\">');
-				autocomplete();");
+				jQuery('head').prepend('<link type=\"text/css\" href =\"" . WT_STATIC_URL . WT_MODULES_DIR . "googlemap/css/wt_v3_googlemap.css\" rel=\"stylesheet\">');
+				autocomplete();" .
+				$this->pedigreeMapJavascript()
+			);
 
 		echo '<div id="pedigreemap-page"><h2>', $controller->getPageTitle(), '</h2>';
 
@@ -775,7 +765,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml() ?>">
 			<input type="hidden" name="mod" value="googlemap">
 			<input type="hidden" name="mod_action" value="pedigree_map">
-			<table class="list_table" width="555">
+			<table class="list_table">
 				<tr>
 					<td class="descriptionbox wrap">
 						<?php echo I18N::translate('Individual') ?>
@@ -882,7 +872,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 		echo '</td><td width="15px"></td>';
 		echo '<td width="310px">';
-		echo '<div id="side_bar" style="width:300px; font-size:0.9em; overflow:auto; overflow-x:hidden; overflow-y:auto; height:', $this->getSetting('GM_YSIZE'), 'px;"></div></td>';
+		echo '<div id="side_bar" style="height:', $this->getSetting('GM_YSIZE'), 'px;"></div></td>';
 		echo '</tr>';
 		echo '</table>';
 		// display info under map
@@ -926,7 +916,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '</div>'; // close #pedigreemap_chart
 		echo '</div>'; // close #pedigreemap-page
 		echo '<script src="', $this->googleMapsScript(), '"></script>';
-		$controller->addInlineJavascript($this->pedigreeMapJavascript());
 	}
 
 	/**
@@ -965,7 +954,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			controlUI.appendChild(controlText);' .
 			// Setup the click event listeners: simply set the map to original LatLng
 			'google.maps.event.addDomListener(controlUI, "click", function() {
-				pm_map.setMapTypeId(google.maps.MapTypeId.TERRAIN),
+				pm_map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
 				pm_map.fitBounds(bounds),
 				pm_map.setCenter(bounds.getCenter()),
 				infowindow.close()
@@ -1386,10 +1375,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						}
 
 						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
-						$js .= "var marker = createMarker(point, \"" . Filter::escapeJs($name) . "\",\"<div>" . $dataleft . $datamid . $dataright . "</div>\", \"";
-						$js .= "<div class='iwstyle'>";
-						$js .= "<a href='module.php?ged=" . $person->getTree()->getNameUrl() . "&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
-						$js .= "' title='" . I18N::translate('Pedigree map') . "'>" . $dataleft . "</a>" . $datamid . $dataright . "</div>\", \"" . $marker_number . "\");";
+						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","<div>' . $dataleft . $datamid . $dataright . '</div>", "';
+						$js .= '<div class=\"iwstyle\">';
+						$js .= '<a href=\"module.php?ged=' . $person->getTree()->getNameUrl() . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $person->getXref() . '&amp;PEDIGREE_GENERATIONS=' . $PEDIGREE_GENERATIONS;
+						$js .= '\" title=\"' . I18N::translate('Pedigree map') . '\">' . $dataleft . '</a>' . $datamid . $dataright . '</div>", "' . $marker_number . '");';
 						// Construct the polygon lines
 						$to_child = (intval(($i - 1) / 2)); // Draw a line from parent to child
 						if (array_key_exists($to_child, $lat) && $lat[$to_child] != 0 && $lon[$to_child] != 0) {
@@ -1410,6 +1399,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								plines.setMap(pm_map);';
 						}
 						// Extend and fit marker bounds
+
 						$js .= 'bounds.extend(point);';
 						$js .= 'pm_map.fitBounds(bounds);';
 						$count++;
@@ -1425,70 +1415,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			document.getElementById(lastlinkid).className = "person_box:target";
 		});' .
 		// put the assembled side_bar_html contents into the side_bar div
-		'document.getElementById("side_bar").innerHTML = side_bar_html;' .
-		// create the context menu div
-		'var contextmenu = document.createElement("div");
-			contextmenu.style.visibility="hidden";
-			contextmenu.innerHTML = "<a href=\'#\' onclick=\'zoomIn()\'><div class=\'optionbox\'>&nbsp;&nbsp;' . I18N::translate('Zoom in') . '&nbsp;&nbsp;</div></a>"
-								+ "<a href=\'#\' onclick=\'zoomOut()\'><div class=\'optionbox\'>&nbsp;&nbsp;' . I18N::translate('Zoom out') . '&nbsp;&nbsp;</div></a>"
-								+ "<a href=\'#\' onclick=\'zoomInHere()\'><div class=\'optionbox\'>&nbsp;&nbsp;' . I18N::translate('Zoom in here') . '</div></a>"
-								+ "<a href=\'#\' onclick=\'zoomOutHere()\'><div class=\'optionbox\'>&nbsp;&nbsp;' . I18N::translate('Zoom out here') . '&nbsp;&nbsp;</div></a>"
-								+ "<a href=\'#\' onclick=\'centreMapHere()\'><div class=\'optionbox\'>&nbsp;&nbsp;' . I18N::translate('Center map here') . '&nbsp;&nbsp;</div></a>";' .
-		// listen for singlerightclick
-		'google.maps.event.addListener(pm_map,"singlerightclick", function(pixel,tile) {' .
-			// store the "pixel" info in case we need it later
-			// adjust the context menu location if near an egde
-			// create a GControlPosition
-			// apply it to the context menu, and make the context menu visible
-			'clickedPixel = pixel;
-			var x=pixel.x;
-			var y=pixel.y;
-			if (x > pm_map.getSize().width - 120) { x = pm_map.getSize().width - 120 }
-			if (y > pm_map.getSize().height - 100) { y = pm_map.getSize().height - 100 }
-			var pos = new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(x,y));
-			pos.apply(contextmenu);
-			contextmenu.style.visibility = "visible";
-		});
-		' .
-		// functions that perform the context menu options
-		'function zoomIn() {' .
-			// perform the requested operation
-			'pm_map.zoomIn();' .
-			// hide the context menu now that it has been used
-			'contextmenu.style.visibility="hidden";
-		}
-		function zoomOut() {' .
-			// perform the requested operation
-			'pm_map.zoomOut();' .
-			// hide the context menu now that it has been used
-			'contextmenu.style.visibility="hidden";
-		}
-		function zoomInHere() {' .
-			// perform the requested operation
-			'var point = pm_map.fromContainerPixelToLatLng(clickedPixel)
-			pm_map.zoomIn(point,true);' .
-			// hide the context menu now that it has been used
-			'contextmenu.style.visibility="hidden";
-		}
-		function zoomOutHere() {' .
-			// perform the requested operation
-			'var point = pm_map.fromContainerPixelToLatLng(clickedPixel)
-			pm_map.setCenter(point,pm_map.getZoom()-1);' .
-			// There is no pm_map.zoomOut() equivalent
-			// hide the context menu now that it has been used
-			'contextmenu.style.visibility="hidden";
-		}
-		function centreMapHere() {' .
-			// perform the requested operation
-			'var point = pm_map.fromContainerPixelToLatLng(clickedPixel)
-			pm_map.setCenter(point);' .
-			// hide the context menu now that it has been used
-			'contextmenu.style.visibility="hidden";
-		}' .
-		// If the user clicks on the map, close the context menu
-		'google.maps.event.addListener(pm_map, "click", function() {
-			contextmenu.style.visibility="hidden";
-		});';
+		'document.getElementById("side_bar").innerHTML = side_bar_html;';
 
 		return $js;
 	}
@@ -1935,6 +1862,64 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * @param Fact $fact
+	 *
+	 * @return array
+	 */
+	private function getPlaceData(Fact $fact) {
+		$result = array();
+
+		$has_latitude  = preg_match('/\n4 LATI (.+)/', $fact->getGedcom(), $match1);
+		$has_longitude = preg_match('/\n4 LONG (.+)/', $fact->getGedcom(), $match2);
+
+		// If co-ordinates are stored in the GEDCOM then use them
+		if ($has_latitude && $has_longitude) {
+			$result = array(
+				'index'   => 'ID' . $match1[1] . $match2[1],
+				'mapdata' => array(
+					'class'        => 'optionbox',
+					'place'        => $fact->getPlace()->getFullName(),
+					'tooltip'      => $fact->getPlace()->getGedcomName(),
+					'lat'          => strtr($match1[1], array('N' => '', 'S' => '-', ',' => '.')),
+					'lng'          => strtr($match2[1], array('E' => '', 'W' => '-', ',' => '.')),
+					'pl_icon'      => '',
+					'pl_zoom'      => '0',
+					'sv_bearing'   => '0',
+					'sv_elevation' => '0',
+					'sv_lati'      => '0',
+					'sv_long'      => '0',
+					'sv_zoom'      => '0',
+					'events'       => '',
+				),
+			);
+		} else {
+			$place_location = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
+			if ($place_location && $place_location->pl_lati && $place_location->pl_long) {
+				$result = array(
+					'index'   => 'ID' . $place_location->pl_lati . $place_location->pl_long,
+					'mapdata' => array(
+						'class'        => 'optionbox',
+						'place'        => $fact->getPlace()->getFullName(),
+						'tooltip'      => $fact->getPlace()->getGedcomName(),
+						'lat'          => strtr($place_location->pl_lati, array('N' => '', 'S' => '-', ',' => '.')),
+						'lng'          => strtr($place_location->pl_long, array('E' => '', 'W' => '-', ',' => '.')),
+						'pl_icon'      => $place_location->pl_icon,
+						'pl_zoom'      => $place_location->pl_zoom,
+						'sv_bearing'   => $place_location->sv_bearing,
+						'sv_elevation' => $place_location->sv_elevation,
+						'sv_lati'      => $place_location->sv_lati,
+						'sv_long'      => $place_location->sv_long,
+						'sv_zoom'      => $place_location->sv_zoom,
+						'events'       => '',
+					),
+				);
+			}
+		}
+
+		return $result;
+	}
+
+	/**
 	 * Build a map for an individual.
 	 *
 	 * @param Individual $indi
@@ -1964,437 +1949,411 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$unique_places = array();
 
 		foreach ($facts as $fact) {
-			$index = 'ID' . $fact->getPlace()->getPlaceId();
-			if (!array_key_exists($index, $unique_places)) {
-				$unique_places[$index] = array();
-			}
-			$ctla = preg_match("/\d LATI (.*)/", $fact->getGedcom(), $match1);
-			$ctlo = preg_match("/\d LONG (.*)/", $fact->getGedcom(), $match2);
+			$place_data = $this->getPlaceData($fact);
 
-			// If co-ordinates are stored in the GEDCOM then use them
-			if ($ctla && $ctlo) {
-				if (empty($unique_places[$index])) {
-					$unique_places[$index] = array(
-						'class'        => 'optionbox',
-						'place'        => $fact->getPlace()->getFullName(),
-						'tooltip'      => $fact->getPlace()->getGedcomName(),
-						'lat'          => strtr($match1[1], array('N' => '', 'S' => '-', ',' => '.')),
-						'lng'          => strtr($match2[1], array('E' => '', 'W' => '-', ',' => '.')),
-						'pl_icon'      => '',
-						'sv_bearing'   => '0',
-						'sv_elevation' => '0',
-						'sv_lati'      => '0',
-						'sv_long'      => '0',
-						'sv_zoom'      => '0',
-						'events'       => '',
-					);
+			if (!empty($place_data)) {
+				$index = $place_data['index'];
+
+				if ($place_data['mapdata']['pl_zoom']) {
+					$GM_MAX_ZOOM = min($GM_MAX_ZOOM, $place_data['mapdata']['pl_zoom']);
 				}
-			} else {
-				$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
-				if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
-					if (empty($unique_places[$index])) {
-						$unique_places[$index] = array(
-							'class'        => 'optionbox',
-							'place'        => $fact->getPlace()->getFullName(),
-							'tooltip'      => $fact->getPlace()->getGedcomName(),
-							'lat'          => strtr($latlongval->pl_lati, array('N' => '', 'S' => '-', ',' => '.')),
-							'lng'          => strtr($latlongval->pl_long, array('E' => '', 'W' => '-', ',' => '.')),
-							'pl_icon'      => $latlongval->pl_icon,
-							'sv_bearing'   => $latlongval->sv_bearing,
-							'sv_elevation' => $latlongval->sv_elevation,
-							'sv_lati'      => $latlongval->sv_lati,
-							'sv_long'      => $latlongval->sv_long,
-							'sv_zoom'      => $latlongval->sv_zoom,
-							'events'       => '',
+				// Produce the html for the sidebar
+				$parent = $fact->getParent();
+				if ($parent instanceof Individual && $parent->getXref() !== $indi->getXref()) {
+					// Childs birth
+					$name   = '<a href="' . $parent->getHtmlUrl() . '"' . $parent->getFullName() . '</a>';
+					$label  = strtr($parent->getSex(), array('F' => I18N::translate('Birth of a daughter'), 'M' => I18N::translate('Birth of a son'), 'U' => I18N::translate('Birth of a child')));
+					$class  = 'person_box' . strtr($parent->getSex(), array('F' => 'F', 'M' => '', 'U' => 'NN'));
+					$evtStr = '<div class="info_event"><span class="highlt_img">' . $parent->displayImage() . '</span><div class="sp1">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
+				} else {
+					$spouse = $parent instanceof Family ? $parent->getSpouse($indi) : null;
+					$name   = $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '';
+					$label  = $fact->getLabel();
+					$class  = 'optionbox';
+					if ($fact->getValue() && $spouse) {
+						$evtStr = '<div class="info_event"><span class="highlt_img">' . $spouse->displayImage() . '</span><div class="sp1">' . $label . '<div>' . $fact->getValue() . '</div><div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
+					} elseif ($spouse) {
+						$evtStr = '<div class="info_event"><span class="highlt_img">' . $spouse->displayImage() . '</span><div class="sp1">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
+					} elseif ($fact->getValue()) {
+						$evtStr = '<div class="info_event"><span class="highlt_img">' . Theme::theme()->icon($fact) . '</span><div class="sp1">' . $label . '<div> ' . $fact->getValue() . '</div><div>' . $fact->getDate()->display(true) . '</div></div></div>';
+					} else {
+						$evtStr = '<div class="info_event"><span class="highlt_img">' . Theme::theme()->icon($fact) . '</span><div class="sp1">' . $label . '<div>' . $fact->getDate()->display(true) . '</div></div></div>';
+					}
+				}
+
+				if (empty($unique_places[$index])) {
+					$unique_places[$index] = $place_data['mapdata'];
+				}
+				$unique_places[$index]['events'] .= $evtStr;
+				$events[] = array(
+					'class'      => $class,
+					'fact_label' => $label,
+					'date'       => $fact->getDate()->display(true),
+					'info'       => $fact->getValue(),
+					'name'       => $name,
+					'place'      => '<a href="' . $fact->getPlace()->getURL() . '">' . $fact->getPlace()->getFullName() . '</a>',
+					'placeid'    => $index,
+				);
+			}
+		}
+
+		if (!empty($events)) {
+			$places = array_keys($unique_places);
+			ob_start();
+			// Create the normal googlemap sidebar of events and children
+			echo '<div id="map_events" class="optionbox"><table class="facts_table">';
+
+			foreach ($events as $event) {
+				$index = array_search($event['placeid'], $places);
+				echo '<tr>';
+				echo '<td class="facts_label">';
+				echo '<a href="#" onclick="return openInfowindow(\'', $index, '\')">', $event['fact_label'], '</a></td>';
+				echo '<td class="', $event['class'], '">';
+				if ($event['info']) {
+					echo '<div><span class="field">', Filter::escapeHtml($event['info']), '</span></div>';
+				}
+				if ($event['name']) {
+					echo '<div>', $event['name'], '</div>';
+				}
+				echo '<div>', $event['place'], '</div>';
+				if ($event['date']) {
+					echo '<div>', $event['date'], '</div>';
+				}
+				echo '</td>';
+				echo '</tr>';
+			}
+
+			echo '</table></div>';
+
+			// *** ENABLE STREETVIEW ***
+			$STREETVIEW = (bool) $this->getSetting('GM_USE_STREETVIEW');
+			?>
+
+			<script>
+				var map_center = new google.maps.LatLng(0, 0);
+				var gmarkers   = [];
+				var gicons     = [];
+				var map        = null;
+				var head       = '';
+				var dir        = '';
+				var svzoom     = '';
+
+				var infowindow = new google.maps.InfoWindow({});
+
+				gicons["red"] = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
+					new google.maps.Size(20, 34),
+					new google.maps.Point(0, 0),
+					new google.maps.Point(9, 34)
+				);
+
+				var iconImage = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
+					new google.maps.Size(20, 34),
+					new google.maps.Point(0, 0),
+					new google.maps.Point(9, 34)
+				);
+
+				var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
+					new google.maps.Size(37, 34),
+					new google.maps.Point(0, 0),
+					new google.maps.Point(9, 34)
+				);
+
+				var iconShape = {
+					coord: [9, 0, 6, 1, 4, 2, 2, 4, 0, 8, 0, 12, 1, 14, 2, 16, 5, 19, 7, 23, 8, 26, 9, 30, 9, 34, 11, 34, 11, 30, 12, 26, 13, 24, 14, 21, 16, 18, 18, 16, 20, 12, 20, 8, 18, 4, 16, 2, 15, 1, 13, 0],
+					type:  "poly"
+				};
+
+				function getMarkerImage(iconColor) {
+					if (typeof(iconColor) === 'undefined' || iconColor === null) {
+						iconColor = 'red';
+					}
+					if (!gicons[iconColor]) {
+						gicons[iconColor] = new google.maps.MarkerImage(
+							'//maps.google.com/mapfiles/marker' + iconColor + '.png',
+							new google.maps.Size(20, 34),
+							new google.maps.Point(0, 0),
+							new google.maps.Point(9, 34)
 						);
 					}
-					$GM_MAX_ZOOM = min($GM_MAX_ZOOM, $latlongval->pl_zoom);
-				}
-			}
-
-			// Produce the html for the sidebar
-			$parent = $fact->getParent();
-			if ($parent instanceof Individual && $parent->getXref() !== $indi->getXref()) {
-				// Childs birth
-				$name   = '<a href="' . $parent->getHtmlUrl() . '"' . $parent->getFullName() . '</a>';
-				$label  = strtr($parent->getSex(), array('F' => I18N::translate('Birth of a daughter'), 'M' => I18N::translate('Birth of a son'), 'U' => I18N::translate('Birth of a child')));
-				$class  = 'person_box' . strtr($parent->getSex(), array('F' => 'F', 'M' => '', 'U' => 'NN'));
-				$evtStr = '<div class="info_event"><span class="highlt_img">' . $parent->displayImage() . '</span><div class="sp1">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
-			} else {
-				$spouse = $parent instanceof Family ? $parent->getSpouse($indi) : null;
-				$name   = $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '';
-				$label  = $fact->getLabel();
-				$class  = 'optionbox';
-				if ($fact->getValue() && $spouse) {
-					$evtStr = '<div class="info_event"><span class="highlt_img">' . $spouse->displayImage() . '</span><div class="sp1">' . $label . '<div>' . $fact->getValue() . '</div><div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
-				} elseif ($spouse) {
-					$evtStr = '<div class="info_event"><span class="highlt_img">' . $spouse->displayImage() . '</span><div class="sp1">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
-				} elseif ($fact->getValue()) {
-					$evtStr = '<div class="info_event"><span class="highlt_img">' . Theme::theme()->icon($fact) . '</span><div class="sp1">' . $label . '<div> ' . $fact->getValue() . '</div><div>' . $fact->getDate()->display(true) . '</div></div></div>';
-				} else {
-					$evtStr = '<div class="info_event"><span class="highlt_img">' . Theme::theme()->icon($fact) . '</span><div class="sp1">' . $label . '<div>' . $fact->getDate()->display(true) . '</div></div></div>';
-				}
-			}
-
-			$unique_places[$index]['events'] .= $evtStr;
-			$events[] = array(
-				'class'      => $class,
-				'fact_label' => $label,
-				'date'       => $fact->getDate()->display(true),
-				'info'       => $fact->getValue(),
-				'name'       => $name,
-				'place'      => '<a href="' . $fact->getPlace()->getURL() . '">' . $fact->getPlace()->getFullName() . '</a>',
-				'placeid'    => $index,
-			);
-		}
-
-		// *** ENABLE STREETVIEW ***
-		$STREETVIEW = (bool) $this->getSetting('GM_USE_STREETVIEW');
-		?>
-
-		<script>
-			var map_center = new google.maps.LatLng(0,0);
-			var gmarkers = [];
-			var gicons = [];
-			var map = null;
-			var head = '';
-			var dir = '';
-			var svzoom = '';
-
-			var infowindow = new google.maps.InfoWindow({});
-
-			gicons["red"] = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
-				new google.maps.Size(20, 34),
-				new google.maps.Point(0, 0),
-				new google.maps.Point(9, 34)
-			);
-
-			var iconImage = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
-				new google.maps.Size(20, 34),
-				new google.maps.Point(0, 0),
-				new google.maps.Point(9, 34)
-			);
-
-			var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
-				new google.maps.Size(37, 34),
-				new google.maps.Point(0, 0),
-				new google.maps.Point(9, 34)
-			);
-
-			var iconShape = {
-				coord: [9, 0, 6, 1, 4, 2, 2, 4, 0, 8, 0, 12, 1, 14, 2, 16, 5, 19, 7, 23, 8, 26, 9, 30, 9, 34, 11, 34, 11, 30, 12, 26, 13, 24, 14, 21, 16, 18, 18, 16, 20, 12, 20, 8, 18, 4, 16, 2, 15, 1, 13, 0],
-				type:  "poly"
-			};
-
-			function getMarkerImage(iconColor) {
-				if (typeof(iconColor) === 'undefined' || iconColor === null) {
-					iconColor = 'red';
-				}
-				if (!gicons[iconColor]) {
-					gicons[iconColor] = new google.maps.MarkerImage(
-						'//maps.google.com/mapfiles/marker' + iconColor + '.png',
-						new google.maps.Size(20, 34),
-						new google.maps.Point(0, 0),
-						new google.maps.Point(9, 34)
-					);
-				}
-				return gicons[iconColor];
-			}
-
-			var sv2_bear = null;
-			var sv2_elev = null;
-			var sv2_zoom = null;
-			var placer   = null;
-
-			// A function to create the marker and set up the event window
-			function createMarker(latlng, html, tooltip, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
-				var contentString = '<div id="iwcontent">' + html + '</div>';
-
-				// Use flag icon (if defined) instead of regular marker icon
-				if (marker_icon) {
-					var icon_image  = new google.maps.MarkerImage(WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/' + marker_icon,
-						new google.maps.Size(25, 15),
-						new google.maps.Point(0, 0),
-						new google.maps.Point(12, 15));
-					var icon_shadow = new google.maps.MarkerImage(WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/images/flag_shadow.png',
-						new google.maps.Size(35, 45), // Shadow size
-						new google.maps.Point(0, 0),  // Shadow origin
-						new google.maps.Point(1, 45)  // Shadow anchor is base of flagpole
-					);
-				} else {
-					var icon_image  = getMarkerImage('red');
-					var icon_shadow = iconShadow;
+					return gicons[iconColor];
 				}
 
-				// Decide if marker point is Regular (latlng) or StreetView (sv_point) derived
-				if (sv_point == '(0, 0)' || sv_point == '(null, null)') {
-					placer = latlng;
-				} else {
-					placer = sv_point;
-				}
+				var sv2_bear = null;
+				var sv2_elev = null;
+				var sv2_zoom = null;
+				var placer   = null;
 
-				// Define the marker
-				var marker = new google.maps.Marker({
-					position: placer,
-					icon:     icon_image,
-					shadow:   icon_shadow,
-					map:      map,
-					title:    tooltip,
-					zIndex:   Math.round(latlng.lat() * -100000) << 5
-				});
+				// A function to create the marker and set up the event window
+				function createMarker(latlng, html, tooltip, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
+					var contentString = '<div id="iwcontent">' + html + '</div>';
 
-				// Store the tab and event info as marker properties
-				marker.sv_lati  = sv_lati;
-				marker.sv_long  = sv_long;
-				marker.sv_point = sv_point;
+					// Use flag icon (if defined) instead of regular marker icon
+					if (marker_icon) {
+						var icon_image  = new google.maps.MarkerImage(WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/' + marker_icon,
+							new google.maps.Size(25, 15),
+							new google.maps.Point(0, 0),
+							new google.maps.Point(12, 15));
+						var icon_shadow = new google.maps.MarkerImage(WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/images/flag_shadow.png',
+							new google.maps.Size(35, 45), // Shadow size
+							new google.maps.Point(0, 0),  // Shadow origin
+							new google.maps.Point(1, 45)  // Shadow anchor is base of flagpole
+						);
+					} else {
+						var icon_image  = getMarkerImage('red');
+						var icon_shadow = iconShadow;
+					}
 
-				if (sv_bearing == '') {
-					marker.sv_bearing = 0;
-				} else {
-					marker.sv_bearing = sv_bearing;
-				}
-				if (sv_elevation == '') {
-					marker.sv_elevation = 5;
-				} else {
-					marker.sv_elevation = sv_elevation;
-				}
-				if (sv_zoom == '' || sv_zoom == 0 || sv_zoom == 1) {
-					marker.sv_zoom = 1.2;
-				} else {
-					marker.sv_zoom = sv_zoom;
-				}
+					// Decide if marker point is Regular (latlng) or StreetView (sv_point) derived
+					if (sv_point == '(0, 0)' || sv_point == '(null, null)') {
+						placer = latlng;
+					} else {
+						placer = sv_point;
+					}
 
-				marker.sv_latlng = new google.maps.LatLng(sv_lati, sv_long);
-				gmarkers.push(marker);
+					// Define the marker
+					var marker = new google.maps.Marker({
+						position: placer,
+						icon:     icon_image,
+						shadow:   icon_shadow,
+						map:      map,
+						title:    tooltip,
+						zIndex:   Math.round(latlng.lat() * -100000) << 5
+					});
 
-				// Open infowindow when marker is clicked
-				google.maps.event.addListener(marker, 'click', function() {
-					infowindow.close();
-					infowindow.setContent(contentString);
-					infowindow.open(map, marker);
-					var panoramaOptions = {
-						position:          marker.position,
-						mode:              'html5',
-						navigationControl: false,
-						linksControl:      false,
-						addressControl:    false,
-						pov:               {
-							heading: sv_bearing,
-							pitch:   sv_elevation,
-							zoom:    sv_zoom
-						}
-					};
+					// Store the tab and event info as marker properties
+					marker.sv_lati  = sv_lati;
+					marker.sv_long  = sv_long;
+					marker.sv_point = sv_point;
 
-					// Use jquery for info window tabs
-					google.maps.event.addListener(infowindow, 'domready', function() {
-						//jQuery code here
-						jQuery('#EV').click(function() {
-							document.tabLayerEV                     = document.getElementById("EV");
-							document.tabLayerEV.style.background    = '#ffffff';
-							document.tabLayerEV.style.paddingBottom = '1px';
-							<?php if ($STREETVIEW) { ?>
-							document.tabLayerSV                     = document.getElementById("SV");
-							document.tabLayerSV.style.background    = '#cccccc';
-							document.tabLayerSV.style.paddingBottom = '0px';
-							<?php } ?>
-							document.panelLayer1               = document.getElementById("pane1");
-							document.panelLayer1.style.display = 'block';
-							<?php if ($STREETVIEW) { ?>
-							document.panelLayer2               = document.getElementById("pane2");
-							document.panelLayer2.style.display = 'none';
-							<?php } ?>
-						});
+					if (sv_bearing == '') {
+						marker.sv_bearing = 0;
+					} else {
+						marker.sv_bearing = sv_bearing;
+					}
+					if (sv_elevation == '') {
+						marker.sv_elevation = 5;
+					} else {
+						marker.sv_elevation = sv_elevation;
+					}
+					if (sv_zoom == '' || sv_zoom == 0 || sv_zoom == 1) {
+						marker.sv_zoom = 1.2;
+					} else {
+						marker.sv_zoom = sv_zoom;
+					}
 
-						jQuery('#SV').click(function() {
-							document.tabLayerEV                     = document.getElementById("EV");
-							document.tabLayerEV.style.background    = '#cccccc';
-							document.tabLayerEV.style.paddingBottom = '0px';
-							<?php if ($STREETVIEW) { ?>
-							document.tabLayerSV                     = document.getElementById("SV");
-							document.tabLayerSV.style.background    = '#ffffff';
-							document.tabLayerSV.style.paddingBottom = '1px';
-							<?php } ?>
-							document.panelLayer1               = document.getElementById("pane1");
-							document.panelLayer1.style.display = 'none';
-							<?php if ($STREETVIEW) { ?>
-							document.panelLayer2               = document.getElementById("pane2");
-							document.panelLayer2.style.display = 'block';
-							<?php } ?>
-							var panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
-							setTimeout(function() {
-								panorama.setVisible(true);
-							}, 100);
-							setTimeout(function() {
-								panorama.setVisible(true);
-							}, 500);
+					marker.sv_latlng = new google.maps.LatLng(sv_lati, sv_long);
+					gmarkers.push(marker);
+
+					// Open infowindow when marker is clicked
+					google.maps.event.addListener(marker, 'click', function() {
+						infowindow.close();
+						infowindow.setContent(contentString);
+						infowindow.open(map, marker);
+						var panoramaOptions = {
+							position:          marker.position,
+							mode:              'html5',
+							navigationControl: false,
+							linksControl:      false,
+							addressControl:    false,
+							pov:               {
+								heading: sv_bearing,
+								pitch:   sv_elevation,
+								zoom:    sv_zoom
+							}
+						};
+
+						// Use jquery for info window tabs
+						google.maps.event.addListener(infowindow, 'domready', function() {
+							//jQuery code here
+							jQuery('#EV').click(function() {
+								document.tabLayerEV                     = document.getElementById("EV");
+								document.tabLayerEV.style.background    = '#ffffff';
+								document.tabLayerEV.style.paddingBottom = '1px';
+								<?php if ($STREETVIEW) { ?>
+								document.tabLayerSV                     = document.getElementById("SV");
+								document.tabLayerSV.style.background    = '#cccccc';
+								document.tabLayerSV.style.paddingBottom = '0px';
+								<?php } ?>
+								document.panelLayer1               = document.getElementById("pane1");
+								document.panelLayer1.style.display = 'block';
+								<?php if ($STREETVIEW) { ?>
+								document.panelLayer2               = document.getElementById("pane2");
+								document.panelLayer2.style.display = 'none';
+								<?php } ?>
+							});
+
+							jQuery('#SV').click(function() {
+								document.tabLayerEV                     = document.getElementById("EV");
+								document.tabLayerEV.style.background    = '#cccccc';
+								document.tabLayerEV.style.paddingBottom = '0px';
+								<?php if ($STREETVIEW) { ?>
+								document.tabLayerSV                     = document.getElementById("SV");
+								document.tabLayerSV.style.background    = '#ffffff';
+								document.tabLayerSV.style.paddingBottom = '1px';
+								<?php } ?>
+								document.panelLayer1               = document.getElementById("pane1");
+								document.panelLayer1.style.display = 'none';
+								<?php if ($STREETVIEW) { ?>
+								document.panelLayer2               = document.getElementById("pane2");
+								document.panelLayer2.style.display = 'block';
+								<?php } ?>
+								var panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
+								setTimeout(function() {
+									panorama.setVisible(true);
+								}, 100);
+								setTimeout(function() {
+									panorama.setVisible(true);
+								}, 500);
+							});
 						});
 					});
-				});
-			}
+				}
 
-			// Opens Marker infowindow when corresponding Sidebar item is clicked
-			function openInfowindow(i) {
-				infowindow.close();
-				google.maps.event.trigger(gmarkers[i], 'click');
-				return false;
-			}
-
-			// Home control
-			// returns the user to the original map position ... loadMap() function
-			// This constructor takes the control DIV as an argument.
-			function HomeControl(controlDiv, map) {
-				// Set CSS styles for the DIV containing the control
-				// Setting padding to 5 px will offset the control from the edge of the map
-				controlDiv.style.paddingTop   = '5px';
-				controlDiv.style.paddingRight = '0px';
-
-				// Set CSS for the control border
-				var controlUI                   = document.createElement('DIV');
-				controlUI.style.backgroundColor = 'white';
-				controlUI.style.borderStyle     = 'solid';
-				controlUI.style.borderWidth     = '2px';
-				controlUI.style.cursor          = 'pointer';
-				controlUI.style.textAlign       = 'center';
-				controlUI.title                 = '';
-				controlDiv.appendChild(controlUI);
-
-				// Set CSS for the control interior
-				var controlText                = document.createElement('DIV');
-				controlText.style.fontFamily   = 'Arial,sans-serif';
-				controlText.style.fontSize     = '12px';
-				controlText.style.paddingLeft  = '15px';
-				controlText.style.paddingRight = '15px';
-				controlText.innerHTML          = '<b><?php echo I18N::translate('Redraw map') ?></b>';
-				controlUI.appendChild(controlText);
-
-				// Setup the click event listeners: simply set the map to original LatLng
-				google.maps.event.addDomListener(controlUI, 'click', function() {
-					loadMap();
-				});
-			}
-
-			function loadMap() {
-				// Create the map and mapOptions
-				var mapOptions = {
-					zoom:                     7,
-					center:                   map_center,
-					mapTypeId:                google.maps.MapTypeId.<?php echo $this->getSetting('GM_MAP_TYPE') ?>,
-					mapTypeControlOptions:    {
-						style: google.maps.MapTypeControlStyle.DROPDOWN_MENU  // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
-					},
-					navigationControl:        true,
-					navigationControlOptions: {
-						position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-						style:    google.maps.NavigationControlStyle.SMALL  // ANDROID, DEFAULT, SMALL, ZOOM_PAN
-					},
-					streetViewControl:        true,
-					scrollwheel:              true
-				};
-				map            = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
-
-				// Close any infowindow when map is clicked
-				google.maps.event.addListener(map, 'click', function() {
+				// Opens Marker infowindow when corresponding Sidebar item is clicked
+				function openInfowindow(i) {
 					infowindow.close();
-				});
+					google.maps.event.trigger(gmarkers[i], 'click');
+					return false;
+				}
 
-				// Create the Home DIV and call the HomeControl() constructor in this DIV.
-				var homeControlDiv   = document.createElement('DIV');
-				var homeControl      = new HomeControl(homeControlDiv, map);
-				homeControlDiv.index = 1;
-				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
+				// Home control
+				// returns the user to the original map position ... loadMap() function
+				// This constructor takes the control DIV as an argument.
+				function HomeControl(controlDiv, map) {
+					// Set CSS styles for the DIV containing the control
+					// Setting padding to 5 px will offset the control from the edge of the map
+					controlDiv.style.paddingTop   = '5px';
+					controlDiv.style.paddingRight = '0px';
 
-				// Add the markers to the map
+					// Set CSS for the control border
+					var controlUI                   = document.createElement('DIV');
+					controlUI.style.backgroundColor = 'white';
+					controlUI.style.borderStyle     = 'solid';
+					controlUI.style.borderWidth     = '2px';
+					controlUI.style.cursor          = 'pointer';
+					controlUI.style.textAlign       = 'center';
+					controlUI.title                 = '';
+					controlDiv.appendChild(controlUI);
 
-				// Group the markers by location
-				var locations = <?php echo json_encode($unique_places) ?>;
+					// Set CSS for the control interior
+					var controlText                = document.createElement('DIV');
+					controlText.style.fontFamily   = 'Arial,sans-serif';
+					controlText.style.fontSize     = '12px';
+					controlText.style.paddingLeft  = '15px';
+					controlText.style.paddingRight = '15px';
+					controlText.innerHTML          = '<b><?php echo I18N::translate('Redraw map') ?></b>';
+					controlUI.appendChild(controlText);
 
-				// Set the Marker bounds
-				var bounds = new google.maps.LatLngBounds ();
+					// Setup the click event listeners: simply set the map to original LatLng
+					google.maps.event.addDomListener(controlUI, 'click', function() {
+						loadMap();
+					});
+				}
 
-				jQuery.each(locations, function(index, location) {
+				function loadMap() {
+					// Create the map and mapOptions
+					var mapOptions = {
+						zoom:                     7,
+						center:                   map_center,
+						mapTypeId:                google.maps.MapTypeId.<?php echo $this->getSetting('GM_MAP_TYPE') ?>,
+						mapTypeControlOptions:    {
+							style: google.maps.MapTypeControlStyle.DROPDOWN_MENU  // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
+						},
+						navigationControl:        true,
+						navigationControlOptions: {
+							position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
+							style:    google.maps.NavigationControlStyle.SMALL  // ANDROID, DEFAULT, SMALL, ZOOM_PAN
+						},
+						streetViewControl:        true,
+						scrollwheel:              true
+					};
+					map            = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
 
-					var html =
-						'<div class="infowindow">' +
-						'<div id="gmtabs">' +
-						'<ul class="tabs">' +
-						'<li><a href="#event" id="EV"><?php echo I18N::translate('Events') ?></a></li>' +
-						<?php if ($STREETVIEW) { ?>
-						'<li><a href="#sview" id="SV"><?php echo I18N::translate('Google Street View™') ?></a></li>' +
-						<?php } ?>
-						'</ul>' +
-						'<div class="panes">' +
-						'<div id="pane1">' +
-						'<h4 id="iwhead"><?php echo $indi->getFullName() ?>: ' + location.place + '</h4>' +
-						location.events +
-						'</div>' +
-						<?php if ($STREETVIEW) { ?>
-						'<div id="pane2">' +
-						'<h4 id="iwhead">' + location.place + '</h4>' +
-						'<div id="pano"></div>' +
-						'</div>' +
-						<?php } ?>
-						'</div>' +
-						'</div>' +
-						'</div>';
-					var point    = new google.maps.LatLng(location.lat, location.lng); // Place Latitude, Longitude
-					var sv_point = new google.maps.LatLng(location.sv_lati, location.sv_long); // StreetView Latitude and Longitide
+					// Close any infowindow when map is clicked
+					google.maps.event.addListener(map, 'click', function() {
+						infowindow.close();
+					});
 
-					var zoomLevel = <?php echo $GM_MAX_ZOOM ?>;
-					createMarker(point, html, location.tooltip, location.sv_lati, location.sv_long, location.sv_bearing, location.sv_elevation, location.sv_zoom, sv_point, location.pl_icon);
-					// if streetview coordinates are available, use them for marker,
-					// else use the place coordinates
-					if (sv_point && sv_point != "(0, 0)") {
-						var myLatLng = sv_point;
-					} else {
-						var myLatLng = point;
-					}
+					// Create the Home DIV and call the HomeControl() constructor in this DIV.
+					var homeControlDiv   = document.createElement('DIV');
+					var homeControl      = new HomeControl(homeControlDiv, map);
+					homeControlDiv.index = 1;
+					map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
 
-					// Correct zoom level when only one marker is present
-					if (locations.length == 1) {
-						bounds.extend(myLatLng);
-						map.setZoom(zoomLevel);
-						map.setCenter(myLatLng);
-					} else {
-						bounds.extend(myLatLng);
-						map.fitBounds(bounds);
-						// Correct zoom level when multiple markers have the same coordinates
-						var listener1 = google.maps.event.addListenerOnce(map, "idle", function() {
-							if (map.getZoom() > zoomLevel) {
-								map.setZoom(zoomLevel);
-							}
-							google.maps.event.removeListener(listener1);
-						});
-					}
-				}); // end loop through location markers
+					// Add the markers to the map
 
-			} // end loadMap()
+					// Group the markers by location
+					var locations = <?php echo json_encode($unique_places) ?>;
 
-		</script>
-		<?php
-		$places = array_keys($unique_places);
-		// Create the normal googlemap sidebar of events and children
-		echo '<div style="overflow-x: hidden; overflow-y: auto; height:', $this->getSetting('GM_YSIZE'), 'px;"><table class="facts_table">';
+					// Set the Marker bounds
+					var bounds = new google.maps.LatLngBounds();
 
-		foreach ($events as $event) {
-			$index = array_search($event['placeid'], $places);
-			echo '<tr>';
-			echo '<td class="facts_label">';
-			echo '<a href="#" onclick="return openInfowindow(\'', $index, '\')">', $event['fact_label'], '</a></td>';
-			echo '<td class="', $event['class'], '">';
-			if ($event['info']) {
-				echo '<div><span class="field">', Filter::escapeHtml($event['info']), '</span></div>';
-			}
-			if ($event['name']) {
-				echo '<div>', $event['name'], '</div>';
-			}
-			echo '<div>', $event['place'], '</div>';
-			if ($event['date']) {
-				echo '<div>', $event['date'], '</div>';
-			}
-			echo '</td>';
-			echo '</tr>';
+					jQuery.each(locations, function(index, location) {
+
+						var html     =
+							    '<div class="infowindow">' +
+							    '<div id="gmtabs">' +
+							    '<ul class="tabs">' +
+							    '<li><a href="#event" id="EV"><?php echo I18N::translate('Events') ?></a></li>' +
+							    <?php if ($STREETVIEW) { ?>
+							    '<li><a href="#sview" id="SV"><?php echo I18N::translate('Google Street View™') ?></a></li>' +
+							    <?php } ?>
+							    '</ul>' +
+							    '<div class="panes">' +
+							    '<div id="pane1">' +
+							    '<h4 id="iwhead"><?php echo $indi->getFullName() ?>: ' + location.place + '</h4>' +
+							    location.events +
+							    '</div>' +
+							    <?php if ($STREETVIEW) { ?>
+							    '<div id="pane2">' +
+							    '<h4 id="iwhead">' + location.place + '</h4>' +
+							    '<div id="pano"></div>' +
+							    '</div>' +
+							    <?php } ?>
+							    '</div>' +
+							    '</div>' +
+							    '</div>';
+						var point    = new google.maps.LatLng(location.lat, location.lng); // Place Latitude, Longitude
+						var sv_point = new google.maps.LatLng(location.sv_lati, location.sv_long); // StreetView Latitude and Longitide
+
+						var zoomLevel = <?php echo $GM_MAX_ZOOM ?>;
+						createMarker(point, html, location.tooltip, location.sv_lati, location.sv_long, location.sv_bearing, location.sv_elevation, location.sv_zoom, sv_point, location.pl_icon);
+						// if streetview coordinates are available, use them for marker,
+						// else use the place coordinates
+						if (sv_point && sv_point != "(0, 0)") {
+							var myLatLng = sv_point;
+						} else {
+							var myLatLng = point;
+						}
+
+						// Correct zoom level when only one marker is present
+						if (locations.length == 1) {
+							bounds.extend(myLatLng);
+							map.setZoom(zoomLevel);
+							map.setCenter(myLatLng);
+						} else {
+							bounds.extend(myLatLng);
+							map.fitBounds(bounds);
+							// Correct zoom level when multiple markers have the same coordinates
+							var listener1 = google.maps.event.addListenerOnce(map, "idle", function() {
+								if (map.getZoom() > zoomLevel) {
+									map.setZoom(zoomLevel);
+								}
+								google.maps.event.removeListener(listener1);
+							});
+						}
+					}); // end loop through location markers
+
+				} // end loadMap()
+
+			</script>
+			<?php
+			$html = ob_get_clean();
+		} else {
+			$html = '';
 		}
-		echo '</table></div><br>';
+
+		return $html;
 	}
 
 	/**
@@ -2676,14 +2635,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo 'icon_type.iconSize = google.maps.Size(20, 34);';
 			echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
 			echo 'var point = new google.maps.LatLng(0, 0);';
-			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "&amp;parent[{$level}]=";
-			if ($place2['place'] == "Unknown") {
-				echo "'><br>";
+			echo 'var marker = createMarker(point, "<div class="iwstyle" style="width: 250px;"><a href="?action=find', $linklevels, '&amp;parent[' . $level . ']=';
+			if ($place2['place'] == 'Unknown') {
+				echo '"><br>';
 			} else {
-				echo addslashes($place2['place']), "'><br>";
+				echo addslashes($place2['place']), '"><br>';
 			}
 			if (($place2['icon'] !== null) && ($place2['icon'] !== '')) {
-				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
+				echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '">&nbsp;&nbsp;';
 			}
 			if ($place2['place'] == 'Unknown') {
 					echo I18N::translate('unknown');
@@ -4366,7 +4325,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</div>
 					<button type="submit" class="btn btn-default">
 						<i class="fa fa-plus"></i>
-						<?php echo I18N::translate('Add') ?>
+						<?php echo /* I18N: A button label. */ I18N::translate('add') ?>
 					</button>
 				</div>
 			</div>

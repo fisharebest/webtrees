@@ -32,7 +32,7 @@ class HourglassController extends ChartController {
 	public $generations;
 
 	/** @var int Number of descendancy generations that exist. */
-	private $dgenerations;
+	public $dgenerations;
 
 	/** @var int Half height of personbox. */
 	public $bhalfheight;
@@ -106,14 +106,14 @@ class HourglassController extends ChartController {
 		//This allows vertical line spacing to be consistent
 		//
 		if (count($person->getChildFamilies()) == 0) {
-			echo '<table class="xyz"><tr><td>' . $this->printEmptyBox() . '</td>';
+			echo '<table><tr><td>' . $this->printEmptyBox() . '</td>';
 			echo '<td>';
-			//-- recursively get the father’s family
+			// Recursively get the father’s family
 			$this->printPersonPedigree($person, $count + 1);
 			echo '</td></tr>';
 			echo '<tr><td>' . $this->printEmptyBox() . '</td>';
 			echo '<td>';
-			//-- recursively get the father’s family
+			// Recursively get the mother’s family
 			$this->printPersonPedigree($person, $count + 1);
 			echo '</td><td></tr></table>';
 		}
@@ -153,7 +153,7 @@ class HourglassController extends ChartController {
 			echo
 			'</tr><tr>',
 			"<td style='vertical-align:top'><img class='pvline' src='" . Theme::theme()->parameter('image-vline') . "' width='3' alt=''></td>",
-				'<td><img class="line4" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3" alt=""></td>',
+				'<td><img class="line4" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>',
 			'<td>';
 			//-- print the mother box
 			FunctionsPrint::printPedigreePerson($family->getWife(), $this->showFull());
@@ -200,7 +200,6 @@ class HourglassController extends ChartController {
 		if ($count > $this->dgenerations) {
 			return 0;
 		}
-
 		$pid         = $person->getXref();
 		$tablealign  = 'right';
 		$otablealign = 'left';
@@ -240,7 +239,7 @@ class HourglassController extends ChartController {
 					$chil    = $person2->getXref();
 					echo '<tr>';
 					echo '<td id="td_', $chil, '" class="', I18N::direction(), '" style="text-align:', $otablealign, '">';
-					$kids = $this->printDescendency($person2, $count + 1);
+					$kids = $this->printDescendency($person2, $count + 1, $showNav);
 					$numkids += $kids;
 					echo '</td>';
 
@@ -254,7 +253,7 @@ class HourglassController extends ChartController {
 							echo "<td style='vertical-align:top'><img alt='' class='bvertline' id='vline_$chil' src='" . Theme::theme()->parameter('image-vline') . "' width='3'></td>";
 						} else {
 							// Middle child
-							echo '<td style="background: url(\'' . Theme::theme()->parameter('image-vline') . '\');"><img src=\'' . Theme::theme()->parameter('image-spacer') . '\' width="3" alt=""></td>';
+							echo '<td style="background: url(\'' . Theme::theme()->parameter('image-vline') . '\');"><img src=\'' . Theme::theme()->parameter('image-spacer') . '\' width="3"></td>';
 						}
 					}
 					echo '</tr>';
@@ -309,7 +308,6 @@ class HourglassController extends ChartController {
 
 		// For the root person, print a down arrow that allows changing the root of tree
 		if ($showNav && $count == 1) {
-			// NOTE: If statement OK
 			if ($person->canShowName()) {
 				// -- print left arrow for decendants so that we can move down the tree
 				$famids = $person->getSpouseFamilies();

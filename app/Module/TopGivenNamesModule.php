@@ -62,7 +62,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Configure') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
+			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
 		} else {
 			$title = '';
 		}
@@ -143,7 +143,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Number of items to show');
+		echo /* I18N: ... to show in a list */ I18N::translate('Number of given names');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
 		echo '</td></tr>';

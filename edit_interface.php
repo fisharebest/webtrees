@@ -2590,11 +2590,11 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	}
 
 	echo '<p id="save-cancel">';
-	echo '<input type="submit" class="save" value="', /* I18N: A button label */ I18N::translate('save'), '">';
+	echo '<input type="submit" class="save" value="', /* I18N: A button label. */ I18N::translate('save'), '">';
 	if (preg_match('/^add_(child|spouse|parent|unlinked_indi)/', $nextaction)) {
-		echo '<input type="submit" class="save" value="', /* I18N: A button label */ I18N::translate('go to new individual'), '" onclick="document.addchildform.goto.value=\'new\';">';
+		echo '<input type="submit" class="save" value="', /* I18N: A button label. */ I18N::translate('go to new individual'), '" onclick="document.addchildform.goto.value=\'new\';">';
 	}
-	echo '<input type="button" class="cancel" value="', /* I18N: A button label */ I18N::translate('close'), '" onclick="window.close();">';
+	echo '<input type="button" class="cancel" value="', /* I18N: A button label. */ I18N::translate('close'), '" onclick="window.close();">';
 	echo '</p>';
 	echo '</form>';
 	$controller->addInlineJavascript('

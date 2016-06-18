@@ -86,7 +86,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Configure') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
+			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
 		} else {
 			$title = '';
 		}
@@ -436,7 +436,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		<tr>
 			<td class="descriptionbox wrap width33">
 				<label for="number-of-surnames">
-					<?php echo I18N::translate('Number of surnames') ?>
+					<?php echo /* I18N: ... to show in a list */ I18N::translate('Number of surnames') ?>
 				</label>
 			</td>
 			<td class="optionbox">
