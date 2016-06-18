@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-12 19:42+0000\n"
+"PO-Revision-Date: 2016-06-18 23:05+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
@@ -705,9 +705,6 @@ msgstr "<b>Nota important:</b> L’assistent de transferència no és capaç d�
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr "<b> Nota:</b> la informació privada de persones vives només pot lliurar-se a familiars i amics íntims. Abans de que podeu rebre dades privades us interrogarem per verificar quina relació hi teniu. De vegades la informació de difunts pot també ésser privada. Si aquest és el cas, és perquè no hi ha prou informació coneguda sobre la persona per determinar si és viu o no i probablement, no tenim més informació sobre aquesta persona.<br><br>Abans de fer una pregunta, si us plau, comproveu que demaneu informació sobre la persona correcta comprovant dates, indrets i familiars directes. Si proposeu canvis en les dades genealògiques, si us plau incloeu-hi les fonts de on les heu obtingut."
 
-msgid "Welcome to this genealogy website"
-msgstr "Benvingut/da a aquest lloc web de genealogia"
-
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
 msgid "<default theme>"
@@ -984,9 +981,8 @@ msgid "A report of vital records for a given date or place."
 msgstr "Informe dels registres vitals per a una data o indret."
 
 #: admin_users.php:524
-#, fuzzy
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Un rol és un conjunt de drets d’accés, que donen permís per veure les dades, canviar els paràmetres de configuració, etc.. Els drets d’accés s’assignen als rols i els rols es concedeixen als usuaris. Cada arbre genealògic pot assignar accés diferent a cada rol i els usuaris poden tenir un paper diferent en cada arbre."
+msgstr "Un rol és un conjunt de drets d’accés, que donen permís per veure les dades, canviar preferències, etc.. Els drets d’accés s’assignen als rols i els rols es concedeixen als usuaris. Cada arbre genealògic pot assignar accés diferent a cada rol i els usuaris poden tenir un paper diferent en cada arbre."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1044,7 +1040,6 @@ msgid "A timeline displaying individual events."
 msgstr "Línia de temps que mostra els esdeveniments personals."
 
 #: admin_users.php:398
-#, fuzzy
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr "Un usuari no podrà iniciar cap sessió fins que tant el «correu electrònic verificat» com «aprovat per l’administrador» estiguin seleccionats."
 
@@ -1160,6 +1155,10 @@ msgstr "Arcàdia"
 #: edit_changes.php:176 edit_changes.php:184
 msgid "Accept"
 msgstr "Desa"
+
+#: edit_changes.php:209 edit_changes.php:220
+msgid "Accept all changes"
+msgstr "Autoritza tots els canvis"
 
 #: admin_module_blocks.php:75 admin_module_charts.php:68
 #: admin_module_menus.php:90 admin_module_reports.php:68
@@ -1664,7 +1663,6 @@ msgid "Adult christening"
 msgstr "Bateig adult"
 
 #: admin_trees_config.php:2085
-#, fuzzy
 msgid "Advanced fact preferences"
 msgstr "Paràmetres avançats d'esdeveniments"
 
@@ -2078,11 +2076,6 @@ msgstr "Aplica aquestes preferències als arbres genealògics nous"
 msgid "Approval of account at %s"
 msgstr "Autorització de registre a %s|"
 
-#: edit_changes.php:209 edit_changes.php:220
-#, fuzzy
-msgid "Accept all changes"
-msgstr "Autoritzeu tots els canvis"
-
 #: admin_users.php:875
 msgid "Approved"
 msgstr "Aprovat"
@@ -2151,6 +2144,10 @@ msgstr "Esteu segur que cal suprimir aquest missatge? No hi ha marxa enrere."
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Esteu segur que voleu eliminar «%s»?"
 
+#: edit_changes.php:231
+msgid "Are you sure you want to reject all the changes to this family tree?"
+msgstr "Esteu segur que voleu rebutjar tots els canvis d’aquest arbre?"
+
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
 msgstr "Esteu segur d’eliminar els enllaços a aquest objecte multimèdia?"
@@ -2158,11 +2155,6 @@ msgstr "Esteu segur d’eliminar els enllaços a aquest objecte multimèdia?"
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Esteu segur que cal eliminar aquesta entrada dels vostres Favorits?"
-
-#: edit_changes.php:231
-#, fuzzy
-msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr "Esteu segur que voleu desfer tots els canvis d’aquest arbre?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
@@ -5478,7 +5470,6 @@ msgstr "Edita una norma d'accés al lloc web"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1669
-#, fuzzy
 msgid "Edit preferences"
 msgstr "Opcions d’edició"
 
@@ -5867,7 +5858,6 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr "S’està exportant tots els arbres genealògics a fitxers GEDCOM…"
 
 #: admin_trees_download.php:134
-#, fuzzy
 msgid "Export preferences"
 msgstr "Opcions d'exportació"
 
@@ -6500,6 +6490,10 @@ msgstr "Directori"
 #: addmedia.php:513 admin_media_upload.php:234
 msgid "Folder name on server"
 msgstr "Nom del directori al servidor"
+
+#: login.php:338
+msgid "Follow this link to verify your email address."
+msgstr "Seguiu aquest enllaç per verificar la vostra adreça de correu electrònic."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -7232,11 +7226,6 @@ msgstr "Oculta-ho a tot-hom"
 msgid "Highest population"
 msgstr "Població més alta"
 
-#: index_edit.php:284 index_edit.php:367
-#, fuzzy
-msgid "Select a block and use the arrows to move it."
-msgstr "Ressalteu un nom de bloc i després polseu una de les fletxes per moure el bloc vers la direcció indicada."
-
 #. I18N: gedcom tag _PRIM
 #: app/GedcomTag.php:1564 modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
@@ -7339,7 +7328,6 @@ msgstr "Híbrid"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:750
-#, fuzzy
 msgid "ID preferences"
 msgstr "Paràmetres pels ID"
 
@@ -7513,7 +7501,6 @@ msgid "Import all places from a family tree"
 msgstr "Importa tots els indrets d’un arbre genealògic"
 
 #: admin_trees_manage.php:270
-#, fuzzy
 msgid "Import preferences"
 msgstr "Opcions d'importació"
 
@@ -10457,7 +10444,6 @@ msgid "Other folder… please type in"
 msgstr "Altres carpetes… entreu-les"
 
 #: admin_trees_config.php:2145
-#, fuzzy
 msgid "Other preferences"
 msgstr "Altres paràmetres"
 
@@ -10966,11 +10952,6 @@ msgstr "Els indrets s’han d’introduir d’acord amb les normes genealògique
 #: app/Theme/WebtreesTheme.php:72 app/Theme/XeneaTheme.php:88
 msgid "Play"
 msgstr "Engega"
-
-#: login.php:338
-#, fuzzy
-msgid "Follow this link to verify your email address."
-msgstr "Polseu a l’enllaç de sota i empleneu els camps que s’hi demanen per a confirmar la vostra comanda i l’adreça de correu electrònic."
 
 #: search.php:55
 msgid "Please enter a given name, surname, or place in addition to the year"
@@ -11485,6 +11466,14 @@ msgstr "Expressió regular"
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 msgid "Regular expressions are an advanced pattern matching technique."
 msgstr "Les expressions regulars són una tècnica avançada per coincidència de patrons."
+
+#: edit_changes.php:181 edit_changes.php:201
+msgid "Reject"
+msgstr "Rebutja"
+
+#: edit_changes.php:211 edit_changes.php:231
+msgid "Reject all changes"
+msgstr "Rebutja tots els canvis"
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
@@ -12055,6 +12044,10 @@ msgstr "Selecciona"
 #: admin_trees_manage.php:208
 msgid "Select a GEDCOM file to import"
 msgstr "Seleccioneu un fitxer GEDCOM per importar"
+
+#: index_edit.php:284 index_edit.php:367
+msgid "Select a block and use the arrows to move it."
+msgstr "Seleccioneu un bloc i feu-lo moure amb les fletxes."
 
 #: app/Functions/FunctionsEdit.php:404 reportengine.php:244
 msgid "Select a date"
@@ -13058,7 +13051,6 @@ msgid "Some genealogy software creates GEDCOM files that contain media filenames
 msgstr "Algunes aplicacions genealògiques creen arxius GEDCOM que contenen noms d'arxius multimèdia amb rutes completes. Aquests camins poden no existir al servidor web. Per permetre a webtrees trobar l'arxiu, la primera part de la ruta d'accés ha de ser eliminada."
 
 #: app/Module/GoogleMapsModule.php:453
-#, fuzzy
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
 msgstr "Alguns noms d’indrets poden ser escrits amb prefixos i sufixos opcionals. Per exemple, «Orange» versus «Comtat d’Orange». Si l’arbre conté els noms dels indrets complets, però la base de dades geogràfica els conté curts, llavors heu d’especificar una llista dels prefixos i sufixos per ser tinguda en compte. Cal separar les opcions múltiples amb punt i coma. Per exemple, «Comtat; Comtat de; Comptat d’» o «Vila;Vila de;Vila d’.»."
 
@@ -13636,12 +13628,6 @@ msgstr "S'ha importat el fitxer GEDCOM “%s”."
 msgid "The Hague, Netherlands"
 msgstr "La Haia, Holanda"
 
-#. I18N: Help text for the “Show a download link in the media viewer” configuration setting
-#: admin_trees_config.php:1052
-#, fuzzy
-msgid "This option will make it easier for users to download images."
-msgstr "El Visor Multimèdia pot presentar un enllaç que, polsant-lo, descarregarà el fitxer multimèdia al PC local.<br><br>Podeu fer ocultar aquest enllaç per qüestions de seguretat."
-
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:82
 msgid "The PHP temporary folder is missing."
@@ -13673,9 +13659,8 @@ msgid "The changes to “%s” have been rejected."
 msgstr "S’han rebutjat els canvis a «%s»."
 
 #: app/Module/ClippingsCartModule.php:311
-#, fuzzy
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "El Cistell us permet prendre esqueixos («retalls») d’aquest arbre genealògic i unir-los en un sol fitxer per a baixar-lo i posteriorment importar-lo al vostre propi programa de genealogia. El fitxer descarregable es confecciona en format GEDCOM.<br><ul><li>Com prendre retalls?<br>És molt fàcil. Sempre que vegeu un nom que es pugui polsar (persona, família o font) podeu anar a la pàgina de detalls del nom. Allà podreu veure una opció d’<b>Posa-ho al cistell</b>. En polsar-la, disposareu de diverses opcions per descarregar.</li><li>Com descarregar-ho?<br>Un cop tingueu retalls al cistell, podeu descarregar-los només polsant a l’enllaç <b>Descarrega Ara</b>. Seguiu les instruccions i enllaços.</li></ul>"
+msgstr "El Cistell us permet prendre extractes d'aquest arbre genealògic i descarregar-los com un arxiu GEDCOM."
 
 #: site-unavailable.php:54
 msgid "The database reported the following error message:"
@@ -13914,6 +13899,26 @@ msgstr "S'ha desactivat el mòdul “%s”."
 #, php-format
 msgid "The module “%s” has been enabled."
 msgstr "S'ha activat el mòdul “%s”."
+
+#. I18N: Help text for the “Quick family facts” configuration setting
+#: admin_trees_config.php:1902
+msgid "The most common family facts and events are listed separately, so that they can be added more easily."
+msgstr "Els fets i esdeveniments familiars més comuns es llisten separadament, de manera que es poden afegir més fàcilment."
+
+#. I18N: Help text for the “Quick individual facts” configuration setting
+#: admin_trees_config.php:1784
+msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
+msgstr "Els fets i esdeveniments personals més comuns es llisten separadament, de manera que es poden afegir més fàcilment."
+
+#. I18N: Help text for the “Quick repository facts” configuration setting
+#: admin_trees_config.php:2080
+msgid "The most common repository facts are listed separately, so that they can be added more easily."
+msgstr "Els esdeveniments d'arxius més comuns es llisten separadament, de manera que es poden afegir més fàcilment."
+
+#. I18N: Help text for the “Quick source facts” configuration setting
+#: admin_trees_config.php:1991
+msgid "The most common source facts are listed separately, so that they can be added more easily."
+msgstr "Els esdeveniments de fonts més comuns es llisten separadament, de manera que es poden afegir més fàcilment."
 
 #: admin_site_upgrade.php:337
 #, php-format
@@ -14448,30 +14453,6 @@ msgstr "Aquesta és la llista d’esdeveniments GEDCOM que els vostres usuaris p
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr "Aquest és el nom del servidor SMTP. «localhost» significa que el servei de correu s’està executant al mateix equip que el servidor web."
 
-#. I18N: Help text for the “Quick family facts” configuration setting
-#: admin_trees_config.php:1902
-#, fuzzy
-msgid "The most common family facts and events are listed separately, so that they can be added more easily."
-msgstr "Aquesta és una breu llista d’esdeveniments familiars GEDCOM que surt al costat de la completa i que podeu afegir amb un simple clic."
-
-#. I18N: Help text for the “Quick individual facts” configuration setting
-#: admin_trees_config.php:1784
-#, fuzzy
-msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr "Breu llista d’esdeveniments individuals, al costat de la completa, que poden afegir-se amb un simple clic."
-
-#. I18N: Help text for the “Quick repository facts” configuration setting
-#: admin_trees_config.php:2080
-#, fuzzy
-msgid "The most common repository facts are listed separately, so that they can be added more easily."
-msgstr "Aquesta és una breu llista d’esdeveniments GEDCOM d’arxiu que surt al costat de la complerta i que poden escollir-se amb un simple clic."
-
-#. I18N: Help text for the “Quick source facts” configuration setting
-#: admin_trees_config.php:1991
-#, fuzzy
-msgid "The most common source facts are listed separately, so that they can be added more easily."
-msgstr "Aquesta és una llista breu d’esdeveniments de fonts del GEDCOM que surt al costat de la llista sencera i que poden escollir-se amb un simple clic."
-
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1080
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
@@ -14614,6 +14595,11 @@ msgstr "Aquesta opció controla si es mostra o no la icona del gènere (sexe) de
 #: admin_trees_config.php:1231
 msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
 msgstr "Aquesta opció fixa si l’arbre genealògic es presentarà (per defecte) plantat o apaïsat."
+
+#. I18N: Help text for the “Show a download link in the media viewer” configuration setting
+#: admin_trees_config.php:1052
+msgid "This option will make it easier for users to download images."
+msgstr "Aquesta opció farà que sigui més fàcil per als usuaris descarregar imatges."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:498
@@ -15308,16 +15294,6 @@ msgstr "Impossible trobar cap registre amb l’ID"
 msgid "Uncleared: insufficient data"
 msgstr "No aprovat: dades insuficients"
 
-#: edit_changes.php:181 edit_changes.php:201
-#, fuzzy
-msgid "Reject"
-msgstr "Desfés"
-
-#: edit_changes.php:211 edit_changes.php:231
-#, fuzzy
-msgid "Reject all changes"
-msgstr "Rebutgeu tots els canvis"
-
 #: admin_trees_config.php:1823
 msgid "Unique family facts"
 msgstr "Esdeveniments familiars únics"
@@ -15549,7 +15525,6 @@ msgid "User not verified by administrator."
 msgstr "Usuari no verificat per l’administrador."
 
 #: admin_trees_config.php:972
-#, fuzzy
 msgid "User preferences"
 msgstr "Opcions d’usuari"
 
@@ -15718,14 +15693,17 @@ msgstr "Mostra tots els registres relacionats amb aquest indret"
 msgid "View the archive"
 msgstr "Veure l’arxiu"
 
-#: calendar.php:300
-#, fuzzy
-msgid "View this day"
-msgstr "D’un dia"
-
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
 msgid "View the details"
 msgstr "Veure detalls"
+
+#: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
+msgid "View the notes"
+msgstr "Mostra les Notes"
+
+#: calendar.php:300
+msgid "View this day"
+msgstr "Mostra aquest dia"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15734,34 +15712,25 @@ msgstr "Veure detalls"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313
-#, fuzzy
 msgid "View this family"
-msgstr "Mostra la família"
+msgstr "Mostra aquesta família"
 
 #: app/Module/GoogleMapsModule.php:1352 app/Module/SlideShowModule.php:177
 #: medialist.php:310
-#, fuzzy
 msgid "View this individual"
-msgstr "Mostra la persona"
+msgstr "Mostra aquesta persona"
 
 #: calendar.php:304
-#, fuzzy
 msgid "View this month"
-msgstr "D’un mes"
-
-#: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
-msgid "View the notes"
-msgstr "Mostra les Notes"
+msgstr "Mostra aquest mes"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-#, fuzzy
 msgid "View this source"
-msgstr "Mostra la Font"
+msgstr "Mostra aquesta Font"
 
 #: calendar.php:308
-#, fuzzy
 msgid "View this year"
-msgstr "D’un any"
+msgstr "Mostra aquest any"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -15892,6 +15861,9 @@ msgstr "Benvingut/da %s"
 msgid "Welcome text on sign-in page"
 msgstr "Text de benvinguda a la pàgina d’accés"
 
+msgid "Welcome to this genealogy website"
+msgstr "Benvingut/da a aquest lloc web de genealogia"
+
 #. I18N: Name of a country or state
 #: app/Stats.php:6931
 msgid "West Africa"
@@ -15908,7 +15880,6 @@ msgid "When a record is edited, the user and timestamp are recorded. Sometimes i
 msgstr "Quan s'edita un registre, es registra l'usuari, data i hora. A vegades és desitjable mantenir la informació existent dela \"darrera modificació\", per exemple, en fer petites correccions a les dades facilitades per una altra persona. Aquesta opció controla si aquesta funció està activada per defecte."
 
 #: admin_users.php:389
-#, fuzzy
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr "Quan un usuari es registra per a un compte, s’envia un correu electrònic a la seva adreça amb un enllaç de verificació. Quan polsa aquest enllaç, sabrem que l’adreça de correu electrònic és correcta, i el «correu electrònic verificat» queda seleccionat automàticament."
 
@@ -16220,9 +16191,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr "Heu de renumerar els registres d'un dels arbres abans de poder fusionar-los."
 
 #: app/Module/ChartsBlockModule.php:139
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Heu de seleccionar una persona i tipus de gràfic als paràmetres de configuració del bloc."
+msgstr "Heu de seleccionar una persona i tipus de gràfic als paràmetres de configuració del bloc"
 
 #: admin_users.php:287
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
