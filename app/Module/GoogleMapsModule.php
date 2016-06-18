@@ -169,12 +169,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 		if ($mapdata) {
 			$html = '<div id="' . $this->getName() . '_content" class="facts_table">';
-			$html .= '<div id="wrapper" style="height:' . $this->getSetting('GM_YSIZE') . 'px;">';
-			$html .= '<div id="map_pane"></div>';
+			$html .= '<div class="gm-wrapper" style="height:' . $this->getSetting('GM_YSIZE') . 'px;">';
+			$html .= '<div class="gm-map"></div>';
 			$html .= $mapdata;
 			$html .= '</div>';
 			if (Auth::isAdmin()) {
-				$html .= '<div class="gmoptions noprint">';
+				$html .= '<div class="gm-options noprint">';
 				$html .= '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a>';
 				$html .= ' | <a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_places">' . I18N::translate('Geographic data') . '</a>';
 				$html .= ' | <a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_placecheck">' . I18N::translate('Place check') . '</a>';
@@ -463,13 +463,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<div class="col-sm-6">
 							<div class="input-group">
 								<label class="input-group-addon" for="GM_PH_XSIZE"><?php echo I18N::translate('Width') ?></label>
-								<input id="GM_XSIZE" class="form-control" type="text" name="GM_PH_XSIZE" value="<?php echo $this->getSetting('GM_PH_XSIZE') ?>">
+								<input id="GM_PH_XSIZE" class="form-control" type="text" name="GM_PH_XSIZE" value="<?php echo $this->getSetting('GM_PH_XSIZE') ?>">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="input-group">
 								<label class="input-group-addon" for="GM_PH_YSIZE"><?php echo I18N::translate('Height') ?></label>
-								<input id="GM_YSIZE" class="form-control" type="text" name="GM_PH_YSIZE" value="<?php echo $this->getSetting('GM_PH_YSIZE') ?>">
+								<input id="GM_PH_YSIZE" class="form-control" type="text" name="GM_PH_YSIZE" value="<?php echo $this->getSetting('GM_PH_YSIZE') ?>">
 							</div>
 						</div>
 					</div>
@@ -768,7 +768,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<table class="list_table">
 				<tr>
 					<td class="descriptionbox wrap">
-						<?php echo I18N::translate('Individual') ?>
+						<label for="rootid">
+							<?php echo I18N::translate('Individual') ?>
+						</label>
 					</td>
 					<td class="optionbox">
 						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref() ?>">
@@ -780,10 +782,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap">
-						<?php echo I18N::translate('Generations') ?>
+						<label for="PEDIGREE_GENERATIONS">
+							<?php echo I18N::translate('Generations') ?>
+						</label>
 					</td>
 					<td class="optionbox">
-						<select name="PEDIGREE_GENERATIONS">
+						<select name="PEDIGREE_GENERATIONS" id="PEDIGREE_GENERATIONS">
 						<?php
 							for ($p = 3; $p <= $MAX_PEDIGREE_GENERATIONS; $p++) {
 								echo '<option value="', $p, '" ';
@@ -851,35 +855,21 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 		//<!-- end of count records by type -->
 		//<!-- start of map display -->
-		echo '<div id="pedigreemap_chart">';
-		echo '<table class="tabs_table" cellspacing="0" cellpadding="0" border="0" width="100%">';
-		echo '<tr>';
-		echo '<td>';
-		echo '<div id="pm_map" style="border: 1px solid gray; height: ', $this->getSetting('GM_YSIZE'), 'px; font-size: 0.9em;';
-		echo '"><i class="icon-loading-large"></i></div>';
+		echo '<div class="gm-pedigree-map">';
+		echo '<div class="gm-wrapper" style="height:' . $this->getSetting('GM_YSIZE') . 'px;">';
+		echo '<div class="gm-map"><i class="icon-loading-large"></i></div>';
+		echo '<div class="gm-ancestors"></div>';
+		echo '</div>';
+
 		if (Auth::isAdmin()) {
-			echo '<table width="100%">';
-			echo '<tr><td>';
-			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
-			echo '</td>';
-			echo '<td style="text-align:center;">';
-			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_places">', I18N::translate('Geographic data'), '</a>';
-			echo '</td>';
-			echo '<td style="text-align:end;">';
-			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">', I18N::translate('Place check'), '</a>';
-			echo '</td></tr>';
-			echo '</table>';
+			echo '<div class="gm-options noprint">';
+			echo '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config">' . I18N::translate('Google Maps™ preferences') . '</a>';
+			echo ' | <a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_places">' . I18N::translate('Geographic data') . '</a>';
+			echo ' | <a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_placecheck">' . I18N::translate('Place check') . '</a>';
+			echo '</div>';
 		}
-		echo '</td><td width="15px"></td>';
-		echo '<td width="310px">';
-		echo '<div id="side_bar" style="height:', $this->getSetting('GM_YSIZE'), 'px;"></div></td>';
-		echo '</tr>';
-		echo '</table>';
 		// display info under map
 		echo '<hr>';
-		echo '<table cellspacing="0" cellpadding="0" border="0" width="100%">';
-		echo '<tr>';
-		echo '<td>';
 		// print summary statistics
 		if (isset($curgen)) {
 			$total = pow(2, $curgen) - 1;
@@ -891,10 +881,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				I18N::number($count), I18N::number($total), I18N::number($curgen)
 			);
 			echo '</div>';
-			echo '</td>';
-			echo '</tr>';
-			echo '<tr>';
-			echo '<td>';
 			if ($priv) {
 				echo '<div>' . I18N::plural('%s individual is private.', '%s individuals are private.', $priv, $priv), '</div>';
 			}
@@ -910,11 +896,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 			}
 		}
-		echo '</td>';
-		echo '</tr>';
-		echo '</table>';
-		echo '</div>'; // close #pedigreemap_chart
-		echo '</div>'; // close #pedigreemap-page
+		echo '</div>';
+		echo '</div>';
 		echo '<script src="', $this->googleMapsScript(), '"></script>';
 	}
 
@@ -926,61 +909,17 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function pedigreeMapJavascript() {
 		global $PEDIGREE_GENERATIONS;
 
-		// The HomeControl returns the map to the original position and style
-		$js = 'function HomeControl(controlDiv, pm_map) {' .
-			// Set CSS styles for the DIV containing the control
-			// Setting padding to 5 px will offset the control from the edge of the map
-			'controlDiv.style.paddingTop = "5px";
-			controlDiv.style.paddingRight = "0px";' .
-			// Set CSS for the control border
-			'var controlUI = document.createElement("DIV");
-			controlUI.style.backgroundColor = "white";
-			controlUI.style.color = "black";
-			controlUI.style.borderColor = "black";
-			controlUI.style.borderColor = "black";
-			controlUI.style.borderStyle = "solid";
-			controlUI.style.borderWidth = "2px";
-			controlUI.style.cursor = "pointer";
-			controlUI.style.textAlign = "center";
-			controlUI.title = "";
-			controlDiv.appendChild(controlUI);' .
-			// Set CSS for the control interior
-			'var controlText = document.createElement("DIV");
-			controlText.style.fontFamily = "Arial,sans-serif";
-			controlText.style.fontSize = "12px";
-			controlText.style.paddingLeft = "15px";
-			controlText.style.paddingRight = "15px";
-			controlText.innerHTML = "<b>' . I18N::translate('Redraw map') . '<\/b>";
-			controlUI.appendChild(controlText);' .
-			// Setup the click event listeners: simply set the map to original LatLng
-			'google.maps.event.addDomListener(controlUI, "click", function() {
-				pm_map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
-				pm_map.fitBounds(bounds),
-				pm_map.setCenter(bounds.getCenter()),
-				infowindow.close()
-				if (document.getElementById(lastlinkid) != null) {
-					document.getElementById(lastlinkid).className = "person_box:target";
-				}
-			});
-		}' .
-		// This function picks up the click and opens the corresponding info window
-		'function myclick(i) {
-			if (document.getElementById(lastlinkid) != null) {
-				document.getElementById(lastlinkid).className = "person_box:target";
-			}
-			google.maps.event.trigger(gmarkers[i], "click");
-			return false;
-		}' .
-		// this variable will collect the html which will eventually be placed in the side_bar
-		'var side_bar_html = "";' .
-		// arrays to hold copies of the markers and html used by the side_bar
+		$js = '
+		// this variable will collect the html which will eventually be placed in the side bar
+		var gm_ancestors_html = "";
+		// arrays to hold copies of the markers and html used by the side bar
 		// because the function closure trick doesnt work there
-		'var gmarkers = [];
-		var i = 0;
+		var gmarkers = [];
+		var index = 0;
 		var lastlinkid;
-		var infowindow = new google.maps.InfoWindow({});' .
+		var infowindow = new google.maps.InfoWindow({});
 		// === Create an associative array of GIcons()
-		'var gicons = [];
+		var gicons = [];
 		gicons["1"]        = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon1.png")
 		gicons["1"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
 									new google.maps.Size(37, 34), // Shadow size
@@ -1238,38 +1177,44 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									new google.maps.Size(24, 24), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(2, 22)  // Image anchor
-								);' .
+								);
 		// / A function to create the marker and set up the event window
-		'function createMarker(point, name, html, mhtml, icontype) {
-			var contentString = "<div id=\'iwcontent_edit\'>"+mhtml+"<\/div>";' .
+		function createMarker(point, name, html, mhtml, icontype) {
 			// Create a marker with the requested icon
-			'var marker = new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				icon:     gicons[icontype],
 				shadow:   gicons[icontype].shadow,
 				map:      pm_map,
 				position: point,
+				id:       index,
 				zIndex:   0
 			});
-			var linkid = "link"+i;
 			google.maps.event.addListener(marker, "click", function() {
 				infowindow.close();
-				infowindow.setContent(contentString);
+				infowindow.setContent(mhtml);
 				infowindow.open(pm_map, marker);
-				document.getElementById(linkid).className = "person_box";
-				if (document.getElementById(lastlinkid) != null) {
-					document.getElementById(lastlinkid).className = "person_box:target";
+				var el = jQuery("#link_" + marker.id);
+				if(el.hasClass("person_box")) {
+					el
+						.removeClass("person_box")
+						.addClass("gm-ancestor-visited");
+					infowindow.close();
+				} else {
+					el
+					.addClass("person_box")
+					.removeClass("gm-ancestor-visited");
 				}
-				lastlinkid=linkid;
-			});' .
-			// save the info we need to use later for the side_bar
-			'gmarkers[i] = marker;' .
-			// add a line to the side_bar html
-			'side_bar_html += "<br><div id=\'"+linkid+"\' onclick=\'return myclick(" + i + ")\'>" + html +"<br></div>";
-			i++;
+				var anchor = infowindow.getAnchor();
+				lastlinkid = anchor ? anchor.id : null;
+			});
+			// save the info we need to use later for the side bar
+			gmarkers[index] = marker;
+			gm_ancestors_html += "<div id=\"link_" + index++ + "\" class=\"gm-ancestor\">" + html +"</div>";
+
 			return marker;
-		};' .
+		};
 		// create the map
-		'var myOptions = {
+		var myOptions = {
 			zoom: 6,
 			center: new google.maps.LatLng(0, 0),
 			mapTypeId: google.maps.MapTypeId.TERRAIN,  // ROADMAP, SATELLITE, HYBRID, TERRAIN
@@ -1283,20 +1228,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			streetViewControl: false,  // Show Pegman or not
 			scrollwheel: true
 		};
-		var pm_map = new google.maps.Map(document.getElementById("pm_map"), myOptions);
+		var pm_map = new google.maps.Map(document.querySelector(".gm-map"), myOptions);
 		google.maps.event.addListener(pm_map, "click", function() {
-			if (document.getElementById(lastlinkid) != null) {
-				document.getElementById(lastlinkid).className = "person_box:target";
-			}
-		infowindow.close();
-		});' .
-		// Create the DIV to hold the control and call HomeControl() passing in this DIV. --
-		'var homeControlDiv = document.createElement("DIV");
-		var homeControl = new HomeControl(homeControlDiv, pm_map);
-		homeControlDiv.index = 1;
-		pm_map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);' .
+			jQuery(".gm-ancestor.person_box")
+				.removeClass("person_box")
+				.addClass("gm-ancestor-visited");
+			infowindow.close();
+			lastlinkid = null;
+		});
 		// create the map bounds
-		'var bounds = new google.maps.LatLngBounds();';
+		var bounds = new google.maps.LatLngBounds();';
 		// add the points
 		$curgen       = 1;
 		$count        = 0;
@@ -1337,8 +1278,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				// end of add image
 
 				$birth     = $person->getFirstFact('BIRT');
-				$dataleft  = Filter::escapeJs($image . $event . ' — ' . $name);
-				$datamid   = Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">(' . I18N::translate('View the individual') . ')</a></span>');
+				$dataleft  = Filter::escapeJs($image);
+				$datamid   = Filter::escapeJs($event . ' <span><a href="' . $person->getHtmlUrl() . '">' . $name . '</a></span>');
 				$dataright = $birth ? Filter::escapeJs($birth->summary()) : '';
 
 				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
@@ -1375,8 +1316,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						}
 
 						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
-						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","<div>' . $dataleft . $datamid . $dataright . '</div>", "';
-						$js .= '<div class=\"iwstyle\">';
+						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","' . $dataleft . '<div class=\"gm-ancestor-link\">' . $datamid . $dataright . '</div>", "';
+						$js .= '<div class=\"gm-info-window\">';
 						$js .= '<a href=\"module.php?ged=' . $person->getTree()->getNameUrl() . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $person->getXref() . '&amp;PEDIGREE_GENERATIONS=' . $PEDIGREE_GENERATIONS;
 						$js .= '\" title=\"' . I18N::translate('Pedigree map') . '\">' . $dataleft . '</a>' . $datamid . $dataright . '</div>", "' . $marker_number . '");';
 						// Construct the polygon lines
@@ -1401,7 +1342,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						// Extend and fit marker bounds
 
 						$js .= 'bounds.extend(point);';
-						$js .= 'pm_map.fitBounds(bounds);';
 						$count++;
 					}
 				}
@@ -1409,13 +1349,35 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$latlongval[$i] = null;
 			}
 		}
-		$js .= 'pm_map.setCenter(bounds.getCenter());' .
+		$js .= 'oneplace=' . json_encode(count(array_unique($lat)) == 1 && count(array_unique($lon)) == 1) . ';';
+		$js .= 'if (oneplace) {
+			// Only have one location so adjust zoom
+			pm_map.setZoom(12);
+		} else {
+			pm_map.fitBounds(bounds);
+		}
+		pm_map.setCenter(bounds.getCenter());
 		// Close the sidebar highlight when the infowindow is closed
-		'google.maps.event.addListener(infowindow, "closeclick", function() {
-			document.getElementById(lastlinkid).className = "person_box:target";
-		});' .
-		// put the assembled side_bar_html contents into the side_bar div
-		'document.getElementById("side_bar").innerHTML = side_bar_html;';
+		google.maps.event.addListener(infowindow, "closeclick", function() {
+			jQuery("#link_" + lastlinkid).toggleClass("gm-ancestor-visited person_box");
+			lastlinkid = null;
+		});
+		// put the assembled gm_ancestors_html contents into the gm-ancestors div
+		document.querySelector(".gm-ancestors").innerHTML = gm_ancestors_html;
+
+		jQuery(".gm-ancestor-link")
+			.on("click", "a", function(e) {
+				e.stopPropagation();
+			})' .
+			'.on("click", function(e) {
+				if (lastlinkid != null) {
+					jQuery("#link_" + lastlinkid).toggleClass("person_box gm-ancestor-visited");
+				}
+				var el = jQuery(this).closest(".gm-ancestor");
+				var target = el.attr("id").split("_").pop();
+				google.maps.event.trigger(gmarkers[target], "click");
+			});
+		';
 
 		return $js;
 	}
@@ -1964,22 +1926,23 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$name   = '<a href="' . $parent->getHtmlUrl() . '"' . $parent->getFullName() . '</a>';
 					$label  = strtr($parent->getSex(), array('F' => I18N::translate('Birth of a daughter'), 'M' => I18N::translate('Birth of a son'), 'U' => I18N::translate('Birth of a child')));
 					$class  = 'person_box' . strtr($parent->getSex(), array('F' => 'F', 'M' => '', 'U' => 'NN'));
-					$evtStr = '<div class="info_event"><span class="highlt_img">' . $parent->displayImage() . '</span><div class="sp1">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
+					$evtStr = '<div class="gm-event">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div>';
 				} else {
 					$spouse = $parent instanceof Family ? $parent->getSpouse($indi) : null;
 					$name   = $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '';
 					$label  = $fact->getLabel();
 					$class  = 'optionbox';
 					if ($fact->getValue() && $spouse) {
-						$evtStr = '<div class="info_event"><span class="highlt_img">' . $spouse->displayImage() . '</span><div class="sp1">' . $label . '<div>' . $fact->getValue() . '</div><div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
+						$evtStr = '<div class="gm-event">' . $label . '<div>' . $fact->getValue() . '</div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
 					} elseif ($spouse) {
-						$evtStr = '<div class="info_event"><span class="highlt_img">' . $spouse->displayImage() . '</span><div class="sp1">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
+						$evtStr = '<div class="gm-event">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div>';
 					} elseif ($fact->getValue()) {
-						$evtStr = '<div class="info_event"><span class="highlt_img">' . Theme::theme()->icon($fact) . '</span><div class="sp1">' . $label . '<div> ' . $fact->getValue() . '</div><div>' . $fact->getDate()->display(true) . '</div></div></div>';
+						$evtStr = '<div class="gm-event">' . $label . '<div> ' . $fact->getValue() . '</div>' . $fact->getDate()->display(true) . '</div></div></div>';
 					} else {
-						$evtStr = '<div class="info_event"><span class="highlt_img">' . Theme::theme()->icon($fact) . '</span><div class="sp1">' . $label . '<div>' . $fact->getDate()->display(true) . '</div></div></div>';
+						$evtStr = '<div class="gm-event">' . $label . '<div>' . $fact->getDate()->display(true) . '</div></div>';
 					}
 				}
+				//$evtStr = '<div class="gm-event">' . $fact->summary() . '</div>';
 
 				if (empty($unique_places[$index])) {
 					$unique_places[$index] = $place_data['mapdata'];
@@ -2001,7 +1964,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$places = array_keys($unique_places);
 			ob_start();
 			// Create the normal googlemap sidebar of events and children
-			echo '<div id="map_events" class="optionbox"><table class="facts_table">';
+			echo '<div class="gm-events" class="optionbox"><table class="facts_table">';
 
 			foreach ($events as $event) {
 				$index = array_search($event['placeid'], $places);
@@ -2085,8 +2048,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				// A function to create the marker and set up the event window
 				function createMarker(latlng, html, tooltip, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
-					var contentString = '<div id="iwcontent">' + html + '</div>';
-
 					// Use flag icon (if defined) instead of regular marker icon
 					if (marker_icon) {
 						var icon_image  = new google.maps.MarkerImage(WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/' + marker_icon,
@@ -2147,7 +2108,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					// Open infowindow when marker is clicked
 					google.maps.event.addListener(marker, 'click', function() {
 						infowindow.close();
-						infowindow.setContent(contentString);
+						infowindow.setContent(html);
 						infowindow.open(map, marker);
 						var panoramaOptions = {
 							position:          marker.position,
@@ -2162,50 +2123,28 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							}
 						};
 
-						// Use jquery for info window tabs
+						// Tabs within the info-windows.
+						<?php if ($STREETVIEW) { ?>
 						google.maps.event.addListener(infowindow, 'domready', function() {
-							//jQuery code here
-							jQuery('#EV').click(function() {
-								document.tabLayerEV                     = document.getElementById("EV");
-								document.tabLayerEV.style.background    = '#ffffff';
-								document.tabLayerEV.style.paddingBottom = '1px';
-								<?php if ($STREETVIEW) { ?>
-								document.tabLayerSV                     = document.getElementById("SV");
-								document.tabLayerSV.style.background    = '#cccccc';
-								document.tabLayerSV.style.paddingBottom = '0px';
-								<?php } ?>
-								document.panelLayer1               = document.getElementById("pane1");
-								document.panelLayer1.style.display = 'block';
-								<?php if ($STREETVIEW) { ?>
-								document.panelLayer2               = document.getElementById("pane2");
-								document.panelLayer2.style.display = 'none';
-								<?php } ?>
-							});
+							jQuery('#gm-tab-events').click(function () {
+								document.getElementById("gm-tab-events").classList.add('gm-tab-active');
+								document.getElementById("gm-tab-streetview").classList.remove('gm-tab-active');
+								document.getElementById("gm-pane-events").style.display = 'block';
+								document.getElementById("gm-pane-streetview").style.display = 'none';
 
-							jQuery('#SV').click(function() {
-								document.tabLayerEV                     = document.getElementById("EV");
-								document.tabLayerEV.style.background    = '#cccccc';
-								document.tabLayerEV.style.paddingBottom = '0px';
-								<?php if ($STREETVIEW) { ?>
-								document.tabLayerSV                     = document.getElementById("SV");
-								document.tabLayerSV.style.background    = '#ffffff';
-								document.tabLayerSV.style.paddingBottom = '1px';
-								<?php } ?>
-								document.panelLayer1               = document.getElementById("pane1");
-								document.panelLayer1.style.display = 'none';
-								<?php if ($STREETVIEW) { ?>
-								document.panelLayer2               = document.getElementById("pane2");
-								document.panelLayer2.style.display = 'block';
-								<?php } ?>
-								var panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
-								setTimeout(function() {
-									panorama.setVisible(true);
-								}, 100);
-								setTimeout(function() {
-									panorama.setVisible(true);
-								}, 500);
+								return false;
+							});
+							jQuery('#gm-tab-streetview').click(function () {
+								document.getElementById("gm-tab-events").classList.remove('gm-tab-active');
+								document.getElementById("gm-tab-streetview").classList.add('gm-tab-active');
+								document.getElementById("gm-pane-events").style.display = 'none';
+								document.getElementById("gm-pane-streetview").style.display = 'block';
+								var panorama = new google.maps.StreetViewPanorama(document.querySelector(".gm-streetview"), panoramaOptions);
+
+								return false;
 							});
 						});
+						<?php } ?>
 					});
 				}
 
@@ -2214,40 +2153,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					infowindow.close();
 					google.maps.event.trigger(gmarkers[i], 'click');
 					return false;
-				}
-
-				// Home control
-				// returns the user to the original map position ... loadMap() function
-				// This constructor takes the control DIV as an argument.
-				function HomeControl(controlDiv, map) {
-					// Set CSS styles for the DIV containing the control
-					// Setting padding to 5 px will offset the control from the edge of the map
-					controlDiv.style.paddingTop   = '5px';
-					controlDiv.style.paddingRight = '0px';
-
-					// Set CSS for the control border
-					var controlUI                   = document.createElement('DIV');
-					controlUI.style.backgroundColor = 'white';
-					controlUI.style.borderStyle     = 'solid';
-					controlUI.style.borderWidth     = '2px';
-					controlUI.style.cursor          = 'pointer';
-					controlUI.style.textAlign       = 'center';
-					controlUI.title                 = '';
-					controlDiv.appendChild(controlUI);
-
-					// Set CSS for the control interior
-					var controlText                = document.createElement('DIV');
-					controlText.style.fontFamily   = 'Arial,sans-serif';
-					controlText.style.fontSize     = '12px';
-					controlText.style.paddingLeft  = '15px';
-					controlText.style.paddingRight = '15px';
-					controlText.innerHTML          = '<b><?php echo I18N::translate('Redraw map') ?></b>';
-					controlUI.appendChild(controlText);
-
-					// Setup the click event listeners: simply set the map to original LatLng
-					google.maps.event.addDomListener(controlUI, 'click', function() {
-						loadMap();
-					});
 				}
 
 				function loadMap() {
@@ -2267,18 +2172,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						streetViewControl:        true,
 						scrollwheel:              true
 					};
-					map            = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
+					map = new google.maps.Map(document.querySelector('.gm-map'), mapOptions);
 
 					// Close any infowindow when map is clicked
 					google.maps.event.addListener(map, 'click', function() {
 						infowindow.close();
 					});
-
-					// Create the Home DIV and call the HomeControl() constructor in this DIV.
-					var homeControlDiv   = document.createElement('DIV');
-					var homeControl      = new HomeControl(homeControlDiv, map);
-					homeControlDiv.index = 1;
-					map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
 
 					// Add the markers to the map
 
@@ -2289,34 +2188,26 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					var bounds = new google.maps.LatLngBounds();
 
 					jQuery.each(locations, function(index, location) {
-
-						var html     =
-							    '<div class="infowindow">' +
-							    '<div id="gmtabs">' +
-							    '<ul class="tabs">' +
-							    '<li><a href="#event" id="EV"><?php echo I18N::translate('Events') ?></a></li>' +
-							    <?php if ($STREETVIEW) { ?>
-							    '<li><a href="#sview" id="SV"><?php echo I18N::translate('Google Street View™') ?></a></li>' +
-							    <?php } ?>
-							    '</ul>' +
-							    '<div class="panes">' +
-							    '<div id="pane1">' +
-							    '<h4 id="iwhead"><?php echo $indi->getFullName() ?>: ' + location.place + '</h4>' +
-							    location.events +
-							    '</div>' +
-							    <?php if ($STREETVIEW) { ?>
-							    '<div id="pane2">' +
-							    '<h4 id="iwhead">' + location.place + '</h4>' +
-							    '<div id="pano"></div>' +
-							    '</div>' +
-							    <?php } ?>
-							    '</div>' +
-							    '</div>' +
-							    '</div>';
-						var point    = new google.maps.LatLng(location.lat, location.lng); // Place Latitude, Longitude
-						var sv_point = new google.maps.LatLng(location.sv_lati, location.sv_long); // StreetView Latitude and Longitide
-
+						var point     = new google.maps.LatLng(location.lat, location.lng); // Place Latitude, Longitude
+						var sv_point  = new google.maps.LatLng(location.sv_lati, location.sv_long); // StreetView Latitude and Longitide
 						var zoomLevel = <?php echo $GM_MAX_ZOOM ?>;
+						var html      =
+					    '<div class="gm-info-window">' +
+					    '<div class="gm-info-window-header">' + location.place + '</div>' +
+					    '<ul class="gm-tabs">' +
+					    '<li class="gm-tab gm-tab-active" id="gm-tab-events"><a href="#"><?php echo I18N::translate('Events') ?></a></li>' +
+					    <?php if ($STREETVIEW) { ?>
+					    '<li class="gm-tab" id="gm-tab-streetview"><a href="#"><?php echo I18N::translate('Google Street View™') ?></a></li>' +
+					    <?php } ?>
+					    '</ul>' +
+						  '<div class="gm-panes">' +
+					    '<div class="gm-pane" id="gm-pane-events">' + location.events + '</div>' +
+					    <?php if ($STREETVIEW) { ?>
+					    '<div class="gm-pane" id="gm-pane-streetview" hidden><div class="gm-streetview"></div></div>' +
+					    <?php } ?>
+					    '</div>' +
+					    '</div>';
+
 						createMarker(point, html, location.tooltip, location.sv_lati, location.sv_long, location.sv_bearing, location.sv_elevation, location.sv_zoom, sv_point, location.pl_icon);
 						// if streetview coordinates are available, use them for marker,
 						// else use the place coordinates
@@ -2526,7 +2417,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$adminplaces_url .= '&amp;parent=' . $latlng['pl_id'];
 			}
 			$update_places_url = 'admin_trees_places.php?ged=' . $WT_TREE->getNameHtml() . '&amp;search=' . urlencode(implode(', ', array_reverse($parent)));
-			echo '<div id="place_map_links" style="width:' . $this->getSetting('GM_PH_XSIZE') . 'px;">';
+			echo '<div class="gm-options">';
 			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', I18N::translate('Google Maps™ preferences'), '</a>';
 			echo ' | <a href="' . $adminplaces_url . '">' . I18N::translate('Geographic data') . '</a>';
 			echo ' | <a href="' . $placecheck_url . '">' . I18N::translate('Place check') . '</a>';
@@ -2559,11 +2450,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$frameheight = $this->getSetting('GM_PH_YSIZE') + 35; // Add height of buttons
 
 				?>
-				<iframe id="sv_frame" style="height: <?php echo $frameheight ?>px;" src="module.php?mod=googlemap&amp;mod_action=wt_street_view&amp;x=<?php echo $sv_lng ?>&amp;y=<?php echo $sv_lat ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir ?>&amp;p=<?php echo $sv_pitch ?>&amp;m=<?php echo $sv_zoom ?>&amp;j=1&amp;k=1&amp;v=1"></iframe>
+				<iframe class="gm-streetview-frame" style="height: <?php echo $frameheight ?>px;" src="module.php?mod=googlemap&amp;mod_action=wt_street_view&amp;x=<?php echo $sv_lng ?>&amp;y=<?php echo $sv_lat ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir ?>&amp;p=<?php echo $sv_pitch ?>&amp;m=<?php echo $sv_zoom ?>&amp;j=1&amp;k=1&amp;v=1"></iframe>
 				<?php
 				if (Auth::isAdmin()) {
 					?>
-					<div id="sv_parameters">
+					<div class="gm-streetview-parameters">
 						<form method="post" action="module.php?mod=googlemap&amp;mod_action=places_edit">
 							<?php echo Filter::getCsrf() ?>
 							<input type='hidden' name='placeid' value='<?php echo $placeid ?>'>
@@ -2635,14 +2526,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo 'icon_type.iconSize = google.maps.Size(20, 34);';
 			echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
 			echo 'var point = new google.maps.LatLng(0, 0);';
-			echo 'var marker = createMarker(point, "<div class="iwstyle" style="width: 250px;"><a href="?action=find', $linklevels, '&amp;parent[' . $level . ']=';
+			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels, '&amp;parent[' . $level . ']=';
 			if ($place2['place'] == 'Unknown') {
-				echo '"><br>';
+				echo '\"><br>';
 			} else {
-				echo addslashes($place2['place']), '"><br>';
+				echo addslashes($place2['place']), '\"><br>';
 			}
 			if (($place2['icon'] !== null) && ($place2['icon'] !== '')) {
-				echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '">&nbsp;&nbsp;';
+				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 			}
 			if ($place2['place'] == 'Unknown') {
 					echo I18N::translate('unknown');
@@ -2654,9 +2545,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$this->printHowManyPeople($level + 1, $parent);
 			echo '<br>', I18N::translate('This place has no coordinates');
 			if (Auth::isAdmin()) {
-				echo "<br><a href='module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=", $levelm, "&amp;display=inactive'>", I18N::translate('Geographic data'), "</a>";
+				echo '<br><a href=\"module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=', $levelm, '&amp;display=inactive\">', I18N::translate('Geographic data'), '</a>';
 			}
-			echo "</div>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
+			echo '</div>", icon_type, "', str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), '");';
 		} else {
 			$lati = strtr($place2['lati'], array('N' => '', 'S' => '-', ',' => '.'));
 			$long = strtr($place2['long'], array('E' => '', 'W' => '-', ',' => '.'));
@@ -2680,7 +2571,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				echo ' icon_type.shadowSize = new google.maps.Size(35, 45);';
 			}
 			echo 'var point = new google.maps.LatLng(', $lati, ', ', $long, ');';
-			echo 'var marker = createMarker(point, "<div class=\"iwstyle\" style=\"width: 250px;\"><a href=\"?action=find', $linklevels;
+			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels;
 			echo '&amp;parent[', $level, ']=';
 			if ($place2['place'] !== 'Unknown') {
 				echo Filter::escapeJs($place2['place']);
@@ -2863,12 +2754,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 		}
 
-		if (!empty($placeidlist)) {
-			// flip the array (thus removing duplicates)
-			$placeidlist = array_flip($placeidlist);
-			// remove entry for parent location
-			unset($placeidlist[$levelm]);
+		// flip the array (thus removing duplicates)
+		$placeidlist = array_flip($placeidlist);
+		// remove entry for parent location
+		unset($placeidlist[$levelm]);
 
+		if (!empty($placeidlist)) {
 			// the keys are all we care about (this reverses the earlier array_flip, and ensures there are no "holes" in the array)
 			$placeidlist = array_keys($placeidlist);
 			// note: this implode/array_fill code generates one '?' for each entry in the $placeidlist array
@@ -3347,43 +3238,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				});
 			}
 
-			// The HomeControl returns user to original position and style =================
-			function HomeControl(controlDiv, map) {
-				// Set CSS styles for the DIV containing the control
-				// Setting padding to 5 px will offset the control from the edge of the map
-				controlDiv.style.paddingTop = '5px';
-				controlDiv.style.paddingRight = '0px';
-
-				// Set CSS for the control border
-				var controlUI = document.createElement('DIV');
-				controlUI.style.backgroundColor = 'white';
-				controlUI.style.color = 'black';
-				controlUI.style.borderColor = 'black';
-				controlUI.style.borderColor = 'black';
-				controlUI.style.borderStyle = 'solid';
-				controlUI.style.borderWidth = '2px';
-				controlUI.style.cursor = 'pointer';
-				controlUI.style.textAlign = 'center';
-				controlUI.title = '';
-				controlDiv.appendChild(controlUI);
-
-				// Set CSS for the control interior
-				var controlText = document.createElement('DIV');
-				controlText.style.fontFamily = 'Arial,sans-serif';
-				controlText.style.fontSize = '12px';
-				controlText.style.paddingLeft = '15px';
-				controlText.style.paddingRight = '15px';
-				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map') ?><\/b>';
-				controlUI.appendChild(controlText);
-
-				// Setup the click event listeners: simply set the map to original LatLng
-				google.maps.event.addDomListener(controlUI, 'click', function() {
-					map.setCenter(latlng);
-					map.setZoom(pl_zoom);
-					map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
-				});
-			}
-
 			function loadMap(zoom, mapType) {
 				var mapTyp;
 
@@ -3413,7 +3267,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					scrollwheel: true
 				};
 
-				map = new google.maps.Map(document.getElementById('map_pane'), myOptions);
+				map = new google.maps.Map(document.querySelector('.gm-map'), myOptions);
 
 				overlays();
 
@@ -3421,13 +3275,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				google.maps.event.addListener(map, 'click', function() {
 					infowindow.close();
 				});
-
-				// Create the DIV to hold the control and call HomeControl() passing in this DIV. --
-				var homeControlDiv = document.createElement('DIV');
-				var homeControl = new HomeControl(homeControlDiv, map);
-				homeControlDiv.index = 1;
-				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
-				// ---------------------------------------------------------------------------------
 
 				// Check for zoom changes
 				google.maps.event.addListener(map, 'zoom_changed', function() {
@@ -3522,11 +3369,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					document.editplaces.LONG_CONTROL.value = 'E';
 				}
 				new google.maps.LatLng (lat.toFixed(5), lng.toFixed(5));
+				infowindow.close();
 				updateMap();
 			}
 
 			function createMarker(i, point, name) {
-				var contentString = '<div id="iwcontent_edit">'+name+'<\/div>';
 				<?php
 				echo 'var image = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png",';
 					echo 'new google.maps.Size(20, 34),'; // Image size
@@ -3549,7 +3396,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				google.maps.event.addListener(marker, 'click', function() {
 					infowindow.close();
-					infowindow.setContent(contentString);
+					infowindow.setContent(name);
 					infowindow.open(map, marker);
 				});
 
@@ -3578,9 +3425,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					if (response.length > 0) {
 						for (var i=0; i<response.length; i++) {
 							// 5 decimal places is approx 1 metre accuracy.
-							var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br>('+response[i].geometry.location.lng().toFixed(5)+','+response[i].geometry.location.lat().toFixed(5)+'';
-								name += '<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo I18N::translate('Use this value') ?></div></a>';
-								name += '</div>';
+							var name =
+								'<div>' + response[i].address_components[0].short_name +
+								'<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');">' +
+								'<?php echo I18N::translate('Use this value') ?></a>' +
+								'</div>';
 							var point = response[i].geometry.location;
 							var marker = createMarker(i, point, name);
 							bounds.extend(response[i].geometry.location);
@@ -3645,7 +3494,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<table class="facts_table">
 			<tr>
 				<td class="optionbox" colspan="3">
-					<div id="map_pane" style="width: 100%; height: 300px;"></div>
+					<div class="gm-map" style="width: 100%; height: 300px;"></div>
 				</td>
 			</tr>
 			<tr>

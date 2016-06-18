@@ -281,7 +281,7 @@ $controller
 		);
 	}
 	$controller->addInlineJavascript(
-		'block_descr["advice1"] = "' . I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.') . '";'
+		'block_descr["advice1"] = "' . I18N::translate('Select a block and use the arrows to move it.') . '";'
 	);
 ?>
 
@@ -364,7 +364,7 @@ $controller
 	echo '</tr>';
 	// NOTE: Row 3 columns 1-7: Summary description of currently selected block
 	echo '<tr><td class="descriptionbox wrap" colspan="7"><div id="instructions">';
-	echo I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.');
+	echo I18N::translate('Select a block and use the arrows to move it.');
 	echo '</div></td></tr>';
 	if ($can_reset) {
 		echo '<tr><td class="topbottombar" colspan="4">';

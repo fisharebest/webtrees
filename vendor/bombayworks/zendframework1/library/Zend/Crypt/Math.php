@@ -77,11 +77,8 @@ class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
         if ($length <= 0) {
             return false;
         }
-        if (function_exists('openssl_random_pseudo_bytes')) {
-            $bytes = openssl_random_pseudo_bytes($length, $usable);
-            if ($strong === $usable) {
-                return $bytes;
-            }
+        if (function_exists('random_bytes')) { // available in PHP 7
+            return random_bytes($length);
         }
         if (function_exists('mcrypt_create_iv')) {
             $bytes = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
@@ -133,6 +130,9 @@ class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
             throw new Zend_Crypt_Exception(
                 'The supplied range is too great to generate'
             );
+        }
+        if (function_exists('random_int')) { // available in PHP 7
+            return random_int($min, $max);
         }
         // calculate number of bits required to store range on this machine
         $r = $range;

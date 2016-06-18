@@ -115,7 +115,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				</td>
 				<td>
 					<span class="subheaders"> <?php echo $label; ?></span>
-					<a class="noprint" href="<?php echo $family->getHtmlUrl(); ?>"> - <?php echo I18N::translate('View the family'); ?></a>
+					<a class="noprint" href="<?php echo $family->getHtmlUrl(); ?>"> - <?php echo I18N::translate('View this family'); ?></a>
 				</td>
 			</tr>
 		</table>

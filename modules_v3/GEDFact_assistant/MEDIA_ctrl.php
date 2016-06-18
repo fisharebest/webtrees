@@ -95,9 +95,8 @@ global $controller;
 							<table width="100%" class="fact_table" cellspacing="0" border="0">
 								<tr>
 									<td colspan=3 class="descriptionbox wrap">
-										<?php echo I18N::translate('Click %s to choose individual as head of family.', '<i class="headimg vmiddle icon-button_head"></i>'); ?>
-										<br><br>
-										<?php echo I18N::translate('Click name to add individual to add links list.'); ?>
+										<i class="headimg vmiddle icon-button_head"></i>
+										<?php echo I18N::translate('View this family'); ?>
 									</td>
 								</tr>
 								<?php
@@ -136,17 +135,19 @@ function print_navigator_family(Family $family, Individual $individual) {
 	foreach ($family->getSpouses() as $spouse) {
 		?>
 		<tr class="fact_value">
-			<td class="facts_value">
-				<a href="edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=<?php echo $spouse->getXref(); ?>&amp;gedcom=<?php echo $spouse->getTree()->getNameUrl(); ?>">
-					<i class="headimg vmiddle icon-button_head"></i>
-				</a>
-			</td>
 			<td class="facts_value" >
 				<a href="#" onclick="opener.insertRowToTable('<?php echo $spouse->getXref(); ?>', '<?php echo Filter::escapeJs($spouse->getFullName()); ?>', '', '', '', '', '', '', '', ''); return false;">
 					<?php echo $spouse === $individual ? '<b>' : ''; ?>
 					<?php echo $spouse->getFullName(); ?> <?php echo $spouse->getLifeSpan(); ?>
 					<?php echo $spouse === $individual ? '</b>' : ''; ?>
 				</a>
+			</td>
+			<td class="facts_value">
+				<?php if ($individual !== $spouse): ?>
+					<a href="edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=<?php echo $spouse->getXref(); ?>&amp;gedcom=<?php echo $spouse->getTree()->getNameUrl(); ?>">
+						<i class="headimg vmiddle icon-button_head"></i>
+					</a>
+				<?php endif; ?>
 			</td>
 		<tr>
 	<?php
@@ -155,17 +156,19 @@ function print_navigator_family(Family $family, Individual $individual) {
 	foreach ($family->getChildren() as $child) {
 		?>
 		<tr>
-			<td class="facts_value" >
-				<a href="edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=<?php echo $child->getXref(); ?>&amp;gedcom=<?php echo $child->getTree()->getNameUrl(); ?>">
-					<i class="headimg vmiddle icon-button_head"></i>
-				</a>
-			</td>
 			<td class="facts_value">
 				<a href="#" onclick="opener.insertRowToTable('<?php echo $child->getXref(); ?>', '<?php echo Filter::escapeJs($child->getFullName()); ?>', '', '', '', '', '', '', '', ''); return false;">
 					<?php echo $child === $individual ? '<b>' : ''; ?>
 					<?php echo $child->getFullName(); ?> <?php echo $child->getLifeSpan(); ?>
 				<?php echo $child === $individual ? '</b>' : ''; ?>
 				</a>
+			</td>
+			<td class="facts_value" >
+			<?php if ($individual !== $child): ?>
+					<a href="edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=<?php echo $child->getXref(); ?>&amp;gedcom=<?php echo $child->getTree()->getNameUrl(); ?>">
+						<i class="headimg vmiddle icon-button_head"></i>
+					</a>
+				<?php endif; ?>
 			</td>
 		</tr>
 	<?php

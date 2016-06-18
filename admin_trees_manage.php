@@ -722,7 +722,7 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 				</p>
 				<p>
 					<a href="admin_pgv_to_wt.php">
-						<?php echo I18N::translate('Click here for PhpGedView to webtrees transfer wizard'); ?>
+						<?php echo I18N::translate('PhpGedView to webtrees transfer wizard'); ?>
 					</a>
 				</p>
 			</div>

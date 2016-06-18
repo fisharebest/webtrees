@@ -162,15 +162,17 @@ default:
 	echo '<div id="login-page">';
 	echo '<div id="login-text">';
 
+	echo '<p class="center"><strong>' . I18N::translate('Welcome to this genealogy website') . '</strong></p>';
+
 	switch (Site::getPreference('WELCOME_TEXT_AUTH_MODE')) {
 	case 1:
-		echo I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved.');
+		echo '<p>' . I18N::translate('Anyone with a user account can access this website.') . ' ' . I18N::translate('You can apply for an account using the link below.') . '</p>';
 		break;
 	case 2:
-		echo I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved.');
+		echo '<p>' . I18N::translate('You need to be an authorized user to access this website.') . ' ' . I18N::translate('You can apply for an account using the link below.') . '</p>';
 		break;
 	case 3:
-		echo I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved.');
+		echo '<p>' . I18N::translate('You need to be a family member to access this website.') . ' ' . I18N::translate('You can apply for an account using the link below.') . '</p>';
 		break;
 	case 4:
 		echo '<p style="white-space: pre-wrap;">', Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE), '</p>';
@@ -331,16 +333,17 @@ case 'register':
 
 			// Generate an email in the user’s language
 			$mail2_body =
-				I18N::translate('Hello %s…', $user->getRealNameHtml()) . Mail::EOL . Mail::EOL .
+				I18N::translate('Hello %s…', $user->getRealNameHtml()) .
+				Mail::EOL . Mail::EOL .
 				/* I18N: %1$s is the site URL and %2$s is an email address */
-				I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_BASE_URL . ' ' . $WT_TREE->getTitleHtml(), $user->getEmail()) . ' ' .
-				I18N::translate('Information about the request is shown under the link below.') . Mail::EOL .
-				I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . Mail::EOL . Mail::EOL .
+				I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_BASE_URL . ' ' . $WT_TREE->getTitleHtml(), $user->getEmail()) .
+				Mail::EOL . Mail::EOL .
+				I18N::translate('Follow this link to verify your email address.') .
+				Mail::EOL . Mail::EOL .
 				'<a href="' . WT_LOGIN_URL . '?user_name=' . Filter::escapeUrl($user->getUserName()) . '&amp;user_hashcode=' . $user->getPreference('reg_hashcode') . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameUrl() . '">' .
 				WT_LOGIN_URL . "?user_name=" . Filter::escapeHtml($user->getUserName()) . "&amp;user_hashcode=" . urlencode($user->getPreference('reg_hashcode')) . '&amp;action=userverify&amp;ged=' . $WT_TREE->getNameHtml() .
 				'</a>' . Mail::EOL . Mail::EOL .
 				I18N::translate('Username') . " - " . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
-				I18N::translate('Verification code') . " - " . $user->getPreference('reg_hashcode') . Mail::EOL .
 				I18N::translate('Comments') . " - " . $user->getPreference('comment') . Mail::EOL .
 				I18N::translate('If you didn’t request an account, you can just delete this message.') . Mail::EOL;
 			$mail2_subject = /* I18N: %s is a server name/URL */ I18N::translate('Your registration at %s', WT_BASE_URL);

@@ -155,7 +155,7 @@ $facts = $controller->getFacts();
 					echo $tmp->displayImage();
 					if (!$tmp->isExternal()) {
 						if ($tmp->fileExists('main')) {
-							if ($controller->record->getTree()->getPreference('SHOW_MEDIA_DOWNLOAD')) {
+							if ($WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($WT_TREE)) {
 								echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true) . '">' . I18N::translate('Download file') . '</a></p>';
 							}
 						} else {

@@ -386,7 +386,7 @@ case 'edit':
 						<?php echo I18N::translate('Approved by administrator'); ?>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically.'); ?>
+						<?php echo I18N::translate('When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically.'); ?>
 					</p>
 					<p class="small text-muted">
 						<?php echo I18N::translate('If an administrator creates a user account, the verification email is not sent, and the email must be verified manually.'); ?>

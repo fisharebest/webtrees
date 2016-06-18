@@ -253,7 +253,7 @@ case 'general':
 	$WT_TREE->setPreference('SHOW_LAST_CHANGE', Filter::postBool('SHOW_LAST_CHANGE'));
 	$WT_TREE->setPreference('SHOW_LDS_AT_GLANCE', Filter::postBool('SHOW_LDS_AT_GLANCE'));
 	$WT_TREE->setPreference('SHOW_LEVEL2_NOTES', Filter::postBool('SHOW_LEVEL2_NOTES'));
-	$WT_TREE->setPreference('SHOW_MEDIA_DOWNLOAD', Filter::postBool('SHOW_MEDIA_DOWNLOAD'));
+	$WT_TREE->setPreference('SHOW_MEDIA_DOWNLOAD', Filter::post('SHOW_MEDIA_DOWNLOAD'));
 	$WT_TREE->setPreference('SHOW_NO_WATERMARK', Filter::post('SHOW_NO_WATERMARK'));
 	$WT_TREE->setPreference('SHOW_PARENTS_AGE', Filter::postBool('SHOW_PARENTS_AGE'));
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES', Filter::post('SHOW_PEDIGREE_PLACES'));
@@ -1047,9 +1047,9 @@ $controller
 			<?php echo /* I18N: A configuration setting */ I18N::translate('Show a download link in the media viewer'); ?>
 		</legend>
 		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('SHOW_MEDIA_DOWNLOAD', $no_yes, $WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD'), 'class="radio-inline"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('SHOW_MEDIA_DOWNLOAD', $privacy, null, $WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Show a download link in the media viewer” configuration setting */ I18N::translate('The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons.'); ?>
+				<?php echo /* I18N: Help text for the “Show a download link in the media viewer” configuration setting */ I18N::translate('This option will make it easier for users to download images.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1781,7 +1781,7 @@ $controller
 				</div>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Quick individual facts” configuration setting */ I18N::translate('This is the short list of GEDCOM individual facts that appears next to the full list and can be added with a single click.'); ?>
+				<?php echo /* I18N: Help text for the “Quick individual facts” configuration setting */ I18N::translate('The most common individual facts and events are listed separately, so that they can be added more easily.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1899,7 +1899,7 @@ $controller
 				</div>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Quick family facts” configuration setting */ I18N::translate('This is the short list of GEDCOM family facts that appears next to the full list and can be added with a single click.'); ?>
+				<?php echo /* I18N: Help text for the “Quick family facts” configuration setting */ I18N::translate('The most common family facts and events are listed separately, so that they can be added more easily.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1988,7 +1988,7 @@ $controller
 				</div>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Quick source facts” configuration setting */ I18N::translate('This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click.'); ?>
+				<?php echo /* I18N: Help text for the “Quick source facts” configuration setting */ I18N::translate('The most common source facts are listed separately, so that they can be added more easily.'); ?>
 			</p>
 		</div>
 	</div>
@@ -2077,7 +2077,7 @@ $controller
 				</div>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Quick repository facts” configuration setting */ I18N::translate('This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click.'); ?>
+				<?php echo /* I18N: Help text for the “Quick repository facts” configuration setting */ I18N::translate('The most common repository facts are listed separately, so that they can be added more easily.'); ?>
 			</p>
 		</div>
 	</div>

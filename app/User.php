@@ -512,7 +512,7 @@ class User {
 	 * The ircmaxell/password_compat implementation of the password_hash() function
 	 * relies on an encryption library which is not secure in PHP < 5.3.7
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	private static function isPhpCryptBroken() {
 		return PHP_VERSION_ID < 50307 && password_hash('foo', PASSWORD_DEFAULT) === false;

@@ -1,9 +1,4 @@
-*.ged
-*.GED
-*cache/
-config.ini.php
-histo.*.php
-language/
-media/
-/backup-media-lokaal/
-_offline.txt
+*
+!.gitignore
+!.htaccess
+!index.php

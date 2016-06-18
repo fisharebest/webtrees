@@ -532,7 +532,12 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
                 isset($trace[0]['file']) && substr($trace[0]['file'], -7, 7)=='Log.php' &&
                 isset($trace[1]['function']) && $trace[1]['function']=='__call') {
 
-                $trace = array_splice($trace, 2);
+                $spliceOffset = 2;
+                //Debug backtrace changed in PHP 7.0.0
+                if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
+                    $spliceOffset = 1;
+                }
+                $trace = array_splice($trace, $spliceOffset);
             }
         }
 

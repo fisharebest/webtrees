@@ -705,17 +705,8 @@ msgstr "<b>Nota important:</b> L’assistent de transferència no és capaç d�
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr "<b> Nota:</b> la informació privada de persones vives només pot lliurar-se a familiars i amics íntims. Abans de que podeu rebre dades privades us interrogarem per verificar quina relació hi teniu. De vegades la informació de difunts pot també ésser privada. Si aquest és el cas, és perquè no hi ha prou informació coneguda sobre la persona per determinar si és viu o no i probablement, no tenim més informació sobre aquesta persona.<br><br>Abans de fer una pregunta, si us plau, comproveu que demaneu informació sobre la persona correcta comprovant dates, indrets i familiars directes. Si proposeu canvis en les dades genealògiques, si us plau incloeu-hi les fonts de on les heu obtingut."
 
-#: login.php:170
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
-msgstr "<center><b>Benvingut/da a aquest lloc web de genealogia</b></center><br>L’accés és permès solament a usuaris <u>autoritzats</u>.<br><br>Si ja disposeu d’autorització podeu accedir per aquesta pàgina. Si no, podeu demanar-la polsant a l’enllaç apropiat d’aquí sota.<br><br>Un cop verificada la vostra informació l’administrador pot autoritzar-vos o no. Rebreu un correu electrònic quan la comanda hagi estat aprovada."
-
-#: login.php:173
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
-msgstr "<center><b>Benvingut/da a aquest lloc web de genealogia</b></center><br>L’accés és permès solament a <u>membres de la família</u>.<br><br>Si ja disposeu d’autorització podeu accedir per aquesta pàgina. Si no, podeu demanar-la polsant a l’enllaç apropiat d’aquí sota.<br><br>Un cop verificada la vostra informació l’administrador pot autoritzar-ho o no. Rebreu un correu electrònic quan la comanda hagi estat aprovada."
-
-#: login.php:167
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
-msgstr "<center><b>Benvingut/da a aquest lloc web de genealogia</b></center><br>L’accés és permès a qualsevol usuari enregistrat.<br><br>Si ja disposeu d’autorització, accediu per aquesta pàgina. Si no, podeu demanar-la polsant a l’enllaç apropiat de sota.<br><br>Un cop verificada la vostra comanda, l’administrador del lloc us activarà el registre. Rebreu un correu electrònic quan la hagi estat aprovada."
+msgid "Welcome to this genealogy website"
+msgstr "Benvingut/da a aquest lloc web de genealogia"
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
@@ -2085,7 +2076,8 @@ msgid "Approval of account at %s"
 msgstr "Autorització de registre a %s|"
 
 #: edit_changes.php:209 edit_changes.php:220
-msgid "Approve all changes"
+#, fuzzy
+msgid "Accept all changes"
 msgstr "Autoritzeu tots els canvis"
 
 #: admin_users.php:875
@@ -2165,7 +2157,8 @@ msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Esteu segur que cal eliminar aquesta entrada dels vostres Favorits?"
 
 #: edit_changes.php:231
-msgid "Are you sure you want to undo all the changes to this family tree?"
+#, fuzzy
+msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr "Esteu segur que voleu desfer tots els canvis d’aquest arbre?"
 
 #. I18N: Name of a country or state
@@ -7235,7 +7228,8 @@ msgid "Highest population"
 msgstr "Població més alta"
 
 #: index_edit.php:284 index_edit.php:367
-msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
+#, fuzzy
+msgid "Select a block and use the arrows to move it."
 msgstr "Ressalteu un nom de bloc i després polseu una de les fletxes per moure el bloc vers la direcció indicada."
 
 #. I18N: gedcom tag _PRIM
@@ -10966,7 +10960,8 @@ msgid "Play"
 msgstr "Engega"
 
 #: login.php:338
-msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
+#, fuzzy
+msgid "Follow this link to verify your email address."
 msgstr "Polseu a l’enllaç de sota i empleneu els camps que s’hi demanen per a confirmar la vostra comanda i l’adreça de correu electrònic."
 
 #: search.php:55
@@ -13634,7 +13629,8 @@ msgstr "La Haia, Holanda"
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1052
-msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+#, fuzzy
+msgid "This option will make it easier for users to download images."
 msgstr "El Visor Multimèdia pot presentar un enllaç que, polsant-lo, descarregarà el fitxer multimèdia al PC local.<br><br>Podeu fer ocultar aquest enllaç per qüestions de seguretat."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -13668,7 +13664,8 @@ msgid "The changes to “%s” have been rejected."
 msgstr "S’han rebutjat els canvis a «%s»."
 
 #: app/Module/ClippingsCartModule.php:311
-msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>"
+#, fuzzy
+msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
 msgstr "El Cistell us permet prendre esqueixos («retalls») d’aquest arbre genealògic i unir-los en un sol fitxer per a baixar-lo i posteriorment importar-lo al vostre propi programa de genealogia. El fitxer descarregable es confecciona en format GEDCOM.<br><ul><li>Com prendre retalls?<br>És molt fàcil. Sempre que vegeu un nom que es pugui polsar (persona, família o font) podeu anar a la pàgina de detalls del nom. Allà podreu veure una opció d’<b>Posa-ho al cistell</b>. En polsar-la, disposareu de diverses opcions per descarregar.</li><li>Com descarregar-ho?<br>Un cop tingueu retalls al cistell, podeu descarregar-los només polsant a l’enllaç <b>Descarrega Ara</b>. Seguiu les instruccions i enllaços.</li></ul>"
 
 #: site-unavailable.php:54
@@ -14444,22 +14441,26 @@ msgstr "Aquest és el nom del servidor SMTP. «localhost» significa que el serv
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1902
-msgid "This is the short list of GEDCOM family facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common family facts and events are listed separately, so that they can be added more easily."
 msgstr "Aquesta és una breu llista d’esdeveniments familiars GEDCOM que surt al costat de la completa i que podeu afegir amb un simple clic."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1784
-msgid "This is the short list of GEDCOM individual facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr "Breu llista d’esdeveniments individuals, al costat de la completa, que poden afegir-se amb un simple clic."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2080
-msgid "This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common repository facts are listed separately, so that they can be added more easily."
 msgstr "Aquesta és una breu llista d’esdeveniments GEDCOM d’arxiu que surt al costat de la complerta i que poden escollir-se amb un simple clic."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1991
-msgid "This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common source facts are listed separately, so that they can be added more easily."
 msgstr "Aquesta és una llista breu d’esdeveniments de fonts del GEDCOM que surt al costat de la llista sencera i que poden escollir-se amb un simple clic."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
@@ -15299,11 +15300,13 @@ msgid "Uncleared: insufficient data"
 msgstr "No aprovat: dades insuficients"
 
 #: edit_changes.php:181 edit_changes.php:201
-msgid "Undo"
+#, fuzzy
+msgid "Reject"
 msgstr "Desfés"
 
 #: edit_changes.php:211 edit_changes.php:231
-msgid "Undo all changes"
+#, fuzzy
+msgid "Reject all changes"
 msgstr "Rebutgeu tots els canvis"
 
 #: admin_trees_config.php:1823
@@ -15706,7 +15709,8 @@ msgid "View the archive"
 msgstr "Veure l’arxiu"
 
 #: calendar.php:300
-msgid "View the day"
+#, fuzzy
+msgid "View this day"
 msgstr "D’un dia"
 
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
@@ -15720,16 +15724,19 @@ msgstr "Veure detalls"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313
-msgid "View the family"
+#, fuzzy
+msgid "View this family"
 msgstr "Mostra la família"
 
 #: app/Module/GoogleMapsModule.php:1352 app/Module/SlideShowModule.php:177
 #: medialist.php:310
-msgid "View the individual"
+#, fuzzy
+msgid "View this individual"
 msgstr "Mostra la persona"
 
 #: calendar.php:304
-msgid "View the month"
+#, fuzzy
+msgid "View this month"
 msgstr "D’un mes"
 
 #: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
@@ -15737,11 +15744,13 @@ msgid "View the notes"
 msgstr "Mostra les Notes"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-msgid "View the source"
+#, fuzzy
+msgid "View this source"
 msgstr "Mostra la Font"
 
 #: calendar.php:308
-msgid "View the year"
+#, fuzzy
+msgid "View this year"
 msgstr "D’un any"
 
 #. I18N: Location of an LDS church temple
@@ -15889,7 +15898,8 @@ msgid "When a record is edited, the user and timestamp are recorded. Sometimes i
 msgstr "Quan s'edita un registre, es registra l'usuari, data i hora. A vegades és desitjable mantenir la informació existent dela \"darrera modificació\", per exemple, en fer petites correccions a les dades facilitades per una altra persona. Aquesta opció controla si aquesta funció està activada per defecte."
 
 #: admin_users.php:389
-msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
+#, fuzzy
+msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr "Quan un usuari es registra per a un compte, s’envia un correu electrònic a la seva adreça amb un enllaç de verificació. Quan polsa aquest enllaç, sabrem que l’adreça de correu electrònic és correcta, i el «correu electrònic verificat» queda seleccionat automàticament."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46

@@ -733,17 +733,8 @@ msgstr "<b>Svarbi pastaba:</b> Persiuntimo vediklis negali padėti perkelti medi
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr "<b>Atkreipkite dėmesį</b> Informacija apie gyvus asmenis bus pateikiama tik giminės nariams. Jūsų bus paprašyta patvirtinti savo giminystės ar kitus ryšius su tuo asmeniu prieš gaunant privačius duomenis. Kartais informacija apie mirusius asmenis gali būti privati. Jei taip yra, arba nėra pakankamai informacijos, ar jie gyvi ar ne, gali būti kad ir mes neturime daugiau informacijos apie šį asmenį.<br><br>Prieš užduodant klausimą , įsitikinkite, kad jūs teiraujatės apie teisingą asmenį patikrinę datas, vietas ir artimus giminaičius. Jei pranešate apie genealoginių duomenų pakeitimus, prašome nurodyti šaltinius, iš kur gavote duomenis."
 
-#: login.php:170
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved."
-msgstr "<center><b>Sveiki atvykę į šį genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas tik <u>patvirtintiems</u> naudotojams.<br><br>Jei turite naudotojo paskyrą, tuomet galite jungtis prie šio tinklapio. Jei ne, galite užsakyti naudotojo paskyrą nuspaudę atitinkamą nuorodą žemiau.<br><br>Patikrinęs Jūsų duomenis puslapio administratorius patvirtins naują naudotoją arba atmes šį prašymą. Jūs sulauksite elektroninio laiško, kuomet Jūsų paraiška bus patvirtinta."
-
-#: login.php:173
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved."
-msgstr "<center><b>Sveiki atvykę į šį genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas tik <u>šeimos nariams</u>.<br><br>Jei turite paskyrą, galite prisijungti prie šio tinklapio. Jei ne, tuomet galite užsakyti naudotojo paskyrą nuspaudę atitinkamą nuorodą žemiau.<br><br>Patikrinęs Jūsų duomenis puslapio administratorius patvirtins naują naudotoją arba atmes šį prašymą. Jūs sulauksite elektroninio laiško, kuomet Jūsų paraiška bus patvirtinta."
-
-#: login.php:167
-msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can sign in on this page. If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account. You will receive an email when your application has been approved."
-msgstr "<center><b>Sveiki atvykę į šį genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas visiems, kas turi naudotojo paskyrą.<br><br>Jei turite naudotojo paskyrą, tuomet galite jungtis prie šio tinklapio. Jei neturite, galite užsakyti naudotojo paskyrą nuspaudę atitinkamą nuorodą žemiau.<br><br>Patikrinęs Jūsų pateiktus duomenis puslapio administratorius aktyvuos Jūsų paskyrą. Jūs sulauksite elektroninio laiško, kuomet Jūsų paraiška bus patvirtinta."
+msgid "Welcome to this genealogy website"
+msgstr "Sveiki atvykę į šį genealogijos tinklapį"
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
@@ -2114,7 +2105,8 @@ msgid "Approval of account at %s"
 msgstr "Sąskaitos tvirtinimas %s bazėje"
 
 #: edit_changes.php:209 edit_changes.php:220
-msgid "Approve all changes"
+#, fuzzy
+msgid "Accept all changes"
 msgstr "Patvirtinti visus pakeitimus"
 
 #: admin_users.php:875
@@ -2194,7 +2186,8 @@ msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Ar tikrai norite pašalinti šį elementą iš mėgstamiausių sąrašo?"
 
 #: edit_changes.php:231
-msgid "Are you sure you want to undo all the changes to this family tree?"
+#, fuzzy
+msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr "Ar tikrai norite atmesti visus pakeitumus šiame šeimos medyje?"
 
 #. I18N: Name of a country or state
@@ -7266,7 +7259,8 @@ msgid "Highest population"
 msgstr "Didžiausia populiacija"
 
 #: index_edit.php:284 index_edit.php:367
-msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
+#, fuzzy
+msgid "Select a block and use the arrows to move it."
 msgstr "Paryškinkite bloko pavadinimą, tada spustelėkite vieną iš rodyklių piktogramų, kad išryškintas blokas judėtų nurodyta kryptimi."
 
 #. I18N: gedcom tag _PRIM
@@ -10999,7 +10993,8 @@ msgid "Play"
 msgstr "Pradėti"
 
 #: login.php:338
-msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
+#, fuzzy
+msgid "Follow this link to verify your email address."
 msgstr "Tam, kad patvirtintumėme naudotojo vardą ir elektroninį adresą, prašome eiti šia nuoroda ir užpildyti duomenis."
 
 #: search.php:55
@@ -13669,7 +13664,8 @@ msgstr "The Hague, Olandija"
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1052
-msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
+#, fuzzy
+msgid "This option will make it easier for users to download images."
 msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -13703,7 +13699,8 @@ msgid "The changes to “%s” have been rejected."
 msgstr "Pakeitimai nuo „%s“ buvo atmesti."
 
 #: app/Module/ClippingsCartModule.php:311
-msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>"
+#, fuzzy
+msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
 msgstr "Iškarpų krepšelis Jums leidžia paimti ištraukas („iškarpas“) iš šio šeimos medžio ir sudėti jas į vieną failą atsisiuntimui bei vėliau importuoti į savo nuosavą genealogijos programą. Atsisiunčiamasis failas yra įrašytas GEDCOM formatu.<br><ul><li>Kaip iškirpinėti?<br>Tai tikrai yra paprasta. Kuomet tik pamatote paspaudžiamą vardą (asmenį, šeimą, ar šaltinį), Jūs galite nueiti į šio vardo Duomenų puslapį. Ten Jūs pamatysite <b>Pridėti į iškarpų krepšelį</b> parinktį. Kuomet tik Jūs spragtelėsite šią nuorodą, Jums bus pasiūlytos kelios parinktys atsisiuntimui.</li><li>Kaip atsisiųsti?<br>Kai turėsite elementus savo krepšelyje, Jūs galėsite atsisiųsti juos paprasčiausiai paspausdami „Atsisiųsti“ nuorodą. Sekite instrukcijas ir nuorodas.</li></ul>"
 
 #: site-unavailable.php:54
@@ -14482,22 +14479,26 @@ msgstr "Tai yra SMTP serverio vardas. „localhost“ reiškia, kad pašto pasla
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1902
-msgid "This is the short list of GEDCOM family facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common family facts and events are listed separately, so that they can be added more easily."
 msgstr "Tai yra trumpas sąrašas GEDCOM šeimos faktų, kurie, atrodo yra šalia pilno sąrašo ir gali būti pridėti vienu paspaudimu."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1784
-msgid "This is the short list of GEDCOM individual facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr ""
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2080
-msgid "This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common repository facts are listed separately, so that they can be added more easily."
 msgstr ""
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1991
-msgid "This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click."
+#, fuzzy
+msgid "The most common source facts are listed separately, so that they can be added more easily."
 msgstr "Tai yra trumpas GEDCOM šaltinio faktų sąrašas, kuris parodomas šalia pilno sąrašo ir gali būti greitai pridėtas vienu paspaudimu."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
@@ -15340,11 +15341,13 @@ msgid "Uncleared: insufficient data"
 msgstr "Nepatvirtintas: neužteko duomenų"
 
 #: edit_changes.php:181 edit_changes.php:201
-msgid "Undo"
+#, fuzzy
+msgid "Reject"
 msgstr "Atšaukti paskutinį veiksmą"
 
 #: edit_changes.php:211 edit_changes.php:231
-msgid "Undo all changes"
+#, fuzzy
+msgid "Reject all changes"
 msgstr "Atšaukti visus pakeitimus"
 
 #: admin_trees_config.php:1823
@@ -15748,7 +15751,8 @@ msgid "View the archive"
 msgstr "Rodyti archyvą"
 
 #: calendar.php:300
-msgid "View the day"
+#, fuzzy
+msgid "View this day"
 msgstr "Žiūrėti dieną"
 
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
@@ -15762,16 +15766,19 @@ msgstr "Rodyti daugiau detalių"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313
-msgid "View the family"
+#, fuzzy
+msgid "View this family"
 msgstr "Informacija apie šeimą"
 
 #: app/Module/GoogleMapsModule.php:1352 app/Module/SlideShowModule.php:177
 #: medialist.php:310
-msgid "View the individual"
+#, fuzzy
+msgid "View this individual"
 msgstr "Informacija apie asmenį"
 
 #: calendar.php:304
-msgid "View the month"
+#, fuzzy
+msgid "View this month"
 msgstr "Žiūrėti mėnesį"
 
 #: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
@@ -15779,11 +15786,13 @@ msgid "View the notes"
 msgstr "Rodyti pastabas"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-msgid "View the source"
+#, fuzzy
+msgid "View this source"
 msgstr "Informacija apie šaltinį"
 
 #: calendar.php:308
-msgid "View the year"
+#, fuzzy
+msgid "View this year"
 msgstr "Žiūrėti metus"
 
 #. I18N: Location of an LDS church temple
@@ -15931,7 +15940,8 @@ msgid "When a record is edited, the user and timestamp are recorded. Sometimes i
 msgstr ""
 
 #: admin_users.php:389
-msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
+#, fuzzy
+msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr ""
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46

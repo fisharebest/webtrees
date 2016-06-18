@@ -4535,7 +4535,7 @@ class Stats {
 					$return = '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
 					$return .= I18N::translate('and') . ' ';
 					$return .= '<a href="' . $child1->getHtmlUrl() . '">' . $child1->getFullName() . '</a>';
-					$return .= ' <a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View the family') . ']</a>';
+					$return .= ' <a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View this family') . ']</a>';
 				} else {
 					$return = I18N::translate('This information is private and cannot be shown.');
 				}
@@ -4562,7 +4562,7 @@ class Stats {
 						$return .= I18N::translate('and') . " ";
 						$return .= "<a href=\"" . $child1->getHtmlUrl() . "\">" . $child1->getFullName() . "</a>";
 						$return .= " (" . $age . ")";
-						$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View the family') . "]</a>";
+						$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View this family') . "]</a>";
 						$return .= '</li>';
 						$top10[] = $return;
 						$dist[]  = $fam['family'];
@@ -4573,7 +4573,7 @@ class Stats {
 					$return .= I18N::translate('and') . " ";
 					$return .= "<a href=\"" . $child1->getHtmlUrl() . "\">" . $child1->getFullName() . "</a>";
 					$return .= " (" . $age . ")";
-					$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View the family') . "]</a>";
+					$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View this family') . "]</a>";
 					$return .= '</li>';
 					$top10[] = $return;
 				}
@@ -4582,7 +4582,7 @@ class Stats {
 					$return = $child2->formatList('span', false, $child2->getFullName());
 					$return .= "<br>" . I18N::translate('and') . "<br>";
 					$return .= $child1->formatList('span', false, $child1->getFullName());
-					$return .= "<br><a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View the family') . "]</a>";
+					$return .= "<br><a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View this family') . "]</a>";
 
 					return $return;
 				} else {

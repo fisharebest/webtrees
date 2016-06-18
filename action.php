@@ -42,7 +42,13 @@ case 'accept-changes':
 	// Accept all the pending changes for a record
 	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
 	if ($record && Auth::isModerator($record->getTree()) && $record->canShow() && $record->canEdit()) {
-		FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
+		if ($record->isPendingDeletion()) {
+			FlashMessages::addMessage(/* I18N: %s is the name of a genealogy record */
+				I18N::translate('“%s” has been deleted.', $record->getFullName()));
+		} else {
+			FlashMessages::addMessage(/* I18N: %s is the name of a genealogy record */
+				I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
+		}
 		FunctionsImport::acceptAllChanges($record->getXref(), $record->getTree()->getTreeId());
 	} else {
 		http_response_code(406);
