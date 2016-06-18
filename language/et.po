@@ -16193,7 +16193,7 @@ msgstr "Selleks, et saaksite need puud liita peate ühes puus kirjed ümbernumme
 
 #: app/Module/ChartsBlockModule.php:139
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Te peate valima isiku ja joonise tüübi bloki konfiguratsioonieelistustest"
+msgstr "Te peate valima isiku ja joonise tüübi ploki konfiguratsioonieelistustest"
 
 #: admin_users.php:287
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
