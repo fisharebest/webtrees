@@ -2078,7 +2078,8 @@ msgid "Approval of account at %s"
 msgstr "Felhasználó jóváhagyása itt: %s"
 
 #: edit_changes.php:209 edit_changes.php:220
-msgid "Approve all changes"
+#, fuzzy
+msgid "Accept all changes"
 msgstr "Az összes változtatás jóváhagyása"
 
 #: admin_users.php:875
@@ -2158,7 +2159,8 @@ msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Biztos, hogy törli ezt az elemet a kedvencei listájából?"
 
 #: edit_changes.php:231
-msgid "Are you sure you want to undo all the changes to this family tree?"
+#, fuzzy
+msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr "Biztos, hogy vissza szeretné vonni a családfán belüli összes változtatást?"
 
 #. I18N: Name of a country or state

@@ -2076,7 +2076,8 @@ msgid "Approval of account at %s"
 msgstr "Goedkeuring van account op %s"
 
 #: edit_changes.php:209 edit_changes.php:220
-msgid "Approve all changes"
+#, fuzzy
+msgid "Accept all changes"
 msgstr "Keur alle veranderingen goed"
 
 #: admin_users.php:875
@@ -2156,7 +2157,8 @@ msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Weet u zeker dat u dit item uit uw favorietenlijst wilt verwijderen?"
 
 #: edit_changes.php:231
-msgid "Are you sure you want to undo all the changes to this family tree?"
+#, fuzzy
+msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr "Weet u zeker dat u alle veranderingen aan deze stamboom ongedaan wilt maken?"
 
 #. I18N: Name of a country or state
@@ -15298,11 +15300,13 @@ msgid "Uncleared: insufficient data"
 msgstr "Niet vrijgegeven: onvoldoende gegevens"
 
 #: edit_changes.php:181 edit_changes.php:201
-msgid "Undo"
+#, fuzzy
+msgid "Reject"
 msgstr "Maak ongedaan"
 
 #: edit_changes.php:211 edit_changes.php:231
-msgid "Undo all changes"
+#, fuzzy
+msgid "Reject all changes"
 msgstr "Alle wijzigingen ongedaan maken"
 
 #: admin_trees_config.php:1823

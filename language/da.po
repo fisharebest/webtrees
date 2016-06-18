@@ -2073,7 +2073,8 @@ msgid "Approval of account at %s"
 msgstr "Godkendelse af konto på %s"
 
 #: edit_changes.php:209 edit_changes.php:220
-msgid "Approve all changes"
+#, fuzzy
+msgid "Accept all changes"
 msgstr "Godkend alle ændringer"
 
 #: admin_users.php:875
@@ -2153,7 +2154,8 @@ msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Er du sikker på at du vil fjerne denne person fra din liste med favoritter?"
 
 #: edit_changes.php:231
-msgid "Are you sure you want to undo all the changes to this family tree?"
+#, fuzzy
+msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr "Er du sikker på du ønsker at fortryde alle ændrigner?"
 
 #. I18N: Name of a country or state
@@ -15285,11 +15287,13 @@ msgid "Uncleared: insufficient data"
 msgstr "Ikke godkendt: utilstrækkelig data"
 
 #: edit_changes.php:181 edit_changes.php:201
-msgid "Undo"
+#, fuzzy
+msgid "Reject"
 msgstr "Fortryd"
 
 #: edit_changes.php:211 edit_changes.php:231
-msgid "Undo all changes"
+#, fuzzy
+msgid "Reject all changes"
 msgstr "Fortryd alle ændringer"
 
 #: admin_trees_config.php:1823

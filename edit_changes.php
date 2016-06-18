@@ -178,7 +178,7 @@ if ($changed_gedcoms) {
 			$output .= '<td class="list_label">' . I18N::translate('User') . '</td>';
 			$output .= '<td class="list_label">' . I18N::translate('Date') . '</td>';
 			$output .= '<td class="list_label">' . I18N::translate('Family tree') . '</td>';
-			$output .= '<td class="list_label">' . I18N::translate('Undo') . '</td>';
+			$output .= '<td class="list_label">' . I18N::translate('Reject') . '</td>';
 			$output .= '</tr>';
 		}
 		$output .= '<td class="list_value"><a href="edit_changes.php?action=accept&amp;change_id=' . $change->change_id . '">' . I18N::translate('Accept') . '</a></td>';
@@ -193,12 +193,12 @@ if ($changed_gedcoms) {
 			}
 		}
 		echo '</td>';
-		$output .= '<td class="list_value"><a href="#" onclick="return reply(\'' . $change->user_name . '\', \'' . I18N::translate('Moderate pending changes') . '\')" alt="' . I18N::translate('Send a message') . '">';
+		$output .= '<td class="list_value"><a href="#" onclick="return reply(\'' . $change->user_name . '\', \'' . I18N::translate('Moderate pending changes') . '\')" title="' . I18N::translate('Send a message') . '">';
 		$output .= Filter::escapeHtml($change->real_name);
 		$output .= ' - ' . Filter::escapeHtml($change->user_name) . '</a></td>';
 		$output .= '<td class="list_value">' . $change->change_time . '</td>';
 		$output .= '<td class="list_value">' . $change->gedcom_name . '</td>';
-		$output .= '<td class="list_value"><a href="edit_changes.php?action=undo&amp;change_id=' . $change->change_id . '">' . I18N::translate('Undo') . '</a></td>';
+		$output .= '<td class="list_value"><a href="edit_changes.php?action=undo&amp;change_id=' . $change->change_id . '">' . I18N::translate('Reject') . '</a></td>';
 		$output .= '</tr>';
 	}
 	$output .= '</table></td></tr></td></tr></table>';
@@ -206,9 +206,9 @@ if ($changed_gedcoms) {
 	//-- Now for the global Action bar:
 	$output2 = '<br><table class="list_table">';
 	// Row 1 column 1: title "Accept all"
-	$output2 .= '<tr><td class="list_label">' . I18N::translate('Approve all changes') . '</td>';
+	$output2 .= '<tr><td class="list_label">' . I18N::translate('Accept all changes') . '</td>';
 	// Row 1 column 2: title "Undo all"
-	$output2 .= '<td class="list_label">' . I18N::translate('Undo all changes') . '</td></tr>';
+	$output2 .= '<td class="list_label">' . I18N::translate('Reject all changes') . '</td></tr>';
 
 	// Row 2 column 1: action "Accept all"
 	$output2 .= '<tr><td class="list_value">';
@@ -217,7 +217,7 @@ if ($changed_gedcoms) {
 		if ($count != 0) {
 			$output2 .= '<br>';
 		}
-		$output2 .= '<a href="edit_changes.php?action=acceptall&amp;ged=' . rawurlencode($gedcom_name) . '">' . $gedcom_name . ' - ' . I18N::translate('Approve all changes') . '</a>';
+		$output2 .= '<a href="edit_changes.php?action=acceptall&amp;ged=' . rawurlencode($gedcom_name) . '">' . $gedcom_name . ' - ' . I18N::translate('Accept all changes') . '</a>';
 		$count++;
 	}
 	$output2 .= '</td>';
@@ -228,7 +228,7 @@ if ($changed_gedcoms) {
 		if ($count != 0) {
 			$output2 .= '<br>';
 		}
-		$output2 .= '<a href="edit_changes.php?action=undoall&amp;ged=' . rawurlencode($gedcom_name) . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to undo all the changes to this family tree?') . '\');">' . $gedcom_name . ' - ' . I18N::translate('Undo all changes') . '</a>';
+		$output2 .= '<a href="edit_changes.php?action=undoall&amp;ged=' . rawurlencode($gedcom_name) . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to reject all the changes to this family tree?') . '\');">' . $gedcom_name . ' - ' . I18N::translate('Reject all changes') . '</a>';
 		$count++;
 	}
 	$output2 .= '</td></tr></table>';

@@ -2048,7 +2048,8 @@ msgid "Approval of account at %s"
 msgstr "%s sitedeki hesabınız onaylandı"
 
 #: edit_changes.php:209 edit_changes.php:220
-msgid "Approve all changes"
+#, fuzzy
+msgid "Accept all changes"
 msgstr "Tüm değişiklikleri kabul et"
 
 #: admin_users.php:875
@@ -2128,7 +2129,8 @@ msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Bu öğeyi Favoriler listenizden kaldırmak istediğinizden emin misiniz?"
 
 #: edit_changes.php:231
-msgid "Are you sure you want to undo all the changes to this family tree?"
+#, fuzzy
+msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr "Bu aile ağacında yapılan tüm değişiklikeri geri almak istediğinizden emibmisiniz?"
 
 #. I18N: Name of a country or state
@@ -15261,11 +15263,13 @@ msgid "Uncleared: insufficient data"
 msgstr "Temizlenmemiş: bilgiler yetersiz"
 
 #: edit_changes.php:181 edit_changes.php:201
-msgid "Undo"
+#, fuzzy
+msgid "Reject"
 msgstr "Geri Al"
 
 #: edit_changes.php:211 edit_changes.php:231
-msgid "Undo all changes"
+#, fuzzy
+msgid "Reject all changes"
 msgstr "Tüm değişiklikleri geri al"
 
 #: admin_trees_config.php:1823

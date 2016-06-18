@@ -2069,7 +2069,8 @@ msgid "Approval of account at %s"
 msgstr "Miratimi i llogarisë në %s"
 
 #: edit_changes.php:209 edit_changes.php:220
-msgid "Approve all changes"
+#, fuzzy
+msgid "Accept all changes"
 msgstr "Mirato të gjitha ndryshimet"
 
 #: admin_users.php:875
@@ -2149,7 +2150,8 @@ msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Jeni të sigurt që doni të mënjanoni këtë element nga lista e favoritëve?"
 
 #: edit_changes.php:231
-msgid "Are you sure you want to undo all the changes to this family tree?"
+#, fuzzy
+msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr "Jeni të sigurt që doni të zhbëni të gjitha ndryshimet në këtë trung familjar?"
 
 #. I18N: Name of a country or state
@@ -15281,11 +15283,13 @@ msgid "Uncleared: insufficient data"
 msgstr "E pazgjidhur: shënime të pamjaftueshme"
 
 #: edit_changes.php:181 edit_changes.php:201
-msgid "Undo"
+#, fuzzy
+msgid "Reject"
 msgstr "Zhbëje"
 
 #: edit_changes.php:211 edit_changes.php:231
-msgid "Undo all changes"
+#, fuzzy
+msgid "Reject all changes"
 msgstr "Zhbëj të gjitha ndryshimet"
 
 #: admin_trees_config.php:1823
