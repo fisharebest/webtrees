@@ -15729,7 +15729,8 @@ msgid "View the archive"
 msgstr "Переглянути архів"
 
 #: calendar.php:300
-msgid "View the day"
+#, fuzzy
+msgid "View this day"
 msgstr "Показати день"
 
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
@@ -15743,16 +15744,19 @@ msgstr "Переглянути подробиці"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313
-msgid "View the family"
+#, fuzzy
+msgid "View this family"
 msgstr "Дивитися відомості про сім'ю"
 
 #: app/Module/GoogleMapsModule.php:1352 app/Module/SlideShowModule.php:177
 #: medialist.php:310
-msgid "View the individual"
+#, fuzzy
+msgid "View this individual"
 msgstr "Дивитися відомості про персону"
 
 #: calendar.php:304
-msgid "View the month"
+#, fuzzy
+msgid "View this month"
 msgstr "Показати місяць"
 
 #: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
@@ -15760,11 +15764,13 @@ msgid "View the notes"
 msgstr "Переглянути примітки"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-msgid "View the source"
+#, fuzzy
+msgid "View this source"
 msgstr "Дивитися джерело"
 
 #: calendar.php:308
-msgid "View the year"
+#, fuzzy
+msgid "View this year"
 msgstr "Показати рік"
 
 #. I18N: Location of an LDS church temple

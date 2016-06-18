@@ -15650,7 +15650,8 @@ msgid "View the archive"
 msgstr "Архивны күрсәтергә"
 
 #: calendar.php:300
-msgid "View the day"
+#, fuzzy
+msgid "View this day"
 msgstr "Көнне күрсәтергә"
 
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
@@ -15664,16 +15665,19 @@ msgstr ""
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313
-msgid "View the family"
+#, fuzzy
+msgid "View this family"
 msgstr "Гаилә турындагы мәгълүматларны күрсәтергә"
 
 #: app/Module/GoogleMapsModule.php:1352 app/Module/SlideShowModule.php:177
 #: medialist.php:310
-msgid "View the individual"
+#, fuzzy
+msgid "View this individual"
 msgstr "Шәхес турындагы мәгълүматларны күрсәтергә"
 
 #: calendar.php:304
-msgid "View the month"
+#, fuzzy
+msgid "View this month"
 msgstr "Айны күрсәтергә"
 
 #: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
@@ -15681,11 +15685,13 @@ msgid "View the notes"
 msgstr "Искәрмәләрне күрсәтергә"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-msgid "View the source"
+#, fuzzy
+msgid "View this source"
 msgstr "Мәгълүмат чыганагын күрсәтергә"
 
 #: calendar.php:308
-msgid "View the year"
+#, fuzzy
+msgid "View this year"
 msgstr "Елны күрсәтергә"
 
 #. I18N: Location of an LDS church temple

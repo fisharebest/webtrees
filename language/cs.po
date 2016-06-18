@@ -15747,7 +15747,8 @@ msgid "View the archive"
 msgstr "Zobrazit archív"
 
 #: calendar.php:300
-msgid "View the day"
+#, fuzzy
+msgid "View this day"
 msgstr "Zobrazit den"
 
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
@@ -15761,16 +15762,19 @@ msgstr "Zobrazit podrobnosti"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313
-msgid "View the family"
+#, fuzzy
+msgid "View this family"
 msgstr "Zobrazit rodinu"
 
 #: app/Module/GoogleMapsModule.php:1352 app/Module/SlideShowModule.php:177
 #: medialist.php:310
-msgid "View the individual"
+#, fuzzy
+msgid "View this individual"
 msgstr "Zobrazit osobu"
 
 #: calendar.php:304
-msgid "View the month"
+#, fuzzy
+msgid "View this month"
 msgstr "Zobrazit měsíc"
 
 #: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
@@ -15778,11 +15782,13 @@ msgid "View the notes"
 msgstr "Zobrazit poznámky"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-msgid "View the source"
+#, fuzzy
+msgid "View this source"
 msgstr "Zobrazit pramen"
 
 #: calendar.php:308
-msgid "View the year"
+#, fuzzy
+msgid "View this year"
 msgstr "Zobrazit rok"
 
 #. I18N: Location of an LDS church temple

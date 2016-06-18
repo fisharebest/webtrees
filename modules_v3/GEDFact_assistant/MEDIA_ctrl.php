@@ -96,7 +96,7 @@ global $controller;
 								<tr>
 									<td colspan=3 class="descriptionbox wrap">
 										<i class="headimg vmiddle icon-button_head"></i>
-										<?php echo I18N::translate('View the family'); ?>
+										<?php echo I18N::translate('View this family'); ?>
 									</td>
 								</tr>
 								<?php
