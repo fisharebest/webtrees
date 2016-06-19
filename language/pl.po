@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-12 11:02+0000\n"
+"PO-Revision-Date: 2016-06-19 09:19+0000\n"
 "Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
@@ -734,9 +734,6 @@ msgstr "<b>Ważna informacja:</b> Kreator transferu nie jest w stanie wesprzeć 
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr "<b>Uwaga:</b> Informacje na temat osób żyjących są udostępniane jedynie członkom rodziny i bliskim znajomym. Przed uzyskaniem jakichkolwiek danych konieczne jest zweryfikowanie swojego pokrewieństwa. Czasem informacje o osobach zmarłych również mogą być ukryte, najczęściej kiedy brak informacji, czy dana osoba ta żyje, czy nie.<br><br>Przed zadaniem pytania sprawdź czy interesujesz się właściwą osobą, sprawdzając daty, miejsca i bliskich krewnych. Jeśli wysyłasz nowe dane genealogiczne, dołącz także informacje o źródłach pochodzenia tych danych."
 
-msgid "Welcome to this genealogy website"
-msgstr "Witaj na naszej stronie genealogicznej"
-
 #. I18N: default option in list of themes
 #: admin_trees_config.php:992 admin_users.php:489 edituser.php:278
 msgid "<default theme>"
@@ -1013,9 +1010,8 @@ msgid "A report of vital records for a given date or place."
 msgstr "Raport o ważnych zapisach dotyczących danej daty i miejsca."
 
 #: admin_users.php:524
-#, fuzzy
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Rola jest zbiorem praw dostępu, które dają uprawnienia do wyświetlania danych, zmiany konfiguracji, itp. Prawa dostępu są przypisane do ról, role są nadawane użytkownikom. Każdemu drzewu genealogicznemu może być przypisany różny dostęp do każdej roli, a użytkownicy mogą mieć inną rolę w każdym drzewie genealogicznym."
+msgstr "Rola jest zbiorem praw dostępu, które dają uprawnienia do wyświetlania danych, zmiany konfiguracji, itp. Prawa dostępu są przypisane do ról, role są nadawane użytkownikom. Każdemu drzewu genealogicznemu może być przypisany inny dostęp do każdej roli, a użytkownicy mogą mieć inną rolę w każdym drzewie genealogicznym."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1073,7 +1069,6 @@ msgid "A timeline displaying individual events."
 msgstr "Oś czasu wyświetlająca wydarzenia z życia wybranych osób."
 
 #: admin_users.php:398
-#, fuzzy
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr "Użytkownik nie będzie w stanie zalogować się dopóki pola „email potwierdzony” i „zatwierdzony przez administratora” nie będą zaznaczone."
 
@@ -1189,6 +1184,10 @@ msgstr "Akadia"
 #: edit_changes.php:176 edit_changes.php:184
 msgid "Accept"
 msgstr "Zatwierdź"
+
+#: edit_changes.php:209 edit_changes.php:220
+msgid "Accept all changes"
+msgstr "Zaakceptuj wszystkie zmiany"
 
 #: admin_module_blocks.php:75 admin_module_charts.php:68
 #: admin_module_menus.php:90 admin_module_reports.php:68
@@ -1693,7 +1692,6 @@ msgid "Adult christening"
 msgstr "Chrzest dorosłego"
 
 #: admin_trees_config.php:2085
-#, fuzzy
 msgid "Advanced fact preferences"
 msgstr "Szczegółowe ustawienia faktów"
 
@@ -2107,11 +2105,6 @@ msgstr "Zastosuj dane ustawienia do nowych drzew genealogicznych"
 msgid "Approval of account at %s"
 msgstr "Zatwierdzenie konta na %s"
 
-#: edit_changes.php:209 edit_changes.php:220
-#, fuzzy
-msgid "Accept all changes"
-msgstr "Zaakceptuj wszystkie zmiany"
-
 #: admin_users.php:875
 msgid "Approved"
 msgstr "Zatwierdzeni"
@@ -2180,6 +2173,10 @@ msgstr "Usunąć tę wiadomość? Nie będzie można tego cofnąć."
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Usunąć „%s”?"
 
+#: edit_changes.php:231
+msgid "Are you sure you want to reject all the changes to this family tree?"
+msgstr "Odrzucić wszystkie zmiany wprowadzone w danym drzewie genealogicznym?"
+
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
 msgstr "Usunąć powiązania z tym obiektem multimedialnym?"
@@ -2187,11 +2184,6 @@ msgstr "Usunąć powiązania z tym obiektem multimedialnym?"
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Usunąć ten element z listy ulubionych?"
-
-#: edit_changes.php:231
-#, fuzzy
-msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr "Odrzucić wszystkie zmiany wprowadzone w danym drzewie genealogicznym?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
@@ -5509,9 +5501,8 @@ msgstr "Edytuj zasady dostępu do strony"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1669
-#, fuzzy
 msgid "Edit preferences"
-msgstr "Opcje edycji"
+msgstr "Ustawienia edycji"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
 msgid "Edit the FAQ item"
@@ -5898,9 +5889,8 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr "Eksportowanie wszystkich drzew genealogicznych do plików GEDCOM…"
 
 #: admin_trees_download.php:134
-#, fuzzy
 msgid "Export preferences"
-msgstr "Opcje eksportu"
+msgstr "Ustawienia eksportu"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: admin_trees_config.php:447
@@ -6531,6 +6521,10 @@ msgstr "Katalog"
 #: addmedia.php:513 admin_media_upload.php:234
 msgid "Folder name on server"
 msgstr "Nazwa katalogu na serwerze"
+
+#: login.php:338
+msgid "Follow this link to verify your email address."
+msgstr "Kliknij na odnośnik, aby zweryfikować swój adres email."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -7263,11 +7257,6 @@ msgstr "Ukryj przed wszystkimi"
 msgid "Highest population"
 msgstr "Duża liczba osób"
 
-#: index_edit.php:284 index_edit.php:367
-#, fuzzy
-msgid "Select a block and use the arrows to move it."
-msgstr "Zaznacz nazwę bloku, a następnie kliknij odpowiednią strzałkę aby przesunąć blok we wskazanym kierunku."
-
 #. I18N: gedcom tag _PRIM
 #: app/GedcomTag.php:1564 modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
@@ -7370,7 +7359,6 @@ msgstr "Hybrydowa"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:750
-#, fuzzy
 msgid "ID preferences"
 msgstr "Ustawienia identyfikatora"
 
@@ -7544,9 +7532,8 @@ msgid "Import all places from a family tree"
 msgstr "Importuj wszystkie miejsca z drzewa genealogicznego"
 
 #: admin_trees_manage.php:270
-#, fuzzy
 msgid "Import preferences"
-msgstr "Opcje importu"
+msgstr "Ustawienia importu"
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -10490,7 +10477,6 @@ msgid "Other folder… please type in"
 msgstr "Inny katalog… Wprowadź"
 
 #: admin_trees_config.php:2145
-#, fuzzy
 msgid "Other preferences"
 msgstr "Inne ustawienia"
 
@@ -10999,11 +10985,6 @@ msgstr "Miejsca należy wprowadzać zgodnie ze standardami przyjętymi w genealo
 #: app/Theme/WebtreesTheme.php:72 app/Theme/XeneaTheme.php:88
 msgid "Play"
 msgstr "Odtwórz"
-
-#: login.php:338
-#, fuzzy
-msgid "Follow this link to verify your email address."
-msgstr "Kliknij na odnośnik poniżej i wpisz wymagane informacje aby zweryfikować swoje konto i adres email."
 
 #: search.php:55
 msgid "Please enter a given name, surname, or place in addition to the year"
@@ -11518,6 +11499,14 @@ msgstr "Wyrażenia regularne"
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 msgid "Regular expressions are an advanced pattern matching technique."
 msgstr "Wyrażenia regularne są zaawansowaną techniką dopasowywania do wzorca."
+
+#: edit_changes.php:181 edit_changes.php:201
+msgid "Reject"
+msgstr "Odrzuć"
+
+#: edit_changes.php:211 edit_changes.php:231
+msgid "Reject all changes"
+msgstr "Odrzuć wszystkie zmiany"
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
@@ -12088,6 +12077,10 @@ msgstr "Wybierz"
 #: admin_trees_manage.php:208
 msgid "Select a GEDCOM file to import"
 msgstr "Wybierz plik GEDCOM do zaimportowania"
+
+#: index_edit.php:284 index_edit.php:367
+msgid "Select a block and use the arrows to move it."
+msgstr "Zaznacz nazwę bloku, a następnie kliknij odpowiednią strzałkę aby przesunąć blok we wskazanym kierunku."
 
 #: app/Functions/FunctionsEdit.php:404 reportengine.php:244
 msgid "Select a date"
@@ -13091,7 +13084,6 @@ msgid "Some genealogy software creates GEDCOM files that contain media filenames
 msgstr "Niektóre programy genealogiczne tworzą pliki GEDCOM, które zawierają nazwy plików multimedialnych z pełnymi ścieżkami dostępu. Te ścieżki nie istnieją na serwerze internetowym. Aby umożliwić webtrees znalezienie pliku, pierwsza część ścieżki powinna być usunięta."
 
 #: app/Module/GoogleMapsModule.php:453
-#, fuzzy
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
 msgstr "Niektóre nazwy miejscowości mogą być pisane z opcjonalnymi przedrostkami i przyrostkami. Na przykład „Mazowieckie” i „województwo Mazowieckie”. W przypadku gdy drzewo genealogiczne zawiera pełne nazwy miejsc, a geograficzna baza danych zawiera skrócone nazwy miejsc, należy określić listę przedrostków i przyrostków, które mają być wzięte pod uwagę. Różne opcje powinny być oddzielone średnikami. Na przykład: „województwo;woj.” lub „powiat;pow.”."
 
@@ -13669,12 +13661,6 @@ msgstr "Zaimportowano plik GEDCOM „%s”."
 msgid "The Hague, Netherlands"
 msgstr "The Hague, Holandia"
 
-#. I18N: Help text for the “Show a download link in the media viewer” configuration setting
-#: admin_trees_config.php:1052
-#, fuzzy
-msgid "This option will make it easier for users to download images."
-msgstr "Przeglądarka multimediów może wyświetlać odnośnik, którego kliknięcie spowoduje pobranie pliku multimedialnego na lokalny komputer użytkownika.<br><br>Ze względów bezpieczeństwa zaleca się ukryć odnośnik do pobierania plików."
-
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:82
 msgid "The PHP temporary folder is missing."
@@ -13706,9 +13692,8 @@ msgid "The changes to “%s” have been rejected."
 msgstr "Zmiany wprowadzone do wpisu „%s” zostały odrzucone."
 
 #: app/Module/ClippingsCartModule.php:311
-#, fuzzy
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "Koszyk wycinków umożliwia zbieranie wybranych informacji („wycinków”) z drzewa genealogicznego. Wycinki są zebrane w jednym pliku GEDCOM, który można następnie pobrać na lokalny komputer i zaimportować do innej aplikacji genealogicznej.<br><ul><li>Jak zbierać wycinki?<br>Za każdym razem, gdy dostępne są nazwiska lub nazwy, na które można kliknąć, można przejść do strony z danymi osoby, rodziny lub źródła. Znajduje się tam opcja <b>Dodaj do koszyka wycinków</b>. Po kliknięciu na ten odnośnik pojawi się kilka opcji pobierania.</li><li>Jak pobierać wycinki?<br>Kiedy zostaną zgromadzone odpowiednie wycinki, można pobrać je na lokalny komputer klikając odnośnik <b>Pobierz teraz</b>. Należy postępować zgodnie z instrukcjami.</li></ul>"
+msgstr "Koszyk wycinków umożliwia zbieranie wybranych informacji („wycinków”) z drzewa genealogicznego, które można następnie pobrać w formie pliku GEDCOM."
 
 #: site-unavailable.php:54
 msgid "The database reported the following error message:"
@@ -13947,6 +13932,26 @@ msgstr "Moduł „%s” został wyłączony."
 #, php-format
 msgid "The module “%s” has been enabled."
 msgstr "Moduł „%s” został włączony."
+
+#. I18N: Help text for the “Quick family facts” configuration setting
+#: admin_trees_config.php:1902
+msgid "The most common family facts and events are listed separately, so that they can be added more easily."
+msgstr "Najczęściej występujące fakty rodzinne i wydarzenia wymienione są oddzielnie aby można je było łatwiej dodawać."
+
+#. I18N: Help text for the “Quick individual facts” configuration setting
+#: admin_trees_config.php:1784
+msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
+msgstr "Najczęściej występujące fakty osobowe i wydarzenia wymienione są oddzielnie aby można je było łatwiej dodawać."
+
+#. I18N: Help text for the “Quick repository facts” configuration setting
+#: admin_trees_config.php:2080
+msgid "The most common repository facts are listed separately, so that they can be added more easily."
+msgstr "Najczęściej występujące fakty dotyczące repozytorium wymienione są oddzielnie aby można je było łatwiej dodawać."
+
+#. I18N: Help text for the “Quick source facts” configuration setting
+#: admin_trees_config.php:1991
+msgid "The most common source facts are listed separately, so that they can be added more easily."
+msgstr "Najczęściej występujące fakty dotyczące źródła wymienione są oddzielnie aby można je było łatwiej dodawać."
 
 #: admin_site_upgrade.php:337
 #, php-format
@@ -14484,30 +14489,6 @@ msgstr "To jest lista faktów GEDCOM, które użytkownicy mogą dodać tylko <u>
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr "Jest to nazwa serwera SMTP. ‘localhost’ oznacza, że usługa poczty elektronicznej jest uruchomiona na tym samym komputerze co serwer www."
 
-#. I18N: Help text for the “Quick family facts” configuration setting
-#: admin_trees_config.php:1902
-#, fuzzy
-msgid "The most common family facts and events are listed separately, so that they can be added more easily."
-msgstr "To jest krótka lista faktów rodzinnych GEDCOM, które są wyświetlane obok pełnej listy i mogą być szybko dodane za jednym kliknięciem myszki."
-
-#. I18N: Help text for the “Quick individual facts” configuration setting
-#: admin_trees_config.php:1784
-#, fuzzy
-msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr "To jest krótka lista faktów osobowych GEDCOM, które są wyświetlane obok pełnej listy i mogą być szybko dodane za jednym kliknięciem myszki."
-
-#. I18N: Help text for the “Quick repository facts” configuration setting
-#: admin_trees_config.php:2080
-#, fuzzy
-msgid "The most common repository facts are listed separately, so that they can be added more easily."
-msgstr "To jest krótka lista faktów repozytorium GEDCOM, które są wyświetlane obok pełnej listy i mogą być szybko dodane za jednym kliknięciem myszki."
-
-#. I18N: Help text for the “Quick source facts” configuration setting
-#: admin_trees_config.php:1991
-#, fuzzy
-msgid "The most common source facts are listed separately, so that they can be added more easily."
-msgstr "To jest krótka lista faktów źródłowych, które są wyświetlane obok pełnej listy i mogą być szybko dodane za jednym kliknięciem myszki."
-
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1080
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
@@ -14650,6 +14631,11 @@ msgstr "Ta opcja pozwala na ustawienie czy ikony symbolizujące płeć będą po
 #: admin_trees_config.php:1231
 msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
 msgstr "Ta opcja pozwala określić, czy diagram rodowodu ma być domyślnie generowany w układzie poziomym, czy pionowym."
+
+#. I18N: Help text for the “Show a download link in the media viewer” configuration setting
+#: admin_trees_config.php:1052
+msgid "This option will make it easier for users to download images."
+msgstr "Ustawienie ułatwia użytkownikom pobieranie zdjęć."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:498
@@ -15347,16 +15333,6 @@ msgstr "Nie znaleziono wpisu o tym identyfikatorze"
 msgid "Uncleared: insufficient data"
 msgstr "Nieuregulowane: niewystarczające dane"
 
-#: edit_changes.php:181 edit_changes.php:201
-#, fuzzy
-msgid "Reject"
-msgstr "Cofnij"
-
-#: edit_changes.php:211 edit_changes.php:231
-#, fuzzy
-msgid "Reject all changes"
-msgstr "Cofnij wszystkie zmiany"
-
 #: admin_trees_config.php:1823
 msgid "Unique family facts"
 msgstr "Niepowtarzalne fakty rodzinne"
@@ -15589,9 +15565,8 @@ msgid "User not verified by administrator."
 msgstr "Użytkownik nie został zatwierdzony przez administratora."
 
 #: admin_trees_config.php:972
-#, fuzzy
 msgid "User preferences"
-msgstr "Opcje użytkownika"
+msgstr "Ustawienia użytkownika"
 
 #: login.php:514 login.php:520 login.php:578 login.php:582
 msgid "User verification"
@@ -15758,14 +15733,17 @@ msgstr "Zobacz wszystkie wpisy dotyczące tego miejsca"
 msgid "View the archive"
 msgstr "Pokaż archiwum"
 
-#: calendar.php:300
-#, fuzzy
-msgid "View this day"
-msgstr "Pokaż dzień"
-
 #: app/Controller/MediaController.php:136 app/Module/AlbumModule.php:143
 msgid "View the details"
 msgstr "Pokaż szczegóły"
+
+#: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
+msgid "View the notes"
+msgstr "Zobacz notatki"
+
+#: calendar.php:300
+msgid "View this day"
+msgstr "Zobacz dzień"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15774,34 +15752,25 @@ msgstr "Pokaż szczegóły"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313
-#, fuzzy
 msgid "View this family"
 msgstr "Zobacz rodzinę"
 
 #: app/Module/GoogleMapsModule.php:1352 app/Module/SlideShowModule.php:177
 #: medialist.php:310
-#, fuzzy
 msgid "View this individual"
 msgstr "Zobacz osobę"
 
 #: calendar.php:304
-#, fuzzy
 msgid "View this month"
-msgstr "Pokaż miesiąc"
-
-#: app/Module/AlbumModule.php:136 app/Module/AlbumModule.php:137
-msgid "View the notes"
-msgstr "Zobacz notatki"
+msgstr "Zobacz miesiąc"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-#, fuzzy
 msgid "View this source"
 msgstr "Zobacz źródło"
 
 #: calendar.php:308
-#, fuzzy
 msgid "View this year"
-msgstr "Pokaż rok"
+msgstr "Zobacz rok"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -15932,6 +15901,9 @@ msgstr "Witaj %s"
 msgid "Welcome text on sign-in page"
 msgstr "Tekst powitalny na stronie logowania"
 
+msgid "Welcome to this genealogy website"
+msgstr "Witaj na naszej stronie genealogicznej"
+
 #. I18N: Name of a country or state
 #: app/Stats.php:6931
 msgid "West Africa"
@@ -15948,9 +15920,8 @@ msgid "When a record is edited, the user and timestamp are recorded. Sometimes i
 msgstr "Podczas edycji wpisu rejestrowane są informacje o użytkowniku i czasie wprowadzenia zmian. W pewnych przypadkach zachodzi konieczność zachowania informacji o „ostatniej zmianie” (np. w przypadku drobnych poprawek danych wprowadzonych przez innego użytkownika). Ta opcja określa czy ta funkcjonalność jest domyślne włączona."
 
 #: admin_users.php:389
-#, fuzzy
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Gdy użytkownik zarejestruje konto, wysyłana jest wiadomość email na adres email użytkownika z odnośnikiem weryfikacyjnym. Po kliknięciu na ten odnośnik, użytkownik potwierdzi, że adres email jest prawidłowy i opcja „Email potwierdzony” zostanie zaznaczona automatycznie."
+msgstr "Gdy użytkownik zarejestruje konto, wysyłana jest wiadomość na adres email użytkownika z odnośnikiem weryfikacyjnym. Po kliknięciu na ten odnośnik, użytkownik potwierdzi, że adres email jest prawidłowy i opcja „Email potwierdzony” zostanie zaznaczona automatycznie."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -16260,9 +16231,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr "Należy zmienić numerację wpisów w jednym z drzew genealogicznym przed ich scaleniem."
 
 #: app/Module/ChartsBlockModule.php:139
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Należy wybrać osobę oraz rodzaj diagramu w konfiguracji bloku."
+msgstr "Należy wybrać osobę oraz rodzaj diagramu w ustawieniach bloku"
 
 #: admin_users.php:287
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
