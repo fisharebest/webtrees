@@ -629,9 +629,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$ALLOW_THEME_DROPDOWN         = '';
 	$CALENDAR_FORMAT              = '';
 	$CHART_BOX_TAGS               = '';
-	$COMMON_NAMES_ADD             = '';
-	$COMMON_NAMES_REMOVE          = '';
-	$COMMON_NAMES_THRESHOLD       = '';
 	$CONTACT_EMAIL                = '';
 	$DEFAULT_PEDIGREE_GENERATIONS = '';
 	$EXPAND_NOTES                 = '';
@@ -763,12 +760,9 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'ALLOW_THEME_DROPDOWN', $ALLOW_THEME_DROPDOWN));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CALENDAR_FORMAT', $CALENDAR_FORMAT));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CHART_BOX_TAGS', $CHART_BOX_TAGS));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'COMMON_NAMES_ADD', $COMMON_NAMES_ADD));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'COMMON_NAMES_REMOVE', $COMMON_NAMES_REMOVE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'COMMON_NAMES_THRESHOLD', $COMMON_NAMES_THRESHOLD));
 	$user = User::findByIdentifier($CONTACT_EMAIL);
 	if ($user) {
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'CONTACT_USER_ID', $user->getUserId()]);
+		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CONTACT_USER_ID', $user->getUserId()));
 	}
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'DEFAULT_PEDIGREE_GENERATIONS', $DEFAULT_PEDIGREE_GENERATIONS));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'EXPAND_NOTES', $EXPAND_NOTES));
@@ -934,11 +928,10 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	}
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THUMBNAIL_WIDTH', $THUMBNAIL_WIDTH));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'USE_RELATIONSHIP_PRIVACY', $USE_RELATIONSHIP_PRIVACY));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'USE_RIN', $USE_RIN));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WATERMARK_THUMB', $WATERMARK_THUMB));
 	$user = User::findByIdentifier($WEBMASTER_EMAIL);
 	if ($user) {
-		$stmt_gedcom_setting->execute([$GED_DATA['id'], 'WEBMASTER_USER_ID', $user->getUserId()]);
+		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WEBMASTER_USER_ID', $user->getUserId()));
 	}
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES));
 }

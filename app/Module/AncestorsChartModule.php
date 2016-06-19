@@ -52,7 +52,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 	public function defaultAccessLevel() {
 		return Auth::PRIV_PRIVATE;
 	}
-	
+
 	/**
 	 * Return a menu item for this chart.
 	 *
@@ -60,13 +60,13 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 	 */
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
-			$this->getTitle(), 
-			'ancestry.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(), 
-			'menu-chart-ancestry', 
+			$this->getTitle(),
+			'ancestry.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
+			'menu-chart-ancestry',
 			array('rel' => 'nofollow')
 		);
 	}
-	
+
 	/**
 	 * Return a menu item for this chart - for use in individual boxes.
 	 *

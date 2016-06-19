@@ -203,9 +203,6 @@ case 'general':
 		Filter::post('CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
 	))));
 	$WT_TREE->setPreference('CHART_BOX_TAGS', Filter::post('CHART_BOX_TAGS'));
-	$WT_TREE->setPreference('COMMON_NAMES_ADD', str_replace(' ', '', Filter::post('COMMON_NAMES_ADD')));
-	$WT_TREE->setPreference('COMMON_NAMES_REMOVE', str_replace(' ', '', Filter::post('COMMON_NAMES_REMOVE')));
-	$WT_TREE->setPreference('COMMON_NAMES_THRESHOLD', Filter::post('COMMON_NAMES_THRESHOLD', WT_REGEX_INTEGER, 40));
 	$WT_TREE->setPreference('CONTACT_USER_ID', Filter::post('CONTACT_USER_ID'));
 	$WT_TREE->setPreference('DEFAULT_PEDIGREE_GENERATIONS', Filter::post('DEFAULT_PEDIGREE_GENERATIONS'));
 	$WT_TREE->setPreference('EXPAND_NOTES', Filter::postBool('EXPAND_NOTES'));
@@ -256,7 +253,7 @@ case 'general':
 	$WT_TREE->setPreference('SHOW_LAST_CHANGE', Filter::postBool('SHOW_LAST_CHANGE'));
 	$WT_TREE->setPreference('SHOW_LDS_AT_GLANCE', Filter::postBool('SHOW_LDS_AT_GLANCE'));
 	$WT_TREE->setPreference('SHOW_LEVEL2_NOTES', Filter::postBool('SHOW_LEVEL2_NOTES'));
-	$WT_TREE->setPreference('SHOW_MEDIA_DOWNLOAD', Filter::postBool('SHOW_MEDIA_DOWNLOAD'));
+	$WT_TREE->setPreference('SHOW_MEDIA_DOWNLOAD', Filter::post('SHOW_MEDIA_DOWNLOAD'));
 	$WT_TREE->setPreference('SHOW_NO_WATERMARK', Filter::post('SHOW_NO_WATERMARK'));
 	$WT_TREE->setPreference('SHOW_PARENTS_AGE', Filter::postBool('SHOW_PARENTS_AGE'));
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES', Filter::post('SHOW_PEDIGREE_PLACES'));
@@ -271,7 +268,6 @@ case 'general':
 	$WT_TREE->setPreference('SURNAME_TRADITION', Filter::post('SURNAME_TRADITION'));
 	$WT_TREE->setPreference('THEME_DIR', Filter::post('THEME_DIR'));
 	$WT_TREE->setPreference('THUMBNAIL_WIDTH', Filter::post('THUMBNAIL_WIDTH'));
-	$WT_TREE->setPreference('USE_RIN', Filter::postBool('USE_RIN'));
 	$WT_TREE->setPreference('USE_SILHOUETTE', Filter::postBool('USE_SILHOUETTE'));
 	$WT_TREE->setPreference('WATERMARK_THUMB', Filter::postBool('WATERMARK_THUMB'));
 	$WT_TREE->setPreference('WEBMASTER_USER_ID', Filter::post('WEBMASTER_USER_ID'));
@@ -502,7 +498,10 @@ $controller
 			</p>
 		</div>
 	</div>
-	<h2><?php echo I18N::translate('Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag'); ?></h2>
+	<h2><?php echo /* I18N: Privacy restrictions are set by RESN tags in GEDCOM. */ I18N::translate('Privacy restrictions'); ?></h2>
+	<p>
+		<?php echo /* I18N: Privacy restrictions are RESN tags in GEDCOM. */ I18N::translate('You can set the access for a specific record, fact, or event by adding a restriction to it.  If a record, fact, or event does not have a restriction, the following default restrictions will be used.') ?>
+	</p>
 
 	<script id="new-resn-template" type="text/html">
 		<tr>
@@ -538,7 +537,7 @@ $controller
 			<th>
 				<button class="btn btn-primary" id="add-resn" type="button">
 					<i class="fa fa-plus"></i>
-					<?php echo /* I18N: A button label. Add an item. */ I18N::translate('Add'); ?>
+					<?php echo /* I18N: A button label. */ I18N::translate('add'); ?>
 				</button>
 			</th>
 		</tr>
@@ -647,7 +646,7 @@ $controller
 				<?php endforeach; ?>
 			</select>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Language” configuration setting */ I18N::translate('If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used. Typically, this setting applies to search engines.'); ?>
+				<?php echo /* I18N: Help text for the “Language” configuration setting */ I18N::translate('If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines.'); ?>
 			</p>
 		</div>
 	</div>
@@ -718,19 +717,6 @@ $controller
 		</div>
 	</fieldset>
 
-	<!-- USE_RIN -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Use RIN number instead of GEDCOM ID'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('USE_RIN', $no_yes, $WT_TREE->getPreference('USE_RIN'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting */ I18N::translate('Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts. This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
 	<!-- GENERATE_UIDS -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
@@ -747,7 +733,7 @@ $controller
 	<!-- XXXXX_ID_PREFIX -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('ID settings'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('ID preferences'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<div class="row">
@@ -855,7 +841,7 @@ $controller
 				</div>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “ID settings” configuration setting */ I18N::translate('When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record.'); ?>
+				<?php echo /* I18N: Help text for the “ID preferences” configuration setting */ I18N::translate('When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -927,7 +913,7 @@ $controller
 		</div>
 	</div>
 
-	<h3><?php echo I18N::translate('Website and META tag settings'); ?></h3>
+	<h3><?php echo I18N::translate('Website'); ?></h3>
 
 	<!-- META_TITLE -->
 	<div class="form-group">
@@ -969,7 +955,7 @@ $controller
 		</div>
 	</div>
 
-	<h3><?php echo I18N::translate('User options'); ?></h3>
+	<h3><?php echo I18N::translate('User preferences'); ?></h3>
 	<!-- ALLOW_THEME_DROPDOWN -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
@@ -996,7 +982,6 @@ $controller
 		</div>
 	</div>
 
-	<h3><?php echo I18N::translate('Media'); ?></h3>
 	<h3><?php echo I18N::translate('Media folders'); ?></h3>
 
 	<!-- MEDIA_DIRECTORY -->
@@ -1048,9 +1033,9 @@ $controller
 			<?php echo /* I18N: A configuration setting */ I18N::translate('Show a download link in the media viewer'); ?>
 		</legend>
 		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('SHOW_MEDIA_DOWNLOAD', $no_yes, $WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD'), 'class="radio-inline"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('SHOW_MEDIA_DOWNLOAD', $privacy, null, $WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Show a download link in the media viewer” configuration setting */ I18N::translate('The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons.'); ?>
+				<?php echo /* I18N: Help text for the “Show a download link in the media viewer” configuration setting */ I18N::translate('This option will make it easier for users to download images.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1078,7 +1063,7 @@ $controller
 				</span>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Width of generated thumbnails” configuration setting */ I18N::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails. The default setting is 100.'); ?>
+				<?php echo /* I18N: Help text for the “Width of generated thumbnails” configuration setting */ I18N::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1155,71 +1140,6 @@ $controller
 			<?php echo FunctionsEdit::selectEditControl('SHOW_NO_WATERMARK', $privacy, null, $WT_TREE->getPreference('SHOW_NO_WATERMARK'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Images without watermarks” configuration setting */ I18N::translate('Watermarks are optional and normally shown just to visitors.'); ?>
-			</p>
-		</div>
-	</div>
-
-	<h3><?php echo I18N::translate('Layout'); ?></h3>
-
-	<h3><?php echo I18N::translate('Names'); ?></h3>
-
-	<!-- COMMON_NAMES_THRESHOLD -->
-	<div class="form-group">
-		<label class="control-label col-sm-3" for="COMMON_NAMES_THRESHOLD">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Minimum number of occurrences to be a “common surname”'); ?>
-		</label>
-		<div class="col-sm-9">
-			<input
-				class="form-control"
-				id="COMMON_NAMES_THRESHOLD"
-				maxlength="5"
-				name="COMMON_NAMES_THRESHOLD"
-				required
-				type="text"
-				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD')); ?>"
-				>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Minimum number of occurrences to be a ‘common surname’” configuration setting */ I18N::translate('This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”.'); ?>
-			</p>
-		</div>
-	</div>
-
-	<!-- COMMON_NAMES_ADD -->
-	<div class="form-group">
-		<label class="control-label col-sm-3" for="COMMON_NAMES_ADD">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Names to add to common surnames (comma separated)'); ?>
-		</label>
-		<div class="col-sm-9">
-			<input
-				class="form-control"
-				id="COMMON_NAMES_ADD"
-				maxlength="255"
-				name="COMMON_NAMES_ADD"
-				type="text"
-				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_ADD')); ?>"
-				>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting */ I18N::translate('If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>'); ?>
-			</p>
-		</div>
-	</div>
-
-	<!-- COMMON_NAMES_REMOVE -->
-	<div class="form-group">
-		<label class="control-label col-sm-3" for="COMMON_NAMES_REMOVE">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Names to remove from common surnames (comma separated)'); ?>
-		</label>
-		<div class="col-sm-9">
-			<input
-				class="form-control"
-				id="COMMON_NAMES_REMOVE"
-				maxlength="255"
-				name="COMMON_NAMES_REMOVE"
-				type="text"
-				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_REMOVE')); ?>"
-				>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting */ I18N::translate('If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1368,7 +1288,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('PEDIGREE_FULL_DETAILS', $no_yes, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Show chart details by default” configuration setting */ I18N::translate('This is the initial setting for the “show details” option on the charts.'); ?>
+				<?php echo /* I18N: Help text for the “Show chart details by default” configuration setting */ I18N::translate('This is the initial value for the “show details” option on the charts.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1431,7 +1351,7 @@ $controller
 				<div class="input-group-btn">
 					<a class="btn btn-default" onclick="return findFact('CHART_BOX_TAGS', 'INDI');">
 						<i class="fa fa-pencil"></i>
-						<?php echo /* I18N: A button label */ I18N::translate('edit'); ?>
+						<?php echo /* I18N: A button label. */ I18N::translate('edit'); ?>
 					</a>
 				</div>
 			</div>
@@ -1652,7 +1572,28 @@ $controller
 		</div>
 	</fieldset>
 
-	<h3><?php echo GedcomTag::getLabel('TEXT'); ?></h3>
+		<!-- GEONAMES_ACCOUNT -->
+		<div class="form-group">
+			<label class="control-label col-sm-3" for="GEONAMES_ACCOUNT">
+				<?php echo I18N::translate('Use the GeoNames database for autocomplete on places'); ?>
+			</label>
+			<div class="col-sm-9">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="GEONAMES_ACCOUNT"
+					maxlength="255"
+					name="GEONAMES_ACCOUNT"
+					type="text"
+					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('GEONAMES_ACCOUNT')); ?>"
+				>
+				<p class="small text-muted">
+					<?php echo /* I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting */ I18N::translate('The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username.'); ?>
+				</p>
+			</div>
+		</div>
+
+		<h3><?php echo GedcomTag::getLabel('TEXT'); ?></h3>
 
 	<!-- FORMAT_TEXT -->
 	<fieldset class="form-group">
@@ -1711,7 +1652,7 @@ $controller
 		</div>
 	</fieldset>
 
-	<h3><?php echo /* I18N: Options for editing */ I18N::translate('Edit options'); ?></h3>
+	<h3><?php echo /* I18N: Options for editing */ I18N::translate('Edit preferences'); ?></h3>
 
 	<h3><?php echo I18N::translate('Facts for individual records'); ?></h3>
 
@@ -1826,7 +1767,7 @@ $controller
 				</div>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Quick individual facts” configuration setting */ I18N::translate('This is the short list of GEDCOM individual facts that appears next to the full list and can be added with a single click.'); ?>
+				<?php echo /* I18N: Help text for the “Quick individual facts” configuration setting */ I18N::translate('The most common individual facts and events are listed separately, so that they can be added more easily.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1944,7 +1885,7 @@ $controller
 				</div>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Quick family facts” configuration setting */ I18N::translate('This is the short list of GEDCOM family facts that appears next to the full list and can be added with a single click.'); ?>
+				<?php echo /* I18N: Help text for the “Quick family facts” configuration setting */ I18N::translate('The most common family facts and events are listed separately, so that they can be added more easily.'); ?>
 			</p>
 		</div>
 	</div>
@@ -2033,7 +1974,7 @@ $controller
 				</div>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Quick source facts” configuration setting */ I18N::translate('This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click.'); ?>
+				<?php echo /* I18N: Help text for the “Quick source facts” configuration setting */ I18N::translate('The most common source facts are listed separately, so that they can be added more easily.'); ?>
 			</p>
 		</div>
 	</div>
@@ -2122,12 +2063,12 @@ $controller
 				</div>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Quick repository facts” configuration setting */ I18N::translate('This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click.'); ?>
+				<?php echo /* I18N: Help text for the “Quick repository facts” configuration setting */ I18N::translate('The most common repository facts are listed separately, so that they can be added more easily.'); ?>
 			</p>
 		</div>
 	</div>
 
-	<h3><?php echo I18N::translate('Advanced fact settings'); ?></h3>
+	<h3><?php echo I18N::translate('Advanced fact preferences'); ?></h3>
 
 	<!-- ADVANCED_NAME_FACTS -->
 	<div class="form-group">
@@ -2187,7 +2128,7 @@ $controller
 		</div>
 	</div>
 
-	<h3><?php echo I18N::translate('Other settings'); ?></h3>
+	<h3><?php echo I18N::translate('Other preferences'); ?></h3>
 
 	<!-- SURNAME_TRADITION -->
 	<fieldset class="form-group">
@@ -2227,27 +2168,6 @@ $controller
 			</p>
 		</div>
 	</fieldset>
-
-	<!-- GEONAMES_ACCOUNT -->
-	<div class="form-group">
-		<label class="control-label col-sm-3" for="GEONAMES_ACCOUNT">
-			<?php echo I18N::translate('Use the GeoNames database for autocomplete on places'); ?>
-		</label>
-		<div class="col-sm-9">
-			<input
-				class="form-control"
-				dir="ltr"
-				id="GEONAMES_ACCOUNT"
-				maxlength="255"
-				name="GEONAMES_ACCOUNT"
-				type="text"
-				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('GEONAMES_ACCOUNT')); ?>"
-				>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting */ I18N::translate('The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username.'); ?>
-			</p>
-		</div>
-	</div>
 
 	<!-- NO_UPDATE_CHAN -->
 	<fieldset class="form-group">

@@ -52,7 +52,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
 	public function defaultAccessLevel() {
 		return Auth::PRIV_PRIVATE;
 	}
-	
+
 	/**
 	 * Return a menu item for this chart.
 	 *
@@ -60,13 +60,13 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
 	 */
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
-			$this->getTitle(), 
-			'familybook.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(), 
-			'menu-chart-familybook', 
+			$this->getTitle(),
+			'familybook.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
+			'menu-chart-familybook',
 			array('rel' => 'nofollow')
 		);
 	}
-	
+
 	/**
 	 * Return a menu item for this chart - for use in individual boxes.
 	 *

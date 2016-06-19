@@ -226,7 +226,7 @@ class Tree {
 			// Update our cache
 			$this->preferences[$setting_name] = $setting_value;
 			// Audit log of changes
-			Log::addConfigurationLog('Tree setting "' . $setting_name . '" set to "' . $setting_value . '"', $this);
+			Log::addConfigurationLog('Tree preference "' . $setting_name . '" set to "' . $setting_value . '"', $this);
 		}
 
 		return $this;
@@ -290,7 +290,7 @@ class Tree {
 			// Update our cache
 			$this->user_preferences[$user->getUserId()][$setting_name] = $setting_value;
 			// Audit log of changes
-			Log::addConfigurationLog('Tree setting "' . $setting_name . '" set to "' . $setting_value . '" for user "' . $user->getUserName() . '"', $this);
+			Log::addConfigurationLog('Tree preference "' . $setting_name . '" set to "' . $setting_value . '" for user "' . $user->getUserName() . '"', $this);
 		}
 
 		return $this;

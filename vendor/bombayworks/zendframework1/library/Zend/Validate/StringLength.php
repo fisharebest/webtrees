@@ -203,9 +203,14 @@ class Zend_Validate_StringLength extends Zend_Validate_Abstract
                         ? iconv_get_encoding('internal_encoding')
                         : ini_get('default_charset');
             if (PHP_VERSION_ID < 50600) {
-                $result = iconv_set_encoding('internal_encoding', $encoding);
+                if ($encoding) {
+                    $result = iconv_set_encoding('internal_encoding', $encoding);
+                } else {
+                    $result = false;
+                }
             } else {
-                $result = ini_set('default_charset', $encoding);
+                ini_set('default_charset', $encoding);
+                $result = ini_get('default_charset');
             }
             if (!$result) {
                 // require_once 'Zend/Validate/Exception.php';
@@ -218,7 +223,6 @@ class Zend_Validate_StringLength extends Zend_Validate_Abstract
                 ini_set('default_charset', $orig);
             }
         }
-
         $this->_encoding = $encoding;
         return $this;
     }

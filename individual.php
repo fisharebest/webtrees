@@ -30,9 +30,9 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
 
-$pid = Filter::get('pid', WT_REGEX_XREF);
+$pid    = Filter::get('pid', WT_REGEX_XREF);
 $record = Individual::getInstance($pid, $WT_TREE);
-if (!$record && $WT_TREE->getPreference('USE_RIN')) {
+if (!$record) {
 	$record = Individual::getInstance(FunctionsDb::findRin($pid), $WT_TREE);
 }
 $controller = new IndividualController($record);
@@ -248,8 +248,6 @@ echo
 	'</div>', // close #tabs
 	'</div>'; //close indi_left
 	if ($sidebar_html) {
-		echo '<div id="separator" title="' . I18N::translate('Click here to open or close the sidebar') . '"></div>' . //clickable element to open/close sidebar
-		$sidebar_html;
+		echo '<div id="separator" style="cursor:pointer;"></div>' . $sidebar_html;
 	}
 	echo '</div>'; // close #main
-

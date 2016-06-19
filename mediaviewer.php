@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 define('WT_SCRIPT_NAME', 'mediaviewer.php');
 require './includes/session.php';
 
-$record = Media::getInstance(Filter::get('mid', WT_REGEX_XREF), $WT_TREE);
+$record     = Media::getInstance(Filter::get('mid', WT_REGEX_XREF), $WT_TREE);
 $controller = new MediaController($record);
 
 if ($controller->record && $controller->record->canShow()) {
@@ -155,7 +155,7 @@ $facts = $controller->getFacts();
 					echo $tmp->displayImage();
 					if (!$tmp->isExternal()) {
 						if ($tmp->fileExists('main')) {
-							if ($controller->record->getTree()->getPreference('SHOW_MEDIA_DOWNLOAD')) {
+							if ($WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($WT_TREE)) {
 								echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true) . '">' . I18N::translate('Download file') . '</a></p>';
 							}
 						} else {

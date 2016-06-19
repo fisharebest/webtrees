@@ -229,7 +229,7 @@ class FunctionsPrintFacts {
 						echo '<a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> — ';
 					}
 				}
-				echo '<a href="', $parent->getHtmlUrl(), '">', I18N::translate('View the family'), '</a><br>';
+				echo '<a href="', $parent->getHtmlUrl(), '">', I18N::translate('View this family'), '</a><br>';
 			} elseif ($parent instanceof Individual) {
 				echo '<a href="', $parent->getHtmlUrl(), '">', $parent->getFullName(), '</a><br>';
 			}
@@ -709,7 +709,7 @@ class FunctionsPrintFacts {
 								if ($spouse) {
 									echo " - ";
 								}
-								echo '<a href="', $family->getHtmlUrl(), '">', I18N::translate('View the family'), '</a>';
+								echo '<a href="', $family->getHtmlUrl(), '">', I18N::translate('View this family'), '</a>';
 							}
 						}
 					}

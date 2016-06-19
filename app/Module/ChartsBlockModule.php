@@ -74,7 +74,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype == 'gedcom' && Auth::isManager($WT_TREE) || $ctype == 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Configure') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
+			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
 		} else {
 			$title = '';
 		}
@@ -136,7 +136,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			}
 			$content .= '</tr></table>';
 		} else {
-			$content = I18N::translate('You must select an individual and chart type in the block configuration settings.');
+			$content = I18N::translate('You must select an individual and a chart type in the block preferences');
 		}
 
 		if ($template) {

@@ -349,7 +349,7 @@ class QueryName {
 		// Now fetch initial letters that are not in our alphabet,
 		// including "@" (for "@N.N.") and "" for no surname
 		$sql =
-			"SELECT SQL_CACHE UPPER(LEFT(n_givn, 1)), COUNT(DISTINCT n_id)" .
+			"SELECT SQL_CACHE initial, total FROM (SELECT UPPER(LEFT(n_givn, 1)) AS initial, COUNT(DISTINCT n_id) AS total" .
 			" FROM `##name` " .
 			($fams ? " JOIN `##link` ON (n_id = l_from AND n_file = l_file AND l_type = 'FAMS') " : "") .
 			" WHERE n_file = :tree_id" .
@@ -377,7 +377,7 @@ class QueryName {
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
 			$sql .= " AND n_givn NOT LIKE '" . $letter . "%' COLLATE " . I18N::collation();
 		}
-		$sql .= " GROUP BY LEFT(n_givn, 1) ORDER BY LEFT(n_givn, 1) = '@', LEFT(n_givn, 1) = '', LEFT(n_givn, 1)";
+		$sql .= " GROUP BY UPPER(LEFT(n_givn, 1))) AS subquery ORDER BY initial = '@', initial = '', initial";
 
 		foreach (Database::prepare($sql)->execute($args)->fetchAssoc() as $alpha => $count) {
 			$alphas[$alpha] = $count;

@@ -25,6 +25,9 @@
  */
 // require_once 'Zend/Http/Client.php';
 
+/** @see Zend_Crypt_Math */
+// require_once 'Zend/Crypt/Math.php';
+
 /**
  * Gdata Http Client object.
  *
@@ -210,7 +213,7 @@ class Zend_Gdata_HttpClient extends Zend_Http_Client
             if ($this->getAuthSubPrivateKeyId() != null) {
                 // secure AuthSub
                 $time = time();
-                $nonce = mt_rand(0, 999999999);
+                $nonce = Zend_Crypt_Math::randInteger(0, 999999999);
                 $dataToSign = $method . ' ' . $url . ' ' . $time . ' ' . $nonce;
 
                 // compute signature

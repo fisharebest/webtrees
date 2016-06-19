@@ -225,7 +225,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 			$content .= '<p>' . I18N::translate('Enter an optional note about this favorite') . '</p>';
 			$content .= '<textarea name="favnote" rows="6" cols="50"></textarea>';
 			$content .= '</div>';
-			$content .= '<input type="submit" value="' . I18N::translate('Add') . '">';
+			$content .= '<input type="submit" value="' . /* I18N: A button label. */ I18N::translate('add') . '">';
 			$content .= '</form></div>';
 		}
 

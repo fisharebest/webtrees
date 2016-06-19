@@ -116,7 +116,7 @@ $controller->pageHeader();
 		</label>
 		<div class="col-sm-9">
 			<button id="submit-export" type="submit" class="btn btn-primary">
-				<?php echo /* I18N: A button label */ I18N::translate('continue'); ?>
+				<?php echo /* I18N: A button label. */ I18N::translate('continue'); ?>
 			</button>
 		</div>
 	</div>
@@ -131,7 +131,7 @@ $controller->pageHeader();
 	<!-- DOWNLOAD OPTIONS -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo I18N::translate('Export options'); ?>
+			<?php echo I18N::translate('Export preferences'); ?>
 		</legend>
 
 		<!-- ZIP FILES -->
@@ -201,7 +201,7 @@ $controller->pageHeader();
 		</label>
 		<div class="col-sm-9">
 			<button id="submit-export" type="submit" class="btn btn-primary">
-				<?php echo /* I18N: A button label */ I18N::translate('continue'); ?>
+				<?php echo /* I18N: A button label. */ I18N::translate('continue'); ?>
 			</button>
 		</div>
 	</div>

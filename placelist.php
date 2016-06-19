@@ -54,31 +54,29 @@ switch ($display) {
 case 'list':
 	echo '<h2>', $controller->getPageTitle(), '</h2>';
 	$list_places = Place::allPlaces($WT_TREE);
-	$num_places  = count($list_places);
+	$numfound    = count($list_places);
 
-	if ($num_places == 0) {
+	$divisor = $numfound > 20 ? 3 : 2;
+
+	if ($numfound === 0) {
 		echo '<b>', I18N::translate('No results found.'), '</b><br>';
 	} else {
-		echo '<table class="list_table">';
-		echo '<tr><td class="list_label" ';
-		echo ' colspan="', $num_places > 20 ? 3 : 2, '"><i class="icon-place"></i> ';
-		echo I18N::translate('Place list');
-		echo '</td></tr><tr><td class="list_value_wrap"><ul>';
-		foreach ($list_places as $n => $list_place) {
-			echo '<li><a href="', $list_place->getURL(), '">', $list_place->getReverseName(), '</a></li>';
-			if ($num_places > 20) {
-				if ($n == (int) ($num_places / 3)) {
-					echo '</ul></td><td class="list_value_wrap"><ul>';
-				}
-				if ($n == (int) (($num_places / 3) * 2)) {
-					echo '</ul></td><td class="list_value_wrap"><ul>';
-				}
-			} elseif ($n == (int) ($num_places / 2)) {
-				echo '</ul></td><td class="list_value_wrap"><ul>';
+		$columns = array_chunk($list_places, ceil($numfound / $divisor));
+
+		$html = '<table class="list_table"><thead>';
+		$html .= '<tr><th class="list_label" colspan="' . $divisor . '">';
+		$html .= '<i class="icon-place"></i> ' . I18N::translate('Place list');
+		$html .= '</th></tr></thead>';
+		$html .= '<tbody><tr>';
+		foreach ($columns as $column) {
+			$html .= '<td class="list_value_wrap"><ul>';
+			foreach ($column as $item) {
+				$html .= '<li><a href="' . $item->getURL() . '">' . $item->getReverseName() . '</a></li>';
 			}
+			$html .= '</ul></td>';
 		}
-		echo '</ul></td></tr>';
-		echo '</table>';
+		$html .= '</tr></tbody></table>';
+		echo $html;
 	}
 	echo '<h4><a href="placelist.php?display=hierarchy">', I18N::translate('Show places in hierarchy'), '</a></h4>';
 	break;
@@ -112,82 +110,59 @@ case 'hierarchy':
 
 	if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
 		$linklevels  = '';
-		$placelevels = '';
 		$place_names = array();
 		for ($j = 0; $j < $level; $j++) {
 			$linklevels .= '&amp;parent[' . $j . ']=' . rawurlencode($parent[$j]);
-			if ($parent[$j] == '') {
-				$placelevels = ', ' . I18N::translate('unknown') . $placelevels;
-			} else {
-				$placelevels = ', ' . $parent[$j] . $placelevels;
-			}
 		}
 
-		$gm_module->createMap($placelevels);
+		$gm_module->createMap();
 	} elseif (Module::getModuleByName('places_assistant')) {
 		// Places Assistant is a custom/add-on module that was once part of the core code.
 		\PlacesAssistantModule::display_map($level, $parent);
 	}
 
-	// -- echo the array
-	foreach ($child_places as $n => $child_place) {
-		if ($n == 0) {
-			echo '<table id="place_hierarchy" class="list_table"><tr><td class="list_label" ';
-			if ($numfound > 20) {
-				echo 'colspan="3"';
-			} elseif ($numfound > 4) {
-				echo 'colspan="2"';
-			}
-			echo '><i class="icon-place"></i> ';
-			if ($place_id) {
-				echo /* I18N: %s is a country or region */ I18N::translate('Places in %s', $place->getPlaceName());
-			} else {
-				echo I18N::translate('Place hierarchy');
-			}
-			echo '</td></tr><tr><td class="list_value"><ul>';
+	if ($numfound > 0) {
+		if ($numfound > 20) {
+			$divisor = 3;
+		} elseif ($numfound > 4) {
+			$divisor = 2;
+		} else {
+			$divisor = 1;
 		}
 
-		echo '<li><a href="', $child_place->getURL(), '" class="list_item">', $child_place->getPlaceName(), '</a></li>';
-		if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
-			list($tmp)       = explode(', ', $child_place->getGedcomName(), 2);
-			$place_names[$n] = $tmp;
+		$columns = array_chunk($child_places, ceil($numfound / $divisor));
+		$html    = '<table id="place_hierarchy" class="list_table"><thead><tr><th class="list_label" colspan="' . $divisor . '">';
+		$html .= '<i class="icon-place"></i> ';
+		if ($place_id) {
+			$html .= I18N::translate('Places in %s', $place->getPlaceName());
+		} else {
+			$html .= I18N::translate('Place hierarchy');
 		}
-		$n++;
-		if ($numfound > 20) {
-			if ($n == (int) ($numfound / 3)) {
-				echo '</ul></td><td class="list_value"><ul>';
+		$html .= '</th></tr></thead>';
+		$html .= '<tbody><tr>';
+		foreach ($columns as $column) {
+			$html .= '<td class="list_value"><ul>';
+			foreach ($column as $item) {
+				$html .= '<li><a href="' . $item->getURL() . '" class="list_item">' . $item->getPlaceName() . '</a></li>';
+				if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
+					list($tmp)     = explode(', ', $item->getGedcomName(), 2);
+					$place_names[] = $tmp;
+				}
 			}
-			if ($n == (int) (($numfound / 3) * 2)) {
-				echo '</ul></td><td class="list_value"><ul>';
-			}
-		} elseif ($numfound > 4 && $n == (int) ($numfound / 2)) {
-			echo '</ul></td><td class="list_value"><ul>';
+			$html .= '</ul></td>';
 		}
+		$html .= '</tr></tbody>';
+		if ($numfound > 0 && $action == 'find' && $place_id) {
+			$html .= '<tfoot><tr><td class="list_label" colspan="' . $divisor . '">';
+			$html .= I18N::translate('View all records found in this place');
+			$html .= '</td></tr><tr><td class="list_value" colspan="' . $divisor . '" style="text-align: center;">';
+			$html .= '<a href="' . $place->getURL() . '&amp;action=show" class="formField">' . $place->getPlaceName() . '</a>';
+			$html .= '</td></tr></tfoot>';
+		}
+		$html .= '</table>';
+		// -- echo the array
+		echo $html;
 	}
-	if ($child_places) {
-		echo '</ul></td></tr>';
-		if ($action == 'find' && $place_id) {
-			echo '<tr><td class="list_label" ';
-			if ($numfound > 20) {
-				echo 'colspan="3"';
-			} elseif ($numfound > 4) {
-				echo 'colspan="2"';
-			}
-			echo '>';
-			echo I18N::translate('View all records found in this place');
-			echo '</td></tr><tr><td class="list_value" ';
-			if ($numfound > 20) {
-				echo 'colspan="3"';
-			} elseif ($numfound > 4) {
-				echo 'colspan="2"';
-			}
-			echo ' style="text-align: center;">';
-			echo '<a href="', $place->getURL(), '&amp;action=show" class="formField">', $place->getPlaceName(), '</a>';
-			echo '</td></tr>';
-		}
-		echo '</table>';
-	}
-	echo '</td></tr></table>';
 	if ($place_id && $action == 'show') {
 		// -- array of names
 		$myindilist = array();
@@ -243,4 +218,3 @@ case 'hierarchy':
 }
 
 echo '</div>'; // <div id="place-hierarchy">
-

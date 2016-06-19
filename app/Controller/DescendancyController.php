@@ -100,8 +100,8 @@ class DescendancyController extends ChartController {
 		if ($depth == $this->generations) {
 			echo '<img src="' . Theme::theme()->parameter('image-spacer') . '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent'), "\" alt=\"\"></td><td>";
 		} else {
-			echo '<img src="' . Theme::theme()->parameter('image-spacer') . '" height="3" width="3" alt="">';
-			echo '<img src="' . Theme::theme()->parameter('image-hline') . '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent') - 3, '" alt=""></td><td>';
+			echo '<img src="' . Theme::theme()->parameter('image-spacer') . '" height="3" width="3">';
+			echo '<img src="' . Theme::theme()->parameter('image-hline') . '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent') - 3, '"></td><td>';
 		}
 		FunctionsPrint::printPedigreePerson($person, $this->showFull());
 		echo '</td>';
@@ -164,9 +164,9 @@ class DescendancyController extends ChartController {
 		$uid = Uuid::uuid4(); // create a unique ID
 		// print marriage info
 		echo '<li>';
-		echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', Theme::theme()->parameter('chart-descendancy-indent') + 4, '" alt="">';
+		echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', Theme::theme()->parameter('chart-descendancy-indent') + 4, '">';
 		echo '<span class="details1">';
-		echo "<a href=\"#\" onclick=\"expand_layer('" . $uid . "'); return false;\" class=\"top\"><i id=\"" . $uid . "_img\" class=\"icon-minus\" title=\"" . I18N::translate('View the family') . "\"></i></a>";
+		echo "<a href=\"#\" onclick=\"expand_layer('" . $uid . "'); return false;\" class=\"top\"><i id=\"" . $uid . "_img\" class=\"icon-minus\" title=\"" . I18N::translate('View this family') . "\"></i></a>";
 		if ($family->canShow()) {
 			foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 				echo ' <a href="', $family->getHtmlUrl(), '" class="details1">', $fact->summary(), '</a>';

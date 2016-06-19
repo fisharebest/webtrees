@@ -377,7 +377,7 @@ class I18N {
 		}
 
 		$cache_dir_exists = File::mkdir(WT_DATA_DIR . 'cache');
-		$cache_file = WT_DATA_DIR . 'cache/language-' . self::$locale->languageTag() . '-cache.php';
+		$cache_file       = WT_DATA_DIR . 'cache/language-' . self::$locale->languageTag() . '-cache.php';
 		if (file_exists($cache_file)) {
 			$filemtime = filemtime($cache_file);
 		} else {

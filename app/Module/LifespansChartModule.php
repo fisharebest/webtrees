@@ -52,7 +52,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 	public function defaultAccessLevel() {
 		return Auth::PRIV_PRIVATE;
 	}
-	
+
 	/**
 	 * Return a menu item for this chart.
 	 *
@@ -60,13 +60,13 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 	 */
 	public function getChartMenu(Individual $individual) {
 		return new Menu(
-			$this->getTitle(), 
-			'lifespan.php', 
-			'menu-chart-lifespan', 
+			$this->getTitle(),
+			'lifespan.php',
+			'menu-chart-lifespan',
 			array('rel' => 'nofollow')
 		);
 	}
-	
+
 	/**
 	 * Return a menu item for this chart - for use in individual boxes.
 	 *

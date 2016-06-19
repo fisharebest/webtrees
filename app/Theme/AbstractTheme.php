@@ -1339,37 +1339,41 @@ abstract class AbstractTheme {
 		} elseif ($show_tree_favorites) {
 			$favorites = FamilyTreeFavoritesModule::getFavorites($this->tree->getTreeId());
 		} else {
-			return null;
+			$favorites = array();
 		}
 
-		$menu = new Menu(I18N::translate('Favorites'), '#', 'menu-favorites');
-
+		$submenus = array();
+		$records  = array();
 		foreach ($favorites as $favorite) {
 			switch ($favorite['type']) {
 			case 'URL':
-				$submenu = new Menu($favorite['title'], $favorite['url']);
-				$menu->addSubmenu($submenu);
+				$submenus[] = new Menu($favorite['title'], $favorite['url']);
 				break;
 			case 'INDI':
 			case 'FAM':
 			case 'SOUR':
 			case 'OBJE':
 			case 'NOTE':
-				$obj = GedcomRecord::getInstance($favorite['gid'], $this->tree);
-				if ($obj && $obj->canShowName()) {
-					$menu->addSubmenu(new Menu($obj->getFullName(), $obj->getHtmlUrl()));
+				$record = GedcomRecord::getInstance($favorite['gid'], $this->tree);
+				if ($record && $record->canShowName()) {
+					$submenus[] = new Menu($record->getFullName(), $record->getHtmlUrl());
+					$records[]  = $record;
 				}
 				break;
 			}
 		}
 
-		if ($show_user_favorites && isset($controller->record) && $controller->record instanceof GedcomRecord) {
-			$menu->addSubmenu(new Menu(I18N::translate('Add to favorites'), '#', '', array(
+		if ($show_user_favorites && isset($controller->record) && $controller->record instanceof GedcomRecord && !in_array($controller->record, $records)) {
+			$submenus[] = new Menu(I18N::translate('Add to favorites'), '#', '', array(
 				'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite", {xref:"' . $controller->record->getXref() . '"},function(){location.reload();})',
-			)));
+			));
 		}
 
-		return $menu;
+		if (empty($submenus)) {
+			return null;
+		} else {
+			return new Menu(I18N::translate('Favorites'), '#', 'menu-favorites', array(), $submenus);
+		}
 	}
 
 	/**
@@ -1698,26 +1702,57 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * Create the search menu
+	 * Create the search menu.
 	 *
 	 * @return Menu
 	 */
 	protected function menuSearch() {
-		//-- main search menu item
-		$menu = new Menu(I18N::translate('Search'), '#', 'menu-search', array('rel' => 'nofollow'));
-		//-- search_general sub menu
-		$menu->addSubmenu(new Menu(I18N::translate('General search'), 'search.php?' . $this->tree_url, 'menu-search-general', array('rel' => 'nofollow')));
-		//-- search_soundex sub menu
-		$menu->addSubmenu(new Menu(/* I18N: search using “sounds like”, rather than exact spelling */
-			I18N::translate('Phonetic search'), 'search.php?' . $this->tree_url . '&amp;action=soundex', 'menu-search-soundex', array('rel' => 'nofollow')));
-		//-- advanced search
-		$menu->addSubmenu(new Menu(I18N::translate('Advanced search'), 'search_advanced.php?' . $this->tree_url, 'menu-search-advanced', array('rel' => 'nofollow')));
-		//-- search_replace sub menu
-		if (Auth::isEditor($this->tree)) {
-			$menu->addSubmenu(new Menu(I18N::translate('Search and replace'), 'search.php?' . $this->tree_url . '&amp;action=replace', 'menu-search-replace'));
-		}
+		return new Menu(I18N::translate('Search'), '#', 'menu-search', array('rel' => 'nofollow'), array_filter(array(
+			$this->menuSearchGeneral(),
+			$this->menuSearchPhonetic(),
+			$this->menuSearchAdvanced(),
+			$this->menuSearchAndReplace(),
+		)));
+	}
 
-		return $menu;
+	/**
+	 * Create the general search sub-menu.
+	 *
+	 * @return Menu
+	 */
+	protected function menuSearchGeneral() {
+		return new Menu(I18N::translate('General search'), 'search.php?' . $this->tree_url, 'menu-search-general', array('rel' => 'nofollow'));
+	}
+
+	/**
+	 * Create the phonetic search sub-menu.
+	 *
+	 * @return Menu
+	 */
+	protected function menuSearchPhonetic() {
+		return new Menu(/* I18N: search using “sounds like”, rather than exact spelling */ I18N::translate('Phonetic search'), 'search.php?' . $this->tree_url . '&amp;action=soundex', 'menu-search-soundex', array('rel' => 'nofollow'));
+	}
+
+	/**
+	 * Create the advanced search sub-menu.
+	 *
+	 * @return Menu
+	 */
+	protected function menuSearchAdvanced() {
+		return new Menu(I18N::translate('Advanced search'), 'search_advanced.php?' . $this->tree_url, 'menu-search-advanced', array('rel' => 'nofollow'));
+	}
+
+	/**
+	 * Create the advanced search sub-menu.
+	 *
+	 * @return Menu
+	 */
+	protected function menuSearchAndReplace() {
+		if (Auth::isEditor($this->tree)) {
+			return new Menu(I18N::translate('Search and replace'), 'search.php?' . $this->tree_url . '&amp;action=replace', 'menu-search-replace');
+		} else {
+			return null;
+		}
 	}
 
 	/**

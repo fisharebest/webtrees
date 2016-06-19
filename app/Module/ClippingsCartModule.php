@@ -308,7 +308,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 
 			if (!$cart[$WT_TREE->getTreeId()]) {
 				if ($clip_ctrl->action != 'add') {
-					echo I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program. The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option. When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link. Follow the instructions and links.</li></ul>');
+					echo I18N::translate('The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file.');
 					?>
 					<form method="get" name="addin" action="module.php">
 						<input type="hidden" name="mod" value="clippings">
@@ -331,7 +331,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<?php echo FunctionsPrint::printFindIndividualLink('cart_item_id'); ?>
 										<?php echo FunctionsPrint::printFindFamilyLink('cart_item_id'); ?>
 										<?php echo FunctionsPrint::printFindSourceLink('cart_item_id', ''); ?>
-										<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
+										<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('add'); ?>">
 									</td>
 								</tr>
 							</tbody>
@@ -457,7 +457,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<?php echo FunctionsPrint::printFindIndividualLink('cart_item_id'); ?>
 										<?php echo FunctionsPrint::printFindFamilyLink('cart_item_id'); ?>
 										<?php echo FunctionsPrint::printFindSourceLink('cart_item_id'); ?>
-										<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
+										<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('add'); ?>">
 									</td>
 								</tr>
 							</tbody>

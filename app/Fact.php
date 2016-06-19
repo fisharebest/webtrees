@@ -380,19 +380,23 @@ class Fact {
 		if ($target) {
 			$attributes[] = $target->getFullName();
 		} else {
+			// Fact value
 			$value = $this->getValue();
-			if ($value && $value != 'Y') {
+			if ($value !== '' && $value !== 'Y') {
 				$attributes[] = '<span dir="auto">' . Filter::escapeHtml($value) . '</span>';
 			}
+			// Fact date
 			$date = $this->getDate();
-			if ($this->getTag() == 'BIRT' && $this->getParent() instanceof Individual && $this->getParent()->getTree()->getPreference('SHOW_PARENTS_AGE')) {
-				$attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->getParent(), $date);
-			} else {
-				$attributes[] = $date->display();
+			if ($date->isOK()) {
+				if ($this->getTag() === 'BIRT' && $this->getParent() instanceof Individual && $this->getParent()->getTree()->getPreference('SHOW_PARENTS_AGE')) {
+					$attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->getParent(), $date);
+				} else {
+					$attributes[] = $date->display();
+				}
 			}
-			$place = $this->getPlace()->getShortName();
-			if ($place) {
-				$attributes[] = $place;
+			// Fact place
+			if (!$this->getPlace()->isEmpty()) {
+				$attributes[] = $this->getPlace()->getShortName();
 			}
 		}
 

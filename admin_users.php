@@ -68,7 +68,7 @@ case 'save':
 		if ($user_id === 0) {
 			// Create a new user
 			if (User::findByUserName($username)) {
-				FlashMessages::addMessage(I18N::translate('Duplicate user name. A user with that user name already exists. Please choose another user name.'));
+				FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
 			} elseif (User::findByEmail($email)) {
 				FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
 			} elseif ($pass1 !== $pass2) {
@@ -222,7 +222,7 @@ case 'load_json':
 		if ($user_id != Auth::id()) {
 			$datum[4] = '<a href="#" onclick="return message(\'' . Filter::escapeHtml($datum[2]) . '\', \'\', \'\');">' . Filter::escapeHtml($datum[4]) . '</i></a>';
 		}
-		// $datum[2] is the user name
+		// $datum[2] is the username
 		$datum[2] = '<span dir="auto">' . Filter::escapeHtml($datum[2]) . '</span>';
 		// $datum[5] is the langauge
 		if (array_key_exists($datum[5], $installed_languages)) {
@@ -386,7 +386,7 @@ case 'edit':
 						<?php echo I18N::translate('Approved by administrator'); ?>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('When a user registers for an account, an email is sent to their email address with a verification link. When they click this link, we know the email address is correct, and the “email verified” option is selected automatically.'); ?>
+						<?php echo I18N::translate('When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically.'); ?>
 					</p>
 					<p class="small text-muted">
 						<?php echo I18N::translate('If an administrator creates a user account, the verification email is not sent, and the email must be verified manually.'); ?>
@@ -395,7 +395,7 @@ case 'edit':
 						<?php echo I18N::translate('You should not approve an account unless you know that the email address is correct.'); ?>
 					</p>
 					<p class="small text-muted">
-						<?php echo I18N::translate('A user will not be able to sign in until both the “email verified” and “approved by administrator” options are selected.'); ?>
+						<?php echo I18N::translate('A user will not be able to sign in until both “email verified” and “approved by administrator” are selected.'); ?>
 					</p>
 				</div>
 			</div>
@@ -521,7 +521,7 @@ case 'edit':
 		<h3><?php echo I18N::translate('Family tree access and settings'); ?></h3>
 
 		<p>
-			<?php echo I18N::translate('A role is a set of access rights, which give permission to view data, change configuration settings, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree.'); ?>
+			<?php echo I18N::translate('A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree.'); ?>
 		</p>
 
 		<div class="row">

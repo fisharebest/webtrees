@@ -55,7 +55,7 @@ if ($form_action && Filter::checkCsrf()) {
 	switch ($form_action) {
 	case 'update':
 		if ($form_username !== Auth::user()->getUserName() && User::findByUserName($form_username)) {
-			FlashMessages::addMessage(I18N::translate('Duplicate user name. A user with that user name already exists. Please choose another user name.'));
+			FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
 		} elseif ($form_email !== Auth::user()->getEmail() && User::findByEmail($form_email)) {
 			FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
 		} else {
@@ -121,7 +121,7 @@ $default_individual   = Individual::getInstance($WT_TREE->getUserPreference(Auth
 <script>
 function checkform(frm) {
 	if (frm.form_username.value=="") {
-		alert("<?php echo I18N::translate('You must enter a user name.'); ?>");
+		alert("<?php echo I18N::translate('You must enter a username.'); ?>");
 		frm.form_username.focus();
 		return false;
 	}

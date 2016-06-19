@@ -17,231 +17,144 @@
 	margin-top: 10px;
 }
 
-#map_pane {
-	border: 1px solid gray;
-	color: black;
-	width: 100%;
+.gm-pedigree-map {
+	margin: 20px;
 }
 
-div.infowindow {
+/* Google adds "android" styling to info-windows - reset this */
+.gm-style,
+.gm-style .gm-style-iw {
+	font: inherit;
+}
+
+/* Contains a map and a list of events */
+.gm-wrapper {
+	border: 1px solid #888;
+	margin: 2px;
+	display: flex;
+}
+
+/* The actual map. */
+.gm-map {
+	width: 70%;
+	height: 100%;
+}
+
+/* Links to administrator functions */
+.gm-options {
+	margin: 2px;
+	text-align: center;
+}
+
+#googlemap_content .gm-options {
+	width: 70%;
+}
+
+/* Pop-up window in a map */
+.gm-info-window {
+	font-size: 12px;
+	min-height: 60px;
 	max-height: 240px;
 	overflow-x: hidden;
 }
 
-#iwhead {
-	background: #fff;
-	border: 1px solid #bbb;
-	border-right-width: 0;
-	border-left-width: 0;
-	font-size: 10px;
-	margin-left: -2px;
-	margin-right: 0;
-	margin-top: -1px;
-	padding: .3em .2em;
+.gm-pedigree-map .gm-info-window {
+	width: 300px;
+}
+
+.gm-info-window-header {
+	font-weight: bold;
+	padding-bottom: .5em;
 	text-align: center;
 	white-space: normal;
 	width: 300px;
 }
 
-#iwhead a:hover {
-	color: #f00;
-}
-
-#iwcontent {
-	border: 1px solid #bbb;
-	margin-right: 0;
-}
-
-#iwcontent a {
-	color: #000;
-}
-
-#iwhead a {
-	color: #00c;
-}
-
-#iwcontent a:hover {
-	color: #f00;
-}
-
-#gmtabs {
-	background-color: #eee;
-}
-
-#gmtabs ul {
-	border: 0;
-}
-
-h4 {
-	margin-bottom: -0.1em;
-}
-
-#txt {
-	width: 300px;
-	background: #ffc;
-	margin-left: -8px;
-	margin-top: -8px;
-	text-align: center;
-}
-
-#pano {
+.gm-streetview {
 	width: 297px;
 	border-top: 1px solid #aaa;
-	height: 216px;
+	height: 200px;
 	margin-left: 0;
 	margin-top: 0;
 }
 
-.info_event {
+.gm-event {
 	width: 100%;
 	min-height: 50px;
-	margin: 5px 0;
-	padding: 0 3px;
+	padding: 5px 3px;
 	border-bottom: 1px dotted #aaa;
 }
 
-.sp1 {
-	float: left;
-	color: #00f;
-	font-weight: 400;
-}
-
-[dir=rtl] .sp1 {
-	float: right;
-}
-
-.highlt_img {
-	float: right;
-	padding: 0 3px;
-}
-
-[dir=rtl] .highlt_img {
-	float: left;
-}
-
-/* root element for tabs */
-ul.tabs {
-	margin: 0 !important;
-	background: #def;
-	border: 1px solid #666;
-	height: 20px;
-	padding: 0;
-}
-
-/* single tab */
-ul.tabs li {
-	float: left;
-	list-style-type: none;
+/* The map has flags, which have popup windows, which have tabs */
+.gm-tabs {
 	margin: 0;
 	padding: 0;
+	height: 19px;
 }
 
-/* link inside the tab. uses a background image */
-ul.tabs a {
-	background-color: #efefef;
+.gm-tab {
+	float: left;
+	list-style-type: none;
+	margin: 0 2px;
+	background-color: #eee;
 	border-radius: 4px 4px 0 0;
 	border: 1px solid #666;
 	color: #777;
-	float: left;
 	height: 18px;
-	margin-right: 2px;
-	outline: 0;
-	position: relative;
-	text-decoration: none;
-	top: 1px;
 	display: block;
-	font-size: 13px;
 	padding: 0 10px;
 }
 
-ul.tabs a:hover {
+[dir=rtl] .gm-tab {
+	float: right;
+}
+
+.gm-tab-active,
+.gm-tab:hover {
 	background-color: #fff;
-	color: #333;
 }
 
-/* selected tab */
-ul.tabs a.current {
-	background-color: #fff;
-	border-bottom: 1px solid #ddd;
-	color: #000;
-	cursor: default;
-}
-
-/* tabs */
-#EV {
-	background: #fff;
-	padding-bottom: 1px;
-}
-
-#SV {
-	background: #ccc;
-	padding-bottom: 0;
-}
-
-/* tab panes */
-#pane1 {
-	display: block;
-}
-
-#pane2 {
-	display: none;
-}
-
-/* view_type */
-#view_type {
-	display: block;
-	margin-top: -12px;
-}
-
-#view_type td {
-	width: 360px;
-}
-
-#view_type form {
-	text-align: center;
-	width: 360px;
-}
-
-/* places_edit */
-#gname {
-	vertical-align: middle;
-	height: 60px;
-	margin-top: 0;
-	white-space: pre-wrap;
-	width: 200px;
-}
-
-#namelink {
-	padding-bottom: 5px;
-}
-
-#iwcontent_edit {
+.gm-pane {
 	background-color: #eee;
-	border: 1px solid #bbb;
-	height: 60px;
-	margin-right: 0;
+	border: 1px solid #666;
 }
 
-#iwcontent_edit a {
-	color: #000;
+.gm-ancestor {
+	min-height: 50px;
+	margin: 5px;
+	padding: 0!important;
+	border: 1px solid transparent;
 }
 
-#iwcontent_edit a:hover {
-	color: #f00;
+.gm-ancestor-visited {
+	background-color: #ffc;
+	border: 1px solid #ffdd00;
 }
 
-.optionbox #gname {
-	white-space: normal;
+.gm-ancestors,
+.gm-events {
+	width: 30%;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
-.iwstyle {
-	width: 360px;
+/* We have a link inside something that behaves like a link, and therefore must look like a link. */
+.gm-ancestor-link {
+	cursor: pointer;
 }
 
-#side_bar .gallery img,
-.iwstyle .gallery img,
-.highlt_img .gallery img {
+.gm-wrapper .gallery {
 	float: left;
+	width: 50px;
+}
+
+[dir=rtl] .gm-wrapper .gallery {
+	float: right;
+}
+
+.gm-ancestors .gallery img,
+.gm-style-iw .gallery img {
+	float: right;
 	height: auto;
 	margin: 0 4px;
 	max-height: 50px;
@@ -249,90 +162,68 @@ ul.tabs a.current {
 	width: auto;
 }
 
-[dir=rtl] #side_bar .gallery img,
-[dir=rtl] .iwstyle .gallery img,
-[dir=rtl] .highlt_img .gallery img {
-	float: right;
-	margin: 0 0 0 4px;
-}
-
-#side_bar .icon-silhouette-M,
-#side_bar .icon-silhouette-F,
-#side_bar .icon-silhouette-U,
-.iwstyle .icon-silhouette-M,
-.iwstyle .icon-silhouette-F,
-.iwstyle .icon-silhouette-U {
+[dir=rtl] .gm-ancestors .gallery img,
+[dir=rtl] .gm-style-iw .gallery img {
 	float: left;
 }
 
-[dir=rtl] #side_bar .icon-silhouette-M,
-[dir=rtl] #side_bar .icon-silhouette-F,
-[dir=rtl] #side_bar .icon-silhouette-U,
-[dir=rtl] .iwstyle .icon-silhouette-M,
-[dir=rtl] .iwstyle .icon-silhouette-F,
-[dir=rtl] .iwstyle .icon-silhouette-U {
+.gm-ancestors .icon-silhouette-M,
+.gm-ancestors .icon-silhouette-F,
+.gm-ancestors .icon-silhouette-U,
+.gm-style-iw .icon-silhouette-M,
+.gm-style-iw .icon-silhouette-F,
+.gm-style-iw .icon-silhouette-U {
+	float: left;
+	max-height: 50px;
+	width: 50px;
+}
+
+[dir=rtl] .gm-ancestors .icon-silhouette-M,
+[dir=rtl] .gm-ancestors .icon-silhouette-F,
+[dir=rtl] .gm-ancestors .icon-silhouette-U,
+[dir=rtl] .gm-style-iw .icon-silhouette-M,
+[dir=rtl] .gm-style-iw .icon-silhouette-F,
+[dir=rtl] .gm-style-iw .icon-silhouette-U {
 	float: right;
 }
 
-#pedigreemap_chart {
-	margin: 20px;
-}
-
-#side_bar .NAME {
-	padding-left: 5px;
-}
-
-#side_bar img {
+.gm-ancestors img {
 	padding-right: 5px;
 }
 
-[dir=rtl] #side_bar .NAME {
-	padding-right: 5px;
-}
-
-[dir=rtl] #side_bar img {
+[dir=rtl] .gm-ancestors img {
 	padding-left: 5px;
 }
 
-.gmpref {
-	border: solid 1px gray;
-	background: #cccccc;
-	height: 21px;
+.gm-streetview-frame {
+	overflow: hidden;
+	width: 530px;
+	padding: 0;
+	border: 0;
+	display: block;
 }
 
-.gmpref a {
-	font: 10px verdana;
-	color: blue;
-}
-
-.gmpref a:hover {
-	color: red;
-}
-
-.gm-style-iw {
-	font-size: 12px !important;
-}
-
-#sv_parameters {
+.gm-streetview-parameters {
 	margin-left: 4px;
 	border: solid 1px black;
-	width: 522px;
-	margin-top: -28px;
+	width: 520px;
+	margin-top: -7px;
 	background: #cccccc;
 }
 
-#sv_parameters form {
+.gm-streetview-parameters form {
 	text-align: left;
 	margin-left: 5px;
 	font: 10px verdana;
 	color: blue;
 }
 
-#sv_latiText,
-#sv_longText,
-#sv_bearText,
-#sv_elevText,
-#sv_zoomText {
+.gm-streetview-parameters input {
+	padding: 0;
+	margin: 0;
+}
+
+.gm-streetview-parameters input[type=text] {
 	font-size: inherit;
 	text-overflow: ellipsis;
 	background: none;

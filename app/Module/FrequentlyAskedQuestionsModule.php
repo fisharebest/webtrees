@@ -125,7 +125,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 	/**
 	 * Action from the configuration page
 	 */
-		private function edit() {
+	private function edit() {
 		global $WT_TREE;
 
 		$controller = new PageController;
@@ -360,14 +360,11 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			'tree_id_2'   => $WT_TREE->getTreeId(),
 		))->fetchAll();
 
-		// Define your colors for the alternating rows
-		echo '<h2 class="center">', I18N::translate('Frequently asked questions'), '</h2>';
-		// Instructions
-		echo '<div class="faq_italic">', I18N::translate('Click on a title to go straight to it, or scroll down to read them all.');
+		echo '<h2 class="center">', I18N::translate('Frequently asked questions');
 		if (Auth::isManager($WT_TREE)) {
-			echo '<div class="faq_edit"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', I18N::translate('Click here to add, edit, or delete'), '</a></div>';
+			echo ' — <a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', I18N::translate('edit'), '</a>';
 		}
-		echo '</div>';
+		echo '</h2>';
 		$row_count = 0;
 		echo '<table class="faq">';
 		// List of titles

@@ -1715,7 +1715,7 @@ case 'reorder_media':
 
 	?>
 	<div id="edit_interface-page">
-		<h4><?php echo I18N::translate('Click a row, then drag-and-drop to re-order media'); ?></h4>
+		<h4><?php echo I18N::translate('Re-order media'); ?></h4>
 		<form name="reorder_form" method="post" action="edit_interface.php">
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="reorder_media_update">
@@ -1738,9 +1738,6 @@ case 'reorder_media':
 				</li>
 			<?php } ?>
 			</ul>
-			<table class="facts_table">
-				<?php echo keep_chan($record); ?>
-			</table>
 			<p id="save-cancel">
 				<input type="submit" class="save" value="<?php echo I18N::translate('save'); ?>">
 				<input type="button" class="cancel" value="<?php echo I18N::translate('close'); ?>" onclick="window.close();">
@@ -1751,9 +1748,8 @@ case 'reorder_media':
 	break;
 
 case 'reorder_media_update':
-	$xref      = Filter::post('xref', WT_REGEX_XREF);
-	$order1    = Filter::post('order1');
-	$keep_chan = Filter::postBool('keep_chan');
+	$xref   = Filter::post('xref', WT_REGEX_XREF);
+	$order1 = Filter::post('order1');
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=reorder_media_&xref=' . $xref);
@@ -1782,7 +1778,7 @@ case 'reorder_media_update':
 		}
 	}
 
-	$person->updateRecord(implode("\n", $facts), !$keep_chan);
+	$person->updateRecord(implode("\n", $facts), false);
 
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
@@ -1844,11 +1840,8 @@ case 'reorder_children':
 					echo '</li>';
 					$i++;
 				}
-			echo '</ul>';
 			?>
-			<table>
-				<?php echo keep_chan($family); ?>
-			</table>
+			</ul>
 			<p id="save-cancel">
 				<input type="submit" class="save" value="<?php echo I18N::translate('save'); ?>">
 				<input type="submit" class="save" onclick="document.reorder_form.action.value='reorder_children'; document.reorder_form.submit();" value="<?php echo I18N::translate('sort by date of birth'); ?>">
@@ -1860,9 +1853,8 @@ case 'reorder_children':
 	break;
 
 case 'reorder_update':
-	$xref      = Filter::post('xref', WT_REGEX_XREF);
-	$order     = Filter::post('order');
-	$keep_chan = Filter::postBool('keep_chan');
+	$xref  = Filter::post('xref', WT_REGEX_XREF);
+	$order = Filter::post('order');
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=reorder_children&xref=' . $xref);
@@ -1895,7 +1887,7 @@ case 'reorder_update':
 			$gedcom[] = $fact->getGedcom();
 		}
 
-		$family->updateRecord(implode("\n", $gedcom), !$keep_chan);
+		$family->updateRecord(implode("\n", $gedcom), false);
 	}
 
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -2066,12 +2058,8 @@ case 'changefamily_update':
 	}
 
 	$CHIL = array();
-	for ($i = 0; ; ++$i) {
-		if (isset($_POST['CHIL' . $i])) {
-			$CHIL[] = Filter::post('CHIL' . $i, WT_REGEX_XREF);
-		} else {
-			break;
-		}
+	for ($i = 0; isset($_POST['CHIL' . $i]); ++$i) {
+		$CHIL[] = Filter::post('CHIL' . $i, WT_REGEX_XREF);
 	}
 
 	$family = Family::getInstance($xref, $WT_TREE);
@@ -2090,10 +2078,8 @@ case 'changefamily_update':
 	$new_father   = Individual::getInstance($HUSB, $WT_TREE);
 	$new_mother   = Individual::getInstance($WIFE, $WT_TREE);
 	$new_children = array();
-	if (is_array($CHIL)) {
-		foreach ($CHIL as $child) {
-			$new_children[] = Individual::getInstance($child, $WT_TREE);
-		}
+	foreach ($CHIL as $child) {
+		$new_children[] = Individual::getInstance($child, $WT_TREE);
 	}
 
 	if ($old_father !== $new_father) {
@@ -2222,9 +2208,8 @@ case 'reorder_fams':
 	break;
 
 case 'reorder_fams_update':
-	$xref      = Filter::post('xref', WT_REGEX_XREF);
-	$order     = Filter::post('order');
-	$keep_chan = Filter::postBool('keep_chan');
+	$xref  = Filter::post('xref', WT_REGEX_XREF);
+	$order = Filter::post('order');
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=reorder_fams&xref=' . $xref);
@@ -2257,7 +2242,7 @@ case 'reorder_fams_update':
 			$gedcom[] = $fact->getGedcom();
 		}
 
-		$person->updateRecord(implode("\n", $gedcom), !$keep_chan);
+		$person->updateRecord(implode("\n", $gedcom), false);
 	}
 
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -2596,11 +2581,11 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	}
 
 	echo '<p id="save-cancel">';
-	echo '<input type="submit" class="save" value="', /* I18N: A button label */ I18N::translate('save'), '">';
+	echo '<input type="submit" class="save" value="', /* I18N: A button label. */ I18N::translate('save'), '">';
 	if (preg_match('/^add_(child|spouse|parent|unlinked_indi)/', $nextaction)) {
-		echo '<input type="submit" class="save" value="', /* I18N: A button label */ I18N::translate('go to new individual'), '" onclick="document.addchildform.goto.value=\'new\';">';
+		echo '<input type="submit" class="save" value="', /* I18N: A button label. */ I18N::translate('go to new individual'), '" onclick="document.addchildform.goto.value=\'new\';">';
 	}
-	echo '<input type="button" class="cancel" value="', /* I18N: A button label */ I18N::translate('close'), '" onclick="window.close();">';
+	echo '<input type="button" class="cancel" value="', /* I18N: A button label. */ I18N::translate('close'), '" onclick="window.close();">';
 	echo '</p>';
 	echo '</form>';
 	$controller->addInlineJavascript('

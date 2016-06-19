@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\Menu;
  * Interface ModuleChartInterface - Classes and libraries for module system
  */
 interface ModuleChartInterface {
-
 	/**
 	 * Return a menu item for this chart.
 	 *

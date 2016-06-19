@@ -4535,7 +4535,7 @@ class Stats {
 					$return = '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
 					$return .= I18N::translate('and') . ' ';
 					$return .= '<a href="' . $child1->getHtmlUrl() . '">' . $child1->getFullName() . '</a>';
-					$return .= ' <a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View the family') . ']</a>';
+					$return .= ' <a href="' . $family->getHtmlUrl() . '">[' . I18N::translate('View this family') . ']</a>';
 				} else {
 					$return = I18N::translate('This information is private and cannot be shown.');
 				}
@@ -4562,7 +4562,7 @@ class Stats {
 						$return .= I18N::translate('and') . " ";
 						$return .= "<a href=\"" . $child1->getHtmlUrl() . "\">" . $child1->getFullName() . "</a>";
 						$return .= " (" . $age . ")";
-						$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View the family') . "]</a>";
+						$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View this family') . "]</a>";
 						$return .= '</li>';
 						$top10[] = $return;
 						$dist[]  = $fam['family'];
@@ -4573,7 +4573,7 @@ class Stats {
 					$return .= I18N::translate('and') . " ";
 					$return .= "<a href=\"" . $child1->getHtmlUrl() . "\">" . $child1->getFullName() . "</a>";
 					$return .= " (" . $age . ")";
-					$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View the family') . "]</a>";
+					$return .= " <a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View this family') . "]</a>";
 					$return .= '</li>';
 					$top10[] = $return;
 				}
@@ -4582,7 +4582,7 @@ class Stats {
 					$return = $child2->formatList('span', false, $child2->getFullName());
 					$return .= "<br>" . I18N::translate('and') . "<br>";
 					$return .= $child1->formatList('span', false, $child1->getFullName());
-					$return .= "<br><a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View the family') . "]</a>";
+					$return .= "<br><a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View this family') . "]</a>";
 
 					return $return;
 				} else {
@@ -5310,28 +5310,13 @@ class Stats {
 	 * @return string
 	 */
 	private function commonSurnamesQuery($type = 'list', $show_tot = false, $params = array()) {
-		if (isset($params[0]) && $params[0] > 0) {
-			$threshold = (int) $params[0];
-		} else {
-			$threshold = $this->tree->getPreference('COMMON_NAMES_THRESHOLD');
-		}
-		if (isset($params[1])) {
-			$maxtoshow = (int) $params[1];
-		} else {
-			$maxtoshow = 0;
-		}
-		if (isset($params[2])) {
-			$sorting = $params[2];
-		} else {
-			$sorting = 'alpha';
-		}
-		$surname_list = FunctionsDb::getCommonSurnames($threshold, $this->tree);
-		if (count($surname_list) == 0) {
+		$threshold          = empty($params[0]) ? 10 : (int) $params[0];
+		$number_of_surnames = empty($params[1]) ? 10 : (int) $params[1];
+		$sorting            = empty($params[2]) ? 'alpha' : $params[2];
+
+		$surname_list = FunctionsDb::getTopSurnames($this->tree->getTreeId(), $threshold, $number_of_surnames);
+		if (empty($surname_list)) {
 			return '';
-		}
-		uasort($surname_list, '\Fisharebest\Webtrees\Stats::nameTotalReverseSort');
-		if ($maxtoshow > 0) {
-			$surname_list = array_slice($surname_list, 0, $maxtoshow);
 		}
 
 		switch ($sorting) {
@@ -5340,10 +5325,10 @@ class Stats {
 			uksort($surname_list, '\Fisharebest\Webtrees\I18N::strcasecmp');
 			break;
 		case 'count':
-			uasort($surname_list, '\Fisharebest\Webtrees\Stats::nameTotalSort');
+			asort($surname_list);
 			break;
 		case 'rcount':
-			uasort($surname_list, '\Fisharebest\Webtrees\Stats::nameTotalReverseSort');
+			arsort($surname_list);
 			break;
 		}
 
@@ -5424,50 +5409,23 @@ class Stats {
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
 		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-		if (isset($params[0]) && $params[0] != '') {
-			$size = strtolower($params[0]);
-		} else {
-			$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
-		}
-		if (isset($params[1]) && $params[1] != '') {
-			$color_from = strtolower($params[1]);
-		} else {
-			$color_from = $WT_STATS_CHART_COLOR1;
-		}
-		if (isset($params[2]) && $params[2] != '') {
-			$color_to = strtolower($params[2]);
-		} else {
-			$color_to = $WT_STATS_CHART_COLOR2;
-		}
-		if (isset($params[3]) && $params[3] != '') {
-			$threshold = strtolower($params[3]);
-		} else {
-			$threshold = $this->tree->getPreference('COMMON_NAMES_THRESHOLD');
-		}
-		if (isset($params[4]) && $params[4] != '') {
-			$maxtoshow = strtolower($params[4]);
-		} else {
-			$maxtoshow = 7;
-		}
+		$size               = empty($params[0]) ? $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y : strtolower($params[0]);
+		$color_from         = empty($params[1]) ? $WT_STATS_CHART_COLOR1 : strtolower($params[1]);
+		$color_to           = empty($params[2]) ? $WT_STATS_CHART_COLOR2 : strtolower($params[2]);
+		$number_of_surnames = empty($params[3]) ? 10 : (int) $params[3];
+
 		$sizes    = explode('x', $size);
 		$tot_indi = $this->totalIndividualsQuery();
-		$surnames = FunctionsDb::getCommonSurnames($threshold, $this->tree);
-		if (count($surnames) <= 0) {
+		$surnames = FunctionsDb::getTopSurnames($this->tree->getTreeId(), 0, $number_of_surnames);
+		if (empty($surnames)) {
 			return '';
 		}
 		$SURNAME_TRADITION = $this->tree->getPreference('SURNAME_TRADITION');
-		uasort($surnames, '\Fisharebest\Webtrees\Stats::nameTotalReverseSort');
-		$surnames     = array_slice($surnames, 0, $maxtoshow);
-		$all_surnames = array();
-		foreach (array_keys($surnames) as $n => $surname) {
-			if ($n >= $maxtoshow) {
-				break;
-			}
+		$all_surnames      = array();
+		$tot               = 0;
+		foreach ($surnames as $surname => $num) {
 			$all_surnames = array_merge($all_surnames, QueryName::surnames($this->tree, I18N::strtoupper($surname), '', false, false));
-		}
-		$tot = 0;
-		foreach ($surnames as $surname) {
-			$tot += $surname['match'];
+			$tot += $num;
 		}
 		$chd = '';
 		$chl = array();

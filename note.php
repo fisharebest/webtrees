@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Module\CensusAssistantModule;
 define('WT_SCRIPT_NAME', 'note.php');
 require './includes/session.php';
 
-$record = Note::getInstance(Filter::get('nid', WT_REGEX_XREF), $WT_TREE);
+$record     = Note::getInstance(Filter::get('nid', WT_REGEX_XREF), $WT_TREE);
 $controller = new NoteController($record);
 
 if ($controller->record && $controller->record->canShow()) {

@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.10.0 (2016-06-02)
+ - Add Anglo-Saxon (ang).
+
 ## 1.9.0 (2016-03-26)
  - Update to CLDR-29.
 

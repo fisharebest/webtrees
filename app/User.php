@@ -164,7 +164,7 @@ class User {
 			'user_name' => $user_name,
 			'real_name' => $real_name,
 			'email'     => $email,
-			'password'  => password_hash($password, PASSWORD_DEFAULT),
+			'password'  => self::passwordHash($password),
 		));
 
 		// Set default blocks for this user
@@ -318,8 +318,8 @@ class User {
 			"SELECT password FROM `##user` WHERE user_id = ?"
 		)->execute(array($this->user_id))->fetchOne();
 
-		if (password_verify($password, $password_hash)) {
-			if (password_needs_rehash($password_hash, PASSWORD_DEFAULT)) {
+		if ($this->passwordVerify($password, $password_hash)) {
+			if ($this->passwordNeedsRehash($password_hash)) {
 				$this->setPassword($password);
 			}
 
@@ -438,7 +438,7 @@ class User {
 	public function setPassword($password) {
 		Database::prepare(
 			"UPDATE `##user` SET password = ? WHERE user_id = ?"
-		)->execute(array(password_hash($password, PASSWORD_DEFAULT), $this->user_id));
+		)->execute(array($this->passwordHash($password), $this->user_id));
 
 		return $this;
 	}
@@ -506,5 +506,55 @@ class User {
 		}
 
 		return $this;
+	}
+
+	/**
+	 * The ircmaxell/password_compat implementation of the password_hash() function
+	 * relies on an encryption library which is not secure in PHP < 5.3.7
+	 *
+	 * @return bool
+	 */
+	private static function isPhpCryptBroken() {
+		return PHP_VERSION_ID < 50307 && password_hash('foo', PASSWORD_DEFAULT) === false;
+	}
+
+	/**
+	 * @param string $password
+	 *
+	 * @return string
+	 */
+	private static function passwordHash($password) {
+		if (self::isPhpCryptBroken()) {
+			return crypt($password);
+		} else {
+			return password_hash($password, PASSWORD_DEFAULT);
+		}
+	}
+
+	/**
+	 * @param string $hash
+	 *
+	 * @return bool
+	 */
+	private static function passwordNeedsRehash($hash) {
+		if (self::isPhpCryptBroken()) {
+			return false;
+		} else {
+			return password_needs_rehash($hash, PASSWORD_DEFAULT);
+		}
+	}
+
+	/**
+	 * @param string $password
+	 * @param string $hash
+	 *
+	 * @return bool
+	 */
+	private static function passwordVerify($password, $hash) {
+		if (self::isPhpCryptBroken()) {
+			return crypt($password, $hash) === $hash;
+		} else {
+			return password_verify($password, $hash);
+		}
 	}
 }

@@ -61,13 +61,18 @@ $controller
 	<?php echo Filter::getCsrf(); ?>
 
 	<h3>
-		<?php echo I18N::translate('Click %s to choose individual as head of family.', $headImg); ?>
+		<?php echo I18N::translate('Head of household'); ?>
 	</h3>
 
 	<div class="census-assistant-header optionbox">
 		<dl>
-			<dt class="label"><?php echo I18N::translate('Head of household'); ?></dt>
-			<dd class="field"><?php echo $head->getFullName(); ?></dd>
+			<dt class="label">
+				<?php echo $headImg; ?>
+				<?php echo I18N::translate('Head of household'); ?>
+			</dt>
+			<dd class="field">
+				<?php echo $head->getFullName(); ?>
+			</dd>
 		</dl>
 		<?php echo $head->formatFirstMajorFact(WT_EVENTS_BIRT, 2); ?>
 		<?php echo $head->formatFirstMajorFact(WT_EVENTS_DEAT, 2); ?>
@@ -101,7 +106,9 @@ $controller
 							<td class="facts_value" colspan="2">
 								<input id=personid type="text" size="20">
 								<button type="button" onclick="findindi()">
-									<label for="personid"><?php echo I18N::translate('Search'); ?></label>
+									<label for="personid">
+										<?php echo /* I18N: A button label. */ I18N::translate('search'); ?>
+									</label>
 								</button>
 							</td>
 						</tr>
@@ -110,7 +117,7 @@ $controller
 							</td>
 							<td class="facts_value" colspan="2">
 								<button type="button" onclick="return appendCensusRow('<?php echo Filter::escapeHtml(CensusAssistantModule::censusTableEmptyRow($census)); ?>');">
-									<?php echo I18N::translate('Add/insert a blank row'); ?>
+									<?php echo I18N::translate('Add a blank row'); ?>
 								</button>
 							</td>
 						</tr>

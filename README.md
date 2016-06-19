@@ -388,7 +388,7 @@ The requirements are:
   unique email address).
 * The wizard transfer process overwrites the username and password you may have
   entered in setting up the initial admin account. The main administration user
-  name and password in **webtrees** will be identical to the admin user name and
+  name and password in **webtrees** will be identical to the admin username and
   password from PhpGedView after running the wizard. Once done, you can change it back
   if desired.
 
