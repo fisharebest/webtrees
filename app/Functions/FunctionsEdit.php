@@ -1059,6 +1059,7 @@ class FunctionsEdit {
 			// 3 PAGE
 			self::addSimpleTag(($level + 1) . ' PAGE');
 			// 3 DATA
+			self::addSimpleTag(($level + 1) . ' DATA');
 			// 4 TEXT
 			self::addSimpleTag(($level + 2) . ' TEXT');
 			if ($WT_TREE->getPreference('FULL_SOURCES')) {
