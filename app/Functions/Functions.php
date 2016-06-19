@@ -238,7 +238,7 @@ class Functions {
 	 */
 	public static function getCloseRelationshipName(Individual $person1, Individual $person2) {
 		if ($person1 === $person2) {
-			$label = '<i class="icon-selected" title="' . I18N::translate('self') . '"></i>';
+			$label = '<i class="icon-selected"></i> ' . I18N::translate('self');
 		} else {
 			$label = self::getRelationshipName(self::getRelationship($person1, $person2));
 		}
@@ -429,9 +429,9 @@ class Functions {
 		// complexities of other languages.
 
 		return self::getRelationshipNameFromPath(
-			implode('', array_slice($nodes['relations'], 1)),
-			$nodes['path'][0],
-			$nodes['path'][count($nodes['path']) - 1]
+			implode('', $path),
+			$person1,
+			$person2
 		);
 	}
 
