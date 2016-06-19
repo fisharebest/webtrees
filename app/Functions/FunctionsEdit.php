@@ -1568,15 +1568,14 @@ class FunctionsEdit {
 	/**
 	 * Create a form to edit a Fact object.
 	 *
-	 * @param GedcomRecord $record
 	 * @param Fact $fact
 	 *
 	 * @return string
 	 */
-	public static function createEditForm(GedcomRecord $record, Fact $fact) {
-		global $tags, $WT_TREE;
+	public static function createEditForm(Fact $fact) {
+		global $tags;
 
-		$pid = $record->getXref();
+		$record = $fact->getParent();
 
 		$tags     = array();
 		$gedlines = explode("\n", $fact->getGedcom());
@@ -1643,23 +1642,19 @@ class FunctionsEdit {
 
 			if ($type !== 'CONT') {
 				$tags[]    = $type;
-				$person    = Individual::getInstance($pid, $WT_TREE);
 				$subrecord = $level . ' ' . $type . ' ' . $text;
 				if ($inSource && $type === 'DATE') {
-					self::addSimpleTag($subrecord, '', GedcomTag::getLabel($label, $person));
+					self::addSimpleTag($subrecord, '', GedcomTag::getLabel($label, $record));
 				} elseif (!$inSource && $type === 'DATE') {
-					self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $person));
+					self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $record));
 					if ($level === '2') {
 						// We already have a date - no need to add one.
 						$add_date = false;
 					}
 				} elseif ($type === 'STAT') {
-					self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $person));
-				} elseif ($level0type === 'REPO') {
-					$repo = Repository::getInstance($pid, $WT_TREE);
-					self::addSimpleTag($subrecord, $level0type, GedcomTag::getLabel($label, $repo));
+					self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $record));
 				} else {
-					self::addSimpleTag($subrecord, $level0type, GedcomTag::getLabel($label, $person));
+					self::addSimpleTag($subrecord, $level0type, GedcomTag::getLabel($label, $record));
 				}
 			}
 
