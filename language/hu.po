@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-18 18:38+0000\n"
+"PO-Revision-Date: 2016-06-19 12:26+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -1042,7 +1042,7 @@ msgstr "Személyes események idővonala."
 
 #: admin_users.php:398
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "A felhasználó nem tud bejelentkezni amíg az „E-mail cím ellenőrizve” és a „Rendszergazda jóváhagyta” nincs kiválasztva."
+msgstr "A felhasználó nem tud bejelentkezni, amíg az „E-mail cím ellenőrizve” és a „Rendszergazda jóváhagyta” nincs kijelölve."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1120
@@ -2075,7 +2075,7 @@ msgstr "Ezen beállítások alkalmazása az új családfákra"
 #: admin_users.php:100
 #, php-format
 msgid "Approval of account at %s"
-msgstr "Felhasználó jóváhagyása itt: %s"
+msgstr "Felhasználói fiók (%s) jóváhagyása"
 
 #: admin_users.php:875
 msgid "Approved"
@@ -2151,7 +2151,7 @@ msgstr "Biztos, hogy el akarja utasítani a családfa összes változtatását?"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
-msgstr "Biztos, hogy törli erre a médiaobjektumra mutató hivatkozásokat?"
+msgstr "Biztos, hogy törli az erre a médiaobjektumra mutató hivatkozásokat?"
 
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
@@ -2313,7 +2313,7 @@ msgstr "Utolsó módosító"
 
 #: admin_users.php:442
 msgid "Automatically approve changes made by this user"
-msgstr "E felhasználó változtatásainak automatikus elfogadása"
+msgstr "E felhasználó változtatásainak automatikus jóváhagyása"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:737
@@ -14218,7 +14218,7 @@ msgstr "E GEDCOM-fájl karakterkódolása %1$s. Feltételezés szerint ennek jel
 
 #: login.php:97
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr "A fiók jóváhagyása még nem történt meg. Kis türelmet kérünk, amíg egy rendszergazda elfogadja."
+msgstr "A fiók jóváhagyása még nem történt meg. Kérjük várjon, amíg egy rendszergazda  jóváhagyja."
 
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
@@ -14677,7 +14677,7 @@ msgstr "Ezt az adattárat szerkesztették. Ellenőrizze a változtatásokat, ame
 
 #: admin_users.php:553
 msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
-msgstr "Ez a szerepkör magában foglalja a szerkesztő teljes jogkörét, valamint más felhasználók által végrehajtott változtatások helybenhagyásának/elvetésének jogát."
+msgstr "Ez a szerepkör magában foglalja a szerkesztő teljes jogkörét, valamint más felhasználók által végrehajtott változtatások jóváhagyásának/elutasításának jogát."
 
 #: admin_users.php:567
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
@@ -15289,11 +15289,11 @@ msgstr "Tisztázatlan: elégtelen adat"
 
 #: edit_changes.php:181 edit_changes.php:201
 msgid "Undo"
-msgstr "Visszavonás"
+msgstr "Elutasítás"
 
 #: edit_changes.php:211 edit_changes.php:231
 msgid "Undo all changes"
-msgstr "Az összes változtatás visszavonása"
+msgstr "Az összes változtatás elutasítása"
 
 #: admin_trees_config.php:1823
 msgid "Unique family facts"
@@ -15863,7 +15863,7 @@ msgid "Welcome text on sign-in page"
 msgstr "A bejelentkező oldal üdvözlőszövege"
 
 msgid "Welcome to this genealogy website"
-msgstr "Üdvözöljük ezen a származástani webhelyen"
+msgstr "Üdvözöljük ezen a származástani webhelyen!"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6931
@@ -15882,7 +15882,7 @@ msgstr "Bejegyzés módosításakor a felhasználó és az időpont tárolódik.
 
 #: admin_users.php:389
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Amikor egy látogató felhasználói fiókot igényel, egy egy ellenőrző hivatkozást tartalmazó levelet kap az e-mail címére. Amikor követi ezt a hivatkozást, tudjuk, hogy az e-mail címe helyes, és az „E-mail cím ellenőrizve” opció bejelölése automatikusan megtörténik."
+msgstr "Amikor egy látogató felhasználói fiókot igényel, egy ellenőrző hivatkozást tartalmazó levelet kap az e-mail címére. Amikor követi ezt a hivatkozást, tudjuk, hogy az e-mail címe helyes, és az „E-mail cím ellenőrizve” opció bejelölése automatikusan megtörténik."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -16295,7 +16295,7 @@ msgstr "A szerver rendszergazdája ismerteti majd Önnel a kapcsolat részleteit
 
 #: app/Module/BatchUpdateModule.php:228
 msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
-msgstr "Az Ön felhasználói fiókjában nem engedélyezett a „változtatások automatikus elfogadása”. Egyszerre csak egy bejegyzést módosíthat."
+msgstr "Az Ön felhasználói fiókjában nem engedélyezett a „változtatások automatikus jóváhagyása”. Egyszerre csak egy bejegyzést módosíthat."
 
 #: admin.php:556
 #, php-format
