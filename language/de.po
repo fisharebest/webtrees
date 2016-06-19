@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-11 21:48+0100\n"
-"PO-Revision-Date: 2016-06-19 15:44+0000\n"
+"PO-Revision-Date: 2016-06-19 15:57+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -5511,7 +5511,7 @@ msgstr "GEDCOM Rohdaten bearbeiten"
 #: app/Controller/RepositoryController.php:43
 #: app/Controller/RepositoryController.php:48
 msgid "Edit the repository"
-msgstr "Lagerstätte bearbeiten"
+msgstr "Archiv bearbeiten"
 
 #: app/Functions/FunctionsEdit.php:449 edit_interface.php:1444
 #: edit_interface.php:1490
@@ -6046,7 +6046,7 @@ msgstr "Familie"
 
 #: admin_trees_config.php:775
 msgid "Family ID prefix"
-msgstr "Familien ID-Nummer Präfix"
+msgstr "Präfix der Familiennummer"
 
 #. I18N: gedcom tag FAMC
 #: app/GedcomTag.php:448
@@ -6382,7 +6382,7 @@ msgstr "Finde einen Ort"
 
 #: app/Functions/FunctionsPrint.php:776 find.php:63
 msgid "Find a repository"
-msgstr "Finde ein Verzeichnis"
+msgstr "Finde ein Archiv"
 
 #: app/Functions/FunctionsPrint.php:765 find.php:66
 msgid "Find a shared note"
@@ -7590,7 +7590,7 @@ msgstr "Person 2"
 
 #: admin_trees_config.php:758
 msgid "Individual ID prefix"
-msgstr "Personen ID-Nummer Präfix"
+msgstr "Präfix der Personennummer"
 
 #: statistics.php:535
 msgid "Individual distribution"
@@ -8998,7 +8998,7 @@ msgstr "Multimedia"
 
 #: admin_trees_config.php:826
 msgid "Media ID prefix"
-msgstr "Medien ID-Nummer Präfix"
+msgstr "Präfix der Mediennummer"
 
 #. I18N: Label for search field
 #: find.php:184
@@ -10102,7 +10102,7 @@ msgstr "Notiz"
 
 #: admin_trees_config.php:843
 msgid "Note ID prefix"
-msgstr "Notiz ID-Nummer Präfix"
+msgstr "Präfix der Notiznummer"
 
 #: help_text.php:261
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -11647,7 +11647,7 @@ msgstr "Archiv"
 
 #: admin_trees_config.php:809
 msgid "Repository ID prefix"
-msgstr "Archiv ID-Nummer Präfix"
+msgstr "Präfix der Archivnummer"
 
 #. I18N: Label for search field
 #: find.php:223
@@ -11656,7 +11656,7 @@ msgstr "Archiv enthält"
 
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
-msgstr "Name des Aufbewahrungsortes"
+msgstr "Name des Archives"
 
 #: app/Module/LoginBlockModule.php:98 login.php:219
 msgid "Request a new password"
@@ -13120,7 +13120,7 @@ msgstr "Quelle"
 
 #: admin_trees_config.php:792
 msgid "Source ID prefix"
-msgstr "Quellen ID-Nummer Präfix"
+msgstr "Präfix der Quellennummer"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: admin_trees_config.php:2168
@@ -13414,7 +13414,7 @@ msgstr "Nachnamenbehandlung"
 #. I18N: gedcom tag SPFX
 #: app/GedcomTag.php:792
 msgid "Surname prefix"
-msgstr "Nachnamens-Präfix"
+msgstr "Nachnamen-Präfix"
 
 #: admin_trees_config.php:2150
 msgid "Surname tradition"
@@ -13909,7 +13909,7 @@ msgstr "Die gebräuchlichsten Tatsachen und Ereignisse für Personen werden geso
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2080
 msgid "The most common repository facts are listed separately, so that they can be added more easily."
-msgstr "Die gebräuchlichsten Tatsachen und Ereignisse für Aufbewahrungsorte werden gesondert aufgeführt, damit sie einfacher hinzugefügt werden können."
+msgstr "Die gebräuchlichsten Tatsachen und Ereignisse für Archive werden gesondert aufgeführt, damit sie einfacher hinzugefügt werden können."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1991
