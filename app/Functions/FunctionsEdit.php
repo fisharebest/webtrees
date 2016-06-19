@@ -1586,14 +1586,14 @@ class FunctionsEdit {
 		$level   = $glevel;
 
 		$type       = $fact->getTag();
-		$parent     = $fact->getParent();
-		$level0type = $parent::RECORD_TYPE;
+		$level0type = $record::RECORD_TYPE;
 		$level1type = $type;
 
 		$i           = $linenum;
 		$inSource    = false;
 		$levelSource = 0;
 		$add_date    = true;
+
 		// List of tags we would expect at the next level
 		// NB add_missing_subtags() already takes care of the simple cases
 		// where a level 1 tag is missing a level 2 tag. Here we only need to
@@ -1607,6 +1607,12 @@ class FunctionsEdit {
 		if ($record->getTree()->getPreference('FULL_SOURCES')) {
 			$expected_subtags['SOUR'][] = 'QUAY';
 			$expected_subtags['DATA'][] = 'DATE';
+		}
+		if (GedcomCodeTemp::isTagLDS($level1type)) {
+			$expected_subtags['STAT'] = array('DATE');
+		}
+		if (in_array($level1type, Config::dateAndTime())) {
+			$expected_subtags['DATE'] = array('TIME'); // TIME is NOT a valid 5.5.1 tag
 		}
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $record->getTree()->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 			$expected_subtags['PLAC'] = array_merge($match[1], $expected_subtags['PLAC']);
@@ -1660,7 +1666,7 @@ class FunctionsEdit {
 
 			// Get a list of tags present at the next level
 			$subtags = array();
-			for ($ii = $i + 1; isset($gedlines[$ii]) && preg_match('/^\s*(\d+)\s+(\S+)/', $gedlines[$ii], $mm) && $mm[1] > $level; ++$ii) {
+			for ($ii = $i + 1; isset($gedlines[$ii]) && preg_match('/^(\d+) (\S+)/', $gedlines[$ii], $mm) && $mm[1] > $level; ++$ii) {
 				if ($mm[1] == $level + 1) {
 					$subtags[] = $mm[2];
 				}
@@ -1678,14 +1684,6 @@ class FunctionsEdit {
 						}
 					}
 				}
-			}
-
-			// Awkward special cases
-			if ($level == 2 && $type === 'DATE' && in_array($level1type, Config::dateAndTime()) && !in_array('TIME', $subtags)) {
-				self::addSimpleTag('3 TIME'); // TIME is NOT a valid 5.5.1 tag
-			}
-			if ($level == 2 && $type === 'STAT' && GedcomCodeTemp::isTagLDS($level1type) && !in_array('DATE', $subtags)) {
-				self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('STAT:DATE'));
 			}
 
 			$i++;
