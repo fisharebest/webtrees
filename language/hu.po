@@ -6775,7 +6775,7 @@ msgid "Geographic data"
 msgstr "Földrajzi adatok"
 
 #: statistics.php:595
-msgid "Geographical area"
+msgid "Geographic area"
 msgstr "Földrajzi terület"
 
 #. I18N: Name of a country or state

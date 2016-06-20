@@ -6766,7 +6766,7 @@ msgid "Geographic data"
 msgstr "Geografiske data"
 
 #: statistics.php:595
-msgid "Geographical area"
+msgid "Geographic area"
 msgstr "Geografisk område"
 
 #. I18N: Name of a country or state

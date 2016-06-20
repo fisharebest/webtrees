@@ -592,7 +592,7 @@ if (!$ajax) {
 		echo GedcomTag::getLabel('SURN'), FunctionsPrint::helpLink('google_chart_surname'), '<br><input data-autocomplete-type="SURN" type="text" name="SURN" size="20">';
 		echo '<br>
 			</div>';
-		echo I18N::translate('Geographical area');
+		echo I18N::translate('Geographic area');
 		echo '<br><select id="chart_shows" name="chart_shows">
 				<option value="world" selected>', I18N::translate('World'), '</option>
 				<option value="europe">', I18N::translate('Europe'), '</option>

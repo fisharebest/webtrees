@@ -6755,7 +6755,7 @@ msgid "Geographic data"
 msgstr "भौगोलिक माहिती"
 
 #: statistics.php:595
-msgid "Geographical area"
+msgid "Geographic area"
 msgstr "भौगोलिक क्षेत्र"
 
 #. I18N: Name of a country or state
