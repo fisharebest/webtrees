@@ -1178,7 +1178,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				infowindow.close();
 				infowindow.setContent(mhtml);
 				infowindow.open(pm_map, marker);
-				var el = jQuery("#link_" + marker.id);
+				var el = jQuery("#gm-marker_" + marker.id);
 				if(el.hasClass("person_box")) {
 					el
 						.removeClass("person_box")
@@ -1194,7 +1194,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			});
 			// save the info we need to use later for the side bar
 			gmarkers[index] = marker;
-			gm_ancestors_html += "<div id=\"link_" + index++ + "\" class=\"gm-ancestor\">" + html +"</div>";
+			gm_ancestors_html += "<div id=\"gm-marker_" + index++ + "\" class=\"gm-ancestor\">" + html +"</div>";
 
 			return marker;
 		};
@@ -1252,20 +1252,20 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				$relationship = FunctionsCharts::getSosaName($i + 1);
 
-				// add thumbnail image
+				// get thumbnail image
 				if ($person->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 					$image = $person->displayImage();
 				} else {
 					$image = '';
 				}
-				// end of add image
-				$event = $image;
-				$event .= '<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png" width="10" height="10"> ';
-				$event .= '<strong>' . $relationship . '</strong>';//</a>';
+
+				$event = '<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png" width="10" height="10"> ';
+				$event .= '<strong>' . $relationship . '</strong>';
 
 				$birth = $person->getFirstFact('BIRT');
-				$data  = Filter::escapeJs($event . ' <span><a href="' . $person->getHtmlUrl() . '">' . $name . '</a></span>');
+				$data  = Filter::escapeJs($image . '<div class="gm-ancestor-link">' . $event . ' <span><a href="' . $person->getHtmlUrl() . '">' . $name . '</a></span>');
 				$data .= $birth ? Filter::escapeJs($birth->summary()) : '';
+				$data .= '</div>';
 
 				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
 				if ($latlongval[$i]) {
@@ -1301,7 +1301,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						}
 
 						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
-						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","<div class=\"gm-ancestor-link\">' . $data . '</div>", "';
+						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","' . $data . '", "';
 						$js .= '<div class=\"gm-info-window\">' . $data . '</div>", "' . $marker_number . '");';
 						// Construct the polygon lines
 						$to_child = (intval(($i - 1) / 2)); // Draw a line from parent to child
@@ -1342,19 +1342,19 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		pm_map.setCenter(bounds.getCenter());
 		// Close the sidebar highlight when the infowindow is closed
 		google.maps.event.addListener(infowindow, "closeclick", function() {
-			jQuery("#link_" + lastlinkid).toggleClass("gm-ancestor-visited person_box");
+			jQuery("#gm-marker_" + lastlinkid).toggleClass("gm-ancestor-visited person_box");
 			lastlinkid = null;
 		});
 		// put the assembled gm_ancestors_html contents into the gm-ancestors div
 		document.querySelector(".gm-ancestors").innerHTML = gm_ancestors_html;
 
 		jQuery(".gm-ancestor-link")
-			.on("click", ".gallery", function(e) {
-				//e.stopPropagation();
-			})' .
-			'.on("click", function(e) {
+			.on("click", "a", function(e) {
+				e.stopPropagation();
+			})
+			.on("click", function(e) {
 				if (lastlinkid != null) {
-					jQuery("#link_" + lastlinkid).toggleClass("person_box gm-ancestor-visited");
+					jQuery("#gm-marker_" + lastlinkid).toggleClass("person_box gm-ancestor-visited");
 				}
 				var el = jQuery(this).closest(".gm-ancestor");
 				var target = el.attr("id").split("_").pop();
