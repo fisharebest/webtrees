@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-20 06:06+0000\n"
+"PO-Revision-Date: 2016-06-20 17:16+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -784,7 +784,7 @@ msgstr "Eine Datei auf Ihrem Computer"
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
 msgid "A greeting message and useful links for a user."
-msgstr "Willkommensgruß und nützliche Verlinkungen für den Benutzer."
+msgstr "Eine Begrüßungsnachricht und nützliche Verknüpfungen für den Benutzer."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:35
@@ -1096,7 +1096,7 @@ msgstr "ALPHABET_upper=AÄBCDEFGHIJKLMNOÖPQRSßTUÜVWXYZ"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:313
 msgid "API key"
-msgstr "API Schlüssel"
+msgstr "API-Schlüssel"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:77
@@ -1413,7 +1413,7 @@ msgstr "Personen hinzufügen"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:158
 msgid "Add links"
-msgstr "Verbindungen hinzufügen"
+msgstr "Verknüpfungen hinzufügen"
 
 #: app/Module/RelativesTabModule.php:226
 msgid "Add marriage details"
@@ -3941,16 +3941,6 @@ msgstr "Passwort bestätigen"
 msgid "Confirmation"
 msgstr "Konfirmation"
 
-#. I18N: Name of a country or state
-#: app/Stats.php:6727
-msgid "Republic of the Congo"
-msgstr "Republik Kongo"
-
-#. I18N: Name of a country or state
-#: app/Stats.php:6726
-msgid "Democratic Republic of the Congo"
-msgstr "Demokr. Republik Kongo (ehem. Zaire)"
-
 #: setup.php:272
 msgid "Connection to database server"
 msgstr "Verbindung zum Datenbank Server"
@@ -5039,6 +5029,11 @@ msgstr "Lösche deinen Account"
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
 msgstr "Das Löschen der Familie wird jede Verbindung der Personen zueinander lösen. Alle ehemalige Familienmitglieder bleiben als freistehende Personen ohne Familienverbund erhalten. Möchten Sie diese Familie wirklich löschen?"
+
+#. I18N: Name of a country or state
+#: app/Stats.php:6726
+msgid "Democratic Republic of the Congo"
+msgstr "Demokratische Republik Kongo"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6742
@@ -6761,6 +6756,10 @@ msgstr "Generationen"
 msgid "Generations of ancestors"
 msgstr "Generationen der Vorfahren"
 
+#: statistics.php:595
+msgid "Geographic area"
+msgstr "Geographisches Gebiet"
+
 #: app/Module/GoogleMapsModule.php:179 app/Module/GoogleMapsModule.php:295
 #: app/Module/GoogleMapsModule.php:853 app/Module/GoogleMapsModule.php:1403
 #: app/Module/GoogleMapsModule.php:1526 app/Module/GoogleMapsModule.php:2408
@@ -6768,10 +6767,6 @@ msgstr "Generationen der Vorfahren"
 #: app/Module/GoogleMapsModule.php:3632 app/Module/GoogleMapsModule.php:3642
 msgid "Geographic data"
 msgstr "Geografische Daten"
-
-#: statistics.php:595
-msgid "Geographic area"
-msgstr "Geographisches Gebiet"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6763
@@ -6810,7 +6805,7 @@ msgstr "Germinal"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:319
 msgid "Get an API key from Google."
-msgstr "Von Google einen API Schlüssel erhalten."
+msgstr "Von Google einen API-Schlüssel holen."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6765
@@ -8336,7 +8331,7 @@ msgstr "ID der fremden Datenbank"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:97
 msgid "Links"
-msgstr "Verbindungen"
+msgstr "Verknüpfungen"
 
 #: ancestry.php:65 descendancy.php:59
 msgid "List"
@@ -8550,7 +8545,7 @@ msgstr "Medien verwalten"
 #: admin_media.php:535 app/Controller/MediaController.php:49
 #: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
 msgid "Manage the links"
-msgstr "Verbindungen bearbeiten"
+msgstr "Verknüpfungen verwalten"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:558
@@ -11522,7 +11517,7 @@ msgstr "Löschen"
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:30
 msgid "Remove duplicate links"
-msgstr "Doppelte Verbindungen löschen"
+msgstr "Doppelte Verknüpfungen entfermen"
 
 #: app/Module/GoogleMapsModule.php:568 app/Module/GoogleMapsModule.php:571
 #: app/Module/GoogleMapsModule.php:574 app/Module/GoogleMapsModule.php:3534
@@ -11613,6 +11608,11 @@ msgstr "Archiv enthält"
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
 msgstr "Name des Archives"
+
+#. I18N: Name of a country or state
+#: app/Stats.php:6727
+msgid "Republic of the Congo"
+msgstr "Republik Kongo"
 
 #: app/Module/LoginBlockModule.php:99 login.php:221
 msgid "Request a new password"
@@ -12245,7 +12245,7 @@ msgstr "Setzt den Status auf \"bestätigt\"."
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1624
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Bei der Auswahl <b>Ja</b> wird ein Link auf den Seiten von Personen, Quellen und Familien eingefügt, der ein neues Fenster mit den jeweiligen Rohdaten aus der GEDCOM-Datei öffnet."
+msgstr "Bei der Auswahl <b>Ja</b> wird eine Verknüpfung auf den Seiten von Personen, Quellen und Familien eingefügt, der ein neues Fenster mit den jeweiligen Rohdaten aus der GEDCOM-Datei öffnet."
 
 #: setup.php:90
 msgid "Setup wizard for webtrees"
@@ -12444,7 +12444,7 @@ msgstr "Zeigen"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1033
 msgid "Show a download link in the media viewer"
-msgstr "Zeige Download-Links im Medienbetrachter"
+msgstr "Eine Download-Verknüpfung im Medienbetrachter anzeigen"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:500
@@ -13388,7 +13388,7 @@ msgstr "Suva, Fiji"
 #. I18N: Name of a country or state
 #: app/Stats.php:6885
 msgid "Svalbard and Jan Mayen"
-msgstr "Svalbard und Jan Mayeninseln"
+msgstr "Spitzbergen und Jan Mayen"
 
 #. I18N: Reverse the order of two individuals
 #: relationship.php:98
@@ -14249,7 +14249,7 @@ msgstr "Dieser Stammbaum wurde zuletzt am %s aktualisiert."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-msgstr "Diese Mediendatei ist mit einem anderen Stammbaum auf diesem Server verbunden. Sie kann nicht gelöscht, verschoben oder umbenannt werden, bis diese Verbindungen gelöscht wurden."
+msgstr "Diese Mediendatei ist mit einem anderen Stammbaum auf diesem Server verbunden. Sie kann nicht gelöscht, verschoben oder umbenannt werden, bis diese Verknüpfung gelöscht wurden."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:179
@@ -14878,7 +14878,7 @@ msgstr "Um diesen Text in eine andere Sprache zu übersetzen, müssen Sie zu die
 
 #: app/Module/SiteMapModule.php:331
 msgid "To tell search engines that sitemaps are available, you can use the following links."
-msgstr "Um Suchmaschinen über das Vorhandensein von Sitemaps zu informieren, können folgende Links verwendet werden."
+msgstr "Um Suchmaschinen über das Vorhandensein von Sitemaps zu informieren, können folgende Verknüpfung verwendet werden."
 
 #: app/Module/SiteMapModule.php:328
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
@@ -15160,7 +15160,7 @@ msgstr "Art der Tatsache"
 
 #: app/Module/GoogleMapsModule.php:481
 msgid "Type of place markers in the place hierarchy"
-msgstr "Art des Markierung in der Hierarchie der Orte"
+msgstr "Art des Markierung"
 
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:355 login.php:471
@@ -15366,7 +15366,7 @@ msgstr "Uruguay"
 
 #: app/Module/GoogleMapsModule.php:448
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr "Google Maps™ für die Hierarchie der Orte verwenden"
+msgstr "Google Maps™ verwenden"
 
 #: admin_site_config.php:116
 msgid "Use PHP mail to send messages"
@@ -15698,7 +15698,7 @@ msgstr "Wales"
 #. I18N: Name of a country or state
 #: app/Stats.php:6932
 msgid "Wallis and Futuna"
-msgstr "Wallis und Futunainseln"
+msgstr "Wallis und Futuna"
 
 #: app/GedcomCode/GedcomCodeRela.php:263
 msgid "Ward"
@@ -15989,7 +15989,7 @@ msgstr "Sie selbst (oder jemand der sich für Sie ausgibt) hat am %1$s ein Benut
 
 #: login.php:291 message.php:57
 msgid "You are not allowed to send messages that contain external links."
-msgstr "Sie dürfen keine Mitteilungen versenden, die externe Adressen enthalten."
+msgstr "Sie dürfen keine Mitteilungen versenden, die externe Verknüpfungen enthalten."
 
 #: app/Module/LoginBlockModule.php:64
 #, php-format
@@ -16084,7 +16084,7 @@ msgstr "Sie können hier einen URL eingeben, der mit „http://“ beginnt."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:445
 msgid "You may use HTML to format the answer and to add links to other websites."
-msgstr "HTML kann benutzt werden, um die Anwort zu formatieren und Links auf andere Webseiten hinzuzufügen."
+msgstr "HTML kann benutzt werden, um die Anwort zu formatieren und Verknüpfungen auf andere Webseiten hinzuzufügen."
 
 #: admin_site_config.php:435
 msgid "You must also enable “less secure applications” in your Google account."
