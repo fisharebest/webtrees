@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-20 03:37+0000\n"
+"PO-Revision-Date: 2016-06-20 12:15+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -3946,16 +3946,6 @@ msgstr "A jelszó megerősítése"
 msgid "Confirmation"
 msgstr "Bérmálás/Konfirmáció"
 
-#. I18N: Name of a country or state
-#: app/Stats.php:6727
-msgid "Republic of the Congo"
-msgstr "Kongó (Brazzaville)"
-
-#. I18N: Name of a country or state
-#: app/Stats.php:6726
-msgid "Democratic Republic of the Congo"
-msgstr "Kongói Demokratikus Köztársaság"
-
 #: setup.php:272
 msgid "Connection to database server"
 msgstr "Csatlakozás az adatbázisszerverhez"
@@ -5044,6 +5034,11 @@ msgstr "A felhasználói fiókja törlése"
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
 msgstr "A család törlése megszüntet minden kapcsolatot az egyes személyek között, de a személyeket meghagyja. Biztos benne, hogy törölni akarja ezt a családot?"
+
+#. I18N: Name of a country or state
+#: app/Stats.php:6726
+msgid "Democratic Republic of the Congo"
+msgstr "Kongói Demokratikus Köztársaság"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6742
@@ -6766,6 +6761,10 @@ msgstr "Nemzedékek"
 msgid "Generations of ancestors"
 msgstr "Ősök nemzedékei"
 
+#: statistics.php:595
+msgid "Geographic area"
+msgstr "Földrajzi terület"
+
 #: app/Module/GoogleMapsModule.php:179 app/Module/GoogleMapsModule.php:295
 #: app/Module/GoogleMapsModule.php:853 app/Module/GoogleMapsModule.php:1403
 #: app/Module/GoogleMapsModule.php:1526 app/Module/GoogleMapsModule.php:2408
@@ -6773,10 +6772,6 @@ msgstr "Ősök nemzedékei"
 #: app/Module/GoogleMapsModule.php:3632 app/Module/GoogleMapsModule.php:3642
 msgid "Geographic data"
 msgstr "Földrajzi adatok"
-
-#: statistics.php:595
-msgid "Geographic area"
-msgstr "Földrajzi terület"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6763
@@ -11619,6 +11614,11 @@ msgstr "Az adattár tartalmazza"
 msgid "Repository name"
 msgstr "Adattár neve"
 
+#. I18N: Name of a country or state
+#: app/Stats.php:6727
+msgid "Republic of the Congo"
+msgstr "Kongó (Brazzaville)"
+
 #: app/Module/LoginBlockModule.php:99 login.php:221
 msgid "Request a new password"
 msgstr "Új jelszó kérése"
@@ -14546,7 +14546,7 @@ msgstr "Ez a beállítás határozza meg, hogy az ősfa keskenyebb vagy szélese
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1038
 msgid "This option will make it easier for users to download images."
-msgstr "Ez a lehetőség megkönnyíti a felhasználóknak a képek letöltését."
+msgstr "Ez a beállítás megkönnyíti a felhasználóknak a képek letöltését."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:497
@@ -16003,7 +16003,7 @@ msgstr "%s néven jelentkezett be."
 
 #: login.php:169 login.php:172 login.php:175
 msgid "You can apply for an account using the link below."
-msgstr "Az alábbi hi&shy;vat&shy;ko&shy;zást használva kérhet egy fiókot."
+msgstr "Az alábbi hivatkozást használva kérhet egy fiókot."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
