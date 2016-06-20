@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-20 03:15+0000\n"
+"PO-Revision-Date: 2016-06-20 03:37+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -16003,7 +16003,7 @@ msgstr "%s néven jelentkezett be."
 
 #: login.php:169 login.php:172 login.php:175
 msgid "You can apply for an account using the link below."
-msgstr "Az alábbi hivatkozást használva kérhet egy fiókot."
+msgstr "Az alábbi hi&shy;vat&shy;ko&shy;zást használva kérhet egy fiókot."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -16130,7 +16130,7 @@ msgstr "Át kell számoznia az egyik családfa bejegyzéseit – mielőtt össze
 
 #: app/Module/ChartsBlockModule.php:139
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Ki kell válasszon egy személyt és ábratípust a blokkbeállításokban."
+msgstr "Ki kell válasszon egy személyt és ábratípust a blokkbeállításokban"
 
 #: admin_users.php:287
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
