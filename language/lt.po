@@ -3977,12 +3977,12 @@ msgstr "Patvirtinimas"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6727
-msgid "Congo (Brazzaville)"
+msgid "Republic of the Congo"
 msgstr "Kongas (Brazavilis)"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6726
-msgid "Congo (Kinshasa)"
+msgid "Democratic Republic of the Congo"
 msgstr "Kongas (Kinšasa)"
 
 #: setup.php:272
@@ -13415,7 +13415,7 @@ msgstr "Suva, Fidžis"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6885
-msgid "Svalbard and Jan Mayen Islands"
+msgid "Svalbard and Jan Mayen"
 msgstr "Svalbardas ir Jan Mayenas"
 
 #. I18N: Reverse the order of two individuals
@@ -15741,7 +15741,7 @@ msgstr "Velsas"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6932
-msgid "Wallis and Futuna Islands"
+msgid "Wallis and Futuna"
 msgstr "Volis ir Futūna"
 
 #: app/GedcomCode/GedcomCodeRela.php:263

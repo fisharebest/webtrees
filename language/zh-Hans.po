@@ -3918,12 +3918,12 @@ msgstr "确认"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6727
-msgid "Congo (Brazzaville)"
+msgid "Republic of the Congo"
 msgstr "刚果(布拉柴维尔)"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6726
-msgid "Congo (Kinshasa)"
+msgid "Democratic Republic of the Congo"
 msgstr "刚果(金沙萨)"
 
 #: setup.php:272
@@ -13354,7 +13354,7 @@ msgstr "斐济苏瓦"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6885
-msgid "Svalbard and Jan Mayen Islands"
+msgid "Svalbard and Jan Mayen"
 msgstr "斯瓦尔巴群岛和扬马延岛群岛"
 
 #. I18N: Reverse the order of two individuals
@@ -15673,7 +15673,7 @@ msgstr "威尔士"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6932
-msgid "Wallis and Futuna Islands"
+msgid "Wallis and Futuna"
 msgstr "沃利斯和富图纳群岛群岛"
 
 #: app/GedcomCode/GedcomCodeRela.php:263

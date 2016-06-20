@@ -3943,13 +3943,13 @@ msgstr "Confirmation"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6727
-msgid "Congo (Brazzaville)"
-msgstr "Congo (Brazzaville)"
+msgid "Republic of the Congo"
+msgstr "Republic of the Congo"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6726
-msgid "Congo (Kinshasa)"
-msgstr "Congo (Kinshasa)"
+msgid "Democratic Republic of the Congo"
+msgstr "Democratic Republic of the Congo"
 
 #: setup.php:272
 msgid "Connection to database server"
@@ -13387,8 +13387,8 @@ msgstr "Suva, Fiji"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6885
-msgid "Svalbard and Jan Mayen Islands"
-msgstr "Svalbard and Jan Mayen Islands"
+msgid "Svalbard and Jan Mayen"
+msgstr "Svalbard and Jan Mayen"
 
 #. I18N: Reverse the order of two individuals
 #: relationship.php:98
@@ -15697,8 +15697,8 @@ msgstr "Wales"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6932
-msgid "Wallis and Futuna Islands"
-msgstr "Wallis and Futuna Islands"
+msgid "Wallis and Futuna"
+msgstr "Wallis and Futuna"
 
 #: app/GedcomCode/GedcomCodeRela.php:263
 msgid "Ward"

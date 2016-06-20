@@ -3978,12 +3978,12 @@ msgstr "Bierzmowanie"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6727
-msgid "Congo (Brazzaville)"
+msgid "Republic of the Congo"
 msgstr "Republika Konga (Brazzaville)"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6726
-msgid "Congo (Kinshasa)"
+msgid "Democratic Republic of the Congo"
 msgstr "Demokratyczna Republika Konga (Kinszasa)"
 
 #: setup.php:272
@@ -13424,7 +13424,7 @@ msgstr "Suva, Fidżi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6885
-msgid "Svalbard and Jan Mayen Islands"
+msgid "Svalbard and Jan Mayen"
 msgstr "Wyspy Svalbard i Jan Mayen"
 
 #. I18N: Reverse the order of two individuals
@@ -15741,7 +15741,7 @@ msgstr "Walia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6932
-msgid "Wallis and Futuna Islands"
+msgid "Wallis and Futuna"
 msgstr "Wallis i Futuna"
 
 #: app/GedcomCode/GedcomCodeRela.php:263

@@ -3938,12 +3938,12 @@ msgstr "दुजोरा"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6727
-msgid "Congo (Brazzaville)"
+msgid "Republic of the Congo"
 msgstr "काँगो (ब्राझविले)"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6726
-msgid "Congo (Kinshasa)"
+msgid "Democratic Republic of the Congo"
 msgstr "काँगो (किंशासा)"
 
 #: setup.php:272
@@ -13366,7 +13366,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6885
-msgid "Svalbard and Jan Mayen Islands"
+msgid "Svalbard and Jan Mayen"
 msgstr ""
 
 #. I18N: Reverse the order of two individuals
@@ -15679,7 +15679,7 @@ msgstr "वेल्स"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6932
-msgid "Wallis and Futuna Islands"
+msgid "Wallis and Futuna"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:263
