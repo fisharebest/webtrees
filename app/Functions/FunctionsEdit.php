@@ -1618,13 +1618,13 @@ class FunctionsEdit {
 			$expected_subtags['PLAC'] = array_merge($match[1], $expected_subtags['PLAC']);
 		}
 
-		$stack = array(0 => $level0type);
+		$stack = array();
 		// Loop on existing tags :
 		while (true) {
 			// Keep track of our hierarchy, e.g. 1=>BIRT, 2=>PLAC, 3=>FONE
-			$stack[(int) $level] = $type;
+			$stack[$level] = $type;
 			// Merge them together, e.g. BIRT:PLAC:FONE
-			$label = implode(':', array_slice($stack, 1, $level));
+			$label = implode(':', array_slice($stack, 0, $level));
 
 			$text = '';
 			for ($j = 2; $j < count($fields); $j++) {
