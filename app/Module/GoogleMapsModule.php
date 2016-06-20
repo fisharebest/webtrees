@@ -1909,7 +1909,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$parent = $fact->getParent();
 				if ($parent instanceof Individual && $parent->getXref() !== $indi->getXref()) {
 					// Childs birth
-					$name   = '<a href="' . $parent->getHtmlUrl() . '"' . $parent->getFullName() . '</a>';
+					$name   = '<a href="' . $parent->getHtmlUrl() . '">' . $parent->getFullName() . '</a>';
 					$label  = strtr($parent->getSex(), array('F' => I18N::translate('Birth of a daughter'), 'M' => I18N::translate('Birth of a son'), 'U' => I18N::translate('Birth of a child')));
 					$class  = 'person_box' . strtr($parent->getSex(), array('F' => 'F', 'M' => '', 'U' => 'NN'));
 					$evtStr = '<div class="gm-event">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div>';
