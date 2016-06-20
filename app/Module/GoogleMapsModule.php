@@ -1912,7 +1912,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$evtStr = '<div class="gm-event">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div>';
 				} else {
 					$spouse = $parent instanceof Family ? $parent->getSpouse($indi) : null;
-					$name   = $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '';
+					$name   = $spouse ? '<a href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>' : '';
 					$label  = $fact->getLabel();
 					$class  = 'optionbox';
 					if ($fact->getValue() && $spouse) {
@@ -1946,7 +1946,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$places = array_keys($unique_places);
 			ob_start();
 			// Create the normal googlemap sidebar of events and children
-			echo '<div class="gm-events" class="optionbox"><table class="facts_table">';
+			echo '<div class="gm-events"><table class="facts_table">';
 
 			foreach ($events as $event) {
 				$index = array_search($event['placeid'], $places);
