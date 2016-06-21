@@ -182,6 +182,14 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
 		$pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
+		$charts = array(
+			'pedigree'    => I18N::translate('Pedigree'),
+			'descendants' => I18N::translate('Descendants'),
+			'hourglass'   => I18N::translate('Hourglass chart'),
+			'treenav'     => I18N::translate('Interactive tree'),
+		);
+		uasort($charts, 'Fisharebest\Webtrees\I18N::strcasecmp');
+
 		$controller
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('autocomplete();');
@@ -189,14 +197,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		<tr>
 			<td class="descriptionbox wrap width33"><?php echo I18N::translate('Chart type'); ?></td>
 			<td class="optionbox">
-				<?php echo FunctionsEdit::selectEditControl('type',
-				array(
-					'pedigree'    => I18N::translate('Pedigree'),
-					'descendants' => I18N::translate('Descendants'),
-					'hourglass'   => I18N::translate('Hourglass chart'),
-					'treenav'     => I18N::translate('Interactive tree'),
-				),
-				null, $type); ?>
+				<?php echo FunctionsEdit::selectEditControl('type', $charts, null, $type); ?>
 			</td>
 		</tr>
 		<tr>
