@@ -44,9 +44,9 @@ $hide_show = array(
 );
 
 $surname_list_styles = array(
-	'style1' => /* I18N: Layout option for lists of surnames */ I18N::translate('list'),
-	'style2' => /* I18N: Layout option for lists of surnames */ I18N::translate('table'),
-	'style3' => /* I18N: Layout option for lists of surnames */ I18N::translate('tag cloud'),
+	'style1' => /* I18N: Layout option for lists of names */ I18N::translate('list'),
+	'style2' => /* I18N: Layout option for lists of names */ I18N::translate('table'),
+	'style3' => /* I18N: Layout option for lists of names */ I18N::translate('tag cloud'),
 );
 
 $layouts = array(
