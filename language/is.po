@@ -793,7 +793,8 @@ msgstr "Kveðju skilaboð til gesta vefsíðunnar."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-msgid "A list of changes that need moderator approval, and email notifications."
+#, fuzzy
+msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "Listi yfir breytingar sem kalla á samþykki stjórnanda og tilkynningu með tölvupósti."
 
 #. I18N: Description of the “FAQ” module
@@ -2311,7 +2312,8 @@ msgid "Author of last change"
 msgstr "Höfundur síðustu breytingar"
 
 #: admin_users.php:442
-msgid "Automatically approve changes made by this user"
+#, fuzzy
+msgid "Automatically accept changes made by this user"
 msgstr "Sjálfvirkt samþykkja breytingar sem gerðar eru af þessum notanda"
 
 #. I18N: A configuration setting
@@ -9982,7 +9984,8 @@ msgid "Norfolk Island"
 msgstr "Norfolkeyja"
 
 #: admin_users.php:445
-msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
+#, fuzzy
+msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Venjulega, þurfa hvaða breytingar sem gerðar eru á fjölskyldutré að vera samþykktar af stjórnanda. Þessi valkostur leyfir notanda að gera breytingar án þess að þurfa samþykki stjórnanda."
 
 #. I18N: Name of a country or state
@@ -14172,7 +14175,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Þessi reikningur hefur ekki verið staðfestur. Vinsamlega athugaðu tölvupóstinn þinn varðandi staðfestingar skilaboði."
 
 #: app/Module/ReviewChangesModule.php:179
-msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
+#, fuzzy
+msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Þetta box mun sýna ritstjórum lista yfir færslur með breytingar sem bíða og þarfnast samþykkis stjórnanda. Það býr einnig til daglega tölvupósta til stjórnanda þegar breytingar sem bíða eru til staðar."
 
 #: admin_users.php:463 edituser.php:312
@@ -14621,7 +14625,8 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Þessari geymslu hefur verið breytt. Þú ættir að endurskoða breytingarnar og síðan %1$s eða %2$s þær."
 
 #: admin_users.php:553
-msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
+#, fuzzy
+msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Þetta hlutverk hefur öll réttindi ritstjórnarhlutverksins, ásamt réttindum til að samþykkja/hafna breytingum sem gerðar eru af öðrum notendum."
 
 #: admin_users.php:567
@@ -14629,7 +14634,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Þetta hlutverk hefur öll réttindi stjórnendahlutverks í öllum fjölskyldutré, ásamt réttindum til að breyta stillingum/uppsetningum á vefsíðu, notendum og einingum."
 
 #: admin_users.php:547
-msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#, fuzzy
+msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "Þetta hlutverk hefur öll réttindi meðlimahlutverksins, ásamt réttindum til að bæta við/breyta/eyða gögnum. Allar breytingar þurfa samþykki stjórnanda, nema notandinn sé með valkostinn „jálfvirkt samþykkja breytingar“ virkann."
 
 #: admin_users.php:561
@@ -16242,7 +16248,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Kerfisstjórinn fyrir vefþjóninn þinn mun útvega þér upplýsingar um tenginguna."
 
 #: app/Module/BatchUpdateModule.php:228
-msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
+#, fuzzy
+msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Þinn notendareikningur er ekki með aðgerðina „samþykkja sjálfvirkt breytingar“ virkjaða. Þú getur aðeins breytt einni færslu í einu."
 
 #: admin.php:556

@@ -765,7 +765,8 @@ msgstr "მისასალმებელი გზავნილი სა�
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-msgid "A list of changes that need moderator approval, and email notifications."
+#, fuzzy
+msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "Список изменений, ожидающие проверку модератора и уведомления по электронной почте."
 
 #. I18N: Description of the “FAQ” module
@@ -2282,7 +2283,8 @@ msgid "Author of last change"
 msgstr "ბოლო ცვლილებების ავტორი"
 
 #: admin_users.php:442
-msgid "Automatically approve changes made by this user"
+#, fuzzy
+msgid "Automatically accept changes made by this user"
 msgstr "Автоматически принимать изменения сделанные этим пользователем"
 
 #. I18N: A configuration setting
@@ -9947,7 +9949,8 @@ msgid "Norfolk Island"
 msgstr "კუკის კუნძულები"
 
 #: admin_users.php:445
-msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
+#, fuzzy
+msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr ""
 
 #. I18N: Name of a country or state
@@ -14129,7 +14132,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr ""
 
 #: app/Module/ReviewChangesModule.php:179
-msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
+#, fuzzy
+msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
 
 #: admin_users.php:463 edituser.php:312
@@ -14575,7 +14579,8 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Этот источник был редактирован. Вы должны просмотреть и %1$s или %2$s изменения."
 
 #: admin_users.php:553
-msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
+#, fuzzy
+msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Этот пользователь имеет все права Редактора и дополнительно права принимать/отклонять изменения других пользователей."
 
 #: admin_users.php:567
@@ -14583,7 +14588,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Этот пользователь имеет все права Редактора и дополнительно права принимать/отклонять изменения других пользователей."
 
 #: admin_users.php:547
-msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#, fuzzy
+msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr ""
 
 #: admin_users.php:561
@@ -16190,7 +16196,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr ""
 
 #: app/Module/BatchUpdateModule.php:228
-msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
+#, fuzzy
+msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr ""
 
 #: admin.php:556

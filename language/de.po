@@ -793,7 +793,8 @@ msgstr "Eine Begrüßungsnachricht für Besucher der Seite."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-msgid "A list of changes that need moderator approval, and email notifications."
+#, fuzzy
+msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "Eine Liste der Änderungen, die die Zustimmung des Moderators brauchen sowie E-Mail-Benachrichtigungen."
 
 #. I18N: Description of the “FAQ” module
@@ -2311,7 +2312,8 @@ msgid "Author of last change"
 msgstr "Autor der letzten Änderung"
 
 #: admin_users.php:442
-msgid "Automatically approve changes made by this user"
+#, fuzzy
+msgid "Automatically accept changes made by this user"
 msgstr "Durch diesen Benutzer vorgenommene Änderungen automatisch genehmigen"
 
 #. I18N: A configuration setting
@@ -9987,7 +9989,8 @@ msgid "Norfolk Island"
 msgstr "Norfolkinsel"
 
 #: admin_users.php:445
-msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
+#, fuzzy
+msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Normalerweise müssen alle Änderungen am Stammbaum von einem Moderator bestätigt werden. Diese Option erlaubt es einem Benutzer Änderungen ohne die Bestätigung eines Moderators vorzunehmen."
 
 #. I18N: Name of a country or state
@@ -14174,7 +14177,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Das Benutzerkonto wurde noch nicht verifiziert. Bitte den E-Mail Posteingang auf eine Bestätigungsmeldung überprüfen."
 
 #: app/Module/ReviewChangesModule.php:179
-msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
+#, fuzzy
+msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Dieser Block zeigt dem Bearbeiter eine Liste von Datensätzen mit ausstehenden Änderungen, die von einem Moderator genehmigt werden müssen. Es erzeugt auch täglich die E-Mails an die Moderatoren, wenn ausstehende Änderungen vorhanden sind."
 
 #: admin_users.php:463 edituser.php:312
@@ -14621,7 +14625,8 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Das Archiv wurde bearbeitet. Sie sollten die Änderungen prüfen und diese dann %1$s oder %2$s."
 
 #: admin_users.php:553
-msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
+#, fuzzy
+msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Diese Rolle verfügt über alle Berechtigungen der Bearbeiter-Rolle, zuzüglich der Erlaubnis, Änderungen anderer Benutzer zu übernehmen oder zu verwerfen."
 
 #: admin_users.php:567
@@ -14629,7 +14634,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Diese Rolle verfügt über alle Berechtigungen der Manager-Rolle in allen Stammbäumen, zuzüglich die Erlaubnis, die Einstellungen/Konfiguration für die ganze Webseite, alle Benutzer und die funktionalen Module betreffend zu ändern."
 
 #: admin_users.php:547
-msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#, fuzzy
+msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "Diese Rolle verfügt über alle Berechtigungen der Rolle „Mitglied“, zuzüglich der Berechtigung zum Hinzufügen, Ändern und Löschen von Daten. Alle Änderungen müssen von einem Moderator genehmigt werden, es sei denn, die Option „automatisches Akzeptieren von Änderungen“ wurde für den Nutzer aktiviert."
 
 #: admin_users.php:561
@@ -16234,7 +16240,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Ihr Provider kann Ihnen die Details der Verbindungseinstellungen bereitstellen."
 
 #: app/Module/BatchUpdateModule.php:228
-msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
+#, fuzzy
+msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Ihr Benutzerkonto verfügt nicht über die Berechtigung zur „automatischen Änderung“ von Datensätzen. Sie können nur jeweils einen Datensatz ändern."
 
 #: admin.php:556

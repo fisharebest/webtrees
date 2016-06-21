@@ -830,7 +830,8 @@ msgstr "Приветствующее сообщение для посетите�
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-msgid "A list of changes that need moderator approval, and email notifications."
+#, fuzzy
+msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "Список изменений, ожидающие проверку модератора и уведомления по электронной почте."
 
 #. I18N: Description of the “FAQ” module
@@ -2349,7 +2350,8 @@ msgid "Author of last change"
 msgstr "Автор последнего изменения"
 
 #: admin_users.php:442
-msgid "Automatically approve changes made by this user"
+#, fuzzy
+msgid "Automatically accept changes made by this user"
 msgstr "Автоматически принять изменения"
 
 #. I18N: A configuration setting
@@ -10027,7 +10029,8 @@ msgid "Norfolk Island"
 msgstr "Остров Норфолк"
 
 #: admin_users.php:445
-msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
+#, fuzzy
+msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Как правило, любые изменения, внесенные в родословную должны быть одобрены модератором. Этот параметр позволяет пользователю вносить изменения без необходимости одобрения модератора."
 
 #. I18N: Name of a country or state
@@ -14221,7 +14224,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Эта учетная запись не была проверена. Пожалуйста, проверьте свою электронную почту для подтверждения сообщения."
 
 #: app/Module/ReviewChangesModule.php:179
-msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
+#, fuzzy
+msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Этот блок будет показывать редакторам список записей с текущими изменениями, которые должны быть одобрены модератором. Он также создает ежедневные электронные письма модераторам, когда существуют отложенные изменения."
 
 #: admin_users.php:463 edituser.php:312
@@ -14675,7 +14679,8 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Этот репозиторий был отредактирован. Вы должны рассмотреть это изменение, а затем %1$s или %2$s его."
 
 #: admin_users.php:553
-msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
+#, fuzzy
+msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Этот пользователь имеет все права Редактора и дополнительно права принимать/отклонять изменения других пользователей."
 
 #: admin_users.php:567
@@ -14683,7 +14688,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Владельцы этого уровня доступа обладают всеми разрешениями как менеджер во всех деревах и дополнительно разрешение изменять настройки сайта, пользователей и модулей."
 
 #: admin_users.php:547
-msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#, fuzzy
+msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "Эта роль имеет все разрешения для роли пользователя, а также возможность добавления/изменения/удаления данных. Любые изменения должны быть одобрены модератором,если было включен параметр «автоматически принять изменения»."
 
 #: admin_users.php:561
@@ -16299,7 +16305,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Ваш администратор сервера (хостинг-провайдер) предоставит Вам данные для подключения."
 
 #: app/Module/BatchUpdateModule.php:228
-msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
+#, fuzzy
+msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "В Вашей учетной записи не включен режим автоматического утверждения изменений. Вы сможете изменить только одну запись за раз."
 
 #: admin.php:556

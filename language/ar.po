@@ -910,7 +910,8 @@ msgstr "رسالة ترحيب لزائري الموقع."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-msgid "A list of changes that need moderator approval, and email notifications."
+#, fuzzy
+msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "قائمة بالتعديلات التي تتطلب موافقة المراقب وتنويه بالبريد."
 
 #. I18N: Description of the “FAQ” module
@@ -2428,7 +2429,8 @@ msgid "Author of last change"
 msgstr "إسم من قام بآخر تغيير"
 
 #: admin_users.php:442
-msgid "Automatically approve changes made by this user"
+#, fuzzy
+msgid "Automatically accept changes made by this user"
 msgstr "قبول التعديلات من المستخدم تلقائياً"
 
 #. I18N: A configuration setting
@@ -10116,7 +10118,8 @@ msgid "Norfolk Island"
 msgstr "جزيرة نورفولك"
 
 #: admin_users.php:445
-msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
+#, fuzzy
+msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "عادة أي تغييرات تطرأ على المشجر يجب أن يوافق عليها المراقب قبل إعتمادها. هذا الخيار يتيح إعتمادها مباشرة دون الحاجة لموافقة المراقب."
 
 #. I18N: Name of a country or state
@@ -14315,7 +14318,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "هذا الحساب لم يؤكد بعد، لطفاً الإطلاع على رسالة المصادقة في البريد الإلكتروني."
 
 #: app/Module/ReviewChangesModule.php:179
-msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
+#, fuzzy
+msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "هذه الكتلة تظهر السجلات المعدلة التي تتطلب موافقة أو إلغاء. وكذلك ترسل رسالة إلكترونية بذلك."
 
 #: admin_users.php:463 edituser.php:312
@@ -14772,7 +14776,8 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "لقد تم تعديل المستودع، بعد الإطلاع يجب %1$s أو %2$s التعديل."
 
 #: admin_users.php:553
-msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
+#, fuzzy
+msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "هذه الدور له جميع صلاحيات المحرر إضافة على القدرة على قبول أو رفض التعديلات من الآخرين."
 
 #: admin_users.php:567
@@ -14780,7 +14785,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "هذه الدور له جميع صلاحيات المشرف لجميع المشجرات إضافة على القدرة على تهيئة الموقع والمستخدمين والوحدات."
 
 #: admin_users.php:547
-msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#, fuzzy
+msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "هذه الدور له جميع صلاحيات العضو إضافة على القدرة على إضافة وتعديل وحذف البيانات. أي تغييرات يجب أن يوافق عليها المراقب ما لم يكن إعداد \"قبول التعديلات من المستخدم تلقائياً\" ممكن له."
 
 #: admin_users.php:561
@@ -16405,7 +16411,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "مدير الخادم هو من سيزود بتفاصيل الإتصال."
 
 #: app/Module/BatchUpdateModule.php:228
-msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
+#, fuzzy
+msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "لأن خاصية \"قبول التعديلات تلقائياً\" في إعدادات الحساب غير مفعلة فالقدرة على تعديل السجلات مقصورة على سجل واحد تلو الآخر."
 
 #: admin.php:556

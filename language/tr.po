@@ -769,7 +769,8 @@ msgstr "Site ziyaretçileri için bir Karşılama mesajı."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-msgid "A list of changes that need moderator approval, and email notifications."
+#, fuzzy
+msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "Moderatör onayı gereken değişikliklerin listesi ve email mesaj bildirimleri."
 
 #. I18N: Description of the “FAQ” module
@@ -2287,7 +2288,8 @@ msgid "Author of last change"
 msgstr "Son değiştiren"
 
 #: admin_users.php:442
-msgid "Automatically approve changes made by this user"
+#, fuzzy
+msgid "Automatically accept changes made by this user"
 msgstr "Kullanıcının değişikliklerini otomatikman kabul et"
 
 #. I18N: A configuration setting
@@ -9964,7 +9966,8 @@ msgid "Norfolk Island"
 msgstr "Norfolk Adaları"
 
 #: admin_users.php:445
-msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
+#, fuzzy
+msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Normalde aile ağacındaki herhangi bir değişikiğin moderatör tarafından onaylanması gerekir. Bu seçenek kullanıcın moderatör onayı gerekmeden değişiklik yapabilmesine imkan verir."
 
 #. I18N: Name of a country or state
@@ -14150,7 +14153,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Bu hesabınızı doğrulamadınız.<br><br>Hesabı doğrulamak için lütfen kayıt olurken verdiğiniz e-postaya gönderdiğimiz doğrulama mesajını kontrol ediniz."
 
 #: app/Module/ReviewChangesModule.php:179
-msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
+#, fuzzy
+msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Bu blok moderator tarafından onaylanmayı bekleyen değişikliklerin listesini gösterir. Ayrıca bekleyen değişiklik olduğu sürece moderatorlere günlük mail gönderir."
 
 #: admin_users.php:463 edituser.php:312
@@ -14596,7 +14600,8 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Bu havuz düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s."
 
 #: admin_users.php:553
-msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
+#, fuzzy
+msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Bu rol, editör rolünün tüm yetkilerine ilave olarak, diğer kullanıcıların yaptığı değişiklikleri onaylama veya reddetme yetkisine sahiptir."
 
 #: admin_users.php:567
@@ -14604,7 +14609,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Bu rol, tüm aile ağaçlarındaki idareci rolünün yetkilerine ilave olarak, site ayarları, kullanıcı ve modül ayarlarını değiştirme yetkisine sahiptir."
 
 #: admin_users.php:547
-msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#, fuzzy
+msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "Bu rol, üye rolünün tüm yetkilerine ilave olarak verilerde ekleme, çıkarma ve değiştirme yatkisine sahiptir. Eğer kullanıcı için \"Değişiklikleri otomatik olarak onayla\" seçeneği işaretli değil ise yapılan bütün değişikliklerin moderatör tarafından onaylanması gerekmektedir."
 
 #: admin_users.php:561
@@ -16216,7 +16222,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Sunucunuzun yöneticisi bağlantı detayları size verecektir."
 
 #: app/Module/BatchUpdateModule.php:228
-msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
+#, fuzzy
+msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Kullanıcı hesabınızda \"değişiklikleri otomatikman kabul et\" seçeneği etkinleştirilmedi. Bundan dolayı tek tek değiştirmek mümkün olacaktır."
 
 #: admin.php:556

@@ -793,7 +793,8 @@ msgstr "’n Welkomsberig vir werfbesoekers."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-msgid "A list of changes that need moderator approval, and email notifications."
+#, fuzzy
+msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "’n Lys met veranderinge wat die goedkeuring van 'n moderator nodig het, en epos-boodskappe."
 
 #. I18N: Description of the “FAQ” module
@@ -2311,7 +2312,8 @@ msgid "Author of last change"
 msgstr "Outeur van die laaste inskrywing"
 
 #: admin_users.php:442
-msgid "Automatically approve changes made by this user"
+#, fuzzy
+msgid "Automatically accept changes made by this user"
 msgstr "Keur die veranderinge wat hierdie gebruiker maak outomaties goed"
 
 #. I18N: A configuration setting
@@ -9992,7 +9994,8 @@ msgid "Norfolk Island"
 msgstr "Norfolk-eiland"
 
 #: admin_users.php:445
-msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
+#, fuzzy
+msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Normaalweg moet enige veranderinge aan die stamboom deur 'n moderator goedgekeur word. Hierdie opsie laat toe dat 'n gebruiker veranderinge kan aanbring sonder 'n moderator se goedkeuring."
 
 #. I18N: Name of a country or state
@@ -14174,7 +14177,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Hierdie rekening is nog nie geverifieer nie. Gaan asseblief jou e-pos na vir 'n verifikasieboodskap."
 
 #: app/Module/ReviewChangesModule.php:179
-msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
+#, fuzzy
+msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Hierdie blok sal 'n lys rekords aan moderators wys, met wysigings wat nog hanged is en nog deur 'n moderator nagesien moet word. Dit skep ook daagliks e-posse wat aan moderators gestuur word as daar wysigings bestaan wat nog hangend is."
 
 #: admin_users.php:463 edituser.php:312
@@ -14621,7 +14625,8 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Hierdie bergplek is gewysig. Jy moet die wysigings nagaan en dit dan %1$s of %2$s."
 
 #: admin_users.php:553
-msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
+#, fuzzy
+msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Hierdie rol het al die regte van 'n redigeerder, en daarby nog die reg om wysigings wat deur ander gebruikers aangebring is, te aanvaar of af te keur."
 
 #: admin_users.php:567
@@ -14629,7 +14634,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Hierdie rol het al die regte van 'n bestuurder en dit geld vir al die stambome. Daarby het die rol ook die reg om wysigings aan die instellings/konfigurasie van die webwerf, gebruikers en modules te maak."
 
 #: admin_users.php:547
-msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#, fuzzy
+msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "Hierdie rol het al die regte van 'n lid, en daarby ook die reg om gegewens by te voeg, te wysing en te skrap. Enige wysigings moet egter deur 'n moderator nagegaan word, tensy die opsie om “outomaties wysigings te aanvaar” vir hierdie gebruiker ontsper is."
 
 #: admin_users.php:561
@@ -16234,7 +16240,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Jou bediener se beheerder sal jou met die nodige besonderhede verskaf om 'n verbinding te maak."
 
 #: app/Module/BatchUpdateModule.php:228
-msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
+#, fuzzy
+msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Die \"keur wysigings outomaties goed\" opsie is vir jou rekening gesper. Jy sal slegs rekords een vir een kan wysig."
 
 #: admin.php:556

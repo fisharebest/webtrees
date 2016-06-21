@@ -799,7 +799,8 @@ msgstr "Un messaggio di benvenuto per i visitatori del sito."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-msgid "A list of changes that need moderator approval, and email notifications."
+#, fuzzy
+msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "Un elenco delle modifiche che necessitano dell’approvazione di un moderatore, oltre a notifiche tramite email."
 
 #. I18N: Description of the “FAQ” module
@@ -2318,7 +2319,8 @@ msgid "Author of last change"
 msgstr "Autore ultima modifica"
 
 #: admin_users.php:442
-msgid "Automatically approve changes made by this user"
+#, fuzzy
+msgid "Automatically accept changes made by this user"
 msgstr "Approva automaticamente le modifiche apportate da questo utente"
 
 #. I18N: A configuration setting
@@ -9990,7 +9992,8 @@ msgid "Norfolk Island"
 msgstr "Isola Norfolk"
 
 #: admin_users.php:445
-msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
+#, fuzzy
+msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Di solito le modifiche apportate ad un albero di famiglia vanno approvate da un moderatore. Questa opzione consente all’utente di apportare modifiche senza bisogno dell’approvazione di un moderatore."
 
 #. I18N: Name of a country or state
@@ -14182,7 +14185,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Questo account non è stato verificato. Verificare se la propria casella di posta elettronica contiene un messaggio di verifica."
 
 #: app/Module/ReviewChangesModule.php:179
-msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
+#, fuzzy
+msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Questo riquadro mostra ai redattori un elenco di record cambiamenti in sospeso che devono essere approvati da un moderatore. Esso invia ai moderatori email quotidiane qualora ci siano modifiche in sospeso."
 
 #: admin_users.php:463 edituser.php:312
@@ -14632,7 +14636,8 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Questo archivio è stato modificato. È necessario verificare le modifiche e %1$s o %2$s."
 
 #: admin_users.php:553
-msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
+#, fuzzy
+msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Questo ruolo ha tutte le autorizzazioni del ruolo dei redattori, con in aggiunta il permesso di approvare o rifiutare le modifiche apportate da altri utenti."
 
 #: admin_users.php:567
@@ -14640,7 +14645,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Questo ruolo ha tutte le autorizzazioni del ruolo dei gestori per tutti gli alberi genealogici, con in più il permesso di modificare le impostazioni e la configurazione del sito, degli utenti e dei moduli."
 
 #: admin_users.php:547
-msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#, fuzzy
+msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "Questo ruolo ha tutte le autorizzazioni del ruolo dei membri, oltre al permesso di aggiungere/modificare/cancellare i dati. Tutte le modifiche dovranno essere approvate da un moderatore, a meno che l’utente abbia abilitata l’opzione «accetta automaticamente i cambiamenti»."
 
 #: admin_users.php:561
@@ -16253,7 +16259,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "L’amministratore del proprio server fornirà i dettagli della connessione."
 
 #: app/Module/BatchUpdateModule.php:228
-msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
+#, fuzzy
+msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Il proprio account utente non ha attivata l’impostazione «approva automaticamente le modifiche». Sarà pertanto possibile modificare un solo record per volta."
 
 #: admin.php:556

@@ -439,10 +439,10 @@ case 'edit':
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" name="auto_accept" value="1" <?php echo $user->getPreference('auto_accept') ? 'checked' : ''; ?>>
-						<?php echo I18N::translate('Automatically approve changes made by this user'); ?>
+						<?php echo I18N::translate('Automatically accept changes made by this user'); ?>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval.'); ?>
+						<?php echo I18N::translate('Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator.'); ?>
 					</p>
 				</div>
 			</div>
@@ -544,13 +544,13 @@ case 'edit':
 					<?php echo I18N::translate('Editor'); ?>
 				</h4>
 				<p class="small text-muted">
-					<?php echo I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled.'); ?>
+					<?php echo I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled.'); ?>
 				</p>
 				<h4>
 					<?php echo I18N::translate('Moderator'); ?>
 				</h4>
 				<p class="small text-muted">
-					<?php echo I18N::translate('This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users.'); ?>
+					<?php echo I18N::translate('This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users.'); ?>
 				</p>
 			</div>
 			<div class="col-xs-4">

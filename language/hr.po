@@ -825,7 +825,8 @@ msgstr "Pozdravna poruka za posjetitelja."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-msgid "A list of changes that need moderator approval, and email notifications."
+#, fuzzy
+msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "Popis promjena koje trebaju odobrenje upravitelja, i e-pošta obavijesti."
 
 #. I18N: Description of the “FAQ” module
@@ -2344,7 +2345,8 @@ msgid "Author of last change"
 msgstr "Autor zadnje promjene"
 
 #: admin_users.php:442
-msgid "Automatically approve changes made by this user"
+#, fuzzy
+msgid "Automatically accept changes made by this user"
 msgstr "Automatski odobri promjene ovom korisniku"
 
 #. I18N: A configuration setting
@@ -10022,7 +10024,8 @@ msgid "Norfolk Island"
 msgstr ""
 
 #: admin_users.php:445
-msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
+#, fuzzy
+msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Normalno, svaka promjena napravljena na obiteljskom stablu treba biti odobrena od upravitelja. Ova opcija omogućava korisniku da napravi promjene bez odobrenja upravitelja."
 
 #. I18N: Name of a country or state
@@ -14216,7 +14219,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Ovaj račun nije provjeren. Molimo provjerite vašu e-poštu da li ste dobili poruku za provjeru."
 
 #: app/Module/ReviewChangesModule.php:179
-msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
+#, fuzzy
+msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Ovaj blok prikazuje popis uređivanja zapisa sa promjenama na čekanju koje treba odobriti administrator. Također generira dnevnu e-poštu upraviteljima kada postoje promjene na čekanju."
 
 #: admin_users.php:463 edituser.php:312
@@ -14669,7 +14673,8 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Ovo mjesto čuvanja je promijenjeno. Trebate pregledati promijene i %1$s ili %2$s ih."
 
 #: admin_users.php:553
-msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
+#, fuzzy
+msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Ova prava imaju sve dozvole prava urednika, plus dozvolu za odobriti/odbiti promjene napravljene od drugih korisnika."
 
 #: admin_users.php:567
@@ -14677,7 +14682,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Ova prava imaju sve dozvole prava direktora u svim obiteljskim stablima, plus dozvolu promjena postavki/konfiguracije web stranica, korisnika i modula."
 
 #: admin_users.php:547
-msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#, fuzzy
+msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "Ova prava imaju sve dozvole prava člana, plus dozvolu dodavanja/mijenjanja/brisanja podataka. Svaka promjena treba biti odobrena od moderatora, osim ako korisnik ima uključenu opciju „automatski prihvati promjene”."
 
 #: admin_users.php:561
@@ -16298,7 +16304,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Vaš server administrator će vam dati informacije o detaljima za spajanje."
 
 #: app/Module/BatchUpdateModule.php:228
-msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
+#, fuzzy
+msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Vaš korisnički račun nema „automatsko odobrenje promjena”. Vi možete mijenjati zapise samo jedan po jedan."
 
 #: admin.php:556

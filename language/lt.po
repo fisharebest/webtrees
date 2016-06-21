@@ -825,7 +825,8 @@ msgstr "Pasveikinimo žinutė tinklalapio lankytojams."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-msgid "A list of changes that need moderator approval, and email notifications."
+#, fuzzy
+msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "Sąrašas pakeitimų, kurie reikalauja prižiūrėtojo patvirtinimo ir pranešimo el. paštu."
 
 #. I18N: Description of the “FAQ” module
@@ -2344,7 +2345,8 @@ msgid "Author of last change"
 msgstr "Paskutinio keitimo autorius"
 
 #: admin_users.php:442
-msgid "Automatically approve changes made by this user"
+#, fuzzy
+msgid "Automatically accept changes made by this user"
 msgstr "Automatiškai patvirtinti šio vartotojo pakeitimus"
 
 #. I18N: A configuration setting
@@ -10020,7 +10022,8 @@ msgid "Norfolk Island"
 msgstr "Norfolko sala"
 
 #: admin_users.php:445
-msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
+#, fuzzy
+msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Paprastai visi šeimos medžio pakeitimai turi būti patvirtinti moderatoriaus. Ši parinktis leidžia vartotojui padaryti pakeitimus be moderatoriaus patvirtinimo."
 
 #. I18N: Name of a country or state
@@ -14207,7 +14210,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Ši paskyra nebuvo patvirtinta. Prašome pasitikrinti el. paštą dėl patvirtinimo žinutės."
 
 #: app/Module/ReviewChangesModule.php:179
-msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
+#, fuzzy
+msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Šis blokas bus rodomas redaktoriams su įrašais, kuriuos reikia patvirtinti moderatoriui. Jis taip pat sukuria kasdienius laiškus moderatoriams, kai tik atsiranda pakeitimai."
 
 #: admin_users.php:463 edituser.php:312
@@ -14656,7 +14660,8 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Ši saugykla buvo pakeista. Jūs turėtumėte peržiūrėti pakeitimus ir tuomet %1$s arba %2$s juos."
 
 #: admin_users.php:553
-msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
+#, fuzzy
+msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Ši rolė turi visus redaguotojo leidimus, taip pat leidimus patvirtinti/atmesti naujus pakeitimus."
 
 #: admin_users.php:567
@@ -14664,7 +14669,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr ""
 
 #: admin_users.php:547
-msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#, fuzzy
+msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr ""
 
 #: admin_users.php:561
@@ -16278,7 +16284,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Jūsų serverio administratorius jums pateiks susijungimo detales."
 
 #: app/Module/BatchUpdateModule.php:228
-msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
+#, fuzzy
+msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Jums nėra įjungta „automatiškai patvirtinti pakeitimus“ nuostata. Jums tik galima pakeisti vieną įrašą vienu metu."
 
 #: admin.php:556

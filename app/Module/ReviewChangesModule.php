@@ -39,7 +39,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Pending changes” module */ I18N::translate('A list of changes that need moderator approval, and email notifications.');
+		return /* I18N: Description of the “Pending changes” module */ I18N::translate('A list of changes that need to be reviewed by a moderator, and email notifications.');
 	}
 
 	/**
@@ -176,7 +176,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 	?>
 	<tr>
 		<td colspan="2">
-			<?php echo I18N::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist.'); ?>
+			<?php echo I18N::translate('This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist.'); ?>
 		</td>
 	</tr>
 

@@ -793,7 +793,8 @@ msgstr "Tervehdys sivustolla kävijöille."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-msgid "A list of changes that need moderator approval, and email notifications."
+#, fuzzy
+msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "Luettelo muutoksista, jotka tarvitsevat valvojan hyväksynnän, ja sähköposti-ilmoitukset."
 
 #. I18N: Description of the “FAQ” module
@@ -2311,7 +2312,8 @@ msgid "Author of last change"
 msgstr "Viimeisimmän muutoksen tekijä"
 
 #: admin_users.php:442
-msgid "Automatically approve changes made by this user"
+#, fuzzy
+msgid "Automatically accept changes made by this user"
 msgstr "Hyväksy automaattisesti tämän henkilön muutokset"
 
 #. I18N: A configuration setting
@@ -9983,7 +9985,8 @@ msgid "Norfolk Island"
 msgstr "Norfolkinsaari"
 
 #: admin_users.php:445
-msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
+#, fuzzy
+msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Yleensä valvojan on hyväksyttävä sukupuuhun tehdyt muutokset. Tällä valinnalla voit sallia käyttäjälle oikeuden muutosten tekoon ilman että valvojan tarvitsee hyväksyä niitä."
 
 #. I18N: Name of a country or state
@@ -14169,7 +14172,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Tätä käyttäjätiliä ei ole vahvistettu. Tarkista sähköpostistasi saapunutta vahvistusviestiä."
 
 #: app/Module/ReviewChangesModule.php:179
-msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
+#, fuzzy
+msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Tässä lohkossa esitetään vireillä olevat muutokset muokkaajille. Valvojan tulee hyväksyä vireillä olevat muutokset. Valvojille lähetetään päivittäin sähköposti vireillä olevista muutoksista."
 
 #: admin_users.php:463 edituser.php:312
@@ -14617,7 +14621,8 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Tämä tietovarasto on muokattu. Tarkista muutokset ja %1$s tai %2$s ne."
 
 #: admin_users.php:553
-msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
+#, fuzzy
+msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Tällä roolilla on samat käyttöoikeudet kuin muokkaajalla, sekä lisäksi oikeus hyväksyä/hylätä muiden sivuston käyttäjien tekemiä muutoksia."
 
 #: admin_users.php:567
@@ -14625,7 +14630,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Tällä roolilla on samat oikeudet kuin sukupuun ylläpitäjällä, sekä lisäksi oikeus muuttaa koko palvelun eli palvelimen asetuksia / määrityksiä, käyttäjätilejä ja sallittuja lisäominaisuuksia eli moduuleja."
 
 #: admin_users.php:547
-msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#, fuzzy
+msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "Tällä roolilla on samat käyttöoikeudet kuin jäsenellä, sekä lisäksi oikeus lisätä/muokata/poistaa tietoja. Kun tietoja on muutettu, eikä käyttäjälle ole sallittu ”hyväksy automaattisesti muutokset”, niin muutokset tulevat voimaan vasta kun valvoja, jolla on hyväksymisoikeuksia, on hyväksynyt ne."
 
 #: admin_users.php:561
@@ -16237,7 +16243,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Palvelimesi ylläpitäjältä saat tarvittavat yhteystiedot."
 
 #: app/Module/BatchUpdateModule.php:228
-msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
+#, fuzzy
+msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Sinun käyttäjätunnukselle ei ole sallittu ”hyväksy automaattisesti muutokset”. Voit muuttaa vain yksitellen tietueita eli tietoja."
 
 #: admin.php:556

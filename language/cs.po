@@ -828,7 +828,8 @@ msgstr "Uvítací zpráva pro návštěvníky stránky."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-msgid "A list of changes that need moderator approval, and email notifications."
+#, fuzzy
+msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "Seznam změn, které vyžadují schválení moderátorem a e-mailová upozornění."
 
 #. I18N: Description of the “FAQ” module
@@ -2346,7 +2347,8 @@ msgid "Author of last change"
 msgstr "Autor poslední změny"
 
 #: admin_users.php:442
-msgid "Automatically approve changes made by this user"
+#, fuzzy
+msgid "Automatically accept changes made by this user"
 msgstr "Automaticky schválit změny provedené tímto uživatelem"
 
 #. I18N: A configuration setting
@@ -10031,7 +10033,8 @@ msgid "Norfolk Island"
 msgstr "Ostrov Norfolk"
 
 #: admin_users.php:445
-msgid "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
+#, fuzzy
+msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Normálně musí být všechny změny v rodokmenu schváleny moderátorem. Tato volba umožní uživateli dělat změny bez tohoto schválení."
 
 #. I18N: Name of a country or state
@@ -14215,7 +14218,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Tento účet nebyl ověřen. Prosím zkontrolujte, zda vám nepřišel ověřovací email."
 
 #: app/Module/ReviewChangesModule.php:179
-msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily emails to moderators whenever pending changes exist."
+#, fuzzy
+msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Tento blok zobrazí editorům seznam záznamů s dosud neschválenými změnami, které musí být schváleny moderátorem. Také generuje denně zasílané emaily, pokud nějaké změny existují."
 
 #: admin_users.php:463 edituser.php:312
@@ -14664,7 +14668,8 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Tento repozitář byl upraven. Měli byste úpravu posoudit a pak ji %1$s nebo %2$s."
 
 #: admin_users.php:553
-msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
+#, fuzzy
+msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Tato role má práva role Editor plus práva schvalovat/odmítat změny provedené jinými uživateli."
 
 #: admin_users.php:567
@@ -14672,7 +14677,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Tato role má všechna práva role správce ve všech rodokmenech, a navíc práva měnit nastavení webu, uživatelů a modulů."
 
 #: admin_users.php:547
-msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
+#, fuzzy
+msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "Tato role má práva role Člen plus práva přidávat/měnit/mazat data. Všechny změny musí být schváleny moderátorem, pokud uživatel nemá aktivováno „automaticky schvalovat změny“."
 
 #: admin_users.php:561
@@ -16280,7 +16286,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Správce vašeho serveru vám sdělí podrobnosti připojení."
 
 #: app/Module/BatchUpdateModule.php:228
-msgid "Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time."
+#, fuzzy
+msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Váš uživatelský účet nemá povoleno „automaticky schvalovat změny“. Budete schopen měnit pouze jeden záznam najednou."
 
 #: admin.php:556
