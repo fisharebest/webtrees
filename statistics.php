@@ -498,7 +498,7 @@ if (!$ajax) {
 		echo '<input type="hidden" name="action" value="update">';
 		echo '<table width="100%">';
 		echo '<tr>
-			<td class="descriptionbox width25 wrap">', I18N::translate('Select chart type'), '</td>
+			<td class="descriptionbox width25 wrap">', I18N::translate('Chart type'), '</td>
 			<td class="optionbox">
 			<input type="radio" id="stat_11" name="x-as" value="11" checked';
 		echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
