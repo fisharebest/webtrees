@@ -6051,7 +6051,8 @@ msgid "Family tree"
 msgstr "Aile ağacı"
 
 #: admin_users.php:521
-msgid "Family tree access and settings"
+#, fuzzy
+msgid "Access to family trees"
 msgstr "Aile ağacı erişim ve ayarları"
 
 #: app/Module/ClippingsCartModule.php:90

@@ -6047,7 +6047,8 @@ msgid "Family tree"
 msgstr "家谱"
 
 #: admin_users.php:521
-msgid "Family tree access and settings"
+#, fuzzy
+msgid "Access to family trees"
 msgstr "家谱访问和设置"
 
 #: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479

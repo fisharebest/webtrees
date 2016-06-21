@@ -6111,7 +6111,8 @@ msgid "Family tree"
 msgstr "Дерево"
 
 #: admin_users.php:521
-msgid "Family tree access and settings"
+#, fuzzy
+msgid "Access to family trees"
 msgstr "Допуск к генеалогическому дереву и настройки"
 
 #: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479

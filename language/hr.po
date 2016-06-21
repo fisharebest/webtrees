@@ -6106,7 +6106,8 @@ msgid "Family tree"
 msgstr "Obiteljsko stablo"
 
 #: admin_users.php:521
-msgid "Family tree access and settings"
+#, fuzzy
+msgid "Access to family trees"
 msgstr "Pristup i postavke obiteljskog stabla"
 
 #: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479

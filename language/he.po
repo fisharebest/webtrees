@@ -6075,7 +6075,8 @@ msgid "Family tree"
 msgstr "עץ משפחה"
 
 #: admin_users.php:521
-msgid "Family tree access and settings"
+#, fuzzy
+msgid "Access to family trees"
 msgstr "גישה והגדרות של עץ המשפחה"
 
 #: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479

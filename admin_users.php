@@ -120,7 +120,6 @@ case 'save':
 
 			foreach (Tree::getAll() as $tree) {
 				$tree->setUserPreference($user, 'gedcomid', Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF));
-				$tree->setUserPreference($user, 'rootid', Filter::post('rootid' . $tree->getTreeId(), WT_REGEX_XREF));
 				$tree->setUserPreference($user, 'canedit', Filter::post('canedit' . $tree->getTreeId(), implode('|', array_keys($ALL_EDIT_OPTIONS))));
 				if (Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF)) {
 					$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', Filter::postInteger('RELATIONSHIP_PATH_LENGTH' . $tree->getTreeId(), 0, 10, 0));
@@ -518,7 +517,7 @@ case 'edit':
 			</div>
 		</div>
 
-		<h3><?php echo I18N::translate('Family tree access and settings'); ?></h3>
+		<h3><?php echo I18N::translate('Access to family trees'); ?></h3>
 
 		<p>
 			<?php echo I18N::translate('A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree.'); ?>
@@ -579,9 +578,6 @@ case 'edit':
 						<?php echo I18N::translate('Role'); ?>
 					</th>
 					<th>
-						<?php echo I18N::translate('Default individual'); ?>
-					</th>
-					<th>
 						<?php echo I18N::translate('Individual record'); ?>
 						</th>
 					<th>
@@ -592,11 +588,6 @@ case 'edit':
 					<td>
 					</td>
 					<td>
-					</td>
-					<td>
-						<p class="small text-muted">
-							<?php echo I18N::translate('This individual will be selected by default when viewing charts and reports.'); ?>
-						</p>
 					</td>
 					<td>
 						<p class="small text-muted">
@@ -628,18 +619,6 @@ case 'edit':
 								</option>
 							<?php endforeach; ?>
 						</select>
-					</td>
-					<td>
-						<input
-							data-autocomplete-type="INDI"
-							data-autocomplete-ged="<?php echo Filter::escapeHtml($tree->getName()); ?>"
-							type="text"
-							size="12"
-							name="rootid<?php echo $tree->getTreeId(); ?>"
-							id="rootid<?php echo $tree->getTreeId(); ?>"
-							value="<?php echo Filter::escapeHtml($tree->getUserPreference($user, 'rootid')); ?>"
-						>
-						<?php echo FunctionsPrint::printFindIndividualLink('rootid' . $tree->getTreeId(), '', $tree); ?>
 					</td>
 					<td>
 						<input
