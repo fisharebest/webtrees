@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-20 12:15+0000\n"
+"PO-Revision-Date: 2016-06-21 08:18+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -1160,7 +1160,7 @@ msgstr "Elfogadás"
 
 #: edit_changes.php:209 edit_changes.php:220
 msgid "Accept all changes"
-msgstr "Az összes változtatás elfogadása"
+msgstr "Összes változtatás elfogadása"
 
 #: admin_module_blocks.php:75 admin_module_charts.php:68
 #: admin_module_menus.php:90 admin_module_reports.php:68
@@ -11431,7 +11431,7 @@ msgstr "Elutasítás"
 
 #: edit_changes.php:211 edit_changes.php:231
 msgid "Reject all changes"
-msgstr "Az összes változtatás elutasítása"
+msgstr "Összes változtatás elutasítása"
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
