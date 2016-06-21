@@ -151,7 +151,7 @@ if ($type == "indi") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<input type="submit" value="', I18N::translate('Filter'), '">
+	<input type="submit" value="', I18N::translate('search'), '">
 	</form></div>';
 }
 
@@ -168,14 +168,14 @@ if ($type == "fam") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<input type="submit" value="', I18N::translate('Filter'), '">
+	<input type="submit" value="', I18N::translate('search'), '">
 	</form></div>';
 }
 
 // Show media and hide the rest
 if ($type == 'media') {
 	echo '<div id="find-header">
-	<form name="filtermedia" method="get" onsubmit="return checknames(this);" action="find.php">
+	<form name="filtermedia" method="get" action="find.php">
 	<input type="hidden" name="choose" value="', $choose, '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="media">
@@ -187,16 +187,14 @@ if ($type == 'media') {
 		echo $filter;
 	}
 	echo '" autofocus>',
-	'<p class="small text-muted">', I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.'), '</p>',
-	'<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
-	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+	'<p><input type="submit" name="search" value="', I18N::translate('search'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
 
 // Show place and hide the rest
 if ($type == "place") {
 	echo '<div id="find-header">
-	<form name="filterplace" method="get"  onsubmit="return checknames(this);" action="find.php">
+	<form name="filterplace" method="get" action="find.php">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="place">
 	<input type="hidden" name="callback" value="', $callback, '">
@@ -207,15 +205,14 @@ if ($type == "place") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
-	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+	<p><input type="submit" name="search" value="', I18N::translate('search'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
 
 // Show repo and hide the rest
 if ($type == "repo") {
 	echo '<div id="find-header">
-	<form name="filterrepo" method="get" onsubmit="return checknames(this);" action="find.php">
+	<form name="filterrepo" method="get" action="find.php">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="repo">
 	<input type="hidden" name="callback" value="', $callback, '">
@@ -226,8 +223,7 @@ if ($type == "repo") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
-	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+	<p><input type="submit" name="search" value="', I18N::translate('search'), '" onclick="this.form.subclick.value=this.name">
 	</td></tr></table>
 	</p></form></div>';
 }
@@ -235,7 +231,7 @@ if ($type == "repo") {
 // Show Shared Notes and hide the rest
 if ($type == "note") {
 	echo '<div id="find-header">
-	<form name="filternote" method="get" onsubmit="return checknames(this);" action="find.php">
+	<form name="filternote" method="get" action="find.php">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="note">
 	<input type="hidden" name="callback" value="', $callback, '">
@@ -246,15 +242,14 @@ if ($type == "note") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
-	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+	<p><input type="submit" name="search" value="', I18N::translate('search'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
 
 // Show source and hide the rest
 if ($type == "source") {
 	echo '<div id="find-header">
-	<form name="filtersource" method="get" onsubmit="return checknames(this);" action="find.php">
+	<form name="filtersource" method="get" action="find.php">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="source">
 	<input type="hidden" name="callback" value="', $callback, '">
@@ -265,8 +260,7 @@ if ($type == "source") {
 		echo $filter;
 	}
 	echo '" autofocus>
-	<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">
-	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+	<p><input type="submit" name="search" value="', I18N::translate('search'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
 

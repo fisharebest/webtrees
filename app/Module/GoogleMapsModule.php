@@ -4211,7 +4211,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</div>
 					<button type="submit" class="btn btn-default">
 						<i class="fa fa-download"></i>
-						<?php echo I18N::translate('Download') ?>
+						<?php echo /* I18N: A button label. */ I18N::translate('download') ?>
 					</button>
 				</div>
 			</div>

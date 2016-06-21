@@ -3311,7 +3311,8 @@ msgid "Canada"
 msgstr "加拿大"
 
 #: app/Module/ClippingsCartModule.php:796
-msgid "Cancel"
+#, fuzzy
+msgid "cancel"
 msgstr "取消"
 
 #. I18N: Name of a country or state
@@ -12170,7 +12171,8 @@ msgid "Set as default"
 msgstr "设为默认值"
 
 #: inverselink.php:152
-msgid "Set link"
+#, fuzzy
+msgid "link"
 msgstr "设置链接"
 
 #. I18N: You need to:
@@ -20371,3 +20373,7 @@ msgstr "缺少姓氏"
 
 #~ msgid "Zoom="
 #~ msgstr "变焦="
+
+#, fuzzy
+msgid "download"
+msgstr "下载"

@@ -149,7 +149,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 		}
 
 		echo '</td></tr>';
-		echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', I18N::translate('Set link'), '"></td></tr>';
+		echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', /* I18N: A button label (a verb). */ I18N::translate('link'), '"></td></tr>';
 		echo '</table>';
 		echo '</form>';
 	} elseif ($action == "update" && $paramok) {

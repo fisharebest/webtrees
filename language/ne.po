@@ -3329,7 +3329,8 @@ msgid "Canada"
 msgstr "क्यानाडा"
 
 #: app/Module/ClippingsCartModule.php:796
-msgid "Cancel"
+#, fuzzy
+msgid "cancel"
 msgstr "रद्द गर्नुहोस्"
 
 #. I18N: Name of a country or state
@@ -12180,7 +12181,8 @@ msgid "Set as default"
 msgstr ""
 
 #: inverselink.php:152
-msgid "Set link"
+#, fuzzy
+msgid "link"
 msgstr "लिकं बनाऊ"
 
 #. I18N: You need to:
@@ -20262,3 +20264,7 @@ msgstr ""
 
 #~ msgid "Zoom out here"
 #~ msgstr "यहाँ जुम घटाउनुहोस"
+
+#, fuzzy
+msgid "download"
+msgstr "डाऊनलोड"
