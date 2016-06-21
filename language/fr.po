@@ -1694,7 +1694,8 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr "Après avoir créé l’arbre généalogique, vous pourrez importer des données à partir d’un fichier GEDCOM."
 
 #: login.php:259
-msgid "After you have signed in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
+#, fuzzy
+msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
 msgstr "Pour changer votre mot de passe une fois connecté, cliquez le lien «&nbsp;Mon compte&nbsp;» dans le menu «&nbsp;Page personnelle&nbsp;» et remplissez les champs concernant le mot de passe."
 
 #. I18N: gedcom tag AGE
