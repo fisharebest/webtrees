@@ -15819,7 +15819,8 @@ msgstr "Yeni kayıt oluşturulurken, bunlara dahili bir kimlik numarası verilir
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1539
-msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
+#, fuzzy
+msgid "Calculate the age differences between siblings, children, spouses, etc."
 msgstr "Bu seçenek seçildiğinde, kardeşler, çocuklar, eşler, vb. arasındaki yaş farkları hesaplanır."
 
 #. I18N: Help text for the “Surname tradition” configuration setting

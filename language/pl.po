@@ -15882,7 +15882,8 @@ msgstr "Podczas dodawania nowego wpisu automatycznie tworzy się dla niego wewn�
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1539
-msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
+#, fuzzy
+msgid "Calculate the age differences between siblings, children, spouses, etc."
 msgstr "Gdy ta opcja jest zaznaczona będzie obliczana różnica wieku pomiędzy rodzeństwem, dziećmi, małżonkami, itp."
 
 #. I18N: Help text for the “Surname tradition” configuration setting

@@ -15841,7 +15841,8 @@ msgstr "Kun uudet tietueet luodaan, niille annetaan sisäinen tunnus. Voit mää
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1539
-msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
+#, fuzzy
+msgid "Calculate the age differences between siblings, children, spouses, etc."
 msgstr "Kun tämä vaihtoehto on valittu, webtrees laskee ikäerot sisarusten, lasten, puolisoiden jne. välillä."
 
 #. I18N: Help text for the “Surname tradition” configuration setting

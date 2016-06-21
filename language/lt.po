@@ -15882,7 +15882,8 @@ msgstr "Visi nauji įrašai gauna savo vidinį ID numerį. Jūs galite nurodyti 
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1539
-msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
+#, fuzzy
+msgid "Calculate the age differences between siblings, children, spouses, etc."
 msgstr "Kai šis pasirinkimas įjungtas, sistema apskaičiuoja amžių skirtumus tarp giminaičių, vaikių, sutuoktinių ir kt."
 
 #. I18N: Help text for the “Surname tradition” configuration setting

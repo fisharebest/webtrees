@@ -15845,7 +15845,8 @@ msgstr "בעת יצירת רשומות חדשות, הן מקבלות מספר מ
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1539
-msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
+#, fuzzy
+msgid "Calculate the age differences between siblings, children, spouses, etc."
 msgstr "כאשר אפשרות זו נבחרת, webtrees תחשב את הבדלי הגיל בין אחים, ילדים, בני זוג וכו׳."
 
 #. I18N: Help text for the “Surname tradition” configuration setting

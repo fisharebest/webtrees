@@ -15815,7 +15815,8 @@ msgstr "当创建新记录时，他们给出了一个内部的 ID 编号。 您�
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1539
-msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
+#, fuzzy
+msgid "Calculate the age differences between siblings, children, spouses, etc."
 msgstr "选中此选项后，webtrees 将计算之间的兄弟姐妹、 子女、 配偶等的年龄差异。"
 
 #. I18N: Help text for the “Surname tradition” configuration setting

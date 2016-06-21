@@ -1536,7 +1536,7 @@ $controller
 			<?php echo FunctionsEdit::radioButtons('SHOW_AGE_DIFF', $hide_show, $WT_TREE->getPreference('SHOW_AGE_DIFF'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Date differences” configuration setting */
-				I18N::translate('When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc.'); ?>
+				I18N::translate('Calculate the age differences between siblings, children, spouses, etc.'); ?>
 			</p>
 		</div>
 	</fieldset>

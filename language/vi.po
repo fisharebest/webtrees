@@ -15818,7 +15818,8 @@ msgstr "Khi có bản ghi mới được tạo, chúng được đặt cho một
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1539
-msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
+#, fuzzy
+msgid "Calculate the age differences between siblings, children, spouses, etc."
 msgstr "Khi tùy chọn này được chọn, webtrees sẽ tính toán khác biệt tuổi tác giữa anh anh em, con cháu, hôn phối v.v."
 
 #. I18N: Help text for the “Surname tradition” configuration setting

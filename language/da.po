@@ -15857,7 +15857,8 @@ msgstr "Når der bliver oprettet nye poster, får de et internt ID nummer. Du ka
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1539
-msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
+#, fuzzy
+msgid "Calculate the age differences between siblings, children, spouses, etc."
 msgstr "Ved aktivering af denne, vil webtrees beregne aldersforskellen på søskende, børn, ægtefæller osv."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
