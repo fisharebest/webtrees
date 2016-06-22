@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 13:39+0000\n"
+"PO-Revision-Date: 2016-06-22 14:18+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (Australia) <https://translate.webtrees.net/projects/webtrees/webtrees/en-AU/>\n"
 "Language: en-AU\n"
@@ -8867,6 +8867,10 @@ msgstr "Martinique"
 msgid "Masquerade as this user"
 msgstr "Masquerade as this user"
 
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
+msgid "Match both upper and lower case letters."
+msgstr "Match both upper and lower case letters."
+
 #: lifespan.php:104
 msgid "Match calendar"
 msgstr "Match calendar"
@@ -12543,11 +12547,6 @@ msgstr "Show details"
 msgid "Show divorced couples."
 msgstr "Show divorced couples."
 
-#: admin_trees_config.php:1087
-#, fuzzy
-msgid "Show thumbnail images in charts and family groups."
-msgstr "Show highlight images in individual boxes"
-
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1650
 msgid "Show hit counters on Portal and Individual pages."
@@ -12754,6 +12753,10 @@ msgstr "Show the user who made the change"
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
 msgstr "Show this block for which languages"
+
+#: admin_trees_config.php:1087
+msgid "Show thumbnail images in charts and family groups."
+msgstr "Show thumbnail images in charts and family groups."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1023 app/Functions/FunctionsEdit.php:206
@@ -14072,9 +14075,8 @@ msgstr "Theme change"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-#, fuzzy
 msgid "Theme menu"
-msgstr "Theme dropdown selector for theme changes"
+msgstr "Theme menu"
 
 #: admin_modules.php:165
 msgid "Themes"
@@ -14741,11 +14743,6 @@ msgstr "Thumbnail to upload"
 #: app/Date/CalendarDate.php:344
 msgid "Thursday"
 msgstr "Thursday"
-
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-#, fuzzy
-msgid "Match both upper and lower case letters."
-msgstr "Tick this box to match both upper and lower case letters."
 
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
