@@ -885,6 +885,17 @@ a:hover .nameZoom {
 	margin-top: 20px;
 }
 
+#pending .list_value {
+	padding: 3px;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+#pending .indent {
+	padding: 0px;
+}
+
 /* ======== Person box ======= */
 .gedcom_favorites_block,
 .user_favorites_block,
