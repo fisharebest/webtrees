@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-19 23:32+0000\n"
+"PO-Revision-Date: 2016-06-22 00:12+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -793,9 +793,8 @@ msgstr "A greeting message for site visitors."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-#, fuzzy
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "A list of changes that need moderator approval, and e-mail notifications."
+msgstr "A list of changes that need to be reviewed by a moderator, and e-mail notifications."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -1163,6 +1162,10 @@ msgstr "Accept all changes"
 #: admin_trees_config.php:535
 msgid "Access level"
 msgstr "Access level"
+
+#: admin_users.php:521
+msgid "Access to family trees"
+msgstr "Access to family trees"
 
 #: admin_users.php:376
 msgid "Account approval and email verification"
@@ -1690,9 +1693,8 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr "After creating the family tree, you will be able to import data from a GEDCOM file."
 
 #: login.php:259
-#, fuzzy
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr "After you have signed in, select the ‘My account’ link under the ‘My page’ menu and fill in the password fields to change your password."
+msgstr "After you have signed in, select the ‘My account’ link under the ‘My pages’ menu and fill in the password fields to change your password."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
@@ -2313,9 +2315,8 @@ msgid "Author of last change"
 msgstr "Author of last change"
 
 #: admin_users.php:442
-#, fuzzy
 msgid "Automatically accept changes made by this user"
-msgstr "Automatically approve changes made by this user"
+msgstr "Automatically accept changes made by this user"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
@@ -3293,6 +3294,11 @@ msgstr "By default, your server allows scripts to use %s of memory."
 msgid "CKEditor™"
 msgstr "CKEditor™"
 
+#. I18N: Help text for the “Date differences” configuration setting
+#: admin_trees_config.php:1539
+msgid "Calculate the age differences between siblings, children, spouses, etc."
+msgstr "Calculate the age differences between siblings, children, spouses, etc."
+
 #: admin_trees_manage.php:367
 msgid "Calculating…"
 msgstr "Calculating…"
@@ -3332,11 +3338,6 @@ msgstr "Campinas, Brazil"
 #: app/Stats.php:6716
 msgid "Canada"
 msgstr "Canada"
-
-#: app/Module/ClippingsCartModule.php:796
-#, fuzzy
-msgid "cancel"
-msgstr "Cancel"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6717
@@ -3944,16 +3945,6 @@ msgstr "Confirm password"
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 msgid "Confirmation"
 msgstr "Confirmation"
-
-#. I18N: Name of a country or state
-#: app/Stats.php:6727
-msgid "Republic of the Congo"
-msgstr "Republic of the Congo"
-
-#. I18N: Name of a country or state
-#: app/Stats.php:6726
-msgid "Democratic Republic of the Congo"
-msgstr "Democratic Republic of the Congo"
 
 #: setup.php:272
 msgid "Connection to database server"
@@ -5045,6 +5036,11 @@ msgid "Deleting the family will unlink all of the individuals from each other bu
 msgstr "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
 
 #. I18N: Name of a country or state
+#: app/Stats.php:6726
+msgid "Democratic Republic of the Congo"
+msgstr "Democratic Republic of the Congo"
+
+#. I18N: Name of a country or state
 #: app/Stats.php:6742
 msgid "Denmark"
 msgstr "Denmark"
@@ -6078,11 +6074,6 @@ msgstr "Family of %s"
 msgid "Family tree"
 msgstr "Family tree"
 
-#: admin_users.php:521
-#, fuzzy
-msgid "Access to family trees"
-msgstr "Family tree access and settings"
-
 #: app/Module/ClippingsCartModule.php:90
 #: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
@@ -6766,6 +6757,10 @@ msgstr "Generations"
 msgid "Generations of ancestors"
 msgstr "Generations of ancestors"
 
+#: statistics.php:595
+msgid "Geographic area"
+msgstr "Geographic area"
+
 #: app/Module/GoogleMapsModule.php:179 app/Module/GoogleMapsModule.php:295
 #: app/Module/GoogleMapsModule.php:853 app/Module/GoogleMapsModule.php:1403
 #: app/Module/GoogleMapsModule.php:1526 app/Module/GoogleMapsModule.php:2408
@@ -6773,10 +6768,6 @@ msgstr "Generations of ancestors"
 #: app/Module/GoogleMapsModule.php:3632 app/Module/GoogleMapsModule.php:3642
 msgid "Geographic data"
 msgstr "Geographic data"
-
-#: statistics.php:595
-msgid "Geographic area"
-msgstr "Geographic area"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6763
@@ -9997,9 +9988,8 @@ msgid "Norfolk Island"
 msgstr "Norfolk Island"
 
 #: admin_users.php:445
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval."
+msgstr "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6864
@@ -11620,6 +11610,11 @@ msgstr "Repository contains"
 msgid "Repository name"
 msgstr "Repository name"
 
+#. I18N: Name of a country or state
+#: app/Stats.php:6727
+msgid "Republic of the Congo"
+msgstr "Republic of the Congo"
+
 #: app/Module/LoginBlockModule.php:99 login.php:221
 msgid "Request a new password"
 msgstr "Request a new password"
@@ -12203,11 +12198,6 @@ msgstr "Session timeout"
 #: admin_trees_manage.php:441 admin_trees_manage.php:452
 msgid "Set as default"
 msgstr "Set as default"
-
-#: inverselink.php:152
-#, fuzzy
-msgid "link"
-msgstr "Set link"
 
 #. I18N: You need to:
 #: login.php:572
@@ -14181,9 +14171,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "This account has not been verified. Please check your e-mail for a verification message."
 
 #: app/Module/ReviewChangesModule.php:179
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "This block will show editors a list of records with pending changes that need to be approved by a moderator. It also generates daily e-mails to moderators whenever pending changes exist."
+msgstr "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily e-mails to moderators whenever pending changes exist."
 
 #: admin_users.php:463 edituser.php:312
 msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
@@ -14629,18 +14618,16 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "This repository has been edited. You should review the changes and then %1$s or %2$s them."
 
 #: admin_users.php:553
-#, fuzzy
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
+msgstr "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 
 #: admin_users.php:567
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
 msgstr "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users and modules."
 
 #: admin_users.php:547
-#, fuzzy
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the ‘automatically accept changes’ option enabled."
+msgstr "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the ‘automatically accept changes’ option enabled."
 
 #: admin_users.php:561
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -15836,12 +15823,6 @@ msgstr "When adding new close relatives, you can add source citations to the rec
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 msgstr "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 
-#. I18N: Help text for the “Date differences” configuration setting
-#: admin_trees_config.php:1539
-#, fuzzy
-msgid "Calculate the age differences between siblings, children, spouses, etc."
-msgstr "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2141
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
@@ -16245,9 +16226,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Your server’s administrator will provide you with the connection details."
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "Your user account does not have ‘automatically approve changes’ enabled. You will only be able to change one record at a time."
+msgstr "Your user account does not have ‘automatically accept changes’ enabled. You will only be able to change one record at a time."
 
 #: admin.php:556
 #, php-format
@@ -16610,6 +16590,10 @@ msgstr "by"
 msgid "calculated %s"
 msgstr "calculated %s"
 
+#: app/Module/ClippingsCartModule.php:796
+msgid "cancel"
+msgstr "cancel"
+
 #: app/Stats.php:2918
 msgid "census added"
 msgstr "census added"
@@ -16767,6 +16751,9 @@ msgstr "died"
 msgctxt "MALE"
 msgid "died"
 msgstr "died"
+
+msgid "download"
+msgstr "download"
 
 #: app/Module/GoogleMapsModule.php:3508
 msgid "east"
@@ -18881,6 +18868,10 @@ msgstr "last"
 msgid "less than"
 msgstr "less than"
 
+#: inverselink.php:152
+msgid "link"
+msgstr "link"
+
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
 #: app/Module/RecentChangesModule.php:155
@@ -20401,7 +20392,3 @@ msgstr "…"
 
 #~ msgid "jours complementaires"
 #~ msgstr "jours complémentaires"
-
-#, fuzzy
-msgid "download"
-msgstr "download"
