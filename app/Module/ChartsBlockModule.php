@@ -195,19 +195,27 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			->addInlineJavascript('autocomplete();');
 	?>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php echo I18N::translate('Chart type'); ?></td>
+			<td class="descriptionbox wrap width33">
+				<?php echo I18N::translate('Chart type'); ?>
+			</td>
 			<td class="optionbox">
 				<?php echo FunctionsEdit::selectEditControl('type', $charts, null, $type); ?>
 			</td>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php echo I18N::translate('Show details'); ?></td>
+			<td class="descriptionbox wrap width33">
+				<?php echo I18N::translate('Show details'); ?>
+			</td>
 		<td class="optionbox">
 			<?php echo FunctionsEdit::editFieldYesNo('details', $details); ?>
 			</td>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php echo I18N::translate('Individual'); ?></td>
+			<td class="descriptionbox wrap width33">
+				<label for="pid">
+					<?php echo I18N::translate('Individual'); ?>
+				</label>
+			</td>
 			<td class="optionbox">
 				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php
