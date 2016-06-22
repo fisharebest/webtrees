@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 00:07+0000\n"
+"PO-Revision-Date: 2016-06-22 13:39+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (Australia) <https://translate.webtrees.net/projects/webtrees/webtrees/en-AU/>\n"
 "Language: en-AU\n"
@@ -18804,6 +18804,9 @@ msgctxt "MALE"
 msgid "immigration name"
 msgstr "immigration name"
 
+msgid "import"
+msgstr "import"
+
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
 #, php-format
@@ -20069,6 +20072,12 @@ msgstr "unreliable evidence"
 msgid "update"
 msgstr "update"
 
+msgid "upload"
+msgstr "upload"
+
+msgid "view"
+msgstr "view"
+
 #: admin_trees_config.php:366 admin_trees_config.php:390
 #: admin_trees_config.php:430 admin_trees_config.php:470
 #: admin_trees_config.php:490
@@ -20392,15 +20401,3 @@ msgstr "…"
 
 #~ msgid "jours complementaires"
 #~ msgstr "jours complémentaires"
-
-#, fuzzy
-msgid "import"
-msgstr "import"
-
-#, fuzzy
-msgid "upload"
-msgstr "upload"
-
-#, fuzzy
-msgid "view"
-msgstr "view"
