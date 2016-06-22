@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 13:51+0000\n"
+"PO-Revision-Date: 2016-06-22 13:58+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -15617,7 +15617,7 @@ msgstr "Vietnam"
 #: descendancy.php:71 familybook.php:61 fanchart.php:95 hourglass.php:62
 #: pedigree.php:169 relationship.php:85
 msgid "View"
-msgstr "lássuk"
+msgstr "Megtekintés"
 
 #: placelist.php:157
 msgid "View all records found in this place"
@@ -20084,7 +20084,7 @@ msgid "upload"
 msgstr "feltöltés"
 
 msgid "view"
-msgstr "megtekintés"
+msgstr "lássuk"
 
 #: admin_trees_config.php:366 admin_trees_config.php:390
 #: admin_trees_config.php:430 admin_trees_config.php:470
