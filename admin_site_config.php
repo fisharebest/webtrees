@@ -261,7 +261,6 @@ $controller->pageHeader();
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::editFieldYesNo('ALLOW_USER_THEMES', Site::getPreference('ALLOW_USER_THEMES'), 'class="radio-inline"') ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Allow users to select their own theme” site configuration setting */ I18N::translate('Gives users the option of selecting their own theme.') ?>
 			</p>
 		</div>
 	</fieldset>
