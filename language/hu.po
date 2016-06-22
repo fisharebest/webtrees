@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 14:25+0000\n"
+"PO-Revision-Date: 2016-06-22 14:43+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -12760,9 +12760,8 @@ msgid "Show this block for which languages"
 msgstr "Mely nyelveken jelenjen meg ez a blokk"
 
 #: admin_trees_config.php:1087
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Mutassunk kijelölt képet a személy keretében"
+msgstr "Az ábrákon és családcsoportokban legyen bélyegkép."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1023 app/Functions/FunctionsEdit.php:206
@@ -14081,9 +14080,8 @@ msgstr "Témaváltás"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-#, fuzzy
 msgid "Theme menu"
-msgstr "Legördülő menü témaváltáshoz"
+msgstr "Témamenü"
 
 #: admin_modules.php:165
 msgid "Themes"
