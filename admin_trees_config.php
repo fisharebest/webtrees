@@ -1042,6 +1042,32 @@ $controller
 
 	<h3><?php echo I18N::translate('Thumbnail images'); ?></h3>
 
+	<!-- SHOW_HIGHLIGHT_IMAGES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo I18N::translate('Thumbnail images'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo FunctionsEdit::radioButtons('SHOW_HIGHLIGHT_IMAGES', $hide_show, $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo I18N::translate('Show thumbnail images in charts and family groups.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- USE_SILHOUETTE -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Use silhouettes'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo FunctionsEdit::radioButtons('USE_SILHOUETTE', $no_yes, $WT_TREE->getPreference('USE_SILHOUETTE'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Use silhouettes” configuration setting */ I18N::translate('Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
 	<!-- THUMBNAIL_WIDTH -->
 	<div class="form-group">
 		<label class="control-label col-sm-3" for="THUMBNAIL_WIDTH">
@@ -1067,31 +1093,6 @@ $controller
 			</p>
 		</div>
 	</div>
-
-	<!-- USE_SILHOUETTE -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Use silhouettes'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('USE_SILHOUETTE', $no_yes, $WT_TREE->getPreference('USE_SILHOUETTE'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Use silhouettes” configuration setting */ I18N::translate('Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- SHOW_HIGHLIGHT_IMAGES -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo I18N::translate('Show highlight images in individual boxes'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('SHOW_HIGHLIGHT_IMAGES', $no_yes, $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-			</p>
-		</div>
-	</fieldset>
 
 	<h3><?php echo I18N::translate('Watermarks'); ?></h3>
 

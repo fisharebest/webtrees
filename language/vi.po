@@ -12520,7 +12520,8 @@ msgid "Show divorced couples."
 msgstr "Hiệc các cặp vợ chồng đã li dị."
 
 #: admin_trees_config.php:1087
-msgid "Show highlight images in individual boxes"
+#, fuzzy
+msgid "Show thumbnail images in charts and family groups."
 msgstr "Hiện hình chiếu nổi trong hộp người"
 
 #. I18N: Help text for the “Hit counters” configuration setting

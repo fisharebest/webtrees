@@ -12516,7 +12516,8 @@ msgid "Show divorced couples."
 msgstr "Boşanmış çiftleri göster."
 
 #: admin_trees_config.php:1087
-msgid "Show highlight images in individual boxes"
+#, fuzzy
+msgid "Show thumbnail images in charts and family groups."
 msgstr "Kişi kutularında vurgulanan resimleri göster"
 
 #. I18N: Help text for the “Hit counters” configuration setting

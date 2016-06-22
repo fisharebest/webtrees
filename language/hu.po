@@ -12549,7 +12549,8 @@ msgid "Show divorced couples."
 msgstr "Elvált párok mutatása."
 
 #: admin_trees_config.php:1087
-msgid "Show highlight images in individual boxes"
+#, fuzzy
+msgid "Show thumbnail images in charts and family groups."
 msgstr "Mutassunk kijelölt képet a személy keretében"
 
 #. I18N: Help text for the “Hit counters” configuration setting
