@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 20:02+0000\n"
+"PO-Revision-Date: 2016-06-22 20:07+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -5356,7 +5356,7 @@ msgstr "Elke bron ondersteun spesifieke gebeurtenisse, meestal vir 'n bepaalde t
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Elke gebruikersrekening het 'n opsie om wysigings wat deur die gebruiker aangebring is outomaties te aanvaar. As hierdie opsie ontsper is, dan word al die gebruiker se wysigings onmiddelik aanvaar. Baie beheerders ontsper dit vir hulle eie rekening."
+msgstr "Elke gebruikersrekening het 'n opsie \"aanvaar veranderinge outomaties\". As hierdie opsie ontsper is, dan word al die gebruiker se wysigings onmiddelik aanvaar. Baie beheerders ontsper dit vir hulle eie rekening."
 
 #: statistics.php:129
 msgid "Earliest birth"
@@ -14631,7 +14631,7 @@ msgstr "Hierdie rol het al die regte van 'n bestuurder en dit geld vir al die st
 
 #: admin_users.php:547
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Hierdie rol het al die regte van 'n lid, en daarby ook die reg om gegewens by te voeg, te wysing en te skrap. Enige wysigings moet egter deur 'n moderator nagegaan word, tensy die opsie om “outomaties wysigings te aanvaar” vir hierdie gebruiker ontsper is."
+msgstr "Hierdie rol het al die regte van 'n lid, en daarby ook die reg om gegewens by te voeg, te wysing en te skrap. Enige wysigings moet egter deur 'n moderator nagegaan word, tensy die opsie “aanvaar veranderinge outomaties” vir hierdie gebruiker ontsper is."
 
 #: admin_users.php:561
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
