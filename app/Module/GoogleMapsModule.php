@@ -61,6 +61,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	const SCHEMA_TARGET_VERSION   = 6;
 	const SCHEMA_SETTING_NAME     = 'GM_SCHEMA_VERSION';
 	const SCHEMA_MIGRATION_PREFIX = '\Fisharebest\Webtrees\Module\GoogleMaps\Schema';
+	const OMS_VER                 = '0.3.3';
 
 	/** @var Individual[] of ancestors of root person */
 	private $ancestors = array();
@@ -139,8 +140,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		");
 
 		ob_start();
+		foreach ($this->loadScripts(true) as $script) {
+			echo '<script src="' . $script . '"></script>';
+		}
 		?>
-		<script src="<?php echo $this->googleMapsScript() ?>"></script>
 		<script>
 			var minZoomLevel   = <?php echo $this->getSetting('GM_MIN_ZOOM') ?>;
 			var maxZoomLevel   = <?php echo $this->getSetting('GM_MAX_ZOOM') ?>;
@@ -505,14 +508,20 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
-	 * Google Maps API script
+	 * get the Google Maps API
+	 * and optionally the OverlappingMarkerSpiderfier scripts
 	 *
-	 * @return string
+	 * @param bool $load_oms
+	 * @return string[]
 	 */
-	private function googleMapsScript() {
-		$key = $this->getSetting('GM_API_KEY');
-
-		return 'https://maps.googleapis.com/maps/api/js?v=3&amp;key=' . $key . '&amp;language=' . WT_LOCALE;
+	private function loadScripts($load_oms = false) {
+		$key       = $this->getSetting('GM_API_KEY');
+		$scripts   = array();
+		$scripts[] = 'https://maps.googleapis.com/maps/api/js?v=3&amp;key=' . $key . '&amp;language=' . WT_LOCALE;
+		if ($load_oms) {
+			$scripts[] = WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/packages/oms-' . self::OMS_VER . '/oms.min.js';
+		}
+		return $scripts;
 	}
 
 	/**
@@ -884,7 +893,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 		echo '</div>';
 		echo '</div>';
-		echo '<script src="', $this->googleMapsScript(), '"></script>';
+		foreach ($this->loadScripts(true) as $script) {
+			echo '<script src="' . $script . '"></script>';
+		}
 	}
 
 	/**
@@ -901,303 +912,28 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		// because the function closure trick doesnt work there
 		var gmarkers = [];
 		var index = 0;
-		var lastlinkid;
 		var infowindow = new google.maps.InfoWindow({});
-		// === Create an associative array of GIcons()
-		var gicons = [];
-		gicons["1"]        = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon1.png")
-		gicons["1"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
-		gicons["2"]         = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2.png")
-		gicons["2"].shadow  = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
-		gicons["2L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["2L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
-		gicons["2R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["2R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
-								);
-		gicons["2Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["2Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
-		gicons["3"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3.png")
-		gicons["3"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
-		gicons["3L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["3L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
-		gicons["3R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["3R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
-								);
-		gicons["3Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["3Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
-		gicons["4"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4.png")
-		gicons["4"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
-		gicons["4L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["4L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
-		gicons["4R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["4R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
-								);
-		gicons["4Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["4Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
-		gicons["5"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5.png")
-		gicons["5"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
-		gicons["5L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["5L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
-		gicons["5R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["5R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
-								);
-		gicons["5Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["5Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
-		gicons["6"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6.png")
-		gicons["6"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
-		gicons["6L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["6L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
-		gicons["6R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["6R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
-								);
-		gicons["6Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["6Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
-		gicons["7"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7.png")
-		gicons["7"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
-		gicons["7L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["7L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
-		gicons["7R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["7R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
-								);
-		gicons["7Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["7Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
-		gicons["8"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8.png")
-		gicons["8"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
-		gicons["8L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["8L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
-		gicons["8R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["8R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
-								);
-		gicons["8Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["8Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
+
 		// / A function to create the marker and set up the event window
 		function createMarker(point, name, html, mhtml, icontype) {
-			// Create a marker with the requested icon
+
 			var marker = new google.maps.Marker({
-				icon:     gicons[icontype],
-				shadow:   gicons[icontype].shadow,
+				icon:     new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon" + icontype + ".png"),
 				map:      pm_map,
 				position: point,
 				id:       index,
+				html:	  mhtml,
+				title:    name.replace(/(<([^>]+)>)/ig, ""),
 				zIndex:   0
 			});
-			google.maps.event.addListener(marker, "click", function() {
-				infowindow.close();
-				infowindow.setContent(mhtml);
-				infowindow.open(pm_map, marker);
-				var el = jQuery(".gm-ancestor[data-marker=" + marker.id + "]");
-				if(el.hasClass("person_box")) {
-					el
-						.removeClass("person_box")
-						.addClass("gm-ancestor-visited");
-					infowindow.close();
-				} else {
-					el
-					.addClass("person_box")
-					.removeClass("gm-ancestor-visited");
-				}
-				var anchor = infowindow.getAnchor();
-				lastlinkid = anchor ? anchor.id : null;
-			});
+			oms.addMarker(marker);
+
 			// save the info we need to use later for the side bar
 			gmarkers[index] = marker;
 			gm_ancestors_html += "<div data-marker =" + index++ + " class=\"gm-ancestor\">" + html +"</div>";
 
 			return marker;
-		};
+		}
 		// create the map
 		var myOptions = {
 			zoom: 6,
@@ -1214,18 +950,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			scrollwheel: true
 		};
 		var pm_map = new google.maps.Map(document.querySelector(".gm-map"), myOptions);
-		google.maps.event.addListener(pm_map, "click", function() {
-			jQuery(".gm-ancestor.person_box")
-				.removeClass("person_box")
-				.addClass("gm-ancestor-visited");
-			infowindow.close();
-			lastlinkid = null;
-		});
+		var	oms    = new OverlappingMarkerSpiderfier(pm_map);
+
 		// create the map bounds
 		var bounds = new google.maps.LatLngBounds();';
 		// add the points
 		$curgen       = 1;
-		$count        = 0;
 		$colored_line = array(
 			'1' => '#FF0000',
 			'2' => '#0000FF',
@@ -1238,7 +968,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		);
 		$lat        = array();
 		$lon        = array();
-		$latlongval = array();
 		for ($i = 0; $i < $this->treesize; $i++) {
 			// moved up to grab the sex of the individuals
 			$person = $this->ancestors[$i];
@@ -1267,42 +996,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$data .= $birth ? Filter::escapeJs($birth->summary()) : '';
 				$data .= '</div>';
 
-				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
-				if ($latlongval[$i]) {
-					$lat[$i] = (double) strtr($latlongval[$i]->pl_lati, array('N' => '', 'S' => '-', ',' => '.'));
-					$lon[$i] = (double) strtr($latlongval[$i]->pl_long, array('E' => '', 'W' => '-', ',' => '.'));
-					if ($lat[$i] || $lon[$i]) {
-						$marker_number = $curgen;
-						$dups          = 0;
-						for ($k = 0; $k < $i; $k++) {
-							if ($latlongval[$i] == $latlongval[$k]) {
-								$dups++;
-								switch ($dups) {
-								case 1:
-									$marker_number = $curgen . 'L';
-									break;
-								case 2:
-									$marker_number = $curgen . 'R';
-									break;
-								case 3:
-									$marker_number = $curgen . 'Ls';
-									break;
-								case 4:
-									$marker_number = $curgen . 'Rs';
-									break;
-								case 5: //adjust position where markers have same coodinates
-								default:
-									$marker_number = $curgen;
-									$lon[$i] += 0.0025;
-									$lat[$i] += 0.0025;
-									break;
-								}
-							}
-						}
-
+				$latlongval = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
+				if ($latlongval) {
+					$lat[$i] = (double) strtr($latlongval->pl_lati, array('N' => '', 'S' => '-', ',' => '.'));
+					$lon[$i] = (double) strtr($latlongval->pl_long, array('E' => '', 'W' => '-', ',' => '.'));
+					if ($lat[$i] && $lon[$i]) {
 						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
 						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","' . $data . '", "';
-						$js .= '<div class=\"gm-info-window\">' . $data . '</div>", "' . $marker_number . '");';
+						$js .= '<div class=\"gm-info-window\">' . $data . '</div>", "' . $curgen . '");';
 						// Construct the polygon lines
 						$to_child = (intval(($i - 1) / 2)); // Draw a line from parent to child
 						if (array_key_exists($to_child, $lat) && $lat[$to_child] != 0 && $lon[$to_child] != 0) {
@@ -1325,11 +1026,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						// Extend and fit marker bounds
 
 						$js .= 'bounds.extend(point);';
-						$count++;
 					}
 				}
-			} else {
-				$latlongval[$i] = null;
 			}
 		}
 		$js .= 'oneplace=' . json_encode(count(array_unique($lat)) == 1 && count(array_unique($lon)) == 1) . ';';
@@ -1340,23 +1038,42 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			pm_map.fitBounds(bounds);
 		}
 		pm_map.setCenter(bounds.getCenter());
-		// Close the sidebar highlight when the infowindow is closed
-		google.maps.event.addListener(infowindow, "closeclick", function() {
-			jQuery(".gm-ancestor[data-marker=" + lastlinkid + "]").toggleClass("gm-ancestor-visited person_box");
-			lastlinkid = null;
-		});
 		// put the assembled gm_ancestors_html contents into the gm-ancestors div
 		document.querySelector(".gm-ancestors").innerHTML = gm_ancestors_html;
+		
+		// Event listeners
+		oms.addListener("click", function(marker, event) {
+  			infowindow.setContent(marker.html);
+  			infowindow.open(pm_map, marker);
+  			jQuery(".gm-ancestor.person_box")
+ 				.addClass("gm-ancestor-visited")
+  				.removeClass("person_box");
+   			jQuery(".gm-ancestor[data-marker=" + marker.id + "]")
+				.addClass("person_box")
+				.removeClass("gm-ancestor-visited");
+		});
+		
+		google.maps.event.addListener(pm_map, "click", function() {
+			infowindow.close();
+			jQuery(".gm-ancestor.person_box")
+				.removeClass("person_box")
+				.addClass("gm-ancestor-visited");
+		});
+
+		google.maps.event.addListener(infowindow, "closeclick", function() {
+			jQuery(".gm-ancestor.person_box")
+				.removeClass("person_box")
+				.addClass("gm-ancestor-visited");
+		});
 
 		jQuery(".gm-ancestor-link")
 			.on("click", "a", function(e) {
 				e.stopPropagation();
 			})
 			.on("click", function(e) {
-				if (lastlinkid != null) {
-					jQuery(".gm-ancestor[data-marker=" + lastlinkid + "]").toggleClass("person_box gm-ancestor-visited");
-				}
 				var target = jQuery(this).closest(".gm-ancestor").data("marker");
+				// First click expands the markers, second opens the infowindow
+				google.maps.event.trigger(gmarkers[target], "click");
 				google.maps.event.trigger(gmarkers[target], "click");
 			});
 		';
@@ -1981,6 +1698,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				var head       = '';
 				var dir        = '';
 				var svzoom     = '';
+				var oms;
 
 				var infowindow = new google.maps.InfoWindow({});
 
@@ -1992,12 +1710,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				var iconImage = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
 					new google.maps.Size(20, 34),
-					new google.maps.Point(0, 0),
-					new google.maps.Point(9, 34)
-				);
-
-				var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
-					new google.maps.Size(37, 34),
 					new google.maps.Point(0, 0),
 					new google.maps.Point(9, 34)
 				);
@@ -2035,14 +1747,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							new google.maps.Size(25, 15),
 							new google.maps.Point(0, 0),
 							new google.maps.Point(12, 15));
-						var icon_shadow = new google.maps.MarkerImage(WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/images/flag_shadow.png',
-							new google.maps.Size(35, 45), // Shadow size
-							new google.maps.Point(0, 0),  // Shadow origin
-							new google.maps.Point(1, 45)  // Shadow anchor is base of flagpole
-						);
 					} else {
 						var icon_image  = getMarkerImage('red');
-						var icon_shadow = iconShadow;
 					}
 
 					// Decide if marker point is Regular (latlng) or StreetView (sv_point) derived
@@ -2056,12 +1762,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					var marker = new google.maps.Marker({
 						position: placer,
 						icon:     icon_image,
-						shadow:   icon_shadow,
 						map:      map,
 						title:    tooltip,
+						html:     html,
+
 						zIndex:   Math.round(latlng.lat() * -100000) << 5
 					});
-
+					oms.addMarker(marker);
 					// Store the tab and event info as marker properties
 					marker.sv_lati  = sv_lati;
 					marker.sv_long  = sv_long;
@@ -2085,12 +1792,42 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 					marker.sv_latlng = new google.maps.LatLng(sv_lati, sv_long);
 					gmarkers.push(marker);
+				}
+				
+				// Opens Marker infowindow when corresponding Sidebar item is clicked
+				function openInfowindow(i) {
+					infowindow.close();
+					// Expand grouped markers
+					google.maps.event.trigger(gmarkers[i], 'click');
+					// Open the infowindow
+					google.maps.event.trigger(gmarkers[i], 'click');
+					return false;
+				}
 
-					// Open infowindow when marker is clicked
-					google.maps.event.addListener(marker, 'click', function() {
-						infowindow.close();
-						infowindow.setContent(html);
+				function loadMap() {
+					// Create the map and mapOptions
+					var mapOptions = {
+						zoom:                     7,
+						center:                   map_center,
+						mapTypeId:                google.maps.MapTypeId.<?php echo $this->getSetting('GM_MAP_TYPE') ?>,
+						mapTypeControlOptions:    {
+							style: google.maps.MapTypeControlStyle.DROPDOWN_MENU  // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
+						},
+						navigationControl:        true,
+						navigationControlOptions: {
+							position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
+							style:    google.maps.NavigationControlStyle.SMALL  // ANDROID, DEFAULT, SMALL, ZOOM_PAN
+						},
+						streetViewControl:        true,
+						scrollwheel:              true
+					};
+					map = new google.maps.Map(document.querySelector('.gm-map'), mapOptions);
+					oms = new OverlappingMarkerSpiderfier(map);
+
+					oms.addListener('click', function(marker, event) {
+						infowindow.setContent(marker.html);
 						infowindow.open(map, marker);
+
 						var panoramaOptions = {
 							position:          marker.position,
 							mode:              'html5',
@@ -2098,9 +1835,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							linksControl:      false,
 							addressControl:    false,
 							pov:               {
-								heading: sv_bearing,
-								pitch:   sv_elevation,
-								zoom:    sv_zoom
+								heading: parseFloat(marker.sv_bearing),
+								pitch:   parseFloat(marker.sv_elevation),
+								zoom:    parseFloat(marker.sv_zoom)
 							}
 						};
 
@@ -2127,33 +1864,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						});
 						<?php } ?>
 					});
-				}
-
-				// Opens Marker infowindow when corresponding Sidebar item is clicked
-				function openInfowindow(i) {
-					infowindow.close();
-					google.maps.event.trigger(gmarkers[i], 'click');
-					return false;
-				}
-
-				function loadMap() {
-					// Create the map and mapOptions
-					var mapOptions = {
-						zoom:                     7,
-						center:                   map_center,
-						mapTypeId:                google.maps.MapTypeId.<?php echo $this->getSetting('GM_MAP_TYPE') ?>,
-						mapTypeControlOptions:    {
-							style: google.maps.MapTypeControlStyle.DROPDOWN_MENU  // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
-						},
-						navigationControl:        true,
-						navigationControlOptions: {
-							position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-							style:    google.maps.NavigationControlStyle.SMALL  // ANDROID, DEFAULT, SMALL, ZOOM_PAN
-						},
-						streetViewControl:        true,
-						scrollwheel:              true
-					};
-					map = new google.maps.Map(document.querySelector('.gm-map'), mapOptions);
 
 					// Close any infowindow when map is clicked
 					google.maps.event.addListener(map, 'click', function() {
@@ -2381,7 +2091,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '<div id="place_map" style="border:1px solid gray; width:', $this->getSetting('GM_PH_XSIZE'), 'px; height:', $this->getSetting('GM_PH_YSIZE'), 'px; ';
 		}
 		echo '"><i class="icon-loading-large"></i></div>';
-		echo '<script src="', $this->googleMapsScript(), '"></script>';
+		foreach ($this->loadScripts() as $script) {
+			echo '<script src="' . $script . '"></script>';
+		}
 
 		$plzoom = $latlng['pl_zoom']; // Map zoom level
 
@@ -2503,9 +2215,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		if (!$place2['lati'] || !$place2['long']) {
 			echo 'var icon_type = new google.maps.MarkerImage();';
 			echo 'icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
-			echo 'icon_type.shadow = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/shadow50.png";';
 			echo 'icon_type.iconSize = google.maps.Size(20, 34);';
-			echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
 			echo 'var point = new google.maps.LatLng(0, 0);';
 			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels, '&amp;parent[' . $level . ']=';
 			if ($place2['place'] == 'Unknown') {
@@ -2547,9 +2257,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo 'var icon_type = new google.maps.MarkerImage();';
 			if ($place2['icon'] !== null && $place2['icon'] !== '' && $this->getSetting('GM_PH_MARKER') === 'G_FLAG') {
 				echo ' icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '";';
-				echo ' icon_type.shadow = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png";';
 				echo ' icon_type.iconSize = new google.maps.Size(25, 15);';
-				echo ' icon_type.shadowSize = new google.maps.Size(35, 45);';
 			}
 			echo 'var point = new google.maps.LatLng(', $lati, ', ', $long, ');';
 			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels;
@@ -2634,24 +2342,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			// Creates a marker whose info window displays the given name
 			function createMarker(point, html, icon, name) {
-				// Choose icon and shadow ============
+				// Choose icon ============
 				if (icon.image && ' . $level . '<=3) {
 					if (icon.image!="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png") {
 						var iconImage = new google.maps.MarkerImage(icon.image,
 						new google.maps.Size(25, 15),
 						new google.maps.Point(0,0),
 						new google.maps.Point(12, 15));
-						var iconShadow = new google.maps.MarkerImage("' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/flag_shadow.png",
-						new google.maps.Size(35, 45),
-						new google.maps.Point(0,0),
-						new google.maps.Point(1, 45));
 					} else {
 						var iconImage = new google.maps.MarkerImage(icon.image,
 						new google.maps.Size(20, 34),
-						new google.maps.Point(0,0),
-						new google.maps.Point(9, 34));
-						var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
-						new google.maps.Size(37, 34),
 						new google.maps.Point(0,0),
 						new google.maps.Point(9, 34));
 					}
@@ -2660,16 +2360,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					new google.maps.Size(20, 34),
 					new google.maps.Point(0,0),
 					new google.maps.Point(9, 34));
-					var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
-					new google.maps.Size(37, 34),
-					new google.maps.Point(0,0),
-					new google.maps.Point(9, 34));
 				}
 				var posn = new google.maps.LatLng(0,0);
 				var marker = new google.maps.Marker({
 					position: point,
 					icon: iconImage,
-					shadow: iconShadow,
 					map: map,
 					title: name
 				});
@@ -3062,11 +2757,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 			echo '</b><br>';
 		}
-
+		foreach ($this->loadScripts() as $script) {
+			echo '<script src="' . $script . '"></script>';
+		}
 		?>
 
-			<script src="<?php echo $this->googleMapsScript() ?>"></script>
-			<script>
+		<script>
 			var map;
 			var marker;
 			var zoom;
@@ -3266,14 +2962,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						echo 'new google.maps.Point(0, 0),'; // Image origin
 						echo 'new google.maps.Point(12, 15)'; // Image anchor
 					echo ');';
-					echo 'var iconShadow = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
-						echo 'new google.maps.Size(35, 45),'; // Shadow size
-						echo 'new google.maps.Point(0,0),'; // Shadow origin
-						echo 'new google.maps.Point(1, 45)'; // Shadow anchor is base of flagpole
-					echo ');';
 					echo 'marker = new google.maps.Marker({';
 						echo 'icon: image,';
-						echo 'shadow: iconShadow,';
 						echo 'position: latlng,';
 						echo 'map: map,';
 						echo 'title: pl_name,';
@@ -3357,15 +3047,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					echo 'new google.maps.Point(0, 0),'; // Image origin
 					echo 'new google.maps.Point(10, 34)'; // Image anchor
 				echo ');';
-				echo 'var iconShadow = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/shadow50.png",';
-					echo 'new google.maps.Size(37, 34),'; // Shadow size
-					echo 'new google.maps.Point(0, 0),'; // Shadow origin
-					echo 'new google.maps.Point(10, 34)'; // Shadow anchor is base of image
-				echo ');';
 				?>
 				var marker = new google.maps.Marker({
 					icon: image,
-					shadow: iconShadow,
 					map: map,
 					position: point,
 					zIndex: 0
@@ -4229,7 +3913,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<head>
 				<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 				<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/gm_streetview.css" rel="stylesheet">
-				<script src="<?php echo $this->googleMapsScript() ?>"></script>
+				<?php
+				foreach ($this->loadScripts() as $script) {
+					echo '<script src="' . $script . '"></script>';
+				}
+				?>
 				<script>
 
 		// Following function creates an array of the google map parameters passed ---------------------
