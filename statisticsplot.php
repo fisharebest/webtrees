@@ -785,7 +785,7 @@ function calculate_axis($x_axis_boundaries) {
 	} else {
 		$xmax = $i;
 	}
-	$xdata[$xmax]        = /* I18N: Label on a graph; 40+ means 40 or more */ I18N::translate('%s+',I18N::number($hulpar[$i - 1]));
+	$xdata[$xmax]        = /* I18N: Label on a graph; 40+ means 40 or more */ I18N::translate('%s+', I18N::number($hulpar[$i - 1]));
 	$x_boundaries[$xmax] = 10000;
 	$xmax                = $xmax + 1;
 	if ($xmax > 20) {
