@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-21 08:57+0000\n"
+"PO-Revision-Date: 2016-06-22 09:51+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -769,9 +769,8 @@ msgstr "Site ziyaretçileri için bir Karşılama mesajı."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-#, fuzzy
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "Moderatör onayı gereken değişikliklerin listesi ve email mesaj bildirimleri."
+msgstr "Moderatör onayı gereken değişikliklerin listesi ve e-posta mesaj bildirimleri."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -1139,6 +1138,10 @@ msgstr "Tüm değişiklikleri kabul et"
 #: admin_trees_config.php:535
 msgid "Access level"
 msgstr "Erişim seviyesi"
+
+#: admin_users.php:521
+msgid "Access to family trees"
+msgstr "Aile ağaçlarına erişim"
 
 #: admin_users.php:376
 msgid "Account approval and email verification"
@@ -1666,9 +1669,8 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr "Aile ağacını oluşturduktan sonra, GEDCOM dosya verilerini yükleyebilirsiniz."
 
 #: login.php:259
-#, fuzzy
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr "Giriş yaptıktan sonra «Benim sayfam» menüsü altında «Hesabım» bağlantısını tıklayın ve şifrenizi değiştirmek için her iki alana yeni şifrenizi girerek kaydedin."
+msgstr "Giriş yaptıktan sonra \"Benim sayfam\" menüsü altında \"Hesabım\" bağlantısını tıklayın ve şifrenizi değiştirmek için yeni şifrenizi girin."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
@@ -2289,9 +2291,8 @@ msgid "Author of last change"
 msgstr "Son değiştiren"
 
 #: admin_users.php:442
-#, fuzzy
 msgid "Automatically accept changes made by this user"
-msgstr "Kullanıcının değişikliklerini otomatikman kabul et"
+msgstr "Bu kullanıcı tarafından yapılan değişiklikleri otomatik olarak kabul et"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
@@ -3268,6 +3269,11 @@ msgstr "Varsayılan olarak sunucunuz script 'lerin %s hafıza kullanmasına izin
 msgid "CKEditor™"
 msgstr "CKEditör™"
 
+#. I18N: Help text for the “Date differences” configuration setting
+#: admin_trees_config.php:1539
+msgid "Calculate the age differences between siblings, children, spouses, etc."
+msgstr "Kardeşler, çocuklar, eşler, vb. arasındaki yaş farklarını hesapla."
+
 #: admin_trees_manage.php:367
 msgid "Calculating…"
 msgstr "Hesaplanıyor…"
@@ -3307,11 +3313,6 @@ msgstr "Campinas, Brezilya"
 #: app/Stats.php:6716
 msgid "Canada"
 msgstr "Kanada"
-
-#: app/Module/ClippingsCartModule.php:796
-#, fuzzy
-msgid "cancel"
-msgstr "Vazgeç"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6717
@@ -6046,11 +6047,6 @@ msgstr "%s Ailesi"
 #: edit_changes.php:180
 msgid "Family tree"
 msgstr "Aile ağacı"
-
-#: admin_users.php:521
-#, fuzzy
-msgid "Access to family trees"
-msgstr "Aile ağacı erişim ve ayarları"
 
 #: app/Module/ClippingsCartModule.php:90
 #: app/Module/ClippingsCartModule.php:479
@@ -9964,9 +9960,8 @@ msgid "Norfolk Island"
 msgstr "Norfolk Adaları"
 
 #: admin_users.php:445
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "Normalde aile ağacındaki herhangi bir değişikiğin moderatör tarafından onaylanması gerekir. Bu seçenek kullanıcın moderatör onayı gerekmeden değişiklik yapabilmesine imkan verir."
+msgstr "Normalde aile ağacındaki herhangi bir değişikliğin moderatör tarafından gözden geçirilmesi gerekir. Bu seçenek kullanıcın moderatör onayı gerekmeden değişiklik yapabilmesine imkan verir."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6864
@@ -12176,11 +12171,6 @@ msgstr "Oturum zaman aşımı"
 msgid "Set as default"
 msgstr "Varsayılan olarak ayarla"
 
-#: inverselink.php:152
-#, fuzzy
-msgid "link"
-msgstr "Linki bağla"
-
 #. I18N: You need to:
 #: login.php:572
 msgid "Set the access level for each tree."
@@ -14151,7 +14141,6 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Bu hesabınızı doğrulamadınız.<br><br>Hesabı doğrulamak için lütfen kayıt olurken verdiğiniz e-postaya gönderdiğimiz doğrulama mesajını kontrol ediniz."
 
 #: app/Module/ReviewChangesModule.php:179
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Bu blok moderator tarafından onaylanmayı bekleyen değişikliklerin listesini gösterir. Ayrıca bekleyen değişiklik olduğu sürece moderatorlere günlük mail gönderir."
 
@@ -14597,7 +14586,6 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Bu havuz düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s."
 
 #: admin_users.php:553
-#, fuzzy
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Bu rol, editör rolünün tüm yetkilerine ilave olarak, diğer kullanıcıların yaptığı değişiklikleri onaylama veya reddetme yetkisine sahiptir."
 
@@ -14606,9 +14594,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Bu rol, tüm aile ağaçlarındaki idareci rolünün yetkilerine ilave olarak, site ayarları, kullanıcı ve modül ayarlarını değiştirme yetkisine sahiptir."
 
 #: admin_users.php:547
-#, fuzzy
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Bu rol, üye rolünün tüm yetkilerine ilave olarak verilerde ekleme, çıkarma ve değiştirme yatkisine sahiptir. Eğer kullanıcı için \"Değişiklikleri otomatik olarak onayla\" seçeneği işaretli değil ise yapılan bütün değişikliklerin moderatör tarafından onaylanması gerekmektedir."
+msgstr "Bu rol, üye rolünün tüm yetkilerine ilave olarak verilerde ekleme, çıkarma ve değiştirme yetkisine sahiptir. Eğer kullanıcı için \"Değişiklikleri otomatik olarak onayla\" seçeneği işaretli değil ise yapılan bütün değişikliklerin moderatör tarafından onaylanması gerekmektedir."
 
 #: admin_users.php:561
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -15802,12 +15789,6 @@ msgstr "Yeni yakın akraba kaydı eklerken, kaynak kayıtlarına (birey ve aile)
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 msgstr "Yeni kayıt oluşturulurken, bunlara dahili bir kimlik numarası verilir. Her tür kayıt için kullanılacak ön eki belirtebilirsiniz."
 
-#. I18N: Help text for the “Date differences” configuration setting
-#: admin_trees_config.php:1539
-#, fuzzy
-msgid "Calculate the age differences between siblings, children, spouses, etc."
-msgstr "Bu seçenek seçildiğinde, kardeşler, çocuklar, eşler, vb. arasındaki yaş farkları hesaplanır."
-
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2141
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
@@ -16211,9 +16192,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Sunucunuzun yöneticisi bağlantı detayları size verecektir."
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "Kullanıcı hesabınızda \"değişiklikleri otomatikman kabul et\" seçeneği etkinleştirilmedi. Bundan dolayı tek tek değiştirmek mümkün olacaktır."
+msgstr "Kullanıcı hesabınızda \"değişiklikleri otomatikman kabul et\" seçeneği etkinleştirilmedi. Bundan dolayı kayıtlarda tek tek değişiklik yapabilirsiniz."
 
 #: admin.php:556
 #, php-format
@@ -16576,6 +16556,10 @@ msgstr "tarafından"
 msgid "calculated %s"
 msgstr "hesaplanan %s"
 
+#: app/Module/ClippingsCartModule.php:796
+msgid "cancel"
+msgstr "vazgeç"
+
 #: app/Stats.php:2918
 msgid "census added"
 msgstr "nüfüs sayımı eklendi"
@@ -16733,6 +16717,9 @@ msgstr "öldü"
 msgctxt "MALE"
 msgid "died"
 msgstr "öldü"
+
+msgid "download"
+msgstr "indir"
 
 #: app/Module/GoogleMapsModule.php:3508
 msgid "east"
@@ -18845,6 +18832,10 @@ msgstr "son"
 msgid "less than"
 msgstr "den az"
 
+#: inverselink.php:152
+msgid "link"
+msgstr "bağla"
+
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
 #: app/Module/RecentChangesModule.php:155
@@ -20366,7 +20357,3 @@ msgstr "…"
 
 #~ msgid "Zoom="
 #~ msgstr "Yakınlık="
-
-#, fuzzy
-msgid "download"
-msgstr "indir"
