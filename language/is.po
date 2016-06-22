@@ -20411,3 +20411,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "hlaða niður"
+
+#, fuzzy
+msgid "import"
+msgstr "flytja inn"
+
+#, fuzzy
+msgid "upload"
+msgstr "hlaða upp"
+
+#, fuzzy
+msgid "view"
+msgstr "sýn"

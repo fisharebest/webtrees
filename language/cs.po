@@ -20461,3 +20461,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "stáhnout"
+
+#, fuzzy
+msgid "import"
+msgstr "importovat"
+
+#, fuzzy
+msgid "upload"
+msgstr "nahrát"
+
+#, fuzzy
+msgid "view"
+msgstr "zobrazit"

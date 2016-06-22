@@ -20390,3 +20390,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "preuzimanje"
+
+#, fuzzy
+msgid "import"
+msgstr "import"
+
+#, fuzzy
+msgid "upload"
+msgstr "pošalji"
+
+#, fuzzy
+msgid "view"
+msgstr "prikaz"

@@ -20300,3 +20300,15 @@ msgstr ""
 #, fuzzy
 msgid "download"
 msgstr "lejupielādēt"
+
+#, fuzzy
+msgid "import"
+msgstr "importēt"
+
+#, fuzzy
+msgid "upload"
+msgstr "augšupielādēt"
+
+#, fuzzy
+msgid "view"
+msgstr "skats"

@@ -92,7 +92,7 @@ $controller
 						<?php echo FunctionsEdit::selectEditControl('fan_style', $controller->getFanStyles(), null, $controller->fan_style); ?>
 					</td>
 					<td rowspan="2" class="topbottombar vmiddle">
-						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
 					</td>
 				</tr>
 				<tr>

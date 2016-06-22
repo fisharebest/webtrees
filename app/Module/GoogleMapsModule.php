@@ -763,7 +763,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<?php echo FunctionsPrint::printFindIndividualLink('rootid') ?>
 					</td>
 					<td class="topbottombar" rowspan="2">
-						<input type="submit" value="<?php echo I18N::translate('View') ?>">
+						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view') ?>">
 					</td>
 				</tr>
 				<tr>
@@ -4172,7 +4172,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</div>
 					<button type="submit" class="btn btn-default">
 						<i class="fa fa-upload"></i>
-						<?php echo I18N::translate('Import') ?>
+						<?php echo /* I18N: A button label. */ I18N::translate('import') ?>
 					</button>
 				</div>
 			</div>
@@ -4190,7 +4190,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<div class="col-sm-6">
 						<button type="submit" class="btn btn-default">
 							<i class="fa fa-upload"></i>
-							<?php echo I18N::translate('Upload') ?>
+							<?php echo /* I18N: A button label. */ I18N::translate('upload') ?>
 						</button>
 					</div>
 				</div>

@@ -20413,3 +20413,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "lae alla"
+
+#, fuzzy
+msgid "import"
+msgstr "impordi"
+
+#, fuzzy
+msgid "upload"
+msgstr "lae üles"
+
+#, fuzzy
+msgid "view"
+msgstr "vaata"

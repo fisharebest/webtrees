@@ -20409,3 +20409,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "last ned"
+
+#, fuzzy
+msgid "import"
+msgstr "importér"
+
+#, fuzzy
+msgid "upload"
+msgstr "last opp"
+
+#, fuzzy
+msgid "view"
+msgstr "vis"

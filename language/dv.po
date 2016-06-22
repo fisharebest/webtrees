@@ -20168,3 +20168,15 @@ msgstr ""
 #, fuzzy
 msgid "download"
 msgstr ""
+
+#, fuzzy
+msgid "import"
+msgstr ""
+
+#, fuzzy
+msgid "upload"
+msgstr ""
+
+#, fuzzy
+msgid "view"
+msgstr ""

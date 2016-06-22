@@ -20531,3 +20531,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "descargar"
+
+#, fuzzy
+msgid "import"
+msgstr "impòrtar"
+
+#, fuzzy
+msgid "upload"
+msgstr "cargar"
+
+#, fuzzy
+msgid "view"
+msgstr "afichar"

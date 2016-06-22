@@ -20378,3 +20378,15 @@ msgstr "缺少姓氏"
 #, fuzzy
 msgid "download"
 msgstr "下载"
+
+#, fuzzy
+msgid "import"
+msgstr "导入"
+
+#, fuzzy
+msgid "upload"
+msgstr "上传"
+
+#, fuzzy
+msgid "view"
+msgstr "显示"

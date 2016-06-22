@@ -20387,3 +20387,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "last ned"
+
+#, fuzzy
+msgid "import"
+msgstr "importer"
+
+#, fuzzy
+msgid "upload"
+msgstr "last opp"
+
+#, fuzzy
+msgid "view"
+msgstr "syn"

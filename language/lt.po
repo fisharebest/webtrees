@@ -20442,3 +20442,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "parsisiųsti"
+
+#, fuzzy
+msgid "import"
+msgstr "importuoti"
+
+#, fuzzy
+msgid "upload"
+msgstr "įkelti"
+
+#, fuzzy
+msgid "view"
+msgstr "rodyti"

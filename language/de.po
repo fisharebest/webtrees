@@ -20395,3 +20395,15 @@ msgstr "…"
 
 #~ msgid "Zoom="
 #~ msgstr "Zoom="
+
+#, fuzzy
+msgid "import"
+msgstr "import"
+
+#, fuzzy
+msgid "upload"
+msgstr "hochladen"
+
+#, fuzzy
+msgid "view"
+msgstr "zeige"

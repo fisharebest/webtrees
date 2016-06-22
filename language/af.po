@@ -20411,3 +20411,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "aflaai"
+
+#, fuzzy
+msgid "import"
+msgstr "voer in"
+
+#, fuzzy
+msgid "upload"
+msgstr "laai op"
+
+#, fuzzy
+msgid "view"
+msgstr "bekyk"

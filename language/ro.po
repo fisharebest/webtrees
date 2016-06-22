@@ -20378,3 +20378,15 @@ msgstr ""
 #, fuzzy
 msgid "download"
 msgstr "descarcă"
+
+#, fuzzy
+msgid "import"
+msgstr "importă"
+
+#, fuzzy
+msgid "upload"
+msgstr "încarcă"
+
+#, fuzzy
+msgid "view"
+msgstr "vizualizează"

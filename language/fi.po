@@ -20409,3 +20409,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "lataa"
+
+#, fuzzy
+msgid "import"
+msgstr "tuo"
+
+#, fuzzy
+msgid "upload"
+msgstr "lataa palvelimelle"
+
+#, fuzzy
+msgid "view"
+msgstr "näytä"

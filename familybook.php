@@ -58,7 +58,7 @@ $controller
 						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
 					</td>
 					<td rowspan="3" class="topbottombar vmiddle">
-						<input type="submit" value="<?php echo /* I18N: Submit button, on a form */ I18N::translate('View'); ?>">
+						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
 					</td>
 				</tr>
 				<tr>

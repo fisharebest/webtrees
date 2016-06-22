@@ -20474,3 +20474,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "preuzimanje"
+
+#, fuzzy
+msgid "import"
+msgstr "uvoz"
+
+#, fuzzy
+msgid "upload"
+msgstr "učitaj"
+
+#, fuzzy
+msgid "view"
+msgstr "prikaži"

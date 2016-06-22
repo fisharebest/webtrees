@@ -20299,3 +20299,15 @@ msgstr ""
 #, fuzzy
 msgid "download"
 msgstr "бушату"
+
+#, fuzzy
+msgid "import"
+msgstr "импорт"
+
+#, fuzzy
+msgid "upload"
+msgstr "йөкләү"
+
+#, fuzzy
+msgid "view"
+msgstr "күрсәтергә"

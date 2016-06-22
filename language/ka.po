@@ -20316,3 +20316,15 @@ msgstr ""
 #, fuzzy
 msgid "download"
 msgstr "გადმოტვირთვა"
+
+#, fuzzy
+msgid "import"
+msgstr "იმპორტი"
+
+#, fuzzy
+msgid "upload"
+msgstr "ატვირთვა"
+
+#, fuzzy
+msgid "view"
+msgstr "მაჩვენე"

@@ -51,7 +51,7 @@ $controller
 						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
 					</td>
 					<td <?php echo $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES') ? 'rowspan="2"' : ''; ?> class="facts_label03">
-						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
 					</td>
 				</tr>
 				<?php if ($WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES')) { ?>

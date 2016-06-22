@@ -20416,3 +20416,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "ladda ner"
+
+#, fuzzy
+msgid "import"
+msgstr "importera"
+
+#, fuzzy
+msgid "upload"
+msgstr "ladda upp"
+
+#, fuzzy
+msgid "view"
+msgstr "visa"

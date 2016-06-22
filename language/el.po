@@ -20358,3 +20358,15 @@ msgstr ""
 #, fuzzy
 msgid "download"
 msgstr "λήψη"
+
+#, fuzzy
+msgid "import"
+msgstr "εισαγωγή"
+
+#, fuzzy
+msgid "upload"
+msgstr "ανέβασμα"
+
+#, fuzzy
+msgid "view"
+msgstr "προβολή"

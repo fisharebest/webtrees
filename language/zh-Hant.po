@@ -20183,3 +20183,15 @@ msgstr ""
 #, fuzzy
 msgid "download"
 msgstr ""
+
+#, fuzzy
+msgid "import"
+msgstr ""
+
+#, fuzzy
+msgid "upload"
+msgstr "上傳"
+
+#, fuzzy
+msgid "view"
+msgstr "檢視"

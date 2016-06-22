@@ -20230,3 +20230,15 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
+
+#, fuzzy
+msgid "import"
+msgstr ""
+
+#, fuzzy
+msgid "upload"
+msgstr ""
+
+#, fuzzy
+msgid "view"
+msgstr ""

@@ -20590,3 +20590,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "تنزيل"
+
+#, fuzzy
+msgid "import"
+msgstr "توريد"
+
+#, fuzzy
+msgid "upload"
+msgstr "تحميل"
+
+#, fuzzy
+msgid "view"
+msgstr "إظهار"

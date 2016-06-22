@@ -82,7 +82,7 @@ if ($person1 && $person2) {
 					</label>
 				</td>
 				<td class="optionbox vmiddle" rowspan="2">
-					<input type="submit" value="<?php echo I18N::translate('View') ?>">
+					<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view') ?>">
 				</td>
 			</tr>
 			<tr>

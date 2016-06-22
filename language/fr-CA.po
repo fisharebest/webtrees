@@ -20410,3 +20410,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "télécharger"
+
+#, fuzzy
+msgid "import"
+msgstr "importer"
+
+#, fuzzy
+msgid "upload"
+msgstr "téléversement"
+
+#, fuzzy
+msgid "view"
+msgstr "afficher"

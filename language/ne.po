@@ -20269,3 +20269,15 @@ msgstr ""
 #, fuzzy
 msgid "download"
 msgstr "डाऊनलोड"
+
+#, fuzzy
+msgid "import"
+msgstr "आयात गर्नुहोस्"
+
+#, fuzzy
+msgid "upload"
+msgstr "अपलोड"
+
+#, fuzzy
+msgid "view"
+msgstr "हेर्नुहोस्"

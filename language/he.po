@@ -20413,3 +20413,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "הורד"
+
+#, fuzzy
+msgid "import"
+msgstr "ייבא"
+
+#, fuzzy
+msgid "upload"
+msgstr "העלה"
+
+#, fuzzy
+msgid "view"
+msgstr "הצג"

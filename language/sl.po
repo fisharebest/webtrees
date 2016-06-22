@@ -20403,3 +20403,15 @@ msgstr ""
 #, fuzzy
 msgid "download"
 msgstr "prenos"
+
+#, fuzzy
+msgid "import"
+msgstr "uvoz"
+
+#, fuzzy
+msgid "upload"
+msgstr "naloži"
+
+#, fuzzy
+msgid "view"
+msgstr "poglej"

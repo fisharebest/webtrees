@@ -20362,3 +20362,15 @@ msgstr ""
 #, fuzzy
 msgid "download"
 msgstr "shkarko"
+
+#, fuzzy
+msgid "import"
+msgstr "importo"
+
+#, fuzzy
+msgid "upload"
+msgstr "ngarko"
+
+#, fuzzy
+msgid "view"
+msgstr "shiko"

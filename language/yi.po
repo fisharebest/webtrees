@@ -20305,3 +20305,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr ""
+
+#, fuzzy
+msgid "import"
+msgstr "אַרייַנפיר"
+
+#, fuzzy
+msgid "upload"
+msgstr "צופֿעליקער"
+
+#, fuzzy
+msgid "view"
+msgstr "זע"

@@ -20383,3 +20383,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "tải về"
+
+#, fuzzy
+msgid "import"
+msgstr "nhập"
+
+#, fuzzy
+msgid "upload"
+msgstr "tải lên"
+
+#, fuzzy
+msgid "view"
+msgstr "xem"

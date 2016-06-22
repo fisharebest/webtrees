@@ -20467,3 +20467,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "скачати"
+
+#, fuzzy
+msgid "import"
+msgstr "імпортувати"
+
+#, fuzzy
+msgid "upload"
+msgstr "завантажити"
+
+#, fuzzy
+msgid "view"
+msgstr "вигляд"

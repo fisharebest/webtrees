@@ -20392,3 +20392,15 @@ msgstr "…"
 
 #~ msgid "jours complementaires"
 #~ msgstr "jours complémentaires"
+
+#, fuzzy
+msgid "import"
+msgstr "import"
+
+#, fuzzy
+msgid "upload"
+msgstr "upload"
+
+#, fuzzy
+msgid "view"
+msgstr "view"

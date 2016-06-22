@@ -20412,3 +20412,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "descarrega"
+
+#, fuzzy
+msgid "import"
+msgstr "importa"
+
+#, fuzzy
+msgid "upload"
+msgstr "carrega"
+
+#, fuzzy
+msgid "view"
+msgstr "mostra-ho"

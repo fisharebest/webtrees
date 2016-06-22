@@ -20426,3 +20426,15 @@ msgstr "…"
 #, fuzzy
 msgid "download"
 msgstr "download"
+
+#, fuzzy
+msgid "import"
+msgstr "hent fra server"
+
+#, fuzzy
+msgid "upload"
+msgstr "upload"
+
+#, fuzzy
+msgid "view"
+msgstr "vis"

@@ -20357,3 +20357,15 @@ msgstr "…"
 
 #~ msgid "Zoom="
 #~ msgstr "Yakınlık="
+
+#, fuzzy
+msgid "import"
+msgstr "içeri aktar"
+
+#, fuzzy
+msgid "upload"
+msgstr "yükle"
+
+#, fuzzy
+msgid "view"
+msgstr "göster"
