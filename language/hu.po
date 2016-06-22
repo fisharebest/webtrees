@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-21 08:18+0000\n"
+"PO-Revision-Date: 2016-06-22 09:39+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -798,9 +798,8 @@ msgstr "Üdvözlőszöveg a látogatóknak."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-#, fuzzy
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "Webhelykezelő jóváhagyására váró változtatások és e-mail értesítések listája."
+msgstr "Webhelykezelő felülvizsgálatára váró változtatások és e-mail értesítések listája."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -1168,6 +1167,10 @@ msgstr "Összes változtatás elfogadása"
 #: admin_trees_config.php:535
 msgid "Access level"
 msgstr "Hozzáférési szint"
+
+#: admin_users.php:521
+msgid "Access to family trees"
+msgstr "Hozzáférés a családfákhoz"
 
 #: admin_users.php:376
 msgid "Account approval and email verification"
@@ -1695,7 +1698,6 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr "A családfa létrehozását követően betölthet adatokat egy GEDCOM-fájlból."
 
 #: login.php:259
-#, fuzzy
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
 msgstr "Miután bejelentkezett, válassza a „Felhasználói fiókom” hivatkozást az „Oldalaim” menüben, és töltse ki a jelszórovatokat, hogy megváltoztassa a jelszavát."
 
@@ -2318,9 +2320,8 @@ msgid "Author of last change"
 msgstr "Utolsó módosító"
 
 #: admin_users.php:442
-#, fuzzy
 msgid "Automatically accept changes made by this user"
-msgstr "E felhasználó változtatásainak automatikus jóváhagyása"
+msgstr "E felhasználó változtatásainak automatikus elfogadása"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
@@ -3298,6 +3299,11 @@ msgstr "Alapértelmezés szerint az Ön szervere a szkripteknek %s memóriahaszn
 msgid "CKEditor™"
 msgstr "CKEditor™"
 
+#. I18N: Help text for the “Date differences” configuration setting
+#: admin_trees_config.php:1539
+msgid "Calculate the age differences between siblings, children, spouses, etc."
+msgstr "Kiszámolja a testvérek, gyerekek, házastársak stb. közötti korkülönbséget."
+
 #: admin_trees_manage.php:367
 msgid "Calculating…"
 msgstr "Számítás folyamatban…"
@@ -3337,11 +3343,6 @@ msgstr "Campinas, Brazília"
 #: app/Stats.php:6716
 msgid "Canada"
 msgstr "Kanada"
-
-#: app/Module/ClippingsCartModule.php:796
-#, fuzzy
-msgid "cancel"
-msgstr "Mégse"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6717
@@ -5003,7 +5004,7 @@ msgstr "DejaVu"
 #: app/Module/StoriesModule.php:406 app/Module/UserJournalModule.php:107
 #: app/Module/UserMessagesModule.php:111 app/Module/UserMessagesModule.php:139
 msgid "Delete"
-msgstr "Töröl"
+msgstr "Törlés"
 
 #: app/Module/GoogleMapsModule.php:3814
 msgid "Delete all existing geographic data before importing the file."
@@ -5424,7 +5425,7 @@ msgstr "Ecuador"
 #: edit_interface.php:261 edit_interface.php:418 note.php:167 note.php:172
 #: note.php:173
 msgid "Edit"
-msgstr "Szerkeszt"
+msgstr "Szerkesztés"
 
 #: admin_site_access.php:216
 msgid "Edit a website access rule"
@@ -5579,7 +5580,7 @@ msgstr "E-mail cím"
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:867
 msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "E-mail cím, ami a webtrees által automatikusan létrehozott e-mailek „Feladó:” rovatába kerül.<br><br>A webtrees automatikusan létrehozhat e-maileket a rendszergazdák értesítésére az ellenőrizendő változtatásokról, továbbá értesítő e-mailt küld fiókot igénylő felhasználóknak is.<br><br>Általában ezen automatikusan létrehozott e-mailek „Feladó:” rovata valami ilyen: <i>Feladó: webtrees-noreply@webhely</i>, jelezve, hogy erre az e-mailre nem kell válaszolni. A rosszindulatú e-mailek elleni védelem érdekében egyes e-mail rendszerek megkívánják, hogy minden üzenet „Feladó:” rovata valós e-mail fióknak tűnjön, és nem fogadják el a <i>webtrees-noreply</i> alakútól eltérő fiókok üzeneteit."
+msgstr "E-mail cím, ami a webtrees által automatikusan létrehozott e-mailek „Feladó:” rovatába kerül.<br><br>A webtrees automatikusan létrehozhat e-maileket a rendszergazdák értesítésére a felülvizsgálandó változtatásokról, továbbá értesítő e-mailt küld fiókot igénylő felhasználóknak is.<br><br>Általában ezen automatikusan létrehozott e-mailek „Feladó:” rovata valami ilyen: <i>Feladó: webtrees-noreply@webhely</i>, jelezve, hogy erre az e-mailre nem kell válaszolni. A rosszindulatú e-mailek elleni védelem érdekében egyes e-mail rendszerek megkívánják, hogy minden üzenet „Feladó:” rovata valós e-mail fióknak tűnjön, és nem fogadják el a <i>webtrees-noreply</i> alakútól eltérő fiókok üzeneteit."
 
 #: admin_users.php:382
 msgid "Email verified"
@@ -5793,7 +5794,7 @@ msgstr "„%s” házassági nevű személyek nélkül"
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
-msgstr "Alkönyvtárak kihagyása"
+msgstr "Alkönyvtárak nélkül"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:92
@@ -6077,11 +6078,6 @@ msgstr "%s családja"
 #: edit_changes.php:180
 msgid "Family tree"
 msgstr "Családfa"
-
-#: admin_users.php:521
-#, fuzzy
-msgid "Access to family trees"
-msgstr "Családfajogok és -beállítások"
 
 #: app/Module/ClippingsCartModule.php:90
 #: app/Module/ClippingsCartModule.php:479
@@ -7366,7 +7362,7 @@ msgstr "Ha e személy adatai között bármilyen, elhalálozástól, temetéstő
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1010
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
-msgstr "Ha két családfa ugyanazt a médiamappát használja, megoszthatják egymás közt a médiaállományokat. Ha külön médiamappákat használnak, a médiafájlok elkülönülnek."
+msgstr "Ha két családfa ugyanazt a médiakönyvtárat használja, megoszthatják egymás közöt a médiaállományokat. Ha külön médiakönyvtárakat használnak, a médiafájlok elkülönülnek."
 
 #: admin_trees_config.php:377
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -7399,7 +7395,7 @@ msgstr "Ha nagy számú inaktív helye van, lelassulhat a lista létrehozása."
 
 #: addmedia.php:545 admin_media_upload.php:254
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr "Ha sok médiafájllal rendelkezik, mappákba és almappákba rendezheti."
+msgstr "Ha sok médiafájllal rendelkezik, könyvtárakba és alkönyvtárakba rendezheti."
 
 #: admin_trees_manage.php:278
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
@@ -7516,7 +7512,7 @@ msgstr "Tartalmazza a médiafájlokat (a fájlokat automatikusan tömöríti)"
 #. I18N: Label for check-box
 #: admin_media.php:666 medialist.php:121
 msgid "Include subfolders"
-msgstr "Tartalmazza az almappákat"
+msgstr "Alkönyvtárakkal"
 
 #. I18N: Label for a configuration option
 #: lifespan.php:86
@@ -8995,7 +8991,7 @@ msgstr "Médiamappa"
 
 #: admin_media.php:624 admin_trees_config.php:985
 msgid "Media folders"
-msgstr "Médiamappák"
+msgstr "Médiakönyvtárak"
 
 #. I18N: gedcom tag OBJE
 #: admin_media.php:693 admin_trees_manage.php:567
@@ -9997,9 +9993,8 @@ msgid "Norfolk Island"
 msgstr "Norfolk-sziget"
 
 #: admin_users.php:445
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "Általában, a családfán végzett bármilyen módosítást webhelykezelőnek kell jóváhagynia. Ez az opció lehetővé teszi a felhasználó számára a jóváhagyás nélküli változtatást."
+msgstr "Általában, a családfán végzett bármilyen módosítást webhelykezelőnek kell ellenőriznie. Ez az opció lehetővé teszi a felhasználó számára a felülvizsgálat nélküli változtatást."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6864
@@ -12209,11 +12204,6 @@ msgstr "Munkamenet lejárata"
 msgid "Set as default"
 msgstr "Legyen alapértelmezett"
 
-#: inverselink.php:152
-#, fuzzy
-msgid "link"
-msgstr "Hivatkozás beállítása"
-
 #. I18N: You need to:
 #: login.php:572
 msgid "Set the access level for each tree."
@@ -12451,7 +12441,7 @@ msgstr "Rejtett legyen ez a blokk, amikor üres"
 
 #: calendar.php:229
 msgid "Show"
-msgstr "Megjelenít"
+msgstr "Megjelenítés"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1033
@@ -12904,7 +12894,7 @@ msgstr "Webhelyellenőrző kód"
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:532 admin_site_config.php:553
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr "A webhelyellenőrző kód nem működik, ha telepítéskor a webtrees egy almappába került."
+msgstr "A webhelyellenőrző kód nem működik, ha telepítéskor a webtrees egy alkönyvtárba került."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
@@ -14186,9 +14176,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "E fiók ellenőrzése még nem történt meg. Kérjük, keresse az e-mail fiókjában az ellenőrző üzenetet."
 
 #: app/Module/ReviewChangesModule.php:179
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Ez a blokk mutatja a szerkesztőknek a webhelykezelő jóváhagyására váró, függőben lévő változtatások listáját, továbbá naponta küld a webhelykezelőknek e-mailt, ha van függőben lévő változtatás."
+msgstr "Ez a blokk mutatja a szerkesztőknek a webhelykezelő felülvizsgálatára váró, függőben lévő változtatások listáját, továbbá naponta küld a webhelykezelőknek e-mailt, ha van függőben lévő változtatás."
 
 #: admin_users.php:463 edituser.php:312
 msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
@@ -14222,7 +14211,7 @@ msgstr "Ezt a családot törölték. A törlést egy webhelykezelőnek felül ke
 #: family.php:43
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt a családot törölték. Ellenőrizze az eltávolítást, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt a családot törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
 
 #: family.php:71
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
@@ -14290,7 +14279,7 @@ msgstr "Ezt a személyt törölték. A törlést egy webhelykezelőnek felül ke
 #: individual.php:56
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt a személyt törölték. Ellenőrizze az eltávolítást, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt a személyt törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
 
 #: individual.php:83
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
@@ -14453,7 +14442,7 @@ msgstr "Ezt a médiaobjektumot törölték. A törlést egy webhelykezelőnek fe
 #: mediaviewer.php:43
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt a médiaobjektumot törölték. Ellenőrizze az eltávolítást, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt a médiaobjektumot törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
 
 #: mediaviewer.php:70
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
@@ -14499,7 +14488,7 @@ msgstr "Ezt a jegyzetet törölték. A törlést egy webhelykezelőnek felül ke
 #: note.php:44
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt a jegyzetet törölték. Ellenőrizze az eltávolítást, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt a jegyzetet törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
 
 #: note.php:71
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
@@ -14597,7 +14586,7 @@ msgstr "Ezt a bejegyzést törölték. A törlést egy webhelykezelőnek felül 
 #: gedrecord.php:55
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt a bejegyzést törölték. Ellenőrizze az eltávolítást, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt a bejegyzést törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
 
 #: gedrecord.php:82
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
@@ -14621,7 +14610,7 @@ msgstr "Ezt az adattárat törölték. A törlést egy webhelykezelőnek felül 
 #: repo.php:43
 #, php-format
 msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt az adattárat törölték. Ellenőrizze az eltávolítást, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt az adattárat törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
 
 #: repo.php:70
 msgid "This repository has been edited. The changes need to be reviewed by a moderator."
@@ -14634,18 +14623,16 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Ezt az adattárat szerkesztették. Ellenőrizze a változtatásokat, amelyeket %1$shat vagy %2$shat."
 
 #: admin_users.php:553
-#, fuzzy
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "Ez a szerepkör magában foglalja a szerkesztő teljes jogkörét, valamint más felhasználók által végrehajtott változtatások jóváhagyásának/elutasításának jogát."
+msgstr "Ez a szerepkör magában foglalja a szerkesztő teljes jogkörét, valamint más felhasználók által végrehajtott változtatások elfogadásának/elutasításának jogát."
 
 #: admin_users.php:567
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
 msgstr "Ez a szerepkör magában foglalja a webhelyfelügyelő-szerepkör valamennyi jogosultságát az összes családfában, valamint jogosultságot a webhely, a felhasználók és a modulok beállítása/konfigurációja megváltoztatásához."
 
 #: admin_users.php:547
-#, fuzzy
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Ez a szerepkör magában foglalja a tagszerepkör összes jogát, valamint az adatfelvétel/-módosítás/-törlés jogot. Bármilyen változtatást egy webhelykezelőnek jóvá kell hagynia, kivéve, ha a felhasználó „változtatások automatikus elfogadása” opciója aktív."
+msgstr "Ez a szerepkör magában foglalja a tagszerepkör összes jogát, valamint az adatfelvétel/-módosítás/-törlés jogát. Minden változtatást egy webhelykezelőnek felül kell vizsgálnia, kivéve, ha a felhasználó „változtatások automatikus elfogadása” opciója aktív."
 
 #: admin_users.php:561
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -14682,7 +14669,7 @@ msgstr "Ezt a forrást törölték. A törlést egy webhelykezelőnek felül kel
 #: source.php:43
 #, php-format
 msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt a forrást törölték. Ellenőrizze az eltávolítást, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt a forrást törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
 
 #: source.php:70
 msgid "This source has been edited. The changes need to be reviewed by a moderator."
@@ -15327,7 +15314,7 @@ msgstr "Közelgő események"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:78
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:83
 msgid "Update"
-msgstr "Frissít"
+msgstr "Frissítés"
 
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:79
 msgid "Update all"
@@ -15841,12 +15828,6 @@ msgstr "Új közeli rokon felvételekor forrásidézetek is felvehetők a (szem�
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 msgstr "Az új bejegyzések létrehozásukkor belső azonosítót kapnak. Ön megszabhatja az egyes bejegyzéstípusokhoz használt előtagot."
 
-#. I18N: Help text for the “Date differences” configuration setting
-#: admin_trees_config.php:1539
-#, fuzzy
-msgid "Calculate the age differences between siblings, children, spouses, etc."
-msgstr "A <b>mutat</b> opció bejelölt állapotában a webtrees kiszámolja a testvérek, gyerekek, házastársak stb. közti korkülönbséget."
-
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2141
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
@@ -16161,7 +16142,7 @@ msgstr "Létre kell hoznia egy családfát."
 
 #: login.php:566
 msgid "You need to review the account details."
-msgstr "Át kell tekintenie a felhasználói adatokat."
+msgstr "Ellenőriznie kell a felhasználói adatokat."
 
 #: setup.php:422
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
@@ -16250,9 +16231,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "A szerver rendszergazdája ismerteti majd Önnel a kapcsolat részleteit."
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "Az Ön felhasználói fiókjában nem engedélyezett a „változtatások automatikus jóváhagyása”. Egyszerre csak egy bejegyzést módosíthat."
+msgstr "Az Ön felhasználói fiókjában nem engedélyezett a „változtatások automatikus elfogadása”. Egyszerre csak egy bejegyzést módosíthat."
 
 #: admin.php:556
 #, php-format
@@ -16615,6 +16595,11 @@ msgstr "Módosította"
 msgid "calculated %s"
 msgstr "számított %s"
 
+#: app/Module/ClippingsCartModule.php:796
+#, fuzzy
+msgid "cancel"
+msgstr "Mégse"
+
 #: app/Stats.php:2918
 msgid "census added"
 msgstr "népszámlálás felvéve"
@@ -16697,7 +16682,7 @@ msgstr "tovább"
 #. I18N: A button label.
 #: admin_trees_manage.php:678
 msgid "create"
-msgstr "létrehoz"
+msgstr "létrehozás"
 
 #. I18N: a program feature
 #: setup.php:132
@@ -16754,7 +16739,7 @@ msgstr "fok"
 #. I18N: A button label.
 #: admin_site_clean.php:115 admin_users.php:793
 msgid "delete"
-msgstr "töröl"
+msgstr "törlés"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:28 admin_site_access.php:35
@@ -16773,6 +16758,9 @@ msgctxt "MALE"
 msgid "died"
 msgstr "elhunyt"
 
+msgid "download"
+msgstr "letöltés"
+
 #: app/Module/GoogleMapsModule.php:3508
 msgid "east"
 msgstr "kelet"
@@ -16789,7 +16777,7 @@ msgstr "kelet"
 #: admin_trees_config.php:2121
 #: app/Module/FrequentlyAskedQuestionsModule.php:365
 msgid "edit"
-msgstr "szerkeszt"
+msgstr "szerkesztés"
 
 #: app/Functions/Functions.php:569
 msgid "eighth cousin"
@@ -18886,6 +18874,10 @@ msgstr "utolsó"
 msgid "less than"
 msgstr "kevesebb, mint"
 
+#: inverselink.php:152
+msgid "link"
+msgstr "kapcsolás"
+
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
 #: app/Module/RecentChangesModule.php:155
@@ -19372,7 +19364,7 @@ msgstr "keresőrobot"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:197
 msgid "save"
-msgstr "ment"
+msgstr "mentés"
 
 #. I18N: A button label.
 #: medialist.php:193 modules_v3/GEDFact_assistant/census/census-edit.php:110
@@ -19587,7 +19579,7 @@ msgstr "heted-unokatestvér"
 #: app/Module/GoogleMapsModule.php:348 app/Module/StoriesModule.php:361
 #: lifespan.php:110
 msgid "show"
-msgstr "mutat"
+msgstr "mutasd"
 
 #: statistics.php:645
 msgid "show the chart"
@@ -20081,7 +20073,7 @@ msgstr "megbízhatatlan bizonyíték"
 #. I18N: A button label.
 #: admin_trees_places.php:108
 msgid "update"
-msgstr "frissít"
+msgstr "frissítés"
 
 #: admin_trees_config.php:366 admin_trees_config.php:390
 #: admin_trees_config.php:430 admin_trees_config.php:470
@@ -20421,7 +20413,3 @@ msgstr "…"
 
 #~ msgid "Zoom="
 #~ msgstr "Zoom="
-
-#, fuzzy
-msgid "download"
-msgstr "letöltés"
