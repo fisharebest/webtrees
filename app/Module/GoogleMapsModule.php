@@ -1178,7 +1178,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				infowindow.close();
 				infowindow.setContent(mhtml);
 				infowindow.open(pm_map, marker);
-				var el = jQuery("#gm-marker_" + marker.id);
+				var el = jQuery(".gm-ancestor[data-marker=" + marker.id + "]");
 				if(el.hasClass("person_box")) {
 					el
 						.removeClass("person_box")
@@ -1194,7 +1194,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			});
 			// save the info we need to use later for the side bar
 			gmarkers[index] = marker;
-			gm_ancestors_html += "<div id=\"gm-marker_" + index++ + "\" class=\"gm-ancestor\">" + html +"</div>";
+			gm_ancestors_html += "<div data-marker =" + index++ + " class=\"gm-ancestor\">" + html +"</div>";
 
 			return marker;
 		};
@@ -1342,7 +1342,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		pm_map.setCenter(bounds.getCenter());
 		// Close the sidebar highlight when the infowindow is closed
 		google.maps.event.addListener(infowindow, "closeclick", function() {
-			jQuery("#gm-marker_" + lastlinkid).toggleClass("gm-ancestor-visited person_box");
+			jQuery(".gm-ancestor[data-marker=" + lastlinkid + "]").toggleClass("gm-ancestor-visited person_box");
 			lastlinkid = null;
 		});
 		// put the assembled gm_ancestors_html contents into the gm-ancestors div
@@ -1354,10 +1354,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			})
 			.on("click", function(e) {
 				if (lastlinkid != null) {
-					jQuery("#gm-marker_" + lastlinkid).toggleClass("person_box gm-ancestor-visited");
+					jQuery(".gm-ancestor[data-marker=" + lastlinkid + "]").toggleClass("person_box gm-ancestor-visited");
 				}
-				var el = jQuery(this).closest(".gm-ancestor");
-				var target = el.attr("id").split("_").pop();
+				var target = jQuery(this).closest(".gm-ancestor").data("marker");
 				google.maps.event.trigger(gmarkers[target], "click");
 			});
 		';
