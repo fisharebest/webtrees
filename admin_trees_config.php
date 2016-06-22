@@ -244,7 +244,6 @@ case 'general':
 	$WT_TREE->setPreference('REPO_ID_PREFIX', Filter::post('REPO_ID_PREFIX'));
 	$WT_TREE->setPreference('SAVE_WATERMARK_IMAGE', Filter::postBool('SAVE_WATERMARK_IMAGE'));
 	$WT_TREE->setPreference('SAVE_WATERMARK_THUMB', Filter::postBool('SAVE_WATERMARK_THUMB'));
-	$WT_TREE->setPreference('SHOW_AGE_DIFF', Filter::postBool('SHOW_AGE_DIFF'));
 	$WT_TREE->setPreference('SHOW_COUNTER', Filter::postBool('SHOW_COUNTER'));
 	$WT_TREE->setPreference('SHOW_EST_LIST_DATES', Filter::postBool('SHOW_EST_LIST_DATES'));
 	$WT_TREE->setPreference('SHOW_FACT_ICONS', Filter::postBool('SHOW_FACT_ICONS'));
@@ -252,7 +251,6 @@ case 'general':
 	$WT_TREE->setPreference('SHOW_HIGHLIGHT_IMAGES', Filter::postBool('SHOW_HIGHLIGHT_IMAGES'));
 	$WT_TREE->setPreference('SHOW_LAST_CHANGE', Filter::postBool('SHOW_LAST_CHANGE'));
 	$WT_TREE->setPreference('SHOW_LDS_AT_GLANCE', Filter::postBool('SHOW_LDS_AT_GLANCE'));
-	$WT_TREE->setPreference('SHOW_LEVEL2_NOTES', Filter::postBool('SHOW_LEVEL2_NOTES'));
 	$WT_TREE->setPreference('SHOW_MEDIA_DOWNLOAD', Filter::post('SHOW_MEDIA_DOWNLOAD'));
 	$WT_TREE->setPreference('SHOW_NO_WATERMARK', Filter::post('SHOW_NO_WATERMARK'));
 	$WT_TREE->setPreference('SHOW_PARENTS_AGE', Filter::postBool('SHOW_PARENTS_AGE'));
@@ -1508,36 +1506,6 @@ $controller
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Automatically expand sources” configuration setting */
 				I18N::translate('This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- SHOW_LEVEL2_NOTES -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */
-			I18N::translate('Show all notes and source references on notes and sources tabs'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('SHOW_LEVEL2_NOTES', $no_yes, $WT_TREE->getPreference('SHOW_LEVEL2_NOTES'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting */
-				I18N::translate('This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- SHOW_AGE_DIFF -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */
-			I18N::translate('Date differences'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('SHOW_AGE_DIFF', $hide_show, $WT_TREE->getPreference('SHOW_AGE_DIFF'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Date differences” configuration setting */
-				I18N::translate('Calculate the age differences between siblings, children, spouses, etc.'); ?>
 			</p>
 		</div>
 	</fieldset>

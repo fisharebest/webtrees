@@ -969,6 +969,36 @@ function message(username, method, url) {
 	return false;
 }
 
+/**
+ * Persistant checkbox options to hide/show extra data.
+
+ * @param checkbox_id
+ * @param data_class
+ */
+function persistant_toggle(checkbox_id, data_class) {
+	var checkbox = document.getElementById(checkbox_id);
+	var elements = document.getElementsByClassName(data_class);
+	var display  = localStorage.getItem(checkbox_id);
+
+	if (display !== "none") {
+		display = "";
+	}
+
+	checkbox.checked = (display === "");
+	for (var i = 0; i < elements.length; ++i) {
+		elements[i].style.display = display;
+	}
+
+	checkbox.addEventListener("click", function () {
+		console.log(display);
+		display = (display === "" ? "none" : "");
+		localStorage.setItem(checkbox_id, display);
+		for (var i = 0; i < elements.length; ++i) {
+			elements[i].style.display = display;
+		}
+	});
+}
+
 function valid_lati_long(field, pos, neg) {
 	// valid LATI or LONG according to Gedcom standard
 	// pos (+) : N or E

@@ -873,7 +873,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'REQUIRE_AUTHENTICATION', $REQUIRE_AUTHENTICATION));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SAVE_WATERMARK_IMAGE', $SAVE_WATERMARK_IMAGE));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SAVE_WATERMARK_THUMB', $SAVE_WATERMARK_THUMB));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_AGE_DIFF', $SHOW_AGE_DIFF));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_COUNTER', $SHOW_COUNTER));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_DEAD_PEOPLE', $SHOW_DEAD_PEOPLE));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_EST_LIST_DATES', $SHOW_EST_LIST_DATES));
@@ -881,7 +880,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_GEDCOM_RECORD', $SHOW_GEDCOM_RECORD));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_HIGHLIGHT_IMAGES', $SHOW_HIGHLIGHT_IMAGES));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_LDS_AT_GLANCE', $SHOW_LDS_AT_GLANCE));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_LEVEL2_NOTES', $SHOW_LEVEL2_NOTES));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_LIST_PLACES', $SHOW_LIST_PLACES));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_LIVING_NAMES', $SHOW_LIVING_NAMES));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_MEDIA_DOWNLOAD', $SHOW_MEDIA_DOWNLOAD));

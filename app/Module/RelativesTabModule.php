@@ -307,10 +307,19 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 
 		ob_start();
 		?>
-		<table class="facts_table"><tr class="noprint"><td class="descriptionbox rela">
-		<input id="checkbox_elder" type="checkbox" onclick="jQuery('div.elderdate').toggle();" <?php echo $WT_TREE->getPreference('SHOW_AGE_DIFF') ? 'checked' : ''; ?>>
-		<label for="checkbox_elder"><?php echo I18N::translate('Show date differences'); ?></label>
-		</td></tr></table>
+		<script>
+			persistant_toggle("checkbox_elder", "elderdate");
+		</script>
+		<table class="facts_table">
+			<tr class="noprint">
+				<td class="descriptionbox rela">
+					<label for="checkbox_elder">
+						<input id="checkbox_elder" type="checkbox" checked>
+						<?php echo I18N::translate('Date differences'); ?>
+					</label>
+				</td>
+			</tr>
+		</table>
 		<?php
 		$families = $controller->record->getChildFamilies();
 		if (!$families && $controller->record->canEdit()) {
@@ -345,10 +354,6 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 		// step-children
 		foreach ($controller->record->getSpouseStepFamilies() as $family) {
 			$this->printFamily($family, 'FAMS', $family->getFullName());
-		}
-
-		if (!$WT_TREE->getPreference('SHOW_AGE_DIFF')) {
-			echo '<script>jQuery("DIV.elderdate").toggle();</script>';
 		}
 
 		if ($controller->record->canEdit()) {

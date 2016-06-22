@@ -62,11 +62,16 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 
 		ob_start();
 		?>
+		<script>
+			persistant_toggle("checkbox_sour2", "row_sour2");
+		</script>
 		<table class="facts_table">
 			<tr class="noprint">
 				<td colspan="2" class="descriptionbox rela">
-				<input id="checkbox_sour2" type="checkbox" <?php echo $WT_TREE->getPreference('SHOW_LEVEL2_NOTES') ? 'checked' : ''; ?> onclick="jQuery('tr.row_sour2').toggle();">
-				<label for="checkbox_sour2"><?php echo I18N::translate('Show all sources'); ?></label>
+					<label>
+						<input id="checkbox_sour2" type="checkbox" checked">
+						<?php echo I18N::translate('Show all sources'); ?>
+					</label>
 				</td>
 			</tr>
 			<?php
@@ -99,9 +104,6 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 			?>
 		</table>
 		<?php
-		if (!$WT_TREE->getPreference('SHOW_LEVEL2_NOTES')) {
-			echo '<script>jQuery("tr.row_sour2").toggle();</script>';
-		}
 
 		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 	}

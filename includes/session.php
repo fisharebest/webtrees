@@ -88,17 +88,17 @@ if (getenv('USE_CDN')) {
 }
 
 // We can't load these from a CDN, as these have been patched.
-define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'assets/js-1.7.4/jquery.colorbox-1.5.14.js');
-define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'assets/js-1.7.4/jquery.wheelzoom-2.0.0.js');
+define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'assets/js-1.7.7/jquery.colorbox-1.5.14.js');
+define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'assets/js-1.7.7/jquery.wheelzoom-2.0.0.js');
 define('WT_CKEDITOR_BASE_URL', WT_STATIC_URL . 'packages/ckeditor-4.5.2-custom/');
 // See https://github.com/DataTables/Plugins/pull/178
 define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.7/plugins/dataTables.bootstrap-rtl.css');
 
 // Location of our own scripts
-define('WT_ADMIN_JS_URL', WT_STATIC_URL . 'assets/js-1.7.4/admin.js');
-define('WT_AUTOCOMPLETE_JS_URL', WT_STATIC_URL . 'assets/js-1.7.4/autocomplete.js');
-define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'assets/js-1.7.4/webtrees.js');
-define('WT_FONT_AWESOME_RTL_CSS_URL', WT_STATIC_URL . 'assets/js-1.7.4/font-awesome-rtl.css');
+define('WT_ADMIN_JS_URL', WT_STATIC_URL . 'assets/js-1.7.7/admin.js');
+define('WT_AUTOCOMPLETE_JS_URL', WT_STATIC_URL . 'assets/js-1.7.7/autocomplete.js');
+define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'assets/js-1.7.7/webtrees.js');
+define('WT_FONT_AWESOME_RTL_CSS_URL', WT_STATIC_URL . 'assets/js-1.7.7/font-awesome-rtl.css');
 
 // Location of our modules and themes. These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
