@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 13:23+0000\n"
+"PO-Revision-Date: 2016-06-22 13:51+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -18809,6 +18809,9 @@ msgctxt "MALE"
 msgid "immigration name"
 msgstr "bevándorlási név"
 
+msgid "import"
+msgstr "betöltés"
+
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
 #, php-format
@@ -20074,6 +20077,12 @@ msgstr "megbízhatatlan bizonyíték"
 msgid "update"
 msgstr "frissítés"
 
+msgid "upload"
+msgstr "feltöltés"
+
+msgid "view"
+msgstr "megtekintés"
+
 #: admin_trees_config.php:366 admin_trees_config.php:390
 #: admin_trees_config.php:430 admin_trees_config.php:470
 #: admin_trees_config.php:490
@@ -20412,15 +20421,3 @@ msgstr "…"
 
 #~ msgid "Zoom="
 #~ msgstr "Zoom="
-
-#, fuzzy
-msgid "import"
-msgstr "betöltés"
-
-#, fuzzy
-msgid "upload"
-msgstr "feltöltés"
-
-#, fuzzy
-msgid "view"
-msgstr "megnéz"
