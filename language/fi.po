@@ -14750,7 +14750,8 @@ msgid "Thursday"
 msgstr "Torstai"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-msgid "Tick this box to match both upper and lower case letters."
+#, fuzzy
+msgid "Match both upper and lower case letters."
 msgstr "Rastita tämä ruutu verrataksesi sekä pien- että suuraakkosia."
 
 #. I18N: gedcom tag TIME

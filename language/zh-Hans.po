@@ -14726,7 +14726,8 @@ msgid "Thursday"
 msgstr "星期四"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-msgid "Tick this box to match both upper and lower case letters."
+#, fuzzy
+msgid "Match both upper and lower case letters."
 msgstr "勾选此框匹配大写和小写字母。"
 
 #. I18N: gedcom tag TIME

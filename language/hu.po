@@ -14746,7 +14746,8 @@ msgid "Thursday"
 msgstr "Csütörtök"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-msgid "Tick this box to match both upper and lower case letters."
+#, fuzzy
+msgid "Match both upper and lower case letters."
 msgstr "Pipálja ki ezt a jelölőnégyzetet, ha a kis- és nagybetűk közötti különbség nem számít."
 
 #. I18N: gedcom tag TIME
