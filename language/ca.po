@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-20 13:04+0000\n"
+"PO-Revision-Date: 2016-06-22 20:38+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
@@ -797,7 +797,6 @@ msgstr "Un missatge de benvinguda per als visitants del lloc."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-#, fuzzy
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "Llista dels canvis que necessiten l’aprovació del supervisor i notificacions per correu electrònic."
 
@@ -1167,6 +1166,10 @@ msgstr "Autoritza tots els canvis"
 #: admin_trees_config.php:535
 msgid "Access level"
 msgstr "Nivell d’accés"
+
+#: admin_users.php:521
+msgid "Access to family trees"
+msgstr "Accés als arbres genealògics"
 
 #: admin_users.php:376
 msgid "Account approval and email verification"
@@ -1694,9 +1697,8 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr "Després de crear l’arbre genealògic, podreu importar-hi dades des d’un fitxer GEDCOM."
 
 #: login.php:259
-#, fuzzy
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr "Un cop dins, seleccioneu l’enllaç «Dades de registre» sota el menú «La meva pàgina» i escriviu al camp corresponent la vostra nova contrasenya."
+msgstr "Un cop dins, seleccioneu l’enllaç \"El meu compte\" sota el menú \"La meva pàgina\" i escriviu al camp corresponent la vostra nova contrasenya."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
@@ -2317,7 +2319,6 @@ msgid "Author of last change"
 msgstr "Autor de la darrera modificació"
 
 #: admin_users.php:442
-#, fuzzy
 msgid "Automatically accept changes made by this user"
 msgstr "Autoritza automàticament els canvis fets per aquest usuari"
 
@@ -3297,6 +3298,11 @@ msgstr "Per defecte el servidor permet scripts que emprin %s de memòria."
 msgid "CKEditor™"
 msgstr "CKEditor™"
 
+#. I18N: Help text for the “Date differences” configuration setting
+#: admin_trees_config.php:1539
+msgid "Calculate the age differences between siblings, children, spouses, etc."
+msgstr "Calcula les diferències d’edat entre germans, fills, cònjuges, etc."
+
 #: admin_trees_manage.php:367
 msgid "Calculating…"
 msgstr "Calculant…"
@@ -3336,11 +3342,6 @@ msgstr "Campinas, Brasil"
 #: app/Stats.php:6716
 msgid "Canada"
 msgstr "Canadà"
-
-#: app/Module/ClippingsCartModule.php:796
-#, fuzzy
-msgid "cancel"
-msgstr "Cancel·la"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6717
@@ -6076,11 +6077,6 @@ msgstr "Família de %s"
 #: edit_changes.php:180
 msgid "Family tree"
 msgstr "Arbre genealògic"
-
-#: admin_users.php:521
-#, fuzzy
-msgid "Access to family trees"
-msgstr "Arbre genealògic accès i configuració"
 
 #: app/Module/ClippingsCartModule.php:90
 #: app/Module/ClippingsCartModule.php:479
@@ -8875,6 +8871,10 @@ msgstr "Martinica"
 msgid "Masquerade as this user"
 msgstr "Fer-se passar per aquest usuari"
 
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
+msgid "Match both upper and lower case letters."
+msgstr "Correlacionar les lletres majúscules i minúscules."
+
 #: lifespan.php:104
 msgid "Match calendar"
 msgstr "Calendari"
@@ -9996,9 +9996,8 @@ msgid "Norfolk Island"
 msgstr "Illa Norfolk"
 
 #: admin_users.php:445
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "Normalment, els canvis fets a l’arbre genealògic cal que siguin autoritzats per un supervisor. Aquesta opció permet a l’usuari fe-los sense aquest requisit."
+msgstr "Normalment, els canvis fets a l’arbre genealògic cal que siguin revisats per un supervisor. Aquesta opció permet a l’usuari fe-los sense aquest requisit."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6864
@@ -12208,11 +12207,6 @@ msgstr "Temps de sessió excedit"
 msgid "Set as default"
 msgstr "Predeterminat"
 
-#: inverselink.php:152
-#, fuzzy
-msgid "link"
-msgstr "Enllaça’l"
-
 #. I18N: You need to:
 #: login.php:572
 msgid "Set the access level for each tree."
@@ -12557,11 +12551,6 @@ msgstr "Mostra els detalls"
 msgid "Show divorced couples."
 msgstr "Mostra parelles separades/divorciades."
 
-#: admin_trees_config.php:1087
-#, fuzzy
-msgid "Show thumbnail images in charts and family groups."
-msgstr "Mostra imatges a les caixes"
-
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1650
 msgid "Show hit counters on Portal and Individual pages."
@@ -12768,6 +12757,10 @@ msgstr "Mostra l'usuari que ha realitzat el canvi"
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
 msgstr "En quins idiomes es mostrarà aquest bloc"
+
+#: admin_trees_config.php:1087
+msgid "Show thumbnail images in charts and family groups."
+msgstr "Mostra imatges en miniatura en els gràfics i grups familiars."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1023 app/Functions/FunctionsEdit.php:206
@@ -14086,9 +14079,8 @@ msgstr "Canvi de presentació"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-#, fuzzy
 msgid "Theme menu"
-msgstr "Mostra el selector desplegable de presentacions"
+msgstr "Menú de presentacions"
 
 #: admin_modules.php:165
 msgid "Themes"
@@ -14187,7 +14179,6 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Aquest compte no ha estat verificat. Si us plau, consulteu al vostre correu electrònic un missatge de verificació."
 
 #: app/Module/ReviewChangesModule.php:179
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Aquest bloc mostra als editors una llista de registres amb canvis pendents que cal que siguin autoritzats per un supervisor. Quan hi ha canvis pendents, també genera diàriament missatges de correu electrònic als supervisors."
 
@@ -14635,18 +14626,16 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Aquest arxiu ha estat editat. Heu de revisar-ne els canvis i %1$s or %2$s -los."
 
 #: admin_users.php:553
-#, fuzzy
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "Aquest rol té tots els permisos del rol d’editor a més del permís per autoritzar o rebutjar els canvis fets per d’altres usuaris."
+msgstr "Aquest rol té totes les atribucions d’editor a més de permís per autoritzar o rebutjar els canvis fets per d’altres usuaris."
 
 #: admin_users.php:567
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
 msgstr "Aquesta funció té tots els permisos de la funció d’administrador en tots els arbres de la família, a més de permís per canviar la configuració del lloc, els usuaris i els mòduls."
 
 #: admin_users.php:547
-#, fuzzy
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Aquest rol té tots els permisos del rol de membre, a més de permís per afegir, canviar o eliminar dades. Qualsevol canvi haurà d’ésser autoritzat per un supervisor, llevat que l’usuari tingui l’opció «autoritzar automàticament els canvis» activada."
+msgstr "Aquest rol té totes les atribucions de membre, a més de permís per afegir, canviar o eliminar dades. Qualsevol canvi haurà d’ésser autoritzat per un supervisor, llevat que l’usuari tingui l’opció \"autoritzar automàticament els canvis\" activada."
 
 #: admin_users.php:561
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -14758,11 +14747,6 @@ msgstr "Miniatura a carregar"
 #: app/Date/CalendarDate.php:344
 msgid "Thursday"
 msgstr "Dijous"
-
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-#, fuzzy
-msgid "Match both upper and lower case letters."
-msgstr "Marqueu aquesta casella per a que coincideixi tant amb lletres majúscules com amb minúscules."
 
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
@@ -15843,12 +15827,6 @@ msgstr "A l'agregar nous parents directes, podeu afegir als registres cites de f
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 msgstr "Quan es creen nous registres, se'ls dóna un número d'identificació interna. Podeu especificar el prefix utilitzat per a cada tipus de registre."
 
-#. I18N: Help text for the “Date differences” configuration setting
-#: admin_trees_config.php:1539
-#, fuzzy
-msgid "Calculate the age differences between siblings, children, spouses, etc."
-msgstr "Seleccionant aquesta opció, webtrees calcularà les diferències d’edat entre germans, fills, cònjuges, etc."
-
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2141
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
@@ -16252,9 +16230,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "L’administració del servidor us proporcionarà els detalls de connexió."
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "El vostre compte d’usuari no té activat «autoritzar canvis automàticament». Només podreu canviar registres d’un en un."
+msgstr "El vostre compte d’usuari no té activat \"autoritzar canvis automàticament\". Només podreu canviar registres d’un en un."
 
 #: admin.php:556
 #, php-format
@@ -16617,6 +16594,10 @@ msgstr "Autor"
 msgid "calculated %s"
 msgstr "calculat %s"
 
+#: app/Module/ClippingsCartModule.php:796
+msgid "cancel"
+msgstr "cancel·la"
+
 #: app/Stats.php:2918
 msgid "census added"
 msgstr "inscrit al registre"
@@ -16774,6 +16755,9 @@ msgstr "difunta el"
 msgctxt "MALE"
 msgid "died"
 msgstr "difunt el"
+
+msgid "download"
+msgstr "descarrega"
 
 #: app/Module/GoogleMapsModule.php:3508
 msgid "east"
@@ -18824,6 +18808,9 @@ msgctxt "MALE"
 msgid "immigration name"
 msgstr "nom d’immigrat"
 
+msgid "import"
+msgstr "importa"
+
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
 #, php-format
@@ -18887,6 +18874,10 @@ msgstr "darreres"
 #: statisticsplot.php:764
 msgid "less than"
 msgstr "menys de"
+
+#: inverselink.php:152
+msgid "link"
+msgstr "enllaça'l"
 
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
@@ -20085,6 +20076,12 @@ msgstr "proves poc fiables"
 msgid "update"
 msgstr "Actualitza"
 
+msgid "upload"
+msgstr "carrega"
+
+msgid "view"
+msgstr "mostra-ho"
+
 #: admin_trees_config.php:366 admin_trees_config.php:390
 #: admin_trees_config.php:430 admin_trees_config.php:470
 #: admin_trees_config.php:490
@@ -20411,19 +20408,3 @@ msgstr "…"
 
 #~ msgid "Zoom="
 #~ msgstr "Zoom="
-
-#, fuzzy
-msgid "download"
-msgstr "descarrega"
-
-#, fuzzy
-msgid "import"
-msgstr "importa"
-
-#, fuzzy
-msgid "upload"
-msgstr "carrega"
-
-#, fuzzy
-msgid "view"
-msgstr "mostra-ho"
