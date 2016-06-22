@@ -328,7 +328,7 @@ if (count($controller->people) > 0) {
 		<img src="<?php echo Theme::theme()->parameter('image-vline'); ?>" width="3" height="<?php echo $baseyoffset + ($controller->topyear - $controller->baseyear) * $controller->scale; ?>">
 		</div>
 		<!-- print divs for the grid -->
-		<div id="scale<?php echo $controller->baseyear; ?>" style="position:absolute; <?php echo I18N::direction() === 'ltr' ? "left: $basexoffset" : "right: $basexoffset"; ?>px; top: <?php echo $baseyoffset - 5; ?>px; font-size: 7pt; text-align: <?php echo I18N::direction() === 'ltr' ? 'left' : 'right'; ?>;">
+		<div id="scale<?php echo $controller->baseyear; ?>" style="position:absolute; <?php echo I18N::direction() === 'ltr' ? 'left:' . $basexoffset : 'right:' . $basexoffset; ?>px; top: <?php echo $baseyoffset - 5; ?>px; font-size: 7pt; text-align: <?php echo I18N::direction() === 'ltr' ? 'left' : 'right'; ?>;">
 			<?php echo $controller->baseyear . '—'; ?>
 		</div>
 		<?php
