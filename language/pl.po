@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-20 07:51+0000\n"
+"PO-Revision-Date: 2016-06-22 08:28+0000\n"
 "Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
@@ -826,9 +826,8 @@ msgstr "Powitalne informacje dla odwiedzających stronę."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-#, fuzzy
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "Lista zmian, które wymagają zatwierdzenia przez moderatora i wysyłanie powiadomień."
+msgstr "Lista zmian, które wymagają zatwierdzenia przez moderatora oraz wysyłanie powiadomień na maila."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -1196,6 +1195,11 @@ msgstr "Zaakceptuj wszystkie zmiany"
 #: admin_trees_config.php:535
 msgid "Access level"
 msgstr "Poziom dostępu"
+
+#: admin_users.php:521
+#, fuzzy
+msgid "Access to family trees"
+msgstr "Ustawienia dostępu i parametry drzewa genealogicznego"
 
 #: admin_users.php:376
 msgid "Account approval and email verification"
@@ -3327,6 +3331,12 @@ msgstr "Domyślnie twój serwer pozwala na użycie przez skrypty %s pamięci."
 msgid "CKEditor™"
 msgstr "CKEditor™"
 
+#. I18N: Help text for the “Date differences” configuration setting
+#: admin_trees_config.php:1539
+#, fuzzy
+msgid "Calculate the age differences between siblings, children, spouses, etc."
+msgstr "Gdy ta opcja jest zaznaczona będzie obliczana różnica wieku pomiędzy rodzeństwem, dziećmi, małżonkami, itp."
+
 #: admin_trees_manage.php:367
 msgid "Calculating…"
 msgstr "Przeliczanie…"
@@ -3366,11 +3376,6 @@ msgstr "Campinas, Brazylia"
 #: app/Stats.php:6716
 msgid "Canada"
 msgstr "Kanada"
-
-#: app/Module/ClippingsCartModule.php:796
-#, fuzzy
-msgid "cancel"
-msgstr "Anuluj"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6717
@@ -3979,16 +3984,6 @@ msgstr "Potwierdzenie hasła"
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 msgid "Confirmation"
 msgstr "Bierzmowanie"
-
-#. I18N: Name of a country or state
-#: app/Stats.php:6727
-msgid "Republic of the Congo"
-msgstr "Republika Konga (Brazzaville)"
-
-#. I18N: Name of a country or state
-#: app/Stats.php:6726
-msgid "Democratic Republic of the Congo"
-msgstr "Demokratyczna Republika Konga (Kinszasa)"
 
 #: setup.php:272
 msgid "Connection to database server"
@@ -5080,6 +5075,11 @@ msgid "Deleting the family will unlink all of the individuals from each other bu
 msgstr "Usunięcie rodziny spowoduje, że powiązania między jej członkami zostaną usunięte, ale poszczególne osoby nie zostaną usunięte. Usunąć rodzinę?"
 
 #. I18N: Name of a country or state
+#: app/Stats.php:6726
+msgid "Democratic Republic of the Congo"
+msgstr "Demokratyczna Republika Konga (Kinszasa)"
+
+#. I18N: Name of a country or state
 #: app/Stats.php:6742
 msgid "Denmark"
 msgstr "Dania"
@@ -6113,11 +6113,6 @@ msgstr "Rodzina - %s"
 msgid "Family tree"
 msgstr "Drzewo genealogiczne"
 
-#: admin_users.php:521
-#, fuzzy
-msgid "Access to family trees"
-msgstr "Ustawienia dostępu i parametry drzewa genealogicznego"
-
 #: app/Module/ClippingsCartModule.php:90
 #: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
@@ -6801,6 +6796,10 @@ msgstr "Liczba pokoleń"
 msgid "Generations of ancestors"
 msgstr "Pokolenia przodków"
 
+#: statistics.php:595
+msgid "Geographic area"
+msgstr "Obszar geograficzny"
+
 #: app/Module/GoogleMapsModule.php:179 app/Module/GoogleMapsModule.php:295
 #: app/Module/GoogleMapsModule.php:853 app/Module/GoogleMapsModule.php:1403
 #: app/Module/GoogleMapsModule.php:1526 app/Module/GoogleMapsModule.php:2408
@@ -6808,10 +6807,6 @@ msgstr "Pokolenia przodków"
 #: app/Module/GoogleMapsModule.php:3632 app/Module/GoogleMapsModule.php:3642
 msgid "Geographic data"
 msgstr "Dane geograficzne"
-
-#: statistics.php:595
-msgid "Geographic area"
-msgstr "Obszar geograficzny"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6763
@@ -11657,6 +11652,11 @@ msgstr "Repozytorium zawiera"
 msgid "Repository name"
 msgstr "Nazwa repozytorium"
 
+#. I18N: Name of a country or state
+#: app/Stats.php:6727
+msgid "Republic of the Congo"
+msgstr "Republika Konga (Brazzaville)"
+
 #: app/Module/LoginBlockModule.php:99 login.php:221
 msgid "Request a new password"
 msgstr "Poproś o nowe hasło"
@@ -12240,11 +12240,6 @@ msgstr "Wygaśnięcie sesji"
 #: admin_trees_manage.php:441 admin_trees_manage.php:452
 msgid "Set as default"
 msgstr "Ustaw jako domyślne"
-
-#: inverselink.php:152
-#, fuzzy
-msgid "link"
-msgstr "Ustaw powiązanie"
 
 #. I18N: You need to:
 #: login.php:572
@@ -15880,12 +15875,6 @@ msgstr "Podczas dodawania nowych blisko spokrewnionych osób można dodać powi�
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 msgstr "Podczas dodawania nowego wpisu automatycznie tworzy się dla niego wewnętrzny numer identyfikacyjny. Można podać przedrostek jaki będzie używany dla konkretnego typu wpisu."
 
-#. I18N: Help text for the “Date differences” configuration setting
-#: admin_trees_config.php:1539
-#, fuzzy
-msgid "Calculate the age differences between siblings, children, spouses, etc."
-msgstr "Gdy ta opcja jest zaznaczona będzie obliczana różnica wieku pomiędzy rodzeństwem, dziećmi, małżonkami, itp."
-
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2141
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
@@ -16654,6 +16643,11 @@ msgstr "przez"
 msgid "calculated %s"
 msgstr "wyliczone na %s"
 
+#: app/Module/ClippingsCartModule.php:796
+#, fuzzy
+msgid "cancel"
+msgstr "Anuluj"
+
 #: app/Stats.php:2918
 msgid "census added"
 msgstr "spis ludności"
@@ -16811,6 +16805,10 @@ msgstr "zmarła"
 msgctxt "MALE"
 msgid "died"
 msgstr "zmarł"
+
+#, fuzzy
+msgid "download"
+msgstr "pobierz"
 
 #: app/Module/GoogleMapsModule.php:3508
 msgid "east"
@@ -18927,6 +18925,11 @@ msgstr "końcowe"
 msgid "less than"
 msgstr "mniej niż"
 
+#: inverselink.php:152
+#, fuzzy
+msgid "link"
+msgstr "Ustaw powiązanie"
+
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
 #: app/Module/RecentChangesModule.php:155
@@ -20455,7 +20458,3 @@ msgstr "…"
 
 #~ msgid "Zoom="
 #~ msgstr "Powiększenie="
-
-#, fuzzy
-msgid "download"
-msgstr "pobierz"
