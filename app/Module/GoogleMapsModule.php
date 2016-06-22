@@ -1194,8 +1194,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			});
 			// save the info we need to use later for the side bar
 			gmarkers[index] = marker;
-			gm_ancestors_html += "<div data-target=\"" + index + "\" class=\"gm-ancestor\">" + html +"</div>";
-			index++;
+			gm_ancestors_html += "<div id=\"gm-marker_" + index++ + "\" class=\"gm-ancestor\">" + html +"</div>";
 
 			return marker;
 		};
@@ -1357,7 +1356,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				if (lastlinkid != null) {
 					jQuery("#gm-marker_" + lastlinkid).toggleClass("person_box gm-ancestor-visited");
 				}
-				var target = jQuery(this).closest(".gm-ancestor").data("target");
+				var el = jQuery(this).closest(".gm-ancestor");
+				var target = el.attr("id").split("_").pop();
 				google.maps.event.trigger(gmarkers[target], "click");
 			});
 		';
