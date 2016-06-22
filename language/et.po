@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-20 16:16+0000\n"
+"PO-Revision-Date: 2016-06-22 18:41+0000\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -798,7 +798,6 @@ msgstr "Tervitussõnum lehekülje külastajatele."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-#, fuzzy
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr "Nimekiri muudatustest, mis vajavad moderaatori kinnitust ja e-kirja teavitusi."
 
@@ -1168,6 +1167,10 @@ msgstr "Kinnita kõik muudatused"
 #: admin_trees_config.php:535
 msgid "Access level"
 msgstr "Ligipääsu tase"
+
+#: admin_users.php:521
+msgid "Access to family trees"
+msgstr "Juurdepääs sugupuudele"
 
 #: admin_users.php:376
 msgid "Account approval and email verification"
@@ -1695,7 +1698,6 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr "Peale sugupuu loomist saate importida andmeid GEDCOM failist."
 
 #: login.php:259
-#, fuzzy
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
 msgstr "Peale sisselogimist valige \"Minu kasutaja\" viide \"Minu lehekülg\" menüüst ja täitke parooli väljad, et muuta oma parooli."
 
@@ -2318,7 +2320,6 @@ msgid "Author of last change"
 msgstr "Viimase muudatuse autor"
 
 #: admin_users.php:442
-#, fuzzy
 msgid "Automatically accept changes made by this user"
 msgstr "Automaatselt kinnita selle kasutaja poolt tehtud muudatused"
 
@@ -3298,6 +3299,11 @@ msgstr "Vaikimisi lubab teie server skriptidel kasutada %s mälu."
 msgid "CKEditor™"
 msgstr "CKEditor™"
 
+#. I18N: Help text for the “Date differences” configuration setting
+#: admin_trees_config.php:1539
+msgid "Calculate the age differences between siblings, children, spouses, etc."
+msgstr "Arvuta vanusevahed õdede ja vendade, laste, abikaasade, jne vahel."
+
 #: admin_trees_manage.php:367
 msgid "Calculating…"
 msgstr "Arvutan…"
@@ -3337,11 +3343,6 @@ msgstr "Campinas, Brasiilia"
 #: app/Stats.php:6716
 msgid "Canada"
 msgstr "Kanada"
-
-#: app/Module/ClippingsCartModule.php:796
-#, fuzzy
-msgid "cancel"
-msgstr "Tühista"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6717
@@ -6077,11 +6078,6 @@ msgstr "%s perekond"
 #: edit_changes.php:180
 msgid "Family tree"
 msgstr "Perepuu"
-
-#: admin_users.php:521
-#, fuzzy
-msgid "Access to family trees"
-msgstr "Juurdepääs sugupuule ja seaded"
 
 #: app/Module/ClippingsCartModule.php:90
 #: app/Module/ClippingsCartModule.php:479
@@ -8876,6 +8872,10 @@ msgstr "Martinica"
 msgid "Masquerade as this user"
 msgstr "Maskeeri ennast selleks kasutajaks"
 
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
+msgid "Match both upper and lower case letters."
+msgstr "Sobita väike- ja suurtähti."
+
 #: lifespan.php:104
 msgid "Match calendar"
 msgstr "Sobita kalender"
@@ -9997,7 +9997,6 @@ msgid "Norfolk Island"
 msgstr "Norfolk"
 
 #: admin_users.php:445
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Tavaliselt peab moderaator kõik sugupuus tehtavad muudatused kinnitama. See valik lubab kasutajatel teha muudatusi, ilma moderaatori nõusolekut vajamata."
 
@@ -12209,11 +12208,6 @@ msgstr "Sessiooni aegumine"
 msgid "Set as default"
 msgstr "Seadke vaikimisi"
 
-#: inverselink.php:152
-#, fuzzy
-msgid "link"
-msgstr "Seosta"
-
 #. I18N: You need to:
 #: login.php:572
 msgid "Set the access level for each tree."
@@ -12558,11 +12552,6 @@ msgstr "Näita üksikasju"
 msgid "Show divorced couples."
 msgstr "Näita lahutatud paare."
 
-#: admin_trees_config.php:1087
-#, fuzzy
-msgid "Show thumbnail images in charts and family groups."
-msgstr "Näita inimeste kastides esiletõstetud pilti"
-
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1650
 msgid "Show hit counters on Portal and Individual pages."
@@ -12769,6 +12758,10 @@ msgstr "Näita kasutajat, kes muudatuse tegi"
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
 msgstr "Millistele keeltele seda blokki näidata"
+
+#: admin_trees_config.php:1087
+msgid "Show thumbnail images in charts and family groups."
+msgstr "Näita pisipilti joonistel ja perekonnagruppides."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1023 app/Functions/FunctionsEdit.php:206
@@ -14087,9 +14080,8 @@ msgstr "Teema muudatus"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-#, fuzzy
 msgid "Theme menu"
-msgstr "Teemade valikmenüü nende muutmiseks"
+msgstr "Teemade menüü"
 
 #: admin_modules.php:165
 msgid "Themes"
@@ -14188,9 +14180,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "See kasutaja pole kinnitatud. Palun kontrollige oma e-maili, seal peaks olema kinnitussõnum."
 
 #: app/Module/ReviewChangesModule.php:179
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "See blokk näitab muutjatele nimekirja kirjetest, millel on ootel olevaid muudatusi, mida moderaator peab kinnitama. Samuti genereerib see igapäevaseid e-maile kui on olemas ootel olevaid muudatusi."
+msgstr "See blokk näitab muutjatele nimekirja kirjetest, millel on ootel olevaid muudatusi, mida moderaator peab kinnitama. Samuti genereerib see igapäevaseid e-maile moderaatoritele kui on olemas ootel olevaid muudatusi."
 
 #: admin_users.php:463 edituser.php:312
 msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
@@ -14636,7 +14627,6 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Seda hoidlat on muudetud. Te peaksite muudatused üle vaatama ja siis %1$s või %2$s."
 
 #: admin_users.php:553
-#, fuzzy
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "See roll omab kõiki muutja rolli õigusi ning lisaks õigus kinnitada/tagasi lükata muudatusi, mida teised kasutajad on teinud."
 
@@ -14645,7 +14635,6 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "See roll omab kõiki haldaja õiguseid kõikides sugupuudes, lisaks veel õigused muuta veebilehe seadeid/konfiguratsiooni, kasutajaid ja mooduleid."
 
 #: admin_users.php:547
-#, fuzzy
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "See roll omab kõiki liikme õiguseid, lisaks veel õigused lisada/muuta/kustutada andmeid. Moderaatorid peavad tehtud muudatused üle vaatama, juhul kui teil ei ole \"automaatselt aktsepteeri muudatused\" valik lubatud."
 
@@ -14759,11 +14748,6 @@ msgstr "Pisipilt, mida üles laadida"
 #: app/Date/CalendarDate.php:344
 msgid "Thursday"
 msgstr "Neljapäev"
-
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-#, fuzzy
-msgid "Match both upper and lower case letters."
-msgstr "Märgistage see kast, et sobitada mõlemaid - väike- ja suurtähti."
 
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
@@ -15844,12 +15828,6 @@ msgstr "Uute lähisugulaste sisestamisel saate lisada allikaviiteid kirjetele (i
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 msgstr "Kui luuakse uusi kirjeid, määratakse neile sisemine ID number. Te saate määrata eesliite iga kirjetüübi kohta."
 
-#. I18N: Help text for the “Date differences” configuration setting
-#: admin_trees_config.php:1539
-#, fuzzy
-msgid "Calculate the age differences between siblings, children, spouses, etc."
-msgstr "Kui see valik on valitud, webtrees arvutab vanusevahed õdede ja vendade, laste, abikaasade, jne vahel."
-
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2141
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
@@ -16253,9 +16231,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Sinu serveri administraator annab sulle ühendamiseks vajalikud detailid."
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "Teie kasutajakontol puudub \"automaatselt lubatud muudatused\" luba. Teil on õigus vaid ühele muudatusele käesoleval hetkel (teie enda kirje)."
+msgstr "Teie kasutajakontol puudub \"automaatselt kinnita muudatused\" luba. Teil on võimalus ainult ühte kirjet korraga muuta."
 
 #: admin.php:556
 #, php-format
@@ -16618,6 +16595,10 @@ msgstr "Viimati muutis"
 msgid "calculated %s"
 msgstr "arvutatud %s"
 
+#: app/Module/ClippingsCartModule.php:796
+msgid "cancel"
+msgstr "tühista"
+
 #: app/Stats.php:2918
 msgid "census added"
 msgstr "rahvaloendus lisatud"
@@ -16775,6 +16756,9 @@ msgstr "surnud"
 msgctxt "MALE"
 msgid "died"
 msgstr "surnud"
+
+msgid "download"
+msgstr "lae alla"
 
 #: app/Module/GoogleMapsModule.php:3508
 msgid "east"
@@ -18825,6 +18809,9 @@ msgctxt "MALE"
 msgid "immigration name"
 msgstr "immigratsiooninimi"
 
+msgid "import"
+msgstr "impordi"
+
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
 #, php-format
@@ -18888,6 +18875,10 @@ msgstr "viimane"
 #: statisticsplot.php:764
 msgid "less than"
 msgstr "vähem kui"
+
+#: inverselink.php:152
+msgid "link"
+msgstr "seosta"
 
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
@@ -20086,6 +20077,12 @@ msgstr "mitteusaldusväärne tõend"
 msgid "update"
 msgstr "Uuendus"
 
+msgid "upload"
+msgstr "lae üles"
+
+msgid "view"
+msgstr "vaata"
+
 #: admin_trees_config.php:366 admin_trees_config.php:390
 #: admin_trees_config.php:430 admin_trees_config.php:470
 #: admin_trees_config.php:490
@@ -20412,19 +20409,3 @@ msgstr "…"
 
 #~ msgid "Zoom="
 #~ msgstr "Suurenda="
-
-#, fuzzy
-msgid "download"
-msgstr "lae alla"
-
-#, fuzzy
-msgid "import"
-msgstr "impordi"
-
-#, fuzzy
-msgid "upload"
-msgstr "lae üles"
-
-#, fuzzy
-msgid "view"
-msgstr "vaata"
