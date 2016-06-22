@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 14:43+0000\n"
+"PO-Revision-Date: 2016-06-22 17:00+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -3578,7 +3578,7 @@ msgstr "Függő változtatások ellenőrzése…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
-msgstr "E könyvtár elérési jogainak ellenőrzése."
+msgstr "E mappa elérési jogainak ellenőrzése."
 
 #: setup.php:266 setup.php:338
 msgid "Check the settings and try again."
@@ -3820,7 +3820,7 @@ msgstr "Anyakönyvvezető"
 #. I18N: Menu entry
 #: admin_site_clean.php:51 app/Theme/AdministrationTheme.php:102
 msgid "Clean up data folder"
-msgstr "Adatkönyvtár tisztítása"
+msgstr "Adatmappa tisztítása"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:76
@@ -4027,7 +4027,7 @@ msgstr "Koppenhága, Dánia"
 #: app/Functions/FunctionsPrintFacts.php:1021
 #: app/Functions/FunctionsPrintFacts.php:1169
 msgid "Copy"
-msgstr "Másol"
+msgstr "Másolás"
 
 #. I18N: Copy all the records from [family tree 1] into [family tree 2]
 #: admin_trees_merge.php:195
@@ -5794,7 +5794,7 @@ msgstr "„%s” házassági nevű személyek nélkül"
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
-msgstr "Alkönyvtárak nélkül"
+msgstr "Almappák nélkül"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:92
@@ -7362,7 +7362,7 @@ msgstr "Ha e személy adatai között bármilyen, elhalálozástól, temetéstő
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1010
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
-msgstr "Ha két családfa ugyanazt a médiakönyvtárat használja, megoszthatják egymás között a médiaállományokat. Ha külön médiakönyvtárakat használnak, a médiafájlok elkülönülnek."
+msgstr "Ha két családfa ugyanazt a médiamappát használja, megoszthatják egymás között a médiaállományokat. Ha külön médiamappákat használnak, a médiafájlok elkülönülnek."
 
 #: admin_trees_config.php:377
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -7395,7 +7395,7 @@ msgstr "Ha nagy számú inaktív helye van, lelassulhat a lista létrehozása."
 
 #: addmedia.php:545 admin_media_upload.php:254
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr "Ha sok médiafájllal rendelkezik, könyvtárakba és alkönyvtárakba rendezheti."
+msgstr "Ha sok médiafájllal rendelkezik, mappákba és almappákba rendezheti."
 
 #: admin_trees_manage.php:278
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
@@ -7512,7 +7512,7 @@ msgstr "Tartalmazza a médiafájlokat (a fájlokat automatikusan tömöríti)"
 #. I18N: Label for check-box
 #: admin_media.php:666 medialist.php:121
 msgid "Include subfolders"
-msgstr "Alkönyvtárakkal"
+msgstr "Almappákkal"
 
 #. I18N: Label for a configuration option
 #: lifespan.php:86
@@ -8995,7 +8995,7 @@ msgstr "Médiamappa"
 
 #: admin_media.php:624 admin_trees_config.php:985
 msgid "Media folders"
-msgstr "Médiakönyvtárak"
+msgstr "Médiamappák"
 
 #. I18N: gedcom tag OBJE
 #: admin_media.php:693 admin_trees_manage.php:567
@@ -9186,7 +9186,7 @@ msgstr "Mexico City, Mexikó"
 #. I18N: Type of media object
 #: app/GedcomTag.php:1924
 msgid "Microfiche"
-msgstr "Mikrofilm"
+msgstr "Mikrofilmlemez"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1926
@@ -12761,7 +12761,7 @@ msgstr "Mely nyelveken jelenjen meg ez a blokk"
 
 #: admin_trees_config.php:1087
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Az ábrákon és családcsoportokban legyen bélyegkép."
+msgstr "Bélyegkép az ábrákon és családcsoportokban."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1023 app/Functions/FunctionsEdit.php:206
@@ -12898,7 +12898,7 @@ msgstr "Webhelyellenőrző kód"
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:532 admin_site_config.php:553
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr "A webhelyellenőrző kód nem működik, ha telepítéskor a webtrees egy alkönyvtárba került."
+msgstr "A webhelyellenőrző kód nem működik, ha telepítéskor a webtrees egy almappába került."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
@@ -14215,7 +14215,7 @@ msgstr "Ezt a családot törölték. A törlést egy webhelykezelőnek felül ke
 #: family.php:43
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt a családot törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt a családot törölték. Ellenőrzés után választhatja a törlés %1$sát vagy %2$sát."
 
 #: family.php:71
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
@@ -14224,7 +14224,7 @@ msgstr "E család adatait szerkesztették. A változtatást egy webhelykezelőne
 #: family.php:62
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "E család adatait szerkesztették. Ellenőrizze a változtatásokat, amelyeket %1$shat vagy %2$shat."
+msgstr "E család adatait szerkesztették. Ellenőrzés után választhatja a változtatás %1$sát vagy %2$sát."
 
 #: app/Functions/FunctionsCharts.php:409 app/Functions/FunctionsCharts.php:546
 msgid "This family remained childless"
@@ -14283,7 +14283,7 @@ msgstr "Ezt a személyt törölték. A törlést egy webhelykezelőnek felül ke
 #: individual.php:56
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt a személyt törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt a személyt törölték. Ellenőrzés után választhatja a törlés %1$sát vagy %2$sát."
 
 #: individual.php:83
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
@@ -14293,7 +14293,7 @@ msgstr "E személy adatait szerkesztették. A változtatást egy webhelykezelőn
 #: individual.php:74
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "E személy adatait szerkesztették. Ellenőrizze a változtatásokat, amelyeket %1$shat vagy %2$shat."
+msgstr "E személy adatait szerkesztették. Ellenőrzés után választhatja a változtatás %1$sát vagy %2$sát."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:683 admin_users.php:598 edituser.php:207
@@ -14404,7 +14404,7 @@ msgstr "Ez az SMTP-szerver neve. A „localhost” azt jelenti, hogy a levelező
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1066
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
-msgstr "Ez a szélesség (képpontban), amit az alkalmazás használ bélyegképek automatikus létrehozásakor. Az alapértelmezett érték 100."
+msgstr "Ez lesz a webtrees által automatikusan létrehozott bélyegképek szélessége (képpontban). Az alapértelmezett érték 100."
 
 #: admin_users.php:318 edituser.php:176 login.php:423 setup.php:427
 msgid "This is your real name, as you would like it displayed on screen."
@@ -14446,7 +14446,7 @@ msgstr "Ezt a médiaobjektumot törölték. A törlést egy webhelykezelőnek fe
 #: mediaviewer.php:43
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt a médiaobjektumot törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt a médiaobjektumot törölték. Ellenőrzés után választhatja a törlés %1$sát vagy %2$sát."
 
 #: mediaviewer.php:70
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
@@ -14456,7 +14456,7 @@ msgstr "Ezt a médiaobjektumot szerkesztették. A változtatást egy webhelykeze
 #: mediaviewer.php:61
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Ezt a médiaobjektumot szerkesztették. Ellenőrizze a változtatásokat, amelyeket %1$shat vagy %2$shat."
+msgstr "Ezt a médiaobjektumot szerkesztették. Ellenőrzés után választhatja a változtatás %1$sát vagy %2$sát."
 
 #: admin_media.php:570 find.php:640
 msgid "This media object is not linked to any other record."
@@ -14492,7 +14492,7 @@ msgstr "Ezt a jegyzetet törölték. A törlést egy webhelykezelőnek felül ke
 #: note.php:44
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt a jegyzetet törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt a jegyzetet törölték. Ellenőrzés után választhatja a törlés %1$sát vagy %2$sát."
 
 #: note.php:71
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
@@ -14502,7 +14502,7 @@ msgstr "Ezt a jegyzetet szerkesztették. A változtatást egy webhelykezelőnek 
 #: note.php:62
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Ezt a jegyzetet szerkesztették. Ellenőrizze a változtatásokat, amelyeket %1$shat vagy %2$shat."
+msgstr "Ezt a jegyzetet szerkesztették. Ellenőrzés után választhatja a változtatás %1$sát vagy %2$sát."
 
 #. I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting
 #: admin_trees_config.php:1524
@@ -14590,7 +14590,7 @@ msgstr "Ezt a bejegyzést törölték. A törlést egy webhelykezelőnek felül 
 #: gedrecord.php:55
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt a bejegyzést törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt a bejegyzést törölték. Ellenőrzés után választhatja a törlés %1$sát vagy %2$sát."
 
 #: gedrecord.php:82
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
@@ -14600,7 +14600,7 @@ msgstr "Ezt a bejegyzést szerkesztették. A változtatást egy webhelykezelőne
 #: gedrecord.php:73
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Ezt a bejegyzést szerkesztették. Ellenőrizze a változtatásokat, amelyeket %1$shat vagy %2$shat."
+msgstr "Ezt a bejegyzést szerkesztették. Ellenőrzés után választhatja a változtatás %1$sát vagy %2$sát."
 
 #: repo.php:78
 msgid "This repository does not exist or you do not have permission to view it."
@@ -14614,7 +14614,7 @@ msgstr "Ezt az adattárat törölték. A törlést egy webhelykezelőnek felül 
 #: repo.php:43
 #, php-format
 msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt az adattárat törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt az adattárat törölték. Ellenőrzés után választhatja a törlés %1$sát vagy %2$sát."
 
 #: repo.php:70
 msgid "This repository has been edited. The changes need to be reviewed by a moderator."
@@ -14624,7 +14624,7 @@ msgstr "Ezt az adattárat szerkesztették. A változtatást egy webhelykezelőne
 #: repo.php:61
 #, php-format
 msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Ezt az adattárat szerkesztették. Ellenőrizze a változtatásokat, amelyeket %1$shat vagy %2$shat."
+msgstr "Ezt az adattárat szerkesztették. Ellenőrzés után választhatja a változtatás %1$sát vagy %2$sát."
 
 #: admin_users.php:553
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -14673,7 +14673,7 @@ msgstr "Ezt a forrást törölték. A törlést egy webhelykezelőnek felül kel
 #: source.php:43
 #, php-format
 msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Ezt a forrást törölték. Ellenőrizze a törlést, amelyet %1$shat vagy %2$shat."
+msgstr "Ezt a forrást törölték. Ellenőrzés után választhatja a törlés %1$sát vagy %2$sát."
 
 #: source.php:70
 msgid "This source has been edited. The changes need to be reviewed by a moderator."
@@ -14683,7 +14683,7 @@ msgstr "Ezt a forrást szerkesztették. A változtatást egy webhelykezelőnek f
 #: source.php:61
 #, php-format
 msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Ezt a forrást szerkesztették. Ellenőrizze a változtatásokat, amelyeket %1$shat vagy %2$shat."
+msgstr "Ezt a forrást szerkesztették. Ellenőrzés után választhatja a változtatás %1$sát vagy %2$sát."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: admin_trees_config.php:933
@@ -15413,7 +15413,7 @@ msgstr "Jelszó használata"
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1079
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
-msgstr "Árnyképet használunk, ha az adott személyhez nincs kijelölt kép. A használt kép igazodik a kérdéses személy neméhez."
+msgstr "Árnyképet használunk, ha nem áll rendelkezésre a személy fényképe. Az árnykép megfelel a kérdéses személy nemének."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1074
@@ -16310,13 +16310,13 @@ msgstr "%s körül"
 #: note.php:63 repo.php:62 source.php:62
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr "elfogad"
+msgstr "elfogadás"
 
 #: family.php:44 gedrecord.php:56 individual.php:57 mediaviewer.php:44
 #: note.php:45 repo.php:44 source.php:44
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr "elfogad"
+msgstr "elfogadás"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:54
@@ -18780,7 +18780,7 @@ msgstr "óó:pp vagy óó:pp:mm"
 
 #: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:348
 msgid "hide"
-msgstr "elrejt"
+msgstr "rejtsd el"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:277
@@ -19294,13 +19294,13 @@ msgstr "bejegyzések"
 #: note.php:64 repo.php:63 source.php:63
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr "elutasít"
+msgstr "elutasítás"
 
 #: family.php:45 gedrecord.php:57 individual.php:58 mediaviewer.php:45
 #: note.php:46 repo.php:45 source.php:45
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr "elutasít"
+msgstr "elutasítás"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:55
