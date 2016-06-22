@@ -14033,7 +14033,8 @@ msgstr "Бизәлешне үзгәртү"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-msgid "Theme dropdown selector for theme changes"
+#, fuzzy
+msgid "Theme menu"
 msgstr ""
 
 #: admin_modules.php:165

@@ -14084,7 +14084,8 @@ msgstr "Ndryshimi i temës"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-msgid "Theme dropdown selector for theme changes"
+#, fuzzy
+msgid "Theme menu"
 msgstr "Zgjedhësi rënës i temës për ndryshimin e temës"
 
 #: admin_modules.php:165

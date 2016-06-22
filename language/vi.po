@@ -14055,7 +14055,8 @@ msgstr "Kiểu trình bày thay đổi"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-msgid "Theme dropdown selector for theme changes"
+#, fuzzy
+msgid "Theme menu"
 msgstr "Bộ chọn sổ xuống để chọn thay đổi kiểu trình bày"
 
 #: admin_modules.php:165

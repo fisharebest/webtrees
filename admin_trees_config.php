@@ -959,7 +959,7 @@ $controller
 	<!-- ALLOW_THEME_DROPDOWN -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Theme dropdown selector for theme changes'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Theme menu'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('ALLOW_THEME_DROPDOWN', $hide_show, $WT_TREE->getPreference('ALLOW_THEME_DROPDOWN'), 'class="radio-inline"'); ?>

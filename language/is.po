@@ -14078,7 +14078,8 @@ msgstr "Þemu breyting"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-msgid "Theme dropdown selector for theme changes"
+#, fuzzy
+msgid "Theme menu"
 msgstr "Þema flettiveljari fyrir þemabreytingar"
 
 #: admin_modules.php:165

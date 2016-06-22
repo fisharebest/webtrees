@@ -14078,7 +14078,8 @@ msgstr "Choix de thème"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-msgid "Theme dropdown selector for theme changes"
+#, fuzzy
+msgid "Theme menu"
 msgstr "Sélecteur de la liste déroulante «&nbsp;Thème&nbsp;» pour changer de thème"
 
 #: admin_modules.php:165

@@ -14088,7 +14088,8 @@ msgstr "Modifica tema"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-msgid "Theme dropdown selector for theme changes"
+#, fuzzy
+msgid "Theme menu"
 msgstr "Menu a discesa per la selezione del tema"
 
 #: admin_modules.php:165
