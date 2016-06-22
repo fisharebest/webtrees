@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 04:35+0000\n"
+"PO-Revision-Date: 2016-06-22 14:38+0000\n"
 "Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -8867,6 +8867,10 @@ msgstr "Martinique"
 msgid "Masquerade as this user"
 msgstr "Ausgeben als dieser Benutzer"
 
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
+msgid "Match both upper and lower case letters."
+msgstr "Findet groß- und kleingeschriebene Buchstaben."
+
 #: lifespan.php:104
 msgid "Match calendar"
 msgstr "Übereinstimmung mit Kalender"
@@ -12543,11 +12547,6 @@ msgstr "Einzelheiten zeigen"
 msgid "Show divorced couples."
 msgstr "Zeige geschiedene Paare."
 
-#: admin_trees_config.php:1087
-#, fuzzy
-msgid "Show thumbnail images in charts and family groups."
-msgstr "Definierte Fotos in den Personenboxen zeigen"
-
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1650
 msgid "Show hit counters on Portal and Individual pages."
@@ -12754,6 +12753,10 @@ msgstr "Den Benutzer anzeigen, der die Änderung machte"
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
 msgstr "Diesen Block für welche Sprachen anzeigen"
+
+#: admin_trees_config.php:1087
+msgid "Show thumbnail images in charts and family groups."
+msgstr "Zeige Vorschaubilder in Diagrammen und Familienbögen."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1023 app/Functions/FunctionsEdit.php:206
@@ -14072,7 +14075,6 @@ msgstr "Änderung der Layoutvorlage"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-#, fuzzy
 msgid "Theme menu"
 msgstr "Auswahl eines Themas"
 
@@ -14741,11 +14743,6 @@ msgstr "Vorschaubild zum Hochladen"
 #: app/Date/CalendarDate.php:344
 msgid "Thursday"
 msgstr "Donnerstag"
-
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-#, fuzzy
-msgid "Match both upper and lower case letters."
-msgstr "Dieses Kästchen ankreuzen, um groß- und kleingeschriebene Buchstaben zu finden."
 
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
@@ -18807,6 +18804,9 @@ msgctxt "MALE"
 msgid "immigration name"
 msgstr "Name nach Einwanderung"
 
+msgid "import"
+msgstr "import"
+
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
 #, php-format
@@ -20072,6 +20072,12 @@ msgstr "angenommen, geschätzt"
 msgid "update"
 msgstr "Bearbeiten"
 
+msgid "upload"
+msgstr "hochladen"
+
+msgid "view"
+msgstr "zeige"
+
 #: admin_trees_config.php:366 admin_trees_config.php:390
 #: admin_trees_config.php:430 admin_trees_config.php:470
 #: admin_trees_config.php:490
@@ -20398,15 +20404,3 @@ msgstr "…"
 
 #~ msgid "Zoom="
 #~ msgstr "Zoom="
-
-#, fuzzy
-msgid "import"
-msgstr "import"
-
-#, fuzzy
-msgid "upload"
-msgstr "hochladen"
-
-#, fuzzy
-msgid "view"
-msgstr "zeige"
