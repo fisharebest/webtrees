@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 10:16+0000\n"
+"PO-Revision-Date: 2016-06-22 13:23+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -7362,7 +7362,7 @@ msgstr "Ha e személy adatai között bármilyen, elhalálozástól, temetéstő
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1010
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
-msgstr "Ha két családfa ugyanazt a médiakönyvtárat használja, megoszthatják egymás közöt a médiaállományokat. Ha külön médiakönyvtárakat használnak, a médiafájlok elkülönülnek."
+msgstr "Ha két családfa ugyanazt a médiakönyvtárat használja, megoszthatják egymás között a médiaállományokat. Ha külön médiakönyvtárakat használnak, a médiafájlok elkülönülnek."
 
 #: admin_trees_config.php:377
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -15614,7 +15614,7 @@ msgstr "Vietnam"
 #: descendancy.php:71 familybook.php:61 fanchart.php:95 hourglass.php:62
 #: pedigree.php:169 relationship.php:85
 msgid "View"
-msgstr "Megnéz"
+msgstr "lássuk"
 
 #: placelist.php:157
 msgid "View all records found in this place"
