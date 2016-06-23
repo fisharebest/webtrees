@@ -973,12 +973,16 @@ function message(username, method, url) {
  * Persistant checkbox options to hide/show extra data.
 
  * @param checkbox_id
- * @param data_class
+ * @param data_selector
  */
-function persistant_toggle(checkbox_id, data_class) {
+function persistant_toggle(checkbox_id, data_selector) {
 	var checkbox = document.getElementById(checkbox_id);
-	var elements = document.getElementsByClassName(data_class);
+	var elements = document.querySelectorAll(data_selector);
 	var display  = localStorage.getItem(checkbox_id);
+
+	if (!checkbox) {
+		return;
+	}
 
 	if (display !== "none") {
 		display = "";

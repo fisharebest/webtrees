@@ -58,13 +58,10 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $controller, $WT_TREE;
+		global $controller;
 
 		ob_start();
 		?>
-		<script>
-			persistant_toggle("checkbox_sour2", "row_sour2");
-		</script>
 		<table class="facts_table">
 			<tr class="noprint">
 				<td colspan="2" class="descriptionbox rela">
@@ -103,6 +100,9 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 			}
 			?>
 		</table>
+		<script>
+			persistant_toggle("checkbox_sour2", ".row_sour2");
+		</script>
 		<?php
 
 		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';

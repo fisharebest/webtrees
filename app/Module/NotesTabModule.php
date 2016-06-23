@@ -58,13 +58,10 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $WT_TREE, $controller;
+		global $controller;
 
 		ob_start();
 		?>
-		<script>
-			persistant_toggle("checkbox_note2", "row_note2");
-		</script>
 		<table class="facts_table">
 			<colgroup>
 				<col class="width20">
@@ -120,6 +117,9 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 		}
 		?>
 		</table>
+		<script>
+			persistant_toggle("checkbox_note2", ".row_note2");
+		</script>
 		<?php
 
 		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';

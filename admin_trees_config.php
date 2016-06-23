@@ -206,7 +206,6 @@ case 'general':
 	$WT_TREE->setPreference('CONTACT_USER_ID', Filter::post('CONTACT_USER_ID'));
 	$WT_TREE->setPreference('DEFAULT_PEDIGREE_GENERATIONS', Filter::post('DEFAULT_PEDIGREE_GENERATIONS'));
 	$WT_TREE->setPreference('EXPAND_NOTES', Filter::postBool('EXPAND_NOTES'));
-	$WT_TREE->setPreference('EXPAND_RELATIVES_EVENTS', Filter::postBool('EXPAND_RELATIVES_EVENTS'));
 	$WT_TREE->setPreference('EXPAND_SOURCES', Filter::postBool('EXPAND_SOURCES'));
 	$WT_TREE->setPreference('FAM_FACTS_ADD', str_replace(' ', '', Filter::post('FAM_FACTS_ADD')));
 	$WT_TREE->setPreference('FAM_FACTS_QUICK', str_replace(' ', '', Filter::post('FAM_FACTS_QUICK')));
@@ -1361,19 +1360,6 @@ $controller
 	</div>
 
 	<h3><?php echo I18N::translate('Individual pages'); ?></h3>
-
-	<!-- EXPAND_RELATIVES_EVENTS -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Automatically expand list of events of close relatives'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('EXPAND_RELATIVES_EVENTS', $no_yes, $WT_TREE->getPreference('EXPAND_RELATIVES_EVENTS'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Automatically expand list of events of close relatives” configuration setting */ I18N::translate('This option controls whether or not to automatically expand the <i>Events of close relatives</i> list.'); ?>
-			</p>
-		</div>
-	</fieldset>
 
 	<!-- SHOW_RELATIVES_EVENTS -->
 	<fieldset class="form-group">
