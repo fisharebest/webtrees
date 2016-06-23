@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-23 14:49+0000\n"
+"PO-Revision-Date: 2016-06-23 16:01+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
@@ -6844,7 +6844,7 @@ msgstr "Ger användaren möjligheten att välja sitt eget tema."
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
 msgid "Globally unique identifier"
-msgstr "Global Unik ID"
+msgstr "Globalt unik identifierare"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
 msgid "Godchild"
@@ -12554,7 +12554,7 @@ msgstr "Visa skilda par."
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1650
 msgid "Show hit counters on Portal and Individual pages."
-msgstr "Visa träffräknare på Min Sida och på person sidor."
+msgstr "Visa träffräknare på Portal och på person sidor."
 
 #: compact.php:60
 msgid "Show images"
@@ -14250,7 +14250,7 @@ msgstr "Denna släktträd var senast uppdaterad den #gedcomUpdated#. Det finns #
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "Detta släktträd uppdaterades den %s."
+msgstr "Detta släktträd uppdaterades senast den %s."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
@@ -14511,7 +14511,7 @@ msgstr "Detta val styr om anteckningar och källhänvisningar, som är knutna ti
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1494
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
-msgstr "Detta alternativ kontrollerar om man automatiskt visar innehållet i <i>Anteckningar</i> på personsida."
+msgstr "Detta alternativ kontrollerar om man automatiskt visar innehållet i <i>Anteckningar</i> på personsidan."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: admin_trees_config.php:1509
@@ -16121,7 +16121,7 @@ msgstr "Du måste numrera om posterna i ett av träden innan kan du sammanfoga d
 
 #: app/Module/ChartsBlockModule.php:139
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Du måste välja en person och en diagramtyp i blockinställningarna."
+msgstr "Du måste välja en person och en diagramtyp i blockinställningarna"
 
 #: admin_users.php:287
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
@@ -16661,7 +16661,7 @@ msgstr "färg"
 
 #: app/Module/TopSurnamesModule.php:165
 msgid "compact list"
-msgstr "Kompakt lista"
+msgstr "kompakt lista"
 
 #. I18N: A button label.
 #: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1157 admin_site_merge.php:387
@@ -19223,7 +19223,7 @@ msgstr "partner"
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr "Enligt faderns namn"
+msgstr "enligt faderns namn"
 
 #: app/Functions/Functions.php:840
 msgctxt "father’s father"
@@ -19722,7 +19722,7 @@ msgstr "sortera enligt dödsdatum"
 
 #: edit_interface.php:2202 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
-msgstr "ordna efter vigseldatum"
+msgstr "sortera efter vigseldatum"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:164
