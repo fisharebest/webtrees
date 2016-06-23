@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 09:51+0000\n"
+"PO-Revision-Date: 2016-06-23 09:35+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -8841,6 +8841,10 @@ msgstr "Martinik"
 msgid "Masquerade as this user"
 msgstr "Bu kullanıcıyı taklit et"
 
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
+msgid "Match both upper and lower case letters."
+msgstr "Büyük ve küçük harflerle eşleştir."
+
 #: lifespan.php:104
 msgid "Match calendar"
 msgstr "Eşleşme takvimi"
@@ -12515,11 +12519,6 @@ msgstr "Detayları Göster"
 msgid "Show divorced couples."
 msgstr "Boşanmış çiftleri göster."
 
-#: admin_trees_config.php:1087
-#, fuzzy
-msgid "Show thumbnail images in charts and family groups."
-msgstr "Kişi kutularında vurgulanan resimleri göster"
-
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1650
 msgid "Show hit counters on Portal and Individual pages."
@@ -12726,6 +12725,10 @@ msgstr "Değişikliği yapan kullanıcıyı göster"
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
 msgstr "Bu blok hangi lisanlar ile gösterilsin"
+
+#: admin_trees_config.php:1087
+msgid "Show thumbnail images in charts and family groups."
+msgstr "Çizelgelerde ve aile gruplarında vurgulanan resimleri göster."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1023 app/Functions/FunctionsEdit.php:206
@@ -14043,9 +14046,8 @@ msgstr "Tema değiştir"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-#, fuzzy
 msgid "Theme menu"
-msgstr "Tema değiştirmek için açılır menü"
+msgstr "Tema menüsü"
 
 #: admin_modules.php:165
 msgid "Themes"
@@ -14709,11 +14711,6 @@ msgstr "Önizleme resim dosyası yükle"
 #: app/Date/CalendarDate.php:344
 msgid "Thursday"
 msgstr "Perşembe"
-
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-#, fuzzy
-msgid "Match both upper and lower case letters."
-msgstr "Büyük ve küçük harflerle eşleşmek için bu kutuyu işaretleyin."
 
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
@@ -18772,6 +18769,9 @@ msgctxt "MALE"
 msgid "immigration name"
 msgstr "göç adı"
 
+msgid "import"
+msgstr "içeri aktar"
+
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
 #, php-format
@@ -20035,6 +20035,12 @@ msgstr "güvenilmez kanıt"
 msgid "update"
 msgstr "güncelle"
 
+msgid "upload"
+msgstr "yükle"
+
+msgid "view"
+msgstr "göster"
+
 #: admin_trees_config.php:366 admin_trees_config.php:390
 #: admin_trees_config.php:430 admin_trees_config.php:470
 #: admin_trees_config.php:490
@@ -20360,15 +20366,3 @@ msgstr "…"
 
 #~ msgid "Zoom="
 #~ msgstr "Yakınlık="
-
-#, fuzzy
-msgid "import"
-msgstr "içeri aktar"
-
-#, fuzzy
-msgid "upload"
-msgstr "yükle"
-
-#, fuzzy
-msgid "view"
-msgstr "göster"
