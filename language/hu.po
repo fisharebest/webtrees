@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 17:00+0000\n"
+"PO-Revision-Date: 2016-06-23 09:21+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -4101,7 +4101,7 @@ msgstr "Megye"
 
 #: admin_media.php:314
 msgid "Create"
-msgstr "Létrehoz"
+msgstr "Létrehozás"
 
 #: admin_trees_manage.php:624
 msgid "Create a family tree"
@@ -12546,11 +12546,11 @@ msgstr "Elhunyt személyek mutatása"
 #: ancestry.php:115 app/Module/ChartsBlockModule.php:203 descendancy.php:84
 #: familybook.php:55 hourglass.php:56 pedigree.php:166 relationship.php:81
 msgid "Show details"
-msgstr "Részletek mutatása"
+msgstr "Mutasd a részleteket"
 
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show divorced couples."
-msgstr "Elvált párok mutatása."
+msgstr "Mutasd az elvált párokat."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1650
@@ -14350,7 +14350,7 @@ msgstr "Ez érzékeny a kis- és nagybetűk közötti különbségre. Ha még ne
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1291
 msgid "This is the initial value for the “show details” option on the charts."
-msgstr "Ez az ábrák “Részletek mutatása” opciójának kezdőbeállítása."
+msgstr "Ez az ábrák “Mutasd a részleteket” opciójának kezdőbeállítása."
 
 #: admin.php:615 admin_site_upgrade.php:66
 msgid "This is the latest version of webtrees. No upgrade is available."
@@ -16280,7 +16280,7 @@ msgstr "Nagyítás"
 
 #: app/Theme/AbstractTheme.php:756 app/Theme/AbstractTheme.php:808
 msgid "Zoom in/out on this box."
-msgstr "Keret kicsinyítése/nagyítása."
+msgstr "Keret növelése/csökkentése."
 
 #: app/Module/GoogleMapsModule.php:3516 app/Module/GoogleMapsModule.php:3607
 #: app/Module/GoogleMapsModule.php:4102
@@ -19667,7 +19667,7 @@ msgstr "fiúgyermek"
 
 #: modules_v3/descendancy_report/report.xml:296
 msgid "son of"
-msgstr "az ő fia:"
+msgstr "az ő fia"
 
 #: app/Functions/Functions.php:818
 msgctxt "child’s husband"
