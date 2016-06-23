@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-12 21:36+0000\n"
+"PO-Revision-Date: 2016-06-23 19:14+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
@@ -450,8 +450,8 @@ msgid_plural "%s years ago"
 msgstr[0] "%s vuosi sitten"
 msgstr[1] "%s vuotta sitten"
 
-#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
-#: calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:1942
+#: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s. vuosipäivä"
@@ -793,9 +793,8 @@ msgstr "Tervehdys sivustolla kävijöille."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-#, fuzzy
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "Luettelo muutoksista, jotka tarvitsevat valvojan hyväksynnän, ja sähköposti-ilmoitukset."
+msgstr "Luettelo muutoksista, jotka tarvitsevat valvojan hyväksynnän ja sähköposti-ilmoitukset."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -978,9 +977,8 @@ msgid "A report of vital records for a given date or place."
 msgstr "Raportti keskeisistä tapahtumista, tiettynä ajanjaksona tai tietyssä paikassa."
 
 #: admin_users.php:524
-#, fuzzy
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Rooli on joukko käyttöoikeuksia, joilla voi lukea tai muuttaa tietoja, muuttaa asetuksia jne. Erilaisia käyttöoikeuksia annetaan kullekin roolille. Rooli myönnetään kullekin käyttäjälle. Jokainen sukupuu voi antaa roolille eri käyttöoikeudet ja myöntää eri roolit käyttäjille."
+msgstr "Rooli on joukko käyttöoikeuksia, joilla voi lukea tai muuttaa tietoja, muuttaa asetuksia, jne. Erilaisia käyttöoikeuksia annetaan kullekin roolille. Rooli myönnetään kullekin käyttäjälle. Jokainen sukupuu voi antaa roolille eri käyttöoikeudet ja myöntää eri roolit käyttäjille."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1038,7 +1036,6 @@ msgid "A timeline displaying individual events."
 msgstr "Aikajana, joka esittää henkilön tapahtumia."
 
 #: admin_users.php:398
-#, fuzzy
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr "Käyttäjä ei voi kirjautua sisään, ennen kuin sekä ”sähköpostiosoite on varmistettu” että ”ylläpitäjä on hyväksynyt” asetukset on kuitattu."
 
@@ -1156,7 +1153,6 @@ msgid "Accept"
 msgstr "Hyväksy"
 
 #: edit_changes.php:209 edit_changes.php:220
-#, fuzzy
 msgid "Accept all changes"
 msgstr "Hyväksy kaikki muutokset"
 
@@ -1166,6 +1162,10 @@ msgstr "Hyväksy kaikki muutokset"
 #: admin_trees_config.php:535
 msgid "Access level"
 msgstr "Käyttöoikeus"
+
+#: admin_users.php:521
+msgid "Access to family trees"
+msgstr "Sukupuun oikeudet ja asetukset"
 
 #: admin_users.php:376
 msgid "Account approval and email verification"
@@ -1275,7 +1275,8 @@ msgstr "Lisää lapsi"
 msgid "Add a child to create a one-parent family"
 msgstr "Lisää lapsi ja luo yhden vanhemman perhe"
 
-#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
+#: app/Controller/FamilyController.php:82
+#: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
 msgstr "Lisää lapsi perheeseen"
 
@@ -1313,9 +1314,10 @@ msgstr "Liitä mies puolisoksi käyttäen tiedostossa olevaa henkilöä"
 msgid "Add a journal entry"
 msgstr "Lisää päiväkirjamerkintä"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1125
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:184
+#: app/Controller/FamilyController.php:162
+#: app/Functions/FunctionsEdit.php:1125 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:184
 msgid "Add a media object"
 msgstr "Lisää mediakohde"
 
@@ -1331,8 +1333,8 @@ msgstr "Lisää nimi"
 msgid "Add a news article"
 msgstr "Lisää uutisartikkeli"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1104
-#: app/Module/NotesTabModule.php:100
+#: app/Controller/FamilyController.php:149
+#: app/Functions/FunctionsEdit.php:1104 app/Module/NotesTabModule.php:100
 msgid "Add a note"
 msgstr "Lisää lisätieto"
 
@@ -1343,14 +1345,15 @@ msgstr "Lisää rajoitus"
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
 #: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
 msgstr "Lisää vierityspalkki kun sisältö laajenee"
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1114
-#: app/Module/NotesTabModule.php:110
+#: app/Controller/FamilyController.php:155
+#: app/Functions/FunctionsEdit.php:1114 app/Module/NotesTabModule.php:110
 msgid "Add a shared note"
 msgstr "Lisää jaettu lisätieto"
 
@@ -1358,8 +1361,8 @@ msgstr "Lisää jaettu lisätieto"
 msgid "Add a son or daughter"
 msgstr "Lisää poika tai tytär"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1053
-#: app/Module/SourcesTabModule.php:93
+#: app/Controller/FamilyController.php:172
+#: app/Functions/FunctionsEdit.php:1053 app/Module/SourcesTabModule.php:93
 msgid "Add a source citation"
 msgstr "Lisää tietolähdeviite"
 
@@ -1660,7 +1663,6 @@ msgid "Adult christening"
 msgstr "Aikuiskaste"
 
 #: admin_trees_config.php:2071
-#, fuzzy
 msgid "Advanced fact preferences"
 msgstr "Erityisfaktojen asetukset"
 
@@ -1691,7 +1693,6 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr "Kun olet luonut sukupuun, voit tuoda tietoja GEDCOM-tiedostosta."
 
 #: login.php:259
-#, fuzzy
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
 msgstr "Kirjauduttuasi, valitse ”Käyttäjätilini” joka löytyy ”Oma sivuni”-valikosta ja täytä salasanakentät vaihtaaksesi salasanasi."
 
@@ -1739,7 +1740,7 @@ msgstr "Ikä vihkimisvuonna"
 
 #: app/Module/FamilyTreeNewsModule.php:200
 msgid "Age of item"
-msgstr "Kohteen ikä"
+msgstr "Artikkelin ikä"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1312
@@ -1800,10 +1801,10 @@ msgstr "Elävät"
 #: app/Module/GoogleMapsModule.php:1427 app/Module/GoogleMapsModule.php:1440
 #: app/Module/GoogleMapsModule.php:4214 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5581 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
-#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
-#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
-#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
+#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
+#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
+#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -2015,7 +2016,8 @@ msgstr "Anguilla"
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1805 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1805
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr "Vuosipäivä"
 
@@ -2044,7 +2046,7 @@ msgstr "Antigua ja Barbuda"
 
 #: login.php:169
 msgid "Anyone with a user account can access this website."
-msgstr ""
+msgstr "Jokainen, jolla on käyttäjätili, voi käyttää tätä sivustoa."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:277
@@ -2147,7 +2149,6 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Haluatko todella poistaa ”%s”?"
 
 #: edit_changes.php:231
-#, fuzzy
 msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr "Oletko varma, että haluat perua kaikki muutokset tähän sukupuuhun?"
 
@@ -2167,7 +2168,8 @@ msgstr "Argentiina"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -2313,9 +2315,8 @@ msgid "Author of last change"
 msgstr "Viimeisimmän muutoksen tekijä"
 
 #: admin_users.php:442
-#, fuzzy
 msgid "Automatically accept changes made by this user"
-msgstr "Hyväksy automaattisesti tämän henkilön muutokset"
+msgstr "Hyväksy automaattisesti tämän käyttäjän muutokset"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
@@ -3293,6 +3294,11 @@ msgstr "Palvelimesi oletus on antaa skripteille eli komentojen suorittamiseen %s
 msgid "CKEditor™"
 msgstr "CKEditor™"
 
+#. I18N: Help text for the “Date differences” configuration setting
+#: admin_trees_config.php:1539
+msgid "Calculate the age differences between siblings, children, spouses, etc."
+msgstr "Laskee ikäerot sisarusten, lasten, puolisoiden, jne. välillä"
+
 #: admin_trees_manage.php:367
 msgid "Calculating…"
 msgstr "Laskee…"
@@ -3332,11 +3338,6 @@ msgstr "Campinas, Brasilia"
 #: app/Stats.php:6716
 msgid "Canada"
 msgstr "Kanada"
-
-#: app/Module/ClippingsCartModule.php:796
-#, fuzzy
-msgid "cancel"
-msgstr "Peruuta"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6717
@@ -3499,7 +3500,8 @@ msgstr "Muutosajankohta %1$s, muuttaja %2$s"
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:436
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr "Muutokset"
 
@@ -3539,9 +3541,9 @@ msgstr "Kaaviomalli"
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1207
-#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
-#: app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163
+#: admin_trees_config.php:1207 app/Module/ChartsBlockModule.php:34
+#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
 msgstr "Kaaviot"
 
@@ -3944,16 +3946,6 @@ msgstr "Salasana uudestaan"
 msgid "Confirmation"
 msgstr "Rippi"
 
-#. I18N: Name of a country or state
-#: app/Stats.php:6727
-msgid "Republic of the Congo"
-msgstr "Kongo"
-
-#. I18N: Name of a country or state
-#: app/Stats.php:6726
-msgid "Democratic Republic of the Congo"
-msgstr "Kongon demokraattinen tasavalta"
-
 #: setup.php:272
 msgid "Connection to database server"
 msgstr "Tietokantapalvelimen yhteys"
@@ -3998,9 +3990,10 @@ msgstr "Jatkuu"
 #: app/Module/FrequentlyAskedQuestionsModule.php:438
 #: app/Module/GoogleMapsModule.php:282 app/Module/GoogleMapsModule.php:1390
 #: app/Module/GoogleMapsModule.php:3619
-#: app/Module/RelationshipsChartModule.php:147 app/Module/SiteMapModule.php:296
-#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
-#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
+#: app/Module/RelationshipsChartModule.php:147
+#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
+#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
+#: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr "Ohjauspaneeli"
 
@@ -4397,7 +4390,8 @@ msgstr "Tietokannan käyttäjätunnus"
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -4965,7 +4959,8 @@ msgstr "Tutkinto"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -4981,8 +4976,9 @@ msgid "DejaVu"
 msgstr "DejaVu"
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
-#: admin_site_change.php:374 admin_site_logs.php:314 admin_trees_config.php:575
-#: admin_trees_manage.php:418 admin_trees_manage.php:429 admin_users.php:211
+#: admin_site_change.php:374 admin_site_logs.php:314
+#: admin_trees_config.php:575 admin_trees_manage.php:418
+#: admin_trees_manage.php:429 admin_users.php:211
 #: app/Controller/FamilyController.php:94
 #: app/Controller/GedcomRecordController.php:116
 #: app/Controller/IndividualController.php:303
@@ -5040,6 +5036,11 @@ msgid "Deleting the family will unlink all of the individuals from each other bu
 msgstr "Perheen poistaminen poistaa kaikki henkilöiden väliset yhteydet mutta jättää henkilöt paikalleen. Haluatko todella poistaa tämän perheen?"
 
 #. I18N: Name of a country or state
+#: app/Stats.php:6726
+msgid "Democratic Republic of the Congo"
+msgstr "Kongon demokraattinen tasavalta"
+
+#. I18N: Name of a country or state
 #: app/Stats.php:6742
 msgid "Denmark"
 msgstr "Tanska"
@@ -5063,7 +5064,8 @@ msgstr "Jälkisukupolvet"
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
 #: app/Module/ChartsBlockModule.php:195
-#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
+#: app/Module/DescendancyChartModule.php:33
+#: app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5426,9 +5428,8 @@ msgstr "Muokkaa sivustoon pääsemissääntö"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1655
-#, fuzzy
 msgid "Edit preferences"
-msgstr "Muokkaa vaihtoehdot"
+msgstr "Muokkaa asetukset"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
 msgid "Edit the FAQ item"
@@ -5800,7 +5801,8 @@ msgstr "Ei mukana tässä valinnassa"
 msgid "Explain why you are requesting an account."
 msgstr "Selitä, miksi pyydät tilin."
 
-#: admin_site_change.php:370 admin_site_logs.php:310 admin_trees_manage.php:594
+#: admin_site_change.php:370 admin_site_logs.php:310
+#: admin_trees_manage.php:594
 msgid "Export"
 msgstr "Siirrä"
 
@@ -5814,7 +5816,6 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr "Siirrä kaikki sukupuut GEDCOM-tiedostoihin…"
 
 #: admin_trees_download.php:134
-#, fuzzy
 msgid "Export preferences"
 msgstr "Siirtoasetukset"
 
@@ -5979,7 +5980,8 @@ msgstr "Falklandinsaaret"
 #: app/Module/GoogleMapsModule.php:2495 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1493
 #: calendar.php:422 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:134 mediaviewer.php:123
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:201
 #: repo.php:143 search.php:93 source.php:147 statistics.php:71
 #: statisticsplot.php:974 statisticsplot.php:1078 statisticsplot.php:1328
@@ -6072,12 +6074,8 @@ msgstr "Perhe - %s"
 msgid "Family tree"
 msgstr "Sukupuu"
 
-#: admin_users.php:521
-#, fuzzy
-msgid "Access to family trees"
-msgstr "Sukupuun oikeudet ja asetukset"
-
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90
+#: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr "Sukupuun leikekori"
 
@@ -6217,7 +6215,8 @@ msgid "Father’s family with an unknown individual"
 msgstr "Isän ja tuntemattoman henkilön perhe"
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1375
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1375
 msgid "Favorites"
 msgstr "Suosikit"
 
@@ -6360,7 +6359,8 @@ msgstr "Etsi erikoismerkki"
 msgid "Find all possible relationships"
 msgstr "Etsi kaikki mahdolliset sukulaisuudet"
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
@@ -6446,14 +6446,14 @@ msgid "Folder name on server"
 msgstr "Kansion nimi palvelimella"
 
 #: login.php:341
-#, fuzzy
 msgid "Follow this link to verify your email address."
-msgstr "Klikkaa alla olevaa linkkiä, täytä tiedot ja varmista tilisi ja sähköpostiosoitteesi."
+msgstr "Klikkaa alla olevaa linkkiä ja varmista sähköpostiosoitteesi."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6757,6 +6757,10 @@ msgstr "Sukupolvet"
 msgid "Generations of ancestors"
 msgstr "Esipolvien määrä"
 
+#: statistics.php:595
+msgid "Geographic area"
+msgstr "Maantieteellinen alue"
+
 #: app/Module/GoogleMapsModule.php:179 app/Module/GoogleMapsModule.php:295
 #: app/Module/GoogleMapsModule.php:853 app/Module/GoogleMapsModule.php:1403
 #: app/Module/GoogleMapsModule.php:1526 app/Module/GoogleMapsModule.php:2408
@@ -6764,10 +6768,6 @@ msgstr "Esipolvien määrä"
 #: app/Module/GoogleMapsModule.php:3632 app/Module/GoogleMapsModule.php:3642
 msgid "Geographic data"
 msgstr "Maantieteelliset tiedot"
-
-#: statistics.php:595
-msgid "Geographic area"
-msgstr "Maantieteellinen alue"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6763
@@ -6840,7 +6840,7 @@ msgstr "Sallii käyttäjäkohtaisen teeman valinnan."
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
 msgid "Globally unique identifier"
-msgstr "Globally unique identifier - yksilöllinen tunniste"
+msgstr "Globally unique identifier - Maailmanlaajuisesti yksilöllinen tunniste"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
 msgid "Godchild"
@@ -7119,7 +7119,8 @@ msgstr "Helsinki, Suomi"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7283,7 +7284,6 @@ msgstr "Hybridi"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
-#, fuzzy
 msgid "ID preferences"
 msgstr "Tunnus asetukset"
 
@@ -7457,9 +7457,8 @@ msgid "Import all places from a family tree"
 msgstr "Tuo kaikki paikat sukupuusta"
 
 #: admin_trees_manage.php:270
-#, fuzzy
 msgid "Import preferences"
-msgstr "Tuonti vaihtoehdot"
+msgstr "Tuonti asetukset"
 
 #: admin_trees_merge.php:86 admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -7637,7 +7636,8 @@ msgid "Installation folder"
 msgstr "Asennushakemisto"
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:197 app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:197
+#: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
 msgstr "Interaktiivinen sukupuu"
 
@@ -8867,6 +8867,10 @@ msgstr "Martinique"
 msgid "Masquerade as this user"
 msgstr "Tekeydy täksi käyttäjäksi"
 
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
+msgid "Match both upper and lower case letters."
+msgstr "Sovita sekä pien- että suuraakkosia."
+
 #: lifespan.php:104
 msgid "Match calendar"
 msgstr "Vain valittu kalenteri"
@@ -8945,9 +8949,9 @@ msgstr "Medford, Oregon, Yhdysvallat"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
-#: admin.php:758 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1446
-#: app/Module/MediaTabModule.php:35 app/Theme/AdministrationTheme.php:177
-#: inverselink.php:70
+#: admin.php:758 admin_media.php:692
+#: app/Functions/FunctionsPrintLists.php:1446 app/Module/MediaTabModule.php:35
+#: app/Theme/AdministrationTheme.php:177 inverselink.php:70
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:74
 msgid "Media"
 msgstr "Media"
@@ -9245,9 +9249,9 @@ msgstr "Moduuli"
 #: app/Module/FrequentlyAskedQuestionsModule.php:439
 #: app/Module/GoogleMapsModule.php:283 app/Module/GoogleMapsModule.php:1391
 #: app/Module/GoogleMapsModule.php:3620
-#: app/Module/RelationshipsChartModule.php:148 app/Module/SiteMapModule.php:297
-#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
-#: app/Theme/AdministrationTheme.php:190
+#: app/Module/RelationshipsChartModule.php:148
+#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
+#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr "Moduulien hallinta"
 
@@ -9988,7 +9992,6 @@ msgid "Norfolk Island"
 msgstr "Norfolkinsaari"
 
 #: admin_users.php:445
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr "Yleensä valvojan on hyväksyttävä sukupuuhun tehdyt muutokset. Tällä valinnalla voit sallia käyttäjälle oikeuden muutosten tekoon ilman että valvojan tarvitsee hyväksyä niitä."
 
@@ -10047,8 +10050,9 @@ msgid "Not verified by the user"
 msgstr "Käyttäjä jättänyt vahvistamatta"
 
 #. I18N: gedcom tag NOTE
-#: app/Controller/FamilyController.php:147 app/Functions/FunctionsPrint.php:173
-#: app/GedcomTag.php:638 modules_v3/cemetery_report/report.xml:64
+#: app/Controller/FamilyController.php:147
+#: app/Functions/FunctionsPrint.php:173 app/GedcomTag.php:638
+#: modules_v3/cemetery_report/report.xml:64
 #: modules_v3/family_group_report/report.xml:485
 #: modules_v3/family_group_report/report.xml:749
 #: modules_v3/family_group_report/report.xml:1101
@@ -10396,7 +10400,6 @@ msgid "Other folder… please type in"
 msgstr "Toinen kansio… ole hyvä ja kirjoita"
 
 #: admin_trees_config.php:2131
-#, fuzzy
 msgid "Other preferences"
 msgstr "Muut asetukset"
 
@@ -10468,7 +10471,8 @@ msgstr "PHP aikaraja"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -10700,7 +10704,8 @@ msgstr "PhpGedView pitää olla versio 4.2.3 tai jokin sen SVN päivityksistä #
 msgid "PhpGedView must use the same database as webtrees."
 msgstr "PhpGedView:n tulee käyttää samaa tietokantaa kuin webtrees."
 
-#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697 admin_trees_manage.php:725
+#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697
+#: admin_trees_manage.php:725
 msgid "PhpGedView to webtrees transfer wizard"
 msgstr "Siirtovelho PhpGedView aineiston siirtämiseen webtreesiin"
 
@@ -11305,8 +11310,9 @@ msgstr "ramadan"
 msgid "Random images from the current family tree."
 msgstr "Nykyisen sukupuun satunnaisia kuvia."
 
-#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1799 edit_interface.php:1869
+#: app/Controller/FamilyController.php:88
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1799
+#: edit_interface.php:1869
 msgid "Re-order children"
 msgstr "Järjestä lapset uudelleen"
 
@@ -11329,7 +11335,8 @@ msgid "Real name"
 msgstr "Etu- ja sukunimi"
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr "Viimeiset muutokset"
 
@@ -11345,7 +11352,8 @@ msgstr "Recife, Brasilia"
 #: admin_site_change.php:328 admin_site_change.php:389
 #: admin_trees_config.php:529 app/Functions/FunctionsPrintLists.php:1801
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:321 app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:321
+#: app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -11412,12 +11420,10 @@ msgid "Regular expressions are an advanced pattern matching technique."
 msgstr "Säännölliset lausekkeet ovat kehittynyt hahmontunnistus tekniikka."
 
 #: edit_changes.php:181 edit_changes.php:201
-#, fuzzy
 msgid "Reject"
 msgstr "Peru muutos"
 
 #: edit_changes.php:211 edit_changes.php:231
-#, fuzzy
 msgid "Reject all changes"
 msgstr "Peruuta kaikki muutokset"
 
@@ -11607,6 +11613,11 @@ msgstr "Tietovarasto sisältää"
 #: app/Functions/FunctionsPrintLists.php:1335 edit_interface.php:1537
 msgid "Repository name"
 msgstr "Tietovaraston nimi"
+
+#. I18N: Name of a country or state
+#: app/Stats.php:6727
+msgid "Republic of the Congo"
+msgstr "Kongo"
 
 #: app/Module/LoginBlockModule.php:99 login.php:221
 msgid "Request a new password"
@@ -11991,9 +12002,8 @@ msgid "Select a GEDCOM file to import"
 msgstr "Valitse tuotava GEDCOM tiedosto"
 
 #: index_edit.php:284 index_edit.php:367
-#, fuzzy
 msgid "Select a block and use the arrows to move it."
-msgstr "Korosta nimeä ja klikkaa sitten nuolikuvaketta siirtääksesi haluttuun suuntaan."
+msgstr "Valitse palkki ja käytä nuolia sirtääksesi sitä."
 
 #: app/Functions/FunctionsEdit.php:404 reportengine.php:244
 msgid "Select a date"
@@ -12192,11 +12202,6 @@ msgstr "Istunnon ajanloppuminen"
 #: admin_trees_manage.php:441 admin_trees_manage.php:452
 msgid "Set as default"
 msgstr "Aseta oletukseksi"
-
-#: inverselink.php:152
-#, fuzzy
-msgid "link"
-msgstr "Liitä"
 
 #. I18N: You need to:
 #: login.php:572
@@ -12542,11 +12547,6 @@ msgstr "Näytä yksityiskohdat"
 msgid "Show divorced couples."
 msgstr "Näytä eronneet parit."
 
-#: admin_trees_config.php:1087
-#, fuzzy
-msgid "Show thumbnail images in charts and family groups."
-msgstr "Näytä korostetut kuvat henkilöalueilla"
-
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1650
 msgid "Show hit counters on Portal and Individual pages."
@@ -12753,6 +12753,10 @@ msgstr "Näytä käyttäjä joka teki muutoksen"
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
 msgstr "Millä kielillä tämä näytetään"
+
+#: admin_trees_config.php:1087
+msgid "Show thumbnail images in charts and family groups."
+msgstr "Näytä pikkukuvat kaavioissa ja perheryhmissä."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1023 app/Functions/FunctionsEdit.php:206
@@ -12994,9 +12998,8 @@ msgid "Some genealogy software creates GEDCOM files that contain media filenames
 msgstr "Jotkut sukututkimussovellukset luovat GEDCOM-tiedostoja, jotka sisältävät media tiedostonimissä täydet polut. Nämä polut eivät ole web-palvelimella. Jotta webtrees löytää tiedoston, ensimmäinen osa polusta on poistettava."
 
 #: app/Module/GoogleMapsModule.php:439
-#, fuzzy
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Jotkut paikannimet voidaan kirjoittaa valinnaisten etuliitteiden ja päätteiden kanssa. Esimerkiksi ”Uusimaa” ja ”Uudenmaan lääni”. Jos sukupuussa paikannimet ovat täydellisinä, mutta maantieteellinen tietokanta sisältää lyhyet paikannimet, sinun tulee määrittää luettelo etuliitteistä ja päätteistä joita ei tule ottaa huomioon. Vaihtoehdot tulee erottaa toisistaan puolipisteellä. Esimerkiksi ”County; County of” tai ”Maalaiskunta; mlk; mlk.”."
+msgstr "Jotkut paikannimet voidaan kirjoittaa valinnaisten etuliitteiden ja päätteiden kanssa. Esimerkiksi ”Uusimaa” ja ”Uudenmaan lääni”. Jos sukupuun paikannimet ovat täydellisiä, mutta maantieteellinen tietokanta sisältää lyhyet paikannimet, sinun tulee määrittää luettelo etuliitteistä ja päätteistä, joita ei tule ottaa huomioon. Vaihtoehdot tulee erottaa toisistaan puolipisteellä. Esimerkiksi ”County; County of” tai ”Maalaiskunta; mlk; mlk.”."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1479
@@ -13599,9 +13602,8 @@ msgid "The changes to “%s” have been rejected."
 msgstr "”%s” - muutokset on hylätty."
 
 #: app/Module/ClippingsCartModule.php:311
-#, fuzzy
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "Leikekori mahdollistaa tietojen ”leikkeiden” tallentamisen tästä sukupuusta leikekoriin ja liittämään ne yhdeksi GEDCOM-tiedostoksi omalle työasemallesi latausta varten, jonka jälkeen voit omalla sukututkimusohjelmalla jatkaa käsittelyä.<br><ul><li>Kuinka leike tehdään?<br>Tämä on helppoa. Aina kun näet klikattavissa olevan nimen (henkilön, perheen tai paikan) voit mennä kyseiselle sivulle. Siellä näet vaihtoehdon ”Lisää leikekoriin”. Klikkaamalla linkkiä avautuu sivu, jossa on monta vaihtoehtoa tiedoston siirtämiseen.</li><li>Miten ladataan?<br>Kun sinulla on haluamasi tiedot leikekorissa klikkaa <b>”Lataa nyt</b>”-linkkiä. Seuraa ohjeita ja linkkejä.</li></ul>"
+msgstr "Leikekorin avulla voit ottaa otteita tästä sukupuusta ja ladata ne GEDCOM tiedostoon."
 
 #: site-unavailable.php:54
 msgid "The database reported the following error message:"
@@ -13716,8 +13718,8 @@ msgstr "Kansiota %s ei voitu poistaa."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:290
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:290
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Kansio %s ei ole olemassa, ja sitä ei voi luoda."
@@ -13843,27 +13845,23 @@ msgstr "Moduuli ”%s” on otettu käyttöön."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1888
-#, fuzzy
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
-msgstr "Tämä perhefaktojen pikalista näkyy täyden listan vieressä ja siitä voi lisätä tiedon yhdellä klikkauksella."
+msgstr "Yleisimmät perhefaktat ja -tapahtumat on listattu erikseen, jotta ne voidaan lisätä helpommin."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1770
-#, fuzzy
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr "Tämä on lyhennetty luettelo GEDCOM henkilöfaktoista, joka näytetään täyslistan ohessa. Siitä voi lisätä faktan yhdellä klikkauksella."
+msgstr "Yleisimmät henkilöfaktat ja -tapahtumat on listattu erikseen, jotta ne voidaan lisätä helpommin."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2066
-#, fuzzy
 msgid "The most common repository facts are listed separately, so that they can be added more easily."
-msgstr "Tämä on tiivistetty luettelo GEDCOM tietovaraston faktoista, joka näytetään koko luettelon ohessa. Klikattaessa voidaan pikavalintatapaisesti lisätä."
+msgstr "Yleisimmät tietovarastofaktat ja -tapahtumat on listattu erikseen, jotta ne voidaan lisätä helpommin."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1977
-#, fuzzy
 msgid "The most common source facts are listed separately, so that they can be added more easily."
-msgstr "Tämä on lyhennetty luettelo GEDCOM lähdefaktoista, joka näkyy täysluettelon ohessa ja voidaan lisätä mukaan klikkauksella."
+msgstr "Yleisimmät lähdefaktat ja -tapahtumat on listattu erikseen, jotta ne voidaan lisätä helpommin."
 
 #: admin_site_upgrade.php:337
 #, php-format
@@ -14077,9 +14075,8 @@ msgstr "Teema muutos"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-#, fuzzy
 msgid "Theme menu"
-msgstr "Teeman vaihtamisen valinta"
+msgstr "Teema-valikko"
 
 #: admin_modules.php:165
 msgid "Themes"
@@ -14114,8 +14111,8 @@ msgstr "Tässä sukupuussa ei ole tutkimustehtäviä."
 msgid "There are no source citations for this individual."
 msgstr "Tällä henkilöllä ei ole lähdetietoviitteitä."
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1961
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1961
 msgid "There are pending changes for you to moderate."
 msgstr "Tarkista vireillä olevat muutokset."
 
@@ -14178,7 +14175,6 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Tätä käyttäjätiliä ei ole vahvistettu. Tarkista sähköpostistasi saapunutta vahvistusviestiä."
 
 #: app/Module/ReviewChangesModule.php:179
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr "Tässä lohkossa esitetään vireillä olevat muutokset muokkaajille. Valvojan tulee hyväksyä vireillä olevat muutokset. Valvojille lähetetään päivittäin sähköposti vireillä olevista muutoksista."
 
@@ -14545,9 +14541,8 @@ msgstr "Tällä valinnalla vaikutat siihen, näytetäänkö esipolvitaulu vaakas
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1038
-#, fuzzy
 msgid "This option will make it easier for users to download images."
-msgstr "Media katsoja voi näyttää linkin jonka napsauttaminen lataa mediatiedoston paikalliseen tietokoneeseen.<br><br>Voit piilottaa latauslinkin turvallisuussyistä."
+msgstr "Tämä vaihtoehto helpottaa käyttäjien kuvien latauksen."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:497
@@ -14627,7 +14622,6 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Tämä tietovarasto on muokattu. Tarkista muutokset ja %1$s tai %2$s ne."
 
 #: admin_users.php:553
-#, fuzzy
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Tällä roolilla on samat käyttöoikeudet kuin muokkaajalla, sekä lisäksi oikeus hyväksyä/hylätä muiden sivuston käyttäjien tekemiä muutoksia."
 
@@ -14636,7 +14630,6 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Tällä roolilla on samat oikeudet kuin sukupuun ylläpitäjällä, sekä lisäksi oikeus muuttaa koko palvelun eli palvelimen asetuksia / määrityksiä, käyttäjätilejä ja sallittuja lisäominaisuuksia eli moduuleja."
 
 #: admin_users.php:547
-#, fuzzy
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr "Tällä roolilla on samat käyttöoikeudet kuin jäsenellä, sekä lisäksi oikeus lisätä/muokata/poistaa tietoja. Kun tietoja on muutettu, eikä käyttäjälle ole sallittu ”hyväksy automaattisesti muutokset”, niin muutokset tulevat voimaan vasta kun valvoja, jolla on hyväksymisoikeuksia, on hyväksynyt ne."
 
@@ -14750,11 +14743,6 @@ msgstr "Palvelimelle ladattava pienoiskuva"
 #: app/Date/CalendarDate.php:344
 msgid "Thursday"
 msgstr "Torstai"
-
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-#, fuzzy
-msgid "Match both upper and lower case letters."
-msgstr "Rastita tämä ruutu verrataksesi sekä pien- että suuraakkosia."
 
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
@@ -15022,7 +15010,8 @@ msgstr "Etunimiä yhteensä"
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:88
-#: modules_v3/death_report/report.xml:99 modules_v3/fact_sources/report.xml:142
+#: modules_v3/death_report/report.xml:99
+#: modules_v3/fact_sources/report.xml:142
 #: modules_v3/fact_sources/report.xml:146
 #: modules_v3/fact_sources/report.xml:305
 #: modules_v3/fact_sources/report.xml:309
@@ -15462,7 +15451,6 @@ msgid "User not verified by administrator."
 msgstr "Ylläpito ei ole vahvistanut käyttäjää."
 
 #: admin_trees_config.php:958
-#, fuzzy
 msgid "User preferences"
 msgstr "Käyttäjäasetukset"
 
@@ -15640,9 +15628,8 @@ msgid "View the notes"
 msgstr "Näytä lisätiedot"
 
 #: calendar.php:300
-#, fuzzy
 msgid "View this day"
-msgstr "Näytä päivä"
+msgstr "Näytä tämä päivä"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15651,29 +15638,24 @@ msgstr "Näytä päivä"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:99
-#, fuzzy
 msgid "View this family"
-msgstr "Katso perhettä"
+msgstr "Katso tätä perhettä"
 
 #: app/Module/SlideShowModule.php:177 medialist.php:310
-#, fuzzy
 msgid "View this individual"
-msgstr "Katso henkilöä"
+msgstr "Katso tätä henkilöä"
 
 #: calendar.php:304
-#, fuzzy
 msgid "View this month"
-msgstr "Näytä kuukausi"
+msgstr "Näytä tämä kuukausi"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-#, fuzzy
 msgid "View this source"
-msgstr "Näytä lähteet"
+msgstr "Näytä tämä lähde"
 
 #: calendar.php:308
-#, fuzzy
 msgid "View this year"
-msgstr "Näytä vuosi"
+msgstr "Näytä tämä vuosi"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -15824,7 +15806,6 @@ msgid "When a record is edited, the user and timestamp are recorded. Sometimes i
 msgstr "Kun tietuetta muokataan, käyttäjä ja aikaleima kirjataan. Joskus on toivottavaa säilyttää nykyinen ”viimeisin muutos” tieto, esimerkiksi kun tehdään pieniä korjauksia jonkun toisen tietoihin. Tämä vaihtoehto ohjaa valitaanko tämä ominaisuus oletusarvoisesti."
 
 #: admin_users.php:389
-#, fuzzy
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr "Kun vierailija pyytää itselleen käyttäjätunnuksen, -tilin, lähetetään hänen ilmoittamaan sähköpostiosoitteeseen posti, jossa on vahvistamista varten linkki. Kun hän klikkaa linkkiä, tiedämme että ilmoitettu sähköpostiosoite on oikea ja ”sähköpostiosoite on vahvistus” kuitataan automaattisesti."
 
@@ -15841,12 +15822,6 @@ msgstr "Kun lisäät uusia lähisukulaisia, voit lisätä lähteitä tietueisiin
 #: admin_trees_config.php:844
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 msgstr "Kun uudet tietueet luodaan, niille annetaan sisäinen tunnus. Voit määrittää jokaisen tietuetyypin etuliitteen."
-
-#. I18N: Help text for the “Date differences” configuration setting
-#: admin_trees_config.php:1539
-#, fuzzy
-msgid "Calculate the age differences between siblings, children, spouses, etc."
-msgstr "Kun tämä vaihtoehto on valittu, webtrees laskee ikäerot sisarusten, lasten, puolisoiden jne. välillä."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2141
@@ -15884,7 +15859,8 @@ msgstr "Kuka voi ladata web-palvelimelle uusia mediatiedostoja"
 msgid "Who is online"
 msgstr "Kuka on online"
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr "Vain kokonaiset sanat"
 
@@ -16014,7 +15990,7 @@ msgstr "Olet kirjautunut käyttäjänä %s."
 
 #: login.php:169 login.php:172 login.php:175
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "Voit hakea tilin käyttämällä seuraavaa linkkiä."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -16140,9 +16116,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr "Sinun täytyy numeroida yhden puun tietueet ennen kuin voit yhdistää ne."
 
 #: app/Module/ChartsBlockModule.php:139
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Sinun pitää valita henkilö ja kaaviomalli kaavioasetusosan asetuksissa."
+msgstr "Sinun pitää valita henkilö ja kaaviomalli lohkon asetuksissa"
 
 #: admin_users.php:287
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
@@ -16150,11 +16125,11 @@ msgstr "Sinun on ensin valittava henkilö, ennen kuin voit rajoittaa käyttäjä
 
 #: login.php:175
 msgid "You need to be a family member to access this website."
-msgstr ""
+msgstr "Sinun täytyy olla perheenjäsen päästäksesi verkkosivuille."
 
 #: login.php:172
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "Sinun täytyy olla valtuutettu käyttäjä päästäksesi tälle sivustolle."
 
 #: admin_trees_manage.php:320
 msgid "You need to create a family tree."
@@ -16251,9 +16226,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Palvelimesi ylläpitäjältä saat tarvittavat yhteystiedot."
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "Sinun käyttäjätunnukselle ei ole sallittu ”hyväksy automaattisesti muutokset”. Voit muuttaa vain yksitellen tietueita eli tietoja."
+msgstr "Käyttäjätunnuksellesi ei ole sallittu ”hyväksy automaattisesti muutokset”. Voit muuttaa vain yksitellen tietueita eli tietoja."
 
 #: admin.php:556
 #, php-format
@@ -16600,7 +16574,7 @@ msgstr "lanko/käly"
 
 #: app/Module/TopSurnamesModule.php:165
 msgid "bullet list"
-msgstr "Luetelmamerkkinen lista"
+msgstr "luetelmamerkkilista"
 
 #: app/Stats.php:2917
 msgid "burial"
@@ -16615,6 +16589,10 @@ msgstr "muuttaja"
 #, php-format
 msgid "calculated %s"
 msgstr "todennäköisesti %s"
+
+#: app/Module/ClippingsCartModule.php:796
+msgid "cancel"
+msgstr "peruuta"
 
 #: app/Stats.php:2918
 msgid "census added"
@@ -16654,14 +16632,15 @@ msgstr "lapsia"
 #. I18N: A button label.
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:713
-#: app/Module/GoogleMapsModule.php:3544 app/Theme/AbstractTheme.php:700
-#: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1743
-#: edit_interface.php:1848 edit_interface.php:2040 edit_interface.php:2203
-#: edit_interface.php:2588 find.php:766 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189
+#: app/Module/GoogleMapsModule.php:713 app/Module/GoogleMapsModule.php:3544
+#: app/Theme/AbstractTheme.php:700 edit_changes.php:240 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1743 edit_interface.php:1848 edit_interface.php:2040
+#: edit_interface.php:2203 edit_interface.php:2588 find.php:766
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "sulje"
@@ -16772,6 +16751,9 @@ msgstr "kuoli"
 msgctxt "MALE"
 msgid "died"
 msgstr "kuoli"
+
+msgid "download"
+msgstr "lataa"
 
 #: app/Module/GoogleMapsModule.php:3508
 msgid "east"
@@ -18784,7 +18766,7 @@ msgstr "Puolivuosia avioitumisen jälkeen"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:279
 msgid "herself"
-msgstr ""
+msgstr "hän itse"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:761
@@ -18798,7 +18780,7 @@ msgstr "piilota"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:277
 msgid "himself"
-msgstr ""
+msgstr "hän itse"
 
 #: app/Functions/Functions.php:709 edit_interface.php:1928
 #: edit_interface.php:1963
@@ -18821,6 +18803,9 @@ msgstr "maahanmuutto nimi"
 msgctxt "MALE"
 msgid "immigration name"
 msgstr "maahanmuutto nimi"
+
+msgid "import"
+msgstr "tuo"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
@@ -18885,6 +18870,10 @@ msgstr "viimeinen"
 #: statisticsplot.php:764
 msgid "less than"
 msgstr "alle"
+
+#: inverselink.php:152
+msgid "link"
+msgstr "liitä"
 
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
@@ -19004,7 +18993,7 @@ msgstr "kuukautta avioliiton jälkeen"
 
 #: statistics.php:569
 msgid "months before and after marriage"
-msgstr "Kuukausia ennen ja jälkeen avioitumisen"
+msgstr "kuukausia ennen ja jälkeen avioitumisen"
 
 #: app/Functions/Functions.php:687
 msgid "mother"
@@ -19177,7 +19166,8 @@ msgstr "lukumäärät"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19353,20 +19343,21 @@ msgstr "hakukone"
 #. I18N: A button label.
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:262
-#: admin_site_access.php:307 admin_site_config.php:652 admin_site_merge.php:340
-#: admin_trees_config.php:2191 admin_users.php:673
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129
+#: admin_modules.php:262 admin_site_access.php:307 admin_site_config.php:652
+#: admin_site_merge.php:340 admin_trees_config.php:2191 admin_users.php:673
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:499 app/Module/GoogleMapsModule.php:712
 #: app/Module/GoogleMapsModule.php:2459 app/Module/GoogleMapsModule.php:3543
-#: app/Module/RelationshipsChartModule.php:173 app/Module/SiteMapModule.php:320
-#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
-#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1742 edit_interface.php:1846 edit_interface.php:2039
-#: edit_interface.php:2201 edit_interface.php:2584 editnews.php:74
-#: edituser.php:317 find.php:543 index_edit.php:376
+#: app/Module/RelationshipsChartModule.php:173
+#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
+#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
+#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
+#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
+#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1742
+#: edit_interface.php:1846 edit_interface.php:2039 edit_interface.php:2201
+#: edit_interface.php:2584 editnews.php:74 edituser.php:317 find.php:543
+#: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:197
 msgid "save"
@@ -19708,7 +19699,7 @@ msgstr "vävy/miniä"
 #: app/Module/UpcomingAnniversariesModule.php:176
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr "lajittele päivämäärän mukaan"
+msgstr "järjestä päivämäärän mukaan"
 
 #: edit_interface.php:1847 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9 modules_v3/change_report/report.xml:7
@@ -19732,12 +19723,12 @@ msgstr "järjestä avioitumisajan mukaan"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:164
 msgid "sort by date, newest first"
-msgstr "lajittele päivämäärän mukaan, uusimmat ensin"
+msgstr "järjestä päivämäärän mukaan, uusimmat ensin"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:163
 msgid "sort by date, oldest first"
-msgstr "Lajittele päivämäärän mukaan, vanhimmat ensin"
+msgstr "järjestä päivämäärän mukaan, vanhimmat ensin"
 
 #. I18N: An option in a list-box
 #: medialist.php:109
@@ -19924,7 +19915,7 @@ msgstr "hakemisto ”/data” ja tiedostolla ”/data/config.ini.php” on sella
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:281
 msgid "themself"
-msgstr ""
+msgstr "hän itse"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:639
@@ -20081,6 +20072,12 @@ msgstr "epäluotettava todiste"
 msgid "update"
 msgstr "päivitä"
 
+msgid "upload"
+msgstr "lataa palvelimelle"
+
+msgid "view"
+msgstr "näytä"
+
 #: admin_trees_config.php:366 admin_trees_config.php:390
 #: admin_trees_config.php:430 admin_trees_config.php:470
 #: admin_trees_config.php:490
@@ -20220,7 +20217,7 @@ msgstr "”%s” on lisätty sinun suosikkeihisi."
 #: action.php:47
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "“%s” on poistettu."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:107
 msgid "…"
@@ -20408,19 +20405,3 @@ msgstr "…"
 
 #~ msgid "Zoom="
 #~ msgstr "Zoomaus="
-
-#, fuzzy
-msgid "download"
-msgstr "lataa"
-
-#, fuzzy
-msgid "import"
-msgstr "tuo"
-
-#, fuzzy
-msgid "upload"
-msgstr "lataa palvelimelle"
-
-#, fuzzy
-msgid "view"
-msgstr "näytä"
