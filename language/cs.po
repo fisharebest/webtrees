@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-20 08:41+0000\n"
+"PO-Revision-Date: 2016-06-23 13:51+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -828,9 +828,8 @@ msgstr "Uvítací zpráva pro návštěvníky stránky."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-#, fuzzy
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "Seznam změn, které vyžadují schválení moderátorem a e-mailová upozornění."
+msgstr "Seznam změn, které vyžadují schválení moderátorem, a e-mailových upozornění."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -1198,6 +1197,10 @@ msgstr "Schválit všechny změny"
 #: admin_trees_config.php:535
 msgid "Access level"
 msgstr "Úroveň přístupových práv"
+
+#: admin_users.php:521
+msgid "Access to family trees"
+msgstr "Přístup k rodokmenům"
 
 #: admin_users.php:376
 msgid "Account approval and email verification"
@@ -1725,7 +1728,6 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr "Po vytvoření rodokmenu budete moci importovat data ze souboru GEDCOM."
 
 #: login.php:259
-#, fuzzy
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
 msgstr "Poté, co se přihlásíte, vyberte odkaz «Můj účet» v menu «Moje stránka» a změňte si heslo."
 
@@ -2348,9 +2350,8 @@ msgid "Author of last change"
 msgstr "Autor poslední změny"
 
 #: admin_users.php:442
-#, fuzzy
 msgid "Automatically accept changes made by this user"
-msgstr "Automaticky schválit změny provedené tímto uživatelem"
+msgstr "Automaticky přijmout změny provedené tímto uživatelem"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
@@ -3329,6 +3330,11 @@ msgstr "Standardně váš server umožňuje skriptům použít %s paměti."
 msgid "CKEditor™"
 msgstr "CKEditor™"
 
+#. I18N: Help text for the “Date differences” configuration setting
+#: admin_trees_config.php:1539
+msgid "Calculate the age differences between siblings, children, spouses, etc."
+msgstr "Počítat věkové rozdíly mezi sourozenci, dětmi, partnery, atd."
+
 #: admin_trees_manage.php:367
 msgid "Calculating…"
 msgstr "Počítám…"
@@ -3368,11 +3374,6 @@ msgstr "Campinas, Brazílie"
 #: app/Stats.php:6716
 msgid "Canada"
 msgstr "Kanada"
-
-#: app/Module/ClippingsCartModule.php:796
-#, fuzzy
-msgid "cancel"
-msgstr "Zrušit"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6717
@@ -3981,16 +3982,6 @@ msgstr "Potvrďte heslo"
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 msgid "Confirmation"
 msgstr "Biřmování"
-
-#. I18N: Name of a country or state
-#: app/Stats.php:6727
-msgid "Republic of the Congo"
-msgstr "Kongo (Brazzaville)"
-
-#. I18N: Name of a country or state
-#: app/Stats.php:6726
-msgid "Democratic Republic of the Congo"
-msgstr "Kongo (Kinshasa)"
 
 #: setup.php:272
 msgid "Connection to database server"
@@ -5082,6 +5073,11 @@ msgid "Deleting the family will unlink all of the individuals from each other bu
 msgstr "Smazání rodiny smaže odkazy na jednotlivé osoby, ale jejich údaje zůstanou zachovány. Opravdu si přejete smazat tuto rodinu?"
 
 #. I18N: Name of a country or state
+#: app/Stats.php:6726
+msgid "Democratic Republic of the Congo"
+msgstr "Kongo (Kinshasa)"
+
+#. I18N: Name of a country or state
 #: app/Stats.php:6742
 msgid "Denmark"
 msgstr "Dánsko"
@@ -6114,11 +6110,6 @@ msgstr "Rodina od %s"
 #: edit_changes.php:180
 msgid "Family tree"
 msgstr "Rodokmen"
-
-#: admin_users.php:521
-#, fuzzy
-msgid "Access to family trees"
-msgstr "Přístup k rodokmenu a jeho nastavení"
 
 #: app/Module/ClippingsCartModule.php:90
 #: app/Module/ClippingsCartModule.php:479
@@ -8913,6 +8904,10 @@ msgstr "Martinik"
 msgid "Masquerade as this user"
 msgstr "Maskovat jako tento uživatel"
 
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
+msgid "Match both upper and lower case letters."
+msgstr "Velká a malá písmena se mají shodovat."
+
 #: lifespan.php:104
 msgid "Match calendar"
 msgstr "Musí se shodovat s kalendářem"
@@ -10036,9 +10031,8 @@ msgid "Norfolk Island"
 msgstr "Ostrov Norfolk"
 
 #: admin_users.php:445
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "Normálně musí být všechny změny v rodokmenu schváleny moderátorem. Tato volba umožní uživateli dělat změny bez tohoto schválení."
+msgstr "Normálně musí všechny změny v rodokmenu posoudit moderátor. Tato volba umožňuje uživateli dělat změny bez vědomí moderátora."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6864
@@ -11659,6 +11653,11 @@ msgstr "Repozitář obsahuje"
 msgid "Repository name"
 msgstr "Název repozitáře"
 
+#. I18N: Name of a country or state
+#: app/Stats.php:6727
+msgid "Republic of the Congo"
+msgstr "Kongo (Brazzaville)"
+
 #: app/Module/LoginBlockModule.php:99 login.php:221
 msgid "Request a new password"
 msgstr "Zažádat o nové heslo"
@@ -12243,11 +12242,6 @@ msgstr "Vypršení platnosti session"
 msgid "Set as default"
 msgstr "Nastavit jako výchozí"
 
-#: inverselink.php:152
-#, fuzzy
-msgid "link"
-msgstr "Nastavit odkaz"
-
 #. I18N: You need to:
 #: login.php:572
 msgid "Set the access level for each tree."
@@ -12592,11 +12586,6 @@ msgstr "Zobrazit podrobnosti"
 msgid "Show divorced couples."
 msgstr "Zobrazit rozvedené páry."
 
-#: admin_trees_config.php:1087
-#, fuzzy
-msgid "Show thumbnail images in charts and family groups."
-msgstr "Zobrazit fotky u osob v rámečcích"
-
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1650
 msgid "Show hit counters on Portal and Individual pages."
@@ -12803,6 +12792,10 @@ msgstr "Zobrazit uživatele, který provedl změnu"
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
 msgstr "Pro které jazyky tento blok zobrazit"
+
+#: admin_trees_config.php:1087
+msgid "Show thumbnail images in charts and family groups."
+msgstr "Zobrazovat náhledy obrázků v diagramech a rodinných skupinách."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1023 app/Functions/FunctionsEdit.php:206
@@ -14122,9 +14115,8 @@ msgstr "Změna vzhledu"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-#, fuzzy
 msgid "Theme menu"
-msgstr "Políčko výběru motivu pro změnu motivu"
+msgstr "Menu motivů"
 
 #: admin_modules.php:165
 msgid "Themes"
@@ -14224,9 +14216,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Tento účet nebyl ověřen. Prosím zkontrolujte, zda vám nepřišel ověřovací email."
 
 #: app/Module/ReviewChangesModule.php:179
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Tento blok zobrazí editorům seznam záznamů s dosud neschválenými změnami, které musí být schváleny moderátorem. Také generuje denně zasílané emaily, pokud nějaké změny existují."
+msgstr "Tento blok zobrazí editorům seznam záznamů s dosud neschválenými změnami, které musí být posouzeny moderátorem. Také generuje denně zasílané emaily moderátorům, kdykoliv nějaké nevyřízené změny existují."
 
 #: admin_users.php:463 edituser.php:312
 msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
@@ -14674,7 +14665,6 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Tento repozitář byl upraven. Měli byste úpravu posoudit a pak ji %1$s nebo %2$s."
 
 #: admin_users.php:553
-#, fuzzy
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Tato role má práva role Editor plus práva schvalovat/odmítat změny provedené jinými uživateli."
 
@@ -14683,9 +14673,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Tato role má všechna práva role správce ve všech rodokmenech, a navíc práva měnit nastavení webu, uživatelů a modulů."
 
 #: admin_users.php:547
-#, fuzzy
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Tato role má práva role Člen plus práva přidávat/měnit/mazat data. Všechny změny musí být schváleny moderátorem, pokud uživatel nemá aktivováno „automaticky schvalovat změny“."
+msgstr "Tato role má práva role Člen plus práva přidávat/měnit/mazat data. Všechny změny musí být posouzeny moderátorem, pokud uživatel nemá aktivováno „automaticky schvalovat změny“."
 
 #: admin_users.php:561
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -14797,11 +14786,6 @@ msgstr "Náhled pro nahrání"
 #: app/Date/CalendarDate.php:344
 msgid "Thursday"
 msgstr "čtvrtek"
-
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-#, fuzzy
-msgid "Match both upper and lower case letters."
-msgstr "Zaškrtněte toto políčko, aby se musela shodovat velká i malá písmena."
 
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
@@ -15885,12 +15869,6 @@ msgstr "Když přidáváte nové blízké příbuzné, můžete přidávat citac
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 msgstr "Nově vytvářené záznamy dostávají interní identifikační číslo ID. Zde můžete určit jeho předponu pro každý typ záznamu."
 
-#. I18N: Help text for the “Date differences” configuration setting
-#: admin_trees_config.php:1539
-#, fuzzy
-msgid "Calculate the age differences between siblings, children, spouses, etc."
-msgstr "Pokud je tato volba vybrána, webtrees spočítají rozdíly věků mezi sourozenci, dětmi, partnery, atd."
-
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2141
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
@@ -16294,7 +16272,6 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Správce vašeho serveru vám sdělí podrobnosti připojení."
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Váš uživatelský účet nemá povoleno „automaticky schvalovat změny“. Budete schopen měnit pouze jeden záznam najednou."
 
@@ -16659,6 +16636,10 @@ msgstr "Naposledy změnil(a)"
 msgid "calculated %s"
 msgstr "dopočítáno %s"
 
+#: app/Module/ClippingsCartModule.php:796
+msgid "cancel"
+msgstr "zrušit"
+
 #: app/Stats.php:2918
 msgid "census added"
 msgstr "sčítání přidáno"
@@ -16816,6 +16797,9 @@ msgstr "zemřela"
 msgctxt "MALE"
 msgid "died"
 msgstr "zemřel"
+
+msgid "download"
+msgstr "stáhnout"
 
 #: app/Module/GoogleMapsModule.php:3508
 msgid "east"
@@ -18867,6 +18851,9 @@ msgctxt "MALE"
 msgid "immigration name"
 msgstr "imigrační jméno"
 
+msgid "import"
+msgstr "importovat"
+
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
 #, php-format
@@ -18931,6 +18918,10 @@ msgstr "poslední"
 #: statisticsplot.php:764
 msgid "less than"
 msgstr "méně než"
+
+#: inverselink.php:152
+msgid "link"
+msgstr "odkaz"
 
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
@@ -20130,6 +20121,12 @@ msgstr "nespolehlivý důkaz"
 msgid "update"
 msgstr "Aktualizovat"
 
+msgid "upload"
+msgstr "nahrát"
+
+msgid "view"
+msgstr "zobrazit"
+
 #: admin_trees_config.php:366 admin_trees_config.php:390
 #: admin_trees_config.php:430 admin_trees_config.php:470
 #: admin_trees_config.php:490
@@ -20460,19 +20457,3 @@ msgstr "…"
 
 #~ msgid "Zoom="
 #~ msgstr "Zoom="
-
-#, fuzzy
-msgid "download"
-msgstr "stáhnout"
-
-#, fuzzy
-msgid "import"
-msgstr "importovat"
-
-#, fuzzy
-msgid "upload"
-msgstr "nahrát"
-
-#, fuzzy
-msgid "view"
-msgstr "zobrazit"
