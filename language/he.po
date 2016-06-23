@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-23 18:18+0000\n"
+"PO-Revision-Date: 2016-06-23 18:19+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -12760,7 +12760,7 @@ msgstr "באיזה שפות להראות את הבלוק הזה"
 
 #: admin_trees_config.php:1087
 msgid "Show thumbnail images in charts and family groups."
-msgstr "הראה תמונות ממוזערות בתרשימים וקבוצות משפחה"
+msgstr "הראה תמונות ממוזערות בתרשימים וקבוצות משפחה."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1023 app/Functions/FunctionsEdit.php:206
@@ -16121,7 +16121,7 @@ msgstr "עליך למספר מחדש את הרשומות באחד מהעצים �
 
 #: app/Module/ChartsBlockModule.php:139
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "עליך לבחור אדם וסוג תרשים בהעדפות התצורה של הבלוק."
+msgstr "עליך לבחור אדם וסוג תרשים בהעדפות התצורה של הבלוק"
 
 #: admin_users.php:287
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
