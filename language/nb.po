@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-23 19:28+0000\n"
+"PO-Revision-Date: 2016-06-23 19:32+0000\n"
 "Last-Translator: Thomas Rindal <thomas@rindal.net>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
@@ -7660,19 +7660,19 @@ msgstr "Interne beskjeder med kopi til epost"
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1547
 msgid "Interred"
-msgstr "Urnenedsettelse/Begravelse"
+msgstr "Gravlagt/Urnenedsettelse"
 
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1543
 msgctxt "FEMALE"
 msgid "Interred"
-msgstr "Urnenedsettelse/Gravlagt"
+msgstr "Gravlagt/Urnenedsettelse"
 
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1539
 msgctxt "MALE"
 msgid "Interred"
-msgstr "Urnenedsettelse/Gravlagt"
+msgstr "Gravlagt/Urnenedsettelse"
 
 #: import.php:114
 msgid "Invalid GEDCOM file - no header record found."
