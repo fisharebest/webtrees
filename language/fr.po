@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-23 14:48+0000\n"
+"PO-Revision-Date: 2016-06-23 16:35+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -3479,7 +3479,7 @@ msgstr "Changer de drapeau"
 
 #: admin_users.php:217
 msgid "Change the blocks on this user’s “My page”"
-msgstr "Changer les blocs sur «&nbsp;Ma page&nbsp;» de cet utilisateur"
+msgstr "Changer les blocs sur «&nbsp;Ma page&nbsp;» pour cet utilisateur"
 
 #: admin_trees_manage.php:408 index_edit.php:50
 msgid "Change the “Home page” blocks"
@@ -16154,7 +16154,7 @@ msgstr "Vous devez vous connecter à nouveau en utilisant les mêmes identifiant
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:452
 msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "Vous avez seulement besoin d’entrer dans une URL de connexion si vous souhaitez rediriger vers un site ou un emplacement différent lors de votre connexion aux utilisateurs. Ceci est très utile si vous avez besoin pour passer de http à https lors de votre connexion aux utilisateurs. Inclure l’URL complète de <i>login.php</i>. Par exemple, https://www.yourserver.com/webtrees/login.php ."
+msgstr "Vous avez seulement besoin d’entrer une URL de connexion si vous souhaitez rediriger vers un site ou un emplacement différent lorsque vos utilisateurs se connectent. Ceci est très utile si vous avez besoin de passer de http à https lorsque vos utilisateurs se connectent. Inclure l’URL complète de <i>login.php</i>. Par exemple, https://www.votreserver.com/webtrees/login.php ."
 
 #: message.php:247
 msgid "You sent the following message to a webtrees administrator:"
