@@ -76,44 +76,39 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 			}
 			break;
 		}
-		$block = $this->getBlockSetting($block_id, 'block', '1');
-		foreach (array('block') as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
-		$usernews = Database::prepare(
-			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id = ? ORDER BY updated DESC"
-		)->execute(array(Auth::id()))->fetchAll();
 
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		$title = '';
-		$title .= $this->getTitle();
+		$articles = Database::prepare(
+			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id = ? ORDER BY updated DESC"
+		)->execute(array(
+			Auth::id(),
+		))->fetchAll();
+
+		$id      = $this->getName() . $block_id;
+		$class   = $this->getName() . '_block';
+		$title   = $this->getTitle();
 		$content = '';
-		if (!$usernews) {
+
+		if (empty($articles)) {
 			$content .= I18N::translate('You have not created any journal items.');
 		}
-		foreach ($usernews as $news) {
+
+		foreach ($articles as $article) {
 			$content .= '<div class="journal_box">';
-			$content .= '<div class="news_title">' . $news->subject . '</div>';
-			$content .= '<div class="news_date">' . FunctionsDate::formatTimestamp($news->updated) . '</div>';
-			if ($news->body == strip_tags($news->body)) {
-				// No HTML?
-				$news->body = nl2br($news->body, false);
+			$content .= '<div class="news_title">' . Filter::escapeHtml($article->subject) . '</div>';
+			$content .= '<div class="news_date">' . FunctionsDate::formatTimestamp($article->updated) . '</div>';
+			if ($article->body == strip_tags($article->body)) {
+				$article->body = nl2br($article->body, false);
 			}
-			$content .= $news->body . '<br><br>';
-			$content .= '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news->news_id . ', \'_blank\', indx_window_specs); return false;">' . I18N::translate('Edit') . '</a> | ';
-			$content .= '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($news->subject)) . "');\">" . I18N::translate('Delete') . '</a><br>';
-			$content .= "</div><br>";
+			$content .= $article->body;
+			$content .= '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $article->news_id . ', \'_blank\', indx_window_specs); return false;">' . I18N::translate('Edit') . '</a>';
+			$content .= ' | ';
+			$content .= '<a href="index.php?action=deletenews&amp;news_id=' . $article->news_id . '&amp;ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($article->subject)) . "');\">" . I18N::translate('Delete') . '</a><br>';
+			$content .= '</div><br>';
 		}
-		$content .= '<br><a href="#" onclick="window.open(\'editnews.php?user_id=' . Auth::id() . '\', \'_blank\', indx_window_specs); return false;">' . I18N::translate('Add a journal entry') . '</a>';
+
+		$content .= '<a href="#" onclick="window.open(\'editnews.php?user_id=' . Auth::id() . '\', \'_blank\', indx_window_specs); return false;">' . I18N::translate('Add a journal entry') . '</a>';
 
 		if ($template) {
-			if ($block) {
-				$class .= ' small_inner_block';
-			}
-
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
