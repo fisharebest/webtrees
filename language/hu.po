@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-23 09:21+0000\n"
+"PO-Revision-Date: 2016-06-23 10:32+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -12527,7 +12527,7 @@ msgstr "Mutasd azokat a párokat, ahol ismeretlen a házasságkötés dátuma."
 
 #: ancestry.php:75
 msgid "Show cousins"
-msgstr "Unokatestvérek feltüntetése"
+msgstr "Mutasd az unokatestvéreket"
 
 #: app/Module/RelativesTabModule.php:312
 msgid "Show date differences"
@@ -12559,7 +12559,7 @@ msgstr "Látogatószámláló feltüntetése a „Honlapon” és a Személyolda
 
 #: compact.php:60
 msgid "Show images"
-msgstr "Képek megjelenítése"
+msgstr "Mutasd a képeket"
 
 #: app/Module/GoogleMapsModule.php:4086
 msgid "Show inactive places"
@@ -16276,7 +16276,7 @@ msgstr "Nagyítás"
 
 #: timeline.php:311
 msgid "Zoom in"
-msgstr "Nagyítás"
+msgstr "Léptéknövelés"
 
 #: app/Theme/AbstractTheme.php:756 app/Theme/AbstractTheme.php:808
 msgid "Zoom in/out on this box."
@@ -16293,7 +16293,7 @@ msgstr "Térkép nagyítási szintje"
 
 #: timeline.php:312
 msgid "Zoom out"
-msgstr "Kicsinyítés"
+msgstr "Léptékcsökkentés"
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:89
