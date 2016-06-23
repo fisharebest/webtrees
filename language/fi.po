@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-23 19:14+0000\n"
+"PO-Revision-Date: 2016-06-23 19:15+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
@@ -3297,7 +3297,7 @@ msgstr "CKEditor™"
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1539
 msgid "Calculate the age differences between siblings, children, spouses, etc."
-msgstr "Laskee ikäerot sisarusten, lasten, puolisoiden, jne. välillä"
+msgstr "Laskee ikäerot sisarusten, lasten, puolisoiden, jne. välillä."
 
 #: admin_trees_manage.php:367
 msgid "Calculating…"
