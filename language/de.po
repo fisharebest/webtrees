@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-24 21:38+0000\n"
-"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
+"PO-Revision-Date: 2016-06-24 22:18+0000\n"
+"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -388,6 +388,10 @@ msgid "%s second ago"
 msgid_plural "%s seconds ago"
 msgstr[0] "vor einer Sekunde"
 msgstr[1] "vor %s Sekunden"
+
+#: message.php:300 message.php:303
+msgid "%s sent you the following message."
+msgstr "%s hat Ihnen die folgende Nachricht gesandt."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
@@ -6478,19 +6482,16 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Wenn Sie zum Beispiel eine Stufenweite von 2 angeben, wird diese Person in der Lage sein, ihre Enkel (Kind, Kind), ihre Tante (Eltern, Geschwister), ihre Stieftochter (Ehegatte, Kind), nicht aber ihre Cousine (Eltern, Geschwister, Kinder) sehen."
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy
 msgid "For help with genealogy questions contact %s."
-msgstr "Bei genealogischen Fragen wenden Sie sich bitte an %s"
+msgstr "Bei genealogischen Fragen wenden Sie sich bitte an %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy
 msgid "For technical support and information contact %s."
-msgstr "Für technische Unterstützung wenden Sie sich bitte an %s"
+msgstr "Für technische Unterstützung wenden Sie sich bitte an %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Für technische Unterstützung sowie bei genealogischen Fragen wenden Sie sich bitte an %s"
+msgstr "Für technische Unterstützung oder genealogische Fragen wenden Sie sich bitte an %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277
@@ -6829,12 +6830,6 @@ msgstr "Vorname"
 #: app/GedcomTag.php:504
 msgid "Given names"
 msgstr "Vornamen"
-
-#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
-#: admin_trees_config.php:967
-#, fuzzy
-msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr "Gibt Benutzern die Möglichkeit, ihr eigenes Theme zu wählen. Voraussetzung ist, dass auch die Option <b>Besuchern die Auswahl eines Themas erlauben</b> auf <b>Ja</b> gesetzt ist."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -13758,11 +13753,6 @@ msgstr "Die folgenden Tatsachen und Ereignisse wurden nur im Datensatz %s gefund
 msgid "The following list shows typical requirements."
 msgstr "Die folgende Liste zeigt typische Voraussetzungen."
 
-#: message.php:300 message.php:303
-#, fuzzy
-msgid "%s sent you the following message."
-msgstr "Die folgende Nachricht wurde an Ihr webtrees Benutzer Postfach gesendet von %s"
-
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
 msgstr "Die folgenden Orte wurden geändert:"
@@ -13963,6 +13953,11 @@ msgstr "Anzahl der Personen im Stammbaum, älteste und neueste Ereignisse, häuf
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
 msgstr "Der Nachname wird von Schrägstrichen umrahmt: <%s>John Paul /Smith/<%s>"
+
+#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
+#: admin_trees_config.php:967
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
+msgstr "Das Themenmenü wird nur angezeigt, wenn die Webseiten-Einstellungen den Benutzern die Auswahl ihres eigenen Themas erlauben."
 
 #: addmedia.php:360
 #, php-format
