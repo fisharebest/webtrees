@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-24 20:25+0000\n"
+"PO-Revision-Date: 2016-06-24 21:02+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
@@ -1393,7 +1393,7 @@ msgstr "Liitä vaimo käyttäen tiedostossa olevaa henkilöä"
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
 msgid "Add an FAQ"
-msgstr "Lisää Usein kysytyt kysymykset aihe"
+msgstr "Lisää Usein kysytty kysymys"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
 msgid "Add an associate"
@@ -1900,7 +1900,7 @@ msgstr "Amerikan Samoa"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Usein kysytyt kysymykset aihe voi näkyä vain yhdessä sukupuussa tai kaikissa sukupuissa."
+msgstr "Usein kysytty kysymys voi näkyä vain yhdessä sukupuussa tai kaikissa sukupuissa."
 
 #: admin_site_config.php:492
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -5433,7 +5433,7 @@ msgstr "Muokkaa asetukset"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
 msgid "Edit the FAQ"
-msgstr "Muokkaa Usein kysytty aihe"
+msgstr "Muokkaa Usein kysytty kysymys"
 
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
@@ -6579,7 +6579,7 @@ msgstr "Ranskan eteläiset alueet"
 #: app/Module/FrequentlyAskedQuestionsModule.php:363
 #: app/Module/FrequentlyAskedQuestionsModule.php:405
 msgid "Frequently asked questions"
-msgstr "Usein kysytty"
+msgstr "Usein kysytyt kysymykset"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:149
@@ -13563,7 +13563,7 @@ msgstr "<b>Sukunimi</b>-kenttä sisältää nimen, jota käytetään lajitteluun
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:467
 msgid "The FAQ list is empty."
-msgstr "Kysymysluettelo on tyhjä."
+msgstr "Usein kysytyt kysymykset luettelo on tyhjä."
 
 #: admin_trees_manage.php:148
 #, php-format
