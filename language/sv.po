@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-24 20:26+0000\n"
+"PO-Revision-Date: 2016-06-24 21:07+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
@@ -799,7 +799,7 @@ msgstr "En lista med ändringar som behöver godkännas av moderator, samt e-pos
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
 msgid "A list of frequently asked questions and answers."
-msgstr "En lista över Vanliga Frågor och svar."
+msgstr "En lista över Vanliga frågor och svar."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:49
@@ -1397,7 +1397,7 @@ msgstr "Lägg till en befintlig person som maka"
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
 msgid "Add an FAQ"
-msgstr "Lägg till Vanliga frågor-post"
+msgstr "Lägg till en Vanlig fråga"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
 msgid "Add an associate"
@@ -1904,7 +1904,7 @@ msgstr "Amerikanska Samoa"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "En Vanliga frågor-post kan visas på bara ett av släktträden, eller på alla släktträd."
+msgstr "En Vanlig fråga kan visas på bara ett av släktträden, eller på alla släktträd."
 
 #: admin_site_config.php:492
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -5437,7 +5437,7 @@ msgstr "Redigera inställningar"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
 msgid "Edit the FAQ"
-msgstr "Redigera Vanliga frågor-post"
+msgstr "Redigera Vanliga frågan"
 
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
@@ -5860,11 +5860,11 @@ msgstr "Vanliga frågor"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:207
 msgid "FAQ position"
-msgstr "Vanliga frågor position"
+msgstr "Vanliga frågans position"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:217
 msgid "FAQ visibility"
-msgstr "Vanliga frågor synlighet"
+msgstr "Vanliga frågans synlighet"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
