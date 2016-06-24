@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-23 10:32+0000\n"
+"PO-Revision-Date: 2016-06-24 19:22+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -722,11 +722,6 @@ msgstr "<div class=\"largeError\">Megjegyzés:</div><div class=\"error\">Ezen ű
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
-#: app/Module/FrequentlyAskedQuestionsModule.php:223
-#, fuzzy
-msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Egy GYIK-elem megjeleníthető csak a családfák egyikén vagy az összes családfán."
-
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
 msgid "A chart displaying relationships between two individuals."
@@ -1402,9 +1397,8 @@ msgstr "Feleség felvétele egy bejegyzett személy felhasználásával"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
-#, fuzzy
 msgid "Add an FAQ"
-msgstr "GYIK-elem felvétele"
+msgstr "GYIK felvétele"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
 msgid "Add an associate"
@@ -1908,6 +1902,10 @@ msgstr "Ismert mint"
 #: app/Stats.php:6687
 msgid "American Samoa"
 msgstr "Amerikai Szamoa"
+
+#: app/Module/FrequentlyAskedQuestionsModule.php:223
+msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
+msgstr "Egy GYIK megjeleníthető csak a családfák egyikén vagy az összes családfán."
 
 #: admin_site_config.php:492
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -5439,9 +5437,8 @@ msgid "Edit preferences"
 msgstr "Beállítások szerkesztése"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-#, fuzzy
 msgid "Edit the FAQ"
-msgstr "GYIK-elem szerkesztése"
+msgstr "GYIK szerkesztése"
 
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
