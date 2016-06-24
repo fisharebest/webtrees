@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-23 13:51+0000\n"
+"PO-Revision-Date: 2016-06-24 20:13+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -752,11 +752,6 @@ msgstr "<div class=\"largeError\">Upozornění:</div><div class=\"error\">Dokon�
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
-#: app/Module/FrequentlyAskedQuestionsModule.php:223
-#, fuzzy
-msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Položka častých dotazů může být zobrazena pro jeden nebo i více rodokmenů."
-
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
 msgid "A chart displaying relationships between two individuals."
@@ -1432,7 +1427,6 @@ msgstr "Přidat manželku použitím existující osoby"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
-#, fuzzy
 msgid "Add an FAQ"
 msgstr "Přidat otázku do FAQ"
 
@@ -1938,6 +1932,10 @@ msgstr "Také znám jako"
 #: app/Stats.php:6687
 msgid "American Samoa"
 msgstr "Americká Samoa"
+
+#: app/Module/FrequentlyAskedQuestionsModule.php:223
+msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
+msgstr "Položka častých dotazů může být zobrazena pro jeden, nebo i více rodokmenů."
 
 #: admin_site_config.php:492
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -5471,7 +5469,6 @@ msgid "Edit preferences"
 msgstr "Upravit nastavení"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-#, fuzzy
 msgid "Edit the FAQ"
 msgstr "Upravit FAQ"
 
