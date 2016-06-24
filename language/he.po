@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-24 20:28+0000\n"
+"PO-Revision-Date: 2016-06-24 20:57+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -1397,7 +1397,7 @@ msgstr "הוסף אישה ע״י שימוש באדם קיים"
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
 msgid "Add an FAQ"
-msgstr "הוסף ישות שאלות ותשובות"
+msgstr "הוסף שאלה נפוצה"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
 msgid "Add an associate"
@@ -1904,7 +1904,7 @@ msgstr "סמואה האמריקאית"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "ישות שאלות ותשובות יכולה להיות מוצגת רק בעץ משפחה אחד, או בכל עצי המשפחה."
+msgstr "שאלה נפוצה יכולה להיות מוצגת רק בעץ משפחה אחד, או בכל עצי המשפחה."
 
 #: admin_site_config.php:492
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -5437,7 +5437,7 @@ msgstr "ערוך עדיפויות"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
 msgid "Edit the FAQ"
-msgstr "ערוך ישות שאלות ותשובות"
+msgstr "ערוך שאלה נפוצה"
 
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
@@ -5856,19 +5856,19 @@ msgstr "פ.א.ב."
 #: app/Module/FrequentlyAskedQuestionsModule.php:34
 #: app/Module/FrequentlyAskedQuestionsModule.php:538
 msgid "FAQ"
-msgstr "שאלות ותשובות"
+msgstr "שאלות נפוצות"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:207
 msgid "FAQ position"
-msgstr "מיקום שאלות ותשובות"
+msgstr "מיקום שאלה נפוצה"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:217
 msgid "FAQ visibility"
-msgstr "היכן רואים את השאלה והתשובה"
+msgstr "היכן רואים את השאלה הנפוצה"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr "שאלות ותשובות הן רשימות של שאלות ותשובות, אשר מאפשרות לך להסביר את הכללים , מדיניות, ונהלים של האתר למבקרים שלך. השאלות נוגעות בדרך כלל לפרטיות, זכויות יוצרים, חשבונות המשתמשים, תוכן בלתי מתאים, דרישה למקורות, וכו׳."
+msgstr "שאלות נפוצות הן רשימות של שאלות ותשובות, אשר מאפשרות לך להסביר את הכללים, מדיניות, ונהלים של האתר למבקרים שלך. השאלות נוגעות בדרך כלל לפרטיות, זכויות יוצרים, חשבונות המשתמשים, תוכן בלתי מתאים, דרישה למקורות, וכו׳."
 
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:438
@@ -6583,7 +6583,7 @@ msgstr "הטריטוריות הדרומיות של צרפת"
 #: app/Module/FrequentlyAskedQuestionsModule.php:363
 #: app/Module/FrequentlyAskedQuestionsModule.php:405
 msgid "Frequently asked questions"
-msgstr "שאלות ותשובות"
+msgstr "שאלות נפוצות"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:149
@@ -13567,7 +13567,7 @@ msgstr "השדה <b>שם המשפחה</b> מכיל שם שמשמש במיון ו
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:467
 msgid "The FAQ list is empty."
-msgstr "רשימת השאלות והתשובות ריקה."
+msgstr "רשימת השאלות הנפוצות ריקה."
 
 #: admin_trees_manage.php:148
 #, php-format
