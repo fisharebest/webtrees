@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 14:38+0000\n"
+"PO-Revision-Date: 2016-06-24 21:38+0000\n"
 "Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -717,11 +717,6 @@ msgstr "<div class=\"largeError\">Bitte beachten Sie:</div><div class=\"error\">
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
-#: app/Module/FrequentlyAskedQuestionsModule.php:223
-#, fuzzy
-msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Ein FAQ-Eintrag kann entweder nur in einem oder in allen Stammbäumen angezeigt werden."
-
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
 msgid "A chart displaying relationships between two individuals."
@@ -1397,7 +1392,6 @@ msgstr "Eine existierende Person als Ehefrau hinzufügen"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
-#, fuzzy
 msgid "Add an FAQ"
 msgstr "Einen FAQ-Eintrag hinzufügen"
 
@@ -1903,6 +1897,10 @@ msgstr "Auch bekannt als"
 #: app/Stats.php:6687
 msgid "American Samoa"
 msgstr "Amerikanisch-Samoa"
+
+#: app/Module/FrequentlyAskedQuestionsModule.php:223
+msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
+msgstr "Ein FAQ-Eintrag kann entweder nur in einem oder in allen Stammbäumen angezeigt werden."
 
 #: admin_site_config.php:492
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -5434,7 +5432,6 @@ msgid "Edit preferences"
 msgstr "Einstellungen bearbeiten"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-#, fuzzy
 msgid "Edit the FAQ"
 msgstr "FAQ-Eintrag bearbeiten"
 
