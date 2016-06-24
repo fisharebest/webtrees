@@ -6482,16 +6482,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "לדוגמה, אם תציין אורך נתיב של 2, האדם יוכל לראות את הנכד שלו (ילד, ילד), הדודה שלו (הורה, אח), הבת החורגת שלו (בן זוג, ילד), אך לא בן דודו הראשון (הורה, אח, ילד)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "לשאלות בקשר לחקר שושלת יוחסין נא להתקשר אל"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "לשאלות בקשר לחקר שושלת יוחסין נא להתקשר אל %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "לעזרה טכנית נא להתקשר אל"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "לעזרה טכנית נא להתקשר אל %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "לעזרה טכנית או שאלות בקשר לחקר שושלת יוחסין נא להתקשר אל"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "לעזרה טכנית או שאלות בקשר לחקר שושלת יוחסין נא להתקשר אל %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

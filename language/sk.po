@@ -6515,16 +6515,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Napríklad ak zadáte cestu o veľkosti 2, osoba bude môcť vidieť svojho vnuka (dieťa), svoju tetu (rodič, súrodenec), svoju nevlastnú dcéru (partner, dieťa), ale už nie svojho bratranca (rodič, súrodenec, dieťa)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "S otázkami k rodokmeňu sa obracajte na"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "S otázkami k rodokmeňu sa obracajte na %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "Pre technickú podporu a ďalšie informácie kontaktujte"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "Pre technickú podporu a ďalšie informácie kontaktujte %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "Pre technickú podporu, alebo s otázkami k rodokmeňu prosím kontaktujte"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "Pre technickú podporu, alebo s otázkami k rodokmeňu prosím kontaktujte %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

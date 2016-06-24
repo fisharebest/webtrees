@@ -6495,16 +6495,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr ""
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "Para ajuda sobre questões genealógicas entre em contato com"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "Para ajuda sobre questões genealógicas entre em contato com %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "Para suporte técnico e informações entre em contato com"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "Para suporte técnico e informações entre em contato com %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "Para suporte técnico ou questões genealógicas, por favor entre em contato com"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "Para suporte técnico ou questões genealógicas, por favor entre em contato com %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

@@ -6483,16 +6483,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Par exemple, si vous spécifiez un degré de 2, la personne sera en mesure de voir son petit-fils (enfant puis, enfant), sa tante (parent puis, frère ou sœur), sa belle-fille (conjoint puis, enfant), mais pas son cousin germain (parent puis, frère ou sœur puis, enfant qui fait trois)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "Pour toute question sur la généalogie contacter"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "Pour toute question sur la généalogie contacter %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "Pour tout problème technique contacter"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "Pour tout problème technique contacter %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "Pour toute question, contacter l’administrateur"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "Pour toute question, contacter l’administrateur %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

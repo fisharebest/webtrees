@@ -6605,16 +6605,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "مثلاً عند تحديد مدى المسار بـ 2، سيتمكن الفرد من الإطلاع على أحفاده، وأعمامه وأخواله وعماته وخالاته وأبناء الأزواج وهكذا أي فرد يبعد عنه بفرد واحد في القرابة. فلهذا فإن المستوى 2 لا يتيح الإطلاع على أبناء العم لأن البعد عنهما في القرابة هو 3 (أب، عم، إبن عم)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "للإستفسار عن المشجرات تواصل مع"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "للإستفسار عن المشجرات تواصل مع %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "للملاحظات والإستفسارات التقنية تواصل مع"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "للملاحظات والإستفسارات التقنية تواصل مع %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "للملاحظات والإستفسارات يمكن التواصل مع"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "للملاحظات والإستفسارات يمكن التواصل مع %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

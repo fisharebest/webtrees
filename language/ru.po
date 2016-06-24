@@ -6521,16 +6521,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Например, если указать ступень родства длиной в 2, то пользователь будет иметь возможность видеть своих внуков (ребенок, дитя), свою тетю (родитель, брат/сестра), свою падчерицу (супруг, дети), но не своего двоюродного брата (родитель, брат/сестра, ребенок)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "С вопросами по генеалогии (база данных) обращаться по адресу"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "С вопросами по генеалогии (база данных) обращаться по адресу %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "За помощью и информацией просьба обращаться по адресу"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "За помощью и информацией просьба обращаться по адресу %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "С вопросами по базе данных и по сайту обращаться к"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "С вопросами по базе данных и по сайту обращаться к %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

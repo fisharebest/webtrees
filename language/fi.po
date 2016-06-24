@@ -6478,16 +6478,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Esimerkki: kun asetat hyppyjen määräksi 2, niin henkilö näkee lapsenlapsen (lapsi->lapsi), tädin (äiti->sisko), tytärpuolen (aviopuoliso->lapsi). Kaukaisemmat sukulaiset eivät näy esim: serkku (isä->veli->lapsi)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "Sukuasioissa ota yhteys"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "Sukuasioissa ota yhteys %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "Teknisissä asioissa ota yhteys"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "Teknisissä asioissa ota yhteys %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "Teknisissä tai sukuasioissa ota yhteys"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "Teknisissä tai sukuasioissa ota yhteys %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

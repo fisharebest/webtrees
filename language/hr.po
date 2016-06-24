@@ -6516,16 +6516,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Kao primjer, ako postavite na 2, pojedinac će moći vidjeti svoju unučad (djeteta, dijete), svoju tetu (roditelja, braću/sestre), svoju pokćerku (supružnikovo dijete), ali neće njihove rođake iz prvog koljena (roditelje, braću/sestre, djecu)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "Za pomoć sa genealoškim pitanjima kontaktirajte"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "Za pomoć sa genealoškim pitanjima kontaktirajte %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "Za tehničku podršku i informacije molimo kontaktirajte"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "Za tehničku podršku i informacije molimo kontaktirajte %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "Za tehničku podršku ili genealoška pitanja, molimo kontaktirajte"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "Za tehničku podršku ili genealoška pitanja, molimo kontaktirajte %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

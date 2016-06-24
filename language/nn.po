@@ -6477,16 +6477,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Om du til dømes angir 2 ledd, vil personen kunne sjå barnebarn (barn + barn), tante (forelder + sysken), ste-dotter (ektemake + barn), men ikkje fetter (forelder + sysken + barn)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "For hjelp med slektsspørsmål, kontakt"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "For hjelp med slektsspørsmål, kontakt %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "For teknisk hjelp og informasjon, kontakt"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "For teknisk hjelp og informasjon, kontakt %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "For teknisk hjelp eller slektsspørsmål, kontakt"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "For teknisk hjelp eller slektsspørsmål, kontakt %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

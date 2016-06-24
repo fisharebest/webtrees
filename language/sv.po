@@ -6482,16 +6482,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Till exempel, om du anger en sökväg längd 2, kommer personen att kunna se sina barnbarn (barn, barn), sin moster (förälder, syskon), sin styvdotter (make/maka, barn), men inte sin kusin (förälder, syskon, barn)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "För hjälp med släktfrågor kontakta"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "För hjälp med släktfrågor kontakta %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "För teknisk stöd och information kontakta"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "För teknisk stöd och information kontakta %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "För teknisk stöd eller släktfrågor kontakta"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "För teknisk stöd eller släktfrågor kontakta %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

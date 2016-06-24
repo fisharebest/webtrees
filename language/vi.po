@@ -6456,16 +6456,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Thí dụ như nếu bạn nêu cụ thế một đường dẫn dài 2, thì người đó có thể thấy cháu nội, cô dì (cha mẹ, anh em), con gái nuôi (bạn đời, con họ) nhưng không hiện bà con họ (cha mẹ, anh em, con cái)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "Để được hỗ trợ các câu hỏi về gia phả, xin liên lạc với"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "Để được hỗ trợ các câu hỏi về gia phả, xin liên lạc với %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "Để được hỗ trợ kỹ thuật và liên hệ về thông tin"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "Để được hỗ trợ kỹ thuật và liên hệ về thông tin %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "Để được hỗ trợ kỹ thuật hay thắc mắc về gia phả, xin liên hệ"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "Để được hỗ trợ kỹ thuật hay thắc mắc về gia phả, xin liên hệ %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

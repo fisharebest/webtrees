@@ -6481,16 +6481,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Byvoorbeeld, as jy die padlengte as 2 aangee, sal die persoon haar eie kleinkind (kind, kind), haar tante (ouer, suster) en haar stiefdogter (gade, kind) kan sien, maar nie haar niggie nie (ouer, broer/suster, kind)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "Vir genealogiese navrae kontak"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "Vir genealogiese navrae kontak %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "Vir tegniese ondersteuning en inligting, kontak"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "Vir tegniese ondersteuning en inligting, kontak %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "Vir tegniese ondersteuning of genealogiese navrae, kontak asseblief"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "Vir tegniese ondersteuning of genealogiese navrae, kontak asseblief %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

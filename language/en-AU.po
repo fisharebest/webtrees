@@ -6481,16 +6481,18 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "For help with genealogy questions contact"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "For help with genealogy questions contact %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "For technical support and information contact"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "For technical support and information contact %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "For technical support or genealogy questions, please contact"
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "For technical support or genealogy questions, please contact %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

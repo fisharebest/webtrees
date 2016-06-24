@@ -6457,16 +6457,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "例如,如果您指定一个路径长度的2,人将能够看到自己的孙子(儿子、儿子),他们的姑姑(父母,兄弟姐妹),他们的女儿(配偶、孩子),但不能看到他们的堂兄弟姊妹(父母,兄弟姐妹,孩子)。"
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "家谱问题联系"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "家谱问题联系%s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "关于技术支持和信息联系"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "关于技术支持和信息联系%s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "关于技术支持或家谱的问题,请联系"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "关于技术支持或家谱的问题,请联系%s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

@@ -6482,16 +6482,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "P.sh., po të specifikoni madhësinë e pathit 2, personi do të jetë në gjendje të shoh nipat e tij (të fëmijës, fëmijën), tezet e tyre (nga prindi, vëllau/motra), bijat e tyre të adoptuara (nga bashkëshorti, fëmijë), por jo edhe kushëririn e parë (prindin, vëllau/motrën, fëmijën)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "Për ndihmë me pyetjet gjenealogjike kontaktoni"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "Për ndihmë me pyetjet gjenealogjike kontaktoni %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "Pë përkrahje teknike dhe informata kontaktoni"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "Pë përkrahje teknike dhe informata kontaktoni %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "Për përkrahje teknike ose pyetje gjenealogjike, ju lutem kontaktoni"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "Për përkrahje teknike ose pyetje gjenealogjike, ju lutem kontaktoni %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277

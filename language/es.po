@@ -6498,16 +6498,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Por ejemplo, si especifica una longitud de dos, la persona será capaz de ver a su nieto (hijo, hija), su tía (padre, hermano), su hijastra (cónyuge, hijo), pero no su primo hermano (padre, hermano, hijo)."
 
 #: app/Theme/AbstractTheme.php:296
-msgid "For help with genealogy questions contact"
-msgstr "Para ayuda por cuestiones de genealogía contacte con"
+#, fuzzy
+msgid "For help with genealogy questions contact %s"
+msgstr "Para ayuda por cuestiones de genealogía contacte con %s"
 
 #: app/Theme/AbstractTheme.php:307
-msgid "For technical support and information contact"
-msgstr "Para ayuda o información póngase en contacto con"
+#, fuzzy
+msgid "For technical support and information contact %s"
+msgstr "Para ayuda o información póngase en contacto con %s"
 
 #: app/Theme/AbstractTheme.php:285
-msgid "For technical support or genealogy questions, please contact"
-msgstr "Para soporte técnico o por cuestiones de genealogía, por favor contacte con"
+#, fuzzy
+msgid "For technical support or genealogy questions, please contact %s"
+msgstr "Para soporte técnico o por cuestiones de genealogía, por favor contacte con %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277
