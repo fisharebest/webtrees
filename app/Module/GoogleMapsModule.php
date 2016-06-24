@@ -3633,11 +3633,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</a>
 			</li>
 		</ul>
-
-		<h2><?php echo I18N::translate('Geographic data') ?></h2>
 		<?php
 
 		if ($action == 'ImportGedcom') {
+			echo '<h2>' . I18N::translate('Geographic data') . '</h2>';
 			$placelist      = array();
 			$j              = 0;
 			$gedcom_records =
@@ -3760,6 +3759,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 
 		if ($action === 'ImportFile') {
+			echo '<h2>' . I18N::translate('Upload Geographic data') . '</h2>';
 			$placefiles = $this->findFiles(WT_MODULES_DIR . 'googlemap/extra');
 			sort($placefiles);
 		?>
@@ -3768,7 +3768,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- PLACES FILE -->
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="placesfile">
-					<?php echo I18N::translate('File containing places (CSV)') ?>
+					<?php echo I18N::translate('A file on your computer') ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="btn btn-default">
@@ -3780,7 +3780,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- LOCAL FILE -->
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="localfile">
-					<?php echo I18N::translate('Server file containing places (CSV)') ?>
+					<?php echo I18N::translate('A file on the server') ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="input-group">
@@ -3848,6 +3848,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 
 		if ($action === 'ImportFile2') {
+			echo '<h2>' . I18N::translate('Geographic data') . '</h2>';
 			$country_names = array();
 			$stats         = new Stats($WT_TREE);
 			foreach ($stats->iso3166() as $key => $value) {
@@ -4014,6 +4015,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 
 		if ($action == 'DeleteRecord') {
+			echo '<h2>' . I18N::translate('Geographic data') . '</h2>';
 			$exists =
 				Database::prepare("SELECT 1 FROM `##placelocation` WHERE pl_parent_id=?")
 				->execute(array($deleteRecord))
