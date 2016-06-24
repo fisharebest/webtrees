@@ -6811,7 +6811,8 @@ msgstr "名"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:967
-msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu. To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#, fuzzy
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
 msgstr "提供给用户选择,选择自己的主题从菜单。<br><br>即使设置这个选项,主题目前实际上可能是无效的,这个选项需要<b>允许用户选择他们自己的主题</b>选项也设置。"
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting

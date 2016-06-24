@@ -6810,7 +6810,8 @@ msgstr "Tên"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:967
-msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu. To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#, fuzzy
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
 msgstr "Cho người dùng tùy chọn chọn kiểu trình bày trang riêng từ một menu.<br><br>Ngay cả khi việc này được thiết đặt, kiểu trình bày hiện sẽ không có một menu như thế. Để có hiệu lực, tùy chọn này cần phải đặt mục <b>Cho phép người dùng được quyền chọn kiểu riêng</b> được đặt nữa."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting

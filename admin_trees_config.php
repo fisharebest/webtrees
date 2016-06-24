@@ -961,7 +961,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('ALLOW_THEME_DROPDOWN', $hide_show, $WT_TREE->getPreference('ALLOW_THEME_DROPDOWN'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting */ I18N::translate('Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu. To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well.'); ?>
+				<?php echo /* I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting */ I18N::translate('The theme menu will only be shown if the website preferences allow users to select their own theme.'); ?>
 			</p>
 		</div>
 	</fieldset>

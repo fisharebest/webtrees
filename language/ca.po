@@ -6839,7 +6839,8 @@ msgstr "Noms de pila"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:967
-msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu. To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#, fuzzy
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
 msgstr "Dóna als usuaris l’opció de seleccionar des d’un menú la presentació preferida.<br><br>No n’hi ha prou amb activar aquest paràmetre. Per a que els usuaris puguin canviar-se efectivament la presentació cal activar també l’opció <b>Permet als usuaris escollir la presentació preferida</b>."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting

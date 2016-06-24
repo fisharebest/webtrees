@@ -6836,7 +6836,8 @@ msgstr "Emrat"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:967
-msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu. To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#, fuzzy
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
 msgstr "U jep mundësinë përdoruesve për të zgjedhur temën e tyre vetanake nga menya.<br><br>Edhepse kjo mundësi është aktive, tema aktuale mund të mos ju japë mundësinë në meny. Për të qenë efektiv, duhet aktivizuar mundësinë <b>Lejo përdoruesit të zgjedhin temën e tyre vetanake</b>."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting

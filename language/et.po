@@ -6840,7 +6840,8 @@ msgstr "Eesnimed"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:967
-msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu. To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
+#, fuzzy
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
 msgstr "Annab kasutajatele võimaluse valida endale isiklik teema menüüst.<br><br>Isegi kui see valik on seadistatud, siis hetkel kasutusel olev teema ei pruugi sellist menüüd omada. Selleks, et olla effektiivne, see valik nõuab, et <b>Luba kasutajatel valida isiklik teema<b> oleks seadistatud samuti."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
