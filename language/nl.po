@@ -1397,7 +1397,7 @@ msgstr "Een bestaand persoon als echtgenote toevoegen"
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
 msgid "Add an FAQ"
-msgstr "Voeg een FAQ item toe"
+msgstr "FAQ toevoegen"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
 msgid "Add an associate"
