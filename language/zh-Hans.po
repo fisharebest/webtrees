@@ -695,7 +695,8 @@ msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$
 msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
-msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
+#, fuzzy
+msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
 msgstr "FAQ条目可以只显示在一个家谱上，也可以显示到所有家谱。"
 
 #. I18N: Description of the “RelationshipsChart” module
@@ -1370,7 +1371,8 @@ msgstr "用已有的个人添加妻子"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
-msgid "Add an FAQ item"
+#, fuzzy
+msgid "Add an FAQ"
 msgstr "添加常见问题项"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
@@ -5407,7 +5409,8 @@ msgid "Edit preferences"
 msgstr "编辑选项"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-msgid "Edit the FAQ item"
+#, fuzzy
+msgid "Edit the FAQ"
 msgstr "编辑常见问题项"
 
 #: app/Controller/MediaController.php:116

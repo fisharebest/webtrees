@@ -751,7 +751,8 @@ msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$
 msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
-msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
+#, fuzzy
+msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
 msgstr ""
 
 #. I18N: Description of the “RelationshipsChart” module
@@ -1423,7 +1424,8 @@ msgstr "Dodaj suprugu od već unesenih osoba"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
-msgid "Add an FAQ item"
+#, fuzzy
+msgid "Add an FAQ"
 msgstr ""
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
@@ -5460,7 +5462,8 @@ msgid "Edit preferences"
 msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-msgid "Edit the FAQ item"
+#, fuzzy
+msgid "Edit the FAQ"
 msgstr ""
 
 #: app/Controller/MediaController.php:116

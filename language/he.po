@@ -722,7 +722,8 @@ msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$
 msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
-msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
+#, fuzzy
+msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
 msgstr "ישות שאלות ותשובות יכולה להיות מוצגת רק בעץ משפחה אחד, או בכל עצי המשפחה."
 
 #. I18N: Description of the “RelationshipsChart” module
@@ -1400,7 +1401,8 @@ msgstr "הוסף אישה ע״י שימוש באדם קיים"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
-msgid "Add an FAQ item"
+#, fuzzy
+msgid "Add an FAQ"
 msgstr "הוסף ישות שאלות ותשובות"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
@@ -5436,7 +5438,8 @@ msgid "Edit preferences"
 msgstr "ערוך עדיפויות"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-msgid "Edit the FAQ item"
+#, fuzzy
+msgid "Edit the FAQ"
 msgstr "ערוך ישות שאלות ותשובות"
 
 #: app/Controller/MediaController.php:116
