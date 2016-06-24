@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-20 05:26+0000\n"
+"PO-Revision-Date: 2016-06-24 19:12+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -798,9 +798,8 @@ msgstr "Een welkomstbericht voor bezoekers van de site."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-#, fuzzy
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "Een lijst van veranderingen die goedkeuring nodig hebben van een moderator, en e-mailmeldingen."
+msgstr "Een lijst van veranderingen die goedkeuring nodig hebben van een moderator en e-mail meldingen."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -1168,6 +1167,10 @@ msgstr "Keur alle veranderingen goed"
 #: admin_trees_config.php:535
 msgid "Access level"
 msgstr "Toegangsniveau"
+
+#: admin_users.php:521
+msgid "Access to family trees"
+msgstr "Stamboomtoegang"
 
 #: admin_users.php:376
 msgid "Account approval and email verification"
@@ -1696,9 +1699,8 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr "Na het aanmaken van de stamboom kunt u de gegevens van een GEDCOM-bestand importeren."
 
 #: login.php:259
-#, fuzzy
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr "Nadat u bent aangemeld: klik op «Mijn account» in het menu «Mijn pagina» en vul de wachtwoordvelden in om uw wachtwoord te wijzigen."
+msgstr "Om uw wachtwoord te wijzigen klikt u, nadat u bent aangemeld, op “Mijn account” in het menu “Mijn pagina”."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
@@ -2319,7 +2321,6 @@ msgid "Author of last change"
 msgstr "Auteur van laatste wijziging"
 
 #: admin_users.php:442
-#, fuzzy
 msgid "Automatically accept changes made by this user"
 msgstr "Accepteer wijzigingen van deze gebruiker automatisch"
 
@@ -3299,6 +3300,11 @@ msgstr "Standaard staat de server %s geheugengebruik toe voor scripts."
 msgid "CKEditor™"
 msgstr "CKEditor™"
 
+#. I18N: Help text for the “Date differences” configuration setting
+#: admin_trees_config.php:1539
+msgid "Calculate the age differences between siblings, children, spouses, etc."
+msgstr "Bereken de leeftijdsverschillen tussen broers/zussen, kinderen, partners enz."
+
 #: admin_trees_manage.php:367
 msgid "Calculating…"
 msgstr "Berekenen…"
@@ -3338,11 +3344,6 @@ msgstr "Campinas, Brazilië"
 #: app/Stats.php:6716
 msgid "Canada"
 msgstr "Canada"
-
-#: app/Module/ClippingsCartModule.php:796
-#, fuzzy
-msgid "cancel"
-msgstr "Annuleer"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6717
@@ -3950,16 +3951,6 @@ msgstr "Bevestig wachtwoord"
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 msgid "Confirmation"
 msgstr "Vormsel/confirmatie"
-
-#. I18N: Name of a country or state
-#: app/Stats.php:6727
-msgid "Republic of the Congo"
-msgstr "Congo"
-
-#. I18N: Name of a country or state
-#: app/Stats.php:6726
-msgid "Democratic Republic of the Congo"
-msgstr "Democratische republiek Congo"
 
 #: setup.php:272
 msgid "Connection to database server"
@@ -5051,6 +5042,11 @@ msgid "Deleting the family will unlink all of the individuals from each other bu
 msgstr "Door het verwijderen van het gezin verbreekt u de koppeling tussen alle personen, maar de personen zelf worden niet verwijderd. Weet u zeker dat u dit gezin wilt verwijderen?"
 
 #. I18N: Name of a country or state
+#: app/Stats.php:6726
+msgid "Democratic Republic of the Congo"
+msgstr "Democratische republiek Congo"
+
+#. I18N: Name of a country or state
 #: app/Stats.php:6742
 msgid "Denmark"
 msgstr "Denemarken"
@@ -6085,11 +6081,6 @@ msgstr "Gezin van %s"
 msgid "Family tree"
 msgstr "Stamboom"
 
-#: admin_users.php:521
-#, fuzzy
-msgid "Access to family trees"
-msgstr "Stamboomtoegang en -instellingen"
-
 #: app/Module/ClippingsCartModule.php:90
 #: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
@@ -6773,6 +6764,10 @@ msgstr "Generaties"
 msgid "Generations of ancestors"
 msgstr "Generaties van voorouders"
 
+#: statistics.php:595
+msgid "Geographic area"
+msgstr "geografisch gebied"
+
 #: app/Module/GoogleMapsModule.php:179 app/Module/GoogleMapsModule.php:295
 #: app/Module/GoogleMapsModule.php:853 app/Module/GoogleMapsModule.php:1403
 #: app/Module/GoogleMapsModule.php:1526 app/Module/GoogleMapsModule.php:2408
@@ -6780,10 +6775,6 @@ msgstr "Generaties van voorouders"
 #: app/Module/GoogleMapsModule.php:3632 app/Module/GoogleMapsModule.php:3642
 msgid "Geographic data"
 msgstr "Geografische gegevens"
-
-#: statistics.php:595
-msgid "Geographic area"
-msgstr "geografisch gebied"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6763
@@ -8883,6 +8874,10 @@ msgstr "Martinique"
 msgid "Masquerade as this user"
 msgstr "Vermom uzelf als deze gebruiker"
 
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
+msgid "Match both upper and lower case letters."
+msgstr "Geen onderscheid tussen hoofd- en kleine letters."
+
 #: lifespan.php:104
 msgid "Match calendar"
 msgstr "Aanpassen aan kalender"
@@ -10004,9 +9999,8 @@ msgid "Norfolk Island"
 msgstr "Norfolk eiland"
 
 #: admin_users.php:445
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "Normaal gesproken dienen alle wijzigingen van de stamboom door een moderator te worden bevestigd. Deze optie maakt het een gebruiker mogelijk wijzigingen door te voeren zonder de bevestiging van een moderator."
+msgstr "Normaal gesproken dienen alle wijzigingen aan een stamboom door een moderator te worden bevestigd. Deze optie geeft gebruikers de mogelijkheid om wijzigingen door te voeren zonder tussenkomst van een moderator.."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6864
@@ -11627,6 +11621,11 @@ msgstr "Opslagplaats bevat"
 msgid "Repository name"
 msgstr "Naam van Opslagplaats"
 
+#. I18N: Name of a country or state
+#: app/Stats.php:6727
+msgid "Republic of the Congo"
+msgstr "Congo"
+
 #: app/Module/LoginBlockModule.php:99 login.php:221
 msgid "Request a new password"
 msgstr "Vraag nieuw wachtwoord aan"
@@ -12211,11 +12210,6 @@ msgstr "Sessie verlopen"
 msgid "Set as default"
 msgstr "Instellen als standaard"
 
-#: inverselink.php:152
-#, fuzzy
-msgid "link"
-msgstr "Maak koppeling"
-
 #. I18N: You need to:
 #: login.php:572
 msgid "Set the access level for each tree."
@@ -12560,11 +12554,6 @@ msgstr "Toon details"
 msgid "Show divorced couples."
 msgstr "Toon gescheiden paren."
 
-#: admin_trees_config.php:1087
-#, fuzzy
-msgid "Show thumbnail images in charts and family groups."
-msgstr "Laat eerste afbeelding in persoonsvak zien"
-
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1650
 msgid "Show hit counters on Portal and Individual pages."
@@ -12771,6 +12760,10 @@ msgstr "Toon de gebruiker die de wijziging maakte"
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
 msgstr "Voor welke talen moet dit blok getoond worden"
+
+#: admin_trees_config.php:1087
+msgid "Show thumbnail images in charts and family groups."
+msgstr "Toon miniatuurplaatjes in diagrammen en overzichten."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1023 app/Functions/FunctionsEdit.php:206
@@ -14089,9 +14082,8 @@ msgstr "Wijzig thema"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:962
-#, fuzzy
 msgid "Theme menu"
-msgstr "Keuzemenu voor het wijzigen van thema"
+msgstr "Thema menu"
 
 #: admin_modules.php:165
 msgid "Themes"
@@ -14190,9 +14182,8 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Dit account is nog niet geverifieerd. Kijk a.u.b. uw e-mail na voor een verificatiebericht."
 
 #: app/Module/ReviewChangesModule.php:179
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Dit blok toont bewerkers een lijst van records met uitstaande wijzigingen die wachten op goedkeuring van een moderator. Het genereert ook dagelijkse e-mails naar moderatoren als er wijzigingen wachten op goedkeuring."
+msgstr "Dit blok toont bewerkers een lijst van records met uitstaande wijzigingen die wachten op goedkeuring door een moderator. Als er wijzigingen zijn die wachten op goedkeuring door een moderator zorgt dit blok er ook voor dat er dagelijks een e-mail wordt verstuurd naar de moderators."
 
 #: admin_users.php:463 edituser.php:312
 msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
@@ -14638,18 +14629,16 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Deze opslagplaats is gewijzigd. Beoordeel deze wijziging en %1$s of %2$s deze dan."
 
 #: admin_users.php:553
-#, fuzzy
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "Deze rol heeft alle rechten van een bewerker, plus het recht wijzigingen van anderen goed te keuren of te weigeren."
+msgstr "Deze rol heeft alle rechten van een bewerker, plus het recht om wijzigingen van anderen te accepteren of af te wijzen."
 
 #: admin_users.php:567
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
 msgstr "Deze rol heeft alle rechten van de rol van manager in alle stambomen. Daarnaast heeft deze rol het recht om instellingen/configuratie van de site, gebruikers en modules aan te passen."
 
 #: admin_users.php:547
-#, fuzzy
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Deze rol heeft alle rechten van een lid, plus het recht om gegevens toe te voegen, te wijzigen of te verwijderen. Elke wijziging moet worden goedgekeurd door een moderator, tenzij bij de gebruiker de optie “accepteer wijzigingen automatisch” is ingeschakeld."
+msgstr "Deze rol heeft alle rechten van een lid, plus het recht om gegevens toe te voegen, te wijzigen of te verwijderen. Elke wijziging moet worden goedgekeurd door een moderator, tenzij voor deze gebruiker de optie “accepteer wijzigingen automatisch” is ingeschakeld."
 
 #: admin_users.php:561
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -14761,11 +14750,6 @@ msgstr "Miniatuur om te uploaden"
 #: app/Date/CalendarDate.php:344
 msgid "Thursday"
 msgstr "Donderdag"
-
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-#, fuzzy
-msgid "Match both upper and lower case letters."
-msgstr "Vink dit vakje aan om hoofd- en kleine letters bij het zoeken gelijk te behandelen."
 
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
@@ -15846,12 +15830,6 @@ msgstr "Wanneer u nieuwe naaste familieleden toevoegt, kunt u bronvermeldingen a
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 msgstr "Wanneer nieuwe records worden aangemaakt, krijgen deze een intern ID nummer. U kunt hier voor elk type record een voorvoegsel instellen."
 
-#. I18N: Help text for the “Date differences” configuration setting
-#: admin_trees_config.php:1539
-#, fuzzy
-msgid "Calculate the age differences between siblings, children, spouses, etc."
-msgstr "Wanneer deze optie is ingeschakeld, berekent webtrees de leeftijdsverschillen tussen broers/zussen, kinderen, partners enz."
-
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2141
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
@@ -16255,9 +16233,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Uw server administrateur zal u de benodigde connectie details bezorgen."
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "In uw gebruikersaccount is de optie ‘wijzigingen automatisch goedkeuren’ uitgeschakeld. U kunt records alleen één voor één wijzigen."
+msgstr "In uw gebruikersaccount is de optie “wijzigingen automatisch goedkeuren“ uitgeschakeld. U kunt records alleen één voor één wijzigen."
 
 #: admin.php:556
 #, php-format
@@ -16620,6 +16597,10 @@ msgstr "Laatst gewijzigd door"
 msgid "calculated %s"
 msgstr "%s (berekend)"
 
+#: app/Module/ClippingsCartModule.php:796
+msgid "cancel"
+msgstr "annuleren"
+
 #: app/Stats.php:2918
 msgid "census added"
 msgstr "Volkstelling toegevoegd"
@@ -16777,6 +16758,9 @@ msgstr "overleden"
 msgctxt "MALE"
 msgid "died"
 msgstr "overleden"
+
+msgid "download"
+msgstr "download"
 
 #: app/Module/GoogleMapsModule.php:3508
 msgid "east"
@@ -18827,6 +18811,9 @@ msgctxt "MALE"
 msgid "immigration name"
 msgstr "immigratienaam"
 
+msgid "import"
+msgstr "importeer"
+
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
 #, php-format
@@ -18890,6 +18877,10 @@ msgstr "laatste"
 #: statisticsplot.php:764
 msgid "less than"
 msgstr "minder dan"
+
+#: inverselink.php:152
+msgid "link"
+msgstr "koppeling"
 
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
@@ -20088,6 +20079,12 @@ msgstr "onbetrouwbaar bewijs"
 msgid "update"
 msgstr "bijwerken"
 
+msgid "upload"
+msgstr "upload"
+
+msgid "view"
+msgstr "bekijk"
+
 #: admin_trees_config.php:366 admin_trees_config.php:390
 #: admin_trees_config.php:430 admin_trees_config.php:470
 #: admin_trees_config.php:490
@@ -20417,19 +20414,3 @@ msgstr "…"
 
 #~ msgid "Zoom="
 #~ msgstr "Zoom="
-
-#, fuzzy
-msgid "download"
-msgstr "download"
-
-#, fuzzy
-msgid "import"
-msgstr "importeer"
-
-#, fuzzy
-msgid "upload"
-msgstr "upload"
-
-#, fuzzy
-msgid "view"
-msgstr "bekijk"
