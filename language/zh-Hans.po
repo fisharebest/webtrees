@@ -13737,8 +13737,9 @@ msgid "The following list shows typical requirements."
 msgstr "下面的列表显示了典型的需求。"
 
 #: message.php:300 message.php:303
-msgid "The following message has been sent to your webtrees user account from "
-msgstr "下面的消息来自webtrees用户帐户: "
+#, fuzzy
+msgid "%s sent you the following message."
+msgstr "下面的消息来自webtrees用户帐户:%s"
 
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"

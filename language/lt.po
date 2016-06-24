@@ -13798,8 +13798,9 @@ msgid "The following list shows typical requirements."
 msgstr "Žemiau esantis sąrašas rodo tipiškus reikalavimus."
 
 #: message.php:300 message.php:303
-msgid "The following message has been sent to your webtrees user account from "
-msgstr "Šis pranešimas buvo išsiųstas į jūsų kilmės medžio nario sąskaitą iš "
+#, fuzzy
+msgid "%s sent you the following message."
+msgstr "Šis pranešimas buvo išsiųstas į jūsų kilmės medžio nario sąskaitą iš %s"
 
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"

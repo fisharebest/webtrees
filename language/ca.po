@@ -13766,8 +13766,9 @@ msgid "The following list shows typical requirements."
 msgstr "La següent llista mostra els requisits estàndard."
 
 #: message.php:300 message.php:303
-msgid "The following message has been sent to your webtrees user account from "
-msgstr "Missatge enviat al vostre compte d’usuari webtrees per part de "
+#, fuzzy
+msgid "%s sent you the following message."
+msgstr "Missatge enviat al vostre compte d’usuari webtrees per part de %s"
 
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
