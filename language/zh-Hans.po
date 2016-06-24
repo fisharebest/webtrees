@@ -6458,17 +6458,17 @@ msgstr "例如,如果您指定一个路径长度的2,人将能够看到自己的
 
 #: app/Theme/AbstractTheme.php:296
 #, fuzzy
-msgid "For help with genealogy questions contact %s"
+msgid "For help with genealogy questions contact %s."
 msgstr "家谱问题联系%s"
 
 #: app/Theme/AbstractTheme.php:307
 #, fuzzy
-msgid "For technical support and information contact %s"
+msgid "For technical support and information contact %s."
 msgstr "关于技术支持和信息联系%s"
 
 #: app/Theme/AbstractTheme.php:285
 #, fuzzy
-msgid "For technical support or genealogy questions, please contact %s"
+msgid "For technical support or genealogy questions contact %s."
 msgstr "关于技术支持或家谱的问题,请联系%s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting

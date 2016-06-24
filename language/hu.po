@@ -6484,17 +6484,17 @@ msgstr "Például, ha Ön 2 útvonalhosszat határoz meg, a személy láthatja a
 
 #: app/Theme/AbstractTheme.php:296
 #, fuzzy
-msgid "For help with genealogy questions contact %s"
+msgid "For help with genealogy questions contact %s."
 msgstr "Származástani kérdésekben segítséget nyújt: %s"
 
 #: app/Theme/AbstractTheme.php:307
 #, fuzzy
-msgid "For technical support and information contact %s"
+msgid "For technical support and information contact %s."
 msgstr "Technikai segítséget és információt nyújt: %s"
 
 #: app/Theme/AbstractTheme.php:285
 #, fuzzy
-msgid "For technical support or genealogy questions, please contact %s"
+msgid "For technical support or genealogy questions contact %s."
 msgstr "Technikai vagy származástani kérdésekben segítséget nyújt: %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting

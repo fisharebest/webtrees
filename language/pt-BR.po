@@ -6487,17 +6487,17 @@ msgstr "Por exemplo, se você especificar um caminho de tamanho 2, a pessoa ser�
 
 #: app/Theme/AbstractTheme.php:296
 #, fuzzy
-msgid "For help with genealogy questions contact %s"
+msgid "For help with genealogy questions contact %s."
 msgstr "Para ajuda sobre questões genealógicas entre em contato com %s"
 
 #: app/Theme/AbstractTheme.php:307
 #, fuzzy
-msgid "For technical support and information contact %s"
+msgid "For technical support and information contact %s."
 msgstr "Para suporte técnico e informações entre em contato com %s"
 
 #: app/Theme/AbstractTheme.php:285
 #, fuzzy
-msgid "For technical support or genealogy questions, please contact %s"
+msgid "For technical support or genealogy questions contact %s."
 msgstr "Para suporte técnico ou questões genealógicas, por favor entre em contato com %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting

@@ -6483,17 +6483,17 @@ msgstr "Till exempel, om du anger en sökväg längd 2, kommer personen att kunn
 
 #: app/Theme/AbstractTheme.php:296
 #, fuzzy
-msgid "For help with genealogy questions contact %s"
+msgid "For help with genealogy questions contact %s."
 msgstr "För hjälp med släktfrågor kontakta %s"
 
 #: app/Theme/AbstractTheme.php:307
 #, fuzzy
-msgid "For technical support and information contact %s"
+msgid "For technical support and information contact %s."
 msgstr "För teknisk stöd och information kontakta %s"
 
 #: app/Theme/AbstractTheme.php:285
 #, fuzzy
-msgid "For technical support or genealogy questions, please contact %s"
+msgid "For technical support or genealogy questions contact %s."
 msgstr "För teknisk stöd eller släktfrågor kontakta %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting

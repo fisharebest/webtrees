@@ -6487,17 +6487,17 @@ msgstr "For eksempel, hvis du tillader en længde på 2, vil personen have mulig
 
 #: app/Theme/AbstractTheme.php:296
 #, fuzzy
-msgid "For help with genealogy questions contact %s"
+msgid "For help with genealogy questions contact %s."
 msgstr "For hjælp med slægtsspørgsmål, kontakt %s"
 
 #: app/Theme/AbstractTheme.php:307
 #, fuzzy
-msgid "For technical support and information contact %s"
+msgid "For technical support and information contact %s."
 msgstr "For teknisk hjælp og information, kontakt %s"
 
 #: app/Theme/AbstractTheme.php:285
 #, fuzzy
-msgid "For technical support or genealogy questions, please contact %s"
+msgid "For technical support or genealogy questions contact %s."
 msgstr "For teknisk hjælp og slægtsspørgsmål, kontakt %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting

@@ -6479,17 +6479,17 @@ msgstr "Wenn Sie zum Beispiel eine Stufenweite von 2 angeben, wird diese Person 
 
 #: app/Theme/AbstractTheme.php:296
 #, fuzzy
-msgid "For help with genealogy questions contact %s"
+msgid "For help with genealogy questions contact %s."
 msgstr "Bei genealogischen Fragen wenden Sie sich bitte an %s"
 
 #: app/Theme/AbstractTheme.php:307
 #, fuzzy
-msgid "For technical support and information contact %s"
+msgid "For technical support and information contact %s."
 msgstr "Für technische Unterstützung wenden Sie sich bitte an %s"
 
 #: app/Theme/AbstractTheme.php:285
 #, fuzzy
-msgid "For technical support or genealogy questions, please contact %s"
+msgid "For technical support or genealogy questions contact %s."
 msgstr "Für technische Unterstützung sowie bei genealogischen Fragen wenden Sie sich bitte an %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting

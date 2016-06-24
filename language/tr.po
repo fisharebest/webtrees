@@ -6456,17 +6456,17 @@ msgstr "Örneğin, yol uzaklğını 2 olarak belirtirseniz, şahıs torununu(ço
 
 #: app/Theme/AbstractTheme.php:296
 #, fuzzy
-msgid "For help with genealogy questions contact %s"
+msgid "For help with genealogy questions contact %s."
 msgstr "Soyağacı soruları ve yardım için irtibat adresi %s"
 
 #: app/Theme/AbstractTheme.php:307
 #, fuzzy
-msgid "For technical support and information contact %s"
+msgid "For technical support and information contact %s."
 msgstr "Teknik destek ve bilgi için irtibat adresi %s"
 
 #: app/Theme/AbstractTheme.php:285
 #, fuzzy
-msgid "For technical support or genealogy questions, please contact %s"
+msgid "For technical support or genealogy questions contact %s."
 msgstr "Teknik destek yada soyağacı soruları için irtibat adresi %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting

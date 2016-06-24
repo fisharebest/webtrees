@@ -6483,17 +6483,17 @@ msgstr "P.sh., po të specifikoni madhësinë e pathit 2, personi do të jetë n
 
 #: app/Theme/AbstractTheme.php:296
 #, fuzzy
-msgid "For help with genealogy questions contact %s"
+msgid "For help with genealogy questions contact %s."
 msgstr "Për ndihmë me pyetjet gjenealogjike kontaktoni %s"
 
 #: app/Theme/AbstractTheme.php:307
 #, fuzzy
-msgid "For technical support and information contact %s"
+msgid "For technical support and information contact %s."
 msgstr "Pë përkrahje teknike dhe informata kontaktoni %s"
 
 #: app/Theme/AbstractTheme.php:285
 #, fuzzy
-msgid "For technical support or genealogy questions, please contact %s"
+msgid "For technical support or genealogy questions contact %s."
 msgstr "Për përkrahje teknike ose pyetje gjenealogjike, ju lutem kontaktoni %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
