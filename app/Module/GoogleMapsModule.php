@@ -3508,13 +3508,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo I18N::translate('Zoom level') ?>
+					<label for="NEW_ZOOM_FACTOR">
+						<?php echo I18N::translate('Zoom level') ?>
+					</label>
 				</td>
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor ?>" size="20" onchange="updateMap();">
-					<p class="small text-muted">
-						<?php echo I18N::translate('Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map.') ?>
-					</p>
 				</td>
 			</tr>
 			<tr>
