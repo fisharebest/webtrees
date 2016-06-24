@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-24 19:12+0000\n"
+"PO-Revision-Date: 2016-06-24 19:45+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -721,11 +721,6 @@ msgstr "<div class=\"largeError\">Belangrijk bericht:</div><div class=\"error\">
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
-#: app/Module/FrequentlyAskedQuestionsModule.php:223
-#, fuzzy
-msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Een FAQ item kan getoond worden voor één stamboom of voor alle stambomen."
-
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
 msgid "A chart displaying relationships between two individuals."
@@ -1401,9 +1396,8 @@ msgstr "Een bestaand persoon als echtgenote toevoegen"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
-#, fuzzy
 msgid "Add an FAQ"
-msgstr "Voeg een FAQ toe"
+msgstr "Voeg een FAQ item toe"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
 msgid "Add an associate"
@@ -1482,7 +1476,7 @@ msgstr "Voeg niet-gekoppelde records toe"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1101
 msgid "Add watermarks to thumbnails"
-msgstr "Voeg watermerk toe aan miniaturen"
+msgstr "Voeg een watermerk toe aan miniatuurafbeeldingen"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -1907,6 +1901,10 @@ msgstr "Ook bekend als"
 #: app/Stats.php:6687
 msgid "American Samoa"
 msgstr "Amerikaans-Samoa"
+
+#: app/Module/FrequentlyAskedQuestionsModule.php:223
+msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
+msgstr "Een FAQ item kan getoond worden voor één stamboom of voor alle stambomen."
 
 #: admin_site_config.php:492
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -3681,7 +3679,7 @@ msgstr "Kies familieleden"
 
 #: addmedia.php:460 admin_media_upload.php:213
 msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-msgstr "Kies de miniatuurafbeelding die u wilt uploaden. Miniaturen van afbeeldingen kunnen automatisch gemaakt worden maar u kunt ook een eigen miniatuur gebruiken, vooral bij andere bestandstypes. Denk aan een stilstaand shot uit een video of een foto van de maker van een audio-opname."
+msgstr "Kies de miniatuurafbeelding die u wilt uploaden. Miniaturen van afbeeldingen kunnen automatisch gemaakt worden maar u kunt ook een eigen miniatuurafbeelding gebruiken, vooral bij andere bestandstypes. Denk aan een stilstaand shot uit een video of een foto van de maker van een audio-opname."
 
 #: admin_site_config.php:124
 msgid "Choose user defined welcome text typed below"
@@ -5362,7 +5360,7 @@ msgstr "Elke bron legt een specifieke gebeurtenis vast, meestal voor een bepaald
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Bij elk gebruiksaccount staat een optie om wijzigingen van gebruiker automatisch te accepteren. Is dat ingeschakeld, dan worden door die gebruiker gemaakte wijzigingen direct geaccepteerd. Veel beheerders hebben dit ingeschakeld voor hun eigen account."
+msgstr "Elk gebruiksaccount bevat de optie “wijzigingen automatisch accepteren”. Als deze optie is ingeschakeld, dan worden de door die gebruiker gemaakte wijzigingen direct opgeslagen. Veel beheerders hebben dit ingeschakeld voor hun eigen account."
 
 #: statistics.php:129
 msgid "Earliest birth"
@@ -5438,9 +5436,8 @@ msgid "Edit preferences"
 msgstr "Opties voor wijzigen"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-#, fuzzy
 msgid "Edit the FAQ"
-msgstr "Wijzig FAQ"
+msgstr "FAQ wijzigen"
 
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
@@ -12763,7 +12760,7 @@ msgstr "Voor welke talen moet dit blok getoond worden"
 
 #: admin_trees_config.php:1087
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Toon miniatuurplaatjes in diagrammen en overzichten."
+msgstr "Toon miniatuurafbeeldingen in diagrammen en overzichten."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1023 app/Functions/FunctionsEdit.php:206
@@ -13283,7 +13280,7 @@ msgstr "Bewaar afbeeldingen op volledige grootte met watermerk op de server"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1127
 msgid "Store watermarked thumbnails on server"
-msgstr "Bewaar miniaturen met watermerk op de server"
+msgstr "Bewaar miniatuurafbeeldingen met watermerk op de server"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -13825,7 +13822,7 @@ msgstr "Het mediabestand is niet gevonden in deze stamboom."
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr "Het mediabestand dat u uploadt kan, en moet eigenlijk, een andere naam krijgen op de server dan op uw lokale computer. Op uw lokale computer heeft die naam betekenis voor u, maar dat betekent niet dat dit ook geldt voor de bezoekers van de site. Denk ook aan de mogelijkheid dat meerdere gebruikers proberen bestanden te uploaden met de naam “opa.jpg”.<br><br>In dit veld kunt u de nieuwe naam opgeven voor het bestand dat u gaat uploaden. De naam die u hier invult, wordt ook gebruikt voor de miniatuur, die u apart kunt uploaden of die automatisch wordt aangemaakt. De extensie (jpg, gif, pdf, doc, enz) hoeft u niet in te vullen.<br><br>Laat dit veld leeg om de originele naam van het bestand te behouden."
+msgstr "Het mediabestand dat u uploadt kan, en moet eigenlijk, een andere naam krijgen op de server dan op uw lokale computer. Op uw lokale computer heeft die naam betekenis voor u, maar dat betekent niet dat dit ook geldt voor de bezoekers van de site. Denk ook aan de mogelijkheid dat meerdere gebruikers proberen bestanden te uploaden met de naam “opa.jpg”.<br><br>In dit veld kunt u de nieuwe naam opgeven voor het bestand dat u gaat uploaden. De naam die u hier invult, wordt ook gebruikt voor de miniatuurafbeelding, die u apart kunt uploaden of die automatisch wordt aangemaakt. De extensie (jpg, gif, pdf, doc, enz) hoeft u niet in te vullen.<br><br>Laat dit veld leeg om de originele naam van het bestand te behouden."
 
 #: setup.php:169
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13969,7 +13966,7 @@ msgstr "De achternaam staat tussen schuine strepen:<%s>Jan Pieter /Smid/<%s>"
 #: addmedia.php:360
 #, php-format
 msgid "The thumbnail file %1$s could not be renamed to %2$s."
-msgstr "Het miniatuur bestand %1$s kon niet worden hernoemd in %2$s."
+msgstr "Het miniatuurbestand %1$s kon niet worden hernoemd in %2$s."
 
 #: addmedia.php:358
 #, php-format
@@ -14406,7 +14403,7 @@ msgstr "Dit is de naam van de SMTP server. 'localhost' betekent dat de mail serv
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1066
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
-msgstr "Dit is de breedte (in pixels) die webtrees gebruikt voor automatisch gegenereerde miniaturen. De standaard waarde is 100 pixels."
+msgstr "Dit is de breedte (in pixels) die webtrees gebruikt voor automatisch gegenereerde miniatuurafbeeldingen. De standaard waarde is 100 pixels."
 
 #: admin_users.php:318 edituser.php:176 login.php:423 setup.php:427
 msgid "This is your real name, as you would like it displayed on screen."
@@ -14480,7 +14477,7 @@ msgstr "Dit moet tenminste zes karakters lang zijn. Het is hoofdletter gevoelig.
 #. I18N: Help text for the “Sender name” site configuration setting
 #: admin_site_config.php:334
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Deze naam wordt gebruikt voor het ‘Van’ veld, voor verzending van automatische emails vanaf deze server."
+msgstr "Deze naam wordt gebruikt voor het ‘Van’ veld, voor verzending van automatische e-mails vanaf deze server."
 
 #: note.php:79
 msgid "This note does not exist or you do not have permission to view it."
@@ -14519,7 +14516,7 @@ msgstr "Deze optie bepaalt of de inhoud van een <i>Notitie</i>-record automatisc
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: admin_trees_config.php:1509
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
-msgstr "Deze optie bepaalt of de inhoud van een <i>Bron</i>-record automatisch wordt weergegeven op de persoons pagina, of niet."
+msgstr "Deze optie bepaalt of de inhoud van een <i>Bron</i>-record automatisch wordt weergegeven op de persoonspagina, of niet."
 
 #. I18N: Help text for the “Automatically expand list of events of close relatives” configuration setting
 #: admin_trees_config.php:1374
@@ -14638,7 +14635,7 @@ msgstr "Deze rol heeft alle rechten van de rol van manager in alle stambomen. Da
 
 #: admin_users.php:547
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Deze rol heeft alle rechten van een lid, plus het recht om gegevens toe te voegen, te wijzigen of te verwijderen. Elke wijziging moet worden goedgekeurd door een moderator, tenzij voor deze gebruiker de optie “accepteer wijzigingen automatisch” is ingeschakeld."
+msgstr "Deze rol heeft alle rechten van een lid, plus het recht om gegevens toe te voegen, te wijzigen of te verwijderen. Elke wijziging moet worden goedgekeurd door een moderator, tenzij voor deze gebruiker de optie “wijzigingen automatisch accepteren” is ingeschakeld."
 
 #: admin_users.php:561
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -14737,7 +14734,7 @@ msgstr "Do"
 
 #: addmedia.php:139 admin_media_upload.php:103
 msgid "Thumbnail files must contain images."
-msgstr "Miniatuur bestanden moeten afbeeldingen zijn."
+msgstr "Miniatuurbestanden moeten afbeeldingen zijn."
 
 #: admin_trees_config.php:1043
 msgid "Thumbnail images"
@@ -15886,7 +15883,7 @@ msgstr "Breedte"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1048
 msgid "Width of generated thumbnails"
-msgstr "Breedte van gegenereerde miniatuur"
+msgstr "Breedte van gegenereerde miniatuurafbeelding"
 
 #. I18N: gedcom tag WIFE
 #: app/GedcomTag.php:860 edit_interface.php:1088
@@ -16234,7 +16231,7 @@ msgstr "Uw server administrateur zal u de benodigde connectie details bezorgen."
 
 #: app/Module/BatchUpdateModule.php:228
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "In uw gebruikersaccount is de optie “wijzigingen automatisch goedkeuren“ uitgeschakeld. U kunt records alleen één voor één wijzigen."
+msgstr "In uw gebruikersaccount is de optie “wijzigingen automatisch accepteren“ uitgeschakeld. U kunt records alleen één voor één wijzigen."
 
 #: admin.php:556
 #, php-format
@@ -16688,7 +16685,7 @@ msgstr "maak"
 #. I18N: a program feature
 #: setup.php:132
 msgid "creating thumbnails of images"
-msgstr "Bezig met maken van miniaturen"
+msgstr "Bezig met maken van miniatuurafbeeldingen"
 
 #: statistics.php:616
 msgid "date periods"
