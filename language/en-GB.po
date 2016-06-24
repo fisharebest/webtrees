@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 14:18+0000\n"
+"PO-Revision-Date: 2016-06-24 21:47+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -389,6 +389,10 @@ msgid_plural "%s seconds ago"
 msgstr[0] "%s second ago"
 msgstr[1] "%s seconds ago"
 
+#: message.php:300 message.php:303
+msgid "%s sent you the following message."
+msgstr "%s sent you the following message."
+
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
 msgid "%s signed-in user"
@@ -716,11 +720,6 @@ msgstr "<div class=\"largeError\">Notice:</div><div class=\"error\">By completin
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-
-#: app/Module/FrequentlyAskedQuestionsModule.php:223
-#, fuzzy
-msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "A FAQ item can be displayed on just one of the family trees or on all the family trees."
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
@@ -1397,9 +1396,8 @@ msgstr "Add a wife using an existing individual"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
-#, fuzzy
 msgid "Add an FAQ"
-msgstr "Add an FAQ item"
+msgstr "Add an FAQ"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
 msgid "Add an associate"
@@ -1903,6 +1901,10 @@ msgstr "Also known as"
 #: app/Stats.php:6687
 msgid "American Samoa"
 msgstr "American Samoa"
+
+#: app/Module/FrequentlyAskedQuestionsModule.php:223
+msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
+msgstr "An FAQ can be displayed on just one of the family trees, or on all the family trees."
 
 #: admin_site_config.php:492
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -5434,9 +5436,8 @@ msgid "Edit preferences"
 msgstr "Edit preferences"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-#, fuzzy
 msgid "Edit the FAQ"
-msgstr "Edit the FAQ item"
+msgstr "Edit the FAQ"
 
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
@@ -6832,12 +6833,6 @@ msgstr "Given name"
 #: app/GedcomTag.php:504
 msgid "Given names"
 msgstr "Given names"
-
-#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
-#: admin_trees_config.php:967
-#, fuzzy
-msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu. To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -13761,11 +13756,6 @@ msgstr "The following facts and events were only found in the record of %s."
 msgid "The following list shows typical requirements."
 msgstr "The following list shows typical requirements."
 
-#: message.php:300 message.php:303
-#, fuzzy
-msgid "%s sent you the following message."
-msgstr "The following message has been sent to your webtrees user account from %s"
-
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
 msgstr "The following places have been changed:"
@@ -13966,6 +13956,11 @@ msgstr "The size of the family tree, earliest and latest events, common names, e
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
 msgstr "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
+
+#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
+#: admin_trees_config.php:967
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
+msgstr "The theme menu will only be shown if the website preferences allow users to select their own theme."
 
 #: addmedia.php:360
 #, php-format
