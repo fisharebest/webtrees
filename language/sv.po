@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-23 16:01+0000\n"
+"PO-Revision-Date: 2016-06-24 20:26+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
@@ -721,11 +721,6 @@ msgstr "<div class=\"largeError\">Observera:</div><div class=\"error\">Genom att
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
-#: app/Module/FrequentlyAskedQuestionsModule.php:223
-#, fuzzy
-msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "En Vanliga frågor-post kan visas på bara ett av släktträden, eller på alla släktträd."
-
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
 msgid "A chart displaying relationships between two individuals."
@@ -1401,7 +1396,6 @@ msgstr "Lägg till en befintlig person som maka"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
-#, fuzzy
 msgid "Add an FAQ"
 msgstr "Lägg till Vanliga frågor-post"
 
@@ -1907,6 +1901,10 @@ msgstr "Också känd som"
 #: app/Stats.php:6687
 msgid "American Samoa"
 msgstr "Amerikanska Samoa"
+
+#: app/Module/FrequentlyAskedQuestionsModule.php:223
+msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
+msgstr "En Vanliga frågor-post kan visas på bara ett av släktträden, eller på alla släktträd."
 
 #: admin_site_config.php:492
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -5438,7 +5436,6 @@ msgid "Edit preferences"
 msgstr "Redigera inställningar"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-#, fuzzy
 msgid "Edit the FAQ"
 msgstr "Redigera Vanliga frågor-post"
 
