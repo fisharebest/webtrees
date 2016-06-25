@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-24 20:13+0000\n"
+"PO-Revision-Date: 2016-06-25 08:35+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -418,6 +418,10 @@ msgid_plural "%s seconds ago"
 msgstr[0] "před sekundou"
 msgstr[1] "před %s sekundami"
 msgstr[2] "před %s sekundami"
+
+#: message.php:300 message.php:303
+msgid "%s sent you the following message."
+msgstr "%s vám zaslal následující zprávu."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
@@ -6515,19 +6519,16 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Například pokud zadáte cestu o velikosti 2, osoba bude moct vidět svého vnuka (dítě, dítě), svou tetu (rodič, sourozenec), svou nevlastní dceru (partner, dítě), ale již ne svého bratrance (rodič, sourozenec, dítě)."
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy
 msgid "For help with genealogy questions contact %s."
-msgstr "S dotazy k rodokmenu se obracejte na %s"
+msgstr "S dotazy k rodokmenu se obracejte na %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy
 msgid "For technical support and information contact %s."
-msgstr "Pro technickou podporu a další informace kontaktujte %s"
+msgstr "Pro technickou podporu a informace kontaktujte %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Pro technickou podporu nebo s dotazy k rodokmenu prosím kontaktujte %s"
+msgstr "Pro technickou podporu nebo s dotazy k rodokmenu kontaktujte %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277
@@ -6866,12 +6867,6 @@ msgstr "Křestní jméno"
 #: app/GedcomTag.php:504
 msgid "Given names"
 msgstr "Křestní jména"
-
-#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
-#: admin_trees_config.php:967
-#, fuzzy
-msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr "Umožňuje uživateli zvolit si vlastní motiv.<br>z rolovacího menu (je-li zabudováno v aktuálním motivu)<br><b>Povolit uživatelům vybrat si jejich vlastní motiv</b> musí být taktéž nastaveno na ano."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -13797,11 +13792,6 @@ msgstr "Následující fakta a události byly nalezeny pouze v záznamu “%s”
 msgid "The following list shows typical requirements."
 msgstr "Následující seznam ukazuje typické požadavky."
 
-#: message.php:300 message.php:303
-#, fuzzy
-msgid "%s sent you the following message."
-msgstr "Tato zpráva byla zaslána na váš webtrees uživatelský účet z %s"
-
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
 msgstr "Následující místa byla změněna:"
@@ -14002,6 +13992,11 @@ msgstr "Velikost rodokmenu, nejstarší a nejnovější události, společná jm
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
 msgstr "Příjmení je mezi lomítky: <%s>Jan Ámos /Komenský/<%s>"
+
+#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
+#: admin_trees_config.php:967
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
+msgstr "Menu motivů ze zobrazí jen tehdy, když nastavení webové stránky povolí uživatelům vybrat si motiv."
 
 #: addmedia.php:360
 #, php-format
