@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-24 19:45+0000\n"
+"PO-Revision-Date: 2016-06-25 08:14+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -392,6 +392,10 @@ msgid "%s second ago"
 msgid_plural "%s seconds ago"
 msgstr[0] "%s seconde geleden"
 msgstr[1] "%s seconden geleden"
+
+#: message.php:300 message.php:303
+msgid "%s sent you the following message."
+msgstr "%s heeft u het volgende bericht gestuurd."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
@@ -6482,19 +6486,16 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Als u als padlengte b.v. 2 opgeeft, dan kan die persoon zijn kleinkind (kind, kind), zijn oom of tante (ouder, broer/zus van ouder) en stiefkind (echtgeno(o)t(e), kind van andere partner) zien, maar niet zijn/haar eerste graads neef/nicht (ouder, broer/zus van ouder, kind)."
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy
 msgid "For help with genealogy questions contact %s."
-msgstr "Neem voor genealogische vragen contact op met %s"
+msgstr "Voor genealogische vragen kunt u contact opnemen met %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy
 msgid "For technical support and information contact %s."
-msgstr "Voor technische ondersteuning en informatie, neem contact op met %s"
+msgstr "Voor technische ondersteuning en informatie kunt u contact opnemen met %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Neem voor technische ondersteuning of genealogische vragen, contact op met %s"
+msgstr "Voor technische ondersteuning of genealogische vragen kunt u contact opnemen met %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277
@@ -6833,12 +6834,6 @@ msgstr "Voornaam"
 #: app/GedcomTag.php:504
 msgid "Given names"
 msgstr "Voornamen"
-
-#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
-#: admin_trees_config.php:967
-#, fuzzy
-msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr "Deze optie geeft gebruikers de mogelijkheid om hun eigen thema te kiezen uit een keuzelijst.<br><br>Het is echter mogelijk dat het huidige thema deze lijst niet toont, ondanks dat deze optie is gezet. De optie <b>Sta gbruikers toe hun eigen thema te kiezen</b> moet eveneens ingeschakeld zijn."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -13762,11 +13757,6 @@ msgstr "De volgende feiten en gebeurtenissen zijn alleen gevonden in het record 
 msgid "The following list shows typical requirements."
 msgstr "De volgende lijst toont u typische benodigdheden."
 
-#: message.php:300 message.php:303
-#, fuzzy
-msgid "%s sent you the following message."
-msgstr "Het volgende bericht is verzonden naar uw webtrees-gebruikersaccount door %s"
-
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
 msgstr "De volgende plaatsen zijn gewijzigd:"
@@ -13967,6 +13957,11 @@ msgstr "De grootte van de stamboom, vroegste en laatste gebeurtenissen, gemeensc
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
 msgstr "De achternaam staat tussen schuine strepen:<%s>Jan Pieter /Smid/<%s>"
+
+#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
+#: admin_trees_config.php:967
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
+msgstr "Het thema menu wordt alleen getoond als in de website voorkeuren is aangegeven dat gebruikers hun eigen thema mogen kiezen."
 
 #: addmedia.php:360
 #, php-format
