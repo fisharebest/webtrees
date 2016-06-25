@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-22 20:07+0000\n"
+"PO-Revision-Date: 2016-06-25 18:53+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -389,6 +389,10 @@ msgid_plural "%s seconds ago"
 msgstr[0] "%s sekonde gelede"
 msgstr[1] "%s sekondes gelede"
 
+#: message.php:300 message.php:303
+msgid "%s sent you the following message."
+msgstr "%s het die volgende boodskap aan jou gestuur."
+
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
 msgid "%s signed-in user"
@@ -716,11 +720,6 @@ msgstr "<div class=\"largeError\">Belangrik:</div><div class=\"error\">Deur hier
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-
-#: app/Module/FrequentlyAskedQuestionsModule.php:223
-#, fuzzy
-msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "’n FAQ item kan vir een stamboom vertoon word, of vir al die stambome."
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
@@ -1397,9 +1396,8 @@ msgstr "Voeg 'n reeds bestaande persoon by as 'n eggenote"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
-#, fuzzy
 msgid "Add an FAQ"
-msgstr "Voeg 'n FAQ item by"
+msgstr "Voeg 'n FAQ by"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
 msgid "Add an associate"
@@ -1903,6 +1901,10 @@ msgstr "Ook bekend as"
 #: app/Stats.php:6687
 msgid "American Samoa"
 msgstr "Amerikaans-Samoa"
+
+#: app/Module/FrequentlyAskedQuestionsModule.php:223
+msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
+msgstr "’n FAQ kan vir slegs een stamboom vertoon word, of vir al die stambome."
 
 #: admin_site_config.php:492
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -5434,9 +5436,8 @@ msgid "Edit preferences"
 msgstr "Wysig voorkeure"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-#, fuzzy
 msgid "Edit the FAQ"
-msgstr "Wysig FAQ item"
+msgstr "Wysig die FAQ"
 
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
@@ -6481,19 +6482,16 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Byvoorbeeld, as jy die padlengte as 2 aangee, sal die persoon haar eie kleinkind (kind, kind), haar tante (ouer, suster) en haar stiefdogter (gade, kind) kan sien, maar nie haar niggie nie (ouer, broer/suster, kind)."
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy
 msgid "For help with genealogy questions contact %s."
-msgstr "Vir genealogiese navrae kontak %s"
+msgstr "Vir hulp met genealogiese navrae kontak %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy
 msgid "For technical support and information contact %s."
-msgstr "Vir tegniese ondersteuning en inligting, kontak %s"
+msgstr "Vir tegniese ondersteuning en inligting, kontak %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Vir tegniese ondersteuning of genealogiese navrae, kontak asseblief %s"
+msgstr "Vir tegniese ondersteuning of genealogiese navrae, kontak asseblief %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277
@@ -6832,12 +6830,6 @@ msgstr "Voornaam"
 #: app/GedcomTag.php:504
 msgid "Given names"
 msgstr "Voorname"
-
-#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
-#: admin_trees_config.php:967
-#, fuzzy
-msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr "Gee aan gebruikers die opsie om hulle eie tema vanuit 'n kieslys te selekteer.<br><br>Selfs al is hierdie opsie ingestel, mag dit wees dat die huidige tema nie vir so 'n kieslys voorsiening maak nie. Om doeltreffend te wees vereis hierdie opsie dat die <b>Laat gebruikers toe om hulle eie tema te kies</b> opsie ook ingestel is."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -13761,11 +13753,6 @@ msgstr "Die volgende feite en gebeurtenisse is net in die rekord van %s gevind."
 msgid "The following list shows typical requirements."
 msgstr "Die volgende lys vertoon die tipiese vereistes."
 
-#: message.php:300 message.php:303
-#, fuzzy
-msgid "%s sent you the following message."
-msgstr "Die volgende boodskap is na jou webtrees gebruikersrekening gestuur deur %s"
-
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
 msgstr "Die volgende plekke is gewysig:"
@@ -13966,6 +13953,11 @@ msgstr "Die grootte van die stamboom, vroegste en mees onlangste gebeurtenisse, 
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
 msgstr "Die van word deur skuinsstrepe omsluit: <%s> Jan Pieter /Smit/<%s>"
+
+#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
+#: admin_trees_config.php:967
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
+msgstr "Die tema-kieslys sal slegs vertoon word as die voorkeure vir die webwerf gebruikers toelaat om hulle eie tema te kies."
 
 #: addmedia.php:360
 #, php-format
