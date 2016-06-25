@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-24 07:21+0000\n"
+"PO-Revision-Date: 2016-06-25 07:30+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -393,6 +393,10 @@ msgid_plural "%s seconds ago"
 msgstr[0] "il y a %s seconde"
 msgstr[1] "il y a %s secondes"
 
+#: message.php:300 message.php:303
+msgid "%s sent you the following message."
+msgstr "Le message suivant vous a été envoyé par %s."
+
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
 msgid "%s signed-in user"
@@ -720,11 +724,6 @@ msgstr "<div class=\"largeError\">Attention&nbsp;:</div><div class=\"error\">En 
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr "<span class=\"label\">%1$s&nbsp;:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-
-#: app/Module/FrequentlyAskedQuestionsModule.php:223
-#, fuzzy
-msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Un élément FAQ peut être affiché sur un arbre seulement ou sur tous les arbres généalogiques."
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
@@ -1401,9 +1400,8 @@ msgstr "Ajouter une épouse en utilisant une personne existante"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:460
-#, fuzzy
 msgid "Add an FAQ"
-msgstr "Ajouter FAQ"
+msgstr "Ajouter un article de FAQ"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
 msgid "Add an associate"
@@ -1907,6 +1905,10 @@ msgstr "Nom d’usage"
 #: app/Stats.php:6687
 msgid "American Samoa"
 msgstr "Samoas américaines"
+
+#: app/Module/FrequentlyAskedQuestionsModule.php:223
+msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
+msgstr "Un article de FAQ peut être affiché sur un arbre seulement ou sur tous les arbres généalogiques."
 
 #: admin_site_config.php:492
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -5438,9 +5440,8 @@ msgid "Edit preferences"
 msgstr "Modifier les préférences"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-#, fuzzy
 msgid "Edit the FAQ"
-msgstr "Modifier le FAQ"
+msgstr "Modifier la FAQ"
 
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
@@ -6485,19 +6486,16 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Par exemple, si vous spécifiez un degré de 2, la personne sera en mesure de voir son petit-fils (enfant puis, enfant), sa tante (parent puis, frère ou sœur), sa belle-fille (conjoint puis, enfant), mais pas son cousin germain (parent puis, frère ou sœur puis, enfant qui fait trois)."
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy
 msgid "For help with genealogy questions contact %s."
-msgstr "Pour toute question sur la généalogie contacter %s"
+msgstr "Pour toute question sur la généalogie contacter %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy
 msgid "For technical support and information contact %s."
-msgstr "Pour tout problème technique contacter %s"
+msgstr "Pour tout problème technique contacter %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Pour toute question, contacter l’administrateur %s"
+msgstr "Pour toute question, contacter l’administrateur %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277
@@ -6836,12 +6834,6 @@ msgstr "Prénom"
 #: app/GedcomTag.php:504
 msgid "Given names"
 msgstr "Prénom(s)"
-
-#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
-#: admin_trees_config.php:967
-#, fuzzy
-msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr "Permet aux utilisateurs de choisir leur propre thème à partir d’une liste (si la configuration l’autorise)."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -13765,11 +13757,6 @@ msgstr "On ne trouve les faits et événements suivants que dans l’enregistrem
 msgid "The following list shows typical requirements."
 msgstr "La liste suivante donne une indication des performances requises."
 
-#: message.php:300 message.php:303
-#, fuzzy
-msgid "%s sent you the following message."
-msgstr "Le message suivant vous a été envoyé par %s"
-
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
 msgstr "Les lieux ci-dessous ont été changés&nbsp;:"
@@ -13970,6 +13957,11 @@ msgstr "La taille de l’arbre généalogique, les événements les plus récent
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
 msgstr "Le nom de famille est délimité par des barres obliques&nbsp;:&nbsp;:&nbsp;<%s>John Paul /Smith/<%s>"
+
+#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
+#: admin_trees_config.php:967
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
+msgstr "Le menu des thèmes ne sera affiché que si les préférences du site autorisent l’utilisateur à choisir son propre thème."
 
 #: addmedia.php:360
 #, php-format
