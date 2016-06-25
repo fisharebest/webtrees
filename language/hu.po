@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-24 19:22+0000\n"
+"PO-Revision-Date: 2016-06-25 00:41+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -393,6 +393,10 @@ msgid "%s second ago"
 msgid_plural "%s seconds ago"
 msgstr[0] "%s másodperccel ezelőtt"
 msgstr[1] "%s másodperccel ezelőtt"
+
+#: message.php:300 message.php:303
+msgid "%s sent you the following message."
+msgstr "%s küldte a következő üzenetet."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
@@ -6483,19 +6487,16 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Például, ha Ön 2 útvonalhosszat határoz meg, a személy láthatja az unokáját (gyerek gyereke), nagynénjét (szülő testvére), mostohalányát (házastárs gyereke), de az első unokatestvérét nem (szülő testvérének gyereke)."
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy
 msgid "For help with genealogy questions contact %s."
-msgstr "Származástani kérdésekben segítséget nyújt: %s"
+msgstr "Származástani kérdésekben segítséget nyújt: %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy
 msgid "For technical support and information contact %s."
-msgstr "Technikai segítséget és információt nyújt: %s"
+msgstr "Technikai segítséget és információt nyújt: %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Technikai vagy származástani kérdésekben segítséget nyújt: %s"
+msgstr "Technikai vagy származástani kérdésekben segítséget nyújt: %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277
@@ -6834,12 +6835,6 @@ msgstr "Utónév"
 #: app/GedcomTag.php:504
 msgid "Given names"
 msgstr "Utónév"
-
-#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
-#: admin_trees_config.php:967
-#, fuzzy
-msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr "Lehetővé teszi, hogy a felhasználók saját témát válasszanak egy menüből.<br><br>E beállítástól a jelenleg aktuális téma még nem feltétlenül biztosít ilyen menüt. Hogy érvényes legyen, a <a href=\"admin_site_config.php?action=site\" target=\"_blank\">Webhelybeállítások oldalon</a> is engedélyezni kell <b>A felhasználók saját témát választhatnak</b> opciót."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -13763,11 +13758,6 @@ msgstr "A következő tények és események csak a(z) %s bejegyzésben találha
 msgid "The following list shows typical requirements."
 msgstr "A következő lista a tipikus követelményeket mutatja."
 
-#: message.php:300 message.php:303
-#, fuzzy
-msgid "%s sent you the following message."
-msgstr "A webtrees-felhasználó fiókjába a következő üzenetet küldtük erről a címről %s"
-
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
 msgstr "A következő helyek változtak:"
@@ -13968,6 +13958,11 @@ msgstr "A családfa mérete, legkorábbi és legkésőbbi események, gyakori ne
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
 msgstr "A vezetéknevet perjelek fogják közre: <%s>/Kovács/ István<%s>"
+
+#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
+#: admin_trees_config.php:967
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
+msgstr "A témamenü csak akkor jelenik meg, ha a webhelybeállítások megengedik a felhasználóknak a saját téma választását."
 
 #: addmedia.php:360
 #, php-format
