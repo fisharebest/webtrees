@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-25 00:41+0000\n"
+"PO-Revision-Date: 2016-06-25 06:53+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -396,7 +396,7 @@ msgstr[1] "%s másodperccel ezelőtt"
 
 #: message.php:300 message.php:303
 msgid "%s sent you the following message."
-msgstr "%s küldte a következő üzenetet."
+msgstr "%s küldte az alábbi üzenetet."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
@@ -14469,7 +14469,7 @@ msgstr "Az üzenetet elküldtük, amíg a következő internetcím (URL) volt l�
 #: message.php:113
 #, php-format
 msgid "This message will be sent to %s"
-msgstr "Ezt az üzenetet a(z) %s felhasználónak küldjük"
+msgstr "Ezt az üzenetet %s részére küldjük"
 
 #: setup.php:435
 msgid "This must be at least six characters long. It is case-sensitive."
