@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-25 06:38+0000\n"
+"PO-Revision-Date: 2016-06-25 06:48+0000\n"
 "Last-Translator: Jamie Jaconelli <jamie@jaconelli.dk>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
 "Language: da\n"
@@ -1480,7 +1480,7 @@ msgstr "Tilføj ikke linkede poster"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1101
 msgid "Add watermarks to thumbnails"
-msgstr "Tilføj vandmærke på miniaturer?"
+msgstr "Tilføj vandmærke på miniaturer"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
@@ -6838,12 +6838,12 @@ msgstr "Fornavne"
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
 msgid "Gives users the option of selecting their own theme."
-msgstr "Giver brugere mulighed for selv at vælge deres eget tema."
+msgstr "Giver brugere mulighed for selv at vælge eget tema."
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
 msgid "Globally unique identifier"
-msgstr "Global unik identifikator"
+msgstr "Unik identifikator"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
 msgid "Godchild"
@@ -7515,7 +7515,7 @@ msgstr "Inkluder undermapper"
 #. I18N: Label for a configuration option
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Inkluder personens nærmeste familie?"
+msgstr "Inkluder personens nærmeste familie"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6786
@@ -11100,7 +11100,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Udskrift grundlæggende begivenheder når tom?"
+msgstr "Udskrift af grundlæggende med tomme begivenheder"
 
 #: admin_trees_config.php:313 admin_trees_manage.php:398
 msgid "Privacy"
@@ -12097,7 +12097,7 @@ msgstr "Send besked til alle"
 #. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Send påmindelse via e-mails?"
+msgstr "Send påmindelse via e-mails"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:329
@@ -12439,7 +12439,7 @@ msgstr "Korteste ægteskab"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr "Skal denne ramme skjules når den er tom?"
+msgstr "Skjul rammen hvis den ikke indeholder data"
 
 #: calendar.php:229
 msgid "Show"
@@ -12483,7 +12483,7 @@ msgstr "Vis alle tags"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Vis en aldersmarkør?"
+msgstr "Vis en aldersmarkør"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1286
@@ -12492,12 +12492,12 @@ msgstr "Vis diagram detaljer som standard"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Vis aners børn?"
+msgstr "Vis aners børn"
 
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:165
 msgid "Show counts before or after name"
-msgstr "Sæt antal før eller efter navnet?"
+msgstr "Sæt tællinger før eller efter navnet"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
@@ -12534,7 +12534,7 @@ msgstr "Vis datoforskelle"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:296
 msgid "Show date of last update"
-msgstr "Vis dato for sidste opdatering?"
+msgstr "Vis dato for sidste opdatering"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:387
@@ -12609,23 +12609,23 @@ msgstr "Vis navne på private individer"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Vis noter?"
+msgstr "Vis noter"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Vis erhverv?"
+msgstr "Vis erhverv"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:141
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
-msgstr "Vis kun fødsler, dødsfald og vielser?"
+msgstr "Vis kun fødsler, dødsfald og vielser"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:135
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Vis kun begivenheder hørende til nulevende personer?"
+msgstr "Vis kun begivenheder hørende til nulevende personer"
 
 #: app/Functions/FunctionsPrintLists.php:169
 msgid "Show only females."
@@ -12638,7 +12638,7 @@ msgstr "Vis kun personer med ukendt køn."
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Vis materiale relateret til personer, begivenheder eller alt?"
+msgstr "Vis materiale relateret til personer, begivenheder eller alt"
 
 #: app/Functions/FunctionsPrintLists.php:160
 msgid "Show only males."
@@ -12661,7 +12661,7 @@ msgstr "Vis afventende ændringer"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Vis billeder?"
+msgstr "Vis billeder"
 
 #: placelist.php:81
 msgid "Show places in hierarchy"
@@ -12690,12 +12690,12 @@ msgstr "Vis forskningsopgaver der har en fremtidig deadline"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Vis bopæle?"
+msgstr "Vis bopæle"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:408
 msgid "Show slide show controls"
-msgstr "Vis kontroller for diashow?"
+msgstr "Vis diasshow kontrol"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12703,7 +12703,7 @@ msgstr "Vis kontroller for diashow?"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Vis kilder?"
+msgstr "Vis kilder"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12755,7 +12755,7 @@ msgstr "Vis brugeren som har lavet ændringen"
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Vis denne ramme for hvilke sprog?"
+msgstr "Angiv sprog for rammen"
 
 #: admin_trees_config.php:1087
 msgid "Show thumbnail images in charts and family groups."
@@ -13212,7 +13212,7 @@ msgstr "Start med forældrene"
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:414
 msgid "Start slide show on page load"
-msgstr "Start diashow når side er indlæst?"
+msgstr "Start diashow ved sideindlæsning"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13274,12 +13274,12 @@ msgstr "Stop"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1114
 msgid "Store watermarked full size images on server"
-msgstr "Gem fuld størrelse billeder med vandmærke på server?"
+msgstr "Gem fuld størrelse billeder med vandmærke på server"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1127
 msgid "Store watermarked thumbnails on server"
-msgstr "Gem miniaturer med vandmærke på server?"
+msgstr "Gem miniaturer med vandmærke på server"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
@@ -13825,12 +13825,12 @@ msgstr "Hukommelses- og CPU-tidsgrænserne afhænger af antallet af individer i 
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr "Besked blev ikke afsendt"
+msgstr "Besked blev ikke afsendt."
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr "Besked sendt til %s"
+msgstr "Besked sendt til %s."
 
 #: admin_modules.php:54
 #, php-format
@@ -15851,12 +15851,12 @@ msgstr "Hvor er din PhpGedView installation?"
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Hvilke familietræer skal inkluderes i sitemaps?"
+msgstr "Hvilke familietræer skal inkluderes i sitemaps"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1020
 msgid "Who can upload new media files"
-msgstr "Hvem kan uploade nye medie-filer?"
+msgstr "Hvem kan uploade nye medie-filer"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
