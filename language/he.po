@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-26 07:06+0000\n"
+"PO-Revision-Date: 2016-06-26 07:07+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -6487,7 +6487,7 @@ msgstr "לדוגמה, אם תציין אורך נתיב של 2, האדם יוכ�
 
 #: app/Theme/AbstractTheme.php:296
 msgid "For help with genealogy questions contact %s."
-msgstr "לשאלות בקשר לחקר שושלת יוחסין נא להתקשר אל %s,"
+msgstr "לשאלות בקשר לחקר שושלת יוחסין נא להתקשר אל %s."
 
 #: app/Theme/AbstractTheme.php:307
 msgid "For technical support and information contact %s."
