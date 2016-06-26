@@ -2326,7 +2326,8 @@ msgstr "Autoritza automàticament els canvis fets per aquest usuari"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr "Crea automàticament ID globals únics"
 
 #. I18N: A configuration setting
@@ -6850,7 +6851,8 @@ msgstr "Dóna als usuaris l’opció de seleccionar la presentació que més els
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr "Identificador únic global"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7295,7 +7297,8 @@ msgstr "Híbrid"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
-msgid "ID preferences"
+#, fuzzy
+msgid "XREF prefixes"
 msgstr "Paràmetres pels ID"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330

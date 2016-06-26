@@ -2354,7 +2354,8 @@ msgstr "Automatski odobri promjene ovom korisniku"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr "Automatski kreiraj globalne jedinstvene ID-e"
 
 #. I18N: A configuration setting
@@ -6881,7 +6882,8 @@ msgstr "Korisnicima pruža mogućnost odabira svoje teme."
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr "Globalni identifikacijski broj"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7326,7 +7328,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
 #, fuzzy
-msgid "ID preferences"
+msgid "XREF prefixes"
 msgstr "ID postavke"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330

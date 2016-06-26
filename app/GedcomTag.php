@@ -1748,7 +1748,7 @@ class GedcomTag {
 		case '_UID':
 			return
 				/* I18N: gedcom tag _UID */
-				I18N::translate('Globally unique identifier');
+				I18N::translate('Unique identifier');
 		case '_URL':
 			return
 				/* I18N: gedcom tag _URL */

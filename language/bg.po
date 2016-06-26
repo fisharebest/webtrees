@@ -2318,7 +2318,8 @@ msgstr "Автоматично одобряване на промените, и�
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr "Автоматично създавай уникални ID номера (GUID)"
 
 #. I18N: A configuration setting
@@ -6842,7 +6843,8 @@ msgstr ""
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr "Глобален идентификатор"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7287,7 +7289,7 @@ msgstr "Хибридна"
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
 #, fuzzy
-msgid "ID preferences"
+msgid "XREF prefixes"
 msgstr "ID настройки"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330

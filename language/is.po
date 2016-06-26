@@ -2321,7 +2321,8 @@ msgstr "Sjálfvirkt samþykkja breytingar sem gerðar eru af þessum notanda"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr "Sjálfvirkt stofna einstök auðkenni á heimsvísu"
 
 #. I18N: A configuration setting
@@ -6845,7 +6846,8 @@ msgstr "Gefa notendum kost á valmöguleikanum að velja þeirra eigin þema."
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr "Einstakt auðkenni á heimsvísu"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7290,7 +7292,7 @@ msgstr "Blendingur"
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
 #, fuzzy
-msgid "ID preferences"
+msgid "XREF prefixes"
 msgstr "Auðkennistilling"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330

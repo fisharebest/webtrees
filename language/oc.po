@@ -2336,7 +2336,8 @@ msgstr "Autorizar automaticament los cambiaments hèits per aquel utilizaire"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr "Crear automaticament ID globals unics"
 
 #. I18N: A configuration setting
@@ -6926,7 +6927,8 @@ msgstr ""
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7377,7 +7379,8 @@ msgstr ""
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
-msgid "ID preferences"
+#, fuzzy
+msgid "XREF prefixes"
 msgstr ""
 
 #: admin_site_logs.php:275 admin_site_logs.php:330

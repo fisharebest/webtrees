@@ -2322,7 +2322,8 @@ msgstr "Automatikisht mirato ndryshimet e bëra nga ky përdorues"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr "Automatikisht krijo IDtë unike globale"
 
 #. I18N: A configuration setting
@@ -6847,7 +6848,8 @@ msgstr "U jep përdoruesve mundësinë e zgjedhjes së temës vetanake."
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr "Identifikues global unik"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7292,7 +7294,7 @@ msgstr "Hibride"
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
 #, fuzzy
-msgid "ID preferences"
+msgid "XREF prefixes"
 msgstr "Përkufizimet ID"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330

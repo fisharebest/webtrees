@@ -2329,7 +2329,8 @@ msgstr "E felhasználó változtatásainak automatikus elfogadása"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr "Globális egyedi azonosító automatikus létrehozása"
 
 #. I18N: A configuration setting
@@ -6843,7 +6844,8 @@ msgstr "Lehetővé teszi, hogy a felhasználók saját témát válasszanak."
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr "Globális egyedi azonosító"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7288,7 +7290,8 @@ msgstr "Vegyes"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
-msgid "ID preferences"
+#, fuzzy
+msgid "XREF prefixes"
 msgstr "Azonosítóbeállítások"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330

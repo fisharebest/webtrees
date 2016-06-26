@@ -2438,7 +2438,8 @@ msgstr "قبول التعديلات من المستخدم تلقائياً"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr "إنشاء معرفات خاصة عالمية فريدة تلقائياً"
 
 #. I18N: A configuration setting
@@ -6970,7 +6971,8 @@ msgstr "يتيح للمستخدم إختيار مظهر خاص للموقع."
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr "معرف عالمي فريد"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7415,7 +7417,7 @@ msgstr "خريطة مصورة"
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
 #, fuzzy
-msgid "ID preferences"
+msgid "XREF prefixes"
 msgstr "إعدادات المعرف الخاص"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330

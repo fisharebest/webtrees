@@ -2298,7 +2298,8 @@ msgstr "Bu kullanıcı tarafından yapılan değişiklikleri otomatik olarak kab
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr "Genel benzersiz IDleri otomatikman oluştur"
 
 #. I18N: A configuration setting
@@ -6820,7 +6821,8 @@ msgstr "Kullanıcıya kendi temasını seçme seçeneği sunar."
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr "Genel benzersiz tanımlayıcı"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7265,7 +7267,8 @@ msgstr "Karısık"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
-msgid "ID preferences"
+#, fuzzy
+msgid "XREF prefixes"
 msgstr "ID seçenekleri"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330

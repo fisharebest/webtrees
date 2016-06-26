@@ -2299,7 +2299,8 @@ msgstr "自动批准该用户所做的更改"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr "自动创造GUID"
 
 #. I18N: A configuration setting
@@ -6822,7 +6823,8 @@ msgstr "允许用户选择自己想要的主题。"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr "全局唯一标识符"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7267,7 +7269,7 @@ msgstr "混合"
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
 #, fuzzy
-msgid "ID preferences"
+msgid "XREF prefixes"
 msgstr "ID设置"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330

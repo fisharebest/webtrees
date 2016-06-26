@@ -2292,7 +2292,8 @@ msgstr "Автоматически принимать изменения сде�
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr ""
 
 #. I18N: A configuration setting
@@ -6813,7 +6814,8 @@ msgstr "იუზერს შეუძლია შაბლონის ამ
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr "გლობალურად უნიკალური იდენტიფიკატორი"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7258,7 +7260,7 @@ msgstr "ჰიბრიდული რეჟიმი"
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
 #, fuzzy
-msgid "ID preferences"
+msgid "XREF prefixes"
 msgstr "ID პარამეტრები"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330

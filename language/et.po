@@ -2327,7 +2327,8 @@ msgstr "Automaatselt kinnita selle kasutaja poolt tehtud muudatused"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr "Loo automaatselt globaalselt unikaalsed ID-d"
 
 #. I18N: A configuration setting
@@ -6851,7 +6852,8 @@ msgstr "Annab kasutajatele võimaluse valida enda teema."
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr "Globaalne identifitseerimistunnus"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7296,7 +7298,8 @@ msgstr "Hübriid"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
-msgid "ID preferences"
+#, fuzzy
+msgid "XREF prefixes"
 msgstr "ID eelistused"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330

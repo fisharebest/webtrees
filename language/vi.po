@@ -2298,7 +2298,8 @@ msgstr "Tự động chấp thuận thay đổi thực hiện bởi người nà
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr "Tự động tạo ra ID duy nhất"
 
 #. I18N: A configuration setting
@@ -6821,7 +6822,8 @@ msgstr "Cho người dùng tùy chọn chọn kiểu trình bày riêng."
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr "Khóa nhận diện duy nhất toàn cục"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7266,7 +7268,7 @@ msgstr "Hỗn hợp"
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
 #, fuzzy
-msgid "ID preferences"
+msgid "XREF prefixes"
 msgstr "Thiết đặt ID"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330

@@ -2323,7 +2323,8 @@ msgstr "Approuver automatiquement les modifications faites par cet utilisateur"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:723
-msgid "Automatically create globally unique IDs"
+#, fuzzy
+msgid "Automatically add unique identifiers"
 msgstr "Création automatique d’un identifiant unique"
 
 #. I18N: A configuration setting
@@ -6848,7 +6849,8 @@ msgstr "Autoriser les utilisateurs à choisir leur propre thème."
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-msgid "Globally unique identifier"
+#, fuzzy
+msgid "Unique identifier"
 msgstr "Identificateur global unique"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
@@ -7293,7 +7295,7 @@ msgstr "Mixte"
 #. I18N: A configuration setting
 #: admin_trees_config.php:736
 #, fuzzy
-msgid "ID preferences"
+msgid "XREF prefixes"
 msgstr "Paramètres d’identification"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330
