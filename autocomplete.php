@@ -508,7 +508,7 @@ case 'IFS':
  */
 function get_FAM_rows(Tree $tree, $term) {
 	return Database::prepare(
-		"SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_gedcom AS gedcom" .
+		"SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_gedcom AS gedcom, husb_name.n_sort, wife_name.n_sort" .
 		" FROM `##families`" .
 		" JOIN `##name` AS husb_name ON f_husb = husb_name.n_id AND f_file = husb_name.n_file" .
 		" JOIN `##name` AS wife_name ON f_wife = wife_name.n_id AND f_file = wife_name.n_file" .
