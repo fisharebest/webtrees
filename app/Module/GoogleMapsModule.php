@@ -694,6 +694,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			<?php
 
+			$i = 0;
 			if (!empty($flags_s)) {
 				foreach (array_chunk($flags_s, 4) as $row) {
 					echo "<tr>";
