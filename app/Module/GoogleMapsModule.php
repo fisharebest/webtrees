@@ -314,7 +314,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</label>
 				<div class="col-sm-9">
 					<input id="GM_API_KEY" class="form-control" type="text" name="GM_API_KEY" value="<?php echo $this->getSetting('GM_API_KEY') ?>">
-					<p class="small text-muted"><?php echo I18N::translate('Google allows a small number of anonymous map requests per day.  If you need more than this, you will need a Google account and an API key.') ?>
+					<p class="small text-muted"><?php echo I18N::translate('Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key.') ?>
 						<a href="https://developers.google.com/maps/documentation/javascript/get-api-key">
 							<?php echo /* I18N: https://en.wikipedia.org/wiki/API_key */ I18N::translate('Get an API key from Google.') ?>
 						</a>

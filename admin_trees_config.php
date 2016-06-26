@@ -497,7 +497,7 @@ $controller
 	</div>
 	<h2><?php echo /* I18N: Privacy restrictions are set by RESN tags in GEDCOM. */ I18N::translate('Privacy restrictions'); ?></h2>
 	<p>
-		<?php echo /* I18N: Privacy restrictions are RESN tags in GEDCOM. */ I18N::translate('You can set the access for a specific record, fact, or event by adding a restriction to it.  If a record, fact, or event does not have a restriction, the following default restrictions will be used.') ?>
+		<?php echo /* I18N: Privacy restrictions are RESN tags in GEDCOM. */ I18N::translate('You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used.') ?>
 	</p>
 
 	<script id="new-resn-template" type="text/html">
@@ -722,7 +722,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('GENERATE_UIDS', $no_yes, $WT_TREE->getPreference('GENERATE_UIDS'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Add unique identifiers” configuration setting */ I18N::translate('Unique identifiers allow the same record to be found in different family trees and in different systems.  They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules.'); ?>
+				<?php echo /* I18N: Help text for the “Add unique identifiers” configuration setting */ I18N::translate('Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -730,7 +730,7 @@ $controller
 	<!-- XXXXX_ID_PREFIX -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting.  The first letter(s) in a GEDCOM identifier. */ I18N::translate('XREF prefixes'); ?>
+			<?php echo /* I18N: A configuration setting. The first letter(s) in a GEDCOM identifier. */ I18N::translate('XREF prefixes'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<div class="row">

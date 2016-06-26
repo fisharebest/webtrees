@@ -6777,7 +6777,7 @@ msgid "Google Street View™"
 msgstr ""
 
 #: app/Module/GoogleMapsModule.php:317
-msgid "Google allows a small number of anonymous map requests per day.  If you need more than this, you will need a Google account and an API key."
+msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
 msgstr ""
 
 #. I18N: gedcom tag GRAD
@@ -15015,7 +15015,7 @@ msgstr "Универсальный идентификатор"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:725
-msgid "Unique identifiers allow the same record to be found in different family trees and in different systems.  They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
+msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
 msgstr ""
 
 #: admin_trees_config.php:1647
@@ -15126,10 +15126,6 @@ msgstr ""
 
 #: admin_site_upgrade.php:54
 msgid "Upgrade wizard"
-msgstr ""
-
-#: app/Module/GoogleMapsModule.php:3761
-msgid "Upload Geographic data"
 msgstr ""
 
 #: app/Module/GoogleMapsModule.php:4187
@@ -15722,7 +15718,7 @@ msgstr ""
 msgid "World"
 msgstr ""
 
-#. I18N: A configuration setting.  The first letter(s) in a GEDCOM identifier.
+#. I18N: A configuration setting. The first letter(s) in a GEDCOM identifier.
 #: admin_trees_config.php:733
 msgid "XREF prefixes"
 msgstr ""
@@ -15821,7 +15817,7 @@ msgstr ""
 
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: admin_trees_config.php:500
-msgid "You can set the access for a specific record, fact, or event by adding a restriction to it.  If a record, fact, or event does not have a restriction, the following default restrictions will be used."
+msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
 msgstr ""
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
