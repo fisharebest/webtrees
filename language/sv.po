@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-24 21:07+0000\n"
+"PO-Revision-Date: 2016-06-26 07:15+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
@@ -392,6 +392,10 @@ msgid "%s second ago"
 msgid_plural "%s seconds ago"
 msgstr[0] "%s sekund sedan"
 msgstr[1] "%s sekunder sedan"
+
+#: message.php:300 message.php:303
+msgid "%s sent you the following message."
+msgstr "%s skickade dig följande meddelande."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
@@ -6482,19 +6486,16 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Till exempel, om du anger en sökväg längd 2, kommer personen att kunna se sina barnbarn (barn, barn), sin moster (förälder, syskon), sin styvdotter (make/maka, barn), men inte sin kusin (förälder, syskon, barn)."
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy
 msgid "For help with genealogy questions contact %s."
-msgstr "För hjälp med släktfrågor kontakta %s"
+msgstr "För hjälp med släktfrågor kontakta %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy
 msgid "For technical support and information contact %s."
-msgstr "För teknisk stöd och information kontakta %s"
+msgstr "För teknisk stöd och information kontakta %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy
 msgid "For technical support or genealogy questions contact %s."
-msgstr "För teknisk stöd eller släktfrågor kontakta %s"
+msgstr "För teknisk stöd eller släktfrågor kontakta %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277
@@ -6833,12 +6834,6 @@ msgstr "Förnamn"
 #: app/GedcomTag.php:504
 msgid "Given names"
 msgstr "Förnamn"
-
-#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
-#: admin_trees_config.php:967
-#, fuzzy
-msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr "Ger användaren valet att välja sitt eget tema från en meny<br>.<br>Även med denna alternativuppsättning behöver det nuvarande temat inte ha någon sådan meny. För att vara effektiv, kräver alternativet att <b>Tillåt användare att välja eget tema</b> anges också."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -13762,11 +13757,6 @@ msgstr "Följande fakta och händelser hittades endast i posten för %s."
 msgid "The following list shows typical requirements."
 msgstr "Följande lista visar typiska krav."
 
-#: message.php:300 message.php:303
-#, fuzzy
-msgid "%s sent you the following message."
-msgstr "Följande meddelande har skickats till ditt användarkonto på webtrees från %s"
-
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
 msgstr "Följande platser ändrades:"
@@ -13967,6 +13957,11 @@ msgstr "Släktträdets storlek, äldsta och yngsta händelse, vanligaste namn o.
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
 msgstr "Efternamnet är omslutet av snedstreck: <%s>John Paul /Smith/<%s>"
+
+#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
+#: admin_trees_config.php:967
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
+msgstr "Tema menyn kommer endast att visas om webbplatsens preferenser tillåter användare att välja sitt eget tema."
 
 #: addmedia.php:360
 #, php-format
