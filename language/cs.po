@@ -14223,7 +14223,8 @@ msgid "This block will show editors a list of records with pending changes that 
 msgstr "Tento blok zobrazí editorům seznam záznamů s dosud neschválenými změnami, které musí být posouzeny moderátorem. Také generuje denně zasílané emaily moderátorům, kdykoliv nějaké nevyřízené změny existují."
 
 #: admin_users.php:463 edituser.php:312
-msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
+#, fuzzy
+msgid "You can choose whether to appear in the list of users who are currently signed-in."
 msgstr "Pokud je toto políčko zaškrtnuté, ostatní přihlášení uživatelé uvidí, jestli jste v daný okamžik online a vy uvidíte, jestli jsou online ostatní.<br><br>Nechcete-li, aby vás ostatní viděli online, vyškrtněte toto políčko. Ale ani vy nebudete moci zjistit, jestli jsou ostatní uživatelé online."
 
 #: setup.php:348 setup.php:359

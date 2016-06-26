@@ -14186,7 +14186,8 @@ msgid "This block will show editors a list of records with pending changes that 
 msgstr "Este bloco mostra para editores uma lista de registros com as alterações pendentes que precisam ser aprovados por um moderador. Também gera e-mails diários aos moderadores, sempre que existam alterações pendentes."
 
 #: admin_users.php:463 edituser.php:312
-msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
+#, fuzzy
+msgid "You can choose whether to appear in the list of users who are currently signed-in."
 msgstr "Esta caixa controla sua visibilidade para outros usuários enquanto você estiver online. Ele também controla a capacidade de você ver outros usuários online que estão configurados para aparecerem visíveis.<br><br>Quando esta caixa estiver desmarcada, você ficara completamente invisível para os outros, e você também não poderá ver outros usuários online. Quando está caixa estiver marcada, exatamente o oposto será verdade. Você será visível para os outros, e você também será capaz de ver outros que estão configurados para serem visíveis."
 
 #: setup.php:348 setup.php:359

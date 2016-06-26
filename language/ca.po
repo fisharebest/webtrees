@@ -14194,7 +14194,8 @@ msgid "This block will show editors a list of records with pending changes that 
 msgstr "Aquest bloc mostra als editors una llista de registres amb canvis pendents que cal que siguin autoritzats per un supervisor. Quan hi ha canvis pendents, també genera diàriament missatges de correu electrònic als supervisors."
 
 #: admin_users.php:463 edituser.php:312
-msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
+#, fuzzy
+msgid "You can choose whether to appear in the list of users who are currently signed-in."
 msgstr "Aquesta casella controla que l’usuari, quan ha accedit, pugui veure i ésser vist per la resta d’usuaris que també la tinguin activada.<br><br>Quan és desmarcada, l’usuari resta invisible pels altres (compta com anònim), però tampoc pot veure qui ha accedit. Quan és marcada, passa just el contrari."
 
 #: setup.php:348 setup.php:359

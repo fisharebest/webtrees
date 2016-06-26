@@ -1603,7 +1603,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('SHOW_COUNTER', $hide_show, $WT_TREE->getPreference('SHOW_COUNTER'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Hit counters” configuration setting */ I18N::translate('Show hit counters on Portal and Individual pages.'); ?>
+				<?php echo /* I18N: Help text for the “Hit counters” configuration setting */ I18N::translate('Some pages can display the number of times that they have been visited.'); ?>
 			</p>
 		</div>
 	</fieldset>

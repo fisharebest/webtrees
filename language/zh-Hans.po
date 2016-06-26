@@ -14169,7 +14169,8 @@ msgid "This block will show editors a list of records with pending changes that 
 msgstr "这一块会显示需要通过管理员审核的编辑或更改记录表。每当有待定的更改将给主持人发送电子邮件。"
 
 #: admin_users.php:463 edituser.php:312
-msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
+#, fuzzy
+msgid "You can choose whether to appear in the list of users who are currently signed-in."
 msgstr "这选框控制你在线是其它用户的可见与否。它也控制你可看到其他在线并配置为可见的用户。<br><br>当这个选框没有选中，你会完全看不见别人，你也无法看到其他在线用户。当这个盒子打勾，你会被其他人看到，你还可以看到其他配置是可见的人。"
 
 #: setup.php:348 setup.php:359

@@ -14186,7 +14186,8 @@ msgid "This block will show editors a list of records with pending changes that 
 msgstr "Denne blok vil viser en liste over poster med ventende ændringer, der skal godkendes af en moderator. Den genererer også daglige e-mails til moderatorer, når verserende ændringer findes."
 
 #: admin_users.php:463 edituser.php:312
-msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
+#, fuzzy
+msgid "You can choose whether to appear in the list of users who are currently signed-in."
 msgstr "Hvis denne checkboks er afmærket, vil brugere, der har logget på, se om du og/eller andre brugere også har logget på. Afmærkes checkboksen ikke, vil andre ikke kunne se, om du har logget på, og du vil heller ikke kunne se om andre brugere har logget på."
 
 #: setup.php:348 setup.php:359

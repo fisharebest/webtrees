@@ -14186,7 +14186,8 @@ msgid "This block will show editors a list of records with pending changes that 
 msgstr "בלוק זה מציג לעורכים רשימה של רשומות שינויים הממתינים לאישור שאותם מפקח צריך לאשר. הוא גם יוצר מיילים יומיים למפקחים אם קיימים שינויים שממתינים לאישור."
 
 #: admin_users.php:463 edituser.php:312
-msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
+#, fuzzy
+msgid "You can choose whether to appear in the list of users who are currently signed-in."
 msgstr "תיבת הבחירה הזו מבקרת אם משתמשים אחרים רואים אותך כאשר אתה מחובר. היא גם מבקרת אם אתה יכול לראות משתמשים מחוברים שהוגדרו כנראים.<br><br>כאשר התיבה אינה מסומנת, אחרים לא יראו אותך, ואתה לא תוכל לראות משתמשים מחוברים אחרים. כאשר התיבה מסומנת, ההפך נכון. אחרים יראו אותך ואתה תראה את האחרים שהוגדרו כנראים."
 
 #: setup.php:348 setup.php:359

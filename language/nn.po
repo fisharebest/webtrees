@@ -14181,7 +14181,8 @@ msgid "This block will show editors a list of records with pending changes that 
 msgstr "Denne blokka vil syne redaktørar ei liste over postar med endringar som ventar på å bli godkjende av ein moderator. Den genererer og daglege e-postmeldingar til moderatorane når det finnast ventande endringar."
 
 #: admin_users.php:463 edituser.php:312
-msgid "This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible."
+#, fuzzy
+msgid "You can choose whether to appear in the list of users who are currently signed-in."
 msgstr "Dersom dette valet er merka av, vil brukarar som er logga på, sjå kva andre brukarar som er logga på.<br><br>Ved å ikkje merke av dette valet, vil andre ikkje kunne sjå om nokon er logga på, og du vil heller ikke kunne sjå andre brukarar."
 
 #: setup.php:348 setup.php:359
