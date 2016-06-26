@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-25 08:14+0000\n"
+"PO-Revision-Date: 2016-06-26 04:17+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -19593,7 +19593,7 @@ msgstr "broer/zus"
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:84 login.php:201
 msgid "sign in"
-msgstr "aanmelden"
+msgstr "Aanmelden"
 
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:65
