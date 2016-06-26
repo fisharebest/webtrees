@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-26 07:15+0000\n"
+"PO-Revision-Date: 2016-06-26 07:17+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
@@ -8974,7 +8974,7 @@ msgstr "Media fil"
 
 #: addmedia.php:455 admin_media_upload.php:202
 msgid "Media file to upload"
-msgstr "Media fil att ladda upp"
+msgstr "Mediafil att ladda upp"
 
 #. I18N: %s is the name of a folder.
 #: admin_trees_download.php:163
