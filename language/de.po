@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-26 14:30+0000\n"
+"PO-Revision-Date: 2016-06-26 17:07+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -1856,7 +1856,7 @@ msgstr "Alle Datensätze"
 
 #: admin_trees_config.php:1943
 msgid "All repository facts"
-msgstr "Alle Tatsachen und Ereignisse von Archive"
+msgstr "Alle Tatsachen und Ereignisse von Archiven"
 
 #: admin_trees_config.php:1854
 msgid "All source facts"
@@ -1998,7 +1998,7 @@ msgstr "Vorfahren von %s"
 #. I18N: gedcom tag AFN
 #: app/GedcomTag.php:138
 msgid "Ancestral file number"
-msgstr "Ahnen Datei Nummer"
+msgstr "Ancestral File-Nummer"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:87
@@ -5628,7 +5628,7 @@ msgstr "Tragen Sie eine zusätzliche Notiz zu diesem Favoriten ein"
 #: addmedia.php:434
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
 msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-msgstr "Die ID Nummer einer Person, Familie, oder Quelle eingeben oder suchen, um eine Verbindung zu diesem Medienobjekt herzustellen."
+msgstr "Die Querverweisnummer einer Person, Familie oder Quelle eingeben oder suchen, um eine Verknüpfung zu diesem Medienobjekt herzustellen."
 
 #: reportengine.php:152
 msgid "Enter report values"
@@ -5904,7 +5904,7 @@ msgstr "Tatsachen und Ereignisse von neu angelegten Personen"
 
 #: admin_trees_config.php:1938
 msgid "Facts for repository records"
-msgstr "Archivereignisse"
+msgstr "Tatsachen und Ereignisse für Archivdatensätze"
 
 #: admin_trees_config.php:1849
 msgid "Facts for source records"
@@ -8196,7 +8196,7 @@ msgstr "Lima, Peru"
 #. I18N: You need to:
 #: login.php:574
 msgid "Link the user account to an individual."
-msgstr "Verlinke das Benutzerprofil mit einem Individuum."
+msgstr "Verknüpfen Sie das Benutzerprofil mit einer Person."
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:983
 #: edit_interface.php:1043
@@ -10516,7 +10516,7 @@ msgstr "Ausstehende Änderungen werden nur angezeigt, wenn Ihr Konto über die B
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1719
 msgid "Permanent number"
-msgstr "permanente Nummer"
+msgstr "Dauerhafte Nummer"
 
 #: admin_site_change.php:373 admin_site_logs.php:313
 msgid "Permanently delete these records?"
@@ -11246,7 +11246,7 @@ msgstr "Datensatz"
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:754
 msgid "Record ID number"
-msgstr "Daten ID-Nummer"
+msgstr "Datensatzidentnummer"
 
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:750
@@ -12074,7 +12074,7 @@ msgstr "Als Standard setzen"
 #. I18N: You need to:
 #: login.php:572
 msgid "Set the access level for each tree."
-msgstr "Setzen der Berechtigungsstufe für jeden Stammbaum."
+msgstr "Setzen Sie die Berechtigungsstufe für jeden Stammbaum."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -12109,7 +12109,7 @@ msgstr "Setzt die Datenschutzeinstellungen für alle verstorbenen Personen."
 #. I18N: You need to:
 #: login.php:570
 msgid "Set the status to “approved”."
-msgstr "Setzt den Status auf \"bestätigt\"."
+msgstr "Setzen Sie den Status auf \"bestätigt\"."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
@@ -15625,7 +15625,7 @@ msgstr "Sobald sich ein Benutzer für ein Konto einträgt, wird eine E-Mail mit 
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
-msgstr "ID-Nummer fehlt. Befehl kann nicht ausgeführt werden."
+msgstr "Beim Hinzufügen einer Verknüpfung darf das Feld der Identnummer nicht leer sein."
 
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2123
@@ -15791,7 +15791,7 @@ msgstr "Jemen"
 #: login.php:339
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "Sie selbst (oder jemand der sich für Sie ausgibt) hat am %1$s ein Benutzerkonto unter Benutzung der E-Mail-Adresse %2$s angefragt."
+msgstr "Sie selbst (oder jemand der sich für Sie ausgibt) hat bei %1$s ein Benutzerkonto unter Benutzung der E-Mail-Adresse %2$s angefragt."
 
 #: login.php:291 message.php:57
 msgid "You are not allowed to send messages that contain external links."
