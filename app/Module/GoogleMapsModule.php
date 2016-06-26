@@ -554,7 +554,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		$flags_s = array();
 		if ($stateSelected != 'States' && is_dir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected)) {
-			$files = glob(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected . '*.png');
+			$files = glob(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected . '/*.png');
 			foreach ($files as $file) {
 				$flags_s[] = basename($file, '.png');
 			}
@@ -675,7 +675,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					echo "</tr>";
 				}
 
-				echo'<tr style="visibility:' . $countrySelected == 'Countries' || count($stateList) == 0 ? 'hidden' : 'visible' . '">';
+				echo'<tr style="visibility:' . (($countrySelected == 'Countries' || count($stateList) == 0) ? 'hidden' : 'visible') . '">';
 				?>
 
 				<td class="optionbox" colspan="4">
@@ -698,7 +698,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				foreach (array_chunk($flags_s, 4) as $row) {
 					echo "<tr>";
 					foreach ($row as $flag) {
-						echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i++, '"><img src="', WT_STATIC_URL . WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $stateSelected, '/', $flag, '.png">&nbsp;&nbsp;', $flag, '></td>';
+						echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i++, '"><img src="', WT_STATIC_URL . WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $stateSelected, '/', $flag, '.png">&nbsp;&nbsp;', $flag, '</td>';
 					}
 					echo str_repeat('<td></td>', 4 - count($row));
 					echo '</tr>';
