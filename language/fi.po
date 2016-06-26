@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-20 00:22+0100\n"
-"PO-Revision-Date: 2016-06-24 21:02+0000\n"
+"PO-Revision-Date: 2016-06-26 07:10+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
@@ -388,6 +388,10 @@ msgid "%s second ago"
 msgid_plural "%s seconds ago"
 msgstr[0] "%s sekunti sitten"
 msgstr[1] "%s sekunteja sitten"
+
+#: message.php:300 message.php:303
+msgid "%s sent you the following message."
+msgstr "%s lähetti sinulle seuraavan viestin."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
@@ -6478,19 +6482,16 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Esimerkki: kun asetat hyppyjen määräksi 2, niin henkilö näkee lapsenlapsen (lapsi->lapsi), tädin (äiti->sisko), tytärpuolen (aviopuoliso->lapsi). Kaukaisemmat sukulaiset eivät näy esim: serkku (isä->veli->lapsi)."
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy
 msgid "For help with genealogy questions contact %s."
-msgstr "Sukuasioissa ota yhteys %s"
+msgstr "Sukuasioissa ota yhteys henkilöön %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy
 msgid "For technical support and information contact %s."
-msgstr "Teknisissä asioissa ota yhteys %s"
+msgstr "Pyydä teknistä tukea ja tietoa henkilöltä %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Teknisissä tai sukuasioissa ota yhteys %s"
+msgstr "Teknisissä tai sukuasioissa ota yhteys henkilöön %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:277
@@ -6829,12 +6830,6 @@ msgstr "Etunimi"
 #: app/GedcomTag.php:504
 msgid "Given names"
 msgstr "Etunimet"
-
-#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
-#: admin_trees_config.php:967
-#, fuzzy
-msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-msgstr "Sallii käyttäjien valita teeman vaihtoehtolistasta.<br><br>Tämä valinta toimii vain silloin kun <b>Salli käyttäjien valita itselleen oma teema</b> on myös voimassa. Muutoin vaihtoehtolista ei näy käyttäjälle."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:264
@@ -13758,11 +13753,6 @@ msgstr "Seuraavat faktat ja tapahtumat löytyivät ainoastaan tietueessa %s."
 msgid "The following list shows typical requirements."
 msgstr "Seuraavassa listassa tyypilliset vaatimukset."
 
-#: message.php:300 message.php:303
-#, fuzzy
-msgid "%s sent you the following message."
-msgstr "Seuraava viesti on lähetetty webtrees käyttäjätilillesi: %s"
-
 #: admin_trees_places.php:114
 msgid "The following places have been changed:"
 msgstr "Seuraavat paikat muuttuivat:"
@@ -13963,6 +13953,11 @@ msgstr "Sukupuun koko, varhaisin ja uusin tapahtuma, yleisimmät nimet jne."
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
 msgstr "Sukunimi on suljettu kauttaviivoilla: <%s>John Paul /Smith/<%s>"
+
+#. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
+#: admin_trees_config.php:967
+msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
+msgstr "Teema-valikko näytetään vain, jos sivuston asetukset sallivat käyttäjien oman teeman valinnan."
 
 #: addmedia.php:360
 #, php-format
