@@ -589,14 +589,18 @@ class FunctionsPrintFacts {
 		$data   = '';
 		$nlevel = $level + 1;
 
-		// -- Systems not using source records [ 1046971 ]
-		$ct = preg_match_all("/$level SOUR (.*)/", $factrec, $match, PREG_SET_ORDER);
+		// Systems not using source records
+		// The old style is not supported when entering or editing sources, but may be found in imported trees.
+		// Also, the old style sources allow histo.* files to use tree independent source citations, which
+		// will display nicely when markdown is used.
+		$ct = preg_match_all('/' . $level . ' SOUR (.*)((?:\n\d CONT.*)*)/', $factrec, $match, PREG_SET_ORDER);
 		for ($j = 0; $j < $ct; $j++) {
 			if (strpos($match[$j][1], '@') === false) {
-				$data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::escapeHtml($match[$j][1]) . '</span></div>';
+				$source = Filter::escapeHtml($match[$j][1] . preg_replace('/\n\d CONT ?/', "\n", $match[$j][2]));
+				$data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::formatText($source, $WT_TREE) . '</span></div>';
 			}
 		}
-		// -- find source for each fact
+		// Find source for each fact
 		$ct    = preg_match_all("/$level SOUR @(.*)@/", $factrec, $match, PREG_SET_ORDER);
 		$spos2 = 0;
 		for ($j = 0; $j < $ct; $j++) {

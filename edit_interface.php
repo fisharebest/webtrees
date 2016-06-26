@@ -272,7 +272,7 @@ case 'edit':
 	echo '<input type="hidden" name="prev_action" value="edit">';
 	echo Filter::getCsrf();
 	echo '<table class="facts_table">';
-	FunctionsEdit::createEditForm($record, $edit_fact);
+	FunctionsEdit::createEditForm($edit_fact);
 	echo keep_chan($record);
 	echo '</table>';
 

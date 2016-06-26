@@ -166,7 +166,7 @@ $controller
 						<?php echo I18N::translate('Show details'); ?>
 					</th>
 					<th rowspan="2" class="facts_label03">
-						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
 					</th>
 				</tr>
 				<tr>

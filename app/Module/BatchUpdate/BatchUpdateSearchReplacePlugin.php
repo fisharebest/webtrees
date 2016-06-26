@@ -170,7 +170,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 			'<label class="control-label col-sm-3">' . I18N::translate('Case insensitive') . '</label>' .
 			'<div class="col-sm-9">' .
 			FunctionsEdit::radioButtons('case', array('I' => I18N::translate('no'), 'i' => I18N::translate('yes')), ($this->case ? 'i' : 'I'), 'class="radio-inline" onchange="this.form.submit();"') .
-			'<p class="small text-muted">' . I18N::translate('Tick this box to match both upper and lower case letters.') . '</p>' .
+			'<p class="small text-muted">' . /* I18N: Help text for "Case insensitive" searches */ I18N::translate('Match both upper and lower case letters.') . '</p>' .
 			'</div></div>' .
 			parent::getOptionsForm();
 	}

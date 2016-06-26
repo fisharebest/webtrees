@@ -296,9 +296,10 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 			'video'       => $this->getBlockSetting($block_id, 'filter_video', '0'),
 		);
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Filter');
 		?>
+	<tr>
+	<td class="descriptionbox wrap width33">
+		<?php echo I18N::translate('Filter'); ?>
 	</td>
 	<td class="optionbox">
 		<center><b><?php echo GedcomTag::getLabel('FORM'); ?></b></center>

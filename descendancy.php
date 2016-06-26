@@ -68,7 +68,7 @@ $controller
 						<?php echo I18N::translate('Families'); ?>
 					</td>
 					<td rowspan="3" class="topbottombar">
-						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
 					</td>
 				</tr>
 				<tr>

@@ -246,7 +246,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$this->setSetting('GM_MAX_ZOOM', Filter::post('GM_MAX_ZOOM'));
 			$this->setSetting('GM_XSIZE', Filter::post('GM_XSIZE'));
 			$this->setSetting('GM_YSIZE', Filter::post('GM_YSIZE'));
-			$this->setSetting('GM_COORD', Filter::post('GM_COORD'));
 			$this->setSetting('GM_PLACE_HIERARCHY', Filter::post('GM_PLACE_HIERARCHY'));
 			$this->setSetting('GM_PH_XSIZE', Filter::post('GM_PH_XSIZE'));
 			$this->setSetting('GM_PH_YSIZE', Filter::post('GM_PH_YSIZE'));
@@ -437,7 +436,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							<?php endfor ?>
 						</div>
 					</div>
-					<p class="small text-muted"><?php echo I18N::translate('Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple options should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”.') ?></p>
+					<p class="small text-muted"><?php echo I18N::translate('Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”.') ?></p>
 				</div>
 			</fieldset>
 
@@ -491,19 +490,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					?>
 				</div>
 			</div>
-
-			<!-- GM_COORD -->
-			<fieldset class="form-group">
-				<legend class="control-label col-sm-3">
-					<?php echo I18N::translate('Display map coordinates') ?>
-				</legend>
-				<div class="col-sm-9">
-					<?php echo FunctionsEdit::editFieldYesNo('GM_COORD', $this->getSetting('GM_COORD'), 'class="radio-inline"') ?>
-					<p class="small text-muted">
-						<?php echo I18N::translate('This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers.') ?>
-					</p>
-				</div>
-			</fieldset>
 
 			<!-- SAVE BUTTON -->
 			<div class="form-group">
@@ -777,7 +763,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<?php echo FunctionsPrint::printFindIndividualLink('rootid') ?>
 					</td>
 					<td class="topbottombar" rowspan="2">
-						<input type="submit" value="<?php echo I18N::translate('View') ?>">
+						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view') ?>">
 					</td>
 				</tr>
 				<tr>
@@ -907,7 +893,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return string
 	 */
 	private function pedigreeMapJavascript() {
-		global $PEDIGREE_GENERATIONS;
 
 		$js = '
 		// this variable will collect the html which will eventually be placed in the side bar
@@ -1193,7 +1178,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				infowindow.close();
 				infowindow.setContent(mhtml);
 				infowindow.open(pm_map, marker);
-				var el = jQuery("#link_" + marker.id);
+				var el = jQuery(".gm-ancestor[data-marker=" + marker.id + "]");
 				if(el.hasClass("person_box")) {
 					el
 						.removeClass("person_box")
@@ -1209,7 +1194,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			});
 			// save the info we need to use later for the side bar
 			gmarkers[index] = marker;
-			gm_ancestors_html += "<div id=\"link_" + index++ + "\" class=\"gm-ancestor\">" + html +"</div>";
+			gm_ancestors_html += "<div data-marker =" + index++ + " class=\"gm-ancestor\">" + html +"</div>";
 
 			return marker;
 		};
@@ -1267,20 +1252,20 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				$relationship = FunctionsCharts::getSosaName($i + 1);
 
-				$event = '<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png" width="10" height="10"> ' .
-					'<strong>' . $relationship . '</strong>';
-				// add thumbnail image
+				// get thumbnail image
 				if ($person->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 					$image = $person->displayImage();
 				} else {
 					$image = '';
 				}
-				// end of add image
 
-				$birth     = $person->getFirstFact('BIRT');
-				$dataleft  = Filter::escapeJs($image);
-				$datamid   = Filter::escapeJs($event . ' <span><a href="' . $person->getHtmlUrl() . '">' . $name . '</a></span>');
-				$dataright = $birth ? Filter::escapeJs($birth->summary()) : '';
+				$event = '<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png" width="10" height="10"> ';
+				$event .= '<strong>' . $relationship . '</strong>';
+
+				$birth = $person->getFirstFact('BIRT');
+				$data  = Filter::escapeJs($image . '<div class="gm-ancestor-link">' . $event . ' <span><a href="' . $person->getHtmlUrl() . '">' . $name . '</a></span>');
+				$data .= $birth ? Filter::escapeJs($birth->summary()) : '';
+				$data .= '</div>';
 
 				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
 				if ($latlongval[$i]) {
@@ -1316,10 +1301,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						}
 
 						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
-						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","' . $dataleft . '<div class=\"gm-ancestor-link\">' . $datamid . $dataright . '</div>", "';
-						$js .= '<div class=\"gm-info-window\">';
-						$js .= '<a href=\"module.php?ged=' . $person->getTree()->getNameUrl() . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $person->getXref() . '&amp;PEDIGREE_GENERATIONS=' . $PEDIGREE_GENERATIONS;
-						$js .= '\" title=\"' . I18N::translate('Pedigree map') . '\">' . $dataleft . '</a>' . $datamid . $dataright . '</div>", "' . $marker_number . '");';
+						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","' . $data . '", "';
+						$js .= '<div class=\"gm-info-window\">' . $data . '</div>", "' . $marker_number . '");';
 						// Construct the polygon lines
 						$to_child = (intval(($i - 1) / 2)); // Draw a line from parent to child
 						if (array_key_exists($to_child, $lat) && $lat[$to_child] != 0 && $lon[$to_child] != 0) {
@@ -1359,7 +1342,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		pm_map.setCenter(bounds.getCenter());
 		// Close the sidebar highlight when the infowindow is closed
 		google.maps.event.addListener(infowindow, "closeclick", function() {
-			jQuery("#link_" + lastlinkid).toggleClass("gm-ancestor-visited person_box");
+			jQuery(".gm-ancestor[data-marker=" + lastlinkid + "]").toggleClass("gm-ancestor-visited person_box");
 			lastlinkid = null;
 		});
 		// put the assembled gm_ancestors_html contents into the gm-ancestors div
@@ -1368,13 +1351,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		jQuery(".gm-ancestor-link")
 			.on("click", "a", function(e) {
 				e.stopPropagation();
-			})' .
-			'.on("click", function(e) {
+			})
+			.on("click", function(e) {
 				if (lastlinkid != null) {
-					jQuery("#link_" + lastlinkid).toggleClass("person_box gm-ancestor-visited");
+					jQuery(".gm-ancestor[data-marker=" + lastlinkid + "]").toggleClass("person_box gm-ancestor-visited");
 				}
-				var el = jQuery(this).closest(".gm-ancestor");
-				var target = el.attr("id").split("_").pop();
+				var target = jQuery(this).closest(".gm-ancestor").data("marker");
 				google.maps.event.trigger(gmarkers[target], "click");
 			});
 		';
@@ -1923,26 +1905,25 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$parent = $fact->getParent();
 				if ($parent instanceof Individual && $parent->getXref() !== $indi->getXref()) {
 					// Childs birth
-					$name   = '<a href="' . $parent->getHtmlUrl() . '"' . $parent->getFullName() . '</a>';
+					$name   = '<a href="' . $parent->getHtmlUrl() . '">' . $parent->getFullName() . '</a>';
 					$label  = strtr($parent->getSex(), array('F' => I18N::translate('Birth of a daughter'), 'M' => I18N::translate('Birth of a son'), 'U' => I18N::translate('Birth of a child')));
 					$class  = 'person_box' . strtr($parent->getSex(), array('F' => 'F', 'M' => '', 'U' => 'NN'));
 					$evtStr = '<div class="gm-event">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div>';
 				} else {
 					$spouse = $parent instanceof Family ? $parent->getSpouse($indi) : null;
-					$name   = $spouse ? '<a href="' . $spouse->getHtmlUrl() . '"' . $spouse->getFullName() . '</a>' : '';
+					$name   = $spouse ? '<a href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>' : '';
 					$label  = $fact->getLabel();
 					$class  = 'optionbox';
 					if ($fact->getValue() && $spouse) {
-						$evtStr = '<div class="gm-event">' . $label . '<div>' . $fact->getValue() . '</div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div></div>';
+						$evtStr = '<div class="gm-event">' . $label . '<div>' . $fact->getValue() . '</div><strong>' . $name . '</strong>' . $fact->getDate()->display(true) . '</div>';
 					} elseif ($spouse) {
 						$evtStr = '<div class="gm-event">' . $label . '<div><strong>' . $name . '</strong></div>' . $fact->getDate()->display(true) . '</div>';
 					} elseif ($fact->getValue()) {
-						$evtStr = '<div class="gm-event">' . $label . '<div> ' . $fact->getValue() . '</div>' . $fact->getDate()->display(true) . '</div></div></div>';
+						$evtStr = '<div class="gm-event">' . $label . '<div> ' . $fact->getValue() . '</div>' . $fact->getDate()->display(true) . '</div>';
 					} else {
 						$evtStr = '<div class="gm-event">' . $label . '<div>' . $fact->getDate()->display(true) . '</div></div>';
 					}
 				}
-				//$evtStr = '<div class="gm-event">' . $fact->summary() . '</div>';
 
 				if (empty($unique_places[$index])) {
 					$unique_places[$index] = $place_data['mapdata'];
@@ -1964,7 +1945,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$places = array_keys($unique_places);
 			ob_start();
 			// Create the normal googlemap sidebar of events and children
-			echo '<div class="gm-events" class="optionbox"><table class="facts_table">';
+			echo '<div class="gm-events"><table class="facts_table">';
 
 			foreach ($events as $event) {
 				$index = array_search($event['placeid'], $places);
@@ -2588,10 +2569,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '</a>';
 			$parent[$level] = $place2['place'];
 			$this->printHowManyPeople($level + 1, $parent);
-			echo '<br><br>';
-			if ($this->getSetting('GM_COORD')) {
-				echo '', $place2['lati'], ', ', $place2['long'];
-			}
 			echo '</div>", icon_type, "', Filter::escapeJs($place2['place']), '");';
 		}
 	}
@@ -3531,13 +3508,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo I18N::translate('Zoom level') ?>
+					<label for="NEW_ZOOM_FACTOR">
+						<?php echo I18N::translate('Zoom level') ?>
+					</label>
 				</td>
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor ?>" size="20" onchange="updateMap();">
-					<p class="small text-muted">
-						<?php echo I18N::translate('Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map.') ?>
-					</p>
 				</td>
 			</tr>
 			<tr>
@@ -3656,11 +3632,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</a>
 			</li>
 		</ul>
-
-		<h2><?php echo I18N::translate('Geographic data') ?></h2>
 		<?php
 
 		if ($action == 'ImportGedcom') {
+			echo '<h2>' . I18N::translate('Geographic data') . '</h2>';
 			$placelist      = array();
 			$j              = 0;
 			$gedcom_records =
@@ -3783,6 +3758,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 
 		if ($action === 'ImportFile') {
+			echo '<h2>' . I18N::translate('Upload Geographic data') . '</h2>';
 			$placefiles = $this->findFiles(WT_MODULES_DIR . 'googlemap/extra');
 			sort($placefiles);
 		?>
@@ -3791,7 +3767,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- PLACES FILE -->
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="placesfile">
-					<?php echo I18N::translate('File containing places (CSV)') ?>
+					<?php echo I18N::translate('A file on your computer') ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="btn btn-default">
@@ -3803,7 +3779,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			<!-- LOCAL FILE -->
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="localfile">
-					<?php echo I18N::translate('Server file containing places (CSV)') ?>
+					<?php echo I18N::translate('A file on the server') ?>
 				</label>
 				<div class="col-sm-8">
 					<div class="input-group">
@@ -3871,6 +3847,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 
 		if ($action === 'ImportFile2') {
+			echo '<h2>' . I18N::translate('Geographic data') . '</h2>';
 			$country_names = array();
 			$stats         = new Stats($WT_TREE);
 			foreach ($stats->iso3166() as $key => $value) {
@@ -4037,6 +4014,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 
 		if ($action == 'DeleteRecord') {
+			echo '<h2>' . I18N::translate('Geographic data') . '</h2>';
 			$exists =
 				Database::prepare("SELECT 1 FROM `##placelocation` WHERE pl_parent_id=?")
 				->execute(array($deleteRecord))
@@ -4194,7 +4172,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</div>
 					<button type="submit" class="btn btn-default">
 						<i class="fa fa-upload"></i>
-						<?php echo I18N::translate('Import') ?>
+						<?php echo /* I18N: A button label. */ I18N::translate('import') ?>
 					</button>
 				</div>
 			</div>
@@ -4212,7 +4190,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<div class="col-sm-6">
 						<button type="submit" class="btn btn-default">
 							<i class="fa fa-upload"></i>
-							<?php echo I18N::translate('Upload') ?>
+							<?php echo /* I18N: A button label. */ I18N::translate('upload') ?>
 						</button>
 					</div>
 				</div>
@@ -4233,7 +4211,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</div>
 					<button type="submit" class="btn btn-default">
 						<i class="fa fa-download"></i>
-						<?php echo I18N::translate('Download') ?>
+						<?php echo /* I18N: A button label. */ I18N::translate('download') ?>
 					</button>
 				</div>
 			</div>

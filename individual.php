@@ -32,7 +32,7 @@ require './includes/session.php';
 
 $pid    = Filter::get('pid', WT_REGEX_XREF);
 $record = Individual::getInstance($pid, $WT_TREE);
-if (!$record && $WT_TREE->getPreference('USE_RIN')) {
+if (!$record) {
 	$record = Individual::getInstance(FunctionsDb::findRin($pid), $WT_TREE);
 }
 $controller = new IndividualController($record);

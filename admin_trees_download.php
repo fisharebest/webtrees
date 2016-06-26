@@ -131,7 +131,7 @@ $controller->pageHeader();
 	<!-- DOWNLOAD OPTIONS -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo I18N::translate('Export options'); ?>
+			<?php echo I18N::translate('Export preferences'); ?>
 		</legend>
 
 		<!-- ZIP FILES -->

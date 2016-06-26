@@ -282,7 +282,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function contactLinkEverything(User $user) {
-		return I18N::translate('For technical support or genealogy questions, please contact') . ' ' . $this->contactLink($user);
+		return I18N::translate('For technical support or genealogy questions contact %s.', $this->contactLink($user));
 	}
 
 	/**
@@ -293,7 +293,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function contactLinkGenealogy(User $user) {
-		return I18N::translate('For help with genealogy questions contact') . ' ' . $this->contactLink($user);
+		return I18N::translate('For help with genealogy questions contact %s.', $this->contactLink($user));
 	}
 
 	/**
@@ -304,7 +304,7 @@ abstract class AbstractTheme {
 	 * @return string
 	 */
 	protected function contactLinkTechnical(User $user) {
-		return I18N::translate('For technical support and information contact') . ' ' . $this->contactLink($user);
+		return I18N::translate('For technical support and information contact %s.', $this->contactLink($user));
 	}
 
 	/**

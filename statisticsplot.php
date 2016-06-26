@@ -761,7 +761,7 @@ function calculate_axis($x_axis_boundaries) {
 	if ($x_axis === 21 && $hulpar[0] == 1) {
 		$xdata[0] = 0;
 	} else {
-		$xdata[0] = I18N::translate('less than') . ' ' . $hulpar[0];
+		$xdata[0] = format_range_of_numbers(0, $hulpar[0]);
 	}
 	$x_boundaries[0] = $hulpar[0] - 1;
 	while (isset($hulpar[$i])) {
@@ -770,10 +770,10 @@ function calculate_axis($x_axis_boundaries) {
 			$xdata[$i]        = $hulpar[$i1];
 			$x_boundaries[$i] = $hulpar[$i1];
 		} elseif ($hulpar[$i1] === $hulpar[0]) {
-			$xdata[$i]        = $hulpar[$i1] . '-' . $hulpar[$i];
+			$xdata[$i]        = format_range_of_numbers($hulpar[$i1], $hulpar[$i]);
 			$x_boundaries[$i] = $hulpar[$i];
 		} else {
-			$xdata[$i]        = ($hulpar[$i1] + 1) . '-' . $hulpar[$i];
+			$xdata[$i]        = format_range_of_numbers($hulpar[$i1] + 1, $hulpar[$i]);
 			$x_boundaries[$i] = $hulpar[$i];
 		}
 		$i++;
@@ -785,12 +785,28 @@ function calculate_axis($x_axis_boundaries) {
 	} else {
 		$xmax = $i;
 	}
-	$xdata[$xmax]        = I18N::translate('over') . ' ' . $hulpar[$i - 1];
+	$xdata[$xmax]        = /* I18N: Label on a graph; 40+ means 40 or more */ I18N::translate('%s+', I18N::number($hulpar[$i - 1]));
 	$x_boundaries[$xmax] = 10000;
 	$xmax                = $xmax + 1;
 	if ($xmax > 20) {
 		$xmax = 20;
 	}
+}
+
+/**
+ * A range of integers.
+ *
+ * @param int $x
+ * @param int $y
+ *
+ * @return string
+ */
+function format_range_of_numbers($x, $y) {
+	return /* I18N: A range of numbers */ I18N::translate(
+		'%1$s–%2$s',
+		I18N::number($x),
+		I18N::number($y)
+	);
 }
 
 /**

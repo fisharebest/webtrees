@@ -19,7 +19,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
 
@@ -60,7 +59,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 	 * @return string
 	 */
 	public function getDescription() {
-		return /* I18N: Description of the “GEDCOM News” module */ I18N::translate('Family news and site announcements.');
+		return /* I18N: Description of the “News” module */ I18N::translate('Family news and site announcements.');
 	}
 
 	/**
@@ -84,75 +83,57 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 			break;
 		}
 
-		if (isset($_REQUEST['gedcom_news_archive'])) {
-			$limit = 'nolimit';
-			$flag  = '0';
-		} else {
-			$flag = $this->getBlockSetting($block_id, 'flag', 0);
-			if ($flag === '0') {
-				$limit = 'nolimit';
-			} else {
-				$limit = $this->getBlockSetting($block_id, 'limit', 'nolimit');
-			}
-		}
-		foreach (array('limit', 'flag') as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
-		$usernews = Database::prepare(
-			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE gedcom_id=? ORDER BY updated DESC"
-		)->execute(array($WT_TREE->getTreeId()))->fetchAll();
+		$more_news = Filter::getInteger('more_news');
+		$limit     = 5 * (1 + $more_news);
 
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
-		} else {
-			$title = '';
-		}
-		$title .= $this->getTitle();
+		$articles = Database::prepare(
+			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE gedcom_id = :tree_id ORDER BY updated DESC LIMIT :limit"
+		)->execute(array(
+			'tree_id' => $WT_TREE->getTreeId(),
+			'limit'   => $limit,
+		))->fetchAll();
 
+		$count = Database::prepare(
+			"SELECT SQL_CACHE COUNT(*) FROM `##news` WHERE gedcom_id = :tree_id"
+		)->execute(array(
+			'tree_id' => $WT_TREE->getTreeId(),
+		))->fetchOne();
+
+		$id      = $this->getName() . $block_id;
+		$class   = $this->getName() . '_block';
+		$title   = $this->getTitle();
 		$content = '';
-		if (count($usernews) == 0) {
-			$content .= I18N::translate('No news articles have been submitted.') . '<br>';
+
+		if (empty($articles)) {
+			$content .= I18N::translate('No news articles have been submitted.');
 		}
-		$c = 0;
-		foreach ($usernews as $news) {
-			if ($limit == 'count') {
-				if ($c >= $flag) {
-					break;
-				}
-				$c++;
+
+		foreach ($articles as $article) {
+			$content .= '<div class="news_box">';
+			$content .= '<div class="news_title">' . Filter::escapeHtml($article->subject) . '</div>';
+			$content .= '<div class="news_date">' . FunctionsDate::formatTimestamp($article->updated) . '</div>';
+			if ($article->body == strip_tags($article->body)) {
+				$article->body = nl2br($article->body, false);
 			}
-			if ($limit == 'date') {
-				if ((int) ((WT_TIMESTAMP - $news->updated) / 86400) > $flag) {
-					break;
-				}
-			}
-			$content .= '<div class="news_box" id="article' . $news->news_id . '">';
-			$content .= '<div class="news_title">' . Filter::escapeHtml($news->subject) . '</div>';
-			$content .= '<div class="news_date">' . FunctionsDate::formatTimestamp($news->updated) . '</div>';
-			if ($news->body == strip_tags($news->body)) {
-				$news->body = nl2br($news->body, false);
-			}
-			$content .= $news->body;
-			// Print Admin options for this News item
+			$content .= $article->body;
 			if (Auth::isManager($WT_TREE)) {
-				$content .= '<hr>' . '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news->news_id . ', \'_blank\', news_window_specs); return false;">' . I18N::translate('Edit') . '</a> | ' . '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($news->subject)) . "');\">" . I18N::translate('Delete') . '</a><br>';
+				$content .= '<hr>';
+				$content .= '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $article->news_id . ', \'_blank\', news_window_specs); return false;">' . I18N::translate('Edit') . '</a>';
+				$content .= ' | ';
+				$content .= '<a href="index.php?action=deletenews&amp;news_id=' . $article->news_id . '&amp;ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($article->subject)) . "');\">" . I18N::translate('Delete') . '</a><br>';
 			}
 			$content .= '</div>';
 		}
-		$printedAddLink = false;
+
 		if (Auth::isManager($WT_TREE)) {
-			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?gedcom_id=" . $WT_TREE->getTreeId() . "', '_blank', news_window_specs); return false;\">" . I18N::translate('Add a news article') . "</a>";
-			$printedAddLink = true;
+			$content .= '<a href="#" onclick="window.open(\'editnews.php?gedcom_id=' . $WT_TREE->getTreeId() . '\', \'_blank\', news_window_specs); return false;">' . I18N::translate('Add a news article') . '</a>';
 		}
-		if ($limit == 'date' || $limit == 'count') {
-			if ($printedAddLink) {
-				$content .= '&nbsp;&nbsp;|&nbsp;&nbsp;';
+
+		if ($count > $limit) {
+			if (Auth::isManager($WT_TREE)) {
+				$content .= ' | ';
 			}
-			$content .= '<a href="index.php?gedcom_news_archive=yes&amp;ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '">' . I18N::translate('View the archive') . "</a>";
+			$content .= '<a href="#" onclick="jQuery(\'#' . $id . '\').load(\'index.php?ctype=gedcom&amp;ged=' . $WT_TREE->getNameUrl() . '&amp;block_id=' . $block_id . '&amp;action=ajax&amp;more_news=' . ($more_news + 1) . '\'); return false;">' . I18N::translate('More news articles') . "</a>";
 		}
 
 		if ($template) {
@@ -183,26 +164,5 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 	 * @param int $block_id
 	 */
 	public function configureBlock($block_id) {
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			$this->setBlockSetting($block_id, 'limit', Filter::post('limit'));
-			$this->setBlockSetting($block_id, 'flag', Filter::post('flag'));
-		}
-
-		$limit = $this->getBlockSetting($block_id, 'limit', 'nolimit');
-		$flag  = $this->getBlockSetting($block_id, 'flag', 0);
-
-		echo
-			'<tr><td class="descriptionbox wrap width33">',
-			/* I18N: Limit display by [age/number] */ I18N::translate('Limit display by'),
-			'</td><td class="optionbox"><select name="limit"><option value="nolimit" ',
-			($limit == 'nolimit' ? 'selected' : '') . ">",
-			I18N::translate('No limit') . "</option>",
-			'<option value="date" ' . ($limit == 'date' ? 'selected' : '') . ">" . I18N::translate('Age of item') . "</option>",
-			'<option value="count" ' . ($limit == 'count' ? 'selected' : '') . ">" . I18N::translate('Number of items') . "</option>",
-			'</select></td></tr>';
-
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Limit');
-		echo '</td><td class="optionbox"><input type="text" name="flag" size="4" maxlength="4" value="' . $flag . '"></td></tr>';
 	}
 }
