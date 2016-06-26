@@ -3758,7 +3758,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 
 		if ($action === 'ImportFile') {
-			echo '<h2>' . I18N::translate('Upload Geographic data') . '</h2>';
+			echo '<h2>' . I18N::translate('Upload geographic data') . '</h2>';
 			$placefiles = $this->findFiles(WT_MODULES_DIR . 'googlemap/extra');
 			sort($placefiles);
 		?>
