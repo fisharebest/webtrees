@@ -135,10 +135,10 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 						</label>
 						<?php endif; ?>
 						<?php if (file_exists(Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) : ?>
-							<label>
-								<input id="checkbox_rela_facts" type="checkbox" checked>
-								<?php echo I18N::translate('Historical facts'); ?>
-							</label>
+						<label>
+							<input id="checkbox_histo" type="checkbox" checked>
+							<?php echo I18N::translate('Historical facts'); ?>
+						</label>
 						<?php endif; ?>
 					</td>
 				</tr>
