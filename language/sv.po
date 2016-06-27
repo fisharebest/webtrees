@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-27 20:52+0000\n"
+"PO-Revision-Date: 2016-06-27 20:53+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
@@ -238,7 +238,7 @@ msgstr "%s och deras ättlingar"
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
 msgstr[0] "%s anonym inloggad användare"
-msgstr[1] "%s anonymt inloggade användare"
+msgstr[1] "%s anonyma inloggade användare"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4457 app/Stats.php:4461
 #, php-format
