@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-26 16:33+0000\n"
+"PO-Revision-Date: 2016-06-28 17:44+0000\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -3011,6 +3011,11 @@ msgid "Bridesmaid"
 msgstr "Pruutneitsi"
 
 #. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:117
+msgid "Brigham City, Utah, United States"
+msgstr "Brigham City, Utah, Ühendriigid"
+
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
 msgid "Brisbane, Australia"
 msgstr "Brisbane, Austraalia"
@@ -3306,6 +3311,11 @@ msgstr "Kalender"
 msgid "Calendar conversion"
 msgstr "Kalendri konverteerimine"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:123
+msgid "Calgary, Alberata, Canada"
+msgstr "Calgary, Alberata, Kanada"
+
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
 msgid "Call number"
@@ -3389,6 +3399,11 @@ msgstr "Hoiatus: vanad teemad ei pruugi töötada ja võivad takistada webtreesi
 #: app/Stats.php:6732
 msgid "Cayman Islands"
 msgstr "Kaimanisaared"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:129
+msgid "Cebu City, Philippines"
+msgstr "Cebu City, Filipiinid"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:29
@@ -4022,6 +4037,11 @@ msgstr "Kopeeri need failid kausta %s, asendades kõik, millel on sama nimi."
 msgid "Copyright"
 msgstr "Autoriõigus"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:145
+msgid "Cordoba, Argentina"
+msgstr "Cordoba, Argentiina"
+
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:326
 msgid "Corporation"
@@ -4259,6 +4279,11 @@ msgstr "Horvaatia"
 #: app/Stats.php:6729
 msgid "Cuba"
 msgstr "Kuuba"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:149
+msgid "Curitiba, Brazil"
+msgstr "Curitiba, Braziilia"
 
 #: app/Module/HtmlBlockModule.php:302
 msgid "Current"
@@ -5300,6 +5325,11 @@ msgstr "Lae Fail Alla"
 #: app/Module/GoogleMapsModule.php:4206
 msgid "Download geographic data"
 msgstr "Lae geograafilised andmed alla"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:157
+msgid "Draper, Utah, United States"
+msgstr "Draper, Utah, Ühendriigid"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:198
@@ -6454,6 +6484,11 @@ msgstr "Formaat"
 msgid "Format text and notes"
 msgstr "Vorminda teksti ja märkmeid"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:163
+msgid "Fort Lauderdale, Florida, United States"
+msgstr "Fort Lauderdale, Florida, Ühendriigid"
+
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
 msgid "Foster"
@@ -6763,6 +6798,16 @@ msgstr "Ghana"
 #: app/Stats.php:6761
 msgid "Gibraltar"
 msgstr "Gibraltar"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:173
+msgid "Gila Valley, Arizona, United States"
+msgstr "Gila Valley, Arizona, Ühendriigid"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:175
+msgid "Gilbert, Arizona, United States"
+msgstr "Gilbert, Arizona, Ühendriigid"
 
 #: search.php:230
 msgid "Given name"
@@ -7442,6 +7487,11 @@ msgstr "Kaasa isiku otsene perekond"
 msgid "India"
 msgstr "India"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:201
+msgid "Indianapolis, Indiana, United States"
+msgstr "Indianapolis, Indiana, Ühendriigid"
+
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
 #: admin_trees_config.php:741 admin_trees_manage.php:537 ancestry.php:52
@@ -7835,6 +7885,11 @@ msgstr "juuni"
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "juuni"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:207
+msgid "Kansas City, Missouri, United States"
+msgstr "Kansas City, Missouri, Ühendriigid"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6794
@@ -8468,6 +8523,16 @@ msgstr "Haldaja"
 #: admin.php:667
 msgid "Managers"
 msgstr "Haldajad"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:229
+msgid "Manaus Brazil"
+msgstr "Manaus Braziilia"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:231
+msgid "Manhattan, New York, United States"
+msgstr "Manhattan, New York, Ühendriigid"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
@@ -10221,6 +10286,11 @@ msgstr "OpenStreetMap™"
 msgid "Optional prefixes and suffixes"
 msgstr "Valikulised ees- ja järelliited"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:279
+msgid "Oquirrh Mountain, Utah, United States"
+msgstr "Oquirrh Mountain, Utah, Ühendriigid"
+
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
@@ -10427,6 +10497,11 @@ msgid "Panama"
 msgstr "Panamá"
 
 #. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:287
+msgid "Panama City, Panama"
+msgstr "Panama City, Panama"
+
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:253
 msgid "Papeete, Tahiti"
 msgstr "Papeete, Tahiiti"
@@ -10470,6 +10545,11 @@ msgstr "Paroolid peavad olema vähemalt 6 tähemärki pikad ja on suurtähetundl
 #: edituser.php:139
 msgid "Passwords must contain at least 6 characters."
 msgstr "Parool peab sisaldama vähemalt 6 sümbolit."
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:291
+msgid "Payso, Utah, United States"
+msgstr "Payso, Utah, Ühendriigid"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
@@ -10541,6 +10621,11 @@ msgstr "Perú"
 #: app/Stats.php:6855
 msgid "Philippines"
 msgstr "Filipiinid"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:295
+msgid "Phoenix, Arizona, United States"
+msgstr "Phoenix, Arizona, Ühendriigid"
 
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:682
@@ -11020,6 +11105,11 @@ msgid "Property"
 msgstr "Kinnisvara"
 
 #. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:303
+msgid "Provo City Center, Utah, United States"
+msgstr "Provo City Center, Utah, Ühendriigid"
+
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:263
 msgid "Provo, Utah, United States"
 msgstr "Provo, Utah, Ühendriigid"
@@ -11052,6 +11142,11 @@ msgstr "Quartidi"
 #: app/Module/FrequentlyAskedQuestionsModule.php:175
 msgid "Question"
 msgstr "Küsimus"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:307
+msgid "Quetzaltenango, Guatemala"
+msgstr "Quetzaltenango, Guatemala"
 
 #: admin_trees_config.php:1823
 msgid "Quick family facts"
@@ -11577,6 +11672,11 @@ msgstr "Pensionile jäämine"
 msgid "Reunion"
 msgstr "Réunion"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:319
+msgid "Rexburg, Idaho, United States"
+msgstr "Rexburg, Idaho, Ühendriigid"
+
 #: index_edit.php:304
 msgid "Right section blocks"
 msgstr "Parema sektsiooni blokid"
@@ -11722,6 +11822,11 @@ msgstr "San Jose, Costa Rica"
 #: app/Stats.php:6883
 msgid "San Marino"
 msgstr "San Marino"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:323
+msgid "San Salvador, El Salvador"
+msgstr "San Salvador, El Salvador"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
@@ -13355,6 +13460,11 @@ msgstr "Meresinine"
 msgid "Technical help contact"
 msgstr "Tehnilise abi kontakt"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:365
+msgid "Tegucigalpa, Honduras"
+msgstr "Tegucigalpa, Honduras"
+
 #: app/Module/HtmlBlockModule.php:276
 msgid "Templates"
 msgstr "Mallid"
@@ -14580,6 +14690,11 @@ msgstr "Pisipilt, mida üles laadida"
 msgid "Thursday"
 msgstr "Neljapäev"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:369
+msgid "Tijuana, Mexico"
+msgstr "Tijuana, Mehhiko"
+
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
 msgid "Time"
@@ -14932,6 +15047,11 @@ msgstr "Tridi"
 msgid "Trinidad and Tobago"
 msgstr "Trinidad ja Tobago"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:375
+msgid "Trujillo, Peru"
+msgstr "Trujillo, Peru"
+
 #. I18N: abbreviation for Tuesday
 #: app/Date/CalendarDate.php:367 app/Functions/FunctionsPrint.php:666
 msgid "Tue"
@@ -14970,6 +15090,11 @@ msgstr "Tuvalu"
 #: app/GedcomCode/GedcomCodeTemp.php:319
 msgid "Tuxtla Gutierrez, Mexico"
 msgstr "Tuxtla Gutierrez, Mehhiko"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:377
+msgid "Twin Falls, Idaho, United States"
+msgstr "Twin Falls, Idaho, Ühendriigid"
 
 #. I18N: gedcom tag TYPE
 #: admin_site_logs.php:268 admin_site_logs.php:328
@@ -15332,6 +15457,11 @@ msgstr "Kasutades allatõmbemenüüd saate valida riigi, mille kohta saab valida
 #: app/Stats.php:6916
 msgid "Uzbekistan"
 msgstr "Usbekistan"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:379
+msgid "Vancouver, British Columbia, Canada"
+msgstr "Vancouver, British Columbia, Kanada"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6923
@@ -20383,133 +20513,3 @@ msgstr "…"
 
 #~ msgid "over"
 #~ msgstr "üle"
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:117
-msgid "Brigham City, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:123
-msgid "Calgary, Alberata, Canada"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:129
-msgid "Cebu City, Philippines"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:145
-msgid "Cordoba, Argentina"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:149
-msgid "Curitiba, Brazil"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:157
-msgid "Draper, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:163
-msgid "Fort Lauderdale, Florida, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:173
-msgid "Gila Valley, Arizona, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:175
-msgid "Gilbert, Arizona, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:201
-msgid "Indianapolis, Indiana, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:207
-msgid "Kansas City, Missouri, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:229
-msgid "Manaus Brazil"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:231
-msgid "Manhattan, New York, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:279
-msgid "Oquirrh Mountain, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:287
-msgid "Panama City, Panama"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Payso, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:295
-msgid "Phoenix, Arizona, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:303
-msgid "Provo City Center, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:307
-msgid "Quetzaltenango, Guatemala"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:319
-msgid "Rexburg, Idaho, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:323
-msgid "San Salvador, El Salvador"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:365
-msgid "Tegucigalpa, Honduras"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:369
-msgid "Tijuana, Mexico"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:375
-msgid "Trujillo, Peru"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:377
-msgid "Twin Falls, Idaho, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:379
-msgid "Vancouver, British Columbia, Canada"
-msgstr ""
