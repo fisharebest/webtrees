@@ -4283,7 +4283,7 @@ msgstr "Kuuba"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:149
 msgid "Curitiba, Brazil"
-msgstr "Curitiba, Braziilia"
+msgstr "Curitiba, Brasiilia"
 
 #: app/Module/HtmlBlockModule.php:302
 msgid "Current"
@@ -8527,7 +8527,7 @@ msgstr "Haldajad"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:229
 msgid "Manaus Brazil"
-msgstr "Manaus Braziilia"
+msgstr "Manaus Brasiilia"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:231
