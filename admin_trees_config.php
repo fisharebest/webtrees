@@ -497,7 +497,7 @@ $controller
 	</div>
 	<h2><?php echo /* I18N: Privacy restrictions are set by RESN tags in GEDCOM. */ I18N::translate('Privacy restrictions'); ?></h2>
 	<p>
-		<?php echo /* I18N: Privacy restrictions are RESN tags in GEDCOM. */ I18N::translate('You can set the access for a specific record, fact, or event by adding a restriction to it.  If a record, fact, or event does not have a restriction, the following default restrictions will be used.') ?>
+		<?php echo /* I18N: Privacy restrictions are RESN tags in GEDCOM. */ I18N::translate('You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used.') ?>
 	</p>
 
 	<script id="new-resn-template" type="text/html">
@@ -717,12 +717,12 @@ $controller
 	<!-- GENERATE_UIDS -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Automatically create globally unique IDs'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Add unique identifiers'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('GENERATE_UIDS', $no_yes, $WT_TREE->getPreference('GENERATE_UIDS'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Automatically create globally unique IDs” configuration setting */ I18N::translate('<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file.'); ?>
+				<?php echo /* I18N: Help text for the “Add unique identifiers” configuration setting */ I18N::translate('Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -730,7 +730,7 @@ $controller
 	<!-- XXXXX_ID_PREFIX -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('ID preferences'); ?>
+			<?php echo /* I18N: A configuration setting. The first letter(s) in a GEDCOM identifier. */ I18N::translate('XREF prefixes'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<div class="row">
@@ -738,7 +738,7 @@ $controller
 				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="GEDCOM_ID_PREFIX">
-							<?php echo I18N::translate('Individual ID prefix'); ?>
+							<?php echo I18N::translate('Individual'); ?>
 						</label>
 						<input
 							class="form-control"
@@ -755,7 +755,7 @@ $controller
 				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="FAM_ID_PREFIX">
-							<?php echo I18N::translate('Family ID prefix'); ?>
+							<?php echo I18N::translate('Family'); ?>
 						</label>
 						<input
 							class="form-control"
@@ -772,7 +772,7 @@ $controller
 				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="SOURCE_ID_PREFIX">
-							<?php echo I18N::translate('Source ID prefix'); ?>
+							<?php echo I18N::translate('Source'); ?>
 						</label>
 						<input
 							class="form-control"
@@ -789,7 +789,7 @@ $controller
 				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="REPO_ID_PREFIX">
-							<?php echo I18N::translate('Repository ID prefix'); ?>
+							<?php echo I18N::translate('Repository'); ?>
 						</label>
 						<input
 							class="form-control"
@@ -806,7 +806,7 @@ $controller
 				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="MEDIA_ID_PREFIX">
-							<?php echo I18N::translate('Media ID prefix'); ?>
+							<?php echo I18N::translate('Media object'); ?>
 						</label>
 						<input
 							class="form-control"
@@ -823,7 +823,7 @@ $controller
 				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="NOTE_ID_PREFIX">
-							<?php echo I18N::translate('Note ID prefix'); ?>
+							<?php echo I18N::translate('Note'); ?>
 						</label>
 						<input
 							class="form-control"
@@ -838,7 +838,8 @@ $controller
 				</div>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “ID preferences” configuration setting */ I18N::translate('When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record.'); ?>
+				<?php echo I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.'); ?>
+				<?php echo /* I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14. */ I18N::translate('You can choose the prefix that will be used whenever new XREFs are created.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1602,7 +1603,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('SHOW_COUNTER', $hide_show, $WT_TREE->getPreference('SHOW_COUNTER'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Hit counters” configuration setting */ I18N::translate('Show hit counters on Portal and Individual pages.'); ?>
+				<?php echo /* I18N: Help text for the “Hit counters” configuration setting */ I18N::translate('Some pages can display the number of times that they have been visited.'); ?>
 			</p>
 		</div>
 	</fieldset>

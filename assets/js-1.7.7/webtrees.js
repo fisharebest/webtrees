@@ -527,7 +527,7 @@ function valid_date(datefield) {
 
 	// Americans frequently enter dates as SEP 20, 1999
 	// No need to internationalise this, as this is an english-language issue
-	datestr = datestr.replace(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
+	datestr = datestr.replace(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\.? (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
 
 	// Apply leading zero to day numbers
 	datestr = datestr.replace(/(^| )(\d [A-Z]{3,5} \d{4})/, "$10$2");
@@ -984,8 +984,8 @@ function persistant_toggle(checkbox_id, data_selector) {
 		return;
 	}
 
-	if (display !== "none") {
-		display = "";
+	if (display !== "") {
+		display = "none";
 	}
 
 	checkbox.checked = (display === "");

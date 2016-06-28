@@ -314,7 +314,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</label>
 				<div class="col-sm-9">
 					<input id="GM_API_KEY" class="form-control" type="text" name="GM_API_KEY" value="<?php echo $this->getSetting('GM_API_KEY') ?>">
-					<p class="small text-muted"><?php echo I18N::translate('Google allows a small number of anonymous map requests per day.  If you need more than this, you will need a Google account and an API key.') ?>
+					<p class="small text-muted"><?php echo I18N::translate('Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key.') ?>
 						<a href="https://developers.google.com/maps/documentation/javascript/get-api-key">
 							<?php echo /* I18N: https://en.wikipedia.org/wiki/API_key */ I18N::translate('Get an API key from Google.') ?>
 						</a>
@@ -554,7 +554,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		$flags_s = array();
 		if ($stateSelected != 'States' && is_dir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected)) {
-			$files = glob(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected . '*.png');
+			$files = glob(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected . '/*.png');
 			foreach ($files as $file) {
 				$flags_s[] = basename($file, '.png');
 			}
@@ -675,7 +675,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					echo "</tr>";
 				}
 
-				echo'<tr style="visibility:' . $countrySelected == 'Countries' || count($stateList) == 0 ? 'hidden' : 'visible' . '">';
+				echo'<tr style="visibility:' . (($countrySelected == 'Countries' || count($stateList) == 0) ? 'hidden' : 'visible') . '">';
 				?>
 
 				<td class="optionbox" colspan="4">
@@ -694,11 +694,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			<?php
 
+			$i = 0;
 			if (!empty($flags_s)) {
 				foreach (array_chunk($flags_s, 4) as $row) {
 					echo "<tr>";
 					foreach ($row as $flag) {
-						echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i++, '"><img src="', WT_STATIC_URL . WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $stateSelected, '/', $flag, '.png">&nbsp;&nbsp;', $flag, '></td>';
+						echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i++, '"><img src="', WT_STATIC_URL . WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $stateSelected, '/', $flag, '.png">&nbsp;&nbsp;', $flag, '</td>';
 					}
 					echo str_repeat('<td></td>', 4 - count($row));
 					echo '</tr>';
@@ -3758,7 +3759,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 
 		if ($action === 'ImportFile') {
-			echo '<h2>' . I18N::translate('Upload Geographic data') . '</h2>';
+			echo '<h2>' . I18N::translate('Upload geographic data') . '</h2>';
 			$placefiles = $this->findFiles(WT_MODULES_DIR . 'googlemap/extra');
 			sort($placefiles);
 		?>
