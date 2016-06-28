@@ -10547,8 +10547,8 @@ msgstr "Wachtwoorden moeten uit minimaal 6 karakters bestaan."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Payso, Utah, United States"
-msgstr "Payso, Utah, Verenigde Staten"
+msgid "Payson, Utah, United States"
+msgstr "Payson, Utah, Verenigde Staten"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report

@@ -10582,8 +10582,8 @@ msgstr "Heslo musí obsahovat alespoň 6 znaků."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Payso, Utah, United States"
-msgstr "Payso, Utah, Spojené státy"
+msgid "Payson, Utah, United States"
+msgstr "Payson, Utah, Spojené státy"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report

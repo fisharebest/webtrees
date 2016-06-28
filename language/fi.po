@@ -10543,7 +10543,7 @@ msgstr "Salasanassa pitää olla vähintään 6 merkkiä."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Payso, Utah, United States"
+msgid "Payson, Utah, United States"
 msgstr "Payson, Utah, Yhdysvallat"
 
 #. I18N: Name of a module/chart

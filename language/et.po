@@ -10548,8 +10548,8 @@ msgstr "Parool peab sisaldama vähemalt 6 sümbolit."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Payso, Utah, United States"
-msgstr "Payso, Utah, Ühendriigid"
+msgid "Payson, Utah, United States"
+msgstr "Payson, Utah, Ühendriigid"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report

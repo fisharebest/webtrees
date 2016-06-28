@@ -10548,8 +10548,8 @@ msgstr "A jelszónak legalább 6 karaktert kell tartalmaznia."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Payso, Utah, United States"
-msgstr "Payso, Utah, Egyesült Államok"
+msgid "Payson, Utah, United States"
+msgstr "Payson, Utah, Egyesült Államok"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report

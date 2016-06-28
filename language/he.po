@@ -10547,7 +10547,7 @@ msgstr "אורך הסיסמה לפחות 6 תווים."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Payso, Utah, United States"
+msgid "Payson, Utah, United States"
 msgstr "פייסון, יוטה, ארצות הברית"
 
 #. I18N: Name of a module/chart

@@ -10543,8 +10543,8 @@ msgstr "Das Passwort muss mindestens 6 Zeichen lang sein."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Payso, Utah, United States"
-msgstr "Payso, Utah, Vereinigte Staaten"
+msgid "Payson, Utah, United States"
+msgstr "Payson, Utah, Vereinigte Staaten"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
