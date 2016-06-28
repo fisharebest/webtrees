@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-11 21:35+0000\n"
+"PO-Revision-Date: 2016-06-28 11:11+0000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian <https://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
 "Language: lt\n"
@@ -419,9 +419,9 @@ msgstr[2] "prieš %s sekundžių"
 
 #. I18N: %s is a person's name
 #: message.php:300 message.php:303 message.php:305
-#, fuzzy, php-format
+#, php-format
 msgid "%s sent you the following message."
-msgstr "Šis pranešimas buvo išsiųstas į jūsų kilmės medžio nario sąskaitą iš %s"
+msgstr "%s atsiuntė jūms šią žinutę."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
@@ -489,8 +489,8 @@ msgstr[0] "prieš %s metus"
 msgstr[1] "prieš %s metų"
 msgstr[2] "prieš %s metus"
 
-#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
-#: calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:1942
+#: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s metų sukaktis"
@@ -831,9 +831,8 @@ msgstr "Pasveikinimo žinutė tinklalapio lankytojams."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-#, fuzzy
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "Sąrašas pakeitimų, kurie reikalauja prižiūrėtojo patvirtinimo ir pranešimo el. paštu."
+msgstr "Sąrašas pakeitimų, kurie reikalauja prižiūrėtojo patvirtinimo ir el. pašto pranešimams."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -1076,7 +1075,6 @@ msgid "A timeline displaying individual events."
 msgstr ""
 
 #: admin_users.php:397
-#, fuzzy
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr "Vartotojas negalės prisijungti, kol „Patvirtinta administratoriaus“ ir „Elektroninio pašto adresas patvirtintas“ nėra pažymėti."
 
@@ -1189,7 +1187,6 @@ msgid "Accept"
 msgstr "Priimti"
 
 #: edit_changes.php:209 edit_changes.php:220
-#, fuzzy
 msgid "Accept all changes"
 msgstr "Patvirtinti visus pakeitimus"
 
@@ -1201,7 +1198,6 @@ msgid "Access level"
 msgstr "Prieigos lygis"
 
 #: admin_users.php:520
-#, fuzzy
 msgid "Access to family trees"
 msgstr "Šeimos medžio prieiga ir nustatymai"
 
@@ -1312,7 +1308,8 @@ msgstr "Pridėti naują vaiką"
 msgid "Add a child to create a one-parent family"
 msgstr "Pridėti vaiką sukuriant vienišos motinos ar vienišo tėvo šeimą"
 
-#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
+#: app/Controller/FamilyController.php:82
+#: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
 msgstr "Į šeimą pridėti vaiką"
 
@@ -1350,9 +1347,10 @@ msgstr "Įtraukti vyrą naudojant jau sukurtą asmenį"
 msgid "Add a journal entry"
 msgstr "Pridėti naują žurnalo įrašą"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1125
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:184
+#: app/Controller/FamilyController.php:162
+#: app/Functions/FunctionsEdit.php:1125 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:184
 msgid "Add a media object"
 msgstr "Pridėti naują medijos objektą"
 
@@ -1368,8 +1366,8 @@ msgstr "Įtraukti naują vardą"
 msgid "Add a news article"
 msgstr "Pridėti naujieną"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1104
-#: app/Module/NotesTabModule.php:102
+#: app/Controller/FamilyController.php:149
+#: app/Functions/FunctionsEdit.php:1104 app/Module/NotesTabModule.php:102
 msgid "Add a note"
 msgstr "Pridėti naują pastabą"
 
@@ -1380,14 +1378,15 @@ msgstr "Pridėti naują apribojimą"
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
 #: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
 msgstr "Pridėti slinktis kai bloko turinys perauga bloko matmenis"
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1114
-#: app/Module/NotesTabModule.php:112
+#: app/Controller/FamilyController.php:155
+#: app/Functions/FunctionsEdit.php:1114 app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
 msgstr "Pridėti naują bendrai naudojamą pastabą"
 
@@ -1395,8 +1394,8 @@ msgstr "Pridėti naują bendrai naudojamą pastabą"
 msgid "Add a son or daughter"
 msgstr "Pridėti naują sūnų ar dukterį"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1053
-#: app/Module/SourcesTabModule.php:95
+#: app/Controller/FamilyController.php:172
+#: app/Functions/FunctionsEdit.php:1053 app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
 msgstr "Pridėti naują šaltinio nuorodą"
 
@@ -1431,7 +1430,6 @@ msgstr "Įtraukti žmoną naudojant jau sukurtą asmenį"
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
-#, fuzzy
 msgid "Add an FAQ"
 msgstr "Įtraukti įrašą į DUK"
 
@@ -1530,7 +1528,6 @@ msgstr "Pridėti/redaguoti žurnalo/naujienos įrašą"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
-#, fuzzy
 msgid "Address"
 msgstr "Adresas"
 
@@ -1705,7 +1702,6 @@ msgid "Adult christening"
 msgstr "Suaugusio krikštas"
 
 #: admin_trees_config.php:2027
-#, fuzzy
 msgid "Advanced fact preferences"
 msgstr "Išplėstiniai faktų nuostatai"
 
@@ -1736,9 +1732,8 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr "Po šeimos medžio sukurimo, jūs galėsite įvežti duomenis iš GEDCOM bylos."
 
 #: login.php:259
-#, fuzzy
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr "Prisijungus pasirinkite „Mano prisijungimo informacija“ nuorodą iš „Mano puslapis“ meniu ir slaptažodžiui pakeisti užpildykite laukelius."
+msgstr "Prisijungus pasirinkite „Mano prisijungimo informacija“ nuorodą iš „Mano puslapiai“ meniu ir užpildykite laukelius slaptažodžio pakeitimui."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
@@ -1841,10 +1836,10 @@ msgstr "Gyvi"
 #: app/Module/GoogleMapsModule.php:1423 app/Module/GoogleMapsModule.php:1436
 #: app/Module/GoogleMapsModule.php:4210 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5581 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
-#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
-#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
-#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
+#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
+#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
+#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -1944,7 +1939,6 @@ msgstr "Amerikos Samoa"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
-#, fuzzy
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
 msgstr "DUK gali buti rodomas tik ant vieno šeimos medžio arba ant visų."
 
@@ -2062,7 +2056,8 @@ msgstr "Angilija"
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1805 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1805
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr "Sukaktis"
 
@@ -2194,7 +2189,6 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Ar tikrai norite ištrinti „%s“?"
 
 #: edit_changes.php:231
-#, fuzzy
 msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr "Ar tikrai norite atmesti visus pakeitumus šiame šeimos medyje?"
 
@@ -2214,7 +2208,8 @@ msgstr "Argentina"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -2360,7 +2355,6 @@ msgid "Author of last change"
 msgstr "Paskutinio keitimo autorius"
 
 #: admin_users.php:441
-#, fuzzy
 msgid "Automatically accept changes made by this user"
 msgstr "Automatiškai patvirtinti šio vartotojo pakeitimus"
 
@@ -3517,7 +3511,8 @@ msgstr "Pakeista į %1$s iš %2$s"
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:435
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr "Pakeitimai"
 
@@ -3553,9 +3548,9 @@ msgstr "Diagramos tipas"
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1206
-#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
-#: app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163
+#: admin_trees_config.php:1206 app/Module/ChartsBlockModule.php:34
+#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
 msgstr "Diagramos"
 
@@ -4002,9 +3997,10 @@ msgstr "Pratęsta"
 #: app/Module/FrequentlyAskedQuestionsModule.php:438
 #: app/Module/GoogleMapsModule.php:282 app/Module/GoogleMapsModule.php:1386
 #: app/Module/GoogleMapsModule.php:3613
-#: app/Module/RelationshipsChartModule.php:147 app/Module/SiteMapModule.php:296
-#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
-#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
+#: app/Module/RelationshipsChartModule.php:147
+#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
+#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
+#: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr "Valdymo skydas"
 
@@ -4396,7 +4392,8 @@ msgstr "Naudotojo abonemento duomenų bazė"
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -4963,7 +4960,8 @@ msgstr "Mokslinis laipsnis"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -5066,7 +5064,8 @@ msgstr "Palikuonio kartos"
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
 #: app/Module/ChartsBlockModule.php:187
-#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
+#: app/Module/DescendancyChartModule.php:33
+#: app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5423,13 +5422,11 @@ msgstr "Redaguoti svetainės prieigos taisyklę"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1611
-#, fuzzy
 msgid "Edit preferences"
 msgstr "Redaguoti nustatymus"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-#, fuzzy
 msgid "Edit the FAQ"
 msgstr "Redaguoti DUK"
 
@@ -5808,7 +5805,6 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr "Eksportuoti visus šeimos medžius į GEDCOM bylas…"
 
 #: admin_trees_download.php:134
-#, fuzzy
 msgid "Export preferences"
 msgstr "Eksportavimo nuostatai"
 
@@ -5965,7 +5961,8 @@ msgstr "Folklendo salos"
 #: app/Module/GoogleMapsModule.php:2490 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1493
 #: calendar.php:422 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:134 mediaviewer.php:123
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:201
 #: repo.php:143 search.php:93 source.php:147 statistics.php:71
 #: statisticsplot.php:990 statisticsplot.php:1094 statisticsplot.php:1344
@@ -6055,7 +6052,8 @@ msgstr "%s šeima"
 msgid "Family tree"
 msgstr "Šeimos medis"
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90
+#: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr "Šeimos medžio iškarpų krepšelis"
 
@@ -6195,7 +6193,8 @@ msgid "Father’s family with an unknown individual"
 msgstr "Tėvo šeima su nežinomu žmogum"
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1375
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1375
 msgid "Favorites"
 msgstr "Mėgstamiausi"
 
@@ -6332,7 +6331,8 @@ msgstr "Rasti specialų simbolį"
 msgid "Find all possible relationships"
 msgstr "Rasti visus galimus giminystės ryšius"
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
@@ -6425,7 +6425,8 @@ msgstr "Tam, kad patvirtintumėme naudotojo vardą ir elektroninį adresą, pra�
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6450,19 +6451,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr ""
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "Už pagalba genealogijos klausimais atsakingas %s"
+msgstr "Už pagalba genealogijos klausimais atsakingas %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "Už techninį palaikimą ir informacijos teikimą atsakingas %s"
+msgstr "Už techninį palaikimą ir informacijos teikimą atsakingas %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Už techninę pagalbą ir genealoginę informaciją atsakingas %s"
+msgstr "Už techninę pagalbą ir genealoginę informaciją atsakingas %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:276
@@ -7080,7 +7081,8 @@ msgstr "Helsinki, Suomija"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7408,7 +7410,6 @@ msgid "Import all places from a family tree"
 msgstr "Idėti visas vietoves iš šeimos medžio"
 
 #: admin_trees_manage.php:270
-#, fuzzy
 msgid "Import preferences"
 msgstr "Importavimo nustatymai"
 
@@ -7585,7 +7586,8 @@ msgid "Installation folder"
 msgstr "Įdiegimo aplankas"
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:189 app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:189
+#: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
 msgstr "Interaktyvus medis"
 
@@ -8808,9 +8810,8 @@ msgstr "Maskuotis kaip šis vartotojas"
 
 #. I18N: Help text for "Case insensitive" searches
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-#, fuzzy
 msgid "Match both upper and lower case letters."
-msgstr "Pažymėkite šį langelį, kad pažymėti didžiąsias ir mažąsias raides."
+msgstr "Prilyginti didžiąsias ir mažąsias raides."
 
 #: lifespan.php:104
 msgid "Match calendar"
@@ -8890,9 +8891,9 @@ msgstr "Medford, Oregonas"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
-#: admin.php:760 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1446
-#: app/Module/MediaTabModule.php:35 app/Theme/AdministrationTheme.php:177
-#: inverselink.php:70
+#: admin.php:760 admin_media.php:692
+#: app/Functions/FunctionsPrintLists.php:1446 app/Module/MediaTabModule.php:35
+#: app/Theme/AdministrationTheme.php:177 inverselink.php:70
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:74
 msgid "Media"
 msgstr "Laikmena"
@@ -9186,9 +9187,9 @@ msgstr "Modulis"
 #: app/Module/FrequentlyAskedQuestionsModule.php:439
 #: app/Module/GoogleMapsModule.php:283 app/Module/GoogleMapsModule.php:1387
 #: app/Module/GoogleMapsModule.php:3614
-#: app/Module/RelationshipsChartModule.php:148 app/Module/SiteMapModule.php:297
-#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
-#: app/Theme/AdministrationTheme.php:190
+#: app/Module/RelationshipsChartModule.php:148
+#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
+#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr "Modulio administravimas"
 
@@ -10322,7 +10323,6 @@ msgid "Other folder… please type in"
 msgstr "Kitas aplankas… Prašome suvesti"
 
 #: admin_trees_config.php:2087
-#, fuzzy
 msgid "Other preferences"
 msgstr "Kiti nustatymai"
 
@@ -10394,7 +10394,8 @@ msgstr "PHP laiko limitas"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -10626,7 +10627,8 @@ msgstr "PhpGedView versija privalo būti 4.2.3, arba bet kuri SVN iki #%s"
 msgid "PhpGedView must use the same database as webtrees."
 msgstr "PhpGedView turi naudoti tą pačią duomenų bazę kaip ir webtrees."
 
-#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697 admin_trees_manage.php:725
+#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697
+#: admin_trees_manage.php:725
 msgid "PhpGedView to webtrees transfer wizard"
 msgstr "PhpGedView transformavimo į webtrees vedlys"
 
@@ -11038,7 +11040,6 @@ msgstr "Privatumo apribojimai - jie taikomi įrašams ir faktams kurie neturi GE
 #: app/Module/GoogleMapsModule.php:812 app/Note.php:71
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1470 app/Stats.php:2975 expand_view.php:33
-#, fuzzy
 msgid "Private"
 msgstr "Privati"
 
@@ -11232,8 +11233,9 @@ msgstr "Ramadan"
 msgid "Random images from the current family tree."
 msgstr "Atsitiktinės nuotraukos iš esamo šeimos medžio."
 
-#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1799 edit_interface.php:1869
+#: app/Controller/FamilyController.php:88
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1799
+#: edit_interface.php:1869
 msgid "Re-order children"
 msgstr "Perrikiuoti vaikus"
 
@@ -11256,7 +11258,8 @@ msgid "Real name"
 msgstr "Tikrasis vardas"
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr "Naujausi pakeitimai"
 
@@ -11272,7 +11275,8 @@ msgstr "Recife, Brazilija"
 #: admin_site_change.php:328 admin_site_change.php:389
 #: admin_trees_config.php:526 app/Functions/FunctionsPrintLists.php:1801
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:321 app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:321
+#: app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -11339,12 +11343,10 @@ msgid "Regular expressions are an advanced pattern matching technique."
 msgstr "Normalios išraiškos yra išplėstos rašto atitikimo metodas."
 
 #: edit_changes.php:181 edit_changes.php:201
-#, fuzzy
 msgid "Reject"
-msgstr "Atšaukti paskutinį veiksmą"
+msgstr "Atšaukti"
 
 #: edit_changes.php:211 edit_changes.php:231
-#, fuzzy
 msgid "Reject all changes"
 msgstr "Atšaukti visus pakeitimus"
 
@@ -11844,7 +11846,6 @@ msgstr "Ieškoti"
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1752
-#, fuzzy
 msgid "Search and replace"
 msgstr "Rasti ir pakeisti"
 
@@ -13603,8 +13604,8 @@ msgstr "Duomenų aplanka %s negali būti ištrinta."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:287
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:287
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Duomenų aplanka %s neegzistuoja ir negali būti sukurta."
@@ -13964,9 +13965,8 @@ msgstr "Temos keitimas"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:960
-#, fuzzy
 msgid "Theme menu"
-msgstr "Temos išskleidžiamasis parinkiklis temų pakeitimams"
+msgstr "Temų menu"
 
 #: admin_modules.php:165
 msgid "Themes"
@@ -14001,8 +14001,8 @@ msgstr "Šiame šeimos medyje nėra tyrimo užduočių."
 msgid "There are no source citations for this individual."
 msgstr "Šis asmuo neturi šaltinių citatų."
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1961
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1961
 msgid "There are pending changes for you to moderate."
 msgstr "Yra nauji pataisymai laukiantys sprendimų."
 
@@ -14502,9 +14502,8 @@ msgid "This repository has been edited. You should review the changes and then %
 msgstr "Ši saugykla buvo pakeista. Jūs turėtumėte peržiūrėti pakeitimus ir tuomet %1$s arba %2$s juos."
 
 #: admin_users.php:552
-#, fuzzy
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "Ši rolė turi visus redaguotojo leidimus, taip pat leidimus patvirtinti/atmesti naujus pakeitimus."
+msgstr "Ši rolė turi visus redaguotojo leidimus, taip pat leidimą patvirtinti/atmesti kitų vartotojų pakeitimus."
 
 #: admin_users.php:566
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
@@ -14893,7 +14892,8 @@ msgstr "Iš viso vardų"
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:88
-#: modules_v3/death_report/report.xml:99 modules_v3/fact_sources/report.xml:142
+#: modules_v3/death_report/report.xml:99
+#: modules_v3/fact_sources/report.xml:142
 #: modules_v3/fact_sources/report.xml:146
 #: modules_v3/fact_sources/report.xml:305
 #: modules_v3/fact_sources/report.xml:309
@@ -15103,9 +15103,8 @@ msgstr "Unikalūs faktai apie šeimą"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-#, fuzzy
 msgid "Unique identifier"
-msgstr "Globalus unikalus indentifikatorius"
+msgstr "Unikalus indentifikatorius"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:725
@@ -15331,7 +15330,6 @@ msgid "User not verified by administrator."
 msgstr "Narys nepatvirtintas administratoriaus."
 
 #: admin_trees_config.php:956
-#, fuzzy
 msgid "User preferences"
 msgstr "Nario nuostatos"
 
@@ -15501,9 +15499,8 @@ msgid "View the notes"
 msgstr "Rodyti pastabas"
 
 #: calendar.php:300
-#, fuzzy
 msgid "View this day"
-msgstr "Žiūrėti dieną"
+msgstr "Rodyti šią dieną"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15512,29 +15509,24 @@ msgstr "Žiūrėti dieną"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:99
-#, fuzzy
 msgid "View this family"
-msgstr "Informacija apie šeimą"
+msgstr "Rodyti šią šeimą"
 
 #: app/Module/SlideShowModule.php:177 medialist.php:310
-#, fuzzy
 msgid "View this individual"
-msgstr "Informacija apie asmenį"
+msgstr "Rodyti šį asmenį"
 
 #: calendar.php:304
-#, fuzzy
 msgid "View this month"
-msgstr "Žiūrėti mėnesį"
+msgstr "Rodyti šį mėnesį"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-#, fuzzy
 msgid "View this source"
-msgstr "Informacija apie šaltinį"
+msgstr "Rodyti šį šaltinį"
 
 #: calendar.php:308
-#, fuzzy
 msgid "View this year"
-msgstr "Žiūrėti metus"
+msgstr "Rodyti šiuos metus"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -15728,7 +15720,8 @@ msgstr "Kas gali įkelti naujus medijos failus"
 msgid "Who is online"
 msgstr "Kas tinklapyje"
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr "Tik ištisi žodžiai"
 
@@ -15816,9 +15809,8 @@ msgstr "Pasaulis"
 
 #. I18N: A configuration setting. The first letter(s) in a GEDCOM identifier.
 #: admin_trees_config.php:733
-#, fuzzy
 msgid "XREF prefixes"
-msgstr "ID nustatymai"
+msgstr "ID priešdėliai"
 
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
 #: app/GedcomTag.php:1769
@@ -15999,9 +15991,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr "Jūs turite pernumeruoti įrašus viename iš šių šeimos medžių prieš bandant juos sujungti."
 
 #: app/Module/ChartsBlockModule.php:139
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Turite pasirinkti asmenį ir diagramos tipą nustatymų bloke."
+msgstr "Turite pasirinkti asmenį ir diagramos tipą nustatymų bloke"
 
 #: admin_users.php:286
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
@@ -16110,9 +16101,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Jūsų serverio administratorius jums pateiks susijungimo detales."
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "Jums nėra įjungta „automatiškai patvirtinti pakeitimus“ nuostata. Jums tik galima pakeisti vieną įrašą vienu metu."
+msgstr "Jums nėra įjungta „automatiškai patvirtinti pakeitimus“ nuostata. Jums galima pakeisti tik vieną įrašą vienu metu."
 
 #: admin.php:558
 #, php-format
@@ -16467,9 +16457,8 @@ msgstr "apskaičiuota %s"
 
 #. I18N: A button label.
 #: app/Module/ClippingsCartModule.php:796
-#, fuzzy
 msgid "cancel"
-msgstr "Atšaukti"
+msgstr "atšaukti"
 
 #: app/Stats.php:2918
 msgid "census added"
@@ -16509,14 +16498,15 @@ msgstr "vaikai"
 #. I18N: A button label.
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:713
-#: app/Module/GoogleMapsModule.php:3538 app/Theme/AbstractTheme.php:700
-#: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1743
-#: edit_interface.php:1848 edit_interface.php:2040 edit_interface.php:2203
-#: edit_interface.php:2588 find.php:760 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189
+#: app/Module/GoogleMapsModule.php:713 app/Module/GoogleMapsModule.php:3538
+#: app/Theme/AbstractTheme.php:700 edit_changes.php:240 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1743 edit_interface.php:1848 edit_interface.php:2040
+#: edit_interface.php:2203 edit_interface.php:2588 find.php:760
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "uždaryti"
@@ -16633,7 +16623,6 @@ msgstr "mirė"
 #: admin_site_change.php:370 admin_site_logs.php:310
 #: app/Module/ClippingsCartModule.php:432
 #: app/Module/ClippingsCartModule.php:797 app/Module/GoogleMapsModule.php:4214
-#, fuzzy
 msgid "download"
 msgstr "parsisiųsti"
 
@@ -18689,7 +18678,6 @@ msgstr "vardas po imigracijos"
 
 #. I18N: A button label.
 #: app/Module/GoogleMapsModule.php:4175
-#, fuzzy
 msgid "import"
 msgstr "importuoti"
 
@@ -18756,9 +18744,8 @@ msgstr "paskiausiai"
 
 #. I18N: A button label (a verb).
 #: inverselink.php:152
-#, fuzzy
 msgid "link"
-msgstr "Nustatykite nuorodą"
+msgstr "sujungti"
 
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
@@ -19052,7 +19039,8 @@ msgstr "skaičiais"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19224,20 +19212,21 @@ msgstr "robotas"
 #. I18N: A button label.
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:262
-#: admin_site_access.php:307 admin_site_config.php:651 admin_site_merge.php:340
-#: admin_trees_config.php:2147 admin_users.php:652
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129
+#: admin_modules.php:262 admin_site_access.php:307 admin_site_config.php:651
+#: admin_site_merge.php:340 admin_trees_config.php:2147 admin_users.php:652
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:499 app/Module/GoogleMapsModule.php:712
 #: app/Module/GoogleMapsModule.php:2454 app/Module/GoogleMapsModule.php:3537
-#: app/Module/RelationshipsChartModule.php:173 app/Module/SiteMapModule.php:320
-#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
-#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1742 edit_interface.php:1846 edit_interface.php:2039
-#: edit_interface.php:2201 edit_interface.php:2584 editnews.php:74
-#: edituser.php:317 find.php:537 index_edit.php:376
+#: app/Module/RelationshipsChartModule.php:173
+#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
+#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
+#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
+#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
+#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1742
+#: edit_interface.php:1846 edit_interface.php:2039 edit_interface.php:2201
+#: edit_interface.php:2584 editnews.php:74 edituser.php:317 find.php:537
+#: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:197
 msgid "save"
@@ -19954,7 +19943,6 @@ msgstr "atnaujinti"
 
 #. I18N: A button label.
 #: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4193
-#, fuzzy
 msgid "upload"
 msgstr "įkelti"
 
@@ -19962,7 +19950,6 @@ msgstr "įkelti"
 #: ancestry.php:92 app/Module/GoogleMapsModule.php:766 branches.php:49
 #: compact.php:54 descendancy.php:71 familybook.php:61 fanchart.php:95
 #: hourglass.php:62 lifespan.php:110 pedigree.php:169 relationship.php:85
-#, fuzzy
 msgid "view"
 msgstr "rodyti"
 
