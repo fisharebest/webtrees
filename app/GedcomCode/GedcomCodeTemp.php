@@ -226,7 +226,7 @@ class GedcomCodeTemp {
 		case 'MADRI':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Madrid, Spain');
 		case 'MANAU':
-			return /* I18N: Location of an LDS church temple */ I18N::translate('Manaus Brazil');
+			return /* I18N: Location of an LDS church temple */ I18N::translate('Manaus, Brazil');
 		case 'MANHA':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Manhattan, New York, United States');
 		case 'MANIL':

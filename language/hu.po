@@ -8526,7 +8526,7 @@ msgstr "Webhelyfelügyelők"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:229
-msgid "Manaus Brazil"
+msgid "Manaus, Brazil"
 msgstr "Manaus, Brazília"
 
 #. I18N: Location of an LDS church temple
