@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-27 08:37+0000\n"
+"PO-Revision-Date: 2016-06-28 15:05+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -9850,7 +9850,7 @@ msgstr "Nincs templomi élő szertartás"
 
 #: admin.php:610 admin_site_upgrade.php:60
 msgid "No upgrade information is available."
-msgstr "Nincs elérhető frissítési információ."
+msgstr "Nincs frissítési információ."
 
 #: app/Stats.php:1742
 msgid "Nobody at all"
@@ -9918,7 +9918,7 @@ msgstr "Nem érvényes személy-, család- vagy forrásazonosító"
 
 #: admin.php:706
 msgid "Not approved by an administrator"
-msgstr "A rendszergazda nem hagyta jóvá"
+msgstr "Rendszergazda által nem jóváhagyott"
 
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1683
@@ -12507,7 +12507,7 @@ msgstr "Csak a kiválasztott címkéket mutasd"
 #: app/Functions/FunctionsPrintLists.php:299
 #: app/Functions/FunctionsPrintLists.php:760
 msgid "Show parents"
-msgstr "Mutasd a szülőket"
+msgstr "Szülők is"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
@@ -13191,7 +13191,7 @@ msgstr "Vasárnap"
 #: admin.php:605
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr "Támogatás és dokumentáció itt található: %s."
+msgstr "Támogatás és dokumentáció: %s."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6888
