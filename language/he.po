@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-28 20:54+0000\n"
+"PO-Revision-Date: 2016-06-28 20:57+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -4968,7 +4968,7 @@ msgstr "דרגה"
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "DejaVu"
-msgstr "DejaVu"
+msgstr "דז'ה וו"
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_config.php:572 admin_trees_manage.php:418
