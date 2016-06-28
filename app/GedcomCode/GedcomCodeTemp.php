@@ -48,23 +48,23 @@ class GedcomCodeTemp {
 			'ABA', 'ACCRA', 'ADELA', 'ALBER', 'ALBUQ', 'ANCHO', 'ARIZO', 'ASUNC',
 			'ATLAN', 'BAIRE', 'BILLI', 'BIRMI', 'BISMA', 'BOGOT', 'BOISE', 'BOSTO',
 			'BOUNT', 'BRIGH', 'BRISB', 'BROUG', 'CALGA', 'CAMPI', 'CARAC', 'CEBUP',
-			'CHICA', 'CIUJU', 'COCHA', 'COLJU', 'COLSC', 'COLUM', 'COPEN', 'CRIVE',
-			'CURIT', 'DALLA', 'DENVE', 'DETRO', 'DRAPE', 'EDMON', 'EHOUS', 'FORTL',
-			'FRANK', 'FREIB', 'FRESN', 'FUKUO', 'GILAV', 'GILBE', 'GUADA', 'GUATE',
-			'GUAYA', 'HAGUE', 'HALIF', 'HARTF', 'HAWAI', 'HELSI', 'HERMO', 'HKONG',
-			'HOUST', 'IFALL', 'JOHAN', 'JRIVE', 'KANSA', 'KIEV', 'KONA', 'LANGE',
-			'LIMA', 'LOGAN', 'LONDO', 'LOUIS', 'LUBBO', 'LVEGA', 'MADRI', 'MANAU',
-			'MANHA', 'MANIL', 'MANTI', 'MEDFO', 'MELBO', 'MEMPH', 'MERID', 'MEXIC',
-			'MNTVD', 'MONTE', 'MONTI', 'MONTR', 'MTIMP', 'NASHV', 'NAUV2', 'NAUVO',
-			'NBEAC', 'NUKUA', 'NYORK', 'NZEAL', 'OAKLA', 'OAXAC', 'OGDEN', 'OKLAH',
-			'OQUIR', 'ORLAN', 'PALEG', 'PALMY', 'PANAM', 'PAPEE', 'PAYSO', 'PERTH',
-			'PHOEN', 'POFFI', 'PORTL', 'PREST', 'PROCC', 'PROVO', 'QUETZ', 'RALEI',
-			'RECIF', 'REDLA', 'REGIN', 'RENO', 'REXBU', 'SACRA', 'SAMOA', 'SANTI',
-			'SANSA', 'SANTO', 'SDIEG', 'SDOMI', 'SEATT', 'SEOUL', 'SGEOR', 'SJOSE',
-			'SLAKE', 'SLOUI', 'SNOWF','SPAUL', 'SPMIN', 'SPOKA', 'STOCK', 'SUVA',
-			'SWISS', 'SYDNE', 'TAIPE', 'TAMPI', 'TEGUC', 'TGUTI', 'TIHUA', 'TOKYO',
-			'TORNO', 'TRUJI', 'TWINF', 'VANCO', 'VERAC', 'VERNA', 'VILLA', 'WASHI',
-			'WINTE',
+			'CHICA', 'CIUJU', 'COCHA', 'COLJU', 'COLSC', 'COLUM', 'COPEN', 'CORDO',
+			'CRIVE', 'CURIT', 'DALLA', 'DENVE', 'DETRO', 'DRAPE', 'EDMON', 'EHOUS',
+			'FORTL', 'FRANK', 'FREIB', 'FRESN', 'FUKUO', 'GILAV', 'GILBE', 'GUADA',
+			'GUATE', 'GUAYA', 'HAGUE', 'HALIF', 'HARTF', 'HAWAI', 'HELSI', 'HERMO',
+			'HKONG', 'HOUST', 'IFALL', 'INDIA', 'JOHAN', 'JRIVE', 'KANSA', 'KONA',
+			'KYIV', 'LANGE', 'LIMA', 'LOGAN', 'LONDO', 'LOUIS', 'LUBBO', 'LVEGA',
+			'MADRI', 'MANAU', 'MANHA', 'MANIL', 'MANTI', 'MEDFO', 'MELBO', 'MEMPH',
+			'MERID', 'MEXIC', 'MNTVD', 'MONTE', 'MONTI', 'MONTR', 'MTIMP', 'NASHV',
+			'NAUV2', 'NAUVO', 'NBEAC', 'NUKUA', 'NYORK', 'NZEAL', 'OAKLA', 'OAXAC',
+			'OGDEN', 'OKLAH',	'OQUIR', 'ORLAN', 'PALEG', 'PALMY', 'PANAM', 'PAPEE',
+			'PAYSO', 'PERTH',	'PHOEN', 'POFFI', 'PORTL', 'PREST', 'PROCC', 'PROVO',
+			'QUETZ', 'RALEI', 'RECIF', 'REDLA', 'REGIN', 'RENO', 'REXBU', 'SACRA',
+			'SAMOA', 'SANTI',	'SANSA', 'SANTO', 'SDIEG', 'SDOMI', 'SEATT', 'SEOUL',
+			'SGEOR', 'SJOSE',	'SLAKE', 'SLOUI', 'SNOWF','SPAUL', 'SPMIN', 'SPOKA',
+			'STOCK', 'SUVA', 'SWISS', 'SYDNE', 'TAIPE', 'TAMPI', 'TEGUC', 'TGUTI',
+			'TIHUA', 'TOKYO',	'TORNO', 'TRUJI', 'TWINF', 'VANCO', 'VERAC', 'VERNA',
+			'VILLA', 'WASHI',	'WINTE',
 		);
 	}
 
@@ -141,6 +141,8 @@ class GedcomCodeTemp {
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Columbus, Ohio, United States');
 		case 'COPEN':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Copenhagen, Denmark');
+		case 'CORDO':
+			return /* I18N: Location of an LDS church temple */ I18N::translate('Cordoba, Argentina');
 		case 'CRIVE':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Columbia River, Washington, United States');
 		case 'CURIT':
@@ -195,16 +197,18 @@ class GedcomCodeTemp {
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Houston, Texas, United States');
 		case 'IFALL':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Idaho Falls, Idaho, United States');
+		case 'INDIA':
+			return /* I18N: Location of an LDS church temple */ I18N::translate('Indianapolis, Indiana, United States');
 		case 'JOHAN':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Johannesburg, South Africa');
 		case 'JRIVE':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Jordan River, Utah, United States');
 		case 'KANSA':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Kansas City, Missouri, United States');
-		case 'KIEV':
-			return /* I18N: Location of an LDS church temple */ I18N::translate('Kiev, Ukraine');
 		case 'KONA':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Kona, Hawaii, United States');
+		case 'KYIV':
+			return /* I18N: Location of an LDS church temple */ I18N::translate('Kiev, Ukraine');
 		case 'LANGE':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Los Angeles, California, United States');
 		case 'LIMA':
