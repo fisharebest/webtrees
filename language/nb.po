@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-27 20:44+0000\n"
+"PO-Revision-Date: 2016-06-28 16:30+0000\n"
 "Last-Translator: Thomas Rindal <thomas@rindal.net>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
@@ -12845,7 +12845,7 @@ msgstr "Noen slektsprogrammer oppretter GEDCOM-filer som inneholder filnavn med 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "Noen sider kan vise antall ganger de er besøkt."
 
 #: app/Module/GoogleMapsModule.php:439
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
@@ -15058,7 +15058,7 @@ msgstr "Unik identifikator (GUID)"
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:725
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr ""
+msgstr "Unike identifikatorer tillater at like data kan finnes i flere slektstrær og i forskjellige systemer. De blir lagt til når en post blir opprettet eller oppdatert. Hvis du ikke ønsker å vise unike identifikatorer kan du skjule dem med regler for personvern."
 
 #: admin_trees_config.php:1647
 msgid "Unique individual facts"
@@ -15812,7 +15812,7 @@ msgstr "Du kan endre webtrees' utseende ved å bruke «temaer». Hvert tema har 
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
 msgid "You can choose the prefix that will be used whenever new XREFs are created."
-msgstr ""
+msgstr "Du kan velge hvilket prefiks som skal benyttes når nye XREF'er blir opprettet."
 
 #: admin_users.php:462 edituser.php:312
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
