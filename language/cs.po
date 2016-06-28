@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-26 14:06+0000\n"
-"Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
+"PO-Revision-Date: 2016-06-28 08:41+0000\n"
+"Last-Translator: Josef Pavlik <josef@pavlik.it>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -9770,7 +9770,7 @@ msgstr "Nejsou povoleny žádné vlastní moduly."
 
 #: admin_site_upgrade.php:207
 msgid "No custom themes are enabled."
-msgstr "Nejsou povoleny žádná vlastní témata."
+msgstr "Nejsou povolena žádná vlastní témata."
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
