@@ -70,7 +70,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 			<tr class="noprint">
 				<td colspan="2" class="descriptionbox rela">
 					<label>
-						<input id="checkbox_note2" type="checkbox" checked>
+						<input id="show-level-2-notes" type="checkbox">
 						<?php echo I18N::translate('Show all notes'); ?>
 					</label>
 				</td>
@@ -118,7 +118,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 		?>
 		</table>
 		<script>
-			persistant_toggle("checkbox_note2", ".row_note2");
+			persistant_toggle("show-level-2-notes", ".row_note2");
 		</script>
 		<?php
 

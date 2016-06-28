@@ -311,7 +311,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 			<tr class="noprint">
 				<td class="descriptionbox rela">
 					<label>
-						<input id="checkbox_elder" type="checkbox" checked>
+						<input id="show-date-differences" type="checkbox" checked>
 						<?php echo I18N::translate('Date differences'); ?>
 					</label>
 				</td>
@@ -400,7 +400,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 			</tr>
 		</table>
 		<script>
-			persistant_toggle("checkbox_elder", ".elderdate");
+			persistant_toggle("show-date-differences", ".elderdate");
 		</script>
 		<?php } ?>
 		<br>

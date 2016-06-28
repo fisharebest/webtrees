@@ -984,8 +984,8 @@ function persistant_toggle(checkbox_id, data_selector) {
 		return;
 	}
 
-	if (display !== "none") {
-		display = "";
+	if (display !== "") {
+		display = "none";
 	}
 
 	checkbox.checked = (display === "");
