@@ -3312,7 +3312,7 @@ msgstr "Kalenderomzetting"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
-msgid "Calgary, Alberata, Canada"
+msgid "Calgary, Alberta, Canada"
 msgstr "Calgary, Alberta, Canada"
 
 #. I18N: gedcom tag CALN

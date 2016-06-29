@@ -20326,7 +20326,7 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
-msgid "Calgary, Alberata, Canada"
+msgid "Calgary, Alberta, Canada"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
