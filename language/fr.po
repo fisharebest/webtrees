@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-29 18:38+0000\n"
+"PO-Revision-Date: 2016-06-29 18:41+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -3402,7 +3402,7 @@ msgstr "Îles Caïmanes"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
 msgid "Cebu City, Philippines"
-msgstr "Cebu City, Philippines"
+msgstr "Cebu, Philippines"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:29
@@ -10498,7 +10498,7 @@ msgstr "Panamá"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "Panama City, Panama"
-msgstr "Panama City, Panama"
+msgstr "Panama, Panama"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:253
@@ -13462,7 +13462,7 @@ msgstr "Contact technique"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:365
 msgid "Tegucigalpa, Honduras"
-msgstr "Tegucigalpa, Honduras"
+msgstr "Tégucigalpa, Honduras"
 
 #: app/Module/HtmlBlockModule.php:276
 msgid "Templates"
@@ -15460,7 +15460,7 @@ msgstr "Ouzbékistan"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:379
 msgid "Vancouver, British Columbia, Canada"
-msgstr "Vancouver, Columbie-Britannique, Canada"
+msgstr "Vancouver, Colombie-Britannique, Canada"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6923
