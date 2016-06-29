@@ -78,9 +78,9 @@ if ($controller->record && $controller->record->canShow()) {
 	// Continue - to display the children/parents/grandparents.
 	// We'll check for showing the details again later
 } else {
+	FlashMessages::addMessage(I18N::translate('This family does not exist or you do not have permission to view it.'), 'danger');
 	http_response_code(404);
 	$controller->pageHeader();
-	echo '<p class="ui-state-error">', I18N::translate('This family does not exist or you do not have permission to view it.'), '</p>';
 
 	return;
 }
@@ -126,7 +126,7 @@ if ($controller->record && $controller->record->canShow()) {
 								$controller->printFamilyFacts();
 								echo '</table>';
 							} else {
-								echo '<p class="ui-state-highlight">', I18N::translate('The details of this family are private.'), '</p>';
+								echo '<p>', I18N::translate('The details of this family are private.'), '</p>';
 							}
 							?>
 						</td>

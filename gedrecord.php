@@ -85,9 +85,9 @@ if ($controller->record && $controller->record->canShow()) {
 		}
 	}
 } else {
+	FlashMessages::addMessage(I18N::translate('This record does not exist or you do not have permission to view it.'), 'danger');
 	http_response_code(404);
 	$controller->pageHeader();
-	echo '<p class="ui-state-error">', I18N::translate('This record does not exist or you do not have permission to view it.'), '</p>';
 
 	return;
 }
