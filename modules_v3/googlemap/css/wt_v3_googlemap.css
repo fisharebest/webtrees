@@ -29,6 +29,7 @@
 
 /* Contains a map and a list of events */
 .gm-wrapper {
+	height: 400px;
 	border: 1px solid #888;
 	margin: 2px;
 	display: flex;
