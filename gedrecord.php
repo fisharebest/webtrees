@@ -54,7 +54,7 @@ if ($controller->record && $controller->record->canShow()) {
 				'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 			) . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
 		} elseif (Auth::isEditor($controller->record->getTree())) {
-			lashMessages::addMessage(I18N::translate('This record has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
+			FlashMessages::addMessage(I18N::translate('This record has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
 		}
 	} elseif ($controller->record->isPendingAddtion()) {
 		if (Auth::isModerator($controller->record->getTree())) {
