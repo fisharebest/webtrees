@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-28 17:44+0000\n"
+"PO-Revision-Date: 2016-06-30 19:38+0000\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -4040,7 +4040,7 @@ msgstr "Autoriõigus"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:145
 msgid "Cordoba, Argentina"
-msgstr "Cordoba, Argentiina"
+msgstr "Córdoba, Argentiina"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:326
