@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-28 18:10+0000\n"
+"PO-Revision-Date: 2016-07-02 20:28+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -1501,7 +1501,7 @@ msgstr "Napló- vagy hírbejegyzés felvétele/szerkesztése"
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
 msgid "Address"
-msgstr "Cím"
+msgstr "Elérhetőségi cím"
 
 #: app/GedcomTag.php:124
 msgid "Address line 1"
@@ -1671,7 +1671,7 @@ msgstr "Egy fiúgyermek örökbefogadása"
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
 msgid "Adult christening"
-msgstr "Felnőttkori keresztség"
+msgstr "Felnőttkeresztelő"
 
 #: admin_trees_config.php:2027
 msgid "Advanced fact preferences"
@@ -1771,7 +1771,7 @@ msgstr "Képviselet"
 #. I18N: Name of a country or state
 #: app/Stats.php:6679
 msgid "Aland Islands"
-msgstr "Åland-szigetek"
+msgstr "Åland"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6680
@@ -1870,7 +1870,7 @@ msgstr "Az összes forrástény"
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Engedélyezzük az összes többi modul szerkesztését egy „WYSIWYG”-szerkesztő használatával – HTML-kódok helyett."
+msgstr "Engedélyezzük a többi modul szövegszerkesztését egy „WYSIWYG”-szerkesztő használatával – HTML-kódok helyett."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1575
@@ -1890,19 +1890,19 @@ msgstr "Engedélyezzük a látogatóknak új felhasználói fiók igénylését"
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967
 msgid "Also known as"
-msgstr "Ismert mint"
+msgstr "Ismert, mint"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:963
 msgctxt "FEMALE"
 msgid "Also known as"
-msgstr "Ismert mint"
+msgstr "Ismert, mint"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:959
 msgctxt "MALE"
 msgid "Also known as"
-msgstr "Ismert mint"
+msgstr "Ismert, mint"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
@@ -2588,7 +2588,7 @@ msgstr "Irány"
 #: search_advanced.php:158 search_advanced.php:220 search_advanced.php:235
 #: search_advanced.php:256 search_advanced.php:271
 msgid "Begins with"
-msgstr "Evvel kezdődik"
+msgstr "Ezzel kezdődik"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6704
@@ -3683,7 +3683,7 @@ msgstr "Válasszon: "
 #: modules_v3/family_group_report/report.xml:904
 #: modules_v3/missing_facts_report/report.xml:16
 msgid "Christening"
-msgstr "Keresztelés"
+msgstr "Keresztelő"
 
 #: app/GedcomTag.php:1240
 msgid "Christening of a brother"
@@ -4416,7 +4416,7 @@ msgstr "UNSZ-felruházás dátuma"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:470
 msgid "Date of LDS spouse sealing"
-msgstr "UNSZ-házastárspecsételés dátuma"
+msgstr "UNSZ-házastárs-pecsételés dátuma"
 
 #: app/GedcomTag.php:132
 msgid "Date of adoption"
@@ -4455,7 +4455,7 @@ msgstr "Temetés dátuma"
 
 #: app/GedcomTag.php:280 modules_v3/missing_facts_report/report.xml:170
 msgid "Date of christening"
-msgstr "Keresztelés dátuma"
+msgstr "Keresztelő dátuma"
 
 #: app/GedcomTag.php:312 modules_v3/missing_facts_report/report.xml:294
 msgid "Date of confirmation"
@@ -4524,7 +4524,7 @@ msgstr "Felszentelés dátuma"
 
 #: app/GedcomTag.php:734
 msgid "Date of residence"
-msgstr "Tartózkodási dátum"
+msgstr "Tartózkodás dátuma"
 
 #: help_text.php:159
 msgid "Date period"
@@ -6927,17 +6927,17 @@ msgstr "Guam"
 
 #: app/GedcomCode/GedcomCodeRela.php:173
 msgid "Guardian"
-msgstr "Gyám"
+msgstr "Gondnok"
 
 #: app/GedcomCode/GedcomCodeRela.php:171
 msgctxt "FEMALE"
 msgid "Guardian"
-msgstr "Gyám"
+msgstr "Gondnok"
 
 #: app/GedcomCode/GedcomCodeRela.php:169
 msgctxt "MALE"
 msgid "Guardian"
-msgstr "Gyám"
+msgstr "Gondnok"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6770
@@ -7019,7 +7019,7 @@ msgstr "Feleség:"
 
 #: modules_v3/ahnentafel_report/report.xml:222
 msgid "He resided at"
-msgstr "Lakóhelye"
+msgstr "Tartózkodási helye"
 
 #: modules_v3/descendancy_report/report.xml:402
 msgid "He was born"
@@ -7056,7 +7056,7 @@ msgstr "Heard- és McDonald-szigetek"
 #. I18N: gedcom tag _HEB
 #: app/GedcomTag.php:1521
 msgid "Hebrew"
-msgstr "Héber név"
+msgstr "Héber"
 
 #. I18N: gedcom tag _HNM
 #: app/GedcomTag.php:1529
@@ -8138,7 +8138,7 @@ msgstr "Legkésőbbi házasság"
 #: app/GedcomTag.php:544 app/Module/GoogleMapsModule.php:1534
 #: app/Module/GoogleMapsModule.php:3600
 msgid "Latitude"
-msgstr "Földrajzi szélesség"
+msgstr "Szélesség"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6812
@@ -8380,7 +8380,7 @@ msgstr "Leghosszabb házasság"
 #: app/GedcomTag.php:552 app/Module/GoogleMapsModule.php:1535
 #: app/Module/GoogleMapsModule.php:3600
 msgid "Longitude"
-msgstr "Földrajzi hosszúság"
+msgstr "Hosszúság"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:185
@@ -8795,7 +8795,7 @@ msgstr "Házasságok helyszínei"
 #. I18N: gedcom tag MARS
 #: app/GedcomTag.php:592
 msgid "Marriage settlement"
-msgstr "Házassági szerződés"
+msgstr "Házassági vagyonjogi szerződés"
 
 #. I18N: gedcom tag _STAT
 #: app/GedcomTag.php:1735
@@ -9545,7 +9545,7 @@ msgstr "Névben előfordul"
 
 #: app/GedcomTag.php:610
 msgid "Name in Hebrew"
-msgstr "Héber neve"
+msgstr "Név héberül"
 
 #. I18N: gedcom tag NPFX
 #: app/GedcomTag.php:642
@@ -9866,7 +9866,7 @@ msgstr "A két személy között nem található kapcsolat."
 
 #: app/Module/GoogleMapsModule.php:186
 msgid "No map data exists for this individual"
-msgstr "E személy bejegyzésébe nem került térképadat"
+msgstr "E személy bejegyzésében nincs térképadat"
 
 #: admin_site_merge.php:237 admin_site_merge.php:284 admin_site_merge.php:330
 msgid "No matching facts found"
@@ -10849,7 +10849,7 @@ msgstr "Felszentelés helye"
 
 #: app/GedcomTag.php:736
 msgid "Place of residence"
-msgstr "Lakhely"
+msgstr "Tartózkodás helye"
 
 #: admin_site_upgrade.php:353
 #, php-format
@@ -11630,7 +11630,7 @@ msgstr "A kutatási teendőket az egyedi „_TODO” GEDCOM-címke használatáv
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
 msgid "Residence"
-msgstr "Lakhely"
+msgstr "Lakóhely"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
@@ -12483,7 +12483,7 @@ msgstr "Mutasd azokat a párokat, ahol csak a férfi hunyt el."
 
 #: app/Functions/FunctionsPrintLists.php:693
 msgid "Show couples who married more than 100 years ago."
-msgstr "Mutasd azokat a párokat, amelyek tagjai több mint 100 éve házasodtak össze."
+msgstr "Mutasd azokat a párokat, amelyek tagjai több, mint 100 éve házasodtak össze."
 
 #: app/Functions/FunctionsPrintLists.php:702
 msgid "Show couples who married within the last 100 years."
@@ -12526,7 +12526,7 @@ msgstr "Inaktív helyek mutatása"
 
 #: app/Functions/FunctionsPrintLists.php:227
 msgid "Show individuals born more than 100 years ago."
-msgstr "Mutasd azokat a személyeket, akik több mint 100 éve születtek."
+msgstr "Mutasd azokat a személyeket, akik több, mint 100 éve születtek."
 
 #: app/Functions/FunctionsPrintLists.php:236
 msgid "Show individuals born within the last 100 years."
@@ -12535,16 +12535,16 @@ msgstr "Mutasd azokat a személyeket, akik az elmúlt 100 évben születtek."
 #: app/Functions/FunctionsPrintLists.php:189
 #: app/Functions/FunctionsPrintLists.php:626
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "Mutasd az élő személyeket vagy párokat, melyek mindkét tagja él."
+msgstr "Mutasd az élő személyeket vagy párokat, amelyek mindkét tagja él."
 
 #: app/Functions/FunctionsPrintLists.php:198
 #: app/Functions/FunctionsPrintLists.php:653
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Mutasd az elhunyt személyeket vagy párokat, melyek mindkét tagja elhunyt."
+msgstr "Mutasd az elhunyt személyeket vagy párokat, amelyek mindkét tagja elhunyt."
 
 #: app/Functions/FunctionsPrintLists.php:207
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Mutasd azokat a személyeket, akik több mint 100 éve hunytak el."
+msgstr "Mutasd azokat a személyeket, akik több, mint 100 éve hunytak el."
 
 #: app/Functions/FunctionsPrintLists.php:216
 msgid "Show individuals who died within the last 100 years."
@@ -12651,7 +12651,7 @@ msgstr "Mutasd a jövőben kutatandó feladatokat"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Mutassuk a lakhelyeket"
+msgstr "Mutassuk a lakóhelyeket"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
@@ -13181,7 +13181,7 @@ msgstr "Módosítási dátumtól"
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:800 app/Module/GoogleMapsModule.php:3577
 msgid "State"
-msgstr "Állam/tartomány"
+msgstr "Állam"
 
 #. I18N: Name of a module
 #. I18N: Name of a module/chart
@@ -14057,7 +14057,7 @@ msgstr "E személy bejegyzésében nincs médiaobjektum."
 
 #: app/Module/NotesTabModule.php:90
 msgid "There are no notes for this individual."
-msgstr "E személy rekordjában nincs jegyzet."
+msgstr "E személy bejegyzésében nincs jegyzet."
 
 #: admin_site_upgrade.php:104
 msgid "There are no pending changes."
@@ -14069,7 +14069,7 @@ msgstr "Ebben a családfában nincs kutatandó feladat."
 
 #: app/Module/SourcesTabModule.php:83
 msgid "There are no source citations for this individual."
-msgstr "E személy rekordjában nincs forrásidézet."
+msgstr "E személy bejegyzésében nincs forrásidézet."
 
 #: app/Module/ReviewChangesModule.php:87
 #: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1961
@@ -14777,7 +14777,7 @@ msgstr "Tisri"
 #: app/GedcomTag.php:834 app/Module/FamilyTreeFavoritesModule.php:224
 #: editnews.php:68 modules_v3/GEDFact_assistant/census/census-edit.php:139
 msgid "Title"
-msgstr "Cím"
+msgstr "Mű-/szövegcím"
 
 #: app/GedcomTag.php:840
 msgid "Title in Hebrew"
