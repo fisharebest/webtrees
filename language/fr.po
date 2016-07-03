@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-29 18:41+0000\n"
+"PO-Revision-Date: 2016-07-03 06:57+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -988,7 +988,7 @@ msgstr "Rapport des actes d’état civil (naissance, mariage, décès) pour une
 
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Un rôle est un ensemble de droits d’accès qui permettent d’afficher des données, de modifier les préférences, etc. Les droits d’accès sont affectés à des rôles, et les rôles sont accordés aux utilisateurs. Chaque arbre généalogique peut attribuer un accès différent à chaque rôle, et les utilisateurs peuvent avoir un rôle différent dans chaque arbre généalogique."
+msgstr "Un rôle est un ensemble de droits d’accès qui permettent de voir des données, de modifier les préférences, etc. Les droits d’accès sont affectés à des rôles, et les rôles sont accordés aux utilisateurs. Chaque arbre généalogique peut attribuer un accès différent à chaque rôle, et les utilisateurs peuvent avoir un rôle différent dans chaque arbre généalogique."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1911,7 +1911,7 @@ msgstr "Samoas américaines"
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Un article de FAQ peut être affiché sur un arbre seulement ou sur tous les arbres généalogiques."
+msgstr "Un article de FAQ peut être affiché sur un seul arbre ou sur tous les arbres généalogiques."
 
 #: admin_site_config.php:491
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -15866,11 +15866,11 @@ msgstr "Winter Quarters, Nebraska, États-Unis"
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"
-msgstr "Avec les sources"
+msgstr "Avec sources"
 
 #: app/Stats.php:420 app/Stats.php:518
 msgid "Without sources"
-msgstr "Sans les sources"
+msgstr "Sans sources"
 
 #. I18N: gedcom tag _WITN
 #: app/GedcomCode/GedcomCodeRela.php:267 app/GedcomTag.php:1763
