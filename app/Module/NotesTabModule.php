@@ -58,7 +58,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $WT_TREE, $controller;
+		global $controller;
 
 		ob_start();
 		?>
@@ -69,8 +69,10 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 			</colgroup>
 			<tr class="noprint">
 				<td colspan="2" class="descriptionbox rela">
-					<input id="checkbox_note2" type="checkbox" <?php echo $WT_TREE->getPreference('SHOW_LEVEL2_NOTES') ? 'checked' : ''; ?> onclick="jQuery('tr.row_note2').toggle();">
-					<label for="checkbox_note2"><?php echo I18N::translate('Show all notes'); ?></label>
+					<label>
+						<input id="show-level-2-notes" type="checkbox">
+						<?php echo I18N::translate('Show all notes'); ?>
+					</label>
 				</td>
 			</tr>
 
@@ -115,10 +117,10 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 		}
 		?>
 		</table>
+		<script>
+			persistant_toggle("show-level-2-notes", ".row_note2");
+		</script>
 		<?php
-		if (!$WT_TREE->getPreference('SHOW_LEVEL2_NOTES')) {
-			echo '<script>jQuery("tr.row_note2").toggle();</script>';
-		}
 
 		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 	}

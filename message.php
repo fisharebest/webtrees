@@ -297,14 +297,12 @@ function addMessage($message) {
 	}
 	if ($message['method'] !== 'messaging') {
 		if ($sender) {
-			$original_email = I18N::translate('The following message has been sent to your webtrees user account from ');
-			$original_email .= $sender->getRealNameHtml();
+			$original_email = /* I18N: %s is a person's name */ I18N::translate('%s sent you the following message.', $sender->getRealNameHtml());
 		} else {
-			$original_email = I18N::translate('The following message has been sent to your webtrees user account from ');
 			if (!empty($message['from_name'])) {
-				$original_email .= $message['from_name'];
+				$original_email = /* I18N: %s is a person's name */ I18N::translate('%s sent you the following message.', $message['from_name']);
 			} else {
-				$original_email .= $message['from'];
+				$original_email = /* I18N: %s is a person's name */ I18N::translate('%s sent you the following message.', $message['from']);
 			}
 		}
 		$original_email .= Mail::EOL . Mail::EOL . $message['body'];

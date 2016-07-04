@@ -217,7 +217,7 @@ if ($changed_gedcoms) {
 		if ($count != 0) {
 			$output2 .= '<br>';
 		}
-		$output2 .= '<a href="edit_changes.php?action=acceptall&amp;ged=' . rawurlencode($gedcom_name) . '">' . $gedcom_name . ' - ' . I18N::translate('Accept all changes') . '</a>';
+		$output2 .= $gedcom_name . ' — ' . '<a href="edit_changes.php?action=acceptall&amp;ged=' . rawurlencode($gedcom_name) . '">' . I18N::translate('Accept all changes') . '</a>';
 		$count++;
 	}
 	$output2 .= '</td>';
@@ -228,7 +228,7 @@ if ($changed_gedcoms) {
 		if ($count != 0) {
 			$output2 .= '<br>';
 		}
-		$output2 .= '<a href="edit_changes.php?action=undoall&amp;ged=' . rawurlencode($gedcom_name) . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to reject all the changes to this family tree?') . '\');">' . $gedcom_name . ' - ' . I18N::translate('Reject all changes') . '</a>';
+		$output2 .= $gedcom_name . ' — ' . '<a href="edit_changes.php?action=undoall&amp;ged=' . rawurlencode($gedcom_name) . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to reject all the changes to this family tree?') . '\');">' . I18N::translate('Reject all changes') . '</a>';
 		$count++;
 	}
 	$output2 .= '</td></tr></table>';

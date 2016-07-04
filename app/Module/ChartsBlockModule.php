@@ -182,31 +182,40 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
 		$pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
+		$charts = array(
+			'pedigree'    => I18N::translate('Pedigree'),
+			'descendants' => I18N::translate('Descendants'),
+			'hourglass'   => I18N::translate('Hourglass chart'),
+			'treenav'     => I18N::translate('Interactive tree'),
+		);
+		uasort($charts, 'Fisharebest\Webtrees\I18N::strcasecmp');
+
 		$controller
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('autocomplete();');
 	?>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php echo I18N::translate('Chart type'); ?></td>
+			<td class="descriptionbox wrap width33">
+				<?php echo I18N::translate('Chart type'); ?>
+			</td>
 			<td class="optionbox">
-				<?php echo FunctionsEdit::selectEditControl('type',
-				array(
-					'pedigree'    => I18N::translate('Pedigree'),
-					'descendants' => I18N::translate('Descendants'),
-					'hourglass'   => I18N::translate('Hourglass chart'),
-					'treenav'     => I18N::translate('Interactive tree'),
-				),
-				null, $type); ?>
+				<?php echo FunctionsEdit::selectEditControl('type', $charts, null, $type); ?>
 			</td>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php echo I18N::translate('Show details'); ?></td>
+			<td class="descriptionbox wrap width33">
+				<?php echo I18N::translate('Show details'); ?>
+			</td>
 		<td class="optionbox">
 			<?php echo FunctionsEdit::editFieldYesNo('details', $details); ?>
 			</td>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php echo I18N::translate('Individual'); ?></td>
+			<td class="descriptionbox wrap width33">
+				<label for="pid">
+					<?php echo I18N::translate('Individual'); ?>
+				</label>
+			</td>
 			<td class="optionbox">
 				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php

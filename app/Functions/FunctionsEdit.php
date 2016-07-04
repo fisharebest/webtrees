@@ -1059,6 +1059,7 @@ class FunctionsEdit {
 			// 3 PAGE
 			self::addSimpleTag(($level + 1) . ' PAGE');
 			// 3 DATA
+			self::addSimpleTag(($level + 1) . ' DATA');
 			// 4 TEXT
 			self::addSimpleTag(($level + 2) . ' TEXT');
 			if ($WT_TREE->getPreference('FULL_SOURCES')) {
@@ -1567,15 +1568,14 @@ class FunctionsEdit {
 	/**
 	 * Create a form to edit a Fact object.
 	 *
-	 * @param GedcomRecord $record
 	 * @param Fact $fact
 	 *
 	 * @return string
 	 */
-	public static function createEditForm(GedcomRecord $record, Fact $fact) {
-		global $tags, $WT_TREE;
+	public static function createEditForm(Fact $fact) {
+		global $tags;
 
-		$pid = $record->getXref();
+		$record = $fact->getParent();
 
 		$tags     = array();
 		$gedlines = explode("\n", $fact->getGedcom());
@@ -1586,14 +1586,14 @@ class FunctionsEdit {
 		$level   = $glevel;
 
 		$type       = $fact->getTag();
-		$parent     = $fact->getParent();
-		$level0type = $parent::RECORD_TYPE;
+		$level0type = $record::RECORD_TYPE;
 		$level1type = $type;
 
 		$i           = $linenum;
 		$inSource    = false;
 		$levelSource = 0;
 		$add_date    = true;
+
 		// List of tags we would expect at the next level
 		// NB add_missing_subtags() already takes care of the simple cases
 		// where a level 1 tag is missing a level 2 tag. Here we only need to
@@ -1608,17 +1608,23 @@ class FunctionsEdit {
 			$expected_subtags['SOUR'][] = 'QUAY';
 			$expected_subtags['DATA'][] = 'DATE';
 		}
+		if (GedcomCodeTemp::isTagLDS($level1type)) {
+			$expected_subtags['STAT'] = array('DATE');
+		}
+		if (in_array($level1type, Config::dateAndTime())) {
+			$expected_subtags['DATE'] = array('TIME'); // TIME is NOT a valid 5.5.1 tag
+		}
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $record->getTree()->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 			$expected_subtags['PLAC'] = array_merge($match[1], $expected_subtags['PLAC']);
 		}
 
-		$stack = array(0 => $level0type);
+		$stack = array();
 		// Loop on existing tags :
 		while (true) {
 			// Keep track of our hierarchy, e.g. 1=>BIRT, 2=>PLAC, 3=>FONE
-			$stack[(int) $level] = $type;
+			$stack[$level] = $type;
 			// Merge them together, e.g. BIRT:PLAC:FONE
-			$label = implode(':', array_slice($stack, 1, $level));
+			$label = implode(':', array_slice($stack, 0, $level));
 
 			$text = '';
 			for ($j = 2; $j < count($fields); $j++) {
@@ -1642,29 +1648,25 @@ class FunctionsEdit {
 
 			if ($type !== 'CONT') {
 				$tags[]    = $type;
-				$person    = Individual::getInstance($pid, $WT_TREE);
 				$subrecord = $level . ' ' . $type . ' ' . $text;
 				if ($inSource && $type === 'DATE') {
-					self::addSimpleTag($subrecord, '', GedcomTag::getLabel($label, $person));
+					self::addSimpleTag($subrecord, '', GedcomTag::getLabel($label, $record));
 				} elseif (!$inSource && $type === 'DATE') {
-					self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $person));
+					self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $record));
 					if ($level === '2') {
 						// We already have a date - no need to add one.
 						$add_date = false;
 					}
 				} elseif ($type === 'STAT') {
-					self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $person));
-				} elseif ($level0type === 'REPO') {
-					$repo = Repository::getInstance($pid, $WT_TREE);
-					self::addSimpleTag($subrecord, $level0type, GedcomTag::getLabel($label, $repo));
+					self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $record));
 				} else {
-					self::addSimpleTag($subrecord, $level0type, GedcomTag::getLabel($label, $person));
+					self::addSimpleTag($subrecord, $level0type, GedcomTag::getLabel($label, $record));
 				}
 			}
 
 			// Get a list of tags present at the next level
 			$subtags = array();
-			for ($ii = $i + 1; isset($gedlines[$ii]) && preg_match('/^\s*(\d+)\s+(\S+)/', $gedlines[$ii], $mm) && $mm[1] > $level; ++$ii) {
+			for ($ii = $i + 1; isset($gedlines[$ii]) && preg_match('/^(\d+) (\S+)/', $gedlines[$ii], $mm) && $mm[1] > $level; ++$ii) {
 				if ($mm[1] == $level + 1) {
 					$subtags[] = $mm[2];
 				}
@@ -1682,14 +1684,6 @@ class FunctionsEdit {
 						}
 					}
 				}
-			}
-
-			// Awkward special cases
-			if ($level == 2 && $type === 'DATE' && in_array($level1type, Config::dateAndTime()) && !in_array('TIME', $subtags)) {
-				self::addSimpleTag('3 TIME'); // TIME is NOT a valid 5.5.1 tag
-			}
-			if ($level == 2 && $type === 'STAT' && GedcomCodeTemp::isTagLDS($level1type) && !in_array('DATE', $subtags)) {
-				self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('STAT:DATE'));
 			}
 
 			$i++;

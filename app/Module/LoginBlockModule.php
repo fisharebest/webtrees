@@ -50,9 +50,10 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$controller->addInlineJavascript('
 			jQuery("#new_passwd").hide();
 			jQuery("#passwd_click").click(function() {
-				jQuery("#new_passwd").slideToggle(100, function() {
-					jQuery("#new_passwd_username").focus();
-				});
+				jQuery("#new_passwd").slideToggle(200);
+				jQuery("#register-link").slideToggle(200);
+				jQuery("#new_passwd_username").focus();
+
 				return false;
 			});
 		');
@@ -86,7 +87,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 					<a href="#" id="passwd_click">' . I18N::translate('Forgot password?') . '</a>
 				</div>';
 			if (Site::getPreference('USE_REGISTRATION_MODULE')) {
-				$content .= '<div><a href="' . WT_LOGIN_URL . '?action=register">' . I18N::translate('Request a new user account') . '</a></div>';
+				$content .= '<div id="register-link"><a href="' . WT_LOGIN_URL . '?action=register">' . I18N::translate('Request a new user account') . '</a></div>';
 			}
 		$content .= '</form>'; // close "login-form"
 

@@ -309,7 +309,7 @@ function checkform(frm) {
 			<div class="value">
 				<?php echo FunctionsEdit::checkbox('form_visible_online', Auth::user()->getPreference('visibleonline')); ?>
 				<p class="small text-muted">
-					<?php echo I18N::translate('This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible.'); ?>
+					<?php echo I18N::translate('You can choose whether to appear in the list of users who are currently signed-in.'); ?>
 				</p>
 			</div>
 		</div>

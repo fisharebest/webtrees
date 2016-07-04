@@ -295,13 +295,15 @@ document.onmouseup = function () {
 				</td>
 			<?php } ?>
 			<td class="list_value" style="padding: 5px;">
-				<?php echo I18N::translate('Add another individual to the chart'), '<br>'; ?>
+				<label for="newpid">
+					<?php echo I18N::translate('Add another individual to the chart'), '<br>'; ?>
+				</label>
 				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="pids[]">
 				<?php echo FunctionsPrint::printFindIndividualLink('newpid'); ?>
 				<br>
 				<br>
 
-				<div style="text-align: center;"><input type="submit" value="<?php echo I18N::translate('Add'); ?>"></div>
+				<div style="text-align: center;"><input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('add'); ?>"></div>
 			</td>
 			<?php
 			if (count($controller->people) > 0) {
@@ -326,7 +328,7 @@ if (count($controller->people) > 0) {
 		<img src="<?php echo Theme::theme()->parameter('image-vline'); ?>" width="3" height="<?php echo $baseyoffset + ($controller->topyear - $controller->baseyear) * $controller->scale; ?>">
 		</div>
 		<!-- print divs for the grid -->
-		<div id="scale<?php echo $controller->baseyear; ?>" style="position:absolute; <?php echo I18N::direction() === 'ltr' ? "left: $basexoffset" : "right: $basexoffset"; ?>px; top: <?php echo $baseyoffset - 5; ?>px; font-size: 7pt; text-align: <?php echo I18N::direction() === 'ltr' ? 'left' : 'right'; ?>;">
+		<div id="scale<?php echo $controller->baseyear; ?>" style="position:absolute; <?php echo I18N::direction() === 'ltr' ? 'left:' . $basexoffset : 'right:' . $basexoffset; ?>px; top: <?php echo $baseyoffset - 5; ?>px; font-size: 7pt; text-align: <?php echo I18N::direction() === 'ltr' ? 'left' : 'right'; ?>;">
 			<?php echo $controller->baseyear . '—'; ?>
 		</div>
 		<?php

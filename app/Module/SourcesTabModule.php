@@ -58,15 +58,17 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $controller, $WT_TREE;
+		global $controller;
 
 		ob_start();
 		?>
 		<table class="facts_table">
 			<tr class="noprint">
 				<td colspan="2" class="descriptionbox rela">
-				<input id="checkbox_sour2" type="checkbox" <?php echo $WT_TREE->getPreference('SHOW_LEVEL2_NOTES') ? 'checked' : ''; ?> onclick="jQuery('tr.row_sour2').toggle();">
-				<label for="checkbox_sour2"><?php echo I18N::translate('Show all sources'); ?></label>
+					<label>
+						<input id="show-level-2-sources" type="checkbox">
+						<?php echo I18N::translate('Show all sources'); ?>
+					</label>
 				</td>
 			</tr>
 			<?php
@@ -98,10 +100,10 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 			}
 			?>
 		</table>
+		<script>
+			persistant_toggle("show-level-2-sources", ".row_sour2");
+		</script>
 		<?php
-		if (!$WT_TREE->getPreference('SHOW_LEVEL2_NOTES')) {
-			echo '<script>jQuery("tr.row_sour2").toggle();</script>';
-		}
 
 		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 	}

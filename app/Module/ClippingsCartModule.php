@@ -429,7 +429,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 
 							<tr>
 								<td class="topbottombar" colspan="2">
-									<input type="submit" value="<?php echo I18N::translate('Download'); ?>">
+									<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('download'); ?>">
 								</td>
 							</tr>
 						</table>
@@ -793,8 +793,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		</td></tr>
 
 		<tr><td class="topbottombar" colspan="2">
-		<input type="button" value="' . I18N::translate('Cancel') . '" onclick="cancelDownload();">
-		<input type="submit" value="' . I18N::translate('Download') . '">
+		<input type="button" value="' . /* I18N: A button label. */ I18N::translate('cancel') . '" onclick="cancelDownload();">
+		<input type="submit" value="' . /* I18N: A button label. */ I18N::translate('download') . '">
 		</form>';
 
 		return $out;

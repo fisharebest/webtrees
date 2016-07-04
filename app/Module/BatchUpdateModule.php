@@ -225,7 +225,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 
 				<?php if (!Auth::user()->getPreference('auto_accept')): ?>
 				<div class="alert alert-danger">
-				<?php echo I18N::translate('Your user account does not have “automatically approve changes” enabled. You will only be able to change one record at a time.'); ?>
+				<?php echo I18N::translate('Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time.'); ?>
 				</div>
 			<?php endif; ?>
 

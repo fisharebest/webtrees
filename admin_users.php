@@ -120,7 +120,6 @@ case 'save':
 
 			foreach (Tree::getAll() as $tree) {
 				$tree->setUserPreference($user, 'gedcomid', Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF));
-				$tree->setUserPreference($user, 'rootid', Filter::post('rootid' . $tree->getTreeId(), WT_REGEX_XREF));
 				$tree->setUserPreference($user, 'canedit', Filter::post('canedit' . $tree->getTreeId(), implode('|', array_keys($ALL_EDIT_OPTIONS))));
 				if (Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF)) {
 					$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', Filter::postInteger('RELATIONSHIP_PATH_LENGTH' . $tree->getTreeId(), 0, 10, 0));
@@ -439,10 +438,10 @@ case 'edit':
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" name="auto_accept" value="1" <?php echo $user->getPreference('auto_accept') ? 'checked' : ''; ?>>
-						<?php echo I18N::translate('Automatically approve changes made by this user'); ?>
+						<?php echo I18N::translate('Automatically accept changes made by this user'); ?>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('Normally, any changes made to a family tree need to be approved by a moderator. This option allows a user to make changes without needing a moderator’s approval.'); ?>
+						<?php echo I18N::translate('Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator.'); ?>
 					</p>
 				</div>
 			</div>
@@ -460,7 +459,7 @@ case 'edit':
 						<?php echo /* I18N: A configuration setting */ I18N::translate('Visible to other users when online'); ?>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('This checkbox controls your visibility to other users while you’re online. It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users. When this box is checked, exactly the opposite is true. You will be visible to others, and you will also be able to see others who are configured to be visible.'); ?>
+						<?php echo I18N::translate('You can choose whether to appear in the list of users who are currently signed-in.'); ?>
 					</p>
 				</div>
 			</div>
@@ -518,7 +517,7 @@ case 'edit':
 			</div>
 		</div>
 
-		<h3><?php echo I18N::translate('Family tree access and settings'); ?></h3>
+		<h3><?php echo I18N::translate('Access to family trees'); ?></h3>
 
 		<p>
 			<?php echo I18N::translate('A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree.'); ?>
@@ -544,13 +543,13 @@ case 'edit':
 					<?php echo I18N::translate('Editor'); ?>
 				</h4>
 				<p class="small text-muted">
-					<?php echo I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled.'); ?>
+					<?php echo I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled.'); ?>
 				</p>
 				<h4>
 					<?php echo I18N::translate('Moderator'); ?>
 				</h4>
 				<p class="small text-muted">
-					<?php echo I18N::translate('This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users.'); ?>
+					<?php echo I18N::translate('This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users.'); ?>
 				</p>
 			</div>
 			<div class="col-xs-4">
@@ -579,9 +578,6 @@ case 'edit':
 						<?php echo I18N::translate('Role'); ?>
 					</th>
 					<th>
-						<?php echo I18N::translate('Default individual'); ?>
-					</th>
-					<th>
 						<?php echo I18N::translate('Individual record'); ?>
 						</th>
 					<th>
@@ -592,11 +588,6 @@ case 'edit':
 					<td>
 					</td>
 					<td>
-					</td>
-					<td>
-						<p class="small text-muted">
-							<?php echo I18N::translate('This individual will be selected by default when viewing charts and reports.'); ?>
-						</p>
 					</td>
 					<td>
 						<p class="small text-muted">
@@ -628,18 +619,6 @@ case 'edit':
 								</option>
 							<?php endforeach; ?>
 						</select>
-					</td>
-					<td>
-						<input
-							data-autocomplete-type="INDI"
-							data-autocomplete-ged="<?php echo Filter::escapeHtml($tree->getName()); ?>"
-							type="text"
-							size="12"
-							name="rootid<?php echo $tree->getTreeId(); ?>"
-							id="rootid<?php echo $tree->getTreeId(); ?>"
-							value="<?php echo Filter::escapeHtml($tree->getUserPreference($user, 'rootid')); ?>"
-						>
-						<?php echo FunctionsPrint::printFindIndividualLink('rootid' . $tree->getTreeId(), '', $tree); ?>
 					</td>
 					<td>
 						<input

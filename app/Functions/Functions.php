@@ -231,16 +231,16 @@ class Functions {
 	 * For close family relationships, such as the families tab and the family navigator
 	 * Display a tick if both individuals are the same.
 	 *
-	 * @param Individual $person1
-	 * @param Individual $person2
+	 * @param Individual $individual1
+	 * @param Individual $individual2
 	 *
 	 * @return string
 	 */
-	public static function getCloseRelationshipName(Individual $person1, Individual $person2) {
-		if ($person1 === $person2) {
-			$label = '<i class="icon-selected"></i> ' . I18N::translate('self');
+	public static function getCloseRelationshipName(Individual $individual1, Individual $individual2) {
+		if ($individual1 === $individual2) {
+			$label = '<i class="icon-selected"></i> ' . self::reflexivePronoun($individual1);
 		} else {
-			$label = self::getRelationshipName(self::getRelationship($person1, $person2));
+			$label = self::getRelationshipName(self::getRelationship($individual1, $individual2));
 		}
 
 		return $label;
@@ -249,19 +249,37 @@ class Functions {
 	/**
 	 * For facts on the individual/family pages.
 	 *
-	 * @param Individual $person1
-	 * @param Individual $person2
+	 * @param Individual $individual1
+	 * @param Individual $individual2
 	 *
 	 * @return string
 	 */
-	public static function getAssociateRelationshipName(Individual $person1, Individual $person2) {
-		if ($person1 === $person2) {
-			$label = I18N::translate('self');
+	public static function getAssociateRelationshipName(Individual $individual1, Individual $individual2) {
+		if ($individual1 === $individual2) {
+			$label = self::reflexivePronoun($individual1);
 		} else {
-			$label = self::getRelationshipName(self::getRelationship($person1, $person2));
+			$label = self::getRelationshipName(self::getRelationship($individual1, $individual2));
 		}
 
 		return $label;
+	}
+
+	/**
+	 * Generate a reflexive pronoun for an individual
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return string
+	 */
+	private static function reflexivePronoun(Individual $individual) {
+		switch ($individual->getSex()) {
+		case 'M':
+			return /* I18N: reflexive pronoun */ I18N::translate('himself');
+		case 'F':
+			return /* I18N: reflexive pronoun */ I18N::translate('herself');
+		default:
+			return /* I18N: reflexive pronoun - gender neutral version of himself/herself */ I18N::translate('themself');
+		}
 	}
 
 	/**

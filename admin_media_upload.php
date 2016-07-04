@@ -260,5 +260,5 @@ for ($i = 1; $i < 6; $i++) {
 	echo '</table>';
 }
 // Print the Submit button for uploading the media
-echo '<input type="submit" value="', I18N::translate('Upload'), '">';
+echo '<input type="submit" value="', /* I18N: A button label. */ I18N::translate('upload'), '">';
 echo '</form>';

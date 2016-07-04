@@ -29,6 +29,7 @@
 
 /* Contains a map and a list of events */
 .gm-wrapper {
+	height: 400px;
 	border: 1px solid #888;
 	margin: 2px;
 	display: flex;
@@ -59,7 +60,7 @@
 }
 
 .gm-pedigree-map .gm-info-window {
-	width: 300px;
+	display: flex;
 }
 
 .gm-info-window-header {
@@ -90,10 +91,10 @@
 	margin: 0;
 	padding: 0;
 	height: 19px;
+	display: flex;
 }
 
 .gm-tab {
-	float: left;
 	list-style-type: none;
 	margin: 0 2px;
 	background-color: #eee;
@@ -103,10 +104,6 @@
 	height: 18px;
 	display: block;
 	padding: 0 10px;
-}
-
-[dir=rtl] .gm-tab {
-	float: right;
 }
 
 .gm-tab-active,
@@ -123,7 +120,8 @@
 	min-height: 50px;
 	margin: 5px;
 	padding: 0!important;
-	border: 1px solid transparent;
+	border: 1px dotted #aaa;
+	display: flex;
 }
 
 .gm-ancestor-visited {
@@ -141,30 +139,19 @@
 /* We have a link inside something that behaves like a link, and therefore must look like a link. */
 .gm-ancestor-link {
 	cursor: pointer;
+	width: 100%;
 }
 
 .gm-wrapper .gallery {
-	float: left;
 	width: 50px;
-}
-
-[dir=rtl] .gm-wrapper .gallery {
-	float: right;
 }
 
 .gm-ancestors .gallery img,
 .gm-style-iw .gallery img {
-	float: right;
 	height: auto;
-	margin: 0 4px;
 	max-height: 50px;
 	max-width: 36px;
 	width: auto;
-}
-
-[dir=rtl] .gm-ancestors .gallery img,
-[dir=rtl] .gm-style-iw .gallery img {
-	float: left;
 }
 
 .gm-ancestors .icon-silhouette-M,
@@ -173,26 +160,8 @@
 .gm-style-iw .icon-silhouette-M,
 .gm-style-iw .icon-silhouette-F,
 .gm-style-iw .icon-silhouette-U {
-	float: left;
 	max-height: 50px;
 	width: 50px;
-}
-
-[dir=rtl] .gm-ancestors .icon-silhouette-M,
-[dir=rtl] .gm-ancestors .icon-silhouette-F,
-[dir=rtl] .gm-ancestors .icon-silhouette-U,
-[dir=rtl] .gm-style-iw .icon-silhouette-M,
-[dir=rtl] .gm-style-iw .icon-silhouette-F,
-[dir=rtl] .gm-style-iw .icon-silhouette-U {
-	float: right;
-}
-
-.gm-ancestors img {
-	padding-right: 5px;
-}
-
-[dir=rtl] .gm-ancestors img {
-	padding-left: 5px;
 }
 
 .gm-streetview-frame {

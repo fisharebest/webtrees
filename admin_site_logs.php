@@ -303,15 +303,15 @@ foreach (User::all() as $tmp_user) {
 
 	<div class="row text-center">
 		<button type="submit" class="btn btn-primary">
-			<?php echo I18N::translate('Filter') ?>
+			<?php echo /* I18N: A button label. */ I18N::translate('search') ?>
 		</button>
 
 		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled' ?>>
-			<?php echo I18N::translate('Export') ?>
+			<?php echo /* I18N: A button label. */ I18N::translate('download') ?>
 		</button>
 
 		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo I18N::translate('Permanently delete these records?') ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled' ?>>
-			<?php echo I18N::translate('Delete') ?>
+			<?php echo /* I18N: A button label. */ I18N::translate('delete') ?>
 		</button>
 	</div>
 </form>

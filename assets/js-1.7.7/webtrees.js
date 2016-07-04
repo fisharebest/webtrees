@@ -21,7 +21,7 @@ var indx_window_specs = 'width=600,height=600,left=75,top=50,resizable=1,scrollb
 var news_window_specs = 'width=620,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_news.php
 var find_window_specs = 'width=550,height=600,left=75,top=50,resizable=1,scrollbars=1'; // find.php, inverse_link.php
 var mesg_window_specs = 'width=620,height=600,left=75,top=50,resizable=1,scrollbars=1'; // message.php
-var chan_window_specs = 'width=500,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_changes.php
+var chan_window_specs = 'width=600,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_changes.php
 var mord_window_specs = 'width=500,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
 var assist_window_specs = 'width=800,height=600,left=75,top=50,resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
 var gmap_window_specs = 'width=650,height=600,left=75,top=50,resizable=1,scrollbars=1'; // googlemap module place editing
@@ -527,7 +527,7 @@ function valid_date(datefield) {
 
 	// Americans frequently enter dates as SEP 20, 1999
 	// No need to internationalise this, as this is an english-language issue
-	datestr = datestr.replace(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
+	datestr = datestr.replace(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\.? (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
 
 	// Apply leading zero to day numbers
 	datestr = datestr.replace(/(^| )(\d [A-Z]{3,5} \d{4})/, "$10$2");
@@ -967,6 +967,40 @@ function ilinkitem(mediaid, type, ged) {
 function message(username, method, url) {
 	window.open("message.php?to=" + encodeURIComponent(username) + "&method=" + encodeURIComponent(method) + "&url=" + encodeURIComponent(url), "_blank", mesg_window_specs);
 	return false;
+}
+
+/**
+ * Persistant checkbox options to hide/show extra data.
+
+ * @param checkbox_id
+ * @param data_selector
+ */
+function persistant_toggle(checkbox_id, data_selector) {
+	var checkbox = document.getElementById(checkbox_id);
+	var elements = document.querySelectorAll(data_selector);
+	var display  = localStorage.getItem(checkbox_id);
+
+	if (!checkbox) {
+		return;
+	}
+
+	if (display !== "") {
+		display = "none";
+	}
+
+	checkbox.checked = (display === "");
+	for (var i = 0; i < elements.length; ++i) {
+		elements[i].style.display = display;
+	}
+
+	checkbox.addEventListener("click", function () {
+		console.log(display);
+		display = (display === "" ? "none" : "");
+		localStorage.setItem(checkbox_id, display);
+		for (var i = 0; i < elements.length; ++i) {
+			elements[i].style.display = display;
+		}
+	});
 }
 
 function valid_lati_long(field, pos, neg) {

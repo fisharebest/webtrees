@@ -44,9 +44,9 @@ $hide_show = array(
 );
 
 $surname_list_styles = array(
-	'style1' => /* I18N: Layout option for lists of surnames */ I18N::translate('list'),
-	'style2' => /* I18N: Layout option for lists of surnames */ I18N::translate('table'),
-	'style3' => /* I18N: Layout option for lists of surnames */ I18N::translate('tag cloud'),
+	'style1' => /* I18N: Layout option for lists of names */ I18N::translate('list'),
+	'style2' => /* I18N: Layout option for lists of names */ I18N::translate('table'),
+	'style3' => /* I18N: Layout option for lists of names */ I18N::translate('tag cloud'),
 );
 
 $layouts = array(
@@ -206,7 +206,6 @@ case 'general':
 	$WT_TREE->setPreference('CONTACT_USER_ID', Filter::post('CONTACT_USER_ID'));
 	$WT_TREE->setPreference('DEFAULT_PEDIGREE_GENERATIONS', Filter::post('DEFAULT_PEDIGREE_GENERATIONS'));
 	$WT_TREE->setPreference('EXPAND_NOTES', Filter::postBool('EXPAND_NOTES'));
-	$WT_TREE->setPreference('EXPAND_RELATIVES_EVENTS', Filter::postBool('EXPAND_RELATIVES_EVENTS'));
 	$WT_TREE->setPreference('EXPAND_SOURCES', Filter::postBool('EXPAND_SOURCES'));
 	$WT_TREE->setPreference('FAM_FACTS_ADD', str_replace(' ', '', Filter::post('FAM_FACTS_ADD')));
 	$WT_TREE->setPreference('FAM_FACTS_QUICK', str_replace(' ', '', Filter::post('FAM_FACTS_QUICK')));
@@ -244,7 +243,6 @@ case 'general':
 	$WT_TREE->setPreference('REPO_ID_PREFIX', Filter::post('REPO_ID_PREFIX'));
 	$WT_TREE->setPreference('SAVE_WATERMARK_IMAGE', Filter::postBool('SAVE_WATERMARK_IMAGE'));
 	$WT_TREE->setPreference('SAVE_WATERMARK_THUMB', Filter::postBool('SAVE_WATERMARK_THUMB'));
-	$WT_TREE->setPreference('SHOW_AGE_DIFF', Filter::postBool('SHOW_AGE_DIFF'));
 	$WT_TREE->setPreference('SHOW_COUNTER', Filter::postBool('SHOW_COUNTER'));
 	$WT_TREE->setPreference('SHOW_EST_LIST_DATES', Filter::postBool('SHOW_EST_LIST_DATES'));
 	$WT_TREE->setPreference('SHOW_FACT_ICONS', Filter::postBool('SHOW_FACT_ICONS'));
@@ -252,7 +250,6 @@ case 'general':
 	$WT_TREE->setPreference('SHOW_HIGHLIGHT_IMAGES', Filter::postBool('SHOW_HIGHLIGHT_IMAGES'));
 	$WT_TREE->setPreference('SHOW_LAST_CHANGE', Filter::postBool('SHOW_LAST_CHANGE'));
 	$WT_TREE->setPreference('SHOW_LDS_AT_GLANCE', Filter::postBool('SHOW_LDS_AT_GLANCE'));
-	$WT_TREE->setPreference('SHOW_LEVEL2_NOTES', Filter::postBool('SHOW_LEVEL2_NOTES'));
 	$WT_TREE->setPreference('SHOW_MEDIA_DOWNLOAD', Filter::post('SHOW_MEDIA_DOWNLOAD'));
 	$WT_TREE->setPreference('SHOW_NO_WATERMARK', Filter::post('SHOW_NO_WATERMARK'));
 	$WT_TREE->setPreference('SHOW_PARENTS_AGE', Filter::postBool('SHOW_PARENTS_AGE'));
@@ -500,7 +497,7 @@ $controller
 	</div>
 	<h2><?php echo /* I18N: Privacy restrictions are set by RESN tags in GEDCOM. */ I18N::translate('Privacy restrictions'); ?></h2>
 	<p>
-		<?php echo /* I18N: Privacy restrictions are RESN tags in GEDCOM. */ I18N::translate('You can set the access for a specific record, fact, or event by adding a restriction to it.  If a record, fact, or event does not have a restriction, the following default restrictions will be used.') ?>
+		<?php echo /* I18N: Privacy restrictions are RESN tags in GEDCOM. */ I18N::translate('You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used.') ?>
 	</p>
 
 	<script id="new-resn-template" type="text/html">
@@ -720,12 +717,12 @@ $controller
 	<!-- GENERATE_UIDS -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Automatically create globally unique IDs'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Add unique identifiers'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('GENERATE_UIDS', $no_yes, $WT_TREE->getPreference('GENERATE_UIDS'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Automatically create globally unique IDs” configuration setting */ I18N::translate('<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file.'); ?>
+				<?php echo /* I18N: Help text for the “Add unique identifiers” configuration setting */ I18N::translate('Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -733,7 +730,7 @@ $controller
 	<!-- XXXXX_ID_PREFIX -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('ID preferences'); ?>
+			<?php echo /* I18N: A configuration setting. The first letter(s) in a GEDCOM identifier. */ I18N::translate('XREF prefixes'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<div class="row">
@@ -741,7 +738,7 @@ $controller
 				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="GEDCOM_ID_PREFIX">
-							<?php echo I18N::translate('Individual ID prefix'); ?>
+							<?php echo I18N::translate('Individual'); ?>
 						</label>
 						<input
 							class="form-control"
@@ -758,7 +755,7 @@ $controller
 				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="FAM_ID_PREFIX">
-							<?php echo I18N::translate('Family ID prefix'); ?>
+							<?php echo I18N::translate('Family'); ?>
 						</label>
 						<input
 							class="form-control"
@@ -775,7 +772,7 @@ $controller
 				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="SOURCE_ID_PREFIX">
-							<?php echo I18N::translate('Source ID prefix'); ?>
+							<?php echo I18N::translate('Source'); ?>
 						</label>
 						<input
 							class="form-control"
@@ -792,7 +789,7 @@ $controller
 				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="REPO_ID_PREFIX">
-							<?php echo I18N::translate('Repository ID prefix'); ?>
+							<?php echo I18N::translate('Repository'); ?>
 						</label>
 						<input
 							class="form-control"
@@ -809,7 +806,7 @@ $controller
 				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="MEDIA_ID_PREFIX">
-							<?php echo I18N::translate('Media ID prefix'); ?>
+							<?php echo I18N::translate('Media object'); ?>
 						</label>
 						<input
 							class="form-control"
@@ -826,7 +823,7 @@ $controller
 				<div class="col-sm-6 col-md-4">
 					<div class="input-group">
 						<label class="input-group-addon" for="NOTE_ID_PREFIX">
-							<?php echo I18N::translate('Note ID prefix'); ?>
+							<?php echo I18N::translate('Note'); ?>
 						</label>
 						<input
 							class="form-control"
@@ -841,7 +838,8 @@ $controller
 				</div>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “ID preferences” configuration setting */ I18N::translate('When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record.'); ?>
+				<?php echo I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.'); ?>
+				<?php echo /* I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14. */ I18N::translate('You can choose the prefix that will be used whenever new XREFs are created.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -959,12 +957,12 @@ $controller
 	<!-- ALLOW_THEME_DROPDOWN -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Theme dropdown selector for theme changes'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Theme menu'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('ALLOW_THEME_DROPDOWN', $hide_show, $WT_TREE->getPreference('ALLOW_THEME_DROPDOWN'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting */ I18N::translate('Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu. To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well.'); ?>
+				<?php echo /* I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting */ I18N::translate('The theme menu will only be shown if the website preferences allow users to select their own theme.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1042,6 +1040,32 @@ $controller
 
 	<h3><?php echo I18N::translate('Thumbnail images'); ?></h3>
 
+	<!-- SHOW_HIGHLIGHT_IMAGES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo I18N::translate('Thumbnail images'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo FunctionsEdit::radioButtons('SHOW_HIGHLIGHT_IMAGES', $hide_show, $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo I18N::translate('Show thumbnail images in charts and family groups.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- USE_SILHOUETTE -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Use silhouettes'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo FunctionsEdit::radioButtons('USE_SILHOUETTE', $no_yes, $WT_TREE->getPreference('USE_SILHOUETTE'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Use silhouettes” configuration setting */ I18N::translate('Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
 	<!-- THUMBNAIL_WIDTH -->
 	<div class="form-group">
 		<label class="control-label col-sm-3" for="THUMBNAIL_WIDTH">
@@ -1067,31 +1091,6 @@ $controller
 			</p>
 		</div>
 	</div>
-
-	<!-- USE_SILHOUETTE -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Use silhouettes'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('USE_SILHOUETTE', $no_yes, $WT_TREE->getPreference('USE_SILHOUETTE'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Use silhouettes” configuration setting */ I18N::translate('Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- SHOW_HIGHLIGHT_IMAGES -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo I18N::translate('Show highlight images in individual boxes'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('SHOW_HIGHLIGHT_IMAGES', $no_yes, $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-			</p>
-		</div>
-	</fieldset>
 
 	<h3><?php echo I18N::translate('Watermarks'); ?></h3>
 
@@ -1363,19 +1362,6 @@ $controller
 
 	<h3><?php echo I18N::translate('Individual pages'); ?></h3>
 
-	<!-- EXPAND_RELATIVES_EVENTS -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Automatically expand list of events of close relatives'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('EXPAND_RELATIVES_EVENTS', $no_yes, $WT_TREE->getPreference('EXPAND_RELATIVES_EVENTS'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Automatically expand list of events of close relatives” configuration setting */ I18N::translate('This option controls whether or not to automatically expand the <i>Events of close relatives</i> list.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
 	<!-- SHOW_RELATIVES_EVENTS -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
@@ -1511,36 +1497,6 @@ $controller
 		</div>
 	</fieldset>
 
-	<!-- SHOW_LEVEL2_NOTES -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */
-			I18N::translate('Show all notes and source references on notes and sources tabs'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('SHOW_LEVEL2_NOTES', $no_yes, $WT_TREE->getPreference('SHOW_LEVEL2_NOTES'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting */
-				I18N::translate('This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- SHOW_AGE_DIFF -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */
-			I18N::translate('Date differences'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('SHOW_AGE_DIFF', $hide_show, $WT_TREE->getPreference('SHOW_AGE_DIFF'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Date differences” configuration setting */
-				I18N::translate('When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
 	<h3><?php echo I18N::translate('Places'); ?></h3>
 
 	<!-- SHOW_PEDIGREE_PLACES -->
@@ -1647,7 +1603,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('SHOW_COUNTER', $hide_show, $WT_TREE->getPreference('SHOW_COUNTER'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Hit counters” configuration setting */ I18N::translate('Show hit counters on Portal and Individual pages.'); ?>
+				<?php echo /* I18N: Help text for the “Hit counters” configuration setting */ I18N::translate('Some pages can display the number of times that they have been visited.'); ?>
 			</p>
 		</div>
 	</fieldset>
