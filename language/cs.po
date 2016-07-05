@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-28 19:31+0000\n"
+"PO-Revision-Date: 2016-07-05 08:19+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -18762,7 +18762,7 @@ msgstr "půlrok po svatbě"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:279
 msgid "herself"
-msgstr "sobě"
+msgstr "ona sama"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:761
@@ -18776,7 +18776,7 @@ msgstr "skrýt"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:277
 msgid "himself"
-msgstr "sobě"
+msgstr "on sám"
 
 #: app/Functions/Functions.php:709 edit_interface.php:1928
 #: edit_interface.php:1963
@@ -19908,7 +19908,7 @@ msgstr "adresář „/data“ a soubor „/data/config.ini.php“ mají přístu
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:281
 msgid "themself"
-msgstr "sebe"
+msgstr "oni sami"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:639
