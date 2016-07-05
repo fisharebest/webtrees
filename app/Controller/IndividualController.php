@@ -289,7 +289,7 @@ class IndividualController extends GedcomRecordController {
 			}
 			if (!$has_sex_record) {
 				$menu->addSubmenu(new Menu(I18N::translate('Edit the gender'), '#', 'menu-indi-editsex', array(
-					'return add_new_record("' . $this->record->getXref() . '", "SEX");',
+					'onclick' => 'return add_new_record("' . $this->record->getXref() . '", "SEX");',
 				)));
 			}
 
