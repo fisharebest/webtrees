@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-02 20:28+0000\n"
+"PO-Revision-Date: 2016-07-05 07:17+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -70,7 +70,7 @@ msgstr "#%s"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "Az ezen: %1$s %2$s lévő %3$s hivatkozik erre: %4$s."
+msgstr "%1$s %2$s %3$s hivatkozása ide mutat: %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -14185,8 +14185,8 @@ msgstr "Ez a család gyermektelen maradt"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Ez a családfa %s olyan „XREF”-hivatkozást tartalmaz, amelyet egy másik családfa is használ."
-msgstr[1] "Ez a családfa %s olyan „XREF”-hivatkozást tartalmaz, amelyet egy másik családfa is használ."
+msgstr[0] "Ez a családfa %s bejegyzésben ugyanazt az „XREF”-hivatkozást használja, mint egy másik családfa."
+msgstr[1] "Ez a családfa %s bejegyzésben ugyanazt az „XREF”-hivatkozást használja, mint egy másik családfa."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -15935,7 +15935,7 @@ msgstr "Ön nem küldhet külső hivatkozásokat tartalmazó üzeneteket."
 #: app/Module/LoginBlockModule.php:64
 #, php-format
 msgid "You are signed in as %s."
-msgstr "%s néven jelentkezett be."
+msgstr "Ön %sként jelentkezett be."
 
 #: login.php:169 login.php:172 login.php:175
 msgid "You can apply for an account using the link below."
