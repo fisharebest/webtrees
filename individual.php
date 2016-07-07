@@ -47,7 +47,6 @@ if ($controller->record && $controller->record->canShow()) {
 	// as the clippings cart needs to have write access to the session.
 	$sidebar_html = $controller->getSideBarContent();
 
-	$controller->pageHeader();
 	if ($controller->record->isPendingDeletion()) {
 		if (Auth::isModerator($controller->record->getTree())) {
 			FlashMessages::addMessage(/* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate(
@@ -69,6 +68,7 @@ if ($controller->record && $controller->record->canShow()) {
 			FlashMessages::addMessage(I18N::translate('This individual has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
 		}
 	}
+	$controller->pageHeader();
 } elseif ($controller->record && $controller->record->canShowName()) {
 	// Just show the name.
 	$controller->pageHeader();
