@@ -169,14 +169,15 @@ class Family extends GedcomRecord {
 	 * Find the spouse of a person.
 	 *
 	 * @param Individual $person
+	 * @param int|null   $access_level
 	 *
 	 * @return Individual|null
 	 */
-	public function getSpouse(Individual $person) {
+	public function getSpouse(Individual $person, $access_level = null) {
 		if ($person === $this->wife) {
-			return $this->getHusband();
+			return $this->getHusband($access_level);
 		} else {
-			return $this->getWife();
+			return $this->getWife($access_level);
 		}
 	}
 
