@@ -20394,7 +20394,7 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
-msgid "Calgary, Alberata, Canada"
+msgid "Calgary, Alberta, Canada"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -20464,7 +20464,7 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Payso, Utah, United States"
+msgid "Payson, Utah, United States"
 msgstr ""
 
 #. I18N: Location of an LDS church temple

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-28 18:10+0000\n"
+"PO-Revision-Date: 2016-06-29 13:40+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en-GB/>\n"
 "Language: en-GB\n"
@@ -3308,8 +3308,8 @@ msgstr "Calendar conversion"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
-msgid "Calgary, Alberata, Canada"
-msgstr "Calgary, Alberata, Canada"
+msgid "Calgary, Alberta, Canada"
+msgstr "Calgary, Alberta, Canada"
 
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
@@ -4035,7 +4035,7 @@ msgstr "Copyright"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:145
 msgid "Cordoba, Argentina"
-msgstr "Cordoba, Argentina"
+msgstr "Córdoba, Argentina"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:326
@@ -10543,8 +10543,8 @@ msgstr "Passwords must contain at least 6 characters."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Payso, Utah, United States"
-msgstr "Payso, Utah, United States"
+msgid "Payson, Utah, United States"
+msgstr "Payson, Utah, United States"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report

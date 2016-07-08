@@ -1734,7 +1734,7 @@ class Stats {
 			$chart_url .= substr(WT_GOOGLE_CHART_ENCODING, (int) ($count / max($surn_countries) * 61), 1);
 		}
 		$chart = '<div id="google_charts" class="center">';
-		$chart .= '<b>' . $chart_title . '</b><br><br>';
+		$chart .= '<p>' . $chart_title . '</p>';
 		$chart .= '<div><img src="' . $chart_url . '" alt="' . $chart_title . '" title="' . $chart_title . '" class="gchart" /><br>';
 		$chart .= '<table class="center"><tr>';
 		$chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR2 . '" width="12"></td><td>' . I18N::translate('Highest population') . '</td>';

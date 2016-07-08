@@ -169,7 +169,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 		if ($mapdata) {
 			$html = '<div id="' . $this->getName() . '_content" class="facts_table">';
-			$html .= '<div class="gm-wrapper" style="height:' . $this->getSetting('GM_YSIZE') . 'px;">';
+			$html .= '<div class="gm-wrapper">';
 			$html .= '<div class="gm-map"></div>';
 			$html .= $mapdata;
 			$html .= '</div>';
@@ -244,8 +244,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$this->setSetting('GM_USE_STREETVIEW', Filter::post('GM_USE_STREETVIEW'));
 			$this->setSetting('GM_MIN_ZOOM', Filter::post('GM_MIN_ZOOM'));
 			$this->setSetting('GM_MAX_ZOOM', Filter::post('GM_MAX_ZOOM'));
-			$this->setSetting('GM_XSIZE', Filter::post('GM_XSIZE'));
-			$this->setSetting('GM_YSIZE', Filter::post('GM_YSIZE'));
 			$this->setSetting('GM_PLACE_HIERARCHY', Filter::post('GM_PLACE_HIERARCHY'));
 			$this->setSetting('GM_PH_XSIZE', Filter::post('GM_PH_XSIZE'));
 			$this->setSetting('GM_PH_YSIZE', Filter::post('GM_PH_YSIZE'));
@@ -346,29 +344,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</legend>
 				<div class="col-sm-9">
 					<?php echo FunctionsEdit::radioButtons('GM_USE_STREETVIEW', array(false => I18N::translate('hide'), true => I18N::translate('show')), $this->getSetting('GM_USE_STREETVIEW'), 'class="radio-inline"') ?>
-				</div>
-			</fieldset>
-
-			<!-- GM_XSIZE / GM_YSIZE -->
-			<fieldset class="form-group">
-				<legend class="control-label col-sm-3">
-					<?php echo I18N::translate('Size of map (in pixels)') ?>
-				</legend>
-				<div class="col-sm-9">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="input-group">
-								<label class="input-group-addon" for="GM_XSIZE"><?php echo I18N::translate('Width') ?></label>
-								<input id="GM_XSIZE" class="form-control" type="text" name="GM_XSIZE" value="<?php echo $this->getSetting('GM_XSIZE') ?>">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="input-group">
-								<label class="input-group-addon" for="GM_YSIZE"><?php echo I18N::translate('Height') ?></label>
-								<input id="GM_YSIZE" class="form-control" type="text" name="GM_YSIZE" value="<?php echo $this->getSetting('GM_YSIZE') ?>">
-							</div>
-						</div>
-					</div>
 				</div>
 			</fieldset>
 
@@ -843,7 +818,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		//<!-- end of count records by type -->
 		//<!-- start of map display -->
 		echo '<div class="gm-pedigree-map">';
-		echo '<div class="gm-wrapper" style="height:' . $this->getSetting('GM_YSIZE') . 'px;">';
+		echo '<div class="gm-wrapper">';
 		echo '<div class="gm-map"><i class="icon-loading-large"></i></div>';
 		echo '<div class="gm-ancestors"></div>';
 		echo '</div>';

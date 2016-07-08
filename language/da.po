@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-25 06:48+0000\n"
-"Last-Translator: Jamie Jaconelli <jamie@jaconelli.dk>\n"
+"PO-Revision-Date: 2016-06-30 20:08+0000\n"
+"Last-Translator: Finn Christensen <fc@winmagic.dk>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -461,8 +461,8 @@ msgid_plural "%s years ago"
 msgstr[0] "%s år siden"
 msgstr[1] "%s år siden"
 
-#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
-#: calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:1942
+#: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s. årsdag"
@@ -501,7 +501,7 @@ msgstr "%s&nbsp;evt"
 #: statisticsplot.php:788
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s+"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:222
@@ -1279,7 +1279,8 @@ msgstr "Tilføj et nyt barn"
 msgid "Add a child to create a one-parent family"
 msgstr "Tilføj et barn til en én-forælders-familie"
 
-#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
+#: app/Controller/FamilyController.php:82
+#: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
 msgstr "Tilføj et barn til denne familie"
 
@@ -1317,9 +1318,10 @@ msgstr "Tilføj en eksisterende person som ægtemand"
 msgid "Add a journal entry"
 msgstr "Tilføj nyt notat"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1125
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:184
+#: app/Controller/FamilyController.php:162
+#: app/Functions/FunctionsEdit.php:1125 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:184
 msgid "Add a media object"
 msgstr "Tilføj et nyt medieobjekt"
 
@@ -1335,8 +1337,8 @@ msgstr "Tilføj nyt navn"
 msgid "Add a news article"
 msgstr "Tilføj et nyhedsindlæg"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1104
-#: app/Module/NotesTabModule.php:102
+#: app/Controller/FamilyController.php:149
+#: app/Functions/FunctionsEdit.php:1104 app/Module/NotesTabModule.php:102
 msgid "Add a note"
 msgstr "Tilføj en ny note"
 
@@ -1347,14 +1349,15 @@ msgstr "Tilføj en ny begrænsning"
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
 #: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
 msgstr "Tilføj en rullebjælke når rammens indhold udvider sig"
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1114
-#: app/Module/NotesTabModule.php:112
+#: app/Controller/FamilyController.php:155
+#: app/Functions/FunctionsEdit.php:1114 app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
 msgstr "Tilføj en ny delt note"
 
@@ -1362,8 +1365,8 @@ msgstr "Tilføj en ny delt note"
 msgid "Add a son or daughter"
 msgstr "Tilføj en ny søn eller datter"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1053
-#: app/Module/SourcesTabModule.php:95
+#: app/Controller/FamilyController.php:172
+#: app/Functions/FunctionsEdit.php:1053 app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
 msgstr "Tilføj en ny kildecitering"
 
@@ -1474,7 +1477,7 @@ msgstr "Tilføj til udklipsholderen"
 #. I18N: A configuration setting
 #: admin_trees_config.php:720
 msgid "Add unique identifiers"
-msgstr ""
+msgstr "Tilføj entydig ID"
 
 #: admin_trees_manage.php:530
 msgid "Add unlinked records"
@@ -1782,7 +1785,7 @@ msgstr "Album"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Albuquerque, New Mexico, United States"
-msgstr "Albuquerque, New Mexico, United States"
+msgstr "Albuquerque , New Mexico, United States"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6740
@@ -1804,10 +1807,10 @@ msgstr "I live"
 #: app/Module/GoogleMapsModule.php:1423 app/Module/GoogleMapsModule.php:1436
 #: app/Module/GoogleMapsModule.php:4210 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5581 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
-#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
-#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
-#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
+#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
+#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
+#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -2004,7 +2007,7 @@ msgstr "Anens filnummer"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:87
 msgid "Anchorage, Alaska, United States"
-msgstr "Anchorage, Alaska, United States"
+msgstr "Anchorage , Alaska, United States"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6681
@@ -2024,7 +2027,8 @@ msgstr "Anguilla"
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1805 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1805
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr "Årsdag"
 
@@ -2175,7 +2179,8 @@ msgstr "Argentina"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -3005,6 +3010,11 @@ msgid "Bridesmaid"
 msgstr "Brudepige"
 
 #. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:117
+msgid "Brigham City, Utah, United States"
+msgstr "Brigham By, Utah, United States"
+
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
 msgid "Brisbane, Australia"
 msgstr "Brisbane, Australien"
@@ -3300,6 +3310,11 @@ msgstr "Kalender"
 msgid "Calendar conversion"
 msgstr "Kalender konvertering"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:123
+msgid "Calgary, Alberta, Canada"
+msgstr "Calgary , Alberta, Canada"
+
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
 msgid "Call number"
@@ -3383,6 +3398,11 @@ msgstr "Advarsel: Tidligere temaer virker måske ikke eller vil forhindre webtre
 #: app/Stats.php:6732
 msgid "Cayman Islands"
 msgstr "Caymanøerne"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:129
+msgid "Cebu City, Philippines"
+msgstr "Cebu By, Philippines"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:29
@@ -3476,7 +3496,8 @@ msgstr "Rettet den %1$s af %2$s"
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:435
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr "Ændringer"
 
@@ -3511,9 +3532,9 @@ msgstr "Diagramtype"
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1206
-#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
-#: app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163
+#: admin_trees_config.php:1206 app/Module/ChartsBlockModule.php:34
+#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
 msgstr "Diagrammer"
 
@@ -3960,9 +3981,10 @@ msgstr "Fortsat"
 #: app/Module/FrequentlyAskedQuestionsModule.php:438
 #: app/Module/GoogleMapsModule.php:282 app/Module/GoogleMapsModule.php:1386
 #: app/Module/GoogleMapsModule.php:3613
-#: app/Module/RelationshipsChartModule.php:147 app/Module/SiteMapModule.php:296
-#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
-#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
+#: app/Module/RelationshipsChartModule.php:147
+#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
+#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
+#: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr "Kontrolpanel"
 
@@ -4013,6 +4035,11 @@ msgstr "Kopier disse filer til mappen %s og erstat alle med samme navn."
 #: app/GedcomTag.php:322
 msgid "Copyright"
 msgstr "Ophavsret/Copyright"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:145
+msgid "Cordoba, Argentina"
+msgstr "Cordoba , Argentina"
 
 #. I18N: gedcom tag CORP
 #: app/GedcomTag.php:326
@@ -4252,6 +4279,11 @@ msgstr "Kroatien"
 msgid "Cuba"
 msgstr "Cuba"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:149
+msgid "Curitiba, Brazil"
+msgstr "Curitiba , Brazil"
+
 #: app/Module/HtmlBlockModule.php:302
 msgid "Current"
 msgstr "Nuværende"
@@ -4354,7 +4386,8 @@ msgstr "Databasens brugerkonto"
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -4921,7 +4954,8 @@ msgstr "Akademisk grad"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -5024,7 +5058,8 @@ msgstr "Generationer af efterkommere"
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
 #: app/Module/ChartsBlockModule.php:187
-#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
+#: app/Module/DescendancyChartModule.php:33
+#: app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5289,6 +5324,11 @@ msgstr "Hent filen"
 #: app/Module/GoogleMapsModule.php:4206
 msgid "Download geographic data"
 msgstr "Download geografisk data"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:157
+msgid "Draper, Utah, United States"
+msgstr "Draper , Utah, United States"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:198
@@ -5920,7 +5960,8 @@ msgstr "Falklandsøerne"
 #: app/Module/GoogleMapsModule.php:2490 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1493
 #: calendar.php:422 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:134 mediaviewer.php:123
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:201
 #: repo.php:143 search.php:93 source.php:147 statistics.php:71
 #: statisticsplot.php:990 statisticsplot.php:1094 statisticsplot.php:1344
@@ -6010,7 +6051,8 @@ msgstr "%s's familie"
 msgid "Family tree"
 msgstr "Familietræ"
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90
+#: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr "Udklipsholder"
 
@@ -6150,7 +6192,8 @@ msgid "Father’s family with an unknown individual"
 msgstr "Faders familie med et ukendt individ"
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1375
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1375
 msgid "Favorites"
 msgstr "Favoritter"
 
@@ -6287,7 +6330,8 @@ msgstr "Find et specielt tegn"
 msgid "Find all possible relationships"
 msgstr "Find alle mulige slægtsskaber"
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
@@ -6379,7 +6423,8 @@ msgstr "Klik venligst på linket nedenfor for at bekræfte din e-mail-adresse."
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6437,6 +6482,11 @@ msgstr "Filformat"
 #: admin_trees_config.php:1557
 msgid "Format text and notes"
 msgstr "Format for tekster og noter"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:163
+msgid "Fort Lauderdale, Florida, United States"
+msgstr "Fort Lauderdale , Florida, United States"
 
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
@@ -6748,6 +6798,16 @@ msgstr "Ghana"
 msgid "Gibraltar"
 msgstr "Gibraltar"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:173
+msgid "Gila Valley, Arizona, United States"
+msgstr "Gila Valley , Arizona, United States"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:175
+msgid "Gilbert, Arizona, United States"
+msgstr "Gilbert , Arizona, United States"
+
 #: search.php:230
 msgid "Given name"
 msgstr "Fornavn"
@@ -7034,7 +7094,8 @@ msgstr "Helsinki, Finland"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7425,6 +7486,11 @@ msgstr "Inkluder personens nærmeste familie"
 msgid "India"
 msgstr "Indien"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:201
+msgid "Indianapolis, Indiana, United States"
+msgstr "Indianapolis , Indiana, United States"
+
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
 #: admin_trees_config.php:741 admin_trees_manage.php:537 ancestry.php:52
@@ -7538,7 +7604,8 @@ msgid "Installation folder"
 msgstr "Installationsmappe"
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:189 app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:189
+#: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
 msgstr "Interaktivt træ"
 
@@ -7817,6 +7884,11 @@ msgstr "juni"
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "juni"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:207
+msgid "Kansas City, Missouri, United States"
+msgstr "Kansas By, Missouri, United States"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6794
@@ -8452,6 +8524,16 @@ msgid "Managers"
 msgstr "Bestyrerer"
 
 #. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:229
+msgid "Manaus, Brazil"
+msgstr "Manaus , Brazil"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:231
+msgid "Manhattan, New York, United States"
+msgstr "Manhattan , New York, United States"
+
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
 msgid "Manila, Philippines"
 msgstr "Manila, Filippinerne"
@@ -8842,9 +8924,9 @@ msgstr "Medford, Oregon, United States"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
-#: admin.php:760 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1446
-#: app/Module/MediaTabModule.php:35 app/Theme/AdministrationTheme.php:177
-#: inverselink.php:70
+#: admin.php:760 admin_media.php:692
+#: app/Functions/FunctionsPrintLists.php:1446 app/Module/MediaTabModule.php:35
+#: app/Theme/AdministrationTheme.php:177 inverselink.php:70
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:74
 msgid "Media"
 msgstr "Billeder og medier"
@@ -9138,9 +9220,9 @@ msgstr "Modul"
 #: app/Module/FrequentlyAskedQuestionsModule.php:439
 #: app/Module/GoogleMapsModule.php:283 app/Module/GoogleMapsModule.php:1387
 #: app/Module/GoogleMapsModule.php:3614
-#: app/Module/RelationshipsChartModule.php:148 app/Module/SiteMapModule.php:297
-#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
-#: app/Theme/AdministrationTheme.php:190
+#: app/Module/RelationshipsChartModule.php:148
+#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
+#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr "Moduladministration"
 
@@ -9262,7 +9344,7 @@ msgstr "Mordad"
 
 #: app/Module/FamilyTreeNewsModule.php:136
 msgid "More news articles"
-msgstr ""
+msgstr "Flere nyheder"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6815
@@ -10203,6 +10285,11 @@ msgstr "OpenStreetMap™"
 msgid "Optional prefixes and suffixes"
 msgstr "Valgfrie præfiks og suffiks"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:279
+msgid "Oquirrh Mountain, Utah, United States"
+msgstr "Oquirrh Mountain , Utah, United States"
+
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
@@ -10342,7 +10429,8 @@ msgstr "PHP tidsbegrænsning"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -10408,6 +10496,11 @@ msgid "Panama"
 msgstr "Panama"
 
 #. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:287
+msgid "Panama City, Panama"
+msgstr "Panama By, Panama"
+
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:253
 msgid "Papeete, Tahiti"
 msgstr "Papeete, Tahiti"
@@ -10451,6 +10544,11 @@ msgstr "Adgangskoden skal være mindst 6 tegn lang, og er versal-følsom, så �
 #: edituser.php:139
 msgid "Passwords must contain at least 6 characters."
 msgstr "Adgangskoden skal indeholde mindst 6 tegn."
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:291
+msgid "Payson, Utah, United States"
+msgstr "Payson , Utah, United States"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
@@ -10523,6 +10621,11 @@ msgstr "Peru"
 msgid "Philippines"
 msgstr "Filippinerne"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:295
+msgid "Phoenix, Arizona, United States"
+msgstr "Phoenix , Arizona, United States"
+
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:682
 msgid "Phone"
@@ -10574,7 +10677,8 @@ msgstr "PhpGedView skal være version 4.2.3, eller en SVN op til #%s"
 msgid "PhpGedView must use the same database as webtrees."
 msgstr "PhpGedView skal bruge den samme type database som webtrees."
 
-#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697 admin_trees_manage.php:725
+#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697
+#: admin_trees_manage.php:725
 msgid "PhpGedView to webtrees transfer wizard"
 msgstr "PhpGedView til webtrees overførsels-guide"
 
@@ -11000,6 +11104,11 @@ msgid "Property"
 msgstr "Ejendom"
 
 #. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:303
+msgid "Provo City Center, Utah, United States"
+msgstr "Provo City Center , Utah, United States"
+
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:263
 msgid "Provo, Utah, United States"
 msgstr "Provo, Utah, United States"
@@ -11032,6 +11141,11 @@ msgstr "Quartidi"
 #: app/Module/FrequentlyAskedQuestionsModule.php:175
 msgid "Question"
 msgstr "Spørgsmål"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:307
+msgid "Quetzaltenango, Guatemala"
+msgstr "Quetzaltenango , Guatemala"
 
 #: admin_trees_config.php:1823
 msgid "Quick family facts"
@@ -11179,8 +11293,9 @@ msgstr "Ramadan"
 msgid "Random images from the current family tree."
 msgstr "Tilfældige billeder fra det aktuelle slægtstræ."
 
-#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1799 edit_interface.php:1869
+#: app/Controller/FamilyController.php:88
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1799
+#: edit_interface.php:1869
 msgid "Re-order children"
 msgstr "Gen-sortér børn"
 
@@ -11203,7 +11318,8 @@ msgid "Real name"
 msgstr "Rigtigt navn"
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr "Seneste Ændringer"
 
@@ -11219,7 +11335,8 @@ msgstr "Recife, Brasilien"
 #: admin_site_change.php:328 admin_site_change.php:389
 #: admin_trees_config.php:526 app/Functions/FunctionsPrintLists.php:1801
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:321 app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:321
+#: app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -11554,6 +11671,11 @@ msgstr "Pension"
 msgid "Reunion"
 msgstr "Réunion"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:319
+msgid "Rexburg, Idaho, United States"
+msgstr "Rexburg , Idaho, United States"
+
 #: index_edit.php:304
 msgid "Right section blocks"
 msgstr "Højresektionens rammer"
@@ -11699,6 +11821,11 @@ msgstr "San Jose, Costa Rica"
 #: app/Stats.php:6883
 msgid "San Marino"
 msgstr "San Marino"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:323
+msgid "San Salvador, El Salvador"
+msgstr "San Salvador , El Salvador"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
@@ -12671,7 +12798,7 @@ msgstr "Sierra Leone"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
 #: app/Theme/AbstractTheme.php:1561 login.php:150
 msgid "Sign in"
-msgstr "Log på"
+msgstr "Log ind"
 
 #: app/Module/LoginBlockModule.php:62 app/Theme/AbstractTheme.php:1572
 msgid "Sign out"
@@ -12827,7 +12954,7 @@ msgstr "Nogle slægtsprogrammer opretter GEDCOM filer som indeholder medie filna
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "Nogle sider kan vise de antal besøg, som de har haft."
 
 #: app/Module/GoogleMapsModule.php:439
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
@@ -13332,6 +13459,11 @@ msgstr "Blågrøn"
 msgid "Technical help contact"
 msgstr "Teknisk hjælp"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:365
+msgid "Tegucigalpa, Honduras"
+msgstr "Tegucigalpa , Honduras"
+
 #: app/Module/HtmlBlockModule.php:276
 msgid "Templates"
 msgstr "Skabeloner"
@@ -13544,8 +13676,8 @@ msgstr "Mappen %s kunne ikke slettes."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:287
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:287
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Mappen %s eksisterer ikke og den kunne ikke oprettes."
@@ -13938,8 +14070,8 @@ msgstr "Der er ingen forskningsopgaver for dette familietræ."
 msgid "There are no source citations for this individual."
 msgstr "Der er ingen kilder knyttet til denne person."
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1961
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1961
 msgid "There are pending changes for you to moderate."
 msgstr "Der findes ventende ændringer du kan moderere."
 
@@ -14557,6 +14689,11 @@ msgstr "Miniaturebillede"
 msgid "Thursday"
 msgstr "torsdag"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:369
+msgid "Tijuana, Mexico"
+msgstr "Tijuana , Mexico"
+
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
 msgid "Time"
@@ -14823,7 +14960,8 @@ msgstr "Total antal fornavne"
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:88
-#: modules_v3/death_report/report.xml:99 modules_v3/fact_sources/report.xml:142
+#: modules_v3/death_report/report.xml:99
+#: modules_v3/fact_sources/report.xml:142
 #: modules_v3/fact_sources/report.xml:146
 #: modules_v3/fact_sources/report.xml:305
 #: modules_v3/fact_sources/report.xml:309
@@ -14908,6 +15046,11 @@ msgstr "Tridi"
 msgid "Trinidad and Tobago"
 msgstr "Trinidad og Tobago"
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:375
+msgid "Trujillo, Peru"
+msgstr "Trujillo , Peru"
+
 #. I18N: abbreviation for Tuesday
 #: app/Date/CalendarDate.php:367 app/Functions/FunctionsPrint.php:666
 msgid "Tue"
@@ -14946,6 +15089,11 @@ msgstr "Tuvalu"
 #: app/GedcomCode/GedcomCodeTemp.php:319
 msgid "Tuxtla Gutierrez, Mexico"
 msgstr "Tuxtla Gutierrez, Mexico"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:377
+msgid "Twin Falls, Idaho, United States"
+msgstr "Twin Falls , Idaho, United States"
 
 #. I18N: gedcom tag TYPE
 #: admin_site_logs.php:268 admin_site_logs.php:328
@@ -15033,14 +15181,13 @@ msgstr "Entydige familiefakta"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
-#, fuzzy
 msgid "Unique identifier"
-msgstr "Unik identifikator"
+msgstr "Entydig ID"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:725
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr ""
+msgstr "En entydig ID (\"postnr.\") tillader, at den samme registrering kan bruges i flere familier og i flere systemer. Den tilføjes når nye data tilføjes eller ændres. Ønsker du ikke den entydig ID vist, kan de skjules ved brug af de personlige regler."
 
 #: admin_trees_config.php:1647
 msgid "Unique individual facts"
@@ -15309,6 +15456,11 @@ msgstr "Ved at bruge nedrulningsmenuen er det muligt at vælge et land for hvilk
 #: app/Stats.php:6916
 msgid "Uzbekistan"
 msgstr "Usbekistan"
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:379
+msgid "Vancouver, British Columbia, Canada"
+msgstr "Vancouver , British Columbia, Canada"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6923
@@ -15650,7 +15802,8 @@ msgstr "Hvem kan uploade nye medie-filer"
 msgid "Who is online"
 msgstr "Hvem er online"
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr "Kun hele ord"
 
@@ -15738,9 +15891,8 @@ msgstr "Verden"
 
 #. I18N: A configuration setting. The first letter(s) in a GEDCOM identifier.
 #: admin_trees_config.php:733
-#, fuzzy
 msgid "XREF prefixes"
-msgstr "ID indstillinger"
+msgstr "GEDCOM-ID for XREF"
 
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
 #: app/GedcomTag.php:1769
@@ -15798,12 +15950,11 @@ msgstr "Du kan ændre udseendet af webtrees ved at benytte “Temaer”. Hvert t
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
 msgid "You can choose the prefix that will be used whenever new XREFs are created."
-msgstr ""
+msgstr "Du kan vælge et GEDCOM-ID, der anvendes for hver ny XREF."
 
 #: admin_users.php:462 edituser.php:312
-#, fuzzy
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr "Hvis denne checkboks er afmærket, vil brugere, der har logget på, se om du og/eller andre brugere også har logget på. Afmærkes checkboksen ikke, vil andre ikke kunne se, om du har logget på, og du vil heller ikke kunne se om andre brugere har logget på."
+msgstr "Et check i checkboks fortæller, at andre, der er aktive, kan se at nu er du også er logget på. Uden check her så kan de andre ikke se, at du er aktiv, og du kan heller ikke se hvem der er aktive."
 
 #. I18N: %s is a URL
 #: help_text.php:288
@@ -16429,14 +16580,15 @@ msgstr "børn"
 #. I18N: A button label.
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:713
-#: app/Module/GoogleMapsModule.php:3538 app/Theme/AbstractTheme.php:700
-#: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1743
-#: edit_interface.php:1848 edit_interface.php:2040 edit_interface.php:2203
-#: edit_interface.php:2588 find.php:760 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189
+#: app/Module/GoogleMapsModule.php:713 app/Module/GoogleMapsModule.php:3538
+#: app/Theme/AbstractTheme.php:700 edit_changes.php:240 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1743 edit_interface.php:1848 edit_interface.php:2040
+#: edit_interface.php:2203 edit_interface.php:2588 find.php:760
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "luk"
@@ -18966,7 +19118,8 @@ msgstr "antal"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19138,20 +19291,21 @@ msgstr "robot"
 #. I18N: A button label.
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:262
-#: admin_site_access.php:307 admin_site_config.php:651 admin_site_merge.php:340
-#: admin_trees_config.php:2147 admin_users.php:652
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129
+#: admin_modules.php:262 admin_site_access.php:307 admin_site_config.php:651
+#: admin_site_merge.php:340 admin_trees_config.php:2147 admin_users.php:652
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:499 app/Module/GoogleMapsModule.php:712
 #: app/Module/GoogleMapsModule.php:2454 app/Module/GoogleMapsModule.php:3537
-#: app/Module/RelationshipsChartModule.php:173 app/Module/SiteMapModule.php:320
-#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
-#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1742 edit_interface.php:1846 edit_interface.php:2039
-#: edit_interface.php:2201 edit_interface.php:2584 editnews.php:74
-#: edituser.php:317 find.php:537 index_edit.php:376
+#: app/Module/RelationshipsChartModule.php:173
+#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
+#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
+#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
+#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
+#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1742
+#: edit_interface.php:1846 edit_interface.php:2039 edit_interface.php:2201
+#: edit_interface.php:2584 editnews.php:74 edituser.php:317 find.php:537
+#: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:197
 msgid "save"
@@ -20359,133 +20513,3 @@ msgstr "…"
 
 #~ msgid "over"
 #~ msgstr "over"
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:117
-msgid "Brigham City, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:123
-msgid "Calgary, Alberata, Canada"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:129
-msgid "Cebu City, Philippines"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:145
-msgid "Cordoba, Argentina"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:149
-msgid "Curitiba, Brazil"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:157
-msgid "Draper, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:163
-msgid "Fort Lauderdale, Florida, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:173
-msgid "Gila Valley, Arizona, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:175
-msgid "Gilbert, Arizona, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:201
-msgid "Indianapolis, Indiana, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:207
-msgid "Kansas City, Missouri, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:229
-msgid "Manaus, Brazil"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:231
-msgid "Manhattan, New York, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:279
-msgid "Oquirrh Mountain, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:287
-msgid "Panama City, Panama"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Payso, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:295
-msgid "Phoenix, Arizona, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:303
-msgid "Provo City Center, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:307
-msgid "Quetzaltenango, Guatemala"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:319
-msgid "Rexburg, Idaho, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:323
-msgid "San Salvador, El Salvador"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:365
-msgid "Tegucigalpa, Honduras"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:369
-msgid "Tijuana, Mexico"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:375
-msgid "Trujillo, Peru"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:377
-msgid "Twin Falls, Idaho, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:379
-msgid "Vancouver, British Columbia, Canada"
-msgstr ""

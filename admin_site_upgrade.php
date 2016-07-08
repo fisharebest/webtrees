@@ -438,6 +438,11 @@ if (File::delete($zip_file)) {
 echo '</li>';
 echo '</ul>';
 
+// We have updated the language files.
+foreach (glob(WT_DATA_DIR . 'cache/language-*') as $file) {
+	File::delete($file);
+}
+
 echo '<p>', I18N::translate('The upgrade is complete.'), '</p>';
 
 /**

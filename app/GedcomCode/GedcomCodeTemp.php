@@ -120,7 +120,7 @@ class GedcomCodeTemp {
 		case 'BROUG':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Baton Rouge, Louisiana, United States');
 		case 'CALGA':
-			return /* I18N: Location of an LDS church temple */ I18N::translate('Calgary, Alberata, Canada');
+			return /* I18N: Location of an LDS church temple */ I18N::translate('Calgary, Alberta, Canada');
 		case 'CAMPI':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Campinas, Brazil');
 		case 'CARAC':
@@ -288,7 +288,7 @@ class GedcomCodeTemp {
 		case 'PAPEE':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Papeete, Tahiti');
 		case 'PAYSO':
-			return /* I18N: Location of an LDS church temple */ I18N::translate('Payso, Utah, United States');
+			return /* I18N: Location of an LDS church temple */ I18N::translate('Payson, Utah, United States');
 		case 'PERTH':
 			return /* I18N: Location of an LDS church temple */ I18N::translate('Perth, Australia');
 		case 'PHOEN':
