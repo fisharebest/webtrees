@@ -882,36 +882,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		// === Create an associative array of GIcons()
 		var gicons = [];
 		gicons["1"]        = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon1.png")
-		gicons["1"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
 		gicons["2"]         = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2.png")
-		gicons["2"].shadow  = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
 		gicons["2L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2L.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(28, 28) // Image anchor
 								);
-		gicons["2L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
 		gicons["2R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2R.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["2R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
 								);
 		gicons["2Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2Ls.png",
 									new google.maps.Size(24, 24), // Image size
@@ -924,30 +904,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									new google.maps.Point(2, 22)  // Image anchor
 								);
 		gicons["3"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3.png")
-		gicons["3"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
 		gicons["3L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3L.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(28, 28) // Image anchor
 								);
-		gicons["3L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
 		gicons["3R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3R.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["3R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
 								);
 		gicons["3Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3Ls.png",
 									new google.maps.Size(24, 24), // Image size
@@ -960,30 +925,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									new google.maps.Point(2, 22)  // Image anchor
 								);
 		gicons["4"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4.png")
-		gicons["4"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
 		gicons["4L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4L.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(28, 28) // Image anchor
 								);
-		gicons["4L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
 		gicons["4R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4R.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["4R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
 								);
 		gicons["4Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4Ls.png",
 									new google.maps.Size(24, 24), // Image size
@@ -996,30 +946,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									new google.maps.Point(2, 22)  // Image anchor
 								);
 		gicons["5"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5.png")
-		gicons["5"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
 		gicons["5L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5L.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(28, 28) // Image anchor
 								);
-		gicons["5L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
 		gicons["5R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5R.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["5R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
 								);
 		gicons["5Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5Ls.png",
 									new google.maps.Size(24, 24), // Image size
@@ -1032,30 +967,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									new google.maps.Point(2, 22)  // Image anchor
 								);
 		gicons["6"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6.png")
-		gicons["6"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
 		gicons["6L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6L.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(28, 28) // Image anchor
 								);
-		gicons["6L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
 		gicons["6R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6R.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["6R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
 								);
 		gicons["6Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6Ls.png",
 									new google.maps.Size(24, 24), // Image size
@@ -1068,30 +988,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									new google.maps.Point(2, 22)  // Image anchor
 								);
 		gicons["7"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7.png")
-		gicons["7"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
 		gicons["7L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7L.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(28, 28) // Image anchor
 								);
-		gicons["7L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
 		gicons["7R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7R.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["7R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
 								);
 		gicons["7Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7Ls.png",
 									new google.maps.Size(24, 24), // Image size
@@ -1104,30 +1009,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 									new google.maps.Point(2, 22)  // Image anchor
 								);
 		gicons["8"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8.png")
-		gicons["8"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow50.png",
-									new google.maps.Size(37, 34), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(10, 34) // Shadow anchor is base of image
-								);
 		gicons["8L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8L.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(28, 28) // Image anchor
 								);
-		gicons["8L"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(32, 27) // Shadow anchor is base of image
-								);
 		gicons["8R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8R.png",
 									new google.maps.Size(32, 32), // Image size
 									new google.maps.Point(0, 0),  // Image origin
 									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["8R"].shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
-									new google.maps.Size(49, 32), // Shadow size
-									new google.maps.Point(0, 0),  // Shadow origin
-									new google.maps.Point(15, 27) // Shadow anchor is base of image
 								);
 		gicons["8Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8Ls.png",
 									new google.maps.Size(24, 24), // Image size
@@ -1144,7 +1034,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			// Create a marker with the requested icon
 			var marker = new google.maps.Marker({
 				icon:     gicons[icontype],
-				shadow:   gicons[icontype].shadow,
 				map:      pm_map,
 				position: point,
 				id:       index,
@@ -1972,12 +1861,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					new google.maps.Point(9, 34)
 				);
 
-				var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
-					new google.maps.Size(37, 34),
-					new google.maps.Point(0, 0),
-					new google.maps.Point(9, 34)
-				);
-
 				var iconShape = {
 					coord: [9, 0, 6, 1, 4, 2, 2, 4, 0, 8, 0, 12, 1, 14, 2, 16, 5, 19, 7, 23, 8, 26, 9, 30, 9, 34, 11, 34, 11, 30, 12, 26, 13, 24, 14, 21, 16, 18, 18, 16, 20, 12, 20, 8, 18, 4, 16, 2, 15, 1, 13, 0],
 					type:  "poly"
@@ -2011,14 +1894,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							new google.maps.Size(25, 15),
 							new google.maps.Point(0, 0),
 							new google.maps.Point(12, 15));
-						var icon_shadow = new google.maps.MarkerImage(WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/images/flag_shadow.png',
-							new google.maps.Size(35, 45), // Shadow size
-							new google.maps.Point(0, 0),  // Shadow origin
-							new google.maps.Point(1, 45)  // Shadow anchor is base of flagpole
-						);
 					} else {
 						var icon_image  = getMarkerImage('red');
-						var icon_shadow = iconShadow;
 					}
 
 					// Decide if marker point is Regular (latlng) or StreetView (sv_point) derived
@@ -2032,7 +1909,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					var marker = new google.maps.Marker({
 						position: placer,
 						icon:     icon_image,
-						shadow:   icon_shadow,
 						map:      map,
 						title:    tooltip,
 						zIndex:   Math.round(latlng.lat() * -100000) << 5
@@ -2479,9 +2355,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		if (!$place2['lati'] || !$place2['long']) {
 			echo 'var icon_type = new google.maps.MarkerImage();';
 			echo 'icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
-			echo 'icon_type.shadow = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/shadow50.png";';
 			echo 'icon_type.iconSize = google.maps.Size(20, 34);';
-			echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
 			echo 'var point = new google.maps.LatLng(0, 0);';
 			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels, '&amp;parent[' . $level . ']=';
 			if ($place2['place'] == 'Unknown') {
@@ -2523,9 +2397,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo 'var icon_type = new google.maps.MarkerImage();';
 			if ($place2['icon'] !== null && $place2['icon'] !== '' && $this->getSetting('GM_PH_MARKER') === 'G_FLAG') {
 				echo ' icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '";';
-				echo ' icon_type.shadow = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png";';
 				echo ' icon_type.iconSize = new google.maps.Size(25, 15);';
-				echo ' icon_type.shadowSize = new google.maps.Size(35, 45);';
 			}
 			echo 'var point = new google.maps.LatLng(', $lati, ', ', $long, ');';
 			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels;
@@ -2610,24 +2482,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			// Creates a marker whose info window displays the given name
 			function createMarker(point, html, icon, name) {
-				// Choose icon and shadow ============
+				// Choose icon ============
 				if (icon.image && ' . $level . '<=3) {
 					if (icon.image!="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png") {
 						var iconImage = new google.maps.MarkerImage(icon.image,
 						new google.maps.Size(25, 15),
 						new google.maps.Point(0,0),
 						new google.maps.Point(12, 15));
-						var iconShadow = new google.maps.MarkerImage("' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/flag_shadow.png",
-						new google.maps.Size(35, 45),
-						new google.maps.Point(0,0),
-						new google.maps.Point(1, 45));
 					} else {
 						var iconImage = new google.maps.MarkerImage(icon.image,
 						new google.maps.Size(20, 34),
-						new google.maps.Point(0,0),
-						new google.maps.Point(9, 34));
-						var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
-						new google.maps.Size(37, 34),
 						new google.maps.Point(0,0),
 						new google.maps.Point(9, 34));
 					}
@@ -2636,16 +2500,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					new google.maps.Size(20, 34),
 					new google.maps.Point(0,0),
 					new google.maps.Point(9, 34));
-					var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
-					new google.maps.Size(37, 34),
-					new google.maps.Point(0,0),
-					new google.maps.Point(9, 34));
 				}
 				var posn = new google.maps.LatLng(0,0);
 				var marker = new google.maps.Marker({
 					position: point,
 					icon: iconImage,
-					shadow: iconShadow,
 					map: map,
 					title: name
 				});
@@ -3242,14 +3101,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						echo 'new google.maps.Point(0, 0),'; // Image origin
 						echo 'new google.maps.Point(12, 15)'; // Image anchor
 					echo ');';
-					echo 'var iconShadow = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
-						echo 'new google.maps.Size(35, 45),'; // Shadow size
-						echo 'new google.maps.Point(0,0),'; // Shadow origin
-						echo 'new google.maps.Point(1, 45)'; // Shadow anchor is base of flagpole
-					echo ');';
 					echo 'marker = new google.maps.Marker({';
 						echo 'icon: image,';
-						echo 'shadow: iconShadow,';
 						echo 'position: latlng,';
 						echo 'map: map,';
 						echo 'title: pl_name,';
@@ -3333,15 +3186,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					echo 'new google.maps.Point(0, 0),'; // Image origin
 					echo 'new google.maps.Point(10, 34)'; // Image anchor
 				echo ');';
-				echo 'var iconShadow = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/shadow50.png",';
-					echo 'new google.maps.Size(37, 34),'; // Shadow size
-					echo 'new google.maps.Point(0, 0),'; // Shadow origin
-					echo 'new google.maps.Point(10, 34)'; // Shadow anchor is base of image
-				echo ');';
 				?>
 				var marker = new google.maps.Marker({
 					icon: image,
-					shadow: iconShadow,
 					map: map,
 					position: point,
 					zIndex: 0
