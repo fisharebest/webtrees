@@ -1197,14 +1197,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$latlongval[$i] = null;
 			}
 		}
-		$js .= 'oneplace=' . json_encode(count(array_unique($lat)) == 1 && count(array_unique($lon)) == 1) . ';';
-		$js .= 'if (oneplace) {
-			// Only have one location so adjust zoom
-			pm_map.setZoom(12);
-		} else {
-			pm_map.fitBounds(bounds);
-		}
+		$js .= '
 		pm_map.setCenter(bounds.getCenter());
+		pm_map.fitBounds(bounds);
+		google.maps.event.addListenerOnce(pm_map, "bounds_changed", function(event) {
+			var maxZoom = ' . $this->getSetting('GM_MAX_ZOOM') . ';
+			if (this.getZoom() > maxZoom) {
+				this.setZoom(maxZoom);
+			}
+		});
+
 		// Close the sidebar highlight when the infowindow is closed
 		google.maps.event.addListener(infowindow, "closeclick", function() {
 			jQuery(".gm-ancestor[data-marker=" + lastlinkid + "]").toggleClass("gm-ancestor-visited person_box");
@@ -2019,11 +2021,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 					// Set the Marker bounds
 					var bounds = new google.maps.LatLngBounds();
+					var zoomLevel = <?php echo $GM_MAX_ZOOM ?>;
 
 					jQuery.each(locations, function(index, location) {
 						var point     = new google.maps.LatLng(location.lat, location.lng); // Place Latitude, Longitude
 						var sv_point  = new google.maps.LatLng(location.sv_lati, location.sv_long); // StreetView Latitude and Longitide
-						var zoomLevel = <?php echo $GM_MAX_ZOOM ?>;
 						var html      =
 					    '<div class="gm-info-window">' +
 					    '<div class="gm-info-window-header">' + location.place + '</div>' +
@@ -2049,25 +2051,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						} else {
 							var myLatLng = point;
 						}
-
-						// Correct zoom level when only one marker is present
-						if (locations.length == 1) {
-							bounds.extend(myLatLng);
-							map.setZoom(zoomLevel);
-							map.setCenter(myLatLng);
-						} else {
-							bounds.extend(myLatLng);
-							map.fitBounds(bounds);
-							// Correct zoom level when multiple markers have the same coordinates
-							var listener1 = google.maps.event.addListenerOnce(map, "idle", function() {
-								if (map.getZoom() > zoomLevel) {
-									map.setZoom(zoomLevel);
-								}
-								google.maps.event.removeListener(listener1);
-							});
-						}
+						bounds.extend(myLatLng);
 					}); // end loop through location markers
 
+					map.setCenter(bounds.getCenter());
+					map.fitBounds(bounds);
+					google.maps.event.addListenerOnce(map, "bounds_changed", function(event) {
+						if (this.getZoom() > zoomLevel) {
+							this.setZoom(zoomLevel);
+						}
+					});
 				} // end loadMap()
 
 			</script>
