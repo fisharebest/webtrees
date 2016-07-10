@@ -22,7 +22,7 @@ before_script:
   - travis_retry composer update
 
 script:
-  - phpunit --coverage-clover tests/clover.xml
+  - vendor/bin/phpunit --coverage-clover tests/clover.xml
 
 after_script:
-  - php vendor/bin/coveralls -v
+  - vendor/bin/coveralls -v
