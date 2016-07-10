@@ -12,14 +12,18 @@ php:
 ## Non-sudo environments are faster
 sudo: false
 
-## Cache composer bits
+## Cache composer and vendor libraries
 cache:
   directories:
+    - vendor
     - $HOME/.composer/cache
 
 before_script:
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
+  - cp $HOME/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini /tmp/
+  - phpenv config-rm xdebug.ini
   - travis_retry composer update
+  - phpenv config-add /tmp/xdebug.ini
 
 script:
   - vendor/bin/phpunit --coverage-clover tests/clover.xml
