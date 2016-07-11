@@ -693,7 +693,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
-	 * Display a map showing the originas of ones ancestors.
+	 * Display a map showing the origins of ones ancestors.
 	 */
 	private function pedigreeMap() {
 		global $controller, $WT_TREE;
@@ -815,6 +815,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 			}
 		}
+
 		//<!-- end of count records by type -->
 		//<!-- start of map display -->
 		echo '<div class="gm-pedigree-map">';
@@ -832,6 +833,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 		// display info under map
 		echo '<hr>';
+
 		// print summary statistics
 		if (isset($curgen)) {
 			$total = pow(2, $curgen) - 1;
@@ -858,6 +860,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				}
 			}
 		}
+
 		echo '</div>';
 		echo '</div>';
 		echo '<script src="', $this->googleMapsScript(), '"></script>';
@@ -1065,18 +1068,18 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		};
 		// create the map
 		var myOptions = {
-			zoom: 6,
-			center: new google.maps.LatLng(0, 0),
-			mapTypeId: google.maps.MapTypeId.TERRAIN,  // ROADMAP, SATELLITE, HYBRID, TERRAIN
-			mapTypeControlOptions: {
+			zoom:                     6,
+			center:                   new google.maps.LatLng(0, 0),
+			mapTypeId:                google.maps.MapTypeId.TERRAIN,  // ROADMAP, SATELLITE, HYBRID, TERRAIN
+			mapTypeControlOptions:    {
 				style: google.maps.MapTypeControlStyle.DROPDOWN_MENU  // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
 			},
 			navigationControlOptions: {
 				position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-				style: google.maps.NavigationControlStyle.SMALL   // ANDROID, DEFAULT, SMALL, ZOOM_PAN
+				style:    google.maps.NavigationControlStyle.SMALL   // ANDROID, DEFAULT, SMALL, ZOOM_PAN
 			},
-			streetViewControl: false,  // Show Pegman or not
-			scrollwheel: true
+			streetViewControl:        false,  // Show Pegman or not
+			scrollwheel:              true
 		};
 		var pm_map = new google.maps.Map(document.querySelector(".gm-map"), myOptions);
 		google.maps.event.addListener(pm_map, "click", function() {
@@ -1892,12 +1895,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				function createMarker(latlng, html, tooltip, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
 					// Use flag icon (if defined) instead of regular marker icon
 					if (marker_icon) {
-						var icon_image  = new google.maps.MarkerImage(WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/' + marker_icon,
+						var icon_image = new google.maps.MarkerImage(WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/' + marker_icon,
 							new google.maps.Size(25, 15),
 							new google.maps.Point(0, 0),
 							new google.maps.Point(12, 15));
 					} else {
-						var icon_image  = getMarkerImage('red');
+						var icon_image = getMarkerImage('red');
 					}
 
 					// Decide if marker point is Regular (latlng) or StreetView (sv_point) derived
@@ -1945,6 +1948,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						infowindow.close();
 						infowindow.setContent(html);
 						infowindow.open(map, marker);
+
 						var panoramaOptions = {
 							position:          marker.position,
 							mode:              'html5',
@@ -2360,7 +2364,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 			}
 			if ($place2['place'] == 'Unknown') {
-					echo I18N::translate('unknown');
+				echo I18N::translate('unknown');
 			} else {
 				echo addslashes($place2['place']);
 			}
@@ -2402,11 +2406,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			if ($place2['icon'] !== null && $place2['icon'] !== '') {
 				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 			}
-				if ($place2['place'] === 'Unknown') {
-					echo I18N::translate('unknown');
-				} else {
-					echo Filter::escapeJs($place2['place']);
-				}
+			if ($place2['place'] === 'Unknown') {
+				echo I18N::translate('unknown');
+			} else {
+				echo Filter::escapeJs($place2['place']);
+			}
 			echo '</a>';
 			$parent[$level] = $place2['place'];
 			$this->printHowManyPeople($level + 1, $parent);
@@ -3090,25 +3094,25 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<?php
 				if ($level < 3 && $place_icon != '') {
 					echo 'var image = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon, '",';
-						echo 'new google.maps.Size(25, 15),'; // Image size
-						echo 'new google.maps.Point(0, 0),'; // Image origin
-						echo 'new google.maps.Point(12, 15)'; // Image anchor
+					echo 'new google.maps.Size(25, 15),'; // Image size
+					echo 'new google.maps.Point(0, 0),'; // Image origin
+					echo 'new google.maps.Point(12, 15)'; // Image anchor
 					echo ');';
 					echo 'marker = new google.maps.Marker({';
-						echo 'icon: image,';
-						echo 'position: latlng,';
-						echo 'map: map,';
-						echo 'title: pl_name,';
-						echo 'draggable: true,';
-						echo 'zIndex:1';
+					echo 'icon: image,';
+					echo 'position: latlng,';
+					echo 'map: map,';
+					echo 'title: pl_name,';
+					echo 'draggable: true,';
+					echo 'zIndex:1';
 					echo '});';
 				} else {
 					echo 'marker = new google.maps.Marker({';
-						echo 'position: latlng,';
-						echo 'map: map,';
-						echo 'title: pl_name,';
-						echo 'draggable: true,';
-						echo 'zIndex: 1';
+					echo 'position: latlng,';
+					echo 'map: map,';
+					echo 'title: pl_name,';
+					echo 'draggable: true,';
+					echo 'zIndex: 1';
 					echo '});';
 				}
 				?>
@@ -3175,16 +3179,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			function createMarker(i, point, name) {
 				<?php
 				echo 'var image = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png",';
-					echo 'new google.maps.Size(20, 34),'; // Image size
-					echo 'new google.maps.Point(0, 0),'; // Image origin
-					echo 'new google.maps.Point(10, 34)'; // Image anchor
+				echo 'new google.maps.Size(20, 34),'; // Image size
+				echo 'new google.maps.Point(0, 0),'; // Image origin
+				echo 'new google.maps.Point(10, 34)'; // Image anchor
 				echo ');';
 				?>
 				var marker = new google.maps.Marker({
-					icon: image,
-					map: map,
+					icon:     image,
+					map:      map,
 					position: point,
-					zIndex: 0
+					zIndex:   0
 				});
 
 				google.maps.event.addListener(marker, 'click', function() {
@@ -3212,7 +3216,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			function addAddressToMap(response) {
 				var bounds = new google.maps.LatLngBounds();
-				if (!response ) {
+				if (!response) {
 					alert('<?php echo I18N::translate('No places found') ?>');
 				} else {
 					if (response.length > 0) {
