@@ -881,154 +881,198 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		var infowindow = new google.maps.InfoWindow({});
 		// === Create an associative array of GIcons()
 		var gicons = [];
-		gicons["1"]        = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon1.png")
-		gicons["2"]         = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2.png")
-		gicons["2L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["2R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["2Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["2Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
-		gicons["3"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3.png")
-		gicons["3L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["3R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["3Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["3Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
-		gicons["4"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4.png")
-		gicons["4L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["4R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["4Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["4Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
-		gicons["5"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5.png")
-		gicons["5L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["5R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["5Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["5Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
-		gicons["6"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6.png")
-		gicons["6L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["6R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["6Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["6Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
-		gicons["7"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7.png")
-		gicons["7L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["7R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["7Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["7Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
-		gicons["8"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8.png")
-		gicons["8L"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8L.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(28, 28) // Image anchor
-								);
-		gicons["8R"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8R.png",
-									new google.maps.Size(32, 32), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(4, 28)  // Image anchor
-								);
-		gicons["8Ls"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8Ls.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(22, 22) // Image anchor
-								);
-		gicons["8Rs"] = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8Rs.png",
-									new google.maps.Size(24, 24), // Image size
-									new google.maps.Point(0, 0),  // Image origin
-									new google.maps.Point(2, 22)  // Image anchor
-								);
+		gicons["1"]  = 	{
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon1.png"
+						}
+		gicons["2"]  = 	{
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2.png"
+						}
+		gicons["2L"] = 	{
+							url: 	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2L.png",
+							size:  	new google.maps.Size(32, 32), // Image size
+							origin: new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(28, 28) // Image anchor
+						};
+		gicons["2R"] = 	{
+							url: 	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2R.png",
+							size: 	new google.maps.Size(32, 32), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(4, 28)  // Image anchor
+						};
+		gicons["2Ls"] = {
+							url: 	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2Ls.png",
+							size: 	new google.maps.Size(24, 24), // Image size
+							origin: new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(22, 22) // Image anchor
+						};
+		gicons["2Rs"] = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2Rs.png",
+							size:	new google.maps.Size(24, 24), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(2, 22)  // Image anchor
+						};
+		gicons["3"]   = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3.png"
+						}
+		gicons["3L"]  = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3L.png",
+							size:	new google.maps.Size(32, 32), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(28, 28) // Image anchor
+						};
+		gicons["3R"]  = {
+							url: 	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3R.png",
+							size:	new google.maps.Size(32, 32), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(4, 28)  // Image anchor
+						};
+		gicons["3Ls"] = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3Ls.png",
+							size:	new google.maps.Size(24, 24), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(22, 22) // Image anchor
+						};
+		gicons["3Rs"] = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3Rs.png",
+							size:	new google.maps.Size(24, 24), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(2, 22)  // Image anchor
+						};
+		gicons["4"]   = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4.png"
+						}
+		gicons["4L"]  = {
+							url: 	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4L.png",
+							size:	new google.maps.Size(32, 32), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(28, 28) // Image anchor
+						};
+		gicons["4R"] = 	{
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4R.png",
+							size:	new google.maps.Size(32, 32), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(4, 28)  // Image anchor
+						};
+		gicons["4Ls"] = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4Ls.png",
+							size:	new google.maps.Size(24, 24), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(22, 22) // Image anchor
+						};
+		gicons["4Rs"] = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4Rs.png",
+							size:	new google.maps.Size(24, 24), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(2, 22)  // Image anchor
+						};
+		gicons["5"] = 	{
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5.png"
+						}
+		gicons["5L"] = 	{
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5L.png",
+							size:	new google.maps.Size(32, 32), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(28, 28) // Image anchor
+						};
+		gicons["5R"] = 	{
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5R.png",
+							size:	new google.maps.Size(32, 32), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(4, 28)  // Image anchor
+						};
+		gicons["5Ls"] = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5Ls.png",
+							size:	new google.maps.Size(24, 24), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(22, 22) // Image anchor
+						};
+		gicons["5Rs"] = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5Rs.png",
+							size:	new google.maps.Size(24, 24), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(2, 22)  // Image anchor
+						};
+		gicons["6"] = 	{
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6.png"
+						}
+		gicons["6L"] = 	{
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6L.png",
+							size:	new google.maps.Size(32, 32), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(28, 28) // Image anchor
+						};
+		gicons["6R"] = 	{
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6R.png",
+							size:	new google.maps.Size(32, 32), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(4, 28)  // Image anchor
+						};
+		gicons["6Ls"] = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6Ls.png",
+							size:	new google.maps.Size(24, 24), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(22, 22) // Image anchor
+						};
+		gicons["6Rs"] = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6Rs.png",
+							size:	new google.maps.Size(24, 24), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(2, 22)  // Image anchor
+						};
+		gicons["7"]   = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7.png"
+						}
+		gicons["7L"]  = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7L.png",
+							size:	new google.maps.Size(32, 32), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(28, 28) // Image anchor
+						};
+		gicons["7R"]  = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7R.png",
+							size:	new google.maps.Size(32, 32), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(4, 28)  // Image anchor
+						};
+		gicons["7Ls"] = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7Ls.png",
+							size:	new google.maps.Size(24, 24), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(22, 22) // Image anchor
+						};
+		gicons["7Rs"] = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7Rs.png",
+							size:	new google.maps.Size(24, 24), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(2, 22)  // Image anchor
+						};
+		gicons["8"]   = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8.png"
+						}
+		gicons["8L"]  = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8L.png",
+							size:	new google.maps.Size(32, 32), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(28, 28) // Image anchor
+						};
+		gicons["8R"]  = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8R.png",
+							size:	new google.maps.Size(32, 32), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(4, 28)  // Image anchor
+						};
+		gicons["8Ls"] = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8Ls.png",
+							size:	new google.maps.Size(24, 24), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(22, 22) // Image anchor
+						};
+		gicons["8Rs"] = {
+							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8Rs.png",
+							size:	new google.maps.Size(24, 24), // Image size
+							origin:	new google.maps.Point(0, 0),  // Image origin
+							anchor:	new google.maps.Point(2, 22)  // Image anchor
+						};
 		// / A function to create the marker and set up the event window
 		function createMarker(point, name, html, mhtml, icontype) {
 			// Create a marker with the requested icon
@@ -1851,17 +1895,19 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				var infowindow = new google.maps.InfoWindow({});
 
-				gicons["red"] = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
-					new google.maps.Size(20, 34),
-					new google.maps.Point(0, 0),
-					new google.maps.Point(9, 34)
-				);
+				gicons["red"] = {
+					url:    "https://maps.google.com/mapfiles/marker.png",
+					size:   google.maps.Size(20, 34),
+					origin: google.maps.Point(0, 0),
+					anchor: google.maps.Point(9, 34)
+				};
 
-				var iconImage = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
-					new google.maps.Size(20, 34),
-					new google.maps.Point(0, 0),
-					new google.maps.Point(9, 34)
-				);
+				var iconImage = {
+					url:    "https://maps.google.com/mapfiles/marker.png",
+					size:   new google.maps.Size(20, 34),
+					origin: new google.maps.Point(0, 0),
+					anchor: new google.maps.Point(9, 34)
+				};
 
 				var iconShape = {
 					coord: [9, 0, 6, 1, 4, 2, 2, 4, 0, 8, 0, 12, 1, 14, 2, 16, 5, 19, 7, 23, 8, 26, 9, 30, 9, 34, 11, 34, 11, 30, 12, 26, 13, 24, 14, 21, 16, 18, 18, 16, 20, 12, 20, 8, 18, 4, 16, 2, 15, 1, 13, 0],
@@ -1873,12 +1919,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						iconColor = 'red';
 					}
 					if (!gicons[iconColor]) {
-						gicons[iconColor] = new google.maps.MarkerImage(
-							'//maps.google.com/mapfiles/marker' + iconColor + '.png',
-							new google.maps.Size(20, 34),
-							new google.maps.Point(0, 0),
-							new google.maps.Point(9, 34)
-						);
+						gicons[iconColor] = {
+							url:    '//maps.google.com/mapfiles/marker' + iconColor + '.png',
+							size:   new google.maps.Size(20, 34),
+							origin: new google.maps.Point(0, 0),
+							anchor: google.maps.Point(9, 34)
+						};
 					}
 					return gicons[iconColor];
 				}
@@ -1892,10 +1938,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				function createMarker(latlng, html, tooltip, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
 					// Use flag icon (if defined) instead of regular marker icon
 					if (marker_icon) {
-						var icon_image = new google.maps.MarkerImage(WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/' + marker_icon,
-							new google.maps.Size(25, 15),
-							new google.maps.Point(0, 0),
-							new google.maps.Point(12, 15));
+						var icon_image = {
+							url:    WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/' + marker_icon,
+							size:   new google.maps.Size(25, 15),
+							origin: new google.maps.Point(0, 0),
+							anchor: new google.maps.Point(12, 15)
+						};
 					} else {
 						var icon_image = getMarkerImage('red');
 					}
@@ -2346,12 +2394,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @param string   $linklevels
 	 */
 	private function printGoogleMapMarkers($place2, $level, $parent, $levelm, $linklevels) {
+		echo 'var icon_url = null;';
 		if (!$place2['lati'] || !$place2['long']) {
-			echo 'var icon_type = new google.maps.MarkerImage();';
-			echo 'icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
-			echo 'icon_type.iconSize = google.maps.Size(20, 34);';
+			echo 'var icon_url =' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png';
 			echo 'var point = new google.maps.LatLng(0, 0);';
 			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels, '&amp;parent[' . $level . ']=';
+
 			if ($place2['place'] == 'Unknown') {
 				echo '\"><br>';
 			} else {
@@ -2372,7 +2420,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			if (Auth::isAdmin()) {
 				echo '<br><a href=\"module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=', $levelm, '&amp;display=inactive\">', I18N::translate('Geographic data'), '</a>';
 			}
-			echo '</div>", icon_type, "', str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), '");';
+			echo '</div>", icon_url, "', str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), '");';
 		} else {
 			$lati = strtr($place2['lati'], array('N' => '', 'S' => '-', ',' => '.'));
 			$long = strtr($place2['long'], array('E' => '', 'W' => '-', ',' => '.'));
@@ -2388,10 +2436,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$long = '-' . abs($long);
 			}
 
-			echo 'var icon_type = new google.maps.MarkerImage();';
 			if ($place2['icon'] !== null && $place2['icon'] !== '' && $this->getSetting('GM_PH_MARKER') === 'G_FLAG') {
-				echo ' icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '";';
-				echo ' icon_type.iconSize = new google.maps.Size(25, 15);';
+				echo 'icon_url = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '";';
 			}
 			echo 'var point = new google.maps.LatLng(', $lati, ', ', $long, ');';
 			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels;
@@ -2411,7 +2457,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '</a>';
 			$parent[$level] = $place2['place'];
 			$this->printHowManyPeople($level + 1, $parent);
-			echo '</div>", icon_type, "', Filter::escapeJs($place2['place']), '");';
+			echo '</div>", icon_url, "', Filter::escapeJs($place2['place']), '");';
 		}
 	}
 
@@ -2477,23 +2523,29 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			// Creates a marker whose info window displays the given name
 			function createMarker(point, html, icon, name) {
 				// Choose icon ============
-				if (icon.image && ' . $level . '<=3) {
-					if (icon.image!="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png") {
-						var iconImage = new google.maps.MarkerImage(icon.image,
-						new google.maps.Size(25, 15),
-						new google.maps.Point(0,0),
-						new google.maps.Point(12, 15));
+				if (icon && ' . $level . '<=3) {
+					if (icon != "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png") {
+						var iconImage = {
+							url:    icon,
+							size:   new google.maps.Size(25, 15),
+							origin: new google.maps.Point(0,0),
+							anchor: new google.maps.Point(12, 15)
+						};
 					} else {
-						var iconImage = new google.maps.MarkerImage(icon.image,
-						new google.maps.Size(20, 34),
-						new google.maps.Point(0,0),
-						new google.maps.Point(9, 34));
+						var iconImage = {
+							url:    icon,
+							size:   new google.maps.Size(20, 34),
+							origin:	new google.maps.Point(0,0),
+							anchor: new google.maps.Point(9, 34)
+						};
 					}
 				} else {
-					var iconImage = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
-					new google.maps.Size(20, 34),
-					new google.maps.Point(0,0),
-					new google.maps.Point(9, 34));
+					var iconImage = {
+						url:    "https://maps.google.com/mapfiles/marker.png",
+						size:   new google.maps.Size(20, 34),
+						origin: new google.maps.Point(0,0),
+						anchor: new google.maps.Point(9, 34)						
+					};
 				}
 				var posn = new google.maps.LatLng(0,0);
 				var marker = new google.maps.Marker({
@@ -2736,6 +2788,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$placeid    = Filter::post('placeid', null, Filter::get('placeid'));
 		$place_name = Filter::post('place_name', null, Filter::get('place_name'));
 		$placeid    = (int) $placeid; // Convert empty string to zero
+		$place_icon = '';
 
 		// Update Street View fields fields
 		if ($action === 'update_sv_params' && Auth::isAdmin() && Filter::checkCsrf()) {
@@ -2854,7 +2907,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$zoomfactor  = 1;
 				$parent_lati = 0.0;
 				$parent_long = 0.0;
-				$place_icon  = '';
 				$parent_id   = $placeid;
 				do {
 					$row =
@@ -2874,7 +2926,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$place_long  = 0.0;
 				$parent_lati = 0.0;
 				$parent_long = 0.0;
-				$place_icon  = '';
 				$parent_id   = 0;
 				$level       = 0;
 				$zoomfactor  = $this->getSetting('GM_MIN_ZOOM');
@@ -3090,11 +3141,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				// Create the Main Location Marker
 				<?php
 				if ($level < 3 && $place_icon != '') {
-					echo 'var image = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon, '",';
-					echo 'new google.maps.Size(25, 15),'; // Image size
-					echo 'new google.maps.Point(0, 0),'; // Image origin
-					echo 'new google.maps.Point(12, 15)'; // Image anchor
-					echo ');';
+					echo 'var image = {
+							"url"    : WT_STATIC_URL + WT_MODULES_DIR + "googlemap/" + "' . $place_icon . '",
+							"size"   : new google.maps.Size(25, 15), // Image size
+							"origin" : new google.maps.Point(0, 0), // Image origin
+							"anchor" : new google.maps.Point(12, 15) // Image anchor
+						};';
 					echo 'marker = new google.maps.Marker({';
 					echo 'icon: image,';
 					echo 'position: latlng,';
@@ -3174,13 +3226,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 
 			function createMarker(i, point, name) {
-				<?php
-				echo 'var image = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png",';
-				echo 'new google.maps.Size(20, 34),'; // Image size
-				echo 'new google.maps.Point(0, 0),'; // Image origin
-				echo 'new google.maps.Point(10, 34)'; // Image anchor
-				echo ');';
-				?>
+
+				 var image = {
+					 url:    WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/images/marker_yellow.png',
+					 size:   new google.maps.Size(20, 34), // Image size
+					 origin: new google.maps.Point(0, 0), // Image origin
+					 anchor: new google.maps.Point(10, 34) // Image anchor
+				 };
+
 				var marker = new google.maps.Marker({
 					icon:     image,
 					map:      map,
@@ -4137,14 +4190,15 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 			var imageNum = Math.round(bearing/22.5) % 16;
 
-			var image = new google.maps.MarkerImage('<?php echo WT_BASE_URL . WT_MODULES_DIR ?>googlemap/images/panda-icons/panda-' + imageNum + '.png',
+			var image = {
+				url:    '<?php echo WT_STATIC_URL . WT_MODULES_DIR ?>googlemap/images/panda-icons/panda-' + imageNum + '.png',
 				// This marker is 50 pixels wide by 50 pixels tall.
-				new google.maps.Size(50, 50),
+				size:   new google.maps.Size(50, 50),
 				// The origin for this image is 0,0.
-				new google.maps.Point(0, 0),
+				origin: new google.maps.Point(0, 0),
 				// The anchor for this image is the base of the flagpole at 0,32.
-				new google.maps.Point(26, 36)
-			);
+				anchor: new google.maps.Point(26, 36)
+			};
 
 			var shape = {
 				coord: [1, 1, 1, 20, 18, 20, 18 , 1],
