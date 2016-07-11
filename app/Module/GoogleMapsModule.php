@@ -65,9 +65,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	/** @var Individual[] of ancestors of root person */
 	private $ancestors = array();
 
-	/** @var int Number of generation to display */
-	private $generations;
-
 	/** @var int Number of nodes in the chart */
 	private $treesize;
 
@@ -703,10 +700,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		// 8 generations equals 255 individuals
 		$MAX_PEDIGREE_GENERATIONS = min($MAX_PEDIGREE_GENERATIONS, 8);
 
-		$controller        = new ChartController();
-		$this->generations = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
-		$this->treesize    = pow(2, $this->generations) - 1;
-		$this->ancestors   = array_values($controller->sosaAncestors($this->generations));
+		$controller      = new ChartController();
+		$generations     = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
+		$this->treesize  = pow(2, $generations) - 1;
+		$this->ancestors = array_values($controller->sosaAncestors($generations));
 
 		$controller
 			->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->root->getFullName()))
@@ -753,7 +750,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<?php
 							for ($p = 3; $p <= $MAX_PEDIGREE_GENERATIONS; $p++) {
 								echo '<option value="', $p, '" ';
-								if ($p == $this->generations) {
+								if ($p == $generations) {
 									echo 'selected';
 								}
 								echo '>', $p, '</option>';
