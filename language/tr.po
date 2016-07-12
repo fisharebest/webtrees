@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-29 12:41+0000\n"
+"PO-Revision-Date: 2016-07-12 09:47+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -1832,7 +1832,7 @@ msgstr "Tüm kayıtlar"
 
 #: admin_trees_config.php:1943
 msgid "All repository facts"
-msgstr "Tüm depo olguları"
+msgstr "Tüm havuz olguları"
 
 #: admin_trees_config.php:1854
 msgid "All source facts"
@@ -3591,17 +3591,17 @@ msgstr "Çocukları "
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
 msgid "Children take a patronym instead of a surname."
-msgstr "Çocuk soyadı yerine baba tarafının lakabını (sülale adı) aldı."
+msgstr "Çocuk soyadı yerine baba tarafının lakabını (sülale adı) alır."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:82
 msgid "Children take one surname from the father and one surname from the mother."
-msgstr "Çocuk bir babadan bir anneden soyadı aldı."
+msgstr "Çocuk bir babadan bir anneden soyadı alır."
 
 #. I18N: In the Portuguese surname tradition, ...
 #: app/SurnameTradition.php:85
 msgid "Children take one surname from the mother and one surname from the father."
-msgstr "Çocuk bir anneden bir babadan soyadı aldı."
+msgstr "Çocuk bir anneden bir babadan soyadı alır."
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the patrilineal surname tradition, ...
@@ -3610,12 +3610,12 @@ msgstr "Çocuk bir anneden bir babadan soyadı aldı."
 #: app/SurnameTradition.php:72 app/SurnameTradition.php:76
 #: app/SurnameTradition.php:91 app/SurnameTradition.php:96
 msgid "Children take their father’s surname."
-msgstr "Çocuk babasının soyadını aldı."
+msgstr "Çocuk babasının soyadını alır."
 
 #. I18N: In the matrilineal surname tradition, ...
 #: app/SurnameTradition.php:79
 msgid "Children take their mother’s surname."
-msgstr "Çocuk annesinin soyadını aldı."
+msgstr "Çocuk annesinin soyadını alır."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6718
@@ -4919,7 +4919,7 @@ msgstr "varsayılan soyağacı nesilleri"
 #. I18N: A configuration setting
 #: admin_site_config.php:243 admin_trees_config.php:973
 msgid "Default theme"
-msgstr "Varsayılan Tema"
+msgstr "Varsayılan tema"
 
 #. I18N: gedcom tag _DEG
 #: app/GedcomTag.php:1455
@@ -11136,19 +11136,19 @@ msgstr "Quetzaltenango, Guatemala"
 
 #: admin_trees_config.php:1823
 msgid "Quick family facts"
-msgstr "Hızlı Aile Olguları"
+msgstr "Hızlı aile olguları"
 
 #: admin_trees_config.php:1705
 msgid "Quick individual facts"
-msgstr "Hızlı Birey Olgular"
+msgstr "Hızlı birey olguları"
 
 #: admin_trees_config.php:2001
 msgid "Quick repository facts"
-msgstr "Hızlı Havuz Olguları"
+msgstr "Hızlı ravuz olguları"
 
 #: admin_trees_config.php:1912
 msgid "Quick source facts"
-msgstr "Hızlı Kaynak Olguları"
+msgstr "Hızlı kaynak olguları"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:201
@@ -15165,7 +15165,7 @@ msgstr "Temizlenmemiş: bilgiler yetersiz"
 
 #: admin_trees_config.php:1765
 msgid "Unique family facts"
-msgstr "Benzersiz Aile Olguları"
+msgstr "Benzersiz aile olguları"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
@@ -15179,15 +15179,15 @@ msgstr "Benzersiz tanımlayıcılar aynı kaydın farklı aile ağaçları ve fa
 
 #: admin_trees_config.php:1647
 msgid "Unique individual facts"
-msgstr "Benzersiz Birey Olgular"
+msgstr "Benzersiz birey olguları"
 
 #: admin_trees_config.php:1972
 msgid "Unique repository facts"
-msgstr "Benzersiz Havuz Olguları"
+msgstr "Benzersiz havuz olguları"
 
 #: admin_trees_config.php:1883
 msgid "Unique source facts"
-msgstr "Benzersiz Kaynak Olguları"
+msgstr "Benzersiz kaynak olguları"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6682
@@ -19070,7 +19070,7 @@ msgstr "dokuzuncu kuzen"
 #: modules_v3/individual_ext_report/report.xml:182
 #: modules_v3/individual_report/report.xml:178
 msgid "no"
-msgstr "no"
+msgstr "hayır"
 
 #. I18N: None of the other options
 #: admin_site_config.php:111 admin_trees_config.php:63
@@ -19152,7 +19152,7 @@ msgstr "eş"
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr "Baba erkil"
+msgstr "baba erkil"
 
 #: app/Functions/Functions.php:840
 msgctxt "father’s father"
