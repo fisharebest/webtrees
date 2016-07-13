@@ -82,6 +82,7 @@ $controller = new PageController;
 $controller
 	->restrictAccess(Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Update all the place names in a family tree') . ' — ' . $WT_TREE->getTitleHtml())
+	->addInlineJavascript('autocomplete();')
 	->pageHeader();
 ?>
 
@@ -100,9 +101,9 @@ $controller
 <form method="post">
 	<dl>
 		<dt><label for="search"><?php echo I18N::translate('Search for'); ?></label></dt>
-		<dd><input name="search" id="search" type="text" size="30" value="<?php echo Filter::escapeHtml($search); ?>" required autofocus></dd>
+		<dd><input name="search" id="search" type="text" size="60" value="<?php echo Filter::escapeHtml($search); ?>" data-autocomplete-type="PLAC" required autofocus></dd>
 		<dt><label for="replace"><?php echo I18N::translate('Replace with'); ?></label></dt>
-		<dd><input name="replace" id="replace" type="text" size="30" value="<?php echo Filter::escapeHtml($replace); ?>" required></dd>
+		<dd><input name="replace" id="replace" type="text" size="60" value="<?php echo Filter::escapeHtml($replace); ?>" data-autocomplete-type="PLAC" required></dd>
 	</dl>
 	<button type="submit" value="preview"><?php echo /* I18N: A button label. */ I18N::translate('preview'); ?></button>
 	<button type="submit" value="update" name="confirm"><?php echo /* I18N: A button label. */ I18N::translate('update'); ?></button>
