@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-05 07:17+0000\n"
+"PO-Revision-Date: 2016-07-13 10:32+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -5525,7 +5525,7 @@ msgstr "Elektronikus"
 #. I18N: Angle of elevation (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2450
 msgid "Elevation"
-msgstr "Emelkedési szög"
+msgstr "Emelkedés"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:148
@@ -6287,11 +6287,11 @@ msgstr "Megmaradtak állományok a webtrees előző változatából. A régi fá
 #: admin_site_clean.php:88
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
-msgstr "A(z) %s jellel jelölt fájok szükségesek a rendes működéshez, ezért nem távolíthatók el."
+msgstr "A %s jellel jelölt fájok szükségesek a rendes működéshez, ezért nem távolíthatók el."
 
 #: app/I18N.php:234 app/Module/SlideShowModule.php:302 find.php:532
 msgid "Filter"
-msgstr "Szűrő"
+msgstr "Szűrő&nbsp;"
 
 #: app/Functions/FunctionsPrint.php:799 find.php:76 find.php:81 find.php:86
 #: find.php:91 find.php:96 find.php:101
@@ -7438,7 +7438,7 @@ msgstr "Sok kultúrában szokás hagyományos betűkkel írt, hagyományos nevet
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "Sok kultúrában szokás hagyományos betűkkel írt, hagyományos nevet viselni és emellett használni a név latin betűs változatát, ahogy az olyan latin betűs nyelveken betűzik vagy ejtik, amilyen az angol.<br><br>Ha Ön inkább a latin ábécét részesíti előnyben a nevek bevitelére a szokásos névmezőkben, használhatja ezt a rovatot arra, hogy ebbe ugyanazt a nevet nem latin ábécé szerinti görög, héber, cirill, arab vagy kínai betűvel írja. Mindkét névváltozat megjelenik a listákban és az ábrákon.<br><br>Jóllehet ez a rovat a „Héber név” címkét kapta, a tartalma nem csak héber karakterekre korlátozódik."
+msgstr "Sok kultúrában szokás hagyományos betűkkel írt, hagyományos nevet viselni és emellett használni a név latin betűs változatát, ahogy az olyan latin betűs nyelveken betűzik vagy ejtik, amilyen az angol.<br><br>Ha Ön inkább a latin ábécét részesíti előnyben a nevek bevitelére a szokásos névmezőkben, használhatja ezt a rovatot arra, hogy ebbe ugyanazt a nevet nem latin ábécé szerinti görög, héber, cirill, arab vagy kínai betűvel írja. Mindkét névváltozat megjelenik a listákban és az ábrákon.<br><br>Jóllehet e rovat címkéjében a „héberül” szó szerepel, a tartalma nem csak héber karakterekre korlátozódik."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:712
@@ -9782,7 +9782,7 @@ msgstr "Nem található GEDCOM-fájl."
 
 #: app/Module/GoogleMapsModule.php:875
 msgid "No ancestors in the database."
-msgstr "Nincsenek elődök az adatbázisban."
+msgstr "Nincsenek ősök az adatbázisban."
 
 #: admin_trees_config.php:35
 msgid "No calendar conversion"
@@ -11855,7 +11855,7 @@ msgstr "Szo."
 
 #: app/Module/GoogleMapsModule.php:333
 msgid "Satellite"
-msgstr "Szatelit"
+msgstr "Szatellit"
 
 #: app/Date/CalendarDate.php:346
 msgid "Saturday"
@@ -13552,13 +13552,13 @@ msgstr "A rendszergazdát értesítettük. Amint megadja az engedélyt a bejelen
 #: action.php:50
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "A(z) „%s” adatmódosításait egy webhelykezelő elfogadta."
+msgstr "„%s” adatainak módosítását elfogadták."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:233
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "A(z) „%s” adatmódosításait egy webhelykezelő elutasította."
+msgstr "„%s” adatainak módosítását elutasították."
 
 #: app/Module/ClippingsCartModule.php:311
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -13681,7 +13681,7 @@ msgstr "A(z) %s mappát nem lehetett törölni."
 #: admin_site_config.php:37 admin_trees_config.php:287
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
-msgstr "A(z) %s mappa nem létezik és létrehozni sem lehetett."
+msgstr "A(z) %s mappa nem létezik, és nem lehetett létrehozni."
 
 #: addmedia.php:100 addmedia.php:111 addmedia.php:257 addmedia.php:268
 #: admin_media_upload.php:64 admin_media_upload.php:75
@@ -13791,12 +13791,12 @@ msgstr "Az üzenetet sikeresen elküldtük %s részére."
 #: admin_modules.php:54
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "A(z) „%s” modul inaktív."
+msgstr "A(z) „%s” modul inaktívvá vált."
 
 #: admin_modules.php:56
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "A(z) „%s” modul aktív."
+msgstr "A(z) „%s” modul aktívvá vált."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
@@ -16026,7 +16026,7 @@ msgstr "Más nevű GEDCOM-állományt választott. Ez helyes?"
 
 #: logout.php:24
 msgid "You have signed out."
-msgstr "Ön sikeresen kijelentkezett."
+msgstr "Ön kijelentkezett."
 
 #: addmedia.php:473
 msgid "You may enter a URL, beginning with “http://”."
