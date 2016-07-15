@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-13 10:32+0000\n"
+"PO-Revision-Date: 2016-07-15 19:39+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -1675,7 +1675,7 @@ msgstr "Felnőttkeresztelő"
 
 #: admin_trees_config.php:2027
 msgid "Advanced fact preferences"
-msgstr "Haladó ténybeállítások"
+msgstr "Speciális ténybeállítások"
 
 #: admin_trees_config.php:2032
 msgid "Advanced name facts"
@@ -7434,7 +7434,7 @@ msgstr "Egy családfában minden bejegyzéshez belső hivatkozás (úgynevezett 
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "Sok kultúrában szokás hagyományos betűkkel írt, hagyományos nevet viselni és emellett használni a név latin betűs változatát, ahogy az olyan latin betűs nyelveken betűzik vagy ejtik, amilyen az angol.<br><br>Ha Ön inkább a nem latin ábécét részesíti előnyben a nevek bevitelére a szokásos név mezőkben, mint a héber, görög, cirill, kínai vagy arab ábécét, használhatja ezt a rovatot arra, hogy ebbe ugyanazt a nevet latin ábécé betűivel írja. Mindkét névváltozat megjelenik a listákban és az ábrákon.<br><br>Jóllehet ez latin betűsnek címkézett mező, a tartalma nem csak a latin ábécére korlátozódik. Használható akár olyan japán nevekre is, amelyekben három különböző ábécé is előfordulhat."
+msgstr "Sok kultúrában szokás hagyományos betűkkel írt, hagyományos nevet viselni és emellett használni a név latin betűs változatát, ahogy az olyan latin betűs nyelveken betűzik vagy ejtik, amilyen az angol.<br><br>Ha Ön inkább a nem latin, azaz a héber, görög, cirill, kínai vagy arab ábécét részesíti előnyben a nevek bevitelére a szokásos név mezőkben, használhatja ezt a rovatot arra, hogy ebbe ugyanazt a nevet a latin ábécé betűivel írja. Mindkét névváltozat megjelenik a listákban és az ábrákon.<br><br>Jóllehet ez „latinosított” címkéjű mező, a tartalma nem csak a latin ábécére korlátozódik. Használható akár olyan japán nevekre is, amelyekben három különböző ábécé is előfordulhat."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
@@ -11694,15 +11694,15 @@ msgstr "Románia"
 #. I18N: gedcom tag ROMN
 #: app/GedcomTag.php:762
 msgid "Romanized"
-msgstr "Katolizált"
+msgstr "Latinosított"
 
 #: app/GedcomTag.php:690
 msgid "Romanized place"
-msgstr "Katolizált hely"
+msgstr "Latinosított hely"
 
 #: app/GedcomTag.php:838
 msgid "Romanized title"
-msgstr "Katolizált cím"
+msgstr "Latinosított cím"
 
 #: app/Functions/FunctionsPrintLists.php:250
 #: app/Functions/FunctionsPrintLists.php:666
@@ -13552,13 +13552,13 @@ msgstr "A rendszergazdát értesítettük. Amint megadja az engedélyt a bejelen
 #: action.php:50
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "„%s” adatainak módosítását elfogadták."
+msgstr "„%s” adatainak módosítása elfogadva."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:233
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "„%s” adatainak módosítását elutasították."
+msgstr "„%s” adatainak módosítása elutasítva."
 
 #: app/Module/ClippingsCartModule.php:311
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
