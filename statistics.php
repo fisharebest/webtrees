@@ -681,6 +681,9 @@ if (!$ajax) {
 											<option value="europe">
 												<?php echo I18N::translate('Europe') ?>
 											</option>
+											<option value="usa">
+												<?php echo I18N::translate('United States') ?>
+											</option>
 											<option value="south_america">
 												<?php echo I18N::translate('South America') ?>
 											</option>
