@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-15 19:39+0000\n"
+"PO-Revision-Date: 2016-07-17 08:42+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -3319,7 +3319,7 @@ msgstr "Calgary, Alberta, Kanada"
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
 msgid "Call number"
-msgstr "Gyűjteményazonosító"
+msgstr "Hívószám"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6797
@@ -7280,7 +7280,7 @@ msgstr "Idaho Falls, Idaho, Egyesült Államok"
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:520
 msgid "Identification number"
-msgstr "Azonosító"
+msgstr "Azonosítószám"
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:646
@@ -11351,7 +11351,7 @@ msgstr "Bejegyzésazonosító szám (RIN)"
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:750
 msgid "Record file number"
-msgstr "Adatállomány-azonosító"
+msgstr "Adatállomány-azonosító szám"
 
 #: search.php:83 statistics.php:349
 msgid "Records"
@@ -12935,7 +12935,7 @@ msgstr "Snowflake, Arizona, Egyesült Államok"
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:796
 msgid "Social security number"
-msgstr "Társadalombiztosítási azonosító"
+msgstr "Társadalombiztosítási szám"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6880
