@@ -446,6 +446,17 @@ $old_files = array(
 	WT_ROOT . 'themes/xenea/css-1.7.4',
 	// Removed in 1.7.7
 	WT_ROOT . 'assets/js-1.7.4',
+	WT_ROOT . 'modules_v3/googlemap/images/css_sprite_facts.png',
+	WT_ROOT . 'modules_v3/googlemap/images/flag_shadow.png',
+	WT_ROOT . 'modules_v3/googlemap/images/shadow-left-large.png',
+	WT_ROOT . 'modules_v3/googlemap/images/shadow-left-small.png',
+	WT_ROOT . 'modules_v3/googlemap/images/shadow-right-large.png',
+	WT_ROOT . 'modules_v3/googlemap/images/shadow-right-small.png',
+	WT_ROOT . 'modules_v3/googlemap/images/shadow50.png',
+	WT_ROOT . 'modules_v3/googlemap/images/transparent-left-large.png',
+	WT_ROOT . 'modules_v3/googlemap/images/transparent-left-small.png',
+	WT_ROOT . 'modules_v3/googlemap/images/transparent-right-large.png',
+	WT_ROOT . 'modules_v3/googlemap/images/transparent-right-small.png',
 );
 
 // Delete old files (if we can).
