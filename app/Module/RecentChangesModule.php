@@ -249,12 +249,17 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 					$html .= '<a href="' . $record->getHtmlUrl() . '" class="list_item">' . $record->getAddName() . '</a>';
 				}
 			}
-			if ($show_user) {
-				$html .= /* I18N: [a record was] Changed on <date/time> by <user> */
-					I18N::translate('Changed on %1$s by %2$s', $record->lastChangeTimestamp(), Filter::escapeHtml($record->lastChangeUser()));
-			} else {
-				$html .= /* I18N: [a record was] Changed on <date/time> */
-					I18N::translate('Changed on %1$s', $record->lastChangeTimestamp());
+
+			// The timestamp may be missing or private.
+			$timestamp = $record->lastChangeTimestamp();
+			if ($timestamp !== '') {
+				if ($show_user) {
+					$html .= /* I18N: [a record was] Changed on <date/time> by <user> */
+						I18N::translate('Changed on %1$s by %2$s', $timestamp, Filter::escapeHtml($record->lastChangeUser()));
+				} else {
+					$html .= /* I18N: [a record was] Changed on <date/time> */
+						I18N::translate('Changed on %1$s', $timestamp);
+				}
 			}
 			$html .= '</div>';
 		}
