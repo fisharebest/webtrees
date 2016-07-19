@@ -78,12 +78,12 @@ class Stats {
 		}
 
 		return
-			'<table id="keywords"><thead>' .
+			'<table id="keywords" style="width:100%; table-layout:fixed"><thead>' .
 			'<tr>' .
-			'<th class="list_label_wrap">' .
+			'<th class="list_label_wrap width25">' .
 			I18N::translate('Embedded variable') .
 			'</th>' .
-			'<th class="list_label_wrap">' .
+			'<th class="list_label_wrap width75">' .
 			I18N::translate('Resulting value') .
 			'</th>' .
 			'</tr>' .
