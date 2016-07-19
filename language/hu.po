@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-17 08:42+0000\n"
+"PO-Revision-Date: 2016-07-19 05:07+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -11351,7 +11351,7 @@ msgstr "Bejegyzésazonosító szám (RIN)"
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:750
 msgid "Record file number"
-msgstr "Adatállomány-azonosító szám"
+msgstr "Bejegyzésfájlszám"
 
 #: search.php:83 statistics.php:349
 msgid "Records"
