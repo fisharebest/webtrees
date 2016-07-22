@@ -1722,56 +1722,72 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return array
 	 */
 	private function getPlaceData(Fact $fact) {
-		$result = array();
+		$mapdata         = array();
+		$place_location  = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
 
+		if ($place_location && $place_location->sv_lati && $place_location->sv_long) {
+			$streetview_data = array(
+				'sv_bearing'   => $place_location->sv_bearing,
+				'sv_elevation' => $place_location->sv_elevation,
+				'sv_lati'      => $place_location->sv_lati,
+				'sv_long'      => $place_location->sv_long,
+				'sv_zoom'      => $place_location->sv_zoom
+			);
+		} else {
+			$streetview_data = array(
+				'sv_bearing'   => 0,
+				'sv_elevation' => 0,
+				'sv_lati'      => 0,
+				'sv_long'      => 0,
+				'sv_zoom'      => 0
+			);
+		}
 		$has_latitude  = preg_match('/\n4 LATI (.+)/', $fact->getGedcom(), $match1);
 		$has_longitude = preg_match('/\n4 LONG (.+)/', $fact->getGedcom(), $match2);
 
 		// If co-ordinates are stored in the GEDCOM then use them
 		if ($has_latitude && $has_longitude) {
-			$result = array(
-				'index'   => 'ID' . $match1[1] . $match2[1],
-				'mapdata' => array(
-					'class'        => 'optionbox',
-					'place'        => $fact->getPlace()->getFullName(),
-					'tooltip'      => $fact->getPlace()->getGedcomName(),
-					'lat'          => strtr($match1[1], array('N' => '', 'S' => '-', ',' => '.')),
-					'lng'          => strtr($match2[1], array('E' => '', 'W' => '-', ',' => '.')),
-					'pl_icon'      => '',
-					'pl_zoom'      => '0',
-					'sv_bearing'   => '0',
-					'sv_elevation' => '0',
-					'sv_lati'      => '0',
-					'sv_long'      => '0',
-					'sv_zoom'      => '0',
-					'events'       => '',
-				),
+			$index   = 'ID' . $match1[1] . $match2[1];
+			$mapdata = array(
+				'class'   => 'optionbox',
+				'place'   => $fact->getPlace()->getFullName(),
+				'tooltip' => $fact->getPlace()->getGedcomName(),
+				'lat'     => strtr($match1[1], array('N' => '', 'S' => '-', ',' => '.')),
+				'lng'     => strtr($match2[1], array('E' => '', 'W' => '-', ',' => '.')),
+				'pl_icon' => '',
+				'pl_zoom' => 0,
+				'events'  => '',
+			);
+		} elseif ($place_location && $place_location->pl_lati && $place_location->pl_long) {
+			$index   = 'ID' . $place_location->pl_lati . $place_location->pl_long;
+			$mapdata = array(
+				'class'   => 'optionbox',
+				'place'   => $fact->getPlace()->getFullName(),
+				'tooltip' => $fact->getPlace()->getGedcomName(),
+				'lat'     => strtr($place_location->pl_lati, array('N' => '', 'S' => '-', ',' => '.')),
+				'lng'     => strtr($place_location->pl_long, array('E' => '', 'W' => '-', ',' => '.')),
+				'pl_icon' => $place_location->pl_icon,
+				'pl_zoom' => $place_location->pl_zoom,
+				'events'  => '',
 			);
 		} else {
-			$place_location = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
-			if ($place_location && $place_location->pl_lati && $place_location->pl_long) {
-				$result = array(
-					'index'   => 'ID' . $place_location->pl_lati . $place_location->pl_long,
-					'mapdata' => array(
-						'class'        => 'optionbox',
-						'place'        => $fact->getPlace()->getFullName(),
-						'tooltip'      => $fact->getPlace()->getGedcomName(),
-						'lat'          => strtr($place_location->pl_lati, array('N' => '', 'S' => '-', ',' => '.')),
-						'lng'          => strtr($place_location->pl_long, array('E' => '', 'W' => '-', ',' => '.')),
-						'pl_icon'      => $place_location->pl_icon,
-						'pl_zoom'      => $place_location->pl_zoom,
-						'sv_bearing'   => $place_location->sv_bearing,
-						'sv_elevation' => $place_location->sv_elevation,
-						'sv_lati'      => $place_location->sv_lati,
-						'sv_long'      => $place_location->sv_long,
-						'sv_zoom'      => $place_location->sv_zoom,
-						'events'       => '',
-					),
-				);
-			}
+			$index   = 'ID000000';
+			$mapdata = array(
+				'class'   => 'optionbox',
+				'place'   => $fact->getPlace()->getFullName(),
+				'tooltip' => $fact->getPlace()->getGedcomName(),
+				'lat'     => 0,
+				'lng'     => 0,
+				'pl_icon' => '',
+				'pl_zoom' => 0,
+				'events'  => '',
+			);
 		}
 
-		return $result;
+		return array(
+			'index'   => $index,
+			'mapdata' => array_merge($mapdata, $streetview_data)
+		);
 	}
 
 	/**
