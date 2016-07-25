@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-25 15:52+0000\n"
-"Last-Translator: Andi Muhammad Sabry <sabry_g90@yahoo.com>\n"
+"PO-Revision-Date: 2016-07-25 16:14+0000\n"
+"Last-Translator: M Arief Budiman <arifbudiman.it@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr "tetapi detailnya tidak diketahui"
 #: modules_v3/descendancy_report/report.xml:424
 #: modules_v3/descendancy_report/report.xml:455
 msgid " in "
-msgstr "dalam"
+msgstr " dalam "
 
 #: statisticsplot.php:903 statisticsplot.php:953 statisticsplot.php:1007
 #: statisticsplot.php:1057 statisticsplot.php:1111 statisticsplot.php:1161
@@ -235,104 +235,104 @@ msgstr "%s dan keturunannya"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] ""
+msgstr[0] "%s orang pengguna tidak terdaftar"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4457 app/Stats.php:4461
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
+msgstr[0] "%s anak"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:59 app/I18N.php:313
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
+msgstr[0] "%s hari"
 
 #: app/I18N.php:799
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
-msgstr[0] ""
+msgstr[0] "%s hari yang lalu"
 
 #: app/Controller/SearchController.php:378
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
+msgstr[0] "%s keluarga telah diperbarui."
 
 #: admin.php:841
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
+msgstr[0] "%s pohon keluarga"
 
 #: app/Stats.php:5258 app/Stats.php:5262
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
+msgstr[0] "%s cucu"
 
 #: app/I18N.php:803
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
-msgstr[0] ""
+msgstr[0] "%s jam yang lalu"
 
 #: app/Controller/LifespanController.php:260
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] ""
+msgstr[0] "%s individu"
 
 #: app/Controller/SearchController.php:349
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
+msgstr[0] "%s individu telah diperbarui."
 
 #: app/Module/GoogleMapsModule.php:871
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] ""
+msgstr[0] "%s individu bersifat pribadi."
 
 #: app/Controller/LifespanController.php:253
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
+msgstr[0] "%s individu dengan agenda antara %s dan %s"
 
 #: app/Controller/LifespanController.php:246
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
+msgstr[0] "%s individu dengan agenda pada %s"
 
 #: app/Controller/LifespanController.php:239
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
+msgstr[0] "%s individu dengan agenda pada %s antara %s dan %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:119
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "%s dinonaktifkan pada server ini. Anda tidak dapat menginstal webtrees jika belum diaktifkan. Harap hubungi administrator situs atau server untuk mengaktifkannya."
 
 #: app/Module/UserMessagesModule.php:91
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
+msgstr[0] "%s pesan"
 
 #: app/I18N.php:807
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
+msgstr[0] "%s menit yang lalu"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:55 app/I18N.php:305
@@ -340,99 +340,99 @@ msgstr[0] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
+msgstr[0] "%s bulan"
 
 #: app/I18N.php:795
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
+msgstr[0] "%s bulan yang lalu"
 
 #: app/Controller/SearchController.php:432
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
+msgstr[0] "%s catatan telah diperbarui."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
 #, php-format
 msgid "%s once removed ascending"
-msgstr ""
+msgstr "%s urutan telah dihapus"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2111
 #, php-format
 msgid "%s once removed descending"
-msgstr ""
+msgstr "%s urutan telah dihapus"
 
 #: app/I18N.php:809
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
+msgstr[0] "%s detik yang lalu"
 
 #. I18N: %s is a person's name
 #: message.php:300 message.php:303 message.php:305
 #, php-format
 msgid "%s sent you the following message."
-msgstr ""
+msgstr "%s mengirim kepadamu pesan berikut ini."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] ""
+msgstr[0] "%s pengguna aktif"
 
 #: app/Controller/SearchController.php:411
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
+msgstr[0] "%s sumber telah diperbarui."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2124
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s 3 kali urutan terhapus"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2127
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "%s 3 kali urutan terhapus"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2116
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s 2 kali urutan terhapus"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2119
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "%s 2 kali urutan terhapus"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:57 app/I18N.php:309
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
+msgstr[0] "%s minggu"
 
 #: app/Functions/FunctionsDate.php:50 app/I18N.php:299
 #: app/Module/RelativesTabModule.php:83
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
+msgstr[0] "%s tahun"
 
 #: app/I18N.php:791
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
+msgstr[0] "%s tahun yang lalu"
 
 #: app/Functions/FunctionsPrintLists.php:1942
 #: app/Module/YahrzeitModule.php:129 calendar.php:609
