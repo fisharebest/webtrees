@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-29 22:52+0000\n"
+"PO-Revision-Date: 2016-07-29 23:05+0000\n"
 "Last-Translator: Samar Kadhi <s_alkadhi@yahoo.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/webtrees/ar/>\n"
 "Language: ar\n"
@@ -2081,7 +2081,7 @@ msgstr "رسم بياني بشكل الساعة الرملية يعرض أسلا
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "مشجر تفاعلي يظهر الأسلاف والأنسال للفرد."
+msgstr "شجرة تفاعلية تظهر الأسلاف والأنسال للفرد."
 
 #: setup.php:504
 msgid "An unexpected database error occurred."
@@ -4021,14 +4021,14 @@ msgstr "جزر القمر"
 #: app/Controller/CompactController.php:46
 #: app/Module/CompactTreeChartModule.php:33
 msgid "Compact tree"
-msgstr "مشجر مضغوط"
+msgstr "شجرة مضغوطة"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:43
 #: app/Controller/CompactController.php:125
 #, php-format
 msgid "Compact tree of %s"
-msgstr "مشجر مضغوط لـ: %s"
+msgstr "شجرة مضغوطة لـ: %s"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
@@ -6170,7 +6170,7 @@ msgstr "أسرة %s"
 #: app/Module/StoriesModule.php:356 app/Theme/AbstractTheme.php:1386
 #: edit_changes.php:180
 msgid "Family tree"
-msgstr "مشجر العائلة"
+msgstr "شجرة العائلة"
 
 #: app/Module/ClippingsCartModule.php:90
 #: app/Module/ClippingsCartModule.php:479
@@ -6179,13 +6179,13 @@ msgstr "سلة مقتطفات المشجر"
 
 #: admin_trees_config.php:590 admin_trees_manage.php:635
 msgid "Family tree title"
-msgstr "مسمى المشجر"
+msgstr "مسمى شجرة العائلة"
 
 #. I18N: Menu entry
 #: admin.php:742 admin.php:750 app/Theme/AbstractTheme.php:1398
 #: app/Theme/AdministrationTheme.php:114 search.php:127 search.php:284
 msgid "Family trees"
-msgstr "مشجرات العائلة"
+msgstr "أشجار العائلة"
 
 #. I18N: %s is the spouse name
 #: app/Controller/IndividualController.php:416
@@ -6577,12 +6577,12 @@ msgstr "للإستفسارات المتعلقة بالأنساب، يرجى ال
 #: app/Theme/AbstractTheme.php:307
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr "للدعم الفني أوالإستفسارات يرجى التواصل مع%s."
+msgstr "للدعم الفني أو الإستفسارات يرجى التواصل مع%s."
 
 #: app/Theme/AbstractTheme.php:285
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "للدعم الفني أوالإستفساراتالمتعلقة بالأنساب يرجى التواصل مع%s."
+msgstr "للدعم الفني أو الإستفسارات المتعلقة بالأنساب يرجى التواصل مع %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:276
@@ -7728,7 +7728,7 @@ msgstr "مجلد التنصيب"
 #: app/Module/ChartsBlockModule.php:189
 #: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
-msgstr "مشجر تفاعلي"
+msgstr "شجرة تفاعلية"
 
 #: app/Module/ChartsBlockModule.php:126
 #: app/Module/InteractiveTree/TreeView.php:69
@@ -7736,7 +7736,7 @@ msgstr "مشجر تفاعلي"
 #: app/Module/InteractiveTreeModule.php:135
 #, php-format
 msgid "Interactive tree of %s"
-msgstr "مشجر تفاعلي لـ: %s"
+msgstr "شجرة تفاعلية لـ: %s"
 
 #: app/Functions/FunctionsEdit.php:246
 msgid "Internal messaging"
@@ -12143,7 +12143,7 @@ msgstr "حدد الأفراد حسب المكان أوالتاريخ"
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:43
 msgid "Select records from your family tree and save them as a GEDCOM file."
-msgstr "إنتقاء سجلات من مشجر العائلة لحفظها في ملف GEDCOM."
+msgstr "إنتقاء سجلات من شجرة العائلة لحفظها في ملف GEDCOM."
 
 #: statistics.php:546 statistics.php:557 statistics.php:566
 msgid "Select the desired age interval"
