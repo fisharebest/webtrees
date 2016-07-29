@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-03 06:57+0000\n"
+"PO-Revision-Date: 2016-07-19 07:12+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -6533,7 +6533,7 @@ msgstr "Freiburg, Allemagne"
 #. I18N: The French calendar
 #: app/Date.php:200 help_text.php:198
 msgid "French"
-msgstr "Républicain français"
+msgstr "républicain français"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6771
@@ -6902,7 +6902,7 @@ msgstr "Groenland"
 #. I18N: The gregorian calendar
 #: app/Date.php:198 app/Module/YahrzeitModule.php:284
 msgid "Gregorian"
-msgstr "Grégorien"
+msgstr "grégorien"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6768
@@ -7162,7 +7162,7 @@ msgstr "Image principale"
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:202 help_text.php:186
 msgid "Hijri"
-msgstr "Hijri"
+msgstr "hégirien (musulman)"
 
 #: modules_v3/ahnentafel_report/report.xml:195
 msgid "His occupation was"
@@ -7715,7 +7715,7 @@ msgstr "Iyar"
 #. I18N: The Persian/Jalali calendar
 #: app/Date.php:203
 msgid "Jalali"
-msgstr "Jalali"
+msgstr "persan"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6790
@@ -7755,7 +7755,7 @@ msgstr "Japon"
 #. I18N: The Hebrew/Jewish calendar
 #: app/Date.php:201 app/Module/YahrzeitModule.php:283 help_text.php:172
 msgid "Jewish"
-msgstr "Israélite"
+msgstr "hébraïque"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:177
@@ -7790,7 +7790,7 @@ msgstr "jul"
 #. I18N: The julian calendar
 #: app/Date.php:199 help_text.php:167
 msgid "Julian"
-msgstr "Julien"
+msgstr "julien"
 
 #: app/Date/CalendarDate.php:217
 msgctxt "GENITIVE"

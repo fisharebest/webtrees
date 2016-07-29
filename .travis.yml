@@ -1,27 +1,32 @@
 language: php
 
 php:
-  - 7.0
-  - 5.6
-  - 5.5
-  - 5.4
   - 5.3
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.0
+  - nightly
   - hhvm
 
-## Travis is faster if we do not need sudo
+## Non-sudo environments are faster
 sudo: false
 
-## Cache composer bits
+## Cache composer and vendor libraries
 cache:
   directories:
+    - vendor
     - $HOME/.composer/cache
 
-install:
+before_script:
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
-  - travis_retry composer update --prefer-dist --no-interaction
+  - cp $HOME/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini /tmp/
+  - phpenv config-rm xdebug.ini
+  - travis_retry composer update
+  - phpenv config-add /tmp/xdebug.ini
 
 script:
-  - phpunit --coverage-clover tests/clover.xml
+  - vendor/bin/phpunit --coverage-clover tests/clover.xml
 
 after_script:
-  - php vendor/bin/coveralls -v
+  - vendor/bin/coveralls -v

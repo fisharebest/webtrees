@@ -89,7 +89,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 		$content = '';
 
 		if (empty($articles)) {
-			$content .= I18N::translate('You have not created any journal items.');
+			$content .= '<p>' . I18N::translate('You have not created any journal items.') . '</p>';
 		}
 
 		foreach ($articles as $article) {
@@ -106,7 +106,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 			$content .= '</div><br>';
 		}
 
-		$content .= '<a href="#" onclick="window.open(\'editnews.php?user_id=' . Auth::id() . '\', \'_blank\', indx_window_specs); return false;">' . I18N::translate('Add a journal entry') . '</a>';
+		$content .= '<p><a href="#" onclick="window.open(\'editnews.php?user_id=' . Auth::id() . '\', \'_blank\', indx_window_specs); return false;">' . I18N::translate('Add a journal entry') . '</a></p>';
 
 		if ($template) {
 			return Theme::theme()->formatBlock($id, $title, $class, $content);

@@ -447,7 +447,7 @@ class Individual extends GedcomRecord {
 	 */
 	public function displayImage() {
 		$media = $this->findHighlightedMedia();
-		if ($media) {
+		if ($media && $this->canShow()) {
 			// Thumbnail exists - use it.
 			return $media->displayImage();
 		} elseif ($this->tree->getPreference('USE_SILHOUETTE')) {

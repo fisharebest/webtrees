@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-05 07:17+0000\n"
+"PO-Revision-Date: 2016-07-24 11:24+0000\n"
 "Last-Translator: Tuna András <tunandras@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -1675,7 +1675,7 @@ msgstr "Felnőttkeresztelő"
 
 #: admin_trees_config.php:2027
 msgid "Advanced fact preferences"
-msgstr "Haladó ténybeállítások"
+msgstr "Speciális ténybeállítások"
 
 #: admin_trees_config.php:2032
 msgid "Advanced name facts"
@@ -3319,7 +3319,7 @@ msgstr "Calgary, Alberta, Kanada"
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
 msgid "Call number"
-msgstr "Gyűjteményazonosító"
+msgstr "Hívószám"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6797
@@ -5279,7 +5279,7 @@ msgstr "Ne változtassa meg, hogy megtartsa az eredeti állománynevet."
 
 #: app/Module/GoogleMapsModule.php:3818
 msgid "Do not create new locations, just import coordinates for existing locations."
-msgstr "Ne hozzon létre új helyszínt, csak importáljon koordinátákat a meglévő helyekhez."
+msgstr "Ne hozzon létre új helyeket, csak importáljon koordinátákat a meglévő helyekhez."
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
@@ -5525,7 +5525,7 @@ msgstr "Elektronikus"
 #. I18N: Angle of elevation (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2450
 msgid "Elevation"
-msgstr "Emelkedési szög"
+msgstr "Emelkedés"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:148
@@ -6287,11 +6287,11 @@ msgstr "Megmaradtak állományok a webtrees előző változatából. A régi fá
 #: admin_site_clean.php:88
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
-msgstr "A(z) %s jellel jelölt fájok szükségesek a rendes működéshez, ezért nem távolíthatók el."
+msgstr "A %s jellel jelölt fájok szükségesek a rendes működéshez, ezért nem távolíthatók el."
 
 #: app/I18N.php:234 app/Module/SlideShowModule.php:302 find.php:532
 msgid "Filter"
-msgstr "Szűrő"
+msgstr "Szűrő&nbsp;"
 
 #: app/Functions/FunctionsPrint.php:799 find.php:76 find.php:81 find.php:86
 #: find.php:91 find.php:96 find.php:101
@@ -7280,7 +7280,7 @@ msgstr "Idaho Falls, Idaho, Egyesült Államok"
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:520
 msgid "Identification number"
-msgstr "Azonosító"
+msgstr "Azonosítószám"
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:646
@@ -7434,11 +7434,11 @@ msgstr "Egy családfában minden bejegyzéshez belső hivatkozás (úgynevezett 
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "Sok kultúrában szokás hagyományos betűkkel írt, hagyományos nevet viselni és emellett használni a név latin betűs változatát, ahogy az olyan latin betűs nyelveken betűzik vagy ejtik, amilyen az angol.<br><br>Ha Ön inkább a nem latin ábécét részesíti előnyben a nevek bevitelére a szokásos név mezőkben, mint a héber, görög, cirill, kínai vagy arab ábécét, használhatja ezt a rovatot arra, hogy ebbe ugyanazt a nevet latin ábécé betűivel írja. Mindkét névváltozat megjelenik a listákban és az ábrákon.<br><br>Jóllehet ez latin betűsnek címkézett mező, a tartalma nem csak a latin ábécére korlátozódik. Használható akár olyan japán nevekre is, amelyekben három különböző ábécé is előfordulhat."
+msgstr "Sok kultúrában szokás hagyományos betűkkel írt, hagyományos nevet viselni és emellett használni a név latin betűs változatát, ahogy az olyan latin betűs nyelveken betűzik vagy ejtik, amilyen az angol.<br><br>Ha Ön inkább a nem latin, azaz a héber, görög, cirill, kínai vagy arab ábécét részesíti előnyben a nevek bevitelére a szokásos névmezőkben, használhatja ezt a rovatot arra, hogy ebbe ugyanazt a nevet a latin ábécé betűivel írja. Mindkét névváltozat megjelenik a listákban és az ábrákon.<br><br>Jóllehet ez „latinosított” címkéjű mező, a tartalma nem csak a latin ábécére korlátozódik. Használható akár olyan japán nevekre is, amelyekben három különböző ábécé is előfordulhat."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "Sok kultúrában szokás hagyományos betűkkel írt, hagyományos nevet viselni és emellett használni a név latin betűs változatát, ahogy az olyan latin betűs nyelveken betűzik vagy ejtik, amilyen az angol.<br><br>Ha Ön inkább a latin ábécét részesíti előnyben a nevek bevitelére a szokásos névmezőkben, használhatja ezt a rovatot arra, hogy ebbe ugyanazt a nevet nem latin ábécé szerinti görög, héber, cirill, arab vagy kínai betűvel írja. Mindkét névváltozat megjelenik a listákban és az ábrákon.<br><br>Jóllehet ez a rovat a „Héber név” címkét kapta, a tartalma nem csak héber karakterekre korlátozódik."
+msgstr "Sok kultúrában szokás hagyományos betűkkel írt, hagyományos nevet viselni és emellett használni a név latin betűs változatát, ahogy az olyan latin betűs nyelveken betűzik vagy ejtik, amilyen az angol.<br><br>Ha Ön inkább a latin ábécét részesíti előnyben a nevek bevitelére a szokásos névmezőkben, használhatja ezt a rovatot arra, hogy ebbe ugyanazt a nevet nem latin ábécé szerinti görög, héber, cirill, arab vagy kínai betűvel írja. Mindkét névváltozat megjelenik a listákban és az ábrákon.<br><br>Jóllehet e rovat címkéjében a „héberül” szó szerepel, a tartalma nem csak héber karakterekre korlátozódik."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:712
@@ -8341,7 +8341,7 @@ msgstr "Hely"
 
 #: app/Module/GoogleMapsModule.php:4027
 msgid "Location not removed: this location contains sub-locations"
-msgstr "Nem törölt helyszín: ez a helyszín al-helyszíneket tartalmaz"
+msgstr "A hely törlése elmaradt: ez a hely al-helyeket tartalmaz"
 
 #: app/GedcomCode/GedcomCodeRela.php:191
 msgid "Lodger"
@@ -8790,7 +8790,7 @@ msgstr "A házasság helye tartalmazza"
 
 #: statistics.php:418
 msgid "Marriage places"
-msgstr "Házasságok helyszínei"
+msgstr "Házassághelyek"
 
 #. I18N: gedcom tag MARS
 #: app/GedcomTag.php:592
@@ -9409,7 +9409,7 @@ msgstr "Anya családja. Társa: %s"
 #. I18N: A step-family.
 #: app/Individual.php:1016
 msgid "Mother’s family with an unknown individual"
-msgstr "Anya családja. Társa ismeretlen személlyel"
+msgstr "Anya családja. Társa ismeretlen személy"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:223
@@ -9782,7 +9782,7 @@ msgstr "Nem található GEDCOM-fájl."
 
 #: app/Module/GoogleMapsModule.php:875
 msgid "No ancestors in the database."
-msgstr "Nincsenek elődök az adatbázisban."
+msgstr "Nincsenek ősök az adatbázisban."
 
 #: admin_trees_config.php:35
 msgid "No calendar conversion"
@@ -9886,7 +9886,7 @@ msgstr "Nem találhatóak helyek"
 
 #: admin_trees_places.php:127
 msgid "No places have been found."
-msgstr "Nem találtunk helyszíneket."
+msgstr "Nem találtunk helyeket."
 
 #: admin_site_config.php:120
 msgid "No predefined text"
@@ -10863,7 +10863,7 @@ msgstr "A webhely üzembe helyezése a(z) %s fájl törlésével…"
 
 #: admin_trees_config.php:1500 search.php:204 statistics.php:407
 msgid "Places"
-msgstr "Helyszínek"
+msgstr "Helyek"
 
 #: find.php:665
 msgid "Places found"
@@ -10876,7 +10876,7 @@ msgstr "Helyek innen: %s"
 
 #: help_text.php:253
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "A helyszíneket a származástan szabványaival összhangban kell megadni. A származástanban a helyszínek tárolása a legapróbb területi egységtől fokozatosan haladva a legnagyobbig történik, az egyes szinteket vesszővel elválasztva. A tárolt helységnevek egyes szintjei tükrözzék az állam vagy az egyház által használt területi szinteket.<br><br>Például, egy olyan hely, mint Salt Lake City a következőképpen adható meg: „Salt Lake City, Salt Lake, Utah, USA”.<br><br>Vizsgáljuk meg e hely egyes részeit: Az első rész „Salt Lake City”, a város vagy település, ahol az adott esemény lezajlott. Egyes országokban lehetnek körzetek vagy kerületek a városokon belül, amit fontos feljegyezni. Ebben az esetben ezeket a város előtt kell feltüntetni. A következő rész „Salt Lake”, a megye. „Utah” az állam és „USA” az ország. Fontos minden helynevet feljegyezni, mivel a származástani bejegyzések tartalmazzák a közigazgatás minden szintjét.<br><br>Ha egy hely részének valamely szintje ismeretlen, a vesszők között szóközt kell hagyni. Tételezzük fel a fenti példában a következőt: nem tudjuk, Salt Lake City megyéjét. Ez esetben a beírás így néz ki: „Salt Lake City, , Utah, USA”. Feltételezzük, csak annyit tudunk, hogy egy személy születési helye Utah. Az információt így adjuk meg: „ , , Utah, USA”.<br><br>Segítségül használhatjuk a <b>Hely keresése</b> hivatkozást az olyan helyek felkutatására, amelyek már szerepelnek az adatállományban."
+msgstr "A helyeket a származástan szabványaival összhangban kell megadni. A származástanban a helyek tárolása a legapróbb területi egységtől fokozatosan haladva a legnagyobbig történik, az egyes szinteket vesszővel elválasztva. A tárolt helységnevek egyes szintjei tükrözzék az állam vagy az egyház által használt területi szinteket.<br><br>Például, egy olyan hely, mint Salt Lake City a következőképpen adható meg: „Salt Lake City, Salt Lake, Utah, USA”.<br><br>Vizsgáljuk meg e hely egyes részeit: Az első rész „Salt Lake City”, a város vagy település, ahol az adott esemény lezajlott. Egyes országokban lehetnek körzetek vagy kerületek a városokon belül, amit fontos feljegyezni. Ebben az esetben ezeket a város előtt kell feltüntetni. A következő rész „Salt Lake”, a megye. „Utah” az állam és „USA” az ország. Fontos minden helynevet feljegyezni, mivel a származástani bejegyzések tartalmazzák a közigazgatás minden szintjét.<br><br>Ha egy hely részének valamely szintje ismeretlen, a vesszők között szóközt kell hagyni. Tételezzük fel a fenti példában a következőt: nem tudjuk, Salt Lake City megyéjét. Ez esetben a beírás így néz ki: „Salt Lake City, , Utah, USA”. Feltételezzük, csak annyit tudunk, hogy egy személy születési helye Utah. Az információt így adjuk meg: „ , , Utah, USA”.<br><br>Segítségül használhatjuk a <b>Hely keresése</b> hivatkozást az olyan helyek felkutatására, amelyek már szerepelnek az adatállományban."
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:93
 #: app/Theme/FabTheme.php:109 app/Theme/MinimalTheme.php:106
@@ -11351,7 +11351,7 @@ msgstr "Bejegyzésazonosító szám (RIN)"
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:750
 msgid "Record file number"
-msgstr "Adatállomány-azonosító"
+msgstr "Bejegyzésfájlszám"
 
 #: search.php:83 statistics.php:349
 msgid "Records"
@@ -11694,15 +11694,15 @@ msgstr "Románia"
 #. I18N: gedcom tag ROMN
 #: app/GedcomTag.php:762
 msgid "Romanized"
-msgstr "Katolizált"
+msgstr "Latinosított"
 
 #: app/GedcomTag.php:690
 msgid "Romanized place"
-msgstr "Katolizált hely"
+msgstr "Latinosított hely"
 
 #: app/GedcomTag.php:838
 msgid "Romanized title"
-msgstr "Katolizált cím"
+msgstr "Latinosított cím"
 
 #: app/Functions/FunctionsPrintLists.php:250
 #: app/Functions/FunctionsPrintLists.php:666
@@ -11855,7 +11855,7 @@ msgstr "Szo."
 
 #: app/Module/GoogleMapsModule.php:333
 msgid "Satellite"
-msgstr "Szatelit"
+msgstr "Szatellit"
 
 #: app/Date/CalendarDate.php:346
 msgid "Saturday"
@@ -12436,7 +12436,7 @@ msgstr "Mutasd az összes jegyzetet"
 
 #: placelist.php:212
 msgid "Show all places in a list"
-msgstr "Mutasd az összes helyszínt egy listában"
+msgstr "Mutasd az összes helyet egy listában"
 
 #: app/Module/SourcesTabModule.php:70
 msgid "Show all sources"
@@ -12935,7 +12935,7 @@ msgstr "Snowflake, Arizona, Egyesült Államok"
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:796
 msgid "Social security number"
-msgstr "Társadalombiztosítási azonosító"
+msgstr "Társadalombiztosítási szám"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6880
@@ -13552,13 +13552,13 @@ msgstr "A rendszergazdát értesítettük. Amint megadja az engedélyt a bejelen
 #: action.php:50
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "A(z) „%s” adatmódosításait egy webhelykezelő elfogadta."
+msgstr "„%s” adatainak módosítása elfogadva."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:233
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "A(z) „%s” adatmódosításait egy webhelykezelő elutasította."
+msgstr "„%s” adatainak módosítása elutasítva."
 
 #: app/Module/ClippingsCartModule.php:311
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -13681,7 +13681,7 @@ msgstr "A(z) %s mappát nem lehetett törölni."
 #: admin_site_config.php:37 admin_trees_config.php:287
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
-msgstr "A(z) %s mappa nem létezik és létrehozni sem lehetett."
+msgstr "A(z) %s mappa nem létezik, és nem lehetett létrehozni."
 
 #: addmedia.php:100 addmedia.php:111 addmedia.php:257 addmedia.php:268
 #: admin_media_upload.php:64 admin_media_upload.php:75
@@ -13791,12 +13791,12 @@ msgstr "Az üzenetet sikeresen elküldtük %s részére."
 #: admin_modules.php:54
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "A(z) „%s” modul inaktív."
+msgstr "A(z) „%s” modul inaktívvá vált."
 
 #: admin_modules.php:56
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "A(z) „%s” modul aktív."
+msgstr "A(z) „%s” modul aktívvá vált."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
@@ -16026,7 +16026,7 @@ msgstr "Más nevű GEDCOM-állományt választott. Ez helyes?"
 
 #: logout.php:24
 msgid "You have signed out."
-msgstr "Ön sikeresen kijelentkezett."
+msgstr "Ön kijelentkezett."
 
 #: addmedia.php:473
 msgid "You may enter a URL, beginning with “http://”."

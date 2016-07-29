@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-28 19:48+0000\n"
+"PO-Revision-Date: 2016-07-16 08:45+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
@@ -118,8 +118,8 @@ msgstr "%1$s no te cap enllaç amb %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "S’ha extret el fitxer %1$s en %2$s segons."
-msgstr[1] "S’han extret els fitxers %1$s en %2$s segons."
+msgstr[0] "S’ha extret %1$s fitxer en %2$s segons."
+msgstr[1] "S’han extret %1$s fitxers en %2$s segons."
 
 #: app/Module/GoogleMapsModule.php:864
 #, php-format
@@ -1844,7 +1844,7 @@ msgstr "Tots els camps són obligatoris."
 
 #: admin_site_upgrade.php:345
 msgid "All files have read and write permission."
-msgstr "Tots els fitxers han de tenir permís de lectura i d’escriptura."
+msgstr "Tots els fitxers tenen permís de lectura i d’escriptura."
 
 #: admin_trees_config.php:1618
 msgid "All individual facts"
@@ -7298,7 +7298,7 @@ msgstr "Si una persona no té congnom, no calen les barres: <%s>Jón Einarsson<%
 #: help_text.php:226
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
-msgstr "Si una persona té dos cognoms diferents, tots dos han d’anar entre barres: <%s>José Antonio/ Gómez/ Iglesias/<%s>"
+msgstr "Si una persona té dos cognoms diferents, tots dos han d’anar entre barres: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 
 #: help_text.php:232
 #, php-format
@@ -7313,7 +7313,7 @@ msgstr "Si un individu no era conegut pel seu nom de pila, el nom de preferènci
 #: help_text.php:224
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr "Si es desconeix el cognom, s’utilitzenr barres buides: <%s> Mary //<%s>"
+msgstr "Si es desconeix el cognom, s’utilitzen barres buides: <%s> Mary //<%s>"
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:415
@@ -13936,7 +13936,7 @@ msgstr "La miniatura %s no existeix."
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:289
 msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-msgstr "El temps en segons que una sessio webtrees romàn activa abans de requerir un nou inici de sessió. El valor per defecte és 7200 (2 hores)."
+msgstr "El temps en segons que una sessió webtrees roman activa abans de requerir un nou inici de sessió. El valor per defecte és 7200 (2 hores)."
 
 #: admin_site_config.php:235 admin_users.php:427 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
