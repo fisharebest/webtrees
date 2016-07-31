@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-25 16:14+0000\n"
+"PO-Revision-Date: 2016-07-31 01:56+0000\n"
 "Last-Translator: M Arief Budiman <arifbudiman.it@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
 "Language: id\n"
@@ -1559,13 +1559,13 @@ msgstr "Diadopsi Ibu"
 #: app/GedcomCode/GedcomCodeAdop.php:68 app/GedcomTag.php:947
 msgctxt "FEMALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "diadopsi ibu"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:66 app/GedcomTag.php:943
 msgctxt "MALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "diadopsi ibu"
 
 #. I18N: gedcom tag ADOP
 #: app/GedcomTag.php:130
@@ -6217,7 +6217,7 @@ msgstr "Perempuan"
 #: app/Stats.php:2602 app/Stats.php:3945 calendar.php:256 calendar.php:444
 #: statistics.php:151 statistics.php:167 statistics.php:180
 msgid "Females"
-msgstr ""
+msgstr "Perempuan"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6750
@@ -8453,7 +8453,7 @@ msgstr "Laki-laki"
 #: app/Stats.php:2602 app/Stats.php:3945 calendar.php:252 calendar.php:443
 #: statistics.php:150 statistics.php:166 statistics.php:179
 msgid "Males"
-msgstr ""
+msgstr "Laki-laki"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6823
@@ -10093,7 +10093,7 @@ msgstr ""
 #: app/Module/FamilyTreeStatisticsModule.php:439
 #: app/Module/TopSurnamesModule.php:157
 msgid "Number of surnames"
-msgstr ""
+msgstr "Jumlah marga"
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
@@ -14177,7 +14177,7 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "Silsilah Keluarga ini terakhir diperbarui pada %s."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
@@ -18927,12 +18927,12 @@ msgstr ""
 
 #: app/Functions/Functions.php:687
 msgid "mother"
-msgstr ""
+msgstr "Ibu"
 
 #: app/Functions/Functions.php:862
 msgctxt "husband’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "Ibu Mertua"
 
 #: app/Functions/Functions.php:942
 msgctxt "spouse’s mother"
@@ -19748,7 +19748,7 @@ msgstr "ayah tiri"
 #: app/Functions/Functions.php:852 app/Module/FamilyNavigatorModule.php:216
 msgctxt "father’s wife"
 msgid "step-mother"
-msgstr ""
+msgstr "Ibu tiri"
 
 #: app/Functions/Functions.php:908
 msgctxt "parent’s spouse"
