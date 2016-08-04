@@ -9,7 +9,6 @@
 		}
 	},
 	"require": {
-		"bombayworks/zendframework1": "1.*",
 		"ezyang/htmlpurifier": "4.*",
 		"fisharebest/algorithm": "1.*",
 		"fisharebest/ext-calendar": "2.*",
@@ -18,7 +17,8 @@
 		"michelf/php-markdown": "1.*",
 		"pclzip/pclzip": "2.*",
 		"rhumsaa/uuid": "2.*",
-		"tecnickcom/tcpdf": "6.*"
+		"tecnickcom/tcpdf": "6.*",
+		"swiftmailer/swiftmailer": "~5.0"
 	},
 	"require-dev": {
 		"fabpot/php-cs-fixer": "*",
