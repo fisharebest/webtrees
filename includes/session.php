@@ -152,10 +152,11 @@ define('WT_ROOT', realpath(dirname(__DIR__)) . DIRECTORY_SEPARATOR);
 define('WT_START_TIME', microtime(true));
 
 // We want to know about all PHP errors during development, and fewer in production.
+// In production, do not overwrite server-defined error reporting.
 if (WT_DEBUG) {
-	error_reporting(E_ALL | E_STRICT | E_NOTICE | E_DEPRECATED);
+	error_reporting(-1);
 } else {
-	error_reporting(E_ALL);
+	error_reporting(error_reporting() & E_ALL & ~E_DEPRECATED);
 }
 
 require WT_ROOT . 'vendor/autoload.php';
@@ -234,7 +235,7 @@ set_exception_handler(function ($ex) {
 		}
 	}
 
-	if (true || error_reporting() & $ex->getCode()) {
+	if (error_reporting() & $ex->getCode()) {
 		echo $message;
 	}
 
