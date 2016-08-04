@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-29 05:35+0000\n"
+"PO-Revision-Date: 2016-08-04 18:17+0000\n"
 "Last-Translator: Thomas Rindal <thomas@rindal.net>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
@@ -19942,7 +19942,7 @@ msgstr "trettenmenning"
 
 #: app/Functions/Functions.php:759
 msgid "twin brother"
-msgstr "tvillingebror"
+msgstr "tvillingbror"
 
 #: app/Functions/Functions.php:793
 msgid "twin sibling"
@@ -19950,7 +19950,7 @@ msgstr "tvilling"
 
 #: app/Functions/Functions.php:776
 msgid "twin sister"
-msgstr "tvillingesøster"
+msgstr "tvillingsøster"
 
 #: app/Functions/Functions.php:834
 msgctxt "father’s brother"
