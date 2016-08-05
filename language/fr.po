@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-19 07:12+0000\n"
+"PO-Revision-Date: 2016-08-05 07:26+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -6348,7 +6348,7 @@ msgstr "Trouver d’autres relations de parenté"
 
 #: relationship.php:102 relationship.php:107
 msgid "Find the closest relationships"
-msgstr "Trouver la plus proche parenté"
+msgstr "Trouver les plus proches parentés"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6749
@@ -7222,7 +7222,7 @@ msgstr "Houston, Texas, États-Unis"
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:158
 msgid "How much recursion to use when searching for relationships"
-msgstr "Profondeur de récursion du calcul de parenté"
+msgstr "Profondeur de récursion du calcul des parentés"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6779
@@ -11458,13 +11458,13 @@ msgstr "Parenté&nbsp;: %s"
 #: app/Module/RelationshipsChartModule.php:44
 #: app/Module/RelationshipsChartModule.php:85 relationship.php:57
 msgid "Relationships"
-msgstr "Parenté"
+msgstr "Parentés"
 
 #. I18N: %s are individual’s names
 #: relationship.php:52
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr "Parenté entre %1$s et %2$s"
+msgstr "Parentés entre %1$s et %2$s"
 
 #. I18N: gedcom tag RELI
 #: app/GedcomTag.php:724 modules_v3/missing_facts_report/report.xml:26
