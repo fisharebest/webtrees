@@ -15,6 +15,14 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Exception;
+use Swift_Mailer;
+use Swift_MailTransport;
+use Swift_Message;
+use Swift_NullTransport;
+use Swift_SmtpTransport;
+use Swift_Transport;
+
 /**
  * Send mail messages.
  */
@@ -37,7 +45,7 @@ class Mail {
 	 */
 	public static function send(Tree $tree, $to_email, $to_name, $replyto_email, $replyto_name, $subject, $message) {
 		try {
-		    $mail = \Swift_Message::newInstance()
+		    $mail = Swift_Message::newInstance()
                 ->setSubject($subject)
                 ->setFrom(Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'))
                 ->setTo($to_email, $to_name)
@@ -45,8 +53,8 @@ class Mail {
                 ->setBody($message, 'text/html')
                 ->addPart(Filter::unescapeHtml($message), 'text/plain');
 		    
-            \Swift_Mailer::newInstance(self::transport())->send($mail);
-		} catch (\Exception $ex) {
+            Swift_Mailer::newInstance(self::transport())->send($mail);
+		} catch (Exception $ex) {
 			Log::addErrorLog('Mail: ' . $ex->getMessage());
 
 			return false;
@@ -78,14 +86,14 @@ class Mail {
 	/**
 	 * Create a transport mechanism for sending mail
 	 *
-	 * @return \Swift_Transport
+	 * @return Swift_Transport
 	 */
 	public static function transport() {
 		switch (Site::getPreference('SMTP_ACTIVE')) {
 		case 'internal':
-			return \Swift_MailTransport::newInstance();
+			return Swift_MailTransport::newInstance();
 		case 'external':
-            $transport = \Swift_SmtpTransport::newInstance()
+            $transport = Swift_SmtpTransport::newInstance()
                 ->setHost(Site::getPreference('SMTP_HOST'))
                 ->setPort(Site::getPreference('SMTP_PORT'))
                 ->setLocalDomain(Site::getPreference('SMTP_HELO'));
@@ -103,7 +111,7 @@ class Mail {
 			return $transport;
 		default:
 			// For testing
-			return \Swift_NullTransport::newInstance();
+			return Swift_NullTransport::newInstance();
 		}
 	}
 }
