@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-31 15:02+0000\n"
+"PO-Revision-Date: 2016-08-06 23:55+0000\n"
 "Last-Translator: M Arief Budiman <arifbudiman.it@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
 "Language: id\n"
@@ -1242,7 +1242,7 @@ msgstr ""
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
-msgstr ""
+msgstr "Tambahkan saudara laki-laki atau saudara perempuan"
 
 #: edit_interface.php:516
 msgid "Add a child"
@@ -1698,7 +1698,7 @@ msgstr ""
 
 #: statistics.php:338
 msgid "Age between husband and wife"
-msgstr ""
+msgstr "Umur antara suami dan istri"
 
 #: statistics.php:330
 msgid "Age between siblings"
@@ -1706,7 +1706,7 @@ msgstr ""
 
 #: statistics.php:339
 msgid "Age between wife and husband"
-msgstr ""
+msgstr "Umur antara istri dan suami"
 
 #: statistics.php:327
 msgid "Age difference"
@@ -1954,7 +1954,7 @@ msgstr ""
 #: app/Module/AncestorsChartModule.php:33
 #: modules_v3/ahnentafel_report/report.xml:4
 msgid "Ancestors"
-msgstr ""
+msgstr "Leluhur"
 
 #. I18N: gedcom tag ANCI
 #: app/GedcomTag.php:158
@@ -3579,12 +3579,12 @@ msgstr "Anak"
 
 #: statistics.php:303
 msgid "Children in family"
-msgstr ""
+msgstr "Anak-anak di Keluarga"
 
 #: modules_v3/ahnentafel_report/report.xml:391
 #: modules_v3/descendancy_report/report.xml:484
 msgid "Children of "
-msgstr ""
+msgstr "Anak dari "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
@@ -5991,7 +5991,7 @@ msgstr "Informasi Kelompok Keluarga"
 #. I18N: Name of a module/sidebar
 #: app/Module/FamiliesSidebarModule.php:32
 msgid "Family list"
-msgstr ""
+msgstr "Data per Keluarga"
 
 #. I18N: Name of a module/sidebar
 #: app/Module/FamilyNavigatorModule.php:34 edit_interface.php:1417
@@ -6041,7 +6041,7 @@ msgstr ""
 #: app/Controller/IndividualController.php:416
 #, php-format
 msgid "Family with %s"
-msgstr ""
+msgstr "Keluarga dengan %s"
 
 #: app/GedcomCode/GedcomCodePedi.php:129
 msgid "Family with adoptive parents"
@@ -6049,12 +6049,12 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodePedi.php:131
 msgid "Family with foster parents"
-msgstr ""
+msgstr "Keluarga dengan orang tua angkat"
 
 #: modules_v3/individual_ext_report/report.xml:435
 #: modules_v3/individual_report/report.xml:446
 msgid "Family with husband"
-msgstr ""
+msgstr "Sesaudara dengan suami"
 
 #: app/GedcomCode/GedcomCodePedi.php:127 app/GedcomCode/GedcomCodePedi.php:141
 #: app/Individual.php:1026 modules_v3/individual_ext_report/report.xml:231
@@ -6085,7 +6085,7 @@ msgstr "Keluarga dengan anak terbanyak"
 #: modules_v3/individual_ext_report/report.xml:429
 #: modules_v3/individual_report/report.xml:486
 msgid "Family with wife"
-msgstr ""
+msgstr "Keluarga dengan istri"
 
 #. I18N: Name of a module/chart
 #: app/Controller/FanchartController.php:56 app/Module/FanChartModule.php:33
@@ -6145,7 +6145,7 @@ msgstr "Ayah"
 #: app/Individual.php:1058
 #, php-format
 msgid "Father: %s"
-msgstr ""
+msgstr "Ayah: %s"
 
 #: app/Functions/FunctionsPrint.php:275
 msgid "Father’s age"
@@ -6155,12 +6155,12 @@ msgstr "Umur ayah"
 #: app/Individual.php:1001
 #, php-format
 msgid "Father’s family with %s"
-msgstr ""
+msgstr "Keluarga dari Ayah dengan %s"
 
 #. I18N: A step-family.
 #: app/Individual.php:1005
 msgid "Father’s family with an unknown individual"
-msgstr ""
+msgstr "Keluarga seayah dengan orang lain"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeFavoritesModule.php:62
@@ -6480,7 +6480,7 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:123
 msgid "Foster father"
-msgstr ""
+msgstr "Ayah angkat"
 
 #: app/GedcomCode/GedcomCodeRela.php:126
 msgid "Foster mother"
@@ -6980,12 +6980,12 @@ msgstr "Dia "
 
 #: modules_v3/ahnentafel_report/report.xml:289
 msgid "He died"
-msgstr ""
+msgstr "Meninggal"
 
 #: modules_v3/ahnentafel_report/report.xml:259
 #: modules_v3/descendancy_report/report.xml:174
 msgid "He married"
-msgstr ""
+msgstr "Menikah dengan"
 
 #: modules_v3/ahnentafel_report/report.xml:222
 msgid "He resided at"
@@ -7502,7 +7502,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/IndividualSidebarModule.php:33
 msgid "Individual list"
-msgstr ""
+msgstr "Data per Individu"
 
 #: admin_trees_config.php:1363
 msgid "Individual pages"
@@ -7586,7 +7586,7 @@ msgstr "Silsilah Interaktif"
 #: app/Module/InteractiveTreeModule.php:135
 #, php-format
 msgid "Interactive tree of %s"
-msgstr ""
+msgstr "Silsilah Interaktif keluarga %s"
 
 #: app/Functions/FunctionsEdit.php:246
 msgid "Internal messaging"
@@ -9243,7 +9243,7 @@ msgstr ""
 
 #: app/Theme/AbstractTheme.php:1065 calendar.php:182
 msgid "Month"
-msgstr ""
+msgstr "Bulan"
 
 #: statistics.php:505 statisticsplot.php:874
 msgid "Month of birth"
@@ -9374,12 +9374,12 @@ msgstr "Umur ibu"
 #: app/Individual.php:1012
 #, php-format
 msgid "Mother’s family with %s"
-msgstr ""
+msgstr "Keluarga seibu dengan %s"
 
 #. I18N: A step-family.
 #: app/Individual.php:1016
 msgid "Mother’s family with an unknown individual"
-msgstr ""
+msgstr "Keluarga seibu dengan orang lain"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:223
@@ -9603,13 +9603,13 @@ msgstr "Tidak pernah menikah"
 #: app/GedcomTag.php:1693
 msgctxt "FEMALE"
 msgid "Never married"
-msgstr ""
+msgstr "Belum menikah"
 
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1689
 msgctxt "MALE"
 msgid "Never married"
-msgstr ""
+msgstr "Belum menikah"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6838
@@ -9967,13 +9967,13 @@ msgstr "Tidak menikah"
 #: app/GedcomTag.php:1708
 msgctxt "FEMALE"
 msgid "Not married"
-msgstr ""
+msgstr "Tidak menikah"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1704
 msgctxt "MALE"
 msgid "Not married"
-msgstr ""
+msgstr "Tidak menikah"
 
 #: admin.php:693
 msgid "Not verified by the user"
@@ -12311,12 +12311,12 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:290
 msgid "She died"
-msgstr ""
+msgstr "Meninggal"
 
 #: modules_v3/ahnentafel_report/report.xml:260
 #: modules_v3/descendancy_report/report.xml:243
 msgid "She married"
-msgstr ""
+msgstr "Menikah dengan"
 
 #: modules_v3/ahnentafel_report/report.xml:223
 msgid "She resided at"
@@ -12324,7 +12324,7 @@ msgstr ""
 
 #: modules_v3/descendancy_report/report.xml:332
 msgid "She was born"
-msgstr ""
+msgstr "Dia dilahirkan pada"
 
 #: modules_v3/ahnentafel_report/report.xml:340
 msgid "She was buried"
@@ -12486,7 +12486,7 @@ msgstr "Perlihatkan pasangan yang bercerai."
 
 #: compact.php:60
 msgid "Show images"
-msgstr ""
+msgstr "Tampilkan gambar"
 
 #: app/Module/GoogleMapsModule.php:4082
 msgid "Show inactive places"
@@ -16409,7 +16409,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:768
 msgid "brother"
-msgstr ""
+msgstr "Saudara"
 
 #: app/Functions/Functions.php:1030
 msgctxt "brother’s wife’s brother"
@@ -16537,7 +16537,7 @@ msgstr ""
 
 #: statisticsplot.php:1333
 msgid "children"
-msgstr ""
+msgstr "Anak"
 
 #. I18N: A button label.
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
@@ -16604,7 +16604,7 @@ msgstr "putri"
 
 #: modules_v3/descendancy_report/report.xml:227
 msgid "daughter of"
-msgstr ""
+msgstr "Anak perempuan dari"
 
 #: app/Functions/Functions.php:824
 msgctxt "child’s wife"
@@ -16655,13 +16655,13 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:366
 msgctxt "FEMALE"
 msgid "died"
-msgstr ""
+msgstr "meninggal"
 
 #: modules_v3/descendancy_report/report.xml:136
 #: modules_v3/descendancy_report/report.xml:436
 msgctxt "MALE"
 msgid "died"
-msgstr ""
+msgstr "meninggal"
 
 #. I18N: A button label.
 #: admin_site_change.php:370 admin_site_logs.php:310
@@ -16713,7 +16713,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:780
 msgid "elder sister"
-msgstr ""
+msgstr "Kakak perempuan"
 
 #: app/Functions/Functions.php:575
 msgid "eleventh cousin"
@@ -16755,7 +16755,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:703
 msgid "ex-husband"
-msgstr ""
+msgstr "Mantan suami"
 
 #: app/Functions/Functions.php:734
 msgid "ex-partner"
@@ -17952,42 +17952,42 @@ msgstr "kakek buyut"
 #: app/Functions/Functions.php:1108
 msgctxt "father’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "Buyut laki-laki"
 
 #: app/Functions/Functions.php:1120
 msgctxt "father’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "Buyut laki-laki"
 
 #: app/Functions/Functions.php:1158
 msgctxt "mother’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "Buyut laki-laki"
 
 #: app/Functions/Functions.php:1176
 msgctxt "mother’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "Buyut laki-laki"
 
 #: app/Functions/Functions.php:1188
 msgctxt "mother’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "Buyut laki-laki"
 
 #: app/Functions/Functions.php:1210
 msgctxt "parent’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "Buyut laki-laki"
 
 #: app/Functions/Functions.php:1222
 msgctxt "parent’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "Buyut laki-laki"
 
 #: app/Functions/Functions.php:1234
 msgctxt "parent’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "Buyut laki-laki"
 
 #: app/Functions/Functions.php:1098
 msgctxt "father’s father’s mother"
@@ -18631,17 +18631,17 @@ msgstr ""
 #: app/Functions/Functions.php:850
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "Kakak tiri"
 
 #: app/Functions/Functions.php:888
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "Kakak tiri"
 
 #: app/Functions/Functions.php:906
 msgctxt "parent’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "Kakak tiri"
 
 #: app/Functions/Functions.php:836
 msgctxt "father’s child"
@@ -18661,17 +18661,17 @@ msgstr ""
 #: app/Functions/Functions.php:838
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "Saudari Tiri"
 
 #: app/Functions/Functions.php:874
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "Saudari tiri"
 
 #: app/Functions/Functions.php:894
 msgctxt "parent’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "Saudara tiri"
 
 #: statistics.php:571
 msgid "half-year after marriage"
@@ -18680,7 +18680,7 @@ msgstr ""
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:279
 msgid "herself"
-msgstr ""
+msgstr "Diri sendiri"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:761
@@ -18694,12 +18694,12 @@ msgstr ""
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:277
 msgid "himself"
-msgstr ""
+msgstr "Diri sendiri"
 
 #: app/Functions/Functions.php:709 edit_interface.php:1928
 #: edit_interface.php:1963
 msgid "husband"
-msgstr ""
+msgstr "Suami"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:115
@@ -18844,7 +18844,7 @@ msgstr ""
 #: app/Functions/Functions.php:876
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr ""
+msgstr "Kakek dari pihak Ibu"
 
 #: app/Functions/Functions.php:880
 msgctxt "mother’s mother"
@@ -19131,7 +19131,7 @@ msgstr ""
 #: app/Functions/Functions.php:840
 msgctxt "father’s father"
 msgid "paternal grandfather"
-msgstr ""
+msgstr "Kakek dari pihak Ayah"
 
 #: app/Functions/Functions.php:842
 msgctxt "father’s mother"
@@ -19505,47 +19505,47 @@ msgstr "keluar"
 
 #: app/Functions/Functions.php:785
 msgid "sister"
-msgstr ""
+msgstr "Saudari"
 
 #: app/Functions/Functions.php:812
 msgctxt "brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "Saudari ipar"
 
 #: app/Functions/Functions.php:1034
 msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "Saudari ipar"
 
 #: app/Functions/Functions.php:1144
 msgctxt "husband’s brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "Saudari tiri"
 
 #: app/Functions/Functions.php:866
 msgctxt "husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "Saudari ipar"
 
 #: app/Functions/Functions.php:1316
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "Saudari ipar"
 
 #: app/Functions/Functions.php:944
 msgctxt "spouse’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "Saudari ipar"
 
 #: app/Functions/Functions.php:1366
 msgctxt "wife’s brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "Saudari ipar"
 
 #: app/Functions/Functions.php:964
 msgctxt "wife’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "Saudari ipar"
 
 #: app/Functions/Functions.php:565
 msgid "sixth cousin"
@@ -19569,7 +19569,7 @@ msgstr "putra"
 
 #: modules_v3/descendancy_report/report.xml:296
 msgid "son of"
-msgstr ""
+msgstr "Anak laki-laki dari"
 
 #: app/Functions/Functions.php:818
 msgctxt "child’s husband"
@@ -19753,17 +19753,17 @@ msgstr ""
 #: app/Functions/Functions.php:1140
 msgctxt "father’s wife’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "Saudari tiri"
 
 #: app/Functions/Functions.php:1170
 msgctxt "mother’s husband’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "Saudari tiri"
 
 #: app/Functions/Functions.php:1248
 msgctxt "parent’s spouse’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "Saudari tiri"
 
 #: app/Functions/Functions.php:868
 msgctxt "husband’s son"
@@ -20001,13 +20001,13 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:107
 msgctxt "FEMALE"
 msgid "was born"
-msgstr ""
+msgstr "lahir pada"
 
 #: modules_v3/ahnentafel_report/report.xml:140
 #: modules_v3/descendancy_report/report.xml:104
 msgctxt "MALE"
 msgid "was born"
-msgstr ""
+msgstr "lahir pada"
 
 #: app/Theme/WebtreesTheme.php:128
 msgid "webtrees"
@@ -20097,7 +20097,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:761
 msgid "younger brother"
-msgstr ""
+msgstr "Adik laki-laki"
 
 #: app/Functions/Functions.php:795
 msgid "younger sibling"
@@ -20105,7 +20105,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:778
 msgid "younger sister"
-msgstr ""
+msgstr "Saudari lebih muda"
 
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:169 search_advanced.php:170 search_advanced.php:171
