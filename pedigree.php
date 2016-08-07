@@ -185,8 +185,8 @@ $controller
 						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
 					</td>
 				</tr>
-			</table>
-		</tbody>
+			</tbody>
+		</table>
 	</form>
 <?php
 if ($controller->error_message) {

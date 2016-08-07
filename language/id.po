@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-25 16:14+0000\n"
+"PO-Revision-Date: 2016-07-31 15:02+0000\n"
 "Last-Translator: M Arief Budiman <arifbudiman.it@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
 "Language: id\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr "tetapi detailnya tidak diketahui"
+msgstr " tetapi detailnya tidak diketahui"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -191,13 +191,13 @@ msgstr "%j %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6944
-#, fuzzy, php-format
+#, php-format
 msgid "%s BCE"
-msgstr "%s BCE"
+msgstr "Tahun %s BCE"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:276
-#, fuzzy, php-format
+#, php-format
 msgid "%s KB"
 msgstr "%s KB"
 
@@ -1559,13 +1559,13 @@ msgstr "Diadopsi Ibu"
 #: app/GedcomCode/GedcomCodeAdop.php:68 app/GedcomTag.php:947
 msgctxt "FEMALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "diadopsi ibu"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:66 app/GedcomTag.php:943
 msgctxt "MALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "diadopsi ibu"
 
 #. I18N: gedcom tag ADOP
 #: app/GedcomTag.php:130
@@ -1676,9 +1676,8 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr ""
 
 #: login.php:259
-#, fuzzy
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr "Setelah Anda tercatatmasuk, pilih pranala «Akun Saya» di bawah menu «Halaman pribadi» dan isilah isian sandi untuk mengubah sandi Anda."
+msgstr "Setelah Anda tercatat masuk, pilih pranala «Akun Saya» di bawah menu «Halaman pribadi» dan isilah isian sandi untuk mengubah sandi Anda."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
@@ -6217,7 +6216,7 @@ msgstr "Perempuan"
 #: app/Stats.php:2602 app/Stats.php:3945 calendar.php:256 calendar.php:444
 #: statistics.php:151 statistics.php:167 statistics.php:180
 msgid "Females"
-msgstr ""
+msgstr "Perempuan"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6750
@@ -6389,7 +6388,6 @@ msgid "Folder name on server"
 msgstr "Nama folder di server"
 
 #: login.php:341
-#, fuzzy
 msgid "Follow this link to verify your email address."
 msgstr "Silakan klik pada pranala berikut dan isilah data yang diminta untuk mengonfirmasikan permintaan dan alamat email Anda."
 
@@ -6422,19 +6420,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr ""
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "Untuk bantuan tentang pertanyaan genealogi hubungi %s"
+msgstr "Untuk bantuan tentang pertanyaan genealogi hubungi %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "Untuk dukungan dan informasi teknis hubungi %s"
+msgstr "Untuk dukungan dan informasi teknis hubungi %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Untuk dukungan teknis atau pertanyaan genealogi, silakan hubungi %s"
+msgstr "Untuk dukungan teknis atau pertanyaan genealogi, silakan hubungi %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:276
@@ -8453,7 +8451,7 @@ msgstr "Laki-laki"
 #: app/Stats.php:2602 app/Stats.php:3945 calendar.php:252 calendar.php:443
 #: statistics.php:150 statistics.php:166 statistics.php:179
 msgid "Males"
-msgstr ""
+msgstr "Laki-laki"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6823
@@ -10093,7 +10091,7 @@ msgstr ""
 #: app/Module/FamilyTreeStatisticsModule.php:439
 #: app/Module/TopSurnamesModule.php:157
 msgid "Number of surnames"
-msgstr ""
+msgstr "Jumlah marga"
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
@@ -11374,12 +11372,10 @@ msgid "Regular expressions are an advanced pattern matching technique."
 msgstr ""
 
 #: edit_changes.php:181 edit_changes.php:201
-#, fuzzy
 msgid "Reject"
 msgstr "Urungkan"
 
 #: edit_changes.php:211 edit_changes.php:231
-#, fuzzy
 msgid "Reject all changes"
 msgstr "Urungkan semua perubahan"
 
@@ -11889,7 +11885,6 @@ msgstr "Cari"
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1752
-#, fuzzy
 msgid "Search and replace"
 msgstr "Cari dan Ganti"
 
@@ -11966,7 +11961,6 @@ msgid "Select a GEDCOM file to import"
 msgstr ""
 
 #: index_edit.php:284 index_edit.php:367
-#, fuzzy
 msgid "Select a block and use the arrows to move it."
 msgstr "Highlight blok nama kemudian klik pada salah satu ikon panah untuk memindah blok terhighlight tersebut pada arah yang ditandakan."
 
@@ -12693,9 +12687,8 @@ msgid "Show this block for which languages"
 msgstr ""
 
 #: admin_trees_config.php:1051
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Perlihatkan gambar highlight di kotak orang"
+msgstr "Perlihatkan gambar highlight di kotak orang."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:206
@@ -12773,12 +12766,10 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
 #: app/Theme/AbstractTheme.php:1561 login.php:150
-#, fuzzy
 msgid "Sign in"
 msgstr "Masuk"
 
 #: app/Module/LoginBlockModule.php:62 app/Theme/AbstractTheme.php:1572
-#, fuzzy
 msgid "Sign out"
 msgstr "Keluar"
 
@@ -14024,7 +14015,6 @@ msgstr ""
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:148
-#, fuzzy
 msgid "There are no facts for this individual."
 msgstr "Tidak ada Fakta untuk orang ini."
 
@@ -14177,7 +14167,7 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "Silsilah Keluarga ini terakhir diperbarui pada %s."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
@@ -15140,7 +15130,6 @@ msgid "Unable to connect using this username and password. Your server gave the 
 msgstr ""
 
 #: admin_trees_config.php:674
-#, fuzzy
 msgid "Unable to find record with ID"
 msgstr "Tidak dapat menemukan rekaman dengan ID"
 
@@ -15554,7 +15543,6 @@ msgid "View the notes"
 msgstr ""
 
 #: calendar.php:300
-#, fuzzy
 msgid "View this day"
 msgstr "Tampilkan Hari"
 
@@ -15565,27 +15553,22 @@ msgstr "Tampilkan Hari"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:99
-#, fuzzy
 msgid "View this family"
 msgstr "Tampilkan Keluarga"
 
 #: app/Module/SlideShowModule.php:177 medialist.php:310
-#, fuzzy
 msgid "View this individual"
 msgstr "Tampilkan Orang"
 
 #: calendar.php:304
-#, fuzzy
 msgid "View this month"
 msgstr "Tampilkan Bulan"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-#, fuzzy
 msgid "View this source"
 msgstr "Tampilkan Sumber"
 
 #: calendar.php:308
-#, fuzzy
 msgid "View this year"
 msgstr "Tampilkan Tahun"
 
@@ -16518,7 +16501,6 @@ msgstr ""
 
 #. I18N: A button label.
 #: app/Module/ClippingsCartModule.php:796
-#, fuzzy
 msgid "cancel"
 msgstr "Batal"
 
@@ -18802,7 +18784,6 @@ msgstr ""
 
 #. I18N: A button label (a verb).
 #: inverselink.php:152
-#, fuzzy
 msgid "link"
 msgstr "Tetapkan kaitan"
 
@@ -18927,12 +18908,12 @@ msgstr ""
 
 #: app/Functions/Functions.php:687
 msgid "mother"
-msgstr ""
+msgstr "Ibu"
 
 #: app/Functions/Functions.php:862
 msgctxt "husband’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "Ibu Mertua"
 
 #: app/Functions/Functions.php:942
 msgctxt "spouse’s mother"
@@ -19519,7 +19500,6 @@ msgstr "masuk"
 
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:65
-#, fuzzy
 msgid "sign out"
 msgstr "keluar"
 
@@ -19748,7 +19728,7 @@ msgstr "ayah tiri"
 #: app/Functions/Functions.php:852 app/Module/FamilyNavigatorModule.php:216
 msgctxt "father’s wife"
 msgid "step-mother"
-msgstr ""
+msgstr "Ibu tiri"
 
 #: app/Functions/Functions.php:908
 msgctxt "parent’s spouse"
@@ -20001,7 +19981,6 @@ msgstr ""
 
 #. I18N: A button label.
 #: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4193
-#, fuzzy
 msgid "upload"
 msgstr "unggah"
 
@@ -20009,7 +19988,6 @@ msgstr "unggah"
 #: ancestry.php:92 app/Module/GoogleMapsModule.php:766 branches.php:49
 #: compact.php:54 descendancy.php:71 familybook.php:61 fanchart.php:95
 #: hourglass.php:62 lifespan.php:110 pedigree.php:169 relationship.php:85
-#, fuzzy
 msgid "view"
 msgstr "tampilkan"
 

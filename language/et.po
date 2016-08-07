@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-06-30 19:38+0000\n"
+"PO-Revision-Date: 2016-07-31 19:05+0000\n"
 "Last-Translator: Chip <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -3508,7 +3508,7 @@ msgstr "Muudatused"
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Viimase %s päeva muudatused"
-msgstr[1] "Viimaste %s päevade muudatused"
+msgstr[1] "Viimase %s päeva muudatused"
 
 #: admin_trees_manage.php:519
 msgid "Changes log"
@@ -4463,7 +4463,7 @@ msgstr "Leeri kuupäev"
 
 #: app/GedcomTag.php:332
 msgid "Date of cremation"
-msgstr "Kremeerimiskuupäev"
+msgstr "Tuhastamiskuupäev"
 
 #: app/GedcomTag.php:356 modules_v3/cemetery_report/report.xml:47
 #: modules_v3/fact_sources/report.xml:274
@@ -4502,7 +4502,7 @@ msgstr "Immigreerumiskuupäev"
 #. I18N: gedcom tag CHAN:DATE
 #: app/GedcomTag.php:262
 msgid "Date of last change"
-msgstr "Viimase muutuse kuupäev"
+msgstr "Viimase muudatuse kuupäev"
 
 #: app/GedcomTag.php:464 app/GedcomTag.php:578
 #: modules_v3/fact_sources/report.xml:319
@@ -4516,7 +4516,7 @@ msgstr "Abielukuulutuse kuupäev"
 
 #: app/GedcomTag.php:620
 msgid "Date of naturalization"
-msgstr "Kodakondsuse päev"
+msgstr "Kodakondsuse kuupäev"
 
 #: app/GedcomTag.php:668
 msgid "Date of ordination"
@@ -4587,7 +4587,7 @@ msgstr "Päev:"
 #: app/Functions/FunctionsPrintLists.php:201 app/Stats.php:1072
 #: app/Stats.php:1074
 msgid "Dead"
-msgstr "Kokku surnuid"
+msgstr "Surnud"
 
 #. I18N: gedcom tag DEAT
 #: app/GedcomTag.php:352 modules_v3/ahnentafel_report/report.xml:455
@@ -4710,7 +4710,7 @@ msgstr "Kokku surnuid"
 #: modules_v3/pedigree_report/report.xml:1370
 #: modules_v3/relative_ext_report/report.xml:62
 msgid "Death"
-msgstr "Surnud"
+msgstr "Surm"
 
 #: app/Stats.php:1677 statistics.php:544
 msgid "Death by country"
@@ -4742,7 +4742,7 @@ msgstr "Isa surm"
 
 #: app/GedcomTag.php:1396 app/GedcomTag.php:1405 app/GedcomTag.php:1414
 msgid "Death of a grand-parent"
-msgstr "Vana-vanema surm"
+msgstr "Vanavanema surm"
 
 #: app/GedcomTag.php:1369 app/GedcomTag.php:1378 app/GedcomTag.php:1387
 msgid "Death of a grandchild"
@@ -4998,7 +4998,7 @@ msgstr "Kustuta"
 
 #: app/Module/GoogleMapsModule.php:3808
 msgid "Delete all existing geographic data before importing the file."
-msgstr "Kustuta kõik geograafilised andmed enne importimist."
+msgstr "Kustuta kõik geograafilised andmed enne faili importimist."
 
 #. I18N: Menu entry
 #: admin_users.php:664 app/Theme/AdministrationTheme.php:166
@@ -5028,17 +5028,17 @@ msgstr "Kustuta enda kasutaja"
 
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "Perekonna kustutamine eemaldab seose perekonnliikmete vahel, kuid perekonnas olevad isikud jätab alles. Kas soovite kindlasti kustutada selle perekonna?"
+msgstr "Perekonna kustutamine eemaldab seose perekonnliikmete vahel, kuid perekonnas olevad isikud jätab alles. Olete kindel, ets soovite selle perekonna kustutada?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6722
 msgid "Democratic Republic of the Congo"
-msgstr "Kongo (Kinshasa)"
+msgstr "Kongo Demokraatlik Vabariik"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6738
 msgid "Denmark"
-msgstr "Dinamarca"
+msgstr "Taani"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:137
@@ -5271,7 +5271,7 @@ msgstr "Lahutusi sajandi lõikes"
 #. I18N: Name of a country or state
 #: app/Stats.php:6736
 msgid "Djibouti"
-msgstr "Yibuti"
+msgstr "Djibouti"
 
 #: addmedia.php:473 addmedia.php:500 admin_media_upload.php:224
 msgid "Do not change to keep original filename."
@@ -5279,7 +5279,7 @@ msgstr "Originaalse failinime säilitamiseks ära muuda."
 
 #: app/Module/GoogleMapsModule.php:3818
 msgid "Do not create new locations, just import coordinates for existing locations."
-msgstr "Ära loo uusi asukohti, lihtsalt impordi kordinaadid juba olemasolevatest asukohtadest."
+msgstr "Ära loo uusi asukohti, lihtsalt impordi kordinaadid juba olemasolevate asukohtade jaoks."
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
@@ -5304,7 +5304,7 @@ msgstr "Dominikaani"
 #. I18N: Name of a country or state
 #: app/Stats.php:6739
 msgid "Dominican Republic"
-msgstr "República Dominicana"
+msgstr "Dominikaani Vabariik"
 
 #: app/Module/ClippingsCartModule.php:359
 #: app/Module/ClippingsCartModule.php:719
@@ -5320,7 +5320,7 @@ msgstr "Allalaadimine %s…"
 
 #: mediaviewer.php:159
 msgid "Download file"
-msgstr "Lae Fail Alla"
+msgstr "Lae fail alla"
 
 #: app/Module/GoogleMapsModule.php:4206
 msgid "Download geographic data"
@@ -5338,39 +5338,39 @@ msgstr "Duodi"
 
 #: admin_users.php:73 edituser.php:60 login.php:288
 msgid "Duplicate email address. A user with that email already exists."
-msgstr "Duplikaatne e-maili aadress. Sellise e-mailiga kasutaja on juba olemas."
+msgstr "Korduv e-maili aadress. Sellise e-mailiga kasutaja on juba olemas."
 
 #: admin_users.php:71 edituser.php:58 login.php:286
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
-msgstr "Korduv kasutajanimi. Sellise kasutajanimega kasutaja on juba olemas. Vali uus kasutajanimi."
+msgstr "Korduv kasutajanimi. Sellise kasutajanimega kasutaja on juba olemas. Palun vali uus kasutajanimi."
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Iga allika kirjed spetsiifilised sündmused, üldiselt ajavahemiku ja koha jurisdiktsiooni jaoks. Näiteks Census sündmused ja kirikukirjed kajastavad sünde, abielusid ja surmasündmuseid.<br><br>Valige sündmused, mis on kirja pandud selle allika poolt, mis on välja pakutud sündmuste nimekirjas. Kuupäev peaks olema määratud ajavahemikuna näiteks <i>FROM 1900 TO 1910</i>. Koha jurisdiktsioon on madalaima jurisdiktsiooni nimi, mis tähistab antud juhul kõiki alam-tasemete kohti, mis on selles allikas kajastatud. Näiteks \"Oneida, Idaho, Usa\" võiks kasutada allika jurisdiktsiooniks sündmustes, mis on toimunud erinevates linnades Oneida maakonnas. 'Idaho, USA' oleks allika jurisdiktsiooniks kui sündmused toimusid mitte ainult Oneida maakonnas aga ka teistes maakondates Idaho-s."
+msgstr "Iga allikas sisaldab erinevaid sündmusi, üldjuhul mingi kindla ajavahemiku ja koha kohta. Näiteks rahvaloenduse sündmused ja kirikukirjed sisaldavad infot sündide, abielude ja surmade kohta. <br><br>Valige sündmuste nimekirjast need sündmused, mida see allikas kajastab. Kuupäev peaks olema märgitud sellises formaadis <i>FROM 1900 TO 1910</i>. Koha jurisdiktsioon on madalaima jurisdiktsiooni nimi, mis tähistab antud juhul kõiki alam-tasemete kohti, mis on selles allikas kajastatud. Näiteks \"Oneida, Idaho, Usa\" võiks kasutada allika jurisdiktsiooniks sündmustes, mis on toimunud erinevates linnades Oneida maakonnas. \"Idaho, USA\" oleks allika jurisdiktsiooniks kui sündmused toimusid mitte ainult Oneida maakonnas aga ka teistes maakondates Idaho-s."
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Igal kasutajal on valik 'kinnita muudatused automaatselt'. Kui see on lubatud, siis kõik muudatused, mida see kasutaja teeb salvestatakse automaatselt. Paljud administraatorid salvestavad selle enda kasutaja jaoks."
+msgstr "Igal kasutajal on valik \"kinnita muudatused automaatselt\". Kui see on lubatud, siis kõik muudatused, mida see kasutaja teeb salvestatakse automaatselt. Paljud administraatorid salvestavad selle enda kasutaja jaoks."
 
 #: statistics.php:129
 msgid "Earliest birth"
-msgstr "Varaseim sündinu"
+msgstr "Varaseim sünd"
 
 #: app/Module/FamilyTreeStatisticsModule.php:142
 #: app/Module/FamilyTreeStatisticsModule.php:320
 #: app/Module/HtmlBlockModule.php:216
 msgid "Earliest birth year"
-msgstr "Kõige varem sündinud"
+msgstr "Varaseim sünniaasta"
 
 #: statistics.php:130
 msgid "Earliest death"
-msgstr "Varaseim surnu"
+msgstr "Varaseim surm"
 
 #: app/Module/FamilyTreeStatisticsModule.php:156
 #: app/Module/FamilyTreeStatisticsModule.php:348
 #: app/Module/HtmlBlockModule.php:226
 msgid "Earliest death year"
-msgstr "Kõige varem surnud"
+msgstr "Varaseim surmaaasta"
 
 #: statistics.php:232
 msgid "Earliest divorce"
@@ -5433,7 +5433,7 @@ msgstr "KKK muutmine"
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
 msgid "Edit the details"
-msgstr "Üksikasjade Muutmine"
+msgstr "Üksikasjade muutmine"
 
 #: app/Controller/IndividualController.php:283
 #: app/Controller/IndividualController.php:291
@@ -5463,7 +5463,7 @@ msgstr "Muuda märget"
 #: edit_interface.php:112 edit_interface.php:162 edit_interface.php:224
 #: edit_interface.php:319 edit_interface.php:2579 help_text.php:284
 msgid "Edit the raw GEDCOM"
-msgstr "Muuda GEDCOM Kirjet"
+msgstr "Muuda GEDCOM kirjet"
 
 #: app/Controller/RepositoryController.php:43
 #: app/Controller/RepositoryController.php:48

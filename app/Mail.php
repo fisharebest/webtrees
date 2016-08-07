@@ -15,10 +15,13 @@
  */
 namespace Fisharebest\Webtrees;
 
-use Zend_Mail;
-use Zend_Mail_Transport_File;
-use Zend_Mail_Transport_Sendmail;
-use Zend_Mail_Transport_Smtp;
+use Exception;
+use Swift_Mailer;
+use Swift_MailTransport;
+use Swift_Message;
+use Swift_NullTransport;
+use Swift_SmtpTransport;
+use Swift_Transport;
 
 /**
  * Send mail messages.
@@ -42,16 +45,16 @@ class Mail {
 	 */
 	public static function send(Tree $tree, $to_email, $to_name, $replyto_email, $replyto_name, $subject, $message) {
 		try {
-			$mail = new Zend_Mail('UTF-8');
-			$mail
-				->setSubject($subject)
-				->setBodyHtml($message)
-				->setBodyText(Filter::unescapeHtml($message))
-				->setFrom(Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'))
-				->addTo($to_email, $to_name)
-				->setReplyTo($replyto_email, $replyto_name)
-				->send(self::transport());
-		} catch (\Exception $ex) {
+		    $mail = Swift_Message::newInstance()
+                ->setSubject($subject)
+                ->setFrom(Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'))
+                ->setTo($to_email, $to_name)
+                ->setReplyTo($replyto_email, $replyto_name)
+                ->setBody($message, 'text/html')
+                ->addPart(Filter::unescapeHtml($message), 'text/plain');
+		    
+            Swift_Mailer::newInstance(self::transport())->send($mail);
+		} catch (Exception $ex) {
 			Log::addErrorLog('Mail: ' . $ex->getMessage());
 
 			return false;
@@ -83,30 +86,32 @@ class Mail {
 	/**
 	 * Create a transport mechanism for sending mail
 	 *
-	 * @return Zend_Mail_Transport_File|Zend_Mail_Transport_Smtp
+	 * @return Swift_Transport
 	 */
 	public static function transport() {
 		switch (Site::getPreference('SMTP_ACTIVE')) {
 		case 'internal':
-			return new Zend_Mail_Transport_Sendmail;
+			return Swift_MailTransport::newInstance();
 		case 'external':
-			$config = array(
-				'name' => Site::getPreference('SMTP_HELO'),
-				'port' => Site::getPreference('SMTP_PORT'),
-			);
-			if (Site::getPreference('SMTP_AUTH')) {
-				$config['auth']     = 'login';
-				$config['username'] = Site::getPreference('SMTP_AUTH_USER');
-				$config['password'] = Site::getPreference('SMTP_AUTH_PASS');
-			}
-			if (Site::getPreference('SMTP_SSL') !== 'none') {
-				$config['ssl'] = Site::getPreference('SMTP_SSL');
-			}
-
-			return new Zend_Mail_Transport_Smtp(Site::getPreference('SMTP_HOST'), $config);
+            $transport = Swift_SmtpTransport::newInstance()
+                ->setHost(Site::getPreference('SMTP_HOST'))
+                ->setPort(Site::getPreference('SMTP_PORT'))
+                ->setLocalDomain(Site::getPreference('SMTP_HELO'));
+            
+            if (Site::getPreference('SMTP_AUTH')) {
+                $transport
+                    ->setUsername(Site::getPreference('SMTP_AUTH_USER'))
+                    ->setPassword(Site::getPreference('SMTP_AUTH_PASS'));
+            }
+            
+            if (Site::getPreference('SMTP_SSL') !== 'none') {
+                $transport->setEncryption(Site::getPreference('SMTP_SSL'));
+            }
+			
+			return $transport;
 		default:
 			// For testing
-			return new Zend_Mail_Transport_File;
+			return Swift_NullTransport::newInstance();
 		}
 	}
 }

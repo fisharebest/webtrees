@@ -23,4 +23,5 @@ return array(
     'a7bea2b758e2dc42e25f476fd498182e' => $vendorDir . '/symfony/polyfill-xml/bootstrap.php',
     '2cffec82183ee1cea088009cef9a6fc3' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     'd242c324488a3873d00844a6f8dec437' => $vendorDir . '/fisharebest/php-polyfill/src/bootstrap.php',
+    '2c102faa651ef8ea5874edb585946bce' => $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php',
 );
