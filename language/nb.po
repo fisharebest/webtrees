@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-08-06 18:29+0000\n"
+"PO-Revision-Date: 2016-08-08 17:03+0000\n"
 "Last-Translator: Thomas Rindal <thomas@rindal.net>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
@@ -16353,7 +16353,7 @@ msgstr "onkels hustru"
 #: app/Functions/Functions.php:848
 msgctxt "father’s sister"
 msgid "aunt"
-msgstr "faster"
+msgstr "tante"
 
 #: app/Functions/Functions.php:1154
 msgctxt "mother’s brother’s wife"
@@ -16363,7 +16363,7 @@ msgstr "onkels hustru"
 #: app/Functions/Functions.php:886
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr "moster"
+msgstr "tante"
 
 #: app/Functions/Functions.php:1206
 msgctxt "parent’s brother’s wife"
