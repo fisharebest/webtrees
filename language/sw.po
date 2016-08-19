@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-08-18 21:43+0000\n"
+"PO-Revision-Date: 2016-08-19 15:39+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Swahili <https://translate.webtrees.net/projects/webtrees/webtrees/sw/>\n"
 "Language: sw\n"
@@ -44,7 +44,7 @@ msgstr " katika "
 #: statisticsplot.php:1211 statisticsplot.php:1261 statisticsplot.php:1311
 #: statisticsplot.php:1361
 msgid " per gender"
-msgstr ""
+msgstr " kwa jinsia"
 
 #: statisticsplot.php:905 statisticsplot.php:955 statisticsplot.php:1009
 #: statisticsplot.php:1059 statisticsplot.php:1113 statisticsplot.php:1163
@@ -83,7 +83,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:1636
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:254
@@ -175,7 +175,7 @@ msgstr "%1$s–%2$s"
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s ya %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:819
@@ -221,7 +221,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:121
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s na watoto wao"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:128
@@ -240,8 +240,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s mtoto"
+msgstr[1] "%s watoto"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:59 app/I18N.php:313
@@ -255,8 +255,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "siku %s iliyopita"
+msgstr[1] "siku %s iliyopita"
 
 #: app/Controller/SearchController.php:378
 #, php-format
@@ -269,29 +269,29 @@ msgstr[1] ""
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mti wa familia %s"
+msgstr[1] "miti ya familia %s"
 
 #: app/Stats.php:5258 app/Stats.php:5262
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mjukuu %s"
+msgstr[1] "wajukuu %s"
 
 #: app/I18N.php:803
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "saa %s iliyopita"
+msgstr[1] "masaa %s yaliyopita"
 
 #: app/Controller/LifespanController.php:260
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mtu binafsi %s"
+msgstr[1] "watu binafsi %s"
 
 #: app/Controller/SearchController.php:349
 #, php-format
@@ -311,22 +311,22 @@ msgstr[1] ""
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mtu binafsi %s na matukio kati ya %s na %s"
+msgstr[1] "watu binafsi %s na matukio kati ya %s na %s"
 
 #: app/Controller/LifespanController.php:246
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mtu binafsi %s na matukio katika %s"
+msgstr[1] "watu binafsi %s na matukio katika %s"
 
 #: app/Controller/LifespanController.php:239
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mtu binafsi %s na matukio katika %s kati ya %s na %s"
+msgstr[1] "watu binafsi %s na matukio katika %s kati ya %s na %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:119
@@ -338,15 +338,15 @@ msgstr ""
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ujumbe %s"
+msgstr[1] "ujumbe %s"
 
 #: app/I18N.php:807
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "dakika %s iliyopita"
+msgstr[1] "dakika %s iliyopita"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:55 app/I18N.php:305
@@ -354,15 +354,15 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mwezi %s"
+msgstr[1] "miezi %s"
 
 #: app/I18N.php:795
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mwezi %s uliopita"
+msgstr[1] "miezi %s iliyopita"
 
 #: app/Controller/SearchController.php:432
 #, php-format
@@ -387,21 +387,21 @@ msgstr ""
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "sekunde %s iliyopita"
+msgstr[1] "sekunde %s zilizopita"
 
 #. I18N: %s is a person's name
 #: message.php:300 message.php:303 message.php:305
 #, php-format
 msgid "%s sent you the following message."
-msgstr ""
+msgstr "%s amekutumia ujumbe zifuatazo."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s aliyeingia katika akaunti"
+msgstr[1] "%s waliongia katika akaunti"
 
 #: app/Controller/SearchController.php:411
 #, php-format
@@ -439,23 +439,23 @@ msgstr ""
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "wiki %s"
+msgstr[1] "wiki %s"
 
 #: app/Functions/FunctionsDate.php:50 app/I18N.php:299
 #: app/Module/RelativesTabModule.php:83
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mwaka %s"
+msgstr[1] "miaka %s"
 
 #: app/I18N.php:791
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mwaka %s uliopita"
+msgstr[1] "miaka %s iliyopita"
 
 #: app/Functions/FunctionsPrintLists.php:1942
 #: app/Module/YahrzeitModule.php:129 calendar.php:609
