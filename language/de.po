@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-09 07:24+0000\n"
+"PO-Revision-Date: 2016-08-21 15:04+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -3782,7 +3782,7 @@ msgstr "Ciudad Juarez, Mexiko"
 
 #: app/GedcomTag.php:582 modules_v3/fact_sources/report.xml:202
 msgid "Civil marriage"
-msgstr "standesamtliche Ehe"
+msgstr "Standesamtliche Heirat"
 
 #: app/GedcomCode/GedcomCodeRela.php:98
 msgid "Civil registrar"
@@ -11474,7 +11474,7 @@ msgstr "Religiöse Institution"
 
 #: app/GedcomTag.php:586 modules_v3/fact_sources/report.xml:199
 msgid "Religious marriage"
-msgstr "kirchliche Ehe"
+msgstr "Kirchliche Trauung"
 
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
@@ -15777,7 +15777,7 @@ msgstr "Wenn Sie diese Nachricht senden, erhalten Sie eine Kopie an die von Ihne
 
 #: admin_users.php:599
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr "Wenn ein Benutzer einem einzelnen Datensatz in einem Stammbaum zugeordnet ist und zugleich eine Rolle als Mitglied, Redakteur oder Moderator ausübt, können Sie den Zugriff auf Details von entfernten bzw. lebenden Personen verhindern. Sie geben die Anzahl der Stufen zu den Verwandten an, die der Benutzer sehen darf."
+msgstr "Wenn ein Benutzer einem einzelnen Datensatz in einem Stammbaum zugeordnet ist und zugleich eine Rolle als Mitglied, Bearbeiter oder Moderator ausübt, können Sie den Zugriff auf Details von entfernten bzw. lebenden Personen verhindern. Sie geben die Anzahl der Stufen zu den Verwandten an, die der Benutzer sehen darf."
 
 #: admin_pgv_to_wt.php:163
 msgid "Where is your PhpGedView installation?"
