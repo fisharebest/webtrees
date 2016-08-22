@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-08-19 15:39+0000\n"
+"PO-Revision-Date: 2016-08-22 19:21+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Swahili <https://translate.webtrees.net/projects/webtrees/webtrees/sw/>\n"
 "Language: sw\n"
@@ -65,7 +65,7 @@ msgstr "#%s"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s ina %3$s moja  kiungo kwa %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -114,8 +114,8 @@ msgstr "%1$s hana kiungo na %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "file %1$s ilikuwa kuondolewa katika %2$s."
-msgstr[1] "mafaili %3$s ilikuwa kuondolewa katika %4$s."
+msgstr[0] "file %1$s ilikuwa kuondolewa katika sekunde %2$s."
+msgstr[1] "mafaili %3$s ilikuwa kuondolewa katika sekunde %4$s."
 
 #: app/Module/GoogleMapsModule.php:864
 #, php-format
@@ -203,13 +203,13 @@ msgstr "%s KB"
 #: app/Module/ClippingsCartModule.php:203
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s na mababu yake"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:206
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s na mababu yake"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:292
@@ -227,14 +227,14 @@ msgstr "%s na watoto wao"
 #: app/Module/ClippingsCartModule.php:128
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s na watoto wao"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5908
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "bila majina %s aliyeingia katika akaunti"
+msgstr[1] "bila majina %s aliyeingia katika akaunti"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4457 app/Stats.php:4461
 #, php-format
@@ -248,8 +248,8 @@ msgstr[1] "%s watoto"
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "siku %s"
+msgstr[1] "siku %s"
 
 #: app/I18N.php:799
 #, php-format
@@ -262,8 +262,8 @@ msgstr[1] "siku %s iliyopita"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "familia %s imekuwa sasishwa."
+msgstr[1] "familia %s wamekuwa sasishwa."
 
 #: admin.php:841
 #, php-format
@@ -297,8 +297,8 @@ msgstr[1] "watu binafsi %s"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mtu binafsi %s amekuwa sasishwa."
+msgstr[1] "watu binafsi %s wanakuwa sasishwa."
 
 #: app/Module/GoogleMapsModule.php:871
 #, php-format
@@ -461,91 +461,91 @@ msgstr[1] "miaka %s iliyopita"
 #: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s mwaka maadhimisho"
 
 #: app/Functions/Functions.php:585
 #, php-format
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × binamu"
 
 #: app/Functions/Functions.php:550
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × binamu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:515
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × binamu"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:85
-#, php-format
+#, fuzzy, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;BCE"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
-#, php-format
+#, fuzzy, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;CE"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: statisticsplot.php:788
-#, php-format
+#, fuzzy, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s+"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:222
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, na mababu yake na familia zao"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:171
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, wazazi na ndugu zao"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, wanandoa wake na watoto"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:241
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, wanandoa wake na kizazi"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:225
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, mababu zake na familia zao"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:174
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, wazazi na ndugu zao"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:190
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, wanandoa wake na watoto"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:244
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, wanandoa wake na watoto"
 
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:624
 #: app/Module/UserMessagesModule.php:102
@@ -556,19 +556,19 @@ msgstr ""
 #: app/I18N.php:328 app/I18N.php:332
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(wenye umri %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:322
 #, php-format
 msgid "(aged less than %s)"
-msgstr ""
+msgstr "(wenye umri chini ya %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/I18N.php:325
 #, php-format
 msgid "(aged more than %s)"
-msgstr ""
+msgstr "(wenye umri zaidi ya %s)"
 
 #. I18N: %s is a placeholder for a number
 #: app/I18N.php:229
@@ -579,12 +579,12 @@ msgstr ""
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
 #: app/I18N.php:293
 msgid "(in childhood)"
-msgstr ""
+msgstr "(katika utoto)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in infancy)
 #: app/I18N.php:290
 msgid "(in infancy)"
-msgstr ""
+msgstr "(katika uchanga)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (stillborn)
 #: app/I18N.php:287
@@ -593,113 +593,114 @@ msgstr ""
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:440
+#, fuzzy
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Stats.php:6971
 msgctxt "CENTURY"
 msgid "10th"
-msgstr ""
+msgstr "ya kumi"
 
 #: app/Stats.php:6969
 msgctxt "CENTURY"
 msgid "11th"
-msgstr ""
+msgstr "ya kumi na moja"
 
 #: app/Stats.php:6967
 msgctxt "CENTURY"
 msgid "12th"
-msgstr ""
+msgstr "ya kumi na mbili"
 
 #: app/Stats.php:6965
 msgctxt "CENTURY"
 msgid "13th"
-msgstr ""
+msgstr "ya kumi na tatu"
 
 #: app/Stats.php:6963
 msgctxt "CENTURY"
 msgid "14th"
-msgstr ""
+msgstr "ya kumi na nne"
 
 #: app/Stats.php:6961
 msgctxt "CENTURY"
 msgid "15th"
-msgstr ""
+msgstr "ya kumi na tano"
 
 #: app/Stats.php:6959
 msgctxt "CENTURY"
 msgid "16th"
-msgstr ""
+msgstr "ya kumi na sita"
 
 #: app/Stats.php:6957
 msgctxt "CENTURY"
 msgid "17th"
-msgstr ""
+msgstr "ya kumi na saba"
 
 #: app/Stats.php:6955
 msgctxt "CENTURY"
 msgid "18th"
-msgstr ""
+msgstr "ya kumi na nane"
 
 #: app/Stats.php:6953
 msgctxt "CENTURY"
 msgid "19th"
-msgstr ""
+msgstr "ya kumi na tisa"
 
 #: app/Stats.php:6989
 msgctxt "CENTURY"
 msgid "1st"
-msgstr ""
+msgstr "ya kwanza"
 
 #: app/Stats.php:6951
 msgctxt "CENTURY"
 msgid "20th"
-msgstr ""
+msgstr "ya ishirini"
 
 #: app/Stats.php:6949
 msgctxt "CENTURY"
 msgid "21st"
-msgstr ""
+msgstr "ya ishrini na moja"
 
 #: app/Stats.php:6987
 msgctxt "CENTURY"
 msgid "2nd"
-msgstr ""
+msgstr "ya pili"
 
 #: app/Stats.php:6985
 msgctxt "CENTURY"
 msgid "3rd"
-msgstr ""
+msgstr "ya tatu"
 
 #: app/Stats.php:6983
 msgctxt "CENTURY"
 msgid "4th"
-msgstr ""
+msgstr "ya nne"
 
 #: app/Stats.php:6981
 msgctxt "CENTURY"
 msgid "5th"
-msgstr ""
+msgstr "ya tano"
 
 #: app/Stats.php:6979
 msgctxt "CENTURY"
 msgid "6th"
-msgstr ""
+msgstr "ya sita"
 
 #: app/Stats.php:6977
 msgctxt "CENTURY"
 msgid "7th"
-msgstr ""
+msgstr "ya saba"
 
 #: app/Stats.php:6975
 msgctxt "CENTURY"
 msgid "8th"
-msgstr ""
+msgstr "ya nane"
 
 #: app/Stats.php:6973
 msgctxt "CENTURY"
 msgid "9th"
-msgstr ""
+msgstr "ya tisa"
 
 #: admin_trees_manage.php:721
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -721,9 +722,9 @@ msgstr ""
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:413 app/Functions/FunctionsPrintFacts.php:545
 #: app/GedcomTag.php:1815
-#, php-format
+#, fuzzy, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-msgstr ""
+msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
@@ -748,12 +749,12 @@ msgstr ""
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "chati za mababu ya mtu binafsi."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "chati ya kizazi ya mtu binafsi."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
