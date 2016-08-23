@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-08-21 15:04+0000\n"
+"PO-Revision-Date: 2016-08-23 14:38+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -14250,7 +14250,7 @@ msgstr "Diese Person wird standardmäßig als Ausgangsperson in Darstellungen un
 #: app/Stats.php:3127 app/Stats.php:3425 app/Stats.php:4408 app/Stats.php:4540
 #: app/Stats.php:4589 timeline.php:287
 msgid "This information is private and cannot be shown."
-msgstr "Details sind vertraulich und dürfen deshalb nicht gezeigt werden."
+msgstr "Diese Information ist nicht öffentlich und wird deshalb nicht angezeigt."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
@@ -14296,7 +14296,7 @@ msgstr "Groß-/Kleinschreibung beachten. Sofern noch keine Datenbank mit diesem 
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1290
 msgid "This is the initial value for the “show details” option on the charts."
-msgstr "Dies ist die initiale Einstellung für die „Zeige Details“-Option für Diagramme."
+msgstr "Dies ist der Startwert für die Option „Zeige Details“ bei Diagrammen."
 
 #: admin.php:617 admin_site_upgrade.php:66
 msgid "This is the latest version of webtrees. No upgrade is available."
