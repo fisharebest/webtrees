@@ -15,6 +15,13 @@
  */
 namespace Fisharebest\Webtrees;
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'logout.php');
 require './includes/session.php';
 
@@ -24,4 +31,4 @@ if (Auth::id()) {
 	FlashMessages::addMessage(I18N::translate('You have signed out.'), 'info');
 }
 
-header('Location: ' . WT_BASE_URL);
+header('Location: ' . WT_BASE_URL . 'index.php?ged=' . $WT_TREE->getNameUrl());
