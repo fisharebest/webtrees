@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-04-19 19:31+0000\n"
+"PO-Revision-Date: 2016-08-26 15:08+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Swahili <https://translate.webtrees.net/projects/webtrees/webtrees/sw/>\n"
 "Language: sw\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr ""
+msgstr " lakini maelezo ni haijulikani"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -37,14 +37,14 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:424
 #: modules_v3/descendancy_report/report.xml:455
 msgid " in "
-msgstr ""
+msgstr " katika "
 
 #: statisticsplot.php:903 statisticsplot.php:953 statisticsplot.php:1007
 #: statisticsplot.php:1057 statisticsplot.php:1111 statisticsplot.php:1161
 #: statisticsplot.php:1211 statisticsplot.php:1261 statisticsplot.php:1311
 #: statisticsplot.php:1361
 msgid " per gender"
-msgstr ""
+msgstr " kwa jinsia"
 
 #: statisticsplot.php:905 statisticsplot.php:955 statisticsplot.php:1009
 #: statisticsplot.php:1059 statisticsplot.php:1113 statisticsplot.php:1163
@@ -65,7 +65,7 @@ msgstr "#%s"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s ina %3$s moja  kiungo kwa %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -83,39 +83,39 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:1636
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:254
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "KB %1$s walikuwa kupakuliwa katika sekunde %2$s."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s haipo."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s haipo. Ulimaanisha %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s hana kiungo na %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:311 admin_site_upgrade.php:395
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "faili %1$s ilikuwa kuondolewa katika sekunde %2$s."
+msgstr[1] "mafaili %3$s ilikuwa kuondolewa katika sekunde %4$s."
 
 #: app/Module/GoogleMapsModule.php:864
 #, php-format
@@ -136,7 +136,7 @@ msgstr[1] ""
 #: admin_trees_check.php:192
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s ni %2$s lakini %3$s inatarajiwa."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:645
@@ -175,7 +175,7 @@ msgstr "%1$s–%2$s"
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$s’s %2$s"
+msgstr "%1$s ya %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:819
@@ -203,13 +203,13 @@ msgstr "%s KB"
 #: app/Module/ClippingsCartModule.php:203
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s na mababu yake"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:206
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s na mababu yake"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:292
@@ -221,112 +221,112 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:121
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s na watoto wao"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:128
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s na watoto wao"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5908
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "bila majina %s aliyeingia katika akaunti"
+msgstr[1] "bila majina %s aliyeingia katika akaunti"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4457 app/Stats.php:4461
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s mtoto"
+msgstr[1] "%s watoto"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:59 app/I18N.php:313
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "siku %s"
+msgstr[1] "siku %s"
 
 #: app/I18N.php:799
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "siku %s iliyopita"
+msgstr[1] "siku %s zilizopita"
 
 #: app/Controller/SearchController.php:378
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "familia %s imekuwa sasishwa."
+msgstr[1] "familia %s wamekuwa sasishwa."
 
 #: admin.php:841
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mti wa familia %s"
+msgstr[1] "miti ya familia %s"
 
 #: app/Stats.php:5258 app/Stats.php:5262
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mjukuu %s"
+msgstr[1] "wajukuu %s"
 
 #: app/I18N.php:803
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "saa %s iliyopita"
+msgstr[1] "masaa %s yaliyopita"
 
 #: app/Controller/LifespanController.php:260
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mtu binafsi %s"
+msgstr[1] "watu binafsi %s"
 
 #: app/Controller/SearchController.php:349
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mtu binafsi %s amekuwa sasishwa."
+msgstr[1] "watu binafsi %s wanakuwa sasishwa."
 
 #: app/Module/GoogleMapsModule.php:871
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mtu binafsi %s ni binafsi."
+msgstr[1] "watu binafsi %s ni binafsi."
 
 #: app/Controller/LifespanController.php:253
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mtu binafsi %s na matukio kati ya %s na %s"
+msgstr[1] "watu binafsi %s na matukio kati ya %s na %s"
 
 #: app/Controller/LifespanController.php:246
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mtu binafsi %s na matukio katika %s"
+msgstr[1] "watu binafsi %s na matukio katika %s"
 
 #: app/Controller/LifespanController.php:239
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mtu binafsi %s na matukio katika %s kati ya %s na %s"
+msgstr[1] "watu binafsi %s na matukio katika %s kati ya %s na %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:119
@@ -338,15 +338,15 @@ msgstr ""
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ujumbe %s"
+msgstr[1] "ujumbe %s"
 
 #: app/I18N.php:807
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "dakika %s iliyopita"
+msgstr[1] "dakika %s zilizopita"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:55 app/I18N.php:305
@@ -354,22 +354,22 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mwezi %s"
+msgstr[1] "miezi %s"
 
 #: app/I18N.php:795
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mwezi %s uliopita"
+msgstr[1] "miezi %s iliyopita"
 
 #: app/Controller/SearchController.php:432
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "noti %s imekuwa sasishwa."
+msgstr[1] "noti %s zimekuwa sasishwa."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
@@ -387,28 +387,28 @@ msgstr ""
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "sekunde %s iliyopita"
+msgstr[1] "sekunde %s zilizopita"
 
 #. I18N: %s is a person's name
 #: message.php:300 message.php:303 message.php:305
 #, php-format
 msgid "%s sent you the following message."
-msgstr ""
+msgstr "%s amekutumia ujumbe zifuatazo."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s aliyeingia katika akaunti"
+msgstr[1] "%s waliongia katika akaunti"
 
 #: app/Controller/SearchController.php:411
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "chanzo %s kimekuwa sasishwa."
+msgstr[1] "vyanzo %s vimekuwa sasishwa."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2124
@@ -439,152 +439,152 @@ msgstr ""
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "wiki %s"
+msgstr[1] "wiki %s"
 
 #: app/Functions/FunctionsDate.php:50 app/I18N.php:299
 #: app/Module/RelativesTabModule.php:83
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mwaka %s"
+msgstr[1] "miaka %s"
 
 #: app/I18N.php:791
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mwaka %s uliopita"
+msgstr[1] "miaka %s iliyopita"
 
-#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
-#: calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:1942
+#: app/Module/YahrzeitModule.php:129 calendar.php:609
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%s mwaka maadhimisho"
 
 #: app/Functions/Functions.php:585
 #, php-format
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × binamu"
 
 #: app/Functions/Functions.php:550
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × binamu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:515
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × binamu"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:85
-#, php-format
+#, fuzzy, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;BCE"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
-#, php-format
+#, fuzzy, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;CE"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: statisticsplot.php:788
-#, php-format
+#, fuzzy, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s+"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:222
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, na mababu yake na familia zao"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:171
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, wazazi na ndugu zao"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, wanandoa wake na watoto"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:241
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, wanandoa wake na kizazi"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:225
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, mababu zake na familia zao"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:174
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, wazazi na ndugu zao"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:190
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, wanandoa wake na watoto"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:244
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, wanandoa wake na watoto"
 
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:624
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;teua&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/I18N.php:328 app/I18N.php:332
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(wenye umri %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:322
 #, php-format
 msgid "(aged less than %s)"
-msgstr ""
+msgstr "(wenye umri chini ya %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/I18N.php:325
 #, php-format
 msgid "(aged more than %s)"
-msgstr ""
+msgstr "(wenye umri zaidi ya %s)"
 
 #. I18N: %s is a placeholder for a number
 #: app/I18N.php:229
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr ""
+msgstr "(Kuchujwa kutoka jumla ya miinglio %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
 #: app/I18N.php:293
 msgid "(in childhood)"
-msgstr ""
+msgstr "(katika utoto)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in infancy)
 #: app/I18N.php:290
 msgid "(in infancy)"
-msgstr ""
+msgstr "(katika uchanga)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (stillborn)
 #: app/I18N.php:287
@@ -594,112 +594,112 @@ msgstr ""
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:440
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Stats.php:6971
 msgctxt "CENTURY"
 msgid "10th"
-msgstr ""
+msgstr "ya kumi"
 
 #: app/Stats.php:6969
 msgctxt "CENTURY"
 msgid "11th"
-msgstr ""
+msgstr "ya kumi na moja"
 
 #: app/Stats.php:6967
 msgctxt "CENTURY"
 msgid "12th"
-msgstr ""
+msgstr "ya kumi na mbili"
 
 #: app/Stats.php:6965
 msgctxt "CENTURY"
 msgid "13th"
-msgstr ""
+msgstr "ya kumi na tatu"
 
 #: app/Stats.php:6963
 msgctxt "CENTURY"
 msgid "14th"
-msgstr ""
+msgstr "ya kumi na nne"
 
 #: app/Stats.php:6961
 msgctxt "CENTURY"
 msgid "15th"
-msgstr ""
+msgstr "ya kumi na tano"
 
 #: app/Stats.php:6959
 msgctxt "CENTURY"
 msgid "16th"
-msgstr ""
+msgstr "ya kumi na sita"
 
 #: app/Stats.php:6957
 msgctxt "CENTURY"
 msgid "17th"
-msgstr ""
+msgstr "ya kumi na saba"
 
 #: app/Stats.php:6955
 msgctxt "CENTURY"
 msgid "18th"
-msgstr ""
+msgstr "ya kumi na nane"
 
 #: app/Stats.php:6953
 msgctxt "CENTURY"
 msgid "19th"
-msgstr ""
+msgstr "ya kumi na tisa"
 
 #: app/Stats.php:6989
 msgctxt "CENTURY"
 msgid "1st"
-msgstr ""
+msgstr "ya kwanza"
 
 #: app/Stats.php:6951
 msgctxt "CENTURY"
 msgid "20th"
-msgstr ""
+msgstr "ya ishirini"
 
 #: app/Stats.php:6949
 msgctxt "CENTURY"
 msgid "21st"
-msgstr ""
+msgstr "ya ishrini na moja"
 
 #: app/Stats.php:6987
 msgctxt "CENTURY"
 msgid "2nd"
-msgstr ""
+msgstr "ya pili"
 
 #: app/Stats.php:6985
 msgctxt "CENTURY"
 msgid "3rd"
-msgstr ""
+msgstr "ya tatu"
 
 #: app/Stats.php:6983
 msgctxt "CENTURY"
 msgid "4th"
-msgstr ""
+msgstr "ya nne"
 
 #: app/Stats.php:6981
 msgctxt "CENTURY"
 msgid "5th"
-msgstr ""
+msgstr "ya tano"
 
 #: app/Stats.php:6979
 msgctxt "CENTURY"
 msgid "6th"
-msgstr ""
+msgstr "ya sita"
 
 #: app/Stats.php:6977
 msgctxt "CENTURY"
 msgid "7th"
-msgstr ""
+msgstr "ya saba"
 
 #: app/Stats.php:6975
 msgctxt "CENTURY"
 msgid "8th"
-msgstr ""
+msgstr "ya nane"
 
 #: app/Stats.php:6973
 msgctxt "CENTURY"
 msgid "9th"
-msgstr ""
+msgstr "ya tisa"
 
 #: admin_trees_manage.php:721
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -712,7 +712,7 @@ msgstr ""
 #. I18N: default option in list of themes
 #: admin_trees_config.php:976 admin_users.php:488 edituser.php:278
 msgid "<default theme>"
-msgstr ""
+msgstr "<mandhari ya chaguo-msingi>"
 
 #: login.php:408
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
@@ -723,17 +723,17 @@ msgstr ""
 #: app/GedcomTag.php:1815
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-msgstr ""
+msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:53
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Chati kuangazishwa mahusiano baina ya watu wawili."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "Chati za mababu na kizazi ya mtu binafsi, kama kitabu cha familia."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
@@ -748,12 +748,12 @@ msgstr ""
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Chati za mababu ya mtu binafsi."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "Chati ya kizazi ya mtu binafsi."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
@@ -780,42 +780,42 @@ msgstr ""
 #: admin_trees_download.php:115 admin_trees_manage.php:225
 #: app/Module/GoogleMapsModule.php:3782
 msgid "A file on the server"
-msgstr ""
+msgstr "faili kwenye seva"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:214
 #: app/Module/GoogleMapsModule.php:3770
 msgid "A file on your computer"
-msgstr ""
+msgstr "faili kwenye kompyuta yako"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
 msgid "A greeting message and useful links for a user."
-msgstr ""
+msgstr "Ujumbe wa salamu na viungo vya faida kwa mtumiaji."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:35
 msgid "A greeting message for site visitors."
-msgstr ""
+msgstr "Ujumbe wa salamu kwa wageni tovuti."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr ""
+msgstr "Orodha ya mabadiliko ambayo yanahitaji upya kwa msimamizi, na kuarifiwa barua pepe."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
 msgid "A list of frequently asked questions and answers."
-msgstr ""
+msgstr "Orodha ya maswali ya kuulizwa mara na majibu."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:49
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "Orodha ya rekodi ambayo yamekuwa sasishwa hivi karibuni."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:44
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "Orodha ya majukumu na shughuli ambazo zinatumika katika mti wa familia."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
@@ -825,27 +825,27 @@ msgstr ""
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "Orodha ya maadhimisho ambayo kutokea leo."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Orodha ya maadhimisho ambayo yatatokea katika siku za usoni."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr ""
+msgstr "Orodha ya majina maarufu yaliyopewa."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "Orodha ya majina maarufu zaidi."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "Orodha ya kurasa ambayo yamekuwa kutazamwa idadi zaidi ya mara."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
@@ -873,7 +873,7 @@ msgstr ""
 
 #: admin.php:612 admin_site_upgrade.php:78 login.php:115
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Toleo jipya la webtrees inapatikana."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
@@ -908,7 +908,7 @@ msgstr ""
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "Ripoti hiyo wa maelezo ya mtu binafsi."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
@@ -918,7 +918,7 @@ msgstr ""
 #: app/Module/FamilyGroupReportModule.php:35
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "ripoti ya wanafamilia na maelezo yao."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
@@ -1071,7 +1071,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "A3"
-msgstr ""
+msgstr "A3"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -1089,7 +1089,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #: app/I18N.php:438
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
@@ -1151,22 +1151,22 @@ msgstr ""
 
 #: edit_changes.php:176 edit_changes.php:184
 msgid "Accept"
-msgstr ""
+msgstr "Kubali"
 
 #: edit_changes.php:209 edit_changes.php:220
 msgid "Accept all changes"
-msgstr ""
+msgstr "Kubali mabadiliko yote"
 
 #: admin_module_blocks.php:75 admin_module_charts.php:68
 #: admin_module_menus.php:90 admin_module_reports.php:68
 #: admin_module_sidebar.php:90 admin_module_tabs.php:90
 #: admin_trees_config.php:532
 msgid "Access level"
-msgstr ""
+msgstr "kiwango cha mwingilio"
 
 #: admin_users.php:520
 msgid "Access to family trees"
-msgstr ""
+msgstr "Upatikanaji wa miti ya familia"
 
 #: admin_users.php:375
 msgid "Account approval and email verification"
@@ -1175,7 +1175,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:79
 msgid "Accra, Ghana"
-msgstr ""
+msgstr "Accra, Ghana"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
@@ -1252,12 +1252,12 @@ msgstr ""
 #: edit_interface.php:2033 index_edit.php:329 index_edit.php:346
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:170
 msgid "Add"
-msgstr ""
+msgstr "Kuongeza"
 
 #: app/Module/ClippingsCartModule.php:724
-#, php-format
+#, fuzzy, php-format
 msgid "Add %s to the clippings cart"
-msgstr ""
+msgstr "Ongeza %s kwa clippings cart"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:120
 msgid "Add a blank row"
@@ -1265,27 +1265,29 @@ msgstr ""
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a brother or sister"
-msgstr ""
+msgstr "Kuongeza ndugu au dada"
 
 #: edit_interface.php:516
 msgid "Add a child"
-msgstr ""
+msgstr "Kuongeza mtoto"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
-msgstr ""
+msgstr "Kuongeza mtoto kwa kujenga familia wa mzazi moja"
 
-#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
+#: app/Controller/FamilyController.php:82
+#: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
-msgstr ""
+msgstr "Kuongeza mtoto kwa familia hii"
 
 #: edit_interface.php:81
+#, fuzzy
 msgid "Add a fact"
-msgstr ""
+msgstr "Kuongeza jambo"
 
 #: app/Module/RelativesTabModule.php:326 edit_interface.php:675 family.php:110
 msgid "Add a father"
-msgstr ""
+msgstr "Kuongeza baba"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
@@ -1293,133 +1295,137 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:4147
 msgid "Add a geographic location"
-msgstr ""
+msgstr "Kuongeza eneo la kijiografia"
 
 #: app/Module/RelativesTabModule.php:387 edit_interface.php:810
 #: edit_interface.php:900
 msgid "Add a husband"
-msgstr ""
+msgstr "Kuongeza mume"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
-msgstr ""
+msgstr "Ongeza mume kwa familia hii"
 
 #: app/Module/RelativesTabModule.php:392 edit_interface.php:1084
 #: edit_interface.php:1156
+#, fuzzy
 msgid "Add a husband using an existing individual"
-msgstr ""
+msgstr "Kuongeza mume kwa kutumia mtu binafsi zilizopo"
 
 #: app/Module/UserJournalModule.php:109
 msgid "Add a journal entry"
-msgstr ""
+msgstr "Kuongeza ingizo la shajara"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1125
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:184
+#: app/Controller/FamilyController.php:162
+#: app/Functions/FunctionsEdit.php:1125 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:184
 msgid "Add a media object"
-msgstr ""
+msgstr "Kuongeza kitu cha vyombo vya habari"
 
 #: app/Module/RelativesTabModule.php:329 edit_interface.php:672 family.php:114
 msgid "Add a mother"
-msgstr ""
+msgstr "Kuongeza mama"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
 msgid "Add a name"
-msgstr ""
+msgstr "Kuongeza jina"
 
 #: app/Module/FamilyTreeNewsModule.php:129
 msgid "Add a news article"
-msgstr ""
+msgstr "Kuongeza makala ya habari"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1104
-#: app/Module/NotesTabModule.php:102
+#: app/Controller/FamilyController.php:149
+#: app/Functions/FunctionsEdit.php:1104 app/Module/NotesTabModule.php:102
 msgid "Add a note"
-msgstr ""
+msgstr "Kuongeza noti"
 
 #: app/Functions/FunctionsEdit.php:1135
 msgid "Add a restriction"
-msgstr ""
+msgstr "Kuongeza kizuizi"
 
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
 #: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
 msgstr ""
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1114
-#: app/Module/NotesTabModule.php:112
+#: app/Controller/FamilyController.php:155
+#: app/Functions/FunctionsEdit.php:1114 app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
 msgstr ""
 
 #: app/Module/RelativesTabModule.php:271
 msgid "Add a son or daughter"
-msgstr ""
+msgstr "Kuongeza mwana au binti"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1053
-#: app/Module/SourcesTabModule.php:95
+#: app/Controller/FamilyController.php:172
+#: app/Functions/FunctionsEdit.php:1053 app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
 msgstr ""
 
 #: edit_interface.php:837
 msgid "Add a spouse"
-msgstr ""
+msgstr "Kuongeza mke"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
 msgid "Add a story"
-msgstr ""
+msgstr "Kuongeza hadithi"
 
 #. I18N: Menu entry
 #: admin_users.php:264 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
-msgstr ""
+msgstr "Kuongeza mtumiaji"
 
 #: app/Module/RelativesTabModule.php:375 edit_interface.php:807
 #: edit_interface.php:897
 msgid "Add a wife"
-msgstr ""
+msgstr "Kuongeza mke"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
-msgstr ""
+msgstr "Kuongeza mke kwa familia hii"
 
 #: app/Module/RelativesTabModule.php:380 edit_interface.php:1087
 #: edit_interface.php:1158
+#, fuzzy
 msgid "Add a wife using an existing individual"
-msgstr ""
+msgstr "Kuongeza mke kutumia mtu binafsi zilizopo"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ"
-msgstr ""
+msgstr "Kuongeza FAQ"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
 msgid "Add an associate"
-msgstr ""
+msgstr "Kuongeza mshirika"
 
 #: timeline.php:299
 msgid "Add another individual to the chart"
-msgstr ""
+msgstr "Kuongeza mtu binafsi mwingine kwa chati"
 
 #: app/Functions/FunctionsPrint.php:556
 msgid "Add from clipboard"
-msgstr ""
+msgstr "Kuongeza kutoka clipboard"
 
 #: lifespan.php:44 modules_v3/GEDFact_assistant/census/census-edit.php:82
 msgid "Add individuals"
-msgstr ""
+msgstr "Kuongeza watu binafsi"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:158
 msgid "Add links"
-msgstr ""
+msgstr "Kuongeza viungo"
 
 #: app/Module/RelativesTabModule.php:226
 msgid "Add marriage details"
-msgstr ""
+msgstr "Kuongeza maelezo ya ndoa"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
@@ -1451,7 +1457,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:919
 msgid "Add to TITLE header tag"
-msgstr ""
+msgstr "Kuongeza TITLE header tag"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
@@ -1465,7 +1471,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:446
 #: app/Module/ClippingsCartModule.php:562
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Kuongeza kwa clippings cart"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:720
@@ -1484,7 +1490,7 @@ msgstr ""
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
 msgid "Add your own text and graphics."
-msgstr ""
+msgstr "Ongeza maandishi yako mwenyewe na ramani."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
@@ -1493,7 +1499,7 @@ msgstr ""
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
 msgid "Address"
-msgstr ""
+msgstr "Anwani"
 
 #: app/GedcomTag.php:124
 msgid "Address line 1"
@@ -1510,112 +1516,112 @@ msgstr ""
 
 #: admin_users.php:514 admin_users.php:563
 msgid "Administrator"
-msgstr ""
+msgstr "Msimamizi"
 
 #: setup.php:421 setup.php:423
 msgid "Administrator account"
-msgstr ""
+msgstr "Akaunti ya msimamizi"
 
 #: admin_users.php:495
 msgid "Administrator comments on user"
-msgstr ""
+msgstr "Maoni ya Msimamizi juu ya mtumiaji"
 
 #: admin.php:654
 msgid "Administrators"
-msgstr ""
+msgstr "Wasimamizi"
 
 #: app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Female pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Iliyopitishwa"
 
 #: app/GedcomCode/GedcomCodePedi.php:57
 msgctxt "Male pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Iliyopitishwa"
 
 #: app/GedcomCode/GedcomCodePedi.php:61
 msgctxt "Pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Iliyopitishwa"
 
 #: app/GedcomCode/GedcomCodeAdop.php:52
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Iliyopitishwa na wazazi wote wawili"
 
 #: app/GedcomCode/GedcomCodeAdop.php:50
 msgctxt "FEMALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Iliyopitishwa na wazazi wote wawili"
 
 #: app/GedcomCode/GedcomCodeAdop.php:48
 msgctxt "MALE"
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Iliyopitishwa na wazazi wote wawili"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:61 app/GedcomTag.php:936
 msgid "Adopted by father"
-msgstr ""
+msgstr "Iliyopitishwa na baba"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:59 app/GedcomTag.php:932
 msgctxt "FEMALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Iliyopitishwa na baba"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:57 app/GedcomTag.php:928
 msgctxt "MALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "Iliyopitishwa na baba"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:70 app/GedcomTag.php:951
 msgid "Adopted by mother"
-msgstr ""
+msgstr "Iliyopitishwa na baba"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:68 app/GedcomTag.php:947
 msgctxt "FEMALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "Iliyopitishwa na mama"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:66 app/GedcomTag.php:943
 msgctxt "MALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "Iliyopitishwa na mama"
 
 #. I18N: gedcom tag ADOP
 #: app/GedcomTag.php:130
 msgid "Adoption"
-msgstr ""
+msgstr "Kupitishwa"
 
 #: app/GedcomTag.php:917
 msgid "Adoption of a brother"
-msgstr ""
+msgstr "Kupitishwa kwa ndugu"
 
 #: app/GedcomTag.php:876
 msgid "Adoption of a child"
-msgstr ""
+msgstr "Kupitishwa kwa mtoto"
 
 #: app/GedcomTag.php:874
 msgid "Adoption of a daughter"
-msgstr ""
+msgstr "Kupitishwa kwa binti"
 
 #: app/GedcomTag.php:885 app/GedcomTag.php:894 app/GedcomTag.php:903
 msgid "Adoption of a grandchild"
-msgstr ""
+msgstr "Kupitishwa kwa mjukuu"
 
 #: app/GedcomTag.php:883
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Kupitishwa kwa mjukuu"
 
 #: app/GedcomTag.php:892
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "Kupitishwa kwa mjukuu"
 
 #: app/GedcomTag.php:901
 msgctxt "son’s daughter"
@@ -1706,11 +1712,11 @@ msgstr ""
 #: app/GedcomTag.php:142 app/Stats.php:2588 app/Stats.php:3929
 #: app/Stats.php:3931 autocomplete.php:72 timeline.php:382
 msgid "Age"
-msgstr ""
+msgstr "Umri"
 
 #: statistics.php:283
 msgid "Age at birth of child"
-msgstr ""
+msgstr "Umri wakati wa kuzaliwa kwa mtoto"
 
 #: admin_trees_config.php:403
 msgid "Age at which to assume an individual is dead"
@@ -1718,42 +1724,42 @@ msgstr ""
 
 #: statistics.php:338
 msgid "Age between husband and wife"
-msgstr ""
+msgstr "Umri kati ya mume na mke"
 
 #: statistics.php:330
 msgid "Age between siblings"
-msgstr ""
+msgstr "Umri kati ya ndugu"
 
 #: statistics.php:339
 msgid "Age between wife and husband"
-msgstr ""
+msgstr "Umri kati ya mke na mume"
 
 #: statistics.php:327
 msgid "Age difference"
-msgstr ""
+msgstr "Umri tofauti"
 
 #: statistics.php:529 statisticsplot.php:1282
 msgid "Age in year of first marriage"
-msgstr ""
+msgstr "Umri katika mwaka wa ndoa ya kwanza"
 
 #: app/Functions/FunctionsPrintLists.php:1002 statistics.php:260
 #: statistics.php:526 statisticsplot.php:1232
 msgid "Age in year of marriage"
-msgstr ""
+msgstr "Umri katika mwaka wa ndoa"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1311
 msgid "Age of parents next to child’s birthdate"
-msgstr ""
+msgstr "Umri wa wazazi karibu na tarehe ya kuzaliwa mtoto"
 
 #: statistics.php:520 statisticsplot.php:1132
 msgid "Age related to birth year"
-msgstr ""
+msgstr "Umri kuhusiana na mwaka wa kuzaliwa"
 
 #: app/Functions/FunctionsPrintLists.php:502 statistics.php:523
 #: statisticsplot.php:1182
 msgid "Age related to death year"
-msgstr ""
+msgstr "Umri kuhusiana na mwaka kifo"
 
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:146
@@ -1792,7 +1798,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:192
 msgid "Alive"
-msgstr ""
+msgstr "Hai"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: app/I18N.php:178 app/Module/FrequentlyAskedQuestionsModule.php:221
@@ -1800,10 +1806,10 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:1423 app/Module/GoogleMapsModule.php:1436
 #: app/Module/GoogleMapsModule.php:4210 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5581 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
-#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
-#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
-#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
+#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
+#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
+#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -1813,15 +1819,15 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "All"
-msgstr ""
+msgstr "Yote"
 
 #: admin_trees_manage.php:714
 msgid "All changes in PhpGedView must be accepted"
-msgstr ""
+msgstr "Mabadiliko yote katika PhpGedView lazima kukubaliwa"
 
 #: admin_trees_manage.php:717
 msgid "All existing PhpGedView users must have distinct email addresses"
-msgstr ""
+msgstr "Watumiaji wote wa PhpGedView zilizopo lazima kuwa na anuani za barua pepe tofauti"
 
 #: admin_trees_config.php:563
 msgid "All facts and events"
@@ -1872,29 +1878,29 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:259
 msgid "Allow users to select their own theme"
-msgstr ""
+msgstr "Kuruhusu watumiaji kuchagua mandhari yao wenyewe"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:484
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Kuruhusu wageni kuomba akaunti mpya ya mtumiaji"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967
 msgid "Also known as"
-msgstr ""
+msgstr "Pia inajulikana kama"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:963
 msgctxt "FEMALE"
 msgid "Also known as"
-msgstr ""
+msgstr "Pia inajulikana kama"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:959
 msgctxt "MALE"
 msgid "Also known as"
-msgstr ""
+msgstr "Pia inajulikana kama"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
@@ -1974,23 +1980,23 @@ msgstr ""
 #: app/Module/AncestorsChartModule.php:33
 #: modules_v3/ahnentafel_report/report.xml:4
 msgid "Ancestors"
-msgstr ""
+msgstr "Mababu"
 
 #. I18N: gedcom tag ANCI
 #: app/GedcomTag.php:158
 msgid "Ancestors interest"
-msgstr ""
+msgstr "Maslahi ya mababu"
 
 #: modules_v3/ahnentafel_report/report.xml:55
 msgid "Ancestors of "
-msgstr ""
+msgstr "Mababu wa "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/AncestryController.php:54
 #: app/Controller/AncestryController.php:80
 #, php-format
 msgid "Ancestors of %s"
-msgstr ""
+msgstr "Mababu wa %s"
 
 #. I18N: gedcom tag AFN
 #: app/GedcomTag.php:138
@@ -2020,13 +2026,14 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1805 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1805
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
-msgstr ""
+msgstr "Maadhimisho"
 
 #: calendar.php:118
 msgid "Anniversary calendar"
-msgstr ""
+msgstr "Kalenda ya maadhimisho"
 
 #. I18N: gedcom tag ANUL
 #: app/GedcomTag.php:162
@@ -2035,7 +2042,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:186
 msgid "Answer"
-msgstr ""
+msgstr "Jibu"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6686
@@ -2081,40 +2088,41 @@ msgstr ""
 #: admin_users.php:100
 #, php-format
 msgid "Approval of account at %s"
-msgstr ""
+msgstr "Idhini ya akaunti katika %s"
 
 #: admin_users.php:854
 msgid "Approved"
-msgstr ""
+msgstr "Inakubaliwa"
 
 #: admin_users.php:385
 msgid "Approved by administrator"
-msgstr ""
+msgstr "Inakubaliwa na msimamizi"
 
 #: app/Date/CalendarDate.php:314
+#, fuzzy
 msgctxt "Abbreviation for April"
 msgid "Apr"
-msgstr ""
+msgstr "Apr"
 
 #: app/Date/CalendarDate.php:214
 msgctxt "GENITIVE"
 msgid "April"
-msgstr ""
+msgstr "Aprili"
 
 #: app/Date/CalendarDate.php:282
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr ""
+msgstr "Aprili"
 
 #: app/Date/CalendarDate.php:248
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr ""
+msgstr "Aprili"
 
 #: app/Date/CalendarDate.php:180 app/Functions/FunctionsPrint.php:653
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr ""
+msgstr "Aprili"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:76
@@ -2149,7 +2157,7 @@ msgstr ""
 #: edituser.php:320
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "Unauhakika unataka kufuta %s?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to reject all the changes to this family tree?"
@@ -2171,7 +2179,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -2274,47 +2283,47 @@ msgstr ""
 #: app/Date/CalendarDate.php:318
 msgctxt "Abbreviation for August"
 msgid "Aug"
-msgstr ""
+msgstr "Ago"
 
 #: app/Date/CalendarDate.php:218
 msgctxt "GENITIVE"
 msgid "August"
-msgstr ""
+msgstr "Agosti"
 
 #: app/Date/CalendarDate.php:286
 msgctxt "INSTRUMENTAL"
 msgid "August"
-msgstr ""
+msgstr "Agosti"
 
 #: app/Date/CalendarDate.php:252
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr ""
+msgstr "Agosti"
 
 #: app/Date/CalendarDate.php:184 app/Functions/FunctionsPrint.php:657
 msgctxt "NOMINATIVE"
 msgid "August"
-msgstr ""
+msgstr "Agosti"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6689
 msgid "Australia"
-msgstr ""
+msgstr "Australia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6690
 msgid "Austria"
-msgstr ""
+msgstr "Austria"
 
 #. I18N: gedcom tag AUTH
 #: app/GedcomTag.php:170
 msgid "Author"
-msgstr ""
+msgstr "Mwandishi"
 
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:266
 msgid "Author of last change"
-msgstr ""
+msgstr "Mwandishi wa mabadiliko ya mwisho"
 
 #: admin_users.php:441
 msgid "Automatically accept changes made by this user"
@@ -3001,6 +3010,11 @@ msgid "Bridesmaid"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:117
+msgid "Brigham City, Utah, United States"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
 msgid "Brisbane, Australia"
 msgstr ""
@@ -3296,6 +3310,11 @@ msgstr ""
 msgid "Calendar conversion"
 msgstr ""
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:123
+msgid "Calgary, Alberta, Canada"
+msgstr ""
+
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
 msgid "Call number"
@@ -3378,6 +3397,11 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6732
 msgid "Cayman Islands"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:129
+msgid "Cebu City, Philippines"
 msgstr ""
 
 #. I18N: Name of a module/report
@@ -3472,7 +3496,8 @@ msgstr ""
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:435
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr ""
 
@@ -3507,9 +3532,9 @@ msgstr ""
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1206
-#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
-#: app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163
+#: admin_trees_config.php:1206 app/Module/ChartsBlockModule.php:34
+#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
 msgstr ""
 
@@ -3956,9 +3981,10 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:438
 #: app/Module/GoogleMapsModule.php:282 app/Module/GoogleMapsModule.php:1386
 #: app/Module/GoogleMapsModule.php:3613
-#: app/Module/RelationshipsChartModule.php:147 app/Module/SiteMapModule.php:296
-#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
-#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
+#: app/Module/RelationshipsChartModule.php:147
+#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
+#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
+#: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr ""
 
@@ -4008,6 +4034,11 @@ msgstr ""
 #. I18N: gedcom tag COPR
 #: app/GedcomTag.php:322
 msgid "Copyright"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:145
+msgid "Cordoba, Argentina"
 msgstr ""
 
 #. I18N: gedcom tag CORP
@@ -4248,6 +4279,11 @@ msgstr ""
 msgid "Cuba"
 msgstr ""
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:149
+msgid "Curitiba, Brazil"
+msgstr ""
+
 #: app/Module/HtmlBlockModule.php:302
 msgid "Current"
 msgstr ""
@@ -4350,7 +4386,8 @@ msgstr ""
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -4917,7 +4954,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -5020,7 +5058,8 @@ msgstr ""
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
 #: app/Module/ChartsBlockModule.php:187
-#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
+#: app/Module/DescendancyChartModule.php:33
+#: app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5284,6 +5323,11 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:4206
 msgid "Download geographic data"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:157
+msgid "Draper, Utah, United States"
 msgstr ""
 
 #. I18N: The second day in the French republican calendar
@@ -5609,7 +5653,7 @@ msgstr ""
 
 #: addmedia.php:429 app/Module/FamilyTreeFavoritesModule.php:212
 msgid "Enter an individual, family, or source ID"
-msgstr "Weka mtu binafsi, familia, au ID chanzo"
+msgstr "Weka mtu binafsi, familia, au ID la chanzo"
 
 #: app/Module/FamilyTreeFavoritesModule.php:225
 msgid "Enter an optional note about this favorite"
@@ -5916,7 +5960,8 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:2490 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1493
 #: calendar.php:422 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:134 mediaviewer.php:123 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:134 mediaviewer.php:123
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:201
 #: repo.php:143 search.php:93 source.php:147 statistics.php:71
 #: statisticsplot.php:990 statisticsplot.php:1094 statisticsplot.php:1344
@@ -6006,7 +6051,8 @@ msgstr ""
 msgid "Family tree"
 msgstr ""
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90
+#: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr ""
 
@@ -6146,7 +6192,8 @@ msgid "Father’s family with an unknown individual"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1375
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1375
 msgid "Favorites"
 msgstr ""
 
@@ -6283,7 +6330,8 @@ msgstr ""
 msgid "Find all possible relationships"
 msgstr ""
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
@@ -6375,7 +6423,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6432,6 +6481,11 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1557
 msgid "Format text and notes"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:163
+msgid "Fort Lauderdale, Florida, United States"
 msgstr ""
 
 #: app/GedcomCode/GedcomCodePedi.php:68
@@ -6744,6 +6798,16 @@ msgstr ""
 msgid "Gibraltar"
 msgstr ""
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:173
+msgid "Gila Valley, Arizona, United States"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:175
+msgid "Gilbert, Arizona, United States"
+msgstr ""
+
 #: search.php:230
 msgid "Given name"
 msgstr ""
@@ -7030,7 +7094,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7421,6 +7486,11 @@ msgstr ""
 msgid "India"
 msgstr ""
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:201
+msgid "Indianapolis, Indiana, United States"
+msgstr ""
+
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
 #: admin_trees_config.php:741 admin_trees_manage.php:537 ancestry.php:52
@@ -7534,7 +7604,8 @@ msgid "Installation folder"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:189 app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:189
+#: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
 msgstr ""
 
@@ -7812,6 +7883,11 @@ msgstr ""
 #: app/Date/CalendarDate.php:182 app/Functions/FunctionsPrint.php:655
 msgctxt "NOMINATIVE"
 msgid "June"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:207
+msgid "Kansas City, Missouri, United States"
 msgstr ""
 
 #. I18N: Name of a country or state
@@ -8448,6 +8524,16 @@ msgid "Managers"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:229
+msgid "Manaus, Brazil"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:231
+msgid "Manhattan, New York, United States"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
 msgid "Manila, Philippines"
 msgstr ""
@@ -8838,9 +8924,9 @@ msgstr ""
 
 #. I18N: Name of a module
 #. I18N: Menu entry
-#: admin.php:760 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1446
-#: app/Module/MediaTabModule.php:35 app/Theme/AdministrationTheme.php:177
-#: inverselink.php:70
+#: admin.php:760 admin_media.php:692
+#: app/Functions/FunctionsPrintLists.php:1446 app/Module/MediaTabModule.php:35
+#: app/Theme/AdministrationTheme.php:177 inverselink.php:70
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:74
 msgid "Media"
 msgstr ""
@@ -9134,9 +9220,9 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:439
 #: app/Module/GoogleMapsModule.php:283 app/Module/GoogleMapsModule.php:1387
 #: app/Module/GoogleMapsModule.php:3614
-#: app/Module/RelationshipsChartModule.php:148 app/Module/SiteMapModule.php:297
-#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
-#: app/Theme/AdministrationTheme.php:190
+#: app/Module/RelationshipsChartModule.php:148
+#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
+#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr ""
 
@@ -10199,6 +10285,11 @@ msgstr ""
 msgid "Optional prefixes and suffixes"
 msgstr ""
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:279
+msgid "Oquirrh Mountain, Utah, United States"
+msgstr ""
+
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
@@ -10338,7 +10429,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -10404,6 +10496,11 @@ msgid "Panama"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:287
+msgid "Panama City, Panama"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:253
 msgid "Papeete, Tahiti"
 msgstr ""
@@ -10446,6 +10543,11 @@ msgstr ""
 
 #: edituser.php:139
 msgid "Passwords must contain at least 6 characters."
+msgstr ""
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:291
+msgid "Payson, Utah, United States"
 msgstr ""
 
 #. I18N: Name of a module/chart
@@ -10519,6 +10621,11 @@ msgstr ""
 msgid "Philippines"
 msgstr ""
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:295
+msgid "Phoenix, Arizona, United States"
+msgstr ""
+
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:682
 msgid "Phone"
@@ -10570,7 +10677,8 @@ msgstr ""
 msgid "PhpGedView must use the same database as webtrees."
 msgstr ""
 
-#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697 admin_trees_manage.php:725
+#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697
+#: admin_trees_manage.php:725
 msgid "PhpGedView to webtrees transfer wizard"
 msgstr ""
 
@@ -10996,6 +11104,11 @@ msgid "Property"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:303
+msgid "Provo City Center, Utah, United States"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:263
 msgid "Provo, Utah, United States"
 msgstr ""
@@ -11027,6 +11140,11 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:175
 msgid "Question"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:307
+msgid "Quetzaltenango, Guatemala"
 msgstr ""
 
 #: admin_trees_config.php:1823
@@ -11175,8 +11293,9 @@ msgstr ""
 msgid "Random images from the current family tree."
 msgstr ""
 
-#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1799 edit_interface.php:1869
+#: app/Controller/FamilyController.php:88
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1799
+#: edit_interface.php:1869
 msgid "Re-order children"
 msgstr ""
 
@@ -11199,7 +11318,8 @@ msgid "Real name"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr ""
 
@@ -11215,7 +11335,8 @@ msgstr ""
 #: admin_site_change.php:328 admin_site_change.php:389
 #: admin_trees_config.php:526 app/Functions/FunctionsPrintLists.php:1801
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:321 app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:321
+#: app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -11550,6 +11671,11 @@ msgstr ""
 msgid "Reunion"
 msgstr ""
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:319
+msgid "Rexburg, Idaho, United States"
+msgstr ""
+
 #: index_edit.php:304
 msgid "Right section blocks"
 msgstr ""
@@ -11694,6 +11820,11 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6883
 msgid "San Marino"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:323
+msgid "San Salvador, El Salvador"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -13328,6 +13459,11 @@ msgstr ""
 msgid "Technical help contact"
 msgstr ""
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:365
+msgid "Tegucigalpa, Honduras"
+msgstr ""
+
 #: app/Module/HtmlBlockModule.php:276
 msgid "Templates"
 msgstr ""
@@ -13540,8 +13676,8 @@ msgstr ""
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:287
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:287
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Folder %s haipo, na hivyo haikuweza kupatikana."
@@ -13934,8 +14070,8 @@ msgstr ""
 msgid "There are no source citations for this individual."
 msgstr ""
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1961
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1961
 msgid "There are pending changes for you to moderate."
 msgstr ""
 
@@ -14553,6 +14689,11 @@ msgstr "Picha ndogo ya kupakia"
 msgid "Thursday"
 msgstr ""
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:369
+msgid "Tijuana, Mexico"
+msgstr ""
+
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
 msgid "Time"
@@ -14819,7 +14960,8 @@ msgstr ""
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:88
-#: modules_v3/death_report/report.xml:99 modules_v3/fact_sources/report.xml:142
+#: modules_v3/death_report/report.xml:99
+#: modules_v3/fact_sources/report.xml:142
 #: modules_v3/fact_sources/report.xml:146
 #: modules_v3/fact_sources/report.xml:305
 #: modules_v3/fact_sources/report.xml:309
@@ -14904,6 +15046,11 @@ msgstr ""
 msgid "Trinidad and Tobago"
 msgstr ""
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:375
+msgid "Trujillo, Peru"
+msgstr ""
+
 #. I18N: abbreviation for Tuesday
 #: app/Date/CalendarDate.php:367 app/Functions/FunctionsPrint.php:666
 msgid "Tue"
@@ -14941,6 +15088,11 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:319
 msgid "Tuxtla Gutierrez, Mexico"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:377
+msgid "Twin Falls, Idaho, United States"
 msgstr ""
 
 #. I18N: gedcom tag TYPE
@@ -15305,6 +15457,11 @@ msgstr ""
 msgid "Uzbekistan"
 msgstr ""
 
+#. I18N: Location of an LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:379
+msgid "Vancouver, British Columbia, Canada"
+msgstr ""
+
 #. I18N: Name of a country or state
 #: app/Stats.php:6923
 msgid "Vanuatu"
@@ -15645,7 +15802,8 @@ msgstr ""
 msgid "Who is online"
 msgstr ""
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr ""
 
@@ -16422,14 +16580,15 @@ msgstr ""
 #. I18N: A button label.
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:713
-#: app/Module/GoogleMapsModule.php:3538 app/Theme/AbstractTheme.php:700
-#: edit_changes.php:240 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1743
-#: edit_interface.php:1848 edit_interface.php:2040 edit_interface.php:2203
-#: edit_interface.php:2588 find.php:760 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189
+#: app/Module/GoogleMapsModule.php:713 app/Module/GoogleMapsModule.php:3538
+#: app/Theme/AbstractTheme.php:700 edit_changes.php:240 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1743 edit_interface.php:1848 edit_interface.php:2040
+#: edit_interface.php:2203 edit_interface.php:2588 find.php:760
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "karibu"
@@ -18959,7 +19118,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19131,20 +19291,21 @@ msgstr ""
 #. I18N: A button label.
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:262
-#: admin_site_access.php:307 admin_site_config.php:651 admin_site_merge.php:340
-#: admin_trees_config.php:2147 admin_users.php:652
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129
+#: admin_modules.php:262 admin_site_access.php:307 admin_site_config.php:651
+#: admin_site_merge.php:340 admin_trees_config.php:2147 admin_users.php:652
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:499 app/Module/GoogleMapsModule.php:712
 #: app/Module/GoogleMapsModule.php:2454 app/Module/GoogleMapsModule.php:3537
-#: app/Module/RelationshipsChartModule.php:173 app/Module/SiteMapModule.php:320
-#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
-#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1742 edit_interface.php:1846 edit_interface.php:2039
-#: edit_interface.php:2201 edit_interface.php:2584 editnews.php:74
-#: edituser.php:317 find.php:537 index_edit.php:376
+#: app/Module/RelationshipsChartModule.php:173
+#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
+#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
+#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
+#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
+#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1742
+#: edit_interface.php:1846 edit_interface.php:2039 edit_interface.php:2201
+#: edit_interface.php:2584 editnews.php:74 edituser.php:317 find.php:537
+#: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:197
 msgid "save"
@@ -20031,134 +20192,4 @@ msgstr ""
 #: famlist.php:140 indilist.php:83 indilist.php:108 indilist.php:140
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:117
-msgid "Brigham City, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:123
-msgid "Calgary, Alberta, Canada"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:129
-msgid "Cebu City, Philippines"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:145
-msgid "Cordoba, Argentina"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:149
-msgid "Curitiba, Brazil"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:157
-msgid "Draper, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:163
-msgid "Fort Lauderdale, Florida, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:173
-msgid "Gila Valley, Arizona, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:175
-msgid "Gilbert, Arizona, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:201
-msgid "Indianapolis, Indiana, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:207
-msgid "Kansas City, Missouri, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:229
-msgid "Manaus, Brazil"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:231
-msgid "Manhattan, New York, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:279
-msgid "Oquirrh Mountain, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:287
-msgid "Panama City, Panama"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:291
-msgid "Payson, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:295
-msgid "Phoenix, Arizona, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:303
-msgid "Provo City Center, Utah, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:307
-msgid "Quetzaltenango, Guatemala"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:319
-msgid "Rexburg, Idaho, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:323
-msgid "San Salvador, El Salvador"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:365
-msgid "Tegucigalpa, Honduras"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:369
-msgid "Tijuana, Mexico"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:375
-msgid "Trujillo, Peru"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:377
-msgid "Twin Falls, Idaho, United States"
-msgstr ""
-
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:379
-msgid "Vancouver, British Columbia, Canada"
 msgstr ""

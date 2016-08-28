@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Exception;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
@@ -450,6 +451,10 @@ echo '<p>', I18N::translate('The upgrade is complete.'), '</p>';
  */
 function reset_timeout() {
 	if (!ini_get('safe_mode') && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
-		set_time_limit(ini_get('max_execution_time'));
+		try {
+			set_time_limit(ini_get('max_execution_time'));
+		} catch (Exception $ex) {
+			// "set_time_limt(): Cannot set max execution time limit due to system policy"
+		}
 	}
 }
