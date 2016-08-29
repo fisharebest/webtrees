@@ -109,7 +109,7 @@ define('WT_DEBUG', strpos(WT_VERSION, 'dev') !== false);
 define('WT_DEBUG_SQL', false);
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 35);
+define('WT_SCHEMA_VERSION', 36);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
@@ -284,8 +284,7 @@ try {
 		exit;
 	}
 } catch (PDOException $ex) {
-	FlashMessages::addMessage($ex->getMessage(), 'danger');
-	header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
+	header('Location: ' . WT_BASE_URL . 'site-unavailable.php?message=' . rawurlencode($ex->getMessage()));
 	throw $ex;
 }
 

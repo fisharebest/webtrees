@@ -31,18 +31,16 @@ define('WT_MODULES_DIR', 'modules_v3/');
 
 require 'vendor/autoload.php';
 
-Session::start();
-
 define('WT_LOCALE', I18N::init());
 
 http_response_code(503);
-header('Content-Type: text/html; charset=UTF-8');
 
+header('Content-Type: text/html; charset=UTF-8');
 // The page which redirected here may have provided an error message.
 $messages = '';
-foreach (FlashMessages::getMessages() as $message) {
+if (Filter::get('message')) {
 	$messages .=
-		'<blockquote>' . Filter::escapeHtml($message->text) . '</blockquote>';
+		'<blockquote>' . Filter::escapeHtml(Filter::get('message')) . '</blockquote>';
 }
 
 // If we can't connect to the database at all, give the reason why

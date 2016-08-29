@@ -78,7 +78,7 @@ class Soundex {
 		if ($soundex_array) {
 			return implode(':', $soundex_array);
 		} else {
-			return null;
+			return '';
 		}
 	}
 
@@ -105,7 +105,7 @@ class Soundex {
 		if ($soundex_array) {
 			return implode(':', $soundex_array);
 		} else {
-			return null;
+			return '';
 		}
 	}
 
