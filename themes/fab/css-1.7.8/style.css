@@ -1514,15 +1514,11 @@ a:hover .nameZoom {
 #note-tabs,
 #repo-tabs,
 #media-tabs {
-	margin: auto;
 	visibility: hidden;
-	width: 80%;
 }
 
 #statistics_chart {
-	margin: auto;
 	visibility: hidden;
-	width: 90%;
 }
 
 #source-edit,

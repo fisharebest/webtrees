@@ -27,7 +27,7 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string A relative path, such as "themes/foo/"
 	 */
 	public function assetUrl() {
-		return 'themes/minimal/css-1.7.5/';
+		return 'themes/minimal/css-1.7.8/';
 	}
 
 	/**
