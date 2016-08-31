@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-08-22 20:05+0000\n"
+"PO-Revision-Date: 2016-08-31 10:23+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
 "Language: ln\n"
@@ -1166,7 +1166,7 @@ msgstr ""
 
 #: admin_users.php:520
 msgid "Access to family trees"
-msgstr ""
+msgstr "Kokɔ́tɔ na nzeté ya libóta"
 
 #: admin_users.php:375
 msgid "Account approval and email verification"
@@ -1439,7 +1439,7 @@ msgstr ""
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr ""
+msgstr "Kobakisa sango ya bato o káti ya nzeté ya libóta"
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
@@ -4092,7 +4092,7 @@ msgstr ""
 
 #: admin_trees_manage.php:624
 msgid "Create a family tree"
-msgstr ""
+msgstr "Kokela nzeté ya libóta"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:416
 msgid "Create a media object"
@@ -4915,7 +4915,7 @@ msgstr ""
 
 #: admin_trees_manage.php:438
 msgid "Default family tree"
-msgstr ""
+msgstr "Nzeté ya libóta ya libosó"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:654 app/Module/WelcomeBlockModule.php:58
@@ -6034,7 +6034,7 @@ msgstr ""
 #: app/Controller/FamilyBookController.php:371
 #, php-format
 msgid "Family of %s"
-msgstr ""
+msgstr "Libóta lya %s"
 
 #: admin.php:754 admin_site_change.php:358 admin_site_change.php:392
 #: admin_site_logs.php:298 admin_site_logs.php:332 admin_trees_manage.php:380
@@ -6045,7 +6045,7 @@ msgstr ""
 #: app/Module/StoriesModule.php:356 app/Theme/AbstractTheme.php:1386
 #: edit_changes.php:180
 msgid "Family tree"
-msgstr ""
+msgstr "Nzeté ya libóta"
 
 #: app/Module/ClippingsCartModule.php:90
 #: app/Module/ClippingsCartModule.php:479
@@ -6066,7 +6066,7 @@ msgstr ""
 #: app/Controller/IndividualController.php:416
 #, php-format
 msgid "Family with %s"
-msgstr ""
+msgstr "Libóta na %s"
 
 #: app/GedcomCode/GedcomCodePedi.php:129
 msgid "Family with adoptive parents"
