@@ -92,6 +92,10 @@ foreach ($facts1 as $id1 => $fact1) {
 }
 
 if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYPE === $rec2::RECORD_TYPE && Filter::post('action') === 'merge' && Filter::checkCsrf()) {
+	// Use the XREF of the record.
+	$gid1 = $rec1->getXref();
+	$gid2 = $rec2->getXref();
+
 	$ids = FunctionsDb::fetchAllLinks($gid2, $WT_TREE->getTreeId());
 
 	// If we are not auto-accepting, then we can show a link to the pending deletion
