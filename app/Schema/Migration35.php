@@ -16,7 +16,6 @@
 namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Module;
 
 /**
  * Upgrade the database schema from version 35 to version 36.
