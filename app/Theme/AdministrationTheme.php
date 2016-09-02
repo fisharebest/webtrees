@@ -44,7 +44,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 * @return string A relative path, such as "themes/foo/"
 	 */
 	public function assetUrl() {
-		return 'themes/_administration/css-1.7.8/';
+		return 'themes/_administration/css-1.7.5/';
 	}
 
 	/**
