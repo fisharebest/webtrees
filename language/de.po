@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-08-23 14:38+0000\n"
+"PO-Revision-Date: 2016-09-04 15:59+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -304,8 +304,8 @@ msgstr[1] "%s Personen wurden aktualisiert."
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] "Die Person %s ist privat."
-msgstr[1] "Die Personen %s sind privat."
+msgstr[0] "Die Person %s ist vertraulich."
+msgstr[1] "Die Personen %s sind vertraulich."
 
 #: app/Controller/LifespanController.php:253
 #, php-format
@@ -707,7 +707,7 @@ msgstr "<b> Wichtiger Hinweis:</b> Der Migrationsassistent ist nicht in der Lage
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr "<b>Bitte beachten:</b> Private Informationen von lebenden Personen werden nur an Verwandte und nahe Freunde weitergegeben. Bevor Sie irgendwelche privaten Daten erhalten, werden Sie aufgefordert Ihre Beziehung nachzuweisen. Manchmal sind Informationen von toten Personen ebenfalls privat. Dies kann der Fall sein, wenn über die Person nicht genügend Informationen bekannt sind, um zu ermitteln, ob die Person noch lebt oder nicht und wir möglicherweise nicht mehr Informationen über diese Person haben.<br /><br />Bevor Sie eine Frage stellen, prüfen Sie bitte, dass Sie nach der richtigen Person fragen, indem Sie die Daten, Orte und nahen Verwandten überprüfen. Wenn Sie Änderungen zu den genealogischen Daten einreichen, geben Sie bitte die Quellen an, aus denen Sie die Daten haben."
+msgstr "<b>Bitte beachten:</b> Vertrauliche Informationen von lebenden Personen werden nur an Verwandte und nahe Freunde weitergegeben. Bevor Sie irgendwelche vertraulichen Daten erhalten, werden Sie aufgefordert Ihre Beziehung nachzuweisen. Manchmal sind Informationen von toten Personen ebenfalls vertraulich. Dies kann der Fall sein, wenn über die Person nicht genügend Informationen bekannt sind, um zu ermitteln, ob die Person noch lebt oder nicht und wir möglicherweise nicht mehr Informationen über diese Person haben.<br /><br />Bevor Sie eine Frage stellen, prüfen Sie bitte, dass Sie nach der richtigen Person fragen, indem Sie die Daten, Orte und nahen Verwandten überprüfen. Wenn Sie Änderungen zu den genealogischen Daten einreichen, geben Sie bitte die Quellen an, aus denen Sie die Daten haben."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:976 admin_users.php:488 edituser.php:278
@@ -1142,7 +1142,7 @@ msgstr "Aban"
 #: admin_trees_config.php:1505 admin_trees_config.php:1507
 #: admin_trees_config.php:1511
 msgid "Abbreviate place names"
-msgstr "abgekürzte Ortsnamen"
+msgstr "Ortsnamen abkürzen"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
@@ -3885,7 +3885,7 @@ msgstr "eheähnliche Lebensgemeinschaft"
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:38
 msgid "Communicate directly with other users, using private messages."
-msgstr "Kommunizieren Sie direkt mit anderen Nutzern mithilfe privater Nachrichten innerhalb des webtrees-Systems."
+msgstr "Kommunizieren Sie direkt mit anderen Nutzern mithilfe vertraulicher Nachrichten innerhalb von webtrees."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6726
@@ -7171,7 +7171,7 @@ msgstr "Geschichtliche Ereignisse"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1601
 msgid "Hit counters"
-msgstr "Zähler"
+msgstr "Besucherzähler"
 
 #. I18N: gedcom tag _HOL
 #: app/GedcomTag.php:1533
@@ -12500,7 +12500,7 @@ msgstr "Das Datum der letzen Aktualisierung anzeigen"
 #. I18N: A configuration setting
 #: admin_trees_config.php:384
 msgid "Show dead individuals"
-msgstr "Verstorbene Personen zeigen"
+msgstr "Zeige verstorbene Personen"
 
 #: ancestry.php:115 app/Module/ChartsBlockModule.php:207 descendancy.php:84
 #: familybook.php:55 hourglass.php:56 pedigree.php:166 relationship.php:81
@@ -12558,7 +12558,7 @@ msgstr "Zeige lebende Personen"
 #. I18N: A configuration setting
 #: admin_trees_config.php:464
 msgid "Show names of private individuals"
-msgstr "Zeige Name privater Personen"
+msgstr "Zeige Namen vertraulicher Personen"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12626,7 +12626,7 @@ msgstr "Ortshierarchie zeigen"
 #. I18N: A configuration setting
 #: admin_trees_config.php:484
 msgid "Show private relationships"
-msgstr "Verwandtschaft zu privaten Personen zeigen"
+msgstr "Zeige vertrauliche Beziehungen"
 
 #: search.php:112 search.php:270
 msgid "Show related individuals/families"
@@ -12674,7 +12674,7 @@ msgstr "Statistikdiagramme zeigen"
 #: admin_trees_config.php:1516
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "Zeige den %2$s. %1$s Teil des Ortsnamens."
+msgstr "Zeige die %1$s %2$s Teile des Ortsnamens."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
@@ -13569,11 +13569,11 @@ msgstr "Das Datum und die Uhrzeit der letzten Aktualisierung"
 
 #: family.php:129
 msgid "The details of this family are private."
-msgstr "Die Einzelheiten zu dieser Familie sind nicht öffentlich."
+msgstr "Die Einzelheiten zu dieser Familie sind vertraulich."
 
 #: individual.php:92
 msgid "The details of this individual are private."
-msgstr "Die Details dieser Person sind nicht öffentlich."
+msgstr "Die Einzelheiten zu dieser Person sind vertraulich."
 
 #. I18N: %s is a filename
 #: admin_site_upgrade.php:230 admin_trees_export.php:41
@@ -14206,7 +14206,7 @@ msgstr "Diese Mediendatei ist mit einem anderen Stammbaum auf diesem Server verb
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:179
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr "Dieser Ordner wird von webtrees verwendet, um Mediendateien, GEDCOM-Dateien, temporäre Dateien, etc. zu speichern. Diese Dateien können private Daten enthalten und sollten nicht im Internet verfügbar gemacht werden."
+msgstr "Dieser Ordner wird von webtrees verwendet, um Mediendateien, GEDCOM-Dateien, temporäre Dateien, etc. zu speichern. Diese Dateien könnten vertrauliche Daten enthalten und sollten nicht über das Internet verfügbar gemacht werden."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1006
@@ -14250,7 +14250,7 @@ msgstr "Diese Person wird standardmäßig als Ausgangsperson in Darstellungen un
 #: app/Stats.php:3127 app/Stats.php:3425 app/Stats.php:4408 app/Stats.php:4540
 #: app/Stats.php:4589 timeline.php:287
 msgid "This information is private and cannot be shown."
-msgstr "Diese Information ist nicht öffentlich und wird deshalb nicht angezeigt."
+msgstr "Diese Information ist vertraulich und wird deshalb nicht angezeigt."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
@@ -14488,12 +14488,12 @@ msgstr "Der Medienbetrachter kann einen Link zum Download der aktuellen Medienda
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Diese Option wird familiäre Verbindungen als private Daten behandeln. Das bedeutet, dass Sie leere „private“-Boxen auf dem Stammbaum und auf den übrigen Diagrammen als „privat“ (i.S.v. nichtöffentlich) eingestufter Personen sehen."
+msgstr "Diese Einstellung erhält familiäre Verbindungen in vertrauliche Daten. Das bedeutet, dass Sie leere „Vertraulich“-Boxen auf der Ahnentafel und auf anderen Diagrammen für als vertraulich eingestufte Personen (i.S.v. nicht öffentlich) sehen."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:475
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "Diese Option zeigt die Namen (aber keine weiteren Einzelheiten) der nichtöffentlichen Personen. Personen sind nichtöffentlich, sofern sie leben oder falls dem Datensatz eine Einschränkung hinsichtlich der Veröffentlichung hinzugefügt wurde. Um gezielt einen Namen zu verbergen, fügen Sie dem Datensatz bitte eine solche Beschränkung hinzu."
+msgstr "Diese Einstellung zeigt die Namen (aber keine weiteren Einzelheiten) von vertraulichen Personen. Personen sind vertraulich, sofern sie noch leben oder falls dem Datensatz eine Einschränkung hinsichtlich der Veröffentlichung hinzugefügt wurde. Um gezielt einen Namen zu verbergen, fügen Sie dem Datensatz bitte eine solche Beschränkung hinzu."
 
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
@@ -14808,7 +14808,7 @@ msgstr "Um Besuchern den Zugriff auf die Website zu unterbinden, während die Ak
 #. I18N: “Apache” is a software program.
 #: admin_site_config.php:182
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "Um diese privaten Daten zu schützen, verwendet webtrees eine Apache Konfigurations-Datei (.htaccess), die jeden Zugriff auf dieses Verzeichnis verhindert. Falls Ihr Web-Server .htaccess-Dateien nicht unterstützt und Sie den Zugriff auf dieses Verzeichnis nicht beschränken können, können Sie ein anderes Verzeichnis losgelöst von Ihren Web-Dokumenten wählen."
+msgstr "Um diese vertraulichen Daten zu schützen, verwendet webtrees eine Apache Konfigurations-Datei (.htaccess), die jeden Zugriff auf dieses Verzeichnis verhindert. Falls Ihr Web-Server .htaccess-Dateien nicht unterstützt und Sie den Zugriff auf dieses Verzeichnis nicht beschränken können, können Sie ein anderes Verzeichnis losgelöst von Ihren Web-Dokumenten wählen."
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:364
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
@@ -15369,7 +15369,7 @@ msgstr "Silhouetten verwenden"
 
 #: admin_trees_config.php:1534
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr "Verwendung der GeoNames Datenbank zur Autovervollständigung von Orten"
+msgstr "Verwendung der GeoNames-Datenbank zur Auto-Vervollständigung von Orten"
 
 #: login.php:490
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
