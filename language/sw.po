@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-08-31 01:28+0000\n"
+"PO-Revision-Date: 2016-09-05 17:46+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Swahili <https://translate.webtrees.net/projects/webtrees/webtrees/sw/>\n"
 "Language: sw\n"
@@ -3507,8 +3507,8 @@ msgstr ""
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Mabadiliko katika siku %s  ya mwisho"
+msgstr[1] "Mabadiliko katika siku %s za mwisho"
 
 #: admin_trees_manage.php:519
 msgid "Changes log"
@@ -4574,7 +4574,7 @@ msgstr "Binti wa %s"
 
 #: app/Theme/AbstractTheme.php:1063 calendar.php:159
 msgid "Day"
-msgstr ""
+msgstr "Siku"
 
 #: calendar.php:491
 msgid "Day not set"
@@ -4582,7 +4582,7 @@ msgstr ""
 
 #: timeline.php:128 timeline.php:130 timeline.php:132
 msgid "Day:"
-msgstr ""
+msgstr "Siku:"
 
 #: app/Functions/FunctionsPrintLists.php:201 app/Stats.php:1072
 #: app/Stats.php:1074
@@ -5634,7 +5634,7 @@ msgstr ""
 #. I18N: The latest year in a range
 #: lifespan.php:77
 msgid "End year"
-msgstr ""
+msgstr "Mwaka wa mwisho"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
@@ -6574,7 +6574,7 @@ msgstr ""
 
 #: app/Date/CalendarDate.php:345
 msgid "Friday"
-msgstr ""
+msgstr "Ijumaa"
 
 #: app/GedcomCode/GedcomCodeRela.php:134
 msgid "Friend"
@@ -7457,11 +7457,11 @@ msgstr ""
 
 #: calendar.php:125
 msgid "In this month…"
-msgstr ""
+msgstr "Katika mwezi huu …"
 
 #: calendar.php:128
 msgid "In this year…"
-msgstr ""
+msgstr "katika mwaka huu…"
 
 #: app/Module/GoogleMapsModule.php:1448
 msgid "Include fully matched places"
@@ -9257,7 +9257,7 @@ msgstr ""
 
 #: app/Date/CalendarDate.php:341
 msgid "Monday"
-msgstr ""
+msgstr "Jumatatu"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6826
@@ -9281,7 +9281,7 @@ msgstr ""
 
 #: app/Theme/AbstractTheme.php:1065 calendar.php:182
 msgid "Month"
-msgstr ""
+msgstr "Mwezi"
 
 #: statistics.php:505 statisticsplot.php:874
 msgid "Month of birth"
@@ -9305,7 +9305,7 @@ msgstr "Mwezi wa ndoa"
 
 #: timeline.php:128 timeline.php:130 timeline.php:132
 msgid "Month:"
-msgstr ""
+msgstr "Mwezi:"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:219
@@ -10099,7 +10099,7 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:147
 #: app/Module/YahrzeitModule.php:267
 msgid "Number of days to show"
-msgstr ""
+msgstr "Idadi ya siku kwa kuonyesha"
 
 #: app/Stats.php:5213 statistics.php:307
 msgid "Number of families without children"
@@ -11872,7 +11872,7 @@ msgstr ""
 
 #: app/Date/CalendarDate.php:346
 msgid "Saturday"
-msgstr ""
+msgstr "Jumamosi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6870
@@ -12499,8 +12499,9 @@ msgid "Show couples who married more than 100 years ago."
 msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:702
+#, fuzzy
 msgid "Show couples who married within the last 100 years."
-msgstr ""
+msgstr "Show wanandoa ambao ndoa ndani ya miaka 100 iliyopita."
 
 #: app/Functions/FunctionsPrintLists.php:684
 msgid "Show couples with an unknown marriage date."
@@ -13186,7 +13187,7 @@ msgstr ""
 #. I18N: The earliest year in a range
 #: lifespan.php:69
 msgid "Start year"
-msgstr ""
+msgstr "Mwanzo wa mwaka"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
@@ -13304,7 +13305,7 @@ msgstr ""
 
 #: app/Date/CalendarDate.php:347
 msgid "Sunday"
-msgstr ""
+msgstr "Jumapili"
 
 #. I18N: %s is a URL/link to the project website
 #: admin.php:605
@@ -14703,7 +14704,7 @@ msgstr "Picha ndogo ya kupakia"
 
 #: app/Date/CalendarDate.php:344
 msgid "Thursday"
-msgstr ""
+msgstr "Alhamisi"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:369
@@ -15074,7 +15075,7 @@ msgstr ""
 
 #: app/Date/CalendarDate.php:342
 msgid "Tuesday"
-msgstr ""
+msgstr "Jumanne"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6906
@@ -15598,7 +15599,7 @@ msgstr ""
 
 #: calendar.php:300
 msgid "View this day"
-msgstr ""
+msgstr "Kuona siku hii"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15616,7 +15617,7 @@ msgstr ""
 
 #: calendar.php:304
 msgid "View this month"
-msgstr ""
+msgstr "Kuona mwezi huu"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
 msgid "View this source"
@@ -15624,7 +15625,7 @@ msgstr ""
 
 #: calendar.php:308
 msgid "View this year"
-msgstr ""
+msgstr "Kuona mwaka huu"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -15737,7 +15738,7 @@ msgstr ""
 
 #: app/Date/CalendarDate.php:343
 msgid "Wednesday"
-msgstr ""
+msgstr "Jumatano"
 
 #. I18N: gedcom tag _WEIG
 #: app/GedcomTag.php:1759
@@ -15922,7 +15923,7 @@ msgstr ""
 
 #: app/Theme/AbstractTheme.php:1067 calendar.php:211 search.php:248
 msgid "Year"
-msgstr ""
+msgstr "Mwaka"
 
 #: help_text.php:279
 msgid "Year input box"
@@ -18928,8 +18929,8 @@ msgstr ""
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "upeo siku %s"
+msgstr[1] "upeo siku %s"
 
 #: admin_trees_config.php:364 admin_trees_config.php:388
 #: admin_trees_config.php:428 admin_trees_config.php:468
@@ -18954,7 +18955,7 @@ msgstr ""
 #: statisticsplot.php:875 statisticsplot.php:925 statisticsplot.php:979
 #: statisticsplot.php:1029 statisticsplot.php:1083
 msgid "month"
-msgstr ""
+msgstr "Mwezi"
 
 #: statistics.php:568
 msgid "months after marriage"
