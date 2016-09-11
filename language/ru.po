@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-09-11 22:07+0000\n"
+"PO-Revision-Date: 2016-09-11 22:12+0000\n"
 "Last-Translator: Александр Бойко <aurbo@bk.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
 "Language: ru\n"
@@ -426,7 +426,7 @@ msgstr[2] "%s секунд назад"
 #: message.php:300 message.php:303 message.php:305
 #, php-format
 msgid "%s sent you the following message."
-msgstr "%s прислал Вам новое сообщение."
+msgstr "%s прислал вам новое письмо."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
@@ -19553,7 +19553,7 @@ msgstr "нет выбора"
 
 #: app/Functions/Functions.php:684
 msgid "self"
-msgstr "текущий"
+msgstr " "
 
 #: app/Functions/Functions.php:567
 msgid "seventh cousin"
