@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-09-11 16:28+0000\n"
+"PO-Revision-Date: 2016-09-14 03:35+0000\n"
 "Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
 "Language-Team: Swahili <https://translate.webtrees.net/projects/webtrees/webtrees/sw/>\n"
 "Language: sw\n"
@@ -545,7 +545,7 @@ msgstr "%s, wanandoa wake na watoto"
 #: app/Module/ClippingsCartModule.php:244
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr "%s, wanandoa wake na watoto"
+msgstr "%s, wanandoa wake na kizazi"
 
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:624
 #: app/Module/UserMessagesModule.php:102
@@ -3410,12 +3410,12 @@ msgstr ""
 #: modules_v3/cemetery_report/report.xml:3
 #: modules_v3/cemetery_report/report.xml:35
 msgid "Cemeteries"
-msgstr ""
+msgstr "makaburi"
 
 #. I18N: gedcom tag CEME
 #: app/GedcomTag.php:246 modules_v3/cemetery_report/report.xml:54
 msgid "Cemetery"
-msgstr ""
+msgstr "makaburi"
 
 #. I18N: gedcom tag CENS
 #: app/GedcomTag.php:250
@@ -3500,7 +3500,7 @@ msgstr ""
 #: modules_v3/change_report/report.xml:3
 #: modules_v3/change_report/report.xml:44
 msgid "Changes"
-msgstr ""
+msgstr "Mabadiliko"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:84
@@ -3512,7 +3512,7 @@ msgstr[1] "Mabadiliko katika siku %s za mwisho"
 
 #: admin_trees_manage.php:519
 msgid "Changes log"
-msgstr ""
+msgstr "Batli ya mabadiliko"
 
 #. I18N: gedcom tag CHAR
 #: app/GedcomTag.php:270
@@ -5053,8 +5053,9 @@ msgid "Depending on your server configuration, you may be able to upgrade automa
 msgstr ""
 
 #: familybook.php:90
+#, fuzzy
 msgid "Descendant generations"
-msgstr ""
+msgstr "Vizazi ukoo"
 
 #. I18N: gedcom tag DESC
 #. I18N: Name of a module/chart
@@ -5070,23 +5071,24 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Descendants"
-msgstr ""
+msgstr "Kizazi"
 
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:366
+#, fuzzy
 msgid "Descendants interest"
-msgstr ""
+msgstr "Kizazi maslahi"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
-msgstr ""
+msgstr "Kizazi cha "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/DescendancyController.php:62
 #: app/Module/ChartsBlockModule.php:101
 #, php-format
 msgid "Descendants of %s"
-msgstr ""
+msgstr "Kizazi cha %s"
 
 #. I18N: gedcom tag DSCR
 #: admin_module_blocks.php:74 admin_module_charts.php:67
@@ -10736,7 +10738,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:443 app/Theme/AbstractTheme.php:1531
 #: placelist.php:41 placelist.php:43 placelist.php:139
 msgid "Place hierarchy"
-msgstr ""
+msgstr "Mahali"
 
 #: app/GedcomTag.php:692
 msgid "Place in Hebrew"
@@ -11335,7 +11337,7 @@ msgstr "Jina halisi"
 #: app/Module/RecentChangesModule.php:44
 #: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
-msgstr ""
+msgstr "Mabadiliko ya hivi karibuni"
 
 #: calendar.php:242
 msgid "Recent years (&lt; 100 yrs)"
@@ -11422,7 +11424,7 @@ msgstr ""
 
 #: edit_changes.php:211 edit_changes.php:231
 msgid "Reject all changes"
-msgstr ""
+msgstr "Kukataa mabadiliko yote"
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
@@ -14928,8 +14930,9 @@ msgid "Total"
 msgstr ""
 
 #: modules_v3/change_report/report.xml:127
+#, fuzzy
 msgid "Total accepted changes: "
-msgstr ""
+msgstr "Jumla ya kukubalika mabadiliko: "
 
 #: statistics.php:113
 msgid "Total births"
