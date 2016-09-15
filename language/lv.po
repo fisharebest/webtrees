@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-06-26 14:25+0100\n"
-"PO-Revision-Date: 2016-07-02 13:46+0000\n"
-"Last-Translator: Janis <j.jaunosans@outlook.com>\n"
+"PO-Revision-Date: 2016-09-15 15:16+0000\n"
+"Last-Translator: Ivo R <info@majaslapatev.lv>\n"
 "Language-Team: Latvian <https://translate.webtrees.net/projects/webtrees/webtrees/lv/>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
@@ -363,9 +363,9 @@ msgstr[1] "%s ziņojumi"
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s minūti atpakaļ"
+msgstr[1] "%s minūtes atpakaļ"
+msgstr[2] "%s minūtes atpakaļ"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:55 app/I18N.php:305
@@ -373,25 +373,25 @@ msgstr[2] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "% mēnesis"
+msgstr[1] "% mēneši"
+msgstr[2] "% mēneši"
 
 #: app/I18N.php:795
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s mēnesi atpakaļ"
+msgstr[1] "%s mēnešus atpakaļ"
+msgstr[2] "%s mēnešus atpakaļ"
 
 #: app/Controller/SearchController.php:432
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s piezīme tika atjaunota"
+msgstr[1] "%s piezīmes tika atjaunotas"
+msgstr[2] "%s piezīmes tika atjaunotas"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
@@ -15499,7 +15499,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:379
 msgid "Vancouver, British Columbia, Canada"
-msgstr ""
+msgstr "Vankūvera, Britu Kolumbija, Kanāda"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6923
@@ -20109,21 +20109,23 @@ msgstr ""
 #: admin_pgv_to_wt.php:110
 #, php-format
 msgid "webtrees cannot connect to the PhpGedView database: %s."
-msgstr ""
+msgstr "webtress nesavienojas ar PhpGedView datubāzi: %s."
 
 #: message.php:40 message.php:260 message.php:320
 msgid "webtrees message"
-msgstr ""
+msgstr "webtress ziņojums"
 
 #: setup.php:273
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr ""
+msgstr "webtrees nepieciešama MySQL datubāze, versija %s vai  jaunākas."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:320
 msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
 msgstr ""
+"webtrees nepieciešams nosūtīt e-pastus, piemēram, paroļu atgādinājumus un paziņojumiem. Lai to izpildītu, var izmantot serveri iebūvēto PHP pasta iekārtu (kas ne vienmēr ir pieejama) vai ārējā SMTP (pasta releja) pakalpojumu, kura dati jums būs jānorāda, lai nodrošinātu savienojumu.\n"
+"tulkojums"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:852
@@ -20136,15 +20138,15 @@ msgstr ""
 
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr ""
+msgstr "webtrees izmanto UTF-8 kodējumu, uzsverot burtus, īpašas zīmes un ne-latīņu alfabēta burtus. Ja jūs vēlaties izmantot šo GEDCOM failu ar ģenealoģijas programmatūru, kas neatbalsta UTF-8, tad varat izveidot to, izmantojot ISO-8859-1 kodējumu."
 
 #: app/Functions/FunctionsPrint.php:210
 msgid "webtrees wiki"
-msgstr ""
+msgstr "webtrees vkipedija"
 
 #: admin_trees_manage.php:708
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
-msgstr ""
+msgstr "webtrees datubāzei ir jāatrodas uz uz tā paša servera kur PhpGedView"
 
 #: app/Module/GoogleMapsModule.php:3504
 msgid "west"
@@ -20185,28 +20187,28 @@ msgstr "jā"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:93
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr ""
+msgstr "jūs varat pieslēgties datu bāzei, izmantojot citus paplašinājumus, piemēram, phpmyadmin"
 
 #: app/Functions/Functions.php:761
 msgid "younger brother"
-msgstr ""
+msgstr "jaunākais brālis"
 
 #: app/Functions/Functions.php:795
 msgid "younger sibling"
-msgstr ""
+msgstr "jaunākais brālis vai māsa"
 
 #: app/Functions/Functions.php:778
 msgid "younger sister"
-msgstr ""
+msgstr "jaunākā māsa"
 
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:169 search_advanced.php:170 search_advanced.php:171
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "±%s gads"
+msgstr[1] "±%s gadi"
+msgstr[2] "±%s gadi"
 
 #: app/Individual.php:1218
 #, php-format
@@ -20217,13 +20219,13 @@ msgstr "«%s»"
 #: app/Module/UserFavoritesModule.php:96
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr ""
+msgstr "\"%s\" tika pievienots jūsu izvēlētiem."
 
 #. I18N: %s is the name of a genealogy record
 #: action.php:47
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "\"%s\" tika dzēsts"
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:107
 msgid "…"
