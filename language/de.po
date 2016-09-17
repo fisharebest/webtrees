@@ -20080,7 +20080,7 @@ msgid "webtrees sends emails with no storage"
 msgstr "webtrees sendet E-Mails ohne sie zu speichern"
 
 #: admin_trees_download.php:153
-msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
+msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr "webtrees verwendet UTF-8 Kodierung für Umlaute, Sonderzeichen und nicht lateinische Schriften. Wenn Sie diese GEDCOM-Datei mit einer Ahnenforschungssoftware verwenden möchten, welche kein UTF-8 unterstützt, können Sie stattdessen auch eine Datei mit ISO-8859-1 Kodierung erstellen."
 
 #: app/Functions/FunctionsPrint.php:210
