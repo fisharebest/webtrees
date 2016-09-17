@@ -133,15 +133,7 @@ $controller->pageHeader();
 
 ?>
 <div id="calendar-page">
-	<table class="facts_table width100">
-		<tbody>
-			<tr>
-				<td class="facts_label">
-					<h2><?php echo $controller->getPageTitle() ?></h2>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+	<h2 class="center"><?php echo $controller->getPageTitle() ?></h2>
 
 	<form name="dateform">
 		<input type="hidden" name="cal" value="<?php echo $cal ?>">

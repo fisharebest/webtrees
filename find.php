@@ -136,7 +136,7 @@ echo '<script>';
 <?php
 echo '</script>';
 
-echo '<div id="find-page"><h3>', $controller->getPageTitle(), '</h3>';
+echo '<div id="find-page"><h2>', $controller->getPageTitle(), '</h2>';
 
 // Show indi and hide the rest
 if ($type == "indi") {

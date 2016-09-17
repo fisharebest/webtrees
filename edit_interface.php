@@ -54,10 +54,10 @@ case 'editraw':
 
 	?>
 	<div id="edit_interface-page">
-		<h4>
+		<h2>
 			<?php echo $controller->getPageTitle(); ?>
 			<?php echo FunctionsPrint::helpLink('edit_edit_raw'); ?>
-		</h4>
+		</h2>
 		<pre>     <?php echo '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE; ?></pre>
 		<form method="post" action="edit_interface.php">
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
@@ -164,11 +164,11 @@ case 'editrawfact':
 
 	?>
 	<div id="edit_interface-page">
-		<h4>
+		<h2>
 			<?php echo $controller->getPageTitle(); ?>
 			<?php echo FunctionsPrint::helpLink('edit_edit_raw'); ?>
 			<?php FunctionsPrint::printSpecialCharacterLink('gedcom'); ?>
-		</h4>
+		</h2>
 		<form method="post" action="edit_interface.php">
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="updaterawfact">
@@ -262,7 +262,7 @@ case 'edit':
 		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
+	echo '<h2>', $controller->getPageTitle(), '</h2>';
 	FunctionsPrint::initializeCalendarPopup();
 	echo '<form name="editform" method="post" action="edit_interface.php" enctype="multipart/form-data">';
 	echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
@@ -344,7 +344,7 @@ case 'add':
 	$level0type = $record::RECORD_TYPE;
 
 	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
+	echo '<h2>', $controller->getPageTitle(), '</h2>';
 
 	FunctionsPrint::initializeCalendarPopup();
 	echo '<form name="addform" method="post" action="edit_interface.php" enctype="multipart/form-data">';
@@ -985,7 +985,7 @@ case 'addfamlink':
 
 	?>
 	<div id="edit_interface-page">
-		<h4><?php echo $controller->getPageTitle(); ?></h4>
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<form method="post" name="addchildform" action="edit_interface.php">
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="linkfamaction">
@@ -1093,7 +1093,7 @@ case 'linkspouse':
 
 	?>
 	<div id="edit_interface-page">
-		<h4><?php echo $controller->getPageTitle(); ?></h4>
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<form method="post" name="addchildform" action="edit_interface.php">
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="linkspouseaction">
@@ -1208,7 +1208,7 @@ case 'addnewsource':
 		}
 	</script>
 	<div id="edit_interface-page">
-		<h4><?php echo $controller->getPageTitle(); ?></h4>
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="addsourceaction">
@@ -1350,7 +1350,7 @@ case 'addnewnote':
 
 	?>
 	<div id="edit_interface-page">
-		<h4><?php echo $controller->getPageTitle(); ?></h4>
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
 
 		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
@@ -1419,7 +1419,7 @@ case 'addmedia_links':
 
 	?>
 	<div id="edit_interface-page">
-		<h4><?php echo $controller->getPageTitle(); ?></h4>
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<form method="post" action="edit_interface.php?xref=<?php echo $person->getXref(); ?>" onsubmit="findindi()">
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="addmedia_links">
@@ -1446,7 +1446,7 @@ case 'editnote':
 
 	?>
 	<div id="edit_interface-page">
-		<h4><?php echo $controller->getPageTitle(); ?></h4>
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<form method="post" action="edit_interface.php">
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="editnoteaction">
@@ -1513,7 +1513,7 @@ case 'addnewrepository':
 		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
+	echo '<h2>', $controller->getPageTitle(), '</h2>';
 
 	echo '<script>';
 	?>
@@ -1715,7 +1715,7 @@ case 'reorder_media':
 
 	?>
 	<div id="edit_interface-page">
-		<h4><?php echo I18N::translate('Re-order media'); ?></h4>
+		<h2><?php echo I18N::translate('Re-order media'); ?></h2>
 		<form name="reorder_form" method="post" action="edit_interface.php">
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="reorder_media_update">
@@ -1801,7 +1801,7 @@ case 'reorder_children':
 
 	?>
 	<div id="edit_interface-page">
-		<h4><?php echo $controller->getPageTitle(); ?></h4>
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<form name="reorder_form" method="post" action="edit_interface.php">
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="reorder_update">
@@ -1911,7 +1911,7 @@ case 'changefamily':
 	$children = $family->getChildren();
 	?>
 	<div id="edit_interface-page">
-		<h4><?php echo $controller->getPageTitle(); ?></h4>
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<div id="changefam">
 			<form name="changefamform" method="post" action="edit_interface.php">
 				<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
@@ -2181,7 +2181,7 @@ case 'reorder_fams':
 
 	?>
 	<div id="edit_interface-page">
-	<h4><?php echo $controller->getPageTitle(); ?></h4>
+	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 		<input type="hidden" name="action" value="reorder_fams_update">
@@ -2409,7 +2409,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	$bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 
 	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
+	echo '<h2>', $controller->getPageTitle(), '</h2>';
 	FunctionsPrint::initializeCalendarPopup();
 	echo '<form method="post" name="addchildform" onsubmit="return checkform();">';
 	echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
