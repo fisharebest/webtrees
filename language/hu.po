@@ -11475,7 +11475,7 @@ msgstr "Távoli szerver"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:526
 msgid "Remove"
-msgstr "Eltávolít"
+msgstr "Eltávolítás"
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:30
 msgid "Remove duplicate links"
