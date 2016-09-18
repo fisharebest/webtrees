@@ -1147,7 +1147,6 @@ td.descriptionbox a {
 
 #login-register-page .confirm {
 	margin: 20px auto;
-	text-align: justify;
 	width: 500px;
 }
 
@@ -1166,7 +1165,6 @@ td.descriptionbox a {
 #user-verify {
 	margin: 0 auto;
 	width: 40%;
-	text-align: justify;
 	min-width: 450px;
 }
 
