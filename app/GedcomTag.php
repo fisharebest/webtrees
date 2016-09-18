@@ -1835,8 +1835,8 @@ class GedcomTag {
 				'SUBM', 'ASSO', 'ALIA', 'ANCI', 'DESI', 'RFN', 'AFN',
 				'REFN', 'RIN', 'CHAN', 'NOTE', 'SHARED_NOTE', 'SOUR', 'OBJE',
 				// non standard tags
-				'_BRTM', '_DEG', '_EYEC', '_FNRL', '_HAIR', '_HEIG', '_HNM', '_HOL',
-				'_INTE', '_MDCL', '_MEDC', '_MILI', '_MILT', '_NAME', '_NAMS',
+				'_BRTM', '_DEG', '_DNA', '_EYEC', '_FNRL', '_HAIR', '_HEIG', '_HNM',
+				'_HOL', '_INTE', '_MDCL', '_MEDC', '_MILI', '_MILT', '_NAME', '_NAMS',
 				'_NLIV', '_NMAR', '_PRMN', '_TODO', '_UID', '_WEIG', '_YART',
 			);
 			break;
