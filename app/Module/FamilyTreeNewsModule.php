@@ -87,8 +87,9 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 		$limit     = 5 * (1 + $more_news);
 
 		$articles = Database::prepare(
-			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE gedcom_id = :tree_id ORDER BY updated DESC LIMIT :limit"
+			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE gedcom_id = :tree_id ORDER BY updated DESC LIMIT :limit"
 		)->execute(array(
+			'offset'  => WT_TIMESTAMP_OFFSET,
 			'tree_id' => $WT_TREE->getTreeId(),
 			'limit'   => $limit,
 		))->fetchAll();
