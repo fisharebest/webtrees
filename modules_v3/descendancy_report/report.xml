@@ -157,6 +157,7 @@
 								<Text style="label1"> <var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></Text>
 							</if>
 						</Gedcom>
+						<SetVar name="printPronoun" value="false" />
 						<if condition="$printPeriod=='true'">
 							<Text style="label1">.</Text>
 							<SetVar name="printPronoun" value="true" />
