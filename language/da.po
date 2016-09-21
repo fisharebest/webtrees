@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-09-20 12:10+0000\n"
-"Last-Translator: Finn Christensen <fc@winmagic.dk>\n"
+"PO-Revision-Date: 2016-09-21 04:42+0000\n"
+"Last-Translator: Patrick Kongshammer <patrickkongshammer@gmail.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -1372,7 +1372,7 @@ msgstr "Tilføj en ny kildecitering"
 
 #: edit_interface.php:837
 msgid "Add a spouse"
-msgstr "Tilføj en ægtefælle"
+msgstr "Tilføj en ny partner"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
