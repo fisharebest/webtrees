@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-09-19 20:25+0000\n"
+"PO-Revision-Date: 2016-09-21 21:38+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -9621,19 +9621,19 @@ msgstr "Nooit"
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1697
 msgid "Never married"
-msgstr "Nooit gehuwd"
+msgstr "Nooit getrouwd"
 
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1693
 msgctxt "FEMALE"
 msgid "Never married"
-msgstr "Nooit gehuwd"
+msgstr "Nooit getrouwd"
 
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1689
 msgctxt "MALE"
 msgid "Never married"
-msgstr "Nooit gehuwd"
+msgstr "Nooit getrouwd"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6838
@@ -9987,19 +9987,19 @@ msgstr "Overleden"
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1712
 msgid "Not married"
-msgstr "Relatie"
+msgstr "Ongehuwd"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1708
 msgctxt "FEMALE"
 msgid "Not married"
-msgstr "Relatie"
+msgstr "Ongehuwd"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1704
 msgctxt "MALE"
 msgid "Not married"
-msgstr "Relatie"
+msgstr "Ongehuwd"
 
 #: admin.php:711
 msgid "Not verified by the user"
@@ -12465,7 +12465,7 @@ msgstr "Plaats aantallen vóór of achter de naam"
 
 #: app/Functions/FunctionsPrintLists.php:720
 msgid "Show couples where either partner married more than once."
-msgstr "Toon echtparen waarvan elke partner meerdere keren trouwde."
+msgstr "Toon echtparen waarvan een van beide partners meerdere keren trouwde."
 
 #: app/Functions/FunctionsPrintLists.php:635
 msgid "Show couples where only the female partner is dead."
@@ -12477,11 +12477,11 @@ msgstr "Toon paren, waarvan alleen de mannelijke partner is overleden."
 
 #: app/Functions/FunctionsPrintLists.php:693
 msgid "Show couples who married more than 100 years ago."
-msgstr "Toon paren, meer dan 100 jaar geleden getrouwd."
+msgstr "Toon echtparen die meer dan 100 jaar geleden zijn getrouwd."
 
 #: app/Functions/FunctionsPrintLists.php:702
 msgid "Show couples who married within the last 100 years."
-msgstr "Toon paren, getrouwd in de laatste 100 jaar."
+msgstr "Toon echtparen die getrouwd zijn in de laatste 100 jaar."
 
 #: app/Functions/FunctionsPrintLists.php:684
 msgid "Show couples with an unknown marriage date."
@@ -15961,7 +15961,7 @@ msgstr "U kunt een kopie van de Gedcom specificatie downloaden van %s."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
 msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr "U kunt makkelijker zoeken naar getrouwde vrouwen door hun huwelijksnaam op te nemen. Echter, niet alle vrouwen nemen de achternaam van hun echtgenoot over, pas dus op met het opnemen van incorrecte informatie in uw database."
+msgstr "U kunt de zoekresultaten naar getrouwde vrouwen verbeteren door hun huwelijksnaam vast te leggen. Bedenk wel dat niet alle vrouwen de achternaam van hun echtgenoot aannemen. Pas dus op met het opnemen van incorrecte informatie in uw database."
 
 #: admin_site_upgrade.php:137
 msgid "You can re-enable these modules after the upgrade."
