@@ -431,7 +431,7 @@ $controller->pageHeader();
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-9">
 			<p class="small text-muted">
-				<?php echo Theme::theme()->htmlAlert(I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]') . '<br>' . I18N::translate('You must also enable “less secure applications” in your Google account.') . ' <a href="https://support.google.com/a/answer/6260879">https://support.google.com/a/answer/6260879</a>', 'info', false) ?>
+				<?php echo Theme::theme()->htmlAlert(I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]') . '<br>' . I18N::translate('You must also enable “less secure applications” in your Google account.') . ' <a href="https://www.google.com/settings/security/lesssecureapps">https://www.google.com/settings/security/lesssecureapps</a>', 'info', false) ?>
 			</p>
 
 		</div>
