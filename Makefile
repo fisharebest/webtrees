@@ -53,12 +53,6 @@ vendor:
 	composer.phar dump-autoload --optimize
 
 ################################################################################
-# Check for PHP syntax errors
-################################################################################
-check:
-	if find . -name '*.php' -not -path './library/Zend/*' -exec php -l {} \; | grep -v "No syntax errors"; then false; else true; fi
-
-################################################################################
 # Create a release from this GIT branch
 ################################################################################
 build/webtrees: clean update
