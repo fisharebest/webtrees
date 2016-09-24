@@ -93,7 +93,7 @@ $controller
 
 if ($ctype === 'user') {
 	echo '<div id="my-page">';
-	echo '<h1 class="center">', I18N::translate('My page'), '</h1>';
+	echo '<h2 class="center">', I18N::translate('My page'), '</h2>';
 } else {
 	echo '<div id="home-page">';
 }

@@ -49,12 +49,11 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		global $ctype, $WT_TREE;
 
 		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
-		$onlyBDM   = $this->getBlockSetting($block_id, 'onlyBDM', '1');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
 		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
-		foreach (array('filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block') as $name) {
+		foreach (array('filter', 'infoStyle', 'sortStyle', 'block') as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -72,15 +71,19 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		$title .= $this->getTitle();
 
 		$content = '';
+
+		// If we are only showing living individuals, then we don't need to search for DEAT events.
+		$tags = $filter ? 'BIRT MARR' : 'BIRT MARR DEAT';
+
 		switch ($infoStyle) {
 		case 'list':
 			// Output style 1:  Old format, no visible tables, much smaller text. Better suited to right side of page.
-			$content .= FunctionsPrintLists::eventsList($todayjd, $todayjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
+			$content .= FunctionsPrintLists::eventsList($todayjd, $todayjd, $tags, $filter, $sortStyle);
 			break;
 		case 'table':
 			// Style 2: New format, tables, big text, etc. Not too good on right side of page
 			ob_start();
-			$content .= FunctionsPrintLists::eventsTable($todayjd, $todayjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
+			$content .= FunctionsPrintLists::eventsTable($todayjd, $todayjd, $tags, $filter, $sortStyle);
 			$content .= ob_get_clean();
 			break;
 		}
@@ -119,14 +122,12 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));
-			$this->setBlockSetting($block_id, 'onlyBDM', Filter::postBool('onlyBDM'));
 			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
 			$this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
 			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
 		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
-		$onlyBDM   = $this->getBlockSetting($block_id, 'onlyBDM', '1');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
 		$block     = $this->getBlockSetting($block_id, 'block', '1');
@@ -135,12 +136,6 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		echo /* I18N: Label for a configuration option */ I18N::translate('Show only events of living individuals');
 		echo '</td><td class="optionbox">';
 		echo FunctionsEdit::editFieldYesNo('filter', $filter);
-		echo '</td></tr>';
-
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: Label for a configuration option */ I18N::translate('Show only births, deaths, and marriages');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('onlyBDM', $onlyBDM);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';

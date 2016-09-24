@@ -6,7 +6,7 @@ php:
   - 5.5
   - 5.6
   - 7.0
-  - nightly
+  - 7.1
   - hhvm
 
 ## Non-sudo environments are faster
@@ -20,10 +20,9 @@ cache:
 
 before_script:
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
-  - if [ "$(phpenv global)" != "hhvm" ]; then cp $HOME/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini /tmp/; fi
-  - if [ "$(phpenv global)" != "hhvm" ]; then phpenv config-rm xdebug.ini; fi
+  - if [ -f "$HOME/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini" ]; then cp $HOME/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini /tmp/; phpenv config-rm xdebug.ini; fi
   - travis_retry composer update
-  - if [ "$(phpenv global)" != "hhvm" ]; then phpenv config-add /tmp/xdebug.ini; fi
+  - if [ -f "/tmp/xdebug.ini" ]; then phpenv config-add /tmp/xdebug.ini; fi
 
 script:
   - vendor/bin/phpunit --coverage-clover tests/clover.xml

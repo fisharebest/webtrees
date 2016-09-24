@@ -1410,17 +1410,17 @@
     },
     {
         "name": "symfony/intl",
-        "version": "v2.8.9",
-        "version_normalized": "2.8.9.0",
+        "version": "v2.8.11",
+        "version_normalized": "2.8.11.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/intl.git",
-            "reference": "eb97e62e92038f984cf8df764f79eef6f9895249"
+            "reference": "2ec401b37460b22077643d48773e5f6a9f0b21e8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/intl/zipball/eb97e62e92038f984cf8df764f79eef6f9895249",
-            "reference": "eb97e62e92038f984cf8df764f79eef6f9895249",
+            "url": "https://api.github.com/repos/symfony/intl/zipball/2ec401b37460b22077643d48773e5f6a9f0b21e8",
+            "reference": "2ec401b37460b22077643d48773e5f6a9f0b21e8",
             "shasum": ""
         },
         "require": {
@@ -1434,7 +1434,7 @@
         "suggest": {
             "ext-intl": "to use the component with locales other than \"en\""
         },
-        "time": "2016-07-30 07:20:35",
+        "time": "2016-09-06 10:55:00",
         "type": "library",
         "extra": {
             "branch-alias": {

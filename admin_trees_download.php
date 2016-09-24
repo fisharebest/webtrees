@@ -150,7 +150,7 @@ $controller->pageHeader();
 				<?php echo I18N::translate('Convert from UTF-8 to ISO-8859-1'); ?>
 			</label>
 			<p class="small muted">
-				<?php echo I18N::translate('webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding.'); ?>
+				<?php echo I18N::translate('webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding.'); ?>
 			</p>
 
 			<!-- GEDCOM_MEDIA_PATH -->

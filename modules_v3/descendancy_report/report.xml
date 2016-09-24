@@ -90,9 +90,7 @@
 							</RepeatTag>
 						</if>
 						<SetVar name="printPeriod" value="false" />
-						<if condition="@SEX=='M'">
-							<SetVar name="gender" value="male" />
-						</if>
+						<SetVar name="gender" value="male" />
 						<if condition="@SEX=='F'">
 							<SetVar name="gender" value="female" />
 						</if>
@@ -159,6 +157,7 @@
 								<Text style="label1"> <var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></Text>
 							</if>
 						</Gedcom>
+						<SetVar name="printPronoun" value="false" />
 						<if condition="$printPeriod=='true'">
 							<Text style="label1">.</Text>
 							<SetVar name="printPronoun" value="true" />
@@ -567,9 +566,7 @@
 												</Gedcom>
 											</RepeatTag>
 											<if condition="$showMarraige=='T'">
-												<if condition="@SEX=='M'">
-													<SetVar name="gender" value="male" />
-												</if>
+												<SetVar name="gender" value="male" />
 												<if condition="@SEX=='F'">
 													<SetVar name="gender" value="female" />
 												</if>

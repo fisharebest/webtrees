@@ -193,7 +193,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 		///// MARR /////
 		$found = false;
 		$prev  = new Date('');
-		foreach ($family->getFacts(WT_EVENTS_MARR . '|' . WT_EVENTS_DIV) as $fact) {
+		foreach ($family->getFacts(WT_EVENTS_MARR . '|' . WT_EVENTS_DIV, true) as $fact) {
 			$found |= !$fact->isPendingDeletion();
 			if ($fact->isPendingAddition()) {
 				$class = ' new';

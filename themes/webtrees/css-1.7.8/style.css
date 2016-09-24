@@ -1147,7 +1147,6 @@ td.descriptionbox a {
 
 #login-register-page .confirm {
 	margin: 20px auto;
-	text-align: justify;
 	width: 500px;
 }
 
@@ -1166,7 +1165,6 @@ td.descriptionbox a {
 #user-verify {
 	margin: 0 auto;
 	width: 40%;
-	text-align: justify;
 	min-width: 450px;
 }
 
@@ -1520,15 +1518,11 @@ td.descriptionbox a {
 #note-tabs,
 #repo-tabs,
 #media-tabs {
-	margin: auto;
 	visibility: hidden;
-	width: 80%;
 }
 
 #statistics_chart {
-	margin: auto;
 	visibility: hidden;
-	width: 90%;
 }
 
 #source-edit,

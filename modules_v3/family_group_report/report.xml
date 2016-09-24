@@ -768,7 +768,7 @@
 						<if condition="$photos==1">
 							<HighlightedImage left="$pwidth" width="80"/>
 						</if>
-						<!-- Print the male child's name -->
+						<!-- Son -->
 						<if condition="@SEX=='M'">
 							<TextBox bgcolor="$malebox_bgcolor" border="1" left="15" newline="1" width="$width1">
 								<Text color="$tcolor" style="text"><var var="I18N::translate('Son')"/>  </Text>
@@ -803,7 +803,7 @@
 								</if>
 							</TextBox>
 						</if>
-						<!-- Print the female child's name -->
+						<!-- Daughter -->
 						<if condition="@SEX=='F'">
 							<TextBox bgcolor="$femalebox_bgcolor" border="1" left="15" newline="1" width="$width1">
 								<Text color="$tcolor" style="text"><var var="I18N::translate('Daughter')"/>  </Text>
@@ -838,8 +838,8 @@
 								</if>
 							</TextBox>
 						</if>
-						<!-- Print the unknown gender child's name -->
-						<if condition="(@SEX=='U') or (@SEX=='')">
+						<!-- Child -->
+						<if condition="@SEX=='U'">
 							<TextBox bgcolor="$unknowngenderbox_bgcolor" border="1" left="15" newline="1" width="$width1">
 								<Text color="$tcolor" style="text"><var var="I18N::translate('Gender')"/> <var var="I18N::translateContext('unknown gender', 'Unknown')"/>  </Text>
 								<Text color="$tcolor" style="name"><GetPersonName id="" /> </Text>
