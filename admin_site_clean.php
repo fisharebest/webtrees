@@ -51,7 +51,7 @@ $controller
 	->setPageTitle(/* I18N: The “Data folder” is a configuration setting */ I18N::translate('Clean up data folder'))
 	->pageHeader();
 
-$do_not_delete = array('index.php', 'config.ini.php');
+$do_not_delete = array('index.php', 'config.ini.php', 'language');
 
 // If we are storing the media in the data folder (this is the default), then don’t delete it.
 foreach (Tree::getAll() as $tree) {
