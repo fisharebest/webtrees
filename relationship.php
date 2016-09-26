@@ -101,12 +101,12 @@ if ($person1 && $person2) {
 				<td class="optionbox">
 					<label>
 						<input type="radio" name="ancestors" value="0" <?php echo $ancestors == 0 ? 'checked' : '' ?>>
-						<?php echo I18N::translate('Any relationship') ?>
+						<?php echo I18N::translate('Find any relationship') ?>
 					</label>
 					<br>
 					<label>
 						<input type="radio" name="ancestors" value="1" <?php echo $ancestors == 1 ? 'checked' : '' ?>>
-						<?php echo I18N::translate('Cousins') ?>
+						<?php echo I18N::translate('Find a relationship via ancestors') ?>
 					</label>
 
 					<hr>
