@@ -102,6 +102,7 @@ if ($person1 && $person2) {
 				<td class="optionbox">
 					<?php if ($ancestors_only === '1'): ?>
 						<input type="hidden" name="ancestors" value="1">
+						<?php echo I18N::translate('Find relationships via ancestors') ?>
 					<?php else: ?>
 						<label>
 							<input type="radio" name="ancestors" value="0" <?php echo $ancestors == 0 ? 'checked' : '' ?>>
@@ -112,9 +113,9 @@ if ($person1 && $person2) {
 							<input type="radio" name="ancestors" value="1" <?php echo $ancestors == 1 ? 'checked' : '' ?>>
 							<?php echo I18N::translate('Find relationships via ancestors') ?>
 						</label>
-
-						<hr>
 					<?php endif; ?>
+
+					<hr>
 
 					<?php if ($max_recursion == 0): ?>
 						<?php echo I18N::translate('Find the closest relationships') ?>
