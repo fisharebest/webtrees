@@ -33,7 +33,10 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 	const UNLIMITED_RECURSION = 99;
 
 	/** By default new trees allow unlimited recursion */
-	const DEFAULT_RECURSION   = self::UNLIMITED_RECURSION;
+	const DEFAULT_RECURSION = self::UNLIMITED_RECURSION;
+
+	/** By default new trees search for all relationships (not via ancestors) */
+	const DEFAULT_ANCESTORS = 0;
 
 	/**
 	 * How should this module be labelled on tabs, menus, etc.?
@@ -124,15 +127,25 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 	}
 
 	/**
+	 * Possible options for the ancestors option
+	 */
+	private function ancestorsOptions() {
+		return array(
+			0 => I18N::translate('Find any relationship'),
+			1 => I18N::translate('Find relationships via ancestors'),
+		);
+	}
+
+	/**
 	 * Possible options for the recursion option
 	 */
 	private function recursionOptions() {
 		return array(
-			0           => I18N::translate('none'),
-			1           => I18N::number(1),
-			2           => I18N::number(2),
-			3           => I18N::number(3),
-			PHP_INT_MAX => I18N::translate('unlimited'),
+			0                         => I18N::translate('none'),
+			1                         => I18N::number(1),
+			2                         => I18N::number(2),
+			3                         => I18N::number(3),
+			self::UNLIMITED_RECURSION => I18N::translate('unlimited'),
 		);
 	}
 
@@ -154,18 +167,28 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 		</ol>
 		<h1><?php echo $controller->getPageTitle(); ?></h1>
 
+		<p>
+			<?php echo I18N::translate('Searching for all possible relationships can take a lot of time in complex trees.') ?>
+		</p>
+
 		<form method="post">
 			<?php foreach (Tree::getAll() as $tree): ?>
 				<h2><?php echo $tree->getTitleHtml() ?></h2>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="relationship-ancestors-<?php echo $tree->getTreeId() ?>">
+						<?php echo /* I18N: Configuration option */I18N::translate('Relationships'); ?>
+					</label>
+					<div class="col-sm-9">
+						<?php echo FunctionsEdit::selectEditControl('relationship-ancestors-' . $tree->getTreeId(), $this->ancestorsOptions(), null, $tree->getPreference('RELATIONSHIP_ANCESTORS', self::DEFAULT_ANCESTORS), 'class="form-control"'); ?>
+					</div>
+				</div>
+
 				<fieldset class="form-group">
 					<legend class="control-label col-sm-3">
 						<?php echo /* I18N: Configuration option */I18N::translate('How much recursion to use when searching for relationships'); ?>
 					</legend>
 					<div class="col-sm-9">
 						<?php echo FunctionsEdit::radioButtons('relationship-recursion-' . $tree->getTreeId(), $this->recursionOptions(), $tree->getPreference('RELATIONSHIP_RECURSION', self::DEFAULT_RECURSION), 'class="radio-inline"'); ?>
-						<p class="small text-muted">
-							<?php echo I18N::translate('Searching for all possible relationships can take a lot of time in complex trees.') ?>
-						</p>
 					</div>
 				</fieldset>
 			<?php endforeach; ?>
@@ -189,6 +212,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 		if (Auth::isAdmin()) {
 			foreach (Tree::getAll() as $tree) {
 				$tree->setPreference('RELATIONSHIP_RECURSION', Filter::post('relationship-recursion-' . $tree->getTreeId()));
+				$tree->setPreference('RELATIONSHIP_ANCESTORS', Filter::post('relationship-ancestors-' . $tree->getTreeId()));
 			}
 
 			FlashMessages::addMessage(I18N::translate('The preferences for the chart “%s” have been updated.', $this->getTitle()), 'success');

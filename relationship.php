@@ -31,7 +31,8 @@ use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 
-$max_recursion = $WT_TREE->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
+$max_recursion  = $WT_TREE->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
+$ancestors_only = $WT_TREE->getPreference('RELATIONSHIP_ANCESTORS', RelationshipsChartModule::DEFAULT_ANCESTORS);
 
 $controller = new RelationshipController;
 $pid1       = Filter::get('pid1', WT_REGEX_XREF);
@@ -99,17 +100,21 @@ if ($person1 && $person2) {
 					<a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php echo /* I18N: Reverse the order of two individuals */ I18N::translate('Swap individuals') ?></a>
 				</td>
 				<td class="optionbox">
-					<label>
-						<input type="radio" name="ancestors" value="0" <?php echo $ancestors == 0 ? 'checked' : '' ?>>
-						<?php echo I18N::translate('Find any relationship') ?>
-					</label>
-					<br>
-					<label>
-						<input type="radio" name="ancestors" value="1" <?php echo $ancestors == 1 ? 'checked' : '' ?>>
-						<?php echo I18N::translate('Find a relationship via ancestors') ?>
-					</label>
+					<?php if ($ancestors_only === '1'): ?>
+						<input type="hidden" name="ancestors" value="1">
+					<?php else: ?>
+						<label>
+							<input type="radio" name="ancestors" value="0" <?php echo $ancestors == 0 ? 'checked' : '' ?>>
+							<?php echo I18N::translate('Find any relationship') ?>
+						</label>
+						<br>
+						<label>
+							<input type="radio" name="ancestors" value="1" <?php echo $ancestors == 1 ? 'checked' : '' ?>>
+							<?php echo I18N::translate('Find relationships via ancestors') ?>
+						</label>
 
-					<hr>
+						<hr>
+					<?php endif; ?>
 
 					<?php if ($max_recursion == 0): ?>
 						<?php echo I18N::translate('Find the closest relationships') ?>
