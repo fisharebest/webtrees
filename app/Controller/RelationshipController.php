@@ -31,20 +31,34 @@ class RelationshipController extends PageController {
 	 * @param Individual $individual1
 	 * @param Individual $individual2
 	 * @param int        $recursion   How many levels of recursion to use
+	 * @param boo;       $ancestor    Restrict to relationships via a common ancestor
 	 *
 	 * @return string[][]
 	 */
-	public function calculateRelationships(Individual $individual1, Individual $individual2, $recursion) {
+	public function calculateRelationships(Individual $individual1, Individual $individual2, $recursion, $ancestor = false) {
+
 		$rows = Database::prepare(
 			"SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
 		)->execute(array(
 			'tree_id' => $individual1->getTree()->getTreeId(),
 		))->fetchAll();
 
+		// Optionally restrict the graph to the ancestors of the individuals.
+		if ($ancestor) {
+			$ancestors = $this->allAncestors($individual1->getXref(), $individual2->getXref(), $individual1->getTree()->getTreeId());
+			$exclude   = $this->excludeFamilies($individual1->getXref(), $individual2->getXref(), $individual1->getTree()->getTreeId());
+		} else {
+			$ancestors = array();
+			$exclude   = array();
+		}
+
 		$graph = array();
+
 		foreach ($rows as $row) {
-			$graph[$row->l_from][$row->l_to] = 1;
-			$graph[$row->l_to][$row->l_from] = 1;
+			if (!$ancestors || in_array($row->l_from, $ancestors) && !in_array($row->l_to, $exclude)) {
+				$graph[$row->l_from][$row->l_to] = 1;
+				$graph[$row->l_to][$row->l_from] = 1;
+			}
 		}
 
 		$xref1    = $individual1->getXref();
@@ -135,5 +149,66 @@ class RelationshipController extends PageController {
 		}
 
 		return $relationships;
+	}
+
+	/**
+	 * Find all ancestors of a list of individuals
+	 *
+	 * @param string $xref1
+	 * @param string $xref2
+	 * @param int    $tree_id
+	 *
+	 * @return array
+	 */
+	private function allAncestors($xref1, $xref2, $tree_id) {
+		$ancestors = array($xref1, $xref2);
+
+		$queue = array($xref1, $xref2);
+		while (!empty($queue)) {
+			$placeholders = implode(',', array_fill(0, count($queue), '?'));
+			$parameters = $queue;
+			$parameters[] = $tree_id;
+
+			$parents = Database::prepare(
+				"SELECT l2.l_from" .
+				" FROM `##link` AS l1" .
+				" JOIN `##link` AS l2 USING (l_to, l_file) " .
+				" WHERE l1.l_type = 'FAMC' AND l2.l_type = 'FAMS' AND l1.l_from IN (" . $placeholders . ") AND l_file = ?"
+			)->execute(
+				$parameters
+			)->fetchOneColumn();
+
+			$queue = [];
+			foreach ($parents as $parent) {
+				if (!in_array($parent, $ancestors)) {
+					$ancestors[] = $parent;
+					$queue[]     = $parent;
+				}
+			}
+		}
+
+		return $ancestors;
+	}
+
+	/**
+	 * Find all families of two individuals
+	 *
+	 * @param string $xref1
+	 * @param string $xref2
+	 * @param int    $tree_id
+	 *
+	 * @return array
+	 */
+	private function excludeFamilies($xref1, $xref2, $tree_id) {
+		return Database::prepare(
+			"SELECT l_to" .
+			" FROM `##link` AS l1" .
+			" JOIN `##link` AS l2 USING (l_type, l_to, l_file) " .
+			" WHERE l_type = 'FAMS' AND l1.l_from = :spouse1 AND l2.l_from = :spouse2 AND l_file = :tree_id"
+		)->execute(array(
+			'spouse1' => $xref1,
+			'spouse2' => $xref2,
+			'tree_id' => $tree_id,
+		))->fetchOneColumn();
 	}
 }

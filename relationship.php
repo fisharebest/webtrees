@@ -31,13 +31,15 @@ use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 
-$max_recursion = $WT_TREE->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
+$max_recursion  = $WT_TREE->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
+$ancestors_only = $WT_TREE->getPreference('RELATIONSHIP_ANCESTORS', RelationshipsChartModule::DEFAULT_ANCESTORS);
 
 $controller = new RelationshipController;
 $pid1       = Filter::get('pid1', WT_REGEX_XREF);
 $pid2       = Filter::get('pid2', WT_REGEX_XREF);
 $show_full  = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
 $recursion  = Filter::getInteger('recursion', 0, $max_recursion, 0);
+$ancestors  = Filter::getInteger('ancestors', 0, 1, 0);
 
 $person1 = Individual::getInstance($pid1, $WT_TREE);
 $person2 = Individual::getInstance($pid2, $WT_TREE);
@@ -51,7 +53,7 @@ if ($person1 && $person2) {
 	$controller
 		->setPageTitle(I18N::translate(/* I18N: %s are individual’s names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
 		->pageHeader();
-	$paths = $controller->calculateRelationships($person1, $person2, $recursion);
+	$paths = $controller->calculateRelationships($person1, $person2, $recursion, (bool) $ancestors);
 } else {
 	$controller
 		->setPageTitle(I18N::translate('Relationships'))
@@ -98,6 +100,23 @@ if ($person1 && $person2) {
 					<a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php echo /* I18N: Reverse the order of two individuals */ I18N::translate('Swap individuals') ?></a>
 				</td>
 				<td class="optionbox">
+					<?php if ($ancestors_only === '1'): ?>
+						<input type="hidden" name="ancestors" value="1">
+						<?php echo I18N::translate('Find relationships via ancestors') ?>
+					<?php else: ?>
+						<label>
+							<input type="radio" name="ancestors" value="0" <?php echo $ancestors == 0 ? 'checked' : '' ?>>
+							<?php echo I18N::translate('Find any relationship') ?>
+						</label>
+						<br>
+						<label>
+							<input type="radio" name="ancestors" value="1" <?php echo $ancestors == 1 ? 'checked' : '' ?>>
+							<?php echo I18N::translate('Find relationships via ancestors') ?>
+						</label>
+					<?php endif; ?>
+
+					<hr>
+
 					<?php if ($max_recursion == 0): ?>
 						<?php echo I18N::translate('Find the closest relationships') ?>
 						<input type="hidden" name="recursion" value="0">

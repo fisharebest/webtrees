@@ -733,7 +733,7 @@ class FunctionsImport {
 		case 'OBJE':
 			$record = new Media($xref, $gedrec, null, $tree);
 			Database::prepare(
-				"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
+				"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, LEFT(?, 6), LEFT(?, 60), LEFT(?, 255), left(?, 512), ?, ?)"
 			)->execute(array(
 				$xref, $record->extension(), $record->getMediaType(), $record->getTitle(), $record->getFilename(), $tree_id, $gedrec,
 			));

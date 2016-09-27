@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-09-21 21:38+0000\n"
+"PO-Revision-Date: 2016-09-24 22:58+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -916,18 +916,18 @@ msgstr "Een gedetailleerd rapport van een persoon."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Een rapport van feiten/gebeurtenissen die door een bepaalde bron worden ondersteund."
+msgstr "Een rapport met feiten die worden ondersteund door een bepaalde bron."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr "Een rapport van gezinsleden met hun details."
+msgstr "Een rapport van gezinsleden en hun gegevens."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr "Een rapport van personen die op een gegeven tijd en plaats overleden."
+msgstr "Een rapport van personen die in een bepaalde periode en plaats zijn overleden."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
@@ -938,19 +938,19 @@ msgstr "Een rapport van personen met een bepaald beroep."
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "Een rapport van personen die werden geboren in een bepaalde tijd of plaats."
+msgstr "Een rapport van personen die in een bepaalde periode of plaats zijn geboren."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr "Een rapport van personen die op een bepaalde plaats begraven werden."
+msgstr "Een rapport van personen die in een bepaalde plaats zijn begraven."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "Een rapport met personen die in een gegeven periode of plaats getrouwd zijn."
+msgstr "Een rapport met personen die in een bepaalde periode of plaats getrouwd zijn."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
@@ -967,7 +967,7 @@ msgstr "Een rapport van de gezinnen die nauw verwant zijn aan een persoon."
 #: app/Module/RelatedIndividualsReportModule.php:35
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr "Een rapport van de personen nauw verwant aan een persoon."
+msgstr "Een rapport van de personen die nauw verwant zijn aan een persoon."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
@@ -978,13 +978,13 @@ msgstr "Een rapport van de informatie geleverd door een bron."
 #: app/Module/MissingFactsReportModule.php:35
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr "Een rapport van de informatie welke ontbreekt voor een persoon en verwanten."
+msgstr "Een rapport van de informatie die ontbreekt voor een persoon en zijn verwanten."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "Een rapport van vitale records voor een bepaalde datum of plaats."
+msgstr "Een rapport van de vitale records in een bepaalde periode of plaats."
 
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -2801,11 +2801,11 @@ msgstr "Geboorte per land"
 
 #: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
 msgid "Birth date range end"
-msgstr "Eind van reeks geboortedata"
+msgstr "Einde reeks geboortedata"
 
 #: modules_v3/bdm_report/report.xml:7 modules_v3/birth_report/report.xml:7
 msgid "Birth date range start"
-msgstr "Begin van reeks geboortedata"
+msgstr "Begin reeks geboortedata"
 
 #: app/GedcomTag.php:1079
 msgid "Birth of a brother"
@@ -4468,7 +4468,7 @@ msgstr "Datum crematie"
 #: modules_v3/fact_sources/report.xml:274
 #: modules_v3/missing_facts_report/report.xml:505
 msgid "Date of death"
-msgstr "Overlijdensdatum"
+msgstr "Datum van overlijden"
 
 #: app/GedcomTag.php:462
 msgid "Date of divorce"
@@ -4721,7 +4721,7 @@ msgstr "Einde reeks overlijdensdata"
 
 #: modules_v3/bdm_report/report.xml:9 modules_v3/death_report/report.xml:7
 msgid "Death date range start"
-msgstr "Start reeks overlijdensdata"
+msgstr "Begin reeks overlijdensdata"
 
 #: app/GedcomTag.php:1437
 msgid "Death of a brother"
@@ -5634,7 +5634,7 @@ msgstr "Eind Jaar"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
-msgstr "Eind van reeks wijzigingsdata"
+msgstr "Einde reeks wijzigingsdata"
 
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:161
@@ -8669,11 +8669,11 @@ msgstr "Huwelijkscontract"
 
 #: modules_v3/marriage_report/report.xml:8
 msgid "Marriage date range end"
-msgstr "Einde van reeks huwelijksdata"
+msgstr "Einde reeks huwelijksdata"
 
 #: modules_v3/marriage_report/report.xml:7
 msgid "Marriage date range start"
-msgstr "Start van reeks huwelijksdata"
+msgstr "Start reeks huwelijksdata"
 
 #. I18N: gedcom tag _MEND
 #: app/GedcomTag.php:1655
@@ -11065,7 +11065,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Print lege standaard gebeurtenissen"
+msgstr "Print lege elementaire gebeurtenissen"
 
 #: admin_trees_config.php:310 admin_trees_manage.php:398
 msgid "Privacy"
@@ -12456,7 +12456,7 @@ msgstr "Toon standaard details in diagrammen"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Kinderen van voorouders laten zien"
+msgstr "Kinderen van voorouders weergeven"
 
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:165
@@ -12564,11 +12564,11 @@ msgstr "Toon namen van privé personen"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Notities tonen"
+msgstr "Notities weergeven"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Toon beroepen"
+msgstr "Beroepen weergeven"
 
 #. I18N: Label for a configuration option
 #: app/Module/OnThisDayModule.php:141
@@ -12645,7 +12645,7 @@ msgstr "Toon onderzoekstaken die een datum in de toekomst hebben"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Toon woonplaatsen"
+msgstr "Woonplaatsen weergeven"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
@@ -13170,7 +13170,7 @@ msgstr "Begin Jaar"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
-msgstr "Start van reeks wijzigingsdata"
+msgstr "Start reeks wijzigingsdata"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:800 app/Module/GoogleMapsModule.php:3447
@@ -15990,7 +15990,7 @@ msgstr "U kunt de toegang voor een specifiek record, feit of een specifieke gebe
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "U kunt de privacyberekening versnellen door een overlijdensdatum in te geven die afgeleid kan worden van andere data, maar geen overlijdensakte, begrafenis- of crematiegegevens hebben."
+msgstr "U kunt de privacyberekening versnellen door een overlijdensrecord toe te voegen aan personen van wie het overlijden kan worden afgeleid uit andere data, maar voor wie zelf nog geen gegevens van overlijden, begrafenis, crematie enz. zijn vastgelegd."
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
@@ -19659,7 +19659,7 @@ msgstr "sorteer op geboortedatum"
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of death"
-msgstr "sorteer op overlijdensdatum"
+msgstr "sorteer op datum van overlijden"
 
 #: edit_interface.php:2202 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
