@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-09-30 17:01+0000\n"
-"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2016-10-01 19:38+0000\n"
+"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1601,7 +1601,7 @@ msgstr "Adoption eines Bruders"
 
 #: app/GedcomTag.php:876
 msgid "Adoption of a child"
-msgstr "Kind: Adoption"
+msgstr "Adoption eines Kindes"
 
 #: app/GedcomTag.php:874
 msgid "Adoption of a daughter"
@@ -1609,7 +1609,7 @@ msgstr "Adoption einer Tochter"
 
 #: app/GedcomTag.php:885 app/GedcomTag.php:894 app/GedcomTag.php:903
 msgid "Adoption of a grandchild"
-msgstr "Enkel: Adoption"
+msgstr "Adoption eines Enkels"
 
 #: app/GedcomTag.php:883
 msgid "Adoption of a granddaughter"
@@ -3182,7 +3182,7 @@ msgstr "Beerdigung einer Halbschwester"
 
 #: app/GedcomTag.php:1186
 msgid "Burial of a husband"
-msgstr "Beerdigug eines Ehemanns"
+msgstr "Beerdigung eines Ehemanns"
 
 #: app/GedcomTag.php:1150
 msgid "Burial of a maternal grandfather"
