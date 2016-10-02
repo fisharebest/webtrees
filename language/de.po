@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-10-01 19:38+0000\n"
-"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
+"PO-Revision-Date: 2016-10-02 16:53+0000\n"
+"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1645,7 +1645,7 @@ msgstr "Adoption eines Halbbruders"
 
 #: app/GedcomTag.php:912
 msgid "Adoption of a half-sibling"
-msgstr "Adoption eines Halbgeschwisterkinds"
+msgstr "Adoption eines Halbgeschwisters"
 
 #: app/GedcomTag.php:910
 msgid "Adoption of a half-sister"
@@ -1653,7 +1653,7 @@ msgstr "Adoption einer Halbschwester"
 
 #: app/GedcomTag.php:921
 msgid "Adoption of a sibling"
-msgstr "Adoption eines Geschwisterkinds"
+msgstr "Adoption eines Geschwisters"
 
 #: app/GedcomTag.php:919
 msgid "Adoption of a sister"
@@ -2531,7 +2531,7 @@ msgstr "Taufe eines Halbbruders"
 
 #: app/GedcomTag.php:1016
 msgid "Baptism of a half-sibling"
-msgstr "Taufe eines Halbgeschwisterkinds"
+msgstr "Taufe eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1014
 msgid "Baptism of a half-sister"
@@ -2539,7 +2539,7 @@ msgstr "Taufe einer Halbschwester"
 
 #: app/GedcomTag.php:1025
 msgid "Baptism of a sibling"
-msgstr "Taufe eines Geschwisterkinds"
+msgstr "Taufe eines Geschwisters"
 
 #: app/GedcomTag.php:1023
 msgid "Baptism of a sister"
@@ -2853,7 +2853,7 @@ msgstr "Geburt eines Halbbruders"
 
 #: app/GedcomTag.php:1074
 msgid "Birth of a half-sibling"
-msgstr "Geburt eines Halbgeschwisterkinds"
+msgstr "Geburt eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1072
 msgid "Birth of a half-sister"
@@ -2861,7 +2861,7 @@ msgstr "Geburt einer Halbschwester"
 
 #: app/GedcomTag.php:1083
 msgid "Birth of a sibling"
-msgstr "Geburt eines Geschwisterkinds"
+msgstr "Geburt eines Geschwisters"
 
 #: app/GedcomTag.php:1081
 msgid "Birth of a sister"
@@ -3174,7 +3174,7 @@ msgstr "Beerdigung eines Halbbruders"
 
 #: app/GedcomTag.php:1163
 msgid "Burial of a half-sibling"
-msgstr "Beerdigung eiens Halbgeschwisterkinds"
+msgstr "Beerdigung eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1161
 msgid "Burial of a half-sister"
@@ -3218,7 +3218,7 @@ msgstr "Beerdigung eines väterlichen Großelternteils"
 
 #: app/GedcomTag.php:1181
 msgid "Burial of a sibling"
-msgstr "Beerdigung eines Geschwisterkinds"
+msgstr "Beerdigung eines Geschwisters"
 
 #: app/GedcomTag.php:1179
 msgid "Burial of a sister"
@@ -3730,7 +3730,7 @@ msgstr "Taufe eines Halbbruders"
 
 #: app/GedcomTag.php:1235
 msgid "Christening of a half-sibling"
-msgstr "Taufe eines Halbgeschwisterkinds"
+msgstr "Taufe eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1233
 msgid "Christening of a half-sister"
@@ -3738,7 +3738,7 @@ msgstr "Taufe einer Halbschwester"
 
 #: app/GedcomTag.php:1244
 msgid "Christening of a sibling"
-msgstr "Taufe eines Geschwisterkinds"
+msgstr "Taufe eines Geschwisters"
 
 #: app/GedcomTag.php:1242
 msgid "Christening of a sister"
@@ -4211,7 +4211,7 @@ msgstr "Einäscherung eines Halbbruders"
 
 #: app/GedcomTag.php:1320
 msgid "Cremation of a half-sibling"
-msgstr "Einäscherung eines Halbgeschwisterkinds"
+msgstr "Einäscherung eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1318
 msgid "Cremation of a half-sister"
@@ -4247,7 +4247,7 @@ msgstr "Einäscherung einer väterlichen Großmutter"
 
 #: app/GedcomTag.php:1338
 msgid "Cremation of a sibling"
-msgstr "Einäscherung eines Geschwisterkinds"
+msgstr "Einäscherung eines Geschwisters"
 
 #: app/GedcomTag.php:1336
 msgid "Cremation of a sister"
@@ -4785,7 +4785,7 @@ msgstr "Tod eines Halbbruders"
 
 #: app/GedcomTag.php:1423
 msgid "Death of a half-sibling"
-msgstr "Tod eines Halbgeschwisterkinds"
+msgstr "Tod eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1421
 msgid "Death of a half-sister"
@@ -4821,7 +4821,7 @@ msgstr "Tod einer väterlichen Großmutter"
 
 #: app/GedcomTag.php:1441
 msgid "Death of a sibling"
-msgstr "Tod eines Geschwisterkinds"
+msgstr "Tod eines Geschwisters"
 
 #: app/GedcomTag.php:1439
 msgid "Death of a sister"
@@ -6438,7 +6438,7 @@ msgstr "Zum Beispiel, wenn die GEDCOM-Datei %1$s enthält und webtrees %2$s im M
 
 #: admin_users.php:600
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr "Wenn Sie zum Beispiel eine Stufenweite von 2 angeben, wird diese Person in der Lage sein, ihre Enkel (Kind, Kind), ihre Tante (Eltern, Geschwister), ihre Stieftochter (Ehegatte, Kind), nicht aber ihre Cousine (Eltern, Geschwister, Kinder) sehen."
+msgstr "Wenn Sie zum Beispiel eine Stufenweite von 2 angeben, wird diese Person in der Lage sein, ihre Enkel (Kind, Kind), ihre Tante (Eltern, Geschwister), ihre Stieftochter (Ehegatte, Kind), nicht aber ihre Cousine (Eltern, Geschwister, Kinder) zu sehen."
 
 #: app/Theme/AbstractTheme.php:296
 #, php-format
@@ -8741,7 +8741,7 @@ msgstr "Heirat eines Halbbruders"
 
 #: app/GedcomTag.php:1614
 msgid "Marriage of a half-sibling"
-msgstr "Heirat eines Halbgeschwisterkinds"
+msgstr "Heirat eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1612
 msgid "Marriage of a half-sister"
@@ -8759,7 +8759,7 @@ msgstr "Heirat eines Elternteils"
 
 #: app/GedcomTag.php:1638
 msgid "Marriage of a sibling"
-msgstr "Heirat eines Geschwisterkinds"
+msgstr "Heirat eines Geschwisters"
 
 #: app/GedcomTag.php:1636
 msgid "Marriage of a sister"
@@ -16740,7 +16740,7 @@ msgstr "älterer Bruder"
 
 #: app/Functions/Functions.php:797
 msgid "elder sibling"
-msgstr "älterer Geschwister"
+msgstr "älteres Geschwister"
 
 #: app/Functions/Functions.php:780
 msgid "elder sister"
@@ -20135,7 +20135,7 @@ msgstr "jüngerer Bruder"
 
 #: app/Functions/Functions.php:795
 msgid "younger sibling"
-msgstr "jüngerer Geschwister"
+msgstr "jüngeres Geschwister"
 
 #: app/Functions/Functions.php:778
 msgid "younger sister"
