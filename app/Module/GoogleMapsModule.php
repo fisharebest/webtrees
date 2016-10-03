@@ -2396,7 +2396,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function printGoogleMapMarkers($place2, $level, $parent, $levelm, $linklevels) {
 		echo 'var icon_url = null;';
 		if (!$place2['lati'] || !$place2['long']) {
-			echo 'var icon_url =' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png';
+			echo 'var icon_url ="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png";';
 			echo 'var point = new google.maps.LatLng(0, 0);';
 			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels, '&amp;parent[' . $level . ']=';
 
