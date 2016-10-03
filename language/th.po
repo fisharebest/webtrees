@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-10-01 20:17+0000\n"
+"PO-Revision-Date: 2016-10-03 09:55+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Thai <https://translate.webtrees.net/projects/webtrees/webtrees/th/>\n"
 "Language: th\n"
@@ -421,13 +421,13 @@ msgstr[0] ""
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
+msgstr[0] "%s ปี"
 
 #: app/I18N.php:791
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
+msgstr[0] "%s ปีที่แล้ว"
 
 #: app/Functions/FunctionsPrintLists.php:1942
 #: app/Module/YahrzeitModule.php:129 calendar.php:601
@@ -13197,7 +13197,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
 msgid "Stories"
-msgstr ""
+msgstr "เรื่อง"
 
 #: app/Module/StoriesModule.php:237
 msgid "Story"
