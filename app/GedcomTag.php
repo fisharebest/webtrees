@@ -63,7 +63,7 @@ class GedcomTag {
 		'_CHR_CHIL', '_CHR_GCHI', '_CHR_GCH1', '_CHR_GCH2', '_CHR_HSIB', '_CHR_SIBL', '_COML',
 		'_CREM_CHIL', '_CREM_GCHI', '_CREM_GCH1', '_CREM_GCH2', '_CREM_GPAR', '_CREM_HSIB', '_CREM_SIBL', '_CREM_SPOU',
 		'_DBID', '_DEAT_CHIL', '_DEAT_GCHI', '_DEAT_GCH1', '_DEAT_GCH2', '_DEAT_GPAR', '_DEAT_GPA1', '_DEAT_GPA2',
-		'_DEAT_HSIB', '_DEAT_PARE', '_DEAT_SIBL', '_DEAT_SPOU', '_DEG', '_DETS',
+		'_DEAT_HSIB', '_DEAT_PARE', '_DEAT_SIBL', '_DEAT_SPOU', '_DEG', '_DETS', '_DNA',
 		'_EMAIL', '_EYEC', '_FA1', '_FA2', '_FA3', '_FA4', '_FA5', '_FA6', '_FA7', '_FA8',
 		'_FA9', '_FA10', '_FA11', '_FA12', '_FA13', '_FNRL', '_FREL', '_GEDF', '_GODP', '_HAIR',
 		'_HEB', '_HEIG', '_HNM', '_HOL', '_INTE', '_LOC', '_MARB_CHIL', '_MARB_FAMC', '_MARB_GCHI',
@@ -1835,8 +1835,8 @@ class GedcomTag {
 				'SUBM', 'ASSO', 'ALIA', 'ANCI', 'DESI', 'RFN', 'AFN',
 				'REFN', 'RIN', 'CHAN', 'NOTE', 'SHARED_NOTE', 'SOUR', 'OBJE',
 				// non standard tags
-				'_BRTM', '_DEG', '_EYEC', '_FNRL', '_HAIR', '_HEIG', '_HNM', '_HOL',
-				'_INTE', '_MDCL', '_MEDC', '_MILI', '_MILT', '_NAME', '_NAMS',
+				'_BRTM', '_DEG', '_DNA', '_EYEC', '_FNRL', '_HAIR', '_HEIG', '_HNM',
+				'_HOL', '_INTE', '_MDCL', '_MEDC', '_MILI', '_MILT', '_NAME', '_NAMS',
 				'_NLIV', '_NMAR', '_PRMN', '_TODO', '_UID', '_WEIG', '_YART',
 			);
 			break;

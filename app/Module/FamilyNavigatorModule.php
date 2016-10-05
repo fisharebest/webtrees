@@ -132,12 +132,16 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 					<?php echo $menu->getMenu(); ?>
 				</td>
 				<td class="center <?php echo $controller->getPersonStyle($spouse); ?> nam">
+					<?php if ($spouse->canShow()): ?>
 					<a class="famnav_link" href="<?php echo $spouse->getHtmlUrl(); ?>">
 						<?php echo $spouse->getFullName(); ?>
 					</a>
 					<div class="font9">
 						<?php echo $spouse->getLifeSpan(); ?>
 					</div>
+					<?php else: ?>
+						<?php echo $spouse->getFullName(); ?>
+					<?php endif; ?>
 				</td>
 			</tr>
 		<?php
@@ -153,12 +157,16 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 					<?php echo $menu->getMenu(); ?>
 				</td>
 				<td class="center <?php echo $controller->getPersonStyle($child); ?> nam">
+					<?php if ($child->canShow()): ?>
 					<a class="famnav_link" href="<?php echo $child->getHtmlUrl(); ?>">
 						<?php echo $child->getFullName(); ?>
 					</a>
 					<div class="font9">
 						<?php echo $child->getLifeSpan(); ?>
 					</div>
+					<?php else: ?>
+						<?php echo $child->getFullName(); ?>
+					<?php endif; ?>
 				</td>
 			</tr>
 		<?php

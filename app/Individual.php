@@ -339,7 +339,7 @@ class Individual extends GedcomRecord {
 				}
 			}
 			// Check spouse dates
-			$spouse = $family->getSpouse($this);
+			$spouse = $family->getSpouse($this, Auth::PRIV_HIDE);
 			if ($spouse) {
 				preg_match_all('/\n2 DATE (.+)/', $spouse->gedcom, $date_matches);
 				foreach ($date_matches[1] as $date_match) {
@@ -447,7 +447,7 @@ class Individual extends GedcomRecord {
 	 */
 	public function displayImage() {
 		$media = $this->findHighlightedMedia();
-		if ($media) {
+		if ($media && $this->canShow()) {
 			// Thumbnail exists - use it.
 			return $media->displayImage();
 		} elseif ($this->tree->getPreference('USE_SILHOUETTE')) {

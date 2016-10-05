@@ -21,6 +21,7 @@ return array(
     'bd9634f2d41831496de0d3dfe4c94881' => $vendorDir . '/symfony/polyfill-php56/bootstrap.php',
     '023d27dca8066ef29e6739335ea73bad' => $vendorDir . '/symfony/polyfill-php70/bootstrap.php',
     'a7bea2b758e2dc42e25f476fd498182e' => $vendorDir . '/symfony/polyfill-xml/bootstrap.php',
-    '2cffec82183ee1cea088009cef9a6fc3' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     'd242c324488a3873d00844a6f8dec437' => $vendorDir . '/fisharebest/php-polyfill/src/bootstrap.php',
+    '2c102faa651ef8ea5874edb585946bce' => $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php',
+    '2cffec82183ee1cea088009cef9a6fc3' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
 );

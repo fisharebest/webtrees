@@ -22,8 +22,9 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
         'a7bea2b758e2dc42e25f476fd498182e' => __DIR__ . '/..' . '/symfony/polyfill-xml/bootstrap.php',
-        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         'd242c324488a3873d00844a6f8dec437' => __DIR__ . '/..' . '/fisharebest/php-polyfill/src/bootstrap.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -127,13 +128,6 @@ class ComposerStaticInit88915787c0ca8762c9a45e08fa8b3022
     );
 
     public static $prefixesPsr0 = array (
-        'Z' => 
-        array (
-            'Zend_' => 
-            array (
-                0 => __DIR__ . '/..' . '/bombayworks/zendframework1/library',
-            ),
-        ),
         'M' => 
         array (
             'Michelf' => 

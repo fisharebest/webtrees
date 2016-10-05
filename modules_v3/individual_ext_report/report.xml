@@ -198,6 +198,9 @@
 								<if condition="@SEX=='F'">
 									<Text color="$tcolor" style="fact">  <var var="I18N::translate('Wife')"/></Text>
 								</if>
+								<if condition="@SEX=='U'">
+									<Text color="$tcolor" style="fact">  <var var="I18N::translate('Spouse')"/></Text>
+								</if>
 								<Text color="$tcolor" style="text"> <GetPersonName id=""/></Text>
 							</Gedcom>
 						</TextBox>
@@ -211,6 +214,9 @@
 								</if>
 								<if condition="@SEX=='F'">
 									<Text color="$tcolor" style="fact">  <var var="I18N::translate('Wife')"/></Text>
+								</if>
+								<if condition="@SEX=='U'">
+									<Text color="$tcolor" style="fact">  <var var="I18N::translate('Spouse')"/></Text>
 								</if>
 								<Text color="$tcolor" style="text"> <GetPersonName id=""/></Text>
 							</Gedcom>
@@ -380,7 +386,7 @@
 									</TextBox>
 								</if>
 								<!-- Unknown gender for Sibling -->
-								<if condition="(@SEX=='U') or (@SEX=='')">
+								<if condition="@SEX=='U'">
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Gender')"/> <var var="I18N::translateContext('unknown gender', 'Unknown')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
@@ -438,7 +444,7 @@
 						<!-- print information for spouse -->
 						<Gedcom id="$spid">
 							<!-- husband -->
-							<if condition="@SEX=='M'">
+							<if condition="@SEX!='F'">
 								<TextBox bgcolor="$mbgcolor" border="1" newline="1" width="$width">
 									<Text color="$tcolor" style="text"><var var="I18N::translate('Husband')"/>  </Text>
 									<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
@@ -587,7 +593,7 @@
 									</TextBox>
 								</if>
 								<!-- Unknown gender for Child -->
-								<if condition="(@SEX=='U') or (@SEX=='')">
+								<if condition="@SEX=='U'">
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Gender')"/> <var var="I18N::translateContext('unknown gender', 'Unknown')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>

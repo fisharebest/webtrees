@@ -39,52 +39,6 @@
         ]
     },
     {
-        "name": "ezyang/htmlpurifier",
-        "version": "v4.7.0",
-        "version_normalized": "4.7.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ezyang/htmlpurifier.git",
-            "reference": "ae1828d955112356f7677c465f94f7deb7d27a40"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/ae1828d955112356f7677c465f94f7deb7d27a40",
-            "reference": "ae1828d955112356f7677c465f94f7deb7d27a40",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2"
-        },
-        "time": "2015-08-05 01:03:42",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "HTMLPurifier": "library/"
-            },
-            "files": [
-                "library/HTMLPurifier.composer.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL"
-        ],
-        "authors": [
-            {
-                "name": "Edward Z. Yang",
-                "email": "admin@htmlpurifier.org",
-                "homepage": "http://ezyang.com"
-            }
-        ],
-        "description": "Standards compliant HTML filter written in PHP",
-        "homepage": "http://htmlpurifier.org/",
-        "keywords": [
-            "html"
-        ]
-    },
-    {
         "name": "fisharebest/algorithm",
         "version": "1.1.0",
         "version_normalized": "1.1.0.0",
@@ -1298,62 +1252,6 @@
         ]
     },
     {
-        "name": "bombayworks/zendframework1",
-        "version": "v1.12.18",
-        "version_normalized": "1.12.18.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/bombayworks/zendframework1.git",
-            "reference": "fd135c2d2733b57c5e2fc60131fd5aebb7e7295c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/fd135c2d2733b57c5e2fc60131fd5aebb7e7295c",
-            "reference": "fd135c2d2733b57c5e2fc60131fd5aebb7e7295c",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.11"
-        },
-        "replace": {
-            "zendframework/zendframework1": "self.version"
-        },
-        "require-dev": {
-            "phpunit/dbunit": "1.3.*",
-            "phpunit/phpunit": "3.7.*"
-        },
-        "time": "2016-04-13 21:00:06",
-        "bin": [
-            "bin/zf.sh",
-            "bin/zf.php"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.12.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Zend_": "library/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "include-path": [
-            "library/"
-        ],
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "description": "Zend Framework 1",
-        "homepage": "http://framework.zend.com/",
-        "keywords": [
-            "ZF1",
-            "framework"
-        ]
-    },
-    {
         "name": "fisharebest/localization",
         "version": "1.10.0",
         "version_normalized": "1.10.0.0",
@@ -1410,18 +1308,119 @@
         ]
     },
     {
-        "name": "symfony/intl",
-        "version": "v2.8.7",
-        "version_normalized": "2.8.7.0",
+        "name": "swiftmailer/swiftmailer",
+        "version": "v5.4.3",
+        "version_normalized": "5.4.3.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/intl.git",
-            "reference": "0137828b590c254232392ff017b377efdc037f42"
+            "url": "https://github.com/swiftmailer/swiftmailer.git",
+            "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/intl/zipball/0137828b590c254232392ff017b377efdc037f42",
-            "reference": "0137828b590c254232392ff017b377efdc037f42",
+            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
+            "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9.1"
+        },
+        "time": "2016-07-08 11:51:25",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/swift_required.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Chris Corbyn"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Swiftmailer, free feature-rich PHP mailer",
+        "homepage": "http://swiftmailer.org",
+        "keywords": [
+            "email",
+            "mail",
+            "mailer"
+        ]
+    },
+    {
+        "name": "ezyang/htmlpurifier",
+        "version": "v4.8.0",
+        "version_normalized": "4.8.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ezyang/htmlpurifier.git",
+            "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
+            "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2"
+        },
+        "time": "2016-07-16 12:58:58",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "HTMLPurifier": "library/"
+            },
+            "files": [
+                "library/HTMLPurifier.composer.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL"
+        ],
+        "authors": [
+            {
+                "name": "Edward Z. Yang",
+                "email": "admin@htmlpurifier.org",
+                "homepage": "http://ezyang.com"
+            }
+        ],
+        "description": "Standards compliant HTML filter written in PHP",
+        "homepage": "http://htmlpurifier.org/",
+        "keywords": [
+            "html"
+        ]
+    },
+    {
+        "name": "symfony/intl",
+        "version": "v2.8.11",
+        "version_normalized": "2.8.11.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/intl.git",
+            "reference": "2ec401b37460b22077643d48773e5f6a9f0b21e8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/intl/zipball/2ec401b37460b22077643d48773e5f6a9f0b21e8",
+            "reference": "2ec401b37460b22077643d48773e5f6a9f0b21e8",
             "shasum": ""
         },
         "require": {
@@ -1435,7 +1434,7 @@
         "suggest": {
             "ext-intl": "to use the component with locales other than \"en\""
         },
-        "time": "2016-05-13 15:38:45",
+        "time": "2016-09-06 10:55:00",
         "type": "library",
         "extra": {
             "branch-alias": {

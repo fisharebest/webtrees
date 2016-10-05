@@ -747,7 +747,7 @@ abstract class AbstractTheme {
 
 		$content = '<span class="namedef name1">' . $individual->getFullName() . '</span>';
 		$icons   = '';
-		if ($individual->canShowName()) {
+		if ($individual->canShow()) {
 			$content =
 				'<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
 				'<div class="namedef name1">' . $individual->getAddName() . '</div>';
@@ -799,7 +799,7 @@ abstract class AbstractTheme {
 
 		$content = '<span class="namedef name1">' . $individual->getFullName() . '</span>';
 		$icons   = '';
-		if ($individual->canShowName()) {
+		if ($individual->canShow()) {
 			$content =
 				'<a href="' . $individual->getHtmlUrl() . '">' . $content . '</a>' .
 				'<div class="namedef name2">' . $individual->getAddName() . '</div>';
@@ -1638,8 +1638,8 @@ abstract class AbstractTheme {
 				$this->menuMyIndividualRecord(),
 				$this->menuMyPedigree(),
 				$this->menuMyAccount(),
-				$this->menuChangeBlocks(),
 				$this->menuControlPanel(),
+				$this->menuChangeBlocks(),
 			)));
 		} else {
 			return null;

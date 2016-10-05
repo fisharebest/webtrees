@@ -382,8 +382,8 @@
 										<Text color="$tcolor" style="text"> (<var var="I18N::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 									</TextBox>
 								</if>
-								<!-- Unknown gender for Sibling -->
-								<if condition="(@SEX=='U') or (@SEX=='')">
+								<!-- Sibling -->
+								<if condition="@SEX=='U'">
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Gender')"/> <var var="I18N::translateContext('unknown gender', 'Unknown')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
@@ -597,7 +597,7 @@
 									</TextBox>
 								</if>
 								<!-- Unknown gender for Child -->
-								<if condition="(@SEX=='U') or (@SEX=='')">
+								<if condition="@SEX=='U'">
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="I18N::translate('Gender')"/> <var var="I18N::translateContext('unknown gender', 'Unknown')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>

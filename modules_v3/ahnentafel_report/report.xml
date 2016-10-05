@@ -440,8 +440,10 @@
 												<Gedcom id="BIRT">
 													<Text style="label1" > <var var="I18N::translate('Birth')" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/> <br /></Text>
 												</Gedcom>
-												<if condition="@SEX=='M'"><SetVar name="gender" value="male" /></if>
-												<if condition="@SEX=='F'"><SetVar name="gender" value="female" /></if>
+												<SetVar name="gender" value="male" />
+		<if condition="@SEX=='F'">
+			<SetVar name="gender" value="female" />
+		</if>
 												<RepeatTag tag="FAMS">
 													<Gedcom id="@FAMS">
 														<Text style="label1"> <var var="I18N::translate('Marriage')" /> </Text>

@@ -348,7 +348,7 @@ class FanchartController extends ChartController {
 					$html .= '</a>';
 					$html .= '<ul class="charts">';
 					foreach (Theme::theme()->individualBoxMenu($person) as $menu) {
-						$html .= '<li><a href="' . $menu->getLink() . '">' . $menu->getLabel() . '</a></li>';
+						$html .= $menu->getMenuAsList();
 					}
 					$html .= '</ul>';
 					$html .= '</div></div>';

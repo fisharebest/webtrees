@@ -345,9 +345,10 @@ if (!$ajax) {
 		</table>
 		</fieldset>';
 	} elseif ($tab == 2) {
-		echo '<fieldset>
-		<legend>', I18N::translate('Records'), ': ', $stats->totalRecords(), '</legend>
-		<table class="facts_table">
+		echo '
+		<fieldset>
+			<legend>', I18N::translate('Records'), ': ', $stats->totalRecords(), '</legend>
+			<table class="facts_table">
 			<tr>
 				<td class="facts_label">', I18N::translate('Media objects'), '</td>
 				<td class="facts_label">', I18N::translate('Sources'), '</td>
@@ -365,71 +366,69 @@ if (!$ajax) {
 		<fieldset>
 			<legend>', I18N::translate('Total events'), ': ', $stats->totalEvents(), '</legend>
 			<table class="facts_table">
-			<tr>
-				<td class="facts_label">', I18N::translate('First event'), ' - ', $stats->firstEventType(), '</td>
-				<td class="facts_label">', I18N::translate('Last event'), ' - ', $stats->lastEventType(), '</td>
-			</tr>
-			<tr>
-				<td class="facts_value">', $stats->firstEvent(), '</td>
-				<td class="facts_value">', $stats->lastEvent(), '</td>
-			</tr>
+				<tr>
+					<td class="facts_label">', I18N::translate('First event'), ' - ', $stats->firstEventType(), '</td>
+					<td class="facts_label">', I18N::translate('Last event'), ' - ', $stats->lastEventType(), '</td>
+				</tr>
+				<tr>
+					<td class="facts_value">', $stats->firstEvent(), '</td>
+					<td class="facts_value">', $stats->lastEvent(), '</td>
+				</tr>
 			</table>
 		</fieldset>
 		<fieldset>
 			<legend>', I18N::translate('Media objects'), ': ', $stats->totalMedia(), '</legend>
 			<table class="facts_table">
-			<tr>
-				<td class="facts_label">', I18N::translate('Media objects'), '</td>
-			</tr>
-			<tr>
-				<td class="facts_value statistics-page">', $stats->chartMedia(), '</td>
-			</tr>
+				<tr>
+					<td class="facts_label">', I18N::translate('Media objects'), '</td>
+				</tr>
+				<tr>
+					<td class="facts_value statistics-page">', $stats->chartMedia(), '</td>
+				</tr>
 			</table>
 		</fieldset>
 		<fieldset>
 			<legend>', I18N::translate('Sources'), ': ', $stats->totalSources(), '</legend>
 			<table class="facts_table">
-			<tr>
-				<td class="facts_label">', I18N::translate('Individuals with sources'), '</td>
-				<td class="facts_label">', I18N::translate('Families with sources'), '</td>
-			</tr>
-			<tr>
-				<td class="facts_value statistics-page">', $stats->totalIndisWithSources(), '</td>
-				<td class="facts_value statistics-page">', $stats->totalFamsWithSources(), '</td>
-			</tr>
-			<tr>
-				<td class="facts_value statistics-page">', $stats->chartIndisWithSources(), '</td>
-				<td class="facts_value statistics-page">', $stats->chartFamsWithSources(), '</td>
-			</tr>
+				<tr>
+					<td class="facts_label">', I18N::translate('Individuals with sources'), '</td>
+					<td class="facts_label">', I18N::translate('Families with sources'), '</td>
+				</tr>
+				<tr>
+					<td class="facts_value statistics-page">', $stats->totalIndisWithSources(), '</td>
+					<td class="facts_value statistics-page">', $stats->totalFamsWithSources(), '</td>
+				</tr>
+				<tr>
+					<td class="facts_value statistics-page">', $stats->chartIndisWithSources(), '</td>
+					<td class="facts_value statistics-page">', $stats->chartFamsWithSources(), '</td>
+				</tr>
 			</table>
 		</fieldset>
 		<fieldset>
 			<legend>', I18N::translate('Places'), ': ', $stats->totalPlaces(), '</legend>
 			<table class="facts_table">
-			<tr>
-				<td class="facts_label">', I18N::translate('Birth places'), '</td>
-				<td class="facts_label">', I18N::translate('Death places'), '</td>
-			</tr>
-			<tr>
-				<td class="facts_value">', $stats->commonBirthPlacesList(), '</td>
-				<td class="facts_value">', $stats->commonDeathPlacesList(), '</td>
-			</tr>
-			<tr>
-				<td class="facts_label">', I18N::translate('Marriage places'), '</td>
-				<td class="facts_label">', I18N::translate('Events in countries'), '</td>
-			</tr>
-			<tr>
-				<td class="facts_value">', $stats->commonMarriagePlacesList(), '</td>
-				<td class="facts_value">', $stats->commonCountriesList(), '</td>
-			</tr>
-			<tr>
-				<td class="facts_value" colspan="2">', $stats->chartDistribution(), '</td>
-			</tr>
-		</table>
+				<tr>
+					<td class="facts_label">', I18N::translate('Birth places'), '</td>
+					<td class="facts_label">', I18N::translate('Death places'), '</td>
+				</tr>
+				<tr>
+					<td class="facts_value">', $stats->commonBirthPlacesList(), '</td>
+					<td class="facts_value">', $stats->commonDeathPlacesList(), '</td>
+				</tr>
+				<tr>
+					<td class="facts_label">', I18N::translate('Marriage places'), '</td>
+					<td class="facts_label">', I18N::translate('Events in countries'), '</td>
+				</tr>
+				<tr>
+					<td class="facts_value">', $stats->commonMarriagePlacesList(), '</td>
+					<td class="facts_value">', $stats->commonCountriesList(), '</td>
+				</tr>
+				<tr>
+					<td class="facts_value" colspan="2">', $stats->chartDistribution(), '</td>
+				</tr>
+			</table>
 		</fieldset>';
 	} elseif ($tab == 3) {
-		echo '<fieldset>
-		<legend>', I18N::translate('Create your own chart'), '</legend>';
 		?>
 		<script>
 			function statusHide(sel) {
@@ -493,160 +492,282 @@ if (!$ajax) {
 				return false;
 			}
 		</script>
-		<?php
-		echo '<div id="own-stats"><form method="post" id="own-stats-form" name="form" action="statisticsplot.php" onsubmit="return statsModalDialog();">';
-		echo '<input type="hidden" name="action" value="update">';
-		echo '<table width="100%">';
-		echo '<tr>
-			<td class="descriptionbox width25 wrap">', I18N::translate('Chart type'), '</td>
-			<td class="optionbox">
-			<input type="radio" id="stat_11" name="x-as" value="11" checked';
-		echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
-		echo '"><label for="stat_11">', I18N::translate('Month of birth'), '</label><br>';
-		echo '<input type="radio" id="stat_12" name="x-as" value="12" ';
-		echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
-		echo '"><label for="stat_12">', I18N::translate('Month of death'), '</label><br>';
-		echo '<input type="radio" id="stat_13" name="x-as" value="13" ';
-		echo " onclick=\"{statusChecked('z_none'); statusDisable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
-		echo '"><label for="stat_13">', I18N::translate('Month of marriage'), '</label><br>';
-		echo '<input type="radio" id="stat_15" name="x-as" value="15" ';
-		echo " onclick=\"{statusChecked('z_none'); statusDisable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
-		echo '"><label for="stat_15">', I18N::translate('Month of first marriage'), '</label><br>';
-		echo '<input type="radio" id="stat_14" name="x-as" value="14" ';
-		echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
-		echo '"><label for="stat_14">', I18N::translate('Month of birth of first child in a relation'), '</label><br>';
-		echo '<input type="radio" id="stat_17" name="x-as" value="17" ';
-		echo " onclick=\"{statusEnable('z_sex'); statusShow('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
-		echo '"><label for="stat_17">', I18N::translate('Age related to birth year'), '</label><br>';
-		echo '<input type="radio" id="stat_18" name="x-as" value="18" ';
-		echo " onclick=\"{statusEnable('z_sex'); statusShow('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
-		echo '"><label for="stat_18">', I18N::translate('Age related to death year'), '</label><br>';
-		echo '<input type="radio" id="stat_19" name="x-as" value="19" ';
-		echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusShow('x_years_m'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
-		echo '"><label for="stat_19">', I18N::translate('Age in year of marriage'), '</label><br>';
-		echo '<input type="radio" id="stat_20" name="x-as" value="20" ';
-		echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusShow('x_years_m'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
-		echo '"><label for="stat_20">', I18N::translate('Age in year of first marriage'), '</label><br>';
-		echo '<input type="radio" id="stat_21" name="x-as" value="21" ';
-		echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusShow('x_numbers'); statusHide('map_opt');}";
-		echo '"><label for="stat_21">', I18N::translate('Number of children'), '</label><br>';
-		echo '<input type="radio" id="stat_1" name="x-as" value="1" ';
-		echo " onclick=\"{statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusShow('map_opt'); statusShow('chart_type'); statusHide('axes');}";
-		echo '"><label for="stat_1">', I18N::translate('Individual distribution'), '</label><br>';
-		echo '<input type="radio" id="stat_2" name="x-as" value="2" ';
-		echo " onclick=\"{statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusShow('map_opt'); statusHide('chart_type'); statusHide('surname_opt');}";
-		echo '"><label for="stat_2">', I18N::translate('Birth by country'), '</label><br>';
-		echo '<input type="radio" id="stat_4" name="x-as" value="4" ';
-		echo " onclick=\"{statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusShow('map_opt'); statusHide('chart_type'); statusHide('surname_opt');}";
-		echo '"><label for="stat_4">', I18N::translate('Marriage by country'), '</label><br>';
-		echo '<input type="radio" id="stat_3" name="x-as" value="3" ';
-		echo " onclick=\"{statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusShow('map_opt'); statusHide('chart_type'); statusHide('surname_opt');}";
-		echo '"><label for="stat_3">', I18N::translate('Death by country'), '</label><br>';
-		echo '<br><div id="x_years" style="display:none;">';
-		echo I18N::translate('Select the desired age interval');
-		echo '<br><select id="x-axis-boundaries-ages" name="x-axis-boundaries-ages">
-				<option value="1,5,10,20,30,40,50,60,70,80,90,100" selected>',
-		I18N::plural('interval %s year', 'interval %s years', 10, I18N::number(10)), '</option>
-				<option value="5,20,40,60,75,80,85,90">',
-		I18N::plural('interval %s year', 'interval %s years', 20, I18N::number(20)), '</option>
-				<option value="10,25,50,75,100">',
-		I18N::plural('interval %s year', 'interval %s years', 25, I18N::number(25)), '</option>
-			</select><br>
+		<fieldset>
+			<legend>
+				<?php echo I18N::translate('Create your own chart') ?>
+			</legend>
+			<div id="own-stats">
+				<form method="post" id="own-stats-form" action="statisticsplot.php" onsubmit="return statsModalDialog();">
+					<input type="hidden" name="action" value="update">
+					<table style="width:100%">
+						<tr>
+							<td class="descriptionbox width25 wrap">
+								<?php echo I18N::translate('Chart type') ?>
+							</td>
+							<td class="optionbox">
+								<label>
+									<input type="radio" name="x-as" value="11" checked onclick="statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');">
+									<?php echo I18N::translate('Month of birth') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="x-as" value="12" onclick="statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');">
+									<?php echo I18N::translate('Month of death') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="x-as" value="13" onclick="statusChecked('z_none'); statusDisable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');">
+									<?php echo I18N::translate('Month of marriage'); ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="x-as" value="15" onclick="statusChecked('z_none'); statusDisable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');">
+									<?php echo I18N::translate('Month of first marriage') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="x-as" value="14" onclick="statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');">
+									<?php echo I18N::translate('Month of birth of first child in a relation') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="x-as" value="17" onclick="statusEnable('z_sex'); statusShow('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');">
+									<?php echo I18N::translate('Age related to birth year') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="x-as" value="18" onclick="statusEnable('z_sex'); statusShow('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');">
+									<?php echo I18N::translate('Age related to death year') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="x-as" value="19" onclick="statusEnable('z_sex'); statusHide('x_years'); statusShow('x_years_m'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');">
+									<?php echo I18N::translate('Age in year of marriage') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="x-as" value="20" onclick="statusEnable('z_sex'); statusHide('x_years'); statusShow('x_years_m'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');">
+									<?php echo I18N::translate('Age in year of first marriage') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="x-as" value="21" onclick="statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusShow('x_numbers'); statusHide('map_opt');">
+									<?php echo I18N::translate('Number of children') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="x-as" value="1" onclick="statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusShow('map_opt'); statusShow('chart_type'); statusHide('axes');">
+									<?php echo I18N::translate('Individual distribution') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="x-as" value="2" onclick="statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusShow('map_opt'); statusHide('chart_type'); statusHide('surname_opt');">
+									<?php echo I18N::translate('Birth by country') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="x-as" value="4" onclick="statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusShow('map_opt'); statusHide('chart_type'); statusHide('surname_opt');">
+									<?php echo I18N::translate('Marriage by country') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="x-as" value="3" onclick="statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusShow('map_opt'); statusHide('chart_type'); statusHide('surname_opt');">
+									<?php echo I18N::translate('Death by country') ?>
+								</label>
+								<br>
+								<br>
+								<div id="x_years" style="display:none;">
+									<label for="x-axis-boundaries-ages">
+										<?php echo I18N::translate('Select the desired age interval') ?>
+									</label>
+									<br>
+										<select id="x-axis-boundaries-ages" name="x-axis-boundaries-ages">
+											<option value="1,5,10,20,30,40,50,60,70,80,90,100" selected>
+												<?php echo I18N::plural('interval %s year', 'interval %s years', 10, I18N::number(10)) ?>
+											</option>
+											<option value="5,20,40,60,75,80,85,90">
+												<?php echo I18N::plural('interval %s year', 'interval %s years', 20, I18N::number(20)) ?>
+											</option>
+											<option value="10,25,50,75,100">
+												<?php echo I18N::plural('interval %s year', 'interval %s years', 25, I18N::number(25)) ?>
+											</option>
+										</select>
+									<br>
+								</div>
+								<div id="x_years_m" style="display:none;">
+									<label for="x-axis-boundaries-ages_m">
+										<?php echo I18N::translate('Select the desired age interval') ?>
+									</label>
+									<br>
+									<select id="x-axis-boundaries-ages_m" name="x-axis-boundaries-ages_m">
+										<option value="16,18,20,22,24,26,28,30,32,35,40,50" selected>
+											<?php echo I18N::plural('interval %s year', 'interval %s years', 2, I18N::number(2)) ?>
+										</option>
+										<option value="20,25,30,35,40,45,50">
+											<?php echo I18N::plural('interval %s year', 'interval %s years', 5, I18N::number(5)) ?>
+										</option>
+									</select>
+									<br>
+								</div>
+								<div id="x_months" style="display:none;">
+									<label for="x-axis-boundaries-months">
+										<?php I18N::translate('Select the desired age interval') ?>
+									</label>
+									<br>
+									<select id="x-axis-boundaries-months" name="x-axis-boundaries-months">
+										<option value="0,8,12,15,18,24,48" selected>
+											<?php echo I18N::translate('months after marriage') ?>
+										</option>
+										<option value="-24,-12,0,8,12,18,24,48">
+											<?php echo I18N::translate('months before and after marriage') ?>
+										</option>
+										<option value="0,6,9,12,15,18,21,24">
+											<?php echo I18N::translate('quarters after marriage') ?>
+										</option>
+										<option value="0,6,12,18,24">
+											<?php echo I18N::translate('half-year after marriage') ?>
+										</option>
+									</select>
+									<br>
+								</div>
+								<div id="x_numbers" style="display:none;">
+									<label for="x-axis-boundaries-numbers">
+										<?php echo I18N::translate('Select the desired count interval') ?>
+									</label>
+									<br>
+									<select id="x-axis-boundaries-numbers" name="x-axis-boundaries-numbers">
+										<option value="1,2,3,4,5,6,7,8,9,10" selected>
+											<?php echo I18N::translate('interval one child') ?>
+										</option>
+										<option value="2,4,6,8,10,12">
+											<?php echo I18N::translate('interval two children') ?>
+										</option>
+									</select>
+									<br>
+								</div>
+								<div id="map_opt" style="display:none;">
+									<div id="chart_type">
+										<label>
+											<?php echo I18N::translate('Chart type') ?>
+											<br>
+											<select name="chart_type" onchange="statusShowSurname(this);">
+												<option value="indi_distribution_chart" selected>
+													<?php echo I18N::translate('Individual distribution chart') ?>
+												</option>
+												<option value="surname_distribution_chart">
+													<?php echo I18N::translate('Surname distribution chart') ?>
+												</option>
+											</select>
+										</label>
+										<br>
+									</div>
+									<div id="surname_opt" style="display:none;">
+										<label for="SURN">
+											<?php echo GedcomTag::getLabel('SURN') ?>
+										</label>
+										<?php echo FunctionsPrint::helpLink('google_chart_surname'); ?>
+										<br>
+										<input data-autocomplete-type="SURN" type="text" id="SURN" name="SURN" size="20">
+										<br>
+									</div>
+										<label for="chart_shows">
+											<?php echo I18N::translate('Geographic area') ?>
+										</label>
+										<br>
+										<select id="chart_shows" name="chart_shows">
+											<option value="world" selected>
+												<?php echo I18N::translate('World') ?>
+											</option>
+											<option value="europe">
+												<?php echo I18N::translate('Europe') ?>
+											</option>
+											<option value="usa">
+												<?php echo I18N::translate('United States') ?>
+											</option>
+											<option value="south_america">
+												<?php echo I18N::translate('South America') ?>
+											</option>
+											<option value="asia">
+												<?php echo I18N::translate('Asia') ?>
+											</option>
+											<option value="middle_east">
+												<?php echo I18N::translate('Middle East') ?>
+											</option>
+											<option value="africa">
+												<?php echo I18N::translate('Africa') ?>
+											</option>
+										</select>
+									</div>
+								</td>
+							<td class="descriptionbox width20 wrap" id="axes">
+									<?php echo I18N::translate('Categories') ?>
+							</td>
+							<td class="optionbox width30" id="zyaxes">
+								<label>
+									<input type="radio" id="z_none" name="z-as" value="300" onclick="statusDisable('z-axis-boundaries-periods');">
+									<?php echo I18N::translate('overall') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" id="z_sex" name="z-as" value="301" onclick="statusDisable('z-axis-boundaries-periods');">
+									<?php echo I18N::translate('gender') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" id="z_time" name="z-as" value="302" checked onclick="statusEnable('z-axis-boundaries-periods');">
+									<?php echo I18N::translate('date periods') ?>
+								</label>
+								<br>
+								<br>
+								<label for="z-axis-boundaries-periods">
+									<?php echo I18N::translate('Date range') ?>
+								</label>
+								<br>
+								<select id="z-axis-boundaries-periods" name="z-axis-boundaries-periods">
+									<option value="1700,1750,1800,1850,1900,1950,2000" selected>
+										<?php echo /* I18N: from 1700 interval 50 years */ I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, I18N::digits(1700), I18N::number(50)) ?>
+									</option>
+									<option value="1800,1840,1880,1920,1950,1970,2000">
+										<?php echo I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 40, I18N::digits(1800), I18N::number(40)) ?>
+									</option>
+									<option value="1800,1850,1900,1950,2000">
+										<?php echo I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, I18N::digits(1800), I18N::number(50)) ?>
+									</option>
+									<option value="1900,1920,1940,1960,1980,1990,2000">
+										<?php echo I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 20, I18N::digits(1900), I18N::number(20)) ?>
+									</option>
+									<option value="1900,1925,1950,1975,2000">
+										<?php echo I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 25, I18N::digits(1900), I18N::number(25)) ?>
+									</option>
+									<option value="1940,1950,1960,1970,1980,1990,2000">
+										<?php echo I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 10, I18N::digits(1940), I18N::number(10)) ?>
+									</option>
+								</select>
+								<br>
+								<br>
+								<?php echo I18N::translate('Results') ?>
+								<br>
+								<label>
+									<input type="radio" name="y-as" value="201" checked>
+									<?php echo I18N::translate('numbers') ?>
+								</label>
+								<br>
+								<label>
+									<input type="radio" name="y-as" value="202">
+									<?php echo I18N::translate('percentage') ?>
+								</label>
+								<br>
+							</td>
+						</tr>
+					</table>
+					<p class="center">
+						<button type="submit">
+							<?php echo I18N::translate('show the chart') ?>
+						</button>
+					</p>
+				</form>
 			</div>
-			<div id="x_years_m" style="display:none;">';
-		echo I18N::translate('Select the desired age interval');
-		echo '<br><select id="x-axis-boundaries-ages_m" name="x-axis-boundaries-ages_m">
-				<option value="16,18,20,22,24,26,28,30,32,35,40,50" selected>',
-		I18N::plural('interval %s year', 'interval %s years', 2, I18N::number(2)), '</option>
-				<option value="20,25,30,35,40,45,50">',
-		I18N::plural('interval %s year', 'interval %s years', 5, I18N::number(5)), '</option>
-			</select><br>
-			</div>
-			<div id="x_months" style="display:none;">';
-		echo I18N::translate('Select the desired age interval');
-		echo '<br><select id="x-axis-boundaries-months" name="x-axis-boundaries-months">
-				<option value="0,8,12,15,18,24,48" selected>', I18N::translate('months after marriage'), '</option>
-				<option value="-24,-12,0,8,12,18,24,48">', I18N::translate('months before and after marriage'), '</option>
-				<option value="0,6,9,12,15,18,21,24">', I18N::translate('quarters after marriage'), '</option>
-				<option value="0,6,12,18,24">', I18N::translate('half-year after marriage'), '</option>
-			</select><br>
-			</div>
-			<div id="x_numbers" style="display:none;">';
-		echo I18N::translate('Select the desired count interval');
-		echo '<br><select id="x-axis-boundaries-numbers" name="x-axis-boundaries-numbers">
-				<option value="1,2,3,4,5,6,7,8,9,10" selected>', I18N::translate('interval one child'), '</option>
-				<option value="2,4,6,8,10,12">', I18N::translate('interval two children'), '</option>
-			</select>
-			<br>
-			</div>
-			<div id="map_opt" style="display:none;">
-			<div id="chart_type">';
-		echo I18N::translate('Chart type');
-		echo '<br><select name="chart_type" onchange="statusShowSurname(this);">
-				<option value="indi_distribution_chart" selected>', I18N::translate('Individual distribution chart'), '</option>
-				<option value="surname_distribution_chart">', I18N::translate('Surname distribution chart'), '</option>
-			</select>
-			<br>
-			</div>
-			<div id="surname_opt" style="display:none;">';
-		echo GedcomTag::getLabel('SURN'), FunctionsPrint::helpLink('google_chart_surname'), '<br><input data-autocomplete-type="SURN" type="text" name="SURN" size="20">';
-		echo '<br>
-			</div>';
-		echo I18N::translate('Geographic area');
-		echo '<br><select id="chart_shows" name="chart_shows">
-				<option value="world" selected>', I18N::translate('World'), '</option>
-				<option value="europe">', I18N::translate('Europe'), '</option>
-				<option value="south_america">', I18N::translate('South America'), '</option>
-				<option value="asia">', I18N::translate('Asia'), '</option>
-				<option value="middle_east">', I18N::translate('Middle East'), '</option>
-				<option value="africa">', I18N::translate('Africa'), '</option>
-			</select>
-			</div>
-			</td>
-			<td class="descriptionbox width20 wrap" id="axes">', I18N::translate('Categories'), '</td>
-			<td class="optionbox width30" id="zyaxes">
-			<input type="radio" id="z_none" name="z-as" value="300" ';
-		echo " onclick=\"statusDisable('z-axis-boundaries-periods');";
-		echo '"><label for="z_none">', I18N::translate('overall'), '</label><br>';
-		echo '<input type="radio" id="z_sex" name="z-as" value="301" ';
-		echo " onclick=\"statusDisable('z-axis-boundaries-periods');";
-		echo '"><label for="z_sex">', I18N::translate('gender'), '</label><br>';
-		echo '<input type="radio" id="z_time" name="z-as" value="302" checked';
-		echo " onclick=\"statusEnable('z-axis-boundaries-periods');";
-		echo '"><label for="z_time">', I18N::translate('date periods'), '</label><br><br>';
-		echo I18N::translate('Date range'), '<br>';
-		echo '<select id="z-axis-boundaries-periods" name="z-axis-boundaries-periods">
-				<option value="1700,1750,1800,1850,1900,1950,2000" selected>',
-			/* I18N: from 1700 interval 50 years */
-		I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, I18N::digits(1700), I18N::number(50)), '</option>
-				<option value="1800,1840,1880,1920,1950,1970,2000">',
-		I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 40, I18N::digits(1800), I18N::number(40)), '</option>
-				<option value="1800,1850,1900,1950,2000">',
-		I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, I18N::digits(1800), I18N::number(50)), '</option>
-				<option value="1900,1920,1940,1960,1980,1990,2000">',
-		I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 20, I18N::digits(1900), I18N::number(20)), '</option>
-				<option value="1900,1925,1950,1975,2000">',
-		I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 25, I18N::digits(1900), I18N::number(25)), '</option>
-				<option value="1940,1950,1960,1970,1980,1990,2000">',
-		I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 10, I18N::digits(1940), I18N::number(10)), '</option>
-			</select>
-			<br><br>';
-		echo I18N::translate('Results'), '<br>';
-		echo '<input type="radio" id="y_num" name="y-as" value="201" checked';
-		echo '><label for="y_num">', I18N::translate('numbers'), '</label><br>';
-		echo '<input type="radio" id="y_perc" name="y-as" value="202" ';
-		echo '><label for="y_perc">', I18N::translate('percentage'), '</label><br>';
-		echo '</td>
-			</tr>
-			</table>
-			<table width="100%">
-			<tr style="text-align:center;"><td>
-				<br>
-				<input type="submit" value="', I18N::translate('show the chart'), ' ">
-			</td>
-			</tr>
-		</table>
-		</form></div>
-		</fieldset>';
+		</fieldset>
+	<?php
 	}
 }

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-06-26 14:25+0100\n"
+"POT-Creation-Date: 2016-09-18 14:15+0100\n"
 "PO-Revision-Date: 2016-06-29 13:55+0000\n"
 "Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
@@ -91,7 +91,7 @@ msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
-#: admin_site_upgrade.php:254
+#: admin_site_upgrade.php:255
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
 msgstr "%1$sKB zostało pobranych w %2$s sekund."
@@ -115,7 +115,7 @@ msgid "%1$s does not have a link back to %2$s."
 msgstr "%1$s nie ma powiązania zwrotnego do %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
-#: admin_site_upgrade.php:311 admin_site_upgrade.php:395
+#: admin_site_upgrade.php:312 admin_site_upgrade.php:396
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
@@ -123,7 +123,7 @@ msgstr[0] "%1$s plik został rozpakowany w %2$s sekund."
 msgstr[1] "%1$s pliki zostały rozpakowane w %2$s sekund."
 msgstr[2] "%1$s plików zostało rozpakowanych w %2$s sekund."
 
-#: app/Module/GoogleMapsModule.php:864
+#: app/Module/GoogleMapsModule.php:839
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
@@ -132,7 +132,7 @@ msgstr[1] "%1$s osoby są wyświetlone spośród wszystkich %2$s z %3$s pokoleń
 msgstr[2] "%1$s osób jest wyświetlonych spośród wszystkich %2$s z %3$s pokoleń."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
-#: app/Module/GoogleMapsModule.php:878
+#: app/Module/GoogleMapsModule.php:853
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
@@ -278,7 +278,7 @@ msgstr[0] "%s rodzina została uaktualniona."
 msgstr[1] "%s rodziny zostały uaktualnione."
 msgstr[2] "%s rodzin zostało uaktualnionych."
 
-#: admin.php:841
+#: admin.php:859
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
@@ -318,7 +318,7 @@ msgstr[0] "%s osoba została uaktualniona."
 msgstr[1] "%s osoby zostały uaktualnione."
 msgstr[2] "%s osób zostało uaktualnionych."
 
-#: app/Module/GoogleMapsModule.php:871
+#: app/Module/GoogleMapsModule.php:846
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
@@ -490,8 +490,8 @@ msgstr[0] "%s rok temu"
 msgstr[1] "%s lata temu"
 msgstr[2] "%s lat temu"
 
-#: app/Functions/FunctionsPrintLists.php:1942
-#: app/Module/YahrzeitModule.php:129 calendar.php:609
+#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
+#: calendar.php:601
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s rocznica"
@@ -811,12 +811,12 @@ msgid "A fan chart of an individual’s ancestors."
 msgstr "Diagram kołowy wyświetlający przodków danej osoby."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:225
-#: app/Module/GoogleMapsModule.php:3782
+#: app/Module/GoogleMapsModule.php:3652
 msgid "A file on the server"
 msgstr "Plik na serwerze"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:214
-#: app/Module/GoogleMapsModule.php:3770
+#: app/Module/GoogleMapsModule.php:3640
 msgid "A file on your computer"
 msgstr "Plik na komputerze"
 
@@ -904,7 +904,7 @@ msgstr "Otrzymaliśmy zamówienie na nowe hasło dla twojego konta."
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "Nowy użytkownik (%1$s) poprosił o utworzenie konta (%2$s) i zweryfikował adres e-mail (%3$s)."
 
-#: admin.php:612 admin_site_upgrade.php:78 login.php:115
+#: admin.php:630 admin_site_upgrade.php:79 login.php:115
 msgid "A new version of webtrees is available."
 msgstr "Dostępna jest nowa wersja webtrees."
 
@@ -1133,12 +1133,12 @@ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 msgstr "ALPHABET_upper=AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ"
 
 #. I18N: https://en.wikipedia.org/wiki/API_key
-#: app/Module/GoogleMapsModule.php:313
+#: app/Module/GoogleMapsModule.php:308
 msgid "API key"
 msgstr "Klucz API"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:77
+#: app/GedcomCode/GedcomCodeTemp.php:81
 msgid "Aba, Nigeria"
 msgstr "Aba, Nigeria"
 
@@ -1182,11 +1182,11 @@ msgstr "Skracaj nazwy miejsc"
 msgid "Abbreviation"
 msgstr "Skrót"
 
-#: edit_changes.php:176 edit_changes.php:184
+#: edit_changes.php:181 edit_changes.php:189
 msgid "Accept"
 msgstr "Zatwierdź"
 
-#: edit_changes.php:209 edit_changes.php:220
+#: edit_changes.php:214 edit_changes.php:225
 msgid "Accept all changes"
 msgstr "Zaakceptuj wszystkie zmiany"
 
@@ -1206,7 +1206,7 @@ msgid "Account approval and email verification"
 msgstr "Zatwierdzenie konta i potwierdzenie adresu email"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:79
+#: app/GedcomCode/GedcomCodeTemp.php:83
 msgid "Accra, Ghana"
 msgstr "Accra, Ghana"
 
@@ -1308,8 +1308,7 @@ msgstr "Dodaj nowe dziecko"
 msgid "Add a child to create a one-parent family"
 msgstr "Dodaj dziecko do tej osoby"
 
-#: app/Controller/FamilyController.php:82
-#: app/Functions/FunctionsCharts.php:310
+#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
 msgstr "Dodaj dziecko do tej rodziny"
 
@@ -1317,7 +1316,7 @@ msgstr "Dodaj dziecko do tej rodziny"
 msgid "Add a fact"
 msgstr "Dodaj fakt"
 
-#: app/Module/RelativesTabModule.php:326 edit_interface.php:675 family.php:110
+#: app/Module/RelativesTabModule.php:326 edit_interface.php:675 family.php:92
 msgid "Add a father"
 msgstr "Dodaj nowego ojca"
 
@@ -1325,7 +1324,7 @@ msgstr "Dodaj nowego ojca"
 msgid "Add a favorite"
 msgstr "Dodaj do ulubionych"
 
-#: app/Module/GoogleMapsModule.php:4147
+#: app/Module/GoogleMapsModule.php:4017
 msgid "Add a geographic location"
 msgstr "Dodaj nową lokalizację geograficzną"
 
@@ -1343,18 +1342,17 @@ msgstr "Dodaj męża do tej rodziny"
 msgid "Add a husband using an existing individual"
 msgstr "Dodaj męża spośród istniejących osób"
 
-#: app/Module/UserJournalModule.php:109
+#: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
 msgstr "Dodaj nowy wpis do dziennika"
 
-#: app/Controller/FamilyController.php:162
-#: app/Functions/FunctionsEdit.php:1125 app/Module/AlbumModule.php:98
-#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
-#: source.php:184
+#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1125
+#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
+#: app/Module/MediaTabModule.php:87 source.php:168
 msgid "Add a media object"
 msgstr "Dodaj nowy obiekt multimedialny"
 
-#: app/Module/RelativesTabModule.php:329 edit_interface.php:672 family.php:114
+#: app/Module/RelativesTabModule.php:329 edit_interface.php:672 family.php:96
 msgid "Add a mother"
 msgstr "Dodaj nową matkę"
 
@@ -1362,12 +1360,12 @@ msgstr "Dodaj nową matkę"
 msgid "Add a name"
 msgstr "Dodaj imię/nazwisko"
 
-#: app/Module/FamilyTreeNewsModule.php:129
+#: app/Module/FamilyTreeNewsModule.php:130
 msgid "Add a news article"
 msgstr "Dodaj artykuł"
 
-#: app/Controller/FamilyController.php:149
-#: app/Functions/FunctionsEdit.php:1104 app/Module/NotesTabModule.php:102
+#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1104
+#: app/Module/NotesTabModule.php:102
 msgid "Add a note"
 msgstr "Dodaj nową notatkę"
 
@@ -1378,15 +1376,14 @@ msgstr "Dodaj nowe ograniczenie"
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
 #: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230
-#: app/Module/ReviewChangesModule.php:193
+#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
 msgstr "Dodaj pasek przewijania, gdy zawartość bloku jest długa"
 
-#: app/Controller/FamilyController.php:155
-#: app/Functions/FunctionsEdit.php:1114 app/Module/NotesTabModule.php:112
+#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1114
+#: app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
 msgstr "Dodaj nową wspólną notatkę"
 
@@ -1394,8 +1391,8 @@ msgstr "Dodaj nową wspólną notatkę"
 msgid "Add a son or daughter"
 msgstr "Dodaj nowego syna lub córkę"
 
-#: app/Controller/FamilyController.php:172
-#: app/Functions/FunctionsEdit.php:1053 app/Module/SourcesTabModule.php:95
+#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1053
+#: app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
 msgstr "Dodaj nowe źródło"
 
@@ -1540,7 +1537,7 @@ msgid "Address line 2"
 msgstr "2 linia adresu"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:81
+#: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Adelaide, Australia"
 msgstr "Adelaide, Australia"
 
@@ -1556,7 +1553,7 @@ msgstr "Konto administratora"
 msgid "Administrator comments on user"
 msgstr "Komentarz administratora do użytkownika"
 
-#: admin.php:654
+#: admin.php:672
 msgid "Administrators"
 msgstr "Administratorzy"
 
@@ -1723,7 +1720,7 @@ msgstr "Wyszukiwanie zaawansowane"
 msgid "Afghanistan"
 msgstr "Afganistan"
 
-#: statistics.php:602
+#: statistics.php:697
 msgid "Africa"
 msgstr "Afryka"
 
@@ -1768,12 +1765,12 @@ msgstr "Różnica wieku między żoną a mężem"
 msgid "Age difference"
 msgstr "Różnica wieku"
 
-#: statistics.php:529 statisticsplot.php:1282
+#: statistics.php:550 statisticsplot.php:1282
 msgid "Age in year of first marriage"
 msgstr "Liczba lat podczas pierwszego ślubu"
 
 #: app/Functions/FunctionsPrintLists.php:1002 statistics.php:260
-#: statistics.php:526 statisticsplot.php:1232
+#: statistics.php:545 statisticsplot.php:1232
 msgid "Age in year of marriage"
 msgstr "Liczba lat podczas ślubu"
 
@@ -1782,11 +1779,11 @@ msgstr "Liczba lat podczas ślubu"
 msgid "Age of parents next to child’s birthdate"
 msgstr "Wiek rodziców obok daty narodzin dziecka"
 
-#: statistics.php:520 statisticsplot.php:1132
+#: statistics.php:535 statisticsplot.php:1132
 msgid "Age related to birth year"
 msgstr "Długość życia względem roku urodzenia"
 
-#: app/Functions/FunctionsPrintLists.php:502 statistics.php:523
+#: app/Functions/FunctionsPrintLists.php:502 statistics.php:540
 #: statisticsplot.php:1182
 msgid "Age related to death year"
 msgstr "Długość życia względem roku śmierci"
@@ -1812,7 +1809,7 @@ msgid "Album"
 msgstr "Album"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:85
+#: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Albuquerque, New Mexico, United States"
 msgstr "Albuquerque, Nowy Meksyk, Stany Zjednoczone"
 
@@ -1833,13 +1830,13 @@ msgstr "Żyjący"
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: app/I18N.php:178 app/Module/FrequentlyAskedQuestionsModule.php:221
 #: app/Module/FrequentlyAskedQuestionsModule.php:474
-#: app/Module/GoogleMapsModule.php:1423 app/Module/GoogleMapsModule.php:1436
-#: app/Module/GoogleMapsModule.php:4210 app/Module/SlideShowModule.php:264
-#: app/Module/UserMessagesModule.php:111 app/Stats.php:5581 calendar.php:265
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
-#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
-#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
-#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: app/Module/GoogleMapsModule.php:1334 app/Module/GoogleMapsModule.php:1347
+#: app/Module/GoogleMapsModule.php:4080 app/Module/SlideShowModule.php:264
+#: app/Module/UserMessagesModule.php:111 app/Stats.php:5581 calendar.php:257
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
+#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
+#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
+#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -1871,7 +1868,7 @@ msgstr "Wszystkie fakty dotyczące rodziny"
 msgid "All fields must be completed."
 msgstr "Wszystkie pola muszą być wypełnione."
 
-#: admin_site_upgrade.php:345
+#: admin_site_upgrade.php:346
 msgid "All files have read and write permission."
 msgstr "Wszystkie pliki mają atrybuty do odczytu i zapisu."
 
@@ -1879,7 +1876,7 @@ msgstr "Wszystkie pliki mają atrybuty do odczytu i zapisu."
 msgid "All individual facts"
 msgstr "Wszystkie fakty dotyczące osoby"
 
-#: calendar.php:236 calendar.php:247 calendar.php:446
+#: calendar.php:228 calendar.php:239 calendar.php:438
 msgid "All individuals"
 msgstr "Wszystkie osoby"
 
@@ -1984,8 +1981,8 @@ msgstr "Powiązaniem może być określona inna osoba, która miała relacje z d
 msgid "An edit menu for individuals, families, sources, etc."
 msgstr "Menu edycji dla osób, rodzin, źródeł, itp."
 
-#: admin_site_upgrade.php:281 admin_site_upgrade.php:303
-#: admin_site_upgrade.php:313 admin_site_upgrade.php:397
+#: admin_site_upgrade.php:282 admin_site_upgrade.php:304
+#: admin_site_upgrade.php:314 admin_site_upgrade.php:398
 msgid "An error occurred when unzipping the file."
 msgstr "Wystąpił błąd podczas rozpakowywania pliku."
 
@@ -2034,7 +2031,7 @@ msgid "Ancestral file number"
 msgstr "Numer pliku genealogicznego (AFN)"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:87
+#: app/GedcomCode/GedcomCodeTemp.php:91
 msgid "Anchorage, Alaska, United States"
 msgstr "Anchorage, Alaska, Stany Zjednoczone"
 
@@ -2056,8 +2053,7 @@ msgstr "Anguilla"
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1805
-#: app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1805 app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr "Rocznica"
 
@@ -2089,7 +2085,7 @@ msgid "Anyone with a user account can access this website."
 msgstr "Każdy użytkownik posiadający konto użytkownika będzie miał dostęp do tej strony."
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:277
+#: app/GedcomCode/GedcomCodeTemp.php:93
 msgid "Apia, Samoa"
 msgstr "Apia, Samoa"
 
@@ -2180,15 +2176,15 @@ msgstr "Usunąć tę wiadomość? Nie będzie można tego cofnąć."
 #: app/Functions/FunctionsPrintLists.php:1159
 #: app/Functions/FunctionsPrintLists.php:1274
 #: app/Functions/FunctionsPrintLists.php:1388
-#: app/Module/FamilyTreeNewsModule.php:123
+#: app/Module/FamilyTreeNewsModule.php:124
 #: app/Module/FrequentlyAskedQuestionsModule.php:495
-#: app/Module/StoriesModule.php:404 app/Module/UserJournalModule.php:105
+#: app/Module/StoriesModule.php:404 app/Module/UserJournalModule.php:106
 #: edituser.php:320
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Usunąć „%s”?"
 
-#: edit_changes.php:231
+#: edit_changes.php:236
 msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr "Odrzucić wszystkie zmiany wprowadzone w danym drzewie genealogicznym?"
 
@@ -2208,8 +2204,7 @@ msgstr "Argentyna"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12
-#: modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -2243,7 +2238,7 @@ msgstr "Również za pomocą paska narzędzi stosując formatowanie HTML, można
 msgid "Ash"
 msgstr "Ash"
 
-#: statistics.php:600
+#: statistics.php:691
 msgid "Asia"
 msgstr "Azja"
 
@@ -2262,7 +2257,7 @@ msgid "Associates"
 msgstr "Powiązania"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:91
+#: app/GedcomCode/GedcomCodeTemp.php:97
 msgid "Asuncion, Paraguay"
 msgstr "Asuncion, Paragwaj"
 
@@ -2272,7 +2267,7 @@ msgid "At sea"
 msgstr "Na morzu"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:93
+#: app/GedcomCode/GedcomCodeTemp.php:99
 msgid "Atlanta, Georgia, United States"
 msgstr "Atlanta, Georgia, Stany Zjednoczone"
 
@@ -2604,12 +2599,12 @@ msgid "Batch update"
 msgstr "Aktualizacja wsadowa"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:113
+#: app/GedcomCode/GedcomCodeTemp.php:121
 msgid "Baton Rouge, Louisiana, United States"
 msgstr "Baton Rouge, Louisiana, Stany Zjednoczone"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
-#: app/Module/GoogleMapsModule.php:2448
+#: app/Module/GoogleMapsModule.php:2342
 msgid "Bearing"
 msgstr "Azymut"
 
@@ -2649,7 +2644,7 @@ msgid "Bermuda"
 msgstr "Bermudy"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:311
+#: app/GedcomCode/GedcomCodeTemp.php:357
 msgid "Bern, Switzerland"
 msgstr "Bern, Szwajcaria"
 
@@ -2668,7 +2663,7 @@ msgid "Bibliography"
 msgstr "Bibliografia"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:97
+#: app/GedcomCode/GedcomCodeTemp.php:103
 msgid "Billings, Montana, United States"
 msgstr "Billings, Montana, Stany Zjednoczone"
 
@@ -2682,7 +2677,7 @@ msgid "Bing Maps™"
 msgstr "Bing Maps™"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:99
+#: app/GedcomCode/GedcomCodeTemp.php:105
 msgid "Birmingham, Alabama, United States"
 msgstr "Birmingham, Alabama, Stany Zjednoczone"
 
@@ -2824,7 +2819,7 @@ msgctxt "Pedigree"
 msgid "Birth"
 msgstr "rodzone"
 
-#: app/Stats.php:1661 statistics.php:538
+#: app/Stats.php:1661 statistics.php:565
 msgid "Birth by country"
 msgstr "Kraj urodzin"
 
@@ -2840,11 +2835,11 @@ msgstr "Początek zakresu dat urodzin"
 msgid "Birth of a brother"
 msgstr "Urodziny brata"
 
-#: app/GedcomTag.php:1038 app/Module/GoogleMapsModule.php:1909
+#: app/GedcomTag.php:1038 app/Module/GoogleMapsModule.php:1820
 msgid "Birth of a child"
 msgstr "Narodziny dziecka"
 
-#: app/GedcomTag.php:1036 app/Module/GoogleMapsModule.php:1909
+#: app/GedcomTag.php:1036 app/Module/GoogleMapsModule.php:1820
 msgid "Birth of a daughter"
 msgstr "Urodziny córki"
 
@@ -2900,11 +2895,11 @@ msgstr "Narodziny brata/siostry"
 msgid "Birth of a sister"
 msgstr "Urodziny siostry"
 
-#: app/GedcomTag.php:1034 app/Module/GoogleMapsModule.php:1909
+#: app/GedcomTag.php:1034 app/Module/GoogleMapsModule.php:1820
 msgid "Birth of a son"
 msgstr "Urodziny syna"
 
-#: statistics.php:410
+#: statistics.php:411
 msgid "Birth places"
 msgstr "Najczęstsze miejsca urodzenia"
 
@@ -2923,7 +2918,7 @@ msgid "Births by century"
 msgstr "Liczba urodzeń według wieku"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:101
+#: app/GedcomCode/GedcomCodeTemp.php:107
 msgid "Bismarck, North Dakota, United States"
 msgstr "Bismarck, Północna Dakota"
 
@@ -2957,12 +2952,12 @@ msgid "Body"
 msgstr "Treść"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:103
+#: app/GedcomCode/GedcomCodeTemp.php:109
 msgid "Bogota, Colombia"
 msgstr "Bogota, Kolumbia"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:105
+#: app/GedcomCode/GedcomCodeTemp.php:111
 msgid "Boise, Idaho, United States"
 msgstr "Boise, Idaho, Stany Zjednoczone"
 
@@ -2991,7 +2986,7 @@ msgid "Bosnia and Herzegovina"
 msgstr "Bośnia i Hercegowina"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:107
+#: app/GedcomCode/GedcomCodeTemp.php:113
 msgid "Boston, Massachusetts, United States"
 msgstr "Boston, Massachusetts, Stany Zjednoczone"
 
@@ -3009,7 +3004,7 @@ msgid "Botswana"
 msgstr "Botswana"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:109
+#: app/GedcomCode/GedcomCodeTemp.php:115
 msgid "Bountiful, Utah, United States"
 msgstr "Bountiful, Utah, Stany Zjednoczone"
 
@@ -3044,7 +3039,7 @@ msgid "Brigham City, Utah, United States"
 msgstr "Brigham City, Utah, Stany Zjednoczone"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:111
+#: app/GedcomCode/GedcomCodeTemp.php:119
 msgid "Brisbane, Australia"
 msgstr "Brisbane, Australia"
 
@@ -3124,7 +3119,7 @@ msgid "Brunei Darussalam"
 msgstr "Brunei"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:95
+#: app/GedcomCode/GedcomCodeTemp.php:101
 msgid "Buenos Aires, Argentina"
 msgstr "Buenos Aires, Argentyna"
 
@@ -3302,7 +3297,7 @@ msgstr "Kupiec"
 msgid "By default, SMTP works on port 25."
 msgstr "Domyślnie SMTP używa portu 25."
 
-#: app/Module/GoogleMapsModule.php:4086
+#: app/Module/GoogleMapsModule.php:3956
 msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
 msgstr "Domyślnie na liście wyświetlane są tylko te miejsca, które można znaleźć w drzewie genealogicznym. Można mieć również dane dotyczące innych miejsc, na przykład zaimportowanych z zewnętrznego pliku. Po wybraniu tej opcji zostanie wyświetlona lista wszystkich miejsc, również tych, które nie są aktualnie używane."
 
@@ -3361,7 +3356,7 @@ msgid "Cameroon"
 msgstr "Kamerun"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:115
+#: app/GedcomCode/GedcomCodeTemp.php:125
 msgid "Campinas, Brazil"
 msgstr "Campinas, Brazylia"
 
@@ -3376,7 +3371,7 @@ msgid "Cape Verde"
 msgstr "Republika Zielonego Przylądka"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:117
+#: app/GedcomCode/GedcomCodeTemp.php:127
 msgid "Caracas, Venezuela"
 msgstr "Caracas, Wenezuela"
 
@@ -3386,7 +3381,7 @@ msgid "Card"
 msgstr "Karta"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:83
+#: app/GedcomCode/GedcomCodeTemp.php:87
 msgid "Cardston, Alberta, Canada"
 msgstr "Cardston, Alberta, Kanada"
 
@@ -3399,7 +3394,7 @@ msgstr "Nie uwzględniaj wielkości liter"
 msgid "Caste"
 msgstr "Kasta"
 
-#: statistics.php:606
+#: statistics.php:703
 msgid "Categories"
 msgstr "Rodzaj danych"
 
@@ -3416,11 +3411,11 @@ msgstr "Przyczyna śmierci"
 msgid "Caution! This may take a long time. Be patient."
 msgstr "Uwaga! Może trwać to dłuższy czas. Proszę być cierpliwym."
 
-#: admin_site_upgrade.php:137
+#: admin_site_upgrade.php:138
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
 msgstr "Uwaga: stare moduły mogą nie działać lub uniemożliwiać działanie webtrees."
 
-#: admin_site_upgrade.php:201
+#: admin_site_upgrade.php:202
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
 msgstr "Uwaga: stare motywy mogą nie działać lub uniemożliwiać działanie webtrees."
 
@@ -3492,10 +3487,10 @@ msgstr "Zmień"
 msgid "Change family members"
 msgstr "Zmień członków rodziny"
 
-#: app/Module/GoogleMapsModule.php:568 app/Module/GoogleMapsModule.php:571
-#: app/Module/GoogleMapsModule.php:574 app/Module/GoogleMapsModule.php:625
-#: app/Module/GoogleMapsModule.php:3394 app/Module/GoogleMapsModule.php:3527
-#: app/Module/GoogleMapsModule.php:3530
+#: app/Module/GoogleMapsModule.php:540 app/Module/GoogleMapsModule.php:543
+#: app/Module/GoogleMapsModule.php:546 app/Module/GoogleMapsModule.php:597
+#: app/Module/GoogleMapsModule.php:3264 app/Module/GoogleMapsModule.php:3397
+#: app/Module/GoogleMapsModule.php:3400
 msgid "Change flag"
 msgstr "Zmień flagę"
 
@@ -3512,22 +3507,21 @@ msgid "Change the “My page” blocks"
 msgstr "Zmień bloki na „Mojej stronie”"
 
 #. I18N: [a record was] Changed on <date/time>
-#: app/Module/RecentChangesModule.php:257
+#: app/Module/RecentChangesModule.php:261
 #, php-format
 msgid "Changed on %1$s"
 msgstr "Zmieniony %1$s"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
-#: app/Module/RecentChangesModule.php:254
+#: app/Module/RecentChangesModule.php:258
 #, php-format
 msgid "Changed on %1$s by %2$s"
 msgstr "Zmieniono %1$s - %2$s"
 
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:435
-#: app/Module/ChangeReportModule.php:29 edit_changes.php:177
-#: modules_v3/change_report/report.xml:3
-#: modules_v3/change_report/report.xml:44
+#: app/Module/ChangeReportModule.php:29 edit_changes.php:182
+#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr "Zmiany"
 
@@ -3553,34 +3547,34 @@ msgstr "Zestaw znaków"
 msgid "Chart"
 msgstr "Diagram"
 
-#: app/Module/RelationshipsChartModule.php:142
+#: app/Module/RelationshipsChartModule.php:146
 msgid "Chart preferences"
 msgstr "Ustawienia diagramu"
 
-#: app/Module/ChartsBlockModule.php:199 statistics.php:501 statistics.php:584
+#: app/Module/ChartsBlockModule.php:198 statistics.php:505 statistics.php:651
 msgid "Chart type"
 msgstr "Typ diagramu"
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163
-#: admin_trees_config.php:1206 app/Module/ChartsBlockModule.php:34
-#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1206
+#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
+#: app/Theme/AdministrationTheme.php:195
 msgid "Charts"
 msgstr "Diagramy"
 
 #. I18N: The system is about to…
-#: admin_site_upgrade.php:326
+#: admin_site_upgrade.php:327
 msgid "Check file permissions…"
 msgstr "Sprawdzanie atrybutów plików…"
 
 #. I18N: The system is about to [...]
-#: admin_site_upgrade.php:113
+#: admin_site_upgrade.php:114
 msgid "Check for custom modules…"
 msgstr "Sprawdzanie modułów użytkownika…"
 
 #. I18N: The system is about to…
-#: admin_site_upgrade.php:154
+#: admin_site_upgrade.php:155
 msgid "Check for custom themes…"
 msgstr "Sprawdzanie motywów użytkownika…"
 
@@ -3589,7 +3583,7 @@ msgid "Check for errors"
 msgstr "Sprawdź błędy"
 
 #. I18N: The system is about to…
-#: admin_site_upgrade.php:93
+#: admin_site_upgrade.php:94
 msgid "Check for pending changes…"
 msgstr "Sprawdzanie niezatwierdzonych zmian…"
 
@@ -3610,7 +3604,7 @@ msgid "Checking server configuration"
 msgstr "Sprawdzanie konfiguracji serwera"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:119
+#: app/GedcomCode/GedcomCodeTemp.php:131
 msgid "Chicago, Illinois, United States"
 msgstr "Chicago, Illinois, Stany Zjednoczone"
 
@@ -3685,7 +3679,7 @@ msgstr "Chile"
 msgid "China"
 msgstr "Chiny"
 
-#: reportengine.php:116 reportengine.php:124
+#: reportengine.php:116 reportengine.php:120
 msgid "Choose a report to run"
 msgstr "Wybierz raport do utworzenia"
 
@@ -3806,12 +3800,12 @@ msgid "Citizenship"
 msgstr "Obywatelstwo"
 
 #. I18N: gedcom tag CITY
-#: app/GedcomTag.php:294 app/Module/GoogleMapsModule.php:3583
+#: app/GedcomTag.php:294 app/Module/GoogleMapsModule.php:3453
 msgid "City"
 msgstr "Miejscowość"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:121
+#: app/GedcomCode/GedcomCodeTemp.php:133
 msgid "Ciudad Juarez, Mexico"
 msgstr "Ciudad Juarez, Meksyk"
 
@@ -3855,7 +3849,7 @@ msgid "Coat of arms"
 msgstr "Herb"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:123
+#: app/GedcomCode/GedcomCodeTemp.php:135
 msgid "Cochabamba, Bolivia"
 msgstr "Cochabamba, Boliwia"
 
@@ -3880,22 +3874,22 @@ msgid "Colombia"
 msgstr "Kolumbia"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:125
+#: app/GedcomCode/GedcomCodeTemp.php:137
 msgid "Colonia Juarez, Mexico"
 msgstr "Colonia Juarez, Meksyk"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:133
+#: app/GedcomCode/GedcomCodeTemp.php:147
 msgid "Columbia River, Washington, United States"
 msgstr "Columbia River, Washington, Stany Zjednoczone"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:127
+#: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Columbia, South Carolina, United States"
 msgstr "Columbia, Południowa Karolina"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:129
+#: app/GedcomCode/GedcomCodeTemp.php:141
 msgid "Columbus, Ohio, United States"
 msgstr "Columbus, Ohio, Stany Zjednoczone"
 
@@ -3994,28 +3988,27 @@ msgstr "Zawartość"
 msgid "Continued"
 msgstr "Kontynuowane"
 
-#: admin.php:462 admin_media.php:613 admin_media_upload.php:180
+#: admin.php:480 admin_media.php:613 admin_media_upload.php:180
 #: admin_module_blocks.php:60 admin_module_charts.php:53
 #: admin_module_menus.php:74 admin_module_reports.php:53
 #: admin_module_sidebar.php:74 admin_module_tabs.php:74 admin_modules.php:141
 #: admin_pgv_to_wt.php:129 admin_site_access.php:239 admin_site_access.php:345
 #: admin_site_change.php:288 admin_site_clean.php:81 admin_site_config.php:159
-#: admin_site_info.php:40 admin_site_logs.php:236 admin_site_merge.php:182
+#: admin_site_info.php:40 admin_site_logs.php:236 admin_site_merge.php:186
 #: admin_site_readme.php:37 admin_trees_check.php:124
 #: admin_trees_config.php:341 admin_trees_download.php:102
 #: admin_trees_duplicates.php:149 admin_trees_manage.php:183
 #: admin_trees_manage.php:337 admin_trees_merge.php:39
-#: admin_trees_places.php:89 admin_users.php:297 admin_users.php:669
+#: admin_trees_places.php:90 admin_users.php:297 admin_users.php:669
 #: admin_users.php:835 admin_users_bulk.php:32
 #: app/Module/BatchUpdateModule.php:191
 #: app/Module/FrequentlyAskedQuestionsModule.php:161
 #: app/Module/FrequentlyAskedQuestionsModule.php:438
-#: app/Module/GoogleMapsModule.php:282 app/Module/GoogleMapsModule.php:1386
-#: app/Module/GoogleMapsModule.php:3613
-#: app/Module/RelationshipsChartModule.php:147
-#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
-#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
-#: app/Theme/AdministrationTheme.php:243
+#: app/Module/GoogleMapsModule.php:277 app/Module/GoogleMapsModule.php:1297
+#: app/Module/GoogleMapsModule.php:3483
+#: app/Module/RelationshipsChartModule.php:151 app/Module/SiteMapModule.php:296
+#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
+#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr "Panel sterowania"
 
@@ -4034,7 +4027,7 @@ msgid "Cookies"
 msgstr "Ciasteczka"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:131
+#: app/GedcomCode/GedcomCodeTemp.php:143
 msgid "Copenhagen, Denmark"
 msgstr "Copenhagen, Dania"
 
@@ -4053,11 +4046,11 @@ msgid "Copy all the records from %1$s into %2$s."
 msgstr "Kopiuj wszystkie wpisy z %1$s do %2$s."
 
 #. I18N: The system is about to…
-#: admin_site_upgrade.php:368
+#: admin_site_upgrade.php:369
 msgid "Copy files…"
 msgstr "Kopiowanie plików…"
 
-#: admin_site_upgrade.php:338
+#: admin_site_upgrade.php:339
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
 msgstr "Należy skopiować następujące pliki do katalogu %s nadpisując wszystkie, które mają taką samą nazwę."
@@ -4099,14 +4092,14 @@ msgstr "Nie można potwierdzić podanej informacji. Spróbuj ponownie lub skonta
 msgid "Count"
 msgstr "Liczba"
 
-#: app/Module/GoogleMapsModule.php:639
+#: app/Module/GoogleMapsModule.php:611
 msgid "Countries"
 msgstr "Państwa"
 
 #. I18N: gedcom tag CTRY
-#: app/GedcomTag.php:338 app/Module/GoogleMapsModule.php:411
-#: app/Module/GoogleMapsModule.php:427 app/Module/GoogleMapsModule.php:1421
-#: app/Module/GoogleMapsModule.php:1526 app/Module/GoogleMapsModule.php:3575
+#: app/GedcomTag.php:338 app/Module/GoogleMapsModule.php:383
+#: app/Module/GoogleMapsModule.php:399 app/Module/GoogleMapsModule.php:1332
+#: app/Module/GoogleMapsModule.php:1437 app/Module/GoogleMapsModule.php:3445
 msgid "Country"
 msgstr "Państwo"
 
@@ -4117,7 +4110,7 @@ msgstr "Państwo"
 msgid "Counts "
 msgstr "Razem "
 
-#: app/Module/GoogleMapsModule.php:3580
+#: app/Module/GoogleMapsModule.php:3450
 msgid "County"
 msgstr "Powiat"
 
@@ -4162,7 +4155,7 @@ msgstr "Utwórz zasady dostępu do strony"
 msgid "Create an individual"
 msgstr "Utwórz nową osobę"
 
-#: statistics.php:432
+#: statistics.php:497
 msgid "Create your own chart"
 msgstr "Pokaż własne wykresy statystyk"
 
@@ -4323,7 +4316,7 @@ msgstr "Bieżący"
 msgid "Custom"
 msgstr "Własny"
 
-#: app/Functions/FunctionsPrint.php:630 calendar.php:289
+#: app/Functions/FunctionsPrint.php:630 calendar.php:281
 msgid "Custom event"
 msgstr "Inne wydarzenie"
 
@@ -4331,7 +4324,7 @@ msgstr "Inne wydarzenie"
 msgid "Custom fact"
 msgstr "Własny fakt"
 
-#: admin_modules.php:191 admin_site_upgrade.php:125 admin_site_upgrade.php:128
+#: admin_modules.php:191 admin_site_upgrade.php:126 admin_site_upgrade.php:129
 msgid "Custom module"
 msgstr "Własny moduł"
 
@@ -4339,7 +4332,7 @@ msgstr "Własny moduł"
 msgid "Custom tags"
 msgstr "Własne znaczniki"
 
-#: admin_site_upgrade.php:186 admin_site_upgrade.php:189
+#: admin_site_upgrade.php:187 admin_site_upgrade.php:190
 msgid "Custom theme"
 msgstr "Własny motyw"
 
@@ -4373,12 +4366,12 @@ msgid "Daitch-Mokotoff"
 msgstr "Daitch-Mokotoff"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:135
+#: app/GedcomCode/GedcomCodeTemp.php:151
 msgid "Dallas, Texas, United States"
 msgstr "Dallas, Teksas"
 
 #. I18N: A summary of the system status
-#: admin.php:462
+#: admin.php:480
 msgid "Dashboard"
 msgstr "Stan systemu"
 
@@ -4413,12 +4406,11 @@ msgid "Database user account"
 msgstr "Użytkownik bazy danych"
 
 #. I18N: gedcom tag DATE
-#: app/GedcomTag.php:348 edit_changes.php:179 help_text.php:136
+#: app/GedcomTag.php:348 edit_changes.php:184 help_text.php:136
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72
-#: modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -4564,7 +4556,7 @@ msgstr "Okres czasu"
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
 msgstr "Okresy czasu są wykorzystywane do wskazania, że fakty, takie jak zawód, były kontynuowane przez dany okres czasu."
 
-#: help_text.php:148 statistics.php:617
+#: help_text.php:148 statistics.php:723
 msgid "Date range"
 msgstr "Zakres dat"
 
@@ -4602,11 +4594,11 @@ msgstr "Córka"
 msgid "Daughter of %s"
 msgstr "Córka rodziny: %s"
 
-#: app/Theme/AbstractTheme.php:1063 calendar.php:159
+#: app/Theme/AbstractTheme.php:1063 calendar.php:151
 msgid "Day"
 msgstr "Dzień"
 
-#: calendar.php:491
+#: calendar.php:483
 msgid "Day not set"
 msgstr "Brak daty dziennej"
 
@@ -4742,7 +4734,7 @@ msgstr "Zmarli"
 msgid "Death"
 msgstr "Śmierć"
 
-#: app/Stats.php:1677 statistics.php:544
+#: app/Stats.php:1677 statistics.php:575
 msgid "Death by country"
 msgstr "Kraj śmierci"
 
@@ -4883,7 +4875,7 @@ msgstr "Śmierć jednego z małżonków"
 msgid "Death place contains"
 msgstr "Miejsce śmierci zawiera"
 
-#: statistics.php:411
+#: statistics.php:412
 msgid "Death places"
 msgstr "Najczęstsze miejsca śmierci"
 
@@ -4958,7 +4950,7 @@ msgstr "Domyślne drzewo genealogiczne"
 msgid "Default individual"
 msgstr "Domyślna osoba"
 
-#: app/Module/GoogleMapsModule.php:327
+#: app/Module/GoogleMapsModule.php:322
 msgid "Default map type"
 msgstr "Domyślny typ mapy"
 
@@ -4985,8 +4977,7 @@ msgstr "Stopień"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12
-#: modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -5018,15 +5009,15 @@ msgstr "DejaVu"
 #: app/Functions/FunctionsPrintLists.php:1159
 #: app/Functions/FunctionsPrintLists.php:1274
 #: app/Functions/FunctionsPrintLists.php:1388
-#: app/Module/FamilyTreeNewsModule.php:123
+#: app/Module/FamilyTreeNewsModule.php:124
 #: app/Module/FrequentlyAskedQuestionsModule.php:495
-#: app/Module/GoogleMapsModule.php:4101 app/Module/StoriesModule.php:377
-#: app/Module/StoriesModule.php:406 app/Module/UserJournalModule.php:105
+#: app/Module/GoogleMapsModule.php:3971 app/Module/StoriesModule.php:377
+#: app/Module/StoriesModule.php:406 app/Module/UserJournalModule.php:106
 #: app/Module/UserMessagesModule.php:111 app/Module/UserMessagesModule.php:139
 msgid "Delete"
 msgstr "Usuń"
 
-#: app/Module/GoogleMapsModule.php:3808
+#: app/Module/GoogleMapsModule.php:3678
 msgid "Delete all existing geographic data before importing the file."
 msgstr "Usuń wszystkie istniejące dane geograficzne przed importowaniem pliku."
 
@@ -5040,7 +5031,7 @@ msgid "Delete selected messages"
 msgstr "Usuń zaznaczone wiadomości"
 
 #. I18N: The system is about to…
-#: admin_site_upgrade.php:423
+#: admin_site_upgrade.php:424
 msgid "Delete temporary files…"
 msgstr "Usuwanie plików tymczasowych…"
 
@@ -5071,11 +5062,11 @@ msgid "Denmark"
 msgstr "Dania"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:137
+#: app/GedcomCode/GedcomCodeTemp.php:153
 msgid "Denver, Colorado, United States"
 msgstr "Denver, Colorado, Stany Zjednoczone"
 
-#: admin_site_upgrade.php:79
+#: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
 msgstr "Automatyczna aktualizacja będzie możliwa w zależności od konfiguracji serwera."
 
@@ -5088,9 +5079,8 @@ msgstr "Liczba pokoleń potomków"
 #. I18N: Name of a module/sidebar
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
-#: app/Module/ChartsBlockModule.php:187
-#: app/Module/DescendancyChartModule.php:33
-#: app/Module/DescendancyModule.php:32
+#: app/Module/ChartsBlockModule.php:186
+#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5110,7 +5100,7 @@ msgstr "Potomkowie - "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/DescendancyController.php:62
-#: app/Module/ChartsBlockModule.php:101
+#: app/Module/ChartsBlockModule.php:103
 #, php-format
 msgid "Descendants of %s"
 msgstr "Potomkowie - %s"
@@ -5137,9 +5127,9 @@ msgstr "Opis niedostępny"
 msgid "Destination"
 msgstr "Cel"
 
-#: admin_site_merge.php:213 admin_site_merge.php:260 admin_site_merge.php:306
-#: gedrecord.php:121 mediaviewer.php:110 note.php:122 repo.php:130
-#: source.php:134
+#: admin_site_merge.php:217 admin_site_merge.php:264 admin_site_merge.php:310
+#: gedrecord.php:105 mediaviewer.php:94 note.php:106 repo.php:114
+#: source.php:118
 msgid "Details"
 msgstr "Szczegóły"
 
@@ -5148,7 +5138,7 @@ msgid "Details of the new user will be sent to the genealogy contact for the cor
 msgstr "Dane nowego użytkownika zostaną przesłane do osoby podanej jako kontakt genealogiczny odpowiedniego drzewa genealogicznego."
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:139
+#: app/GedcomCode/GedcomCodeTemp.php:155
 msgid "Detroit, Michigan, United States"
 msgstr "Detroit, Michigan, Stany Zjednoczone"
 
@@ -5260,11 +5250,11 @@ msgstr "Przodkowie w linii prostej"
 msgid "Direct line ancestors and their families"
 msgstr "Przodkowie w linii prostej i ich rodziny"
 
-#: admin_site_upgrade.php:136
+#: admin_site_upgrade.php:137
 msgid "Disable these modules"
 msgstr "Wyłącz następujące moduły"
 
-#: admin_site_upgrade.php:200
+#: admin_site_upgrade.php:201
 msgid "Disable these themes"
 msgstr "Wyłącz następujące motywy"
 
@@ -5307,7 +5297,7 @@ msgstr "Dżibuti"
 msgid "Do not change to keep original filename."
 msgstr "Nie zmieniaj, aby zachować oryginalną nazwę pliku."
 
-#: app/Module/GoogleMapsModule.php:3818
+#: app/Module/GoogleMapsModule.php:3688
 msgid "Do not create new locations, just import coordinates for existing locations."
 msgstr "Nie twórz nowych lokalizacji, tylko importuj współrzędne dla istniejących lokalizacji."
 
@@ -5343,16 +5333,16 @@ msgid "Download"
 msgstr "Pobierz"
 
 #. I18N: The system is about to…; %s is a URL.
-#: admin_site_upgrade.php:242
+#: admin_site_upgrade.php:243
 #, php-format
 msgid "Download %s…"
 msgstr "Pobieranie %s…"
 
-#: mediaviewer.php:159
+#: mediaviewer.php:143
 msgid "Download file"
 msgstr "Pobierz plik"
 
-#: app/Module/GoogleMapsModule.php:4206
+#: app/Module/GoogleMapsModule.php:4076
 msgid "Download geographic data"
 msgstr "Pobierz dane geograficzne"
 
@@ -5436,13 +5426,13 @@ msgstr "Ekwador"
 #: app/Functions/FunctionsPrintFacts.php:1024
 #: app/Functions/FunctionsPrintFacts.php:1169
 #: app/Functions/FunctionsPrintFacts.php:1172
-#: app/Module/FamilyTreeNewsModule.php:121
+#: app/Module/FamilyTreeNewsModule.php:122
 #: app/Module/FrequentlyAskedQuestionsModule.php:493
-#: app/Module/GoogleMapsModule.php:4101 app/Module/GoogleMapsModule.php:4126
+#: app/Module/GoogleMapsModule.php:3971 app/Module/GoogleMapsModule.php:3996
 #: app/Module/PageMenuModule.php:28 app/Module/StoriesModule.php:376
-#: app/Module/StoriesModule.php:398 app/Module/UserJournalModule.php:103
-#: edit_interface.php:261 edit_interface.php:418 note.php:167 note.php:172
-#: note.php:173
+#: app/Module/StoriesModule.php:398 app/Module/UserJournalModule.php:104
+#: edit_interface.php:261 edit_interface.php:418 note.php:151 note.php:156
+#: note.php:157
 msgid "Edit"
 msgstr "Edytuj"
 
@@ -5528,7 +5518,7 @@ msgid "Editor"
 msgstr "Edytor"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:141
+#: app/GedcomCode/GedcomCodeTemp.php:159
 msgid "Edmonton, Alberta, Canada"
 msgstr "Edmonton, Alberta, Kanada"
 
@@ -5553,7 +5543,7 @@ msgid "Electronic"
 msgstr "Elektroniczny"
 
 #. I18N: Angle of elevation (in degrees), for street-view mapping
-#: app/Module/GoogleMapsModule.php:2450
+#: app/Module/GoogleMapsModule.php:2344
 msgid "Elevation"
 msgstr "Wysokość"
 
@@ -5667,8 +5657,8 @@ msgstr "Rok końcowy"
 msgid "Ending range of change dates"
 msgstr "Koniec zakresu zmian"
 
-#. I18N: Location of an LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
-#: app/GedcomCode/GedcomCodeTemp.php:143
+#. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
+#: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "Endowment House"
 msgstr "Dom obdarowania mormońskiego"
 
@@ -5694,10 +5684,6 @@ msgstr "Dodatkowy komentarz do tego elementu"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
 msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
 msgstr "Podaj lub wyszukaj identyfikator osoby, rodziny lub źródła, z którym ten obiekt multimedialny ma być powiązany."
-
-#: reportengine.php:152
-msgid "Enter report values"
-msgstr "Parametry raportu"
 
 #: search.php:191
 msgid "Entire record"
@@ -5762,7 +5748,7 @@ msgstr "Estonia"
 msgid "Ethiopia"
 msgstr "Etiopia"
 
-#: statistics.php:598
+#: statistics.php:682
 msgid "Europe"
 msgstr "Europa"
 
@@ -5773,11 +5759,11 @@ msgstr "Europa"
 msgid "Event"
 msgstr "Wydarzenie"
 
-#: app/Module/GoogleMapsModule.php:2179 statistics.php:110 statistics.php:212
+#: app/Module/GoogleMapsModule.php:2082 statistics.php:110 statistics.php:212
 msgid "Events"
 msgstr "Wydarzenia"
 
-#: statistics.php:419
+#: statistics.php:420
 msgid "Events in countries"
 msgstr "Państwa z największą liczbą wydarzeń"
 
@@ -5830,7 +5816,7 @@ msgid "Export a GEDCOM file"
 msgstr "Eksportuj plik GEDCOM"
 
 #. I18N: The system is about to…
-#: admin_site_upgrade.php:218
+#: admin_site_upgrade.php:219
 msgid "Export all the family trees to GEDCOM files…"
 msgstr "Eksportowanie wszystkich drzew genealogicznych do plików GEDCOM…"
 
@@ -5863,7 +5849,7 @@ msgid "Eye color"
 msgstr "Kolor oczu"
 
 #. I18N: Name of a theme.
-#: app/Theme/FabTheme.php:167
+#: app/Theme/FabTheme.php:172
 msgid "F.A.B."
 msgstr "F.A.B."
 
@@ -5981,25 +5967,24 @@ msgid "Falkland Islands"
 msgstr "Falklandy (Malwiny)"
 
 #. I18N: Name of a module
-#: admin.php:757 admin.php:797 admin_trees_duplicates.php:143 ancestry.php:87
+#: admin.php:775 admin.php:815 admin_trees_duplicates.php:143 ancestry.php:87
 #: app/Controller/SearchController.php:522
 #: app/Functions/FunctionsPrintLists.php:1084
 #: app/Functions/FunctionsPrintLists.php:1222
 #: app/Functions/FunctionsPrintLists.php:1450
 #: app/Module/FamilyTreeStatisticsModule.php:115
 #: app/Module/FamilyTreeStatisticsModule.php:342
-#: app/Module/GoogleMapsModule.php:2490 app/Module/HtmlBlockModule.php:187
+#: app/Module/GoogleMapsModule.php:2384 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1493
-#: calendar.php:422 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:134 mediaviewer.php:123
-#: modules_v3/fact_sources/report.xml:152
-#: modules_v3/fact_sources/report.xml:314 note.php:135 placelist.php:201
-#: repo.php:143 search.php:93 source.php:147 statistics.php:71
+#: calendar.php:414 descendancy.php:68 famlist.php:130 famlist.php:133
+#: gedrecord.php:118 mediaviewer.php:107 modules_v3/fact_sources/report.xml:152
+#: modules_v3/fact_sources/report.xml:314 note.php:119 placelist.php:201
+#: repo.php:127 search.php:93 source.php:131 statistics.php:71
 #: statisticsplot.php:990 statisticsplot.php:1094 statisticsplot.php:1344
 msgid "Families"
 msgstr "Rodziny"
 
-#: app/Stats.php:520 statistics.php:394
+#: app/Stats.php:520 statistics.php:395
 msgid "Families with sources"
 msgstr "Liczba rodzin powiązanych ze źródłami"
 
@@ -6009,7 +5994,7 @@ msgstr "Liczba rodzin powiązanych ze źródłami"
 #: app/Controller/PedigreeController.php:266
 #: app/Functions/FunctionsEdit.php:867 app/GedcomTag.php:444
 #: app/Module/FamilyGroupReportModule.php:29
-#: app/Module/FamilyNavigatorModule.php:255 edit_interface.php:997
+#: app/Module/FamilyNavigatorModule.php:263 edit_interface.php:997
 #: inverselink.php:107 modules_v3/family_group_report/report.xml:3
 #: modules_v3/family_group_report/report.xml:6
 #: modules_v3/family_group_report/report.xml:88
@@ -6044,7 +6029,7 @@ msgstr "Księga rodzinna - %s"
 msgid "Family file"
 msgstr "Plik rodziny"
 
-#: family.php:122
+#: family.php:104
 msgid "Family group information"
 msgstr "Dane grupy rodzinnej"
 
@@ -6071,19 +6056,18 @@ msgstr "Wiadomości rodzinne i ogłoszenia witryny."
 msgid "Family of %s"
 msgstr "Rodzina - %s"
 
-#: admin.php:754 admin_site_change.php:358 admin_site_change.php:392
+#: admin.php:772 admin_site_change.php:358 admin_site_change.php:392
 #: admin_site_logs.php:298 admin_site_logs.php:332 admin_trees_manage.php:380
 #: admin_users.php:575 app/Module/BatchUpdateModule.php:204
 #: app/Module/FrequentlyAskedQuestionsModule.php:217
 #: app/Module/FrequentlyAskedQuestionsModule.php:451
-#: app/Module/GoogleMapsModule.php:1419 app/Module/HtmlBlockModule.php:299
+#: app/Module/GoogleMapsModule.php:1330 app/Module/HtmlBlockModule.php:299
 #: app/Module/StoriesModule.php:356 app/Theme/AbstractTheme.php:1386
-#: edit_changes.php:180
+#: edit_changes.php:185
 msgid "Family tree"
 msgstr "Drzewo genealogiczne"
 
-#: app/Module/ClippingsCartModule.php:90
-#: app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr "Koszyk wycinków z drzewa genealogicznego"
 
@@ -6092,7 +6076,7 @@ msgid "Family tree title"
 msgstr "Nazwa drzewa genealogicznego"
 
 #. I18N: Menu entry
-#: admin.php:742 admin.php:750 app/Theme/AbstractTheme.php:1398
+#: admin.php:760 admin.php:768 app/Theme/AbstractTheme.php:1398
 #: app/Theme/AdministrationTheme.php:114 search.php:127 search.php:284
 msgid "Family trees"
 msgstr "Drzewa genealogiczne"
@@ -6223,8 +6207,7 @@ msgid "Father’s family with an unknown individual"
 msgstr "Rodzina ojca z nieznaną osobą"
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62
-#: app/Theme/AbstractTheme.php:1375
+#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1375
 msgid "Favorites"
 msgstr "Ulubione"
 
@@ -6260,7 +6243,7 @@ msgstr "luty"
 
 #: app/Controller/IndividualController.php:247
 #: app/Controller/IndividualController.php:250
-#: app/Functions/FunctionsEdit.php:674 app/Stats.php:5581 calendar.php:643
+#: app/Functions/FunctionsEdit.php:674 app/Stats.php:5581 calendar.php:635
 #: statisticsplot.php:901 statisticsplot.php:951 statisticsplot.php:1005
 #: statisticsplot.php:1055 statisticsplot.php:1109 statisticsplot.php:1159
 #: statisticsplot.php:1209 statisticsplot.php:1259 statisticsplot.php:1309
@@ -6273,7 +6256,7 @@ msgstr "Kobieta"
 #: app/Module/FamilyTreeStatisticsModule.php:180
 #: app/Module/HtmlBlockModule.php:179 app/Module/TopGivenNamesModule.php:90
 #: app/Stats.php:945 app/Stats.php:949 app/Stats.php:956 app/Stats.php:959
-#: app/Stats.php:2602 app/Stats.php:3945 calendar.php:256 calendar.php:444
+#: app/Stats.php:2602 app/Stats.php:3945 calendar.php:248 calendar.php:436
 #: statistics.php:151 statistics.php:167 statistics.php:180
 msgid "Females"
 msgstr "Kobiety"
@@ -6310,7 +6293,7 @@ msgstr "Nazwy plików nie mogą zawierać następującego znaku „%s”."
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "Nazwy plików nie mogą mieć następującego rozszerzenia „%s”."
 
-#: admin.php:881
+#: admin.php:899
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
 msgstr "Zostały znalezione pliki z poprzedniej wersji webtrees. Stare pliki czasem mogą być zagrożeniem bezpieczeństwa. Należy je usunąć."
 
@@ -6361,8 +6344,7 @@ msgstr "Znajdź znak specjalny"
 msgid "Find all possible relationships"
 msgstr "Znajdź wszystkie możliwe relacje"
 
-#: app/Functions/FunctionsPrint.php:692
-#: app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
@@ -6391,12 +6373,12 @@ msgstr "Finlandia"
 msgid "First communion"
 msgstr "Pierwsza Komunia Św."
 
-#: statistics.php:369
+#: statistics.php:370
 msgid "First event"
 msgstr "Pierwsze wydarzenie"
 
 #. I18N: Record is an indvidual, source, etc.
-#: admin_site_merge.php:353
+#: admin_site_merge.php:357
 msgid "First record"
 msgstr "Pierwszy wpis"
 
@@ -6405,8 +6387,8 @@ msgid "Fix name slashes and spaces"
 msgstr "Popraw wpisy imion i nazwisk"
 
 #. I18N: The emblem of a country or region
-#: app/Module/GoogleMapsModule.php:487 app/Module/GoogleMapsModule.php:3521
-#: app/Module/GoogleMapsModule.php:3526
+#: app/Module/GoogleMapsModule.php:459 app/Module/GoogleMapsModule.php:3391
+#: app/Module/GoogleMapsModule.php:3396
 msgid "Flag"
 msgstr "Flaga"
 
@@ -6454,8 +6436,7 @@ msgstr "Kliknij na odnośnik, aby zweryfikować swój adres email."
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12
-#: modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6552,12 +6533,12 @@ msgid "France"
 msgstr "Francja"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:145
+#: app/GedcomCode/GedcomCodeTemp.php:165
 msgid "Frankfurt am Main, Germany"
 msgstr "Frankfurt am Main, Niemcy"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:147
+#: app/GedcomCode/GedcomCodeTemp.php:167
 msgid "Freiburg, Germany"
 msgstr "Freiburg, Niemcy"
 
@@ -6589,7 +6570,7 @@ msgid "Frequently asked questions"
 msgstr "Często zadawane pytania"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:149
+#: app/GedcomCode/GedcomCodeTemp.php:169
 msgid "Fresno, California, United States"
 msgstr "Fresno, Kalifornia"
 
@@ -6670,7 +6651,7 @@ msgid "Fructidor"
 msgstr "Fructidor"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:151
+#: app/GedcomCode/GedcomCodeTemp.php:171
 msgid "Fukuoka, Japan"
 msgstr "Fukuoka, Japonia"
 
@@ -6753,7 +6734,7 @@ msgstr "Pokolenie"
 msgid "Generation "
 msgstr "Pokolenie "
 
-#: ancestry.php:97 app/Module/GoogleMapsModule.php:772 descendancy.php:76
+#: ancestry.php:97 app/Module/GoogleMapsModule.php:745 descendancy.php:76
 #: familybook.php:66 fanchart.php:101 hourglass.php:67
 #: modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
@@ -6767,16 +6748,16 @@ msgstr "Liczba pokoleń"
 msgid "Generations of ancestors"
 msgstr "Pokolenia przodków"
 
-#: statistics.php:595
+#: statistics.php:674
 msgid "Geographic area"
 msgstr "Obszar geograficzny"
 
-#: app/Module/GoogleMapsModule.php:179 app/Module/GoogleMapsModule.php:295
-#: app/Module/GoogleMapsModule.php:853 app/Module/GoogleMapsModule.php:1399
-#: app/Module/GoogleMapsModule.php:1522 app/Module/GoogleMapsModule.php:2403
-#: app/Module/GoogleMapsModule.php:2529 app/Module/GoogleMapsModule.php:2934
-#: app/Module/GoogleMapsModule.php:3626 app/Module/GoogleMapsModule.php:3638
-#: app/Module/GoogleMapsModule.php:3850 app/Module/GoogleMapsModule.php:4017
+#: app/Module/GoogleMapsModule.php:176 app/Module/GoogleMapsModule.php:290
+#: app/Module/GoogleMapsModule.php:827 app/Module/GoogleMapsModule.php:1310
+#: app/Module/GoogleMapsModule.php:1433 app/Module/GoogleMapsModule.php:2297
+#: app/Module/GoogleMapsModule.php:2421 app/Module/GoogleMapsModule.php:2816
+#: app/Module/GoogleMapsModule.php:3496 app/Module/GoogleMapsModule.php:3508
+#: app/Module/GoogleMapsModule.php:3720 app/Module/GoogleMapsModule.php:3887
 msgid "Geographic data"
 msgstr "Dane geograficzne"
 
@@ -6815,7 +6796,7 @@ msgid "Germinal"
 msgstr "Germinal"
 
 #. I18N: https://en.wikipedia.org/wiki/API_key
-#: app/Module/GoogleMapsModule.php:319
+#: app/Module/GoogleMapsModule.php:314
 msgid "Get an API key from Google."
 msgstr "Uzyskaj klucz API z Google."
 
@@ -6874,27 +6855,27 @@ msgid "Godson"
 msgstr "Chrześniak"
 
 #. I18N: The name of a module. Google Maps™ is a trademark. Do not translate it? http://en.wikipedia.org/wiki/Google_maps
-#: app/Functions/FunctionsPrint.php:474 app/Module/GoogleMapsModule.php:76
-#: app/Module/GoogleMapsModule.php:239 app/Module/GoogleMapsModule.php:1381
-#: app/Module/GoogleMapsModule.php:3608 app/Module/GoogleMapsModule.php:4455
-#: app/Module/GoogleMapsModule.php:4470
+#: app/Functions/FunctionsPrint.php:474 app/Module/GoogleMapsModule.php:73
+#: app/Module/GoogleMapsModule.php:236 app/Module/GoogleMapsModule.php:1292
+#: app/Module/GoogleMapsModule.php:3478 app/Module/GoogleMapsModule.php:4326
+#: app/Module/GoogleMapsModule.php:4341
 msgid "Google Maps™"
 msgstr "Mapy Google"
 
-#: app/Module/GoogleMapsModule.php:178 app/Module/GoogleMapsModule.php:188
-#: app/Module/GoogleMapsModule.php:290 app/Module/GoogleMapsModule.php:305
-#: app/Module/GoogleMapsModule.php:852 app/Module/GoogleMapsModule.php:1394
-#: app/Module/GoogleMapsModule.php:2402 app/Module/GoogleMapsModule.php:3621
+#: app/Module/GoogleMapsModule.php:175 app/Module/GoogleMapsModule.php:185
+#: app/Module/GoogleMapsModule.php:285 app/Module/GoogleMapsModule.php:300
+#: app/Module/GoogleMapsModule.php:826 app/Module/GoogleMapsModule.php:1305
+#: app/Module/GoogleMapsModule.php:2296 app/Module/GoogleMapsModule.php:3491
 msgid "Google Maps™ preferences"
 msgstr "Ustawienia Google Maps™"
 
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
-#: app/Module/GoogleMapsModule.php:345 app/Module/GoogleMapsModule.php:2181
-#: app/Module/GoogleMapsModule.php:4458
+#: app/Module/GoogleMapsModule.php:340 app/Module/GoogleMapsModule.php:2084
+#: app/Module/GoogleMapsModule.php:4329
 msgid "Google Street View™"
 msgstr "Google Street View™"
 
-#: app/Module/GoogleMapsModule.php:317
+#: app/Module/GoogleMapsModule.php:312
 msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
 msgstr "Google umożliwia niewielką liczbę anonimowych żądań map dziennie. Jeśli zachodzi potrzebie większej ilości żądań, należy posiadać konto Google i klucz API."
 
@@ -6903,7 +6884,7 @@ msgstr "Google umożliwia niewielką liczbę anonimowych żądań map dziennie. 
 msgid "Graduation"
 msgstr "Ukończenie szkoły"
 
-#: family.php:101
+#: family.php:83
 msgid "Grandparents"
 msgstr "Dziadkowie"
 
@@ -6941,7 +6922,7 @@ msgid "Grenada"
 msgstr "Grenada"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:153
+#: app/GedcomCode/GedcomCodeTemp.php:177
 msgid "Guadalajara, Mexico"
 msgstr "Guadalajara, Meksyk"
 
@@ -6975,12 +6956,12 @@ msgid "Guatemala"
 msgstr "Gwatemala"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:155
+#: app/GedcomCode/GedcomCodeTemp.php:179
 msgid "Guatemala City, Guatemala"
 msgstr "Guatemala City, Gwatemala"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:157
+#: app/GedcomCode/GedcomCodeTemp.php:181
 msgid "Guayaquil, Ecuador"
 msgstr "Guayaquil, Ekwador"
 
@@ -7020,17 +7001,17 @@ msgid "Haiti"
 msgstr "Haiti"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:161
+#: app/GedcomCode/GedcomCodeTemp.php:185
 msgid "Halifax, Nova Scotia, Canada"
 msgstr "Halifax, Nova Scotia, Kanada"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:237
+#: app/GedcomCode/GedcomCodeTemp.php:269
 msgid "Hamilton, New Zealand"
 msgstr "Hamilton, Nowa Zelandia"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:163
+#: app/GedcomCode/GedcomCodeTemp.php:187
 msgid "Hartford, Connecticut, United States"
 msgstr "Hartford, Connecticut, Stany Zjednoczone"
 
@@ -7094,8 +7075,7 @@ msgid "Hebrew name"
 msgstr "Nazwisko hebrajskie"
 
 #. I18N: gedcom tag _HEIG
-#: app/GedcomTag.php:1525 app/Module/GoogleMapsModule.php:367
-#: app/Module/GoogleMapsModule.php:470
+#: app/GedcomTag.php:1525 app/Module/GoogleMapsModule.php:442
 msgid "Height"
 msgstr "Wysokość"
 
@@ -7118,15 +7098,14 @@ msgid "Help"
 msgstr "Pomoc"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:167
+#: app/GedcomCode/GedcomCodeTemp.php:191
 msgid "Helsinki, Finland"
 msgstr "Helsinki, Finlandia"
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12
-#: modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7146,7 +7125,7 @@ msgid "Her occupation was"
 msgstr "Pracowała jako"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:169
+#: app/GedcomCode/GedcomCodeTemp.php:193
 msgid "Hermosillo, Mexico"
 msgstr "Hermosillo, Meksyk"
 
@@ -7225,12 +7204,12 @@ msgstr "Honduras"
 
 #. I18N: Location of an LDS church temple
 #. I18N: Name of a country or state
-#: app/GedcomCode/GedcomCodeTemp.php:171 app/Stats.php:6774
+#: app/GedcomCode/GedcomCodeTemp.php:195 app/Stats.php:6774
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
 #. I18N: Name of a module/chart
-#: app/Module/ChartsBlockModule.php:188 app/Module/HourglassChartModule.php:33
+#: app/Module/ChartsBlockModule.php:187 app/Module/HourglassChartModule.php:33
 msgid "Hourglass chart"
 msgstr "Diagram klepsydrowy"
 
@@ -7246,12 +7225,12 @@ msgid "Household"
 msgstr "Gospodarstwo domowe"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:173
+#: app/GedcomCode/GedcomCodeTemp.php:197
 msgid "Houston, Texas, United States"
 msgstr "Houston, Teksas"
 
 #. I18N: Configuration option
-#: app/Module/RelationshipsChartModule.php:158
+#: app/Module/RelationshipsChartModule.php:162
 msgid "How much recursion to use when searching for relationships"
 msgstr "Ile rekurencji wykorzystać przy wyszukaniu pokrewieństwa"
 
@@ -7280,7 +7259,7 @@ msgstr "Mąż"
 msgid "Husband’s age"
 msgstr "Wiek męża"
 
-#: app/Module/GoogleMapsModule.php:334
+#: app/Module/GoogleMapsModule.php:329
 msgid "Hybrid"
 msgstr "Hybrydowa"
 
@@ -7298,12 +7277,12 @@ msgctxt "Surname tradition"
 msgid "Icelandic"
 msgstr "islandzka"
 
-#: app/Module/GoogleMapsModule.php:3601 app/Module/GoogleMapsModule.php:4099
+#: app/Module/GoogleMapsModule.php:3471 app/Module/GoogleMapsModule.php:3969
 msgid "Icon"
 msgstr "Ikona"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:175
+#: app/GedcomCode/GedcomCodeTemp.php:199
 msgid "Idaho Falls, Idaho, United States"
 msgstr "Idaho Falls, Idaho, Stany Zjednoczone"
 
@@ -7365,11 +7344,11 @@ msgstr "Jeśli goście nie mogą zobaczyć drzewa genealogicznego nie mogą też
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr "Jeśli zachodzi obawa, że użytkownicy mogą przesyłać nieodpowiednie pliki multimedialne, można ograniczyć dodawanie plików multimedialnych tylko dla menedżerów."
 
-#: site-unavailable.php:84
+#: site-unavailable.php:82
 msgid "If you are the website administrator, you should check that:"
 msgstr "Jeśli jesteś administratorem strony, powinieneś sprawdzić, czy:"
 
-#: site-unavailable.php:97
+#: site-unavailable.php:95
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
 msgstr "Jeśli nie jesteś w stanie rozwiązać problemu samodzielnie, możesz poprosić o pomoc na forum na stronie <a href=\"https://webtrees.net\">webtrees.net</a>."
 
@@ -7381,7 +7360,7 @@ msgstr "Jeśli dany plik GEDCOM został utworzony za pomocą oprogramowania, kt�
 msgid "If you didn’t request an account, you can just delete this message."
 msgstr "Jeśli nie proszono o utworzenie konta można zignorować tę wiadomość."
 
-#: app/Module/GoogleMapsModule.php:4087
+#: app/Module/GoogleMapsModule.php:3957
 msgid "If you have a large number of inactive places, it can be slow to generate the list."
 msgstr "Przy dużej liczbie miejsc nieaktywnych wyświetlenie listy może być powolne."
 
@@ -7449,7 +7428,7 @@ msgstr "Importuj"
 msgid "Import a GEDCOM file"
 msgstr "Importuj plik GEDCOM"
 
-#: app/Module/GoogleMapsModule.php:4167
+#: app/Module/GoogleMapsModule.php:4037
 msgid "Import all places from a family tree"
 msgstr "Importuj wszystkie miejsca z drzewa genealogicznego"
 
@@ -7488,7 +7467,7 @@ msgstr "W tym miesiącu…"
 msgid "In this year…"
 msgstr "W tym roku…"
 
-#: app/Module/GoogleMapsModule.php:1448
+#: app/Module/GoogleMapsModule.php:1359
 msgid "Include fully matched places"
 msgstr "Dołącz identyczne miejsca"
 
@@ -7526,7 +7505,7 @@ msgstr "Indianapolis, Indiana, Stany Zjednoczone"
 #. I18N: Name of a module/report
 #: admin_trees_config.php:741 admin_trees_manage.php:537 ancestry.php:52
 #: app/Functions/FunctionsEdit.php:848 app/GedcomTag.php:532
-#: app/Module/ChartsBlockModule.php:216 app/Module/GoogleMapsModule.php:758
+#: app/Module/ChartsBlockModule.php:215 app/Module/GoogleMapsModule.php:731
 #: app/Module/IndividualReportModule.php:29 app/Module/StoriesModule.php:246
 #: app/Module/StoriesModule.php:375 app/Module/StoriesModule.php:459
 #: compact.php:47 descendancy.php:48 familybook.php:48 fanchart.php:79
@@ -7551,11 +7530,11 @@ msgstr "Pierwsza osoba"
 msgid "Individual 2"
 msgstr "Druga osoba"
 
-#: statistics.php:535
+#: statistics.php:560
 msgid "Individual distribution"
 msgstr "Rozmieszczenie osób"
 
-#: app/Stats.php:1711 statistics.php:586
+#: app/Stats.php:1711 statistics.php:655
 msgid "Individual distribution chart"
 msgstr "Rozmieszczenie wszystkich osób"
 
@@ -7578,7 +7557,7 @@ msgstr "Wpis osoby"
 msgid "Individual who lived the longest"
 msgstr "Osoba żyjąca najdłużej"
 
-#: admin.php:756 admin.php:787 admin_trees_duplicates.php:142 ancestry.php:81
+#: admin.php:774 admin.php:805 admin_trees_duplicates.php:142 ancestry.php:81
 #: app/Controller/SearchController.php:519
 #: app/Functions/FunctionsPrintLists.php:1082
 #: app/Functions/FunctionsPrintLists.php:1220
@@ -7586,18 +7565,18 @@ msgstr "Osoba żyjąca najdłużej"
 #: app/Functions/FunctionsPrintLists.php:1550
 #: app/Module/FamilyTreeStatisticsModule.php:107
 #: app/Module/FamilyTreeStatisticsModule.php:314
-#: app/Module/GoogleMapsModule.php:2490 app/Module/HtmlBlockModule.php:171
+#: app/Module/GoogleMapsModule.php:2384 app/Module/HtmlBlockModule.php:171
 #: app/Module/SlideShowModule.php:264 app/Theme/AbstractTheme.php:1504
-#: calendar.php:421 descendancy.php:65 gedrecord.php:127 indilist.php:130
-#: indilist.php:133 mediaviewer.php:116 modules_v3/fact_sources/report.xml:54
-#: modules_v3/fact_sources/report.xml:258 note.php:128 placelist.php:198
-#: repo.php:136 search.php:88 source.php:140 statistics.php:69
+#: calendar.php:413 descendancy.php:65 gedrecord.php:111 indilist.php:130
+#: indilist.php:133 mediaviewer.php:100 modules_v3/fact_sources/report.xml:54
+#: modules_v3/fact_sources/report.xml:258 note.php:112 placelist.php:198
+#: repo.php:120 search.php:88 source.php:124 statistics.php:69
 #: statisticsplot.php:886 statisticsplot.php:936 statisticsplot.php:1144
 #: statisticsplot.php:1194 statisticsplot.php:1244 statisticsplot.php:1294
 msgid "Individuals"
 msgstr "Osoby"
 
-#: app/Stats.php:422 statistics.php:393
+#: app/Stats.php:422 statistics.php:394
 msgid "Individuals with sources"
 msgstr "Liczba osób powiązanych ze źródłami"
 
@@ -7635,12 +7614,11 @@ msgid "Installation folder"
 msgstr "Katalog instalacji"
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:189
-#: app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:188 app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
 msgstr "Interaktywne drzewo"
 
-#: app/Module/ChartsBlockModule.php:126
+#: app/Module/ChartsBlockModule.php:128
 #: app/Module/InteractiveTree/TreeView.php:69
 #: app/Module/InteractiveTree/TreeView.php:149
 #: app/Module/InteractiveTreeModule.php:135
@@ -7710,7 +7688,7 @@ msgstr "Wyspa Man"
 msgid "Israel"
 msgstr "Izrael"
 
-#: admin_site_upgrade.php:76 admin_site_upgrade.php:80
+#: admin_site_upgrade.php:77 admin_site_upgrade.php:81
 msgid "It can take several minutes to download and install the upgrade. Be patient."
 msgstr "Pobieranie i instalacja aktualizacji może zająć kilka minut. Prosimy o cierpliwość."
 
@@ -7789,7 +7767,7 @@ msgid "Jewish"
 msgstr "żydowski"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:177
+#: app/GedcomCode/GedcomCodeTemp.php:203
 msgid "Johannesburg, South Africa"
 msgstr "Johannesburg, Republika Południowej Afryki"
 
@@ -7804,7 +7782,7 @@ msgid "Jordan"
 msgstr "Jordania"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:179
+#: app/GedcomCode/GedcomCodeTemp.php:205
 msgid "Jordan River, Utah, United States"
 msgstr "Jordan River, Utah, Stany Zjednoczone"
 
@@ -7985,7 +7963,7 @@ msgid "Khordad"
 msgstr "Chordad"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:181
+#: app/GedcomCode/GedcomCodeTemp.php:211
 msgid "Kiev, Ukraine"
 msgstr "Kiev, Ukraina"
 
@@ -8019,7 +7997,7 @@ msgid "Kislev"
 msgstr "kislew"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:183
+#: app/GedcomCode/GedcomCodeTemp.php:209
 msgid "Kona, Hawaii, United States"
 msgstr "Kona, Hawaje"
 
@@ -8073,7 +8051,7 @@ msgid "LDS temple"
 msgstr "Świątynia Mormońska"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:165
+#: app/GedcomCode/GedcomCodeTemp.php:189
 msgid "Laie, Hawaii, United States"
 msgstr "Laie, Hawaje"
 
@@ -8114,7 +8092,7 @@ msgid "Largest number of grandchildren"
 msgstr "Rodziny z największą liczbą wnucząt"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:197
+#: app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Las Vegas, Nevada, United States"
 msgstr "Las Vegas, Nevada, Stany Zjednoczone"
 
@@ -8128,7 +8106,7 @@ msgstr "Ostatnia zmiana"
 msgid "Last email reminder was sent "
 msgstr "Ostatni email z przypomnieniem wysłano "
 
-#: statistics.php:370
+#: statistics.php:371
 msgid "Last event"
 msgstr "Ostatnie wydarzenie"
 
@@ -8165,8 +8143,8 @@ msgid "Latest marriage"
 msgstr "Ostatni ślub"
 
 #. I18N: gedcom tag LATI
-#: app/GedcomTag.php:544 app/Module/GoogleMapsModule.php:1534
-#: app/Module/GoogleMapsModule.php:3600
+#: app/GedcomTag.php:544 app/Module/GoogleMapsModule.php:1445
+#: app/Module/GoogleMapsModule.php:3470
 msgid "Latitude"
 msgstr "Szerokość"
 
@@ -8248,8 +8226,8 @@ msgctxt "paper size"
 msgid "Letter"
 msgstr "Letter"
 
-#: app/Module/GoogleMapsModule.php:413 app/Module/GoogleMapsModule.php:429
-#: app/Module/GoogleMapsModule.php:1528 app/Module/GoogleMapsModule.php:3575
+#: app/Module/GoogleMapsModule.php:385 app/Module/GoogleMapsModule.php:401
+#: app/Module/GoogleMapsModule.php:1439 app/Module/GoogleMapsModule.php:3445
 msgid "Level"
 msgstr "Poziom"
 
@@ -8279,7 +8257,7 @@ msgid "Lifespans"
 msgstr "Długość życia"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:187
+#: app/GedcomCode/GedcomCodeTemp.php:215
 msgid "Lima, Peru"
 msgstr "Lima, Peru"
 
@@ -8316,7 +8294,7 @@ msgstr "Łączy danego użytkownika z osobą w drzewie genealogicznym."
 #: app/Module/AlbumModule.php:104 app/Module/CensusAssistantModule.php:234
 #: app/Module/MediaTabModule.php:92 inverselink.php:34 inverselink.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:73
-#: source.php:187
+#: source.php:171
 msgid "Link to an existing media object"
 msgstr "Powiąż z istniejącym obiektem multimedialnym"
 
@@ -8351,7 +8329,7 @@ msgstr "litewska"
 msgid "Living"
 msgstr "Żyjący"
 
-#: calendar.php:239
+#: calendar.php:231
 msgid "Living individuals"
 msgstr "Osoby żyjące"
 
@@ -8369,7 +8347,7 @@ msgstr "Pliki lokalne"
 msgid "Location"
 msgstr "Miejsce"
 
-#: app/Module/GoogleMapsModule.php:4027
+#: app/Module/GoogleMapsModule.php:3897
 msgid "Location not removed: this location contains sub-locations"
 msgstr "Miejsce nie zostało usunięte: ta lokalizacja zawiera lokalizacje pochodne"
 
@@ -8388,12 +8366,12 @@ msgid "Lodger"
 msgstr "Lokator"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:189
+#: app/GedcomCode/GedcomCodeTemp.php:217
 msgid "Logan, Utah, United States"
 msgstr "Logan, Utah, Stany Zjednoczone"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:191
+#: app/GedcomCode/GedcomCodeTemp.php:219
 msgid "London, England"
 msgstr "London, Anglia"
 
@@ -8407,13 +8385,13 @@ msgid "Longest marriage"
 msgstr "Najdłuższy staż"
 
 #. I18N: gedcom tag LONG
-#: app/GedcomTag.php:552 app/Module/GoogleMapsModule.php:1535
-#: app/Module/GoogleMapsModule.php:3600
+#: app/GedcomTag.php:552 app/Module/GoogleMapsModule.php:1446
+#: app/Module/GoogleMapsModule.php:3470
 msgid "Longitude"
 msgstr "Długość"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:185
+#: app/GedcomCode/GedcomCodeTemp.php:213
 msgid "Los Angeles, California, United States"
 msgstr "Los Angeles, Kalifornia"
 
@@ -8422,7 +8400,7 @@ msgid "Lost password request"
 msgstr "Zapomniane hasło"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:193
+#: app/GedcomCode/GedcomCodeTemp.php:221
 msgid "Louisville, Kentucky, United States"
 msgstr "Louisville, Kentucky, Stany Zjednoczone"
 
@@ -8431,7 +8409,7 @@ msgid "Lowest population"
 msgstr "Mała liczba osób"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:195
+#: app/GedcomCode/GedcomCodeTemp.php:223
 msgid "Lubbock, Texas, United States"
 msgstr "Lubbock, Teksas"
 
@@ -8456,7 +8434,7 @@ msgid "Madagascar"
 msgstr "Madagaskar"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:199
+#: app/GedcomCode/GedcomCodeTemp.php:227
 msgid "Madrid, Spain"
 msgstr "Madrid, Hiszpania"
 
@@ -8495,7 +8473,7 @@ msgstr "Malediwy"
 
 #: app/Controller/IndividualController.php:238
 #: app/Controller/IndividualController.php:241
-#: app/Functions/FunctionsEdit.php:670 app/Stats.php:5581 calendar.php:639
+#: app/Functions/FunctionsEdit.php:670 app/Stats.php:5581 calendar.php:631
 #: statisticsplot.php:900 statisticsplot.php:950 statisticsplot.php:1004
 #: statisticsplot.php:1054 statisticsplot.php:1108 statisticsplot.php:1158
 #: statisticsplot.php:1208 statisticsplot.php:1258 statisticsplot.php:1308
@@ -8508,7 +8486,7 @@ msgstr "Mężczyzna"
 #: app/Module/FamilyTreeStatisticsModule.php:179
 #: app/Module/HtmlBlockModule.php:175 app/Module/TopGivenNamesModule.php:95
 #: app/Stats.php:946 app/Stats.php:948 app/Stats.php:957 app/Stats.php:958
-#: app/Stats.php:2602 app/Stats.php:3945 calendar.php:252 calendar.php:443
+#: app/Stats.php:2602 app/Stats.php:3945 calendar.php:244 calendar.php:435
 #: statistics.php:150 statistics.php:166 statistics.php:179
 msgid "Males"
 msgstr "Mężczyźni"
@@ -8524,12 +8502,12 @@ msgid "Malta"
 msgstr "Malta"
 
 #. I18N: Menu entry
-#: admin_pgv_to_wt.php:130 admin_site_change.php:289 admin_site_merge.php:183
+#: admin_pgv_to_wt.php:130 admin_site_change.php:289 admin_site_merge.php:187
 #: admin_trees_check.php:125 admin_trees_config.php:342
 #: admin_trees_download.php:103 admin_trees_duplicates.php:150
 #: admin_trees_manage.php:35 admin_trees_manage.php:184
 #: admin_trees_manage.php:338 admin_trees_merge.php:40
-#: admin_trees_places.php:90 app/Theme/AdministrationTheme.php:127
+#: admin_trees_places.php:91 app/Theme/AdministrationTheme.php:127
 msgid "Manage family trees"
 msgstr "Zarządzaj drzewami genealogicznymi"
 
@@ -8550,7 +8528,7 @@ msgstr "Zarządzaj powiązaniami"
 msgid "Manager"
 msgstr "Menedżer"
 
-#: admin.php:667
+#: admin.php:685
 msgid "Managers"
 msgstr "Menedżerowie"
 
@@ -8565,12 +8543,12 @@ msgid "Manhattan, New York, United States"
 msgstr "Manhattan, Nowy Jork, Stany Zjednoczone"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:201
+#: app/GedcomCode/GedcomCodeTemp.php:233
 msgid "Manila, Philippines"
 msgstr "Manila, Filipiny"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:203
+#: app/GedcomCode/GedcomCodeTemp.php:235
 msgid "Manti, Utah, United States"
 msgstr "Manti, Utah, Stany Zjednoczone"
 
@@ -8592,7 +8570,7 @@ msgstr "Wiele serwerów pocztowych wymaga aby serwer wysyłający identyfikował
 #. I18N: gedcom tag MAP
 #. I18N: Type of media object
 #: app/GedcomTag.php:556 app/GedcomTag.php:1932
-#: app/Module/GoogleMapsModule.php:332
+#: app/Module/GoogleMapsModule.php:327
 msgid "Map"
 msgstr "Mapa"
 
@@ -8694,7 +8672,7 @@ msgstr "Status początku małżeństwa"
 msgid "Marriage bond"
 msgstr "Intercyza"
 
-#: app/Stats.php:1693 statistics.php:541
+#: app/Stats.php:1693 statistics.php:570
 msgid "Marriage by country"
 msgstr "Kraj ślubu"
 
@@ -8818,7 +8796,7 @@ msgstr "Ślub rodziców"
 msgid "Marriage place contains"
 msgstr "Miejsce ślubu zawiera"
 
-#: statistics.php:418
+#: statistics.php:419
 msgid "Marriage places"
 msgstr "Najczęstsze miejsca ślubu"
 
@@ -8949,15 +8927,15 @@ msgid "Mayotte"
 msgstr "Majotta"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:205
+#: app/GedcomCode/GedcomCodeTemp.php:237
 msgid "Medford, Oregon, United States"
 msgstr "Medford, Oregon, Stany Zjednoczone"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
-#: admin.php:760 admin_media.php:692
-#: app/Functions/FunctionsPrintLists.php:1446 app/Module/MediaTabModule.php:35
-#: app/Theme/AdministrationTheme.php:177 inverselink.php:70
+#: admin.php:778 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1446
+#: app/Module/MediaTabModule.php:35 app/Theme/AdministrationTheme.php:177
+#: inverselink.php:70
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:74
 msgid "Media"
 msgstr "Multimedia"
@@ -9000,15 +8978,15 @@ msgstr "Katalogi multimediów"
 msgid "Media object"
 msgstr "Obiekt multimedialny"
 
-#: admin.php:827 admin_trees_duplicates.php:144
+#: admin.php:845 admin_trees_duplicates.php:144
 #: app/Functions/FunctionsPrintLists.php:1086
 #: app/Functions/FunctionsPrintLists.php:1224
 #: app/Module/FamilyTreeStatisticsModule.php:121
 #: app/Module/FamilyTreeStatisticsModule.php:370
 #: app/Module/HtmlBlockModule.php:195 app/Theme/AbstractTheme.php:1513
-#: gedrecord.php:141 medialist.php:37 mediaviewer.php:130 note.php:142
-#: repo.php:150 source.php:154 statistics.php:352 statistics.php:379
-#: statistics.php:382
+#: gedrecord.php:125 medialist.php:37 mediaviewer.php:114 note.php:126
+#: repo.php:134 source.php:138 statistics.php:353 statistics.php:380
+#: statistics.php:383
 msgid "Media objects"
 msgstr "Multimedia"
 
@@ -9075,7 +9053,7 @@ msgid "Mehr"
 msgstr "Mehr"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:207
+#: app/GedcomCode/GedcomCodeTemp.php:239
 msgid "Melbourne, Australia"
 msgstr "Melbourne, Australia"
 
@@ -9094,7 +9072,7 @@ msgid "Memory limit"
 msgstr "Limit pamięci"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:209
+#: app/GedcomCode/GedcomCodeTemp.php:241
 msgid "Memphis, Tennessee, United States"
 msgstr "Memphis, Tennessee, Stany Zjednoczone"
 
@@ -9127,12 +9105,12 @@ msgid "Merge records"
 msgstr "Scal wpisy"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:211
+#: app/GedcomCode/GedcomCodeTemp.php:243
 msgid "Merida, Mexico"
 msgstr "Merida, Meksyk"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:89
+#: app/GedcomCode/GedcomCodeTemp.php:95
 msgid "Mesa, Arizona, United States"
 msgstr "Mesa, Arizona, Stany Zjednoczone"
 
@@ -9176,7 +9154,7 @@ msgid "Mexico"
 msgstr "Meksyk"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:213
+#: app/GedcomCode/GedcomCodeTemp.php:245
 msgid "Mexico City, Mexico"
 msgstr "Mexico City, Meksyk"
 
@@ -9195,7 +9173,7 @@ msgstr "Mikrofilm"
 msgid "Micronesia"
 msgstr "Mikronezja"
 
-#: statistics.php:601
+#: statistics.php:694
 msgid "Middle East"
 msgstr "Bliski Wschód"
 
@@ -9214,7 +9192,7 @@ msgstr "Służba wojskowa"
 msgid "Military service"
 msgstr "Służba wojskowa"
 
-#: app/Module/GoogleMapsModule.php:395
+#: app/Module/GoogleMapsModule.php:367
 msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
 msgstr "Minimalny i maksymalny współczynnik powiększenia dla Mapy Google. 1 - cała mapa, 15 - pojedyncze domy. Współczynnik 15 dostępny jest tylko w pewnych miejscach."
 
@@ -9225,7 +9203,7 @@ msgstr "Minimalny i maksymalny współczynnik powiększenia dla Mapy Google. 1 -
 msgid "Missing data"
 msgstr "Brakujące dane"
 
-#: edit_changes.php:196
+#: edit_changes.php:201
 msgid "Moderate pending changes"
 msgstr "Zarządzaj oczekującymi zmianami"
 
@@ -9234,7 +9212,7 @@ msgstr "Zarządzaj oczekującymi zmianami"
 msgid "Moderator"
 msgstr "Moderator"
 
-#: admin.php:680
+#: admin.php:698
 msgid "Moderators"
 msgstr "Moderatorzy"
 
@@ -9249,11 +9227,11 @@ msgstr "Moduł"
 #: admin_modules.php:152 app/Module/BatchUpdateModule.php:192
 #: app/Module/FrequentlyAskedQuestionsModule.php:162
 #: app/Module/FrequentlyAskedQuestionsModule.php:439
-#: app/Module/GoogleMapsModule.php:283 app/Module/GoogleMapsModule.php:1387
-#: app/Module/GoogleMapsModule.php:3614
-#: app/Module/RelationshipsChartModule.php:148
-#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
-#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
+#: app/Module/GoogleMapsModule.php:278 app/Module/GoogleMapsModule.php:1298
+#: app/Module/GoogleMapsModule.php:3484
+#: app/Module/RelationshipsChartModule.php:152 app/Module/SiteMapModule.php:297
+#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
+#: app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr "Administracja modułami"
 
@@ -9292,36 +9270,36 @@ msgid "Montenegro"
 msgstr "Czarnogóra"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:217
+#: app/GedcomCode/GedcomCodeTemp.php:249
 msgid "Monterrey, Mexico"
 msgstr "Monterrey, Meksyk"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:215
+#: app/GedcomCode/GedcomCodeTemp.php:247
 msgid "Montevideo, Uruguay"
 msgstr "Montevideo, Urugwaj"
 
-#: app/Theme/AbstractTheme.php:1065 calendar.php:182
+#: app/Theme/AbstractTheme.php:1065 calendar.php:174
 msgid "Month"
 msgstr "Miesiąc"
 
-#: statistics.php:505 statisticsplot.php:874
+#: statistics.php:510 statisticsplot.php:874
 msgid "Month of birth"
 msgstr "Miesiąc urodzin"
 
-#: app/Stats.php:4739 statistics.php:517 statisticsplot.php:1028
+#: app/Stats.php:4739 statistics.php:530 statisticsplot.php:1028
 msgid "Month of birth of first child in a relation"
 msgstr "Miesiąc urodzin pierwszego dziecka"
 
-#: statistics.php:508 statisticsplot.php:924
+#: statistics.php:515 statisticsplot.php:924
 msgid "Month of death"
 msgstr "Miesiąc śmierci"
 
-#: statistics.php:514 statisticsplot.php:1082
+#: statistics.php:525 statisticsplot.php:1082
 msgid "Month of first marriage"
 msgstr "Miesiąc pierwszego ślubu"
 
-#: statistics.php:511 statisticsplot.php:978
+#: statistics.php:520 statisticsplot.php:978
 msgid "Month of marriage"
 msgstr "Miesiąc ślubu"
 
@@ -9330,12 +9308,12 @@ msgid "Month:"
 msgstr "Miesiąc:"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:219
+#: app/GedcomCode/GedcomCodeTemp.php:251
 msgid "Monticello, Utah, United States"
 msgstr "Monticello, Utah, Stany Zjednoczone"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:221
+#: app/GedcomCode/GedcomCodeTemp.php:253
 msgid "Montreal, Quebec, Canada"
 msgstr "Montreal, Quebec, Kanada"
 
@@ -9373,7 +9351,7 @@ msgctxt "NOMINATIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#: app/Module/FamilyTreeNewsModule.php:136
+#: app/Module/FamilyTreeNewsModule.php:137
 msgid "More news articles"
 msgstr "Więcej artykułów"
 
@@ -9442,7 +9420,7 @@ msgid "Mother’s family with an unknown individual"
 msgstr "Rodzina matki z nieznaną osobą"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:223
+#: app/GedcomCode/GedcomCodeTemp.php:255
 msgid "Mount Timpanogos, Utah, United States"
 msgstr "Mount Timpanogos, Utah, Stany Zjednoczone"
 
@@ -9611,7 +9589,7 @@ msgid "Narrative description"
 msgstr "Opis narracyjny"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:225
+#: app/GedcomCode/GedcomCodeTemp.php:257
 msgid "Nashville, Tennessee, United States"
 msgstr "Nashville, Tennessee, Stany Zjednoczone"
 
@@ -9631,12 +9609,12 @@ msgid "Nauru"
 msgstr "Nauru"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:227
+#: app/GedcomCode/GedcomCodeTemp.php:259
 msgid "Nauvoo (new), Illinois, United States"
 msgstr "Nauvoo, Illinois (nowe)"
 
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:229
+#. I18N: Location of an historic LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:261
 msgid "Nauvoo (original), Illinois, United States"
 msgstr "Nauvoo, Illinois (pierwotne)"
 
@@ -9676,8 +9654,8 @@ msgstr "Nigdy nieżonaty"
 msgid "New Caledonia"
 msgstr "Nowa Kaledonia"
 
-#. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:235
+#. I18N: Location of an historic LDS church temple
+#: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "New York, New York, United States"
 msgstr "New York, New York, Stany Zjednoczone"
 
@@ -9703,7 +9681,7 @@ msgid "New user at %s"
 msgstr "Nowy użytkownik na %s"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:231
+#: app/GedcomCode/GedcomCodeTemp.php:263
 msgid "Newport Beach, California, United States"
 msgstr "Newport Beach, Kalifornia"
 
@@ -9810,7 +9788,7 @@ msgstr "Nie wybrano pliku GEDCOM."
 msgid "No GEDCOM files found."
 msgstr "Nie znaleziono plików GEDCOM."
 
-#: app/Module/GoogleMapsModule.php:875
+#: app/Module/GoogleMapsModule.php:850
 msgid "No ancestors in the database."
 msgstr "Brak przodków w bazie danych."
 
@@ -9827,11 +9805,11 @@ msgstr "Brak dzieci"
 msgid "No contact"
 msgstr "Brak kontaktu"
 
-#: admin_site_upgrade.php:143
+#: admin_site_upgrade.php:144
 msgid "No custom modules are enabled."
 msgstr "Brak modułów użytkownika."
 
-#: admin_site_upgrade.php:207
+#: admin_site_upgrade.php:208
 msgid "No custom themes are enabled."
 msgstr "Brak motywów użytkownika."
 
@@ -9896,11 +9874,11 @@ msgstr "Nie odebrano żadnego pliku. Spróbuj ponownie wgrać plik."
 msgid "No link between the two individuals could be found."
 msgstr "Nie znaleziono powiązania między tymi osobami."
 
-#: app/Module/GoogleMapsModule.php:186
+#: app/Module/GoogleMapsModule.php:183
 msgid "No map data exists for this individual"
 msgstr "Brak danych o mapie dla tej osoby"
 
-#: admin_site_merge.php:237 admin_site_merge.php:284 admin_site_merge.php:330
+#: admin_site_merge.php:241 admin_site_merge.php:288 admin_site_merge.php:334
 msgid "No matching facts found"
 msgstr "Nie znaleziono zgodnych faktów"
 
@@ -9908,15 +9886,15 @@ msgstr "Nie znaleziono zgodnych faktów"
 msgid "No media file was provided."
 msgstr "Nie wybrano pliku multimedialnego."
 
-#: app/Module/FamilyTreeNewsModule.php:108
+#: app/Module/FamilyTreeNewsModule.php:109
 msgid "No news articles have been submitted."
 msgstr "Brak nadesłanych artykułów."
 
-#: app/Module/GoogleMapsModule.php:3400 app/Module/GoogleMapsModule.php:4103
+#: app/Module/GoogleMapsModule.php:3270 app/Module/GoogleMapsModule.php:3973
 msgid "No places found"
 msgstr "Nie znaleziono podanych miejsc"
 
-#: admin_trees_places.php:127
+#: admin_trees_places.php:128
 msgid "No places have been found."
 msgstr "Nie znaleziono żadnych miejsc."
 
@@ -9945,7 +9923,7 @@ msgstr "Brak zalogowanych użytkowników"
 msgid "No temple - living ordinance"
 msgstr "Brak świątyni - obrządek życiowy"
 
-#: admin.php:610 admin_site_upgrade.php:60
+#: admin.php:628 admin_site_upgrade.php:61
 msgid "No upgrade information is available."
 msgstr "Brak informacji o aktualizacji."
 
@@ -10013,7 +9991,7 @@ msgstr "Norwegia"
 msgid "Not a valid individual, family, or source ID"
 msgstr "Nieprawidłowy identyfikator Osoby, Rodziny lub Źródła"
 
-#: admin.php:706
+#: admin.php:724
 msgid "Not approved by an administrator"
 msgstr "Niezatwierdzeni przez administratora"
 
@@ -10039,7 +10017,7 @@ msgctxt "MALE"
 msgid "Not married"
 msgstr "Nieżonaty"
 
-#: admin.php:693
+#: admin.php:711
 msgid "Not verified by the user"
 msgstr "Niepotwierdzeni przez użytkownika"
 
@@ -10064,11 +10042,11 @@ msgstr "Uwaga: duża liczba kroków pokrewieństwa wymaga dużo obliczeń, któr
 
 #. I18N: Name of a module
 #: app/Controller/SearchController.php:528 app/Module/NotesTabModule.php:34
-#: gedrecord.php:152 mediaviewer.php:141
+#: gedrecord.php:136 mediaviewer.php:125
 #: modules_v3/GEDFact_assistant/census/census-edit.php:183
 #: modules_v3/individual_ext_report/report.xml:223
-#: modules_v3/individual_report/report.xml:226 note.php:153 repo.php:161
-#: source.php:165 statistics.php:354
+#: modules_v3/individual_report/report.xml:226 note.php:137 repo.php:145
+#: source.php:149 statistics.php:355
 msgid "Notes"
 msgstr "Notatki"
 
@@ -10106,13 +10084,13 @@ msgid "November"
 msgstr "listopad"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:233
+#: app/GedcomCode/GedcomCodeTemp.php:265
 msgid "Nuku’Alofa, Tonga"
 msgstr "Nuku’Alofa, Tonga"
 
 #. I18N: gedcom tag NCHI
 #: app/GedcomTag.php:626 app/Stats.php:4944 app/Stats.php:4946
-#: app/Stats.php:4948 statistics.php:532 statisticsplot.php:1332
+#: app/Stats.php:4948 statistics.php:555 statisticsplot.php:1332
 msgid "Number of children"
 msgstr "Liczba dzieci w rodzinie"
 
@@ -10172,12 +10150,12 @@ msgid "Nurse"
 msgstr "Pielęgniarz"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:239
+#: app/GedcomCode/GedcomCodeTemp.php:271
 msgid "Oakland, California, United States"
 msgstr "Oakland, Kalifornia"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:241
+#: app/GedcomCode/GedcomCodeTemp.php:273
 msgid "Oaxaca, Mexico"
 msgstr "Oaxaca, Meksyk"
 
@@ -10230,12 +10208,12 @@ msgid "October"
 msgstr "październik"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:243
+#: app/GedcomCode/GedcomCodeTemp.php:275
 msgid "Ogden, Utah, United States"
 msgstr "Ogden, Utah, Stany Zjednoczone"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:245
+#: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Oklahoma City, Oklahoma, United States"
 msgstr "Oklahoma City, Oklahoma, Stany Zjednoczone"
 
@@ -10243,7 +10221,7 @@ msgstr "Oklahoma City, Oklahoma, Stany Zjednoczone"
 msgid "Old data"
 msgstr "Stare dane"
 
-#: admin.php:874
+#: admin.php:892
 msgid "Old files found"
 msgstr "Znaleziono stare pliki"
 
@@ -10302,7 +10280,7 @@ msgstr "Tego dnia…"
 msgid "Only managers can edit"
 msgstr "Tylko menedżerowie mogą edytować"
 
-#: site-unavailable.php:81
+#: site-unavailable.php:79
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
 msgstr "Ups! Serwer strony www nie jest w stanie połączyć się z serwerem bazy danych. Może być zajęty, może być przeprowadzana konserwacja, lub po prostu jest zepsuty. Należy <a href=\"index.php\">spróbować ponownie</a> w ciągu kilku minut lub skontaktować się z administratorem strony."
 
@@ -10314,7 +10292,7 @@ msgstr "Ups! webtrees nie jest w stanie utworzyć plików w tym katalogu."
 msgid "OpenStreetMap™"
 msgstr "OpenStreetMap™"
 
-#: app/Module/GoogleMapsModule.php:402
+#: app/Module/GoogleMapsModule.php:374
 msgid "Optional prefixes and suffixes"
 msgstr "Opcjonalne przedrostki i przyrostki"
 
@@ -10373,7 +10351,7 @@ msgid "Orientation"
 msgstr "Typ orientacji"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:247
+#: app/GedcomCode/GedcomCodeTemp.php:281
 msgid "Orlando, Florida, United States"
 msgstr "Orlando, Floryda"
 
@@ -10398,7 +10376,7 @@ msgstr "Inne ustawienia"
 msgid "Others"
 msgstr "Pozostałe"
 
-#: app/Module/GoogleMapsModule.php:3828
+#: app/Module/GoogleMapsModule.php:3698
 msgid "Overwrite existing coordinates."
 msgstr "Nadpisz istniejące współrzędne."
 
@@ -10462,8 +10440,7 @@ msgstr "Limit czasu PHP"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45
-#: modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -10519,7 +10496,7 @@ msgid "Palette"
 msgstr "Deseń"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:251
+#: app/GedcomCode/GedcomCodeTemp.php:285
 msgid "Palmyra, New York, United States"
 msgstr "Palmyra, New York, Stany Zjednoczone"
 
@@ -10534,7 +10511,7 @@ msgid "Panama City, Panama"
 msgstr "Panama City, Panama"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:253
+#: app/GedcomCode/GedcomCodeTemp.php:289
 msgid "Papeete, Tahiti"
 msgstr "Papeete, Tahiti"
 
@@ -10549,7 +10526,7 @@ msgid "Paraguay"
 msgstr "Paragwaj"
 
 #: app/Controller/HourglassController.php:340
-#: app/Module/FamilyNavigatorModule.php:196 family.php:100
+#: app/Module/FamilyNavigatorModule.php:204 family.php:82
 msgid "Parents"
 msgstr "Rodzice"
 
@@ -10586,7 +10563,7 @@ msgstr "Payson, Utah, Stany Zjednoczone"
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
 #: app/Controller/PedigreeController.php:88
-#: app/Module/ChartsBlockModule.php:186 app/Module/PedigreeChartModule.php:33
+#: app/Module/ChartsBlockModule.php:185 app/Module/PedigreeChartModule.php:33
 #: app/Module/PedigreeReportModule.php:29
 #: modules_v3/pedigree_report/report.xml:3
 #: modules_v3/pedigree_report/report.xml:43
@@ -10597,12 +10574,12 @@ msgstr "Rodowód"
 msgid "Pedigree chart"
 msgstr "Diagram rodowy"
 
-#: app/Module/GoogleMapsModule.php:214
+#: app/Module/GoogleMapsModule.php:211
 msgid "Pedigree map"
 msgstr "Mapa rodowa"
 
 #. I18N: %s is an individual’s name
-#: app/Module/GoogleMapsModule.php:736
+#: app/Module/GoogleMapsModule.php:709
 #, php-format
 msgid "Pedigree map of %s"
 msgstr "Mapa rodowa - %s"
@@ -10619,9 +10596,9 @@ msgid "Pedigree tree of %s"
 msgstr "%s - drzewo rodowe"
 
 #. I18N: Name of a module
-#: admin.php:755 admin.php:777 admin_site_upgrade.php:99
+#: admin.php:773 admin.php:795 admin_site_upgrade.php:100
 #: app/Module/ReviewChangesModule.php:37 app/Module/ReviewChangesModule.php:86
-#: app/Theme/AbstractTheme.php:1678 edit_changes.php:34 edit_changes.php:48
+#: app/Theme/AbstractTheme.php:1678 edit_changes.php:35 edit_changes.php:49
 #: help_text.php:302 modules_v3/change_report/report.xml:52
 msgid "Pending changes"
 msgstr "Oczekujące zmiany"
@@ -10640,7 +10617,7 @@ msgid "Permanently delete these records?"
 msgstr "Trwale usunąć te wpisy?"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:255
+#: app/GedcomCode/GedcomCodeTemp.php:293
 msgid "Perth, Australia"
 msgstr "Perth, Australia"
 
@@ -10710,8 +10687,7 @@ msgstr "PhpGedView musi być w wersji 4.2.3, lub SVN do wersji %s"
 msgid "PhpGedView must use the same database as webtrees."
 msgstr "PhpGedView musi używać tej samej bazy danych co webtrees."
 
-#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697
-#: admin_trees_manage.php:725
+#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697 admin_trees_manage.php:725
 msgid "PhpGedView to webtrees transfer wizard"
 msgstr "Kreator transferu PhpGedView do webtrees"
 
@@ -10726,10 +10702,10 @@ msgid "Pitcairn"
 msgstr "Pitcairn"
 
 #. I18N: gedcom tag PLAC
-#: app/GedcomTag.php:686 app/Module/GoogleMapsModule.php:1521
-#: app/Module/GoogleMapsModule.php:3586 app/Module/GoogleMapsModule.php:3589
-#: app/Module/GoogleMapsModule.php:3592 app/Module/GoogleMapsModule.php:3595
-#: app/Module/GoogleMapsModule.php:3598
+#: app/GedcomTag.php:686 app/Module/GoogleMapsModule.php:1432
+#: app/Module/GoogleMapsModule.php:3456 app/Module/GoogleMapsModule.php:3459
+#: app/Module/GoogleMapsModule.php:3462 app/Module/GoogleMapsModule.php:3465
+#: app/Module/GoogleMapsModule.php:3468
 #: modules_v3/GEDFact_assistant/census/census-edit.php:159
 #: modules_v3/bdm_report/report.xml:6 modules_v3/bdm_report/report.xml:134
 #: modules_v3/bdm_report/report.xml:160 modules_v3/bdm_report/report.xml:194
@@ -10741,10 +10717,10 @@ msgstr "Pitcairn"
 msgid "Place"
 msgstr "Miejsce"
 
-#: app/Module/GoogleMapsModule.php:180 app/Module/GoogleMapsModule.php:300
-#: app/Module/GoogleMapsModule.php:854 app/Module/GoogleMapsModule.php:1404
-#: app/Module/GoogleMapsModule.php:1410 app/Module/GoogleMapsModule.php:2404
-#: app/Module/GoogleMapsModule.php:3631
+#: app/Module/GoogleMapsModule.php:177 app/Module/GoogleMapsModule.php:295
+#: app/Module/GoogleMapsModule.php:828 app/Module/GoogleMapsModule.php:1315
+#: app/Module/GoogleMapsModule.php:1321 app/Module/GoogleMapsModule.php:2298
+#: app/Module/GoogleMapsModule.php:3501
 msgid "Place check"
 msgstr "Sprawdź miejsca"
 
@@ -10753,7 +10729,7 @@ msgstr "Sprawdź miejsca"
 msgid "Place contains"
 msgstr "Miejsce zawiera"
 
-#: app/Module/GoogleMapsModule.php:443 app/Theme/AbstractTheme.php:1531
+#: app/Module/GoogleMapsModule.php:415 app/Theme/AbstractTheme.php:1531
 #: placelist.php:41 placelist.php:43 placelist.php:139
 msgid "Place hierarchy"
 msgstr "Hierarchia miejsc"
@@ -10883,17 +10859,17 @@ msgstr "Miejsce święceń"
 msgid "Place of residence"
 msgstr "Miejsce zamieszkania"
 
-#: admin_site_upgrade.php:353
+#: admin_site_upgrade.php:354
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
 msgstr "Przestaw stronę w tryb nieaktywny tworząc plik %s…"
 
-#: admin_site_upgrade.php:409
+#: admin_site_upgrade.php:410
 #, php-format
 msgid "Place the website online, by deleting the file %s…"
 msgstr "Przestaw stronę w tryb aktywny usuwając plik %s…"
 
-#: admin_trees_config.php:1500 search.php:204 statistics.php:407
+#: admin_trees_config.php:1500 search.php:204 statistics.php:408
 msgid "Places"
 msgstr "Miejsca"
 
@@ -10910,9 +10886,9 @@ msgstr "Miejsca w: %s"
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
 msgstr "Miejsca należy wprowadzać zgodnie ze standardami przyjętymi w genealogii. W genealogii miejsca zapisuje się umieszczając najbardziej szczegółową informację na początku, a następnie podając dane coraz bardziej ogólne, rozdzielając przy tym poziomy przecinkami. Poziomy informacji o miejscu powinny odzwierciedlać poziomy hierarchii administracyjnej lub kościelnej, która przechowuje akta.<br><br>Na przykład informację o wsi Krzyżanowice pod Wrocławiem należy wprowadzić następująco: „Krzyżanowice, Trzebnicki, Dolnośląskie, Polska”.<br><br>Przeanalizujmy poszczególne elementy. Pierwsza część, „Krzyżanowice”, to nazwa miejscowości, w którym miało miejsce dane wydarzenie. Czasem może zajść potrzeba wyróżnienia dzielnicy lub innego mniejszego obszaru administracyjnego - w takim przypadku należy go umieścić przed nazwą miasta. Następnym elementem jest nazwa powiatu („Trzebnicki”), województwa („Dolnośląskie”) oraz kraju („Polska”). Podanie tak szczegółowej informacji jest ważne, ponieważ dane genealogiczne są przechowywane przez jednostki administracyjne na każdym poziomie.<br><br>Jeśli brak informacji na którymś poziomie, można pozostawić wolne miejsce pomiędzy przecinkami. Jeśli na przykład nie wiadomo, w którym powiecie znajduje się wieś Krzyżanowice, można wpisać: „Krzyżanowice, , Dolnośląskie, Polska”. Jeśli wiadomo tylko, że osoba urodziła się w województwie dolnośląskim, można wpisać: „, , Dolnośląskie, Polska”. Uwaga: poziomy administracyjne i ich liczba zależy od kraju. Najbardziej optymalną metodą jest stosowanie czteropoziomowej hierarchii miejsc (w Polsce: miejscowość, powiat, województwo, kraj).<br><br>Odnośnik <b>Znajdź miejsce</b> pomoże odnaleźć miejsca wprowadzone wcześniej do bazy danych."
 
-#: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:93
-#: app/Theme/FabTheme.php:109 app/Theme/MinimalTheme.php:106
-#: app/Theme/WebtreesTheme.php:72 app/Theme/XeneaTheme.php:88
+#: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:98
+#: app/Theme/FabTheme.php:114 app/Theme/MinimalTheme.php:111
+#: app/Theme/WebtreesTheme.php:77 app/Theme/XeneaTheme.php:93
 msgid "Play"
 msgstr "Odtwórz"
 
@@ -10981,12 +10957,12 @@ msgid "Port number"
 msgstr "Numer portu"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:259
+#: app/GedcomCode/GedcomCodeTemp.php:299
 msgid "Portland, Oregon, United States"
 msgstr "Portland, Oregon, Stany Zjednoczone"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:249
+#: app/GedcomCode/GedcomCodeTemp.php:283
 msgid "Porto Alegre, Brazil"
 msgstr "Porto Alegre, Brazylia"
 
@@ -11070,7 +11046,7 @@ msgstr "Istnieją ustawienia dla modułu „%s”, ale ten moduł nie istnieje."
 msgid "Preferred contact method"
 msgstr "Preferowana metoda kontaktu"
 
-#: app/Module/GoogleMapsModule.php:407
+#: app/Module/GoogleMapsModule.php:379
 msgid "Prefixes"
 msgstr "Przedrostki"
 
@@ -11082,13 +11058,13 @@ msgstr "Przedrostki"
 msgid "Presentation style"
 msgstr "Styl prezentacji"
 
-#. I18N: I18N: Location of an LDS church temple - http://en.wikipedia.org/wiki/President_of_the_Church
-#: app/GedcomCode/GedcomCodeTemp.php:257
+#. I18N: I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/President_of_the_Church
+#: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "President’s Office"
 msgstr "Biuro Prezydenta"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:261
+#: app/GedcomCode/GedcomCodeTemp.php:301
 msgid "Preston, England"
 msgstr "Preston, Anglia"
 
@@ -11120,7 +11096,7 @@ msgstr "Ograniczenia prywatności - stosuje się do tych faktów i wpisów, któ
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:532
 #: app/GedcomRecord.php:610 app/GedcomRecord.php:735 app/Individual.php:1309
-#: app/Module/GoogleMapsModule.php:812 app/Note.php:71
+#: app/Module/GoogleMapsModule.php:785 app/Note.php:71
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1470 app/Stats.php:2975 expand_view.php:33
 msgid "Private"
@@ -11142,7 +11118,7 @@ msgid "Provo City Center, Utah, United States"
 msgstr "Provo City Center, Utah, Stany Zjednoczone"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:263
+#: app/GedcomCode/GedcomCodeTemp.php:305
 msgid "Provo, Utah, United States"
 msgstr "Provo, Utah, Stany Zjednoczone"
 
@@ -11293,7 +11269,7 @@ msgid "Rajab"
 msgstr "radżab"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:265
+#: app/GedcomCode/GedcomCodeTemp.php:309
 msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, Północna Karolina"
 
@@ -11326,9 +11302,8 @@ msgstr "ramadan"
 msgid "Random images from the current family tree."
 msgstr "Losowe zdjęcia z bieżącego drzewa genealogicznego."
 
-#: app/Controller/FamilyController.php:88
-#: app/Module/RelativesTabModule.php:279 edit_interface.php:1799
-#: edit_interface.php:1869
+#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
+#: edit_interface.php:1799 edit_interface.php:1869
 msgid "Re-order children"
 msgstr "Uporządkuj dzieci"
 
@@ -11351,25 +11326,23 @@ msgid "Real name"
 msgstr "Imię i nazwisko"
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44
-#: modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr "Ostatnie zmiany"
 
-#: calendar.php:242
+#: calendar.php:234
 msgid "Recent years (&lt; 100 yrs)"
 msgstr "Ostatnie stulecie"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:267
+#: app/GedcomCode/GedcomCodeTemp.php:311
 msgid "Recife, Brazil"
 msgstr "Recife, Brazylia"
 
 #: admin_site_change.php:328 admin_site_change.php:389
 #: admin_trees_config.php:526 app/Functions/FunctionsPrintLists.php:1801
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:321
-#: app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:326 app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -11385,7 +11358,7 @@ msgstr "Identyfikator wpisu"
 msgid "Record file number"
 msgstr "Numer katalogowy wpisu"
 
-#: search.php:83 statistics.php:349
+#: search.php:83 statistics.php:350
 msgid "Records"
 msgstr "Wpisy"
 
@@ -11394,7 +11367,7 @@ msgid "Records are not the same type. Cannot merge records that are not the same
 msgstr "Wpisy nie są tego samego typu. Nie można scalać wpisów różnego typu."
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:269
+#: app/GedcomCode/GedcomCodeTemp.php:313
 msgid "Redlands, California, United States"
 msgstr "Redlands, Kalifornia"
 
@@ -11404,7 +11377,7 @@ msgid "Reference number"
 msgstr "Numer referencyjny"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:271
+#: app/GedcomCode/GedcomCodeTemp.php:315
 msgid "Regina, Saskatchewan, Canada"
 msgstr "Regina, Saskatchewan, Kanada"
 
@@ -11435,11 +11408,11 @@ msgstr "Wyrażenia regularne"
 msgid "Regular expressions are an advanced pattern matching technique."
 msgstr "Wyrażenia regularne są zaawansowaną techniką dopasowywania do wzorca."
 
-#: edit_changes.php:181 edit_changes.php:201
+#: edit_changes.php:186 edit_changes.php:206
 msgid "Reject"
 msgstr "Odrzuć"
 
-#: edit_changes.php:211 edit_changes.php:231
+#: edit_changes.php:216 edit_changes.php:236
 msgid "Reject all changes"
 msgstr "Odrzuć wszystkie zmiany"
 
@@ -11467,7 +11440,7 @@ msgstr "Pokrewieństwo"
 msgid "Relationship to father"
 msgstr "Związek z ojcem"
 
-#: app/Module/RelationshipsChartModule.php:78
+#: app/Module/RelationshipsChartModule.php:80
 msgid "Relationship to me"
 msgstr "Pokrewieństwo ze mną"
 
@@ -11489,7 +11462,7 @@ msgstr "Pokrewieństwo: %s"
 #. I18N: Name of a module/chart
 #: app/Functions/FunctionsPrintLists.php:356
 #: app/Module/RelationshipsChartModule.php:44
-#: app/Module/RelationshipsChartModule.php:85 relationship.php:57
+#: app/Module/RelationshipsChartModule.php:87 relationship.php:57
 msgid "Relationships"
 msgstr "Pokrewieństwo"
 
@@ -11528,7 +11501,7 @@ msgstr "Serwer zdalny"
 #: app/Module/ClippingsCartModule.php:524
 #: app/Module/ClippingsCartModule.php:705
 #: app/Module/FamilyTreeFavoritesModule.php:156
-#: app/Module/GoogleMapsModule.php:4132 edit_interface.php:1948
+#: app/Module/GoogleMapsModule.php:4002 edit_interface.php:1948
 #: edit_interface.php:1984 edit_interface.php:2011 edit_interface.php:2030
 #: index_edit.php:327 index_edit.php:344
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106
@@ -11540,8 +11513,8 @@ msgstr "Usuń"
 msgid "Remove duplicate links"
 msgstr "Usuń powtarzające się powiązania"
 
-#: app/Module/GoogleMapsModule.php:568 app/Module/GoogleMapsModule.php:571
-#: app/Module/GoogleMapsModule.php:574 app/Module/GoogleMapsModule.php:3528
+#: app/Module/GoogleMapsModule.php:540 app/Module/GoogleMapsModule.php:543
+#: app/Module/GoogleMapsModule.php:546 app/Module/GoogleMapsModule.php:3398
 msgid "Remove flag"
 msgstr "Usuń flagę"
 
@@ -11558,12 +11531,12 @@ msgstr "Usuń powiązanie z listy"
 msgid "Remove the GEDCOM media path from filenames"
 msgstr "Usuń nieprawidłową ścieżkę dostępu do pliku multimediów"
 
-#: app/Module/GoogleMapsModule.php:4048
+#: app/Module/GoogleMapsModule.php:3918
 msgid "Remove this location?"
 msgstr "Usunąć to miejsce?"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:273
+#: app/GedcomCode/GedcomCodeTemp.php:317
 msgid "Reno, Nevada, United States"
 msgstr "Reno, Nevada, Stany Zjednoczone"
 
@@ -11577,7 +11550,7 @@ msgstr "Przenumeruj"
 msgid "Renumber family tree"
 msgstr "Zmienić numerację drzewa genealogicznego"
 
-#: admin_trees_places.php:104 search.php:162
+#: admin_trees_places.php:105 search.php:162
 msgid "Replace with"
 msgstr "Zamień na"
 
@@ -11600,11 +11573,11 @@ msgstr "Raport"
 msgid "Reports"
 msgstr "Raporty"
 
-#: admin.php:759 admin.php:817 admin_trees_duplicates.php:140
+#: admin.php:777 admin.php:835 admin_trees_duplicates.php:140
 #: app/Module/FamilyTreeStatisticsModule.php:124
 #: app/Module/FamilyTreeStatisticsModule.php:384
 #: app/Module/HtmlBlockModule.php:199 app/Theme/AbstractTheme.php:1540
-#: repolist.php:33 repolist.php:37 statistics.php:355
+#: repolist.php:33 repolist.php:37 statistics.php:356
 msgid "Repositories"
 msgstr "Repozytoria"
 
@@ -11690,7 +11663,7 @@ msgstr "Ograniczenia mogą być dodawane do wpisów i/lub faktów. Za pomocą og
 msgid "Resulting value"
 msgstr "Wynik"
 
-#: statistics.php:634
+#: statistics.php:748
 msgid "Results"
 msgstr "Postać wyników"
 
@@ -11767,7 +11740,7 @@ msgid "SMTP mail server"
 msgstr "Serwer poczty SMTP"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:275
+#: app/GedcomCode/GedcomCodeTemp.php:321
 msgid "Sacramento, California, United States"
 msgstr "Sacramento, Kalifornia"
 
@@ -11826,7 +11799,7 @@ msgid "Saint Vincent and the Grenadines"
 msgstr "Saint Vincent i Grenadyny"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:295
+#: app/GedcomCode/GedcomCodeTemp.php:341
 msgid "Salt Lake City, Utah, United States"
 msgstr "Salt Lake City, Utah, Stany Zjednoczone"
 
@@ -11836,17 +11809,17 @@ msgid "Samoa"
 msgstr "Samoa"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:281
+#: app/GedcomCode/GedcomCodeTemp.php:327
 msgid "San Antonio, Texas, United States"
 msgstr "San Antonio, Teksas"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:283
+#: app/GedcomCode/GedcomCodeTemp.php:329
 msgid "San Diego, California, United States"
 msgstr "San Diego, Kalifornia"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:293
+#: app/GedcomCode/GedcomCodeTemp.php:339
 msgid "San Jose, Costa Rica"
 msgstr "San Jose, Kostaryka"
 
@@ -11861,17 +11834,17 @@ msgid "San Salvador, El Salvador"
 msgstr "San Salvador, Salwador"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:279
+#: app/GedcomCode/GedcomCodeTemp.php:325
 msgid "Santiago, Chile"
 msgstr "Santiago, Chile"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:285
+#: app/GedcomCode/GedcomCodeTemp.php:331
 msgid "Santo Domingo, Dominican Republic"
 msgstr "Santo Domingo, Dominika"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:301
+#: app/GedcomCode/GedcomCodeTemp.php:347
 msgid "Sao Paulo, Brazil"
 msgstr "Sao Paulo, Brazylia"
 
@@ -11885,7 +11858,7 @@ msgstr "Wyspy Świętego Tomasza i Książęca"
 msgid "Sat"
 msgstr "So"
 
-#: app/Module/GoogleMapsModule.php:333
+#: app/Module/GoogleMapsModule.php:328
 msgid "Satellite"
 msgstr "Satelitarna"
 
@@ -11939,10 +11912,10 @@ msgstr "Naznaczenie anulowane (rozwód)"
 #: app/Module/FamiliesSidebarModule.php:149
 #: app/Module/IndividualSidebarModule.php:150 app/Theme/AbstractTheme.php:528
 #: app/Theme/AbstractTheme.php:529 app/Theme/AbstractTheme.php:1710
-#: app/Theme/CloudsTheme.php:74 app/Theme/CloudsTheme.php:75
-#: app/Theme/FabTheme.php:91 app/Theme/MinimalTheme.php:52
-#: app/Theme/WebtreesTheme.php:53 app/Theme/WebtreesTheme.php:54
-#: app/Theme/XeneaTheme.php:52 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:89
+#: app/Theme/CloudsTheme.php:79 app/Theme/CloudsTheme.php:80
+#: app/Theme/FabTheme.php:96 app/Theme/MinimalTheme.php:57
+#: app/Theme/WebtreesTheme.php:58 app/Theme/WebtreesTheme.php:59
+#: app/Theme/XeneaTheme.php:57 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:89
 msgid "Search"
 msgstr "Szukaj"
 
@@ -11957,7 +11930,7 @@ msgstr "Znajdź i zamień"
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr "Wyszukaj i zastąp tekst używając prostych wyszukań oraz zaawansowanych doposowań do wzorca."
 
-#: includes/session.php:503
+#: includes/session.php:502
 msgid "Search engine"
 msgstr "Wyszukiwarka"
 
@@ -11965,15 +11938,15 @@ msgstr "Wyszukiwarka"
 msgid "Search filters"
 msgstr "Filtry wyszukiwania"
 
-#: admin_trees_places.php:102 search.php:76 search.php:156
+#: admin_trees_places.php:103 search.php:76 search.php:156
 msgid "Search for"
 msgstr "Szukaj"
 
-#: app/Module/GoogleMapsModule.php:3482
+#: app/Module/GoogleMapsModule.php:3352
 msgid "Search globally"
 msgstr "Szukaj na całym świecie"
 
-#: app/Module/GoogleMapsModule.php:3484
+#: app/Module/GoogleMapsModule.php:3354
 msgid "Search locally"
 msgstr "Szukaj lokalnie"
 
@@ -11985,17 +11958,17 @@ msgstr "Metoda wyszukiwania"
 msgid "Search text/pattern"
 msgstr "Wyszukaj tekst"
 
-#: app/Module/RelationshipsChartModule.php:163
+#: app/Module/RelationshipsChartModule.php:167
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
 msgstr "Wyszukiwanie wszystkich możliwych relacji może zająć dużo czasu w przypadku złożonych drzew."
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:287
+#: app/GedcomCode/GedcomCodeTemp.php:333
 msgid "Seattle, Washington, United States"
 msgstr "Seattle, Washington, Stany Zjednoczone"
 
 #. I18N: Record is an indvidual, source, etc.
-#: admin_site_merge.php:370
+#: admin_site_merge.php:374
 msgid "Second record"
 msgstr "Drugi wpis"
 
@@ -12015,7 +11988,7 @@ msgstr "Kod bezpieczeństwa"
 msgid "See %s for more information."
 msgstr "Więcej informacji na: %s."
 
-#: admin_site_merge.php:210 admin_site_merge.php:257 admin_site_merge.php:303
+#: admin_site_merge.php:214 admin_site_merge.php:261 admin_site_merge.php:307
 msgid "Select"
 msgstr "Wybierz"
 
@@ -12036,7 +12009,7 @@ msgstr "Wybierz datę"
 msgid "Select events"
 msgstr "Wybierz wydarzenia"
 
-#: app/Module/GoogleMapsModule.php:526
+#: app/Module/GoogleMapsModule.php:498
 msgid "Select flag"
 msgstr "Wybierz flagę"
 
@@ -12049,15 +12022,15 @@ msgstr "Wybierz osoby według daty lub miejsca"
 msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr "Wybieranie wpisów w danym drzewie genealogicznym i zapisanie ich w postaci pliku GEDCOM."
 
-#: statistics.php:546 statistics.php:557 statistics.php:566
+#: statistics.php:581 statistics.php:599 statistics.php:614
 msgid "Select the desired age interval"
 msgstr "Wybierz żądany przedział czasu"
 
-#: statistics.php:575
+#: statistics.php:635
 msgid "Select the desired count interval"
 msgstr "Wybierz żądane grupowanie"
 
-#: admin_site_merge.php:196
+#: admin_site_merge.php:200
 msgid "Select the facts and events to keep from both records."
 msgstr "Wybierz fakty i wydarzenia z obu wpisów, które mają być zachowane."
 
@@ -12066,7 +12039,7 @@ msgid "Select the languages that will be shown in menus."
 msgstr "Wybierz języki jakie będą dostępne w menu."
 
 #. I18N: Records are indviduals, sources, etc.
-#: admin_site_merge.php:348
+#: admin_site_merge.php:352
 msgid "Select two records to merge."
 msgstr "Wybierz dwa wpisy do scalenia."
 
@@ -12089,7 +12062,7 @@ msgid "Send"
 msgstr "Wyślij"
 
 #: app/Module/LoggedInUsersModule.php:90 app/Module/UserMessagesModule.php:100
-#: app/Stats.php:5934 app/Stats.php:5936 edit_changes.php:196 message.php:103
+#: app/Stats.php:5934 app/Stats.php:5936 edit_changes.php:201 message.php:103
 msgid "Send a message"
 msgstr "Wyślij wiadomość"
 
@@ -12136,7 +12109,7 @@ msgid "Senegal"
 msgstr "Senegal"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:289
+#: app/GedcomCode/GedcomCodeTemp.php:335
 msgid "Seoul, Korea"
 msgstr "Seoul, Korea Południowa"
 
@@ -12195,7 +12168,7 @@ msgid "Servant"
 msgstr "Służący"
 
 #. I18N: Menu entry
-#: admin.php:577 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
+#: admin.php:595 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
 msgid "Server information"
 msgstr "Informacje o serwerze"
 
@@ -12303,7 +12276,7 @@ msgstr "Szahriwar"
 
 #: admin_trees_manage.php:580 app/Controller/FamilyController.php:153
 #: app/GedcomTag.php:772 edit_interface.php:1364 edit_interface.php:1457
-#: inverselink.php:141 note.php:168 note.php:178
+#: inverselink.php:141 note.php:152 note.php:162
 msgid "Shared note"
 msgstr "Wspólna notatka"
 
@@ -12448,7 +12421,7 @@ msgstr "Najkrótszy staż"
 msgid "Should this block be hidden when it is empty"
 msgstr "Ukryj pusty blok"
 
-#: calendar.php:229
+#: calendar.php:221
 msgid "Show"
 msgstr "Pokaż"
 
@@ -12539,7 +12512,7 @@ msgstr "Pokaż datę ostatniej aktualizacji"
 msgid "Show dead individuals"
 msgstr "Pokaż zmarłych"
 
-#: ancestry.php:115 app/Module/ChartsBlockModule.php:207 descendancy.php:84
+#: ancestry.php:115 app/Module/ChartsBlockModule.php:206 descendancy.php:84
 #: familybook.php:55 hourglass.php:56 pedigree.php:166 relationship.php:81
 msgid "Show details"
 msgstr "Pokaż szczegóły"
@@ -12552,7 +12525,7 @@ msgstr "Pokaż pary rozwiedzione."
 msgid "Show images"
 msgstr "Pokaż zdjęcia"
 
-#: app/Module/GoogleMapsModule.php:4082
+#: app/Module/GoogleMapsModule.php:3952
 msgid "Show inactive places"
 msgstr "Pokaż miejsca nieaktywne"
 
@@ -12735,7 +12708,7 @@ msgid "Show the list of surnames"
 msgstr "Pokaż listę nazwisk"
 
 #. I18N: Description of the “Google Maps™” module
-#: app/Module/GoogleMapsModule.php:81
+#: app/Module/GoogleMapsModule.php:78
 msgid "Show the location of places and events using the Google Maps™ mapping service."
 msgstr "Pokazuje lokalizację miejsc i zdarzeń za pomocą usługi Google Maps™."
 
@@ -12916,7 +12889,7 @@ msgctxt "NOMINATIVE"
 msgid "Sivan"
 msgstr "siwan"
 
-#: app/Module/GoogleMapsModule.php:355 app/Module/GoogleMapsModule.php:458
+#: app/Module/GoogleMapsModule.php:430
 msgid "Size of map (in pixels)"
 msgstr "Wielkość mapy (w pikselach)"
 
@@ -12960,7 +12933,7 @@ msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
 msgstr "Małe drzewa (500 osób): 16-32MB, 10-20 sekund"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:299
+#: app/GedcomCode/GedcomCodeTemp.php:345
 msgid "Snowflake, Arizona, United States"
 msgstr "Snowflake, Arizona, Stany Zjednoczone"
 
@@ -12989,7 +12962,7 @@ msgstr "Niektóre programy genealogiczne tworzą pliki GEDCOM, które zawierają
 msgid "Some pages can display the number of times that they have been visited."
 msgstr "Niektóre strony mogą wyświetlać licznik odsłon."
 
-#: app/Module/GoogleMapsModule.php:439
+#: app/Module/GoogleMapsModule.php:411
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
 msgstr "Niektóre nazwy miejscowości mogą być pisane z opcjonalnymi przedrostkami i przyrostkami. Na przykład „Mazowieckie” i „województwo Mazowieckie”. W przypadku gdy drzewo genealogiczne zawiera pełne nazwy miejsc, a geograficzna baza danych zawiera skrócone nazwy miejsc, należy określić listę przedrostków i przyrostków, które mają być wzięte pod uwagę. Różne opcje powinny być oddzielone średnikami. Na przykład: „województwo;woj.” lub „powiat;pow.”."
 
@@ -13079,7 +13052,7 @@ msgid "Source type"
 msgstr "Typ źródła"
 
 #. I18N: Name of a module
-#: admin.php:758 admin.php:807 admin_trees_duplicates.php:141
+#: admin.php:776 admin.php:825 admin_trees_duplicates.php:141
 #: app/Controller/SearchController.php:525
 #: app/Functions/FunctionsPrintLists.php:1226
 #: app/Functions/FunctionsPrintLists.php:1336
@@ -13087,14 +13060,14 @@ msgstr "Typ źródła"
 #: app/Module/FamilyTreeStatisticsModule.php:118
 #: app/Module/FamilyTreeStatisticsModule.php:356
 #: app/Module/HtmlBlockModule.php:191 app/Module/SourcesTabModule.php:34
-#: app/Theme/AbstractTheme.php:1549 gedrecord.php:147 mediaviewer.php:136
+#: app/Theme/AbstractTheme.php:1549 gedrecord.php:131 mediaviewer.php:120
 #: modules_v3/ahnentafel_report/report.xml:473
 #: modules_v3/descendancy_report/report.xml:614
 #: modules_v3/family_group_report/report.xml:1118
 #: modules_v3/individual_ext_report/report.xml:638
-#: modules_v3/individual_report/report.xml:646 note.php:148 repo.php:156
-#: search.php:98 source.php:160 sourcelist.php:33 sourcelist.php:37
-#: statistics.php:353 statistics.php:390
+#: modules_v3/individual_report/report.xml:646 note.php:132 repo.php:140
+#: search.php:98 source.php:144 sourcelist.php:33 sourcelist.php:37
+#: statistics.php:354 statistics.php:391
 msgid "Sources"
 msgstr "Źródła"
 
@@ -13107,7 +13080,7 @@ msgstr "Źródła wydarzeń"
 msgid "South Africa"
 msgstr "Republika Południowej Afryki"
 
-#: statistics.php:599
+#: statistics.php:688
 msgid "South America"
 msgstr "Ameryka Południowa"
 
@@ -13132,7 +13105,7 @@ msgid "Spanish"
 msgstr "hiszpańska"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:305
+#: app/GedcomCode/GedcomCodeTemp.php:351
 msgid "Spokane, Washington, United States"
 msgstr "Spokane, Washington, Stany Zjednoczone"
 
@@ -13168,21 +13141,21 @@ msgid "Sri Lanka"
 msgstr "Sri Lanka"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:291
+#: app/GedcomCode/GedcomCodeTemp.php:337
 msgid "St. George, Utah, United States"
 msgstr "St. George, Utah, Stany Zjednoczone"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:297
+#: app/GedcomCode/GedcomCodeTemp.php:343
 msgid "St. Louis, Missouri, United States"
 msgstr "St. Louis, Missouri, Stany Zjednoczone"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:303
+#: app/GedcomCode/GedcomCodeTemp.php:349
 msgid "St. Paul, Minnesota, United States"
 msgstr "St. Paul, Minnesota, Stany Zjednoczone"
 
-#: app/Module/GoogleMapsModule.php:486
+#: app/Module/GoogleMapsModule.php:458
 msgid "Standard"
 msgstr "Standardowy"
 
@@ -13211,7 +13184,7 @@ msgid "Starting range of change dates"
 msgstr "Początek zakresu zmian"
 
 #. I18N: gedcom tag STAE
-#: app/GedcomTag.php:800 app/Module/GoogleMapsModule.php:3577
+#: app/GedcomTag.php:800 app/Module/GoogleMapsModule.php:3447
 msgid "State"
 msgstr "Województwo"
 
@@ -13248,13 +13221,13 @@ msgid "Stillborn: exempt"
 msgstr "Nieżywo urodzony: zwolnione"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:307
+#: app/GedcomCode/GedcomCodeTemp.php:353
 msgid "Stockholm, Sweden"
 msgstr "Stockholm, Szwecja"
 
-#: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:94
-#: app/Theme/FabTheme.php:110 app/Theme/MinimalTheme.php:107
-#: app/Theme/WebtreesTheme.php:73 app/Theme/XeneaTheme.php:89
+#: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:99
+#: app/Theme/FabTheme.php:115 app/Theme/MinimalTheme.php:112
+#: app/Theme/WebtreesTheme.php:78 app/Theme/XeneaTheme.php:94
 msgid "Stop"
 msgstr "Zatrzymaj"
 
@@ -13283,7 +13256,7 @@ msgid "Story title"
 msgstr "Tytuł historii"
 
 #. I18N: Part of a country, state/region/county
-#: app/Module/GoogleMapsModule.php:683 app/Module/GoogleMapsModule.php:1434
+#: app/Module/GoogleMapsModule.php:655 app/Module/GoogleMapsModule.php:1345
 msgid "Subdivision"
 msgstr "Region"
 
@@ -13311,7 +13284,7 @@ msgstr "Dane zebrane przez"
 msgid "Sudan"
 msgstr "Sudan"
 
-#: app/Module/GoogleMapsModule.php:423
+#: app/Module/GoogleMapsModule.php:395
 msgid "Suffixes"
 msgstr "Przyrostki"
 
@@ -13325,7 +13298,7 @@ msgid "Sunday"
 msgstr "niedziela"
 
 #. I18N: %s is a URL/link to the project website
-#: admin.php:605
+#: admin.php:623
 #, php-format
 msgid "Support and documentation can be found at %s."
 msgstr "Wsparcie i dokumentację można znaleźć na stronie %s."
@@ -13340,7 +13313,7 @@ msgstr "Surinam"
 msgid "Surname"
 msgstr "Nazwisko"
 
-#: app/Stats.php:1641 statistics.php:587
+#: app/Stats.php:1641 statistics.php:658
 msgid "Surname distribution chart"
 msgstr "Rozmieszczenie osób z danym nazwiskiem"
 
@@ -13372,7 +13345,7 @@ msgid "Surnames are inflected to indicate an individual’s gender."
 msgstr "Nazwiska są odmieniane według płci danej osoby."
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:309
+#: app/GedcomCode/GedcomCodeTemp.php:355
 msgid "Suva, Fiji"
 msgstr "Suva, Fidżi"
 
@@ -13402,7 +13375,7 @@ msgid "Switzerland"
 msgstr "Szwajcaria"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:313
+#: app/GedcomCode/GedcomCodeTemp.php:359
 msgid "Sydney, Australia"
 msgstr "Sydney, Australia"
 
@@ -13434,7 +13407,7 @@ msgid "Tag"
 msgstr "Znacznik"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:315
+#: app/GedcomCode/GedcomCodeTemp.php:361
 msgid "Taipei, Taiwan"
 msgstr "Taipei, Tajwan"
 
@@ -13449,7 +13422,7 @@ msgid "Tajikistan"
 msgstr "Tadżykistan"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:317
+#: app/GedcomCode/GedcomCodeTemp.php:363
 msgid "Tampico, Mexico"
 msgstr "Tampico, Meksyk"
 
@@ -13506,7 +13479,7 @@ msgstr "Szablony"
 msgid "Temple"
 msgstr "Świątynia"
 
-#: app/Module/GoogleMapsModule.php:335
+#: app/Module/GoogleMapsModule.php:330
 msgid "Terrain"
 msgstr "Terenowa"
 
@@ -13558,7 +13531,7 @@ msgid "The GEDCOM file “%s” has been imported."
 msgstr "Zaimportowano plik GEDCOM „%s”."
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:159
+#: app/GedcomCode/GedcomCodeTemp.php:183
 msgid "The Hague, Netherlands"
 msgstr "The Hague, Holandia"
 
@@ -13596,7 +13569,7 @@ msgstr "Zmiany wprowadzone do wpisu „%s” zostały odrzucone."
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
 msgstr "Koszyk wycinków umożliwia zbieranie wybranych informacji („wycinków”) z drzewa genealogicznego, które można następnie pobrać w formie pliku GEDCOM."
 
-#: site-unavailable.php:54
+#: site-unavailable.php:52
 msgid "The database reported the following error message:"
 msgstr "Baza danych zwróciła następujący komunikat błędu:"
 
@@ -13604,16 +13577,16 @@ msgstr "Baza danych zwróciła następujący komunikat błędu:"
 msgid "The date and time of the last update"
 msgstr "Data i czas ostatniej aktualizacji"
 
-#: family.php:129
+#: family.php:111
 msgid "The details of this family are private."
 msgstr "Szczegółowe dane dotyczące tej rodziny są prywatne."
 
-#: individual.php:92
+#: individual.php:76
 msgid "The details of this individual are private."
 msgstr "Szczegółowe dane dotyczące tej osoby są prywatne."
 
 #. I18N: %s is a filename
-#: admin_site_upgrade.php:230 admin_trees_export.php:41
+#: admin_site_upgrade.php:231 admin_trees_export.php:41
 #, php-format
 msgid "The family tree has been exported to %s."
 msgstr "Drzewo genealogiczne zostało wyeksportowane do pliku %s."
@@ -13657,31 +13630,31 @@ msgstr "Rodzina „%s” została usunięta, ponieważ składała się tylko z j
 msgid "The file %s already exists. Use another filename."
 msgstr "Plik o nazwie %s już istnieje. Należy użyć innej nazwy."
 
-#: admin_site_upgrade.php:232 admin_site_upgrade.php:359
-#: admin_site_upgrade.php:392 admin_trees_export.php:44
+#: admin_site_upgrade.php:233 admin_site_upgrade.php:360
+#: admin_site_upgrade.php:393 admin_trees_export.php:44
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 #, php-format
 msgid "The file %s could not be created."
 msgstr "Plik %s nie może być utworzony."
 
 #: admin_media.php:63 admin_media.php:72 admin_site_clean.php:38
-#: admin_site_upgrade.php:414 admin_site_upgrade.php:435
+#: admin_site_upgrade.php:415 admin_site_upgrade.php:436
 #, php-format
 msgid "The file %s could not be deleted."
 msgstr "Nie można usunąć pliku %s."
 
-#: admin_site_upgrade.php:334
+#: admin_site_upgrade.php:335
 #, php-format
 msgid "The file %s could not be updated."
 msgstr "Plik %s nie może być zaktualizowany."
 
-#: admin_site_upgrade.php:357
+#: admin_site_upgrade.php:358
 #, php-format
 msgid "The file %s has been created."
 msgstr "Plik %s został utworzony."
 
 #: admin_media.php:61 admin_media.php:70 admin_site_clean.php:32
-#: admin_site_upgrade.php:412 admin_site_upgrade.php:433
+#: admin_site_upgrade.php:413 admin_site_upgrade.php:434
 #, php-format
 msgid "The file %s has been deleted."
 msgstr "Plik %s został usunięty."
@@ -13697,20 +13670,20 @@ msgid "The file was only partially uploaded. Please try again."
 msgstr "Plik został wgrany tylko częściowo, spróbuj ponownie."
 
 #. I18N: %s is a filename
-#: medialist.php:301 mediaviewer.php:162
+#: medialist.php:301 mediaviewer.php:146
 #, php-format
 msgid "The file “%s” does not exist."
 msgstr "Plik „%s” nie istnieje."
 
-#: admin_site_clean.php:36 admin_site_upgrade.php:429
+#: admin_site_clean.php:36 admin_site_upgrade.php:430
 #, php-format
 msgid "The folder %s could not be deleted."
 msgstr "Katalog %s nie może być usunięty."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89
-#: admin_site_config.php:37 admin_trees_config.php:287
+#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
+#: admin_trees_config.php:287
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Katalog %s nie istnieje i nie może zostać utworzony."
@@ -13722,7 +13695,7 @@ msgstr "Katalog %s nie istnieje i nie może zostać utworzony."
 msgid "The folder %s has been created."
 msgstr "Katalog %s został utworzony."
 
-#: admin_site_clean.php:30 admin_site_upgrade.php:427
+#: admin_site_clean.php:30 admin_site_upgrade.php:428
 #, php-format
 msgid "The folder %s has been deleted."
 msgstr "Katalog %s został usunięty."
@@ -13731,12 +13704,12 @@ msgstr "Katalog %s został usunięty."
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr "Katalog ten można określić w całości (np. /home/nazwa_użytkownika/webtrees_data/) lub w stosunku do katalogu instalacyjnego (np. ../../webtrees_data/)."
 
-#: admin_site_merge.php:201
+#: admin_site_merge.php:205
 msgid "The following facts and events were found in both records."
 msgstr "Następujące fakty i wydarzenia zostały znalezione w obu wpisach."
 
 #. I18N: the name of an individual, source, etc.
-#: admin_site_merge.php:248 admin_site_merge.php:294
+#: admin_site_merge.php:252 admin_site_merge.php:298
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
 msgstr "Poniższe fakty i wydarzenia znaleziono tylko we wpisie %s."
@@ -13745,11 +13718,11 @@ msgstr "Poniższe fakty i wydarzenia znaleziono tylko we wpisie %s."
 msgid "The following list shows typical requirements."
 msgstr "Poniższa lista przedstawia typowe wymagania."
 
-#: admin_trees_places.php:114
+#: admin_trees_places.php:115
 msgid "The following places have been changed:"
 msgstr "Następujące miejsca zostały zmienione:"
 
-#: admin_trees_places.php:114
+#: admin_trees_places.php:115
 msgid "The following places would be changed:"
 msgstr "Następujące miejsca mogą zostać zmienione:"
 
@@ -13779,7 +13752,7 @@ msgid "The link from “%1$s” to “%2$s” has been deleted."
 msgstr "Powiązanie pomiędzy „%1$s” a „%2$s” zostało usunięte."
 
 #. I18N: The placeholders are the names of individuals, sources, etc.
-#: admin_site_merge.php:109
+#: admin_site_merge.php:113
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
 msgstr "Powiązanie „%1$s” i „%2$s” zostało uaktualnione."
@@ -13850,7 +13823,7 @@ msgstr "Najczęściej występujące fakty dotyczące repozytorium wymienione są
 msgid "The most common source facts are listed separately, so that they can be added more easily."
 msgstr "Najczęściej występujące fakty dotyczące źródła wymienione są oddzielnie aby można je było łatwiej dodawać."
 
-#: admin_site_upgrade.php:337
+#: admin_site_upgrade.php:338
 #, php-format
 msgid "The new files are currently located in the folder %s."
 msgstr "Nowe pliki obecnie znajdują się w katalogu %s."
@@ -13884,7 +13857,7 @@ msgstr "Ustawienia dla wszystkich drzew genealogicznych zostały zaktualizowane.
 msgid "The preferences for new family trees have been updated."
 msgstr "Ustawienia dla nowych drzew genealogicznych zostały zaktualizowane."
 
-#: app/Module/RelationshipsChartModule.php:190
+#: app/Module/RelationshipsChartModule.php:194
 #, php-format
 msgid "The preferences for the chart “%s” have been updated."
 msgstr "Ustawienia diagramu „%s” zostały zaktualizowane."
@@ -13899,7 +13872,7 @@ msgstr "Ustawienia drzewa genealogicznego „%s” zostały uaktualnione."
 msgid "The preferences for the module “%s” have been deleted."
 msgstr "Ustawienia modułu „%s” zostały usunięte."
 
-#: app/Module/GoogleMapsModule.php:272
+#: app/Module/GoogleMapsModule.php:267
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
 msgstr "Ustawienia modułu „%s” zostały uaktualnione."
@@ -13918,7 +13891,7 @@ msgid "The record has been copied to the clipboard."
 msgstr "Wpis skopiowany do schowka."
 
 #. I18N: Records are individuals, sources, etc.
-#: admin_site_merge.php:168
+#: admin_site_merge.php:172
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
 msgstr "Wpisy „%1$s” i „%2$s” zostały połączone."
@@ -13984,7 +13957,7 @@ msgstr[0] "Dwa drzewa genealogiczne mają %1$s wpis, który używa tego samego n
 msgstr[1] "Dwa drzewa genealogiczne mają %1$s wpisy, które używają tego samego numeru „XREF”."
 msgstr[2] "Dwa drzewa genealogiczne mają %1$s wpisów, które używają tego samego numeru „XREF”."
 
-#: admin_site_upgrade.php:441
+#: admin_site_upgrade.php:447
 msgid "The upgrade is complete."
 msgstr "Aktualizacja zakończona."
 
@@ -14092,7 +14065,7 @@ msgstr "Brak multimediów powiązanych z tą osobą."
 msgid "There are no notes for this individual."
 msgstr "Brak notatek dla tej osoby."
 
-#: admin_site_upgrade.php:104
+#: admin_site_upgrade.php:105
 msgid "There are no pending changes."
 msgstr "Brak niezatwierdzonych zmian."
 
@@ -14104,8 +14077,8 @@ msgstr "Nie ma żadnych prac badawczych w tym drzewie genealogicznym."
 msgid "There are no source citations for this individual."
 msgstr "Brak źródeł powiązanych z tą osobą."
 
-#: app/Module/ReviewChangesModule.php:87
-#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1961
+#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
+#: app/Theme/AbstractTheme.php:1961
 msgid "There are pending changes for you to moderate."
 msgstr "Są zmiany oczekujące na przejrzenie."
 
@@ -14150,7 +14123,7 @@ msgctxt "NOMINATIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#: admin.php:566
+#: admin.php:584
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
 msgstr "Strony te zapewniają dostęp do wszystkich ustawień konfiguracyjnych i narzędzi administracyjnych dla tej witryny webtrees."
 
@@ -14189,24 +14162,26 @@ msgstr "Ten adres email zostanie użyty do wysłania przypomnienia hasła, powia
 msgid "This entry is ignored if you have entered a URL into the filename field."
 msgstr "To pole nie jest brane pod uwagę jeśli podano URL w polu nazwy pliku."
 
-#: family.php:83
+#: family.php:63
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Ta rodzina nie istnieje lub nie masz uprawnień do przeglądania jej."
 
-#: family.php:52
+#: family.php:44
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ta rodzina została usunięta. Usunięcie musi zostać zweryfikowane przez moderatora."
 
-#: family.php:43
+#. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
+#: family.php:39
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr "Ta rodzina została usunięta. Należy przejrzeć to, a następnie %1$s lub %2$s."
 
-#: family.php:71
+#: family.php:54
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
 msgstr "Ta rodzina została zmieniona. Zmiany muszą zostać zweryfikowane przez moderatora."
 
-#: family.php:62
+#. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
+#: family.php:49
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ta rodzina została zmieniona. Należy przejrzeć zmiany, a następnie %1$s lub %2$s je."
@@ -14257,26 +14232,26 @@ msgstr "Ten katalog będzie używany do przechowywania plików multimedialnych p
 msgid "This form has expired. Try again."
 msgstr "Dany formularz jest nieaktualny. Spróbuj ponownie."
 
-#: app/Controller/ChartController.php:57 individual.php:98
+#: app/Controller/ChartController.php:57 individual.php:80
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Ta osoba nie istnieje lub nie masz uprawnień do przeglądania jej."
 
-#: individual.php:65
+#: individual.php:58
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ta osoba została usunięta. Usunięcie musi zostać zweryfikowane przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: individual.php:56
+#: individual.php:53
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr "Ta osoba została usunięta. Należy przejrzeć to, a następnie %1$s lub %2$s."
 
-#: individual.php:83
+#: individual.php:68
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
 msgstr "Ta osoba została zmieniona. Zmiany muszą zostać zweryfikowane przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: individual.php:74
+#: individual.php:63
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ta osoba została zmieniona. Należy przejrzeć zmiany, a następnie %1$s lub %2$s je."
@@ -14338,7 +14313,7 @@ msgstr "Wielkość liter ma znaczenie. Jeśli baza danych o podanej nazwie nie i
 msgid "This is the initial value for the “show details” option on the charts."
 msgstr "Jest to początkowe ustawienie dla opcji „Pokaż szczegóły” na diagramach."
 
-#: admin.php:617 admin_site_upgrade.php:66
+#: admin.php:635 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
 msgstr "Używasz aktualnej wersji webtrees. Brak dostępnej aktualizacji."
 
@@ -14420,26 +14395,26 @@ msgstr "Ten plik multimedialny istnieje, ale nie jest dostępny."
 msgid "This media file is broken and cannot be watermarked."
 msgstr "Te multimedia są uszkodzone i nie mogą być zaznaczone znakiem wodnym."
 
-#: mediaviewer.php:78
+#: mediaviewer.php:60
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Ten obiekt multimedialny nie istnieje lub nie masz uprawnień do przeglądania go."
 
-#: mediaviewer.php:52
+#: mediaviewer.php:45
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ten obiekt multimedialny został usunięty. Usunięcie musi zostać zweryfikowane przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: mediaviewer.php:43
+#: mediaviewer.php:40
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr "Ten obiekt multimedialny został usunięty. Należy przejrzeć to, a następnie %1$s lub %2$s."
 
-#: mediaviewer.php:70
+#: mediaviewer.php:55
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
 msgstr "Ten obiekt multimedialny został zmieniony. Zmiany muszą zostać zweryfikowane przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: mediaviewer.php:61
+#: mediaviewer.php:50
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ten obiekt multimedialny został zmieniony. Należy przejrzeć zmiany, a następnie %1$s lub %2$s je."
@@ -14466,26 +14441,26 @@ msgstr "Musi składać się z co najmniej sześciu znaków. Wielkość liter ma 
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr "Ta nazwa jest używana w polu „Od”, podczas wysyłania automatycznych wiadomości z tego serwera."
 
-#: note.php:79
+#: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Ta notatka nie istnieje lub nie masz uprawnień do przeglądania jej."
 
-#: note.php:53
+#: note.php:46
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ta notatka została usunięta. Usunięcie musi zostać zweryfikowane przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: note.php:44
+#: note.php:41
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr "Ta notatka została usunięta. Należy przejrzeć to, a następnie %1$s lub %2$s."
 
-#: note.php:71
+#: note.php:56
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
 msgstr "Ta notatka została zmieniona. Zmiany muszą zostać zweryfikowane przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: note.php:62
+#: note.php:51
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ta notatka została zmieniona. Należy przejrzeć zmiany, a następnie %1$s lub %2$s je."
@@ -14547,7 +14522,7 @@ msgstr[0] "Dana strona została odwiedzona %s raz."
 msgstr[1] "Dana strona została odwiedzona %s razy."
 msgstr[2] "Dana strona została odwiedzona %s razy."
 
-#: app/Module/GoogleMapsModule.php:2527
+#: app/Module/GoogleMapsModule.php:2419
 msgid "This place has no coordinates"
 msgstr "Miejsce nie ma ustawionych współrzędnych"
 
@@ -14555,50 +14530,50 @@ msgstr "Miejsce nie ma ustawionych współrzędnych"
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
 msgstr "Dzięki temu procesowi właściciel witryny może upewnić się, że nowe informacje są zgodne z normami i przyjętymi konwencjami, posiadają odpowiednie dane dotyczące źródła, itp."
 
-#: gedrecord.php:90
+#: gedrecord.php:72
 msgid "This record does not exist or you do not have permission to view it."
 msgstr "Dany wpis nie istnieje lub nie masz uprawnień, aby go zobaczyć."
 
-#: gedrecord.php:64
+#: gedrecord.php:57
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Dany wpis został usunięty. Usunięcie wpisu będzie musiało zostać sprawdzone przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: gedrecord.php:55
+#: gedrecord.php:52
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr "Dany wpis został usunięty. Należy sprawdzić dane zmiany i %1$s lub %2$s je."
 
-#: gedrecord.php:82
+#: gedrecord.php:67
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
 msgstr "Dany wpis został zmodyfikowany. Modyfikacja wpisu będzie musiała zostać sprawdzona przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: gedrecord.php:73
+#: gedrecord.php:62
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Dany wpis został zmodyfikowany. Należy sprawdzić dane zmiany i %1$s lub %2$s je."
 
-#: repo.php:78
+#: repo.php:60
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Te repozytorium nie istnieje lub nie masz uprawnień do przeglądania go."
 
-#: repo.php:52
+#: repo.php:45
 msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Te repozytorium zostało usunięte. Usunięcie musi zostać zweryfikowane przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: repo.php:43
+#: repo.php:40
 #, php-format
 msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr "Te repozytorium zostało usunięte. Należy przejrzeć to, a następnie %1$s lub %2$s."
 
-#: repo.php:70
+#: repo.php:55
 msgid "This repository has been edited. The changes need to be reviewed by a moderator."
 msgstr "Te repozytorium zostało zmienione. Zmiany muszą zostać zweryfikowane przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: repo.php:61
+#: repo.php:50
 #, php-format
 msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Te repozytorium zostało zmienione. Należy przejrzeć zmiany, a następnie %1$s lub %2$s je."
@@ -14624,7 +14599,7 @@ msgid "This role has all the permissions of the visitor role, plus any additiona
 msgstr "Ta rola posiada wszystkie uprawnienia roli gości oraz dodatkowy dostęp nadany przez konfigurację drzewa genealogicznego."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
-#: admin_site_upgrade.php:261
+#: admin_site_upgrade.php:262
 msgid "This server does not support secure downloads using HTTPS."
 msgstr "Ten serwer nie obsługuje bezpiecznego pobierania za pomocą protokołu HTTPS."
 
@@ -14638,26 +14613,26 @@ msgstr "Limit pamięci tego serwera wynosi %sMB, a limit czasu procesora wynosi 
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr "Powinna być to lista faktów rozdzielana przecinkami lub spacjami (dodatkowo poza urodzinami i śmiercią), które mają być widoczne w ramkach diagramów, takich jak diagram rodowy. Ta lista wymaga użycia znaczników faktów, zdefiniowanych w standardzie GEDCOM 5.5.1. Na przykład, jeśli chcesz pokazać w ramce zawód, dodajesz do tego pola znacznik „OCCU”."
 
-#: source.php:78
+#: source.php:60
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Te źródło nie istnieje lub nie masz uprawnień do przeglądania go."
 
-#: source.php:52
+#: source.php:45
 msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Te źródło zostało usunięte. Usunięcie musi zostać zweryfikowane przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: source.php:43
+#: source.php:40
 #, php-format
 msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr "Te źródło zostało usunięte. Należy przejrzeć to, a następnie %1$s lub %2$s."
 
-#: source.php:70
+#: source.php:55
 msgid "This source has been edited. The changes need to be reviewed by a moderator."
 msgstr "Te źródło zostało zmienione. Zmiany muszą zostać zweryfikowane przez moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
-#: source.php:61
+#: source.php:50
 #, php-format
 msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Te źródło zostało zmienione. Należy przejrzeć zmiany, a następnie %1$s lub %2$s je."
@@ -14671,7 +14646,7 @@ msgstr "Ten tekst będzie dołączany do tytułu każdej strony. Będzie widoczn
 msgid "This type of link is not allowed here."
 msgstr "Ten typ powiązania nie jest tutaj dozwolony."
 
-#: includes/session.php:449
+#: includes/session.php:448
 msgid "This user account does not have access to any tree."
 msgstr "Dane konto użytkownika nie ma dostępu do żadnego drzewa."
 
@@ -14679,7 +14654,7 @@ msgstr "Dane konto użytkownika nie ma dostępu do żadnego drzewa."
 msgid "This usually means that you need to change the folder permissions to 777."
 msgstr "Zazwyczaj oznacza to, że należy zmienić uprawnienia katalogu na 777."
 
-#: admin_site_upgrade.php:40
+#: admin_site_upgrade.php:41
 msgid "This website is being upgraded. Try again in a few minutes."
 msgstr "Strona jest w czasie aktualizacji. Należy spróbować w ciągu kilku minut."
 
@@ -14687,7 +14662,7 @@ msgstr "Strona jest w czasie aktualizacji. Należy spróbować w ciągu kilku mi
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
 msgstr "Strona jest w trakcie prac konserwacyjnych. Należy <a href=\"index.php\">spróbować ponownie</a> w ciągu kilka minut."
 
-#: site-offline.php:65 site-unavailable.php:78
+#: site-offline.php:65 site-unavailable.php:76
 msgid "This website is temporarily unavailable"
 msgstr "Ta strona jest chwilowo niedostępna"
 
@@ -14701,7 +14676,7 @@ msgstr "Ta strona internetowa używa plików cookies (tzw. ciasteczka) w celu mo
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr "Spowoduje to usunięcie wszystkich danych genealogicznych „%s” i zastąpienie ich danymi z innego pliku GEDCOM."
 
-#: admin_trees_places.php:97
+#: admin_trees_places.php:98
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
 msgstr "Ta funkcja uaktualni część nazwy miejca jaką jest kraj. Na przykład „Meksyk” dopasuje do „Quintana Roo, Meksyk”, ale nie do „Santa Fe, Nowy Meksyk”."
 
@@ -14828,7 +14803,7 @@ msgstr "Do"
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
 msgstr "Aby pomóc ci w rozpoczęciu pracy nad nowym blokiem, utworzyliśmy kilka standardowych szablonów. Kiedy wybierzesz jeden z szablonów, pole tekstowe będzie zawierać kopię, którą będzie można następnie dopasować do własnych potrzeb."
 
-#: admin_site_upgrade.php:336
+#: admin_site_upgrade.php:337
 msgid "To complete the upgrade, you should install the files manually."
 msgstr "Aby ukończyć aktualizację należy zainstalować pliki ręcznie."
 
@@ -14841,7 +14816,7 @@ msgstr "Aby utworzyć nowe zadanie badawcze, należy najpierw dodać „zadanie 
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
 msgstr "Aby zapewnić zgodność z innymi aplikacjami genealogicznych, notatki, tekst i transkrypcje powinny być zapisane za pomocą prostego, niesformatowanego tekstu. Jednak często jest pożądane formatowanie celu ułatwienia prezentacji, zrozumienia, itp."
 
-#: admin_site_upgrade.php:339
+#: admin_site_upgrade.php:340
 #, php-format
 msgid "To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server. If it contains a message, it will be displayed to visitors."
 msgstr "Aby zaopobieć odwiedzaniu strony w trakcie kopiowania plików należy utworzyć tymczasowy plik %s na serwerze. Jeśli zawiera on wiadomość, będzie widoczna dla odwiedzających."
@@ -14883,7 +14858,7 @@ msgid "Tokelau"
 msgstr "Tokelau"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:321
+#: app/GedcomCode/GedcomCodeTemp.php:371
 msgid "Tokyo, Japan"
 msgstr "Tokyo, Japonia"
 
@@ -14925,7 +14900,7 @@ msgstr "Najpopularniejsze imię"
 msgid "Top given names"
 msgstr "Najczęściej występujące imiona"
 
-#: app/Module/GoogleMapsModule.php:4075 app/Module/GoogleMapsModule.php:4151
+#: app/Module/GoogleMapsModule.php:3945 app/Module/GoogleMapsModule.php:4021
 #: placelist.php:107
 msgid "Top level"
 msgstr "Najwyższy poziom hierarchii"
@@ -14941,11 +14916,11 @@ msgid "Top surnames"
 msgstr "Najczęściej występujące nazwiska"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:323
+#: app/GedcomCode/GedcomCodeTemp.php:373
 msgid "Toronto, Ontario, Canada"
 msgstr "Toronto, Ontario, Kanada"
 
-#: admin.php:839
+#: admin.php:857
 msgid "Total"
 msgstr "Razem"
 
@@ -14972,7 +14947,7 @@ msgstr "Liczba rozwodów"
 #: app/Module/FamilyTreeStatisticsModule.php:127
 #: app/Module/FamilyTreeStatisticsModule.php:398
 #: app/Module/HtmlBlockModule.php:203
-#: modules_v3/missing_facts_report/report.xml:602 statistics.php:366
+#: modules_v3/missing_facts_report/report.xml:602 statistics.php:367
 msgid "Total events"
 msgstr "Wydarzenia"
 
@@ -14984,7 +14959,7 @@ msgstr "Wydarzenia"
 msgid "Total families"
 msgstr "Liczba rodzin"
 
-#: calendar.php:449 find.php:582 statistics.php:211
+#: calendar.php:441 find.php:582 statistics.php:211
 #, php-format
 msgid "Total families: %s"
 msgstr "Liczba rodzin: %s"
@@ -14999,8 +14974,7 @@ msgstr "Liczba imion"
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:88
-#: modules_v3/death_report/report.xml:99
-#: modules_v3/fact_sources/report.xml:142
+#: modules_v3/death_report/report.xml:99 modules_v3/fact_sources/report.xml:142
 #: modules_v3/fact_sources/report.xml:146
 #: modules_v3/fact_sources/report.xml:305
 #: modules_v3/fact_sources/report.xml:309
@@ -15010,7 +14984,7 @@ msgstr "Liczba imion"
 msgid "Total individuals"
 msgstr "Liczba osób"
 
-#: app/Module/CensusAssistantModule.php:214 calendar.php:441 find.php:558
+#: app/Module/CensusAssistantModule.php:214 calendar.php:433 find.php:558
 #: statistics.php:90
 #, php-format
 msgid "Total individuals: %s"
@@ -15028,7 +15002,7 @@ msgstr "Liczba mężczyzn"
 msgid "Total marriages"
 msgstr "Liczba ślubów"
 
-#: admin.php:644
+#: admin.php:662
 msgid "Total number of users"
 msgstr "Liczba użytkowników"
 
@@ -15037,7 +15011,7 @@ msgid "Total pending changes: "
 msgstr "Oczekujące zmiany: "
 
 #. I18N: A count of places
-#: app/Module/GoogleMapsModule.php:1646
+#: app/Module/GoogleMapsModule.php:1557
 #, php-format
 msgid "Total places: %s"
 msgstr "Liczba miejsc: %s"
@@ -15125,7 +15099,7 @@ msgid "Tuvalu"
 msgstr "Tuvalu"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:319
+#: app/GedcomCode/GedcomCodeTemp.php:367
 msgid "Tuxtla Gutierrez, Mexico"
 msgstr "Tuxtla Gutierrez, Meksyk"
 
@@ -15149,7 +15123,7 @@ msgstr "Typ wydarzenia"
 msgid "Type of fact"
 msgstr "Typ faktu"
 
-#: app/Module/GoogleMapsModule.php:481
+#: app/Module/GoogleMapsModule.php:453
 msgid "Type of place markers in the place hierarchy"
 msgstr "Typ znacznika miejsca w hierarchii miejsc"
 
@@ -15187,7 +15161,7 @@ msgid "US Virgin Islands"
 msgstr "Wyspy Dziewicze Stanów Zjednoczonych"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
-#: admin_site_upgrade.php:40
+#: admin_site_upgrade.php:41
 msgid "UTC"
 msgstr "Czas UTC"
 
@@ -15251,7 +15225,7 @@ msgid "United Kingdom"
 msgstr "Wielka Brytania"
 
 #. I18N: Name of a country or state
-#: app/Stats.php:6915
+#: app/Stats.php:6915 statistics.php:685
 msgid "United States"
 msgstr "Stany Zjednoczone"
 
@@ -15267,7 +15241,7 @@ msgstr "Nieznany"
 
 #: app/Controller/IndividualController.php:256
 #: app/Controller/IndividualController.php:259
-#: app/Functions/FunctionsEdit.php:678 app/Stats.php:5581 calendar.php:647
+#: app/Functions/FunctionsEdit.php:678 app/Stats.php:5581 calendar.php:639
 #: modules_v3/family_group_report/report.xml:844
 #: modules_v3/individual_ext_report/report.xml:385
 #: modules_v3/individual_ext_report/report.xml:592
@@ -15295,7 +15269,7 @@ msgid "Unused files"
 msgstr "Pliki nieużywane"
 
 #. I18N: The system is about to…; %s is a .ZIP file.
-#: admin_site_upgrade.php:272
+#: admin_site_upgrade.php:273
 #, php-format
 msgid "Unzip %s to a temporary folder…"
 msgstr "Rozpakowywanie %s do katalogu tymczasowego…"
@@ -15318,27 +15292,27 @@ msgstr "Uaktualnij wszystkie"
 msgid "Update all the place names in a family tree"
 msgstr "Uaktualnij wszystkie nazwy miejsc w drzewie genealogicznym"
 
-#: admin_trees_manage.php:489 app/Module/GoogleMapsModule.php:2405
+#: admin_trees_manage.php:489 app/Module/GoogleMapsModule.php:2299
 msgid "Update place names"
 msgstr "Uaktualnij nazwy miejsc"
 
 #. I18N: Ignore the warnings, and…
-#: admin_site_upgrade.php:137 admin_site_upgrade.php:201
+#: admin_site_upgrade.php:138 admin_site_upgrade.php:202
 msgid "Upgrade anyway"
 msgstr "Mimo to aktualizuj"
 
 #. I18N: %s is a version number
 #. I18N: %s is a version number, such as 1.2.3
-#: admin.php:614 admin_site_upgrade.php:81 login.php:117
+#: admin.php:632 admin_site_upgrade.php:82 login.php:117
 #, php-format
 msgid "Upgrade to webtrees %s."
 msgstr "Aktualizacja webtrees do wersji %s."
 
-#: admin_site_upgrade.php:54
+#: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
 msgstr "Asystent aktualizacji"
 
-#: app/Module/GoogleMapsModule.php:4187
+#: app/Module/GoogleMapsModule.php:3631 app/Module/GoogleMapsModule.php:4057
 msgid "Upload geographic data"
 msgstr "Wgraj dane geograficzne"
 
@@ -15356,7 +15330,7 @@ msgstr "Wgraj jeden lub więcej plików multimedialnych z lokalnego komputera. P
 msgid "Uruguay"
 msgstr "Urugwaj"
 
-#: app/Module/GoogleMapsModule.php:448
+#: app/Module/GoogleMapsModule.php:420
 msgid "Use Google Maps™ for the place hierarchy"
 msgstr "Użyj Map Google do wyświetlania hierarchii miejsc"
 
@@ -15423,12 +15397,12 @@ msgstr "Należy użyć tego pola aby poinformować administratora, dlaczego chce
 msgid "Use this image for charts and on the individual’s page."
 msgstr "Używaj danego obrazu do diagramów i na stronie osoby."
 
-#: app/Module/GoogleMapsModule.php:3408
+#: app/Module/GoogleMapsModule.php:3278
 msgid "Use this value"
 msgstr "Użyj tej wartości"
 
 #: admin_site_change.php:351 admin_site_change.php:391 admin_site_logs.php:291
-#: admin_site_logs.php:331 edit_changes.php:178
+#: admin_site_logs.php:331 edit_changes.php:183
 msgid "User"
 msgstr "Użytkownik"
 
@@ -15476,11 +15450,11 @@ msgid "Usernames are case-insensitive and ignore accented letters, so that “ch
 msgstr "Wielkość liter w nazwach użytkowników nie ma znaczenia oraz ignorowane są litery akcentowane i specyficzne dla polskiego alfabetu, w związku z tym „lukasz”, „łukasz” i „ŁUKASZ” są uważane za tą samą nazwę użytkownika."
 
 #. I18N: Menu entry
-#: admin.php:631 admin.php:639 app/Theme/AdministrationTheme.php:162
+#: admin.php:649 admin.php:657 app/Theme/AdministrationTheme.php:162
 msgid "Users"
 msgstr "Użytkownicy"
 
-#: admin.php:719
+#: admin.php:737
 msgid "Users who are signed in"
 msgstr "Zalogowani użytkownicy"
 
@@ -15488,7 +15462,7 @@ msgstr "Zalogowani użytkownicy"
 msgid "User’s account has been inactive too long: "
 msgstr "Konto użytkownika było zbyt długo nieaktywne: "
 
-#: app/Module/GoogleMapsModule.php:628
+#: app/Module/GoogleMapsModule.php:600
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
 msgstr "Używając rozwijanej listy można wybrać kraj, dla którego będą wyświetlone flagi. Jeśli nie ma flag oznacza to, że nie ma ich zdefiniowanych dla danego kraju."
 
@@ -15571,7 +15545,7 @@ msgid "Ventose"
 msgstr "Ventôse"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:325
+#: app/GedcomCode/GedcomCodeTemp.php:381
 msgid "Veracruz, Mexico"
 msgstr "Veracruz, Meksyk"
 
@@ -15584,7 +15558,7 @@ msgid "Verified"
 msgstr "Potwierdzeni"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:327
+#: app/GedcomCode/GedcomCodeTemp.php:383
 msgid "Vernal, Utah, United States"
 msgstr "Vernal, Utah, Stany Zjednoczone"
 
@@ -15620,7 +15594,7 @@ msgstr "Pokaż szczegóły"
 msgid "View the notes"
 msgstr "Zobacz notatki"
 
-#: calendar.php:300
+#: calendar.php:292
 msgid "View this day"
 msgstr "Zobacz dzień"
 
@@ -15638,7 +15612,7 @@ msgstr "Zobacz rodzinę"
 msgid "View this individual"
 msgstr "Zobacz osobę"
 
-#: calendar.php:304
+#: calendar.php:296
 msgid "View this month"
 msgstr "Zobacz miesiąc"
 
@@ -15646,12 +15620,12 @@ msgstr "Zobacz miesiąc"
 msgid "View this source"
 msgstr "Zobacz źródło"
 
-#: calendar.php:308
+#: calendar.php:300
 msgid "View this year"
 msgstr "Zobacz rok"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:329
+#: app/GedcomCode/GedcomCodeTemp.php:385
 msgid "Villa Hermosa, Mexico"
 msgstr "Villa Hermosa, Meksyk"
 
@@ -15675,7 +15649,7 @@ msgid "Visitor"
 msgstr "Gość"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
-#: app/Module/BirthDeathMarriageReportModule.php:33 calendar.php:262
+#: app/Module/BirthDeathMarriageReportModule.php:33 calendar.php:254
 #: modules_v3/bdm_report/report.xml:3 modules_v3/bdm_report/report.xml:34
 msgid "Vital records"
 msgstr "Podstawowe wpisy wydarzeń"
@@ -15705,7 +15679,7 @@ msgid "Ward"
 msgstr "Wychowanek"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:331
+#: app/GedcomCode/GedcomCodeTemp.php:387
 msgid "Washington, District of Columbia, United States"
 msgstr "Washington, District of Columbia, Stany Zjednoczone"
 
@@ -15842,8 +15816,7 @@ msgstr "Opcja wgrywania nowych plików multimedialnych"
 msgid "Who is online"
 msgstr "Kto jest na stronie"
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
-#: search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
 msgid "Whole words only"
 msgstr "Tylko całe wyrazy"
 
@@ -15855,7 +15828,7 @@ msgstr "Wdowa"
 msgid "Widower"
 msgstr "Wdowiec"
 
-#: app/Module/GoogleMapsModule.php:361 app/Module/GoogleMapsModule.php:464
+#: app/Module/GoogleMapsModule.php:436
 msgid "Width"
 msgstr "Szerokość"
 
@@ -15900,7 +15873,7 @@ msgid "Will"
 msgstr "Testament"
 
 #. I18N: Location of an LDS church temple
-#: app/GedcomCode/GedcomCodeTemp.php:333
+#: app/GedcomCode/GedcomCodeTemp.php:389
 msgid "Winter Quarters, Nebraska, United States"
 msgstr "Winter Quarters, Nebraska, Stany Zjednoczone"
 
@@ -15925,7 +15898,7 @@ msgstr "Świadek"
 msgid "Wives take their husband’s surname."
 msgstr "Żony otrzymują nazwisko męża."
 
-#: statistics.php:597
+#: statistics.php:679
 msgid "World"
 msgstr "Świat"
 
@@ -15944,7 +15917,7 @@ msgstr "Jorcajt"
 msgid "Yahrzeiten"
 msgstr "Wydarzenia jorcajt"
 
-#: app/Theme/AbstractTheme.php:1067 calendar.php:211 search.php:248
+#: app/Theme/AbstractTheme.php:1067 calendar.php:203 search.php:248
 msgid "Year"
 msgstr "Rok"
 
@@ -16006,11 +15979,11 @@ msgstr "Specyfikację GEDCOM można pobrać z %s."
 msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "Można łatwiej znaleźć kobiety zamężne wprowadzając ich nazwiska po ślubie. Jednakże nie wszystkie kobiety przyjmują nazwiska męża po ślubie, więc należy zachować szczególną uwagę korzystając z tej funkcji, by nie wprowadzić niepoprawnych danych do bazy."
 
-#: admin_site_upgrade.php:136
+#: admin_site_upgrade.php:137
 msgid "You can re-enable these modules after the upgrade."
 msgstr "Można włączyć dane moduły ponownie po zakończeniu aktualizacji."
 
-#: admin_site_upgrade.php:200
+#: admin_site_upgrade.php:201
 msgid "You can re-enable these themes after the upgrade."
 msgstr "Można włączyć dane motywy ponownie po zakończeniu aktualizacji."
 
@@ -16043,7 +16016,7 @@ msgstr "Nie można stworzyć zasady, która uniemożliwi jakikolwiek dostęp do 
 msgid "You cannot sign in because your browser does not accept cookies."
 msgstr "Nie możesz się zalogować ponieważ Twoja przeglądarka nie akceptuje ciasteczek."
 
-#: includes/session.php:505
+#: includes/session.php:504
 msgid "You do not have permission to view this page."
 msgstr "Brak uprawnień do przeglądania tej strony."
 
@@ -16055,7 +16028,7 @@ msgstr "Wprowadzono jednakowe identyfikatory. Nie można scalać wpisu samego ze
 msgid "You have confirmed your request to become a registered user."
 msgstr "Twoje zgłoszenie zostania zarejestrowanym użytkownikiem zostało potwierdzone."
 
-#: app/Module/UserJournalModule.php:92
+#: app/Module/UserJournalModule.php:93
 msgid "You have not created any journal items."
 msgstr "Brak wpisów w dzienniku."
 
@@ -16063,7 +16036,7 @@ msgstr "Brak wpisów w dzienniku."
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
 msgstr "Wybrano plik GEDCOM z inną nazwą. Czy jest to prawidłowe?"
 
-#: logout.php:24
+#: logout.php:27
 msgid "You have signed out."
 msgstr "Wylogowano pomyślnie."
 
@@ -16112,7 +16085,7 @@ msgstr "Należy podać tytuł źródła"
 msgid "You must renumber the records in one of the trees before you can merge them."
 msgstr "Należy zmienić numerację wpisów w jednym z drzew genealogicznym przed ich scaleniem."
 
-#: app/Module/ChartsBlockModule.php:139
+#: app/Module/ChartsBlockModule.php:138
 msgid "You must select an individual and a chart type in the block preferences"
 msgstr "Należy wybrać osobę oraz rodzaj diagramu w ustawieniach bloku"
 
@@ -16157,15 +16130,15 @@ msgstr "Została wysłana następująca wiadomość do administratora:"
 msgid "You sent the following message to a webtrees user:"
 msgstr "Została wysłana następująca wiadomość do użytkownika:"
 
-#: admin_site_upgrade.php:98
+#: admin_site_upgrade.php:99
 msgid "You should accept or reject all pending changes before upgrading."
 msgstr "Należy zatwierdzić lub odrzucić wszystkie niezatwierdzone zmiany przed aktualizacją."
 
-#: admin_site_upgrade.php:135
+#: admin_site_upgrade.php:136
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
 msgstr "Należy skontaktować się z autorem modułu aby potwierdzić jego kompatybilność z daną wersją webtrees."
 
-#: admin_site_upgrade.php:199
+#: admin_site_upgrade.php:200
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
 msgstr "Należy skontaktować się z autorem motywu aby potwierdzić jego kompatybilność z daną wersją webtrees."
 
@@ -16226,12 +16199,12 @@ msgstr "Administrator serwera powinien dostarczyć szczegóły dotyczące połą
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Twoje konto użytkownika nie ma ustawionego „automatycznego zatwierdzania zmian”. Aktualizacja będzie mogła być używana tylko do zmiany jednego wpisu w danej chwili."
 
-#: admin.php:558
+#: admin.php:576
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
 msgstr "Twój serwer używa PHP w wersji %s, które już nie jest wspierane. Należy zaktualizować do nowszej wersji."
 
-#: admin.php:550
+#: admin.php:568
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr "Twój serwer używa PHP w wersji %s, które już nie otrzymuje aktualizacji zabezpieczeń. Należy zaktualizować do nowszej wersji, tak szybko jak to możliwe."
@@ -16251,7 +16224,7 @@ msgstr "Zimbabwe"
 msgid "Zip file(s)"
 msgstr "Kompresja ZIP"
 
-#: app/Module/GoogleMapsModule.php:1587 app/Module/GoogleMapsModule.php:2452
+#: app/Module/GoogleMapsModule.php:1498 app/Module/GoogleMapsModule.php:2346
 #: fanchart.php:109
 msgid "Zoom"
 msgstr "Powiększenie"
@@ -16264,12 +16237,12 @@ msgstr "Powiększ"
 msgid "Zoom in/out on this box."
 msgstr "Powiększ/pomniejsz tę ramkę."
 
-#: app/Module/GoogleMapsModule.php:3512 app/Module/GoogleMapsModule.php:3601
-#: app/Module/GoogleMapsModule.php:4098
+#: app/Module/GoogleMapsModule.php:3382 app/Module/GoogleMapsModule.php:3471
+#: app/Module/GoogleMapsModule.php:3968
 msgid "Zoom level"
 msgstr "Powiększenie"
 
-#: app/Module/GoogleMapsModule.php:378
+#: app/Module/GoogleMapsModule.php:350
 msgid "Zoom level of map"
 msgstr "Współczynnik powiększenia mapy"
 
@@ -16288,14 +16261,14 @@ msgstr "po północy"
 msgid "about %s"
 msgstr "ok. %s"
 
-#: family.php:63 gedrecord.php:74 individual.php:75 mediaviewer.php:62
-#: note.php:63 repo.php:62 source.php:62
+#: family.php:50 gedrecord.php:63 individual.php:64 mediaviewer.php:51
+#: note.php:52 repo.php:51 source.php:51
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
 msgstr "zaakceptować"
 
-#: family.php:44 gedrecord.php:56 individual.php:57 mediaviewer.php:44
-#: note.php:45 repo.php:44 source.php:44
+#: family.php:40 gedrecord.php:53 individual.php:54 mediaviewer.php:41
+#: note.php:42 repo.php:41 source.php:41
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
 msgstr "zaakceptować"
@@ -16310,7 +16283,7 @@ msgstr "zaakceptowana"
 #: app/Functions/FunctionsPrint.php:633 app/Module/ClippingsCartModule.php:334
 #: app/Module/ClippingsCartModule.php:460
 #: app/Module/FamilyTreeFavoritesModule.php:228
-#: app/Module/GoogleMapsModule.php:4155 timeline.php:306
+#: app/Module/GoogleMapsModule.php:4025 timeline.php:306
 msgid "add"
 msgstr "dodaj"
 
@@ -16620,21 +16593,20 @@ msgstr "dzieci"
 #. I18N: A button label.
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189
-#: app/Module/GoogleMapsModule.php:713 app/Module/GoogleMapsModule.php:3538
-#: app/Theme/AbstractTheme.php:700 edit_changes.php:240 edit_interface.php:89
-#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
-#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
-#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
-#: edit_interface.php:1743 edit_interface.php:1848 edit_interface.php:2040
-#: edit_interface.php:2203 edit_interface.php:2588 find.php:760
-#: inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:686
+#: app/Module/GoogleMapsModule.php:3408 app/Theme/AbstractTheme.php:700
+#: edit_changes.php:245 edit_interface.php:89 edit_interface.php:184
+#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
+#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
+#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1743
+#: edit_interface.php:1848 edit_interface.php:2040 edit_interface.php:2203
+#: edit_interface.php:2588 find.php:760 inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "Zamknij"
 
 #. I18N: Name of a theme.
-#: app/Theme/CloudsTheme.php:175
+#: app/Theme/CloudsTheme.php:180
 msgid "clouds"
 msgstr "clouds"
 
@@ -16648,13 +16620,13 @@ msgid "compact list"
 msgstr "zwięzła lista"
 
 #. I18N: A button label.
-#: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1154 admin_site_merge.php:387
+#: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1154 admin_site_merge.php:391
 #: admin_trees_download.php:119 admin_trees_download.php:204
 #: admin_trees_manage.php:309 admin_trees_manage.php:754
 #: admin_trees_merge.php:202 admin_trees_renumber.php:281
 #: app/Module/ClippingsCartModule.php:134
 #: app/Module/ClippingsCartModule.php:257
-#: app/Module/ClippingsCartModule.php:300 app/Module/GoogleMapsModule.php:3840
+#: app/Module/ClippingsCartModule.php:300 app/Module/GoogleMapsModule.php:3710
 #: app/Module/LoginBlockModule.php:105 app/Theme/AbstractTheme.php:347
 #: login.php:227 login.php:497 reportengine.php:131 reportengine.php:265
 #: setup.php:187 setup.php:213 setup.php:295 setup.php:381 setup.php:446
@@ -16671,7 +16643,7 @@ msgstr "Utwórz"
 msgid "creating thumbnails of images"
 msgstr "tworzenie miniaturek obrazów"
 
-#: statistics.php:616
+#: statistics.php:718
 msgid "date periods"
 msgstr "okresy czasu"
 
@@ -16714,7 +16686,7 @@ msgid "death"
 msgstr "śmierć"
 
 #. I18N: Measure of latitude/longitude
-#: app/Module/GoogleMapsModule.php:3490 app/Module/GoogleMapsModule.php:3501
+#: app/Module/GoogleMapsModule.php:3360 app/Module/GoogleMapsModule.php:3371
 msgid "degrees"
 msgstr "stopnie"
 
@@ -16744,11 +16716,11 @@ msgstr "zmarł"
 #. I18N: A button label.
 #: admin_site_change.php:370 admin_site_logs.php:310
 #: app/Module/ClippingsCartModule.php:432
-#: app/Module/ClippingsCartModule.php:797 app/Module/GoogleMapsModule.php:4214
+#: app/Module/ClippingsCartModule.php:797 app/Module/GoogleMapsModule.php:4084
 msgid "download"
 msgstr "pobierz"
 
-#: app/Module/GoogleMapsModule.php:3503
+#: app/Module/GoogleMapsModule.php:3373
 msgid "east"
 msgstr "wschód"
 
@@ -17207,8 +17179,8 @@ msgid "fourth cousin"
 msgstr "kuzyn czwartego stopnia"
 
 #. I18N: from 1700 interval 50 years
-#: statistics.php:621 statistics.php:623 statistics.php:625 statistics.php:627
-#: statistics.php:629 statistics.php:631
+#: statistics.php:728 statistics.php:731 statistics.php:734 statistics.php:737
+#: statistics.php:740 statistics.php:743
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
@@ -17233,7 +17205,7 @@ msgstr "od %s do %s"
 msgid "full circle"
 msgstr "pełen okrąg"
 
-#: statistics.php:613
+#: statistics.php:713
 msgid "gender"
 msgstr "płeć"
 
@@ -18753,7 +18725,7 @@ msgctxt "parent’s daughter"
 msgid "half-sister"
 msgstr "siostra przyrodnia"
 
-#: statistics.php:571
+#: statistics.php:628
 msgid "half-year after marriage"
 msgstr "półrocza po ślubie"
 
@@ -18767,7 +18739,7 @@ msgstr "probant"
 msgid "hh:mm or hh:mm:ss"
 msgstr "hh:mm lub hh:mm:ss"
 
-#: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:348
+#: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:343
 msgid "hide"
 msgstr "Ukryj"
 
@@ -18799,7 +18771,7 @@ msgid "immigration name"
 msgstr "immigracyjne"
 
 #. I18N: A button label.
-#: app/Module/GoogleMapsModule.php:4175
+#: app/Module/GoogleMapsModule.php:4045
 msgid "import"
 msgstr "importuj"
 
@@ -18809,8 +18781,8 @@ msgstr "importuj"
 msgid "interpreted %s (%s)"
 msgstr "zinterpretowane jako %s (%s)"
 
-#: statistics.php:549 statistics.php:551 statistics.php:553 statistics.php:560
-#: statistics.php:562
+#: statistics.php:586 statistics.php:589 statistics.php:592 statistics.php:604
+#: statistics.php:607
 #, php-format
 msgid "interval %s year"
 msgid_plural "interval %s years"
@@ -18818,11 +18790,11 @@ msgstr[0] "co %s rok"
 msgstr[1] "co %s lata"
 msgstr[2] "co %s lat"
 
-#: statistics.php:577
+#: statistics.php:640
 msgid "interval one child"
 msgstr "pojedynczo"
 
-#: statistics.php:578
+#: statistics.php:643
 msgid "interval two children"
 msgstr "dwuosobowe grupy"
 
@@ -18943,7 +18915,7 @@ msgstr "rodzic matki"
 msgid "matrilineal"
 msgstr "matrylinearny"
 
-#: app/Module/GoogleMapsModule.php:390
+#: app/Module/GoogleMapsModule.php:362
 msgid "maximum"
 msgstr "maksimum"
 
@@ -18969,11 +18941,11 @@ msgid "midnight"
 msgstr "północ"
 
 #. I18N: Name of a theme.
-#: app/Theme/MinimalTheme.php:162
+#: app/Theme/MinimalTheme.php:167
 msgid "minimal"
 msgstr "minimal"
 
-#: app/Module/GoogleMapsModule.php:384
+#: app/Module/GoogleMapsModule.php:356
 msgid "minimum"
 msgstr "minimum"
 
@@ -18982,11 +18954,11 @@ msgstr "minimum"
 msgid "month"
 msgstr "miesiąc"
 
-#: statistics.php:568
+#: statistics.php:619
 msgid "months after marriage"
 msgstr "miesiące po ślubie"
 
-#: statistics.php:569
+#: statistics.php:622
 msgid "months before and after marriage"
 msgstr "miesiące przed i po ślubie"
 
@@ -19132,8 +19104,8 @@ msgstr "Nie"
 
 #. I18N: None of the other options
 #: admin_site_config.php:111 admin_trees_config.php:63
-#: admin_trees_config.php:68 app/Module/FamilyNavigatorModule.php:252
-#: app/Module/RelationshipsChartModule.php:127
+#: admin_trees_config.php:68 app/Module/FamilyNavigatorModule.php:260
+#: app/Module/RelationshipsChartModule.php:131
 msgid "none"
 msgstr "brak"
 
@@ -19147,11 +19119,11 @@ msgstr "brak"
 msgid "noon"
 msgstr "południe"
 
-#: app/Module/GoogleMapsModule.php:3492
+#: app/Module/GoogleMapsModule.php:3362
 msgid "north"
 msgstr "północ"
 
-#: statistics.php:636 statisticsplot.php:876 statisticsplot.php:926
+#: statistics.php:752 statisticsplot.php:876 statisticsplot.php:926
 #: statisticsplot.php:980 statisticsplot.php:1030 statisticsplot.php:1084
 #: statisticsplot.php:1134 statisticsplot.php:1184 statisticsplot.php:1234
 #: statisticsplot.php:1284 statisticsplot.php:1334
@@ -19161,8 +19133,7 @@ msgstr "ilościowa"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45
-#: modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19180,7 +19151,7 @@ msgstr "z"
 msgid "on the date of death"
 msgstr "w dniu śmierci"
 
-#: statistics.php:610
+#: statistics.php:708
 msgid "overall"
 msgstr "ogólny"
 
@@ -19237,7 +19208,7 @@ msgstr "patrylinearny"
 msgid "pending"
 msgstr "oczekująca"
 
-#: statistics.php:638 statisticsplot.php:889 statisticsplot.php:939
+#: statistics.php:757 statisticsplot.php:889 statisticsplot.php:939
 #: statisticsplot.php:993 statisticsplot.php:1043 statisticsplot.php:1097
 #: statisticsplot.php:1147 statisticsplot.php:1197 statisticsplot.php:1247
 #: statisticsplot.php:1297 statisticsplot.php:1347
@@ -19249,7 +19220,7 @@ msgid "pixels"
 msgstr "piksele"
 
 #. I18N: A button label.
-#: admin_trees_places.php:107
+#: admin_trees_places.php:108
 msgid "preview"
 msgstr "Podgląd"
 
@@ -19263,7 +19234,7 @@ msgstr "poprzednia"
 msgid "primary evidence"
 msgstr "podstawowy dowód"
 
-#: statistics.php:570
+#: statistics.php:625
 msgid "quarters after marriage"
 msgstr "kwartały po ślubie"
 
@@ -19276,14 +19247,14 @@ msgstr "wątpliwy dowód"
 msgid "records"
 msgstr "wpisy"
 
-#: family.php:64 gedrecord.php:75 individual.php:76 mediaviewer.php:63
-#: note.php:64 repo.php:63 source.php:63
+#: family.php:51 gedrecord.php:64 individual.php:65 mediaviewer.php:52
+#: note.php:53 repo.php:52 source.php:52
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
 msgstr "odrzucić"
 
-#: family.php:45 gedrecord.php:57 individual.php:58 mediaviewer.php:45
-#: note.php:46 repo.php:45 source.php:45
+#: family.php:41 gedrecord.php:54 individual.php:55 mediaviewer.php:42
+#: note.php:43 repo.php:42 source.php:42
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
 msgstr "odrzucić"
@@ -19321,7 +19292,7 @@ msgid "reporting"
 msgstr "raporty"
 
 #. I18N: A button label.
-#: app/Module/GoogleMapsModule.php:4473 lifespan.php:109 medialist.php:196
+#: app/Module/GoogleMapsModule.php:4344 lifespan.php:109 medialist.php:196
 #: timeline.php:315
 msgid "reset"
 msgstr "Wyczyść"
@@ -19334,21 +19305,20 @@ msgstr "robot"
 #. I18N: A button label.
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129
-#: admin_modules.php:262 admin_site_access.php:307 admin_site_config.php:651
-#: admin_site_merge.php:340 admin_trees_config.php:2147 admin_users.php:652
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:262
+#: admin_site_access.php:307 admin_site_config.php:651 admin_site_merge.php:344
+#: admin_trees_config.php:2147 admin_users.php:652
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
-#: app/Module/GoogleMapsModule.php:499 app/Module/GoogleMapsModule.php:712
-#: app/Module/GoogleMapsModule.php:2454 app/Module/GoogleMapsModule.php:3537
-#: app/Module/RelationshipsChartModule.php:173
-#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
-#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
-#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
-#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
-#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1742
-#: edit_interface.php:1846 edit_interface.php:2039 edit_interface.php:2201
-#: edit_interface.php:2584 editnews.php:74 edituser.php:317 find.php:537
-#: index_edit.php:376
+#: app/Module/GoogleMapsModule.php:471 app/Module/GoogleMapsModule.php:685
+#: app/Module/GoogleMapsModule.php:2348 app/Module/GoogleMapsModule.php:3407
+#: app/Module/RelationshipsChartModule.php:177 app/Module/SiteMapModule.php:320
+#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
+#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
+#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
+#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
+#: edit_interface.php:1742 edit_interface.php:1846 edit_interface.php:2039
+#: edit_interface.php:2201 edit_interface.php:2584 editnews.php:74
+#: edituser.php:317 find.php:537 index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:197
 msgid "save"
@@ -19565,11 +19535,11 @@ msgid "seventh cousin"
 msgstr "kuzyn siódmego stopnia"
 
 #: admin_trees_config.php:43 app/Module/FrequentlyAskedQuestionsModule.php:456
-#: app/Module/GoogleMapsModule.php:348 app/Module/StoriesModule.php:361
+#: app/Module/GoogleMapsModule.php:343 app/Module/StoriesModule.php:361
 msgid "show"
 msgstr "Pokaż"
 
-#: statistics.php:645
+#: statistics.php:765
 msgid "show the chart"
 msgstr "Pokaż wykres"
 
@@ -19745,7 +19715,7 @@ msgstr "sortuj według nazwiska"
 msgid "sort by title"
 msgstr "sortuj według tytułu"
 
-#: app/Module/GoogleMapsModule.php:3493
+#: app/Module/GoogleMapsModule.php:3363
 msgid "south"
 msgstr "południe"
 
@@ -19804,12 +19774,12 @@ msgctxt "wife’s daughter"
 msgid "step-daughter"
 msgstr "pasierbica"
 
-#: app/Functions/Functions.php:878 app/Module/FamilyNavigatorModule.php:216
+#: app/Functions/Functions.php:878 app/Module/FamilyNavigatorModule.php:224
 msgctxt "mother’s husband"
 msgid "step-father"
 msgstr "ojczym"
 
-#: app/Functions/Functions.php:852 app/Module/FamilyNavigatorModule.php:216
+#: app/Functions/Functions.php:852 app/Module/FamilyNavigatorModule.php:224
 msgctxt "father’s wife"
 msgid "step-mother"
 msgstr "macocha"
@@ -19894,12 +19864,12 @@ msgid "tenth cousin"
 msgstr "kuzyn dziesiątego stopnia"
 
 #. I18N: [you should check that:] ...
-#: site-unavailable.php:87
+#: site-unavailable.php:85
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
 msgstr "ustawienia połączenia z bazą danych w pliku „/data/config.ini.php” są nadal poprawne"
 
 #. I18N: [you should check that:] ...
-#: site-unavailable.php:90
+#: site-unavailable.php:88
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "katalog „/data” i plik „/data/config.ini.php” mają uprawnienia dostępu, które pozwalają na odczyt serwerowi"
 
@@ -20034,22 +20004,22 @@ msgid "uncle"
 msgstr "wuj"
 
 #: admin_site_access.php:26 admin_site_access.php:33
-#: app/Module/FamilyNavigatorModule.php:180
-#: app/Module/GoogleMapsModule.php:1593 app/Module/GoogleMapsModule.php:2520
-#: app/Module/GoogleMapsModule.php:2565 app/Module/GoogleMapsModule.php:3017
-#: app/Module/GoogleMapsModule.php:3056 app/Module/GoogleMapsModule.php:3061
-#: app/Module/GoogleMapsModule.php:4062 app/Module/GoogleMapsModule.php:4069
-#: app/Module/GoogleMapsModule.php:4110 app/Place.php:141
+#: app/Module/FamilyNavigatorModule.php:188
+#: app/Module/GoogleMapsModule.php:1504 app/Module/GoogleMapsModule.php:2412
+#: app/Module/GoogleMapsModule.php:2453 app/Module/GoogleMapsModule.php:2899
+#: app/Module/GoogleMapsModule.php:2936 app/Module/GoogleMapsModule.php:2941
+#: app/Module/GoogleMapsModule.php:3932 app/Module/GoogleMapsModule.php:3939
+#: app/Module/GoogleMapsModule.php:3980 app/Place.php:141
 msgid "unknown"
 msgstr "nieznane"
 
-#: app/Module/FamilyNavigatorModule.php:222
+#: app/Module/FamilyNavigatorModule.php:230
 #: app/Module/InteractiveTree/TreeView.php:342
 msgctxt "unknown family"
 msgid "unknown"
 msgstr "nieznani"
 
-#: app/Module/RelationshipsChartModule.php:131
+#: app/Module/RelationshipsChartModule.php:135
 msgid "unlimited"
 msgstr "nielimitowane"
 
@@ -20059,17 +20029,17 @@ msgid "unreliable evidence"
 msgstr "niepewny dowód"
 
 #. I18N: A button label.
-#: admin_trees_places.php:108
+#: admin_trees_places.php:109
 msgid "update"
 msgstr "Uaktualnij"
 
 #. I18N: A button label.
-#: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4193
+#: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4063
 msgid "upload"
 msgstr "wgraj"
 
 #. I18N: A button label.
-#: ancestry.php:92 app/Module/GoogleMapsModule.php:766 branches.php:49
+#: ancestry.php:92 app/Module/GoogleMapsModule.php:739 branches.php:49
 #: compact.php:54 descendancy.php:71 familybook.php:61 fanchart.php:95
 #: hourglass.php:62 lifespan.php:110 pedigree.php:169 relationship.php:85
 msgid "view"
@@ -20093,7 +20063,7 @@ msgctxt "MALE"
 msgid "was born"
 msgstr "urodził się"
 
-#: app/Theme/WebtreesTheme.php:128
+#: app/Theme/WebtreesTheme.php:133
 msgid "webtrees"
 msgstr "webtrees"
 
@@ -20127,7 +20097,7 @@ msgid "webtrees sends emails with no storage"
 msgstr "webtrees wysyła emaile bez zachowywania"
 
 #: admin_trees_download.php:153
-msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
+msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr "webtrees używa kodowania UTF-8 dla akcentowanych liter (w tym liter charakterystycznych dla alfabetu polskiego), znaków specjalnych i alfabetów innych niż łaciński. Jeśli jest konieczność używania danego pliku GEDCOM z oprogramowaniem genealogicznym, które nie obsługuje UTF-8, można go utworzyć przy użyciu kodowania ISO-8859-1."
 
 #: app/Functions/FunctionsPrint.php:210
@@ -20138,7 +20108,7 @@ msgstr "webtrees wiki"
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
 msgstr "Baza danych webtrees musi być na tym samym serwerze co baza PhpGedView"
 
-#: app/Module/GoogleMapsModule.php:3504
+#: app/Module/GoogleMapsModule.php:3374
 msgid "west"
 msgstr "zachód"
 
@@ -20148,7 +20118,7 @@ msgid "wife"
 msgstr "żona"
 
 #. I18N: Name of a theme.
-#: app/Theme/XeneaTheme.php:144
+#: app/Theme/XeneaTheme.php:149
 msgid "xenea"
 msgstr "xenea"
 
@@ -20175,7 +20145,7 @@ msgid "yes"
 msgstr "Tak"
 
 #. I18N: [you should check that:] ...
-#: site-unavailable.php:93
+#: site-unavailable.php:91
 msgid "you can connect to the database using other applications, such as phpmyadmin"
 msgstr "można połączyć się z bazą danych przy użyciu innych aplikacji, takich jak phpMyAdmin"
 
@@ -20221,7 +20191,7 @@ msgstr "Wpis „%s” został usunięty."
 msgid "…"
 msgstr "…"
 
-#: app/Family.php:350 app/Family.php:364 app/Individual.php:1214
+#: app/Family.php:351 app/Family.php:365 app/Individual.php:1214
 #: app/Individual.php:1303 autocomplete.php:164 autocomplete.php:405
 #: autocomplete.php:470 famlist.php:97 famlist.php:230 indilist.php:97
 #: indilist.php:230
@@ -20229,7 +20199,7 @@ msgctxt "Unknown given name"
 msgid "…"
 msgstr "…"
 
-#: app/Family.php:350 app/Family.php:364 app/Individual.php:1213
+#: app/Family.php:351 app/Family.php:365 app/Individual.php:1213
 #: app/Individual.php:1303 app/Module/FamiliesSidebarModule.php:153
 #: app/Module/IndividualSidebarModule.php:154 autocomplete.php:164
 #: autocomplete.php:405 autocomplete.php:470 famlist.php:83 famlist.php:108
@@ -20334,6 +20304,9 @@ msgstr "…"
 
 #~ msgid "Eire"
 #~ msgstr "Irlandia"
+
+#~ msgid "Enter report values"
+#~ msgstr "Parametry raportu"
 
 #~ msgid "FAQ position"
 #~ msgstr "Pozycja FAQ"

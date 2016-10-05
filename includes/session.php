@@ -40,7 +40,7 @@ global $WT_TREE, $SEARCH_SPIDER;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION', '1.7.7-dev');
+define('WT_VERSION', '1.7.9-dev');
 
 // External URLs
 define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
@@ -109,7 +109,7 @@ define('WT_DEBUG', strpos(WT_VERSION, 'dev') !== false);
 define('WT_DEBUG_SQL', false);
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 35);
+define('WT_SCHEMA_VERSION', 37);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
@@ -284,8 +284,7 @@ try {
 		exit;
 	}
 } catch (PDOException $ex) {
-	FlashMessages::addMessage($ex->getMessage(), 'danger');
-	header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
+	header('Location: ' . WT_BASE_URL . 'site-unavailable.php?message=' . rawurlencode($ex->getMessage()));
 	throw $ex;
 }
 

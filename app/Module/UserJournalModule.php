@@ -78,9 +78,10 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		$articles = Database::prepare(
-			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id = ? ORDER BY updated DESC"
+			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE user_id = :user_id ORDER BY updated DESC"
 		)->execute(array(
-			Auth::id(),
+			'offset'  => WT_TIMESTAMP_OFFSET,
+			'user_id' => Auth::id(),
 		))->fetchAll();
 
 		$id      = $this->getName() . $block_id;
@@ -89,7 +90,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 		$content = '';
 
 		if (empty($articles)) {
-			$content .= I18N::translate('You have not created any journal items.');
+			$content .= '<p>' . I18N::translate('You have not created any journal items.') . '</p>';
 		}
 
 		foreach ($articles as $article) {
@@ -106,7 +107,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 			$content .= '</div><br>';
 		}
 
-		$content .= '<a href="#" onclick="window.open(\'editnews.php?user_id=' . Auth::id() . '\', \'_blank\', indx_window_specs); return false;">' . I18N::translate('Add a journal entry') . '</a>';
+		$content .= '<p><a href="#" onclick="window.open(\'editnews.php?user_id=' . Auth::id() . '\', \'_blank\', indx_window_specs); return false;">' . I18N::translate('Add a journal entry') . '</a></p>';
 
 		if ($template) {
 			return Theme::theme()->formatBlock($id, $title, $class, $content);

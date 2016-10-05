@@ -37,8 +37,8 @@ class Migration2 implements MigrationInterface {
 		try {
 			Database::exec(
 				"ALTER TABLE `##favorite`" .
-				" ADD FOREIGN KEY favorite_fk1 (user_id  ) REFERENCES `##user`   (user_id) ON DELETE CASCADE," .
-				" ADD FOREIGN KEY favorite_fk2 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) ON DELETE CASCADE"
+				" ADD FOREIGN KEY `##favorite_fk1` (user_id  ) REFERENCES `##user`   (user_id) ON DELETE CASCADE," .
+				" ADD FOREIGN KEY `##favorite_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) ON DELETE CASCADE"
 			);
 		} catch (PDOException $ex) {
 			// Already updated?

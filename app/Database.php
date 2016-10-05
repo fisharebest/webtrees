@@ -97,6 +97,7 @@ class Database {
 			)
 		);
 		self::$pdo->exec("SET NAMES UTF8");
+		self::$pdo->prepare("SET time_zone = :time_zone")->execute(array('time_zone' => date('P')));
 
 		self::$instance = new self;
 	}

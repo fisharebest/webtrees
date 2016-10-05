@@ -117,11 +117,11 @@ case 'choose':
 		->pageHeader();
 
 	echo '<div id="reportengine-page">
+		<h2 class="center">', I18N::translate('Choose a report to run'), '</h2>
 		<form name="choosereport" method="get" action="reportengine.php">
 		<input type="hidden" name="action" value="setup">
 		<input type="hidden" name="output" value="', Filter::escapeHtml($output), '">
 		<table class="facts_table width40">
-		<tr><td class="topbottombar" colspan="2">', I18N::translate('Choose a report to run'), '</td></tr>
 		<tr><td class="descriptionbox wrap width33 vmiddle">', I18N::translate('Report'), '</td>
 		<td class="optionbox"><select name="report">';
 	foreach ($reports as $file => $report) {
@@ -145,12 +145,12 @@ case 'setup':
 	FunctionsPrint::initializeCalendarPopup();
 
 	echo '<div id="reportengine-page">
+		<h2 class="center">', $report_array['title'], '</h2>
 		<form name="setupreport" method="get" action="reportengine.php">
 		<input type="hidden" name="action" value="run">
 		<input type="hidden" name="report" value="', Filter::escapeHtml($report), '">
 		<table class="facts_table width50">
-		<tr><td class="topbottombar" colspan="2">', I18N::translate('Enter report values'), '</td></tr>
-		<tr><td class="descriptionbox width30 wrap">', I18N::translate('Report'), '</td><td class="optionbox">', $report_array['title'], '<br>', $report_array['description'], '</td></tr>';
+		<tr><td class="descriptionbox width30 wrap">', I18N::translate('Report'), '</td><td class="optionbox">', $report_array['description'], '</td></tr>';
 
 	if (!isset($report_array['inputs'])) {
 		$report_array['inputs'] = array();
