@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-10-02 16:53+0000\n"
+"PO-Revision-Date: 2016-10-08 20:53+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -3230,7 +3230,7 @@ msgstr "Beerdigung eines Sohns"
 
 #: app/GedcomTag.php:1190
 msgid "Burial of a spouse"
-msgstr "Beerdigung eines Ehegattens"
+msgstr "Beerdigung eines Ehepartners"
 
 #: app/GedcomTag.php:1188
 msgid "Burial of a wife"
@@ -4259,7 +4259,7 @@ msgstr "Einäscherung eines Sohns"
 
 #: app/GedcomTag.php:1347
 msgid "Cremation of a spouse"
-msgstr "Einäscherung eines Ehegattens"
+msgstr "Einäscherung eines Ehepartners"
 
 #: app/GedcomTag.php:1345
 msgid "Cremation of a wife"
@@ -4833,7 +4833,7 @@ msgstr "Tod eines Sohns"
 
 #: app/GedcomTag.php:1450
 msgid "Death of a spouse"
-msgstr "Tod eines Ehegattens"
+msgstr "Tod eines Ehepartners"
 
 #: app/GedcomTag.php:1448
 msgid "Death of a wife"
@@ -6438,7 +6438,7 @@ msgstr "Zum Beispiel, wenn die GEDCOM-Datei %1$s enthält und webtrees %2$s im M
 
 #: admin_users.php:600
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr "Wenn Sie zum Beispiel eine Stufenweite von 2 angeben, wird diese Person in der Lage sein, ihre Enkel (Kind, Kind), ihre Tante (Eltern, Geschwister), ihre Stieftochter (Ehegatte, Kind), nicht aber ihre Cousine (Eltern, Geschwister, Kinder) zu sehen."
+msgstr "Wenn Sie zum Beispiel eine Stufenweite von 2 angeben, wird diese Person in der Lage sein, ihre Enkel (Kind, Kind), ihre Tante (Eltern, Geschwister), ihre Stieftochter (Ehepartner, Kind), nicht aber ihre Cousine (Eltern, Geschwister, Kinder) zu sehen."
 
 #: app/Theme/AbstractTheme.php:296
 #, php-format
@@ -12434,7 +12434,7 @@ msgstr "Zeige alle Quellen"
 
 #: app/Module/InteractiveTree/TreeView.php:62
 msgid "Show all spouses and ancestors"
-msgstr "Zeige alle Ehegatten und Vorfahren"
+msgstr "Zeige alle Ehepartner und Vorfahren"
 
 #: find.php:528
 msgid "Show all tags"
@@ -15837,11 +15837,11 @@ msgstr "Alter, Gattin"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
-msgstr "Geburtsname der Frau als Vorname behalten, und Nachname des Gattens auch als Nachname der Frau benutzen"
+msgstr "Geburtsname der Frau als Vorname behalten, und Nachname des Ehemanns auch als Nachname der Frau benutzen"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr "Nachname der Frau mit dem des Gatten ersetzen"
+msgstr "Nachname der Frau mit dem des Ehemanns ersetzen"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 msgid "Wildcards"
@@ -15957,7 +15957,7 @@ msgstr "Eine Kopie der GEDCOM-Spezifikation kann von %s heruntergeladen werden."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
 msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr "Das Suchen nach verheirateten Frauen kann erleichtert werden, wenn die Datenbank nicht nur Geburtsnamen sondern auch Ehenamen enthält. Da nicht alle verheiratete Frauen den Nachnamen des Gatten nehmen, sollten Sie diese Option vielleicht nicht benutzen; Sie könnten dadurch falsche Daten in Ihre Datenbank einfügen."
+msgstr "Sie können die Suche nach verheirateten Frauen durch die Aufnahme ihres Ehenamens erleichtern. Allerdings nehmen nicht alle Frauen den Nachnamen des Ehemanns an, so dass Sie diese Option mit Vorsicht verwenden sollten, um keine falschen Informationen in Ihre Datenbank einzufügen."
 
 #: admin_site_upgrade.php:137
 msgid "You can re-enable these modules after the upgrade."
