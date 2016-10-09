@@ -161,8 +161,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 			</tbody>
 		</table>
 		<script>
-			persistant_toggle("show-relatives-facts", "tr.rela");
-			persistant_toggle("show-historical-facts", "tr.histo");
+			persistent_toggle("show-relatives-facts", "tr.rela");
+			persistent_toggle("show-historical-facts", "tr.histo");
 		</script>
 		<?php
 

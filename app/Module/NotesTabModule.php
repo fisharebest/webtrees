@@ -118,7 +118,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 		?>
 		</table>
 		<script>
-			persistant_toggle("show-level-2-notes", ".row_note2");
+			persistent_toggle("show-level-2-notes", ".row_note2");
 		</script>
 		<?php
 

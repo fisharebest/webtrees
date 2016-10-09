@@ -101,7 +101,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 			?>
 		</table>
 		<script>
-			persistant_toggle("show-level-2-sources", ".row_sour2");
+			persistent_toggle("show-level-2-sources", ".row_sour2");
 		</script>
 		<?php
 
