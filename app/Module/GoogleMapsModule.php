@@ -2840,7 +2840,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				Database::prepare("UPDATE `##placelocation` SET pl_place=?, pl_lati=?, pl_long=?, pl_zoom=?, pl_icon=? WHERE pl_id=?");
 
 			if ((Filter::post('LONG_CONTROL') == '') || (Filter::post('NEW_PLACE_LONG') == '') || (Filter::post('NEW_PLACE_LATI') == '')) {
-				$statement->execute(array(Filter::post('NEW_PLACE_NAME'), null, null, Filter::post('NEW_ZOOM_FACTOR'), Filter::post('icon'), $placeid));
+				$statement->execute(array(Filter::post('NEW_PLACE_NAME'), null, null, (int) Filter::post('NEW_ZOOM_FACTOR'), Filter::post('icon'), $placeid));
 			} else {
 				$statement->execute(array(Filter::post('NEW_PLACE_NAME'), Filter::post('LATI_CONTROL') . Filter::post('NEW_PLACE_LATI'), Filter::post('LONG_CONTROL') . Filter::post('NEW_PLACE_LONG'), Filter::post('NEW_ZOOM_FACTOR'), Filter::post('icon'), $placeid));
 			}
