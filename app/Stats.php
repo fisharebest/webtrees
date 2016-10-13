@@ -2340,7 +2340,7 @@ class Stats {
 			} else {
 				$age = $age . 'd';
 			}
-			$age = FunctionsDate::getAgeAtEvent($age, true);
+			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($person->canShow()) {
 				if ($type == 'list') {
 					$top10[] = "<li><a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")" . "</li>";
@@ -2419,7 +2419,7 @@ class Stats {
 			} else {
 				$age = $age . 'd';
 			}
-			$age = FunctionsDate::getAgeAtEvent($age, true);
+			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($type === 'list') {
 				$top10[] = "<li><a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")" . "</li>";
 			} else {
@@ -2490,7 +2490,7 @@ class Stats {
 				$age = $age . 'd';
 			}
 
-			return FunctionsDate::getAgeAtEvent($age, true);
+			return FunctionsDate::getAgeAtEvent($age);
 		} else {
 			return I18N::number($age / 365.25);
 		}
@@ -3140,7 +3140,7 @@ class Stats {
 				} else {
 					$age = $age . 'd';
 				}
-				$result = FunctionsDate::getAgeAtEvent($age, true);
+				$result = FunctionsDate::getAgeAtEvent($age);
 			} else {
 				$result = I18N::number((int) ($age / 365.25));
 			}
@@ -3251,7 +3251,7 @@ class Stats {
 			} else {
 				$age = $age . 'd';
 			}
-			$age = FunctionsDate::getAgeAtEvent($age, true);
+			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($type === 'age') {
 				return $age;
 			}
@@ -3348,7 +3348,7 @@ class Stats {
 			} else {
 				$age = $age . 'd';
 			}
-			$age = FunctionsDate::getAgeAtEvent($age, true);
+			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($family->canShow()) {
 				if ($type === 'list') {
 					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')' . "</li>";
@@ -3438,7 +3438,7 @@ class Stats {
 				} else {
 					$age = $age . 'd';
 				}
-				$result = FunctionsDate::getAgeAtEvent($age, true);
+				$result = FunctionsDate::getAgeAtEvent($age);
 			} else {
 				$result = (int) ($age / 365.25);
 			}
@@ -4550,7 +4550,7 @@ class Stats {
 			} else {
 				$age = $age . 'd';
 			}
-			$age = FunctionsDate::getAgeAtEvent($age, true);
+			$age = FunctionsDate::getAgeAtEvent($age);
 			if ($type == 'age') {
 				return $age;
 			}

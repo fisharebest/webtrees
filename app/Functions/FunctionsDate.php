@@ -26,11 +26,10 @@ class FunctionsDate {
 	 * Convert a GEDCOM age string to localized text.
 	 *
 	 * @param string $age_string
-	 * @param bool $show_years
 	 *
 	 * @return string
 	 */
-	public static function getAgeAtEvent($age_string, $show_years) {
+	public static function getAgeAtEvent($age_string) {
 		switch (strtoupper($age_string)) {
 		case 'CHILD':
 			return I18N::translate('Child');
@@ -43,14 +42,10 @@ class FunctionsDate {
 				array(
 					'/(\d+)([ymwd])/',
 				),
-				function ($match) use ($age_string, $show_years) {
+				function ($match) use ($age_string) {
 					switch ($match[2]) {
 					case 'y':
-						if ($show_years || preg_match('/[dm]/', $age_string)) {
-							return I18N::plural('%s year', '%s years', $match[1], I18N::digits($match[1]));
-						} else {
-							return I18N::digits($match[1]);
-						}
+						return I18N::plural('%s year', '%s years', $match[1], I18N::digits($match[1]));
 					case 'm':
 						return I18N::plural('%s month', '%s months', $match[1], I18N::digits($match[1]));
 					case 'w':
