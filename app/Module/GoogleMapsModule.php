@@ -35,7 +35,6 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Stats;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use PDO;
 
