@@ -168,7 +168,7 @@ if ($controller->record->canShow()) {
 	echo '<span class="header_age">';
 	if ($bdate->isOK() && !$controller->record->isDead()) {
 		// If living display age
-		echo GedcomTag::getLabelValue('AGE', FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($bdate, null), true), $controller->record, 'span');
+		echo GedcomTag::getLabelValue('AGE', FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($bdate, new Date(strtoupper(date('d M Y')))), true), $controller->record, 'span');
 	} elseif ($bdate->isOK() && $ddate->isOK()) {
 		// If dead, show age at death
 		echo GedcomTag::getLabelValue('AGE', FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($bdate, $ddate), false), $controller->record, 'span');

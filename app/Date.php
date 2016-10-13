@@ -491,7 +491,7 @@ class Date {
 			// If dates overlap, then can’t calculate age.
 			if (self::compare($d1, $d2)) {
 				return $d1->date1->getAge(true, $d2->minimumJulianDay(), true);
-			} elseif (self::compare($d1, $d2) == 0 && $d1->date1->minJD == $d2->minimumJulianDay()) {
+			} elseif (self::compare($d1, $d2) == 0 && $d1->minimumJulianDay() == $d2->minimumJulianDay()) {
 				return '0d';
 			} else {
 				return '';
