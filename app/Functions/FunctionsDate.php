@@ -42,7 +42,7 @@ class FunctionsDate {
 				array(
 					'/(\d+)([ymwd])/',
 				),
-				function ($match) use ($age_string) {
+				function ($match) {
 					switch ($match[2]) {
 					case 'y':
 						return I18N::plural('%s year', '%s years', $match[1], I18N::digits($match[1]));
