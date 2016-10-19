@@ -110,6 +110,38 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Test new child names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 */
+	public function testNewChildNamesWithDutchSpfx() {
+		$this->assertSame(
+			array('NAME' => '/\'t White/', 'SPFX' => '\'t', 'SURN' => 'White'),
+			$this->surname_tradition->newChildNames('John /\'t White/', 'Mary /van Black/', 'U')
+		);
+		$this->assertSame(
+			array('NAME' => '/’t White/', 'SPFX' => '’t', 'SURN' => 'White'),
+			$this->surname_tradition->newChildNames('John /’t White/', 'Mary /van Black/', 'U')
+		);
+	}
+
+	/**
+	 * Test new child names
+	 *
+	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
+	 */
+	public function testNewChildNamesWithMultipleDutchSpfx() {
+		$this->assertSame(
+			array('NAME' => '/van \'t White/', 'SPFX' => 'van \'t', 'SURN' => 'White'),
+			$this->surname_tradition->newChildNames('John /van \'t White/', 'Mary /van Black/', 'U')
+		);
+		$this->assertSame(
+			array('NAME' => '/van ’t White/', 'SPFX' => 'van ’t', 'SURN' => 'White'),
+			$this->surname_tradition->newChildNames('John /van ’t White/', 'Mary /van Black/', 'U')
+		);
+	}
+
+	/**
 	 * Test new father names
 	 *
 	 * @covers Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
