@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-10-17 08:32+0000\n"
+"PO-Revision-Date: 2016-10-19 18:52+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -854,7 +854,7 @@ msgstr "Eine Liste von Benutzern und Gästen, die gerade online sind."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Ein Medienobjekt ist ein Eintrag im Stammbaum, welcher Informationen über eine Mediendatei enthält. Diese Informationen können Titel, Urheberrechtshinweise, Transkripte, Datenschutzeinschränkungen etc. enthalten. Die Mediendatei, wie etwa ein Foto oder ein Video, kann lokal gespeichert werden (auf diesem Webserver) oder entfernt (auf einem anderen Webserver)."
+msgstr "Ein Medienobjekt ist ein Eintrag im Stammbaum, welcher Informationen über eine Mediendatei enthält. Diese Informationen können einen Titel, einen Urheberrechtshinweis, eine Abschrift, Datenschutzeinschränkungen etc. enthalten. Die Mediendatei, wie etwa ein Foto oder ein Video, kann lokal gespeichert werden (auf diesem Webserver) oder entfernt (auf einem anderen Webserver)."
 
 #: login.php:263
 #, php-format
@@ -1926,7 +1926,7 @@ msgstr "Eine alternative Möglichkeit, Diagramme angezeigt zu bekommen."
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:44
 msgid "An alternative way to enter census transcripts and link them to individuals."
-msgstr "Eine alternative Möglichkeit, um Volkszählungsdaten einzugeben und mit Personen zu verknüpfen."
+msgstr "Eine alternative Möglichkeit, um Volkszählungsabschriften einzugeben und mit Personen zu verknüpfen."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
@@ -3432,7 +3432,7 @@ msgstr "Census Ort"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:143
 msgid "Census transcript"
-msgstr "Volkszählungstranskription"
+msgstr "Volkszählungsabschrift"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6714
@@ -7032,7 +7032,7 @@ msgstr "Er wurde eingeäschert"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:64
 #: modules_v3/GEDFact_assistant/census/census-edit.php:71
 msgid "Head of household"
-msgstr "Familienhaupt"
+msgstr "Haushaltungsvorstand"
 
 #. I18N: gedcom tag HEAD
 #: app/GedcomTag.php:512
@@ -14795,7 +14795,7 @@ msgstr "Um neue Forschungsaufgaben zu erstellen, müssen Sie zunächst eine „F
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "Um die Kompatibilität mit anderen Genealogieanwendungen zu gewährleisten, sollten Notizen, Text und Transkripte als einfache, unformatierte Text aufgenommen werden. Allerdings ist eine Formatierung oft wünschenswert, um eine Präsentation oder das Verständnis zu unterstützen."
+msgstr "Um die Kompatibilität mit anderen Genealogieanwendungen zu gewährleisten, sollten Notizen, Texte und Abschriften als einfacher, unformatierter Text aufgenommen werden. Allerdings ist eine Formatierung oft wünschenswert, um die Präsentation, das Verständnis etc. zu unterstützen."
 
 #: admin_site_upgrade.php:340
 #, php-format
