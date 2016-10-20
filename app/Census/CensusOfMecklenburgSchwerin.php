@@ -18,20 +18,29 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class Census {
+class CensusOfMecklenburgSchwerin extends Census implements CensusPlaceInterface {
 	/**
-	 * @return CensusPlaceInterface[]
+	 * All available censuses for this census place.
+	 *
+	 * @return CensusInterface[]
 	 */
-	public static function allCensusPlaces() {
+	public function allCensusDates() {
 		return array(
-			new CensusOfCzechRepublic,
-			new CensusOfDenmark,
-			new CensusOfEngland,
-			new CensusOfFrance,
-			new CensusOfMecklenburgSchwerin,
-			new CensusOfScotland,
-			new CensusOfUnitedStates,
-			new CensusOfWales,
+			new CensusOfMecklenburgSchwerin1819(),
+			new CensusOfMecklenburgSchwerin1867(),
+			new CensusOfMecklenburgSchwerinNL1867(),			
+//			new CensusOfMecklenburgSchwerin1890(),
+//			new CensusOfMecklenburgSchwerin1900(),
+//			new CensusOfMecklenburgSchwerin1919(),
 		);
+	}
+
+	/**
+	 * Where did this census occur, in GEDCOM format.
+	 *
+	 * @return string
+	 */
+	public function censusPlace() {
+		return 'Mecklenburg-Schwerin';
 	}
 }
