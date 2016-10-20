@@ -1,4 +1,5 @@
 <?php
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2016 webtrees development team
@@ -15,23 +16,30 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Mockery;
+
 /**
- * Definitions for a census
+ * Test harness for the class CensusColumnRelationToHead
  */
-class Census {
+class CensusColumnRelationToHeadGermanTest extends \PHPUnit_Framework_TestCase {
 	/**
-	 * @return CensusPlaceInterface[]
+	 * Delete mock objects
 	 */
-	public static function allCensusPlaces() {
-		return array(
-			new CensusOfCzechRepublic,
-			new CensusOfDenmark,
-			new CensusOfDeutschland,
-			new CensusOfEngland,
-			new CensusOfFrance,
-			new CensusOfScotland,
-			new CensusOfUnitedStates,
-			new CensusOfWales,
-		);
+	public function tearDown() {
+		Mockery::close();
+	}
+	
+	/**
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnRelationToHead
+	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 */
+	public function testNull() {
+		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+		
+		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+		
+		$column = new CensusColumnRelationToHeadGerman($census, '', '');
+		
+		$this->assertSame('', $column->generate($individual));
 	}
 }

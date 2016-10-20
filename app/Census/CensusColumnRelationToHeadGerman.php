@@ -15,23 +15,28 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Individual;
+
 /**
- * Definitions for a census
+ * Relationshiop to head of household.
  */
-class Census {
+class CensusColumnRelationToHeadGerman extends AbstractCensusColumn implements CensusColumnInterface {
 	/**
-	 * @return CensusPlaceInterface[]
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param Individual      $individual
+	 * @param Individual|null $head
+	 *
+	 * @return string
 	 */
-	public static function allCensusPlaces() {
-		return array(
-			new CensusOfCzechRepublic,
-			new CensusOfDenmark,
-			new CensusOfDeutschland,
-			new CensusOfEngland,
-			new CensusOfFrance,
-			new CensusOfScotland,
-			new CensusOfUnitedStates,
-			new CensusOfWales,
-		);
+	public function generate(Individual $individual, Individual $head = null) {
+		if ($head === null) {
+			return '';
+		} elseif ($individual == $head) {
+			return 'Haushaltungsvorstand';
+		} else {
+			return Functions::getCloseRelationshipName($head, $individual);
+		}
 	}
 }
