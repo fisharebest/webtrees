@@ -145,12 +145,23 @@ class Media extends GedcomRecord {
 		if ($this->isExternal() || !$this->file) {
 			// External image, or (in the case of corrupt GEDCOM data) no image at all
 			return $this->file;
-		} elseif ($which == 'main') {
+		}
+
+		$real_path = realpath(WT_DATA_DIR . $MEDIA_DIRECTORY);
+
+		if (!$real_path) {
+			Log::addMediaLog('Unable to retrieve the path to ' . $this->file . ' for ' . $this->getXref());
+			return $this->file; // can't do anything else
+		}
+
+		$real_path .= DIRECTORY_SEPARATOR;
+
+		if ($which == 'main') {
 			// Main image
-			return WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
+			return $real_path . $this->file;
 		} else {
 			// Thumbnail
-			$file = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $this->file;
+			$file = $real_path . 'thumbs' . DIRECTORY_SEPARATOR . $this->file;
 			// Does the thumbnail exist?
 			if (file_exists($file)) {
 				return $file;
@@ -161,13 +172,17 @@ class Media extends GedcomRecord {
 				return $user_thumb;
 			}
 			// Does the folder exist for this thumbnail?
-			if (!is_dir(dirname($file)) && !File::mkdir(dirname($file))) {
-				Log::addMediaLog('The folder ' . dirname($file) . ' could not be created for ' . $this->getXref());
-
-				return $file;
+			$folder = dirname($file);
+			if (!is_dir($folder)) {
+				if (File::mkdir($folder)) {
+					Log::addMediaLog('The folder ' . $folder . ' was created for ' . $this->getXref());
+				} else {
+					Log::addMediaLog('The folder ' . $folder . ' could not be created for ' . $this->getXref());
+					return $file;
+				}
 			}
 			// Is there a corresponding main image?
-			$main_file = WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
+			$main_file = $real_path . $this->file;
 			if (!file_exists($main_file)) {
 				Log::addMediaLog('The file ' . $main_file . ' does not exist for ' . $this->getXref());
 
@@ -183,7 +198,7 @@ class Media extends GedcomRecord {
 						copy($main_file, $file);
 						Log::addMediaLog('Thumbnail created for ' . $main_file . ' (copy of main image)');
 					} catch (\ErrorException $ex) {
-						Log::addMediaLog('Thumbnail could not be created for ' . $main_file . ' (copy of main image)');
+						Log::addMediaLog('Thumbnail could not be created for ' . $main_file . ' (copy of main image) (' . $ex . ')');
 					}
 				} else {
 					if (FunctionsMedia::hasMemoryForImage($main_file)) {
