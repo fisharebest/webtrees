@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-10-02 14:21+0000\n"
+"PO-Revision-Date: 2016-10-25 08:33+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -1777,7 +1777,7 @@ msgstr "Věk v roce prvního sňatku"
 #: app/Functions/FunctionsPrintLists.php:1002 statistics.php:260
 #: statistics.php:545 statisticsplot.php:1232
 msgid "Age in year of marriage"
-msgstr "Věk při vdávání/ženění"
+msgstr "Věk v roce sňatku"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1311
@@ -3917,7 +3917,7 @@ msgstr "Komentář"
 #. I18N: gedcom tag _COML
 #: app/GedcomTag.php:1249
 msgid "Common law marriage"
-msgstr "Civilní sňatek"
+msgstr "Sňatek podle obecného práva"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:38
@@ -8721,7 +8721,7 @@ msgstr "Oznámení sňatku"
 #. I18N: gedcom tag MARL
 #: app/GedcomTag.php:572
 msgid "Marriage license"
-msgstr "Manželská license"
+msgstr "Povolení k sňatku"
 
 #: app/GedcomTag.php:1634
 msgid "Marriage of a brother"
@@ -8742,7 +8742,7 @@ msgstr "Sňatek otce"
 
 #: app/GedcomTag.php:1587 app/GedcomTag.php:1596 app/GedcomTag.php:1605
 msgid "Marriage of a grandchild"
-msgstr "Sňatek vnuka/vnučky"
+msgstr "Sňatek vnoučete"
 
 #: app/GedcomTag.php:1585
 msgid "Marriage of a granddaughter"
@@ -8822,7 +8822,7 @@ msgstr "Místa uzavření sňatků"
 #. I18N: gedcom tag MARS
 #: app/GedcomTag.php:592
 msgid "Marriage settlement"
-msgstr "Manželská dohoda"
+msgstr "Vypořádání manželství"
 
 #. I18N: gedcom tag _STAT
 #: app/GedcomTag.php:1735
