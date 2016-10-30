@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-09-30 17:01+0000\n"
+"PO-Revision-Date: 2016-10-19 18:52+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -65,7 +65,7 @@ msgstr "#%s"
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s hat einen %3$s Verweis auf %4$s."
+msgstr "%1$s %2$s hat eine %3$s-Verknüpfung zu %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -107,7 +107,7 @@ msgstr "%1$s gibt es nicht. Ist vielleicht %2$s gemeint?"
 #: admin_trees_check.php:204
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr "%1$s besitzt keinen Rückverweis auf %2$s."
+msgstr "%1$s hat keine Verknüpfung zurück zu %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:312 admin_site_upgrade.php:396
@@ -766,7 +766,7 @@ msgstr "Ein Kind kann in mehreren Elternbeziehungen stehen. Diese Beziehung kann
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr "Oft vorkommende Fehler sind mehrfache Verbindungen zwischen den selben Datensätzen, beispielsweise ein Kind, das mehr als einmal in der selben Familie eingetragen ist."
+msgstr "Ein häufiger Fehler ist, mehrfache Verknüpfungen zum selben Datensatz zu haben, wie zum Beispiel ein Kind mehr als einmal in einem Familien-Datensatz aufzuführen."
 
 #: setup.php:369
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
@@ -815,7 +815,7 @@ msgstr "Eine Liste der kürzlich aktualisierten Datensätze."
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:44
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr "Eine Liste von Aufgaben und Aktivitäten zu diesem Stammbaum."
+msgstr "Eine Liste der Aufgaben und Aktivitäten, die mit dem Stammbaum verknüpft sind."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
@@ -854,7 +854,7 @@ msgstr "Eine Liste von Benutzern und Gästen, die gerade online sind."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Ein Medienobjekt ist ein Eintrag im Stammbaum, welcher Informationen über eine Mediendatei enthält. Diese Informationen können Titel, Urheberrechtshinweise, Transkripte, Datenschutzeinschränkungen etc. enthalten. Die Mediendatei, wie etwa ein Foto oder ein Video, kann lokal gespeichert werden (auf diesem Webserver) oder entfernt (auf einem anderen Webserver)."
+msgstr "Ein Medienobjekt ist ein Eintrag im Stammbaum, welcher Informationen über eine Mediendatei enthält. Diese Informationen können einen Titel, einen Urheberrechtshinweis, eine Abschrift, Datenschutzeinschränkungen etc. enthalten. Die Mediendatei, wie etwa ein Foto oder ein Video, kann lokal gespeichert werden (auf diesem Webserver) oder entfernt (auf einem anderen Webserver)."
 
 #: login.php:263
 #, php-format
@@ -1024,7 +1024,7 @@ msgstr "Ein Reiter zur Anzeige der Tatsachen und Ereignisse einer Person."
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Dieser Reiter zeigt die zu dieser Person verknüpften Medienobjekte."
+msgstr "Ein Reiter, der die mit einer Person verknüpften Medienobjekte zeigt."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
@@ -1034,7 +1034,7 @@ msgstr "Ein Reiter zum Anzeigen von Notizen zu einer Person."
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr "Ein Reiter zur Anzeige von Quellen, die mit einzelnen Personen verbunden sind."
+msgstr "Ein Reiter, der die mit einer Person verknüpften Quellen zeigt."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
@@ -1601,7 +1601,7 @@ msgstr "Adoption eines Bruders"
 
 #: app/GedcomTag.php:876
 msgid "Adoption of a child"
-msgstr "Kind: Adoption"
+msgstr "Adoption eines Kindes"
 
 #: app/GedcomTag.php:874
 msgid "Adoption of a daughter"
@@ -1609,7 +1609,7 @@ msgstr "Adoption einer Tochter"
 
 #: app/GedcomTag.php:885 app/GedcomTag.php:894 app/GedcomTag.php:903
 msgid "Adoption of a grandchild"
-msgstr "Enkel: Adoption"
+msgstr "Adoption eines Enkels"
 
 #: app/GedcomTag.php:883
 msgid "Adoption of a granddaughter"
@@ -1645,7 +1645,7 @@ msgstr "Adoption eines Halbbruders"
 
 #: app/GedcomTag.php:912
 msgid "Adoption of a half-sibling"
-msgstr "Adoption eines Halbgeschwisterkinds"
+msgstr "Adoption eines Halbgeschwisters"
 
 #: app/GedcomTag.php:910
 msgid "Adoption of a half-sister"
@@ -1653,7 +1653,7 @@ msgstr "Adoption einer Halbschwester"
 
 #: app/GedcomTag.php:921
 msgid "Adoption of a sibling"
-msgstr "Adoption eines Geschwisterkinds"
+msgstr "Adoption eines Geschwisters"
 
 #: app/GedcomTag.php:919
 msgid "Adoption of a sister"
@@ -1700,7 +1700,7 @@ msgstr "Nach dem Erstellen des Stammbaum, sind Sie in der Lage, Daten aus einer 
 
 #: login.php:259
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr "Nachdem Sie sich angemeldet haben, ändern Sie bitte Ihr Passwort. Dazu klicken Sie im «Mein webtrees» Menü auf «Eigene Benutzerdaten bearbeiten» und tragen dort in beiden Passwortfeldern Ihr gewünschtes Passwort ein."
+msgstr "Nachdem Sie sich angemeldet haben, ändern Sie bitte Ihr Passwort. Dazu wählen Sie \"Mein Konto\" im \"Meine Seiten\"-Menü und tragen dort in beide Passwortfelder Ihr gewünschtes Passwort ein."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
@@ -1926,7 +1926,7 @@ msgstr "Eine alternative Möglichkeit, Diagramme angezeigt zu bekommen."
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:44
 msgid "An alternative way to enter census transcripts and link them to individuals."
-msgstr "Alternative Eingabemöglichkeit, um Volkszählungsdaten mit Einzelpersonen zu verknüpfen."
+msgstr "Eine alternative Möglichkeit, um Volkszählungsabschriften einzugeben und mit Personen zu verknüpfen."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
@@ -2161,7 +2161,7 @@ msgstr "Möchten Sie wirklich alle Änderungen an diesem Stammbaum verwerfen?"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
-msgstr "Sind Sie sicher, dass Sie die Verknüpfungen zu diesem Medienobjekt entfernen wollen?"
+msgstr "Sind Sie sicher, dass Sie Verknüpfungen zu diesem Medienobjekt entfernen möchten?"
 
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
@@ -2531,7 +2531,7 @@ msgstr "Taufe eines Halbbruders"
 
 #: app/GedcomTag.php:1016
 msgid "Baptism of a half-sibling"
-msgstr "Taufe eines Halbgeschwisterkinds"
+msgstr "Taufe eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1014
 msgid "Baptism of a half-sister"
@@ -2539,7 +2539,7 @@ msgstr "Taufe einer Halbschwester"
 
 #: app/GedcomTag.php:1025
 msgid "Baptism of a sibling"
-msgstr "Taufe eines Geschwisterkinds"
+msgstr "Taufe eines Geschwisters"
 
 #: app/GedcomTag.php:1023
 msgid "Baptism of a sister"
@@ -2853,7 +2853,7 @@ msgstr "Geburt eines Halbbruders"
 
 #: app/GedcomTag.php:1074
 msgid "Birth of a half-sibling"
-msgstr "Geburt eines Halbgeschwisterkinds"
+msgstr "Geburt eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1072
 msgid "Birth of a half-sister"
@@ -2861,7 +2861,7 @@ msgstr "Geburt einer Halbschwester"
 
 #: app/GedcomTag.php:1083
 msgid "Birth of a sibling"
-msgstr "Geburt eines Geschwisterkinds"
+msgstr "Geburt eines Geschwisters"
 
 #: app/GedcomTag.php:1081
 msgid "Birth of a sister"
@@ -3174,7 +3174,7 @@ msgstr "Beerdigung eines Halbbruders"
 
 #: app/GedcomTag.php:1163
 msgid "Burial of a half-sibling"
-msgstr "Beerdigung eiens Halbgeschwisterkinds"
+msgstr "Beerdigung eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1161
 msgid "Burial of a half-sister"
@@ -3182,7 +3182,7 @@ msgstr "Beerdigung einer Halbschwester"
 
 #: app/GedcomTag.php:1186
 msgid "Burial of a husband"
-msgstr "Beerdigug eines Ehemanns"
+msgstr "Beerdigung eines Ehemanns"
 
 #: app/GedcomTag.php:1150
 msgid "Burial of a maternal grandfather"
@@ -3218,7 +3218,7 @@ msgstr "Beerdigung eines väterlichen Großelternteils"
 
 #: app/GedcomTag.php:1181
 msgid "Burial of a sibling"
-msgstr "Beerdigung eines Geschwisterkinds"
+msgstr "Beerdigung eines Geschwisters"
 
 #: app/GedcomTag.php:1179
 msgid "Burial of a sister"
@@ -3230,7 +3230,7 @@ msgstr "Beerdigung eines Sohns"
 
 #: app/GedcomTag.php:1190
 msgid "Burial of a spouse"
-msgstr "Beerdigung eines Ehegattens"
+msgstr "Beerdigung eines Ehepartners"
 
 #: app/GedcomTag.php:1188
 msgid "Burial of a wife"
@@ -3432,7 +3432,7 @@ msgstr "Census Ort"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:143
 msgid "Census transcript"
-msgstr "Volkszählungstranskription"
+msgstr "Volkszählungsabschrift"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6714
@@ -3730,7 +3730,7 @@ msgstr "Taufe eines Halbbruders"
 
 #: app/GedcomTag.php:1235
 msgid "Christening of a half-sibling"
-msgstr "Taufe eines Halbgeschwisterkinds"
+msgstr "Taufe eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1233
 msgid "Christening of a half-sister"
@@ -3738,7 +3738,7 @@ msgstr "Taufe einer Halbschwester"
 
 #: app/GedcomTag.php:1244
 msgid "Christening of a sibling"
-msgstr "Taufe eines Geschwisterkinds"
+msgstr "Taufe eines Geschwisters"
 
 #: app/GedcomTag.php:1242
 msgid "Christening of a sister"
@@ -4211,7 +4211,7 @@ msgstr "Einäscherung eines Halbbruders"
 
 #: app/GedcomTag.php:1320
 msgid "Cremation of a half-sibling"
-msgstr "Einäscherung eines Halbgeschwisterkinds"
+msgstr "Einäscherung eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1318
 msgid "Cremation of a half-sister"
@@ -4247,7 +4247,7 @@ msgstr "Einäscherung einer väterlichen Großmutter"
 
 #: app/GedcomTag.php:1338
 msgid "Cremation of a sibling"
-msgstr "Einäscherung eines Geschwisterkinds"
+msgstr "Einäscherung eines Geschwisters"
 
 #: app/GedcomTag.php:1336
 msgid "Cremation of a sister"
@@ -4259,7 +4259,7 @@ msgstr "Einäscherung eines Sohns"
 
 #: app/GedcomTag.php:1347
 msgid "Cremation of a spouse"
-msgstr "Einäscherung eines Ehegattens"
+msgstr "Einäscherung eines Ehepartners"
 
 #: app/GedcomTag.php:1345
 msgid "Cremation of a wife"
@@ -4785,7 +4785,7 @@ msgstr "Tod eines Halbbruders"
 
 #: app/GedcomTag.php:1423
 msgid "Death of a half-sibling"
-msgstr "Tod eines Halbgeschwisterkinds"
+msgstr "Tod eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1421
 msgid "Death of a half-sister"
@@ -4821,7 +4821,7 @@ msgstr "Tod einer väterlichen Großmutter"
 
 #: app/GedcomTag.php:1441
 msgid "Death of a sibling"
-msgstr "Tod eines Geschwisterkinds"
+msgstr "Tod eines Geschwisters"
 
 #: app/GedcomTag.php:1439
 msgid "Death of a sister"
@@ -4833,7 +4833,7 @@ msgstr "Tod eines Sohns"
 
 #: app/GedcomTag.php:1450
 msgid "Death of a spouse"
-msgstr "Tod eines Ehegattens"
+msgstr "Tod eines Ehepartners"
 
 #: app/GedcomTag.php:1448
 msgid "Death of a wife"
@@ -5023,7 +5023,7 @@ msgstr "Lösche deinen Account"
 
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "Das Löschen der Familie wird jede Verbindung der Personen zueinander lösen. Alle ehemalige Familienmitglieder bleiben als freistehende Personen ohne Familienverbund erhalten. Möchten Sie diese Familie wirklich löschen?"
+msgstr "Das Löschen der Familie wird die Verknüpfungen aller Personen von einander aufheben, aber die Personen selbst bleiben erhalten. Sind Sie sicher, dass Sie diese Familie löschen möchten?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6722
@@ -6410,7 +6410,7 @@ msgstr "Verzeichnisname auf dem Server"
 
 #: login.php:341
 msgid "Follow this link to verify your email address."
-msgstr "Bitte klicken Sie nun auf den folgenden Link und geben Sie die dort geforderten Daten ein, um Ihre Anfrage und Ihre E-Mail-Adresse zu bestätigen."
+msgstr "Folgen Sie diesem Link, um Ihre E-Mail-Adresse zu bestätigen."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -6438,7 +6438,7 @@ msgstr "Zum Beispiel, wenn die GEDCOM-Datei %1$s enthält und webtrees %2$s im M
 
 #: admin_users.php:600
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr "Wenn Sie zum Beispiel eine Stufenweite von 2 angeben, wird diese Person in der Lage sein, ihre Enkel (Kind, Kind), ihre Tante (Eltern, Geschwister), ihre Stieftochter (Ehegatte, Kind), nicht aber ihre Cousine (Eltern, Geschwister, Kinder) sehen."
+msgstr "Wenn Sie zum Beispiel eine Stufenweite von 2 angeben, wird diese Person in der Lage sein, ihre Enkel (Kind, Kind), ihre Tante (Eltern, Geschwister), ihre Stieftochter (Ehepartner, Kind), nicht aber ihre Cousine (Eltern, Geschwister, Kinder) zu sehen."
 
 #: app/Theme/AbstractTheme.php:296
 #, php-format
@@ -7032,7 +7032,7 @@ msgstr "Er wurde eingeäschert"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:64
 #: modules_v3/GEDFact_assistant/census/census-edit.php:71
 msgid "Head of household"
-msgstr "Familienhaupt"
+msgstr "Haushaltungsvorstand"
 
 #. I18N: gedcom tag HEAD
 #: app/GedcomTag.php:512
@@ -7323,7 +7323,7 @@ msgstr "Wenn Besucher den Stammbaum nicht sehen dürfen, werden sie sich keinen 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1023
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
-msgstr "Falls Sie besorgt sind, dass Benutzer ungeeignete Bilder hochladen, können Sie das Hochladen von Medien auf Verwalter beschränken."
+msgstr "Wenn Sie befürchten, dass Benutzer ungeeignete Bilder hochladen, können Sie das Hochladen von Medien auf Verwalter beschränken."
 
 #: site-unavailable.php:82
 msgid "If you are the website administrator, you should check that:"
@@ -7892,7 +7892,7 @@ msgstr "Behalten"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:126
 msgid "Keep link in list"
-msgstr "Verbindung behalten"
+msgstr "Verknüpfung behalten"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:275
@@ -8246,31 +8246,31 @@ msgstr "Lima, Peru"
 #. I18N: You need to:
 #: login.php:574
 msgid "Link the user account to an individual."
-msgstr "Verknüpfen Sie das Benutzerprofil mit einer Person."
+msgstr "Verknüpfen Sie das Benutzerkonto mit einer Person."
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:983
 #: edit_interface.php:1043
 msgid "Link this individual to an existing family as a child"
-msgstr "Diese Person als Kind mit einer existierenden Familie verbinden"
+msgstr "Diese Person als Kind mit einer existierenden Familie verknüpfen"
 
 #: admin_media.php:531 app/Controller/MediaController.php:57
 #: app/Controller/MediaController.php:127 app/Module/AlbumModule.php:178
 msgid "Link this media object to a family"
-msgstr "Verlinke dieses Medienobjekt mit einer Familie"
+msgstr "Dieses Medienobjekt mit einer Familie verknüpfen"
 
 #: admin_media.php:532 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:130 app/Module/AlbumModule.php:184
 msgid "Link this media object to a source"
-msgstr "Verlinke dieses Medienobjekt mit einer Quelle"
+msgstr "Dieses Medienobjekt mit einer Quelle verknüpfen"
 
 #: admin_media.php:530 app/Controller/MediaController.php:53
 #: app/Controller/MediaController.php:124 app/Module/AlbumModule.php:172
 msgid "Link this media object to an individual"
-msgstr "Verlinke dieses Medienobjekt mit einer Person"
+msgstr "Dieses Medienobjekt mit einer Person verknüpfen"
 
 #: admin_users.php:594
 msgid "Link this user to an individual in the family tree."
-msgstr "Diesen Benutzer mit einer Person im Stammbaum verbinden."
+msgstr "Diesen Benutzer mit einer Person im Stammbaum verknüpfen."
 
 #: app/Controller/FamilyController.php:165 app/Module/AlbumModule.php:103
 #: app/Module/AlbumModule.php:104 app/Module/CensusAssistantModule.php:234
@@ -8283,7 +8283,7 @@ msgstr "Mit einem vorhandenen Medienobjekt verknüpfen"
 #. I18N: gedcom tag _DBID
 #: app/GedcomTag.php:1352
 msgid "Linked database ID"
-msgstr "ID der fremden Datenbank"
+msgstr "Verknüpfte Datenbank-ID"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:97
 msgid "Links"
@@ -8432,7 +8432,7 @@ msgstr "Adressat"
 
 #: app/Functions/FunctionsEdit.php:249
 msgid "Mailto link"
-msgstr "E-Mail"
+msgstr "Mailto-Link"
 
 #: index_edit.php:298
 msgid "Main section blocks"
@@ -8741,7 +8741,7 @@ msgstr "Heirat eines Halbbruders"
 
 #: app/GedcomTag.php:1614
 msgid "Marriage of a half-sibling"
-msgstr "Heirat eines Halbgeschwisterkinds"
+msgstr "Heirat eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1612
 msgid "Marriage of a half-sister"
@@ -8759,7 +8759,7 @@ msgstr "Heirat eines Elternteils"
 
 #: app/GedcomTag.php:1638
 msgid "Marriage of a sibling"
-msgstr "Heirat eines Geschwisterkinds"
+msgstr "Heirat eines Geschwisters"
 
 #: app/GedcomTag.php:1636
 msgid "Marriage of a sister"
@@ -9852,7 +9852,7 @@ msgstr "Es kam keine Datei auf dem Server an. Bitte erneut hochladen."
 
 #: relationship.php:223
 msgid "No link between the two individuals could be found."
-msgstr "Keine Verbindung zwischen den beiden Personen gefunden."
+msgstr "Es wurde keine Verknüpfung zwischen den beiden Personen gefunden."
 
 #: app/Module/GoogleMapsModule.php:183
 msgid "No map data exists for this individual"
@@ -10014,7 +10014,7 @@ msgstr "Notiz"
 
 #: help_text.php:261
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr "Bitte beachten: Wenn ein Benutzerkonto an einen Datensatz geknüpft ist, so hat der Benutzer immer die Möglichkeit diesen zu sehen."
+msgstr "Bitte beachten: Wenn ein Benutzerkonto mit einem Datensatz verknüpft ist, dann wird dieser Benutzer diesen Datensatz auch immer ansehen können."
 
 #: admin_users.php:601
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
@@ -10866,7 +10866,7 @@ msgstr "Orte in %s"
 
 #: help_text.php:253
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "Orte sollten gemäß den Genealogie-Standards eingegeben werden. In der Genealogie werden Orte mit den spezifischsten Ortsinformationen am Anfang und bis hin zu den allgemeinsten Informationen am Ende aufgezeichnet, wobei Kommas die verschiedenen Ebenen voneinander trennen. Die Ebene, auf der Sie Ortsinformationen erfassen, sollten staatliche oder kirchliche Einheiten widerspiegeln, wo die Personenstandsbücher für diesen Ort aufbewahrt werden.<br><br>Zum Beispiel würde ein Ort wie Salt Lake City als „Salt Lake City, Salt Lake, Utah, USA“ eingegeben werden.<br><br>Betrachten wir jeden Teil dieses Ortes. Der erste Teil, „Salt Lake City“, ist die Stadt oder Gemeinde, wo das Ereignis stattfand. In einigen Ländern kann es Gemeinden oder Bezirke in einer Stadt geben, die ebenfalls zu beachten sind. In diesem Fall sollten diese vor der Stadt stehen. Der nächste Teil, „Salt Lake“, ist der Kreis. „Utah“ ist das Bundesland und „USA“ das Land. Es ist wichtig, dass Sie jeden Teil des Ortes zu benennen, da genealogische Aufzeichnungen von den Regierungsbehörden auf jeder Ebene geführt werden.<br><br>Wenn ein Teil der Ortsbeschreibung unbekannt ist, sollten Sie Leerzeichen zwischen den Kommas lassen. Nehmen wir im obigen Beispiel an, Sie wüssten den Landkreis für Salt Lake City nicht, dann sollten Sie es so aufzeichnen: „Salt Lake City, , Utah, USA“. Angenommen, Sie wissen nur, dass ein Individuum in Utah geboren wurde. Sie würden die Informationen wie folgt eingeben „ , , Utah, USA“.<br><br>Sie können den Link <b>Orte suchen</ b> verwenden, um Orte, die bereits in der Datenbank sind, aufzufinden."
+msgstr "Orte sollten gemäß den Genealogie-Standards eingegeben werden. In der Genealogie werden Orte mit den spezifischsten Ortsinformationen am Anfang und bis hin zu den allgemeinsten Informationen am Ende aufgezeichnet, wobei Kommas die verschiedenen Ebenen voneinander trennen. Die Ebene, auf der Sie Ortsinformationen erfassen, sollten staatliche oder kirchliche Einheiten widerspiegeln, wo die Personenstandsbücher für diesen Ort aufbewahrt werden.<br><br>Zum Beispiel würde ein Ort wie Salt Lake City als „Salt Lake City, Salt Lake, Utah, USA“ eingegeben werden.<br><br>Betrachten wir jeden Teil dieses Ortes. Der erste Teil, „Salt Lake City“, ist die Stadt oder Gemeinde, wo das Ereignis stattfand. In einigen Ländern kann es Gemeinden oder Bezirke in einer Stadt geben, die ebenfalls zu beachten sind. In diesem Fall sollten diese vor der Stadt stehen. Der nächste Teil, „Salt Lake“, ist der Kreis. „Utah“ ist das Bundesland und „USA“ das Land. Es ist wichtig, dass Sie jeden Teil des Ortes zu benennen, da genealogische Aufzeichnungen von den Regierungsbehörden auf jeder Ebene geführt werden.<br><br>Wenn ein Teil der Ortsbeschreibung unbekannt ist, sollten Sie Leerzeichen zwischen den Kommas lassen. Nehmen wir im obigen Beispiel an, Sie wüssten den Landkreis für Salt Lake City nicht, dann sollten Sie es so aufzeichnen: „Salt Lake City, , Utah, USA“. Angenommen, Sie wissen nur, dass ein Individuum in Utah geboren wurde. Sie würden die Informationen wie folgt eingeben „ , , Utah, USA“.<br><br>Sie können die Verknüpfung <b>Orte suchen</ b> verwenden, um Orte zu finden, die bereits in der Datenbank vorhanden sind."
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:98
 #: app/Theme/FabTheme.php:114 app/Theme/MinimalTheme.php:111
@@ -11496,7 +11496,7 @@ msgstr "Löschen"
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:30
 msgid "Remove duplicate links"
-msgstr "Doppelte Verknüpfungen entfermen"
+msgstr "Doppelte Verknüpfungen entfernen"
 
 #: app/Module/GoogleMapsModule.php:540 app/Module/GoogleMapsModule.php:543
 #: app/Module/GoogleMapsModule.php:546 app/Module/GoogleMapsModule.php:3398
@@ -11509,7 +11509,7 @@ msgstr "Person entfernen"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:127
 msgid "Remove link from list"
-msgstr "Verbindung löschen"
+msgstr "Verknüpfung aus der Liste entfernen"
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:288
@@ -12413,7 +12413,7 @@ msgstr "Zeigen"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1031
 msgid "Show a download link in the media viewer"
-msgstr "Eine Download-Verknüpfung im Medienbetrachter anzeigen"
+msgstr "Einen Download-Link im Medienbetrachter anzeigen"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:499
@@ -12434,7 +12434,7 @@ msgstr "Zeige alle Quellen"
 
 #: app/Module/InteractiveTree/TreeView.php:62
 msgid "Show all spouses and ancestors"
-msgstr "Zeige alle Ehegatten und Vorfahren"
+msgstr "Zeige alle Ehepartner und Vorfahren"
 
 #: find.php:528
 msgid "Show all tags"
@@ -13532,7 +13532,7 @@ msgstr "Der PhpGedView zu webtrees-Migrationsassistent unterstützt Administrato
 #: admin_users.php:101
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr "Der Verwalter von webtrees bei %s hat Ihren Zugang genehmigt. Sie können sich jetzt unter dem folgenden Link anmelden: %s"
+msgstr "Der Verwalter der webtrees-Webseite %s hat Ihre Anfrage für ein Benutzerkonto genehmigt. Sie können sich jetzt unter dem folgenden Link anmelden: %s"
 
 #: login.php:615
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
@@ -13734,13 +13734,13 @@ msgstr "Die zu kontaktierende Person, wenn jemand Fragen zu den genealogischen D
 #: app/Controller/GedcomRecordController.php:65
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "Die Beziehung zwischen „%1$s“ und „%2$s“ wurde gelöscht."
+msgstr "Die Verknüpfung zwischen „%1$s“ und „%2$s“ wurde gelöscht."
 
 #. I18N: The placeholders are the names of individuals, sources, etc.
 #: admin_site_merge.php:113
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "Die Verlinkung von „%1$s“ nach „%2$s“ ist aktualisiert worden."
+msgstr "Die Verknüpfung zwischen „%1$s“ und „%2$s“ wurde aktualisiert."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -14198,7 +14198,7 @@ msgstr "Dieser Stammbaum wurde zuletzt am %s aktualisiert."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-msgstr "Diese Mediendatei ist mit einem anderen Stammbaum auf diesem Server verbunden. Sie kann nicht gelöscht, verschoben oder umbenannt werden, bis diese Verknüpfung gelöscht wurden."
+msgstr "Diese Mediendatei ist mit einem anderen Stammbaum auf diesem Server verknüpft. Sie kann nicht gelöscht, verschoben oder umbenannt werden, bis diese Verknüpfung gelöscht wurde."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:179
@@ -14275,7 +14275,7 @@ msgstr "Dies ist eine Komma-getrennte Liste von GEDCOM Ereignis-Tags die in dem 
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
-msgstr "Dies ist ein Link zu Ihrem eigenen Datensatz im Stammbaum. Falls dies die falsche Person ist, kontaktieren Sie bitte den Administrator."
+msgstr "Dies ist ein Verknüpfung zu Ihrem eigenen Datensatz im Stammbaum. Falls dies die falsche Person ist, kontaktieren Sie bitte den Verwalter."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1329
@@ -14403,7 +14403,7 @@ msgstr "Dieses Medienobjekt wurde geändert. Sie sollten die Änderung prüfen u
 
 #: admin_media.php:570 find.php:634
 msgid "This media object is not linked to any other record."
-msgstr "Dieses Medienobjekt ist mit keinem Datensatz verbunden."
+msgstr "Dieses Medienobjekt ist mit keinem Datensatz verknüpft."
 
 #: message.php:239 message.php:280
 msgid "This message was sent while viewing the following URL: "
@@ -14480,12 +14480,12 @@ msgstr "Hier bestimmen Sie, ob der Stammbaum im Hochformat oder Querformat darge
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1036
 msgid "This option will make it easier for users to download images."
-msgstr "Der Medienbetrachter kann einen Link zum Download der aktuellen Mediendatei anzeigen. Diese Einstellung bestimmt, ob der Link angezeigt wird oder nicht."
+msgstr "Im Medienbetrachter kann ein Link zum Herunterladen der aktuellen Mediendatei angezeigt werden. Diese Einstellung bestimmt, ob und wem dieser Link angezeigt wird."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Diese Einstellung erhält familiäre Verbindungen in vertrauliche Daten. Das bedeutet, dass Sie leere „Vertraulich“-Boxen auf der Ahnentafel und auf anderen Diagrammen für als vertraulich eingestufte Personen (i.S.v. nicht öffentlich) sehen."
+msgstr "Diese Einstellung erhält familiäre Verknüpfungen in vertraulichen Datensätzen. Das bedeutet, dass Sie leere „Vertraulich“-Boxen auf der Ahnentafel und auf anderen Diagrammen für als vertraulich eingestufte Personen (i.S.v. nicht öffentlich) sehen werden."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:475
@@ -14625,7 +14625,7 @@ msgstr "Dieser Text wird an jeden Seitentitel angehängt. Er wird in der Kopfzei
 
 #: admin_trees_check.php:180 admin_trees_check.php:185
 msgid "This type of link is not allowed here."
-msgstr "Dieser Verweistype ist hier nicht zugelassen."
+msgstr "Diese Verknüpfungsart ist hier nicht erlaubt."
 
 #: includes/session.php:448
 msgid "This user account does not have access to any tree."
@@ -14795,7 +14795,7 @@ msgstr "Um neue Forschungsaufgaben zu erstellen, müssen Sie zunächst eine „F
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "Um die Kompatibilität mit anderen Genealogieanwendungen zu gewährleisten, sollten Notizen, Text und Transkripte als einfache, unformatierte Text aufgenommen werden. Allerdings ist eine Formatierung oft wünschenswert, um eine Präsentation oder das Verständnis zu unterstützen."
+msgstr "Um die Kompatibilität mit anderen Genealogieanwendungen zu gewährleisten, sollten Notizen, Texte und Abschriften als einfacher, unformatierter Text aufgenommen werden. Allerdings ist eine Formatierung oft wünschenswert, um die Präsentation, das Verständnis etc. zu unterstützen."
 
 #: admin_site_upgrade.php:340
 #, php-format
@@ -14818,7 +14818,7 @@ msgstr "Um diesen Text in eine andere Sprache zu übersetzen, müssen Sie zu die
 
 #: app/Module/SiteMapModule.php:331
 msgid "To tell search engines that sitemaps are available, you can use the following links."
-msgstr "Um Suchmaschinen über das Vorhandensein von Sitemaps zu informieren, können folgende Verknüpfung verwendet werden."
+msgstr "Um Suchmaschinen über das Vorhandensein von Sitemaps zu informieren, können Sie folgenden Links verwenden."
 
 #: app/Module/SiteMapModule.php:328
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
@@ -15238,7 +15238,7 @@ msgstr "Unbekannt"
 
 #: app/Module/AlbumModule.php:190
 msgid "Unlink the media object"
-msgstr "Verbindung löschen"
+msgstr "Verknüpfung lösen"
 
 #: app/GedcomTag.php:1797
 msgid "Unrecognized GEDCOM code"
@@ -15748,11 +15748,11 @@ msgstr "Sobald ein Datensatz bearbeitet wird, wird der Benutzer und ein Zeitstem
 
 #: admin_users.php:388
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Sobald sich ein Benutzer für ein Konto einträgt, wird eine E-Mail mit einem Bestätigungslink an die angegebene Adresse gesandt. Wenn er diesen Link betätigt, wissen wir, dass diese Adresse korrekt ist. Damit wird die Option „E-Mail überprüft“ automatisch ausgewählt."
+msgstr "Sobald ein Besucher ein Benutzerkonto anfragt, wird eine E-Mail mit einem Bestätigungslink an die angegebene Adresse gesandt. Wenn dieser dem Link folgt, wissen Sie, dass die Emailadresse korrekt ist. Damit wird die Einstellung „E-Mail überprüft“ automatisch ausgewählt."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
-msgstr "Beim Hinzufügen einer Verknüpfung darf das Feld der Identnummer nicht leer sein."
+msgstr "Beim Hinzufügen einer Verknüpfung darf das ID-Feld nicht leer sein."
 
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2123
@@ -15837,11 +15837,11 @@ msgstr "Alter, Gattin"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
-msgstr "Geburtsname der Frau als Vorname behalten, und Nachname des Gattens auch als Nachname der Frau benutzen"
+msgstr "Geburtsname der Frau als Vorname behalten, und Nachname des Ehemanns auch als Nachname der Frau benutzen"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr "Nachname der Frau mit dem des Gatten ersetzen"
+msgstr "Nachname der Frau mit dem des Ehemanns ersetzen"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 msgid "Wildcards"
@@ -15922,7 +15922,7 @@ msgstr "Sie selbst (oder jemand der sich für Sie ausgibt) hat bei %1$s ein Benu
 
 #: login.php:291 message.php:57
 msgid "You are not allowed to send messages that contain external links."
-msgstr "Sie dürfen keine Mitteilungen versenden, die externe Verknüpfungen enthalten."
+msgstr "Sie dürfen keine Mitteilungen versenden, die externe Links enthalten."
 
 #: app/Module/LoginBlockModule.php:64
 #, php-format
@@ -15931,7 +15931,7 @@ msgstr "Sie sind als %s angemeldet."
 
 #: login.php:169 login.php:172 login.php:175
 msgid "You can apply for an account using the link below."
-msgstr "Sie können über den folgenden Link ein Benutzerkonto beantragen."
+msgstr "Sie können ein Benutzerkonto über den unten stehenden Link beantragen."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -15957,7 +15957,7 @@ msgstr "Eine Kopie der GEDCOM-Spezifikation kann von %s heruntergeladen werden."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
 msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr "Das Suchen nach verheirateten Frauen kann erleichtert werden, wenn die Datenbank nicht nur Geburtsnamen sondern auch Ehenamen enthält. Da nicht alle verheiratete Frauen den Nachnamen des Gatten nehmen, sollten Sie diese Option vielleicht nicht benutzen; Sie könnten dadurch falsche Daten in Ihre Datenbank einfügen."
+msgstr "Sie können die Suche nach verheirateten Frauen durch die Aufnahme ihres Ehenamens erleichtern. Allerdings nehmen nicht alle Frauen den Nachnamen des Ehemanns an, so dass Sie diese Option mit Vorsicht verwenden sollten, um keine falschen Informationen in Ihre Datenbank einzufügen."
 
 #: admin_site_upgrade.php:137
 msgid "You can re-enable these modules after the upgrade."
@@ -16026,7 +16026,7 @@ msgstr "Sie können hier einen URL eingeben, der mit „http://“ beginnt."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:445
 msgid "You may use HTML to format the answer and to add links to other websites."
-msgstr "HTML kann benutzt werden, um die Anwort zu formatieren und Verknüpfungen auf andere Webseiten hinzuzufügen."
+msgstr "Sie können HTML benutzen, um die Anwort zu formatieren und Links zu anderen Webseiten hinzuzufügen."
 
 #: admin_site_config.php:434
 msgid "You must also enable “less secure applications” in your Google account."
@@ -16740,7 +16740,7 @@ msgstr "älterer Bruder"
 
 #: app/Functions/Functions.php:797
 msgid "elder sibling"
-msgstr "älterer Geschwister"
+msgstr "älteres Geschwister"
 
 #: app/Functions/Functions.php:780
 msgid "elder sister"
@@ -16786,7 +16786,7 @@ msgstr "geschätzt %s"
 
 #: app/Functions/Functions.php:703
 msgid "ex-husband"
-msgstr "Ex-Mann"
+msgstr "Ex-Ehemann"
 
 #: app/Functions/Functions.php:734
 msgid "ex-partner"
@@ -18818,7 +18818,7 @@ msgstr "letzten"
 #. I18N: A button label (a verb).
 #: inverselink.php:152
 msgid "link"
-msgstr "Verbindung setzen"
+msgstr "Verknüpfen"
 
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
@@ -20135,7 +20135,7 @@ msgstr "jüngerer Bruder"
 
 #: app/Functions/Functions.php:795
 msgid "younger sibling"
-msgstr "jüngerer Geschwister"
+msgstr "jüngeres Geschwister"
 
 #: app/Functions/Functions.php:778
 msgid "younger sister"

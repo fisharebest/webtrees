@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-09-24 22:58+0000\n"
+"PO-Revision-Date: 2016-10-10 07:05+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.8\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -1649,7 +1649,7 @@ msgstr "Adoptie van een halfbroer"
 
 #: app/GedcomTag.php:912
 msgid "Adoption of a half-sibling"
-msgstr "Adoptie van een halfbroer/zus"
+msgstr "Adoptie van een halfbroer/halfzus"
 
 #: app/GedcomTag.php:910
 msgid "Adoption of a half-sister"
@@ -1874,7 +1874,7 @@ msgstr "Sta andere modules toe tekst te wijzigen met een ‘WYSIWIG’-tekstverw
 #. I18N: A configuration setting
 #: admin_trees_config.php:1575
 msgid "Allow users to see raw GEDCOM records"
-msgstr "Sta toe dat gebruikers onbewerkt GEDCOM-record kunnen zien"
+msgstr "Sta toe dat gebruikers onbewerkte GEDCOM-records kunnen zien"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:259
@@ -2483,7 +2483,7 @@ msgstr "Bangladesh"
 #. I18N: gedcom tag BAPM
 #: app/GedcomTag.php:182 modules_v3/missing_facts_report/report.xml:16
 msgid "Baptism"
-msgstr "Doop"
+msgstr "Gedoopt"
 
 #: app/GedcomTag.php:1021
 msgid "Baptism of a brother"
@@ -2535,11 +2535,11 @@ msgstr "Doop van een halfbroer"
 
 #: app/GedcomTag.php:1016
 msgid "Baptism of a half-sibling"
-msgstr "Doop van een halfbroer/zus"
+msgstr "Doop van een halfbroer/halfzus"
 
 #: app/GedcomTag.php:1014
 msgid "Baptism of a half-sister"
-msgstr "Doopsel van een half-zus"
+msgstr "Doop van een halfzus"
 
 #: app/GedcomTag.php:1025
 msgid "Baptism of a sibling"
@@ -2857,7 +2857,7 @@ msgstr "Geboorte van een halfbroer"
 
 #: app/GedcomTag.php:1074
 msgid "Birth of a half-sibling"
-msgstr "Geboorte van een halfbroer/zus"
+msgstr "Geboorte van een halfbroer/halfzus"
 
 #: app/GedcomTag.php:1072
 msgid "Birth of a half-sister"
@@ -3110,7 +3110,7 @@ msgstr "Bulgarije"
 #: modules_v3/family_group_report/report.xml:1049
 #: modules_v3/missing_facts_report/report.xml:25
 msgid "Burial"
-msgstr "Begrafenis"
+msgstr "Begraven"
 
 #: app/GedcomTag.php:1177
 msgid "Burial of a brother"
@@ -3424,7 +3424,7 @@ msgstr "Volkstelling"
 #. I18N: Name of a module
 #: app/Module/CensusAssistantModule.php:39
 msgid "Census assistant"
-msgstr "Volkstellingassistent"
+msgstr "Volkstellingsassistent"
 
 #: app/Functions/FunctionsEdit.php:1024 app/GedcomTag.php:252
 msgid "Census date"
@@ -3682,7 +3682,7 @@ msgstr "Kies: "
 #: modules_v3/family_group_report/report.xml:904
 #: modules_v3/missing_facts_report/report.xml:16
 msgid "Christening"
-msgstr "Doop"
+msgstr "Gedoopt"
 
 #: app/GedcomTag.php:1240
 msgid "Christening of a brother"
@@ -3734,7 +3734,7 @@ msgstr "Doop van een halfbroer"
 
 #: app/GedcomTag.php:1235
 msgid "Christening of a half-sibling"
-msgstr "Doop van een halfbroer/zus"
+msgstr "Doop van een halfbroer/halfzus"
 
 #: app/GedcomTag.php:1233
 msgid "Christening of a half-sister"
@@ -5918,11 +5918,11 @@ msgstr "Feiten en gebeurtenissen"
 
 #: admin_trees_config.php:1731
 msgid "Facts for family records"
-msgstr "Feiten/gebeurtenissen voor gezinsrecords"
+msgstr "Feiten/gebeurtenissen voor gezinnen"
 
 #: admin_trees_config.php:1613
 msgid "Facts for individual records"
-msgstr "Feiten/gebeurtenissen voor persoonsrecords"
+msgstr "Feiten/gebeurtenissen voor personen"
 
 #: admin_trees_config.php:1794
 msgid "Facts for new families"
@@ -5934,11 +5934,11 @@ msgstr "Feiten/gebeurtenissen voor nieuwe personen"
 
 #: admin_trees_config.php:1938
 msgid "Facts for repository records"
-msgstr "Feiten/gebeurtenissen voor Opslagplaatsrecords"
+msgstr "Feiten/gebeurtenissen voor opslagplaatsen"
 
 #: admin_trees_config.php:1849
 msgid "Facts for source records"
-msgstr "Feiten/gebeurtenissen voor Bronrecords"
+msgstr "Feiten/gebeurtenissen voor bronnen"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6752
@@ -6336,7 +6336,7 @@ msgstr "Zoek een persoon"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
-msgstr "Dubbele records zoeken"
+msgstr "Zoek dubbele records"
 
 #: relationship.php:115
 msgid "Find other relationships"
@@ -7279,7 +7279,7 @@ msgstr "Identificatienummer"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:646
 msgid "If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines."
-msgstr "Wanneer een bezoeker van de site geen voorkeurtaal heeft ingesteld in zijn/haar browser configuratie of een niet-ondersteunde taal heeft ingesteld, dan zal deze taal gebruikt worden. Deze instelling geldt voornamelijk voor zoekmachines."
+msgstr "Wanneer een bezoeker van de site geen voorkeurstaal heeft ingesteld in zijn/haar browser configuratie of een niet-ondersteunde taal heeft ingesteld, dan zal deze taal gebruikt worden. Deze instelling geldt voornamelijk voor zoekmachines."
 
 #: admin_users.php:391
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -8847,11 +8847,11 @@ msgstr "Aanpassen aan kalender"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:139
 msgid "Match the exact text, even if it occurs in the middle of a word."
-msgstr "Zoek naar de exacte text, zelfs als het midden in een woord voorkomt."
+msgstr "Zoek naar de exacte tekst, zelfs als het midden in een woord voorkomt."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:140
 msgid "Match the exact text, unless it occurs in the middle of a word."
-msgstr "Zoek naar de exacte text, tenzij het midden in een woord voorkomt."
+msgstr "Zoek naar de exacte tekst, tenzij het midden in een woord voorkomt."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6830
@@ -10897,7 +10897,7 @@ msgstr "Voer meer dan één leesteken in."
 
 #: message.php:96
 msgid "Please enter some message text before sending."
-msgstr "Voer wat text in vóór het verzenden a.u.b."
+msgstr "Voer wat tekst in vóór het verzenden a.u.b."
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
@@ -11646,7 +11646,7 @@ msgstr "Beperking"
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr "Aan records en feiten kunnen beperkingen worden toegevoegd. Ze beperken wie de gegevens kunnen zien en wie deze kunnen wijzigen."
+msgstr "U kunt beperkingen toevoegen aan records en feiten. Hiermee bepaalt u wie de gegevens kunnen zien en wie deze kunnen wijzigen."
 
 #: app/Stats.php:87
 msgid "Resulting value"
@@ -13942,8 +13942,8 @@ msgstr "De tijdzone is van belang voor het rekenen met datums. Bijvoorbeeld om t
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "De twee stambomen hebben %1$s record met dezelfde ‘XREF’."
-msgstr[1] "De twee stambomen hebben %1$s record met dezelfde ‘XREF’."
+msgstr[0] "De twee stambomen hebben %1$s record met dezelfde “XREF”."
+msgstr[1] "De twee stambomen hebben %1$s record met dezelfde “XREF”."
 
 #: admin_site_upgrade.php:447
 msgid "The upgrade is complete."
@@ -14181,8 +14181,8 @@ msgstr "Dit gezin bleef kinderloos"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Deze stamboom heeft %s record met dezelfde ‘XREF’ als een andere stamboom."
-msgstr[1] "Deze stamboom heeft %s record met dezelfde ‘XREF’ als een andere stamboom."
+msgstr[0] "Deze stamboom heeft %s record met dezelfde “XREF” als een andere stamboom."
+msgstr[1] "Deze stamboom heeft %s records met dezelfde “XREF” als een andere stamboom."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -14489,7 +14489,7 @@ msgstr "Deze optie maakt het makkelijk voor gebruikers om afbeeldingen te downlo
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Deze optie bepaalt de zichtbaarheid van records met privérelaties. Dit betekent dat u lege ‘privé’-kaders ziet in een stamboom en op andere overzichten met privépersonen."
+msgstr "Deze optie bepaalt de zichtbaarheid van records met privérelaties. Dit betekent dat u lege “privé”-kaders ziet in een stamboom en op andere overzichten met privépersonen."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:475
@@ -15761,7 +15761,7 @@ msgstr "Als u een link toevoegt dan mag het ID-veld niet leeg zijn."
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2123
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "Wanneer u nieuwe naaste familieleden toevoegt, kunt u bronvermeldingen aan de records (persoon of gezin) of aan de feiten/gebeurtenissen (geboorte, huwelijk en overlijden) toevoegen. Deze optie bepaalt welke checkboxen (records of feiten) standaard aangevinkt zijn."
+msgstr "Wanneer u nieuwe naaste familieleden toevoegt, kunt u bronvermeldingen aan de records (persoon en gezin) of aan de feiten en gebeurtenissen (geboorte, huwelijk en overlijden) toevoegen. Deze optie bepaalt welke checkboxen (records of feiten) standaard aangevinkt zijn."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2097
@@ -16006,7 +16006,7 @@ msgstr "U heeft geen toestemming om deze pagina te zien."
 
 #: admin_site_merge.php:55
 msgid "You entered the same IDs. You cannot merge the same records."
-msgstr "U heeft dezelfde ID's ingegeven. Samenvoegen van dezelfde records is niet mogelijk."
+msgstr "U heeft dezelfde ID's ingevoerd. Samenvoegen van dezelfde records is niet mogelijk."
 
 #: login.php:614
 msgid "You have confirmed your request to become a registered user."

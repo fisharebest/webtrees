@@ -35,7 +35,6 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Stats;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use PDO;
 
@@ -2396,7 +2395,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function printGoogleMapMarkers($place2, $level, $parent, $levelm, $linklevels) {
 		echo 'var icon_url = null;';
 		if (!$place2['lati'] || !$place2['long']) {
-			echo 'var icon_url =' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png';
+			echo 'var icon_url ="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png";';
 			echo 'var point = new google.maps.LatLng(0, 0);';
 			echo 'var marker = createMarker(point, "<div style=\"width: 250px;\"><a href=\"?action=find', $linklevels, '&amp;parent[' . $level . ']=';
 
@@ -2840,7 +2839,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				Database::prepare("UPDATE `##placelocation` SET pl_place=?, pl_lati=?, pl_long=?, pl_zoom=?, pl_icon=? WHERE pl_id=?");
 
 			if ((Filter::post('LONG_CONTROL') == '') || (Filter::post('NEW_PLACE_LONG') == '') || (Filter::post('NEW_PLACE_LATI') == '')) {
-				$statement->execute(array(Filter::post('NEW_PLACE_NAME'), null, null, Filter::post('NEW_ZOOM_FACTOR'), Filter::post('icon'), $placeid));
+				$statement->execute(array(Filter::post('NEW_PLACE_NAME'), null, null, (int) Filter::post('NEW_ZOOM_FACTOR'), Filter::post('icon'), $placeid));
 			} else {
 				$statement->execute(array(Filter::post('NEW_PLACE_NAME'), Filter::post('LATI_CONTROL') . Filter::post('NEW_PLACE_LATI'), Filter::post('LONG_CONTROL') . Filter::post('NEW_PLACE_LONG'), Filter::post('NEW_ZOOM_FACTOR'), Filter::post('icon'), $placeid));
 			}

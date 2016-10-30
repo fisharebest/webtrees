@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-09-21 04:42+0000\n"
+"PO-Revision-Date: 2016-10-01 21:49+0000\n"
 "Last-Translator: Patrick Kongshammer <patrickkongshammer@gmail.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
 "Language: da\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.8\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -75,13 +75,13 @@ msgstr "%1$s %2$s har et %3$s link til %4$s."
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "Antal %1$s %2$s stigende sortering fjernet"
+msgstr "%1$s %2$s generationer bagud"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr "Antal %1$s %2$s faldende sortering fjernet"
+msgstr "%1$s %2$s generationer fremad"
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1636
@@ -195,7 +195,7 @@ msgstr "%j. %F %Y"
 #: app/Stats.php:6944
 #, php-format
 msgid "%s BCE"
-msgstr "%s BCE"
+msgstr "%s f.v.t"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:276
@@ -219,7 +219,7 @@ msgstr "%s og hans forfædre"
 #: app/Module/ClippingsCartModule.php:292
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s og de indvider som er linket til."
+msgstr "%s og de indvider som linker til."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:121
@@ -379,13 +379,13 @@ msgstr[1] "%s noter er blevet opdateret."
 #: app/Functions/Functions.php:2108
 #, php-format
 msgid "%s once removed ascending"
-msgstr "%s fjernet stigende sorteringsorden"
+msgstr "%s forskudt et led"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2111
 #, php-format
 msgid "%s once removed descending"
-msgstr "%s fjernet faldende sorteringsorden"
+msgstr "%s forskudt et led"
 
 #: app/I18N.php:809
 #, php-format
@@ -418,25 +418,25 @@ msgstr[1] "%s kilder er blevet opdateret."
 #: app/Functions/Functions.php:2124
 #, php-format
 msgid "%s three times removed ascending"
-msgstr "%s stigende sortering i 3 niveauer"
+msgstr "%s forskudt tre generationer"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2127
 #, php-format
 msgid "%s three times removed descending"
-msgstr "%s fjernelse af sorteringsorden"
+msgstr "%s forskudt tre generationer"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2116
 #, php-format
 msgid "%s twice removed ascending"
-msgstr "%s fjernelse af sorteringsorden"
+msgstr "%s forskudt to generationer"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2119
 #, php-format
 msgid "%s twice removed descending"
-msgstr "%s fjernelse af sorteringsorden"
+msgstr "%s forskudt to generationer"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:57 app/I18N.php:309
@@ -489,13 +489,13 @@ msgstr "%s × fætter"
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;fvt"
+msgstr "%s&nbsp;f.v.t"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;evt"
+msgstr "%s&nbsp;e.v.t"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: statisticsplot.php:788
@@ -507,49 +507,49 @@ msgstr "%s+"
 #: app/Module/ClippingsCartModule.php:222
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr "%s hendes forfædre og deres familier"
+msgstr "%s, hendes forfædre og deres familier"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:171
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr "%s hendes forældre og søskende"
+msgstr "%s, hendes forældre og søskende"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, her spouses and children"
-msgstr "%s hendes ægtefælle og børn"
+msgstr "%s, hendes ægtefæller og børn"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:241
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr "%s hendes ægtefælle og efterkommere"
+msgstr "%s, hendes ægtefæller og efterkommere"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:225
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr "%s hans forfædre og deres familier"
+msgstr "%s, hans forfædre og deres familier"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:174
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr "%s hans forældre og søskende"
+msgstr "%s, hans forældre og søskende"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:190
 #, php-format
 msgid "%s, his spouses and children"
-msgstr "%s hans ægtefælle og børn"
+msgstr "%s, hans ægtefæller og børn"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:244
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr "%s hans ægtefælle og efterkommere"
+msgstr "%s, hans ægtefæller og efterkommere"
 
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:624
 #: app/Module/UserMessagesModule.php:102
@@ -737,12 +737,12 @@ msgstr "Et diagram visende relationer mellem to individer."
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "Et diagram over et individs forfædre eller efterkommer, som en stambog."
+msgstr "Et diagram over et individs forfædre eller efterkommere, som en stambog."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "Et diagram over et individs forfældre, som et kompakt træ."
+msgstr "Et diagram over et individs forfædre, som et kompakt træ."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
@@ -804,7 +804,7 @@ msgstr "En velkomsthilsen til de besøgende."
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "En liste med ændringer som skal godkendes af en moderator og email notifikationer."
+msgstr "En liste med ændringer som skal godkendes af en moderator, og email-notifikationer."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -839,12 +839,12 @@ msgstr "En liste med mærkedage/begivenheder i den nærmeste fremtid."
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr "En liste over de mest populære efternavne."
+msgstr "En liste over de mest populære fornavne."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr "En liste over de meste brugte efternavne."
+msgstr "En liste over de mest brugte efternavne."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
@@ -877,7 +877,7 @@ msgstr "(%1$s) har anmodet om brugerkontoen (%2$s) og verificeret e-mailadressen
 
 #: admin.php:630 admin_site_upgrade.php:79 login.php:115
 msgid "A new version of webtrees is available."
-msgstr "En ny version er frigivet."
+msgstr "En ny version af webtrees er frigivet."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
@@ -912,7 +912,7 @@ msgstr "En rapport for en persons efterkommer i fortællende stil."
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr "En rapport af den enkeltes oplysninger."
+msgstr "En rapport af et individs oplysninger."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
@@ -967,7 +967,7 @@ msgstr "En rapport over familier som er nært beslægtet til et individ."
 #: app/Module/RelatedIndividualsReportModule.php:35
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr "En rapport over en persons nære slægtninge."
+msgstr "En rapport over et individs nære slægtninge."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
@@ -978,7 +978,7 @@ msgstr "En rapport over information leveret af en kilde."
 #: app/Module/MissingFactsReportModule.php:35
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr "En rapport over de oplysninger der mangler for en person samt pårørende."
+msgstr "En rapport over de oplysninger der mangler for et individ og dennes slægtninge."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:43
@@ -998,7 +998,7 @@ msgstr "En sidebjælke der viser en alfabetisk liste over alle familier i famili
 #. I18N: Description of “Individuals” module
 #: app/Module/IndividualSidebarModule.php:38
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-msgstr "Et sidebjælke der viser en alfabetisk liste over personer i familietræet."
+msgstr "En sidebjælke der viser en alfabetisk liste over personer i familietræet."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
@@ -1018,7 +1018,7 @@ msgstr "En sidebjælke der viser efterkommere for et individ."
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
 msgid "A tab showing the close relatives of an individual."
-msgstr "En fane der viser en persons nære slægtninge."
+msgstr "En fane der viser et individs nære slægtninge."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
@@ -1028,7 +1028,7 @@ msgstr "En fane der viser fakta og hændelser for et individ."
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
 msgid "A tab showing the media objects linked to an individual."
-msgstr "En fane der viser mediefiler som er tilknyttet personen."
+msgstr "En fane der viser mediefiler som er tilknyttet et individ."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
@@ -1043,7 +1043,7 @@ msgstr "En fane der viser de kilder der er knyttet til en person."
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr "En tidslinje visende begivender for et individ."
+msgstr "En tidslinje der viser begivenheder for et individ."
 
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
@@ -1261,7 +1261,7 @@ msgstr "Tilføj"
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "Tilføj %s til kurv"
+msgstr "Tilføj %s til udkliipskurv"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:120
 msgid "Add a blank row"
@@ -1277,7 +1277,7 @@ msgstr "Tilføj et nyt barn"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:595
 msgid "Add a child to create a one-parent family"
-msgstr "Tilføj et barn til en én-forælders-familie"
+msgstr "Tilføj et barn for at oprette en én-forælders-familie"
 
 #: app/Controller/FamilyController.php:82
 #: app/Functions/FunctionsCharts.php:310
@@ -1418,7 +1418,7 @@ msgstr "Hent fra udklipsholderen"
 
 #: lifespan.php:44 modules_v3/GEDFact_assistant/census/census-edit.php:82
 msgid "Add individuals"
-msgstr "Tilføj personer"
+msgstr "Tilføj individer"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:158
 msgid "Add links"
@@ -17434,7 +17434,7 @@ msgstr "%s× tip-oldeforælders bror"
 
 #: app/Functions/Functions.php:1579
 msgid "great ×4 aunt"
-msgstr "tip-tip-oldeforælders søter"
+msgstr "tip-tip-oldeforælders søster"
 
 #: app/Functions/Functions.php:1581
 msgid "great ×4 aunt/uncle"

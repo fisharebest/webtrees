@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-06-29 13:40+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2016-10-03 09:55+0000\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Thai <https://translate.webtrees.net/projects/webtrees/webtrees/th/>\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=-;\n"
-"X-Generator: Weblate 2.5\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.8\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -421,16 +421,16 @@ msgstr[0] ""
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
+msgstr[0] "%s ปี"
 
 #: app/I18N.php:791
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
+msgstr[0] "%s ปีที่แล้ว"
 
-#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
-#: calendar.php:601
+#: app/Functions/FunctionsPrintLists.php:1942
+#: app/Module/YahrzeitModule.php:129 calendar.php:601
 #, php-format
 msgid "%s year anniversary"
 msgstr ""
@@ -1224,7 +1224,7 @@ msgstr ""
 #: edit_interface.php:2033 index_edit.php:329 index_edit.php:346
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:170
 msgid "Add"
-msgstr ""
+msgstr "เพิ่ม"
 
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
@@ -1247,7 +1247,8 @@ msgstr ""
 msgid "Add a child to create a one-parent family"
 msgstr ""
 
-#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
+#: app/Controller/FamilyController.php:82
+#: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
 msgstr ""
 
@@ -1285,9 +1286,10 @@ msgstr ""
 msgid "Add a journal entry"
 msgstr ""
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1125
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:168
+#: app/Controller/FamilyController.php:162
+#: app/Functions/FunctionsEdit.php:1125 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:168
 msgid "Add a media object"
 msgstr ""
 
@@ -1303,8 +1305,8 @@ msgstr ""
 msgid "Add a news article"
 msgstr ""
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1104
-#: app/Module/NotesTabModule.php:102
+#: app/Controller/FamilyController.php:149
+#: app/Functions/FunctionsEdit.php:1104 app/Module/NotesTabModule.php:102
 msgid "Add a note"
 msgstr ""
 
@@ -1315,14 +1317,15 @@ msgstr ""
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
 #: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
 msgstr ""
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1114
-#: app/Module/NotesTabModule.php:112
+#: app/Controller/FamilyController.php:155
+#: app/Functions/FunctionsEdit.php:1114 app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
 msgstr ""
 
@@ -1330,8 +1333,8 @@ msgstr ""
 msgid "Add a son or daughter"
 msgstr ""
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1053
-#: app/Module/SourcesTabModule.php:95
+#: app/Controller/FamilyController.php:172
+#: app/Functions/FunctionsEdit.php:1053 app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
 msgstr ""
 
@@ -1678,7 +1681,7 @@ msgstr ""
 #: app/GedcomTag.php:142 app/Stats.php:2588 app/Stats.php:3929
 #: app/Stats.php:3931 autocomplete.php:72 timeline.php:382
 msgid "Age"
-msgstr ""
+msgstr "อายุ"
 
 #: statistics.php:283
 msgid "Age at birth of child"
@@ -1745,7 +1748,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/AlbumModule.php:40
 msgid "Album"
-msgstr ""
+msgstr "อัลบั้ม"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:89
@@ -1772,10 +1775,10 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:1334 app/Module/GoogleMapsModule.php:1347
 #: app/Module/GoogleMapsModule.php:4080 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5581 calendar.php:257
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
-#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
-#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
-#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
+#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
+#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
+#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -1992,7 +1995,8 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1805 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1805
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr ""
 
@@ -2071,22 +2075,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:214
 msgctxt "GENITIVE"
 msgid "April"
-msgstr ""
+msgstr "เมษายน"
 
 #: app/Date/CalendarDate.php:282
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr ""
+msgstr "เมษายน"
 
 #: app/Date/CalendarDate.php:248
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr ""
+msgstr "เมษายน"
 
 #: app/Date/CalendarDate.php:180 app/Functions/FunctionsPrint.php:653
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr ""
+msgstr "เมษายน"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:76
@@ -2143,7 +2147,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -2251,22 +2256,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:218
 msgctxt "GENITIVE"
 msgid "August"
-msgstr ""
+msgstr "สิงหาคม"
 
 #: app/Date/CalendarDate.php:286
 msgctxt "INSTRUMENTAL"
 msgid "August"
-msgstr ""
+msgstr "สิงหาคม"
 
 #: app/Date/CalendarDate.php:252
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr ""
+msgstr "สิงหาคม"
 
 #: app/Date/CalendarDate.php:184 app/Functions/FunctionsPrint.php:657
 msgctxt "NOMINATIVE"
 msgid "August"
-msgstr ""
+msgstr "สิงหาคม"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6689
@@ -2741,22 +2746,22 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:1368
 #: modules_v3/relative_ext_report/report.xml:56
 msgid "Birth"
-msgstr ""
+msgstr "กำเนิด"
 
 #: app/GedcomCode/GedcomCodePedi.php:50
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "กำเนิด"
 
 #: app/GedcomCode/GedcomCodePedi.php:48
 msgctxt "Male pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "กำเนิด"
 
 #: app/GedcomCode/GedcomCodePedi.php:52
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr ""
+msgstr "กำเนิด"
 
 #: app/Stats.php:1661 statistics.php:565
 msgid "Birth by country"
@@ -3264,7 +3269,7 @@ msgstr ""
 #: app/Module/YahrzeitModule.php:280 app/Theme/AbstractTheme.php:1061
 #: lifespan.php:93
 msgid "Calendar"
-msgstr ""
+msgstr "ปฏิทิน"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:688 admin_trees_config.php:690
@@ -3458,7 +3463,8 @@ msgstr ""
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:435
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:182
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr ""
 
@@ -3492,11 +3498,11 @@ msgstr ""
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1206
-#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
-#: app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163
+#: admin_trees_config.php:1206 app/Module/ChartsBlockModule.php:34
+#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
-msgstr ""
+msgstr "แผนภาพ"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:327
@@ -3941,9 +3947,10 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:438
 #: app/Module/GoogleMapsModule.php:277 app/Module/GoogleMapsModule.php:1297
 #: app/Module/GoogleMapsModule.php:3483
-#: app/Module/RelationshipsChartModule.php:151 app/Module/SiteMapModule.php:296
-#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
-#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
+#: app/Module/RelationshipsChartModule.php:151
+#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
+#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
+#: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr ""
 
@@ -3972,7 +3979,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:1025
 #: app/Functions/FunctionsPrintFacts.php:1173
 msgid "Copy"
-msgstr ""
+msgstr "คัดลอก"
 
 #. I18N: Copy all the records from [family tree 1] into [family tree 2]
 #: admin_trees_merge.php:195
@@ -4345,7 +4352,8 @@ msgstr ""
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -4353,7 +4361,7 @@ msgstr ""
 
 #: app/Module/RelativesTabModule.php:315
 msgid "Date differences"
-msgstr ""
+msgstr "ความแตกต่างของวันที่"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:176
@@ -4845,22 +4853,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:222
 msgctxt "GENITIVE"
 msgid "December"
-msgstr ""
+msgstr "ธันวาคม"
 
 #: app/Date/CalendarDate.php:290
 msgctxt "INSTRUMENTAL"
 msgid "December"
-msgstr ""
+msgstr "ธันวาคม"
 
 #: app/Date/CalendarDate.php:256
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr ""
+msgstr "ธันวาคม"
 
 #: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:661
 msgctxt "NOMINATIVE"
 msgid "December"
-msgstr ""
+msgstr "ธันวาคม"
 
 #. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php:206
@@ -4912,7 +4920,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -4950,7 +4959,7 @@ msgstr ""
 #: app/Module/StoriesModule.php:406 app/Module/UserJournalModule.php:106
 #: app/Module/UserMessagesModule.php:111 app/Module/UserMessagesModule.php:139
 msgid "Delete"
-msgstr ""
+msgstr "ลบ"
 
 #: app/Module/GoogleMapsModule.php:3678
 msgid "Delete all existing geographic data before importing the file."
@@ -4976,7 +4985,7 @@ msgstr ""
 
 #: app/Controller/IndividualController.php:167
 msgid "Delete this name"
-msgstr ""
+msgstr "ลบชื่อนี้"
 
 #: edituser.php:321
 msgid "Delete your account"
@@ -5015,7 +5024,8 @@ msgstr ""
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
 #: app/Module/ChartsBlockModule.php:186
-#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
+#: app/Module/DescendancyChartModule.php:33
+#: app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5369,7 +5379,7 @@ msgstr ""
 #: edit_interface.php:261 edit_interface.php:418 note.php:151 note.php:156
 #: note.php:157
 msgid "Edit"
-msgstr ""
+msgstr "แก้ไข"
 
 #: admin_site_access.php:216
 msgid "Edit a website access rule"
@@ -5403,7 +5413,7 @@ msgstr ""
 #: app/Controller/IndividualController.php:168
 #: app/Functions/FunctionsEdit.php:698 edit_interface.php:1640
 msgid "Edit the name"
-msgstr ""
+msgstr "แก้ไขชื่อ"
 
 #: app/Controller/NoteController.php:39
 msgid "Edit the note"
@@ -5704,7 +5714,7 @@ msgstr ""
 
 #: app/Module/IndividualFactsTabModule.php:134
 msgid "Events of close relatives"
-msgstr ""
+msgstr "ญาติสนิท"
 
 #: admin_users.php:532
 msgid "Everybody has this role, including visitors to the website and search engines."
@@ -5791,7 +5801,7 @@ msgstr ""
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:34
 msgid "FAQ"
-msgstr ""
+msgstr "คำถามที่พบบ่อย"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
@@ -5862,7 +5872,7 @@ msgstr ""
 
 #: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:619
 msgid "Fact or event"
-msgstr ""
+msgstr "ความเป็นจริงหรือเหตุการณ์"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:36
@@ -5870,7 +5880,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:153
 #: modules_v3/individual_report/report.xml:149
 msgid "Facts and events"
-msgstr ""
+msgstr "ข้อเท็จจริงและเหตุการณ์ที่เกิดขึ้น"
 
 #: admin_trees_config.php:1731
 msgid "Facts for family records"
@@ -5912,12 +5922,13 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:2384 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1493
 #: calendar.php:414 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:118 mediaviewer.php:107 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:118 mediaviewer.php:107
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:119 placelist.php:201
 #: repo.php:127 search.php:93 source.php:131 statistics.php:71
 #: statisticsplot.php:990 statisticsplot.php:1094 statisticsplot.php:1344
 msgid "Families"
-msgstr ""
+msgstr "ครอบครัว"
 
 #: app/Stats.php:520 statistics.php:395
 msgid "Families with sources"
@@ -6000,9 +6011,10 @@ msgstr ""
 #: app/Module/StoriesModule.php:356 app/Theme/AbstractTheme.php:1386
 #: edit_changes.php:185
 msgid "Family tree"
-msgstr ""
+msgstr "ต้นไม้ครอบครัว"
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90
+#: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr ""
 
@@ -6014,7 +6026,7 @@ msgstr ""
 #: admin.php:760 admin.php:768 app/Theme/AbstractTheme.php:1398
 #: app/Theme/AdministrationTheme.php:114 search.php:127 search.php:284
 msgid "Family trees"
-msgstr ""
+msgstr "ต้นไม้ครอบครัว"
 
 #. I18N: %s is the spouse name
 #: app/Controller/IndividualController.php:416
@@ -6039,7 +6051,7 @@ msgstr ""
 #: app/Individual.php:1026 modules_v3/individual_ext_report/report.xml:231
 #: modules_v3/individual_report/report.xml:234
 msgid "Family with parents"
-msgstr ""
+msgstr "ครอบครัวที่มีพ่อแม่ผู้ปกครอง"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:139
@@ -6118,7 +6130,7 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:240
 #: modules_v3/relative_ext_report/report.xml:64 search_advanced.php:209
 msgid "Father"
-msgstr ""
+msgstr "พ่อ"
 
 #. I18N: %s is the name of an individual’s father
 #: app/Individual.php:1058
@@ -6142,9 +6154,10 @@ msgid "Father’s family with an unknown individual"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1375
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1375
 msgid "Favorites"
-msgstr ""
+msgstr "ชื่นชอบ"
 
 #. I18N: gedcom tag FAX
 #: app/GedcomTag.php:476
@@ -6159,22 +6172,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:212
 msgctxt "GENITIVE"
 msgid "February"
-msgstr ""
+msgstr "กุมภาพันธ์"
 
 #: app/Date/CalendarDate.php:280
 msgctxt "INSTRUMENTAL"
 msgid "February"
-msgstr ""
+msgstr "กุมภาพันธ์"
 
 #: app/Date/CalendarDate.php:246
 msgctxt "LOCATIVE"
 msgid "February"
-msgstr ""
+msgstr "กุมภาพันธ์"
 
 #: app/Date/CalendarDate.php:178 app/Functions/FunctionsPrint.php:651
 msgctxt "NOMINATIVE"
 msgid "February"
-msgstr ""
+msgstr "กุมภาพันธ์"
 
 #: app/Controller/IndividualController.php:247
 #: app/Controller/IndividualController.php:250
@@ -6279,7 +6292,8 @@ msgstr ""
 msgid "Find all possible relationships"
 msgstr ""
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
@@ -6371,7 +6385,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -6762,7 +6777,7 @@ msgstr ""
 #. I18N: gedcom tag GIVN
 #: app/GedcomTag.php:504
 msgid "Given names"
-msgstr ""
+msgstr "ชื่อตัว"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
 msgid "Godchild"
@@ -7002,7 +7017,7 @@ msgstr ""
 #. I18N: gedcom tag _HEB
 #: app/GedcomTag.php:1521
 msgid "Hebrew"
-msgstr ""
+msgstr "ชาวอิสราเอล"
 
 #. I18N: gedcom tag _HNM
 #: app/GedcomTag.php:1529
@@ -7040,7 +7055,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7549,9 +7565,10 @@ msgid "Installation folder"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:188 app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:188
+#: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
-msgstr ""
+msgstr "ต้นไม้แบบโต้ตอบ"
 
 #: app/Module/ChartsBlockModule.php:128
 #: app/Module/InteractiveTree/TreeView.php:69
@@ -7559,7 +7576,7 @@ msgstr ""
 #: app/Module/InteractiveTreeModule.php:135
 #, php-format
 msgid "Interactive tree of %s"
-msgstr ""
+msgstr "ต้นไม้แบบโต้ตอบของ %s"
 
 #: app/Functions/FunctionsEdit.php:246
 msgid "Internal messaging"
@@ -7674,22 +7691,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:211
 msgctxt "GENITIVE"
 msgid "January"
-msgstr ""
+msgstr "มกราคม"
 
 #: app/Date/CalendarDate.php:279
 msgctxt "INSTRUMENTAL"
 msgid "January"
-msgstr ""
+msgstr "มกราคม"
 
 #: app/Date/CalendarDate.php:245
 msgctxt "LOCATIVE"
 msgid "January"
-msgstr ""
+msgstr "มกราคม"
 
 #: app/Date/CalendarDate.php:177 app/Functions/FunctionsPrint.php:650
 msgctxt "NOMINATIVE"
 msgid "January"
-msgstr ""
+msgstr "มกราคม"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6793
@@ -7739,22 +7756,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:217
 msgctxt "GENITIVE"
 msgid "July"
-msgstr ""
+msgstr "กรกฎาคม"
 
 #: app/Date/CalendarDate.php:285
 msgctxt "INSTRUMENTAL"
 msgid "July"
-msgstr ""
+msgstr "กรกฎาคม"
 
 #: app/Date/CalendarDate.php:251
 msgctxt "LOCATIVE"
 msgid "July"
-msgstr ""
+msgstr "กรกฎาคม"
 
 #: app/Date/CalendarDate.php:183 app/Functions/FunctionsPrint.php:656
 msgctxt "NOMINATIVE"
 msgid "July"
-msgstr ""
+msgstr "กรกฎาคม"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:94
@@ -7812,22 +7829,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:216
 msgctxt "GENITIVE"
 msgid "June"
-msgstr ""
+msgstr "มิถุนายน"
 
 #: app/Date/CalendarDate.php:284
 msgctxt "INSTRUMENTAL"
 msgid "June"
-msgstr ""
+msgstr "มิถุนายน"
 
 #: app/Date/CalendarDate.php:250
 msgctxt "LOCATIVE"
 msgid "June"
-msgstr ""
+msgstr "มิถุนายน"
 
 #: app/Date/CalendarDate.php:182 app/Functions/FunctionsPrint.php:655
 msgctxt "NOMINATIVE"
 msgid "June"
-msgstr ""
+msgstr "มิถุนายน"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:207
@@ -8002,7 +8019,7 @@ msgstr ""
 #: admin_users.php:848 app/GedcomTag.php:540 app/Theme/AbstractTheme.php:1408
 #: edituser.php:238 setup.php:108
 msgid "Language"
-msgstr ""
+msgstr "ภาษา"
 
 #. I18N: Menu entry
 #: admin_site_config.php:146 app/Theme/AdministrationTheme.php:98
@@ -8248,7 +8265,7 @@ msgstr ""
 
 #: admin_trees_config.php:1146 app/Theme/AbstractTheme.php:1471
 msgid "Lists"
-msgstr ""
+msgstr "รายการ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6810
@@ -8517,22 +8534,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:213
 msgctxt "GENITIVE"
 msgid "March"
-msgstr ""
+msgstr "มีนาคม"
 
 #: app/Date/CalendarDate.php:281
 msgctxt "INSTRUMENTAL"
 msgid "March"
-msgstr ""
+msgstr "มีนาคม"
 
 #: app/Date/CalendarDate.php:247
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr ""
+msgstr "มีนาคม"
 
 #: app/Date/CalendarDate.php:179 app/Functions/FunctionsPrint.php:652
 msgctxt "NOMINATIVE"
 msgid "March"
-msgstr ""
+msgstr "มีนาคม"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1565
@@ -8764,11 +8781,11 @@ msgstr ""
 #: app/GedcomTag.php:1560 modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10
 msgid "Married name"
-msgstr ""
+msgstr "ชื่อแต่งงาน"
 
 #: app/GedcomTag.php:1566
 msgid "Married surname"
-msgstr ""
+msgstr "นามสกุลแต่งงาน"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6821
@@ -8834,27 +8851,27 @@ msgstr ""
 #: app/Date/CalendarDate.php:315
 msgctxt "Abbreviation for May"
 msgid "May"
-msgstr ""
+msgstr "พฤษภาคม"
 
 #: app/Date/CalendarDate.php:215
 msgctxt "GENITIVE"
 msgid "May"
-msgstr ""
+msgstr "พฤษภาคม"
 
 #: app/Date/CalendarDate.php:283
 msgctxt "INSTRUMENTAL"
 msgid "May"
-msgstr ""
+msgstr "พฤษภาคม"
 
 #: app/Date/CalendarDate.php:249
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr ""
+msgstr "พฤษภาคม"
 
 #: app/Date/CalendarDate.php:181 app/Functions/FunctionsPrint.php:654
 msgctxt "NOMINATIVE"
 msgid "May"
-msgstr ""
+msgstr "พฤษภาคม"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6836
@@ -8868,12 +8885,12 @@ msgstr ""
 
 #. I18N: Name of a module
 #. I18N: Menu entry
-#: admin.php:778 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1446
-#: app/Module/MediaTabModule.php:35 app/Theme/AdministrationTheme.php:177
-#: inverselink.php:70
+#: admin.php:778 admin_media.php:692
+#: app/Functions/FunctionsPrintLists.php:1446 app/Module/MediaTabModule.php:35
+#: app/Theme/AdministrationTheme.php:177 inverselink.php:70
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:74
 msgid "Media"
-msgstr ""
+msgstr "สื่อ"
 
 #. I18N: Label for search field
 #: find.php:184
@@ -9164,9 +9181,9 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:439
 #: app/Module/GoogleMapsModule.php:278 app/Module/GoogleMapsModule.php:1298
 #: app/Module/GoogleMapsModule.php:3484
-#: app/Module/RelationshipsChartModule.php:152 app/Module/SiteMapModule.php:297
-#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
-#: app/Theme/AdministrationTheme.php:190
+#: app/Module/RelationshipsChartModule.php:152
+#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
+#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr ""
 
@@ -9331,7 +9348,7 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:276
 #: modules_v3/relative_ext_report/report.xml:65 search_advanced.php:245
 msgid "Mother"
-msgstr ""
+msgstr "แม่"
 
 #. I18N: %s is the name of an individual’s mother
 #: app/Individual.php:1069
@@ -9432,7 +9449,7 @@ msgstr ""
 
 #: app/Theme/AbstractTheme.php:1636
 msgid "My pages"
-msgstr ""
+msgstr "หน้าเว็บของฉัน"
 
 #: app/Module/UserWelcomeModule.php:59 app/Theme/AbstractTheme.php:1662
 msgid "My pedigree"
@@ -9473,7 +9490,7 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:43
 #: modules_v3/relative_ext_report/report.xml:50
 msgid "Name"
-msgstr ""
+msgstr "ชื่อ"
 
 #. I18N: gedcom tag REPO:NAME
 #: app/GedcomTag.php:601
@@ -9493,12 +9510,12 @@ msgstr ""
 #. I18N: gedcom tag NPFX
 #: app/GedcomTag.php:642
 msgid "Name prefix"
-msgstr ""
+msgstr "คำนำหน้าชื่อ"
 
 #. I18N: gedcom tag NSFX
 #: app/GedcomTag.php:646
 msgid "Name suffix"
-msgstr ""
+msgstr "คำต่อท้ายชื่อ"
 
 #: modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10 search.php:198 statistics.php:189
@@ -9646,7 +9663,7 @@ msgstr ""
 #. I18N: gedcom tag NICK
 #: app/GedcomTag.php:630
 msgid "Nickname"
-msgstr ""
+msgstr "ชื่อเล่น"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6839
@@ -9961,11 +9978,11 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:1101
 #: modules_v3/occupation_report/report.xml:64
 msgid "Note"
-msgstr ""
+msgstr "หมายเหตุ"
 
 #: help_text.php:261
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr ""
+msgstr "หมายเหตุ"
 
 #: admin_users.php:601
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
@@ -9997,22 +10014,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:221
 msgctxt "GENITIVE"
 msgid "November"
-msgstr ""
+msgstr "พฤศจิกายน"
 
 #: app/Date/CalendarDate.php:289
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr ""
+msgstr "พฤศจิกายน"
 
 #: app/Date/CalendarDate.php:255
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr ""
+msgstr "พฤศจิกายน"
 
 #: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:660
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr ""
+msgstr "พฤศจิกายน"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:265
@@ -10094,7 +10111,7 @@ msgstr ""
 #: app/GedcomTag.php:654 modules_v3/occupation_report/report.xml:5
 #: modules_v3/occupation_report/report.xml:54
 msgid "Occupation"
-msgstr ""
+msgstr "อาชีพ"
 
 #. I18N: Name of a report
 #: app/Module/OccupationReportModule.php:29
@@ -10121,22 +10138,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:220
 msgctxt "GENITIVE"
 msgid "October"
-msgstr ""
+msgstr "ตุลาคม"
 
 #: app/Date/CalendarDate.php:288
 msgctxt "INSTRUMENTAL"
 msgid "October"
-msgstr ""
+msgstr "ตุลาคม"
 
 #: app/Date/CalendarDate.php:254
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr ""
+msgstr "ตุลาคม"
 
 #: app/Date/CalendarDate.php:186 app/Functions/FunctionsPrint.php:659
 msgctxt "NOMINATIVE"
 msgid "October"
-msgstr ""
+msgstr "ตุลาคม"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:275
@@ -10371,7 +10388,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -10618,7 +10636,8 @@ msgstr ""
 msgid "PhpGedView must use the same database as webtrees."
 msgstr ""
 
-#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697 admin_trees_manage.php:725
+#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697
+#: admin_trees_manage.php:725
 msgid "PhpGedView to webtrees transfer wizard"
 msgstr ""
 
@@ -11233,8 +11252,9 @@ msgstr ""
 msgid "Random images from the current family tree."
 msgstr ""
 
-#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1799 edit_interface.php:1869
+#: app/Controller/FamilyController.php:88
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1799
+#: edit_interface.php:1869
 msgid "Re-order children"
 msgstr ""
 
@@ -11257,7 +11277,8 @@ msgid "Real name"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr ""
 
@@ -11273,7 +11294,8 @@ msgstr ""
 #: admin_site_change.php:328 admin_site_change.php:389
 #: admin_trees_config.php:526 app/Functions/FunctionsPrintLists.php:1801
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:326 app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:326
+#: app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -11502,7 +11524,7 @@ msgstr ""
 #: admin_module_reports.php:28 admin_modules.php:164
 #: app/Theme/AbstractTheme.php:1698 app/Theme/AdministrationTheme.php:196
 msgid "Reports"
-msgstr ""
+msgstr "รายงาน"
 
 #: admin.php:777 admin.php:835 admin_trees_duplicates.php:140
 #: app/Module/FamilyTreeStatisticsModule.php:124
@@ -11566,7 +11588,7 @@ msgstr ""
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
 msgid "Residence"
-msgstr ""
+msgstr "ที่อยู่อาศัย"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
@@ -11848,7 +11870,7 @@ msgstr ""
 #: app/Theme/WebtreesTheme.php:58 app/Theme/WebtreesTheme.php:59
 #: app/Theme/XeneaTheme.php:57 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:89
 msgid "Search"
-msgstr ""
+msgstr "ค้นหา"
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
@@ -11921,7 +11943,7 @@ msgstr ""
 
 #: admin_site_merge.php:214 admin_site_merge.php:261 admin_site_merge.php:307
 msgid "Select"
-msgstr ""
+msgstr "เลือก"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:208
@@ -12057,22 +12079,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:219
 msgctxt "GENITIVE"
 msgid "September"
-msgstr ""
+msgstr "กันยายน"
 
 #: app/Date/CalendarDate.php:287
 msgctxt "INSTRUMENTAL"
 msgid "September"
-msgstr ""
+msgstr "กันยายน"
 
 #: app/Date/CalendarDate.php:253
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr ""
+msgstr "กันยายน"
 
 #: app/Date/CalendarDate.php:185 app/Functions/FunctionsPrint.php:658
 msgctxt "NOMINATIVE"
 msgid "September"
-msgstr ""
+msgstr "กันยายน"
 
 #. I18N: The seventh day in the French republican calendar
 #: app/Date/FrenchDate.php:203
@@ -12735,11 +12757,11 @@ msgstr ""
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
 #: app/Theme/AbstractTheme.php:1561 login.php:150
 msgid "Sign in"
-msgstr ""
+msgstr "ลงชื่อเข้าใช้"
 
 #: app/Module/LoginBlockModule.php:62 app/Theme/AbstractTheme.php:1572
 msgid "Sign out"
-msgstr ""
+msgstr "ออกจากระบบ"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:446
@@ -12965,7 +12987,7 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:529
 #: modules_v3/missing_facts_report/report.xml:570
 msgid "Source"
-msgstr ""
+msgstr "แหล่งที่มา"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: admin_trees_config.php:2110
@@ -13000,7 +13022,7 @@ msgstr ""
 #: search.php:98 source.php:144 sourcelist.php:33 sourcelist.php:37
 #: statistics.php:354 statistics.php:391
 msgid "Sources"
-msgstr ""
+msgstr "แหล่งที่มา"
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
@@ -13175,7 +13197,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
 msgid "Stories"
-msgstr ""
+msgstr "เรื่อง"
 
 #: app/Module/StoriesModule.php:237
 msgid "Story"
@@ -13242,7 +13264,7 @@ msgstr ""
 #. I18N: gedcom tag SURN
 #: app/GedcomTag.php:818 help_text.php:297 search.php:236
 msgid "Surname"
-msgstr ""
+msgstr "นามสกุล"
 
 #: app/Stats.php:1641 statistics.php:658
 msgid "Surname distribution chart"
@@ -13259,7 +13281,7 @@ msgstr ""
 #. I18N: gedcom tag SPFX
 #: app/GedcomTag.php:792
 msgid "Surname prefix"
-msgstr ""
+msgstr "คำนำหน้านามสกุล"
 
 #: admin_trees_config.php:2092
 msgid "Surname tradition"
@@ -13613,8 +13635,8 @@ msgstr ""
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:287
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:287
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr ""
@@ -13961,7 +13983,7 @@ msgstr ""
 #: admin_modules.php:251 admin_users.php:485 app/Theme/AbstractTheme.php:1778
 #: edituser.php:272
 msgid "Theme"
-msgstr ""
+msgstr "กระทู้"
 
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:27
@@ -14006,8 +14028,8 @@ msgstr ""
 msgid "There are no source citations for this individual."
 msgstr ""
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1961
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1961
 msgid "There are pending changes for you to moderate."
 msgstr ""
 
@@ -14893,7 +14915,8 @@ msgstr ""
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:88
-#: modules_v3/death_report/report.xml:99 modules_v3/fact_sources/report.xml:142
+#: modules_v3/death_report/report.xml:99
+#: modules_v3/fact_sources/report.xml:142
 #: modules_v3/fact_sources/report.xml:146
 #: modules_v3/fact_sources/report.xml:305
 #: modules_v3/fact_sources/report.xml:309
@@ -15032,7 +15055,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:696 app/GedcomTag.php:848
 #: medialist.php:149
 msgid "Type"
-msgstr ""
+msgstr "หมวด"
 
 #: app/GedcomTag.php:434
 msgid "Type of event"
@@ -15733,7 +15756,8 @@ msgstr ""
 msgid "Who is online"
 msgstr ""
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr ""
 
@@ -16202,7 +16226,7 @@ msgstr ""
 #: app/Module/FamilyTreeFavoritesModule.php:228
 #: app/Module/GoogleMapsModule.php:4025 timeline.php:306
 msgid "add"
-msgstr ""
+msgstr "เพิ่ม"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
@@ -16242,7 +16266,7 @@ msgstr ""
 #: statisticsplot.php:1133 statisticsplot.php:1183 statisticsplot.php:1233
 #: statisticsplot.php:1283
 msgid "age"
-msgstr ""
+msgstr "อายุ"
 
 #. I18N: An access rule - allow access to the site
 #: admin_site_access.php:27 admin_site_access.php:34
@@ -16350,7 +16374,7 @@ msgstr ""
 
 #: app/Stats.php:2913
 msgid "birth"
-msgstr ""
+msgstr "กำเนิด"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:79
@@ -16510,17 +16534,18 @@ msgstr ""
 #. I18N: A button label.
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:686
-#: app/Module/GoogleMapsModule.php:3408 app/Theme/AbstractTheme.php:700
-#: edit_changes.php:245 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1743
-#: edit_interface.php:1848 edit_interface.php:2040 edit_interface.php:2203
-#: edit_interface.php:2588 find.php:760 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189
+#: app/Module/GoogleMapsModule.php:686 app/Module/GoogleMapsModule.php:3408
+#: app/Theme/AbstractTheme.php:700 edit_changes.php:245 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1743 edit_interface.php:1848 edit_interface.php:2040
+#: edit_interface.php:2203 edit_interface.php:2588 find.php:760
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
-msgstr ""
+msgstr "ปิด"
 
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:180
@@ -16611,7 +16636,7 @@ msgstr ""
 #: admin_site_change.php:374 admin_site_clean.php:115 admin_site_logs.php:314
 #: admin_users.php:772
 msgid "delete"
-msgstr ""
+msgstr "ลบ"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:28 admin_site_access.php:35
@@ -16653,7 +16678,7 @@ msgstr ""
 #: admin_trees_config.php:2077
 #: app/Module/FrequentlyAskedQuestionsModule.php:365
 msgid "edit"
-msgstr ""
+msgstr "แก้ไข"
 
 #: app/Functions/Functions.php:569
 msgid "eighth cousin"
@@ -16672,15 +16697,15 @@ msgstr ""
 
 #: app/Functions/Functions.php:763
 msgid "elder brother"
-msgstr ""
+msgstr "พี่ชาย"
 
 #: app/Functions/Functions.php:797
 msgid "elder sibling"
-msgstr ""
+msgstr "พี่น้องผู้สูงอายุ"
 
 #: app/Functions/Functions.php:780
 msgid "elder sister"
-msgstr ""
+msgstr "พี่สาว"
 
 #: app/Functions/Functions.php:575
 msgid "eleventh cousin"
@@ -16752,7 +16777,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:689
 msgid "father"
-msgstr ""
+msgstr "พ่อ"
 
 #: app/Functions/Functions.php:860
 msgctxt "husband’s father"
@@ -18647,7 +18672,7 @@ msgstr ""
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:279
 msgid "herself"
-msgstr ""
+msgstr "ตัวเธอเอง"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:761
@@ -18661,7 +18686,7 @@ msgstr ""
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:277
 msgid "himself"
-msgstr ""
+msgstr "ตัวเขาเอง"
 
 #: app/Functions/Functions.php:709 edit_interface.php:1928
 #: edit_interface.php:1963
@@ -18875,7 +18900,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:687
 msgid "mother"
-msgstr ""
+msgstr "แม่"
 
 #: app/Functions/Functions.php:862
 msgctxt "husband’s mother"
@@ -19044,7 +19069,8 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19216,20 +19242,21 @@ msgstr ""
 #. I18N: A button label.
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:262
-#: admin_site_access.php:307 admin_site_config.php:651 admin_site_merge.php:344
-#: admin_trees_config.php:2147 admin_users.php:652
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129
+#: admin_modules.php:262 admin_site_access.php:307 admin_site_config.php:651
+#: admin_site_merge.php:344 admin_trees_config.php:2147 admin_users.php:652
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:471 app/Module/GoogleMapsModule.php:685
 #: app/Module/GoogleMapsModule.php:2348 app/Module/GoogleMapsModule.php:3407
-#: app/Module/RelationshipsChartModule.php:177 app/Module/SiteMapModule.php:320
-#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
-#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1742 edit_interface.php:1846 edit_interface.php:2039
-#: edit_interface.php:2201 edit_interface.php:2584 editnews.php:74
-#: edituser.php:317 find.php:537 index_edit.php:376
+#: app/Module/RelationshipsChartModule.php:177
+#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
+#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
+#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
+#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
+#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1742
+#: edit_interface.php:1846 edit_interface.php:2039 edit_interface.php:2201
+#: edit_interface.php:2584 editnews.php:74 edituser.php:317 find.php:537
+#: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:197
 msgid "save"
@@ -19461,12 +19488,12 @@ msgstr ""
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:84 login.php:201
 msgid "sign in"
-msgstr ""
+msgstr "ลงชื่อเข้าใช้"
 
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:65
 msgid "sign out"
-msgstr ""
+msgstr "ออกจากระบบ"
 
 #: app/Functions/Functions.php:785
 msgid "sister"
@@ -20035,7 +20062,7 @@ msgstr ""
 
 #: timeline.php:130
 msgid "years"
-msgstr ""
+msgstr "ปี"
 
 #: admin_trees_config.php:75 admin_users.php:241 admin_users.php:242
 #: app/Functions/FunctionsEdit.php:133 app/Functions/FunctionsEdit.php:619
@@ -20062,15 +20089,15 @@ msgstr ""
 
 #: app/Functions/Functions.php:761
 msgid "younger brother"
-msgstr ""
+msgstr "น้องชาย"
 
 #: app/Functions/Functions.php:795
 msgid "younger sibling"
-msgstr ""
+msgstr "น้องสาว"
 
 #: app/Functions/Functions.php:778
 msgid "younger sister"
-msgstr ""
+msgstr "น้องสาว"
 
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:169 search_advanced.php:170 search_advanced.php:171

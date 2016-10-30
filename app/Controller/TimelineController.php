@@ -215,12 +215,12 @@ class TimelineController extends PageController {
 		} elseif ($record instanceof Family) {
 			echo $gdate->display();
 			if ($record->getHusband() && $record->getHusband()->getBirthDate()->isOK()) {
-				$ageh = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getHusband()->getBirthDate(), $gdate), false);
+				$ageh = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getHusband()->getBirthDate(), $gdate));
 			} else {
 				$ageh = null;
 			}
 			if ($record->getWife() && $record->getWife()->getBirthDate()->isOK()) {
-				$agew = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getWife()->getBirthDate(), $gdate), false);
+				$agew = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getWife()->getBirthDate(), $gdate));
 			} else {
 				$agew = null;
 			}

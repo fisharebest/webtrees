@@ -464,6 +464,8 @@ $old_files = array(
 	WT_ROOT . 'themes/minimal/css-1.7.5',
 	WT_ROOT . 'themes/webtrees/css-1.7.5',
 	WT_ROOT . 'themes/xenea/css-1.7.5',
+	// Removed in 1.7.9
+	WT_ROOT . 'assets/js-1.7.7',
 );
 
 // Delete old files (if we can).

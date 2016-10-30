@@ -481,18 +481,17 @@ class Date {
 	 *
 	 * @param Date      $d1
 	 * @param Date|null $d2
-	 * @param bool      $warn_on_negative
 	 *
 	 * @return string
 	 */
-	public static function getAgeGedcom(Date $d1, Date $d2 = null, $warn_on_negative = true) {
+	public static function getAgeGedcom(Date $d1, Date $d2 = null) {
 		if (is_null($d2)) {
-			return $d1->date1->getAge(true, WT_CLIENT_JD, $warn_on_negative);
+			return $d1->date1->getAge(true, WT_CLIENT_JD, true);
 		} else {
 			// If dates overlap, then can’t calculate age.
 			if (self::compare($d1, $d2)) {
-				return $d1->date1->getAge(true, $d2->minimumJulianDay(), $warn_on_negative);
-			} elseif (self::compare($d1, $d2) == 0 && $d1->date1->minJD == $d2->minimumJulianDay()) {
+				return $d1->date1->getAge(true, $d2->minimumJulianDay(), true);
+			} elseif (self::compare($d1, $d2) == 0 && $d1->minimumJulianDay() == $d2->minimumJulianDay()) {
 				return '0d';
 			} else {
 				return '';

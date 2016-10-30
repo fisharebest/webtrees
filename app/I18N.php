@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Exception;
 use Fisharebest\ExtCalendar\ArabicCalendar;
 use Fisharebest\ExtCalendar\CalendarInterface;
 use Fisharebest\ExtCalendar\GregorianCalendar;
@@ -376,8 +377,8 @@ class I18N {
 			}
 		}
 
-		$cache_dir_exists = File::mkdir(WT_DATA_DIR . 'cache');
-		$cache_file       = WT_DATA_DIR . 'cache/language-' . self::$locale->languageTag() . '-cache.php';
+		$cache_dir  = WT_DATA_DIR . 'cache/';
+		$cache_file = $cache_dir . 'language-' . self::$locale->languageTag() . '-cache.php';
 		if (file_exists($cache_file)) {
 			$filemtime = filemtime($cache_file);
 		} else {
@@ -421,9 +422,11 @@ class I18N {
 				$translation  = new Translation($translation_file);
 				$translations = array_merge($translations, $translation->asArray());
 			}
-			if ($cache_dir_exists && is_writeable($cache_file)) {
+			try {
+				File::mkdir($cache_dir);
+				file_put_contents($cache_file, '<?php return ' . var_export($translations, true) . ';');
+			} catch (Exception $ex) {
 				// During setup, we may not have been able to create it.
-				file_put_contents($cache_file, '<' . '?php return ' . var_export($translations, true) . ';');
 			}
 		} else {
 			$translations = include $cache_file;

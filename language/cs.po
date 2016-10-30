@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-07-05 08:19+0000\n"
+"PO-Revision-Date: 2016-10-25 08:33+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.8\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -492,8 +492,8 @@ msgstr[0] "před rokem"
 msgstr[1] "před %s lety"
 msgstr[2] "před %s lety"
 
-#: app/Functions/FunctionsPrintLists.php:1942 app/Module/YahrzeitModule.php:129
-#: calendar.php:601
+#: app/Functions/FunctionsPrintLists.php:1942
+#: app/Module/YahrzeitModule.php:129 calendar.php:601
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s let výročí"
@@ -981,7 +981,7 @@ msgstr "Zpráva o osobách, které byly pochovány na daném místě."
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "Výpis osob, které měly svatbu na daném místě nebo čase."
+msgstr "Výpis osob, které byly oddány na daném místě nebo čase."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
@@ -1310,7 +1310,8 @@ msgstr "Přidat dítě"
 msgid "Add a child to create a one-parent family"
 msgstr "Přidat dítě a vytvořit tak rodinu s jedním rodičem"
 
-#: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
+#: app/Controller/FamilyController.php:82
+#: app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
 msgstr "Přidat dítě k této rodině"
 
@@ -1348,9 +1349,10 @@ msgstr "Přidat manžela použitím existující osoby"
 msgid "Add a journal entry"
 msgstr "Přidat do deníku záznam"
 
-#: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1125
-#: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
-#: app/Module/MediaTabModule.php:87 source.php:168
+#: app/Controller/FamilyController.php:162
+#: app/Functions/FunctionsEdit.php:1125 app/Module/AlbumModule.php:98
+#: app/Module/AlbumModule.php:99 app/Module/MediaTabModule.php:87
+#: source.php:168
 msgid "Add a media object"
 msgstr "Přidat objekt médií"
 
@@ -1366,8 +1368,8 @@ msgstr "Přidat jméno"
 msgid "Add a news article"
 msgstr "Přidat novinku"
 
-#: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1104
-#: app/Module/NotesTabModule.php:102
+#: app/Controller/FamilyController.php:149
+#: app/Functions/FunctionsEdit.php:1104 app/Module/NotesTabModule.php:102
 msgid "Add a note"
 msgstr "Přidat poznámku"
 
@@ -1378,14 +1380,15 @@ msgstr "Přidat omezení"
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
 #: app/Module/OnThisDayModule.php:162 app/Module/RecentChangesModule.php:175
-#: app/Module/ResearchTaskModule.php:230 app/Module/ReviewChangesModule.php:193
+#: app/Module/ResearchTaskModule.php:230
+#: app/Module/ReviewChangesModule.php:193
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
 msgstr "Přidat rolovací lištu, když se blok zvětšuje"
 
-#: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1114
-#: app/Module/NotesTabModule.php:112
+#: app/Controller/FamilyController.php:155
+#: app/Functions/FunctionsEdit.php:1114 app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
 msgstr "Přidat sdílenou poznámku"
 
@@ -1393,8 +1396,8 @@ msgstr "Přidat sdílenou poznámku"
 msgid "Add a son or daughter"
 msgstr "Přidat syna nebo dceru"
 
-#: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1053
-#: app/Module/SourcesTabModule.php:95
+#: app/Controller/FamilyController.php:172
+#: app/Functions/FunctionsEdit.php:1053 app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
 msgstr "Přidat pramen citací"
 
@@ -1454,7 +1457,7 @@ msgstr "Přidat odkazy"
 
 #: app/Module/RelativesTabModule.php:226
 msgid "Add marriage details"
-msgstr "Přidat podrobnosti o svatbě"
+msgstr "Přidat podrobnosti o sňatku"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
@@ -1769,12 +1772,12 @@ msgstr "Věkový rozdíl"
 
 #: statistics.php:550 statisticsplot.php:1282
 msgid "Age in year of first marriage"
-msgstr "Věk v roce první svatby"
+msgstr "Věk v roce prvního sňatku"
 
 #: app/Functions/FunctionsPrintLists.php:1002 statistics.php:260
 #: statistics.php:545 statisticsplot.php:1232
 msgid "Age in year of marriage"
-msgstr "Věk při vdávání/ženění"
+msgstr "Věk v roce sňatku"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1311
@@ -1835,10 +1838,10 @@ msgstr "Naživu"
 #: app/Module/GoogleMapsModule.php:1334 app/Module/GoogleMapsModule.php:1347
 #: app/Module/GoogleMapsModule.php:4080 app/Module/SlideShowModule.php:264
 #: app/Module/UserMessagesModule.php:111 app/Stats.php:5581 calendar.php:257
-#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163 famlist.php:165
-#: famlist.php:249 famlist.php:251 indilist.php:63 indilist.php:69
-#: indilist.php:75 indilist.php:163 indilist.php:165 indilist.php:249
-#: indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
+#: famlist.php:63 famlist.php:69 famlist.php:75 famlist.php:163
+#: famlist.php:165 famlist.php:249 famlist.php:251 indilist.php:63
+#: indilist.php:69 indilist.php:75 indilist.php:163 indilist.php:165
+#: indilist.php:249 indilist.php:251 modules_v3/ahnentafel_report/report.xml:7
 #: modules_v3/descendancy_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/individual_ext_report/report.xml:7
@@ -2055,7 +2058,8 @@ msgstr "Anguilla"
 #: app/Functions/FunctionsPrintLists.php:275
 #: app/Functions/FunctionsPrintLists.php:281
 #: app/Functions/FunctionsPrintLists.php:743
-#: app/Functions/FunctionsPrintLists.php:1805 app/Module/YahrzeitModule.php:171
+#: app/Functions/FunctionsPrintLists.php:1805
+#: app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
 msgstr "Výročí"
 
@@ -2206,7 +2210,8 @@ msgstr "Argentina"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -3523,7 +3528,8 @@ msgstr "Změněno %1$s uživatelem %2$s"
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:435
 #: app/Module/ChangeReportModule.php:29 edit_changes.php:182
-#: modules_v3/change_report/report.xml:3 modules_v3/change_report/report.xml:44
+#: modules_v3/change_report/report.xml:3
+#: modules_v3/change_report/report.xml:44
 msgid "Changes"
 msgstr "Změny"
 
@@ -3559,9 +3565,9 @@ msgstr "Typ diagramu"
 
 #. I18N: Name of a module/block
 #. I18N: Menu entry
-#: admin_module_charts.php:28 admin_modules.php:163 admin_trees_config.php:1206
-#: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
-#: app/Theme/AdministrationTheme.php:195
+#: admin_module_charts.php:28 admin_modules.php:163
+#: admin_trees_config.php:1206 app/Module/ChartsBlockModule.php:34
+#: app/Theme/AbstractTheme.php:1107 app/Theme/AdministrationTheme.php:195
 msgid "Charts"
 msgstr "Diagramy"
 
@@ -3911,7 +3917,7 @@ msgstr "Komentář"
 #. I18N: gedcom tag _COML
 #: app/GedcomTag.php:1249
 msgid "Common law marriage"
-msgstr "Civilní sňatek"
+msgstr "Sňatek podle obecného práva"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:38
@@ -4008,9 +4014,10 @@ msgstr "Pokračování"
 #: app/Module/FrequentlyAskedQuestionsModule.php:438
 #: app/Module/GoogleMapsModule.php:277 app/Module/GoogleMapsModule.php:1297
 #: app/Module/GoogleMapsModule.php:3483
-#: app/Module/RelationshipsChartModule.php:151 app/Module/SiteMapModule.php:296
-#: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
-#: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
+#: app/Module/RelationshipsChartModule.php:151
+#: app/Module/SiteMapModule.php:296 app/Module/StoriesModule.php:212
+#: app/Module/StoriesModule.php:347 app/Theme/AbstractTheme.php:1315
+#: app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
 msgstr "Panel správy"
 
@@ -4412,7 +4419,8 @@ msgstr "Uživatelský účet databáze"
 #: help_text.php:166 modules_v3/bdm_report/report.xml:132
 #: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
 #: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:46
-#: modules_v3/fact_sources/report.xml:72 modules_v3/fact_sources/report.xml:159
+#: modules_v3/fact_sources/report.xml:72
+#: modules_v3/fact_sources/report.xml:159
 #: modules_v3/marriage_report/report.xml:46
 #: modules_v3/occupation_report/report.xml:57
 msgid "Date"
@@ -4532,7 +4540,7 @@ msgstr "Datum poslední změny"
 #: modules_v3/fact_sources/report.xml:319
 #: modules_v3/missing_facts_report/report.xml:463
 msgid "Date of marriage"
-msgstr "Datum svatby"
+msgstr "Datum sňatku"
 
 #: app/GedcomTag.php:562 modules_v3/missing_facts_report/report.xml:420
 msgid "Date of marriage banns"
@@ -4979,7 +4987,8 @@ msgstr "Hodnost"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -5082,7 +5091,8 @@ msgstr "Generace potomků"
 #. I18N: Name of a module/report
 #: app/Controller/DescendancyController.php:65 app/GedcomTag.php:362
 #: app/Module/ChartsBlockModule.php:186
-#: app/Module/DescendancyChartModule.php:33 app/Module/DescendancyModule.php:32
+#: app/Module/DescendancyChartModule.php:33
+#: app/Module/DescendancyModule.php:32
 #: app/Module/DescendancyReportModule.php:29
 #: modules_v3/descendancy_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:6
@@ -5368,7 +5378,7 @@ msgstr "Toto uživatelské jméno již existuje. Prosím, vraťte se zpět a vyb
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Každý pramen zaznamenává určité události, obecně pro daný časový interval a místo (městský obvod, farnost). Například Sčítání zaznamenává sčítací události a církevní záznamy uchovávají data o narození, svatbách a úmrtí.<br><br>Vyberte události, které jsou zaznamenány tímto pramenem z poskytnutého seznamu událostí. Datum by mělo být specifikováno v rozsahu, např. <i>FROM 1900 TO 1910</i>. Místo je jméno nejnižší jurisdikce, která zahrnuje všechny místa jmenované v tomto prameni. Například „Oneida, Idaho, USA“ by byla použita jako výchozí místo pro události, které se staly v různých městech v kraji Oneida. „Idaho, USA“ by bylo výchozí místo, pokud by se události udály nejenom v kraji Oneida, ale i v ostatních krajích státu Idaho."
+msgstr "Každý pramen zaznamenává určité události, obecně pro daný časový interval a místo (městský obvod, farnost). Například Sčítání zaznamenává sčítací události a církevní záznamy uchovávají data o narození, sňatcích a úmrtí.<br><br>Vyberte události, které jsou zaznamenány tímto pramenem z poskytnutého seznamu událostí. Datum by mělo být specifikováno v rozsahu, např. <i>FROM 1900 TO 1910</i>. Místo je jméno nejnižší jurisdikce, která zahrnuje všechna místa jmenovaná v tomto prameni. Například „Oneida, Idaho, USA“ by byla použita jako výchozí místo pro události, které se staly v různých městech v kraji Oneida. „Idaho, USA“ by bylo výchozí místo, pokud by se události udály nejenom v kraji Oneida, ale i v ostatních krajích státu Idaho."
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -5979,7 +5989,8 @@ msgstr "Falklandy"
 #: app/Module/GoogleMapsModule.php:2384 app/Module/HtmlBlockModule.php:187
 #: app/Module/RelativesTabModule.php:37 app/Theme/AbstractTheme.php:1493
 #: calendar.php:414 descendancy.php:68 famlist.php:130 famlist.php:133
-#: gedrecord.php:118 mediaviewer.php:107 modules_v3/fact_sources/report.xml:152
+#: gedrecord.php:118 mediaviewer.php:107
+#: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:314 note.php:119 placelist.php:201
 #: repo.php:127 search.php:93 source.php:131 statistics.php:71
 #: statisticsplot.php:990 statisticsplot.php:1094 statisticsplot.php:1344
@@ -6069,7 +6080,8 @@ msgstr "Rodina od %s"
 msgid "Family tree"
 msgstr "Rodokmen"
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:90
+#: app/Module/ClippingsCartModule.php:479
 msgid "Family tree clippings cart"
 msgstr "Schránka výstřižků pro rodokmen"
 
@@ -6209,7 +6221,8 @@ msgid "Father’s family with an unknown individual"
 msgstr "Otcova rodina s neznámou osobou"
 
 #. I18N: Name of a module
-#: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1375
+#: app/Module/FamilyTreeFavoritesModule.php:62
+#: app/Theme/AbstractTheme.php:1375
 msgid "Favorites"
 msgstr "Oblíbené"
 
@@ -6346,7 +6359,8 @@ msgstr "Hledat speciální znak"
 msgid "Find all possible relationships"
 msgstr "Najít všechny možné vztahy"
 
-#: app/Functions/FunctionsPrint.php:692 app/Module/CensusAssistantModule.php:83
+#: app/Functions/FunctionsPrint.php:692
+#: app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
 #: app/Module/CensusAssistantModule.php:137 find.php:51
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:72
@@ -6438,7 +6452,8 @@ msgstr "Přejděte na tento odkaz a ověřte svoji e-mailovou adresu."
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7107,7 +7122,8 @@ msgstr "Helsinki, Finsko"
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
 #: modules_v3/cemetery_report/report.xml:10
-#: modules_v3/change_report/report.xml:12 modules_v3/death_report/report.xml:13
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
 #: modules_v3/descendancy_report/report.xml:10
 #: modules_v3/fact_sources/report.xml:10
 #: modules_v3/family_group_report/report.xml:14
@@ -7616,7 +7632,8 @@ msgid "Installation folder"
 msgstr "Instalační složka"
 
 #. I18N: Name of a module
-#: app/Module/ChartsBlockModule.php:188 app/Module/InteractiveTreeModule.php:33
+#: app/Module/ChartsBlockModule.php:188
+#: app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
 msgstr "Interaktivní strom"
 
@@ -8676,7 +8693,7 @@ msgstr "Manželská smlouva"
 
 #: app/Stats.php:1693 statistics.php:570
 msgid "Marriage by country"
-msgstr "Svatba podle země"
+msgstr "Sňatek podle země"
 
 #. I18N: gedcom tag MARC
 #: app/GedcomTag.php:568
@@ -8685,11 +8702,11 @@ msgstr "Manželská smlouva"
 
 #: modules_v3/marriage_report/report.xml:8
 msgid "Marriage date range end"
-msgstr "Konec rozmezí data svatby"
+msgstr "Konec rozmezí data sňatku"
 
 #: modules_v3/marriage_report/report.xml:7
 msgid "Marriage date range start"
-msgstr "Počátek rozmezí data svatby"
+msgstr "Počátek rozmezí data sňatku"
 
 #. I18N: gedcom tag _MEND
 #: app/GedcomTag.php:1655
@@ -8704,99 +8721,99 @@ msgstr "Oznámení sňatku"
 #. I18N: gedcom tag MARL
 #: app/GedcomTag.php:572
 msgid "Marriage license"
-msgstr "Manželská license"
+msgstr "Povolení k sňatku"
 
 #: app/GedcomTag.php:1634
 msgid "Marriage of a brother"
-msgstr "Svatba bratra"
+msgstr "Sňatek bratra"
 
 #: app/GedcomTag.php:1574
 msgid "Marriage of a child"
-msgstr "Svatba dítěte"
+msgstr "Sňatek dítěte"
 
 #: app/GedcomTag.php:1572
 msgid "Marriage of a daughter"
-msgstr "Svatba dcery"
+msgstr "Sňatek dcery"
 
 #. I18N: ...to another spouse
 #: app/GedcomTag.php:1621
 msgid "Marriage of a father"
-msgstr "Svatba otce"
+msgstr "Sňatek otce"
 
 #: app/GedcomTag.php:1587 app/GedcomTag.php:1596 app/GedcomTag.php:1605
 msgid "Marriage of a grandchild"
-msgstr "Svatba vnuka/vnučky"
+msgstr "Sňatek vnoučete"
 
 #: app/GedcomTag.php:1585
 msgid "Marriage of a granddaughter"
-msgstr "Svatba vnučky"
+msgstr "Sňatek vnučky"
 
 #: app/GedcomTag.php:1594
 msgctxt "daughter’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr "Svatba vnučky"
+msgstr "Sňatek vnučky"
 
 #: app/GedcomTag.php:1603
 msgctxt "son’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr "Svatba vnučky"
+msgstr "Sňatek vnučky"
 
 #: app/GedcomTag.php:1583
 msgid "Marriage of a grandson"
-msgstr "Svatba vnuka"
+msgstr "Sňatek vnuka"
 
 #: app/GedcomTag.php:1592
 msgctxt "daughter’s son"
 msgid "Marriage of a grandson"
-msgstr "Svatba vnuka"
+msgstr "Sňatek vnuka"
 
 #: app/GedcomTag.php:1601
 msgctxt "son’s son"
 msgid "Marriage of a grandson"
-msgstr "Svatba vnuka"
+msgstr "Sňatek vnuka"
 
 #: app/GedcomTag.php:1610
 msgid "Marriage of a half-brother"
-msgstr "Svatba polorodého bratra"
+msgstr "Sňatek polorodého bratra"
 
 #: app/GedcomTag.php:1614
 msgid "Marriage of a half-sibling"
-msgstr "Svatba polorodého sourozence"
+msgstr "Sňatek polorodého sourozence"
 
 #: app/GedcomTag.php:1612
 msgid "Marriage of a half-sister"
-msgstr "Svatba polorodé sestry"
+msgstr "Sňatek polorodé sestry"
 
 #. I18N: ...to another spouse
 #: app/GedcomTag.php:1625
 msgid "Marriage of a mother"
-msgstr "Svatba matky"
+msgstr "Sňatek matky"
 
 #. I18N: ...to another spouse
 #: app/GedcomTag.php:1629
 msgid "Marriage of a parent"
-msgstr "Svatba rodiče"
+msgstr "Sňatek rodiče"
 
 #: app/GedcomTag.php:1638
 msgid "Marriage of a sibling"
-msgstr "Svatba sourozence"
+msgstr "Sňatek sourozence"
 
 #: app/GedcomTag.php:1636
 msgid "Marriage of a sister"
-msgstr "Svatba nevlastní sestry"
+msgstr "Sňatek sestry"
 
 #: app/GedcomTag.php:1570
 msgid "Marriage of a son"
-msgstr "Svatba syna"
+msgstr "Sňatek syna"
 
 #. I18N: ...to each other
 #: app/GedcomTag.php:1579
 msgid "Marriage of parents"
-msgstr "Svatba rodičů"
+msgstr "Sňatek rodičů"
 
 #: modules_v3/marriage_report/report.xml:6
 msgid "Marriage place contains"
-msgstr "Místo svatby obsahuje"
+msgstr "Místo sňatku obsahuje"
 
 #: statistics.php:419
 msgid "Marriage places"
@@ -8805,7 +8822,7 @@ msgstr "Místa uzavření sňatků"
 #. I18N: gedcom tag MARS
 #: app/GedcomTag.php:592
 msgid "Marriage settlement"
-msgstr "Manželská dohoda"
+msgstr "Vypořádání manželství"
 
 #. I18N: gedcom tag _STAT
 #: app/GedcomTag.php:1735
@@ -8821,7 +8838,7 @@ msgstr "Sňatek neznámého typu"
 #: modules_v3/marriage_report/report.xml:3
 #: modules_v3/marriage_report/report.xml:30
 msgid "Marriages"
-msgstr "Svatby"
+msgstr "Sňatky"
 
 #: app/Stats.php:3543 statistics.php:223
 msgid "Marriages by century"
@@ -8935,9 +8952,9 @@ msgstr "Medford, Oregon, USA"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
-#: admin.php:778 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1446
-#: app/Module/MediaTabModule.php:35 app/Theme/AdministrationTheme.php:177
-#: inverselink.php:70
+#: admin.php:778 admin_media.php:692
+#: app/Functions/FunctionsPrintLists.php:1446 app/Module/MediaTabModule.php:35
+#: app/Theme/AdministrationTheme.php:177 inverselink.php:70
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:74
 msgid "Media"
 msgstr "Média"
@@ -9231,9 +9248,9 @@ msgstr "Modul"
 #: app/Module/FrequentlyAskedQuestionsModule.php:439
 #: app/Module/GoogleMapsModule.php:278 app/Module/GoogleMapsModule.php:1298
 #: app/Module/GoogleMapsModule.php:3484
-#: app/Module/RelationshipsChartModule.php:152 app/Module/SiteMapModule.php:297
-#: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
-#: app/Theme/AdministrationTheme.php:190
+#: app/Module/RelationshipsChartModule.php:152
+#: app/Module/SiteMapModule.php:297 app/Module/StoriesModule.php:213
+#: app/Module/StoriesModule.php:348 app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
 msgstr "Správa modulů"
 
@@ -9299,11 +9316,11 @@ msgstr "Měsíc úmrtí"
 
 #: statistics.php:525 statisticsplot.php:1082
 msgid "Month of first marriage"
-msgstr "Měsíc první svatby"
+msgstr "Měsíc prvního sňatku"
 
 #: statistics.php:520 statisticsplot.php:978
 msgid "Month of marriage"
-msgstr "Měsíc svatby"
+msgstr "Měsíc sňatku"
 
 #: timeline.php:128 timeline.php:130 timeline.php:132
 msgid "Month:"
@@ -9475,7 +9492,7 @@ msgstr "al-muharram"
 
 #: app/Functions/FunctionsPrintLists.php:722
 msgid "Multiple marriages"
-msgstr "Více sňatků"
+msgstr "Vícečetné sňatky"
 
 #: app/Module/UserWelcomeModule.php:53 app/Theme/AbstractTheme.php:1599
 #: edituser.php:111
@@ -10120,7 +10137,7 @@ msgstr "Počet křestních jmen"
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:634
 msgid "Number of marriages"
-msgstr "Počet svateb"
+msgstr "Počet sňatků"
 
 #: admin_users.php:680
 msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
@@ -10442,7 +10459,8 @@ msgstr "Časový limit PHP"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -10689,7 +10707,8 @@ msgstr "PhpGedView musí být ve verzi 4.2.3 nebo z SVN až po #%s"
 msgid "PhpGedView must use the same database as webtrees."
 msgstr "PhpGedView musí používat stejnou databázi jako webtrees."
 
-#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697 admin_trees_manage.php:725
+#: admin_pgv_to_wt.php:42 admin_trees_manage.php:697
+#: admin_trees_manage.php:725
 msgid "PhpGedView to webtrees transfer wizard"
 msgstr "Průvodce pro přechod z PhpGedView na webtrees"
 
@@ -10843,7 +10862,7 @@ msgstr "Místo imigrace"
 #: modules_v3/fact_sources/report.xml:321
 #: modules_v3/missing_facts_report/report.xml:474
 msgid "Place of marriage"
-msgstr "Místo svatby"
+msgstr "Místo sňatku"
 
 #: app/GedcomTag.php:564 modules_v3/missing_facts_report/report.xml:431
 msgid "Place of marriage banns"
@@ -11304,8 +11323,9 @@ msgstr "ramadán"
 msgid "Random images from the current family tree."
 msgstr "Náhodné obrázky ze současného rodokmenu."
 
-#: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1799 edit_interface.php:1869
+#: app/Controller/FamilyController.php:88
+#: app/Module/RelativesTabModule.php:279 edit_interface.php:1799
+#: edit_interface.php:1869
 msgid "Re-order children"
 msgstr "Seřadit děti"
 
@@ -11328,7 +11348,8 @@ msgid "Real name"
 msgstr "Skutečné jméno"
 
 #. I18N: Name of a module
-#: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
+#: app/Module/RecentChangesModule.php:44
+#: modules_v3/change_report/report.xml:92
 msgid "Recent changes"
 msgstr "Poslední změny"
 
@@ -11344,7 +11365,8 @@ msgstr "Recife, Brazílie"
 #: admin_site_change.php:328 admin_site_change.php:389
 #: admin_trees_config.php:526 app/Functions/FunctionsPrintLists.php:1801
 #: app/Module/ClippingsCartModule.php:484
-#: app/Module/RecentChangesModule.php:326 app/Module/ResearchTaskModule.php:111
+#: app/Module/RecentChangesModule.php:326
+#: app/Module/ResearchTaskModule.php:111
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
@@ -13684,8 +13706,8 @@ msgstr "Složka %s nemohla být smazána."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
-#: admin_media_upload.php:77 admin_media_upload.php:89 admin_site_config.php:37
-#: admin_trees_config.php:287
+#: admin_media_upload.php:77 admin_media_upload.php:89
+#: admin_site_config.php:37 admin_trees_config.php:287
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "Složka %s neexistuje, a ani nemohla být vytvořena."
@@ -14079,8 +14101,8 @@ msgstr "V tomto rodokmenu nejsou žádné badatelské úkoly."
 msgid "There are no source citations for this individual."
 msgstr "K této osobě nejsou žádné citace pramenů."
 
-#: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
-#: app/Theme/AbstractTheme.php:1961
+#: app/Module/ReviewChangesModule.php:87
+#: app/Module/ReviewChangesModule.php:111 app/Theme/AbstractTheme.php:1961
 msgid "There are pending changes for you to moderate."
 msgstr "Existují dosud neschválené změny."
 
@@ -14281,7 +14303,7 @@ msgstr "Toto je seznam čárkami oddělených popisků GEDCOMu, které se zobraz
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1815
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Toto je čárkami oddělený seznam údajů o faktech v GEDCOMu, které se zobrazí při přidávání nové rodiny. Například pokud MARR je v tomto seznamu, pak se ve formuláři zobrazí pole pro datum svatby a místo svatby."
+msgstr "Toto je čárkami oddělený seznam údajů o faktech v GEDCOMu, které se zobrazí při přidávání nové rodiny. Například pokud MARR je v tomto seznamu, pak se ve formuláři zobrazí pole pro datum sňatku a místo sňatku."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1697
@@ -14976,7 +14998,8 @@ msgstr "Celkový počet křestních jmen"
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:88
-#: modules_v3/death_report/report.xml:99 modules_v3/fact_sources/report.xml:142
+#: modules_v3/death_report/report.xml:99
+#: modules_v3/fact_sources/report.xml:142
 #: modules_v3/fact_sources/report.xml:146
 #: modules_v3/fact_sources/report.xml:305
 #: modules_v3/fact_sources/report.xml:309
@@ -15818,7 +15841,8 @@ msgstr "Kdo může nahrávat nové mediální soubory"
 msgid "Who is online"
 msgstr "Kdo je online"
 
-#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
+#: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163
+#: search.php:210
 msgid "Whole words only"
 msgstr "Pouze celá slova"
 
@@ -16595,14 +16619,15 @@ msgstr "děti"
 #. I18N: A button label.
 #: addmedia.php:232 addmedia.php:395 addmedia.php:716
 #: app/Module/CensusAssistantModule.php:120
-#: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:686
-#: app/Module/GoogleMapsModule.php:3408 app/Theme/AbstractTheme.php:700
-#: edit_changes.php:245 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1743
-#: edit_interface.php:1848 edit_interface.php:2040 edit_interface.php:2203
-#: edit_interface.php:2588 find.php:760 inverselink.php:161 message.php:137
+#: app/Module/CensusAssistantModule.php:189
+#: app/Module/GoogleMapsModule.php:686 app/Module/GoogleMapsModule.php:3408
+#: app/Theme/AbstractTheme.php:700 edit_changes.php:245 edit_interface.php:89
+#: edit_interface.php:184 edit_interface.php:325 edit_interface.php:386
+#: edit_interface.php:1019 edit_interface.php:1127 edit_interface.php:1270
+#: edit_interface.php:1375 edit_interface.php:1468 edit_interface.php:1559
+#: edit_interface.php:1743 edit_interface.php:1848 edit_interface.php:2040
+#: edit_interface.php:2203 edit_interface.php:2588 find.php:760
+#: inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "zavřít"
@@ -18729,7 +18754,7 @@ msgstr "polorodá sestra"
 
 #: statistics.php:628
 msgid "half-year after marriage"
-msgstr "půlrok po svatbě"
+msgstr "půlrok po sňatku"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:279
@@ -18868,7 +18893,7 @@ msgstr "markdown"
 
 #: app/Stats.php:2915
 msgid "marriage"
-msgstr "svatba"
+msgstr "sňatek"
 
 #: modules_v3/descendancy_report/report.xml:246
 msgctxt "FEMALE"
@@ -18958,11 +18983,11 @@ msgstr "měsíc"
 
 #: statistics.php:619
 msgid "months after marriage"
-msgstr "měsíce po svatbě"
+msgstr "měsíce po sňatku"
 
 #: statistics.php:622
 msgid "months before and after marriage"
-msgstr "měsíce před a po svatbě"
+msgstr "měsíce před a po sňatku"
 
 #: app/Functions/Functions.php:687
 msgid "mother"
@@ -19135,7 +19160,8 @@ msgstr "čísla"
 #: modules_v3/ahnentafel_report/report.xml:56
 #: modules_v3/bdm_report/report.xml:42 modules_v3/birth_report/report.xml:32
 #: modules_v3/cemetery_report/report.xml:36
-#: modules_v3/change_report/report.xml:45 modules_v3/death_report/report.xml:33
+#: modules_v3/change_report/report.xml:45
+#: modules_v3/death_report/report.xml:33
 #: modules_v3/descendancy_report/report.xml:43
 #: modules_v3/fact_sources/report.xml:44
 #: modules_v3/family_group_report/report.xml:89
@@ -19238,7 +19264,7 @@ msgstr "hlavní důkaz"
 
 #: statistics.php:625
 msgid "quarters after marriage"
-msgstr "čtvrtletí po svatbě"
+msgstr "čtvrtletí po sňatku"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/GedcomCode/GedcomCodeQuay.php:47
@@ -19307,20 +19333,21 @@ msgstr "robot"
 #. I18N: A button label.
 #: addmedia.php:715 admin_module_blocks.php:111 admin_module_charts.php:104
 #: admin_module_menus.php:129 admin_module_reports.php:104
-#: admin_module_sidebar.php:129 admin_module_tabs.php:129 admin_modules.php:262
-#: admin_site_access.php:307 admin_site_config.php:651 admin_site_merge.php:344
-#: admin_trees_config.php:2147 admin_users.php:652
+#: admin_module_sidebar.php:129 admin_module_tabs.php:129
+#: admin_modules.php:262 admin_site_access.php:307 admin_site_config.php:651
+#: admin_site_merge.php:344 admin_trees_config.php:2147 admin_users.php:652
 #: app/Module/FrequentlyAskedQuestionsModule.php:232
 #: app/Module/GoogleMapsModule.php:471 app/Module/GoogleMapsModule.php:685
 #: app/Module/GoogleMapsModule.php:2348 app/Module/GoogleMapsModule.php:3407
-#: app/Module/RelationshipsChartModule.php:177 app/Module/SiteMapModule.php:320
-#: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
-#: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1742 edit_interface.php:1846 edit_interface.php:2039
-#: edit_interface.php:2201 edit_interface.php:2584 editnews.php:74
-#: edituser.php:317 find.php:537 index_edit.php:376
+#: app/Module/RelationshipsChartModule.php:177
+#: app/Module/SiteMapModule.php:320 app/Module/StoriesModule.php:270
+#: block_edit.php:96 edit_interface.php:88 edit_interface.php:183
+#: edit_interface.php:324 edit_interface.php:385 edit_interface.php:1018
+#: edit_interface.php:1126 edit_interface.php:1269 edit_interface.php:1374
+#: edit_interface.php:1467 edit_interface.php:1558 edit_interface.php:1742
+#: edit_interface.php:1846 edit_interface.php:2039 edit_interface.php:2201
+#: edit_interface.php:2584 editnews.php:74 edituser.php:317 find.php:537
+#: index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:197
 msgid "save"

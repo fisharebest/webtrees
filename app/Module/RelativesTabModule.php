@@ -399,11 +399,11 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				</td>
 			</tr>
 		</table>
-		<script>
-			persistant_toggle("show-date-differences", ".elderdate");
-		</script>
 		<?php } ?>
 		<br>
+		<script>
+			persistent_toggle("show-date-differences", ".elderdate");
+		</script>
 		<?php
 
 		unset($show_full);
