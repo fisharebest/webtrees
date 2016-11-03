@@ -1534,12 +1534,10 @@ class FunctionsPrintLists {
 					autoWidth: false,
 					' . I18N::datatablesI18N() . ',
 					paging: false,
-					sorting: [[1, "asc"]],
+					sorting: [[0, "asc"]],
 					columns: [
-						/*  0 name  */ { dataSort: 1 },
-						/*  1 NAME  */ { type: "unicode", visible: false },
-						/*  2 count */ { dataSort: 3, class: "center" },
-						/*  3 COUNT */ { visible: false }
+						/*  0 name  */ null,
+						/*  1 count */ { class: "center" },
 					],
 				});
 			');
@@ -1550,13 +1548,14 @@ class FunctionsPrintLists {
 			$col_heading = I18N::translate('Individuals');
 		}
 
-		$html .= '<table class="surname-list">' .
-			'<thead><tr>' .
+		$html .=
+			'<table class="surname-list">' .
+			'<thead>' .
+			'<tr>' .
 			'<th>' . GedcomTag::getLabel('SURN') . '</th>' .
-			'<th></th>' .
 			'<th>' . $col_heading . '</th>' .
-			'<th></th>' .
-			'</tr></thead>';
+			'</tr>' .
+			'</thead>';
 
 		$html .= '<tbody>';
 		foreach ($surnames as $surn => $surns) {
@@ -1566,10 +1565,9 @@ class FunctionsPrintLists {
 			} else {
 				$url = $script . '?alpha=,&amp;ged=' . $tree->getNameUrl();
 			}
-			// Row counter
 			$html .= '<tr>';
 			// Surname
-			$html .= '<td>';
+			$html .= '<td data-type="unicode" data-sort="' . Filter::escapeHtml($surn) . '">';
 			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 			foreach ($surns as $spfxsurn => $indis) {
 				if ($spfxsurn) {
@@ -1580,22 +1578,21 @@ class FunctionsPrintLists {
 				}
 			}
 			$html .= '</td>';
-			// Sort column for name
-			$html .= '<td>' . $surn . '</td>';
 			// Surname count
-			$html .= '<td>';
 			$subtotal = 0;
 			foreach ($surns as $indis) {
 				$subtotal += count($indis);
+			}
+			$html .= '<td data-sort="' . $subtotal . '">';
+			foreach ($surns as $indis) {
 				$html .= I18N::number(count($indis)) . '<br>';
 			}
-			// More than one surname variant? Show a subtotal
 			if (count($surns) > 1) {
+				// More than one surname variant? Show a subtotal
 				$html .= I18N::number($subtotal);
 			}
 			$html .= '</td>';
-			// add hidden numeric sort column
-			$html .= '<td>' . $subtotal . '</td></tr>';
+			$html .= '</tr>';
 		}
 		$html .= '</tbody></table>';
 
@@ -1743,7 +1740,7 @@ class FunctionsPrintLists {
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
 				jQuery("#' . $table_id . '").dataTable({
-					dom: \'t\',
+					dom: "t",
 					' . I18N::datatablesI18N() . ',
 					autoWidth: false,
 					paging: false,
@@ -1751,27 +1748,23 @@ class FunctionsPrintLists {
 					filter: false,
 					info: true,
 					jQueryUI: true,
-					sorting: [[ ' . ($sort_by == 'alpha' ? 1 : 3) . ', "asc"]],
+					sorting: [[ ' . ($sort_by == 'alpha' ? 0 : 1) . ', "asc"]],
 					columns: [
-						/* 0-Record */ { dataSort: 1 },
-						/* 1-NAME */   { visible: false },
-						/* 2-Date */   { dataSort: 3 },
-						/* 3-DATE */   { visible: false },
-						/* 4-Anniv. */ { dataSort: 5, class: "center" },
-						/* 5-ANNIV  */ { type: "num", visible: false },
-						/* 6-Event */  { class: "center" }
+						/* 0-Record */ null,
+						/* 1-Date */   null,
+						/* 2-Anniv. */ { class: "center" },
+						/* 3-Event */  { class: "center" }
 					]
 				});
 			');
 
 		// Did we have any output? Did we skip anything?
-		$output          = 0;
 		$filter          = 0;
 		$filtered_events = array();
 
 		foreach (FunctionsDb::getEventsList($startjd, $endjd, $events, $WT_TREE) as $fact) {
 			$record = $fact->getParent();
-			//-- only living people ?
+			// Only living people ?
 			if ($only_living) {
 				if ($record instanceof Individual && $record->isDead()) {
 					$filter++;
@@ -1791,80 +1784,63 @@ class FunctionsPrintLists {
 				}
 			}
 
-			//-- Counter
-			$output++;
-
-			if ($output == 1) {
-				//-- table body
-				$html .= '<table id="' . $table_id . '" class="width100">';
-				$html .= '<thead><tr>';
-				$html .= '<th>' . I18N::translate('Record') . '</th>';
-				$html .= '<th>NAME</th>'; //hidden by datatables code
-				$html .= '<th>' . GedcomTag::getLabel('DATE') . '</th>';
-				$html .= '<th>DATE</th>'; //hidden by datatables code
-				$html .= '<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>';
-				$html .= '<th>ANNIV</th>';
-				$html .= '<th>' . GedcomTag::getLabel('EVEN') . '</th>';
-				$html .= '</tr></thead><tbody>';
-			}
-
 			$filtered_events[] = $fact;
 		}
 
-		foreach ($filtered_events as $n => $fact) {
-			$record = $fact->getParent();
-			$html .= '<tr>';
-			$html .= '<td>';
-			$html .= '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
-			if ($record instanceof Individual) {
-				$html .= $record->getSexImage();
-			}
-			$html .= '</td>';
-			$html .= '<td>' . $record->getSortName() . '</td>';
-			$html .= '<td>' . $fact->getDate()->display() . '</td>';
-			$html .= '<td>' . $n . '</td>';
-			$html .= '<td>' . ($fact->anniv ? I18N::number($fact->anniv) : '') . '</td>';
-			$html .= '<td>' . $fact->anniv . '</td>';
-			$html .= '<td>' . $fact->getLabel() . '</td>';
-			$html .= '</tr>';
-		}
+		if (!empty($filtered_events)) {
+			$html .= '<table id="' . $table_id . '" class="width100">';
+			$html .= '<thead><tr>';
+			$html .= '<th>' . I18N::translate('Record') . '</th>';
+			$html .= '<th>' . GedcomTag::getLabel('DATE') . '</th>';
+			$html .= '<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>';
+			$html .= '<th>' . GedcomTag::getLabel('EVEN') . '</th>';
+			$html .= '</tr></thead><tbody>';
 
-		if ($output != 0) {
-			$html .= '</tbody></table>';
-		}
-
-		// Print a final summary message about restricted/filtered facts
-		$summary = '';
-		if ($endjd == WT_CLIENT_JD) {
-			// We're dealing with the Today’s Events block
-			if ($output == 0) {
-				if ($filter == 0) {
-					$summary = I18N::translate('No events exist for today.');
-				} else {
-					$summary = I18N::translate('No events for living individuals exist for today.');
+			foreach ($filtered_events as $n => $fact) {
+				$record = $fact->getParent();
+				$html .= '<tr>';
+				$html .= '<td data-sort="' . Filter::escapeHtml($record->getSortName()) . '">';
+				$html .= '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>';
+				if ($record instanceof Individual) {
+					$html .= $record->getSexImage();
 				}
+				$html .= '</td>';
+				$html .= '<td data-sort="' . $fact->getDate()->minimumJulianDay() . '">';
+				$html .= $fact->getDate()->display();
+				$html .= '</td>';
+				$html .= '<td data-sort="' . $fact->anniv . '">';
+				$html .= ($fact->anniv ? I18N::number($fact->anniv) : '');
+				$html .= '</td>';
+				$html .= '<td>' . $fact->getLabel() . '</td>';
+				$html .= '</tr>';
 			}
+
+			$html .= '</tbody></table>';
 		} else {
-			// We're dealing with the Upcoming Events block
-			if ($output == 0) {
-				if ($filter == 0) {
-					if ($endjd == $startjd) {
-						$summary = I18N::translate('No events exist for tomorrow.');
+			if ($endjd === WT_CLIENT_JD) {
+				// We're dealing with the Today’s Events block
+				if ($filter === 0) {
+					$html .=  I18N::translate('No events exist for today.');
+				} else {
+					$html .=  I18N::translate('No events for living individuals exist for today.');
+				}
+			} else {
+				// We're dealing with the Upcoming Events block
+				if ($filter === 0) {
+					if ($endjd === $startjd) {
+						$html .=  I18N::translate('No events exist for tomorrow.');
 					} else {
-						$summary = /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */ I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
+						$html .=  /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */ I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
 					}
 				} else {
-					if ($endjd == $startjd) {
-						$summary = I18N::translate('No events for living individuals exist for tomorrow.');
+					if ($endjd === $startjd) {
+						$html .=  I18N::translate('No events for living individuals exist for tomorrow.');
 					} else {
 						// I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
-						$summary = I18N::plural('No events for living people exist for the next %s day.', 'No events for living people exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
+						$html .=  I18N::plural('No events for living people exist for the next %s day.', 'No events for living people exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
 					}
 				}
 			}
-		}
-		if ($summary != "") {
-			$html .= '<strong>' . $summary . '</strong>';
 		}
 
 		return $html;
@@ -1979,7 +1955,7 @@ class FunctionsPrintLists {
 			}
 		}
 		if ($summary) {
-			$html .= "<b>" . $summary . "</b>";
+			$html .= '<b>' . $summary . '</b>';
 		}
 
 		return $html;
