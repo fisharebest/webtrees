@@ -64,7 +64,7 @@ class MyersDiff {
 	 */
 	private function extractSnakes(array $v_save, $x, $y) {
 		$snakes = array();
-		for ($d = count($v_save) - 1; $x > 0 && $y > 0; --$d) {
+		for ($d = count($v_save) - 1; $x >= 0 && $y >= 0; --$d) {
 			array_unshift($snakes, array($x, $y));
 
 			$v = $v_save[$d];

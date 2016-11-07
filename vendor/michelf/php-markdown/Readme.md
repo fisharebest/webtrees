@@ -1,7 +1,7 @@
 PHP Markdown
 ============
 
-PHP Markdown Lib 1.6.0 - 23 Dec 2015
+PHP Markdown Lib 1.7.0 - 29 Oct 2016
 
 by Michel Fortin  
 <https://michelf.ca/>
@@ -149,7 +149,7 @@ Development and Testing
 -----------------------
 
 Pull requests for fixing bugs are welcome. Proposed new features are
-going meticulously reviewed -- taking into account backward compatibility, 
+going to be meticulously reviewed -- taking into account backward compatibility, 
 potential side effects, and future extensibility -- before deciding on
 acceptance or rejection.
 
@@ -173,6 +173,32 @@ PHP Markdown, please visit [michelf.ca/donate] or send Bitcoin to
 
 Version History
 ---------------
+
+PHP Markdown Lib 1.7.0 (29 Oct 2016)
+
+*	Added a `hard_wrap` configuration variable to make all newline characters 
+	in the text become `<br>` tags in the HTML output. By default, according 
+	to the standard Markdown syntax these newlines are ignored unless they a 
+	preceded by two spaces. Thanks to Jonathan Cohlmeyer for the implementation.
+
+*	Improved the parsing of list items to fix problematic cases that came to 
+	light with the addition of `hard_wrap`. This should have no effect on the 
+	output except span-level list items that ended with two spaces (and thus 
+	ended with a line break).
+
+*	Added a `code_span_content_func` configuration variable which takes a 
+	function that will convert the content of the code span to HTML. This can
+	be useful to implement syntax highlighting. Although contrary to its 
+	code block equivalent, there is no syntax for specifying a language. 
+	Credits to styxit for the implementation.
+
+*	Fixed a Markdwon Extra issue where two-space-at-end-of-line hard breaks 
+	wouldn't work inside of HTML block elements such as `<p markdown="1">` 
+	where the element expects only span-level content.
+
+*	In the parser code, switched to PHPDoc comment format. Thanks to 
+	Robbie Averill for the help.
+
 
 PHP Markdown Lib 1.6.0 (23 Dec 2015)  
 
@@ -320,7 +346,7 @@ Copyright and License
 ---------------------
 
 PHP Markdown Lib
-Copyright (c) 2004-2015 Michel Fortin
+Copyright (c) 2004-2016 Michel Fortin
 <https://michelf.ca/>  
 All rights reserved.
 
