@@ -321,7 +321,7 @@ class FunctionsPrintLists {
 				$class = '';
 			}
 			$html .= '<tr' . $class . '>';
-			//-- Indi name(s)
+			// Indi name(s)
 			$html .= '<td colspan="2">';
 			foreach ($person->getAllNames() as $num => $name) {
 				if ($name['type'] == 'NAME') {
@@ -344,19 +344,19 @@ class FunctionsPrintLists {
 			$html .= '</td>';
 			// Dummy column to match colspan in header
 			$html .= '<td style="display:none;"></td>';
-			//-- GIVN/SURN
+			// GIVN/SURN
 			// Use "AAAA" as a separator (instead of ",") as Javascript.localeCompare() ignores
 			// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 			// Similarly, @N.N. would sort as NN.
 			$html .= '<td>' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . 'AAAA' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . '</td>';
 			$html .= '<td>' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . 'AAAA' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . '</td>';
-			//-- SOSA
+			// SOSA
 			if ($option == 'sosa') {
 				$html .= '<td><a href="relationship.php?pid1=' . $datalist[1] . '&amp;pid2=' . $person->getXref() . '" title="' . I18N::translate('Relationships') . '">' . I18N::number($key) . '</a></td><td>' . $key . '</td>';
 			} else {
 				$html .= '<td></td><td>0</td>';
 			}
-			//-- Birth date
+			// Birth date
 			$html .= '<td>';
 			if ($birth_dates = $person->getAllBirthDates()) {
 				foreach ($birth_dates as $num => $birth_date) {
@@ -378,11 +378,11 @@ class FunctionsPrintLists {
 				$birth_dates[0] = new Date('');
 			}
 			$html .= '</td>';
-			//-- Event date (sortable)hidden by datatables code
+			// Event date (sortable)hidden by datatables code
 			$html .= '<td>' . $birth_date->julianDay() . '</td>';
-			//-- Birth anniversary
+			// Birth anniversary
 			$html .= '<td>' . Date::getAge($birth_dates[0], null, 2) . '</td>';
-			//-- Birth place
+			// Birth place
 			$html .= '<td>';
 			foreach ($person->getAllBirthPlaces() as $n => $birth_place) {
 				$tmp = new Place($birth_place, $person->getTree());
@@ -393,10 +393,10 @@ class FunctionsPrintLists {
 				$html .= FunctionsPrint::highlightSearchHits($tmp->getShortName()) . '</a>';
 			}
 			$html .= '</td>';
-			//-- Number of children
+			// Number of children
 			$nchi = $person->getNumberOfChildren();
 			$html .= '<td>' . I18N::number($nchi) . '</td><td>' . $nchi . '</td>';
-			//-- Death date
+			// Death date
 			$html .= '<td>';
 			if ($death_dates = $person->getAllDeathDates()) {
 				foreach ($death_dates as $num => $death_date) {
@@ -422,18 +422,18 @@ class FunctionsPrintLists {
 				$death_dates[0] = new Date('');
 			}
 			$html .= '</td>';
-			//-- Event date (sortable)hidden by datatables code
+			// Event date (sortable)hidden by datatables code
 			$html .= '<td>' . $death_date->julianDay() . '</td>';
-			//-- Death anniversary
+			// Death anniversary
 			$html .= '<td>' . Date::getAge($death_dates[0], null, 2) . '</td>';
-			//-- Age at death
+			// Age at death
 			$age = Date::getAge($birth_dates[0], $death_dates[0], 0);
 			if (!isset($unique_indis[$person->getXref()]) && $age >= 0 && $age <= $max_age) {
 				$deat_by_age[$age] .= $person->getSex();
 			}
 			// Need both display and sortable age
 			$html .= '<td>' . Date::getAge($birth_dates[0], $death_dates[0], 2) . '</td><td>' . Date::getAge($birth_dates[0], $death_dates[0], 1) . '</td>';
-			//-- Death place
+			// Death place
 			$html .= '<td>';
 			foreach ($person->getAllDeathPlaces() as $n => $death_place) {
 				$tmp = new Place($death_place, $person->getTree());
@@ -444,12 +444,12 @@ class FunctionsPrintLists {
 				$html .= FunctionsPrint::highlightSearchHits($tmp->getShortName()) . '</a>';
 			}
 			$html .= '</td>';
-			//-- Last change
+			// Last change
 			$html .= '<td>' . $person->lastChangeTimestamp() . '</td>';
 			$html .= '<td>' . $person->lastChangeTimestamp(true) . '</td>';
-			//-- Sorting by gender
+			// Sorting by gender
 			$html .= '<td>' . $person->getSex() . '</td>';
-			//-- Filtering by birth date
+			// Filtering by birth date
 			$html .= '<td>';
 			if (!$person->canShow() || Date::compare($birth_date, $d100y) > 0) {
 				$html .= 'Y100';
@@ -457,7 +457,7 @@ class FunctionsPrintLists {
 				$html .= 'YES';
 			}
 			$html .= '</td>';
-			//-- Filtering by death date
+			// Filtering by death date
 			$html .= '<td>';
 			// Died in last 100 years? Died? Not dead?
 			if (Date::compare($death_dates[0], $d100y) > 0) {
@@ -468,7 +468,7 @@ class FunctionsPrintLists {
 				$html .= 'N';
 			}
 			$html .= '</td>';
-			//-- Roots or Leaves ?
+			// Roots or Leaves ?
 			$html .= '<td>';
 			if (!$person->getChildFamilies()) {
 				$html .= 'R';
@@ -533,29 +533,25 @@ class FunctionsPrintLists {
 					processing: true,
 					retrieve: true,
 					columns: [
-						/*  0 husb givn */ {dataSort: 2},
-						/*  1 husb surn */ {dataSort: 3},
-						/*  2 GIVN,SURN */ {type: "unicode", visible: false},
-						/*  3 SURN,GIVN */ {type: "unicode", visible: false},
-						/*  4 age       */ {dataSort: 5, class: "center"},
-						/*  5 AGE       */ {type: "num", visible: false},
-						/*  6 wife givn */ {dataSort: 8},
-						/*  7 wife surn */ {dataSort: 9},
-						/*  8 GIVN,SURN */ {type: "unicode", visible: false},
-						/*  9 SURN,GIVN */ {type: "unicode", visible: false},
-						/* 10 age       */ {dataSort: 11, class: "center"},
-						/* 11 AGE       */ {type: "num", visible: false},
-						/* 12 marr date */ {dataSort: 13},
-						/* 13 MARR:DATE */ {visible: false},
-						/* 14 anniv     */ {dataSort: 13, class: "center"},
-						/* 15 marr plac */ {type: "unicode"},
-						/* 16 children  */ {dataSort: 17, class: "center"},
-						/* 17 NCHI      */ {type: "num", visible: false},
-						/* 18 CHAN      */ {dataSort: 19, visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . '},
-						/* 19 CHAN_sort */ {visible: false},
-						/* 20 MARR      */ {visible: false},
-						/* 21 DEAT      */ {visible: false},
-						/* 22 TREE      */ {visible: false}
+						/*  0 husb givn */ { dataSort: 2 },
+						/*  1 husb surn */ { dataSort: 3 },
+						/*  2 GIVN,SURN */ { type: "unicode", visible: false },
+						/*  3 SURN,GIVN */ { type: "unicode", visible: false },
+						/*  4 age       */ { class: "center" },
+						/*  5 wife givn */ { dataSort: 7 },
+						/*  6 wife surn */ { dataSort: 8 },
+						/*  7 GIVN,SURN */ { type: "unicode", visible: false },
+						/*  8 SURN,GIVN */ { type: "unicode", visible: false },
+						/*  9 age       */ { class: "center" },
+						/* 10 marr date */ { dataSort: 11 },
+						/* 11 MARR:DATE */ { visible: false },
+						/* 12 anniv     */ { class: "center" },
+						/* 13 marr plac */ { type: "unicode" },
+						/* 14 children  */ { class: "center" },
+						/* 15 CHAN      */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
+						/* 16 MARR      */ { visible: false },
+						/* 17 DEAT      */ { visible: false },
+						/* 18 TREE      */ { visible: false }
 					],
 					sorting: [[1, "asc"]],
 					displayLength: 20,
@@ -596,7 +592,7 @@ class FunctionsPrintLists {
 		$stats   = new Stats($WT_TREE);
 		$max_age = max($stats->oldestMarriageMaleAge(), $stats->oldestMarriageFemaleAge()) + 1;
 
-		//-- init chart data
+		// init chart data
 		$marr_by_age = array();
 		for ($age = 0; $age <= $max_age; $age++) {
 			$marr_by_age[$age] = '';
@@ -614,12 +610,12 @@ class FunctionsPrintLists {
 				<table id="' . $table_id . '">
 					<thead>
 						<tr>
-							<th colspan="23">
+							<th colspan="19">
 								<div class="btn-toolbar">
 									<div class="btn-group">
 										<button
 											type="button"
-											data-filter-column="21"
+											data-filter-column="17"
 											data-filter-value="N"
 											class="ui-state-default"
 											title="' . I18N::translate('Show individuals who are alive or couples where both partners are alive.') . '"
@@ -628,7 +624,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="21"
+											data-filter-column="17"
 											data-filter-value="W"
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples where only the female partner is dead.') . '"
@@ -637,7 +633,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="21"
+											data-filter-column="17"
 											data-filter-value="H"
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples where only the male partner is dead.') . '"
@@ -646,7 +642,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="21"
+											data-filter-column="17"
 											data-filter-value="Y"
 											class="ui-state-default"
 											title="' . I18N::translate('Show individuals who are dead or couples where both partners are dead.') . '"
@@ -657,7 +653,7 @@ class FunctionsPrintLists {
 									<div class="btn-group">
 										<button
 											type="button"
-											data-filter-column="22"
+											data-filter-column="18"
 											data-filter-value="R"
 											class="ui-state-default"
 											title="' . I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') . '"
@@ -666,7 +662,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="22"
+											data-filter-column="18"
 											data-filter-value="L"
 											class="ui-state-default"
 											title="' . I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') . '"
@@ -677,7 +673,7 @@ class FunctionsPrintLists {
 									<div class="btn-group">
 										<button
 											type="button"
-											data-filter-column="20"
+											data-filter-column="16"
 											data-filter-value="U"
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples with an unknown marriage date.') . '"
@@ -686,7 +682,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="20"
+											data-filter-column="16"
 											data-filter-value="YES"
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples who married more than 100 years ago.') . '"
@@ -695,7 +691,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="20"
+											data-filter-column="16"
 											data-filter-value="Y100"
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples who married within the last 100 years.') . '"
@@ -704,7 +700,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="20"
+											data-filter-column="16"
 											data-filter-value="D"
 											class="ui-state-default"
 											title="' . I18N::translate('Show divorced couples.') . '"
@@ -713,7 +709,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="20"
+											data-filter-column="16"
 											data-filter-value="M"
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples where either partner married more than once.') . '"
@@ -730,47 +726,43 @@ class FunctionsPrintLists {
 							<th>HUSB:GIVN_SURN</th>
 							<th>HUSB:SURN_GIVN</th>
 							<th>' . GedcomTag::getLabel('AGE') . '</th>
-							<th>AGE</th>
 							<th>' . GedcomTag::getLabel('GIVN') . '</th>
 							<th>' . GedcomTag::getLabel('SURN') . '</th>
 							<th>WIFE:GIVN_SURN</th>
 							<th>WIFE:SURN_GIVN</th>
 							<th>' . GedcomTag::getLabel('AGE') . '</th>
-							<th>AGE</th>
 							<th>' . GedcomTag::getLabel('MARR') . '</th>
 							<th>MARR:DATE</th>
 							<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>
 							<th>' . GedcomTag::getLabel('PLAC') . '</th>
 							<th><i class="icon-children" title="' . I18N::translate('Children') . '"></i></th>
-						<th>NCHI</th>
-						<th>' . GedcomTag::getLabel('CHAN') . '</th>
-						<th>CHAN</th>
-						<th>MARR</th>
-						<th>DEAT</th>
-						<th>TREE</th>
-					</tr>
-				</thead>
-				<tfoot>
-					<tr>
-						<th colspan="23">
-							<div class="btn-toolbar">
-								<div class="btn-group">
-									<button type="button" class="ui-state-default btn-toggle-parents">
-										' . I18N::translate('Show parents') . '
-									</button>
-									<button type="button" class="ui-state-default btn-toggle-statistics">
-										' . I18N::translate('Show statistics charts') . '
-									</button>
+							<th>' . GedcomTag::getLabel('CHAN') . '</th>
+							<th>MARR</th>
+							<th>DEAT</th>
+							<th>TREE</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th colspan="19">
+								<div class="btn-toolbar">
+									<div class="btn-group">
+										<button type="button" class="ui-state-default btn-toggle-parents">
+											' . I18N::translate('Show parents') . '
+										</button>
+										<button type="button" class="ui-state-default btn-toggle-statistics">
+											' . I18N::translate('Show statistics charts') . '
+										</button>
+									</div>
 								</div>
-							</div>
-						</th>
-					</tr>
-				</tfoot>
-				<tbody>';
+							</th>
+						</tr>
+					</tfoot>
+					<tbody>';
 
 		$d100y = new Date(date('Y') - 100); // 100 years ago
 		foreach ($datalist as $family) {
-			//-- Retrieve husband and wife
+			// Retrieve husband and wife
 			$husb = $family->getHusband();
 			if (is_null($husb)) {
 				$husb = new Individual('H', '0 @H@ INDI', null, $family->getTree());
@@ -790,7 +782,7 @@ class FunctionsPrintLists {
 				$class = '';
 			}
 			$html .= '<tr' . $class . '>';
-			//-- Husband name(s)
+			// Husband name(s)
 			$html .= '<td colspan="2">';
 			foreach ($husb->getAllNames() as $num => $name) {
 				if ($name['type'] == 'NAME') {
@@ -816,14 +808,14 @@ class FunctionsPrintLists {
 			$html .= '</td>';
 			// Dummy column to match colspan in header
 			$html .= '<td style="display:none;"></td>';
-			//-- Husb GIVN
+			// Husb GIVN
 			// Use "AAAA" as a separator (instead of ",") as Javascript.localeCompare() ignores
 			// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 			// Similarly, @N.N. would sort as NN.
 			$html .= '<td>' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . 'AAAA' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . '</td>';
 			$html .= '<td>' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . 'AAAA' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . '</td>';
 			$mdate = $family->getMarriageDate();
-			//-- Husband age
+			// Husband age
 			$hdate = $husb->getBirthDate();
 			if ($hdate->isOK() && $mdate->isOK()) {
 				if ($hdate->gregorianYear() >= 1550 && $hdate->gregorianYear() < 2030) {
@@ -834,8 +826,8 @@ class FunctionsPrintLists {
 					$marr_by_age[$hage] .= $husb->getSex();
 				}
 			}
-			$html .= '<td>' . Date::getAge($hdate, $mdate, 2) . '</td><td>' . Date::getAge($hdate, $mdate, 1) . '</td>';
-			//-- Wife name(s)
+			$html .= '<td data=-sort="' . Date::getAge($hdate, $mdate, 1) . '">' . Date::getAge($hdate, $mdate, 2) . '</td>';
+			// Wife name(s)
 			$html .= '<td colspan="2">';
 			foreach ($wife->getAllNames() as $num => $name) {
 				if ($name['type'] == 'NAME') {
@@ -861,15 +853,15 @@ class FunctionsPrintLists {
 			$html .= '</td>';
 			// Dummy column to match colspan in header
 			$html .= '<td style="display:none;"></td>';
-			//-- Wife GIVN
-			//-- Husb GIVN
+			// Wife GIVN
+			// Husb GIVN
 			// Use "AAAA" as a separator (instead of ",") as Javascript.localeCompare() ignores
 			// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 			// Similarly, @N.N. would sort as NN.
 			$html .= '<td>' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . 'AAAA' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . '</td>';
 			$html .= '<td>' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . 'AAAA' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . '</td>';
 			$mdate = $family->getMarriageDate();
-			//-- Wife age
+			// Wife age
 			$wdate = $wife->getBirthDate();
 			if ($wdate->isOK() && $mdate->isOK()) {
 				if ($wdate->gregorianYear() >= 1550 && $wdate->gregorianYear() < 2030) {
@@ -880,8 +872,8 @@ class FunctionsPrintLists {
 					$marr_by_age[$wage] .= $wife->getSex();
 				}
 			}
-			$html .= '<td>' . Date::getAge($wdate, $mdate, 2) . '</td><td>' . Date::getAge($wdate, $mdate, 1) . '</td>';
-			//-- Marriage date
+			$html .= '<td data-sort="' . Date::getAge($wdate, $mdate, 1) . '">' . Date::getAge($wdate, $mdate, 2) . '</td>';
+			// Marriage date
 			$html .= '<td>';
 			if ($marriage_dates = $family->getAllMarriageDates()) {
 				foreach ($marriage_dates as $n => $marriage_date) {
@@ -901,7 +893,7 @@ class FunctionsPrintLists {
 				$html .= '&nbsp;';
 			}
 			$html .= '</td>';
-			//-- Event date (sortable)hidden by datatables code
+			// Event date (sortable)hidden by datatables code
 			$html .= '<td>';
 			if ($marriage_dates) {
 				$html .= $marriage_date->julianDay();
@@ -909,9 +901,9 @@ class FunctionsPrintLists {
 				$html .= 0;
 			}
 			$html .= '</td>';
-			//-- Marriage anniversary
-			$html .= '<td>' . Date::getAge($mdate, null, 2) . '</td>';
-			//-- Marriage place
+			// Marriage anniversary
+			$html .= '<td data-sort="' . Date::getAge($mdate, null, 1) . '">' . Date::getAge($mdate, null, 2) . '</td>';
+			// Marriage place
 			$html .= '<td>';
 			foreach ($family->getAllMarriagePlaces() as $n => $marriage_place) {
 				$tmp = new Place($marriage_place, $family->getTree());
@@ -922,13 +914,11 @@ class FunctionsPrintLists {
 				$html .= FunctionsPrint::highlightSearchHits($tmp->getShortName()) . '</a>';
 			}
 			$html .= '</td>';
-			//-- Number of children
-			$nchi = $family->getNumberOfChildren();
-			$html .= '<td>' . I18N::number($nchi) . '</td><td>' . $nchi . '</td>';
-			//-- Last change
-			$html .= '<td>' . $family->lastChangeTimestamp() . '</td>';
-			$html .= '<td>' . $family->lastChangeTimestamp(true) . '</td>';
-			//-- Sorting by marriage date
+			// Number of children
+			$html .= '<td data-sort="' . $family->getNumberOfChildren() . '">' . I18N::number($family->getNumberOfChildren()) . '</td>';
+			// Last change
+			$html .= '<td data-sort="' . $family->lastChangeTimestamp(true) . '">' . $family->lastChangeTimestamp() . '</td>';
+			// Sorting by marriage date
 			$html .= '<td>';
 			if (!$family->canShow() || !$mdate->isOK()) {
 				$html .= 'U';
@@ -946,7 +936,7 @@ class FunctionsPrintLists {
 				$html .= 'M';
 			}
 			$html .= '</td>';
-			//-- Sorting alive/dead
+			// Sorting alive/dead
 			$html .= '<td>';
 			if ($husb->isDead() && $wife->isDead()) {
 				$html .= 'Y';
@@ -971,7 +961,7 @@ class FunctionsPrintLists {
 				$html .= 'N';
 			}
 			$html .= '</td>';
-			//-- Roots or Leaves
+			// Roots or Leaves
 			$html .= '<td>';
 			if (!$husb->getChildFamilies() && !$wife->getChildFamilies()) {
 				$html .= 'R';
@@ -1787,7 +1777,7 @@ class FunctionsPrintLists {
 		$html            = '';
 		foreach (FunctionsDb::getEventsList($startjd, $endjd, $events, $WT_TREE) as $fact) {
 			$record = $fact->getParent();
-			//-- only living people ?
+			// only living people ?
 			if ($only_living) {
 				if ($record instanceof Individual && $record->isDead()) {
 					$filter++;
