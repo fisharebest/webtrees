@@ -267,8 +267,7 @@ class FunctionsPrintLists {
 							<th>' . GedcomTag::getLabel('SURN') . '</th>
 							<th>GIVN</th>
 							<th>SURN</th>
-							<th>' . /* I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets. */
-			I18N::translate('Sosa') . '</th>
+							<th>' . /* I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets. */ I18N::translate('Sosa') . '</th>
 							<th>SOSA</th>
 							<th>' . GedcomTag::getLabel('BIRT') . '</th>
 							<th>SORT_BIRT</th>
@@ -1040,8 +1039,6 @@ class FunctionsPrintLists {
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
-				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 				jQuery("#' . $table_id . '").dataTable( {
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
@@ -1049,20 +1046,14 @@ class FunctionsPrintLists {
 					autoWidth: false,
 					processing: true,
 					columns: [
-						/*  0 title     */ { dataSort: 1 },
-						/*  1 TITL      */ { visible: false, type: "unicode" },
-						/*  2 author    */ { type: "unicode" },
-						/*  3 #indi     */ { dataSort: 4, class: "center" },
-						/*  4 #INDI     */ { type: "num", visible: false },
-						/*  5 #fam      */ { dataSort: 6, class: "center" },
-						/*  6 #FAM      */ { type: "num", visible: false },
-						/*  7 #obje     */ { dataSort: 8, class: "center" },
-						/*  8 #OBJE     */ { type: "num", visible: false },
-						/*  9 #note     */ { dataSort: 10, class: "center" },
-						/* 10 #NOTE     */ { type: "num", visible: false },
-						/* 11 CHAN      */ { dataSort: 12, visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
-						/* 12 CHAN_sort */ { visible: false },
-						/* 13 DELETE    */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
+						/* title  */ null,
+						/* author */ null,
+						/* #indi  */ { class: "center" },
+						/* #fam   */ { class: "center" },
+						/* #obje  */ { class: "center" },
+						/* #note  */ { class: "center" },
+						/* CHAN   */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
+						/* DELETE */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
 					],
 					displayLength: 20,
 					pagingType: "full_numbers"
@@ -1071,27 +1062,18 @@ class FunctionsPrintLists {
 				jQuery(".loading-image").css("display", "none");
 			');
 
-		//--table wrapper
 		$html .= '<div class="loading-image"></div>';
 		$html .= '<div class="source-list">';
-		//-- table header
 		$html .= '<table id="' . $table_id . '"><thead><tr>';
 		$html .= '<th>' . GedcomTag::getLabel('TITL') . '</th>';
-		$html .= '<th>TITL</th>';
 		$html .= '<th>' . GedcomTag::getLabel('AUTH') . '</th>';
 		$html .= '<th>' . I18N::translate('Individuals') . '</th>';
-		$html .= '<th>#INDI</th>';
 		$html .= '<th>' . I18N::translate('Families') . '</th>';
-		$html .= '<th>#FAM</th>';
 		$html .= '<th>' . I18N::translate('Media objects') . '</th>';
-		$html .= '<th>#OBJE</th>';
 		$html .= '<th>' . I18N::translate('Shared notes') . '</th>';
-		$html .= '<th>#NOTE</th>';
-		$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>' . GedcomTag::getLabel('CHAN') . '</th>';
-		$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>CHAN</th>';
-		$html .= '<th></th>'; //delete
+		$html .= '<th>' . GedcomTag::getLabel('CHAN') . '</th>';
+		$html .= '<th>' . I18N::translate('Delete') . '</th>';
 		$html .= '</tr></thead>';
-		//-- table body
 		$html .= '<tbody>';
 
 		foreach ($datalist as $source) {
@@ -1106,8 +1088,8 @@ class FunctionsPrintLists {
 				$class = '';
 			}
 			$html .= '<tr' . $class . '>';
-			//-- Source name(s)
-			$html .= '<td>';
+			// Source name(s)
+			$html .= '<td data-sort="' . Filter::escapeHtml($source->getSortName()) . '">';
 			foreach ($source->getAllNames() as $n => $name) {
 				if ($n) {
 					$html .= '<br>';
@@ -1119,42 +1101,30 @@ class FunctionsPrintLists {
 				}
 			}
 			$html .= '</td>';
-			// Sortable name
-			$html .= '<td>' . strip_tags($source->getFullName()) . '</td>';
-			//-- Author
+			// Author
 			$auth = $source->getFirstFact('AUTH');
 			if ($auth) {
 				$author = $auth->getValue();
 			} else {
 				$author = '';
 			}
-			$html .= '<td>' . FunctionsPrint::highlightSearchHits($author) . '</td>';
+			$html .= '<td data-sort="' . Filter::escapeHtml($author) . '">' . FunctionsPrint::highlightSearchHits($author) . '</td>';
 			$key = $source->getXref() . '@' . $source->getTree()->getTreeId();
-			//-- Linked INDIs
+			// Count of linked individuals
 			$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
-			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
-			//-- Linked FAMs
+			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			// Count of linked families
 			$num = array_key_exists($key, $count_families) ? $count_families[$key] : 0;
-			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
-			//-- Linked OBJEcts
+			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			// Count of linked media objects
 			$num = array_key_exists($key, $count_media) ? $count_media[$key] : 0;
-			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
-			//-- Linked NOTEs
+			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			// Count of linked notes
 			$num = array_key_exists($key, $count_notes) ? $count_notes[$key] : 0;
-			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
-			//-- Last change
-			if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-				$html .= '<td>' . $source->lastChangeTimestamp() . '</td>';
-			} else {
-				$html .= '<td></td>';
-			}
-			//-- Last change hidden sort column
-			if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-				$html .= '<td>' . $source->lastChangeTimestamp(true) . '</td>';
-			} else {
-				$html .= '<td></td>';
-			}
-			//-- Delete
+			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			// Last change
+			$html .= '<td data-sort="' . $source->lastChangeTimestamp(true) . '">' . $source->lastChangeTimestamp() . '</td>';
+			// Delete
 			if (Auth::isManager($WT_TREE)) {
 				$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
 			} else {
@@ -1177,13 +1147,27 @@ class FunctionsPrintLists {
 	public static function noteTable($datalist) {
 		global $WT_TREE, $controller;
 
+		// Count the number of linked records. These numbers include private records.
+		// It is not good to bypass privacy, but many servers do not have the resources
+		// to process privacy for every record in the tree
+		$count_individuals = Database::prepare(
+			"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##individuals` JOIN `##link` ON l_from = i_id AND l_file = i_file AND l_type = 'NOTE' GROUP BY l_to, l_file"
+		)->fetchAssoc();
+		$count_families = Database::prepare(
+			"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##families` JOIN `##link` ON l_from = f_id AND l_file = f_file AND l_type = 'NOTE' GROUP BY l_to, l_file"
+		)->fetchAssoc();
+		$count_media = Database::prepare(
+			"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##media` JOIN `##link` ON l_from = m_id AND l_file = m_file AND l_type = 'NOTE' GROUP BY l_to, l_file"
+		)->fetchAssoc();
+		$count_sources = Database::prepare(
+			"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'NOTE' GROUP BY l_to, l_file"
+		)->fetchAssoc();
+
 		$html     = '';
 		$table_id = 'table-note-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
-				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 				jQuery("#' . $table_id . '").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
@@ -1191,18 +1175,13 @@ class FunctionsPrintLists {
 					autoWidth: false,
 					processing: true,
 					columns: [
-						/*  0 title     */ { type: "unicode" },
-						/*  1 #indi     */ { dataSort: 2, class: "center" },
-						/*  2 #INDI     */ { type: "num", visible: false },
-						/*  3 #fam      */ { dataSort: 4, class: "center" },
-						/*  4 #FAM      */ { type: "num", visible: false },
-						/*  5 #obje     */ { dataSort: 6, class: "center" },
-						/*  6 #OBJE     */ { type: "num", visible: false },
-						/*  7 #sour     */ { dataSort: 8, class: "center" },
-						/*  8 #SOUR     */ { type: "num", visible: false },
-						/*  9 CHAN      */ { dataSort: 10, visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
-						/* 10 CHAN_sort */ { visible: false },
-						/* 11 DELETE    */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
+						/* title  */ null,
+						/* #indi  */ { class: "center" },
+						/* #fam   */ { class: "center" },
+						/* #obje  */ { class: "center" },
+						/* #sour  */ { class: "center" },
+						/* CHAN   */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
+						/* DELETE */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
 					],
 					displayLength: 20,
 					pagingType: "full_numbers"
@@ -1211,25 +1190,17 @@ class FunctionsPrintLists {
 				jQuery(".loading-image").css("display", "none");
 			');
 
-		//--table wrapper
 		$html .= '<div class="loading-image"></div>';
 		$html .= '<div class="note-list">';
-		//-- table header
 		$html .= '<table id="' . $table_id . '"><thead><tr>';
 		$html .= '<th>' . GedcomTag::getLabel('TITL') . '</th>';
 		$html .= '<th>' . I18N::translate('Individuals') . '</th>';
-		$html .= '<th>#INDI</th>';
 		$html .= '<th>' . I18N::translate('Families') . '</th>';
-		$html .= '<th>#FAM</th>';
 		$html .= '<th>' . I18N::translate('Media objects') . '</th>';
-		$html .= '<th>#OBJE</th>';
 		$html .= '<th>' . I18N::translate('Sources') . '</th>';
-		$html .= '<th>#SOUR</th>';
-		$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>' . GedcomTag::getLabel('CHAN') . '</th>';
-		$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>CHAN</th>';
-		$html .= '<th></th>'; //delete
+		$html .= '<th>' . GedcomTag::getLabel('CHAN') . '</th>';
+		$html .= '<th>' . I18N::translate('Delete') . '</th>';
 		$html .= '</tr></thead>';
-		//-- table body
 		$html .= '<tbody>';
 		foreach ($datalist as $note) {
 			if (!$note->canShow()) {
@@ -1243,33 +1214,24 @@ class FunctionsPrintLists {
 				$class = '';
 			}
 			$html .= '<tr' . $class . '>';
-			//-- Shared Note name
-			$html .= '<td><a class="name2" href="' . $note->getHtmlUrl() . '">' . FunctionsPrint::highlightSearchHits($note->getFullName()) . '</a></td>';
-			//-- Linked INDIs
-			$num = count($note->linkedIndividuals('NOTE'));
-			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
-			//-- Linked FAMs
-			$num = count($note->linkedFamilies('NOTE'));
-			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
-			//-- Linked OBJEcts
-			$num = count($note->linkedMedia('NOTE'));
-			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
-			//-- Linked SOURs
-			$num = count($note->linkedSources('NOTE'));
-			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
-			//-- Last change
-			if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-				$html .= '<td>' . $note->lastChangeTimestamp() . '</td>';
-			} else {
-				$html .= '<td></td>';
-			}
-			//-- Last change hidden sort column
-			if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-				$html .= '<td>' . $note->lastChangeTimestamp(true) . '</td>';
-			} else {
-				$html .= '<td></td>';
-			}
-			//-- Delete
+			// Count of linked notes
+			$html .= '<td data-sort="' . Filter::escapeHtml($note->getSortName()) . '"><a class="name2" href="' . $note->getHtmlUrl() . '">' . FunctionsPrint::highlightSearchHits($note->getFullName()) . '</a></td>';
+			$key = $note->getXref() . '@' . $note->getTree()->getTreeId();
+			// Count of linked individuals
+			$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
+			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			// Count of linked families
+			$num = array_key_exists($key, $count_families) ? $count_families[$key] : 0;
+			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			// Count of linked media objects
+			$num = array_key_exists($key, $count_media) ? $count_media[$key] : 0;
+			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			// Count of linked sources
+			$num = array_key_exists($key, $count_sources) ? $count_sources[$key] : 0;
+			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			// Last change
+			$html .= '<td data-sort="' . $note->lastChangeTimestamp(true) . '">' . $note->lastChangeTimestamp() . '</td>';
+			// Delete
 			if (Auth::isManager($WT_TREE)) {
 				$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . "', '" . $note->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
 			} else {
@@ -1304,8 +1266,6 @@ class FunctionsPrintLists {
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
-				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 				jQuery("#' . $table_id . '").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
@@ -1313,12 +1273,10 @@ class FunctionsPrintLists {
 					autoWidth: false,
 					processing: true,
 					columns: [
-						/* 0 name      */ { type: "unicode" },
-						/* 1 #sour     */ { dataSort: 2, class: "center" },
-						/* 2 #SOUR     */ { type: "num", visible: false },
-						/* 3 CHAN      */ { dataSort: 4, visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
-						/* 4 CHAN_sort */ { visible: false },
-						/* 5 DELETE    */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
+						/* name   */ null,
+						/* #sour  */ { class: "center" },
+						/* CHAN   */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
+						/* DELETE */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
 					],
 					displayLength: 20,
 					pagingType: "full_numbers"
@@ -1327,19 +1285,14 @@ class FunctionsPrintLists {
 				jQuery(".loading-image").css("display", "none");
 			');
 
-		//--table wrapper
 		$html .= '<div class="loading-image"></div>';
 		$html .= '<div class="repo-list">';
-		//-- table header
 		$html .= '<table id="' . $table_id . '"><thead><tr>';
 		$html .= '<th>' . I18N::translate('Repository name') . '</th>';
 		$html .= '<th>' . I18N::translate('Sources') . '</th>';
-		$html .= '<th>#SOUR</th>';
-		$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>' . GedcomTag::getLabel('CHAN') . '</th>';
-		$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>CHAN</th>';
-		$html .= '<th></th>'; //delete
+		$html .= '<th>' . GedcomTag::getLabel('CHAN') . '</th>';
+		$html .= '<th>' . I18N::translate('Delete') . '</th>';
 		$html .= '</tr></thead>';
-		//-- table body
 		$html .= '<tbody>';
 
 		foreach ($repositories as $repository) {
@@ -1354,8 +1307,8 @@ class FunctionsPrintLists {
 				$class = '';
 			}
 			$html .= '<tr' . $class . '>';
-			//-- Repository name(s)
-			$html .= '<td>';
+			// Repository name(s)
+			$html .= '<td data-sort="' . Filter::escapeHtml($repository->getSortName()) . '">';
 			foreach ($repository->getAllNames() as $n => $name) {
 				if ($n) {
 					$html .= '<br>';
@@ -1368,22 +1321,12 @@ class FunctionsPrintLists {
 			}
 			$html .= '</td>';
 			$key = $repository->getXref() . '@' . $repository->getTree()->getTreeId();
-			//-- Linked SOURces
+			// Count of linked sources
 			$num = array_key_exists($key, $count_sources) ? $count_sources[$key] : 0;
-			$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
-			//-- Last change
-			if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-				$html .= '<td>' . $repository->lastChangeTimestamp() . '</td>';
-			} else {
-				$html .= '<td></td>';
-			}
-			//-- Last change hidden sort column
-			if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-				$html .= '<td>' . $repository->lastChangeTimestamp(true) . '</td>';
-			} else {
-				$html .= '<td></td>';
-			}
-			//-- Delete
+			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			// Last change
+			$html .= '<td data-sort="' . $repository->lastChangeTimestamp(true) . '">' . $repository->lastChangeTimestamp() . '</td>';
+			// Delete
 			if (Auth::isManager($WT_TREE)) {
 				$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
 			} else {
@@ -1411,8 +1354,6 @@ class FunctionsPrintLists {
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
-				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 				jQuery("#' . $table_id . '").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
@@ -1420,16 +1361,12 @@ class FunctionsPrintLists {
 					autoWidth:false,
 					processing: true,
 					columns: [
-						/* 0 media     */ { sortable: false },
-						/* 1 title     */ { type: "unicode" },
-						/* 2 #indi     */ { dataSort: 3, class: "center" },
-						/* 3 #INDI     */ { type: "num", visible: false },
-						/* 4 #fam      */ { dataSort: 5, class: "center" },
-						/* 5 #FAM      */ { type: "num", visible: false },
-						/* 6 #sour     */ { dataSort: 7, class: "center" },
-						/* 7 #SOUR     */ { type: "num", visible: false },
-						/* 8 CHAN      */ { dataSort: 9, visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
-						/* 9 CHAN_sort */ { visible: false },
+						/* media */ { sortable: false },
+						/* title */ null,
+						/* #indi */ { class: "center" },
+						/* #fam  */ { class: "center" },
+						/* #sour */ { class: "center" },
+						/* CHAN  */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
 					],
 					displayLength: 20,
 					pagingType: "full_numbers"
@@ -1438,23 +1375,16 @@ class FunctionsPrintLists {
 				jQuery(".loading-image").css("display", "none");
 			');
 
-		//--table wrapper
 		$html .= '<div class="loading-image"></div>';
 		$html .= '<div class="media-list">';
-		//-- table header
 		$html .= '<table id="' . $table_id . '"><thead><tr>';
 		$html .= '<th>' . I18N::translate('Media') . '</th>';
 		$html .= '<th>' . GedcomTag::getLabel('TITL') . '</th>';
 		$html .= '<th>' . I18N::translate('Individuals') . '</th>';
-		$html .= '<th>#INDI</th>';
 		$html .= '<th>' . I18N::translate('Families') . '</th>';
-		$html .= '<th>#FAM</th>';
 		$html .= '<th>' . I18N::translate('Sources') . '</th>';
-		$html .= '<th>#SOUR</th>';
-		$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>' . GedcomTag::getLabel('CHAN') . '</th>';
-		$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>CHAN</th>';
+		$html .= '<th>' . GedcomTag::getLabel('CHAN') . '</th>';
 		$html .= '</tr></thead>';
-		//-- table body
 		$html .= '<tbody>';
 
 		foreach ($media_objects as $media_object) {
@@ -1468,10 +1398,10 @@ class FunctionsPrintLists {
 					$class = '';
 				}
 				$html .= '<tr' . $class . '>';
-				//-- Object thumbnail
+				// Media object thumbnail
 				$html .= '<td>' . $media_object->displayImage() . '</td>';
-				//-- Object name(s)
-				$html .= '<td>';
+				// Media object name(s)
+				$html .= '<td data-sort="' . Filter::escapeHtml($media_object->getSortName()) . '">';
 				$html .= '<a href="' . $media_object->getHtmlUrl() . '" class="list_item name2">';
 				$html .= FunctionsPrint::highlightSearchHits($name) . '</a>';
 				if (Auth::isEditor($media_object->getTree())) {
@@ -1479,27 +1409,17 @@ class FunctionsPrintLists {
 				}
 				$html .= '</td>';
 
-				//-- Linked INDIs
+				// Count of linked individuals
 				$num = count($media_object->linkedIndividuals('OBJE'));
-				$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
-				//-- Linked FAMs
+				$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+				// Count of linked families
 				$num = count($media_object->linkedFamilies('OBJE'));
-				$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
-				//-- Linked SOURces
+				$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+				// Count of linked sources
 				$num = count($media_object->linkedSources('OBJE'));
-				$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
-				//-- Last change
-				if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-					$html .= '<td>' . $media_object->lastChangeTimestamp() . '</td>';
-				} else {
-					$html .= '<td></td>';
-				}
-				//-- Last change hidden sort column
-				if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-					$html .= '<td>' . $media_object->lastChangeTimestamp(true) . '</td>';
-				} else {
-					$html .= '<td></td>';
-				}
+				$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+				// Last change
+				$html .= '<td data-sort="' . $media_object->lastChangeTimestamp(true) . '">' . $media_object->lastChangeTimestamp() . '</td>';
 				$html .= '</tr>';
 			}
 		}
@@ -1526,8 +1446,6 @@ class FunctionsPrintLists {
 			->addInlineJavascript('
 				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-				jQuery.fn.dataTableExt.oSort["num-asc" ]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a<b) ? -1 : (a>b ? 1 : 0);};
-				jQuery.fn.dataTableExt.oSort["num-desc"]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a>b) ? -1 : (a<b ? 1 : 0);};
 				jQuery(".surname-list").dataTable( {
 					dom: \'t\',
 					jQueryUI: true,
@@ -1536,8 +1454,8 @@ class FunctionsPrintLists {
 					paging: false,
 					sorting: [[0, "asc"]],
 					columns: [
-						/*  0 name  */ null,
-						/*  1 count */ { class: "center" },
+						/* name  */ null,
+						/* count */ { class: "center" },
 					],
 				});
 			');
