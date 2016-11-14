@@ -91,11 +91,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 				info: true,
 				jQueryUI: true,
 				columns: [
-					/* 0-DATE */     null,
-					/* 1-Date */     { dataSort: 0 },
-					/* 2-Record */   null,
-					/* 3-Username */ null,
-					/* 4-Text */     null
+					null,
+					null,
+					null,
+					null
 				]
 			});
 			jQuery("#' . $table_id . '").css("visibility", "visible");
@@ -106,7 +105,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '<div class="loading-image">&nbsp;</div>';
 		$content .= '<table id="' . $table_id . '" style="visibility:hidden;">';
 		$content .= '<thead><tr>';
-		$content .= '<th hidden>DATE</th>';
 		$content .= '<th>' . GedcomTag::getLabel('DATE') . '</th>';
 		$content .= '<th>' . I18N::translate('Record') . '</th>';
 		$content .= '<th>' . I18N::translate('Username') . '</th>';
@@ -139,11 +137,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 			$user_name = $fact->getAttribute('_WT_USER');
 			if ($user_name === Auth::user()->getUserName() || !$user_name && $show_unassigned || $user_name && $show_other) {
 				$content .= '<tr>';
-				$content .= '<td hidden>' . $fact->getDate()->julianDay() . '</td>';
-				$content .= '<td class="wrap">' . $fact->getDate()->display() . '</td>';
-				$content .= '<td class="wrap"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
-				$content .= '<td class="wrap">' . $user_name . '</td>';
-				$content .= '<td class="wrap" dir="auto">' . $fact->getValue() . '</td>';
+				$content .= '<td data-sort="' . $fact->getDate()->julianDay() . '">' . $fact->getDate()->display() . '</td>';
+				$content .= '<td data-sort="' . Filter::escapeHtml($record->getSortName()) . '"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
+				$content .= '<td>' . $user_name . '</td>';
+				$content .= '<td dir="auto">' . $fact->getValue() . '</td>';
 				$content .= '</tr>';
 				$found = true;
 			}
