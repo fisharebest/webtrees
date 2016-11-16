@@ -69,7 +69,7 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 			// Add the age (if we have it) or the lifespan (if we do not).
 			$label = $person->getFullName();
 			if ($event_jd && $person->getBirthDate()->isOK()) {
-				$label .= ', <span class="age">(' . I18N::translate('Age') . ' ' . $person->getBirthDate()->minimumDate()->getAge(false, $event_jd) . ')</span>';
+				$label .= ', <span class="age">(' . I18N::translate('Age') . ' ' . Date::getAge($person->getBirthDate(), $date, 0) . ')</span>';
 			} else {
 				$label .= ', <i>' . $person->getLifeSpan() . '</i>';
 			}

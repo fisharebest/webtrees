@@ -54,7 +54,7 @@ case 'save':
 		$email          = Filter::postEmail('email');
 		$pass1          = Filter::post('pass1', WT_REGEX_PASSWORD);
 		$pass2          = Filter::post('pass2', WT_REGEX_PASSWORD);
-		$theme          = Filter::post('theme', implode('|', array_keys(Theme::installedThemes())), '');
+		$theme          = Filter::post('theme', implode('|', array_keys(Theme::themeNames())), '');
 		$language       = Filter::post('language');
 		$timezone       = Filter::post('timezone');
 		$contact_method = Filter::post('contact_method');

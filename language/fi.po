@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-06-28 20:54+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
+"PO-Revision-Date: 2016-11-10 16:02+0000\n"
+"Last-Translator: Marko Kohtala <marko.kohtala@gmail.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.8\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -114,8 +114,8 @@ msgstr "%1$s:lta puuttuu linkki takaisin %2$s:een."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "%1$s tiedosto poimittiin %2$s sekunnissa."
-msgstr[1] "%1$s tiedostoa poimittiin %2$s sekunnissa."
+msgstr[0] "%1$s tiedosto purettiin %2$s sekunnissa."
+msgstr[1] "%1$s tiedostoa purettiin %2$s sekunnissa."
 
 #: app/Module/GoogleMapsModule.php:839
 #, php-format
@@ -835,7 +835,7 @@ msgstr "Luettelo lähitulevaisuudessa tapahtuvista vuosipäivistä."
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr "Suosituimmat etunimien luettelo."
+msgstr "Suosituimpien etunimien luettelo."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
@@ -1436,7 +1436,7 @@ msgstr "Lisää kenttiä"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "Lisää kerronta tarinoita sukupuun henkilöille."
+msgstr "Lisää kerronnallisia tarinoita sukupuun henkilöille."
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
@@ -5232,7 +5232,7 @@ msgstr "Näytä %s"
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:71
 msgid "Display and manage a family tree’s favorite pages."
-msgstr "Näytä ja hallitse sukupuun suosikki sivut."
+msgstr "Näytä ja hallitse sukupuun suosikkisivuja."
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:34

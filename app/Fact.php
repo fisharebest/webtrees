@@ -388,7 +388,7 @@ class Fact {
 			// Fact date
 			$date = $this->getDate();
 			if ($date->isOK()) {
-				if ($this->getTag() === 'BIRT' && $this->getParent() instanceof Individual && $this->getParent()->getTree()->getPreference('SHOW_PARENTS_AGE')) {
+				if (in_array($this->getTag(), explode('|', WT_EVENTS_BIRT)) && $this->getParent() instanceof Individual && $this->getParent()->getTree()->getPreference('SHOW_PARENTS_AGE')) {
 					$attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->getParent(), $date);
 				} else {
 					$attributes[] = $date->display();

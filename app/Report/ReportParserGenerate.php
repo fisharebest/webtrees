@@ -1525,7 +1525,7 @@ class ReportParserGenerate extends ReportParserBase {
 				if ($age != '' && $age != "0d") {
 					if ($fact_age != '' && $fact_age != $age || $fact_age == '' && $husb_age == '' && $wife_age == '' || $husb_age != '' && $person->getSex() == 'M' && $husb_age != $age || $wife_age != '' && $person->getSex() == 'F' && $wife_age != $age
 					) {
-						$value  = FunctionsDate::getAgeAtEvent($age, false);
+						$value  = FunctionsDate::getAgeAtEvent($age);
 						$abbrev = substr($value, 0, strpos($value, ' ') + 5);
 						if ($value !== $abbrev) {
 							$value = $abbrev . '.';
