@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-10-19 18:52+0000\n"
+"PO-Revision-Date: 2016-11-01 12:44+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -3507,7 +3507,7 @@ msgstr[1] "Änderungen der letzten %s Tage"
 
 #: admin_trees_manage.php:519
 msgid "Changes log"
-msgstr "Änderungsverlauf"
+msgstr "Änderungsprotokoll"
 
 #. I18N: gedcom tag CHAR
 #: app/GedcomTag.php:270
@@ -15700,7 +15700,7 @@ msgstr "Zugangsregeln"
 #. I18N: Menu entry
 #: admin_site_logs.php:35 app/Theme/AdministrationTheme.php:100
 msgid "Website logs"
-msgstr "Webseiten Logs"
+msgstr "Webseitenprotokolle"
 
 #. I18N: Menu entry
 #: admin_site_config.php:134 app/Theme/AdministrationTheme.php:95
@@ -15734,7 +15734,7 @@ msgstr "Begrüßungstext auf der Anmeldungsseite"
 
 #: login.php:165
 msgid "Welcome to this genealogy website"
-msgstr "Willkommen auf dieser Genealogie Webseite"
+msgstr "Willkommen auf dieser Genealogie-Webseite"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -16138,7 +16138,7 @@ msgstr "Sie werden per E-Mail informiert, wenn diese Benutzer die Anfrage bestä
 
 #: setup.php:431
 msgid "You will use this to sign in to webtrees."
-msgstr "Diesen Benutzernamen benötigen Sie, um sich in webtrees einzuloggen."
+msgstr "Diesen Benutzernamen benötigen Sie, um sich in webtrees anzumelden."
 
 #: statistics.php:286
 msgid "Youngest father"

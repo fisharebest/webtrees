@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-10-01 21:49+0000\n"
+"PO-Revision-Date: 2016-11-04 13:43+0000\n"
 "Last-Translator: Patrick Kongshammer <patrickkongshammer@gmail.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
 "Language: da\n"
@@ -6336,7 +6336,7 @@ msgstr "Find en person"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
-msgstr "Find dublanter"
+msgstr "Find dubletter"
 
 #: relationship.php:115
 msgid "Find other relationships"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-09-21 08:06+0000\n"
+"PO-Revision-Date: 2016-10-29 11:06+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.8\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -3525,7 +3525,7 @@ msgstr "Özel temaları kontrol edin…"
 
 #: admin_trees_check.php:33 admin_trees_manage.php:499
 msgid "Check for errors"
-msgstr "Hata kontrolu yap"
+msgstr "Hataları kontrol et"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:94
@@ -4018,7 +4018,7 @@ msgstr "Şirket"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:39
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "Eski seçere programları formu tarafından 'Adem/GENÇ/' veya 'Adem /GENÇ' olarak üretilen NAME kayıtlarını düzeltmek."
+msgstr "Eski soy ağacı programları formu tarafından 'Adem/GENÇ/' veya 'Adem /GENÇ' olarak üretilen NAME kayıtlarını düzeltmek."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6728
@@ -10838,7 +10838,7 @@ msgstr "%s Yerleri"
 
 #: help_text.php:253
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "Lokasyonlar şecere için standartlara uygun girilmelidir. Şecerede, yer isimleri en özelden en genele doğru sıralanarak belirtilmelidir. Farklı seviyeler virgül şle birbirinden ayrılmalıdır. Kayıt edilen lokasyon bilgisi, yaşamsal kayıtların tutulduğu idari düzeyi hiyerarşik olarak temsil etmelidir.<br><br>Örneğin, Çankaya gibi bir yer \"Küçükesat, Çankaya, Ankara, Türkiye\" olarak girilmiş olacaktır.<br><br>Şimdi bu lokasyon bilgisinin her kısmını inceleyelim. İlk bölüm, \"Küçükesat,\" olayın meydana geldiği bir semt ya da mahalledir. Bazı ülkelerde şehir içinde semt, mahalle veya ilçe olabilir. Bu durumda, bu kısım şehirden önce gelmelidir. Bir sonraki bölüm, \"Çankaya,\" ilçesidir. \"Ankara\" Şehir (İl) ve \"Türkiye\" ülkedir.<br><br>Yer bilgisi bu düzeyde bilinmiyor ise, virgül arasında bir boşluk bırakılmalıdır. Örneğin yukarıdaki örnekte, Küçükesat mahallesinin hangi ilçe sınırları içinde olduğu bilinmiyor ise şu şekilde kayıt edilmelidir: \"Küçükesat, , Ankara, Türkiye\". Örneğin kişinin sadece Ankara'da doğduğunu biliyorsunuz, bu durumda şu şekilde girebilirsiniz: \", , Ankara, Türkiye\".<br><br> Veritabanında var olan bir yerleşim yerini bulmak için <b>Yer Bul</b> bağlantısını kullanabilirsiniz."
+msgstr "Lokasyonlar soy ağacı için standartlara uygun girilmelidir. Soy ağacında, yer isimleri en özelden en genele doğru sıralanarak belirtilmelidir. Farklı seviyeler virgül şle birbirinden ayrılmalıdır. Kayıt edilen lokasyon bilgisi, yaşamsal kayıtların tutulduğu idari düzeyi hiyerarşik olarak temsil etmelidir.<br><br>Örneğin, Çankaya gibi bir yer \"Küçükesat, Çankaya, Ankara, Türkiye\" olarak girilmiş olacaktır.<br><br>Şimdi bu lokasyon bilgisinin her kısmını inceleyelim. İlk bölüm, \"Küçükesat,\" olayın meydana geldiği bir semt ya da mahalledir. Bazı ülkelerde şehir içinde semt, mahalle veya ilçe olabilir. Bu durumda, bu kısım şehirden önce gelmelidir. Bir sonraki bölüm, \"Çankaya,\" ilçesidir. \"Ankara\" Şehir (İl) ve \"Türkiye\" ülkedir.<br><br>Yer bilgisi bu düzeyde bilinmiyor ise, virgül arasında bir boşluk bırakılmalıdır. Örneğin yukarıdaki örnekte, Küçükesat mahallesinin hangi ilçe sınırları içinde olduğu bilinmiyor ise şu şekilde kayıt edilmelidir: \"Küçükesat, , Ankara, Türkiye\". Örneğin kişinin sadece Ankara'da doğduğunu biliyorsunuz, bu durumda şu şekilde girebilirsiniz: \", , Ankara, Türkiye\".<br><br> Veritabanında var olan bir yerleşim yerini bulmak için <b>Yer Bul</b> bağlantısını kullanabilirsiniz."
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:98
 #: app/Theme/FabTheme.php:114 app/Theme/MinimalTheme.php:111
@@ -11977,7 +11977,7 @@ msgstr "Bireyleri yer veya tarihe göre seç"
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:43
 msgid "Select records from your family tree and save them as a GEDCOM file."
-msgstr "Aile ağacı kayıtları seçerek ve bir GEDCOM dosyası olarak kaydedebilirsiniz."
+msgstr "Soy ağacından kayıtları seçerek bir GEDCOM dosyası olarak kaydedebilirsiniz."
 
 #: statistics.php:581 statistics.php:599 statistics.php:614
 msgid "Select the desired age interval"
@@ -13699,7 +13699,7 @@ msgstr "Web sitesindeki teknik konularda irtibata geçilebilecek birey."
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:887
 msgid "The individual to contact about the genealogy data on this website."
-msgstr "Web sitesindeki şecere verisi ile ilgili konularda irtibata geçilebilecek birey."
+msgstr "Web sitesindeki soy ağacı verisi ile ilgili konularda irtibata geçilebilecek birey."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:152 action.php:156 app/Controller/GedcomRecordController.php:57
@@ -20041,7 +20041,7 @@ msgstr "webtrees e-mailleri sunucuya kaydetmeden gönderir"
 
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr "webtrees aksanlı harfler, özel karakterler ve latin olmayan alfabeler için UTF-8 kodlamasını kullanır. Bu GEDCOM dosyasını UTF-8 desteklemeyen bir şecere yazılımı ile kullanmak istiyorsanız, ISO-8859-1 kodlamasını kullanarak oluşturabilirsiniz."
+msgstr "webtrees aksanlı harfler, özel karakterler ve latin olmayan alfabeler için UTF-8 kodlamasını kullanır. Bu GEDCOM dosyasını UTF-8 desteklemeyen bir soy ağacı yazılımı ile kullanmak istiyorsanız, ISO-8859-1 kodlamasını kullanarak oluşturabilirsiniz."
 
 #: app/Functions/FunctionsPrint.php:210
 msgid "webtrees wiki"

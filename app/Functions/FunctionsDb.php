@@ -448,7 +448,17 @@ class FunctionsDb {
 		foreach ($rows as $row) {
 			$list[] = Family::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 		}
-		$list = array_filter($list, function (Family $x) { return $x->canShowName(); });
+
+		$list = array_filter($list, function (Family $x) use ($query) {
+			$name = I18N::strtolower(strip_tags($x->getFullName()));
+			foreach ($query as $q) {
+				if (stripos($name, I18N::strtolower($q)) === false) {
+					return false;
+				}
+			}
+
+			return true;
+		});
 
 		return $list;
 	}
