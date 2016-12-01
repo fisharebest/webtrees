@@ -208,4 +208,16 @@ class Config {
 			'NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX',
 		);
 	}
+
+	/**
+	 * A list of facts/events that generally have two associates
+	 * (two witnesses, two godparents, etc.)
+	 *
+	 * @return string[]
+	 */
+	public static function twoAssociates() {
+		return array(
+			'CHR', 'BAPM', 'MARR',
+		);
+	}
 }

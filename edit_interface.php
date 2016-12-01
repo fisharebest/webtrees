@@ -301,7 +301,7 @@ case 'edit':
 				FunctionsEdit::printAddLayer('ASSO');
 			}
 			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-			if ($level1type === 'CHR' || $level1type === 'MARR') {
+			if (in_array($level1type, Config::twoAssociates())) {
 				FunctionsEdit::printAddLayer('ASSO2');
 			}
 			if ($level1type !== 'SOUR') {
@@ -374,7 +374,7 @@ case 'add':
 			}
 			FunctionsEdit::printAddLayer('ASSO');
 			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-			if ($fact === 'CHR' || $fact === 'MARR') {
+			if (in_array($fact, Config::twoAssociates())) {
 				FunctionsEdit::printAddLayer('ASSO2');
 			}
 			FunctionsEdit::printAddLayer('RESN');
