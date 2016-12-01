@@ -439,7 +439,7 @@ class HourglassController extends ChartController {
 					var self = jQuery(this),
 						parms = self.data('parms').split('-'),
 						id = self.attr('href');
-					jQuery('#td_'+id).load('hourglass_ajax.php?rootid='+ id +'&generations=1&type='+parms[0]+'&show_full='+(parms[1] ? 1:0) +'&show_spouse='+(parms[3] ? 1:0), function(){
+					jQuery('#td_'+id).load('hourglass_ajax.php?rootid='+ id +'&generations=1&type='+parms[0]+'&show_full='+(parseInt(parms[1]) ? 1:0) +'&show_spouse='+(parseInt(parms[2]) ? 1:0), function(){
 						sizeLines();
 					});
 				});
