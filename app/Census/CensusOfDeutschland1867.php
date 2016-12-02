@@ -55,7 +55,7 @@ class CensusOfDeutschland1867 extends CensusOfDeutschland implements CensusInter
 			new CensusColumnNull($this, '9.verehelicht', 'V. Familienstand. verehelicht.'),
 			new CensusColumnNull($this, '10.verwittwet', 'V. Familienstand. verwittwet.'),
 			new CensusColumnNull($this, '11.geschieden', 'V. Familienstand. geschieden.'),
-			new CensusColumnRelationToHead($this, '12.Stellung', 'V. Familienstand. Verhältnis der Familienglieder zum Haushaltungsvorstand.'),
+			new CensusColumnRelationToHeadGerman($this, '12.Stellung', 'V. Familienstand. Verhältnis der Familienglieder zum Haushaltungsvorstand.'),
 			new CensusColumnOccupation($this, '13.Stand/Beruf', 'VI. Stand, Beruf oder Vorbereitung zum Beruf, Arbeits- und Dienstverhältnis.'),
 			new CensusColumnNull($this, '14.StA_M-S', 'VII. Staatsangehörigkeit. Mecklenburg-Schwerinscher Unterthan.'),
 			new CensusColumnNull($this, '15.StA', 'VII. Staatsangehörigkeit. Anderen Staaten angehörig. Welchem Staat?'),

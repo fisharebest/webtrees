@@ -47,7 +47,7 @@ class CensusOfDeutschland1919 extends CensusOfDeutschland implements CensusInter
 			new CensusColumnNull($this, 'Nummer', 'Laufende Nummer'),
 			new CensusColumnGivenNames($this, 'Vorname', 'Vorname'),
 			new CensusColumnSurname($this, 'Familienname', 'Familienname'),
-			new CensusColumnRelationToHead($this, 'Stellung im Haushalt', 'Stellung im Haushalt'),
+			new CensusColumnRelationToHeadGerman($this, 'Stellung im Haushalt', 'Stellung im Haushalt'),
 			new CensusColumnNull($this, 'männlich', 'Geschlecht männlich'),
 			new CensusColumnNull($this, 'weiblich', 'Geschlecht weiblich'),
 			new CensusColumnNull($this, 'Familienstand', 'Familienstand'),
