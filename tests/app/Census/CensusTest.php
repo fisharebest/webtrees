@@ -25,7 +25,7 @@ class CensusTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testAllCensus() {
 		$censuses = Census::allCensusPlaces();
-		
+
 		$this->assertCount(7, $censuses);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic', $censuses[0]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDenmark', $censuses[1]);
