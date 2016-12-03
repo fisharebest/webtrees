@@ -35,18 +35,45 @@ use Fisharebest\Webtrees\Tree;
 use Rhumsaa\Uuid\Uuid;
 
 /**
- * Class FunctionsPrintLists - common functions
+ * Class FunctionsPrintLists - create sortable lists using datatables.net
  */
 class FunctionsPrintLists {
 	/**
+	 * Generate a SURN,GIVN and GIVN,SURN sortable name for an individual.
+	 * This allows table data to sort by surname or given names.
+	 *
+	 * Use AAAA as a separator (instead of ","), as Javascript localeCompare()
+	 * ignores punctuation and "ANN,ROACH" would sort after "ANNE,ROACH",
+	 * instead of before it.
+	 *
+	 * @param Individual $individual
+	 *
+	 * @return string[]
+	 */
+	private static function sortableNames(Individual $individual) {
+		$names   = $individual->getAllNames();
+		$primary = $individual->getPrimaryName();
+
+		list($surn, $givn) = explode(',', $names[$primary]['sort']);
+
+		$givn = str_replace('@P.N.', 'AAAA', $givn);
+		$surn = str_replace('@N.N.', 'AAAA', $surn);
+
+		return array(
+			$surn . 'AAAA' . $givn,
+			$givn . 'AAAA' . $surn,
+		);
+	}
+
+	/**
 	 * Print a table of individuals
 	 *
-	 * @param Individual[] $datalist
-	 * @param string $option
+	 * @param Individual[] $indiviudals
+	 * @param string       $option
 	 *
 	 * @return string
 	 */
-	public static function individualTable($datalist, $option = '') {
+	public static function individualTable($indiviudals, $option = '') {
 		global $controller, $WT_TREE;
 
 		$table_id = 'table-indi-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
@@ -54,10 +81,8 @@ class FunctionsPrintLists {
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["unicode-asc"  ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
-				jQuery.fn.dataTableExt.oSort["unicode-desc" ]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-				jQuery.fn.dataTableExt.oSort["num-html-asc" ]=function(a,b) {a=parseFloat(a.replace(/<[^<]*>/, "")); b=parseFloat(b.replace(/<[^<]*>/, "")); return (a<b) ? -1 : (a>b ? 1 : 0);};
-				jQuery.fn.dataTableExt.oSort["num-html-desc"]=function(a,b) {a=parseFloat(a.replace(/<[^<]*>/, "")); b=parseFloat(b.replace(/<[^<]*>/, "")); return (a>b) ? -1 : (a<b ? 1 : 0);};
+				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
+				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
 				jQuery("#' . $table_id . '").dataTable( {
 					dom: \'<"H"<"filtersH_' . $table_id . '">T<"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_' . $table_id . '">>\',
 					' . I18N::datatablesI18N() . ',
@@ -66,30 +91,22 @@ class FunctionsPrintLists {
 					processing: true,
 					retrieve: true,
 					columns: [
-						/*  0 givn      */ { dataSort: 2 },
-						/*  1 surn      */ { dataSort: 3 },
-						/*  2 GIVN,SURN */ { type: "unicode", visible: false },
-						/*  3 SURN,GIVN */ { type: "unicode", visible: false },
-						/*  4 sosa      */ { dataSort: 5, class: "center", visible: ' . ($option == 'sosa' ? 'true' : 'false') . ' },
-						/*  5 SOSA      */ { type: "num", visible: false },
-						/*  6 birt date */ { dataSort: 7 },
-						/*  7 BIRT:DATE */ { visible: false },
-						/*  8 anniv     */ { dataSort: 7, class: "center" },
-						/*  9 birt plac */ { type: "unicode" },
-						/* 10 children  */ { dataSort: 11, class: "center" },
-						/* 11 children  */ { type: "num", visible: false },
-						/* 12 deat date */ { dataSort: 13 },
-						/* 13 DEAT:DATE */ { visible: false },
-						/* 14 anniv     */ { dataSort: 13, class: "center" },
-						/* 15 age       */ { dataSort: 16, class: "center" },
-						/* 16 AGE       */ { type: "num", visible: false },
-						/* 17 deat plac */ { type: "unicode" },
-						/* 18 CHAN      */ { dataSort: 19, visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
-						/* 19 CHAN_sort */ { visible: false },
-						/* 20 SEX       */ { visible: false },
-						/* 21 BIRT      */ { visible: false },
-						/* 22 DEAT      */ { visible: false },
-						/* 23 TREE      */ { visible: false }
+						/* Given names  */ { type: "text" },
+						/* Surnames     */ { type: "text" },
+						/* SOSA numnber */ { type: "num", visible: ' . ($option == 'sosa' ? 'true' : 'false') . ' },
+						/* Birth date   */ { type: "num" },
+						/* Anniversary  */ { type: "num" },
+						/* Birthplace   */ { type: "text" },
+						/* Children     */ { type: "num" },
+						/* Deate date   */ { type: "num" },
+						/* Anniversary  */ { type: "num" },
+						/* Age          */ { type: "num" },
+						/* Death place  */ { type: "text" },
+						/* Last change  */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
+						/* Filter sex   */ { sortable: false },
+						/* Filter birth */ { sortable: false },
+						/* Filter death */ { sortable: false },
+						/* Filter tree  */ { sortable: false }
 					],
 					sorting: [[' . ($option == 'sosa' ? '4, "asc"' : '1, "asc"') . ']],
 					displayLength: 20,
@@ -150,12 +167,12 @@ class FunctionsPrintLists {
 				<table id="' . $table_id . '">
 					<thead>
 						<tr>
-							<th colspan="24">
+							<th colspan="16">
 								<div class="btn-toolbar">
 									<div class="btn-group">
 										<button
 											class="ui-state-default"
-											data-filter-column="20"
+											data-filter-column="12"
 											data-filter-value="M"
 											title="' . I18N::translate('Show only males.') . '"
 											type="button"
@@ -164,7 +181,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											class="ui-state-default"
-											data-filter-column="20"
+											data-filter-column="12"
 											data-filter-value="F"
 											title="' . I18N::translate('Show only females.') . '"
 											type="button"
@@ -173,7 +190,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											class="ui-state-default"
-											data-filter-column="20"
+											data-filter-column="12"
 											data-filter-value="U"
 											title="' . I18N::translate('Show only individuals for whom the gender is not known.') . '"
 											type="button"
@@ -184,7 +201,7 @@ class FunctionsPrintLists {
 									<div class="btn-group">
 										<button
 											class="ui-state-default"
-											data-filter-column="22"
+											data-filter-column="14"
 											data-filter-value="N"
 											title="' . I18N::translate('Show individuals who are alive or couples where both partners are alive.') . '"
 											type="button"
@@ -193,7 +210,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											class="ui-state-default"
-											data-filter-column="22"
+											data-filter-column="14"
 											data-filter-value="Y"
 											title="' . I18N::translate('Show individuals who are dead or couples where both partners are dead.') . '"
 											type="button"
@@ -202,7 +219,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											class="ui-state-default"
-											data-filter-column="22"
+											data-filter-column="14"
 											data-filter-value="YES"
 											title="' . I18N::translate('Show individuals who died more than 100 years ago.') . '"
 											type="button"
@@ -211,7 +228,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											class="ui-state-default"
-											data-filter-column="22"
+											data-filter-column="14"
 											data-filter-value="Y100"
 											title="' . I18N::translate('Show individuals who died within the last 100 years.') . '"
 											type="button"
@@ -222,7 +239,7 @@ class FunctionsPrintLists {
 									<div class="btn-group">
 										<button
 											class="ui-state-default"
-											data-filter-column="21"
+											data-filter-column="13"
 											data-filter-value="YES"
 											title="' . I18N::translate('Show individuals born more than 100 years ago.') . '"
 											type="button"
@@ -231,7 +248,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											class="ui-state-default"
-											data-filter-column="21"
+											data-filter-column="13"
 											data-filter-value="Y100"
 											title="' . I18N::translate('Show individuals born within the last 100 years.') . '"
 											type="button"
@@ -242,7 +259,7 @@ class FunctionsPrintLists {
 									<div class="btn-group">
 										<button
 											class="ui-state-default"
-											data-filter-column="23"
+											data-filter-column="15"
 											data-filter-value="R"
 											title="' . I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') . '"
 											type="button"
@@ -251,7 +268,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											class="ui-state-default"
-											data-filter-column="23"
+											data-filter-column="15"
 											data-filter-value="L"
 											title="' . I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') . '"
 											type="button"
@@ -265,33 +282,25 @@ class FunctionsPrintLists {
 						<tr>
 							<th>' . GedcomTag::getLabel('GIVN') . '</th>
 							<th>' . GedcomTag::getLabel('SURN') . '</th>
-							<th>GIVN</th>
-							<th>SURN</th>
 							<th>' . /* I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets. */ I18N::translate('Sosa') . '</th>
-							<th>SOSA</th>
 							<th>' . GedcomTag::getLabel('BIRT') . '</th>
-							<th>SORT_BIRT</th>
 							<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>
 							<th>' . GedcomTag::getLabel('PLAC') . '</th>
 							<th><i class="icon-children" title="' . I18N::translate('Children') . '"></i></th>
-							<th>NCHI</th>
 							<th>' . GedcomTag::getLabel('DEAT') . '</th>
-							<th>SORT_DEAT</th>
 							<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>
 							<th>' . GedcomTag::getLabel('AGE') . '</th>
-							<th>AGE</th>
 							<th>' . GedcomTag::getLabel('PLAC') . '</th>
 							<th>' . GedcomTag::getLabel('CHAN') . '</th>
-							<th>CHAN</th>
-							<th>SEX</th>
-							<th>BIRT</th>
-							<th>DEAT</th>
-							<th>TREE</th>
+							<th hidden></th>
+							<th hidden></th>
+							<th hidden></th>
+							<th hidden></th>
 						</tr>
 					</thead>
 					<tfoot>
 						<tr>
-							<th colspan="24">
+							<th colspan="16">
 								<div class="btn-toolbar">
 									<div class="btn-group">
 										<button type="button" class="ui-state-default btn-toggle-parents">
@@ -307,181 +316,169 @@ class FunctionsPrintLists {
 					</tfoot>
 					<tbody>';
 
-		$d100y        = new Date(date('Y') - 100); // 100 years ago
-		$unique_indis = array(); // Don't double-count indis with multiple names.
-		foreach ($datalist as $key => $person) {
-			if (!$person->canShowName()) {
+		$hundred_years_ago = new Date(date('Y') - 100);
+		$unique_indis      = array(); // Don't double-count indis with multiple names.
+
+		foreach ($indiviudals as $key => $individual) {
+			if (!$individual->canShowName()) {
 				continue;
 			}
-			if ($person->isPendingAddtion()) {
+			if ($individual->isPendingAddtion()) {
 				$class = ' class="new"';
-			} elseif ($person->isPendingDeletion()) {
+			} elseif ($individual->isPendingDeletion()) {
 				$class = ' class="old"';
 			} else {
 				$class = '';
 			}
 			$html .= '<tr' . $class . '>';
-			// Indi name(s)
-			$html .= '<td colspan="2">';
-			foreach ($person->getAllNames() as $num => $name) {
+			// Extract Given names and Surnames for sorting
+			list($surn_givn, $givn_surn) = self::sortableNames($individual);
+
+			$html .= '<td colspan="2" data-sort="' . Filter::escapeHtml($givn_surn) . '">';
+			foreach ($individual->getAllNames() as $num => $name) {
 				if ($name['type'] == 'NAME') {
 					$title = '';
 				} else {
-					$title = 'title="' . strip_tags(GedcomTag::getLabel($name['type'], $person)) . '"';
+					$title = 'title="' . strip_tags(GedcomTag::getLabel($name['type'], $individual)) . '"';
 				}
-				if ($num == $person->getPrimaryName()) {
+				if ($num == $individual->getPrimaryName()) {
 					$class             = ' class="name2"';
-					$sex_image         = $person->getSexImage();
-					list($surn, $givn) = explode(',', $name['sort']);
+					$sex_image         = $individual->getSexImage();
 				} else {
 					$class     = '';
 					$sex_image = '';
 				}
-				$html .= '<a ' . $title . ' href="' . $person->getHtmlUrl() . '"' . $class . '>' . FunctionsPrint::highlightSearchHits($name['full']) . '</a>' . $sex_image . '<br>';
+				$html .= '<a ' . $title . ' href="' . $individual->getHtmlUrl() . '"' . $class . '>' . FunctionsPrint::highlightSearchHits($name['full']) . '</a>' . $sex_image . '<br>';
 			}
-			// Indi parents
-			$html .= $person->getPrimaryParentsNames('parents details1', 'none');
+			$html .= $individual->getPrimaryParentsNames('parents details1', 'none');
 			$html .= '</td>';
-			// Dummy column to match colspan in header
-			$html .= '<td style="display:none;"></td>';
-			// GIVN/SURN
-			// Use "AAAA" as a separator (instead of ",") as Javascript.localeCompare() ignores
-			// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
-			// Similarly, @N.N. would sort as NN.
-			$html .= '<td>' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . 'AAAA' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . '</td>';
-			$html .= '<td>' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . 'AAAA' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . '</td>';
+
+			// Hidden column for sortable name
+			$html .= '<td hidden data-sort="' . Filter::escapeHtml($surn_givn) . '"></td>';
+
 			// SOSA
-			if ($option == 'sosa') {
-				$html .= '<td><a href="relationship.php?pid1=' . $datalist[1] . '&amp;pid2=' . $person->getXref() . '" title="' . I18N::translate('Relationships') . '">' . I18N::number($key) . '</a></td><td>' . $key . '</td>';
-			} else {
-				$html .= '<td></td><td>0</td>';
-			}
+			$html .= '<td class="center" data-sort="' . $key . '"><a href="relationship.php?pid1=' . $indiviudals[1] . '&amp;pid2=' . $individual->getXref() . '" title="' . I18N::translate('Relationships') . '">' . I18N::number($key) . '</a></td>';
+
 			// Birth date
-			$html .= '<td>';
-			if ($birth_dates = $person->getAllBirthDates()) {
-				foreach ($birth_dates as $num => $birth_date) {
-					if ($num) {
-						$html .= '<br>';
-					}
-					$html .= $birth_date->display(true);
+			$birth_dates = $individual->getAllBirthDates();
+			$html .= '<td data-sort="' . $individual->getEstimatedBirthDate()->julianDay() . '">';
+			foreach ($birth_dates as $n => $birth_date) {
+				if ($n > 0) {
+					$html .= '<br>';
 				}
-				if ($birth_dates[0]->gregorianYear() >= 1550 && $birth_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$person->getXref()])) {
-					$birt_by_decade[(int) ($birth_dates[0]->gregorianYear() / 10) * 10] .= $person->getSex();
-				}
-			} else {
-				$birth_date = $person->getEstimatedBirthDate();
-				if ($person->getTree()->getPreference('SHOW_EST_LIST_DATES')) {
-					$html .= $birth_date->display(true);
-				} else {
-					$html .= '&nbsp;';
-				}
-				$birth_dates[0] = new Date('');
+				$html .= $birth_date->display(true);
 			}
 			$html .= '</td>';
-			// Event date (sortable)hidden by datatables code
-			$html .= '<td>' . $birth_date->julianDay() . '</td>';
+
 			// Birth anniversary
-			$html .= '<td>' . Date::getAge($birth_dates[0], null, 2) . '</td>';
+			if (isset($birth_dates[0]) && $birth_dates[0]->gregorianYear() >= 1550 && $birth_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$individual->getXref()])) {
+				$birt_by_decade[(int) ($birth_dates[0]->gregorianYear() / 10) * 10] .= $individual->getSex();
+				$anniversary = Date::getAge($birth_dates[0], null, 2);
+			} else {
+				$anniversary = '';
+			}
+			$html .= '<td class="center" data-sort="' . -$individual->getEstimatedBirthDate()->julianDay() . '">' . $anniversary . '</td>';
+
 			// Birth place
 			$html .= '<td>';
-			foreach ($person->getAllBirthPlaces() as $n => $birth_place) {
-				$tmp = new Place($birth_place, $person->getTree());
-				if ($n) {
+			foreach ($individual->getAllBirthPlaces() as $n => $birth_place) {
+				$tmp = new Place($birth_place, $individual->getTree());
+				if ($n > 0) {
 					$html .= '<br>';
 				}
 				$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
 				$html .= FunctionsPrint::highlightSearchHits($tmp->getShortName()) . '</a>';
 			}
 			$html .= '</td>';
+
 			// Number of children
-			$nchi = $person->getNumberOfChildren();
-			$html .= '<td>' . I18N::number($nchi) . '</td><td>' . $nchi . '</td>';
+			$number_of_children = $individual->getNumberOfChildren();
+			$html .= '<td class="center" data-sort="' . $number_of_children . '">' . I18N::number($number_of_children) . '</td>';
+
 			// Death date
-			$html .= '<td>';
-			if ($death_dates = $person->getAllDeathDates()) {
-				foreach ($death_dates as $num => $death_date) {
-					if ($num) {
-						$html .= '<br>';
-					}
-					$html .= $death_date->display(true);
+			$death_dates = $individual->getAllDeathDates();
+			$html .= '<td data-sort="' . $individual->getEstimatedDeathDate()->julianDay() . '">';
+			foreach ($death_dates as $num => $death_date) {
+				if ($num) {
+					$html .= '<br>';
 				}
-				if ($death_dates[0]->gregorianYear() >= 1550 && $death_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$person->getXref()])) {
-					$deat_by_decade[(int) ($death_dates[0]->gregorianYear() / 10) * 10] .= $person->getSex();
+				$html .= $death_date->display(true);
+			}
+			$html .= '</td>';
+
+			// Death anniversary
+			if (isset($death_dates[0]) && $death_dates[0]->gregorianYear() >= 1550 && $death_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$individual->getXref()])) {
+				$birt_by_decade[(int) ($death_dates[0]->gregorianYear() / 10) * 10] .= $individual->getSex();
+				$anniversary = Date::getAge($death_dates[0], null, 2);
+			} else {
+				$anniversary = '';
+			}
+			$html .= '<td class="center" data-sort="' . -$individual->getEstimatedDeathDate()->julianDay() . '">' . $anniversary . '</td>';
+
+			// Age at death
+			if (isset($birth_dates[0]) && isset($death_dates[0])) {
+				$age_at_death      = Date::getAge($birth_dates[0], $death_dates[0], 0);
+				$age_at_death_sort = Date::getAge($birth_dates[0], $death_dates[0], 2);
+				if (!isset($unique_indis[$individual->getXref()]) && $age >= 0 && $age <= $max_age) {
+					$deat_by_age[$age_at_death] .= $individual->getSex();
 				}
 			} else {
-				$death_date = $person->getEstimatedDeathDate();
-				// Estimated death dates are a fixed number of years after the birth date.
-				// Don't show estimates in the future.
-				if ($person->getTree()->getPreference('SHOW_EST_LIST_DATES') && $death_date->minimumJulianDay() < WT_CLIENT_JD) {
-					$html .= $death_date->display(true);
-				} elseif ($person->isDead()) {
-					$html .= I18N::translate('yes');
-				} else {
-					$html .= '&nbsp;';
-				}
-				$death_dates[0] = new Date('');
+				$age_at_death      = '';
+				$age_at_death_sort = PHP_INT_MAX;
 			}
-			$html .= '</td>';
-			// Event date (sortable)hidden by datatables code
-			$html .= '<td>' . $death_date->julianDay() . '</td>';
-			// Death anniversary
-			$html .= '<td>' . Date::getAge($death_dates[0], null, 2) . '</td>';
-			// Age at death
-			$age = Date::getAge($birth_dates[0], $death_dates[0], 0);
-			if (!isset($unique_indis[$person->getXref()]) && $age >= 0 && $age <= $max_age) {
-				$deat_by_age[$age] .= $person->getSex();
-			}
-			// Need both display and sortable age
-			$html .= '<td>' . Date::getAge($birth_dates[0], $death_dates[0], 2) . '</td><td>' . Date::getAge($birth_dates[0], $death_dates[0], 1) . '</td>';
+			$html .= '<td class="center" data-sort="' . $age_at_death_sort . '">' . $age_at_death . '</td>';
+
 			// Death place
 			$html .= '<td>';
-			foreach ($person->getAllDeathPlaces() as $n => $death_place) {
-				$tmp = new Place($death_place, $person->getTree());
-				if ($n) {
+			foreach ($individual->getAllDeathPlaces() as $n => $death_place) {
+				$tmp = new Place($death_place, $individual->getTree());
+				if ($n > 0) {
 					$html .= '<br>';
 				}
 				$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
 				$html .= FunctionsPrint::highlightSearchHits($tmp->getShortName()) . '</a>';
 			}
 			$html .= '</td>';
+
 			// Last change
-			$html .= '<td>' . $person->lastChangeTimestamp() . '</td>';
-			$html .= '<td>' . $person->lastChangeTimestamp(true) . '</td>';
-			// Sorting by gender
-			$html .= '<td>' . $person->getSex() . '</td>';
-			// Filtering by birth date
-			$html .= '<td>';
-			if (!$person->canShow() || Date::compare($birth_date, $d100y) > 0) {
+			$html .= '<td data-sort="' . $individual->lastChangeTimestamp(true) . '">' . $individual->lastChangeTimestamp() . '</td>';
+
+			// Filter by sex
+			$html .= '<td hidden>' . $individual->getSex() . '</td>';
+
+			// Filter by birth date
+			$html .= '<td hidden>';
+			if (!$individual->canShow() || Date::compare($individual->getEstimatedBirthDate(), $hundred_years_ago) > 0) {
 				$html .= 'Y100';
 			} else {
 				$html .= 'YES';
 			}
 			$html .= '</td>';
-			// Filtering by death date
-			$html .= '<td>';
+
+			// Filter by death date
+			$html .= '<td hidden>';
 			// Died in last 100 years? Died? Not dead?
-			if (Date::compare($death_dates[0], $d100y) > 0) {
+			if (isset($death_dates[0]) && Date::compare($death_dates[0], $hundred_years_ago) > 0) {
 				$html .= 'Y100';
-			} elseif ($death_dates[0]->minimumJulianDay() || $person->isDead()) {
+			} elseif ($individual->isDead()) {
 				$html .= 'YES';
 			} else {
 				$html .= 'N';
 			}
 			$html .= '</td>';
-			// Roots or Leaves ?
-			$html .= '<td>';
-			if (!$person->getChildFamilies()) {
+
+			// Filter by roots/leaves
+			$html .= '<td hidden>';
+			if (!$individual->getChildFamilies()) {
 				$html .= 'R';
-			}  // roots
-			elseif (!$person->isDead() && $person->getNumberOfChildren() < 1) {
+			} elseif (!$individual->isDead() && $individual->getNumberOfChildren() < 1) {
 				$html .= 'L';
-			} // leaves
-			else {
 				$html .= '&nbsp;';
 			}
 			$html .= '</td>';
 			$html .= '</tr>';
-			$unique_indis[$person->getXref()] = true;
+
+			$unique_indis[$individual->getXref()] = true;
 		}
 		$html .= '
 					</tbody>
@@ -511,11 +508,11 @@ class FunctionsPrintLists {
 	/**
 	 * Print a table of families
 	 *
-	 * @param Family[] $datalist
+	 * @param Family[] $families
 	 *
 	 * @return string
 	 */
-	public static function familyTable($datalist) {
+	public static function familyTable($families) {
 		global $WT_TREE, $controller;
 
 		$table_id = 'table-fam-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
@@ -523,8 +520,8 @@ class FunctionsPrintLists {
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
-				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
+				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
+				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
 				jQuery("#' . $table_id . '").dataTable( {
 					dom: \'<"H"<"filtersH_' . $table_id . '"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_' . $table_id . '">>\',
 					' . I18N::datatablesI18N() . ',
@@ -533,25 +530,20 @@ class FunctionsPrintLists {
 					processing: true,
 					retrieve: true,
 					columns: [
-						/*  0 husb givn */ { dataSort: 2 },
-						/*  1 husb surn */ { dataSort: 3 },
-						/*  2 GIVN,SURN */ { type: "unicode", visible: false },
-						/*  3 SURN,GIVN */ { type: "unicode", visible: false },
-						/*  4 age       */ { class: "center" },
-						/*  5 wife givn */ { dataSort: 7 },
-						/*  6 wife surn */ { dataSort: 8 },
-						/*  7 GIVN,SURN */ { type: "unicode", visible: false },
-						/*  8 SURN,GIVN */ { type: "unicode", visible: false },
-						/*  9 age       */ { class: "center" },
-						/* 10 marr date */ { dataSort: 11 },
-						/* 11 MARR:DATE */ { visible: false },
-						/* 12 anniv     */ { class: "center" },
-						/* 13 marr plac */ { type: "unicode" },
-						/* 14 children  */ { class: "center" },
-						/* 15 CHAN      */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
-						/* 16 MARR      */ { visible: false },
-						/* 17 DEAT      */ { visible: false },
-						/* 18 TREE      */ { visible: false }
+						/* Given names         */ { type: "text" },
+						/* Surnames            */ { type: "text" },
+						/* Age                 */ { type: "num" },
+						/* Given names         */ { type: "text" },
+						/* Surnames            */ { type: "text" },
+						/* Age                 */ { type: "num" },
+						/* Marriage date       */ { type: "num" },
+						/* Anniversary         */ { type: "num" },
+						/* Marriage place      */ { type: "text" },
+						/* Children            */ { type: "num" },
+						/* Last change         */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
+						/* Filter marriage     */ { sortable: false },
+						/* Filter alive/dead   */ { sortable: false },
+						/* Filter tree         */ { sortable: false }
 					],
 					sorting: [[1, "asc"]],
 					displayLength: 20,
@@ -610,12 +602,12 @@ class FunctionsPrintLists {
 				<table id="' . $table_id . '">
 					<thead>
 						<tr>
-							<th colspan="19">
+							<th colspan="14">
 								<div class="btn-toolbar">
 									<div class="btn-group">
 										<button
 											type="button"
-											data-filter-column="17"
+											data-filter-column="12"
 											data-filter-value="N"
 											class="ui-state-default"
 											title="' . I18N::translate('Show individuals who are alive or couples where both partners are alive.') . '"
@@ -624,7 +616,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="17"
+											data-filter-column="12"
 											data-filter-value="W"
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples where only the female partner is dead.') . '"
@@ -633,7 +625,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="17"
+											data-filter-column="12"
 											data-filter-value="H"
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples where only the male partner is dead.') . '"
@@ -642,7 +634,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="17"
+											data-filter-column="12"
 											data-filter-value="Y"
 											class="ui-state-default"
 											title="' . I18N::translate('Show individuals who are dead or couples where both partners are dead.') . '"
@@ -653,7 +645,7 @@ class FunctionsPrintLists {
 									<div class="btn-group">
 										<button
 											type="button"
-											data-filter-column="18"
+											data-filter-column="13"
 											data-filter-value="R"
 											class="ui-state-default"
 											title="' . I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') . '"
@@ -662,7 +654,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="18"
+											data-filter-column="13"
 											data-filter-value="L"
 											class="ui-state-default"
 											title="' . I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') . '"
@@ -673,7 +665,7 @@ class FunctionsPrintLists {
 									<div class="btn-group">
 										<button
 											type="button"
-											data-filter-column="16"
+											data-filter-column="11"
 											data-filter-value="U"
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples with an unknown marriage date.') . '"
@@ -682,7 +674,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="16"
+											data-filter-column="11"
 											data-filter-value="YES"
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples who married more than 100 years ago.') . '"
@@ -691,7 +683,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="16"
+											data-filter-column="11"
 											data-filter-value="Y100"
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples who married within the last 100 years.') . '"
@@ -700,7 +692,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="16"
+											data-filter-column="11"
 											data-filter-value="D"
 											class="ui-state-default"
 											title="' . I18N::translate('Show divorced couples.') . '"
@@ -709,7 +701,7 @@ class FunctionsPrintLists {
 										</button>
 										<button
 											type="button"
-											data-filter-column="16"
+											data-filter-column="11"
 											data-filter-value="M"
 											class="ui-state-default"
 											title="' . I18N::translate('Show couples where either partner married more than once.') . '"
@@ -723,28 +715,23 @@ class FunctionsPrintLists {
 						<tr>
 							<th>' . GedcomTag::getLabel('GIVN') . '</th>
 							<th>' . GedcomTag::getLabel('SURN') . '</th>
-							<th>HUSB:GIVN_SURN</th>
-							<th>HUSB:SURN_GIVN</th>
 							<th>' . GedcomTag::getLabel('AGE') . '</th>
 							<th>' . GedcomTag::getLabel('GIVN') . '</th>
 							<th>' . GedcomTag::getLabel('SURN') . '</th>
-							<th>WIFE:GIVN_SURN</th>
-							<th>WIFE:SURN_GIVN</th>
 							<th>' . GedcomTag::getLabel('AGE') . '</th>
 							<th>' . GedcomTag::getLabel('MARR') . '</th>
-							<th>MARR:DATE</th>
 							<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>
 							<th>' . GedcomTag::getLabel('PLAC') . '</th>
 							<th><i class="icon-children" title="' . I18N::translate('Children') . '"></i></th>
 							<th>' . GedcomTag::getLabel('CHAN') . '</th>
-							<th>MARR</th>
-							<th>DEAT</th>
-							<th>TREE</th>
+							<th hidden></th>
+							<th hidden></th>
+							<th hidden></th>
 						</tr>
 					</thead>
 					<tfoot>
 						<tr>
-							<th colspan="19">
+							<th colspan="14">
 								<div class="btn-toolbar">
 									<div class="btn-group">
 										<button type="button" class="ui-state-default btn-toggle-parents">
@@ -760,8 +747,9 @@ class FunctionsPrintLists {
 					</tfoot>
 					<tbody>';
 
-		$d100y = new Date(date('Y') - 100); // 100 years ago
-		foreach ($datalist as $family) {
+		$hundred_years_ago = new Date(date('Y') - 100);
+
+		foreach ($families as $family) {
 			// Retrieve husband and wife
 			$husb = $family->getHusband();
 			if (is_null($husb)) {
@@ -783,7 +771,10 @@ class FunctionsPrintLists {
 			}
 			$html .= '<tr' . $class . '>';
 			// Husband name(s)
-			$html .= '<td colspan="2">';
+			// Extract Given names and Surnames for sorting
+			list($surn_givn, $givn_surn) = self::sortableNames($husb);
+
+			$html .= '<td colspan="2" data-sort="' . Filter::escapeHtml($givn_surn) . '">';
 			foreach ($husb->getAllNames() as $num => $name) {
 				if ($name['type'] == 'NAME') {
 					$title = '';
@@ -793,7 +784,6 @@ class FunctionsPrintLists {
 				if ($num == $husb->getPrimaryName()) {
 					$class             = ' class="name2"';
 					$sex_image         = $husb->getSexImage();
-					list($surn, $givn) = explode(',', $name['sort']);
 				} else {
 					$class     = '';
 					$sex_image = '';
@@ -806,16 +796,12 @@ class FunctionsPrintLists {
 			// Husband parents
 			$html .= $husb->getPrimaryParentsNames('parents details1', 'none');
 			$html .= '</td>';
-			// Dummy column to match colspan in header
-			$html .= '<td style="display:none;"></td>';
-			// Husb GIVN
-			// Use "AAAA" as a separator (instead of ",") as Javascript.localeCompare() ignores
-			// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
-			// Similarly, @N.N. would sort as NN.
-			$html .= '<td>' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . 'AAAA' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . '</td>';
-			$html .= '<td>' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . 'AAAA' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . '</td>';
-			$mdate = $family->getMarriageDate();
+
+			// Hidden column for sortable name
+			$html .= '<td hidden data-sort="' . Filter::escapeHtml($surn_givn) . '"></td>';
+
 			// Husband age
+			$mdate = $family->getMarriageDate();
 			$hdate = $husb->getBirthDate();
 			if ($hdate->isOK() && $mdate->isOK()) {
 				if ($hdate->gregorianYear() >= 1550 && $hdate->gregorianYear() < 2030) {
@@ -826,9 +812,12 @@ class FunctionsPrintLists {
 					$marr_by_age[$hage] .= $husb->getSex();
 				}
 			}
-			$html .= '<td data=-sort="' . Date::getAge($hdate, $mdate, 1) . '">' . Date::getAge($hdate, $mdate, 2) . '</td>';
+			$html .= '<td class="center" data=-sort="' . Date::getAge($hdate, $mdate, 1) . '">' . Date::getAge($hdate, $mdate, 2) . '</td>';
+
 			// Wife name(s)
-			$html .= '<td colspan="2">';
+			// Extract Given names and Surnames for sorting
+			list($surn_givn, $givn_surn) = self::sortableNames($wife);
+			$html .= '<td colspan="2" data-sort="' . Filter::escapeHtml($givn_surn) . '">';
 			foreach ($wife->getAllNames() as $num => $name) {
 				if ($name['type'] == 'NAME') {
 					$title = '';
@@ -838,7 +827,6 @@ class FunctionsPrintLists {
 				if ($num == $wife->getPrimaryName()) {
 					$class             = ' class="name2"';
 					$sex_image         = $wife->getSexImage();
-					list($surn, $givn) = explode(',', $name['sort']);
 				} else {
 					$class     = '';
 					$sex_image = '';
@@ -851,17 +839,12 @@ class FunctionsPrintLists {
 			// Wife parents
 			$html .= $wife->getPrimaryParentsNames('parents details1', 'none');
 			$html .= '</td>';
-			// Dummy column to match colspan in header
-			$html .= '<td style="display:none;"></td>';
-			// Wife GIVN
-			// Husb GIVN
-			// Use "AAAA" as a separator (instead of ",") as Javascript.localeCompare() ignores
-			// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
-			// Similarly, @N.N. would sort as NN.
-			$html .= '<td>' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . 'AAAA' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . '</td>';
-			$html .= '<td>' . Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)) . 'AAAA' . Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)) . '</td>';
-			$mdate = $family->getMarriageDate();
+
+			// Hidden column for sortable name
+			$html .= '<td hidden data-sort="' . Filter::escapeHtml($surn_givn) . '"></td>';
+
 			// Wife age
+			$mdate = $family->getMarriageDate();
 			$wdate = $wife->getBirthDate();
 			if ($wdate->isOK() && $mdate->isOK()) {
 				if ($wdate->gregorianYear() >= 1550 && $wdate->gregorianYear() < 2030) {
@@ -872,9 +855,10 @@ class FunctionsPrintLists {
 					$marr_by_age[$wage] .= $wife->getSex();
 				}
 			}
-			$html .= '<td data-sort="' . Date::getAge($wdate, $mdate, 1) . '">' . Date::getAge($wdate, $mdate, 2) . '</td>';
+			$html .= '<td class="center" data-sort="' . Date::getAge($wdate, $mdate, 1) . '">' . Date::getAge($wdate, $mdate, 2) . '</td>';
+
 			// Marriage date
-			$html .= '<td>';
+			$html .= '<td data-sort="' . $family->getMarriageDate()->julianDay() . '">';
 			if ($marriage_dates = $family->getAllMarriageDates()) {
 				foreach ($marriage_dates as $n => $marriage_date) {
 					if ($n) {
@@ -893,16 +877,10 @@ class FunctionsPrintLists {
 				$html .= '&nbsp;';
 			}
 			$html .= '</td>';
-			// Event date (sortable)hidden by datatables code
-			$html .= '<td>';
-			if ($marriage_dates) {
-				$html .= $marriage_date->julianDay();
-			} else {
-				$html .= 0;
-			}
-			$html .= '</td>';
+
 			// Marriage anniversary
-			$html .= '<td data-sort="' . Date::getAge($mdate, null, 1) . '">' . Date::getAge($mdate, null, 2) . '</td>';
+			$html .= '<td class="center" data-sort="' . -$family->getMarriageDate()->julianDay() . '">' . Date::getAge($family->getMarriageDate(), null, 2) . '</td>';
+
 			// Marriage place
 			$html .= '<td>';
 			foreach ($family->getAllMarriagePlaces() as $n => $marriage_place) {
@@ -914,16 +892,19 @@ class FunctionsPrintLists {
 				$html .= FunctionsPrint::highlightSearchHits($tmp->getShortName()) . '</a>';
 			}
 			$html .= '</td>';
+
 			// Number of children
-			$html .= '<td data-sort="' . $family->getNumberOfChildren() . '">' . I18N::number($family->getNumberOfChildren()) . '</td>';
+			$html .= '<td class="center" data-sort="' . $family->getNumberOfChildren() . '">' . I18N::number($family->getNumberOfChildren()) . '</td>';
+
 			// Last change
 			$html .= '<td data-sort="' . $family->lastChangeTimestamp(true) . '">' . $family->lastChangeTimestamp() . '</td>';
-			// Sorting by marriage date
-			$html .= '<td>';
+
+			// Filter by marriage date
+			$html .= '<td hidden>';
 			if (!$family->canShow() || !$mdate->isOK()) {
 				$html .= 'U';
 			} else {
-				if (Date::compare($mdate, $d100y) > 0) {
+				if (Date::compare($mdate, $hundred_years_ago) > 0) {
 					$html .= 'Y100';
 				} else {
 					$html .= 'YES';
@@ -936,8 +917,9 @@ class FunctionsPrintLists {
 				$html .= 'M';
 			}
 			$html .= '</td>';
-			// Sorting alive/dead
-			$html .= '<td>';
+
+			// Filter by alive/dead
+			$html .= '<td hidden>';
 			if ($husb->isDead() && $wife->isDead()) {
 				$html .= 'Y';
 			}
@@ -961,35 +943,29 @@ class FunctionsPrintLists {
 				$html .= 'N';
 			}
 			$html .= '</td>';
-			// Roots or Leaves
-			$html .= '<td>';
+
+			// Filter by roots/leaves
+			$html .= '<td hidden>';
 			if (!$husb->getChildFamilies() && !$wife->getChildFamilies()) {
 				$html .= 'R';
-			} elseif (!$husb->isDead() && !$wife->isDead() && $family->getNumberOfChildren() < 1) {
+			} elseif (!$husb->isDead() && !$wife->isDead() && $family->getNumberOfChildren() === 0) {
 				$html .= 'L';
-			} else {
-				$html .= '&nbsp;';
 			}
 			$html .= '</td>
 			</tr>';
 		}
+
 		$html .= '
 					</tbody>
 				</table>
 				<div id="fam_list_table-charts_' . $table_id . '" style="display:none">
 					<table class="list-charts">
 						<tr>
-							<td>
-								' . self::chartByDecade($birt_by_decade, I18N::translate('Decade of birth')) . '
-							</td>
-							<td>
-								' . self::chartByDecade($marr_by_decade, I18N::translate('Decade of marriage')) . '
-							</td>
+							<td>' . self::chartByDecade($birt_by_decade, I18N::translate('Decade of birth')) . '</td>
+							<td>' . self::chartByDecade($marr_by_decade, I18N::translate('Decade of marriage')) . '</td>
 						</tr>
 						<tr>
-							<td colspan="2">
-								' . self::chartByAge($marr_by_age, I18N::translate('Age in year of marriage')) . '
-							</td>
+							<td colspan="2">' . self::chartByAge($marr_by_age, I18N::translate('Age in year of marriage')) . '</td>
 						</tr>
 					</table>
 				</div>
@@ -1001,11 +977,11 @@ class FunctionsPrintLists {
 	/**
 	 * Print a table of sources
 	 *
-	 * @param Source[] $datalist
+	 * @param Source[] $sources
 	 *
 	 * @return string
 	 */
-	public static function sourceTable($datalist) {
+	public static function sourceTable($sources) {
 		global $WT_TREE, $controller;
 
 		// Count the number of linked records. These numbers include private records.
@@ -1029,6 +1005,8 @@ class FunctionsPrintLists {
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
+				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
+				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
 				jQuery("#' . $table_id . '").dataTable( {
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
@@ -1036,14 +1014,14 @@ class FunctionsPrintLists {
 					autoWidth: false,
 					processing: true,
 					columns: [
-						/* title  */ null,
-						/* author */ null,
-						/* #indi  */ { class: "center" },
-						/* #fam   */ { class: "center" },
-						/* #obje  */ { class: "center" },
-						/* #note  */ { class: "center" },
-						/* CHAN   */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
-						/* DELETE */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
+						/* Title         */ { type: "text" },
+						/* Author        */ { type: "text" },
+						/* Individuals   */ { type: "num" },
+						/* Families      */ { type: "num" },
+						/* Media objects */ { type: "num" },
+						/* Notes         */ { type: "num" },
+						/* Last change   */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
+						/* Delete        */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
 					],
 					displayLength: 20,
 					pagingType: "full_numbers"
@@ -1066,7 +1044,7 @@ class FunctionsPrintLists {
 		$html .= '</tr></thead>';
 		$html .= '<tbody>';
 
-		foreach ($datalist as $source) {
+		foreach ($sources as $source) {
 			if (!$source->canShow()) {
 				continue;
 			}
@@ -1102,24 +1080,20 @@ class FunctionsPrintLists {
 			$key = $source->getXref() . '@' . $source->getTree()->getTreeId();
 			// Count of linked individuals
 			$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
-			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 			// Count of linked families
 			$num = array_key_exists($key, $count_families) ? $count_families[$key] : 0;
-			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 			// Count of linked media objects
 			$num = array_key_exists($key, $count_media) ? $count_media[$key] : 0;
-			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 			// Count of linked notes
 			$num = array_key_exists($key, $count_notes) ? $count_notes[$key] : 0;
-			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 			// Last change
 			$html .= '<td data-sort="' . $source->lastChangeTimestamp(true) . '">' . $source->lastChangeTimestamp() . '</td>';
 			// Delete
-			if (Auth::isManager($WT_TREE)) {
-				$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
-			} else {
-				$html .= '<td></td>';
-			}
+			$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
 			$html .= '</tr>';
 		}
 		$html .= '</tbody></table></div>';
@@ -1130,11 +1104,11 @@ class FunctionsPrintLists {
 	/**
 	 * Print a table of shared notes
 	 *
-	 * @param Note[] $datalist
+	 * @param Note[] $notes
 	 *
 	 * @return string
 	 */
-	public static function noteTable($datalist) {
+	public static function noteTable($notes) {
 		global $WT_TREE, $controller;
 
 		// Count the number of linked records. These numbers include private records.
@@ -1158,6 +1132,8 @@ class FunctionsPrintLists {
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
+				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
+				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
 				jQuery("#' . $table_id . '").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
@@ -1165,13 +1141,13 @@ class FunctionsPrintLists {
 					autoWidth: false,
 					processing: true,
 					columns: [
-						/* title  */ null,
-						/* #indi  */ { class: "center" },
-						/* #fam   */ { class: "center" },
-						/* #obje  */ { class: "center" },
-						/* #sour  */ { class: "center" },
-						/* CHAN   */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
-						/* DELETE */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
+						/* Title         */ { type: "text" },
+						/* Individuals   */ { type: "num" },
+						/* Families      */ { type: "num" },
+						/* Media objects */ { type: "num" },
+						/* Sources       */ { type: "num" },
+						/* Last change   */ { type: "num", visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
+						/* Delete        */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
 					],
 					displayLength: 20,
 					pagingType: "full_numbers"
@@ -1192,7 +1168,8 @@ class FunctionsPrintLists {
 		$html .= '<th>' . I18N::translate('Delete') . '</th>';
 		$html .= '</tr></thead>';
 		$html .= '<tbody>';
-		foreach ($datalist as $note) {
+
+		foreach ($notes as $note) {
 			if (!$note->canShow()) {
 				continue;
 			}
@@ -1209,24 +1186,20 @@ class FunctionsPrintLists {
 			$key = $note->getXref() . '@' . $note->getTree()->getTreeId();
 			// Count of linked individuals
 			$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
-			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 			// Count of linked families
 			$num = array_key_exists($key, $count_families) ? $count_families[$key] : 0;
-			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 			// Count of linked media objects
 			$num = array_key_exists($key, $count_media) ? $count_media[$key] : 0;
-			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 			// Count of linked sources
 			$num = array_key_exists($key, $count_sources) ? $count_sources[$key] : 0;
-			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 			// Last change
 			$html .= '<td data-sort="' . $note->lastChangeTimestamp(true) . '">' . $note->lastChangeTimestamp() . '</td>';
 			// Delete
-			if (Auth::isManager($WT_TREE)) {
-				$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . "', '" . $note->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
-			} else {
-				$html .= '<td></td>';
-			}
+			$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . "', '" . $note->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
 			$html .= '</tr>';
 		}
 		$html .= '</tbody></table></div>';
@@ -1256,6 +1229,8 @@ class FunctionsPrintLists {
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
+				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
+				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
 				jQuery("#' . $table_id . '").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
@@ -1263,10 +1238,10 @@ class FunctionsPrintLists {
 					autoWidth: false,
 					processing: true,
 					columns: [
-						/* name   */ null,
-						/* #sour  */ { class: "center" },
-						/* CHAN   */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
-						/* DELETE */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
+						/* Name        */ { type: "text" },
+						/* Sources     */ { type: "num" },
+						/* Last change */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
+						/* Delete      */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
 					],
 					displayLength: 20,
 					pagingType: "full_numbers"
@@ -1313,15 +1288,11 @@ class FunctionsPrintLists {
 			$key = $repository->getXref() . '@' . $repository->getTree()->getTreeId();
 			// Count of linked sources
 			$num = array_key_exists($key, $count_sources) ? $count_sources[$key] : 0;
-			$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+			$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 			// Last change
 			$html .= '<td data-sort="' . $repository->lastChangeTimestamp(true) . '">' . $repository->lastChangeTimestamp() . '</td>';
 			// Delete
-			if (Auth::isManager($WT_TREE)) {
-				$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
-			} else {
-				$html .= '<td></td>';
-			}
+			$html .= '<td><a href="#" title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_record(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></a></td>';
 			$html .= '</tr>';
 		}
 		$html .= '</tbody></table></div>';
@@ -1344,6 +1315,8 @@ class FunctionsPrintLists {
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
+				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
+				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
 				jQuery("#' . $table_id . '").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					' . I18N::datatablesI18N() . ',
@@ -1351,12 +1324,12 @@ class FunctionsPrintLists {
 					autoWidth:false,
 					processing: true,
 					columns: [
-						/* media */ { sortable: false },
-						/* title */ null,
-						/* #indi */ { class: "center" },
-						/* #fam  */ { class: "center" },
-						/* #sour */ { class: "center" },
-						/* CHAN  */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
+						/* Thumbnail   */ { sortable: false },
+						/* Title       */ { type: "text" },
+						/* Individuals */ { type: "num" },
+						/* Families    */ { type: "num" },
+						/* Sources     */ { type: "num" },
+						/* Last change */ { visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
 					],
 					displayLength: 20,
 					pagingType: "full_numbers"
@@ -1401,13 +1374,13 @@ class FunctionsPrintLists {
 
 				// Count of linked individuals
 				$num = count($media_object->linkedIndividuals('OBJE'));
-				$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+				$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 				// Count of linked families
 				$num = count($media_object->linkedFamilies('OBJE'));
-				$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+				$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 				// Count of linked sources
 				$num = count($media_object->linkedSources('OBJE'));
-				$html .= '<td data-sort="' . $num . '">' . I18N::number($num) . '</td>';
+				$html .= '<td class="center" data-sort="' . $num . '">' . I18N::number($num) . '</td>';
 				// Last change
 				$html .= '<td data-sort="' . $media_object->lastChangeTimestamp(true) . '">' . $media_object->lastChangeTimestamp() . '</td>';
 				$html .= '</tr>';
@@ -1434,19 +1407,19 @@ class FunctionsPrintLists {
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
-				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
-				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-				jQuery(".surname-list").dataTable( {
-					dom: \'t\',
+				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
+				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
+				jQuery(".surname-list").dataTable({
+					dom: "t",
 					jQueryUI: true,
 					autoWidth: false,
 					' . I18N::datatablesI18N() . ',
 					paging: false,
 					sorting: [[0, "asc"]],
 					columns: [
-						/* name  */ null,
-						/* count */ { class: "center" },
-					],
+						/* Surname */ { type: "text" },
+						/* Count   */ { type: "num" } 
+					]
 				});
 			');
 
@@ -1475,7 +1448,7 @@ class FunctionsPrintLists {
 			}
 			$html .= '<tr>';
 			// Surname
-			$html .= '<td data-type="unicode" data-sort="' . Filter::escapeHtml($surn) . '">';
+			$html .= '<td data-sort="' . Filter::escapeHtml($surn) . '">';
 			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 			foreach ($surns as $spfxsurn => $indis) {
 				if ($spfxsurn) {
@@ -1491,7 +1464,7 @@ class FunctionsPrintLists {
 			foreach ($surns as $indis) {
 				$subtotal += count($indis);
 			}
-			$html .= '<td data-sort="' . $subtotal . '">';
+			$html .= '<td class="center" data-sort="' . $subtotal . '">';
 			foreach ($surns as $indis) {
 				$html .= I18N::number(count($indis)) . '<br>';
 			}
@@ -1647,6 +1620,8 @@ class FunctionsPrintLists {
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
+				jQuery.fn.dataTableExt.oSort["text-asc"] = textCompareAsc;
+				jQuery.fn.dataTableExt.oSort["text-desc"] = textCompareDesc;
 				jQuery("#' . $table_id . '").dataTable({
 					dom: "t",
 					' . I18N::datatablesI18N() . ',
@@ -1658,10 +1633,10 @@ class FunctionsPrintLists {
 					jQueryUI: true,
 					sorting: [[ ' . ($sort_by == 'alpha' ? 0 : 1) . ', "asc"]],
 					columns: [
-						/* 0-Record */ null,
-						/* 1-Date */   null,
-						/* 2-Anniv. */ { class: "center" },
-						/* 3-Event */  { class: "center" }
+						/* Name        */ { type: "text" },
+						/* Date        */ { type: "num" },
+						/* Anniversary */ { type: "num" },
+						/* Event       */ { type: "text" }
 					]
 				});
 			');
@@ -1716,10 +1691,10 @@ class FunctionsPrintLists {
 				$html .= '<td data-sort="' . $fact->getDate()->minimumJulianDay() . '">';
 				$html .= $fact->getDate()->display();
 				$html .= '</td>';
-				$html .= '<td data-sort="' . $fact->anniv . '">';
+				$html .= '<td class="center" data-sort="' . $fact->anniv . '">';
 				$html .= ($fact->anniv ? I18N::number($fact->anniv) : '');
 				$html .= '</td>';
-				$html .= '<td>' . $fact->getLabel() . '</td>';
+				$html .= '<td class="center">' . $fact->getLabel() . '</td>';
 				$html .= '</tr>';
 			}
 
