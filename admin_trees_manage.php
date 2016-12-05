@@ -502,6 +502,16 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 									</span>
 								</a>
 							</li>
+							<!-- UNCONNECTED INDIVIDUALS -->
+							<li>
+								<i class="fa fa-li fa-chain-broken"></i>
+								<a href="admin_trees_unconnected.php?ged=<?php echo $tree->getNameUrl(); ?>">
+									<?php echo I18N::translate('Find unrelated individuals'); ?>
+									<span class="sr-only">
+										<?php echo $tree->getTitleHtml(); ?>
+									</span>
+								</a>
+							</li>
 							<!-- RENUMBER -->
 							<li>
 								<i class="fa fa-li fa-sort-numeric-asc"></i>
