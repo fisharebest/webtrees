@@ -181,7 +181,7 @@ class Auth {
 	 * @param User $user
 	 */
 	public static function login(User $user) {
-		Session::regenerate(true);
+		Session::regenerate(false);
 		Session::put('wt_user', $user->getUserId());
 	}
 
