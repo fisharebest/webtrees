@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\I18N;
 
 /**
  * Relationshiop to head of household.
@@ -34,7 +35,7 @@ class CensusColumnRelationToHead extends AbstractCensusColumn implements CensusC
 		if ($head === null) {
 			return '';
 		} elseif ($individual == $head) {
-			return 'head';
+			return /* I18N: head of family */ I18N::translate('head');
 		} else {
 			return Functions::getCloseRelationshipName($head, $individual);
 		}
