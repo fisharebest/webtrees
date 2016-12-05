@@ -4021,7 +4021,7 @@ msgstr "Pokračovanie"
 #: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
 #: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
-msgstr ""
+msgstr "Riadiaci panel"
 
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:413
 #: app/Module/ClippingsCartModule.php:781
@@ -4354,7 +4354,7 @@ msgstr "Uživateľský uvítací text"
 
 #: app/Theme/AbstractTheme.php:1078 app/Theme/AbstractTheme.php:1080
 msgid "Customize this page"
-msgstr ""
+msgstr "prispôsobiť stránku"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6733
@@ -6475,19 +6475,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Napríklad ak zadáte cestu o veľkosti 2, osoba bude môcť vidieť svojho vnuka (dieťa), svoju tetu (rodič, súrodenec), svoju nevlastnú dcéru (partner, dieťa), ale už nie svojho bratranca (rodič, súrodenec, dieťa)."
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
 msgstr "S otázkami k rodokmeňu sa obracajte na %s"
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "Pre technickú podporu a ďalšie informácie kontaktujte %s"
+msgstr "Pre technickú podporu a ďalšie informácie kontaktujte: %s"
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Pre technickú podporu, alebo s otázkami k rodokmeňu prosím kontaktujte %s"
+msgstr "Pre technickú podporu, alebo s otázkami k rodokmeňu prosím kontaktujte: %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:276
@@ -6496,7 +6496,7 @@ msgstr ""
 
 #: app/Module/LoginBlockModule.php:87 login.php:209
 msgid "Forgot password?"
-msgstr ""
+msgstr "Zabudli ste heslo?"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:496 help_text.php:136 help_text.php:148 help_text.php:159
@@ -9514,7 +9514,7 @@ msgstr "Moja stránka"
 
 #: app/Theme/AbstractTheme.php:1636
 msgid "My pages"
-msgstr ""
+msgstr "Moje stránky"
 
 #: app/Module/UserWelcomeModule.php:59 app/Theme/AbstractTheme.php:1662
 msgid "My pedigree"
@@ -11944,7 +11944,6 @@ msgstr "Hľadať"
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1752
-#, fuzzy
 msgid "Search and replace"
 msgstr "Nájsť a nahradiť"
 
@@ -12833,7 +12832,6 @@ msgid "Sign in"
 msgstr "Prihlásiť sa"
 
 #: app/Module/LoginBlockModule.php:62 app/Theme/AbstractTheme.php:1572
-#, fuzzy
 msgid "Sign out"
 msgstr "Odhlásiť sa"
 
@@ -14406,9 +14404,8 @@ msgid "This is the width (in pixels) that the program will use when automaticall
 msgstr "Toto je šírka (v pixeloch) ktorú program použije keď automaticky generuje náhľady. Implicitné nastavenie je 100."
 
 #: admin_users.php:317 edituser.php:176 login.php:423 setup.php:427
-#, fuzzy
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr "Toto je vaše skutočné meno, ktoré chcete zobraziť na monitore."
+msgstr "Totto je vaše skutočné meno, v takom tvare v akom si želáte zobraziť na obrazovke."
 
 #: admin_trees_check.php:135
 msgid "This may be a mistake in your data."
@@ -14558,9 +14555,9 @@ msgstr "Táto stránka vám umožňuje obísť obvyklé formuláre a upravovať 
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Táto stránka bola prehliadnutá %s krát."
+msgstr[1] "Táto stránka bola prehliadnutá %s krát."
+msgstr[2] "Táto stránka bola prehliadnutá %s krát."
 
 #: app/Module/GoogleMapsModule.php:2419
 msgid "This place has no coordinates"
@@ -16092,7 +16089,7 @@ msgstr "Vybrali ste GEDCOM z odlišným názvom. Je to srávne?"
 
 #: logout.php:27
 msgid "You have signed out."
-msgstr ""
+msgstr "Boli ste odhlásení."
 
 #: addmedia.php:473
 msgid "You may enter a URL, beginning with “http://”."
@@ -16665,12 +16662,12 @@ msgstr "zatvoriť"
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:180
 msgid "clouds"
-msgstr ""
+msgstr "oblaky"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:193
 msgid "colors"
-msgstr ""
+msgstr "farby"
 
 #: app/Module/TopSurnamesModule.php:165
 msgid "compact list"
@@ -19614,7 +19611,6 @@ msgstr "prihlásiť sa"
 
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:65
-#, fuzzy
 msgid "sign out"
 msgstr "odhlásiť sa"
 
