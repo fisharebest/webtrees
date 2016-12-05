@@ -102,10 +102,10 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('London, England');
-		$individual->shouldReceive('getFacts')->andReturn([
+		$individual->shouldReceive('getFacts')->andReturn(array(
 			$fact1,
 			$fact2,
-		]);
+		));
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('England');
