@@ -29,6 +29,23 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 	public function tearDown() {
 		Mockery::close();
 	}
+	
+	/**
+	 * @covers Fisharebest\Webtrees\Census\CensusColumnNationality
+	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+	 */
+	public function testNoBirthPlace() {
+	    $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+	    $individual->shouldReceive('getBirthPlace')->andReturn('');
+	    $individual->shouldReceive('getFacts')->andReturn(array());
+	    
+	    $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+	    $census->shouldReceive('censusPlace')->andReturn('France');
+	    
+	    $column = new CensusColumnNationality($census, '', '');
+	    
+	    $this->assertSame('France', $column->generate($individual));
+	}
 
 	/**
 	 * @covers Fisharebest\Webtrees\Census\CensusColumnNationality

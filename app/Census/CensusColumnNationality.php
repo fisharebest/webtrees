@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\I18N;
 
 /**
  * The nationality of the individual.
@@ -40,9 +41,11 @@ class CensusColumnNationality extends AbstractCensusColumn implements CensusColu
 			}
 		}
 
-		$place = explode(', ', $place);
-		$place = end($place);
-
+		// By default, we can assume the nationality is the census's one
+		if(empty($place)) $place = $this->place();
+		
+		$place = $this->lastPartOfPlace($place);
+		
 		if ($place === 'England' || $place === 'Scotland' || $place === 'Wales') {
 			return 'British';
 		} else {
