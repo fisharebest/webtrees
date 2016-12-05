@@ -390,7 +390,7 @@ Session::start(array(
 
 if (!Auth::isSearchEngine() && !Session::get('initiated')) {
 	// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
-	Session::regenerate(false);
+	Session::regenerate(true);
 	Session::put('initiated', true);
 } else {
 	// An existing session
