@@ -28,7 +28,7 @@ class CensusOfDeutschlandNL1867Test extends \PHPUnit_Framework_TestCase {
 	public function testPlaceAndDate() {
 		$census = new CensusOfDeutschlandNL1867;
 		
-		$this->assertSame('Mecklenburg-Schwerin (Nachtragsliste), Deuschland', $census->censusPlace());
+		$this->assertSame('Mecklenburg-Schwerin (Nachtragsliste), Deutschland', $census->censusPlace());
 		$this->assertSame('03 DEC 1867', $census->censusDate());
 	}
 	
