@@ -194,6 +194,7 @@ case 'masquerade':
 	if ($user && Auth::isAdmin() && Auth::user() !== $user) {
 		Log::addAuthenticationLog('Masquerade as user: ' . $user->getUserName());
 		Auth::login($user);
+		Session::put('masquerade', '1');
 	} else {
 		http_response_code(406);
 	}

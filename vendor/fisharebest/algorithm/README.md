@@ -1,3 +1,4 @@
+[![Latest Stable Version](https://poser.pugx.org/fisharebest/algorithm/v/stable.svg)](https://packagist.org/packages/fisharebest/algorithm)
 [![Build Status](https://travis-ci.org/fisharebest/algorithm.svg)](https://travis-ci.org/fisharebest/algorithm)
 [![Coverage Status](https://coveralls.io/repos/fisharebest/algorithm/badge.svg?branch=master)](https://coveralls.io/r/fisharebest/algorithm?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4997a2c6-fb22-433e-92c5-ae7285f1a5a0/mini.png)](https://insight.sensiolabs.com/projects/4997a2c6-fb22-433e-92c5-ae7285f1a5a0)

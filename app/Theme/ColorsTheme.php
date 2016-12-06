@@ -151,8 +151,11 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
 			foreach ($this->palettes as $palette_id => $palette_name) {
 				$menu->addSubmenu(new Menu(
 					$palette_name,
-					Functions::getQueryUrl(array('themecolor' => $palette_id), '&amp;'),
-					'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : '')
+					'#',
+					'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : ''),
+					array(
+						'onclick' => 'document.location=\'' . Functions::getQueryUrl(array('themecolor' => $palette_id), '&') . '\'',
+					)
 				));
 			}
 

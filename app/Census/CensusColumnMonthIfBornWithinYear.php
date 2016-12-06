@@ -30,7 +30,9 @@ class CensusColumnMonthIfBornWithinYear extends AbstractCensusColumn implements 
 	 * @return string
 	 */
 	public function generate(Individual $individual, Individual $head = null) {
-		if ($individual->getBirthDate()->julianDay() + 365 >= $this->date()->julianDay()) {
+		$birth_jd  = $individual->getBirthDate()->julianDay();
+		$census_jd = $this->date()->julianDay();
+		if ($birth_jd <= $census_jd && $birth_jd >= $census_jd - 365) {
 			// Use the GEDCOM month, as we need this in English - for the US census
 			return ucfirst(strtolower($individual->getBirthDate()->minimumDate()->format('%O')));
 		} else {

@@ -34,7 +34,7 @@ class CensusOfDeutschlandNL1867 extends CensusOfDeutschland implements CensusInt
 	 * @return string
 	 */
 	public function censusPlace() {
-		return 'Mecklenburg-Schwerin (Nachtragsliste), Deuschland';
+		return 'Mecklenburg-Schwerin (Nachtragsliste), Deutschland';
 	}	
 
 	/**
