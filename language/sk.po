@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-06 16:37+0000\n"
+"POT-Creation-Date: 2016-12-07 14:51+0000\n"
 "PO-Revision-Date: 2016-01-18 20:45+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\n"
@@ -29,6 +29,11 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:282,
 #: modules_v3/ahnentafel_report/report.xml:309,
 #: modules_v3/ahnentafel_report/report.xml:334,
+#: modules_v3/ahnentafel_report/report.xml:359,
+#: modules_v3/ahnentafel_report/report.xml:160,,
+#: modules_v3/ahnentafel_report/report.xml:188,,
+#: modules_v3/ahnentafel_report/report.xml:282,,
+#: modules_v3/ahnentafel_report/report.xml:309,,
 msgid " but the details are unknown"
 msgstr " ale podrobnosti nie sú známe"
 
@@ -59,6 +64,19 @@ msgstr " ale podrobnosti nie sú známe"
 #: modules_v3/descendancy_report/report.xml:354,
 #: modules_v3/descendancy_report/report.xml:385,
 #: modules_v3/descendancy_report/report.xml:424,
+#: modules_v3/descendancy_report/report.xml:455,
+#: modules_v3/ahnentafel_report/report.xml:159,,
+#: modules_v3/ahnentafel_report/report.xml:187,,
+#: modules_v3/ahnentafel_report/report.xml:214,,
+#: modules_v3/ahnentafel_report/report.xml:281,,
+#: modules_v3/ahnentafel_report/report.xml:308,,
+#: modules_v3/ahnentafel_report/report.xml:333,,
+#: modules_v3/ahnentafel_report/report.xml:358,,
+#: modules_v3/descendancy_report/report.xml:127,,
+#: modules_v3/descendancy_report/report.xml:159,,
+#: modules_v3/descendancy_report/report.xml:316,,
+#: modules_v3/descendancy_report/report.xml:354,,
+#: modules_v3/descendancy_report/report.xml:385,,
 msgid " in "
 msgstr " v lokalite "
 
@@ -68,7 +86,10 @@ msgstr " v lokalite "
 #: statisticsplot.php:1361 statisticsplot.php:903, statisticsplot.php:953,
 #: statisticsplot.php:1007, statisticsplot.php:1057, statisticsplot.php:1111,
 #: statisticsplot.php:1161, statisticsplot.php:1211, statisticsplot.php:1261,
-#: statisticsplot.php:1311,
+#: statisticsplot.php:1311, statisticsplot.php:1361, statisticsplot.php:903,,
+#: statisticsplot.php:953,, statisticsplot.php:1007,, statisticsplot.php:1057,,
+#: statisticsplot.php:1111,, statisticsplot.php:1161,,
+#: statisticsplot.php:1211,, statisticsplot.php:1261,,
 msgid " per gender"
 msgstr " / Muži-ženy"
 
@@ -78,7 +99,10 @@ msgstr " / Muži-ženy"
 #: statisticsplot.php:1363 statisticsplot.php:905, statisticsplot.php:955,
 #: statisticsplot.php:1009, statisticsplot.php:1059, statisticsplot.php:1113,
 #: statisticsplot.php:1163, statisticsplot.php:1213, statisticsplot.php:1263,
-#: statisticsplot.php:1313,
+#: statisticsplot.php:1313, statisticsplot.php:1363, statisticsplot.php:905,,
+#: statisticsplot.php:955,, statisticsplot.php:1009,, statisticsplot.php:1059,,
+#: statisticsplot.php:1113,, statisticsplot.php:1163,,
+#: statisticsplot.php:1213,, statisticsplot.php:1263,,
 msgid " per time period"
 msgstr " / za jednotku času"
 
@@ -89,6 +113,8 @@ msgstr " / za jednotku času"
 #: app/Module/FrequentlyAskedQuestionsModule.php:472
 #: app/Functions/FunctionsPrintFacts.php:213,
 #: app/Functions/FunctionsPrintFacts.php:218,
+#: app/Module/FrequentlyAskedQuestionsModule.php:472,
+#: app/Functions/FunctionsPrintFacts.php:213,,
 #, php-format
 msgid "#%s"
 msgstr "#%s"
@@ -117,6 +143,8 @@ msgstr "%1$s o %2$s generácií nižšie"
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1636
 #: app/Controller/IndividualController.php:195, app/Date.php:332,
+#: app/Functions/FunctionsPrintLists.php:1636,
+#: app/Controller/IndividualController.php:195,,
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
@@ -131,7 +159,8 @@ msgstr "Bolo stiahnutých %1$s KB za %2$s sekúnd."
 # I18N: placeholders are GEDCOM XREFs, such as R123
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
-#: admin_site_merge.php:47, admin_site_merge.php:51,
+#: admin_site_merge.php:47, admin_site_merge.php:51, admin_trees_check.php:171,
+#: admin_site_merge.php:47,,
 #, php-format
 msgid "%1$s does not exist."
 msgstr "%1$s neexistuje."
@@ -153,7 +182,7 @@ msgstr "%1$s nemá sptné prepojenie na %2$s."
 # I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:312 admin_site_upgrade.php:396
-#: admin_site_upgrade.php:312,
+#: admin_site_upgrade.php:312, admin_site_upgrade.php:396,
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
