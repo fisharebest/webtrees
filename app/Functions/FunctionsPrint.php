@@ -408,15 +408,9 @@ class FunctionsPrint {
 					}
 				}
 			}
-		} else {
-			// 1 DEAT Y with no DATE => print YES
-			// 1 BIRT 2 SOUR @S1@ => print YES
-			// 1 DEAT N is not allowed
-			// It is not proper GEDCOM form to use a N(o) value with an event tag to infer that it did not happen.
-			$factdetail = explode(' ', trim($factrec));
-			if (isset($factdetail) && (count($factdetail) == 3 && strtoupper($factdetail[2]) == 'Y') || (count($factdetail) == 4 && $factdetail[2] == 'SOUR')) {
-				$html .= I18N::translate('yes');
-			}
+		} elseif (strpos($factrec, "\n2 PLAC ") === false) {
+			// There is no DATE.  If there is also no PLAC, then print "yes"
+			$html .= I18N::translate('yes');
 		}
 		// print gedcom ages
 		foreach (array(GedcomTag::getLabel('AGE') => $fact_age, GedcomTag::getLabel('HUSB') => $husb_age, GedcomTag::getLabel('WIFE') => $wife_age) as $label => $age) {
