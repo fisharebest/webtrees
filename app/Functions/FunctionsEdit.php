@@ -368,7 +368,7 @@ class FunctionsEdit {
 		$rela_codes = GedcomCodeRela::getValues();
 		// The user is allowed to specify values that aren't in the list.
 		if (!array_key_exists($selected, $rela_codes)) {
-			$rela_codes[$selected] = $selected;
+			$rela_codes[$selected] = I18N::translate($selected);
 		}
 
 		return self::selectEditControl($name, $rela_codes, '', $selected, $extra);
