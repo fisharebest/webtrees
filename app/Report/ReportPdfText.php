@@ -33,10 +33,10 @@ class ReportPdfText extends ReportBaseText {
 		}
 		$temptext = str_replace("#PAGENUM#", $renderer->PageNo(), $this->text);
 		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
+		$temptext = str_replace(['«', '»'], ['<u>', '</u>'], $temptext);
 
 		// Paint the text color or they might use inherited colors by the previous function
-		$match = array();
+		$match = [];
 		if (preg_match("/#?(..)(..)(..)/", $this->color, $match)) {
 			$r = hexdec($match[1]);
 			$g = hexdec($match[2]);
@@ -47,8 +47,8 @@ class ReportPdfText extends ReportBaseText {
 		}
 		$temptext = FunctionsRtl::spanLtrRtl($temptext, "BOTH");
 		$temptext = str_replace(
-			array('<br><span dir="rtl" >', '<br><span dir="ltr" >', '> ', ' <'),
-			array('<span dir="rtl" ><br>', '<span dir="ltr" ><br>', '>&nbsp;', '&nbsp;<'),
+			['<br><span dir="rtl" >', '<br><span dir="ltr" >', '> ', ' <'],
+			['<span dir="rtl" ><br>', '<span dir="ltr" ><br>', '>&nbsp;', '&nbsp;<'],
 			$temptext
 		);
 		$renderer->writeHTML(
@@ -150,7 +150,7 @@ class ReportPdfText extends ReportBaseText {
 				$this->text = $newtext;
 				$lfct       = substr_count($this->text, "\n");
 
-				return array($lw, 1, $lfct);
+				return [$lw, 1, $lfct];
 			}
 		}
 		$l    = 0;
@@ -159,6 +159,6 @@ class ReportPdfText extends ReportBaseText {
 			$l = 2;
 		}
 
-		return array($lw, $l, $lfct);
+		return [$lw, $l, $lfct];
 	}
 }

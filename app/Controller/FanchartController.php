@@ -63,11 +63,11 @@ class FanchartController extends ChartController {
 	 * @return string[]
 	 */
 	public function getFanStyles() {
-		return array(
+		return [
 			2 => /* I18N: layout option for the fan chart */ I18N::translate('half circle'),
 			3 => /* I18N: layout option for the fan chart */ I18N::translate('three-quarter circle'),
 			4 => /* I18N: layout option for the fan chart */ I18N::translate('full circle'),
-		);
+		];
 	}
 
 	/**
@@ -79,7 +79,7 @@ class FanchartController extends ChartController {
 	 * @return string $text output string
 	 */
 	public function splitAlignText($data, $maxlen) {
-		$RTLOrd = array(215, 216, 217, 218, 219);
+		$RTLOrd = [215, 216, 217, 218, 219];
 
 		$lines = explode("\n", $data);
 		// more than 1 line : recursive calls

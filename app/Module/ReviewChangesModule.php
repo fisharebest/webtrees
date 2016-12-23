@@ -51,14 +51,14 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
 		$sendmail = $this->getBlockSetting($block_id, 'sendmail', '1');
 		$days     = $this->getBlockSetting($block_id, 'days', '1');
 		$block    = $this->getBlockSetting($block_id, 'block', '1');
 
-		foreach (array('days', 'sendmail', 'block') as $name) {
+		foreach (['days', 'sendmail', 'block'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -121,7 +121,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 				" WHERE status='pending'" .
 				" AND   gedcom_id=?" .
 				" GROUP BY xref"
-			)->execute(array($WT_TREE->getTreeId()))->fetchAll();
+			)->execute([$WT_TREE->getTreeId()])->fetchAll();
 			foreach ($changes as $change) {
 				$record = GedcomRecord::getInstance($change->xref, $WT_TREE);
 				if ($record->canShow()) {

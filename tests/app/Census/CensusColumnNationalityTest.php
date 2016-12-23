@@ -37,7 +37,7 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 	public function testNoBirthPlace() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('');
-		$individual->shouldReceive('getFacts')->andReturn(array());
+		$individual->shouldReceive('getFacts')->andReturn([]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('Deutschland');
@@ -54,7 +54,7 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 	public function testPlaceCountry() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('Australia');
-		$individual->shouldReceive('getFacts')->andReturn(array());
+		$individual->shouldReceive('getFacts')->andReturn([]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('England');
@@ -71,7 +71,7 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 	public function testBritish() {
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('London, England');
-		$individual->shouldReceive('getFacts')->andReturn(array());
+		$individual->shouldReceive('getFacts')->andReturn([]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('England');
@@ -102,10 +102,10 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
 
 		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 		$individual->shouldReceive('getBirthPlace')->andReturn('London, England');
-		$individual->shouldReceive('getFacts')->andReturn(array(
+		$individual->shouldReceive('getFacts')->andReturn([
 			$fact1,
 			$fact2,
-		));
+		]);
 
 		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 		$census->shouldReceive('censusPlace')->andReturn('England');

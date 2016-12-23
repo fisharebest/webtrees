@@ -117,19 +117,19 @@ class ReportHtml extends ReportBase {
 	public $maxY = 0;
 
 	/** @var ReportBaseElement[] Array of elements in the header */
-	public $headerElements = array();
+	public $headerElements = [];
 
 	/** @var ReportBaseElement[] Array of elements in the page header */
-	public $pageHeaderElements = array();
+	public $pageHeaderElements = [];
 
 	/** @var ReportBaseElement[] Array of elements in the footer */
-	public $footerElements = array();
+	public $footerElements = [];
 
 	/** @var ReportBaseElement[] Array of elements in the body */
-	public $bodyElements = array();
+	public $bodyElements = [];
 
 	/** @var ReportBaseFootnote[] Array of elements in the footer notes */
-	public $printedfootnotes = array();
+	public $printedfootnotes = [];
 
 	/**
 	 * HTML Setup - ReportHtml
@@ -432,7 +432,7 @@ class ReportHtml extends ReportBase {
 	 * Clear the Header - ReportHtml
 	 */
 	public function clearHeader() {
-		$this->headerElements = array();
+		$this->headerElements = [];
 	}
 
 	/**
@@ -509,7 +509,7 @@ class ReportHtml extends ReportBase {
 	 * Clear the Page Header - ReportHtml
 	 */
 	public function clearPageHeader() {
-		$this->pageHeaderElements = array();
+		$this->pageHeaderElements = [];
 	}
 
 	/**
@@ -733,7 +733,7 @@ class ReportHtml extends ReportBase {
 		}
 
 		$htmlcode .= '>' . $text . '</span>';
-		$htmlcode = str_replace(array("\n", '> ', ' <'), array('<br>', '>&nbsp;', '&nbsp;<'), $htmlcode);
+		$htmlcode = str_replace(["\n", '> ', ' <'], ['<br>', '>&nbsp;', '&nbsp;<'], $htmlcode);
 		echo $htmlcode;
 	}
 

@@ -26,7 +26,7 @@ class ReportBaseHtml extends ReportBaseElement {
 	public $attrs;
 
 	/** @var ReportBaseElement[] A list of elements. */
-	public $elements = array();
+	public $elements = [];
 
 	/**
 	 * Create an element.

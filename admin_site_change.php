@@ -35,8 +35,8 @@ $controller
 	->restrictAccess(Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Changes'));
 
-$earliest = Database::prepare("SELECT IFNULL(DATE(MIN(change_time)), CURDATE()) FROM `##change`")->execute(array())->fetchOne();
-$latest   = Database::prepare("SELECT IFNULL(DATE(MAX(change_time)), CURDATE()) FROM `##change`")->execute(array())->fetchOne();
+$earliest = Database::prepare("SELECT IFNULL(DATE(MIN(change_time)), CURDATE()) FROM `##change`")->execute([])->fetchOne();
+$latest   = Database::prepare("SELECT IFNULL(DATE(MAX(change_time)), CURDATE()) FROM `##change`")->execute([])->fetchOne();
 
 // Filtering
 $action = Filter::get('action');
@@ -50,11 +50,11 @@ $user   = Filter::get('user');
 $search = Filter::get('search');
 $search = isset($search['value']) ? $search['value'] : null;
 
-$statuses = array(
+$statuses = [
 	'accepted' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('accepted'),
 	'rejected' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('rejected'),
 	'pending'  => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('pending'),
-);
+];
 
 if (Auth::isAdmin()) {
 	// Administrators can see all logs
@@ -71,7 +71,7 @@ $sql_select =
 	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
 
 $where = " WHERE 1";
-$args  = array();
+$args  = [];
 if ($search) {
 	$where .= " AND (old_gedcom LIKE CONCAT('%', :search_1, '%') OR new_gedcom LIKE CONCAT('%', :search_2, '%'))";
 	$args['search_1'] = $search;
@@ -178,7 +178,7 @@ case 'load_json':
 	$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
 	$recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##change`")->fetchOne();
 
-	$data      = array();
+	$data      = [];
 	$algorithm = new MyersDiff;
 
 	foreach ($rows as $row) {
@@ -186,7 +186,7 @@ case 'load_json':
 		$new_lines = preg_split('/[\n]+/', $row->new_gedcom, -1, PREG_SPLIT_NO_EMPTY);
 
 		$differences = $algorithm->calculate($old_lines, $new_lines);
-		$diff_lines  = array();
+		$diff_lines  = [];
 
 		foreach ($differences as $difference) {
 			switch ($difference[1]) {
@@ -203,7 +203,7 @@ case 'load_json':
 
 		// Only convert valid xrefs to links
 		$record = GedcomRecord::getInstance($row->xref, Tree::findByName($gedc));
-		$data[] = array(
+		$data[] = [
 			$row->change_id,
 			$row->change_time,
 			I18N::translate($row->status),
@@ -220,17 +220,17 @@ case 'load_json':
 			'</div>',
 			$row->user_name,
 			$row->gedcom_name,
-		);
+		];
 	}
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
-	echo json_encode(array(
+	echo json_encode([
 		'draw'            => Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data,
-	));
+	]);
 
 	return;
 }
@@ -246,7 +246,7 @@ $controller
 			processing: true,
 			serverSide: true,
 			ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&oldged=' . rawurlencode($oldged) . '&newged=' . rawurlencode($newged) . '&xref=' . rawurlencode($xref) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
-			' . I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
+			' . I18N::datatablesI18N([10, 20, 50, 100, 500, 1000, -1]) . ',
 			sorting: [[ 0, "desc" ]],
 			pageLength: ' . Auth::user()->getPreference('admin_site_change_page_size', 10) . ',
 			columns: [
@@ -278,7 +278,7 @@ $controller
 		});
 	');
 
-$users_array = array();
+$users_array = [];
 foreach (User::all() as $tmp_user) {
 	$users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
 }

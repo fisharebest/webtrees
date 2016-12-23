@@ -56,7 +56,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewSonNames() {
 		$this->assertSame(
-			array('NAME' => '/White/', 'SURN' => 'White'),
+			['NAME' => '/White/', 'SURN' => 'White'],
 			$this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'M')
 		);
 	}
@@ -68,7 +68,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewDaughterNames() {
 		$this->assertSame(
-			array('NAME' => '/White/', 'SURN' => 'White'),
+			['NAME' => '/White/', 'SURN' => 'White'],
 			$this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'F')
 		);
 	}
@@ -80,7 +80,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewChildNames() {
 		$this->assertSame(
-			array('NAME' => '/White/', 'SURN' => 'White'),
+			['NAME' => '/White/', 'SURN' => 'White'],
 			$this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'U')
 		);
 	}
@@ -92,7 +92,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewChildNamesWithSpfx() {
 		$this->assertSame(
-			array('NAME' => '/de White/', 'SPFX' => 'de', 'SURN' => 'White'),
+			['NAME' => '/de White/', 'SPFX' => 'de', 'SURN' => 'White'],
 			$this->surname_tradition->newChildNames('John /de White/', 'Mary /van Black/', 'U')
 		);
 	}
@@ -104,7 +104,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewChildNamesWithMultipleSpfx() {
 		$this->assertSame(
-			array('NAME' => '/van der White/', 'SPFX' => 'van der', 'SURN' => 'White'),
+			['NAME' => '/van der White/', 'SPFX' => 'van der', 'SURN' => 'White'],
 			$this->surname_tradition->newChildNames('John /van der White/', 'Mary /van Black/', 'U')
 		);
 	}
@@ -116,11 +116,11 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewChildNamesWithDutchSpfx() {
 		$this->assertSame(
-			array('NAME' => '/\'t White/', 'SPFX' => '\'t', 'SURN' => 'White'),
+			['NAME' => '/\'t White/', 'SPFX' => '\'t', 'SURN' => 'White'],
 			$this->surname_tradition->newChildNames('John /\'t White/', 'Mary /van Black/', 'U')
 		);
 		$this->assertSame(
-			array('NAME' => '/’t White/', 'SPFX' => '’t', 'SURN' => 'White'),
+			['NAME' => '/’t White/', 'SPFX' => '’t', 'SURN' => 'White'],
 			$this->surname_tradition->newChildNames('John /’t White/', 'Mary /van Black/', 'U')
 		);
 	}
@@ -132,11 +132,11 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewChildNamesWithMultipleDutchSpfx() {
 		$this->assertSame(
-			array('NAME' => '/van \'t White/', 'SPFX' => 'van \'t', 'SURN' => 'White'),
+			['NAME' => '/van \'t White/', 'SPFX' => 'van \'t', 'SURN' => 'White'],
 			$this->surname_tradition->newChildNames('John /van \'t White/', 'Mary /van Black/', 'U')
 		);
 		$this->assertSame(
-			array('NAME' => '/van ’t White/', 'SPFX' => 'van ’t', 'SURN' => 'White'),
+			['NAME' => '/van ’t White/', 'SPFX' => 'van ’t', 'SURN' => 'White'],
 			$this->surname_tradition->newChildNames('John /van ’t White/', 'Mary /van Black/', 'U')
 		);
 	}
@@ -148,7 +148,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewFatherNames() {
 		$this->assertSame(
-			array('NAME' => '/White/', 'SURN' => 'White'),
+			['NAME' => '/White/', 'SURN' => 'White'],
 			$this->surname_tradition->newParentNames('John /White/', 'M')
 		);
 	}
@@ -160,7 +160,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewMotherNames() {
 		$this->assertSame(
-			array('NAME' => '//', '_MARNM' => '/White/'),
+			['NAME' => '//', '_MARNM' => '/White/'],
 			$this->surname_tradition->newParentNames('John /White/', 'F')
 		);
 	}
@@ -172,7 +172,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewParentNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newParentNames('John /White/', 'U')
 		);
 	}
@@ -184,7 +184,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewHusbandNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newSpouseNames('Mary /Black/', 'M')
 		);
 	}
@@ -196,7 +196,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewWifeNames() {
 		$this->assertSame(
-			array('NAME' => '//', '_MARNM' => '/White/'),
+			['NAME' => '//', '_MARNM' => '/White/'],
 			$this->surname_tradition->newSpouseNames('John /White/', 'F')
 		);
 	}
@@ -208,7 +208,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewWifeNamesWithSpfx() {
 		$this->assertSame(
-			array('NAME' => '//', '_MARNM' => '/van der White/'),
+			['NAME' => '//', '_MARNM' => '/van der White/'],
 			$this->surname_tradition->newSpouseNames('John /van der White/', 'F')
 		);
 	}
@@ -220,7 +220,7 @@ class PaternalSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewSpouseNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newSpouseNames('Chris /Green/', 'U')
 		);
 	}

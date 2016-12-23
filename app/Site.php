@@ -62,17 +62,17 @@ class Site {
 			if ($setting_value === null) {
 				Database::prepare(
 					"DELETE FROM `##site_setting` WHERE setting_name = :setting_name"
-				)->execute(array(
+				)->execute([
 					'setting_name' => $setting_name,
-				));
+				]);
 			} else {
 				Database::prepare(
 					"REPLACE INTO `##site_setting` (setting_name, setting_value)" .
 					" VALUES (:setting_name, LEFT(:setting_value, 2000))"
-				)->execute(array(
+				)->execute([
 					'setting_name'  => $setting_name,
 					'setting_value' => $setting_value,
-				));
+				]);
 			}
 
 			self::$settings[$setting_name] = $setting_value;

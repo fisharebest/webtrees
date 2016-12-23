@@ -45,7 +45,7 @@ ignore_user_abort(true);
 Database::beginTransaction();
 
 // Only allow one process to import each gedcom at a time
-Database::prepare("SELECT * FROM `##gedcom_chunk` WHERE gedcom_id=? FOR UPDATE")->execute(array($gedcom_id));
+Database::prepare("SELECT * FROM `##gedcom_chunk` WHERE gedcom_id=? FOR UPDATE")->execute([$gedcom_id]);
 
 // What is the current import status?
 $row = Database::prepare(
@@ -53,7 +53,7 @@ $row = Database::prepare(
 	" SUM(IF(imported, LENGTH(chunk_data), 0)) AS import_offset," .
 	" SUM(LENGTH(chunk_data))                  AS import_total" .
 	" FROM `##gedcom_chunk` WHERE gedcom_id=?"
-)->execute(array($gedcom_id))->fetchOneRow();
+)->execute([$gedcom_id])->fetchOneRow();
 
 if ($row->import_offset == $row->import_total) {
 	Tree::findById($gedcom_id)->setPreference('imported', '1');
@@ -94,7 +94,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 		" WHERE gedcom_id=? AND NOT imported" .
 		" ORDER BY gedcom_chunk_id" .
 		" LIMIT 1"
-	)->execute(array($gedcom_id))->fetchOneRow();
+	)->execute([$gedcom_id])->fetchOneRow();
 	// If we are loading the first (header) record, make sure the encoding is UTF-8.
 	if ($first_time) {
 		// Remove any byte-order-mark
@@ -102,13 +102,13 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			"UPDATE `##gedcom_chunk`" .
 			" SET chunk_data=TRIM(LEADING ? FROM chunk_data)" .
 			" WHERE gedcom_chunk_id=?"
-		)->execute(array(WT_UTF8_BOM, $data->gedcom_chunk_id));
+		)->execute([WT_UTF8_BOM, $data->gedcom_chunk_id]);
 		// Re-fetch the data, now that we have removed the BOM
 		$data = Database::prepare(
 			"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data" .
 			" FROM `##gedcom_chunk`" .
 			" WHERE gedcom_chunk_id=?"
-		)->execute(array($data->gedcom_chunk_id))->fetchOneRow();
+		)->execute([$data->gedcom_chunk_id])->fetchOneRow();
 		if (substr($data->chunk_data, 0, 6) != '0 HEAD') {
 			Database::rollBack();
 			echo I18N::translate('Invalid GEDCOM file - no header record found.');
@@ -130,7 +130,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 				"UPDATE `##gedcom_chunk`" .
 				" SET chunk_data=CONVERT(CONVERT(chunk_data USING ascii) USING utf8)" .
 				" WHERE gedcom_id=?"
-			)->execute(array($gedcom_id));
+			)->execute([$gedcom_id]);
 			break;
 		case 'IBMPC':   // IBMPC, IBM WINDOWS and MS-DOS could be anything. Mostly it means CP850.
 		case 'IBM WINDOWS':
@@ -142,7 +142,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 				"UPDATE `##gedcom_chunk`" .
 				" SET chunk_data=CONVERT(CONVERT(chunk_data USING cp850) USING utf8)" .
 				" WHERE gedcom_id=?"
-			)->execute(array($gedcom_id));
+			)->execute([$gedcom_id]);
 			break;
 		case 'ANSI': // ANSI could be anything. Most applications seem to treat it as latin1.
 			$controller->addInlineJavascript(
@@ -161,7 +161,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 				"UPDATE `##gedcom_chunk`" .
 				" SET chunk_data=CONVERT(CONVERT(chunk_data USING latin1) USING utf8)" .
 				" WHERE gedcom_id=?"
-			)->execute(array($gedcom_id));
+			)->execute([$gedcom_id]);
 			break;
 		case 'CP1250':
 		case 'ISO8859-2':
@@ -173,7 +173,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 				"UPDATE `##gedcom_chunk`" .
 				" SET chunk_data=CONVERT(CONVERT(chunk_data USING latin2) USING utf8)" .
 				" WHERE gedcom_id=?"
-			)->execute(array($gedcom_id));
+			)->execute([$gedcom_id]);
 			break;
 		case 'MACINTOSH':
 			// Convert from MAC Roman to UTF8.
@@ -181,7 +181,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 				"UPDATE `##gedcom_chunk`" .
 				" SET chunk_data=CONVERT(CONVERT(chunk_data USING macroman) USING utf8)" .
 				" WHERE gedcom_id=?"
-			)->execute(array($gedcom_id));
+			)->execute([$gedcom_id]);
 			break;
 		case 'UTF8':
 		case 'UTF-8':
@@ -202,7 +202,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data" .
 			" FROM `##gedcom_chunk`" .
 			" WHERE gedcom_chunk_id=?"
-		)->execute(array($data->gedcom_chunk_id))->fetchOneRow();
+		)->execute([$data->gedcom_chunk_id])->fetchOneRow();
 	}
 
 	if (!$data) {
@@ -216,7 +216,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 		// Mark the chunk as imported
 		Database::prepare(
 			"UPDATE `##gedcom_chunk` SET imported=TRUE WHERE gedcom_chunk_id=?"
-		)->execute(array($data->gedcom_chunk_id));
+		)->execute([$data->gedcom_chunk_id]);
 	} catch (PDOException $ex) {
 		Database::rollBack();
 		if ($ex->getCode() === '40001') {

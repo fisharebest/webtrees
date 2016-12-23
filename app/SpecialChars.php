@@ -23,17 +23,17 @@ use Fisharebest\Webtrees\SpecialChars\SpecialCharsInterface;
  */
 class SpecialChars {
 	/** @var string[] A list of supported language-tags. */
-	private static $languages = array(
+	private static $languages = [
 		'af', 'ar', 'cs', 'da', 'de', 'el', 'en', 'es', 'eu', 'fi', 'fr', 'gd', 'haw', 'he',
 		'hu', 'is', 'it', 'lt', 'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sl', 'sv', 'tr', 'vi',
-);
+];
 	/**
 	 * A list of languages for which special characters are available.
 	 *
 	 * @return string[]
 	 */
 	public static function allLanguages() {
-		$array = array();
+		$array = [];
 		foreach (self::$languages as $language) {
 			$array[$language] = Locale::create($language)->endonym();
 		}

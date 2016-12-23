@@ -74,10 +74,10 @@ class ClippingsCartController {
 		global $WT_TREE;
 
 		// Our cart is an array of items in the session
-		$this->cart = Session::get('cart', array());
+		$this->cart = Session::get('cart', []);
 
 		if (!array_key_exists($WT_TREE->getTreeId(), $this->cart)) {
-			$this->cart[$WT_TREE->getTreeId()] = array();
+			$this->cart[$WT_TREE->getTreeId()] = [];
 		}
 
 		$this->action           = Filter::get('action');
@@ -159,27 +159,27 @@ class ClippingsCartController {
 						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($this->cart[$WT_TREE->getTreeId()], array($this, 'compareClippings'));
+				uksort($this->cart[$WT_TREE->getTreeId()], [$this, 'compareClippings']);
 			}
 		} elseif ($this->action === 'remove') {
 			unset($this->cart[$WT_TREE->getTreeId()][$this->id]);
 		} elseif ($this->action === 'empty') {
-			$this->cart[$WT_TREE->getTreeId()] = array();
+			$this->cart[$WT_TREE->getTreeId()] = [];
 		} elseif ($this->action === 'download') {
-			$media      = array();
+			$media      = [];
 			$mediacount = 0;
 			$filetext   = FunctionsExport::gedcomHeader($WT_TREE);
 			// Include SUBM/SUBN records, if they exist
 			$subn =
 				Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
-				->execute(array('SUBN', $WT_TREE->getTreeId()))
+				->execute(['SUBN', $WT_TREE->getTreeId()])
 				->fetchOne();
 			if ($subn) {
 				$filetext .= $subn . "\n";
 			}
 			$subm =
 				Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
-				->execute(array('SUBM', $WT_TREE->getTreeId()))
+				->execute(['SUBM', $WT_TREE->getTreeId()])
 				->fetchOne();
 			if ($subm) {
 				$filetext .= $subm . "\n";
@@ -257,10 +257,10 @@ class ClippingsCartController {
 						for ($k = 0; $k < $ft; $k++) {
 							// Skip external files and non-existant files
 							if (file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1])) {
-								$media[$mediacount] = array(
+								$media[$mediacount] = [
 									\PCLZIP_ATT_FILE_NAME          => WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1],
 									\PCLZIP_ATT_FILE_NEW_FULL_NAME => $match[$k][1],
-								);
+								];
 								$mediacount++;
 							}
 						}
@@ -273,7 +273,7 @@ class ClippingsCartController {
 			if ($this->IncludeMedia === "yes") {
 				$this->media_list = $media;
 			} else {
-				$this->media_list = array();
+				$this->media_list = [];
 			}
 			$filetext .= "0 @WEBTREES@ SOUR\n1 TITL " . WT_BASE_URL . "\n";
 			if ($user_id = $WT_TREE->getPreference('CONTACT_EMAIL')) {
@@ -305,7 +305,7 @@ class ClippingsCartController {
 			$comment = "Created by " . WT_WEBTREES . " " . WT_VERSION . " on " . date("d M Y") . ".";
 			$archive = new PclZip($fname);
 			// add the ged file to the root of the zip file (strip off the data folder)
-			$this->media_list[] = array(\PCLZIP_ATT_FILE_NAME => WT_DATA_DIR . $tempFileName, \PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName);
+			$this->media_list[] = [\PCLZIP_ATT_FILE_NAME => WT_DATA_DIR . $tempFileName, \PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName];
 			$v_list             = $archive->create($this->media_list, \PCLZIP_OPT_COMMENT, $comment);
 			if ($v_list == 0) {
 				echo "Error : " . $archive->errorInfo(true) . "</td></tr>";

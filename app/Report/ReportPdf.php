@@ -61,10 +61,10 @@ class ReportPdf extends ReportBase {
 		parent::setup();
 
 		// Setup the PDF class with custom size pages because WT supports more page sizes. If WT sends an unknown size name then the default would be A4
-		$this->pdf = new ReportTcpdf($this->orientation, parent::UNITS, array(
+		$this->pdf = new ReportTcpdf($this->orientation, parent::UNITS, [
 			$this->pagew,
 			$this->pageh,
-		), self::UNICODE, "UTF-8", self::DISK_CACHE);
+		], self::UNICODE, "UTF-8", self::DISK_CACHE);
 
 		// Setup the PDF margins
 		$this->pdf->SetMargins($this->leftmargin, $this->topmargin, $this->rightmargin);

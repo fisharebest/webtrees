@@ -34,7 +34,7 @@ class CensusOfFrance1841 extends CensusOfFrance implements CensusInterface {
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
 			new CensusColumnGivenNames($this, 'Prénoms', ''),
 			new CensusColumnOccupation($this, 'Titres', 'Titres, qualifications, état ou profession et fonctions'),
@@ -44,6 +44,6 @@ class CensusOfFrance1841 extends CensusOfFrance implements CensusInterface {
 			new CensusColumnConditionFrenchFille($this, 'Filles', ''),
 			new CensusColumnConditionFrenchFemme($this, 'Femmes', 'Femmes mariées'),
 			new CensusColumnConditionFrenchVeuve($this, 'Veuves', ''),
-		);
+		];
 	}
 }

@@ -51,7 +51,7 @@ $controller
 	->setPageTitle(/* I18N: The “Data folder” is a configuration setting */ I18N::translate('Clean up data folder'))
 	->pageHeader();
 
-$do_not_delete = array('index.php', 'config.ini.php', 'language');
+$do_not_delete = ['index.php', 'config.ini.php', 'language'];
 
 // If we are storing the media in the data folder (this is the default), then don’t delete it.
 foreach (Tree::getAll() as $tree) {
@@ -67,7 +67,7 @@ foreach (Tree::getAll() as $tree) {
 $locked_icon = '<i class="fa fa-ban text-danger"></i>';
 
 $dir     = dir(WT_DATA_DIR);
-$entries = array();
+$entries = [];
 while (false !== ($entry = $dir->read())) {
 	if ($entry[0] != '.') {
 		$entries[] = $entry;

@@ -32,7 +32,7 @@ require './includes/session.php';
 // This is a list of old files and directories, from earlier versions of webtrees, that can be deleted.
 // It was generated with the help of a command like this:
 // git diff 1.6.0..master --name-status | grep ^D
-$old_files = array(
+$old_files = [
 	// Removed in 1.0.2
 	WT_ROOT . 'language/en.mo',
 	// Removed in 1.0.3
@@ -466,10 +466,10 @@ $old_files = array(
 	WT_ROOT . 'themes/xenea/css-1.7.5',
 	// Removed in 1.7.9
 	WT_ROOT . 'assets/js-1.7.7',
-);
+];
 
 // Delete old files (if we can).
-$files_to_delete = array();
+$files_to_delete = [];
 foreach ($old_files as $file) {
 	if (file_exists($file) && !File::delete($file)) {
 		$files_to_delete[] = $file;
@@ -559,7 +559,7 @@ $changes = Database::prepare(
 
 // Server warnings
 // Note that security support for 5.6 ends after security support for 7.0
-$server_warnings = array();
+$server_warnings = [];
 if (
 	PHP_VERSION_ID < 50500 ||
 	PHP_VERSION_ID < 50600 && date('Y-m-d') >= '2016-07-10' ||

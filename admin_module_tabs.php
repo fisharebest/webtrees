@@ -36,12 +36,12 @@ if ($action === 'update_mods' && Filter::checkCsrf()) {
 			$access_level = Filter::post('access-' . $module->getName() . '-' . $tree->getTreeId(), WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			Database::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'tab', ?)"
-			)->execute(array($module->getName(), $tree->getTreeId(), $access_level));
+			)->execute([$module->getName(), $tree->getTreeId(), $access_level]);
 		}
 		$order = Filter::post('order-' . $module->getName());
 		Database::prepare(
 			"UPDATE `##module` SET tab_order=? WHERE module_name=?"
-		)->execute(array($order, $module->getName()));
+		)->execute([$order, $module->getName()]);
 	}
 
 	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);

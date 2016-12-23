@@ -25,7 +25,7 @@ class CensusOfFrance extends Census implements CensusPlaceInterface {
 	 * @return CensusInterface[]
 	 */
 	public function allCensusDates() {
-		return array(
+		return [
 			new CensusOfFrance1831(),
 			new CensusOfFrance1836(),
 			new CensusOfFrance1841(),
@@ -48,7 +48,7 @@ class CensusOfFrance extends Census implements CensusPlaceInterface {
 			new CensusOfFrance1931(),
 			new CensusOfFrance1936(),
 			new CensusOfFrance1946(),
-		);
+		];
 	}
 
 	/**

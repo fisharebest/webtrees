@@ -55,13 +55,13 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $WT_TREE, $ctype;
 
 		$num       = $this->getBlockSetting($block_id, 'num', '10');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
-		foreach (array('num', 'infoStyle') as $name) {
+		foreach (['num', 'infoStyle'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -70,7 +70,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		// This next function is a bit out of date, and doesn't cope well with surname variants
 		$top_surnames = FunctionsDb::getTopSurnames($WT_TREE->getTreeId(), 0, $num);
 
-		$all_surnames = array();
+		$all_surnames = [];
 		$i            = 0;
 		foreach (array_keys($top_surnames) as $top_surname) {
 			$all_surnames = array_merge($all_surnames, QueryName::surnames($WT_TREE, $top_surname, '', false, false));
@@ -162,7 +162,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('bullet list'), 'array' => I18N::translate('compact list'), 'table' => I18N::translate('table'), 'tagcloud' => I18N::translate('tag cloud')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', ['list' => I18N::translate('bullet list'), 'array' => I18N::translate('compact list'), 'table' => I18N::translate('table'), 'tagcloud' => I18N::translate('tag cloud')], null, $infoStyle, '');
 		echo '</td></tr>';
 	}
 

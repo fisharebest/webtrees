@@ -44,7 +44,7 @@ class GedcomCodeTemp {
 	 * @return string[]
 	 */
 	public static function templeCodes() {
-		return array(
+		return [
 			'ABA', 'ACCRA', 'ADELA', 'ALBER', 'ALBUQ', 'ANCHO', 'ARIZO', 'ASUNC',
 			'ATLAN', 'BAIRE', 'BILLI', 'BIRMI', 'BISMA', 'BOGOT', 'BOISE', 'BOSTO',
 			'BOUNT', 'BRIGH', 'BRISB', 'BROUG', 'CALGA', 'CAMPI', 'CARAC', 'CEBUP',
@@ -65,7 +65,7 @@ class GedcomCodeTemp {
 			'STOCK', 'SUVA', 'SWISS', 'SYDNE', 'TAIPE', 'TAMPI', 'TEGUC', 'TGUTI',
 			'TIHUA', 'TOKYO',	'TORNO', 'TRUJI', 'TWINF', 'VANCO', 'VERAC', 'VERNA',
 			'VILLA', 'WASHI',	'WINTE',
-		);
+		];
 	}
 
 	/**
@@ -398,7 +398,7 @@ class GedcomCodeTemp {
 	 * @return string[]
 	 */
 	public static function templeNames() {
-		$temple_names = array();
+		$temple_names = [];
 		foreach (self::templeCodes() as $temple_code) {
 			$temple_names[$temple_code] = self::templeName($temple_code);
 		}

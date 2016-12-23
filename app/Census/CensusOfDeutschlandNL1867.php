@@ -43,7 +43,7 @@ class CensusOfDeutschlandNL1867 extends CensusOfDeutschland implements CensusInt
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnNull($this, '1.Nr.', 'Ordnungs-Nummer.'),
 			new CensusColumnGivenNames($this, '2.Vorname', 'I. Vor- und Familienname jeder Person. Vorname.'),
 			new CensusColumnSurname($this, '3.Familienname', 'I. Vor- und Familienname jeder Person. Familienname.'),
@@ -62,6 +62,6 @@ class CensusOfDeutschlandNL1867 extends CensusOfDeutschland implements CensusInt
 			new CensusColumnNull($this, '16.', 'VII. Art des Abwesenheit vom Zählungsorte. Nicht über ein Jahr Abwesende auf Besuch außerhalb des Orts.'),
 			new CensusColumnNull($this, '17.', 'VII. Art des Aufenthalts am Zählungsort. Ueber ein Jahr, oder in anderer Art als nach Spalte 14 bis 16 Abwesende.'),
 			new CensusColumnNull($this, '18.Aufenthaltsort', 'VIII. Vermuthlicher Aufenthaltsort zur Zählungszeit.'),
-		);
+		];
 	}
 }

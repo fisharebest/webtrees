@@ -56,10 +56,10 @@ abstract class AbstractModule {
 	public function getBlockSetting($block_id, $setting_name, $default_value = null) {
 		$setting_value = Database::prepare(
 			"SELECT SQL_CACHE setting_value FROM `##block_setting` WHERE block_id = :block_id AND setting_name = :setting_name"
-		)->execute(array(
+		)->execute([
 			'block_id'     => $block_id,
 			'setting_name' => $setting_name,
-		))->fetchOne();
+		])->fetchOne();
 
 		return $setting_value === null ? $default_value : $setting_value;
 	}
@@ -77,18 +77,18 @@ abstract class AbstractModule {
 		if ($setting_value === null) {
 			Database::prepare(
 				"DELETE FROM `##block_setting` WHERE block_id = :block_id AND setting_name = :setting_name"
-			)->execute(array(
+			)->execute([
 					'block_id'     => $block_id,
 					'setting_name' => $setting_name,
-			));
+			]);
 		} else {
 			Database::prepare(
 				"REPLACE INTO `##block_setting` (block_id, setting_name, setting_value) VALUES (:block_id, :setting_name, :setting_value)"
-			)->execute(array(
+			)->execute([
 				'block_id'      => $block_id,
 				'setting_name'  => $setting_name,
 				'setting_value' => $setting_value,
-			));
+			]);
 		}
 
 		return $this;
@@ -139,7 +139,7 @@ abstract class AbstractModule {
 		if ($this->settings === null) {
 			$this->settings = Database::prepare(
 				"SELECT SQL_CACHE setting_name, setting_value FROM `##module_setting` WHERE module_name = ?"
-			)->execute(array($this->getName()))->fetchAssoc();
+			)->execute([$this->getName()])->fetchAssoc();
 		}
 	}
 
@@ -176,17 +176,17 @@ abstract class AbstractModule {
 		if ($setting_value === null) {
 			Database::prepare(
 				"DELETE FROM `##module_setting` WHERE module_name = ? AND setting_name = ?"
-			)->execute(array($this->getName(), $setting_name));
+			)->execute([$this->getName(), $setting_name]);
 			unset($this->settings[$setting_name]);
 		} elseif (!array_key_exists($setting_name, $this->settings)) {
 			Database::prepare(
 				"INSERT INTO `##module_setting` (module_name, setting_name, setting_value) VALUES (?, ?, ?)"
-			)->execute(array($this->getName(), $setting_name, $setting_value));
+			)->execute([$this->getName(), $setting_name, $setting_value]);
 			$this->settings[$setting_name] = $setting_value;
 		} elseif ($setting_value != $this->settings[$setting_name]) {
 			Database::prepare(
 				"UPDATE `##module_setting` SET setting_value = ? WHERE module_name = ? AND setting_name = ?"
-			)->execute(array($setting_value, $this->getName(), $setting_name));
+			)->execute([$setting_value, $this->getName(), $setting_name]);
 			$this->settings[$setting_name] = $setting_value;
 		} else {
 			// Setting already exists, but with the same value - do nothing.
@@ -213,11 +213,11 @@ abstract class AbstractModule {
 	public function getAccessLevel(Tree $tree, $component) {
 		$access_level = Database::prepare(
 			"SELECT access_level FROM `##module_privacy` WHERE gedcom_id = :gedcom_id AND module_name = :module_name AND component = :component"
-		)->execute(array(
+		)->execute([
 			'gedcom_id'   => $tree->getTreeId(),
 			'module_name' => $this->getName(),
 			'component'   => $component,
-		))->fetchOne();
+		])->fetchOne();
 
 		if ($access_level === null) {
 			return $this->defaultAccessLevel();

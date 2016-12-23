@@ -96,7 +96,7 @@ class CensusAssistantModule extends AbstractModule {
 
 			// Output Individual for GEDFact Assistant ======================
 			echo '<table class="list_table width90">';
-			$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
+			$myindilist = FunctionsDb::searchIndividualNames($filter_array, [$WT_TREE]);
 			if ($myindilist) {
 				echo '<tr><td class="list_value_wrap"><ul>';
 				usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -192,7 +192,7 @@ class CensusAssistantModule extends AbstractModule {
 		$filter       = trim($filter);
 		$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 		echo '<table class="tabs_table width90"><tr>';
-		$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
+		$myindilist = FunctionsDb::searchIndividualNames($filter_array, [$WT_TREE]);
 		if ($myindilist) {
 			echo '<td class="list_value_wrap"><ul>';
 			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -291,7 +291,7 @@ class CensusAssistantModule extends AbstractModule {
 			// Get the column headers for the census to which this note refers
 			// requires the fact place & date to match the specific census
 			// censusPlace() (Soundex match) and censusDate() functions
-			$fmt_headers   = array();
+			$fmt_headers   = [];
 			$linkedRecords = array_merge($note->linkedIndividuals('NOTE'), $note->linkedFamilies('NOTE'));
 			$firstRecord   = array_shift($linkedRecords);
 			if ($firstRecord) {
@@ -427,7 +427,7 @@ class CensusAssistantModule extends AbstractModule {
 						Functions::getCloseRelationshipName($head, $grandparent) . ' - ' . $grandparent->getFullName(),
 						'#',
 						'',
-						array('onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $grandparent, $head)) . '");')
+						['onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $grandparent, $head)) . '");']
 					);
 					$submenu->addClass('submenuitem', '');
 					$menu->addSubmenu($submenu);
@@ -465,7 +465,7 @@ class CensusAssistantModule extends AbstractModule {
 							Functions::getCloseRelationshipName($head, $spouse_family_spouse) . ' - ' . $spouse_family_spouse->getFullName(),
 							'#',
 							'',
-							array('onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $spouse_family_spouse, $head)) . '");')
+							['onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $spouse_family_spouse, $head)) . '");']
 						);
 						$submenu->addClass('submenuitem', '');
 						$menu->addSubmenu($submenu);
@@ -477,7 +477,7 @@ class CensusAssistantModule extends AbstractModule {
 						Functions::getCloseRelationshipName($head, $spouse_family_child) . ' - ' . $spouse_family_child->getFullName(),
 						'#',
 						'',
-						array('onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $spouse_family_child, $head)) . '");')
+						['onclick' => 'return appendCensusRow("' . Filter::escapeJs(self::censusTableRow($census, $spouse_family_child, $head)) . '");']
 					);
 					$submenu->addClass('submenuitem', '');
 					$menu->addSubmenu($submenu);

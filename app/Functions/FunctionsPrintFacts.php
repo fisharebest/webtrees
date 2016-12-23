@@ -390,7 +390,7 @@ class FunctionsPrintFacts {
 				// They are only shown when editing.
 				break;
 			case 'EVEN': // 0 SOUR / 1 DATA / 2 EVEN / 3 DATE / 3 PLAC
-				$events = array();
+				$events = [];
 				foreach (preg_split('/ *, */', $match[2]) as $event) {
 					$events[] = GedcomTag::getLabel($event);
 				}
@@ -499,7 +499,7 @@ class FunctionsPrintFacts {
 		// To whom is this record an assocate?
 		if ($parent instanceof Individual) {
 			// On an individual page, we just show links to the person
-			$associates = array($parent);
+			$associates = [$parent];
 		} elseif ($parent instanceof Family) {
 			// On a family page, we show links to both spouses
 			$associates = $parent->getSpouses();
@@ -525,7 +525,7 @@ class FunctionsPrintFacts {
 					$label = GedcomTag::getLabel('ASSO', $person);
 				}
 
-				$values = array('<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>');
+				$values = ['<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>'];
 				foreach ($associates as $associate) {
 					$relationship_name = Functions::getAssociateRelationshipName($associate, $person);
 					if (!$relationship_name) {
@@ -930,15 +930,15 @@ class FunctionsPrintFacts {
 	 */
 	public static function getSourceStructure($srec) {
 		// Set up the output array
-		$textSOUR = array(
+		$textSOUR = [
 			'PAGE' => '',
 			'EVEN' => '',
 			'ROLE' => '',
 			'DATA' => '',
 			'DATE' => '',
-			'TEXT' => array(),
+			'TEXT' => [],
 			'QUAY' => '',
-		);
+		];
 
 		if ($srec) {
 			$subrecords = explode("\n", $srec);

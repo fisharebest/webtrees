@@ -50,7 +50,7 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 			$temptext = "<span>" . $this->num . ". </span>" . $temptext;
 		}
 		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
+		$temptext = str_replace(['«', '»'], ['<u>', '</u>'], $temptext);
 		$pdf->writeHTML($temptext, true, false, true, false, '');
 	}
 
@@ -144,7 +144,7 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 				$this->numText = $newtext;
 				$lfct          = substr_count($this->numText, "\n");
 
-				return array($lw, 1, $lfct);
+				return [$lw, 1, $lfct];
 			}
 		}
 		$l    = 0;
@@ -153,6 +153,6 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 			$l = 2;
 		}
 
-		return array($lw, $l, $lfct);
+		return [$lw, $l, $lfct];
 	}
 }

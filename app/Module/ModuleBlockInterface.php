@@ -28,7 +28,7 @@ interface ModuleBlockInterface {
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array());
+	public function getBlock($block_id, $template = true, $cfg = []);
 
 	/**
 	 * Should this block load asynchronously using AJAX?

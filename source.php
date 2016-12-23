@@ -77,14 +77,14 @@ $linked_fam  = $controller->record->linkedFamilies('SOUR');
 $linked_indi = $controller->record->linkedIndividuals('SOUR');
 $linked_note = $controller->record->linkedNotes('SOUR');
 $linked_obje = $controller->record->linkedMedia('SOUR');
-$linked_sour = array();
+$linked_sour = [];
 
 $facts = $controller->record->getFacts();
 
 usort(
 	$facts,
 	function (Fact $x, Fact $y) {
-		static $order = array(
+		static $order = [
 			'TITL' => 0,
 			'ABBR' => 1,
 			'AUTH' => 2,
@@ -97,7 +97,7 @@ usort(
 			'RIN'  => 9,
 			'_UID' => 10,
 			'CHAN' => 11,
-		);
+		];
 
 		return
 			(array_key_exists($x->getTag(), $order) ? $order[$x->getTag()] : PHP_INT_MAX)

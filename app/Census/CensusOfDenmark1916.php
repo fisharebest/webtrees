@@ -34,7 +34,7 @@ class CensusOfDenmark1916 extends CensusOfDenmark implements CensusInterface {
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnFullName($this, 'Navn', 'Samtlige Personers Navn (ogsaa Fornavn). Ved Børn, endnu uden Navn, sættes „Dreng“ eller „Pige“. Midlertidig fraværerade Personer anføres ikke her, men paa Skemaeta Bagside)'),
 			new CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M) eller Kvindekøn (K).'),
 			new CensusColumnBirthDaySlashMonthYear($this, 'Fødselsdag', 'Føderlsaar og Føderladag.'),
@@ -47,6 +47,6 @@ class CensusOfDenmark1916 extends CensusOfDenmark implements CensusInterface {
 			new CensusColumnOccupation($this, 'Erhverv', ''),
 			new CensusColumnNull($this, '', ''),
 			new CensusColumnNull($this, 'Anmærkninger', 'Anmærkninger.'),
-		);
+		];
 	}
 }

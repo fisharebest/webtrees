@@ -79,13 +79,13 @@ if ($can_reset && Filter::post('default') === '1') {
 	if (isset($_REQUEST['main'])) {
 		$main = $_REQUEST['main'];
 	} else {
-		$main = array();
+		$main = [];
 	}
 
 	if (isset($_REQUEST['right'])) {
 		$right = $_REQUEST['right'];
 	} else {
-		$right = array();
+		$right = [];
 	}
 }
 // Define all the icons we're going to use
@@ -103,7 +103,7 @@ if (I18N::direction() === 'ltr') {
 	$IconLDarrow = 'icon-rdarrow';
 }
 
-$all_blocks = array();
+$all_blocks = [];
 foreach (Module::getActiveBlocks($WT_TREE) as $name => $block) {
 	if ($user_id && $block->isUserBlock() || $gedcom_id && $block->isGedcomBlock()) {
 		$all_blocks[$name] = $block;
@@ -117,7 +117,7 @@ if ($user_id) {
 }
 
 if ($action === 'update') {
-	foreach (array('main', 'side') as $location) {
+	foreach (['main', 'side'] as $location) {
 		if ($location === 'main') {
 			$new_blocks = $main;
 		} else {
@@ -126,23 +126,23 @@ if ($action === 'update') {
 		foreach ($new_blocks as $order => $block_name) {
 			if (is_numeric($block_name)) {
 				// existing block
-				Database::prepare("UPDATE `##block` SET block_order=? WHERE block_id=?")->execute(array($order, $block_name));
+				Database::prepare("UPDATE `##block` SET block_order=? WHERE block_id=?")->execute([$order, $block_name]);
 				// existing block moved location
-				Database::prepare("UPDATE `##block` SET location=? WHERE block_id=?")->execute(array($location, $block_name));
+				Database::prepare("UPDATE `##block` SET location=? WHERE block_id=?")->execute([$location, $block_name]);
 			} else {
 				// new block
 				if ($user_id) {
-					Database::prepare("INSERT INTO `##block` (user_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array($user_id, $location, $order, $block_name));
+					Database::prepare("INSERT INTO `##block` (user_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute([$user_id, $location, $order, $block_name]);
 				} else {
-					Database::prepare("INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array($gedcom_id, $location, $order, $block_name));
+					Database::prepare("INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute([$gedcom_id, $location, $order, $block_name]);
 				}
 			}
 		}
 		// deleted blocks
 		foreach ($blocks[$location] as $block_id => $block_name) {
 			if (!in_array($block_id, $main) && !in_array($block_id, $right)) {
-				Database::prepare("DELETE FROM `##block_setting` WHERE block_id=?")->execute(array($block_id));
-				Database::prepare("DELETE FROM `##block`         WHERE block_id=?")->execute(array($block_id));
+				Database::prepare("DELETE FROM `##block_setting` WHERE block_id=?")->execute([$block_id]);
+				Database::prepare("DELETE FROM `##block`         WHERE block_id=?")->execute([$block_id]);
 			}
 		}
 	}

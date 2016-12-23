@@ -44,7 +44,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $controller, $WT_TREE;
 
 		$indi_xref = $controller->getSignificantIndividual()->getXref();

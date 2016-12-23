@@ -56,7 +56,7 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewSonNames() {
 		$this->assertSame(
-			array('NAME' => 'Jonsson'),
+			['NAME' => 'Jonsson'],
 			$this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'M')
 		);
 	}
@@ -68,7 +68,7 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewDaughterNames() {
 		$this->assertSame(
-			array('NAME' => 'Jonsdottir'),
+			['NAME' => 'Jonsdottir'],
 			$this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'F')
 		);
 	}
@@ -80,7 +80,7 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewChildNames() {
 		$this->assertSame(
-			array(),
+			[],
 			$this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'U')
 		);
 	}
@@ -92,7 +92,7 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewFatherNames() {
 		$this->assertSame(
-			array('NAME' => 'Einar', 'GIVN' => 'Einar'),
+			['NAME' => 'Einar', 'GIVN' => 'Einar'],
 			$this->surname_tradition->newParentNames('Jon Einarsson', 'M')
 		);
 	}
@@ -104,7 +104,7 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewMotherNames() {
 		$this->assertSame(
-			array(),
+			[],
 			$this->surname_tradition->newParentNames('Jon Einarsson', 'F')
 		);
 	}
@@ -116,7 +116,7 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewParentNames() {
 		$this->assertSame(
-			array(),
+			[],
 			$this->surname_tradition->newParentNames('Jon Einarsson', 'U')
 		);
 	}
@@ -128,7 +128,7 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewHusbandNames() {
 		$this->assertSame(
-			array(),
+			[],
 			$this->surname_tradition->newSpouseNames('Eva Stefansdottir', 'M')
 		);
 	}
@@ -140,7 +140,7 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewWifeNames() {
 		$this->assertSame(
-			array(),
+			[],
 			$this->surname_tradition->newSpouseNames('Jon Einarsson', 'F')
 		);
 	}
@@ -152,7 +152,7 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewSpouseNames() {
 		$this->assertSame(
-			array(),
+			[],
 			$this->surname_tradition->newSpouseNames('Jon Einarsson', 'U')
 		);
 	}

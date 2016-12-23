@@ -33,10 +33,10 @@ class Repository extends GedcomRecord {
 	protected static function fetchGedcomRecord($xref, $tree_id) {
 		return Database::prepare(
 			"SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id AND o_type = 'REPO'"
-		)->execute(array(
+		)->execute([
 			'xref'    => $xref,
 			'tree_id' => $tree_id,
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**

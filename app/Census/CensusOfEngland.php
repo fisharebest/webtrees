@@ -25,7 +25,7 @@ class CensusOfEngland extends Census implements CensusPlaceInterface {
 	 * @return CensusInterface[]
 	 */
 	public function allCensusDates() {
-		return array(
+		return [
 			new CensusOfEngland1841(),
 			new CensusOfEngland1851(),
 			new CensusOfEngland1861(),
@@ -35,7 +35,7 @@ class CensusOfEngland extends Census implements CensusPlaceInterface {
 			new CensusOfEngland1901(),
 			new CensusOfEngland1911(),
 			new RegisterOfEngland1939(),
-		);
+		];
 	}
 
 	/**

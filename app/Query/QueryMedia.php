@@ -39,7 +39,7 @@ class QueryMedia {
 			" AND   m_filename NOT LIKE 'https://%'" .
 			" GROUP BY 1" .
 			" ORDER BY 1"
-		)->execute(array($WT_TREE->getTreeId()))->fetchOneColumn();
+		)->execute([$WT_TREE->getTreeId()])->fetchOneColumn();
 
 		if (!$folders || reset($folders) != '') {
 			array_unshift($folders, '');
@@ -66,7 +66,7 @@ class QueryMedia {
 		if ($folders) {
 			return array_combine($folders, $folders);
 		} else {
-			return array();
+			return [];
 		}
 	}
 
@@ -91,9 +91,9 @@ class QueryMedia {
 			"SELECT m_id AS xref, m_gedcom AS gedcom" .
 			" FROM `##media`" .
 			" WHERE m_file=?";
-		$args = array(
+		$args = [
 			$WT_TREE->getTreeId(),
-		);
+		];
 
 		// Only show external files when we are looking at the root folder
 		if ($folder == '') {
@@ -141,7 +141,7 @@ class QueryMedia {
 		}
 
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
-		$list = array();
+		$list = [];
 		foreach ($rows as $row) {
 			$media = Media::getInstance($row->xref, $WT_TREE, $row->gedcom);
 			if ($media->canShow()) {

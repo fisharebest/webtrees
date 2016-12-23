@@ -29,6 +29,7 @@ return PhpCsFixer\Config::create()
 	->setIndent("\t")
 	->setFinder($finder)
 	->setRules([
+		'array_syntax' => array('syntax' => 'short'),
 		'binary_operator_spaces' => [
 			'align_double_arrow' => true,
 			'align_equals'       => true,

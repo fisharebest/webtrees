@@ -96,9 +96,9 @@ class ChartController extends PageController {
 	 * @return Individual[]
 	 */
 	public function sosaAncestors($generations) {
-		$ancestors = array(
+		$ancestors = [
 			1 => $this->root,
-		);
+		];
 
 		// Subtract one generation, as this algorithm includes parents.
 		$max = pow(2, $generations - 1);

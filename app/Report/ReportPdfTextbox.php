@@ -28,9 +28,9 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 	 */
 	public function render($renderer) {
 
-		$newelements      = array();
+		$newelements      = [];
 		$lastelement      = "";
-		$footnote_element = array();
+		$footnote_element = [];
 		// Element counter
 		$cE = count($this->elements);
 		//-- collapse duplicate elements
@@ -43,7 +43,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 						foreach ($footnote_element as $links) {
 							$newelements[] = $links;
 						}
-						$footnote_element = array();
+						$footnote_element = [];
 					}
 					if (empty($lastelement)) {
 						$lastelement = $element;
@@ -63,7 +63,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 					// Save first the last element if any
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
-						$lastelement   = array();
+						$lastelement   = [];
 					}
 					// Save the Footnote with it’s link number as key for sorting later
 					$footnote_element[$element->num] = $element;
@@ -74,25 +74,25 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 						foreach ($footnote_element as $links) {
 							$newelements[] = $links;
 						}
-						$footnote_element = array();
+						$footnote_element = [];
 					}
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
-						$lastelement   = array();
+						$lastelement   = [];
 					}
 					$newelements[] = $element;
 				}
 			} else {
 				if (!empty($lastelement)) {
 					$newelements[] = $lastelement;
-					$lastelement   = array();
+					$lastelement   = [];
 				}
 				if (!empty($footnote_element)) {
 					ksort($footnote_element);
 					foreach ($footnote_element as $links) {
 						$newelements[] = $links;
 					}
-					$footnote_element = array();
+					$footnote_element = [];
 				}
 				$newelements[] = $element;
 			}
@@ -153,7 +153,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 		// 0 => last line width
 		// 1 => 1 if text was wrapped, 0 if text did not wrap
 		// 2 => number of LF
-		$lw = array();
+		$lw = [];
 		// Element counter
 		$cE = count($this->elements);
 		//-- calculate the text box height + width
@@ -227,7 +227,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 		if ($this->border) {
 			$cS = "D";
 		} // D or empty string: Draw (default)
-		$match = array();
+		$match = [];
 		// Fill the background
 		if ($this->fill) {
 			if (!empty($this->bgcolor)) {

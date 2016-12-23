@@ -39,20 +39,20 @@ class RelationshipController extends PageController {
 
 		$rows = Database::prepare(
 			"SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
-		)->execute(array(
+		)->execute([
 			'tree_id' => $individual1->getTree()->getTreeId(),
-		))->fetchAll();
+		])->fetchAll();
 
 		// Optionally restrict the graph to the ancestors of the individuals.
 		if ($ancestor) {
 			$ancestors = $this->allAncestors($individual1->getXref(), $individual2->getXref(), $individual1->getTree()->getTreeId());
 			$exclude   = $this->excludeFamilies($individual1->getXref(), $individual2->getXref(), $individual1->getTree()->getTreeId());
 		} else {
-			$ancestors = array();
-			$exclude   = array();
+			$ancestors = [];
+			$exclude   = [];
 		}
 
-		$graph = array();
+		$graph = [];
 
 		foreach ($rows as $row) {
 			if (!$ancestors || in_array($row->l_from, $ancestors) && !in_array($row->l_to, $exclude)) {
@@ -67,12 +67,12 @@ class RelationshipController extends PageController {
 		$paths    = $dijkstra->shortestPaths($xref1, $xref2);
 
 		// Only process each exclusion list once;
-		$excluded = array();
+		$excluded = [];
 
-		$queue = array();
+		$queue = [];
 		foreach ($paths as $path) {
 			// Insert the paths into the queue, with an exclusion list.
-			$queue[] = array('path' => $path, 'exclude' => array());
+			$queue[] = ['path' => $path, 'exclude' => []];
 			// While there are un-extended paths
 			while (list(, $next) = each($queue)) {
 				// For each family on the path
@@ -91,13 +91,13 @@ class RelationshipController extends PageController {
 					}
 					// Add any new path to the queue
 					foreach ($dijkstra->shortestPaths($xref1, $xref2, $exclude) as $new_path) {
-						$queue[] = array('path' => $new_path, 'exclude' => $exclude);
+						$queue[] = ['path' => $new_path, 'exclude' => $exclude];
 					}
 				}
 			}
 		}
 		// Extract the paths from the queue, removing duplicates.
-		$paths = array();
+		$paths = [];
 		foreach ($queue as $next) {
 			$paths[implode('-', $next['path'])] = $next['path'];
 		}
@@ -117,11 +117,11 @@ class RelationshipController extends PageController {
 	public function oldStyleRelationshipPath(array $path) {
 		global $WT_TREE;
 
-		$spouse_codes  = array('M' => 'hus', 'F' => 'wif', 'U' => 'spo');
-		$parent_codes  = array('M' => 'fat', 'F' => 'mot', 'U' => 'par');
-		$child_codes   = array('M' => 'son', 'F' => 'dau', 'U' => 'chi');
-		$sibling_codes = array('M' => 'bro', 'F' => 'sis', 'U' => 'sib');
-		$relationships = array();
+		$spouse_codes  = ['M' => 'hus', 'F' => 'wif', 'U' => 'spo'];
+		$parent_codes  = ['M' => 'fat', 'F' => 'mot', 'U' => 'par'];
+		$child_codes   = ['M' => 'son', 'F' => 'dau', 'U' => 'chi'];
+		$sibling_codes = ['M' => 'bro', 'F' => 'sis', 'U' => 'sib'];
+		$relationships = [];
 
 		for ($i = 1; $i < count($path); $i += 2) {
 			$family = Family::getInstance($path[$i], $WT_TREE);
@@ -130,12 +130,12 @@ class RelationshipController extends PageController {
 			if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $prev->getXref() . '@/', $family->getGedcom(), $match)) {
 				$rel1 = $match[1];
 			} else {
-				return array();
+				return [];
 			}
 			if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $next->getXref() . '@/', $family->getGedcom(), $match)) {
 				$rel2 = $match[1];
 			} else {
-				return array();
+				return [];
 			}
 			if (($rel1 === 'HUSB' || $rel1 === 'WIFE') && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
 				$relationships[$i] = $spouse_codes[$next->getSex()];
@@ -161,9 +161,9 @@ class RelationshipController extends PageController {
 	 * @return array
 	 */
 	private function allAncestors($xref1, $xref2, $tree_id) {
-		$ancestors = array($xref1, $xref2);
+		$ancestors = [$xref1, $xref2];
 
-		$queue = array($xref1, $xref2);
+		$queue = [$xref1, $xref2];
 		while (!empty($queue)) {
 			$placeholders = implode(',', array_fill(0, count($queue), '?'));
 			$parameters   = $queue;
@@ -205,10 +205,10 @@ class RelationshipController extends PageController {
 			" FROM `##link` AS l1" .
 			" JOIN `##link` AS l2 USING (l_type, l_to, l_file) " .
 			" WHERE l_type = 'FAMS' AND l1.l_from = :spouse1 AND l2.l_from = :spouse2 AND l_file = :tree_id"
-		)->execute(array(
+		)->execute([
 			'spouse1' => $xref1,
 			'spouse2' => $xref2,
 			'tree_id' => $tree_id,
-		))->fetchOneColumn();
+		])->fetchOneColumn();
 	}
 }

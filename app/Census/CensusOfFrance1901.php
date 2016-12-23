@@ -34,7 +34,7 @@ class CensusOfFrance1901 extends CensusOfFrance implements CensusInterface {
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
 			new CensusColumnGivenNames($this, 'Prénoms', ''),
 			new CensusColumnAge($this, 'Âge', ''),
@@ -43,6 +43,6 @@ class CensusOfFrance1901 extends CensusOfFrance implements CensusInterface {
 			new CensusColumnOccupation($this, 'Profession', ''),
 			new CensusColumnBirthPlace($this, 'Lieu', 'Lieu de naissance'),
 			new CensusColumnNull($this, 'Empl', ''),
-		);
+		];
 	}
 }

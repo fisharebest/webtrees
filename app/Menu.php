@@ -54,7 +54,7 @@ class Menu {
 	 * @param string[] $attrs    Optional attributes, such as onclick or data-xxx
 	 * @param Menu[]   $submenus Any submenus
 	 */
-	public function __construct($label, $link = '#', $class = '', array $attrs = array(), array $submenus = array()) {
+	public function __construct($label, $link = '#', $class = '', array $attrs = [], array $submenus = []) {
 		$this
 			->setLabel($label)
 			->setLink($link)

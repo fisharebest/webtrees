@@ -99,7 +99,7 @@ echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 ////////////////////////////////////////////////////////////////////////////////
 
 if (!isset($_POST['lang'])) {
-	$installed_languages = array();
+	$installed_languages = [];
 	foreach (I18N::installedLocales() as $installed_locale) {
 		$installed_languages[$installed_locale->languageTag()] = $installed_locale->endonym();
 	}
@@ -114,34 +114,34 @@ if (!isset($_POST['lang'])) {
 
 	// Mandatory functions
 	$disable_functions = preg_split('/ *, */', ini_get('disable_functions'));
-	foreach (array('parse_ini_file') as $function) {
+	foreach (['parse_ini_file'] as $function) {
 		if (in_array($function, $disable_functions)) {
 			echo '<p class="bad">', /* I18N: %s is a PHP function/module/setting */ I18N::translate('%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it.', $function . '()'), '</p>';
 			$errors = true;
 		}
 	}
 	// Mandatory extensions
-	foreach (array('pcre', 'pdo', 'pdo_mysql', 'session', 'iconv') as $extension) {
+	foreach (['pcre', 'pdo', 'pdo_mysql', 'session', 'iconv'] as $extension) {
 		if (!extension_loaded($extension)) {
 			echo '<p class="bad">', I18N::translate('PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it.', $extension), '</p>';
 			$errors = true;
 		}
 	}
 	// Recommended extensions
-	foreach (array(
+	foreach ([
 		'gd'        => /* I18N: a program feature */ I18N::translate('creating thumbnails of images'),
 		'xml'       => /* I18N: a program feature */ I18N::translate('reporting'),
 		'simplexml' => /* I18N: a program feature */ I18N::translate('reporting'),
-	) as $extension => $features) {
+	] as $extension => $features) {
 		if (!extension_loaded($extension)) {
 			echo '<p class="bad">', I18N::translate('PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it.', $extension, $features), '</p>';
 			$warnings = true;
 		}
 	}
 	// Settings
-	foreach (array(
+	foreach ([
 		'file_uploads' => /* I18N: a program feature */ I18N::translate('file upload capability'),
-	) as $setting => $features) {
+	] as $setting => $features) {
 		if (!ini_get($setting)) {
 			echo '<p class="bad">', I18N::translate('PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it.', $setting, $features), '</p>';
 			$warnings = true;
@@ -314,8 +314,8 @@ if (empty($_POST['dbuser']) || !Database::isConnected() || !$db_version_ok) {
 //
 // Other characters may be invalid (objects must be valid filenames on the
 // MySQL server’s filesystem), so block the usual ones.
-$DBNAME    = str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['dbname']);
-$TBLPREFIX = str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['tblpfx']);
+$DBNAME    = str_replace(['`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'], '', $_POST['dbname']);
+$TBLPREFIX = str_replace(['`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'], '', $_POST['tblpfx']);
 
 // If we have specified a database, and we have not used invalid characters,
 // try to connect to it.

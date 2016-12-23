@@ -73,7 +73,7 @@ class TreeView {
 			</div>
 		';
 
-		return array($html, 'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '");');
+		return [$html, 'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '");'];
 	}
 
 	/**
@@ -87,14 +87,14 @@ class TreeView {
 		global $WT_TREE;
 
 		$list = explode(';', $list);
-		$r    = array();
+		$r    = [];
 		foreach ($list as $jsonRequest) {
 			$firstLetter = substr($jsonRequest, 0, 1);
 			$jsonRequest = substr($jsonRequest, 1);
 			switch ($firstLetter) {
 			case 'c':
 				$fidlist = explode(',', $jsonRequest);
-				$flist   = array();
+				$flist   = [];
 				foreach ($fidlist as $fid) {
 					$flist[] = Family::getInstance($fid, $WT_TREE);
 				}
@@ -173,8 +173,8 @@ class TreeView {
 	 */
 	private function drawChildren(array $familyList, $gen = 1, $ajax = false) {
 		$html          = '';
-		$children2draw = array();
-		$f2load        = array();
+		$children2draw = [];
+		$f2load        = [];
 
 		foreach ($familyList as $f) {
 			if (empty($f)) {
@@ -259,7 +259,7 @@ class TreeView {
 		// Fixing the width for td to the box initial width when the person is the root person fix a rare bug that happen when a person without child and without known parents is the root person : an unwanted white rectangle appear at the right of the person’s boxes, otherwise.
 		$html .= '<td' . ($isRoot ? ' style="width:1px"' : '') . '><div class="tv_box' . ($isRoot ? ' rootPerson' : '') . '" dir="' . I18N::direction() . '" style="text-align: ' . (I18N::direction() === 'rtl' ? 'right' : 'left') . '; direction: ' . I18N::direction() . '" abbr="' . $person->getXref() . '" onclick="' . $this->name . 'Handler.expandBox(this, event);">';
 		$html .= $this->drawPersonName($person);
-		$fop = array(); // $fop is fathers of partners
+		$fop = []; // $fop is fathers of partners
 		if (!is_null($partner)) {
 			$dashed = '';
 			foreach ($person->getSpouseFamilies() as $family) {
@@ -268,9 +268,9 @@ class TreeView {
 					if ($spouse === $partner || $this->all_partners === 'true') {
 						$spouse_parents = $spouse->getPrimaryChildFamily();
 						if ($spouse_parents && $spouse_parents->getHusband()) {
-							$fop[] = array($spouse_parents->getHusband(), $spouse_parents);
+							$fop[] = [$spouse_parents->getHusband(), $spouse_parents];
 						} elseif ($spouse_parents && $spouse_parents->getWife()) {
-							$fop[] = array($spouse_parents->getWife(), $spouse_parents);
+							$fop[] = [$spouse_parents->getWife(), $spouse_parents];
 						}
 						$html .= $this->drawPersonName($spouse, $dashed);
 						if ($this->all_partners !== 'true') {

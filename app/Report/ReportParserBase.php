@@ -32,11 +32,11 @@ class ReportParserBase {
 	 * @param ReportBase $report_root
 	 * @param string[][] $vars
 	 */
-	public function __construct($report, ReportBase $report_root = null, $vars = array()) {
+	public function __construct($report, ReportBase $report_root = null, $vars = []) {
 		$this->xml_parser = xml_parser_create();
 		xml_parser_set_option($this->xml_parser, XML_OPTION_CASE_FOLDING, false);
-		xml_set_element_handler($this->xml_parser, array($this, 'startElement'), array($this, 'endElement'));
-		xml_set_character_data_handler($this->xml_parser, array($this, 'characterData'));
+		xml_set_element_handler($this->xml_parser, [$this, 'startElement'], [$this, 'endElement']);
+		xml_set_character_data_handler($this->xml_parser, [$this, 'characterData']);
 
 		$fp = fopen($report, 'r');
 		while (($data = fread($fp, 4096))) {

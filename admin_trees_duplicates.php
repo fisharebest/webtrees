@@ -40,9 +40,9 @@ $repositories = Database::prepare(
 	" WHERE o_file = :tree_id AND o_type = 'REPO'" .
 	" GROUP BY n_full" .
 	" HAVING COUNT(n_id) > 1"
-)->execute(array(
+)->execute([
 	'tree_id' => $WT_TREE->getTreeId(),
-))->fetchAll();
+])->fetchAll();
 
 $repositories = array_map(
 	function (\stdClass $x) use ($WT_TREE) {
@@ -61,9 +61,9 @@ $sources = Database::prepare(
 	" WHERE s_file = :tree_id" .
 	" GROUP BY n_full" .
 	" HAVING COUNT(n_id) > 1"
-)->execute(array(
+)->execute([
 	'tree_id' => $WT_TREE->getTreeId(),
-))->fetchAll();
+])->fetchAll();
 
 $sources = array_map(
 	function (\stdClass $x) use ($WT_TREE) {
@@ -82,9 +82,9 @@ $individuals = Database::prepare(
 	" WHERE d_file = :tree_id AND d_fact IN ('BIRT', 'CHR', 'BAPM', 'DEAT', 'BURI')" .
 	" GROUP BY d_day, d_month, d_year, d_type, d_fact, n_type, n_full" .
 	" HAVING COUNT(DISTINCT d_gid) > 1"
-)->execute(array(
+)->execute([
 	'tree_id' => $WT_TREE->getTreeId(),
-))->fetchAll();
+])->fetchAll();
 
 $individuals = array_map(
 	function (\stdClass $x) use ($WT_TREE) {
@@ -102,9 +102,9 @@ $families = Database::prepare(
 	" WHERE f_file = :tree_id" .
 	" GROUP BY LEAST(f_husb, f_wife), GREATEST(f_husb, f_wife)" .
 	" HAVING COUNT(f_id) > 1"
-)->execute(array(
+)->execute([
 	'tree_id' => $WT_TREE->getTreeId(),
-))->fetchAll();
+])->fetchAll();
 
 $families = array_map(
 	function (\stdClass $x) use ($WT_TREE) {
@@ -122,9 +122,9 @@ $media = Database::prepare(
 	" WHERE m_file = :tree_id" .
 	" GROUP BY m_titl" .
 	" HAVING COUNT(m_id) > 1"
-)->execute(array(
+)->execute([
 	'tree_id' => $WT_TREE->getTreeId(),
-))->fetchAll();
+])->fetchAll();
 
 $media = array_map(
 	function (\stdClass $x) use ($WT_TREE) {
@@ -136,13 +136,13 @@ $media = array_map(
 	}, $media
 );
 
-$all_duplicates = array(
+$all_duplicates = [
 	I18N::translate('Repositories')  => $repositories,
 	I18N::translate('Sources')       => $sources,
 	I18N::translate('Individuals')   => $individuals,
 	I18N::translate('Families')      => $families,
 	I18N::translate('Media objects') => $media,
-);
+];
 
 ?>
 <ol class="breadcrumb small">

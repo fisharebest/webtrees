@@ -35,7 +35,7 @@ class Module {
 	 * @return string[]
 	 */
 	public static function getCoreModuleNames() {
-		return array(
+		return [
 			'GEDFact_assistant',
 			'ahnentafel_report',
 			'ancestors_chart',
@@ -107,7 +107,7 @@ class Module {
 			'user_messages',
 			'user_welcome',
 			'yahrzeit',
-		);
+		];
 	}
 
 	/**
@@ -124,7 +124,7 @@ class Module {
 				"SELECT SQL_CACHE module_name FROM `##module` WHERE status = 'enabled'"
 			)->fetchOneColumn();
 
-			$modules = array();
+			$modules = [];
 			foreach ($module_names as $module_name) {
 				try {
 					$module = include WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
@@ -138,9 +138,9 @@ class Module {
 					Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it");
 					Database::prepare(
 						"UPDATE `##module` SET status = 'disabled' WHERE module_name = :module_name"
-					)->execute(array(
+					)->execute([
 						'module_name' => $module_name,
-					));
+					]);
 				}
 			}
 		}
@@ -166,13 +166,13 @@ class Module {
 			" JOIN `##module_privacy` USING (module_name)" .
 			" WHERE gedcom_id = :tree_id AND component = :component AND status = 'enabled' AND access_level >= :access_level" .
 			" ORDER BY CASE component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order ELSE 0 END, module_name"
-		)->execute(array(
+		)->execute([
 			'tree_id'      => $tree->getTreeId(),
 			'component'    => $component,
 			'access_level' => Auth::accessLevel($tree),
-		))->fetchOneColumn();
+		])->fetchOneColumn();
 
-		$array = array();
+		$array = [];
 		foreach ($module_names as $module_name) {
 			$interface = '\Fisharebest\Webtrees\Module\Module' . ucfirst($component) . 'Interface';
 			$module    = self::getModuleByName($module_name);
@@ -206,11 +206,11 @@ class Module {
 			"SELECT SQL_CACHE module_name" .
 			" FROM `##module`" .
 			" ORDER BY CASE :component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order ELSE 0 END, module_name"
-		)->execute(array(
+		)->execute([
 			'component'    => $component,
-		))->fetchOneColumn();
+		])->fetchOneColumn();
 
-		$array = array();
+		$array = [];
 		foreach ($module_names as $module_name) {
 			$interface = '\Fisharebest\Webtrees\Module\Module' . ucfirst($component) . 'Interface';
 			$module    = self::getModuleByName($module_name);
@@ -345,20 +345,20 @@ class Module {
 	 * @return AbstractModule[]
 	 */
 	public static function getInstalledModules($default_status) {
-		$modules = array();
+		$modules = [];
 
 		foreach (glob(WT_ROOT . WT_MODULES_DIR . '*/module.php') as $file) {
 			try {
 				$module = include $file;
 				if ($module instanceof AbstractModule) {
 					$modules[$module->getName()] = $module;
-					Database::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")->execute(array(
+					Database::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")->execute([
 						$module->getName(),
 						$default_status,
 						$module instanceof ModuleMenuInterface ? $module->defaultMenuOrder() : null,
 						$module instanceof ModuleSidebarInterface ? $module->defaultSidebarOrder() : null,
 						$module instanceof ModuleTabInterface ? $module->defaultTabOrder() : null,
-					));
+					]);
 					// Set the default privcy for this module. Note that this also sets it for the
 					// default family tree, with a gedcom_id of -1
 					if ($module instanceof ModuleMenuInterface) {
@@ -366,49 +366,49 @@ class Module {
 							"INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
 							" SELECT ?, gedcom_id, 'menu', ?" .
 							" FROM `##gedcom`"
-						)->execute(array($module->getName(), $module->defaultAccessLevel()));
+						)->execute([$module->getName(), $module->defaultAccessLevel()]);
 					}
 					if ($module instanceof ModuleSidebarInterface) {
 						Database::prepare(
 							"INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
 							" SELECT ?, gedcom_id, 'sidebar', ?" .
 							" FROM `##gedcom`"
-						)->execute(array($module->getName(), $module->defaultAccessLevel()));
+						)->execute([$module->getName(), $module->defaultAccessLevel()]);
 					}
 					if ($module instanceof ModuleTabInterface) {
 						Database::prepare(
 							"INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
 							" SELECT ?, gedcom_id, 'tab', ?" .
 							" FROM `##gedcom`"
-						)->execute(array($module->getName(), $module->defaultAccessLevel()));
+						)->execute([$module->getName(), $module->defaultAccessLevel()]);
 					}
 					if ($module instanceof ModuleBlockInterface) {
 						Database::prepare(
 							"INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
 							" SELECT ?, gedcom_id, 'block', ?" .
 							" FROM `##gedcom`"
-						)->execute(array($module->getName(), $module->defaultAccessLevel()));
+						)->execute([$module->getName(), $module->defaultAccessLevel()]);
 					}
 					if ($module instanceof ModuleChartInterface) {
 						Database::prepare(
 							"INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
 							" SELECT ?, gedcom_id, 'chart', ?" .
 							" FROM `##gedcom`"
-						)->execute(array($module->getName(), $module->defaultAccessLevel()));
+						)->execute([$module->getName(), $module->defaultAccessLevel()]);
 					}
 					if ($module instanceof ModuleReportInterface) {
 						Database::prepare(
 							"INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
 							" SELECT ?, gedcom_id, 'report', ?" .
 							" FROM `##gedcom`"
-						)->execute(array($module->getName(), $module->defaultAccessLevel()));
+						)->execute([$module->getName(), $module->defaultAccessLevel()]);
 					}
 					if ($module instanceof ModuleThemeInterface) {
 						Database::prepare(
 							"INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
 							" SELECT ?, gedcom_id, 'theme', ?" .
 							" FROM `##gedcom`"
-						)->execute(array($module->getName(), $module->defaultAccessLevel()));
+						)->execute([$module->getName(), $module->defaultAccessLevel()]);
 					}
 				}
 			} catch (\Exception $ex) {
@@ -430,37 +430,37 @@ class Module {
 			if ($module instanceof ModuleMenuInterface) {
 				Database::prepare(
 					"INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'menu', ?)"
-				)->execute(array($module->getName(), $tree_id, $module->defaultAccessLevel()));
+				)->execute([$module->getName(), $tree_id, $module->defaultAccessLevel()]);
 			}
 			if ($module instanceof ModuleSidebarInterface) {
 				Database::prepare(
 					"INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
-				)->execute(array($module->getName(), $tree_id, $module->defaultAccessLevel()));
+				)->execute([$module->getName(), $tree_id, $module->defaultAccessLevel()]);
 			}
 			if ($module instanceof ModuleTabInterface) {
 				Database::prepare(
 					"INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'tab', ?)"
-				)->execute(array($module->getName(), $tree_id, $module->defaultAccessLevel()));
+				)->execute([$module->getName(), $tree_id, $module->defaultAccessLevel()]);
 			}
 			if ($module instanceof ModuleBlockInterface) {
 				Database::prepare(
 					"INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'block', ?)"
-				)->execute(array($module->getName(), $tree_id, $module->defaultAccessLevel()));
+				)->execute([$module->getName(), $tree_id, $module->defaultAccessLevel()]);
 			}
 			if ($module instanceof ModuleChartInterface) {
 				Database::prepare(
 					"INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'chart', ?)"
-				)->execute(array($module->getName(), $tree_id, $module->defaultAccessLevel()));
+				)->execute([$module->getName(), $tree_id, $module->defaultAccessLevel()]);
 			}
 			if ($module instanceof ModuleReportInterface) {
 				Database::prepare(
 					"INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
-				)->execute(array($module->getName(), $tree_id, $module->defaultAccessLevel()));
+				)->execute([$module->getName(), $tree_id, $module->defaultAccessLevel()]);
 			}
 			if ($module instanceof ModuleThemeInterface) {
 				Database::prepare(
 					"INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'theme', ?)"
-				)->execute(array($module->getName(), $tree_id, $module->defaultAccessLevel()));
+				)->execute([$module->getName(), $tree_id, $module->defaultAccessLevel()]);
 			}
 		}
 	}

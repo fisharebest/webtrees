@@ -27,14 +27,14 @@ class BaseController {
 	const JS_PRIORITY_LOW    = 2;
 
 	/** @var string[][] Inline JavaScript to add to the page. */
-	private $inline_javascript = array(
-		self::JS_PRIORITY_HIGH   => array(),
-		self::JS_PRIORITY_NORMAL => array(),
-		self::JS_PRIORITY_LOW    => array(),
-	);
+	private $inline_javascript = [
+		self::JS_PRIORITY_HIGH   => [],
+		self::JS_PRIORITY_NORMAL => [],
+		self::JS_PRIORITY_LOW    => [],
+	];
 
 	/** @var string[] Exteral JavaScript files to load. */
-	private $external_javascript = array();
+	private $external_javascript = [];
 
 	/**
 	 * Startup activity
@@ -105,12 +105,12 @@ class BaseController {
 		}
 
 		// We could, in theory, inject JS at any point in the page (not just the bottom) - prepare for next time
-		$this->inline_javascript = array(
-			self::JS_PRIORITY_HIGH   => array(),
-			self::JS_PRIORITY_NORMAL => array(),
-			self::JS_PRIORITY_LOW    => array(),
-		);
-		$this->external_javascript = array();
+		$this->inline_javascript = [
+			self::JS_PRIORITY_HIGH   => [],
+			self::JS_PRIORITY_NORMAL => [],
+			self::JS_PRIORITY_LOW    => [],
+		];
+		$this->external_javascript = [];
 
 		return '<script>' . $javascript1 . '</script>' . $javascript2 . '<script>' . $javascript3 . '</script>';
 	}
@@ -122,7 +122,7 @@ class BaseController {
 	 */
 	public function pageHeader() {
 		// We've displayed the header - display the footer automatically
-		register_shutdown_function(array($this, 'pageFooter'));
+		register_shutdown_function([$this, 'pageFooter']);
 
 		return $this;
 	}

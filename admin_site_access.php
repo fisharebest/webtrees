@@ -22,19 +22,19 @@ use PDO;
 define('WT_SCRIPT_NAME', 'admin_site_access.php');
 require './includes/session.php';
 
-$rules_display = array(
+$rules_display = [
 	'unknown' => I18N::translate('unknown'),
 	'allow'   => /* I18N: An access rule - allow access to the site */ I18N::translate('allow'),
 	'deny'    => /* I18N: An access rule - deny access to the site */ I18N::translate('deny'),
 	'robot'   => /* I18N: http://en.wikipedia.org/wiki/Web_crawler */ I18N::translate('robot'),
-);
+];
 
-$rules_edit = array(
+$rules_edit = [
 	'unknown' => I18N::translate('unknown'),
 	'allow'   => /* I18N: An access rule - allow access to the site */ I18N::translate('allow'),
 	'deny'    => /* I18N: An access rule - deny access to the site */ I18N::translate('deny'),
 	'robot'   => /* I18N: http://en.wikipedia.org/wiki/Web_crawler */ I18N::translate('robot'),
-);
+];
 
 // Form actions
 switch (Filter::post('action')) {
@@ -54,38 +54,38 @@ case 'save':
 			$oops = $rule !== 'allow' && Database::prepare(
 				"SELECT INET_ATON(:ip_address) BETWEEN INET_ATON(:ip_address_start) AND INET_ATON(:ip_address_end)" .
 				" AND :user_agent_string LIKE :user_agent_pattern"
-			)->execute(array(
+			)->execute([
 				'ip_address'         => $ip_address,
 				'ip_address_start'   => $ip_address_start,
 				'ip_address_end'     => $ip_address_end,
 				'user_agent_string'  => $user_agent_string,
 				'user_agent_pattern' => $user_agent_pattern,
-			))->fetchOne();
+			])->fetchOne();
 
 			if ($oops) {
 				FlashMessages::addMessage(I18N::translate('You cannot create a rule which would prevent yourself from accessing the website.'), 'danger');
 			} elseif ($site_access_rule_id === null) {
 				Database::prepare(
 					"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, rule, comment) VALUES (INET_ATON(:ip_address_start), INET_ATON(:ip_address_end), :user_agent_pattern, :rule, :comment)"
-				)->execute(array(
+				)->execute([
 					'ip_address_start'    => $ip_address_start,
 					'ip_address_end'      => $ip_address_end,
 					'user_agent_pattern'  => $user_agent_pattern,
 					'rule'                => $rule,
 					'comment'             => $comment,
-				));
+				]);
 				FlashMessages::addMessage(I18N::translate('The website access rule has been created.'), 'success');
 			} else {
 				Database::prepare(
 					"UPDATE `##site_access_rule` SET ip_address_start = INET_ATON(:ip_address_start), ip_address_end = INET_ATON(:ip_address_end), user_agent_pattern = :user_agent_pattern, rule = :rule, comment = :comment WHERE site_access_rule_id = :site_access_rule_id"
-				)->execute(array(
+				)->execute([
 					'ip_address_start'    => $ip_address_start,
 					'ip_address_end'      => $ip_address_end,
 					'user_agent_pattern'  => $user_agent_pattern,
 					'rule'                => $rule,
 					'comment'             => $comment,
 					'site_access_rule_id' => $site_access_rule_id,
-				));
+				]);
 				FlashMessages::addMessage(I18N::translate('The website access rule has been updated.'), 'success');
 			}
 		}
@@ -99,9 +99,9 @@ case 'delete':
 		$site_access_rule_id = Filter::postInteger('site_access_rule_id');
 		Database::prepare(
 			"DELETE FROM `##site_access_rule` WHERE site_access_rule_id = :site_access_rule_id"
-		)->execute(array(
+		)->execute([
 			'site_access_rule_id' => $site_access_rule_id,
-		));
+		]);
 		FlashMessages::addMessage(I18N::translate('The website access rule has been deleted.'), 'success');
 	}
 	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
@@ -139,7 +139,7 @@ case 'load':
 		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS" .
 		" '', INET_NTOA(ip_address_start), ip_address_start, INET_NTOA(ip_address_end), ip_address_end, user_agent_pattern, rule, comment, site_access_rule_id" .
 		" FROM `##site_access_rule`";
-	$args = array();
+	$args = [];
 
 	if ($search) {
 		$sql .=
@@ -202,12 +202,12 @@ case 'load':
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
-	echo json_encode(array(
+	echo json_encode([
 		'draw'            => Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data,
-	));
+	]);
 	break;
 
 case 'edit':
@@ -223,9 +223,9 @@ case 'create':
 	$site_access_rule = Database::prepare(
 		"SELECT site_access_rule_id, INET_NTOA(ip_address_start) AS ip_address_start, INET_NTOA(ip_address_end) AS ip_address_end, user_agent_pattern, rule, comment" .
 		" FROM `##site_access_rule` WHERE site_access_rule_id = :site_access_rule_id"
-	)->execute(array(
+	)->execute([
 		'site_access_rule_id' => Filter::getInteger('site_access_rule_id'),
-	))->fetchOneRow();
+	])->fetchOneRow();
 
 	$site_access_rule_id = $site_access_rule ? $site_access_rule->site_access_rule_id : null;
 	$ip_address_start    = $site_access_rule ? $site_access_rule->ip_address_start : '0.0.0.0';

@@ -20,13 +20,13 @@ namespace Fisharebest\Webtrees\Report;
  */
 class ReportBasePageheader extends ReportBaseElement {
 	/** @var ReportBaseElement[] Elements */
-	public $elements = array();
+	public $elements = [];
 
 	/**
 	 * Create a page header
 	 */
 	public function __construct() {
-		$this->elements = array();
+		$this->elements = [];
 
 		return 0;
 	}
@@ -37,7 +37,7 @@ class ReportBasePageheader extends ReportBaseElement {
 	 * @return int
 	 */
 	public function textBox() {
-		$this->elements = array();
+		$this->elements = [];
 
 		return 0;
 	}

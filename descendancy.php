@@ -108,11 +108,11 @@ if ($controller->error_message) {
 		echo '</div>';
 		break;
 	case 2: // Individual list
-		$descendants = $controller->individualDescendancy($controller->root, $controller->generations, array());
+		$descendants = $controller->individualDescendancy($controller->root, $controller->generations, []);
 		echo '<div id="descendancy-list">', FunctionsPrintLists::individualTable($descendants), '</div>';
 		break;
 	case 3: // Family list
-		$descendants = $controller->familyDescendancy($controller->root, $controller->generations, array());
+		$descendants = $controller->familyDescendancy($controller->root, $controller->generations, []);
 		echo '<div id="descendancy-list">', FunctionsPrintLists::familyTable($descendants), '</div>';
 		break;
 	}

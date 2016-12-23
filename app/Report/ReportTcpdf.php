@@ -24,19 +24,19 @@ use TCPDF;
  */
 class ReportTcpdf extends TCPDF {
 	/** @var ReportBaseElement[] Array of elements in the header */
-	public $headerElements = array();
+	public $headerElements = [];
 
 	/** @var ReportBaseElement[] Array of elements in the page header */
-	public $pageHeaderElements = array();
+	public $pageHeaderElements = [];
 
 	/** @var ReportBaseElement[] Array of elements in the footer */
-	public $footerElements = array();
+	public $footerElements = [];
 
 	/** @var ReportBaseElement[] Array of elements in the body */
-	public $bodyElements = array();
+	public $bodyElements = [];
 
 	/** @var ReportBaseFootnote[] Array of elements in the footer notes */
-	public $printedfootnotes = array();
+	public $printedfootnotes = [];
 
 	/** @var string Currently used style name */
 	public $currentStyle;
@@ -218,7 +218,7 @@ class ReportTcpdf extends TCPDF {
 	 */
 	public function clearHeader() {
 		unset($this->headerElements);
-		$this->headerElements = array();
+		$this->headerElements = [];
 	}
 
 	/**
@@ -226,7 +226,7 @@ class ReportTcpdf extends TCPDF {
 	 */
 	public function clearPageHeader() {
 		unset($this->pageHeaderElements);
-		$this->pageHeaderElements = array();
+		$this->pageHeaderElements = [];
 	}
 
 	/**

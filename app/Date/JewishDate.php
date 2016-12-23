@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\I18N;
  */
 class JewishDate extends CalendarDate {
 	/** @var int[] Convert GEDCOM month names to month numbers  */
-	public static $MONTH_ABBREV = array('' => 0, 'TSH' => 1, 'CSH' => 2, 'KSL' => 3, 'TVT' => 4, 'SHV' => 5, 'ADR' => 6, 'ADS' => 7, 'NSN' => 8, 'IYR' => 9, 'SVN' => 10, 'TMZ' => 11, 'AAV' => 12, 'ELL' => 13);
+	public static $MONTH_ABBREV = ['' => 0, 'TSH' => 1, 'CSH' => 2, 'KSL' => 3, 'TVT' => 4, 'SHV' => 5, 'ADR' => 6, 'ADS' => 7, 'NSN' => 8, 'IYR' => 9, 'SVN' => 10, 'TMZ' => 11, 'AAV' => 12, 'ELL' => 13];
 
 	/**
 	 * Create a date from either:
@@ -92,7 +92,7 @@ class JewishDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: a month in the Jewish calendar */ I18N::translateContext('NOMINATIVE', 'Tishrei'),
 				2  => /* I18N: a month in the Jewish calendar */ I18N::translateContext('NOMINATIVE', 'Heshvan'),
@@ -108,7 +108,7 @@ class JewishDate extends CalendarDate {
 				11 => /* I18N: a month in the Jewish calendar */ I18N::translateContext('NOMINATIVE', 'Tamuz'),
 				12 => /* I18N: a month in the Jewish calendar */ I18N::translateContext('NOMINATIVE', 'Av'),
 				13 => /* I18N: a month in the Jewish calendar */ I18N::translateContext('NOMINATIVE', 'Elul'),
-			);
+			];
 		}
 
 		if ($month_number === 7 && $leap_year) {
@@ -130,7 +130,7 @@ class JewishDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: a month in the Jewish calendar */ I18N::translateContext('GENITIVE', 'Tishrei'),
 				2  => /* I18N: a month in the Jewish calendar */ I18N::translateContext('GENITIVE', 'Heshvan'),
@@ -146,7 +146,7 @@ class JewishDate extends CalendarDate {
 				11 => /* I18N: a month in the Jewish calendar */ I18N::translateContext('GENITIVE', 'Tamuz'),
 				12 => /* I18N: a month in the Jewish calendar */ I18N::translateContext('GENITIVE', 'Av'),
 				13 => /* I18N: a month in the Jewish calendar */ I18N::translateContext('GENITIVE', 'Elul'),
-			);
+			];
 		}
 
 		if ($month_number === 7 && $leap_year) {
@@ -168,7 +168,7 @@ class JewishDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: a month in the Jewish calendar */ I18N::translateContext('LOCATIVE', 'Tishrei'),
 				2  => /* I18N: a month in the Jewish calendar */ I18N::translateContext('LOCATIVE', 'Heshvan'),
@@ -184,7 +184,7 @@ class JewishDate extends CalendarDate {
 				11 => /* I18N: a month in the Jewish calendar */ I18N::translateContext('LOCATIVE', 'Tamuz'),
 				12 => /* I18N: a month in the Jewish calendar */ I18N::translateContext('LOCATIVE', 'Av'),
 				13 => /* I18N: a month in the Jewish calendar */ I18N::translateContext('LOCATIVE', 'Elul'),
-			);
+			];
 		}
 
 		if ($month_number === 7 && $leap_year) {
@@ -206,7 +206,7 @@ class JewishDate extends CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => /* I18N: a month in the Jewish calendar */ I18N::translateContext('INSTRUMENTAL', 'Tishrei'),
 				2  => /* I18N: a month in the Jewish calendar */ I18N::translateContext('INSTRUMENTAL', 'Heshvan'),
@@ -222,7 +222,7 @@ class JewishDate extends CalendarDate {
 				11 => /* I18N: a month in the Jewish calendar */ I18N::translateContext('INSTRUMENTAL', 'Tamuz'),
 				12 => /* I18N: a month in the Jewish calendar */ I18N::translateContext('INSTRUMENTAL', 'Av'),
 				13 => /* I18N: a month in the Jewish calendar */ I18N::translateContext('INSTRUMENTAL', 'Elul'),
-			);
+			];
 		}
 
 		if ($month_number === 7 && $leap_year) {
@@ -251,9 +251,9 @@ class JewishDate extends CalendarDate {
 	 */
 	protected function nextMonth() {
 		if ($this->m == 6 && !$this->isLeapYear()) {
-			return array($this->y, 8);
+			return [$this->y, 8];
 		} else {
-			return array($this->y + ($this->m == 13 ? 1 : 0), ($this->m % 13) + 1);
+			return [$this->y + ($this->m == 13 ? 1 : 0), ($this->m % 13) + 1];
 		}
 	}
 }

@@ -45,7 +45,7 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin {
 	 * @return string[]
 	 */
 	public function getRecordTypesToUpdate() {
-		return array('INDI', 'FAM', 'SOUR', 'REPO', 'NOTE', 'OBJE');
+		return ['INDI', 'FAM', 'SOUR', 'REPO', 'NOTE', 'OBJE'];
 	}
 
 	/**
@@ -73,11 +73,11 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin {
 	 */
 	public function updateRecord($xref, $gedrec) {
 		return preg_replace(
-			array(
+			[
 				'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
 				'/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))((?:\n2.*(?:\n[3-9].*)*)*\1)/',
 				'/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))((?:\n3.*(?:\n[4-9].*)*)*\1)/',
-			),
+			],
 			'$2',
 			$gedrec
 		);

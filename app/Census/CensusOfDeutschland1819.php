@@ -43,7 +43,7 @@ class CensusOfDeutschland1819 extends CensusOfDeutschland implements CensusInter
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnNull($this, 'Nr.', 'Laufende Num̅er.'),
 			new CensusColumnNull($this, 'Geschlecht', 'Ob männlichen oder weiblichen Geschlechts.'),
 			new CensusColumnFullName($this, 'Name', 'Vor- und Zuname.'),
@@ -57,6 +57,6 @@ class CensusOfDeutschland1819 extends CensusOfDeutschland implements CensusInter
 			new CensusColumnNull($this, 'Familienstand', 'Ob ledig oder verheirathet.'),
 			new CensusColumnReligion($this, 'Religion', 'Religion.'),
 			new CensusColumnNull($this, 'Bemerkungen', 'Allgemeine Bemerkungen.'),
-		);
+		];
 	}
 }

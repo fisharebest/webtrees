@@ -88,7 +88,7 @@ class FamilyBookController extends ChartController {
 		$numkids = 0;
 
 		// Load children
-		$children = array();
+		$children = [];
 		if ($person) {
 			// Count is position from center to left, dgenerations is number of generations
 			if ($generation < $this->dgenerations) {

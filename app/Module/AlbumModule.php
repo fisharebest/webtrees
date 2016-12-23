@@ -133,9 +133,9 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 
 			// View Notes
 			if (strpos($media->getGedcom(), "\n1 NOTE")) {
-				$submenu = new Menu(I18N::translate('View the notes'), '#', '', array(
+				$submenu = new Menu(I18N::translate('View the notes'), '#', '', [
 					'onclick' => 'modalNotes("' . Filter::escapeJs($notes) . '","' . I18N::translate('View the notes') . '"); return false;',
-				));
+				]);
 				$submenu->addClass("submenuitem");
 				$menu->addSubmenu($submenu);
 			}
@@ -156,40 +156,40 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 
 			if (Auth::isEditor($media->getTree())) {
 				// Edit Media
-				$submenu = new Menu(I18N::translate('Edit the media object'), '#', '', array(
+				$submenu = new Menu(I18N::translate('Edit the media object'), '#', '', [
 					'onclick' => 'return window.open("addmedia.php?action=editmedia&pid=' . $media->getXref() . '", "_blank", edit_window_specs);',
-				));
+				]);
 				$submenu->addClass("submenuitem");
 				$menu->addSubmenu($submenu);
 				if (Auth::isAdmin()) {
 					if (Module::getModuleByName('GEDFact_assistant')) {
-						$submenu = new Menu(I18N::translate('Manage the links'), '#', '', array(
+						$submenu = new Menu(I18N::translate('Manage the links'), '#', '', [
 							'onclick' => 'return window.open("inverselink.php?mediaid=' . $media->getXref() . '&linkto=manage", "_blank", find_window_specs);',
-						));
+						]);
 						$submenu->addClass("submenuitem");
 						$menu->addSubmenu($submenu);
 					} else {
-						$submenu = new Menu(I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi', array(
+						$submenu = new Menu(I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi', [
 							'onclick' => 'return ilinkitem("' . $media->getXref() . '","person");',
-						));
+						]);
 						$submenu->addClass('submenuitem');
 						$menu->addSubmenu($submenu);
 
-						$submenu = new Menu(I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam', array(
+						$submenu = new Menu(I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam', [
 							'onclick' => 'return ilinkitem("' . $media->getXref() . '","family");',
-						));
+						]);
 						$submenu->addClass('submenuitem');
 						$menu->addSubmenu($submenu);
 
-						$submenu = new Menu(I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour', array(
+						$submenu = new Menu(I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour', [
 							'onclick' => 'return ilinkitem("' . $media->getXref() . '","source");',
-						));
+						]);
 						$submenu->addClass('submenuitem');
 						$menu->addSubmenu($submenu);
 					}
-					$submenu = new Menu(I18N::translate('Unlink the media object'), '#', '', array(
+					$submenu = new Menu(I18N::translate('Unlink the media object'), '#', '', [
 						'onclick' => 'return unlink_media("' . I18N::translate('Are you sure you want to remove links to this media object?') . '", "' . $controller->record->getXref() . '", "' . $media->getXref() . '");',
-					));
+					]);
 					$submenu->addClass("submenuitem");
 					$menu->addSubmenu($submenu);
 				}
@@ -222,7 +222,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 				}
 			}
 			// Use all media from each fact
-			$this->media_list = array();
+			$this->media_list = [];
 			foreach ($facts as $fact) {
 				// Don't show pending edits, as the user just sees duplicates
 				if (!$fact->isPendingDeletion()) {
@@ -238,7 +238,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 			// If a media object is linked twice, only show it once
 			$this->media_list = array_unique($this->media_list);
 			// Sort these using _WT_OBJE_SORT
-			$wt_obje_sort = array();
+			$wt_obje_sort = [];
 			foreach ($controller->record->getFacts('_WT_OBJE_SORT') as $fact) {
 				$wt_obje_sort[] = trim($fact->getValue(), '@');
 			}

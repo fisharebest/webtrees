@@ -59,7 +59,7 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewSonNames() {
 		$this->assertSame(
-			array('NAME' => '/White/', 'SURN' => 'White'),
+			['NAME' => '/White/', 'SURN' => 'White'],
 			$this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'M')
 		);
 	}
@@ -72,7 +72,7 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewDaughterNames() {
 		$this->assertSame(
-			array('NAME' => '/White/', 'SURN' => 'White'),
+			['NAME' => '/White/', 'SURN' => 'White'],
 			$this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'F')
 		);
 	}
@@ -85,27 +85,27 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewDaughterNamesInflected() {
 		$this->assertSame(
-			array('NAME' => '/Whitaitė/', 'SURN' => 'Whita'),
+			['NAME' => '/Whitaitė/', 'SURN' => 'Whita'],
 			$this->surname_tradition->newChildNames('John /Whita/', 'Mary /Black/', 'F')
 		);
 		$this->assertSame(
-			array('NAME' => '/Whitaitė/', 'SURN' => 'Whitas'),
+			['NAME' => '/Whitaitė/', 'SURN' => 'Whitas'],
 			$this->surname_tradition->newChildNames('John /Whitas/', 'Mary /Black/', 'F')
 		);
 		$this->assertSame(
-			array('NAME' => '/Whitytė/', 'SURN' => 'Whitis'),
+			['NAME' => '/Whitytė/', 'SURN' => 'Whitis'],
 			$this->surname_tradition->newChildNames('John /Whitis/', 'Mary /Black/', 'F')
 		);
 		$this->assertSame(
-			array('NAME' => '/Whitytė/', 'SURN' => 'Whitys'),
+			['NAME' => '/Whitytė/', 'SURN' => 'Whitys'],
 			$this->surname_tradition->newChildNames('John /Whitys/', 'Mary /Black/', 'F')
 		);
 		$this->assertSame(
-			array('NAME' => '/Whitiūtė/', 'SURN' => 'Whitius'),
+			['NAME' => '/Whitiūtė/', 'SURN' => 'Whitius'],
 			$this->surname_tradition->newChildNames('John /Whitius/', 'Mary /Black/', 'F')
 		);
 		$this->assertSame(
-			array('NAME' => '/Whitutė/', 'SURN' => 'Whitus'),
+			['NAME' => '/Whitutė/', 'SURN' => 'Whitus'],
 			$this->surname_tradition->newChildNames('John /Whitus/', 'Mary /Black/', 'F')
 		);
 	}
@@ -118,7 +118,7 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewChildNames() {
 		$this->assertSame(
-			array('NAME' => '/White/', 'SURN' => 'White'),
+			['NAME' => '/White/', 'SURN' => 'White'],
 			$this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'U')
 		);
 	}
@@ -131,7 +131,7 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewChildNamesWithNoParentsNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newChildNames('', '', 'U')
 		);
 	}
@@ -144,7 +144,7 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewFatherNames() {
 		$this->assertSame(
-			array('NAME' => '/White/', 'SURN' => 'White'),
+			['NAME' => '/White/', 'SURN' => 'White'],
 			$this->surname_tradition->newParentNames('John /White/', 'M')
 		);
 	}
@@ -157,19 +157,19 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewFatherNamesInflected() {
 		$this->assertSame(
-			array('NAME' => '/Whitas/', 'SURN' => 'Whitas'),
+			['NAME' => '/Whitas/', 'SURN' => 'Whitas'],
 			$this->surname_tradition->newParentNames('Mary /Whitaitė/', 'M')
 		);
 		$this->assertSame(
-			array('NAME' => '/Whitis/', 'SURN' => 'Whitis'),
+			['NAME' => '/Whitis/', 'SURN' => 'Whitis'],
 			$this->surname_tradition->newParentNames('Mary /Whitytė/', 'M')
 		);
 		$this->assertSame(
-			array('NAME' => '/Whitius/', 'SURN' => 'Whitius'),
+			['NAME' => '/Whitius/', 'SURN' => 'Whitius'],
 			$this->surname_tradition->newParentNames('Mary /Whitiūtė/', 'M')
 		);
 		$this->assertSame(
-			array('NAME' => '/Whitus/', 'SURN' => 'Whitus'),
+			['NAME' => '/Whitus/', 'SURN' => 'Whitus'],
 			$this->surname_tradition->newParentNames('Mary /Whitutė/', 'M')
 		);
 	}
@@ -182,7 +182,7 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewMotherNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newParentNames('John /White/', 'F')
 		);
 	}
@@ -195,7 +195,7 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewParentNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newParentNames('John /White/', 'U')
 		);
 	}
@@ -208,7 +208,7 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewHusbandNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newSpouseNames('Mary /Black/', 'M')
 		);
 	}
@@ -221,7 +221,7 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewWifeNames() {
 		$this->assertSame(
-			array('NAME' => '//', '_MARNM' => '/White/'),
+			['NAME' => '//', '_MARNM' => '/White/'],
 			$this->surname_tradition->newSpouseNames('John /White/', 'F')
 		);
 	}
@@ -234,7 +234,7 @@ class LithuanianSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testNewSpouseNames() {
 		$this->assertSame(
-			array('NAME' => '//'),
+			['NAME' => '//'],
 			$this->surname_tradition->newSpouseNames('Chris /Green/', 'U')
 		);
 	}

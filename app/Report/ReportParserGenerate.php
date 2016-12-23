@@ -42,7 +42,7 @@ class ReportParserGenerate extends ReportParserBase {
 	private $print_data = false;
 
 	/** @var bool[] Push-down stack of $print_data */
-	private $print_data_stack = array();
+	private $print_data_stack = [];
 
 	/** @var int Are we processing GEDCOM data */
 	private $process_gedcoms = 0;
@@ -57,25 +57,25 @@ class ReportParserGenerate extends ReportParserBase {
 	private $repeat_bytes = 0;
 
 	/** @var array[] Repeated data when iterating over loops */
-	private $repeats = array();
+	private $repeats = [];
 
 	/** @var array[] Nested repeating data */
-	private $repeats_stack = array();
+	private $repeats_stack = [];
 
 	/** @var ReportBase[] Nested repeating data */
-	private $wt_report_stack = array();
+	private $wt_report_stack = [];
 
 	/** @var resource Nested repeating data */
 	private $parser;
 
 	/** @var resource[] Nested repeating data */
-	private $parser_stack = array();
+	private $parser_stack = [];
 
 	/** @var string The current GEDCOM record */
 	private $gedrec = '';
 
 	/** @var string[] Nested GEDCOM records */
-	private $gedrec_stack = array();
+	private $gedrec_stack = [];
 
 	/** @var ReportBaseElement The currently processed element */
 	private $current_element;
@@ -96,7 +96,7 @@ class ReportParserGenerate extends ReportParserBase {
 	private $generation = 1;
 
 	/** @var array Source data for processing lists */
-	private $list = array();
+	private $list = [];
 
 	/** @var int Number of items in lists */
 	private $list_total = 0;
@@ -121,7 +121,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param ReportBase $report_root
 	 * @param string[][] $vars
 	 */
-	public function __construct($report, ReportBase $report_root = null, array $vars = array()) {
+	public function __construct($report, ReportBase $report_root = null, array $vars = []) {
 		$this->report_root     = $report_root;
 		$this->wt_report       = $report_root;
 		$this->current_element = new ReportBaseElement;
@@ -140,7 +140,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array    $attrs  an array of key value pairs for the attributes
 	 */
 	protected function startElement($parser, $name, $attrs) {
-		$newattrs = array();
+		$newattrs = [];
 
 		foreach ($attrs as $key => $value) {
 			if (preg_match("/^\\$(\w+)$/", $value, $match)) {
@@ -206,7 +206,7 @@ class ReportParserGenerate extends ReportParserBase {
 		}
 
 		// array Style that will be passed on
-		$s = array();
+		$s = [];
 
 		// string Name af the style
 		$s['name'] = $attrs['name'];
@@ -596,7 +596,7 @@ class ReportParserGenerate extends ReportParserBase {
 					}
 				} else {
 					if (preg_match("/@(.+)/", $tag, $match)) {
-						$gmatch = array();
+						$gmatch = [];
 						if (preg_match("/\d $match[1] @([^@]+)@/", $tgedrec, $gmatch)) {
 							$tmp       = GedcomRecord::getInstance($gmatch[1], $WT_TREE);
 							$newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($WT_TREE)) : '';
@@ -615,7 +615,7 @@ class ReportParserGenerate extends ReportParserBase {
 			}
 		}
 		if (!empty($newgedrec)) {
-			array_push($this->gedrec_stack, array($this->gedrec, $this->fact, $this->desc));
+			array_push($this->gedrec_stack, [$this->gedrec, $this->fact, $this->desc]);
 			$this->gedrec = $newgedrec;
 			if (preg_match("/(\d+) (_?[A-Z0-9]+) (.*)/", $this->gedrec, $match)) {
 				$this->fact = $match[2];
@@ -817,7 +817,7 @@ class ReportParserGenerate extends ReportParserBase {
 		global $WT_TREE;
 
 		$id    = "";
-		$match = array();
+		$match = [];
 		if (empty($attrs['id'])) {
 			if (preg_match("/0 @(.+)@/", $this->gedrec, $match)) {
 				$id = $match[1];
@@ -829,7 +829,7 @@ class ReportParserGenerate extends ReportParserBase {
 				}
 			} else {
 				if (preg_match("/@(.+)/", $attrs['id'], $match)) {
-					$gmatch = array();
+					$gmatch = [];
 					if (preg_match("/\d $match[1] @([^@]+)@/", $this->gedrec, $gmatch)) {
 						$id = $gmatch[1];
 					}
@@ -848,8 +848,8 @@ class ReportParserGenerate extends ReportParserBase {
 			} else {
 				$name = $record->getFullName();
 				$name = preg_replace(
-					array('/<span class="starredname">/', '/<\/span><\/span>/', '/<\/span>/'),
-					array('«', '', '»'),
+					['/<span class="starredname">/', '/<\/span><\/span>/', '/<\/span>/'],
+					['«', '', '»'],
 					$name
 				);
 				$name = strip_tags($name);
@@ -877,8 +877,8 @@ class ReportParserGenerate extends ReportParserBase {
 				} else {
 					$addname = $record->getAddName();
 					$addname = preg_replace(
-						array('/<span class="starredname">/', '/<\/span><\/span>/', '/<\/span>/'),
-						array('«', '', '»'),
+						['/<span class="starredname">/', '/<\/span><\/span>/', '/<\/span>/'],
+						['«', '', '»'],
 						$addname
 					);
 					$addname = strip_tags($addname);
@@ -900,7 +900,7 @@ class ReportParserGenerate extends ReportParserBase {
 		global $WT_TREE;
 
 		$id    = "";
-		$match = array();
+		$match = [];
 		if (preg_match("/0 @(.+)@/", $this->gedrec, $match)) {
 			$id = $match[1];
 		}
@@ -954,7 +954,7 @@ class ReportParserGenerate extends ReportParserBase {
 					}
 				}
 				$tmp = explode(':', $tag);
-				if (in_array(end($tmp), array('NOTE', 'TEXT'))) {
+				if (in_array(end($tmp), ['NOTE', 'TEXT'])) {
 					$value = Filter::formatText($value, $WT_TREE); // We'll strip HTML in addText()
 				}
 				$this->current_element->addText($value);
@@ -975,8 +975,8 @@ class ReportParserGenerate extends ReportParserBase {
 			return;
 		}
 
-		array_push($this->repeats_stack, array($this->repeats, $this->repeat_bytes));
-		$this->repeats      = array();
+		array_push($this->repeats_stack, [$this->repeats, $this->repeat_bytes]);
+		$this->repeats      = [];
 		$this->repeat_bytes = xml_get_current_line_number($this->parser);
 
 		$tag = "";
@@ -1087,8 +1087,8 @@ class ReportParserGenerate extends ReportParserBase {
 				$repeat_parser = xml_parser_create();
 				$this->parser  = $repeat_parser;
 				xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
-				xml_set_element_handler($repeat_parser, array($this, 'startElement'), array($this, 'endElement'));
-				xml_set_character_data_handler($repeat_parser, array($this, 'characterData'));
+				xml_set_element_handler($repeat_parser, [$this, 'startElement'], [$this, 'endElement']);
+				xml_set_character_data_handler($repeat_parser, [$this, 'characterData']);
 				if (!xml_parse($repeat_parser, $reportxml, true)) {
 					throw new \DomainException(sprintf(
 						'RepeatTagEHandler XML error: %s at line %d',
@@ -1134,7 +1134,7 @@ class ReportParserGenerate extends ReportParserBase {
 				// n TYPE This text if string
 				$tfact = $this->type;
 			}
-			$var = str_replace(array("@fact", "@desc"), array(GedcomTag::getLabel($tfact), $this->desc), $var);
+			$var = str_replace(["@fact", "@desc"], [GedcomTag::getLabel($tfact), $this->desc], $var);
 			if (preg_match('/^I18N::number\((.+)\)$/', $var, $match)) {
 				$var = I18N::number($match[1]);
 			} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $var, $match)) {
@@ -1167,12 +1167,12 @@ class ReportParserGenerate extends ReportParserBase {
 			return;
 		}
 
-		array_push($this->repeats_stack, array($this->repeats, $this->repeat_bytes));
-		$this->repeats      = array();
+		array_push($this->repeats_stack, [$this->repeats, $this->repeat_bytes]);
+		$this->repeats      = [];
 		$this->repeat_bytes = xml_get_current_line_number($this->parser);
 
 		$id    = "";
-		$match = array();
+		$match = [];
 		if (preg_match("/0 @(.+)@/", $this->gedrec, $match)) {
 			$id = $match[1];
 		}
@@ -1188,7 +1188,7 @@ class ReportParserGenerate extends ReportParserBase {
 		if (empty($attrs['diff']) && !empty($id)) {
 			$facts = $record->getFacts();
 			Functions::sortFacts($facts);
-			$this->repeats  = array();
+			$this->repeats  = [];
 			$nonfacts       = explode(',', $tag);
 			foreach ($facts as $event) {
 				if (!in_array($event->getTag(), $nonfacts)) {
@@ -1252,7 +1252,7 @@ class ReportParserGenerate extends ReportParserBase {
 				if (preg_match('/1 (\w+)(.*)/', $this->gedrec, $match)) {
 					$this->fact = $match[1];
 					if ($this->fact === 'EVEN' || $this->fact === 'FACT') {
-						$tmatch = array();
+						$tmatch = [];
 						if (preg_match('/2 TYPE (.+)/', $this->gedrec, $tmatch)) {
 							$this->type = trim($tmatch[1]);
 						} else {
@@ -1265,8 +1265,8 @@ class ReportParserGenerate extends ReportParserBase {
 				$repeat_parser = xml_parser_create();
 				$this->parser  = $repeat_parser;
 				xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
-				xml_set_element_handler($repeat_parser, array($this, 'startElement'), array($this, 'endElement'));
-				xml_set_character_data_handler($repeat_parser, array($this, 'characterData'));
+				xml_set_element_handler($repeat_parser, [$this, 'startElement'], [$this, 'endElement']);
+				xml_set_character_data_handler($repeat_parser, [$this, 'characterData']);
 				if (!xml_parse($repeat_parser, $reportxml, true)) {
 					throw new \DomainException(sprintf(
 						'FactsEHandler XML error: %s at line %d',
@@ -1297,7 +1297,7 @@ class ReportParserGenerate extends ReportParserBase {
 
 		$name  = $attrs['name'];
 		$value = $attrs['value'];
-		$match = array();
+		$match = [];
 		// Current GEDCOM record strings
 		if ($value == "@ID") {
 			if (preg_match("/0 @(.+)@/", $this->gedrec, $match)) {
@@ -1310,7 +1310,7 @@ class ReportParserGenerate extends ReportParserBase {
 		} elseif ($value == "@generation") {
 			$value = $this->generation;
 		} elseif (preg_match("/@(\w+)/", $value, $match)) {
-			$gmatch = array();
+			$gmatch = [];
 			if (preg_match("/\d $match[1] (.+)/", $this->gedrec, $gmatch)) {
 				$value = str_replace("@", "", trim($gmatch[1]));
 			}
@@ -1373,10 +1373,10 @@ class ReportParserGenerate extends ReportParserBase {
 
 		$condition = $attrs['condition'];
 		$condition = $this->substituteVars($condition, true);
-		$condition = str_replace(array(" LT ", " GT "), array("<", ">"), $condition);
+		$condition = str_replace([" LT ", " GT "], ["<", ">"], $condition);
 		// Replace the first accurance only once of @fact:DATE or in any other combinations to the current fact, such as BIRT
 		$condition = str_replace("@fact:", $this->fact . ':', $condition);
-		$match     = array();
+		$match     = [];
 		$count     = preg_match_all("/@([\w:\.]+)/", $condition, $match, PREG_SET_ORDER);
 		$i         = 0;
 		while ($i < $count) {
@@ -1487,7 +1487,7 @@ class ReportParserGenerate extends ReportParserBase {
 		// This duplicates functionality in FunctionsPrint::format_fact_date()
 		global $factrec, $WT_TREE;
 
-		$match = array();
+		$match = [];
 		if (preg_match("/0 @(.+)@/", $this->gedrec, $match)) {
 			$person = Individual::getInstance($match[1], $WT_TREE);
 			// Recorded age
@@ -1564,7 +1564,7 @@ class ReportParserGenerate extends ReportParserBase {
 		global $WT_TREE;
 
 		$id    = '';
-		$match = array();
+		$match = [];
 		if (preg_match("/0 @(.+)@/", $this->gedrec, $match)) {
 			$id = $match[1];
 		}
@@ -1620,7 +1620,7 @@ class ReportParserGenerate extends ReportParserBase {
 			$attributes = $mediaobject->getImageAttributes('thumb');
 			if (in_array(
 					$attributes['ext'],
-					array(
+					[
 						'GIF',
 						'JPG',
 						'PNG',
@@ -1637,7 +1637,7 @@ class ReportParserGenerate extends ReportParserBase {
 						'IFF',
 						'WBMP',
 						'XBM',
-					)
+					]
 				) && $mediaobject->canShow() && $mediaobject->fileExists('thumb')
 			) {
 				if ($width > 0 && $height == 0) {
@@ -1714,13 +1714,13 @@ class ReportParserGenerate extends ReportParserBase {
 			$file = $attrs['file'];
 		}
 		if ($file == "@FILE") {
-			$match = array();
+			$match = [];
 			if (preg_match("/\d OBJE @(.+)@/", $this->gedrec, $match)) {
 				$mediaobject = Media::getInstance($match[1], $WT_TREE);
 				$attributes  = $mediaobject->getImageAttributes('thumb');
 				if (in_array(
 						$attributes['ext'],
-						array(
+						[
 							'GIF',
 							'JPG',
 							'PNG',
@@ -1737,7 +1737,7 @@ class ReportParserGenerate extends ReportParserBase {
 							'IFF',
 							'WBMP',
 							'XBM',
-						)
+						]
 					) && $mediaobject->canShow() && $mediaobject->fileExists('thumb')
 				) {
 					if ($width > 0 && $height == 0) {
@@ -1841,7 +1841,7 @@ class ReportParserGenerate extends ReportParserBase {
 			return;
 		}
 
-		$match = array();
+		$match = [];
 		if (isset($attrs['sortby'])) {
 			$sortby = $attrs['sortby'];
 			if (preg_match("/\\$(\w+)/", $sortby, $match)) {
@@ -1868,10 +1868,10 @@ class ReportParserGenerate extends ReportParserBase {
 				"  WHERE status = 'pending' AND gedcom_id = :tree_id" .
 				"  GROUP BY xref" .
 				" )"
-			)->execute(array(
+			)->execute([
 				'tree_id' => $WT_TREE->getTreeId(),
-			))->fetchAll();
-			$this->list = array();
+			])->fetchAll();
+			$this->list = [];
 			foreach ($rows as $row) {
 				$this->list[] = GedcomRecord::getInstance($row->xref, $WT_TREE, $row->gedcom);
 			}
@@ -1881,7 +1881,7 @@ class ReportParserGenerate extends ReportParserBase {
 			$sql_join     = "";
 			$sql_where    = " WHERE i_file = :tree_id";
 			$sql_order_by = "";
-			$sql_params   = array('tree_id' => $WT_TREE->getTreeId());
+			$sql_params   = ['tree_id' => $WT_TREE->getTreeId()];
 			foreach ($attrs as $attr => $value) {
 				if (strpos($attr, 'filter') === 0 && $value) {
 					$value = $this->substituteVars($value, false);
@@ -1943,7 +1943,7 @@ class ReportParserGenerate extends ReportParserBase {
 				}
 			}
 
-			$this->list = array();
+			$this->list = [];
 			$rows       = Database::prepare(
 				$sql_select . $sql_join . $sql_where . $sql_order_by
 			)->execute($sql_params)->fetchAll();
@@ -1958,7 +1958,7 @@ class ReportParserGenerate extends ReportParserBase {
 			$sql_join     = "";
 			$sql_where    = " WHERE f_file = :tree_id";
 			$sql_order_by = "";
-			$sql_params   = array('tree_id' => $WT_TREE->getTreeId());
+			$sql_params   = ['tree_id' => $WT_TREE->getTreeId()];
 			foreach ($attrs as $attr => $value) {
 				if (strpos($attr, 'filter') === 0 && $value) {
 					$value = $this->substituteVars($value, false);
@@ -2021,7 +2021,7 @@ class ReportParserGenerate extends ReportParserBase {
 				}
 			}
 
-			$this->list = array();
+			$this->list = [];
 			$rows       = Database::prepare(
 				$sql_select . $sql_join . $sql_where . $sql_order_by
 			)->execute($sql_params)->fetchAll();
@@ -2035,8 +2035,8 @@ class ReportParserGenerate extends ReportParserBase {
 			throw new \DomainException('Invalid list name: ' . $listname);
 		}
 
-		$filters  = array();
-		$filters2 = array();
+		$filters  = [];
+		$filters2 = [];
 		if (isset($attrs['filter1']) && count($this->list) > 0) {
 			foreach ($attrs as $key => $value) {
 				if (preg_match("/filter(\d)/", $key)) {
@@ -2102,7 +2102,7 @@ class ReportParserGenerate extends ReportParserBase {
 								$filters[] = $searchstr;
 								break;
 							default:
-								$filters2[] = array("tag" => $tag, "expr" => $expr, "val" => $val);
+								$filters2[] = ["tag" => $tag, "expr" => $expr, "val" => $val];
 								break;
 							}
 						}
@@ -2122,7 +2122,7 @@ class ReportParserGenerate extends ReportParserBase {
 			}
 		}
 		if ($filters2) {
-			$mylist = array();
+			$mylist = [];
 			foreach ($this->list as $indi) {
 				$key  = $indi->getXref();
 				$grec = $indi->privatizeGedcom(Auth::accessLevel($WT_TREE));
@@ -2205,7 +2205,7 @@ class ReportParserGenerate extends ReportParserBase {
 			break;
 		}
 
-		array_push($this->repeats_stack, array($this->repeats, $this->repeat_bytes));
+		array_push($this->repeats_stack, [$this->repeats, $this->repeat_bytes]);
 		$this->repeat_bytes = xml_get_current_line_number($this->parser) + 1;
 	}
 
@@ -2263,8 +2263,8 @@ class ReportParserGenerate extends ReportParserBase {
 					$repeat_parser = xml_parser_create();
 					$this->parser  = $repeat_parser;
 					xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
-					xml_set_element_handler($repeat_parser, array($this, 'startElement'), array($this, 'endElement'));
-					xml_set_character_data_handler($repeat_parser, array($this, 'characterData'));
+					xml_set_element_handler($repeat_parser, [$this, 'startElement'], [$this, 'endElement']);
+					xml_set_character_data_handler($repeat_parser, [$this, 'characterData']);
 					if (!xml_parse($repeat_parser, $reportxml, true)) {
 						throw new \DomainException(sprintf(
 							'ListEHandler XML error: %s at line %d',
@@ -2277,7 +2277,7 @@ class ReportParserGenerate extends ReportParserBase {
 					$this->list_private++;
 				}
 			}
-			$this->list   = array();
+			$this->list   = [];
 			$this->parser = array_pop($this->parser_stack);
 			$this->gedrec = $oldgedrec;
 		}
@@ -2316,7 +2316,7 @@ class ReportParserGenerate extends ReportParserBase {
 		if (isset($attrs['sortby'])) {
 			$sortby = $attrs['sortby'];
 		}
-		$match = array();
+		$match = [];
 		if (preg_match("/\\$(\w+)/", $sortby, $match)) {
 			$sortby = $this->vars[$match[1]]['id'];
 			$sortby = trim($sortby);
@@ -2348,7 +2348,7 @@ class ReportParserGenerate extends ReportParserBase {
 			$id = trim($id);
 		}
 
-		$this->list = array();
+		$this->list = [];
 		$person     = Individual::getInstance($id, $WT_TREE);
 		if (!empty($person)) {
 			$this->list[$id] = $person;
@@ -2417,7 +2417,7 @@ class ReportParserGenerate extends ReportParserBase {
 			uasort($this->list, '\Fisharebest\Webtrees\Individual::compareDeathDate');
 			break;
 		case 'generation':
-			$newarray = array();
+			$newarray = [];
 			reset($this->list);
 			$genCounter = 1;
 			while (count($newarray) < count($this->list)) {
@@ -2436,7 +2436,7 @@ class ReportParserGenerate extends ReportParserBase {
 			// unsorted
 			break;
 		}
-		array_push($this->repeats_stack, array($this->repeats, $this->repeat_bytes));
+		array_push($this->repeats_stack, [$this->repeats, $this->repeat_bytes]);
 		$this->repeat_bytes = xml_get_current_line_number($this->parser) + 1;
 	}
 
@@ -2497,8 +2497,8 @@ class ReportParserGenerate extends ReportParserBase {
 				$repeat_parser = xml_parser_create();
 				$this->parser  = $repeat_parser;
 				xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
-				xml_set_element_handler($repeat_parser, array($this, 'startElement'), array($this, 'endElement'));
-				xml_set_character_data_handler($repeat_parser, array($this, 'characterData'));
+				xml_set_element_handler($repeat_parser, [$this, 'startElement'], [$this, 'endElement']);
+				xml_set_character_data_handler($repeat_parser, [$this, 'characterData']);
 
 				if (!xml_parse($repeat_parser, $reportxml, true)) {
 					throw new \DomainException(sprintf("RelativesEHandler XML error: %s at line %d", xml_error_string(xml_get_error_code($repeat_parser)), xml_get_current_line_number($repeat_parser)));
@@ -2506,7 +2506,7 @@ class ReportParserGenerate extends ReportParserBase {
 				xml_parser_free($repeat_parser);
 			}
 			// Clean up the list array
-			$this->list   = array();
+			$this->list   = [];
 			$this->parser = array_pop($this->parser_stack);
 			$this->gedrec = $oldgedrec;
 		}
@@ -2684,7 +2684,7 @@ class ReportParserGenerate extends ReportParserBase {
 	private function addAncestors(&$list, $pid, $children = false, $generations = -1) {
 		global $WT_TREE;
 
-		$genlist                = array($pid);
+		$genlist                = [$pid];
 		$list[$pid]->generation = 1;
 		while (count($genlist) > 0) {
 			$id = array_shift($genlist);

@@ -35,13 +35,13 @@ $controller = new PageController;
 $controller->restrictAccess(Auth::isAdmin());
 
 // Valid values for form variables
-$ALL_EDIT_OPTIONS = array(
+$ALL_EDIT_OPTIONS = [
 	'none'   => /* I18N: Listbox entry; name of a role */ I18N::translate('Visitor'),
 	'access' => /* I18N: Listbox entry; name of a role */ I18N::translate('Member'),
 	'edit'   => /* I18N: Listbox entry; name of a role */ I18N::translate('Editor'),
 	'accept' => /* I18N: Listbox entry; name of a role */ I18N::translate('Moderator'),
 	'admin'  => /* I18N: Listbox entry; name of a role */ I18N::translate('Manager'),
-);
+];
 
 // Form actions
 switch (Filter::post('action')) {
@@ -155,7 +155,7 @@ case 'load_json':
 		" LEFT JOIN `##user_setting` us5 ON (u.user_id=us5.user_id AND us5.setting_name='verified_by_admin')" .
 		" WHERE u.user_id > 0";
 
-	$args = array();
+	$args = [];
 
 	if ($search) {
 		$sql_select .= " AND (user_name LIKE CONCAT('%', :search_1, '%') OR real_name LIKE CONCAT('%', :search_2, '%') OR email LIKE CONCAT('%', :search_3, '%'))";
@@ -195,7 +195,7 @@ case 'load_json':
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
 	$data = Database::prepare($sql_select)->execute($args)->fetchAll(PDO::FETCH_NUM);
 
-	$installed_languages = array();
+	$installed_languages = [];
 	foreach (I18N::installedLocales() as $installed_locale) {
 		$installed_languages[$installed_locale->languageTag()] = $installed_locale->endonym();
 	}
@@ -248,12 +248,12 @@ case 'load_json':
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
-	echo json_encode(array(
+	echo json_encode([
 		'draw'            => Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data,
-	));
+	]);
 
 	return;
 

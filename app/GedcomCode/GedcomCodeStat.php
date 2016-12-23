@@ -33,16 +33,16 @@ class GedcomCodeStat {
 		case 'BAPL':
 		case 'CONL':
 			// LDS_BAPTISM_DATE_STATUS
-			return array('CHILD', 'COMPLETED', 'EXCLUDED', 'INFANT', 'PRE-1970', 'STILLBORN', 'SUBMITTED', 'UNCLEARED');
+			return ['CHILD', 'COMPLETED', 'EXCLUDED', 'INFANT', 'PRE-1970', 'STILLBORN', 'SUBMITTED', 'UNCLEARED'];
 		case 'ENDL':
 			// LDS_ENDOWMENT_DATE_STATUS
-			return array('CHILD', 'COMPLETED', 'EXCLUDED', 'INFANT', 'PRE-1970', 'STILLBORN', 'SUBMITTED', 'UNCLEARED');
+			return ['CHILD', 'COMPLETED', 'EXCLUDED', 'INFANT', 'PRE-1970', 'STILLBORN', 'SUBMITTED', 'UNCLEARED'];
 		case 'SLGC':
 			// LDS_CHILD_SEALING_DATE_STATUS
-			return array('BIC', 'COMPLETED', 'EXCLUDED', 'PRE-1970', 'STILLBORN', 'SUBMITTED', 'UNCLEARED');
+			return ['BIC', 'COMPLETED', 'EXCLUDED', 'PRE-1970', 'STILLBORN', 'SUBMITTED', 'UNCLEARED'];
 		case 'SLGS':
 			// LDS_SPOUSE_SEALING_DATE_STATUS
-			return array('CANCELED', 'COMPLETED', 'DNS', 'DNS/CAN', 'EXCLUDED', 'PRE-1970', 'SUBMITTED', 'UNCLEARED');
+			return ['CANCELED', 'COMPLETED', 'DNS', 'DNS/CAN', 'EXCLUDED', 'PRE-1970', 'SUBMITTED', 'UNCLEARED'];
 		default:
 			throw new \InvalidArgumentException('Internal error - bad argument to GedcomCodeStat::statusCodes("' . $tag . '")');
 		}
@@ -123,7 +123,7 @@ class GedcomCodeStat {
 	 * @return string[]
 	 */
 	public static function statusNames($tag) {
-		$status_names = array();
+		$status_names = [];
 		foreach (self::statusCodes($tag) as $status_code) {
 			$status_names[$status_code] = self::statusName($status_code);
 		}

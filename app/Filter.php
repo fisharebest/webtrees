@@ -88,11 +88,11 @@ class Filter {
 	public static function escapeLike($string) {
 		return strtr(
 			$string,
-			array(
+			[
 				'\\' => '\\\\',
 				'%'  => '\%',
 				'_'  => '\_',
-			)
+			]
 		);
 	}
 
@@ -185,23 +185,23 @@ class Filter {
 				$source,
 				$variable,
 				FILTER_VALIDATE_REGEXP,
-				array(
-					'options' => array(
+				[
+					'options' => [
 						'regexp'  => '/^(' . $regexp . ')$/u',
 						'default' => $default,
-					),
-				)
+					],
+				]
 			);
 		} else {
 			$tmp = filter_input(
 				$source,
 				$variable,
 				FILTER_CALLBACK,
-				array(
+				[
 					'options' => function ($x) {
 						return mb_check_encoding($x, 'UTF-8') ? $x : false;
 					},
-				)
+				]
 			);
 
 			return ($tmp === null || $tmp === false) ? $default : $tmp;
@@ -223,35 +223,35 @@ class Filter {
 			// PHP5.3 requires the $tmp variable
 			$tmp = filter_input_array(
 				$source,
-				array(
-					$variable => array(
+				[
+					$variable => [
 						'flags'   => FILTER_REQUIRE_ARRAY,
 						'filter'  => FILTER_VALIDATE_REGEXP,
-						'options' => array(
+						'options' => [
 							'regexp'  => '/^(' . $regexp . ')$/u',
 							'default' => $default,
-						),
-					),
-				)
+						],
+					],
+				]
 			);
 
-			return $tmp[$variable] ?: array();
+			return $tmp[$variable] ?: [];
 		} else {
 			// PHP5.3 requires the $tmp variable
 			$tmp = filter_input_array(
 				$source,
-				array(
-					$variable => array(
+				[
+					$variable => [
 						'flags'   => FILTER_REQUIRE_ARRAY,
 						'filter'  => FILTER_CALLBACK,
 						'options' => function ($x) {
 							return !function_exists('mb_convert_encoding') || mb_check_encoding($x, 'UTF-8') ? $x : false;
 						},
-					),
-				)
+					],
+				]
 			);
 
-			return $tmp[$variable] ?: array();
+			return $tmp[$variable] ?: [];
 		}
 	}
 
@@ -303,7 +303,7 @@ class Filter {
 	 * @return int
 	 */
 	public static function getInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
-		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_INT, array('options' => array('min_range' => $min, 'max_range' => $max, 'default' => $default)));
+		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_INT, ['options' => ['min_range' => $min, 'max_range' => $max, 'default' => $default]]);
 	}
 
 	/**
@@ -378,7 +378,7 @@ class Filter {
 	 * @return int
 	 */
 	public static function postInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
-		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, array('options' => array('min_range' => $min, 'max_range' => $max, 'default' => $default)));
+		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, ['options' => ['min_range' => $min, 'max_range' => $max, 'default' => $default]]);
 	}
 
 	/**

@@ -50,7 +50,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
 		$title          = $this->getBlockSetting($block_id, 'title');
@@ -152,7 +152,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 			$this->setBlockSetting($block_id, 'languages', implode(',', $languages));
 		}
 
-		$templates = array(
+		$templates = [
 			I18N::translate('Keyword examples') =>
 			'#getAllTagsTable#',
 
@@ -259,7 +259,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 				<span style="font-weight: bold;">' . I18N::translate('Most common surnames') . '</span><br>
 				#commonSurnames#
 			</div>',
-		);
+		];
 
 		$title          = $this->getBlockSetting($block_id, 'title');
 		$html           = $this->getBlockSetting($block_id, 'html');

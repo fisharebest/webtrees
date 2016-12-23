@@ -45,7 +45,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
 		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
@@ -53,7 +53,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
 		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
-		foreach (array('filter', 'infoStyle', 'sortStyle', 'block') as $name) {
+		foreach (['filter', 'infoStyle', 'sortStyle', 'block'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -141,16 +141,16 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: Label for a configuration option */ I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', ['list' => I18N::translate('list'), 'table' => I18N::translate('table')], null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: Label for a configuration option */ I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('sortStyle', array(
+		echo FunctionsEdit::selectEditControl('sortStyle', [
 			/* I18N: An option in a list-box */ 'alpha' => I18N::translate('sort by name'),
 			/* I18N: An option in a list-box */ 'anniv' => I18N::translate('sort by date'),
-		), null, $sortStyle, '');
+		], null, $sortStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';

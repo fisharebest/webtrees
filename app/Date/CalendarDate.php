@@ -33,10 +33,10 @@ use Fisharebest\Webtrees\I18N;
  */
 class CalendarDate {
 	/** @var int[] Convert GEDCOM month names to month numbers  */
-	public static $MONTH_ABBREV = array('' => 0, 'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4, 'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8, 'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12);
+	public static $MONTH_ABBREV = ['' => 0, 'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4, 'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8, 'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12];
 
 	/** @var string[] Convert numbers to/from roman numerals */
-	protected static $roman_numerals = array(1000 => 'M', 900 => 'CM', 500 => 'D', 400 => 'CD', 100 => 'C', 90 => 'XC', 50 => 'L', 40 => 'XL', 10 => 'X', 9 => 'IX', 5 => 'V', 4 => 'IV', 1 => 'I');
+	protected static $roman_numerals = [1000 => 'M', 900 => 'CM', 500 => 'D', 400 => 'CD', 100 => 'C', 90 => 'XC', 50 => 'L', 40 => 'XL', 10 => 'X', 9 => 'IX', 5 => 'V', 4 => 'IV', 1 => 'I'];
 
 	/** @var CalendarInterface The calendar system used to represent this date */
 	protected $calendar;
@@ -172,7 +172,7 @@ class CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => I18N::translateContext('NOMINATIVE', 'January'),
 				2  => I18N::translateContext('NOMINATIVE', 'February'),
@@ -186,7 +186,7 @@ class CalendarDate {
 				10 => I18N::translateContext('NOMINATIVE', 'October'),
 				11 => I18N::translateContext('NOMINATIVE', 'November'),
 				12 => I18N::translateContext('NOMINATIVE', 'December'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -206,7 +206,7 @@ class CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => I18N::translateContext('GENITIVE', 'January'),
 				2  => I18N::translateContext('GENITIVE', 'February'),
@@ -220,7 +220,7 @@ class CalendarDate {
 				10 => I18N::translateContext('GENITIVE', 'October'),
 				11 => I18N::translateContext('GENITIVE', 'November'),
 				12 => I18N::translateContext('GENITIVE', 'December'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -240,7 +240,7 @@ class CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => I18N::translateContext('LOCATIVE', 'January'),
 				2  => I18N::translateContext('LOCATIVE', 'February'),
@@ -254,7 +254,7 @@ class CalendarDate {
 				10 => I18N::translateContext('LOCATIVE', 'October'),
 				11 => I18N::translateContext('LOCATIVE', 'November'),
 				12 => I18N::translateContext('LOCATIVE', 'December'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -274,7 +274,7 @@ class CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => I18N::translateContext('INSTRUMENTAL', 'January'),
 				2  => I18N::translateContext('INSTRUMENTAL', 'February'),
@@ -288,7 +288,7 @@ class CalendarDate {
 				10 => I18N::translateContext('INSTRUMENTAL', 'October'),
 				11 => I18N::translateContext('INSTRUMENTAL', 'November'),
 				12 => I18N::translateContext('INSTRUMENTAL', 'December'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -306,7 +306,7 @@ class CalendarDate {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
-			$translated_month_names = array(
+			$translated_month_names = [
 				0  => '',
 				1  => I18N::translateContext('Abbreviation for January', 'Jan'),
 				2  => I18N::translateContext('Abbreviation for February', 'Feb'),
@@ -320,7 +320,7 @@ class CalendarDate {
 				10 => I18N::translateContext('Abbreviation for October', 'Oct'),
 				11 => I18N::translateContext('Abbreviation for November', 'Nov'),
 				12 => I18N::translateContext('Abbreviation for December', 'Dec'),
-			);
+			];
 		}
 
 		return $translated_month_names[$month_number];
@@ -337,7 +337,7 @@ class CalendarDate {
 		static $translated_day_names;
 
 		if ($translated_day_names === null) {
-			$translated_day_names = array(
+			$translated_day_names = [
 				0  => I18N::translate('Monday'),
 				1  => I18N::translate('Tuesday'),
 				2  => I18N::translate('Wednesday'),
@@ -345,7 +345,7 @@ class CalendarDate {
 				4  => I18N::translate('Friday'),
 				5  => I18N::translate('Saturday'),
 				6  => I18N::translate('Sunday'),
-			);
+			];
 		}
 
 		return $translated_day_names[$day_number];
@@ -362,7 +362,7 @@ class CalendarDate {
 		static $translated_day_names;
 
 		if ($translated_day_names === null) {
-			$translated_day_names = array(
+			$translated_day_names = [
 				0  => /* I18N: abbreviation for Monday */ I18N::translate('Mon'),
 				1  => /* I18N: abbreviation for Tuesday */ I18N::translate('Tue'),
 				2  => /* I18N: abbreviation for Wednesday */ I18N::translate('Wed'),
@@ -370,7 +370,7 @@ class CalendarDate {
 				4  => /* I18N: abbreviation for Friday */ I18N::translate('Fri'),
 				5  => /* I18N: abbreviation for Saturday */ I18N::translate('Sat'),
 				6  => /* I18N: abbreviation for Sunday */ I18N::translate('Sun'),
-			);
+			];
 		}
 
 		return $translated_day_names[$day_number];
@@ -554,10 +554,10 @@ class CalendarDate {
 			$format = preg_replace('/%[djlDNSwz][,]?/', '', $format);
 		}
 		if (!$this->m) {
-			$format = str_replace(array('%F', '%m', '%M', '%n', '%t'), '', $format);
+			$format = str_replace(['%F', '%m', '%M', '%n', '%t'], '', $format);
 		}
 		if (!$this->y) {
-			$format = str_replace(array('%t', '%L', '%G', '%y', '%Y'), '', $format);
+			$format = str_replace(['%t', '%L', '%G', '%y', '%Y'], '', $format);
 		}
 		// If we’ve trimmed the format, also trim the punctuation
 		if (!$this->d || !$this->m || !$this->y) {
@@ -845,7 +845,7 @@ class CalendarDate {
 	 * @return int[]
 	 */
 	protected function nextMonth() {
-		return array($this->m === $this->calendar->monthsInYear() ? $this->nextYear($this->y) : $this->y, ($this->m % $this->calendar->monthsInYear()) + 1);
+		return [$this->m === $this->calendar->monthsInYear() ? $this->nextYear($this->y) : $this->y, ($this->m % $this->calendar->monthsInYear()) + 1];
 	}
 
 	/**

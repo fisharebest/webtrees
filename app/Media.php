@@ -62,9 +62,9 @@ class Media extends GedcomRecord {
 		// Hide media objects if they are attached to private records
 		$linked_ids = Database::prepare(
 			"SELECT l_from FROM `##link` WHERE l_to = ? AND l_file = ?"
-		)->execute(array(
+		)->execute([
 			$this->xref, $this->tree->getTreeId(),
-		))->fetchOneColumn();
+		])->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
 			$linked_record = GedcomRecord::getInstance($linked_id, $this->tree);
 			if ($linked_record && !$linked_record->canShow($access_level)) {
@@ -87,10 +87,10 @@ class Media extends GedcomRecord {
 	protected static function fetchGedcomRecord($xref, $tree_id) {
 		return Database::prepare(
 			"SELECT m_gedcom FROM `##media` WHERE m_id = :xref AND m_file = :tree_id"
-		)->execute(array(
+		)->execute([
 			'xref'    => $xref,
 			'tree_id' => $tree_id,
-		))->fetchOne();
+		])->fetchOne();
 	}
 
 	/**
@@ -367,7 +367,7 @@ class Media extends GedcomRecord {
 		if (!empty($this->$var)) {
 			return $this->$var;
 		}
-		$imgsize = array();
+		$imgsize = [];
 		if ($this->fileExists($which)) {
 
 			try {
@@ -378,7 +378,7 @@ class Media extends GedcomRecord {
 					$imgsize[1]      = $imgsize[1] + 0;
 					$imgsize['adjW'] = $imgsize[0] + $addWidth; // adjusted width
 					$imgsize['adjH'] = $imgsize[1] + $addHeight; // adjusted height
-					$imageTypes      = array('', 'GIF', 'JPG', 'PNG', 'SWF', 'PSD', 'BMP', 'TIFF', 'TIFF', 'JPC', 'JP2', 'JPX', 'JB2', 'SWC', 'IFF', 'WBMP', 'XBM');
+					$imageTypes      = ['', 'GIF', 'JPG', 'PNG', 'SWF', 'PSD', 'BMP', 'TIFF', 'TIFF', 'JPC', 'JP2', 'JPX', 'JB2', 'SWC', 'IFF', 'WBMP', 'XBM'];
 					$imgsize['ext']  = $imageTypes[0 + $imgsize[2]];
 					// this is for display purposes, always show non-adjusted info
 					$imgsize['WxH']   =
@@ -418,7 +418,7 @@ class Media extends GedcomRecord {
 			$exp            = explode('?', $this->file);
 			$imgsize['ext'] = strtoupper(pathinfo($exp[0], PATHINFO_EXTENSION));
 			// all mimetypes we wish to serve with the media firewall must be added to this array.
-			$mime = array(
+			$mime = [
 				'DOC' => 'application/msword',
 				'MOV' => 'video/quicktime',
 				'MP3' => 'audio/mpeg',
@@ -429,7 +429,7 @@ class Media extends GedcomRecord {
 				'TXT' => 'text/plain',
 				'XLS' => 'application/vnd.ms-excel',
 				'WMV' => 'video/x-ms-wmv',
-			);
+			];
 			if (empty($mime[$imgsize['ext']])) {
 				// if we don’t know what the mimetype is, use something ambiguous
 				$imgsize['mime'] = 'application/octet-stream';

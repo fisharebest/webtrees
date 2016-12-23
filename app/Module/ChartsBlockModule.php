@@ -48,7 +48,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $WT_TREE, $ctype, $controller;
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
@@ -58,7 +58,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
 		$pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
-		foreach (array('details', 'type', 'pid', 'block') as $name) {
+		foreach (['details', 'type', 'pid', 'block'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -181,12 +181,12 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
 		$pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
-		$charts = array(
+		$charts = [
 			'pedigree'    => I18N::translate('Pedigree'),
 			'descendants' => I18N::translate('Descendants'),
 			'hourglass'   => I18N::translate('Hourglass chart'),
 			'treenav'     => I18N::translate('Interactive tree'),
-		);
+		];
 		uasort($charts, 'Fisharebest\Webtrees\I18N::strcasecmp');
 
 		$controller

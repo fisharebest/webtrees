@@ -43,7 +43,7 @@ class CensusOfDeutschland1900 extends CensusOfDeutschland implements CensusInter
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnNull($this, 'Lfd.Nr.', 'Laufende Nummer'),
 			new CensusColumnGivenNames($this, 'Vorname', 'Vorname'),
 			new CensusColumnSurname($this, 'Familienname', 'Familienname'),
@@ -71,6 +71,6 @@ class CensusOfDeutschland1900 extends CensusOfDeutschland implements CensusInter
 			new CensusColumnNull($this, 'ZK 11.Dienstgrad', '11. Für Militärpersonen im aktiven Dienste: Dienstgrad:'),
 			new CensusColumnNull($this, 'ZK 11.Einheit', 'Truppentheil, Kommando- oder Verwaltungsbehörde:'),
 			new CensusColumnNull($this, 'ZK 12.Gebrechen', '12. Etwaige körperliche Mängel und Gebrechen:'),
-		);
+		];
 	}
 }

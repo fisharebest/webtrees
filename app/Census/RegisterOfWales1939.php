@@ -34,7 +34,7 @@ class RegisterOfWales1939 extends CensusOfWales implements CensusInterface {
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnNull($this, 'Schedule', 'Schedule Number'),
 			new CensusColumnNull($this, 'SubNum', 'Schedule Sub Number'),
 			new CensusColumnSurnameGivenNames($this, 'Name', 'Surname & other names'),
@@ -43,6 +43,6 @@ class RegisterOfWales1939 extends CensusOfWales implements CensusInterface {
 			new CensusColumnBirthDayMonthSlashYear($this, 'DOB', 'Date of birth'),
 			new CensusColumnConditionEnglish($this, 'MC', 'Marital Condition - Married, Single, Unmarried, Widowed or Divorced'),
 			new CensusColumnOccupation($this, 'Occupation', 'Occupation'),
-		);
+		];
 	}
 }

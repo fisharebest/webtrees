@@ -34,7 +34,7 @@ class CensusOfScotland1911 extends CensusOfScotland implements CensusInterface {
 	 * @return CensusColumnInterface[]
 	 */
 	public function columns() {
-		return array(
+		return [
 			new CensusColumnFullName($this, 'Name', 'Name and surname'),
 			new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
 			new CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
@@ -52,6 +52,6 @@ class CensusOfScotland1911 extends CensusOfScotland implements CensusInterface {
 			new CensusColumnBirthPlace($this, 'Birthplace', 'Where born'),
 			new CensusColumnNationality($this, 'Nat', 'Nationality'),
 			new CensusColumnNull($this, 'Infirm', 'Infirmity'),
-		);
+		];
 	}
 }

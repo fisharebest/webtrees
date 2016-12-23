@@ -34,16 +34,16 @@ class TimelineController extends PageController {
 	public $bheight = 30;
 
 	/** @var Fact[] The facts to display on the chart */
-	public $indifacts = array(); // array to store the fact records in for sorting and displaying
+	public $indifacts = []; // array to store the fact records in for sorting and displaying
 
 	/** @var int[] Numeric birth years of each individual */
-	public $birthyears = array();
+	public $birthyears = [];
 
 	/** @var int[] Numeric birth months of each individual */
-	public $birthmonths = array();
+	public $birthmonths = [];
 
 	/** @var int[] Numeric birth days of each individual */
-	public $birthdays = array();
+	public $birthdays = [];
 
 	/** @var int Lowest year to display */
 	public $baseyear = 0;
@@ -52,7 +52,7 @@ class TimelineController extends PageController {
 	public $topyear = 0;
 
 	/** @var Individual[] List of individuals to display */
-	public $people = array();
+	public $people = [];
 
 	/** @var string URL-encoded list of XREFs */
 	public $pidlinks = '';
@@ -61,7 +61,7 @@ class TimelineController extends PageController {
 	public $scale = 2;
 
 	/** @var string[] GEDCOM elements that may have DATE data, but should not be displayed */
-	private $nonfacts = array('BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', 'CHAN');
+	private $nonfacts = ['BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', 'CHAN'];
 
 	/**
 	 * Startup activity

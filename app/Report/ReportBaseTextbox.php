@@ -24,7 +24,7 @@ class ReportBaseTextbox extends ReportBaseElement {
 	 *
 	 * @var array
 	 */
-	public $elements = array();
+	public $elements = [];
 
 	/**
 	 *  Background color in HTML code

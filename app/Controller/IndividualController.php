@@ -273,43 +273,43 @@ class IndividualController extends GedcomRecordController {
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-indi');
 
 		if (Auth::isEditor($this->record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Add a name'), '#', 'menu-indi-addname', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Add a name'), '#', 'menu-indi-addname', [
 				'onclick' => 'return add_name("' . $this->record->getXref() . '");',
-			)));
+			]));
 
 			$has_sex_record = false;
 			foreach ($this->record->getFacts() as $fact) {
 				if ($fact->getTag() === 'SEX' && $fact->canEdit()) {
-					$menu->addSubmenu(new Menu(I18N::translate('Edit the gender'), '#', 'menu-indi-editsex', array(
+					$menu->addSubmenu(new Menu(I18N::translate('Edit the gender'), '#', 'menu-indi-editsex', [
 						'onclick' => 'return edit_record("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
-					)));
+					]));
 					$has_sex_record = true;
 					break;
 				}
 			}
 			if (!$has_sex_record) {
-				$menu->addSubmenu(new Menu(I18N::translate('Edit the gender'), '#', 'menu-indi-editsex', array(
+				$menu->addSubmenu(new Menu(I18N::translate('Edit the gender'), '#', 'menu-indi-editsex', [
 					'onclick' => 'return add_new_record("' . $this->record->getXref() . '", "SEX");',
-				)));
+				]));
 			}
 
 			if (count($this->record->getSpouseFamilies()) > 1) {
-				$menu->addSubmenu(new Menu(I18N::translate('Re-order families'), '#', 'menu-indi-orderfam', array(
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order families'), '#', 'menu-indi-orderfam', [
 					'onclick' => 'return reorder_families("' . $this->record->getXref() . '");',
-				)));
+				]));
 			}
 
 			// delete
-			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-indi-del', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-indi-del', [
 				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
-			)));
+			]));
 		}
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-indi-editraw', array(
+			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-indi-editraw', [
 				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
-			)));
+			]));
 		}
 
 		return $menu;

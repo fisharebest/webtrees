@@ -45,13 +45,13 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
+	public function getBlock($block_id, $template = true, $cfg = []) {
 		global $ctype, $WT_TREE;
 
 		$num       = $this->getBlockSetting($block_id, 'num', '10');
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
-		foreach (array('num', 'infoStyle') as $name) {
+		foreach (['num', 'infoStyle'] as $name) {
 			if (array_key_exists($name, $cfg)) {
 				$$name = $cfg[$name];
 			}
@@ -83,7 +83,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 			} else {
 				$padding = 'padding-right: 15px';
 			}
-			$params = array(1, $num, 'rcount');
+			$params = [1, $num, 'rcount'];
 			// List Female names
 			$totals = $stats->commonGivenFemaleTotals($params);
 			if ($totals) {
@@ -96,7 +96,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 			}
 			break;
 		case "table": // Style 2: Tabular format. Narrow, 2 or 3 column table, good on right side of page
-			$params = array(1, $num, 'rcount');
+			$params = [1, $num, 'rcount'];
 			$content .= '<table style="margin:auto;">
 						<tr>
 						<td>' . $stats->commonGivenFemaleTable($params) . '</td>
@@ -151,7 +151,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', ['list' => I18N::translate('list'), 'table' => I18N::translate('table')], null, $infoStyle, '');
 		echo '</td></tr>';
 	}
 }

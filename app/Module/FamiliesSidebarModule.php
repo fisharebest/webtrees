@@ -242,19 +242,19 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 			" AND i_id = n_id AND i_file = n_file AND i_file = :tree_id" .
 			" ORDER BY n_sort COLLATE :collation" .
 			" LIMIT 50"
-		)->execute(array(
+		)->execute([
 			'query_1'   => $query,
 			'query_2'   => $query,
 			'tree_id'   => $tree->getTreeId(),
 			'collation' => I18N::collation(),
-		))->fetchAll();
+		])->fetchAll();
 
-		$ids = array();
+		$ids = [];
 		foreach ($rows as $row) {
 			$ids[] = $row->xref;
 		}
 
-		$vars = array();
+		$vars = [];
 		if (empty($ids)) {
 			//-- no match : search for FAM id
 			$where  = "f_id LIKE CONCAT('%', ?, '%')";

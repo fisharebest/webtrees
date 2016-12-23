@@ -130,10 +130,10 @@ case 'login':
 				"SELECT gedcom_name FROM `##gedcom` JOIN `##user_gedcom_setting` USING (gedcom_id)" .
 				" WHERE setting_name = 'gedcomid' AND user_id = :user_id" .
 				" ORDER BY gedcom_id = :tree_id DESC"
-			)->execute(array(
+			)->execute([
 				'user_id' => Auth::user()->getUserId(),
 				'tree_id' => $WT_TREE->getTreeId(),
-			))->fetchOne();
+			])->fetchOne();
 			$url .= '&ged=' . Filter::escapeUrl($tree);
 		}
 
@@ -383,7 +383,7 @@ case 'register':
 			$mail1_method = $webmaster->getPreference('contact_method');
 			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 				Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute(array($user->getEmail(), WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
+					->execute([$user->getEmail(), WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)]);
 			}
 
 			echo '<div class="confirm"><p>', I18N::translate('Hello %s…<br>Thank you for your registration.', $user->getRealNameHtml()), '</p>';
@@ -602,7 +602,7 @@ case 'verify_hash':
 		$mail1_method = $webmaster->getPreference('CONTACT_METHOD');
 		if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 			Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-				->execute(array($user_name, WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
+				->execute([$user_name, WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)]);
 		}
 
 		$user
