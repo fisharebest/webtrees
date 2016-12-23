@@ -116,7 +116,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 				}
 			}
 			unset($all_media[$n]);
-		};
+		}
 
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';

@@ -291,8 +291,6 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 		}
 
 		echo '</table>';
-
-		return;
 	}
 
 	/** {@inheritdoc} */

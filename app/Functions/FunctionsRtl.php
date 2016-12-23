@@ -579,8 +579,6 @@ class FunctionsRtl {
 
 		$breakString = '<' . self::$currentState . 'br>';
 		$result .= $breakString;
-
-		return;
 	}
 
 	/**
@@ -1102,8 +1100,6 @@ class FunctionsRtl {
 		}
 
 		$result .= $trailingBreaks; // Get rid of any waiting <br>
-
-		return;
 	}
 
 	/**

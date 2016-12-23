@@ -28,11 +28,21 @@ return PhpCsFixer\Config::create()
 	->setUsingCache(false)
 	->setIndent("\t")
 	->setFinder($finder)
+	->setRiskyAllowed(true)
 	->setRules([
-		'array_syntax' => array('syntax' => 'short'),
-		'binary_operator_spaces' => [
-			'align_double_arrow' => true,
-			'align_equals'       => true,
-		],
-		'class_definition' => false, // Don't split "class XXX {" onto two lines.
+		'@Symfony'                                  => true,
+		'array_syntax'                              => ['syntax' => 'short'],
+		'binary_operator_spaces'                    => ['align_double_arrow' => true, 'align_equals' => true],
+		'class_definition'                          => false,
+		'combine_consecutive_unsets'                => true,
+		'concat_space'                              => ['spacing' => 'one'],
+		'dir_constant'                              => true,
+		'ereg_to_preg'                              => true,
+		'linebreak_after_opening_tag'               => true,
+		'modernize_types_casting'                   => true,
+		'new_with_braces'                           => false,
+		'no_blank_lines_before_namespace'           => true,
+		'no_multiline_whitespace_before_semicolons' => true,
+		'ordered_imports'                           => true,
+		'single_blank_line_before_namespace'        => false,
 	]);

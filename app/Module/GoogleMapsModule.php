@@ -1177,8 +1177,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
 				if ($latlongval[$i]) {
-					$lat[$i] = (double) strtr($latlongval[$i]->pl_lati, ['N' => '', 'S' => '-', ',' => '.']);
-					$lon[$i] = (double) strtr($latlongval[$i]->pl_long, ['E' => '', 'W' => '-', ',' => '.']);
+					$lat[$i] = (float) strtr($latlongval[$i]->pl_lati, ['N' => '', 'S' => '-', ',' => '.']);
+					$lon[$i] = (float) strtr($latlongval[$i]->pl_long, ['E' => '', 'W' => '-', ',' => '.']);
 					if ($lat[$i] || $lon[$i]) {
 						$marker_number = $curgen;
 						$dups          = 0;

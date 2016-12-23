@@ -1652,7 +1652,7 @@ class Stats {
 						}
 					}
 				}
-			};
+			}
 			break;
 		case 'birth_distribution_chart':
 			$chart_title = I18N::translate('Birth by country');
