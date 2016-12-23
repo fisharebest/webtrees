@@ -60,12 +60,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	const SCHEMA_TARGET_VERSION   = 6;
 	const SCHEMA_SETTING_NAME     = 'GM_SCHEMA_VERSION';
 	const SCHEMA_MIGRATION_PREFIX = '\Fisharebest\Webtrees\Module\GoogleMaps\Schema';
+	const OMS_VER                 = '0.3.3';
 
 	/** @var Individual[] of ancestors of root person */
 	private $ancestors = array();
-
-	/** @var int Number of nodes in the chart */
-	private $treesize;
 
 	/** {@inheritdoc} */
 	public function getTitle() {
@@ -130,20 +128,17 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	public function getPreLoadContent() {
 		global $controller;
 
-		$controller->addInlineJavascript("
-		jQuery('head').append('<link type=\"text/css\" href =\"" . WT_STATIC_URL . WT_MODULES_DIR . "googlemap/css/wt_v3_googlemap.css\" rel=\"stylesheet\">');
+		$controller
+			->addInlineJavascript("
+		jQuery('head').append('<link type=\"text/css\" href =\"" . WT_STATIC_URL . WT_MODULES_DIR . "googlemap/assets/css/wt_v3_googlemap.css\" rel=\"stylesheet\">');
 		");
 
-		ob_start();
-		?>
-		<script src="<?php echo $this->googleMapsScript() ?>"></script>
-		<script>
-			var minZoomLevel   = <?php echo $this->getSetting('GM_MIN_ZOOM') ?>;
-			var maxZoomLevel   = <?php echo $this->getSetting('GM_MAX_ZOOM') ?>;
-			var startZoomLevel = maxZoomLevel;
-		</script>
-		<?php
-		return ob_get_clean();
+		foreach ($this->loadScripts(true) as $script) {
+			$controller
+				->addExternalJavascript($script);
+		}
+
+		return '';
 	}
 
 	/** {@inheritdoc} */
@@ -176,7 +171,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$html .= ' | <a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_placecheck">' . I18N::translate('Place check') . '</a>';
 				$html .= '</div>';
 			}
-			$html .= '<script>loadMap();</script>';
 			$html .= '</div>';
 		} else {
 			$html = '<div class="facts_value noprint">' . I18N::translate('No map data exists for this individual') . '</div>';
@@ -476,14 +470,24 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
-	 * Google Maps API script
+	 * get the Google Maps API, module
+	 * and optionally the OverlappingMarkerSpiderfier scripts
 	 *
-	 * @return string
+	 * @param bool $load_oms
+	 *
+	 * @return string[]
 	 */
-	private function googleMapsScript() {
-		$key = $this->getSetting('GM_API_KEY');
+	private function loadScripts($load_oms = false) {
+		$key       = $this->getSetting('GM_API_KEY');
+		$scripts   = array(
+			'https://maps.googleapis.com/maps/api/js?v=3&amp;key=' . $key . '&amp;language=' . WT_LOCALE,
+			WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/assets/js/googlemaps.js',
+		);
+		if ($load_oms) {
+			$scripts[] = WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/packages/oms-' . self::OMS_VER . '/oms.min.js';
+		}
 
-		return 'https://maps.googleapis.com/maps/api/js?v=3&amp;key=' . $key . '&amp;language=' . WT_LOCALE;
+		return $scripts;
 	}
 
 	/**
@@ -701,8 +705,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		$controller      = new ChartController();
 		$generations     = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
-		$this->treesize  = pow(2, $generations) - 1;
-		$this->ancestors = array_values($controller->sosaAncestors($generations));
+		$this->ancestors = $controller->sosaAncestors($generations);
 
 		$controller
 			->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->root->getFullName()))
@@ -710,9 +713,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			/* prepending the module css in the page head allows the theme to over-ride it*/
 			->addInlineJavascript("
-				jQuery('head').prepend('<link type=\"text/css\" href =\"" . WT_STATIC_URL . WT_MODULES_DIR . "googlemap/css/wt_v3_googlemap.css\" rel=\"stylesheet\">');
-				autocomplete();" .
-				$this->pedigreeMapJavascript()
+				jQuery('head').prepend('<link type=\"text/css\" href =\"" . WT_STATIC_URL . WT_MODULES_DIR . "googlemap/assets/css/wt_v3_googlemap.css\" rel=\"stylesheet\">');
+				autocomplete();"
 			);
 
 		echo '<div id="pedigreemap-page"><h2>', $controller->getPageTitle(), '</h2>';
@@ -764,50 +766,63 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 		<!-- count records by type -->
 		<?php
-		$curgen   = 1;
-		$priv     = 0;
-		$count    = 0;
-		$miscount = 0;
-		$missing  = array();
+		$missing           = array();
+		$lati              = array();
+		$long              = array();
+		$marker_data       = array();
+		$link_lines        = array();
+		$gm_ancestors_html = '';
 
-		$latlongval = array();
-		$lat        = array();
-		$lon        = array();
-		for ($i = 0; $i < ($this->treesize); $i++) {
-			// -- check to see if we have moved to the next generation
-			if ($i + 1 >= pow(2, $curgen)) {
-				$curgen++;
-			}
-			$person = $this->ancestors[$i];
-			if (!empty($person)) {
-				$name = $person->getFullName();
-				if ($name == I18N::translate('Private')) {
-					$priv++;
-				}
-				$place = $person->getBirthPlace();
-				if (empty($place)) {
-					$latlongval[$i] = null;
+		foreach ($this->ancestors as $sosa => $person) {
+			if ($person !== null && $person->canShow()) {
+				$curgen       = (int) (1 + floor(\log($sosa, 2)));
+				$relationship = FunctionsCharts::getSosaName($sosa);
+				$name         = $person->getFullName();
+
+				// get thumbnail image
+				if ($person->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
+					$image = $person->displayImage();
 				} else {
-					$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
+					$image = '';
 				}
-				if ($latlongval[$i]) {
-					$lat[$i] = strtr($latlongval[$i]->pl_lati, array('N' => '', 'S' => '-', ',' => '.'));
-					$lon[$i] = strtr($latlongval[$i]->pl_long, array('N' => '', 'S' => '-', ',' => '.'));
-					if ($lat[$i] && $lon[$i]) {
-						$count++;
-					} else {
-						// The place is in the table but has empty values
-						if ($name) {
-							$missing[] = '<a href="' . $person->getHtmlUrl() . '">' . $name . '</a>';
-							$miscount++;
-						}
+
+				$event = '<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png" width="10" height="10"> ';
+				$event .= '<strong>' . $relationship . '</strong>';
+
+				$birth = $person->getFirstFact('BIRT');
+				$data  = $image . '<div class="gm-ancestor-link">' . $event . ' <span><a href="' . $person->getHtmlUrl() . '">' . $name . '</a></span>';
+				$data .= $birth ? $birth->summary() : '';
+				$data .= '</div>';
+
+				$place      = $person->getBirthPlace();
+				$latlongval = empty($place) ? null : $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
+				if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
+					$gm_ancestors_html .= '<div class="gm-ancestor" data-marker =' . $sosa . '>' . $data . '</div>';
+					$lati[$sosa] = (double) strtr($latlongval->pl_lati, array('N' => '', 'S' => '-', ',' => '.'));
+					$long[$sosa] = (double) strtr($latlongval->pl_long, array('E' => '', 'W' => '-', ',' => '.'));
+					// Data needed to construct a marker
+					$marker_data[] = array(
+						'lati'     => $lati[$sosa],
+						'long'     => $long[$sosa],
+						'name'     => strip_tags($name),
+						'iconURL'  => WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/icon' . $curgen . '.png',
+						'id'       => $sosa,
+						'html'     => $data,
+					);
+					// Data needed to construct the lines from parent to child
+					$to_child = (intval(($sosa) / 2));
+					if (array_key_exists($to_child, $lati)) {
+						$link_lines[] = array(
+							'parent_lati' => $lati[$sosa],
+							'parent_long' => $long[$sosa],
+							'child_lati'  => $lati[$to_child],
+							'child_long'  => $long[$to_child],
+							'generation'  => $curgen,
+						);
 					}
-				} else {
-					// There was no place, or not listed in the map table
-					if ($name) {
-						$missing[] = '<a href="' . $person->getHtmlUrl() . '">' . $name . '</a>';
-						$miscount++;
-					}
+				} elseif ($name) {
+					// There was no place, or not listed in the map table or no co-ordinates
+					$missing[] = '<a href="' . $person->getHtmlUrl() . '">' . $name . '</a>';
 				}
 			}
 		}
@@ -817,7 +832,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '<div class="gm-pedigree-map">';
 		echo '<div class="gm-wrapper">';
 		echo '<div class="gm-map"><i class="icon-loading-large"></i></div>';
-		echo '<div class="gm-ancestors"></div>';
+		echo '<div class="gm-ancestors">' . $gm_ancestors_html . '</div>';
 		echo '</div>';
 
 		if (Auth::isAdmin()) {
@@ -831,447 +846,65 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '<hr>';
 
 		// print summary statistics
-		if (isset($curgen)) {
-			$total = pow(2, $curgen) - 1;
-			echo '<div>';
-			echo I18N::plural(
-				'%1$s individual displayed, out of the normal total of %2$s, from %3$s generations.',
-				'%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations.',
-				$count,
-				I18N::number($count), I18N::number($total), I18N::number($curgen)
-			);
-			echo '</div>';
-			if ($priv) {
-				echo '<div>' . I18N::plural('%s individual is private.', '%s individuals are private.', $priv, $priv), '</div>';
-			}
-			if ($count + $priv != $total) {
-				if ($miscount == 0) {
-					echo '<div>' . I18N::translate('No ancestors in the database.'), '</div>';
-				} else {
-					echo '<div>' . /* I18N: %1$s is a count of individuals, %2$s is a list of their names */ I18N::plural(
+		$total = pow(2, $generations) - 1;
+		$count = count($lati); // or $long!
+		echo '<div>';
+		echo I18N::plural(
+			'%1$s individual displayed, out of the normal total of %2$s, from %3$s generations.',
+			'%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations.',
+			$count,
+			I18N::number($count), I18N::number($total), I18N::number($generations)
+		);
+		echo '</div>';
+
+		if ($count != $total) {
+			$miscount = count($missing);
+			if ($miscount == 0) {
+				echo '<div>' . I18N::translate('No ancestors in the database.'), '</div>';
+			} else {
+				echo '<div>' . /* I18N: %1$s is a count of individuals, %2$s is a list of their names */
+					I18N::plural(
 						'%1$s individual is missing birthplace map coordinates: %2$s.',
 						'%1$s individuals are missing birthplace map coordinates: %2$s.',
 						$miscount, I18N::number($miscount), implode(I18N::$list_separator, $missing)),
-						'</div>';
-				}
+				'</div>';
 			}
 		}
 
 		echo '</div>';
 		echo '</div>';
-		echo '<script src="', $this->googleMapsScript(), '"></script>';
-	}
 
-	/**
-	 * Create the Javascript to activate the map.
-	 *
-	 * @return string
-	 */
-	private function pedigreeMapJavascript() {
-
-		$js = '
-		// this variable will collect the html which will eventually be placed in the side bar
-		var gm_ancestors_html = "";
-		// arrays to hold copies of the markers and html used by the side bar
-		// because the function closure trick doesnt work there
-		var gmarkers = [];
-		var index = 0;
-		var lastlinkid;
-		var infowindow = new google.maps.InfoWindow({});
-		// === Create an associative array of GIcons()
-		var gicons = [];
-		gicons["1"]  = 	{
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon1.png"
-						}
-		gicons["2"]  = 	{
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2.png"
-						}
-		gicons["2L"] = 	{
-							url: 	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2L.png",
-							size:  	new google.maps.Size(32, 32), // Image size
-							origin: new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(28, 28) // Image anchor
-						};
-		gicons["2R"] = 	{
-							url: 	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2R.png",
-							size: 	new google.maps.Size(32, 32), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(4, 28)  // Image anchor
-						};
-		gicons["2Ls"] = {
-							url: 	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2Ls.png",
-							size: 	new google.maps.Size(24, 24), // Image size
-							origin: new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(22, 22) // Image anchor
-						};
-		gicons["2Rs"] = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon2Rs.png",
-							size:	new google.maps.Size(24, 24), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(2, 22)  // Image anchor
-						};
-		gicons["3"]   = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3.png"
-						}
-		gicons["3L"]  = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3L.png",
-							size:	new google.maps.Size(32, 32), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(28, 28) // Image anchor
-						};
-		gicons["3R"]  = {
-							url: 	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3R.png",
-							size:	new google.maps.Size(32, 32), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(4, 28)  // Image anchor
-						};
-		gicons["3Ls"] = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3Ls.png",
-							size:	new google.maps.Size(24, 24), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(22, 22) // Image anchor
-						};
-		gicons["3Rs"] = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon3Rs.png",
-							size:	new google.maps.Size(24, 24), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(2, 22)  // Image anchor
-						};
-		gicons["4"]   = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4.png"
-						}
-		gicons["4L"]  = {
-							url: 	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4L.png",
-							size:	new google.maps.Size(32, 32), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(28, 28) // Image anchor
-						};
-		gicons["4R"] = 	{
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4R.png",
-							size:	new google.maps.Size(32, 32), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(4, 28)  // Image anchor
-						};
-		gicons["4Ls"] = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4Ls.png",
-							size:	new google.maps.Size(24, 24), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(22, 22) // Image anchor
-						};
-		gicons["4Rs"] = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon4Rs.png",
-							size:	new google.maps.Size(24, 24), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(2, 22)  // Image anchor
-						};
-		gicons["5"] = 	{
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5.png"
-						}
-		gicons["5L"] = 	{
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5L.png",
-							size:	new google.maps.Size(32, 32), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(28, 28) // Image anchor
-						};
-		gicons["5R"] = 	{
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5R.png",
-							size:	new google.maps.Size(32, 32), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(4, 28)  // Image anchor
-						};
-		gicons["5Ls"] = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5Ls.png",
-							size:	new google.maps.Size(24, 24), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(22, 22) // Image anchor
-						};
-		gicons["5Rs"] = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon5Rs.png",
-							size:	new google.maps.Size(24, 24), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(2, 22)  // Image anchor
-						};
-		gicons["6"] = 	{
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6.png"
-						}
-		gicons["6L"] = 	{
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6L.png",
-							size:	new google.maps.Size(32, 32), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(28, 28) // Image anchor
-						};
-		gicons["6R"] = 	{
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6R.png",
-							size:	new google.maps.Size(32, 32), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(4, 28)  // Image anchor
-						};
-		gicons["6Ls"] = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6Ls.png",
-							size:	new google.maps.Size(24, 24), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(22, 22) // Image anchor
-						};
-		gicons["6Rs"] = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon6Rs.png",
-							size:	new google.maps.Size(24, 24), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(2, 22)  // Image anchor
-						};
-		gicons["7"]   = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7.png"
-						}
-		gicons["7L"]  = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7L.png",
-							size:	new google.maps.Size(32, 32), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(28, 28) // Image anchor
-						};
-		gicons["7R"]  = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7R.png",
-							size:	new google.maps.Size(32, 32), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(4, 28)  // Image anchor
-						};
-		gicons["7Ls"] = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7Ls.png",
-							size:	new google.maps.Size(24, 24), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(22, 22) // Image anchor
-						};
-		gicons["7Rs"] = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon7Rs.png",
-							size:	new google.maps.Size(24, 24), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(2, 22)  // Image anchor
-						};
-		gicons["8"]   = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8.png"
-						}
-		gicons["8L"]  = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8L.png",
-							size:	new google.maps.Size(32, 32), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(28, 28) // Image anchor
-						};
-		gicons["8R"]  = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8R.png",
-							size:	new google.maps.Size(32, 32), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(4, 28)  // Image anchor
-						};
-		gicons["8Ls"] = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8Ls.png",
-							size:	new google.maps.Size(24, 24), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(22, 22) // Image anchor
-						};
-		gicons["8Rs"] = {
-							url:	WT_STATIC_URL+WT_MODULES_DIR+"googlemap/images/icon8Rs.png",
-							size:	new google.maps.Size(24, 24), // Image size
-							origin:	new google.maps.Point(0, 0),  // Image origin
-							anchor:	new google.maps.Point(2, 22)  // Image anchor
-						};
-		// / A function to create the marker and set up the event window
-		function createMarker(point, name, html, mhtml, icontype) {
-			// Create a marker with the requested icon
-			var marker = new google.maps.Marker({
-				icon:     gicons[icontype],
-				map:      pm_map,
-				position: point,
-				id:       index,
-				zIndex:   0
-			});
-			google.maps.event.addListener(marker, "click", function() {
-				infowindow.close();
-				infowindow.setContent(mhtml);
-				infowindow.open(pm_map, marker);
-				var el = jQuery(".gm-ancestor[data-marker=" + marker.id + "]");
-				if(el.hasClass("person_box")) {
-					el
-						.removeClass("person_box")
-						.addClass("gm-ancestor-visited");
-					infowindow.close();
-				} else {
-					el
-					.addClass("person_box")
-					.removeClass("gm-ancestor-visited");
-				}
-				var anchor = infowindow.getAnchor();
-				lastlinkid = anchor ? anchor.id : null;
-			});
-			// save the info we need to use later for the side bar
-			gmarkers[index] = marker;
-			gm_ancestors_html += "<div data-marker =" + index++ + " class=\"gm-ancestor\">" + html +"</div>";
-
-			return marker;
-		};
-		// create the map
-		var myOptions = {
-			zoom:                     6,
-			center:                   new google.maps.LatLng(0, 0),
-			mapTypeId:                google.maps.MapTypeId.TERRAIN,  // ROADMAP, SATELLITE, HYBRID, TERRAIN
-			mapTypeControlOptions:    {
-				style: google.maps.MapTypeControlStyle.DROPDOWN_MENU  // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
-			},
-			navigationControlOptions: {
-				position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-				style:    google.maps.NavigationControlStyle.SMALL   // ANDROID, DEFAULT, SMALL, ZOOM_PAN
-			},
-			streetViewControl:        false,  // Show Pegman or not
-			scrollwheel:              true
-		};
-		var pm_map = new google.maps.Map(document.querySelector(".gm-map"), myOptions);
-		google.maps.event.addListener(pm_map, "click", function() {
-			jQuery(".gm-ancestor.person_box")
-				.removeClass("person_box")
-				.addClass("gm-ancestor-visited");
-			infowindow.close();
-			lastlinkid = null;
-		});
-		// create the map bounds
-		var bounds = new google.maps.LatLngBounds();';
-		// add the points
-		$curgen       = 1;
-		$count        = 0;
-		$colored_line = array(
-			'1' => '#FF0000',
-			'2' => '#0000FF',
-			'3' => '#00FF00',
-			'4' => '#FFFF00',
-			'5' => '#00FFFF',
-			'6' => '#FF00FF',
-			'7' => '#C0C0FF',
-			'8' => '#808000',
-		);
-		$lat        = array();
-		$lon        = array();
-		$latlongval = array();
-		for ($i = 0; $i < $this->treesize; $i++) {
-			// moved up to grab the sex of the individuals
-			$person = $this->ancestors[$i];
-			if ($person) {
-				$name = $person->getFullName();
-
-				// -- check to see if we have moved to the next generation
-				if ($i + 1 >= pow(2, $curgen)) {
-					$curgen++;
-				}
-
-				$relationship = FunctionsCharts::getSosaName($i + 1);
-
-				// get thumbnail image
-				if ($person->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
-					$image = $person->displayImage();
-				} else {
-					$image = '';
-				}
-
-				$event = '<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png" width="10" height="10"> ';
-				$event .= '<strong>' . $relationship . '</strong>';
-
-				$birth = $person->getFirstFact('BIRT');
-				$data  = Filter::escapeJs($image . '<div class="gm-ancestor-link">' . $event . ' <span><a href="' . $person->getHtmlUrl() . '">' . $name . '</a></span>');
-				$data .= $birth ? Filter::escapeJs($birth->summary()) : '';
-				$data .= '</div>';
-
-				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
-				if ($latlongval[$i]) {
-					$lat[$i] = (double) strtr($latlongval[$i]->pl_lati, array('N' => '', 'S' => '-', ',' => '.'));
-					$lon[$i] = (double) strtr($latlongval[$i]->pl_long, array('E' => '', 'W' => '-', ',' => '.'));
-					if ($lat[$i] || $lon[$i]) {
-						$marker_number = $curgen;
-						$dups          = 0;
-						for ($k = 0; $k < $i; $k++) {
-							if ($latlongval[$i] == $latlongval[$k]) {
-								$dups++;
-								switch ($dups) {
-								case 1:
-									$marker_number = $curgen . 'L';
-									break;
-								case 2:
-									$marker_number = $curgen . 'R';
-									break;
-								case 3:
-									$marker_number = $curgen . 'Ls';
-									break;
-								case 4:
-									$marker_number = $curgen . 'Rs';
-									break;
-								case 5: //adjust position where markers have same coodinates
-								default:
-									$marker_number = $curgen;
-									$lon[$i] += 0.0025;
-									$lat[$i] += 0.0025;
-									break;
-								}
-							}
-						}
-
-						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
-						$js .= 'var marker = createMarker(point, "' . Filter::escapeJs($name) . '","' . $data . '", "';
-						$js .= '<div class=\"gm-info-window\">' . $data . '</div>", "' . $marker_number . '");';
-						// Construct the polygon lines
-						$to_child = (intval(($i - 1) / 2)); // Draw a line from parent to child
-						if (array_key_exists($to_child, $lat) && $lat[$to_child] != 0 && $lon[$to_child] != 0) {
-							$js .= '
-								var linecolor;
-								var plines;
-								var lines = [new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . '),
-									new google.maps.LatLng(' . $lat[$to_child] . ',' . $lon[$to_child] . ')];
-								linecolor = "' . $colored_line[$curgen] . '";
-								plines = new google.maps.Polygon({
-									paths: lines,
-									strokeColor: linecolor,
-									strokeOpacity: 0.8,
-									strokeWeight: 3,
-									fillColor: "#FF0000",
-									fillOpacity: 0.1
-								});
-								plines.setMap(pm_map);';
-						}
-						// Extend and fit marker bounds
-
-						$js .= 'bounds.extend(point);';
-						$count++;
-					}
-				}
-			} else {
-				$latlongval[$i] = null;
-			}
+		foreach ($this->loadScripts(true) as $script) {
+			$controller->addExternalJavascript($script);
 		}
-		$js .= '
-		pm_map.setCenter(bounds.getCenter());
-		pm_map.fitBounds(bounds);
-		google.maps.event.addListenerOnce(pm_map, "bounds_changed", function(event) {
-			var maxZoom = ' . $this->getSetting('GM_MAX_ZOOM') . ';
-			if (this.getZoom() > maxZoom) {
-				this.setZoom(maxZoom);
-			}
-		});
 
-		// Close the sidebar highlight when the infowindow is closed
-		google.maps.event.addListener(infowindow, "closeclick", function() {
-			jQuery(".gm-ancestor[data-marker=" + lastlinkid + "]").toggleClass("gm-ancestor-visited person_box");
-			lastlinkid = null;
-		});
-		// put the assembled gm_ancestors_html contents into the gm-ancestors div
-		document.querySelector(".gm-ancestors").innerHTML = gm_ancestors_html;
-
-		jQuery(".gm-ancestor-link")
-			.on("click", "a", function(e) {
-				e.stopPropagation();
-			})
-			.on("click", function(e) {
-				if (lastlinkid != null) {
-					jQuery(".gm-ancestor[data-marker=" + lastlinkid + "]").toggleClass("person_box gm-ancestor-visited");
-				}
-				var target = jQuery(this).closest(".gm-ancestor").data("marker");
-				google.maps.event.trigger(gmarkers[target], "click");
-			});
-		';
-
-		return $js;
+		$controller
+			->addInlineJavascript('
+				var WT_GM_MAP = new WT_GM_MODULE;
+				WT_GM_MAP.createMap(' .
+				json_encode(
+					array(
+						'maxZoom'    => (int) $this->getSetting('GM_MAX_ZOOM'),
+						'title'      => I18N::translate('Expand the markers at this location'),
+						'mapOptions' => array(
+							'mapType' => 'TERRAIN',
+							'pegMan'  => false
+						)
+					)) . ',' .
+					json_encode($marker_data) . ',' .
+					json_encode($link_lines) .
+				');
+				jQuery(".gm-ancestor-link")
+				.on("click", "a", function(e) {
+					e.stopPropagation();
+				})
+				.on("click", function(e) {
+					var target = jQuery(this).closest(".gm-ancestor").data("marker");
+					// First click expands the markers, second opens the infowindow
+					WT_GM_MAP.markerClick(target);
+				});
+				'
+			);
 	}
 
 	/**
@@ -1575,13 +1208,13 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			'tree_id' => $individual->getTree()->getTreeId(),
 		);
 
-		if ($statement->execute($args)->fetchOne()) {
+		if ($statement->execute($args)->fetchOne() !== null) {
 			return true;
 		}
 
 		foreach ($individual->getSpouseFamilies() as $family) {
 			$args['xref'] = $family->getXref();
-			if ($statement->execute($args)->fetchOne()) {
+			if ($statement->execute($args)->fetchOne() !== null) {
 				return true;
 			}
 		}
@@ -1718,59 +1351,72 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	/**
 	 * @param Fact $fact
 	 *
-	 * @return array
+	 * @return array<string,array>
 	 */
 	private function getPlaceData(Fact $fact) {
-		$result = array();
 
-		$has_latitude  = preg_match('/\n4 LATI (.+)/', $fact->getGedcom(), $match1);
-		$has_longitude = preg_match('/\n4 LONG (.+)/', $fact->getGedcom(), $match2);
+		$place_location = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
+		$has_latitude   = preg_match('/\n4 LATI (.+)/', $fact->getGedcom(), $match1);
+		$has_longitude  = preg_match('/\n4 LONG (.+)/', $fact->getGedcom(), $match2);
+
+		if ($place_location && $place_location->sv_lati && $place_location->sv_long) {
+			$streetview_data = array(
+				'sv_bearing'   => $place_location->sv_bearing,
+				'sv_elevation' => $place_location->sv_elevation,
+				'sv_lati'      => $place_location->sv_lati,
+				'sv_long'      => $place_location->sv_long,
+				'sv_zoom'      => $place_location->sv_zoom,
+			);
+		} else {
+			$streetview_data = array(
+				'sv_bearing'   => 0,
+				'sv_elevation' => 0,
+				'sv_lati'      => 0,
+				'sv_long'      => 0,
+				'sv_zoom'      => 0,
+			);
+		}
 
 		// If co-ordinates are stored in the GEDCOM then use them
 		if ($has_latitude && $has_longitude) {
-			$result = array(
-				'index'   => 'ID' . $match1[1] . $match2[1],
-				'mapdata' => array(
-					'class'        => 'optionbox',
-					'place'        => $fact->getPlace()->getFullName(),
-					'tooltip'      => $fact->getPlace()->getGedcomName(),
-					'lat'          => strtr($match1[1], array('N' => '', 'S' => '-', ',' => '.')),
-					'lng'          => strtr($match2[1], array('E' => '', 'W' => '-', ',' => '.')),
-					'pl_icon'      => '',
-					'pl_zoom'      => '0',
-					'sv_bearing'   => '0',
-					'sv_elevation' => '0',
-					'sv_lati'      => '0',
-					'sv_long'      => '0',
-					'sv_zoom'      => '0',
-					'events'       => '',
-				),
+			$index   = 'ID' . $match1[1] . $match2[1];
+			$mapdata = array(
+				'id'       => 0,
+				'name'     => $fact->getPlace()->getGedcomName(),
+				'lati'     => (float) strtr($match1[1], array('N' => '', 'S' => '-', ',' => '.')),
+				'long'     => (float) strtr($match2[1], array('E' => '', 'W' => '-', ',' => '.')),
+				'iconURL'  => '',
+				'pl_zoom'  => 12,
+				'html'     => '',
+			);
+		} elseif ($place_location && $place_location->pl_lati && $place_location->pl_long) {
+			$index   = 'ID' . $place_location->pl_lati . $place_location->pl_long;
+			$mapdata = array(
+				'id'       => 0,
+				'name'     => $fact->getPlace()->getGedcomName(),
+				'lati'     => (float) strtr($place_location->pl_lati, array('N' => '', 'S' => '-', ',' => '.')),
+				'long'     => (float) strtr($place_location->pl_long, array('E' => '', 'W' => '-', ',' => '.')),
+				'iconURL'  => $place_location->pl_icon,
+				'pl_zoom'  => $place_location->pl_zoom,
+				'html'     => '',
 			);
 		} else {
-			$place_location = $this->getLatitudeAndLongitudeFromPlaceLocation($fact->getPlace()->getGedcomName());
-			if ($place_location && $place_location->pl_lati && $place_location->pl_long) {
-				$result = array(
-					'index'   => 'ID' . $place_location->pl_lati . $place_location->pl_long,
-					'mapdata' => array(
-						'class'        => 'optionbox',
-						'place'        => $fact->getPlace()->getFullName(),
-						'tooltip'      => $fact->getPlace()->getGedcomName(),
-						'lat'          => strtr($place_location->pl_lati, array('N' => '', 'S' => '-', ',' => '.')),
-						'lng'          => strtr($place_location->pl_long, array('E' => '', 'W' => '-', ',' => '.')),
-						'pl_icon'      => $place_location->pl_icon,
-						'pl_zoom'      => $place_location->pl_zoom,
-						'sv_bearing'   => $place_location->sv_bearing,
-						'sv_elevation' => $place_location->sv_elevation,
-						'sv_lati'      => $place_location->sv_lati,
-						'sv_long'      => $place_location->sv_long,
-						'sv_zoom'      => $place_location->sv_zoom,
-						'events'       => '',
-					),
-				);
-			}
+			$index   = 'ID000000';
+			$mapdata = array(
+				'id'       => 0,
+				'name'     => $fact->getPlace()->getGedcomName(),
+				'lati'     => 0,
+				'long'     => 0,
+				'iconURL'  => '',
+				'pl_zoom'  => 0,
+				'html'     => '',
+			);
 		}
 
-		return $result;
+		return array(
+			'index'   => $index,
+			'mapdata' => array_merge($mapdata, $streetview_data),
+		);
 	}
 
 	/**
@@ -1780,6 +1426,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 */
 	private function buildIndividualMap(Individual $indi) {
 		$GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM');
+
 		$facts       = $indi->getFacts();
 		foreach ($indi->getSpouseFamilies() as $family) {
 			$facts = array_merge($facts, $family->getFacts());
@@ -1838,7 +1485,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				if (empty($unique_places[$index])) {
 					$unique_places[$index] = $place_data['mapdata'];
 				}
-				$unique_places[$index]['events'] .= $evtStr;
+				$unique_places[$index]['html'] .= $evtStr;
 				$events[] = array(
 					'class'      => $class,
 					'fact_label' => $label,
@@ -1851,18 +1498,40 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 		}
 
+		$places        = array_keys($unique_places);
+		$unique_places = array_values($unique_places);
+
+		// Add the wrapping HTML to the events data
+		array_walk($unique_places, function (&$v, $k, $streetview) {
+			$html = '<div class="gm-info-window">' .
+				'<div class="gm-info-window-header">' . $v['name'] . '</div>';
+			if ($streetview) {
+				$html .= '<ul class="gm-tabs">' .
+					'<li class="gm-tab gm-tab-active" id="gm-tab-events"><a href="#">' . I18N::translate('Events') . '</a></li>' .
+					'<li class="gm-tab" id="gm-tab-streetview"><a href="#">' . I18N::translate('Google Street View™') . '</a></li>' .
+					'</ul>';
+			}
+			$html .= '<div class="gm-panes">' .
+				'<div class="gm-pane" id="gm-pane-events">' . $v['html'] . '</div>';
+			if ($streetview) {
+				$html .= '<div class="gm-pane" id="gm-pane-streetview" hidden><div class="gm-streetview"></div></div>';
+			}
+			$html .= '</div>' .
+				'</div>';
+			$v['id']   = $k;
+			$v['html'] = $html;
+		}, (bool) $this->getSetting('GM_USE_STREETVIEW'));
+
 		if (!empty($events)) {
-			$places = array_keys($unique_places);
 			ob_start();
 			// Create the normal googlemap sidebar of events and children
-			echo '<div class="gm-events"><table class="facts_table">';
+			echo '<div class="gm-events">';
 
 			foreach ($events as $event) {
 				$index = array_search($event['placeid'], $places);
-				echo '<tr>';
-				echo '<td class="facts_label">';
-				echo '<a href="#" onclick="return openInfowindow(\'', $index, '\')">', $event['fact_label'], '</a></td>';
-				echo '<td class="', $event['class'], '">';
+				echo '<div class="gm-ancestor" data-marker="' . $index . '">';
+				echo '<span class="facts_label"><a href="#" class="gm-ancestor-link">' . $event['fact_label'] . '</a></span>';
+				echo '<div class="gm-event ', $event['class'], '">';
 				if ($event['info']) {
 					echo '<div><span class="field">', Filter::escapeHtml($event['info']), '</span></div>';
 				}
@@ -1873,252 +1542,29 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				if ($event['date']) {
 					echo '<div>', $event['date'], '</div>';
 				}
-				echo '</td>';
-				echo '</tr>';
+				echo '</div>';
+				echo '</div>';
 			}
 
-			echo '</table></div>';
-
-			// *** ENABLE STREETVIEW ***
-			$STREETVIEW = (bool) $this->getSetting('GM_USE_STREETVIEW');
-			?>
-
-			<script>
-				var map_center = new google.maps.LatLng(0, 0);
-				var gmarkers   = [];
-				var gicons     = [];
-				var map        = null;
-				var head       = '';
-				var dir        = '';
-				var svzoom     = '';
-
-				var infowindow = new google.maps.InfoWindow({});
-
-				gicons["red"] = {
-					url:    "https://maps.google.com/mapfiles/marker.png",
-					size:   google.maps.Size(20, 34),
-					origin: google.maps.Point(0, 0),
-					anchor: google.maps.Point(9, 34)
-				};
-
-				var iconImage = {
-					url:    "https://maps.google.com/mapfiles/marker.png",
-					size:   new google.maps.Size(20, 34),
-					origin: new google.maps.Point(0, 0),
-					anchor: new google.maps.Point(9, 34)
-				};
-
-				var iconShape = {
-					coord: [9, 0, 6, 1, 4, 2, 2, 4, 0, 8, 0, 12, 1, 14, 2, 16, 5, 19, 7, 23, 8, 26, 9, 30, 9, 34, 11, 34, 11, 30, 12, 26, 13, 24, 14, 21, 16, 18, 18, 16, 20, 12, 20, 8, 18, 4, 16, 2, 15, 1, 13, 0],
-					type:  "poly"
-				};
-
-				function getMarkerImage(iconColor) {
-					if (typeof(iconColor) === 'undefined' || iconColor === null) {
-						iconColor = 'red';
-					}
-					if (!gicons[iconColor]) {
-						gicons[iconColor] = {
-							url:    '//maps.google.com/mapfiles/marker' + iconColor + '.png',
-							size:   new google.maps.Size(20, 34),
-							origin: new google.maps.Point(0, 0),
-							anchor: google.maps.Point(9, 34)
-						};
-					}
-					return gicons[iconColor];
-				}
-
-				var sv2_bear = null;
-				var sv2_elev = null;
-				var sv2_zoom = null;
-				var placer   = null;
-
-				// A function to create the marker and set up the event window
-				function createMarker(latlng, html, tooltip, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
-					// Use flag icon (if defined) instead of regular marker icon
-					if (marker_icon) {
-						var icon_image = {
-							url:    WT_STATIC_URL + WT_MODULES_DIR + 'googlemap/' + marker_icon,
-							size:   new google.maps.Size(25, 15),
-							origin: new google.maps.Point(0, 0),
-							anchor: new google.maps.Point(12, 15)
-						};
-					} else {
-						var icon_image = getMarkerImage('red');
-					}
-
-					// Decide if marker point is Regular (latlng) or StreetView (sv_point) derived
-					if (sv_point == '(0, 0)' || sv_point == '(null, null)') {
-						placer = latlng;
-					} else {
-						placer = sv_point;
-					}
-
-					// Define the marker
-					var marker = new google.maps.Marker({
-						position: placer,
-						icon:     icon_image,
-						map:      map,
-						title:    tooltip,
-						zIndex:   Math.round(latlng.lat() * -100000) << 5
-					});
-
-					// Store the tab and event info as marker properties
-					marker.sv_lati  = sv_lati;
-					marker.sv_long  = sv_long;
-					marker.sv_point = sv_point;
-
-					if (sv_bearing == '') {
-						marker.sv_bearing = 0;
-					} else {
-						marker.sv_bearing = sv_bearing;
-					}
-					if (sv_elevation == '') {
-						marker.sv_elevation = 5;
-					} else {
-						marker.sv_elevation = sv_elevation;
-					}
-					if (sv_zoom == '' || sv_zoom == 0 || sv_zoom == 1) {
-						marker.sv_zoom = 1.2;
-					} else {
-						marker.sv_zoom = sv_zoom;
-					}
-
-					marker.sv_latlng = new google.maps.LatLng(sv_lati, sv_long);
-					gmarkers.push(marker);
-
-					// Open infowindow when marker is clicked
-					google.maps.event.addListener(marker, 'click', function() {
-						infowindow.close();
-						infowindow.setContent(html);
-						infowindow.open(map, marker);
-
-						var panoramaOptions = {
-							position:          marker.position,
-							mode:              'html5',
-							navigationControl: false,
-							linksControl:      false,
-							addressControl:    false,
-							pov:               {
-								heading: sv_bearing,
-								pitch:   sv_elevation,
-								zoom:    sv_zoom
-							}
-						};
-
-						// Tabs within the info-windows.
-						<?php if ($STREETVIEW) { ?>
-						google.maps.event.addListener(infowindow, 'domready', function() {
-							jQuery('#gm-tab-events').click(function () {
-								document.getElementById("gm-tab-events").classList.add('gm-tab-active');
-								document.getElementById("gm-tab-streetview").classList.remove('gm-tab-active');
-								document.getElementById("gm-pane-events").style.display = 'block';
-								document.getElementById("gm-pane-streetview").style.display = 'none';
-
-								return false;
-							});
-							jQuery('#gm-tab-streetview').click(function () {
-								document.getElementById("gm-tab-events").classList.remove('gm-tab-active');
-								document.getElementById("gm-tab-streetview").classList.add('gm-tab-active');
-								document.getElementById("gm-pane-events").style.display = 'none';
-								document.getElementById("gm-pane-streetview").style.display = 'block';
-								var panorama = new google.maps.StreetViewPanorama(document.querySelector(".gm-streetview"), panoramaOptions);
-
-								return false;
-							});
-						});
-						<?php } ?>
-					});
-				}
-
-				// Opens Marker infowindow when corresponding Sidebar item is clicked
-				function openInfowindow(i) {
-					infowindow.close();
-					google.maps.event.trigger(gmarkers[i], 'click');
-					return false;
-				}
-
-				function loadMap() {
-					// Create the map and mapOptions
-					var mapOptions = {
-						zoom:                     7,
-						center:                   map_center,
-						mapTypeId:                google.maps.MapTypeId.<?php echo $this->getSetting('GM_MAP_TYPE') ?>,
-						mapTypeControlOptions:    {
-							style: google.maps.MapTypeControlStyle.DROPDOWN_MENU  // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
-						},
-						navigationControl:        true,
-						navigationControlOptions: {
-							position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-							style:    google.maps.NavigationControlStyle.SMALL  // ANDROID, DEFAULT, SMALL, ZOOM_PAN
-						},
-						streetViewControl:        true,
-						scrollwheel:              true
-					};
-					map = new google.maps.Map(document.querySelector('.gm-map'), mapOptions);
-
-					// Close any infowindow when map is clicked
-					google.maps.event.addListener(map, 'click', function() {
-						infowindow.close();
-					});
-
-					// Add the markers to the map
-
-					// Group the markers by location
-					var locations = <?php echo json_encode($unique_places) ?>;
-
-					// Set the Marker bounds
-					var bounds = new google.maps.LatLngBounds();
-					var zoomLevel = <?php echo $GM_MAX_ZOOM ?>;
-
-					jQuery.each(locations, function(index, location) {
-						var point     = new google.maps.LatLng(location.lat, location.lng); // Place Latitude, Longitude
-						var sv_point  = new google.maps.LatLng(location.sv_lati, location.sv_long); // StreetView Latitude and Longitide
-						var html      =
-					    '<div class="gm-info-window">' +
-					    '<div class="gm-info-window-header">' + location.place + '</div>' +
-					    '<ul class="gm-tabs">' +
-					    '<li class="gm-tab gm-tab-active" id="gm-tab-events"><a href="#"><?php echo I18N::translate('Events') ?></a></li>' +
-					    <?php if ($STREETVIEW) { ?>
-					    '<li class="gm-tab" id="gm-tab-streetview"><a href="#"><?php echo I18N::translate('Google Street View™') ?></a></li>' +
-					    <?php } ?>
-					    '</ul>' +
-						  '<div class="gm-panes">' +
-					    '<div class="gm-pane" id="gm-pane-events">' + location.events + '</div>' +
-					    <?php if ($STREETVIEW) { ?>
-					    '<div class="gm-pane" id="gm-pane-streetview" hidden><div class="gm-streetview"></div></div>' +
-					    <?php } ?>
-					    '</div>' +
-					    '</div>';
-
-						createMarker(point, html, location.tooltip, location.sv_lati, location.sv_long, location.sv_bearing, location.sv_elevation, location.sv_zoom, sv_point, location.pl_icon);
-						// if streetview coordinates are available, use them for marker,
-						// else use the place coordinates
-						if (sv_point && sv_point != "(0, 0)") {
-							var myLatLng = sv_point;
-						} else {
-							var myLatLng = point;
-						}
-						bounds.extend(myLatLng);
-					}); // end loop through location markers
-
-					map.setCenter(bounds.getCenter());
-					map.fitBounds(bounds);
-					google.maps.event.addListenerOnce(map, "bounds_changed", function(event) {
-						if (this.getZoom() > zoomLevel) {
-							this.setZoom(zoomLevel);
-						}
-					});
-				} // end loadMap()
-
-			</script>
-			<?php
-			$html = ob_get_clean();
-		} else {
-			$html = '';
+			echo '</div>';
 		}
 
-		return $html;
+		?>
+		<script>
+			var WT_GM_MAP = new WT_GM_MODULE;
+			WT_GM_MAP.createMap({
+				maxZoom: <?php echo (int) $this->getSetting('GM_MAX_ZOOM'); ?>,
+				title: '<?php echo I18N::translate('Expand the markers at this location'); ?>',
+				mapOptions: <?php echo json_encode(array(
+					'mapType' => 'ROADMAP',
+					'pegMan'  => true,
+				)); ?>
+			},
+			<?php echo json_encode($unique_places); ?>
+			);
+		</script>
+		<?php
+		return ob_get_clean();
 	}
 
 	/**
@@ -2274,7 +1720,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			echo '<div id="place_map" style="border:1px solid gray; width:', $this->getSetting('GM_PH_XSIZE'), 'px; height:', $this->getSetting('GM_PH_YSIZE'), 'px; ';
 		}
 		echo '"><i class="icon-loading-large"></i></div>';
-		echo '<script src="', $this->googleMapsScript(), '"></script>';
+		foreach ($this->loadScripts() as $script) {
+			echo '<script src="' . $script . '"></script>';
+		}
 
 		$plzoom = $latlng['pl_zoom']; // Map zoom level
 
@@ -2473,7 +1921,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		global $plzoom, $controller;
 
 		$controller->addInlineJavascript('
-			jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css" />\');
+			jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/assets/css/wt_v3_googlemap.css" />\');
 			var numMarkers = "' . $numfound . '";
 			var mapLevel   = "' . $level . '";
 			var placezoom  = "' . $plzoom . '";
@@ -2813,7 +2261,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$controller
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle(I18N::translate('Geographic data'))
-			->addInlineJavascript('jQuery("<link>", {rel: "stylesheet", type: "text/css", href: "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css"}).appendTo("head");')
+			->addInlineJavascript('jQuery("<link>", {rel: "stylesheet", type: "text/css", href: "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/assets/css/wt_v3_googlemap.css"}).appendTo("head");')
 			->pageHeader();
 
 		$where_am_i = $this->placeIdToHierarchy($placeid);
@@ -2941,11 +2389,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 			echo '</b><br>';
 		}
-
+		foreach ($this->loadScripts() as $script) {
+			echo '<script src="' . $script . '"></script>';
+		}
 		?>
 
-			<script src="<?php echo $this->googleMapsScript() ?>"></script>
-			<script>
+		<script>
 			var map;
 			var marker;
 			var zoom;
@@ -3889,7 +3338,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				->execute(array($deleteRecord))
 				->fetchOne();
 
-			if (!$exists) {
+			if ($exists === null) {
 				Database::prepare("DELETE FROM `##placelocation` WHERE pl_id=?")
 					->execute(array($deleteRecord));
 			} else {
@@ -4094,12 +3543,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function wtStreetView() {
 		header('Content-type: text/html; charset=UTF-8');
 
+		foreach ($this->loadScripts() as $script) {
+			echo '<script src="' . $script . '"></script>';
+		}
 		?>
 		<html>
 			<head>
 				<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-				<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/gm_streetview.css" rel="stylesheet">
-				<script src="<?php echo $this->googleMapsScript() ?>"></script>
+				<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/assets/css/gm_streetview.css" rel="stylesheet">
 				<script>
 
 		// Following function creates an array of the google map parameters passed ---------------------
