@@ -1250,3 +1250,11 @@ jQuery(".menu-theme").on("click", "li a", function () {
 		location.reload();
 	});
 });
+
+// Locale-aware functions for sorting user-data.
+function textCompareAsc(x, y) {
+	return x.localeCompare(y, WT_LOCALE, {'sensitivity': 'base'});
+}
+function textCompareDesc(x, y) {
+	return y.localeCompare(x, WT_LOCALE, {'sensitivity': 'base'});
+}

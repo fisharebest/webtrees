@@ -40,7 +40,7 @@ global $WT_TREE, $SEARCH_SPIDER;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION', '1.7.9-dev');
+define('WT_VERSION', '1.7.10-dev');
 
 // External URLs
 define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
@@ -390,7 +390,7 @@ Session::start(array(
 
 if (!Auth::isSearchEngine() && !Session::get('initiated')) {
 	// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
-	Session::regenerate(false);
+	Session::regenerate(true);
 	Session::put('initiated', true);
 } else {
 	// An existing session
@@ -457,7 +457,9 @@ if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_t
 
 // Update the last-login time no more than once a minute
 if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {
-	Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
+	if (Session::get('masquerade') === null) {
+		Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
+	}
 	Session::put('activity_time', WT_TIMESTAMP);
 }
 

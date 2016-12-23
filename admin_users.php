@@ -146,7 +146,7 @@ case 'load_json':
 	$order  = Filter::postArray('order');
 
 	$sql_select =
-		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS '', u.user_id, user_name, real_name, email, us1.setting_value, us2.setting_value, us2.setting_value, us3.setting_value, us3.setting_value, us4.setting_value, us5.setting_value" .
+		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS '', u.user_id, user_name, real_name, email, us1.setting_value, us2.setting_value, NULL, us3.setting_value, NULL, us4.setting_value, us5.setting_value" .
 		" FROM `##user` u" .
 		" LEFT JOIN `##user_setting` us1 ON (u.user_id=us1.user_id AND us1.setting_name='language')" .
 		" LEFT JOIN `##user_setting` us2 ON (u.user_id=us2.user_id AND us2.setting_name='reg_timestamp')" .
@@ -228,13 +228,13 @@ case 'load_json':
 			$datum[5] = $installed_languages[$datum[5]];
 		}
 		// $datum[6] is the sortable registration timestamp
-		$datum[7] = $datum[7] ? FunctionsDate::formatTimestamp($datum[7]) : '';
+		$datum[7] = $datum[6] ? FunctionsDate::formatTimestamp($datum[6] + WT_TIMESTAMP_OFFSET) : '';
 		if (date("U") - $datum[6] > 604800 && !$datum[10]) {
 			$datum[7] = '<span class="red">' . $datum[7] . '</span>';
 		}
 		// $datum[8] is the sortable last-login timestamp
 		if ($datum[8]) {
-			$datum[9] = FunctionsDate::formatTimestamp($datum[8]) . '<br>' . I18N::timeAgo(WT_TIMESTAMP - $datum[8]);
+			$datum[9] = FunctionsDate::formatTimestamp($datum[8] + WT_TIMESTAMP_OFFSET) . '<br>' . I18N::timeAgo(WT_TIMESTAMP - $datum[8]);
 		} else {
 			$datum[9] = I18N::translate('Never');
 		}

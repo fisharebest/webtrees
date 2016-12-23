@@ -35,12 +35,12 @@ class CensusOfFrance1946 extends CensusOfFrance implements CensusInterface {
 	 */
 	public function columns() {
 		return array(
-			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
-			new CensusColumnGivenNames($this, 'Prénoms', ''),
-			new CensusColumnOccupation($this, 'Profession', ''),
+			new CensusColumnSurname($this, 'Nom', 'Nom de famille'),
+			new CensusColumnGivenNames($this, 'Prénom', 'Prénom usuel'),
+			new CensusColumnRelationToHead($this, 'Parenté', 'Parenté avec le chef de ménage ou situation dans le ménage'),
 			new CensusColumnBirthYear($this, 'Année', 'Année de naissance'),
-			new CensusColumnRelationToHead($this, 'Position', 'Position dans le ménage'),
 			new CensusColumnNationality($this, 'Nationalité', ''),
+			new CensusColumnOccupation($this, 'Profession', ''),
 		);
 	}
 }

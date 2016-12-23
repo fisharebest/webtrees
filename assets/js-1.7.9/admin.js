@@ -65,7 +65,7 @@ function updatePrivacyFeedback() {
 function checkGedcomImportForm(message) {
 	var old_file = jQuery("#gedcom_filename").val();
 	var method   = jQuery("input[name=action]:checked").val();
-	var new_file = method === "replace_import" ? jQuery("#import-server-file").val() : jQuery("#import-computer-file").find(":selected").val();
+	var new_file = method === "replace_import" ? jQuery("#import-server-file").val() : jQuery("#import-computer-file").val();
 
 	// Some browsers include c:\fakepath\ in the filename.
 	new_file = new_file.replace(/.*[\/\\]/, '');

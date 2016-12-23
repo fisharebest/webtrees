@@ -266,7 +266,7 @@ class GedcomCodeRela {
 			// Do we need separate male/female translations for this?
 			return I18N::translate('Witness');
 		default:
-			return $type;
+			return I18N::translate($type);
 		}
 	}
 

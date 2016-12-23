@@ -54,7 +54,7 @@ class CensusOfUnitedStates1910Test extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnChildrenLiving', $columns[8]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple', $columns[9]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFatherBirthPlaceSimple', $columns[10]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFatherBirthPlaceSimple', $columns[11]);
+		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlaceSimple', $columns[11]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[12]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[13]);
 		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[14]);

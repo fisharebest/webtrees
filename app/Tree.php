@@ -682,13 +682,15 @@ class Tree {
 			$prefix = substr(trim($type, '_'), 0, 1);
 		}
 
+		$increment = 1.0;
 		do {
 			// Use LAST_INSERT_ID(expr) to provide a transaction-safe sequence. See
 			// http://dev.mysql.com/doc/refman/5.6/en/information-functions.html#function_last-insert-id
 			$statement = Database::prepare(
-				"UPDATE `##next_id` SET next_id = LAST_INSERT_ID(next_id + 1) WHERE record_type = :record_type AND gedcom_id = :tree_id"
+				"UPDATE `##next_id` SET next_id = LAST_INSERT_ID(next_id + :increment) WHERE record_type = :record_type AND gedcom_id = :tree_id"
 			);
 			$statement->execute(array(
+				'increment'   => (int) $increment,
 				'record_type' => $type,
 				'tree_id'     => $this->tree_id,
 			));
@@ -727,6 +729,10 @@ class Tree {
 				'o_id' => $prefix . $num,
 				'xref' => $prefix . $num,
 			))->fetchOne();
+
+			// This exponential increment allows us to scan over large blocks of
+			// existing data in a reasonable time.
+			$increment *= 1.01;
 		} while ($already_used);
 
 		return $prefix . $num;

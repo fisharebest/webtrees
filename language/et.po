@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-08-07 14:26+0000\n"
-"Last-Translator: Chip <jorgenchip@gmail.com>\n"
+"PO-Revision-Date: 2016-12-21 15:47+0000\n"
+"Last-Translator: Jorgen V <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.8\n"
 "X-Poedit-Language: Estonian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -8051,7 +8051,7 @@ msgstr "Laos"
 
 #: setup.php:177
 msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
-msgstr "Suured süsteemid (50000 isikut): 64-128MB, 40-80 sekundit"
+msgstr "Suured süsteemid (50 000 isikut): 64-128MB, 40-80 sekundit"
 
 #: app/Stats.php:4859 statistics.php:318
 msgid "Largest families"
@@ -8129,7 +8129,7 @@ msgstr "Paigutus"
 
 #: edituser.php:220
 msgid "Leave the password blank if you want to keep the current password."
-msgstr "Jäta parool tühjaks kui tahad jätta praegust parooli."
+msgstr "Jäta parool tühjaks, kui soovite kasutada praegust parooli."
 
 #: admin_site_config.php:203 admin_site_config.php:222
 #: admin_site_config.php:290 admin_site_config.php:304
@@ -10573,12 +10573,12 @@ msgstr "Läbivaatamata muudatused"
 
 #: help_text.php:309
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr "Ootel olevaid muudatusi näidatakse ainult siis kui teie kasutajal on muutmisõigused. Kui te logite välja, siis teil pole võimalik neid enam näha. Ootel olevaid muudatusi näidatakse ainult teatud lehtede. Näiteks neid ei näidata nimekirjades, raportites või otsingutulemustes."
+msgstr "Läbivaatamata muudatusi näidatakse ainult siis, kui teie kasutajal on muutmisõigused. Kui te logite välja, siis teil pole võimalik neid enam näha. Läbivaatamata muudatusi näidatakse ainult teatud lehtedel. Näiteks neid ei näidata nimekirjades, raportites või otsingutulemustes."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1719
 msgid "Permanent number"
-msgstr "Püsiv number"
+msgstr "Püsinumber"
 
 #: admin_site_change.php:373 admin_site_logs.php:313
 msgid "Permanently delete these records?"
@@ -10592,7 +10592,7 @@ msgstr "Perth, Austraalia"
 #. I18N: Name of a country or state
 #: app/Stats.php:6854
 msgid "Peru"
-msgstr "Perú"
+msgstr "Peruu"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6855
@@ -10667,7 +10667,7 @@ msgstr "Roosa Plastik"
 #. I18N: Name of a country or state
 #: app/Stats.php:6853
 msgid "Pitcairn"
-msgstr "Islas Pitcairn"
+msgstr "Pitcairn"
 
 #. I18N: gedcom tag PLAC
 #: app/GedcomTag.php:686 app/Module/GoogleMapsModule.php:1432
@@ -10708,7 +10708,7 @@ msgstr "Koht heebrea keeles"
 
 #: placelist.php:46 placelist.php:68
 msgid "Place list"
-msgstr "kohtade nimekiri"
+msgstr "Kohtade nimekiri"
 
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: admin_trees_config.php:1526
@@ -10723,21 +10723,21 @@ msgstr "LDS ristimise asukoht"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:780
 msgid "Place of LDS child sealing"
-msgstr "LDS lapse \"sealing\"-u asukoht"
+msgstr "LDS lapse \"sealing\" asukoht"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:416
 msgid "Place of LDS endowment"
-msgstr "LDS endowment-i asukoht"
+msgstr "LDS \"endowment\" asukoht"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:472
 msgid "Place of LDS spouse sealing"
-msgstr "LDS nõbu \"sealing\"-u asukoht"
+msgstr "LDS nõbu \"sealing\" asukoht"
 
 #: app/GedcomTag.php:134
 msgid "Place of adoption"
-msgstr "Lapsendamise koht"
+msgstr "Adopteerimise koht"
 
 #: app/GedcomTag.php:186 modules_v3/missing_facts_report/report.xml:140
 msgid "Place of baptism"
@@ -10795,7 +10795,7 @@ msgstr "Kihlumise koht"
 
 #: app/GedcomTag.php:432
 msgid "Place of event"
-msgstr "sündmuse koht"
+msgstr "Sündmuse koht"
 
 #: app/GedcomTag.php:484 modules_v3/missing_facts_report/report.xml:389
 msgid "Place of first communion"
@@ -10839,11 +10839,11 @@ msgstr "Muutke leht kättesaadavaks kustutades faili %s…"
 
 #: admin_trees_config.php:1500 search.php:204 statistics.php:408
 msgid "Places"
-msgstr "Asukohti"
+msgstr "Asukohad"
 
 #: find.php:665
 msgid "Places found"
-msgstr "Kohta leitud"
+msgstr "Kohti leitud"
 
 #: placelist.php:137
 #, php-format
@@ -10883,7 +10883,7 @@ msgstr "Palun sisesta sõnumi tekst."
 
 #: message.php:117
 msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
-msgstr "Palun kirjutada oma e-posti aadress, et me saaks sinu sõnumile vastata. Kui sa e-posti aadressi ei jäta, ei ole meil võimalik sinuga ühendust võtta. Sinu e-posti aadressi ei kasutata mingil muul moel kui sellele küsimusele vastamiseks."
+msgstr "Palun kirjutada oma e-posti aadress, et me saaks sinu sõnumile vastata. Kui sa e-posti aadressi ei jäta, ei ole meil võimalik sinuga ühendust võtta. Sinu e-posti aadressi ei kasutata mingil muul moel, kui sellele küsimusele vastamiseks."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:92
@@ -11047,7 +11047,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Trüki tavalised sündmused kui on tühi"
+msgstr "Trüki tavalised sündmused, kui on tühi"
 
 #: admin_trees_config.php:310 admin_trees_manage.php:398
 msgid "Privacy"
@@ -11093,7 +11093,7 @@ msgstr "Provo, Utah, Ühendriigid"
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:708
 msgid "Publication"
-msgstr "Avaldatud"
+msgstr "Publikatsioon"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6859
@@ -11148,7 +11148,7 @@ msgstr "Quintidi"
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:133 app/Module/UserMessagesModule.php:134
 msgid "RE: "
-msgstr "Vastus "
+msgstr "RE: "
 
 #. I18N: Menu entry
 #: admin_site_readme.php:28 app/Theme/AdministrationTheme.php:104
@@ -11328,7 +11328,7 @@ msgstr "Kirje failinumber"
 
 #: search.php:83 statistics.php:350
 msgid "Records"
-msgstr "Andmeid"
+msgstr "Kirjed"
 
 #: admin_site_merge.php:59
 msgid "Records are not the same type. Cannot merge records that are not the same type."
@@ -11369,12 +11369,12 @@ msgstr "Registreerimisametnik"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:165
 msgid "Regular expression"
-msgstr "Tavaline väljend"
+msgstr "Tavaline väljend (regular expression)"
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr "Tavalised väljendid on keerukamad mustriloomis tehnikad."
+msgstr "Tavalised väljendid (regular expression) on keerukamad mustriloomis tehnikad."
 
 #: edit_changes.php:186 edit_changes.php:206
 msgid "Reject"
@@ -11432,7 +11432,7 @@ msgstr "Sugulusside: %s"
 #: app/Module/RelationshipsChartModule.php:44
 #: app/Module/RelationshipsChartModule.php:87 relationship.php:57
 msgid "Relationships"
-msgstr "Sugulus"
+msgstr "Sugulussidemed"
 
 #. I18N: %s are individual’s names
 #: relationship.php:52
@@ -11456,12 +11456,12 @@ msgstr "Kiriklik abielu"
 
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
-msgstr "Meeldetuletuste sagedus (päevades)"
+msgstr "Meeldetuletuste e-maili sagedus (päevades)"
 
 #. I18N: gedcom tag SERV
 #: app/GedcomTag.php:766
 msgid "Remote server"
-msgstr "Teine server"
+msgstr "Väline server"
 
 #: app/Module/CensusAssistantModule.php:386
 #: app/Module/CensusAssistantModule.php:407
@@ -11479,7 +11479,7 @@ msgstr "Eemalda"
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:30
 msgid "Remove duplicate links"
-msgstr "Eemalda duplikaadid"
+msgstr "Eemalda duplikaatsed viited"
 
 #: app/Module/GoogleMapsModule.php:540 app/Module/GoogleMapsModule.php:543
 #: app/Module/GoogleMapsModule.php:546 app/Module/GoogleMapsModule.php:3398
@@ -11547,11 +11547,11 @@ msgstr "Väljavõtted"
 #: app/Module/HtmlBlockModule.php:199 app/Theme/AbstractTheme.php:1540
 #: repolist.php:33 repolist.php:37 statistics.php:356
 msgid "Repositories"
-msgstr "Hoidlate nimekirju"
+msgstr "Hoidlate nimekirjad"
 
 #: find.php:687
 msgid "Repositories found"
-msgstr "Hoidlat leitud"
+msgstr "Hoidlaid leitud"
 
 #. I18N: gedcom tag REPO
 #: admin_trees_config.php:792 admin_trees_manage.php:557 app/GedcomTag.php:728
@@ -11571,11 +11571,11 @@ msgstr "Hoidla nimi"
 #. I18N: Name of a country or state
 #: app/Stats.php:6723
 msgid "Republic of the Congo"
-msgstr "Kongo (Brazzaville)"
+msgstr "Kongo Vabariik"
 
 #: app/Module/LoginBlockModule.php:99 login.php:221
 msgid "Request a new password"
-msgstr "Küsi uus parool"
+msgstr "Küsi uut parooli"
 
 #: app/Module/LoginBlockModule.php:90 app/Module/WelcomeBlockModule.php:60
 #: login.php:212 login.php:279
@@ -11652,7 +11652,7 @@ msgstr "Rexburg, Idaho, Ühendriigid"
 
 #: index_edit.php:304
 msgid "Right section blocks"
-msgstr "Parema sektsiooni blokid"
+msgstr "Parema sektsiooni plokid"
 
 #. I18N: gedcom tag ROLE
 #: admin_users.php:578 app/GedcomTag.php:758
@@ -11667,7 +11667,7 @@ msgstr "Rumeenia"
 #. I18N: gedcom tag ROMN
 #: app/GedcomTag.php:762
 msgid "Romanized"
-msgstr "Romanizado"
+msgstr "Romaniseeritud"
 
 #: app/GedcomTag.php:690
 msgid "Romanized place"
@@ -11744,12 +11744,12 @@ msgstr "Salvei"
 #. I18N: Name of a country or state
 #: app/Stats.php:6878
 msgid "Saint Helena"
-msgstr "St. Helena"
+msgstr "Saint Helena"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6799
 msgid "Saint Kitts and Nevis"
-msgstr "San Cristóbal y Nevis"
+msgstr "Saint Kitts and Nevis"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6806
@@ -11920,11 +11920,11 @@ msgstr "Otsi kohalikult"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:159
 msgid "Search method"
-msgstr "Otsimeetod"
+msgstr "Otsimise meetod"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:147
 msgid "Search text/pattern"
-msgstr "Otsi teksti/sõna"
+msgstr "Otsingu tekst/muster"
 
 #: app/Module/RelationshipsChartModule.php:167
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
@@ -12040,21 +12040,21 @@ msgstr "Saada sõnum kõigile kasutajatele"
 
 #: admin_users_bulk.php:46
 msgid "Send a message to users who have never signed in"
-msgstr "Saada kasutajatele, kes pole kunagi sisse loginud"
+msgstr "Saada sõnum kasutajatele, kes pole kunagi sisse loginud"
 
 #: admin_users_bulk.php:51
 msgid "Send a message to users who have not signed in for 6 months"
-msgstr "Saada kasutajatele, kes pole 6 kuu jooksul sisse loginud"
+msgstr "Saada sõnum kasutajatele, kes pole 6 kuu jooksul sisse loginud"
 
 #. I18N: Menu entry
 #: admin_users_bulk.php:26 app/Theme/AdministrationTheme.php:165
 msgid "Send broadcast messages"
-msgstr "Saatke laiaulatuslike sõnumeid"
+msgstr "Saada laiaulatuslike sõnumeid"
 
 #. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Kas saata välja meeldetuletusi"
+msgstr "Saada meeldetuletus e-maile"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:328
@@ -12172,7 +12172,7 @@ msgstr "Seadke vaikimisi blokid uute kasutajate jaoks"
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1237
 msgid "Set the default number of generations to display on descendancy and pedigree charts."
-msgstr "Seadke vaikimisi arv põlvkondimi, mida kuvada järeltulijate ja pedigree jooniste peal."
+msgstr "Seadke vaikimisi arv põlvkondi, mida kuvada järeltulijate ja pedigree jooniste peal."
 
 #. I18N: Help text for the “Maximum descendancy generations” configuration setting
 #: admin_trees_config.php:1277
@@ -12187,7 +12187,7 @@ msgstr "Seadke maksimaalne arv põlvkondi, mida kuvada põlvnemise joonistel."
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: admin_trees_config.php:394
 msgid "Set the privacy access level for all dead individuals."
-msgstr "Seadke privaatsuse juurdepääsutase surnud isikute jaoks."
+msgstr "Seadke privaatsuse juurdepääsutase kõikide surnud isikute jaoks."
 
 #. I18N: You need to:
 #: login.php:570
@@ -12201,7 +12201,7 @@ msgstr "Seades selle <b>Jah</b> peale, tekib isikute, allikate ja perekondade le
 
 #: setup.php:90
 msgid "Setup wizard for webtrees"
-msgstr "webtrees seadistamise abimees"
+msgstr "Webtrees seadistamise abimees"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:202
@@ -12246,7 +12246,7 @@ msgstr "Shahrivar"
 #: app/GedcomTag.php:772 edit_interface.php:1364 edit_interface.php:1457
 #: inverselink.php:141 note.php:152 note.php:162
 msgid "Shared note"
-msgstr "Jagatud märkused"
+msgstr "Jagatud märge"
 
 #. I18N: Label for search field
 #: find.php:239
@@ -12405,11 +12405,11 @@ msgstr "Kuva aktsepteeritavat kasutajalepingut \"Taotle uut kasutajat\" lehel"
 
 #: app/Module/NotesTabModule.php:74
 msgid "Show all notes"
-msgstr "Näita kõiki märkusi"
+msgstr "Näita kõiki märkmeid"
 
 #: placelist.php:212
 msgid "Show all places in a list"
-msgstr "Näita nimekirja kõiki kohti"
+msgstr "Näita kõiki kohti nimekirjana"
 
 #: app/Module/SourcesTabModule.php:70
 msgid "Show all sources"
@@ -12543,7 +12543,7 @@ msgstr "Näita privaatsete isikute nimesid"
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Näita märkusi"
+msgstr "Näita märkmeid"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
@@ -12589,7 +12589,7 @@ msgstr "Näita vanemaid"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
-msgstr "Näita ootel muudatusi"
+msgstr "Näita läbivaatamata muudatusi"
 
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
@@ -12730,7 +12730,7 @@ msgstr "Näita külalistele"
 #: app/Functions/FunctionsPrintLists.php:256
 #: app/Functions/FunctionsPrintLists.php:673
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "Näita \"lahkub\" paare või isikuid. Need on isikud, kes on elus, kuid kellel ei ole andmebaasis lapsi olemas."
+msgstr "Näita \"lehed\" paare või isikuid. Need on isikud, kes on elus, kuid kellel ei ole andmebaasis lapsi olemas."
 
 #: app/Functions/FunctionsPrintLists.php:247
 #: app/Functions/FunctionsPrintLists.php:664
@@ -12741,7 +12741,7 @@ msgstr "Näita \"juured\" paare või isikuid. Need on isikud keda võib kutsuda 
 #: app/I18N.php:227 app/I18N.php:228
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
-msgstr "Näidatakse alates %1$s kuni %2$s Kokku kirjeid: %3$s"
+msgstr "Näidatakse alates %1$s kuni %2$s, kokku kirjeid: %3$s"
 
 #: app/Controller/HourglassController.php:358
 #: app/Controller/PedigreeController.php:285
@@ -12751,7 +12751,7 @@ msgstr "Õde / vend"
 #: app/Controller/HourglassController.php:358
 #: app/Controller/PedigreeController.php:285
 msgid "Siblings"
-msgstr "Õde / vend"
+msgstr "Õed / Vennad"
 
 #: admin_module_sidebar.php:87 admin_modules.php:218
 msgid "Sidebar"
@@ -12811,7 +12811,7 @@ msgstr "Lehekülje identifitseerimiskood"
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:477 edituser.php:300
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr "Lehekülje liikmed saavad üksteisele sõnumeid saata. Te saate valida kuidas need sõnumid teieni jõuavad, või valida, et soovite neid kõiki."
+msgstr "Lehekülje liikmed saavad üksteisele sõnumeid saata. Te saate valida kuidas need sõnumid teieni jõuavad või keelata nende saatmise teile täielikult."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:520 admin_site_config.php:541
@@ -12821,7 +12821,7 @@ msgstr "Lehekülje vertifikatsioonikood"
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:531 admin_site_config.php:552
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr "Lehekülje vertifikatsioonikoodid ei tööta kui webtrees on paigaldatud alamkausta."
+msgstr "Lehekülje vertifikatsioonikoodid ei tööta, kui webtrees on paigaldatud alamkausta."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
@@ -12932,12 +12932,12 @@ msgstr "Mõned leheküljed saavad näidata arvu, mitu korda neid on külastatud.
 
 #: app/Module/GoogleMapsModule.php:411
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Mõnesid kohanimesid saab kirjutada valikuliste ees- ja järelliidetega. Näiteks \"Orange\" või \"Orange County\". Kui sugupuu sisaldab täispikki kohanimesid, aga andmebaas sisaldab lühikesi kohanimesid, siis te peaksite määrama nimekirja ees- ja järelliidetest mida peaks eirama. Mitu võimalust tuleks eralda semikoolonitega. Näiteks “County;County of” või “Township;Twp;Twp.”."
+msgstr "Mõnesid kohanimesid saab kirjutada valikuliste ees- ja järelliidetega. Näiteks \"Durham\" või \"County Durham\". Kui sugupuu sisaldab täispikki kohanimesid, aga andmebaas sisaldab lühikesi kohanimesid, siis te peaksite määrama nimekirja ees- ja järelliidetest, mida peaks eirama. Mitu võimalust tuleks eralda semikoolonitega. Näiteks “County;County of” või “Township;Twp;Twp.”."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Mõned teemad saavad kuvada ikoone 'Faktid ja sündmused' vahelehel."
+msgstr "Mõned teemad saavad kuvada ikoone \"Faktid ja sündmused\" vahelehel."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:520
@@ -13041,7 +13041,7 @@ msgstr "Allikad"
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
-msgstr "Sündmuste algallikas"
+msgstr "Sündmuste algallikad"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6928
@@ -13065,7 +13065,7 @@ msgstr "Põhja Sudaan"
 #. I18N: Name of a country or state
 #: app/Stats.php:6746
 msgid "Spain"
-msgstr "España"
+msgstr "Hispaania"
 
 #: app/SurnameTradition.php:81
 msgctxt "Surname tradition"
@@ -13091,11 +13091,11 @@ msgstr "Abikaasa rahvaloenduse koht"
 
 #: app/GedcomTag.php:468
 msgid "Spouse note"
-msgstr "Abikaasa märkus"
+msgstr "Abikaasa märge"
 
 #: app/Functions/FunctionsPrintLists.php:1548
 msgid "Spouses"
-msgstr "Abikaasasid"
+msgstr "Abikaasad"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -13149,7 +13149,7 @@ msgstr "Algusaasta"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
-msgstr "Muusatuste kuupäeva vahemiku algus"
+msgstr "Muudatuste kuupäeva vahemiku algus"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:800 app/Module/GoogleMapsModule.php:3447
@@ -13296,7 +13296,7 @@ msgstr "Perenime valik"
 #. I18N: gedcom tag SPFX
 #: app/GedcomTag.php:792
 msgid "Surname prefix"
-msgstr "Prefijo del apellido"
+msgstr "Perekonnanime eesliide"
 
 #: admin_trees_config.php:2092
 msgid "Surname tradition"
@@ -13345,7 +13345,7 @@ msgstr "Šveits"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:359
 msgid "Sydney, Australia"
-msgstr "Sidney, Austraalia"
+msgstr "Sydney, Austraalia"
 
 #: admin_trees_manage.php:740
 msgid "Synchronize family trees with GEDCOM files"
@@ -13362,17 +13362,17 @@ msgstr "Vaheleht"
 
 #: setup.php:376
 msgid "Table prefix"
-msgstr "Tabeli prefiks"
+msgstr "Tabeli eesliide"
 
 #. I18N: Menu entry
 #: admin_module_tabs.php:28 admin_modules.php:160
 #: app/Theme/AdministrationTheme.php:192
 msgid "Tabs"
-msgstr "Sakid"
+msgstr "Vahelehed"
 
 #: find.php:519
 msgid "Tag"
-msgstr "Vaheleht"
+msgstr "Silt"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:361
@@ -13487,11 +13487,11 @@ msgstr "Tai"
 
 #: help_text.php:219
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr "<b>Nimi</b> lahter sisaldab isiku täisnime nagu nemad oleks seda kirjutanud või nagu see on üles kirjutatud. See näitab kuidas seda ekraanil kuvatakse, kasutades standardset genealoogilist annotatsiooni, et eraldada nime erinevaid osasid."
+msgstr "<b>Nime</b> lahter sisaldab isiku täisnime nagu nemad oleks seda kirjutanud või nagu see on üles kirjutatud. See näitab kuidas seda ekraanil kuvatakse, kasutades standardset genealoogilist annotatsiooni, et eraldada nime erinevaid osasid."
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "<b>Perekonnanimi</b> väli sisaldab nime, mida kasutatakse sorteerimiseks ja grupeerimiseks. See võib olla erinev isiku tegelikust perekonnanimest, mis võetakse alati <b>nimi</b> väljalt. Seda välja saab kasutada ilma eesliiteta perekonnanimede sorteerimiseks (Gogh / van Gogh) ja selleks, et grupeerida kirja pandud variatsioone (Kowalski / Kowalska). Kui isik peaks olema välja toodud rohkem kui ühe perekonnanime all, siis need nimed tuleks eraldada komadega."
+msgstr "<b>Perekonnanime</b> lahter sisaldab nime, mida kasutatakse sorteerimiseks ja grupeerimiseks. See võib olla erinev isiku tegelikust perekonnanimest, mis võetakse alati <b>nimi</b> väljalt. Seda välja saab kasutada ilma eesliiteta perekonnanimede sorteerimiseks (Gogh / van Gogh) ja selleks, et grupeerida kirja pandud variatsioone (Kowalski / Kowalska). Kui isik peaks olema välja toodud rohkem kui ühe perekonnanime all, siis need nimed tuleks eraldada komadega."
 
 #: admin_trees_manage.php:148
 #, php-format
@@ -13515,7 +13515,7 @@ msgstr "PhpGedView - webtrees abimees on automatiseeritud protsess, mis aitab ad
 #: admin_users.php:101
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr "Veebilehe administraator %s on kinnitanud teie avalduse kasutaja loomiseks. Nüüd saate sisse logida vajutades järgnevale viitele: %s"
+msgstr "Veebilehe administraator %s on kinnitanud teie avalduse kasutaja loomiseks. Saate nüüd sisse logida vajutades järgnevale viidale: %s"
 
 #: login.php:615
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
@@ -13674,7 +13674,7 @@ msgstr "See kaust saab olla määratud täielikult (nt: /home/user_name/webtrees
 
 #: admin_site_merge.php:205
 msgid "The following facts and events were found in both records."
-msgstr "Mõlemates kirjetes leiti järgnevad faktid."
+msgstr "Mõlemas kirjetes leiti järgnevad faktid."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:252 admin_site_merge.php:298
@@ -13742,11 +13742,11 @@ msgstr "Meediafail %s ei eksisteeri."
 
 #: mediafirewall.php:38
 msgid "The media file was not found in this family tree."
-msgstr "Meediumit ei leitud sellest perepuust."
+msgstr "Meediafaili ei leitud sellest perepuust."
 
 #: admin_media_upload.php:225
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr "Meediafail mida te üles laete saab olla ja tõenäoliselt peaks olema teistsuguse nimega kui see on teie lokaalses arvutis. See on nii, sest tihtipeale lokaalne failinimi omab tähendust, mis on arusaadav ainult teile, aga teiste kasutajate jaoks jääb segaseks. Arvestage ka võimalusega, et teie ja keegi veel püüate laadida üles faili nimega \"vanaema.jpg\".<br><br>Sellel väljal saate te määrata uue nime üleslaetava faili jaoks.Nime mida te sisestate kasutatakse ka pisipildi nimena, mida saab üles laadida eraldi või genereerida automaatselt. Te ei pea sisestama faili laiendit (jpg, gif, pdf, doc, etc.)<br><br>Jätke see tühjaks, et jätta alles originaalne failinimi, mille te oma arvutist üles laadisite."
+msgstr "Meediafail mida te üles laete saab olla ja tõenäoliselt peaks olema teistsuguse nimega, kui see on teie lokaalses arvutis. See on nii, sest tihtipeale lokaalne failinimi omab tähendust, mis on arusaadav ainult teile, aga teiste kasutajate jaoks jääb segaseks. Arvestage ka võimalusega, et teie ja keegi veel püüate laadida üles faili nimega \"vanaema.jpg\".<br><br>Sellel väljal saate te määrata uue nime üleslaetava faili jaoks.Nime mida te sisestate kasutatakse ka pisipildi nimena, mida saab üles laadida eraldi või genereerida automaatselt. Te ei pea sisestama faili laiendit (jpg, gif, pdf, doc, etc.)<br><br>Jätke see tühjaks, et jätta alles originaalne failinimi, mille te oma arvutist üles laadisite."
 
 #: setup.php:169
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."

@@ -634,23 +634,20 @@ class Stats {
 	 */
 	public function totalSurnames($params = array()) {
 		if ($params) {
-			$qs       = implode(',', array_fill(0, count($params), '?'));
-			$opt      = "IN ({$qs})";
-			$vars     = $params;
+			$opt      = 'IN (' . implode(',', array_fill(0, count($params), '?')) . ')';
 			$distinct = '';
 		} else {
 			$opt      = "IS NOT NULL";
-			$vars     = '';
 			$distinct = 'DISTINCT';
 		}
-		$vars[] = $this->tree->getTreeId();
-		$total  =
+		$params[] = $this->tree->getTreeId();
+		$total =
 			Database::prepare(
 				"SELECT SQL_CACHE COUNT({$distinct} n_surn COLLATE '" . I18N::collation() . "')" .
 				" FROM `##name`" .
 				" WHERE n_surn COLLATE '" . I18N::collation() . "' {$opt} AND n_file=?"
 			)->execute(
-				$vars
+				$params
 			)->fetchOne();
 
 		return I18N::number($total);

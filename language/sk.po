@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2016-09-18 14:15+0100\n"
+"Project-Id-Version: Slovak (webtrees)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-07 14:51+0000\n"
 "PO-Revision-Date: 2016-01-18 20:45+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Slovak <http://translate.webtrees.net/projects/webtrees/webtrees/sk/>\n"
+"Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 2.8\n"
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -24,6 +24,16 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:309
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
+#: modules_v3/ahnentafel_report/report.xml:160,
+#: modules_v3/ahnentafel_report/report.xml:188,
+#: modules_v3/ahnentafel_report/report.xml:282,
+#: modules_v3/ahnentafel_report/report.xml:309,
+#: modules_v3/ahnentafel_report/report.xml:334,
+#: modules_v3/ahnentafel_report/report.xml:359,
+#: modules_v3/ahnentafel_report/report.xml:160,,
+#: modules_v3/ahnentafel_report/report.xml:188,,
+#: modules_v3/ahnentafel_report/report.xml:282,,
+#: modules_v3/ahnentafel_report/report.xml:309,,
 msgid " but the details are unknown"
 msgstr " ale podrobnosti nie sú známe"
 
@@ -41,43 +51,89 @@ msgstr " ale podrobnosti nie sú známe"
 #: modules_v3/descendancy_report/report.xml:385
 #: modules_v3/descendancy_report/report.xml:424
 #: modules_v3/descendancy_report/report.xml:455
+#: modules_v3/ahnentafel_report/report.xml:159,
+#: modules_v3/ahnentafel_report/report.xml:187,
+#: modules_v3/ahnentafel_report/report.xml:214,
+#: modules_v3/ahnentafel_report/report.xml:281,
+#: modules_v3/ahnentafel_report/report.xml:308,
+#: modules_v3/ahnentafel_report/report.xml:333,
+#: modules_v3/ahnentafel_report/report.xml:358,
+#: modules_v3/descendancy_report/report.xml:127,
+#: modules_v3/descendancy_report/report.xml:159,
+#: modules_v3/descendancy_report/report.xml:316,
+#: modules_v3/descendancy_report/report.xml:354,
+#: modules_v3/descendancy_report/report.xml:385,
+#: modules_v3/descendancy_report/report.xml:424,
+#: modules_v3/descendancy_report/report.xml:455,
+#: modules_v3/ahnentafel_report/report.xml:159,,
+#: modules_v3/ahnentafel_report/report.xml:187,,
+#: modules_v3/ahnentafel_report/report.xml:214,,
+#: modules_v3/ahnentafel_report/report.xml:281,,
+#: modules_v3/ahnentafel_report/report.xml:308,,
+#: modules_v3/ahnentafel_report/report.xml:333,,
+#: modules_v3/ahnentafel_report/report.xml:358,,
+#: modules_v3/descendancy_report/report.xml:127,,
+#: modules_v3/descendancy_report/report.xml:159,,
+#: modules_v3/descendancy_report/report.xml:316,,
+#: modules_v3/descendancy_report/report.xml:354,,
+#: modules_v3/descendancy_report/report.xml:385,,
 msgid " in "
 msgstr " v lokalite "
 
 #: statisticsplot.php:903 statisticsplot.php:953 statisticsplot.php:1007
 #: statisticsplot.php:1057 statisticsplot.php:1111 statisticsplot.php:1161
 #: statisticsplot.php:1211 statisticsplot.php:1261 statisticsplot.php:1311
-#: statisticsplot.php:1361
+#: statisticsplot.php:1361 statisticsplot.php:903, statisticsplot.php:953,
+#: statisticsplot.php:1007, statisticsplot.php:1057, statisticsplot.php:1111,
+#: statisticsplot.php:1161, statisticsplot.php:1211, statisticsplot.php:1261,
+#: statisticsplot.php:1311, statisticsplot.php:1361, statisticsplot.php:903,,
+#: statisticsplot.php:953,, statisticsplot.php:1007,, statisticsplot.php:1057,,
+#: statisticsplot.php:1111,, statisticsplot.php:1161,,
+#: statisticsplot.php:1211,, statisticsplot.php:1261,,
 msgid " per gender"
 msgstr " / Muži-ženy"
 
 #: statisticsplot.php:905 statisticsplot.php:955 statisticsplot.php:1009
 #: statisticsplot.php:1059 statisticsplot.php:1113 statisticsplot.php:1163
 #: statisticsplot.php:1213 statisticsplot.php:1263 statisticsplot.php:1313
-#: statisticsplot.php:1363
+#: statisticsplot.php:1363 statisticsplot.php:905, statisticsplot.php:955,
+#: statisticsplot.php:1009, statisticsplot.php:1059, statisticsplot.php:1113,
+#: statisticsplot.php:1163, statisticsplot.php:1213, statisticsplot.php:1263,
+#: statisticsplot.php:1313, statisticsplot.php:1363, statisticsplot.php:905,,
+#: statisticsplot.php:955,, statisticsplot.php:1009,, statisticsplot.php:1059,,
+#: statisticsplot.php:1113,, statisticsplot.php:1163,,
+#: statisticsplot.php:1213,, statisticsplot.php:1263,,
 msgid " per time period"
 msgstr " / za jednotku času"
 
+# I18N: Abbreviation for "number %s"
 #. I18N: Abbreviation for "number %s"
 #: app/Functions/FunctionsPrintFacts.php:213
 #: app/Functions/FunctionsPrintFacts.php:218
 #: app/Module/FrequentlyAskedQuestionsModule.php:472
+#: app/Functions/FunctionsPrintFacts.php:213,
+#: app/Functions/FunctionsPrintFacts.php:218,
+#: app/Module/FrequentlyAskedQuestionsModule.php:472,
+#: app/Functions/FunctionsPrintFacts.php:213,,
 #, php-format
 msgid "#%s"
 msgstr "#%s"
 
+# I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.”
 #. I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
 msgstr "%1$s %2$s má prepojenie %3$s ku %4$s."
 
+# I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
 msgstr "%1$s o %2$s generácií vyššie"
 
+# I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
 #, php-format
@@ -86,36 +142,47 @@ msgstr "%1$s o %2$s generácií nižšie"
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1636
+#: app/Controller/IndividualController.php:195, app/Date.php:332,
+#: app/Functions/FunctionsPrintLists.php:1636,
+#: app/Controller/IndividualController.php:195,,
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
+# I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:255
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
 msgstr "Bolo stiahnutých %1$s KB za %2$s sekúnd."
 
+# I18N: placeholders are GEDCOM XREFs, such as R123
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
+#: admin_site_merge.php:47, admin_site_merge.php:51, admin_trees_check.php:171,
+#: admin_site_merge.php:47,,
 #, php-format
 msgid "%1$s does not exist."
 msgstr "%1$s neexistuje."
 
+# I18N: placeholders are GEDCOM XREFs, such as R123
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
 msgstr "%1$s neexistuje. Mali ste na mysli %2$s?"
 
+# I18N: %1$s and %2$s are internal ID numbers such as R123
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
 msgstr "%1$s nemá sptné prepojenie na %2$s."
 
+# I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:312 admin_site_upgrade.php:396
+#: admin_site_upgrade.php:312, admin_site_upgrade.php:396,
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
@@ -131,6 +198,7 @@ msgstr[0] "%1$s zobrazená osoba, medzi všetkými z %2$s z %3$s generácií."
 msgstr[1] "%1$s zobrazené osoby, medzi všetkými z %2$s z %3$s generácií."
 msgstr[2] "%1$s zobrazených osôb, medzi všetkými z %2$s z %3$s generácií."
 
+# I18N: %1$s is a count of individuals, %2$s is a list of their names
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:853
 #, php-format
@@ -140,12 +208,14 @@ msgstr[0] "%1$s osobe chýba miesto narodenia, súradnice: %2$s."
 msgstr[1] "%1$s osobám chýba miesto narodenia, súradnice: %2$s."
 msgstr[2] "%1$s osobám chýba miesto narodenia, súradnice: %2$s."
 
+# I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:192
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
 msgstr "%1$s je %2$s ale predpokladá sa %3$s."
 
+# I18N: A Spanish relationship name, such as 7th great-nephew
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:645
 #, php-format
@@ -420,9 +490,9 @@ msgstr[2] "pred %s sekundami"
 
 #. I18N: %s is a person's name
 #: message.php:300 message.php:303 message.php:305
-#, fuzzy, php-format
+#, php-format
 msgid "%s sent you the following message."
-msgstr "Táto správa bola zaslaná na váš webtrees uživateľský účet z %s"
+msgstr "%s vám zaslal následujúcu správu."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5918
 #, php-format
@@ -888,7 +958,7 @@ msgstr "Zoznam uživateľov a návštevníkov ktorý sú pripojený."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Objekt multimédia je záznam v rodokmeni, ktorý obsahuje informácie o mediálnom súbore. Medzi takéto informácie môže patriť názov, poznámka o autorských právach, prepis, obmedzenia prístupu a podobne. Mediálny súbor, ako napr. fototografia alebo video, môžu byť uložené na tomto webserveri (lokálne) alebo na inom webserveri (remotne)."
+msgstr "Objekt multimédia je záznam v rodokmeni, ktorý obsahuje informácie o mediálnom súbore. Medzi takéto informácie môže patriť názov, poznámka o autorských právach, prepis, obmedzenia prístupu a podobne. Mediálny súbor, ako napr. fototografia alebo video, môžu byť uložené na tomto webserveri (lokálne) alebo na inom webserveri (vzdialene)."
 
 #: login.php:263
 #, php-format
@@ -1190,7 +1260,6 @@ msgid "Accept"
 msgstr "Prijať"
 
 #: edit_changes.php:214 edit_changes.php:225
-#, fuzzy
 msgid "Accept all changes"
 msgstr "Schváliť všetky zmeny"
 
@@ -1202,9 +1271,8 @@ msgid "Access level"
 msgstr "Úroveň prístupu"
 
 #: admin_users.php:520
-#, fuzzy
 msgid "Access to family trees"
-msgstr "Rodokmeň - nastavenie a prístup"
+msgstr "Prístup k rodokmeňom"
 
 #: admin_users.php:375
 msgid "Account approval and email verification"
@@ -1432,9 +1500,8 @@ msgstr "Pridať existujúcu osobu ako manželku"
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
-#, fuzzy
 msgid "Add an FAQ"
-msgstr "Pridať položku FAQ"
+msgstr "Pridať položku do FAQ"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
 msgid "Add an associate"
@@ -1531,7 +1598,6 @@ msgstr "Pridať/upraviť denník/novinky"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
-#, fuzzy
 msgid "Address"
 msgstr "Adresa"
 
@@ -1737,9 +1803,8 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr ""
 
 #: login.php:259
-#, fuzzy
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-msgstr "Po prihlásení vyberte link «Môj účet» v menu «Moja stránka» a vyplňte pole heslo, pre zmenu vášho hesla."
+msgstr "Po prihlásení v menu «Moja stránka» vyberte link «Môj účet» a vyplňte pole heslo a overenie hesla, pre zmenu vášho hesla."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:230
@@ -1930,13 +1995,13 @@ msgstr "Tiež známy(a) ako"
 #: app/GedcomTag.php:963
 msgctxt "FEMALE"
 msgid "Also known as"
-msgstr "Tiež známy(a) ako"
+msgstr "Tiež známa ako"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:959
 msgctxt "MALE"
 msgid "Also known as"
-msgstr "Tiež známy(a) ako"
+msgstr "Tiež známy ako"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
@@ -1945,7 +2010,6 @@ msgstr "Americká Samoa"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
-#, fuzzy
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
 msgstr "Položka FAQ môže byť zobrazovaná buď len v jednom rodokmeni, alebo vo všetkých rodokmeňoch."
 
@@ -2283,12 +2347,12 @@ msgstr "Atlanta, Georgia, United States"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
-msgstr "Sluha"
+msgstr "Opatrovník"
 
 #: app/GedcomCode/GedcomCodeRela.php:60
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr "Sluha"
+msgstr "Slúžka"
 
 #: app/GedcomCode/GedcomCodeRela.php:58
 msgctxt "MALE"
@@ -2297,17 +2361,17 @@ msgstr "Sluha"
 
 #: app/GedcomCode/GedcomCodeRela.php:71
 msgid "Attending"
-msgstr "Služba"
+msgstr "Obsluhujúci"
 
 #: app/GedcomCode/GedcomCodeRela.php:69
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "Služba"
+msgstr "Obsluhujúca"
 
 #: app/GedcomCode/GedcomCodeRela.php:67
 msgctxt "MALE"
 msgid "Attending"
-msgstr "Služba"
+msgstr "Obsluhujúci"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1910
@@ -2360,7 +2424,6 @@ msgid "Author of last change"
 msgstr "Autor poslednej zmeny"
 
 #: admin_users.php:441
-#, fuzzy
 msgid "Automatically accept changes made by this user"
 msgstr "Automaticky schváliť zmeny vykonané týmto uživateľom"
 
@@ -4021,7 +4084,7 @@ msgstr "Pokračovanie"
 #: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
 #: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
-msgstr ""
+msgstr "Riadiaci panel"
 
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:413
 #: app/Module/ClippingsCartModule.php:781
@@ -4048,7 +4111,7 @@ msgstr "Kodaň, Dánsko"
 #: app/Functions/FunctionsPrintFacts.php:1025
 #: app/Functions/FunctionsPrintFacts.php:1173
 msgid "Copy"
-msgstr "Kopíruj"
+msgstr "Kopírovať"
 
 #. I18N: Copy all the records from [family tree 1] into [family tree 2]
 #: admin_trees_merge.php:195
@@ -4354,7 +4417,7 @@ msgstr "Uživateľský uvítací text"
 
 #: app/Theme/AbstractTheme.php:1078 app/Theme/AbstractTheme.php:1080
 msgid "Customize this page"
-msgstr ""
+msgstr "prispôsobiť stránku"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6733
@@ -5453,15 +5516,13 @@ msgstr ""
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1611
-#, fuzzy
 msgid "Edit preferences"
-msgstr "Voľby editácie"
+msgstr "Upraviť nastavenia"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-#, fuzzy
 msgid "Edit the FAQ"
-msgstr "Upraviť položku FAQ"
+msgstr "Upraviť FAQ"
 
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
@@ -6443,9 +6504,8 @@ msgid "Folder name on server"
 msgstr "Meno priečinka na serveri"
 
 #: login.php:341
-#, fuzzy
 msgid "Follow this link to verify your email address."
-msgstr "Prosím kliknite na odkaz dole a vyplňte požadované údaje pre overenie vášho účtu a vašej e-mailovej adresy."
+msgstr "Prosím kliknite na nasledujúci odkaz kvôli overeniu vašej e-mailovej adresy."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -6475,19 +6535,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Napríklad ak zadáte cestu o veľkosti 2, osoba bude môcť vidieť svojho vnuka (dieťa), svoju tetu (rodič, súrodenec), svoju nevlastnú dcéru (partner, dieťa), ale už nie svojho bratranca (rodič, súrodenec, dieťa)."
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
 msgstr "S otázkami k rodokmeňu sa obracajte na %s"
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "Pre technickú podporu a ďalšie informácie kontaktujte %s"
+msgstr "Pre technickú podporu a ďalšie informácie kontaktujte: %s"
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Pre technickú podporu, alebo s otázkami k rodokmeňu prosím kontaktujte %s"
+msgstr "Pre technickú podporu, alebo s otázkami k rodokmeňu prosím kontaktujte: %s"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:276
@@ -6496,7 +6556,7 @@ msgstr ""
 
 #: app/Module/LoginBlockModule.php:87 login.php:209
 msgid "Forgot password?"
-msgstr ""
+msgstr "Zabudli ste heslo?"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:496 help_text.php:136 help_text.php:148 help_text.php:159
@@ -7311,9 +7371,8 @@ msgid "If a visitor to the website has not selected a preferred language in thei
 msgstr "Ak návštevník stránky nemá nastavený preferovaný jazyk v konfigurácii svojho prehliadača, alebo ma nastavený nepodporovaný jazyk, tak bude použitý tento jazyk. Typicky sa toto nastavenie týka vyhľadávacích enginov."
 
 #: admin_users.php:391
-#, fuzzy
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr "Ak správca vytvára uživateľský účet, overovací e-mail sa neodošle a musí byť overený manuálne."
+msgstr "Ak uživateľský účet správca vytvára, overovací e-mail sa neodošle a preto e-mailová adresa musí byť overená manuálne."
 
 #: help_text.php:228
 #, php-format
@@ -7938,7 +7997,7 @@ msgstr ""
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2276
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:545
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Zachovať pôvodnú informáciu „poslednej zmeny“"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6795
@@ -8864,17 +8923,16 @@ msgstr "Martinik"
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:210
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Maskovať za tohto užívateľa"
 
 #. I18N: Help text for "Case insensitive" searches
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
-#, fuzzy
 msgid "Match both upper and lower case letters."
-msgstr "Zaškrtnite toto políčko, aby sa musely zhodovať veľké i malé písmena."
+msgstr "Veľké a malé písmená sa zhodujú."
 
 #: lifespan.php:104
 msgid "Match calendar"
-msgstr ""
+msgstr "Musí sa zhodovať s kalendárom"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:139
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -9514,7 +9572,7 @@ msgstr "Moja stránka"
 
 #: app/Theme/AbstractTheme.php:1636
 msgid "My pages"
-msgstr ""
+msgstr "Moje stránky"
 
 #: app/Module/UserWelcomeModule.php:59 app/Theme/AbstractTheme.php:1662
 msgid "My pedigree"
@@ -10387,9 +10445,8 @@ msgid "Other folder… please type in"
 msgstr "Iný priečinok… prosím napíšte"
 
 #: admin_trees_config.php:2087
-#, fuzzy
 msgid "Other preferences"
-msgstr "Ďalšie nastavenia"
+msgstr "Iné nastavenia"
 
 #: statistics.php:73
 msgid "Others"
@@ -11118,9 +11175,8 @@ msgstr "Obmedzenie utajenia - uplatní sa v záznamoch a faktoch, ktoré neobsah
 #: app/Module/GoogleMapsModule.php:785 app/Note.php:71
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1470 app/Stats.php:2975 expand_view.php:33
-#, fuzzy
 msgid "Private"
-msgstr "Súkromné"
+msgstr "Neverejné"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:700
@@ -11429,14 +11485,12 @@ msgid "Regular expressions are an advanced pattern matching technique."
 msgstr ""
 
 #: edit_changes.php:186 edit_changes.php:206
-#, fuzzy
 msgid "Reject"
-msgstr "Späť"
+msgstr "Zamietnuť"
 
 #: edit_changes.php:216 edit_changes.php:236
-#, fuzzy
 msgid "Reject all changes"
-msgstr "Zrušiť všetky zmeny"
+msgstr "Zamietnuť všetky zmeny"
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
@@ -11944,7 +11998,6 @@ msgstr "Hľadať"
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1752
-#, fuzzy
 msgid "Search and replace"
 msgstr "Nájsť a nahradiť"
 
@@ -12021,9 +12074,8 @@ msgid "Select a GEDCOM file to import"
 msgstr "Vyber GEDCOM súbor, ktorý sa má importovať"
 
 #: index_edit.php:284 index_edit.php:367
-#, fuzzy
 msgid "Select a block and use the arrows to move it."
-msgstr "Označte blok a potom kliknite na niektorú ikonu šípky k presunu označeného bloku v smere šípky."
+msgstr "Označte názov bloku a používajte šípky k jeho presunu."
 
 #: app/Functions/FunctionsEdit.php:404 reportengine.php:244
 msgid "Select a date"
@@ -12748,9 +12800,8 @@ msgid "Show this block for which languages"
 msgstr "Zobraziť tento blok pre všetky jazyky?"
 
 #: admin_trees_config.php:1051
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Zobraziť vybrané obrázky v boxoch osôb"
+msgstr "Zobraziť náhľady obrázkov v diagramoch a rodinných skupinách"
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:206
@@ -12828,20 +12879,17 @@ msgstr "Sierra Leone"
 #. I18N: Name of a module
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
 #: app/Theme/AbstractTheme.php:1561 login.php:150
-#, fuzzy
 msgid "Sign in"
 msgstr "Prihlásiť sa"
 
 #: app/Module/LoginBlockModule.php:62 app/Theme/AbstractTheme.php:1572
-#, fuzzy
 msgid "Sign out"
 msgstr "Odhlásiť sa"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:446
-#, fuzzy
 msgid "Sign-in URL"
-msgstr "Prihlasovacia URL"
+msgstr "Prihlasovacie URL"
 
 #. I18N: Menu entry
 #: admin_site_config.php:140 app/Theme/AdministrationTheme.php:97
@@ -13595,9 +13643,8 @@ msgid "The changes to “%s” have been rejected."
 msgstr "Zmeny v zázname „%s“ boli zamietnuté."
 
 #: app/Module/ClippingsCartModule.php:311
-#, fuzzy
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "<br>Schránka výstrižkov vám umožňuje robiť z tohoto rodokmeňa „výstrižky“ a vložiť ich do jednoduchého GEDCOM súboru na stiahnutie.<br><ul><li>Ako urobiť výstrižky?<br>To je veľmi jednoduché. Kdekoľvek uvidíte meno, na ktoré sa dá kliknúť (osoba, rodina alebo zdroj), môžete na toto meno kliknúť a tak sa dostať na stránku s údajmi o tomto mene. Na tejto stránke uvidíte voľbu <b>Pridať do schránky výstrižkov</b>. Kliknutím na tento odkaz sa dostanete na stránku, kde budete mať niekoľko možností stiahnutia.</li><li>Ako súbor stiahnuť?<br>Keď budete mať položky v schránke, môžete ich stiahnuť jednoducho kliknutím na odkaz <b>Stiahnuť</b>.<br>Potom postupujte podľa inštrukcií a odkazov.</li><ul>"
+msgstr "Schránka výstrižkov vám umožňuje vyberať úrivky z rodokmeňa a stiahnuť v súbore typu GEDCOM."
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
@@ -14090,9 +14137,8 @@ msgstr ""
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:148
-#, fuzzy
 msgid "There are no facts for this individual."
-msgstr "K tejto osobe nie sú dostupné žiadne fakty."
+msgstr "K tejto osobe nie sú dostupné žiadne údaje."
 
 #: app/Module/MediaTabModule.php:76
 msgid "There are no media objects for this individual."
@@ -14406,9 +14452,8 @@ msgid "This is the width (in pixels) that the program will use when automaticall
 msgstr "Toto je šírka (v pixeloch) ktorú program použije keď automaticky generuje náhľady. Implicitné nastavenie je 100."
 
 #: admin_users.php:317 edituser.php:176 login.php:423 setup.php:427
-#, fuzzy
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr "Toto je vaše skutočné meno, ktoré chcete zobraziť na monitore."
+msgstr "Totto je vaše skutočné meno, v takom tvare v akom si želáte zobraziť na obrazovke."
 
 #: admin_trees_check.php:135
 msgid "This may be a mistake in your data."
@@ -14558,9 +14603,9 @@ msgstr "Táto stránka vám umožňuje obísť obvyklé formuláre a upravovať 
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Táto stránka bola prehliadnutá %s krát."
+msgstr[1] "Táto stránka bola prehliadnutá %s krát."
+msgstr[2] "Táto stránka bola prehliadnutá %s krát."
 
 #: app/Module/GoogleMapsModule.php:2419
 msgid "This place has no coordinates"
@@ -15439,7 +15484,7 @@ msgstr "Použijte toto pole k tomu, aby ste administrátorovi zdôvodnili prečo
 
 #: app/Functions/FunctionsEdit.php:664
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "(Ne)použiť tento obrázok pre diagramy a na osobnej stránke."
 
 #: app/Module/GoogleMapsModule.php:3278
 msgid "Use this value"
@@ -15465,9 +15510,8 @@ msgid "User not verified by administrator."
 msgstr "Užívateľ nebol overený administrátorom."
 
 #: admin_trees_config.php:956
-#, fuzzy
 msgid "User preferences"
-msgstr "Nastavenia pre uživateľov"
+msgstr "Uživateľské nastavenia"
 
 #: login.php:517 login.php:523 login.php:581 login.php:585
 msgid "User verification"
@@ -15640,9 +15684,8 @@ msgid "View the notes"
 msgstr "Zobraziť poznámky"
 
 #: calendar.php:292
-#, fuzzy
 msgid "View this day"
-msgstr "Zobraziť deň"
+msgstr "Zobraziť tento deň"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15651,29 +15694,24 @@ msgstr "Zobraziť deň"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4538 app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4585
 #: medialist.php:313 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:99
-#, fuzzy
 msgid "View this family"
-msgstr "Zobraziť rodinu"
+msgstr "Zobraziť túto rodinu"
 
 #: app/Module/SlideShowModule.php:177 medialist.php:310
-#, fuzzy
 msgid "View this individual"
-msgstr "Zobraziť osobu"
+msgstr "Zobraziť túto osobu"
 
 #: calendar.php:296
-#, fuzzy
 msgid "View this month"
-msgstr "Zobraziť mesiac"
+msgstr "Zobraziť tento mesiac"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
-#, fuzzy
 msgid "View this source"
-msgstr "Zobraziť zdroj"
+msgstr "Zobraziť tento zdroj"
 
 #: calendar.php:300
-#, fuzzy
 msgid "View this year"
-msgstr "Zobraziť rok"
+msgstr "Zobraziť tento rok"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:385
@@ -15819,9 +15857,8 @@ msgid "When a record is edited, the user and timestamp are recorded. Sometimes i
 msgstr ""
 
 #: admin_users.php:388
-#, fuzzy
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Keď sa uživateľ zaregistruje, je mu odoslaný e-mail s overovacím odkazom. Keď naň klikne vieme, že emailová adresa je správná a voľba „email overený“ je zaškrtnutá automaticky."
+msgstr "Pri registrácii nového uživateľa na jeho e-mailovú adresu je zaslaná uvítacia správa s overovacím odkazom. Keď naň klikne vieme, že emailová adresa je správna a voľba „email overený“ je automaticky potvrdená."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -16019,9 +16056,8 @@ msgid "You can choose the prefix that will be used whenever new XREFs are create
 msgstr ""
 
 #: admin_users.php:462 edituser.php:312
-#, fuzzy
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr "Ak je toto políčko zaškrtnuté, ostatný prihlásený uživatelia uvidia, či ste v daný okamžik online a vy uvidíte, či sú online ostatný. Ak nechcete, aby vás ostatný videli online, vyškrtnite toto políčko. Ale ani vy nebudete môcť zistiť, či sú ostatný uživatelia online."
+msgstr "Môžete zvoliť, či sa má objaviť na zoznamu práve prihlásených uživateľov vaše prihlasovacie meno."
 
 #. I18N: %s is a URL
 #: help_text.php:288
@@ -16092,7 +16128,7 @@ msgstr "Vybrali ste GEDCOM z odlišným názvom. Je to srávne?"
 
 #: logout.php:27
 msgid "You have signed out."
-msgstr ""
+msgstr "Boli ste odhlásení."
 
 #: addmedia.php:473
 msgid "You may enter a URL, beginning with “http://”."
@@ -16140,9 +16176,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr ""
 
 #: app/Module/ChartsBlockModule.php:138
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Musíte vybrať osobu a typ grafu v nastavení bloku."
+msgstr "Musíte vybrať osobu a typ grafu v nastaveniach bloku."
 
 #: admin_users.php:286
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
@@ -16251,9 +16286,8 @@ msgid "Your server’s administrator will provide you with the connection detail
 msgstr "Váš správca serveru vám poskytne podrobnosti pripojenia."
 
 #: app/Module/BatchUpdateModule.php:228
-#, fuzzy
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "Váš uživatelský účet nemá povolené „automaticky schvaľovať zmeny“. Budete schopný meniť naraz iba jeden záznam."
+msgstr "Váš uživatelský účet nemá povolené „automaticky schvaľovať zmeny“. Iba jeden záznam môžete meniť súčasne."
 
 #: admin.php:576
 #, php-format
@@ -16408,7 +16442,7 @@ msgstr "tiež známy ako"
 #. I18N: option in list box “always use this image”
 #: app/Functions/FunctionsEdit.php:656
 msgid "always"
-msgstr ""
+msgstr "vždy"
 
 #: app/Controller/AncestryController.php:92 app/Stats.php:4536
 #: app/Stats.php:4562 app/Stats.php:4573 app/Stats.php:4583 app/Stats.php:5915
@@ -16608,9 +16642,8 @@ msgstr "pravdepodobne %s"
 
 #. I18N: A button label.
 #: app/Module/ClippingsCartModule.php:796
-#, fuzzy
 msgid "cancel"
-msgstr "Zrušiť"
+msgstr "zrušiť"
 
 #: app/Stats.php:2918
 msgid "census added"
@@ -16665,12 +16698,12 @@ msgstr "zatvoriť"
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:180
 msgid "clouds"
-msgstr ""
+msgstr "oblaky"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:193
 msgid "colors"
-msgstr ""
+msgstr "farby"
 
 #: app/Module/TopSurnamesModule.php:165
 msgid "compact list"
@@ -16774,7 +16807,6 @@ msgstr "zomrel"
 #: admin_site_change.php:370 admin_site_logs.php:310
 #: app/Module/ClippingsCartModule.php:432
 #: app/Module/ClippingsCartModule.php:797 app/Module/GoogleMapsModule.php:4084
-#, fuzzy
 msgid "download"
 msgstr "stiahnúť"
 
@@ -18830,9 +18862,8 @@ msgstr "imigračné meno"
 
 #. I18N: A button label.
 #: app/Module/GoogleMapsModule.php:4045
-#, fuzzy
 msgid "import"
-msgstr "import"
+msgstr "importovať"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
@@ -18897,9 +18928,8 @@ msgstr "posledný"
 
 #. I18N: A button label (a verb).
 #: inverselink.php:152
-#, fuzzy
 msgid "link"
-msgstr "Nastaviť odkaz"
+msgstr "odkaz"
 
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:47 app/Module/OnThisDayModule.php:149
@@ -19094,7 +19124,7 @@ msgstr "synovec/neter"
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:662
 msgid "never"
-msgstr ""
+msgstr "nikdy"
 
 #. I18N: A button label, next page
 #: app/I18N.php:223 app/Module/BatchUpdateModule.php:247
@@ -19614,7 +19644,6 @@ msgstr "prihlásiť sa"
 
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:65
-#, fuzzy
 msgid "sign out"
 msgstr "odhlásiť sa"
 
@@ -20096,15 +20125,13 @@ msgstr "Potvrdiť zmenu"
 
 #. I18N: A button label.
 #: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4063
-#, fuzzy
 msgid "upload"
-msgstr "import"
+msgstr "nahrať"
 
 #. I18N: A button label.
 #: ancestry.php:92 app/Module/GoogleMapsModule.php:739 branches.php:49
 #: compact.php:54 descendancy.php:71 familybook.php:61 fanchart.php:95
 #: hourglass.php:62 lifespan.php:110 pedigree.php:169 relationship.php:85
-#, fuzzy
 msgid "view"
 msgstr "zobraziť"
 
@@ -20118,7 +20145,7 @@ msgstr "návštevníci"
 #: modules_v3/descendancy_report/report.xml:107
 msgctxt "FEMALE"
 msgid "was born"
-msgstr "sa narodil"
+msgstr "sa narodila"
 
 #: modules_v3/ahnentafel_report/report.xml:140
 #: modules_v3/descendancy_report/report.xml:104
