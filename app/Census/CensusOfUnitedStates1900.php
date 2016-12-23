@@ -48,7 +48,7 @@ class CensusOfUnitedStates1900 extends CensusOfUnitedStates implements CensusInt
 			new CensusColumnChildrenLiving($this, 'Chil', 'Number of these children living'),
 			new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth of this person'),
 			new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father of this person'),
-			new CensusColumnFatherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother of this person'),
+			new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother of this person'),
 			new CensusColumnNull($this, 'Imm', 'Year of immigration to the United States'),
 			new CensusColumnNull($this, 'US', 'Number of years in the United States'),
 			new CensusColumnNull($this, 'Nat', 'Naturalization'),

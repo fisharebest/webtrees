@@ -26,6 +26,7 @@ class Census {
 		return array(
 			new CensusOfCzechRepublic,
 			new CensusOfDenmark,
+			new CensusOfDeutschland,
 			new CensusOfEngland,
 			new CensusOfFrance,
 			new CensusOfScotland,

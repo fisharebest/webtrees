@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-11-17 09:03+0000\n"
+"PO-Revision-Date: 2016-12-16 11:35+0000\n"
 "Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
@@ -18913,7 +18913,7 @@ msgstr "rodzic matki"
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:78
 msgid "matrilineal"
-msgstr "matrylinearny"
+msgstr "matrylinearna"
 
 #: app/Module/GoogleMapsModule.php:362
 msgid "maximum"
@@ -19201,7 +19201,7 @@ msgstr "rodzic ojca"
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:75
 msgid "patrilineal"
-msgstr "patrylinearny"
+msgstr "patrylinearna"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:56

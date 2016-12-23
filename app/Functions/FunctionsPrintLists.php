@@ -93,7 +93,7 @@ class FunctionsPrintLists {
 					columns: [
 						/* Given names  */ { type: "text" },
 						/* Surnames     */ { type: "text" },
-						/* SOSA numnber */ { type: "num", visible: ' . ($option == 'sosa' ? 'true' : 'false') . ' },
+						/* SOSA numnber */ { type: "num", visible: ' . ($option === 'sosa' ? 'true' : 'false') . ' },
 						/* Birth date   */ { type: "num" },
 						/* Anniversary  */ { type: "num" },
 						/* Birthplace   */ { type: "text" },
@@ -108,7 +108,7 @@ class FunctionsPrintLists {
 						/* Filter death */ { sortable: false },
 						/* Filter tree  */ { sortable: false }
 					],
-					sorting: [[' . ($option == 'sosa' ? '4, "asc"' : '1, "asc"') . ']],
+					sorting: [[' . ($option === 'sosa' ? '4, "asc"' : '1, "asc"') . ']],
 					displayLength: 20,
 					pagingType: "full_numbers"
 				});
@@ -357,7 +357,11 @@ class FunctionsPrintLists {
 			$html .= '<td hidden data-sort="' . Filter::escapeHtml($surn_givn) . '"></td>';
 
 			// SOSA
-			$html .= '<td class="center" data-sort="' . $key . '"><a href="relationship.php?pid1=' . $indiviudals[1] . '&amp;pid2=' . $individual->getXref() . '" title="' . I18N::translate('Relationships') . '">' . I18N::number($key) . '</a></td>';
+			$html .= '<td class="center" data-sort="' . $key . '">';
+			if ($option === 'sosa') {
+				$html .= '<a href="relationship.php?pid1=' . $indiviudals[1] . '&amp;pid2=' . $individual->getXref() . '" title="' . I18N::translate('Relationships') . '">' . I18N::number($key) . '</a>';
+			}
+			$html .= '</td>';
 
 			// Birth date
 			$birth_dates = $individual->getAllBirthDates();

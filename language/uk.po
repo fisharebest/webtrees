@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2016-09-18 14:15+0100\n"
-"PO-Revision-Date: 2016-08-22 19:32+0000\n"
+"PO-Revision-Date: 2016-12-12 21:05+0000\n"
 "Last-Translator: Yuri <yurius.r@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.8\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -1011,9 +1011,8 @@ msgid "A report of vital records for a given date or place."
 msgstr "Звіт записів актів громадянського стану (РАГС) на зазначену дату або місце."
 
 #: admin_users.php:523
-#, fuzzy
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Роль - це набір прав доступу, які дають дозвіл переглядати дані, змінювати параметри конфігурації і т. п. Права доступу встановлюються для ролей, а ролі призначаються користувачам. Кожне генеалогічне дерево може мати різний рівень доступу для кожної ролі, а користувачі можуть мати різну роль для кожного генеалогічного дерева."
+msgstr "Роль - це набір прав доступу, які дають дозвіл переглядати дані, змінювати параметри конфігурації і т. п. Права доступу встановлюються для ролей, а ролі призначаються користувачам. Кожне генеалогічне дерево може призначати різні права доступу для кожної ролі, а користувачі можуть мати різну роль у кожному генеалогічному дереві."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1071,9 +1070,8 @@ msgid "A timeline displaying individual events."
 msgstr "Діаграма часу, що відображає окремі події."
 
 #: admin_users.php:397
-#, fuzzy
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Ви не зможете увійти в систему, поки опції «перевірити електронну пошту» і «затверджені адміністратором» не будуть обрані."
+msgstr "Ви не зможете увійти в систему, поки обидві опції «електронну пошту підтверджено» і «схвалено адміністратором» не будуть відмічені."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1105
@@ -1184,7 +1182,6 @@ msgid "Accept"
 msgstr "Прийняти зміни"
 
 #: edit_changes.php:214 edit_changes.php:225
-#, fuzzy
 msgid "Accept all changes"
 msgstr "Прийняти всі зміни"
 
@@ -1196,9 +1193,8 @@ msgid "Access level"
 msgstr "Рівень доступу"
 
 #: admin_users.php:520
-#, fuzzy
 msgid "Access to family trees"
-msgstr "Допуск до генеалогічному дереву та налаштування"
+msgstr "Доступ до генеалогічних дерев"
 
 #: admin_users.php:375
 msgid "Account approval and email verification"
@@ -1426,9 +1422,8 @@ msgstr "Додати дружину з вже існуючих персон"
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
-#, fuzzy
 msgid "Add an FAQ"
-msgstr "Додати ЧаВО запис"
+msgstr "Додати завис до ЧаПи"
 
 #: app/Functions/FunctionsEdit.php:1082 app/Functions/FunctionsEdit.php:1086
 msgid "Add an associate"
@@ -1525,7 +1520,6 @@ msgstr "Додати/редагувати запис у Щоденнику/Но�
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
-#, fuzzy
 msgid "Address"
 msgstr "Адреса"
 
@@ -1700,9 +1694,8 @@ msgid "Adult christening"
 msgstr "Хрещення в дорослому віці"
 
 #: admin_trees_config.php:2027
-#, fuzzy
 msgid "Advanced fact preferences"
-msgstr "Розширені налаштування фактів"
+msgstr "Розширені налаштування факту"
 
 #: admin_trees_config.php:2032
 msgid "Advanced name facts"
@@ -2189,9 +2182,8 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Ви впевнені, що хочете видалити «%s»?"
 
 #: edit_changes.php:236
-#, fuzzy
 msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr "Ви впевнені, що хочете скасувати всі зміни в цій родоводу?"
+msgstr "Ви впевнені, що хочете скасувати всі зміни до цього генеалогічного дерева?"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
@@ -3440,7 +3432,7 @@ msgstr ""
 #: modules_v3/cemetery_report/report.xml:3
 #: modules_v3/cemetery_report/report.xml:35
 msgid "Cemeteries"
-msgstr "Кладовище"
+msgstr "Кладовища"
 
 #. I18N: gedcom tag CEME
 #: app/GedcomTag.php:246 modules_v3/cemetery_report/report.xml:54
@@ -5448,9 +5440,8 @@ msgstr "Редагувати правило доступу до сайту"
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1611
-#, fuzzy
 msgid "Edit preferences"
-msgstr "Опції редагування"
+msgstr "Редагувати налаштування"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
@@ -6439,9 +6430,8 @@ msgid "Folder name on server"
 msgstr "Ім'я папки на сервері"
 
 #: login.php:341
-#, fuzzy
 msgid "Follow this link to verify your email address."
-msgstr "Натисніть на нижестоящую посилання і введіть запитувану інформацію для підтвердження Вашого запиту та адреси ел. пошти."
+msgstr "Перейдіть по посилянню, щоб підтвердити вашу адресу ел. пошти."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -6471,19 +6461,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr "Наприклад, якщо вказати шлях довжиною 2, персона буде мати можливість бачити своїх онуків (дитина, дитина), свою тітку (батько, брат/сестра), свою пасербицю (чоловік, діти), але не свого двоюрідного брата (батько, брат/сестра, дитина)."
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "З питаннями по генеалогії (база даних) звертатися за адресою %s"
+msgstr "З питаннями по генеалогії (база даних) звертатися до %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "За допомогою і інформацією прохання звертатися за адресою %s"
+msgstr "За допомогою і інформацією прохання звертатися до %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "З питаннями по базі даних і по сайту звертатися до %s"
+msgstr "З питаннями по базі даних і по сайту звертатися до %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:276
@@ -6887,7 +6877,7 @@ msgstr "Google Street View™"
 
 #: app/Module/GoogleMapsModule.php:312
 msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
-msgstr ""
+msgstr "Google дозволяє робити невелику кількість запитів до карт в день анонімно. Якщо вам потрібно більше запитів, ви маєте зареєстувати обліковай запис Google і отримати ключ API."
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:508
@@ -8463,7 +8453,7 @@ msgstr "Поштова адреса"
 
 #: app/Functions/FunctionsEdit.php:249
 msgid "Mailto link"
-msgstr "Написати ел.пісьмо (e-mail)"
+msgstr "Написати ел. листа"
 
 #: index_edit.php:298
 msgid "Main section blocks"
@@ -9367,7 +9357,7 @@ msgstr "Мордад"
 
 #: app/Module/FamilyTreeNewsModule.php:137
 msgid "More news articles"
-msgstr ""
+msgstr "Більше новин"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6815
@@ -10128,7 +10118,7 @@ msgstr "Число поколінь"
 #. I18N: ... to show in a list
 #: app/Module/TopGivenNamesModule.php:146
 msgid "Number of given names"
-msgstr ""
+msgstr "Кількість імен"
 
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:634
@@ -10142,13 +10132,13 @@ msgstr "Кількість місяців з моменту останнього
 #. I18N: ... to show in a list
 #: app/Module/TopPageViewsModule.php:159
 msgid "Number of pages"
-msgstr ""
+msgstr "Кількість сторінок"
 
 #. I18N: ... to show in a list
 #: app/Module/FamilyTreeStatisticsModule.php:439
 #: app/Module/TopSurnamesModule.php:157
 msgid "Number of surnames"
-msgstr ""
+msgstr "Кількість фамілій"
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
@@ -12985,7 +12975,7 @@ msgstr "Деякі генеалогічні програми створюють 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "Деякі сторінки можуть відображати лічильник відвідування."
 
 #: app/Module/GoogleMapsModule.php:411
 #, fuzzy
@@ -15159,11 +15149,11 @@ msgstr "Тип"
 
 #: app/GedcomTag.php:434
 msgid "Type of event"
-msgstr ""
+msgstr "Тип події"
 
 #: app/GedcomTag.php:440
 msgid "Type of fact"
-msgstr ""
+msgstr "Тип факту"
 
 #: app/Module/GoogleMapsModule.php:453
 msgid "Type of place markers in the place hierarchy"
@@ -16004,7 +15994,7 @@ msgstr "Ви увійшли як %s."
 
 #: login.php:169 login.php:172 login.php:175
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "Ви можете підтвердити обліковий запис за посиланням нижче."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -16016,7 +16006,7 @@ msgstr "Ви можете змінини зовнішній вигляд webtree
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
 msgid "You can choose the prefix that will be used whenever new XREFs are created."
-msgstr ""
+msgstr "Вы можете вибрати префікс для нових XREF-записів."
 
 #: admin_users.php:462 edituser.php:312
 #, fuzzy
@@ -16150,11 +16140,11 @@ msgstr "Необхідно вказати персональну запис, п�
 
 #: login.php:175
 msgid "You need to be a family member to access this website."
-msgstr ""
+msgstr "Ви маєте бути членом сім'ї, щоб отримати доступ до сайту."
 
 #: login.php:172
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "Ви маєте ввести правильні логін та пароль, щоб мати доступ до цього сайту."
 
 #: admin_trees_manage.php:320
 msgid "You need to create a family tree."
@@ -18789,8 +18779,9 @@ msgstr "півріч після вступу в шлюб"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:279
+#, fuzzy
 msgid "herself"
-msgstr ""
+msgstr "вона сама"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:761
@@ -18803,8 +18794,9 @@ msgstr "приховати"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:277
+#, fuzzy
 msgid "himself"
-msgstr ""
+msgstr "він сам"
 
 #: app/Functions/Functions.php:709 edit_interface.php:1928
 #: edit_interface.php:1963
@@ -19936,8 +19928,9 @@ msgstr "У каталогу «/data» і файлу «/data/config.ini.php» в�
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:281
+#, fuzzy
 msgid "themself"
-msgstr ""
+msgstr "воно саме"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:639
@@ -20248,7 +20241,7 @@ msgstr "«%s» додано до обраного."
 #: action.php:47
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "\"%s\" було видалено."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:107
 msgid "…"
