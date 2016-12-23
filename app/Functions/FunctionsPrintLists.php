@@ -1707,24 +1707,24 @@ class FunctionsPrintLists {
 			if ($endjd === WT_CLIENT_JD) {
 				// We're dealing with the Today’s Events block
 				if ($filter === 0) {
-					$html .=  I18N::translate('No events exist for today.');
+					$html .= I18N::translate('No events exist for today.');
 				} else {
-					$html .=  I18N::translate('No events for living individuals exist for today.');
+					$html .= I18N::translate('No events for living individuals exist for today.');
 				}
 			} else {
 				// We're dealing with the Upcoming Events block
 				if ($filter === 0) {
 					if ($endjd === $startjd) {
-						$html .=  I18N::translate('No events exist for tomorrow.');
+						$html .= I18N::translate('No events exist for tomorrow.');
 					} else {
 						$html .=  /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */ I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
 					}
 				} else {
 					if ($endjd === $startjd) {
-						$html .=  I18N::translate('No events for living individuals exist for tomorrow.');
+						$html .= I18N::translate('No events for living individuals exist for tomorrow.');
 					} else {
 						// I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
-						$html .=  I18N::plural('No events for living people exist for the next %s day.', 'No events for living people exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
+						$html .= I18N::plural('No events for living people exist for the next %s day.', 'No events for living people exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
 					}
 				}
 			}

@@ -166,7 +166,7 @@ class RelationshipController extends PageController {
 		$queue = array($xref1, $xref2);
 		while (!empty($queue)) {
 			$placeholders = implode(',', array_fill(0, count($queue), '?'));
-			$parameters = $queue;
+			$parameters   = $queue;
 			$parameters[] = $tree_id;
 
 			$parents = Database::prepare(

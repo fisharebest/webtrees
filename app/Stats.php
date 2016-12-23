@@ -641,7 +641,7 @@ class Stats {
 			$distinct = 'DISTINCT';
 		}
 		$params[] = $this->tree->getTreeId();
-		$total =
+		$total    =
 			Database::prepare(
 				"SELECT SQL_CACHE COUNT({$distinct} n_surn COLLATE '" . I18N::collation() . "')" .
 				" FROM `##name`" .
